@@ -1,0 +1,74 @@
+{
+  "player": "船水颯人",
+  "matches": [
+    {
+      "tournament": "全日本選手権2024",
+      "dateRange": "2024年11月10日〜12日",
+      "location": "韓国・ソウル",
+      "link": "https://example.com/tournament/asia2024",
+      "format": "combined",
+      "finalResult": "準優勝",
+      "groupStage": {
+        "format": "round-robin",
+        "group": "Aグループ",
+        "results": [
+          { "round": "第1戦", "opponent": "鈴木", "result": "勝ち", "score": "5-3" },
+          { "round": "第2戦", "opponent": "田中", "result": "負け", "score": "3-5" },
+          { "round": "第3戦", "opponent": "伊藤", "result": "勝ち", "score": "5-2" }
+        ]
+      },
+      "finalStage": {
+        "format": "tournament",
+        "results": [
+          { "round": "準決勝", "opponent": "佐藤", "result": "勝ち", "score": "5-4" },
+          { "round": "決勝", "opponent": "上松俊貴", "result": "負け", "score": "4-5" }
+        ]
+      }
+    },
+    {
+      "tournament": "全日本選手権2024",
+      "dateRange": "2024年11月10日〜12日",
+      "location": "韓国・ソウル",
+      "link": "https://example.com/tournament/asia2024",
+      "format": "round-robin",
+      "finalResult": "準優勝",
+      "results": [
+          { "round": "第1戦", "opponent": "鈴木", "result": "勝ち", "score": "5-3" },
+          { "round": "第2戦", "opponent": "田中", "result": "負け", "score": "3-5" },
+          { "round": "第3戦", "opponent": "伊藤", "result": "勝ち", "score": "5-2" }
+        ]
+    },
+    {
+      "tournament": "全日本選手権2024",
+      "dateRange": "2024年11月10日〜12日",
+      "location": "韓国・ソウル",
+      "link": "https://example.com/tournament/asia2024",
+      "format": "tournament",
+      "finalResult": "準優勝",
+      "results": [
+        { "round": "準決勝", "opponent": "佐藤", "result": "勝ち", "score": "5-4" },
+        { "round": "決勝", "opponent": "上松俊貴", "result": "負け", "score": "4-5" }
+        ]
+    }
+  ],
+  "majorTitles": [
+    {
+      "name": "全日本シングルス選手権大会",
+      "years": [
+        { "year": 2025, "result": "優勝" },
+        { "year": 2024, "result": "ベスト4" },
+        { "year": 2023, "result": "ベスト4" },
+        { "year": 2022, "result": "ベスト8" }
+      ]
+    },
+    {
+      "name": "天皇賜杯・皇后賜杯 全日本選手権大会",
+      "years": [
+        { "year": 2025, "result": "準優勝" },
+        { "year": 2024, "result": "優勝" },
+        { "year": 2023, "result": "優勝" },
+        { "year": 2022, "result": "ベスト8" }
+      ]
+    }
+  ]
+}
