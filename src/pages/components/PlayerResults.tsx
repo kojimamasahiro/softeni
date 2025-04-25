@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import styles from '../../styles/Results.module.css';
-import MajorTitles from '../components/MajorTitles';
 import MatchResults from '../components/MatchResults';
 import Head from 'next/head';
 
@@ -47,7 +46,7 @@ interface PlayerData {
 }
 
 export default function PlayerResults({ playerData }: { playerData: PlayerData }) {
-  const { player, matches, majorTitles } = playerData;
+  const matches = playerData.matches;
   // 選手名をスラッグに変換（例：船水颯人 → funemizu）
   const playerSlug = playerData.player === '船水颯人' ? 'funemizu-hayato' : 'default';
 
