@@ -9,7 +9,7 @@ export default function FunemizuPage({ playerData }: { playerData: PlayerData })
     <div style={{ padding: '2rem' }}>
       <h1>{playerData.player} のページ</h1>
       <MajorTitles playerData={playerData} />
-      <PlayerResults playerData={{ player: playerData.player, matches: playerData.matches, majorTitles: playerData.majorTitles }} />
+      <PlayerResults playerData={ playerData } />
     </div>
   );
 }
