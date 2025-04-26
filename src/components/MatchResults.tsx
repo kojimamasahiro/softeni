@@ -1,62 +1,78 @@
 import styles from '../styles/Results.module.css';
-import { PlayerData, MatchResult } from '../types/types';
+import { PlayerData, MatchResult, Tournament } from '../types/types';
 
 export default function MatchResults({ playerData }: { playerData: PlayerData }) {
   if (!playerData.matches || playerData.matches.length === 0) {
     return <p>試合結果がありません。</p>;
   }
 
+  // ★ここ★ 大会名ごとにまとめる
+  const tournamentsByName: { [name: string]: Tournament[] } = {};
+  playerData.matches.forEach((tournament) => {
+    if (!tournamentsByName[tournament.tournament]) {
+      tournamentsByName[tournament.tournament] = [];
+    }
+    tournamentsByName[tournament.tournament].push(tournament);
+  });
+
   return (
-    <section className={styles.section}>
-      <h2 className={styles.heading}>🎾 大会結果</h2>
-      {playerData.matches.map((tournament, index) => (
+    <div>
+      <h2 className={styles.sectionTitle}>🎾 大会結果</h2>
+      {Object.entries(tournamentsByName).map(([tournamentName, tournaments], index) => (
         <div key={index} className={styles.tournament}>
-          <h3 className={styles.subheading}>{tournament.tournament}</h3>
-          {tournament.dateRange && <div className={styles.meta}>📅 {tournament.dateRange}</div>}
-          {tournament.location && <div className={styles.meta}>📍 {tournament.location}</div>}
-          {tournament.link && (
+          <h3 className={styles.subheading}>{tournamentName}</h3>
+
+          {/* 代表の1件から基本情報を取得 */}
+          {tournaments[0].dateRange && <div className={styles.meta}>📅 {tournaments[0].dateRange}</div>}
+          {tournaments[0].location && <div className={styles.meta}>📍 {tournaments[0].location}</div>}
+          {tournaments[0].link && (
             <div className={styles.meta}>
-              🔗 <a href={tournament.link} target="_blank" rel="noopener noreferrer">大会ページ</a>
+              🔗 <a href={tournaments[0].link} target="_blank" rel="noopener noreferrer">大会ページ</a>
             </div>
           )}
-          {tournament.finalResult && <div className={styles.meta}>🏁 最終結果：{tournament.finalResult}</div>}
+          {tournaments[0].finalResult && <div className={styles.meta}>🏁 最終結果：{tournaments[0].finalResult}</div>}
 
-          {/* Combined フォーマット */}
-          {tournament.format === 'combined' && (
-            <>
-              {tournament.groupStage && (
+          {/* 各フォーマットに応じて表示 */}
+          {tournaments.map((tournament, idx) => (
+            <div key={idx}>
+              {/* Combined */}
+              {tournament.format === 'combined' && (
+                <>
+                  {tournament.groupStage && (
+                    <div className={styles.stage}>
+                      <h4>グループステージ（{tournament.groupStage.group || 'グループ'}）</h4>
+                      {renderTable(tournament.groupStage.results)}
+                    </div>
+                  )}
+                  {tournament.finalStage && (
+                    <div className={styles.stage}>
+                      <h4>決勝トーナメント</h4>
+                      {renderTable(tournament.finalStage.results)}
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* 単独トーナメント */}
+              {tournament.format === 'tournament' && tournament.results && (
                 <div className={styles.stage}>
-                  <h4>グループステージ（{tournament.groupStage.group || 'グループ'}）</h4>
-                  {renderTable(tournament.groupStage.results)}
+                  <h4>トーナメント</h4>
+                  {renderTable(tournament.results)}
                 </div>
               )}
-              {tournament.finalStage && (
+
+              {/* 単独ラウンドロビン */}
+              {tournament.format === 'round-robin' && tournament.results && (
                 <div className={styles.stage}>
-                  <h4>決勝トーナメント</h4>
-                  {renderTable(tournament.finalStage.results)}
+                  <h4>ラウンドロビン</h4>
+                  {renderTable(tournament.results)}
                 </div>
               )}
-            </>
-          )}
-
-          {/* 単独トーナメント */}
-          {tournament.format === 'tournament' && tournament.results && (
-            <div className={styles.stage}>
-              <h4>トーナメント</h4>
-              {renderTable(tournament.results)}
             </div>
-          )}
-
-          {/* 単独ラウンドロビン */}
-          {tournament.format === 'round-robin' && tournament.results && (
-            <div className={styles.stage}>
-              <h4>ラウンドロビン</h4>
-              {renderTable(tournament.results)}
-            </div>
-          )}
+          ))}
         </div>
       ))}
-    </section>
+    </div>
   );
 }
 

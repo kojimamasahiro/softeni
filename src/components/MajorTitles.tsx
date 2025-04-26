@@ -25,8 +25,8 @@ export default function MajorTitles({ playerData }: { playerData: PlayerData }) 
   ).sort((a, b) => b - a); // 新しい順に
 
   return (
-    <section className={styles.section}>
-      <h2 className={styles.heading}>🏆 主要タイトル</h2>
+    <div className={styles.section}>
+      <h2 className={styles.sectionTitle}>🏆 主要タイトル</h2>
       <div className={styles.scrollTableWrapper}>
         <table className={styles.pivotTable}>
           <thead>
@@ -50,6 +50,6 @@ export default function MajorTitles({ playerData }: { playerData: PlayerData }) 
           </tbody>
         </table>
       </div>
-    </section>
+    </div>
   );
 }
