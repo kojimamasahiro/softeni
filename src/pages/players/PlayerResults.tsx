@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import styles from '../../styles/Results.module.css';
-import MatchResults from '../components/MatchResults';
+import MatchResults from '../../components/MatchResults';
 import Head from 'next/head';
 
 interface MatchResult {
@@ -46,7 +46,6 @@ interface PlayerData {
 }
 
 export default function PlayerResults({ playerData }: { playerData: PlayerData }) {
-  const matches = playerData.matches;
   // 選手名をスラッグに変換（例：船水颯人 → funemizu）
   const playerSlug = playerData.player === '船水颯人' ? 'funemizu-hayato' : 'default';
 
@@ -64,7 +63,7 @@ export default function PlayerResults({ playerData }: { playerData: PlayerData }
         <meta property="og:url" content={`https://your-site.com/player/${playerSlug}`} />
       </Head>
       <div className={styles.container}>
-        <MatchResults playerData={{ matches }} />
+        <MatchResults playerData={playerData} />
       </div>
     </>
   );

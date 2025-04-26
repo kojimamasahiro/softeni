@@ -1,33 +1,5 @@
-import styles from '../../styles/Results.module.css';
-
-interface MatchResult {
-  round: string;
-  opponent: string;
-  result: string;
-  score: string;
-}
-
-interface Stage {
-  format: 'round-robin' | 'tournament';
-  group?: string;
-  results: MatchResult[];
-}
-
-interface Tournament {
-  tournament: string;
-  dateRange?: string;
-  location?: string;
-  link?: string;
-  format: 'round-robin' | 'tournament' | 'combined';
-  finalResult?: string;
-  groupStage?: Stage;
-  finalStage?: Stage;
-  results?: MatchResult[]; // 単独用
-}
-
-interface PlayerData {
-  matches: Tournament[];
-}
+import styles from '../styles/Results.module.css';
+import { PlayerData, MatchResult } from '../types/types';
 
 export default function MatchResults({ playerData }: { playerData: PlayerData }) {
   if (!playerData.matches || playerData.matches.length === 0) {

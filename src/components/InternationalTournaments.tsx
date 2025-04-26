@@ -1,4 +1,4 @@
-import styles from '../../styles/Results.module.css';
+import styles from '../styles/Results.module.css';
 
 interface MatchResult {
   round: string;

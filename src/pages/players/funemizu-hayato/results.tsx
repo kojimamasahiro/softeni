@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import MajorTitles from '../../components/MajorTitles';
-import PlayerResults from '../../components/PlayerResults';
+import MajorTitles from '../../../components/MajorTitles';
+import PlayerResults from '../PlayerResults';
 import { PlayerData } from '../../../types/types';
 
 export default function FunemizuPage({ playerData }: { playerData: PlayerData }) {
