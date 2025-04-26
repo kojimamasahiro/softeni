@@ -16,12 +16,9 @@ export default function FunemizuPage({ playerData }: { playerData: PlayerData })
 
 // getStaticProps 内でのデータ確認
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data/players/funemizu-hayato/results.json');
+  const filePath = path.join(process.cwd(), 'data/players/uematsu-toshiki/results.json');
   const jsonData = fs.readFileSync(filePath, 'utf-8');
-  
-  // データをログで確認
   const playerData: PlayerData = JSON.parse(jsonData);
-  console.log(playerData);  // データ構造を確認
 
   return {
     props: {
