@@ -30,6 +30,10 @@ interface PlayerData {
 }
 
 export default function MatchResults({ playerData }: { playerData: PlayerData }) {
+  if (!playerData.matches || playerData.matches.length === 0) {
+    return <p>試合結果がありません。</p>;
+  }
+
   return (
     <section className={styles.section}>
       <h2 className={styles.heading}>🎾 大会結果</h2>
