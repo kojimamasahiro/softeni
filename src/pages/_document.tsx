@@ -6,6 +6,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <script type="text/javascript" src="https://consent.cookiebot.com/uc.js" data-cbid="NZacXYsKtvW8io" data-blockingmode="auto" async></script>
           <link rel="icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
           <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
