@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
 import '../styles/globals.css'; // これは自分のスタイルパスに合わせて！
+import Footer from '@/components/Footer';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +24,12 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       {/* アプリ本体 */}
-      <Component {...pageProps} />
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-1">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

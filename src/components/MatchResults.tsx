@@ -1,4 +1,4 @@
-import styles from '../styles/Results.module.css';
+import styles from '@styles/Results.module.css';
 import { PlayerData, MatchResult, Tournament } from '../types/types';
 
 export default function MatchResults({ playerData }: { playerData: PlayerData }) {

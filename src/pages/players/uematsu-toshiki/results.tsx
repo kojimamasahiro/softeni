@@ -4,7 +4,7 @@ import MajorTitles from '../../../components/MajorTitles';
 import PlayerResults from '../PlayerResults';
 import { PlayerData } from '../../../types/types';
 
-export default function FunemizuPage({ playerData }: { playerData: PlayerData }) {
+export default function UematsuToshikiPage({ playerData }: { playerData: PlayerData }) {
   return (
     <div style={{ padding: '2rem' }}>
       <h1>{playerData.player} のページ</h1>

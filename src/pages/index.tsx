@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Head from 'next/head';
 
 export default function Home() {
@@ -12,7 +13,16 @@ export default function Home() {
         <meta property="og:url" content="https://yourdomain.com" />
         <meta property="og:type" content="website" />
       </Head>
-      {/* コンテンツ */}
+    <div>
+      <h1>ソフトテニス選手のキュレーションサイト</h1>
+      <ul>
+        <li>
+          <Link href="/players/uematsu-toshiki/results">
+            上松俊貴選手のページ
+          </Link>
+        </li>
+      </ul>
+    </div>
     </>
   );
 }
