@@ -2,6 +2,27 @@ import styles from '../styles/Results.module.css';
 import titlesData from '../../data/titles.json';
 import { PlayerData } from '../types/types';
 
+interface PlayerResult {
+  playerId: string;
+  result: string;
+}
+
+interface TitleYearData {
+  status: 'scheduled' | 'completed' | 'canceled';
+  scheduledDate?: string;
+  results: PlayerResult[];
+}
+
+interface TitleData {
+  years: {
+    [year: string]: TitleYearData;
+  };
+}
+
+interface TitlesData {
+  [tournamentName: string]: TitleData;
+}
+
 interface YearResult {
   year: number;
   result: string;
@@ -18,18 +39,18 @@ export default function MajorTitles({ playerData }: { playerData: PlayerData }) 
   }
 
   // titlesDataから、各大会ごとにプレイヤーの結果を集める
-  const majorTitles: MajorTitle[] = Object.entries(titlesData).map(([tournamentName, tournamentData]: any) => {
+  const majorTitles: MajorTitle[] = Object.entries(titlesData as TitlesData).map(([tournamentName, tournamentData]) => {
     const years = Object.entries(tournamentData.years)
-      .map(([yearStr, yearData]: any) => {
+      .map(([yearStr, yearData]: [string, TitleYearData]) => {
         const year = parseInt(yearStr, 10);
 
         if (yearData.status === 'scheduled') {
-          return { year, result: yearData.scheduledDate };
+          return { year, result: yearData.scheduledDate || '(予定)' };
         } else if (yearData.status === 'canceled') {
           return { year, result: '(中止)' };
         } else if (yearData.status === 'completed') {
-          const playerResult = yearData.results.find((r: any) => r.playerId === playerData.id);
-          return { year, result: playerResult ? playerResult.result : '出場なし' };
+          const playerResult = yearData.results.find((r) => r.playerId === playerData.id);
+          return { year, result: playerResult ? playerResult.result : '(出場なし)' };
         } else {
           return { year, result: 'ー' }; // 予備対応
         }
