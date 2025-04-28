@@ -16,9 +16,12 @@ interface Players {
 
 export default function LiveResults({ playerId }: { playerId: string }) {
   const today = new Date();
-  const todayStr = today.toISOString().slice(0, 10); // "2025-04-28"
-
-  const updatedDateStr = new Date((liveData as LiveData).updatedAt).toISOString().slice(0, 10);
+  const todayStr = today.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }).slice(0, 10); // "2025-04-28"
+  
+  const updatedDateStr = new Date((liveData as LiveData).updatedAt)
+    .toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
+    .slice(0, 10);
+  
   if (updatedDateStr !== todayStr) {
     return null; // 今日の日付と一致しない場合は何も表示しない
   }
