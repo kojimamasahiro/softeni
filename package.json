@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "react": "^19.0.0",
