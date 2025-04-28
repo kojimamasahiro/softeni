@@ -16,7 +16,7 @@ export default function UematsuToshikiPage({ playerData }: { playerData: PlayerD
 
 // getStaticProps 内でのデータ確認
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data/players/uematsu-toshiki/results.json');
+  const filePath = path.join(process.cwd(), 'data/players/uchida-riku/results.json');
   const jsonData = fs.readFileSync(filePath, 'utf-8');
   const playerData: PlayerData = JSON.parse(jsonData);
 
