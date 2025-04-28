@@ -1,4 +1,5 @@
 import styles from '@/styles/Results.module.css';
+import playersData from '@/data/players.json';
 import liveData from '@/data/live.json';
 
 interface LiveData {
@@ -12,6 +13,17 @@ interface Players {
   status: string;
   latestResult: string;
   nextMatch: string;
+}
+
+interface PlayerInfo {
+  id: string;
+  lastName: string;
+  firstName: string;
+  lastNameKana: string;
+  firstNameKana: string;
+  team: string;
+  height: number;
+  handedness: string;
 }
 
 export default function LiveResultsByTournament() {
@@ -29,11 +41,16 @@ export default function LiveResultsByTournament() {
       <div className={styles.tournamentBlock}>
         <h3 className={styles.tournamentTitle}>{liveData.tournament}</h3>
         <ul className={styles.liveResultList}>
-          {liveData.players.map((player, index) => (
-            <li key={index}>
-              <strong>{player.playerId}</strong>：{player.latestResult}（次: {player.nextMatch}）
-            </li>
-          ))}
+          {liveData.players.map((player, index) => {
+            const playerInfo = (playersData as PlayerInfo[]).find(p => p.id === player.playerId);
+            const playerName = playerInfo ? `${playerInfo.lastName}${playerInfo.firstName}` : player.playerId;
+
+            return (
+              <li key={index}>
+                <strong>{playerName}</strong>：{player.latestResult}（次: {player.nextMatch}）
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
