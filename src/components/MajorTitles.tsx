@@ -1,4 +1,6 @@
 import styles from '../styles/Results.module.css';
+import titlesData from '../../data/titles.json';
+import { PlayerData } from '../types/types';
 
 interface YearResult {
   year: number;
@@ -10,19 +12,39 @@ interface MajorTitle {
   years: YearResult[];
 }
 
-interface PlayerData {
-  majorTitles: MajorTitle[];
-}
-
 export default function MajorTitles({ playerData }: { playerData: PlayerData }) {
-  if (!playerData || !Array.isArray(playerData.majorTitles)) {
+  if (!titlesData) {
     return <div>主要タイトルのデータがありません</div>;
   }
 
+  // titlesDataから、各大会ごとにプレイヤーの結果を集める
+  const majorTitles: MajorTitle[] = Object.entries(titlesData).map(([tournamentName, tournamentData]: any) => {
+    const years = Object.entries(tournamentData.years)
+      .map(([yearStr, yearData]: any) => {
+        const year = parseInt(yearStr, 10);
+
+        if (yearData.status === 'scheduled') {
+          return { year, result: yearData.scheduledDate };
+        } else if (yearData.status === 'canceled') {
+          return { year, result: '(中止)' };
+        } else if (yearData.status === 'completed') {
+          const playerResult = yearData.results.find((r: any) => r.playerId === playerData.id);
+          return { year, result: playerResult ? playerResult.result : '出場なし' };
+        } else {
+          return { year, result: 'ー' }; // 予備対応
+        }
+      });
+
+    return {
+      name: tournamentName,
+      years,
+    };
+  });
+
   // 年度一覧をすべて取得してソート
   const allYears = Array.from(
-    new Set(playerData.majorTitles.flatMap(title => title.years.map(y => y.year)))
-  ).sort((a, b) => b - a); // 新しい順に
+    new Set(majorTitles.flatMap(title => title.years.map(y => y.year)))
+  ).sort((a, b) => b - a); // 新しい順
 
   return (
     <div className={styles.section}>
@@ -38,7 +60,7 @@ export default function MajorTitles({ playerData }: { playerData: PlayerData }) 
             </tr>
           </thead>
           <tbody>
-            {playerData.majorTitles.map((title, index) => (
+            {majorTitles.map((title, index) => (
               <tr key={index}>
                 <td>{title.name}</td>
                 {allYears.map((year) => {

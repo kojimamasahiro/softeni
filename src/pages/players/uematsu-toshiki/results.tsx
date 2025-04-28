@@ -7,7 +7,7 @@ import { PlayerData } from '../../../types/types';
 export default function UematsuToshikiPage({ playerData }: { playerData: PlayerData }) {
   return (
     <div style={{ padding: '2rem' }}>
-      <h1>{playerData.player} のページ</h1>
+      <h1>{playerData.name} のページ</h1>
       <MajorTitles playerData={playerData} />
       <PlayerResults playerData={ playerData } />
     </div>
