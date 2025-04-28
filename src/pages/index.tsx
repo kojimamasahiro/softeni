@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
+import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 
 export default function Home() {
   return (
@@ -14,25 +15,32 @@ export default function Home() {
         <meta property="og:url" content="https://yourdomain.com" />
         <meta property="og:type" content="website" />
       </Head>
+
       <div className={styles.container}>
         <h1 className={styles.title}>試合結果まとめ | ソフトテニス情報</h1>
-        <div className={styles.playersList}>
-          <div className={styles.playerCard}>
-            <h2 className={styles.playerName}>上松俊貴</h2>
-            <p className={styles.playerDescription}>NTT西日本所属</p>
-            <Link href="/players/uematsu-toshiki/results" className={styles.link}>
-              詳細を見る
-            </Link>
+
+        <LiveResultsByTournament />
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>🎾 選手一覧</h2>
+          <div className={styles.playersList}>
+            <div className={styles.playerCard}>
+              <h2 className={styles.playerName}>上松俊貴</h2>
+              <p className={styles.playerDescription}>NTT西日本所属</p>
+              <Link href="/players/uematsu-toshiki/results" className={styles.link}>
+                詳細を見る
+              </Link>
+            </div>
+            <div className={styles.playerCard}>
+              <h2 className={styles.playerName}>内田理久</h2>
+              <p className={styles.playerDescription}>NTT西日本所属</p>
+              <Link href="/players/uchida-riku/results" className={styles.link}>
+                詳細を見る
+              </Link>
+            </div>
+            {/* 他の選手も同様に追加できます */}
           </div>
-          <div className={styles.playerCard}>
-            <h2 className={styles.playerName}>内田理久</h2>
-            <p className={styles.playerDescription}>NTT西日本所属</p>
-            <Link href="/players/uchida-riku/results" className={styles.link}>
-              詳細を見る
-            </Link>
-          </div>
-          {/* 他の選手も同様に追加できます */}
-        </div>
+        </section>
       </div>
     </>
   );

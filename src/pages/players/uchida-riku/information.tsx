@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from '@/styles/Information.module.css';
 
 const UchidaRikuInformation = () => {
-  const name = '内田理久（うちだりく）';
+  const name = '内田 理久（うちだ りく）';
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{name} - プロフィール</h1>
@@ -25,7 +25,7 @@ const UchidaRikuInformation = () => {
             </tr>
             <tr>
               <th>利き手</th>
-              <td>左利き（前衛）</td>
+              <td>左</td>
             </tr>
           </tbody>
         </table>

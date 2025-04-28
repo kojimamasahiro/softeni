@@ -56,4 +56,11 @@
   .link:hover {
     text-decoration: underline;
   }
-  
+
+  .sectionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 0.5rem;
+  }

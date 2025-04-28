@@ -162,3 +162,41 @@
     text-align: center;
   }
 }
+.tournamentBlock {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.tournamentTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2rem;
+}
+
+.liveResultCard {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+}
+
+.updatedAt {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.liveResultList {
+  list-style: none;
+  padding: 0;
+}
+
+.liveResultList li {
+  margin-bottom: 0.5rem;
+}

@@ -1,20 +1,41 @@
 import Link from 'next/link';
-import styles from '@/styles/Players.module.css';
+import styles from '@/styles/Information.module.css';
 
 const UematsuToshikiInformation = () => {
+  const name = '上松 俊貴（うえまつ としき）';
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>上松俊貴選手 - プロフィール</h1>
+      <h1 className={styles.title}>{name} - プロフィール</h1>
 
       <section className={styles.profile}>
         <h2 className={styles.heading}>プロフィール</h2>
-        <p>上松俊貴選手は、ソフトテニスの日本代表選手で、国内外の大会で数々の実績を持っています。</p>
+        <table className={styles.profileTable}>
+          <tbody>
+            <tr>
+              <th>所属</th>
+              <td>NTT西日本</td>
+            </tr>
+            <tr>
+              <th>誕生日</th>
+              <td>1998年6月11日</td>
+            </tr>
+            <tr>
+              <th>身長</th>
+              <td>181cm</td>
+            </tr>
+            <tr>
+              <th>利き手</th>
+              <td>右</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section className={styles.results}>
         <h2 className={styles.heading}>大会結果</h2>
-        <p>現在、上松選手の最新の大会結果はここに表示されます。</p>
-        {/* 試合結果や大会の情報を後から追加する部分 */}
+        <Link href="/players/uematsu-toshiki/results" className={styles.link}>
+          詳細を見る
+        </Link>
       </section>
 
       <section className={styles.links}>
