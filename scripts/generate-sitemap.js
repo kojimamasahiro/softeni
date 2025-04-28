@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 // プレイヤー一覧
-const players = ['uematsu-toshiki']; // ← 今後ここに増やせばOK！
+const players = [
+  'uematsu-toshiki',
+  'uchida-riku'
+];
 
 // サイトのドメイン
 const baseUrl = 'https://softeni.vercel.app';
