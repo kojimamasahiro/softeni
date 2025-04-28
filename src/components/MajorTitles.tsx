@@ -50,7 +50,7 @@ export default function MajorTitles({ playerData }: { playerData: PlayerData }) 
           return { year, result: '(中止)' };
         } else if (yearData.status === 'completed') {
           const playerResult = yearData.results.find((r) => r.playerId === playerData.id);
-          return { year, result: playerResult ? playerResult.result : '(出場なし)' };
+          return { year, result: playerResult ? playerResult.result : 'ー' };
         } else {
           return { year, result: 'ー' }; // 予備対応
         }
