@@ -1,0 +1,98 @@
+{
+  "id" : "hirooka-sora",
+  "name": "広岡 宙（ひろおか そら）",
+  "matches": [
+    {
+      "tournament": "第9回 アジア選手権大会日本代表予選会",
+      "dateRange": "2025年4月26日(土)~4月27日(日)",
+      "location": "仙台市青葉山公園庭球場",
+      "link": "https://www.jsta.or.jp/",
+      "format": "combined",
+      "finalResult": "ベスト16",
+      "groupStage": {
+        "format": "round-robin",
+        "group": "グループH",
+        "results": [
+          {
+            "round": "第1戦",
+            "opponent": "渡辺・北野（ワタキューセイモア）",
+            "result": "勝ち",
+            "score": "5-3"
+          },
+          {
+            "round": "第2戦",
+            "opponent": "長根・清水（同志社大学）",
+            "result": "勝ち",
+            "score": "5-1"
+          },
+          {
+            "round": "第3戦",
+            "opponent": "小山・坂口（明治大学）",
+            "result": "勝ち",
+            "score": "5-2"
+          }
+        ]
+      },
+      "finalStage": {
+        "format": "tournament",
+        "results": [
+          {
+            "round": "1回戦",
+            "opponent": "星野・北野（ワタキューセイモア）",
+            "result": "勝ち",
+            "score": "5-3"
+          },
+          {
+            "round": "2回戦",
+            "opponent": "安藤・安藤（東邦ガス）",
+            "result": "負け",
+            "score": "4-5"
+          }
+        ]
+      }
+    },
+    {
+      "tournament": "第70回 全日本インドアソフトテニス選手権大会",
+      "dateRange": "2025年2月2日(土)",
+      "location": "Asueアリーナ大阪",
+      "link": "https://www.pin-spot.com/osta/",
+      "format": "combined",
+      "finalResult": "準優勝",
+      "groupStage": {
+        "format": "round-robin",
+        "group": "グループC",
+        "results": [
+          {
+            "round": "第1戦",
+            "opponent": "上岡・丸山（混合）",
+            "result": "勝ち",
+            "score": "4-1"
+          },
+          {
+            "round": "第2戦",
+            "opponent": "米川・上田（明治大学）",
+            "result": "勝ち",
+            "score": "4-1"
+          }
+        ]
+      },
+      "finalStage": {
+        "format": "tournament",
+        "results": [
+          {
+            "round": "準決勝",
+            "opponent": "川崎・上松（混合）",
+            "result": "勝ち",
+            "score": "5-4"
+          },
+          {
+            "round": "決勝",
+            "opponent": "内本・内田（NTT西日本）",
+            "result": "負け",
+            "score": "4-5"
+          }
+        ]
+      }
+    }
+  ]
+}

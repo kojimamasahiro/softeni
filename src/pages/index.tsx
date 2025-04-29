@@ -25,16 +25,23 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>🎾 選手一覧</h2>
           <div className={styles.playersList}>
             <div className={styles.playerCard}>
-              <h2 className={styles.playerName}>上松俊貴</h2>
+              <h2 className={styles.playerName}>上松 俊貴（うえまつ としき）</h2>
               <p className={styles.playerDescription}>NTT西日本所属</p>
-              <Link href="/players/uematsu-toshiki/results" className={styles.link}>
+              <Link href="/players/uematsu-toshiki/information" className={styles.link}>
                 詳細を見る
               </Link>
             </div>
             <div className={styles.playerCard}>
-              <h2 className={styles.playerName}>内田理久</h2>
+              <h2 className={styles.playerName}>内田 理久（うちだ りく）</h2>
               <p className={styles.playerDescription}>NTT西日本所属</p>
-              <Link href="/players/uchida-riku/results" className={styles.link}>
+              <Link href="/players/uchida-riku/information" className={styles.link}>
+                詳細を見る
+              </Link>
+            </div>
+            <div className={styles.playerCard}>
+              <h2 className={styles.playerName}>広岡 宙（ひろおか そら）</h2>
+              <p className={styles.playerDescription}>NTT西日本所属</p>
+              <Link href="/players/hirooka-sora/information" className={styles.link}>
                 詳細を見る
               </Link>
             </div>
