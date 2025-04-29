@@ -39,6 +39,13 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.playerCard}>
+              <h2 className={styles.playerName}>内本 隆文（うちもと たかふみ）</h2>
+              <p className={styles.playerDescription}>NTT西日本所属</p>
+              <Link href="/players/uchimoto-takafumi/information" className={styles.link}>
+                詳細を見る
+              </Link>
+            </div>
+            <div className={styles.playerCard}>
               <h2 className={styles.playerName}>広岡 宙（ひろおか そら）</h2>
               <p className={styles.playerDescription}>NTT西日本所属</p>
               <Link href="/players/hirooka-sora/information" className={styles.link}>
