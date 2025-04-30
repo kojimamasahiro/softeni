@@ -1,25 +1,74 @@
 [
     {
-      "id": "uematsu-toshiki",
-      "lastName": "上松",
-      "firstName": "俊貴",
-      "lastNameKana": "うえまつ",
-      "firstNameKana": "としき",
-      "team": "NTT西日本",
-      "height": 181,
-      "handedness": "右利き",
-      "position": "前衛"
+        "id": "uematsu-toshiki",
+        "lastName": "上松",
+        "firstName": "俊貴",
+        "lastNameKana": "うえまつ",
+        "firstNameKana": "としき",
+        "team": "NTT西日本",
+        "position": "前衛",
+        "handedness": "右利き",
+        "birthDate": "",
+        "height": 181,
+        "profileLinks": [
+            {
+                "label": "X(旧Twitter)",
+                "url": "https://x.com/toshipon_0611"
+            }
+        ]
     },
     {
-      "id": "uchida-riku",
-      "lastName": "内田",
-      "firstName": "理久",
-      "lastNameKana": "うちだ",
-      "firstNameKana": "りく",
-      "team": "NTT西日本",
-      "height": 180,
-      "handedness": "左利き",
-      "position": "前衛"
-    }
-  ]
-  
+        "id": "chida-riku",
+        "lastName": "内田",
+        "firstName": "理久",
+        "lastNameKana": "うちだ",
+        "firstNameKana": "りく",
+        "team": "NTT西日本",
+        "position": "前衛",
+        "handedness": "左利き",
+        "birthDate": "",
+        "height": 180,
+        "profileLinks": [
+          {
+            "label": "Instagram",
+            "url": "https://www.instagram.com/uchida.riku0525/"
+          }
+        ]
+      },
+      {
+        "id": "hirooka-sora",
+        "lastName": "広岡",
+        "firstName": "宙",
+        "lastNameKana": "ひろおか",
+        "firstNameKana": "そら",
+        "team": "NTT西日本",
+        "position": "前衛",
+        "handedness": "右利き",
+        "birthDate": "",
+        "height": 171,
+        "profileLinks": [
+          {
+            "label": "Instagram",
+            "url": "https://www.instagram.com/solananoyo0602/"
+          }
+        ]
+      },
+      {
+        "id": "uchimoto-takafumi",
+        "lastName": "内本",
+        "firstName": "隆文",
+        "lastNameKana": "うちもと",
+        "firstNameKana": "たかふみ",
+        "team": "NTT西日本",
+        "position": "後衛",
+        "handedness": "右利き",
+        "birthDate": "",
+        "height": 172,
+        "profileLinks": [
+          {
+            "label": "Instagram",
+            "url": "https://www.instagram.com/takafumiuchimoto/"
+          }
+        ]
+      }
+]
