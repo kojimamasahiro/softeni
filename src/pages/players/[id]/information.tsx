@@ -69,7 +69,7 @@ export default function PlayerInformation({ player, id }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const playersPath = path.join(process.cwd(), 'public', 'players');
+  const playersPath = path.join(process.cwd(), 'data', 'players');
   const dirs = fs.readdirSync(playersPath);
   const paths = dirs.map((dir) => ({
     params: { id: dir },
@@ -80,7 +80,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string;
-  const filePath = path.join(process.cwd(), 'public', 'players', id, 'information.json');
+  const filePath = path.join(process.cwd(), 'data', 'players', id, 'information.json');
   const fileContents = fs.readFileSync(filePath, 'utf-8');
   const player = JSON.parse(fileContents);
 
