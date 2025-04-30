@@ -1,9 +1,21 @@
+import fs from 'fs';
+import path from 'path';
 import Link from 'next/link';
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 
-export default function Home() {
+interface PlayerInfo {
+  id: string;
+  lastName: string;
+  firstName: string;
+}
+
+interface HomeProps {
+  players: PlayerInfo[];
+}
+
+export default function Home({ players }: HomeProps) {
   return (
     <>
       <Head>
@@ -19,7 +31,7 @@ export default function Home() {
       <div className={styles.container}>
         <h1 className={styles.title}>試合結果まとめ | ソフトテニス情報</h1>
 
-        <LiveResultsByTournament />
+        <LiveResultsByTournament playersData={players} />
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>🎾 選手一覧</h2>
@@ -58,4 +70,25 @@ export default function Home() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const playersDir = path.join(process.cwd(), 'data/players');
+  const playerIds = fs.readdirSync(playersDir);
+  const players: PlayerInfo[] = [];
+
+  for (const id of playerIds) {
+    const filePath = path.join(playersDir, id, 'information.json');
+    if (fs.existsSync(filePath)) {
+      const jsonData = fs.readFileSync(filePath, 'utf-8');
+      const playerData = JSON.parse(jsonData);
+      players.push({ id, ...playerData });
+    }
+  }
+
+  return {
+    props: {
+      players,
+    },
+  };
 }

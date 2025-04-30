@@ -1,19 +1,17 @@
 import styles from '@/styles/Results.module.css';
-import playersData from '@/data/players.json';
 import liveData from '@/data/live.json';
 
 interface PlayerInfo {
   id: string;
   lastName: string;
   firstName: string;
-  lastNameKana: string;
-  firstNameKana: string;
-  team: string;
-  height: number;
-  handedness: string;
 }
 
-export default function LiveResultsByTournament() {
+export default function LiveResultsByTournament({playersData,}: {playersData: PlayerInfo[];}) {
+  if (!playersData || playersData.length === 0) {
+    return null; // 選手データがない場合は何も表示しない
+  }
+
   const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
   const updatedAtJST = new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
 
@@ -28,7 +26,7 @@ export default function LiveResultsByTournament() {
         <h3 className={styles.tournamentTitle}>{liveData.tournament}</h3>
         <ul className={styles.liveResultList}>
           {liveData.players.map((player, index) => {
-            const playerInfo = (playersData as PlayerInfo[]).find(p => p.id === player.playerId);
+            const playerInfo = playersData.find((p) => p.id === player.playerId);
             const playerName = playerInfo ? `${playerInfo.lastName}${playerInfo.firstName}` : player.playerId;
 
             return (
