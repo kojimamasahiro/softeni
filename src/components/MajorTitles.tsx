@@ -1,6 +1,5 @@
 import styles from '../styles/Results.module.css';
 import titlesData from '../../data/titles.json';
-import { PlayerData } from '../types/types';
 
 interface PlayerResult {
   playerId: string;
@@ -33,7 +32,7 @@ interface MajorTitle {
   years: YearResult[];
 }
 
-export default function MajorTitles({ playerData }: { playerData: PlayerData }) {
+export default function MajorTitles({ id }: { id: String }) {
   if (!titlesData) {
     return <div>主要タイトルのデータがありません</div>;
   }
@@ -49,7 +48,7 @@ export default function MajorTitles({ playerData }: { playerData: PlayerData }) 
         } else if (yearData.status === 'canceled') {
           return { year, result: '(中止)' };
         } else if (yearData.status === 'completed') {
-          const playerResult = yearData.results.find((r) => r.playerId === playerData.id);
+          const playerResult = yearData.results.find((r) => r.playerId === id);
           return { year, result: playerResult ? playerResult.result : 'ー' };
         } else {
           return { year, result: 'ー' }; // 予備対応

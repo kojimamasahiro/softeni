@@ -6,16 +6,35 @@ import PlayerResults from '../PlayerResults';
 import LiveResults from '@/components/LiveResults';
 import { PlayerData } from '@/types/types';
 
-type PlayerResultsProps = {
-  playerData: PlayerData;
+type PlayerInfo = {
+  lastName: string;
+  firstName: string;
+  lastNameKana: string;
+  firstNameKana: string;
+  team: string;
+  position: string;
+  handedness: string;
+  birthDate: string;
+  height: number;
+  profileLinks: {
+    label: string;
+    url: string;
+  }[];
 };
 
-export default function PlayerResultsPage({ playerData }: PlayerResultsProps) {
+type PlayerResultsProps = {
+  playerData: PlayerData;
+  playerInfo: PlayerInfo;
+  playerId: string;
+};
+
+export default function PlayerResultsPage({ playerData, playerInfo, playerId }: PlayerResultsProps) {
+  const fullName = `${playerInfo.lastName} ${playerInfo.firstName}（${playerInfo.lastNameKana} ${playerInfo.firstNameKana}）`;
   return (
     <div style={{ padding: '2rem' }}>
-      <h1>{playerData.name} - 試合結果</h1>
-      <LiveResults playerId={playerData.id} />
-      <MajorTitles playerData={playerData} />
+      <h1>{fullName} - 試合結果</h1>
+      <LiveResults playerId={playerId} />
+      <MajorTitles id={playerId} />
       <PlayerResults playerData={playerData} />
     </div>
   );
@@ -40,12 +59,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const playerId = params?.id as string;
 
   // 試合結果の読み込み
-  const resultsPath = path.join(process.cwd(), 'data/players', playerId, 'results.json');
+  const resultsPath = path.join(process.cwd(), 'data', 'players', playerId, 'results.json');
   const playerData: PlayerData = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
+
+  const filePath = path.join(process.cwd(), 'data', 'players', playerId, 'information.json');
+  const fileContents = fs.readFileSync(filePath, 'utf-8');
+  const playerInfo = JSON.parse(fileContents);
 
   return {
     props: {
       playerData,
+      playerInfo,
+      playerId,
     },
   };
 };

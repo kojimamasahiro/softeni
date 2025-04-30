@@ -35,8 +35,6 @@ export interface MajorTitle {
 }
 
 export interface PlayerData {
-  id: string;
-  name: string;
   matches: Tournament[];
   majorTitles: MajorTitle[];
 }
