@@ -2,19 +2,6 @@ import styles from '@/styles/Results.module.css';
 import playersData from '@/data/players.json';
 import liveData from '@/data/live.json';
 
-interface LiveData {
-  tournament: string;
-  updatedAt: string;
-  players: Players[];
-}
-
-interface Players {
-  playerId: string;
-  status: string;
-  latestResult: string;
-  nextMatch: string;
-}
-
 interface PlayerInfo {
   id: string;
   lastName: string;
@@ -27,15 +14,11 @@ interface PlayerInfo {
 }
 
 export default function LiveResultsByTournament() {
-  const today = new Date();
-  const todayStr = today.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }).slice(0, 10); // "2025-04-28"
-  
-  const updatedDateStr = new Date((liveData as LiveData).updatedAt)
-    .toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
-    .slice(0, 10);
-  
-  if (updatedDateStr !== todayStr) {
-    return null; // 今日の日付と一致しない場合は何も表示しない
+  const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
+  const updatedAtJST = new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
+
+  if (updatedAtJST !== todayJST) {
+    return null; // 日本時間での今日でなければ非表示
   }
 
   return (
