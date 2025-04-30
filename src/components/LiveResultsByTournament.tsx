@@ -5,6 +5,9 @@ interface PlayerInfo {
   id: string;
   lastName: string;
   firstName: string;
+  lastNameKana: string;
+  firstNameKana: string;
+  team: string;
 }
 
 export default function LiveResultsByTournament({playersData,}: {playersData: PlayerInfo[];}) {

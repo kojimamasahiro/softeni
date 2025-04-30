@@ -9,6 +9,9 @@ interface PlayerInfo {
   id: string;
   lastName: string;
   firstName: string;
+  lastNameKana: string;
+  firstNameKana: string;
+  team: string;
 }
 
 interface HomeProps {
@@ -16,6 +19,13 @@ interface HomeProps {
 }
 
 export default function Home({ players }: HomeProps) {
+  // lastNameKana と firstNameKana を基に名簿順にソート
+  const sortedPlayers = players.sort((a, b) => {
+    const fullNameA = a.lastNameKana + a.firstNameKana;
+    const fullNameB = b.lastNameKana + b.firstNameKana;
+    return fullNameA.localeCompare(fullNameB, 'ja');
+  });
+
   return (
     <>
       <Head>
@@ -36,35 +46,17 @@ export default function Home({ players }: HomeProps) {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>🎾 選手一覧</h2>
           <div className={styles.playersList}>
-            <div className={styles.playerCard}>
-              <h2 className={styles.playerName}>上松 俊貴（うえまつ としき）</h2>
-              <p className={styles.playerDescription}>NTT西日本所属</p>
-              <Link href="/players/uematsu-toshiki/information" className={styles.link}>
-                詳細を見る
-              </Link>
-            </div>
-            <div className={styles.playerCard}>
-              <h2 className={styles.playerName}>内田 理久（うちだ りく）</h2>
-              <p className={styles.playerDescription}>NTT西日本所属</p>
-              <Link href="/players/uchida-riku/information" className={styles.link}>
-                詳細を見る
-              </Link>
-            </div>
-            <div className={styles.playerCard}>
-              <h2 className={styles.playerName}>内本 隆文（うちもと たかふみ）</h2>
-              <p className={styles.playerDescription}>NTT西日本所属</p>
-              <Link href="/players/uchimoto-takafumi/information" className={styles.link}>
-                詳細を見る
-              </Link>
-            </div>
-            <div className={styles.playerCard}>
-              <h2 className={styles.playerName}>広岡 宙（ひろおか そら）</h2>
-              <p className={styles.playerDescription}>NTT西日本所属</p>
-              <Link href="/players/hirooka-sora/information" className={styles.link}>
-                詳細を見る
-              </Link>
-            </div>
-            {/* 他の選手も同様に追加できます */}
+            {sortedPlayers.map((player) => (
+              <div key={player.id} className={styles.playerCard}>
+                <h2 className={styles.playerName}>
+                  {player.lastName} {player.firstName}
+                </h2>
+                <p className={styles.playerDescription}>{player.team}所属</p>
+                <Link href={`/players/${player.id}/information`} className={styles.link}>
+                  詳細を見る
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
       </div>
