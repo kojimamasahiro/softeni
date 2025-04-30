@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
-import MajorTitles from '../../../components/MajorTitles';
+import MajorTitles from '@/components/MajorTitles';
 import PlayerResults from '../PlayerResults';
 import LiveResults from '@/components/LiveResults';
-import { PlayerData } from '../../../types/types';
+import { PlayerData } from '@/types/types';
 
 type PlayerResultsProps = {
   playerData: PlayerData;
