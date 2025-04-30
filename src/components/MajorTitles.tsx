@@ -32,7 +32,7 @@ interface MajorTitle {
   years: YearResult[];
 }
 
-export default function MajorTitles({ id }: { id: String }) {
+export default function MajorTitles({ id }: { id: string }) {
   if (!titlesData) {
     return <div>主要タイトルのデータがありません</div>;
   }
