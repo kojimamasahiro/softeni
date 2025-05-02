@@ -47,7 +47,7 @@ export default function Home({ players }: HomeProps) {
             {sortedPlayers.map((player) => (
               <div key={player.id} className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800">
                 <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
-                  {player.lastName} {player.firstName}
+                {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}所属</p>
                 <Link

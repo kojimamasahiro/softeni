@@ -34,7 +34,7 @@ export default function PlayerResultsPage({ playerData, playerInfo, playerId }: 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">{fullName} - 試合結果</h1>
+        <h1 className="text-3xl font-bold mb-6">{fullName}</h1>
 
         <section className="mb-8">
           <LiveResults playerId={playerId} />
