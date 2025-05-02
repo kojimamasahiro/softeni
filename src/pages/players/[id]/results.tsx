@@ -30,18 +30,29 @@ type PlayerResultsProps = {
 
 export default function PlayerResultsPage({ playerData, playerInfo, playerId }: PlayerResultsProps) {
   const fullName = `${playerInfo.lastName} ${playerInfo.firstName}（${playerInfo.lastNameKana} ${playerInfo.firstNameKana}）`;
+
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>{fullName} - 試合結果</h1>
-      <LiveResults playerId={playerId} />
-      <MajorTitles id={playerId} />
-      <PlayerResults playerData={playerData} />
-    </div>
+    <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-3xl font-bold mb-6">{fullName} - 試合結果</h1>
+
+        <section className="mb-8">
+          <LiveResults playerId={playerId} />
+        </section>
+
+        <section className="mb-8">
+          <MajorTitles id={playerId} />
+        </section>
+
+        <section>
+          <PlayerResults playerData={playerData} />
+        </section>
+      </div>
+    </main>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // playersディレクトリ内のファイルを取得し、IDをリストアップ
   const playersDir = path.join(process.cwd(), 'data/players');
   const playerDirs = fs.readdirSync(playersDir);
 
@@ -51,20 +62,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false, // 選手のデータが存在しない場合、404ページを表示
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const playerId = params?.id as string;
 
-  // 試合結果の読み込み
   const resultsPath = path.join(process.cwd(), 'data', 'players', playerId, 'results.json');
   const playerData: PlayerData = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
 
-  const filePath = path.join(process.cwd(), 'data', 'players', playerId, 'information.json');
-  const fileContents = fs.readFileSync(filePath, 'utf-8');
-  const playerInfo = JSON.parse(fileContents);
+  const infoPath = path.join(process.cwd(), 'data', 'players', playerId, 'information.json');
+  const playerInfo = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
 
   return {
     props: {

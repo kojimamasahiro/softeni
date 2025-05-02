@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
-import styles from '@/styles/Information.module.css';
 
 type PlayerInfo = {
   lastName: string;
@@ -29,35 +28,58 @@ export default function PlayerInformation({ player, id }: Props) {
   const fullName = `${player.lastName} ${player.firstName}（${player.lastNameKana} ${player.firstNameKana}）`;
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{fullName} - プロフィール</h1>
+    <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800 dark:text-gray-100">
+      <h1 className="text-3xl font-bold mb-8 text-center">{fullName} - プロフィール</h1>
 
-      <section className={styles.profile}>
-        <h2 className={styles.heading}>プロフィール</h2>
-        <table className={styles.profileTable}>
+      <section className="mb-10">
+        <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
+        <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
           <tbody>
-            <tr><th>所属</th><td>{player.team}</td></tr>
-            <tr><th>ポジション</th><td>{player.position}</td></tr>
-            <tr><th>誕生日</th><td>{player.birthDate}</td></tr>
-            <tr><th>身長</th><td>{player.height}cm</td></tr>
-            <tr><th>利き手</th><td>{player.handedness}</td></tr>
+            <tr className="border-b border-gray-200 dark:border-gray-700">
+              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
+              <td className="p-2">{player.team}</td>
+            </tr>
+            <tr className="border-b border-gray-200 dark:border-gray-700">
+              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
+              <td className="p-2">{player.position}</td>
+            </tr>
+            <tr className="border-b border-gray-200 dark:border-gray-700">
+              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
+              <td className="p-2">{player.birthDate}</td>
+            </tr>
+            <tr className="border-b border-gray-200 dark:border-gray-700">
+              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
+              <td className="p-2">{player.height}cm</td>
+            </tr>
+            <tr>
+              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">利き手</th>
+              <td className="p-2">{player.handedness}</td>
+            </tr>
           </tbody>
         </table>
       </section>
 
-      <section className={styles.results}>
-        <h2 className={styles.heading}>大会結果</h2>
-        <Link href={`/players/${id}/results`} className={styles.link}>
+      <section className="mb-10">
+        <h2 className="text-xl font-semibold mb-2">大会結果</h2>
+        <Link
+          href={`/players/${id}/results`}
+          className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+        >
           詳細を見る
         </Link>
       </section>
 
-      <section className={styles.links}>
-        <h2 className={styles.heading}>関連リンク</h2>
-        <ul className={styles.link}>
+      <section>
+        <h2 className="text-xl font-semibold mb-2">関連リンク</h2>
+        <ul className="list-disc list-inside space-y-1">
           {player.profileLinks.map((link, index) => (
-            <li key={index} className={styles.item}>
-              <Link href={link.url} target="_blank" rel="noopener noreferrer">
+            <li key={index}>
+              <Link
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+              >
                 {link.label}
               </Link>
             </li>

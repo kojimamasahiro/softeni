@@ -1,12 +1,10 @@
-import styles from '../../styles/Results.module.css';
-import { PlayerData, MatchResult, Tournament } from '../../types/types';
+import { PlayerData, MatchResult, Tournament } from '@/types/types';
 
 export default function MatchResults({ playerData }: { playerData: PlayerData }) {
   if (!playerData || !playerData.matches || playerData.matches.length === 0) {
     return <p>試合結果がありません。</p>;
   }
 
-  // 大会ごとにグループ化
   const tournamentsByName: { [name: string]: Tournament[] } = {};
   playerData.matches.forEach((tournament) => {
     if (!tournamentsByName[tournament.tournament]) {
@@ -16,56 +14,51 @@ export default function MatchResults({ playerData }: { playerData: PlayerData })
   });
 
   return (
-    <div className={styles.section}>
-      <h2 className={styles.sectionTitle}>🎾 大会結果</h2>
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">🎾 大会結果</h2>
 
       {Object.entries(tournamentsByName).map(([tournamentName, tournaments], index) => (
-        <div key={index} className={styles.tournament}>
-          <h3 className={styles.subheading}>{tournamentName}</h3>
+        <div key={index} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2">{tournamentName}</h3>
 
-          {/* 最初の大会情報からmetaを取る */}
-          {tournaments[0].dateRange && <div className={styles.meta}>📅 {tournaments[0].dateRange}</div>}
-          {tournaments[0].location && <div className={styles.meta}>📍 {tournaments[0].location}</div>}
+          {tournaments[0].dateRange && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">📅 {tournaments[0].dateRange}</div>}
+          {tournaments[0].location && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">📍 {tournaments[0].location}</div>}
           {tournaments[0].link && (
-            <div className={styles.meta}>
-              🔗 <a href={tournaments[0].link} target="_blank" rel="noopener noreferrer">大会ページ</a>
+            <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+              🔗 <a href={tournaments[0].link} target="_blank" rel="noopener noreferrer" className="underline text-blue-600 dark:text-blue-400">大会ページ</a>
             </div>
           )}
-          {tournaments[0].finalResult && <div className={styles.meta}>🏁 最終結果：{tournaments[0].finalResult}</div>}
+          {tournaments[0].finalResult && <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">🏁 最終結果：{tournaments[0].finalResult}</div>}
 
-          {/* 各ステージをまとめて表示 */}
           {tournaments.map((tournament, idx) => (
-            <div key={idx}>
-              {/* Combined（グループ＋決勝） */}
+            <div key={idx} className="mb-4">
               {tournament.format === 'combined' && (
                 <>
                   {tournament.groupStage && (
-                    <div className={styles.stage}>
-                      <h4>グループステージ（{tournament.groupStage.group || 'グループ'}）</h4>
+                    <div className="mb-3">
+                      <h4 className="font-semibold mb-1">グループステージ（{tournament.groupStage.group || 'グループ'}）</h4>
                       {renderTable(tournament.groupStage.results)}
                     </div>
                   )}
                   {tournament.finalStage && (
-                    <div className={styles.stage}>
-                      <h4>決勝トーナメント</h4>
+                    <div className="mb-3">
+                      <h4 className="font-semibold mb-1">決勝トーナメント</h4>
                       {renderTable(tournament.finalStage.results)}
                     </div>
                   )}
                 </>
               )}
 
-              {/* トーナメントだけ */}
               {tournament.format === 'tournament' && tournament.results && (
-                <div className={styles.stage}>
-                  <h4>トーナメント</h4>
+                <div className="mb-3">
+                  <h4 className="font-semibold mb-1">トーナメント</h4>
                   {renderTable(tournament.results)}
                 </div>
               )}
 
-              {/* ラウンドロビンだけ */}
               {tournament.format === 'round-robin' && tournament.results && (
-                <div className={styles.stage}>
-                  <h4>ラウンドロビン</h4>
+                <div className="mb-3">
+                  <h4 className="font-semibold mb-1">ラウンドロビン</h4>
                   {renderTable(tournament.results)}
                 </div>
               )}
@@ -79,22 +72,22 @@ export default function MatchResults({ playerData }: { playerData: PlayerData })
 
 function renderTable(results: MatchResult[]) {
   return (
-    <table className={styles.table}>
-      <thead>
+    <table className="w-full border border-gray-200 dark:border-gray-700 text-sm">
+      <thead className="bg-gray-100 dark:bg-gray-700">
         <tr>
-          <th>ラウンド</th>
-          <th>対戦相手</th>
-          <th>スコア</th>
-          <th>勝敗</th>
+          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">ラウンド</th>
+          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">対戦相手</th>
+          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">スコア</th>
+          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">勝敗</th>
         </tr>
       </thead>
       <tbody>
         {results.map((match, i) => (
-          <tr key={i}>
-            <td>{match.round}</td>
-            <td>{match.opponent}</td>
-            <td>{match.score}</td>
-            <td>{match.result}</td>
+          <tr key={i} className="text-center">
+            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.round}</td>
+            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.opponent}</td>
+            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.score}</td>
+            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.result}</td>
           </tr>
         ))}
       </tbody>

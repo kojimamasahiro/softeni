@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import Head from 'next/head';
-import styles from '@/styles/Home.module.css';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 
 interface PlayerInfo {
@@ -19,7 +18,6 @@ interface HomeProps {
 }
 
 export default function Home({ players }: HomeProps) {
-  // lastNameKana と firstNameKana を基に名簿順にソート
   const sortedPlayers = players.sort((a, b) => {
     const fullNameA = a.lastNameKana + a.firstNameKana;
     const fullNameB = b.lastNameKana + b.firstNameKana;
@@ -38,21 +36,24 @@ export default function Home({ players }: HomeProps) {
         <meta property="og:type" content="website" />
       </Head>
 
-      <div className={styles.container}>
-        <h1 className={styles.title}>試合結果まとめ | ソフトテニス情報</h1>
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
 
         <LiveResultsByTournament playersData={players} />
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>🎾 選手一覧</h2>
-          <div className={styles.playersList}>
+        <section className="mt-10">
+          <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {sortedPlayers.map((player) => (
-              <div key={player.id} className={styles.playerCard}>
-                <h2 className={styles.playerName}>
+              <div key={player.id} className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800">
+                <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
                   {player.lastName} {player.firstName}
                 </h2>
-                <p className={styles.playerDescription}>{player.team}所属</p>
-                <Link href={`/players/${player.id}/information`} className={styles.link}>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}所属</p>
+                <Link
+                  href={`/players/${player.id}/information`}
+                  className="inline-block mt-1 text-blue-600 dark:text-blue-400 underline text-sm"
+                >
                   詳細を見る
                 </Link>
               </div>
