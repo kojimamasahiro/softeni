@@ -25,11 +25,9 @@ type Props = {
 };
 
 export default function PlayerInformation({ player, id }: Props) {
-  const fullName = `${player.lastName} ${player.firstName}（${player.lastNameKana} ${player.firstNameKana}）`;
-
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">{fullName}</h1>
+      <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
 
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
