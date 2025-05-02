@@ -28,8 +28,8 @@ export default function PlayerInformation({ player, id }: Props) {
   const fullName = `${player.lastName} ${player.firstName}（${player.lastNameKana} ${player.firstNameKana}）`;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800 dark:text-gray-100">
-      <h1 className="text-3xl font-bold mb-8 text-center">{fullName} - プロフィール</h1>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">{fullName}</h1>
 
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
@@ -60,7 +60,7 @@ export default function PlayerInformation({ player, id }: Props) {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-2">大会結果</h2>
+        <h2 className="text-xl font-semibold mb-2">試合結果</h2>
         <Link
           href={`/players/${id}/results`}
           className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
