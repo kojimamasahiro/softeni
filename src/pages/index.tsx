@@ -31,8 +31,8 @@ export default function Home({ players }: HomeProps) {
         <meta name="description" content="最新試合結果・大会情報・成績をまとめた非公式ファンサイトです。" />
         <meta property="og:title" content="試合結果まとめ" />
         <meta property="og:description" content="最新試合情報を随時更新中！" />
-        <meta property="og:image" content="/public/images/og.png" />
-        <meta property="og:url" content="https://yourdomain.com" />
+        <meta property="og:image" content="/public/og-image.jpg" />
+        <meta property="og:url" content="https://softeni.vercel.app" />
         <meta property="og:type" content="website" />
       </Head>
 
