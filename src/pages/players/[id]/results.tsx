@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
 import MajorTitles from '@/components/MajorTitles';
-import PlayerResults from '../PlayerResults';
+import PlayerResults from '../../../components/PlayerResults';
 import LiveResults from '@/components/LiveResults';
 import { PlayerData } from '@/types/types';
 
