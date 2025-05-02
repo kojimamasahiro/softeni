@@ -1,4 +1,7 @@
-import liveData from '@/data/live.json';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { getLiveData } from '@/lib/microcms';
 
 interface LiveData {
   tournament: string;
@@ -14,20 +17,29 @@ interface Players {
 }
 
 export default function LiveResults({ playerId }: { playerId: string }) {
+  const [liveData, setLiveData] = useState<LiveData | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getLiveData();
+      setLiveData(data);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!liveData) return null;
+
   const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
   const updatedAtJST = new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
 
   if (updatedAtJST !== todayJST) {
-    return null; // 日本時間での今日でなければ非表示
+    return null; // 日本時間で今日でなければ非表示
   }
 
-  const playerLiveResult = ((liveData as LiveData).players as Players[]).find(
-    (player) => player.playerId === playerId
-  );
+  const playerLiveResult = liveData.players.find((player) => player.playerId === playerId);
 
-  if (!playerLiveResult) {
-    return null; // 速報がなければ何も表示しない
-  }
+  if (!playerLiveResult) return null;
 
   return (
     <section className="mb-8">
