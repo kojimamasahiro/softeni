@@ -24,7 +24,41 @@ type Props = {
   id: string;
 };
 
+const calculateAge = (birthDate?: string): number | null => {
+  if (!birthDate) return null;
+
+  const birth = new Date(birthDate);
+  if (isNaN(birth.getTime())) return null;
+
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+  const dayDiff = today.getDate() - birth.getDate();
+
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  return age;
+};
+
+const formatJapaneseDate = (dateString?: string): string | null => {
+  if (!dateString) return null;
+
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return null;
+
+  return date.toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
 export default function PlayerInformation({ player, id }: Props) {
+  const age = calculateAge(player.birthDate);
+  const formattedBirthDate = formatJapaneseDate(player.birthDate);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
@@ -43,7 +77,13 @@ export default function PlayerInformation({ player, id }: Props) {
             </tr>
             <tr className="border-b border-gray-200 dark:border-gray-700">
               <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
-              <td className="p-2">{player.birthDate}</td>
+              <td className="p-2">
+                {formattedBirthDate ? (
+                  `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}`
+                ) : (
+                  '年月日（歳）'
+                )}
+              </td>
             </tr>
             <tr className="border-b border-gray-200 dark:border-gray-700">
               <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
