@@ -1,5 +1,4 @@
 import liveData from '@/data/live.json';
-import Link from 'next/link';
 
 interface PlayerInfo {
   id: string;
