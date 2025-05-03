@@ -25,15 +25,32 @@ interface LiveData {
 
 export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
   const [liveData, setLiveData] = useState<LiveData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getLiveData();
-      setLiveData(data);
+      try {
+        const data = await getLiveData();
+        setLiveData(data);
+        setError(null);  // エラーが解消された場合、エラーメッセージをリセット
+      } catch (error: unknown) {
+        // エラーハンドリング
+        if (error instanceof Error) {
+          setError('データの取得に失敗しました。');
+        } else if (error && (error as any).response?.status === 404) {
+          setError('データが見つかりませんでした。');
+        } else {
+          setError('予期しないエラーが発生しました。');
+        }
+      }
     };
 
     fetchData();
   }, []);
+
+  if (error) {
+    return null;
+  }
 
   if (!playersData || playersData.length === 0 || !liveData) return null;
 
