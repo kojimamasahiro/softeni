@@ -3,7 +3,7 @@ import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import MetaHead from '@/components/MetaHead';
-
+import Head from 'next/head';
 
 type PlayerInfo = {
   lastName: string;
@@ -69,6 +69,58 @@ export default function PlayerInformation({ player, id }: Props) {
         url={`https://softeni.vercel.app/players/${id}/information`}
         image="/og-image.jpg"
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": `${player.lastName} ${player.firstName}`,
+              "alternateName": `${player.lastNameKana} ${player.firstNameKana}`,
+              "birthDate": formattedBirthDate,
+              "height": `${player.height} cm`,
+              "memberOf": {
+                "@type": "Organization",
+                "name": player.team,
+              },
+              "url": `https://softeni.vercel.app/players/${id}`,
+              "sameAs": player.profileLinks.map((link) => link.url),
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "ホーム",
+                  "item": "https://softeni.vercel.app/",
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": `${player.lastName}${player.firstName}`,
+                  "item": `https://softeni.vercel.app/players/${id}`,
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": `試合結果`,
+                  "item": `https://softeni.vercel.app/players/${id}/results`,
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
