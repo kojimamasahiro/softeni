@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import Head from 'next/head';
+import MetaHead from '@/components/MetaHead';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 
 interface PlayerInfo {
@@ -26,15 +27,12 @@ export default function Home({ players }: HomeProps) {
 
   return (
     <>
-      <Head>
-        <title>試合結果まとめ | ソフトテニス情報</title>
-        <meta name="description" content="最新試合結果・大会情報・成績をまとめたサイトです。" />
-        <meta property="og:title" content="試合結果まとめ" />
-        <meta property="og:description" content="最新試合情報を随時更新中！" />
-        <meta property="og:image" content="/public/og-image.jpg" />
-        <meta property="og:url" content="https://softeni.vercel.app" />
-        <meta property="og:type" content="website" />
-      </Head>
+      <MetaHead
+        title="試合結果まとめ | ソフトテニス情報"
+        description="最新試合結果・大会情報・成績をまとめたサイトです。"
+        url="https://softeni.vercel.app"
+        image="/og-image.jpg"
+      />
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>

@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import MetaHead from '@/components/MetaHead';
+
 
 type PlayerInfo = {
   lastName: string;
@@ -60,71 +62,80 @@ export default function PlayerInformation({ player, id }: Props) {
   const formattedBirthDate = formatJapaneseDate(player.birthDate);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
+    <>
+      <MetaHead
+        title={`${player.lastName}${player.firstName} | ソフトテニス選手情報`}
+        description={`${player.lastName}${player.firstName}（${player.team}所属）のプロフィールや関連情報を掲載`}
+        url={`https://softeni.vercel.app/players/${id}/information`}
+        image="/og-image.jpg"
+      />
 
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
-        <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
-          <tbody>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
-              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
-              <td className="p-2">{player.team}</td>
-            </tr>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
-              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
-              <td className="p-2">{player.position}</td>
-            </tr>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
-              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
-              <td className="p-2">
-                {formattedBirthDate ? (
-                  `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}`
-                ) : (
-                  '年月日（歳）'
-                )}
-              </td>
-            </tr>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
-              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
-              <td className="p-2">{player.height}cm</td>
-            </tr>
-            <tr>
-              <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">利き手</th>
-              <td className="p-2">{player.handedness}</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
 
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-2">試合結果</h2>
-        <Link
-          href={`/players/${id}/results`}
-          className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
-        >
-          詳細を見る
-        </Link>
-      </section>
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
+          <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
+            <tbody>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
+                <td className="p-2">{player.team}</td>
+              </tr>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
+                <td className="p-2">{player.position}</td>
+              </tr>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
+                <td className="p-2">
+                  {formattedBirthDate ? (
+                    `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}`
+                  ) : (
+                    '年月日（歳）'
+                  )}
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
+                <td className="p-2">{player.height}cm</td>
+              </tr>
+              <tr>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">利き手</th>
+                <td className="p-2">{player.handedness}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-2">関連リンク</h2>
-        <ul className="list-disc list-inside space-y-1">
-          {player.profileLinks.map((link, index) => (
-            <li key={index}>
-              <Link
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold mb-2">試合結果</h2>
+          <Link
+            href={`/players/${id}/results`}
+            className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+          >
+            詳細を見る
+          </Link>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-2">関連リンク</h2>
+          <ul className="list-disc list-inside space-y-1">
+            {player.profileLinks.map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </>
   );
 }
 
