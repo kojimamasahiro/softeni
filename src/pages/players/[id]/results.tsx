@@ -7,6 +7,7 @@ import LiveResults from '@/components/LiveResults';
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 import { PlayerData } from '@/types/types';
+import Link from 'next/link';
 
 type PlayerResultsProps = {
   playerData: PlayerData;
@@ -109,6 +110,11 @@ export default function PlayerResultsPage({
 
           <section>
             <PlayerResults playerData={playerData} />
+            <div className="text-right mb-2">
+              <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
+                {fullName}選手プロフィール
+              </Link>
+            </div>
           </section>
         </div>
       </main>
