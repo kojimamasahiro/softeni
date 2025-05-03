@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "microcms-js-sdk": "^3.2.0",
