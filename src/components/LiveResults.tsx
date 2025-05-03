@@ -26,7 +26,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
         const data = await getLiveData();
         setLiveData(data);
         setError(null);  // エラーが解消された場合、エラーメッセージをリセット
-      } catch (error: unknown) {
+      } catch {
         setError('データの取得に失敗しました。');
       }
     };

@@ -33,7 +33,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
         const data = await getLiveData();
         setLiveData(data);
         setError(null);  // エラーが解消された場合、エラーメッセージをリセット
-      } catch (error: unknown) {
+      } catch {
         setError('データの取得に失敗しました。');
       }
     };
