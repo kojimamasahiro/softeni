@@ -57,7 +57,8 @@ export default function Home({ players }: HomeProps) {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
 
-        <LiveResultsByTournament playersData={players} /><section className="mt-10">
+        <LiveResultsByTournament playersData={players} />
+        <section className="mt-10">
           <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {sortedPlayers.map((player) => (
