@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import Head from 'next/head';
 import MetaHead from '@/components/MetaHead';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 
