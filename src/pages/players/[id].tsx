@@ -165,7 +165,7 @@ export default function PlayerInformation({ player, id }: Props) {
             href={`/players/${id}/results`}
             className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
           >
-            詳細を見る
+            試合結果を見る
           </Link>
         </section>
 
