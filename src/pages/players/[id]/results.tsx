@@ -8,6 +8,8 @@ import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 import { PlayerData } from '@/types/types';
 import Link from 'next/link';
+import { getAllPlayers } from '@/lib/players';
+import { PlayerInfo } from '@/types/types';
 
 type PlayerResultsProps = {
   playerData: PlayerData;
@@ -17,12 +19,14 @@ type PlayerResultsProps = {
     team: string;
   };
   playerId: string;
+  allPlayers: PlayerInfo[];
 };
 
 export default function PlayerResultsPage({
   playerData,
   playerInfo,
   playerId,
+  allPlayers,
 }: PlayerResultsProps) {
   const fullName = `${playerInfo.lastName} ${playerInfo.firstName}`;
   const pageUrl = `https://softeni.vercel.app/players/${playerId}/results`;
@@ -109,7 +113,7 @@ export default function PlayerResultsPage({
           </section>
 
           <section>
-            <PlayerResults playerData={playerData} />
+            <PlayerResults playerData={playerData} allPlayers={allPlayers} />
             <div className="text-right mb-2">
               <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
                 {fullName}選手プロフィール
@@ -145,11 +149,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const infoPath = path.join(process.cwd(), 'data', 'players', playerId, 'information.json');
   const playerInfo = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
 
+  const allPlayers = getAllPlayers();
+
   return {
     props: {
       playerData,
       playerInfo,
       playerId,
+      allPlayers,
     },
   };
 };

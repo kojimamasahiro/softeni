@@ -4,6 +4,7 @@ export interface MatchResult {
   opponent: string;
   result: string;
   score: string;
+  partner?: string;
 }
 
 export interface Stage {
@@ -21,7 +22,8 @@ export interface Tournament {
   finalResult?: string;
   groupStage?: Stage;
   finalStage?: Stage;
-  results?: MatchResult[]; // 単独モード
+  results?: MatchResult[];
+  partner?: string;
 }
 
 export interface YearlyResult {
@@ -38,3 +40,20 @@ export interface PlayerData {
   matches: Tournament[];
   majorTitles: MajorTitle[];
 }
+
+export interface PlayerInfo {
+  id: string;
+  lastName: string;
+  firstName: string;
+  lastNameKana: string;
+  firstNameKana: string;
+  team: string;
+  position: string;
+  handedness: string;
+  birthDate: string;
+  height: number;
+  profileLinks: {
+    label: string;
+    url: string;
+  }[];
+};

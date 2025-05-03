@@ -1,6 +1,12 @@
-import { PlayerData, MatchResult, Tournament } from '@/types/types';
+import { PlayerData, MatchResult, Tournament, PlayerInfo } from '@/types/types';
+import Link from 'next/link';
 
-export default function MatchResults({ playerData }: { playerData: PlayerData }) {
+type PlayerResultsProps = {
+  playerData: PlayerData;
+  allPlayers: PlayerInfo[];
+};
+
+export default function PlayerResults({ playerData, allPlayers }: PlayerResultsProps) {
   if (!playerData || !playerData.matches || playerData.matches.length === 0) {
     return <p>試合結果がありません。</p>;
   }
@@ -26,6 +32,20 @@ export default function MatchResults({ playerData }: { playerData: PlayerData })
           {tournaments[0].link && (
             <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
               🔗 <a href={tournaments[0].link} target="_blank" rel="noopener noreferrer" className="underline text-blue-600 dark:text-blue-400">大会ページ</a>
+            </div>
+          )}
+          {tournaments[0].partner && (
+            <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+              🤝 ペア：{
+                (() => {
+                  const partner = allPlayers.find(p => p.id === tournaments[0].partner);
+                  return partner ? (
+                    <Link href={`/players/${partner.id}`} className="underline text-blue-600 dark:text-blue-400">
+                      {partner.lastName} {partner.firstName}
+                    </Link>
+                  ) : tournaments[0].partner;
+                })()
+              }
             </div>
           )}
           {tournaments[0].finalResult && <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">🏁 最終結果：{tournaments[0].finalResult}</div>}
@@ -93,4 +113,10 @@ function renderTable(results: MatchResult[]) {
       </tbody>
     </table>
   );
+}
+
+// 選手名を取得する関数
+function getPlayerName(playerId: string, allPlayers: PlayerInfo[]): string {
+  const player = allPlayers.find((p) => p.id === playerId);
+  return player ? `${player.lastName} ${player.firstName}` : '不明';
 }
