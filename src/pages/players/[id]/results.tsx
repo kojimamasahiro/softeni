@@ -74,6 +74,36 @@ export default function PlayerResultsPage({ playerData, playerInfo, playerId }: 
             }),
           }}
         />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "ホーム",
+                  "item": "https://softeni.vercel.app/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "選手一覧",
+                  "item": "https://softeni.vercel.app/players"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": `${playerInfo.lastName}${playerInfo.firstName}`,
+                  "item": `https://softeni.vercel.app/players/${playerId}/results`
+                }
+              ]
+            }),
+          }}
+        />
       </Head>
 
       {/* ページ本体 */}

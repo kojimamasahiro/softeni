@@ -1,4 +1,5 @@
 import MetaHead from '@/components/MetaHead';
+import Head from 'next/head';
 
 export default function About() {
   return (
@@ -9,6 +10,32 @@ export default function About() {
         url="https://softeni.vercel.app/about"
         image="/og-image.jpg"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "ホーム",
+                  "item": "https://softeni.vercel.app/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "このサイトについて",
+                  "item": "https://softeni.vercel.app/about"
+                }
+              ]
+            }),
+          }}
+        />
+      </Head>
+
       <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800 dark:text-gray-100">
         <h1 className="text-3xl font-bold mb-8 text-center">このサイトについて</h1>
 

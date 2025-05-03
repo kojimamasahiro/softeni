@@ -3,6 +3,7 @@ import path from 'path';
 import Link from 'next/link';
 import MetaHead from '@/components/MetaHead';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
+import Head from 'next/head';
 
 interface PlayerInfo {
   id: string;
@@ -33,26 +34,56 @@ export default function Home({ players }: HomeProps) {
         image="/og-image.jpg"
       />
 
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "ホーム",
+                  "item": "https://softeni.vercel.app/"
+                }
+              ]
+            }),
+          }}
+        />
+      </Head>
+
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
 
         <LiveResultsByTournament playersData={players} />
-
         <section className="mt-10">
           <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {sortedPlayers.map((player) => (
-              <div key={player.id} className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800">
+              <div
+                key={player.id}
+                className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800"
+              >
                 <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
-                {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
+                  {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}所属</p>
-                <Link
-                  href={`/players/${player.id}/information`}
-                  className="inline-block mt-1 text-blue-600 dark:text-blue-400 underline text-sm"
-                >
-                  詳細を見る
-                </Link>
+                <div className="flex justify-start mt-4">
+                  <Link
+                    href={`/players/${player.id}`}
+                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors duration-200"
+                  >
+                    プロフィール
+                  </Link>
+                  <Link
+                    href={`/players/${player.id}/results`}
+                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors duration-200 ml-2"
+                  >
+                    試合結果
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

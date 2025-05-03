@@ -37,7 +37,7 @@ const dynamicUrls = playerDirs.flatMap(playerId => {
 
   return [
     {
-      loc: `${baseUrl}/players/${playerId}/information`,
+      loc: `${baseUrl}/players/${playerId}`,
       lastmod,
     },
     {
