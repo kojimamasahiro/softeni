@@ -34,14 +34,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
         setLiveData(data);
         setError(null);  // エラーが解消された場合、エラーメッセージをリセット
       } catch (error: unknown) {
-        // エラーハンドリング
-        if (error instanceof Error) {
-          setError('データの取得に失敗しました。');
-        } else if (error && (error as any).response?.status === 404) {
-          setError('データが見つかりませんでした。');
-        } else {
-          setError('予期しないエラーが発生しました。');
-        }
+        setError('データの取得に失敗しました。');
       }
     };
 
