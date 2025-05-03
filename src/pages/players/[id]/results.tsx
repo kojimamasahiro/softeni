@@ -8,30 +8,22 @@ import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 import { PlayerData } from '@/types/types';
 
-type PlayerInfo = {
-  lastName: string;
-  firstName: string;
-  lastNameKana: string;
-  firstNameKana: string;
-  team: string;
-  position: string;
-  handedness: string;
-  birthDate: string;
-  height: number;
-  profileLinks: {
-    label: string;
-    url: string;
-  }[];
-};
-
 type PlayerResultsProps = {
   playerData: PlayerData;
-  playerInfo: PlayerInfo;
+  playerInfo: {
+    lastName: string;
+    firstName: string;
+    team: string;
+  };
   playerId: string;
 };
 
-export default function PlayerResultsPage({ playerData, playerInfo, playerId }: PlayerResultsProps) {
-  const fullName = `${playerInfo.lastName}${playerInfo.firstName}`;
+export default function PlayerResultsPage({
+  playerData,
+  playerInfo,
+  playerId,
+}: PlayerResultsProps) {
+  const fullName = `${playerInfo.lastName} ${playerInfo.firstName}`;
   const pageUrl = `https://softeni.vercel.app/players/${playerId}/results`;
 
   return (
@@ -44,7 +36,6 @@ export default function PlayerResultsPage({ playerData, playerInfo, playerId }: 
         type="article"
       />
 
-      {/* 構造化データ（JSON-LD） */}
       <Head>
         <script
           type="application/ld+json"
@@ -55,22 +46,20 @@ export default function PlayerResultsPage({ playerData, playerInfo, playerId }: 
               "headline": `${fullName}の試合結果・大会成績`,
               "author": {
                 "@type": "Person",
-                "name": "Softeni Curator"
+                "name": "Softeni Pick",
               },
               "datePublished": new Date().toISOString().split('T')[0],
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": pageUrl
+                "@id": pageUrl,
               },
               "description": `${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`,
               "about": {
                 "@type": "Person",
                 "name": fullName,
-                "birthDate": playerInfo.birthDate,
-                "height": `${playerInfo.height}cm`,
                 "memberOf": playerInfo.team,
-                "url": pageUrl
-              }
+                "url": pageUrl,
+              },
             }),
           }}
         />
@@ -86,27 +75,26 @@ export default function PlayerResultsPage({ playerData, playerInfo, playerId }: 
                   "@type": "ListItem",
                   "position": 1,
                   "name": "ホーム",
-                  "item": "https://softeni.vercel.app/"
+                  "item": "https://softeni.vercel.app/",
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
-                  "name": "選手一覧",
-                  "item": "https://softeni.vercel.app/players"
+                  "name": `${fullName}`,
+                  "item": `https://softeni.vercel.app/players/${playerId}`,
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
-                  "name": `${playerInfo.lastName}${playerInfo.firstName}`,
-                  "item": `https://softeni.vercel.app/players/${playerId}/results`
-                }
-              ]
+                  "name": `試合結果`,
+                  "item": pageUrl,
+                },
+              ],
             }),
           }}
         />
       </Head>
 
-      {/* ページ本体 */}
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-2xl font-bold mb-6">{fullName}</h1>
