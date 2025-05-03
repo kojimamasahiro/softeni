@@ -18,15 +18,32 @@ interface Players {
 
 export default function LiveResults({ playerId }: { playerId: string }) {
   const [liveData, setLiveData] = useState<LiveData | null>(null);
+  const [error, setError] = useState<string | null>(null); // エラーメッセージを格納
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getLiveData();
-      setLiveData(data);
+      try {
+        const data = await getLiveData();
+        setLiveData(data);
+        setError(null);  // エラーが解消された場合、エラーメッセージをリセット
+      } catch (error: unknown) {
+        // エラーハンドリング
+        if (error instanceof Error) {
+          setError('データの取得に失敗しました。');
+        } else if (error && (error as any).response?.status === 404) {
+          setError('データが見つかりませんでした。');
+        } else {
+          setError('予期しないエラーが発生しました。');
+        }
+      }
     };
 
     fetchData();
   }, []);
+
+  if (error) {
+    return null; // エラーが発生した場合は何も表示しない
+  }
 
   if (!liveData) return null;
 
