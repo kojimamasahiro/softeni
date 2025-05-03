@@ -57,29 +57,28 @@ export default function Home({ players }: HomeProps) {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
 
-        <LiveResultsByTournament playersData={players} />
-        <section className="mt-10">
+        <LiveResultsByTournament playersData={players} /><section className="mt-10">
           <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {sortedPlayers.map((player) => (
               <div
                 key={player.id}
-                className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800"
+                className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 dark:border-gray-700"
               >
                 <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
                   {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
                 </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}所属</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}</p>
                 <div className="flex justify-start mt-4">
                   <Link
                     href={`/players/${player.id}`}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors duration-200"
+                    className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
                   >
                     プロフィール
                   </Link>
                   <Link
                     href={`/players/${player.id}/results`}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors duration-200 ml-2"
+                    className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 ml-2"
                   >
                     試合結果
                   </Link>
