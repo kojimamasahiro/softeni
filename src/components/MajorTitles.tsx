@@ -63,7 +63,7 @@ export default function MajorTitles({ id }: { id: string }) {
   ).sort((a, b) => b - a);
 
   return (
-    <section className="mb-8">
+    <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
         🏆 主要タイトル
       </h2>
