@@ -27,16 +27,16 @@ export default function PlayerResults({ playerData, allPlayers }: PlayerResultsP
         <div key={index} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2">{tournamentName}</h3>
 
-          {tournaments[0].dateRange && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">📅 {tournaments[0].dateRange}</div>}
-          {tournaments[0].location && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">📍 {tournaments[0].location}</div>}
+          {tournaments[0].dateRange && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">日程 {tournaments[0].dateRange}</div>}
+          {tournaments[0].location && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">場所 {tournaments[0].location}</div>}
           {tournaments[0].link && (
             <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-              🔗 <a href={tournaments[0].link} target="_blank" rel="noopener noreferrer" className="underline text-blue-600 dark:text-blue-400">大会ページ</a>
+              詳細 <a href={tournaments[0].link} target="_blank" rel="noopener noreferrer" className="underline text-blue-600 dark:text-blue-400">大会ページ</a>
             </div>
           )}
           {tournaments[0].partner && (
             <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-              🤝 ペア：{
+              ペア {
                 (() => {
                   const partner = allPlayers.find(p => p.id === tournaments[0].partner);
                   return partner ? (
@@ -48,7 +48,7 @@ export default function PlayerResults({ playerData, allPlayers }: PlayerResultsP
               }
             </div>
           )}
-          {tournaments[0].finalResult && <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">🏁 最終結果：{tournaments[0].finalResult}</div>}
+          {tournaments[0].finalResult && <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">最終結果：{tournaments[0].finalResult}</div>}
 
           {tournaments.map((tournament, idx) => (
             <div key={idx} className="mb-4">
@@ -113,10 +113,4 @@ function renderTable(results: MatchResult[]) {
       </tbody>
     </table>
   );
-}
-
-// 選手名を取得する関数
-function getPlayerName(playerId: string, allPlayers: PlayerInfo[]): string {
-  const player = allPlayers.find((p) => p.id === playerId);
-  return player ? `${player.lastName} ${player.firstName}` : '不明';
 }
