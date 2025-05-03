@@ -87,7 +87,7 @@ export default function Home({ players }: HomeProps) {
                   <div className="flex justify-start mt-4">
                     <Link
                       href={`/players/${player.id}/results`}
-                      className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 ml-2"
+                      className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
                     >
                       試合結果
                     </Link>
