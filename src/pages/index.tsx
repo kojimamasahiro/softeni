@@ -43,7 +43,6 @@ export default function Home({ players }: HomeProps) {
         title="試合結果まとめ | ソフトテニス情報"
         description="最新試合結果・大会情報・成績をまとめたサイトです。"
         url="https://softeni.vercel.app"
-        image="/og-image.jpg"
       />
 
       <Head>

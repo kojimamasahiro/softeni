@@ -12,7 +12,7 @@ export default function MetaHead({
   title,
   description,
   url,
-  image = '/og-image.jpg',
+  image = 'https://softeni.vercel.app/og-image.jpg',
   type = 'website',
 }: MetaHeadProps) {
   return (

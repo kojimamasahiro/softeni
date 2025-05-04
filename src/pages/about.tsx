@@ -8,7 +8,6 @@ export default function About() {
         title="このサイトについて | ソフトテニス選手情報"
         description="このサイトは、ソフトテニス競技者の試合結果や大会情報をまとめて発信するサイトです。"
         url="https://softeni.vercel.app/about"
-        image="/og-image.jpg"
       />
       <Head>
         <script

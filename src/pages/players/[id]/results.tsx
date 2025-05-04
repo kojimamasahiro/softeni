@@ -35,7 +35,6 @@ export default function PlayerResultsPage({
         title={`${fullName} 試合結果 | ソフトテニス選手情報`}
         description={`${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`}
         url={pageUrl}
-        image="/og-image.jpg"
         type="article"
       />
 
