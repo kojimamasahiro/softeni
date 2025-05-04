@@ -42,7 +42,6 @@ export interface PlayerData {
 }
 
 export interface PlayerInfo {
-  id: string;
   lastName: string;
   firstName: string;
   lastNameKana: string;
@@ -57,3 +56,27 @@ export interface PlayerInfo {
     url: string;
   }[];
 };
+
+export interface TournamentSummary {
+  id: string;
+  meta: {
+    sortId: number;
+    name: string;
+    region: string;
+    type: string;
+    category: string;
+    officialUrl: string;
+    isMajorTitle: boolean;
+  };
+  years: TournamentYearData[];
+}
+
+export interface TournamentYearData {
+  year: string;
+  status: string;
+  scheduledDate?: string;
+  startDate?: string;
+  endDate?: string;
+  location?: string;
+  results?: { playerIds: string[]; result: string }[];
+}

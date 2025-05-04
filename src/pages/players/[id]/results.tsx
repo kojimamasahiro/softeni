@@ -6,27 +6,25 @@ import PlayerResults from '@/components/PlayerResults';
 import LiveResults from '@/components/LiveResults';
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
-import { PlayerData } from '@/types/types';
+import { PlayerData, PlayerInfo, TournamentSummary } from '@/types/types';
 import Link from 'next/link';
 import { getAllPlayers } from '@/lib/players';
-import { PlayerInfo } from '@/types/types';
+import { getAllTournaments } from '@/lib/tournaments';
 
 type PlayerResultsProps = {
-  playerData: PlayerData;
-  playerInfo: {
-    lastName: string;
-    firstName: string;
-    team: string;
-  };
   playerId: string;
+  playerData: PlayerData;
+  playerInfo: PlayerInfo;
   allPlayers: PlayerInfo[];
+  allTournaments: TournamentSummary[];
 };
 
 export default function PlayerResultsPage({
+  playerId,
   playerData,
   playerInfo,
-  playerId,
   allPlayers,
+  allTournaments,
 }: PlayerResultsProps) {
   const fullName = `${playerInfo.lastName} ${playerInfo.firstName}`;
   const pageUrl = `https://softeni.vercel.app/players/${playerId}/results`;
@@ -109,7 +107,7 @@ export default function PlayerResultsPage({
           </section>
 
           <section className="mb-8">
-            <MajorTitles id={playerId} />
+            <MajorTitles id={playerId} tournaments={allTournaments} />
           </section>
 
           <section>
@@ -143,20 +141,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const playerId = params?.id as string;
 
+  // 試合結果を取得
   const resultsPath = path.join(process.cwd(), 'data', 'players', playerId, 'results.json');
   const playerData: PlayerData = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
 
+  // 選手情報を取得
   const infoPath = path.join(process.cwd(), 'data', 'players', playerId, 'information.json');
-  const playerInfo = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
+  const playerInfo: PlayerInfo = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
 
+  // 全選手情報を取得
   const allPlayers = getAllPlayers();
+
+  // 全トーナメント情報を取得
+  const allTournaments = getAllTournaments();
 
   return {
     props: {
+      playerId,
       playerData,
       playerInfo,
-      playerId,
       allPlayers,
+      allTournaments,
     },
   };
 };

@@ -1,62 +1,35 @@
-import titlesData from '@/data/titles.json';
+import { MajorTitle, TournamentSummary, TournamentYearData } from '@/types/types';
 
-interface PlayerResult {
-  playerId: string;
-  result: string;
-}
-
-interface TitleYearData {
-  status: 'scheduled' | 'completed' | 'canceled';
-  scheduledDate?: string;
-  results: PlayerResult[];
-}
-
-interface TitleData {
-  years: {
-    [year: string]: TitleYearData;
-  };
-}
-
-interface TitlesData {
-  [tournamentName: string]: TitleData;
-}
-
-interface YearResult {
-  year: number;
-  result: string;
-}
-
-interface MajorTitle {
-  name: string;
-  years: YearResult[];
-}
-
-export default function MajorTitles({ id }: { id: string }) {
-  if (!titlesData) {
-    return (
-      <div className="text-center text-gray-500 dark:text-gray-400">
-        主要タイトルのデータがありません
-      </div>
-    );
+export default function MajorTitles({ id, tournaments }: { id: string, tournaments: TournamentSummary[] }) {
+  if (!tournaments || tournaments.length === 0) {
+    return null;
   }
 
-  const majorTitles: MajorTitle[] = Object.entries(titlesData as TitlesData).map(
-    ([tournamentName, tournamentData]) => {
-      const years = Object.entries(tournamentData.years).map(([yearStr, yearData]) => {
-        const year = parseInt(yearStr, 10);
-        if (yearData.status === 'scheduled') {
-          return { year, result: yearData.scheduledDate || '(予定)' };
-        } else if (yearData.status === 'canceled') {
-          return { year, result: '(中止)' };
-        } else if (yearData.status === 'completed') {
-          const playerResult = yearData.results.find((r) => r.playerId === id);
-          return { year, result: playerResult ? playerResult.result : 'ー' };
-        }
-        return { year, result: 'ー' };
-      });
-      return { name: tournamentName, years };
-    }
-  );
+  const majorTitles: MajorTitle[] = tournaments
+  .filter((tournament) => tournament.meta.isMajorTitle) 
+  .sort((a, b) => {
+    return a.meta.sortId - b.meta.sortId;
+  })
+  .map((tournament) => {
+    const years = tournament.years.map((yearData: TournamentYearData) => {
+      const year = parseInt(yearData.year, 10);
+
+      if (yearData.status === 'scheduled') {
+        return { year, result: yearData.scheduledDate || '(予定)' };
+      } else if (yearData.status === 'canceled') {
+        return { year, result: '(中止)' };
+      } else if (yearData.status === 'completed') {
+        const playerResult = yearData.results?.find((r) => r.playerIds.includes(id));
+        return { year, result: playerResult ? playerResult.result : 'ー' };
+      }
+      return { year, result: 'ー' };
+    });
+
+    return {
+      name: tournament.meta.name,
+      years,
+    };
+  });
 
   const allYears = Array.from(
     new Set(majorTitles.flatMap((title) => title.years.map((y) => y.year)))
