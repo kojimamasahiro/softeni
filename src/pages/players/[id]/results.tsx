@@ -32,7 +32,7 @@ export default function PlayerResultsPage({
   return (
     <>
       <MetaHead
-        title={`${fullName} 試合結果 | ソフトテニス選手情報`}
+        title={`${fullName} 試合結果 | ソフトテニス情報`}
         description={`${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`}
         url={pageUrl}
         type="article"

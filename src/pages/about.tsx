@@ -5,7 +5,7 @@ export default function About() {
   return (
     <>
       <MetaHead
-        title="このサイトについて | ソフトテニス選手情報"
+        title="このサイトについて | ソフトテニス情報"
         description="このサイトは、ソフトテニス競技者の試合結果や大会情報をまとめて発信するサイトです。"
         url="https://softeni.vercel.app/about"
       />
