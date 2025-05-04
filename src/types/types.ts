@@ -42,6 +42,7 @@ export interface PlayerData {
 }
 
 export interface PlayerInfo {
+  id: string;
   lastName: string;
   firstName: string;
   lastNameKana: string;
