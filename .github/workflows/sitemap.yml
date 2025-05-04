@@ -1,9 +1,6 @@
 name: Generate sitemap.xml
 
-on:
-  schedule:
-    - cron: '0 3 * * *' # 毎日 3:00 JST（UTCで18:00）
-  workflow_dispatch: # 手動実行も可能
+on: []
 
 jobs:
   generate:
