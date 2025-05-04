@@ -50,7 +50,13 @@ export default function PlayerResultsPage({
                 "@type": "Person",
                 "name": "Softeni Pick",
               },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Softeni Pick",
+              },
               "datePublished": new Date().toISOString().split('T')[0],
+              "dateModified": new Date().toISOString().split('T')[0],
+              "inLanguage": "ja",
               "mainEntityOfPage": {
                 "@type": "WebPage",
                 "@id": pageUrl,
@@ -60,7 +66,11 @@ export default function PlayerResultsPage({
                 "@type": "Person",
                 "name": fullName,
                 "memberOf": playerInfo.team,
-                "url": pageUrl,
+                "url": pageUrl, ...(playerInfo.profileLinks?.length
+                  ? {
+                    sameAs: playerInfo.profileLinks.map((link) => link.url),
+                  }
+                  : {}),
               },
             }),
           }}
