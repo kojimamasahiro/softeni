@@ -3,6 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
+import MetaHead from '@/components/MetaHead';
+import Head from 'next/head';
 
 interface Tournament {
     id: string;
@@ -12,27 +14,90 @@ interface Tournament {
 }
 
 export default function TournamentListPage({ tournaments }: { tournaments: Tournament[] }) {
-    return (
-        <section className="p-6 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-8 text-center">🏆 大会結果一覧</h1>
+    const pageUrl = `https://softeni.vercel.app/tournaments`;
 
-            <div className="space-y-8">
-                {tournaments.map((tournament) => (
-                    <div key={tournament.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-                        <h2 className="text-xl font-semibold mb-2 border-b pb-1">{tournament.name}</h2>
-                        <ul className="list-disc list-inside space-y-1">
-                            {tournament.years.map((year) => (
-                                <li key={year}>
-                                    <Link href={`/tournaments/${tournament.id}/${year}`}>
-                                        <span className="text-blue-600 hover:underline">{year}年の結果を見る</span>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-            </div>
-        </section>
+    return (
+        <>
+            <MetaHead
+                title={"大会結果一覧 | ソフトテニス情報"}
+                description={`過去の大会結果・試合成績を掲載`}
+                url={pageUrl}
+                type="article"
+            />
+
+            <Head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Article",
+                            "headline": `大会結果一覧`,
+                            "author": {
+                                "@type": "Person",
+                                "name": "Softeni Pick",
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "Softeni Pick",
+                            },
+                            "datePublished": new Date().toISOString().split('T')[0],
+                            "dateModified": new Date().toISOString().split('T')[0],
+                            "inLanguage": "ja",
+                            "mainEntityOfPage": {
+                                "@type": "WebPage",
+                                "@id": pageUrl,
+                            },
+                            "description": `過去の大会結果・試合成績を掲載`,
+                        }),
+                    }}
+                />
+
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "name": "ホーム",
+                                    "item": "https://softeni.vercel.app/",
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "name": `大会結果一覧`,
+                                    "item": "https://softeni.vercel.app/tournaments",
+                                }
+                            ],
+                        }),
+                    }}
+                />
+            </Head>
+            <section className="p-6 max-w-4xl mx-auto">
+                <h1 className="text-3xl font-bold mb-8 text-center">🏆 大会結果一覧</h1>
+
+                <div className="space-y-8">
+                    {tournaments.map((tournament) => (
+                        <div key={tournament.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                            <h2 className="text-xl font-semibold mb-2 border-b pb-1">{tournament.name}</h2>
+                            <ul className="list-disc list-inside space-y-1">
+                                {tournament.years.map((year) => (
+                                    <li key={year}>
+                                        <Link href={`/tournaments/${tournament.id}/${year}`}>
+                                            <span className="text-blue-600 hover:underline">{year}年の結果を見る</span>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </>
     );
 }
 

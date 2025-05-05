@@ -102,7 +102,7 @@ export default function TournamentYearResultPage({
                                     "@type": "ListItem",
                                     "position": 2,
                                     "name": `大会結果一覧`,
-                                    "item": "https://softeni.vercel.app/tournaments}",
+                                    "item": "https://softeni.vercel.app/tournaments",
                                 },
                                 {
                                     "@type": "ListItem",
