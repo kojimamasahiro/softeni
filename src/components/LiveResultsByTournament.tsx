@@ -42,6 +42,8 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
   }, []);
 
   if (error) return null;
+  if (playersData?.length == 0) return null;
+  if (!liveData) return null;
 
   const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
   const updatedAtJST = liveData
@@ -52,7 +54,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
 
   let content;
 
-  if (liveData && isToday && playersData?.length > 0) {
+  if (isToday ) {
     content = (
       <>
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
