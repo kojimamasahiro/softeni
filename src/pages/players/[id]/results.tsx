@@ -119,9 +119,6 @@ export default function PlayerResultsPage({
             <MajorTitles id={playerId} tournaments={allTournaments} />
           </section>
 
-
-
-
           <div className="text-right mt-8 mb-2">
                 <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
                     大会結果一覧
