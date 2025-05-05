@@ -145,7 +145,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
         props: {
-            tournaments: tournaments.map(({ sortId, ...rest }) => rest),
+            tournaments,
         },
     };
 };
