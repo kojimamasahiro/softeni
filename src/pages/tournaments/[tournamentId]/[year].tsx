@@ -3,6 +3,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import Link from 'next/link';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPlayers } from '@/lib/players';
 import { PlayerInfo } from '@/types/types';
@@ -74,18 +75,11 @@ export default function TournamentYearResultPage({
                 ))}
             </ul>
 
-            {data.url && (
-                <div className="mt-8">
-                    <a
-                        href={data.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block text-sm font-medium bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                    >
-                        大会詳細を見る
-                    </a>
-                </div>
-            )}
+            <div className="text-right mt-8 mb-2">
+                <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
+                    大会結果一覧
+                </Link>
+            </div>
         </section>
     );
 }
