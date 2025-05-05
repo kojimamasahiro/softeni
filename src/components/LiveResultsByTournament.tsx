@@ -32,7 +32,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
       try {
         const data = await getLiveData();
         setLiveData(data);
-        setError(null);  // エラーが解消された場合、エラーメッセージをリセット
+        setError(null);
       } catch {
         setError('データの取得に失敗しました。');
       }
@@ -41,27 +41,23 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
     fetchData();
   }, []);
 
-  if (error) {
-    return null;
-  }
-
-  if (!playersData || playersData.length === 0 || !liveData) return null;
+  if (error) return null;
 
   const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
-  const updatedAtJST = new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
+  const updatedAtJST = liveData
+    ? new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })
+    : null;
 
-  if (updatedAtJST !== todayJST) {
-    return null; // 今日でなければ非表示
-  }
+  const isToday = updatedAtJST === todayJST;
 
-  return (
-    <section className="mb-8">
-      <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">🎾 大会速報</h2>
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+  let content;
+
+  if (liveData && isToday && playersData?.length > 0) {
+    content = (
+      <>
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
           {liveData.tournament}
         </h3>
-
         <ul className="space-y-2 text-gray-700 dark:text-gray-300">
           {liveData.players.map((player, index) => {
             const playerInfo = playersData.find((p) => p.id === player.playerId);
@@ -92,10 +88,24 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
             );
           })}
         </ul>
-
         <div className="mt-4 text-right text-sm text-gray-600 dark:text-gray-300">
           最終更新: {new Date(liveData.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
         </div>
+      </>
+    );
+  } else {
+    content = (
+      <p className="text-gray-700 dark:text-gray-300">
+        現在、開催中の大会はありません。
+      </p>
+    );
+  }
+
+  return (
+    <section className="mb-8">
+      <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">🎾 大会速報</h2>
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        {content}
       </div>
     </section>
   );
