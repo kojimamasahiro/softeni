@@ -13,24 +13,25 @@ interface Tournament {
 
 export default function TournamentListPage({ tournaments }: { tournaments: Tournament[] }) {
     return (
-        <section className="p-6">
-            <h1 className="text-2xl font-bold mb-4">🏆 大会結果一覧</h1>
-            <ul className="space-y-6">
-                {tournaments.map(tournament => (
-                    <li key={tournament.id}>
-                        <h2 className="text-xl font-semibold">{tournament.name}</h2>
-                        <ul className="pl-4 list-disc">
-                            {tournament.years.map(year => (
+        <section className="p-6 max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold mb-8 text-center">🏆 大会結果一覧</h1>
+
+            <div className="space-y-8">
+                {tournaments.map((tournament) => (
+                    <div key={tournament.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                        <h2 className="text-xl font-semibold mb-2 border-b pb-1">{tournament.name}</h2>
+                        <ul className="list-disc list-inside space-y-1">
+                            {tournament.years.map((year) => (
                                 <li key={year}>
                                     <Link href={`/tournaments/${tournament.id}/${year}`}>
-                                        <span className="text-blue-600 underline">{year}年の結果を見る</span>
+                                        <span className="text-blue-600 hover:underline">{year}年の結果を見る</span>
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </section>
     );
 }
@@ -38,7 +39,6 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
 export const getStaticProps: GetStaticProps = async () => {
     const basePath = path.join(process.cwd(), 'data/tournaments');
     const tournamentDirs = fs.readdirSync(basePath);
-
     const tournaments: Tournament[] = [];
 
     for (const tournamentId of tournamentDirs) {
@@ -56,9 +56,13 @@ export const getStaticProps: GetStaticProps = async () => {
             const year = parseInt(file.replace('.json', ''), 10);
             if (isNaN(year)) continue;
 
-            const data = JSON.parse(fs.readFileSync(path.join(yearsPath, file), 'utf-8'));
-            if (data.status === 'completed') {
-                years.push(year);
+            try {
+                const data = JSON.parse(fs.readFileSync(path.join(yearsPath, file), 'utf-8'));
+                if (data.status === 'completed') {
+                    years.push(year);
+                }
+            } catch (err) {
+                console.warn(`読み込みエラー: ${tournamentId}/${file}`, err);
             }
         }
 
@@ -66,8 +70,8 @@ export const getStaticProps: GetStaticProps = async () => {
             tournaments.push({
                 id: tournamentId,
                 name: meta.name || tournamentId,
-                years: years.sort((a, b) => b - a), // 年順に並べる（新→旧）
-                sortId: meta.sortId || 9999,
+                years: years.sort((a, b) => b - a), // 新→旧
+                sortId: meta.sortId ?? 9999,        // null/undefinedにも対応
             });
         }
     }
