@@ -1,18 +1,9 @@
 'use client';
 
 import { getLiveData } from '@/lib/microcms';
-import { LiveData } from '@/types/index';
+import { LiveData, PlayerInfo } from '@/types/index';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
-interface PlayerInfo {
-  id: string;
-  lastName: string;
-  firstName: string;
-  lastNameKana: string;
-  firstNameKana: string;
-  team: string;
-}
 
 export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
   const [liveData, setLiveData] = useState<LiveData | null>(null);

@@ -5,15 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
 import { useEffect, useState } from 'react';
-
-interface PlayerInfo {
-  id: string;
-  lastName: string;
-  firstName: string;
-  lastNameKana: string;
-  firstNameKana: string;
-  team: string;
-}
+import { PlayerInfo } from '@/types/index';
 
 interface HomeProps {
   players: PlayerInfo[];
