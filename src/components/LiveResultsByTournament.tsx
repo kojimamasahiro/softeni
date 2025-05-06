@@ -1,8 +1,8 @@
 'use client';
 
+import { LIVE_PERIOD } from '@/config/livePeriod';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData, PlayerInfo } from '@/types/index';
-import { LIVE_PERIOD } from '@/config/livePeriod';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -39,7 +39,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
     fetchData();
   }, [isInRange]);  // isInRangeが変わった時に再実行されるように
 
-  if (!isInRange || error || !liveData || playersData.length === 0) return null;
+  if (!isInRange || error || playersData.length === 0) return null;
 
   return (
     <section className="mb-8">
@@ -49,7 +49,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
           <div className="text-center py-6 text-gray-600 dark:text-gray-300">
             ⏳ 大会速報を読み込み中です...
           </div>
-        ) : (
+        )  : liveData ? (
           <>
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
               {liveData.tournament}
@@ -95,6 +95,10 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
               最終更新: {new Date(liveData.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
             </div>
           </>
+        ) : (
+          <div className="text-center py-6 text-gray-600 dark:text-gray-300">
+            📭 表示できる速報データがありません。
+          </div>
         )}
       </div>
     </section>
