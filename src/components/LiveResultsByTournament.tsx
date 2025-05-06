@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData } from '@/types/types';
+import Link from 'next/link';
 
 interface PlayerInfo {
   id: string;
@@ -60,26 +61,31 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
               ? `${playerInfo.lastName}${playerInfo.firstName}`
               : player.playerId;
 
-            return (
-              <li key={index} className="mb-4">
-                <div className="flex flex-col space-y-2">
-                  <div className="flex justify-between">
-                    <strong className="text-gray-800 dark:text-white">{playerName}</strong>
-                  </div>
-                  <div className="flex justify-between items-center space-x-4">
-                    <div className="w-1/3 text-center text-gray-600 dark:text-gray-300">最新結果:</div>
-                    <div className="flex-grow text-center text-gray-800 dark:text-white">
-                      {player.latestResult}
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center space-x-4">
-                    <div className="w-1/3 text-center text-gray-600 dark:text-gray-300">次の試合:</div>
-                    <div className="flex-grow text-center text-gray-800 dark:text-white">
-                      {player.nextMatch}
-                    </div>
+            return (<li key={index} className="mb-4">
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center gap-2">
+                  <strong className="text-gray-800 dark:text-white">{playerName}</strong>
+                  <Link
+                    href={`/players/${player.playerId}/results`}
+                    className="text-sm text-blue-600 hover:underline"
+                  >
+                    &gt; 詳細
+                  </Link>
+                </div>
+                <div className="flex justify-between items-center space-x-4">
+                  <div className="w-1/3 text-center text-gray-600 dark:text-gray-300">最新結果:</div>
+                  <div className="flex-grow text-center text-gray-800 dark:text-white">
+                    {player.latestResult}
                   </div>
                 </div>
-              </li>
+                <div className="flex justify-between items-center space-x-4">
+                  <div className="w-1/3 text-center text-gray-600 dark:text-gray-300">次の試合:</div>
+                  <div className="flex-grow text-center text-gray-800 dark:text-white">
+                    {player.nextMatch}
+                  </div>
+                </div>
+              </div>
+            </li>
             );
           })}
         </ul>
