@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData } from '@/types/types';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface PlayerInfo {
   id: string;
@@ -65,11 +65,12 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center gap-2">
                   <strong className="text-gray-800 dark:text-white">{playerName}</strong>
+                  -
                   <Link
                     href={`/players/${player.playerId}/results`}
                     className="text-sm text-blue-600 hover:underline"
                   >
-                    &gt; 詳細
+                    詳細
                   </Link>
                 </div>
                 <div className="flex justify-between items-center space-x-4">

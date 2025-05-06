@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData } from '@/types/types';
+import { useEffect, useState } from 'react';
 
 export default function LiveResults({ playerId }: { playerId: string }) {
   const [liveData, setLiveData] = useState<LiveData | null>(null);
