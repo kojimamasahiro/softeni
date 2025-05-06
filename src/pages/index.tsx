@@ -40,8 +40,14 @@ export default function Home({ players }: HomeProps) {
   
       return true;
     });
-  
-    setFilteredPlayers(filtered);
+
+    const sortedFiltered = filtered.sort((a, b) => {
+      const fullNameA = a.lastNameKana + a.firstNameKana;
+      const fullNameB = b.lastNameKana + b.firstNameKana;
+      return fullNameA.localeCompare(fullNameB, 'ja');
+    });
+
+    setFilteredPlayers(sortedFiltered);
   };
   
 
