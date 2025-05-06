@@ -2,19 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getLiveData } from '@/lib/microcms';
-
-interface LiveData {
-  tournament: string;
-  updatedAt: string;
-  players: Players[];
-}
-
-interface Players {
-  playerId: string;
-  status: string;
-  latestResult: string;
-  nextMatch: string;
-}
+import { LiveData } from '@/types/types';
 
 export default function LiveResults({ playerId }: { playerId: string }) {
   const [liveData, setLiveData] = useState<LiveData | null>(null);
@@ -25,7 +13,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
       try {
         const data = await getLiveData();
         setLiveData(data);
-        setError(null);  // エラーが解消された場合、エラーメッセージをリセット
+        setError(null); // エラーが解消された場合、エラーメッセージをリセット
       } catch {
         setError('データの取得に失敗しました。');
       }
@@ -34,21 +22,22 @@ export default function LiveResults({ playerId }: { playerId: string }) {
     fetchData();
   }, []);
 
-  if (error) {
-    return null; // エラーが発生した場合は何も表示しない
-  }
-
+  if (error) return null;
   if (!liveData) return null;
 
-  const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
-  const updatedAtJST = new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
+  // 日本時間の現在時刻を取得
+  const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
 
-  if (updatedAtJST !== todayJST) {
-    return null; // 日本時間で今日でなければ非表示
-  }
+  // 開催期間に該当するかどうかを判定
+  const isOngoing = (() => {
+    const start = new Date(liveData.startDate);
+    const end = new Date(liveData.endDate);
+    return nowJST >= start && nowJST <= end;
+  })();
+
+  if (!isOngoing) return null;
 
   const playerLiveResult = liveData.players.find((player) => player.playerId === playerId);
-
   if (!playerLiveResult) return null;
 
   return (
@@ -60,7 +49,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
         <p className="text-gray-700 dark:text-gray-300"><strong>最新結果:</strong> {playerLiveResult.latestResult}</p>
         <p className="text-gray-700 dark:text-gray-300"><strong>次の試合:</strong> {playerLiveResult.nextMatch}</p>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          最終更新: {new Date(liveData.updatedAt).toLocaleString('ja-JP')}
+          最終更新: {new Date(liveData.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
         </p>
       </div>
     </section>

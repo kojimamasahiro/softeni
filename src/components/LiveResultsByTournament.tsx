@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getLiveData } from '@/lib/microcms';
+import { LiveData } from '@/types/types';
 
 interface PlayerInfo {
   id: string;
@@ -10,17 +11,6 @@ interface PlayerInfo {
   lastNameKana: string;
   firstNameKana: string;
   team: string;
-}
-
-interface LiveData {
-  tournament: string;
-  updatedAt: string;
-  players: {
-    playerId: string;
-    status: string;
-    latestResult: string;
-    nextMatch: string;
-  }[];
 }
 
 export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
@@ -45,16 +35,19 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
   if (playersData?.length == 0) return null;
   if (!liveData) return null;
 
-  const todayJST = new Date().toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
-  const updatedAtJST = liveData
-    ? new Date(liveData.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })
-    : null;
+  // 日本時間の現在時刻を取得
+  const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
 
-  const isToday = updatedAtJST === todayJST;
+  // 開催中かどうかを判定（JSTベース）
+  const isOngoing = liveData && (() => {
+    const start = new Date(liveData.startDate);
+    const end = new Date(liveData.endDate);
+    return nowJST >= start && nowJST <= end;
+  })();
 
   let content;
 
-  if (isToday ) {
+  if (isOngoing) {
     content = (
       <>
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
