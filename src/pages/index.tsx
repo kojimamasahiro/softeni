@@ -1,11 +1,11 @@
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
+import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
 import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
 import { useEffect, useState } from 'react';
-import { PlayerInfo } from '@/types/index';
 
 interface HomeProps {
   players: PlayerInfo[];
@@ -13,17 +13,23 @@ interface HomeProps {
 
 export default function Home({ players }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredPlayers, setFilteredPlayers] = useState(players);
 
   // クライアントサイドでのみ処理を実行
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const sortedPlayers = players.sort((a, b) => {
-    const fullNameA = a.lastNameKana + a.firstNameKana;
-    const fullNameB = b.lastNameKana + b.firstNameKana;
-    return fullNameA.localeCompare(fullNameB, 'ja');
-  });
+  // 検索結果をフィルタリングする関数
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    const filtered = players.filter((player) => {
+      const fullName = player.lastName + player.firstName + player.lastNameKana + player.firstNameKana;
+      return fullName.includes(query);
+    });
+    setFilteredPlayers(filtered);
+  };
 
   if (!isClient) {
     return null; // クライアントサイドでない場合はレンダリングしない
@@ -71,8 +77,19 @@ export default function Home({ players }: HomeProps) {
 
         <section className="mt-10">
           <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
+          {/* 名前検索フォーム */}
+          <div className="mb-4">
+            <input
+              type="text"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="選手名で検索"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {sortedPlayers.map((player) => (
+            {filteredPlayers.map((player) => (
               <Link
                 key={player.id}
                 href={`/players/${player.id}`}
