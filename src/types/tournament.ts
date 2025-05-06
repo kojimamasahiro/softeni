@@ -1,4 +1,5 @@
 import { MatchResult, Stage } from '@/types/common';
+import { Result } from '@/types/common';
 
 export interface Tournament {
     tournament: string;
@@ -34,5 +35,17 @@ export interface TournamentYearData {
     startDate?: string;
     endDate?: string;
     location?: string;
+    url?: string;
     results?: { playerIds: string[]; result: string }[];
+}
+
+export interface TournamentMeta {
+    id: string;
+    sortId: number;
+    name: string;
+    region: string;
+    type: string;
+    category: string;
+    officialUrl: string;
+    isMajorTitle: boolean;
 }

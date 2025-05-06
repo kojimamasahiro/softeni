@@ -11,3 +11,8 @@ export interface Stage {
     group?: string;
     results: MatchResult[];
 }
+
+export interface Result {
+    playerIds: string[];
+    result: string;
+}

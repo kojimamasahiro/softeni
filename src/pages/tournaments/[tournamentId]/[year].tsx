@@ -3,37 +3,12 @@
 
 import MetaHead from '@/components/MetaHead';
 import { getAllPlayers } from '@/lib/players';
-import { PlayerInfo } from '@/types/index';
+import { PlayerInfo, TournamentMeta, TournamentYearData } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
-
-interface Result {
-    playerIds: string[];
-    result: string;
-}
-
-interface TournamentYearData {
-    status: string;
-    startDate: string;
-    endDate: string;
-    location: string;
-    url?: string;
-    results: Result[];
-}
-
-interface TournamentMeta {
-    id: string;
-    sortId: number;
-    name: string;
-    region: string;
-    type: string;
-    category: string;
-    officialUrl: string;
-    isMajorTitle: boolean;
-}
 
 export default function TournamentYearResultPage({
     year,
@@ -126,7 +101,7 @@ export default function TournamentYearResultPage({
                 </p>
 
                 <ul className="space-y-4">
-                    {data.results.map((entry, i) => (
+                    {data.results?.map((entry, i) => (
                         <li
                             key={i}
                             className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm p-5 rounded-lg"

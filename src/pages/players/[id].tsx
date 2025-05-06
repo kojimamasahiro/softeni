@@ -1,25 +1,10 @@
 import MetaHead from '@/components/MetaHead';
+import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
-
-type PlayerInfo = {
-  lastName: string;
-  firstName: string;
-  lastNameKana: string;
-  firstNameKana: string;
-  team: string;
-  position: string;
-  handedness: string;
-  birthDate: string;
-  height: number;
-  profileLinks: {
-    label: string;
-    url: string;
-  }[];
-};
 
 type Props = {
   player: PlayerInfo;
