@@ -1,7 +1,7 @@
 'use client';
 
 import { getLiveData } from '@/lib/microcms';
-import { LiveData } from '@/types/types';
+import { LiveData } from '@/types/index';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 

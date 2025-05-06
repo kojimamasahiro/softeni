@@ -1,4 +1,4 @@
-import { MajorTitle, TournamentSummary, TournamentYearData } from '@/types/types';
+import { MajorTitle, TournamentSummary, TournamentYearData } from '@/types/index';
 
 export default function MajorTitles({ id, tournaments }: { id: string, tournaments: TournamentSummary[] }) {
   if (!tournaments || tournaments.length === 0) {

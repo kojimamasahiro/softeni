@@ -1,6 +1,6 @@
+import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
 import path from 'path';
-import { PlayerInfo } from '@/types/types';
 
 export function getAllPlayers(): PlayerInfo[] {
   const playersDir = path.join(process.cwd(), 'data', 'players');

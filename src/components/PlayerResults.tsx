@@ -1,4 +1,4 @@
-import { MatchResult, PlayerData, PlayerInfo, Tournament } from '@/types/types';
+import { MatchResult, PlayerData, PlayerInfo, Tournament } from '@/types/index';
 import Link from 'next/link';
 
 type PlayerResultsProps = {

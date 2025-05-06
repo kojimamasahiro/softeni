@@ -4,7 +4,7 @@ import MetaHead from '@/components/MetaHead';
 import PlayerResults from '@/components/PlayerResults';
 import { getAllPlayers } from '@/lib/players';
 import { getAllTournaments } from '@/lib/tournaments';
-import { PlayerData, PlayerInfo, TournamentSummary } from '@/types/types';
+import { PlayerData, PlayerInfo, TournamentSummary } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';

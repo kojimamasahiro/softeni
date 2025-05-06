@@ -1,4 +1,4 @@
-import { TournamentSummary } from '@/types/types';
+import { TournamentSummary } from '@/types/index';
 import fs from 'fs';
 import path from 'path';
 

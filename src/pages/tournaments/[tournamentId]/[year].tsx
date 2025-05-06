@@ -3,7 +3,7 @@
 
 import MetaHead from '@/components/MetaHead';
 import { getAllPlayers } from '@/lib/players';
-import { PlayerInfo } from '@/types/types';
+import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
