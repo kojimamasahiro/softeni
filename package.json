@@ -40,13 +40,5 @@
       }
     ],
     "prettier/prettier": "error"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "postbuild": "next-sitemap",
-    "lint": "eslint --fix ."
   }
 }
