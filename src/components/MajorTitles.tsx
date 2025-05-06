@@ -38,8 +38,8 @@ export default function MajorTitles({ id, tournaments }: { id: string, tournamen
         🏆 主要タイトル
       </h2>
       <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
-        {/* 横スクロールを有効化 */}
-        <table className="min-w-max text-sm text-gray-700 dark:text-gray-200 border-collapse">
+        {/* 横幅を100%に設定 */}
+        <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
             <tr>
               <th className="px-4 py-2 text-left">{/* borderクラス削除 */}大会名</th>
