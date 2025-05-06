@@ -24,20 +24,20 @@ export default function Home({ players }: HomeProps) {
   // 検索結果をフィルタリングする関数
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-  
+
     const filtered = players.filter((player) => {
       const fullName =
         (player.lastName + player.firstName + player.lastNameKana + player.firstNameKana).toLowerCase();
       const normalizedQuery = query.replace(/\s/g, '').toLowerCase();
-  
+
       let currentIndex = 0;
-  
+
       for (const char of normalizedQuery) {
         currentIndex = fullName.indexOf(char, currentIndex);
         if (currentIndex === -1) return false;
         currentIndex++; // 次の文字はこの位置以降で探す
       }
-  
+
       return true;
     });
 
@@ -49,7 +49,7 @@ export default function Home({ players }: HomeProps) {
 
     setFilteredPlayers(sortedFiltered);
   };
-  
+
 
   if (!isClient) {
     return null; // クライアントサイドでない場合はレンダリングしない
@@ -110,26 +110,25 @@ export default function Home({ players }: HomeProps) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {filteredPlayers.map((player) => (
-              <Link
+              <div
                 key={player.id}
-                href={`/players/${player.id}`}
-                passHref
+                onClick={() => (window.location.href = `/players/${player.id}`)}
+                className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition"
               >
-                <div className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
-                  <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
-                    {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
-                  </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}</p>
-                  <div className="flex justify-start mt-4">
-                    <Link
-                      href={`/players/${player.id}/results`}
-                      className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
-                    >
-                      試合結果
-                    </Link>
-                  </div>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
+                  {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}</p>
+                <div className="flex justify-start mt-4">
+                  <Link
+                    href={`/players/${player.id}/results`}
+                    className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+                    onClick={(e) => e.stopPropagation()} // カードクリックと干渉しないように
+                  >
+                    試合結果
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
