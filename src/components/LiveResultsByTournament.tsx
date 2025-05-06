@@ -10,15 +10,16 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
   const [liveData, setLiveData] = useState<LiveData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isInRange, setIsInRange] = useState(false);
 
-  // JSTの現在時刻
-  const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+  // useEffect内で`nowJST`を計算してisInRangeを更新
+  useEffect(() => {
+    const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+    const startDate = new Date(LIVE_PERIOD.startDate);
+    const endDate = new Date(LIVE_PERIOD.endDate);
 
-  // 設定から日付を取得
-  const startDate = new Date(LIVE_PERIOD.startDate);
-  const endDate = new Date(LIVE_PERIOD.endDate);
-
-  const isInRange = nowJST >= startDate && nowJST <= endDate;
+    setIsInRange(nowJST >= startDate && nowJST <= endDate);
+  }, []);  // 空の依存配列で初回レンダリング時のみ実行
 
   useEffect(() => {
     if (!isInRange) return;
@@ -36,7 +37,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
     };
 
     fetchData();
-  }, [isInRange]);
+  }, [isInRange]);  // isInRangeが変わった時に再実行されるように
 
   if (!isInRange || error || !liveData || playersData.length === 0) return null;
 
