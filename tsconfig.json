@@ -20,7 +20,8 @@
       "@/styles/*": ["./src/styles/*"],
       "@/types/*": ["./src/types/*"],
       "@/data/*": ["./data/*"],
-      "@/lib/*": ["./lib/*"]
+      "@/lib/*": ["./lib/*"],
+      "@/config/*": ["./config/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

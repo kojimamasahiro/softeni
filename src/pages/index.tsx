@@ -24,12 +24,26 @@ export default function Home({ players }: HomeProps) {
   // 検索結果をフィルタリングする関数
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+  
     const filtered = players.filter((player) => {
-      const fullName = player.lastName + player.firstName + player.lastNameKana + player.firstNameKana;
-      return fullName.includes(query);
+      const fullName =
+        (player.lastName + player.firstName + player.lastNameKana + player.firstNameKana).toLowerCase();
+      const normalizedQuery = query.replace(/\s/g, '').toLowerCase();
+  
+      let currentIndex = 0;
+  
+      for (const char of normalizedQuery) {
+        currentIndex = fullName.indexOf(char, currentIndex);
+        if (currentIndex === -1) return false;
+        currentIndex++; // 次の文字はこの位置以降で探す
+      }
+  
+      return true;
     });
+  
     setFilteredPlayers(filtered);
   };
+  
 
   if (!isClient) {
     return null; // クライアントサイドでない場合はレンダリングしない
