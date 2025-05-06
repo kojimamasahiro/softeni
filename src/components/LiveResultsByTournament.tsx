@@ -4,40 +4,23 @@ import { LIVE_PERIOD } from '@/config/livePeriod';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData, PlayerInfo } from '@/types/index';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
 export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
-  const [liveData, setLiveData] = useState<LiveData | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [isInRange, setIsInRange] = useState(false);
+  const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+  const startDate = new Date(LIVE_PERIOD.startDate);
+  const endDate = new Date(LIVE_PERIOD.endDate);
+  const isInRange = nowJST >= startDate && nowJST <= endDate;
 
-  // useEffect内で`nowJST`を計算してisInRangeを更新
-  useEffect(() => {
-    const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
-    const startDate = new Date(LIVE_PERIOD.startDate);
-    const endDate = new Date(LIVE_PERIOD.endDate);
-
-    setIsInRange(nowJST >= startDate && nowJST <= endDate);
-  }, []);  // 空の依存配列で初回レンダリング時のみ実行
-
-  useEffect(() => {
-    if (!isInRange) return;
-
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getLiveData();
-        setLiveData(data);
-      } catch {
-        setError('データの取得に失敗しました。');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [isInRange]);  // isInRangeが変わった時に再実行されるように
+  // SWRでデータ取得（isInRangeがtrueのときのみフェッチ）
+  const { data: liveData, error, isLoading } = useSWR<LiveData>(
+    isInRange ? 'liveData' : null,
+    getLiveData,
+    {
+      dedupingInterval: 30000, // 同じキーのリクエストは30秒以内にまとめる
+      revalidateOnFocus: false, // タブ復帰時の再取得を無効化
+    }
+  );
 
   if (!isInRange || error || playersData.length === 0) return null;
 
@@ -49,7 +32,7 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
           <div className="text-center py-6 text-gray-600 dark:text-gray-300">
             ⏳ 大会速報を読み込み中です...
           </div>
-        )  : liveData ? (
+        ) : liveData ? (
           <>
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
               {liveData.tournament}
