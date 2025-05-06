@@ -1,34 +1,52 @@
 {
-  "name": "softeni-pick",
-  "version": "0.1.0",
-  "private": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals"
+  ],
+  "plugins": [
+    "import",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "prettier/prettier": "error"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "generate-sitemap": "node scripts/generate-sitemap.js",
-    "postbuild": "next-sitemap"
-  },
-  "dependencies": {
-    "microcms-js-sdk": "^3.2.0",
-    "next": "15.3.1",
-    "next-sitemap": "^4.2.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9.26.0",
-    "eslint-config-next": "15.3.1",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.4.0",
-    "prettier": "^3.5.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "postbuild": "next-sitemap",
+    "lint": "eslint --fix ."
   }
 }

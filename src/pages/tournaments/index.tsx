@@ -1,10 +1,10 @@
 // pages/tournaments/index.tsx
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import { GetStaticProps } from 'next';
 import MetaHead from '@/components/MetaHead';
+import fs from 'fs';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
+import path from 'path';
 
 interface Tournament {
     id: string;

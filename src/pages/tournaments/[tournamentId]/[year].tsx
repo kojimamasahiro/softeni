@@ -1,14 +1,14 @@
 // ディレクトリ構成:
 // src/pages/tournaments/[tournamentId]/[year].tsx
 
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import MetaHead from '@/components/MetaHead';
 import { getAllPlayers } from '@/lib/players';
 import { PlayerInfo } from '@/types/types';
+import fs from 'fs';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import MetaHead from '@/components/MetaHead';
+import Link from 'next/link';
+import path from 'path';
 
 interface Result {
     playerIds: string[];

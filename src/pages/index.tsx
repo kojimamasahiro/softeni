@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import MetaHead from '@/components/MetaHead';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
+import MetaHead from '@/components/MetaHead';
+import fs from 'fs';
 import Head from 'next/head';
+import Link from 'next/link';
+import path from 'path';
 import { useEffect, useState } from 'react';
 
 interface PlayerInfo {

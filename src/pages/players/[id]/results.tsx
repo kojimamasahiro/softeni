@@ -1,15 +1,15 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import fs from 'fs';
-import path from 'path';
-import MajorTitles from '@/components/MajorTitles';
-import PlayerResults from '@/components/PlayerResults';
 import LiveResults from '@/components/LiveResults';
+import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
-import Head from 'next/head';
-import { PlayerData, PlayerInfo, TournamentSummary } from '@/types/types';
-import Link from 'next/link';
+import PlayerResults from '@/components/PlayerResults';
 import { getAllPlayers } from '@/lib/players';
 import { getAllTournaments } from '@/lib/tournaments';
+import { PlayerData, PlayerInfo, TournamentSummary } from '@/types/types';
+import fs from 'fs';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import path from 'path';
 
 type PlayerResultsProps = {
   playerId: string;
@@ -120,10 +120,10 @@ export default function PlayerResultsPage({
           </section>
 
           <div className="text-right mt-8 mb-2">
-                <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
-                    大会結果一覧
-                </Link>
-            </div>
+            <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
+              大会結果一覧
+            </Link>
+          </div>
 
           <section>
             <PlayerResults playerData={playerData} allPlayers={allPlayers} />

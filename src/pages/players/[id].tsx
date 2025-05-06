@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
 import MetaHead from '@/components/MetaHead';
+import fs from 'fs';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
+import path from 'path';
 
 type PlayerInfo = {
   lastName: string;
