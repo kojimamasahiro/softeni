@@ -1,0 +1,44 @@
+<form method="POST">
+    <div class="matches">
+        {% for match in matches %}
+        <div class="match">
+            <label for="round_{{ loop.index0 }}">ラウンド</label>
+            <select name="round_{{ loop.index0 }}">
+                <option value="1回戦" {% if match.round == "1回戦" %}selected{% endif %}>1回戦</option>
+                <option value="2回戦" {% if match.round == "2回戦" %}selected{% endif %}>2回戦</option>
+                <option value="3回戦" {% if match.round == "3回戦" %}selected{% endif %}>3回戦</option>
+                <option value="4回戦" {% if match.round == "4回戦" %}selected{% endif %}>4回戦</option>
+                <option value="5回戦" {% if match.round == "5回戦" %}selected{% endif %}>5回戦</option>
+                <option value="6回戦" {% if match.round == "6回戦" %}selected{% endif %}>6回戦</option>
+                <option value="7回戦" {% if match.round == "7回戦" %}selected{% endif %}>7回戦</option>
+                <option value="8回戦" {% if match.round == "8回戦" %}selected{% endif %}>8回戦</option>
+                <option value="準々決勝" {% if match.round == "準々決勝" %}selected{% endif %}>準々決勝</option>
+                <option value="準決勝" {% if match.round == "準決勝" %}selected{% endif %}>準決勝</option>
+                <option value="決勝" {% if match.round == "決勝" %}selected{% endif %}>決勝</option>
+            </select>
+  
+            {% if match.player %}
+                <!-- 同じ選手の場合 -->
+                <input type="text" name="player_{{ loop.index0 }}" value="{{ match.player['name'] }}">
+                <input type="hidden" name="id_{{ loop.index0 }}" value="{{ match.player['id'] }}">                
+            {% else %}
+                <!-- 異なる選手の場合 -->
+                <label for="player1_{{ loop.index0 }}">選手1</label>
+                <input type="text" name="player1_{{ loop.index0 }}" value="{{ match.player1['name'] }}">
+  
+                <label for="player2_{{ loop.index0 }}">選手2</label>
+                <input type="text" name="player2_{{ loop.index0 }}" value="{{ match.player2['name'] }}">
+            {% endif %}
+  
+            <label for="result_{{ loop.index0 }}">結果</label>
+            <input type="text" name="result_{{ loop.index0 }}" value="{{ match.result }}">
+  
+            <label for="score_{{ loop.index0 }}">スコア</label>
+            <input type="text" name="score_{{ loop.index0 }}" value="{{ match.score }}">
+  
+        </div>
+        {% endfor %}
+    </div>
+    <input type="hidden" name="total_matches" value="{{ total }}">
+    <button type="submit">更新</button>
+  </form>

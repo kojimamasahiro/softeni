@@ -136,6 +136,6 @@ result_json = {
 }
 
 # 7. 結果を保存（任意）
-# with open("output.json", "w", encoding="utf-8") as f:
-    # json.dump(result_json, f, ensure_ascii=False, indent=2)
-print(json.dumps(result_json, indent=2, ensure_ascii=False))
+with open("../match-editor/data/output.json", "w", encoding="utf-8") as f:
+    json.dump(result_json, f, ensure_ascii=False, indent=2)
+
