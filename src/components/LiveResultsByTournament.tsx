@@ -63,12 +63,12 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
                           {player.latestResult}
                         </div>
                       </div>
-                      <div className="flex justify-between items-center space-x-4">
+                      {/* <div className="flex justify-between items-center space-x-4">
                         <div className="w-1/3 text-center text-gray-600 dark:text-gray-300">次の試合:</div>
                         <div className="flex-grow text-center text-gray-800 dark:text-white">
                           {player.nextMatch}
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </li>
                 );

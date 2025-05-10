@@ -38,7 +38,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
               <p className="text-gray-700 dark:text-gray-300"><strong>大会名:</strong> {liveData.tournament}</p>
               <p className="text-gray-700 dark:text-gray-300"><strong>現在の状況:</strong> {playerLiveResult.status}</p>
               <p className="text-gray-700 dark:text-gray-300"><strong>最新結果:</strong> {playerLiveResult.latestResult}</p>
-              <p className="text-gray-700 dark:text-gray-300"><strong>次の試合:</strong> {playerLiveResult.nextMatch}</p>
+              {/* <p className="text-gray-700 dark:text-gray-300"><strong>次の試合:</strong> {playerLiveResult.nextMatch}</p> */}
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 最終更新: {new Date(liveData.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
               </p>
