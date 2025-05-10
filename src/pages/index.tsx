@@ -21,7 +21,18 @@ export default function Home({ players }: HomeProps) {
     setIsClient(true);
   }, []);
 
+    // ✅ 初期表示時にプレイヤーを名前順でソート
+    useEffect(() => {
+      const sorted = [...players].sort((a, b) => {
+        const fullNameA = a.lastNameKana + a.firstNameKana;
+        const fullNameB = b.lastNameKana + b.firstNameKana;
+        return fullNameA.localeCompare(fullNameB, 'ja');
+      });
+      setFilteredPlayers(sorted);
+    }, [players]);
+
   // 検索結果をフィルタリングする関数
+  // 検索処理
   const handleSearch = (query: string) => {
     setSearchQuery(query);
 
@@ -31,17 +42,17 @@ export default function Home({ players }: HomeProps) {
       const normalizedQuery = query.replace(/\s/g, '').toLowerCase();
 
       let currentIndex = 0;
-
       for (const char of normalizedQuery) {
         currentIndex = fullName.indexOf(char, currentIndex);
         if (currentIndex === -1) return false;
-        currentIndex++; // 次の文字はこの位置以降で探す
+        currentIndex++;
       }
 
       return true;
     });
 
-    const sortedFiltered = filtered.sort((a, b) => {
+    // ✅ 検索後も名前順でソート
+    const sortedFiltered = [...filtered].sort((a, b) => {
       const fullNameA = a.lastNameKana + a.firstNameKana;
       const fullNameB = b.lastNameKana + b.firstNameKana;
       return fullNameA.localeCompare(fullNameB, 'ja');
@@ -49,7 +60,6 @@ export default function Home({ players }: HomeProps) {
 
     setFilteredPlayers(sortedFiltered);
   };
-
 
   if (!isClient) {
     return null; // クライアントサイドでない場合はレンダリングしない
