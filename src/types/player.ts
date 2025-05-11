@@ -12,6 +12,7 @@ export interface PlayerInfo {
     handedness: string;
     birthDate: string;
     height: number;
+    retired?: boolean;
     profileLinks: {
         label: string;
         url: string;

@@ -21,15 +21,15 @@ export default function Home({ players }: HomeProps) {
     setIsClient(true);
   }, []);
 
-    // ✅ 初期表示時にプレイヤーを名前順でソート
-    useEffect(() => {
-      const sorted = [...players].sort((a, b) => {
-        const fullNameA = a.lastNameKana + a.firstNameKana;
-        const fullNameB = b.lastNameKana + b.firstNameKana;
-        return fullNameA.localeCompare(fullNameB, 'ja');
-      });
-      setFilteredPlayers(sorted);
-    }, [players]);
+  // ✅ 初期表示時にプレイヤーを名前順でソート
+  useEffect(() => {
+    const sorted = [...players].sort((a, b) => {
+      const fullNameA = a.lastNameKana + a.firstNameKana;
+      const fullNameB = b.lastNameKana + b.firstNameKana;
+      return fullNameA.localeCompare(fullNameB, 'ja');
+    });
+    setFilteredPlayers(sorted);
+  }, [players]);
 
   // 検索結果をフィルタリングする関数
   // 検索処理
@@ -119,27 +119,42 @@ export default function Home({ players }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {filteredPlayers.map((player) => (
-              <div
-                key={player.id}
-                onClick={() => (window.location.href = `/players/${player.id}`)}
-                className="border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition"
-              >
-                <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
-                  {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
-                </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{player.team}</p>
-                <div className="flex justify-start mt-4">
-                  <Link
-                    href={`/players/${player.id}/results`}
-                    className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
-                    onClick={(e) => e.stopPropagation()} // カードクリックと干渉しないように
-                  >
-                    試合結果
-                  </Link>
+            {filteredPlayers.map((player) => {
+              const isRetired = player.retired;
+
+              return (
+                <div
+                  key={player.id}
+                  onClick={() => (window.location.href = `/players/${player.id}`)}
+                  className={`border border-gray-300 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition
+          hover:bg-gray-50 dark:hover:bg-gray-700
+          ${isRetired ? 'opacity-70' : ''}`}
+                >
+                  <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
+                    {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
+                  </h2>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    {isRetired ? (
+                      <span className="inline-block px-2 py-0.5 text-xs text-white bg-gray-500 rounded">
+                        引退済み
+                      </span>
+                    ) : (
+                      player.team
+                    )}
+                  </p>
+
+                  <div className="flex justify-start mt-4">
+                    <Link
+                      href={`/players/${player.id}/results`}
+                      className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      試合結果
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       </div>
