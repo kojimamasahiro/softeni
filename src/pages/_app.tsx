@@ -11,14 +11,38 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const accepted = localStorage.getItem('cookieConsent');
-    if (accepted) {
+    if (accepted === 'true') {
       setHasConsent(true);
-      window.gtag?.('consent', 'update', {
+      if (window.gtag) {
+        window.gtag('consent', 'update', {
+          ad_storage: 'granted',
+          analytics_storage: 'granted',
+        });
+      }
+    }
+  }, []);
+
+  const handleAccept = () => {
+    setHasConsent(true);
+    localStorage.setItem('cookieConsent', 'true');
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
         ad_storage: 'granted',
         analytics_storage: 'granted',
       });
     }
-  }, []);
+  };
+
+  const handleDecline = () => {
+    setHasConsent(false);
+    localStorage.setItem('cookieConsent', 'false');
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+      });
+    }
+  };
 
   return (
     <>
@@ -53,21 +77,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </div>
 
       {/* 同意バナー */}
-      <CookieConsent
-        onAccept={() => {
-          window.gtag?.('consent', 'update', {
-            ad_storage: 'granted',
-            analytics_storage: 'granted',
-          });
-        }}
-        onDecline={() => {
-          window.gtag?.('consent', 'update', {
-            ad_storage: 'denied',
-            analytics_storage: 'denied',
-          });
-        }}
-      />
-
+      {!hasConsent && (
+        <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />
+      )}
     </>
   );
 }
