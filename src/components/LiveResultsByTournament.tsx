@@ -21,7 +21,20 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
     }
   );
 
-  if (!isInRange || error || playersData.length === 0) return null;
+  if (!isInRange) {
+    return (
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">📢 大会速報</h2>
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+          <div className="text-center py-6 text-gray-600 dark:text-gray-300">
+            次回の大会速報までお待ちください。
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || playersData.length === 0) return null;
 
   return (
     <section className="mb-8">
