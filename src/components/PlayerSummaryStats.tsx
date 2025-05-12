@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { PlayerInfo, SummaryStats } from '@/types/index';
+import Link from 'next/link';
 
 type SummaryStatsProps = {
   summaryStats: SummaryStats;
@@ -18,16 +18,16 @@ export default function PlayerSummaryStats({ summaryStats, allPlayers }: Summary
       <table className="w-full mb-4">
         <tbody>
           <tr>
-            <td className="py-1 pr-4 font-medium">試合数</td>
-            <td className="py-1">{summaryStats.totalMatches}</td>
+            <td className="py-1 pr-4 font-medium text-center">試合数</td>
+            <td className="py-1 text-center">{summaryStats.totalMatches}</td>
           </tr>
           <tr>
-            <td className="py-1 pr-4 font-medium">勝敗</td>
-            <td className="py-1">{summaryStats.wins}勝 {summaryStats.losses}敗</td>
+            <td className="py-1 pr-4 font-medium text-center">勝敗</td>
+            <td className="py-1 text-center">{summaryStats.wins}勝 {summaryStats.losses}敗</td>
           </tr>
           <tr>
-            <td className="py-1 pr-4 font-medium">勝率</td>
-            <td className="py-1">{(summaryStats.totalWinRate * 100).toFixed(1)}%</td>
+            <td className="py-1 pr-4 font-medium text-center">勝率</td>
+            <td className="py-1 text-center">{(summaryStats.totalWinRate * 100).toFixed(1)}%</td>
           </tr>
         </tbody>
       </table>
@@ -37,9 +37,9 @@ export default function PlayerSummaryStats({ summaryStats, allPlayers }: Summary
         <table className="w-full border border-gray-200 dark:border-gray-600 text-sm">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
             <tr>
-              <th className="py-1 px-2 text-left">パートナー</th>
-              <th className="py-1 px-2 text-left">成績</th>
-              <th className="py-1 px-2 text-left">勝率</th>
+              <th className="py-1 px-2 text-center">パートナー</th>
+              <th className="py-1 px-2 text-center">成績</th>
+              <th className="py-1 px-2 text-center">勝率</th>
             </tr>
           </thead>
           <tbody>
@@ -49,17 +49,17 @@ export default function PlayerSummaryStats({ summaryStats, allPlayers }: Summary
 
               return (
                 <tr key={partnerId} className="border-t border-gray-200 dark:border-gray-600">
-                  <td className="py-1 px-2">
+                  <td className="py-1 px-2 text-center">
                     {partner ? (
-                      <Link href={`/players/${partner.id}`} className="underline text-blue-600 dark:text-blue-400">
+                      <Link href={`/players/${partner.id}`} className="text-center text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid">
                         {partnerName}
                       </Link>
                     ) : (
                       partnerName
                     )}
                   </td>
-                  <td className="py-1 px-2">{stats.matches.wins}勝 {stats.matches.losses}敗</td>
-                  <td className="py-1 px-2">{(stats.matches.winRate * 100).toFixed(1)}%</td>
+                  <td className="py-1 px-2 text-center">{stats.matches.wins}勝 {stats.matches.losses}敗</td>
+                  <td className="py-1 px-2 text-center">{(stats.matches.winRate * 100).toFixed(1)}%</td>
                 </tr>
               );
             })}
@@ -72,9 +72,9 @@ export default function PlayerSummaryStats({ summaryStats, allPlayers }: Summary
         <table className="w-full border border-gray-200 dark:border-gray-600 text-sm">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
             <tr>
-              <th className="py-1 px-2 text-left">年度</th>
-              <th className="py-1 px-2 text-left">成績</th>
-              <th className="py-1 px-2 text-left">勝率</th>
+              <th className="py-1 px-2 text-center">年度</th>
+              <th className="py-1 px-2 text-center">成績</th>
+              <th className="py-1 px-2 text-center">勝率</th>
             </tr>
           </thead>
           <tbody>
@@ -82,9 +82,9 @@ export default function PlayerSummaryStats({ summaryStats, allPlayers }: Summary
               .sort(([a], [b]) => Number(b) - Number(a))
               .map(([year, stats]) => (
                 <tr key={year} className="border-t border-gray-200 dark:border-gray-600">
-                  <td className="py-1 px-2">{year}年</td>
-                  <td className="py-1 px-2">{stats.matches.wins}勝 {stats.matches.losses}敗</td>
-                  <td className="py-1 px-2">{(stats.matches.winRate * 100).toFixed(1)}%</td>
+                  <td className="py-1 px-2 text-center">{year}年</td>
+                  <td className="py-1 px-2 text-center">{stats.matches.wins}勝 {stats.matches.losses}敗</td>
+                  <td className="py-1 px-2 text-center">{(stats.matches.winRate * 100).toFixed(1)}%</td>
                 </tr>
               ))}
           </tbody>

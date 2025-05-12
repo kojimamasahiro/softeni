@@ -44,7 +44,7 @@ export default function PlayerResults({ playerData, playerStats, allPlayers }: P
                 (() => {
                   const partner = allPlayers.find(p => p.id === tournaments[0].partner);
                   return partner ? (
-                    <Link href={`/players/${partner.id}`} className="underline text-blue-600 dark:text-blue-400">
+                    <Link href={`/players/${partner.id}`} className="text-center text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid">
                       {partner.lastName} {partner.firstName}
                     </Link>
                   ) : tournaments[0].partner;
