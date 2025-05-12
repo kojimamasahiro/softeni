@@ -123,10 +123,25 @@ def analyze_matches(matches_data):
 if __name__ == "__main__":
     # プレイヤーのIDリスト
     player_ids = [
-        "uematsu-toshiki",
-        "kurosaka-takuya",
+        "yano-soto",
+        "kawasaki-kohei",
         "kataoka-aki",
-        # 必要に応じてここに追加
+        "marunaka-taimei",
+        "hashimoto-asahi",
+        "uchimoto-takafumi",
+        "kurosaka-takuya",
+        "hashiba-toichiro",
+        "funemizu-hayato",
+        "hirooka-sora",
+        "nagae-koichi",
+        "maruyama-kaito",
+        "ando-yusaku",
+        "uematsu-toshiki",
+        "yonekawa-yuto",
+        "motokura-kentaro",
+        "uchida-riku",
+        "ueoka-shunsuke",
+        "ando-kesuke"
     ]
 
     # 各選手のデータに対して処理

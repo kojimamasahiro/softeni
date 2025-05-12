@@ -2,10 +2,26 @@ import json
 from pathlib import Path
 
 # プレイヤーID一覧
-player_ids = [
-    "kurosaka-takuya",
-    "kataoka-aki",
-    # 必要に応じて追加
+playerIds = [
+  "yano-soto",
+  "kawasaki-kohei",
+  "kataoka-aki",
+  "marunaka-taimei",
+  "hashimoto-asahi",
+  "uchimoto-takafumi",
+  "kurosaka-takuya",
+  "hashiba-toichiro",
+  "funemizu-hayato",
+  "hirooka-sora",
+  "nagae-koichi",
+  "maruyama-kaito",
+  "ando-yusaku",
+  "uematsu-toshiki",
+  "yonekawa-yuto",
+  "motokura-kentaro",
+  "uchida-riku",
+  "ueoka-shunsuke",
+  "ando-kesuke"
 ]
 
 def validate_analysis(player_id):
