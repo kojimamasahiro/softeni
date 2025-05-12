@@ -1,0 +1,52 @@
+{
+  "totalMatches": 18,
+  "wins": 13,
+  "losses": 5,
+  "totalWinRate": 0.722,
+  "byPartner": {
+    "kurosaka-takuya": {
+      "matches": {
+        "total": 12,
+        "wins": 9,
+        "losses": 3,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 73,
+        "won": 45,
+        "lost": 15,
+        "gameRate": 0.616
+      }
+    },
+    "シングルス": {
+      "matches": {
+        "total": 6,
+        "wins": 4,
+        "losses": 2,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 34,
+        "won": 16,
+        "lost": 8,
+        "gameRate": 0.471
+      }
+    }
+  },
+  "byYear": {
+    "2025": {
+      "matches": {
+        "total": 18,
+        "wins": 13,
+        "losses": 5,
+        "winRate": 0.722
+      },
+      "games": {
+        "total": 107,
+        "won": 61,
+        "lost": 23,
+        "gameRate": 0.57
+      }
+    }
+  }
+}

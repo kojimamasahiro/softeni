@@ -1,0 +1,66 @@
+{
+  "totalMatches": 28,
+  "wins": 25,
+  "losses": 3,
+  "totalWinRate": 0.893,
+  "byPartner": {
+    "kataoka-aki": {
+      "matches": {
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 46,
+        "won": 30,
+        "lost": 10,
+        "gameRate": 0.652
+      }
+    },
+    "シングルス": {
+      "matches": {
+        "total": 16,
+        "wins": 16,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 78,
+        "won": 64,
+        "lost": 0,
+        "gameRate": 0.821
+      }
+    },
+    "kurosaka-takuya": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 27,
+        "won": 15,
+        "lost": 5,
+        "gameRate": 0.556
+      }
+    }
+  },
+  "byYear": {
+    "2025": {
+      "matches": {
+        "total": 28,
+        "wins": 25,
+        "losses": 3,
+        "winRate": 0.893
+      },
+      "games": {
+        "total": 151,
+        "won": 109,
+        "lost": 15,
+        "gameRate": 0.722
+      }
+    }
+  }
+}
