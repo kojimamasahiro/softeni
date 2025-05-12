@@ -1,121 +1,149 @@
 import json
-import re
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
-# 勝敗判定関数
-def is_win(result):
-    return result.strip() == "勝ち"
+def parse_date(date_str):
+    for fmt in ("%Y年%m月%d日", "%Y/%m/%d"):
+        try:
+            return datetime.strptime(date_str, fmt)
+        except:
+            continue
+    return None
 
-def extract_year(date_range):
-    match = re.search(r"(\d{4})年", date_range)
-    return match.group(1) if match else "不明"
+def extract_fiscal_year(date_range):
+    if not date_range:
+        return None
+    try:
+        date_str = date_range.split("~")[0].split("(")[0].strip()
+        date = parse_date(date_str)
+        if not date:
+            return None
+        fiscal_year = date.year if date.month >= 4 else date.year - 1
+        return fiscal_year
+    except:
+        return None
 
-# プレイヤーのIDリスト
-player_ids = [
-]
-
-# 各選手のデータに対して処理を行う
-for player_id in player_ids:
-    input_file = Path(f"data/players/{player_id}/results.json")
-    output_file = Path(f"data/players/{player_id}/analysis.json")
-
-    # データ読み込み
-    with input_file.open(encoding="utf-8") as f:
-        data = json.load(f)
-
-    # 分析用データ構造の初期化
+def analyze_matches(matches_data):
     total_matches = 0
-    wins = 0
-    losses = 0
-    partner_stats = defaultdict(lambda: {"matches": {"total": 0, "wins": 0, "losses": 0, "winRate": 0.0}, "games": {"total": 0, "won": 0, "lost": 0, "gameRate": 0.0}})
-    year_stats = defaultdict(lambda: {"matches": {"total": 0, "wins": 0, "losses": 0, "winRate": 0.0}, "games": {"total": 0, "won": 0, "lost": 0, "gameRate": 0.0}})
+    total_wins = 0
+    total_losses = 0
+    total_games = 0
+    total_games_won = 0
+    total_games_lost = 0
 
-    # 各試合の処理
-    for match in data.get("matches", []):
-        year = extract_year(match.get("dateRange", ""))
+    by_partner = defaultdict(lambda: {
+        "matches": {"total": 0, "wins": 0, "losses": 0, "winRate": 0},
+        "games": {"total": 0, "won": 0, "lost": 0, "gameRate": 0}
+    })
+
+    by_year = defaultdict(lambda: {
+        "matches": {"total": 0, "wins": 0, "losses": 0, "winRate": 0},
+        "games": {"total": 0, "won": 0, "lost": 0, "gameRate": 0}
+    })
+
+    for match in matches_data:
         partner = match.get("partner") or "シングルス"
+        year = extract_fiscal_year(match.get("dateRange")) or "不明"
 
-        # groupStage, finalStage, top-level results に対応
-        results_sources = []
+        def process_result(result):
+            nonlocal total_matches, total_wins, total_losses, total_games, total_games_won, total_games_lost
 
-        for stage_name in ["groupStage", "finalStage"]:
-            stage = match.get(stage_name)
-            if stage and isinstance(stage.get("results"), list):
-                results_sources.append(stage["results"])
+            total_matches += 1
+            by_partner[partner]["matches"]["total"] += 1
+            by_year[year]["matches"]["total"] += 1
 
-            if isinstance(match.get("results"), list):
-                results_sources.append(match["results"])
+            result_str = result.get("result")
+            if result_str == "勝ち":
+                total_wins += 1
+                by_partner[partner]["matches"]["wins"] += 1
+                by_year[year]["matches"]["wins"] += 1
+            elif result_str == "負け":
+                total_losses += 1
+                by_partner[partner]["matches"]["losses"] += 1
+                by_year[year]["matches"]["losses"] += 1
 
-        for results in results_sources:
-            for game in results:
-                result = game.get("result")
-                if result not in ["勝ち", "負け"]:
-                    continue
+            games = result.get("games", {})
+            won = games.get("won", 0)
+            lost = games.get("lost", 0)
+            total_game = won + lost
 
-                win_flag = is_win(result)
-                total_matches += 1
-                if win_flag:
-                    wins += 1
-                else:
-                    losses += 1
+            total_games += total_game
+            total_games_won += won
+            total_games_lost += lost
 
-                # 得失ゲーム数の取得
-                games_won = game.get("games", {}).get("won", 0)
-                games_lost = game.get("games", {}).get("lost", 0)
-                games_total = games_won + games_lost
+            by_partner[partner]["games"]["total"] += total_game
+            by_partner[partner]["games"]["won"] += won
+            by_partner[partner]["games"]["lost"] += lost
 
-                # パートナーごとの集計
-                partner_stats[partner]["matches"]["total"] += 1
-                partner_stats[partner]["games"]["total"] += games_total
-                if win_flag:
-                    partner_stats[partner]["matches"]["wins"] += 1
-                    partner_stats[partner]["games"]["won"] += games_won
-                else:
-                    partner_stats[partner]["matches"]["losses"] += 1
-                    partner_stats[partner]["games"]["lost"] += games_lost
+            by_year[year]["games"]["total"] += total_game
+            by_year[year]["games"]["won"] += won
+            by_year[year]["games"]["lost"] += lost
 
-                # 年度ごとの集計
-                year_stats[year]["matches"]["total"] += 1
-                year_stats[year]["games"]["total"] += games_total
-                if win_flag:
-                    year_stats[year]["matches"]["wins"] += 1
-                    year_stats[year]["games"]["won"] += games_won
-                else:
-                    year_stats[year]["matches"]["losses"] += 1
-                    year_stats[year]["games"]["lost"] += games_lost
+        # results（通常のトーナメント）
+        if match.get("results"):
+            for result in match["results"]:
+                process_result(result)
 
-    # totalWinRate を計算
-    total_win_rate = round(wins / total_matches, 3) if total_matches else 0.0
+        # ラウンドロビン形式
+        if match.get("groupStage") and match["groupStage"].get("results"):
+            for result in match["groupStage"]["results"]:
+                process_result(result)
 
-    # partner_stats と year_stats の各項目で winRate と gameRate を計算
-    for stats in partner_stats.values():
-        stats["matches"]["winRate"] = round(stats["matches"]["wins"] / stats["matches"]["total"], 3) if stats["matches"]["total"] else 0.0
-        stats["games"]["gameRate"] = round(stats["games"]["won"] / stats["games"]["total"], 3) if stats["games"]["total"] else 0.0
+        # 決勝トーナメント
+        if match.get("finalStage") and match["finalStage"].get("results"):
+            for result in match["finalStage"]["results"]:
+                process_result(result)
 
-    for stats in year_stats.values():
-        stats["matches"]["winRate"] = round(stats["matches"]["wins"] / stats["matches"]["total"], 3) if stats["matches"]["total"] else 0.0
-        stats["games"]["gameRate"] = round(stats["games"]["won"] / stats["games"]["total"], 3) if stats["games"]["total"] else 0.0
+    def calc_rate(wins, total):
+        return round(wins / total, 3) if total > 0 else 0
 
-    # 出力データ構築
-    analysis_data = {
+    overall = {
         "totalMatches": total_matches,
-        "wins": wins,
-        "losses": losses,
-        "totalWinRate": total_win_rate,
-        "byPartner": partner_stats,
-        "byYear": year_stats,
+        "wins": total_wins,
+        "losses": total_losses,
+        "totalWinRate": calc_rate(total_wins, total_matches),
+        "byPartner": {},
+        "byYear": {}
     }
 
-    # デフォルト辞書を通常の辞書に変換して保存
-    def dictify(d):
-        return {k: {kk: vv for kk, vv in v.items()} for k, v in d.items()}
+    for partner, stats in by_partner.items():
+        stats["matches"]["winRate"] = calc_rate(stats["matches"]["wins"], stats["matches"]["total"])
+        stats["games"]["gameRate"] = calc_rate(stats["games"]["won"], stats["games"]["total"])
+        overall["byPartner"][partner] = stats
 
-    analysis_data["byPartner"] = dictify(analysis_data["byPartner"])
-    analysis_data["byYear"] = dictify(analysis_data["byYear"])
+    for year, stats in by_year.items():
+        stats["matches"]["winRate"] = calc_rate(stats["matches"]["wins"], stats["matches"]["total"])
+        stats["games"]["gameRate"] = calc_rate(stats["games"]["won"], stats["games"]["total"])
+        overall["byYear"][str(year)] = stats
 
-    # 保存
-    with output_file.open("w", encoding="utf-8") as f:
-        json.dump(analysis_data, f, ensure_ascii=False, indent=2)
+    return overall
 
-    print(f"{player_id} の分析結果が {output_file} に保存されました。")
+
+if __name__ == "__main__":
+    # プレイヤーのIDリスト
+    player_ids = [
+        "uematsu-toshiki",
+        "kurosaka-takuya",
+        "kataoka-aki",
+        # 必要に応じてここに追加
+    ]
+
+    # 各選手のデータに対して処理
+    for player_id in player_ids:
+        input_file = Path(f"data/players/{player_id}/results.json")
+        output_file = Path(f"data/players/{player_id}/analysis.json")
+
+        if not input_file.exists():
+            print(f"[!] {input_file} が見つかりません")
+            continue
+
+        with input_file.open(encoding="utf-8") as f:
+            data = json.load(f)
+
+        result = analyze_matches(data.get("matches", []))
+
+        with output_file.open("w", encoding="utf-8") as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
+
+        print(f"[✓] {player_id} の analysis.json を出力しました")
