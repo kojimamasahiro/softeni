@@ -1,12 +1,14 @@
-import { MatchResult, PlayerData, PlayerInfo, Tournament } from '@/types/index';
+import PlayerSummaryStats from '@/components/PlayerSummaryStats';
+import { MatchResult, PlayerData, PlayerInfo, SummaryStats, Tournament } from '@/types/index';
 import Link from 'next/link';
 
 type PlayerResultsProps = {
   playerData: PlayerData;
+  playerStats: SummaryStats;
   allPlayers: PlayerInfo[];
 };
 
-export default function PlayerResults({ playerData, allPlayers }: PlayerResultsProps) {
+export default function PlayerResults({ playerData, playerStats, allPlayers }: PlayerResultsProps) {
   if (!playerData || !playerData.matches || playerData.matches.length === 0) {
     return <p>試合結果がありません。</p>;
   }
@@ -22,6 +24,8 @@ export default function PlayerResults({ playerData, allPlayers }: PlayerResultsP
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">🎾 大会結果</h2>
+
+      <PlayerSummaryStats summaryStats={playerStats} allPlayers={allPlayers} />
 
       {Object.entries(tournamentsByName).map(([tournamentName, tournaments], index) => (
         <div key={index} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">

@@ -4,7 +4,7 @@ import MetaHead from '@/components/MetaHead';
 import PlayerResults from '@/components/PlayerResults';
 import { getAllPlayers } from '@/lib/players';
 import { getAllTournaments } from '@/lib/tournaments';
-import { PlayerData, PlayerInfo, TournamentSummary } from '@/types/index';
+import { PlayerData, PlayerInfo, SummaryStats, TournamentSummary } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -17,6 +17,7 @@ type PlayerResultsProps = {
   playerInfo: PlayerInfo;
   allPlayers: PlayerInfo[];
   allTournaments: TournamentSummary[];
+  playerStats: SummaryStats
 };
 
 export default function PlayerResultsPage({
@@ -25,6 +26,7 @@ export default function PlayerResultsPage({
   playerInfo,
   allPlayers,
   allTournaments,
+  playerStats,
 }: PlayerResultsProps) {
   const fullName = `${playerInfo.lastName} ${playerInfo.firstName}`;
   const pageUrl = `https://softeni.vercel.app/players/${playerId}/results`;
@@ -126,7 +128,7 @@ export default function PlayerResultsPage({
           </div>
 
           <section>
-            <PlayerResults playerData={playerData} allPlayers={allPlayers} />
+            <PlayerResults playerData={playerData} playerStats={playerStats} allPlayers={allPlayers} />
             <div className="text-right mb-2">
               <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
                 {fullName}選手プロフィール
@@ -164,6 +166,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const infoPath = path.join(process.cwd(), 'data', 'players', playerId, 'information.json');
   const playerInfo: PlayerInfo = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
 
+  // 解析情報を取得
+  const statsPath = path.join(process.cwd(), 'data', 'players', playerId, 'analysis.json');
+  let playerStats: SummaryStats | null = null;
+  if (fs.existsSync(statsPath)) {
+    playerStats = JSON.parse(fs.readFileSync(statsPath, 'utf-8'));
+    if (playerStats) {
+      playerStats.playerId = playerId;
+    }
+  }
+
   // 全選手情報を取得
   const allPlayers = getAllPlayers();
 
@@ -177,6 +189,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerInfo,
       allPlayers,
       allTournaments,
+      playerStats,
     },
   };
 };
