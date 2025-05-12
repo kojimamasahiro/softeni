@@ -1,5 +1,4 @@
 import { MatchResult, Stage } from '@/types/common';
-import { Result } from '@/types/common';
 
 export interface Tournament {
     tournament: string;
