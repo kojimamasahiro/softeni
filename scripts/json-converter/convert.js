@@ -19,6 +19,15 @@ function enrichTeams(opponents) {
   return opponents;
 }
 
+// score を分解して games フィールドを追加する関数
+function parseScore(score) {
+  const [won, lost] = score.split('-').map(Number);
+  return {
+    won,
+    lost
+  };
+}
+
 // 変換処理の関数
 function convertMatchData(inputData) {
   if (!Array.isArray(inputData)) {
@@ -30,12 +39,14 @@ function convertMatchData(inputData) {
       const convertResults = results =>
         results.map(result => {
           const opponents = enrichTeams(parseOpponent(result.opponent));
+          const scoreDetails = parseScore(result.score);
           return {
             round: result.round,
             opponent: result.opponent,
             opponents,
             result: result.result,
-            score: result.score
+            score: result.score,
+            games: scoreDetails // games フィールドを追加
           };
         });
 
