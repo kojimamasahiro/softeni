@@ -1,4 +1,5 @@
 import json
+import re
 from collections import defaultdict
 from pathlib import Path
 
@@ -6,9 +7,12 @@ from pathlib import Path
 def is_win(result):
     return result.strip() == "勝ち"
 
+def extract_year(date_range):
+    match = re.search(r"(\d{4})年", date_range)
+    return match.group(1) if match else "不明"
+
 # プレイヤーのIDリスト
 player_ids = [
-    "uematsu-toshiki"
 ]
 
 # 各選手のデータに対して処理を行う
@@ -29,21 +33,19 @@ for player_id in player_ids:
 
     # 各試合の処理
     for match in data.get("matches", []):
-        year = match.get("year", "不明")
+        year = extract_year(match.get("dateRange", ""))
         partner = match.get("partner") or "シングルス"
 
         # groupStage, finalStage, top-level results に対応
         results_sources = []
 
-        # それぞれのステージ（groupStage, finalStage）での結果を集める
         for stage_name in ["groupStage", "finalStage"]:
             stage = match.get(stage_name)
-            if stage and "results" in stage:
+            if stage and isinstance(stage.get("results"), list):
                 results_sources.append(stage["results"])
 
-        # top-level results の処理
-        if "results" in match:
-            results_sources.append(match["results"])
+            if isinstance(match.get("results"), list):
+                results_sources.append(match["results"])
 
         for results in results_sources:
             for game in results:
@@ -51,42 +53,47 @@ for player_id in player_ids:
                 if result not in ["勝ち", "負け"]:
                     continue
 
-                total_matches += 1
                 win_flag = is_win(result)
+                total_matches += 1
                 if win_flag:
                     wins += 1
                 else:
                     losses += 1
 
+                # 得失ゲーム数の取得
+                games_won = game.get("games", {}).get("won", 0)
+                games_lost = game.get("games", {}).get("lost", 0)
+                games_total = games_won + games_lost
+
                 # パートナーごとの集計
                 partner_stats[partner]["matches"]["total"] += 1
-                partner_stats[partner]["games"]["total"] += 1
+                partner_stats[partner]["games"]["total"] += games_total
                 if win_flag:
                     partner_stats[partner]["matches"]["wins"] += 1
-                    partner_stats[partner]["games"]["won"] += 1
+                    partner_stats[partner]["games"]["won"] += games_won
                 else:
                     partner_stats[partner]["matches"]["losses"] += 1
-                    partner_stats[partner]["games"]["lost"] += 1
+                    partner_stats[partner]["games"]["lost"] += games_lost
 
                 # 年度ごとの集計
                 year_stats[year]["matches"]["total"] += 1
-                year_stats[year]["games"]["total"] += 1
+                year_stats[year]["games"]["total"] += games_total
                 if win_flag:
                     year_stats[year]["matches"]["wins"] += 1
-                    year_stats[year]["games"]["won"] += 1
+                    year_stats[year]["games"]["won"] += games_won
                 else:
                     year_stats[year]["matches"]["losses"] += 1
-                    year_stats[year]["games"]["lost"] += 1
+                    year_stats[year]["games"]["lost"] += games_lost
 
     # totalWinRate を計算
     total_win_rate = round(wins / total_matches, 3) if total_matches else 0.0
 
     # partner_stats と year_stats の各項目で winRate と gameRate を計算
-    for partner, stats in partner_stats.items():
+    for stats in partner_stats.values():
         stats["matches"]["winRate"] = round(stats["matches"]["wins"] / stats["matches"]["total"], 3) if stats["matches"]["total"] else 0.0
         stats["games"]["gameRate"] = round(stats["games"]["won"] / stats["games"]["total"], 3) if stats["games"]["total"] else 0.0
 
-    for year, stats in year_stats.items():
+    for stats in year_stats.values():
         stats["matches"]["winRate"] = round(stats["matches"]["wins"] / stats["matches"]["total"], 3) if stats["matches"]["total"] else 0.0
         stats["games"]["gameRate"] = round(stats["games"]["won"] / stats["games"]["total"], 3) if stats["games"]["total"] else 0.0
 
@@ -95,14 +102,14 @@ for player_id in player_ids:
         "totalMatches": total_matches,
         "wins": wins,
         "losses": losses,
-        "totalWinRate": total_win_rate,  # totalWinRate を追加
+        "totalWinRate": total_win_rate,
         "byPartner": partner_stats,
         "byYear": year_stats,
     }
 
     # デフォルト辞書を通常の辞書に変換して保存
     def dictify(d):
-        return {k: dict(v) for k, v in d.items()}
+        return {k: {kk: vv for kk, vv in v.items()} for k, v in d.items()}
 
     analysis_data["byPartner"] = dictify(analysis_data["byPartner"])
     analysis_data["byYear"] = dictify(analysis_data["byYear"])
