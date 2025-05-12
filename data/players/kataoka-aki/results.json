@@ -1,32 +1,169 @@
 {
   "matches": [
     {
+      "tournament": "第76回 関東学生ソフトテニス選手権",
+      "dateRange": "2025年5月12日(土)~5月13日(日)",
+      "location": "",
+      "link": "https://kssta.info/category/03_result/",
+      "format": "tournament",
+      "finalResult": "敗退",
+      "partner": "kurosaka-takuya",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "熊木・上田（法政大学）",
+          "opponents": [
+            {
+              "name": "熊木",
+              "team": "法政大学",
+              "playerId": null
+            },
+            {
+              "name": "上田",
+              "team": "法政大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "5-0",
+          "games": {
+            "won": 5,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "高野・高梨（東海大学）",
+          "opponents": [
+            {
+              "name": "高野",
+              "team": "東海大学",
+              "playerId": null
+            },
+            {
+              "name": "高梨",
+              "team": "東海大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "5-0",
+          "games": {
+            "won": 5,
+            "lost": 0
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "ー・ー（ー）",
+          "opponents": [
+            {
+              "name": "ー",
+              "team": "ー",
+              "playerId": null
+            },
+            {
+              "name": "ー",
+              "team": "ー",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "5-0",
+          "games": {
+            "won": 5,
+            "lost": 0
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "髙田・松本（早稲田大学）",
+          "opponents": [
+            {
+              "name": "髙田",
+              "team": "早稲田大学",
+              "playerId": null
+            },
+            {
+              "name": "松本",
+              "team": "早稲田大学",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "3-5",
+          "games": {
+            "won": 3,
+            "lost": 5
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回関東学生ソフトテニスシングルス選手権",
       "dateRange": "2025年5月3日(土)",
       "location": "",
       "link": "https://kssta.info/03_result/2580/",
       "format": "tournament",
       "finalResult": "敗退",
+      "partner": null,
+      "groupStage": null,
+      "finalStage": null,
       "results": [
-          {
-            "round": "3回戦",
-            "opponent": "橋本（順天堂大学）",
-            "result": "勝ち",
-            "score": "4-0"
-          },
-          {
-            "round": "4回戦",
-            "opponent": "中村（明治大学）",
-            "result": "勝ち",
-            "score": "4-3"
-          },
-          {
-            "round": "5回戦",
-            "opponent": "鈴木（中央大学）",
-            "result": "負け",
-            "score": "2-4"
+        {
+          "round": "3回戦",
+          "opponent": "橋本（順天堂大学）",
+          "opponents": [
+            {
+              "name": "橋本",
+              "team": "順天堂大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
           }
-        ]
+        },
+        {
+          "round": "4回戦",
+          "opponent": "中村（明治大学）",
+          "opponents": [
+            {
+              "name": "中村",
+              "team": "明治大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": 4,
+            "lost": 3
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "鈴木（中央大学）",
+          "opponents": [
+            {
+              "name": "鈴木",
+              "team": "中央大学",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": 2,
+            "lost": 4
+          }
+        }
+      ]
     },
     {
       "tournament": "第9回 アジア選手権大会日本代表予選会",
@@ -43,20 +180,68 @@
           {
             "round": "第1戦",
             "opponent": "白井・木本（混合）",
+            "opponents": [
+              {
+                "name": "白井",
+                "team": "混合",
+                "playerId": null
+              },
+              {
+                "name": "木本",
+                "team": "混合",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-0"
+            "score": "5-0",
+            "games": {
+              "won": 5,
+              "lost": 0
+            }
           },
           {
             "round": "第2戦",
             "opponent": "山口・島谷（マツダ）",
+            "opponents": [
+              {
+                "name": "山口",
+                "team": "マツダ",
+                "playerId": null
+              },
+              {
+                "name": "島谷",
+                "team": "マツダ",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-3"
+            "score": "5-3",
+            "games": {
+              "won": 5,
+              "lost": 3
+            }
           },
           {
             "round": "第3戦",
             "opponent": "山口・佐藤（ベスト）",
+            "opponents": [
+              {
+                "name": "山口",
+                "team": "ベスト",
+                "playerId": null
+              },
+              {
+                "name": "佐藤",
+                "team": "ベスト",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-0"
+            "score": "5-0",
+            "games": {
+              "won": 5,
+              "lost": 0
+            }
           }
         ]
       },
@@ -66,99 +251,28 @@
           {
             "round": "1回戦",
             "opponent": "丸中・長江（NTT西日本）",
+            "opponents": [
+              {
+                "name": "丸中",
+                "team": "NTT西日本",
+                "playerId": "marunaka-taimei"
+              },
+              {
+                "name": "長江",
+                "team": "NTT西日本",
+                "playerId": "nagae-koichi"
+              }
+            ],
             "result": "負け",
-            "score": "4-5"
-          }
-        ]
-      }
-    },
-    {
-      "tournament": "第9回 全日本男子選抜ソフトテニス大会",
-      "dateRange": "2025年4月5日(土)~4月6日(日)",
-      "location": "有明テニスの森",
-      "link": "https://zennihon-senbatsu.com/",
-      "format": "combined",
-      "finalResult": "準優勝",
-      "partner": "kurosaka-takuya",
-      "groupStage": {
-        "format": "round-robin",
-        "group": "グループG",
-        "results": [
-          {
-            "round": "第1戦",
-            "opponent": "飯降・萩谷（高田商業）",
-            "result": "勝ち",
-            "score": "4-0"
-          },
-          {
-            "round": "第2戦",
-            "opponent": "中村・松本（東京ガス）",
-            "result": "勝ち",
-            "score": "4-0"
+            "score": "4-5",
+            "games": {
+              "won": 4,
+              "lost": 5
+            }
           }
         ]
       },
-      "finalStage": {
-        "format": "tournament",
-        "results": [
-          {
-            "round": "準々決勝",
-            "opponent": "・（中華台北）",
-            "result": "勝ち",
-            "score": "4-1"
-          },
-          {
-            "round": "準決勝",
-            "opponent": "矢野・上松（NTT西日本）",
-            "result": "勝ち",
-            "score": "5-4"
-          },
-          {
-            "round": "決勝",
-            "opponent": "内本・内田（NTT西日本）",
-            "result": "負け",
-            "score": "2-5"
-          }
-        ]
-      }
-    },
-    {
-      "tournament": "第70回 全日本インドアソフトテニス選手権大会",
-      "dateRange": "2025年2月2日(土)",
-      "location": "Asueアリーナ大阪",
-      "link": "https://www.pin-spot.com/osta/",
-      "format": "combined",
-      "finalResult": "ベスト4",
-      "partner": "kurosaka-takuya",
-      "groupStage": {
-        "format": "round-robin",
-        "group": "グループB",
-        "results": [
-          {
-            "round": "第1戦",
-            "opponent": "矢野・端山（早稲田大学）",
-            "result": "勝ち",
-            "score": "4-3"
-          },
-          {
-            "round": "第2戦",
-            "opponent": "川﨑・山本（ワタキューセイモア）",
-            "result": "勝ち",
-            "score": "4-1"
-          }
-        ]
-      },
-      "finalStage": {
-        "format": "tournament",
-        "results": [
-          {
-            "round": "準決勝",
-            "opponent": "内本・内田（NTT西日本）",
-            "result": "負け",
-            "score": "3-5"
-          }
-        ]
-      }
+      "results": null
     }
   ]
 }
