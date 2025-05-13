@@ -103,6 +103,12 @@ def analyze_matches(matches_data):
         "wins": total_wins,
         "losses": total_losses,
         "totalWinRate": calc_rate(total_wins, total_matches),
+        "games": {
+            "total": total_games,
+            "won": total_games_won,
+            "lost": total_games_lost,
+            "gameRate": calc_rate(total_games_won, total_games)
+        },
         "byPartner": {},
         "byYear": {}
     }

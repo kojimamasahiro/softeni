@@ -3,6 +3,12 @@
   "wins": 11,
   "losses": 2,
   "totalWinRate": 0.846,
+  "games": {
+    "total": 79,
+    "won": 52,
+    "lost": 27,
+    "gameRate": 0.658
+  },
   "byPartner": {
     "ando-kesuke": {
       "matches": {
@@ -12,10 +18,10 @@
         "winRate": 0.846
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 79,
+        "won": 52,
+        "lost": 27,
+        "gameRate": 0.658
       }
     }
   },
@@ -28,10 +34,10 @@
         "winRate": 0.909
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 68,
+        "won": 45,
+        "lost": 23,
+        "gameRate": 0.662
       }
     },
     "2024": {
@@ -42,10 +48,10 @@
         "winRate": 0.5
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 11,
+        "won": 7,
+        "lost": 4,
+        "gameRate": 0.636
       }
     }
   }

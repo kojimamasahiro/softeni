@@ -3,6 +3,12 @@
   "wins": 11,
   "losses": 2,
   "totalWinRate": 0.846,
+  "games": {
+    "total": 82,
+    "won": 56,
+    "lost": 26,
+    "gameRate": 0.683
+  },
   "byPartner": {
     "ueoka-shunsuke": {
       "matches": {
@@ -12,10 +18,10 @@
         "winRate": 0.846
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 82,
+        "won": 56,
+        "lost": 26,
+        "gameRate": 0.683
       }
     }
   },
@@ -28,10 +34,10 @@
         "winRate": 0.889
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 58,
+        "won": 40,
+        "lost": 18,
+        "gameRate": 0.69
       }
     },
     "2024": {
@@ -42,10 +48,10 @@
         "winRate": 0.75
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 24,
+        "won": 16,
+        "lost": 8,
+        "gameRate": 0.667
       }
     }
   }

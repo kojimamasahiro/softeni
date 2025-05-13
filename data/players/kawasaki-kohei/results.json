@@ -15,14 +15,46 @@
           {
             "round": "第1戦",
             "opponent": "浅見・安達（早稲田大学）",
+            "opponents": [
+              {
+                "name": "浅見",
+                "team": "早稲田大学",
+                "playerId": null
+              },
+              {
+                "name": "安達",
+                "team": "早稲田大学",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "4-1"
+            "score": "4-1",
+            "games": {
+              "won": 4,
+              "lost": 1
+            }
           },
           {
             "round": "第2戦",
             "opponent": "橋場・菊山（法政大学）",
+            "opponents": [
+              {
+                "name": "橋場",
+                "team": "法政大学",
+                "playerId": null
+              },
+              {
+                "name": "菊山",
+                "team": "法政大学",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "4-0"
+            "score": "4-0",
+            "games": {
+              "won": 4,
+              "lost": 0
+            }
           }
         ]
       },
@@ -32,11 +64,28 @@
           {
             "round": "準決勝",
             "opponent": "広岡・長江（NTT西日本）",
+            "opponents": [
+              {
+                "name": "広岡",
+                "team": "NTT西日本",
+                "playerId": null
+              },
+              {
+                "name": "長江",
+                "team": "NTT西日本",
+                "playerId": null
+              }
+            ],
             "result": "負け",
-            "score": "4-5"
+            "score": "4-5",
+            "games": {
+              "won": 4,
+              "lost": 5
+            }
           }
         ]
-      }
+      },
+      "results": null
     }
   ]
 }

@@ -1,31 +1,40 @@
 // types/stats.ts
 
+export interface Games {
+  total: number;
+  won: number;
+  lost: number;
+  gameRate: number;
+};
+
 export interface MatchStats {
-    total: number;
-    wins: number;
-    losses: number;
-    winRate: number;
+  total: number;
+  wins: number;
+  losses: number;
+  winRate: number;
+};
+
+export interface PartnerStats {
+  [partnerId: string]: {
+    matches: MatchStats;
+    games: Games;
   };
-  
-  export interface PartnerStats {
-    [partnerId: string]: {
-      matches: MatchStats;
-    };
+};
+
+export interface YearStats {
+  [year: string]: {
+    matches: MatchStats;
+    games: Games;
   };
-  
-  export interface YearStats {
-    [year: string]: {
-      matches: MatchStats;
-    };
-  };
-  
-  export interface SummaryStats {
-    totalMatches: number;
-    wins: number;
-    losses: number;
-    totalWinRate: number;
-    byPartner: PartnerStats;
-    byYear: YearStats;
-    playerId: string;
-  };
-  
+};
+
+export interface PlayerStats {
+  playerId: string;
+  totalMatches: number;
+  wins: number;
+  losses: number;
+  totalWinRate: number;
+  games: Games;
+  byPartner: PartnerStats;
+  byYear: YearStats;
+};

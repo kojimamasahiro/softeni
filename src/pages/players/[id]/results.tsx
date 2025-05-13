@@ -4,7 +4,7 @@ import MetaHead from '@/components/MetaHead';
 import PlayerResults from '@/components/PlayerResults';
 import { getAllPlayers } from '@/lib/players';
 import { getAllTournaments } from '@/lib/tournaments';
-import { PlayerData, PlayerInfo, SummaryStats, TournamentSummary } from '@/types/index';
+import { PlayerData, PlayerInfo, PlayerStats, TournamentSummary } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -17,7 +17,7 @@ type PlayerResultsProps = {
   playerInfo: PlayerInfo;
   allPlayers: PlayerInfo[];
   allTournaments: TournamentSummary[];
-  playerStats: SummaryStats
+  playerStats: PlayerStats
 };
 
 export default function PlayerResultsPage({
@@ -168,7 +168,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // 解析情報を取得
   const statsPath = path.join(process.cwd(), 'data', 'players', playerId, 'analysis.json');
-  let playerStats: SummaryStats | null = null;
+  let playerStats: PlayerStats | null = null;
   if (fs.existsSync(statsPath)) {
     playerStats = JSON.parse(fs.readFileSync(statsPath, 'utf-8'));
     if (playerStats) {

@@ -1,7 +1,6 @@
 {
   "matches": [
     {
-      "year": 2025,
       "tournament": "第9回 アジア選手権大会日本代表予選会",
       "dateRange": "2025年4月26日(土)~4月27日(日)",
       "location": "仙台市青葉山公園庭球場",
@@ -140,7 +139,7 @@
               {
                 "name": "橋場",
                 "team": "法政大学",
-                "playerId": "hashiba-toichiro"
+                "playerId": null
               }
             ],
             "result": "勝ち",
@@ -156,13 +155,13 @@
             "opponents": [
               {
                 "name": "上岡",
-                "team": "Up Rise",
-                "playerId": "ueoka-shunsuke"
+                "team": "混合",
+                "playerId": null
               },
               {
                 "name": "丸山",
-                "team": "one-team",
-                "playerId": "maruyama-kaito"
+                "team": "混合",
+                "playerId": null
               }
             ],
             "result": "負け",
@@ -173,10 +172,10 @@
             }
           }
         ]
-      }
+      },
+      "results": null
     },
     {
-      "year": 2025,
       "tournament": "第9回 全日本男子選抜ソフトテニス大会",
       "dateRange": "2025年4月5日(土)~4月6日(日)",
       "location": "有明テニスの森",
@@ -266,12 +265,12 @@
               {
                 "name": "片岡",
                 "team": "日本体育大学",
-                "playerId": "kataoka-aki"
+                "playerId": null
               },
               {
                 "name": "黒坂",
                 "team": "日本体育大学",
-                "playerId": "kurosaka-takuya"
+                "playerId": null
               }
             ],
             "result": "負け",
@@ -282,10 +281,10 @@
             }
           }
         ]
-      }
+      },
+      "results": null
     },
     {
-      "year": 2024,
       "tournament": "第70回 全日本インドアソフトテニス選手権大会",
       "dateRange": "2025年2月2日(土)",
       "location": "Asueアリーナ大阪",
@@ -326,7 +325,7 @@
               {
                 "name": "橋場",
                 "team": "法政大学",
-                "playerId": "hashiba-toichiro"
+                "playerId": null
               },
               {
                 "name": "菊山",
@@ -353,12 +352,12 @@
               {
                 "name": "広岡",
                 "team": "NTT西日本",
-                "playerId": "hirooka-sora"
+                "playerId": null
               },
               {
                 "name": "長江",
                 "team": "NTT西日本",
-                "playerId": "nagae-koichi"
+                "playerId": null
               }
             ],
             "result": "負け",
@@ -369,7 +368,8 @@
             }
           }
         ]
-      }
+      },
+      "results": null
     }
   ]
 }

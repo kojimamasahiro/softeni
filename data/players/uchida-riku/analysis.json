@@ -3,6 +3,12 @@
   "wins": 14,
   "losses": 1,
   "totalWinRate": 0.933,
+  "games": {
+    "total": 95,
+    "won": 67,
+    "lost": 28,
+    "gameRate": 0.705
+  },
   "byPartner": {
     "uchimoto-takafumi": {
       "matches": {
@@ -12,10 +18,10 @@
         "winRate": 0.933
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 95,
+        "won": 67,
+        "lost": 28,
+        "gameRate": 0.705
       }
     }
   },
@@ -28,10 +34,10 @@
         "winRate": 0.909
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 66,
+        "won": 49,
+        "lost": 17,
+        "gameRate": 0.742
       }
     },
     "2024": {
@@ -42,10 +48,10 @@
         "winRate": 1.0
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 29,
+        "won": 18,
+        "lost": 11,
+        "gameRate": 0.621
       }
     }
   }

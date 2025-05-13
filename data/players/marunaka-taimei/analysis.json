@@ -3,6 +3,12 @@
   "wins": 4,
   "losses": 2,
   "totalWinRate": 0.667,
+  "games": {
+    "total": 41,
+    "won": 21,
+    "lost": 20,
+    "gameRate": 0.512
+  },
   "byPartner": {
     "nagae-koichi": {
       "matches": {
@@ -12,10 +18,10 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 41,
+        "won": 21,
+        "lost": 20,
+        "gameRate": 0.512
       }
     }
   },
@@ -28,10 +34,10 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 41,
+        "won": 21,
+        "lost": 20,
+        "gameRate": 0.512
       }
     }
   }

@@ -1,10 +1,10 @@
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
-import { MatchResult, PlayerData, PlayerInfo, SummaryStats, Tournament } from '@/types/index';
+import { MatchResult, PlayerData, PlayerInfo, PlayerStats, Tournament } from '@/types/index';
 import Link from 'next/link';
 
 type PlayerResultsProps = {
   playerData: PlayerData;
-  playerStats: SummaryStats;
+  playerStats: PlayerStats;
   allPlayers: PlayerInfo[];
 };
 
@@ -25,7 +25,7 @@ export default function PlayerResults({ playerData, playerStats, allPlayers }: P
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">🎾 大会結果</h2>
 
-      <PlayerSummaryStats summaryStats={playerStats} allPlayers={allPlayers} />
+      <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers} />
 
       {Object.entries(tournamentsByName).map(([tournamentName, tournaments], index) => (
         <div key={index} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">

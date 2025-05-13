@@ -3,6 +3,12 @@
   "wins": 2,
   "losses": 1,
   "totalWinRate": 0.667,
+  "games": {
+    "total": 18,
+    "won": 12,
+    "lost": 6,
+    "gameRate": 0.667
+  },
   "byPartner": {
     "uematsu-toshiki": {
       "matches": {
@@ -12,10 +18,10 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 18,
+        "won": 12,
+        "lost": 6,
+        "gameRate": 0.667
       }
     }
   },
@@ -28,10 +34,10 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 18,
+        "won": 12,
+        "lost": 6,
+        "gameRate": 0.667
       }
     }
   }

@@ -3,6 +3,12 @@
   "wins": 7,
   "losses": 3,
   "totalWinRate": 0.7,
+  "games": {
+    "total": 69,
+    "won": 38,
+    "lost": 31,
+    "gameRate": 0.551
+  },
   "byPartner": {
     "marunaka-taimei": {
       "matches": {
@@ -12,10 +18,10 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 41,
+        "won": 21,
+        "lost": 20,
+        "gameRate": 0.512
       }
     },
     "hirooka-sora": {
@@ -26,10 +32,10 @@
         "winRate": 0.75
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 28,
+        "won": 17,
+        "lost": 11,
+        "gameRate": 0.607
       }
     }
   },
@@ -42,10 +48,10 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 41,
+        "won": 21,
+        "lost": 20,
+        "gameRate": 0.512
       }
     },
     "2024": {
@@ -56,10 +62,10 @@
         "winRate": 0.75
       },
       "games": {
-        "total": 0,
-        "won": 0,
-        "lost": 0,
-        "gameRate": 0
+        "total": 28,
+        "won": 17,
+        "lost": 11,
+        "gameRate": 0.607
       }
     }
   }

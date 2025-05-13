@@ -15,20 +15,68 @@
           {
             "round": "第1戦",
             "opponent": "金子・伊比（混合）",
+            "opponents": [
+              {
+                "name": "金子",
+                "team": "混合",
+                "playerId": null
+              },
+              {
+                "name": "伊比",
+                "team": "混合",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-1"
+            "score": "5-1",
+            "games": {
+              "won": 5,
+              "lost": 1
+            }
           },
           {
             "round": "第2戦",
             "opponent": "内田・宮田（日本連盟）",
+            "opponents": [
+              {
+                "name": "内田",
+                "team": "日本連盟",
+                "playerId": null
+              },
+              {
+                "name": "宮田",
+                "team": "日本連盟",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5−2"
+            "score": "5−2",
+            "games": {
+              "won": 5,
+              "lost": 2
+            }
           },
           {
             "round": "第3戦",
             "opponent": "松田・水木（東北高校）",
+            "opponents": [
+              {
+                "name": "松田",
+                "team": "東北高校",
+                "playerId": null
+              },
+              {
+                "name": "水木",
+                "team": "東北高校",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5−1"
+            "score": "5−1",
+            "games": {
+              "won": 5,
+              "lost": 1
+            }
           }
         ]
       },
@@ -38,29 +86,94 @@
           {
             "round": "2回戦",
             "opponent": "中尾・根岸（日本連盟）",
+            "opponents": [
+              {
+                "name": "中尾",
+                "team": "日本連盟",
+                "playerId": null
+              },
+              {
+                "name": "根岸",
+                "team": "日本連盟",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-1"
+            "score": "5-1",
+            "games": {
+              "won": 5,
+              "lost": 1
+            }
           },
           {
             "round": "準々決勝",
             "opponent": "前田・石井（混合）",
+            "opponents": [
+              {
+                "name": "前田",
+                "team": "混合",
+                "playerId": null
+              },
+              {
+                "name": "石井",
+                "team": "混合",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-4"
+            "score": "5-4",
+            "games": {
+              "won": 5,
+              "lost": 4
+            }
           },
           {
             "round": "準決勝",
             "opponent": "菊山・橋場（法政大学）",
+            "opponents": [
+              {
+                "name": "菊山",
+                "team": "法政大学",
+                "playerId": null
+              },
+              {
+                "name": "橋場",
+                "team": "法政大学",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "5-1"
+            "score": "5-1",
+            "games": {
+              "won": 5,
+              "lost": 1
+            }
           },
           {
             "round": "決勝",
             "opponent": "上岡・丸山（混合）",
+            "opponents": [
+              {
+                "name": "上岡",
+                "team": "混合",
+                "playerId": null
+              },
+              {
+                "name": "丸山",
+                "team": "混合",
+                "playerId": null
+              }
+            ],
             "result": "負け",
-            "score": "3-5"
+            "score": "3-5",
+            "games": {
+              "won": 3,
+              "lost": 5
+            }
           }
         ]
-      }
+      },
+      "results": null
     },
     {
       "tournament": "第9回 全日本男子選抜ソフトテニス大会",
@@ -77,14 +190,46 @@
           {
             "round": "第1戦",
             "opponent": "高澤・阿部（能登高校）",
+            "opponents": [
+              {
+                "name": "高澤",
+                "team": "能登高校",
+                "playerId": null
+              },
+              {
+                "name": "阿部",
+                "team": "能登高校",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "4-1"
+            "score": "4-1",
+            "games": {
+              "won": 4,
+              "lost": 1
+            }
           },
           {
             "round": "第2戦",
             "opponent": "足利・大友（東邦ガス）",
+            "opponents": [
+              {
+                "name": "足利",
+                "team": "東邦ガス",
+                "playerId": null
+              },
+              {
+                "name": "大友",
+                "team": "東邦ガス",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "4-2"
+            "score": "4-2",
+            "games": {
+              "won": 4,
+              "lost": 2
+            }
           }
         ]
       },
@@ -94,17 +239,50 @@
           {
             "round": "準々決勝",
             "opponent": "南・竹内（三重高校）",
+            "opponents": [
+              {
+                "name": "南",
+                "team": "三重高校",
+                "playerId": null
+              },
+              {
+                "name": "竹内",
+                "team": "三重高校",
+                "playerId": null
+              }
+            ],
             "result": "勝ち",
-            "score": "4-0"
+            "score": "4-0",
+            "games": {
+              "won": 4,
+              "lost": 0
+            }
           },
           {
             "round": "準決勝",
             "opponent": "片岡・黒坂（日本体育大学）",
+            "opponents": [
+              {
+                "name": "片岡",
+                "team": "日本体育大学",
+                "playerId": null
+              },
+              {
+                "name": "黒坂",
+                "team": "日本体育大学",
+                "playerId": null
+              }
+            ],
             "result": "負け",
-            "score": "4-5"
+            "score": "4-5",
+            "games": {
+              "won": 4,
+              "lost": 5
+            }
           }
         ]
-      }
+      },
+      "results": null
     }
   ]
 }
