@@ -129,12 +129,13 @@ export default function PlayerResultsPage({
 
           <section>
             <PlayerResults playerData={playerData} playerStats={playerStats} allPlayers={allPlayers} />
-            <div className="text-right mb-2">
-              <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
-                {fullName}選手プロフィール
-              </Link>
-            </div>
           </section>
+
+          <div className="text-right mb-2">
+            <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
+              {fullName}選手プロフィール
+            </Link>
+          </div>
         </div>
       </main>
     </>
