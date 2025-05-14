@@ -12,7 +12,7 @@ const getFormattedDateTime = (date: Date) => {
   const month = date.getMonth() + 1;
   const dayOfMonth = date.getDate();
   const hour = date.getHours();
-  const minute = date.getMinutes().toString().padStart(2, '0');
+  const minute = date.getMinutes().toString()
   return `${month}月${dayOfMonth}日(${day}) ${hour}時${minute}分`;
 };
 
@@ -45,14 +45,11 @@ if (!isInRange) {
     '1. 上松俊貴',
     '73. 上岡俊介',
     '145. 橋場柊一郎',
-    '216. 広岡宙',
-    '217. 丸山海斗',
-    '288. 内田理久',
   ];
   const message =
     nowJST > endDate
       ? '次回の大会速報までお待ちください。'
-      : `次回の大会速報は${getFormattedDateTime(startDate)}に開始予定です。\n\n第32回 全日本シングルス選手権大会
+      : `第32回 全日本シングルス選手権大会\n${getFormattedDateTime(startDate)}開始\n
 以下の出場予定の選手を速報予定です。\n- ${scheduledPlayers.join('\n- ')}`;
   return (
     <SectionWrapper>
