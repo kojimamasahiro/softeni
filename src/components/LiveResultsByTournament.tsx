@@ -17,9 +17,9 @@ const getFormattedDateTime = (date: Date) => {
 };
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
-  <section className="mb-8">
+  <section className="mb-8 px-4">
     <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">📢 大会速報</h2>
-    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">{children}</div>
+    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">{children}</div>
   </section>
 );
 

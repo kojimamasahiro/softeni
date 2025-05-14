@@ -110,16 +110,12 @@ export default function PlayerResultsPage({
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-2xl font-bold mb-6">{fullName}</h1>
 
-          <section className="mb-8">
-            <LiveResults playerId={playerId} />
-          </section>
+          <LiveResults playerId={playerId} />
 
-          <section className="mb-8">
-            <MajorTitles id={playerId} tournaments={allTournaments} />
-          </section>
+          <MajorTitles id={playerId} tournaments={allTournaments} />
 
           <div className="text-right mt-8 mb-2">
             <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
@@ -131,7 +127,7 @@ export default function PlayerResultsPage({
             <PlayerResults playerData={playerData} playerStats={playerStats} allPlayers={allPlayers} />
           </section>
 
-          <div className="text-right mb-2">
+          <div className="text-right">
             <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
               {fullName}選手プロフィール
             </Link>

@@ -23,7 +23,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
   if (!isInRange || error) return null;
 
   return (
-    <div className="p-4">
+    <section className="mb-8 p-4">
       <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">📢 大会速報</h2>
 
       <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
@@ -63,6 +63,6 @@ export default function LiveResults({ playerId }: { playerId: string }) {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }
