@@ -52,7 +52,8 @@ if (!isInRange) {
   const message =
     nowJST > endDate
       ? '次回の大会速報までお待ちください。'
-      : `次回の大会速報は${getFormattedDateTime(startDate)}に開始予定です。\n\n以下の出場予定の選手を速報予定です。\n- ${scheduledPlayers.join('\n- ')}`;
+      : `次回の大会速報は${getFormattedDateTime(startDate)}に開始予定です。\n\n第32回 全日本シングルス選手権大会
+以下の出場予定の選手を速報予定です。\n- ${scheduledPlayers.join('\n- ')}`;
   return (
     <SectionWrapper>
       <Message text={message} />
