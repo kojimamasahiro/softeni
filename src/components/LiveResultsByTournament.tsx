@@ -24,8 +24,9 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Message = ({ text }: { text: string }) => (
-  <div className="text-center py-6 text-gray-600 dark:text-gray-300">{text}</div>
+  <div className="py-6 text-gray-600 dark:text-gray-300 whitespace-pre-line">{text}</div>
 );
+
 
 export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
   const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
@@ -39,17 +40,26 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
     { dedupingInterval: 60000, revalidateOnFocus: false }
   );
 
-  if (!isInRange) {
-    const message =
-      nowJST > endDate
-        ? '次回の大会速報までお待ちください。'
-        : `次回の大会速報は${getFormattedDateTime(startDate)}開始予定です。`;
-    return (
-      <SectionWrapper>
-        <Message text={message} />
-      </SectionWrapper>
-    );
-  }
+if (!isInRange) {
+  const scheduledPlayers = [
+    '1. 上松俊貴',
+    '73. 上岡俊介',
+    '145. 橋場柊一郎',
+    '216. 広岡宙',
+    '217. 丸山海斗',
+    '288. 内田理久',
+  ];
+  const message =
+    nowJST > endDate
+      ? '次回の大会速報までお待ちください。'
+      : `次回の大会速報は${getFormattedDateTime(startDate)}に開始予定です。\n\n以下の出場予定の選手を速報予定です。\n- ${scheduledPlayers.join('\n- ')}`;
+  return (
+    <SectionWrapper>
+      <Message text={message} />
+    </SectionWrapper>
+  );
+}
+
 
   if (error || playersData.length === 0) return null;
 
