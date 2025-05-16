@@ -51,7 +51,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
                 <div>{playerLiveResult.latestResult}</div>
               </div>
               {/* もし nextMatch など追加するならここに */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-3 text-sm text-gray-500 dark:text-gray-400">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-3 text-sm text-gray-500 dark:text-gray-400 text-right">
                 最終更新: {new Date(liveData.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
               </div>
             </div>
