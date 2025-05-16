@@ -1,6 +1,6 @@
 'use client';
 
-import { LIVE_PERIOD } from '@/config/livePeriod';
+import { LIVE_PERIOD, LIVE_PLAYERS } from '@/config/livePeriod';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData } from '@/types/index';
 import useSWR from 'swr';
@@ -11,6 +11,9 @@ export default function LiveResults({ playerId }: { playerId: string }) {
   const endDate = new Date(LIVE_PERIOD.endDate);
   const isInRange = nowJST >= startDate && nowJST <= endDate;
 
+  // LIVE_PLAYERS に playerId が含まれているか判定
+  const isPlayerInLive = LIVE_PLAYERS.includes(playerId);
+
   const { data: liveData, error, isLoading } = useSWR<LiveData>(
     isInRange ? 'liveData' : null,
     getLiveData,
@@ -20,7 +23,7 @@ export default function LiveResults({ playerId }: { playerId: string }) {
     }
   );
 
-  if (!isInRange || error) return null;
+  if (!isPlayerInLive || !isInRange || error) return null;
 
   return (
     <section className="mb-8 p-4">
