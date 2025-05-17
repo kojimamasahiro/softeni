@@ -1,15 +1,29 @@
 {
-  "totalMatches": 13,
-  "wins": 11,
+  "totalMatches": 16,
+  "wins": 14,
   "losses": 2,
-  "totalWinRate": 0.846,
+  "totalWinRate": 0.875,
   "games": {
-    "total": 82,
-    "won": 56,
-    "lost": 26,
-    "gameRate": 0.683
+    "total": 98,
+    "won": 68,
+    "lost": 30,
+    "gameRate": 0.694
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 16,
+        "won": 12,
+        "lost": 4,
+        "gameRate": 0.75
+      }
+    },
     "maruyama-kaito": {
       "matches": {
         "total": 13,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 9,
-        "wins": 8,
+        "total": 12,
+        "wins": 11,
         "losses": 1,
-        "winRate": 0.889
+        "winRate": 0.917
       },
       "games": {
-        "total": 58,
-        "won": 40,
-        "lost": 18,
-        "gameRate": 0.69
+        "total": 74,
+        "won": 52,
+        "lost": 22,
+        "gameRate": 0.703
       }
     },
     "2024": {

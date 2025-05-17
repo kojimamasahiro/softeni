@@ -1,15 +1,29 @@
 {
-  "totalMatches": 5,
-  "wins": 4,
+  "totalMatches": 8,
+  "wins": 7,
   "losses": 1,
-  "totalWinRate": 0.8,
+  "totalWinRate": 0.875,
   "games": {
-    "total": 38,
-    "won": 24,
+    "total": 50,
+    "won": 36,
     "lost": 14,
-    "gameRate": 0.632
+    "gameRate": 0.72
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 12,
+        "won": 12,
+        "lost": 0,
+        "gameRate": 1.0
+      }
+    },
     "hirooka-sora": {
       "matches": {
         "total": 5,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 5,
-        "wins": 4,
+        "total": 8,
+        "wins": 7,
         "losses": 1,
-        "winRate": 0.8
+        "winRate": 0.875
       },
       "games": {
-        "total": 38,
-        "won": 24,
+        "total": 50,
+        "won": 36,
         "lost": 14,
-        "gameRate": 0.632
+        "gameRate": 0.72
       }
     }
   }

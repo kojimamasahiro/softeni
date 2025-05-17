@@ -1,14 +1,44 @@
 {
-  "totalMatches": 0,
-  "wins": 0,
+  "totalMatches": 3,
+  "wins": 3,
   "losses": 0,
-  "totalWinRate": 0,
+  "totalWinRate": 1.0,
   "games": {
-    "total": 0,
-    "won": 0,
-    "lost": 0,
-    "gameRate": 0
+    "total": 17,
+    "won": 12,
+    "lost": 5,
+    "gameRate": 0.706
   },
-  "byPartner": {},
-  "byYear": {}
+  "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 17,
+        "won": 12,
+        "lost": 5,
+        "gameRate": 0.706
+      }
+    }
+  },
+  "byYear": {
+    "2025": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 17,
+        "won": 12,
+        "lost": 5,
+        "gameRate": 0.706
+      }
+    }
+  }
 }

@@ -1,3 +1,4 @@
+#  % python3 scripts/generate_analysis.py
 import json
 from collections import defaultdict
 from datetime import datetime
@@ -64,8 +65,8 @@ def analyze_matches(matches_data):
                 by_year[year]["matches"]["losses"] += 1
 
             games = result.get("games", {})
-            won = games.get("won", 0)
-            lost = games.get("lost", 0)
+            won = int(games.get("won", 0))  # 数値型に変換
+            lost = int(games.get("lost", 0))  # 数値型に変換
             total_game = won + lost
 
             total_games += total_game

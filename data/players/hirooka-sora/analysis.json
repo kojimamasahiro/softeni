@@ -1,15 +1,29 @@
 {
-  "totalMatches": 11,
-  "wins": 7,
+  "totalMatches": 15,
+  "wins": 11,
   "losses": 4,
-  "totalWinRate": 0.636,
+  "totalWinRate": 0.733,
   "games": {
-    "total": 72,
-    "won": 43,
-    "lost": 29,
-    "gameRate": 0.597
+    "total": 90,
+    "won": 59,
+    "lost": 31,
+    "gameRate": 0.656
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 6,
+        "wins": 4,
+        "losses": 2,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 24,
+        "won": 18,
+        "lost": 6,
+        "gameRate": 0.75
+      }
+    },
     "motokura-kentaro": {
       "matches": {
         "total": 5,
@@ -22,20 +36,6 @@
         "won": 24,
         "lost": 14,
         "gameRate": 0.632
-      }
-    },
-    "シングルス": {
-      "matches": {
-        "total": 2,
-        "wins": 0,
-        "losses": 2,
-        "winRate": 0.0
-      },
-      "games": {
-        "total": 6,
-        "won": 2,
-        "lost": 4,
-        "gameRate": 0.333
       }
     },
     "nagae-koichi": {
@@ -56,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 7,
-        "wins": 4,
+        "total": 11,
+        "wins": 8,
         "losses": 3,
-        "winRate": 0.571
+        "winRate": 0.727
       },
       "games": {
-        "total": 44,
-        "won": 26,
-        "lost": 18,
-        "gameRate": 0.591
+        "total": 62,
+        "won": 42,
+        "lost": 20,
+        "gameRate": 0.677
       }
     },
     "2024": {

@@ -1,15 +1,29 @@
 {
-  "totalMatches": 15,
-  "wins": 14,
-  "losses": 1,
-  "totalWinRate": 0.933,
+  "totalMatches": 17,
+  "wins": 15,
+  "losses": 2,
+  "totalWinRate": 0.882,
   "games": {
-    "total": 95,
-    "won": 67,
-    "lost": 28,
-    "gameRate": 0.705
+    "total": 105,
+    "won": 73,
+    "lost": 32,
+    "gameRate": 0.695
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 10,
+        "won": 6,
+        "lost": 4,
+        "gameRate": 0.6
+      }
+    },
     "uchida-riku": {
       "matches": {
         "total": 15,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 11,
-        "wins": 10,
-        "losses": 1,
-        "winRate": 0.909
+        "total": 13,
+        "wins": 11,
+        "losses": 2,
+        "winRate": 0.846
       },
       "games": {
-        "total": 66,
-        "won": 49,
-        "lost": 17,
-        "gameRate": 0.742
+        "total": 76,
+        "won": 55,
+        "lost": 21,
+        "gameRate": 0.724
       }
     },
     "2024": {

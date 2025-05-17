@@ -1,15 +1,29 @@
 {
-  "totalMatches": 11,
-  "wins": 9,
+  "totalMatches": 15,
+  "wins": 13,
   "losses": 2,
-  "totalWinRate": 0.818,
+  "totalWinRate": 0.867,
   "games": {
-    "total": 72,
-    "won": 49,
-    "lost": 23,
-    "gameRate": 0.681
+    "total": 89,
+    "won": 65,
+    "lost": 24,
+    "gameRate": 0.73
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 4,
+        "wins": 4,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 17,
+        "won": 16,
+        "lost": 1,
+        "gameRate": 0.941
+      }
+    },
     "uematsu-toshiki": {
       "matches": {
         "total": 11,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 11,
-        "wins": 9,
+        "total": 15,
+        "wins": 13,
         "losses": 2,
-        "winRate": 0.818
+        "winRate": 0.867
       },
       "games": {
-        "total": 72,
-        "won": 49,
-        "lost": 23,
-        "gameRate": 0.681
+        "total": 89,
+        "won": 65,
+        "lost": 24,
+        "gameRate": 0.73
       }
     }
   }

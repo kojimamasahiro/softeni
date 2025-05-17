@@ -1,15 +1,29 @@
 {
-  "totalMatches": 10,
-  "wins": 7,
+  "totalMatches": 13,
+  "wins": 10,
   "losses": 3,
-  "totalWinRate": 0.7,
+  "totalWinRate": 0.769,
   "games": {
-    "total": 69,
-    "won": 38,
-    "lost": 31,
-    "gameRate": 0.551
+    "total": 83,
+    "won": 50,
+    "lost": 33,
+    "gameRate": 0.602
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 14,
+        "won": 12,
+        "lost": 2,
+        "gameRate": 0.857
+      }
+    },
     "marunaka-taimei": {
       "matches": {
         "total": 6,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 6,
-        "wins": 4,
+        "total": 9,
+        "wins": 7,
         "losses": 2,
-        "winRate": 0.667
+        "winRate": 0.778
       },
       "games": {
-        "total": 41,
-        "won": 21,
-        "lost": 20,
-        "gameRate": 0.512
+        "total": 55,
+        "won": 33,
+        "lost": 22,
+        "gameRate": 0.6
       }
     },
     "2024": {

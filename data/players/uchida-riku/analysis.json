@@ -1,15 +1,29 @@
 {
-  "totalMatches": 15,
-  "wins": 14,
+  "totalMatches": 18,
+  "wins": 17,
   "losses": 1,
-  "totalWinRate": 0.933,
+  "totalWinRate": 0.944,
   "games": {
-    "total": 95,
-    "won": 67,
-    "lost": 28,
-    "gameRate": 0.705
+    "total": 108,
+    "won": 79,
+    "lost": 29,
+    "gameRate": 0.731
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 13,
+        "won": 12,
+        "lost": 1,
+        "gameRate": 0.923
+      }
+    },
     "uchimoto-takafumi": {
       "matches": {
         "total": 15,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 11,
-        "wins": 10,
+        "total": 14,
+        "wins": 13,
         "losses": 1,
-        "winRate": 0.909
+        "winRate": 0.929
       },
       "games": {
-        "total": 66,
-        "won": 49,
-        "lost": 17,
-        "gameRate": 0.742
+        "total": 79,
+        "won": 61,
+        "lost": 18,
+        "gameRate": 0.772
       }
     },
     "2024": {

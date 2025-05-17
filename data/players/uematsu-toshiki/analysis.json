@@ -1,15 +1,29 @@
 {
-  "totalMatches": 14,
-  "wins": 11,
+  "totalMatches": 17,
+  "wins": 14,
   "losses": 3,
-  "totalWinRate": 0.786,
+  "totalWinRate": 0.824,
   "games": {
-    "total": 90,
-    "won": 61,
-    "lost": 29,
-    "gameRate": 0.678
+    "total": 103,
+    "won": 73,
+    "lost": 30,
+    "gameRate": 0.709
   },
   "byPartner": {
+    "シングルス": {
+      "matches": {
+        "total": 3,
+        "wins": 3,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 13,
+        "won": 12,
+        "lost": 1,
+        "gameRate": 0.923
+      }
+    },
     "yano-soto": {
       "matches": {
         "total": 11,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 11,
-        "wins": 9,
+        "total": 14,
+        "wins": 12,
         "losses": 2,
-        "winRate": 0.818
+        "winRate": 0.857
       },
       "games": {
-        "total": 72,
-        "won": 49,
-        "lost": 23,
-        "gameRate": 0.681
+        "total": 85,
+        "won": 61,
+        "lost": 24,
+        "gameRate": 0.718
       }
     },
     "2024": {
