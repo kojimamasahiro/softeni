@@ -1,1 +1,68 @@
-{}
+{
+    "matches": [
+        {
+            "tournament": "第32回 全日本シングルス選手権大会",
+            "dateRange": "2025年5月17日(土)~5月18日(日)",
+            "location": "仙台市青葉山公園庭球場",
+            "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
+            "format": "tournament",
+            "finalResult": "",
+            "partner": null,
+            "groupStage": null,
+            "finalStage": null,
+            "results": [
+                {
+                    "round": "2回戦",
+                    "opponent": "鳥居（立命館守山高校）",
+                    "opponents": [
+                        {
+                            "name": "鳥居",
+                            "team": "立命館守山高校",
+                            "playerId": null
+                        }
+                    ],
+                    "result": "勝ち",
+                    "score": "4-1",
+                    "games": {
+                        "won": "4",
+                        "lost": "1"
+                    }
+                },
+                {
+                    "round": "3回戦",
+                    "opponent": "築田（道後・八千代クラブ）",
+                    "opponents": [
+                        {
+                            "name": "築田",
+                            "team": "道後・八千代クラブ",
+                            "playerId": null
+                        }
+                    ],
+                    "result": "勝ち",
+                    "score": "4-2",
+                    "games": {
+                        "won": "4",
+                        "lost": "2"
+                    }
+                },
+                {
+                    "round": "4回戦",
+                    "opponent": "根岸（日本体育大学）",
+                    "opponents": [
+                        {
+                            "name": "根岸",
+                            "team": "日本体育大学",
+                            "playerId": null
+                        }
+                    ],
+                    "result": "勝ち",
+                    "score": "4-2",
+                    "games": {
+                        "won": "4",
+                        "lost": "2"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,70 @@
 {
   "matches": [
     {
+      "tournament": "第32回 全日本シングルス選手権大会",
+      "dateRange": "2025年5月17日(土)~5月18日(日)",
+      "location": "仙台市青葉山公園庭球場",
+      "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
+      "format": "tournament",
+      "finalResult": "",
+      "partner": null,
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "松田（東ソー南陽）",
+          "opponents": [
+            {
+              "name": "松田",
+              "team": "東ソー南陽",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "河野（鹿児島実業高校）",
+          "opponents": [
+            {
+              "name": "河野",
+              "team": "鹿児島実業高校",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": "4",
+            "lost": "3"
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "小倉（松山大学）",
+          "opponents": [
+            {
+              "name": "小倉",
+              "team": "松山大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第76回 関東学生ソフトテニス選手権",
       "dateRange": "2025年5月12日(土)~5月13日(日)",
       "location": "",

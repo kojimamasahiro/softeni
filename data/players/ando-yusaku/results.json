@@ -1,6 +1,70 @@
 {
   "matches": [
     {
+      "tournament": "第32回 全日本シングルス選手権大会",
+      "dateRange": "2025年5月17日(土)~5月18日(日)",
+      "location": "仙台市青葉山公園庭球場",
+      "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
+      "format": "tournament",
+      "finalResult": "敗退",
+      "partner": null,
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "今村（志學館大学）",
+          "opponents": [
+            {
+              "name": "今村",
+              "team": "志學館大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "村井（立命館大学）",
+          "opponents": [
+            {
+              "name": "村井",
+              "team": "立命館大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "伊藤（ヨネックス）",
+          "opponents": [
+            {
+              "name": "伊藤",
+              "team": "ヨネックス",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": "2",
+            "lost": "4"
+          }
+        }
+      ]
+    },
+    {
       "tournament": "令和7年度 愛知県社会人ソフトテニス選手権",
       "dateRange": "2025年5月4日(日)",
       "location": "口論義運動公園テニスコート",
