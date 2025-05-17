@@ -9,6 +9,7 @@ export const LIVE_PLAYERS = [
   "uematsu-toshiki",
   "ueoka-shunsuke",
   "hashiba-toichiro",
+  "yonekawa-yuto",
   "hirooka-sora",
   "kurosaka-takuya",
   "motokura-kentaro",
@@ -18,6 +19,6 @@ export const LIVE_PLAYERS = [
   "kataoka-aki",
   "nagae-koichi",
   "ando-yusaku",
-   "uchida-riku",
-
+  "kawasaki-kohei",
+  "uchida-riku",
 ]
