@@ -8,6 +8,16 @@ export const LIVE_PERIOD = {
 export const LIVE_PLAYERS = [
   "uematsu-toshiki",
   "ueoka-shunsuke",
-  "hashiba-shuichiro",
-  "uchida-riku",
+  "hashiba-toichiro",
+  "hirooka-sora",
+  "kurosaka-takuya",
+  "motokura-kentaro",
+  "uchimoto-takafumi",
+  "yano-soto",
+  "maruyama-kaito",
+  "kataoka-aki",
+  "nagae-koichi",
+  "ando-yusaku",
+   "uchida-riku",
+
 ]
