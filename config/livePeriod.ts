@@ -7,7 +7,7 @@ export const LIVE_PERIOD = {
 
 export const LIVE_PLAYERS = [
   "uematsu-toshiki",
-  // "ueoka-shunsuke",
-  // "hashiba-shuichiro",
+  "ueoka-shunsuke",
+  "hashiba-shuichiro",
   "uchida-riku",
 ]
