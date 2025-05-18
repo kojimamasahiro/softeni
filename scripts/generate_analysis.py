@@ -148,7 +148,10 @@ if __name__ == "__main__":
         "motokura-kentaro",
         "uchida-riku",
         "ueoka-shunsuke",
-        "ando-kesuke"
+        "ando-kesuke",
+        "ueda-rio",
+        "iwata-kohei",
+        "shimizu-shun",
     ]
 
     # 各選手のデータに対して処理

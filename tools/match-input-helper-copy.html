@@ -121,7 +121,8 @@
         <input type="text" id="op1_team" />
     </label>
     <label>ID（わかれば）：
-        <input type="text" id="op1_id" />
+        <input type="text" id="op1_id" list="players" />
+        <datalist id="players"></datalist>
     </label>
 
     <div style="display: none;">
@@ -176,19 +177,29 @@
             const defaultOption = document.createElement("option");
             defaultOption.value = "";
             defaultOption.textContent = "選択してください";
-            pair1Select.appendChild(defaultOption);
+
+            // 自チーム選手のプルダウン初期化
+            pair1Select.appendChild(defaultOption.cloneNode(true));
             pair2Select.appendChild(defaultOption.cloneNode(true));
+
+            // 相手選手IDのプルダウン初期化
+            const op1IdSelect = document.getElementById("op1_id");
+            op1IdSelect.appendChild(defaultOption.cloneNode(true));
 
             for (const id in teamData.players) {
                 const player = teamData.players[id];
                 const label = `${player.lastName} ${player.firstName}（${id}）`;
+
                 const opt1 = document.createElement("option");
                 opt1.value = id;
                 opt1.textContent = label;
 
                 const opt2 = opt1.cloneNode(true);
+                const opt3 = opt1.cloneNode(true);
+
                 pair1Select.appendChild(opt1);
                 pair2Select.appendChild(opt2);
+                op1IdSelect.appendChild(opt3);
             }
         }
 

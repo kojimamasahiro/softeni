@@ -6,7 +6,7 @@
       "location": "生目の杜運動公園",
       "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
       "format": "tournament",
-      "finalResult": "",
+      "finalResult": "優勝",
       "partner": null,
       "groupStage": null,
       "finalStage": null,
@@ -60,6 +60,91 @@
           "games": {
             "won": "4",
             "lost": "1"
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "松本（東海大学）",
+          "opponents": [
+            {
+              "name": "松本",
+              "team": "東海大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": "4",
+            "lost": "3"
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "黒坂（日本体育大学）",
+          "opponents": [
+            {
+              "name": "黒坂",
+              "team": "日本体育大学",
+              "playerId": "kurosaka-takuya"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": "4",
+            "lost": "0"
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "本倉（ＮＴＴ西日本）",
+          "opponents": [
+            {
+              "name": "本倉",
+              "team": "ＮＴＴ西日本",
+              "playerId": "motokura-kentaro"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "植田（高田商業高校）",
+          "opponents": [
+            {
+              "name": "植田",
+              "team": "高田商業高校",
+              "playerId": "ueda-rio"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": "4",
+            "lost": "2"
+          }
+        },
+        {
+          "round": "決勝",
+          "opponent": "橋場（法政大学）",
+          "opponents": [
+            {
+              "name": "橋場",
+              "team": "法政大学",
+              "playerId": "hashiba-toichiro"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": "4",
+            "lost": "2"
           }
         }
       ]

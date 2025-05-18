@@ -6,7 +6,7 @@
       "location": "生目の杜運動公園",
       "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
       "format": "tournament",
-      "finalResult": "",
+      "finalResult": "敗退",
       "partner": null,
       "groupStage": null,
       "finalStage": null,
@@ -60,6 +60,40 @@
           "games": {
             "won": "4",
             "lost": "0"
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "片岡（日本体育大学）",
+          "opponents": [
+            {
+              "name": "片岡",
+              "team": "日本体育大学",
+              "playerId": "kataoka-aki"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "長江（ＮＴＴ西日本）",
+          "opponents": [
+            {
+              "name": "長江",
+              "team": "ＮＴＴ西日本",
+              "playerId": "nagae-koichi"
+            }
+          ],
+          "result": "負け",
+          "score": "1-4",
+          "games": {
+            "won": "1",
+            "lost": "4"
           }
         }
       ]

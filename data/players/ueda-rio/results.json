@@ -6,35 +6,35 @@
             "location": "生目の杜運動公園",
             "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
             "format": "tournament",
-            "finalResult": "準優勝",
+            "finalResult": "ベスト4",
             "partner": null,
             "groupStage": null,
             "finalStage": null,
             "results": [
                 {
                     "round": "2回戦",
-                    "opponent": "鳥居（立命館守山高校）",
+                    "opponent": "松中（JFE西日本福山）",
                     "opponents": [
                         {
-                            "name": "鳥居",
-                            "team": "立命館守山高校",
+                            "name": "松中",
+                            "team": "JFE西日本福山",
                             "playerId": null
                         }
                     ],
                     "result": "勝ち",
-                    "score": "4-1",
+                    "score": "4-0",
                     "games": {
                         "won": "4",
-                        "lost": "1"
+                        "lost": "0"
                     }
                 },
                 {
                     "round": "3回戦",
-                    "opponent": "築田（道後・八千代クラブ）",
+                    "opponent": "今城（十八親和銀行）",
                     "opponents": [
                         {
-                            "name": "築田",
-                            "team": "道後・八千代クラブ",
+                            "name": "今城",
+                            "team": "十八親和銀行",
                             "playerId": null
                         }
                     ],
@@ -47,12 +47,12 @@
                 },
                 {
                     "round": "4回戦",
-                    "opponent": "根岸（日本体育大学）",
+                    "opponent": "橋本（ヨシザワクラブ）",
                     "opponents": [
                         {
-                            "name": "根岸",
-                            "team": "日本体育大学",
-                            "playerId": null
+                            "name": "橋本",
+                            "team": "ヨシザワクラブ",
+                            "playerId": "hasimoto-asahi"
                         }
                     ],
                     "result": "勝ち",
@@ -64,11 +64,11 @@
                 },
                 {
                     "round": "5回戦",
-                    "opponent": "大友（東邦ガス）",
+                    "opponent": "中村（日南学園高校）",
                     "opponents": [
                         {
-                            "name": "大友",
-                            "team": "東邦ガス",
+                            "name": "中村",
+                            "team": "日南学園高校",
                             "playerId": null
                         }
                     ],
@@ -81,29 +81,29 @@
                 },
                 {
                     "round": "6回戦",
-                    "opponent": "矢野（ＮＴＴ西日本）",
+                    "opponent": "内田（法政大学）",
                     "opponents": [
                         {
-                            "name": "矢野",
-                            "team": "ＮＴＴ西日本",
-                            "playerId": "yano-soto"
+                            "name": "内田",
+                            "team": "法政大学",
+                            "playerId": null
                         }
                     ],
                     "result": "勝ち",
-                    "score": "4-3",
+                    "score": "4-1",
                     "games": {
                         "won": "4",
-                        "lost": "3"
+                        "lost": "1"
                     }
                 },
                 {
                     "round": "準々決勝",
-                    "opponent": "広岡（ＮＴＴ西日本）",
+                    "opponent": "岩田（日本体育大学）",
                     "opponents": [
                         {
-                            "name": "広岡",
-                            "team": "ＮＴＴ西日本",
-                            "playerId": "hirooka-sora"
+                            "name": "岩田",
+                            "team": "日本体育大学",
+                            "playerId": null
                         }
                     ],
                     "result": "勝ち",
@@ -115,23 +115,6 @@
                 },
                 {
                     "round": "準決勝",
-                    "opponent": "長江（ＮＴＴ西日本）",
-                    "opponents": [
-                        {
-                            "name": "長江",
-                            "team": "ＮＴＴ西日本",
-                            "playerId": "nagae-koichi"
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-0",
-                    "games": {
-                        "won": "4",
-                        "lost": "0"
-                    }
-                },
-                {
-                    "round": "決勝",
                     "opponent": "上松（ＮＴＴ西日本）",
                     "opponents": [
                         {
