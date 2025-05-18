@@ -55,7 +55,7 @@ const CookieConsent = ({ onAccept, onDecline }: Props) => {
             onClick={handleDecline}
             className="px-4 py-1 bg-gray-600 text-white text-sm rounded hover:bg-gray-700 transition"
           >
-            同意しない
+            拒否する
           </button>
         </div>
       </div>

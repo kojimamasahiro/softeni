@@ -23,14 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
           analytics_storage: 'granted',
         });
       }
-    } else {
-      // 同意しない場合は default に設定（cookieless計測を有効化）
-      if (window.gtag) {
-        window.gtag('consent', 'update', {
-          ad_storage: 'default',
-          analytics_storage: 'default',
-        });
-      }
     }
 
     const handleRouteChange = (url: string) => {
@@ -60,8 +52,8 @@ export default function App({ Component, pageProps }: AppProps) {
     localStorage.setItem('cookieConsent', 'false');
     if (window.gtag) {
       window.gtag('consent', 'update', {
-        ad_storage: 'default',       // denied → default に変更
-        analytics_storage: 'default', // denied → default に変更
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
       });
     }
   };
@@ -82,8 +74,8 @@ export default function App({ Component, pageProps }: AppProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('consent', 'default', {
-              ad_storage: 'default',
-              analytics_storage: 'default'
+              ad_storage: 'denied',
+              analytics_storage: 'denied'
             });
             gtag('js', new Date());
             gtag('config', '${GA_ID}', {
