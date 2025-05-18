@@ -28,7 +28,7 @@ export default function PlayerResultsPage({
   allTournaments,
   playerStats,
 }: PlayerResultsProps) {
-  const fullName = `${playerInfo.lastName} ${playerInfo.firstName}`;
+  const fullName = `${playerInfo.lastName}${playerInfo.firstName}`;
   const pageUrl = `https://softeni.vercel.app/players/${playerId}/results`;
 
   return (
