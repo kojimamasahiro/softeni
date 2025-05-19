@@ -1,3 +1,4 @@
+import MetaHead from '@/components/MetaHead';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
@@ -159,6 +160,12 @@ export default function TeamResultsPage({ year, info, results }: Props) {
 
     return (
         <>
+            <MetaHead
+                title={`{teamName} {year}年度チーム成績 | ソフトテニス情報`}
+                description={`${teamName}の${year}年度における大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
+                url={`pageUrl`}
+            />
+
             <Head>
                 <title>{teamName} {year}年度チーム成績 | ソフトテニス情報</title>
                 <meta name="description" content={`${teamName}の${year}年度における大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`} />
