@@ -18,26 +18,24 @@ export default function TeamsYearlySummary({ summary }: TeamsYearlySummaryProps)
       <div className="bg-white rounded-2xl shadow dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
           <div>
-            <p className="text-gray-500 dark:text-gray-400">年度</p>
-            <p className="text-lg font-bold">{summary.year}</p>
+            <p className="text-gray-500 dark:text-gray-400">出場大会数</p>
+            <p className="text-lg font-bold">{summary.tournaments}回</p>
           </div>
           <div>
-            <p className="text-gray-500 dark:text-gray-400">出場大会数</p>
-            <p className="text-lg font-bold">{summary.tournaments}</p>
           </div>
           <div>
           </div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">優勝</p>
-            <p className="text-lg font-bold">{summary.champions}</p>
+            <p className="text-lg font-bold">{summary.champions}人</p>
           </div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">準優勝</p>
-            <p className="text-lg font-bold">{summary.runnersUp}</p>
+            <p className="text-lg font-bold">{summary.runnersUp}人</p>
           </div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">ベスト8以上</p>
-            <p className="text-lg font-bold">{summary.top8OrBetter}</p>
+            <p className="text-lg font-bold">{summary.top8OrBetter}人</p>
           </div>
         </div>
       </div>

@@ -511,7 +511,7 @@
                     "lost": "2"
                 },
                 "pair": [
-                    "tsushima-seora"
+                    "tsushima-sora"
                 ],
                 "opponents": [
                     {
@@ -530,7 +530,7 @@
                     "lost": "0"
                 },
                 "pair": [
-                    "tsushima-seora"
+                    "tsushima-sora"
                 ],
                 "opponents": [
                     {
@@ -549,7 +549,7 @@
                     "lost": "0"
                 },
                 "pair": [
-                    "tsushima-seora"
+                    "tsushima-sora"
                 ],
                 "opponents": [
                     {
@@ -568,7 +568,7 @@
                     "lost": "4"
                 },
                 "pair": [
-                    "tsushima-seora"
+                    "tsushima-sora"
                 ],
                 "opponents": [
                     {
@@ -720,7 +720,7 @@
                     "lost": "1"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -739,7 +739,7 @@
                     "lost": "0"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -758,7 +758,7 @@
                     "lost": "1"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -777,7 +777,7 @@
                     "lost": "1"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -796,7 +796,7 @@
                     "lost": 2
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -815,7 +815,7 @@
                     "lost": "2"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -834,7 +834,7 @@
                     "lost": "1"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -853,7 +853,7 @@
                     "lost": "4"
                 },
                 "pair": [
-                    "negisi-remon"
+                    "negishi-remon"
                 ],
                 "opponents": [
                     {
@@ -863,6 +863,27 @@
                         "playerId": "kurosaka-takuya"
                     }
                 ]
+            },
+            {
+                "round": "5回戦",
+                "pair": [
+                    "fukushima-ryo"
+                ],
+                "opponent": "黒坂（日本体育大学）",
+                "opponents": [
+                    {
+                        "lastName": "黒坂",
+                        "firstName": "卓也",
+                        "team": "日本体育大学",
+                        "playerId": "kurosaka-takuya"
+                    }
+                ],
+                "result": "lose",
+                "score": "3-4",
+                "games": {
+                    "won": "3",
+                    "lost": "4"
+                }
             },
             {
                 "round": "1回戦",
@@ -1697,6 +1718,300 @@
                 "games": {
                     "won": "4",
                     "lost": "0"
+                }
+            },
+            {
+                "round": "1回戦",
+                "pair": [
+                    "yabiku-hiromu"
+                ],
+                "opponent": "火山（帝京大学）",
+                "opponents": [
+                    {
+                        "lastName": "火山",
+                        "firstName": "優希",
+                        "team": "帝京大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-1",
+                "games": {
+                    "won": "4",
+                    "lost": "1"
+                }
+            },
+            {
+                "round": "2回戦",
+                "pair": [
+                    "yabiku-hiromu"
+                ],
+                "opponent": "是枝（明治大学）",
+                "opponents": [
+                    {
+                        "lastName": "是枝",
+                        "firstName": "元貴",
+                        "team": "明治大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "lose",
+                "score": "0-4",
+                "games": {
+                    "won": "0",
+                    "lost": "4"
+                }
+            },
+            {
+                "round": "1回戦",
+                "pair": [
+                    "terai-manato"
+                ],
+                "opponent": "前田（順天堂大学）",
+                "opponents": [
+                    {
+                        "lastName": "前田",
+                        "firstName": "啓太",
+                        "team": "順天堂大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-2",
+                "games": {
+                    "won": "4",
+                    "lost": "2"
+                }
+            },
+            {
+                "round": "2回戦",
+                "pair": [
+                    "terai-manato"
+                ],
+                "opponent": "山本（東京経済大学）",
+                "opponents": [
+                    {
+                        "lastName": "山本",
+                        "firstName": "楓也",
+                        "team": "東京経済大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "lose",
+                "score": "3-4",
+                "games": {
+                    "won": "3",
+                    "lost": "4"
+                }
+            },
+            {
+                "round": "2回戦",
+                "pair": [
+                    "takahashi-kaito"
+                ],
+                "opponent": "遠藤（駿河台大学）",
+                "opponents": [
+                    {
+                        "lastName": "遠藤",
+                        "firstName": "舜",
+                        "team": "駿河台大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-0",
+                "games": {
+                    "won": "4",
+                    "lost": "0"
+                }
+            },
+            {
+                "round": "3回戦",
+                "pair": [
+                    "takahashi-kaito"
+                ],
+                "opponent": "雨澤（帝京大学）",
+                "opponents": [
+                    {
+                        "lastName": "雨澤",
+                        "firstName": "壮人",
+                        "team": "帝京大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-0",
+                "games": {
+                    "won": "4",
+                    "lost": "0"
+                }
+            },
+            {
+                "round": "4回戦",
+                "pair": [
+                    "takahashi-kaito"
+                ],
+                "opponent": "藤井（日本体育大学）",
+                "opponents": [
+                    {
+                        "lastName": "藤井",
+                        "firstName": "智暉",
+                        "team": "日本体育大学",
+                        "playerId": "fujii-tomoki"
+                    }
+                ],
+                "result": "win",
+                "score": "4-3",
+                "games": {
+                    "won": "4",
+                    "lost": "3"
+                }
+            },
+            {
+                "round": "5回戦",
+                "pair": [
+                    "takahashi-kaito"
+                ],
+                "opponent": "小山（明治大学）",
+                "opponents": [
+                    {
+                        "lastName": "小山",
+                        "firstName": "寛晴",
+                        "team": "明治大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "lose",
+                "score": "2-4",
+                "games": {
+                    "won": "2",
+                    "lost": "4"
+                }
+            },
+            {
+                "round": "1回戦",
+                "pair": [
+                    "fujii-tomoki"
+                ],
+                "opponent": "立花（立教大学）",
+                "opponents": [
+                    {
+                        "lastName": "立花",
+                        "firstName": "輝",
+                        "team": "立教大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-0",
+                "games": {
+                    "won": "4",
+                    "lost": "0"
+                }
+            },
+            {
+                "round": "2回戦",
+                "pair": [
+                    "fujii-tomoki"
+                ],
+                "opponent": "小池（慶應義塾大学）",
+                "opponents": [
+                    {
+                        "lastName": "小池",
+                        "firstName": "賀久",
+                        "team": "慶應義塾大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-3",
+                "games": {
+                    "won": "4",
+                    "lost": "3"
+                }
+            },
+            {
+                "round": "3回戦",
+                "pair": [
+                    "fujii-tomoki"
+                ],
+                "opponent": "國松（國学院大学）",
+                "opponents": [
+                    {
+                        "lastName": "國松",
+                        "firstName": "巧",
+                        "team": "國学院大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-1",
+                "games": {
+                    "won": "4",
+                    "lost": "1"
+                }
+            },
+            {
+                "round": "4回戦",
+                "pair": [
+                    "fujii-tomoki"
+                ],
+                "opponent": "高橋（日本体育大学）",
+                "opponents": [
+                    {
+                        "lastName": "高橋",
+                        "firstName": "海斗",
+                        "team": "日本体育大学",
+                        "playerId": "takahashi-kaito"
+                    }
+                ],
+                "result": "lose",
+                "score": "3-4",
+                "games": {
+                    "won": "3",
+                    "lost": "4"
+                }
+            },
+            {
+                "round": "1回戦",
+                "pair": [
+                    "hosokawa-taiga"
+                ],
+                "opponent": "黒田（国士舘大学）",
+                "opponents": [
+                    {
+                        "lastName": "黒田",
+                        "firstName": "夏凪",
+                        "team": "国士舘大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "win",
+                "score": "4-1",
+                "games": {
+                    "won": "4",
+                    "lost": "1"
+                }
+            },
+            {
+                "round": "2回戦",
+                "pair": [
+                    "hosokawa-taiga"
+                ],
+                "opponent": "千葉（東京経済大学）",
+                "opponents": [
+                    {
+                        "lastName": "千葉",
+                        "firstName": "琉翔",
+                        "team": "東京経済大学",
+                        "playerId": null
+                    }
+                ],
+                "result": "lose",
+                "score": "1-4",
+                "games": {
+                    "won": "1",
+                    "lost": "4"
                 }
             }
         ]
