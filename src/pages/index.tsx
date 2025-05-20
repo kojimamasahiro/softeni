@@ -37,13 +37,13 @@ export default function Home({ players }: HomeProps) {
     setSearchQuery(query);
 
     const filtered = players.filter((player) => {
-      const fullName =
-        (player.lastName + player.firstName + player.lastNameKana + player.firstNameKana).toLowerCase();
+      const fullNameAndTeamName =
+        (player.lastName + player.firstName + player.lastNameKana + player.firstNameKana + player.team).toLowerCase();
       const normalizedQuery = query.replace(/\s/g, '').toLowerCase();
 
       let currentIndex = 0;
       for (const char of normalizedQuery) {
-        currentIndex = fullName.indexOf(char, currentIndex);
+        currentIndex = fullNameAndTeamName.indexOf(char, currentIndex);
         if (currentIndex === -1) return false;
         currentIndex++;
       }
@@ -112,7 +112,7 @@ export default function Home({ players }: HomeProps) {
               <input
                 type="text"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="選手名で検索"
+                placeholder="選手名や所属で検索"
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
               />
