@@ -77,6 +77,13 @@
     <button onclick="nextRound()">ラウンドを進める</button>
     <button onclick="resetRound()">1回戦に戻す</button>
 
+    <hr />
+
+    <h3>自チーム（pair）</h3>
+    <input type="text" id="pair1" list="players" />
+    <!-- <input type="text" id="pair2" list="players" /> -->
+    <datalist id="players"></datalist>
+
     <label>得点（won）：</label>
     <div id="game_won_buttons" class="button-group">
         <button type="button" onclick="setGames('game_won', 0)">0</button>
@@ -100,13 +107,6 @@
     <!-- 隠しフィールド -->
     <input type="hidden" id="game_won" value="0">
     <input type="hidden" id="game_lost" value="0">
-
-    <hr />
-
-    <h3>自チーム（pair）</h3>
-    <input type="text" id="pair1" list="players" />
-    <!-- <input type="text" id="pair2" list="players" /> -->
-    <datalist id="players"></datalist>
 
     <hr />
 
@@ -170,7 +170,6 @@
                 "takeda-ryo": { firstName: "凌", lastName: "竹田" },
                 "iwata-kohei": { firstName: "皓平", lastName: "岩田" },
                 "fujii-tomoki": { firstName: "智暉", lastName: "藤井" },
-                "yosida-takuto": { firstName: "拓翔", lastName: "吉田" },
                 "kataoka-aki": { firstName: "暁紀", lastName: "片岡" },
                 "hiruma-yusuke": { firstName: "悠佑", lastName: "昼間" },
                 "kawasaki-kohei": { firstName: "康平", lastName: "川崎" },
@@ -210,6 +209,16 @@
                 "sato-shunsuke": { firstName: "駿丞", lastName: "佐藤" },
                 "inamaru-shido": { firstName: "獅道", lastName: "稲丸" },
                 "hirai-keigo": { firstName: "啓吾", lastName: "平井" },
+                "takasaka-yuki": { firstName: "侑希", lastName: "高坂" },
+                "nakayama-koki": { firstName: "煌貴", lastName: "中山" },
+                "suzawa-koharu": { firstName: "心晴", lastName: "須澤" },
+                "sasaki-seigo": { firstName: "星吾", lastName: "佐々木" },
+                "chaki-masataka": { firstName: "將巨", lastName: "茶木" },
+                "moriyama-wakuto": { firstName: "湧叶", lastName: "守山" },
+                "iwashige-naoto": { firstName: "直登", lastName: "岩重" },
+                "momota-tetsuma": { firstName: "鉄馬", lastName: "百田" },
+                "murata-chiharu": { firstName: "千春", lastName: "村田" },
+                "naito-rento": { firstName: "蓮斗", lastName: "内藤" },
                 "kenjo-kawamoto": { firstName: "健士郎", lastName: "川本" }
             }
         };
