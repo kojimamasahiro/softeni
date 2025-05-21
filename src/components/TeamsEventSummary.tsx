@@ -15,7 +15,7 @@ export default function TeamsEventSummary({ overallTable }: TeamsEventSummaryPro
       {overallTable.map((r, i) => (
         <div
           key={i}
-          className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-4 border border-gray-200 dark:border-gray-700"
+          className="bg-white dark:bg-gray-800 rounded-2xl shadow p-4 border border-gray-200 dark:border-gray-700"
         >
           <h3 className="text-lg font-bold mb-1 text-gray-800 dark:text-gray-100">{r.name}</h3>
           <div className="text-sm space-y-1">

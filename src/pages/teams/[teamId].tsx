@@ -158,15 +158,15 @@ export default function TeamResultsPage({ info, results }: Props) {
     return (
         <>
             <MetaHead
-                title={`{teamName} チーム成績 | ソフトテニス情報`}
+                title={`{teamName} 所属別成績 | ソフトテニス情報`}
                 description={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
                 url={`pageUrl`}
             />
 
             <Head>
-                <title>{teamName} チーム成績 | ソフトテニス情報</title>
+                <title>{teamName} 所属別成績 | ソフトテニス情報</title>
                 <meta name="description" content={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`} />
-                <meta property="og:title" content={`${teamName} チーム成績`} />
+                <meta property="og:title" content={`${teamName} 所属別成績`} />
                 <meta property="og:description" content={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`} />
                 <meta property="og:url" content={pageUrl} />
                 <meta property="og:type" content="article" />
@@ -178,7 +178,7 @@ export default function TeamResultsPage({ info, results }: Props) {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Article",
-                            "headline": `${teamName} チーム成績`,
+                            "headline": `${teamName} 所属別成績`,
                             "author": {
                                 "@type": "Organization",
                                 "name": "Softeni Pick",
@@ -231,7 +231,7 @@ export default function TeamResultsPage({ info, results }: Props) {
 
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
                 <div className="max-w-3xl mx-auto space-y-6">
-                    <h1 className="text-2xl font-bold">{teamName} | チーム成績</h1>
+                    <h1 className="text-2xl font-bold">{teamName} | 所属別成績</h1>
 
                     <TeamsYearlySummary summary={calculateSummary} />
 
@@ -246,16 +246,25 @@ export default function TeamResultsPage({ info, results }: Props) {
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
+    const teamsDir = path.join(process.cwd(), 'data/teams');
+    const teamDirs = fs.readdirSync(teamsDir).filter(file =>
+        fs.statSync(path.join(teamsDir, file)).isDirectory()
+    );
+
+    const paths = teamDirs.map((teamId) => ({
+        params: { teamId },
+    }));
+
     return {
-        paths: [], // 初期パスは空にする
-        fallback: 'blocking', // 動的にページを生成
+        paths,
+        fallback: 'blocking',
     };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const { id } = context.params as { id: string };
-    const infoPath = path.join(process.cwd(), `data/teams/${id}/information.json`);
-    const resultsPath = path.join(process.cwd(), `data/teams/${id}/results.json`);
+    const { teamId } = context.params as { teamId: string };
+    const infoPath = path.join(process.cwd(), `data/teams/${teamId}/information.json`);
+    const resultsPath = path.join(process.cwd(), `data/teams/${teamId}/results.json`);
 
     // データが存在しない場合は 404 を返す
     if (!fs.existsSync(infoPath) || !fs.existsSync(resultsPath)) {

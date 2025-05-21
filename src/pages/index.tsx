@@ -106,6 +106,29 @@ export default function Home({ players }: HomeProps) {
           </div>
 
           <section className="mb-8 px-4">
+            <h2 className="text-xl font-semibold mb-4">🏫 所属別成績</h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                onClick={() => (window.location.href = `/teams/nssu`)}
+                className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+              >
+                <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">日本体育大学</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">年間成績・大会別成績・選手ごとの記録</p>
+                <a
+                  href="https://nittai-softtennis.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-blue-700 dark:text-blue-300 underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  公式サイト
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-8 px-4">
             <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
             {/* 名前検索フォーム */}
             <div className="mb-4">

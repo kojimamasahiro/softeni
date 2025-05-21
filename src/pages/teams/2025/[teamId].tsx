@@ -161,15 +161,15 @@ export default function TeamResultsPage({ year, info, results }: Props) {
     return (
         <>
             <MetaHead
-                title={`{teamName} {year}年度チーム成績 | ソフトテニス情報`}
+                title={`{teamName} {year}年度所属別成績 | ソフトテニス情報`}
                 description={`${teamName}の${year}年度における大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
                 url={`pageUrl`}
             />
 
             <Head>
-                <title>{teamName} {year}年度チーム成績 | ソフトテニス情報</title>
+                <title>{teamName} {year}年度所属別成績 | ソフトテニス情報</title>
                 <meta name="description" content={`${teamName}の${year}年度における大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`} />
-                <meta property="og:title" content={`${teamName} ${year}年度チーム成績`} />
+                <meta property="og:title" content={`${teamName} ${year}年度所属別成績`} />
                 <meta property="og:description" content={`${teamName}の${year}年度における大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`} />
                 <meta property="og:url" content={pageUrl} />
                 <meta property="og:type" content="article" />
@@ -181,7 +181,7 @@ export default function TeamResultsPage({ year, info, results }: Props) {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Article",
-                            "headline": `${teamName} ${year}年度チーム成績`,
+                            "headline": `${teamName} ${year}年度所属別成績`,
                             "author": {
                                 "@type": "Organization",
                                 "name": "Softeni Pick",
