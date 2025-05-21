@@ -10,7 +10,7 @@ export default function TeamsEventSummary({ overallTable }: TeamsEventSummaryPro
   return (
     <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
-        大会別サマリー
+        大会別成績
       </h2>
       {overallTable.map((r, i) => (
         <div

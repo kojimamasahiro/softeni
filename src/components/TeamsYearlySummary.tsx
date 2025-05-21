@@ -1,6 +1,5 @@
 type TeamsYearlySummaryProps = {
   summary: {
-    year: string;
     tournaments: number;
     champions: number;
     runnersUp: number;
@@ -13,7 +12,7 @@ export default function TeamsYearlySummary({ summary }: TeamsYearlySummaryProps)
   return (
     <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
-        年度別成績サマリー
+        年間成績
       </h2>
       <div className="bg-white rounded-2xl shadow dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">

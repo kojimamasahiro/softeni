@@ -254,9 +254,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const { year, teamId } = context.params as { year: string; teamId: string };
-    const infoPath = path.join(process.cwd(), `data/teams/${year}/${teamId}/information.json`);
-    const resultsPath = path.join(process.cwd(), `data/teams/${year}/${teamId}/results.json`);
+    const { teamId } = context.params as { teamId: string };
+    const infoPath = path.join(process.cwd(), `data/teams/${teamId}/information.json`);
+    const resultsPath = path.join(process.cwd(), `data/teams/${teamId}/results.json`);
 
     // データが存在しない場合は 404 を返す
     if (!fs.existsSync(infoPath) || !fs.existsSync(resultsPath)) {
@@ -269,7 +269,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return {
         props: {
-            year,
+            "2025": teamId,
             info,
             results,
         },

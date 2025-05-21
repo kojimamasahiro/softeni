@@ -21,7 +21,7 @@ export default function TeamsRanking({ statsList }: TeamsRankingProps) {
   return (
     <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
-        チーム内ランキング
+        選手別成績
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {statsList.map((p) => {
