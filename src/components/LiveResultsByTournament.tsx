@@ -64,7 +64,7 @@ if (!isInRange) {
   return (
     <SectionWrapper>
       {isLoading ? (
-        <Message text="⏳ 大会速報を読み込み中です..." />
+        <Message text="大会速報を読み込み中です..." />
       ) : liveData ? (
         <>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
@@ -106,7 +106,7 @@ if (!isInRange) {
           </div>
         </>
       ) : (
-        <Message text="📭 表示できる速報データがありません。" />
+        <Message text="表示できる速報データがありません。" />
       )}
     </SectionWrapper>
   );
