@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>トーナメント管理</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+
+    .match-result {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 5px;
+    }
+
+    .score-button {
+      margin: 0 2px;
+      padding: 5px 10px;
+      cursor: pointer;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      user-select: none;
+      font-size: 16px;
+    }
+
+    .score-button.selected {
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+    }
+
+    .winner {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    #nextRoundBtn {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    #jsonOutput {
+      width: 100%;
+      height: 200px;
+      margin-top: 30px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>トーナメント試合管理</h1>
+  <div id="roundName"></div>
+  <div id="matches"></div>
+  <button id="nextRoundBtn">次のラウンドへ</button>
+
+  <h2>最終JSON出力</h2>
+  <textarea id="jsonOutput" readonly></textarea>
+
+  <script>
+    // パッキン用ダミーペア
+    const byePlayer = { id: "bye", name: "パッキン", information: [] };
+
+    // プレイヤー情報（ペア名 + 各プレイヤーID）
+    const initialPlayers = [
+      { id: "1", name: "田中・佐藤", information: [{ playerId: "p1" }, { playerId: "p2" }] },
+      byePlayer,
+      { id: "2", name: "鈴木・山田", information: [{ playerId: "p3" }, { playerId: "p4" }] },
+      { id: "3", name: "高橋・伊藤", information: [{ playerId: "p5" }, { playerId: "p6" }] },
+      { id: "4", name: "加藤・山口", information: [{ playerId: "p7" }, { playerId: "p8" }] },
+      { id: "5", name: "中村・小林", information: [{ playerId: "p9" }, { playerId: "p10" }] },
+      { id: "6", name: "渡辺・松本", information: [{ playerId: "p11" }, { playerId: "p12" }] },
+      byePlayer,
+      { id: "7", name: "山田・佐々木", information: [{ playerId: "p15" }, { playerId: "p16" }] }
+    ];
+
+    // 初期ラウンドの試合ペア（4ペアから2試合）
+    let roundMatches = [
+      { p1: initialPlayers[0], p2: initialPlayers[1], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[2], p2: initialPlayers[3], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[4], p2: initialPlayers[5], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[6], p2: initialPlayers[7], scores: { p1: null, p2: null }, winner: null },
+    ];
+
+    let roundHistory = [];
+    let roundNumber = 1;
+
+    // ラウンド名（日本語）
+    function getRoundName(numMatches) {
+      switch (numMatches) {
+        case 1: return "決勝";
+        case 2: return "準決勝";
+        case 4: return "準々決勝";
+        default: return `${roundNum}回戦`;
+      }
+    }
+
+    // 勝者名取得（ペア名表示）
+    function getWinnerName(match) {
+      if (!match.winner) return "未定";
+      if (match.winner === "bye") return "パッキン";
+      if (match.winner === match.p1.id) return match.p1.name;
+      if (match.winner === match.p2.id) return match.p2.name;
+      return "未定";
+    }
+
+    // スコアボタンの選択状態更新
+    function updateScoreButtons(matchIndex) {
+      ["p1", "p2"].forEach(player => {
+        for (let s = 0; s <= 5; s++) {
+          const btn = document.querySelector(`#score-${player}-${matchIndex} button:nth-child(${s + 1})`);
+          if (!btn) continue;
+          btn.classList.toggle("selected", roundMatches[matchIndex].scores[player] === s);
+          // パッキン戦はスコアボタン非表示にしてもいい
+          if (roundMatches[matchIndex].p1.id === "bye" || roundMatches[matchIndex].p2.id === "bye") {
+            btn.style.display = "none";
+          } else {
+            btn.style.display = "inline-block";
+          }
+        }
+      });
+    }
+
+    // スコア設定と勝者判定
+    function setScore(matchIndex, player, score) {
+      const match = roundMatches[matchIndex];
+      match.scores[player] = score;
+
+      // 勝者判定（引き分けはなし）
+      if (match.scores.p1 !== null && match.scores.p2 !== null) {
+        if (match.scores.p1 > match.scores.p2) {
+          match.winner = match.p1.id;
+        } else if (match.scores.p2 > match.scores.p1) {
+          match.winner = match.p2.id;
+        } else {
+          match.winner = null; // 引き分けは未決定
+        }
+      } else {
+        match.winner = null;
+      }
+
+      document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
+      updateScoreButtons(matchIndex);
+      updateJsonOutput();
+    }
+
+    // 試合表示
+    function displayMatches() {
+      const matchesDiv = document.getElementById("matches");
+      matchesDiv.innerHTML = "";
+      document.getElementById("roundName").textContent = `第${roundNumber}ラウンド：${getRoundName(roundMatches.length)}`;
+
+      roundMatches.forEach((match, i) => {
+        const div = document.createElement("div");
+        div.className = "match-result";
+
+        div.innerHTML = `
+          <strong>試合 ${i + 1}</strong>：${match.p1.name} vs ${match.p2.name}
+          <div>
+            <span>${match.p1.name} のスコア: </span>
+            <span id="score-p1-${i}"></span>
+          </div>
+          <div>
+            <span>${match.p2.name} のスコア: </span>
+            <span id="score-p2-${i}"></span>
+          </div>
+          <div>勝者: <span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
+        `;
+
+        matchesDiv.appendChild(div);
+
+        // スコア0~5ボタンを生成
+        for (let s = 0; s <= 5; s++) {
+          const btn1 = document.createElement("button");
+          btn1.textContent = s;
+          btn1.className = "score-button";
+          btn1.onclick = () => setScore(i, "p1", s);
+          document.getElementById(`score-p1-${i}`).appendChild(btn1);
+
+          const btn2 = document.createElement("button");
+          btn2.textContent = s;
+          btn2.className = "score-button";
+          btn2.onclick = () => setScore(i, "p2", s);
+          document.getElementById(`score-p2-${i}`).appendChild(btn2);
+        }
+
+        updateScoreButtons(i);
+      });
+
+      updateJsonOutput();
+    }
+
+    // 次のラウンドへ進む処理
+    document.getElementById("nextRoundBtn").addEventListener("click", () => {
+      if (roundMatches.some(match => !match.winner)) {
+        alert("すべての試合の勝者を決めてください。");
+        return;
+      }
+
+      // 現ラウンドを履歴に保存
+      roundHistory.push({
+        round: getRoundName(roundMatches.length),
+        matches: JSON.parse(JSON.stringify(roundMatches))
+      });
+
+      // 勝者だけ抽出
+      const winners = roundMatches.map(m => initialPlayers.find(p => p.id === m.winner));
+
+      // 優勝判定
+      if (winners.length === 1) {
+        alert(`優勝は ${winners[0].name} です！`);
+        document.getElementById("nextRoundBtn").disabled = true;
+        updateJsonOutput();
+        return;
+      }
+
+      // 次ラウンド準備
+      roundNumber++;
+      roundMatches = [];
+      for (let i = 0; i < winners.length; i += 2) {
+        roundMatches.push({
+          p1: winners[i],
+          p2: winners[i + 1],
+          scores: { p1: null, p2: null },
+          winner: null
+        });
+      }
+
+      displayMatches();
+    });
+
+    // JSON出力更新
+    function updateJsonOutput() {
+      const allMatches = roundHistory.flatMap(round =>
+        round.matches.map(match => ({
+          ...match,
+          round: round.round
+        }))
+      );
+
+      const output = { matches: allMatches };
+
+      document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
+    }
+
+    // 初期表示
+    displayMatches();
+  </script>
+
+</body>
+
+</html>
