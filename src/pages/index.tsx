@@ -6,6 +6,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
 import { useEffect, useState } from 'react';
+import tennisIcon from '@/assets/tennis.png';
+import schoolIcon from '@/assets/school.png';
+import Image from 'next/image';
 
 interface HomeProps {
   players: PlayerInfo[];
@@ -106,7 +109,7 @@ export default function Home({ players }: HomeProps) {
           </div>
 
           <section className="mb-8 px-4">
-            <h2 className="text-xl font-semibold mb-4">🏫 所属別成績</h2>
+            <h2 className="text-xl flex font-semibold mb-4"><Image src={schoolIcon} alt="お知らせ" width={24} height={24} /> 所属別成績</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div
@@ -129,7 +132,7 @@ export default function Home({ players }: HomeProps) {
           </section>
 
           <section className="mb-8 px-4">
-            <h2 className="text-xl font-semibold mb-4">🎾 選手一覧</h2>
+            <h2 className="text-xl flex font-semibold mb-4"><Image src={tennisIcon} alt="お知らせ" width={24} height={24} /> 選手一覧</h2>
             {/* 名前検索フォーム */}
             <div className="mb-4">
               <input

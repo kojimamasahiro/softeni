@@ -81,7 +81,7 @@
 
     <h3>自チーム（pair）</h3>
     <input type="text" id="pair1" list="players" />
-    <!-- <input type="text" id="pair2" list="players" /> -->
+    <input type="text" id="pair2" list="players" />
     <datalist id="players"></datalist>
 
     <label>得点（won）：</label>
@@ -125,7 +125,8 @@
         <datalist id="players"></datalist>
     </label>
 
-    <div style="display: none;">
+    <div>
+        <!-- <div style="display: none;"> -->
         <h3>相手選手2（ダブルスの場合のみ）</h3>
         <label>姓（lastName）：
             <input type="text" id="op2_lastName" oninput="this.value = this.value.replace(/\s/g, '')" />
@@ -283,7 +284,7 @@
                 pair: [
                     getVal("pair1")
                 ],
-                opponent: `${getVal("op1_lastName")}（${getVal("op1_team")}）`,
+                opponent: `${getVal("op1_lastName")}${getVal("op2_lastName") ? `・${getVal("op2_lastName")}` : ""}${getVal("op1_team") ? `（${getVal("op1_team")}）` : ""}`,
                 opponents: [
                     {
                         lastName: getVal("op1_lastName"),
@@ -291,13 +292,13 @@
                         team: getVal("op1_team"),
                         playerId: getVal("op1_id")
                     },
-                    {
+                    ...(getVal("op2_lastName") ? [{
                         lastName: getVal("op2_lastName"),
                         firstName: getVal("op2_firstName"),
-                        team: getVal("op2_team"),
+                        team: getVal("op1_team"),
                         playerId: getVal("op2_id")
-                    }
-                ].filter(op => op.name || op.team || op.playerId),
+                    }] : [])
+                ],
                 result: result,
                 score: '' + won + '-' + lost,
                 games: {
@@ -334,7 +335,7 @@
             "round", "result", "game_won", "game_lost",
             "pair1", "pair2",
             "op1_lastName", "op1_firstName", "op1_team", "op1_id",
-            "op2_lastName", "op2_firstName", "op2_team", "op2_id"
+            "op2_lastName", "op2_firstName", "op1_team", "op2_id"
         ];
 
         // 入力のたびにgenerateJSONを呼び出す

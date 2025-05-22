@@ -1,8 +1,10 @@
 'use client';
 
+import megaphoneIcon from '@/assets/megaphone.png';
 import { LIVE_PERIOD } from '@/config/livePeriod';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData, PlayerInfo } from '@/types/index';
+import Image from 'next/image';
 import Link from 'next/link';
 import useSWR from 'swr';
 
@@ -18,7 +20,8 @@ const getFormattedDateTime = (date: Date) => {
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <section className="mb-8 px-4">
-    <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">📢 大会速報</h2>
+    <h2 className="text-xl flex font-semibold mb-4 text-gray-800 dark:text-white">
+      <Image src={megaphoneIcon} alt="お知らせ" width={24} height={24} /> 大会速報</h2>
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">{children}</div>
   </section>
 );
@@ -40,23 +43,23 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
     { dedupingInterval: 60000, revalidateOnFocus: false }
   );
 
-if (!isInRange) {
-  const scheduledPlayers = [
-    '1. 上松俊貴',
-    '73. 上岡俊介',
-    '145. 橋場柊一郎',
-  ];
-  const message =
-    nowJST > endDate
-      ? '次回の大会速報までお待ちください。'
-      : `第32回 全日本シングルス選手権大会\n${getFormattedDateTime(startDate)}開始\n
+  if (!isInRange) {
+    const scheduledPlayers = [
+      '1. 上松俊貴',
+      '73. 上岡俊介',
+      '145. 橋場柊一郎',
+    ];
+    const message =
+      nowJST > endDate
+        ? '次回の大会速報までお待ちください。'
+        : `第32回 全日本シングルス選手権大会\n${getFormattedDateTime(startDate)}開始\n
 以下の出場予定の選手を速報予定です。\n- ${scheduledPlayers.join('\n- ')}`;
-  return (
-    <SectionWrapper>
-      <Message text={message} />
-    </SectionWrapper>
-  );
-}
+    return (
+      <SectionWrapper>
+        <Message text={message} />
+      </SectionWrapper>
+    );
+  }
 
 
   if (error || playersData.length === 0) return null;
