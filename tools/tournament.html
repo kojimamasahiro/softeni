@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>トーナメント管理</title>
   <style>
-    
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       max-width: 600px;
@@ -71,6 +70,12 @@
 <body>
 
   <h1>トーナメント試合管理</h1>
+  <div style="margin-bottom: 10px;">
+    <label for="roundInput">ラウンド番号を変更:</label>
+    <input type="number" id="roundInput" min="1" value="1" style="width: 60px;">
+    <button id="setRoundBtn">変更</button>
+  </div>
+
   <div id="roundName"></div>
   <div id="matches"></div>
   <button id="nextRoundBtn">次のラウンドへ</button>
@@ -85,14 +90,21 @@
     // プレイヤー情報（ペア名 + 各プレイヤーID）
     const initialPlayers = [
       { id: "1", name: "田中・佐藤", information: [{ playerId: "p1" }, { playerId: "p2" }] },
-      byePlayer,
       { id: "2", name: "鈴木・山田", information: [{ playerId: "p3" }, { playerId: "p4" }] },
       { id: "3", name: "高橋・伊藤", information: [{ playerId: "p5" }, { playerId: "p6" }] },
       { id: "4", name: "加藤・山口", information: [{ playerId: "p7" }, { playerId: "p8" }] },
       { id: "5", name: "中村・小林", information: [{ playerId: "p9" }, { playerId: "p10" }] },
       { id: "6", name: "渡辺・松本", information: [{ playerId: "p11" }, { playerId: "p12" }] },
-      byePlayer,
-      { id: "7", name: "山田・佐々木", information: [{ playerId: "p15" }, { playerId: "p16" }] }
+      { id: "7", name: "山田・佐々木", information: [{ playerId: "p15" }, { playerId: "p16" }] },
+      { id: "8", name: "井上・木村", information: [{ playerId: "p13" }, { playerId: "p14" }] },
+      { id: "9", name: "吉田・山本", information: [{ playerId: "p17" }, { playerId: "p18" }] },
+      { id: "10", name: "清水・中島", information: [{ playerId: "p19" }, { playerId: "p20" }] },
+      { id: "11", name: "林・池田", information: [{ playerId: "p21" }, { playerId: "p22" }] },
+      { id: "12", name: "山崎・藤田", information: [{ playerId: "p23" }, { playerId: "p24" }] },
+      { id: "13", name: "岡田・石井", information: [{ playerId: "p25" }, { playerId: "p26" }] },
+      { id: "14", name: "森・松田", information: [{ playerId: "p27" }, { playerId: "p28" }] },
+      { id: "15", name: "福田・西村", information: [{ playerId: "p29" }, { playerId: "p30" }] },
+      { id: "16", name: "遠藤・近藤", information: [{ playerId: "p31" }, { playerId: "p32" }] }
     ];
 
     // 初期ラウンドの試合ペア（4ペアから2試合）
@@ -101,18 +113,22 @@
       { p1: initialPlayers[2], p2: initialPlayers[3], scores: { p1: null, p2: null }, winner: null },
       { p1: initialPlayers[4], p2: initialPlayers[5], scores: { p1: null, p2: null }, winner: null },
       { p1: initialPlayers[6], p2: initialPlayers[7], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[8], p2: initialPlayers[9], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[10], p2: initialPlayers[11], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[12], p2: initialPlayers[13], scores: { p1: null, p2: null }, winner: null },
+      { p1: initialPlayers[14], p2: initialPlayers[15], scores: { p1: null, p2: null }, winner: null }
     ];
 
     let roundHistory = [];
     let roundNumber = 1;
 
     // ラウンド名（日本語）
-    function getRoundName(numMatches) {
+    function getRoundName(numMatches, roundNumer = roundNumber) {
       switch (numMatches) {
         case 1: return "決勝";
         case 2: return "準決勝";
         case 4: return "準々決勝";
-        default: return `${roundNum}回戦`;
+        default: return `${roundNumer}回戦`;
       }
     }
 
@@ -126,28 +142,28 @@
     }
 
     // スコアボタンの選択状態更新
-function updateScoreButtons(matchIndex) {
-  const match = roundMatches[matchIndex];
+    function updateScoreButtons(matchIndex) {
+      const match = roundMatches[matchIndex];
 
-  ["p1", "p2"].forEach(player => {
-    const selectedScore = match.scores[player];
-    const scoreButtons = document.querySelectorAll(
-      `.score-button[data-match="${matchIndex}"][data-player="${player}"]`
-    );
+      ["p1", "p2"].forEach(player => {
+        const selectedScore = match.scores[player];
+        const scoreButtons = document.querySelectorAll(
+          `.score-button[data-match="${matchIndex}"][data-player="${player}"]`
+        );
 
-    scoreButtons.forEach((btn, i) => {
-      const score = Number(btn.dataset.score);
-      btn.classList.toggle("selected", score === selectedScore);
+        scoreButtons.forEach((btn, i) => {
+          const score = Number(btn.dataset.score);
+          btn.classList.toggle("selected", score === selectedScore);
 
-      // パッキン戦はスコアボタン非表示にする
-      if (match.p1.id === "bye" || match.p2.id === "bye") {
-        btn.style.display = "none";
-      } else {
-        btn.style.display = "inline-block";
-      }
-    });
-  });
-}
+          // パッキン戦はスコアボタン非表示にする
+          if (match.p1.id === "bye" || match.p2.id === "bye") {
+            btn.style.display = "none";
+          } else {
+            btn.style.display = "inline-block";
+          }
+        });
+      });
+    }
 
 
     // スコア設定と勝者判定（パッキン戦は自動判定）
@@ -197,7 +213,8 @@ function updateScoreButtons(matchIndex) {
     function displayMatches() {
       const matchesDiv = document.getElementById("matches");
       matchesDiv.innerHTML = "";
-      document.getElementById("roundName").textContent = `第${roundNumber}ラウンド：${getRoundName(roundMatches.length)}`;
+      document.getElementById("roundName").textContent = `第${roundNumber}ラウンド：${getRoundName(roundMatches.length, roundNumber)}`;
+      document.getElementById("roundInput").value = roundNumber;
 
       roundMatches.forEach((match, i) => {
         const div = document.createElement("div");
@@ -207,12 +224,12 @@ function updateScoreButtons(matchIndex) {
           <strong>試合 ${i + 1}</strong>：${match.p1.name} vs ${match.p2.name}<br/>
           <div>
             ${[0, 1, 2, 3, 4, 5].map(
-              s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
-            ).join("")}
+          s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
+        ).join("")}
             &nbsp;vs&nbsp;
             ${[0, 1, 2, 3, 4, 5].map(
-              s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
-            ).join("")}
+          s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
+        ).join("")}
           </div>
           <div>勝者：<span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
         `;
@@ -235,6 +252,15 @@ function updateScoreButtons(matchIndex) {
       roundMatches.forEach((_, i) => updateScoreButtons(i));
       updateJsonOutput();
     }
+    document.getElementById("setRoundBtn").addEventListener("click", () => {
+      const newRound = parseInt(document.getElementById("roundInput").value);
+      if (isNaN(newRound) || newRound < 1) {
+        alert("1以上のラウンド番号を入力してください。");
+        return;
+      }
+      roundNumber = newRound;
+      displayMatches();
+    });
 
     // 次のラウンドへ進む処理
     document.getElementById("nextRoundBtn").addEventListener("click", () => {
@@ -245,7 +271,7 @@ function updateScoreButtons(matchIndex) {
 
       // 現ラウンドを履歴に保存
       roundHistory.push({
-        round: getRoundName(roundMatches.length),
+        round: getRoundName(roundMatches.length, roundNumber),
         matches: JSON.parse(JSON.stringify(roundMatches))
       });
 
@@ -277,22 +303,22 @@ function updateScoreButtons(matchIndex) {
 
     // JSON出力更新
 
-function updateJsonOutput() {
-  const output = {
-    matches: roundHistory.flatMap(round => 
-      round.matches
-        .filter(m => m.p1.id !== "bye" && m.p2.id !== "bye") // bye戦を除外
-        .map(m => ({
-          round: round.round,
-          p1: { id: m.p1.id, name: m.p1.name, information: m.p1.information },
-          p2: { id: m.p2.id, name: m.p2.name, information: m.p2.information },
-          scores: m.scores
-        }))
-    )
-  };
+    function updateJsonOutput() {
+      const output = {
+        matches: roundHistory.flatMap(round =>
+          round.matches
+            .filter(m => m.p1.id !== "bye" && m.p2.id !== "bye") // bye戦を除外
+            .map(m => ({
+              round: round.round,
+              p1: { id: m.p1.id, name: m.p1.name, information: m.p1.information },
+              p2: { id: m.p2.id, name: m.p2.name, information: m.p2.information },
+              scores: m.scores
+            }))
+        )
+      };
 
-  document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
-}
+      document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
+    }
 
 
     // 初期表示
