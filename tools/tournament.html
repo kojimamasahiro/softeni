@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>トーナメント管理</title>
   <style>
+    
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       max-width: 600px;
@@ -125,43 +126,71 @@
     }
 
     // スコアボタンの選択状態更新
-    function updateScoreButtons(matchIndex) {
-      ["p1", "p2"].forEach(player => {
-        for (let s = 0; s <= 5; s++) {
-          const btn = document.querySelector(`#score-${player}-${matchIndex} button:nth-child(${s + 1})`);
-          if (!btn) continue;
-          btn.classList.toggle("selected", roundMatches[matchIndex].scores[player] === s);
-          // パッキン戦はスコアボタン非表示にしてもいい
-          if (roundMatches[matchIndex].p1.id === "bye" || roundMatches[matchIndex].p2.id === "bye") {
-            btn.style.display = "none";
-          } else {
-            btn.style.display = "inline-block";
-          }
-        }
-      });
-    }
+function updateScoreButtons(matchIndex) {
+  const match = roundMatches[matchIndex];
 
-    // スコア設定と勝者判定
+  ["p1", "p2"].forEach(player => {
+    const selectedScore = match.scores[player];
+    const scoreButtons = document.querySelectorAll(
+      `.score-button[data-match="${matchIndex}"][data-player="${player}"]`
+    );
+
+    scoreButtons.forEach((btn, i) => {
+      const score = Number(btn.dataset.score);
+      btn.classList.toggle("selected", score === selectedScore);
+
+      // パッキン戦はスコアボタン非表示にする
+      if (match.p1.id === "bye" || match.p2.id === "bye") {
+        btn.style.display = "none";
+      } else {
+        btn.style.display = "inline-block";
+      }
+    });
+  });
+}
+
+
+    // スコア設定と勝者判定（パッキン戦は自動判定）
     function setScore(matchIndex, player, score) {
       const match = roundMatches[matchIndex];
-      match.scores[player] = score;
-
-      // 勝者判定（引き分けはなし）
-      if (match.scores.p1 !== null && match.scores.p2 !== null) {
-        if (match.scores.p1 > match.scores.p2) {
-          match.winner = match.p1.id;
-        } else if (match.scores.p2 > match.scores.p1) {
-          match.winner = match.p2.id;
-        } else {
-          match.winner = null; // 引き分けは未決定
-        }
+      if (match.p1.id === "bye") {
+        match.winner = match.p2.id;
+      } else if (match.p2.id === "bye") {
+        match.winner = match.p1.id;
       } else {
-        match.winner = null;
+        match.scores[player] = score;
+
+        if (match.scores.p1 !== null && match.scores.p2 !== null) {
+          if (match.scores.p1 > match.scores.p2) {
+            match.winner = match.p1.id;
+          } else if (match.scores.p2 > match.scores.p1) {
+            match.winner = match.p2.id;
+          } else {
+            match.winner = null; // 引き分けは未決定
+          }
+        } else {
+          match.winner = null;
+        }
       }
 
       document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
       updateScoreButtons(matchIndex);
       updateJsonOutput();
+    }
+
+    // パッキン戦は初期勝者決定しておく
+    function autoDecideByeMatches() {
+      roundMatches.forEach((match, i) => {
+        if (match.p1.id === "bye") {
+          match.winner = match.p2.id;
+          match.scores = { p1: 0, p2: 5 };
+          document.getElementById(`winner-${i}`) && (document.getElementById(`winner-${i}`).textContent = getWinnerName(match));
+        } else if (match.p2.id === "bye") {
+          match.winner = match.p1.id;
+          match.scores = { p1: 5, p2: 0 };
+          document.getElementById(`winner-${i}`) && (document.getElementById(`winner-${i}`).textContent = getWinnerName(match));
+        }
+      });
     }
 
     // 試合表示
@@ -175,38 +204,35 @@
         div.className = "match-result";
 
         div.innerHTML = `
-          <strong>試合 ${i + 1}</strong>：${match.p1.name} vs ${match.p2.name}
+          <strong>試合 ${i + 1}</strong>：${match.p1.name} vs ${match.p2.name}<br/>
           <div>
-            <span>${match.p1.name} のスコア: </span>
-            <span id="score-p1-${i}"></span>
+            ${[0, 1, 2, 3, 4, 5].map(
+              s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
+            ).join("")}
+            &nbsp;vs&nbsp;
+            ${[0, 1, 2, 3, 4, 5].map(
+              s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
+            ).join("")}
           </div>
-          <div>
-            <span>${match.p2.name} のスコア: </span>
-            <span id="score-p2-${i}"></span>
-          </div>
-          <div>勝者: <span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
+          <div>勝者：<span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
         `;
 
         matchesDiv.appendChild(div);
-
-        // スコア0~5ボタンを生成
-        for (let s = 0; s <= 5; s++) {
-          const btn1 = document.createElement("button");
-          btn1.textContent = s;
-          btn1.className = "score-button";
-          btn1.onclick = () => setScore(i, "p1", s);
-          document.getElementById(`score-p1-${i}`).appendChild(btn1);
-
-          const btn2 = document.createElement("button");
-          btn2.textContent = s;
-          btn2.className = "score-button";
-          btn2.onclick = () => setScore(i, "p2", s);
-          document.getElementById(`score-p2-${i}`).appendChild(btn2);
-        }
-
-        updateScoreButtons(i);
       });
 
+      // スコアボタンにイベント付与
+      document.querySelectorAll(".score-button").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const matchIndex = Number(e.target.dataset.match);
+          const player = e.target.dataset.player;
+          const score = Number(e.target.dataset.score);
+          setScore(matchIndex, player, score);
+        });
+      });
+
+      // パッキン戦のスコアボタンは非表示にし、勝者自動決定
+      autoDecideByeMatches();
+      roundMatches.forEach((_, i) => updateScoreButtons(i));
       updateJsonOutput();
     }
 
@@ -250,18 +276,24 @@
     });
 
     // JSON出力更新
-    function updateJsonOutput() {
-      const allMatches = roundHistory.flatMap(round =>
-        round.matches.map(match => ({
-          ...match,
-          round: round.round
+
+function updateJsonOutput() {
+  const output = {
+    matches: roundHistory.flatMap(round => 
+      round.matches
+        .filter(m => m.p1.id !== "bye" && m.p2.id !== "bye") // bye戦を除外
+        .map(m => ({
+          round: round.round,
+          p1: { id: m.p1.id, name: m.p1.name, information: m.p1.information },
+          p2: { id: m.p2.id, name: m.p2.name, information: m.p2.information },
+          scores: m.scores
         }))
-      );
+    )
+  };
 
-      const output = { matches: allMatches };
+  document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
+}
 
-      document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
-    }
 
     // 初期表示
     displayMatches();
