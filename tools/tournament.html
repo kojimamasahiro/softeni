@@ -83,7 +83,6 @@
 
   <script>
     function onClickGenerate() {
-      const useRoundNames = document.getElementById("roundNameToggle").checked;
       updateJsonOutput(roundHistory, useRoundNames);
     }
   </script>
@@ -324,7 +323,6 @@
 
       // 優勝判定
       if (winners.length === 1) {
-        document.getElementById("nextRoundBtn").disabled = true;
         updateJsonOutput(roundHistory.map(round => round.matches));
         return;
       }
@@ -345,9 +343,9 @@
     });
 
     // JSON出力更新
-    function updateJsonOutput(roundHistory, useRoundNames = true) {
+    function updateJsonOutput(roundHistory) {
+      const useRoundNames = document.getElementById("roundNameToggle").checked;
       const output = {
-        resultSummary: [],
         matches: [],
       };
 
@@ -379,7 +377,7 @@
 
       for (let i = 0; i < roundCount; i++) {
         const matches = roundHistory[i];
-        const roundLabel = getRoundLabel(i, roundCount);
+        const roundLabel = getRoundLabel(i, roundCount, useRoundNames);
 
         for (const match of matches) {
           const matchWithRound = structuredClone(match);
@@ -482,7 +480,7 @@
       };
       const reverseIndex = totalRounds - index;
       if (roundNames[reverseIndex]) return roundNames[reverseIndex];
-      return `${index + 1}回戦`;
+      return `${index + 1}回`;
     }
 
     // 初期表示
