@@ -29,22 +29,43 @@
         ],
         "matches": [
             {
-                "round": "3回戦",
+                "round": "決勝",
                 "pair": [
-                    "kataoka-aki"
+                    "p1",
+                    "p2"
                 ],
-                "opponents": [
+                "information": [
                     {
-                        "lastName": "橋本",
-                        "firstName": "将英",
-                        "team": "順天堂大学",
-                        "playerId": null
+                        "playerId": "p3"
+                    },
+                    {
+                        "playerId": "p4"
                     }
                 ],
                 "result": "win",
                 "games": {
-                    "won": "4",
+                    "won": "5",
                     "lost": "0"
+                }
+            },
+            {
+                "round": "決勝",
+                "pair": [
+                    "p3",
+                    "p4"
+                ],
+                "information": [
+                    {
+                        "playerId": "p1"
+                    },
+                    {
+                        "playerId": "p2"
+                    }
+                ],
+                "result": "lose",
+                "games": {
+                    "won": "0",
+                    "lost": "5"
                 }
             },
             {

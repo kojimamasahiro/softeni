@@ -333,100 +333,144 @@
     });
 
     // JSON出力更新
-function updateJsonOutput(roundHistory) {
-  const output = {
-    resultSummary: [],
-    matches: [],
-  };
+    function updateJsonOutput(roundHistory) {
+      const output = {
+        resultSummary: [],
+        matches: [],
+      };
 
-  const roundCount = roundHistory.length;
-  const resultPairs = new Set();
+      const roundCount = roundHistory.length;
+      const resultPairs = new Set();
 
-  // ラウンド名変換（例：決勝、準決勝、1回戦など）
-  function getRoundLabel(index, totalRounds) {
-    const roundNames = {
-      1: "決勝",
-      2: "準決勝",
-      3: "準々決勝"
-    };
-    const reverseIndex = totalRounds - index;
-    if (roundNames[reverseIndex]) return roundNames[reverseIndex];
-    return `${index + 1}回戦`;
-  }
-
-  const roundRankings = {};
-  roundRankings[roundCount - 1] = { winner: "優勝", loser: "準優勝" };
-  if (roundCount - 2 >= 0) roundRankings[roundCount - 2] = { loser: "ベスト4" };
-  if (roundCount - 3 >= 0) roundRankings[roundCount - 3] = { loser: "ベスト8" };
-
-  const getPairKey = (info) => info?.information?.map(p => p.playerId).sort().join("-");
-  const getPairArray = (info) => info?.information?.map(p => p.playerId).sort();
-  const isValidPair = (arr) => arr.every(id => id !== null && id !== undefined);
-
-  for (let i = 0; i < roundCount; i++) {
-    const matches = roundHistory[i];
-    const roundLabel = getRoundLabel(i, roundCount);
-
-    for (const match of matches) {
-      // クローンして round ラベルを追加
-      const matchWithRound = JSON.parse(JSON.stringify(match));
-      matchWithRound.round = roundLabel;
-      output.matches.push(matchWithRound);
-    }
-  }
-
-  // resultSummary 生成（上から下へ）
-  for (let i = roundCount - 1; i >= 0; i--) {
-    const matches = roundHistory[i];
-    const ranking = roundRankings[i];
-    if (!ranking) continue;
-
-    for (const match of matches) {
-      if (!match.p1 || !match.p2 || !match.winner) continue;
-
-      const p1Key = getPairKey(match.p1);
-      const p2Key = getPairKey(match.p2);
-      const p1Array = getPairArray(match.p1);
-      const p2Array = getPairArray(match.p2);
-      if (!p1Key || !p2Key) continue;
-
-      const isP1Winner = match.winner === match.p1.id;
-      const winnerKey = isP1Winner ? p1Key : p2Key;
-      const loserKey = isP1Winner ? p2Key : p1Key;
-      const winnerArray = isP1Winner ? p1Array : p2Array;
-      const loserArray = isP1Winner ? p2Array : p1Array;
-
-      if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
-        output.resultSummary.push({
-          pair: winnerArray,
-          finalRound: ranking.winner,
-        });
-        resultPairs.add(winnerKey);
+      // ラウンド名変換（例：決勝、準決勝、1回戦など）
+      function getRoundLabel(index, totalRounds) {
+        const roundNames = {
+          1: "決勝",
+          2: "準決勝",
+          3: "準々決勝"
+        };
+        const reverseIndex = totalRounds - index;
+        if (roundNames[reverseIndex]) return roundNames[reverseIndex];
+        return `${index + 1}回戦`;
       }
-      if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
-        output.resultSummary.push({
-          pair: loserArray,
-          finalRound: ranking.loser,
-        });
-        resultPairs.add(loserKey);
+
+      const roundRankings = {};
+      roundRankings[roundCount - 1] = { winner: "優勝", loser: "準優勝" };
+      if (roundCount - 2 >= 0) roundRankings[roundCount - 2] = { loser: "ベスト4" };
+      if (roundCount - 3 >= 0) roundRankings[roundCount - 3] = { loser: "ベスト8" };
+
+      const getPairKey = (info) => info?.information?.map(p => p.playerId).sort().join("-");
+      const getPairArray = (info) => info?.information?.map(p => p.playerId).sort();
+      const isValidPair = (arr) => arr.every(id => id !== null && id !== undefined);
+
+      for (let i = 0; i < roundCount; i++) {
+        const matches = roundHistory[i];
+        const roundLabel = getRoundLabel(i, roundCount);
+
+        for (const match of matches) {
+          const matchWithRound = structuredClone(match);
+          matchWithRound.round = roundLabel;
+
+          const splitMatches = splitMatchByPlayerIds(matchWithRound);
+          output.matches.push(...splitMatches); // 分割結果を追加
+        }
+
       }
+
+      // resultSummary 生成（上から下へ）
+      for (let i = roundCount - 1; i >= 0; i--) {
+        const matches = roundHistory[i];
+        const ranking = roundRankings[i];
+        if (!ranking) continue;
+
+        for (const match of matches) {
+          if (!match.p1 || !match.p2 || !match.winner) continue;
+
+          const p1Key = getPairKey(match.p1);
+          const p2Key = getPairKey(match.p2);
+          const p1Array = getPairArray(match.p1);
+          const p2Array = getPairArray(match.p2);
+          if (!p1Key || !p2Key) continue;
+
+          const isP1Winner = match.winner === match.p1.id;
+          const winnerKey = isP1Winner ? p1Key : p2Key;
+          const loserKey = isP1Winner ? p2Key : p1Key;
+          const winnerArray = isP1Winner ? p1Array : p2Array;
+          const loserArray = isP1Winner ? p2Array : p1Array;
+
+          if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
+            output.resultSummary.push({
+              pair: winnerArray,
+              finalRound: ranking.winner,
+            });
+            resultPairs.add(winnerKey);
+          }
+          if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
+            output.resultSummary.push({
+              pair: loserArray,
+              finalRound: ranking.loser,
+            });
+            resultPairs.add(loserKey);
+          }
+        }
+      }
+
+      document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
     }
-  }
 
-  document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
-}
+    function splitMatchByPlayerIds(match) {
+      const results = [];
 
+      const p1Ids = match.p1.information.map(info => info.playerId);
+      const p2Ids = match.p2.information.map(info => info.playerId);
 
-function getRoundLabel(index, totalRounds) {
-  const roundNames = {
-    1: "決勝",
-    2: "準決勝",
-    3: "準々決勝"
-  };
-  const reverseIndex = totalRounds - index;
-  if (roundNames[reverseIndex]) return roundNames[reverseIndex];
-  return `${index + 1}回戦`;
-}
+      const p1IsValid = p1Ids.every(id => id != null);
+      const p2IsValid = p2Ids.every(id => id != null);
+
+      const p1IsWinner = (match.winner === match.p1.id);
+
+      const p1Score = String(match.scores.p1);
+      const p2Score = String(match.scores.p2);
+
+      if (p1IsValid) {
+        results.push({
+          round: match.round,
+          pair: p1Ids,
+          opponents: match.p2.information,
+          result: p1IsWinner ? "win" : "lose",
+          games: {
+            won: p1IsWinner ? p1Score : p2Score,
+            lost: p1IsWinner ? p2Score : p1Score,
+          }
+        });
+      }
+
+      if (p2IsValid) {
+        results.push({
+          round: match.round,
+          pair: p2Ids,
+          opponents: match.p1.information,
+          result: p1IsWinner ? "lose" : "win",
+          games: {
+            won: p1IsWinner ? p2Score : p1Score,
+            lost: p1IsWinner ? p1Score : p2Score,
+          }
+        });
+      }
+
+      return results;
+    }
+
+    function getRoundLabel(index, totalRounds) {
+      const roundNames = {
+        1: "決勝",
+        2: "準決勝",
+        3: "準々決勝"
+      };
+      const reverseIndex = totalRounds - index;
+      if (roundNames[reverseIndex]) return roundNames[reverseIndex];
+      return `${index + 1}回戦`;
+    }
 
     // 初期表示
     displayMatches();
