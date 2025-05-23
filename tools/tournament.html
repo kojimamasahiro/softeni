@@ -83,7 +83,7 @@
 
   <script>
     function onClickGenerate() {
-      updateJsonOutput(roundHistory, useRoundNames);
+      updateJsonOutput(roundHistory);
     }
   </script>
 
@@ -388,40 +388,44 @@
         }
       }
 
-      // resultSummary 生成
-      for (let i = roundCount - 1; i >= 0; i--) {
-        const matches = roundHistory[i];
-        const ranking = roundRankings[i];
-        if (!ranking) continue;
+      // resultSummary 生成（useRoundNames が true のときのみ）
+      if (useRoundNames) {
+        output.resultSummary = [];
 
-        for (const match of matches) {
-          if (!match.p1 || !match.p2 || !match.winner) continue;
+        for (let i = roundCount - 1; i >= 0; i--) {
+          const matches = roundHistory[i];
+          const ranking = roundRankings[i];
+          if (!ranking) continue;
 
-          const p1Key = getPairKey(match.p1);
-          const p2Key = getPairKey(match.p2);
-          const p1Array = getPairArray(match.p1);
-          const p2Array = getPairArray(match.p2);
-          if (!p1Key || !p2Key) continue;
+          for (const match of matches) {
+            if (!match.p1 || !match.p2 || !match.winner) continue;
 
-          const isP1Winner = match.winner === match.p1.id;
-          const winnerKey = isP1Winner ? p1Key : p2Key;
-          const loserKey = isP1Winner ? p2Key : p1Key;
-          const winnerArray = isP1Winner ? p1Array : p2Array;
-          const loserArray = isP1Winner ? p2Array : p1Array;
+            const p1Key = getPairKey(match.p1);
+            const p2Key = getPairKey(match.p2);
+            const p1Array = getPairArray(match.p1);
+            const p2Array = getPairArray(match.p2);
+            if (!p1Key || !p2Key) continue;
 
-          if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
-            output.resultSummary.push({
-              pair: winnerArray,
-              finalRound: ranking.winner,
-            });
-            resultPairs.add(winnerKey);
-          }
-          if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
-            output.resultSummary.push({
-              pair: loserArray,
-              finalRound: ranking.loser,
-            });
-            resultPairs.add(loserKey);
+            const isP1Winner = match.winner === match.p1.id;
+            const winnerKey = isP1Winner ? p1Key : p2Key;
+            const loserKey = isP1Winner ? p2Key : p1Key;
+            const winnerArray = isP1Winner ? p1Array : p2Array;
+            const loserArray = isP1Winner ? p2Array : p1Array;
+
+            if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
+              output.resultSummary.push({
+                pair: winnerArray,
+                finalRound: ranking.winner,
+              });
+              resultPairs.add(winnerKey);
+            }
+            if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
+              output.resultSummary.push({
+                pair: loserArray,
+                finalRound: ranking.loser,
+              });
+              resultPairs.add(loserKey);
+            }
           }
         }
       }
