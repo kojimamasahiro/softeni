@@ -345,9 +345,7 @@
     // JSON出力更新
     function updateJsonOutput(roundHistory) {
       const useRoundNames = document.getElementById("roundNameToggle").checked;
-      const output = {
-        matches: [],
-      };
+      const output = {};
 
       const roundCount = roundHistory.length;
       const resultPairs = new Set();
@@ -375,22 +373,9 @@
       const getPairArray = (info) => info?.information?.map(p => p.playerId).sort();
       const isValidPair = (arr) => arr.every(id => id !== null && id !== undefined);
 
-      for (let i = 0; i < roundCount; i++) {
-        const matches = roundHistory[i];
-        const roundLabel = getRoundLabel(i, roundCount, useRoundNames);
-
-        for (const match of matches) {
-          const matchWithRound = structuredClone(match);
-          matchWithRound.round = roundLabel;
-
-          const splitMatches = splitMatchByPlayerIds(matchWithRound);
-          output.matches.push(...splitMatches);
-        }
-      }
-
-      // resultSummary 生成（useRoundNames が true のときのみ）
+      // resultSummary を先に生成（必要な場合）
       if (useRoundNames) {
-        output.resultSummary = [];
+        const resultSummary = [];
 
         for (let i = roundCount - 1; i >= 0; i--) {
           const matches = roundHistory[i];
@@ -413,20 +398,38 @@
             const loserArray = isP1Winner ? p2Array : p1Array;
 
             if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
-              output.resultSummary.push({
+              resultSummary.push({
                 pair: winnerArray,
                 finalRound: ranking.winner,
               });
               resultPairs.add(winnerKey);
             }
             if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
-              output.resultSummary.push({
+              resultSummary.push({
                 pair: loserArray,
                 finalRound: ranking.loser,
               });
               resultPairs.add(loserKey);
             }
           }
+        }
+
+        output.resultSummary = resultSummary;
+      }
+
+      // matches を後から生成
+      output.matches = [];
+
+      for (let i = 0; i < roundCount; i++) {
+        const matches = roundHistory[i];
+        const roundLabel = getRoundLabel(i, roundCount, useRoundNames);
+
+        for (const match of matches) {
+          const matchWithRound = structuredClone(match);
+          matchWithRound.round = roundLabel;
+
+          const splitMatches = splitMatchByPlayerIds(matchWithRound);
+          output.matches.push(...splitMatches);
         }
       }
 
