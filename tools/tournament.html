@@ -110,13 +110,13 @@
       { id: "8", name: "井上・木村", information: [{ playerId: "p13" }, { playerId: "p14" }] },
     ];
 
-    // 初期ラウンドの試合ペア（4ペアから2試合）
-    let roundMatches = [
-      { p1: initialPlayers[0], p2: initialPlayers[1], scores: { p1: null, p2: null }, winner: null },
-      { p1: initialPlayers[2], p2: initialPlayers[3], scores: { p1: null, p2: null }, winner: null },
-      { p1: initialPlayers[4], p2: initialPlayers[5], scores: { p1: null, p2: null }, winner: null },
-      { p1: initialPlayers[6], p2: initialPlayers[7], scores: { p1: null, p2: null }, winner: null },
-    ];
+    let roundMatches = Array.from({ length: initialPlayers.length / 2 }, (_, i) => ({
+      p1: initialPlayers[i * 2],
+      p2: initialPlayers[i * 2 + 1],
+      scores: { p1: null, p2: null },
+      winner: null,
+    }));
+
     // const initialPlayers = [
     //   { id: "1", name: "田中・佐藤", information: [{ playerId: "p1" }, { playerId: "p2" }] },
     //   byePlayer,
@@ -141,18 +141,6 @@
 
     //   byePlayer,
     //   { id: "10", name: "清水・中島", information: [{ playerId: "p19" }, { playerId: "p20" }] },
-    // ];
-
-    // // 初期ラウンドの試合ペア（4ペアから2試合）
-    // let roundMatches = [
-    //   { p1: initialPlayers[0], p2: initialPlayers[1], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[2], p2: initialPlayers[3], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[4], p2: initialPlayers[5], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[6], p2: initialPlayers[7], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[8], p2: initialPlayers[9], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[10], p2: initialPlayers[11], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[12], p2: initialPlayers[13], scores: { p1: null, p2: null }, winner: null },
-    //   { p1: initialPlayers[14], p2: initialPlayers[15], scores: { p1: null, p2: null }, winner: null }
     // ];
 
     let roundHistory = [];
