@@ -171,12 +171,21 @@
       const match = roundMatches[matchIndex];
 
       ["p1", "p2"].forEach(player => {
-        const selectedScore = match.scores[player];
+        let selectedScore = match.scores[player];
+
+        // 未設定なら0にセット（表示上の選択状態として）
+        if (selectedScore === null || selectedScore === undefined) {
+          selectedScore = 0;
+          // 実際のスコアデータも0で初期化したい場合は下記も追加
+          match.scores[player] = 0;
+          getWinnerName(match)
+        }
+
         const scoreButtons = document.querySelectorAll(
           `.score-button[data-match="${matchIndex}"][data-player="${player}"]`
         );
 
-        scoreButtons.forEach((btn, i) => {
+        scoreButtons.forEach(btn => {
           const score = Number(btn.dataset.score);
           btn.classList.toggle("selected", score === selectedScore);
 
@@ -189,7 +198,6 @@
         });
       });
     }
-
 
     // スコア設定と勝者判定（パッキン戦は自動判定）
     function setScore(matchIndex, player, score) {
@@ -277,6 +285,7 @@
       roundMatches.forEach((_, i) => updateScoreButtons(i));
       updateJsonOutput(roundHistory.map(round => round.matches));
     }
+
     document.getElementById("setRoundBtn").addEventListener("click", () => {
       const newRound = parseInt(document.getElementById("roundInput").value);
       if (isNaN(newRound) || newRound < 1) {
