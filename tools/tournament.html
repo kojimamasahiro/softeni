@@ -75,6 +75,18 @@
     <input type="number" id="roundInput" min="1" value="1" style="width: 60px;">
     <button id="setRoundBtn">変更</button>
   </div>
+  <label>
+    <input type="checkbox" id="roundNameToggle" checked>
+    決勝・準決勝の表記にする
+  </label>
+  <button onclick="onClickGenerate()">出力</button>
+
+  <script>
+    function onClickGenerate() {
+      const useRoundNames = document.getElementById("roundNameToggle").checked;
+      updateJsonOutput(roundHistory, useRoundNames);
+    }
+  </script>
 
   <div id="roundName"></div>
   <div id="matches"></div>
@@ -333,7 +345,7 @@
     });
 
     // JSON出力更新
-    function updateJsonOutput(roundHistory) {
+    function updateJsonOutput(roundHistory, useRoundNames = true) {
       const output = {
         resultSummary: [],
         matches: [],
@@ -342,15 +354,17 @@
       const roundCount = roundHistory.length;
       const resultPairs = new Set();
 
-      // ラウンド名変換（例：決勝、準決勝、1回戦など）
-      function getRoundLabel(index, totalRounds) {
+      // ラウンド名変換
+      function getRoundLabel(index, totalRounds, useRoundNames) {
         const roundNames = {
           1: "決勝",
           2: "準決勝",
           3: "準々決勝"
         };
         const reverseIndex = totalRounds - index;
-        if (roundNames[reverseIndex]) return roundNames[reverseIndex];
+        if (useRoundNames && roundNames[reverseIndex]) {
+          return roundNames[reverseIndex];
+        }
         return `${index + 1}回戦`;
       }
 
@@ -372,12 +386,11 @@
           matchWithRound.round = roundLabel;
 
           const splitMatches = splitMatchByPlayerIds(matchWithRound);
-          output.matches.push(...splitMatches); // 分割結果を追加
+          output.matches.push(...splitMatches);
         }
-
       }
 
-      // resultSummary 生成（上から下へ）
+      // resultSummary 生成
       for (let i = roundCount - 1; i >= 0; i--) {
         const matches = roundHistory[i];
         const ranking = roundRankings[i];
