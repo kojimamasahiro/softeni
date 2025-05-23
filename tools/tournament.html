@@ -176,9 +176,7 @@
         // 未設定なら0にセット（表示上の選択状態として）
         if (selectedScore === null || selectedScore === undefined) {
           selectedScore = 0;
-          // 実際のスコアデータも0で初期化したい場合は下記も追加
           match.scores[player] = 0;
-          getWinnerName(match)
         }
 
         const scoreButtons = document.querySelectorAll(
