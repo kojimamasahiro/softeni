@@ -1,40 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Softeni Pick
 
-## Getting Started
+ソフトテニスの試合結果を選手ごとにまとめて閲覧できるWebサービスです。  
+大会速報、個人の試合記録、主要タイトルの成績などを表示し、ソフトテニスファンが楽しめる情報プラットフォームを目指しています。
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🔍 背景・目的
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ソフトテニスは情報の集約が少なく、特定選手の過去の成績や試合状況を簡単に調べられるサイトが存在しませんでした。  
+そのため、選手ごとに情報を整理し、ファンがデータで楽しめるサービスを目指して開発しました。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 👤 対象ユーザー
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- ソフトテニスファン（プレイヤー／観戦者）
+- 特定選手の戦績や出場状況を追いたい人
+- スタッツを分析・可視化して楽しみたい人
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠 使用技術
 
-To learn more about Next.js, take a look at the following resources:
+- フロントエンド：Next.js (React)
+- デプロイ：Vercel
+- スタイリング：Tailwind CSS（予定）
+- 補助ツール：ChatGPT、Python、HTMLテンプレートなど
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 主な機能
 
-## Deploy on Vercel
+- トップページで大会速報を表示（手動入力データ使用）
+- 選手一覧から各プロフィールページに遷移
+- 各選手のページで：
+  - プロフィール情報（生年月日、ポジション、SNSなど）
+  - 最新の大会速報と過去大会の試合結果（勝敗、相手、スコア等）
+  - 年度ごとの主要大会成績（Stats）
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 💡 工夫した点
+
+- ChatGPTを使って自然言語でのコーディング支援を活用
+- PythonスクリプトやHTMLテンプレで試合結果データの半自動化
+- 選手や大会ごとにJSONでデータ管理して柔軟に拡張可能な設計
+
+---
+
+## 😵 苦労した点・今後の課題
+
+- UIデザインが整っておらず、視認性の改善が課題
+- ChatGPTの活用に慣れていないため、やりたいUIの伝え方が難しい
+- 入力作業の手間が大きいため、将来的には自動化を推進したい
+
+---
+
+## 🚀 今後の展望
+
+- データ入力の自動化と更新性の向上（Googleスプレッドシート連携等）
+- 表示レイアウトの改善（レスポンシブ／カードUIなど）
+- 選手や大会ごとの分析データやランキングの表示機能追加
+- SEO対策／構造化データ対応による検索性向上
+
+---
+
+## 🔗 公開URL・GitHub
+
+- Webアプリ：[https://softeni.vercel.app](https://softeni.vercel.app) （仮）
+- GitHub： [https://github.com/kojimamasahiro/softeni](https://github.com/kojimamasahiro/softeni)
