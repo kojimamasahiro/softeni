@@ -63,7 +63,7 @@
     <button id="addByeBtn" type="button">1回戦免除を追加</button>
 
     <h3>生成されたJSON配列</h3>
-    <pre id="output"></pre>
+    <textarea id="output" rows="10" cols="50"></textarea>
 
     <button id="copyBtn" type="button">JSONをコピーする</button>
 
@@ -304,7 +304,7 @@
                 idInput.value = nextId;
 
                 const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
-                output.textContent = compressedWithBreaks;
+                output.value = compressedWithBreaks;
 
                 // 入力欄はリセットしない
             });
@@ -322,7 +322,7 @@
 
                 // 出力を更新（配列ごとに改行の圧縮表示の例）
                 const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
-                output.textContent = compressedWithBreaks;
+                output.value = compressedWithBreaks;
             });
 
             // 初期表示だけリセット
@@ -334,7 +334,7 @@
         const copyBtn = document.getElementById('copyBtn');
 
         copyBtn.addEventListener('click', () => {
-            const text = output.textContent;
+            const text = output.value;
             if (!text) {
                 alert('コピーする内容がありません');
                 return;
