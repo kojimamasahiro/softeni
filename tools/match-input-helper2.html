@@ -302,6 +302,7 @@
                     const team = div.querySelector('.team').value.trim();
                     const playerIdInput = div.querySelector('.playerInput').value.trim();
                     const playerId = playerIdInput || null;
+                    const tempId = null;
 
                     if (!lastName) {
                         alert('姓は必須です');
@@ -312,7 +313,7 @@
                         teamSet.add(team);
                     }
 
-                    players.push({ lastName, firstName, team, playerId });
+                    players.push({ lastName, firstName, team, playerId, tempId });
                 }
 
                 let representativeTeam = '';
@@ -320,6 +321,7 @@
                     representativeTeam = [...teamSet][0];
                     for (const player of players) {
                         player.team = player.team || representativeTeam;
+                        player.tempId = player.playerId || player.firstName + "_" +  player.lastName + "_" + representativeTeam;
                     }
                 } else if (teamSet.size === 0) {
                     representativeTeam = '';

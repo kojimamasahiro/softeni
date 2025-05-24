@@ -99,16 +99,15 @@
     const byePlayer = { id: "bye", name: "1回戦免除", information: [] };
 
     // プレイヤー情報（ペア名 + 各プレイヤーID）
-    const initialPlayers = [
-      { id: "1", name: "田中・佐藤", information: [{ playerId: null }, { playerId: "p2" }] },
-      { id: "2", name: "鈴木・山田", information: [{ playerId: "p3" }, { playerId: null }] },
-      { id: "3", name: "高橋・伊藤", information: [{ playerId: null }, { playerId: "p6" }] },
-      { id: "4", name: "加藤・山口", information: [{ playerId: "p7" }, { playerId: "p8" }] },
-      { id: "5", name: "中村・小林", information: [{ playerId: "p9" }, { playerId: "p10" }] },
-      { id: "6", name: "渡辺・松本", information: [{ playerId: null }, { playerId: "p12" }] },
-      { id: "7", name: "山田・佐々木", information: [{ playerId: "p15" }, { playerId: "p16" }] },
-      { id: "8", name: "井上・木村", information: [{ playerId: "p13" }, { playerId: "p14" }] },
-    ];
+    const initialPlayers =
+[
+{"id":1,"name":"黒坂・片岡（日本体育大学）","information":[{"lastName":"黒坂","firstName":"卓矢","team":"日本体育大学","playerId":"kurosaka-takuya"},{"lastName":"片岡","firstName":"暁紀","team":"日本体育大学","playerId":"kataoka-aki"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":2,"name":"キング・高い（法政大学）","information":[{"lastName":"キング","firstName":"あ","team":"法政大学","playerId":null},{"lastName":"高い","firstName":"ひろし","team":"法政大学","playerId":null}]},
+{"id":3,"name":"東海・がく（東海大学）","information":[{"lastName":"東海","firstName":"だい","team":"東海大学","playerId":null},{"lastName":"がく","firstName":"とうかい","team":"東海大学","playerId":null}]},
+{"id":4,"name":"岸本・圭（文教大学）","information":[{"lastName":"岸本","firstName":"あ","team":"文教大学","playerId":null},{"lastName":"圭","firstName":"たなか","team":"文教大学","playerId":null}]}
+]
+    ;
 
     let roundMatches = Array.from({ length: initialPlayers.length / 2 }, (_, i) => ({
       p1: initialPlayers[i * 2],
@@ -174,8 +173,8 @@
 
         // 未設定なら0にセット（表示上の選択状態として）
         if (selectedScore === null || selectedScore === undefined) {
-          selectedScore = 0;
-          match.scores[player] = 0;
+          selectedScore = 5;
+          match.scores[player] = 5;
         }
 
         const scoreButtons = document.querySelectorAll(
@@ -425,6 +424,12 @@
     }
 
     function splitMatchByPlayerIds(match) {
+      
+      if (match.p1.id === 'bye' || match.p2.id === 'bye') {
+        return [];
+      }
+
+
       const results = [];
 
       const p1Ids = match.p1.information.map(info => info.playerId);
