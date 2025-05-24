@@ -60,6 +60,7 @@
     <hr />
 
     <button id="generateBtn">JSON生成・追加</button>
+    <button id="addByeBtn" type="button">1回戦免除を追加</button>
 
     <h3>生成されたJSON配列</h3>
     <pre id="output"></pre>
@@ -221,17 +222,16 @@
                 div.className = 'player-group';
                 div.innerHTML = `
         <label>出力ID：
-  <input type="number" id="outputIdInput" min="1" value="1" />
-</label>
-
-      <label>選手情報（playerId / 姓 / 名 / チーム名から補完可能）：
+        <input type="number" id="outputIdInput" min="1" value="1" />
+        </label>
+        <label>選手情報（playerId / 姓 / 名 / チーム名から補完可能）：
         <input list="playerList" class="playerInput" autocomplete="off" />
-      </label>
-      <label>姓 (lastName)：<input type="text" class="lastName" /></label>
-      <label>名 (firstName)：<input type="text" class="firstName" /></label>
-      <label>チーム名 (team)：<input type="text" class="team" /></label>
-      <button class="removePlayerBtn" type="button">この選手を削除</button>
-      <button class="clearPlayerBtn" type="button">この選手情報をクリア</button>
+        </label>
+        <label>姓 (lastName)：<input type="text" class="lastName" /></label>
+        <label>名 (firstName)：<input type="text" class="firstName" /></label>
+        <label>チーム名 (team)：<input type="text" class="team" /></label>
+        <button class="removePlayerBtn" type="button">この選手を削除</button>
+        <button class="clearPlayerBtn" type="button">この選手情報をクリア</button>
     `;
                 setupSpaceRemoval(div);
                 div.querySelector('.removePlayerBtn').addEventListener('click', () => {
@@ -307,6 +307,22 @@
                 output.textContent = compressedWithBreaks;
 
                 // 入力欄はリセットしない
+            });
+
+            const addByeBtn = document.getElementById('addByeBtn');
+
+            addByeBtn.addEventListener('click', () => {
+                const byeObj = {
+                    id: "bye",
+                    name: "1回戦免除",
+                    information: []
+                };
+
+                jsonArray.push(byeObj);
+
+                // 出力を更新（配列ごとに改行の圧縮表示の例）
+                const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
+                output.textContent = compressedWithBreaks;
             });
 
             // 初期表示だけリセット
