@@ -59,6 +59,7 @@
 
     <hr />
 
+    <button id="loadJsonBtn">JSONを読み込む</button>
     <button id="generateBtn">JSON生成・追加</button>
     <button id="addByeBtn" type="button">1回戦免除を追加</button>
 
@@ -147,6 +148,7 @@
 
             const playersContainer = document.getElementById('playersContainer');
             const addPlayerBtn = document.getElementById('addPlayerBtn');
+            const loadJsonBtn = document.getElementById('loadJsonBtn');
             const generateBtn = document.getElementById('generateBtn');
             const output = document.getElementById('output');
             const playerList = document.getElementById('playerList');
@@ -260,6 +262,19 @@
                 playersContainer.appendChild(createPlayerInputGroup());
             });
 
+            loadJsonBtn.addEventListener('click', () => {
+                try {
+                    const parsed = JSON.parse(output.value);
+                    if (!Array.isArray(parsed)) {
+                        alert('JSONは配列である必要があります');
+                        return;
+                    }
+                    jsonArray = parsed;
+                    alert('JSONを正常に読み込みました');
+                } catch (e) {
+                    alert('JSONのパースに失敗しました: ' + e.message);
+                }
+            });
             // JSON生成処理（入力欄はそのまま維持）
             generateBtn.addEventListener('click', () => {
                 // id入力欄の値を取得
@@ -283,7 +298,7 @@
                     const playerIdInput = div.querySelector('.playerInput').value.trim();
                     const playerId = playerIdInput || null;
 
-                    if (!lastName || !firstName || !team) {
+                    if (!lastName) {
                         alert('姓・名・チームは必須です');
                         return;
                     }
