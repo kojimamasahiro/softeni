@@ -64,6 +64,8 @@
     <h3>生成されたJSON配列</h3>
     <pre id="output"></pre>
 
+    <button id="copyBtn" type="button">JSONをコピーする</button>
+
     <datalist id="playerList"></datalist>
 
     <script>
@@ -227,7 +229,7 @@
       <button class="removePlayerBtn" type="button">この選手を削除</button>
       <button class="clearPlayerBtn" type="button">この選手情報をクリア</button>
     `;
-
+                setupSpaceRemoval(div);
                 div.querySelector('.removePlayerBtn').addEventListener('click', () => {
                     playersContainer.removeChild(div);
                 });
@@ -298,6 +300,38 @@
             initializeInputArea();
 
         })();
+
+        const output = document.getElementById('output');
+        const copyBtn = document.getElementById('copyBtn');
+
+        copyBtn.addEventListener('click', () => {
+            const text = output.textContent;
+            if (!text) {
+                alert('コピーする内容がありません');
+                return;
+            }
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert('JSONをクリップボードにコピーしました');
+                })
+                .catch(err => {
+                    alert('コピーに失敗しました: ' + err);
+                });
+        });
+
+        // スペース削除関数
+        function removeSpaces(event) {
+            event.target.value = event.target.value.replace(/\s+/g, '');
+        }
+
+        // 指定したコンテナ内の全対象inputにスペース削除イベントを設定
+        function setupSpaceRemoval(container) {
+            const inputs = container.querySelectorAll('input.lastName, input.firstName, input.team');
+            inputs.forEach(input => {
+                input.addEventListener('input', removeSpaces);
+            });
+        }
+
     </script>
 
 </body>
