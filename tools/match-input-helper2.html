@@ -277,6 +277,7 @@
                     alert('JSONのパースに失敗しました: ' + e.message);
                 }
             });
+
             // JSON生成処理（入力欄はそのまま維持）
             generateBtn.addEventListener('click', () => {
                 // id入力欄の値を取得
@@ -293,6 +294,8 @@
                 }
 
                 const players = [];
+                const teamSet = new Set();
+
                 for (const div of playerDivs) {
                     const lastName = div.querySelector('.lastName').value.trim();
                     const firstName = div.querySelector('.firstName').value.trim();
@@ -301,23 +304,39 @@
                     const playerId = playerIdInput || null;
 
                     if (!lastName) {
-                        alert('姓・名・チームは必須です');
+                        alert('姓は必須です');
                         return;
+                    }
+
+                    if (team) {
+                        teamSet.add(team);
                     }
 
                     players.push({ lastName, firstName, team, playerId });
                 }
 
-                const name = players.map(p => p.lastName).join('・') + `（${players[0].team}）`;
+                let representativeTeam = '';
+                if (teamSet.size === 1) {
+                    representativeTeam = [...teamSet][0];
+                    for (const player of players) {
+                        player.team = player.team || representativeTeam;
+                    }
+                } else if (teamSet.size === 0) {
+                    representativeTeam = '';
+                } else {
+                    representativeTeam = '混合';
+                }
+
+                const name = players.map(p => p.lastName).join('・') + (representativeTeam ? `（${representativeTeam}）` : '');
 
                 const obj = {
-                    id: outputId,
+                    id: nextId++,
                     name,
                     information: players
                 };
+
                 jsonArray.push(obj);
 
-                nextId = outputId + 1;
                 idInput.value = nextId;
 
                 const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
