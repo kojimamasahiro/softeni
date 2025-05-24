@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            max-width: 600px;
+            max-width: 1200px;
         }
 
         label {
@@ -27,17 +27,19 @@
             padding: 8px 12px;
         }
 
-        .player-group {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            position: relative;
+        #playersContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .removePlayerBtn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .player-group {
+            display: block;
+            box-sizing: border-box;
+            width: 400px;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            background: #f9f9f9;
         }
 
         pre {
@@ -232,8 +234,8 @@
         <label>姓 (lastName)：<input type="text" class="lastName" /></label>
         <label>名 (firstName)：<input type="text" class="firstName" /></label>
         <label>チーム名 (team)：<input type="text" class="team" /></label>
-        <button class="removePlayerBtn" type="button">この選手を削除</button>
         <button class="clearPlayerBtn" type="button">この選手情報をクリア</button>
+        <button class="removePlayerBtn" type="button">この選手を削除</button>
     `;
                 setupSpaceRemoval(div);
                 div.querySelector('.removePlayerBtn').addEventListener('click', () => {
@@ -321,7 +323,11 @@
                 const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
                 output.value = compressedWithBreaks;
 
-                // 入力欄はリセットしない
+                // 入力欄をリセット
+                document.querySelectorAll('.playerInput').forEach(input => input.value = '');
+                document.querySelectorAll('.lastName').forEach(input => input.value = '');
+                document.querySelectorAll('.firstName').forEach(input => input.value = '');
+                document.querySelectorAll('.team').forEach(input => input.value = '');
             });
 
             const addByeBtn = document.getElementById('addByeBtn');
