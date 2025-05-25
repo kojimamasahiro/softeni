@@ -168,11 +168,11 @@ export default function TeamResultsPage({ info, results }: Props) {
 
     return (
         <>
-            <MetaHead
-                title={`{teamName} 所属別成績 | ソフトテニス情報`}
-                description={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
-                url={`pageUrl`}
-            />
+<MetaHead
+    title={`${teamName} 所属別成績 | ソフトテニス情報`}
+    description={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
+    url={pageUrl}
+/>
 
             <Head>
                 <title>{teamName} 所属別成績 | ソフトテニス情報</title>
