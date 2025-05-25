@@ -19,29 +19,41 @@
       margin-bottom: 12px;
       border-radius: 5px;
     }
-    
+
     .score-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px 0;
-  }
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin: 5px 0;
+    }
 
-  .score-set {
-    display: flex;
-    gap: 4px;
-    margin: 2px 0;
-  }
+    .player-score-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  .vs-text {
-    margin: 4px 0;
-    font-weight: bold;
-  }
+    .player-name {
+      width: 200px;
+      font-weight: bold;
+    }
 
-  .score-button {
-    padding: 4px 8px;
-    font-size: 14px;
-  }
+    .score-set {
+      display: flex;
+      gap: 4px;
+    }
+
+    .vs-text {
+      font-weight: bold;
+      margin: 4px 0;
+      align-self: center;
+    }
+
+    .score-button {
+      padding: 4px 8px;
+      font-size: 14px;
+    }
 
     .score-button.selected {
       background: #4caf50;
@@ -112,46 +124,46 @@
 
     // プレイヤー情報（ペア名 + 各プレイヤーID）
     const initialPlayers =
-[
-{"id":1,"name":"片岡・黒坂（日本体育大学）","information":[{"lastName":"片岡","firstName":"暁紀","team":"日本体育大学","playerId":"kataoka-aki","tempId":"kataoka-aki"},{"lastName":"黒坂","firstName":"卓矢","team":"日本体育大学","playerId":"kurosaka-takuya","tempId":"kurosaka-takuya"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":2,"name":"青木・キング（立教大学）","information":[{"lastName":"青木","firstName":"颯汰","team":"立教大学","playerId":null,"tempId":"颯汰_青木_立教大学"},{"lastName":"キング","firstName":"ルイス","team":"立教大学","playerId":null,"tempId":"ルイス_キング_立教大学"}]},
-{"id":3,"name":"熊木・上田（法政大学）","information":[{"lastName":"熊木","firstName":"暖","team":"法政大学","playerId":null,"tempId":"暖_熊木_法政大学"},{"lastName":"上田","firstName":"唯仁","team":"法政大学","playerId":null,"tempId":"唯仁_上田_法政大学"}]},
-{"id":4,"name":"高野・高梨（東海大学）","information":[{"lastName":"高野","firstName":"伊織","team":"東海大学","playerId":null,"tempId":"伊織_高野_東海大学"},{"lastName":"高梨","firstName":"佑紀人","team":"東海大学","playerId":null,"tempId":"佑紀人_高梨_東海大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":5,"name":"火山・吉野（帝京大学）","information":[{"lastName":"火山","firstName":"優希","team":"帝京大学","playerId":null,"tempId":"優希_火山_帝京大学"},{"lastName":"吉野","firstName":"碧","team":"帝京大学","playerId":null,"tempId":"碧_吉野_帝京大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":6,"name":"宮本・深井（城西大学）","information":[{"lastName":"宮本","firstName":"涼平","team":"城西大学","playerId":null,"tempId":"涼平_宮本_城西大学"},{"lastName":"深井","firstName":"葉太郎","team":"城西大学","playerId":null,"tempId":"葉太郎_深井_城西大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":7,"name":"古賀・町田（東洋大学）","information":[{"lastName":"古賀","firstName":"太平","team":"東洋大学","playerId":null,"tempId":"太平_古賀_東洋大学"},{"lastName":"町田","firstName":"開","team":"東洋大学","playerId":null,"tempId":"開_町田_東洋大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":8,"name":"諸橋・玉木（白鴎大学）","information":[{"lastName":"諸橋","firstName":"巧翔","team":"白鴎大学","playerId":null,"tempId":"巧翔_諸橋_白鴎大学"},{"lastName":"玉木","firstName":"歩","team":"白鴎大学","playerId":null,"tempId":"歩_玉木_白鴎大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":9,"name":"前岡・榊原（駿河台大学）","information":[{"lastName":"前岡","firstName":"和亜","team":"駿河台大学","playerId":null,"tempId":"和亜_前岡_駿河台大学"},{"lastName":"榊原","firstName":"志門","team":"駿河台大学","playerId":null,"tempId":"志門_榊原_駿河台大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":10,"name":"梶山・長谷川（國學院大學）","information":[{"lastName":"梶山","firstName":"成","team":"國學院大學","playerId":null,"tempId":"成_梶山_國學院大學"},{"lastName":"長谷川","firstName":"大輝","team":"國學院大學","playerId":null,"tempId":"大輝_長谷川_國學院大學"}]},
-{"id":11,"name":"岡田・伊藤（大東文化大学）","information":[{"lastName":"岡田","firstName":"侑披","team":"大東文化大学","playerId":null,"tempId":"侑披_岡田_大東文化大学"},{"lastName":"伊藤","firstName":"秀也","team":"大東文化大学","playerId":null,"tempId":"秀也_伊藤_大東文化大学"}]},
-{"id":12,"name":"灰佐・後藤（慶應義塾大学）","information":[{"lastName":"灰佐","firstName":"賢人","team":"慶應義塾大学","playerId":null,"tempId":"賢人_灰佐_慶應義塾大学"},{"lastName":"後藤","firstName":"煌","team":"慶應義塾大学","playerId":null,"tempId":"煌_後藤_慶應義塾大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":13,"name":"須澤・茶木（日本体育大学）","information":[{"lastName":"須澤","firstName":"心晴","team":"日本体育大学","playerId":"suzawa-koharu","tempId":"suzawa-koharu"},{"lastName":"茶木","firstName":"將巨","team":"日本体育大学","playerId":"chaki-masataka","tempId":"chaki-masataka"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":14,"name":"松村・市村（東海大学）","information":[{"lastName":"松村","firstName":"遼太郎","team":"東海大学","playerId":null,"tempId":"遼太郎_松村_東海大学"},{"lastName":"市村","firstName":"大地","team":"東海大学","playerId":null,"tempId":"大地_市村_東海大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":15,"name":"千葉・小野（東京経済大学）","information":[{"lastName":"千葉","firstName":"琉翔","team":"東京経済大学","playerId":null,"tempId":"琉翔_千葉_東京経済大学"},{"lastName":"小野","firstName":"武蔵","team":"東京経済大学","playerId":null,"tempId":"武蔵_小野_東京経済大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":16,"name":"相澤・宮脇（順天堂大学）","information":[{"lastName":"相澤","firstName":"明喜","team":"順天堂大学","playerId":null,"tempId":"明喜_相澤_順天堂大学"},{"lastName":"宮脇","firstName":"光由","team":"順天堂大学","playerId":null,"tempId":"光由_宮脇_順天堂大学"}]},
-{"id":17,"name":"行方・坂入（千葉商科大学）","information":[{"lastName":"行方","firstName":"聖流","team":"千葉商科大学","playerId":null,"tempId":"聖流_行方_千葉商科大学"},{"lastName":"坂入","firstName":"寿紀","team":"千葉商科大学","playerId":null,"tempId":"寿紀_坂入_千葉商科大学"}]},
-{"id":18,"name":"髙田・松本（早稲田大学）","information":[{"lastName":"髙田","firstName":"淳貴","team":"早稲田大学","playerId":null,"tempId":"淳貴_髙田_早稲田大学"},{"lastName":"松本","firstName":"翔太","team":"早稲田大学","playerId":null,"tempId":"翔太_松本_早稲田大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]}
-]
+      [
+        { "id": 1, "name": "片岡・黒坂（日本体育大学）", "information": [{ "lastName": "片岡", "firstName": "暁紀", "team": "日本体育大学", "playerId": "kataoka-aki", "tempId": "kataoka-aki" }, { "lastName": "黒坂", "firstName": "卓矢", "team": "日本体育大学", "playerId": "kurosaka-takuya", "tempId": "kurosaka-takuya" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 2, "name": "青木・キング（立教大学）", "information": [{ "lastName": "青木", "firstName": "颯汰", "team": "立教大学", "playerId": null, "tempId": "颯汰_青木_立教大学" }, { "lastName": "キング", "firstName": "ルイス", "team": "立教大学", "playerId": null, "tempId": "ルイス_キング_立教大学" }] },
+        { "id": 3, "name": "熊木・上田（法政大学）", "information": [{ "lastName": "熊木", "firstName": "暖", "team": "法政大学", "playerId": null, "tempId": "暖_熊木_法政大学" }, { "lastName": "上田", "firstName": "唯仁", "team": "法政大学", "playerId": null, "tempId": "唯仁_上田_法政大学" }] },
+        { "id": 4, "name": "高野・高梨（東海大学）", "information": [{ "lastName": "高野", "firstName": "伊織", "team": "東海大学", "playerId": null, "tempId": "伊織_高野_東海大学" }, { "lastName": "高梨", "firstName": "佑紀人", "team": "東海大学", "playerId": null, "tempId": "佑紀人_高梨_東海大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 5, "name": "火山・吉野（帝京大学）", "information": [{ "lastName": "火山", "firstName": "優希", "team": "帝京大学", "playerId": null, "tempId": "優希_火山_帝京大学" }, { "lastName": "吉野", "firstName": "碧", "team": "帝京大学", "playerId": null, "tempId": "碧_吉野_帝京大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 6, "name": "宮本・深井（城西大学）", "information": [{ "lastName": "宮本", "firstName": "涼平", "team": "城西大学", "playerId": null, "tempId": "涼平_宮本_城西大学" }, { "lastName": "深井", "firstName": "葉太郎", "team": "城西大学", "playerId": null, "tempId": "葉太郎_深井_城西大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 7, "name": "古賀・町田（東洋大学）", "information": [{ "lastName": "古賀", "firstName": "太平", "team": "東洋大学", "playerId": null, "tempId": "太平_古賀_東洋大学" }, { "lastName": "町田", "firstName": "開", "team": "東洋大学", "playerId": null, "tempId": "開_町田_東洋大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 8, "name": "諸橋・玉木（白鴎大学）", "information": [{ "lastName": "諸橋", "firstName": "巧翔", "team": "白鴎大学", "playerId": null, "tempId": "巧翔_諸橋_白鴎大学" }, { "lastName": "玉木", "firstName": "歩", "team": "白鴎大学", "playerId": null, "tempId": "歩_玉木_白鴎大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 9, "name": "前岡・榊原（駿河台大学）", "information": [{ "lastName": "前岡", "firstName": "和亜", "team": "駿河台大学", "playerId": null, "tempId": "和亜_前岡_駿河台大学" }, { "lastName": "榊原", "firstName": "志門", "team": "駿河台大学", "playerId": null, "tempId": "志門_榊原_駿河台大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 10, "name": "梶山・長谷川（國學院大學）", "information": [{ "lastName": "梶山", "firstName": "成", "team": "國學院大學", "playerId": null, "tempId": "成_梶山_國學院大學" }, { "lastName": "長谷川", "firstName": "大輝", "team": "國學院大學", "playerId": null, "tempId": "大輝_長谷川_國學院大學" }] },
+        { "id": 11, "name": "岡田・伊藤（大東文化大学）", "information": [{ "lastName": "岡田", "firstName": "侑披", "team": "大東文化大学", "playerId": null, "tempId": "侑披_岡田_大東文化大学" }, { "lastName": "伊藤", "firstName": "秀也", "team": "大東文化大学", "playerId": null, "tempId": "秀也_伊藤_大東文化大学" }] },
+        { "id": 12, "name": "灰佐・後藤（慶應義塾大学）", "information": [{ "lastName": "灰佐", "firstName": "賢人", "team": "慶應義塾大学", "playerId": null, "tempId": "賢人_灰佐_慶應義塾大学" }, { "lastName": "後藤", "firstName": "煌", "team": "慶應義塾大学", "playerId": null, "tempId": "煌_後藤_慶應義塾大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 13, "name": "須澤・茶木（日本体育大学）", "information": [{ "lastName": "須澤", "firstName": "心晴", "team": "日本体育大学", "playerId": "suzawa-koharu", "tempId": "suzawa-koharu" }, { "lastName": "茶木", "firstName": "將巨", "team": "日本体育大学", "playerId": "chaki-masataka", "tempId": "chaki-masataka" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 14, "name": "松村・市村（東海大学）", "information": [{ "lastName": "松村", "firstName": "遼太郎", "team": "東海大学", "playerId": null, "tempId": "遼太郎_松村_東海大学" }, { "lastName": "市村", "firstName": "大地", "team": "東海大学", "playerId": null, "tempId": "大地_市村_東海大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 15, "name": "千葉・小野（東京経済大学）", "information": [{ "lastName": "千葉", "firstName": "琉翔", "team": "東京経済大学", "playerId": null, "tempId": "琉翔_千葉_東京経済大学" }, { "lastName": "小野", "firstName": "武蔵", "team": "東京経済大学", "playerId": null, "tempId": "武蔵_小野_東京経済大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] },
+        { "id": 16, "name": "相澤・宮脇（順天堂大学）", "information": [{ "lastName": "相澤", "firstName": "明喜", "team": "順天堂大学", "playerId": null, "tempId": "明喜_相澤_順天堂大学" }, { "lastName": "宮脇", "firstName": "光由", "team": "順天堂大学", "playerId": null, "tempId": "光由_宮脇_順天堂大学" }] },
+        { "id": 17, "name": "行方・坂入（千葉商科大学）", "information": [{ "lastName": "行方", "firstName": "聖流", "team": "千葉商科大学", "playerId": null, "tempId": "聖流_行方_千葉商科大学" }, { "lastName": "坂入", "firstName": "寿紀", "team": "千葉商科大学", "playerId": null, "tempId": "寿紀_坂入_千葉商科大学" }] },
+        { "id": 18, "name": "髙田・松本（早稲田大学）", "information": [{ "lastName": "髙田", "firstName": "淳貴", "team": "早稲田大学", "playerId": null, "tempId": "淳貴_髙田_早稲田大学" }, { "lastName": "松本", "firstName": "翔太", "team": "早稲田大学", "playerId": null, "tempId": "翔太_松本_早稲田大学" }] },
+        { "id": "bye", "name": "1回戦免除", "information": [] }
+      ]
 
-    ;
-// [
-// {"id":1,"name":"片岡・黒坂（日本体育大学）","information":[{"lastName":"片岡","firstName":"暁紀","team":"日本体育大学","playerId":"kataoka-aki","tempId":"kataoka-aki"},{"lastName":"黒坂","firstName":"卓矢","team":"日本体育大学","playerId":"kurosaka-takuya","tempId":"kurosaka-takuya"}]},
-// {"id":18,"name":"髙田・松本（早稲田大学）","information":[{"lastName":"髙田","firstName":"淳貴","team":"早稲田大学","playerId":null,"tempId":"淳貴_髙田_早稲田大学"},{"lastName":"松本","firstName":"翔太","team":"早稲田大学","playerId":null,"tempId":"翔太_松本_早稲田大学"}]}
-// ]
+      ;
+    // [
+    // {"id":1,"name":"片岡・黒坂（日本体育大学）","information":[{"lastName":"片岡","firstName":"暁紀","team":"日本体育大学","playerId":"kataoka-aki","tempId":"kataoka-aki"},{"lastName":"黒坂","firstName":"卓矢","team":"日本体育大学","playerId":"kurosaka-takuya","tempId":"kurosaka-takuya"}]},
+    // {"id":18,"name":"髙田・松本（早稲田大学）","information":[{"lastName":"髙田","firstName":"淳貴","team":"早稲田大学","playerId":null,"tempId":"淳貴_髙田_早稲田大学"},{"lastName":"松本","firstName":"翔太","team":"早稲田大学","playerId":null,"tempId":"翔太_松本_早稲田大学"}]}
+    // ]
 
     let roundMatches = Array.from({ length: initialPlayers.length / 2 }, (_, i) => ({
       p1: initialPlayers[i * 2],
@@ -293,23 +305,30 @@
         const div = document.createElement("div");
         div.className = "match-result";
 
-div.innerHTML = `
-  <strong>試合 ${i + 1}</strong>：${match.p1.name} vs ${match.p2.name}<br/>
+        div.innerHTML = `
+  <strong>試合 ${i + 1}</strong><br/>
   <div class="score-container">
-    <div class="score-set">
-      ${[0, 1, 2, 3, 4, 5].map(
-        s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
-      ).join("")}
+    <div class="player-score-row">
+      <span class="player-name">${match.p1.name}</span>
+      <div class="score-set">
+        ${[0, 1, 2, 3, 4, 5].map(
+          s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
+        ).join("")}
+      </div>
     </div>
     <div class="vs-text">vs</div>
-    <div class="score-set">
-      ${[0, 1, 2, 3, 4, 5].map(
-        s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
-      ).join("")}
+    <div class="player-score-row">
+      <span class="player-name">${match.p2.name}</span>
+      <div class="score-set">
+        ${[0, 1, 2, 3, 4, 5].map(
+          s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
+        ).join("")}
+      </div>
     </div>
   </div>
   <div>勝者：<span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
 `;
+
 
         matchesDiv.appendChild(div);
       });
@@ -472,7 +491,7 @@ div.innerHTML = `
     }
 
     function splitMatchByPlayerIds(match) {
-      
+
       if (match.p1.id === 'bye' || match.p2.id === 'bye') {
         return [];
       }
