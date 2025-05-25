@@ -5,6 +5,7 @@
     const generateBtn = document.getElementById('generateBtn');
     const output = document.getElementById('output');
     const playerList = document.getElementById('playerList');
+    const byeCheckbox = document.getElementById('byeCheckbox');
 
     let jsonArray = [];
 
@@ -199,6 +200,17 @@
         document.querySelectorAll('.lastName').forEach(input => input.value = '');
         document.querySelectorAll('.firstName').forEach(input => input.value = '');
         document.querySelectorAll('.team').forEach(input => input.value = '');
+
+        if (byeCheckbox.checked) {
+            const byeObj = {
+                id: "bye",
+                name: "1回戦免除",
+                information: []
+            };
+            jsonArray.push(byeObj);
+            const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
+            output.value = compressedWithBreaks;
+        }
     });
 
     const addByeBtn = document.getElementById('addByeBtn');

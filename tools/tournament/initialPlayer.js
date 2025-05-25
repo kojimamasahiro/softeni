@@ -1,0 +1,47 @@
+const initialPlayers =
+[
+{"id":131,"name":"田中・初鹿（法政大学）","information":[{"lastName":"田中","firstName":"蘭聖","team":"法政大学","playerId":null,"tempId":"蘭聖_田中_法政大学"},{"lastName":"初鹿","firstName":"暁哉","team":"法政大学","playerId":null,"tempId":"暁哉_初鹿_法政大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":132,"name":"大窪・池田（帝京大学）","information":[{"lastName":"大窪","firstName":"崇夫","team":"帝京大学","playerId":null,"tempId":"崇夫_大窪_帝京大学"},{"lastName":"池田","firstName":"瑛悟","team":"帝京大学","playerId":null,"tempId":"瑛悟_池田_帝京大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":133,"name":"松本・大門（立教大学）","information":[{"lastName":"松本","firstName":"泰我","team":"立教大学","playerId":null,"tempId":"泰我_松本_立教大学"},{"lastName":"大門","firstName":"俊介","team":"立教大学","playerId":null,"tempId":"俊介_大門_立教大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":134,"name":"村崎・藤井（日本体育大学）","information":[{"lastName":"村崎","firstName":"優哉","team":"日本体育大学","playerId":"murasaki-yuya","tempId":"優哉_村崎_日本体育大学"},{"lastName":"藤井","firstName":"智暉","team":"日本体育大学","playerId":"fujii-tomoki","tempId":"智暉_藤井_日本体育大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":136,"name":"浦濱・大竹（早稲田大）","information":[{"lastName":"浦濱","firstName":"大牙","team":"早稲田大","playerId":null,"tempId":"大牙_浦濱_早稲田大"},{"lastName":"大竹","firstName":"公陽","team":"早稲田大","playerId":null,"tempId":"公陽_大竹_早稲田大"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":137,"name":"大和田・赤塚（城西大学）","information":[{"lastName":"大和田","firstName":"優斗","team":"城西大学","playerId":null,"tempId":"優斗_大和田_城西大学"},{"lastName":"赤塚","firstName":"龍丞","team":"城西大学","playerId":null,"tempId":"龍丞_赤塚_城西大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":138,"name":"前田・生井（順天堂大学）","information":[{"lastName":"前田","firstName":"啓太","team":"順天堂大学","playerId":null,"tempId":"啓太_前田_順天堂大学"},{"lastName":"生井","firstName":"豊陽","team":"順天堂大学","playerId":null,"tempId":"豊陽_生井_順天堂大学"}]},
+{"id":139,"name":"春菜・山崎（国士舘大学）","information":[{"lastName":"春菜","firstName":"風輝","team":"国士舘大学","playerId":null,"tempId":"風輝_春菜_国士舘大学"},{"lastName":"山崎","firstName":"詠大","team":"国士舘大学","playerId":null,"tempId":"詠大_山崎_国士舘大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":140,"name":"脇田・村松（東海大学）","information":[{"lastName":"脇田","firstName":"大吉","team":"東海大学","playerId":null,"tempId":"大吉_脇田_東海大学"},{"lastName":"村松","firstName":"優","team":"東海大学","playerId":null,"tempId":"優_村松_東海大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":141,"name":"安藤・鹿田（東洋大学）","information":[{"lastName":"安藤","firstName":"幹人","team":"東洋大学","playerId":null,"tempId":"幹人_安藤_東洋大学"},{"lastName":"鹿田","firstName":"陸","team":"東洋大学","playerId":null,"tempId":"陸_鹿田_東洋大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":142,"name":"横田・笹川（慶應義塾大学）","information":[{"lastName":"横田","firstName":"優太","team":"慶應義塾大学","playerId":null,"tempId":"優太_横田_慶應義塾大学"},{"lastName":"笹川","firstName":"喜一","team":"慶應義塾大学","playerId":null,"tempId":"喜一_笹川_慶應義塾大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":143,"name":"對馬・雨宮（駿河台大学）","information":[{"lastName":"對馬","firstName":"健人","team":"駿河台大学","playerId":null,"tempId":"健人_對馬_駿河台大学"},{"lastName":"雨宮","firstName":"光輝","team":"駿河台大学","playerId":null,"tempId":"光輝_雨宮_駿河台大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":144,"name":"澤田・富主（東京経済大学）","information":[{"lastName":"澤田","firstName":"透和","team":"東京経済大学","playerId":null,"tempId":"透和_澤田_東京経済大学"},{"lastName":"富主","firstName":"純翔","team":"東京経済大学","playerId":null,"tempId":"純翔_富主_東京経済大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":145,"name":"濱田・田畑（東京学芸大学）","information":[{"lastName":"濱田","firstName":"真輝","team":"東京学芸大学","playerId":null,"tempId":"真輝_濱田_東京学芸大学"},{"lastName":"田畑","firstName":"尚大","team":"東京学芸大学","playerId":null,"tempId":"尚大_田畑_東京学芸大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":146,"name":"中山・半澤（明治大学）","information":[{"lastName":"中山","firstName":"秀哉","team":"明治大学","playerId":null,"tempId":"秀哉_中山_明治大学"},{"lastName":"半澤","firstName":"寧大","team":"明治大学","playerId":null,"tempId":"寧大_半澤_明治大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":147,"name":"佐々木・寺井（日本体育大学）","information":[{"lastName":"佐々木","firstName":"星吾","team":"日本体育大学","playerId":"sasaki-seigo","tempId":"星吾_佐々木_日本体育大学"},{"lastName":"寺井","firstName":"真斗","team":"日本体育大学","playerId":"terai-manato","tempId":"真斗_寺井_日本体育大学"}]},
+{"id":"bye","name":"1回戦免除","information":[]},
+{"id":148,"name":"飯田・吉村（國學院大學）","information":[{"lastName":"飯田","firstName":"航仁","team":"國學院大學","playerId":null,"tempId":"航仁_飯田_國學院大學"},{"lastName":"吉村","firstName":"拓海","team":"國學院大學","playerId":null,"tempId":"拓海_吉村_國學院大學"}]},
+{"id":"bye","name":"1回戦免除","information":[]}
+]
+    // [
+    // {"id":18,"name":"髙田・松本（早稲田大学）","information":[{"lastName":"髙田","firstName":"淳貴","team":"早稲田大学","playerId":null,"tempId":"淳貴_髙田_早稲田大学"},{"lastName":"松本","firstName":"翔太","team":"早稲田大学","playerId":null,"tempId":"翔太_松本_早稲田大学"}]},
+    // {"id":20,"name":"長野・金澤（中央大学）","information":[{"lastName":"長野","firstName":"瑛寿","team":"中央大学","playerId":null,"tempId":"瑛寿_長野_中央大学"},{"lastName":"金澤","firstName":"慧","team":"中央大学","playerId":null,"tempId":"慧_金澤_中央大学"}]}
+    // {"id":55,"name":"小池・村田（慶應義塾大学）","information":[{"lastName":"小池","firstName":"賀久","team":"慶應義塾大学","playerId":null,"tempId":"賀久_小池_慶應義塾大学"},{"lastName":"村田","firstName":"雅常","team":"慶應義塾大学","playerId":null,"tempId":"雅常_村田_慶應義塾大学"}]},
+    // {"id":56,"name":"奥田・豊田（立教大学）","information":[{"lastName":"奥田","firstName":"叶汰","team":"立教大学","playerId":null,"tempId":"叶汰_奥田_立教大学"},{"lastName":"豊田","firstName":"祐冴","team":"立教大学","playerId":null,"tempId":"祐冴_豊田_立教大学"}]},
+    // {"id":76,"name":"野口・津島（日本体育大学）","information":[{"lastName":"野口","firstName":"快","team":"日本体育大学","playerId":"noguchi-kai","tempId":"快_野口_日本体育大学"},{"lastName":"津島","firstName":"青空","team":"日本体育大学","playerId":"tsushima-sora","tempId":"青空_津島_日本体育大学"}]},
+    // {"id":100,"name":"外山・川本（日本体育大学）","information":[{"lastName":"外山","firstName":"陽翔","team":"日本体育大学","playerId":"toyama-haruto","tempId":"陽翔_外山_日本体育大学"},{"lastName":"川本","firstName":"健士郎","team":"日本体育大学","playerId":"kenjo-kawamoto","tempId":"健士郎_川本_日本体育大学"}]},
+    // {"id":113,"name":"岩田・屋比久（日本体育大学）","information":[{"lastName":"岩田","firstName":"皓平","team":"日本体育大学","playerId":"iwata-kohei","tempId":"皓平_岩田_日本体育大学"},{"lastName":"屋比久","firstName":"大夢","team":"日本体育大学","playerId":"yabiku-hiromu","tempId":"大夢_屋比久_日本体育大学"}]},
+    // {"id":148,"name":"飯田・吉村（國學院大學）","information":[{"lastName":"飯田","firstName":"航仁","team":"國學院大學","playerId":null,"tempId":"航仁_飯田_國學院大學"},{"lastName":"吉村","firstName":"拓海","team":"國學院大學","playerId":null,"tempId":"拓海_吉村_國學院大學"}]},
+    // ]
+    ;
