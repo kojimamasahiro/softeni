@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>選手ペアJSON生成ツール</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h2>選手ペアJSON生成ツール</h2>
+
+    <div id="playersContainer"></div>
+
+    <button id="addPlayerBtn">選手を追加</button>
+
+    <hr />
+
+    <button id="loadJsonBtn">JSONを読み込む</button>
+    <button id="generateBtn">JSON生成・追加</button>
+    <button id="addByeBtn" type="button">1回戦免除を追加</button>
+
+    <h3>生成されたJSON配列</h3>
+    <textarea id="output" rows="10" cols="50"></textarea>
+
+    <button id="copyBtn" type="button">JSONをコピーする</button>
+
+    <datalist id="playerList"></datalist>
+
+    <script src="teamData.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
