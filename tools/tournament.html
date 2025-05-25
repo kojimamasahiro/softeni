@@ -107,7 +107,7 @@
 
   <script>
     function onClickGenerate() {
-      updateJsonOutput(roundHistory);
+      updateJsonOutput();
     }
   </script>
 
@@ -203,11 +203,14 @@
 
     // ラウンド名（日本語）
     function getRoundName(numMatches, roundNumer = roundNumber) {
-      switch (numMatches) {
-        case 1: return "決勝";
-        case 2: return "準決勝";
-        case 4: return "準々決勝";
-        default: return `${roundNumer}回戦`;
+      if (document.getElementById("roundNameToggle").checked && numMatches <= 4) {
+        // 決勝・準決勝・準々決勝の特別名
+        if (numMatches === 1) return "決勝";
+        if (numMatches === 2) return "準決勝";
+        if (numMatches === 4) return "準々決勝";
+      } else {
+        // それ以外は「n回戦」
+        return `${roundNumer}回戦`;
       }
     }
 
@@ -276,7 +279,7 @@
 
       document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
       updateScoreButtons(matchIndex);
-      updateJsonOutput(roundHistory.map(round => round.matches));
+      updateJsonOutput();
     }
 
     // パッキン戦は初期勝者決定しておく
@@ -346,7 +349,7 @@
       // パッキン戦のスコアボタンは非表示にし、勝者自動決定
       autoDecideByeMatches();
       roundMatches.forEach((_, i) => updateScoreButtons(i));
-      updateJsonOutput(roundHistory.map(round => round.matches));
+      updateJsonOutput();
     }
 
     document.getElementById("setRoundBtn").addEventListener("click", () => {
@@ -377,7 +380,7 @@
 
       // 優勝判定
       if (winners.length === 1) {
-        updateJsonOutput(roundHistory.map(round => round.matches));
+        updateJsonOutput();
         return;
       }
 
@@ -397,7 +400,7 @@
     });
 
     // JSON出力更新
-    function updateJsonOutput(roundHistory) {
+    function updateJsonOutput() {
       const useRoundNames = document.getElementById("roundNameToggle").checked;
       const output = {};
 
@@ -415,7 +418,7 @@
         if (useRoundNames && roundNames[reverseIndex]) {
           return roundNames[reverseIndex];
         }
-        return `${index}回戦`;
+        return `${index + 1}回戦`;
       }
 
       const roundRankings = {};
@@ -432,7 +435,7 @@
         const resultSummary = [];
 
         for (let i = roundCount - 1; i >= 0; i--) {
-          const matches = roundHistory[i];
+          const matches = roundHistory[i].matches;
           const ranking = roundRankings[i];
           if (!ranking) continue;
 
@@ -475,8 +478,8 @@
       output.matches = [];
 
       for (let i = 0; i < roundCount; i++) {
-        const matches = roundHistory[i];
-        const roundLabel = getRoundLabel(i + roundNumber - 1, roundCount, useRoundNames);
+        const matches = roundHistory[i].matches;
+        const roundLabel = roundHistory[i].round;
 
         for (const match of matches) {
           const matchWithRound = structuredClone(match);
@@ -516,8 +519,8 @@
           opponents: match.p2.information,
           result: p1IsWinner ? "win" : "lose",
           games: {
-            won: p1IsWinner ? p1Score : p2Score,
-            lost: p1IsWinner ? p2Score : p1Score,
+            won: p1Score,
+            lost: p2Score
           }
         });
       }
@@ -529,8 +532,8 @@
           opponents: match.p1.information,
           result: p1IsWinner ? "lose" : "win",
           games: {
-            won: p1IsWinner ? p2Score : p1Score,
-            lost: p1IsWinner ? p1Score : p2Score,
+            won: p2Score,
+            lost: p1Score,
           }
         });
       }
