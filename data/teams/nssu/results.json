@@ -955,6 +955,903 @@
         "won": "5",
         "lost": "3"
       }
+    },
+  
+    {
+      "round": "1回戦",
+      "pair": [
+        "禅斗_佐々木_東京経済大学",
+        "瑛太_那須_東京経済大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "中村",
+          "firstName": "陽",
+          "team": "隆之介",
+          "playerId": null,
+          "tempId": "陽_中村_隆之介"
+        },
+        {
+          "lastName": "金﨑",
+          "firstName": "隆之介",
+          "team": "隆之介",
+          "playerId": null,
+          "tempId": "隆之介_金﨑_隆之介"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "陽_中村_隆之介",
+        "隆之介_金﨑_隆之介"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐々木",
+          "firstName": "禅斗",
+          "team": "東京経済大学",
+          "playerId": null,
+          "tempId": "禅斗_佐々木_東京経済大学"
+        },
+        {
+          "lastName": "那須",
+          "firstName": "瑛太",
+          "team": "東京経済大学",
+          "playerId": null,
+          "tempId": "瑛太_那須_東京経済大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "瑛寿_長野_中央大学",
+        "慧_金澤_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "中村",
+          "firstName": "陽",
+          "team": "隆之介",
+          "playerId": null,
+          "tempId": "陽_中村_隆之介"
+        },
+        {
+          "lastName": "金﨑",
+          "firstName": "隆之介",
+          "team": "隆之介",
+          "playerId": null,
+          "tempId": "隆之介_金﨑_隆之介"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "陽_中村_隆之介",
+        "隆之介_金﨑_隆之介"
+      ],
+      "opponents": [
+        {
+          "lastName": "長野",
+          "firstName": "瑛寿",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "瑛寿_長野_中央大学"
+        },
+        {
+          "lastName": "金澤",
+          "firstName": "慧",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "慧_金澤_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "直_高松_城西大学",
+        "奏太_近藤_城西大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "團野",
+          "firstName": "佑紀",
+          "team": "立教大学",
+          "playerId": null,
+          "tempId": "佑紀_團野_立教大学"
+        },
+        {
+          "lastName": "早川",
+          "firstName": "悠佑",
+          "team": "立教大学",
+          "playerId": null,
+          "tempId": "悠佑_早川_立教大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "佑紀_團野_立教大学",
+        "悠佑_早川_立教大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "高松",
+          "firstName": "直",
+          "team": "城西大学",
+          "playerId": null,
+          "tempId": "直_高松_城西大学"
+        },
+        {
+          "lastName": "近藤",
+          "firstName": "奏太",
+          "team": "城西大学",
+          "playerId": null,
+          "tempId": "奏太_近藤_城西大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "inami-koyu",
+        "takasaka-yuki"
+      ],
+      "opponents": [
+        {
+          "lastName": "平岩",
+          "firstName": "稜将",
+          "team": "早稲田大学",
+          "playerId": null,
+          "tempId": "稜将_平岩_早稲田大学"
+        },
+        {
+          "lastName": "渡",
+          "firstName": "健博",
+          "team": "早稲田大学",
+          "playerId": null,
+          "tempId": "健博_渡_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "稜将_平岩_早稲田大学",
+        "健博_渡_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "稲見",
+          "firstName": "虎佑",
+          "team": "日本体育大学",
+          "playerId": "inami-koyu",
+          "tempId": "inami-koyu"
+        },
+        {
+          "lastName": "高坂",
+          "firstName": "侑希",
+          "team": "日本体育大学",
+          "playerId": "takasaka-yuki",
+          "tempId": "takasaka-yuki"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "洸毅_伊達崎_千葉商科大学",
+        "大成_日高_千葉商科大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "鬼塚",
+          "firstName": "一成",
+          "team": "東洋大学",
+          "playerId": null,
+          "tempId": "一成_鬼塚_東洋大学"
+        },
+        {
+          "lastName": "板橋",
+          "firstName": "慧星",
+          "team": "東洋大学",
+          "playerId": null,
+          "tempId": "慧星_板橋_東洋大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "一成_鬼塚_東洋大学",
+        "慧星_板橋_東洋大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊達崎",
+          "firstName": "洸毅",
+          "team": "千葉商科大学",
+          "playerId": null,
+          "tempId": "洸毅_伊達崎_千葉商科大学"
+        },
+        {
+          "lastName": "日高",
+          "firstName": "大成",
+          "team": "千葉商科大学",
+          "playerId": null,
+          "tempId": "大成_日高_千葉商科大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "iseki-yu",
+        "fukushima-ryo"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩田",
+          "firstName": "蒼科",
+          "team": "帝京大学",
+          "playerId": null,
+          "tempId": "蒼科_岩田_帝京大学"
+        },
+        {
+          "lastName": "真下",
+          "firstName": "朔稲",
+          "team": "帝京大学",
+          "playerId": null,
+          "tempId": "朔稲_真下_帝京大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "0"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "蒼科_岩田_帝京大学",
+        "朔稲_真下_帝京大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊関",
+          "firstName": "悠",
+          "team": "日本体育大学",
+          "playerId": "iseki-yu",
+          "tempId": "悠_伊関_日本体育大学"
+        },
+        {
+          "lastName": "福島",
+          "firstName": "涼",
+          "team": "日本体育大学",
+          "playerId": "fukushima-ryo",
+          "tempId": "涼_福島_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "祐希人_榎_日本大学",
+        "快生_毛利_日本大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "playerId": null,
+          "tempId": "雅翔_米川_明治大学"
+        },
+        {
+          "lastName": "中原",
+          "firstName": "壮琉",
+          "team": "明治大学",
+          "playerId": null,
+          "tempId": "壮琉_中原_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "雅翔_米川_明治大学",
+        "壮琉_中原_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "榎",
+          "firstName": "祐希人",
+          "team": "日本大学",
+          "playerId": null,
+          "tempId": "祐希人_榎_日本大学"
+        },
+        {
+          "lastName": "毛利",
+          "firstName": "快生",
+          "team": "日本大学",
+          "playerId": null,
+          "tempId": "快生_毛利_日本大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "0"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "颯希_久住_法政大学",
+        "海翔_松元_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "小川",
+          "firstName": "哲平",
+          "team": "立正大学",
+          "playerId": null,
+          "tempId": "哲平_小川_立正大学"
+        },
+        {
+          "lastName": "巴",
+          "firstName": "亮太",
+          "team": "立正大学",
+          "playerId": null,
+          "tempId": "亮太_巴_立正大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "哲平_小川_立正大学",
+        "亮太_巴_立正大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "久住",
+          "firstName": "颯希",
+          "team": "法政大学",
+          "playerId": null,
+          "tempId": "颯希_久住_法政大学"
+        },
+        {
+          "lastName": "松元",
+          "firstName": "海翔",
+          "team": "法政大学",
+          "playerId": null,
+          "tempId": "海翔_松元_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "恭介_石田_専修大学",
+        "志優_栗木_専修大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "昌生",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "昌生_大和_國學院大學"
+        },
+        {
+          "lastName": "金井",
+          "firstName": "亮太",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "亮太_金井_國學院大學"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "昌生_大和_國學院大學",
+        "亮太_金井_國學院大學"
+      ],
+      "opponents": [
+        {
+          "lastName": "石田",
+          "firstName": "恭介",
+          "team": "専修大学",
+          "playerId": null,
+          "tempId": "恭介_石田_専修大学"
+        },
+        {
+          "lastName": "栗木",
+          "firstName": "志優",
+          "team": "専修大学",
+          "playerId": null,
+          "tempId": "志優_栗木_専修大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "0"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "瑛寿_長野_中央大学",
+        "慧_金澤_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "高松",
+          "firstName": "直",
+          "team": "城西大学",
+          "playerId": null,
+          "tempId": "直_高松_城西大学"
+        },
+        {
+          "lastName": "近藤",
+          "firstName": "奏太",
+          "team": "城西大学",
+          "playerId": null,
+          "tempId": "奏太_近藤_城西大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "4"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "直_高松_城西大学",
+        "奏太_近藤_城西大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長野",
+          "firstName": "瑛寿",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "瑛寿_長野_中央大学"
+        },
+        {
+          "lastName": "金澤",
+          "firstName": "慧",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "慧_金澤_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "4",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "inami-koyu",
+        "takasaka-yuki"
+      ],
+      "opponents": [
+        {
+          "lastName": "鬼塚",
+          "firstName": "一成",
+          "team": "東洋大学",
+          "playerId": null,
+          "tempId": "一成_鬼塚_東洋大学"
+        },
+        {
+          "lastName": "板橋",
+          "firstName": "慧星",
+          "team": "東洋大学",
+          "playerId": null,
+          "tempId": "慧星_板橋_東洋大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "4"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "一成_鬼塚_東洋大学",
+        "慧星_板橋_東洋大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "稲見",
+          "firstName": "虎佑",
+          "team": "日本体育大学",
+          "playerId": "inami-koyu",
+          "tempId": "inami-koyu"
+        },
+        {
+          "lastName": "高坂",
+          "firstName": "侑希",
+          "team": "日本体育大学",
+          "playerId": "takasaka-yuki",
+          "tempId": "takasaka-yuki"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "4",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "iseki-yu",
+        "fukushima-ryo"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "playerId": null,
+          "tempId": "雅翔_米川_明治大学"
+        },
+        {
+          "lastName": "中原",
+          "firstName": "壮琉",
+          "team": "明治大学",
+          "playerId": null,
+          "tempId": "壮琉_中原_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "雅翔_米川_明治大学",
+        "壮琉_中原_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊関",
+          "firstName": "悠",
+          "team": "日本体育大学",
+          "playerId": "iseki-yu",
+          "tempId": "悠_伊関_日本体育大学"
+        },
+        {
+          "lastName": "福島",
+          "firstName": "涼",
+          "team": "日本体育大学",
+          "playerId": "fukushima-ryo",
+          "tempId": "涼_福島_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "颯希_久住_法政大学",
+        "海翔_松元_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "昌生",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "昌生_大和_國學院大學"
+        },
+        {
+          "lastName": "金井",
+          "firstName": "亮太",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "亮太_金井_國學院大學"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "昌生_大和_國學院大學",
+        "亮太_金井_國學院大學"
+      ],
+      "opponents": [
+        {
+          "lastName": "久住",
+          "firstName": "颯希",
+          "team": "法政大学",
+          "playerId": null,
+          "tempId": "颯希_久住_法政大学"
+        },
+        {
+          "lastName": "松元",
+          "firstName": "海翔",
+          "team": "法政大学",
+          "playerId": null,
+          "tempId": "海翔_松元_法政大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      }
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "瑛寿_長野_中央大学",
+        "慧_金澤_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "稲見",
+          "firstName": "虎佑",
+          "team": "日本体育大学",
+          "playerId": "inami-koyu",
+          "tempId": "inami-koyu"
+        },
+        {
+          "lastName": "高坂",
+          "firstName": "侑希",
+          "team": "日本体育大学",
+          "playerId": "takasaka-yuki",
+          "tempId": "takasaka-yuki"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "2"
+      }
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "inami-koyu",
+        "takasaka-yuki"
+      ],
+      "opponents": [
+        {
+          "lastName": "長野",
+          "firstName": "瑛寿",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "瑛寿_長野_中央大学"
+        },
+        {
+          "lastName": "金澤",
+          "firstName": "慧",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "慧_金澤_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "iseki-yu",
+        "fukushima-ryo"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "昌生",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "昌生_大和_國學院大學"
+        },
+        {
+          "lastName": "金井",
+          "firstName": "亮太",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "亮太_金井_國學院大學"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "昌生_大和_國學院大學",
+        "亮太_金井_國學院大學"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊関",
+          "firstName": "悠",
+          "team": "日本体育大学",
+          "playerId": "iseki-yu",
+          "tempId": "悠_伊関_日本体育大学"
+        },
+        {
+          "lastName": "福島",
+          "firstName": "涼",
+          "team": "日本体育大学",
+          "playerId": "fukushima-ryo",
+          "tempId": "涼_福島_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      }
+    },
+    {
+      "round": "5回戦",
+      "pair": [
+        "瑛寿_長野_中央大学",
+        "慧_金澤_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "昌生",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "昌生_大和_國學院大學"
+        },
+        {
+          "lastName": "金井",
+          "firstName": "亮太",
+          "team": "國學院大學",
+          "playerId": null,
+          "tempId": "亮太_金井_國學院大學"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      }
+    },
+    {
+      "round": "5回戦",
+      "pair": [
+        "昌生_大和_國學院大學",
+        "亮太_金井_國學院大學"
+      ],
+      "opponents": [
+        {
+          "lastName": "長野",
+          "firstName": "瑛寿",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "瑛寿_長野_中央大学"
+        },
+        {
+          "lastName": "金澤",
+          "firstName": "慧",
+          "team": "中央大学",
+          "playerId": null,
+          "tempId": "慧_金澤_中央大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      }
     }
   ]
     },
