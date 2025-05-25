@@ -134,13 +134,16 @@ export default function TeamResultsPage({ info, results }: Props) {
             );
 
             // 選手名を取得して結果に含める
-            const resultWithNames = event.resultSummary.map(r => {
-                const playerNames = r.pair
-                    .map(pid => info.players[pid]?.lastName + ' ' + info.players[pid]?.firstName)
-                    .filter(Boolean) // 存在しない選手を除外
-                    .join(' & '); // ペアを "A & B" の形式で結合
-                return `${r.finalRound} (${playerNames})`;
-            }).join('、');
+            const resultWithNames = event.resultSummary
+                .filter(r => r.pair.every(pid => info.players[pid])) // 両方の選手が存在するペアのみ処理
+                .map(r => {
+                    const playerNames = r.pair
+                        .map(pid => info.players[pid].lastName + ' ' + info.players[pid].firstName)
+                        .join(' & ');
+                    return `${r.finalRound} (${playerNames})`;
+                })
+                .join('、');
+
 
             return {
                 name: event.tournament,

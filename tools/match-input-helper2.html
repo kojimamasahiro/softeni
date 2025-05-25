@@ -156,7 +156,6 @@
             const playerList = document.getElementById('playerList');
 
             let jsonArray = [];
-            let nextId = 1;
 
             // datalistにplayerId, lastName, firstName, teamを全部追加
             function populateDatalist() {
@@ -332,14 +331,14 @@
                 const name = players.map(p => p.lastName).join('・') + (representativeTeam ? `（${representativeTeam}）` : '');
 
                 const obj = {
-                    id: nextId++,
+                    id: outputId++,
                     name,
                     information: players
                 };
 
                 jsonArray.push(obj);
 
-                idInput.value = nextId;
+                idInput.value = outputId;
 
                 const compressedWithBreaks = '[\n' + jsonArray.map(o => JSON.stringify(o)).join(',\n') + '\n]';
                 output.value = compressedWithBreaks;
