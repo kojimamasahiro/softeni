@@ -91,42 +91,45 @@ export default function TournamentYearResultPage({
                 />
             </Head>
 
-            <section className="px-4 py-8 max-w-3xl mx-auto">
-                <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">
-                    {meta.name} {year}年 結果
-                </h1>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-                    <span className="inline-block mr-4">📍 {data.location}</span>
-                    <span>📅 {data.startDate}〜{data.endDate}</span>
-                </p>
+            <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+                <div className="max-w-3xl mx-auto">
+                    <h1 className="text-2xl font-bold mb-4">
+                        {meta.name} {year}年 大会結果
+                    </h1>
 
-                <ul className="space-y-4">
-                    {data.results?.map((entry, i) => (
-                        <li
-                            key={i}
-                            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm p-5 rounded-lg"
-                        >
-                            <div className="text-xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
-                                {entry.result}
-                            </div>
-                            <div className="text-gray-800 dark:text-gray-200 text-base">
-                                {entry.playerIds
-                                    .map(id => {
-                                        const player: PlayerInfo | undefined = allPlayers.find(p => p.id === id);
-                                        return player ? `${player.lastName} ${player.firstName}` : id;
-                                    })
-                                    .join('・')}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+                        <span className="inline-block mr-4">{data.location}</span>
+                        <span>{data.startDate}〜{data.endDate}</span>
+                    </p>
 
-                <div className="text-right mt-8 mb-2">
-                    <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
-                        大会結果一覧
-                    </Link>
+                    <ul className="space-y-4">
+                        {data.results?.map((entry, i) => (
+                            <li
+                                key={i}
+                                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm p-5 rounded-lg"
+                            >
+                                <div className="text-base font-semibold text-indigo-600 dark:text-indigo-300 mb-1">
+                                    {entry.result}
+                                </div>
+                                <div className="text-gray-800 dark:text-gray-200 text-base">
+                                    {entry.playerIds
+                                        .map(id => {
+                                            const player: PlayerInfo | undefined = allPlayers.find(p => p.id === id);
+                                            return player ? `${player.lastName} ${player.firstName}` : id;
+                                        })
+                                        .join('・')}
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="text-right mt-8 mb-2">
+                        <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
+                            大会結果一覧
+                        </Link>
+                    </div>
                 </div>
-            </section>
+            </main>
         </>
     );
 }

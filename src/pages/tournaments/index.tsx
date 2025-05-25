@@ -77,26 +77,36 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
                     }}
                 />
             </Head>
-            <section className="p-6 max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold mb-8 text-center">🏆 大会結果一覧</h1>
 
-                <div className="space-y-8">
-                    {tournaments.map((tournament) => (
-                        <div key={tournament.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-                            <h2 className="text-xl font-semibold mb-2 border-b pb-1">{tournament.name}</h2>
-                            <ul className="list-disc list-inside space-y-1">
-                                {tournament.years.map((year) => (
-                                    <li key={year}>
-                                        <Link href={`/tournaments/${tournament.id}/${year}`}>
-                                            <span className="text-blue-600 hover:underline">{year}年の結果を見る</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+            <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+                <div className="max-w-3xl mx-auto">
+                    <h1 className="text-2xl font-bold mb-6">大会結果一覧 | ソフトテニス情報</h1>
+
+                    <section className="mb-8 px-4">
+                        <div className="space-y-8">
+                            {tournaments.map((tournament) => (
+                                <div key={tournament.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h2 className="text-xl flex font-semibold mb-4 border-b text-gray-800 dark:text-white">
+                                        {tournament.name}
+                                    </h2>
+
+                                    <ul className="flex flex-wrap gap-2">
+                                        {tournament.years.map((year) => (
+                                            <li key={year}>
+                                                <Link href={`/tournaments/${tournament.id}/${year}`}>
+                                                    <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                                                        {year}年
+                                                    </span>
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </section>
                 </div>
-            </section>
+            </main>
         </>
     );
 }
