@@ -252,15 +252,15 @@ copyBtn.addEventListener('click', () => {
         });
 });
 
-// スペース削除関数
-function removeSpaces(event) {
-    event.target.value = event.target.value.replace(/\s+/g, '');
+// スペース・カッコ・数字を削除する関数
+function removeUnwantedChars(event) {
+  event.target.value = event.target.value.replace(/[\s0-9()（）]/g, '');
 }
 
-// 指定したコンテナ内の全対象inputにスペース削除イベントを設定
+// 指定したコンテナ内の全対象 input にイベントを設定
 function setupSpaceRemoval(container) {
-    const inputs = container.querySelectorAll('input.lastName, input.firstName, input.team');
-    inputs.forEach(input => {
-        input.addEventListener('input', removeSpaces);
-    });
+  const inputs = container.querySelectorAll('input.lastName, input.firstName, input.team');
+  inputs.forEach(input => {
+    input.addEventListener('input', removeUnwantedChars);
+  });
 }

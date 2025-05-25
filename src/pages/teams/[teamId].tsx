@@ -140,16 +140,17 @@ export default function TeamResultsPage({ info, results }: Props) {
                     const playerNames = r.pair
                         .map(pid => {
                             const player = info.players[pid];
-                            if (player) {
-                                return player.lastName + player.firstName;
-                            } else {
-                                const [first, last, team] = pid.split('_');
-                                return team ? `${last}${first}（${team}）` : `${last}${first}`;
-                            }
-                        })
-                        .join(' & ');
-                    return `${playerNames}（${r.finalRound}）`;
+                            return player ? player.lastName + player.firstName : null;
+                        });
+
+                    // 一部でもnull（＝存在しない選手）が含まれていたら除外
+                    if (playerNames.includes(null)) {
+                        return null;
+                    }
+
+                    return `${playerNames.join(' & ')}（${r.finalRound}）`;
                 })
+                .filter(Boolean) // null を除外
                 .join('、');
 
             return {
@@ -253,7 +254,6 @@ export default function TeamResultsPage({ info, results }: Props) {
         </>
     );
 }
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const teamsDir = path.join(process.cwd(), 'data/teams');
