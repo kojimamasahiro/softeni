@@ -130,20 +130,27 @@ export default function TeamResultsPage({ info, results }: Props) {
     const overallTable = useMemo(() => (
         results.map(event => {
             const uniquePairs = new Set(
-                event.matches.map(m => m.pair.join('-')) // 例: ["p1", "p2"] → "p1-p2"
+                event.matches
+                    .filter(m => m.pair.some(pid => info.players[pid])) // 片方の選手が存在すればOK
+                    .map(m => m.pair.join('-'))
             );
 
-            // 選手名を取得して結果に含める
             const resultWithNames = event.resultSummary
-                .filter(r => r.pair.every(pid => info.players[pid])) // 両方の選手が存在するペアのみ処理
                 .map(r => {
                     const playerNames = r.pair
-                        .map(pid => info.players[pid].lastName + ' ' + info.players[pid].firstName)
+                        .map(pid => {
+                            const player = info.players[pid];
+                            if (player) {
+                                return player.lastName + player.firstName;
+                            } else {
+                                const [first, last, team] = pid.split('_');
+                                return team ? `${last}${first}（${team}）` : `${last}${first}`;
+                            }
+                        })
                         .join(' & ');
-                    return `${r.finalRound} (${playerNames})`;
+                    return `${playerNames}（${r.finalRound}）`;
                 })
                 .join('、');
-
 
             return {
                 name: event.tournament,

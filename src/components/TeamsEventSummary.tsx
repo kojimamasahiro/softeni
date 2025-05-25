@@ -24,7 +24,7 @@ export default function TeamsEventSummary({ overallTable }: TeamsEventSummaryPro
               {r.results}
             </p>
             <p>
-              <span className="text-gray-500 dark:text-gray-400 font-medium">出場ペア数:</span>{' '}
+              <span className="text-gray-500 dark:text-gray-400 font-medium">出場数:</span>{' '}
               {r.count}
             </p>
           </div>
