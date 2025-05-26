@@ -160,7 +160,7 @@ export default function TeamResultsPage({ info, results }: Props) {
                         return null;
                     }
 
-                    return `${playerNames.join(' & ')}（${r.finalRound}）`;
+                    return `${playerNames.join('・')}（${r.finalRound}）`;
                 })
                 .filter(Boolean) // null を除外
                 .join('、');
