@@ -57,10 +57,21 @@ export default function TeamResultsPage({ info, results }: Props) {
         let champions = 0, runnersUp = 0, top8OrBetter = 0, totalPairs = 0;
 
         results.forEach(event => {
-            const rounds = event.resultSummary.map(r => r.finalRound);
-            if (rounds.includes('優勝')) champions++;
-            if (rounds.includes('準優勝')) runnersUp++;
-            top8OrBetter = rounds.filter(r => ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r)).length;
+            const validResults = event.resultSummary.filter(r =>
+                r.pair.every(pid => pid in info.players)
+            );
+
+            validResults.forEach(r => {
+                const count = r.pair.length; // 1人 or 2人ペアの対応
+
+                if (r.finalRound === '優勝') champions += count;
+                if (r.finalRound === '準優勝') runnersUp += count;
+                if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r.finalRound)) {
+                    top8OrBetter += count;
+                }
+
+                totalPairs++; // totalPairs はペアの数そのまま（ペア単位）
+            });
         });
 
         return {
@@ -68,9 +79,10 @@ export default function TeamResultsPage({ info, results }: Props) {
             champions,
             runnersUp,
             top8OrBetter,
-            totalPairs,
+            totalPairs
         };
-    }, [results]);
+    }, [results, info.players]);
+
 
     const calculatePlayerStats = useMemo(() => {
         const stats: Record<string, PlayerStats> = {};
@@ -168,11 +180,11 @@ export default function TeamResultsPage({ info, results }: Props) {
 
     return (
         <>
-<MetaHead
-    title={`${teamName} 所属別成績 | ソフトテニス情報`}
-    description={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
-    url={pageUrl}
-/>
+            <MetaHead
+                title={`${teamName} 所属別成績 | ソフトテニス情報`}
+                description={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
+                url={pageUrl}
+            />
 
             <Head>
                 <title>{teamName} 所属別成績 | ソフトテニス情報</title>
