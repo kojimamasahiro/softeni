@@ -72,13 +72,10 @@
         });
     }
 
-    function createPlayerInputGroup() {
-        const div = document.createElement('div');
-        div.className = 'player-group';
-        div.innerHTML = `
-        <label>出力ID：
-        <input type="number" id="outputIdInput" min="1" value="1" />
-        </label>
+function createPlayerInputGroup() {
+    const div = document.createElement('div');
+    div.className = 'player-group';
+    div.innerHTML = `
         <label>選手情報（playerId / 姓 / 名 / チーム名から補完可能）：
         <input list="playerList" class="playerInput" autocomplete="off" />
         </label>
@@ -132,12 +129,12 @@
     // JSON生成処理（入力欄はそのまま維持）
     generateBtn.addEventListener('click', () => {
         // id入力欄の値を取得
-        const idInput = document.getElementById('outputIdInput');
-        let outputId = parseInt(idInput.value, 10);
-        if (isNaN(outputId) || outputId < 1) {
-            alert('有効なIDを入力してください（1以上の整数）');
-            return;
-        }
+    const idInput = document.getElementById('outputIdInput');
+    let outputId = parseInt(idInput.value, 10);
+    if (isNaN(outputId) || outputId < 1) {
+        alert('有効なIDを入力してください（1以上の整数）');
+        return;
+    }
         const playerDivs = playersContainer.querySelectorAll('.player-group');
         if (playerDivs.length === 0) {
             alert('最低1人以上の選手情報を入力してください');
