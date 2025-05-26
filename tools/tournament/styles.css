@@ -80,3 +80,16 @@
         box-sizing: border-box;
         resize: vertical;
     }
+
+    .retire-button {
+        background-color: #f99;
+        border: 1px solid #c33;
+        color: white;
+        margin-left: 4px;
+        padding: 2px 6px;
+        cursor: pointer;
+    }
+
+    .retire-button:hover {
+        background-color: #d33;
+    }

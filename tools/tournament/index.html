@@ -77,27 +77,30 @@
             ["p1", "p2"].forEach(player => {
                 let selectedScore = match.scores[player];
 
-                // 未設定なら0にセット（表示上の選択状態として）
                 if (selectedScore === null || selectedScore === undefined) {
-                    selectedScore = 5;
-                    match.scores[player] = 5;
+                    selectedScore = 4;
+                    match.scores[player] = selectedScore;
                 }
 
                 const scoreButtons = document.querySelectorAll(
                     `.score-button[data-match="${matchIndex}"][data-player="${player}"]`
                 );
 
+                const retireButton = document.querySelector(
+                    `.retire-button[data-match="${matchIndex}"][data-player="${player}"]`
+                );
+
+                const shouldHide = match.p1.id === "bye" || match.p2.id === "bye";
+
                 scoreButtons.forEach(btn => {
                     const score = Number(btn.dataset.score);
                     btn.classList.toggle("selected", score === selectedScore);
-
-                    // パッキン戦はスコアボタン非表示にする
-                    if (match.p1.id === "bye" || match.p2.id === "bye") {
-                        btn.style.display = "none";
-                    } else {
-                        btn.style.display = "inline-block";
-                    }
+                    btn.style.display = shouldHide ? "none" : "inline-block";
                 });
+
+                if (retireButton) {
+                    retireButton.style.display = shouldHide ? "none" : "inline-block";
+                }
             });
         }
 
@@ -154,33 +157,58 @@
             roundMatches.forEach((match, i) => {
                 const div = document.createElement("div");
                 div.className = "match-result";
-console.log(match);
+                console.log(match);
                 div.innerHTML = `
   <strong>試合 ${i + 1}</strong><br/>
   <div class="score-container">
     <div class="player-score-row">
       <span class="player-name">${match.p1.name}</span>
-      <div class="score-set">
-        ${[0, 1, 2, 3, 4, 5].map(
+<div class="score-set">
+  ${[0, 1, 2, 3, 4, 5].map(
                     s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
                 ).join("")}
-      </div>
+  <button class="retire-button" data-match="${i}" data-player="p1">R</button>
+</div>
+
     </div>
     <div class="vs-text">vs</div>
     <div class="player-score-row">
       <span class="player-name">${match.p2.name}</span>
-      <div class="score-set">
-        ${[0, 1, 2, 3, 4, 5].map(
+<div class="score-set">
+  ${[0, 1, 2, 3, 4, 5].map(
                     s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
                 ).join("")}
-      </div>
+  <button class="retire-button" data-match="${i}" data-player="p2">R</button>
+</div>
+
     </div>
   </div>
   <div>勝者：<span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
 `;
 
-
                 matchesDiv.appendChild(div);
+
+                // リタイアボタンにイベント付与（← displayMatches() 内でやる！）
+                document.querySelectorAll(".retire-button").forEach(btn => {
+                    btn.addEventListener("click", e => {
+                        const matchIndex = Number(e.target.dataset.match);
+                        const player = e.target.dataset.player;
+                        const opponent = (player === "p1") ? "p2" : "p1";
+
+                        const match = roundMatches[matchIndex];
+
+                        match[player].id = "bye";
+                        match[player].name = "リタイア";
+                        match.scores[player] = 0;
+                        match.scores[opponent] = 5;
+                        match.winner = match[opponent].id;
+
+                        document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
+                        updateScoreButtons(matchIndex);
+                        updateJsonOutput();
+                        displayMatches(); // ← 再描画でbye扱い反映
+                    });
+                });
             });
 
             // スコアボタンにイベント付与
