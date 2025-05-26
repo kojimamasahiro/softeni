@@ -90,7 +90,6 @@ export default function TournamentYearResultPage({
                     }}
                 />
             </Head>
-
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
                 <div className="max-w-3xl mx-auto">
                     <h1 className="text-2xl font-bold mb-4">
@@ -102,34 +101,134 @@ export default function TournamentYearResultPage({
                         <span>{data.startDate}〜{data.endDate}</span>
                     </p>
 
-                    <ul className="space-y-4">
-                        {data.results?.map((entry, i) => (
-                            <li
-                                key={i}
-                                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm p-5 rounded-lg"
-                            >
-                                <div className="text-base font-semibold text-indigo-600 dark:text-indigo-300 mb-1">
-                                    {entry.result}
-                                </div>
-                                <div className="text-gray-800 dark:text-gray-200 text-base">
-                                    {entry.playerIds
-                                        .map(id => {
-                                            const player: PlayerInfo | undefined = allPlayers.find(p => p.id === id);
-                                            return player ? `${player.lastName} ${player.firstName}` : id;
-                                        })
-                                        .join('・')}
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                    <section className="mb-10">
 
-                    <div className="text-right mt-8 mb-2">
+                        <ul className="text-sm">
+                            {(() => {
+                                const resultPriority = (result: string) => {
+                                    if (result.includes('優勝') && !result.includes('準')) return 1;
+                                    if (result.includes('準優勝')) return 2;
+                                    if (result.includes('ベスト4')) return 3;
+                                    if (result.includes('ベスト8')) return 4;
+                                    return 99;
+                                };
+
+                                const playersFlat = data.results.flatMap((entry) =>
+                                    entry.playerIds.map((id) => {
+                                        const player = allPlayers.find((p) => p.id === id);
+                                        return {
+                                            id: player?.id ?? id,
+                                            result: entry.result,
+                                            resultOrder: resultPriority(entry.result),
+                                            name: player ? `${player.lastName}${player.firstName}` : id,
+                                            team: player?.team || '所属不明',
+                                        };
+                                    })
+                                );
+
+                                const groupedByTeam: {
+                                    [team: string]: {
+                                        team: string;
+                                        members: { id: string; name: string; result: string; resultOrder: number }[];
+                                        bestRank: number;
+                                    };
+                                } = {};
+
+                                for (const p of playersFlat) {
+                                    if (!groupedByTeam[p.team]) {
+                                        groupedByTeam[p.team] = {
+                                            team: p.team,
+                                            members: [],
+                                            bestRank: p.resultOrder,
+                                        };
+                                    }
+                                    groupedByTeam[p.team].members.push({
+                                        id: p.id,
+                                        name: p.name,
+                                        result: p.result,
+                                        resultOrder: p.resultOrder,
+                                    });
+                                    groupedByTeam[p.team].bestRank = Math.min(
+                                        groupedByTeam[p.team].bestRank,
+                                        p.resultOrder
+                                    );
+                                }
+
+                                return Object.values(groupedByTeam)
+                                    .sort((a, b) => {
+                                        if (a.bestRank !== b.bestRank) {
+                                            return a.bestRank - b.bestRank;
+                                        }
+                                        return a.team.localeCompare(b.team, 'ja');
+                                    })
+                                    .map(({ team, members }) => {
+                                        // 成績でグループ化（リンク付き名も保持）
+                                        const groupedByResult: {
+                                            [result: string]: { id: string; name: string }[];
+                                        } = {};
+                                        members.forEach((m) => {
+                                            if (!groupedByResult[m.result]) groupedByResult[m.result] = [];
+                                            groupedByResult[m.result].push({ id: m.id, name: m.name });
+                                        });
+
+                                        const resultEntries = Object.entries(groupedByResult).map(
+                                            ([result, players]) => ({
+                                                result,
+                                                players,
+                                                resultOrder: resultPriority(result),
+                                            })
+                                        );
+                                        resultEntries.sort((a, b) => a.resultOrder - b.resultOrder);
+
+                                        return (
+                                            <div
+                                                key={team}
+                                                className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
+                                            >
+                                                <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
+                                                    <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">
+                                                        {team}
+                                                    </h3>
+                                                </div>
+                                                <ul className="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
+                                                    {resultEntries.map(({ result, players }, i) => (
+                                                        <li key={i} className="flex px-4 py-2 gap-4">
+                                                            <div className="w-20 text-right text-gray-600 dark:text-gray-300">
+                                                                {result}
+                                                            </div>
+                                                            <div className="flex flex-wrap gap-x-1 text-gray-900 dark:text-gray-100">
+                                                                {players.map((p, j) => (
+                                                                    <span key={p.id}>
+                                                                        <Link
+                                                                            href={`/players/${p.id}`}
+                                                                            className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                                                                        >
+                                                                            {p.name}
+                                                                        </Link>
+                                                                        {j < players.length - 1 && '、'}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        );
+                                    });
+                            })()}
+
+                        </ul>
+
+
+                    </section>
+                    <div className="text-right mt-10 mb-2">
                         <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
                             大会結果一覧
                         </Link>
                     </div>
                 </div>
             </main>
+
         </>
     );
 }
