@@ -76,14 +76,14 @@ export default function TournamentYearResultPage({
                                 {
                                     "@type": "ListItem",
                                     "position": 2,
-                                    "name": `大会結果一覧`,
+                                    "name": "大会結果一覧",
                                     "item": "https://softeni.vercel.app/tournaments",
                                 },
                                 {
                                     "@type": "ListItem",
                                     "position": 3,
-                                    "name": `試合結果`,
-                                    "item": `${meta.name} ${year}年`,
+                                    "name": `${meta.name} ${year}年`,
+                                    "item": `https://softeni.vercel.app/tournaments/${meta.id}/${year}`,
                                 },
                             ],
                         }),
