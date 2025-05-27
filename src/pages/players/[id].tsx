@@ -177,10 +177,16 @@ export default function PlayerInformation({ player, id }: Props) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const playersPath = path.join(process.cwd(), 'data', 'players');
-  const dirs = fs.readdirSync(playersPath);
-  const paths = dirs.map((dir) => ({
-    params: { id: dir },
-  }));
+  const entries = fs.readdirSync(playersPath);
+
+  const paths = entries
+    .filter((entry) => {
+      const fullPath = path.join(playersPath, entry);
+      return fs.statSync(fullPath).isDirectory(); // ディレクトリのみ
+    })
+    .map((dir) => ({
+      params: { id: dir },
+    }));
 
   return { paths, fallback: false };
 };

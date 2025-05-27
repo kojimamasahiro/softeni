@@ -118,9 +118,16 @@ export default function PlayerStats({ stats }: { stats: PlayerStats }) {
 export async function getStaticPaths() {
   const dir = path.join(process.cwd(), "data/players");
   const files = await fs.readdir(dir);
-  const paths = files.map((id) => ({
-    params: { id },
-  }));
+
+  // ディレクトリだけに限定
+  const paths = [];
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    const stat = await fs.stat(fullPath);
+    if (stat.isDirectory()) {
+      paths.push({ params: { id: file } });
+    }
+  }
 
   return { paths, fallback: false };
 }

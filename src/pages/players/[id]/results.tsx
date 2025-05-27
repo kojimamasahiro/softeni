@@ -140,11 +140,16 @@ export default function PlayerResultsPage({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const playersDir = path.join(process.cwd(), 'data/players');
-  const playerDirs = fs.readdirSync(playersDir);
+  const entries = fs.readdirSync(playersDir);
 
-  const paths = playerDirs.map((dir) => ({
-    params: { id: dir },
-  }));
+  const paths = entries
+    .filter((entry) => {
+      const fullPath = path.join(playersDir, entry);
+      return fs.statSync(fullPath).isDirectory(); // ディレクトリのみ
+    })
+    .map((dir) => ({
+      params: { id: dir },
+    }));
 
   return {
     paths,
