@@ -4,7 +4,9 @@ import path from 'path';
 
 export function getAllPlayers(): PlayerInfo[] {
   const playersDir = path.join(process.cwd(), 'data', 'players');
-  const playerIds = fs.readdirSync(playersDir);
+  const playerIds = fs.readdirSync(playersDir).filter((file) =>
+    fs.statSync(path.join(playersDir, file)).isDirectory()
+  );
 
   return playerIds.map((id) => {
     const filePath = path.join(playersDir, id, 'information.json');
