@@ -51,7 +51,7 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
                             "description": `過去の大会結果・試合成績を掲載`,
                         }),
                     }}
-                />
+                ></script>
 
                 <script
                     type="application/ld+json"
@@ -75,7 +75,7 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
                             ],
                         }),
                     }}
-                />
+                ></script>
             </Head>
 
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
