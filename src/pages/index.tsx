@@ -64,10 +64,6 @@ export default function Home({ players }: HomeProps) {
     setFilteredPlayers(sortedFiltered);
   };
 
-  if (!isClient) {
-    return null; // クライアントサイドでない場合はレンダリングしない
-  }
-
   return (
     <>
       <MetaHead
@@ -95,96 +91,97 @@ export default function Home({ players }: HomeProps) {
           }}
         ></script>
       </Head>
+      {!isClient ? null : (
+        <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
+            <LiveResultsByTournament playersData={players} />
 
-          <LiveResultsByTournament playersData={players} />
+            <div className="text-right mb-2">
+              <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
+                大会結果一覧
+              </Link>
+            </div>
 
-          <div className="text-right mb-2">
-            <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
-              大会結果一覧
-            </Link>
-          </div>
+            <section className="mb-8 px-4">
+              <h2 className="text-xl flex font-semibold mb-4"><Image src={schoolIcon} alt="お知らせ" width={24} height={24} /> 所属別成績</h2>
 
-          <section className="mb-8 px-4">
-            <h2 className="text-xl flex font-semibold mb-4"><Image src={schoolIcon} alt="お知らせ" width={24} height={24} /> 所属別成績</h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div
-                onClick={() => (window.location.href = `/teams/nssu`)}
-                className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
-              >
-                <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">日本体育大学</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">年間成績・大会別成績・選手ごとの記録</p>
-                <a
-                  href="https://nittai-softtennis.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-700 dark:text-blue-300 underline"
-                  onClick={(e) => e.stopPropagation()}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div
+                  onClick={() => (window.location.href = `/teams/nssu`)}
+                  className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  公式サイト
-                </a>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">日本体育大学</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">年間成績・大会別成績・選手ごとの記録</p>
+                  <a
+                    href="https://nittai-softtennis.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-blue-700 dark:text-blue-300 underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    公式サイト
+                  </a>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section className="mb-8 px-4">
-            <h2 className="text-xl flex font-semibold mb-4"><Image src={tennisIcon} alt="お知らせ" width={24} height={24} /> 選手一覧</h2>
-            {/* 名前検索フォーム */}
-            <div className="mb-4">
-              <input
-                type="text"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="選手名や所属で検索"
-                value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-            </div>
+            <section className="mb-8 px-4">
+              <h2 className="text-xl flex font-semibold mb-4"><Image src={tennisIcon} alt="お知らせ" width={24} height={24} /> 選手一覧</h2>
+              {/* 名前検索フォーム */}
+              <div className="mb-4">
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="選手名や所属で検索"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                />
+              </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filteredPlayers.map((player) => {
-                const isRetired = player.retired;
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {filteredPlayers.map((player) => {
+                  const isRetired = player.retired;
 
-                return (
-                  <div
-                    key={player.id}
-                    onClick={() => (window.location.href = `/players/${player.id}`)}
-                    className={`border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition
+                  return (
+                    <div
+                      key={player.id}
+                      onClick={() => (window.location.href = `/players/${player.id}`)}
+                      className={`border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition
           hover:bg-gray-50 dark:hover:bg-gray-700
           ${isRetired ? 'opacity-70' : ''}`}
-                  >
-                    <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
-                      {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
-                    </h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                      {isRetired ? (
-                        <span className="inline-block px-2 py-0.5 text-xs text-white bg-gray-500 rounded">
-                          引退済み
-                        </span>
-                      ) : (
-                        player.team
-                      )}
-                    </p>
+                    >
+                      <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
+                        {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
+                      </h2>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                        {isRetired ? (
+                          <span className="inline-block px-2 py-0.5 text-xs text-white bg-gray-500 rounded">
+                            引退済み
+                          </span>
+                        ) : (
+                          player.team
+                        )}
+                      </p>
 
-                    <div className="flex justify-start mt-4">
-                      <Link
-                        href={`/players/${player.id}/results`}
-                        className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        試合結果
-                      </Link>
+                      <div className="flex justify-start mt-4">
+                        <Link
+                          href={`/players/${player.id}/results`}
+                          className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          試合結果
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </div>
-      </main>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        </main>
+      )}
     </>
   );
 }
