@@ -72,10 +72,10 @@
         });
     }
 
-function createPlayerInputGroup() {
-    const div = document.createElement('div');
-    div.className = 'player-group';
-    div.innerHTML = `
+    function createPlayerInputGroup() {
+        const div = document.createElement('div');
+        div.className = 'player-group';
+        div.innerHTML = `
         <label>選手情報（playerId / 姓 / 名 / チーム名から補完可能）：
         <input list="playerList" class="playerInput" autocomplete="off" />
         </label>
@@ -98,6 +98,7 @@ function createPlayerInputGroup() {
             div.querySelector('.team').value = '';
         });
         setupAutoFill(div.querySelector('.playerInput'));
+        setupNameSplit(div);
         return div;
     }
 
@@ -105,6 +106,32 @@ function createPlayerInputGroup() {
     function initializeInputArea() {
         playersContainer.innerHTML = '';
         playersContainer.appendChild(createPlayerInputGroup());
+    }
+
+    function setupNameSplit(container) {
+        const lastNameInput = container.querySelector('.lastName');
+        const firstNameInput = container.querySelector('.firstName');
+
+        lastNameInput.addEventListener('input', () => {
+            const val = lastNameInput.value.trim();
+
+            // 既にfirstNameに入力があれば処理しない（上書きしない）
+            if (firstNameInput.value.trim()) return;
+
+            // スペースがある場合で分割
+            if (val.includes(' ') || val.includes('　')) {
+                const parts = val.split(/[\s　]+/);
+                if (parts.length >= 2) {
+                    lastNameInput.value = parts[0];
+                    firstNameInput.value = parts.slice(1).join('');
+                }
+            } else if (/^[\u4E00-\u9FFF]{2,4}$/.test(val)) {
+                // 2文字+2文字の漢字を想定（例：佐藤翔太）
+                const middle = Math.floor(val.length / 2);
+                lastNameInput.value = val.slice(0, middle);
+                firstNameInput.value = val.slice(middle);
+            }
+        });
     }
 
     // プレイヤー入力欄の追加ボタン
@@ -129,12 +156,12 @@ function createPlayerInputGroup() {
     // JSON生成処理（入力欄はそのまま維持）
     generateBtn.addEventListener('click', () => {
         // id入力欄の値を取得
-    const idInput = document.getElementById('outputIdInput');
-    let outputId = parseInt(idInput.value, 10);
-    if (isNaN(outputId) || outputId < 1) {
-        alert('有効なIDを入力してください（1以上の整数）');
-        return;
-    }
+        const idInput = document.getElementById('outputIdInput');
+        let outputId = parseInt(idInput.value, 10);
+        if (isNaN(outputId) || outputId < 1) {
+            alert('有効なIDを入力してください（1以上の整数）');
+            return;
+        }
         const playerDivs = playersContainer.querySelectorAll('.player-group');
         if (playerDivs.length === 0) {
             alert('最低1人以上の選手情報を入力してください');
@@ -150,7 +177,7 @@ function createPlayerInputGroup() {
             const team = div.querySelector('.team').value.trim();
             const playerIdInput = div.querySelector('.playerInput').value.trim();
             const playerId = playerIdInput || null;
-            const tempId = firstName + "_" + lastName + "_" + team;
+            const tempId = lastName + "_" + firstName + "_" + team;
 
             if (!lastName) {
                 alert('姓は必須です');
@@ -251,13 +278,13 @@ copyBtn.addEventListener('click', () => {
 
 // スペース・カッコ・数字を削除する関数
 function removeUnwantedChars(event) {
-  event.target.value = event.target.value.replace(/[\s0-9()（）]/g, '');
+    event.target.value = event.target.value.replace(/[\s0-9()（）]/g, '');
 }
 
 // 指定したコンテナ内の全対象 input にイベントを設定
 function setupSpaceRemoval(container) {
-  const inputs = container.querySelectorAll('input.lastName, input.firstName, input.team');
-  inputs.forEach(input => {
-    input.addEventListener('input', removeUnwantedChars);
-  });
+    const inputs = container.querySelectorAll('input.lastName, input.firstName, input.team');
+    inputs.forEach(input => {
+        input.addEventListener('input', removeUnwantedChars);
+    });
 }

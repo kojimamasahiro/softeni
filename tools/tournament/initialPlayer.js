@@ -1,25 +1,19 @@
 const initialPlayers =
 [
-{"id":29,"name":"山邉・高木（山邉勇和）","information":[{"lastName":"山邉","firstName":"勇和","team":"山邉勇和","playerId":null,"tempId":"勇和_山邉_山邉勇和"},{"lastName":"高木","firstName":"琉惺","team":"山邉勇和","playerId":null,"tempId":"琉惺_高木_山邉勇和"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":30,"name":"小田嶋・伊藤（専修大学）","information":[{"lastName":"小田嶋","firstName":"俊佑","team":"専修大学","playerId":null,"tempId":"俊佑_小田嶋_専修大学"},{"lastName":"伊藤","firstName":"成那","team":"専修大学","playerId":null,"tempId":"成那_伊藤_専修大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":31,"name":"内田・桒原（法政大学）","information":[{"lastName":"内田","firstName":"陽斗","team":"法政大学","playerId":null,"tempId":"陽斗_内田_法政大学"},{"lastName":"桒原","firstName":"充樹","team":"法政大学","playerId":null,"tempId":"充樹_桒原_法政大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":32,"name":"片峰・井上（混合）","information":[{"lastName":"片峰","firstName":"大輝","team":"千葉クラブ","playerId":null,"tempId":"大輝_片峰_千葉クラブ"},{"lastName":"井上","firstName":"紘汰","team":"茂原市役所","playerId":null,"tempId":"紘汰_井上_茂原市役所"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":33,"name":"鬼塚・斉藤（東洋大学）","information":[{"lastName":"鬼塚","firstName":"一成","team":"東洋大学","playerId":null,"tempId":"一成_鬼塚_東洋大学"},{"lastName":"斉藤","firstName":"愁我","team":"東洋大学","playerId":null,"tempId":"愁我_斉藤_東洋大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":34,"name":"小林・畠山（豊南高校）","information":[{"lastName":"小林","firstName":"瑛","team":"豊南高校","playerId":null,"tempId":"瑛_小林_豊南高校"},{"lastName":"畠山","firstName":"漣大郎","team":"豊南高校","playerId":null,"tempId":"漣大郎_畠山_豊南高校"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
-{"id":35,"name":"清島・内藤（日本体育大学）","information":[{"lastName":"清島","firstName":"一颯","team":"日本体育大学","playerId":"kiyojima-kazusa","tempId":"一颯_清島_日本体育大学"},{"lastName":"内藤","firstName":"蓮斗","team":"日本体育大学","playerId":"naito-rento","tempId":"蓮斗_内藤_日本体育大学"}]},
-{"id":36,"name":"山賀・平林（帝京大学）","information":[{"lastName":"山賀","firstName":"滉己","team":"帝京大学","playerId":null,"tempId":"滉己_山賀_帝京大学"},{"lastName":"平林","firstName":"功樹","team":"帝京大学","playerId":null,"tempId":"功樹_平林_帝京大学"}]},
-{"id":37,"name":"川崎・山中（國學院大学）","information":[{"lastName":"川崎","firstName":"彪雅","team":"國學院大学","playerId":null,"tempId":"彪雅_川崎_國學院大学"},{"lastName":"山中","firstName":"一世","team":"國學院大学","playerId":null,"tempId":"一世_山中_國學院大学"}]},
-{"id":"bye","name":"1回戦免除","information":[]}
-]
-// {"id":22,"name":"高橋・鳥竹（東海大学）","information":[{    "lastName":"高橋","firstName":"稜空","team":"東海大学","playerId":null,"tempId":"稜空_高橋_東海大学"},{"lastName":"鳥竹","firstName":"柊生","team":"東海大学","playerId":null,"tempId":"柊生_鳥竹_東海大学"}]},
-// {"id":37,"name":"川崎・山中（國學院大学）","information":[{"lastName":"川崎","firstName":"彪雅","team":"國學院大学","playerId":null,"tempId":"彪雅_川崎_國學院大学"},{"lastName":"山中","firstName":"一世","team":"國學院大学","playerId":null,"tempId":"一世_山中_國學院大学"}]},
-// [
-    // {"id":1,"name":"片岡・黒坂（日本体育大学）","information":[{"lastName":"片岡","firstName":"暁紀","team":"日本体育大学","playerId":"kataoka-aki","tempId":"暁紀_片岡_日本体育大学"},{"lastName":"黒坂","firstName":"卓矢","team":"日本体育大学","playerId":"kurosaka-takuya","tempId":"卓矢_黒坂_日本体育大学"}]},
-// ]
-    ;
+    {"id":1,"name":"片岡・黒坂（日本体育大学）","information":[{"lastName":"片岡","firstName":"暁紀","team":"日本体育大学","playerId":"kataoka-aki","tempId":"暁紀_片岡_日本体育大学"},{"lastName":"黒坂","firstName":"卓矢","team":"日本体育大学","playerId":"kurosaka-takuya","tempId":"卓矢_黒坂_日本体育大学"}]},
+    {"id":37,"name":"川崎・山中（國學院大学）","information":[{"lastName":"川崎","firstName":"彪雅","team":"國學院大学","playerId":null,"tempId":"彪雅_川崎_國學院大学"},{"lastName":"山中","firstName":"一世","team":"國學院大学","playerId":null,"tempId":"一世_山中_國學院大学"}]},
+    {"id":38,"name":"山下・西田（東京ガス）","information":[{"lastName":"山下","firstName":"真央","team":"東京ガス","playerId":null,"tempId":"真央_山下_東京ガス"},{"lastName":"西田","firstName":"駿人","team":"東京ガス","playerId":null,"tempId":"駿人_西田_東京ガス"}]},
+    {"id":75,"name":"米川・荒木（YONEX）","information":[{"lastName":"米川","firstName":"悠翔","team":"YONEX","playerId":"yonekawa-yuto","tempId":"悠翔_米川_YONEX"},{"lastName":"荒木","firstName":"駿","team":"YONEX","playerId":null,"tempId":"駿_荒木_YONEX"}]},
+    {"id":90,"name":"宮原・大崎（日本体育大学）","information":[{"lastName":"宮原","firstName":"貴生","team":"日本体育大学","playerId":"miyahara-takao","tempId":"貴生_宮原_日本体育大学"},{"lastName":"大崎","firstName":"峻也","team":"日本体育大学","playerId":"osaki-shunya","tempId":"峻也_大崎_日本体育大学"}]},
+    {"id":100,"name":"川崎・森（日本体育大学）","information":[{"lastName":"川崎","firstName":"康平","team":"日本体育大学","playerId":"kawasaki-kohei","tempId":"康平_川崎_日本体育大学"},{"lastName":"森","firstName":"良輔","team":"日本体育大学","playerId":"mori-ryosuke","tempId":"良輔_森_日本体育大学"}]},
+    {"id":119,"name":"坂口・小山（明治大学）","information":[{"lastName":"坂口","firstName":"生磨","team":"明治大学","playerId":null,"tempId":"生磨_坂口_明治大学"},{"lastName":"小山","firstName":"寛晴","team":"明治大学","playerId":null,"tempId":"寛晴_小山_明治大学"}]},
+    {"id":151,"name":"竹田・安部（日本体育大学）","information":[{"lastName":"竹田","firstName":"凌","team":"日本体育大学","playerId":"takeda-ryo","tempId":"凌_竹田_日本体育大学"},{"lastName":"安部","firstName":"蓮生","team":"日本体育大学","playerId":"abe-rensei","tempId":"蓮生_安部_日本体育大学"}]},
+    {"id":152,"name":"森川・野本（法政大学）","information":[{"lastName":"森川","firstName":"亮介","team":"法政大学","playerId":null,"tempId":"亮介_森川_法政大学"},{"lastName":"野本","firstName":"凌生","team":"法政大学","playerId":null,"tempId":"凌生_野本_法政大学"}]},
+    {"id":175,"name":"岩田・佐藤（専修大学）","information":[{"lastName":"岩田","firstName":"航輝","team":"専修大学","playerId":null,"tempId":"航輝_岩田_専修大学"},{"lastName":"佐藤","firstName":"諒和","team":"専修大学","playerId":null,"tempId":"諒和_佐藤_専修大学"}]},
+    {"id":195,"name":"中平・髙田（東京ガス）","information":[{"lastName":"中平","firstName":"慎吾","team":"東京ガス","playerId":null,"tempId":"慎吾_中平_東京ガス"},{"lastName":"髙田","firstName":"翼","team":"東京ガス","playerId":null,"tempId":"翼_髙田_東京ガス"}]},
+    {"id":227,"name":"伊藤・米澤（ヨネックス）","information":[{"lastName":"伊藤","firstName":"幹","team":"ヨネックス","playerId":"i","tempId":"幹_伊藤_ヨネックス"},{"lastName":"米澤","firstName":"要","team":"ヨネックス","playerId":null,"tempId":"要_米澤_ヨネックス"}]},
+    {"id":228,"name":"根岸・斎藤（日本体育大学）","information":[{"lastName":"根岸","firstName":"澪紋","team":"日本体育大学","playerId":"negishi-remon","tempId":"澪紋_根岸_日本体育大学"},{"lastName":"斎藤","firstName":"恭平","team":"日本体育大学","playerId":"saito-kyouhei","tempId":"恭平_斎藤_日本体育大学"}]},
+    {"id":252,"name":"佐藤・守山（日本体育大学）","information":[{"lastName":"佐藤","firstName":"駿丞","team":"日本体育大学","playerId":"sato-shunsuke","tempId":"駿丞_佐藤_日本体育大学"},{"lastName":"守山","firstName":"湧叶","team":"日本体育大学","playerId":"moriyama-wakuto","tempId":"湧叶_守山_日本体育大学"}]},
+    {"id":278,"name":"前岡・榊原（駿河台大学）","information":[{"lastName":"前岡","firstName":"和亜","team":"駿河台大学","playerId":null,"tempId":"和亜_前岡_駿河台大学"},{"lastName":"榊原","firstName":"志門","team":"駿河台大学","playerId":null,"tempId":"志門_榊原_駿河台大学"}]},
+    {"id":284,"name":"武市・中尾（中央大学）","information":[{"lastName":"武市","firstName":"大輝","team":"中央大学","playerId":null,"tempId":"大輝_武市_中央大学"},{"lastName":"中尾","firstName":"彦斗","team":"中央大学","playerId":null,"tempId":"彦斗_中尾_中央大学"}]}
+];

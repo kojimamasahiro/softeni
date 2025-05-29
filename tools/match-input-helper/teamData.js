@@ -70,5 +70,6 @@ const teamData = {
         "kenjo-kawamoto": { "firstName": "健士郎", "lastName": "川本", "team": "日本体育大学" },
         "iseki-yu": { "firstName": "悠", "lastName": "伊関", "team": "日本体育大学" },
         "yoshizawa-koki": { "firstName": "考記", "lastName": "吉澤", "team": "日本体育大学" },
+        "asakura-koki": { "firstName": "嵩貴", "lastName": "朝倉", "team": "日本体育大学" },
     }
 }
