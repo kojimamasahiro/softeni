@@ -108,31 +108,84 @@
         playersContainer.appendChild(createPlayerInputGroup());
     }
 
-    function setupNameSplit(container) {
-        const lastNameInput = container.querySelector('.lastName');
-        const firstNameInput = container.querySelector('.firstName');
+function setupNameSplit(container) {
+    const lastNameInput = container.querySelector('.lastName');
+    const firstNameInput = container.querySelector('.firstName');
 
-        lastNameInput.addEventListener('input', () => {
-            const val = lastNameInput.value.trim();
+    lastNameInput.addEventListener('input', () => {
+        const original = lastNameInput.value;
 
-            // 既にfirstNameに入力があれば処理しない（上書きしない）
-            if (firstNameInput.value.trim()) return;
+        // 不要文字除去（漢字＋々以外を削除）
+        const cleaned = original.replace(/[^一-龯々ヶヵッゝゞ]/g, '');
 
-            // スペースがある場合で分割
-            if (val.includes(' ') || val.includes('　')) {
-                const parts = val.split(/[\s　]+/);
-                if (parts.length >= 2) {
-                    lastNameInput.value = parts[0];
-                    firstNameInput.value = parts.slice(1).join('');
-                }
-            } else if (/^[\u4E00-\u9FFF]{2,4}$/.test(val)) {
-                // 2文字+2文字の漢字を想定（例：佐藤翔太）
-                const middle = Math.floor(val.length / 2);
-                lastNameInput.value = val.slice(0, middle);
-                firstNameInput.value = val.slice(middle);
+        // 既にfirstNameがあれば処理しない
+        if (firstNameInput.value.trim()) return;
+
+        // 漢字＋々で2〜6文字のときのみ処理
+        if (!/^[一-龯々]{2,6}$/.test(cleaned)) return;
+
+        // スペース評価のため、漢字だけの部分を抽出して前後を無視
+        const isSkippable = (char) => /[A-Za-zＡ-Ｚａ-ｚ0-9０-９\s　!-~！-～]/.test(char);
+
+        let firstValidIndex = -1;
+        let lastValidIndex = -1;
+
+        for (let i = 0; i < original.length; i++) {
+            if (!isSkippable(original[i])) {
+                if (firstValidIndex === -1) firstValidIndex = i;
+                lastValidIndex = i;
             }
-        });
-    }
+        }
+
+        const spaceIndices = [];
+        if (firstValidIndex !== -1 && lastValidIndex !== -1) {
+            for (let i = firstValidIndex; i <= lastValidIndex; i++) {
+                if (original[i] === ' ' || original[i] === '　') {
+                    spaceIndices.push(i - firstValidIndex);
+                }
+            }
+        }
+
+        const splitRules = { 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
+        let newLastName = '';
+        let newFirstName = '';
+
+        if (spaceIndices.length === 0) {
+            // スペースなし → 文字数ルールで分割
+            const k = splitRules[cleaned.length];
+            newLastName = cleaned.slice(0, k);
+            newFirstName = cleaned.slice(k);
+        } else {
+            const segments = original
+                .split(/[\s　]+/)
+                .map(s => s.replace(/[^一-龯々ヶヵッゝゞ]/g, ''))
+                .filter(p => p.length > 0);
+
+            const allSameLength = segments.every(s => s.length === segments[0].length);
+
+            if (allSameLength) {
+                const joined = segments.join('');
+                const k = splitRules[joined.length];
+                newLastName = joined.slice(0, k);
+                newFirstName = joined.slice(k);
+            } else {
+                if (segments.length >= 3 && segments[0].length === 1 && segments[1].length === 1) {
+                    newLastName = segments[0] + segments[1];
+                    newFirstName = segments.slice(2).join('');
+                } else if (segments.length >= 3 && segments[0].length === 2 && segments[1].length === 1) {
+                    newLastName = segments[0] + segments[1];
+                    newFirstName = segments.slice(2).join('');
+                } else {
+                    newLastName = segments[0];
+                    newFirstName = segments.slice(1).join('');
+                }
+            }
+        }
+
+        lastNameInput.value = newLastName;
+        firstNameInput.value = newFirstName;
+    });
+}
 
     // プレイヤー入力欄の追加ボタン
     addPlayerBtn.addEventListener('click', () => {
@@ -283,7 +336,7 @@ function removeUnwantedChars(event) {
 
 // 指定したコンテナ内の全対象 input にイベントを設定
 function setupSpaceRemoval(container) {
-    const inputs = container.querySelectorAll('input.lastName, input.firstName, input.team');
+    const inputs = container.querySelectorAll('input.firstName, input.team');
     inputs.forEach(input => {
         input.addEventListener('input', removeUnwantedChars);
     });
