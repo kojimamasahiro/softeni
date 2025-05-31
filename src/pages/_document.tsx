@@ -6,6 +6,12 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626448782460921"
+            crossOrigin="anonymous"
+          ></script>
+
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
