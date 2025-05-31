@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'ttps://softeni-pick.com', // サイトのURLを指定
+  siteUrl: 'https://softeni-pick.com', // サイトのURLを指定
   generateRobotsTxt: true, // robots.txtを生成
   changefreq: 'daily', // ページ更新頻度
   priority: 0.7, // ページ優先度
