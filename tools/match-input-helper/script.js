@@ -114,6 +114,7 @@ function setupNameSplit(container) {
 
     lastNameInput.addEventListener('input', () => {
         const original = lastNameInput.value;
+        console.log('Original input:', original);
 
         // 不要文字除去（漢字＋々以外を削除）
         const cleaned = original.replace(/[^一-龯々ヶヵッゝゞ]/g, '');

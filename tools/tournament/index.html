@@ -44,7 +44,9 @@
         let roundHistory = [];
         let roundNumber = 1;
 
-        function onClickGenerate() {
+let visibleMatchIndex = 0;
+
+function onClickGenerate() {
             updateJsonOutput();
         }
 
@@ -151,18 +153,28 @@
         function displayMatches() {
             const matchesDiv = document.getElementById("matches");
             matchesDiv.innerHTML = "";
-            document.getElementById("roundName").textContent = `第${roundNumber}ラウンド：${getRoundName(roundMatches.length, roundNumber)}`;
+            const visibleMatches = roundMatches.filter(
+  m => m.p1.id !== "bye" && m.p2.id !== "bye"
+);
+
+document.getElementById("roundName").textContent =
+  `第${roundNumber}ラウンド：${getRoundName(visibleMatches.length, roundNumber)}`;
+
             document.getElementById("roundInput").value = roundNumber;
 
+
             roundMatches.forEach((match, i) => {
+    // bye同士の対戦や、片方がbyeの場合は表示しない
+    if (match.p1.id === "bye" || match.p2.id === "bye") return;
+        visibleMatchIndex++;
                 const div = document.createElement("div");
                 div.className = "match-result";
                 console.log(match);
                 div.innerHTML = `
-  <strong>試合 ${i + 1}</strong><br/>
+  <strong>試合 ${visibleMatchIndex}</strong><br/>
   <div class="score-container">
     <div class="player-score-row">
-      <span class="player-name">${match.p1.name}</span>
+      <span class="player-name">${match.p1.id}: ${match.p1.name}</span>
 <div class="score-set">
   ${[0, 1, 2, 3, 4, 5].map(
                     s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`
@@ -173,7 +185,7 @@
     </div>
     <div class="vs-text">vs</div>
     <div class="player-score-row">
-      <span class="player-name">${match.p2.name}</span>
+      <span class="player-name">${match.p2.id}: ${match.p2.name}</span>
 <div class="score-set">
   ${[0, 1, 2, 3, 4, 5].map(
                     s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`
