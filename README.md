@@ -67,5 +67,5 @@
 
 ## 🔗 公開URL・GitHub
 
-- Webアプリ：[https://softeni.vercel.app](https://softeni.vercel.app) （仮）
+- Webアプリ：[https://softeni-pick.com/](https://softeni-pick.com/)
 - GitHub： [https://github.com/kojimamasahiro/softeni](https://github.com/kojimamasahiro/softeni)

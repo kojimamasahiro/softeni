@@ -29,7 +29,7 @@ export default function PlayerResultsPage({
   playerStats,
 }: PlayerResultsProps) {
   const fullName = `${playerInfo.lastName}${playerInfo.firstName}`;
-  const pageUrl = `https://softeni.vercel.app/players/${playerId}/results`;
+  const pageUrl = `https://softeni-pick.com/players/${playerId}/results`;
 
   return (
     <>
@@ -89,13 +89,13 @@ export default function PlayerResultsPage({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "ホーム",
-                  "item": "https://softeni.vercel.app/",
+                  "item": "https://softeni-pick.com/",
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": `${fullName}`,
-                  "item": `https://softeni.vercel.app/players/${playerId}`,
+                  "item": `https://softeni-pick.com/players/${playerId}`,
                 },
                 {
                   "@type": "ListItem",

@@ -14,7 +14,7 @@ interface Tournament {
 }
 
 export default function TournamentListPage({ tournaments }: { tournaments: Tournament[] }) {
-    const pageUrl = `https://softeni.vercel.app/tournaments`;
+    const pageUrl = `https://softeni-pick.com/tournaments`;
 
     return (
         <>
@@ -64,13 +64,13 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
                                     "@type": "ListItem",
                                     "position": 1,
                                     "name": "ホーム",
-                                    "item": "https://softeni.vercel.app/",
+                                    "item": "https://softeni-pick.com/",
                                 },
                                 {
                                     "@type": "ListItem",
                                     "position": 2,
                                     "name": `大会結果一覧`,
-                                    "item": "https://softeni.vercel.app/tournaments",
+                                    "item": "https://softeni-pick.com/tournaments",
                                 }
                             ],
                         }),

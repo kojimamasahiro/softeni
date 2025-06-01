@@ -1,14 +1,14 @@
+import schoolIcon from '@/assets/school.png';
+import tennisIcon from '@/assets/tennis.png';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import path from 'path';
 import { useEffect, useState } from 'react';
-import tennisIcon from '@/assets/tennis.png';
-import schoolIcon from '@/assets/school.png';
-import Image from 'next/image';
 
 interface HomeProps {
   players: PlayerInfo[];
@@ -69,7 +69,7 @@ export default function Home({ players }: HomeProps) {
       <MetaHead
         title="試合結果まとめ | ソフトテニス情報"
         description="最新試合結果・大会情報・成績をまとめたサイトです。"
-        url="https://softeni.vercel.app"
+        url="https://softeni-pick.com"
       />
 
       <Head>
@@ -84,7 +84,7 @@ export default function Home({ players }: HomeProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "ホーム",
-                  "item": "https://softeni.vercel.app/"
+                  "item": "https://softeni-pick.com/"
                 }
               ]
             }),

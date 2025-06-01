@@ -51,7 +51,7 @@ export default function PlayerInformation({ player, id }: Props) {
       <MetaHead
         title={`${player.lastName}${player.firstName} 選手情報 | ソフトテニス情報`}
         description={`${player.lastName}${player.firstName}選手のプロフィール、所属、ポジション、生年月日などを掲載しています。`}
-        url={`https://softeni.vercel.app/players/${id}/information`}
+        url={`https://softeni-pick.com/players/${id}/information`}
       />
 
       <Head>
@@ -69,7 +69,7 @@ export default function PlayerInformation({ player, id }: Props) {
                 "@type": "Organization",
                 "name": player.team,
               },
-              "url": `https://softeni.vercel.app/players/${id}`,
+              "url": `https://softeni-pick.com/players/${id}`,
               "sameAs": player.profileLinks.map((link) => link.url),
             }),
           }}
@@ -86,19 +86,19 @@ export default function PlayerInformation({ player, id }: Props) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "ホーム",
-                  "item": "https://softeni.vercel.app/",
+                  "item": "https://softeni-pick.com/",
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": `${player.lastName}${player.firstName}`,
-                  "item": `https://softeni.vercel.app/players/${id}`,
+                  "item": `https://softeni-pick.com/players/${id}`,
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
                   "name": `試合結果`,
-                  "item": `https://softeni.vercel.app/players/${id}/results`,
+                  "item": `https://softeni-pick.com/players/${id}/results`,
                 },
               ],
             }),

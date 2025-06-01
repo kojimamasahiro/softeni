@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseUrl = 'https://softeni.vercel.app';
+const baseUrl = 'https://softeni-pick.com/';
 const todayStr = new Date().toISOString().split('T')[0];
 const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
 

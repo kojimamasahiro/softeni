@@ -25,7 +25,7 @@ export default function TournamentYearResultPage({
     allPlayers,
     unknownPlayers,
 }: TournamentYearResultPageProps) {
-    const pageUrl = `https://softeni.vercel.app/tournaments/${meta.id}/${year}`;
+    const pageUrl = `https://softeni-pick.com/tournaments/${meta.id}/${year}`;
 
     const resultPriority = (result: string) => {
         if (result.includes('優勝') && !result.includes('準')) return 1;

@@ -51,7 +51,7 @@ type Props = {
 
 export default function TeamResultsPage({ info, results }: Props) {
     const teamName = info.name;
-    const pageUrl = `https://softeni.vercel.app/teams/${info.id}`;
+    const pageUrl = `https://softeni-pick.com/teams/${info.id}`;
 
     const calculateSummary = useMemo(() => {
         let champions = 0, runnersUp = 0, top8OrBetter = 0, totalPairs = 0;
@@ -238,7 +238,7 @@ export default function TeamResultsPage({ info, results }: Props) {
                                     "@type": "ListItem",
                                     "position": 1,
                                     "name": "ホーム",
-                                    "item": "https://softeni.vercel.app/",
+                                    "item": "https://softeni-pick.com/",
                                 },
                                 {
                                     "@type": "ListItem",
