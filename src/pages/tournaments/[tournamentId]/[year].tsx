@@ -9,6 +9,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
+import { useState } from 'react';
 
 interface TournamentYearResultPageProps {
     year: string;
@@ -97,6 +98,8 @@ export default function TournamentYearResultPage({
         });
 
     const matches = data.matches ?? [];
+    const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
+    const [searchQuery, setSearchQuery] = useState('');
 
     return (
         <>
@@ -108,6 +111,7 @@ export default function TournamentYearResultPage({
             />
 
             <Head>
+                {/* Article 構造化データ */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
@@ -122,7 +126,36 @@ export default function TournamentYearResultPage({
                         "description": `${meta.name} ${year}年 のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
                     })
                 }} />
+
+                {/* Breadcrumb 構造化データ */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "ホーム",
+                                "item": "https://softeni-pick.com/"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "大会結果一覧",
+                                "item": "https://softeni-pick.com/tournaments"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": `${meta.name} ${year}年`,
+                                "item": pageUrl
+                            }
+                        ]
+                    })
+                }} />
             </Head>
+
 
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
                 <div className="max-w-3xl mx-auto">
@@ -195,41 +228,131 @@ export default function TournamentYearResultPage({
                     {matches.length > 0 && (
                         <section className="mb-10">
                             <h2 className="text-lg font-bold mb-3">対戦詳細</h2>
-{[...new Set(matches
-    .slice()
-    .sort((a: any, b: any) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity))
-    .map((m: any) => m.name))].map(name => (
-    <div key={name} className="mb-6">
-        <h3 className="text-base font-semibold mb-2">{name}</h3>
-        <table className="w-full text-sm border border-gray-300 dark:border-gray-700">
-            <thead className="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                    <th className="border px-2 py-1">ラウンド</th>
-                    <th className="border px-2 py-1">対戦相手</th>
-                    <th className="border px-2 py-1">勝敗</th>
-                    <th className="border px-2 py-1">スコア</th>
-                </tr>
-            </thead>
-            <tbody>
-                {matches
-                    .filter((m: any) => m.name === name)
-                    .sort((a: any, b: any) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity))
-                    .map((m: any, i: number) => (
-                        <tr key={i}>
-                            <td className="border px-2 py-1">{m.round}</td>
-                            <td className="border px-2 py-1">
-                                {m.opponents.map((op: any, j: number) => (
-                                    <span key={j}>{op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}</span>
-                                ))}
-                            </td>
-                            <td className="border px-2 py-1">{m.result === 'win' ? '勝ち' : '負け'}</td>
-                            <td className="border px-2 py-1">{m.games.won}-{m.games.lost}</td>
-                        </tr>
-                    ))}
-            </tbody>
-        </table>
-    </div>
-))}
+                            <div className="mb-4 flex flex-wrap items-center gap-2">
+                                {/* 検索ボックス */}
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="選手名で検索"
+                                    className="h-9 px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm dark:bg-gray-900 dark:text-white"
+                                />
+
+                                {/* フィルターボタン */}
+                                <button
+                                    onClick={() => setFilter('all')}
+                                    className={`h-9 px-3 text-sm rounded border ${filter === 'all'
+                                            ? 'bg-blue-600 text-white'
+                                            : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+                                        }`}
+                                >
+                                    全て
+                                </button>
+                                <button
+                                    onClick={() => setFilter('top8')}
+                                    className={`h-9 px-3 text-sm rounded border ${filter === 'top8'
+                                            ? 'bg-blue-600 text-white'
+                                            : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+                                        }`}
+                                >
+                                    ベスト8以上
+                                </button>
+                            </div>
+
+
+
+                            {[...new Set(matches
+                                .slice()
+                                .sort((a: any, b: any) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity))
+                                .map((m: any) => m.name))].map(name => {
+                                    const [isOpen, setIsOpen] = useState(false);
+
+                                    const matchGroup = matches
+                                        .filter((m: any) => m.name === name)
+                                        .sort((a: any, b: any) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity));
+
+                                    let finalLabel = '';
+                                    if (matchGroup.length > 0) {
+                                        const lastMatch = matchGroup[matchGroup.length - 1];
+                                        if (lastMatch.round === '決勝' && lastMatch.result === 'win') {
+                                            finalLabel = '優勝';
+                                        } else if (lastMatch.round === '決勝' && lastMatch.result === 'lose') {
+                                            finalLabel = '準優勝';
+                                        } else if (lastMatch.round === '準決勝' && lastMatch.result === 'lose') {
+                                            finalLabel = 'ベスト4';
+                                        } else if (lastMatch.round === '準々決勝' && lastMatch.result === 'lose') {
+                                            finalLabel = 'ベスト8';
+                                        } else if (lastMatch.result === 'lose') {
+                                            finalLabel = `${lastMatch.round}敗退`;
+                                        }
+                                    }
+
+                                    const nameLower = name.toLowerCase();
+                                    const queryLower = searchQuery.toLowerCase();
+
+                                    const show = (() => {
+                                        const matchesQuery = nameLower.includes(queryLower);
+                                        if (!matchesQuery) return false;
+
+                                        if (filter === 'all') return true;
+                                        if (filter === 'winners') return ['優勝', '準優勝'].includes(finalLabel);
+                                        if (filter === 'top8') return ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(finalLabel);
+                                        return true;
+                                    })();
+
+                                    if (!show) return null;
+
+                                    return (
+                                        <div key={name} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800">
+                                            <button
+                                                onClick={() => setIsOpen(prev => !prev)}
+                                                className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+                                            >
+                                                <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
+                                                    <span>
+                                                        {name}
+                                                        {finalLabel && (
+                                                            <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">{finalLabel}</span>
+                                                        )}
+                                                    </span>
+                                                    <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
+                                                </h3>
+                                            </button>
+
+                                            {isOpen && (
+                                                <div className="overflow-x-auto">
+                                                    <table className="w-full text-sm table-fixed border-collapse">
+                                                        <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+                                                            <tr>
+                                                                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
+                                                                <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
+                                                                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">勝敗</th>
+                                                                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {matchGroup.map((m: any, i: number) => (
+                                                                <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
+                                                                    <td className="px-4 py-2 break-words">{m.round}</td>
+                                                                    <td className="px-4 py-2 break-words">
+                                                                        {m.opponents.map((op: any, j: number) => (
+                                                                            <span key={j}>
+                                                                                {op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}
+                                                                            </span>
+                                                                        ))}
+                                                                    </td>
+                                                                    <td className="px-4 py-2">{m.result === 'win' ? '勝ち' : '負け'}</td>
+                                                                    <td className="px-4 py-2">{m.games.won}-{m.games.lost}</td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+
                         </section>
                     )}
                 </div>
