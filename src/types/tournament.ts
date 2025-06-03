@@ -28,14 +28,23 @@ export interface TournamentSummary {
 }
 
 export interface TournamentYearData {
-  year: string;
-  status: string;
-  scheduledDate?: string;
-  startDate?: string;
-  endDate?: string;
-  location?: string;
-  url?: string;
-  results: { playerIds: string[]; result: string }[];
+    year: string;
+    status: string;
+    scheduledDate?: string;
+    startDate?: string;
+    endDate?: string;
+    location?: string;
+    url?: string;
+    results: { playerIds: string[]; result: string }[];
+    matches?: {
+        round: string;
+        pair: string[];
+        opponents: any[];
+        result: 'win' | 'lose';
+        games: { won: string; lost: string };
+        entryNo: string;
+        name: string;
+    }[];
 }
 
 export interface TournamentMeta {

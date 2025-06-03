@@ -1,13 +1,4 @@
-const initialPlayers =
 [
-{"id":1,"name":"上松（NTT西日本）","information":[{"lastName":"上松","firstName":"俊貴","team":"NTT西日本","playerId":"uematsu-toshiki","tempId":"俊貴_上松_NTT西日本"}]},
-{"id":37,"name":"本倉（NTT西日本）","information":[{"lastName":"本倉","firstName":"健太郎","team":"NTT西日本","playerId":"motokura-kentaro","tempId":"健太郎_本倉_NTT西日本"}]},
-{"id":94,"name":"岩田（日本体育大学）","information":[{"lastName":"岩田","firstName":"皓平","team":"日本体育大学","playerId":"iwata-kohei","tempId":"皓平_岩田_日本体育大学"}]},
-{"id":127,"name":"植田（高田商業高校）","information":[{"lastName":"植田","firstName":"璃音","team":"高田商業高校","playerId":"ueda-rio","tempId":"璃音_植田_高田商業高校"}]},
-{"id":145,"name":"橋場（法政大学）","information":[{"lastName":"橋場","firstName":"柊一郎","team":"法政大学","playerId":"hashiba-toichiro","tempId":"柊一郎_橋場_法政大学"}]},
-{"id":216,"name":"広岡（NTT西日本）","information":[{"lastName":"広岡","firstName":"宙","team":"NTT西日本","playerId":"hirooka-sora","tempId":"宙_広岡_NTT西日本"}]},
-{"id":235,"name":"長江（NTT西日本）","information":[{"lastName":"長江","firstName":"光一","team":"NTT西日本","playerId":"nagae-koichi","tempId":"光一_長江_NTT西日本"}]},
-{"id":270,"name":"清水（同志社大学）","information":[{"lastName":"清水","firstName":"駿","team":"同志社大学","playerId":null,"tempId":"駿_清水_同志社大学"}]},
 
 {"id":1,"name":"上松（NTT西日本）","information":[{"lastName":"上松","firstName":"俊貴","team":"NTT西日本","playerId":"uematsu-toshiki","tempId":"俊貴_上松_NTT西日本"}]},
 {"id":"bye","name":"1回戦免除","information":[]},
@@ -521,4 +512,4 @@ const initialPlayers =
 {"id":287,"name":"鬼塚（東洋大学）","information":[{"lastName":"鬼塚","firstName":"一成","team":"東洋大学","playerId":null,"tempId":"一成_鬼塚_東洋大学"}]},
 {"id":288,"name":"内田（NTT西日本）","information":[{"lastName":"内田","firstName":"理久","team":"NTT西日本","playerId":"uchida-riku","tempId":"理久_内田_NTT西日本"}]},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
+]

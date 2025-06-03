@@ -96,6 +96,8 @@ export default function TournamentYearResultPage({
             return a.team.localeCompare(b.team, 'ja');
         });
 
+    const matches = data.matches ?? [];
+
     return (
         <>
             <MetaHead
@@ -189,6 +191,47 @@ export default function TournamentYearResultPage({
                             大会結果一覧
                         </Link>
                     </div>
+
+                    {matches.length > 0 && (
+                        <section className="mb-10">
+                            <h2 className="text-lg font-bold mb-3">対戦詳細</h2>
+{[...new Set(matches
+    .slice()
+    .sort((a: any, b: any) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity))
+    .map((m: any) => m.name))].map(name => (
+    <div key={name} className="mb-6">
+        <h3 className="text-base font-semibold mb-2">{name}</h3>
+        <table className="w-full text-sm border border-gray-300 dark:border-gray-700">
+            <thead className="bg-gray-100 dark:bg-gray-700">
+                <tr>
+                    <th className="border px-2 py-1">ラウンド</th>
+                    <th className="border px-2 py-1">対戦相手</th>
+                    <th className="border px-2 py-1">勝敗</th>
+                    <th className="border px-2 py-1">スコア</th>
+                </tr>
+            </thead>
+            <tbody>
+                {matches
+                    .filter((m: any) => m.name === name)
+                    .sort((a: any, b: any) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity))
+                    .map((m: any, i: number) => (
+                        <tr key={i}>
+                            <td className="border px-2 py-1">{m.round}</td>
+                            <td className="border px-2 py-1">
+                                {m.opponents.map((op: any, j: number) => (
+                                    <span key={j}>{op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}</span>
+                                ))}
+                            </td>
+                            <td className="border px-2 py-1">{m.result === 'win' ? '勝ち' : '負け'}</td>
+                            <td className="border px-2 py-1">{m.games.won}-{m.games.lost}</td>
+                        </tr>
+                    ))}
+            </tbody>
+        </table>
+    </div>
+))}
+                        </section>
+                    )}
                 </div>
             </main>
         </>
@@ -198,7 +241,6 @@ export default function TournamentYearResultPage({
 export const getStaticPaths: GetStaticPaths = async () => {
     const basePath = path.join(process.cwd(), 'data/tournaments');
     const tournamentDirs = fs.readdirSync(basePath);
-
     const paths: { params: { tournamentId: string; year: string } }[] = [];
 
     for (const tournamentId of tournamentDirs) {
@@ -212,10 +254,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         }
     }
 
-    return {
-        paths,
-        fallback: false,
-    };
+    return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -223,32 +262,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const basePath = path.join(process.cwd(), 'data/tournaments');
     const playersPath = path.join(process.cwd(), 'data/players');
-
-
     const allPlayers = getAllPlayers();
 
     try {
-        const meta = JSON.parse(
-            fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8')
-        );
-        const data = JSON.parse(
-            fs.readFileSync(path.join(basePath, tournamentId, 'years', `${year}.json`), 'utf-8')
-        );
-        const unknownPlayers = JSON.parse(
-            fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8')
-        );
+        const meta = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8'));
+        const data = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'years', `${year}.json`), 'utf-8'));
+        const unknownPlayers = JSON.parse(fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'));
 
-        return {
-            props: {
-                year,
-                meta,
-                data,
-                allPlayers,
-                unknownPlayers,
-            }
-        };
+        return { props: { year, meta, data, allPlayers, unknownPlayers } };
     } catch (err) {
         console.error(err);
         return { notFound: true };
     }
 };
+
