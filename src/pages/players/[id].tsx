@@ -115,8 +115,11 @@ export default function PlayerInformation({ player, id }: Props) {
             <tbody>
               <tr className="border-b border-gray-200 dark:border-gray-700">
                 <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
-                <td className="p-2">{player.team}</td>
+                <td className="p-2">
+                  {player.retired ? '引退済み' : player.team}
+                </td>
               </tr>
+
               <tr className="border-b border-gray-200 dark:border-gray-700">
                 <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
                 <td className="p-2">{player.position}</td>
