@@ -9,7 +9,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import path from 'path';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TournamentYearResultPageProps {
     year: string;
@@ -98,8 +98,51 @@ export default function TournamentYearResultPage({
         });
 
     const matches = data.matches ?? [];
+    const allNames = [...new Set(matches.map(m => m.name))];
+
     const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
     const [searchQuery, setSearchQuery] = useState('');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    useEffect(() => {
+        const q = searchQuery.toLowerCase();
+        if (q.length > 0) {
+            setSuggestions(allNames.filter(name => name.toLowerCase().includes(q)).slice(0, 5));
+        } else {
+            setSuggestions([]);
+        }
+    }, [searchQuery]);
+
+    const pairNames = new Set<string>();
+    const teamCounter: Record<string, number> = {};
+
+    for (const match of matches) {
+        if (match.name) {
+            pairNames.add(match.name);
+        }
+
+        // 対戦相手チームカウント
+        for (const opponent of match.opponents) {
+            const team = opponent.team;
+            if (team) {
+                teamCounter[team] = (teamCounter[team] || 0) + 1;
+            }
+        }
+
+        // ペア側（match.name に対応）の team 推定（opponents から取得不可な場合もある）
+        if (match.pair) {
+            for (const p of match.pair) {
+                const entry = matches.find(m => m.name === p);
+                if (entry?.opponents) {
+                    for (const op of entry.opponents) {
+                        const team = op.team;
+                        if (team) {
+                            teamCounter[team] = (teamCounter[team] || 0) + 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     return (
         <>
@@ -234,16 +277,29 @@ export default function TournamentYearResultPage({
                                     type="text"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    placeholder="選手名で検索"
+                                    placeholder="選手名や所属で検索"
                                     className="h-9 px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm dark:bg-gray-900 dark:text-white"
                                 />
 
+                                {suggestions.length > 0 && (
+                                    <ul className="mt-1 bg-white dark:bg-gray-800 border rounded shadow text-sm">
+                                        {suggestions.map((name, i) => (
+                                            <li
+                                                key={i}
+                                                onClick={() => setSearchQuery(name)}
+                                                className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                                            >
+                                                {name}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                                 {/* フィルターボタン */}
                                 <button
                                     onClick={() => setFilter('all')}
                                     className={`h-9 px-3 text-sm rounded border ${filter === 'all'
-                                            ? 'bg-blue-600 text-white'
-                                            : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+                                        ? 'bg-blue-600 text-white'
+                                        : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
                                         }`}
                                 >
                                     全て
@@ -251,8 +307,8 @@ export default function TournamentYearResultPage({
                                 <button
                                     onClick={() => setFilter('top8')}
                                     className={`h-9 px-3 text-sm rounded border ${filter === 'top8'
-                                            ? 'bg-blue-600 text-white'
-                                            : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+                                        ? 'bg-blue-600 text-white'
+                                        : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
                                         }`}
                                 >
                                     ベスト8以上
