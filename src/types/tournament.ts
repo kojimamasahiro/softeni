@@ -1,3 +1,4 @@
+// types/tournament.ts
 import { MatchResult, Stage } from '@/types/common';
 
 export interface Tournament {

@@ -1,5 +1,6 @@
 // src/components/Tournament/TeamResults.tsx
 import Link from 'next/link';
+import { resultPriority } from '@/lib/utils';
 
 type DisplayPart = {
   text: string;
@@ -20,10 +21,9 @@ interface TeamGroup {
 
 interface Props {
   sortedTeams: TeamGroup[];
-  resultPriority: (result: string) => number;
 }
 
-export default function TeamResults({ sortedTeams, resultPriority }: Props) {
+export default function TeamResults({ sortedTeams }: Props) {
   return (
     <section className="mb-10">
       {sortedTeams.map(({ team, members }) => {

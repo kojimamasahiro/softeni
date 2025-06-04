@@ -1,6 +1,7 @@
 // src/pages/tournaments/[tournamentId]/[year].tsx
 
 import MetaHead from '@/components/MetaHead';
+import { resultPriority } from '@/lib/utils';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -25,14 +26,6 @@ interface TournamentYearResultPageProps {
 
 export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${meta.id}/${year}`;
-
-  const resultPriority = (result: string) => {
-    if (result.includes('優勝') && !result.includes('準')) return 1;
-    if (result.includes('準優勝')) return 2;
-    if (result.includes('ベスト4')) return 3;
-    if (result.includes('ベスト8')) return 4;
-    return 99;
-  };
 
   const teamGroups: Record<string, {
     team: string;
@@ -197,7 +190,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             <span>{data.startDate}〜{data.endDate}</span>
           </p>
 
-          <TeamResults sortedTeams={sortedTeams} resultPriority={resultPriority} />
+          <TeamResults sortedTeams={sortedTeams} />
 
           <div className="text-right mt-10 mb-2">
             <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">

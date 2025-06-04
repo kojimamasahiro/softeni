@@ -1,22 +1,10 @@
 // src/components/Tournament/MatchResults.tsx
+import { sortMatchesByEntryNo } from '@/lib/utils';
+import { TournamentYearData } from '@/types/tournament';
 import { useState } from 'react';
 
-interface Opponent {
-  lastName: string;
-  team: string;
-}
-
-interface Match {
-  name: string;
-  round: string;
-  result: 'win' | 'lose';
-  games: { won: string; lost: string };
-  opponents: Opponent[];
-  entryNo?: number;
-}
-
 interface Props {
-  matches: Match[];
+  matches: NonNullable<TournamentYearData['matches']>;
   searchQuery: string;
   setSearchQuery: (v: string) => void;
   suggestions: string[];
@@ -32,12 +20,7 @@ export default function MatchResults({
   filter,
   setFilter,
 }: Props) {
-const groupedNames = [...new Set(
-  matches
-    .slice()
-    .sort((a, b) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity))
-    .map((m) => m.name)
-)];
+  const groupedNames = [...new Set(sortMatchesByEntryNo(matches).map((m) => m.name))];
 
   return (
     <section className="mb-10">
@@ -87,9 +70,7 @@ const groupedNames = [...new Set(
 
       {groupedNames.map((name) => {
         const [isOpen, setIsOpen] = useState(false);
-        const matchGroup = matches
-          .filter((m) => m.name === name)
-          .sort((a, b) => (a.entryNo ?? Infinity) - (b.entryNo ?? Infinity));
+        const matchGroup = sortMatchesByEntryNo(matches.filter((m) => m.name === name));
 
         let finalLabel = '';
         const lastMatch = matchGroup[matchGroup.length - 1];
