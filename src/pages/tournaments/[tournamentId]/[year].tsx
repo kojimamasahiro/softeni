@@ -99,6 +99,7 @@ export default function TournamentYearResultPage({
 
     const matches = data.matches ?? [];
     const allNames = [...new Set(matches.map(m => m.name))];
+    const totalMatches = matches.filter(m => m.result === 'win').length;
 
     function findOpponentById(id: string): MatchOpponent | null {
         for (const match of matches) {
@@ -126,7 +127,17 @@ export default function TournamentYearResultPage({
     const seenPlayers = new Set<string>(); // 一度カウントしたIDを記録
     const teamCounter: Record<string, number> = {};
 
+    let totalGamesWon = 0;
+    let totalGamesLost = 0;
+
     for (const match of matches) {
+        if (match.result === 'win') {
+            const won = parseInt(match.games.won, 10);
+            const lost = parseInt(match.games.lost, 10);
+            if (!isNaN(won)) totalGamesWon += won;
+            if (!isNaN(lost)) totalGamesLost += lost;
+        }
+
         // pair 側
         for (const id of match.pair) {
             if (!seenPlayers.has(id)) {
@@ -280,18 +291,23 @@ export default function TournamentYearResultPage({
 
                     {matches.length > 0 && (
                         <section className="mb-10">
-                            <div className="mb-6 text-sm text-gray-700 dark:text-gray-300 space-y-1">
-                                <div>エントリー数：{totalPlayers}人</div>
-                                <div>出場チーム数：{uniqueTeams}団体</div>
-                                <div className="mt-2">
-                                    <div className="font-semibold mb-1">チーム別エントリー数ランキング</div>
-                                    <ul className="list-disc list-inside space-y-1">
-                                        {topTeams.slice(0, 5).map(([team, count], index) => (
-                                            <li key={team}>
-                                                {index + 1}位：{team}（{count}人）
-                                            </li>
-                                        ))}
-                                    </ul>
+                            <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800 p-4">
+                                <h2 className="text-lg font-bold mb-3">大会統計</h2>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                                    <div>エントリー数：{totalPlayers}人</div>
+                                    <div>出場チーム数：{uniqueTeams}チーム</div>
+                                    <div>総試合数：{totalMatches}試合</div>
+                                    <div>総ゲーム数（獲得率）：{totalGamesWon} - {totalGamesLost}（{((totalGamesWon / (totalGamesWon + totalGamesLost)) * 100).toFixed(2)}%）</div>
+                                    <div className="mt-2">
+                                        <div className="font-semibold mb-1">チーム別エントリー数ランキング</div>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {topTeams.slice(0, 5).map(([team, count], index) => (
+                                                <div key={team}>
+                                                    {index + 1}位：{team}（{count}人）
+                                                </div>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
@@ -339,8 +355,6 @@ export default function TournamentYearResultPage({
                                     ベスト8以上
                                 </button>
                             </div>
-
-
 
                             {[...new Set(matches
                                 .slice()
