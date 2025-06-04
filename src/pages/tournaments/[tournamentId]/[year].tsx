@@ -324,7 +324,7 @@ export default function TournamentYearResultPage({
                                     <div className="text-sm text-gray-700 dark:text-gray-300">
                                         <div className="font-semibold mb-1">チーム別出場人数ランキング</div>
 
-                                        <div className="space-y-1 overflow-y-auto max-h-64 pr-2">
+                                        <div className="space-y-1 overflow-y-auto max-h-32 pr-2">
                                             {rankedTeams.map(({ rank, team, count }) => (
                                                 <div key={team}>
                                                     {rank}位：{team}（{count}人）
