@@ -164,6 +164,30 @@ export default function TournamentYearResultPage({
 
     const topTeamsAll = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
 
+    const sorted = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
+
+    const rankedTeams: { rank: number; team: string; count: number }[] = [];
+    let currentRank = 1;
+    let prevCount: number | null = null;
+    let offset = 0;
+
+    for (let i = 0; i < sorted.length; i++) {
+        const [team, count] = sorted[i];
+
+        if (count === prevCount) {
+            // 同じ得点 → 同じ順位
+            offset++;
+        } else {
+            // 新しい順位に繰り上げ
+            currentRank = i + 1;
+            currentRank += offset;
+            offset = 0;
+        }
+
+        rankedTeams.push({ rank: currentRank, team, count });
+        prevCount = count;
+    }
+
     return (
         <>
             <MetaHead
@@ -300,10 +324,10 @@ export default function TournamentYearResultPage({
                                     <div className="text-sm text-gray-700 dark:text-gray-300">
                                         <div className="font-semibold mb-1">チーム別出場人数ランキング</div>
 
-                                        <div className="space-y-1 overflow-y-auto max-h-38 pr-2">
-                                            {topTeamsAll.map(([team, count], index) => (
+                                        <div className="space-y-1 overflow-y-auto max-h-64 pr-2">
+                                            {rankedTeams.map(({ rank, team, count }) => (
                                                 <div key={team}>
-                                                    {index + 1}位：{team}（{count}人）
+                                                    {rank}位：{team}（{count}人）
                                                 </div>
                                             ))}
                                         </div>
