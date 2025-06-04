@@ -162,9 +162,8 @@ export default function TournamentYearResultPage({
     const sortedTeamEntries = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
     const uniqueTeams = sortedTeamEntries.length;
 
-    const topTeams = Object.entries(teamCounter)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5); // 上位5
+    const topTeamsAll = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
+
     return (
         <>
             <MetaHead
@@ -298,15 +297,16 @@ export default function TournamentYearResultPage({
                                     <div>出場チーム数：{uniqueTeams}チーム</div>
                                     <div>総試合数：{totalMatches}試合</div>
                                     <div>総ゲーム数（獲得率）：{totalGamesWon} - {totalGamesLost}（{((totalGamesWon / (totalGamesWon + totalGamesLost)) * 100).toFixed(2)}%）</div>
-                                    <div className="mt-2">
-                                        <div className="font-semibold mb-1">チーム別エントリー数ランキング</div>
-                                        <ul className="list-disc list-inside space-y-1">
-                                            {topTeams.slice(0, 5).map(([team, count], index) => (
+                                    <div className="text-sm text-gray-700 dark:text-gray-300">
+                                        <div className="font-semibold mb-1">チーム別出場人数ランキング</div>
+
+                                        <div className="space-y-1 overflow-y-auto max-h-38 pr-2">
+                                            {topTeamsAll.map(([team, count], index) => (
                                                 <div key={team}>
                                                     {index + 1}位：{team}（{count}人）
                                                 </div>
                                             ))}
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
