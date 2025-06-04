@@ -3,7 +3,7 @@
 
 import MetaHead from '@/components/MetaHead';
 import { getAllPlayers } from '@/lib/players';
-import { PlayerInfo, TournamentMeta, TournamentYearData } from '@/types/index';
+import { PlayerInfo, TournamentMeta, TournamentYearData, MatchOpponent } from '@/types/index';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -100,6 +100,17 @@ export default function TournamentYearResultPage({
     const matches = data.matches ?? [];
     const allNames = [...new Set(matches.map(m => m.name))];
 
+    function findOpponentById(id: string): MatchOpponent | null {
+        for (const match of matches) {
+            for (const op of match.opponents) {
+                if (op.playerId === id || op.tempId === id) {
+                    return op;
+                }
+            }
+        }
+        return null;
+    }
+
     const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -112,43 +123,37 @@ export default function TournamentYearResultPage({
         }
     }, [searchQuery]);
 
-    const pairNames = new Set<string>();
+    const seenPlayers = new Set<string>(); // 一度カウントしたIDを記録
     const teamCounter: Record<string, number> = {};
 
     for (const match of matches) {
-        if (match.name) {
-            pairNames.add(match.name);
-        }
-
-        // 対戦相手チームカウント
-        for (const opponent of match.opponents) {
-            const team = opponent.team;
-            if (team) {
-                teamCounter[team] = (teamCounter[team] || 0) + 1;
-            }
-        }
-
-        // ペア側（match.name に対応）の team 推定（opponents から取得不可な場合もある）
-        if (match.pair) {
-            for (const p of match.pair) {
-                const entry = matches.find(m => m.name === p);
-                if (entry?.opponents) {
-                    for (const op of entry.opponents) {
-                        const team = op.team;
-                        if (team) {
-                            teamCounter[team] = (teamCounter[team] || 0) + 1;
-                        }
-                    }
+        // pair 側
+        for (const id of match.pair) {
+            if (!seenPlayers.has(id)) {
+                const player = findOpponentById(id);
+                if (player?.team) {
+                    teamCounter[player.team] = (teamCounter[player.team] || 0) + 1;
+                    seenPlayers.add(id);
                 }
             }
         }
-    }
 
-    const totalPairs = pairNames.size;
+        // opponents 側
+        for (const op of match.opponents) {
+            const id = op.playerId || op.tempId;
+            if (!seenPlayers.has(id)) {
+                teamCounter[op.team] = (teamCounter[op.team] || 0) + 1;
+                seenPlayers.add(id);
+            }
+        }
+    }
+    const totalPlayers = seenPlayers.size;
     const sortedTeamEntries = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
     const uniqueTeams = sortedTeamEntries.length;
-    const mostFrequentTeam = sortedTeamEntries[0]?.[0] ?? '';
 
+    const topTeams = Object.entries(teamCounter)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5); // 上位5
     return (
         <>
             <MetaHead
@@ -275,11 +280,21 @@ export default function TournamentYearResultPage({
 
                     {matches.length > 0 && (
                         <section className="mb-10">
-                            <div className="mb-8 text-sm text-gray-700 dark:text-gray-300 space-y-1">
-                                <div>出場数：{totalPairs}</div>
-                                <div>所属チーム数：{uniqueTeams}</div>
-                                <div>最多出場チーム：{mostFrequentTeam}</div>
+                            <div className="mb-6 text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                                <div>エントリー数：{totalPlayers}人</div>
+                                <div>出場チーム数：{uniqueTeams}団体</div>
+                                <div className="mt-2">
+                                    <div className="font-semibold mb-1">チーム別エントリー数ランキング</div>
+                                    <ul className="list-disc list-inside space-y-1">
+                                        {topTeams.slice(0, 5).map(([team, count], index) => (
+                                            <li key={team}>
+                                                {index + 1}位：{team}（{count}人）
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
+
                             <h2 className="text-lg font-bold mb-3">対戦詳細</h2>
                             <div className="mb-4 flex flex-wrap items-center gap-2">
                                 {/* 検索ボックスjsx */}
@@ -464,4 +479,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
         return { notFound: true };
     }
 };
-

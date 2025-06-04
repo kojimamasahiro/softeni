@@ -39,13 +39,21 @@ export interface TournamentYearData {
     matches?: {
         round: string;
         pair: string[];
-        opponents: any[];
+        opponents: MatchOpponent[];
         result: 'win' | 'lose';
         games: { won: string; lost: string };
         entryNo: string;
         name: string;
     }[];
 }
+
+export interface MatchOpponent {
+  lastName: string;
+  firstName: string;
+  team: string;
+  playerId: string | null;
+  tempId: string;
+};
 
 export interface TournamentMeta {
     id: string;
