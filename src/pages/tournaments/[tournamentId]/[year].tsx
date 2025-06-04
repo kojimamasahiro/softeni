@@ -144,6 +144,11 @@ export default function TournamentYearResultPage({
         }
     }
 
+    const totalPairs = pairNames.size;
+    const sortedTeamEntries = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
+    const uniqueTeams = sortedTeamEntries.length;
+    const mostFrequentTeam = sortedTeamEntries[0]?.[0] ?? '';
+
     return (
         <>
             <MetaHead
@@ -270,9 +275,14 @@ export default function TournamentYearResultPage({
 
                     {matches.length > 0 && (
                         <section className="mb-10">
+                            <div className="mb-8 text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                                <div>出場数：{totalPairs}</div>
+                                <div>所属チーム数：{uniqueTeams}</div>
+                                <div>最多出場チーム：{mostFrequentTeam}</div>
+                            </div>
                             <h2 className="text-lg font-bold mb-3">対戦詳細</h2>
                             <div className="mb-4 flex flex-wrap items-center gap-2">
-                                {/* 検索ボックス */}
+                                {/* 検索ボックスjsx */}
                                 <input
                                     type="text"
                                     value={searchQuery}
