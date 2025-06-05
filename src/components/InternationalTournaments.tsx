@@ -1,61 +1,13 @@
-import styles from '../styles/Results.module.css';
+import ResultsTable from '@/components/ResultsTable';
+import { MatchResult, Stage, Tournament } from '@/types/index';
 
-interface MatchResult {
-  round: string;
-  opponent: string;
-  result: string;
-  score: string;
-}
 
-interface Stage {
-  format: 'round-robin' | 'tournament';
-  group?: string;
-  results: MatchResult[];
-}
-
-interface Tournament {
-  tournament: string;
-  dateRange?: string;
-  location?: string;
-  link?: string;
-  format: 'round-robin' | 'tournament' | 'combined';
-  finalResult?: string;
-  groupStage?: Stage;
-  finalStage?: Stage;
-  results?: MatchResult[];
-}
-
-interface PlayerData {
+interface PlayerMatchesData {
   player: string;
   matches: Tournament[];
 }
 
-function renderTable(results: MatchResult[]) {
-  return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>ラウンド</th>
-          <th>対戦相手</th>
-          <th>スコア</th>
-          <th>勝敗</th>
-        </tr>
-      </thead>
-      <tbody>
-        {results.map((match, i) => (
-          <tr key={i}>
-            <td>{match.round}</td>
-            <td>{match.opponent}</td>
-            <td>{match.score}</td>
-            <td>{match.result}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-export default function InternationalTournaments({ playerData }: { playerData: PlayerData }) {
+export default function InternationalTournaments({ playerData }: { playerData: PlayerMatchesData }) {
   // playerData.matchesが存在するか確認
   if (!playerData || !playerData.matches) {
     return <div>データがありません。</div>;
@@ -66,41 +18,52 @@ export default function InternationalTournaments({ playerData }: { playerData: P
   );
 
   return (
-    <section className={styles.section}>
-      <h2 className={styles.heading}>🌏 国際大会</h2>
+    <section className="mb-8 px-4">
+      <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">🌏 国際大会</h2>
       {internationalMatches.length > 0 ? (
         internationalMatches.map((tournament, index) => (
-          <div key={index} className={styles.tournament}>
-            <h3>{tournament.tournament}</h3>
-            {tournament.dateRange && <div className={styles.meta}>日程：{tournament.dateRange}</div>}
-            {tournament.location && <div className={styles.meta}>開催地：{tournament.location}</div>}
-            {tournament.finalResult && <div className={styles.meta}>最終結果：{tournament.finalResult}</div>}
+          <div
+            key={index}
+            className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800"
+          >
+            <h3 className="text-lg font-bold mb-2">{tournament.tournament}</h3>
+            {tournament.dateRange && (
+              <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">日程：{tournament.dateRange}</div>
+            )}
+            {tournament.location && (
+              <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">開催地：{tournament.location}</div>
+            )}
+            {tournament.finalResult && (
+              <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">最終結果：{tournament.finalResult}</div>
+            )}
             {tournament.link && (
-              <div className={styles.meta}>
-                <a href={tournament.link} target="_blank" rel="noopener noreferrer">大会ページ</a>
+              <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                <a href={tournament.link} target="_blank" rel="noopener noreferrer" className="underline text-blue-600 dark:text-blue-400">
+                  大会ページ
+                </a>
               </div>
             )}
 
             {tournament.format === 'combined' && (
               <>
                 {tournament.groupStage && (
-                  <div className={styles.stage}>
-                    <h4>グループステージ</h4>
-                    {renderTable(tournament.groupStage.results)}
+                  <div className="mb-3">
+                    <h4 className="font-semibold mb-1">グループステージ</h4>
+                    <ResultsTable results={tournament.groupStage.results} />
                   </div>
                 )}
                 {tournament.finalStage && (
-                  <div className={styles.stage}>
-                    <h4>決勝トーナメント</h4>
-                    {renderTable(tournament.finalStage.results)}
+                  <div className="mb-3">
+                    <h4 className="font-semibold mb-1">決勝トーナメント</h4>
+                    <ResultsTable results={tournament.finalStage.results} />
                   </div>
                 )}
               </>
             )}
 
             {tournament.format !== 'combined' && tournament.results && (
-              <div className={styles.stage}>
-                {renderTable(tournament.results)}
+              <div className="mb-3">
+                <ResultsTable results={tournament.results} />
               </div>
             )}
           </div>

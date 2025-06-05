@@ -1,5 +1,6 @@
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
-import { MatchResult, PlayerData, PlayerInfo, PlayerStats, Tournament } from '@/types/index';
+import ResultsTable from '@/components/ResultsTable';
+import { PlayerData, PlayerInfo, PlayerStats, Tournament } from '@/types/index';
 import Link from 'next/link';
 
 type PlayerResultsProps = {
@@ -61,13 +62,13 @@ export default function PlayerResults({ playerData, playerStats, allPlayers }: P
                   {tournament.groupStage && (
                     <div className="mb-3">
                       <h4 className="font-semibold mb-1">グループステージ（{tournament.groupStage.group || 'グループ'}）</h4>
-                      {renderTable(tournament.groupStage.results)}
+                      <ResultsTable results={tournament.groupStage.results} />
                     </div>
                   )}
                   {tournament.finalStage && (
                     <div className="mb-3">
                       <h4 className="font-semibold mb-1">決勝トーナメント</h4>
-                      {renderTable(tournament.finalStage.results)}
+                      <ResultsTable results={tournament.finalStage.results} />
                     </div>
                   )}
                 </>
@@ -76,14 +77,14 @@ export default function PlayerResults({ playerData, playerStats, allPlayers }: P
               {tournament.format === 'tournament' && tournament.results && (
                 <div className="mb-3">
                   <h4 className="font-semibold mb-1">トーナメント</h4>
-                  {renderTable(tournament.results)}
+                  <ResultsTable results={tournament.results} />
                 </div>
               )}
 
               {tournament.format === 'round-robin' && tournament.results && (
                 <div className="mb-3">
                   <h4 className="font-semibold mb-1">ラウンドロビン</h4>
-                  {renderTable(tournament.results)}
+                  <ResultsTable results={tournament.results} />
                 </div>
               )}
             </div>
@@ -94,27 +95,3 @@ export default function PlayerResults({ playerData, playerStats, allPlayers }: P
   );
 }
 
-function renderTable(results: MatchResult[]) {
-  return (
-    <table className="w-full border border-gray-200 dark:border-gray-700 text-sm">
-      <thead className="bg-gray-100 dark:bg-gray-700">
-        <tr>
-          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">ラウンド</th>
-          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">対戦相手</th>
-          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">スコア</th>
-          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">勝敗</th>
-        </tr>
-      </thead>
-      <tbody>
-        {results.map((match, i) => (
-          <tr key={i} className="text-center">
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.round}</td>
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.opponent}</td>
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.score}</td>
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">{match.result}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
