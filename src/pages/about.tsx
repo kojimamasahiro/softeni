@@ -35,7 +35,7 @@ export default function About() {
         ></script>
       </Head>
 
-      <div className="max-w-4xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 shadow-lg rounded-lg">
+      <div className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 shadow-lg rounded-lg">
         <h1 className="text-3xl font-extrabold mb-8 text-center">このサイトについて</h1>
 
         <section className="mb-8">
