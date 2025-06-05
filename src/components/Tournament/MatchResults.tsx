@@ -12,6 +12,98 @@ interface Props {
   setFilter: (v: 'all' | 'top8' | 'winners') => void;
 }
 
+function MatchGroup({
+  name,
+  matches,
+  searchQuery,
+  filter,
+}: {
+  name: string;
+  matches: NonNullable<TournamentYearData['matches']>;
+  searchQuery: string;
+  filter: 'all' | 'top8' | 'winners';
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const matchGroup = sortMatchesByEntryNo(matches);
+
+  let finalLabel = '';
+  const lastMatch = matchGroup[matchGroup.length - 1];
+  if (lastMatch) {
+    const { round, result } = lastMatch;
+    if (round === '決勝' && result === 'win') finalLabel = '優勝';
+    else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
+    else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
+    else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
+    else if (result === 'lose') finalLabel = `${round}敗退`;
+  }
+
+  const nameLower = name.toLowerCase();
+  const queryLower = searchQuery.toLowerCase();
+  const matchesQuery = nameLower.includes(queryLower);
+  const show = (() => {
+    if (!matchesQuery) return false;
+    if (filter === 'all') return true;
+    if (filter === 'winners') return ['優勝', '準優勝'].includes(finalLabel);
+    if (filter === 'top8')
+      return ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(finalLabel);
+    return true;
+  })();
+
+  if (!show) return null;
+
+  return (
+    <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800">
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+      >
+        <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
+          <span>
+            {name}
+            {finalLabel && (
+              <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
+                {finalLabel}
+              </span>
+            )}
+          </span>
+          <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
+        </h3>
+      </button>
+
+      {isOpen && (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm table-fixed border-collapse">
+            <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+              <tr>
+                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
+                <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
+                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">勝敗</th>
+                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matchGroup.map((m, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
+                  <td className="px-4 py-2 break-words">{m.round}</td>
+                  <td className="px-4 py-2 break-words">
+                    {m.opponents.map((op, j) => (
+                      <span key={j}>
+                        {op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}
+                      </span>
+                    ))}
+                  </td>
+                  <td className="px-4 py-2">{m.result === 'win' ? '勝ち' : '負け'}</td>
+                  <td className="px-4 py-2">{m.games.won}-{m.games.lost}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function MatchResults({
   matches,
   searchQuery,
@@ -68,84 +160,15 @@ export default function MatchResults({
         </button>
       </div>
 
-      {groupedNames.map((name) => {
-        const [isOpen, setIsOpen] = useState(false);
-        const matchGroup = sortMatchesByEntryNo(matches.filter((m) => m.name === name));
-
-        let finalLabel = '';
-        const lastMatch = matchGroup[matchGroup.length - 1];
-        if (lastMatch) {
-          const { round, result } = lastMatch;
-          if (round === '決勝' && result === 'win') finalLabel = '優勝';
-          else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
-          else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
-          else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
-          else if (result === 'lose') finalLabel = `${round}敗退`;
-        }
-
-        const nameLower = name.toLowerCase();
-        const queryLower = searchQuery.toLowerCase();
-        const matchesQuery = nameLower.includes(queryLower);
-        const show = (() => {
-          if (!matchesQuery) return false;
-          if (filter === 'all') return true;
-          if (filter === 'winners') return ['優勝', '準優勝'].includes(finalLabel);
-          if (filter === 'top8') return ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(finalLabel);
-          return true;
-        })();
-
-        if (!show) return null;
-
-        return (
-          <div key={name} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800">
-            <button
-              onClick={() => setIsOpen((prev) => !prev)}
-              className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-            >
-              <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
-                <span>
-                  {name}
-                  {finalLabel && (
-                    <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">{finalLabel}</span>
-                  )}
-                </span>
-                <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
-              </h3>
-            </button>
-
-            {isOpen && (
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm table-fixed border-collapse">
-                  <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
-                    <tr>
-                      <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
-                      <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
-                      <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">勝敗</th>
-                      <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {matchGroup.map((m, i) => (
-                      <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
-                        <td className="px-4 py-2 break-words">{m.round}</td>
-                        <td className="px-4 py-2 break-words">
-                          {m.opponents.map((op, j) => (
-                            <span key={j}>
-                              {op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}
-                            </span>
-                          ))}
-                        </td>
-                        <td className="px-4 py-2">{m.result === 'win' ? '勝ち' : '負け'}</td>
-                        <td className="px-4 py-2">{m.games.won}-{m.games.lost}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-        );
-      })}
+      {groupedNames.map((name) => (
+        <MatchGroup
+          key={name}
+          name={name}
+          matches={matches.filter((m) => m.name === name)}
+          searchQuery={searchQuery}
+          filter={filter}
+        />
+      ))}
     </section>
   );
 }

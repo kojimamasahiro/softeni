@@ -14,7 +14,7 @@ const getFormattedDateTime = (date: Date) => {
   const month = date.getMonth() + 1;
   const dayOfMonth = date.getDate();
   const hour = date.getHours();
-  const minute = date.getMinutes().toString()
+  const minute = date.getMinutes().toString().padStart(2, '0');
   return `${month}月${dayOfMonth}日(${day}) ${hour}時${minute}分`;
 };
 
