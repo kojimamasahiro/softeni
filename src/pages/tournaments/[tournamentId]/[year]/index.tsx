@@ -1,4 +1,4 @@
-// src/pages/tournaments/[tournamentId]/[year].tsx
+// src/pages/tournaments/[tournamentId]/[year]/index.tsx
 
 import MetaHead from '@/components/MetaHead';
 import { resultPriority } from '@/lib/utils';
@@ -159,35 +159,45 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
         type="article"
       />
       <Head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          "headline": `${meta.name} ${year}年 大会結果`,
-          "author": { "@type": "Person", "name": "Softeni Pick" },
-          "publisher": { "@type": "Organization", "name": "Softeni Pick" },
-          "datePublished": new Date().toISOString().split('T')[0],
-          "dateModified": new Date().toISOString().split('T')[0],
-          "inLanguage": "ja",
-          "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-          "description": `${meta.name} ${year}年 のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
-        }) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://softeni-pick.com/" },
-            { "@type": "ListItem", "position": 2, "name": "大会結果一覧", "item": "https://softeni-pick.com/tournaments" },
-            { "@type": "ListItem", "position": 3, "name": `${meta.name} ${year}年`, "item": pageUrl }
-          ]
-        }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": `${meta.name} ${year}年 大会結果`,
+            "author": { "@type": "Person", "name": "Softeni Pick" },
+            "publisher": { "@type": "Organization", "name": "Softeni Pick" },
+            "datePublished": new Date().toISOString().split('T')[0],
+            "dateModified": new Date().toISOString().split('T')[0],
+            "inLanguage": "ja",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+            "description": `${meta.name} ${year}年 のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
+          })
+        }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://softeni-pick.com/" },
+              { "@type": "ListItem", "position": 2, "name": "大会結果一覧", "item": "https://softeni-pick.com/tournaments" },
+              { "@type": "ListItem", "position": 3, "name": `${meta.name} ${year}年`, "item": pageUrl }
+            ]
+          })
+        }} />
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-            <span className="inline-block mr-4">{data.location}</span>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 flex flex-wrap gap-4 items-center">
+            <span>{data.location}</span>
             <span>{data.startDate}〜{data.endDate}</span>
+            <Link
+              href={`/tournaments/${meta.id}/${year}/data`}
+              className="text-blue-600 hover:underline text-sm"
+            >
+              出場選手データ（JSON形式）
+            </Link>
           </p>
 
           <TeamResults sortedTeams={sortedTeams} />
