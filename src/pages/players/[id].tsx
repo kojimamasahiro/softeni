@@ -106,7 +106,7 @@ export default function PlayerInformation({ player, id }: Props) {
         />
       </Head>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-3xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
 
         <section className="mb-10">

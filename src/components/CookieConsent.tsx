@@ -31,7 +31,7 @@ const CookieConsent = ({ onAccept, onDecline }: Props) => {
 
   return (
     <div className="fixed bottom-0 w-full bg-gray-800 text-white p-4 text-sm z-50 shadow-md">
-      <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+      <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
         <span>
           当サイトは分析目的でCookieを使用します。詳しくは
           <a
