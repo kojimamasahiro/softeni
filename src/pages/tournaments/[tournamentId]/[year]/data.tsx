@@ -1,0 +1,128 @@
+import fs from 'fs';
+import path from 'path';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+
+interface PlayerEntry {
+    id: number | string;
+    name: string;
+    information: {
+        lastName: string;
+        firstName: string;
+        team: string;
+        tempId: string;
+    }[];
+}
+
+interface TournamentMeta {
+    id: string;
+    sortId: number;
+    name: string;
+    region: string;
+    type: string;
+    category: string;
+    officialUrl?: string;
+    isMajorTitle?: boolean;
+}
+
+interface Props {
+    tournamentId: string;
+    year: string;
+    entries: PlayerEntry[];
+    meta: TournamentMeta;
+}
+
+export default function EntryDataPage({ tournamentId, year, entries, meta }: Props) {
+    const jsonStr = JSON.stringify(entries, null, 2);
+
+    return (
+        <>
+            <Head>
+                <title>{meta.name} {year} 出場選手データ | Softeni Pick</title>
+                <meta name="description" content={`${meta.name} ${year} 年の出場選手情報（JSON形式）を掲載しています。`} />
+            </Head>
+
+            <main className="max-w-3xl mx-auto px-4 py-8">
+                <h1 className="text-2xl font-bold mb-4">{meta.name} {year} 出場選手データ（JSON形式）</h1>
+
+                <div className="text-sm text-gray-700 mb-6">
+                    <p>このページでは、Softeni Pick が独自にまとめた「<strong>{meta.name} {year}</strong>」の参加選手情報（JSON形式）を掲載しています。</p>
+                    <ul className="list-disc list-inside mt-2">
+                        <li>個人利用、非営利目的での使用は自由です。</li>
+                        <li>学校・団体名や選手名の表記は一部誤記の可能性があります。</li>
+                        <li>公式発表とは異なる場合がありますので、正式な情報は各大会主催者の発表をご確認ください。</li>
+                    </ul>
+                </div>
+
+                <pre className="bg-gray-100 p-4 rounded text-sm max-h-[300px] overflow-auto">
+                    {jsonStr}
+                </pre>
+
+
+                <button
+                    onClick={() => {
+                        navigator.clipboard.writeText(jsonStr);
+                        alert('クリップボードにコピーしました');
+                    }}
+                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                    JSONをコピー
+                </button>
+
+                <div className="mt-6 text-xs text-gray-500 border-t pt-4">
+                    <p>
+                        ※ 本データはSofteni Pickが独自に整理・構築したものであり、正確性を保証するものではありません。<br />
+                        ご利用にあたって生じた不利益等について、当サイトは一切の責任を負いません。
+                    </p>
+                </div>
+            </main>
+        </>
+    );
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const baseDir = path.join(process.cwd(), 'data/tournaments');
+    const tournamentIds = fs.readdirSync(baseDir);
+
+    const paths: { params: { tournamentId: string; year: string } }[] = [];
+
+    for (const tid of tournamentIds) {
+        const yearDir = path.join(baseDir, tid);
+        if (!fs.statSync(yearDir).isDirectory()) continue;
+
+        const years = fs.readdirSync(yearDir);
+        for (const y of years) {
+            const entryPath = path.join(yearDir, y, 'entries.json');
+            if (fs.existsSync(entryPath)) {
+                paths.push({
+                    params: {
+                        tournamentId: tid,
+                        year: y,
+                    },
+                });
+            }
+        }
+    }
+
+    return {
+        paths,
+        fallback: false,
+    };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    const { tournamentId, year } = context.params as { tournamentId: string; year: string };
+    const basePath = path.join(process.cwd(), 'data/tournaments', tournamentId);
+
+    const meta = JSON.parse(fs.readFileSync(path.join(basePath, 'meta.json'), 'utf-8'));
+    const entries = JSON.parse(fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'));
+
+    return {
+        props: {
+            tournamentId,
+            year,
+            entries,
+            meta,
+        },
+    };
+};
