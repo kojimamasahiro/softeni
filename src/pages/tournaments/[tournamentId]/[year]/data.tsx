@@ -1,7 +1,8 @@
+import MetaHead from '@/components/MetaHead';
 import fs from 'fs';
-import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import path from 'path';
 
 interface PlayerEntry {
     id: number | string;
@@ -37,16 +38,23 @@ export default function EntryDataPage({ tournamentId, year, entries, meta }: Pro
 
     return (
         <>
+            <MetaHead
+                title={`${meta.name} ${year} 大会データ（JSON形式） - ソフトテニス情報`}
+                description={`${meta.name} ${year} 年の大会出場選手データ（JSON形式）を掲載。非営利目的の活用が可能です。`}
+                url={`https://softeni-pick.com/tournaments/${tournamentId}/${year}/data`}
+                type="article"
+            />
+
             <Head>
-                <title>{meta.name} {year} 出場選手データ | Softeni Pick</title>
-                <meta name="description" content={`${meta.name} ${year} 年の出場選手情報（JSON形式）を掲載しています。`} />
+                <title>{meta.name} {year} 大会データ（JSON形式） | ソフトテニス情報</title>
+                <meta name="description" content={`${meta.name} ${year} 年の大会データ（JSON形式）を掲載しています。`} />
             </Head>
 
             <main className="max-w-3xl mx-auto px-4 py-8">
-                <h1 className="text-2xl font-bold mb-4">{meta.name} {year} 出場選手データ（JSON形式）</h1>
+                <h1 className="text-2xl font-bold mb-4">{meta.name} {year} 大会データ（JSON形式）</h1>
 
                 <div className="text-sm text-gray-700 mb-6">
-                    <p>このページでは、Softeni Pick が独自にまとめた「<strong>{meta.name} {year}</strong>」の参加選手情報（JSON形式）を掲載しています。</p>
+                    <p>このページでは、Softeni Pick が独自にまとめた「<strong>{meta.name} {year}</strong>」の大会データ（JSON形式）を掲載しています。</p>
                     <ul className="list-disc list-inside mt-2">
                         <li>個人利用、非営利目的での使用は自由です。</li>
                         <li>学校・団体名や選手名の表記は一部誤記の可能性があります。</li>

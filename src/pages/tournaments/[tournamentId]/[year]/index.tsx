@@ -22,9 +22,10 @@ interface TournamentYearResultPageProps {
   data: TournamentYearData;
   allPlayers: PlayerInfo[];
   unknownPlayers: Record<string, { firstName: string; lastName: string; team: string }>;
+  hasEntries: boolean;
 }
 
-export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers }: TournamentYearResultPageProps) {
+export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers, hasEntries }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${meta.id}/${year}`;
 
   const teamGroups: Record<string, {
@@ -189,16 +190,19 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 flex flex-wrap gap-4 items-center">
-            <span>{data.location}</span>
-            <span>{data.startDate}〜{data.endDate}</span>
-            <Link
-              href={`/tournaments/${meta.id}/${year}/data`}
-              className="text-blue-600 hover:underline text-sm"
-            >
-              出場選手データ（JSON形式）
-            </Link>
-          </p>
+<p className="text-sm text-gray-600 dark:text-gray-300 mb-6 flex flex-wrap gap-4 items-center">
+  <span>{data.location}</span>
+  <span>{data.startDate}〜{data.endDate}</span>
+  {hasEntries && (
+    <Link
+      href={`/tournaments/${meta.id}/${year}/data`}
+      className="text-blue-600 hover:underline text-sm"
+    >
+      出場選手データ（JSON形式）
+    </Link>
+  )}
+</p>
+
 
           <TeamResults sortedTeams={sortedTeams} />
 
@@ -262,7 +266,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const meta = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8'));
     const data = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'years', `${year}.json`), 'utf-8'));
     const unknownPlayers = JSON.parse(fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'));
-    return { props: { year, meta, data, allPlayers, unknownPlayers } };
+
+    const entriesPath = path.join(basePath, tournamentId, year, 'entries.json');
+    const hasEntries = fs.existsSync(entriesPath);
+
+    return {
+      props: {
+        year,
+        meta,
+        data,
+        allPlayers,
+        unknownPlayers,
+        hasEntries,
+      },
+    };
   } catch (err) {
     console.error(err);
     return { notFound: true };
