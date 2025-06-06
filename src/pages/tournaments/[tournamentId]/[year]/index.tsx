@@ -203,7 +203,6 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
   )}
 </p>
 
-
           <TeamResults sortedTeams={sortedTeams} />
 
           <div className="text-right mt-10 mb-2">

@@ -9,7 +9,6 @@ import Head from 'next/head';
 import path from 'path';
 import { useMemo } from 'react';
 
-
 type Player = {
     firstName: string;
     lastName: string;
@@ -84,7 +83,6 @@ export default function TeamResultsPage({ info, results }: Props) {
         };
     }, [results, info.players]);
 
-
     const calculatePlayerStats = useMemo(() => {
         const stats: Record<string, PlayerStats> = {};
 
@@ -135,7 +133,6 @@ export default function TeamResultsPage({ info, results }: Props) {
             });
 
         });
-
 
         return stats;
     }, [results, info.players]);

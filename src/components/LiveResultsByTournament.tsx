@@ -31,7 +31,6 @@ const Message = ({ text }: { text: string }) => (
   <div className="py-6 text-gray-600 dark:text-gray-300 whitespace-pre-line">{text}</div>
 );
 
-
 export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
   const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
   const startDate = new Date(LIVE_PERIOD.startDate);
@@ -61,7 +60,6 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
       </SectionWrapper>
     );
   }
-
 
   if (error || playersData.length === 0) return null;
 
