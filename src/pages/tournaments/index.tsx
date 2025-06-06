@@ -118,26 +118,29 @@ export const getStaticProps: GetStaticProps = async () => {
 
     for (const tournamentId of tournamentDirs) {
         const metaPath = path.join(basePath, tournamentId, 'meta.json');
-        const yearsPath = path.join(basePath, tournamentId, 'years');
+        const tournamentDir = path.join(basePath, tournamentId);
 
-        if (!fs.existsSync(metaPath) || !fs.existsSync(yearsPath)) continue;
+        if (!fs.existsSync(metaPath)) continue;
 
         const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
-        const yearFiles = fs.readdirSync(yearsPath).filter(f => f.endsWith('.json'));
+        const yearDirs = fs
+            .readdirSync(tournamentDir)
+            .filter((name) =>
+                /^\d{4}$/.test(name) &&
+                fs.statSync(path.join(tournamentDir, name)).isDirectory()
+            );
 
         const years: number[] = [];
 
-        for (const file of yearFiles) {
-            const year = parseInt(file.replace('.json', ''), 10);
-            if (isNaN(year)) continue;
-
+        for (const year of yearDirs) {
+            const dataPath = path.join(tournamentDir, year, 'results.json');
             try {
-                const data = JSON.parse(fs.readFileSync(path.join(yearsPath, file), 'utf-8'));
+                const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
                 if (data.status === 'completed') {
-                    years.push(year);
+                    years.push(parseInt(year, 10));
                 }
             } catch (err) {
-                console.warn(`読み込みエラー: ${tournamentId}/${file}`, err);
+                console.warn(`読み込みエラー: ${tournamentId}/${year}`, err);
             }
         }
 
