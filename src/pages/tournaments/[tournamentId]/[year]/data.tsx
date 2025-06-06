@@ -26,14 +26,30 @@ interface TournamentMeta {
     isMajorTitle?: boolean;
 }
 
+interface MatchResult {
+    round: string;
+    player1: {
+        entryNo: number;
+        won: number;
+        lost: number;
+    };
+    player2: {
+        entryNo: number;
+        won: number;
+        lost: number;
+    };
+    winner: number;
+}
+
 interface Props {
     tournamentId: string;
     year: string;
     entries: PlayerEntry[];
+    matches: MatchResult[] | null;
     meta: TournamentMeta;
 }
 
-export default function EntryDataPage({ tournamentId, year, entries, meta }: Props) {
+export default function EntryDataPage({ tournamentId, year, entries, matches, meta }: Props) {
     const jsonStr = JSON.stringify(entries, null, 2);
 
     return (
@@ -62,10 +78,12 @@ export default function EntryDataPage({ tournamentId, year, entries, meta }: Pro
                     </ul>
                 </div>
 
+
+                <h2 className="text-xl font-semibold mt-10 mb-4">出場選手</h2>
+
                 <pre className="bg-gray-100 p-4 rounded text-sm max-h-[300px] overflow-auto">
                     {jsonStr}
                 </pre>
-
 
                 <button
                     onClick={() => {
@@ -76,6 +94,26 @@ export default function EntryDataPage({ tournamentId, year, entries, meta }: Pro
                 >
                     JSONをコピー
                 </button>
+
+                {matches && (
+                    <>
+                        <h2 className="text-xl font-semibold mt-10 mb-4">対戦結果</h2>
+
+                        <pre className="bg-gray-100 p-4 rounded text-sm max-h-[300px] overflow-auto">
+                            {JSON.stringify(matches, null, 2)}
+                        </pre>
+
+                        <button
+                            onClick={() => {
+                                navigator.clipboard.writeText(JSON.stringify(matches, null, 2));
+                                alert('クリップボードにコピーしました');
+                            }}
+                            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        >
+                            JSONをコピー（対戦結果）
+                        </button>
+                    </>
+                )}
 
                 <div className="mt-6 text-xs text-gray-500 border-t pt-4">
                     <p>
@@ -125,11 +163,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const meta = JSON.parse(fs.readFileSync(path.join(basePath, 'meta.json'), 'utf-8'));
     const entries = JSON.parse(fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'));
 
+    const matchesPath = path.join(basePath, year, 'matches.json');
+    const matches = fs.existsSync(matchesPath)
+        ? JSON.parse(fs.readFileSync(matchesPath, 'utf-8'))
+        : null; // 存在しなければ null
+
     return {
         props: {
             tournamentId,
             year,
             entries,
+            matches,
             meta,
         },
     };
