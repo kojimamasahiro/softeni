@@ -1,3 +1,4 @@
+// src/pages/index.tsx
 import schoolIcon from '@/assets/school.png';
 import tennisIcon from '@/assets/tennis.png';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';

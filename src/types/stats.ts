@@ -1,3 +1,4 @@
+// src/types/stats.ts
 // types/stats.ts
 
 export interface Games {

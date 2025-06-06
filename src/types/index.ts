@@ -1,3 +1,4 @@
+// src/types/index.ts
 export * from '@/types/common';
 export * from '@/types/live';
 export * from '@/types/player';

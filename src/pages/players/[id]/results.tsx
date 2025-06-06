@@ -1,3 +1,4 @@
+// src/pages/players/[id]/results.tsx
 import LiveResults from '@/components/LiveResults';
 import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';

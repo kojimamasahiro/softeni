@@ -1,3 +1,4 @@
+// src/types/player.ts
 import { MajorTitle } from '@/types/title';
 import { Tournament } from '@/types/tournament';
 

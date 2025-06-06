@@ -1,3 +1,4 @@
+// src/types/title.ts
 export interface YearlyResult {
     year: number;
     result: string;

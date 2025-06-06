@@ -1,3 +1,4 @@
+// src/types/tournament.ts
 // types/tournament.ts
 import { MatchResult, Stage } from '@/types/common';
 

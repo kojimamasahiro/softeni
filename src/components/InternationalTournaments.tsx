@@ -1,3 +1,4 @@
+// src/components/InternationalTournaments.tsx
 import ResultsTable from '@/components/ResultsTable';
 import { MatchResult, Stage, Tournament } from '@/types/index';
 

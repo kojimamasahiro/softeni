@@ -1,3 +1,4 @@
+// src/pages/tournaments/[tournamentId]/[year]/data.tsx
 import MetaHead from '@/components/MetaHead';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';

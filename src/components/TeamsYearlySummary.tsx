@@ -1,3 +1,4 @@
+// src/components/TeamsYearlySummary.tsx
 type TeamsYearlySummaryProps = {
   summary: {
     tournaments: number;

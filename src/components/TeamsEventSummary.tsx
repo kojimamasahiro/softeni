@@ -1,3 +1,4 @@
+// src/components/TeamsEventSummary.tsx
 type TeamsEventSummaryProps = {
   overallTable: {
     name: string;

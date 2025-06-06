@@ -1,3 +1,4 @@
+// src/components/MetaHead.tsx
 import Head from 'next/head';
 
 type MetaHeadProps = {
