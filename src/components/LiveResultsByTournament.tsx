@@ -1,3 +1,4 @@
+// src/components/LiveResultsByTournament.tsx
 'use client';
 
 import megaphoneIcon from '@/assets/megaphone.png';

@@ -1,3 +1,4 @@
+// src/pages/players/[id].tsx
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
 import fs from 'fs';

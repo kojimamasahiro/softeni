@@ -1,3 +1,4 @@
+// src/types/live.ts
 export interface LiveData {
     tournament: string;
     updatedAt: string;

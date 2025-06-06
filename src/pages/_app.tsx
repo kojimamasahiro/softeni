@@ -1,3 +1,4 @@
+// src/pages/_app.tsx
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';

@@ -1,3 +1,4 @@
+// src/components/ResultsTable.tsx
 import { MatchResult } from '@/types/index';
 
 export default function ResultsTable({ results, className = '' }: { results: MatchResult[]; className?: string }) {

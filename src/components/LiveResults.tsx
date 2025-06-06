@@ -1,3 +1,4 @@
+// src/components/LiveResults.tsx
 'use client';
 
 import { LIVE_PERIOD, LIVE_PLAYERS } from '@/config/livePeriod';

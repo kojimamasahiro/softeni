@@ -1,3 +1,4 @@
+// src/components/MajorTitles.tsx
 import { MajorTitle, TournamentSummary, TournamentYearData } from '@/types/index';
 
 export default function MajorTitles({ id, tournaments }: { id: string, tournaments: TournamentSummary[] }) {

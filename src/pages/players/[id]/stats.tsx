@@ -1,3 +1,4 @@
+// src/pages/players/[id]/stats.tsx
 // pages/players/[id]/stats.tsx
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

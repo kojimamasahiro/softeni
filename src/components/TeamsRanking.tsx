@@ -1,3 +1,4 @@
+// src/components/TeamsRanking.tsx
 type TeamsRankingProps = {
   statsList: {
     id: string;

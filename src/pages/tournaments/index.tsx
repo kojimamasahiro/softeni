@@ -1,3 +1,4 @@
+// src/pages/tournaments/index.tsx
 // pages/tournaments/index.tsx
 import MetaHead from '@/components/MetaHead';
 import fs from 'fs';

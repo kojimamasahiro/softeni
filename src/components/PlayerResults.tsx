@@ -1,3 +1,4 @@
+// src/components/PlayerResults.tsx
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import ResultsTable from '@/components/ResultsTable';
 import { PlayerData, PlayerInfo, PlayerStats, Tournament } from '@/types/index';

@@ -1,3 +1,4 @@
+// src/types/common.ts
 export interface MatchResult {
     round: string;
     opponent: string;

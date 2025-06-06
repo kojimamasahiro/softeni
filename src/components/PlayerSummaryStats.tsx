@@ -1,3 +1,4 @@
+// src/components/PlayerSummaryStats.tsx
 import { PlayerInfo, PlayerStats } from '@/types/index';
 import Link from 'next/link';
 

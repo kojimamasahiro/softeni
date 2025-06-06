@@ -1,3 +1,4 @@
+// src/pages/teams/2025/[teamId].tsx
 import MetaHead from '@/components/MetaHead';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';

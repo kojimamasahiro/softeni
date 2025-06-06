@@ -1,3 +1,4 @@
+// src/pages/about.tsx
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 
