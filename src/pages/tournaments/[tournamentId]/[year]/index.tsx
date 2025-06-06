@@ -244,11 +244,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths: { params: { tournamentId: string; year: string } }[] = [];
 
   for (const tournamentId of tournamentDirs) {
-    const yearsPath = path.join(basePath, tournamentId, 'years');
-    if (!fs.existsSync(yearsPath)) continue;
-    const yearFiles = fs.readdirSync(yearsPath).filter(file => file.endsWith('.json'));
-    for (const file of yearFiles) {
-      const year = file.replace('.json', '');
+    const tournamentDir = path.join(basePath, tournamentId);
+    const yearDirs = fs
+      .readdirSync(tournamentDir)
+      .filter((name) =>
+        /^\d{4}$/.test(name) &&
+        fs.statSync(path.join(tournamentDir, name)).isDirectory()
+      );
+    for (const year of yearDirs) {
+      const resultsPath = path.join(tournamentDir, year, 'results.json');
+      if (!fs.existsSync(resultsPath)) continue;
       paths.push({ params: { tournamentId, year } });
     }
   }
@@ -264,7 +269,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     const meta = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8'));
-    const data = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'years', `${year}.json`), 'utf-8'));
+    const data = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, year, 'results.json'), 'utf-8'));
     const unknownPlayers = JSON.parse(fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'));
 
     const entriesPath = path.join(basePath, tournamentId, year, 'entries.json');
