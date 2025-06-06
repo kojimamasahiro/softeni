@@ -79,7 +79,6 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
                     </ul>
                 </div>
 
-
                 <h2 className="text-xl font-semibold mt-10 mb-4">出場選手</h2>
 
                 <pre className="bg-gray-100 p-4 rounded text-sm max-h-[300px] overflow-auto">

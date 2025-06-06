@@ -9,7 +9,6 @@ import Head from 'next/head';
 import path from 'path';
 import { useMemo } from 'react';
 
-
 type Player = {
     firstName: string;
     lastName: string;
@@ -98,7 +97,6 @@ export default function TeamResultsPage({ year, info, results }: Props) {
                     if (!player) return;
                     initializePlayerStats(pid, player);
 
-
                     if (summry.finalRound) {
                         stats[pid].winsByRound[summry.finalRound] = (stats[pid].winsByRound[summry.finalRound] || 0) + 1;
                     }
@@ -126,7 +124,6 @@ export default function TeamResultsPage({ year, info, results }: Props) {
             });
 
         });
-
 
         return stats;
     }, [results, info.players]);
@@ -245,7 +242,6 @@ export default function TeamResultsPage({ year, info, results }: Props) {
         </>
     );
 }
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
