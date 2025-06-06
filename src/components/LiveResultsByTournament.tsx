@@ -5,7 +5,6 @@ import megaphoneIcon from '@/assets/megaphone.png';
 import { LIVE_PERIOD } from '@/config/livePeriod';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData, PlayerInfo } from '@/types/index';
-import Image from 'next/image';
 import Link from 'next/link';
 import useSWR from 'swr';
 
@@ -22,7 +21,8 @@ const getFormattedDateTime = (date: Date) => {
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <section className="mb-8 px-4">
     <h2 className="text-xl flex items-center font-semibold mb-4 text-gray-800 dark:text-white">
-      <Image src={megaphoneIcon} alt="お知らせ" width={24} height={24} /> 大会速報</h2>
+      大会速報
+    </h2>
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">{children}</div>
   </section>
 );
