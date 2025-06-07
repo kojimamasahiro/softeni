@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>ラウンドロビン試合管理</title>
+    <link rel="stylesheet" href="../tournament/styles.css">
+</head>
+<body>
+    <h1>ラウンドロビン試合管理</h1>
+    <button onclick="onClickGenerate()">出力</button>
+    <div id="matches"></div>
+    <h2>JSON出力</h2>
+    <textarea id="jsonOutput" style="height: 800px;"></textarea>
+
+    <script src="../tournament/initialPlayer.js"></script>
+    <script>
+        const players = initialPlayers.filter(p => p.id !== "bye");
+        const matches = [];
+        for (let i = 0; i < players.length; i++) {
+            for (let j = i + 1; j < players.length; j++) {
+                matches.push({
+                    p1: players[i],
+                    p2: players[j],
+                    scores: { p1: null, p2: null },
+                    winner: null,
+                });
+            }
+        }
+
+        function getWinnerName(match) {
+            if (!match.winner) return "未定";
+            if (match.winner === match.p1.id) return match.p1.name;
+            if (match.winner === match.p2.id) return match.p2.name;
+            return "未定";
+        }
+
+        function updateScoreButtons(matchIndex) {
+            const match = matches[matchIndex];
+            ["p1", "p2"].forEach(player => {
+                const selectedScore = match.scores[player];
+                document.querySelectorAll(`.score-button[data-match="${matchIndex}"][data-player="${player}"]`).forEach(btn => {
+                    const score = Number(btn.dataset.score);
+                    btn.classList.toggle("selected", score === selectedScore);
+                });
+            });
+        }
+
+        function setScore(matchIndex, player, score) {
+            const match = matches[matchIndex];
+            match.scores[player] = score;
+            if (match.scores.p1 !== null && match.scores.p2 !== null) {
+                if (match.scores.p1 > match.scores.p2) {
+                    match.winner = match.p1.id;
+                } else if (match.scores.p2 > match.scores.p1) {
+                    match.winner = match.p2.id;
+                } else {
+                    match.winner = null;
+                }
+            }
+            document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
+            updateScoreButtons(matchIndex);
+            updateJsonOutput();
+        }
+
+        function displayMatches() {
+            const matchesDiv = document.getElementById("matches");
+            matchesDiv.innerHTML = "";
+            matches.forEach((match, i) => {
+                const div = document.createElement("div");
+                div.className = "match-result";
+                div.innerHTML = `
+<strong>試合 ${i + 1}</strong><br/>
+<div class="score-container">
+  <div class="player-score-row">
+    <span class="player-name">${match.p1.id}: ${match.p1.name}</span>
+    <div class="score-set">
+      ${[0,1,2,3,4,5].map(s => `<button class="score-button" data-match="${i}" data-player="p1" data-score="${s}">${s}</button>`).join("")}
+    </div>
+  </div>
+  <div class="vs-text">vs</div>
+  <div class="player-score-row">
+    <span class="player-name">${match.p2.id}: ${match.p2.name}</span>
+    <div class="score-set">
+      ${[0,1,2,3,4,5].map(s => `<button class="score-button" data-match="${i}" data-player="p2" data-score="${s}">${s}</button>`).join("")}
+    </div>
+  </div>
+</div>
+<div>勝者：<span id="winner-${i}" class="winner">${getWinnerName(match)}</span></div>
+`;
+                matchesDiv.appendChild(div);
+            });
+            document.querySelectorAll(".score-button").forEach(btn => {
+                btn.addEventListener("click", e => {
+                    const matchIndex = Number(e.target.dataset.match);
+                    const player = e.target.dataset.player;
+                    const score = Number(e.target.dataset.score);
+                    setScore(matchIndex, player, score);
+                });
+            });
+            matches.forEach((_, i) => updateScoreButtons(i));
+            updateJsonOutput();
+        }
+
+        function onClickGenerate() {
+            updateJsonOutput();
+        }
+
+        function updateJsonOutput() {
+            document.getElementById("jsonOutput").value = JSON.stringify(matches, null, 2);
+        }
+
+        displayMatches();
+    </script>
+</body>
+</html>
