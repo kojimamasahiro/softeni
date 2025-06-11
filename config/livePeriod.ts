@@ -1,8 +1,8 @@
 // config/livePeriod.ts
 
 export const LIVE_PERIOD = {
-  startDate: '2025-05-17T09:00:00+09:00',
-  endDate: '2025-05-17T23:00:00+09:00',
+  startDate: '2025-06-14T09:00:00+09:00',
+  endDate: '2025-06-15T18:00:00+09:00',
 };
 
 export const LIVE_PLAYERS = [
@@ -19,7 +19,6 @@ export const LIVE_PLAYERS = [
   "maruyama-kaito",
   "kataoka-aki",
   "nagae-koichi",
-  "ando-yusaku",
   "kawasaki-kohei",
   "uchida-riku",
 ]
