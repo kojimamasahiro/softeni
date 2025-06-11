@@ -1,0 +1,95 @@
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .match-result {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 12px;
+        border-radius: 5px;
+    }
+
+    .score-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin: 5px 0;
+    }
+
+    .player-score-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .player-name {
+        width: 200px;
+        font-weight: bold;
+    }
+
+    .score-set {
+        display: flex;
+        gap: 4px;
+    }
+
+    .vs-text {
+        font-weight: bold;
+        margin: 4px 0;
+        align-self: center;
+    }
+
+    .score-button {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+
+    .score-button.selected {
+        background: #4caf50;
+        color: white;
+        font-weight: bold;
+    }
+
+    .winner {
+        color: #d32f2f;
+        font-weight: bold;
+    }
+
+    #nextRoundBtn {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    h2 {
+        margin-top: 40px;
+    }
+
+    #jsonOutput {
+        width: 100%;
+        height: 200px;
+        margin-top: 30px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+
+    .retire-button {
+        background-color: #f99;
+        border: 1px solid #c33;
+        color: white;
+        margin-left: 4px;
+        padding: 2px 6px;
+        cursor: pointer;
+    }
+
+    .retire-button:hover {
+        background-color: #d33;
+    }
