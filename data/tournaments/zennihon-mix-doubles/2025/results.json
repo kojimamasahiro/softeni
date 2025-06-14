@@ -1,12 +1,1156 @@
 {
-  "status": "scheduled",
+  "status": "completed",
   "scheduledDate": "(6/14)",
   "startDate": "2025-06-14",
   "endDate": "2025-06-15",
-  "location": "大阪府",
+  "location": "広島県",
   "url": "",
-  "results": [
-  ],
+  "results": [],
   "matches": [
-  ]
+  {
+    "round": "1回戦",
+    "pair": [
+      "原田_佳奈_岩国クラブ",
+      "玉水_康貴_東ソー南陽"
+    ],
+    "opponents": [
+      {
+        "lastName": "稲田",
+        "firstName": "翔太",
+        "team": "中部電力愛知",
+        "playerId": null,
+        "tempId": "稲田_翔太_中部電力愛知"
+      },
+      {
+        "lastName": "稲葉",
+        "firstName": "有紗",
+        "team": "長野市協会",
+        "playerId": null,
+        "tempId": "稲葉_有紗_長野市協会"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "2",
+      "lost": "4"
+    },
+    "entryNo": 5,
+    "name": "原田佳奈（岩国クラブ）・玉水康貴（東ソー南陽）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "稲田_翔太_中部電力愛知",
+      "稲葉_有紗_長野市協会"
+    ],
+    "opponents": [
+      {
+        "lastName": "原田",
+        "firstName": "佳奈",
+        "team": "岩国クラブ",
+        "playerId": null,
+        "tempId": "原田_佳奈_岩国クラブ"
+      },
+      {
+        "lastName": "玉水",
+        "firstName": "康貴",
+        "team": "東ソー南陽",
+        "playerId": null,
+        "tempId": "玉水_康貴_東ソー南陽"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "2"
+    },
+    "entryNo": 6,
+    "name": "稲田翔太（中部電力愛知）・稲葉有紗（長野市協会）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "山口_大志_マツダ",
+      "大江_聡美_広島中央クラブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "松本",
+        "firstName": "翔太",
+        "team": "早稲田大学",
+        "playerId": null,
+        "tempId": "松本_翔太_早稲田大学"
+      },
+      {
+        "lastName": "小川",
+        "firstName": "木乃花",
+        "team": "ダンロップ",
+        "playerId": null,
+        "tempId": "小川_木乃花_ダンロップ"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 8,
+    "name": "山口大志（マツダ）・大江聡美（広島中央クラブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "松本_翔太_早稲田大学",
+      "小川_木乃花_ダンロップ"
+    ],
+    "opponents": [
+      {
+        "lastName": "山口",
+        "firstName": "大志",
+        "team": "マツダ",
+        "playerId": null,
+        "tempId": "山口_大志_マツダ"
+      },
+      {
+        "lastName": "大江",
+        "firstName": "聡美",
+        "team": "広島中央クラブ",
+        "playerId": null,
+        "tempId": "大江_聡美_広島中央クラブ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 9,
+    "name": "松本翔太（早稲田大学）・小川木乃花（ダンロップ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "森本_輝_TenitifO",
+      "又江_凜_東洋観光"
+    ],
+    "opponents": [
+      {
+        "lastName": "辻花",
+        "firstName": "陸",
+        "team": "明治大学",
+        "playerId": null,
+        "tempId": "辻花_陸_明治大学"
+      },
+      {
+        "lastName": "縄田",
+        "firstName": "愛実",
+        "team": "ダンロップ",
+        "playerId": null,
+        "tempId": "縄田_愛実_ダンロップ"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "3",
+      "lost": "4"
+    },
+    "entryNo": 20,
+    "name": "森本輝（TenitifO）・又江凜（東洋観光）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "辻花_陸_明治大学",
+      "縄田_愛実_ダンロップ"
+    ],
+    "opponents": [
+      {
+        "lastName": "森本",
+        "firstName": "輝",
+        "team": "TenitifO",
+        "playerId": null,
+        "tempId": "森本_輝_TenitifO"
+      },
+      {
+        "lastName": "又江",
+        "firstName": "凜",
+        "team": "東洋観光",
+        "playerId": null,
+        "tempId": "又江_凜_東洋観光"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "3"
+    },
+    "entryNo": 21,
+    "name": "辻花陸（明治大学）・縄田愛実（ダンロップ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "佐藤_心美_早稲田大学",
+      "野本_凌生_法政大学"
+    ],
+    "opponents": [
+      {
+        "lastName": "星野",
+        "firstName": "弾",
+        "team": "ルーセント",
+        "playerId": null,
+        "tempId": "星野_弾_ルーセント"
+      },
+      {
+        "lastName": "田代",
+        "firstName": "愛花",
+        "team": "ルーセント",
+        "playerId": null,
+        "tempId": "田代_愛花_ルーセント"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 23,
+    "name": "佐藤心美（早稲田大学）・野本凌生（法政大学）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "星野_弾_ルーセント",
+      "田代_愛花_ルーセント"
+    ],
+    "opponents": [
+      {
+        "lastName": "佐藤",
+        "firstName": "心美",
+        "team": "早稲田大学",
+        "playerId": null,
+        "tempId": "佐藤_心美_早稲田大学"
+      },
+      {
+        "lastName": "野本",
+        "firstName": "凌生",
+        "team": "法政大学",
+        "playerId": null,
+        "tempId": "野本_凌生_法政大学"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 24,
+    "name": "星野弾（ルーセント）・田代愛花（ルーセント）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "衞藤_宥斗_JX金属製錬佐賀関",
+      "藤澤_詩乃_JX金属製錬佐賀関"
+    ],
+    "opponents": [
+      {
+        "lastName": "岡野",
+        "firstName": "若奈",
+        "team": "東芝姫路",
+        "playerId": null,
+        "tempId": "岡野_若奈_東芝姫路"
+      },
+      {
+        "lastName": "宇都宮",
+        "firstName": "洋太",
+        "team": "UBE",
+        "playerId": null,
+        "tempId": "宇都宮_洋太_UBE"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "0",
+      "lost": "4"
+    },
+    "entryNo": 26,
+    "name": "衞藤宥斗（JX金属製錬佐賀関）・藤澤詩乃（JX金属製錬佐賀関）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "岡野_若奈_東芝姫路",
+      "宇都宮_洋太_UBE"
+    ],
+    "opponents": [
+      {
+        "lastName": "衞藤",
+        "firstName": "宥斗",
+        "team": "JX金属製錬佐賀関",
+        "playerId": null,
+        "tempId": "衞藤_宥斗_JX金属製錬佐賀関"
+      },
+      {
+        "lastName": "藤澤",
+        "firstName": "詩乃",
+        "team": "JX金属製錬佐賀関",
+        "playerId": null,
+        "tempId": "藤澤_詩乃_JX金属製錬佐賀関"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "0"
+    },
+    "entryNo": 27,
+    "name": "岡野若奈（東芝姫路）・宇都宮洋太（UBE）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "高橋_彩耶_上尾ＩＭＵＡ",
+      "髙橋_和希_AGEOCLUB"
+    ],
+    "opponents": [
+      {
+        "lastName": "金山",
+        "firstName": "勇波",
+        "team": "ワタキューセイモア",
+        "playerId": null,
+        "tempId": "金山_勇波_ワタキューセイモア"
+      },
+      {
+        "lastName": "井田",
+        "firstName": "まなか",
+        "team": "ワタキューセイモア",
+        "playerId": null,
+        "tempId": "井田_まなか_ワタキューセイモア"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 29,
+    "name": "高橋彩耶（上尾ＩＭＵＡ）・髙橋和希（AGEOCLUB）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "金山_勇波_ワタキューセイモア",
+      "井田_まなか_ワタキューセイモア"
+    ],
+    "opponents": [
+      {
+        "lastName": "高橋",
+        "firstName": "彩耶",
+        "team": "上尾ＩＭＵＡ",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "高橋_彩耶_上尾ＩＭＵＡ"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "和希",
+        "team": "AGEOCLUB",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "髙橋_和希_AGEOCLUB"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 30,
+    "name": "金山勇波（ワタキューセイモア）・井田まなか（ワタキューセイモア）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "吉田_一貴_上尾高校OB",
+      "三浦_菜留美_川口市役所"
+    ],
+    "opponents": [
+      {
+        "lastName": "近藤",
+        "firstName": "好貴",
+        "team": "久留米クラブ",
+        "playerId": null,
+        "tempId": "近藤_好貴_久留米クラブ"
+      },
+      {
+        "lastName": "近藤",
+        "firstName": "舞子",
+        "team": "久留米クラブ",
+        "playerId": null,
+        "tempId": "近藤_舞子_久留米クラブ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "3"
+    },
+    "entryNo": 38,
+    "name": "吉田一貴（上尾高校OB）・三浦菜留美（川口市役所）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "近藤_好貴_久留米クラブ",
+      "近藤_舞子_久留米クラブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "吉田",
+        "firstName": "一貴",
+        "team": "上尾高校OB",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "吉田_一貴_上尾高校OB"
+      },
+      {
+        "lastName": "三浦",
+        "firstName": "菜留美",
+        "team": "川口市役所",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "三浦_菜留美_川口市役所"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "3",
+      "lost": "4"
+    },
+    "entryNo": 39,
+    "name": "近藤好貴（久留米クラブ）・近藤舞子（久留米クラブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "原_華菜子_東洋観光",
+      "原_誠弥_原誠弥"
+    ],
+    "opponents": [
+      {
+        "lastName": "藤井",
+        "firstName": "一貴",
+        "team": "ルーセント大阪",
+        "playerId": null,
+        "tempId": "藤井_一貴_ルーセント大阪"
+      },
+      {
+        "lastName": "松本",
+        "firstName": "一夏",
+        "team": "命友倶楽部",
+        "playerId": null,
+        "tempId": "松本_一夏_命友倶楽部"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "3",
+      "lost": "4"
+    },
+    "entryNo": 41,
+    "name": "原華菜子（東洋観光）・原誠弥（原誠弥）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "藤井_一貴_ルーセント大阪",
+      "松本_一夏_命友倶楽部"
+    ],
+    "opponents": [
+      {
+        "lastName": "原",
+        "firstName": "華菜子",
+        "team": "東洋観光",
+        "playerId": null,
+        "tempId": "原_華菜子_東洋観光"
+      },
+      {
+        "lastName": "原",
+        "firstName": "誠弥",
+        "team": "原誠弥",
+        "playerId": null,
+        "tempId": "原_誠弥_原誠弥"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "3"
+    },
+    "entryNo": 42,
+    "name": "藤井一貴（ルーセント大阪）・松本一夏（命友倶楽部）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "吉田_実桜_東芝姫路",
+      "屋根本_翔_東ソー南陽"
+    ],
+    "opponents": [
+      {
+        "lastName": "岡本",
+        "firstName": "崇杜",
+        "team": "熊本学園大学",
+        "playerId": null,
+        "tempId": "岡本_崇杜_熊本学園大学"
+      },
+      {
+        "lastName": "髙濵",
+        "firstName": "美厘",
+        "team": "ダンロップ",
+        "playerId": null,
+        "tempId": "髙濵_美厘_ダンロップ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "2"
+    },
+    "entryNo": 59,
+    "name": "吉田実桜（東芝姫路）・屋根本翔（東ソー南陽）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "岡本_崇杜_熊本学園大学",
+      "髙濵_美厘_ダンロップ"
+    ],
+    "opponents": [
+      {
+        "lastName": "吉田",
+        "firstName": "実桜",
+        "team": "東芝姫路",
+        "playerId": null,
+        "tempId": "吉田_実桜_東芝姫路"
+      },
+      {
+        "lastName": "屋根本",
+        "firstName": "翔",
+        "team": "東ソー南陽",
+        "playerId": null,
+        "tempId": "屋根本_翔_東ソー南陽"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "2",
+      "lost": "4"
+    },
+    "entryNo": 60,
+    "name": "岡本崇杜（熊本学園大学）・髙濵美厘（ダンロップ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "猪古_雛里_菊池郡市協会",
+      "長田_恵桃_菊池郡市協会"
+    ],
+    "opponents": [
+      {
+        "lastName": "酒井",
+        "firstName": "光生",
+        "team": "プロテリアル",
+        "playerId": null,
+        "tempId": "酒井_光生_プロテリアル"
+      },
+      {
+        "lastName": "海老根",
+        "firstName": "香澄",
+        "team": "芳賀クラブ",
+        "playerId": null,
+        "tempId": "海老根_香澄_芳賀クラブ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "2"
+    },
+    "entryNo": 62,
+    "name": "猪古雛里（菊池郡市協会）・長田恵桃（菊池郡市協会）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "酒井_光生_プロテリアル",
+      "海老根_香澄_芳賀クラブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "猪古",
+        "firstName": "雛里",
+        "team": "菊池郡市協会",
+        "playerId": null,
+        "tempId": "猪古_雛里_菊池郡市協会"
+      },
+      {
+        "lastName": "長田",
+        "firstName": "恵桃",
+        "team": "菊池郡市協会",
+        "playerId": null,
+        "tempId": "長田_恵桃_菊池郡市協会"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "2",
+      "lost": "4"
+    },
+    "entryNo": 63,
+    "name": "酒井光生（プロテリアル）・海老根香澄（芳賀クラブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "中村_悠峰_明治大学",
+      "前本_真弥_ダンロップ"
+    ],
+    "opponents": [
+      {
+        "lastName": "瀬口",
+        "firstName": "翔太",
+        "team": "松葉クラブ",
+        "playerId": null,
+        "tempId": "瀬口_翔太_松葉クラブ"
+      },
+      {
+        "lastName": "須原",
+        "firstName": "瑠愛",
+        "team": "松葉クラブ",
+        "playerId": null,
+        "tempId": "須原_瑠愛_松葉クラブ"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "2",
+      "lost": "4"
+    },
+    "entryNo": 77,
+    "name": "中村悠峰（明治大学）・前本真弥（ダンロップ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "瀬口_翔太_松葉クラブ",
+      "須原_瑠愛_松葉クラブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "中村",
+        "firstName": "悠峰",
+        "team": "明治大学",
+        "playerId": null,
+        "tempId": "中村_悠峰_明治大学"
+      },
+      {
+        "lastName": "前本",
+        "firstName": "真弥",
+        "team": "ダンロップ",
+        "playerId": null,
+        "tempId": "前本_真弥_ダンロップ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "2"
+    },
+    "entryNo": 78,
+    "name": "瀬口翔太（松葉クラブ）・須原瑠愛（松葉クラブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "江口_咲礼紗_関西大学",
+      "清水_駿_同志社大学"
+    ],
+    "opponents": [
+      {
+        "lastName": "鈴木",
+        "firstName": "愛香",
+        "team": "ヨネックス新潟",
+        "playerId": null,
+        "tempId": "鈴木_愛香_ヨネックス新潟"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "大和",
+        "team": "アキム",
+        "playerId": null,
+        "tempId": "佐藤_大和_アキム"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "2",
+      "lost": "4"
+    },
+    "entryNo": 89,
+    "name": "江口咲礼紗（関西大学）・清水駿（同志社大学）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "鈴木_愛香_ヨネックス新潟",
+      "佐藤_大和_アキム"
+    ],
+    "opponents": [
+      {
+        "lastName": "江口",
+        "firstName": "咲礼紗",
+        "team": "関西大学",
+        "playerId": null,
+        "tempId": "江口_咲礼紗_関西大学"
+      },
+      {
+        "lastName": "清水",
+        "firstName": "駿",
+        "team": "同志社大学",
+        "playerId": null,
+        "tempId": "清水_駿_同志社大学"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "2"
+    },
+    "entryNo": 90,
+    "name": "鈴木愛香（ヨネックス新潟）・佐藤大和（アキム）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "河村_颯希_國學院大学",
+      "河村_希美_ルーセント"
+    ],
+    "opponents": [
+      {
+        "lastName": "濱田",
+        "firstName": "昌平",
+        "team": "TenitifO",
+        "playerId": null,
+        "tempId": "濱田_昌平_TenitifO"
+      },
+      {
+        "lastName": "高橋",
+        "firstName": "星煌",
+        "team": "どんぐり北広島",
+        "playerId": null,
+        "tempId": "高橋_星煌_どんぐり北広島"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 92,
+    "name": "河村颯希（國學院大学）・河村希美（ルーセント）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "濱田_昌平_TenitifO",
+      "高橋_星煌_どんぐり北広島"
+    ],
+    "opponents": [
+      {
+        "lastName": "河村",
+        "firstName": "颯希",
+        "team": "國學院大学",
+        "playerId": null,
+        "tempId": "河村_颯希_國學院大学"
+      },
+      {
+        "lastName": "河村",
+        "firstName": "希美",
+        "team": "ルーセント",
+        "playerId": null,
+        "tempId": "河村_希美_ルーセント"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 93,
+    "name": "濱田昌平（TenitifO）・高橋星煌（どんぐり北広島）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "一宮_大和_早稲田大学",
+      "小松_茉代_ダンロップ"
+    ],
+    "opponents": [
+      {
+        "lastName": "片岡",
+        "firstName": "望",
+        "team": "東洋観光",
+        "playerId": null,
+        "tempId": "片岡_望_東洋観光"
+      },
+      {
+        "lastName": "岩永",
+        "firstName": "優真",
+        "team": "マツダ",
+        "playerId": null,
+        "tempId": "岩永_優真_マツダ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 98,
+    "name": "一宮大和（早稲田大学）・小松茉代（ダンロップ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "片岡_望_東洋観光",
+      "岩永_優真_マツダ"
+    ],
+    "opponents": [
+      {
+        "lastName": "一宮",
+        "firstName": "大和",
+        "team": "早稲田大学",
+        "playerId": null,
+        "tempId": "一宮_大和_早稲田大学"
+      },
+      {
+        "lastName": "小松",
+        "firstName": "茉代",
+        "team": "ダンロップ",
+        "playerId": null,
+        "tempId": "小松_茉代_ダンロップ"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 99,
+    "name": "片岡望（東洋観光）・岩永優真（マツダ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "上原_健斗_加古川クラブ",
+      "渋谷_優佳_高砂クラブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "丸山",
+        "firstName": "章",
+        "team": "ヨシザワ",
+        "playerId": null,
+        "tempId": "丸山_章_ヨシザワ"
+      },
+      {
+        "lastName": "木原",
+        "firstName": "恵菜",
+        "team": "ナガセケンコー",
+        "playerId": null,
+        "tempId": "木原_恵菜_ナガセケンコー"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "0",
+      "lost": "4"
+    },
+    "entryNo": 107,
+    "name": "上原健斗（加古川クラブ）・渋谷優佳（高砂クラブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "丸山_章_ヨシザワ",
+      "木原_恵菜_ナガセケンコー"
+    ],
+    "opponents": [
+      {
+        "lastName": "上原",
+        "firstName": "健斗",
+        "team": "加古川クラブ",
+        "playerId": null,
+        "tempId": "上原_健斗_加古川クラブ"
+      },
+      {
+        "lastName": "渋谷",
+        "firstName": "優佳",
+        "team": "高砂クラブ",
+        "playerId": null,
+        "tempId": "渋谷_優佳_高砂クラブ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "0"
+    },
+    "entryNo": 108,
+    "name": "丸山章（ヨシザワ）・木原恵菜（ナガセケンコー）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "小見_樹_碓氷安中クラブ",
+      "佐藤_あいり_ダンロップ"
+    ],
+    "opponents": [
+      {
+        "lastName": "山田",
+        "firstName": "葉七",
+        "team": "岩国クラブ",
+        "playerId": null,
+        "tempId": "山田_葉七_岩国クラブ"
+      },
+      {
+        "lastName": "山下",
+        "firstName": "祥吾",
+        "team": "東ソー南陽",
+        "playerId": null,
+        "tempId": "山下_祥吾_東ソー南陽"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "2",
+      "lost": "4"
+    },
+    "entryNo": 113,
+    "name": "小見樹（碓氷安中クラブ）・佐藤あいり（ダンロップ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "山田_葉七_岩国クラブ",
+      "山下_祥吾_東ソー南陽"
+    ],
+    "opponents": [
+      {
+        "lastName": "小見",
+        "firstName": "樹",
+        "team": "碓氷安中クラブ",
+        "playerId": null,
+        "tempId": "小見_樹_碓氷安中クラブ"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "あいり",
+        "team": "ダンロップ",
+        "playerId": null,
+        "tempId": "佐藤_あいり_ダンロップ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "2"
+    },
+    "entryNo": 114,
+    "name": "山田葉七（岩国クラブ）・山下祥吾（東ソー南陽）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "秋葉_はるか_東洋観光",
+      "吉川_恵大_マツダ"
+    ],
+    "opponents": [
+      {
+        "lastName": "大西",
+        "firstName": "誉",
+        "team": "ルーセント大阪",
+        "playerId": null,
+        "tempId": "大西_誉_ルーセント大阪"
+      },
+      {
+        "lastName": "根岸",
+        "firstName": "桃亜奈",
+        "team": "ゴーセン",
+        "playerId": null,
+        "tempId": "根岸_桃亜奈_ゴーセン"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 116,
+    "name": "秋葉はるか（東洋観光）・吉川恵大（マツダ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "大西_誉_ルーセント大阪",
+      "根岸_桃亜奈_ゴーセン"
+    ],
+    "opponents": [
+      {
+        "lastName": "秋葉",
+        "firstName": "はるか",
+        "team": "東洋観光",
+        "playerId": null,
+        "tempId": "秋葉_はるか_東洋観光"
+      },
+      {
+        "lastName": "吉川",
+        "firstName": "恵大",
+        "team": "マツダ",
+        "playerId": null,
+        "tempId": "吉川_恵大_マツダ"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 117,
+    "name": "大西誉（ルーセント大阪）・根岸桃亜奈（ゴーセン）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "西村_優那_神戸親和大学",
+      "島谷_楽空_マツダ"
+    ],
+    "opponents": [
+      {
+        "lastName": "石黒",
+        "firstName": "湧己",
+        "team": "KEISPORTS",
+        "playerId": null,
+        "tempId": "石黒_湧己_KEISPORTS"
+      },
+      {
+        "lastName": "林",
+        "firstName": "百香",
+        "team": "フワティブ",
+        "playerId": null,
+        "tempId": "林_百香_フワティブ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 128,
+    "name": "西村優那（神戸親和大学）・島谷楽空（マツダ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "石黒_湧己_KEISPORTS",
+      "林_百香_フワティブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "西村",
+        "firstName": "優那",
+        "team": "神戸親和大学",
+        "playerId": null,
+        "tempId": "西村_優那_神戸親和大学"
+      },
+      {
+        "lastName": "島谷",
+        "firstName": "楽空",
+        "team": "マツダ",
+        "playerId": null,
+        "tempId": "島谷_楽空_マツダ"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 129,
+    "name": "石黒湧己（KEISPORTS）・林百香（フワティブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "上村_将也_皆野クラブ",
+      "坂口_真生_皆野クラブ"
+    ],
+    "opponents": [
+      {
+        "lastName": "石井",
+        "firstName": "佑一",
+        "team": "ENEOS",
+        "playerId": null,
+        "tempId": "石井_佑一_ENEOS"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "萌衣紗",
+        "team": "ENEOS",
+        "playerId": null,
+        "tempId": "山本_萌衣紗_ENEOS"
+      }
+    ],
+    "result": "lose",
+    "games": {
+      "won": "1",
+      "lost": "4"
+    },
+    "entryNo": 131,
+    "name": "上村将也（皆野クラブ）・坂口真生（皆野クラブ）"
+  },
+  {
+    "round": "1回戦",
+    "pair": [
+      "石井_佑一_ENEOS",
+      "山本_萌衣紗_ENEOS"
+    ],
+    "opponents": [
+      {
+        "lastName": "上村",
+        "firstName": "将也",
+        "team": "皆野クラブ",
+        "playerId": null,
+        "tempId": "上村_将也_皆野クラブ"
+      },
+      {
+        "lastName": "坂口",
+        "firstName": "真生",
+        "team": "皆野クラブ",
+        "playerId": null,
+        "tempId": "坂口_真生_皆野クラブ"
+      }
+    ],
+    "result": "win",
+    "games": {
+      "won": "4",
+      "lost": "1"
+    },
+    "entryNo": 132,
+    "name": "石井佑一（ENEOS）・山本萌衣紗（ENEOS）"
+  }
+]
+
 }
