@@ -31,6 +31,11 @@
 
     <script src="initialPlayer.js"></script>
     <script>
+        // 初期スコア
+        const initScore = 4;
+        const initScore1 = initScore;
+        const initScore2 = initScore;
+
         // パッキン用ダミーペア
         const byePlayer = { id: "bye", name: "1回戦免除", information: [] };
 
@@ -80,8 +85,16 @@
                 let selectedScore = match.scores[player];
 
                 if (selectedScore === null || selectedScore === undefined) {
-                    selectedScore = 4;
+                    player === "p1"
+                        ? selectedScore = initScore1
+                        :  // p2の場合は初期スコアを設定
+                        player === "p2"
+                        ? selectedScore = initScore2
+                        :
+                        selectedScore = initScore
                     match.scores[player] = selectedScore;
+
+                    // setScore(matchIndex, player, selectedScore);
                 }
 
                 const scoreButtons = document.querySelectorAll(
@@ -212,7 +225,7 @@
                         match[player].id = "bye";
                         match[player].name = "リタイア";
                         match.scores[player] = 0;
-                        match.scores[opponent] = 5;
+                        match.scores[opponent] = initScore;
                         match.winner = match[opponent].id;
 
                         document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
