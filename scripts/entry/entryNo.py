@@ -1,48 +1,43 @@
 import json
 
-# JSONファイルの読み込み
+# JSON読み込み
 with open("matches.json", "r", encoding="utf-8") as f:
     a_list = json.load(f)
 
 with open("entries.json", "r", encoding="utf-8") as f:
     b_list = json.load(f)
 
-# entryNoとnameを追加する処理
+# tempId を生成する関数
+def build_temp_id(info):
+    return f"{info.get('lastName', '')}_{info.get('firstName', '')}_{info.get('team', '')}"
+
+# name生成
+def generate_name(infos):
+    if len(infos) == 1:
+        i = infos[0]
+        return f"{i.get('lastName', '')}{i.get('firstName', '')}（{i.get('team', '')}）"
+    return "・".join(f"{i.get('lastName', '')}{i.get('firstName', '')}（{i.get('team', '')}）" for i in infos)
+
+# entryNo と name を付ける処理
 def attach_entry_numbers(a_list, b_list):
     for a_item in a_list:
+        pair_ids = set(a_item.get("pair", []))
         for b_item in b_list:
-            b_ids = set()
-            for info in b_item.get("information", []):
-                if info.get("playerId") is not None:
-                    b_ids.add(info["playerId"])
-                if info.get("tempId") is not None:
-                    b_ids.add(info["tempId"])
-            # 一致するIDがpair内に含まれているかチェック
-            if any(p in b_ids for p in a_item.get("pair", [])):
-                a_item["entryNo"] = b_item["id"]
+            b_temp_ids = {build_temp_id(info) for info in b_item.get("information", [])}
 
-                # nameを生成（informationが1人の場合）
-                infos = b_item.get("information", [])
-                if len(infos) == 1:
-                    info = infos[0]
-                    last = info.get("lastName", "")
-                    first = info.get("firstName", "")
-                    team = info.get("team", "")
-                    a_item["name"] = f"{last}{first}（{team}）"
-                else:
-                    # 複数人の場合は・でつなぐ
-                    names = [f"{i.get('lastName', '')}{i.get('firstName', '')}（{i.get('team', '')}）" for i in infos]
-                    a_item["name"] = "・".join(names)
-
-                break  # 一致が見つかったら次のa_itemへ
+            # pair 内の tempId がすべて含まれていればマッチ
+            if pair_ids.issubset(b_temp_ids):
+                a_item["entryNo"] = b_item.get("entryNo", b_item.get("id"))
+                a_item["name"] = generate_name(b_item.get("information", []))
+                break  # マッチしたら次へ
     return a_list
 
 # 実行
-updated_a = attach_entry_numbers(a_list, b_list)
+updated = attach_entry_numbers(a_list, b_list)
 
-# 出力
+# 保存
 with open("matches_with_entryNo.json", "w", encoding="utf-8") as f:
-    json.dump(updated_a, f, ensure_ascii=False, indent=2)
+    json.dump(updated, f, ensure_ascii=False, indent=2)
 
-# 確認用出力
-print(json.dumps(updated_a, ensure_ascii=False, indent=2))
+# 確認
+print(json.dumps(updated, ensure_ascii=False, indent=2))
