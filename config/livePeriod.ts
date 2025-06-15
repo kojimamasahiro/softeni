@@ -2,7 +2,7 @@
 
 export const LIVE_PERIOD = {
   startDate: '2025-06-14T09:00:00+09:00',
-  endDate: '2025-06-15T18:00:00+09:00',
+  endDate: '2025-06-15T17:00:00+09:00',
 };
 
 export const LIVE_PLAYERS = [
