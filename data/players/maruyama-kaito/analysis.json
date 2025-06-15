@@ -1,15 +1,29 @@
 {
-  "totalMatches": 18,
-  "wins": 15,
+  "totalMatches": 24,
+  "wins": 21,
   "losses": 3,
-  "totalWinRate": 0.833,
+  "totalWinRate": 0.875,
   "games": {
-    "total": 104,
-    "won": 73,
-    "lost": 31,
-    "gameRate": 0.702
+    "total": 135,
+    "won": 97,
+    "lost": 38,
+    "gameRate": 0.719
   },
   "byPartner": {
+    "天間 麗奈": {
+      "matches": {
+        "total": 6,
+        "wins": 6,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 31,
+        "won": 24,
+        "lost": 7,
+        "gameRate": 0.774
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 5,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 14,
-        "wins": 12,
+        "total": 20,
+        "wins": 18,
         "losses": 2,
-        "winRate": 0.857
+        "winRate": 0.9
       },
       "games": {
-        "total": 80,
-        "won": 57,
-        "lost": 23,
-        "gameRate": 0.713
+        "total": 111,
+        "won": 81,
+        "lost": 30,
+        "gameRate": 0.73
       }
     },
     "2024": {

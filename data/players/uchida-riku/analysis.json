@@ -1,15 +1,29 @@
 {
-  "totalMatches": 19,
-  "wins": 17,
-  "losses": 2,
-  "totalWinRate": 0.895,
+  "totalMatches": 22,
+  "wins": 19,
+  "losses": 3,
+  "totalWinRate": 0.864,
   "games": {
-    "total": 115,
-    "won": 82,
-    "lost": 33,
-    "gameRate": 0.713
+    "total": 134,
+    "won": 93,
+    "lost": 41,
+    "gameRate": 0.694
   },
   "byPartner": {
+    "前川 愛生": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 19,
+        "won": 11,
+        "lost": 8,
+        "gameRate": 0.579
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 4,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 15,
-        "wins": 13,
-        "losses": 2,
-        "winRate": 0.867
+        "total": 18,
+        "wins": 15,
+        "losses": 3,
+        "winRate": 0.833
       },
       "games": {
-        "total": 86,
-        "won": 64,
-        "lost": 22,
-        "gameRate": 0.744
+        "total": 105,
+        "won": 75,
+        "lost": 30,
+        "gameRate": 0.714
       }
     },
     "2024": {

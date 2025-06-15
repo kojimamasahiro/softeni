@@ -1,15 +1,29 @@
 {
-  "totalMatches": 8,
+  "totalMatches": 9,
   "wins": 7,
-  "losses": 1,
-  "totalWinRate": 0.875,
+  "losses": 2,
+  "totalWinRate": 0.778,
   "games": {
-    "total": 47,
-    "won": 30,
-    "lost": 17,
-    "gameRate": 0.638
+    "total": 52,
+    "won": 31,
+    "lost": 21,
+    "gameRate": 0.596
   },
   "byPartner": {
+    "根岸 楓英奈": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 1,
+        "winRate": 0.0
+      },
+      "games": {
+        "total": 5,
+        "won": 1,
+        "lost": 4,
+        "gameRate": 0.2
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 8,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 8,
+        "total": 9,
         "wins": 7,
-        "losses": 1,
-        "winRate": 0.875
+        "losses": 2,
+        "winRate": 0.778
       },
       "games": {
-        "total": 47,
-        "won": 30,
-        "lost": 17,
-        "gameRate": 0.638
+        "total": 52,
+        "won": 31,
+        "lost": 21,
+        "gameRate": 0.596
       }
     }
   }

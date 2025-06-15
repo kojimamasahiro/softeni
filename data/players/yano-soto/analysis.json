@@ -1,15 +1,29 @@
 {
-  "totalMatches": 16,
-  "wins": 13,
-  "losses": 3,
-  "totalWinRate": 0.812,
+  "totalMatches": 20,
+  "wins": 16,
+  "losses": 4,
+  "totalWinRate": 0.8,
   "games": {
-    "total": 96,
-    "won": 68,
-    "lost": 28,
-    "gameRate": 0.708
+    "total": 117,
+    "won": 83,
+    "lost": 34,
+    "gameRate": 0.709
   },
   "byPartner": {
+    "中谷 さくら": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 21,
+        "won": 15,
+        "lost": 6,
+        "gameRate": 0.714
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 5,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 16,
-        "wins": 13,
-        "losses": 3,
-        "winRate": 0.812
+        "total": 20,
+        "wins": 16,
+        "losses": 4,
+        "winRate": 0.8
       },
       "games": {
-        "total": 96,
-        "won": 68,
-        "lost": 28,
-        "gameRate": 0.708
+        "total": 117,
+        "won": 83,
+        "lost": 34,
+        "gameRate": 0.709
       }
     }
   }

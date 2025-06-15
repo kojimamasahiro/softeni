@@ -1,15 +1,29 @@
 {
-  "totalMatches": 15,
-  "wins": 11,
-  "losses": 4,
-  "totalWinRate": 0.733,
+  "totalMatches": 17,
+  "wins": 12,
+  "losses": 5,
+  "totalWinRate": 0.706,
   "games": {
-    "total": 90,
-    "won": 60,
-    "lost": 30,
-    "gameRate": 0.667
+    "total": 99,
+    "won": 64,
+    "lost": 35,
+    "gameRate": 0.646
   },
   "byPartner": {
+    "左近 知美": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 9,
+        "won": 4,
+        "lost": 5,
+        "gameRate": 0.444
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 7,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 15,
-        "wins": 11,
-        "losses": 4,
-        "winRate": 0.733
+        "total": 17,
+        "wins": 12,
+        "losses": 5,
+        "winRate": 0.706
       },
       "games": {
-        "total": 90,
-        "won": 60,
-        "lost": 30,
-        "gameRate": 0.667
+        "total": 99,
+        "won": 64,
+        "lost": 35,
+        "gameRate": 0.646
       }
     }
   }

@@ -1,15 +1,29 @@
 {
-  "totalMatches": 3,
+  "totalMatches": 4,
   "wins": 2,
-  "losses": 1,
-  "totalWinRate": 0.667,
+  "losses": 2,
+  "totalWinRate": 0.5,
   "games": {
-    "total": 14,
-    "won": 9,
-    "lost": 5,
-    "gameRate": 0.643
+    "total": 20,
+    "won": 11,
+    "lost": 9,
+    "gameRate": 0.55
   },
   "byPartner": {
+    "白﨑 ひかる": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 1,
+        "winRate": 0.0
+      },
+      "games": {
+        "total": 6,
+        "won": 2,
+        "lost": 4,
+        "gameRate": 0.333
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 3,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 3,
+        "total": 4,
         "wins": 2,
-        "losses": 1,
-        "winRate": 0.667
+        "losses": 2,
+        "winRate": 0.5
       },
       "games": {
-        "total": 14,
-        "won": 9,
-        "lost": 5,
-        "gameRate": 0.643
+        "total": 20,
+        "won": 11,
+        "lost": 9,
+        "gameRate": 0.55
       }
     }
   }

@@ -1,15 +1,29 @@
 {
-  "totalMatches": 21,
+  "totalMatches": 22,
   "wins": 18,
-  "losses": 3,
-  "totalWinRate": 0.857,
+  "losses": 4,
+  "totalWinRate": 0.818,
   "games": {
-    "total": 113,
-    "won": 85,
-    "lost": 28,
-    "gameRate": 0.752
+    "total": 118,
+    "won": 86,
+    "lost": 32,
+    "gameRate": 0.729
   },
   "byPartner": {
+    "天間 美嘉": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 1,
+        "winRate": 0.0
+      },
+      "games": {
+        "total": 5,
+        "won": 1,
+        "lost": 4,
+        "gameRate": 0.2
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 13,
@@ -42,16 +56,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 21,
+        "total": 22,
         "wins": 18,
-        "losses": 3,
-        "winRate": 0.857
+        "losses": 4,
+        "winRate": 0.818
       },
       "games": {
-        "total": 113,
-        "won": 85,
-        "lost": 28,
-        "gameRate": 0.752
+        "total": 118,
+        "won": 86,
+        "lost": 32,
+        "gameRate": 0.729
       }
     }
   }

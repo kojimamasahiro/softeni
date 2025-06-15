@@ -1,15 +1,29 @@
 {
-  "totalMatches": 22,
-  "wins": 19,
-  "losses": 3,
-  "totalWinRate": 0.864,
+  "totalMatches": 26,
+  "wins": 22,
+  "losses": 4,
+  "totalWinRate": 0.846,
   "games": {
-    "total": 131,
-    "won": 93,
-    "lost": 38,
-    "gameRate": 0.71
+    "total": 154,
+    "won": 107,
+    "lost": 47,
+    "gameRate": 0.695
   },
   "byPartner": {
+    "前田 梨緒": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 23,
+        "won": 14,
+        "lost": 9,
+        "gameRate": 0.609
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 8,
@@ -56,16 +70,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 19,
-        "wins": 17,
-        "losses": 2,
-        "winRate": 0.895
+        "total": 23,
+        "wins": 20,
+        "losses": 3,
+        "winRate": 0.87
       },
       "games": {
-        "total": 113,
-        "won": 81,
-        "lost": 32,
-        "gameRate": 0.717
+        "total": 136,
+        "won": 95,
+        "lost": 41,
+        "gameRate": 0.699
       }
     },
     "2024": {
