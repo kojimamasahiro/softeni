@@ -1,6 +1,107 @@
 {
   "matches": [
     {
+      "tournament": "第6回 全日本ミックスダブルス選手権大会",
+      "dateRange": "2025年6月14日(土)〜15日(日)",
+      "location": "広島県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "ベスト8",
+      "partner": "前田 梨緒",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "3回戦",
+          "opponent": "大島（蕨テニスクラブ）・矢作（蕨テニスクラブ）",
+          "opponents": [
+            {
+              "name": "大島",
+              "team": "蕨テニスクラブ",
+              "playerId": null
+            },
+            {
+              "name": "矢作",
+              "team": "蕨テニスクラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "松本（早稲田大学）・小川（ダンロップ）",
+          "opponents": [
+            {
+              "name": "松本",
+              "team": "早稲田大学",
+              "playerId": null
+            },
+            {
+              "name": "小川",
+              "team": "ダンロップ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": 4,
+            "lost": 3
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "西山（明治大学）・小山（明治大学）",
+          "opponents": [
+            {
+              "name": "西山",
+              "team": "明治大学",
+              "playerId": null
+            },
+            {
+              "name": "小山",
+              "team": "明治大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "丸山（one team）・天間（東北高校）",
+          "opponents": [
+            {
+              "name": "丸山",
+              "team": "one team",
+              "playerId": "maruyama-kaito"
+            },
+            {
+              "name": "天間",
+              "team": "東北高校",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": 2,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回 全日本シングルス選手権大会",
       "dateRange": "2025年5月17日(土)~5月18日(日)",
       "location": "生目の杜運動公園",

@@ -1,6 +1,85 @@
 {
   "matches": [
     {
+      "tournament": "第6回 全日本ミックスダブルス選手権大会",
+      "dateRange": "2025年6月14日(土)〜15日(日)",
+      "location": "広島県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "5回戦敗退",
+      "partner": "藤城 みちる",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "3回戦",
+          "opponent": "森川（法政大学）・庄司（アドマテックス）",
+          "opponents": [
+            {
+              "name": "森川",
+              "team": "法政大学",
+              "playerId": null
+            },
+            {
+              "name": "庄司",
+              "team": "アドマテックス",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "鈴木（ヨネックス新潟）・佐藤（アキム）",
+          "opponents": [
+            {
+              "name": "鈴木",
+              "team": "ヨネックス新潟",
+              "playerId": null
+            },
+            {
+              "name": "佐藤",
+              "team": "アキム",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "長谷川（ワタキューセイモア）・池口（ワタキューセイモア）",
+          "opponents": [
+            {
+              "name": "長谷川",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            },
+            {
+              "name": "池口",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": 2,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回 全日本シングルス選手権大会",
       "dateRange": "2025年5月17日(土)~5月18日(日)",
       "location": "生目の杜運動公園",

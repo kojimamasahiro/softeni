@@ -1,6 +1,151 @@
 {
   "matches": [
     {
+      "tournament": "第6回 全日本ミックスダブルス選手権大会",
+      "dateRange": "2025年6月14日(土)〜15日(日)",
+      "location": "広島県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "優勝",
+      "partner": "天間 麗奈",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "3回戦",
+          "opponent": "須原（松葉クラブ）・佐藤（せせらぎクラブ）",
+          "opponents": [
+            {
+              "name": "須原",
+              "team": "松葉クラブ",
+              "playerId": null
+            },
+            {
+              "name": "佐藤",
+              "team": "せせらぎクラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "金山（ワタキューセイモア）・井田（ワタキューセイモア）",
+          "opponents": [
+            {
+              "name": "金山",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            },
+            {
+              "name": "井田",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "大友（ヨネックス）・荒木（ヨネックス）",
+          "opponents": [
+            {
+              "name": "大友",
+              "team": "ヨネックス",
+              "playerId": null
+            },
+            {
+              "name": "荒木",
+              "team": "ヨネックス",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": 4,
+            "lost": 3
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "前田（明治大学）・上松（NTT西日本）",
+          "opponents": [
+            {
+              "name": "前田",
+              "team": "明治大学",
+              "playerId": null
+            },
+            {
+              "name": "上松",
+              "team": "NTT西日本",
+              "playerId": "uematsu-toshiki"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "坂本（どんぐり北広島）・中尾（中央大学）",
+          "opponents": [
+            {
+              "name": "坂本",
+              "team": "どんぐり北広島",
+              "playerId": null
+            },
+            {
+              "name": "中尾",
+              "team": "中央大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "決勝",
+          "opponent": "内本（NTT西日本）・吉田（ヨネックス）",
+          "opponents": [
+            {
+              "name": "内本",
+              "team": "NTT西日本",
+              "playerId": "uchimoto-takafumi"
+            },
+            {
+              "name": "吉田",
+              "team": "ヨネックス",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回 全日本シングルス選手権大会",
       "dateRange": "2025年5月17日(土)~5月18日(日)",
       "location": "生目の杜運動公園",

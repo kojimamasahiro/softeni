@@ -1,6 +1,85 @@
 {
   "matches": [
     {
+      "tournament": "第6回 全日本ミックスダブルス選手権大会",
+      "dateRange": "2025年6月14日(土)〜15日(日)",
+      "location": "広島県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "5回戦敗退",
+      "partner": "前川 愛生",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "3回戦",
+          "opponent": "岩元（神戸松蔭大学）・森田（都城商業高校ＯＢクラブ）",
+          "opponents": [
+            {
+              "name": "岩元",
+              "team": "神戸松蔭大学",
+              "playerId": null
+            },
+            {
+              "name": "森田",
+              "team": "都城商業高校ＯＢクラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "重冨（東芝姫路）・松本（東ソー南陽）",
+          "opponents": [
+            {
+              "name": "重冨",
+              "team": "東芝姫路",
+              "playerId": null
+            },
+            {
+              "name": "松本",
+              "team": "東ソー南陽",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "上岡（Up Rise）・久保（ナガセケンコー）",
+          "opponents": [
+            {
+              "name": "上岡",
+              "team": "Up Rise",
+              "playerId": "ueoka-shunsuke"
+            },
+            {
+              "name": "久保",
+              "team": "ナガセケンコー",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "3-4",
+          "games": {
+            "won": 3,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回 全日本シングルス選手権大会",
       "dateRange": "2025年5月17日(土)~5月18日(日)",
       "location": "生目の杜運動公園",

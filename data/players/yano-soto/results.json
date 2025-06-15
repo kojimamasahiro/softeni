@@ -1,6 +1,107 @@
 {
   "matches": [
     {
+      "tournament": "第6回 全日本ミックスダブルス選手権大会",
+      "dateRange": "2025年6月14日(土)〜15日(日)",
+      "location": "広島県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "ベスト8",
+      "partner": "中谷 さくら",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "3回戦",
+          "opponent": "高橋（ふじみ野OTA）・軍司（ルーセント）",
+          "opponents": [
+            {
+              "name": "高橋",
+              "team": "ふじみ野OTA",
+              "playerId": null
+            },
+            {
+              "name": "軍司",
+              "team": "ルーセント",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "矢野（ワタキューセイモア）・高村（ワタキューセイモア）",
+          "opponents": [
+            {
+              "name": "矢野",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            },
+            {
+              "name": "高村",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "岩元（神戸松蔭大学）・安達（早稲田大学）",
+          "opponents": [
+            {
+              "name": "岩元",
+              "team": "神戸松蔭大学",
+              "playerId": null
+            },
+            {
+              "name": "安達",
+              "team": "早稲田大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "坂本（どんぐり北広島）・中尾（中央大学）",
+          "opponents": [
+            {
+              "name": "坂本",
+              "team": "どんぐり北広島",
+              "playerId": null
+            },
+            {
+              "name": "中尾",
+              "team": "中央大学",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "3-4",
+          "games": {
+            "won": 3,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回 全日本シングルス選手権大会",
       "dateRange": "2025年5月17日(土)~5月18日(日)",
       "location": "生目の杜運動公園",
