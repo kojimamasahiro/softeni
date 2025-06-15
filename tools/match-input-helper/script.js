@@ -75,30 +75,81 @@
     function createPlayerInputGroup() {
         const div = document.createElement('div');
         div.className = 'player-group';
-        div.innerHTML = `
-        <label>選手情報（playerId / 姓 / 名 / チーム名から補完可能）：
-        <input list="playerList" class="playerInput" autocomplete="off" />
-        </label>
-        <label>姓 (lastName)：<input type="text" class="lastName" /></label>
-        <label>名 (firstName)：<input type="text" class="firstName" /></label>
-        <label>チーム名 (team)：<input type="text" class="team" /></label>
-        <button class="clearPlayerBtn" type="button">この選手情報をクリア</button>
-        <button class="removePlayerBtn" type="button">この選手を削除</button>
-    `;
-        setupSpaceRemoval(div);
-        div.querySelector('.removePlayerBtn').addEventListener('click', () => {
+
+        // playerId等の自動補完対象
+        const labelPlayer = document.createElement('label');
+        labelPlayer.innerHTML = `選手情報（playerId / 姓 / 名 / チーム名から補完可能）：`;
+        const playerInput = document.createElement('input');
+        playerInput.setAttribute('list', 'playerList');
+        playerInput.className = 'playerInput';
+        playerInput.autocomplete = 'off';
+        labelPlayer.appendChild(playerInput);
+
+        const labelLastName = document.createElement('label');
+        labelLastName.innerText = '姓 (lastName)：';
+        const lastNameInput = document.createElement('input');
+        lastNameInput.type = 'text';
+        lastNameInput.className = 'lastName';
+        labelLastName.appendChild(lastNameInput);
+
+        const labelFirstName = document.createElement('label');
+        labelFirstName.innerText = '名 (firstName)：';
+        const firstNameInput = document.createElement('input');
+        firstNameInput.type = 'text';
+        firstNameInput.className = 'firstName';
+        labelFirstName.appendChild(firstNameInput);
+
+        const labelTeam = document.createElement('label');
+        labelTeam.innerText = 'チーム名 (team)：';
+        const teamInput = document.createElement('input');
+        teamInput.type = 'text';
+        teamInput.className = 'team';
+        labelTeam.appendChild(teamInput);
+
+        const labelPrefecture = document.createElement('label');
+        labelPrefecture.innerText = '都道府県 (prefecture)：';
+        const prefectureInput = document.createElement('input');
+        prefectureInput.type = 'text';
+        prefectureInput.className = 'prefecture';
+        labelPrefecture.appendChild(prefectureInput);
+
+        const clearBtn = document.createElement('button');
+        clearBtn.innerText = 'この選手情報をクリア';
+        clearBtn.className = 'clearPlayerBtn';
+        clearBtn.type = 'button';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.innerText = 'この選手を削除';
+        removeBtn.className = 'removePlayerBtn';
+        removeBtn.type = 'button';
+
+        // 構築
+        div.appendChild(labelPlayer);
+        div.appendChild(labelLastName);
+        div.appendChild(labelFirstName);
+        div.appendChild(labelTeam);
+        div.appendChild(labelPrefecture);
+        div.appendChild(clearBtn);
+        div.appendChild(removeBtn);
+
+        // イベント
+        removeBtn.addEventListener('click', () => {
             playersContainer.removeChild(div);
         });
 
-        // クリアボタンのイベント
-        div.querySelector('.clearPlayerBtn').addEventListener('click', () => {
-            div.querySelector('.playerInput').value = '';
-            div.querySelector('.lastName').value = '';
-            div.querySelector('.firstName').value = '';
-            div.querySelector('.team').value = '';
+        clearBtn.addEventListener('click', () => {
+            playerInput.value = '';
+            lastNameInput.value = '';
+            firstNameInput.value = '';
+            teamInput.value = '';
+            prefectureInput.value = '';
         });
-        setupAutoFill(div.querySelector('.playerInput'));
+
+        setupAutoFill(playerInput);
         setupNameSplit(div);
+        setupSpaceRemoval(div);
+        setupTeamPrefectureAutoFill(div);
+
         return div;
     }
 
@@ -108,85 +159,85 @@
         playersContainer.appendChild(createPlayerInputGroup());
     }
 
-function setupNameSplit(container) {
-    const lastNameInput = container.querySelector('.lastName');
-    const firstNameInput = container.querySelector('.firstName');
+    function setupNameSplit(container) {
+        const lastNameInput = container.querySelector('.lastName');
+        const firstNameInput = container.querySelector('.firstName');
 
-    lastNameInput.addEventListener('input', () => {
-        const original = lastNameInput.value;
-        console.log('Original input:', original);
+        lastNameInput.addEventListener('input', () => {
+            const original = lastNameInput.value;
+            console.log('Original input:', original);
 
-        // 不要文字除去（漢字＋々以外を削除）
-        const cleaned = original.replace(/[^一-龯々ヶヵッゝゞ]/g, '');
+            // 不要文字除去（漢字＋々以外を削除）
+            const cleaned = original.replace(/[^一-龯々ヶヵッゝゞ]/g, '');
 
-        // 既にfirstNameがあれば処理しない
-        if (firstNameInput.value.trim()) return;
+            // 既にfirstNameがあれば処理しない
+            if (firstNameInput.value.trim()) return;
 
-        // 漢字＋々で2〜6文字のときのみ処理
-        if (!/^[一-龯々]{2,6}$/.test(cleaned)) return;
+            // 漢字＋々で2〜6文字のときのみ処理
+            if (!/^[一-龯々]{2,6}$/.test(cleaned)) return;
 
-        // スペース評価のため、漢字だけの部分を抽出して前後を無視
-        const isSkippable = (char) => /[A-Za-zＡ-Ｚａ-ｚ0-9０-９\s　!-~！-～]/.test(char);
+            // スペース評価のため、漢字だけの部分を抽出して前後を無視
+            const isSkippable = (char) => /[A-Za-zＡ-Ｚａ-ｚ0-9０-９\s　!-~！-～]/.test(char);
 
-        let firstValidIndex = -1;
-        let lastValidIndex = -1;
+            let firstValidIndex = -1;
+            let lastValidIndex = -1;
 
-        for (let i = 0; i < original.length; i++) {
-            if (!isSkippable(original[i])) {
-                if (firstValidIndex === -1) firstValidIndex = i;
-                lastValidIndex = i;
-            }
-        }
-
-        const spaceIndices = [];
-        if (firstValidIndex !== -1 && lastValidIndex !== -1) {
-            for (let i = firstValidIndex; i <= lastValidIndex; i++) {
-                if (original[i] === ' ' || original[i] === '　') {
-                    spaceIndices.push(i - firstValidIndex);
+            for (let i = 0; i < original.length; i++) {
+                if (!isSkippable(original[i])) {
+                    if (firstValidIndex === -1) firstValidIndex = i;
+                    lastValidIndex = i;
                 }
             }
-        }
 
-        const splitRules = { 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
-        let newLastName = '';
-        let newFirstName = '';
+            const spaceIndices = [];
+            if (firstValidIndex !== -1 && lastValidIndex !== -1) {
+                for (let i = firstValidIndex; i <= lastValidIndex; i++) {
+                    if (original[i] === ' ' || original[i] === '　') {
+                        spaceIndices.push(i - firstValidIndex);
+                    }
+                }
+            }
 
-        if (spaceIndices.length === 0) {
-            // スペースなし → 文字数ルールで分割
-            const k = splitRules[cleaned.length];
-            newLastName = cleaned.slice(0, k);
-            newFirstName = cleaned.slice(k);
-        } else {
-            const segments = original
-                .split(/[\s　]+/)
-                .map(s => s.replace(/[^一-龯々ヶヵッゝゞ]/g, ''))
-                .filter(p => p.length > 0);
+            const splitRules = { 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
+            let newLastName = '';
+            let newFirstName = '';
 
-            const allSameLength = segments.every(s => s.length === segments[0].length);
-
-            if (allSameLength) {
-                const joined = segments.join('');
-                const k = splitRules[joined.length];
-                newLastName = joined.slice(0, k);
-                newFirstName = joined.slice(k);
+            if (spaceIndices.length === 0) {
+                // スペースなし → 文字数ルールで分割
+                const k = splitRules[cleaned.length];
+                newLastName = cleaned.slice(0, k);
+                newFirstName = cleaned.slice(k);
             } else {
-                if (segments.length >= 3 && segments[0].length === 1 && segments[1].length === 1) {
-                    newLastName = segments[0] + segments[1];
-                    newFirstName = segments.slice(2).join('');
-                } else if (segments.length >= 3 && segments[0].length === 2 && segments[1].length === 1) {
-                    newLastName = segments[0] + segments[1];
-                    newFirstName = segments.slice(2).join('');
+                const segments = original
+                    .split(/[\s　]+/)
+                    .map(s => s.replace(/[^一-龯々ヶヵッゝゞ]/g, ''))
+                    .filter(p => p.length > 0);
+
+                const allSameLength = segments.every(s => s.length === segments[0].length);
+
+                if (allSameLength) {
+                    const joined = segments.join('');
+                    const k = splitRules[joined.length];
+                    newLastName = joined.slice(0, k);
+                    newFirstName = joined.slice(k);
                 } else {
-                    newLastName = segments[0];
-                    newFirstName = segments.slice(1).join('');
+                    if (segments.length >= 3 && segments[0].length === 1 && segments[1].length === 1) {
+                        newLastName = segments[0] + segments[1];
+                        newFirstName = segments.slice(2).join('');
+                    } else if (segments.length >= 3 && segments[0].length === 2 && segments[1].length === 1) {
+                        newLastName = segments[0] + segments[1];
+                        newFirstName = segments.slice(2).join('');
+                    } else {
+                        newLastName = segments[0];
+                        newFirstName = segments.slice(1).join('');
+                    }
                 }
             }
-        }
 
-        lastNameInput.value = newLastName;
-        firstNameInput.value = newFirstName;
-    });
-}
+            lastNameInput.value = newLastName;
+            firstNameInput.value = newFirstName;
+        });
+    }
 
     // プレイヤー入力欄の追加ボタン
     addPlayerBtn.addEventListener('click', () => {
@@ -229,6 +280,7 @@ function setupNameSplit(container) {
             const lastName = div.querySelector('.lastName').value.trim();
             const firstName = div.querySelector('.firstName').value.trim();
             const team = div.querySelector('.team').value.trim();
+            const prefecture = div.querySelector('.prefecture').value.trim();
             const playerIdInput = div.querySelector('.playerInput').value.trim();
             const playerId = playerIdInput || null;
             const tempId = lastName + "_" + firstName + "_" + team;
@@ -242,7 +294,17 @@ function setupNameSplit(container) {
                 teamSet.add(team);
             }
 
-            players.push({ lastName, firstName, team, playerId, tempId });
+            players.push({ lastName, firstName, team, prefecture, playerId, tempId });
+        }
+        if (players.length === 2) {
+            const prefecture1 = players[0].prefecture;
+            const prefecture2 = players[1].prefecture;
+
+            if (prefecture1 && !prefecture2) {
+                players[1].prefecture = prefecture1;
+            } else if (!prefecture1 && prefecture2) {
+                players[0].prefecture = prefecture2;
+            }
         }
 
         let representativeTeam = '';
@@ -250,7 +312,7 @@ function setupNameSplit(container) {
             representativeTeam = [...teamSet][0];
             for (const player of players) {
                 player.team = player.team || representativeTeam;
-                player.tempId = player.firstName + "_" + player.lastName + "_" + representativeTeam;
+                player.tempId = player.lastName + "_" + player.firstName + "_" + representativeTeam;
             }
         } else if (teamSet.size === 0) {
             representativeTeam = '';
@@ -278,6 +340,7 @@ function setupNameSplit(container) {
         document.querySelectorAll('.lastName').forEach(input => input.value = '');
         document.querySelectorAll('.firstName').forEach(input => input.value = '');
         document.querySelectorAll('.team').forEach(input => input.value = '');
+        document.querySelectorAll('.prefecture').forEach(input => input.value = '');
 
         if (byeCheckbox.checked) {
             const byeObj = {
@@ -337,8 +400,41 @@ function removeUnwantedChars(event) {
 
 // 指定したコンテナ内の全対象 input にイベントを設定
 function setupSpaceRemoval(container) {
-    const inputs = container.querySelectorAll('input.firstName, input.team');
+    const inputs = container.querySelectorAll('input.firstName, input.team, input.prefecture');
     inputs.forEach(input => {
         input.addEventListener('input', removeUnwantedChars);
+    });
+}
+
+function setupTeamPrefectureAutoFill(container) {
+    const teamInput = container.querySelector('.team');
+    const prefectureInput = container.querySelector('.prefecture');
+
+    teamInput.addEventListener('input', () => {
+        const teamName = teamInput.value.trim();
+        if (!teamName || prefectureInput.value.trim()) return;
+
+        // 1. teamPrefectureMap から補完
+        if (typeof teamPrefectureMap !== "undefined" && teamPrefectureMap[teamName]) {
+            prefectureInput.value = teamPrefectureMap[teamName];
+            return;
+        }
+
+        // 2. output.value の JSON から補完
+        try {
+            const parsed = JSON.parse(output.value);
+            if (Array.isArray(parsed)) {
+                for (const pair of parsed) {
+                    for (const player of pair.information || []) {
+                        if (player.team === teamName && player.prefecture) {
+                            prefectureInput.value = player.prefecture;
+                            return;
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn("補完用JSONがパースできませんでした：", e);
+        }
     });
 }
