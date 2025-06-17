@@ -1,8 +1,9 @@
 // src/pages/about.tsx
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
 
-export default function About() {
+export default function About({ updatedAt }: { updatedAt: string }) {
   return (
     <>
       <MetaHead
@@ -42,7 +43,10 @@ export default function About() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">運営者について</h2>
           <p className="text-lg leading-relaxed">
-            このサイトは、ソフトテニス競技者の試合結果や大会情報をまとめ、ファンや関係者の皆様に向けて発信することを目的としています。
+            Softeni Pickは、ソフトテニスの大会結果や選手情報を整理し、競技者・保護者・指導者など関係者が競技理解を深められるよう設計された情報提供サイトです。
+          </p>
+          <p className="text-lg leading-relaxed mt-2">
+            運営者は元選手として競技に携わった経験を活かし、データと記録のアーカイブを通してソフトテニスの魅力を伝えることを目指しています。
           </p>
         </section>
 
@@ -85,6 +89,15 @@ export default function About() {
           </p>
         </section>
 
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">よくあるご質問</h2>
+          <p className="text-lg leading-relaxed font-semibold">Q. このサイトの情報は正確ですか？</p>
+          <p className="text-lg leading-relaxed mb-4">A. 正式な大会結果や公開情報をもとに整理していますが、正確性の保証はできかねます。必ず公式情報もご確認ください。</p>
+
+          <p className="text-lg leading-relaxed font-semibold">Q. データの使用は自由ですか？</p>
+          <p className="text-lg leading-relaxed">A. 非営利目的での利用は自由ですが、転載・再配布の際は出典を明記してください。</p>
+        </section>
+
         <section>
           <h2 className="text-2xl font-semibold mb-4">お問い合わせ</h2>
           <p className="text-lg leading-relaxed">
@@ -99,7 +112,25 @@ export default function About() {
             よりご連絡ください。
           </p>
         </section>
+
+        <p className="text-xs text-right text-gray-500 mt-8">
+          最終更新日: {updatedAt}
+        </p>
       </div>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const updatedAt = new Date().toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return {
+    props: {
+      updatedAt,
+    },
+  };
+};
