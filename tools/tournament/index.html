@@ -34,7 +34,7 @@
         // 初期スコア
         const initScore = 4;
         const initScore1 = initScore;
-        const initScore2 = initScore;
+        const initScore2 = 3;
 
         // パッキン用ダミーペア
         const byePlayer = { id: "bye", name: "1回戦免除", information: [] };
@@ -89,12 +89,12 @@
                         ? selectedScore = initScore1
                         :  // p2の場合は初期スコアを設定
                         player === "p2"
-                        ? selectedScore = initScore2
-                        :
-                        selectedScore = initScore
+                            ? selectedScore = initScore2
+                            :
+                            selectedScore = initScore
                     match.scores[player] = selectedScore;
 
-                    // setScore(matchIndex, player, selectedScore);
+                    setScore(matchIndex, player, selectedScore);
                 }
 
                 const scoreButtons = document.querySelectorAll(
@@ -306,6 +306,7 @@
             const output = {};
 
             const roundCount = roundHistory.length;
+
             const resultPairs = new Set();
 
             // ラウンド名変換
@@ -327,8 +328,14 @@
             if (roundCount - 2 >= 0) roundRankings[roundCount - 2] = { loser: "ベスト4" };
             if (roundCount - 3 >= 0) roundRankings[roundCount - 3] = { loser: "ベスト8" };
 
-            const getPairKey = (info) => info?.information?.map(p => p.playerId).sort().join("-");
-            const getPairArray = (info) => info?.information?.map(p => p.playerId).sort();
+            const getPairKey = (info) => {
+                // playerId が null または undefined の場合は tempId を使う
+                return info?.information?.map(p => p.playerId ?? p.tempId).sort().join("-");
+            }
+            const getPairArray = (info) => {
+                // playerIdがnullまたはundefinedの場合、tempIdを使う
+                return info?.information?.map(p => p.playerId || p.tempId).filter(id => id != null).sort();
+            }
             const isValidPair = (arr) => arr.every(id => id !== null && id !== undefined);
 
             // resultSummary を先に生成（必要な場合）
@@ -345,6 +352,7 @@
 
                         const p1Key = getPairKey(match.p1);
                         const p2Key = getPairKey(match.p2);
+                        console.log(`${p1Key},  ${p2Key}`)
                         const p1Array = getPairArray(match.p1);
                         const p2Array = getPairArray(match.p2);
                         if (!p1Key || !p2Key) continue;
