@@ -4,7 +4,6 @@ import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import path from 'path';
 import { useEffect, useState } from 'react';
@@ -92,28 +91,45 @@ export default function Home({ players }: HomeProps) {
       </Head>
       {!isClient ? null : (
         <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+
+          {/* ✅ サイト紹介文（ページ最上部に設置） */}
+          <section className="max-w-3xl mx-auto mb-10 px-4">
+            <h1 className="text-2xl font-bold mb-4">Softeni Pickとは</h1>
+            <p className="text-lg leading-relaxed mb-4">
+              Softeni Pick（ソフテニ・ピック）は、ソフトテニス競技に特化した大会情報・選手データベースを提供する個人運営のウェブメディアです。
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              全日本の主要大会を中心に、出場選手の成績、チーム別の戦績、試合の結果をわかりやすく整理・掲載しています。また、選手ごとのページでは過去の出場履歴や勝率、大会での活躍なども確認できます。
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              地域や世代を超えてソフトテニスを楽しむすべての人にとって、競技の魅力を再発見できる場となることを目指しています。
+            </p>
+            <p className="text-lg leading-relaxed">
+              本サイトは、学校やチームの垣根を越えた記録のアーカイブとして、選手や指導者、ファンの方々にご活用いただけるよう、今後も情報を拡充していきます。
+            </p>
+          </section>
+
+          {/* ✅ 試合結果・大会リンク */}
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h1>
+            <h2 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h2>
 
             <LiveResultsByTournament playersData={players} />
 
-            <div className="text-right mb-2">
+            <div className="text-right mb-10">
               <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
                 大会結果一覧
               </Link>
             </div>
 
-            <section className="mb-8 px-4">
-              <h2 className="text-xl flex items-center font-semibold mb-4">
-                所属別成績
-              </h2>
-
+            {/* ✅ 所属別成績 */}
+            <section className="mb-12 px-4">
+              <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div
                   onClick={() => (window.location.href = `/teams/nssu`)}
                   className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">日本体育大学</h3>
+                  <h3 className="text-lg font-bold mb-1">日本体育大学</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">年間成績・大会別成績・選手ごとの記録</p>
                   <a
                     href="https://nittai-softtennis.com/"
@@ -128,11 +144,9 @@ export default function Home({ players }: HomeProps) {
               </div>
             </section>
 
+            {/* ✅ 選手一覧・検索 */}
             <section className="mb-8 px-4">
-              <h2 className="text-xl flex items-center font-semibold mb-4">
-                選手一覧
-              </h2>
-              {/* 名前検索フォーム */}
+              <h2 className="text-xl font-semibold mb-4">選手一覧</h2>
               <div className="mb-4">
                 <input
                   type="text"
@@ -146,16 +160,15 @@ export default function Home({ players }: HomeProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filteredPlayers.map((player) => {
                   const isRetired = player.retired;
-
                   return (
                     <div
                       key={player.id}
                       onClick={() => (window.location.href = `/players/${player.id}`)}
                       className={`border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition
-          hover:bg-gray-50 dark:hover:bg-gray-700
-          ${isRetired ? 'opacity-70' : ''}`}
+              hover:bg-gray-50 dark:hover:bg-gray-700
+              ${isRetired ? 'opacity-70' : ''}`}
                     >
-                      <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">
+                      <h2 className="text-lg font-bold mb-1">
                         {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
                       </h2>
                       <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
@@ -167,7 +180,6 @@ export default function Home({ players }: HomeProps) {
                           player.team
                         )}
                       </p>
-
                       <div className="flex justify-start mt-4">
                         <Link
                           href={`/players/${player.id}/results`}

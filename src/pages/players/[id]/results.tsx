@@ -111,26 +111,42 @@ export default function PlayerResultsPage({
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-2xl font-bold mb-6">{fullName}</h1>
+        <div className="max-w-3xl mx-auto space-y-10">
+          <header>
+            <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+              本ページでは、{fullName}選手の出場大会や成績、主な勝ち上がり情報を掲載しています。
+            </p>
+          </header>
 
-          <LiveResults playerId={playerId} />
+          <section>
+            <h2 className="text-xl font-semibold mb-2">最新の試合結果</h2>
+            <LiveResults playerId={playerId} />
+          </section>
 
-          <MajorTitles id={playerId} tournaments={allTournaments} />
+          <section>
+            <h2 className="text-xl font-semibold mb-2">主な成績（タイトル）</h2>
+            <MajorTitles id={playerId} tournaments={allTournaments} />
+          </section>
 
-          <div className="text-right mt-8 mb-2">
-            <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
-              大会結果一覧
+          <div className="text-right">
+            <Link href="/tournaments" className="text-sm text-blue-600 hover:underline">
+              大会結果一覧はこちら
             </Link>
           </div>
 
           <section>
-            <PlayerResults playerData={playerData} playerStats={playerStats} allPlayers={allPlayers} />
+            <h2 className="text-xl font-semibold mb-2">{fullName}選手の出場履歴と戦績</h2>
+            <PlayerResults
+              playerData={playerData}
+              playerStats={playerStats}
+              allPlayers={allPlayers}
+            />
           </section>
 
           <div className="text-right">
-            <Link href={`/players/${playerId}`} className="text-sm text-blue-500 hover:underline">
-              {fullName}選手プロフィール
+            <Link href={`/players/${playerId}`} className="text-sm text-blue-600 hover:underline">
+              {fullName}選手のプロフィールを見る
             </Link>
           </div>
         </div>

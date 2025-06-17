@@ -189,20 +189,32 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
-<p className="text-sm text-gray-600 dark:text-gray-300 mb-6 flex flex-wrap gap-4 items-center">
-  <span>{data.location}</span>
-  <span>{data.startDate}〜{data.endDate}</span>
-  {hasEntries && (
-    <Link
-      href={`/tournaments/${meta.id}/${year}/data`}
-      className="text-blue-600 hover:underline text-sm"
-    >
-      出場選手データ（JSON形式）
-    </Link>
-  )}
-</p>
 
+          {/* ✅ h1 + 大会紹介文 */}
+          <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
+          <section className="mb-6 px-1">
+            <p className="text-lg leading-relaxed mb-2">
+              {meta.name}は、{meta.category}カテゴリの主要大会として、全国の強豪選手が集結する注目の大会です。
+              本ページでは{year}年に開催された本大会の試合結果、出場チーム別の成績、対戦情報などを掲載しています。
+            </p>
+            {data.location && data.startDate && data.endDate && (
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                開催地：{data.location} ／ 日程：{data.startDate}〜{data.endDate}
+              </p>
+            )}
+            {hasEntries && (
+              <p className="mt-2 text-sm">
+                <Link
+                  href={`/tournaments/${meta.id}/${year}/data`}
+                  className="text-blue-600 hover:underline"
+                >
+                  ▶ 出場選手データ（JSON形式）
+                </Link>
+              </p>
+            )}
+          </section>
+
+          {/* ✅ チーム別成績（変更なし） */}
           <TeamResults sortedTeams={sortedTeams} />
 
           <div className="text-right mt-10 mb-2">

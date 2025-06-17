@@ -254,6 +254,17 @@ export default function TeamResultsPage({ info, results }: Props) {
                 <div className="max-w-3xl mx-auto space-y-6">
                     <h1 className="text-2xl font-bold">{teamName} | 所属別成績</h1>
 
+                    {/* ✅ チーム紹介文の追加 */}
+                    <section className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p className="mb-2">
+                            {teamName}は、全国大会や地域大会で活躍するソフトテニスチームであり、多くの選手が主要大会で優れた成績を収めています。
+                            このページでは、大会ごとの成績、出場選手の勝敗、ペア別実績などを一覧で確認できます。
+                        </p>
+                        <p>
+                            今後の分析や応援、記録管理などにぜひお役立てください。
+                        </p>
+                    </section>
+
                     <TeamsYearlySummary summary={calculateSummary} />
 
                     <TeamsEventSummary overallTable={overallTable} />

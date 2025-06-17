@@ -1,5 +1,4 @@
 // src/pages/tournaments/index.tsx
-// pages/tournaments/index.tsx
 import MetaHead from '@/components/MetaHead';
 import fs from 'fs';
 import { GetStaticProps } from 'next';
@@ -81,15 +80,30 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
 
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
                 <div className="max-w-3xl mx-auto">
-                    <h1 className="text-2xl font-bold mb-6">大会結果一覧 | ソフトテニス情報</h1>
 
+                    {/* ✅ 追加: 紹介文セクション */}
+                    <section className="mb-10 px-4">
+                        <h1 className="text-2xl font-bold mb-4">大会一覧 | ソフトテニス主要大会</h1>
+                        <p className="text-lg leading-relaxed mb-4">
+                            こちらは、Softeni Pickが収録しているソフトテニスの大会一覧ページです。
+                            主要な全日本大会をはじめ、インターハイ・選抜、大学大会や実業団大会なども整理して掲載していく予定です。
+                        </p>
+                        <p className="text-lg leading-relaxed">
+                            各大会のページでは、年度ごとの出場選手や試合結果、所属別の記録などを確認することができます。
+                            下記から大会カテゴリごとにご覧いただけます。
+                        </p>
+                    </section>
+
+                    {/* ✅ 見出しをh2に変更（ページ全体でh1は1つに） */}
                     <section className="mb-8 px-4">
+                        <h2 className="text-xl font-semibold mb-6">大会結果一覧</h2>
+
                         <div className="space-y-8">
                             {tournaments.map((tournament) => (
                                 <div key={tournament.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                                    <h2 className="text-xl flex font-semibold mb-4 border-b text-gray-800 dark:text-white">
+                                    <h3 className="text-lg font-semibold mb-4 border-b text-gray-800 dark:text-white">
                                         {tournament.name}
-                                    </h2>
+                                    </h3>
 
                                     <ul className="flex flex-wrap gap-2">
                                         {tournament.years.map((year) => (
