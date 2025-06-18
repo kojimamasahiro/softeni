@@ -39,7 +39,7 @@ export default function handler(req: NextRequest) {
             top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            fontSize: 128,
+            fontSize: 256,
             fontWeight: 'bold',
             color: 'white',
             textShadow: '2px 2px 6px rgba(0,0,0,0.6)',
