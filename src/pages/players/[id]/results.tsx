@@ -38,6 +38,7 @@ export default function PlayerResultsPage({
         title={`${fullName} 試合結果 | ソフトテニス情報`}
         description={`${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`}
         url={pageUrl}
+        image={`https://softeni-pick.com/api/og/player?name=${encodeURIComponent(fullName)}`}
         type="article"
       />
 

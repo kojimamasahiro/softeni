@@ -111,7 +111,7 @@ export default function Home({ players }: HomeProps) {
 
           {/* ✅ 試合結果・大会リンク */}
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">試合結果まとめ | ソフトテニス情報</h2>
+            <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
             <LiveResultsByTournament playersData={players} />
 
