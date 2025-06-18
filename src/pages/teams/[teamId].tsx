@@ -1,4 +1,5 @@
 // src/pages/teams/[teamId].tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
@@ -253,6 +254,13 @@ export default function TeamResultsPage({ info, results }: Props) {
 
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
                 <div className="max-w-3xl mx-auto space-y-6">
+                    <Breadcrumbs
+                        crumbs={[
+                            { label: 'ホーム', href: '/' },
+                            { label: teamName, href: `/teams/${info.id}` },
+                        ]}
+                    />
+
                     <h1 className="text-2xl font-bold">{teamName} | 所属別成績</h1>
 
                     {/* ✅ チーム紹介文の追加 */}

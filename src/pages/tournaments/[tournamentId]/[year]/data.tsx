@@ -1,4 +1,5 @@
 // src/pages/tournaments/[tournamentId]/[year]/data.tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -7,48 +8,48 @@ import Link from 'next/link';
 import path from 'path';
 
 interface PlayerEntry {
-    id: number | string;
-    name: string;
-    information: {
-        lastName: string;
-        firstName: string;
-        team: string;
-        tempId: string;
-    }[];
+  id: number | string;
+  name: string;
+  information: {
+    lastName: string;
+    firstName: string;
+    team: string;
+    tempId: string;
+  }[];
 }
 
 interface TournamentMeta {
-    id: string;
-    sortId: number;
-    name: string;
-    region: string;
-    type: string;
-    category: string;
-    officialUrl?: string;
-    isMajorTitle?: boolean;
+  id: string;
+  sortId: number;
+  name: string;
+  region: string;
+  type: string;
+  category: string;
+  officialUrl?: string;
+  isMajorTitle?: boolean;
 }
 
 interface MatchResult {
-    round: string;
-    player1: {
-        entryNo: number;
-        won: number;
-        lost: number;
-    };
-    player2: {
-        entryNo: number;
-        won: number;
-        lost: number;
-    };
-    winner: number;
+  round: string;
+  player1: {
+    entryNo: number;
+    won: number;
+    lost: number;
+  };
+  player2: {
+    entryNo: number;
+    won: number;
+    lost: number;
+  };
+  winner: number;
 }
 
 interface Props {
-    tournamentId: string;
-    year: string;
-    entries: PlayerEntry[];
-    matches: MatchResult[] | null;
-    meta: TournamentMeta;
+  tournamentId: string;
+  year: string;
+  entries: PlayerEntry[];
+  matches: MatchResult[] | null;
+  meta: TournamentMeta;
 }
 
 export default function EntryDataPage({ tournamentId, year, entries, matches, meta }: Props) {
@@ -69,6 +70,15 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
       </Head>
 
       <main className="max-w-3xl mx-auto px-4 py-8">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '大会結果一覧', href: '/tournaments' },
+            { label: `${meta.name} ${year}年`, href: `/tournaments/${tournamentId}/${year}` },
+            { label: '出場選手データ', href: `/tournaments/${tournamentId}/${year}/data` },
+          ]}
+        />
+
         <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 出場選手データ（JSON形式）</h1>
 
         {/* ✅ 導入説明 */}
@@ -135,54 +145,54 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const baseDir = path.join(process.cwd(), 'data/tournaments');
-    const tournamentIds = fs.readdirSync(baseDir);
+  const baseDir = path.join(process.cwd(), 'data/tournaments');
+  const tournamentIds = fs.readdirSync(baseDir);
 
-    const paths: { params: { tournamentId: string; year: string } }[] = [];
+  const paths: { params: { tournamentId: string; year: string } }[] = [];
 
-    for (const tid of tournamentIds) {
-        const yearDir = path.join(baseDir, tid);
-        if (!fs.statSync(yearDir).isDirectory()) continue;
+  for (const tid of tournamentIds) {
+    const yearDir = path.join(baseDir, tid);
+    if (!fs.statSync(yearDir).isDirectory()) continue;
 
-        const years = fs.readdirSync(yearDir);
-        for (const y of years) {
-            const entryPath = path.join(yearDir, y, 'entries.json');
-            if (fs.existsSync(entryPath)) {
-                paths.push({
-                    params: {
-                        tournamentId: tid,
-                        year: y,
-                    },
-                });
-            }
-        }
+    const years = fs.readdirSync(yearDir);
+    for (const y of years) {
+      const entryPath = path.join(yearDir, y, 'entries.json');
+      if (fs.existsSync(entryPath)) {
+        paths.push({
+          params: {
+            tournamentId: tid,
+            year: y,
+          },
+        });
+      }
     }
+  }
 
-    return {
-        paths,
-        fallback: false,
-    };
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const { tournamentId, year } = context.params as { tournamentId: string; year: string };
-    const basePath = path.join(process.cwd(), 'data/tournaments', tournamentId);
+  const { tournamentId, year } = context.params as { tournamentId: string; year: string };
+  const basePath = path.join(process.cwd(), 'data/tournaments', tournamentId);
 
-    const meta = JSON.parse(fs.readFileSync(path.join(basePath, 'meta.json'), 'utf-8'));
-    const entries = JSON.parse(fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'));
+  const meta = JSON.parse(fs.readFileSync(path.join(basePath, 'meta.json'), 'utf-8'));
+  const entries = JSON.parse(fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'));
 
-    const matchesPath = path.join(basePath, year, 'matches.json');
-    const matches = fs.existsSync(matchesPath)
-        ? JSON.parse(fs.readFileSync(matchesPath, 'utf-8'))
-        : null; // 存在しなければ null
+  const matchesPath = path.join(basePath, year, 'matches.json');
+  const matches = fs.existsSync(matchesPath)
+    ? JSON.parse(fs.readFileSync(matchesPath, 'utf-8'))
+    : null; // 存在しなければ null
 
-    return {
-        props: {
-            tournamentId,
-            year,
-            entries,
-            matches,
-            meta,
-        },
-    };
+  return {
+    props: {
+      tournamentId,
+      year,
+      entries,
+      matches,
+      meta,
+    },
+  };
 };

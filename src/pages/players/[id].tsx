@@ -1,4 +1,5 @@
 // src/pages/players/[id].tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
@@ -108,6 +109,13 @@ export default function PlayerInformation({ player, id }: Props) {
       </Head>
 
       <div className="max-w-3xl mx-auto px-4 py-8">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: `${player.lastName}${player.firstName}`, href: `/players/${id}` },
+          ]}
+        />
+
         <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
 
         <section className="mb-10">

@@ -1,4 +1,5 @@
 // src/pages/index.tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
@@ -82,15 +83,40 @@ export default function Home({ players }: HomeProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "ホーム",
-                  "item": "https://softeni-pick.com/"
+                  "item": "https://softeni-pick.com/",
                 }
-              ]
+              ],
             }),
           }}
-        ></script>
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Softeni Pick",
+              "url": "https://softeni-pick.com/",
+              "inLanguage": "ja",
+              "dateModified": new Date().toISOString().split('T')[0],
+              "publisher": {
+                "@type": "Organization",
+                "name": "Softeni Pick",
+              },
+            }),
+          }}
+        />
       </Head>
+
       {!isClient ? null : (
         <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+          <div className="max-w-3xl mx-auto">
+            <Breadcrumbs
+              crumbs={[
+                { label: 'ホーム', href: '/' },
+              ]}
+            />
+          </div>
 
           {/* ✅ サイト紹介文（ページ最上部に設置） */}
           <section className="max-w-3xl mx-auto mb-10 px-4">

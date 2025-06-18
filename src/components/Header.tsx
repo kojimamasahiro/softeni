@@ -8,11 +8,6 @@ export default function Header() {
         <Link href="/" className="text-xl font-bold tracking-tight">
           Softeni Pick
         </Link>
-        <nav className="space-x-6 text-sm">
-          <Link href="/" className="hover:text-blue-500 dark:hover:text-blue-400 transition">
-            Home
-          </Link>
-        </nav>
       </div>
     </header>
   );

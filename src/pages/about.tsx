@@ -1,4 +1,5 @@
 // src/pages/about.tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 
@@ -39,6 +40,13 @@ export default function About() {
       </Head>
 
       <main className="max-w-3xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: 'このサイトについて', href: '/about' },
+          ]}
+        />
+
         <h1 className="text-3xl font-bold mb-8">このサイトについて</h1>
 
         <section className="mb-10">

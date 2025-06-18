@@ -1,4 +1,5 @@
 // src/pages/tournaments/index.tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import fs from 'fs';
 import { GetStaticProps } from 'next';
@@ -80,9 +81,15 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
 
             <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
                 <div className="max-w-3xl mx-auto">
+                    <Breadcrumbs
+                        crumbs={[
+                            { label: 'ホーム', href: '/' },
+                            { label: '大会結果一覧', href: '/tournaments' },
+                        ]}
+                    />
 
                     {/* ✅ 追加: 紹介文セクション */}
-                    <section className="mb-10 px-4">
+                    <section className="mb-10">
                         <h1 className="text-2xl font-bold mb-4">大会一覧 | ソフトテニス主要大会</h1>
                         <p className="text-lg leading-relaxed mb-4">
                             こちらは、Softeni Pickが収録しているソフトテニスの大会一覧ページです。
@@ -95,7 +102,7 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
                     </section>
 
                     {/* ✅ 見出しをh2に変更（ページ全体でh1は1つに） */}
-                    <section className="mb-8 px-4">
+                    <section className="mb-8">
                         <h2 className="text-xl font-semibold mb-6">大会結果一覧</h2>
 
                         <div className="space-y-8">

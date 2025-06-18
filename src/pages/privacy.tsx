@@ -1,6 +1,7 @@
 // src/pages/privacy.tsx
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
+import Breadcrumbs from '@/components/Breadcrumb';
 
 export default function PrivacyPolicy() {
     return (
@@ -37,6 +38,13 @@ export default function PrivacyPolicy() {
             </Head>
 
             <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100">
+                <Breadcrumbs
+                    crumbs={[
+                        { label: 'ホーム', href: '/' },
+                        { label: 'プライバシーポリシー', href: '/players' },
+                    ]}
+                />
+
                 <h1 className="text-3xl font-bold mb-8">プライバシーポリシー</h1>
 
                 <section className="mb-6">

@@ -1,4 +1,5 @@
 // src/pages/contact.tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 
@@ -37,6 +38,13 @@ export default function Contact() {
             </Head>
 
             <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100">
+                <Breadcrumbs
+                    crumbs={[
+                        { label: 'ホーム', href: '/' },
+                        { label: 'お問い合わせ', href: '/contact' },
+                    ]}
+                />
+
                 <h1 className="text-3xl font-bold mb-8">お問い合わせ</h1>
 
                 <p className="text-lg leading-relaxed mb-6">

@@ -1,4 +1,5 @@
 // src/pages/faq.tsx
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import Head from 'next/head';
 
@@ -37,6 +38,13 @@ export default function FAQ() {
             </Head>
 
             <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100">
+                <Breadcrumbs
+                    crumbs={[
+                        { label: 'ホーム', href: '/' },
+                        { label: 'よくあるご質問', href: '/faq' },
+                    ]}
+                />
+
                 <h1 className="text-3xl font-bold mb-8">よくあるご質問</h1>
 
                 <section className="mb-6">

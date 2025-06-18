@@ -15,6 +15,7 @@ import { MatchOpponent, PlayerInfo, TournamentMeta, TournamentYearData } from '@
 import MatchResults from '@/components/Tournament/MatchResults';
 import Statistics from '@/components/Tournament/Statistics';
 import TeamResults from '@/components/Tournament/TeamResults';
+import Breadcrumbs from '@/components/Breadcrumb';
 
 interface TournamentYearResultPageProps {
   year: string;
@@ -189,7 +190,14 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto">
-
+          <Breadcrumbs
+            crumbs={[
+              { label: 'ホーム', href: '/' },
+              { label: '大会結果一覧', href: '/tournaments' },
+              { label: `${meta.name} ${year}年`, href: `/tournaments/${meta.id}/${year}` },
+            ]}
+          />
+        
           {/* ✅ h1 + 大会紹介文 */}
           <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
           <section className="mb-6 px-1">

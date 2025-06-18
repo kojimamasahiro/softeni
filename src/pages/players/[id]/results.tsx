@@ -113,6 +113,20 @@ export default function PlayerResultsPage({
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto space-y-10">
+          <nav aria-label="パンくずリスト" className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            <ol className="list-reset flex flex-wrap space-x-2">
+              <li>
+                <Link href="/" className="hover:underline hover:text-blue-600">ホーム</Link>
+                <span className="mx-1">/</span>
+              </li>
+              <li>
+                <Link href={`/players/${playerId}`} className="hover:underline hover:text-blue-600">{fullName}</Link>
+                <span className="mx-1">/</span>
+              </li>
+              <li className="text-gray-500 dark:text-gray-400">試合結果</li>
+            </ol>
+          </nav>
+
           <header>
             <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
