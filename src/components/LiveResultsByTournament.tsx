@@ -22,7 +22,13 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
     <h2 className="text-xl flex items-center font-semibold mb-4 text-gray-800 dark:text-white">
       大会速報
     </h2>
-    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">{children}</div>
+    <div className="bg-white dark:bg-gray-800 p-4 mb-4 rounded-lg shadow">{children}</div>
+
+    <div className="mb-10">
+      <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
+        ▶︎ 過去の大会結果一覧
+      </Link>
+    </div>
   </section>
 );
 

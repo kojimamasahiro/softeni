@@ -115,12 +115,6 @@ export default function Home({ players }: HomeProps) {
 
             <LiveResultsByTournament playersData={players} />
 
-            <div className="text-right mb-10">
-              <Link href={`/tournaments`} className="text-sm text-blue-500 hover:underline">
-                大会結果一覧
-              </Link>
-            </div>
-
             {/* ✅ 所属別成績 */}
             <section className="mb-12 px-4">
               <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
