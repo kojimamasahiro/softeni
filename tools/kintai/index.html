@@ -46,6 +46,8 @@
         <button onclick="downloadCSV()">CSVダウンロード</button>
     </div>
 
+    <div id="summary" style="margin-top:1.5em; font-weight:bold; font-size:1.1em;"></div>
+
     <table id="logTable">
         <thead>
             <tr>
@@ -58,6 +60,7 @@
         </thead>
         <tbody></tbody>
     </table>
+
 
     <script>
         const KEY = 'kintaiData';
@@ -141,6 +144,36 @@
 
             localStorage.setItem(KEY, JSON.stringify(data));
             render();
+            // トータル勤務時間・日数・平均時間
+            let totalMinutes = 0;
+            let workDays = 0;
+
+            Object.values(data).forEach(row => {
+                if (row.in) {
+                    workDays++;
+                    const assumedOut = row.out || toHHMM(new Date());
+                    const minutes = (toDateObj(assumedOut) - toDateObj(row.in)) / 1000 / 60;
+                    const breakMinutes = row.breaks?.reduce((sum, b) => {
+                        if (b.start && b.end) {
+                            sum += (toDateObj(b.end) - toDateObj(b.start)) / 1000 / 60;
+                        }
+                        return sum;
+                    }, 0) || 0;
+                    totalMinutes += minutes - breakMinutes;
+                }
+            });
+
+            const totalHours = Math.floor(totalMinutes / 60);
+            const totalRemain = Math.round(totalMinutes % 60);
+            const avgMinutes = workDays ? totalMinutes / workDays : 0;
+            const avgHours = Math.floor(avgMinutes / 60);
+            const avgRemain = Math.round(avgMinutes % 60);
+
+            document.getElementById('summary').innerHTML = `
+  🟦 トータル勤務時間：${totalHours}時間${totalRemain}分<br>
+  🟩 勤務日数：${workDays}日<br>
+  🟨 平均労働時間：${avgHours}時間${avgRemain}分/日
+`;
         }
 
         function makeEditableSpan(value, callback) {
@@ -204,7 +237,7 @@
 
                     div.appendChild(makeEditableSpan(b.start || '', val => {
                         b.start = val || '';
-                        if (!b.start && !b.end) row.breaks.splice(i, 1); // 両方空なら削除
+                        if (!b.start && !b.end) row.breaks.splice(i, 1);
                         localStorage.setItem(KEY, JSON.stringify(data));
                         render();
                     }));
@@ -223,7 +256,12 @@
                 tr.appendChild(tdBreaks);
 
                 const tdWork = document.createElement('td');
-                const workTime = (row.in && row.out) ? calcDuration(row.in, row.out, row.breaks) : '';
+                let workTime = '';
+                if (row.in) {
+                    const assumedOut = row.out || toHHMM(new Date());
+                    workTime = calcDuration(row.in, assumedOut, row.breaks);
+                    if (!row.out) workTime += '（暫定）';
+                }
                 tdWork.textContent = workTime;
                 tr.appendChild(tdWork);
 
@@ -248,6 +286,8 @@
         }
 
         render();
+
+        setInterval(render, 60000);
     </script>
 </body>
 
