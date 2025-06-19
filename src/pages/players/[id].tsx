@@ -54,6 +54,7 @@ export default function PlayerInformation({ player, id }: Props) {
         title={`${player.lastName}${player.firstName} 選手情報 | ソフトテニス情報`}
         description={`${player.lastName}${player.firstName}選手のプロフィール、所属、ポジション、生年月日などを掲載しています。`}
         url={`https://softeni-pick.com/players/${id}/information`}
+        image={`https://softeni-pick.com/api/og/player?name=${encodeURIComponent(`${player.lastName} ${player.firstName}`)}`}
       />
 
       <Head>
