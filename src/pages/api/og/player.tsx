@@ -15,16 +15,16 @@ export default function handler(req: NextRequest) {
       <div
         style={{
           position: 'relative',
-          width: '1200px',
-          height: '630px',
+          width: '600px',
+          height: '315px',
           display: 'flex', // ✅ 追加
         }}
       >
         {/* 背景画像 */}
         <img
           src="https://softeni-pick.com/og/base.jpg"
-          width="1200"
-          height="630"
+          width="600"
+          height="315"
           style={{
             position: 'absolute',
             top: 0,
@@ -39,7 +39,7 @@ export default function handler(req: NextRequest) {
             top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            fontSize: 200,
+            fontSize: 100,
             fontWeight: 'bold',
             color: 'white',
             textShadow: '2px 2px 6px rgba(0,0,0,0.6)',
@@ -51,8 +51,8 @@ export default function handler(req: NextRequest) {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      width: 600,
+      height: 315,
     }
   );
 }
