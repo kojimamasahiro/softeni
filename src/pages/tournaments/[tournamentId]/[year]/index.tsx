@@ -123,13 +123,6 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
         }
       }
     }
-    for (const op of match.opponents) {
-      const id = op.playerId || op.tempId;
-      if (!seenPlayers.has(id)) {
-        teamCounter[op.team] = (teamCounter[op.team] || 0) + 1;
-        seenPlayers.add(id);
-      }
-    }
   }
 
   const totalPlayers = seenPlayers.size;
@@ -222,7 +215,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             )}
           </section>
 
-          {/* ✅ チーム別成績（変更なし） */}
+          {/* ✅ チーム別成績 */}
           <TeamResults sortedTeams={sortedTeams} />
 
           <div className="text-right mt-10 mb-2">
