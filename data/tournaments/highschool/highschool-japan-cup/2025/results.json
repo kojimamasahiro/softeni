@@ -1,7 +1,7 @@
 {
-  "status": "scheduled",
-  "scheduledDate": "(6/21)",
-  "startDate": "2025-06-21",
+  "status": "completed",
+  "scheduledDate": "(6/20)",
+  "startDate": "2025-06-20",
   "endDate": "2025-06-22",
   "location": "北海道",
   "results": [],
@@ -2885,6 +2885,150 @@
       },
       "entryNo": 59,
       "name": "田中涼介（都城商）"
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "福田_喜大_上宮"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "高田商",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "植田_璃音_高田商",
+          "originalTeam": "大和高田市立高田商業高等学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "福田喜大（上宮）"
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "植田_璃音_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "福田",
+          "firstName": "喜大",
+          "team": "上宮",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "福田_喜大_上宮",
+          "originalTeam": "上宮高等学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 21,
+      "name": "植田璃音（高田商）"
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "南_龍之介_三重"
+      ],
+      "opponents": [
+        {
+          "lastName": "松尾",
+          "firstName": "航希",
+          "team": "嬉野",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "松尾_航希_嬉野",
+          "originalTeam": "佐賀県立嬉野高等学校塩田校舎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 36,
+      "name": "南龍之介（三重）"
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "松尾_航希_嬉野"
+      ],
+      "opponents": [
+        {
+          "lastName": "南",
+          "firstName": "龍之介",
+          "team": "三重",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "南_龍之介_三重",
+          "originalTeam": "三重高等学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 54,
+      "name": "松尾航希（嬉野）"
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "植田_璃音_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "松尾",
+          "firstName": "航希",
+          "team": "嬉野",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "松尾_航希_嬉野",
+          "originalTeam": "佐賀県立嬉野高等学校塩田校舎"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 21,
+      "name": "植田璃音（高田商）"
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "松尾_航希_嬉野"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "高田商",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "植田_璃音_高田商",
+          "originalTeam": "大和高田市立高田商業高等学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 54,
+      "name": "松尾航希（嬉野）"
     }
   ]
 }

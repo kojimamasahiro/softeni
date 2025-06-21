@@ -18,6 +18,11 @@ const nextConfig = {
         destination: 'https://softeni-pick.com',
         permanent: true,
       },
+      {
+        source: '/tournaments/highschool-japan-cup/:year',
+        destination: '/tournaments/highschool/highschool-japan-cup/:year',
+        permanent: true,
+      },
     ];
   },
 };

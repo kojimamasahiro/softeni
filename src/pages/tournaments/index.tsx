@@ -14,7 +14,13 @@ interface Tournament {
     sortId: number;
 }
 
-export default function TournamentListPage({ tournaments }: { tournaments: Tournament[] }) {
+export default function TournamentListPage({
+    tournaments,
+    highschoolTournaments,
+}: {
+    tournaments: Tournament[];
+    highschoolTournaments: Tournament[];
+}) {
     const pageUrl = `https://softeni-pick.com/tournaments`;
 
     return (
@@ -127,6 +133,31 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
                             ))}
                         </div>
                     </section>
+
+                    {/* 高校カテゴリ */}
+                    <section className="mb-12">
+                        <h2 className="text-xl font-semibold mb-6">高校カテゴリの大会一覧</h2>
+                        <div className="space-y-8">
+                            {highschoolTournaments.map((tournament) => (
+                                <div key={tournament.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 className="text-lg font-semibold mb-4 border-b text-gray-800 dark:text-white">
+                                        {tournament.name}
+                                    </h3>
+                                    <ul className="flex flex-wrap gap-2">
+                                        {tournament.years.map((year) => (
+                                            <li key={year}>
+                                                <Link href={`/tournaments/highschool/${tournament.id}/${year}`}>
+                                                    <span className="inline-block bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                                                        {year}年
+                                                    </span>
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                 </div>
             </main>
         </>
@@ -134,53 +165,56 @@ export default function TournamentListPage({ tournaments }: { tournaments: Tourn
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const basePath = path.join(process.cwd(), 'data/tournaments');
-    const tournamentDirs = fs.readdirSync(basePath);
-    const tournaments: Tournament[] = [];
+    const loadTournaments = (dataDir: string, urlPrefix: string): Tournament[] => {
+        const fullPath = path.join(process.cwd(), dataDir);
+        if (!fs.existsSync(fullPath)) return [];
 
-    for (const tournamentId of tournamentDirs) {
-        const metaPath = path.join(basePath, tournamentId, 'meta.json');
-        const tournamentDir = path.join(basePath, tournamentId);
+        return fs.readdirSync(fullPath).flatMap((tournamentId) => {
+            const metaPath = path.join(fullPath, tournamentId, 'meta.json');
+            const tournamentDir = path.join(fullPath, tournamentId);
+            if (!fs.existsSync(metaPath)) return [];
 
-        if (!fs.existsSync(metaPath)) continue;
+            const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
+            const yearDirs = fs
+                .readdirSync(tournamentDir)
+                .filter((name) =>
+                    /^\d{4}$/.test(name) &&
+                    fs.statSync(path.join(tournamentDir, name)).isDirectory()
+                );
 
-        const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
-        const yearDirs = fs
-            .readdirSync(tournamentDir)
-            .filter((name) =>
-                /^\d{4}$/.test(name) &&
-                fs.statSync(path.join(tournamentDir, name)).isDirectory()
-            );
+            const years: number[] = [];
 
-        const years: number[] = [];
-
-        for (const year of yearDirs) {
-            const dataPath = path.join(tournamentDir, year, 'results.json');
-            try {
-                const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-                if (data.status === 'completed') {
-                    years.push(parseInt(year, 10));
+            for (const year of yearDirs) {
+                const dataPath = path.join(tournamentDir, year, 'results.json');
+                try {
+                    const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+                    if (data.status === 'completed') {
+                        years.push(parseInt(year, 10));
+                    }
+                } catch (err) {
+                    console.warn(`読み込みエラー: ${dataDir}/${tournamentId}/${year}`, err);
                 }
-            } catch (err) {
-                console.warn(`読み込みエラー: ${tournamentId}/${year}`, err);
             }
-        }
 
-        if (years.length > 0) {
-            tournaments.push({
+            if (years.length === 0) return [];
+
+            return [{
                 id: tournamentId,
                 name: meta.name || tournamentId,
-                years: years.sort((a, b) => b - a), // 新→旧
-                sortId: meta.sortId ?? 9999,        // null/undefinedにも対応
-            });
-        }
-    }
+                years: years.sort((a, b) => b - a),
+                sortId: meta.sortId ?? 9999,
+                baseUrl: urlPrefix,
+            }];
+        });
+    };
 
-    tournaments.sort((a, b) => a.sortId - b.sortId);
+    const generalTournaments = loadTournaments('data/tournaments', '/tournaments');
+    const highschoolTournaments = loadTournaments('data/tournaments/highschool', '/tournaments/highschool');
 
     return {
         props: {
-            tournaments,
+            tournaments: generalTournaments.sort((a, b) => a.sortId - b.sortId),
+            highschoolTournaments: highschoolTournaments.sort((a, b) => a.sortId - b.sortId),
         },
     };
 };
