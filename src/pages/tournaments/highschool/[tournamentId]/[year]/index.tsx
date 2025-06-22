@@ -27,7 +27,7 @@ interface TournamentYearResultPageProps {
 }
 
 export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers, hasEntries }: TournamentYearResultPageProps) {
-  const pageUrl = `https://softeni-pick.com/tournaments/${meta.id}/${year}`;
+  const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; // 差分
 
   const teamGroups: Record<string, {
     team: string;
@@ -187,7 +187,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             crumbs={[
               { label: 'ホーム', href: '/' },
               { label: '大会結果一覧', href: '/tournaments' },
-              { label: `${meta.name} ${year}年`, href: `/tournaments/${meta.id}/${year}` },
+              { label: `${meta.name} ${year}年`, href: `/tournaments/highschool/${meta.id}/${year}` }, // ✅ 差分
             ]}
           />
         
@@ -206,7 +206,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             {hasEntries && (
               <p className="mt-2 text-sm">
                 <Link
-                  href={`/tournaments/${meta.id}/${year}/data`}
+                  href={`/tournaments/highschool/${meta.id}/${year}/data`} // ✅ 差分
                   className="text-blue-600 hover:underline"
                 >
                   ▶ 出場選手データ（JSON形式）

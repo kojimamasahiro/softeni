@@ -60,7 +60,7 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
       <MetaHead
         title={`${meta.name} ${year} 大会データ（JSON形式） - ソフトテニス情報`}
         description={`${meta.name} ${year} 年の大会出場選手データ（JSON形式）を掲載。非営利目的の活用が可能です。`}
-        url={`https://softeni-pick.com/tournaments/${tournamentId}/${year}/data`}
+        url={`https://softeni-pick.com/tournaments/highschool/${tournamentId}/${year}/data`} // 差分
         type="article"
       />
 
@@ -74,8 +74,8 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
           crumbs={[
             { label: 'ホーム', href: '/' },
             { label: '大会結果一覧', href: '/tournaments' },
-            { label: `${meta.name} ${year}年`, href: `/tournaments/${tournamentId}/${year}` },
-            { label: '出場選手データ', href: `/tournaments/${tournamentId}/${year}/data` },
+            { label: `${meta.name} ${year}年`, href: `/tournaments/highschool/${tournamentId}/${year}` }, // 差分
+            { label: '出場選手データ', href: `/tournaments/highschool/${tournamentId}/${year}/data` }, // 差分
           ]}
         />
 
@@ -125,9 +125,9 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
           </>
         )}
 
-        {/* ✅ 戻るリンク */}
+        {/* ✅ 戻るリンク 差分 */}
         <div className="mt-6">
-          <Link href={`/tournaments/${tournamentId}/${year}`} className="text-sm text-blue-600 hover:underline">
+          <Link href={`/tournaments/highschool/${tournamentId}/${year}`} className="text-sm text-blue-600 hover:underline">
             大会結果ページ
           </Link>
         </div>
@@ -145,7 +145,7 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const baseDir = path.join(process.cwd(), 'data/tournaments');
+  const baseDir = path.join(process.cwd(), 'data/tournaments/highschool');
   const tournamentIds = fs.readdirSync(baseDir);
 
   const paths: { params: { tournamentId: string; year: string } }[] = [];
@@ -175,16 +175,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { tournamentId, year } = context.params as { tournamentId: string; year: string };
-  const basePath = path.join(process.cwd(), 'data/tournaments', tournamentId);
+  const { tournamentId, year } = context.params as {
+    tournamentId: string;
+    year: string;
+  };
 
-  const meta = JSON.parse(fs.readFileSync(path.join(basePath, 'meta.json'), 'utf-8'));
-  const entries = JSON.parse(fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'));
+  const basePath = path.join(process.cwd(), 'data/tournaments/highschool', tournamentId);
+
+  // meta.json を読み込む（存在チェック付き）
+  const metaPath = path.join(basePath, 'meta.json');
+  const meta = fs.existsSync(metaPath)
+    ? JSON.parse(fs.readFileSync(metaPath, 'utf-8'))
+    : null;
+
+  const entries = JSON.parse(
+    fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8')
+  );
 
   const matchesPath = path.join(basePath, year, 'matches.json');
   const matches = fs.existsSync(matchesPath)
     ? JSON.parse(fs.readFileSync(matchesPath, 'utf-8'))
-    : null; // 存在しなければ null
+    : null;
 
   return {
     props: {

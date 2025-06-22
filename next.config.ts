@@ -23,6 +23,11 @@ const nextConfig = {
         destination: '/tournaments/highschool/highschool-japan-cup/:year',
         permanent: true,
       },
+      {
+        source: '/tournaments/highschool-japan-cup/:year/data',
+        destination: '/tournaments/highschool/highschool-japan-cup/:year/data',
+        permanent: true,
+      },
     ];
   },
 };

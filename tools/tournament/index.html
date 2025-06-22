@@ -365,15 +365,15 @@
 
                         if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
                             resultSummary.push({
-                                pair: winnerArray,
-                                finalRound: ranking.winner,
+                                playerIds: winnerArray,
+                                result: ranking.winner,
                             });
                             resultPairs.add(winnerKey);
                         }
                         if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
                             resultSummary.push({
-                                pair: loserArray,
-                                finalRound: ranking.loser,
+                                playerIds: loserArray,
+                                result: ranking.loser,
                             });
                             resultPairs.add(loserKey);
                         }
