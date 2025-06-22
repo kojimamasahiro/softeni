@@ -4,6 +4,8 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
+
 def parse_date(date_str):
     for fmt in ("%Y年%m月%d日", "%Y/%m/%d"):
         try:
@@ -156,8 +158,8 @@ if __name__ == "__main__":
 
     # 各選手のデータに対して処理
     for player_id in player_ids:
-        input_file = Path(f"data/players/{player_id}/results.json")
-        output_file = Path(f"data/players/{player_id}/analysis.json")
+        input_file = BASE_DIR / "../data" / "players" / player_id / "results.json"
+        output_file = BASE_DIR / "../data" / "players" / player_id / "analysis.json"
 
         if not input_file.exists():
             print(f"[!] {input_file} が見つかりません")

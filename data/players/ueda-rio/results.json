@@ -1,136 +1,251 @@
 {
-    "matches": [
+  "matches": [
+    {
+      "tournament": "第54回 ハイスクールジャパンカップ",
+      "dateRange": "2025年6月20日(金)〜22日(日)",
+      "location": "北海道",
+      "link": "https://www.gosen-sp.jp/hjs/",
+      "format": "tournament",
+      "finalResult": "優勝",
+      "partner": null,
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
         {
-            "tournament": "第32回 全日本シングルス選手権大会",
-            "dateRange": "2025年5月17日(土)~5月18日(日)",
-            "location": "生目の杜運動公園",
-            "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
-            "format": "tournament",
-            "finalResult": "ベスト4",
-            "partner": null,
-            "groupStage": null,
-            "finalStage": null,
-            "results": [
-                {
-                    "round": "2回戦",
-                    "opponent": "松中（JFE西日本福山）",
-                    "opponents": [
-                        {
-                            "name": "松中",
-                            "team": "JFE西日本福山",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-0",
-                    "games": {
-                        "won": "4",
-                        "lost": "0"
-                    }
-                },
-                {
-                    "round": "3回戦",
-                    "opponent": "今城（十八親和銀行）",
-                    "opponents": [
-                        {
-                            "name": "今城",
-                            "team": "十八親和銀行",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-2",
-                    "games": {
-                        "won": "4",
-                        "lost": "2"
-                    }
-                },
-                {
-                    "round": "4回戦",
-                    "opponent": "橋本（ヨシザワクラブ）",
-                    "opponents": [
-                        {
-                            "name": "橋本",
-                            "team": "ヨシザワクラブ",
-                            "playerId": "hasimoto-asahi"
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-2",
-                    "games": {
-                        "won": "4",
-                        "lost": "2"
-                    }
-                },
-                {
-                    "round": "5回戦",
-                    "opponent": "中村（日南学園高校）",
-                    "opponents": [
-                        {
-                            "name": "中村",
-                            "team": "日南学園高校",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-2",
-                    "games": {
-                        "won": "4",
-                        "lost": "2"
-                    }
-                },
-                {
-                    "round": "6回戦",
-                    "opponent": "内田（法政大学）",
-                    "opponents": [
-                        {
-                            "name": "内田",
-                            "team": "法政大学",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-1",
-                    "games": {
-                        "won": "4",
-                        "lost": "1"
-                    }
-                },
-                {
-                    "round": "準々決勝",
-                    "opponent": "岩田（日本体育大学）",
-                    "opponents": [
-                        {
-                            "name": "岩田",
-                            "team": "日本体育大学",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-3",
-                    "games": {
-                        "won": "4",
-                        "lost": "3"
-                    }
-                },
-                {
-                    "round": "準決勝",
-                    "opponent": "上松（ＮＴＴ西日本）",
-                    "opponents": [
-                        {
-                            "name": "上松",
-                            "team": "ＮＴＴ西日本",
-                            "playerId": "uematsu-toshiki"
-                        }
-                    ],
-                    "result": "負け",
-                    "score": "2-4",
-                    "games": {
-                        "won": "2",
-                        "lost": "4"
-                    }
-                }
-            ]
+          "round": "1回戦",
+          "opponent": "古川（帯広農）",
+          "opponents": [
+            {
+              "name": "古川",
+              "team": "帯広農",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "2回戦",
+          "opponent": "善福（霞ヶ浦）",
+          "opponents": [
+            {
+              "name": "善福",
+              "team": "霞ヶ浦",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "下田（長崎南山）",
+          "opponents": [
+            {
+              "name": "下田",
+              "team": "長崎南山",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "五十嵐（とわの森三愛）",
+          "opponents": [
+            {
+              "name": "五十嵐",
+              "team": "とわの森三愛",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "福田（上宮）",
+          "opponents": [
+            {
+              "name": "福田",
+              "team": "上宮",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "決勝",
+          "opponent": "松尾（嬉野）",
+          "opponents": [
+            {
+              "name": "松尾",
+              "team": "嬉野",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
         }
-    ]
+      ]
+    },
+    {
+      "tournament": "第32回 全日本シングルス選手権大会",
+      "dateRange": "2025年5月17日(土)~5月18日(日)",
+      "location": "生目の杜運動公園",
+      "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
+      "format": "tournament",
+      "finalResult": "ベスト4",
+      "partner": null,
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "松中（JFE西日本福山）",
+          "opponents": [
+            {
+              "name": "松中",
+              "team": "JFE西日本福山",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": "4",
+            "lost": "0"
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "今城（十八親和銀行）",
+          "opponents": [
+            {
+              "name": "今城",
+              "team": "十八親和銀行",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": "4",
+            "lost": "2"
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "橋本（ヨシザワクラブ）",
+          "opponents": [
+            {
+              "name": "橋本",
+              "team": "ヨシザワクラブ",
+              "playerId": "hasimoto-asahi"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": "4",
+            "lost": "2"
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "中村（日南学園高校）",
+          "opponents": [
+            {
+              "name": "中村",
+              "team": "日南学園高校",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": "4",
+            "lost": "2"
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "内田（法政大学）",
+          "opponents": [
+            {
+              "name": "内田",
+              "team": "法政大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "岩田（日本体育大学）",
+          "opponents": [
+            {
+              "name": "岩田",
+              "team": "日本体育大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": "4",
+            "lost": "3"
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "上松（ＮＴＴ西日本）",
+          "opponents": [
+            {
+              "name": "上松",
+              "team": "ＮＴＴ西日本",
+              "playerId": "uematsu-toshiki"
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": "2",
+            "lost": "4"
+          }
+        }
+      ]
+    }
+  ]
 }

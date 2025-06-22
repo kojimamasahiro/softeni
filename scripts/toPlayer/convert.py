@@ -2,17 +2,19 @@ import json
 import os
 
 # 設定値
-TOURNAMENT_ID = "zennihon-mix-doubles"
+TOURNAMENT_ID = "highschool-japan-cup"
 YEAR = 2025
-TOURNAMENT_NAME = "第6回 全日本ミックスダブルス選手権大会"
-DATE_RANGE = "2025年6月14日(土)〜15日(日)"
-LOCATION = "広島県"
-LINK = ""
+TOURNAMENT_NAME = "第54回 ハイスクールジャパンカップ"
+DATE_RANGE = "2025年6月20日(金)〜22日(日)"
+LOCATION = "北海道"
+LINK = "https://www.gosen-sp.jp/hjs/"
 FORMAT = "tournament"
 
 # パス
-tournament_path = f"../../data/tournaments/{TOURNAMENT_ID}/{YEAR}/results.json"
-players_dir = "../../data/players"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# tournament_path = os.path.join(BASE_DIR, "../../data/tournaments", TOURNAMENT_ID, str(YEAR), "results.json")
+tournament_path = os.path.join(BASE_DIR, "../../data/tournaments/highschool", TOURNAMENT_ID, str(YEAR), "results.json")
+players_dir = os.path.join(BASE_DIR, "../../../data/players")
 
 # ラウンド順位定義
 def round_rank(round_name):
@@ -45,6 +47,7 @@ if not os.path.exists(tournament_path):
     print(f"[ERROR] ファイルが存在しません: {tournament_path}")
     exit(1)
 
+print(f"[INFO] トーナメントファイル読み込み: {tournament_path}")
 with open(tournament_path, "r", encoding="utf-8") as f:
     tournament_data = json.load(f)
 
@@ -59,25 +62,41 @@ for match in tournament_data["matches"]:
 
     for i, player_id in enumerate(pair_ids):
         if not player_id:
+            print(f"[WARN] 無効な player_id をスキップ: {player_id}")
             continue
 
         player_dir = os.path.join(players_dir, player_id)
         if not os.path.isdir(player_dir):
+            print(f"[WARN] ディレクトリが存在しません: {player_dir}")
             continue
 
         player_path = os.path.join(player_dir, "results.json")
         if os.path.exists(player_path):
             with open(player_path, "r", encoding="utf-8") as f:
                 player_data = json.load(f)
+            print(f"[INFO] 読み込み成功: {player_path}")
         else:
             player_data = {"matches": []}
+            print(f"[INFO] 新規作成: {player_path}")
 
-        raw_partner = pair_ids[1 - i]
-        if os.path.isdir(os.path.join(players_dir, raw_partner)):
-            partner = raw_partner  # playerId として存在
+        # ペアが1人だけの場合の安全処理
+        if len(pair_ids) == 1:
+            raw_partner = None
+        elif len(pair_ids) >= 2:
+            raw_partner = pair_ids[1 - i]
         else:
+            print(f"[WARN] pair_ids が空: {pair_ids}（{match['round']}）をスキップ")
+            continue
+
+        # partner 表記を整形
+        if raw_partner and os.path.isdir(os.path.join(players_dir, raw_partner)):
+            partner = raw_partner
+        elif raw_partner:
             parts = raw_partner.split("_")
             partner = f"{parts[0]} {parts[1]}" if len(parts) >= 2 else raw_partner
+        else:
+            partner = None  # 片方しかいない
+
 
         match_result = {
             "round": match["round"],
@@ -98,13 +117,12 @@ for match in tournament_data["matches"]:
             }
         }
 
-        # 大会エントリを探す or 作成
         existing_match = next((m for m in player_data["matches"] if m["tournament"] == TOURNAMENT_NAME), None)
         if existing_match:
             existing_match["results"].append(match_result)
-            # 昇順ソート
             existing_match["results"].sort(key=lambda r: round_rank(r["round"]))
             existing_match["finalResult"] = determine_final_result(existing_match["results"])
+            print(f"[UPDATE] {player_id} に試合追加 ({match['round']}, {result_str})")
         else:
             new_entry = {
                 "tournament": TOURNAMENT_NAME,
@@ -120,7 +138,10 @@ for match in tournament_data["matches"]:
             }
             new_entry["finalResult"] = determine_final_result(new_entry["results"])
             player_data["matches"].insert(0, new_entry)
+            print(f"[NEW] {player_id} に新規大会追加 ({match['round']}, {result_str})")
 
-        # 保存
         with open(player_path, "w", encoding="utf-8") as f:
             json.dump(player_data, f, ensure_ascii=False, indent=2)
+        print(f"[SAVE] 保存完了: {player_path}")
+
+print("[DONE] 全試合の処理が完了しました。")
