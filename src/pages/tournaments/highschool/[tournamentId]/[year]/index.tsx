@@ -27,7 +27,24 @@ interface TournamentYearResultPageProps {
 }
 
 export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers, hasEntries }: TournamentYearResultPageProps) {
-  const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; // 差分
+  const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; //差分
+
+  const matches = data.matches ?? [];
+  const results = data.results ?? [];
+
+  const hasCategoryField = matches.some((m) => 'category' in m) || results.some((r) => 'category' in r);
+
+  const availableCategories = hasCategoryField
+    ? Array.from(new Set([
+        ...matches.map((m) => m.category).filter(Boolean),
+        ...results.map((r) => r.category).filter(Boolean),
+      ]))
+    : ['default'];
+
+  const [selectedCategory, setSelectedCategory] = useState(availableCategories[0]);
+
+  const filteredMatches = hasCategoryField ? matches.filter((m) => m.category === selectedCategory) : matches;
+  const filteredResults = hasCategoryField ? results.filter((r) => r.category === selectedCategory) : results;
 
   const teamGroups: Record<string, {
     team: string;
@@ -35,7 +52,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
     bestRank: number;
   }> = {};
 
-  for (const entry of data.results ?? []) {
+  for (const entry of filteredResults) {
     const players = entry.playerIds.map((id) => {
       const player = allPlayers.find((p) => p.id === id);
       if (player) {
@@ -77,9 +94,8 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
     return a.team.localeCompare(b.team, 'ja');
   });
 
-  const matches = data.matches ?? [];
   const allNames = [...new Set(matches.map((m) => m.name))];
-  const totalMatches = matches.filter((m) => m.result === 'win').length;
+  const totalMatches = filteredMatches.filter((m) => m.result === 'win').length;
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -99,7 +115,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
   let totalGamesLost = 0;
 
   function findOpponentById(id: string): MatchOpponent | null {
-    for (const match of matches) {
+    for (const match of filteredMatches) {
       for (const op of match.opponents) {
         if (op.playerId === id || op.tempId === id) return op;
       }
@@ -107,7 +123,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
     return null;
   }
 
-  for (const match of matches) {
+  for (const match of filteredMatches) {
     if (match.result === 'win') {
       const won = parseInt(match.games.won, 10);
       const lost = parseInt(match.games.lost, 10);
@@ -190,9 +206,12 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
               { label: `${meta.name} ${year}年`, href: `/tournaments/highschool/${meta.id}/${year}` }, // ✅ 差分
             ]}
           />
-        
-          {/* ✅ h1 + 大会紹介文 */}
-          <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
+
+          <h1 className="text-2xl font-bold mb-4">
+            {meta.name} {year}年
+            {hasCategoryField ? (selectedCategory === 'singles' ? ' シングルス' : selectedCategory === 'doubles' ? ' ダブルス' : ` ${selectedCategory}`) : ''} 大会結果
+          </h1>
+
           <section className="mb-6 px-1">
             <p className="text-lg leading-relaxed mb-2">
               {meta.name}は、{meta.category}カテゴリの主要大会として、全国の強豪選手が集結する注目の大会です。
@@ -206,7 +225,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             {hasEntries && (
               <p className="mt-2 text-sm">
                 <Link
-                  href={`/tournaments/highschool/${meta.id}/${year}/data`} // ✅ 差分
+                  href={`/tournaments/highschool/${meta.id}/${year}/data`}
                   className="text-blue-600 hover:underline"
                 >
                   ▶ 出場選手データ（JSON形式）
@@ -215,7 +234,20 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             )}
           </section>
 
-          {/* ✅ チーム別成績 */}
+          {hasCategoryField && availableCategories.length > 1 && (
+            <div className="flex gap-4 mb-6">
+              {availableCategories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`px-4 py-2 rounded ${cat === selectedCategory ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  {cat === 'singles' ? 'シングルス' : cat === 'doubles' ? 'ダブルス' : cat}
+                </button>
+              ))}
+            </div>
+          )}
+
           <TeamResults sortedTeams={sortedTeams} />
 
           <div className="text-right mt-10 mb-2">
@@ -224,7 +256,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             </Link>
           </div>
 
-          {matches.length > 0 && (
+          {filteredMatches.length > 0 && (
             <>
               <Statistics
                 totalPlayers={totalPlayers}
@@ -235,7 +267,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
                 rankedTeams={rankedTeams}
               />
               <MatchResults
-                matches={matches}
+                matches={filteredMatches}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 suggestions={suggestions}

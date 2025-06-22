@@ -37,7 +37,7 @@ export interface TournamentYearData {
     endDate?: string;
     location?: string;
     url?: string;
-    results: { playerIds: string[]; result: string }[];
+    results: { playerIds: string[]; result: string; category?: string }[];
     matches?: {
         round: string;
         pair: string[];
@@ -46,15 +46,16 @@ export interface TournamentYearData {
         games: { won: string; lost: string };
         entryNo: string;
         name: string;
+        category?: string;
     }[];
 }
 
 export interface MatchOpponent {
-  lastName: string;
-  firstName: string;
-  team: string;
-  playerId: string | null;
-  tempId: string;
+    lastName: string;
+    firstName: string;
+    team: string;
+    playerId: string | null;
+    tempId: string;
 };
 
 export interface TournamentMeta {
