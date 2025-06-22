@@ -166,12 +166,13 @@
 
         function makeEditableSpan(value, callback) {
             const span = document.createElement('span');
-            span.textContent = value;
+            span.textContent = value || '＋'; // 空なら「＋」で表示
             span.style.cursor = 'pointer';
+            span.style.color = value ? 'inherit' : '#aaa';
             span.onclick = () => {
                 const input = document.createElement('input');
                 input.type = 'text';
-                input.value = value;
+                input.value = value || '';
                 input.className = 'time-edit';
                 input.onblur = input.onchange = () => {
                     const newValue = input.value.trim();

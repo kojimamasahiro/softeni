@@ -430,7 +430,9 @@
                     games: {
                         won: p1Score,
                         lost: p2Score
-                    }
+                    },
+                    entryNo: match.p1.id,
+                    name: match.p1.name,
                 });
             }
 
@@ -443,7 +445,9 @@
                     games: {
                         won: p2Score,
                         lost: p1Score,
-                    }
+                    },
+                    entryNo: match.p2.id,
+                    name: match.p2.name,
                 });
             }
 
