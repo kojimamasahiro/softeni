@@ -3,6 +3,7 @@ import { sortMatchesByEntryNo } from '@/lib/utils';
 import { TournamentYearData } from '@/types/tournament';
 import { useState } from 'react';
 
+// 予選敗退の名前一覧を含む構造を受け取るようにする
 interface Props {
   matches: NonNullable<TournamentYearData['matches']>;
   searchQuery: string;
@@ -10,6 +11,10 @@ interface Props {
   suggestions: string[];
   filter: 'all' | 'top8' | 'winners';
   setFilter: (v: 'all' | 'top8' | 'winners') => void;
+  eliminatedEntries?: {
+    name: string;
+    result: '予選敗退';
+  }[];
 }
 
 function MatchGroup({
@@ -27,14 +32,18 @@ function MatchGroup({
   const matchGroup = sortMatchesByEntryNo(matches);
 
   let finalLabel = '';
-  const lastMatch = matchGroup[matchGroup.length - 1];
-  if (lastMatch) {
-    const { round, result } = lastMatch;
-    if (round === '決勝' && result === 'win') finalLabel = '優勝';
-    else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
-    else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
-    else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
-    else if (result === 'lose') finalLabel = `${round}敗退`;
+  if (matches.length === 0) {
+    finalLabel = '予選敗退';
+  } else {
+    const lastMatch = matchGroup[matchGroup.length - 1];
+    if (lastMatch) {
+      const { round, result } = lastMatch;
+      if (round === '決勝' && result === 'win') finalLabel = '優勝';
+      else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
+      else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
+      else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
+      else if (result === 'lose') finalLabel = `${round}敗退`;
+    }
   }
 
   const nameLower = name.toLowerCase();
@@ -70,7 +79,7 @@ function MatchGroup({
         </h3>
       </button>
 
-      {isOpen && (
+      {isOpen && matches.length > 0 && (
         <div className="overflow-x-auto">
           <table className="w-full text-sm table-fixed border-collapse">
             <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
@@ -111,8 +120,14 @@ export default function MatchResults({
   suggestions,
   filter,
   setFilter,
+  eliminatedEntries,
 }: Props) {
-  const groupedNames = [...new Set(sortMatchesByEntryNo(matches).map((m) => m.name))];
+  const groupedNames = [
+    ...new Set([
+      ...sortMatchesByEntryNo(matches).map((m) => m.name),
+      ...(eliminatedEntries?.map((e) => e.name) ?? []),
+    ]),
+  ];
 
   return (
     <section className="mb-10">
@@ -160,15 +175,21 @@ export default function MatchResults({
         </button>
       </div>
 
-      {groupedNames.map((name) => (
-        <MatchGroup
-          key={name}
-          name={name}
-          matches={matches.filter((m) => m.name === name)}
-          searchQuery={searchQuery}
-          filter={filter}
-        />
-      ))}
+      {groupedNames.map((name) => {
+        const matchGroup = matches.filter((m) => m.name === name);
+        const isEliminatedOnly = matchGroup.length === 0;
+
+        return (
+          <MatchGroup
+            key={name}
+            name={name}
+            matches={matchGroup}
+            searchQuery={searchQuery}
+            filter={filter}
+          />
+        );
+      })}
+
     </section>
   );
 }

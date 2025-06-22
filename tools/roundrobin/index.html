@@ -1,3 +1,7 @@
+<!-- % jq '[. as $a | [range(0; $a | length; 3)] 
+    | map({key: ((./3 + 1 | tostring)), value: $a[. : .+3]})
+    | from_entries]' input.json |pbcopy -->
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,8 +14,8 @@
 
 <body>
     <h1>ラウンドロビン試合管理（グループ対応）</h1>
-    <button onclick="onClickGenerate()">出力</button>
     <div id="matches"></div>
+    <button onclick="onClickGenerate()">出力</button>
     <h2>JSON出力</h2>
     <textarea id="jsonOutput"></textarea>
     <script src="initialPlayer.js"></script>
@@ -44,6 +48,8 @@
                 else match.winner = null;
             }
         }
+        // 1. 最初に matchesDiv に1回だけイベントを仕込む
+        let eventRegistered = false;
 
         function displayMatches() {
             const matchesDiv = document.getElementById("matches");
@@ -57,59 +63,64 @@
                 allGroupMatches[group].forEach((match, i) => {
                     const div = document.createElement("div");
                     div.className = "match-result";
-                    const matchId = `${group}-${i}`;
-
-                    const renderButtons = (playerKey) => {
-                        return [0, 1, 2, 3, 4, 5].map(score => {
-                            const selected = match.scores[playerKey] === score ? "selected" : "";
-                            return `<button data-match='${matchId}' data-player='${playerKey}' data-score='${score}' class='score-button ${selected}'>${score}</button>`;
-                        }).join("") +
-                            `<button class='retire-button' data-match='${matchId}' data-player='${playerKey}'>R</button>`;
-                    };
-
-                    div.innerHTML = `
-            <strong>試合 ${i + 1}</strong><br />
-            <div>${match.p1.name} vs ${match.p2.name}</div>
-            <div>
-              ${renderButtons("p1")} <span>← ${match.p1.name}</span>
-            </div>
-            <div>
-              ${renderButtons("p2")} <span>← ${match.p2.name}</span>
-            </div>
-            <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? match.p1.name : match.winner === match.p2.id ? match.p2.name : "未定"}</span></div>
-          `;
-
+                    div.dataset.match = `${group}-${i}`; // データ属性に保持
+                    div.innerHTML = renderMatchHtml(match, i);
                     matchesDiv.appendChild(div);
                 });
             }
 
-            matchesDiv.addEventListener("click", (e) => {
-                const target = e.target;
-                if (target.classList.contains("score-button")) {
-                    const [group, idx] = target.dataset.match.split("-");
-                    const match = allGroupMatches[group][parseInt(idx)];
-                    const player = target.dataset.player;
-                    const score = parseInt(target.dataset.score);
-                    match.scores[player] = score;
+            // クリックイベントは一度だけ登録
+            if (!eventRegistered) {
+                document.getElementById("matches").addEventListener("click", handleScoreClick);
+                eventRegistered = true;
+            }
+        }
 
-                    updateWinner(match);
-                    updateJsonOutput();
-                    displayMatches();
-                } else if (target.classList.contains("retire-button")) {
-                    const [group, idx] = target.dataset.match.split("-");
-                    const match = allGroupMatches[group][parseInt(idx)];
-                    const player = target.dataset.player;
-                    const opponent = player === "p1" ? "p2" : "p1";
+        function renderMatchHtml(match, i) {
+            i = parseInt(i);
+            const matchId = match.group + "-" + i;
+            const renderButtons = (playerKey) => {
+                return [0, 1, 2, 3, 4, 5].map(score => {
+                    const selected = match.scores[playerKey] === score ? "selected" : "";
+                    return `<button data-match='${matchId}' data-player='${playerKey}' data-score='${score}' class='score-button ${selected}'>${score}</button>`;
+                }).join("") +
+                    `<button class='retire-button' data-match='${matchId}' data-player='${playerKey}'>R</button>`;
+            };
 
-                    match[player].retired = true;
-                    match.scores[player] = 0;
-                    match.scores[opponent] = 5;
-                    match.winner = match[opponent].id;
+            return `
+        <strong>試合 ${i + 1}</strong><br />
+        <div>${match.p1.name} vs ${match.p2.name}</div>
+        <div>${renderButtons("p1")} <span>← ${match.p1.name}</span></div>
+        <div>${renderButtons("p2")} <span>← ${match.p2.name}</span></div>
+        <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? match.p1.name : match.winner === match.p2.id ? match.p2.name : "未定"}</span></div>
+    `;
+        }
 
-                    updateJsonOutput();
-                    displayMatches();
-                }
-            });
+        function handleScoreClick(e) {
+            const target = e.target;
+            if (!target.dataset.match) return;
+
+            const [group, idx] = target.dataset.match.split("-");
+            const match = allGroupMatches[group][parseInt(idx)];
+            const matchDiv = document.querySelector(`.match-result[data-match="${group}-${idx}"]`);
+
+            if (target.classList.contains("score-button")) {
+                const player = target.dataset.player;
+                const score = parseInt(target.dataset.score);
+                match.scores[player] = score;
+                updateWinner(match);
+                matchDiv.innerHTML = renderMatchHtml(match, idx);
+                updateJsonOutput();
+            } else if (target.classList.contains("retire-button")) {
+                const player = target.dataset.player;
+                const opponent = player === "p1" ? "p2" : "p1";
+                match[player].retired = true;
+                match.scores[player] = 0;
+                match.scores[opponent] = 5;
+                match.winner = match[opponent].id;
+                matchDiv.innerHTML = renderMatchHtml(match, idx);
+                updateJsonOutput();
+            }
         }
 
         function updateJsonOutput() {
@@ -128,13 +139,18 @@
                     const p1Score = String(match.scores.p1);
                     const p2Score = String(match.scores.p2);
 
+                    const category = "doubles";
+
                     if (p1IsValid) {
                         output.matches.push({
                             group,
                             pair: p1Ids,
                             opponents: match.p2.information,
                             result: match.winner === match.p1.id ? "win" : "lose",
-                            games: { won: p1Score, lost: p2Score }
+                            games: { won: p1Score, lost: p2Score },
+                            entryNo: match.p1.id,
+                            name: match.p1.name,
+                            category: category
                         });
                     }
 
@@ -144,7 +160,10 @@
                             pair: p2Ids,
                             opponents: match.p1.information,
                             result: match.winner === match.p2.id ? "win" : "lose",
-                            games: { won: p2Score, lost: p1Score }
+                            games: { won: p2Score, lost: p1Score },
+                            entryNo: match.p2.id,
+                            name: match.p2.name,
+                            category: category
                         });
                     }
                 }

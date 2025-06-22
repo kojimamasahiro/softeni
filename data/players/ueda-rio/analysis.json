@@ -1,15 +1,29 @@
 {
-  "totalMatches": 13,
-  "wins": 12,
+  "totalMatches": 20,
+  "wins": 19,
   "losses": 1,
-  "totalWinRate": 0.923,
+  "totalWinRate": 0.95,
   "games": {
-    "total": 65,
-    "won": 50,
-    "lost": 15,
-    "gameRate": 0.769
+    "total": 103,
+    "won": 78,
+    "lost": 25,
+    "gameRate": 0.757
   },
   "byPartner": {
+    "荻谷 侑磨": {
+      "matches": {
+        "total": 7,
+        "wins": 7,
+        "losses": 0,
+        "winRate": 1.0
+      },
+      "games": {
+        "total": 38,
+        "won": 28,
+        "lost": 10,
+        "gameRate": 0.737
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 13,
@@ -28,16 +42,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 13,
-        "wins": 12,
+        "total": 20,
+        "wins": 19,
         "losses": 1,
-        "winRate": 0.923
+        "winRate": 0.95
       },
       "games": {
-        "total": 65,
-        "won": 50,
-        "lost": 15,
-        "gameRate": 0.769
+        "total": 103,
+        "won": 78,
+        "lost": 25,
+        "gameRate": 0.757
       }
     }
   }

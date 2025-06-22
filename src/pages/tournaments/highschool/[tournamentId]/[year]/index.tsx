@@ -36,28 +36,40 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
   const availableCategories = hasCategoryField
     ? Array.from(new Set([
-        ...matches.map((m) => m.category).filter(Boolean),
-        ...results.map((r) => r.category).filter(Boolean),
-      ]))
+      ...matches.map((m) => m.category).filter(Boolean),
+      ...results.map((r) => r.category).filter(Boolean),
+    ]))
     : ['default'];
 
   const [selectedCategory, setSelectedCategory] = useState(availableCategories[0]);
 
-useEffect(() => {
-  if (!hasCategoryField) return;
-  const hash = window.location.hash.replace('#', '');
-  if (availableCategories.includes(hash)) {
-    setSelectedCategory(hash);
-  }
-}, []);
+  useEffect(() => {
+    if (!hasCategoryField) return;
+    const hash = window.location.hash.replace('#', '');
+    if (availableCategories.includes(hash)) {
+      setSelectedCategory(hash);
+    }
+  }, []);
 
-useEffect(() => {
-  if (!hasCategoryField) return;
-  history.replaceState(null, '', `#${selectedCategory}`);
-}, [selectedCategory]);
+  useEffect(() => {
+    if (!hasCategoryField) return;
+    history.replaceState(null, '', `#${selectedCategory}`);
+  }, [selectedCategory]);
 
   const filteredMatches = hasCategoryField ? matches.filter((m) => m.category === selectedCategory) : matches;
   const filteredResults = hasCategoryField ? results.filter((r) => r.category === selectedCategory) : results;
+const eliminatedEntries = results
+  .filter((r) => r.result === '予選敗退')
+  .map((r) => {
+    const playerNames = r.playerIds.map((id) => {
+      const p = allPlayers.find((x) => x.id === id);
+      return p ? `${p.lastName}${p.firstName}（${p.team}）` : id;
+    });
+    return {
+      name: playerNames.join('・'),
+      result: '予選敗退',
+    };
+  });
 
   const teamGroups: Record<string, {
     team: string;
@@ -220,10 +232,10 @@ useEffect(() => {
             ]}
           />
 
-<h1 id={hasCategoryField ? selectedCategory : undefined} className="text-2xl font-bold mb-4">
-  {meta.name} {year}年
-  {hasCategoryField ? (selectedCategory === 'singles' ? ' シングルス' : selectedCategory === 'doubles' ? ' ダブルス' : ` ${selectedCategory}`) : ''} 大会結果
-</h1>
+          <h1 id={hasCategoryField ? selectedCategory : undefined} className="text-2xl font-bold mb-4">
+            {meta.name} {year}年
+            {hasCategoryField ? (selectedCategory === 'singles' ? ' シングルス' : selectedCategory === 'doubles' ? ' ダブルス' : ` ${selectedCategory}`) : ''} 大会結果
+          </h1>
 
           <section className="mb-6 px-1">
             <p className="text-lg leading-relaxed mb-2">
@@ -249,17 +261,17 @@ useEffect(() => {
 
           {hasCategoryField && availableCategories.length > 1 && (
             <div className="flex gap-4 mb-6">
-{availableCategories.map((cat) => (
-  <button
-    key={cat}
-    className={`px-4 py-2 rounded ${cat === selectedCategory ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
-    onClick={() => setSelectedCategory(cat)}
-  >
-    <a href={`#${cat}`}>
-      {cat === 'singles' ? 'シングルス' : cat === 'doubles' ? 'ダブルス' : cat}
-    </a>
-  </button>
-))}
+              {availableCategories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`px-4 py-2 rounded ${cat === selectedCategory ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  <a href={`#${cat}`}>
+                    {cat === 'singles' ? 'シングルス' : cat === 'doubles' ? 'ダブルス' : cat}
+                  </a>
+                </button>
+              ))}
             </div>
           )}
 
@@ -281,14 +293,15 @@ useEffect(() => {
                 totalGamesLost={totalGamesLost}
                 rankedTeams={rankedTeams}
               />
-              <MatchResults
-                matches={filteredMatches}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                suggestions={suggestions}
-                filter={filter}
-                setFilter={setFilter}
-              />
+<MatchResults
+  matches={filteredMatches}
+  searchQuery={searchQuery}
+  setSearchQuery={setSearchQuery}
+  suggestions={suggestions}
+  filter={filter}
+  setFilter={setFilter}
+  eliminatedEntries={eliminatedEntries}
+/>
             </>
           )}
         </div>
@@ -333,6 +346,49 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const entriesPath = path.join(basePath, tournamentId, year, 'entries.json');
     const hasEntries = fs.existsSync(entriesPath);
+
+    let entriesByCategory: Record<string, { entryNo: number; playerIds: string[] }[]> = {};
+    if (hasEntries) {
+      const raw = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
+      for (const category of Object.keys(raw)) {
+        entriesByCategory[category] = raw[category].map((e: any) => ({
+          entryNo: Number(e.entryNo || e.id),
+          playerIds: e.information?.map((info: any) => info.playerId || info.tempId).filter(Boolean) ?? [],
+        }));
+      }
+    }
+
+    // ✅ standings → "予選敗退" 処理（カテゴリ別に対応）
+    if (data.standings && data.results) {
+      const existingKeySet = new Set(
+        (data.results as { playerIds: string[] }[]).map((r) => r.playerIds.join(','))
+      );
+
+      for (const category of Object.keys(data.standings)) {
+        const groups = data.standings[category];
+        const entries = entriesByCategory[category] ?? [];
+
+        for (const group of Object.values(groups)) {
+          for (const entry of group as any[]) {
+            const entryNo = Number(entry.id);
+            const matchedEntry = entries.find((e) => e.entryNo === entryNo);
+            if (!matchedEntry || matchedEntry.playerIds.length === 0) continue;
+
+            const key = matchedEntry.playerIds.join(',');
+            const alreadyExists = existingKeySet.has(key);
+
+            if (!alreadyExists && entry.rank > 1) {
+              data.results.push({
+                playerIds: matchedEntry.playerIds,
+                result: '予選敗退',
+                category: category,
+              });
+              existingKeySet.add(key);
+            }
+          }
+        }
+      }
+    }
 
     return {
       props: {

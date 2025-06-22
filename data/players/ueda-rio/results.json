@@ -1,8 +1,240 @@
 {
   "matches": [
     {
-      "tournament": "第54回 ハイスクールジャパンカップ",
-      "dateRange": "2025年6月20日(金)〜22日(日)",
+      "tournament": "第54回 ハイスクールジャパンカップ（ダブルス）",
+      "dateRange": "2025年6月21日(土)〜22日(日)",
+      "location": "北海道",
+      "link": "https://www.gosen-sp.jp/hjs/",
+      "format": "combined",
+      "finalResult": "優勝",
+      "partner": "荻谷 侑磨",
+      "groupStage": {
+        "format": "round-robin",
+        "group": "グループ20",
+        "results": [
+          {
+            "round": "第1戦",
+            "opponent": "中山・中島（筑紫台）",
+            "opponents": [
+              {
+                "lastName": "中山",
+                "firstName": "太稀",
+                "team": "筑紫台",
+                "prefecture": "福岡",
+                "playerId": null,
+                "tempId": "中山_太稀_筑紫台",
+                "originalTeam": "筑紫台高等学校"
+              },
+              {
+                "lastName": "中島",
+                "firstName": "遥斗",
+                "team": "筑紫台",
+                "prefecture": "福岡",
+                "playerId": null,
+                "tempId": "中島_遥斗_筑紫台",
+                "originalTeam": "筑紫台高等学校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-1",
+            "games": {
+              "won": "4",
+              "lost": "1"
+            }
+          },
+          {
+            "round": "第2戦",
+            "opponent": "萩原・川内（鹿児島商）",
+            "opponents": [
+              {
+                "lastName": "萩原",
+                "firstName": "填ノ祐",
+                "team": "鹿児島商",
+                "prefecture": "鹿児島",
+                "playerId": null,
+                "tempId": "萩原_填ノ祐_鹿児島商",
+                "originalTeam": "鹿児島商業高等学校"
+              },
+              {
+                "lastName": "川内",
+                "firstName": "聡一郎",
+                "team": "鹿児島商",
+                "prefecture": "鹿児島",
+                "playerId": null,
+                "tempId": "川内_聡一郎_鹿児島商",
+                "originalTeam": "鹿児島商業高等学校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-3",
+            "games": {
+              "won": "4",
+              "lost": "3"
+            }
+          }
+        ]
+      },
+      "finalStage": {
+        "format": "tournament",
+        "results": [
+  {
+    "round": "1回戦",
+    "opponent": "下森・外田（文徳）",
+    "opponents": [
+      {
+        "lastName": "下森",
+        "firstName": "吏",
+        "team": "文徳",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "下森_吏_文徳",
+        "originalTeam": "文徳高等学校"
+      },
+      {
+        "lastName": "外田",
+        "firstName": "悠斗",
+        "team": "文徳",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "外田_悠斗_文徳",
+        "originalTeam": "文徳高等学校"
+      }
+    ],
+    "result": "勝ち",
+    "score": "4-3",
+    "games": {
+      "won": 4,
+      "lost": 3
+    }
+  },
+  {
+    "round": "2回戦",
+    "opponent": "善福・白川（霞ヶ浦）",
+    "opponents": [
+      {
+        "lastName": "善福",
+        "firstName": "留生",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "善福_留生_霞ヶ浦",
+        "originalTeam": "霞ヶ浦高等学校"
+      },
+      {
+        "lastName": "白川",
+        "firstName": "隼平",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "白川_隼平_霞ヶ浦",
+        "originalTeam": "霞ヶ浦高等学校"
+      }
+    ],
+    "result": "勝ち",
+    "score": "4-0",
+    "games": {
+      "won": 4,
+      "lost": 0
+    }
+  },
+  {
+    "round": "準々決勝",
+    "opponent": "柴田・百武（享栄）",
+    "opponents": [
+      {
+        "lastName": "柴田",
+        "firstName": "海音",
+        "team": "享栄",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "柴田_海音_享栄",
+        "originalTeam": "享栄高校"
+      },
+      {
+        "lastName": "百武",
+        "firstName": "駿",
+        "team": "享栄",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "百武_駿_享栄",
+        "originalTeam": "享栄高校"
+      }
+    ],
+    "result": "勝ち",
+    "score": "4-1",
+    "games": {
+      "won": 4,
+      "lost": 1
+    }
+  },
+  {
+    "round": "準決勝",
+    "opponent": "岩田・栗岡（市尼崎）",
+    "opponents": [
+      {
+        "lastName": "岩田",
+        "firstName": "悠聖",
+        "team": "市尼崎",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "岩田_悠聖_市尼崎",
+        "originalTeam": "尼崎市立尼崎高等学校"
+      },
+      {
+        "lastName": "栗岡",
+        "firstName": "優志",
+        "team": "市尼崎",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "栗岡_優志_市尼崎",
+        "originalTeam": "尼崎市立尼崎高等学校"
+      }
+    ],
+    "result": "勝ち",
+    "score": "4-1",
+    "games": {
+      "won": 4,
+      "lost": 1
+    }
+  },
+  {
+    "round": "決勝",
+    "opponent": "白井・千田（東北）",
+    "opponents": [
+      {
+        "lastName": "白井",
+        "firstName": "颯",
+        "team": "東北",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "白井_颯_東北",
+        "originalTeam": "東北高等学校"
+      },
+      {
+        "lastName": "千田",
+        "firstName": "夏輝",
+        "team": "東北",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "千田_夏輝_東北",
+        "originalTeam": "東北高等学校"
+      }
+    ],
+    "result": "勝ち",
+    "score": "4-1",
+    "games": {
+      "won": 4,
+      "lost": 1
+    }
+  }
+]
+
+      },
+      "results": null
+    },
+    {
+      "tournament": "第54回 ハイスクールジャパンカップ（シングルス）",
+      "dateRange": "2025年6月20日(金)〜21日(土)",
       "location": "北海道",
       "link": "https://www.gosen-sp.jp/hjs/",
       "format": "tournament",
