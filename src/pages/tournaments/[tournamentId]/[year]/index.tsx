@@ -241,6 +241,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
                 suggestions={suggestions}
                 filter={filter}
                 setFilter={setFilter}
+                eliminatedEntries={[]}
               />
             </>
           )}
