@@ -58,18 +58,18 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
   const filteredMatches = hasCategoryField ? matches.filter((m) => m.category === selectedCategory) : matches;
   const filteredResults = hasCategoryField ? results.filter((r) => r.category === selectedCategory) : results;
-const eliminatedEntries = results
-  .filter((r) => r.result === '予選敗退')
-  .map((r) => {
-    const playerNames = r.playerIds.map((id) => {
-      const p = allPlayers.find((x) => x.id === id);
-      return p ? `${p.lastName}${p.firstName}（${p.team}）` : id;
+  const eliminatedEntries = results
+    .filter((r) => r.result === '予選敗退')
+    .map((r) => {
+      const playerNames = r.playerIds.map((id) => {
+        const p = allPlayers.find((x) => x.id === id);
+        return p ? `${p.lastName}${p.firstName}（${p.team}）` : id;
+      });
+      return {
+        name: playerNames.join('・'),
+        result: '予選敗退',
+      };
     });
-    return {
-      name: playerNames.join('・'),
-      result: '予選敗退',
-    };
-  });
 
   const teamGroups: Record<string, {
     team: string;
@@ -293,15 +293,15 @@ const eliminatedEntries = results
                 totalGamesLost={totalGamesLost}
                 rankedTeams={rankedTeams}
               />
-<MatchResults
-  matches={filteredMatches}
-  searchQuery={searchQuery}
-  setSearchQuery={setSearchQuery}
-  suggestions={suggestions}
-  filter={filter}
-  setFilter={setFilter}
-  eliminatedEntries={eliminatedEntries}
-/>
+              <MatchResults
+                matches={filteredMatches}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                suggestions={suggestions}
+                filter={filter}
+                setFilter={setFilter}
+                eliminatedEntries={eliminatedEntries}
+              />
             </>
           )}
         </div>

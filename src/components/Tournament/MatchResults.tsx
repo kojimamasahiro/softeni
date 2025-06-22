@@ -11,10 +11,7 @@ interface Props {
   suggestions: string[];
   filter: 'all' | 'top8' | 'winners';
   setFilter: (v: 'all' | 'top8' | 'winners') => void;
-  eliminatedEntries?: {
-    name: string;
-    result: '予選敗退';
-  }[];
+  eliminatedEntries?: { name: string; result: string }[];
 }
 
 function MatchGroup({
