@@ -6,17 +6,23 @@ export const getAllTournaments = (): TournamentSummary[] => {
   const tournamentsPath = path.join(process.cwd(), 'data', 'tournaments');
   const tournamentDirs = fs.readdirSync(tournamentsPath);
 
-  const allTournaments = tournamentDirs.map((tournamentId) => {
-    const metaPath = path.join(tournamentsPath, tournamentId, 'meta.json');
+  const allTournaments: TournamentSummary[] = [];
+
+  for (const tournamentId of tournamentDirs) {
     const tournamentDir = path.join(tournamentsPath, tournamentId);
+    const metaPath = path.join(tournamentDir, 'meta.json');
+
+    // meta.jsonがなければスキップ（中間フォルダ対応）
+    if (!fs.existsSync(metaPath)) continue;
+
+    const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
+
     const yearDirs = fs
       .readdirSync(tournamentDir)
       .filter((name) =>
         /^\d{4}$/.test(name) &&
         fs.statSync(path.join(tournamentDir, name)).isDirectory()
       );
-
-    const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
 
     const years = yearDirs.map((year) => {
       const data = JSON.parse(
@@ -28,12 +34,12 @@ export const getAllTournaments = (): TournamentSummary[] => {
       return { year, ...data };
     });
 
-    return {
+    allTournaments.push({
       id: tournamentId,
       meta,
       years,
-    };
-  });
+    });
+  }
 
   return allTournaments;
 };
