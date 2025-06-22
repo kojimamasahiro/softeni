@@ -29,7 +29,10 @@ interface TournamentYearResultPageProps {
 export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers, hasEntries }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; //差分
 
-  const matches = data.matches ?? [];
+  const tournamentMatches = data.matches ?? [];
+  const roundRobinMatches = data.roundRobinMatches ?? [];
+
+  const matches = [...roundRobinMatches, ...tournamentMatches];
   const results = data.results ?? [];
 
   const hasCategoryField = matches.some((m) => 'category' in m) || results.some((r) => 'category' in r);
@@ -58,18 +61,26 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
   const filteredMatches = hasCategoryField ? matches.filter((m) => m.category === selectedCategory) : matches;
   const filteredResults = hasCategoryField ? results.filter((r) => r.category === selectedCategory) : results;
-  const eliminatedEntries = results
-    .filter((r) => r.result === '予選敗退')
-    .map((r) => {
-      const playerNames = r.playerIds.map((id) => {
-        const p = allPlayers.find((x) => x.id === id);
-        return p ? `${p.lastName}${p.firstName}（${p.team}）` : id;
-      });
-      return {
-        name: playerNames.join('・'),
-        result: '予選敗退',
-      };
+
+  const tournamentMatchSet = new Set(
+    tournamentMatches.map((m) => `${m.name}|${m.category ?? 'default'}`)
+  );
+
+  const roundRobinMatchSet = new Set(
+    roundRobinMatches.map((m) => `${m.name}|${m.category ?? 'default'}`)
+  );
+
+  // RoundRobin にいて Tournament にいない = 予選敗退
+  const eliminatedEntries = [...roundRobinMatchSet]
+    .filter((key) => !tournamentMatchSet.has(key))
+    .map((key) => {
+      const [name, category] = key.split('|');
+      return { name, result: '予選敗退', category };
     });
+
+  const filteredEliminatedEntries = hasCategoryField
+    ? eliminatedEntries.filter((e) => e.category === selectedCategory)
+    : eliminatedEntries;
 
   const teamGroups: Record<string, {
     team: string;
@@ -300,7 +311,7 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
                 suggestions={suggestions}
                 filter={filter}
                 setFilter={setFilter}
-                eliminatedEntries={eliminatedEntries}
+                eliminatedEntries={filteredEliminatedEntries}
               />
             </>
           )}

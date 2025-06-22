@@ -11,7 +11,7 @@ interface Props {
   suggestions: string[];
   filter: 'all' | 'top8' | 'winners';
   setFilter: (v: 'all' | 'top8' | 'winners') => void;
-  eliminatedEntries?: { name: string; result: string }[];
+  eliminatedEntries: { name: string; result: string }[];
 }
 
 function MatchGroup({
@@ -19,18 +19,20 @@ function MatchGroup({
   matches,
   searchQuery,
   filter,
+  eliminatedLabel,
 }: {
   name: string;
   matches: NonNullable<TournamentYearData['matches']>;
   searchQuery: string;
   filter: 'all' | 'top8' | 'winners';
+  eliminatedLabel?: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const matchGroup = sortMatchesByEntryNo(matches);
 
   let finalLabel = '';
-  if (matches.length === 0) {
-    finalLabel = '予選敗退';
+  if (eliminatedLabel) {
+    finalLabel = eliminatedLabel;
   } else {
     const lastMatch = matchGroup[matchGroup.length - 1];
     if (lastMatch) {
@@ -76,36 +78,43 @@ function MatchGroup({
         </h3>
       </button>
 
-      {isOpen && matches.length > 0 && (
+      {isOpen && (
         <div className="overflow-x-auto">
-          <table className="w-full text-sm table-fixed border-collapse">
-            <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
-              <tr>
-                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
-                <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
-                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">勝敗</th>
-                <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchGroup.map((m, i) => (
-                <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
-                  <td className="px-4 py-2 break-words">{m.round}</td>
-                  <td className="px-4 py-2 break-words">
-                    {m.opponents.map((op, j) => (
-                      <span key={j}>
-                        {op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}
-                      </span>
-                    ))}
-                  </td>
-                  <td className="px-4 py-2">{m.result === 'win' ? '勝ち' : '負け'}</td>
-                  <td className="px-4 py-2">{m.games.won}-{m.games.lost}</td>
+          {matches.length > 0 ? (
+            <table className="w-full text-sm table-fixed border-collapse">
+              <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+                <tr>
+                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
+                  <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
+                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">勝敗</th>
+                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {matchGroup.map((m, i) => (
+                  <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
+                    <td className="px-4 py-2 break-words">{m.round}</td>
+                    <td className="px-4 py-2 break-words">
+                      {m.opponents.map((op, j) => (
+                        <span key={j}>
+                          {op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}
+                        </span>
+                      ))}
+                    </td>
+                    <td className="px-4 py-2">{m.result === 'win' ? '勝ち' : '負け'}</td>
+                    <td className="px-4 py-2">{m.games.won}-{m.games.lost}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="px-4 py-4 text-sm text-gray-600 dark:text-gray-300">
+              ラウンドロビン敗退のため、トーナメント進出はありませんでした。
+            </div>
+          )}
         </div>
       )}
+
     </div>
   );
 }
@@ -174,7 +183,9 @@ export default function MatchResults({
 
       {groupedNames.map((name) => {
         const matchGroup = matches.filter((m) => m.name === name);
-        const isEliminatedOnly = matchGroup.length === 0;
+        const eliminatedResult = Array.isArray(eliminatedEntries)
+          ? eliminatedEntries.find((e) => e.name === name)?.result || ''
+          : '';
 
         return (
           <MatchGroup
@@ -183,10 +194,10 @@ export default function MatchResults({
             matches={matchGroup}
             searchQuery={searchQuery}
             filter={filter}
+            eliminatedLabel={eliminatedResult}
           />
         );
       })}
-
     </section>
   );
 }

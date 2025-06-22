@@ -48,6 +48,16 @@ export interface TournamentYearData {
         name: string;
         category?: string;
     }[];
+    roundRobinMatches?: {
+        round: string;
+        pair: string[];
+        opponents: MatchOpponent[];
+        result: 'win' | 'lose';
+        games: { won: string; lost: string };
+        entryNo: string;
+        name: string;
+        category?: string;
+    }[];
 }
 
 export interface MatchOpponent {
