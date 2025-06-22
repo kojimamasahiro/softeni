@@ -43,6 +43,19 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
   const [selectedCategory, setSelectedCategory] = useState(availableCategories[0]);
 
+useEffect(() => {
+  if (!hasCategoryField) return;
+  const hash = window.location.hash.replace('#', '');
+  if (availableCategories.includes(hash)) {
+    setSelectedCategory(hash);
+  }
+}, []);
+
+useEffect(() => {
+  if (!hasCategoryField) return;
+  history.replaceState(null, '', `#${selectedCategory}`);
+}, [selectedCategory]);
+
   const filteredMatches = hasCategoryField ? matches.filter((m) => m.category === selectedCategory) : matches;
   const filteredResults = hasCategoryField ? results.filter((r) => r.category === selectedCategory) : results;
 
@@ -207,10 +220,10 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             ]}
           />
 
-          <h1 className="text-2xl font-bold mb-4">
-            {meta.name} {year}年
-            {hasCategoryField ? (selectedCategory === 'singles' ? ' シングルス' : selectedCategory === 'doubles' ? ' ダブルス' : ` ${selectedCategory}`) : ''} 大会結果
-          </h1>
+<h1 id={hasCategoryField ? selectedCategory : undefined} className="text-2xl font-bold mb-4">
+  {meta.name} {year}年
+  {hasCategoryField ? (selectedCategory === 'singles' ? ' シングルス' : selectedCategory === 'doubles' ? ' ダブルス' : ` ${selectedCategory}`) : ''} 大会結果
+</h1>
 
           <section className="mb-6 px-1">
             <p className="text-lg leading-relaxed mb-2">
@@ -236,15 +249,17 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
 
           {hasCategoryField && availableCategories.length > 1 && (
             <div className="flex gap-4 mb-6">
-              {availableCategories.map((cat) => (
-                <button
-                  key={cat}
-                  className={`px-4 py-2 rounded ${cat === selectedCategory ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
-                  onClick={() => setSelectedCategory(cat)}
-                >
-                  {cat === 'singles' ? 'シングルス' : cat === 'doubles' ? 'ダブルス' : cat}
-                </button>
-              ))}
+{availableCategories.map((cat) => (
+  <button
+    key={cat}
+    className={`px-4 py-2 rounded ${cat === selectedCategory ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+    onClick={() => setSelectedCategory(cat)}
+  >
+    <a href={`#${cat}`}>
+      {cat === 'singles' ? 'シングルス' : cat === 'doubles' ? 'ダブルス' : cat}
+    </a>
+  </button>
+))}
             </div>
           )}
 
