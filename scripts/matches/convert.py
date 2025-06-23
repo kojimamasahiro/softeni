@@ -22,55 +22,76 @@ def get_round_order(round_str):
     match = re.search(r"(\d+)", round_str)
     return int(match.group(1)) if match else float('inf')
 
+def normalize_pair(pair):
+    result = []
+    for pid in pair:
+        if isinstance(pid, str) and "_" in pid:
+            # おそらく tempId（tempId は名字_名前_所属の形式）
+            result.append({"playerId": None, "tempId": pid})
+        else:
+            # playerId 形式（例: ueda-rio など）
+            result.append({"playerId": pid})
+    return result
+
 # JSONデータ読み込み
 with open('input.json', 'r', encoding='utf-8') as f:
     matches = json.load(f)
 
-# 対戦カードでグループ化
-match_map = defaultdict(list)
-
+# categoryごとに分割
+matches_by_category = defaultdict(list)
 for match in matches:
-    pair_ids = get_ids([{"playerId": None, "tempId": pid} for pid in match["pair"]])
-    opponent_ids = get_ids(match["opponents"])
-    key = tuple(sorted([pair_ids, opponent_ids]))
-    match_map[key].append(match)
+    category = match.get("category", "unknown")
+    matches_by_category[category].append(match)
 
-# マージ処理
-merged_results = []
+# 結果出力用ディクショナリ
+final_results = {}
 
-for group in match_map.values():
-    if len(group) != 2:
-        continue
+# 各カテゴリごとに処理
+for category, match_list in matches_by_category.items():
+    match_map = defaultdict(list)
 
-    a, b = group
+    for match in match_list:
+        pair_ids = get_ids(normalize_pair(match["pair"]))
+        opponent_ids = get_ids(match["opponents"])
+        key = tuple(sorted([pair_ids, opponent_ids]))
+        match_map[key].append(match)
 
-    entry_a = a["entryNo"]
-    entry_b = b["entryNo"]
+    merged_results = []
 
-    merged = {
-        "round": a["round"],
-        "player1": {
-            "entryNo": entry_a,
-            "won": int(a["games"]["won"]),
-            "lost": int(a["games"]["lost"])
-        },
-        "player2": {
-            "entryNo": entry_b,
-            "won": int(b["games"]["won"]),
-            "lost": int(b["games"]["lost"])
-        },
-        "winner": entry_a if a["result"] == "win" else entry_b
-    }
+    for group in match_map.values():
+        if len(group) != 2:
+            continue
 
-    merged_results.append(merged)
+        a, b = group
 
-# ソート処理（ラウンド順 + entryNo）
-merged_results.sort(
-    key=lambda m: (
-        get_round_order(m["round"]),
-        min(m["player1"]["entryNo"], m["player2"]["entryNo"])
+        entry_a = a["entryNo"]
+        entry_b = b["entryNo"]
+
+        merged = {
+            "round": a["round"],
+            "player1": {
+                "entryNo": entry_a,
+                "won": int(a["games"]["won"]),
+                "lost": int(a["games"]["lost"])
+            },
+            "player2": {
+                "entryNo": entry_b,
+                "won": int(b["games"]["won"]),
+                "lost": int(b["games"]["lost"])
+            },
+            "winner": entry_a if a["result"] == "win" else entry_b
+        }
+
+        merged_results.append(merged)
+
+    merged_results.sort(
+        key=lambda m: (
+            get_round_order(m["round"]),
+            min(m["player1"]["entryNo"], m["player2"]["entryNo"])
+        )
     )
-)
+
+    final_results[category] = merged_results
 
 # 結果出力
-print(json.dumps(merged_results, ensure_ascii=False, indent=2))
+print(json.dumps(final_results, ensure_ascii=False, indent=2))
