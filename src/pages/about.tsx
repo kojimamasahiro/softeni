@@ -1,5 +1,6 @@
 // src/pages/about.tsx
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -88,12 +89,12 @@ export default function About() {
           <h2 className="text-xl font-semibold mb-4">お問い合わせ・ご意見</h2>
           <p className="text-base leading-relaxed">
             データの修正依頼や掲載希望、ご意見などは、
-            <a
+            <Link
               href="/contact"
               className="text-blue-600 dark:text-blue-400 underline"
             >
               お問い合わせフォーム
-            </a>
+            </Link>
             よりお送りください。誠実に対応させていただきます。
           </p>
         </section>

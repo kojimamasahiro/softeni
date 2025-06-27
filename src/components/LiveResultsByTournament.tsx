@@ -67,7 +67,7 @@ export default function LiveResultsByTournament({
   });
 
   if (!isInRange) {
-    const scheduledPlayers = ['1. 上松俊貴', '73. 上岡俊介', '145. 橋場柊一郎'];
+    // const scheduledPlayers = ['1. 上松俊貴', '73. 上岡俊介', '145. 橋場柊一郎'];
     const message =
       nowJST > endDate
         ? '次回の大会速報までお待ちください。'

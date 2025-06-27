@@ -10,11 +10,34 @@ type SummaryStatsProps = {
 
 type StatsRowProps = {
   label: string;
-  stats: {
-    matches: { wins: number; losses: number; winRate: number };
-    games?: { won: number; lost: number; gameRate: number };
-  };
+  stats: MatchGameStats;
   link?: string;
+};
+
+export type GameStats = {
+  total: number;
+  won: number;
+  lost: number;
+  gameRate: number;
+};
+
+export type MatchStats = {
+  total: number;
+  wins: number;
+  losses: number;
+  winRate: number;
+};
+
+export type MatchGameStats = {
+  matches: MatchStats;
+  games: GameStats;
+};
+
+type StatsTableProps = {
+  title: string;
+  data: Record<string, MatchGameStats>;
+  isYear?: boolean;
+  allPlayers: PlayerInfo[];
 };
 
 function formatGameStats(games?: {
@@ -55,12 +78,7 @@ function StatsTable({
   data,
   isYear = false,
   allPlayers,
-}: {
-  title: string;
-  data: Record<string, any>;
-  isYear?: boolean;
-  allPlayers: PlayerInfo[];
-}) {
+}: StatsTableProps) {
   const entries = Object.entries(data);
   const sortedEntries = isYear
     ? entries.sort(([a], [b]) => Number(b) - Number(a))

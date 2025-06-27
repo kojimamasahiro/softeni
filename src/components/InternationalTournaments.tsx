@@ -1,6 +1,6 @@
 // src/components/InternationalTournaments.tsx
 import ResultsTable from '@/components/ResultsTable';
-import { MatchResult, Stage, Tournament } from '@/types/index';
+import { Tournament } from '@/types/index';
 
 interface PlayerMatchesData {
   player: string;

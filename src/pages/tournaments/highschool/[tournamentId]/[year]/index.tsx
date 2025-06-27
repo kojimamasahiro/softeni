@@ -22,6 +22,42 @@ import Statistics from '@/components/Tournament/Statistics';
 import TeamResults from '@/components/Tournament/TeamResults';
 import Breadcrumbs from '@/components/Breadcrumb';
 
+type EntryInformation = {
+  lastName: string;
+  firstName: string;
+  team: string;
+  playerId?: string | null;
+  tempId?: string;
+  prefecture?: string;
+};
+
+type Entry = {
+  entryNo: number;
+  information: EntryInformation[];
+};
+
+type EntriesJson = {
+  [category: string]: Entry[];
+};
+
+type StandingEntry = {
+  id: number;
+  name: string;
+  wins: number;
+  losses: number;
+  points: number;
+  scoreDiff: number;
+  rank: number;
+};
+
+type StandingGroup = StandingEntry[];
+
+type Standings = {
+  [category: string]: {
+    [groupName: string]: StandingGroup;
+  };
+};
+
 interface TournamentYearResultPageProps {
   year: string;
   meta: TournamentMeta;
@@ -56,11 +92,11 @@ export default function TournamentYearResultPage({
 
   const availableCategories = hasCategoryField
     ? Array.from(
-        new Set([
-          ...matches.map((m) => m.category).filter(Boolean),
-          ...results.map((r) => r.category).filter(Boolean),
-        ]),
-      )
+      new Set([
+        ...matches.map((m) => m.category).filter(Boolean),
+        ...results.map((r) => r.category).filter(Boolean),
+      ]),
+    )
     : ['default'];
 
   const [selectedCategory, setSelectedCategory] = useState(
@@ -484,14 +520,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
       { entryNo: number; playerIds: string[] }[]
     > = {};
     if (hasEntries) {
-      const raw = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
+      const raw: EntriesJson = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
+
       for (const category of Object.keys(raw)) {
-        entriesByCategory[category] = raw[category].map((e: any) => ({
-          entryNo: Number(e.entryNo || e.id),
-          playerIds:
-            e.information
-              ?.map((info: any) => info.playerId || info.tempId)
-              .filter(Boolean) ?? [],
+        entriesByCategory[category] = raw[category].map((e) => ({
+          entryNo: Number(e.entryNo),
+          playerIds: (e.information ?? [])
+            .map((info) => info.playerId || info.tempId)
+            .filter((id): id is string => typeof id === 'string'),
         }));
       }
     }
@@ -503,13 +539,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
           r.playerIds.join(','),
         ),
       );
+      const standings: Standings = data.standings;
 
-      for (const category of Object.keys(data.standings)) {
-        const groups = data.standings[category];
+      for (const category of Object.keys(standings)) {
+        const groups = standings[category];
         const entries = entriesByCategory[category] ?? [];
 
         for (const group of Object.values(groups)) {
-          for (const entry of group as any[]) {
+          for (const entry of group) {
             const entryNo = Number(entry.id);
             const matchedEntry = entries.find((e) => e.entryNo === entryNo);
             if (!matchedEntry || matchedEntry.playerIds.length === 0) continue;

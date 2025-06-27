@@ -32,10 +32,20 @@ type EventResult = {
   matches: {
     round: string;
     pair: string[];
-    opponents: any[];
+    opponents: MatchOpponent[];
     result: 'win' | 'lose';
     games: { won: string; lost: string };
   }[];
+};
+
+type MatchOpponent = {
+  lastName: string;
+  firstName: string;
+  team: string;
+  playerId: string | null;
+  tempId: string;
+  prefecture?: string;
+  originalTeam?: string;
 };
 
 type PlayerStats = {

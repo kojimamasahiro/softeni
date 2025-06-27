@@ -19,25 +19,3 @@ export function sortMatchesByEntryNo(
         (parseInt(a.entryNo) || Infinity) - (parseInt(b.entryNo) || Infinity),
     );
 }
-
-export function calculateGameStats(matches: any[]): {
-  totalGamesWon: number;
-  totalGamesLost: number;
-  totalMatches: number;
-} {
-  let totalGamesWon = 0;
-  let totalGamesLost = 0;
-  let totalMatches = 0;
-
-  for (const match of matches) {
-    if (match.result === 'win') {
-      totalMatches++;
-      const won = parseInt(match.games.won, 10);
-      const lost = parseInt(match.games.lost, 10);
-      if (!isNaN(won)) totalGamesWon += won;
-      if (!isNaN(lost)) totalGamesLost += lost;
-    }
-  }
-
-  return { totalGamesWon, totalGamesLost, totalMatches };
-}
