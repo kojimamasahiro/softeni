@@ -1,11 +1,13 @@
 // src/pages/tournaments/highschool/[tournamentId]/[year]/data.tsx
-import Breadcrumbs from '@/components/Breadcrumb';
-import MetaHead from '@/components/MetaHead';
 import fs from 'fs';
+import path from 'path';
+
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import path from 'path';
+
+import Breadcrumbs from '@/components/Breadcrumb';
+import MetaHead from '@/components/MetaHead';
 
 interface PlayerEntry {
   id: number | string;
@@ -52,7 +54,13 @@ interface Props {
   meta: TournamentMeta;
 }
 
-export default function EntryDataPage({ tournamentId, year, entries, matches, meta }: Props) {
+export default function EntryDataPage({
+  tournamentId,
+  year,
+  entries,
+  matches,
+  meta,
+}: Props) {
   const jsonStr = JSON.stringify(entries, null, 2);
 
   return (
@@ -65,8 +73,13 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
       />
 
       <Head>
-        <title>{meta.name} {year} 大会データ（JSON形式） | ソフトテニス情報</title>
-        <meta name="description" content={`${meta.name} ${year} 年の大会データ（JSON形式）を掲載しています。`} />
+        <title>
+          {meta.name} {year} 大会データ（JSON形式） | ソフトテニス情報
+        </title>
+        <meta
+          name="description"
+          content={`${meta.name} ${year} 年の大会データ（JSON形式）を掲載しています。`}
+        />
       </Head>
 
       <main className="max-w-3xl mx-auto px-4 py-8">
@@ -74,22 +87,35 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
           crumbs={[
             { label: 'ホーム', href: '/' },
             { label: '大会結果一覧', href: '/tournaments' },
-            { label: `${meta.name} ${year}年`, href: `/tournaments/highschool/${tournamentId}/${year}` }, // 差分
-            { label: '出場選手データ', href: `/tournaments/highschool/${tournamentId}/${year}/data` }, // 差分
+            {
+              label: `${meta.name} ${year}年`,
+              href: `/tournaments/highschool/${tournamentId}/${year}`,
+            }, // 差分
+            {
+              label: '出場選手データ',
+              href: `/tournaments/highschool/${tournamentId}/${year}/data`,
+            }, // 差分
           ]}
         />
 
-        <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 出場選手データ（JSON形式）</h1>
+        <h1 className="text-2xl font-bold mb-4">
+          {meta.name} {year}年 出場選手データ（JSON形式）
+        </h1>
 
         {/* ✅ 導入説明 */}
         <section className="text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
           <p className="mb-2">
-            このページでは、<strong>{meta.name}</strong>（{year}年）に出場した選手・ペアの情報をJSON形式で掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
+            このページでは、<strong>{meta.name}</strong>（{year}
+            年）に出場した選手・ペアの情報をJSON形式で掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
           </p>
           <ul className="list-disc list-inside mb-2">
             <li>個人利用、非営利目的での使用は自由です。</li>
-            <li>選手名やチーム名の表記は、原資料に基づく手動入力のため、誤記の可能性があります。</li>
-            <li>公式発表とは異なる場合があります。正式な記録は大会主催者の情報をご確認ください。</li>
+            <li>
+              選手名やチーム名の表記は、原資料に基づく手動入力のため、誤記の可能性があります。
+            </li>
+            <li>
+              公式発表とは異なる場合があります。正式な記録は大会主催者の情報をご確認ください。
+            </li>
           </ul>
         </section>
 
@@ -127,7 +153,10 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
 
         {/* ✅ 戻るリンク 差分 */}
         <div className="mt-6">
-          <Link href={`/tournaments/highschool/${tournamentId}/${year}`} className="text-sm text-blue-600 hover:underline">
+          <Link
+            href={`/tournaments/highschool/${tournamentId}/${year}`}
+            className="text-sm text-blue-600 hover:underline"
+          >
             大会結果ページ
           </Link>
         </div>
@@ -135,7 +164,9 @@ export default function EntryDataPage({ tournamentId, year, entries, matches, me
         {/* ✅ 注意文 */}
         <div className="mt-6 text-xs text-gray-500 border-t pt-4">
           <p>
-            ※ 本データはSofteni Pickが独自に整理・構築したものであり、正確性を保証するものではありません。<br />
+            ※ 本データはSofteni
+            Pickが独自に整理・構築したものであり、正確性を保証するものではありません。
+            <br />
             ご利用にあたって生じた不利益等について、当サイトは一切の責任を負いません。
           </p>
         </div>
@@ -180,7 +211,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     year: string;
   };
 
-  const basePath = path.join(process.cwd(), 'data/tournaments/highschool', tournamentId);
+  const basePath = path.join(
+    process.cwd(),
+    'data/tournaments/highschool',
+    tournamentId,
+  );
 
   // meta.json を読み込む（存在チェック付き）
   const metaPath = path.join(basePath, 'meta.json');
@@ -189,7 +224,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     : null;
 
   const entries = JSON.parse(
-    fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8')
+    fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'),
   );
 
   const matchesPath = path.join(basePath, year, 'matches.json');

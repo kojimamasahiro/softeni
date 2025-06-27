@@ -2,6 +2,7 @@
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+
 import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';

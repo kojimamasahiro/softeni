@@ -1,7 +1,8 @@
 // src/components/Tournament/MatchResults.tsx
+import { useState } from 'react';
+
 import { sortMatchesByEntryNo } from '@/lib/utils';
 import { TournamentYearData } from '@/types/tournament';
-import { useState } from 'react';
 
 // 予選敗退の名前一覧を含む構造を受け取るようにする
 interface Props {
@@ -40,7 +41,8 @@ function MatchGroup({
       if (round === '決勝' && result === 'win') finalLabel = '優勝';
       else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
       else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
-      else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
+      else if (round === '準々決勝' && result === 'lose')
+        finalLabel = 'ベスト8';
       else if (result === 'lose') finalLabel = `${round}敗退`;
     }
   }
@@ -84,25 +86,41 @@ function MatchGroup({
             <table className="w-full text-sm table-fixed border-collapse">
               <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
                 <tr>
-                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
-                  <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
-                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">勝敗</th>
-                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
+                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                    ラウンド
+                  </th>
+                  <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                    対戦相手
+                  </th>
+                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                    勝敗
+                  </th>
+                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                    スコア
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {matchGroup.map((m, i) => (
-                  <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
+                  <tr
+                    key={i}
+                    className="border-t border-gray-100 dark:border-gray-700"
+                  >
                     <td className="px-4 py-2 break-words">{m.round}</td>
                     <td className="px-4 py-2 break-words">
                       {m.opponents.map((op, j) => (
                         <span key={j}>
-                          {op.lastName}（{op.team}）{j < m.opponents.length - 1 && '・'}
+                          {op.lastName}（{op.team}）
+                          {j < m.opponents.length - 1 && '・'}
                         </span>
                       ))}
                     </td>
-                    <td className="px-4 py-2">{m.result === 'win' ? '勝ち' : '負け'}</td>
-                    <td className="px-4 py-2">{m.games.won}-{m.games.lost}</td>
+                    <td className="px-4 py-2">
+                      {m.result === 'win' ? '勝ち' : '負け'}
+                    </td>
+                    <td className="px-4 py-2">
+                      {m.games.won}-{m.games.lost}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -114,7 +132,6 @@ function MatchGroup({
           )}
         </div>
       )}
-
     </div>
   );
 }
@@ -163,19 +180,21 @@ export default function MatchResults({
 
         <button
           onClick={() => setFilter('all')}
-          className={`h-9 px-3 text-sm rounded border ${filter === 'all'
-            ? 'bg-blue-600 text-white'
-            : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
-            }`}
+          className={`h-9 px-3 text-sm rounded border ${
+            filter === 'all'
+              ? 'bg-blue-600 text-white'
+              : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+          }`}
         >
           全て
         </button>
         <button
           onClick={() => setFilter('top8')}
-          className={`h-9 px-3 text-sm rounded border ${filter === 'top8'
-            ? 'bg-blue-600 text-white'
-            : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
-            }`}
+          className={`h-9 px-3 text-sm rounded border ${
+            filter === 'top8'
+              ? 'bg-blue-600 text-white'
+              : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+          }`}
         >
           ベスト8以上
         </button>

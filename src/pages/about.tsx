@@ -1,7 +1,8 @@
 // src/pages/about.tsx
+import Head from 'next/head';
+
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-import Head from 'next/head';
 
 export default function About() {
   const updatedAt = '2025年6月18日';
@@ -18,22 +19,22 @@ export default function About() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
                 {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "ホーム",
-                  "item": "https://softeni-pick.com/"
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'ホーム',
+                  item: 'https://softeni-pick.com/',
                 },
                 {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "このサイトについて",
-                  "item": "https://softeni-pick.com/about"
-                }
-              ]
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'このサイトについて',
+                  item: 'https://softeni-pick.com/about',
+                },
+              ],
             }),
           }}
         />
@@ -52,7 +53,8 @@ export default function About() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">Softeni Pickとは</h2>
           <p className="text-base leading-relaxed">
-            Softeni Pick（ソフテニ・ピック）は、ソフトテニス競技に関する選手情報・試合結果・大会データを整理し、誰でも簡単に閲覧・検索できることを目指した非公式の情報サイトです。
+            Softeni
+            Pick（ソフテニ・ピック）は、ソフトテニス競技に関する選手情報・試合結果・大会データを整理し、誰でも簡単に閲覧・検索できることを目指した非公式の情報サイトです。
             全国の中学・高校・大学・社会人プレーヤーの試合履歴や戦績などを、独自に収集・整理して掲載しています。
           </p>
         </section>
@@ -76,7 +78,8 @@ export default function About() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">今後の展望</h2>
           <p className="text-base leading-relaxed">
-            Softeni Pickでは、今後も各カテゴリ（高校・大学・社会人）の主要大会の情報を網羅し、競技者・指導者・ファンの皆様にとって役立つ情報基盤となることを目指しています。
+            Softeni
+            Pickでは、今後も各カテゴリ（高校・大学・社会人）の主要大会の情報を網羅し、競技者・指導者・ファンの皆様にとって役立つ情報基盤となることを目指しています。
             また、競技人口の増加や地域間・世代間の接続にも貢献できるよう、教育的・文化的価値の発信にも取り組んでいきます。
           </p>
         </section>

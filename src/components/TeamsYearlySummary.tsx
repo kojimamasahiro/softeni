@@ -9,7 +9,9 @@ type TeamsYearlySummaryProps = {
   };
 };
 
-export default function TeamsYearlySummary({ summary }: TeamsYearlySummaryProps) {
+export default function TeamsYearlySummary({
+  summary,
+}: TeamsYearlySummaryProps) {
   return (
     <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
@@ -21,10 +23,8 @@ export default function TeamsYearlySummary({ summary }: TeamsYearlySummaryProps)
             <p className="text-gray-500 dark:text-gray-400">出場大会数</p>
             <p className="text-lg font-bold">{summary.tournaments}回</p>
           </div>
-          <div>
-          </div>
-          <div>
-          </div>
+          <div></div>
+          <div></div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">優勝</p>
             <p className="text-lg font-bold">{summary.champions}人</p>

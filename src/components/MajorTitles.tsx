@@ -1,7 +1,17 @@
 // src/components/MajorTitles.tsx
-import { MajorTitle, TournamentSummary, TournamentYearData } from '@/types/index';
+import {
+  MajorTitle,
+  TournamentSummary,
+  TournamentYearData,
+} from '@/types/index';
 
-export default function MajorTitles({ id, tournaments }: { id: string, tournaments: TournamentSummary[] }) {
+export default function MajorTitles({
+  id,
+  tournaments,
+}: {
+  id: string;
+  tournaments: TournamentSummary[];
+}) {
   if (!tournaments || tournaments.length === 0) {
     return null;
   }
@@ -17,7 +27,9 @@ export default function MajorTitles({ id, tournaments }: { id: string, tournamen
         } else if (yearData.status === 'canceled') {
           return { year, result: '(中止)' };
         } else if (yearData.status === 'completed') {
-          const playerResult = yearData.results?.find((r) => r.playerIds.includes(id));
+          const playerResult = yearData.results?.find((r) =>
+            r.playerIds.includes(id),
+          );
           return { year, result: playerResult ? playerResult.result : 'ー' };
         }
         return { year, result: 'ー' };
@@ -30,7 +42,7 @@ export default function MajorTitles({ id, tournaments }: { id: string, tournamen
     });
 
   const allYears = Array.from(
-    new Set(majorTitles.flatMap((title) => title.years.map((y) => y.year)))
+    new Set(majorTitles.flatMap((title) => title.years.map((y) => y.year))),
   ).sort((a, b) => b - a);
 
   return (
@@ -43,15 +55,23 @@ export default function MajorTitles({ id, tournaments }: { id: string, tournamen
         <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
             <tr>
-              <th className="px-4 py-2 text-left">{/* borderクラス削除 */}大会名</th>
+              <th className="px-4 py-2 text-left">
+                {/* borderクラス削除 */}大会名
+              </th>
               {allYears.map((year) => (
-                <th key={year} className="px-4 py-2">{/* borderクラス削除 */}{year}</th>
+                <th key={year} className="px-4 py-2">
+                  {/* borderクラス削除 */}
+                  {year}
+                </th>
               ))}
             </tr>
           </thead>
           <tbody>
             {majorTitles.map((title, index) => (
-              <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+              <tr
+                key={index}
+                className="hover:bg-gray-50 dark:hover:bg-gray-700"
+              >
                 <td className="px-4 py-2 font-medium">{title.name}</td>
                 {allYears.map((year) => {
                   const found = title.years.find((y) => y.year === year);

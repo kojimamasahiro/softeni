@@ -1,12 +1,14 @@
 // src/pages/players/[id].tsx
-import Breadcrumbs from '@/components/Breadcrumb';
-import MetaHead from '@/components/MetaHead';
-import { PlayerInfo } from '@/types/index';
 import fs from 'fs';
+import path from 'path';
+
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import path from 'path';
+
+import Breadcrumbs from '@/components/Breadcrumb';
+import MetaHead from '@/components/MetaHead';
+import { PlayerInfo } from '@/types/index';
 
 type Props = {
   player: PlayerInfo;
@@ -62,18 +64,18 @@ export default function PlayerInformation({ player, id }: Props) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": `${player.lastName} ${player.firstName}`,
-              "alternateName": `${player.lastNameKana} ${player.firstNameKana}`,
-              "birthDate": formattedBirthDate,
-              "height": `${player.height} cm`,
-              "memberOf": {
-                "@type": "Organization",
-                "name": player.team,
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: `${player.lastName} ${player.firstName}`,
+              alternateName: `${player.lastNameKana} ${player.firstNameKana}`,
+              birthDate: formattedBirthDate,
+              height: `${player.height} cm`,
+              memberOf: {
+                '@type': 'Organization',
+                name: player.team,
               },
-              "url": `https://softeni-pick.com/players/${id}`,
-              "sameAs": player.profileLinks.map((link) => link.url),
+              url: `https://softeni-pick.com/players/${id}`,
+              sameAs: player.profileLinks.map((link) => link.url),
             }),
           }}
         />
@@ -82,26 +84,26 @@ export default function PlayerInformation({ player, id }: Props) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
                 {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "ホーム",
-                  "item": "https://softeni-pick.com/",
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'ホーム',
+                  item: 'https://softeni-pick.com/',
                 },
                 {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": `${player.lastName}${player.firstName}`,
-                  "item": `https://softeni-pick.com/players/${id}`,
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: `${player.lastName}${player.firstName}`,
+                  item: `https://softeni-pick.com/players/${id}`,
                 },
                 {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": `試合結果`,
-                  "item": `https://softeni-pick.com/players/${id}/results`,
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: `試合結果`,
+                  item: `https://softeni-pick.com/players/${id}/results`,
                 },
               ],
             }),
@@ -113,43 +115,56 @@ export default function PlayerInformation({ player, id }: Props) {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: `${player.lastName}${player.firstName}`, href: `/players/${id}` },
+            {
+              label: `${player.lastName}${player.firstName}`,
+              href: `/players/${id}`,
+            },
           ]}
         />
 
-        <h1 className="text-2xl font-bold mb-6">{player.lastName} {player.firstName}</h1>
+        <h1 className="text-2xl font-bold mb-6">
+          {player.lastName} {player.firstName}
+        </h1>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
           <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
             <tbody>
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">
+                  所属
+                </th>
                 <td className="p-2">
                   {player.retired ? '引退済み' : player.team}
                 </td>
               </tr>
 
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
+                  ポジション
+                </th>
                 <td className="p-2">{player.position}</td>
               </tr>
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
+                  誕生日
+                </th>
                 <td className="p-2">
-                  {formattedBirthDate ? (
-                    `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}`
-                  ) : (
-                    '年月日（歳）'
-                  )}
+                  {formattedBirthDate
+                    ? `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}`
+                    : '年月日（歳）'}
                 </td>
               </tr>
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
+                  身長
+                </th>
                 <td className="p-2">{player.height}cm</td>
               </tr>
               <tr>
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">利き手</th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
+                  利き手
+                </th>
                 <td className="p-2">{player.handedness}</td>
               </tr>
             </tbody>
@@ -206,7 +221,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string;
-  const filePath = path.join(process.cwd(), 'data', 'players', id, 'information.json');
+  const filePath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    id,
+    'information.json',
+  );
   const fileContents = fs.readFileSync(filePath, 'utf-8');
   const player = JSON.parse(fileContents);
 

@@ -10,9 +10,14 @@ export function resultPriority(result: string): number {
 }
 
 export function sortMatchesByEntryNo(
-  matches: NonNullable<TournamentYearData['matches']>
+  matches: NonNullable<TournamentYearData['matches']>,
 ): NonNullable<TournamentYearData['matches']> {
-  return matches.slice().sort((a, b) => (parseInt(a.entryNo) || Infinity) - (parseInt(b.entryNo) || Infinity));
+  return matches
+    .slice()
+    .sort(
+      (a, b) =>
+        (parseInt(a.entryNo) || Infinity) - (parseInt(b.entryNo) || Infinity),
+    );
 }
 
 export function calculateGameStats(matches: any[]): {

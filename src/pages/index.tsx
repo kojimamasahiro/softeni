@@ -1,13 +1,15 @@
 // src/pages/index.tsx
+import fs from 'fs';
+import path from 'path';
+
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
 import Breadcrumbs from '@/components/Breadcrumb';
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
-import fs from 'fs';
-import Head from 'next/head';
-import Link from 'next/link';
-import path from 'path';
-import { useEffect, useState } from 'react';
 
 interface HomeProps {
   players: PlayerInfo[];
@@ -39,8 +41,13 @@ export default function Home({ players }: HomeProps) {
     setSearchQuery(query);
 
     const filtered = players.filter((player) => {
-      const fullNameAndTeamName =
-        (player.lastName + player.firstName + player.lastNameKana + player.firstNameKana + player.team).toLowerCase();
+      const fullNameAndTeamName = (
+        player.lastName +
+        player.firstName +
+        player.lastNameKana +
+        player.firstNameKana +
+        player.team
+      ).toLowerCase();
       const normalizedQuery = query.replace(/\s/g, '').toLowerCase();
 
       let currentIndex = 0;
@@ -76,15 +83,15 @@ export default function Home({ players }: HomeProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
                 {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "ホーム",
-                  "item": "https://softeni-pick.com/",
-                }
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'ホーム',
+                  item: 'https://softeni-pick.com/',
+                },
               ],
             }),
           }}
@@ -93,15 +100,15 @@ export default function Home({ players }: HomeProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": "Softeni Pick",
-              "url": "https://softeni-pick.com/",
-              "inLanguage": "ja",
-              "dateModified": new Date().toISOString().split('T')[0],
-              "publisher": {
-                "@type": "Organization",
-                "name": "Softeni Pick",
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Softeni Pick',
+              url: 'https://softeni-pick.com/',
+              inLanguage: 'ja',
+              dateModified: new Date().toISOString().split('T')[0],
+              publisher: {
+                '@type': 'Organization',
+                name: 'Softeni Pick',
               },
             }),
           }}
@@ -111,18 +118,15 @@ export default function Home({ players }: HomeProps) {
       {!isClient ? null : (
         <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
           <div className="max-w-3xl mx-auto">
-            <Breadcrumbs
-              crumbs={[
-                { label: 'ホーム', href: '/' },
-              ]}
-            />
+            <Breadcrumbs crumbs={[{ label: 'ホーム', href: '/' }]} />
           </div>
 
           {/* ✅ サイト紹介文（ページ最上部に設置） */}
           <section className="max-w-3xl mx-auto mb-10 px-4">
             <h1 className="text-2xl font-bold mb-4">Softeni Pickとは</h1>
             <p className="text-lg leading-relaxed mb-4">
-              Softeni Pick（ソフテニ・ピック）は、ソフトテニス競技に特化した大会情報・選手データベースを提供する個人運営のウェブメディアです。
+              Softeni
+              Pick（ソフテニ・ピック）は、ソフトテニス競技に特化した大会情報・選手データベースを提供する個人運営のウェブメディアです。
             </p>
             <p className="text-lg leading-relaxed mb-4">
               全日本の主要大会を中心に、出場選手の成績、チーム別の戦績、試合の結果をわかりやすく整理・掲載しています。また、選手ごとのページでは過去の出場履歴や勝率、大会での活躍なども確認できます。
@@ -150,7 +154,9 @@ export default function Home({ players }: HomeProps) {
                   className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <h3 className="text-lg font-bold mb-1">日本体育大学</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">年間成績・大会別成績・選手ごとの記録</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    年間成績・大会別成績・選手ごとの記録
+                  </p>
                   <a
                     href="https://nittai-softtennis.com/"
                     target="_blank"
@@ -174,11 +180,9 @@ export default function Home({ players }: HomeProps) {
                       <line x1="10" y1="14" x2="21" y2="3" />
                     </svg>
                   </a>
-
                 </div>
               </div>
             </section>
-
 
             {/* ✅ 選手一覧・検索 */}
             <section className="mb-8 px-4">
@@ -199,13 +203,16 @@ export default function Home({ players }: HomeProps) {
                   return (
                     <div
                       key={player.id}
-                      onClick={() => (window.location.href = `/players/${player.id}`)}
+                      onClick={() =>
+                        (window.location.href = `/players/${player.id}`)
+                      }
                       className={`border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition
               hover:bg-gray-50 dark:hover:bg-gray-700
               ${isRetired ? 'opacity-70' : ''}`}
                     >
                       <h2 className="text-lg font-bold mb-1">
-                        {player.lastName} {player.firstName}（{player.lastNameKana} {player.firstNameKana}）
+                        {player.lastName} {player.firstName}（
+                        {player.lastNameKana} {player.firstNameKana}）
                       </h2>
                       <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                         {isRetired ? (

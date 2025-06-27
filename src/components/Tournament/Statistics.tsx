@@ -23,9 +23,10 @@ export default function Statistics({
   totalGamesLost,
   rankedTeams,
 }: Props) {
-  const rate = totalGamesWon + totalGamesLost > 0
-    ? ((totalGamesWon / (totalGamesWon + totalGamesLost)) * 100).toFixed(2)
-    : '0.00';
+  const rate =
+    totalGamesWon + totalGamesLost > 0
+      ? ((totalGamesWon / (totalGamesWon + totalGamesLost)) * 100).toFixed(2)
+      : '0.00';
 
   return (
     <section className="mb-10">
@@ -42,7 +43,9 @@ export default function Statistics({
             <div className="font-semibold mb-1">チーム別出場人数ランキング</div>
             <div className="space-y-1 overflow-y-auto max-h-32 pr-2">
               {rankedTeams.map(({ rank, team, count }) => (
-                <div key={team}>{rank}位：{team}（{count}人）</div>
+                <div key={team}>
+                  {rank}位：{team}（{count}人）
+                </div>
               ))}
             </div>
           </div>

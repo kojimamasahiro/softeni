@@ -1,17 +1,22 @@
 // src/pages/tournaments/[tournamentId]/[year]/index.tsx
 
-import MetaHead from '@/components/MetaHead';
-import { resultPriority } from '@/lib/utils';
 import fs from 'fs';
+import path from 'path';
+
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import path from 'path';
 import { useEffect, useState } from 'react';
 
+import { resultPriority } from '@/lib/utils';
+import MetaHead from '@/components/MetaHead';
 import { getAllPlayers } from '@/lib/players';
-import { MatchOpponent, PlayerInfo, TournamentMeta, TournamentYearData } from '@/types/index';
-
+import {
+  MatchOpponent,
+  PlayerInfo,
+  TournamentMeta,
+  TournamentYearData,
+} from '@/types/index';
 import MatchResults from '@/components/Tournament/MatchResults';
 import Statistics from '@/components/Tournament/Statistics';
 import TeamResults from '@/components/Tournament/TeamResults';
@@ -22,27 +27,54 @@ interface TournamentYearResultPageProps {
   meta: TournamentMeta;
   data: TournamentYearData;
   allPlayers: PlayerInfo[];
-  unknownPlayers: Record<string, { firstName: string; lastName: string; team: string }>;
+  unknownPlayers: Record<
+    string,
+    { firstName: string; lastName: string; team: string }
+  >;
   hasEntries: boolean;
 }
 
-export default function TournamentYearResultPage({ year, meta, data, allPlayers, unknownPlayers, hasEntries }: TournamentYearResultPageProps) {
+export default function TournamentYearResultPage({
+  year,
+  meta,
+  data,
+  allPlayers,
+  unknownPlayers,
+  hasEntries,
+}: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${meta.id}/${year}`;
 
-  const teamGroups: Record<string, {
-    team: string;
-    members: { result: string; resultOrder: number; displayParts: { text: string; id?: string; noLink?: boolean }[] }[];
-    bestRank: number;
-  }> = {};
+  const teamGroups: Record<
+    string,
+    {
+      team: string;
+      members: {
+        result: string;
+        resultOrder: number;
+        displayParts: { text: string; id?: string; noLink?: boolean }[];
+      }[];
+      bestRank: number;
+    }
+  > = {};
 
   for (const entry of data.results ?? []) {
     const players = entry.playerIds.map((id) => {
       const player = allPlayers.find((p) => p.id === id);
       if (player) {
-        return { id, name: `${player.lastName}${player.firstName}`, team: player.team ?? '所属不明', noLink: false };
+        return {
+          id,
+          name: `${player.lastName}${player.firstName}`,
+          team: player.team ?? '所属不明',
+          noLink: false,
+        };
       } else {
         const unknown = unknownPlayers[id];
-        return { id, name: unknown ? `${unknown.lastName}${unknown.firstName}` : id, team: unknown?.team ?? '所属不明', noLink: true };
+        return {
+          id,
+          name: unknown ? `${unknown.lastName}${unknown.firstName}` : id,
+          team: unknown?.team ?? '所属不明',
+          noLink: true,
+        };
       }
     });
 
@@ -58,16 +90,36 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
       if (!teamGroups[team]) {
         teamGroups[team] = { team, members: [], bestRank: resultOrder };
       }
-      teamGroups[team].members.push({ result: entry.result, resultOrder, displayParts });
-      teamGroups[team].bestRank = Math.min(teamGroups[team].bestRank, resultOrder);
+      teamGroups[team].members.push({
+        result: entry.result,
+        resultOrder,
+        displayParts,
+      });
+      teamGroups[team].bestRank = Math.min(
+        teamGroups[team].bestRank,
+        resultOrder,
+      );
     } else {
       for (const p of players) {
-        const displayParts = [{ text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink }];
+        const displayParts = [
+          { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
+        ];
         if (!teamGroups[p.team]) {
-          teamGroups[p.team] = { team: p.team, members: [], bestRank: resultOrder };
+          teamGroups[p.team] = {
+            team: p.team,
+            members: [],
+            bestRank: resultOrder,
+          };
         }
-        teamGroups[p.team].members.push({ result: entry.result, resultOrder, displayParts });
-        teamGroups[p.team].bestRank = Math.min(teamGroups[p.team].bestRank, resultOrder);
+        teamGroups[p.team].members.push({
+          result: entry.result,
+          resultOrder,
+          displayParts,
+        });
+        teamGroups[p.team].bestRank = Math.min(
+          teamGroups[p.team].bestRank,
+          resultOrder,
+        );
       }
     }
   }
@@ -87,7 +139,9 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
   useEffect(() => {
     const q = searchQuery.toLowerCase();
     if (q.length > 0) {
-      setSuggestions(allNames.filter((name) => name.toLowerCase().includes(q)).slice(0, 5));
+      setSuggestions(
+        allNames.filter((name) => name.toLowerCase().includes(q)).slice(0, 5),
+      );
     } else {
       setSuggestions([]);
     }
@@ -154,31 +208,52 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
         type="article"
       />
       <Head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": `${meta.name} ${year}年 大会結果`,
-            "author": { "@type": "Person", "name": "Softeni Pick" },
-            "publisher": { "@type": "Organization", "name": "Softeni Pick" },
-            "datePublished": new Date().toISOString().split('T')[0],
-            "dateModified": new Date().toISOString().split('T')[0],
-            "inLanguage": "ja",
-            "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-            "description": `${meta.name} ${year}年 のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
-          })
-        }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://softeni-pick.com/" },
-              { "@type": "ListItem", "position": 2, "name": "大会結果一覧", "item": "https://softeni-pick.com/tournaments" },
-              { "@type": "ListItem", "position": 3, "name": `${meta.name} ${year}年`, "item": pageUrl }
-            ]
-          })
-        }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: `${meta.name} ${year}年 大会結果`,
+              author: { '@type': 'Person', name: 'Softeni Pick' },
+              publisher: { '@type': 'Organization', name: 'Softeni Pick' },
+              datePublished: new Date().toISOString().split('T')[0],
+              dateModified: new Date().toISOString().split('T')[0],
+              inLanguage: 'ja',
+              mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+              description: `${meta.name} ${year}年 のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'ホーム',
+                  item: 'https://softeni-pick.com/',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: '大会結果一覧',
+                  item: 'https://softeni-pick.com/tournaments',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: `${meta.name} ${year}年`,
+                  item: pageUrl,
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
@@ -187,20 +262,28 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
             crumbs={[
               { label: 'ホーム', href: '/' },
               { label: '大会結果一覧', href: '/tournaments' },
-              { label: `${meta.name} ${year}年`, href: `/tournaments/${meta.id}/${year}` },
+              {
+                label: `${meta.name} ${year}年`,
+                href: `/tournaments/${meta.id}/${year}`,
+              },
             ]}
           />
-        
+
           {/* ✅ h1 + 大会紹介文 */}
-          <h1 className="text-2xl font-bold mb-4">{meta.name} {year}年 大会結果</h1>
+          <h1 className="text-2xl font-bold mb-4">
+            {meta.name} {year}年 大会結果
+          </h1>
           <section className="mb-6 px-1">
             <p className="text-lg leading-relaxed mb-2">
-              {meta.name}は、{meta.category}カテゴリの主要大会として、全国の強豪選手が集結する注目の大会です。
-              本ページでは{year}年に開催された本大会の試合結果、出場チーム別の成績、対戦情報などを掲載しています。
+              {meta.name}は、{meta.category}
+              カテゴリの主要大会として、全国の強豪選手が集結する注目の大会です。
+              本ページでは{year}
+              年に開催された本大会の試合結果、出場チーム別の成績、対戦情報などを掲載しています。
             </p>
             {data.location && data.startDate && data.endDate && (
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                開催地：{data.location} ／ 日程：{data.startDate}〜{data.endDate}
+                開催地：{data.location} ／ 日程：{data.startDate}〜
+                {data.endDate}
               </p>
             )}
             {hasEntries && (
@@ -219,7 +302,10 @@ export default function TournamentYearResultPage({ year, meta, data, allPlayers,
           <TeamResults sortedTeams={sortedTeams} />
 
           <div className="text-right mt-10 mb-2">
-            <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
+            <Link
+              href="/tournaments"
+              className="text-sm text-blue-500 hover:underline"
+            >
               大会結果一覧
             </Link>
           </div>
@@ -260,9 +346,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const tournamentDir = path.join(basePath, tournamentId);
     const yearDirs = fs
       .readdirSync(tournamentDir)
-      .filter((name) =>
-        /^\d{4}$/.test(name) &&
-        fs.statSync(path.join(tournamentDir, name)).isDirectory()
+      .filter(
+        (name) =>
+          /^\d{4}$/.test(name) &&
+          fs.statSync(path.join(tournamentDir, name)).isDirectory(),
       );
     for (const year of yearDirs) {
       const resultsPath = path.join(tournamentDir, year, 'results.json');
@@ -275,15 +362,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { tournamentId, year } = context.params as { tournamentId: string; year: string };
+  const { tournamentId, year } = context.params as {
+    tournamentId: string;
+    year: string;
+  };
   const basePath = path.join(process.cwd(), 'data/tournaments');
   const playersPath = path.join(process.cwd(), 'data/players');
   const allPlayers = getAllPlayers();
 
   try {
-    const meta = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8'));
-    const data = JSON.parse(fs.readFileSync(path.join(basePath, tournamentId, year, 'results.json'), 'utf-8'));
-    const unknownPlayers = JSON.parse(fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'));
+    const meta = JSON.parse(
+      fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8'),
+    );
+    const data = JSON.parse(
+      fs.readFileSync(
+        path.join(basePath, tournamentId, year, 'results.json'),
+        'utf-8',
+      ),
+    );
+    const unknownPlayers = JSON.parse(
+      fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'),
+    );
 
     const entriesPath = path.join(basePath, tournamentId, year, 'entries.json');
     const hasEntries = fs.existsSync(entriesPath);

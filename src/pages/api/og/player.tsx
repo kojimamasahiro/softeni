@@ -53,6 +53,6 @@ export default function handler(req: NextRequest) {
     {
       width: 600,
       height: 315,
-    }
+    },
   );
 }

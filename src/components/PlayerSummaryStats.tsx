@@ -1,6 +1,7 @@
 // src/components/PlayerSummaryStats.tsx
-import { PlayerInfo, PlayerStats } from '@/types/index';
 import Link from 'next/link';
+
+import { PlayerInfo, PlayerStats } from '@/types/index';
 
 type SummaryStatsProps = {
   playerStats: PlayerStats;
@@ -16,7 +17,11 @@ type StatsRowProps = {
   link?: string;
 };
 
-function formatGameStats(games?: { won: number; lost: number; gameRate: number }) {
+function formatGameStats(games?: {
+  won: number;
+  lost: number;
+  gameRate: number;
+}) {
   if (!games) return '―';
   return `${games.won} - ${games.lost}（${(games.gameRate * 100).toFixed(1)}%）`;
 }
@@ -37,7 +42,8 @@ function StatsRow({ label, stats, link }: StatsRowProps) {
         )}
       </td>
       <td className="py-1 px-2">
-        {stats.matches.wins}勝 {stats.matches.losses}敗（{(stats.matches.winRate * 100).toFixed(1)}%）
+        {stats.matches.wins}勝 {stats.matches.losses}敗（
+        {(stats.matches.winRate * 100).toFixed(1)}%）
       </td>
       <td className="py-1 px-2">{formatGameStats(stats.games)}</td>
     </tr>
@@ -66,7 +72,9 @@ function StatsTable({
       <table className="w-full border border-gray-200 dark:border-gray-600 text-sm">
         <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
           <tr>
-            <th className="py-1 px-2 text-center">{isYear ? '年度' : 'パートナー'}</th>
+            <th className="py-1 px-2 text-center">
+              {isYear ? '年度' : 'パートナー'}
+            </th>
             <th className="py-1 px-2 text-center">勝敗（勝率）</th>
             <th className="py-1 px-2 text-center">ゲーム（獲得率）</th>
           </tr>
@@ -76,14 +84,17 @@ function StatsTable({
             const label = isYear
               ? `${key}年`
               : allPlayers.find((p) => p.id === key)
-              ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName}`
-              : key;
+                ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName}`
+                : key;
 
-            const link = !isYear && allPlayers.find((p) => p.id === key)
-              ? `/players/${key}`
-              : undefined;
+            const link =
+              !isYear && allPlayers.find((p) => p.id === key)
+                ? `/players/${key}`
+                : undefined;
 
-            return <StatsRow key={key} label={label} stats={stats} link={link} />;
+            return (
+              <StatsRow key={key} label={label} stats={stats} link={link} />
+            );
           })}
         </tbody>
       </table>
@@ -91,12 +102,17 @@ function StatsTable({
   );
 }
 
-export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryStatsProps) {
+export default function PlayerSummaryStats({
+  playerStats,
+  allPlayers,
+}: SummaryStatsProps) {
   if (!playerStats || !playerStats.totalMatches) return null;
 
   return (
     <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
-      <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">対戦成績</h3>
+      <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">
+        対戦成績
+      </h3>
 
       {/* 総合成績 */}
       <table className="w-full mb-4 border border-gray-200 dark:border-gray-700 text-sm">
@@ -114,15 +130,22 @@ export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryS
               {playerStats.wins}勝 {playerStats.losses}敗（
               {(playerStats.totalWinRate * 100).toFixed(1)}%）
             </td>
-            <td className="py-1 px-2">
-              {formatGameStats(playerStats.games)}
-            </td>
+            <td className="py-1 px-2">{formatGameStats(playerStats.games)}</td>
           </tr>
         </tbody>
       </table>
 
-      <StatsTable title="パートナー別" data={playerStats.byPartner} allPlayers={allPlayers} />
-      <StatsTable title="年度別" data={playerStats.byYear} allPlayers={allPlayers} isYear />
+      <StatsTable
+        title="パートナー別"
+        data={playerStats.byPartner}
+        allPlayers={allPlayers}
+      />
+      <StatsTable
+        title="年度別"
+        data={playerStats.byYear}
+        allPlayers={allPlayers}
+        isYear
+      />
     </div>
   );
 }

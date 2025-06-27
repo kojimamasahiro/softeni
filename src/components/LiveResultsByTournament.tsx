@@ -1,11 +1,12 @@
 // src/components/LiveResultsByTournament.tsx
 'use client';
 
+import Link from 'next/link';
+import useSWR from 'swr';
+
 import { LIVE_PERIOD } from '@/config/livePeriod';
 import { getLiveData } from '@/lib/microcms';
 import { LiveData, PlayerInfo } from '@/types/index';
-import Link from 'next/link';
-import useSWR from 'swr';
 
 const getFormattedDateTime = (date: Date) => {
   const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
@@ -28,7 +29,10 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
     </div>
 
     <div className="text-right mb-10">
-      <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
+      <Link
+        href="/tournaments"
+        className="text-sm text-blue-500 hover:underline"
+      >
         過去の大会結果一覧はこちら
       </Link>
     </div>
@@ -36,27 +40,34 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Message = ({ text }: { text: string }) => (
-  <div className="py-6 text-gray-600 dark:text-gray-300 whitespace-pre-line">{text}</div>
+  <div className="py-6 text-gray-600 dark:text-gray-300 whitespace-pre-line">
+    {text}
+  </div>
 );
 
-export default function LiveResultsByTournament({ playersData }: { playersData: PlayerInfo[] }) {
-  const nowJST = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+export default function LiveResultsByTournament({
+  playersData,
+}: {
+  playersData: PlayerInfo[];
+}) {
+  const nowJST = new Date(
+    new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }),
+  );
   const startDate = new Date(LIVE_PERIOD.startDate);
   const endDate = new Date(LIVE_PERIOD.endDate);
   const isInRange = nowJST >= startDate && nowJST <= endDate;
 
-  const { data: liveData, error, isLoading } = useSWR<LiveData>(
-    isInRange ? 'liveData' : null,
-    getLiveData,
-    { dedupingInterval: 60000, revalidateOnFocus: false }
-  );
+  const {
+    data: liveData,
+    error,
+    isLoading,
+  } = useSWR<LiveData>(isInRange ? 'liveData' : null, getLiveData, {
+    dedupingInterval: 60000,
+    revalidateOnFocus: false,
+  });
 
   if (!isInRange) {
-    const scheduledPlayers = [
-      '1. 上松俊貴',
-      '73. 上岡俊介',
-      '145. 橋場柊一郎',
-    ];
+    const scheduledPlayers = ['1. 上松俊貴', '73. 上岡俊介', '145. 橋場柊一郎'];
     const message =
       nowJST > endDate
         ? '次回の大会速報までお待ちください。'
@@ -86,7 +97,9 @@ export default function LiveResultsByTournament({ playersData }: { playersData: 
               <div className="text-center col-span-2">最新結果</div>
             </div>
             {liveData.players.map((player, index) => {
-              const playerInfo = playersData.find((p) => p.id === player.playerId);
+              const playerInfo = playersData.find(
+                (p) => p.id === player.playerId,
+              );
               const playerName = playerInfo
                 ? `${playerInfo.lastName}${playerInfo.firstName}`
                 : player.playerId;

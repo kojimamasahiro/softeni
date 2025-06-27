@@ -9,7 +9,9 @@ const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
 let previousLastmods = {};
 if (fs.existsSync(sitemapPath)) {
   const oldXml = fs.readFileSync(sitemapPath, 'utf8');
-  const matches = [...oldXml.matchAll(/<loc>(.*?)<\/loc>\s*<lastmod>(.*?)<\/lastmod>/g)];
+  const matches = [
+    ...oldXml.matchAll(/<loc>(.*?)<\/loc>\s*<lastmod>(.*?)<\/lastmod>/g),
+  ];
   matches.forEach(([, loc, lastmod]) => {
     previousLastmods[loc] = lastmod;
   });
@@ -18,7 +20,7 @@ if (fs.existsSync(sitemapPath)) {
 // 1. 静的ページ（変更日 = 今日）
 const staticPages = ['/', '/about'];
 
-const staticUrls = staticPages.map(pathname => {
+const staticUrls = staticPages.map((pathname) => {
   const loc = `${baseUrl}${pathname}`;
   const lastmod = previousLastmods[loc] || todayStr;
   return { loc, lastmod };
@@ -26,11 +28,13 @@ const staticUrls = staticPages.map(pathname => {
 
 // 2. 選手ページ（変更日 = information.json の更新日）
 const playersDir = path.join(__dirname, '../data/players');
-const playerDirs = fs.readdirSync(playersDir).filter(dir =>
-  fs.existsSync(path.join(playersDir, dir, 'information.json'))
-);
+const playerDirs = fs
+  .readdirSync(playersDir)
+  .filter((dir) =>
+    fs.existsSync(path.join(playersDir, dir, 'information.json')),
+  );
 
-const dynamicUrls = playerDirs.flatMap(playerId => {
+const dynamicUrls = playerDirs.flatMap((playerId) => {
   const infoPath = path.join(playersDir, playerId, 'information.json');
   const stats = fs.statSync(infoPath);
   const lastmod = stats.mtime.toISOString().split('T')[0]; // 更新日（日本時間ではなくUTC）
@@ -43,19 +47,21 @@ const dynamicUrls = playerDirs.flatMap(playerId => {
     {
       loc: `${baseUrl}/players/${playerId}/results`,
       lastmod,
-    }
+    },
   ];
 });
 
 // 3. 全URLまとめて XML に変換
 const allUrls = [...staticUrls, ...dynamicUrls];
 
-const urlsXml = allUrls.map(({ loc, lastmod }) => {
-  return `  <url>
+const urlsXml = allUrls
+  .map(({ loc, lastmod }) => {
+    return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
   </url>`;
-}).join('\n');
+  })
+  .join('\n');
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

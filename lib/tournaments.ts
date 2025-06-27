@@ -1,6 +1,7 @@
-import { TournamentSummary } from '@/types/index';
 import fs from 'fs';
 import path from 'path';
+
+import { TournamentSummary } from '@/types/index';
 
 export const getAllTournaments = (): TournamentSummary[] => {
   const tournamentsPath = path.join(process.cwd(), 'data', 'tournaments');
@@ -19,17 +20,18 @@ export const getAllTournaments = (): TournamentSummary[] => {
 
     const yearDirs = fs
       .readdirSync(tournamentDir)
-      .filter((name) =>
-        /^\d{4}$/.test(name) &&
-        fs.statSync(path.join(tournamentDir, name)).isDirectory()
+      .filter(
+        (name) =>
+          /^\d{4}$/.test(name) &&
+          fs.statSync(path.join(tournamentDir, name)).isDirectory(),
       );
 
     const years = yearDirs.map((year) => {
       const data = JSON.parse(
         fs.readFileSync(
           path.join(tournamentDir, year, 'results.json'),
-          'utf-8'
-        )
+          'utf-8',
+        ),
       );
       return { year, ...data };
     });

@@ -1,10 +1,10 @@
 // src/types/title.ts
 export interface YearlyResult {
-    year: number;
-    result: string;
+  year: number;
+  result: string;
 }
 
 export interface MajorTitle {
-    name: string;
-    years: YearlyResult[];
+  name: string;
+  years: YearlyResult[];
 }

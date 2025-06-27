@@ -22,7 +22,7 @@ fs.readFile('../data/titles.json', 'utf8', (err, data) => {
       const results = years[year].results;
 
       // 各結果をループしてプレイヤーIDをカウント
-      results.forEach(result => {
+      results.forEach((result) => {
         const playerId = result.playerId;
         if (playerIdCount[playerId]) {
           playerIdCount[playerId]++;
@@ -34,8 +34,9 @@ fs.readFile('../data/titles.json', 'utf8', (err, data) => {
   }
 
   // 出現頻度を降順に並べ替えて表示
-  const sortedPlayerIds = Object.entries(playerIdCount)
-    .sort((a, b) => b[1] - a[1]);
+  const sortedPlayerIds = Object.entries(playerIdCount).sort(
+    (a, b) => b[1] - a[1],
+  );
 
   console.log('PlayerId 出現頻度 (降順):');
   sortedPlayerIds.forEach(([playerId, count]) => {
