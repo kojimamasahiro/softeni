@@ -26,8 +26,8 @@ type TeamInfo = {
 type EventResult = {
   tournament: string;
   resultSummary: {
-    pair: string[];
-    finalRound: string;
+    playerIds: string[];
+    result: string;
   }[];
   matches: {
     round: string;
@@ -74,15 +74,15 @@ export default function TeamResultsPage({ info, results }: Props) {
 
     results.forEach((event) => {
       const validResults = event.resultSummary.filter((r) =>
-        r.pair.every((pid) => pid in info.players),
+        r.playerIds.every((pid) => pid in info.players),
       );
 
       validResults.forEach((r) => {
-        const count = r.pair.length; // 1人 or 2人ペアの対応
+        const count = r.playerIds.length; // 1人 or 2人ペアの対応
 
-        if (r.finalRound === '優勝') champions += count;
-        if (r.finalRound === '準優勝') runnersUp += count;
-        if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r.finalRound)) {
+        if (r.result === '優勝') champions += count;
+        if (r.result === '準優勝') runnersUp += count;
+        if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r.result)) {
           top8OrBetter += count;
         }
 
@@ -117,14 +117,14 @@ export default function TeamResultsPage({ info, results }: Props) {
 
     results.forEach((event) => {
       event.resultSummary.forEach((summry) => {
-        summry.pair.forEach((pid) => {
+        summry.playerIds.forEach((pid) => {
           const player = info.players?.[pid];
           if (!player) return;
           initializePlayerStats(pid, player);
 
-          if (summry.finalRound) {
-            stats[pid].winsByRound[summry.finalRound] =
-              (stats[pid].winsByRound[summry.finalRound] || 0) + 1;
+          if (summry.result) {
+            stats[pid].winsByRound[summry.result] =
+              (stats[pid].winsByRound[summry.result] || 0) + 1;
           }
         });
       });
@@ -164,7 +164,7 @@ export default function TeamResultsPage({ info, results }: Props) {
 
         const resultWithNames = event.resultSummary
           .map((r) => {
-            const playerNames = r.pair.map((pid) => {
+            const playerNames = r.playerIds.map((pid) => {
               const player = info.players[pid];
               return player ? player.lastName + player.firstName : null;
             });
@@ -174,7 +174,7 @@ export default function TeamResultsPage({ info, results }: Props) {
               return null;
             }
 
-            return `${playerNames.join('・')}（${r.finalRound}）`;
+            return `${playerNames.join('・')}（${r.result}）`;
           })
           .filter(Boolean) // null を除外
           .join('、');
