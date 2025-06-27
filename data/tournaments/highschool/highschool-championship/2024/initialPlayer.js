@@ -1,4 +1,4 @@
-[
+const initialPlayers = [
 {"id":1,"name":"坂口・小山（尽誠学園）","information":[{"lastName":"坂口","firstName":"生磨","team":"尽誠学園","prefecture":"香川県","playerId":null,"tempId":"坂口_生磨_尽誠学園"},{"lastName":"小山","firstName":"寛晴","team":"尽誠学園","prefecture":"香川県","playerId":null,"tempId":"小山_寛晴_尽誠学園"}]},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"兼田・髙橋（中越）","information":[{"lastName":"兼田","firstName":"十和","team":"中越","prefecture":"新潟県","playerId":null,"tempId":"兼田_十和_中越"},{"lastName":"髙橋","firstName":"頼生","team":"中越","prefecture":"新潟県","playerId":null,"tempId":"髙橋_頼生_中越"}]},
@@ -57,7 +57,7 @@
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":35,"name":"小室・里見（常磐大）","information":[{"lastName":"小室","firstName":"昂誠","team":"常磐大","prefecture":"茨城県","playerId":null,"tempId":"小室_昂誠_常磐大"},{"lastName":"里見","firstName":"大輔","team":"常磐大","prefecture":"茨城県","playerId":null,"tempId":"里見_大輔_常磐大"}]},
 {"id":"bye","name":"1回戦免除","information":[]},
-{"id":36,"name":"山蒼・日野（莉大）","information":[{"lastName":"山蒼","firstName":"真","team":"莉大","prefecture":"山形県","playerId":null,"tempId":"山蒼_真_莉大"},{"lastName":"日野","firstName":"羽黒","team":"莉大","prefecture":"山形県","playerId":null,"tempId":"日野_羽黒_莉大"}]},
+{"id":36,"name":"畠山・日野（羽黒）","information":[{"lastName":"畠山","firstName":"蒼真","team":"羽黒","prefecture":"山形県","playerId":null,"tempId":"畠山_蒼真_羽黒"},{"lastName":"日野","firstName":"莉大","team":"羽黒","prefecture":"山形県","playerId":null,"tempId":"日野_莉大_羽黒"}]},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":37,"name":"仲原・中村（知念）","information":[{"lastName":"仲原","firstName":"将吾","team":"知念","prefecture":"沖縄県","playerId":null,"tempId":"仲原_将吾_知念"},{"lastName":"中村","firstName":"琉輝","team":"知念","prefecture":"沖縄県","playerId":null,"tempId":"中村_琉輝_知念"}]},
 {"id":38,"name":"田内・谷岡（岡豊）","information":[{"lastName":"田内","firstName":"裕","team":"岡豊","prefecture":"高知県","playerId":null,"tempId":"田内_裕_岡豊"},{"lastName":"谷岡","firstName":"奏瑠","team":"岡豊","prefecture":"高知県","playerId":null,"tempId":"谷岡_奏瑠_岡豊"}]},
@@ -460,9 +460,7 @@
 {"id":280,"name":"宮崎・佐藤（とわの森三愛）","information":[{"lastName":"宮崎","firstName":"航和","team":"とわの森三愛","prefecture":"北海道","playerId":null,"tempId":"宮崎_航和_とわの森三愛"},{"lastName":"佐藤","firstName":"諒","team":"とわの森三愛","prefecture":"北海道","playerId":null,"tempId":"佐藤_諒_とわの森三愛"}]},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":281,"name":"宮田・下田（長崎南山）","information":[{"lastName":"宮田","firstName":"夏希","team":"長崎南山","prefecture":"長崎県","playerId":null,"tempId":"宮田_夏希_長崎南山"},{"lastName":"下田","firstName":"詠太","team":"長崎南山","prefecture":"長崎県","playerId":null,"tempId":"下田_詠太_長崎南山"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
 {"id":282,"name":"吉田・髙橋（中京）","information":[{"lastName":"吉田","firstName":"怜矢飛","team":"中京","prefecture":"岐阜県","playerId":null,"tempId":"吉田_怜矢飛_中京"},{"lastName":"髙橋","firstName":"春馬","team":"中京","prefecture":"岐阜県","playerId":null,"tempId":"髙橋_春馬_中京"}]},
-{"id":"bye","name":"1回戦免除","information":[]},
 {"id":283,"name":"安井・水落（前橋商）","information":[{"lastName":"安井","firstName":"勇翔","team":"前橋商","prefecture":"群馬県","playerId":null,"tempId":"安井_勇翔_前橋商"},{"lastName":"水落","firstName":"礼翔","team":"前橋商","prefecture":"群馬県","playerId":null,"tempId":"水落_礼翔_前橋商"}]},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":284,"name":"相山・吉田（田村）","information":[{"lastName":"相山","firstName":"昂慧","team":"田村","prefecture":"福島県","playerId":null,"tempId":"相山_昂慧_田村"},{"lastName":"吉田","firstName":"拓翔","team":"田村","prefecture":"福島県","playerId":null,"tempId":"吉田_拓翔_田村"}]},
