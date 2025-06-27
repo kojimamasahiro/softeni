@@ -108,12 +108,19 @@ function MatchGroup({
                   >
                     <td className="px-4 py-2 break-words">{m.round}</td>
                     <td className="px-4 py-2 break-words">
-                      {m.opponents.map((op, j) => (
-                        <span key={j}>
-                          {op.lastName}（{op.team}）
-                          {j < m.opponents.length - 1 && '・'}
-                        </span>
-                      ))}
+                      {(() => {
+                        const teamMap = m.opponents.reduce<Record<string, string[]>>((acc, op) => {
+                          if (!acc[op.team]) acc[op.team] = [];
+                          acc[op.team].push(op.lastName);
+                          return acc;
+                        }, {});
+
+                        const grouped = Object.entries(teamMap).map(
+                          ([team, names]) => `${names.join('・')}（${team}）`
+                        );
+
+                        return grouped.join('・');
+                      })()}
                     </td>
                     <td className="px-4 py-2">
                       {m.result === 'win' ? '勝ち' : '負け'}

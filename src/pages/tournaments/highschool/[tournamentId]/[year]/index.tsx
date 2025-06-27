@@ -65,7 +65,7 @@ interface TournamentYearResultPageProps {
   allPlayers: PlayerInfo[];
   unknownPlayers: Record<
     string,
-    { firstName: string; lastName: string; team: string }
+    { firstName: string; lastName: string; team: string; displayTeam?: string }
   >;
   hasEntries: boolean;
 }
@@ -171,7 +171,7 @@ export default function TournamentYearResultPage({
         return {
           id,
           name: unknown ? `${unknown.lastName}${unknown.firstName}` : id,
-          team: unknown?.team ?? '所属不明',
+          team: unknown?.displayTeam ?? unknown?.team ?? '所属不明',
           noLink: true,
         };
       }
