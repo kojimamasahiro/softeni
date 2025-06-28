@@ -145,6 +145,20 @@ export default function Home({ players }: HomeProps) {
 
             <LiveResultsByTournament playersData={players} />
 
+            {/* ✅ 高校カテゴリへのリンク */}
+            <section className="mb-12 px-4">
+              <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
+              <div
+                onClick={() => (window.location.href = `/highschool`)}
+                className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+              >
+                <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  最新の高校カテゴリ全国大会の結果から、各高校のチームや選手の活躍を確認できます。
+                </p>
+              </div>
+            </section>
+
             {/* ✅ 所属別成績 */}
             <section className="mb-12 px-4">
               <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
