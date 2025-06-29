@@ -46,6 +46,7 @@ export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
 
       <Head>
         <script
+          title={`${prefectureName}の高校成績 | ソフトテニス情報`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -67,7 +68,7 @@ export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: { prefectureName },
+                  name: prefectureName,
                   item: pageUrl,
                 },
               ],
