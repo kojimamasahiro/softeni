@@ -1,66 +1,7866 @@
 [
-{"id": 1, "name": "小保伶太（広島翔洋）", "information": [{"lastName": "小保", "firstName": "伶太", "team": "広島翔洋", "prefecture": "広島", "playerId": null, "tempId": "小保_伶太_広島翔洋", "originalTeam": "広島翔洋高等学校"}]},
-{"id": 2, "name": "福田喜大（上宮）", "information": [{"lastName": "福田", "firstName": "喜大", "team": "上宮", "prefecture": "大阪", "playerId": null, "tempId": "福田_喜大_上宮", "originalTeam": "上宮高等学校"}]},
-{"id": 3, "name": "草野春真（田村）", "information": [{"lastName": "草野", "firstName": "春真", "team": "田村", "prefecture": "福島", "playerId": null, "tempId": "草野_春真_田村", "originalTeam": "福島県立田村高等学校"}]},
-{"id": 4, "name": "加藤虎牙（大谷室蘭）", "information": [{"lastName": "加藤", "firstName": "虎牙", "team": "大谷室蘭", "originalTeam": "", "prefecture": "北海道", "playerId": null, "tempId": "加藤虎牙_不明_大谷室蘭"}]},
-{"id": 5, "name": "大塚陸（高崎商）", "information": [{"lastName": "大塚", "firstName": "陸玖", "team": "高崎商", "prefecture": "群馬", "playerId": null, "tempId": "大塚_陸玖_高崎商", "originalTeam": "群馬県立高崎商業高等学校"}]},
-{"id": 6, "name": "赤阪英昭（慶應義塾）", "information": [{"lastName": "赤阪英昭", "firstName": "", "team": "慶應義塾", "originalTeam": null, "prefecture": "神奈川県", "playerId": null, "tempId": "赤阪英昭_不明_慶應義塾"}]},
-{"id": 7, "name": "宮田亮（尽誠学園）", "information": [{"lastName": "宮田", "firstName": "亮", "team": "尽誠学園", "prefecture": "香川", "playerId": null, "tempId": "宮田_亮_尽誠学園", "originalTeam": "尽誠学園高等学校"}]},
-{"id": 8, "name": "長濱瑠飛（岡崎城西）", "information": [{"lastName": "長濱", "firstName": "瑠飛", "team": "岡崎城西", "prefecture": "愛知", "playerId": null, "tempId": "長濱_瑠飛_岡崎城西", "originalTeam": "岡崎城西高等学校"}]},
-{"id": 9, "name": "町田佳紀（秋田令和）", "information": [{"lastName": "町田", "firstName": "佳紀", "team": "秋田令和", "prefecture": "秋田", "playerId": null, "tempId": "町田_佳紀_秋田令和", "originalTeam": "秋田令和高校"}]},
-{"id": 10, "name": "河野晃大（鹿児島実）", "information": [{"lastName": "河野", "firstName": "晃大", "team": "鹿児島実", "prefecture": "鹿児島", "playerId": null, "tempId": "河野_晃大_鹿児島実", "originalTeam": "鹿児島実業高等学校"}]},
-{"id": 11, "name": "中易快翔（羽黒）", "information": [{"lastName": "中易", "firstName": "快翔", "team": "羽黒", "prefecture": "山形", "playerId": null, "tempId": "中易_快翔_羽黒", "originalTeam": "学校法人羽黒学園羽黒高等学校"}]},
-{"id": 12, "name": "野田弦輝（和歌山北）", "information": [{"lastName": "野田", "firstName": "弦輝", "team": "和歌山北", "prefecture": "和歌山", "playerId": null, "tempId": "野田_弦輝_和歌山北", "originalTeam": "和歌山北高校"}]},
-{"id": 13, "name": "竹内慶悟（三重）", "information": [{"lastName": "竹内", "firstName": "慶悟", "team": "三重", "prefecture": "三重", "playerId": null, "tempId": "竹内_慶悟_三重", "originalTeam": "三重高等学校"}]},
-{"id": 14, "name": "岩城啓太（とわの森三愛）", "information": [{"lastName": "岩城", "firstName": "啓太", "team": "とわの森三愛", "prefecture": "北海道", "playerId": null, "tempId": "岩城_啓太_とわの森三愛", "originalTeam": "とわの森三愛高等学校"}]},
-{"id": 15, "name": "高澤颯（北越）", "information": [{"lastName": "高澤", "firstName": "颯", "team": "北越", "prefecture": "新潟", "playerId": null, "tempId": "高澤_颯_北越", "originalTeam": "北越高等学校"}]},
-{"id": 16, "name": "前田蒼生（高田商）", "information": [{"lastName": "前田", "firstName": "蒼生", "team": "高田商", "prefecture": "奈良", "playerId": null, "tempId": "前田_蒼生_高田商", "originalTeam": "高田商業高等学校"}]},
-{"id": 17, "name": "下田詠太（長崎南山）", "information": [{"lastName": "下田", "firstName": "詠太", "team": "長崎南山", "prefecture": "長崎", "playerId": null, "tempId": "下田_詠太_長崎南山", "originalTeam": "長崎南山高等学校"}]},
-{"id": 18, "name": "福本礼央夏（八重山）", "information": [{"lastName": "福本礼央夏", "firstName": "", "team": "八重山", "originalTeam": null, "prefecture": "沖縄県", "playerId": null, "tempId": "福本礼央夏_不明_八重山"}]},
-{"id": 19, "name": "染矢永太（草津東）", "information": [{"lastName": "染矢", "firstName": "永太", "team": "草津東", "prefecture": "滋賀", "playerId": null, "tempId": "染矢_永太_草津東", "originalTeam": "滋賀県立草津東高等学校"}]},
-{"id": 20, "name": "尾﨑健人（済美）", "information": [{"lastName": "尾﨑", "firstName": "健人", "team": "済美", "prefecture": "愛媛", "playerId": null, "tempId": "尾﨑_健人_済美", "originalTeam": "済美高等学校"}]},
-{"id": 21, "name": "植田璃音（高田商）", "information": [{"lastName": "植田", "firstName": "璃音", "team": "高田商", "prefecture": "奈良", "playerId": null, "tempId": "植田_璃音_高田商", "originalTeam": "大和高田市立高田商業高等学校"}]},
-{"id": 22, "name": "古川琉慎（帯広農）", "information": [{"lastName": "古川琉慎", "firstName": "", "team": "帯広農", "originalTeam": null, "prefecture": "北海道", "playerId": null, "tempId": "古川琉慎_不明_帯広農"}]},
-{"id": 23, "name": "北俣航太（青森明の星）", "information": [{"lastName": "北俣", "firstName": "航太", "team": "青森明の星", "prefecture": "青森", "playerId": null, "tempId": "北俣_航太_青森明の星", "originalTeam": "青森明の星中学・高等学校"}]},
-{"id": 24, "name": "善福留生（霞ヶ浦）", "information": [{"lastName": "善福", "firstName": "留生", "team": "霞ヶ浦", "prefecture": "茨城", "playerId": null, "tempId": "善福_留生_霞ヶ浦", "originalTeam": "霞ヶ浦高等学校"}]},
-{"id": 25, "name": "小林奏來（敦賀）", "information": [{"lastName": "小林", "firstName": "奏來", "team": "敦賀", "prefecture": "福井", "playerId": null, "tempId": "小林_奏來_敦賀", "originalTeam": "福井県立敦賀高等学校"}]},
-{"id": 26, "name": "下森吏（文徳）", "information": [{"lastName": "下森", "firstName": "吏", "team": "文徳", "prefecture": "熊本", "playerId": null, "tempId": "下森_吏_文徳", "originalTeam": "文徳高等学校"}]},
-{"id": 27, "name": "中島遙斗（筑紫台）", "information": [{"lastName": "中島遙斗", "firstName": "", "team": "筑紫台", "originalTeam": null, "prefecture": "福岡県", "playerId": null, "tempId": "中島遙斗_不明_筑紫台"}]},
-{"id": 28, "name": "井原蓮（松江工）", "information": [{"lastName": "井原", "firstName": "蓮", "team": "松江工", "prefecture": "島根", "playerId": null, "tempId": "井原_蓮_松江工", "originalTeam": "島根県立松江工業高校"}]},
-{"id": 29, "name": "八島銀音（黒沢尻北）", "information": [{"lastName": "八島", "firstName": "銀音", "team": "黒沢尻北", "prefecture": "岩手", "playerId": null, "tempId": "八島_銀音_黒沢尻北", "originalTeam": "岩手県立黒沢尻北高等学校"}]},
-{"id": 30, "name": "五十嵐奨真（とわの森三愛）", "information": [{"lastName": "五十嵐", "firstName": "奨真", "team": "とわの森三愛", "prefecture": "北海道", "playerId": null, "tempId": "五十嵐_奨真_とわの森三愛", "originalTeam": "とわの森三愛高等学校"}]},
-{"id": 31, "name": "坂口竣亮（大分）", "information": [{"lastName": "坂口", "firstName": "竣亮", "team": "大分", "prefecture": "大分", "playerId": null, "tempId": "坂口_竣亮_大分", "originalTeam": "学校法人大分高等学校"}]},
-{"id": 32, "name": "原田蒼空（松山）", "information": [{"lastName": "原田", "firstName": "蒼空", "team": "松山", "prefecture": "埼玉", "playerId": null, "tempId": "原田_蒼空_松山", "originalTeam": "埼玉県立松山高等学校"}]},
-{"id": 33, "name": "古本竜吾（能登）", "information": [{"lastName": "古本", "firstName": "竜吾", "team": "能登", "prefecture": "石川", "playerId": null, "tempId": "古本_竜吾_能登", "originalTeam": "石川県立能登高等学校"}]},
-{"id": 34, "name": "松田快晴（北科大）", "information": [{"lastName": "松田快晴", "firstName": "", "team": "北科大", "originalTeam": null, "prefecture": "北海道", "playerId": null, "tempId": "松田快晴_不明_北科大"}]},
-{"id": 35, "name": "保海祥真（立命館守山）", "information": [{"lastName": "保海", "firstName": "祥真", "team": "立命館守山", "prefecture": "滋賀", "playerId": null, "tempId": "保海_祥真_立命館守山", "originalTeam": "立命館守山高等学校"}]},
-{"id": 36, "name": "南龍之介（三重）", "information": [{"lastName": "南", "firstName": "龍之介", "team": "三重", "prefecture": "三重", "playerId": null, "tempId": "南_龍之介_三重", "originalTeam": "三重高等学校"}]},
-{"id": 37, "name": "栗岡優志（市尼崎）", "information": [{"lastName": "栗岡", "firstName": "優志", "team": "市尼崎", "prefecture": "兵庫", "playerId": null, "tempId": "栗岡_優志_市尼崎", "originalTeam": "尼崎市立尼崎高等学校"}]},
-{"id": 38, "name": "山本遥斗（出雲工）", "information": [{"lastName": "山本遥斗", "firstName": "", "team": "出雲工", "originalTeam": null, "prefecture": "島根県", "playerId": null, "tempId": "山本遥斗_不明_出雲工"}]},
-{"id": 39, "name": "木本琉偉（明徳義塾）", "information": [{"lastName": "木本", "firstName": "琉偉", "team": "明徳義塾", "prefecture": "高知", "playerId": null, "tempId": "木本_琉偉_明徳義塾", "originalTeam": "明徳義塾高等学校"}]},
-{"id": 40, "name": "塚本光琉（岡崎城西）", "information": [{"lastName": "塚本", "firstName": "光琉", "team": "岡崎城西", "prefecture": "愛知", "playerId": null, "tempId": "塚本_光琉_岡崎城西", "originalTeam": "岡崎城西高等学校"}]},
-{"id": 41, "name": "並木孝輔（宇都宮短大附）", "information": [{"lastName": "並木", "firstName": "孝輔", "team": "宇都宮短大附", "prefecture": "栃木", "playerId": null, "tempId": "並木_孝輔_宇都宮短大附", "originalTeam": "宇都宮短期大学附属高等学校"}]},
-{"id": 42, "name": "根津圭威士（東北）", "information": [{"lastName": "根津", "firstName": "圭威士", "team": "東北", "prefecture": "宮城", "playerId": null, "tempId": "根津_圭威士_東北", "originalTeam": "東北高等学校"}]},
-{"id": 43, "name": "佐藤聖敦（滝川工）", "information": [{"lastName": "佐藤聖敦", "firstName": "", "team": "滝川工", "originalTeam": null, "prefecture": "北海道", "playerId": null, "tempId": "佐藤聖敦_不明_滝川工"}]},
-{"id": 44, "name": "藤原奏（笛吹）", "information": [{"lastName": "藤原", "firstName": "奏", "team": "笛吹", "prefecture": "山梨", "playerId": null, "tempId": "藤原_奏_笛吹", "originalTeam": "山梨県立笛吹高等学校"}]},
-{"id": 45, "name": "佐藤礼（尾道）", "information": [{"lastName": "佐藤", "firstName": "礼", "team": "尾道", "prefecture": "広島", "playerId": null, "tempId": "佐藤_礼_尾道", "originalTeam": "尾道高等学校"}]},
-{"id": 46, "name": "堺瑠音（岡山理大附）", "information": [{"lastName": "堺", "firstName": "瑠音", "team": "岡山理大附", "prefecture": "岡山", "playerId": null, "tempId": "堺_瑠音_岡山理大附", "originalTeam": "岡山理科大学附属高等学校"}]},
-{"id": 47, "name": "松本一真（南陽工）", "information": [{"lastName": "松本", "firstName": "一真", "team": "南陽工", "prefecture": "山口", "playerId": null, "tempId": "松本_一真_南陽工", "originalTeam": "山口県立南陽工業高等学校"}]},
-{"id": 48, "name": "伊藤陽聖（尽誠学園）", "information": [{"lastName": "伊藤", "firstName": "陽聖", "team": "尽誠学園", "prefecture": "香川", "playerId": null, "tempId": "伊藤_陽聖_尽誠学園", "originalTeam": "尽誠学園高等学校"}]},
-{"id": 49, "name": "津田柚翔（福知山成美）", "information": [{"lastName": "津田", "firstName": "柚翔", "team": "福知山成美", "prefecture": "京都", "playerId": null, "tempId": "津田_柚翔_福知山成美", "originalTeam": "福知山成美高等学校"}]},
-{"id": 50, "name": "前川悠成（高岡商）", "information": [{"lastName": "前川", "firstName": "悠成", "team": "高岡商", "prefecture": "富山", "playerId": null, "tempId": "前川_悠成_高岡商", "originalTeam": "富山県立高岡商業高等学校"}]},
-{"id": 51, "name": "沖中瑛太（旭川実）", "information": [{"lastName": "沖中瑛太", "firstName": "", "team": "旭川実", "originalTeam": null, "prefecture": "北海道", "playerId": null, "tempId": "沖中瑛太_不明_旭川実"}]},
-{"id": 52, "name": "坂井優斗（知徳）", "information": [{"lastName": "坂井", "firstName": "優斗", "team": "知徳", "prefecture": "静岡", "playerId": null, "tempId": "坂井_優斗_知徳", "originalTeam": "知徳高等学校"}]},
-{"id": 53, "name": "川上琳太郎（長野俊英）", "information": [{"lastName": "川上", "firstName": "琳太郎", "team": "長野俊英", "prefecture": "長野", "playerId": null, "tempId": "川上_琳太郎_長野俊英", "originalTeam": "長野俊英高等学校"}]},
-{"id": 54, "name": "松尾航希（嬉野）", "information": [{"lastName": "松尾", "firstName": "航希", "team": "嬉野", "prefecture": "佐賀", "playerId": null, "tempId": "松尾_航希_嬉野", "originalTeam": "佐賀県立嬉野高等学校塩田校舎"}]},
-{"id": 55, "name": "砂田隆稔（鳥取東）", "information": [{"lastName": "砂田", "firstName": "隆稔", "team": "鳥取東", "prefecture": "鳥取", "playerId": null, "tempId": "砂田_隆稔_鳥取東", "originalTeam": "鳥取県立鳥取東高等学校"}]},
-{"id": 56, "name": "若生裕希（小田原）", "information": [{"lastName": "若生", "firstName": "裕希", "team": "小田原", "prefecture": "神奈川", "playerId": null, "tempId": "若生_裕希_小田原", "originalTeam": "神奈川県立小田原高等学校"}]},
-{"id": 57, "name": "島﨑羚音（美濃加茂）", "information": [{"lastName": "島﨑羚音", "firstName": "", "team": "美濃加茂", "originalTeam": null, "prefecture": "岐阜県", "playerId": null, "tempId": "島﨑羚音_不明_美濃加茂"}]},
-{"id": 58, "name": "小林瑛（豊南）", "information": [{"lastName": "小林", "firstName": "瑛", "team": "豊南", "prefecture": "東京", "playerId": null, "tempId": "小林_瑛_豊南", "originalTeam": "豊南高等学校"}]},
-{"id": 59, "name": "田中涼介（都城商）", "information": [{"lastName": "田中", "firstName": "涼介", "team": "都城商", "prefecture": "宮崎", "playerId": null, "tempId": "田中_涼介_都城商", "originalTeam": "宮崎県立都城商業高等学校"}]},
-{"id": 60, "name": "山中裕太（八戸工大一）", "information": [{"lastName": "山中", "firstName": "裕太", "team": "八戸工大一", "prefecture": "青森", "playerId": null, "tempId": "山中_裕太_八戸工大一", "originalTeam": "八戸工業大学第一高校"}]},
-{"id": 61, "name": "飯降脩（高田商）", "information": [{"lastName": "飯降", "firstName": "脩", "team": "高田商", "prefecture": "奈良", "playerId": null, "tempId": "飯降_脩_高田商", "originalTeam": "高田商業高等学校"}]},
-{"id": 62, "name": "手塚康介（木更津総合）", "information": [{"lastName": "手塚", "firstName": "康介", "team": "木更津総合", "prefecture": "千葉", "playerId": null, "tempId": "手塚_康介_木更津総合", "originalTeam": "木更津総合高等学校"}]},
-{"id": 63, "name": "竹村純生（北科大）", "information": [{"lastName": "竹村純生", "firstName": "", "team": "北科大", "originalTeam": null, "prefecture": "北海道", "playerId": null, "tempId": "竹村純生_不明_北科大"}]},
-{"id": 64, "name": "花垣陸（富岡東）", "information": [{"lastName": "花垣", "firstName": "陸", "team": "富岡東", "prefecture": "徳島", "playerId": null, "tempId": "花垣_陸_富岡東", "originalTeam": "徳島県立富岡東高等学校"}]}
+  {
+    "id": 1,
+    "name": "坂口・小山（尽誠学園）",
+    "information": [
+      {
+        "lastName": "坂口",
+        "firstName": "生磨",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "坂口_生磨_尽誠学園"
+      },
+      {
+        "lastName": "小山",
+        "firstName": "寛晴",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "小山_寛晴_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 2,
+    "name": "兼田・髙橋（中越）",
+    "information": [
+      {
+        "lastName": "兼田",
+        "firstName": "十和",
+        "team": "中越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "兼田_十和_中越"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "頼生",
+        "team": "中越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "髙橋_頼生_中越"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "森・山本（南陽工）",
+    "information": [
+      {
+        "lastName": "森",
+        "firstName": "聖羅",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "森_聖羅_南陽工"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "隼平",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "山本_隼平_南陽工"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "長屋・榊原（享栄）",
+    "information": [
+      {
+        "lastName": "長屋",
+        "firstName": "優斗",
+        "team": "享栄",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "長屋_優斗_享栄"
+      },
+      {
+        "lastName": "榊原",
+        "firstName": "雅翔",
+        "team": "享栄",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "榊原_雅翔_享栄"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 5,
+    "name": "美坂・深見（鹿児島商）",
+    "information": [
+      {
+        "lastName": "美坂",
+        "firstName": "瑛人",
+        "team": "鹿児島商",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "美坂_瑛人_鹿児島商"
+      },
+      {
+        "lastName": "深見",
+        "firstName": "皐雅",
+        "team": "鹿児島商",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "深見_皐雅_鹿児島商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 6,
+    "name": "立石・赤川（上宮）",
+    "information": [
+      {
+        "lastName": "立石",
+        "firstName": "健成",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "立石_健成_上宮"
+      },
+      {
+        "lastName": "赤川",
+        "firstName": "奏太",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "赤川_奏太_上宮"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 7,
+    "name": "松本・岩﨑（文徳）",
+    "information": [
+      {
+        "lastName": "松本",
+        "firstName": "蒼空",
+        "team": "文徳",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "松本_蒼空_文徳"
+      },
+      {
+        "lastName": "岩﨑",
+        "firstName": "駆",
+        "team": "文徳",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "岩﨑_駆_文徳"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 8,
+    "name": "中塚・浅川（駿台甲府）",
+    "information": [
+      {
+        "lastName": "中塚",
+        "firstName": "廣樹",
+        "team": "駿台甲府",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "中塚_廣樹_駿台甲府"
+      },
+      {
+        "lastName": "浅川",
+        "firstName": "拓海",
+        "team": "駿台甲府",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "浅川_拓海_駿台甲府"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 9,
+    "name": "町田・伊藤（秋田令和）",
+    "information": [
+      {
+        "lastName": "町田",
+        "firstName": "佳紀",
+        "team": "秋田令和",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "町田_佳紀_秋田令和"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "玲央",
+        "team": "秋田令和",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "伊藤_玲央_秋田令和"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 10,
+    "name": "永田・岩城（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "永田",
+        "firstName": "侑也",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "永田_侑也_とわの森三愛"
+      },
+      {
+        "lastName": "岩城",
+        "firstName": "啓太",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "岩城_啓太_とわの森三愛"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 11,
+    "name": "中野・澤（豊南）",
+    "information": [
+      {
+        "lastName": "中野",
+        "firstName": "凜音",
+        "team": "豊南",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "中野_凜音_豊南"
+      },
+      {
+        "lastName": "澤",
+        "firstName": "諒多",
+        "team": "豊南",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "澤_諒多_豊南"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "津田・伊藤（福知山成美）",
+    "information": [
+      {
+        "lastName": "津田",
+        "firstName": "柚翔",
+        "team": "福知山成美",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "津田_柚翔_福知山成美"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "颯人",
+        "team": "福知山成美",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "伊藤_颯人_福知山成美"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "竹内・伊藤（黒沢尻工）",
+    "information": [
+      {
+        "lastName": "竹内",
+        "firstName": "悠真",
+        "team": "黒沢尻工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "竹内_悠真_黒沢尻工"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "奏太",
+        "team": "黒沢尻工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "伊藤_奏太_黒沢尻工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 14,
+    "name": "井田・山口（嬉野）",
+    "information": [
+      {
+        "lastName": "井田",
+        "firstName": "隼介",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "井田_隼介_嬉野"
+      },
+      {
+        "lastName": "山口",
+        "firstName": "柊",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "山口_柊_嬉野"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 15,
+    "name": "赤沼・君塚（木更津総合）",
+    "information": [
+      {
+        "lastName": "赤沼",
+        "firstName": "裕希",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "赤沼_裕希_木更津総合"
+      },
+      {
+        "lastName": "君塚",
+        "firstName": "響",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "君塚_響_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 16,
+    "name": "大家・大江（桜井）",
+    "information": [
+      {
+        "lastName": "大家",
+        "firstName": "健慎",
+        "team": "桜井",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "大家_健慎_桜井"
+      },
+      {
+        "lastName": "大江",
+        "firstName": "陽太",
+        "team": "桜井",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "大江_陽太_桜井"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 17,
+    "name": "大槻・佐川（仙台三）",
+    "information": [
+      {
+        "lastName": "大槻",
+        "firstName": "寛介",
+        "team": "仙台三",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "大槻_寛介_仙台三"
+      },
+      {
+        "lastName": "佐川",
+        "firstName": "隼祐",
+        "team": "仙台三",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "佐川_隼祐_仙台三"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "保海・竹田（立命館守山）",
+    "information": [
+      {
+        "lastName": "保海",
+        "firstName": "祥真",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "保海_祥真_立命館守山"
+      },
+      {
+        "lastName": "竹田",
+        "firstName": "央",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "竹田_央_立命館守山"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "高崎・田口（美濃加茂）",
+    "information": [
+      {
+        "lastName": "高崎",
+        "firstName": "温大",
+        "team": "美濃加茂",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "高崎_温大_美濃加茂"
+      },
+      {
+        "lastName": "田口",
+        "firstName": "陽貴",
+        "team": "美濃加茂",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "田口_陽貴_美濃加茂"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 20,
+    "name": "草野・菅野（田村）",
+    "information": [
+      {
+        "lastName": "草野",
+        "firstName": "春真",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "草野_春真_田村"
+      },
+      {
+        "lastName": "菅野",
+        "firstName": "百音",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "菅野_百音_田村"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 21,
+    "name": "佐藤・濱田（延岡学園）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "翔太",
+        "team": "宮崎県",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "佐藤_翔太_延岡学園"
+      },
+      {
+        "lastName": "濱田",
+        "firstName": "優汰",
+        "team": "延岡学園",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "濱田_優汰_延岡学園"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "大山・山村（近畿大高専）",
+    "information": [
+      {
+        "lastName": "大山",
+        "firstName": "航輝",
+        "team": "近畿大高専",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "大山_航輝_近畿大高専"
+      },
+      {
+        "lastName": "山村",
+        "firstName": "総司",
+        "team": "近畿大高専",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "山村_総司_近畿大高専"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "尾上・河村（済美）",
+    "information": [
+      {
+        "lastName": "尾上",
+        "firstName": "葵埜",
+        "team": "済美",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "尾上_葵埜_済美"
+      },
+      {
+        "lastName": "河村",
+        "firstName": "ｶｰﾝ勇太",
+        "team": "済美",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "河村_ｶｰﾝ勇太_済美"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 24,
+    "name": "飯嶋・町田（松山）",
+    "information": [
+      {
+        "lastName": "飯嶋",
+        "firstName": "大智",
+        "team": "松山",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "飯嶋_大智_松山"
+      },
+      {
+        "lastName": "町田",
+        "firstName": "開",
+        "team": "松山",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "町田_開_松山"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 25,
+    "name": "狹間・下種（尾道）",
+    "information": [
+      {
+        "lastName": "狹間",
+        "firstName": "蒼登",
+        "team": "尾道",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "狹間_蒼登_尾道"
+      },
+      {
+        "lastName": "下種",
+        "firstName": "仁也",
+        "team": "尾道",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "下種_仁也_尾道"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 26,
+    "name": "飯降・荻谷（高田商）",
+    "information": [
+      {
+        "lastName": "飯降",
+        "firstName": "脩",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "飯降_脩_高田商"
+      },
+      {
+        "lastName": "荻谷",
+        "firstName": "侑磨",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "荻谷_侑磨_高田商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 27,
+    "name": "中山・谷（筑紫台）",
+    "information": [
+      {
+        "lastName": "中山",
+        "firstName": "太稀",
+        "team": "筑紫台",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "中山_太稀_筑紫台"
+      },
+      {
+        "lastName": "谷",
+        "firstName": "結真",
+        "team": "筑紫台",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "谷_結真_筑紫台"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "和久井・並木（宇都宮短大附）",
+    "information": [
+      {
+        "lastName": "和久井",
+        "firstName": "結仁",
+        "team": "宇都宮短大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "和久井_結仁_宇都宮短大附"
+      },
+      {
+        "lastName": "並木",
+        "firstName": "孝輔",
+        "team": "宇都宮短大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "並木_孝輔_宇都宮短大附"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "阿部・今井（能登）",
+    "information": [
+      {
+        "lastName": "阿部",
+        "firstName": "堯",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "阿部_堯_能登"
+      },
+      {
+        "lastName": "今井",
+        "firstName": "晴樹",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "今井_晴樹_能登"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 30,
+    "name": "今田・茶木（岡山理大附）",
+    "information": [
+      {
+        "lastName": "今田",
+        "firstName": "迅",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "今田_迅_岡山理大附"
+      },
+      {
+        "lastName": "茶木",
+        "firstName": "將臣",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "茶木_將臣_岡山理大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 31,
+    "name": "鍵和田・秋山（東海大相模）",
+    "information": [
+      {
+        "lastName": "鍵和田",
+        "firstName": "海斗",
+        "team": "東海大相模",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "鍵和田_海斗_東海大相模"
+      },
+      {
+        "lastName": "秋山",
+        "firstName": "陽希",
+        "team": "東海大相模",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "秋山_陽希_東海大相模"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "菊池・高嶋（下田）",
+    "information": [
+      {
+        "lastName": "菊池",
+        "firstName": "出夢",
+        "team": "下田",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "菊池_出夢_下田"
+      },
+      {
+        "lastName": "高嶋",
+        "firstName": "冴輔",
+        "team": "下田",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "高嶋_冴輔_下田"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "白瀬・松本（洲本）",
+    "information": [
+      {
+        "lastName": "白瀬",
+        "firstName": "勇太",
+        "team": "洲本",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "白瀬_勇太_洲本"
+      },
+      {
+        "lastName": "松本",
+        "firstName": "宗士",
+        "team": "洲本",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "松本_宗士_洲本"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 34,
+    "name": "飯田・釜元（海星）",
+    "information": [
+      {
+        "lastName": "飯田",
+        "firstName": "颯",
+        "team": "海星",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "飯田_颯_海星"
+      },
+      {
+        "lastName": "釜元",
+        "firstName": "粋吹",
+        "team": "海星",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "釜元_粋吹_海星"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 35,
+    "name": "小室・里見（常磐大）",
+    "information": [
+      {
+        "lastName": "小室",
+        "firstName": "昂誠",
+        "team": "常磐大",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "小室_昂誠_常磐大"
+      },
+      {
+        "lastName": "里見",
+        "firstName": "大輔",
+        "team": "常磐大",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "里見_大輔_常磐大"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 36,
+    "name": "畠山・日野（羽黒）",
+    "information": [
+      {
+        "lastName": "畠山",
+        "firstName": "蒼真",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "畠山_蒼真_羽黒"
+      },
+      {
+        "lastName": "日野",
+        "firstName": "莉大",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "日野_莉大_羽黒"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 37,
+    "name": "仲原・中村（知念）",
+    "information": [
+      {
+        "lastName": "仲原",
+        "firstName": "将吾",
+        "team": "知念",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "仲原_将吾_知念"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "琉輝",
+        "team": "知念",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "中村_琉輝_知念"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "田内・谷岡（岡豊）",
+    "information": [
+      {
+        "lastName": "田内",
+        "firstName": "裕",
+        "team": "岡豊",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "田内_裕_岡豊"
+      },
+      {
+        "lastName": "谷岡",
+        "firstName": "奏瑠",
+        "team": "岡豊",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "谷岡_奏瑠_岡豊"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "川上・鹿田（長野俊英）",
+    "information": [
+      {
+        "lastName": "川上",
+        "firstName": "琳太郎",
+        "team": "長野俊英",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "川上_琳太郎_長野俊英"
+      },
+      {
+        "lastName": "鹿田",
+        "firstName": "陸",
+        "team": "長野俊英",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "鹿田_陸_長野俊英"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 40,
+    "name": "若林・岸本（三重）",
+    "information": [
+      {
+        "lastName": "若林",
+        "firstName": "宝来",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "若林_宝来_三重"
+      },
+      {
+        "lastName": "岸本",
+        "firstName": "修武",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "岸本_修武_三重"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 41,
+    "name": "伊藤・帆足（東福岡）",
+    "information": [
+      {
+        "lastName": "伊藤",
+        "firstName": "駿平",
+        "team": "東福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "伊藤_駿平_東福岡"
+      },
+      {
+        "lastName": "帆足",
+        "firstName": "光平",
+        "team": "東福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "帆足_光平_東福岡"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "中谷・島（高岡商）",
+    "information": [
+      {
+        "lastName": "中谷",
+        "firstName": "来稀",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "中谷_来稀_高岡商"
+      },
+      {
+        "lastName": "島",
+        "firstName": "健斗",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "島_健斗_高岡商"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "直井・松元（駒大）",
+    "information": [
+      {
+        "lastName": "直井",
+        "firstName": "一史",
+        "team": "駒大",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "直井_一史_駒大"
+      },
+      {
+        "lastName": "松元",
+        "firstName": "海翔",
+        "team": "駒大",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "松元_海翔_駒大"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 44,
+    "name": "葛西・苫米地（八戸工大一）",
+    "information": [
+      {
+        "lastName": "葛西",
+        "firstName": "慧",
+        "team": "八戸工大一",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "葛西_慧_八戸工大一"
+      },
+      {
+        "lastName": "苫米地",
+        "firstName": "空隼",
+        "team": "八戸工大一",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "苫米地_空隼_八戸工大一"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 45,
+    "name": "佐々木・下田（米子松蔭）",
+    "information": [
+      {
+        "lastName": "佐々木",
+        "firstName": "康太",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "佐々木_康太_米子松蔭"
+      },
+      {
+        "lastName": "下田",
+        "firstName": "悠貴",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "下田_悠貴_米子松蔭"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 46,
+    "name": "下田・山下（和歌山北）",
+    "information": [
+      {
+        "lastName": "下田",
+        "firstName": "隼輝",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "下田_隼輝_和歌山北"
+      },
+      {
+        "lastName": "山下",
+        "firstName": "來空",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "山下_來空_和歌山北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 47,
+    "name": "塚本・丸田（尽誠学園）",
+    "information": [
+      {
+        "lastName": "塚本",
+        "firstName": "在雅",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "塚本_在雅_尽誠学園"
+      },
+      {
+        "lastName": "丸田",
+        "firstName": "貴士",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "丸田_貴士_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "藤森・江刺（岩手）",
+    "information": [
+      {
+        "lastName": "藤森",
+        "firstName": "耀生",
+        "team": "岩手",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "藤森_耀生_岩手"
+      },
+      {
+        "lastName": "江刺",
+        "firstName": "家蓮",
+        "team": "岩手",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "江刺_家蓮_岩手"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "園部・白石（文星芸大附）",
+    "information": [
+      {
+        "lastName": "園部",
+        "firstName": "友也",
+        "team": "文星芸大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "園部_友也_文星芸大附"
+      },
+      {
+        "lastName": "白石",
+        "firstName": "将也",
+        "team": "文星芸大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "白石_将也_文星芸大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 50,
+    "name": "立花・鳥津（神戸国際附）",
+    "information": [
+      {
+        "lastName": "立花",
+        "firstName": "輝",
+        "team": "神戸国際附",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "立花_輝_神戸国際附"
+      },
+      {
+        "lastName": "鳥津",
+        "firstName": "颯",
+        "team": "神戸国際附",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "鳥津_颯_神戸国際附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 51,
+    "name": "福見・矢藤（つるぎ）",
+    "information": [
+      {
+        "lastName": "福見",
+        "firstName": "紘利",
+        "team": "つるぎ",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "福見_紘利_つるぎ"
+      },
+      {
+        "lastName": "矢藤",
+        "firstName": "龍之介",
+        "team": "つるぎ",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "矢藤_龍之介_つるぎ"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "河野・品末（宇部工）",
+    "information": [
+      {
+        "lastName": "河野",
+        "firstName": "泰人",
+        "team": "宇部工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "河野_泰人_宇部工"
+      },
+      {
+        "lastName": "品末",
+        "firstName": "桔平",
+        "team": "宇部工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "品末_桔平_宇部工"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "坂口・青野（大分）",
+    "information": [
+      {
+        "lastName": "坂口",
+        "firstName": "竣亮",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "坂口_竣亮_大分"
+      },
+      {
+        "lastName": "青野",
+        "firstName": "良真",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "青野_良真_大分"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 54,
+    "name": "水木・松田（東北）",
+    "information": [
+      {
+        "lastName": "水木",
+        "firstName": "洸",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "水木_洸_東北"
+      },
+      {
+        "lastName": "松田",
+        "firstName": "拳弥",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "松田_拳弥_東北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 55,
+    "name": "小林・大浦（敦賀）",
+    "information": [
+      {
+        "lastName": "小林",
+        "firstName": "奏來",
+        "team": "敦賀",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "小林_奏來_敦賀"
+      },
+      {
+        "lastName": "大浦",
+        "firstName": "林斗",
+        "team": "敦賀",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "大浦_林斗_敦賀"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 56,
+    "name": "熊木・吉野（昌平）",
+    "information": [
+      {
+        "lastName": "熊木",
+        "firstName": "暖人",
+        "team": "昌平",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "熊木_暖人_昌平"
+      },
+      {
+        "lastName": "吉野",
+        "firstName": "碧",
+        "team": "昌平",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "吉野_碧_昌平"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 57,
+    "name": "外山・中田（富士宮北）",
+    "information": [
+      {
+        "lastName": "外山",
+        "firstName": "絢大",
+        "team": "富士宮北",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "外山_絢大_富士宮北"
+      },
+      {
+        "lastName": "中田",
+        "firstName": "悠斗",
+        "team": "富士宮北",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "中田_悠斗_富士宮北"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "小谷・西崎（上宮）",
+    "information": [
+      {
+        "lastName": "小谷",
+        "firstName": "健",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "小谷_健_上宮"
+      },
+      {
+        "lastName": "西崎",
+        "firstName": "奏斗",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "西崎_奏斗_上宮"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "田中・山口（都城商）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "涼介",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "田中_涼介_都城商"
+      },
+      {
+        "lastName": "山口",
+        "firstName": "準斗",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "山口_準斗_都城商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 60,
+    "name": "福島・加藤（明徳義塾）",
+    "information": [
+      {
+        "lastName": "福島",
+        "firstName": "惇",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "福島_惇_明徳義塾"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "歓基",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "加藤_歓基_明徳義塾"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 61,
+    "name": "佐藤・齋藤（羽黒）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "悠翔",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "佐藤_悠翔_羽黒"
+      },
+      {
+        "lastName": "齋藤",
+        "firstName": "翼",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "齋藤_翼_羽黒"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "吉原・上岩（嬉野）",
+    "information": [
+      {
+        "lastName": "吉原",
+        "firstName": "健哉",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "吉原_健哉_嬉野"
+      },
+      {
+        "lastName": "上岩",
+        "firstName": "結都",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "上岩_結都_嬉野"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "萩森・佐藤（木更津総合）",
+    "information": [
+      {
+        "lastName": "萩森",
+        "firstName": "大和斗",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "萩森_大和斗_木更津総合"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "諒和",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "佐藤_諒和_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 64,
+    "name": "小島・西山（高田商）",
+    "information": [
+      {
+        "lastName": "小島",
+        "firstName": "大輝",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "小島_大輝_高田商"
+      },
+      {
+        "lastName": "西山",
+        "firstName": "亮太",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "西山_亮太_高田商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 65,
+    "name": "石川・鳴海（岡崎城西）",
+    "information": [
+      {
+        "lastName": "石川",
+        "firstName": "智弘",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "石川_智弘_岡崎城西"
+      },
+      {
+        "lastName": "鳴海",
+        "firstName": "志優",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "鳴海_志優_岡崎城西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 66,
+    "name": "西・小杉（北科大高）",
+    "information": [
+      {
+        "lastName": "西",
+        "firstName": "拓郎",
+        "team": "北科大高",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "西_拓郎_北科大高"
+      },
+      {
+        "lastName": "小杉",
+        "firstName": "昂道",
+        "team": "北科大高",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "小杉_昂道_北科大高"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 67,
+    "name": "藤本・神田（清水ヶ丘）",
+    "information": [
+      {
+        "lastName": "藤本",
+        "firstName": "晴生",
+        "team": "清水ヶ丘",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "藤本_晴生_清水ヶ丘"
+      },
+      {
+        "lastName": "神田",
+        "firstName": "陽飛",
+        "team": "清水ヶ丘",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "神田_陽飛_清水ヶ丘"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "平野・森田（金沢学院大附）",
+    "information": [
+      {
+        "lastName": "平野",
+        "firstName": "壱真",
+        "team": "金沢学院大附",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "平野_壱真_金沢学院大附"
+      },
+      {
+        "lastName": "森田",
+        "firstName": "暁仁",
+        "team": "金沢学院大附",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "森田_暁仁_金沢学院大附"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "青木・斉藤（横浜創英）",
+    "information": [
+      {
+        "lastName": "青木",
+        "firstName": "優",
+        "team": "横浜創英",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "青木_優_横浜創英"
+      },
+      {
+        "lastName": "斉藤",
+        "firstName": "愁我",
+        "team": "横浜創英",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "斉藤_愁我_横浜創英"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 70,
+    "name": "高橋・高澤（北越）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "憐依",
+        "team": "北越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "高橋_憐依_北越"
+      },
+      {
+        "lastName": "高澤",
+        "firstName": "颯",
+        "team": "北越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "高澤_颯_北越"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 71,
+    "name": "原・原（綾羽）",
+    "information": [
+      {
+        "lastName": "原",
+        "firstName": "海翔",
+        "team": "綾羽",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "原_海翔_綾羽"
+      },
+      {
+        "lastName": "原",
+        "firstName": "陸翔",
+        "team": "綾羽",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "原_陸翔_綾羽"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 72,
+    "name": "川下・濱野（鹿町工）",
+    "information": [
+      {
+        "lastName": "川下",
+        "firstName": "蓮",
+        "team": "鹿町工",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "川下_蓮_鹿町工"
+      },
+      {
+        "lastName": "濱野",
+        "firstName": "翔稀",
+        "team": "鹿町工",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "濱野_翔稀_鹿町工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 73,
+    "name": "大河原・茂木（高崎）",
+    "information": [
+      {
+        "lastName": "大河原",
+        "firstName": "兜",
+        "team": "高崎",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "大河原_兜_高崎"
+      },
+      {
+        "lastName": "茂木",
+        "firstName": "俊樹",
+        "team": "高崎",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "茂木_俊樹_高崎"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 74,
+    "name": "小田川・福田（松江工）",
+    "information": [
+      {
+        "lastName": "小田川",
+        "firstName": "聖和",
+        "team": "松江工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "小田川_聖和_松江工"
+      },
+      {
+        "lastName": "福田",
+        "firstName": "絢斗",
+        "team": "松江工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "福田_絢斗_松江工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 75,
+    "name": "照屋・渡邉（向陽）",
+    "information": [
+      {
+        "lastName": "照屋",
+        "firstName": "盛也",
+        "team": "向陽",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "照屋_盛也_向陽"
+      },
+      {
+        "lastName": "渡邉",
+        "firstName": "波輝",
+        "team": "向陽",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "渡邉_波輝_向陽"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 76,
+    "name": "皆川・髙橋（横手清陵）",
+    "information": [
+      {
+        "lastName": "皆川",
+        "firstName": "稜太",
+        "team": "横手清陵",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "皆川_稜太_横手清陵"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "諒太",
+        "team": "横手清陵",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "髙橋_諒太_横手清陵"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "吉井・加藤（霞ヶ浦）",
+    "information": [
+      {
+        "lastName": "吉井",
+        "firstName": "翼",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "吉井_翼_霞ヶ浦"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "心温",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "加藤_心温_霞ヶ浦"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "name": "坂手・小杉（京都文教）",
+    "information": [
+      {
+        "lastName": "坂手",
+        "firstName": "拓海",
+        "team": "京都文教",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "坂手_拓海_京都文教"
+      },
+      {
+        "lastName": "小杉",
+        "firstName": "優太",
+        "team": "京都文教",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "小杉_優太_京都文教"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 79,
+    "name": "米川・豊田（尽誠学園）",
+    "information": [
+      {
+        "lastName": "米川",
+        "firstName": "雅翔",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "米川_雅翔_尽誠学園"
+      },
+      {
+        "lastName": "豊田",
+        "firstName": "祐冴",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "豊田_祐冴_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 80,
+    "name": "田中・保科（渋川）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "輝",
+        "team": "渋川",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "田中_輝_渋川"
+      },
+      {
+        "lastName": "保科",
+        "firstName": "陽向",
+        "team": "渋川",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "保科_陽向_渋川"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "福原・三宅（益田翔陽）",
+    "information": [
+      {
+        "lastName": "福原",
+        "firstName": "天翔",
+        "team": "益田翔陽",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "福原_天翔_益田翔陽"
+      },
+      {
+        "lastName": "三宅",
+        "firstName": "暖翔",
+        "team": "益田翔陽",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "三宅_暖翔_益田翔陽"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "小野・加藤（大分商）",
+    "information": [
+      {
+        "lastName": "小野",
+        "firstName": "泰輝",
+        "team": "大分商",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "小野_泰輝_大分商"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "蒼唯",
+        "team": "大分商",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "加藤_蒼唯_大分商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 83,
+    "name": "坂井・鈴木（知徳）",
+    "information": [
+      {
+        "lastName": "坂井",
+        "firstName": "優斗",
+        "team": "知徳",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "坂井_優斗_知徳"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "龍賀",
+        "team": "知徳",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "鈴木_龍賀_知徳"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 84,
+    "name": "青木・深井（新潟産大附）",
+    "information": [
+      {
+        "lastName": "青木",
+        "firstName": "優河",
+        "team": "新潟産大附",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "青木_優河_新潟産大附"
+      },
+      {
+        "lastName": "深井",
+        "firstName": "葉太郎",
+        "team": "新潟産大附",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "深井_葉太郎_新潟産大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 85,
+    "name": "藤田・成島（三浦学苑）",
+    "information": [
+      {
+        "lastName": "藤田",
+        "firstName": "大宙",
+        "team": "三浦学苑",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "藤田_大宙_三浦学苑"
+      },
+      {
+        "lastName": "成島",
+        "firstName": "秀人",
+        "team": "三浦学苑",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "成島_秀人_三浦学苑"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 86,
+    "name": "宗像・齋藤（田村）",
+    "information": [
+      {
+        "lastName": "宗像",
+        "firstName": "俐玖",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "宗像_俐玖_田村"
+      },
+      {
+        "lastName": "齋藤",
+        "firstName": "蓮",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "齋藤_蓮_田村"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 87,
+    "name": "村井・福井（立命館守山）",
+    "information": [
+      {
+        "lastName": "村井",
+        "firstName": "晋之介",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "村井_晋之介_立命館守山"
+      },
+      {
+        "lastName": "福井",
+        "firstName": "優斗",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "福井_優斗_立命館守山"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 88,
+    "name": "島﨑・中田（宮崎西）",
+    "information": [
+      {
+        "lastName": "島﨑",
+        "firstName": "凛",
+        "team": "宮崎西",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "島﨑_凛_宮崎西"
+      },
+      {
+        "lastName": "中田",
+        "firstName": "敦仁",
+        "team": "宮崎西",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "中田_敦仁_宮崎西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 89,
+    "name": "山本・木村（米子松蔭）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "蓮",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "山本_蓮_米子松蔭"
+      },
+      {
+        "lastName": "木村",
+        "firstName": "天",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "木村_天_米子松蔭"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "半崎・木下（風越）",
+    "information": [
+      {
+        "lastName": "半崎",
+        "firstName": "佑心",
+        "team": "風越",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "半崎_佑心_風越"
+      },
+      {
+        "lastName": "木下",
+        "firstName": "遥",
+        "team": "風越",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "木下_遥_風越"
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "name": "山中・土屋（市尼崎）",
+    "information": [
+      {
+        "lastName": "山中",
+        "firstName": "翼空",
+        "team": "市尼崎",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "山中_翼空_市尼崎"
+      },
+      {
+        "lastName": "土屋",
+        "firstName": "颯来",
+        "team": "市尼崎",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "土屋_颯来_市尼崎"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 92,
+    "name": "小見・阿部（羽黒）",
+    "information": [
+      {
+        "lastName": "小見",
+        "firstName": "碧斗",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "小見_碧斗_羽黒"
+      },
+      {
+        "lastName": "阿部",
+        "firstName": "瑛斗",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "阿部_瑛斗_羽黒"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 93,
+    "name": "保利・星（宇都宮工）",
+    "information": [
+      {
+        "lastName": "保利",
+        "firstName": "彰大",
+        "team": "宇都宮工",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "保利_彰大_宇都宮工"
+      },
+      {
+        "lastName": "星",
+        "firstName": "克尚",
+        "team": "宇都宮工",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "星_克尚_宇都宮工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 94,
+    "name": "白井・北野（東北）",
+    "information": [
+      {
+        "lastName": "白井",
+        "firstName": "颯",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "白井_颯_東北"
+      },
+      {
+        "lastName": "北野",
+        "firstName": "咲斗",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "北野_咲斗_東北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 95,
+    "name": "白濱・繁松（長崎南山）",
+    "information": [
+      {
+        "lastName": "白濱",
+        "firstName": "凪騎",
+        "team": "長崎南山",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "白濱_凪騎_長崎南山"
+      },
+      {
+        "lastName": "繁松",
+        "firstName": "凌大",
+        "team": "長崎南山",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "繁松_凌大_長崎南山"
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "姫田・板垣（徳島科技）",
+    "information": [
+      {
+        "lastName": "姫田",
+        "firstName": "凌",
+        "team": "徳島科技",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "姫田_凌_徳島科技"
+      },
+      {
+        "lastName": "板垣",
+        "firstName": "亨",
+        "team": "徳島科技",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "板垣_亨_徳島科技"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "中山・盛岡（三重）",
+    "information": [
+      {
+        "lastName": "中山",
+        "firstName": "真言",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "中山_真言_三重"
+      },
+      {
+        "lastName": "盛岡",
+        "firstName": "昂生",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "盛岡_昂生_三重"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 98,
+    "name": "鈴木・阿部（高田商）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "唯斗",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "鈴木_唯斗_高田商"
+      },
+      {
+        "lastName": "阿部",
+        "firstName": "倖大",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "阿部_倖大_高田商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 99,
+    "name": "松野・中家（県岐阜商）",
+    "information": [
+      {
+        "lastName": "松野",
+        "firstName": "快飛",
+        "team": "県岐阜商",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "松野_快飛_県岐阜商"
+      },
+      {
+        "lastName": "中家",
+        "firstName": "悠斗",
+        "team": "県岐阜商",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "中家_悠斗_県岐阜商"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "渡辺・木田（松山）",
+    "information": [
+      {
+        "lastName": "渡辺",
+        "firstName": "幸誠",
+        "team": "松山",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "渡辺_幸誠_松山"
+      },
+      {
+        "lastName": "木田",
+        "firstName": "大翔",
+        "team": "松山",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "木田_大翔_松山"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "常岡・一ノ瀬（能登）",
+    "information": [
+      {
+        "lastName": "常岡",
+        "firstName": "葵",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "常岡_葵_能登"
+      },
+      {
+        "lastName": "一ノ瀬",
+        "firstName": "恭平",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "一ノ瀬_恭平_能登"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 102,
+    "name": "吉田・城内（盛岡工）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "蓮",
+        "team": "盛岡工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "吉田_蓮_盛岡工"
+      },
+      {
+        "lastName": "城内",
+        "firstName": "純那",
+        "team": "盛岡工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "城内_純那_盛岡工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 103,
+    "name": "宇野・佐藤（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "宇野",
+        "firstName": "廉太朗",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "宇野_廉太朗_とわの森三愛"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "光駿",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "佐藤_光駿_とわの森三愛"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 104,
+    "name": "田原・森（岡山理大附）",
+    "information": [
+      {
+        "lastName": "田原",
+        "firstName": "侑晟",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "田原_侑晟_岡山理大附"
+      },
+      {
+        "lastName": "森",
+        "firstName": "涼哉",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "森_涼哉_岡山理大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 105,
+    "name": "松田・梶谷（和歌山北）",
+    "information": [
+      {
+        "lastName": "松田",
+        "firstName": "太陽",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "松田_太陽_和歌山北"
+      },
+      {
+        "lastName": "梶谷",
+        "firstName": "大輝",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "梶谷_大輝_和歌山北"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "有村・藤原（笛吹）",
+    "information": [
+      {
+        "lastName": "有村",
+        "firstName": "翔空",
+        "team": "笛吹",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "有村_翔空_笛吹"
+      },
+      {
+        "lastName": "藤原",
+        "firstName": "奏",
+        "team": "笛吹",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "藤原_奏_笛吹"
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "name": "荒木・外田（文徳）",
+    "information": [
+      {
+        "lastName": "荒木",
+        "firstName": "冬伍",
+        "team": "文徳",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "荒木_冬伍_文徳"
+      },
+      {
+        "lastName": "外田",
+        "firstName": "悠斗",
+        "team": "文徳",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "外田_悠斗_文徳"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 108,
+    "name": "毛利・仲田（新田）",
+    "information": [
+      {
+        "lastName": "毛利",
+        "firstName": "航太",
+        "team": "新田",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "毛利_航太_新田"
+      },
+      {
+        "lastName": "仲田",
+        "firstName": "翔磨",
+        "team": "新田",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "仲田_翔磨_新田"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 109,
+    "name": "古賀・平林（木更津総合）",
+    "information": [
+      {
+        "lastName": "古賀",
+        "firstName": "太平",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "古賀_太平_木更津総合"
+      },
+      {
+        "lastName": "平林",
+        "firstName": "功樹",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "平林_功樹_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "name": "池水・福（鹿児島実）",
+    "information": [
+      {
+        "lastName": "池水",
+        "firstName": "充希",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "池水_充希_鹿児島実"
+      },
+      {
+        "lastName": "福",
+        "firstName": "陽翔",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "福_陽翔_鹿児島実"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "name": "清水・岸田（上宮）",
+    "information": [
+      {
+        "lastName": "清水",
+        "firstName": "勇斗",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "清水_勇斗_上宮"
+      },
+      {
+        "lastName": "岸田",
+        "firstName": "瑛稀",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "岸田_瑛稀_上宮"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 112,
+    "name": "坂田・中村（南陽工）",
+    "information": [
+      {
+        "lastName": "坂田",
+        "firstName": "真咲斗",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "坂田_真咲斗_南陽工"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "翔太朗",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "中村_翔太朗_南陽工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 113,
+    "name": "丹羽・香山（岡崎城西）",
+    "information": [
+      {
+        "lastName": "丹羽",
+        "firstName": "奏人",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "丹羽_奏人_岡崎城西"
+      },
+      {
+        "lastName": "香山",
+        "firstName": "侑月",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "香山_侑月_岡崎城西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 114,
+    "name": "山本・今井（明法）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "悠路",
+        "team": "明法",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "山本_悠路_明法"
+      },
+      {
+        "lastName": "今井",
+        "firstName": "瞭",
+        "team": "明法",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "今井_瞭_明法"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 115,
+    "name": "金森・森口（敦賀）",
+    "information": [
+      {
+        "lastName": "金森",
+        "firstName": "竣大",
+        "team": "敦賀",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "金森_竣大_敦賀"
+      },
+      {
+        "lastName": "森口",
+        "firstName": "克明",
+        "team": "敦賀",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "森口_克明_敦賀"
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "name": "向平・蛯名（三本木）",
+    "information": [
+      {
+        "lastName": "向平",
+        "firstName": "優介",
+        "team": "三本木",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "向平_優介_三本木"
+      },
+      {
+        "lastName": "蛯名",
+        "firstName": "陽",
+        "team": "三本木",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "蛯名_陽_三本木"
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "name": "木下・藤井（嬉野）",
+    "information": [
+      {
+        "lastName": "木下",
+        "firstName": "琉希",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "木下_琉希_嬉野"
+      },
+      {
+        "lastName": "藤井",
+        "firstName": "智暉",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "藤井_智暉_嬉野"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 118,
+    "name": "千葉・國松（東北）",
+    "information": [
+      {
+        "lastName": "千葉",
+        "firstName": "琉翔",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "千葉_琉翔_東北"
+      },
+      {
+        "lastName": "國松",
+        "firstName": "巧",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "國松_巧_東北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 119,
+    "name": "山本・乗越（鹿児島実）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "真太朗",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "山本_真太朗_鹿児島実"
+      },
+      {
+        "lastName": "乗越",
+        "firstName": "馨大",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "乗越_馨大_鹿児島実"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "name": "吉川・本間（岡山理大附）",
+    "information": [
+      {
+        "lastName": "吉川",
+        "firstName": "憲二朗",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "吉川_憲二朗_岡山理大附"
+      },
+      {
+        "lastName": "本間",
+        "firstName": "優作",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "本間_優作_岡山理大附"
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "name": "大倉・森（三重）",
+    "information": [
+      {
+        "lastName": "大倉",
+        "firstName": "優",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "大倉_優_三重"
+      },
+      {
+        "lastName": "森",
+        "firstName": "俊亮",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "森_俊亮_三重"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 122,
+    "name": "河住・深沢（甲府南）",
+    "information": [
+      {
+        "lastName": "河住",
+        "firstName": "昌悟",
+        "team": "甲府南",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "河住_昌悟_甲府南"
+      },
+      {
+        "lastName": "深沢",
+        "firstName": "秀悠",
+        "team": "甲府南",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "深沢_秀悠_甲府南"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 123,
+    "name": "髙嶺・福本（八重山）",
+    "information": [
+      {
+        "lastName": "髙嶺",
+        "firstName": "大弥",
+        "team": "八重山",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "髙嶺_大弥_八重山"
+      },
+      {
+        "lastName": "福本",
+        "firstName": "礼央夏",
+        "team": "八重山",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "福本_礼央夏_八重山"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 124,
+    "name": "髙橋・尾形（東海大相模）",
+    "information": [
+      {
+        "lastName": "髙橋",
+        "firstName": "稜空",
+        "team": "東海大相模",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "髙橋_稜空_東海大相模"
+      },
+      {
+        "lastName": "尾形",
+        "firstName": "涼",
+        "team": "東海大相模",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "尾形_涼_東海大相模"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 125,
+    "name": "山本・原（福知山成美）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "将",
+        "team": "福知山成美",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "山本_将_福知山成美"
+      },
+      {
+        "lastName": "原",
+        "firstName": "壮介",
+        "team": "福知山成美",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "原_壮介_福知山成美"
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "name": "平岡・二宮（済美）",
+    "information": [
+      {
+        "lastName": "平岡",
+        "firstName": "大輝",
+        "team": "済美",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "平岡_大輝_済美"
+      },
+      {
+        "lastName": "二宮",
+        "firstName": "唯人",
+        "team": "済美",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "二宮_唯人_済美"
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "name": "丸山・室（高岡商）",
+    "information": [
+      {
+        "lastName": "丸山",
+        "firstName": "慈央",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "丸山_慈央_高岡商"
+      },
+      {
+        "lastName": "室",
+        "firstName": "愛琉",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "室_愛琉_高岡商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 128,
+    "name": "一ノ宮・善福（霞ヶ浦）",
+    "information": [
+      {
+        "lastName": "一ノ宮",
+        "firstName": "大和",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "一ノ宮_大和_霞ヶ浦"
+      },
+      {
+        "lastName": "善福",
+        "firstName": "留生",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "善福_留生_霞ヶ浦"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 129,
+    "name": "上村・和田（ルーテル学院）",
+    "information": [
+      {
+        "lastName": "上村",
+        "firstName": "光希",
+        "team": "ルーテル学院",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "上村_光希_ルーテル学院"
+      },
+      {
+        "lastName": "和田",
+        "firstName": "楓",
+        "team": "ルーテル学院",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "和田_楓_ルーテル学院"
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "name": "宮木・赤坂（八戸学院光星）",
+    "information": [
+      {
+        "lastName": "宮木",
+        "firstName": "裕進",
+        "team": "八戸学院光星",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "宮木_裕進_八戸学院光星"
+      },
+      {
+        "lastName": "赤坂",
+        "firstName": "駿",
+        "team": "八戸学院光星",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "赤坂_駿_八戸学院光星"
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "name": "西田・戸田（金津）",
+    "information": [
+      {
+        "lastName": "西田",
+        "firstName": "心大郎",
+        "team": "金津",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "西田_心大郎_金津"
+      },
+      {
+        "lastName": "戸田",
+        "firstName": "大晴",
+        "team": "金津",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "戸田_大晴_金津"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 132,
+    "name": "片岡・大塚（明徳義塾）",
+    "information": [
+      {
+        "lastName": "片岡",
+        "firstName": "柾人",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "片岡_柾人_明徳義塾"
+      },
+      {
+        "lastName": "大塚",
+        "firstName": "悠介",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "大塚_悠介_明徳義塾"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 133,
+    "name": "西小路・山田（東福岡）",
+    "information": [
+      {
+        "lastName": "西小路",
+        "firstName": "拳斗",
+        "team": "東福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "西小路_拳斗_東福岡"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "侑人",
+        "team": "東福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "山田_侑人_東福岡"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 134,
+    "name": "尾花・後閑（健大高崎）",
+    "information": [
+      {
+        "lastName": "尾花",
+        "firstName": "涼汰",
+        "team": "健大高崎",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "尾花_涼汰_健大高崎"
+      },
+      {
+        "lastName": "後閑",
+        "firstName": "晴登",
+        "team": "健大高崎",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "後閑_晴登_健大高崎"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 135,
+    "name": "松井・佐々（大同大学大同）",
+    "information": [
+      {
+        "lastName": "松井",
+        "firstName": "慎太朗",
+        "team": "大同大学大同",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "松井_慎太朗_大同大学大同"
+      },
+      {
+        "lastName": "佐々",
+        "firstName": "武",
+        "team": "大同大学大同",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "佐々_武_大同大学大同"
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "樋口・出水（高田商）",
+    "information": [
+      {
+        "lastName": "樋口",
+        "firstName": "大翔",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "樋口_大翔_高田商"
+      },
+      {
+        "lastName": "出水",
+        "firstName": "俊丞",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "出水_俊丞_高田商"
+      }
+    ]
+  },
+  {
+    "id": 137,
+    "name": "林・山本（近大福山）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "叶倭",
+        "team": "近大福山",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "林_叶倭_近大福山"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "彩汰",
+        "team": "近大福山",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "山本_彩汰_近大福山"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 138,
+    "name": "大門・守谷（尽誠学園）",
+    "information": [
+      {
+        "lastName": "大門",
+        "firstName": "登馬",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "大門_登馬_尽誠学園"
+      },
+      {
+        "lastName": "守谷",
+        "firstName": "麟",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "守谷_麟_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 139,
+    "name": "嘉納・池田（市川）",
+    "information": [
+      {
+        "lastName": "嘉納",
+        "firstName": "駿",
+        "team": "市川",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "嘉納_駿_市川"
+      },
+      {
+        "lastName": "池田",
+        "firstName": "蓮汰",
+        "team": "市川",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "池田_蓮汰_市川"
+      }
+    ]
+  },
+  {
+    "id": 140,
+    "name": "高橋・植田（米子工業）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "和志",
+        "team": "米子工業",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "高橋_和志_米子工業"
+      },
+      {
+        "lastName": "植田",
+        "firstName": "瑞稀",
+        "team": "米子工業",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "植田_瑞稀_米子工業"
+      }
+    ]
+  },
+  {
+    "id": 141,
+    "name": "力丸・阿部（一関学院）",
+    "information": [
+      {
+        "lastName": "力丸",
+        "firstName": "陽向",
+        "team": "一関学院",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "力丸_陽向_一関学院"
+      },
+      {
+        "lastName": "阿部",
+        "firstName": "裕斗",
+        "team": "一関学院",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "阿部_裕斗_一関学院"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 142,
+    "name": "遠藤・松村（木更津総合）",
+    "information": [
+      {
+        "lastName": "遠藤",
+        "firstName": "海斗",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "遠藤_海斗_木更津総合"
+      },
+      {
+        "lastName": "松村",
+        "firstName": "泰成",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "松村_泰成_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 143,
+    "name": "森・寺﨑（精道三川台）",
+    "information": [
+      {
+        "lastName": "森",
+        "firstName": "生",
+        "team": "精道三川台",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "森_生_精道三川台"
+      },
+      {
+        "lastName": "寺﨑",
+        "firstName": "聖真",
+        "team": "精道三川台",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "寺﨑_聖真_精道三川台"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 144,
+    "name": "北田・金久保（西川越）",
+    "information": [
+      {
+        "lastName": "北田",
+        "firstName": "耀",
+        "team": "西川越",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "北田_耀_西川越"
+      },
+      {
+        "lastName": "金久保",
+        "firstName": "颯汰城",
+        "team": "西川越",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "金久保_颯汰城_西川越"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 145,
+    "name": "伊藤・佐藤（大曲工）",
+    "information": [
+      {
+        "lastName": "伊藤",
+        "firstName": "琉哉",
+        "team": "大曲工",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "伊藤_琉哉_大曲工"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "大駕",
+        "team": "大曲工",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "佐藤_大駕_大曲工"
+      }
+    ]
+  },
+  {
+    "id": 146,
+    "name": "岩橋・山田（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "岩橋",
+        "firstName": "真翔",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "岩橋_真翔_とわの森三愛"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "智文",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "山田_智文_とわの森三愛"
+      }
+    ]
+  },
+  {
+    "id": 147,
+    "name": "福田・中村（上宮）",
+    "information": [
+      {
+        "lastName": "福田",
+        "firstName": "喜大",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "福田_喜大_上宮"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "悠人",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "中村_悠人_上宮"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 148,
+    "name": "尾島・永見（松江工）",
+    "information": [
+      {
+        "lastName": "尾島",
+        "firstName": "涼太",
+        "team": "松江工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "尾島_涼太_松江工"
+      },
+      {
+        "lastName": "永見",
+        "firstName": "翔",
+        "team": "松江工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "永見_翔_松江工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 149,
+    "name": "田村・木内（岩村田）",
+    "information": [
+      {
+        "lastName": "田村",
+        "firstName": "颯涼",
+        "team": "岩村田",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "田村_颯涼_岩村田"
+      },
+      {
+        "lastName": "木内",
+        "firstName": "日翔",
+        "team": "岩村田",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "木内_日翔_岩村田"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 150,
+    "name": "松尾・岩﨑（都城商）",
+    "information": [
+      {
+        "lastName": "松尾",
+        "firstName": "咲弥",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "松尾_咲弥_都城商"
+      },
+      {
+        "lastName": "岩﨑",
+        "firstName": "蓮",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "岩﨑_蓮_都城商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 151,
+    "name": "野田・秋田（和歌山北）",
+    "information": [
+      {
+        "lastName": "野田",
+        "firstName": "弦輝",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "野田_弦輝_和歌山北"
+      },
+      {
+        "lastName": "秋田",
+        "firstName": "駿登",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "秋田_駿登_和歌山北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 152,
+    "name": "澤田・大谷（つるぎ）",
+    "information": [
+      {
+        "lastName": "澤田",
+        "firstName": "空",
+        "team": "つるぎ",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "澤田_空_つるぎ"
+      },
+      {
+        "lastName": "大谷",
+        "firstName": "瑠尉",
+        "team": "つるぎ",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "大谷_瑠尉_つるぎ"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 153,
+    "name": "和田・宗像（田村）",
+    "information": [
+      {
+        "lastName": "和田",
+        "firstName": "大河",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "和田_大河_田村"
+      },
+      {
+        "lastName": "宗像",
+        "firstName": "鷲",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "宗像_鷲_田村"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 154,
+    "name": "山崎・宍倉（大杉並）",
+    "information": [
+      {
+        "lastName": "山崎",
+        "firstName": "周真",
+        "team": "大杉並",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "山崎_周真_大杉並"
+      },
+      {
+        "lastName": "宍倉",
+        "firstName": "希文",
+        "team": "大杉並",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "宍倉_希文_大杉並"
+      }
+    ]
+  },
+  {
+    "id": 155,
+    "name": "河野・中橋（大分）",
+    "information": [
+      {
+        "lastName": "河野",
+        "firstName": "翔空",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "河野_翔空_大分"
+      },
+      {
+        "lastName": "中橋",
+        "firstName": "蓮",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "中橋_蓮_大分"
+      }
+    ]
+  },
+  {
+    "id": 156,
+    "name": "佐藤・前田（中京）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "直輝",
+        "team": "中京",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "佐藤_直輝_中京"
+      },
+      {
+        "lastName": "前田",
+        "firstName": "英貴",
+        "team": "中京",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "前田_英貴_中京"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 157,
+    "name": "内田・宮田（尽誠学園）",
+    "information": [
+      {
+        "lastName": "内田",
+        "firstName": "陽斗",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "内田_陽斗_尽誠学園"
+      },
+      {
+        "lastName": "宮田",
+        "firstName": "成将",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "宮田_成将_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 158,
+    "name": "林田・宮原（長崎日大）",
+    "information": [
+      {
+        "lastName": "林田",
+        "firstName": "晴彦",
+        "team": "長崎日大",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "林田_晴彦_長崎日大"
+      },
+      {
+        "lastName": "宮原",
+        "firstName": "陸",
+        "team": "長崎日大",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "宮原_陸_長崎日大"
+      }
+    ]
+  },
+  {
+    "id": 159,
+    "name": "本庄・本庄（鳥取西）",
+    "information": [
+      {
+        "lastName": "本庄",
+        "firstName": "泰都",
+        "team": "鳥取西",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "本庄_泰都_鳥取西"
+      },
+      {
+        "lastName": "本庄",
+        "firstName": "晃都",
+        "team": "鳥取西",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "本庄_晃都_鳥取西"
+      }
+    ]
+  },
+  {
+    "id": 160,
+    "name": "相山・伊賀（田村）",
+    "information": [
+      {
+        "lastName": "相山",
+        "firstName": "尚慧",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "相山_尚慧_田村"
+      },
+      {
+        "lastName": "伊賀",
+        "firstName": "凌巧",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "伊賀_凌巧_田村"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 161,
+    "name": "原田・神藏（東海大相模）",
+    "information": [
+      {
+        "lastName": "原田",
+        "firstName": "興勇",
+        "team": "東海大相模",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "原田_興勇_東海大相模"
+      },
+      {
+        "lastName": "神藏",
+        "firstName": "悠月",
+        "team": "東海大相模",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "神藏_悠月_東海大相模"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 162,
+    "name": "町澤・山本（巻）",
+    "information": [
+      {
+        "lastName": "町澤",
+        "firstName": "緯宙",
+        "team": "巻",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "町澤_緯宙_巻"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "虎太郎",
+        "team": "巻",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "山本_虎太郎_巻"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 163,
+    "name": "岡野・木崎（岡崎城西）",
+    "information": [
+      {
+        "lastName": "岡野",
+        "firstName": "恵大",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "岡野_恵大_岡崎城西"
+      },
+      {
+        "lastName": "木崎",
+        "firstName": "天満",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "木崎_天満_岡崎城西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 164,
+    "name": "新垣・小西（洲本）",
+    "information": [
+      {
+        "lastName": "新垣",
+        "firstName": "一樹",
+        "team": "洲本",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "新垣_一樹_洲本"
+      },
+      {
+        "lastName": "小西",
+        "firstName": "亮輔",
+        "team": "洲本",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "小西_亮輔_洲本"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 165,
+    "name": "松尾・山田（嬉野）",
+    "information": [
+      {
+        "lastName": "松尾",
+        "firstName": "優希",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "松尾_優希_嬉野"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "謙輔",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "山田_謙輔_嬉野"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 166,
+    "name": "昼間・竹之内（木更津総合）",
+    "information": [
+      {
+        "lastName": "昼間",
+        "firstName": "悠佑",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "昼間_悠佑_木更津総合"
+      },
+      {
+        "lastName": "竹之内",
+        "firstName": "琉汰",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "竹之内_琉汰_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 167,
+    "name": "前川・角崎（高岡商）",
+    "information": [
+      {
+        "lastName": "前川",
+        "firstName": "悠成",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "前川_悠成_高岡商"
+      },
+      {
+        "lastName": "角崎",
+        "firstName": "豪哉",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "角崎_豪哉_高岡商"
+      }
+    ]
+  },
+  {
+    "id": 168,
+    "name": "深山・鎌田（東北）",
+    "information": [
+      {
+        "lastName": "深山",
+        "firstName": "竜臣",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "深山_竜臣_東北"
+      },
+      {
+        "lastName": "鎌田",
+        "firstName": "翔唯",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "鎌田_翔唯_東北"
+      }
+    ]
+  },
+  {
+    "id": 169,
+    "name": "須原・林（上宮）",
+    "information": [
+      {
+        "lastName": "須原",
+        "firstName": "蒼",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "須原_蒼_上宮"
+      },
+      {
+        "lastName": "林",
+        "firstName": "宏介",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "林_宏介_上宮"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 170,
+    "name": "紀野・小野（大分商）",
+    "information": [
+      {
+        "lastName": "紀野",
+        "firstName": "文汰",
+        "team": "大分商",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "紀野_文汰_大分商"
+      },
+      {
+        "lastName": "小野",
+        "firstName": "弘太郎",
+        "team": "大分商",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "小野_弘太郎_大分商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 171,
+    "name": "大山・中川（都城東）",
+    "information": [
+      {
+        "lastName": "大山",
+        "firstName": "瑠偉",
+        "team": "都城東",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "大山_瑠偉_都城東"
+      },
+      {
+        "lastName": "中川",
+        "firstName": "純之介",
+        "team": "都城東",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "中川_純之介_都城東"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 172,
+    "name": "町田・石井（山村国際）",
+    "information": [
+      {
+        "lastName": "町田",
+        "firstName": "優月希",
+        "team": "山村国際",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "町田_優月希_山村国際"
+      },
+      {
+        "lastName": "石井",
+        "firstName": "琉",
+        "team": "山村国際",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "石井_琉_山村国際"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 173,
+    "name": "葛西・柴崎（八戸工大一）",
+    "information": [
+      {
+        "lastName": "葛西",
+        "firstName": "琉偉",
+        "team": "八戸工大一",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "葛西_琉偉_八戸工大一"
+      },
+      {
+        "lastName": "柴崎",
+        "firstName": "恭麻",
+        "team": "八戸工大一",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "柴崎_恭麻_八戸工大一"
+      }
+    ]
+  },
+  {
+    "id": 174,
+    "name": "東・小川（清水ヶ丘）",
+    "information": [
+      {
+        "lastName": "東",
+        "firstName": "稜久",
+        "team": "清水ヶ丘",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "東_稜久_清水ヶ丘"
+      },
+      {
+        "lastName": "小川",
+        "firstName": "蓮太郎",
+        "team": "清水ヶ丘",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "小川_蓮太郎_清水ヶ丘"
+      }
+    ]
+  },
+  {
+    "id": 175,
+    "name": "植田・結城（高田商）",
+    "information": [
+      {
+        "lastName": "植田",
+        "firstName": "璃音",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": "ueda-rio",
+        "tempId": "植田_璃音_高田商"
+      },
+      {
+        "lastName": "結城",
+        "firstName": "琉衣",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "結城_琉衣_高田商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 176,
+    "name": "野中・坂本（ルーテル学院）",
+    "information": [
+      {
+        "lastName": "野中",
+        "firstName": "翔太",
+        "team": "ルーテル学院",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "野中_翔太_ルーテル学院"
+      },
+      {
+        "lastName": "坂本",
+        "firstName": "旭",
+        "team": "ルーテル学院",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "坂本_旭_ルーテル学院"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 177,
+    "name": "久保・田辺（敦賀）",
+    "information": [
+      {
+        "lastName": "久保",
+        "firstName": "寛人",
+        "team": "敦賀",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "久保_寛人_敦賀"
+      },
+      {
+        "lastName": "田辺",
+        "firstName": "陽平",
+        "team": "敦賀",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "田辺_陽平_敦賀"
+      }
+    ]
+  },
+  {
+    "id": 178,
+    "name": "葛岡・小玉（秋田令和）",
+    "information": [
+      {
+        "lastName": "葛岡",
+        "firstName": "斗真",
+        "team": "秋田令和",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "葛岡_斗真_秋田令和"
+      },
+      {
+        "lastName": "小玉",
+        "firstName": "康正",
+        "team": "秋田令和",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "小玉_康正_秋田令和"
+      }
+    ]
+  },
+  {
+    "id": 179,
+    "name": "𠮷田・𠮷田（脇町）",
+    "information": [
+      {
+        "lastName": "𠮷田",
+        "firstName": "壮汰",
+        "team": "脇町",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "𠮷田_壮汰_脇町"
+      },
+      {
+        "lastName": "𠮷田",
+        "firstName": "圭汰",
+        "team": "脇町",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "𠮷田_圭汰_脇町"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 180,
+    "name": "長谷川・髙嶋（霞ヶ浦）",
+    "information": [
+      {
+        "lastName": "長谷川",
+        "firstName": "博人",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "長谷川_博人_霞ヶ浦"
+      },
+      {
+        "lastName": "髙嶋",
+        "firstName": "雅弥",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "髙嶋_雅弥_霞ヶ浦"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 181,
+    "name": "武藤・吉田（大牟田）",
+    "information": [
+      {
+        "lastName": "武藤",
+        "firstName": "文太",
+        "team": "大牟田",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "武藤_文太_大牟田"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "侑飛",
+        "team": "大牟田",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "吉田_侑飛_大牟田"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 182,
+    "name": "古賀・今井（西城陽）",
+    "information": [
+      {
+        "lastName": "古賀",
+        "firstName": "春希",
+        "team": "西城陽",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "古賀_春希_西城陽"
+      },
+      {
+        "lastName": "今井",
+        "firstName": "沙輔",
+        "team": "西城陽",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "今井_沙輔_西城陽"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 183,
+    "name": "長谷部・川島（三重）",
+    "information": [
+      {
+        "lastName": "長谷部",
+        "firstName": "凱大",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "長谷部_凱大_三重"
+      },
+      {
+        "lastName": "川島",
+        "firstName": "拓夢",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "川島_拓夢_三重"
+      }
+    ]
+  },
+  {
+    "id": 184,
+    "name": "山本・中川（浜田）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "洋輔",
+        "team": "浜田",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "山本_洋輔_浜田"
+      },
+      {
+        "lastName": "中川",
+        "firstName": "優月",
+        "team": "浜田",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "中川_優月_浜田"
+      }
+    ]
+  },
+  {
+    "id": 185,
+    "name": "伊藤・浦濱（早稲田実）",
+    "information": [
+      {
+        "lastName": "伊藤",
+        "firstName": "幹太",
+        "team": "早稲田実",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "伊藤_幹太_早稲田実"
+      },
+      {
+        "lastName": "浦濱",
+        "firstName": "大馬",
+        "team": "早稲田実",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "浦濱_大馬_早稲田実"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 186,
+    "name": "古幡・笠原（都市大塩尻）",
+    "information": [
+      {
+        "lastName": "古幡",
+        "firstName": "悠馬",
+        "team": "都市大塩尻",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "古幡_悠馬_都市大塩尻"
+      },
+      {
+        "lastName": "笠原",
+        "firstName": "朗杜",
+        "team": "都市大塩尻",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "笠原_朗杜_都市大塩尻"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 187,
+    "name": "佐藤・八重樫（黒沢尻工）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "悠",
+        "team": "黒沢尻工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "佐藤_悠_黒沢尻工"
+      },
+      {
+        "lastName": "八重樫",
+        "firstName": "浬",
+        "team": "黒沢尻工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "八重樫_浬_黒沢尻工"
+      }
+    ]
+  },
+  {
+    "id": 188,
+    "name": "福見・福見（明徳義塾）",
+    "information": [
+      {
+        "lastName": "福見",
+        "firstName": "優心",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "福見_優心_明徳義塾"
+      },
+      {
+        "lastName": "福見",
+        "firstName": "竜也",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "福見_竜也_明徳義塾"
+      }
+    ]
+  },
+  {
+    "id": 189,
+    "name": "中込・塩谷（甲府南）",
+    "information": [
+      {
+        "lastName": "中込",
+        "firstName": "栄治",
+        "team": "甲府南",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "中込_栄治_甲府南"
+      },
+      {
+        "lastName": "塩谷",
+        "firstName": "佳司",
+        "team": "甲府南",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "塩谷_佳司_甲府南"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 190,
+    "name": "久野・義永（宇部工）",
+    "information": [
+      {
+        "lastName": "久野",
+        "firstName": "莉輝",
+        "team": "宇部工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "久野_莉輝_宇部工"
+      },
+      {
+        "lastName": "義永",
+        "firstName": "啓人",
+        "team": "宇部工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "義永_啓人_宇部工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 191,
+    "name": "細川・上門（那覇西）",
+    "information": [
+      {
+        "lastName": "細川",
+        "firstName": "大峨",
+        "team": "那覇西",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "細川_大峨_那覇西"
+      },
+      {
+        "lastName": "上門",
+        "firstName": "幹武",
+        "team": "那覇西",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "上門_幹武_那覇西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 192,
+    "name": "熊谷・細川（旭川実）",
+    "information": [
+      {
+        "lastName": "熊谷",
+        "firstName": "拓海",
+        "team": "旭川実",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "熊谷_拓海_旭川実"
+      },
+      {
+        "lastName": "細川",
+        "firstName": "瞬汰",
+        "team": "旭川実",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "細川_瞬汰_旭川実"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 193,
+    "name": "萩原・山本（静岡商）",
+    "information": [
+      {
+        "lastName": "萩原",
+        "firstName": "佳汰",
+        "team": "静岡商",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "萩原_佳汰_静岡商"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "颯也",
+        "team": "静岡商",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "山本_颯也_静岡商"
+      }
+    ]
+  },
+  {
+    "id": 194,
+    "name": "丸茂・幕内（宇都宮短大附）",
+    "information": [
+      {
+        "lastName": "丸茂",
+        "firstName": "拓也",
+        "team": "宇都宮短大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "丸茂_拓也_宇都宮短大附"
+      },
+      {
+        "lastName": "幕内",
+        "firstName": "地広",
+        "team": "宇都宮短大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "幕内_地広_宇都宮短大附"
+      }
+    ]
+  },
+  {
+    "id": 195,
+    "name": "小山・中野（立命館守山）",
+    "information": [
+      {
+        "lastName": "小山",
+        "firstName": "悠侍郎",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "小山_悠侍郎_立命館守山"
+      },
+      {
+        "lastName": "中野",
+        "firstName": "恵多",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "中野_恵多_立命館守山"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 196,
+    "name": "藤木・中山（能登）",
+    "information": [
+      {
+        "lastName": "藤木",
+        "firstName": "晴叶",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "藤木_晴叶_能登"
+      },
+      {
+        "lastName": "中山",
+        "firstName": "煌貴",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "中山_煌貴_能登"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 197,
+    "name": "近藤・吉田（徳島科技）",
+    "information": [
+      {
+        "lastName": "近藤",
+        "firstName": "拓真",
+        "team": "徳島科技",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "近藤_拓真_徳島科技"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "華汰",
+        "team": "徳島科技",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "吉田_華汰_徳島科技"
+      }
+    ]
+  },
+  {
+    "id": 198,
+    "name": "小山・小川（嬉野）",
+    "information": [
+      {
+        "lastName": "小山",
+        "firstName": "純司",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "小山_純司_嬉野"
+      },
+      {
+        "lastName": "小川",
+        "firstName": "晃典",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "小川_晃典_嬉野"
+      }
+    ]
+  },
+  {
+    "id": 199,
+    "name": "橋本・黒田（川越東）",
+    "information": [
+      {
+        "lastName": "橋本",
+        "firstName": "知潤",
+        "team": "川越東",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "橋本_知潤_川越東"
+      },
+      {
+        "lastName": "黒田",
+        "firstName": "将希",
+        "team": "川越東",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "黒田_将希_川越東"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 200,
+    "name": "脇岡・佐藤（岡山理大附）",
+    "information": [
+      {
+        "lastName": "脇岡",
+        "firstName": "侑吾",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "脇岡_侑吾_岡山理大附"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "優真",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "佐藤_優真_岡山理大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 201,
+    "name": "浦田・野邊（都城商）",
+    "information": [
+      {
+        "lastName": "浦田",
+        "firstName": "優斗",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "浦田_優斗_都城商"
+      },
+      {
+        "lastName": "野邊",
+        "firstName": "慧太",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "野邊_慧太_都城商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 202,
+    "name": "丹羽・五十畑（岡崎城西）",
+    "information": [
+      {
+        "lastName": "丹羽",
+        "firstName": "真音",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "丹羽_真音_岡崎城西"
+      },
+      {
+        "lastName": "五十畑",
+        "firstName": "暁斗",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "五十畑_暁斗_岡崎城西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 203,
+    "name": "井上・中村（高田商）",
+    "information": [
+      {
+        "lastName": "井上",
+        "firstName": "弘翔",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "井上_弘翔_高田商"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "智葵",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "中村_智葵_高田商"
+      }
+    ]
+  },
+  {
+    "id": 204,
+    "name": "片貝・田村（高崎）",
+    "information": [
+      {
+        "lastName": "片貝",
+        "firstName": "匠",
+        "team": "高崎",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "片貝_匠_高崎"
+      },
+      {
+        "lastName": "田村",
+        "firstName": "真人",
+        "team": "高崎",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "田村_真人_高崎"
+      }
+    ]
+  },
+  {
+    "id": 205,
+    "name": "津田・藤井（一関学院）",
+    "information": [
+      {
+        "lastName": "津田",
+        "firstName": "聖弥",
+        "team": "一関学院",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "津田_聖弥_一関学院"
+      },
+      {
+        "lastName": "藤井",
+        "firstName": "李成",
+        "team": "一関学院",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "藤井_李成_一関学院"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 206,
+    "name": "三田・木本（明徳義塾）",
+    "information": [
+      {
+        "lastName": "三田",
+        "firstName": "勇人",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "三田_勇人_明徳義塾"
+      },
+      {
+        "lastName": "木本",
+        "firstName": "琉偉",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "木本_琉偉_明徳義塾"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 207,
+    "name": "吉藤・金津（富山工）",
+    "information": [
+      {
+        "lastName": "吉藤",
+        "firstName": "蓮斗",
+        "team": "富山工",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "吉藤_蓮斗_富山工"
+      },
+      {
+        "lastName": "金津",
+        "firstName": "結大",
+        "team": "富山工",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "金津_結大_富山工"
+      }
+    ]
+  },
+  {
+    "id": 208,
+    "name": "黒須・池田（文星芸大附）",
+    "information": [
+      {
+        "lastName": "黒須",
+        "firstName": "祐希",
+        "team": "文星芸大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "黒須_祐希_文星芸大附"
+      },
+      {
+        "lastName": "池田",
+        "firstName": "大翔",
+        "team": "文星芸大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "池田_大翔_文星芸大附"
+      }
+    ]
+  },
+  {
+    "id": 209,
+    "name": "山本・東岡（和歌山北）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "海斗",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "山本_海斗_和歌山北"
+      },
+      {
+        "lastName": "東岡",
+        "firstName": "比竜",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "東岡_比竜_和歌山北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 210,
+    "name": "小山・長利（弘前実）",
+    "information": [
+      {
+        "lastName": "小山",
+        "firstName": "颯斗",
+        "team": "弘前実",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "小山_颯斗_弘前実"
+      },
+      {
+        "lastName": "長利",
+        "firstName": "明歩",
+        "team": "弘前実",
+        "prefecture": "",
+        "playerId": null,
+        "tempId": "長利_明歩_弘前実"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 211,
+    "name": "土屋・栗岡（市尼崎）",
+    "information": [
+      {
+        "lastName": "土屋",
+        "firstName": "凌来",
+        "team": "市尼崎",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "土屋_凌来_市尼崎"
+      },
+      {
+        "lastName": "栗岡",
+        "firstName": "優志",
+        "team": "市尼崎",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "栗岡_優志_市尼崎"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 212,
+    "name": "若生・久保田（小田原）",
+    "information": [
+      {
+        "lastName": "若生",
+        "firstName": "裕希",
+        "team": "小田原",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "若生_裕希_小田原"
+      },
+      {
+        "lastName": "久保田",
+        "firstName": "凰心",
+        "team": "小田原",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "久保田_凰心_小田原"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 213,
+    "name": "池永・山田（大分）",
+    "information": [
+      {
+        "lastName": "池永",
+        "firstName": "陵",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "池永_陵_大分"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "卓弥",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "山田_卓弥_大分"
+      }
+    ]
+  },
+  {
+    "id": 214,
+    "name": "森・中村（南陽工）",
+    "information": [
+      {
+        "lastName": "森",
+        "firstName": "恋汰",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "森_恋汰_南陽工"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "陸歩",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "中村_陸歩_南陽工"
+      }
+    ]
+  },
+  {
+    "id": 215,
+    "name": "林・早見（県岐阜商）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "大嘉",
+        "team": "県岐阜商",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "林_大嘉_県岐阜商"
+      },
+      {
+        "lastName": "早見",
+        "firstName": "和喜",
+        "team": "県岐阜商",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "早見_和喜_県岐阜商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 216,
+    "name": "石川・藤本（済美）",
+    "information": [
+      {
+        "lastName": "石川",
+        "firstName": "柊我",
+        "team": "済美",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "石川_柊我_済美"
+      },
+      {
+        "lastName": "藤本",
+        "firstName": "暖",
+        "team": "済美",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "藤本_暖_済美"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 217,
+    "name": "道祖土・原田（木更津総合）",
+    "information": [
+      {
+        "lastName": "道祖土",
+        "firstName": "滉樹",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "道祖土_滉樹_木更津総合"
+      },
+      {
+        "lastName": "原田",
+        "firstName": "裕太",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "原田_裕太_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": 218,
+    "name": "照屋・照屋（向陽）",
+    "information": [
+      {
+        "lastName": "照屋",
+        "firstName": "盛麻",
+        "team": "向陽",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "照屋_盛麻_向陽"
+      },
+      {
+        "lastName": "照屋",
+        "firstName": "盛陽",
+        "team": "向陽",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "照屋_盛陽_向陽"
+      }
+    ]
+  },
+  {
+    "id": 219,
+    "name": "林・吉澤（三重）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "伽成",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "林_伽成_三重"
+      },
+      {
+        "lastName": "吉澤",
+        "firstName": "孝記",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "吉澤_孝記_三重"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 220,
+    "name": "伊藤・鈴木（大曲）",
+    "information": [
+      {
+        "lastName": "伊藤",
+        "firstName": "麗央",
+        "team": "大曲",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "伊藤_麗央_大曲"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "蒼空",
+        "team": "大曲",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "鈴木_蒼空_大曲"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 221,
+    "name": "若杉・佐藤（金津）",
+    "information": [
+      {
+        "lastName": "若杉",
+        "firstName": "央祢",
+        "team": "金津",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "若杉_央祢_金津"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "雅紀",
+        "team": "金津",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "佐藤_雅紀_金津"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 222,
+    "name": "有江・成田（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "有江",
+        "firstName": "和紗",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "有江_和紗_とわの森三愛"
+      },
+      {
+        "lastName": "成田",
+        "firstName": "凌",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "成田_凌_とわの森三愛"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 223,
+    "name": "足立・奥村（上宮）",
+    "information": [
+      {
+        "lastName": "足立",
+        "firstName": "匠",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "足立_匠_上宮"
+      },
+      {
+        "lastName": "奥村",
+        "firstName": "巧",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "奥村_巧_上宮"
+      }
+    ]
+  },
+  {
+    "id": 224,
+    "name": "吉野・市村（駒大）",
+    "information": [
+      {
+        "lastName": "吉野",
+        "firstName": "僚真",
+        "team": "駒大",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "吉野_僚真_駒大"
+      },
+      {
+        "lastName": "市村",
+        "firstName": "大地",
+        "team": "駒大",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "市村_大地_駒大"
+      }
+    ]
+  },
+  {
+    "id": 225,
+    "name": "片山・岩永（尾道）",
+    "information": [
+      {
+        "lastName": "片山",
+        "firstName": "斗羽",
+        "team": "尾道",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "片山_斗羽_尾道"
+      },
+      {
+        "lastName": "岩永",
+        "firstName": "優真",
+        "team": "尾道",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "岩永_優真_尾道"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 226,
+    "name": "河野・猪鹿野（鹿児島実）",
+    "information": [
+      {
+        "lastName": "河野",
+        "firstName": "晃大",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "河野_晃大_鹿児島実"
+      },
+      {
+        "lastName": "猪鹿野",
+        "firstName": "奏",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "猪鹿野_奏_鹿児島実"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 227,
+    "name": "日下部・舘野（羽黒）",
+    "information": [
+      {
+        "lastName": "日下部",
+        "firstName": "拓海",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "日下部_拓海_羽黒"
+      },
+      {
+        "lastName": "舘野",
+        "firstName": "和也",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "舘野_和也_羽黒"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 228,
+    "name": "中川・大田（米子松蔭）",
+    "information": [
+      {
+        "lastName": "中川",
+        "firstName": "龍",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "中川_龍_米子松蔭"
+      },
+      {
+        "lastName": "大田",
+        "firstName": "万葉",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "大田_万葉_米子松蔭"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 229,
+    "name": "乾・小川（富士宮北）",
+    "information": [
+      {
+        "lastName": "乾",
+        "firstName": "楓雅",
+        "team": "富士宮北",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "乾_楓雅_富士宮北"
+      },
+      {
+        "lastName": "小川",
+        "firstName": "玲志",
+        "team": "富士宮北",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "小川_玲志_富士宮北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 230,
+    "name": "村﨑・諌山（精道三川台）",
+    "information": [
+      {
+        "lastName": "村﨑",
+        "firstName": "優哉",
+        "team": "精道三川台",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "村﨑_優哉_精道三川台"
+      },
+      {
+        "lastName": "諌山",
+        "firstName": "紘聖",
+        "team": "精道三川台",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "諌山_紘聖_精道三川台"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 231,
+    "name": "亀安・諏訪部（尽誠学園）",
+    "information": [
+      {
+        "lastName": "亀安",
+        "firstName": "隼亘",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "亀安_隼亘_尽誠学園"
+      },
+      {
+        "lastName": "諏訪部",
+        "firstName": "陽大",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "諏訪部_陽大_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 232,
+    "name": "佐野・井上（甲府商）",
+    "information": [
+      {
+        "lastName": "佐野",
+        "firstName": "優達",
+        "team": "甲府商",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "佐野_優達_甲府商"
+      },
+      {
+        "lastName": "井上",
+        "firstName": "航",
+        "team": "甲府商",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "井上_航_甲府商"
+      }
+    ]
+  },
+  {
+    "id": 233,
+    "name": "大野・小島（京都文教）",
+    "information": [
+      {
+        "lastName": "大野",
+        "firstName": "安吾",
+        "team": "京都文教",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "大野_安吾_京都文教"
+      },
+      {
+        "lastName": "小島",
+        "firstName": "拳志",
+        "team": "京都文教",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "小島_拳志_京都文教"
+      }
+    ]
+  },
+  {
+    "id": 234,
+    "name": "齋藤・國松（東北）",
+    "information": [
+      {
+        "lastName": "齋藤",
+        "firstName": "玲壱",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "齋藤_玲壱_東北"
+      },
+      {
+        "lastName": "國松",
+        "firstName": "樹人",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "國松_樹人_東北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 235,
+    "name": "川﨑・森（都城商）",
+    "information": [
+      {
+        "lastName": "川﨑",
+        "firstName": "康平",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "川﨑_康平_都城商"
+      },
+      {
+        "lastName": "森",
+        "firstName": "良輔",
+        "team": "都城商",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "森_良輔_都城商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 236,
+    "name": "金谷・髙澤（能登）",
+    "information": [
+      {
+        "lastName": "金谷",
+        "firstName": "宇恭",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "金谷_宇恭_能登"
+      },
+      {
+        "lastName": "髙澤",
+        "firstName": "泉",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "髙澤_泉_能登"
+      }
+    ]
+  },
+  {
+    "id": 237,
+    "name": "熊谷・中易（羽黒）",
+    "information": [
+      {
+        "lastName": "熊谷",
+        "firstName": "春輝",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "熊谷_春輝_羽黒"
+      },
+      {
+        "lastName": "中易",
+        "firstName": "快翔",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "中易_快翔_羽黒"
+      }
+    ]
+  },
+  {
+    "id": 238,
+    "name": "手塚・中原（木更津総合）",
+    "information": [
+      {
+        "lastName": "手塚",
+        "firstName": "康介",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "手塚_康介_木更津総合"
+      },
+      {
+        "lastName": "中原",
+        "firstName": "一翔",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "中原_一翔_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 239,
+    "name": "今田・沖野（清水ヶ丘）",
+    "information": [
+      {
+        "lastName": "今田",
+        "firstName": "悠真",
+        "team": "清水ヶ丘",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "今田_悠真_清水ヶ丘"
+      },
+      {
+        "lastName": "沖野",
+        "firstName": "右典",
+        "team": "清水ヶ丘",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "沖野_右典_清水ヶ丘"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 240,
+    "name": "松川・竹原（綾羽）",
+    "information": [
+      {
+        "lastName": "松川",
+        "firstName": "憲伸",
+        "team": "綾羽",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "松川_憲伸_綾羽"
+      },
+      {
+        "lastName": "竹原",
+        "firstName": "悠斗",
+        "team": "綾羽",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "竹原_悠斗_綾羽"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 241,
+    "name": "髙橋・弘田（近畿大高専）",
+    "information": [
+      {
+        "lastName": "髙橋",
+        "firstName": "直希",
+        "team": "近畿大高専",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "髙橋_直希_近畿大高専"
+      },
+      {
+        "lastName": "弘田",
+        "firstName": "和航",
+        "team": "近畿大高専",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "弘田_和航_近畿大高専"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 242,
+    "name": "松尾・川浪（嬉野）",
+    "information": [
+      {
+        "lastName": "松尾",
+        "firstName": "航希",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "松尾_航希_嬉野"
+      },
+      {
+        "lastName": "川浪",
+        "firstName": "孝太郎",
+        "team": "嬉野",
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "川浪_孝太郎_嬉野"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 243,
+    "name": "井上・佐野（笛吹）",
+    "information": [
+      {
+        "lastName": "井上",
+        "firstName": "道成",
+        "team": "笛吹",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "井上_道成_笛吹"
+      },
+      {
+        "lastName": "佐野",
+        "firstName": "哉大",
+        "team": "笛吹",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "佐野_哉大_笛吹"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 244,
+    "name": "内海・下迫（和歌山北）",
+    "information": [
+      {
+        "lastName": "内海",
+        "firstName": "遼太",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "内海_遼太_和歌山北"
+      },
+      {
+        "lastName": "下迫",
+        "firstName": "寛斗",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "下迫_寛斗_和歌山北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 245,
+    "name": "木村・谷川（金津）",
+    "information": [
+      {
+        "lastName": "木村",
+        "firstName": "純誠",
+        "team": "金津",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "木村_純誠_金津"
+      },
+      {
+        "lastName": "谷川",
+        "firstName": "湊和",
+        "team": "金津",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "谷川_湊和_金津"
+      }
+    ]
+  },
+  {
+    "id": 246,
+    "name": "新垣・村上（知念）",
+    "information": [
+      {
+        "lastName": "新垣",
+        "firstName": "太賀",
+        "team": "知念",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "新垣_太賀_知念"
+      },
+      {
+        "lastName": "村上",
+        "firstName": "蓮恩",
+        "team": "知念",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "村上_蓮恩_知念"
+      }
+    ]
+  },
+  {
+    "id": 247,
+    "name": "荻曽・都筑（美濃加茂）",
+    "information": [
+      {
+        "lastName": "荻曽",
+        "firstName": "透羽",
+        "team": "美濃加茂",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "荻曽_透羽_美濃加茂"
+      },
+      {
+        "lastName": "都筑",
+        "firstName": "創楽",
+        "team": "美濃加茂",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "都筑_創楽_美濃加茂"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 248,
+    "name": "伊関・大澤（東北）",
+    "information": [
+      {
+        "lastName": "伊関",
+        "firstName": "悠",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "伊関_悠_東北"
+      },
+      {
+        "lastName": "大澤",
+        "firstName": "真紗斗",
+        "team": "東北",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "大澤_真紗斗_東北"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 249,
+    "name": "金井・清宮（姫路西）",
+    "information": [
+      {
+        "lastName": "金井",
+        "firstName": "一平",
+        "team": "姫路西",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "金井_一平_姫路西"
+      },
+      {
+        "lastName": "清宮",
+        "firstName": "大智",
+        "team": "姫路西",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "清宮_大智_姫路西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 250,
+    "name": "遠矢・大平（明徳義塾）",
+    "information": [
+      {
+        "lastName": "遠矢",
+        "firstName": "竜之介",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "遠矢_竜之介_明徳義塾"
+      },
+      {
+        "lastName": "大平",
+        "firstName": "翔史",
+        "team": "明徳義塾",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "大平_翔史_明徳義塾"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 251,
+    "name": "佐藤・入口（東福岡）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "煌将",
+        "team": "東福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "佐藤_煌将_東福岡"
+      },
+      {
+        "lastName": "入口",
+        "firstName": "将英",
+        "team": "東福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "入口_将英_東福岡"
+      }
+    ]
+  },
+  {
+    "id": 252,
+    "name": "小村・山本（出雲工）",
+    "information": [
+      {
+        "lastName": "小村",
+        "firstName": "駿斗",
+        "team": "出雲工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "小村_駿斗_出雲工"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "遥斗",
+        "team": "出雲工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "山本_遥斗_出雲工"
+      }
+    ]
+  },
+  {
+    "id": 253,
+    "name": "齋藤・白川（霞ヶ浦）",
+    "information": [
+      {
+        "lastName": "齋藤",
+        "firstName": "大貴",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "齋藤_大貴_霞ヶ浦"
+      },
+      {
+        "lastName": "白川",
+        "firstName": "隼平",
+        "team": "霞ヶ浦",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "白川_隼平_霞ヶ浦"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 254,
+    "name": "三上・平井（上宮）",
+    "information": [
+      {
+        "lastName": "三上",
+        "firstName": "柊二",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "三上_柊二_上宮"
+      },
+      {
+        "lastName": "平井",
+        "firstName": "啓吾",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "平井_啓吾_上宮"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 255,
+    "name": "竹村・松田（北科大高）",
+    "information": [
+      {
+        "lastName": "竹村",
+        "firstName": "純生",
+        "team": "北科大高",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "竹村_純生_北科大高"
+      },
+      {
+        "lastName": "松田",
+        "firstName": "梨玖",
+        "team": "北科大高",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "松田_梨玖_北科大高"
+      }
+    ]
+  },
+  {
+    "id": 256,
+    "name": "今井・渡邉（中越）",
+    "information": [
+      {
+        "lastName": "今井",
+        "firstName": "帆貴",
+        "team": "中越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "今井_帆貴_中越"
+      },
+      {
+        "lastName": "渡邉",
+        "firstName": "心優",
+        "team": "中越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "渡邉_心優_中越"
+      }
+    ]
+  },
+  {
+    "id": 257,
+    "name": "高橋・赤阪（慶應義塾）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "勇貴",
+        "team": "慶應義塾",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "高橋_勇貴_慶應義塾"
+      },
+      {
+        "lastName": "赤阪",
+        "firstName": "英昭",
+        "team": "慶應義塾",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "赤阪_英昭_慶應義塾"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 258,
+    "name": "菖蒲谷・松下（鹿児島商）",
+    "information": [
+      {
+        "lastName": "菖蒲谷",
+        "firstName": "宙",
+        "team": "鹿児島商",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "菖蒲谷_宙_鹿児島商"
+      },
+      {
+        "lastName": "松下",
+        "firstName": "翔",
+        "team": "鹿児島商",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "松下_翔_鹿児島商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 259,
+    "name": "長根・早川（高田商）",
+    "information": [
+      {
+        "lastName": "長根",
+        "firstName": "慎人",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "長根_慎人_高田商"
+      },
+      {
+        "lastName": "早川",
+        "firstName": "悠佑",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "早川_悠佑_高田商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 260,
+    "name": "長根・関（岩手）",
+    "information": [
+      {
+        "lastName": "長根",
+        "firstName": "煌和",
+        "team": "岩手",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "長根_煌和_岩手"
+      },
+      {
+        "lastName": "関",
+        "firstName": "涼真",
+        "team": "岩手",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "関_涼真_岩手"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 261,
+    "name": "濱川・村井（今治工）",
+    "information": [
+      {
+        "lastName": "濱川",
+        "firstName": "響輝",
+        "team": "今治工",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "濱川_響輝_今治工"
+      },
+      {
+        "lastName": "村井",
+        "firstName": "純也",
+        "team": "今治工",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "村井_純也_今治工"
+      }
+    ]
+  },
+  {
+    "id": 262,
+    "name": "清家・井手（岡山理大附）",
+    "information": [
+      {
+        "lastName": "清家",
+        "firstName": "蒼人",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "清家_蒼人_岡山理大附"
+      },
+      {
+        "lastName": "井手",
+        "firstName": "凛太",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "井手_凛太_岡山理大附"
+      }
+    ]
+  },
+  {
+    "id": 263,
+    "name": "長島・郷（松山）",
+    "information": [
+      {
+        "lastName": "長島",
+        "firstName": "綾汰",
+        "team": "松山",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "長島_綾汰_松山"
+      },
+      {
+        "lastName": "郷",
+        "firstName": "暖太",
+        "team": "松山",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "郷_暖太_松山"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 264,
+    "name": "坂田・白波瀬（福知山成美）",
+    "information": [
+      {
+        "lastName": "坂田",
+        "firstName": "賢吾",
+        "team": "福知山成美",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "坂田_賢吾_福知山成美"
+      },
+      {
+        "lastName": "白波瀬",
+        "firstName": "由麻",
+        "team": "福知山成美",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "白波瀬_由麻_福知山成美"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 265,
+    "name": "鳥居・奥（大同大学大同）",
+    "information": [
+      {
+        "lastName": "鳥居",
+        "firstName": "悠人",
+        "team": "大同大学大同",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "鳥居_悠人_大同大学大同"
+      },
+      {
+        "lastName": "奥",
+        "firstName": "直翔",
+        "team": "大同大学大同",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "奥_直翔_大同大学大同"
+      }
+    ]
+  },
+  {
+    "id": 266,
+    "name": "大塚・松本（高崎商）",
+    "information": [
+      {
+        "lastName": "大塚",
+        "firstName": "陸玖",
+        "team": "高崎商",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "大塚_陸玖_高崎商"
+      },
+      {
+        "lastName": "松本",
+        "firstName": "健太郎",
+        "team": "高崎商",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "松本_健太郎_高崎商"
+      }
+    ]
+  },
+  {
+    "id": 267,
+    "name": "三村・立川（精道三川台）",
+    "information": [
+      {
+        "lastName": "三村",
+        "firstName": "遥人",
+        "team": "精道三川台",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "三村_遥人_精道三川台"
+      },
+      {
+        "lastName": "立川",
+        "firstName": "凌世",
+        "team": "精道三川台",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "立川_凌世_精道三川台"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 268,
+    "name": "猪股・畠山（秋田北鷹）",
+    "information": [
+      {
+        "lastName": "猪股",
+        "firstName": "悠志",
+        "team": "秋田北鷹",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "猪股_悠志_秋田北鷹"
+      },
+      {
+        "lastName": "畠山",
+        "firstName": "七樹",
+        "team": "秋田北鷹",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "畠山_七樹_秋田北鷹"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 269,
+    "name": "岩吉・太田（長野俊英）",
+    "information": [
+      {
+        "lastName": "岩吉",
+        "firstName": "海利",
+        "team": "長野俊英",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "岩吉_海利_長野俊英"
+      },
+      {
+        "lastName": "太田",
+        "firstName": "直希",
+        "team": "長野俊英",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "太田_直希_長野俊英"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 270,
+    "name": "小林・内藤（豊南）",
+    "information": [
+      {
+        "lastName": "小林",
+        "firstName": "瑛",
+        "team": "豊南",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "小林_瑛_豊南"
+      },
+      {
+        "lastName": "内藤",
+        "firstName": "蓮斗",
+        "team": "豊南",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "内藤_蓮斗_豊南"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 271,
+    "name": "阿部・続橋（東日大昌平）",
+    "information": [
+      {
+        "lastName": "阿部",
+        "firstName": "隼人",
+        "team": "東日大昌平",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "阿部_隼人_東日大昌平"
+      },
+      {
+        "lastName": "続橋",
+        "firstName": "侑真",
+        "team": "東日大昌平",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "続橋_侑真_東日大昌平"
+      }
+    ]
+  },
+  {
+    "id": 272,
+    "name": "中村・田爪（球磨工）",
+    "information": [
+      {
+        "lastName": "中村",
+        "firstName": "俊介",
+        "team": "球磨工",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "中村_俊介_球磨工"
+      },
+      {
+        "lastName": "田爪",
+        "firstName": "壱慎",
+        "team": "球磨工",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "田爪_壱慎_球磨工"
+      }
+    ]
+  },
+  {
+    "id": 273,
+    "name": "塚本・笹川（尽誠学園）",
+    "information": [
+      {
+        "lastName": "塚本",
+        "firstName": "大翔",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "塚本_大翔_尽誠学園"
+      },
+      {
+        "lastName": "笹川",
+        "firstName": "慈瑛",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "笹川_慈瑛_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 274,
+    "name": "常味・石灘（岡山理大附）",
+    "information": [
+      {
+        "lastName": "常味",
+        "firstName": "真人",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "常味_真人_岡山理大附"
+      },
+      {
+        "lastName": "石灘",
+        "firstName": "蒼瑛",
+        "team": "岡山理大附",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "石灘_蒼瑛_岡山理大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 275,
+    "name": "戸谷・橋本（長野）",
+    "information": [
+      {
+        "lastName": "戸谷",
+        "firstName": "景太",
+        "team": "長野",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "戸谷_景太_長野"
+      },
+      {
+        "lastName": "橋本",
+        "firstName": "夏心",
+        "team": "長野",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "橋本_夏心_長野"
+      }
+    ]
+  },
+  {
+    "id": 276,
+    "name": "髙橋・小田（盛岡工）",
+    "information": [
+      {
+        "lastName": "髙橋",
+        "firstName": "直希",
+        "team": "盛岡工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "髙橋_直希_盛岡工"
+      },
+      {
+        "lastName": "小田",
+        "firstName": "島竜司",
+        "team": "盛岡工",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "小田_島竜司_盛岡工"
+      }
+    ]
+  },
+  {
+    "id": 277,
+    "name": "本勝・藤井（市尼崎）",
+    "information": [
+      {
+        "lastName": "本勝",
+        "firstName": "裕人",
+        "team": "市尼崎",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "本勝_裕人_市尼崎"
+      },
+      {
+        "lastName": "藤井",
+        "firstName": "歩陸",
+        "team": "市尼崎",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "藤井_歩陸_市尼崎"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 278,
+    "name": "加賀谷・三森（宇都宮短大附）",
+    "information": [
+      {
+        "lastName": "加賀谷",
+        "firstName": "久翔",
+        "team": "宇都宮短大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "加賀谷_久翔_宇都宮短大附"
+      },
+      {
+        "lastName": "三森",
+        "firstName": "大蔵",
+        "team": "宇都宮短大附",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "三森_大蔵_宇都宮短大附"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 279,
+    "name": "木皿・林（羽黒）",
+    "information": [
+      {
+        "lastName": "木皿",
+        "firstName": "璃夢斗",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "木皿_璃夢斗_羽黒"
+      },
+      {
+        "lastName": "林",
+        "firstName": "大翔",
+        "team": "羽黒",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "林_大翔_羽黒"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 280,
+    "name": "宮崎・佐藤（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "宮崎",
+        "firstName": "航和",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "宮崎_航和_とわの森三愛"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "諒",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "佐藤_諒_とわの森三愛"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 281,
+    "name": "宮田・下田（長崎南山）",
+    "information": [
+      {
+        "lastName": "宮田",
+        "firstName": "夏希",
+        "team": "長崎南山",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "宮田_夏希_長崎南山"
+      },
+      {
+        "lastName": "下田",
+        "firstName": "詠太",
+        "team": "長崎南山",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "下田_詠太_長崎南山"
+      }
+    ]
+  },
+  {
+    "id": 282,
+    "name": "吉田・髙橋（中京）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "怜矢飛",
+        "team": "中京",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "吉田_怜矢飛_中京"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "春馬",
+        "team": "中京",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "髙橋_春馬_中京"
+      }
+    ]
+  },
+  {
+    "id": 283,
+    "name": "安井・水落（前橋商）",
+    "information": [
+      {
+        "lastName": "安井",
+        "firstName": "勇翔",
+        "team": "前橋商",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "安井_勇翔_前橋商"
+      },
+      {
+        "lastName": "水落",
+        "firstName": "礼翔",
+        "team": "前橋商",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "水落_礼翔_前橋商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 284,
+    "name": "相山・吉田（田村）",
+    "information": [
+      {
+        "lastName": "相山",
+        "firstName": "昂慧",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "相山_昂慧_田村"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "拓翔",
+        "team": "田村",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "吉田_拓翔_田村"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 285,
+    "name": "小貫・小沼（常磐大）",
+    "information": [
+      {
+        "lastName": "小貫",
+        "firstName": "暁都",
+        "team": "常磐大",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "小貫_暁都_常磐大"
+      },
+      {
+        "lastName": "小沼",
+        "firstName": "海靖",
+        "team": "常磐大",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "小沼_海靖_常磐大"
+      }
+    ]
+  },
+  {
+    "id": 286,
+    "name": "田中・那須（聖心ウルスラ）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "知樹",
+        "team": "聖心ウルスラ",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "田中_知樹_聖心ウルスラ"
+      },
+      {
+        "lastName": "那須",
+        "firstName": "信太郎",
+        "team": "聖心ウルスラ",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "那須_信太郎_聖心ウルスラ"
+      }
+    ]
+  },
+  {
+    "id": 287,
+    "name": "山本・井手（知徳）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "凌夢",
+        "team": "知徳",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "山本_凌夢_知徳"
+      },
+      {
+        "lastName": "井手",
+        "firstName": "海哩",
+        "team": "知徳",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "井手_海哩_知徳"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 288,
+    "name": "藤中・原（つるぎ）",
+    "information": [
+      {
+        "lastName": "藤中",
+        "firstName": "奏和",
+        "team": "つるぎ",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "藤中_奏和_つるぎ"
+      },
+      {
+        "lastName": "原",
+        "firstName": "大心",
+        "team": "つるぎ",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "原_大心_つるぎ"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 289,
+    "name": "平野・佐伯（文徳）",
+    "information": [
+      {
+        "lastName": "平野",
+        "firstName": "蒼空",
+        "team": "文徳",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "平野_蒼空_文徳"
+      },
+      {
+        "lastName": "佐伯",
+        "firstName": "翼",
+        "team": "文徳",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "佐伯_翼_文徳"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 290,
+    "name": "松本・山本（南陽工）",
+    "information": [
+      {
+        "lastName": "松本",
+        "firstName": "一真",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "松本_一真_南陽工"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "大輔",
+        "team": "南陽工",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "山本_大輔_南陽工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 291,
+    "name": "小枝・鳴海（西湘）",
+    "information": [
+      {
+        "lastName": "小枝",
+        "firstName": "悟士",
+        "team": "西湘",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "小枝_悟士_西湘"
+      },
+      {
+        "lastName": "鳴海",
+        "firstName": "宗一郎",
+        "team": "西湘",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "鳴海_宗一郎_西湘"
+      }
+    ]
+  },
+  {
+    "id": 292,
+    "name": "安原・下垣（和歌山北）",
+    "information": [
+      {
+        "lastName": "安原",
+        "firstName": "陸",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "安原_陸_和歌山北"
+      },
+      {
+        "lastName": "下垣",
+        "firstName": "内啓太",
+        "team": "和歌山北",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "下垣_内啓太_和歌山北"
+      }
+    ]
+  },
+  {
+    "id": 293,
+    "name": "白井・清島（高岡商）",
+    "information": [
+      {
+        "lastName": "白井",
+        "firstName": "瀬都",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "白井_瀬都_高岡商"
+      },
+      {
+        "lastName": "清島",
+        "firstName": "一颯",
+        "team": "高岡商",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "清島_一颯_高岡商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 294,
+    "name": "佐藤・冨主（ウルスラ英智）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "榎南",
+        "team": "ウルスラ英智",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "佐藤_榎南_ウルスラ英智"
+      },
+      {
+        "lastName": "冨主",
+        "firstName": "純翔",
+        "team": "ウルスラ英智",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "冨主_純翔_ウルスラ英智"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 295,
+    "name": "松元・堀之内（鹿児島実）",
+    "information": [
+      {
+        "lastName": "松元",
+        "firstName": "蓮",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "松元_蓮_鹿児島実"
+      },
+      {
+        "lastName": "堀之内",
+        "firstName": "颯汰",
+        "team": "鹿児島実",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "堀之内_颯汰_鹿児島実"
+      }
+    ]
+  },
+  {
+    "id": 296,
+    "name": "福岡・石田（尽誠学園）",
+    "information": [
+      {
+        "lastName": "福岡",
+        "firstName": "大河",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "福岡_大河_尽誠学園"
+      },
+      {
+        "lastName": "石田",
+        "firstName": "輝",
+        "team": "尽誠学園",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "石田_輝_尽誠学園"
+      }
+    ]
+  },
+  {
+    "id": 297,
+    "name": "濱中・福井（上宮）",
+    "information": [
+      {
+        "lastName": "濱中",
+        "firstName": "純誠",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "濱中_純誠_上宮"
+      },
+      {
+        "lastName": "福井",
+        "firstName": "竣也",
+        "team": "上宮",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "福井_竣也_上宮"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 298,
+    "name": "舘田・金内（木更津総合）",
+    "information": [
+      {
+        "lastName": "舘田",
+        "firstName": "陸斗",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "舘田_陸斗_木更津総合"
+      },
+      {
+        "lastName": "金内",
+        "firstName": "綾汰",
+        "team": "木更津総合",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "金内_綾汰_木更津総合"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 299,
+    "name": "勝田・篠原（松江工）",
+    "information": [
+      {
+        "lastName": "勝田",
+        "firstName": "珠晏",
+        "team": "松江工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "勝田_珠晏_松江工"
+      },
+      {
+        "lastName": "篠原",
+        "firstName": "航",
+        "team": "松江工",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "篠原_航_松江工"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 300,
+    "name": "高橋・宮下（高田商）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "ヒカル",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "高橋_ヒカル_高田商"
+      },
+      {
+        "lastName": "宮下",
+        "firstName": "光希",
+        "team": "高田商",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "宮下_光希_高田商"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 301,
+    "name": "中野・宇都宮（大分）",
+    "information": [
+      {
+        "lastName": "中野",
+        "firstName": "大翔",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "中野_大翔_大分"
+      },
+      {
+        "lastName": "宇都宮",
+        "firstName": "大知",
+        "team": "大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "宇都宮_大知_大分"
+      }
+    ]
+  },
+  {
+    "id": 302,
+    "name": "早川・岩目地（北越）",
+    "information": [
+      {
+        "lastName": "早川",
+        "firstName": "寛康",
+        "team": "北越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "早川_寛康_北越"
+      },
+      {
+        "lastName": "岩目地",
+        "firstName": "基",
+        "team": "北越",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "岩目地_基_北越"
+      }
+    ]
+  },
+  {
+    "id": 303,
+    "name": "長濱・大和（岡崎城西）",
+    "information": [
+      {
+        "lastName": "長濱",
+        "firstName": "瑠飛",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "長濱_瑠飛_岡崎城西"
+      },
+      {
+        "lastName": "大和",
+        "firstName": "朔也",
+        "team": "岡崎城西",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "大和_朔也_岡崎城西"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 304,
+    "name": "陶山・下村（米子松蔭）",
+    "information": [
+      {
+        "lastName": "陶山",
+        "firstName": "楓真",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "陶山_楓真_米子松蔭"
+      },
+      {
+        "lastName": "下村",
+        "firstName": "駿太",
+        "team": "米子松蔭",
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "下村_駿太_米子松蔭"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 305,
+    "name": "萩原・瀬戸（昌平）",
+    "information": [
+      {
+        "lastName": "萩原",
+        "firstName": "陽介",
+        "team": "昌平",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "萩原_陽介_昌平"
+      },
+      {
+        "lastName": "瀬戸",
+        "firstName": "湊",
+        "team": "昌平",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "瀬戸_湊_昌平"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 306,
+    "name": "林・日余（福岡）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "晃弘",
+        "team": "福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "林_晃弘_福岡"
+      },
+      {
+        "lastName": "日余",
+        "firstName": "健太",
+        "team": "福岡",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "日余_健太_福岡"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 307,
+    "name": "山中・荒関（八戸工大一）",
+    "information": [
+      {
+        "lastName": "山中",
+        "firstName": "裕太",
+        "team": "八戸工大一",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "山中_裕太_八戸工大一"
+      },
+      {
+        "lastName": "荒関",
+        "firstName": "拓斗",
+        "team": "八戸工大一",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "荒関_拓斗_八戸工大一"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 308,
+    "name": "竹原・鳥竹（能登）",
+    "information": [
+      {
+        "lastName": "竹原",
+        "firstName": "正真",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "竹原_正真_能登"
+      },
+      {
+        "lastName": "鳥竹",
+        "firstName": "柊生",
+        "team": "能登",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "鳥竹_柊生_能登"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 309,
+    "name": "塚越・勝村（明法）",
+    "information": [
+      {
+        "lastName": "塚越",
+        "firstName": "穂空",
+        "team": "明法",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "塚越_穂空_明法"
+      },
+      {
+        "lastName": "勝村",
+        "firstName": "将大",
+        "team": "明法",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "勝村_将大_明法"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  },
+  {
+    "id": 310,
+    "name": "北村・村井（立命館守山）",
+    "information": [
+      {
+        "lastName": "北村",
+        "firstName": "温暉",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "北村_温暉_立命館守山"
+      },
+      {
+        "lastName": "村井",
+        "firstName": "翔太",
+        "team": "立命館守山",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "村井_翔太_立命館守山"
+      }
+    ]
+  },
+  {
+    "id": 311,
+    "name": "辻・須山（新田）",
+    "information": [
+      {
+        "lastName": "辻",
+        "firstName": "和樹",
+        "team": "新田",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "辻_和樹_新田"
+      },
+      {
+        "lastName": "須山",
+        "firstName": "洸聖",
+        "team": "新田",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "須山_洸聖_新田"
+      }
+    ]
+  },
+  {
+    "id": 312,
+    "name": "南・竹内（三重）",
+    "information": [
+      {
+        "lastName": "南",
+        "firstName": "龍之介",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "南_龍之介_三重"
+      },
+      {
+        "lastName": "竹内",
+        "firstName": "慶悟",
+        "team": "三重",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "竹内_慶悟_三重"
+      }
+    ]
+  },
+  {
+    "id": "bye",
+    "name": "1回戦免除",
+    "information": []
+  }
 ]

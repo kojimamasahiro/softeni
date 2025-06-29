@@ -7064,3 +7064,4 @@ const initialPlayers = [
   },
   { id: 'bye', name: '1回戦免除', information: [] },
 ];
+console.log(JSON.stringify(initialPlayers, null, 2));
