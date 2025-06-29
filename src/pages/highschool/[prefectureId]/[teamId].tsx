@@ -4,6 +4,7 @@ import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -199,7 +200,12 @@ export default function TeamPage({
                     {Object.entries(tourneys).map(([tId, cats]) => (
                       <div key={tId} className="mb-4 ml-4">
                         <h3 className="text-lg font-bold">
-                          {getTournamentLabel(tId)}
+                          <Link
+                            href={`/tournaments/${tId}/${year}`}
+                            className="text-blue-700 dark:text-blue-300 hover:underline"
+                          >
+                            {getTournamentLabel(tId)}
+                          </Link>
                         </h3>
                         <ul className="ml-4 mt-2 space-y-2">
                           {Object.entries(cats).map(([cat, items]) => (
