@@ -81,7 +81,8 @@ for item in results_data["results"]:
             "result": result,
             "category": category,
             "tournamentId": "highschool-japan-cup",
-            "year": 2025
+            "year": 2025,
+            "playerIds": player_ids  # ✅ 追加
         }
 
         if current_rank < best_rank:
@@ -102,7 +103,6 @@ for pref_id in prefecture_order:
         if not teams:
             continue
 
-        # すべてのチームを追加
         final_list.extend(teams)
 
 # ✅ 並び替え
@@ -119,4 +119,4 @@ final_list.sort(
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(final_list, f, ensure_ascii=False, indent=2)
 
-print(f"✅ '{output_path}' を生成しました（都道府県 × 種目ごと）。")
+print(f"✅ '{output_path}' を生成しました（都道府県 × 種目ごと、playerIds付き）。")
