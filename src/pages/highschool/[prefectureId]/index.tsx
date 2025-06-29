@@ -4,6 +4,7 @@ import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -123,33 +124,30 @@ export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
 
           <ul className="space-y-4">
             {teams.map((team) => (
-              <li
-                key={team.teamId}
-                className="border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700"
-              >
-                <a
+              <li key={team.teamId}>
+                <Link
                   href={`/highschool/${prefecture.id}/${team.teamId}`}
-                  className="text-lg font-semibold text-blue-600 dark:text-blue-300 hover:underline"
+                  className="block border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
                 >
-                  {team.teamName}
-                </a>
-                <ul className="text-sm mt-2">
-                  {Object.entries(team.results ?? {}).length === 0 ? (
-                    <p className="text-sm text-gray-500">
-                      成績情報がありません
-                    </p>
-                  ) : (
-                    <ul className="text-sm mt-2">
-                      {Object.entries(team.results)
+                  <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">
+                    {team.teamName}
+                  </p>
+                  <ul className="text-sm mt-2">
+                    {Object.entries(team.results ?? {}).length === 0 ? (
+                      <li className="text-sm text-gray-500">
+                        成績情報がありません
+                      </li>
+                    ) : (
+                      Object.entries(team.results)
                         .sort((a, b) => Number(b[0]) - Number(a[0]))
                         .map(([year, res]) => (
                           <li key={year}>
                             {year}年：{res.tournament}（{res.result}）
                           </li>
-                        ))}
-                    </ul>
-                  )}
-                </ul>
+                        ))
+                    )}
+                  </ul>
+                </Link>
               </li>
             ))}
           </ul>
