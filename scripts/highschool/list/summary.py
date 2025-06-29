@@ -92,7 +92,7 @@ for item in results_data["results"]:
             if not any(e["teamId"] == team_id and e["category"] == category for e in summary_list):
                 summary_list.append(entry_obj)
 
-# ✅ 都道府県 × カテゴリごとに最上位のチームだけを抽出
+# ✅ 都道府県 × カテゴリごとにすべてのチームを抽出
 prefecture_order = [p["id"] for p in prefecture_data]
 final_list = []
 
@@ -102,9 +102,8 @@ for pref_id in prefecture_order:
         if not teams:
             continue
 
-        min_rank = min(rank_order.get(t["result"], default_rank) for t in teams)
-        top_teams = [t for t in teams if rank_order.get(t["result"], default_rank) == min_rank]
-        final_list.extend(top_teams)
+        # すべてのチームを追加
+        final_list.extend(teams)
 
 # ✅ 並び替え
 category_order = {"team": 0, "doubles": 1, "singles": 2}
@@ -120,4 +119,4 @@ final_list.sort(
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(final_list, f, ensure_ascii=False, indent=2)
 
-print(f"✅ '{output_path}' を生成しました（都道府県 × 種目ごと最上位のみ）。")
+print(f"✅ '{output_path}' を生成しました（都道府県 × 種目ごと）。")
