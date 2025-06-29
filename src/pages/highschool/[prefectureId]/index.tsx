@@ -20,6 +20,18 @@ type TeamSummary = {
   >;
 };
 
+type SummaryEntry = {
+  team: string;
+  teamId: string;
+  prefecture: string;
+  prefectureId: string;
+  result: string;
+  category: 'singles' | 'doubles' | 'team';
+  tournamentId: string;
+  year: number;
+  playerIds?: string[];
+};
+
 type Prefecture = {
   id: string;
   name: string;
@@ -172,7 +184,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `data/highschool/${prefectureId}/summary.json`,
   );
 
-  const rawData: any[] = fs.existsSync(summaryPath)
+  const rawData: SummaryEntry[] = fs.existsSync(summaryPath)
     ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8'))
     : [];
 
