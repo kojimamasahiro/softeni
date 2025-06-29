@@ -8,6 +8,14 @@ import Head from 'next/head';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 
+type Analysis = {
+  totalAppearances: number;
+  byCategory: Record<string, number>;
+  bestResults: Record<string, string>;
+  uniquePlayers: number;
+  topPlayers: { id: string; appearances: number }[];
+};
+
 type Prefecture = {
   id: string;
   name: string;
@@ -40,6 +48,7 @@ type Props = {
   teamId: string;
   teamName: string;
   entries: Entry[];
+  analysis: Analysis | null;
 };
 
 export default function TeamPage({
@@ -48,10 +57,10 @@ export default function TeamPage({
   teamId,
   teamName,
   entries,
+  analysis,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${prefectureId}/${teamId}`;
 
-  // 年 → 大会 → カテゴリでネストされた形式に整形
   const grouped = entries.reduce(
     (acc, entry) => {
       if (!acc[entry.year]) acc[entry.year] = {};
@@ -137,12 +146,53 @@ export default function TeamPage({
             学校のこれまでの戦績を振り返りながら、今後の活躍にもご注目ください。
           </p>
 
+          <h1 className="text-2xl font-bold mb-4">{teamName}の成績</h1>
+
+          {analysis && (
+            <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-8 text-sm">
+              <p>出場大会数: {analysis.totalAppearances}</p>
+              <p>選手数: {analysis.uniquePlayers}</p>
+              <p className="mt-2 font-semibold">種目別出場数:</p>
+              <ul className="ml-4 list-disc">
+                {Object.entries(analysis.byCategory).map(([cat, num]) => (
+                  <li key={cat}>
+                    {getCategoryLabel(cat)}: {num}回
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 font-semibold">種目別最高成績:</p>
+              <ul className="ml-4 list-disc">
+                {Object.entries(analysis.bestResults).map(([cat, result]) => (
+                  <li key={cat}>
+                    {getCategoryLabel(cat)}: {result}
+                  </li>
+                ))}
+              </ul>
+              {analysis.topPlayers.length > 0 && (
+                <>
+                  <p className="mt-2 font-semibold">出場回数が多い選手:</p>
+                  <ul className="ml-4 list-disc">
+                    {analysis.topPlayers.map((p) => {
+                      const [last, first] = p.id.split('_');
+                      return (
+                        <li key={p.id}>
+                          {last} {first}（{p.appearances}回）
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* 試合成績リスト（既存表示） */}
           {Object.keys(grouped).length === 0 ? (
             <p className="text-gray-600">成績情報がありません。</p>
           ) : (
             <div className="space-y-6">
               {Object.entries(grouped)
-                .sort((a, b) => Number(b[0]) - Number(a[0])) // 年の降順
+                .sort((a, b) => Number(b[0]) - Number(a[0]))
                 .map(([year, tourneys]) => (
                   <section key={year}>
                     <h2 className="text-xl font-semibold mb-2">{year}年</h2>
@@ -263,6 +313,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (!teamName) return { notFound: true };
 
+  // analysis 読み込み
+  const analysisPath = path.join(
+    process.cwd(),
+    'data/highschool',
+    prefectureId,
+    teamId,
+    'analysis.json',
+  );
+  const analysis: Analysis | null = fs.existsSync(analysisPath)
+    ? JSON.parse(fs.readFileSync(analysisPath, 'utf-8'))
+    : null;
+
   return {
     props: {
       prefectureName: prefecture.name,
@@ -270,6 +332,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       teamId,
       teamName,
       entries,
+      analysis,
     },
   };
 };
