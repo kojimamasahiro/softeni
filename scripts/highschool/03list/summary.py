@@ -53,7 +53,7 @@ for team in teams_data:
 summary_list = []
 best_ranks = {}
 
-# 各結果ごとに最上位記録を更新
+# 各結果ごとにすべての記録を追加
 for item in results_data["results"]:
     player_ids = item["playerIds"]
     result = item["result"]
@@ -70,9 +70,6 @@ for item in results_data["results"]:
         prefecture = team_info["prefecture"]
         prefecture_id = team_info["prefectureId"]
 
-        current_rank = rank_order.get(result, default_rank)
-        best_rank = best_ranks.get((team_id, category), default_rank)
-
         entry_obj = {
             "team": team_name,
             "teamId": team_id,
@@ -80,18 +77,13 @@ for item in results_data["results"]:
             "prefectureId": prefecture_id,
             "result": result,
             "category": category,
-            "tournamentId": "highschool-japan-cup",
-            "year": 2025,
-            "playerIds": player_ids  # ✅ 追加
+            "tournamentId": "highschool-championship",  # 固定値
+            "year": 2024,
+            "playerIds": player_ids
         }
 
-        if current_rank < best_rank:
-            best_ranks[(team_id, category)] = current_rank
-            summary_list = [e for e in summary_list if not (e["teamId"] == team_id and e["category"] == category)]
-            summary_list.append(entry_obj)
-        elif current_rank == best_rank:
-            if not any(e["teamId"] == team_id and e["category"] == category for e in summary_list):
-                summary_list.append(entry_obj)
+        # ✅ すべて追加
+        summary_list.append(entry_obj)
 
 # ✅ 都道府県 × カテゴリごとにすべてのチームを抽出
 prefecture_order = [p["id"] for p in prefecture_data]

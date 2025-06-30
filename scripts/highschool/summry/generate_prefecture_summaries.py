@@ -19,13 +19,41 @@ for entry in all_data:
         grouped[pref_id] = []
     grouped[pref_id].append(entry)
 
-# 書き出し
-for pref_id, entries in grouped.items():
+# 書き出し（重複チェックあり）
+for pref_id, new_entries in grouped.items():
     output_dir = os.path.join(output_base, pref_id)
     os.makedirs(output_dir, exist_ok=True)
 
     output_path = os.path.join(output_dir, "summary.json")
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(entries, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ {output_path} を出力しました")
+    # 既存ファイルの読み込み（あれば）
+    if os.path.exists(output_path):
+        with open(output_path, "r", encoding="utf-8") as f:
+            try:
+                existing_entries = json.load(f)
+            except json.JSONDecodeError:
+                existing_entries = []
+    else:
+        existing_entries = []
+
+    # 重複判定用のキーセット（playerIdsはソートしてタプルに）
+    def make_key(e):
+        return (
+            e.get("category"),
+            e.get("tournamentId"),
+            e.get("year"),
+            tuple(sorted(e.get("playerIds", [])))
+        )
+
+    existing_keys = {make_key(e) for e in existing_entries}
+
+    # まだ存在しない新規エントリのみ抽出
+    filtered_new_entries = [e for e in new_entries if make_key(e) not in existing_keys]
+
+    if filtered_new_entries:
+        combined = existing_entries + filtered_new_entries
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(combined, f, ensure_ascii=False, indent=2)
+        print(f"✅ {output_path} に {len(filtered_new_entries)} 件を追記しました")
+    else:
+        print(f"⚠️ {output_path} に追記すべきデータはありません（すでに存在）")

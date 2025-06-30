@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import { getTournamentLabel } from '@/lib/utils';
 
 type TeamSummary = {
   teamId: string;
@@ -199,10 +200,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
 
     grouped[teamId].results[year] = {
-      tournament:
-        tournamentId === 'highschool-japan-cup'
-          ? 'ハイスクールジャパンカップ'
-          : tournamentId,
+      tournament: getTournamentLabel(tournamentId),
       result,
     };
   }
