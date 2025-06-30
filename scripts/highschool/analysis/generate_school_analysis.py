@@ -3,7 +3,7 @@ import json
 from collections import defaultdict, Counter
 
 # データベース
-base_dir = '../../../data/highschool/prefecture'
+base_dir = '../../../data/highschool/prefectures'
 categories = ['singles', 'doubles', 'team']
 rank_order = {
     "優勝": 1,
