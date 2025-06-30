@@ -390,6 +390,15 @@
       information: players,
     };
 
+    // 選手人数に応じて category を付加
+    if (players.length === 1) {
+      obj.category = 'singles';
+    } else if (players.length === 2) {
+      obj.category = 'doubles';
+    } else if (players.length >= 3) {
+      obj.category = 'team';
+    }
+
     jsonArray.push(obj);
 
     idInput.value = outputId;

@@ -539,18 +539,29 @@ export const getStaticProps: GetStaticProps = async (context) => {
       string,
       { entryNo: number; playerIds: string[] }[]
     > = {};
-    if (hasEntries) {
-      const raw: EntriesJson = JSON.parse(
-        fs.readFileSync(entriesPath, 'utf-8'),
-      );
 
-      for (const category of Object.keys(raw)) {
-        entriesByCategory[category] = raw[category].map((e) => ({
+    if (hasEntries) {
+      const raw = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
+
+      // カテゴリがあるかどうか判定
+      if (Array.isArray(raw)) {
+        // カテゴリがない単一リスト形式
+        entriesByCategory['default'] = raw.map((e: Entry) => ({
           entryNo: Number(e.entryNo),
           playerIds: (e.information ?? [])
             .map((info) => info.playerId || info.tempId)
             .filter((id): id is string => typeof id === 'string'),
         }));
+      } else {
+        // カテゴリがある形式
+        for (const category of Object.keys(raw)) {
+          entriesByCategory[category] = raw[category].map((e: Entry) => ({
+            entryNo: Number(e.entryNo),
+            playerIds: (e.information ?? [])
+              .map((info) => info.playerId || info.tempId)
+              .filter((id): id is string => typeof id === 'string'),
+          }));
+        }
       }
     }
 

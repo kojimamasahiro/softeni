@@ -4,8 +4,6 @@ ENTRIES_PATH = "entries.json"
 MATCHES_PATH = "matches.json"
 RESULTS_PATH = "results.json"
 
-CATEGORY_LIST = ["singles", "doubles"]
-
 ROUND_TO_RESULT = {
     "決勝": "準優勝",
     "準決勝": "ベスト4",
@@ -24,7 +22,13 @@ def is_tournament_round(round_name: str) -> bool:
 def determine_results(entries, matches):
     results = []
 
-    for category in CATEGORY_LIST:
+    # カテゴリ形式でなければ "default" カテゴリに包む
+    if isinstance(entries, list):
+        entries = { "default": entries }
+    if isinstance(matches, list):
+        matches = { "default": matches }
+
+    for category in entries.keys():
         entry_map = {
             entry["entryNo"]: entry["information"]
             for entry in entries.get(category, [])
@@ -33,7 +37,7 @@ def determine_results(entries, matches):
         last_round_played = {}
         lost_flag = set()
         tournament_participants = set()
-        all_played_entries = set()  # ← 追加
+        all_played_entries = set()
 
         for match in matches.get(category, []):
             round_name = match["round"]
@@ -42,10 +46,10 @@ def determine_results(entries, matches):
             winner = match["winner"]
             loser = p2 if winner == p1 else p1
 
-            all_played_entries.update([p1, p2])  # ← 登場記録
+            all_played_entries.update([p1, p2])
 
             if not is_tournament_round(round_name):
-                continue  # トーナメントでないなら無視（予選扱い）
+                continue
 
             tournament_participants.update([p1, p2])
             last_round_played[p1] = round_name
@@ -69,11 +73,14 @@ def determine_results(entries, matches):
             else:
                 result = "未出場"
 
-            results.append({
+            result_entry = {
                 "playerIds": player_ids,
                 "result": result,
-                "category": category
-            })
+            }
+            if category != "default":
+                result_entry["category"] = category
+
+            results.append(result_entry)
 
     return results
 

@@ -1,8 +1,8 @@
 import json
 
 # ファイルパス
-results_path = "../result/results.json"
-teams_path = "../team/teams.json"
+results_path = "../02result/results.json"
+teams_path = "../01team/teams.json"
 prefecture_path = "../prefectures.json"
 output_path = "prefecture-summary.json"
 
