@@ -179,7 +179,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const summaryPath = path.join(
     process.cwd(),
-    `data/highschool/${prefectureId}/summary.json`,
+    `data/highschool/prefectures/${prefectureId}/summary.json`,
   );
 
   const rawData: SummaryEntry[] = fs.existsSync(summaryPath)

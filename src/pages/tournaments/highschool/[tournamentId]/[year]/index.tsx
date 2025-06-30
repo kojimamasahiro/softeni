@@ -8,19 +8,19 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import { resultPriority } from '@/lib/utils';
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import MatchResults from '@/components/Tournament/MatchResults';
+import Statistics from '@/components/Tournament/Statistics';
+import TeamResults from '@/components/Tournament/TeamResults';
 import { getAllPlayers } from '@/lib/players';
+import { resultPriority } from '@/lib/utils';
 import {
   MatchOpponent,
   PlayerInfo,
   TournamentMeta,
   TournamentYearData,
 } from '@/types/index';
-import MatchResults from '@/components/Tournament/MatchResults';
-import Statistics from '@/components/Tournament/Statistics';
-import TeamResults from '@/components/Tournament/TeamResults';
-import Breadcrumbs from '@/components/Breadcrumb';
 
 type EntryInformation = {
   lastName: string;
@@ -68,6 +68,7 @@ interface TournamentYearResultPageProps {
     { firstName: string; lastName: string; team: string; displayTeam?: string }
   >;
   hasEntries: boolean;
+  teamMap: Record<string, { teamId: string; prefectureId: string }>;
 }
 
 export default function TournamentYearResultPage({
@@ -77,6 +78,7 @@ export default function TournamentYearResultPage({
   allPlayers,
   unknownPlayers,
   hasEntries,
+  teamMap,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; //差分
 
@@ -92,11 +94,11 @@ export default function TournamentYearResultPage({
 
   const availableCategories = hasCategoryField
     ? Array.from(
-      new Set([
-        ...matches.map((m) => m.category).filter(Boolean),
-        ...results.map((r) => r.category).filter(Boolean),
-      ]),
-    )
+        new Set([
+          ...matches.map((m) => m.category).filter(Boolean),
+          ...results.map((r) => r.category).filter(Boolean),
+        ]),
+      )
     : ['default'];
 
   const [selectedCategory, setSelectedCategory] = useState(
@@ -147,6 +149,8 @@ export default function TournamentYearResultPage({
     string,
     {
       team: string;
+      teamId: string;
+      prefectureId: string;
       members: {
         result: string;
         resultOrder: number;
@@ -171,7 +175,8 @@ export default function TournamentYearResultPage({
         return {
           id,
           name: unknown ? `${unknown.lastName}${unknown.firstName}` : id,
-          team: unknown?.displayTeam ?? unknown?.team ?? '所属不明',
+          team: unknown?.team ?? '所属不明',
+          // team: unknown?.displayTeam ?? unknown?.team ?? '所属不明',
           noLink: true,
         };
       }
@@ -186,8 +191,17 @@ export default function TournamentYearResultPage({
         ...(i < players.length - 1 ? [{ text: '・' }] : []),
       ]);
 
+      // ✅ teamId, prefectureId を取得
+      const extra = teamMap[team] ?? { teamId: '', prefectureId: '' };
+
       if (!teamGroups[team]) {
-        teamGroups[team] = { team, members: [], bestRank: resultOrder };
+        teamGroups[team] = {
+          team,
+          teamId: extra.teamId,
+          prefectureId: extra.prefectureId,
+          members: [],
+          bestRank: resultOrder,
+        };
       }
       teamGroups[team].members.push({
         result: entry.result,
@@ -203,9 +217,13 @@ export default function TournamentYearResultPage({
         const displayParts = [
           { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
         ];
+        const extra = teamMap[p.team] ?? { teamId: '', prefectureId: '' };
+
         if (!teamGroups[p.team]) {
           teamGroups[p.team] = {
             team: p.team,
+            teamId: extra.teamId,
+            prefectureId: extra.prefectureId,
             members: [],
             bestRank: resultOrder,
           };
@@ -494,8 +512,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     tournamentId: string;
     year: string;
   };
+
   const basePath = path.join(process.cwd(), 'data/tournaments/highschool');
   const playersPath = path.join(process.cwd(), 'data/players');
+  const highschoolDataPath = path.join(process.cwd(), 'data/highschool');
   const allPlayers = getAllPlayers();
 
   try {
@@ -520,7 +540,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
       { entryNo: number; playerIds: string[] }[]
     > = {};
     if (hasEntries) {
-      const raw: EntriesJson = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
+      const raw: EntriesJson = JSON.parse(
+        fs.readFileSync(entriesPath, 'utf-8'),
+      );
 
       for (const category of Object.keys(raw)) {
         entriesByCategory[category] = raw[category].map((e) => ({
@@ -531,6 +553,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }));
       }
     }
+
+    // ✅ teams.json の読み込み
+    const teamsPath = path.join(highschoolDataPath, 'teams.json');
+    const teamList: {
+      id: string;
+      name: string;
+      prefecture: string;
+      prefectureId: string;
+    }[] = JSON.parse(fs.readFileSync(teamsPath, 'utf-8'));
+
+    const teamMap = Object.fromEntries(
+      teamList.map((t) => [
+        t.name,
+        { teamId: t.id, prefectureId: t.prefectureId },
+      ]),
+    );
 
     // ✅ standings → "予選敗退" 処理（カテゴリ別に対応）
     if (data.standings && data.results) {
@@ -575,6 +613,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         allPlayers,
         unknownPlayers,
         hasEntries,
+        teamMap,
       },
     };
   } catch (err) {

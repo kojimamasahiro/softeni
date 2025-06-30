@@ -265,7 +265,7 @@ function getCategoryLabel(cat: string): string {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const prefDir = path.join(process.cwd(), 'data/highschool');
+  const prefDir = path.join(process.cwd(), 'data/highschool/prefectures');
   const prefectures = fs.readdirSync(prefDir);
   const paths: { params: { prefectureId: string; teamId: string } }[] = [];
 
@@ -302,7 +302,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const summaryPath = path.join(
     process.cwd(),
-    'data/highschool',
+    'data/highschool/prefectures',
     prefectureId,
     'summary.json',
   );
@@ -322,7 +322,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // analysis 読み込み
   const analysisPath = path.join(
     process.cwd(),
-    'data/highschool',
+    'data/highschool/prefectures',
     prefectureId,
     teamId,
     'analysis.json',

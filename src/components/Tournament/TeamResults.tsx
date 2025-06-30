@@ -17,6 +17,8 @@ interface Member {
 
 interface TeamGroup {
   team: string;
+  teamId: string;
+  prefectureId: string;
   members: Member[];
 }
 
@@ -27,7 +29,7 @@ interface Props {
 export default function TeamResults({ sortedTeams }: Props) {
   return (
     <section className="mb-10">
-      {sortedTeams.map(({ team, members }) => {
+      {sortedTeams.map(({ team, teamId, prefectureId, members }) => {
         const grouped = members.reduce(
           (acc, m) => {
             if (!acc[m.result]) acc[m.result] = [];
@@ -51,9 +53,12 @@ export default function TeamResults({ sortedTeams }: Props) {
             className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
           >
             <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-              <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">
+              <Link
+                href={`/highschool/${prefectureId}/${teamId}`}
+                className="text-base font-semibold text-blue-600 dark:text-blue-300 hover:underline"
+              >
                 {team}
-              </h3>
+              </Link>
             </div>
             <ul className="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
               {resultEntries.map(({ result, members }, i) => (
