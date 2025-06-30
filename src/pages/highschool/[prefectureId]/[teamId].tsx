@@ -202,7 +202,7 @@ export default function TeamPage({
                       <div key={tId} className="mb-4 ml-4">
                         <h3 className="text-lg font-bold">
                           <Link
-                            href={`/tournaments/highshool/${tId}/${year}`}
+                            href={`/tournaments/highschool/${tId}/${year}`}
                             className="text-blue-700 dark:text-blue-300 hover:underline"
                           >
                             {getTournamentLabel(tId)}
