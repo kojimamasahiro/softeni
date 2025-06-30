@@ -53,12 +53,18 @@ export default function TeamResults({ sortedTeams }: Props) {
             className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
           >
             <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-              <Link
-                href={`/highschool/${prefectureId}/${teamId}`}
-                className="text-base font-semibold text-blue-600 dark:text-blue-300 hover:underline"
-              >
-                {team}
-              </Link>
+              {prefectureId && teamId ? (
+                <Link
+                  href={`/highschool/${prefectureId}/${teamId}`}
+                  className="text-base font-semibold text-blue-600 dark:text-blue-300 hover:underline"
+                >
+                  {team}
+                </Link>
+              ) : (
+                <span className="text-base font-semibold text-gray-800 dark:text-gray-200">
+                  {team}
+                </span>
+              )}
             </div>
             <ul className="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
               {resultEntries.map(({ result, members }, i) => (
