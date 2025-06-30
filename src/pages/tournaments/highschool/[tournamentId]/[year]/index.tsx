@@ -36,10 +36,6 @@ type Entry = {
   information: EntryInformation[];
 };
 
-type EntriesJson = {
-  [category: string]: Entry[];
-};
-
 type StandingEntry = {
   id: number;
   name: string;
