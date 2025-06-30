@@ -1,15 +1,33 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 3
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "2回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "小林_奏來_敦賀",
+      "appearances": 2
+    },
+    {
+      "id": "大浦_林斗_敦賀",
+      "appearances": 1
+    },
+    {
+      "id": "金森_竣大_敦賀",
+      "appearances": 1
+    },
+    {
+      "id": "森口_克明_敦賀",
+      "appearances": 1
+    },
+    {
+      "id": "久保_寛人_敦賀",
       "appearances": 1
     }
   ]

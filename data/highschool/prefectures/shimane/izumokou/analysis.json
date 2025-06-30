@@ -1,15 +1,21 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 1
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "2回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "山本_遥斗_出雲工",
+      "appearances": 2
+    },
+    {
+      "id": "小村_駿斗_出雲工",
       "appearances": 1
     }
   ]

@@ -1,15 +1,29 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 2
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "3回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "小林_瑛_豊南",
+      "appearances": 2
+    },
+    {
+      "id": "中野_凜音_豊南",
+      "appearances": 1
+    },
+    {
+      "id": "澤_諒多_豊南",
+      "appearances": 1
+    },
+    {
+      "id": "内藤_蓮斗_豊南",
       "appearances": 1
     }
   ]

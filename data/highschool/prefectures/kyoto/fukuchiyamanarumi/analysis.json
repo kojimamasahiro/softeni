@@ -1,15 +1,33 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 3
   },
   "bestResults": {
-    "singles": "3回戦敗退"
+    "singles": "3回戦敗退",
+    "doubles": "2回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "津田_柚翔_福知山成美",
+      "appearances": 2
+    },
+    {
+      "id": "伊藤_颯人_福知山成美",
+      "appearances": 1
+    },
+    {
+      "id": "山本_将_福知山成美",
+      "appearances": 1
+    },
+    {
+      "id": "原_壮介_福知山成美",
+      "appearances": 1
+    },
+    {
+      "id": "坂田_賢吾_福知山成美",
       "appearances": 1
     }
   ]

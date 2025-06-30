@@ -1,15 +1,21 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 1
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "3回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "赤阪_英昭_慶應義塾",
+      "appearances": 2
+    },
+    {
+      "id": "高橋_勇貴_慶應義塾",
       "appearances": 1
     }
   ]

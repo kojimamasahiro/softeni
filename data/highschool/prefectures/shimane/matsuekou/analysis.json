@@ -1,15 +1,33 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 3
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "3回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "井原_蓮_松江工",
+      "appearances": 1
+    },
+    {
+      "id": "小田川_聖和_松江工",
+      "appearances": 1
+    },
+    {
+      "id": "福田_絢斗_松江工",
+      "appearances": 1
+    },
+    {
+      "id": "尾島_涼太_松江工",
+      "appearances": 1
+    },
+    {
+      "id": "永見_翔_松江工",
       "appearances": 1
     }
   ]

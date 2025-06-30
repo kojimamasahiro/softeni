@@ -1,15 +1,29 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 2
   },
   "bestResults": {
-    "singles": "3回戦敗退"
+    "singles": "3回戦敗退",
+    "doubles": "2回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "下田_詠太_長崎南山",
+      "appearances": 2
+    },
+    {
+      "id": "白濱_凪騎_長崎南山",
+      "appearances": 1
+    },
+    {
+      "id": "繁松_凌大_長崎南山",
+      "appearances": 1
+    },
+    {
+      "id": "宮田_夏希_長崎南山",
       "appearances": 1
     }
   ]
