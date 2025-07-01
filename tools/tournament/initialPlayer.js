@@ -176,3 +176,4 @@ const initialPlayers = [
     ],
   },
 ];
+console.log(`Initial players loaded: ${initialPlayers.length}`);

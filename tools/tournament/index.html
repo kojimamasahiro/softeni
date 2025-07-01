@@ -36,6 +36,9 @@
         const initScore1 = initScore;
         const initScore2 = initScore;
 
+        // カテゴリ
+        const category = 'doubles';
+
         // パッキン用ダミーペア
         const byePlayer = { id: "bye", name: "1回戦免除", information: [] };
 
@@ -433,6 +436,7 @@
                     },
                     entryNo: match.p1.id,
                     name: match.p1.name,
+                    category: category,
                 });
             }
 
@@ -448,6 +452,7 @@
                     },
                     entryNo: match.p2.id,
                     name: match.p2.name,
+                    category: category,
                 });
             }
 

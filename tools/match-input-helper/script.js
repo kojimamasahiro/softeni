@@ -334,6 +334,7 @@
 
     const players = [];
     const teamSet = new Set();
+    let allBlank = true;
 
     for (const div of playerDivs) {
       const lastName = div.querySelector('.lastName').value.trim();
@@ -342,19 +343,58 @@
       const prefecture = div.querySelector('.prefecture').value.trim();
       const playerIdInput = div.querySelector('.playerInput').value.trim();
       const playerId = playerIdInput || null;
-      const tempId = lastName + '_' + firstName + '_' + team;
+      const safeLast = lastName || '';
+      const safeFirst = firstName || '';
+      const safeTeam = team || '';
+      const tempId = safeLast + '_' + safeFirst + '_' + safeTeam;
+      const hasAny = lastName || firstName || playerId;
 
-      if (!lastName) {
-        alert('姓は必須です');
-        return;
+      if (hasAny) {
+        allBlank = false;
+        const tempId = [lastName, firstName, team].filter(Boolean).join('_');
+        players.push({
+          lastName,
+          firstName,
+          team,
+          prefecture,
+          playerId,
+          tempId,
+        });
+
+        if (team) {
+          teamSet.add(team);
+        }
       }
 
-      if (team) {
-        teamSet.add(team);
+      if (allBlank) {
+        // 団体戦モードでチームのみ出力
+        const team = playerDivs[0].querySelector('.team').value.trim();
+        const prefecture = playerDivs[0]
+          .querySelector('.prefecture')
+          .value.trim();
+        if (!team) {
+          alert('チーム名は必須です（団体戦モード）');
+          return;
+        }
+
+        const obj = {
+          id: outputId++,
+          name: `${team}${prefecture ? `（${prefecture}）` : ''}`,
+          team: team,
+          prefecture: prefecture,
+          category: 'team',
+        };
+
+        jsonArray.push(obj);
+        idInput.value = outputId;
+        output.value =
+          '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+        return;
       }
 
       players.push({ lastName, firstName, team, prefecture, playerId, tempId });
     }
+
     if (players.length === 2) {
       const prefecture1 = players[0].prefecture;
       const prefecture2 = players[1].prefecture;

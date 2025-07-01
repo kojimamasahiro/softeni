@@ -494,3 +494,8 @@ teamPrefectureMap += {
   ウルスラ英智: '宮城県',
   福岡: '福岡県',
 };
+console.log(teamData);
+console.log(teamPrefectureMap);
+console.log(
+  `Team prefecture map loaded: ${Object.keys(teamPrefectureMap).length} teams`,
+);
