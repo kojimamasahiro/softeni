@@ -14,11 +14,11 @@ type TeamSummary = {
   teamId: string;
   teamName: string;
   results: Record<
-    string,
+    string, // year
     {
       tournament: string;
       result: string;
-    }
+    }[]
   >;
 };
 
@@ -115,7 +115,11 @@ export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
               {
                 teams.filter((t) =>
                   Object.values(t.results).some((r) =>
-                    ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r.result),
+                    r.some((entry) =>
+                      ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(
+                        entry.result,
+                      ),
+                    ),
                   ),
                 ).length
               }
@@ -141,9 +145,14 @@ export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
                     ) : (
                       Object.entries(team.results)
                         .sort((a, b) => Number(b[0]) - Number(a[0]))
-                        .map(([year, res]) => (
+                        .map(([year, resultList]) => (
                           <li key={year}>
-                            {year}年：{res.tournament}（{res.result}）
+                            {year}年：
+                            {resultList
+                              .map(
+                                (res) => `${res.tournament}（${res.result}）`,
+                              )
+                              .join('、')}
                           </li>
                         ))
                     )}
@@ -187,8 +196,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8'))
     : [];
 
-  // ✅ チームごとにグループ化
   const grouped: Record<string, TeamSummary> = {};
+
   for (const entry of rawData) {
     const { teamId, team, year, tournamentId, result } = entry;
     if (!grouped[teamId]) {
@@ -199,10 +208,43 @@ export const getStaticProps: GetStaticProps = async (context) => {
       };
     }
 
-    grouped[teamId].results[year] = {
-      tournament: getTournamentLabel(tournamentId),
-      result,
+    const resultPriority = (result: string): number => {
+      const order = [
+        '優勝',
+        '準優勝',
+        'ベスト4',
+        'ベスト8',
+        '6回戦敗退',
+        '5回戦敗退',
+        '4回戦敗退',
+        '3回戦敗退',
+        '2回戦敗退',
+        '1回戦敗退',
+        '予選敗退',
+        '未出場',
+      ];
+      return order.indexOf(result) !== -1
+        ? order.indexOf(result)
+        : order.length;
     };
+
+    const label = getTournamentLabel(tournamentId);
+
+    if (!grouped[teamId].results[year]) {
+      grouped[teamId].results[year] = [];
+    }
+
+    const existing = grouped[teamId].results[year].find(
+      (r) => r.tournament === label,
+    );
+    if (!existing) {
+      grouped[teamId].results[year].push({ tournament: label, result });
+    } else {
+      // すでに同じ大会がある場合は、より良い結果なら上書き
+      if (resultPriority(result) < resultPriority(existing.result)) {
+        existing.result = result;
+      }
+    }
   }
 
   const teams: TeamSummary[] = Object.values(grouped);
