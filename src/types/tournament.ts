@@ -37,11 +37,19 @@ export interface TournamentYearData {
   endDate?: string;
   location?: string;
   url?: string;
-  results: { playerIds: string[]; result: string; category?: string }[];
+  results: {
+    playerIds?: string[];
+    team?: string;
+    prefecture?: string;
+    result: string;
+    category?: string;
+  }[];
   matches?: {
     round: string;
-    pair: string[];
-    opponents: MatchOpponent[];
+    pair?: string[];
+    team?: string;
+    opponents?: MatchOpponent[];
+    opponent?: string;
     result: 'win' | 'lose';
     games: { won: string; lost: string };
     entryNo: string;
@@ -50,8 +58,10 @@ export interface TournamentYearData {
   }[];
   roundRobinMatches?: {
     round: string;
-    pair: string[];
-    opponents: MatchOpponent[];
+    pair?: string[];
+    team?: string;
+    opponents?: MatchOpponent[];
+    opponent?: string;
     result: 'win' | 'lose';
     games: { won: string; lost: string };
     entryNo: string;

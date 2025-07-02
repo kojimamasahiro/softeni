@@ -109,14 +109,22 @@ function MatchGroup({
                     <td className="px-4 py-2 break-words">{m.round}</td>
                     <td className="px-4 py-2 break-words">
                       {(() => {
-                        const teamMap = m.opponents.reduce<Record<string, string[]>>((acc, op) => {
+                        if (!m.opponents || m.opponents.length === 0) {
+                          // 団体戦（opponent フィールド使用）
+                          return m.opponent ?? '不明';
+                        }
+
+                        // 個人戦（opponents フィールド使用）
+                        const teamMap = m.opponents.reduce<
+                          Record<string, string[]>
+                        >((acc, op) => {
                           if (!acc[op.team]) acc[op.team] = [];
                           acc[op.team].push(op.lastName);
                           return acc;
                         }, {});
 
                         const grouped = Object.entries(teamMap).map(
-                          ([team, names]) => `${names.join('・')}（${team}）`
+                          ([team, names]) => `${names.join('・')}（${team}）`,
                         );
 
                         return grouped.join('・');

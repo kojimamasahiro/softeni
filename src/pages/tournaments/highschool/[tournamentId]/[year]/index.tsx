@@ -157,6 +157,36 @@ export default function TournamentYearResultPage({
   > = {};
 
   for (const entry of filteredResults) {
+    // プレイヤー情報がない場合（団体戦の可能性あり）
+    if (!entry.playerIds || entry.playerIds.length === 0) {
+      const teamName = entry.team ?? '不明';
+      const resultOrder = resultPriority(entry.result);
+      const extra = teamMap[teamName] ?? { teamId: '', prefectureId: '' };
+
+      if (!teamGroups[teamName]) {
+        teamGroups[teamName] = {
+          team: teamName,
+          teamId: extra.teamId,
+          prefectureId: extra.prefectureId,
+          members: [],
+          bestRank: resultOrder,
+        };
+      }
+
+      teamGroups[teamName].members.push({
+        result: entry.result,
+        resultOrder,
+        displayParts: [{ text: teamName, id: undefined, noLink: true }],
+      });
+
+      teamGroups[teamName].bestRank = Math.min(
+        teamGroups[teamName].bestRank,
+        resultOrder,
+      );
+
+      continue; // ↓以降の通常処理をスキップ
+    }
+
     const players = entry.playerIds.map((id) => {
       const player = allPlayers.find((p) => p.id === id);
       if (player) {
@@ -266,7 +296,7 @@ export default function TournamentYearResultPage({
 
   function findOpponentById(id: string): MatchOpponent | null {
     for (const match of filteredMatches) {
-      for (const op of match.opponents) {
+      for (const op of match.opponents ?? []) {
         if (op.playerId === id || op.tempId === id) return op;
       }
     }
@@ -280,12 +310,24 @@ export default function TournamentYearResultPage({
       if (!isNaN(won)) totalGamesWon += won;
       if (!isNaN(lost)) totalGamesLost += lost;
     }
-    for (const id of match.pair) {
-      if (!seenPlayers.has(id)) {
-        const player = findOpponentById(id);
-        if (player?.team) {
-          teamCounter[player.team] = (teamCounter[player.team] || 0) + 1;
-          seenPlayers.add(id);
+
+    if (match.category === 'team') {
+      // 団体戦の場合
+      if (match.team) {
+        if (!teamCounter[match.team]) teamCounter[match.team] = 0;
+        teamCounter[match.team]++;
+      }
+    } else {
+      // 個人戦（playerIdベース）
+      if (match.pair) {
+        for (const id of match.pair) {
+          if (!seenPlayers.has(id)) {
+            const player = findOpponentById(id);
+            if (player?.team) {
+              teamCounter[player.team] = (teamCounter[player.team] || 0) + 1;
+              seenPlayers.add(id);
+            }
+          }
         }
       }
     }
@@ -391,7 +433,9 @@ export default function TournamentYearResultPage({
                 ? ' シングルス'
                 : selectedCategory === 'doubles'
                   ? ' ダブルス'
-                  : ` ${selectedCategory}`
+                  : selectedCategory === 'team'
+                    ? ' 団体'
+                    : ` ${selectedCategory}`
               : ''}{' '}
             大会結果
           </h1>
@@ -434,7 +478,9 @@ export default function TournamentYearResultPage({
                       ? 'シングルス'
                       : cat === 'doubles'
                         ? 'ダブルス'
-                        : cat}
+                        : cat === 'team'
+                          ? '団体'
+                          : cat}
                   </a>
                 </button>
               ))}
@@ -452,26 +498,29 @@ export default function TournamentYearResultPage({
             </Link>
           </div>
 
+          {/* Statistics（団体戦では非表示） */}
+          {filteredMatches.length > 0 && selectedCategory !== 'team' && (
+            <Statistics
+              totalPlayers={totalPlayers}
+              uniqueTeams={uniqueTeams}
+              totalMatches={totalMatches}
+              totalGamesWon={totalGamesWon}
+              totalGamesLost={totalGamesLost}
+              rankedTeams={rankedTeams}
+            />
+          )}
+
+          {/* MatchResults（常に表示） */}
           {filteredMatches.length > 0 && (
-            <>
-              <Statistics
-                totalPlayers={totalPlayers}
-                uniqueTeams={uniqueTeams}
-                totalMatches={totalMatches}
-                totalGamesWon={totalGamesWon}
-                totalGamesLost={totalGamesLost}
-                rankedTeams={rankedTeams}
-              />
-              <MatchResults
-                matches={filteredMatches}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                suggestions={suggestions}
-                filter={filter}
-                setFilter={setFilter}
-                eliminatedEntries={filteredEliminatedEntries}
-              />
-            </>
+            <MatchResults
+              matches={filteredMatches}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              suggestions={suggestions}
+              filter={filter}
+              setFilter={setFilter}
+              eliminatedEntries={filteredEliminatedEntries}
+            />
           )}
         </div>
       </main>

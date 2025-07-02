@@ -374,6 +374,7 @@
                 //             resultSummary.push({
                 //                 playerIds: winnerArray,
                 //                 result: ranking.winner,
+                //                 category: category,
                 //             });
                 //             resultPairs.add(winnerKey);
                 //         }
@@ -381,6 +382,7 @@
                 //             resultSummary.push({
                 //                 playerIds: loserArray,
                 //                 result: ranking.loser,
+                //                 category: category,
                 //             });
                 //             resultPairs.add(loserKey);
                 //         }
@@ -409,7 +411,8 @@
                             resultSummary.push({
                                 team: winnerTeam.team || winnerTeam.name,
                                 prefecture: winnerTeam.prefecture || "",
-                                result: ranking.winner
+                                result: ranking.winner,
+                                category: "team",
                             });
                             seenTeams.add(winnerTeam.id);
                         }
@@ -418,7 +421,8 @@
                             resultSummary.push({
                                 team: loserTeam.team || loserTeam.name,
                                 prefecture: loserTeam.prefecture || "",
-                                result: ranking.loser
+                                result: ranking.loser,
+                                category: "team",
                             });
                             seenTeams.add(loserTeam.id);
                         }
