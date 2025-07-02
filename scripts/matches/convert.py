@@ -48,50 +48,104 @@ final_results = {}
 
 # 各カテゴリごとに処理
 for category, match_list in matches_by_category.items():
-    match_map = defaultdict(list)
+    if category == "team":
+        processed_pairs = set()
+        merged_results = []
 
-    for match in match_list:
-        pair_ids = get_ids(normalize_pair(match["pair"]))
-        opponent_ids = get_ids(match["opponents"])
-        key = tuple(sorted([pair_ids, opponent_ids]))
-        match_map[key].append(match)
+        for match in match_list:
+            team1_entry = match["entryNo"]
+            team1_name = match["team"]
+            team2_name = match["opponent"]
 
-    merged_results = []
+            # 対戦相手のentryNoを名前から取得
+            opponent_match = next(
+                (m for m in match_list if m["team"] == team2_name and m["opponent"] == team1_name),
+                None
+            )
+            if not opponent_match:
+                continue
 
-    for group in match_map.values():
-        if len(group) != 2:
-            continue
+            team2_entry = opponent_match["entryNo"]
 
-        a, b = group
+            # 処理済みチェック（小さい順にソートしてタプル化）
+            pair_key = tuple(sorted([team1_entry, team2_entry]))
+            if pair_key in processed_pairs:
+                continue
+            processed_pairs.add(pair_key)
 
-        entry_a = a["entryNo"]
-        entry_b = b["entryNo"]
+            team1_won = int(match["games"]["won"])
+            team1_lost = int(match["games"]["lost"])
+            team2_won = team1_lost
+            team2_lost = team1_won
 
-        merged = {
-            "round": a["round"],
-            "player1": {
-                "entryNo": entry_a,
-                "won": int(a["games"]["won"]),
-                "lost": int(a["games"]["lost"])
-            },
-            "player2": {
-                "entryNo": entry_b,
-                "won": int(b["games"]["won"]),
-                "lost": int(b["games"]["lost"])
-            },
-            "winner": entry_a if a["result"] == "win" else entry_b
-        }
+            merged_results.append({
+                "round": match["round"],
+                "team1": {
+                    "entryNo": team1_entry,
+                    "won": team1_won,
+                    "lost": team1_lost
+                },
+                "team2": {
+                    "entryNo": team2_entry,
+                    "won": team2_won,
+                    "lost": team2_lost
+                },
+                "winner": team1_entry if match["result"] == "win" else team2_entry
+            })
 
-        merged_results.append(merged)
-
-    merged_results.sort(
-        key=lambda m: (
-            get_round_order(m["round"]),
-            min(m["player1"]["entryNo"], m["player2"]["entryNo"])
+        # ソートして格納
+        merged_results.sort(
+            key=lambda m: (
+                get_round_order(m["round"]),
+                min(m["team1"]["entryNo"], m["team2"]["entryNo"])
+            )
         )
-    )
+        final_results[category] = merged_results
 
-    final_results[category] = merged_results
+    else:
+        # ← 元のペア形式処理をそのまま流用
+        match_map = defaultdict(list)
+        for match in match_list:
+            pair_ids = get_ids(normalize_pair(match["pair"]))
+            opponent_ids = get_ids(match["opponents"])
+            key = tuple(sorted([pair_ids, opponent_ids]))
+            match_map[key].append(match)
+
+        merged_results = []
+
+        for group in match_map.values():
+            if len(group) != 2:
+                continue
+
+            a, b = group
+            entry_a = a["entryNo"]
+            entry_b = b["entryNo"]
+
+            merged = {
+                "round": a["round"],
+                "player1": {
+                    "entryNo": entry_a,
+                    "won": int(a["games"]["won"]),
+                    "lost": int(a["games"]["lost"])
+                },
+                "player2": {
+                    "entryNo": entry_b,
+                    "won": int(b["games"]["won"]),
+                    "lost": int(b["games"]["lost"])
+                },
+                "winner": entry_a if a["result"] == "win" else entry_b
+            }
+
+            merged_results.append(merged)
+
+        merged_results.sort(
+            key=lambda m: (
+                get_round_order(m["round"]),
+                min(m["player1"]["entryNo"], m["player2"]["entryNo"])
+            )
+        )
+
+        final_results[category] = merged_results
 
 # 結果出力
 print(json.dumps(final_results, ensure_ascii=False, indent=2))

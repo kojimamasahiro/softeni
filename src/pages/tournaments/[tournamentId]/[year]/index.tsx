@@ -62,7 +62,7 @@ export default function TournamentYearResultPage({
   > = {};
 
   for (const entry of data.results ?? []) {
-    const players = entry.playerIds.map((id) => {
+    const players = (entry.playerIds ?? []).map((id) => {
       const player = allPlayers.find((p) => p.id === id);
       if (player) {
         return {
@@ -170,7 +170,7 @@ export default function TournamentYearResultPage({
 
   function findOpponentById(id: string): MatchOpponent | null {
     for (const match of matches) {
-      for (const op of match.opponents) {
+      for (const op of match.opponents ?? []) {
         if (op.playerId === id || op.tempId === id) return op;
       }
     }
@@ -184,7 +184,7 @@ export default function TournamentYearResultPage({
       if (!isNaN(won)) totalGamesWon += won;
       if (!isNaN(lost)) totalGamesLost += lost;
     }
-    for (const id of match.pair) {
+    for (const id of match.pair ?? []) {
       if (!seenPlayers.has(id)) {
         const player = findOpponentById(id);
         if (player?.team) {

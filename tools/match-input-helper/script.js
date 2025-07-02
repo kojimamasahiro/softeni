@@ -343,10 +343,6 @@
       const prefecture = div.querySelector('.prefecture').value.trim();
       const playerIdInput = div.querySelector('.playerInput').value.trim();
       const playerId = playerIdInput || null;
-      const safeLast = lastName || '';
-      const safeFirst = firstName || '';
-      const safeTeam = team || '';
-      const tempId = safeLast + '_' + safeFirst + '_' + safeTeam;
       const hasAny = lastName || firstName || playerId;
 
       if (hasAny) {
@@ -389,10 +385,37 @@
         idInput.value = outputId;
         output.value =
           '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+
+        // 入力欄をリセット
+        document
+          .querySelectorAll('.playerInput')
+          .forEach((input) => (input.value = ''));
+        document
+          .querySelectorAll('.lastName')
+          .forEach((input) => (input.value = ''));
+        document
+          .querySelectorAll('.firstName')
+          .forEach((input) => (input.value = ''));
+        document
+          .querySelectorAll('.team')
+          .forEach((input) => (input.value = ''));
+        document
+          .querySelectorAll('.prefecture')
+          .forEach((input) => (input.value = ''));
+
+        if (byeCheckbox.checked) {
+          const byeObj = {
+            id: 'bye',
+            name: '1回戦免除',
+            information: [],
+          };
+          jsonArray.push(byeObj);
+          const compressedWithBreaks =
+            '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+          output.value = compressedWithBreaks;
+        }
         return;
       }
-
-      players.push({ lastName, firstName, team, prefecture, playerId, tempId });
     }
 
     if (players.length === 2) {

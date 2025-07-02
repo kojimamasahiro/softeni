@@ -28,7 +28,7 @@ export default function MajorTitles({
           return { year, result: '(中止)' };
         } else if (yearData.status === 'completed') {
           const playerResult = yearData.results?.find((r) =>
-            r.playerIds.includes(id),
+            r.playerIds?.includes(id),
           );
           return { year, result: playerResult ? playerResult.result : 'ー' };
         }

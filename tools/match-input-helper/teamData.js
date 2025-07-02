@@ -496,6 +496,3 @@ teamPrefectureMap += {
 };
 console.log(teamData);
 console.log(teamPrefectureMap);
-console.log(
-  `Team prefecture map loaded: ${Object.keys(teamPrefectureMap).length} teams`,
-);
