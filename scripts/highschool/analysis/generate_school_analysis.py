@@ -39,9 +39,10 @@ def analyze_team(entries):
         if current_rank < previous_best:
             best_results[cat] = result
 
-        # player count
-        for pid in e.get('playerIds', []):
-            player_counter[pid] += 1
+        # player count（団体戦はスキップ）
+        if 'playerIds' in e:
+            for pid in e['playerIds']:
+                player_counter[pid] += 1
 
     return {
         "totalAppearances": total,
