@@ -22,65 +22,118 @@ def is_tournament_round(round_name: str) -> bool:
 def determine_results(entries, matches):
     results = []
 
-    # カテゴリ形式でなければ "default" カテゴリに包む
+    # カテゴリ形式でなければ "default" に包む
     if isinstance(entries, list):
-        entries = { "default": entries }
+        entries = {"default": entries}
     if isinstance(matches, list):
-        matches = { "default": matches }
+        matches = {"default": matches}
 
     for category in entries.keys():
-        entry_map = {
-            entry["entryNo"]: entry["information"]
-            for entry in entries.get(category, [])
-        }
-
-        last_round_played = {}
-        lost_flag = set()
-        tournament_participants = set()
-        all_played_entries = set()
-
-        for match in matches.get(category, []):
-            round_name = match["round"]
-            p1 = match["player1"]["entryNo"]
-            p2 = match["player2"]["entryNo"]
-            winner = match["winner"]
-            loser = p2 if winner == p1 else p1
-
-            all_played_entries.update([p1, p2])
-
-            if not is_tournament_round(round_name):
-                continue
-
-            tournament_participants.update([p1, p2])
-            last_round_played[p1] = round_name
-            last_round_played[p2] = round_name
-            lost_flag.add(loser)
-
-        for entry_no, info in entry_map.items():
-            player_ids = [
-                f"{p['lastName']}_{p['firstName']}_{p['team']}"
-                for p in info
-            ]
-
-            if entry_no in tournament_participants:
-                round_played = last_round_played.get(entry_no)
-                if round_played == "決勝" and entry_no not in lost_flag:
-                    result = "優勝"
-                else:
-                    result = ROUND_TO_RESULT.get(round_played, "不明")
-            elif entry_no in all_played_entries:
-                result = "予選敗退"
-            else:
-                result = "未出場"
-
-            result_entry = {
-                "playerIds": player_ids,
-                "result": result,
+        if category == "team":
+            # 団体戦処理
+            entry_map = {
+                entry["entryNo"]: {
+                    "team": entry["team"],
+                    "prefecture": entry["prefecture"]
+                }
+                for entry in entries[category]
             }
-            if category != "default":
-                result_entry["category"] = category
 
-            results.append(result_entry)
+            last_round_played = {}
+            lost_flag = set()
+            tournament_participants = set()
+            all_played_entries = set()
+
+            for match in matches.get(category, []):
+                round_name = match["round"]
+                t1 = match["team1"]["entryNo"]
+                t2 = match["team2"]["entryNo"]
+                winner = match["winner"]
+                loser = t2 if winner == t1 else t1
+
+                all_played_entries.update([t1, t2])
+
+                if not is_tournament_round(round_name):
+                    continue
+
+                tournament_participants.update([t1, t2])
+                last_round_played[t1] = round_name
+                last_round_played[t2] = round_name
+                lost_flag.add(loser)
+
+            for entry_no, team_info in entry_map.items():
+                if entry_no in tournament_participants:
+                    round_played = last_round_played.get(entry_no)
+                    if round_played == "決勝" and entry_no not in lost_flag:
+                        result = "優勝"
+                    else:
+                        result = ROUND_TO_RESULT.get(round_played, "不明")
+                elif entry_no in all_played_entries:
+                    result = "予選敗退"
+                else:
+                    result = "未出場"
+
+                results.append({
+                    "team": team_info["team"],
+                    "prefecture": team_info["prefecture"],
+                    "result": result,
+                    "category": "team"
+                })
+
+        else:
+            # 通常の個人戦処理（シングルス／ダブルス）
+            entry_map = {
+                entry["entryNo"]: entry["information"]
+                for entry in entries[category]
+            }
+
+            last_round_played = {}
+            lost_flag = set()
+            tournament_participants = set()
+            all_played_entries = set()
+
+            for match in matches.get(category, []):
+                round_name = match["round"]
+                p1 = match["player1"]["entryNo"]
+                p2 = match["player2"]["entryNo"]
+                winner = match["winner"]
+                loser = p2 if winner == p1 else p1
+
+                all_played_entries.update([p1, p2])
+
+                if not is_tournament_round(round_name):
+                    continue
+
+                tournament_participants.update([p1, p2])
+                last_round_played[p1] = round_name
+                last_round_played[p2] = round_name
+                lost_flag.add(loser)
+
+            for entry_no, info in entry_map.items():
+                player_ids = [
+                    f"{p['lastName']}_{p['firstName']}_{p['team']}"
+                    for p in info
+                ]
+
+                if entry_no in tournament_participants:
+                    round_played = last_round_played.get(entry_no)
+                    if round_played == "決勝" and entry_no not in lost_flag:
+                        result = "優勝"
+                    else:
+                        result = ROUND_TO_RESULT.get(round_played, "不明")
+                elif entry_no in all_played_entries:
+                    result = "予選敗退"
+                else:
+                    result = "未出場"
+
+                result_entry = {
+                    "playerIds": player_ids,
+                    "result": result,
+                }
+                if category != "default":
+                    result_entry["category"] = category
+
+                results.append(result_entry)
 
     return results
 

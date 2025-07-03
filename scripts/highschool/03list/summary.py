@@ -51,39 +51,58 @@ for team in teams_data:
 
 # 中間リスト
 summary_list = []
-best_ranks = {}
 
 # 各結果ごとにすべての記録を追加
 for item in results_data["results"]:
-    player_ids = item["playerIds"]
     result = item["result"]
-    category = item["category"]
+    category = item.get("category", "default")
 
-    team_names = {pid.split("_")[2] for pid in player_ids}
-
-    for team_name in team_names:
+    # 団体戦: teamキーから
+    if category == "team":
+        team_name = item["team"]
         team_info = team_map.get(team_name)
         if not team_info:
             continue
 
-        team_id = team_info["teamId"]
-        prefecture = team_info["prefecture"]
-        prefecture_id = team_info["prefectureId"]
-
         entry_obj = {
             "team": team_name,
-            "teamId": team_id,
-            "prefecture": prefecture,
-            "prefectureId": prefecture_id,
+            "teamId": team_info["teamId"],
+            "prefecture": team_info["prefecture"],
+            "prefectureId": team_info["prefectureId"],
             "result": result,
             "category": category,
             "tournamentId": "highschool-championship",  # 固定値
-            "year": 2024,
-            "playerIds": player_ids
+            "year": 2024
         }
 
-        # ✅ すべて追加
-        summary_list.append(entry_obj)
+    # 個人戦: playerIds → team名を抽出
+    else:
+        player_ids = item["playerIds"]
+        team_names = {pid.split("_")[2] for pid in player_ids}
+
+        for team_name in team_names:
+            team_info = team_map.get(team_name)
+            if not team_info:
+                continue
+
+            entry_obj = {
+                "team": team_name,
+                "teamId": team_info["teamId"],
+                "prefecture": team_info["prefecture"],
+                "prefectureId": team_info["prefectureId"],
+                "result": result,
+                "category": category,
+                "tournamentId": "highschool-championship",  # 固定値
+                "year": 2024,
+                "playerIds": player_ids
+            }
+
+            summary_list.append(entry_obj)
+
+        continue  # 次のループへ
+
+    # 団体戦エントリを追加
+    summary_list.append(entry_obj)
 
 # ✅ 都道府県 × カテゴリごとにすべてのチームを抽出
 prefecture_order = [p["id"] for p in prefecture_data]
@@ -94,7 +113,6 @@ for pref_id in prefecture_order:
         teams = [e for e in summary_list if e["prefectureId"] == pref_id and e["category"] == category]
         if not teams:
             continue
-
         final_list.extend(teams)
 
 # ✅ 並び替え
