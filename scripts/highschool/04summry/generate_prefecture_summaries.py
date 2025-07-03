@@ -36,14 +36,21 @@ for pref_id, new_entries in grouped.items():
     else:
         existing_entries = []
 
-    # 重複判定用のキーセット（playerIdsはソートしてタプルに）
+    # ✅ 重複判定用のキーセット（団体戦は team を使う）
     def make_key(e):
-        return (
-            e.get("category"),
-            e.get("tournamentId"),
-            e.get("year"),
-            tuple(sorted(e.get("playerIds", [])))
-        )
+        category = e.get("category")
+        tournament_id = e.get("tournamentId")
+        year = e.get("year")
+
+        if category == "team":
+            return (category, tournament_id, year, e.get("team"))
+        else:
+            return (
+                category,
+                tournament_id,
+                year,
+                tuple(sorted(e.get("playerIds", [])))
+            )
 
     existing_keys = {make_key(e) for e in existing_entries}
 
