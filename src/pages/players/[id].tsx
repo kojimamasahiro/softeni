@@ -13,6 +13,7 @@ import { PlayerInfo } from '@/types/index';
 type Props = {
   player: PlayerInfo;
   id: string;
+  summary?: string;
 };
 
 const calculateAge = (birthDate?: string): number | null => {
@@ -46,7 +47,7 @@ const formatJapaneseDate = (dateString?: string): string | null => {
   });
 };
 
-export default function PlayerInformation({ player, id }: Props) {
+export default function PlayerInformation({ player, id, summary }: Props) {
   const age = calculateAge(player.birthDate);
   const formattedBirthDate = formatJapaneseDate(player.birthDate);
 
@@ -125,6 +126,15 @@ export default function PlayerInformation({ player, id }: Props) {
         <h1 className="text-2xl font-bold mb-6">
           {player.lastName} {player.firstName}
         </h1>
+
+        {summary && (
+          <section className="mb-10">
+            <h2 className="text-xl font-semibold mb-4">注目ポイント</h2>
+            <p className="text-base text-gray-800 dark:text-gray-200">
+              {summary}
+            </p>
+          </section>
+        )}
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
@@ -231,10 +241,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const fileContents = fs.readFileSync(filePath, 'utf-8');
   const player = JSON.parse(fileContents);
 
+  // 情報ファイル取得に追加
+  const summaryPath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    id,
+    'summary.json',
+  );
+
+  let summary = '';
+  if (fs.existsSync(summaryPath)) {
+    const summaryData = JSON.parse(fs.readFileSync(summaryPath, 'utf-8'));
+    summary = summaryData.summary || '';
+  }
+
   return {
     props: {
       player,
       id,
+      summary,
     },
   };
 };

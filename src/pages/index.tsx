@@ -125,17 +125,17 @@ export default function Home({ players }: HomeProps) {
           <section className="max-w-3xl mx-auto mb-10 px-4">
             <h1 className="text-2xl font-bold mb-4">Softeni Pickとは</h1>
             <p className="text-lg leading-relaxed mb-4">
-              Softeni
-              Pick（ソフテニ・ピック）は、ソフトテニス競技に特化した大会情報・選手データベースを提供する個人運営のウェブメディアです。
+              <strong>Softeni Pick（ソフテニ・ピック）</strong>
+              は、ソフトテニスの大会結果や選手・チーム情報を整理・記録する、個人運営のデータベース型Webメディアです。
             </p>
             <p className="text-lg leading-relaxed mb-4">
-              全日本の主要大会を中心に、出場選手の成績、チーム別の戦績、試合の結果をわかりやすく整理・掲載しています。また、選手ごとのページでは過去の出場履歴や勝率、大会での活躍なども確認できます。
+              全国大会を中心に、出場選手の成績、チームごとの戦績、試合の勝敗データをわかりやすく掲載しています。選手ページでは、過去の出場履歴や勝率、所属チームでの活躍も確認できます。
             </p>
             <p className="text-lg leading-relaxed mb-4">
-              地域や世代を超えてソフトテニスを楽しむすべての人にとって、競技の魅力を再発見できる場となることを目指しています。
+              学校やチームの枠を超え、ソフトテニスの競技としての魅力や流れを「記録」としてたどれる場を目指しています。
             </p>
             <p className="text-lg leading-relaxed">
-              本サイトは、学校やチームの垣根を越えた記録のアーカイブとして、選手や指導者、ファンの方々にご活用いただけるよう、今後も情報を拡充していきます。
+              指導者・選手・ファンの皆様が、試合の振り返りや戦績の確認、育成・分析にご活用いただけるよう、今後も内容を拡充していきます。
             </p>
           </section>
 
@@ -144,6 +144,97 @@ export default function Home({ players }: HomeProps) {
             <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
             <LiveResultsByTournament playersData={players} />
+
+            {/* ✅ よく見られている選手（カード形式） */}
+            <section className="max-w-4xl mx-auto mb-12 px-4">
+              <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    id: 'uematsu-toshiki',
+                    name: '上松 俊樹',
+                    team: 'NTT西日本',
+                  },
+                  {
+                    id: 'ueoka-shunsuke',
+                    name: '上岡 俊介',
+                    team: 'Up Rise',
+                  },
+                  {
+                    id: 'uchida-riku',
+                    name: '内田 理久',
+                    team: 'NTT西日本',
+                  },
+                ].map((player) => (
+                  <div
+                    key={player.id}
+                    onClick={() =>
+                      (window.location.href = `/players/${player.id}`)
+                    }
+                    className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    <h3 className="text-lg font-bold mb-1">{player.name}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {player.team}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* ✅ 最近追加された大会（カード形式） */}
+            <section className="max-w-4xl mx-auto mb-12 px-4">
+              <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+                {[
+                  {
+                    id: 'highschool/highschool-japan-cup',
+                    year: 2025,
+                    name: 'ハイスクールジャパンカップ',
+                    category: 'ダブルス、シングルス',
+                    startDate: '2025-06-20',
+                  },
+                  {
+                    id: 'highschool/highschool-championship',
+                    year: 2024,
+                    name: '全国高等学校総合体育大会',
+                    category: 'ダブルス、団体',
+                    startDate: '2024-07-25',
+                  },
+                  {
+                    id: 'zennihon-mix-doubles',
+                    year: 2025,
+                    name: '全日本ミックスダブルス選手権大会',
+                    category: 'ダブルス',
+                    startDate: '2025-06-14',
+                  },
+                  {
+                    id: 'zennihon-singles',
+                    year: 2025,
+                    name: '全日本シングルス選手権大会',
+                    category: 'シングルス',
+                    startDate: '2025-05-17',
+                  },
+                ].map((tournament) => (
+                  <div
+                    key={`${tournament.id}-${tournament.year}-${tournament.category}`}
+                    onClick={() =>
+                      (window.location.href = `/tournaments/${tournament.id}/${tournament.year}`)
+                    }
+                    className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                      開催日:
+                      {new Date(tournament.startDate).toLocaleDateString(
+                        'ja-JP',
+                      )}
+                      　{tournament.category}
+                    </p>
+                    <h3 className="text-lg font-bold">{tournament.name}</h3>
+                  </div>
+                ))}
+              </div>
+            </section>
 
             {/* ✅ 高校カテゴリへのリンク */}
             <section className="mb-12 px-4">

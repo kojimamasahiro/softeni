@@ -21,6 +21,7 @@ export interface PlayerInfo {
 }
 
 export interface PlayerData {
+  highlight?: string;
   matches: Tournament[];
   majorTitles: MajorTitle[];
 }

@@ -148,13 +148,21 @@ export default function PlayerResultsPage({
           <header>
             <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-              本ページでは、{fullName}
+              本ページでは、{fullName}{' '}
               選手の出場大会や成績、主な勝ち上がり情報を掲載しています。
             </p>
           </header>
 
+          {playerData.highlight && (
+            <section className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h2 className="text-lg font-semibold mb-1">最近の主な活躍</h2>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {playerData.highlight}
+              </p>
+            </section>
+          )}
+
           <section>
-            <h2 className="text-xl font-semibold mb-2">最新の試合結果</h2>
             <LiveResults playerId={playerId} />
           </section>
 
