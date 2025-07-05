@@ -65,6 +65,7 @@ interface TournamentYearResultPageProps {
   >;
   hasEntries: boolean;
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
+  highlight: string | null;
 }
 
 export default function TournamentYearResultPage({
@@ -75,6 +76,7 @@ export default function TournamentYearResultPage({
   unknownPlayers,
   hasEntries,
   teamMap,
+  highlight,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; //差分
 
@@ -441,12 +443,6 @@ export default function TournamentYearResultPage({
           </h1>
 
           <section className="mb-6 px-1">
-            <p className="text-lg leading-relaxed mb-2">
-              {meta.name}は、{meta.category}
-              カテゴリの主要大会として、全国の強豪選手が集結する注目の大会です。
-              本ページでは{year}
-              年に開催された本大会の試合結果、出場チーム別の成績、対戦情報などを掲載しています。
-            </p>
             {data.location && data.startDate && data.endDate && (
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 開催地：{data.location} ／ 日程：{data.startDate}〜
@@ -462,6 +458,16 @@ export default function TournamentYearResultPage({
                   ▶ 出場選手データ（JSON形式）
                 </Link>
               </p>
+            )}
+            {highlight && (
+              <section className="mt-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                <h2 className="text-lg font-semibold mb-1">大会ハイライト</h2>
+                {highlight.split('\n').map((line, i) => (
+                  <p key={i} className="mb-1 inline-block">
+                    {line}
+                  </p>
+                ))}
+              </section>
             )}
           </section>
 
@@ -610,6 +616,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
     }
 
+    const highlight: string | null = data.highlight ?? null;
+
     // ✅ teams.json の読み込み
     const teamsPath = path.join(highschoolDataPath, 'teams.json');
     const teamList: {
@@ -670,6 +678,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         unknownPlayers,
         hasEntries,
         teamMap,
+        highlight,
       },
     };
   } catch (err) {
