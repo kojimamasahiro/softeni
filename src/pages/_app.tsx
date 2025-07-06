@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 import '@/styles/globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
@@ -99,6 +100,8 @@ export default function App({ Component, pageProps }: AppProps) {
       {!hasConsent && (
         <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />
       )}
+
+      <Analytics />
     </>
   );
 }
