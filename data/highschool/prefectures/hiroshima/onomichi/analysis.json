@@ -1,15 +1,23 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
     "singles": 1,
-    "doubles": 2
+    "doubles": 4
   },
   "bestResults": {
     "singles": "1回戦敗退",
-    "doubles": "2回戦敗退"
+    "doubles": "3回戦敗退"
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 7,
   "topPlayers": [
+    {
+      "id": "片山_斗羽_尾道",
+      "appearances": 2
+    },
+    {
+      "id": "岩永_優真_尾道",
+      "appearances": 2
+    },
     {
       "id": "佐藤_礼_尾道",
       "appearances": 1
@@ -20,14 +28,6 @@
     },
     {
       "id": "下種_仁也_尾道",
-      "appearances": 1
-    },
-    {
-      "id": "片山_斗羽_尾道",
-      "appearances": 1
-    },
-    {
-      "id": "岩永_優真_尾道",
       "appearances": 1
     }
   ]

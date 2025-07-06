@@ -460,7 +460,7 @@ const initialPlayers = [
       {
         lastName: '佐藤',
         firstName: '翔太',
-        team: '宮崎県',
+        team: '延岡学園',
         prefecture: '宮崎県',
         playerId: null,
         tempId: '佐藤_翔太_延岡学園',

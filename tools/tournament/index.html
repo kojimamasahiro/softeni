@@ -32,12 +32,12 @@
     <script src="initialPlayer.js"></script>
     <script>
         // 初期スコア
-        const initScore = 2;
+        const initScore = 4;
         const initScore1 = initScore;
         const initScore2 = initScore;
 
         // カテゴリ
-        const category = 'team';
+        const category = initialPlayers[0].category; // doubles, singles, team など
 
         // パッキン用ダミーペア
         const byePlayer = { id: "bye", name: "1回戦免除", information: [] };
@@ -348,88 +348,90 @@
                 const resultSummary = [];
                 const seenTeams = new Set();
 
-                // 個人戦の結果を抽出
-                // for (let i = roundCount - 1; i >= 0; i--) {
-                //     const matches = roundHistory[i].matches;
-                //     const ranking = roundRankings[i];
-                //     if (!ranking) continue;
+                if (category === "team") {
+                    // 団体戦の結果を抽出
+                    const teamRankingLabels = {
+                        [roundCount - 1]: { winner: "優勝", loser: "準優勝" },
+                        [roundCount - 2]: { loser: "ベスト4" },
+                        [roundCount - 3]: { loser: "ベスト8" },
+                    };
 
-                //     for (const match of matches) {
-                //         if (!match.p1 || !match.p2 || !match.winner) continue;
+                    for (let i = roundCount - 1; i >= 0; i--) {
+                        const matches = roundHistory[i].matches;
+                        const ranking = teamRankingLabels[i];
+                        if (!ranking) continue;
 
-                //         const p1Key = getPairKey(match.p1);
-                //         const p2Key = getPairKey(match.p2);
-                //         console.log(`${p1Key},  ${p2Key}`)
-                //         const p1Array = getPairArray(match.p1);
-                //         const p2Array = getPairArray(match.p2);
-                //         if (!p1Key || !p2Key) continue;
+                        for (const match of matches) {
+                            const isP1Winner = match.winner === match.p1.id;
 
-                //         const isP1Winner = match.winner === match.p1.id;
-                //         const winnerKey = isP1Winner ? p1Key : p2Key;
-                //         const loserKey = isP1Winner ? p2Key : p1Key;
-                //         const winnerArray = isP1Winner ? p1Array : p2Array;
-                //         const loserArray = isP1Winner ? p2Array : p1Array;
+                            const winnerTeam = isP1Winner ? match.p1 : match.p2;
+                            const loserTeam = isP1Winner ? match.p2 : match.p1;
 
-                //         if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
-                //             resultSummary.push({
-                //                 playerIds: winnerArray,
-                //                 result: ranking.winner,
-                //                 category: category,
-                //             });
-                //             resultPairs.add(winnerKey);
-                //         }
-                //         if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
-                //             resultSummary.push({
-                //                 playerIds: loserArray,
-                //                 result: ranking.loser,
-                //                 category: category,
-                //             });
-                //             resultPairs.add(loserKey);
-                //         }
-                //     }
-                // }
+                            if (ranking.winner && !seenTeams.has(winnerTeam.id)) {
+                                resultSummary.push({
+                                    team: winnerTeam.team || winnerTeam.name,
+                                    prefecture: winnerTeam.prefecture || "",
+                                    result: ranking.winner,
+                                    category: "team",
+                                });
+                                seenTeams.add(winnerTeam.id);
+                            }
 
-                // 団体戦の結果を抽出
-                const teamRankingLabels = {
-                    [roundCount - 1]: { winner: "優勝", loser: "準優勝" },
-                    [roundCount - 2]: { loser: "ベスト4" },
-                    [roundCount - 3]: { loser: "ベスト8" },
-                };
-
-                for (let i = roundCount - 1; i >= 0; i--) {
-                    const matches = roundHistory[i].matches;
-                    const ranking = teamRankingLabels[i];
-                    if (!ranking) continue;
-
-                    for (const match of matches) {
-                        const isP1Winner = match.winner === match.p1.id;
-
-                        const winnerTeam = isP1Winner ? match.p1 : match.p2;
-                        const loserTeam = isP1Winner ? match.p2 : match.p1;
-
-                        if (ranking.winner && !seenTeams.has(winnerTeam.id)) {
-                            resultSummary.push({
-                                team: winnerTeam.team || winnerTeam.name,
-                                prefecture: winnerTeam.prefecture || "",
-                                result: ranking.winner,
-                                category: "team",
-                            });
-                            seenTeams.add(winnerTeam.id);
+                            if (ranking.loser && !seenTeams.has(loserTeam.id)) {
+                                resultSummary.push({
+                                    team: loserTeam.team || loserTeam.name,
+                                    prefecture: loserTeam.prefecture || "",
+                                    result: ranking.loser,
+                                    category: "team",
+                                });
+                                seenTeams.add(loserTeam.id);
+                            }
                         }
+                    }
+                } else {
+                    // 個人戦の結果を抽出
+                    for (let i = roundCount - 1; i >= 0; i--) {
+                        const matches = roundHistory[i].matches;
+                        const ranking = roundRankings[i];
+                        if (!ranking) continue;
 
-                        if (ranking.loser && !seenTeams.has(loserTeam.id)) {
-                            resultSummary.push({
-                                team: loserTeam.team || loserTeam.name,
-                                prefecture: loserTeam.prefecture || "",
-                                result: ranking.loser,
-                                category: "team",
-                            });
-                            seenTeams.add(loserTeam.id);
+                        for (const match of matches) {
+                            if (!match.p1 || !match.p2 || !match.winner) continue;
+
+                            const p1Key = getPairKey(match.p1);
+                            const p2Key = getPairKey(match.p2);
+                            console.log(`${p1Key},  ${p2Key}`)
+                            const p1Array = getPairArray(match.p1);
+                            const p2Array = getPairArray(match.p2);
+                            if (!p1Key || !p2Key) continue;
+
+                            const isP1Winner = match.winner === match.p1.id;
+                            const winnerKey = isP1Winner ? p1Key : p2Key;
+                            const loserKey = isP1Winner ? p2Key : p1Key;
+                            const winnerArray = isP1Winner ? p1Array : p2Array;
+                            const loserArray = isP1Winner ? p2Array : p1Array;
+
+                            if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArray)) {
+                                resultSummary.push({
+                                    playerIds: winnerArray,
+                                    result: ranking.winner,
+                                    category: category,
+                                });
+                                resultPairs.add(winnerKey);
+                            }
+                            if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArray)) {
+                                resultSummary.push({
+                                    playerIds: loserArray,
+                                    result: ranking.loser,
+                                    category: category,
+                                });
+                                resultPairs.add(loserKey);
+                            }
                         }
                     }
                 }
 
-                output.resultSummary = resultSummary;
+                output.results = resultSummary;
             }
 
             // matches を後から生成
@@ -443,10 +445,14 @@
                     const matchWithRound = structuredClone(match);
                     matchWithRound.round = roundLabel;
 
-                    // 団体戦
-                    const splitMatches = splitMatchByTeams(matchWithRound);
-                    // 個人戦
-                    // const splitMatches = splitMatchByPlayerIds(matchWithRound);
+                    let splitMatches = [];
+                    if (category === "team") {
+                        // 団体戦
+                        splitMatches = splitMatchByTeams(matchWithRound);
+                    } else {
+                        // 個人戦
+                        splitMatches = splitMatchByPlayerIds(matchWithRound);
+                    }
                     output.matches.push(...splitMatches);
                 }
             }
