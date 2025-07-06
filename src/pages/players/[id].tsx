@@ -14,6 +14,15 @@ type Props = {
   player: PlayerInfo;
   id: string;
   summary?: string;
+  latest?: {
+    summary: string;
+    date: string;
+    location: string;
+    tournament: string;
+    result: string;
+    partner?: string;
+    link?: string;
+  } | null;
 };
 
 const calculateAge = (birthDate?: string): number | null => {
@@ -47,7 +56,12 @@ const formatJapaneseDate = (dateString?: string): string | null => {
   });
 };
 
-export default function PlayerInformation({ player, id, summary }: Props) {
+export default function PlayerInformation({
+  player,
+  id,
+  summary,
+  latest,
+}: Props) {
   const age = calculateAge(player.birthDate);
   const formattedBirthDate = formatJapaneseDate(player.birthDate);
 
@@ -183,11 +197,30 @@ export default function PlayerInformation({ player, id, summary }: Props) {
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">試合結果</h2>
+
+          {latest ? (
+            <div className="mb-3 text-sm text-gray-800 dark:text-gray-200">
+              <p className="mb-1">
+                <span className="font-semibold">更新情報：</span>
+                {latest.date} / {latest.tournament}（{latest.result}）
+              </p>
+              {latest.summary && (
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  {latest.summary}
+                </p>
+              )}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500">
+              最近の試合情報はまだありません。
+            </p>
+          )}
+
           <Link
             href={`/players/${id}/results`}
-            className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+            className="inline-block mt-2 text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
           >
-            試合結果を見る
+            すべての試合結果を見る
           </Link>
         </section>
 
@@ -256,11 +289,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     summary = summaryData.summary || '';
   }
 
+  const analysisPath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    id,
+    'analysis.json',
+  );
+
+  let latest = null;
+  if (fs.existsSync(analysisPath)) {
+    const analysis = JSON.parse(fs.readFileSync(analysisPath, 'utf-8'));
+    latest = analysis.latestMatch || null;
+  }
+
   return {
     props: {
       player,
       id,
       summary,
+      latest,
     },
   };
 };

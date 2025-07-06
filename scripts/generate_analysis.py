@@ -170,6 +170,18 @@ if __name__ == "__main__":
 
         result = analyze_matches(data.get("matches", []))
 
+        latest_match = data.get("matches", [])[0] if data.get("matches") else None
+        if latest_match:
+            result["latestMatch"] = {
+                "tournament": latest_match.get("tournament"),
+                "date": latest_match.get("dateRange"),
+                "location": latest_match.get("location"),
+                "partner": latest_match.get("partner"),
+                "result": latest_match.get("finalResult"),
+                "summary": data.get("highlight") or f"{latest_match.get('tournament')}で{latest_match.get('finalResult')}を記録",
+                "link": latest_match.get("link"),
+            }
+
         with output_file.open("w", encoding="utf-8") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
 
