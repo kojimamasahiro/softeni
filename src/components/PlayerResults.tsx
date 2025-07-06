@@ -30,7 +30,7 @@ export default function PlayerResults({
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">🎾 大会結果</h2>
+      <h2 className="text-xl font-bold mb-4">大会結果</h2>
 
       <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers} />
 

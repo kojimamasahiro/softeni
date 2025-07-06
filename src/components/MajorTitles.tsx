@@ -48,7 +48,7 @@ export default function MajorTitles({
   return (
     <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
-        🏆 主要タイトル
+        主要タイトル
       </h2>
       <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
         {/* 横幅を100%に設定 */}
