@@ -365,7 +365,7 @@ const initialPlayers = [
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":223,"name":"蓮沼・鳥竹（能登）","information":[{"lastName":"蓮沼","firstName":"拓実","team":"能登","prefecture":"石川県","playerId":null,"tempId":"蓮沼_拓実_能登"},{"lastName":"鳥竹","firstName":"柊生","team":"能登","prefecture":"石川県","playerId":null,"tempId":"鳥竹_柊生_能登"}],"category":"doubles"},
 {"id":224,"name":"大山・中川（都城東）","information":[{"lastName":"大山","firstName":"瑠偉","team":"都城東","prefecture":"宮崎県","playerId":null,"tempId":"大山_瑠偉_都城東"},{"lastName":"中川","firstName":"純之介","team":"都城東","prefecture":"宮崎県","playerId":null,"tempId":"中川_純之介_都城東"}],"category":"doubles"},
-{"id":225,"name":"菅原・菅原（学法石川）","information":[{"lastName":"菅原","firstName":"大馳","team":"学法石川","prefecture":"福島県","playerId":null,"tempId":"菅原_大馳_学法石川"},{"lastName":"菅原","firstName":"大馳","team":"学法石川","prefecture":"福島県","playerId":null,"tempId":"菅原_大馳_学法石川"}],"category":"doubles"},
+{"id":225,"name":"佐藤・菅原（学法石川）","information":[{"lastName":"佐藤","firstName":"良吹","team":"学法石川","prefecture":"福島県","playerId":null,"tempId":"菅原_大馳_学法石川"},{"lastName":"菅原","firstName":"大馳","team":"学法石川","prefecture":"福島県","playerId":null,"tempId":"菅原_大馳_学法石川"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":226,"name":"今井・内倉（金津）","information":[{"lastName":"今井","firstName":"奏良","team":"金津","prefecture":"福井県","playerId":null,"tempId":"今井_奏良_金津"},{"lastName":"内倉","firstName":"海響","team":"金津","prefecture":"福井県","playerId":null,"tempId":"内倉_海響_金津"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
