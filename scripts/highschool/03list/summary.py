@@ -72,7 +72,7 @@ for item in results_data["results"]:
             "result": result,
             "category": category,
             "tournamentId": "highschool-championship",  # 固定値
-            "year": 2023
+            "year": 2022
         }
 
     # 個人戦: playerIds → team名を抽出
@@ -93,7 +93,7 @@ for item in results_data["results"]:
                 "result": result,
                 "category": category,
                 "tournamentId": "highschool-championship",  # 固定値
-                "year": 2023,
+                "year": 2022,
                 "playerIds": player_ids
             }
 
