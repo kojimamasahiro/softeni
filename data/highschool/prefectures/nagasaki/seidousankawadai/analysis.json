@@ -1,15 +1,19 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 6,
     "team": 1
   },
   "bestResults": {
-    "doubles": "3回戦敗退",
+    "doubles": "4回戦敗退",
     "team": "1回戦敗退"
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "須川_琥太郎_精道三川台",
+      "appearances": 2
+    },
     {
       "id": "森_生_精道三川台",
       "appearances": 1
@@ -24,10 +28,6 @@
     },
     {
       "id": "諌山_紘聖_精道三川台",
-      "appearances": 1
-    },
-    {
-      "id": "三村_遥人_精道三川台",
       "appearances": 1
     }
   ]
