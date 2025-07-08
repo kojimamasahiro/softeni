@@ -1,32 +1,36 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 8
+    "doubles": 13,
+    "singles": 1,
+    "team": 1
   },
   "bestResults": {
-    "doubles": "5回戦敗退"
+    "doubles": "優勝",
+    "singles": "ベスト8",
+    "team": "3回戦敗退"
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 19,
   "topPlayers": [
     {
-      "id": "富山_陽太_都城商",
-      "appearances": 2
+      "id": "田中_涼介_都城商",
+      "appearances": 3
     },
     {
       "id": "川﨑_康平_都城商",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "森_良輔_都城商",
-      "appearances": 2
-    },
-    {
-      "id": "永田_奏輝_都城商",
-      "appearances": 1
+      "appearances": 3
     },
     {
       "id": "山口_準斗_都城商",
-      "appearances": 1
+      "appearances": 2
+    },
+    {
+      "id": "富山_陽太_都城商",
+      "appearances": 2
     }
   ]
 }
