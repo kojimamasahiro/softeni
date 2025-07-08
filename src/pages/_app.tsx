@@ -1,14 +1,15 @@
 // src/pages/_app.tsx
-import CookieConsent from '@/components/CookieConsent';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-
 import '@/styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
+
+import CookieConsent from '@/components/CookieConsent';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -102,6 +103,7 @@ export default function App({ Component, pageProps }: AppProps) {
       )}
 
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
