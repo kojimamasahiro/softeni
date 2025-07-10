@@ -23,7 +23,7 @@ type Analysis = {
   bestResults: Record<string, string>;
   uniquePlayers: number;
   topPlayers: { id: string; appearances: number }[];
-  latestResult?: EntryResult;
+  recentlyResult?: EntryResult;
   historicalBest?: EntryResult;
 };
 
@@ -151,46 +151,49 @@ export default function TeamPage({
           />
           <h1 className="text-2xl font-bold mb-6">{teamName}の成績</h1>
 
-
           {analysis &&
-            (analysis.latestResult || analysis.historicalBest) &&
+            (analysis.recentlyResult || analysis.historicalBest) &&
             (() => {
-              const { latestResult, historicalBest } = analysis;
+              const { recentlyResult, historicalBest } = analysis;
 
               // 同一かどうか比較（全フィールド一致）
               const isSame =
-                latestResult &&
+                recentlyResult &&
                 historicalBest &&
-                latestResult.year === historicalBest.year &&
-                latestResult.tournamentId === historicalBest.tournamentId &&
-                latestResult.result === historicalBest.result &&
-                latestResult.category === historicalBest.category;
+                recentlyResult.year === historicalBest.year &&
+                recentlyResult.tournamentId === historicalBest.tournamentId &&
+                recentlyResult.result === historicalBest.result &&
+                recentlyResult.category === historicalBest.category;
 
               return (
                 <div className="mb-6 text-sm text-gray-800 dark:text-gray-300">
                   {isSame && historicalBest ? (
                     <p>
-                      最新の大会（{historicalBest.year}年{' '}
+                      直近3年間の大会の最高の成績は、（{historicalBest.year}年{' '}
                       {getTournamentLabel(historicalBest.tournamentId)}・
                       {getCategoryLabel(historicalBest.category)}）で
-                      <strong>{historicalBest.result}</strong>を達成。
-                      これは同校にとって<strong>過去最高の成績</strong>
+                      <strong>{historicalBest.result}</strong>となります。
+                      これは同校にとって記録された情報での
+                      <strong>最高の成績</strong>
                       でもあります。
                     </p>
                   ) : (
                     <>
-                      {latestResult && (
+                      {recentlyResult && (
                         <p>
-                          最新の大会（{latestResult.year}年{' '}
-                          {getTournamentLabel(latestResult.tournamentId)}・
-                          {getCategoryLabel(latestResult.category)}）では
-                          <strong>{latestResult.result}</strong>
-                          の成績を収めました。
+                          直近3年間の大会の最高の成績は、（{recentlyResult.year}
+                          年 {getTournamentLabel(recentlyResult.tournamentId)}・
+                          {getCategoryLabel(recentlyResult.category)}）にて、
+                          <strong>{recentlyResult.result}</strong>
+                          となっています。
                         </p>
+                      )}
+                      {!recentlyResult && (
+                        <p>直近3年間の大会では出場情報がありません。</p>
                       )}
                       {historicalBest && (
                         <p>
-                          過去最高の成績は、
+                          記録された情報での過去最高の成績は、
                           {historicalBest.year}年の
                           {getTournamentLabel(historicalBest.tournamentId)}（
                           {getCategoryLabel(historicalBest.category)}

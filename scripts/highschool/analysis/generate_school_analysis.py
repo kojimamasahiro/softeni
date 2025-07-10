@@ -1,6 +1,7 @@
 import os
 import json
 from collections import defaultdict, Counter
+from datetime import datetime
 
 # データベース
 base_dir = '../../../data/highschool/prefectures'
@@ -55,18 +56,18 @@ def analyze_team(entries):
                 player_counter[pid] += 1
 
     # 最新年度を判定
-    latest_year = max(e["year"] for e in entries)
-    latest_entries = [e for e in entries if e["year"] == latest_year]
-    past_entries = [e for e in entries if e["year"] <= latest_year]
+    this_year = datetime.now().year
+    recently_entries = [e for e in entries if e["year"] >= this_year - 2]
+    past_entries = [e for e in entries if e["year"] <= this_year]
 
-    latest_best = get_best_result(latest_entries)
+    recently_best = get_best_result(recently_entries)
     past_best = get_best_result(past_entries)
 
     return {
         "totalAppearances": total,
         "byCategory": dict(by_cat),
         "bestResults": best_results,
-        "latestResult": latest_best,
+        "recentlyResult": recently_best,
         "historicalBest": past_best,
         "uniquePlayers": len(player_counter),
         "topPlayers": [
