@@ -150,64 +150,62 @@ export default function TeamPage({
             ]}
           />
           <h1 className="text-2xl font-bold mb-6">{teamName}の成績</h1>
-          <p className="text-sm text-gray-600 mb-6">
-            {teamName}（{prefectureName}
-            ）のソフトテニス部の大会別成績を掲載しています。
-          </p>
+
+
+          {analysis &&
+            (analysis.latestResult || analysis.historicalBest) &&
+            (() => {
+              const { latestResult, historicalBest } = analysis;
+
+              // 同一かどうか比較（全フィールド一致）
+              const isSame =
+                latestResult &&
+                historicalBest &&
+                latestResult.year === historicalBest.year &&
+                latestResult.tournamentId === historicalBest.tournamentId &&
+                latestResult.result === historicalBest.result &&
+                latestResult.category === historicalBest.category;
+
+              return (
+                <div className="mb-6 text-sm text-gray-800 dark:text-gray-300">
+                  {isSame && historicalBest ? (
+                    <p>
+                      最新の大会（{historicalBest.year}年{' '}
+                      {getTournamentLabel(historicalBest.tournamentId)}・
+                      {getCategoryLabel(historicalBest.category)}）で
+                      <strong>{historicalBest.result}</strong>を達成。
+                      これは同校にとって<strong>過去最高の成績</strong>
+                      でもあります。
+                    </p>
+                  ) : (
+                    <>
+                      {latestResult && (
+                        <p>
+                          最新の大会（{latestResult.year}年{' '}
+                          {getTournamentLabel(latestResult.tournamentId)}・
+                          {getCategoryLabel(latestResult.category)}）では
+                          <strong>{latestResult.result}</strong>
+                          の成績を収めました。
+                        </p>
+                      )}
+                      {historicalBest && (
+                        <p>
+                          過去最高の成績は、
+                          {historicalBest.year}年の
+                          {getTournamentLabel(historicalBest.tournamentId)}（
+                          {getCategoryLabel(historicalBest.category)}
+                          ）での
+                          <strong>{historicalBest.result}</strong>です。
+                        </p>
+                      )}
+                    </>
+                  )}
+                </div>
+              );
+            })()}
 
           {analysis && (
             <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-8 text-sm">
-              {analysis &&
-                (analysis.latestResult || analysis.historicalBest) &&
-                (() => {
-                  const { latestResult, historicalBest } = analysis;
-
-                  // 同一かどうか比較（全フィールド一致）
-                  const isSame =
-                    latestResult &&
-                    historicalBest &&
-                    latestResult.year === historicalBest.year &&
-                    latestResult.tournamentId === historicalBest.tournamentId &&
-                    latestResult.result === historicalBest.result &&
-                    latestResult.category === historicalBest.category;
-
-                  return (
-                    <div className="mb-6 text-sm text-gray-800 dark:text-gray-300">
-                      {isSame && historicalBest ? (
-                        <p>
-                          最新の大会（{historicalBest.year}年{' '}
-                          {getTournamentLabel(historicalBest.tournamentId)}・
-                          {getCategoryLabel(historicalBest.category)}）で
-                          <strong>{historicalBest.result}</strong>を達成。
-                          これは同校にとって<strong>過去最高の成績</strong>
-                          でもあります。
-                        </p>
-                      ) : (
-                        <>
-                          {latestResult && (
-                            <p>
-                              最新の大会（{latestResult.year}年{' '}
-                              {getTournamentLabel(latestResult.tournamentId)}・
-                              {getCategoryLabel(latestResult.category)}）では
-                              <strong>{latestResult.result}</strong>
-                              の成績を収めました。
-                            </p>
-                          )}
-                          {historicalBest && (
-                            <p>
-                              過去最高の成績は、
-                              {historicalBest.year}年の
-                              {getTournamentLabel(historicalBest.tournamentId)}
-                              （{getCategoryLabel(historicalBest.category)}
-                              ）での
-                              <strong>{historicalBest.result}</strong>です。
-                            </p>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  );
-                })()}
               <p>出場大会数: {analysis.totalAppearances}</p>
               <p>選手数: {analysis.uniquePlayers}</p>
               <p className="mt-2 font-semibold">種目別出場数:</p>
