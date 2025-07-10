@@ -10,12 +10,21 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import { getCategoryLabel, getTournamentLabel } from '@/lib/utils';
 
+type EntryResult = {
+  tournamentId: string;
+  year: number;
+  result: string;
+  category: string;
+};
+
 type Analysis = {
   totalAppearances: number;
   byCategory: Record<string, number>;
   bestResults: Record<string, string>;
   uniquePlayers: number;
   topPlayers: { id: string; appearances: number }[];
+  latestResult?: EntryResult;
+  historicalBest?: EntryResult;
 };
 
 type Prefecture = {
@@ -144,12 +153,61 @@ export default function TeamPage({
           <p className="text-sm text-gray-600 mb-6">
             {teamName}（{prefectureName}
             ）のソフトテニス部の大会別成績を掲載しています。
-            出場選手の構成や試合結果を、年度・大会・カテゴリ（シングルス・ダブルス・団体戦）ごとに整理。
-            学校のこれまでの戦績を振り返りながら、今後の活躍にもご注目ください。
           </p>
 
           {analysis && (
             <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-8 text-sm">
+              {analysis &&
+                (analysis.latestResult || analysis.historicalBest) &&
+                (() => {
+                  const { latestResult, historicalBest } = analysis;
+
+                  // 同一かどうか比較（全フィールド一致）
+                  const isSame =
+                    latestResult &&
+                    historicalBest &&
+                    latestResult.year === historicalBest.year &&
+                    latestResult.tournamentId === historicalBest.tournamentId &&
+                    latestResult.result === historicalBest.result &&
+                    latestResult.category === historicalBest.category;
+
+                  return (
+                    <div className="mb-6 text-sm text-gray-800 dark:text-gray-300">
+                      {isSame && historicalBest ? (
+                        <p>
+                          最新の大会（{historicalBest.year}年{' '}
+                          {getTournamentLabel(historicalBest.tournamentId)}・
+                          {getCategoryLabel(historicalBest.category)}）で
+                          <strong>{historicalBest.result}</strong>を達成。
+                          これは同校にとって<strong>過去最高の成績</strong>
+                          でもあります。
+                        </p>
+                      ) : (
+                        <>
+                          {latestResult && (
+                            <p>
+                              最新の大会（{latestResult.year}年{' '}
+                              {getTournamentLabel(latestResult.tournamentId)}・
+                              {getCategoryLabel(latestResult.category)}）では
+                              <strong>{latestResult.result}</strong>
+                              の成績を収めました。
+                            </p>
+                          )}
+                          {historicalBest && (
+                            <p>
+                              過去最高の成績は、
+                              {historicalBest.year}年の
+                              {getTournamentLabel(historicalBest.tournamentId)}
+                              （{getCategoryLabel(historicalBest.category)}
+                              ）での
+                              <strong>{historicalBest.result}</strong>です。
+                            </p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  );
+                })()}
               <p>出場大会数: {analysis.totalAppearances}</p>
               <p>選手数: {analysis.uniquePlayers}</p>
               <p className="mt-2 font-semibold">種目別出場数:</p>

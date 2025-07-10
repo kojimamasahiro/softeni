@@ -21,6 +21,16 @@ rank_order = {
 }
 default_rank = 999
 
+def get_best_result(entries):
+    best_entry = None
+    best_rank = default_rank
+    for e in entries:
+        rank = rank_order.get(e['result'], default_rank)
+        if rank < best_rank:
+            best_entry = e
+            best_rank = rank
+    return best_entry
+
 def analyze_team(entries):
     total = 0
     by_cat = defaultdict(int)
@@ -33,7 +43,7 @@ def analyze_team(entries):
         total += 1
         by_cat[cat] += 1
 
-        # best result
+        # best result by category
         current_rank = rank_order.get(result, default_rank)
         previous_best = rank_order.get(best_results.get(cat, ''), default_rank)
         if current_rank < previous_best:
@@ -44,10 +54,20 @@ def analyze_team(entries):
             for pid in e['playerIds']:
                 player_counter[pid] += 1
 
+    # 最新年度を判定
+    latest_year = max(e["year"] for e in entries)
+    latest_entries = [e for e in entries if e["year"] == latest_year]
+    past_entries = [e for e in entries if e["year"] <= latest_year]
+
+    latest_best = get_best_result(latest_entries)
+    past_best = get_best_result(past_entries)
+
     return {
         "totalAppearances": total,
         "byCategory": dict(by_cat),
         "bestResults": best_results,
+        "latestResult": latest_best,
+        "historicalBest": past_best,
         "uniquePlayers": len(player_counter),
         "topPlayers": [
             {"id": pid, "appearances": count}
