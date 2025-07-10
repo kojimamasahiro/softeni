@@ -78,7 +78,7 @@
 
     // playerId等の自動補完対象
     const labelPlayer = document.createElement('label');
-    labelPlayer.innerHTML = `選手情報（playerId / 姓 / 名 / チーム名から補完可能）：`;
+    labelPlayer.innerHTML = `選手情報（playerId）：`;
     const playerInput = document.createElement('input');
     playerInput.setAttribute('list', 'playerList');
     playerInput.className = 'playerInput';

@@ -1,15 +1,25 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 1
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "1回戦敗退"
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "北俣_航太_青森明の星",
+      "appearances": 1
+    },
+    {
+      "id": "伊藤_柊也_青森明の星",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_優利_青森明の星",
       "appearances": 1
     }
   ]

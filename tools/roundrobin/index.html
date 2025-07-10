@@ -112,14 +112,14 @@
                 matchDiv.innerHTML = renderMatchHtml(match, idx);
                 updateJsonOutput();
             } else if (target.classList.contains("retire-button")) {
-                const player = target.dataset.player;
-                const opponent = player === "p1" ? "p2" : "p1";
-                match[player].retired = true;
-                match.scores[player] = 0;
-                match.scores[opponent] = 5;
-                match.winner = match[opponent].id;
-                matchDiv.innerHTML = renderMatchHtml(match, idx);
-                updateJsonOutput();
+                // const player = target.dataset.player;
+                // const opponent = player === "p1" ? "p2" : "p1";
+                // match[player].retired = true;
+                // match.scores[player] = 0;
+                // match.scores[opponent] = 5;
+                // match.winner = match[opponent].id;
+                // matchDiv.innerHTML = renderMatchHtml(match, idx);
+                // updateJsonOutput();
             }
         }
 

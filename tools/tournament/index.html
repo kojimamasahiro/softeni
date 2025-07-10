@@ -219,22 +219,22 @@
                 // リタイアボタンにイベント付与（← displayMatches() 内でやる！）
                 document.querySelectorAll(".retire-button").forEach(btn => {
                     btn.addEventListener("click", e => {
-                        const matchIndex = Number(e.target.dataset.match);
-                        const player = e.target.dataset.player;
-                        const opponent = (player === "p1") ? "p2" : "p1";
+                        // const matchIndex = Number(e.target.dataset.match);
+                        // const player = e.target.dataset.player;
+                        // const opponent = (player === "p1") ? "p2" : "p1";
 
-                        const match = roundMatches[matchIndex];
+                        // const match = roundMatches[matchIndex];
 
-                        match[player].id = "bye";
-                        match[player].name = "リタイア";
-                        match.scores[player] = 0;
-                        match.scores[opponent] = initScore;
-                        match.winner = match[opponent].id;
+                        // match[player].id = "bye";
+                        // match[player].name = "リタイア";
+                        // match.scores[player] = 0;
+                        // match.scores[opponent] = initScore;
+                        // match.winner = match[opponent].id;
 
-                        document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
-                        updateScoreButtons(matchIndex);
-                        updateJsonOutput();
-                        displayMatches(); // ← 再描画でbye扱い反映
+                        // document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
+                        // updateScoreButtons(matchIndex);
+                        // updateJsonOutput();
+                        // displayMatches(); // ← 再描画でbye扱い反映
                     });
                 });
             });
@@ -339,7 +339,8 @@
             }
             const getPairArray = (info) => {
                 // playerIdがnullまたはundefinedの場合、tempIdを使う
-                return info?.information?.map(p => p.playerId || p.tempId).filter(id => id != null).sort();
+                return info?.information?.map(p => p.playerId || p.tempId).filter(id => id != null);
+                // return info?.information?.map(p => p.playerId || p.tempId).filter(id => id != null).sort();
             }
             const isValidPair = (arr) => arr.every(id => id !== null && id !== undefined);
 

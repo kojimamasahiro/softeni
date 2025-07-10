@@ -12,7 +12,7 @@ label {
 input {
     padding: 5px;
     width: 100%;
-    max-width: 300px;
+    max-width: 260px;
 }
 
 button {
@@ -29,7 +29,7 @@ button {
 .player-group {
     display: block;
     box-sizing: border-box;
-    width: 400px;
+    width: 320px;
     border: 1px solid #ccc;
     padding: 1rem;
     background: #f9f9f9;
