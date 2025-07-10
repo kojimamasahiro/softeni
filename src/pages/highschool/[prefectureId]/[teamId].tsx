@@ -148,8 +148,6 @@ export default function TeamPage({
             学校のこれまでの戦績を振り返りながら、今後の活躍にもご注目ください。
           </p>
 
-          <h1 className="text-2xl font-bold mb-4">{teamName}の成績</h1>
-
           {analysis && (
             <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-8 text-sm">
               <p>出場大会数: {analysis.totalAppearances}</p>
