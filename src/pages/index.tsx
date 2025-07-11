@@ -98,57 +98,10 @@ export default function Home({ players }: HomeProps) {
 
             <LiveResultsByTournament playersData={players} />
 
-            {/* ✅ よく見られている選手（カード形式） */}
-            <section className="max-w-4xl mx-auto mb-12 px-4">
-              <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-                {[
-                  {
-                    id: 'uematsu-toshiki',
-                    name: '上松 俊樹',
-                    team: 'NTT西日本',
-                  },
-                  {
-                    id: 'ueoka-shunsuke',
-                    name: '上岡 俊介',
-                    team: 'Up Rise',
-                  },
-                  {
-                    id: 'uchida-riku',
-                    name: '内田 理久',
-                    team: 'NTT西日本',
-                  },
-                ].map((player) => (
-                  <div
-                    key={player.id}
-                    onClick={() =>
-                      (window.location.href = `/players/${player.id}`)
-                    }
-                    className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
-                  >
-                    <h3 className="text-lg font-bold mb-1">{player.name}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {player.team}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* ✅ 一覧ページへのリンク */}
-              <div className="text-right mb-10">
-                <Link
-                  href="/players"
-                  className="text-sm text-blue-500 hover:underline"
-                >
-                  その他の選手一覧はこちら
-                </Link>
-              </div>
-            </section>
-
             {/* ✅ 最近追加された大会（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
               <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                 {[
                   {
                     id: 'highschool/highschool-japan-cup',
@@ -196,6 +149,62 @@ export default function Home({ players }: HomeProps) {
                     <h3 className="text-lg font-bold">{tournament.name}</h3>
                   </div>
                 ))}
+              </div>
+
+              <div className="text-right mb-10">
+                <Link
+                  href="/tournaments"
+                  className="text-sm text-blue-500 hover:underline"
+                >
+                  過去の大会結果一覧はこちら
+                </Link>
+              </div>
+            </section>
+
+            {/* ✅ よく見られている選手（カード形式） */}
+            <section className="max-w-4xl mx-auto mb-12 px-4">
+              <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                {[
+                  {
+                    id: 'uematsu-toshiki',
+                    name: '上松 俊樹',
+                    team: 'NTT西日本',
+                  },
+                  {
+                    id: 'ueoka-shunsuke',
+                    name: '上岡 俊介',
+                    team: 'Up Rise',
+                  },
+                  {
+                    id: 'uchida-riku',
+                    name: '内田 理久',
+                    team: 'NTT西日本',
+                  },
+                ].map((player) => (
+                  <div
+                    key={player.id}
+                    onClick={() =>
+                      (window.location.href = `/players/${player.id}`)
+                    }
+                    className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    <h3 className="text-lg font-bold mb-1">{player.name}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {player.team}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* ✅ 一覧ページへのリンク */}
+              <div className="text-right mb-10">
+                <Link
+                  href="/players"
+                  className="text-sm text-blue-500 hover:underline"
+                >
+                  その他の選手一覧はこちら
+                </Link>
               </div>
             </section>
 

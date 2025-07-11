@@ -27,15 +27,6 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
     <div className="bg-white dark:bg-gray-800 p-4 mb-4 rounded-lg shadow">
       {children}
     </div>
-
-    <div className="text-right mb-10">
-      <Link
-        href="/tournaments"
-        className="text-sm text-blue-500 hover:underline"
-      >
-        過去の大会結果一覧はこちら
-      </Link>
-    </div>
   </section>
 );
 
