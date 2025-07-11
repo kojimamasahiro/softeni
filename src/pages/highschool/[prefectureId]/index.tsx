@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-import { getTournamentLabel } from '@/lib/utils';
+import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
 type TeamSummary = {
   teamId: string;
@@ -40,14 +40,50 @@ type Prefecture = {
   region: string;
 };
 
+type TopTeam = {
+  teamId: string;
+  teamName: string;
+  result: string;
+  tournament: string;
+  year: number;
+};
+
 type Props = {
   prefecture: Prefecture;
   teams: TeamSummary[];
+  topTeams: TopTeam[];
 };
 
-export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
+const tournamentPriority: Record<string, number> = {
+  'highschool-championship': 1, // インターハイ
+  'highschool-senbatsu': 2, // 選抜
+  'highschool-japan-cup': 3, // J杯
+  kokutai: 4, // 国体
+};
+
+function compareTournamentPriority(a: SummaryEntry, b: SummaryEntry) {
+  const pA = tournamentPriority[a.tournamentId] ?? 99;
+  const pB = tournamentPriority[b.tournamentId] ?? 99;
+  return pA - pB; // 小さいほど優先度が高い
+}
+export default function PrefectureHighschoolPage({
+  prefecture,
+  teams,
+  topTeams,
+}: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${prefecture.id}`;
   const prefectureName = prefecture.name;
+  const getPerformanceLabel = (
+    result: string,
+  ): '好成績' | '健闘' | '敗退' | '予選敗退' | null => {
+    if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(result))
+      return '好成績';
+    if (['6回戦敗退', '5回戦敗退', '4回戦敗退', '3回戦敗退'].includes(result))
+      return '健闘';
+    if (['2回戦敗退', '1回戦敗退'].includes(result)) return '敗退';
+    if (result === '予選敗退') return '予選敗退';
+    return null; // "未出場" やそれ以外は無視
+  };
 
   return (
     <>
@@ -108,6 +144,40 @@ export default function PrefectureHighschoolPage({ prefecture, teams }: Props) {
             {prefecture.region}地域の{prefecture.name}
             における高校ソフトテニスの全国大会成績を掲載しています。
           </p>
+
+          {topTeams.length > 0 &&
+            getPerformanceLabel(topTeams[0].result) !== null && (
+              <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
+                {topTeams[0].year}年の最新大会（{topTeams[0].tournament}）では、
+                {topTeams.map((team, index) => (
+                  <span key={team.teamId}>
+                    {index > 0 ? '、' : ''}
+                    <Link
+                      href={`/highschool/${prefecture.id}/${team.teamId}`}
+                      className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
+                    >
+                      {team.teamName}
+                    </Link>
+                  </span>
+                ))}
+                が<strong>{topTeams[0].result}</strong>
+                {(() => {
+                  const label = getPerformanceLabel(topTeams[0].result);
+                  switch (label) {
+                    case '好成績':
+                      return 'という好成績を収めました。';
+                    case '健闘':
+                      return 'と健闘しました。';
+                    case '敗退':
+                      return 'となりました。';
+                    case '予選敗退':
+                      return 'となりました。';
+                    default:
+                      return '';
+                  }
+                })()}
+              </div>
+            )}
 
           <div className="mb-6">
             <p className="text-sm">
@@ -249,10 +319,43 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const teams: TeamSummary[] = Object.values(grouped);
 
+  const latestYear = Math.max(...rawData.map((e) => e.year));
+  const latestYearEntries = rawData.filter((e) => e.year === latestYear);
+
+  // 最も良い順位の評価値（例：優勝 = 1）
+  const bestRank = Math.min(
+    ...latestYearEntries.map((e) => resultPriority(e.result)),
+  );
+
+  // その順位の大会に出場したエントリを取得
+  const topRankEntries = latestYearEntries.filter(
+    (e) => resultPriority(e.result) === bestRank,
+  );
+
+  // 大会の優先順位順に並べる
+  topRankEntries.sort(compareTournamentPriority);
+
+  // チームごとに最初に出てくる（＝最優先大会）のみを採用
+  const seenTeams = new Set<string>();
+  const topTeams = topRankEntries
+    .filter((e) => {
+      if (seenTeams.has(e.teamId)) return false;
+      seenTeams.add(e.teamId);
+      return true;
+    })
+    .map((e) => ({
+      teamId: e.teamId,
+      teamName: e.team,
+      result: e.result,
+      tournament: getTournamentLabel(e.tournamentId),
+      year: e.year,
+    }));
+
   return {
     props: {
       prefecture,
       teams,
+      topTeams,
     },
   };
 };

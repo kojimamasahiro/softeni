@@ -6,6 +6,14 @@ export function resultPriority(result: string): number {
   if (result.includes('準優勝')) return 2;
   if (result.includes('ベスト4')) return 3;
   if (result.includes('ベスト8')) return 4;
+  if (result.includes('6回戦敗退')) return 5;
+  if (result.includes('5回戦敗退')) return 6;
+  if (result.includes('4回戦敗退')) return 7;
+  if (result.includes('3回戦敗退')) return 8;
+  if (result.includes('2回戦敗退')) return 9;
+  if (result.includes('1回戦敗退')) return 10;
+  if (result.includes('予選敗退')) return 11;
+  if (result.includes('未出場')) return 12;
   return 99;
 }
 
