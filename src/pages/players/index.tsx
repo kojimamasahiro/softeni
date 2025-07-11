@@ -108,11 +108,10 @@ export default function PlayersPage({ players }: Props) {
               { label: '選手一覧', href: '/players' },
             ]}
           />
-          <h1 className="text-2xl font-bold my-6">選手一覧・検索</h1>
+          <h1 className="text-2xl font-bold my-6">選手一覧</h1>
           <p className="mb-6 text-gray-700 dark:text-gray-300">
             ソフトテニスの現役・引退選手を掲載しています。名前や所属チームで検索が可能です。各選手ページでは試合結果や戦績を詳しく確認できます。
           </p>
-
 
           {/* 検索ボックス */}
           <input
@@ -165,6 +164,25 @@ export default function PlayersPage({ players }: Props) {
               })}
             </div>
           )}
+        </div>
+        <div className="mt-12 border-t pt-6 text-center">
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            お探しの選手が見つからない場合は、チームや大会ページからも探してみてください。
+          </p>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <Link
+              href="/highschool"
+              className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition"
+            >
+              高校カテゴリを見る
+            </Link>
+            <Link
+              href="/tournaments"
+              className="px-4 py-2 bg-gray-600 text-white text-sm rounded hover:bg-gray-700 transition"
+            >
+              大会から探す
+            </Link>
+          </div>
         </div>
       </main>
     </>

@@ -6,6 +6,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import LiveResults from '@/components/LiveResults';
 import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
@@ -104,12 +105,18 @@ export default function PlayerResultsPage({
                 {
                   '@type': 'ListItem',
                   position: 2,
+                  name: '選手一覧',
+                  item: 'https://softeni-pick.com/players',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
                   name: `${fullName}`,
                   item: `https://softeni-pick.com/players/${playerId}`,
                 },
                 {
                   '@type': 'ListItem',
-                  position: 3,
+                  position: 4,
                   name: `試合結果`,
                   item: pageUrl,
                 },
@@ -121,29 +128,23 @@ export default function PlayerResultsPage({
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto space-y-10">
-          <nav
-            aria-label="パンくずリスト"
-            className="text-sm text-gray-600 dark:text-gray-300 mb-4"
-          >
-            <ol className="list-reset flex flex-wrap space-x-2">
-              <li>
-                <Link href="/" className="hover:underline hover:text-blue-600">
-                  ホーム
-                </Link>
-                <span className="mx-1">/</span>
-              </li>
-              <li>
-                <Link
-                  href={`/players/${playerId}`}
-                  className="hover:underline hover:text-blue-600"
-                >
-                  {fullName}
-                </Link>
-                <span className="mx-1">/</span>
-              </li>
-              <li className="text-gray-500 dark:text-gray-400">試合結果</li>
-            </ol>
-          </nav>
+          <Breadcrumbs
+            crumbs={[
+              { label: 'ホーム', href: '/' },
+              {
+                label: '選手一覧',
+                href: '/players',
+              },
+              {
+                label: `${fullName}`,
+                href: `/players/${playerId}`,
+              },
+              {
+                label: '試合結果',
+                href: `/players/${playerId}/results`,
+              },
+            ]}
+          />
 
           <header>
             <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>

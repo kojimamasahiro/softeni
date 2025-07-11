@@ -111,12 +111,18 @@ export default function PlayerInformation({
                 {
                   '@type': 'ListItem',
                   position: 2,
+                  name: '選手一覧',
+                  item: 'https://softeni-pick.com/players',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
                   name: `${player.lastName}${player.firstName}`,
                   item: `https://softeni-pick.com/players/${id}`,
                 },
                 {
                   '@type': 'ListItem',
-                  position: 3,
+                  position: 4,
                   name: `試合結果`,
                   item: `https://softeni-pick.com/players/${id}/results`,
                 },
@@ -130,6 +136,10 @@ export default function PlayerInformation({
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
+            {
+              label: '選手一覧',
+              href: '/players',
+            },
             {
               label: `${player.lastName}${player.firstName}`,
               href: `/players/${id}`,
