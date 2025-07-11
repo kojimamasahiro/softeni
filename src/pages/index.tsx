@@ -17,58 +17,11 @@ interface HomeProps {
 
 export default function Home({ players }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredPlayers, setFilteredPlayers] = useState(players);
 
   // クライアントサイドでのみ処理を実行
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  // ✅ 初期表示時にプレイヤーを名前順でソート
-  useEffect(() => {
-    const sorted = [...players].sort((a, b) => {
-      const fullNameA = a.lastNameKana + a.firstNameKana;
-      const fullNameB = b.lastNameKana + b.firstNameKana;
-      return fullNameA.localeCompare(fullNameB, 'ja');
-    });
-    setFilteredPlayers(sorted);
-  }, [players]);
-
-  // 検索結果をフィルタリングする関数
-  // 検索処理
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-
-    const filtered = players.filter((player) => {
-      const fullNameAndTeamName = (
-        player.lastName +
-        player.firstName +
-        player.lastNameKana +
-        player.firstNameKana +
-        player.team
-      ).toLowerCase();
-      const normalizedQuery = query.replace(/\s/g, '').toLowerCase();
-
-      let currentIndex = 0;
-      for (const char of normalizedQuery) {
-        currentIndex = fullNameAndTeamName.indexOf(char, currentIndex);
-        if (currentIndex === -1) return false;
-        currentIndex++;
-      }
-
-      return true;
-    });
-
-    // ✅ 検索後も名前順でソート
-    const sortedFiltered = [...filtered].sort((a, b) => {
-      const fullNameA = a.lastNameKana + a.firstNameKana;
-      const fullNameB = b.lastNameKana + b.firstNameKana;
-      return fullNameA.localeCompare(fullNameB, 'ja');
-    });
-
-    setFilteredPlayers(sortedFiltered);
-  };
 
   return (
     <>
@@ -148,7 +101,7 @@ export default function Home({ players }: HomeProps) {
             {/* ✅ よく見られている選手（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
               <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 {[
                   {
                     id: 'uematsu-toshiki',
@@ -179,6 +132,16 @@ export default function Home({ players }: HomeProps) {
                     </p>
                   </div>
                 ))}
+              </div>
+
+              {/* ✅ 一覧ページへのリンク */}
+              <div className="text-right mb-10">
+                <Link
+                  href="/players"
+                  className="text-sm text-blue-500 hover:underline"
+                >
+                  その他の選手一覧はこちら
+                </Link>
               </div>
             </section>
 
@@ -286,60 +249,6 @@ export default function Home({ players }: HomeProps) {
                     </svg>
                   </a>
                 </div>
-              </div>
-            </section>
-
-            {/* ✅ 選手一覧・検索 */}
-            <section className="mb-8 px-4">
-              <h2 className="text-xl font-semibold mb-4">選手一覧</h2>
-              <div className="mb-4">
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="選手名や所属で検索"
-                  value={searchQuery}
-                  onChange={(e) => handleSearch(e.target.value)}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {filteredPlayers.map((player) => {
-                  const isRetired = player.retired;
-                  return (
-                    <div
-                      key={player.id}
-                      onClick={() =>
-                        (window.location.href = `/players/${player.id}`)
-                      }
-                      className={`border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition
-              hover:bg-gray-50 dark:hover:bg-gray-700
-              ${isRetired ? 'opacity-70' : ''}`}
-                    >
-                      <h2 className="text-lg font-bold mb-1">
-                        {player.lastName} {player.firstName}（
-                        {player.lastNameKana} {player.firstNameKana}）
-                      </h2>
-                      <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                        {isRetired ? (
-                          <span className="inline-block px-2 py-0.5 text-xs text-white bg-gray-500 rounded">
-                            引退済み
-                          </span>
-                        ) : (
-                          player.team
-                        )}
-                      </p>
-                      <div className="flex justify-start mt-4">
-                        <Link
-                          href={`/players/${player.id}/results`}
-                          className="px-3 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          試合結果
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })}
               </div>
             </section>
           </div>
