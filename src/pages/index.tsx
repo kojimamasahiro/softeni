@@ -248,9 +248,6 @@ export default function Home({ players }: HomeProps) {
                   className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <h3 className="text-lg font-bold mb-1">日本体育大学</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                    
-                  </p>
                   <a
                     href="https://nittai-softtennis.com/"
                     target="_blank"
