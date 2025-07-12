@@ -141,43 +141,9 @@ export default function PrefectureHighschoolPage({
             {prefecture.name}の高校成績
           </h1>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-            {prefecture.region}地域の{prefecture.name}
-            における高校ソフトテニスの全国大会成績を掲載しています。
+            {prefecture.name}
+            の高校が全国大会で残した成績をまとめています。詳しい内容は、各高校のページからご覧いただけます。
           </p>
-
-          {topTeams.length > 0 &&
-            getPerformanceLabel(topTeams[0].result) !== null && (
-              <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
-                {topTeams[0].year}年の最新大会（{topTeams[0].tournament}）では、
-                {topTeams.map((team, index) => (
-                  <span key={team.teamId}>
-                    {index > 0 ? '、' : ''}
-                    <Link
-                      href={`/highschool/${prefecture.id}/${team.teamId}`}
-                      className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
-                    >
-                      {team.teamName}
-                    </Link>
-                  </span>
-                ))}
-                が<strong>{topTeams[0].result}</strong>
-                {(() => {
-                  const label = getPerformanceLabel(topTeams[0].result);
-                  switch (label) {
-                    case '好成績':
-                      return 'という好成績を収めました。';
-                    case '健闘':
-                      return 'と健闘しました。';
-                    case '敗退':
-                      return 'となりました。';
-                    case '予選敗退':
-                      return 'となりました。';
-                    default:
-                      return '';
-                  }
-                })()}
-              </div>
-            )}
 
           <div className="mb-6">
             <p className="text-sm">
@@ -195,6 +161,41 @@ export default function PrefectureHighschoolPage({
               }
               校）
             </p>
+
+            {topTeams.length > 0 &&
+              getPerformanceLabel(topTeams[0].result) !== null && (
+                <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
+                  {topTeams[0].year}年の最新大会（{topTeams[0].tournament}
+                  ）では、
+                  {topTeams.map((team, index) => (
+                    <span key={team.teamId}>
+                      {index > 0 ? '、' : ''}
+                      <Link
+                        href={`/highschool/${prefecture.id}/${team.teamId}`}
+                        className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
+                      >
+                        {team.teamName}
+                      </Link>
+                    </span>
+                  ))}
+                  が<strong>{topTeams[0].result}</strong>
+                  {(() => {
+                    const label = getPerformanceLabel(topTeams[0].result);
+                    switch (label) {
+                      case '好成績':
+                        return 'という好成績を収めました。';
+                      case '健闘':
+                        return 'と健闘しました。';
+                      case '敗退':
+                        return 'となりました。';
+                      case '予選敗退':
+                        return 'となりました。';
+                      default:
+                        return '';
+                    }
+                  })()}
+                </div>
+              )}
           </div>
 
           <ul className="space-y-4">
