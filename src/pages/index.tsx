@@ -272,6 +272,15 @@ export default function Home({ players }: HomeProps) {
                     </svg>
                   </a>
                 </div>
+
+                <div className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 opacity-60">
+                  <h3 className="text-lg font-bold mb-1 text-gray-500 dark:text-gray-400">
+                    Coming Soon
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    準備中...
+                  </p>
+                </div>
               </div>
             </section>
           </div>
