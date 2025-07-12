@@ -169,6 +169,11 @@ export default function Home({ players }: HomeProps) {
             {/* ✅ よく見られている選手（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
               <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
+
+              <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+                本サイトにてよく見られている選手です。選手ごとにプロフィールや大会の成績を確認できます。
+              </p>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 {[
                   {
@@ -208,7 +213,7 @@ export default function Home({ players }: HomeProps) {
                   href="/players"
                   className="text-sm text-blue-500 hover:underline"
                 >
-                  その他の選手一覧はこちら
+                  掲載中の選手一覧はこちら
                 </Link>
               </div>
             </section>
