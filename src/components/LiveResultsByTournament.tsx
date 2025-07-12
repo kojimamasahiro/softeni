@@ -25,7 +25,7 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
     </h2>
 
     <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
-      開催中の大会の試合の進行状況や結果をお届けします。気になる選手の最新の試合結果をチェックしましょう。
+      開催中の大会をピックアップし、試合経過や結果を随時アップしています。手動で集計しているため、反映に少し時間がかかる場合や誤差が生じることがあります。ご理解ください。
     </p>
 
     <div className="bg-white dark:bg-gray-800 p-4 mb-4 rounded-lg shadow">
