@@ -239,7 +239,7 @@ export default function Home({ players }: HomeProps) {
               <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
 
               <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
-                所属ごとに選手の年間成績や大会別の記録をまとめています。所属単位での活躍や所属内ランキングなども確認できます。
+                所属ごとに選手の年間成績や大会別の記録をまとめています。所属単位での活躍や個人の成績なども確認できます。
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
