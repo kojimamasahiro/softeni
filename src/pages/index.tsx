@@ -221,20 +221,27 @@ export default function Home({ players }: HomeProps) {
             {/* ✅ 高校カテゴリへのリンク */}
             <section className="mb-12 px-4">
               <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
+
+              <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+                全国大会での成績を属性別にまとめています。都道府県ごとにも確認できるので、出身地や気になる地域の情報もチェックしてみてください。
+              </p>
+
               <div
                 onClick={() => (window.location.href = `/highschool`)}
                 className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  最新の高校カテゴリ全国大会の結果から、各高校のチームや選手の活躍を確認できます。
-                </p>
               </div>
             </section>
 
             {/* ✅ 所属別成績 */}
             <section className="mb-12 px-4">
               <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
+
+              <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+                所属ごとに選手の年間成績や大会別の記録をまとめています。所属単位での活躍や所属内ランキングなども確認できます。
+              </p>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div
                   onClick={() => (window.location.href = `/teams/nssu`)}
@@ -242,7 +249,7 @@ export default function Home({ players }: HomeProps) {
                 >
                   <h3 className="text-lg font-bold mb-1">日本体育大学</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                    年間成績・大会別成績・選手ごとの記録
+                    
                   </p>
                   <a
                     href="https://nittai-softtennis.com/"
