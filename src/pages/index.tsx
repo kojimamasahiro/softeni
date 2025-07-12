@@ -101,6 +101,11 @@ export default function Home({ players }: HomeProps) {
             {/* ✅ 最近追加された大会（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
               <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>
+
+              <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+                全日本選手権や高校の全国大会を中心に、最新の試合結果を随時掲載しています。過去の大会を後から追加した場合も、こちらに表示されます。
+              </p>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                 {[
                   {
