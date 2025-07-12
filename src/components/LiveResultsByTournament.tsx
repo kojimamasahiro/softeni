@@ -24,6 +24,10 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
       大会速報
     </h2>
 
+    <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+      開催中の大会の試合の進行状況や結果をお届けします。気になる選手の最新の試合結果をチェックしましょう。
+    </p>
+
     <div className="bg-white dark:bg-gray-800 p-4 mb-4 rounded-lg shadow">
       {children}
     </div>
