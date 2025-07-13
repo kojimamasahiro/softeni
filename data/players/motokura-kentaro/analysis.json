@@ -1,15 +1,29 @@
 {
-  "totalMatches": 14,
-  "wins": 11,
-  "losses": 3,
-  "totalWinRate": 0.786,
+  "totalMatches": 17,
+  "wins": 13,
+  "losses": 4,
+  "totalWinRate": 0.765,
   "games": {
-    "total": 81,
-    "won": 55,
-    "lost": 26,
-    "gameRate": 0.679
+    "total": 95,
+    "won": 65,
+    "lost": 30,
+    "gameRate": 0.684
   },
   "byPartner": {
+    "hirooka-sora": {
+      "matches": {
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 52,
+        "won": 34,
+        "lost": 18,
+        "gameRate": 0.654
+      }
+    },
     "藤城 みちる": {
       "matches": {
         "total": 3,
@@ -37,45 +51,31 @@
         "lost": 6,
         "gameRate": 0.778
       }
-    },
-    "hirooka-sora": {
-      "matches": {
-        "total": 5,
-        "wins": 4,
-        "losses": 1,
-        "winRate": 0.8
-      },
-      "games": {
-        "total": 38,
-        "won": 24,
-        "lost": 14,
-        "gameRate": 0.632
-      }
     }
   },
   "byYear": {
     "2025": {
       "matches": {
-        "total": 14,
-        "wins": 11,
-        "losses": 3,
-        "winRate": 0.786
+        "total": 17,
+        "wins": 13,
+        "losses": 4,
+        "winRate": 0.765
       },
       "games": {
-        "total": 81,
-        "won": 55,
-        "lost": 26,
-        "gameRate": 0.679
+        "total": 95,
+        "won": 65,
+        "lost": 30,
+        "gameRate": 0.684
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "藤城 みちる",
-    "result": "5回戦敗退",
-    "summary": "第6回 全日本ミックスダブルス選手権大会で5回戦敗退を記録",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "hirooka-sora",
+    "result": "4回戦敗退",
+    "summary": "第79回 西日本ソフトテニス選手権大会で4回戦敗退を記録",
     "link": ""
   }
 }

@@ -1,15 +1,29 @@
 {
-  "totalMatches": 16,
-  "wins": 13,
-  "losses": 3,
-  "totalWinRate": 0.812,
+  "totalMatches": 19,
+  "wins": 15,
+  "losses": 4,
+  "totalWinRate": 0.789,
   "games": {
-    "total": 95,
-    "won": 62,
-    "lost": 33,
-    "gameRate": 0.653
+    "total": 110,
+    "won": 73,
+    "lost": 37,
+    "gameRate": 0.664
   },
   "byPartner": {
+    "ando-kesuke": {
+      "matches": {
+        "total": 16,
+        "wins": 13,
+        "losses": 3,
+        "winRate": 0.812
+      },
+      "games": {
+        "total": 94,
+        "won": 63,
+        "lost": 31,
+        "gameRate": 0.67
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 3,
@@ -23,35 +37,21 @@
         "lost": 6,
         "gameRate": 0.625
       }
-    },
-    "ando-kesuke": {
-      "matches": {
-        "total": 13,
-        "wins": 11,
-        "losses": 2,
-        "winRate": 0.846
-      },
-      "games": {
-        "total": 79,
-        "won": 52,
-        "lost": 27,
-        "gameRate": 0.658
-      }
     }
   },
   "byYear": {
     "2025": {
       "matches": {
-        "total": 14,
-        "wins": 12,
-        "losses": 2,
-        "winRate": 0.857
+        "total": 17,
+        "wins": 14,
+        "losses": 3,
+        "winRate": 0.824
       },
       "games": {
-        "total": 84,
-        "won": 55,
-        "lost": 29,
-        "gameRate": 0.655
+        "total": 99,
+        "won": 66,
+        "lost": 33,
+        "gameRate": 0.667
       }
     },
     "2024": {
@@ -70,12 +70,12 @@
     }
   },
   "latestMatch": {
-    "tournament": "第32回 全日本シングルス選手権大会",
-    "date": "2025年5月17日(土)~5月18日(日)",
-    "location": "生目の杜運動公園",
-    "partner": null,
-    "result": "敗退",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "ando-kesuke",
+    "result": "4回戦敗退",
     "summary": "愛知県社会人大会では兄の安藤選手と組み、見事優勝を飾り地元では負けなしを証明しました。",
-    "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/"
+    "link": ""
   }
 }

@@ -1,15 +1,29 @@
 {
-  "totalMatches": 16,
-  "wins": 12,
-  "losses": 4,
-  "totalWinRate": 0.75,
+  "totalMatches": 21,
+  "wins": 16,
+  "losses": 5,
+  "totalWinRate": 0.762,
   "games": {
-    "total": 99,
-    "won": 58,
-    "lost": 41,
-    "gameRate": 0.586
+    "total": 123,
+    "won": 74,
+    "lost": 49,
+    "gameRate": 0.602
   },
   "byPartner": {
+    "村上 雄人": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 24,
+        "won": 16,
+        "lost": 8,
+        "gameRate": 0.667
+      }
+    },
     "シングルス": {
       "matches": {
         "total": 6,
@@ -56,16 +70,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 12,
-        "wins": 9,
-        "losses": 3,
-        "winRate": 0.75
+        "total": 17,
+        "wins": 13,
+        "losses": 4,
+        "winRate": 0.765
       },
       "games": {
-        "total": 71,
-        "won": 41,
-        "lost": 30,
-        "gameRate": 0.577
+        "total": 95,
+        "won": 57,
+        "lost": 38,
+        "gameRate": 0.6
       }
     },
     "2024": {
@@ -84,12 +98,12 @@
     }
   },
   "latestMatch": {
-    "tournament": "第32回 全日本シングルス選手権大会",
-    "date": "2025年5月17日(土)~5月18日(日)",
-    "location": "生目の杜運動公園",
-    "partner": null,
-    "result": "ベスト4",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "村上 雄人",
+    "result": "ベスト8",
     "summary": "今年38歳のいぶし銀。シングルス選手権でもベスト4の実力。まだまだ衰え知らずで活躍を期待します。",
-    "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/"
+    "link": ""
   }
 }

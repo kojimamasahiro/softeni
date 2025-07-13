@@ -1,15 +1,29 @@
 {
-  "totalMatches": 24,
-  "wins": 21,
+  "totalMatches": 31,
+  "wins": 28,
   "losses": 3,
-  "totalWinRate": 0.875,
+  "totalWinRate": 0.903,
   "games": {
-    "total": 135,
-    "won": 97,
-    "lost": 38,
-    "gameRate": 0.719
+    "total": 173,
+    "won": 125,
+    "lost": 48,
+    "gameRate": 0.723
   },
   "byPartner": {
+    "ueoka-shunsuke": {
+      "matches": {
+        "total": 20,
+        "wins": 18,
+        "losses": 2,
+        "winRate": 0.9
+      },
+      "games": {
+        "total": 120,
+        "won": 84,
+        "lost": 36,
+        "gameRate": 0.7
+      }
+    },
     "天間 麗奈": {
       "matches": {
         "total": 6,
@@ -37,35 +51,21 @@
         "lost": 5,
         "gameRate": 0.773
       }
-    },
-    "ueoka-shunsuke": {
-      "matches": {
-        "total": 13,
-        "wins": 11,
-        "losses": 2,
-        "winRate": 0.846
-      },
-      "games": {
-        "total": 82,
-        "won": 56,
-        "lost": 26,
-        "gameRate": 0.683
-      }
     }
   },
   "byYear": {
     "2025": {
       "matches": {
-        "total": 20,
-        "wins": 18,
+        "total": 27,
+        "wins": 25,
         "losses": 2,
-        "winRate": 0.9
+        "winRate": 0.926
       },
       "games": {
-        "total": 111,
-        "won": 81,
-        "lost": 30,
-        "gameRate": 0.73
+        "total": 149,
+        "won": 109,
+        "lost": 40,
+        "gameRate": 0.732
       }
     },
     "2024": {
@@ -84,10 +84,10 @@
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "天間 麗奈",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "ueoka-shunsuke",
     "result": "優勝",
     "summary": "2025年は絶好調!天満選手とのペアで、全日本ミックスダブルス選手権大会で優勝を果たしました。",
     "link": ""

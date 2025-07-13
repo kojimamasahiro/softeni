@@ -1,15 +1,29 @@
 {
-  "totalMatches": 20,
-  "wins": 16,
-  "losses": 4,
-  "totalWinRate": 0.8,
+  "totalMatches": 26,
+  "wins": 21,
+  "losses": 5,
+  "totalWinRate": 0.808,
   "games": {
-    "total": 117,
-    "won": 83,
-    "lost": 34,
-    "gameRate": 0.709
+    "total": 144,
+    "won": 104,
+    "lost": 40,
+    "gameRate": 0.722
   },
   "byPartner": {
+    "uematsu-toshiki": {
+      "matches": {
+        "total": 17,
+        "wins": 14,
+        "losses": 3,
+        "winRate": 0.824
+      },
+      "games": {
+        "total": 99,
+        "won": 70,
+        "lost": 29,
+        "gameRate": 0.707
+      }
+    },
     "中谷 さくら": {
       "matches": {
         "total": 4,
@@ -37,44 +51,30 @@
         "lost": 5,
         "gameRate": 0.792
       }
-    },
-    "uematsu-toshiki": {
-      "matches": {
-        "total": 11,
-        "wins": 9,
-        "losses": 2,
-        "winRate": 0.818
-      },
-      "games": {
-        "total": 72,
-        "won": 49,
-        "lost": 23,
-        "gameRate": 0.681
-      }
     }
   },
   "byYear": {
     "2025": {
       "matches": {
-        "total": 20,
-        "wins": 16,
-        "losses": 4,
-        "winRate": 0.8
+        "total": 26,
+        "wins": 21,
+        "losses": 5,
+        "winRate": 0.808
       },
       "games": {
-        "total": 117,
-        "won": 83,
-        "lost": 34,
-        "gameRate": 0.709
+        "total": 144,
+        "won": 104,
+        "lost": 40,
+        "gameRate": 0.722
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "中谷 さくら",
-    "result": "ベスト8",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "uematsu-toshiki",
+    "result": "ベスト4",
     "summary": "大きな成果はまだありませんが、大学を卒業してこれからに期待の選手です。",
     "link": ""
   }

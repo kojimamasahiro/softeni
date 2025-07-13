@@ -1,15 +1,29 @@
 {
-  "totalMatches": 23,
-  "wins": 19,
+  "totalMatches": 30,
+  "wins": 26,
   "losses": 4,
-  "totalWinRate": 0.826,
+  "totalWinRate": 0.867,
   "games": {
-    "total": 137,
-    "won": 91,
-    "lost": 46,
-    "gameRate": 0.664
+    "total": 175,
+    "won": 119,
+    "lost": 56,
+    "gameRate": 0.68
   },
   "byPartner": {
+    "maruyama-kaito": {
+      "matches": {
+        "total": 20,
+        "wins": 18,
+        "losses": 2,
+        "winRate": 0.9
+      },
+      "games": {
+        "total": 120,
+        "won": 84,
+        "lost": 36,
+        "gameRate": 0.7
+      }
+    },
     "久保 晴華": {
       "matches": {
         "total": 5,
@@ -37,35 +51,21 @@
         "lost": 9,
         "gameRate": 0.654
       }
-    },
-    "maruyama-kaito": {
-      "matches": {
-        "total": 13,
-        "wins": 11,
-        "losses": 2,
-        "winRate": 0.846
-      },
-      "games": {
-        "total": 82,
-        "won": 56,
-        "lost": 26,
-        "gameRate": 0.683
-      }
     }
   },
   "byYear": {
     "2025": {
       "matches": {
-        "total": 19,
-        "wins": 16,
+        "total": 26,
+        "wins": 23,
         "losses": 3,
-        "winRate": 0.842
+        "winRate": 0.885
       },
       "games": {
-        "total": 113,
-        "won": 75,
-        "lost": 38,
-        "gameRate": 0.664
+        "total": 151,
+        "won": 103,
+        "lost": 48,
+        "gameRate": 0.682
       }
     },
     "2024": {
@@ -84,11 +84,11 @@
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "久保 晴華",
-    "result": "ベスト4",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "maruyama-kaito",
+    "result": "優勝",
     "summary": "日本代表予選会では優勝を果たし、勝負強さを発揮されました。",
     "link": ""
   }

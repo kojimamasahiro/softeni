@@ -1,15 +1,29 @@
 {
-  "totalMatches": 20,
-  "wins": 14,
-  "losses": 6,
-  "totalWinRate": 0.7,
+  "totalMatches": 23,
+  "wins": 16,
+  "losses": 7,
+  "totalWinRate": 0.696,
   "games": {
-    "total": 120,
-    "won": 76,
-    "lost": 44,
-    "gameRate": 0.633
+    "total": 134,
+    "won": 86,
+    "lost": 48,
+    "gameRate": 0.642
   },
   "byPartner": {
+    "motokura-kentaro": {
+      "matches": {
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 52,
+        "won": 34,
+        "lost": 18,
+        "gameRate": 0.654
+      }
+    },
     "浪岡 菜々美": {
       "matches": {
         "total": 3,
@@ -38,20 +52,6 @@
         "gameRate": 0.694
       }
     },
-    "motokura-kentaro": {
-      "matches": {
-        "total": 5,
-        "wins": 4,
-        "losses": 1,
-        "winRate": 0.8
-      },
-      "games": {
-        "total": 38,
-        "won": 24,
-        "lost": 14,
-        "gameRate": 0.632
-      }
-    },
     "nagae-koichi": {
       "matches": {
         "total": 4,
@@ -70,16 +70,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 16,
-        "wins": 11,
-        "losses": 5,
-        "winRate": 0.688
+        "total": 19,
+        "wins": 13,
+        "losses": 6,
+        "winRate": 0.684
       },
       "games": {
-        "total": 92,
-        "won": 59,
-        "lost": 33,
-        "gameRate": 0.641
+        "total": 106,
+        "won": 69,
+        "lost": 37,
+        "gameRate": 0.651
       }
     },
     "2024": {
@@ -98,11 +98,11 @@
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "浪岡 菜々美",
-    "result": "5回戦敗退",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "motokura-kentaro",
+    "result": "4回戦敗退",
     "summary": "2025年に入り少し調子を落としている印象です。 しかし、全日本シングルス選手権では準々決勝まで進出し、実力を証明しました。",
     "link": ""
   }

@@ -1,15 +1,29 @@
 {
-  "totalMatches": 26,
-  "wins": 22,
-  "losses": 4,
-  "totalWinRate": 0.846,
+  "totalMatches": 32,
+  "wins": 27,
+  "losses": 5,
+  "totalWinRate": 0.844,
   "games": {
-    "total": 154,
-    "won": 107,
-    "lost": 47,
-    "gameRate": 0.695
+    "total": 181,
+    "won": 128,
+    "lost": 53,
+    "gameRate": 0.707
   },
   "byPartner": {
+    "yano-soto": {
+      "matches": {
+        "total": 17,
+        "wins": 14,
+        "losses": 3,
+        "winRate": 0.824
+      },
+      "games": {
+        "total": 99,
+        "won": 70,
+        "lost": 29,
+        "gameRate": 0.707
+      }
+    },
     "前田 梨緒": {
       "matches": {
         "total": 4,
@@ -38,20 +52,6 @@
         "gameRate": 0.78
       }
     },
-    "yano-soto": {
-      "matches": {
-        "total": 11,
-        "wins": 9,
-        "losses": 2,
-        "winRate": 0.818
-      },
-      "games": {
-        "total": 72,
-        "won": 49,
-        "lost": 23,
-        "gameRate": 0.681
-      }
-    },
     "kawasaki-kohei": {
       "matches": {
         "total": 3,
@@ -70,16 +70,16 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 23,
-        "wins": 20,
-        "losses": 3,
-        "winRate": 0.87
+        "total": 29,
+        "wins": 25,
+        "losses": 4,
+        "winRate": 0.862
       },
       "games": {
-        "total": 136,
-        "won": 95,
-        "lost": 41,
-        "gameRate": 0.699
+        "total": 163,
+        "won": 116,
+        "lost": 47,
+        "gameRate": 0.712
       }
     },
     "2024": {
@@ -98,11 +98,11 @@
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "前田 梨緒",
-    "result": "ベスト8",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "yano-soto",
+    "result": "ベスト4",
     "summary": "6月に開催された全日本ミックスダブルス選手権大会では、前回大会で優勝した前田梨緒選手と組みベスト8に進出。5月の全日本シングルス選手権大会では優勝を果たし、シングルス・ダブルス両方で活躍しています。",
     "link": ""
   }

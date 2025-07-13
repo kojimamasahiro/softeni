@@ -1,15 +1,29 @@
 {
-  "totalMatches": 23,
-  "wins": 20,
-  "losses": 3,
-  "totalWinRate": 0.87,
+  "totalMatches": 30,
+  "wins": 26,
+  "losses": 4,
+  "totalWinRate": 0.867,
   "games": {
-    "total": 138,
-    "won": 94,
-    "lost": 44,
-    "gameRate": 0.681
+    "total": 172,
+    "won": 121,
+    "lost": 51,
+    "gameRate": 0.703
   },
   "byPartner": {
+    "uchida-riku": {
+      "matches": {
+        "total": 22,
+        "wins": 20,
+        "losses": 2,
+        "winRate": 0.909
+      },
+      "games": {
+        "total": 129,
+        "won": 94,
+        "lost": 35,
+        "gameRate": 0.729
+      }
+    },
     "吉田 澪奈": {
       "matches": {
         "total": 6,
@@ -37,35 +51,21 @@
         "lost": 4,
         "gameRate": 0.6
       }
-    },
-    "uchida-riku": {
-      "matches": {
-        "total": 15,
-        "wins": 14,
-        "losses": 1,
-        "winRate": 0.933
-      },
-      "games": {
-        "total": 95,
-        "won": 67,
-        "lost": 28,
-        "gameRate": 0.705
-      }
     }
   },
   "byYear": {
     "2025": {
       "matches": {
-        "total": 19,
-        "wins": 16,
-        "losses": 3,
-        "winRate": 0.842
+        "total": 26,
+        "wins": 22,
+        "losses": 4,
+        "winRate": 0.846
       },
       "games": {
-        "total": 109,
-        "won": 76,
-        "lost": 33,
-        "gameRate": 0.697
+        "total": 143,
+        "won": 103,
+        "lost": 40,
+        "gameRate": 0.72
       }
     },
     "2024": {
@@ -84,10 +84,10 @@
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "吉田 澪奈",
+    "tournament": "第79回 西日本ソフトテニス選手権大会",
+    "date": "2025年7月12日(土)〜13日(日)",
+    "location": "奈良県",
+    "partner": "uchida-riku",
     "result": "準優勝",
     "summary": "ミックスダブルスで準優勝を果たしました。ダブルスに強い印象を受けます。",
     "link": ""
