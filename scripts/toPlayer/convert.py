@@ -2,19 +2,20 @@ import json
 import os
 
 # 設定値
-TOURNAMENT_ID = "highschool-japan-cup"
+TOURNAMENT_ID = "west"
 YEAR = 2025
-TOURNAMENT_NAME = "第54回 ハイスクールジャパンカップ"
-DATE_RANGE = "2025年6月20日(金)〜22日(日)"
-LOCATION = "北海道"
-LINK = "https://www.gosen-sp.jp/hjs/"
+TOURNAMENT_NAME = "第79回 西日本ソフトテニス選手権大会"
+DATE_RANGE = "2025年7月12日(土)〜13日(日)"
+LOCATION = "奈良県"
+LINK = ""
 FORMAT = "tournament"
 
 # パス
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# tournament_path = os.path.join(BASE_DIR, "../../data/tournaments", TOURNAMENT_ID, str(YEAR), "results.json")
-tournament_path = os.path.join(BASE_DIR, "../../data/tournaments/highschool", TOURNAMENT_ID, str(YEAR), "results.json")
-players_dir = os.path.join(BASE_DIR, "../../../data/players")
+tournament_path = os.path.join(BASE_DIR, "../../data/tournaments", TOURNAMENT_ID, str(YEAR), "results.json")
+# tournament_path = os.path.join(BASE_DIR, "../../data/tournaments/highschool", TOURNAMENT_ID, str(YEAR), "results.json")
+players_dir = os.path.join(BASE_DIR, "../../data/players")
+# players_dir = os.path.join(BASE_DIR, "../../../data/players")
 
 # ラウンド順位定義
 def round_rank(round_name):
