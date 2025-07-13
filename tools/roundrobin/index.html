@@ -112,15 +112,39 @@
                 matchDiv.innerHTML = renderMatchHtml(match, idx);
                 updateJsonOutput();
             } else if (target.classList.contains("retire-button")) {
-                // const player = target.dataset.player;
-                // const opponent = player === "p1" ? "p2" : "p1";
-                // match[player].retired = true;
-                // match.scores[player] = 0;
-                // match.scores[opponent] = 5;
-                // match.winner = match[opponent].id;
-                // matchDiv.innerHTML = renderMatchHtml(match, idx);
-                // updateJsonOutput();
+                const player = target.dataset.player;
+                const opponent = player === "p1" ? "p2" : "p1";
+                match[player].retired = true;
+                match.scores[player] = 0;
+                match.scores[opponent] = 4;
+                match.winner = match[opponent].id;
+                matchDiv.innerHTML = renderMatchHtml(match, idx);
+                updateJsonOutput();
             }
+        }
+
+        /**
+         * information 配列から
+         *  - 「lastName firstName(team)」形式
+         *  - 同一チームなら team は最後尾で 1 回だけ
+         * を生成する。
+         */
+        function buildPairName(information) {
+        // 選手名（姓名）を取り出す
+        const names = information.map(({ lastName, firstName }) => `${lastName} ${firstName}`);
+
+        // チームを重複なしで抽出
+        const teams = [...new Set(information.map(({ team }) => team).filter(Boolean))];
+
+        // 全員同じチームなら最後に 1 回だけ付ける
+        if (teams.length === 1) {
+            return `${names.join('・')}（${teams[0]}）`;
+        }
+
+        // 異なるチームが混在する場合は個別に付ける
+        return information
+            .map(({ lastName, firstName, team }) => `${lastName} ${firstName}（${team}）`)
+            .join('・');
         }
 
         function updateJsonOutput() {
@@ -149,8 +173,9 @@
                             result: match.winner === match.p1.id ? "win" : "lose",
                             games: { won: p1Score, lost: p2Score },
                             entryNo: match.p1.id,
-                            name: match.p1.name,
-                            category: category
+                            name: buildPairName(match.p1.information),
+                            category: category,
+                            retired: match.p1.retired || false
                         });
                     }
 
@@ -162,8 +187,9 @@
                             result: match.winner === match.p2.id ? "win" : "lose",
                             games: { won: p2Score, lost: p1Score },
                             entryNo: match.p2.id,
-                            name: match.p2.name,
-                            category: category
+                            name: buildPairName(match.p2.information),
+                            category: category,
+                            retired: match.p2.retired || false
                         });
                     }
                 }
