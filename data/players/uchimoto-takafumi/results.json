@@ -2,6 +2,173 @@
   "highlight": "ミックスダブルスで準優勝を果たしました。ダブルスに強い印象を受けます。",
   "matches": [
     {
+      "tournament": "第79回 西日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月12日(土)〜13日(日)",
+      "location": "奈良県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "準優勝",
+      "partner": "uchida-riku",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "塩野谷（豊橋STC）・西川（豊橋STC）",
+          "opponents": [
+            {
+              "name": "塩野谷",
+              "team": "豊橋STC",
+              "playerId": null
+            },
+            {
+              "name": "西川",
+              "team": "豊橋STC",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "川神（松山大学）・竹之内（松山大学）",
+          "opponents": [
+            {
+              "name": "川神",
+              "team": "松山大学",
+              "playerId": null
+            },
+            {
+              "name": "竹之内",
+              "team": "松山大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "野田（太平洋工業）・加藤（太平洋工業）",
+          "opponents": [
+            {
+              "name": "野田",
+              "team": "太平洋工業",
+              "playerId": null
+            },
+            {
+              "name": "加藤",
+              "team": "太平洋工業",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "渡部（立命館大学）・中西（立命館大学）",
+          "opponents": [
+            {
+              "name": "渡部",
+              "team": "立命館大学",
+              "playerId": null
+            },
+            {
+              "name": "中西",
+              "team": "立命館大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "阪本（ワタキューセイモア）・池口（ワタキューセイモア）",
+          "opponents": [
+            {
+              "name": "阪本",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            },
+            {
+              "name": "池口",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "松田（東ソー南陽）・兼森（東ソー南陽）",
+          "opponents": [
+            {
+              "name": "松田",
+              "team": "東ソー南陽",
+              "playerId": null
+            },
+            {
+              "name": "兼森",
+              "team": "東ソー南陽",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "決勝",
+          "opponent": "上岡（Up Rise）・丸山（one team）",
+          "opponents": [
+            {
+              "name": "上岡",
+              "team": "Up Rise",
+              "playerId": "ueoka-shunsuke"
+            },
+            {
+              "name": "丸山",
+              "team": "one team",
+              "playerId": "maruyama-kaito"
+            }
+          ],
+          "result": "負け",
+          "score": "3-4",
+          "games": {
+            "won": 3,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",

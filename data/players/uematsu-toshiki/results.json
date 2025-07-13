@@ -2,6 +2,151 @@
   "highlight": "6月に開催された全日本ミックスダブルス選手権大会では、前回大会で優勝した前田梨緒選手と組みベスト8に進出。5月の全日本シングルス選手権大会では優勝を果たし、シングルス・ダブルス両方で活躍しています。",
   "matches": [
     {
+      "tournament": "第79回 西日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月12日(土)〜13日(日)",
+      "location": "奈良県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "ベスト4",
+      "partner": "yano-soto",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "吉田（脇町）・亀井（脇町）",
+          "opponents": [
+            {
+              "name": "吉田",
+              "team": "脇町",
+              "playerId": null
+            },
+            {
+              "name": "亀井",
+              "team": "脇町",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "樋口（中京大学）・尾﨑（中京大学）",
+          "opponents": [
+            {
+              "name": "樋口",
+              "team": "中京大学",
+              "playerId": null
+            },
+            {
+              "name": "尾﨑",
+              "team": "中京大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "北野（ワタキューセイモア）・高村（ワタキューセイモア）",
+          "opponents": [
+            {
+              "name": "北野",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            },
+            {
+              "name": "高村",
+              "team": "ワタキューセイモア",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "濱田（太平洋工業）・安井（太平洋工業）",
+          "opponents": [
+            {
+              "name": "濱田",
+              "team": "太平洋工業",
+              "playerId": null
+            },
+            {
+              "name": "安井",
+              "team": "太平洋工業",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "石井（ＥＮＥＯＳ）・前田（川崎重工明石）",
+          "opponents": [
+            {
+              "name": "石井",
+              "team": "ＥＮＥＯＳ",
+              "playerId": null
+            },
+            {
+              "name": "前田",
+              "team": "川崎重工明石",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "上岡（Up Rise）・丸山（one team）",
+          "opponents": [
+            {
+              "name": "上岡",
+              "team": "Up Rise",
+              "playerId": "ueoka-shunsuke"
+            },
+            {
+              "name": "丸山",
+              "team": "one team",
+              "playerId": "maruyama-kaito"
+            }
+          ],
+          "result": "負け",
+          "score": "1-4",
+          "games": {
+            "won": 1,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",

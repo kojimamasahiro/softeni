@@ -2,6 +2,173 @@
   "highlight": "日本代表予選会では優勝を果たし、勝負強さを発揮されました。",
   "matches": [
     {
+      "tournament": "第79回 西日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月12日(土)〜13日(日)",
+      "location": "奈良県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "優勝",
+      "partner": "maruyama-kaito",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "加納（大都クラブ）・石河（あすなろクラブ）",
+          "opponents": [
+            {
+              "name": "加納",
+              "team": "大都クラブ",
+              "playerId": null
+            },
+            {
+              "name": "石河",
+              "team": "あすなろクラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "橋本（ヨシザワクラブ）・増田（ヨシザワクラブ）",
+          "opponents": [
+            {
+              "name": "橋本",
+              "team": "ヨシザワクラブ",
+              "playerId": null
+            },
+            {
+              "name": "増田",
+              "team": "ヨシザワクラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "足利（東邦ガス）・大友（東邦ガス）",
+          "opponents": [
+            {
+              "name": "足利",
+              "team": "東邦ガス",
+              "playerId": null
+            },
+            {
+              "name": "大友",
+              "team": "東邦ガス",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "立木（太平洋工業）・齋藤（太平洋工業）",
+          "opponents": [
+            {
+              "name": "立木",
+              "team": "太平洋工業",
+              "playerId": null
+            },
+            {
+              "name": "齋藤",
+              "team": "太平洋工業",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "村上（NTT西日本）・長江（NTT西日本）",
+          "opponents": [
+            {
+              "name": "村上",
+              "team": "NTT西日本",
+              "playerId": null
+            },
+            {
+              "name": "長江",
+              "team": "NTT西日本",
+              "playerId": "nagae-koichi"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "準決勝",
+          "opponent": "矢野（NTT西日本）・上松（NTT西日本）",
+          "opponents": [
+            {
+              "name": "矢野",
+              "team": "NTT西日本",
+              "playerId": "yano-soto"
+            },
+            {
+              "name": "上松",
+              "team": "NTT西日本",
+              "playerId": "uematsu-toshiki"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "決勝",
+          "opponent": "内本（NTT西日本）・内田（NTT西日本）",
+          "opponents": [
+            {
+              "name": "内本",
+              "team": "NTT西日本",
+              "playerId": "uchimoto-takafumi"
+            },
+            {
+              "name": "内田",
+              "team": "NTT西日本",
+              "playerId": "uchida-riku"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": 4,
+            "lost": 3
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",

@@ -2,6 +2,85 @@
   "highlight": "愛知県社会人大会では兄の安藤選手と組み、見事優勝を飾り地元では負けなしを証明しました。",
   "matches": [
     {
+      "tournament": "第79回 西日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月12日(土)〜13日(日)",
+      "location": "奈良県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "4回戦敗退",
+      "partner": "ando-kesuke",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "熊本（クノムランド）・郡島（兵西クラブ）",
+          "opponents": [
+            {
+              "name": "熊本",
+              "team": "クノムランド",
+              "playerId": null
+            },
+            {
+              "name": "郡島",
+              "team": "兵西クラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "藤井（ルーセント大阪）・大和崎（大阪ガス）",
+          "opponents": [
+            {
+              "name": "藤井",
+              "team": "ルーセント大阪",
+              "playerId": null
+            },
+            {
+              "name": "大和崎",
+              "team": "大阪ガス",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "松田（東ソー南陽）・兼森（東ソー南陽）",
+          "opponents": [
+            {
+              "name": "松田",
+              "team": "東ソー南陽",
+              "playerId": null
+            },
+            {
+              "name": "兼森",
+              "team": "東ソー南陽",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "3-4",
+          "games": {
+            "won": 3,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第32回 全日本シングルス選手権大会",
       "dateRange": "2025年5月17日(土)~5月18日(日)",
       "location": "生目の杜運動公園",
