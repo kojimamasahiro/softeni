@@ -187,9 +187,9 @@ export default function Home({ players }: HomeProps) {
                     team: 'Up Rise',
                   },
                   {
-                    id: 'uchida-riku',
-                    name: '内田 理久',
-                    team: 'NTT西日本',
+                    id: 'maruyama-kaito',
+                    name: '丸山 海斗',
+                    team: 'one team',
                   },
                 ].map((player) => (
                   <div
