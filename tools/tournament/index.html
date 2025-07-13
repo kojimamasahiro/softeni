@@ -219,22 +219,21 @@
                 // リタイアボタンにイベント付与（← displayMatches() 内でやる！）
                 document.querySelectorAll(".retire-button").forEach(btn => {
                     btn.addEventListener("click", e => {
-                        // const matchIndex = Number(e.target.dataset.match);
-                        // const player = e.target.dataset.player;
-                        // const opponent = (player === "p1") ? "p2" : "p1";
+                        const matchIndex = Number(e.target.dataset.match);
+                        const player = e.target.dataset.player;
+                        const opponent = (player === "p1") ? "p2" : "p1";
 
-                        // const match = roundMatches[matchIndex];
+                        const match = roundMatches[matchIndex];
 
-                        // match[player].id = "bye";
-                        // match[player].name = "リタイア";
-                        // match.scores[player] = 0;
-                        // match.scores[opponent] = initScore;
-                        // match.winner = match[opponent].id;
+                        match[player].retired = true;
+                        match.scores[player] = 0;
+                        match.scores[opponent] = initScore;
+                        match.winner = match[opponent].id;
 
-                        // document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
-                        // updateScoreButtons(matchIndex);
-                        // updateJsonOutput();
-                        // displayMatches(); // ← 再描画でbye扱い反映
+                        document.getElementById(`winner-${matchIndex}`).textContent = getWinnerName(match);
+                        updateScoreButtons(matchIndex);
+                        updateJsonOutput();
+                        // displayMatches(); // ← 再描画で反映
                     });
                 });
             });
@@ -481,35 +480,37 @@
             const p2Score = String(match.scores.p2);
 
             if (p1IsValid) {
-                results.push({
-                    round: match.round,
-                    pair: p1Ids,
-                    opponents: match.p2.information,
-                    result: p1IsWinner ? "win" : "lose",
-                    games: {
-                        won: p1Score,
-                        lost: p2Score
-                    },
-                    entryNo: match.p1.id,
-                    name: match.p1.name,
-                    category: category,
-                });
+            results.push({
+                round: match.round,
+                pair: p1Ids,
+                opponents: match.p2.information,
+                result: p1IsWinner ? "win" : "lose",
+                games: {
+                won: p1Score,
+                lost: p2Score
+                },
+                entryNo: match.p1.id,
+                name: match.p1.name,
+                category: category,
+                retired: !!match.p1.retired // ←追加
+            });
             }
 
             if (p2IsValid) {
-                results.push({
-                    round: match.round,
-                    pair: p2Ids,
-                    opponents: match.p1.information,
-                    result: p1IsWinner ? "lose" : "win",
-                    games: {
-                        won: p2Score,
-                        lost: p1Score,
-                    },
-                    entryNo: match.p2.id,
-                    name: match.p2.name,
-                    category: category,
-                });
+            results.push({
+                round: match.round,
+                pair: p2Ids,
+                opponents: match.p1.information,
+                result: p1IsWinner ? "lose" : "win",
+                games: {
+                won: p2Score,
+                lost: p1Score
+                },
+                entryNo: match.p2.id,
+                name: match.p2.name,
+                category: category,
+                retired: !!match.p2.retired // ←追加
+            });
             }
 
             return results;
