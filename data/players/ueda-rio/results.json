@@ -2,6 +2,85 @@
   "highlight": "全日本シングルスではベスト4、高校の大会では負けなしの今後に期待の選手です。",
   "matches": [
     {
+      "tournament": "第79回 西日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月12日(土)〜13日(日)",
+      "location": "奈良県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "3回戦敗退",
+      "partner": "荻谷 侑磨",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "1回戦",
+          "opponent": "原田（大阪成蹊大学）・女夫池（大阪成蹊大学）",
+          "opponents": [
+            {
+              "name": "原田",
+              "team": "大阪成蹊大学",
+              "playerId": null
+            },
+            {
+              "name": "女夫池",
+              "team": "大阪成蹊大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "2回戦",
+          "opponent": "秋田（豊田自動織機）・香山（豊田自動織機）",
+          "opponents": [
+            {
+              "name": "秋田",
+              "team": "豊田自動織機",
+              "playerId": null
+            },
+            {
+              "name": "香山",
+              "team": "豊田自動織機",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "石井（ＥＮＥＯＳ）・前田（川崎重工明石）",
+          "opponents": [
+            {
+              "name": "石井",
+              "team": "ＥＮＥＯＳ",
+              "playerId": null
+            },
+            {
+              "name": "前田",
+              "team": "川崎重工明石",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "1-4",
+          "games": {
+            "won": 1,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第54回 ハイスクールジャパンカップ（ダブルス）",
       "dateRange": "2025年6月21日(土)〜22日(日)",
       "location": "北海道",
@@ -78,158 +157,157 @@
       "finalStage": {
         "format": "tournament",
         "results": [
-  {
-    "round": "1回戦",
-    "opponent": "下森・外田（文徳）",
-    "opponents": [
-      {
-        "lastName": "下森",
-        "firstName": "吏",
-        "team": "文徳",
-        "prefecture": "熊本",
-        "playerId": null,
-        "tempId": "下森_吏_文徳",
-        "originalTeam": "文徳高等学校"
-      },
-      {
-        "lastName": "外田",
-        "firstName": "悠斗",
-        "team": "文徳",
-        "prefecture": "熊本",
-        "playerId": null,
-        "tempId": "外田_悠斗_文徳",
-        "originalTeam": "文徳高等学校"
-      }
-    ],
-    "result": "勝ち",
-    "score": "4-3",
-    "games": {
-      "won": 4,
-      "lost": 3
-    }
-  },
-  {
-    "round": "2回戦",
-    "opponent": "善福・白川（霞ヶ浦）",
-    "opponents": [
-      {
-        "lastName": "善福",
-        "firstName": "留生",
-        "team": "霞ヶ浦",
-        "prefecture": "茨城",
-        "playerId": null,
-        "tempId": "善福_留生_霞ヶ浦",
-        "originalTeam": "霞ヶ浦高等学校"
-      },
-      {
-        "lastName": "白川",
-        "firstName": "隼平",
-        "team": "霞ヶ浦",
-        "prefecture": "茨城",
-        "playerId": null,
-        "tempId": "白川_隼平_霞ヶ浦",
-        "originalTeam": "霞ヶ浦高等学校"
-      }
-    ],
-    "result": "勝ち",
-    "score": "4-0",
-    "games": {
-      "won": 4,
-      "lost": 0
-    }
-  },
-  {
-    "round": "準々決勝",
-    "opponent": "柴田・百武（享栄）",
-    "opponents": [
-      {
-        "lastName": "柴田",
-        "firstName": "海音",
-        "team": "享栄",
-        "prefecture": "愛知",
-        "playerId": null,
-        "tempId": "柴田_海音_享栄",
-        "originalTeam": "享栄高校"
-      },
-      {
-        "lastName": "百武",
-        "firstName": "駿",
-        "team": "享栄",
-        "prefecture": "愛知",
-        "playerId": null,
-        "tempId": "百武_駿_享栄",
-        "originalTeam": "享栄高校"
-      }
-    ],
-    "result": "勝ち",
-    "score": "4-1",
-    "games": {
-      "won": 4,
-      "lost": 1
-    }
-  },
-  {
-    "round": "準決勝",
-    "opponent": "岩田・栗岡（市尼崎）",
-    "opponents": [
-      {
-        "lastName": "岩田",
-        "firstName": "悠聖",
-        "team": "市尼崎",
-        "prefecture": "兵庫",
-        "playerId": null,
-        "tempId": "岩田_悠聖_市尼崎",
-        "originalTeam": "尼崎市立尼崎高等学校"
-      },
-      {
-        "lastName": "栗岡",
-        "firstName": "優志",
-        "team": "市尼崎",
-        "prefecture": "兵庫",
-        "playerId": null,
-        "tempId": "栗岡_優志_市尼崎",
-        "originalTeam": "尼崎市立尼崎高等学校"
-      }
-    ],
-    "result": "勝ち",
-    "score": "4-1",
-    "games": {
-      "won": 4,
-      "lost": 1
-    }
-  },
-  {
-    "round": "決勝",
-    "opponent": "白井・千田（東北）",
-    "opponents": [
-      {
-        "lastName": "白井",
-        "firstName": "颯",
-        "team": "東北",
-        "prefecture": "宮城",
-        "playerId": null,
-        "tempId": "白井_颯_東北",
-        "originalTeam": "東北高等学校"
-      },
-      {
-        "lastName": "千田",
-        "firstName": "夏輝",
-        "team": "東北",
-        "prefecture": "宮城",
-        "playerId": null,
-        "tempId": "千田_夏輝_東北",
-        "originalTeam": "東北高等学校"
-      }
-    ],
-    "result": "勝ち",
-    "score": "4-1",
-    "games": {
-      "won": 4,
-      "lost": 1
-    }
-  }
-]
-
+          {
+            "round": "1回戦",
+            "opponent": "下森・外田（文徳）",
+            "opponents": [
+              {
+                "lastName": "下森",
+                "firstName": "吏",
+                "team": "文徳",
+                "prefecture": "熊本",
+                "playerId": null,
+                "tempId": "下森_吏_文徳",
+                "originalTeam": "文徳高等学校"
+              },
+              {
+                "lastName": "外田",
+                "firstName": "悠斗",
+                "team": "文徳",
+                "prefecture": "熊本",
+                "playerId": null,
+                "tempId": "外田_悠斗_文徳",
+                "originalTeam": "文徳高等学校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-3",
+            "games": {
+              "won": 4,
+              "lost": 3
+            }
+          },
+          {
+            "round": "2回戦",
+            "opponent": "善福・白川（霞ヶ浦）",
+            "opponents": [
+              {
+                "lastName": "善福",
+                "firstName": "留生",
+                "team": "霞ヶ浦",
+                "prefecture": "茨城",
+                "playerId": null,
+                "tempId": "善福_留生_霞ヶ浦",
+                "originalTeam": "霞ヶ浦高等学校"
+              },
+              {
+                "lastName": "白川",
+                "firstName": "隼平",
+                "team": "霞ヶ浦",
+                "prefecture": "茨城",
+                "playerId": null,
+                "tempId": "白川_隼平_霞ヶ浦",
+                "originalTeam": "霞ヶ浦高等学校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-0",
+            "games": {
+              "won": 4,
+              "lost": 0
+            }
+          },
+          {
+            "round": "準々決勝",
+            "opponent": "柴田・百武（享栄）",
+            "opponents": [
+              {
+                "lastName": "柴田",
+                "firstName": "海音",
+                "team": "享栄",
+                "prefecture": "愛知",
+                "playerId": null,
+                "tempId": "柴田_海音_享栄",
+                "originalTeam": "享栄高校"
+              },
+              {
+                "lastName": "百武",
+                "firstName": "駿",
+                "team": "享栄",
+                "prefecture": "愛知",
+                "playerId": null,
+                "tempId": "百武_駿_享栄",
+                "originalTeam": "享栄高校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-1",
+            "games": {
+              "won": 4,
+              "lost": 1
+            }
+          },
+          {
+            "round": "準決勝",
+            "opponent": "岩田・栗岡（市尼崎）",
+            "opponents": [
+              {
+                "lastName": "岩田",
+                "firstName": "悠聖",
+                "team": "市尼崎",
+                "prefecture": "兵庫",
+                "playerId": null,
+                "tempId": "岩田_悠聖_市尼崎",
+                "originalTeam": "尼崎市立尼崎高等学校"
+              },
+              {
+                "lastName": "栗岡",
+                "firstName": "優志",
+                "team": "市尼崎",
+                "prefecture": "兵庫",
+                "playerId": null,
+                "tempId": "栗岡_優志_市尼崎",
+                "originalTeam": "尼崎市立尼崎高等学校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-1",
+            "games": {
+              "won": 4,
+              "lost": 1
+            }
+          },
+          {
+            "round": "決勝",
+            "opponent": "白井・千田（東北）",
+            "opponents": [
+              {
+                "lastName": "白井",
+                "firstName": "颯",
+                "team": "東北",
+                "prefecture": "宮城",
+                "playerId": null,
+                "tempId": "白井_颯_東北",
+                "originalTeam": "東北高等学校"
+              },
+              {
+                "lastName": "千田",
+                "firstName": "夏輝",
+                "team": "東北",
+                "prefecture": "宮城",
+                "playerId": null,
+                "tempId": "千田_夏輝_東北",
+                "originalTeam": "東北高等学校"
+              }
+            ],
+            "result": "勝ち",
+            "score": "4-1",
+            "games": {
+              "won": 4,
+              "lost": 1
+            }
+          }
+        ]
       },
       "results": null
     },
