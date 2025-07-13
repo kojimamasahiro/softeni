@@ -109,6 +109,13 @@ export default function Home({ players }: HomeProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                 {[
                   {
+                    id: 'west',
+                    year: 2025,
+                    name: '西日本ソフトテニス選手権大会',
+                    category: 'ダブルス',
+                    startDate: '2025-07-12',
+                  },
+                  {
                     id: 'highschool/highschool-japan-cup',
                     year: 2025,
                     name: 'ハイスクールジャパンカップ',
@@ -128,13 +135,6 @@ export default function Home({ players }: HomeProps) {
                     name: '全日本ミックスダブルス選手権大会',
                     category: 'ダブルス',
                     startDate: '2025-06-14',
-                  },
-                  {
-                    id: 'zennihon-singles',
-                    year: 2025,
-                    name: '全日本シングルス選手権大会',
-                    category: 'シングルス',
-                    startDate: '2025-05-17',
                   },
                 ].map((tournament) => (
                   <div
