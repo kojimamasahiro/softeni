@@ -475,12 +475,12 @@
 
         // 全員同じチームなら最後に 1 回だけ付ける
         if (teams.length === 1) {
-            return `${names.join('・')}(${teams[0]})`;
+            return `${names.join('・')}（${teams[0]}）`;
         }
 
         // 異なるチームが混在する場合は個別に付ける
         return information
-            .map(({ lastName, firstName, team }) => `${lastName} ${firstName}(${team})`)
+            .map(({ lastName, firstName, team }) => `${lastName} ${firstName}（${team}）`)
             .join('・');
         }
 
