@@ -226,6 +226,7 @@
                         const match = roundMatches[matchIndex];
 
                         match[player].retired = true;
+                        match[opponent].retired = true;
                         match.scores[player] = 0;
                         match.scores[opponent] = initScore;
                         match.winner = match[opponent].id;
@@ -557,7 +558,8 @@
                 },
                 entryNo: p1.id,
                 name: p1.name,
-                category: "team"
+                category: "team",
+                retired: !!match.p1.retired
             });
 
             results.push({
@@ -571,7 +573,8 @@
                 },
                 entryNo: p2.id,
                 name: p2.name,
-                category: "team"
+                category: "team",
+                retired: !!match.p2.retired
             });
 
             return results;
