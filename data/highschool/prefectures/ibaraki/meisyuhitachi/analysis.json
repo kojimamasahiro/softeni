@@ -1,10 +1,12 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "team": 1
   },
   "bestResults": {
-    "doubles": "2回戦敗退"
+    "doubles": "2回戦敗退",
+    "team": "3回戦敗退"
   },
   "recentlyResult": null,
   "historicalBest": {
@@ -12,14 +14,10 @@
     "teamId": "meisyuhitachi",
     "prefecture": "茨城県",
     "prefectureId": "ibaraki",
-    "result": "2回戦敗退",
-    "category": "doubles",
+    "result": "3回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "前岡_和亜_明秀日立",
-      "菅谷_朋輝_明秀日立"
-    ]
+    "year": 2022
   },
   "uniquePlayers": 2,
   "topPlayers": [

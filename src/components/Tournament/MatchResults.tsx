@@ -109,9 +109,17 @@ function MatchGroup({
                     <td className="px-4 py-2 break-words">{m.round}</td>
                     <td className="px-4 py-2 break-words">
                       {(() => {
-                        if (!m.opponents || m.opponents.length === 0) {
-                          // 団体戦（opponent フィールド使用）
-                          return m.opponent ?? '不明';
+                        if (
+                          !m.opponents ||
+                          (m.category && m.category === 'team')
+                        ) {
+                          if (m.opponents) {
+                            return m.opponents
+                              .map((op) => `${op.team}（${op.prefecture}）`)
+                              .join('・');
+                          } else {
+                            return m.opponent ?? '不明';
+                          }
                         }
 
                         // 個人戦（opponents フィールド使用）

@@ -55,11 +55,11 @@ for category, match_list in matches_by_category.items():
         for match in match_list:
             team1_entry = match["entryNo"]
             team1_name = match["team"]
-            team2_name = match["opponent"]
+            team2_name = match["opponents"][0]["tempId"]
 
             # 対戦相手のentryNoを名前から取得
             opponent_match = next(
-                (m for m in match_list if m["team"] == team2_name and m["opponent"] == team1_name),
+                (m for m in match_list if m["team"] == team2_name and m["opponents"][0]["tempId"] == team1_name),
                 None
             )
             if not opponent_match:

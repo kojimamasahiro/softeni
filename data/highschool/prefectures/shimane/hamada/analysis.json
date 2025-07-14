@@ -1,10 +1,12 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 4
+    "doubles": 4,
+    "team": 1
   },
   "bestResults": {
-    "doubles": "2回戦敗退"
+    "doubles": "2回戦敗退",
+    "team": "3回戦敗退"
   },
   "recentlyResult": {
     "team": "浜田",
@@ -25,14 +27,10 @@
     "teamId": "hamada",
     "prefecture": "島根県",
     "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
+    "result": "3回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "尾門_駿_浜田",
-      "津田_宙紀_浜田"
-    ]
+    "year": 2022
   },
   "uniquePlayers": 6,
   "topPlayers": [

@@ -549,8 +549,15 @@
 
             results.push({
                 round: match.round,
-                team: p1.team || p1.name,
-                opponent: p2.team || p2.name,
+                team: `${p1.team}_${p1.prefecture}` || p1.name,
+                opponents: [{
+                    lastName: "",
+                    firstName: "",
+                    team: `${p2.team}` || `${p2.name}`,
+                    playerId: null,
+                    prefecture: `${p2.prefecture}` || "",
+                    tempId: `${p2.team}_${p2.prefecture}`,
+                }],
                 result: p1IsWinner ? "win" : "lose",
                 games: {
                     won: p1Score,
@@ -564,8 +571,15 @@
 
             results.push({
                 round: match.round,
-                team: p2.team || p2.name,
-                opponent: p1.team || p1.name,
+                team: `${p2.team}_${p2.prefecture}` || p2.name,
+                opponents: [{
+                    lastName: "",
+                    firstName: "",
+                    team: `${p1.team}` || `${p1.name}`,
+                    playerId: null,
+                    prefecture: `${p1.prefecture}` || "",
+                    tempId: `${p1.team}_${p1.prefecture}`,
+                }],
                 result: p1IsWinner ? "lose" : "win",
                 games: {
                     won: p2Score,

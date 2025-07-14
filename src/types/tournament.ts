@@ -74,6 +74,7 @@ export interface MatchOpponent {
   lastName: string;
   firstName: string;
   team: string;
+  prefecture: string | null;
   playerId: string | null;
   tempId: string;
 }
