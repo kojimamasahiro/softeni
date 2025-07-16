@@ -428,5 +428,46 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "山中_裕太_八戸工大一",
+      "荒関_拓斗_八戸工大一"
+    ]
+  },
+  {
+    "team": "三本木",
+    "teamId": "sanbongi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "向平_優介_三本木",
+      "蛯名_陽_三本木"
+    ]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "荒関_拓斗_八戸工大一"
+    ]
   }
 ]

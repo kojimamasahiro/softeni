@@ -481,5 +481,32 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "能登",
+    "teamId": "noto",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "藤木_晴叶_能登",
+      "中山_煌貴_能登"
+    ]
+  },
+  {
+    "team": "能登",
+    "teamId": "noto",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "藤木_晴叶_能登"
+    ]
   }
 ]

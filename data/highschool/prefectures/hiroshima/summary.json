@@ -512,5 +512,46 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "神辺旭",
+    "teamId": "kannabeasahi",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "武山_悠成_神辺旭",
+      "上貝_悠斗_神辺旭"
+    ]
+  },
+  {
+    "team": "清水ヶ丘",
+    "teamId": "shimizukeoka",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "藤本_晴生_清水ヶ丘",
+      "神田_陽飛_清水ヶ丘"
+    ]
+  },
+  {
+    "team": "尾道",
+    "teamId": "onomichi",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "岩永_優真_尾道"
+    ]
   }
 ]

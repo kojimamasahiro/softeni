@@ -453,5 +453,32 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "毛利_航太_新田",
+      "仲田_翔磨_新田"
+    ]
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "毛利_航太_新田"
+    ]
   }
 ]

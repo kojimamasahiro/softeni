@@ -415,5 +415,46 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "佐賀工",
+    "teamId": "sagakou",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "三ヶ島_稀莉斗_佐賀工",
+      "松隈_勇太_佐賀工"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "木下_琉希_嬉野",
+      "藤井_李成_嬉野"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "松尾_優希_嬉野"
+    ]
   }
 ]

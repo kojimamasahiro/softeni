@@ -401,5 +401,45 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "前橋商",
+    "teamId": "maebashishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "武田_豊_前橋商",
+      "中島_魁成_前橋商"
+    ]
+  },
+  {
+    "team": "高崎",
+    "teamId": "takasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "大河原_兜_高崎"
+    ]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "大塚_陸玖_高崎商"
+    ]
   }
 ]

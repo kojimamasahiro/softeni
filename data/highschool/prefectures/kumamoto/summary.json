@@ -401,5 +401,32 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "ルーテル学院",
+    "teamId": "ruuterugakuin",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "野中_翔太_ルーテル学院",
+      "坂本_桔平_ルーテル学院"
+    ]
+  },
+  {
+    "team": "ルーテル学院",
+    "teamId": "ruuterugakuin",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "野中_翔太_ルーテル学院"
+    ]
   }
 ]

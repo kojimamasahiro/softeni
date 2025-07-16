@@ -527,5 +527,32 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "ウルスラ",
+    "teamId": "urusura",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "佐藤_光駿_ウルスラ",
+      "冨主_純翔_ウルスラ"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "水木_洸_東北"
+    ]
   }
 ]

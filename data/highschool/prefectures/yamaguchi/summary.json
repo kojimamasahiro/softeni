@@ -405,5 +405,45 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2022
+  },
+  {
+    "team": "宇部工",
+    "teamId": "ubekou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "久野_莉輝_宇部工",
+      "義永_啓人_宇部工"
+    ]
+  },
+  {
+    "team": "南陽工",
+    "teamId": "nanyoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "山本_隼平_南陽工"
+    ]
+  },
+  {
+    "team": "宇部",
+    "teamId": "ube",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "新原_慶_宇部"
+    ]
   }
 ]

@@ -439,5 +439,46 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "長崎日大",
+    "teamId": "nagasakinichidai",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "丸田_一仁_長崎日大",
+      "山下_來空_長崎日大"
+    ]
+  },
+  {
+    "team": "精道三川台",
+    "teamId": "seidousankawadai",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "三村_遥人_精道三川台",
+      "立川_凌世_精道三川台"
+    ]
+  },
+  {
+    "team": "長崎南山",
+    "teamId": "nagasakinanzan",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "白濱_凪騎_長崎南山"
+    ]
   }
 ]

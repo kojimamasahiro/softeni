@@ -443,5 +443,32 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021
+  },
+  {
+    "team": "一関学院",
+    "teamId": "ichinosekigakuin",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "津田_聖弥_一関学院",
+      "藤井_李成_一関学院"
+    ]
+  },
+  {
+    "team": "盛岡工",
+    "teamId": "moriokakou",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "吉田_蓮_盛岡工"
+    ]
   }
 ]
