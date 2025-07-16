@@ -1,13 +1,13 @@
 {
-  "totalAppearances": 32,
+  "totalAppearances": 33,
   "byCategory": {
     "doubles": 27,
-    "singles": 1,
+    "singles": 2,
     "team": 4
   },
   "bestResults": {
     "doubles": "準優勝",
-    "singles": "1回戦敗退",
+    "singles": "2回戦敗退",
     "team": "準優勝"
   },
   "recentlyResult": {
@@ -41,6 +41,10 @@
   "uniquePlayers": 35,
   "topPlayers": [
     {
+      "id": "水木_洸_東北",
+      "appearances": 3
+    },
+    {
       "id": "國松_樹人_東北",
       "appearances": 3
     },
@@ -54,10 +58,6 @@
     },
     {
       "id": "浅見_竣一朗_東北",
-      "appearances": 3
-    },
-    {
-      "id": "初鹿_暁哉_東北",
       "appearances": 3
     }
   ]

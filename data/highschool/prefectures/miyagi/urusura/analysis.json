@@ -1,23 +1,23 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
-    "doubles": "予選敗退"
+    "doubles": "ベスト8"
   },
   "recentlyResult": {
     "team": "ウルスラ",
     "teamId": "urusura",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "予選敗退",
+    "result": "ベスト8",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
+    "year": 2024,
     "playerIds": [
-      "青柳_空杜_ウルスラ",
-      "佐々木_柊羽_ウルスラ"
+      "佐藤_光駿_ウルスラ",
+      "冨主_純翔_ウルスラ"
     ]
   },
   "historicalBest": {
@@ -25,16 +25,16 @@
     "teamId": "urusura",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "予選敗退",
+    "result": "ベスト8",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
+    "year": 2024,
     "playerIds": [
-      "青柳_空杜_ウルスラ",
-      "佐々木_柊羽_ウルスラ"
+      "佐藤_光駿_ウルスラ",
+      "冨主_純翔_ウルスラ"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "青柳_空杜_ウルスラ",
@@ -42,6 +42,14 @@
     },
     {
       "id": "佐々木_柊羽_ウルスラ",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_光駿_ウルスラ",
+      "appearances": 1
+    },
+    {
+      "id": "冨主_純翔_ウルスラ",
       "appearances": 1
     }
   ]

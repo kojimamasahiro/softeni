@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 7,
-    "team": 1
+    "doubles": 8,
+    "team": 1,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "2回戦敗退"
+    "team": "2回戦敗退",
+    "singles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "東福岡",
@@ -36,19 +38,19 @@
       "野口_颯太_東福岡"
     ]
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "伊藤_駿平_東福岡",
+      "appearances": 3
+    },
+    {
+      "id": "帆足_光平_東福岡",
       "appearances": 2
     },
     {
       "id": "山田_侑人_東福岡",
       "appearances": 2
-    },
-    {
-      "id": "帆足_光平_東福岡",
-      "appearances": 1
     },
     {
       "id": "西小路_拳斗_東福岡",

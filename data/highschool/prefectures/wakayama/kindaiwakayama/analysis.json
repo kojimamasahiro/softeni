@@ -1,10 +1,12 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "bestResults": {
-    "doubles": "3回戦敗退"
+    "doubles": "3回戦敗退",
+    "singles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "近大和歌山",
@@ -34,7 +36,7 @@
       "南出_昊亮_近大和歌山"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "貴志_展晴_近大和歌山",
@@ -42,6 +44,10 @@
     },
     {
       "id": "南出_昊亮_近大和歌山",
+      "appearances": 1
+    },
+    {
+      "id": "福岡_直翔_近大和歌山",
       "appearances": 1
     }
   ]

@@ -1,23 +1,24 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4,
+    "singles": 1
   },
   "bestResults": {
-    "doubles": "2回戦敗退"
+    "doubles": "2回戦敗退",
+    "singles": "ベスト8"
   },
   "recentlyResult": {
     "team": "桜井",
     "teamId": "sakurai",
     "prefecture": "富山県",
     "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "playerIds": [
-      "大家_健慎_桜井",
-      "大江_陽太_桜井"
+      "大家_健慎_桜井"
     ]
   },
   "historicalBest": {
@@ -25,24 +26,23 @@
     "teamId": "sakurai",
     "prefecture": "富山県",
     "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "playerIds": [
-      "大家_健慎_桜井",
-      "大江_陽太_桜井"
+      "大家_健慎_桜井"
     ]
   },
   "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "大家_健慎_桜井",
-      "appearances": 3
+      "appearances": 5
     },
     {
       "id": "大江_陽太_桜井",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "高縁_悠生_桜井",

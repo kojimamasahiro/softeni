@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 28,
+  "totalAppearances": 29,
   "byCategory": {
     "doubles": 24,
-    "team": 4
+    "team": 4,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "ベスト4"
+    "team": "ベスト4",
+    "singles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "岡山理大附",
@@ -35,6 +37,10 @@
   "uniquePlayers": 33,
   "topPlayers": [
     {
+      "id": "青木_晴弥_岡山理大附",
+      "appearances": 2
+    },
+    {
       "id": "今田_迅_岡山理大附",
       "appearances": 2
     },
@@ -48,10 +54,6 @@
     },
     {
       "id": "常味_真人_岡山理大附",
-      "appearances": 2
-    },
-    {
-      "id": "石灘_蒼瑛_岡山理大附",
       "appearances": 2
     }
   ]

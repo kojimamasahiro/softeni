@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 26,
   "byCategory": {
-    "doubles": 20,
-    "team": 4
+    "doubles": 21,
+    "team": 4,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "4回戦敗退",
-    "team": "2回戦敗退"
+    "team": "2回戦敗退",
+    "singles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "米子松蔭",
@@ -36,8 +38,12 @@
       "吉川_恵大_米子松蔭"
     ]
   },
-  "uniquePlayers": 23,
+  "uniquePlayers": 24,
   "topPlayers": [
+    {
+      "id": "下村_駿太_米子松蔭",
+      "appearances": 3
+    },
     {
       "id": "米田_心_米子松蔭",
       "appearances": 3
@@ -53,10 +59,6 @@
     {
       "id": "吉川_恵大_米子松蔭",
       "appearances": 3
-    },
-    {
-      "id": "中川_龍_米子松蔭",
-      "appearances": 2
     }
   ]
 }

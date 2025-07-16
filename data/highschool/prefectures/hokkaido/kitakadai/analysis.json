@@ -1,25 +1,24 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 1,
-    "singles": 1
+    "doubles": 3,
+    "singles": 3
   },
   "bestResults": {
     "doubles": "2回戦敗退",
-    "singles": "2回戦敗退"
+    "singles": "3回戦敗退"
   },
   "recentlyResult": {
     "team": "北科大",
     "teamId": "kitakadai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
+    "result": "3回戦敗退",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
+    "year": 2024,
     "playerIds": [
-      "竹村_純生_北科大",
-      "松田_快晴_北科大"
+      "西_拓郎_北科大"
     ]
   },
   "historicalBest": {
@@ -27,23 +26,34 @@
     "teamId": "kitakadai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
+    "result": "3回戦敗退",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
+    "year": 2024,
     "playerIds": [
-      "竹村_純生_北科大",
-      "松田_快晴_北科大"
+      "西_拓郎_北科大"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "竹村_純生_北科大",
+      "appearances": 2
+    },
     {
       "id": "松田_快晴_北科大",
       "appearances": 2
     },
     {
-      "id": "竹村_純生_北科大",
+      "id": "西_拓郎_北科大",
+      "appearances": 2
+    },
+    {
+      "id": "加藤_龍牙_北科大",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_莱_北科大",
       "appearances": 1
     }
   ]

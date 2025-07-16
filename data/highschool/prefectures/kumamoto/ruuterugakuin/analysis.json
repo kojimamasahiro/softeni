@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 6,
-    "team": 1
+    "doubles": 7,
+    "team": 1,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "2回戦敗退"
+    "team": "2回戦敗退",
+    "singles": "3回戦敗退"
   },
   "recentlyResult": {
     "team": "ルーテル学院",
@@ -36,8 +38,12 @@
       "坂本_旭_ルーテル学院"
     ]
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "野中_翔太_ルーテル学院",
+      "appearances": 4
+    },
     {
       "id": "上村_光希_ルーテル学院",
       "appearances": 3
@@ -45,10 +51,6 @@
     {
       "id": "坂本_旭_ルーテル学院",
       "appearances": 3
-    },
-    {
-      "id": "野中_翔太_ルーテル学院",
-      "appearances": 2
     },
     {
       "id": "和田_楓_ルーテル学院",

@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 23,
   "byCategory": {
-    "doubles": 17,
-    "team": 4
+    "doubles": 18,
+    "team": 4,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "2回戦敗退"
+    "team": "2回戦敗退",
+    "singles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "金津",
@@ -40,19 +42,19 @@
   "topPlayers": [
     {
       "id": "西田_心大郎_金津",
+      "appearances": 4
+    },
+    {
+      "id": "戸田_大晴_金津",
+      "appearances": 3
+    },
+    {
+      "id": "佐藤_雅紀_金津",
       "appearances": 3
     },
     {
       "id": "内倉_海響_金津",
       "appearances": 3
-    },
-    {
-      "id": "戸田_大晴_金津",
-      "appearances": 2
-    },
-    {
-      "id": "佐藤_雅紀_金津",
-      "appearances": 2
     },
     {
       "id": "髙橋_優矢_金津",

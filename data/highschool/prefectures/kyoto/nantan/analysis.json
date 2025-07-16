@@ -1,12 +1,25 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
     "doubles": "2回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "南丹",
+    "teamId": "nantan",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "playerIds": [
+      "西村_脩_南丹",
+      "木村_秀人_南丹"
+    ]
+  },
   "historicalBest": {
     "team": "南丹",
     "teamId": "nantan",
@@ -21,7 +34,7 @@
       "笹尾_倖芽_南丹"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "髙垣_佳弘_南丹",
@@ -29,6 +42,14 @@
     },
     {
       "id": "笹尾_倖芽_南丹",
+      "appearances": 1
+    },
+    {
+      "id": "西村_脩_南丹",
+      "appearances": 1
+    },
+    {
+      "id": "木村_秀人_南丹",
       "appearances": 1
     }
   ]

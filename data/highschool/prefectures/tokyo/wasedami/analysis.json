@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
     "doubles": 4,
-    "team": 2
+    "team": 2,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "1回戦敗退"
+    "team": "1回戦敗退",
+    "singles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "早稲田実",
@@ -39,16 +41,16 @@
   "uniquePlayers": 6,
   "topPlayers": [
     {
+      "id": "伊藤_幹太_早稲田実",
+      "appearances": 2
+    },
+    {
       "id": "髙田_淳貴_早稲田実",
       "appearances": 2
     },
     {
       "id": "飯干_開生_早稲田実",
       "appearances": 2
-    },
-    {
-      "id": "伊藤_幹太_早稲田実",
-      "appearances": 1
     },
     {
       "id": "浦濱_大馬_早稲田実",
