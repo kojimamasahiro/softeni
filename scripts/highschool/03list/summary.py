@@ -92,8 +92,8 @@ for item in results_data["results"]:
                 "prefectureId": team_info["prefectureId"],
                 "result": result,
                 "category": category,
-                "tournamentId": "highschool-championship",  # 固定値
-                "year": 2021,
+                "tournamentId": "highschool-japan-cup",  # 固定値
+                "year": 2024,
                 "playerIds": player_ids
             }
 

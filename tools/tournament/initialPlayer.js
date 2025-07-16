@@ -385,16 +385,16 @@ const initialPlayers = [
   },
   {
     id: 25,
-    name: '青木晴弥（岡山理大附属）',
+    name: '青木晴弥（岡山理大附）',
     information: [
       {
         lastName: '青木',
         firstName: '晴弥',
-        team: '岡山理大附属',
+        team: '岡山理大附',
         originalTeam: '岡山理科大学附属高等学校',
         prefecture: '岡山県',
         playerId: null,
-        tempId: '青木_晴弥_岡山理大附属',
+        tempId: '青木_晴弥_岡山理大附',
       },
     ],
     category: 'singles',

@@ -1,6 +1,6 @@
 import json
 import re
-import pykakasi
+from pykakasi import kakasi
 from collections import OrderedDict, defaultdict
 
 prefecture_map = {
@@ -36,8 +36,8 @@ with open("players.json", encoding="utf-8") as f:
 with open("team_id_map.json", encoding="utf-8") as f:
     manual_id_map = json.load(f)
 
-# pykakasi 設定
-kks = pykakasi.kakasi()
+# pykakasi 設定（新API）
+kks = kakasi()
 kks.setMode("H", "a")
 kks.setMode("K", "a")
 kks.setMode("J", "a")

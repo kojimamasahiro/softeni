@@ -1,7 +1,35 @@
 {
   "doubles": [
     {
-      "round": "1回戦",
+      "round": "グループ1",
+      "player1": {
+        "entryNo": 1,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 2,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 2
+    },
+    {
+      "round": "グループ1",
+      "player1": {
+        "entryNo": 1,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 3,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 3
+    },
+    {
+      "round": "グループ1",
       "player1": {
         "entryNo": 2,
         "won": 1,
@@ -15,847 +43,77 @@
       "winner": 3
     },
     {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 11,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 12,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 12
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 17,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 18,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 17
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 21,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 22,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 22
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 27,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 28,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 28
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 31,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 32,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 31
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 37,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 38,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 38
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 41,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 42,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 42
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 47,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 48,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 48
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 51,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 52,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 52
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 57,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 58,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 57
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 61,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 62,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 62
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 67,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 68,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 68
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 71,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 72,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 72
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 77,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 78,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 77
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 81,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 82,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 81
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 90,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 91,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 90
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 96,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 97,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 96
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 100,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 101,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 100
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 106,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 107,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 106
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 111,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 110
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 116,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 117,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 116
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 120,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 121,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 120
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 126,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 127,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 126
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 130,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 131,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 131
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 136,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 137,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 137
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 140,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 141,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 141
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 146,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 147,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 147
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 155,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 156,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 156
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 159,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 160,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 159
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 168,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 169,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 169
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 174,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 175,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 174
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 178,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 179,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 179
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 184,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 185,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 184
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 188,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 189,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 189
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 194,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 195,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 194
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 198,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 199,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 199
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 204,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 205,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 205
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 208,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 209,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 208
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 214,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 215,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 215
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 218,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 219,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 218
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 224,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 225,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 224
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 233,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 234,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 234
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 237,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 238,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 237
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 243,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 244,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 243
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 247,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 248,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 247
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 253,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 254,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 254
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 257,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 258,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 257
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 263,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 264,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 264
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 267,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 268,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 267
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 273,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 274,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 273
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 277,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 278,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 277
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 283,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 284,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 283
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 287,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 288,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 287
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 293,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 294,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 294
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 297,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 298,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 297
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 303,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 304,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 303
-    },
-    {
-      "round": "1回戦",
-      "player1": {
-        "entryNo": 312,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 313,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 312
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 1,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 3,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 1
-    },
-    {
-      "round": "2回戦",
+      "round": "グループ2",
       "player1": {
         "entryNo": 4,
-        "won": 4,
-        "lost": 3
+        "won": 2,
+        "lost": 4
       },
       "player2": {
         "entryNo": 5,
-        "won": 3,
-        "lost": 4
+        "won": 4,
+        "lost": 2
       },
-      "winner": 4
+      "winner": 5
     },
     {
-      "round": "2回戦",
+      "round": "グループ2",
       "player1": {
-        "entryNo": 6,
-        "won": 0,
+        "entryNo": 4,
+        "won": 2,
         "lost": 4
       },
       "player2": {
+        "entryNo": 6,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 6
+    },
+    {
+      "round": "グループ2",
+      "player1": {
+        "entryNo": 5,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 6,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 6
+    },
+    {
+      "round": "グループ3",
+      "player1": {
+        "entryNo": 7,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 8,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 8
+    },
+    {
+      "round": "グループ3",
+      "player1": {
         "entryNo": 7,
         "won": 4,
-        "lost": 0
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 9,
+        "won": 1,
+        "lost": 4
       },
       "winner": 7
     },
     {
-      "round": "2回戦",
+      "round": "グループ3",
       "player1": {
         "entryNo": 8,
         "won": 4,
@@ -869,21 +127,49 @@
       "winner": 8
     },
     {
-      "round": "2回戦",
+      "round": "グループ4",
       "player1": {
         "entryNo": 10,
-        "won": 3,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 11,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 11
+    },
+    {
+      "round": "グループ4",
+      "player1": {
+        "entryNo": 10,
+        "won": 1,
         "lost": 4
       },
       "player2": {
         "entryNo": 12,
         "won": 4,
-        "lost": 3
+        "lost": 1
       },
       "winner": 12
     },
     {
-      "round": "2回戦",
+      "round": "グループ4",
+      "player1": {
+        "entryNo": 11,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 12,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 11
+    },
+    {
+      "round": "グループ5",
       "player1": {
         "entryNo": 13,
         "won": 4,
@@ -897,121 +183,303 @@
       "winner": 13
     },
     {
-      "round": "2回戦",
+      "round": "グループ5",
       "player1": {
-        "entryNo": 15,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 16,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 15
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 17,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 19,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 19
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 20,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 22,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 22
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 23,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 24,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 23
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 25,
+        "entryNo": 13,
         "won": 0,
         "lost": 4
       },
       "player2": {
-        "entryNo": 26,
+        "entryNo": 15,
         "won": 4,
         "lost": 0
       },
-      "winner": 26
+      "winner": 15
     },
     {
-      "round": "2回戦",
+      "round": "グループ5",
+      "player1": {
+        "entryNo": 14,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 15,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 15
+    },
+    {
+      "round": "グループ6",
+      "player1": {
+        "entryNo": 16,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 17,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 17
+    },
+    {
+      "round": "グループ6",
+      "player1": {
+        "entryNo": 16,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 18,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 18
+    },
+    {
+      "round": "グループ6",
+      "player1": {
+        "entryNo": 17,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 18,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 17
+    },
+    {
+      "round": "グループ7",
+      "player1": {
+        "entryNo": 19,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 20,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 20
+    },
+    {
+      "round": "グループ7",
+      "player1": {
+        "entryNo": 19,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 21,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 21
+    },
+    {
+      "round": "グループ7",
+      "player1": {
+        "entryNo": 20,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 21,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 20
+    },
+    {
+      "round": "グループ8",
+      "player1": {
+        "entryNo": 22,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 23,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 23
+    },
+    {
+      "round": "グループ8",
+      "player1": {
+        "entryNo": 22,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 24,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 24
+    },
+    {
+      "round": "グループ8",
+      "player1": {
+        "entryNo": 23,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 24,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 24
+    },
+    {
+      "round": "グループ9",
+      "player1": {
+        "entryNo": 25,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 26,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 25
+    },
+    {
+      "round": "グループ9",
+      "player1": {
+        "entryNo": 25,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 27,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 27
+    },
+    {
+      "round": "グループ9",
+      "player1": {
+        "entryNo": 26,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 27,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 27
+    },
+    {
+      "round": "グループ10",
       "player1": {
         "entryNo": 28,
-        "won": 2,
+        "won": 1,
         "lost": 4
       },
       "player2": {
         "entryNo": 29,
         "won": 4,
-        "lost": 2
+        "lost": 1
       },
       "winner": 29
     },
     {
-      "round": "2回戦",
+      "round": "グループ10",
       "player1": {
-        "entryNo": 30,
-        "won": 4,
-        "lost": 0
+        "entryNo": 28,
+        "won": 1,
+        "lost": 4
       },
       "player2": {
-        "entryNo": 31,
-        "won": 0,
-        "lost": 4
+        "entryNo": 30,
+        "won": 4,
+        "lost": 1
       },
       "winner": 30
     },
     {
-      "round": "2回戦",
+      "round": "グループ10",
       "player1": {
-        "entryNo": 33,
+        "entryNo": 29,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 30,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 30
+    },
+    {
+      "round": "グループ11",
+      "player1": {
+        "entryNo": 31,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 32,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 32
+    },
+    {
+      "round": "グループ11",
+      "player1": {
+        "entryNo": 31,
         "won": 4,
         "lost": 2
       },
       "player2": {
-        "entryNo": 34,
+        "entryNo": 33,
         "won": 2,
         "lost": 4
       },
-      "winner": 33
+      "winner": 31
     },
     {
-      "round": "2回戦",
+      "round": "グループ11",
       "player1": {
+        "entryNo": 32,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 33,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 32
+    },
+    {
+      "round": "グループ12",
+      "player1": {
+        "entryNo": 34,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
         "entryNo": 35,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 34
+    },
+    {
+      "round": "グループ12",
+      "player1": {
+        "entryNo": 34,
         "won": 4,
         "lost": 1
       },
@@ -1020,38 +488,108 @@
         "won": 1,
         "lost": 4
       },
-      "winner": 35
+      "winner": 34
     },
     {
-      "round": "2回戦",
+      "round": "グループ12",
+      "player1": {
+        "entryNo": 35,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 36,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 36
+    },
+    {
+      "round": "グループ13",
+      "player1": {
+        "entryNo": 37,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 38,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 37
+    },
+    {
+      "round": "グループ13",
+      "player1": {
+        "entryNo": 37,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 39,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 37
+    },
+    {
+      "round": "グループ13",
       "player1": {
         "entryNo": 38,
-        "won": 1,
+        "won": 3,
         "lost": 4
       },
       "player2": {
         "entryNo": 39,
         "won": 4,
-        "lost": 1
+        "lost": 3
       },
       "winner": 39
     },
     {
-      "round": "2回戦",
+      "round": "グループ14",
       "player1": {
         "entryNo": 40,
         "won": 4,
-        "lost": 0
+        "lost": 2
       },
       "player2": {
-        "entryNo": 42,
-        "won": 0,
+        "entryNo": 41,
+        "won": 2,
         "lost": 4
       },
       "winner": 40
     },
     {
-      "round": "2回戦",
+      "round": "グループ14",
+      "player1": {
+        "entryNo": 40,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 42,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 40
+    },
+    {
+      "round": "グループ14",
+      "player1": {
+        "entryNo": 41,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 42,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 42
+    },
+    {
+      "round": "グループ15",
       "player1": {
         "entryNo": 43,
         "won": 0,
@@ -1065,51 +603,135 @@
       "winner": 44
     },
     {
-      "round": "2回戦",
+      "round": "グループ15",
       "player1": {
+        "entryNo": 43,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
         "entryNo": 45,
         "won": 1,
         "lost": 4
       },
+      "winner": 43
+    },
+    {
+      "round": "グループ15",
+      "player1": {
+        "entryNo": 44,
+        "won": 4,
+        "lost": 0
+      },
       "player2": {
+        "entryNo": 45,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 44
+    },
+    {
+      "round": "グループ16",
+      "player1": {
         "entryNo": 46,
         "won": 4,
-        "lost": 1
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 47,
+        "won": 0,
+        "lost": 4
       },
       "winner": 46
     },
     {
-      "round": "2回戦",
+      "round": "グループ16",
       "player1": {
-        "entryNo": 48,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 49,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 49
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 50,
+        "entryNo": 46,
         "won": 4,
         "lost": 1
       },
       "player2": {
-        "entryNo": 52,
+        "entryNo": 48,
         "won": 1,
+        "lost": 4
+      },
+      "winner": 46
+    },
+    {
+      "round": "グループ16",
+      "player1": {
+        "entryNo": 47,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 48,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 47
+    },
+    {
+      "round": "グループ17",
+      "player1": {
+        "entryNo": 49,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 50,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 50
+    },
+    {
+      "round": "グループ17",
+      "player1": {
+        "entryNo": 49,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 51,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 49
+    },
+    {
+      "round": "グループ17",
+      "player1": {
+        "entryNo": 50,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 51,
+        "won": 2,
         "lost": 4
       },
       "winner": 50
     },
     {
-      "round": "2回戦",
+      "round": "グループ18",
       "player1": {
+        "entryNo": 52,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
         "entryNo": 53,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 52
+    },
+    {
+      "round": "グループ18",
+      "player1": {
+        "entryNo": 52,
         "won": 1,
         "lost": 4
       },
@@ -1121,7 +743,21 @@
       "winner": 54
     },
     {
-      "round": "2回戦",
+      "round": "グループ18",
+      "player1": {
+        "entryNo": 53,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 54,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 53
+    },
+    {
+      "round": "グループ19",
       "player1": {
         "entryNo": 55,
         "won": 4,
@@ -1135,51 +771,555 @@
       "winner": 55
     },
     {
-      "round": "2回戦",
+      "round": "グループ19",
       "player1": {
-        "entryNo": 57,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 59,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 57
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 60,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 62,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 60
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 63,
+        "entryNo": 55,
         "won": 4,
         "lost": 2
       },
       "player2": {
-        "entryNo": 64,
+        "entryNo": 57,
         "won": 2,
         "lost": 4
+      },
+      "winner": 55
+    },
+    {
+      "round": "グループ19",
+      "player1": {
+        "entryNo": 56,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 57,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 56
+    },
+    {
+      "round": "グループ20",
+      "player1": {
+        "entryNo": 58,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 59,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 59
+    },
+    {
+      "round": "グループ20",
+      "player1": {
+        "entryNo": 58,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 60,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 60
+    },
+    {
+      "round": "グループ20",
+      "player1": {
+        "entryNo": 59,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 60,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 60
+    },
+    {
+      "round": "グループ21",
+      "player1": {
+        "entryNo": 61,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 62,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 62
+    },
+    {
+      "round": "グループ21",
+      "player1": {
+        "entryNo": 61,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 63,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 63
+    },
+    {
+      "round": "グループ21",
+      "player1": {
+        "entryNo": 62,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 63,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 63
+    },
+    {
+      "round": "グループ22",
+      "player1": {
+        "entryNo": 64,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 65,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 64
+    },
+    {
+      "round": "グループ22",
+      "player1": {
+        "entryNo": 64,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 66,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 66
+    },
+    {
+      "round": "グループ22",
+      "player1": {
+        "entryNo": 65,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 66,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 66
+    },
+    {
+      "round": "グループ23",
+      "player1": {
+        "entryNo": 67,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 68,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 67
+    },
+    {
+      "round": "グループ23",
+      "player1": {
+        "entryNo": 67,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 69,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 67
+    },
+    {
+      "round": "グループ23",
+      "player1": {
+        "entryNo": 68,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 69,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 68
+    },
+    {
+      "round": "グループ24",
+      "player1": {
+        "entryNo": 70,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 71,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 71
+    },
+    {
+      "round": "グループ24",
+      "player1": {
+        "entryNo": 70,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 72,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 72
+    },
+    {
+      "round": "グループ24",
+      "player1": {
+        "entryNo": 71,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 72,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 71
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 6,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 8,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 8
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 11,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 15,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 15
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 24,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 27,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 24
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 30,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 32,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 32
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 40,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 44,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 44
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 46,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 50,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 46
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 60,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 63,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 63
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 66,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 67,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 66
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 3,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 8,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 8
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 15,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 17,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 15
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 20,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 24,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 20
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 32,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 34,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 34
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 37,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 44,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 37
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 46,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 52,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 52
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 55,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 63,
+        "won": 4,
+        "lost": 3
       },
       "winner": 63
     },
     {
       "round": "2回戦",
       "player1": {
-        "entryNo": 65,
+        "entryNo": 66,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 71,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 66
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 8,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 15,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 8
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 20,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 34,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 34
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 37,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 52,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 37
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 63,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 66,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 66
+    },
+    {
+      "round": "準決勝",
+      "player1": {
+        "entryNo": 8,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 34,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 34
+    },
+    {
+      "round": "準決勝",
+      "player1": {
+        "entryNo": 37,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 66,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 66
+    },
+    {
+      "round": "決勝",
+      "player1": {
+        "entryNo": 34,
         "won": 4,
         "lost": 2
       },
@@ -1188,1440 +1328,476 @@
         "won": 2,
         "lost": 4
       },
-      "winner": 65
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 68,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 69,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 69
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 70,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 72,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 72
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 73,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 74,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 74
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 75,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 76,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 75
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 77,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 79,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 79
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 80,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 81,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 80
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 83,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 84,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 84
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 85,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 86,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 86
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 87,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 88,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 88
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 89,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 90,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 89
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 92,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 93,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 92
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 94,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 95,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 95
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 96,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 98,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 98
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 99,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 100,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 99
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 102,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 103,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 102
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 104,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 105,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 104
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 106,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 108,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 108
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 109,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 110
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 112,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 113,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 112
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 114,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 115,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 115
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 116,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 118,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 118
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 119,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 120,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 119
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 122,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 123,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 122
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 124,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 125,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 124
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 126,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 128,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 128
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 129,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 131,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 129
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 132,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 133,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 133
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 134,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 135,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 134
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 137,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 138,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 138
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 139,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 141,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 139
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 142,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 143,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 142
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 144,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 145,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 144
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 147,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 148,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 147
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 149,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 150,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 150
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 151,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 152,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 151
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 153,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 154,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 154
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 156,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 157,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 157
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 158,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 159,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 158
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 161,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 162,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 162
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 163,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 164,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 163
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 165,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 166,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 166
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 167,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 169,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 167
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 170,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 171,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 171
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 172,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 173,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 173
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 174,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 176,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 174
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 177,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 179,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 177
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 180,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 181,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 181
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 182,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 183,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 183
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 184,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 186,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 184
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 187,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 189,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 187
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 190,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 191,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 190
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 192,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 193,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 193
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 194,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 196,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 196
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 197,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 199,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 197
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 200,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 201,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 201
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 202,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 203,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 202
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 205,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 206,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 206
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 207,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 208,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 207
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 210,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 211,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 210
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 212,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 213,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 212
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 215,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 216,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 216
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 217,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 218,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 217
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 220,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 221,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 220
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 222,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 223,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 222
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 224,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 226,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 226
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 227,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 228,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 227
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 229,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 230,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 229
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 231,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 232,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 231
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 234,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 235,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 235
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 236,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 237,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 236
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 239,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 240,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 239
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 241,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 242,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 242
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 243,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 245,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 245
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 246,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 247,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 247
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 249,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 250,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 250
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 251,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 252,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 252
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 254,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 255,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 255
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 256,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 257,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 256
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 259,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 260,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 259
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 261,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 262,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 262
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 264,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 265,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 265
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 266,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 267,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 266
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 269,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 270,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 270
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 271,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 272,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 271
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 273,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 275,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 275
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 276,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 277,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 276
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 279,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 280,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 280
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 281,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 282,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 281
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 283,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 285,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 285
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 286,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 287,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 286
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 289,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 290,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 290
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 291,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 292,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 291
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 294,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 295,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 294
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 296,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 297,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 296
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 299,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 300,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 299
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 301,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 302,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 302
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 303,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 305,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 305
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 306,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 307,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 306
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 308,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 309,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 308
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 310,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 311,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 311
-    },
-    {
-      "round": "2回戦",
-      "player1": {
-        "entryNo": 312,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 314
-    },
-    {
-      "round": "3回戦",
+      "winner": 34
+    }
+  ],
+  "singles": [
+    {
+      "round": "1回戦",
       "player1": {
         "entryNo": 1,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 2,
         "won": 4,
         "lost": 1
+      },
+      "winner": 2
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 3,
+        "won": 2,
+        "lost": 4
       },
       "player2": {
         "entryNo": 4,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 4
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 5,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 6,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 5
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 7,
         "won": 1,
         "lost": 4
       },
-      "winner": 1
+      "player2": {
+        "entryNo": 8,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 8
     },
     {
-      "round": "3回戦",
+      "round": "1回戦",
       "player1": {
-        "entryNo": 7,
+        "entryNo": 9,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 10,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 10
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 11,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 12,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 11
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 13,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 14,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 14
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 15,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 16,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 16
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 17,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 18,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 18
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 19,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 20,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 19
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 21,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 22,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 22
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 23,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 24,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 24
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 25,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 26,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 25
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 27,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 28,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 27
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 29,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 30,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 30
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 31,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 32,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 32
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 33,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 34,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 34
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 35,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 36,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 36
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 37,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 38,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 38
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 39,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 40,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 40
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 41,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 42,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 41
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 43,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 44,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 44
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 45,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 46,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 46
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 47,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 48,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 48
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 49,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 50,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 50
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 51,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 52,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 51
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 53,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 54,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 54
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 55,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 56,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 55
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 57,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 58,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 57
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 59,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 60,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 60
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 61,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 62,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 61
+    },
+    {
+      "round": "1回戦",
+      "player1": {
+        "entryNo": 63,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 64,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 63
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 2,
+        "won": 4,
+        "lost": 2
+      },
+      "player2": {
+        "entryNo": 4,
+        "won": 2,
+        "lost": 4
+      },
+      "winner": 2
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 5,
         "won": 4,
         "lost": 2
       },
@@ -2630,138 +1806,362 @@
         "won": 2,
         "lost": 4
       },
-      "winner": 7
+      "winner": 5
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
       "player1": {
-        "entryNo": 12,
-        "won": 2,
+        "entryNo": 10,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 11,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 10
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 14,
+        "won": 0,
         "lost": 4
       },
       "player2": {
-        "entryNo": 13,
+        "entryNo": 16,
         "won": 4,
-        "lost": 2
+        "lost": 0
       },
-      "winner": 13
+      "winner": 16
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
       "player1": {
-        "entryNo": 15,
-        "won": 1,
+        "entryNo": 18,
+        "won": 0,
         "lost": 4
       },
       "player2": {
         "entryNo": 19,
         "won": 4,
-        "lost": 1
+        "lost": 0
       },
       "winner": 19
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
       "player1": {
         "entryNo": 22,
         "won": 1,
         "lost": 4
       },
       "player2": {
-        "entryNo": 23,
+        "entryNo": 24,
         "won": 4,
         "lost": 1
       },
-      "winner": 23
+      "winner": 24
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
       "player1": {
-        "entryNo": 26,
+        "entryNo": 25,
         "won": 3,
         "lost": 4
       },
       "player2": {
-        "entryNo": 29,
+        "entryNo": 27,
         "won": 4,
         "lost": 3
       },
-      "winner": 29
+      "winner": 27
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
       "player1": {
         "entryNo": 30,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 33,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 33
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 35,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 39,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 39
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 40,
         "won": 4,
         "lost": 0
       },
       "player2": {
-        "entryNo": 44,
+        "entryNo": 32,
         "won": 0,
         "lost": 4
+      },
+      "winner": 30
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 34,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 36,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 36
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 38,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 40,
+        "won": 4,
+        "lost": 0
       },
       "winner": 40
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
       "player1": {
-        "entryNo": 46,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 49,
+        "entryNo": 41,
         "won": 1,
         "lost": 4
       },
-      "winner": 46
+      "player2": {
+        "entryNo": 44,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 44
     },
     {
-      "round": "3回戦",
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 46,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 48,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 48
+    },
+    {
+      "round": "2回戦",
       "player1": {
         "entryNo": 50,
         "won": 0,
         "lost": 4
       },
       "player2": {
-        "entryNo": 54,
+        "entryNo": 51,
         "won": 4,
         "lost": 0
       },
-      "winner": 54
+      "winner": 51
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 54,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 55,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 55
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 57,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 60,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 57
+    },
+    {
+      "round": "2回戦",
+      "player1": {
+        "entryNo": 61,
+        "won": 1,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 63,
+        "won": 4,
+        "lost": 1
+      },
+      "winner": 63
     },
     {
       "round": "3回戦",
       "player1": {
+        "entryNo": 2,
+        "won": 4,
+        "lost": 1
+      },
+      "player2": {
+        "entryNo": 5,
+        "won": 1,
+        "lost": 4
+      },
+      "winner": 2
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 10,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 16,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 10
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 19,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 24,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 24
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 27,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 30,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 30
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 36,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 40,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 40
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 44,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
+        "entryNo": 48,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 44
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 51,
+        "won": 4,
+        "lost": 0
+      },
+      "player2": {
         "entryNo": 55,
+        "won": 0,
+        "lost": 4
+      },
+      "winner": 51
+    },
+    {
+      "round": "3回戦",
+      "player1": {
+        "entryNo": 57,
+        "won": 4,
+        "lost": 3
+      },
+      "player2": {
+        "entryNo": 63,
+        "won": 3,
+        "lost": 4
+      },
+      "winner": 57
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 2,
+        "won": 0,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 10,
+        "won": 4,
+        "lost": 0
+      },
+      "winner": 10
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 24,
+        "won": 3,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 30,
+        "won": 4,
+        "lost": 3
+      },
+      "winner": 30
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 40,
+        "won": 2,
+        "lost": 4
+      },
+      "player2": {
+        "entryNo": 44,
+        "won": 4,
+        "lost": 2
+      },
+      "winner": 44
+    },
+    {
+      "round": "準々決勝",
+      "player1": {
+        "entryNo": 51,
         "won": 4,
         "lost": 1
       },
@@ -2770,2277 +2170,49 @@
         "won": 1,
         "lost": 4
       },
-      "winner": 55
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 60,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 63,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 63
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 65,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 69,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 65
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 72,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 74,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 72
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 75,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 79,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 79
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 80,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 84,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 80
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 86,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 88,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 88
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 89,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 92,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 92
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 95,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 98,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 98
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 99,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 102,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 99
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 104,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 108,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 108
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 112,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 110
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 115,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 118,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 118
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 119,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 122,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 119
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 124,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 128,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 128
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 129,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 133,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 133
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 134,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 138,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 138
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 139,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 142,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 139
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 144,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 147,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 147
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 150,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 151,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 151
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 154,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 157,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 154
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 158,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 162,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 158
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 163,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 166,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 166
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 167,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 171,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 167
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 173,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 174,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 174
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 177,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 181,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 177
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 183,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 184,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 184
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 187,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 190,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 187
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 193,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 196,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 196
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 197,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 201,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 197
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 202,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 206,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 206
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 207,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 210,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 207
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 212,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 216,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 212
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 217,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 220,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 217
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 222,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 226,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 226
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 227,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 229,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 227
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 231,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 235,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 235
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 236,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 239,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 236
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 242,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 245,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 242
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 247,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 250,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 247
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 252,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 255,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 255
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 256,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 259,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 256
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 262,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 265,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 265
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 266,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 270,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 266
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 271,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 275,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 271
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 276,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 280,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 280
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 281,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 285,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 281
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 286,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 290,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 286
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 291,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 294,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 294
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 296,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 299,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 296
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 302,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 305,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 302
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 306,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 308,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 308
-    },
-    {
-      "round": "3回戦",
-      "player1": {
-        "entryNo": 311,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 314
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 1,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 7,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 1
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 13,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 19,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 13
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 23,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 29,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 23
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 33,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 39,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 33
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 40,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 46,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 46
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 54,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 55,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 55
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 63,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 65,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 65
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 72,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 79,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 72
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 80,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 88,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 80
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 92,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 98,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 98
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 99,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 108,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 99
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 118,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 110
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 119,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 128,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 128
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 133,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 138,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 138
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 139,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 147,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 147
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 151,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 154,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 154
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 158,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 166,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 158
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 167,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 174,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 167
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 177,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 184,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 177
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 187,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 196,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 187
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 197,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 206,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 206
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 207,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 212,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 207
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 217,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 226,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 217
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 227,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 235,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 235
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 236,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 242,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 242
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 247,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 255,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 247
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 256,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 265,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 256
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 266,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 271,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 266
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 280,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 281,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 281
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 286,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 294,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 286
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 296,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 302,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 302
-    },
-    {
-      "round": "4回戦",
-      "player1": {
-        "entryNo": 308,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 314
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 1,
-        "won": 4,
-        "lost": 0
-      },
-      "player2": {
-        "entryNo": 13,
-        "won": 0,
-        "lost": 4
-      },
-      "winner": 1
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 23,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 33,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 33
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 46,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 55,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 55
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 65,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 72,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 72
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 80,
-        "won": 4,
-        "lost": 1
-      },
-      "player2": {
-        "entryNo": 98,
-        "won": 1,
-        "lost": 4
-      },
-      "winner": 80
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 99,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 110
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 128,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 138,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 128
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 147,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 154,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 154
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 158,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 167,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 158
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 177,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 187,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 187
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 206,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 207,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 207
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 217,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 235,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 235
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 242,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 247,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 242
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 256,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 266,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 266
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 281,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 286,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 286
-    },
-    {
-      "round": "5回戦",
-      "player1": {
-        "entryNo": 302,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 314
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 1,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 33,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 1
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 55,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 72,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 72
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 80,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 110
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 128,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 154,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 128
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 158,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 187,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 187
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 207,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 235,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 207
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 242,
-        "won": 4,
-        "lost": 3
-      },
-      "player2": {
-        "entryNo": 266,
-        "won": 3,
-        "lost": 4
-      },
-      "winner": 242
-    },
-    {
-      "round": "6回戦",
-      "player1": {
-        "entryNo": 286,
-        "won": 0,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 0
-      },
-      "winner": 314
-    },
-    {
-      "round": "準々決勝",
-      "player1": {
-        "entryNo": 1,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 72,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 1
-    },
-    {
-      "round": "準々決勝",
-      "player1": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 2
-      },
-      "player2": {
-        "entryNo": 128,
-        "won": 2,
-        "lost": 4
-      },
-      "winner": 110
-    },
-    {
-      "round": "準々決勝",
-      "player1": {
-        "entryNo": 187,
-        "won": 2,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 207,
-        "won": 4,
-        "lost": 2
-      },
-      "winner": 207
-    },
-    {
-      "round": "準々決勝",
-      "player1": {
-        "entryNo": 242,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 314
+      "winner": 51
     },
     {
       "round": "準決勝",
       "player1": {
-        "entryNo": 1,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 110,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 110
-    },
-    {
-      "round": "準決勝",
-      "player1": {
-        "entryNo": 207,
-        "won": 1,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 1
-      },
-      "winner": 314
-    },
-    {
-      "round": "決勝",
-      "player1": {
-        "entryNo": 110,
-        "won": 3,
-        "lost": 4
-      },
-      "player2": {
-        "entryNo": 314,
-        "won": 4,
-        "lost": 3
-      },
-      "winner": 314
-    }
-  ],
-  "team": [
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 2,
-        "won": 0,
-        "lost": 3
-      },
-      "team2": {
-        "entryNo": 3,
-        "won": 3,
-        "lost": 0
-      },
-      "winner": 3
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 4,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 5,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 4
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 8,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 9,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 8
-    },
-    {
-      "round": "1回戦",
-      "team1": {
         "entryNo": 10,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 11,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 11
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 14,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 15,
-        "won": 0,
+        "won": 4,
         "lost": 3
       },
-      "winner": 14
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 16,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 17,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 16
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 20,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 21,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 20
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 22,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 23,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 23
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 26,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 27,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 27
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 28,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 29,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 28
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 32,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 33,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 33
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 34,
-        "won": 0,
-        "lost": 3
-      },
-      "team2": {
-        "entryNo": 35,
-        "won": 3,
-        "lost": 0
-      },
-      "winner": 35
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 38,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 39,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 39
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 40,
-        "won": 2,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 41,
-        "won": 0,
-        "lost": 2
-      },
-      "winner": 40
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 44,
-        "won": 2,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 45,
-        "won": 0,
-        "lost": 2
-      },
-      "winner": 44
-    },
-    {
-      "round": "1回戦",
-      "team1": {
-        "entryNo": 46,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 47,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 46
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 1,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 3,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 1
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 4,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 6,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 4
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 7,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 8,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 7
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 11,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 12,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 12
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 13,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 14,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 13
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 16,
-        "won": 3,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 18,
-        "won": 0,
-        "lost": 3
-      },
-      "winner": 16
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 19,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 20,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 20
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 23,
-        "won": 0,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 24,
-        "won": 2,
-        "lost": 0
-      },
-      "winner": 24
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 25,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 27,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 25
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 28,
-        "won": 0,
-        "lost": 3
-      },
-      "team2": {
+      "player2": {
         "entryNo": 30,
         "won": 3,
-        "lost": 0
+        "lost": 4
       },
-      "winner": 30
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 31,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 33,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 31
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 35,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 36,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 36
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 37,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 39,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 39
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 40,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 42,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 42
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 43,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 44,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 43
-    },
-    {
-      "round": "2回戦",
-      "team1": {
-        "entryNo": 46,
-        "won": 0,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 48,
-        "won": 2,
-        "lost": 0
-      },
-      "winner": 48
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 1,
-        "won": 2,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 4,
-        "won": 0,
-        "lost": 2
-      },
-      "winner": 1
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 7,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 12,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 12
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 13,
-        "won": 2,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 16,
-        "won": 0,
-        "lost": 2
-      },
-      "winner": 13
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 20,
-        "won": 0,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 24,
-        "won": 2,
-        "lost": 0
-      },
-      "winner": 24
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 25,
-        "won": 2,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 30,
-        "won": 0,
-        "lost": 2
-      },
-      "winner": 25
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 31,
-        "won": 2,
-        "lost": 1
-      },
-      "team2": {
-        "entryNo": 36,
-        "won": 1,
-        "lost": 2
-      },
-      "winner": 31
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 39,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 42,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 42
-    },
-    {
-      "round": "3回戦",
-      "team1": {
-        "entryNo": 43,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 48,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 48
-    },
-    {
-      "round": "準々決勝",
-      "team1": {
-        "entryNo": 1,
-        "won": 2,
-        "lost": 0
-      },
-      "team2": {
-        "entryNo": 12,
-        "won": 0,
-        "lost": 2
-      },
-      "winner": 1
-    },
-    {
-      "round": "準々決勝",
-      "team1": {
-        "entryNo": 13,
-        "won": 0,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 24,
-        "won": 2,
-        "lost": 0
-      },
-      "winner": 24
-    },
-    {
-      "round": "準々決勝",
-      "team1": {
-        "entryNo": 25,
-        "won": 0,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 31,
-        "won": 2,
-        "lost": 0
-      },
-      "winner": 31
-    },
-    {
-      "round": "準々決勝",
-      "team1": {
-        "entryNo": 42,
-        "won": 1,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 48,
-        "won": 2,
-        "lost": 1
-      },
-      "winner": 48
+      "winner": 10
     },
     {
       "round": "準決勝",
-      "team1": {
-        "entryNo": 1,
-        "won": 0,
-        "lost": 2
+      "player1": {
+        "entryNo": 44,
+        "won": 1,
+        "lost": 4
       },
-      "team2": {
-        "entryNo": 24,
-        "won": 2,
-        "lost": 0
+      "player2": {
+        "entryNo": 51,
+        "won": 4,
+        "lost": 1
       },
-      "winner": 24
-    },
-    {
-      "round": "準決勝",
-      "team1": {
-        "entryNo": 31,
-        "won": 0,
-        "lost": 2
-      },
-      "team2": {
-        "entryNo": 48,
-        "won": 2,
-        "lost": 0
-      },
-      "winner": 48
+      "winner": 51
     },
     {
       "round": "決勝",
-      "team1": {
-        "entryNo": 24,
+      "player1": {
+        "entryNo": 10,
         "won": 0,
-        "lost": 2
+        "lost": 4
       },
-      "team2": {
-        "entryNo": 48,
-        "won": 2,
+      "player2": {
+        "entryNo": 51,
+        "won": 4,
         "lost": 0
       },
-      "winner": 48
+      "winner": 51
     }
   ]
 }
