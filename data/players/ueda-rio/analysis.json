@@ -1,15 +1,29 @@
 {
-  "totalMatches": 23,
-  "wins": 21,
-  "losses": 2,
-  "totalWinRate": 0.913,
+  "totalMatches": 25,
+  "wins": 22,
+  "losses": 3,
+  "totalWinRate": 0.88,
   "games": {
-    "total": 116,
-    "won": 87,
-    "lost": 29,
-    "gameRate": 0.75
+    "total": 129,
+    "won": 93,
+    "lost": 36,
+    "gameRate": 0.721
   },
   "byPartner": {
+    "本間 友里那": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 13,
+        "won": 6,
+        "lost": 7,
+        "gameRate": 0.462
+      }
+    },
     "荻谷 侑磨": {
       "matches": {
         "total": 10,
@@ -42,24 +56,24 @@
   "byYear": {
     "2025": {
       "matches": {
-        "total": 23,
-        "wins": 21,
-        "losses": 2,
-        "winRate": 0.913
+        "total": 25,
+        "wins": 22,
+        "losses": 3,
+        "winRate": 0.88
       },
       "games": {
-        "total": 116,
-        "won": 87,
-        "lost": 29,
-        "gameRate": 0.75
+        "total": 129,
+        "won": 93,
+        "lost": 36,
+        "gameRate": 0.721
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "荻谷 侑磨",
+    "tournament": "第6回 全日本ミックスダブルス選手権大会",
+    "date": "2025年6月14日(土)〜15日(日)",
+    "location": "広島県",
+    "partner": "本間 友里那",
     "result": "3回戦敗退",
     "summary": "全日本シングルスではベスト4、高校の大会では負けなしの今後に期待の選手です。",
     "link": ""
