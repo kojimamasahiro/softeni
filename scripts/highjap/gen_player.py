@@ -237,7 +237,8 @@ def generate_output_with_original_team(player_lines, tournament_lines):
         output.append({
             "id": idx,
             "name": "・".join(entry["lastNames"]) + f"（{abbrev_team}）",
-            "information": info_list
+            "information": info_list,
+            "category": "doubles" if len(info_list) > 1 else "singles"
         })
 
     return output

@@ -1,3 +1,4 @@
+// jq '[. as $a | [range(0; length; 3)] | map({ key: ((. / 3 + 1) | tostring), value: $a[. : . + 3] }) | from_entries]' initialPlayer_doubles.json|pbcopy
 const initialPlayersByGroup = {
   1: [
     {
@@ -1776,3 +1777,4 @@ const initialPlayersByGroup = {
     },
   ],
 };
+console.log('Teams and Players Data:', initialPlayersByGroup);
