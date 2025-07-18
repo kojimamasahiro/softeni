@@ -1557,24 +1557,24 @@ const initialPlayersByGroup = {
   22: [
     {
       id: 64,
-      name: '茶木・今田（岡山理大付属）',
+      name: '茶木・今田（岡山理大附）',
       information: [
         {
           lastName: '茶木',
           firstName: '將臣',
-          team: '岡山理大付属',
+          team: '岡山理大附',
           prefecture: '岡山',
           playerId: null,
-          tempId: '茶木_將臣_岡山理大付属',
+          tempId: '茶木_將臣_岡山理大附',
           originalTeam: '岡山理科大学附属高等学校',
         },
         {
           lastName: '今田',
           firstName: '迅',
-          team: '岡山理大付属',
+          team: '岡山理大附',
           prefecture: '岡山',
           playerId: null,
-          tempId: '今田_迅_岡山理大付属',
+          tempId: '今田_迅_岡山理大附',
           originalTeam: '岡山理科大学附属高等学校',
         },
       ],

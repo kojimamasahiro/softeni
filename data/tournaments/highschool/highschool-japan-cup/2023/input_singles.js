@@ -145,16 +145,16 @@ const initialPlayers = [
   },
   {
     id: 10,
-    name: '足利颯太（岡山理大付属）',
+    name: '足利颯太（岡山理大附）',
     information: [
       {
         lastName: '足利',
         firstName: '颯太',
-        team: '岡山理大付属',
+        team: '岡山理大附',
         originalTeam: '岡山理科大学附属高等学校',
         prefecture: '岡山県',
         playerId: null,
-        tempId: '足利_颯太_岡山理大付属',
+        tempId: '足利_颯太_岡山理大附',
       },
     ],
     category: 'singles',
@@ -577,16 +577,16 @@ const initialPlayers = [
   },
   {
     id: 37,
-    name: '小泉瑠唯（岡山理大付属）',
+    name: '小泉瑠唯（岡山理大附）',
     information: [
       {
         lastName: '小泉',
         firstName: '瑠唯',
-        team: '岡山理大付属',
+        team: '岡山理大附',
         originalTeam: '岡山理科大学附属高等学校',
         prefecture: '岡山県',
         playerId: null,
-        tempId: '小泉_瑠唯_岡山理大付属',
+        tempId: '小泉_瑠唯_岡山理大附',
       },
     ],
     category: 'singles',
