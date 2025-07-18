@@ -609,16 +609,16 @@ const initialPlayers = [
   },
   {
     id: 39,
-    name: '青木優河（新潟産大附属）',
+    name: '青木優河（新潟産大附）',
     information: [
       {
         lastName: '青木',
         firstName: '優河',
-        team: '新潟産大附属',
+        team: '新潟産大附',
         originalTeam: '新潟産業大学附属高等学校',
         prefecture: '新潟県',
         playerId: null,
-        tempId: '青木_優河_新潟産大附属',
+        tempId: '青木_優河_新潟産大附',
       },
     ],
     category: 'singles',
