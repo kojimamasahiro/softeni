@@ -93,7 +93,7 @@ for item in results_data["results"]:
                 "result": result,
                 "category": category,
                 "tournamentId": "highschool-japan-cup",  # 固定値
-                "year": 2024,
+                "year": 2023,
                 "playerIds": player_ids
             }
 
