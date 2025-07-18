@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 11,
-    "team": 4
+    "doubles": 12,
+    "team": 4,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "3回戦敗退"
+    "team": "3回戦敗退",
+    "singles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "つるぎ",
@@ -39,6 +41,10 @@
   "uniquePlayers": 15,
   "topPlayers": [
     {
+      "id": "髙井_凌凱_つるぎ",
+      "appearances": 4
+    },
+    {
       "id": "矢藤_龍之介_つるぎ",
       "appearances": 2
     },
@@ -52,10 +58,6 @@
     },
     {
       "id": "藤中_奏和_つるぎ",
-      "appearances": 2
-    },
-    {
-      "id": "原_大心_つるぎ",
       "appearances": 2
     }
   ]

@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 9,
-    "team": 1
+    "doubles": 11,
+    "team": 1,
+    "singles": 2
   },
   "bestResults": {
     "doubles": "5回戦敗退",
-    "team": "1回戦敗退"
+    "team": "1回戦敗退",
+    "singles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "北科大高",
@@ -40,23 +42,23 @@
   "topPlayers": [
     {
       "id": "西_拓郎_北科大高",
-      "appearances": 2
-    },
-    {
-      "id": "小杉_昂道_北科大高",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "根田_大地_北科大高",
+      "appearances": 4
+    },
+    {
+      "id": "小杉_昂道_北科大高",
+      "appearances": 3
+    },
+    {
+      "id": "倉重_南海_北科大高",
       "appearances": 2
     },
     {
       "id": "西村_優_北科大高",
       "appearances": 2
-    },
-    {
-      "id": "竹村_純生_北科大高",
-      "appearances": 1
     }
   ]
 }

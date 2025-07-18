@@ -1,27 +1,26 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 9,
+    "doubles": 10,
     "team": 1,
-    "singles": 1
+    "singles": 2
   },
   "bestResults": {
     "doubles": "3回戦敗退",
     "team": "2回戦敗退",
-    "singles": "1回戦敗退"
+    "singles": "3回戦敗退"
   },
   "recentlyResult": {
     "team": "大分商",
     "teamId": "ooitashou",
     "prefecture": "大分県",
     "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
     "playerIds": [
-      "小野_泰輝_大分商",
-      "加藤_蒼唯_大分商"
+      "衞藤_結生_大分商"
     ]
   },
   "historicalBest": {
@@ -53,12 +52,12 @@
       "appearances": 3
     },
     {
-      "id": "加藤_蒼唯_大分商",
-      "appearances": 2
+      "id": "衞藤_結生_大分商",
+      "appearances": 3
     },
     {
-      "id": "後藤_稔哉_大分商",
-      "appearances": 1
+      "id": "加藤_蒼唯_大分商",
+      "appearances": 2
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 29,
   "byCategory": {
-    "doubles": 21,
-    "singles": 2,
+    "doubles": 22,
+    "singles": 3,
     "team": 4
   },
   "bestResults": {
-    "doubles": "5回戦敗退",
+    "doubles": "ベスト4",
     "singles": "2回戦敗退",
     "team": "ベスト8"
   },
@@ -15,13 +15,13 @@
     "teamId": "wakayamakita",
     "prefecture": "和歌山県",
     "prefectureId": "wakayama",
-    "result": "5回戦敗退",
+    "result": "ベスト4",
     "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
     "playerIds": [
-      "下田_隼輝_和歌山北",
-      "山下_來空_和歌山北"
+      "後藤_優斗_和歌山北",
+      "中垣_敬斗_和歌山北"
     ]
   },
   "historicalBest": {
@@ -29,10 +29,14 @@
     "teamId": "wakayamakita",
     "prefecture": "和歌山県",
     "prefectureId": "wakayama",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "playerIds": [
+      "後藤_優斗_和歌山北",
+      "中垣_敬斗_和歌山北"
+    ]
   },
   "uniquePlayers": 28,
   "topPlayers": [
@@ -45,16 +49,16 @@
       "appearances": 3
     },
     {
-      "id": "秋田_駿登_和歌山北",
-      "appearances": 2
+      "id": "松場_淳生_和歌山北",
+      "appearances": 3
     },
     {
-      "id": "下田_隼輝_和歌山北",
-      "appearances": 2
+      "id": "後藤_優斗_和歌山北",
+      "appearances": 3
     },
     {
-      "id": "梶谷_大輝_和歌山北",
-      "appearances": 2
+      "id": "中垣_敬斗_和歌山北",
+      "appearances": 3
     }
   ]
 }

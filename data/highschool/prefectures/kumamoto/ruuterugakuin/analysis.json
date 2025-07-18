@@ -1,27 +1,26 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 7,
+    "doubles": 8,
     "team": 1,
-    "singles": 1
+    "singles": 2
   },
   "bestResults": {
     "doubles": "5回戦敗退",
     "team": "2回戦敗退",
-    "singles": "3回戦敗退"
+    "singles": "ベスト8"
   },
   "recentlyResult": {
     "team": "ルーテル学院",
     "teamId": "ruuterugakuin",
     "prefecture": "熊本県",
     "prefectureId": "kumamoto",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
     "playerIds": [
-      "野中_翔太_ルーテル学院",
-      "坂本_旭_ルーテル学院"
+      "野中_翔太_ルーテル学院"
     ]
   },
   "historicalBest": {
@@ -29,20 +28,19 @@
     "teamId": "ruuterugakuin",
     "prefecture": "熊本県",
     "prefectureId": "kumamoto",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
     "playerIds": [
-      "野中_翔太_ルーテル学院",
-      "坂本_旭_ルーテル学院"
+      "野中_翔太_ルーテル学院"
     ]
   },
   "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "野中_翔太_ルーテル学院",
-      "appearances": 4
+      "appearances": 6
     },
     {
       "id": "上村_光希_ルーテル学院",
@@ -53,11 +51,11 @@
       "appearances": 3
     },
     {
-      "id": "和田_楓_ルーテル学院",
-      "appearances": 1
+      "id": "藪田_陸人_ルーテル学院",
+      "appearances": 2
     },
     {
-      "id": "岩田_壮央_ルーテル学院",
+      "id": "和田_楓_ルーテル学院",
       "appearances": 1
     }
   ]

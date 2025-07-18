@@ -1,22 +1,23 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 5
+    "doubles": 6,
+    "singles": 1
   },
   "bestResults": {
-    "doubles": "5回戦敗退"
+    "doubles": "5回戦敗退",
+    "singles": "ベスト8"
   },
   "recentlyResult": {
     "team": "弘前実",
     "teamId": "hirosakijitsu",
     "prefecture": "青森県",
     "prefectureId": "aomori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "playerIds": [
-      "工藤_大和_弘前実",
       "樋口_拓海_弘前実"
     ]
   },
@@ -25,24 +26,23 @@
     "teamId": "hirosakijitsu",
     "prefecture": "青森県",
     "prefectureId": "aomori",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
     "playerIds": [
-      "澤田_透和_弘前実",
-      "竹村_華瑠_弘前実"
+      "樋口_拓海_弘前実"
     ]
   },
   "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "樋口_拓海_弘前実",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "工藤_大和_弘前実",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "羽場_碧_弘前実",

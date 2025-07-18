@@ -1,12 +1,14 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 7,
-    "team": 2
+    "doubles": 8,
+    "team": 2,
+    "singles": 1
   },
   "bestResults": {
     "doubles": "6回戦敗退",
-    "team": "2回戦敗退"
+    "team": "2回戦敗退",
+    "singles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "大牟田",
@@ -36,7 +38,7 @@
       "澤田_壮史_大牟田"
     ]
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "武藤_文太_大牟田",
@@ -47,15 +49,15 @@
       "appearances": 2
     },
     {
+      "id": "山下_凱空_大牟田",
+      "appearances": 2
+    },
+    {
       "id": "吉田_侑飛_大牟田",
       "appearances": 1
     },
     {
       "id": "林_頼志_大牟田",
-      "appearances": 1
-    },
-    {
-      "id": "野見山_侑也_大牟田",
       "appearances": 1
     }
   ]

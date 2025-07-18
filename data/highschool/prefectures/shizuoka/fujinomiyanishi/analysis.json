@@ -1,12 +1,25 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "bestResults": {
     "doubles": "3回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "富士宮西",
+    "teamId": "fujinomiyanishi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "playerIds": [
+      "淺倉_岳_富士宮西",
+      "鈴木_陽斗_富士宮西"
+    ]
+  },
   "historicalBest": {
     "team": "富士宮西",
     "teamId": "fujinomiyanishi",
@@ -24,15 +37,15 @@
   "uniquePlayers": 6,
   "topPlayers": [
     {
-      "id": "金子_槙人_富士宮西",
-      "appearances": 1
-    },
-    {
       "id": "鈴木_陽斗_富士宮西",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "淺倉_岳_富士宮西",
+      "appearances": 2
+    },
+    {
+      "id": "金子_槙人_富士宮西",
       "appearances": 1
     },
     {

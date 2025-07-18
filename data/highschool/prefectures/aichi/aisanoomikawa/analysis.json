@@ -1,12 +1,25 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "bestResults": {
     "doubles": "5回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "愛産大三河",
+    "teamId": "aisanoomikawa",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "playerIds": [
+      "大音_翔和_愛産大三河",
+      "松本_弥大_愛産大三河"
+    ]
+  },
   "historicalBest": {
     "team": "愛産大三河",
     "teamId": "aisanoomikawa",
@@ -21,7 +34,7 @@
       "松本_知大_愛産大三河"
     ]
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "伊藤_匠_愛産大三河",
