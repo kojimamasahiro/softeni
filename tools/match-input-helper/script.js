@@ -170,6 +170,9 @@
       if (!original) return;
 
       let segments = original.split(/[\s　]+/).filter(Boolean);
+      segments = segments
+        .map((s) => s.replace(/[0-9０-９]/g, ''))
+        .filter(Boolean);
 
       let teamNames = [];
       let prefectureNames = [];
