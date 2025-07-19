@@ -27,6 +27,14 @@ interface Props {
 }
 
 export default function TeamResults({ sortedTeams }: Props) {
+  if (sortedTeams.length === 0) {
+    return (
+      <p className="text-center text-gray-600 dark:text-gray-300 mt-6">
+        大会結果はまだ掲載されていません。
+      </p>
+    );
+  }
+
   return (
     <section className="mb-10">
       {sortedTeams.map(({ team, teamId, prefectureId, members }) => {
