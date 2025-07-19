@@ -361,7 +361,7 @@ const initialPlayers = [
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":201,"name":"若月・山本（謙桜クラブ）","information":[{"lastName":"若月","firstName":"優真","team":"謙桜クラブ","prefecture":"","playerId":null,"tempId":"若月_優真_謙桜クラブ"},{"lastName":"山本","firstName":"明希","team":"謙桜クラブ","prefecture":"","playerId":null,"tempId":"山本_明希_謙桜クラブ"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
-{"id":202,"name":"根本・渡邊","information":[{"lastName":"根本","firstName":"拓哉","team":"","prefecture":"","playerId":null,"tempId":"根本_拓哉"},{"lastName":"渡邊","firstName":"直生","team":"","prefecture":"","playerId":null,"tempId":"渡邊_直生"}],"category":"doubles"},
+{"id":202,"name":"根本・渡邊（日本信号）","information":[{"lastName":"根本","firstName":"拓哉","team":"日本信号","prefecture":"","playerId":null,"tempId":"根本_拓哉"},{"lastName":"渡邊","firstName":"直生","team":"日本信号","prefecture":"","playerId":null,"tempId":"渡邊_直生"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":203,"name":"寺西・山本（混合）","information":[{"lastName":"寺西","firstName":"蓮","team":"大沢野中学校","prefecture":"","playerId":null,"tempId":"寺西_蓮_大沢野中学校"},{"lastName":"山本","firstName":"勘太","team":"速星中学校","prefecture":"","playerId":null,"tempId":"山本_勘太_速星中学校"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
