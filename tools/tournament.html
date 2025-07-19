@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>トーナメント表</title>
+  <style>
+    .round { display: inline-block; margin-right: 40px; vertical-align: top; }
+    .match { border: 1px solid #ccc; padding: 8px; margin-bottom: 20px; cursor: pointer; }
+    .winner { background-color: #d0f0d0; }
+  </style>
+</head>
+<body>
+  <h1>トーナメント表</h1>
+  <div id="tournament"></div>
+  <button onclick="exportResults()">結果を出力</button>
+  <pre id="output"></pre>
+
+  <script>
+    const entries = [
+      { entryNo: 1, name: '坂口・野本（尽誠学園）' },
+      { entryNo: 2, name: '根岸・中尾（東北）' },
+      { entryNo: 3, name: '清水・山下（上宮）' },
+      { entryNo: 4, name: '伊藤・西（東福岡）' },
+    ];
+
+    const totalRounds = Math.log2(entries.length);
+    const matches = [];
+
+    function createMatch(round, matchIndex) {
+      const matchId = `R${round}-M${matchIndex}`;
+      if (!matches[round]) matches[round] = [];
+      matches[round][matchIndex] = { id: matchId, players: [null, null], winner: null };
+    }
+
+    function buildTournament() {
+      const container = document.getElementById('tournament');
+      for (let round = 0; round <= totalRounds; round++) {
+        const roundDiv = document.createElement('div');
+        roundDiv.className = 'round';
+        roundDiv.innerHTML = `<h3>${round === totalRounds ? '決勝' : `第${round + 1}回戦`}</h3>`;
+        const numMatches = Math.pow(2, totalRounds - round - 1);
+
+        for (let i = 0; i < numMatches; i++) {
+          createMatch(round, i);
+          const match = matches[round][i];
+
+          const matchDiv = document.createElement('div');
+          matchDiv.className = 'match';
+          matchDiv.id = match.id;
+          matchDiv.innerHTML = `
+            <div data-index="0">---</div>
+            <div data-index="1">---</div>
+          `;
+          matchDiv.onclick = (e) => {
+            const target = e.target.closest('div[data-index]');
+            if (!target) return;
+
+            const index = +target.dataset.index;
+            const selected = match.players[index];
+            if (!selected) return;
+
+            match.winner = selected;
+            Array.from(matchDiv.children).forEach(child => child.classList.remove('winner'));
+            target.classList.add('winner');
+
+            // 次のラウンドへ勝者を反映
+            if (round + 1 <= totalRounds) {
+              const nextMatchIndex = Math.floor(i / 2);
+              const nextSlot = i % 2;
+              matches[round + 1][nextMatchIndex].players[nextSlot] = selected;
+
+              const nextDiv = document.getElementById(matches[round + 1][nextMatchIndex].id);
+              if (nextDiv) {
+                nextDiv.children[nextSlot].textContent = selected.name;
+              }
+            }
+          };
+
+          roundDiv.appendChild(matchDiv);
+        }
+
+        container.appendChild(roundDiv);
+      }
+
+      // 初期ラウンドに選手を配置
+      for (let i = 0; i < entries.length; i++) {
+        const matchIndex = Math.floor(i / 2);
+        const playerIndex = i % 2;
+        const match = matches[0][matchIndex];
+        const entry = entries[i];
+        match.players[playerIndex] = entry;
+
+        const matchDiv = document.getElementById(match.id);
+        if (matchDiv) {
+          matchDiv.children[playerIndex].textContent = entry.name;
+        }
+      }
+    }
+
+    function exportResults() {
+      const results = [];
+      for (const round of matches) {
+        for (const match of round) {
+          if (match.winner) {
+            results.push({
+              matchId: match.id,
+              winner: match.winner.entryNo,
+              winnerName: match.winner.name,
+            });
+          }
+        }
+      }
+      document.getElementById('output').textContent = JSON.stringify(results, null, 2);
+    }
+
+    buildTournament();
+  </script>
+</body>
+</html>
