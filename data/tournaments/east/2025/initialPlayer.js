@@ -15,7 +15,7 @@ const initialPlayers = [
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":9,"name":"丸山・堅田（不二越）","information":[{"lastName":"丸山","firstName":"慈央","team":"不二越","prefecture":"","playerId":null,"tempId":"丸山_慈央_不二越"},{"lastName":"堅田","firstName":"愛都","team":"不二越","prefecture":"","playerId":null,"tempId":"堅田_愛都_不二越"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
-{"id":10,"name":"内田・野本（野本凌生）","information":[{"lastName":"内田","firstName":"陽斗","team":"野本凌生","prefecture":"","playerId":null,"tempId":"内田_陽斗_野本凌生"},{"lastName":"野本","firstName":"凌生","team":"野本凌生","prefecture":"","playerId":null,"tempId":"野本_凌生_野本凌生"}],"category":"doubles"},
+{"id":10,"name":"内田・野本（法政大学）","information":[{"lastName":"内田","firstName":"陽斗","team":"法政大学","prefecture":"","playerId":null,"tempId":"内田_陽斗_法政大学"},{"lastName":"野本","firstName":"凌生","team":"法政大学","prefecture":"","playerId":null,"tempId":"野本_凌生_法政大学"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":11,"name":"三橋・坂田（混合）","information":[{"lastName":"三橋","firstName":"渉","team":"プロテリアル","prefecture":"","playerId":null,"tempId":"三橋_渉_プロテリアル"},{"lastName":"坂田","firstName":"知己","team":"T-bonds","prefecture":"","playerId":null,"tempId":"坂田_知己_T-bonds"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
