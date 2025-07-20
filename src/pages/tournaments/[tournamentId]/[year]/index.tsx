@@ -74,11 +74,15 @@ export default function TournamentYearResultPage({
           noLink: false,
         };
       } else {
+        const [lastName = '', firstName = '', team = '所属不明'] =
+          id.split('_');
         const unknown = unknownPlayers[id];
         return {
           id,
-          name: unknown ? `${unknown.lastName}${unknown.firstName}` : id,
-          team: unknown?.team ?? '所属不明',
+          name: unknown
+            ? `${unknown.lastName}${unknown.firstName}`
+            : `${lastName}${firstName}`,
+          team: unknown?.team ?? team,
           noLink: true,
         };
       }

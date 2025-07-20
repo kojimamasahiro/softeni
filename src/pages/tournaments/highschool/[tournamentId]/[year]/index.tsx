@@ -496,7 +496,7 @@ export default function TournamentYearResultPage({
             </div>
           )}
 
-          <TeamResults sortedTeams={sortedTeams} />
+          <TeamResults sortedTeams={sortedTeams} shouldLinkTeams={true} />
 
           <div className="text-right mt-10 mb-2">
             <Link

@@ -24,9 +24,10 @@ interface TeamGroup {
 
 interface Props {
   sortedTeams: TeamGroup[];
+  shouldLinkTeams?: boolean;
 }
 
-export default function TeamResults({ sortedTeams }: Props) {
+export default function TeamResults({ sortedTeams, shouldLinkTeams }: Props) {
   if (sortedTeams.length === 0) {
     return (
       <p className="text-center text-gray-600 dark:text-gray-300 mt-6">
@@ -61,7 +62,7 @@ export default function TeamResults({ sortedTeams }: Props) {
             className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
           >
             <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-              {prefectureId && teamId ? (
+              {prefectureId && teamId && shouldLinkTeams ? (
                 <Link
                   href={`/highschool/${prefectureId}/${teamId}`}
                   className="text-base font-semibold text-blue-600 dark:text-blue-300 hover:underline"
