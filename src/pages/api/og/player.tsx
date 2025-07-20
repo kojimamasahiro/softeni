@@ -1,5 +1,5 @@
-import React from 'react';
 import { ImageResponse } from '@vercel/og';
+import Image from 'next/image';
 import { NextRequest } from 'next/server';
 
 export const config = {
@@ -20,11 +20,11 @@ export default function handler(req: NextRequest) {
           display: 'flex', // ✅ 追加
         }}
       >
-        {/* 背景画像 */}
-        <img
+        <Image
           src="https://softeni-pick.com/og/base.jpg"
-          width="600"
-          height="315"
+          alt="背景画像"
+          width={600}
+          height={315}
           style={{
             position: 'absolute',
             top: 0,
