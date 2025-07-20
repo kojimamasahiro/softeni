@@ -1,5 +1,4 @@
 import { ImageResponse } from '@vercel/og';
-import Image from 'next/image';
 import { NextRequest } from 'next/server';
 
 export const config = {
@@ -20,7 +19,8 @@ export default function handler(req: NextRequest) {
           display: 'flex', // ✅ 追加
         }}
       >
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="https://softeni-pick.com/og/base.jpg"
           alt="背景画像"
           width={600}
