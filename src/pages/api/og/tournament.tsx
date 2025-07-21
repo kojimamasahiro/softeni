@@ -18,17 +18,6 @@ const NAME_FONT_SIZE = 28;
 const TEAM_FONT_SIZE = 18;
 const PAIR_HEIGHT = 107;
 
-const overlayPaths = [
-  'base.png',
-  'qf1-t.png',
-  'qf2-b.png',
-  'qf3-b.png',
-  'qf4-t.png',
-  'sf1-t.png',
-  'sf2-b.png',
-  'final-t.png',
-];
-
 const leftPairs = [
   { name: '幡谷康平・端山羅行', team: 'ＮＴＴ東日本東京・稲門クラブ' },
   { name: '浅見竣一朗・安達宣', team: '早稲田大学' },
@@ -41,6 +30,29 @@ const rightPairs = [
   { name: '高橋拓己・広岡大河', team: '法政大学' },
   { name: '品川貴紀・早川和宏', team: '福井県庁' },
   { name: '田中康文・金子大祐', team: '厚木市役所' },
+];
+
+const leftScoreValues = ['4', '2', '2', '4', '4', '0', '4'];
+const rightScoreValues = ['2', '4', '4', '1', '3', '4', '1'];
+
+const leftScorePositions = [
+  { top: 175, left: 495 },
+  { top: 325, left: 495 },
+  { top: 380, left: 495 },
+  { top: 535, left: 495 },
+  { top: 230, left: 555 },
+  { top: 480, left: 555 },
+  { top: 330, left: 555 },
+];
+
+const rightScorePositions = [
+  { top: 175, left: 690 },
+  { top: 325, left: 690 },
+  { top: 380, left: 690 },
+  { top: 535, left: 690 },
+  { top: 230, left: 635 },
+  { top: 480, left: 635 },
+  { top: 330, left: 635 },
 ];
 
 const textStyle = {
@@ -134,47 +146,45 @@ function renderPairBlock(
 }
 
 function renderScoreBlocks(
-  scores: { top: number; left: number; value: string }[],
+  positions: { top: number; left: number }[],
+  values: string[],
 ) {
-  return scores.map((s, i) => (
+  return positions.map((pos, i) => (
     <div
       key={`score-${i}`}
       style={{
         position: 'absolute',
-        top: s.top,
-        left: s.left,
+        top: pos.top,
+        left: pos.left,
         fontSize: 20,
         color: '#000',
       }}
     >
-      {s.value}
+      {values[i]}
     </div>
   ));
+}
+
+function getOverlayPaths(topScores: string[], bottomScores: string[]) {
+  const overlayBase = ['base.png'];
+  const overlayLabels = ['qf1', 'qf2', 'qf3', 'qf4', 'sf1', 'sf2', 'final'];
+
+  const comparisons = overlayLabels.map((label, i) => {
+    const top = Number(topScores[i]);
+    const bottom = Number(bottomScores[i]);
+    if (top > bottom) return `${label}-t.png`;
+    if (top < bottom) return `${label}-b.png`;
+    return null; // 同点や未入力などの場合はスキップ（または fallback 可）
+  });
+
+  return overlayBase.concat(comparisons.filter((v): v is string => v !== null));
 }
 
 export default function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const name = searchParams.get('name') || '幡谷康平・端山羅行';
 
-  const leftScores = [
-    { top: 175, left: 495, value: '4' },
-    { top: 325, left: 495, value: '2' },
-    { top: 380, left: 495, value: '2' },
-    { top: 535, left: 495, value: '4' },
-    { top: 230, left: 555, value: '4' },
-    { top: 480, left: 555, value: '0' },
-    { top: 330, left: 555, value: '4' },
-  ];
-
-  const rightScores = [
-    { top: 175, left: 690, value: '2' },
-    { top: 325, left: 690, value: '4' },
-    { top: 380, left: 690, value: '4' },
-    { top: 535, left: 690, value: '1' },
-    { top: 230, left: 635, value: '3' },
-    { top: 480, left: 635, value: '4' },
-    { top: 330, left: 635, value: '1' },
-  ];
+  const overlayPaths = getOverlayPaths(leftScoreValues, rightScoreValues); // ←引数を top/bottom にリネームしただけ
 
   return new ImageResponse(
     (
@@ -209,8 +219,8 @@ export default function handler(req: NextRequest) {
           fontSize={NAME_FONT_SIZE}
         />
 
-        {renderScoreBlocks(leftScores)}
-        {renderScoreBlocks(rightScores)}
+        {renderScoreBlocks(leftScorePositions, leftScoreValues)}
+        {renderScoreBlocks(rightScorePositions, rightScoreValues)}
       </div>
     ),
     { width: WIDTH, height: HEIGHT },
