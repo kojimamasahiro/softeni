@@ -32,25 +32,25 @@ const rightPairs = [
   { name: '田中康文・金子大祐', team: '厚木市役所' },
 ];
 
-const leftScoreValues = ['4', '2', '2', '4', '4', '0', '4'];
-const rightScoreValues = ['2', '4', '4', '1', '3', '4', '1'];
+const topScoreValues = ['4', '2', '2', '4', '4', '3', '4'];
+const bottomScoreValues = ['2', '4', '4', '1', '0', '4', '1'];
 
-const leftScorePositions = [
+const topScorePositions = [
   { top: 175, left: 495 },
-  { top: 325, left: 495 },
-  { top: 380, left: 495 },
-  { top: 535, left: 495 },
+  { top: 385, left: 495 },
+  { top: 175, left: 690 },
+  { top: 385, left: 690 },
   { top: 230, left: 555 },
-  { top: 480, left: 555 },
+  { top: 230, left: 635 },
   { top: 330, left: 555 },
 ];
 
-const rightScorePositions = [
-  { top: 175, left: 690 },
+const bottomScorePositions = [
+  { top: 325, left: 495 },
+  { top: 535, left: 495 },
   { top: 325, left: 690 },
-  { top: 380, left: 690 },
   { top: 535, left: 690 },
-  { top: 230, left: 635 },
+  { top: 480, left: 555 },
   { top: 480, left: 635 },
   { top: 330, left: 635 },
 ];
@@ -184,7 +184,7 @@ export default function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const name = searchParams.get('name') || '幡谷康平・端山羅行';
 
-  const overlayPaths = getOverlayPaths(leftScoreValues, rightScoreValues); // ←引数を top/bottom にリネームしただけ
+  const overlayPaths = getOverlayPaths(topScoreValues, bottomScoreValues);
 
   return new ImageResponse(
     (
@@ -219,8 +219,8 @@ export default function handler(req: NextRequest) {
           fontSize={NAME_FONT_SIZE}
         />
 
-        {renderScoreBlocks(leftScorePositions, leftScoreValues)}
-        {renderScoreBlocks(rightScorePositions, rightScoreValues)}
+        {renderScoreBlocks(topScorePositions, topScoreValues)}
+        {renderScoreBlocks(bottomScorePositions, bottomScoreValues)}
       </div>
     ),
     { width: WIDTH, height: HEIGHT },
