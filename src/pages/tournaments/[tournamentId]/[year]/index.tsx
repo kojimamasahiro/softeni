@@ -227,11 +227,7 @@ export default function TournamentYearResultPage({
         title={`${meta.name} ${year}年 大会結果 | ソフトテニス情報`}
         description={`${meta.name} ${year}年の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
         url={pageUrl}
-        image={
-          meta.id === 'east' && parseInt(year, 10) === 2025
-            ? 'https://softeni-pick.com/api/og/tournament'
-            : 'https://softeni-pick.com/og-image.jpg'
-        }
+        image={`https://softeni-pick.com/api/og/tournament?tournamentId=${meta.id}&year=${year}`}
         type="article"
       />
 
