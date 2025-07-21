@@ -301,7 +301,7 @@ const initialPlayers = [
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":167,"name":"佐藤・大谷（札幌学院クラブ）","information":[{"lastName":"佐藤","firstName":"蒼人","team":"札幌学院クラブ","prefecture":"","playerId":null,"tempId":"佐藤_蒼人_札幌学院クラブ"},{"lastName":"大谷","firstName":"直輝","team":"札幌学院クラブ","prefecture":"","playerId":null,"tempId":"大谷_直輝_札幌学院クラブ"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
-{"id":168,"name":"小島・坂入（筑西クラブ）","information":[{"lastName":"小島","firstName":"大佑","team":"筑西クラブ","prefecture":"","playerId":null,"tempId":"小島_大佑_筑西クラブ"},{"lastName":"坂入","firstName":"裕次朗","team":"筑西クラブ","prefecture":"","playerId":null,"tempId":"坂入_裕次朗_筑西クラブ"}],"category":"doubles"},
+{"id":168,"name":"中野・坂入（筑西クラブ）","information":[{"lastName":"中野","firstName":"裕太","team":"筑西クラブ","prefecture":"","playerId":null,"tempId":"中野_裕太_筑西クラブ"},{"lastName":"坂入","firstName":"裕次朗","team":"筑西クラブ","prefecture":"","playerId":null,"tempId":"坂入_裕次朗_筑西クラブ"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":169,"name":"中平・髙田（東京ガス）","information":[{"lastName":"中平","firstName":"慎吾","team":"東京ガス","prefecture":"","playerId":null,"tempId":"中平_慎吾_東京ガス"},{"lastName":"髙田","firstName":"翼","team":"東京ガス","prefecture":"","playerId":null,"tempId":"髙田_翼_東京ガス"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
