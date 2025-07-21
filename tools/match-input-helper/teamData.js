@@ -11,7 +11,7 @@ const teamData = {
       lastName: '橋場',
       team: '法政大学',
     },
-    'yonekawa-yuto': { firstName: '悠翔', lastName: '米川', team: 'YONEX' },
+    'yonekawa-yuto': { firstName: '結翔', lastName: '米川', team: 'YONEX' },
     'hirooka-sora': { firstName: '宙', lastName: '広岡', team: 'NTT西日本' },
     'motokura-kentaro': {
       firstName: '健太郎',

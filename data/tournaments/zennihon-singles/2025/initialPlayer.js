@@ -2080,10 +2080,10 @@ const initialPlayers = [
     information: [
       {
         lastName: '米川',
-        firstName: '悠翔',
+        firstName: '結翔',
         team: 'YONEX',
         playerId: 'yonekawa-yuto',
-        tempId: '悠翔_米川_YONEX',
+        tempId: '結翔_米川_YONEX',
       },
     ],
   },
