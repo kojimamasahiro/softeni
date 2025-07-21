@@ -169,8 +169,8 @@ export default function handler(req: NextRequest) {
   const rightScores = [
     { top: 175, left: 690, value: '2' },
     { top: 325, left: 690, value: '4' },
-    { top: 380, left: 690, value: '2' },
-    { top: 535, left: 690, value: '4' },
+    { top: 380, left: 690, value: '4' },
+    { top: 535, left: 690, value: '1' },
     { top: 230, left: 635, value: '3' },
     { top: 480, left: 635, value: '4' },
     { top: 330, left: 635, value: '1' },
