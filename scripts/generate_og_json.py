@@ -20,7 +20,7 @@ def pair_name(info):
     return '・'.join(names)
 
 def pair_team(info):
-    teams = list({p['team'] for p in info})
+    teams = list(dict.fromkeys(p['team'] for p in info))  # 順序保持＋重複除去
     return teams[0] if len(teams) == 1 else '・'.join(teams)
 
 def generate_og_data(entries, matches_path, category):
