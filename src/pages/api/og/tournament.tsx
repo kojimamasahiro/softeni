@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
-export const config = {
-  runtime: 'edge',
-};
+import { ImageResponse } from '@vercel/og';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -157,66 +156,51 @@ function getOverlayPaths(topScores: string[], bottomScores: string[]) {
     const bottom = Number(bottomScores[i]);
     if (top > bottom) return `${label}-t.png`;
     if (top < bottom) return `${label}-b.png`;
-    return null; // 同点や未入力などの場合はスキップ（または fallback 可）
+    return null;
   });
 
   return overlayBase.concat(comparisons.filter((v): v is string => v !== null));
 }
 
-export default function handler(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const { tournamentId, year } = req.query;
 
-  function parseJsonParam<T>(key: string, fallback: T): T {
-    try {
-      const raw = searchParams.get(key);
-      return raw ? JSON.parse(raw) : fallback;
-    } catch {
-      return fallback;
-    }
+  if (typeof tournamentId !== 'string' || typeof year !== 'string') {
+    return redirectToFallbackImage(res);
   }
 
-  const leftPairs = parseJsonParam<{ name: string; team: string }[]>(
-    'leftPairs',
-    [
-      { name: '幡谷康平・端山羅行', team: 'ＮＴＴ東日本東京・稲門クラブ' },
-      { name: '浅見竣一朗・安達宣', team: '早稲田大学' },
-      { name: '齋藤翔一・桑山信', team: '日本信号' },
-      { name: '大村圭志朗・佐藤大和', team: 'アキム' },
-    ],
+  const jsonPath = path.resolve(
+    process.cwd(),
+    'data/tournaments',
+    tournamentId,
+    year,
+    'og.json',
   );
 
-  const rightPairs = parseJsonParam<{ name: string; team: string }[]>(
-    'rightPairs',
-    [
-      { name: '片岡暁紀・黒坂卓矢', team: '日本体育大学' },
-      { name: '高橋拓己・広岡大河', team: '法政大学' },
-      { name: '品川貴紀・早川和宏', team: '福井県庁' },
-      { name: '田中康文・金子大祐', team: '厚木市役所' },
-    ],
-  );
+  if (!fs.existsSync(jsonPath)) {
+    return redirectToFallbackImage(res);
+  }
 
-  const topScoreValues = parseJsonParam<string[]>('topScores', [
-    '4',
-    '2',
-    '2',
-    '4',
-    '4',
-    '3',
-    '4',
-  ]);
-  const bottomScoreValues = parseJsonParam<string[]>('bottomScores', [
-    '2',
-    '4',
-    '4',
-    '1',
-    '0',
-    '4',
-    '1',
-  ]);
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  } catch {
+    return redirectToFallbackImage(res);
+  }
 
-  const overlayPaths = getOverlayPaths(topScoreValues, bottomScoreValues);
+  const {
+    leftPairs = [],
+    rightPairs = [],
+    topScores = [],
+    bottomScores = [],
+  } = data;
 
-  return new ImageResponse(
+  const overlayPaths = getOverlayPaths(topScores, bottomScores);
+
+  const image = new ImageResponse(
     (
       <div
         style={{
@@ -237,13 +221,32 @@ export default function handler(req: NextRequest) {
           />
         ))}
 
-        {leftPairs.map((pair, i) => renderPairBlock(pair, i, LEFT))}
-        {rightPairs.map((pair, i) => renderPairBlock(pair, i, RIGHT))}
+        {leftPairs.map((pair: { name: string; team: string }, i: number) =>
+          renderPairBlock(pair, i, LEFT),
+        )}
+        {rightPairs.map((pair: { name: string; team: string }, i: number) =>
+          renderPairBlock(pair, i, RIGHT),
+        )}
 
-        {renderScoreBlocks(topScorePositions, topScoreValues)}
-        {renderScoreBlocks(bottomScorePositions, bottomScoreValues)}
+        {renderScoreBlocks(topScorePositions, topScores)}
+        {renderScoreBlocks(bottomScorePositions, bottomScores)}
       </div>
     ),
     { width: WIDTH, height: HEIGHT },
   );
+
+  res.setHeader('Content-Type', 'image/png');
+  res.status(200).end(Buffer.from(await image.arrayBuffer()));
+}
+
+async function redirectToFallbackImage(res: NextApiResponse) {
+  const fallbackImageUrl = 'https://softeni-pick.com/og-image.jpg';
+  try {
+    const response = await fetch(fallbackImageUrl);
+    const buffer = await response.arrayBuffer();
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.status(200).end(Buffer.from(buffer));
+  } catch {
+    res.status(500).send('Fallback image fetch failed');
+  }
 }
