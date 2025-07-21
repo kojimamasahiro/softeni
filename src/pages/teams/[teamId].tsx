@@ -25,7 +25,7 @@ type TeamInfo = {
 
 type EventResult = {
   tournament: string;
-  resultSummary: {
+  results: {
     playerIds: string[];
     result: string;
   }[];
@@ -73,7 +73,7 @@ export default function TeamResultsPage({ info, results }: Props) {
       totalPairs = 0;
 
     results.forEach((event) => {
-      const validResults = event.resultSummary.filter((r) =>
+      const validResults = event.results.filter((r) =>
         r.playerIds.every((pid) => pid in info.players),
       );
 
@@ -116,7 +116,7 @@ export default function TeamResultsPage({ info, results }: Props) {
     };
 
     results.forEach((event) => {
-      event.resultSummary.forEach((summry) => {
+      event.results.forEach((summry) => {
         summry.playerIds.forEach((pid) => {
           const player = info.players?.[pid];
           if (!player) return;
@@ -162,7 +162,7 @@ export default function TeamResultsPage({ info, results }: Props) {
             .map((m) => m.pair.join('-')),
         );
 
-        const resultWithNames = event.resultSummary
+        const resultWithNames = event.results
           .map((r) => {
             const playerNames = r.playerIds.map((pid) => {
               const player = info.players[pid];
