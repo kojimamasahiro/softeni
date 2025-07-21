@@ -182,7 +182,54 @@ function getOverlayPaths(topScores: string[], bottomScores: string[]) {
 
 export default function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const name = searchParams.get('name') || '幡谷康平・端山羅行';
+
+  function parseJsonParam<T>(key: string, fallback: T): T {
+    try {
+      const raw = searchParams.get(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch {
+      return fallback;
+    }
+  }
+
+  const leftPairs = parseJsonParam<{ name: string; team: string }[]>(
+    'leftPairs',
+    [
+      { name: '幡谷康平・端山羅行', team: 'ＮＴＴ東日本東京・稲門クラブ' },
+      { name: '浅見竣一朗・安達宣', team: '早稲田大学' },
+      { name: '齋藤翔一・桑山信', team: '日本信号' },
+      { name: '大村圭志朗・佐藤大和', team: 'アキム' },
+    ],
+  );
+
+  const rightPairs = parseJsonParam<{ name: string; team: string }[]>(
+    'rightPairs',
+    [
+      { name: '片岡暁紀・黒坂卓矢', team: '日本体育大学' },
+      { name: '高橋拓己・広岡大河', team: '法政大学' },
+      { name: '品川貴紀・早川和宏', team: '福井県庁' },
+      { name: '田中康文・金子大祐', team: '厚木市役所' },
+    ],
+  );
+
+  const topScoreValues = parseJsonParam<string[]>('topScores', [
+    '4',
+    '2',
+    '2',
+    '4',
+    '4',
+    '3',
+    '4',
+  ]);
+  const bottomScoreValues = parseJsonParam<string[]>('bottomScores', [
+    '2',
+    '4',
+    '4',
+    '1',
+    '0',
+    '4',
+    '1',
+  ]);
 
   const overlayPaths = getOverlayPaths(topScoreValues, bottomScoreValues);
 
@@ -209,15 +256,6 @@ export default function handler(req: NextRequest) {
 
         {leftPairs.map((pair, i) => renderPairBlock(pair, i, LEFT))}
         {rightPairs.map((pair, i) => renderPairBlock(pair, i, RIGHT))}
-
-        <SpacedText
-          key="winner"
-          text={name}
-          top={80}
-          left={425}
-          width={TEXT_WIDTH}
-          fontSize={NAME_FONT_SIZE}
-        />
 
         {renderScoreBlocks(topScorePositions, topScoreValues)}
         {renderScoreBlocks(bottomScorePositions, bottomScoreValues)}
