@@ -1,6 +1,63 @@
 {
   "matches": [
     {
+      "tournament": "第80回 東日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月19日(土)〜20日(日)",
+      "location": "富山県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "3回戦敗退",
+      "partner": "mori-ryosuke",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "福井（不二越）・大鋸谷（小矢部市連盟）",
+          "opponents": [
+            {
+              "name": "福井",
+              "team": "不二越",
+              "playerId": null
+            },
+            {
+              "name": "大鋸谷",
+              "team": "小矢部市連盟",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "岩城（札幌学院大学）・太田（札幌学院大学）",
+          "opponents": [
+            {
+              "name": "岩城",
+              "team": "札幌学院大学",
+              "playerId": null
+            },
+            {
+              "name": "太田",
+              "team": "札幌学院大学",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "1-4",
+          "games": {
+            "won": 1,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",

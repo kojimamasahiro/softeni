@@ -2,6 +2,151 @@
   "highlight": "2025 KOREA CUPでは、上松選手と組み、見事優勝を果たしました。今後の国際大会での活躍が期待されます。",
   "matches": [
     {
+      "tournament": "第80回 東日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月19日(土)〜20日(日)",
+      "location": "富山県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "ベスト8",
+      "partner": "kataoka-aki",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "五十嵐（新潟産大附）・小林（新潟産大附）",
+          "opponents": [
+            {
+              "name": "五十嵐",
+              "team": "新潟産大附",
+              "playerId": null
+            },
+            {
+              "name": "小林",
+              "team": "新潟産大附",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "白井（高岡商）・木村（高岡商）",
+          "opponents": [
+            {
+              "name": "白井",
+              "team": "高岡商",
+              "playerId": null
+            },
+            {
+              "name": "木村",
+              "team": "高岡商",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "中平（東京ガス）・髙田（東京ガス）",
+          "opponents": [
+            {
+              "name": "中平",
+              "team": "東京ガス",
+              "playerId": null
+            },
+            {
+              "name": "髙田",
+              "team": "東京ガス",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "松本（川口市役所）・菅野（川口市役所）",
+          "opponents": [
+            {
+              "name": "松本",
+              "team": "川口市役所",
+              "playerId": null
+            },
+            {
+              "name": "菅野",
+              "team": "川口市役所",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "中村（明治大学）・岡田（明治大学）",
+          "opponents": [
+            {
+              "name": "中村",
+              "team": "明治大学",
+              "playerId": null
+            },
+            {
+              "name": "岡田",
+              "team": "明治大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": 4,
+            "lost": 3
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "高橋（法政大学）・広岡（法政大学）",
+          "opponents": [
+            {
+              "name": "高橋",
+              "team": "法政大学",
+              "playerId": null
+            },
+            {
+              "name": "広岡",
+              "team": "法政大学",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": 2,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",

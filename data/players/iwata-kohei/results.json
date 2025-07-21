@@ -1,120 +1,221 @@
 {
-    "highlight": "大学生ながら、全日本シングルス選手権でベスト8に進出し、将来が非常に楽しみな選手です。",
-    "matches": [
+  "highlight": "大学生ながら、全日本シングルス選手権でベスト8に進出し、将来が非常に楽しみな選手です。",
+  "matches": [
+    {
+      "tournament": "第80回 東日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月19日(土)〜20日(日)",
+      "location": "富山県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "5回戦敗退",
+      "partner": "yabiku-hiromu",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
         {
-            "tournament": "第32回 全日本シングルス選手権大会",
-            "dateRange": "2025年5月17日(土)~5月18日(日)",
-            "location": "生目の杜運動公園",
-            "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
-            "format": "tournament",
-            "finalResult": "ベスト8",
-            "partner": null,
-            "groupStage": null,
-            "finalStage": null,
-            "results": [
-                {
-                    "round": "2回戦",
-                    "opponent": "草野（田村高校）",
-                    "opponents": [
-                        {
-                            "name": "草野",
-                            "team": "田村高校",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-3",
-                    "games": {
-                        "won": "4",
-                        "lost": "3"
-                    }
-                },
-                {
-                    "round": "3回戦",
-                    "opponent": "濱田（太平洋工業）",
-                    "opponents": [
-                        {
-                            "name": "濱田",
-                            "team": "太平洋工業",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-3",
-                    "games": {
-                        "won": "4",
-                        "lost": "3"
-                    }
-                },
-                {
-                    "round": "4回戦",
-                    "opponent": "岩崎（國學院大学）",
-                    "opponents": [
-                        {
-                            "name": "岩崎",
-                            "team": "國學院大学",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-3",
-                    "games": {
-                        "won": "4",
-                        "lost": "3"
-                    }
-                },
-                {
-                    "round": "5回戦",
-                    "opponent": "小山（明治大学）",
-                    "opponents": [
-                        {
-                            "name": "小山",
-                            "team": "明治大学",
-                            "playerId": null
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-2",
-                    "games": {
-                        "won": "4",
-                        "lost": "2"
-                    }
-                },
-                {
-                    "round": "6回戦",
-                    "opponent": "上岡（Up Ｒise）",
-                    "opponents": [
-                        {
-                            "name": "上岡",
-                            "team": "Up Ｒise",
-                            "playerId": "ueoka-shunsuke"
-                        }
-                    ],
-                    "result": "勝ち",
-                    "score": "4-1",
-                    "games": {
-                        "won": "4",
-                        "lost": "1"
-                    }
-                },
-                {
-                    "round": "準々決勝",
-                    "opponent": "植田（高田商業高校）",
-                    "opponents": [
-                        {
-                            "name": "植田",
-                            "team": "高田商業高校",
-                            "playerId": "ueda-rio"
-                        }
-                    ],
-                    "result": "負け",
-                    "score": "3-4",
-                    "games": {
-                        "won": "3",
-                        "lost": "4"
-                    }
-                }
-            ]
+          "round": "2回戦",
+          "opponent": "前川（高岡商）・角崎（高岡商）",
+          "opponents": [
+            {
+              "name": "前川",
+              "team": "高岡商",
+              "playerId": null
+            },
+            {
+              "name": "角崎",
+              "team": "高岡商",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "石田（前橋商）・佐々木（前橋商）",
+          "opponents": [
+            {
+              "name": "石田",
+              "team": "前橋商",
+              "playerId": null
+            },
+            {
+              "name": "佐々木",
+              "team": "前橋商",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "相山（東京経済大学）・諸喜田（東京経済大学）",
+          "opponents": [
+            {
+              "name": "相山",
+              "team": "東京経済大学",
+              "playerId": null
+            },
+            {
+              "name": "諸喜田",
+              "team": "東京経済大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "米川（ヨネックス）・荒木（ヨネックス）",
+          "opponents": [
+            {
+              "name": "米川",
+              "team": "ヨネックス",
+              "playerId": "yonekawa-yuto"
+            },
+            {
+              "name": "荒木",
+              "team": "ヨネックス",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": 2,
+            "lost": 4
+          }
         }
-    ]
+      ]
+    },
+    {
+      "tournament": "第32回 全日本シングルス選手権大会",
+      "dateRange": "2025年5月17日(土)~5月18日(日)",
+      "location": "生目の杜運動公園",
+      "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/",
+      "format": "tournament",
+      "finalResult": "ベスト8",
+      "partner": null,
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "草野（田村高校）",
+          "opponents": [
+            {
+              "name": "草野",
+              "team": "田村高校",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": "4",
+            "lost": "3"
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "濱田（太平洋工業）",
+          "opponents": [
+            {
+              "name": "濱田",
+              "team": "太平洋工業",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": "4",
+            "lost": "3"
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "岩崎（國學院大学）",
+          "opponents": [
+            {
+              "name": "岩崎",
+              "team": "國學院大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-3",
+          "games": {
+            "won": "4",
+            "lost": "3"
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "小山（明治大学）",
+          "opponents": [
+            {
+              "name": "小山",
+              "team": "明治大学",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": "4",
+            "lost": "2"
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "上岡（Up Ｒise）",
+          "opponents": [
+            {
+              "name": "上岡",
+              "team": "Up Ｒise",
+              "playerId": "ueoka-shunsuke"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": "4",
+            "lost": "1"
+          }
+        },
+        {
+          "round": "準々決勝",
+          "opponent": "植田（高田商業高校）",
+          "opponents": [
+            {
+              "name": "植田",
+              "team": "高田商業高校",
+              "playerId": "ueda-rio"
+            }
+          ],
+          "result": "負け",
+          "score": "3-4",
+          "games": {
+            "won": "3",
+            "lost": "4"
+          }
+        }
+      ]
+    }
+  ]
 }

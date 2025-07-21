@@ -2,6 +2,129 @@
   "highlight": "橋場選手はまだ大学生ながら、今年の全日本シングルス選手権で準優勝を果たし、将来が非常に楽しみな選手です。",
   "matches": [
     {
+      "tournament": "第80回 東日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月19日(土)〜20日(日)",
+      "location": "富山県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "6回戦敗退",
+      "partner": "菊山 太陽",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "丸山（松本市協会）・池井（東御協会）",
+          "opponents": [
+            {
+              "name": "丸山",
+              "team": "松本市協会",
+              "playerId": null
+            },
+            {
+              "name": "池井",
+              "team": "東御協会",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "村端（筑西クラブ）・渡邊（コマツ小山）",
+          "opponents": [
+            {
+              "name": "村端",
+              "team": "筑西クラブ",
+              "playerId": null
+            },
+            {
+              "name": "渡邊",
+              "team": "コマツ小山",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "草野（磐城三和STC）・佐藤（せせらぎクラブ）",
+          "opponents": [
+            {
+              "name": "草野",
+              "team": "磐城三和STC",
+              "playerId": null
+            },
+            {
+              "name": "佐藤",
+              "team": "せせらぎクラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "浦田（明電舎）・鈴木（明電舎）",
+          "opponents": [
+            {
+              "name": "浦田",
+              "team": "明電舎",
+              "playerId": null
+            },
+            {
+              "name": "鈴木",
+              "team": "明電舎",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "品川（福井県庁）・早川（福井県庁）",
+          "opponents": [
+            {
+              "name": "品川",
+              "team": "福井県庁",
+              "playerId": null
+            },
+            {
+              "name": "早川",
+              "team": "福井県庁",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "2-4",
+          "games": {
+            "won": 2,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",

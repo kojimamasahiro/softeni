@@ -2,11 +2,11 @@ import json
 import os
 
 # 設定値
-TOURNAMENT_ID = "west"
+TOURNAMENT_ID = "east"
 YEAR = 2025
-TOURNAMENT_NAME = "第79回 西日本ソフトテニス選手権大会"
-DATE_RANGE = "2025年7月12日(土)〜13日(日)"
-LOCATION = "奈良県"
+TOURNAMENT_NAME = "第80回 東日本ソフトテニス選手権大会"
+DATE_RANGE = "2025年7月19日(土)〜20日(日)"
+LOCATION = "富山県"
 LINK = ""
 FORMAT = "tournament"
 

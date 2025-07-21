@@ -1,6 +1,129 @@
 {
   "matches": [
     {
+      "tournament": "第80回 東日本ソフトテニス選手権大会",
+      "dateRange": "2025年7月19日(土)〜20日(日)",
+      "location": "富山県",
+      "link": "",
+      "format": "tournament",
+      "finalResult": "6回戦敗退",
+      "partner": "荒木 駿",
+      "groupStage": null,
+      "finalStage": null,
+      "results": [
+        {
+          "round": "2回戦",
+          "opponent": "石崎（福光協会）・守越（福光協会）",
+          "opponents": [
+            {
+              "name": "石崎",
+              "team": "福光協会",
+              "playerId": null
+            },
+            {
+              "name": "守越",
+              "team": "福光協会",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "3回戦",
+          "opponent": "井上（碓氷安中クラブ）・早川（碓氷安中クラブ）",
+          "opponents": [
+            {
+              "name": "井上",
+              "team": "碓氷安中クラブ",
+              "playerId": null
+            },
+            {
+              "name": "早川",
+              "team": "碓氷安中クラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-1",
+          "games": {
+            "won": 4,
+            "lost": 1
+          }
+        },
+        {
+          "round": "4回戦",
+          "opponent": "米澤（兼六クラブ）・奥野（兼六クラブ）",
+          "opponents": [
+            {
+              "name": "米澤",
+              "team": "兼六クラブ",
+              "playerId": null
+            },
+            {
+              "name": "奥野",
+              "team": "兼六クラブ",
+              "playerId": null
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-0",
+          "games": {
+            "won": 4,
+            "lost": 0
+          }
+        },
+        {
+          "round": "5回戦",
+          "opponent": "岩田（日本体育大学）・屋比久（日本体育大学）",
+          "opponents": [
+            {
+              "name": "岩田",
+              "team": "日本体育大学",
+              "playerId": "iwata-kohei"
+            },
+            {
+              "name": "屋比久",
+              "team": "日本体育大学",
+              "playerId": "yabiku-hiromu"
+            }
+          ],
+          "result": "勝ち",
+          "score": "4-2",
+          "games": {
+            "won": 4,
+            "lost": 2
+          }
+        },
+        {
+          "round": "6回戦",
+          "opponent": "田中（厚木市役所）・金子（厚木市役所）",
+          "opponents": [
+            {
+              "name": "田中",
+              "team": "厚木市役所",
+              "playerId": null
+            },
+            {
+              "name": "金子",
+              "team": "厚木市役所",
+              "playerId": null
+            }
+          ],
+          "result": "負け",
+          "score": "3-4",
+          "games": {
+            "won": 3,
+            "lost": 4
+          }
+        }
+      ]
+    },
+    {
       "tournament": "第6回 全日本ミックスダブルス選手権大会",
       "dateRange": "2025年6月14日(土)〜15日(日)",
       "location": "広島県",
