@@ -18,11 +18,13 @@ interface Props {
 function MatchGroup({
   name,
   matches,
+  entryNo,
   searchQuery,
   filter,
   eliminatedLabel,
 }: {
   name: string;
+  entryNo: string;
   matches: NonNullable<TournamentYearData['matches']>;
   searchQuery: string;
   filter: 'all' | 'top8' | 'winners';
@@ -69,7 +71,7 @@ function MatchGroup({
       >
         <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
           <span>
-            {name}
+            {entryNo}. {name}
             {finalLabel && (
               <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
                 {finalLabel}
@@ -233,6 +235,7 @@ export default function MatchResults({
           <MatchGroup
             key={name}
             name={name}
+            entryNo={matchGroup[0]?.entryNo ?? ''}
             matches={matchGroup}
             searchQuery={searchQuery}
             filter={filter}
