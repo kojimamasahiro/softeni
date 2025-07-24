@@ -60,24 +60,6 @@ export default function EntryOverview({ entries }: Props) {
           <div key={category}>
             <h3 className="text-l font-bold mt-10 mb-2">{label}</h3>
 
-            {/* 出場統計（団体は非表示） */}
-            {category !== 'team' && (
-              <>
-                <ul className="list-disc list-inside text-sm mb-3">
-                  <li>エントリー数：{stats.entryCount}</li>
-                  <li>出場チーム数：{stats.teamCount}校</li>
-                  <li>出場選手数：{stats.playerCount}名</li>
-                </ul>
-                <ul className="list-disc list-inside text-sm columns-2 md:columns-3 mb-3">
-                  {sortedTeams.map(([team, count]) => (
-                    <li key={team}>
-                      {team}（{count}名）
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-
             {/* 出場選手一覧 */}
             <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
               {entryList
@@ -111,6 +93,24 @@ export default function EntryOverview({ entries }: Props) {
                 })
                 .join('\n')}
             </pre>
+
+            {/* 出場統計（団体は非表示） */}
+            {category !== 'team' && (
+              <>
+                <ul className="list-disc list-inside text-sm mt-3 mb-3">
+                  <li>エントリー数：{stats.entryCount}</li>
+                  <li>出場チーム数：{stats.teamCount}校</li>
+                  <li>出場選手数：{stats.playerCount}名</li>
+                </ul>
+                <ul className="list-disc list-inside text-sm columns-2 md:columns-3 mb-3">
+                  {sortedTeams.map(([team, count]) => (
+                    <li key={team}>
+                      {team}（{count}名）
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         );
       })}

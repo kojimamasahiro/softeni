@@ -124,8 +124,6 @@ export default function EntryDataPage({
           </ul>
         </section>
 
-        <EntryOverview entries={entries} />
-
         <h2 className="text-xl font-semibold mt-8 mb-2">出場選手データ</h2>
         <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
           {jsonStr}
@@ -157,6 +155,8 @@ export default function EntryDataPage({
             </button>
           </>
         )}
+
+        <EntryOverview entries={entries} />
 
         {/* ✅ 戻るリンク 差分 */}
         <div className="mt-6">
