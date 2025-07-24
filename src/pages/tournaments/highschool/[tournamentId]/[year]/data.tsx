@@ -9,15 +9,19 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 
-interface PlayerEntry {
-  id: number | string;
-  name: string;
+interface EntryInfo {
+  entryNo: number;
   information: {
     lastName: string;
     firstName: string;
     team: string;
-    tempId: string;
+    playerId?: string;
+    tempId?: string;
+    prefecture?: string;
   }[];
+  team?: string; // 団体の場合
+  prefecture?: string; // 団体の場合
+  type?: string;
 }
 
 interface TournamentMeta {
@@ -49,7 +53,7 @@ interface MatchResult {
 interface Props {
   tournamentId: string;
   year: string;
-  entries: PlayerEntry[];
+  entries: Record<string, EntryInfo[]>;
   matches: MatchResult[] | null;
   meta: TournamentMeta;
 }
@@ -118,6 +122,64 @@ export default function EntryDataPage({
             </li>
           </ul>
         </section>
+
+        <h2 className="text-xl font-semibold mt-10 mb-2">出場選手一覧</h2>
+
+        {/* ダブルス */}
+        {entries.doubles?.length > 0 && (
+          <>
+            <h3 className="font-bold mt-4 mb-2">【ダブルス出場選手】</h3>
+            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
+              {entries.doubles
+                .map((entry) => {
+                  const names = entry.information.map(
+                    (p) => `${p.lastName}${p.firstName}`,
+                  );
+                  const teams = entry.information.map((p) => p.team);
+                  const teamSet = new Set(teams);
+                  const pairLabel =
+                    teamSet.size === 1
+                      ? `${names.join('・')}（${teams[0]}）`
+                      : entry.information
+                          .map(
+                            (p) => `${p.lastName}${p.firstName}（${p.team}）`,
+                          )
+                          .join('・');
+                  return `${entry.entryNo}.　${pairLabel}`;
+                })
+                .join('\n')}
+            </pre>
+          </>
+        )}
+
+        {/* シングルス */}
+        {entries.singles?.length > 0 && (
+          <>
+            <h3 className="font-bold mt-6 mb-2">【シングルス出場選手】</h3>
+            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
+              {entries.singles
+                .map((entry) => {
+                  const p = entry.information[0];
+                  return `${entry.entryNo}.　${p.lastName}${p.firstName}（${p.team}）`;
+                })
+                .join('\n')}
+            </pre>
+          </>
+        )}
+
+        {/* 団体 */}
+        {entries.team?.length > 0 && (
+          <>
+            <h3 className="font-bold mt-6 mb-2">【団体出場チーム】</h3>
+            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
+              {entries.team
+                .map((entry) => {
+                  return `${entry.entryNo}.　${entry.team}（${entry.prefecture}）`;
+                })
+                .join('\n')}
+            </pre>
+          </>
+        )}
 
         <h2 className="text-xl font-semibold mt-8 mb-2">出場選手データ</h2>
         <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
