@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import EntryOverview from '@/components/EntryOverview';
 
 interface EntryInfo {
   entryNo: number;
@@ -71,18 +72,18 @@ export default function EntryDataPage({
     <>
       <MetaHead
         title={`${meta.name} ${year} 大会データ（JSON形式） - ソフトテニス情報`}
-        description={`${meta.name} ${year} 年の大会出場選手データ（JSON形式）を掲載。非営利目的の活用が可能です。`}
-        url={`https://softeni-pick.com/tournaments/highschool/${tournamentId}/${year}/data`} // 差分
+        description={`${meta.name} ${year} 年の大会出場選手データを掲載。非営利目的の活用が可能です。`}
+        url={`https://softeni-pick.com/tournaments/highschool/${tournamentId}/${year}/data`}
         type="article"
       />
 
       <Head>
         <title>
-          {meta.name} {year} 大会データ（JSON形式） | ソフトテニス情報
+          {meta.name} {year} 大会データ | ソフトテニス情報
         </title>
         <meta
           name="description"
-          content={`${meta.name} ${year} 年の大会データ（JSON形式）を掲載しています。`}
+          content={`${meta.name} ${year} 年の大会データを掲載しています。`}
         />
       </Head>
 
@@ -103,14 +104,14 @@ export default function EntryDataPage({
         />
 
         <h1 className="text-2xl font-bold mb-4">
-          {meta.name} {year}年 出場選手データ（JSON形式）
+          {meta.name} {year}年 出場選手データ
         </h1>
 
         {/* ✅ 導入説明 */}
         <section className="text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
           <p className="mb-2">
             このページでは、<strong>{meta.name}</strong>（{year}
-            年）に出場した選手・ペアの情報をJSON形式で掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
+            年）に出場した選手・ペアの情報を掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
           </p>
           <ul className="list-disc list-inside mb-2">
             <li>個人利用、非営利目的での使用は自由です。</li>
@@ -123,63 +124,7 @@ export default function EntryDataPage({
           </ul>
         </section>
 
-        <h2 className="text-xl font-semibold mt-10 mb-2">出場選手一覧</h2>
-
-        {/* ダブルス */}
-        {entries.doubles?.length > 0 && (
-          <>
-            <h3 className="font-bold mt-4 mb-2">【ダブルス出場選手】</h3>
-            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
-              {entries.doubles
-                .map((entry) => {
-                  const names = entry.information.map(
-                    (p) => `${p.lastName}${p.firstName}`,
-                  );
-                  const teams = entry.information.map((p) => p.team);
-                  const teamSet = new Set(teams);
-                  const pairLabel =
-                    teamSet.size === 1
-                      ? `${names.join('・')}（${teams[0]}）`
-                      : entry.information
-                          .map(
-                            (p) => `${p.lastName}${p.firstName}（${p.team}）`,
-                          )
-                          .join('・');
-                  return `${entry.entryNo}.　${pairLabel}`;
-                })
-                .join('\n')}
-            </pre>
-          </>
-        )}
-
-        {/* シングルス */}
-        {entries.singles?.length > 0 && (
-          <>
-            <h3 className="font-bold mt-6 mb-2">【シングルス出場選手】</h3>
-            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
-              {entries.singles
-                .map((entry) => {
-                  const p = entry.information[0];
-                  return `${entry.entryNo}.　${p.lastName}${p.firstName}（${p.team}）`;
-                })
-                .join('\n')}
-            </pre>
-          </>
-        )}
-
-        {/* 団体 */}
-        {entries.team?.length > 0 && (
-          <>
-            <h3 className="font-bold mt-6 mb-2">【団体出場チーム】</h3>
-            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
-              {entries.team
-                .map((entry) => {
-                  return `${entry.entryNo}.　${entry.team}（${entry.prefecture}）`;
-                })
-                .join('\n')}
-            </pre>
-          </>
-        )}
+        <EntryOverview entries={entries} />
 
         <h2 className="text-xl font-semibold mt-8 mb-2">出場選手データ</h2>
         <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">

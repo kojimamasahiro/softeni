@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
-import Statistics from '@/components/Tournament/Statistics';
 import TeamResults from '@/components/Tournament/TeamResults';
 import { getAllPlayers } from '@/lib/players';
 import { resultPriority } from '@/lib/utils';
@@ -22,37 +21,18 @@ import {
   TournamentYearData,
 } from '@/types/index';
 
-type EntryInformation = {
-  lastName: string;
-  firstName: string;
-  team: string;
-  playerId?: string | null;
-  tempId?: string;
-  prefecture?: string;
-};
-
-type Entry = {
+interface EntryInfo {
   entryNo: number;
-  information: EntryInformation[];
-};
-
-type StandingEntry = {
-  id: number;
-  name: string;
-  wins: number;
-  losses: number;
-  points: number;
-  scoreDiff: number;
-  rank: number;
-};
-
-type StandingGroup = StandingEntry[];
-
-type Standings = {
-  [category: string]: {
-    [groupName: string]: StandingGroup;
-  };
-};
+  information: {
+    lastName: string;
+    firstName: string;
+    team: string;
+    playerId?: string;
+    tempId?: string;
+    prefecture?: string;
+  }[];
+  type?: string;
+}
 
 interface TournamentYearResultPageProps {
   year: string;
@@ -63,7 +43,7 @@ interface TournamentYearResultPageProps {
     string,
     { firstName: string; lastName: string; team: string; displayTeam?: string }
   >;
-  hasEntries: boolean;
+  entriesByCategory: Record<string, EntryInfo[]> | null;
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
   highlight: string | null;
 }
@@ -74,7 +54,7 @@ export default function TournamentYearResultPage({
   data,
   allPlayers,
   unknownPlayers,
-  hasEntries,
+  entriesByCategory,
   teamMap,
   highlight,
 }: TournamentYearResultPageProps) {
@@ -90,18 +70,13 @@ export default function TournamentYearResultPage({
     matches.some((m) => 'category' in m) ||
     results.some((r) => 'category' in r);
 
-  const availableCategories = hasCategoryField
-    ? Array.from(
-        new Set([
-          ...matches.map((m) => m.category).filter(Boolean),
-          ...results.map((r) => r.category).filter(Boolean),
-        ]),
-      )
-    : ['default'];
+  const availableCategories = Object.keys(entriesByCategory ?? []);
+  const defaultCategory = availableCategories.includes('doubles')
+    ? 'doubles'
+    : (availableCategories[0] ?? ''); // fallback
 
-  const [selectedCategory, setSelectedCategory] = useState(
-    availableCategories[0],
-  );
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>(defaultCategory);
 
   useEffect(() => {
     if (!hasCategoryField) return;
@@ -278,7 +253,6 @@ export default function TournamentYearResultPage({
   });
 
   const allNames = [...new Set(matches.map((m) => m.name))];
-  const totalMatches = filteredMatches.filter((m) => m.result === 'win').length;
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -296,8 +270,6 @@ export default function TournamentYearResultPage({
 
   const seenPlayers = new Set<string>();
   const teamCounter: Record<string, number> = {};
-  let totalGamesWon = 0;
-  let totalGamesLost = 0;
 
   function findOpponentById(id: string): MatchOpponent | null {
     for (const match of filteredMatches) {
@@ -309,13 +281,6 @@ export default function TournamentYearResultPage({
   }
 
   for (const match of filteredMatches) {
-    if (match.result === 'win') {
-      const won = parseInt(match.games.won, 10);
-      const lost = parseInt(match.games.lost, 10);
-      if (!isNaN(won)) totalGamesWon += won;
-      if (!isNaN(lost)) totalGamesLost += lost;
-    }
-
     if (match.category === 'team') {
       // 団体戦の場合
       if (match.team) {
@@ -338,8 +303,6 @@ export default function TournamentYearResultPage({
     }
   }
 
-  const totalPlayers = seenPlayers.size;
-  const uniqueTeams = Object.keys(teamCounter).length;
   const sorted = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
   const rankedTeams: { rank: number; team: string; count: number }[] = [];
   let currentRank = 1;
@@ -452,13 +415,14 @@ export default function TournamentYearResultPage({
                 {data.endDate}
               </p>
             )}
-            {hasEntries && (
+
+            {entriesByCategory && (
               <p className="mt-2 text-sm">
                 <Link
                   href={`/tournaments/highschool/${meta.id}/${year}/data`}
                   className="text-blue-600 hover:underline"
                 >
-                  ▶ 出場選手データ（JSON形式）
+                  ▶ 出場選手データ
                 </Link>
               </p>
             )}
@@ -506,18 +470,6 @@ export default function TournamentYearResultPage({
               大会結果一覧
             </Link>
           </div>
-
-          {/* Statistics（団体戦では非表示） */}
-          {filteredMatches.length > 0 && selectedCategory !== 'team' && (
-            <Statistics
-              totalPlayers={totalPlayers}
-              uniqueTeams={uniqueTeams}
-              totalMatches={totalMatches}
-              totalGamesWon={totalGamesWon}
-              totalGamesLost={totalGamesLost}
-              rankedTeams={rankedTeams}
-            />
-          )}
 
           {/* MatchResults（常に表示） */}
           {filteredMatches.length > 0 && (
@@ -589,33 +541,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const entriesPath = path.join(basePath, tournamentId, year, 'entries.json');
     const hasEntries = fs.existsSync(entriesPath);
 
-    const entriesByCategory: Record<
-      string,
-      { entryNo: number; playerIds: string[] }[]
-    > = {};
+    const entriesByCategory: Record<string, EntryInfo[]> = {};
 
     if (hasEntries) {
       const raw = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
 
-      // カテゴリがあるかどうか判定
-      if (Array.isArray(raw)) {
-        // カテゴリがない単一リスト形式
-        entriesByCategory['default'] = raw.map((e: Entry) => ({
-          entryNo: Number(e.entryNo),
-          playerIds: (e.information ?? [])
-            .map((info) => info.playerId || info.tempId)
-            .filter((id): id is string => typeof id === 'string'),
-        }));
-      } else {
-        // カテゴリがある形式
-        for (const category of Object.keys(raw)) {
-          entriesByCategory[category] = raw[category].map((e: Entry) => ({
-            entryNo: Number(e.entryNo),
-            playerIds: (e.information ?? [])
-              .map((info) => info.playerId || info.tempId)
-              .filter((id): id is string => typeof id === 'string'),
-          }));
-        }
+      for (const category of Object.keys(raw)) {
+        entriesByCategory[category] = raw[category];
       }
     }
 
@@ -637,41 +569,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ]),
     );
 
-    // ✅ standings → "予選敗退" 処理（カテゴリ別に対応）
-    if (data.standings && data.results) {
-      const existingKeySet = new Set(
-        (data.results as { playerIds: string[] }[]).map((r) =>
-          r.playerIds.join(','),
-        ),
-      );
-      const standings: Standings = data.standings;
-
-      for (const category of Object.keys(standings)) {
-        const groups = standings[category];
-        const entries = entriesByCategory[category] ?? [];
-
-        for (const group of Object.values(groups)) {
-          for (const entry of group) {
-            const entryNo = Number(entry.id);
-            const matchedEntry = entries.find((e) => e.entryNo === entryNo);
-            if (!matchedEntry || matchedEntry.playerIds.length === 0) continue;
-
-            const key = matchedEntry.playerIds.join(',');
-            const alreadyExists = existingKeySet.has(key);
-
-            if (!alreadyExists && entry.rank > 1) {
-              data.results.push({
-                playerIds: matchedEntry.playerIds,
-                result: '予選敗退',
-                category: category,
-              });
-              existingKeySet.add(key);
-            }
-          }
-        }
-      }
-    }
-
     return {
       props: {
         year,
@@ -679,7 +576,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         data,
         allPlayers,
         unknownPlayers,
-        hasEntries,
+        entriesByCategory,
         teamMap,
         highlight,
       },
