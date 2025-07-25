@@ -105,11 +105,8 @@ function MatchGroup({
                   <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
                     ラウンド
                   </th>
-                  <th className="w-2/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                  <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
                     対戦相手
-                  </th>
-                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                    勝敗
                   </th>
                   <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
                     スコア
@@ -153,9 +150,6 @@ function MatchGroup({
 
                         return grouped.join('・');
                       })()}
-                    </td>
-                    <td className="px-4 py-2">
-                      {m.result === 'win' ? '勝ち' : '負け'}
                     </td>
                     <td className="px-4 py-2">
                       {m.games.won}-{m.games.lost}
