@@ -321,6 +321,16 @@ export default function TournamentYearResultPage({
     prevCount = count;
   }
 
+  // ✅ seedのentryNoだけを抽出（Setにすることで高速判定できる）
+  const seedEntryNos = new Set<number>();
+  const currentEntries = entriesByCategory?.[selectedCategory] ?? [];
+
+  for (const entry of currentEntries) {
+    if (entry.type === 'seed') {
+      seedEntryNos.add(entry.entryNo);
+    }
+  }
+
   return (
     <>
       <MetaHead
@@ -471,7 +481,6 @@ export default function TournamentYearResultPage({
             </Link>
           </div>
 
-          {/* MatchResults（常に表示） */}
           {filteredMatches.length > 0 && (
             <MatchResults
               matches={filteredMatches}
@@ -481,6 +490,7 @@ export default function TournamentYearResultPage({
               filter={filter}
               setFilter={setFilter}
               eliminatedEntries={filteredEliminatedEntries}
+              seedEntryNos={seedEntryNos}
             />
           )}
         </div>

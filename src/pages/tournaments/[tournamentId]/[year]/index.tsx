@@ -356,6 +356,7 @@ export default function TournamentYearResultPage({
                 filter={filter}
                 setFilter={setFilter}
                 eliminatedEntries={[]}
+                seedEntryNos={new Set()}
               />
             </>
           )}

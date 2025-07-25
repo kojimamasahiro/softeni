@@ -1,6 +1,4 @@
-//  pbpaste | jq -c '[.[] | select(.id != "bye") | {entryNo: .id, information: [.information[] | {lastName, firstName, team}]}][]'|sed s/$/,/|pbcop
-// pbpaste | jq -c '[.[] | select(.id != "bye") | {entryNo: .id, team: .team, prefecture:.prefecture}][]'|sed s/$/,/|pbcopy
-const initialPlayers = [
+[
 {"id":1,"name":"尽誠学園（香川県）","team":"尽誠学園","prefecture":"香川県","category":"team"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"中京（岐阜県）","team":"中京","prefecture":"岐阜県","category":"team"},
@@ -65,5 +63,4 @@ const initialPlayers = [
 {"id":47,"name":"上田千曲（長野県）","team":"上田千曲","prefecture":"長野県","category":"team"},
 {"id":48,"name":"高田商（奈良県）","team":"高田商","prefecture":"奈良県","category":"team"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(JSON.stringify(initialPlayers, null, 2));
+]

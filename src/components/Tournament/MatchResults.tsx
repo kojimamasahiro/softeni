@@ -13,6 +13,7 @@ interface Props {
   filter: 'all' | 'top8' | 'winners';
   setFilter: (v: 'all' | 'top8' | 'winners') => void;
   eliminatedEntries: { name: string; result: string }[];
+  seedEntryNos?: Set<number>;
 }
 
 function MatchGroup({
@@ -22,6 +23,7 @@ function MatchGroup({
   searchQuery,
   filter,
   eliminatedLabel,
+  isSeed,
 }: {
   name: string;
   entryNo: string;
@@ -29,6 +31,7 @@ function MatchGroup({
   searchQuery: string;
   filter: 'all' | 'top8' | 'winners';
   eliminatedLabel?: string;
+  isSeed?: boolean;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const matchGroup = sortMatchesByEntryNo(matches);
@@ -70,14 +73,25 @@ function MatchGroup({
         className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
       >
         <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
-          <span>
-            {entryNo}. {name}
-            {finalLabel && (
-              <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
-                {finalLabel}
-              </span>
-            )}
+          <span className="flex flex-col">
+            <span>
+              {entryNo}. {name}
+            </span>
+
+            <span className="text-sm">
+              {isSeed && (
+                <span className="text-yellow-600 dark:text-yellow-300">
+                  （シード）
+                </span>
+              )}
+              {finalLabel && (
+                <span className="ml-2 text-gray-500 dark:text-gray-400">
+                  {finalLabel}
+                </span>
+              )}
+            </span>
           </span>
+
           <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
         </h3>
       </button>
@@ -169,6 +183,7 @@ export default function MatchResults({
   filter,
   setFilter,
   eliminatedEntries,
+  seedEntryNos,
 }: Props) {
   const groupedNames = [
     ...new Set([
@@ -240,6 +255,7 @@ export default function MatchResults({
             searchQuery={searchQuery}
             filter={filter}
             eliminatedLabel={eliminatedResult}
+            isSeed={seedEntryNos?.has(Number(matchGroup[0]?.entryNo) ?? -1)}
           />
         );
       })}
