@@ -109,6 +109,13 @@ export default function Home({ players }: HomeProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                 {[
                   {
+                    id: 'highschool/highschool-championship',
+                    year: 2025,
+                    name: '全国高等学校総合体育大会',
+                    category: 'ダブルス、団体',
+                    startDate: '2025-07-25',
+                  },
+                  {
                     id: 'east',
                     year: 2025,
                     name: '東日本ソフトテニス選手権大会',
@@ -128,13 +135,6 @@ export default function Home({ players }: HomeProps) {
                     name: 'ハイスクールジャパンカップ',
                     category: 'ダブルス、シングルス',
                     startDate: '2025-06-20',
-                  },
-                  {
-                    id: 'highschool/highschool-championship',
-                    year: 2024,
-                    name: '全国高等学校総合体育大会',
-                    category: 'ダブルス、団体',
-                    startDate: '2024-07-25',
                   },
                 ].map((tournament) => (
                   <div
