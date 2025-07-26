@@ -1,7 +1,10 @@
+import tournaments from "@/pages/tournaments";
+
 // src/components/TeamsEventSummary.tsx
 type TeamsEventSummaryProps = {
   overallTable: {
     name: string;
+    link?: string;
     results: string;
     count: number;
   }[];
@@ -25,12 +28,16 @@ export default function TeamsEventSummary({
               {r.name}
             </h3>
             <div className="text-sm space-y-1">
-              <p>
-                <span className="text-gray-500 dark:text-gray-400 font-medium">
-                  成績:
-                </span>{' '}
-                {r.results}
-              </p>
+              {r.link && (
+                <a
+                  href={r.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-600 dark:text-blue-400"
+                >
+                  大会ページ
+                </a>
+              )}
               <p>
                 <span className="text-gray-500 dark:text-gray-400 font-medium">
                   出場数:

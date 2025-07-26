@@ -1,5 +1,5 @@
 // src/pages/teams/[teamId].tsx
-import fs from 'fs';
+import fs, { link } from 'fs';
 import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -25,6 +25,7 @@ type TeamInfo = {
 
 type EventResult = {
   tournament: string;
+  link?: string;
   results: {
     playerIds: string[];
     result: string;
@@ -181,6 +182,7 @@ export default function TeamResultsPage({ info, results }: Props) {
 
         return {
           name: event.tournament,
+          link: event.link || '',
           results: resultWithNames,
           count: uniquePairs.size,
         };
