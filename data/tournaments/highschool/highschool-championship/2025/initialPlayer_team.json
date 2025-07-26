@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"尽誠学園（香川県）","team":"尽誠学園","prefecture":"香川県","category":"team"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"駒大（東京都）","team":"駒大","prefecture":"東京都","category":"team"},
@@ -64,5 +64,4 @@ const initialPlayers = [
 {"id":47,"name":"岡山南（岡山県）","team":"岡山南","prefecture":"岡山県","category":"team"},
 {"id":48,"name":"高田商（奈良県）","team":"高田商","prefecture":"奈良県","category":"team"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]
