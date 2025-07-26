@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { sortMatchesByEntryNo } from '@/lib/utils';
 import { TournamentYearData } from '@/types/tournament';
 
-// 予選敗退の名前一覧を含む構造を受け取るようにする
 interface Props {
   matches: NonNullable<TournamentYearData['matches']>;
   searchQuery: string;
@@ -16,22 +15,116 @@ interface Props {
   seedEntryNos?: Set<number>;
 }
 
+type Match = NonNullable<TournamentYearData['matches']>[number];
+
+function getPairId(pair: string[]): string {
+  return [...pair].sort().join('+');
+}
+
+function roundOrderIndex(round: string): number {
+  const order = [
+    '1回戦',
+    '2回戦',
+    '3回戦',
+    '4回戦',
+    '5回戦',
+    '6回戦',
+    '準々決勝',
+    '準決勝',
+    '決勝',
+  ];
+  return order.indexOf(round) !== -1 ? order.indexOf(round) : 99;
+}
+
+function groupMatchesByPair(matches: Match[]): Map<string, Match[]> {
+  const map = new Map<string, Match[]>();
+  for (const match of matches) {
+    const id =
+      match.category === 'team'
+        ? match.name // チーム名をIDとする
+        : getPairId(match.pair ?? []);
+    if (!map.has(id)) map.set(id, []);
+    map.get(id)!.push(match);
+  }
+  return map;
+}
+
+function traceOpponentChain(
+  pairId: string,
+  currentRoundIndex: number,
+  grouped: Map<string, Match[]>,
+  visited = new Set<string>(),
+): Match[] {
+  const result: Match[] = [];
+  if (visited.has(pairId)) return result;
+  visited.add(pairId);
+
+  const matches = grouped.get(pairId) ?? [];
+
+  for (const match of matches) {
+    const roundIdx = roundOrderIndex(match.round);
+    if (roundIdx > currentRoundIndex) {
+      result.push(match);
+
+      const winnerId =
+        match.result === 'win'
+          ? match.category === 'team'
+            ? match.team
+            : getPairId(match.pair ?? [])
+          : match.category === 'team'
+            ? (match.opponent ?? '')
+            : getPairId(match.opponents?.map((op) => op.tempId) ?? []);
+
+      if (winnerId) {
+        result.push(
+          ...traceOpponentChain(winnerId, roundIdx, grouped, visited),
+        );
+      }
+    }
+  }
+
+  return result;
+}
+
+function traceFromLoser(matches: Match[], myMatches: Match[]): Match[] {
+  const tournamentMatches = matches.filter((m) => m.round !== undefined);
+  const myTournamentMatches = myMatches.filter((m) => m.round !== undefined);
+  if (myTournamentMatches.length === 0) return [];
+
+  const lastMatch = myTournamentMatches[myTournamentMatches.length - 1];
+  if (!lastMatch || lastMatch.result !== 'lose') return [];
+
+  const grouped = groupMatchesByPair(tournamentMatches);
+  const startRoundIdx = roundOrderIndex(lastMatch.round);
+
+  const opponentId =
+    lastMatch.category === 'team'
+      ? (lastMatch.opponent ?? '')
+      : getPairId(
+          lastMatch.opponents?.map((op: { tempId: string }) => op.tempId) ?? [],
+        );
+
+  return traceOpponentChain(opponentId, startRoundIdx, grouped);
+}
+
 function MatchGroup({
   name,
-  matches,
   entryNo,
+  matches,
   searchQuery,
   filter,
   eliminatedLabel,
   isSeed,
+  tracedMatches,
 }: {
   name: string;
   entryNo: string;
-  matches: NonNullable<TournamentYearData['matches']>;
+  matches: Match[];
   searchQuery: string;
   filter: 'all' | 'top8' | 'winners';
   eliminatedLabel?: string;
   isSeed?: boolean;
+  tracedMatches?: Match[];
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const matchGroup = sortMatchesByEntryNo(matches);
@@ -77,7 +170,6 @@ function MatchGroup({
             <span>
               {entryNo}. {name}
             </span>
-
             <span className="text-sm">
               {isSeed && (
                 <span className="text-yellow-600 dark:text-yellow-300">
@@ -91,77 +183,101 @@ function MatchGroup({
               )}
             </span>
           </span>
-
           <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
         </h3>
       </button>
 
       {isOpen && (
-        <div className="overflow-x-auto">
-          {matches.length > 0 ? (
-            <table className="w-full text-sm table-fixed border-collapse">
-              <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
-                <tr>
-                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                    ラウンド
-                  </th>
-                  <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                    対戦相手
-                  </th>
-                  <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                    スコア
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {matchGroup.map((m, i) => (
-                  <tr
-                    key={i}
-                    className="border-t border-gray-100 dark:border-gray-700"
-                  >
-                    <td className="px-4 py-2 break-words">{m.round}</td>
-                    <td className="px-4 py-2 break-words">
-                      {(() => {
-                        if (
-                          !m.opponents ||
-                          (m.category && m.category === 'team')
-                        ) {
-                          if (m.opponents) {
-                            return m.opponents
-                              .map((op) => `${op.team}（${op.prefecture}）`)
-                              .join('・');
-                          } else {
-                            return m.opponent ?? '不明';
-                          }
-                        }
+        <div className="w-full overflow-x-auto">
+          {[
+            { title: null, rows: matchGroup },
+            { title: '以降の試合', rows: tracedMatches ?? [] },
+          ].map(({ title, rows }, index) =>
+            rows.length > 0 ? (
+              <div key={title ?? 'main'} className="mb-2 w-full">
+                {title && (
+                  <div className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 text-left">
+                    {title}
+                  </div>
+                )}
+                <table className="w-full text-sm table-fixed border-collapse text-left">
+                  {index === 0 && (
+                    <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+                      <tr>
+                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                          ラウンド
+                        </th>
+                        <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                          対戦相手
+                        </th>
+                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
+                          スコア
+                        </th>
+                      </tr>
+                    </thead>
+                  )}
+                  {index !== 0 && (
+                    <thead className="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+                      <tr>
+                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left"></th>
+                        <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left"></th>
+                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left"></th>
+                      </tr>
+                    </thead>
+                  )}
+                  <tbody>
+                    {rows.map((m, i) => (
+                      <tr
+                        key={i}
+                        className="border-t border-gray-100 dark:border-gray-700"
+                      >
+                        <td className="px-4 py-2 break-words text-left">
+                          {m.round}
+                        </td>
+                        <td className="px-4 py-2 break-words text-left">
+                          {(() => {
+                            if (
+                              !m.opponents ||
+                              (m.category && m.category === 'team')
+                            ) {
+                              if (m.opponents) {
+                                return m.opponents
+                                  .map(
+                                    (op) =>
+                                      `${op.team}（${op.prefecture ?? '不明'}）`,
+                                  )
+                                  .join('・');
+                              } else {
+                                return m.opponent ?? '不明';
+                              }
+                            }
 
-                        // 個人戦（opponents フィールド使用）
-                        const teamMap = m.opponents.reduce<
-                          Record<string, string[]>
-                        >((acc, op) => {
-                          if (!acc[op.team]) acc[op.team] = [];
-                          acc[op.team].push(op.lastName);
-                          return acc;
-                        }, {});
+                            const teamMap = m.opponents.reduce<
+                              Record<string, string[]>
+                            >((acc, op: { team: string; lastName: string }) => {
+                              if (!acc[op.team]) acc[op.team] = [];
+                              acc[op.team].push(op.lastName);
+                              return acc;
+                            }, {});
 
-                        const grouped = Object.entries(teamMap).map(
-                          ([team, names]) => `${names.join('・')}（${team}）`,
-                        );
-
-                        return grouped.join('・');
-                      })()}
-                    </td>
-                    <td className="px-4 py-2">
-                      {m.games.won}-{m.games.lost}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <div className="px-4 py-4 text-sm text-gray-600 dark:text-gray-300">
-              ラウンドロビン敗退のため、トーナメント進出はありませんでした。
-            </div>
+                            const grouped = (
+                              Object.entries(teamMap) as [string, string[]][]
+                            ).map(
+                              ([team, names]) =>
+                                `${names.join('・')}（${team}）`,
+                            );
+                            return grouped.join('・');
+                          })()}
+                        </td>
+                        <td className="px-4 py-2 text-left">
+                          {m.games.won}-{m.games.lost}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : null,
           )}
         </div>
       )}
@@ -214,21 +330,13 @@ export default function MatchResults({
 
         <button
           onClick={() => setFilter('all')}
-          className={`h-9 px-3 text-sm rounded border ${
-            filter === 'all'
-              ? 'bg-blue-600 text-white'
-              : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
-          }`}
+          className={`h-9 px-3 text-sm rounded border ${filter === 'all' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
         >
           全て
         </button>
         <button
           onClick={() => setFilter('top8')}
-          className={`h-9 px-3 text-sm rounded border ${
-            filter === 'top8'
-              ? 'bg-blue-600 text-white'
-              : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'
-          }`}
+          className={`h-9 px-3 text-sm rounded border ${filter === 'top8' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
         >
           ベスト8以上
         </button>
@@ -239,6 +347,8 @@ export default function MatchResults({
         const eliminatedResult = Array.isArray(eliminatedEntries)
           ? eliminatedEntries.find((e) => e.name === name)?.result || ''
           : '';
+        const tournamentMatches = matches.filter((m) => m.round !== undefined);
+        const tracedMatches = traceFromLoser(tournamentMatches, matchGroup);
 
         return (
           <MatchGroup
@@ -250,6 +360,7 @@ export default function MatchResults({
             filter={filter}
             eliminatedLabel={eliminatedResult}
             isSeed={seedEntryNos?.has(Number(matchGroup[0]?.entryNo) ?? -1)}
+            tracedMatches={tracedMatches}
           />
         );
       })}
