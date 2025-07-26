@@ -1,23 +1,23 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
-    "doubles": "1回戦敗退"
+    "doubles": "3回戦敗退"
   },
   "recentlyResult": {
     "team": "金沢学院大附",
     "teamId": "kanazawagakuindaifu",
     "prefecture": "石川県",
     "prefectureId": "ishikawa",
-    "result": "1回戦敗退",
+    "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
+    "year": 2025,
     "playerIds": [
-      "平野_壱真_金沢学院大附",
-      "森田_暁仁_金沢学院大附"
+      "久田_陸人_金沢学院大附",
+      "柳田_蒼生_金沢学院大附"
     ]
   },
   "historicalBest": {
@@ -25,16 +25,16 @@
     "teamId": "kanazawagakuindaifu",
     "prefecture": "石川県",
     "prefectureId": "ishikawa",
-    "result": "1回戦敗退",
+    "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
+    "year": 2025,
     "playerIds": [
-      "平野_壱真_金沢学院大附",
-      "森田_暁仁_金沢学院大附"
+      "久田_陸人_金沢学院大附",
+      "柳田_蒼生_金沢学院大附"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "平野_壱真_金沢学院大附",
@@ -42,6 +42,14 @@
     },
     {
       "id": "森田_暁仁_金沢学院大附",
+      "appearances": 1
+    },
+    {
+      "id": "久田_陸人_金沢学院大附",
+      "appearances": 1
+    },
+    {
+      "id": "柳田_蒼生_金沢学院大附",
       "appearances": 1
     }
   ]

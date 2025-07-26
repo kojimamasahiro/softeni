@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 19,
   "byCategory": {
-    "doubles": 12,
+    "doubles": 14,
     "team": 4,
     "singles": 1
   },
@@ -15,13 +15,13 @@
     "teamId": "tsurugi",
     "prefecture": "徳島県",
     "prefectureId": "tokushima",
-    "result": "3回戦敗退",
+    "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
+    "year": 2025,
     "playerIds": [
-      "澤田_空_つるぎ",
-      "大谷_瑠尉_つるぎ"
+      "近藤_和輝_つるぎ",
+      "三木_淳史_つるぎ"
     ]
   },
   "historicalBest": {
@@ -38,11 +38,19 @@
       "髙井_耀斗_つるぎ"
     ]
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "髙井_凌凱_つるぎ",
       "appearances": 4
+    },
+    {
+      "id": "藤中_奏和_つるぎ",
+      "appearances": 3
+    },
+    {
+      "id": "原_大心_つるぎ",
+      "appearances": 3
     },
     {
       "id": "矢藤_龍之介_つるぎ",
@@ -50,14 +58,6 @@
     },
     {
       "id": "澤田_空_つるぎ",
-      "appearances": 2
-    },
-    {
-      "id": "大谷_瑠尉_つるぎ",
-      "appearances": 2
-    },
-    {
-      "id": "藤中_奏和_つるぎ",
       "appearances": 2
     }
   ]

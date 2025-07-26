@@ -1,21 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "singles": 1
+    "singles": 1,
+    "doubles": 1
   },
   "bestResults": {
-    "singles": "1回戦敗退"
+    "singles": "1回戦敗退",
+    "doubles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "鳥取東",
     "teamId": "tottorihigashi",
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
+      "武安_桜人_鳥取東",
       "砂田_隆稔_鳥取東"
     ]
   },
@@ -24,18 +27,23 @@
     "teamId": "tottorihigashi",
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
+      "武安_桜人_鳥取東",
       "砂田_隆稔_鳥取東"
     ]
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "砂田_隆稔_鳥取東",
+      "appearances": 2
+    },
+    {
+      "id": "武安_桜人_鳥取東",
       "appearances": 1
     }
   ]

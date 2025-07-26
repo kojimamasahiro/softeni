@@ -1,11 +1,11 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 7,
     "singles": 1
   },
   "bestResults": {
-    "doubles": "3回戦敗退",
+    "doubles": "4回戦敗退",
     "singles": "1回戦敗退"
   },
   "recentlyResult": {
@@ -13,13 +13,13 @@
     "teamId": "kurosawashirikita",
     "prefecture": "岩手県",
     "prefectureId": "iwate",
-    "result": "3回戦敗退",
+    "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2023,
+    "year": 2025,
     "playerIds": [
-      "小松田_悠太_黒沢尻北",
-      "菱谷_直希_黒沢尻北"
+      "八島_銀音_黒沢尻北",
+      "長根山_桜太朗_黒沢尻北"
     ]
   },
   "historicalBest": {
@@ -27,17 +27,25 @@
     "teamId": "kurosawashirikita",
     "prefecture": "岩手県",
     "prefectureId": "iwate",
-    "result": "3回戦敗退",
+    "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2023,
+    "year": 2025,
     "playerIds": [
-      "小松田_悠太_黒沢尻北",
-      "菱谷_直希_黒沢尻北"
+      "八島_銀音_黒沢尻北",
+      "長根山_桜太朗_黒沢尻北"
     ]
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 13,
   "topPlayers": [
+    {
+      "id": "八島_銀音_黒沢尻北",
+      "appearances": 2
+    },
+    {
+      "id": "長根山_桜太朗_黒沢尻北",
+      "appearances": 2
+    },
     {
       "id": "佐藤_諒_黒沢尻北",
       "appearances": 1
@@ -47,15 +55,7 @@
       "appearances": 1
     },
     {
-      "id": "八島_銀音_黒沢尻北",
-      "appearances": 1
-    },
-    {
       "id": "星_智貴_黒沢尻北",
-      "appearances": 1
-    },
-    {
-      "id": "長根山_桜太朗_黒沢尻北",
       "appearances": 1
     }
   ]

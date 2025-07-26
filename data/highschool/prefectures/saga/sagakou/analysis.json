@@ -1,22 +1,22 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 9
+    "doubles": 10
   },
   "bestResults": {
-    "doubles": "2回戦敗退"
+    "doubles": "3回戦敗退"
   },
   "recentlyResult": {
     "team": "佐賀工",
     "teamId": "sagakou",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
-    "result": "2回戦敗退",
+    "result": "3回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "西原_蒼太_佐賀工",
+      "西_駿介_佐賀工",
       "石井_礼都_佐賀工"
     ]
   },
@@ -25,20 +25,24 @@
     "teamId": "sagakou",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
-    "result": "2回戦敗退",
+    "result": "3回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "西原_蒼太_佐賀工",
+      "西_駿介_佐賀工",
       "石井_礼都_佐賀工"
     ]
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "山田_枇知_佐賀工",
       "appearances": 3
+    },
+    {
+      "id": "石井_礼都_佐賀工",
+      "appearances": 2
     },
     {
       "id": "内田_拓真_佐賀工",
@@ -50,10 +54,6 @@
     },
     {
       "id": "西原_蒼太_佐賀工",
-      "appearances": 1
-    },
-    {
-      "id": "石井_礼都_佐賀工",
       "appearances": 1
     }
   ]

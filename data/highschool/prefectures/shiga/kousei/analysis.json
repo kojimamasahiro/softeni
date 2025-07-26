@@ -1,23 +1,23 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
-    "doubles": "予選敗退"
+    "doubles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "甲西",
     "teamId": "kousei",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
-    "result": "予選敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "沢田_直紀_甲西",
-      "田實_月_甲西"
+      "井村_亮介_甲西",
+      "小林_蓮斗_甲西"
     ]
   },
   "historicalBest": {
@@ -25,16 +25,16 @@
     "teamId": "kousei",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
-    "result": "予選敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "沢田_直紀_甲西",
-      "田實_月_甲西"
+      "井村_亮介_甲西",
+      "小林_蓮斗_甲西"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "沢田_直紀_甲西",
@@ -42,6 +42,14 @@
     },
     {
       "id": "田實_月_甲西",
+      "appearances": 1
+    },
+    {
+      "id": "井村_亮介_甲西",
+      "appearances": 1
+    },
+    {
+      "id": "小林_蓮斗_甲西",
       "appearances": 1
     }
   ]

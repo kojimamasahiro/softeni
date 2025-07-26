@@ -1,22 +1,22 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
-    "doubles": "1回戦敗退"
+    "doubles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "仙台三",
     "teamId": "sendaisan",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "1回戦敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
+    "year": 2025,
     "playerIds": [
-      "大槻_寛介_仙台三",
+      "村山_博音_仙台三",
       "佐川_隼祐_仙台三"
     ]
   },
@@ -25,23 +25,27 @@
     "teamId": "sendaisan",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "1回戦敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
+    "year": 2025,
     "playerIds": [
-      "大槻_寛介_仙台三",
+      "村山_博音_仙台三",
       "佐川_隼祐_仙台三"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "佐川_隼祐_仙台三",
+      "appearances": 2
+    },
     {
       "id": "大槻_寛介_仙台三",
       "appearances": 1
     },
     {
-      "id": "佐川_隼祐_仙台三",
+      "id": "村山_博音_仙台三",
       "appearances": 1
     }
   ]

@@ -1,11 +1,11 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 7,
     "singles": 1
   },
   "bestResults": {
-    "doubles": "2回戦敗退",
+    "doubles": "4回戦敗退",
     "singles": "2回戦敗退"
   },
   "recentlyResult": {
@@ -13,12 +13,13 @@
     "teamId": "chikushidai",
     "prefecture": "福岡県",
     "prefectureId": "fukuoka",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "中島_遙斗_筑紫台"
+      "石井_壮_筑紫台",
+      "谷_結真_筑紫台"
     ]
   },
   "historicalBest": {
@@ -26,18 +27,23 @@
     "teamId": "chikushidai",
     "prefecture": "福岡県",
     "prefectureId": "fukuoka",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "中島_遙斗_筑紫台"
+      "石井_壮_筑紫台",
+      "谷_結真_筑紫台"
     ]
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "中山_太稀_筑紫台",
+      "appearances": 2
+    },
+    {
+      "id": "谷_結真_筑紫台",
       "appearances": 2
     },
     {
@@ -46,10 +52,6 @@
     },
     {
       "id": "中島_遙斗_筑紫台",
-      "appearances": 1
-    },
-    {
-      "id": "谷_結真_筑紫台",
       "appearances": 1
     },
     {

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 28,
   "byCategory": {
-    "doubles": 19,
+    "doubles": 22,
     "singles": 2,
     "team": 4
   },
@@ -15,13 +15,13 @@
     "teamId": "noto",
     "prefecture": "石川県",
     "prefectureId": "ishikawa",
-    "result": "6回戦敗退",
+    "result": "ベスト8",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
+    "year": 2025,
     "playerIds": [
-      "藤木_晴叶_能登",
-      "中山_煌貴_能登"
+      "阿部_堯_能登",
+      "髙澤_泉_能登"
     ]
   },
   "historicalBest": {
@@ -38,11 +38,15 @@
       "松本_隼_能登"
     ]
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 25,
   "topPlayers": [
     {
       "id": "藤木_晴叶_能登",
       "appearances": 5
+    },
+    {
+      "id": "常岡_葵_能登",
+      "appearances": 3
     },
     {
       "id": "中山_煌貴_能登",
@@ -53,11 +57,7 @@
       "appearances": 3
     },
     {
-      "id": "常岡_葵_能登",
-      "appearances": 2
-    },
-    {
-      "id": "竹原_正真_能登",
+      "id": "藤岡_蓮_能登",
       "appearances": 2
     }
   ]

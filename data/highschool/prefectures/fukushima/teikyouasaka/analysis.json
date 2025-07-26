@@ -1,12 +1,25 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
     "doubles": "2回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "帝京安積",
+    "teamId": "teikyouasaka",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "playerIds": [
+      "宗像_瑛汰_帝京安積",
+      "塩田_悠之介_帝京安積"
+    ]
+  },
   "historicalBest": {
     "team": "帝京安積",
     "teamId": "teikyouasaka",
@@ -21,7 +34,7 @@
       "今泉_賢誠_帝京安積"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "坂本_一樹_帝京安積",
@@ -29,6 +42,14 @@
     },
     {
       "id": "今泉_賢誠_帝京安積",
+      "appearances": 1
+    },
+    {
+      "id": "宗像_瑛汰_帝京安積",
+      "appearances": 1
+    },
+    {
+      "id": "塩田_悠之介_帝京安積",
       "appearances": 1
     }
   ]

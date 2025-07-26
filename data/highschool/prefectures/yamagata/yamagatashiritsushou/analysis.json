@@ -1,22 +1,22 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
-    "doubles": "予選敗退"
+    "doubles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "山形市立商",
     "teamId": "yamagatashiritsushou",
     "prefecture": "山形県",
     "prefectureId": "yamagata",
-    "result": "予選敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "渡辺_幸誠_山形市立商",
+      "渡辺_琉惺_山形市立商",
       "岡本_光貴_山形市立商"
     ]
   },
@@ -25,23 +25,27 @@
     "teamId": "yamagatashiritsushou",
     "prefecture": "山形県",
     "prefectureId": "yamagata",
-    "result": "予選敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "渡辺_幸誠_山形市立商",
+      "渡辺_琉惺_山形市立商",
       "岡本_光貴_山形市立商"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "岡本_光貴_山形市立商",
+      "appearances": 2
+    },
     {
       "id": "渡辺_幸誠_山形市立商",
       "appearances": 1
     },
     {
-      "id": "岡本_光貴_山形市立商",
+      "id": "渡辺_琉惺_山形市立商",
       "appearances": 1
     }
   ]

@@ -1,14 +1,27 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1,
+    "doubles": 2,
     "team": 1
   },
   "bestResults": {
-    "doubles": "2回戦敗退",
+    "doubles": "3回戦敗退",
     "team": "3回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "明秀日立",
+    "teamId": "meisyuhitachi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "playerIds": [
+      "鈴木_想_明秀日立",
+      "菊池_七斗_明秀日立"
+    ]
+  },
   "historicalBest": {
     "team": "明秀日立",
     "teamId": "meisyuhitachi",
@@ -19,7 +32,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "前岡_和亜_明秀日立",
@@ -27,6 +40,14 @@
     },
     {
       "id": "菅谷_朋輝_明秀日立",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_想_明秀日立",
+      "appearances": 1
+    },
+    {
+      "id": "菊池_七斗_明秀日立",
       "appearances": 1
     }
   ]

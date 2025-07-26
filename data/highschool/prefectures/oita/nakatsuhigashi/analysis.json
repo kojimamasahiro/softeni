@@ -1,12 +1,25 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "bestResults": {
     "doubles": "3回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "中津東",
+    "teamId": "nakatsuhigashi",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "playerIds": [
+      "稲生_拓斗_中津東",
+      "藤原_涼太郎_中津東"
+    ]
+  },
   "historicalBest": {
     "team": "中津東",
     "teamId": "nakatsuhigashi",
@@ -21,7 +34,7 @@
       "石元_遥馬_中津東"
     ]
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "佐知_直翔_中津東",

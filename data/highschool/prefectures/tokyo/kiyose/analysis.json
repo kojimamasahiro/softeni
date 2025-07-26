@@ -1,27 +1,40 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "bestResults": {
-    "doubles": "3回戦敗退"
+    "doubles": "4回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "清瀬",
+    "teamId": "kiyose",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "playerIds": [
+      "結城_大和_清瀬",
+      "安在_琉_清瀬"
+    ]
+  },
   "historicalBest": {
     "team": "清瀬",
     "teamId": "kiyose",
     "prefecture": "東京都",
     "prefectureId": "tokyo",
-    "result": "3回戦敗退",
+    "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2021,
+    "year": 2025,
     "playerIds": [
-      "結城_祥平_清瀬",
-      "岡田_将文_清瀬"
+      "結城_大和_清瀬",
+      "安在_琉_清瀬"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "結城_祥平_清瀬",
@@ -29,6 +42,18 @@
     },
     {
       "id": "岡田_将文_清瀬",
+      "appearances": 1
+    },
+    {
+      "id": "結城_大和_清瀬",
+      "appearances": 1
+    },
+    {
+      "id": "安在_琉_清瀬",
+      "appearances": 1
+    },
+    {
+      "id": "竹井_寛人_清瀬",
       "appearances": 1
     }
   ]

@@ -1,23 +1,23 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "bestResults": {
-    "doubles": "1回戦敗退"
+    "doubles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "鳥取商",
     "teamId": "tottorishou",
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
-    "result": "1回戦敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2023,
+    "year": 2025,
     "playerIds": [
-      "上野_嶺太_鳥取商",
-      "尾﨑_巧都_鳥取商"
+      "田辺_凱人_鳥取商",
+      "大野木_跳馬_鳥取商"
     ]
   },
   "historicalBest": {
@@ -25,16 +25,16 @@
     "teamId": "tottorishou",
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
-    "result": "1回戦敗退",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2023,
+    "year": 2025,
     "playerIds": [
-      "上野_嶺太_鳥取商",
-      "尾﨑_巧都_鳥取商"
+      "田辺_凱人_鳥取商",
+      "大野木_跳馬_鳥取商"
     ]
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "上野_嶺太_鳥取商",
@@ -50,6 +50,10 @@
     },
     {
       "id": "澤根_空蒼_鳥取商",
+      "appearances": 1
+    },
+    {
+      "id": "田辺_凱人_鳥取商",
       "appearances": 1
     }
   ]

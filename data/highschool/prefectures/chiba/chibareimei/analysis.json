@@ -1,27 +1,40 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
-    "doubles": "1回戦敗退"
+    "doubles": "4回戦敗退"
   },
-  "recentlyResult": null,
+  "recentlyResult": {
+    "team": "千葉黎明",
+    "teamId": "chibareimei",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "playerIds": [
+      "平山_裕也_千葉黎明",
+      "堀越_尊_千葉黎明"
+    ]
+  },
   "historicalBest": {
     "team": "千葉黎明",
     "teamId": "chibareimei",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
-    "result": "1回戦敗退",
+    "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2021,
+    "year": 2025,
     "playerIds": [
-      "松本_大誠_千葉黎明",
-      "坂本_譲_千葉黎明"
+      "平山_裕也_千葉黎明",
+      "堀越_尊_千葉黎明"
     ]
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "松本_大誠_千葉黎明",
@@ -29,6 +42,14 @@
     },
     {
       "id": "坂本_譲_千葉黎明",
+      "appearances": 1
+    },
+    {
+      "id": "平山_裕也_千葉黎明",
+      "appearances": 1
+    },
+    {
+      "id": "堀越_尊_千葉黎明",
       "appearances": 1
     }
   ]

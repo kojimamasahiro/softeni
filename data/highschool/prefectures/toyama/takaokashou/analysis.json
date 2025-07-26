@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 23,
   "byCategory": {
-    "doubles": 15,
+    "doubles": 18,
     "singles": 2,
     "team": 3
   },
@@ -30,8 +30,12 @@
     "tournamentId": "highschool-championship",
     "year": 2024
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 20,
   "topPlayers": [
+    {
+      "id": "前川_悠成_高岡商",
+      "appearances": 4
+    },
     {
       "id": "白井_瀬都_高岡商",
       "appearances": 4
@@ -41,15 +45,11 @@
       "appearances": 4
     },
     {
-      "id": "前川_悠成_高岡商",
+      "id": "角崎_豪哉_高岡商",
       "appearances": 3
     },
     {
       "id": "丸山_慈央_高岡商",
-      "appearances": 3
-    },
-    {
-      "id": "西川_陽都_高岡商",
       "appearances": 3
     }
   ]

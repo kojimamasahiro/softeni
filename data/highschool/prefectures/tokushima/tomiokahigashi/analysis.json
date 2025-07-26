@@ -1,10 +1,12 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "singles": 2
+    "singles": 2,
+    "doubles": 1
   },
   "bestResults": {
-    "singles": "ベスト8"
+    "singles": "ベスト8",
+    "doubles": "1回戦敗退"
   },
   "recentlyResult": {
     "team": "富岡東",
@@ -32,11 +34,15 @@
       "花垣_陸_富岡東"
     ]
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "花垣_陸_富岡東",
-      "appearances": 2
+      "appearances": 3
+    },
+    {
+      "id": "西_紘希_富岡東",
+      "appearances": 1
     }
   ]
 }

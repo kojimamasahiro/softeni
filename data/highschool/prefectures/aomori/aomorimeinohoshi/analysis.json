@@ -1,24 +1,25 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
     "singles": 1,
-    "doubles": 1
+    "doubles": 2
   },
   "bestResults": {
     "singles": "1回戦敗退",
-    "doubles": "1回戦敗退"
+    "doubles": "2回戦敗退"
   },
   "recentlyResult": {
     "team": "青森明の星",
     "teamId": "aomorimeinohoshi",
     "prefecture": "青森県",
     "prefectureId": "aomori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "北俣_航太_青森明の星"
+      "北俣_航太_青森明の星",
+      "肥後_悠士_青森明の星"
     ]
   },
   "historicalBest": {
@@ -26,19 +27,20 @@
     "teamId": "aomorimeinohoshi",
     "prefecture": "青森県",
     "prefectureId": "aomori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "playerIds": [
-      "北俣_航太_青森明の星"
+      "北俣_航太_青森明の星",
+      "肥後_悠士_青森明の星"
     ]
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "北俣_航太_青森明の星",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "伊藤_柊也_青森明の星",
@@ -46,6 +48,10 @@
     },
     {
       "id": "鈴木_優利_青森明の星",
+      "appearances": 1
+    },
+    {
+      "id": "肥後_悠士_青森明の星",
       "appearances": 1
     }
   ]
