@@ -495,6 +495,39 @@ export default function TournamentYearResultPage({
             />
           )}
         </div>
+
+        {meta.source && (
+          <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
+            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
+              出典・参考情報
+            </h2>
+            <p className="mb-3">
+              本ページの試合結果データは、以下の情報をもとに作成しています。
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                {meta.sourceUrl ? (
+                  <a
+                    href={meta.sourceUrl}
+                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {meta.source}
+                  </a>
+                ) : (
+                  <span className="font-medium">{meta.source}</span>
+                )}
+              </li>
+              <li>
+                一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。
+              </li>
+            </ul>
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+              内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。
+            </p>
+          </section>
+        )}
       </main>
     </>
   );

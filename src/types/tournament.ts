@@ -88,4 +88,6 @@ export interface TournamentMeta {
   category: string;
   officialUrl: string;
   isMajorTitle: boolean;
+  source?: string;
+  sourceUrl?: string;
 }

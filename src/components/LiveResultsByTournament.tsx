@@ -45,12 +45,6 @@ export default function LiveResultsByTournament({
 }: {
   playersData: PlayerInfo[];
 }) {
-  // やめる
-  const stop = true;
-  if (stop) {
-    return null;
-  }
-
   const nowJST = new Date(
     new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }),
   );

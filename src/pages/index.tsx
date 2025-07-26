@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
@@ -15,6 +16,7 @@ interface HomeProps {
   players: PlayerInfo[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Home({ players }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
 
@@ -96,7 +98,7 @@ export default function Home({ players }: HomeProps) {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
-            <LiveResultsByTournament playersData={players} />
+            {/* <LiveResultsByTournament playersData={players} /> */}
 
             {/* ✅ 最近追加された大会（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
