@@ -5,7 +5,7 @@ from collections import defaultdict
 def get_ids(player_list):
     ids = []
     for p in player_list:
-        pid = p.get("playerId") or p.get("tempId")
+        pid = p.get("tempId")
         ids.append(pid)
     return tuple(sorted(ids))
 
