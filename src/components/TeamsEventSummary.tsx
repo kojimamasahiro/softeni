@@ -1,5 +1,3 @@
-import tournaments from "@/pages/tournaments";
-
 // src/components/TeamsEventSummary.tsx
 type TeamsEventSummaryProps = {
   overallTable: {

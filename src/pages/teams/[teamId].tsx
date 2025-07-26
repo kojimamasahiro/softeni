@@ -1,5 +1,5 @@
 // src/pages/teams/[teamId].tsx
-import fs, { link } from 'fs';
+import fs from 'fs';
 import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
