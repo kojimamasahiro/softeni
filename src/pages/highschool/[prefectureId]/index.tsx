@@ -61,11 +61,6 @@ const tournamentPriority: Record<string, number> = {
   'highschool-senbatsu': 4, // 選抜
 };
 
-function compareTournamentPriority(a: SummaryEntry, b: SummaryEntry) {
-  const pA = tournamentPriority[a.tournamentId] ?? 99;
-  const pB = tournamentPriority[b.tournamentId] ?? 99;
-  return pA - pB; // 小さいほど優先度が高い
-}
 export default function PrefectureHighschoolPage({
   prefecture,
   teams,
