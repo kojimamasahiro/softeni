@@ -86,18 +86,6 @@ export default function TeamPage({
     {} as Record<string, Record<string, Record<string, Entry[]>>>,
   );
 
-  const groupedArray = Object.entries(grouped)
-    .flatMap(([year, tourneys]) =>
-      Object.entries(tourneys).map(([tournamentId, categories]) => ({
-        year: Number(year),
-        tournamentId,
-        categories,
-      })),
-    )
-    .sort((a, b) => {
-      if (b.year !== a.year) return b.year - a.year;
-      return a.tournamentId.localeCompare(b.tournamentId);
-    });
   return (
     <>
       <MetaHead
