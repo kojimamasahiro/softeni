@@ -55,10 +55,10 @@ type Props = {
 };
 
 const tournamentPriority: Record<string, number> = {
-  'highschool-championship': 1, // インターハイ
-  'highschool-senbatsu': 2, // 選抜
+  kokutai: 1, // 国体
+  'highschool-championship': 2, // インターハイ
   'highschool-japan-cup': 3, // J杯
-  kokutai: 4, // 国体
+  'highschool-senbatsu': 4, // 選抜
 };
 
 function compareTournamentPriority(a: SummaryEntry, b: SummaryEntry) {
@@ -323,34 +323,43 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const latestYear = Math.max(...rawData.map((e) => e.year));
   const latestYearEntries = rawData.filter((e) => e.year === latestYear);
 
-  // 最も良い順位の評価値（例：優勝 = 1）
-  const bestRank = Math.min(
-    ...latestYearEntries.map((e) => resultPriority(e.result)),
-  );
+  const sortedTournamentIds = Object.entries(tournamentPriority)
+    .sort((a, b) => a[1] - b[1])
+    .map(([id]) => id);
 
-  // その順位の大会に出場したエントリを取得
-  const topRankEntries = latestYearEntries.filter(
-    (e) => resultPriority(e.result) === bestRank,
-  );
+  let topTeams: TopTeam[] = [];
 
-  // 大会の優先順位順に並べる
-  topRankEntries.sort(compareTournamentPriority);
+  for (const tournamentId of sortedTournamentIds) {
+    const entries = latestYearEntries.filter(
+      (e) => e.tournamentId === tournamentId,
+    );
+    if (entries.length === 0) continue;
 
-  // チームごとに最初に出てくる（＝最優先大会）のみを採用
-  const seenTeams = new Set<string>();
-  const topTeams = topRankEntries
-    .filter((e) => {
-      if (seenTeams.has(e.teamId)) return false;
-      seenTeams.add(e.teamId);
-      return true;
-    })
-    .map((e) => ({
-      teamId: e.teamId,
-      teamName: e.team,
-      result: e.result,
-      tournament: getTournamentLabel(e.tournamentId),
-      year: e.year,
-    }));
+    const bestRank = Math.min(...entries.map((e) => resultPriority(e.result)));
+
+    // 最高成績のエントリのみ
+    const bestEntries = entries.filter(
+      (e) => resultPriority(e.result) === bestRank,
+    );
+
+    // チームIDごとに一意にする（重複排除）
+    const seen = new Set<string>();
+    topTeams = bestEntries
+      .filter((e) => {
+        if (seen.has(e.teamId)) return false;
+        seen.add(e.teamId);
+        return true;
+      })
+      .map((e) => ({
+        teamId: e.teamId,
+        teamName: e.team,
+        result: e.result,
+        tournament: getTournamentLabel(e.tournamentId),
+        year: e.year,
+      }));
+
+    if (topTeams.length > 0) break; // 最初に見つかった大会だけ採用
+  }
 
   return {
     props: {
