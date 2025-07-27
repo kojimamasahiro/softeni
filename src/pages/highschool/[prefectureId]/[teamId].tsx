@@ -86,6 +86,18 @@ export default function TeamPage({
     {} as Record<string, Record<string, Record<string, Entry[]>>>,
   );
 
+  const groupedArray = Object.entries(grouped)
+    .flatMap(([year, tourneys]) =>
+      Object.entries(tourneys).map(([tournamentId, categories]) => ({
+        year: Number(year),
+        tournamentId,
+        categories,
+      })),
+    )
+    .sort((a, b) => {
+      if (b.year !== a.year) return b.year - a.year;
+      return a.tournamentId.localeCompare(b.tournamentId);
+    });
   return (
     <>
       <MetaHead
@@ -251,54 +263,57 @@ export default function TeamPage({
           ) : (
             <div className="space-y-6">
               {Object.entries(grouped)
-                .sort((a, b) => Number(b[0]) - Number(a[0]))
+                .sort((a, b) => Number(b[0]) - Number(a[0])) // 年で降順
                 .map(([year, tourneys]) => (
                   <section key={year}>
                     <h2 className="text-xl font-semibold mb-2">{year}年</h2>
-                    {Object.entries(tourneys).map(([tId, cats]) => (
-                      <div key={tId} className="mb-4 ml-4">
-                        <h3 className="text-lg font-bold">
-                          <Link
-                            href={`/tournaments/highschool/${tId}/${year}`}
-                            className="text-blue-700 dark:text-blue-300 hover:underline"
-                          >
-                            {getTournamentLabel(tId)}
-                          </Link>
-                        </h3>
-                        <ul className="ml-4 mt-2 space-y-2">
-                          {Object.entries(cats).map(([cat, items]) => (
-                            <li key={cat}>
-                              <p className="font-semibold">
-                                {getCategoryLabel(cat)}
-                              </p>
-                              <ul className="ml-4 space-y-1">
-                                {items.map((item, index) => (
-                                  <li key={index}>
-                                    <p className="text-sm">
-                                      成績: {item.result}
-                                      {item.playerIds && (
-                                        <>
-                                          <br />
-                                          選手:{' '}
-                                          {item.playerIds
-                                            .map((pid) => {
-                                              const parts = pid.split('_');
-                                              return parts.length >= 2
-                                                ? `${parts[0]} ${parts[1]}`
-                                                : pid;
-                                            })
-                                            .join('・')}
-                                        </>
-                                      )}
-                                    </p>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+
+                    {Object.entries(tourneys)
+                      .sort((a, b) => a[0].localeCompare(b[0])) // tournamentIdで昇順
+                      .map(([tournamentId, categories]) => (
+                        <div key={tournamentId} className="mb-4 ml-4">
+                          <h3 className="text-lg font-bold">
+                            <Link
+                              href={`/tournaments/highschool/${tournamentId}/${year}`}
+                              className="text-blue-700 dark:text-blue-300 hover:underline"
+                            >
+                              {getTournamentLabel(tournamentId)}
+                            </Link>
+                          </h3>
+                          <ul className="ml-4 mt-2 space-y-2">
+                            {Object.entries(categories).map(([cat, items]) => (
+                              <li key={cat}>
+                                <p className="font-semibold">
+                                  {getCategoryLabel(cat)}
+                                </p>
+                                <ul className="ml-4 space-y-1">
+                                  {items.map((item, index) => (
+                                    <li key={index}>
+                                      <p className="text-sm">
+                                        成績: {item.result}
+                                        {item.playerIds && (
+                                          <>
+                                            <br />
+                                            選手:{' '}
+                                            {item.playerIds
+                                              .map((pid) => {
+                                                const parts = pid.split('_');
+                                                return parts.length >= 2
+                                                  ? `${parts[0]} ${parts[1]}`
+                                                  : pid;
+                                              })
+                                              .join('・')}
+                                          </>
+                                        )}
+                                      </p>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                   </section>
                 ))}
             </div>
