@@ -16,7 +16,7 @@ export default function MetaHead({
   title,
   description,
   url,
-  image = 'https://softeni-pick.com/og-image.jpg',
+  image = 'https://softeni-pick.com/twitter-card-summary.png',
   twitterCardType = 'summary',
   type = 'website',
   siteName = 'Softeni Pick（ソフテニピック）',
