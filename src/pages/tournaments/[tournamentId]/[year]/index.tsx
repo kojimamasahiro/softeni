@@ -264,6 +264,7 @@ export default function TournamentYearResultPage({
         description={`${meta.name} ${year}年の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
         url={pageUrl}
         image={`https://softeni-pick.com/api/og/tournament/${meta.id}/${year}`}
+        twitterCardType="summary_large_image"
         type="article"
       />
 

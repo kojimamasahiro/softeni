@@ -202,6 +202,7 @@ export default function TeamResultsPage({ info, results }: Props) {
         description={`${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`}
         url={pageUrl}
         image={`https://softeni-pick.com/api/og/player?name=${encodeURIComponent(teamName)}`}
+        twitterCardType="summary_large_image"
       />
 
       <Head>

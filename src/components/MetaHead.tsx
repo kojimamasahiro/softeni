@@ -6,6 +6,7 @@ type MetaHeadProps = {
   description: string;
   url: string;
   image?: string;
+  twitterCardType?: 'summary' | 'summary_large_image' | 'player' | 'app';
   type?: 'website' | 'article';
 };
 
@@ -14,6 +15,7 @@ export default function MetaHead({
   description,
   url,
   image = 'https://softeni-pick.com/og-image.jpg',
+  twitterCardType = 'summary',
   type = 'website',
 }: MetaHeadProps) {
   return (
@@ -25,7 +27,7 @@ export default function MetaHead({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content={twitterCardType} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />

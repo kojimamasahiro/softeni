@@ -47,6 +47,7 @@ export default function PlayerResultsPage({
         description={`${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`}
         url={pageUrl}
         image={`https://softeni-pick.com/api/og/player?name=${encodeURIComponent(fullName)}`}
+        twitterCardType="summary_large_image"
         type="article"
       />
 
