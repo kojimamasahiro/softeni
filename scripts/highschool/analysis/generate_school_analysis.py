@@ -25,11 +25,19 @@ default_rank = 999
 def get_best_result(entries):
     best_entry = None
     best_rank = default_rank
+    best_year = -1
+
     for e in entries:
         rank = rank_order.get(e['result'], default_rank)
-        if rank < best_rank:
+        year = e.get('year', 0)
+        if (
+            rank < best_rank or
+            (rank == best_rank and year > best_year)
+        ):
             best_entry = e
             best_rank = rank
+            best_year = year
+
     return best_entry
 
 def analyze_team(entries):
@@ -44,10 +52,18 @@ def analyze_team(entries):
         total += 1
         by_cat[cat] += 1
 
-        # best result by category
+        # best result by category（rankが同じなら year が新しい方）
         current_rank = rank_order.get(result, default_rank)
-        previous_best = rank_order.get(best_results.get(cat, ''), default_rank)
-        if current_rank < previous_best:
+        prev_result = best_results.get(cat)
+        prev_rank = rank_order.get(prev_result, default_rank)
+        prev_year = next(
+            (en["year"] for en in entries if en["result"] == prev_result and en["category"] == cat),
+            -1,
+        )
+        if (
+            current_rank < prev_rank or
+            (current_rank == prev_rank and e["year"] > prev_year)
+        ):
             best_results[cat] = result
 
         # player count（団体戦はスキップ）
@@ -55,7 +71,6 @@ def analyze_team(entries):
             for pid in e['playerIds']:
                 player_counter[pid] += 1
 
-    # 最新年度を判定
     this_year = datetime.now().year
     recently_entries = [e for e in entries if e["year"] >= this_year - 2]
     past_entries = [e for e in entries if e["year"] <= this_year]
