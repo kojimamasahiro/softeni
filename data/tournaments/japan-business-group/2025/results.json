@@ -1908,7 +1908,7 @@
       "result": "win",
       "games": {
         "won": "2",
-        "lost": "0"
+        "lost": "1"
       },
       "entryNo": 91,
       "name": "FUJITSU（東京）",
@@ -1930,7 +1930,7 @@
       ],
       "result": "lose",
       "games": {
-        "won": "0",
+        "won": "1",
         "lost": "2"
       },
       "entryNo": 92,
@@ -2733,10 +2733,10 @@
           "tempId": "能登町役場_石川"
         }
       ],
-      "result": "lose",
+      "result": "win",
       "games": {
-        "won": "0",
-        "lost": "2"
+        "won": "2",
+        "lost": "0"
       },
       "entryNo": 19,
       "name": "ベスト（東京）",
@@ -2756,10 +2756,10 @@
           "tempId": "ベスト_東京"
         }
       ],
-      "result": "win",
+      "result": "lose",
       "games": {
-        "won": "2",
-        "lost": "0"
+        "won": "0",
+        "lost": "2"
       },
       "entryNo": 22,
       "name": "能登町役場（石川）",
@@ -4061,10 +4061,10 @@
         {
           "lastName": "",
           "firstName": "",
-          "team": "能登町役場",
+          "team": "ベスト",
           "playerId": null,
-          "prefecture": "石川",
-          "tempId": "能登町役場_石川"
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
         }
       ],
       "result": "lose",
@@ -4079,7 +4079,7 @@
     },
     {
       "round": "3回戦",
-      "team": "能登町役場_石川",
+      "team": "ベスト_東京",
       "opponents": [
         {
           "lastName": "",
@@ -4095,8 +4095,8 @@
         "won": "2",
         "lost": "0"
       },
-      "entryNo": 22,
-      "name": "能登町役場（石川）",
+      "entryNo": 19,
+      "name": "ベスト（東京）",
       "category": "team",
       "retired": false
     },
@@ -4746,7 +4746,7 @@
     },
     {
       "round": "4回戦",
-      "team": "能登町役場_石川",
+      "team": "ベスト_東京",
       "opponents": [
         {
           "lastName": "",
@@ -4762,8 +4762,8 @@
         "won": "2",
         "lost": "1"
       },
-      "entryNo": 22,
-      "name": "能登町役場（石川）",
+      "entryNo": 19,
+      "name": "ベスト（東京）",
       "category": "team",
       "retired": false
     },
@@ -4774,10 +4774,10 @@
         {
           "lastName": "",
           "firstName": "",
-          "team": "能登町役場",
+          "team": "ベスト",
           "playerId": null,
-          "prefecture": "石川",
-          "tempId": "能登町役場_石川"
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
         }
       ],
       "result": "lose",
@@ -5063,6 +5063,190 @@
       },
       "entryNo": 118,
       "name": "東京ガスＡ（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ベスト",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ベスト_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 19,
+      "name": "ベスト（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＡ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＡ_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ヨシザワＡ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 59,
+      "name": "ヨシザワＡ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨネックス",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ヨネックス_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ヨネックス_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 89,
+      "name": "ヨネックス（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川口市役所",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "川口市役所_埼玉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "川口市役所_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 111,
+      "name": "川口市役所（埼玉）",
       "category": "team",
       "retired": false
     }
