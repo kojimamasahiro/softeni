@@ -4,33 +4,63 @@
     "doubles": 4,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "横浜創英",
-    "teamId": "yokohamasouei",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025
-  },
-  "historicalBest": {
-    "team": "横浜創英",
-    "teamId": "yokohamasouei",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "川崎_涼吾_横浜創英",
-      "椿_麻央_横浜創英"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "青木_優_横浜創英",
+          "斉藤_愁我_横浜創英"
+        ]
+      },
+      "historicalBest": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "川崎_涼吾_横浜創英",
+          "椿_麻央_横浜創英"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

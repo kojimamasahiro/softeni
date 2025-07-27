@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "向陽",
-    "teamId": "kouyou",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "照屋_盛也_向陽",
-      "渡邉_波輝_向陽"
-    ]
-  },
-  "historicalBest": {
-    "team": "向陽",
-    "teamId": "kouyou",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "照屋_盛也_向陽",
-      "渡邉_波輝_向陽"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "向陽",
+        "teamId": "kouyou",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "照屋_盛也_向陽",
+          "渡邉_波輝_向陽"
+        ]
+      },
+      "historicalBest": {
+        "team": "向陽",
+        "teamId": "kouyou",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "照屋_盛也_向陽",
+          "渡邉_波輝_向陽"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

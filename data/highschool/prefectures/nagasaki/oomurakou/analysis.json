@@ -5,38 +5,87 @@
     "team": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "1回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "大村工",
-    "teamId": "oomurakou",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "原田_柊_大村工",
-      "野口_悠晴_大村工"
-    ]
-  },
-  "historicalBest": {
-    "team": "大村工",
-    "teamId": "oomurakou",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "原田_柊_大村工",
-      "野口_悠晴_大村工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "大村工",
+        "teamId": "oomurakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "原田_柊_大村工"
+        ]
+      },
+      "historicalBest": {
+        "team": "大村工",
+        "teamId": "oomurakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "原田_柊_大村工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大村工",
+        "teamId": "oomurakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "原田_柊_大村工",
+          "野口_悠晴_大村工"
+        ]
+      },
+      "historicalBest": {
+        "team": "大村工",
+        "teamId": "oomurakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "原田_柊_大村工",
+          "野口_悠晴_大村工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "大村工",
+        "teamId": "oomurakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "大村工",
+        "teamId": "oomurakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

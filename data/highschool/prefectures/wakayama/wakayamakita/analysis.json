@@ -5,38 +5,87 @@
     "singles": 3,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "ベスト4",
-    "singles": "2回戦敗退",
-    "team": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "和歌山北",
-    "teamId": "wakayamakita",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "後藤_優斗_和歌山北",
-      "中垣_敬斗_和歌山北"
-    ]
-  },
-  "historicalBest": {
-    "team": "和歌山北",
-    "teamId": "wakayamakita",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "後藤_優斗_和歌山北",
-      "中垣_敬斗_和歌山北"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "和歌山北",
+        "teamId": "wakayamakita",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "野田_弦輝_和歌山北"
+        ]
+      },
+      "historicalBest": {
+        "team": "和歌山北",
+        "teamId": "wakayamakita",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "野田_弦輝_和歌山北"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "和歌山北",
+        "teamId": "wakayamakita",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "後藤_優斗_和歌山北",
+          "中垣_敬斗_和歌山北"
+        ]
+      },
+      "historicalBest": {
+        "team": "和歌山北",
+        "teamId": "wakayamakita",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "後藤_優斗_和歌山北",
+          "中垣_敬斗_和歌山北"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "和歌山北",
+        "teamId": "wakayamakita",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "和歌山北",
+        "teamId": "wakayamakita",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 33,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "仙台三",
-    "teamId": "sendaisan",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "村山_博音_仙台三",
-      "佐川_隼祐_仙台三"
-    ]
-  },
-  "historicalBest": {
-    "team": "仙台三",
-    "teamId": "sendaisan",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "村山_博音_仙台三",
-      "佐川_隼祐_仙台三"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "仙台三",
+        "teamId": "sendaisan",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "村山_博音_仙台三",
+          "佐川_隼祐_仙台三"
+        ]
+      },
+      "historicalBest": {
+        "team": "仙台三",
+        "teamId": "sendaisan",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "村山_博音_仙台三",
+          "佐川_隼祐_仙台三"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

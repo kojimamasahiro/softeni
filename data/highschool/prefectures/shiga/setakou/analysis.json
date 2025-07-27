@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "瀬田工",
-    "teamId": "setakou",
-    "prefecture": "滋賀県",
-    "prefectureId": "shiga",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "黒川_誠斗_瀬田工",
-      "赤瀬_槙一_瀬田工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "瀬田工",
+        "teamId": "setakou",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "黒川_誠斗_瀬田工",
+          "赤瀬_槙一_瀬田工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

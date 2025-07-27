@@ -5,38 +5,87 @@
     "team": 5,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "優勝",
-    "team": "ベスト8",
-    "singles": "ベスト4"
-  },
-  "recentlyResult": {
-    "team": "鹿児島商",
-    "teamId": "kagoshimashou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "白井_瀬都_鹿児島商",
-      "草地_凌冴_鹿児島商"
-    ]
-  },
-  "historicalBest": {
-    "team": "鹿児島商",
-    "teamId": "kagoshimashou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "白井_瀬都_鹿児島商",
-      "草地_凌冴_鹿児島商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "白井_大希_鹿児島商"
+        ]
+      },
+      "historicalBest": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "白井_大希_鹿児島商"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "白井_瀬都_鹿児島商",
+          "草地_凌冴_鹿児島商"
+        ]
+      },
+      "historicalBest": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "白井_瀬都_鹿児島商",
+          "草地_凌冴_鹿児島商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 24,
   "topPlayers": [

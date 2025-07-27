@@ -4,37 +4,69 @@
     "doubles": 2,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "今治工",
-    "teamId": "imabarikou",
-    "prefecture": "愛媛県",
-    "prefectureId": "ehime",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "濱川_響輝_今治工",
-      "村井_純也_今治工"
-    ]
-  },
-  "historicalBest": {
-    "team": "今治工",
-    "teamId": "imabarikou",
-    "prefecture": "愛媛県",
-    "prefectureId": "ehime",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "濱川_響輝_今治工",
-      "村井_純也_今治工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "今治工",
+        "teamId": "imabarikou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "濱川_響輝_今治工"
+        ]
+      },
+      "historicalBest": {
+        "team": "今治工",
+        "teamId": "imabarikou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "濱川_響輝_今治工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "今治工",
+        "teamId": "imabarikou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "濱川_響輝_今治工",
+          "村井_純也_今治工"
+        ]
+      },
+      "historicalBest": {
+        "team": "今治工",
+        "teamId": "imabarikou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "濱川_響輝_今治工",
+          "村井_純也_今治工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

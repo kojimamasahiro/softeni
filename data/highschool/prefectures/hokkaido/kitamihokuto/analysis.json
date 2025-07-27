@@ -4,35 +4,69 @@
     "doubles": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "予選敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "北見北斗",
-    "teamId": "kitamihokuto",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "前谷_碧人_北見北斗"
-    ]
-  },
-  "historicalBest": {
-    "team": "北見北斗",
-    "teamId": "kitamihokuto",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "前谷_碧人_北見北斗"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "北見北斗",
+        "teamId": "kitamihokuto",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "前谷_碧人_北見北斗"
+        ]
+      },
+      "historicalBest": {
+        "team": "北見北斗",
+        "teamId": "kitamihokuto",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "前谷_碧人_北見北斗"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "北見北斗",
+        "teamId": "kitamihokuto",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "宮浦_陽大_北見北斗",
+          "前谷_碧人_北見北斗"
+        ]
+      },
+      "historicalBest": {
+        "team": "北見北斗",
+        "teamId": "kitamihokuto",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "宮浦_陽大_北見北斗",
+          "前谷_碧人_北見北斗"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

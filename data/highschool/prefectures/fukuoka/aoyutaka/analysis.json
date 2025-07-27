@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "青豊",
-    "teamId": "aoyutaka",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "渡邊_竣介_青豊",
-      "福田_直央_青豊"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "青豊",
+        "teamId": "aoyutaka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "渡邊_竣介_青豊",
+          "福田_直央_青豊"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "近大福山",
-    "teamId": "kindaifukuyama",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "林_叶倭_近大福山",
-      "山本_彩汰_近大福山"
-    ]
-  },
-  "historicalBest": {
-    "team": "近大福山",
-    "teamId": "kindaifukuyama",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "林_叶倭_近大福山",
-      "山本_彩汰_近大福山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "近大福山",
+        "teamId": "kindaifukuyama",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "林_叶倭_近大福山",
+          "山本_彩汰_近大福山"
+        ]
+      },
+      "historicalBest": {
+        "team": "近大福山",
+        "teamId": "kindaifukuyama",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "林_叶倭_近大福山",
+          "山本_彩汰_近大福山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

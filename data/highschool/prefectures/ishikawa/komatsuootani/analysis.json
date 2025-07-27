@@ -4,37 +4,69 @@
     "doubles": 2,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "小松大谷",
-    "teamId": "komatsuootani",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "古橋_迅_小松大谷",
-      "中_京介_小松大谷"
-    ]
-  },
-  "historicalBest": {
-    "team": "小松大谷",
-    "teamId": "komatsuootani",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "古橋_迅_小松大谷",
-      "中_京介_小松大谷"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "小松大谷",
+        "teamId": "komatsuootani",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "古橋_迅_小松大谷"
+        ]
+      },
+      "historicalBest": {
+        "team": "小松大谷",
+        "teamId": "komatsuootani",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "古橋_迅_小松大谷"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "小松大谷",
+        "teamId": "komatsuootani",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "古橋_迅_小松大谷",
+          "中_京介_小松大谷"
+        ]
+      },
+      "historicalBest": {
+        "team": "小松大谷",
+        "teamId": "komatsuootani",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "古橋_迅_小松大谷",
+          "中_京介_小松大谷"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

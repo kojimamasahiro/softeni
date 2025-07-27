@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "予選敗退"
-  },
-  "recentlyResult": {
-    "team": "奈良",
-    "teamId": "nara",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "島谷_拓和_奈良",
-      "久下_素輝_奈良"
-    ]
-  },
-  "historicalBest": {
-    "team": "奈良",
-    "teamId": "nara",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "島谷_拓和_奈良",
-      "久下_素輝_奈良"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "奈良",
+        "teamId": "nara",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "島谷_拓和_奈良",
+          "久下_素輝_奈良"
+        ]
+      },
+      "historicalBest": {
+        "team": "奈良",
+        "teamId": "nara",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "島谷_拓和_奈良",
+          "久下_素輝_奈良"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

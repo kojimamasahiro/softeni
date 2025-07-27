@@ -5,38 +5,87 @@
     "team": 3,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "ベスト8",
-    "team": "3回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "中京",
-    "teamId": "chuukyou",
-    "prefecture": "岐阜県",
-    "prefectureId": "gifu",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "秋山_想太_中京",
-      "吉松_要琉生_中京"
-    ]
-  },
-  "historicalBest": {
-    "team": "中京",
-    "teamId": "chuukyou",
-    "prefecture": "岐阜県",
-    "prefectureId": "gifu",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "秋山_想太_中京",
-      "吉松_要琉生_中京"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "中京",
+        "teamId": "chuukyou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "工藤_康治朗_中京"
+        ]
+      },
+      "historicalBest": {
+        "team": "中京",
+        "teamId": "chuukyou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "工藤_康治朗_中京"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "中京",
+        "teamId": "chuukyou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "秋山_想太_中京",
+          "吉松_要琉生_中京"
+        ]
+      },
+      "historicalBest": {
+        "team": "中京",
+        "teamId": "chuukyou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "秋山_想太_中京",
+          "吉松_要琉生_中京"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "中京",
+        "teamId": "chuukyou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "中京",
+        "teamId": "chuukyou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 31,
   "topPlayers": [

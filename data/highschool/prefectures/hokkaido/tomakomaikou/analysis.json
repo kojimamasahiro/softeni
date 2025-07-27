@@ -4,35 +4,69 @@
     "doubles": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "予選敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "苫小牧工",
-    "teamId": "tomakomaikou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "西_健太_苫小牧工"
-    ]
-  },
-  "historicalBest": {
-    "team": "苫小牧工",
-    "teamId": "tomakomaikou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "西_健太_苫小牧工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "苫小牧工",
+        "teamId": "tomakomaikou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "西_健太_苫小牧工"
+        ]
+      },
+      "historicalBest": {
+        "team": "苫小牧工",
+        "teamId": "tomakomaikou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "西_健太_苫小牧工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "苫小牧工",
+        "teamId": "tomakomaikou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "渡邊_哲平_苫小牧工",
+          "櫻田_真生_苫小牧工"
+        ]
+      },
+      "historicalBest": {
+        "team": "苫小牧工",
+        "teamId": "tomakomaikou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "渡邊_哲平_苫小牧工",
+          "櫻田_真生_苫小牧工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

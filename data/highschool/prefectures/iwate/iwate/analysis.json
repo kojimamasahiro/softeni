@@ -4,37 +4,54 @@
     "doubles": 8,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "岩手",
-    "teamId": "iwate",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "長根_煌和_岩手",
-      "関_涼真_岩手"
-    ]
-  },
-  "historicalBest": {
-    "team": "岩手",
-    "teamId": "iwate",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "長根_煌和_岩手",
-      "関_涼真_岩手"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "岩手",
+        "teamId": "iwate",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "長根_煌和_岩手",
+          "関_涼真_岩手"
+        ]
+      },
+      "historicalBest": {
+        "team": "岩手",
+        "teamId": "iwate",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "長根_煌和_岩手",
+          "関_涼真_岩手"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "岩手",
+        "teamId": "iwate",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 14,
   "topPlayers": [

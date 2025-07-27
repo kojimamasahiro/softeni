@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "長野",
-    "teamId": "nagano",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "戸谷_景太_長野",
-      "橋本_夏心_長野"
-    ]
-  },
-  "historicalBest": {
-    "team": "長野",
-    "teamId": "nagano",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "戸谷_景太_長野",
-      "橋本_夏心_長野"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "長野",
+        "teamId": "nagano",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "戸谷_景太_長野",
+          "橋本_夏心_長野"
+        ]
+      },
+      "historicalBest": {
+        "team": "長野",
+        "teamId": "nagano",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "戸谷_景太_長野",
+          "橋本_夏心_長野"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

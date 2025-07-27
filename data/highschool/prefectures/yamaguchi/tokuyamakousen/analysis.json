@@ -4,37 +4,69 @@
     "doubles": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "徳山高専",
-    "teamId": "tokuyamakousen",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "木村_颯_徳山高専",
-      "坂根_巧望_徳山高専"
-    ]
-  },
-  "historicalBest": {
-    "team": "徳山高専",
-    "teamId": "tokuyamakousen",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "木村_颯_徳山高専",
-      "坂根_巧望_徳山高専"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "徳山高専",
+        "teamId": "tokuyamakousen",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "木村_颯_徳山高専"
+        ]
+      },
+      "historicalBest": {
+        "team": "徳山高専",
+        "teamId": "tokuyamakousen",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "木村_颯_徳山高専"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "徳山高専",
+        "teamId": "tokuyamakousen",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "木村_颯_徳山高専",
+          "坂根_巧望_徳山高専"
+        ]
+      },
+      "historicalBest": {
+        "team": "徳山高専",
+        "teamId": "tokuyamakousen",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "木村_颯_徳山高専",
+          "坂根_巧望_徳山高専"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

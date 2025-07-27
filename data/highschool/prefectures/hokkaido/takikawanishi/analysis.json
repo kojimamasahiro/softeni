@@ -4,35 +4,69 @@
     "doubles": 3,
     "singles": 3
   },
-  "bestResults": {
-    "doubles": "予選敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "滝川西",
-    "teamId": "takikawanishi",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "團塚_虹陽_滝川西"
-    ]
-  },
-  "historicalBest": {
-    "team": "滝川西",
-    "teamId": "takikawanishi",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "團塚_虹陽_滝川西"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "滝川西",
+        "teamId": "takikawanishi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "團塚_虹陽_滝川西"
+        ]
+      },
+      "historicalBest": {
+        "team": "滝川西",
+        "teamId": "takikawanishi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "團塚_虹陽_滝川西"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "滝川西",
+        "teamId": "takikawanishi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "清水_蒼太_滝川西",
+          "常盤_奏翔_滝川西"
+        ]
+      },
+      "historicalBest": {
+        "team": "滝川西",
+        "teamId": "takikawanishi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "清水_蒼太_滝川西",
+          "常盤_奏翔_滝川西"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 7,
   "topPlayers": [

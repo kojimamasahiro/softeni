@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 4
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "山村国際",
-    "teamId": "sansonkokusai",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "町田_優月希_山村国際",
-      "石井_琉_山村国際"
-    ]
-  },
-  "historicalBest": {
-    "team": "山村国際",
-    "teamId": "sansonkokusai",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "町田_優月希_山村国際",
-      "石井_琉_山村国際"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "山村国際",
+        "teamId": "sansonkokusai",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "町田_優月希_山村国際",
+          "石井_琉_山村国際"
+        ]
+      },
+      "historicalBest": {
+        "team": "山村国際",
+        "teamId": "sansonkokusai",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "町田_優月希_山村国際",
+          "石井_琉_山村国際"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

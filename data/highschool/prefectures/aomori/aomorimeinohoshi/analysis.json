@@ -4,37 +4,69 @@
     "singles": 1,
     "doubles": 2
   },
-  "bestResults": {
-    "singles": "1回戦敗退",
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "青森明の星",
-    "teamId": "aomorimeinohoshi",
-    "prefecture": "青森県",
-    "prefectureId": "aomori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "北俣_航太_青森明の星",
-      "肥後_悠士_青森明の星"
-    ]
-  },
-  "historicalBest": {
-    "team": "青森明の星",
-    "teamId": "aomorimeinohoshi",
-    "prefecture": "青森県",
-    "prefectureId": "aomori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "北俣_航太_青森明の星",
-      "肥後_悠士_青森明の星"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "青森明の星",
+        "teamId": "aomorimeinohoshi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "北俣_航太_青森明の星"
+        ]
+      },
+      "historicalBest": {
+        "team": "青森明の星",
+        "teamId": "aomorimeinohoshi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "北俣_航太_青森明の星"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "青森明の星",
+        "teamId": "aomorimeinohoshi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "北俣_航太_青森明の星",
+          "肥後_悠士_青森明の星"
+        ]
+      },
+      "historicalBest": {
+        "team": "青森明の星",
+        "teamId": "aomorimeinohoshi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "北俣_航太_青森明の星",
+          "肥後_悠士_青森明の星"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

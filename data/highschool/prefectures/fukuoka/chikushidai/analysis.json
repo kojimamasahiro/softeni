@@ -5,38 +5,87 @@
     "singles": 1,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "singles": "2回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "筑紫台",
-    "teamId": "chikushidai",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "石井_壮_筑紫台",
-      "谷_結真_筑紫台"
-    ]
-  },
-  "historicalBest": {
-    "team": "筑紫台",
-    "teamId": "chikushidai",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "石井_壮_筑紫台",
-      "谷_結真_筑紫台"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "筑紫台",
+        "teamId": "chikushidai",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "中島_遙斗_筑紫台"
+        ]
+      },
+      "historicalBest": {
+        "team": "筑紫台",
+        "teamId": "chikushidai",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "中島_遙斗_筑紫台"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "筑紫台",
+        "teamId": "chikushidai",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "石井_壮_筑紫台",
+          "谷_結真_筑紫台"
+        ]
+      },
+      "historicalBest": {
+        "team": "筑紫台",
+        "teamId": "chikushidai",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "石井_壮_筑紫台",
+          "谷_結真_筑紫台"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "筑紫台",
+        "teamId": "chikushidai",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "筑紫台",
+        "teamId": "chikushidai",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 13,
   "topPlayers": [

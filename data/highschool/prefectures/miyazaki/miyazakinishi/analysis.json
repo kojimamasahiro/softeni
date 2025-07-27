@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "宮崎西",
-    "teamId": "miyazakinishi",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "島﨑_凛_宮崎西",
-      "中田_敦仁_宮崎西"
-    ]
-  },
-  "historicalBest": {
-    "team": "宮崎西",
-    "teamId": "miyazakinishi",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "島﨑_凛_宮崎西",
-      "中田_敦仁_宮崎西"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "宮崎西",
+        "teamId": "miyazakinishi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "島﨑_凛_宮崎西",
+          "中田_敦仁_宮崎西"
+        ]
+      },
+      "historicalBest": {
+        "team": "宮崎西",
+        "teamId": "miyazakinishi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "島﨑_凛_宮崎西",
+          "中田_敦仁_宮崎西"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

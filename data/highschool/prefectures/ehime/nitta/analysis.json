@@ -5,38 +5,87 @@
     "team": 3,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "team": "3回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "新田",
-    "teamId": "nitta",
-    "prefecture": "愛媛県",
-    "prefectureId": "ehime",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "毛利_航太_新田",
-      "仲田_翔磨_新田"
-    ]
-  },
-  "historicalBest": {
-    "team": "新田",
-    "teamId": "nitta",
-    "prefecture": "愛媛県",
-    "prefectureId": "ehime",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "和氣_道宏_新田",
-      "確田_冬吹樹_新田"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "新田",
+        "teamId": "nitta",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "毛利_航太_新田"
+        ]
+      },
+      "historicalBest": {
+        "team": "新田",
+        "teamId": "nitta",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "毛利_航太_新田"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "新田",
+        "teamId": "nitta",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "毛利_航太_新田",
+          "仲田_翔磨_新田"
+        ]
+      },
+      "historicalBest": {
+        "team": "新田",
+        "teamId": "nitta",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "和氣_道宏_新田",
+          "確田_冬吹樹_新田"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "新田",
+        "teamId": "nitta",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "新田",
+        "teamId": "nitta",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 15,
   "topPlayers": [

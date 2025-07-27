@@ -4,24 +4,41 @@
     "doubles": 1,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "真颯館",
-    "teamId": "shinsokan",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "三嶋_倖平_真颯館",
-      "池本_澪_真颯館"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "真颯館",
+        "teamId": "shinsokan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "三嶋_倖平_真颯館",
+          "池本_澪_真颯館"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "真颯館",
+        "teamId": "shinsokan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

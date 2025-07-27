@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "川口市立",
-    "teamId": "kawaguchishiritsu",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "永島_大睦_川口市立",
-      "大久保_壮介_川口市立"
-    ]
-  },
-  "historicalBest": {
-    "team": "川口市立",
-    "teamId": "kawaguchishiritsu",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "永島_大睦_川口市立",
-      "大久保_壮介_川口市立"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "川口市立",
+        "teamId": "kawaguchishiritsu",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "永島_大睦_川口市立",
+          "大久保_壮介_川口市立"
+        ]
+      },
+      "historicalBest": {
+        "team": "川口市立",
+        "teamId": "kawaguchishiritsu",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "永島_大睦_川口市立",
+          "大久保_壮介_川口市立"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

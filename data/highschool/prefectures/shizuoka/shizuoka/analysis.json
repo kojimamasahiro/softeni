@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "静岡",
-    "teamId": "shizuoka",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊藤_万絋_静岡",
-      "中野_束冴_静岡"
-    ]
-  },
-  "historicalBest": {
-    "team": "静岡",
-    "teamId": "shizuoka",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊藤_万絋_静岡",
-      "中野_束冴_静岡"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "静岡",
+        "teamId": "shizuoka",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊藤_万絋_静岡",
+          "中野_束冴_静岡"
+        ]
+      },
+      "historicalBest": {
+        "team": "静岡",
+        "teamId": "shizuoka",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊藤_万絋_静岡",
+          "中野_束冴_静岡"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

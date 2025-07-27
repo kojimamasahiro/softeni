@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "熊谷",
-    "teamId": "kumagaya",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "波田野_虎太郎_熊谷",
-      "小林_佳太郎_熊谷"
-    ]
-  },
-  "historicalBest": {
-    "team": "熊谷",
-    "teamId": "kumagaya",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "波田野_虎太郎_熊谷",
-      "小林_佳太郎_熊谷"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "熊谷",
+        "teamId": "kumagaya",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "波田野_虎太郎_熊谷",
+          "小林_佳太郎_熊谷"
+        ]
+      },
+      "historicalBest": {
+        "team": "熊谷",
+        "teamId": "kumagaya",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "波田野_虎太郎_熊谷",
+          "小林_佳太郎_熊谷"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

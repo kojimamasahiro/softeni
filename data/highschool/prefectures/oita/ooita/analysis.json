@@ -5,37 +5,87 @@
     "singles": 2,
     "team": 3
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "2回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "坂口_竣亮_大分"
-    ]
-  },
-  "historicalBest": {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "安部_陸斗_大分",
-      "樋口_晴喜_大分"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "坂口_竣亮_大分"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "坂口_竣亮_大分"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "坂口_竣亮_大分",
+          "青野_良真_大分"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "安部_陸斗_大分",
+          "樋口_晴喜_大分"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 20,
   "topPlayers": [

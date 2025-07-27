@@ -4,37 +4,69 @@
     "doubles": 4,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "東農大二",
-    "teamId": "tounoudaini",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "間庭_賢人_東農大二",
-      "市川_悠翔_東農大二"
-    ]
-  },
-  "historicalBest": {
-    "team": "東農大二",
-    "teamId": "tounoudaini",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "間庭_賢人_東農大二",
-      "市川_悠翔_東農大二"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "東農大二",
+        "teamId": "tounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "間庭_賢人_東農大二"
+        ]
+      },
+      "historicalBest": {
+        "team": "東農大二",
+        "teamId": "tounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "間庭_賢人_東農大二"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "東農大二",
+        "teamId": "tounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "間庭_賢人_東農大二",
+          "市川_悠翔_東農大二"
+        ]
+      },
+      "historicalBest": {
+        "team": "東農大二",
+        "teamId": "tounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "間庭_賢人_東農大二",
+          "市川_悠翔_東農大二"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

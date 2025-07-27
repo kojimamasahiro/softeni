@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "橋本",
-    "teamId": "hashimoto",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "米坂_悠樹_橋本",
-      "堀部_稔里_橋本"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "橋本",
+        "teamId": "hashimoto",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "米坂_悠樹_橋本",
+          "堀部_稔里_橋本"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 6
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "長崎日大",
-    "teamId": "nagasakinichidai",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "林田_晴彦_長崎日大",
-      "宮原_陸_長崎日大"
-    ]
-  },
-  "historicalBest": {
-    "team": "長崎日大",
-    "teamId": "nagasakinichidai",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "林田_晴彦_長崎日大",
-      "宮原_陸_長崎日大"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "長崎日大",
+        "teamId": "nagasakinichidai",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "林田_晴彦_長崎日大",
+          "宮原_陸_長崎日大"
+        ]
+      },
+      "historicalBest": {
+        "team": "長崎日大",
+        "teamId": "nagasakinichidai",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "林田_晴彦_長崎日大",
+          "宮原_陸_長崎日大"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 10,
   "topPlayers": [

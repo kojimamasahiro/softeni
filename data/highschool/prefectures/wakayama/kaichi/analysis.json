@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "開智",
-    "teamId": "kaichi",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "杉本_颯輝_開智",
-      "橋本_将英_開智"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "開智",
+        "teamId": "kaichi",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "杉本_颯輝_開智",
+          "橋本_将英_開智"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

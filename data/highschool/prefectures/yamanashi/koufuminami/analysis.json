@@ -4,37 +4,63 @@
     "doubles": 8,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "甲府南",
-    "teamId": "koufuminami",
-    "prefecture": "山梨県",
-    "prefectureId": "yamanashi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "河住_昌悟_甲府南",
-      "深沢_秀悠_甲府南"
-    ]
-  },
-  "historicalBest": {
-    "team": "甲府南",
-    "teamId": "koufuminami",
-    "prefecture": "山梨県",
-    "prefectureId": "yamanashi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "河住_昌悟_甲府南",
-      "深沢_秀悠_甲府南"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "河住_昌悟_甲府南",
+          "深沢_秀悠_甲府南"
+        ]
+      },
+      "historicalBest": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "河住_昌悟_甲府南",
+          "深沢_秀悠_甲府南"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 11,
   "topPlayers": [

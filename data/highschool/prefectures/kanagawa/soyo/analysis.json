@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "相洋",
-    "teamId": "soyo",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "中静_瞬_相洋",
-      "北村_拓夢_相洋"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "相洋",
+        "teamId": "soyo",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "中静_瞬_相洋",
+          "北村_拓夢_相洋"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "藤代紫水",
-    "teamId": "fujishiroshisui",
-    "prefecture": "茨城県",
-    "prefectureId": "ibaraki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "阿久津_黎_藤代紫水",
-      "佐々木_歩夢_藤代紫水"
-    ]
-  },
-  "historicalBest": {
-    "team": "藤代紫水",
-    "teamId": "fujishiroshisui",
-    "prefecture": "茨城県",
-    "prefectureId": "ibaraki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "阿久津_黎_藤代紫水",
-      "佐々木_歩夢_藤代紫水"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "藤代紫水",
+        "teamId": "fujishiroshisui",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "阿久津_黎_藤代紫水",
+          "佐々木_歩夢_藤代紫水"
+        ]
+      },
+      "historicalBest": {
+        "team": "藤代紫水",
+        "teamId": "fujishiroshisui",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "阿久津_黎_藤代紫水",
+          "佐々木_歩夢_藤代紫水"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

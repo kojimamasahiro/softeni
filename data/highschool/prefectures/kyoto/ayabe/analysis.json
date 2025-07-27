@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "綾部",
-    "teamId": "ayabe",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "木下_脩希_綾部",
-      "佐藤_元気_綾部"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "綾部",
+        "teamId": "ayabe",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "木下_脩希_綾部",
+          "佐藤_元気_綾部"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

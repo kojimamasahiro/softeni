@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "風越",
-    "teamId": "kazeetsu",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "半崎_佑心_風越",
-      "木下_遥_風越"
-    ]
-  },
-  "historicalBest": {
-    "team": "風越",
-    "teamId": "kazeetsu",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "半崎_佑心_風越",
-      "木下_遥_風越"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "風越",
+        "teamId": "kazeetsu",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "半崎_佑心_風越",
+          "木下_遥_風越"
+        ]
+      },
+      "historicalBest": {
+        "team": "風越",
+        "teamId": "kazeetsu",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "半崎_佑心_風越",
+          "木下_遥_風越"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

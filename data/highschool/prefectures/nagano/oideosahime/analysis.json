@@ -3,34 +3,43 @@
   "byCategory": {
     "singles": 1
   },
-  "bestResults": {
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "OIDE長姫",
-    "teamId": "oideosahime",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "小林_健太_OIDE長姫"
-    ]
-  },
-  "historicalBest": {
-    "team": "OIDE長姫",
-    "teamId": "oideosahime",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "小林_健太_OIDE長姫"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "OIDE長姫",
+        "teamId": "oideosahime",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "小林_健太_OIDE長姫"
+        ]
+      },
+      "historicalBest": {
+        "team": "OIDE長姫",
+        "teamId": "oideosahime",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "小林_健太_OIDE長姫"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 1,
   "topPlayers": [

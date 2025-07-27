@@ -5,30 +5,87 @@
     "singles": 3,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "singles": "2回戦敗退",
-    "team": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "羽黒",
-    "teamId": "haguro",
-    "prefecture": "山形県",
-    "prefectureId": "yamagata",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025
-  },
-  "historicalBest": {
-    "team": "羽黒",
-    "teamId": "haguro",
-    "prefecture": "山形県",
-    "prefectureId": "yamagata",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "木皿_璃夢斗_羽黒"
+        ]
+      },
+      "historicalBest": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "木皿_璃夢斗_羽黒"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "熊谷_春輝_羽黒",
+          "中易_快翔_羽黒"
+        ]
+      },
+      "historicalBest": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "熊谷_春輝_羽黒",
+          "中易_快翔_羽黒"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 34,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "豊見城",
-    "teamId": "tomigusuku",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊禮_正吾_豊見城",
-      "田久保_成軌_豊見城"
-    ]
-  },
-  "historicalBest": {
-    "team": "豊見城",
-    "teamId": "tomigusuku",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊禮_正吾_豊見城",
-      "田久保_成軌_豊見城"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "豊見城",
+        "teamId": "tomigusuku",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊禮_正吾_豊見城",
+          "田久保_成軌_豊見城"
+        ]
+      },
+      "historicalBest": {
+        "team": "豊見城",
+        "teamId": "tomigusuku",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊禮_正吾_豊見城",
+          "田久保_成軌_豊見城"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

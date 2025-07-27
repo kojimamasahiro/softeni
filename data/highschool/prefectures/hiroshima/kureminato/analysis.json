@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "呉港",
-    "teamId": "kureminato",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "二鹿_舟海_呉港",
-      "尾原_航_呉港"
-    ]
-  },
-  "historicalBest": {
-    "team": "呉港",
-    "teamId": "kureminato",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "二鹿_舟海_呉港",
-      "尾原_航_呉港"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "呉港",
+        "teamId": "kureminato",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "二鹿_舟海_呉港",
+          "尾原_航_呉港"
+        ]
+      },
+      "historicalBest": {
+        "team": "呉港",
+        "teamId": "kureminato",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "二鹿_舟海_呉港",
+          "尾原_航_呉港"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

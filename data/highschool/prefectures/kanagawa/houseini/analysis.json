@@ -4,37 +4,63 @@
     "doubles": 6,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "法政二",
-    "teamId": "houseini",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "虎谷_厚汰_法政二",
-      "松川_倫大_法政二"
-    ]
-  },
-  "historicalBest": {
-    "team": "法政二",
-    "teamId": "houseini",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "虎谷_厚汰_法政二",
-      "松川_倫大_法政二"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "法政二",
+        "teamId": "houseini",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "虎谷_厚汰_法政二",
+          "松川_倫大_法政二"
+        ]
+      },
+      "historicalBest": {
+        "team": "法政二",
+        "teamId": "houseini",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "虎谷_厚汰_法政二",
+          "松川_倫大_法政二"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "法政二",
+        "teamId": "houseini",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "法政二",
+        "teamId": "houseini",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 10,
   "topPlayers": [

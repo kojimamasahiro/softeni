@@ -4,29 +4,63 @@
     "doubles": 5,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "近畿大高専",
-    "teamId": "kinkidaikousen",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024
-  },
-  "historicalBest": {
-    "team": "近畿大高専",
-    "teamId": "kinkidaikousen",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "近畿大高専",
+        "teamId": "kinkidaikousen",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "西川_元基_近畿大高専",
+          "弘田_和航_近畿大高専"
+        ]
+      },
+      "historicalBest": {
+        "team": "近畿大高専",
+        "teamId": "kinkidaikousen",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "西川_元基_近畿大高専",
+          "弘田_和航_近畿大高専"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "近畿大高専",
+        "teamId": "kinkidaikousen",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "近畿大高専",
+        "teamId": "kinkidaikousen",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

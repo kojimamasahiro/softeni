@@ -4,35 +4,69 @@
     "doubles": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "予選敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "岩見沢東",
-    "teamId": "iwamizawahigashi",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "坂本_桔平_岩見沢東"
-    ]
-  },
-  "historicalBest": {
-    "team": "岩見沢東",
-    "teamId": "iwamizawahigashi",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "坂本_桔平_岩見沢東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "岩見沢東",
+        "teamId": "iwamizawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "坂本_桔平_岩見沢東"
+        ]
+      },
+      "historicalBest": {
+        "team": "岩見沢東",
+        "teamId": "iwamizawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "坂本_桔平_岩見沢東"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "岩見沢東",
+        "teamId": "iwamizawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "坂本_桔平_岩見沢東",
+          "駒谷_颯磨_岩見沢東"
+        ]
+      },
+      "historicalBest": {
+        "team": "岩見沢東",
+        "teamId": "iwamizawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "坂本_桔平_岩見沢東",
+          "駒谷_颯磨_岩見沢東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

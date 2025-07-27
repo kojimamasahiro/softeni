@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "千代田",
-    "teamId": "chiyoda",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "鎌田_大翔_千代田",
-      "宮脇_光由_千代田"
-    ]
-  },
-  "historicalBest": {
-    "team": "千代田",
-    "teamId": "chiyoda",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "鎌田_大翔_千代田",
-      "宮脇_光由_千代田"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "千代田",
+        "teamId": "chiyoda",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "鎌田_大翔_千代田",
+          "宮脇_光由_千代田"
+        ]
+      },
+      "historicalBest": {
+        "team": "千代田",
+        "teamId": "chiyoda",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "鎌田_大翔_千代田",
+          "宮脇_光由_千代田"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

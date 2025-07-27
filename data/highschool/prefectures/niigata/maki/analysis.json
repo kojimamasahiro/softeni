@@ -4,37 +4,54 @@
     "doubles": 7,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "巻",
-    "teamId": "maki",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "町澤_緯宙_巻",
-      "近山_諒成_巻"
-    ]
-  },
-  "historicalBest": {
-    "team": "巻",
-    "teamId": "maki",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "杉山_葉空_巻",
-      "丹野_温仁_巻"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "町澤_緯宙_巻",
+          "近山_諒成_巻"
+        ]
+      },
+      "historicalBest": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "杉山_葉空_巻",
+          "丹野_温仁_巻"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 11,
   "topPlayers": [

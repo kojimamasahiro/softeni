@@ -5,36 +5,87 @@
     "singles": 1,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "singles": "ベスト8",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "弘前実",
-    "teamId": "hirosakijitsu",
-    "prefecture": "青森県",
-    "prefectureId": "aomori",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "樋口_拓海_弘前実"
-    ]
-  },
-  "historicalBest": {
-    "team": "弘前実",
-    "teamId": "hirosakijitsu",
-    "prefecture": "青森県",
-    "prefectureId": "aomori",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "樋口_拓海_弘前実"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "樋口_拓海_弘前実"
+        ]
+      },
+      "historicalBest": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "樋口_拓海_弘前実"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "小山_颯斗_弘前実",
+          "三上_結太_弘前実"
+        ]
+      },
+      "historicalBest": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "澤田_透和_弘前実",
+          "竹村_華瑠_弘前実"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 11,
   "topPlayers": [

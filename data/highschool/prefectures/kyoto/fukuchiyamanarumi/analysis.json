@@ -5,38 +5,87 @@
     "doubles": 14,
     "team": 2
   },
-  "bestResults": {
-    "singles": "3回戦敗退",
-    "doubles": "5回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "福知山成美",
-    "teamId": "fukuchiyamanarumi",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "内藤_理央_福知山成美",
-      "加藤_歩_福知山成美"
-    ]
-  },
-  "historicalBest": {
-    "team": "福知山成美",
-    "teamId": "fukuchiyamanarumi",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "内藤_理央_福知山成美",
-      "加藤_歩_福知山成美"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "津田_柚翔_福知山成美"
+        ]
+      },
+      "historicalBest": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "津田_柚翔_福知山成美"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "内藤_理央_福知山成美",
+          "加藤_歩_福知山成美"
+        ]
+      },
+      "historicalBest": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "内藤_理央_福知山成美",
+          "加藤_歩_福知山成美"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 21,
   "topPlayers": [

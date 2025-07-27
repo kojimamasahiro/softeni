@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "嘉穂",
-    "teamId": "kaho",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "森山_聡太_嘉穂",
-      "野見_山颯太_嘉穂"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "嘉穂",
+        "teamId": "kaho",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "森山_聡太_嘉穂",
+          "野見_山颯太_嘉穂"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

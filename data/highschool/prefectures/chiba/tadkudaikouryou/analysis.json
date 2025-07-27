@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "拓大紅陵",
-    "teamId": "tadkudaikouryou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "杉山_太志_拓大紅陵",
-      "五木田_晃一_拓大紅陵"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "拓大紅陵",
+        "teamId": "tadkudaikouryou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "杉山_太志_拓大紅陵",
+          "五木田_晃一_拓大紅陵"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

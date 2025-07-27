@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 8
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "延岡学園",
-    "teamId": "nobeokagakuen",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "内田_隼颯_延岡学園",
-      "福島_涼聖_延岡学園"
-    ]
-  },
-  "historicalBest": {
-    "team": "延岡学園",
-    "teamId": "nobeokagakuen",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "海野_陽平_延岡学園",
-      "郡英_司_延岡学園"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "延岡学園",
+        "teamId": "nobeokagakuen",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "内田_隼颯_延岡学園",
+          "福島_涼聖_延岡学園"
+        ]
+      },
+      "historicalBest": {
+        "team": "延岡学園",
+        "teamId": "nobeokagakuen",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "海野_陽平_延岡学園",
+          "郡英_司_延岡学園"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 13,
   "topPlayers": [

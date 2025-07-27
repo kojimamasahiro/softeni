@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "小松",
-    "teamId": "komatsu",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "藤澤_理央馬_小松",
-      "藤澤_蒼璃_小松"
-    ]
-  },
-  "historicalBest": {
-    "team": "小松",
-    "teamId": "komatsu",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "藤澤_理央馬_小松",
-      "藤澤_蒼璃_小松"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "小松",
+        "teamId": "komatsu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "藤澤_理央馬_小松",
+          "藤澤_蒼璃_小松"
+        ]
+      },
+      "historicalBest": {
+        "team": "小松",
+        "teamId": "komatsu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "藤澤_理央馬_小松",
+          "藤澤_蒼璃_小松"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

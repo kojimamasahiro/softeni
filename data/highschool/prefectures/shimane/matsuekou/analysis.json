@@ -5,38 +5,87 @@
     "doubles": 19,
     "team": 4
   },
-  "bestResults": {
-    "singles": "1回戦敗退",
-    "doubles": "5回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "平佐_凄凰_松江工",
-      "加藤_陸_松江工"
-    ]
-  },
-  "historicalBest": {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "平佐_優吏_松江工",
-      "三上_颯汰_松江工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "松江工",
+        "teamId": "matsuekou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "井原_蓮_松江工"
+        ]
+      },
+      "historicalBest": {
+        "team": "松江工",
+        "teamId": "matsuekou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "井原_蓮_松江工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "松江工",
+        "teamId": "matsuekou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "平佐_凄凰_松江工",
+          "加藤_陸_松江工"
+        ]
+      },
+      "historicalBest": {
+        "team": "松江工",
+        "teamId": "matsuekou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "平佐_優吏_松江工",
+          "三上_颯汰_松江工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "松江工",
+        "teamId": "matsuekou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "松江工",
+        "teamId": "matsuekou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 29,
   "topPlayers": [

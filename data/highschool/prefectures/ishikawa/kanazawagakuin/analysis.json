@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "金沢学院",
-    "teamId": "kanazawagakuin",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "牧_海音_金沢学院",
-      "玉岡_翔_金沢学院"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "金沢学院",
+        "teamId": "kanazawagakuin",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "牧_海音_金沢学院",
+          "玉岡_翔_金沢学院"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

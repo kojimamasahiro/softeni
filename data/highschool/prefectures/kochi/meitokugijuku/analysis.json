@@ -5,38 +5,87 @@
     "singles": 3,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "ベスト8",
-    "singles": "3回戦敗退",
-    "team": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "明徳義塾",
-    "teamId": "meitokugijuku",
-    "prefecture": "高知県",
-    "prefectureId": "kochi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "三田_勇人_明徳義塾",
-      "西山_友晴_明徳義塾"
-    ]
-  },
-  "historicalBest": {
-    "team": "明徳義塾",
-    "teamId": "meitokugijuku",
-    "prefecture": "高知県",
-    "prefectureId": "kochi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "三田_勇人_明徳義塾",
-      "西山_友晴_明徳義塾"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "木本_琉偉_明徳義塾"
+        ]
+      },
+      "historicalBest": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "木本_琉偉_明徳義塾"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "三田_勇人_明徳義塾",
+          "西山_友晴_明徳義塾"
+        ]
+      },
+      "historicalBest": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "三田_勇人_明徳義塾",
+          "西山_友晴_明徳義塾"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 34,
   "topPlayers": [

@@ -5,38 +5,87 @@
     "team": 2,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "team": "1回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "早稲田実",
-    "teamId": "wasedami",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "伊藤_幹太_早稲田実",
-      "浦濱_大馬_早稲田実"
-    ]
-  },
-  "historicalBest": {
-    "team": "早稲田実",
-    "teamId": "wasedami",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "髙田_淳貴_早稲田実",
-      "飯干_開生_早稲田実"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "伊藤_幹太_早稲田実"
+        ]
+      },
+      "historicalBest": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "伊藤_幹太_早稲田実"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "伊藤_幹太_早稲田実",
+          "浦濱_大馬_早稲田実"
+        ]
+      },
+      "historicalBest": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "髙田_淳貴_早稲田実",
+          "飯干_開生_早稲田実"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 9,
   "topPlayers": [

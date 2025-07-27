@@ -4,37 +4,69 @@
     "singles": 1,
     "doubles": 2
   },
-  "bestResults": {
-    "singles": "1回戦敗退",
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "出雲工",
-    "teamId": "izumokou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "小村_駿斗_出雲工",
-      "山本_遥斗_出雲工"
-    ]
-  },
-  "historicalBest": {
-    "team": "出雲工",
-    "teamId": "izumokou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "小村_駿斗_出雲工",
-      "山本_遥斗_出雲工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "出雲工",
+        "teamId": "izumokou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "山本_遥斗_出雲工"
+        ]
+      },
+      "historicalBest": {
+        "team": "出雲工",
+        "teamId": "izumokou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "山本_遥斗_出雲工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "出雲工",
+        "teamId": "izumokou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "小村_駿斗_出雲工",
+          "山本_遥斗_出雲工"
+        ]
+      },
+      "historicalBest": {
+        "team": "出雲工",
+        "teamId": "izumokou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "小村_駿斗_出雲工",
+          "山本_遥斗_出雲工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

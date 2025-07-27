@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "徳山",
-    "teamId": "tokuyama",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "田中_詣人_徳山",
-      "阿部_琥太郎_徳山"
-    ]
-  },
-  "historicalBest": {
-    "team": "徳山",
-    "teamId": "tokuyama",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "田中_詣人_徳山",
-      "阿部_琥太郎_徳山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "徳山",
+        "teamId": "tokuyama",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "田中_詣人_徳山",
+          "阿部_琥太郎_徳山"
+        ]
+      },
+      "historicalBest": {
+        "team": "徳山",
+        "teamId": "tokuyama",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "田中_詣人_徳山",
+          "阿部_琥太郎_徳山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

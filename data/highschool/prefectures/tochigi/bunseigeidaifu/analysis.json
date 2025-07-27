@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 5
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "文星芸大附",
-    "teamId": "bunseigeidaifu",
-    "prefecture": "栃木県",
-    "prefectureId": "tochigi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "園部_友也_文星芸大附",
-      "白石_将也_文星芸大附"
-    ]
-  },
-  "historicalBest": {
-    "team": "文星芸大附",
-    "teamId": "bunseigeidaifu",
-    "prefecture": "栃木県",
-    "prefectureId": "tochigi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "園部_友也_文星芸大附",
-      "白石_将也_文星芸大附"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "文星芸大附",
+        "teamId": "bunseigeidaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "園部_友也_文星芸大附",
+          "白石_将也_文星芸大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "文星芸大附",
+        "teamId": "bunseigeidaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "園部_友也_文星芸大附",
+          "白石_将也_文星芸大附"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 5,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "西湘",
-    "teamId": "seishou",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "小澤_陽樹_西湘",
-      "芹澤_千哲_西湘"
-    ]
-  },
-  "historicalBest": {
-    "team": "西湘",
-    "teamId": "seishou",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "小澤_陽樹_西湘",
-      "芹澤_千哲_西湘"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "西湘",
+        "teamId": "seishou",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "小澤_陽樹_西湘",
+          "芹澤_千哲_西湘"
+        ]
+      },
+      "historicalBest": {
+        "team": "西湘",
+        "teamId": "seishou",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "小澤_陽樹_西湘",
+          "芹澤_千哲_西湘"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

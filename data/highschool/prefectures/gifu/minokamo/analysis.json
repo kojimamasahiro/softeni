@@ -5,34 +5,78 @@
     "doubles": 7,
     "team": 1
   },
-  "bestResults": {
-    "singles": "2回戦敗退",
-    "doubles": "4回戦敗退",
-    "team": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "美濃加茂",
-    "teamId": "minokamo",
-    "prefecture": "岐阜県",
-    "prefectureId": "gifu",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "高崎_温大_美濃加茂",
-      "田口_陽貴_美濃加茂"
-    ]
-  },
-  "historicalBest": {
-    "team": "美濃加茂",
-    "teamId": "minokamo",
-    "prefecture": "岐阜県",
-    "prefectureId": "gifu",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "美濃加茂",
+        "teamId": "minokamo",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "島﨑_羚音_美濃加茂"
+        ]
+      },
+      "historicalBest": {
+        "team": "美濃加茂",
+        "teamId": "minokamo",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "島﨑_羚音_美濃加茂"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "美濃加茂",
+        "teamId": "minokamo",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "高崎_温大_美濃加茂",
+          "田口_陽貴_美濃加茂"
+        ]
+      },
+      "historicalBest": {
+        "team": "美濃加茂",
+        "teamId": "minokamo",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "直井_万琴_美濃加茂",
+          "長瀬_智哉_美濃加茂"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "美濃加茂",
+        "teamId": "minokamo",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 12,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "予選敗退"
-  },
-  "recentlyResult": {
-    "team": "旭川東",
-    "teamId": "asahikawahigashi",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "那須_雄太_旭川東",
-      "谷口_康生_旭川東"
-    ]
-  },
-  "historicalBest": {
-    "team": "旭川東",
-    "teamId": "asahikawahigashi",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "那須_雄太_旭川東",
-      "谷口_康生_旭川東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "旭川東",
+        "teamId": "asahikawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "那須_雄太_旭川東",
+          "谷口_康生_旭川東"
+        ]
+      },
+      "historicalBest": {
+        "team": "旭川東",
+        "teamId": "asahikawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "那須_雄太_旭川東",
+          "谷口_康生_旭川東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

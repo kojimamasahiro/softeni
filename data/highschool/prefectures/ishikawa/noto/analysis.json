@@ -5,38 +5,87 @@
     "singles": 2,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "ベスト4",
-    "singles": "2回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "能登",
-    "teamId": "noto",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "阿部_堯_能登",
-      "髙澤_泉_能登"
-    ]
-  },
-  "historicalBest": {
-    "team": "能登",
-    "teamId": "noto",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "辻花_陸_能登",
-      "松本_隼_能登"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "藤木_晴叶_能登"
+        ]
+      },
+      "historicalBest": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "藤木_晴叶_能登"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "阿部_堯_能登",
+          "髙澤_泉_能登"
+        ]
+      },
+      "historicalBest": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "辻花_陸_能登",
+          "松本_隼_能登"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 25,
   "topPlayers": [

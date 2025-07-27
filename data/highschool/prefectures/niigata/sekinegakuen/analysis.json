@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "関根学園",
-    "teamId": "sekinegakuen",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "高野_智矢_関根学園",
-      "秋山_雅翔_関根学園"
-    ]
-  },
-  "historicalBest": {
-    "team": "関根学園",
-    "teamId": "sekinegakuen",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "高野_智矢_関根学園",
-      "秋山_雅翔_関根学園"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "関根学園",
+        "teamId": "sekinegakuen",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "高野_智矢_関根学園",
+          "秋山_雅翔_関根学園"
+        ]
+      },
+      "historicalBest": {
+        "team": "関根学園",
+        "teamId": "sekinegakuen",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "高野_智矢_関根学園",
+          "秋山_雅翔_関根学園"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

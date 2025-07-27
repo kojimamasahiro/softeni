@@ -4,35 +4,69 @@
     "singles": 1,
     "doubles": 1
   },
-  "bestResults": {
-    "singles": "2回戦敗退",
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "小田原",
-    "teamId": "odawara",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "若生_裕希_小田原"
-    ]
-  },
-  "historicalBest": {
-    "team": "小田原",
-    "teamId": "odawara",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "若生_裕希_小田原"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "小田原",
+        "teamId": "odawara",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "若生_裕希_小田原"
+        ]
+      },
+      "historicalBest": {
+        "team": "小田原",
+        "teamId": "odawara",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "若生_裕希_小田原"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "小田原",
+        "teamId": "odawara",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "若生_裕希_小田原",
+          "久保田_凰心_小田原"
+        ]
+      },
+      "historicalBest": {
+        "team": "小田原",
+        "teamId": "odawara",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "若生_裕希_小田原",
+          "久保田_凰心_小田原"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

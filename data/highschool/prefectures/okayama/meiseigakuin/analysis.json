@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "明誠学院",
-    "teamId": "meiseigakuin",
-    "prefecture": "岡山県",
-    "prefectureId": "okayama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "藤井_聡人_明誠学院",
-      "坪井_裕希_明誠学院"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "明誠学院",
+        "teamId": "meiseigakuin",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "藤井_聡人_明誠学院",
+          "坪井_裕希_明誠学院"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

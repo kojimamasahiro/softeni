@@ -3,34 +3,43 @@
   "byCategory": {
     "singles": 1
   },
-  "bestResults": {
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "花輪",
-    "teamId": "hanawa",
-    "prefecture": "秋田県",
-    "prefectureId": "akita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "畠山_颯太_花輪"
-    ]
-  },
-  "historicalBest": {
-    "team": "花輪",
-    "teamId": "hanawa",
-    "prefecture": "秋田県",
-    "prefectureId": "akita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "畠山_颯太_花輪"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "花輪",
+        "teamId": "hanawa",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "畠山_颯太_花輪"
+        ]
+      },
+      "historicalBest": {
+        "team": "花輪",
+        "teamId": "hanawa",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "畠山_颯太_花輪"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 1,
   "topPlayers": [

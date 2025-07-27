@@ -4,24 +4,41 @@
     "doubles": 1,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "常磐大高",
-    "teamId": "tokiwadaikou",
-    "prefecture": "茨城県",
-    "prefectureId": "ibaraki",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "新堀_幹太_常磐大高",
-      "野上_星翔_常磐大高"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "常磐大高",
+        "teamId": "tokiwadaikou",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "新堀_幹太_常磐大高",
+          "野上_星翔_常磐大高"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "常磐大高",
+        "teamId": "tokiwadaikou",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

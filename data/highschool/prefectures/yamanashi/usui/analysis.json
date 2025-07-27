@@ -5,38 +5,87 @@
     "singles": 3,
     "team": 3
   },
-  "bestResults": {
-    "doubles": "6回戦敗退",
-    "singles": "2回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "笛吹",
-    "teamId": "usui",
-    "prefecture": "山梨県",
-    "prefectureId": "yamanashi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "小林_侑永_笛吹",
-      "藤原_奏_笛吹"
-    ]
-  },
-  "historicalBest": {
-    "team": "笛吹",
-    "teamId": "usui",
-    "prefecture": "山梨県",
-    "prefectureId": "yamanashi",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "雨宮_陸_笛吹",
-      "八巻_隼人_笛吹"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "笛吹",
+        "teamId": "usui",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "藤原_奏_笛吹"
+        ]
+      },
+      "historicalBest": {
+        "team": "笛吹",
+        "teamId": "usui",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "藤原_奏_笛吹"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "笛吹",
+        "teamId": "usui",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "小林_侑永_笛吹",
+          "藤原_奏_笛吹"
+        ]
+      },
+      "historicalBest": {
+        "team": "笛吹",
+        "teamId": "usui",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "雨宮_陸_笛吹",
+          "八巻_隼人_笛吹"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "笛吹",
+        "teamId": "usui",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "笛吹",
+        "teamId": "usui",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 16,
   "topPlayers": [

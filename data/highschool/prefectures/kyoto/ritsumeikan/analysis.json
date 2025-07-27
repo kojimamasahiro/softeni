@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "立命館",
-    "teamId": "ritsumeikan",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "星野_将輝_立命館",
-      "浜名_良祐_立命館"
-    ]
-  },
-  "historicalBest": {
-    "team": "立命館",
-    "teamId": "ritsumeikan",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "星野_将輝_立命館",
-      "浜名_良祐_立命館"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "立命館",
+        "teamId": "ritsumeikan",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "星野_将輝_立命館",
+          "浜名_良祐_立命館"
+        ]
+      },
+      "historicalBest": {
+        "team": "立命館",
+        "teamId": "ritsumeikan",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "星野_将輝_立命館",
+          "浜名_良祐_立命館"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

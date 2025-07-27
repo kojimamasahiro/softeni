@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "享栄",
-    "teamId": "kyouei",
-    "prefecture": "愛知県",
-    "prefectureId": "aichi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "柴田_海音_享栄",
-      "百武_駿_享栄"
-    ]
-  },
-  "historicalBest": {
-    "team": "享栄",
-    "teamId": "kyouei",
-    "prefecture": "愛知県",
-    "prefectureId": "aichi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "柴田_海音_享栄",
-      "百武_駿_享栄"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "享栄",
+        "teamId": "kyouei",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "柴田_海音_享栄",
+          "百武_駿_享栄"
+        ]
+      },
+      "historicalBest": {
+        "team": "享栄",
+        "teamId": "kyouei",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "柴田_海音_享栄",
+          "百武_駿_享栄"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

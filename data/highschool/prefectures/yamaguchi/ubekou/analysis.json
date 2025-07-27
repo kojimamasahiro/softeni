@@ -4,37 +4,63 @@
     "doubles": 10,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "宇部工",
-    "teamId": "ubekou",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "久野_莉輝_宇部工",
-      "義永_啓人_宇部工"
-    ]
-  },
-  "historicalBest": {
-    "team": "宇部工",
-    "teamId": "ubekou",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "久野_莉輝_宇部工",
-      "義永_啓人_宇部工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "久野_莉輝_宇部工",
+          "義永_啓人_宇部工"
+        ]
+      },
+      "historicalBest": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "久野_莉輝_宇部工",
+          "義永_啓人_宇部工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 12,
   "topPlayers": [

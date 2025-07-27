@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "浜名",
-    "teamId": "hamana",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "渡邊_優仁_浜名",
-      "鈴木_絆生_浜名"
-    ]
-  },
-  "historicalBest": {
-    "team": "浜名",
-    "teamId": "hamana",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "渡邊_優仁_浜名",
-      "鈴木_絆生_浜名"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "浜名",
+        "teamId": "hamana",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "渡邊_優仁_浜名",
+          "鈴木_絆生_浜名"
+        ]
+      },
+      "historicalBest": {
+        "team": "浜名",
+        "teamId": "hamana",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "渡邊_優仁_浜名",
+          "鈴木_絆生_浜名"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

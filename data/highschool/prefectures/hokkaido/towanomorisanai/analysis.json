@@ -5,33 +5,87 @@
     "singles": 5,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "ベスト8",
-    "singles": "ベスト8",
-    "team": "ベスト4"
-  },
-  "recentlyResult": {
-    "team": "とわの森三愛",
-    "teamId": "towanomorisanai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "五十嵐_奨真_とわの森三愛"
-    ]
-  },
-  "historicalBest": {
-    "team": "とわの森三愛",
-    "teamId": "towanomorisanai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "ベスト4",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "五十嵐_奨真_とわの森三愛"
+        ]
+      },
+      "historicalBest": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "五十嵐_奨真_とわの森三愛"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "長南_理大_とわの森三愛",
+          "太田_遥来_とわの森三愛"
+        ]
+      },
+      "historicalBest": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "佐藤_奨吾_とわの森三愛",
+          "岡田_侑也_とわの森三愛"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト4",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 35,
   "topPlayers": [

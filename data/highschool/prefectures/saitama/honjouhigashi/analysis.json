@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "本庄東",
-    "teamId": "honjouhigashi",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊藤_涼雅_本庄東",
-      "坂本_貫大_本庄東"
-    ]
-  },
-  "historicalBest": {
-    "team": "本庄東",
-    "teamId": "honjouhigashi",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊藤_涼雅_本庄東",
-      "坂本_貫大_本庄東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "本庄東",
+        "teamId": "honjouhigashi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊藤_涼雅_本庄東",
+          "坂本_貫大_本庄東"
+        ]
+      },
+      "historicalBest": {
+        "team": "本庄東",
+        "teamId": "honjouhigashi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊藤_涼雅_本庄東",
+          "坂本_貫大_本庄東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

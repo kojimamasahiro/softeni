@@ -5,38 +5,87 @@
     "singles": 4,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "優勝",
-    "singles": "ベスト8",
-    "team": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "都城商",
-    "teamId": "miyakonojo",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "川﨑_康平_都城商",
-      "森_良輔_都城商"
-    ]
-  },
-  "historicalBest": {
-    "team": "都城商",
-    "teamId": "miyakonojo",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "川﨑_康平_都城商",
-      "森_良輔_都城商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "都城商",
+        "teamId": "miyakonojo",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "田中_涼介_都城商"
+        ]
+      },
+      "historicalBest": {
+        "team": "都城商",
+        "teamId": "miyakonojo",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "田中_涼介_都城商"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "都城商",
+        "teamId": "miyakonojo",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "川﨑_康平_都城商",
+          "森_良輔_都城商"
+        ]
+      },
+      "historicalBest": {
+        "team": "都城商",
+        "teamId": "miyakonojo",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "川﨑_康平_都城商",
+          "森_良輔_都城商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "都城商",
+        "teamId": "miyakonojo",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "都城商",
+        "teamId": "miyakonojo",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 29,
   "topPlayers": [

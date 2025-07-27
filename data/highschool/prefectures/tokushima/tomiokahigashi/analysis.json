@@ -4,35 +4,69 @@
     "singles": 2,
     "doubles": 1
   },
-  "bestResults": {
-    "singles": "ベスト8",
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "富岡東",
-    "teamId": "tomiokahigashi",
-    "prefecture": "徳島県",
-    "prefectureId": "tokushima",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "花垣_陸_富岡東"
-    ]
-  },
-  "historicalBest": {
-    "team": "富岡東",
-    "teamId": "tomiokahigashi",
-    "prefecture": "徳島県",
-    "prefectureId": "tokushima",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "花垣_陸_富岡東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "富岡東",
+        "teamId": "tomiokahigashi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "花垣_陸_富岡東"
+        ]
+      },
+      "historicalBest": {
+        "team": "富岡東",
+        "teamId": "tomiokahigashi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "花垣_陸_富岡東"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "富岡東",
+        "teamId": "tomiokahigashi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "花垣_陸_富岡東",
+          "西_紘希_富岡東"
+        ]
+      },
+      "historicalBest": {
+        "team": "富岡東",
+        "teamId": "tomiokahigashi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "花垣_陸_富岡東",
+          "西_紘希_富岡東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

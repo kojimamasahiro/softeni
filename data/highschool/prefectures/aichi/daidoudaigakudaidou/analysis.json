@@ -5,38 +5,78 @@
     "team": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "2回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "大同大学大同",
-    "teamId": "daidoudaigakudaidou",
-    "prefecture": "愛知県",
-    "prefectureId": "aichi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "農上_知輝_大同大学大同",
-      "蟹江_琉紀_大同大学大同"
-    ]
-  },
-  "historicalBest": {
-    "team": "大同大学大同",
-    "teamId": "daidoudaigakudaidou",
-    "prefecture": "愛知県",
-    "prefectureId": "aichi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "農上_知輝_大同大学大同",
-      "蟹江_琉紀_大同大学大同"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "大同大学大同",
+        "teamId": "daidoudaigakudaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "鳥居_悠人_大同大学大同"
+        ]
+      },
+      "historicalBest": {
+        "team": "大同大学大同",
+        "teamId": "daidoudaigakudaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "鳥居_悠人_大同大学大同"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大同大学大同",
+        "teamId": "daidoudaigakudaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "農上_知輝_大同大学大同",
+          "蟹江_琉紀_大同大学大同"
+        ]
+      },
+      "historicalBest": {
+        "team": "大同大学大同",
+        "teamId": "daidoudaigakudaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "農上_知輝_大同大学大同",
+          "蟹江_琉紀_大同大学大同"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大同大学大同",
+        "teamId": "daidoudaigakudaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 14,
   "topPlayers": [

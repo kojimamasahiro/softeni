@@ -4,37 +4,54 @@
     "doubles": 6,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "6回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "神戸国際附",
-    "teamId": "koubekokusaifu",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "鍬﨑_駿斗_神戸国際附",
-      "股野_頼悟_神戸国際附"
-    ]
-  },
-  "historicalBest": {
-    "team": "神戸国際附",
-    "teamId": "koubekokusaifu",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "浦田_惟生_神戸国際附",
-      "清原_聖真_神戸国際附"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "神戸国際附",
+        "teamId": "koubekokusaifu",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "鍬﨑_駿斗_神戸国際附",
+          "股野_頼悟_神戸国際附"
+        ]
+      },
+      "historicalBest": {
+        "team": "神戸国際附",
+        "teamId": "koubekokusaifu",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "浦田_惟生_神戸国際附",
+          "清原_聖真_神戸国際附"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "神戸国際附",
+        "teamId": "koubekokusaifu",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

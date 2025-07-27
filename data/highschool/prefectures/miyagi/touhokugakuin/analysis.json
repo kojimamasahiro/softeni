@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "東北学院",
-    "teamId": "touhokugakuin",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "守田_一帆_東北学院",
-      "飯渕_真大_東北学院"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東北学院",
+        "teamId": "touhokugakuin",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "守田_一帆_東北学院",
+          "飯渕_真大_東北学院"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

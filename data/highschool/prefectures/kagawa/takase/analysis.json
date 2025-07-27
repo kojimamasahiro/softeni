@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "高瀬",
-    "teamId": "takase",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "吉田_真紘_高瀬",
-      "入江_辰_高瀬"
-    ]
-  },
-  "historicalBest": {
-    "team": "高瀬",
-    "teamId": "takase",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "吉田_真紘_高瀬",
-      "入江_辰_高瀬"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高瀬",
+        "teamId": "takase",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "吉田_真紘_高瀬",
+          "入江_辰_高瀬"
+        ]
+      },
+      "historicalBest": {
+        "team": "高瀬",
+        "teamId": "takase",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "吉田_真紘_高瀬",
+          "入江_辰_高瀬"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

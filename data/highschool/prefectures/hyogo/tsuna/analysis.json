@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "津名",
-    "teamId": "tsuna",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "富永_暖琉_津名",
-      "打越_陸王_津名"
-    ]
-  },
-  "historicalBest": {
-    "team": "津名",
-    "teamId": "tsuna",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "富永_暖琉_津名",
-      "打越_陸王_津名"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "津名",
+        "teamId": "tsuna",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "富永_暖琉_津名",
+          "打越_陸王_津名"
+        ]
+      },
+      "historicalBest": {
+        "team": "津名",
+        "teamId": "tsuna",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "富永_暖琉_津名",
+          "打越_陸王_津名"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

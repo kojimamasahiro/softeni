@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "宿毛工",
-    "teamId": "sukumokou",
-    "prefecture": "高知県",
-    "prefectureId": "kochi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "赤松_成_宿毛工",
-      "河人_旦_宿毛工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宿毛工",
+        "teamId": "sukumokou",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "赤松_成_宿毛工",
+          "河人_旦_宿毛工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

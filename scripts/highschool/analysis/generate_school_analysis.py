@@ -43,47 +43,39 @@ def get_best_result(entries):
 def analyze_team(entries):
     total = 0
     by_cat = defaultdict(int)
-    best_results = {}
     player_counter = Counter()
 
+    this_year = datetime.now().year
+    results_by_category = {}
+
+    for cat in categories:
+        entries_cat = [e for e in entries if e["category"] == cat]
+
+        recently_entries = [e for e in entries_cat if e["year"] >= this_year - 2]
+        past_entries = [e for e in entries_cat if e["year"] <= this_year]
+
+        recently_best = get_best_result(recently_entries)
+        historical_best = get_best_result(past_entries)
+
+        results_by_category[cat] = {
+            "recentlyResult": recently_best,
+            "historicalBest": historical_best,
+        }
+
+    # その他処理
     for e in entries:
         cat = e['category']
-        result = e['result']
         total += 1
         by_cat[cat] += 1
 
-        # best result by category（rankが同じなら year が新しい方）
-        current_rank = rank_order.get(result, default_rank)
-        prev_result = best_results.get(cat)
-        prev_rank = rank_order.get(prev_result, default_rank)
-        prev_year = next(
-            (en["year"] for en in entries if en["result"] == prev_result and en["category"] == cat),
-            -1,
-        )
-        if (
-            current_rank < prev_rank or
-            (current_rank == prev_rank and e["year"] > prev_year)
-        ):
-            best_results[cat] = result
-
-        # player count（団体戦はスキップ）
         if 'playerIds' in e:
             for pid in e['playerIds']:
                 player_counter[pid] += 1
 
-    this_year = datetime.now().year
-    recently_entries = [e for e in entries if e["year"] >= this_year - 2]
-    past_entries = [e for e in entries if e["year"] <= this_year]
-
-    recently_best = get_best_result(recently_entries)
-    past_best = get_best_result(past_entries)
-
     return {
         "totalAppearances": total,
         "byCategory": dict(by_cat),
-        "bestResults": best_results,
-        "recentlyResult": recently_best,
-        "historicalBest": past_best,
+        "resultsByCategory": results_by_category,
         "uniquePlayers": len(player_counter),
         "topPlayers": [
             {"id": pid, "appearances": count}

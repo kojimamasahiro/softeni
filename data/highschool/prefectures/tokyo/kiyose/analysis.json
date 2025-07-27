@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "清瀬",
-    "teamId": "kiyose",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "結城_大和_清瀬",
-      "安在_琉_清瀬"
-    ]
-  },
-  "historicalBest": {
-    "team": "清瀬",
-    "teamId": "kiyose",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "結城_大和_清瀬",
-      "安在_琉_清瀬"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "清瀬",
+        "teamId": "kiyose",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "結城_大和_清瀬",
+          "安在_琉_清瀬"
+        ]
+      },
+      "historicalBest": {
+        "team": "清瀬",
+        "teamId": "kiyose",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "結城_大和_清瀬",
+          "安在_琉_清瀬"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

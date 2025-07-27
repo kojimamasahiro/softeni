@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "5回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "市川",
-    "teamId": "ichikawa",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "松山_勇人_市川",
-      "山口_亜人夢_市川"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "市川",
+        "teamId": "ichikawa",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "松山_勇人_市川",
+          "山口_亜人夢_市川"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

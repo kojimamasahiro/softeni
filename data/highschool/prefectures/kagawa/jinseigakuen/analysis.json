@@ -5,38 +5,87 @@
     "singles": 6,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "優勝",
-    "singles": "優勝",
-    "team": "優勝"
-  },
-  "recentlyResult": {
-    "team": "尽誠学園",
-    "teamId": "jinseigakuen",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "亀安_隼亘_尽誠学園",
-      "関口_光希_尽誠学園"
-    ]
-  },
-  "historicalBest": {
-    "team": "尽誠学園",
-    "teamId": "jinseigakuen",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "亀安_隼亘_尽誠学園",
-      "関口_光希_尽誠学園"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "野本_凌生_尽誠学園"
+        ]
+      },
+      "historicalBest": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "野本_凌生_尽誠学園"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "亀安_隼亘_尽誠学園",
+          "関口_光希_尽誠学園"
+        ]
+      },
+      "historicalBest": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "亀安_隼亘_尽誠学園",
+          "関口_光希_尽誠学園"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 47,
   "topPlayers": [

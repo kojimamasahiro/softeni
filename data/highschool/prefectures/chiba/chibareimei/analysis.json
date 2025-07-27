@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "千葉黎明",
-    "teamId": "chibareimei",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "平山_裕也_千葉黎明",
-      "堀越_尊_千葉黎明"
-    ]
-  },
-  "historicalBest": {
-    "team": "千葉黎明",
-    "teamId": "chibareimei",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "平山_裕也_千葉黎明",
-      "堀越_尊_千葉黎明"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "千葉黎明",
+        "teamId": "chibareimei",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "平山_裕也_千葉黎明",
+          "堀越_尊_千葉黎明"
+        ]
+      },
+      "historicalBest": {
+        "team": "千葉黎明",
+        "teamId": "chibareimei",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "平山_裕也_千葉黎明",
+          "堀越_尊_千葉黎明"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

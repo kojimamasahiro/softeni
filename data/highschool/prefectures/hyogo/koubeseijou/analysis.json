@@ -4,37 +4,69 @@
     "doubles": 11,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "神戸星城",
-    "teamId": "koubeseijou",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "岩井_亮樹_神戸星城",
-      "蓮井_京介_神戸星城"
-    ]
-  },
-  "historicalBest": {
-    "team": "神戸星城",
-    "teamId": "koubeseijou",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "岩井_亮樹_神戸星城",
-      "蓮井_京介_神戸星城"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "神戸星城",
+        "teamId": "koubeseijou",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "岩井_亮樹_神戸星城"
+        ]
+      },
+      "historicalBest": {
+        "team": "神戸星城",
+        "teamId": "koubeseijou",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "岩井_亮樹_神戸星城"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "神戸星城",
+        "teamId": "koubeseijou",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "岩井_亮樹_神戸星城",
+          "蓮井_京介_神戸星城"
+        ]
+      },
+      "historicalBest": {
+        "team": "神戸星城",
+        "teamId": "koubeseijou",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "岩井_亮樹_神戸星城",
+          "蓮井_京介_神戸星城"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 20,
   "topPlayers": [

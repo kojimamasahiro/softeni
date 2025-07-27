@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "東北生文大高",
-    "teamId": "touhokuseibunoodaka",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "横山_豪人_東北生文大高",
-      "佐藤_翼早_東北生文大高"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東北生文大高",
+        "teamId": "touhokuseibunoodaka",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "横山_豪人_東北生文大高",
+          "佐藤_翼早_東北生文大高"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

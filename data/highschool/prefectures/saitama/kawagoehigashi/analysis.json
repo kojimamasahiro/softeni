@@ -4,37 +4,63 @@
     "doubles": 6,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "川越東",
-    "teamId": "kawagoehigashi",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "橋本_知潤_川越東",
-      "柳澤_幸希_川越東"
-    ]
-  },
-  "historicalBest": {
-    "team": "川越東",
-    "teamId": "kawagoehigashi",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "橋本_知潤_川越東",
-      "柳澤_幸希_川越東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "川越東",
+        "teamId": "kawagoehigashi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "橋本_知潤_川越東",
+          "柳澤_幸希_川越東"
+        ]
+      },
+      "historicalBest": {
+        "team": "川越東",
+        "teamId": "kawagoehigashi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "橋本_知潤_川越東",
+          "柳澤_幸希_川越東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "川越東",
+        "teamId": "kawagoehigashi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "川越東",
+        "teamId": "kawagoehigashi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 9,
   "topPlayers": [

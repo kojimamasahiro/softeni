@@ -3,34 +3,43 @@
   "byCategory": {
     "singles": 1
   },
-  "bestResults": {
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "滝川工",
-    "teamId": "takikawakou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "佐藤_聖敦_滝川工"
-    ]
-  },
-  "historicalBest": {
-    "team": "滝川工",
-    "teamId": "takikawakou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "佐藤_聖敦_滝川工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "滝川工",
+        "teamId": "takikawakou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "佐藤_聖敦_滝川工"
+        ]
+      },
+      "historicalBest": {
+        "team": "滝川工",
+        "teamId": "takikawakou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "佐藤_聖敦_滝川工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 1,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "九州文化",
-    "teamId": "kyuushuubunka",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "澤田_博史_九州文化",
-      "吉松_要琉生_九州文化"
-    ]
-  },
-  "historicalBest": {
-    "team": "九州文化",
-    "teamId": "kyuushuubunka",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "澤田_博史_九州文化",
-      "吉松_要琉生_九州文化"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "九州文化",
+        "teamId": "kyuushuubunka",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "澤田_博史_九州文化",
+          "吉松_要琉生_九州文化"
+        ]
+      },
+      "historicalBest": {
+        "team": "九州文化",
+        "teamId": "kyuushuubunka",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "澤田_博史_九州文化",
+          "吉松_要琉生_九州文化"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

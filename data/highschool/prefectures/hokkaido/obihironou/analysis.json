@@ -4,35 +4,69 @@
     "doubles": 1,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "予選敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "帯広農",
-    "teamId": "obihironou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "古川_琉慎_帯広農"
-    ]
-  },
-  "historicalBest": {
-    "team": "帯広農",
-    "teamId": "obihironou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "古川_琉慎_帯広農"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "帯広農",
+        "teamId": "obihironou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "古川_琉慎_帯広農"
+        ]
+      },
+      "historicalBest": {
+        "team": "帯広農",
+        "teamId": "obihironou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "古川_琉慎_帯広農"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "帯広農",
+        "teamId": "obihironou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "渡部_拳斗_帯広農",
+          "古川_琉慎_帯広農"
+        ]
+      },
+      "historicalBest": {
+        "team": "帯広農",
+        "teamId": "obihironou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "渡部_拳斗_帯広農",
+          "古川_琉慎_帯広農"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

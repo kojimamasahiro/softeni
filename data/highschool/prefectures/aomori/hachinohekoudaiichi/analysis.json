@@ -5,38 +5,87 @@
     "singles": 2,
     "team": 3
   },
-  "bestResults": {
-    "doubles": "ベスト4",
-    "singles": "1回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "八戸工大一",
-    "teamId": "hachinohekoudaiichi",
-    "prefecture": "青森県",
-    "prefectureId": "aomori",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "山中_裕太_八戸工大一",
-      "地苫米_空隼_八戸工大一"
-    ]
-  },
-  "historicalBest": {
-    "team": "八戸工大一",
-    "teamId": "hachinohekoudaiichi",
-    "prefecture": "青森県",
-    "prefectureId": "aomori",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "東_淳之介_八戸工大一",
-      "苫米地_勝成_八戸工大一"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "山中_裕太_八戸工大一"
+        ]
+      },
+      "historicalBest": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "山中_裕太_八戸工大一"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "山中_裕太_八戸工大一",
+          "地苫米_空隼_八戸工大一"
+        ]
+      },
+      "historicalBest": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "東_淳之介_八戸工大一",
+          "苫米地_勝成_八戸工大一"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 27,
   "topPlayers": [

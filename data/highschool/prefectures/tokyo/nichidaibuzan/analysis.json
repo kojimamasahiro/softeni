@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "日大豊山",
-    "teamId": "nichidaibuzan",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "卯月_景土_日大豊山",
-      "里見_律哉_日大豊山"
-    ]
-  },
-  "historicalBest": {
-    "team": "日大豊山",
-    "teamId": "nichidaibuzan",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "卯月_景土_日大豊山",
-      "里見_律哉_日大豊山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "日大豊山",
+        "teamId": "nichidaibuzan",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "卯月_景土_日大豊山",
+          "里見_律哉_日大豊山"
+        ]
+      },
+      "historicalBest": {
+        "team": "日大豊山",
+        "teamId": "nichidaibuzan",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "卯月_景土_日大豊山",
+          "里見_律哉_日大豊山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

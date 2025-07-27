@@ -4,37 +4,63 @@
     "doubles": 2,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "6回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "岡山南",
-    "teamId": "okayamaminami",
-    "prefecture": "岡山県",
-    "prefectureId": "okayama",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "松永_凌_岡山南",
-      "荻野_永二_岡山南"
-    ]
-  },
-  "historicalBest": {
-    "team": "岡山南",
-    "teamId": "okayamaminami",
-    "prefecture": "岡山県",
-    "prefectureId": "okayama",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "松永_凌_岡山南",
-      "荻野_永二_岡山南"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "松永_凌_岡山南",
+          "荻野_永二_岡山南"
+        ]
+      },
+      "historicalBest": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "松永_凌_岡山南",
+          "荻野_永二_岡山南"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

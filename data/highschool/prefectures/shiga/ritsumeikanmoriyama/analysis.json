@@ -5,38 +5,87 @@
     "singles": 3,
     "team": 3
   },
-  "bestResults": {
-    "doubles": "6回戦敗退",
-    "singles": "3回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "立命館守山",
-    "teamId": "ritsumeikanmoriyama",
-    "prefecture": "滋賀県",
-    "prefectureId": "shiga",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "村井_晋之介_立命館守山",
-      "福井_優斗_立命館守山"
-    ]
-  },
-  "historicalBest": {
-    "team": "立命館守山",
-    "teamId": "ritsumeikanmoriyama",
-    "prefecture": "滋賀県",
-    "prefectureId": "shiga",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "村井_晋之介_立命館守山",
-      "福井_優斗_立命館守山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "立命館守山",
+        "teamId": "ritsumeikanmoriyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "村井_晋之介_立命館守山"
+        ]
+      },
+      "historicalBest": {
+        "team": "立命館守山",
+        "teamId": "ritsumeikanmoriyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "村井_晋之介_立命館守山"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "立命館守山",
+        "teamId": "ritsumeikanmoriyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "村井_晋之介_立命館守山",
+          "福井_優斗_立命館守山"
+        ]
+      },
+      "historicalBest": {
+        "team": "立命館守山",
+        "teamId": "ritsumeikanmoriyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "村井_晋之介_立命館守山",
+          "福井_優斗_立命館守山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "立命館守山",
+        "teamId": "ritsumeikanmoriyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "立命館守山",
+        "teamId": "ritsumeikanmoriyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 18,
   "topPlayers": [

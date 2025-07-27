@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "大館鳳鳴",
-    "teamId": "oodateootorimei",
-    "prefecture": "秋田県",
-    "prefectureId": "akita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "黒澤_悠真_大館鳳鳴",
-      "石田_琉人_大館鳳鳴"
-    ]
-  },
-  "historicalBest": {
-    "team": "大館鳳鳴",
-    "teamId": "oodateootorimei",
-    "prefecture": "秋田県",
-    "prefectureId": "akita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "黒澤_悠真_大館鳳鳴",
-      "石田_琉人_大館鳳鳴"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大館鳳鳴",
+        "teamId": "oodateootorimei",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "黒澤_悠真_大館鳳鳴",
+          "石田_琉人_大館鳳鳴"
+        ]
+      },
+      "historicalBest": {
+        "team": "大館鳳鳴",
+        "teamId": "oodateootorimei",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "黒澤_悠真_大館鳳鳴",
+          "石田_琉人_大館鳳鳴"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

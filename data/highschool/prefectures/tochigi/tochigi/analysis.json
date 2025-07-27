@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "栃木",
-    "teamId": "tochigi",
-    "prefecture": "栃木県",
-    "prefectureId": "tochigi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "藤中_尊_栃木",
-      "近藤_俊圭_栃木"
-    ]
-  },
-  "historicalBest": {
-    "team": "栃木",
-    "teamId": "tochigi",
-    "prefecture": "栃木県",
-    "prefectureId": "tochigi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "藤中_尊_栃木",
-      "近藤_俊圭_栃木"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "栃木",
+        "teamId": "tochigi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "藤中_尊_栃木",
+          "近藤_俊圭_栃木"
+        ]
+      },
+      "historicalBest": {
+        "team": "栃木",
+        "teamId": "tochigi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "藤中_尊_栃木",
+          "近藤_俊圭_栃木"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

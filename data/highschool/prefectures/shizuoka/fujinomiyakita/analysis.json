@@ -5,38 +5,87 @@
     "team": 2,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "2回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "富士宮北",
-    "teamId": "fujinomiyakita",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "乾_楓雅_富士宮北",
-      "小川_玲志_富士宮北"
-    ]
-  },
-  "historicalBest": {
-    "team": "富士宮北",
-    "teamId": "fujinomiyakita",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "乾_楓雅_富士宮北",
-      "小川_玲志_富士宮北"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "乾_楓雅_富士宮北"
+        ]
+      },
+      "historicalBest": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "乾_楓雅_富士宮北"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "乾_楓雅_富士宮北",
+          "小川_玲志_富士宮北"
+        ]
+      },
+      "historicalBest": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "乾_楓雅_富士宮北",
+          "小川_玲志_富士宮北"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 11,
   "topPlayers": [

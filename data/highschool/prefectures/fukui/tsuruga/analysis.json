@@ -4,37 +4,69 @@
     "singles": 1,
     "doubles": 6
   },
-  "bestResults": {
-    "singles": "1回戦敗退",
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "敦賀",
-    "teamId": "tsuruga",
-    "prefecture": "福井県",
-    "prefectureId": "fukui",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "小林_奏來_敦賀",
-      "大浦_林斗_敦賀"
-    ]
-  },
-  "historicalBest": {
-    "team": "敦賀",
-    "teamId": "tsuruga",
-    "prefecture": "福井県",
-    "prefectureId": "fukui",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "小林_奏來_敦賀",
-      "大浦_林斗_敦賀"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "敦賀",
+        "teamId": "tsuruga",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "小林_奏來_敦賀"
+        ]
+      },
+      "historicalBest": {
+        "team": "敦賀",
+        "teamId": "tsuruga",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "小林_奏來_敦賀"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "敦賀",
+        "teamId": "tsuruga",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "小林_奏來_敦賀",
+          "大浦_林斗_敦賀"
+        ]
+      },
+      "historicalBest": {
+        "team": "敦賀",
+        "teamId": "tsuruga",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "小林_奏來_敦賀",
+          "大浦_林斗_敦賀"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 10,
   "topPlayers": [

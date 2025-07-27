@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 4
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "脇町",
-    "teamId": "wakimachi",
-    "prefecture": "徳島県",
-    "prefectureId": "tokushima",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "𠮷田_圭汰_脇町",
-      "亀井_奏佑_脇町"
-    ]
-  },
-  "historicalBest": {
-    "team": "脇町",
-    "teamId": "wakimachi",
-    "prefecture": "徳島県",
-    "prefectureId": "tokushima",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "𠮷田_圭汰_脇町",
-      "亀井_奏佑_脇町"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "脇町",
+        "teamId": "wakimachi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "𠮷田_圭汰_脇町",
+          "亀井_奏佑_脇町"
+        ]
+      },
+      "historicalBest": {
+        "team": "脇町",
+        "teamId": "wakimachi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "𠮷田_圭汰_脇町",
+          "亀井_奏佑_脇町"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

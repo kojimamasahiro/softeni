@@ -5,38 +5,87 @@
     "singles": 5,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "優勝",
-    "singles": "優勝",
-    "team": "優勝"
-  },
-  "recentlyResult": {
-    "team": "高田商",
-    "teamId": "takadashou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "植田_璃音_高田商",
-      "荻谷_侑磨_高田商"
-    ]
-  },
-  "historicalBest": {
-    "team": "高田商",
-    "teamId": "takadashou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "植田_璃音_高田商",
-      "荻谷_侑磨_高田商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "植田_璃音_高田商"
+        ]
+      },
+      "historicalBest": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "植田_璃音_高田商"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "植田_璃音_高田商",
+          "荻谷_侑磨_高田商"
+        ]
+      },
+      "historicalBest": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "植田_璃音_高田商",
+          "荻谷_侑磨_高田商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 48,
   "topPlayers": [

@@ -5,38 +5,87 @@
     "team": 5,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "team": "2回戦敗退",
-    "singles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "金津",
-    "teamId": "kanetsu",
-    "prefecture": "福井県",
-    "prefectureId": "fukui",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "山本_翔太_金津",
-      "本塚_皓貴_金津"
-    ]
-  },
-  "historicalBest": {
-    "team": "金津",
-    "teamId": "kanetsu",
-    "prefecture": "福井県",
-    "prefectureId": "fukui",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "山田_悠太_金津",
-      "中川_遥斗_金津"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "今井_奏良_金津"
+        ]
+      },
+      "historicalBest": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "今井_奏良_金津"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "山本_翔太_金津",
+          "本塚_皓貴_金津"
+        ]
+      },
+      "historicalBest": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "山田_悠太_金津",
+          "中川_遥斗_金津"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 24,
   "topPlayers": [

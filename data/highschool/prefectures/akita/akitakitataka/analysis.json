@@ -5,38 +5,78 @@
     "team": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "team": "2回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "秋田北鷹",
-    "teamId": "akitakitataka",
-    "prefecture": "秋田県",
-    "prefectureId": "akita",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "猪股_悠志_秋田北鷹",
-      "畠山_七樹_秋田北鷹"
-    ]
-  },
-  "historicalBest": {
-    "team": "秋田北鷹",
-    "teamId": "akitakitataka",
-    "prefecture": "秋田県",
-    "prefectureId": "akita",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "猪股_悠志_秋田北鷹",
-      "畠山_七樹_秋田北鷹"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "秋田北鷹",
+        "teamId": "akitakitataka",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "猪股_悠志_秋田北鷹"
+        ]
+      },
+      "historicalBest": {
+        "team": "秋田北鷹",
+        "teamId": "akitakitataka",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "猪股_悠志_秋田北鷹"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "秋田北鷹",
+        "teamId": "akitakitataka",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "猪股_悠志_秋田北鷹",
+          "畠山_七樹_秋田北鷹"
+        ]
+      },
+      "historicalBest": {
+        "team": "秋田北鷹",
+        "teamId": "akitakitataka",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "猪股_悠志_秋田北鷹",
+          "畠山_七樹_秋田北鷹"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "秋田北鷹",
+        "teamId": "akitakitataka",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 11,
   "topPlayers": [

@@ -4,36 +4,69 @@
     "doubles": 2,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "南丹",
-    "teamId": "nantan",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "髙垣_佳弘_南丹"
-    ]
-  },
-  "historicalBest": {
-    "team": "南丹",
-    "teamId": "nantan",
-    "prefecture": "京都府",
-    "prefectureId": "kyoto",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "髙垣_佳弘_南丹",
-      "笹尾_倖芽_南丹"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "南丹",
+        "teamId": "nantan",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "髙垣_佳弘_南丹"
+        ]
+      },
+      "historicalBest": {
+        "team": "南丹",
+        "teamId": "nantan",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "髙垣_佳弘_南丹"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "南丹",
+        "teamId": "nantan",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "西村_脩_南丹",
+          "木村_秀人_南丹"
+        ]
+      },
+      "historicalBest": {
+        "team": "南丹",
+        "teamId": "nantan",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "髙垣_佳弘_南丹",
+          "笹尾_倖芽_南丹"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

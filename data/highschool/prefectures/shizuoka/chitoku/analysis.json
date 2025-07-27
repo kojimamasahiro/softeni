@@ -5,38 +5,87 @@
     "singles": 1,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "2回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "知徳",
-    "teamId": "chitoku",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "鈴木_奏汰_知徳",
-      "永田_大智_知徳"
-    ]
-  },
-  "historicalBest": {
-    "team": "知徳",
-    "teamId": "chitoku",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "鈴木_奏汰_知徳",
-      "永田_大智_知徳"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "知徳",
+        "teamId": "chitoku",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "坂井_優斗_知徳"
+        ]
+      },
+      "historicalBest": {
+        "team": "知徳",
+        "teamId": "chitoku",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "坂井_優斗_知徳"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "知徳",
+        "teamId": "chitoku",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "鈴木_奏汰_知徳",
+          "永田_大智_知徳"
+        ]
+      },
+      "historicalBest": {
+        "team": "知徳",
+        "teamId": "chitoku",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "鈴木_奏汰_知徳",
+          "永田_大智_知徳"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "知徳",
+        "teamId": "chitoku",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "知徳",
+        "teamId": "chitoku",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 20,
   "topPlayers": [

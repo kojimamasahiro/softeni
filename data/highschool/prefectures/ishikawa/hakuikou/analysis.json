@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 4
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "羽咋工",
-    "teamId": "hakuikou",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "石川_晴海_羽咋工",
-      "中田_怜来_羽咋工"
-    ]
-  },
-  "historicalBest": {
-    "team": "羽咋工",
-    "teamId": "hakuikou",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "石川_晴海_羽咋工",
-      "中田_怜来_羽咋工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "羽咋工",
+        "teamId": "hakuikou",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "石川_晴海_羽咋工",
+          "中田_怜来_羽咋工"
+        ]
+      },
+      "historicalBest": {
+        "team": "羽咋工",
+        "teamId": "hakuikou",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "石川_晴海_羽咋工",
+          "中田_怜来_羽咋工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "益田翔陽",
-    "teamId": "masudashouyou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "福原_天翔_益田翔陽",
-      "三宅_暖翔_益田翔陽"
-    ]
-  },
-  "historicalBest": {
-    "team": "益田翔陽",
-    "teamId": "masudashouyou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "福原_天翔_益田翔陽",
-      "三宅_暖翔_益田翔陽"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "益田翔陽",
+        "teamId": "masudashouyou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "福原_天翔_益田翔陽",
+          "三宅_暖翔_益田翔陽"
+        ]
+      },
+      "historicalBest": {
+        "team": "益田翔陽",
+        "teamId": "masudashouyou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "福原_天翔_益田翔陽",
+          "三宅_暖翔_益田翔陽"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

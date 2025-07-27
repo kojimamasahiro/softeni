@@ -4,37 +4,69 @@
     "doubles": 10,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "広島翔洋",
-    "teamId": "hiroshimashouyou",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "橋本_聖良_広島翔洋",
-      "竹之内_陵平_広島翔洋"
-    ]
-  },
-  "historicalBest": {
-    "team": "広島翔洋",
-    "teamId": "hiroshimashouyou",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "平川_史恩_広島翔洋",
-      "大神_晃世_広島翔洋"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "小保_伶太_広島翔洋"
+        ]
+      },
+      "historicalBest": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "小保_伶太_広島翔洋"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "橋本_聖良_広島翔洋",
+          "竹之内_陵平_広島翔洋"
+        ]
+      },
+      "historicalBest": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "平川_史恩_広島翔洋",
+          "大神_晃世_広島翔洋"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 16,
   "topPlayers": [

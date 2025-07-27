@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "洲本",
-    "teamId": "sumoto",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "白瀬_勇太_洲本",
-      "松本_宗士_洲本"
-    ]
-  },
-  "historicalBest": {
-    "team": "洲本",
-    "teamId": "sumoto",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "白瀬_勇太_洲本",
-      "松本_宗士_洲本"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "洲本",
+        "teamId": "sumoto",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "白瀬_勇太_洲本",
+          "松本_宗士_洲本"
+        ]
+      },
+      "historicalBest": {
+        "team": "洲本",
+        "teamId": "sumoto",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "白瀬_勇太_洲本",
+          "松本_宗士_洲本"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 5,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 7
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "知念",
-    "teamId": "chinen",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "新垣_太賀_知念",
-      "村上_蓮恩_知念"
-    ]
-  },
-  "historicalBest": {
-    "team": "知念",
-    "teamId": "chinen",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "新垣_太賀_知念",
-      "村上_蓮恩_知念"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "知念",
+        "teamId": "chinen",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "新垣_太賀_知念",
+          "村上_蓮恩_知念"
+        ]
+      },
+      "historicalBest": {
+        "team": "知念",
+        "teamId": "chinen",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "新垣_太賀_知念",
+          "村上_蓮恩_知念"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 10,
   "topPlayers": [

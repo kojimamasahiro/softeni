@@ -5,38 +5,87 @@
     "singles": 1,
     "team": 4
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "singles": "1回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "八重山",
-    "teamId": "yaeyama",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "福本_礼央夏_八重山",
-      "座波_晃也_八重山"
-    ]
-  },
-  "historicalBest": {
-    "team": "八重山",
-    "teamId": "yaeyama",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "福本_礼央夏_八重山",
-      "座波_晃也_八重山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "福本_礼央夏_八重山"
+        ]
+      },
+      "historicalBest": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "福本_礼央夏_八重山"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "福本_礼央夏_八重山",
+          "座波_晃也_八重山"
+        ]
+      },
+      "historicalBest": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "福本_礼央夏_八重山",
+          "座波_晃也_八重山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

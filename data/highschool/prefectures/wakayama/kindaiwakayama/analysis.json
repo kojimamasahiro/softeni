@@ -4,37 +4,69 @@
     "doubles": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "近大和歌山",
-    "teamId": "kindaiwakayama",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "貴志_展晴_近大和歌山",
-      "南出_昊亮_近大和歌山"
-    ]
-  },
-  "historicalBest": {
-    "team": "近大和歌山",
-    "teamId": "kindaiwakayama",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "貴志_展晴_近大和歌山",
-      "南出_昊亮_近大和歌山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "近大和歌山",
+        "teamId": "kindaiwakayama",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "福岡_直翔_近大和歌山"
+        ]
+      },
+      "historicalBest": {
+        "team": "近大和歌山",
+        "teamId": "kindaiwakayama",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "福岡_直翔_近大和歌山"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "近大和歌山",
+        "teamId": "kindaiwakayama",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "貴志_展晴_近大和歌山",
+          "南出_昊亮_近大和歌山"
+        ]
+      },
+      "historicalBest": {
+        "team": "近大和歌山",
+        "teamId": "kindaiwakayama",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "貴志_展晴_近大和歌山",
+          "南出_昊亮_近大和歌山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "渋川",
-    "teamId": "shibukawa",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "田中_輝_渋川",
-      "保科_陽向_渋川"
-    ]
-  },
-  "historicalBest": {
-    "team": "渋川",
-    "teamId": "shibukawa",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "田中_輝_渋川",
-      "保科_陽向_渋川"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "渋川",
+        "teamId": "shibukawa",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "田中_輝_渋川",
+          "保科_陽向_渋川"
+        ]
+      },
+      "historicalBest": {
+        "team": "渋川",
+        "teamId": "shibukawa",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "田中_輝_渋川",
+          "保科_陽向_渋川"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

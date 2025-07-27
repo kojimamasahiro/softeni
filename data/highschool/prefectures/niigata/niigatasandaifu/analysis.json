@@ -5,38 +5,78 @@
     "team": 1,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "1回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "新潟産大附",
-    "teamId": "niigatasandaifu",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "長ケ部_暖_新潟産大附",
-      "井口_大輔_新潟産大附"
-    ]
-  },
-  "historicalBest": {
-    "team": "新潟産大附",
-    "teamId": "niigatasandaifu",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "加藤_颯人_新潟産大附",
-      "山本_楓也_新潟産大附"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "青木_優河_新潟産大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "青木_優河_新潟産大附"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "長ケ部_暖_新潟産大附",
+          "井口_大輔_新潟産大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "加藤_颯人_新潟産大附",
+          "山本_楓也_新潟産大附"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

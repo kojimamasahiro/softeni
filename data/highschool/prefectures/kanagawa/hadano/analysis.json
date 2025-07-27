@@ -4,37 +4,69 @@
     "doubles": 4,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "秦野",
-    "teamId": "hadano",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "青木_真尋_秦野",
-      "金﨑_隆之介_秦野"
-    ]
-  },
-  "historicalBest": {
-    "team": "秦野",
-    "teamId": "hadano",
-    "prefecture": "神奈川県",
-    "prefectureId": "kanagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "青木_真尋_秦野",
-      "金﨑_隆之介_秦野"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "秦野",
+        "teamId": "hadano",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "青木_真尋_秦野"
+        ]
+      },
+      "historicalBest": {
+        "team": "秦野",
+        "teamId": "hadano",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "青木_真尋_秦野"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "秦野",
+        "teamId": "hadano",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "青木_真尋_秦野",
+          "金﨑_隆之介_秦野"
+        ]
+      },
+      "historicalBest": {
+        "team": "秦野",
+        "teamId": "hadano",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "青木_真尋_秦野",
+          "金﨑_隆之介_秦野"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 5,
   "topPlayers": [

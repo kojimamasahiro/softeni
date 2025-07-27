@@ -4,35 +4,69 @@
     "doubles": 5,
     "singles": 3
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "singles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "北科大",
-    "teamId": "kitakadai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "西_拓郎_北科大"
-    ]
-  },
-  "historicalBest": {
-    "team": "北科大",
-    "teamId": "kitakadai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "西_拓郎_北科大"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "西_拓郎_北科大"
+        ]
+      },
+      "historicalBest": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "西_拓郎_北科大"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "竹村_純生_北科大",
+          "松田_快晴_北科大"
+        ]
+      },
+      "historicalBest": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "竹村_純生_北科大",
+          "松田_快晴_北科大"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

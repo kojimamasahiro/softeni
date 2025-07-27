@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 6
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "山形中央",
-    "teamId": "yamagatachuuou",
-    "prefecture": "山形県",
-    "prefectureId": "yamagata",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "遠藤_雄輝_山形中央",
-      "渡邉_秀哉_山形中央"
-    ]
-  },
-  "historicalBest": {
-    "team": "山形中央",
-    "teamId": "yamagatachuuou",
-    "prefecture": "山形県",
-    "prefectureId": "yamagata",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "遠藤_雄輝_山形中央",
-      "渡邉_秀哉_山形中央"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "山形中央",
+        "teamId": "yamagatachuuou",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "遠藤_雄輝_山形中央",
+          "渡邉_秀哉_山形中央"
+        ]
+      },
+      "historicalBest": {
+        "team": "山形中央",
+        "teamId": "yamagatachuuou",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "遠藤_雄輝_山形中央",
+          "渡邉_秀哉_山形中央"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 12,
   "topPlayers": [

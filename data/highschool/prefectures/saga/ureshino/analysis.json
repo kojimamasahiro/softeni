@@ -5,36 +5,87 @@
     "singles": 3,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "singles": "準優勝",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "嬉野",
-    "teamId": "ureshino",
-    "prefecture": "佐賀県",
-    "prefectureId": "saga",
-    "result": "準優勝",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "松尾_航希_嬉野"
-    ]
-  },
-  "historicalBest": {
-    "team": "嬉野",
-    "teamId": "ureshino",
-    "prefecture": "佐賀県",
-    "prefectureId": "saga",
-    "result": "準優勝",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "松尾_航希_嬉野"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "準優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "松尾_航希_嬉野"
+        ]
+      },
+      "historicalBest": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "準優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "松尾_航希_嬉野"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "井田_隼介_嬉野",
+          "山口_柊_嬉野"
+        ]
+      },
+      "historicalBest": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "井田_隼介_嬉野",
+          "山口_柊_嬉野"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 26,
   "topPlayers": [

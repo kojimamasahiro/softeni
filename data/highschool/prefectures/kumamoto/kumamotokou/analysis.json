@@ -4,37 +4,63 @@
     "doubles": 7,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "熊本工",
-    "teamId": "kumamotokou",
-    "prefecture": "熊本県",
-    "prefectureId": "kumamoto",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大川_竜明_熊本工",
-      "横田_祥_熊本工"
-    ]
-  },
-  "historicalBest": {
-    "team": "熊本工",
-    "teamId": "kumamotokou",
-    "prefecture": "熊本県",
-    "prefectureId": "kumamoto",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "中村_翔太_熊本工",
-      "中川_作_熊本工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大川_竜明_熊本工",
+          "横田_祥_熊本工"
+        ]
+      },
+      "historicalBest": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "中村_翔太_熊本工",
+          "中川_作_熊本工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 12,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "八頭",
-    "teamId": "yazu",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "田中_煌音_八頭",
-      "東田_一樹_八頭"
-    ]
-  },
-  "historicalBest": {
-    "team": "八頭",
-    "teamId": "yazu",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "田中_煌音_八頭",
-      "東田_一樹_八頭"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "八頭",
+        "teamId": "yazu",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "田中_煌音_八頭",
+          "東田_一樹_八頭"
+        ]
+      },
+      "historicalBest": {
+        "team": "八頭",
+        "teamId": "yazu",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "田中_煌音_八頭",
+          "東田_一樹_八頭"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

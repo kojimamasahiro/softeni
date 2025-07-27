@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "魚津",
-    "teamId": "uozu",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "中山_健心_魚津",
-      "浮田_鳳雅_魚津"
-    ]
-  },
-  "historicalBest": {
-    "team": "魚津",
-    "teamId": "uozu",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "中山_健心_魚津",
-      "浮田_鳳雅_魚津"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "魚津",
+        "teamId": "uozu",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "中山_健心_魚津",
+          "浮田_鳳雅_魚津"
+        ]
+      },
+      "historicalBest": {
+        "team": "魚津",
+        "teamId": "uozu",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "中山_健心_魚津",
+          "浮田_鳳雅_魚津"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

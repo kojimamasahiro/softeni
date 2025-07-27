@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "大分舞鶴",
-    "teamId": "ooitamaizuru",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "清水_慎之亮_大分舞鶴",
-      "佐藤_寛人_大分舞鶴"
-    ]
-  },
-  "historicalBest": {
-    "team": "大分舞鶴",
-    "teamId": "ooitamaizuru",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "三宮_周_大分舞鶴",
-      "藤澤_知彌_大分舞鶴"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大分舞鶴",
+        "teamId": "ooitamaizuru",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "清水_慎之亮_大分舞鶴",
+          "佐藤_寛人_大分舞鶴"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分舞鶴",
+        "teamId": "ooitamaizuru",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "三宮_周_大分舞鶴",
+          "藤澤_知彌_大分舞鶴"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

@@ -4,37 +4,63 @@
     "doubles": 12,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "清水ヶ丘",
-    "teamId": "shimizukeoka",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "東_稜久_清水ヶ丘",
-      "小川_蓮太郎_清水ヶ丘"
-    ]
-  },
-  "historicalBest": {
-    "team": "清水ヶ丘",
-    "teamId": "shimizukeoka",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "東_稜久_清水ヶ丘",
-      "小川_蓮太郎_清水ヶ丘"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "東_稜久_清水ヶ丘",
+          "小川_蓮太郎_清水ヶ丘"
+        ]
+      },
+      "historicalBest": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "東_稜久_清水ヶ丘",
+          "小川_蓮太郎_清水ヶ丘"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 17,
   "topPlayers": [

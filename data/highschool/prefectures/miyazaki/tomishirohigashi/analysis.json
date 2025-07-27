@@ -4,37 +4,69 @@
     "doubles": 4,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "都城東",
-    "teamId": "tomishirohigashi",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "大山_瑠偉_都城東",
-      "中川_純之介_都城東"
-    ]
-  },
-  "historicalBest": {
-    "team": "都城東",
-    "teamId": "tomishirohigashi",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "大山_瑠偉_都城東",
-      "中川_純之介_都城東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "都城東",
+        "teamId": "tomishirohigashi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "大山_瑠偉_都城東"
+        ]
+      },
+      "historicalBest": {
+        "team": "都城東",
+        "teamId": "tomishirohigashi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "大山_瑠偉_都城東"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "都城東",
+        "teamId": "tomishirohigashi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "大山_瑠偉_都城東",
+          "中川_純之介_都城東"
+        ]
+      },
+      "historicalBest": {
+        "team": "都城東",
+        "teamId": "tomishirohigashi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "大山_瑠偉_都城東",
+          "中川_純之介_都城東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

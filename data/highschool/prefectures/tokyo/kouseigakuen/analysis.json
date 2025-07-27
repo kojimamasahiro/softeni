@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "佼成学園",
-    "teamId": "kouseigakuen",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "林_星汰_佼成学園",
-      "三浦_瑠斗_佼成学園"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "佼成学園",
+        "teamId": "kouseigakuen",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "林_星汰_佼成学園",
+          "三浦_瑠斗_佼成学園"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

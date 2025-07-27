@@ -4,37 +4,54 @@
     "doubles": 3,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "2回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "浜松商",
-    "teamId": "hamamatsushou",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊藤_吟時_浜松商",
-      "町田_宙太_浜松商"
-    ]
-  },
-  "historicalBest": {
-    "team": "浜松商",
-    "teamId": "hamamatsushou",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "鈴木_駿_浜松商",
-      "山田_湊_浜松商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "伊藤_吟時_浜松商",
+          "町田_宙太_浜松商"
+        ]
+      },
+      "historicalBest": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "鈴木_駿_浜松商",
+          "山田_湊_浜松商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

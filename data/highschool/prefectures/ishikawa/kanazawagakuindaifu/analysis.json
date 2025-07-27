@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "金沢学院大附",
-    "teamId": "kanazawagakuindaifu",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "久田_陸人_金沢学院大附",
-      "柳田_蒼生_金沢学院大附"
-    ]
-  },
-  "historicalBest": {
-    "team": "金沢学院大附",
-    "teamId": "kanazawagakuindaifu",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "久田_陸人_金沢学院大附",
-      "柳田_蒼生_金沢学院大附"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "金沢学院大附",
+        "teamId": "kanazawagakuindaifu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "久田_陸人_金沢学院大附",
+          "柳田_蒼生_金沢学院大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "金沢学院大附",
+        "teamId": "kanazawagakuindaifu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "久田_陸人_金沢学院大附",
+          "柳田_蒼生_金沢学院大附"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

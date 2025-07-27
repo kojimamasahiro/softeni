@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 4
   },
-  "bestResults": {
-    "doubles": "5回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "愛産大三河",
-    "teamId": "aisanoomikawa",
-    "prefecture": "愛知県",
-    "prefectureId": "aichi",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "大音_翔和_愛産大三河",
-      "松本_弥大_愛産大三河"
-    ]
-  },
-  "historicalBest": {
-    "team": "愛産大三河",
-    "teamId": "aisanoomikawa",
-    "prefecture": "愛知県",
-    "prefectureId": "aichi",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "杉山_透伊_愛産大三河",
-      "松本_知大_愛産大三河"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "愛産大三河",
+        "teamId": "aisanoomikawa",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "大音_翔和_愛産大三河",
+          "松本_弥大_愛産大三河"
+        ]
+      },
+      "historicalBest": {
+        "team": "愛産大三河",
+        "teamId": "aisanoomikawa",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "杉山_透伊_愛産大三河",
+          "松本_知大_愛産大三河"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

@@ -5,38 +5,87 @@
     "team": 2,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "ベスト4",
-    "team": "ベスト8",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "一関学院",
-    "teamId": "ichinosekigakuin",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "東_脩蔵_一関学院",
-      "及川_莉央_一関学院"
-    ]
-  },
-  "historicalBest": {
-    "team": "一関学院",
-    "teamId": "ichinosekigakuin",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "東_脩蔵_一関学院",
-      "及川_莉央_一関学院"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "東_脩蔵_一関学院"
+        ]
+      },
+      "historicalBest": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "東_脩蔵_一関学院"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "東_脩蔵_一関学院",
+          "及川_莉央_一関学院"
+        ]
+      },
+      "historicalBest": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "東_脩蔵_一関学院",
+          "及川_莉央_一関学院"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      }
+    }
   },
   "uniquePlayers": 15,
   "topPlayers": [

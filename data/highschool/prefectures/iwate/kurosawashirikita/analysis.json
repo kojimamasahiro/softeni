@@ -5,38 +5,87 @@
     "singles": 1,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "singles": "1回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "黒沢尻北",
-    "teamId": "kurosawashirikita",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "八島_銀音_黒沢尻北",
-      "長根山_桜太朗_黒沢尻北"
-    ]
-  },
-  "historicalBest": {
-    "team": "黒沢尻北",
-    "teamId": "kurosawashirikita",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "八島_銀音_黒沢尻北",
-      "長根山_桜太朗_黒沢尻北"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "八島_銀音_黒沢尻北"
+        ]
+      },
+      "historicalBest": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "八島_銀音_黒沢尻北"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "八島_銀音_黒沢尻北",
+          "長根山_桜太朗_黒沢尻北"
+        ]
+      },
+      "historicalBest": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "八島_銀音_黒沢尻北",
+          "長根山_桜太朗_黒沢尻北"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 13,
   "topPlayers": [

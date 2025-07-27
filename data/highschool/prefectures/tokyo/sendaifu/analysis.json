@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "専大附",
-    "teamId": "sendaifu",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "岩田_航輝_専大附",
-      "松浦_歩夢_専大附"
-    ]
-  },
-  "historicalBest": {
-    "team": "専大附",
-    "teamId": "sendaifu",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "岩田_航輝_専大附",
-      "松浦_歩夢_専大附"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "専大附",
+        "teamId": "sendaifu",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "岩田_航輝_専大附",
+          "松浦_歩夢_専大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "専大附",
+        "teamId": "sendaifu",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "岩田_航輝_専大附",
+          "松浦_歩夢_専大附"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

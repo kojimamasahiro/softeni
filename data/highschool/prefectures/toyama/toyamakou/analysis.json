@@ -4,37 +4,54 @@
     "doubles": 12,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "富山工",
-    "teamId": "toyamakou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "吉藤_蓮斗_富山工",
-      "金津_結大_富山工"
-    ]
-  },
-  "historicalBest": {
-    "team": "富山工",
-    "teamId": "toyamakou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "高瀬_泰雅_富山工",
-      "小森_寛太_富山工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "富山工",
+        "teamId": "toyamakou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "吉藤_蓮斗_富山工",
+          "金津_結大_富山工"
+        ]
+      },
+      "historicalBest": {
+        "team": "富山工",
+        "teamId": "toyamakou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "高瀬_泰雅_富山工",
+          "小森_寛太_富山工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "富山工",
+        "teamId": "toyamakou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 15,
   "topPlayers": [

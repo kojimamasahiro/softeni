@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "鳥取商",
-    "teamId": "tottorishou",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "田辺_凱人_鳥取商",
-      "大野木_跳馬_鳥取商"
-    ]
-  },
-  "historicalBest": {
-    "team": "鳥取商",
-    "teamId": "tottorishou",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "田辺_凱人_鳥取商",
-      "大野木_跳馬_鳥取商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "鳥取商",
+        "teamId": "tottorishou",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "田辺_凱人_鳥取商",
+          "大野木_跳馬_鳥取商"
+        ]
+      },
+      "historicalBest": {
+        "team": "鳥取商",
+        "teamId": "tottorishou",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "田辺_凱人_鳥取商",
+          "大野木_跳馬_鳥取商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

@@ -11,20 +11,23 @@ import MetaHead from '@/components/MetaHead';
 import { getCategoryLabel, getTournamentLabel } from '@/lib/utils';
 
 type EntryResult = {
-  tournamentId: string;
   year: number;
-  result: string;
+  tournamentId: string;
   category: string;
+  result: string;
+};
+
+type CategoryResult = {
+  recentlyResult?: EntryResult | null;
+  historicalBest?: EntryResult | null;
 };
 
 type Analysis = {
   totalAppearances: number;
   byCategory: Record<string, number>;
-  bestResults: Record<string, string>;
+  resultsByCategory: Record<string, CategoryResult>;
   uniquePlayers: number;
   topPlayers: { id: string; appearances: number }[];
-  recentlyResult?: EntryResult;
-  historicalBest?: EntryResult;
 };
 
 type Prefecture = {
@@ -151,53 +154,55 @@ export default function TeamPage({
           />
           <h1 className="text-2xl font-bold mb-6">{teamName}の成績</h1>
 
-          {analysis &&
-            (analysis.recentlyResult || analysis.historicalBest) &&
-            (() => {
-              const { recentlyResult, historicalBest } = analysis;
+          {analysis?.resultsByCategory &&
+            Object.keys(analysis.resultsByCategory).map((category) => {
+              const result = analysis.resultsByCategory[category];
+              if (!result) return null;
 
-              // 同一かどうか比較（全フィールド一致）
+              const { recentlyResult, historicalBest } = result;
+
               const isSame =
                 recentlyResult &&
                 historicalBest &&
                 recentlyResult.year === historicalBest.year &&
                 recentlyResult.tournamentId === historicalBest.tournamentId &&
-                recentlyResult.result === historicalBest.result &&
-                recentlyResult.category === historicalBest.category;
+                recentlyResult.result === historicalBest.result;
 
               return (
-                <div className="mb-6 text-sm text-gray-800 dark:text-gray-300">
+                <div
+                  key={category}
+                  className="mb-6 text-sm text-gray-800 dark:text-gray-300"
+                >
+                  <h4 className="font-semibold mb-1">
+                    {getCategoryLabel(category)}
+                  </h4>
+
                   {isSame && historicalBest ? (
                     <p>
                       直近3年間の大会の最高の成績は、（{historicalBest.year}年{' '}
-                      {getTournamentLabel(historicalBest.tournamentId)}・
-                      {getCategoryLabel(historicalBest.category)}）で
+                      {getTournamentLabel(historicalBest.tournamentId)}）で
                       <strong>{historicalBest.result}</strong>となります。
                       これは同校にとって記録された情報での
-                      <strong>最高の成績</strong>
-                      でもあります。
+                      <strong>最高の成績</strong>でもあります。
                     </p>
                   ) : (
                     <>
-                      {recentlyResult && (
+                      {recentlyResult ? (
                         <p>
                           直近3年間の大会の最高の成績は、（{recentlyResult.year}
-                          年 {getTournamentLabel(recentlyResult.tournamentId)}・
-                          {getCategoryLabel(recentlyResult.category)}）にて、
+                          年 {getTournamentLabel(recentlyResult.tournamentId)}
+                          ）にて、
                           <strong>{recentlyResult.result}</strong>
                           となっています。
                         </p>
-                      )}
-                      {!recentlyResult && (
+                      ) : (
                         <p>直近3年間の大会では出場情報がありません。</p>
                       )}
                       {historicalBest && (
                         <p>
                           記録された情報での過去最高の成績は、
                           {historicalBest.year}年の
-                          {getTournamentLabel(historicalBest.tournamentId)}（
-                          {getCategoryLabel(historicalBest.category)}
-                          ）での
+                          {getTournamentLabel(historicalBest.tournamentId)}での
                           <strong>{historicalBest.result}</strong>です。
                         </p>
                       )}
@@ -205,7 +210,7 @@ export default function TeamPage({
                   )}
                 </div>
               );
-            })()}
+            })}
 
           {analysis && (
             <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-8 text-sm">
@@ -221,11 +226,14 @@ export default function TeamPage({
               </ul>
               <p className="mt-2 font-semibold">種目別最高成績:</p>
               <ul className="ml-4 list-disc">
-                {Object.entries(analysis.bestResults).map(([cat, result]) => (
-                  <li key={cat}>
-                    {getCategoryLabel(cat)}: {result}
-                  </li>
-                ))}
+                {Object.entries(analysis.resultsByCategory).map(
+                  ([cat, { recentlyResult, historicalBest }]) => (
+                    <li key={cat}>
+                      {getCategoryLabel(cat)}:{' '}
+                      {recentlyResult?.result || historicalBest?.result}
+                    </li>
+                  ),
+                )}
               </ul>
               {analysis.topPlayers.length > 0 && (
                 <>

@@ -5,36 +5,87 @@
     "singles": 4,
     "team": 5
   },
-  "bestResults": {
-    "doubles": "ベスト8",
-    "singles": "ベスト4",
-    "team": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "ベスト4",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "福田_喜大_上宮"
-    ]
-  },
-  "historicalBest": {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "ベスト4",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "福田_喜大_上宮"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "上宮",
+        "teamId": "uenomiya",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "福田_喜大_上宮"
+        ]
+      },
+      "historicalBest": {
+        "team": "上宮",
+        "teamId": "uenomiya",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "福田_喜大_上宮"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "上宮",
+        "teamId": "uenomiya",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "三上_柊二_上宮",
+          "平井_啓吾_上宮"
+        ]
+      },
+      "historicalBest": {
+        "team": "上宮",
+        "teamId": "uenomiya",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "三上_柊二_上宮",
+          "平井_啓吾_上宮"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "上宮",
+        "teamId": "uenomiya",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "上宮",
+        "teamId": "uenomiya",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 40,
   "topPlayers": [

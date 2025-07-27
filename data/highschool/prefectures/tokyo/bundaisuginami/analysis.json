@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "予選敗退"
-  },
-  "recentlyResult": {
-    "team": "文大杉並",
-    "teamId": "bundaisuginami",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "小路_常晃_文大杉並",
-      "宍倉_希_文大杉並"
-    ]
-  },
-  "historicalBest": {
-    "team": "文大杉並",
-    "teamId": "bundaisuginami",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "小路_常晃_文大杉並",
-      "宍倉_希_文大杉並"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "文大杉並",
+        "teamId": "bundaisuginami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "小路_常晃_文大杉並",
+          "宍倉_希_文大杉並"
+        ]
+      },
+      "historicalBest": {
+        "team": "文大杉並",
+        "teamId": "bundaisuginami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "小路_常晃_文大杉並",
+          "宍倉_希_文大杉並"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "ベスト8"
-  },
-  "recentlyResult": {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "佐藤_光駿_ウルスラ",
-      "冨主_純翔_ウルスラ"
-    ]
-  },
-  "historicalBest": {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "佐藤_光駿_ウルスラ",
-      "冨主_純翔_ウルスラ"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "ウルスラ",
+        "teamId": "urusura",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "佐藤_光駿_ウルスラ",
+          "冨主_純翔_ウルスラ"
+        ]
+      },
+      "historicalBest": {
+        "team": "ウルスラ",
+        "teamId": "urusura",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "佐藤_光駿_ウルスラ",
+          "冨主_純翔_ウルスラ"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

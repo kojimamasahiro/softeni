@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "田辺",
-    "teamId": "tanabe",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "加田_篤稀_田辺",
-      "中本_昊希_田辺"
-    ]
-  },
-  "historicalBest": {
-    "team": "田辺",
-    "teamId": "tanabe",
-    "prefecture": "和歌山県",
-    "prefectureId": "wakayama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "加田_篤稀_田辺",
-      "中本_昊希_田辺"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "田辺",
+        "teamId": "tanabe",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "加田_篤稀_田辺",
+          "中本_昊希_田辺"
+        ]
+      },
+      "historicalBest": {
+        "team": "田辺",
+        "teamId": "tanabe",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "加田_篤稀_田辺",
+          "中本_昊希_田辺"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 6,
   "topPlayers": [

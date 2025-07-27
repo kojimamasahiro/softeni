@@ -5,38 +5,87 @@
     "doubles": 8,
     "team": 3
   },
-  "bestResults": {
-    "singles": "2回戦敗退",
-    "doubles": "4回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "尾道",
-    "teamId": "onomichi",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "大曲_李空_尾道",
-      "杉本_心_尾道"
-    ]
-  },
-  "historicalBest": {
-    "team": "尾道",
-    "teamId": "onomichi",
-    "prefecture": "広島県",
-    "prefectureId": "hiroshima",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "松本_雅久_尾道",
-      "松浦_蒼_尾道"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "岩永_優真_尾道"
+        ]
+      },
+      "historicalBest": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "岩永_優真_尾道"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "大曲_李空_尾道",
+          "杉本_心_尾道"
+        ]
+      },
+      "historicalBest": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "松本_雅久_尾道",
+          "松浦_蒼_尾道"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023
+      },
+      "historicalBest": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 15,
   "topPlayers": [

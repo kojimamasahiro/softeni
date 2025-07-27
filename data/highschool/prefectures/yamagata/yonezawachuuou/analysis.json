@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "米沢中央",
-    "teamId": "yonezawachuuou",
-    "prefecture": "山形県",
-    "prefectureId": "yamagata",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "吉田_蒼真_米沢中央",
-      "内谷_晄_米沢中央"
-    ]
-  },
-  "historicalBest": {
-    "team": "米沢中央",
-    "teamId": "yonezawachuuou",
-    "prefecture": "山形県",
-    "prefectureId": "yamagata",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "吉田_蒼真_米沢中央",
-      "内谷_晄_米沢中央"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "米沢中央",
+        "teamId": "yonezawachuuou",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "吉田_蒼真_米沢中央",
+          "内谷_晄_米沢中央"
+        ]
+      },
+      "historicalBest": {
+        "team": "米沢中央",
+        "teamId": "yonezawachuuou",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "吉田_蒼真_米沢中央",
+          "内谷_晄_米沢中央"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

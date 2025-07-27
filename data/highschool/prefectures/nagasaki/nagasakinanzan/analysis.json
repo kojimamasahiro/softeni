@@ -5,36 +5,87 @@
     "doubles": 10,
     "team": 4
   },
-  "bestResults": {
-    "singles": "3回戦敗退",
-    "doubles": "3回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "長崎南山",
-    "teamId": "nagasakinanzan",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "下田_詠太_長崎南山"
-    ]
-  },
-  "historicalBest": {
-    "team": "長崎南山",
-    "teamId": "nagasakinanzan",
-    "prefecture": "長崎県",
-    "prefectureId": "nagasaki",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "下田_詠太_長崎南山"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "下田_詠太_長崎南山"
+        ]
+      },
+      "historicalBest": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "下田_詠太_長崎南山"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "竹内_煌_長崎南山",
+          "吉永_悠人_長崎南山"
+        ]
+      },
+      "historicalBest": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "竹内_煌_長崎南山",
+          "吉永_悠人_長崎南山"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 14,
   "topPlayers": [

@@ -5,38 +5,87 @@
     "doubles": 12,
     "team": 5
   },
-  "bestResults": {
-    "singles": "3回戦敗退",
-    "doubles": "6回戦敗退",
-    "team": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "高崎商",
-    "teamId": "takasakishou",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大塚_陸玖_高崎商",
-      "森平_蓮心_高崎商"
-    ]
-  },
-  "historicalBest": {
-    "team": "高崎商",
-    "teamId": "takasakishou",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大塚_陸玖_高崎商",
-      "森平_蓮心_高崎商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "大塚_陸玖_高崎商"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "大塚_陸玖_高崎商"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大塚_陸玖_高崎商",
+          "森平_蓮心_高崎商"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大塚_陸玖_高崎商",
+          "森平_蓮心_高崎商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 19,
   "topPlayers": [

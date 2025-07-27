@@ -4,37 +4,54 @@
     "doubles": 8,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "4回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "都市大塩尻",
-    "teamId": "toshiooshioshiri",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "古幡_悠馬_都市大塩尻",
-      "平林_和真_都市大塩尻"
-    ]
-  },
-  "historicalBest": {
-    "team": "都市大塩尻",
-    "teamId": "toshiooshioshiri",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "小森_悠矢_都市大塩尻",
-      "平林_和真_都市大塩尻"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "古幡_悠馬_都市大塩尻",
+          "平林_和真_都市大塩尻"
+        ]
+      },
+      "historicalBest": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "小森_悠矢_都市大塩尻",
+          "平林_和真_都市大塩尻"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022
+      }
+    }
   },
   "uniquePlayers": 9,
   "topPlayers": [

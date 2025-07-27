@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 4
   },
-  "bestResults": {
-    "doubles": "5回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "城南",
-    "teamId": "jounan",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大藪_想太_城南",
-      "林_真之介_城南"
-    ]
-  },
-  "historicalBest": {
-    "team": "城南",
-    "teamId": "jounan",
-    "prefecture": "福岡県",
-    "prefectureId": "fukuoka",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大藪_想太_城南",
-      "林_真之介_城南"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "城南",
+        "teamId": "jounan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大藪_想太_城南",
+          "林_真之介_城南"
+        ]
+      },
+      "historicalBest": {
+        "team": "城南",
+        "teamId": "jounan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大藪_想太_城南",
+          "林_真之介_城南"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

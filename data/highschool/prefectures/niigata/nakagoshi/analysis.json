@@ -4,37 +4,63 @@
     "doubles": 5,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "中越",
-    "teamId": "nakagoshi",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "兼田_十和_中越",
-      "髙橋_頼生_中越"
-    ]
-  },
-  "historicalBest": {
-    "team": "中越",
-    "teamId": "nakagoshi",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "山﨑_虎太郎_中越",
-      "近藤_奏太_中越"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "中越",
+        "teamId": "nakagoshi",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "兼田_十和_中越",
+          "髙橋_頼生_中越"
+        ]
+      },
+      "historicalBest": {
+        "team": "中越",
+        "teamId": "nakagoshi",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "山﨑_虎太郎_中越",
+          "近藤_奏太_中越"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "中越",
+        "teamId": "nakagoshi",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "中越",
+        "teamId": "nakagoshi",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 8,
   "topPlayers": [

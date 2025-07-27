@@ -5,38 +5,87 @@
     "singles": 3,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "準優勝",
-    "singles": "3回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "霞ヶ浦",
-    "teamId": "kasumikeura",
-    "prefecture": "茨城県",
-    "prefectureId": "ibaraki",
-    "result": "準優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "一ノ宮_大和_霞ヶ浦",
-      "善福_留生_霞ヶ浦"
-    ]
-  },
-  "historicalBest": {
-    "team": "霞ヶ浦",
-    "teamId": "kasumikeura",
-    "prefecture": "茨城県",
-    "prefectureId": "ibaraki",
-    "result": "準優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "一ノ宮_大和_霞ヶ浦",
-      "善福_留生_霞ヶ浦"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "髙嶋_雅弥_霞ヶ浦"
+        ]
+      },
+      "historicalBest": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "髙嶋_雅弥_霞ヶ浦"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "準優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "一ノ宮_大和_霞ヶ浦",
+          "善福_留生_霞ヶ浦"
+        ]
+      },
+      "historicalBest": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "準優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "一ノ宮_大和_霞ヶ浦",
+          "善福_留生_霞ヶ浦"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 29,
   "topPlayers": [

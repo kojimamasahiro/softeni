@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "岩手東",
-    "teamId": "iwatehigashi",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "吉田_創太_岩手東",
-      "冨岡_憂瑠_岩手東"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "岩手東",
+        "teamId": "iwatehigashi",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "吉田_創太_岩手東",
+          "冨岡_憂瑠_岩手東"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

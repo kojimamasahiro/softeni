@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "河村_颯希_昭和学院",
-      "大竹_公陽_昭和学院"
-    ]
-  },
-  "historicalBest": {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "河村_颯希_昭和学院",
-      "大竹_公陽_昭和学院"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "昭和学院",
+        "teamId": "shouwagakuin",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "河村_颯希_昭和学院",
+          "大竹_公陽_昭和学院"
+        ]
+      },
+      "historicalBest": {
+        "team": "昭和学院",
+        "teamId": "shouwagakuin",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "playerIds": [
+          "河村_颯希_昭和学院",
+          "大竹_公陽_昭和学院"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

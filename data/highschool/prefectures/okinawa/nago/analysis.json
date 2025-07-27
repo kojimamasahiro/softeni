@@ -4,37 +4,54 @@
     "doubles": 7,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "名護",
-    "teamId": "nago",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "知念_巨力_名護",
-      "西銘_唯人_名護"
-    ]
-  },
-  "historicalBest": {
-    "team": "名護",
-    "teamId": "nago",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "知念_巨力_名護",
-      "西銘_唯人_名護"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "名護",
+        "teamId": "nago",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "知念_巨力_名護",
+          "西銘_唯人_名護"
+        ]
+      },
+      "historicalBest": {
+        "team": "名護",
+        "teamId": "nago",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "知念_巨力_名護",
+          "西銘_唯人_名護"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "名護",
+        "teamId": "nago",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021
+      }
+    }
   },
   "uniquePlayers": 12,
   "topPlayers": [

@@ -5,37 +5,87 @@
     "singles": 2,
     "team": 2
   },
-  "bestResults": {
-    "doubles": "6回戦敗退",
-    "singles": "3回戦敗退",
-    "team": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "宇都宮短大附",
-    "teamId": "utsunomiyatandaifu",
-    "prefecture": "栃木県",
-    "prefectureId": "tochigi",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "並木_孝輔_宇都宮短大附"
-    ]
-  },
-  "historicalBest": {
-    "team": "宇都宮短大附",
-    "teamId": "utsunomiyatandaifu",
-    "prefecture": "栃木県",
-    "prefectureId": "tochigi",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "渡邉_優心_宇都宮短大附",
-      "福田_岳樹_宇都宮短大附"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "並木_孝輔_宇都宮短大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "並木_孝輔_宇都宮短大附"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大草_結雅_宇都宮短大附",
+          "大塚_和也_宇都宮短大附"
+        ]
+      },
+      "historicalBest": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "渡邉_優心_宇都宮短大附",
+          "福田_岳樹_宇都宮短大附"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 20,
   "topPlayers": [

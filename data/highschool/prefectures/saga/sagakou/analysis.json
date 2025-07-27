@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 10
   },
-  "bestResults": {
-    "doubles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "佐賀工",
-    "teamId": "sagakou",
-    "prefecture": "佐賀県",
-    "prefectureId": "saga",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "西_駿介_佐賀工",
-      "石井_礼都_佐賀工"
-    ]
-  },
-  "historicalBest": {
-    "team": "佐賀工",
-    "teamId": "sagakou",
-    "prefecture": "佐賀県",
-    "prefectureId": "saga",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "西_駿介_佐賀工",
-      "石井_礼都_佐賀工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "西_駿介_佐賀工",
+          "石井_礼都_佐賀工"
+        ]
+      },
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "西_駿介_佐賀工",
+          "石井_礼都_佐賀工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 15,
   "topPlayers": [

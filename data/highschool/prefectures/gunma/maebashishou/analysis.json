@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 6
   },
-  "bestResults": {
-    "doubles": "5回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "前橋商",
-    "teamId": "maebashishou",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "安井_勇翔_前橋商",
-      "水落_礼翔_前橋商"
-    ]
-  },
-  "historicalBest": {
-    "team": "前橋商",
-    "teamId": "maebashishou",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "小暮_隆太郎_前橋商",
-      "佐々木_麻洋_前橋商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "前橋商",
+        "teamId": "maebashishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "安井_勇翔_前橋商",
+          "水落_礼翔_前橋商"
+        ]
+      },
+      "historicalBest": {
+        "team": "前橋商",
+        "teamId": "maebashishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "小暮_隆太郎_前橋商",
+          "佐々木_麻洋_前橋商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 10,
   "topPlayers": [

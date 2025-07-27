@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "静岡商",
-    "teamId": "shizuokashou",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "萩原_佳汰_静岡商",
-      "山本_颯也_静岡商"
-    ]
-  },
-  "historicalBest": {
-    "team": "静岡商",
-    "teamId": "shizuokashou",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "萩原_佳汰_静岡商",
-      "山本_颯也_静岡商"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "静岡商",
+        "teamId": "shizuokashou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "萩原_佳汰_静岡商",
+          "山本_颯也_静岡商"
+        ]
+      },
+      "historicalBest": {
+        "team": "静岡商",
+        "teamId": "shizuokashou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "萩原_佳汰_静岡商",
+          "山本_颯也_静岡商"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

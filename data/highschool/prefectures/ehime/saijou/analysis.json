@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 3
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "西条",
-    "teamId": "saijou",
-    "prefecture": "愛媛県",
-    "prefectureId": "ehime",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "安藤_大輝_西条",
-      "福光_寛慈_西条"
-    ]
-  },
-  "historicalBest": {
-    "team": "西条",
-    "teamId": "saijou",
-    "prefecture": "愛媛県",
-    "prefectureId": "ehime",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "安藤_大輝_西条",
-      "福光_寛慈_西条"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "西条",
+        "teamId": "saijou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "安藤_大輝_西条",
+          "福光_寛慈_西条"
+        ]
+      },
+      "historicalBest": {
+        "team": "西条",
+        "teamId": "saijou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "安藤_大輝_西条",
+          "福光_寛慈_西条"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 4,
   "topPlayers": [

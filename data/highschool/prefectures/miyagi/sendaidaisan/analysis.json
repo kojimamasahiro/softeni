@@ -3,36 +3,45 @@
   "byCategory": {
     "doubles": 2
   },
-  "bestResults": {
-    "doubles": "2回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "仙台第三",
-    "teamId": "sendaidaisan",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "佐原_蒔大_仙台第三",
-      "宇都宮_匠_仙台第三"
-    ]
-  },
-  "historicalBest": {
-    "team": "仙台第三",
-    "teamId": "sendaidaisan",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "佐原_蒔人_仙台第三",
-      "宇都宮_匠_仙台第三"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "仙台第三",
+        "teamId": "sendaidaisan",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "playerIds": [
+          "佐原_蒔大_仙台第三",
+          "宇都宮_匠_仙台第三"
+        ]
+      },
+      "historicalBest": {
+        "team": "仙台第三",
+        "teamId": "sendaidaisan",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "playerIds": [
+          "佐原_蒔人_仙台第三",
+          "宇都宮_匠_仙台第三"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 3,
   "topPlayers": [

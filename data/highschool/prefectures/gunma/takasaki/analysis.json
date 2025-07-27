@@ -4,37 +4,69 @@
     "doubles": 5,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "高崎",
-    "teamId": "takasaki",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大河原_兜_高崎",
-      "齊藤_慧伸_高崎"
-    ]
-  },
-  "historicalBest": {
-    "team": "高崎",
-    "teamId": "takasaki",
-    "prefecture": "群馬県",
-    "prefectureId": "gunma",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "大河原_兜_高崎",
-      "齊藤_慧伸_高崎"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "高崎",
+        "teamId": "takasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "大河原_兜_高崎"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎",
+        "teamId": "takasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "大河原_兜_高崎"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高崎",
+        "teamId": "takasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大河原_兜_高崎",
+          "齊藤_慧伸_高崎"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎",
+        "teamId": "takasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "大河原_兜_高崎",
+          "齊藤_慧伸_高崎"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 5,
   "topPlayers": [

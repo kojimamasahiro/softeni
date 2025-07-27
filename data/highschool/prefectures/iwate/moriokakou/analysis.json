@@ -4,37 +4,69 @@
     "doubles": 4,
     "singles": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "singles": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "盛岡工",
-    "teamId": "moriokakou",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "吉田_蓮_盛岡工",
-      "城内_純那_盛岡工"
-    ]
-  },
-  "historicalBest": {
-    "team": "盛岡工",
-    "teamId": "moriokakou",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "吉田_蓮_盛岡工",
-      "城内_純那_盛岡工"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "盛岡工",
+        "teamId": "moriokakou",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "吉田_蓮_盛岡工"
+        ]
+      },
+      "historicalBest": {
+        "team": "盛岡工",
+        "teamId": "moriokakou",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "吉田_蓮_盛岡工"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "盛岡工",
+        "teamId": "moriokakou",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "吉田_蓮_盛岡工",
+          "城内_純那_盛岡工"
+        ]
+      },
+      "historicalBest": {
+        "team": "盛岡工",
+        "teamId": "moriokakou",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "吉田_蓮_盛岡工",
+          "城内_純那_盛岡工"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 7,
   "topPlayers": [

@@ -5,38 +5,87 @@
     "singles": 2,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "5回戦敗退",
-    "singles": "1回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "長野俊英",
-    "teamId": "naganoshunei",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "川上_琳太郎_長野俊英",
-      "飛岡_煌志朗_長野俊英"
-    ]
-  },
-  "historicalBest": {
-    "team": "長野俊英",
-    "teamId": "naganoshunei",
-    "prefecture": "長野県",
-    "prefectureId": "nagano",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "川上_琳太郎_長野俊英",
-      "飛岡_煌志朗_長野俊英"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "川上_琳太郎_長野俊英"
+        ]
+      },
+      "historicalBest": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "playerIds": [
+          "川上_琳太郎_長野俊英"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "川上_琳太郎_長野俊英",
+          "飛岡_煌志朗_長野俊英"
+        ]
+      },
+      "historicalBest": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "川上_琳太郎_長野俊英",
+          "飛岡_煌志朗_長野俊英"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      },
+      "historicalBest": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024
+      }
+    }
   },
   "uniquePlayers": 15,
   "topPlayers": [

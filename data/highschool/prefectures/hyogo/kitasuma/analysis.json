@@ -3,23 +3,32 @@
   "byCategory": {
     "doubles": 1
   },
-  "bestResults": {
-    "doubles": "4回戦敗退"
-  },
-  "recentlyResult": null,
-  "historicalBest": {
-    "team": "北須磨",
-    "teamId": "kitasuma",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "葛航_太_北須磨",
-      "宇都宮_希_北須磨"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "北須磨",
+        "teamId": "kitasuma",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "playerIds": [
+          "葛航_太_北須磨",
+          "宇都宮_希_北須磨"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 2,
   "topPlayers": [

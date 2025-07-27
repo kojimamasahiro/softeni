@@ -4,37 +4,69 @@
     "doubles": 6,
     "singles": 2
   },
-  "bestResults": {
-    "doubles": "6回戦敗退",
-    "singles": "3回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "那覇西",
-    "teamId": "nahanishi",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "細川_大峨_那覇西",
-      "上門_幹武_那覇西"
-    ]
-  },
-  "historicalBest": {
-    "team": "那覇西",
-    "teamId": "nahanishi",
-    "prefecture": "沖縄県",
-    "prefectureId": "okinawa",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "細川_大峨_那覇西",
-      "上門_幹武_那覇西"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "那覇西",
+        "teamId": "nahanishi",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "細川_大峨_那覇西"
+        ]
+      },
+      "historicalBest": {
+        "team": "那覇西",
+        "teamId": "nahanishi",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "playerIds": [
+          "細川_大峨_那覇西"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "那覇西",
+        "teamId": "nahanishi",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "細川_大峨_那覇西",
+          "上門_幹武_那覇西"
+        ]
+      },
+      "historicalBest": {
+        "team": "那覇西",
+        "teamId": "nahanishi",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "playerIds": [
+          "細川_大峨_那覇西",
+          "上門_幹武_那覇西"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
   },
   "uniquePlayers": 7,
   "topPlayers": [

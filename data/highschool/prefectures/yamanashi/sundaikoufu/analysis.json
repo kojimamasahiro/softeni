@@ -4,37 +4,63 @@
     "doubles": 5,
     "team": 1
   },
-  "bestResults": {
-    "doubles": "3回戦敗退",
-    "team": "1回戦敗退"
-  },
-  "recentlyResult": {
-    "team": "駿台甲府",
-    "teamId": "sundaikoufu",
-    "prefecture": "山梨県",
-    "prefectureId": "yamanashi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "井上_颯_駿台甲府",
-      "津金_飛吹_駿台甲府"
-    ]
-  },
-  "historicalBest": {
-    "team": "駿台甲府",
-    "teamId": "sundaikoufu",
-    "prefecture": "山梨県",
-    "prefectureId": "yamanashi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "井上_颯_駿台甲府",
-      "津金_飛吹_駿台甲府"
-    ]
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "井上_颯_駿台甲府",
+          "津金_飛吹_駿台甲府"
+        ]
+      },
+      "historicalBest": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "playerIds": [
+          "井上_颯_駿台甲府",
+          "津金_飛吹_駿台甲府"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      },
+      "historicalBest": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025
+      }
+    }
   },
   "uniquePlayers": 9,
   "topPlayers": [
