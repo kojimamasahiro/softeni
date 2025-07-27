@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
-import Statistics from '@/components/Tournament/Statistics';
 import TeamResults from '@/components/Tournament/TeamResults';
 import { getAllPlayers } from '@/lib/players';
 import { resultPriority } from '@/lib/utils';
@@ -153,7 +152,6 @@ export default function TournamentYearResultPage({
 
   const matches = data.matches ?? [];
   const allNames = [...new Set(matches.map((m) => m.name))];
-  const totalMatches = matches.filter((m) => m.result === 'win').length;
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -171,8 +169,6 @@ export default function TournamentYearResultPage({
 
   const seenPlayers = new Set<string>();
   const teamCounter: Record<string, number> = {};
-  let totalGamesWon = 0;
-  let totalGamesLost = 0;
 
   function findOpponentById(id: string): MatchOpponent | null {
     for (const match of matches) {
@@ -184,12 +180,6 @@ export default function TournamentYearResultPage({
   }
 
   for (const match of matches) {
-    if (match.result === 'win') {
-      const won = parseInt(match.games.won, 10);
-      const lost = parseInt(match.games.lost, 10);
-      if (!isNaN(won)) totalGamesWon += won;
-      if (!isNaN(lost)) totalGamesLost += lost;
-    }
     for (const id of match.pair ?? []) {
       if (!seenPlayers.has(id)) {
         const player = findOpponentById(id);
@@ -201,8 +191,6 @@ export default function TournamentYearResultPage({
     }
   }
 
-  const totalPlayers = seenPlayers.size;
-  const uniqueTeams = Object.keys(teamCounter).length;
   const sorted = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
   const rankedTeams: { rank: number; team: string; count: number }[] = [];
   let currentRank = 1;
@@ -310,7 +298,7 @@ export default function TournamentYearResultPage({
                   href={`/tournaments/${meta.id}/${year}/data`}
                   className="text-blue-600 hover:underline"
                 >
-                  ▶ 出場選手データ（JSON形式）
+                  ▶ 出場選手データ
                 </Link>
               </p>
             )}
@@ -340,14 +328,6 @@ export default function TournamentYearResultPage({
 
           {matches.length > 0 && (
             <>
-              <Statistics
-                totalPlayers={totalPlayers}
-                uniqueTeams={uniqueTeams}
-                totalMatches={totalMatches}
-                totalGamesWon={totalGamesWon}
-                totalGamesLost={totalGamesLost}
-                rankedTeams={rankedTeams}
-              />
               <MatchResults
                 matches={matches}
                 searchQuery={searchQuery}

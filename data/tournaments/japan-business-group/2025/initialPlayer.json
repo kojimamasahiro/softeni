@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"NTT西日本（広島）","team":"NTT西日本","prefecture":"広島","category":"team"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"八王子市役所（東京）","team":"八王子市役所","prefecture":"東京","category":"team"},
@@ -127,5 +127,4 @@ const initialPlayers = [
 {"id":117,"name":"関電兵庫（兵庫）","team":"関電兵庫","prefecture":"兵庫","category":"team"},
 {"id":118,"name":"東京ガスＡ（東京）","team":"東京ガスＡ","prefecture":"東京","category":"team"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]

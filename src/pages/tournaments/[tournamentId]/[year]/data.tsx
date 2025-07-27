@@ -7,17 +7,22 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
+import EntryOverview from '@/components/EntryOverview';
 import MetaHead from '@/components/MetaHead';
 
-interface PlayerEntry {
-  id: number | string;
-  name: string;
+interface EntryInfo {
+  entryNo: number;
   information: {
     lastName: string;
     firstName: string;
     team: string;
-    tempId: string;
+    playerId?: string;
+    tempId?: string;
+    prefecture?: string;
   }[];
+  team?: string; // 団体の場合
+  prefecture?: string; // 団体の場合
+  type?: string;
 }
 
 interface TournamentMeta {
@@ -51,7 +56,7 @@ interface MatchResult {
 interface Props {
   tournamentId: string;
   year: string;
-  entries: PlayerEntry[];
+  entries: Record<string, EntryInfo[]>;
   matches: MatchResult[] | null;
   meta: TournamentMeta;
 }
@@ -69,18 +74,18 @@ export default function EntryDataPage({
     <>
       <MetaHead
         title={`${meta.name} ${year} 大会データ（JSON形式） - ソフトテニス情報`}
-        description={`${meta.name} ${year} 年の大会出場選手データ（JSON形式）を掲載。非営利目的の活用が可能です。`}
+        description={`${meta.name} ${year} 年の大会出場選手データを掲載。非営利目的の活用が可能です。`}
         url={`https://softeni-pick.com/tournaments/${tournamentId}/${year}/data`}
         type="article"
       />
 
       <Head>
         <title>
-          {meta.name} {year} 大会データ（JSON形式） | ソフトテニス情報
+          {meta.name} {year} 大会データ | ソフトテニス情報
         </title>
         <meta
           name="description"
-          content={`${meta.name} ${year} 年の大会データ（JSON形式）を掲載しています。`}
+          content={`${meta.name} ${year} 年の大会データを掲載しています。`}
         />
       </Head>
 
@@ -101,14 +106,14 @@ export default function EntryDataPage({
         />
 
         <h1 className="text-2xl font-bold mb-4">
-          {meta.name} {year}年 出場選手データ（JSON形式）
+          {meta.name} {year}年 出場選手データ
         </h1>
 
         {/* ✅ 導入説明 */}
         <section className="text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
           <p className="mb-2">
             このページでは、<strong>{meta.name}</strong>（{year}
-            年）に出場した選手・ペアの情報をJSON形式で掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
+            年）に出場した選手・ペアの情報を掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
           </p>
           <ul className="list-disc list-inside mb-2">
             <li>個人利用、非営利目的での使用は自由です。</li>
@@ -153,7 +158,9 @@ export default function EntryDataPage({
           </>
         )}
 
-        {/* ✅ 戻るリンク */}
+        <EntryOverview entries={entries} />
+
+        {/* ✅ 戻るリンク 差分 */}
         <div className="mt-6">
           <Link
             href={`/tournaments/${tournamentId}/${year}`}
@@ -245,11 +252,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     tournamentId: string;
     year: string;
   };
+
   const basePath = path.join(process.cwd(), 'data/tournaments', tournamentId);
 
-  const meta = JSON.parse(
-    fs.readFileSync(path.join(basePath, 'meta.json'), 'utf-8'),
-  );
+  // meta.json を読み込む（存在チェック付き）
+  const metaPath = path.join(basePath, 'meta.json');
+  const meta = fs.existsSync(metaPath)
+    ? JSON.parse(fs.readFileSync(metaPath, 'utf-8'))
+    : null;
+
   const entries = JSON.parse(
     fs.readFileSync(path.join(basePath, year, 'entries.json'), 'utf-8'),
   );
@@ -257,7 +268,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const matchesPath = path.join(basePath, year, 'matches.json');
   const matches = fs.existsSync(matchesPath)
     ? JSON.parse(fs.readFileSync(matchesPath, 'utf-8'))
-    : null; // 存在しなければ null
+    : null;
 
   return {
     props: {
