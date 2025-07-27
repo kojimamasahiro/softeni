@@ -3,6 +3,7 @@ import re
 from pykakasi import kakasi
 from collections import OrderedDict, defaultdict
 
+# 都道府県変換マップ（略称 → 正式名称）
 prefecture_map = {
     "北海道": "北海道",
     "青森": "青森県", "岩手": "岩手県", "宮城": "宮城県", "秋田": "秋田県", "山形": "山形県", "福島": "福島県",
@@ -16,6 +17,7 @@ prefecture_map = {
     "沖縄": "沖縄県"
 }
 
+# 都道府県 → IDマップ
 prefecture_id_map = {
     "北海道": "hokkaido", "青森県": "aomori", "岩手県": "iwate", "宮城県": "miyagi", "秋田県": "akita",
     "山形県": "yamagata", "福島県": "fukushima", "茨城県": "ibaraki", "栃木県": "tochigi", "群馬県": "gunma",
@@ -36,7 +38,18 @@ with open("players.json", encoding="utf-8") as f:
 with open("team_id_map.json", encoding="utf-8") as f:
     manual_id_map = json.load(f)
 
-# pykakasi 設定（新API）
+# 既存の teams.json を読み込む
+existing_ids = set()
+try:
+    with open("teams.json", encoding="utf-8") as f:
+        existing_teams = json.load(f)
+        for team in existing_teams:
+            existing_ids.add(team["id"])
+    print(f"📄 既存の teams.json から {len(existing_ids)} 件の id を読み込みました")
+except FileNotFoundError:
+    print("⚠️ teams.json が見つかりませんでした。全チームを対象とします。")
+
+# pykakasi 設定
 kks = kakasi()
 kks.setMode("H", "a")
 kks.setMode("K", "a")
@@ -52,8 +65,10 @@ def to_romaji(team_name):
         return manual_id_map[name]
     return conv.do(name).lower().replace(" ", "-").replace("'", "")
 
-# チーム名と都道府県マップ
+# チームマップ（team名 → prefecture）
 team_map = {}
+
+# 個人データから抽出
 for entry in players:
     for info in entry.get("information", []):
         team = info.get("team", "").strip()
@@ -61,18 +76,21 @@ for entry in players:
         if team and pref and team not in team_map:
             team_map[team] = pref
 
-# 既存の teams.json を読み込む（あれば）
-existing_ids = set()
-try:
-    with open("teams.json", encoding="utf-8") as f:
-        existing_teams = json.load(f)
-        for team in existing_teams:
-            existing_ids.add(team["id"])
-    print(f"📄 既存の teams.json から {len(existing_ids)} 件の id を読み込みました")
-except FileNotFoundError:
-    print("⚠️ teams.json が見つかりませんでした。全チームを対象とします。")
+# 団体戦エントリー
+for file_name in ["team_entries.json", "team_results.json"]:
+    try:
+        with open(file_name, encoding="utf-8") as f:
+            team_entries = json.load(f)
+            print(f"📄 {file_name} から {len(team_entries)} 件を読み込みました")
+            for entry in team_entries:
+                team = entry.get("team", "").strip()
+                pref = entry.get("prefecture", "").strip()
+                if team and pref and team not in team_map:
+                    team_map[team] = pref
+    except FileNotFoundError:
+        print(f"ℹ️ {file_name} は見つかりませんでした")
 
-# 重複チェック用
+# 重複IDチェック用
 id_counter = defaultdict(list)
 
 # 出力
@@ -80,7 +98,7 @@ with open("teams.ndjson", "w", encoding="utf-8") as f:
     for team, pref in sorted(team_map.items()):
         romaji_id = to_romaji(team)
         if romaji_id in existing_ids:
-            continue  # 既存IDはスキップ
+            continue  # 既存IDスキップ
 
         id_counter[romaji_id].append(team)
 
@@ -89,13 +107,13 @@ with open("teams.ndjson", "w", encoding="utf-8") as f:
         obj["name"] = team
         full_pref = prefecture_map.get(pref, pref)
         obj["prefecture"] = full_pref
-        obj["prefectureId"] = prefecture_id_map.get(full_pref, "unknown")  # ✅ 追加
+        obj["prefectureId"] = prefecture_id_map.get(full_pref, "unknown")
         json.dump(obj, f, ensure_ascii=False)
         f.write(",\n")
 
-print(f"✅ {len(team_map)} 校の teams.ndjson を出力しました")
+print(f"✅ 合計 {len(team_map)} チームの teams.ndjson を出力しました")
 
-# 重複IDがある場合に警告
+# 重複IDチェック
 duplicates = {k: v for k, v in id_counter.items() if len(v) > 1}
 if duplicates:
     print("⚠️ 重複IDがあります。確認してください：")

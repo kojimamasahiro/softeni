@@ -1,6 +1,7 @@
  python entries-to-teams.py
  をする。
  players.jsonはinitPlayer.json
+ team_entries.jsonはinitPlayer_team.json
  teams.jsonはすでに生成済み
  teams.ndjsonはpythonの出力結果
  team_id_map.jsonはidがおかしい場合の変換用
