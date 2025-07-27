@@ -21,6 +21,19 @@ import {
   TournamentYearData,
 } from '@/types/index';
 
+interface EntryInfo {
+  entryNo: number;
+  information: {
+    lastName: string;
+    firstName: string;
+    team: string;
+    playerId?: string;
+    tempId?: string;
+    prefecture?: string;
+  }[];
+  type?: string;
+}
+
 interface TournamentYearResultPageProps {
   year: string;
   meta: TournamentMeta;
@@ -30,7 +43,7 @@ interface TournamentYearResultPageProps {
     string,
     { firstName: string; lastName: string; team: string }
   >;
-  hasEntries: boolean;
+  entries: EntryInfo[] | null;
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
   highlight: string | null;
 }
@@ -41,7 +54,7 @@ export default function TournamentYearResultPage({
   data,
   allPlayers,
   unknownPlayers,
-  hasEntries,
+  entries,
   teamMap,
   highlight,
 }: TournamentYearResultPageProps) {
@@ -236,6 +249,14 @@ export default function TournamentYearResultPage({
     prevCount = count;
   }
 
+  const seedEntryNos = new Set<number>();
+
+  for (const entry of entries ?? []) {
+    if (entry.type === 'seed') {
+      seedEntryNos.add(entry.entryNo);
+    }
+  }
+
   return (
     <>
       <MetaHead
@@ -319,7 +340,7 @@ export default function TournamentYearResultPage({
                 {data.endDate}
               </p>
             )}
-            {hasEntries && (
+            {entries && (
               <p className="mt-2 text-sm">
                 <Link
                   href={`/tournaments/${meta.id}/${year}/data`}
@@ -363,7 +384,7 @@ export default function TournamentYearResultPage({
                 filter={filter}
                 setFilter={setFilter}
                 eliminatedEntries={[]}
-                seedEntryNos={new Set()}
+                seedEntryNos={seedEntryNos}
               />
             </>
           )}
@@ -464,14 +485,24 @@ export const getStaticProps: GetStaticProps = async (context) => {
       prefectureId: string;
     }[] = JSON.parse(fs.readFileSync(teamsPath, 'utf-8'));
 
+    let entries: EntryInfo[] = [];
+
+    if (hasEntries) {
+      const raw = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
+
+      for (const category of Object.keys(raw)) {
+        entries = raw[category];
+      }
+    }
+
+    const highlight: string | null = data.highlight ?? null;
+
     const teamMap = Object.fromEntries(
       teamList.map((t) => [
         t.name,
         { teamId: t.id, prefectureId: t.prefectureId },
       ]),
     );
-
-    const highlight: string | null = data.highlight ?? null;
 
     return {
       props: {
@@ -480,7 +511,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         data,
         allPlayers,
         unknownPlayers,
-        hasEntries,
+        entries,
         teamMap,
         highlight,
       },
