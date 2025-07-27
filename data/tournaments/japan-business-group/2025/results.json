@@ -4,7 +4,56 @@
   "startDate": "2025-07-26",
   "endDate": "2025-07-27",
   "location": "青森県",
-  "results": [],
+  "results": [
+    {
+      "team": "NTT西日本",
+      "prefecture": "広島",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "明電舎Ａ",
+      "prefecture": "静岡",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "ワタキューセイモア",
+      "prefecture": "京都",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "福井県庁",
+      "prefecture": "福井",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "ベスト",
+      "prefecture": "東京",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "ヨシザワＡ",
+      "prefecture": "三重",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "ヨネックス",
+      "prefecture": "東京",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "川口市役所",
+      "prefecture": "埼玉",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
   "matches": [
     {
       "round": "1回戦",
@@ -5247,6 +5296,144 @@
       },
       "entryNo": 111,
       "name": "川口市役所（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
       "category": "team",
       "retired": false
     }

@@ -63,39 +63,91 @@ export default function TournamentYearResultPage({
   > = {};
 
   for (const entry of data.results ?? []) {
-    const players = (entry.playerIds ?? []).map((id) => {
-      const player = allPlayers.find((p) => p.id === id);
-      if (player) {
-        return {
-          id,
-          name: `${player.lastName}${player.firstName}`,
-          team: player.team ?? '所属不明',
-          noLink: false,
-        };
+    if ('playerIds' in entry) {
+      const players = (entry.playerIds ?? []).map((id) => {
+        const player = allPlayers.find((p) => p.id === id);
+        if (player) {
+          return {
+            id,
+            name: `${player.lastName}${player.firstName}`,
+            team: player.team ?? '所属不明',
+            noLink: false,
+          };
+        } else {
+          const [lastName = '', firstName = '', team = '所属不明'] =
+            id.split('_');
+          const unknown = unknownPlayers[id];
+          return {
+            id,
+            name: unknown
+              ? `${unknown.lastName}${unknown.firstName}`
+              : `${lastName}${firstName}`,
+            team: unknown?.team ?? team,
+            noLink: true,
+          };
+        }
+      });
+
+      const resultOrder = resultPriority(entry.result);
+
+      if (players.length === 1 || players[0].team === players[1].team) {
+        const team = players[0].team;
+        const displayParts = players.flatMap((p, i) => [
+          { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
+          ...(i < players.length - 1 ? [{ text: '・' }] : []),
+        ]);
+
+        const extra = teamMap[team] ?? { teamId: '', prefectureId: '' };
+
+        if (!teamGroups[team]) {
+          teamGroups[team] = {
+            team,
+            teamId: extra.teamId,
+            prefectureId: extra.prefectureId,
+            members: [],
+            bestRank: resultOrder,
+          };
+        }
+        teamGroups[team].members.push({
+          result: entry.result,
+          resultOrder,
+          displayParts,
+        });
+        teamGroups[team].bestRank = Math.min(
+          teamGroups[team].bestRank,
+          resultOrder,
+        );
       } else {
-        const [lastName = '', firstName = '', team = '所属不明'] =
-          id.split('_');
-        const unknown = unknownPlayers[id];
-        return {
-          id,
-          name: unknown
-            ? `${unknown.lastName}${unknown.firstName}`
-            : `${lastName}${firstName}`,
-          team: unknown?.team ?? team,
-          noLink: true,
-        };
+        for (const p of players) {
+          const displayParts = [
+            { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
+          ];
+          const extra = teamMap[p.team] ?? { teamId: '', prefectureId: '' };
+
+          if (!teamGroups[p.team]) {
+            teamGroups[p.team] = {
+              team: p.team,
+              teamId: extra.teamId,
+              prefectureId: extra.prefectureId,
+              members: [],
+              bestRank: resultOrder,
+            };
+          }
+          teamGroups[p.team].members.push({
+            result: entry.result,
+            resultOrder,
+            displayParts,
+          });
+          teamGroups[p.team].bestRank = Math.min(
+            teamGroups[p.team].bestRank,
+            resultOrder,
+          );
+        }
       }
-    });
-
-    const resultOrder = resultPriority(entry.result);
-
-    if (players.length === 1 || players[0].team === players[1].team) {
-      const team = players[0].team;
-      const displayParts = players.flatMap((p, i) => [
-        { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
-        ...(i < players.length - 1 ? [{ text: '・' }] : []),
-      ]);
-
+    } else if ('team' in entry && typeof entry.team === 'string') {
+      const team = entry.team;
+      const resultOrder = resultPriority(entry.result);
+      const displayParts = [{ text: team, noLink: true }];
       const extra = teamMap[team] ?? { teamId: '', prefectureId: '' };
 
       if (!teamGroups[team]) {
@@ -107,6 +159,7 @@ export default function TournamentYearResultPage({
           bestRank: resultOrder,
         };
       }
+
       teamGroups[team].members.push({
         result: entry.result,
         resultOrder,
@@ -116,32 +169,6 @@ export default function TournamentYearResultPage({
         teamGroups[team].bestRank,
         resultOrder,
       );
-    } else {
-      for (const p of players) {
-        const displayParts = [
-          { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
-        ];
-        const extra = teamMap[p.team] ?? { teamId: '', prefectureId: '' };
-
-        if (!teamGroups[p.team]) {
-          teamGroups[p.team] = {
-            team: p.team,
-            teamId: extra.teamId,
-            prefectureId: extra.prefectureId,
-            members: [],
-            bestRank: resultOrder,
-          };
-        }
-        teamGroups[p.team].members.push({
-          result: entry.result,
-          resultOrder,
-          displayParts,
-        });
-        teamGroups[p.team].bestRank = Math.min(
-          teamGroups[p.team].bestRank,
-          resultOrder,
-        );
-      }
     }
   }
 
