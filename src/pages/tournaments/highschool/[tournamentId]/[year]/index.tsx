@@ -46,6 +46,7 @@ interface TournamentYearResultPageProps {
   entriesByCategory: Record<string, EntryInfo[]> | null;
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
   highlight: string | null;
+  otherYears: string[];
 }
 
 export default function TournamentYearResultPage({
@@ -57,6 +58,7 @@ export default function TournamentYearResultPage({
   entriesByCategory,
   teamMap,
   highlight,
+  otherYears,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; //差分
 
@@ -438,6 +440,34 @@ export default function TournamentYearResultPage({
                 </Link>
               </p>
             )}
+            {otherYears.length > 0 && (
+              <section className="mt-4 mb-8 rounded-lg">
+                <h3 className="text-l font-semi mb-2">他年度の大会結果</h3>
+                <div className="space-y-8">
+                  <ul className="flex flex-wrap gap-2">
+                    {[...new Set([...otherYears, year])]
+                      .sort((a, b) => Number(b) - Number(a))
+                      .map((y) => (
+                        <li key={y}>
+                          {y === year ? (
+                            <span className="inline-block bg-gray-300 text-gray-600 dark:bg-gray-700 dark:text-gray-400 px-3 py-1 rounded-full text-sm cursor-default">
+                              {y}年
+                            </span>
+                          ) : (
+                            <Link
+                              href={`/tournaments/highschool/${meta.id}/${y}`}
+                            >
+                              <span className="inline-block bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                                {y}年
+                              </span>
+                            </Link>
+                          )}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </section>
+            )}
             {highlight && (
               <section className="mt-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-lg font-semibold mb-1">大会ハイライト</h2>
@@ -614,6 +644,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ]),
     );
 
+    const tournamentDir = path.join(basePath, tournamentId);
+    const allYearDirs = fs
+      .readdirSync(tournamentDir)
+      .filter((name) => /^\d{4}$/.test(name));
+
+    const otherYears: string[] = [];
+
+    for (const y of allYearDirs) {
+      const resultsPath = path.join(tournamentDir, y, 'results.json');
+      if (!fs.existsSync(resultsPath)) continue;
+      try {
+        const results = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
+        if (results.status === 'completed') {
+          otherYears.push(y);
+        }
+      } catch {
+        console.warn(`Failed to read results.json for ${tournamentId}/${y}`);
+      }
+    }
+
+    otherYears.sort((a, b) => Number(b) - Number(a));
+
     return {
       props: {
         year,
@@ -624,6 +676,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         entriesByCategory,
         teamMap,
         highlight,
+        otherYears,
       },
     };
   } catch (err) {
