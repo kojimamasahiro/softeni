@@ -58,7 +58,6 @@ export default function TournamentYearResultPage({
   teamMap,
   highlight,
 }: TournamentYearResultPageProps) {
-  console.log(entries);
   const pageUrl = `https://softeni-pick.com/tournaments/${meta.id}/${year}`;
 
   const teamGroups: Record<

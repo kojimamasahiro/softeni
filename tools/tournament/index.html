@@ -185,7 +185,6 @@
                 visibleMatchIndex++;
                 const div = document.createElement("div");
                 div.className = "match-result";
-                console.log(match);
                 div.innerHTML = `
   <strong>試合 ${visibleMatchIndex}</strong><br/>
   <div class="score-container">
@@ -401,7 +400,6 @@
 
                             const p1Key = getPairKey(match.p1);
                             const p2Key = getPairKey(match.p2);
-                            console.log(`${p1Key},  ${p2Key}`)
                             const p1Array = getPairArray(match.p1);
                             const p2Array = getPairArray(match.p2);
                             if (!p1Key || !p2Key) continue;
