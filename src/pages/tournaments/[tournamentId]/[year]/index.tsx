@@ -6,7 +6,7 @@ import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -190,8 +190,11 @@ export default function TournamentYearResultPage({
     return a.team.localeCompare(b.team, 'ja');
   });
 
-  const matches = data.matches ?? [];
-  const allNames = [...new Set(matches.map((m) => m.name))];
+  const matches = useMemo(() => data.matches ?? [], [data.matches]);
+  const allNames = useMemo(
+    () => [...new Set(matches.map((m) => m.name))],
+    [matches],
+  );
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -205,7 +208,7 @@ export default function TournamentYearResultPage({
     } else {
       setSuggestions([]);
     }
-  }, [searchQuery]);
+  }, [searchQuery, allNames]);
 
   const seenPlayers = new Set<string>();
   const teamCounter: Record<string, number> = {};
