@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"藤井・辻内（明石ジュニアクラブ）","information":[{"lastName":"藤井","firstName":"逞尚","team":"明石ジュニアクラブ","prefecture":"兵庫","playerId":null,"tempId":"藤井_逞尚_明石ジュニアクラブ"},{"lastName":"辻内","firstName":"碧斗","team":"明石ジュニアクラブ","prefecture":"兵庫","playerId":null,"tempId":"辻内_碧斗_明石ジュニアクラブ"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"神原・森政（混合）","information":[{"lastName":"神原","firstName":"朝陽","team":"ＭＩＬＤ","prefecture":"茨城","playerId":null,"tempId":"神原_朝陽_ＭＩＬＤ"},{"lastName":"森政","firstName":"雄飛","team":"友部ジュニアクラブ","prefecture":"茨城","playerId":null,"tempId":"森政_雄飛_友部ジュニアクラブ"}],"category":"doubles"},
@@ -255,5 +255,4 @@ const initialPlayers = [
 {"id":190,"name":"藤野・川原（高田ジュニアクラブ）","information":[{"lastName":"藤野","firstName":"友翔","team":"高田ジュニアクラブ","prefecture":"奈良","playerId":null,"tempId":"藤野_友翔_高田ジュニアクラブ"},{"lastName":"川原","firstName":"脩伸","team":"高田ジュニアクラブ","prefecture":"奈良","playerId":null,"tempId":"川原_脩伸_高田ジュニアクラブ"}],"category":"doubles"},
 {"id":191,"name":"設樂・齋藤（芳賀クラブジュニア）","information":[{"lastName":"設樂","firstName":"旭希","team":"芳賀クラブジュニア","prefecture":"栃木","playerId":null,"tempId":"設樂_旭希_芳賀クラブジュニア"},{"lastName":"齋藤","firstName":"聖亜","team":"芳賀クラブジュニア","prefecture":"栃木","playerId":null,"tempId":"齋藤_聖亜_芳賀クラブジュニア"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]
