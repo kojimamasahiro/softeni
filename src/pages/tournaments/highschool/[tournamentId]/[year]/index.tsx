@@ -6,7 +6,7 @@ import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -62,10 +62,16 @@ export default function TournamentYearResultPage({
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/highschool/${meta.id}/${year}`; //差分
 
-  const tournamentMatches = data.matches ?? [];
-  const roundRobinMatches = data.roundRobinMatches ?? [];
+  const tournamentMatches = useMemo(() => data.matches ?? [], [data.matches]);
+  const roundRobinMatches = useMemo(
+    () => data.roundRobinMatches ?? [],
+    [data.roundRobinMatches],
+  );
 
-  const matches = [...roundRobinMatches, ...tournamentMatches];
+  const matches = useMemo(
+    () => [...roundRobinMatches, ...tournamentMatches],
+    [roundRobinMatches, tournamentMatches],
+  );
   const results = data.results ?? [];
 
   const hasCategoryField =
@@ -91,7 +97,7 @@ export default function TournamentYearResultPage({
   useEffect(() => {
     if (!hasCategoryField) return;
     history.replaceState(null, '', `#${selectedCategory}`);
-  }, [selectedCategory]);
+  }, [selectedCategory, hasCategoryField]);
 
   const filteredMatches = hasCategoryField
     ? matches.filter((m) => m.category === selectedCategory)
@@ -254,7 +260,10 @@ export default function TournamentYearResultPage({
     return a.team.localeCompare(b.team, 'ja');
   });
 
-  const allNames = [...new Set(matches.map((m) => m.name))];
+  const allNames = useMemo(
+    () => [...new Set(matches.map((m) => m.name))],
+    [matches],
+  );
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -268,7 +277,7 @@ export default function TournamentYearResultPage({
     } else {
       setSuggestions([]);
     }
-  }, [searchQuery]);
+  }, [searchQuery, allNames]);
 
   const seenPlayers = new Set<string>();
   const teamCounter: Record<string, number> = {};
