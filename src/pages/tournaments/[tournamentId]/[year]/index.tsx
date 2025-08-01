@@ -448,7 +448,7 @@ export default function TournamentYearResultPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const basePath = path.join(process.cwd(), 'data/tournaments/highschool');
+  const basePath = path.join(process.cwd(), 'data/tournaments');
   const paths = getTournamentStaticPaths(basePath);
   return { paths, fallback: false };
 };
