@@ -1,6 +1,5 @@
 // src/pages/tournaments/[tournamentId]/[year]/index.tsx
 
-import fs from 'fs';
 import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -12,27 +11,16 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
-import { getAllPlayers } from '@/lib/players';
+import { getTournamentStaticPaths } from '@/lib/getTournamentStaticPaths';
+import { getTournamentStaticProps } from '@/lib/getTournamentStaticProps';
 import { resultPriority } from '@/lib/utils';
+import { EntryInfo } from '@/types/entry';
 import {
   MatchOpponent,
   PlayerInfo,
   TournamentMeta,
   TournamentYearData,
 } from '@/types/index';
-
-interface EntryInfo {
-  entryNo: number;
-  information: {
-    lastName: string;
-    firstName: string;
-    team: string;
-    playerId?: string;
-    tempId?: string;
-    prefecture?: string;
-  }[];
-  type?: string;
-}
 
 interface TournamentYearResultPageProps {
   year: string;
@@ -460,26 +448,8 @@ export default function TournamentYearResultPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const basePath = path.join(process.cwd(), 'data/tournaments');
-  const tournamentDirs = fs.readdirSync(basePath);
-  const paths: { params: { tournamentId: string; year: string } }[] = [];
-
-  for (const tournamentId of tournamentDirs) {
-    const tournamentDir = path.join(basePath, tournamentId);
-    const yearDirs = fs
-      .readdirSync(tournamentDir)
-      .filter(
-        (name) =>
-          /^\d{4}$/.test(name) &&
-          fs.statSync(path.join(tournamentDir, name)).isDirectory(),
-      );
-    for (const year of yearDirs) {
-      const resultsPath = path.join(tournamentDir, year, 'results.json');
-      if (!fs.existsSync(resultsPath)) continue;
-      paths.push({ params: { tournamentId, year } });
-    }
-  }
-
+  const basePath = path.join(process.cwd(), 'data/tournaments/highschool');
+  const paths = getTournamentStaticPaths(basePath);
   return { paths, fallback: false };
 };
 
@@ -489,90 +459,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     year: string;
   };
   const basePath = path.join(process.cwd(), 'data/tournaments');
-  const playersPath = path.join(process.cwd(), 'data/players');
-  const highschoolDataPath = path.join(process.cwd(), 'data/highschool');
-  const allPlayers = getAllPlayers();
 
   try {
-    const meta = JSON.parse(
-      fs.readFileSync(path.join(basePath, tournamentId, 'meta.json'), 'utf-8'),
-    );
-    const data = JSON.parse(
-      fs.readFileSync(
-        path.join(basePath, tournamentId, year, 'results.json'),
-        'utf-8',
-      ),
-    );
-    const unknownPlayers = JSON.parse(
-      fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'),
-    );
-
-    const entriesPath = path.join(basePath, tournamentId, year, 'entries.json');
-    const hasEntries = fs.existsSync(entriesPath);
-    const teamsPath = path.join(highschoolDataPath, 'teams.json');
-    const teamList: {
-      id: string;
-      name: string;
-      prefecture: string;
-      prefectureId: string;
-    }[] = JSON.parse(fs.readFileSync(teamsPath, 'utf-8'));
-
-    let entries: EntryInfo[] = [];
-
-    if (hasEntries) {
-      const raw = JSON.parse(fs.readFileSync(entriesPath, 'utf-8'));
-
-      for (const category of Object.keys(raw)) {
-        entries = raw[category];
-      }
-    }
-
-    const highlight: string | null = data.highlight ?? null;
-
-    const teamMap = Object.fromEntries(
-      teamList.map((t) => [
-        t.name,
-        { teamId: t.id, prefectureId: t.prefectureId },
-      ]),
-    );
-
-    const tournamentDir = path.join(basePath, tournamentId);
-    const allYearDirs = fs
-      .readdirSync(tournamentDir)
-      .filter((name) => /^\d{4}$/.test(name));
-
-    const otherYears: string[] = [];
-
-    for (const y of allYearDirs) {
-      if (y === year) continue;
-      const resultsPath = path.join(tournamentDir, y, 'results.json');
-      if (!fs.existsSync(resultsPath)) continue;
-
-      try {
-        const results = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
-        if (results.status === 'completed') {
-          otherYears.push(y);
-        }
-      } catch {
-        console.warn(`Failed to read results.json for ${tournamentId}/${y}`);
-      }
-    }
-
-    otherYears.sort((a, b) => Number(b) - Number(a));
-
-    return {
-      props: {
-        year,
-        meta,
-        data,
-        allPlayers,
-        unknownPlayers,
-        entries,
-        teamMap,
-        highlight,
-        otherYears,
-      },
-    };
+    const props = await getTournamentStaticProps({
+      basePath,
+      tournamentId,
+      year,
+      readEntriesByCategory: false,
+    });
+    return { props };
   } catch (err) {
     console.error(err);
     return { notFound: true };

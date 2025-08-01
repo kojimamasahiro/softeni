@@ -12,7 +12,7 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-export default [
+const config = [
   // Next.js + TypeScript 用の互換設定（旧形式の取り込み）
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
 
@@ -39,3 +39,5 @@ export default [
     },
   },
 ];
+
+export default config;
