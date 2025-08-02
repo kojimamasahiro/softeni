@@ -114,7 +114,7 @@ export default function Home({ players }: HomeProps) {
                     id: 'primaryschool-championship',
                     year: 2025,
                     name: '全日本小学生選手権大会',
-                    category: 'ダブルス、団体',
+                    category: 'ダブルス、対抗戦',
                     startDate: '2025-08-01',
                   },
                   {
