@@ -99,7 +99,7 @@ export default function EntryOverview({ entries }: Props) {
               <>
                 <ul className="list-disc list-inside text-sm mt-3 mb-3">
                   <li>エントリー数：{stats.entryCount}</li>
-                  <li>出場チーム数：{stats.teamCount}校</li>
+                  <li>出場チーム数：{stats.teamCount}</li>
                   <li>出場選手数：{stats.playerCount}名</li>
                 </ul>
                 <ul className="list-disc list-inside text-sm columns-2 md:columns-3 mb-3">
