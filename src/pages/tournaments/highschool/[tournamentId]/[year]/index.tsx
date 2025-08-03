@@ -80,7 +80,9 @@ export default function TournamentYearResultPage({
     if (availableCategories.includes(hash)) {
       setSelectedCategory(hash);
     }
-  }, [availableCategories, hasCategoryField]);
+    // 初回だけ実行
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!hasCategoryField) return;
@@ -485,15 +487,13 @@ export default function TournamentYearResultPage({
                   className={`px-4 py-2 rounded ${cat === selectedCategory ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
                   onClick={() => setSelectedCategory(cat)}
                 >
-                  <a href={`#${cat}`}>
-                    {cat === 'singles'
-                      ? 'シングルス'
-                      : cat === 'doubles'
-                        ? 'ダブルス'
-                        : cat === 'team'
-                          ? '団体'
-                          : cat}
-                  </a>
+                  {cat === 'singles'
+                    ? 'シングルス'
+                    : cat === 'doubles'
+                      ? 'ダブルス'
+                      : cat === 'team'
+                        ? '団体'
+                        : cat}
                 </button>
               ))}
             </div>
