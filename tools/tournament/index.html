@@ -32,7 +32,7 @@
     <script src="initialPlayer.js"></script>
     <script>
         // 初期スコア
-        const initScore = 3;
+        const initScore = 2;
         const initScore1 = initScore;
         const initScore2 = initScore;
 
@@ -348,7 +348,7 @@
                 const resultSummary = [];
                 const seenTeams = new Set();
 
-                if (category === "team") {
+                if (category === "team" || category === "prefecture") {
                     // 団体戦の結果を抽出
                     const teamRankingLabels = {
                         [roundCount - 1]: { winner: "優勝", loser: "準優勝" },
@@ -445,7 +445,7 @@
                     matchWithRound.round = roundLabel;
 
                     let splitMatches = [];
-                    if (category === "team") {
+                    if (category === "team" || category === "prefecture") {
                         // 団体戦
                         splitMatches = splitMatchByTeams(matchWithRound);
                     } else {
@@ -538,6 +538,26 @@
 
             const results = [];
 
+            // ▼ prefのみ or team両方対応
+            function getTeamLabel(obj) {
+                if (obj.tempId) {
+                    return obj.tempId;
+                } else if (obj.team && obj.prefecture) {
+                    return `${obj.team}_${obj.prefecture}`;
+                } else if (obj.team) {
+                    return `${obj.name}_${obj.team}`;
+                } else if (obj.prefecture) {
+                    return `${obj.name}_${obj.prefecture}`;
+                } else {
+                    return obj.name;
+                }
+            }
+
+            function getCategory(obj) {
+                if (!obj.team && obj.prefecture) return "prefecture";
+                return "team";
+            }
+
             const p1 = match.p1;
             const p2 = match.p2;
 
@@ -545,16 +565,17 @@
             const p1Score = String(match.scores.p1);
             const p2Score = String(match.scores.p2);
 
+            // p1の出力
             results.push({
                 round: match.round,
-                team: `${p1.team}_${p1.prefecture}` || p1.name,
+                team: getTeamLabel(p1),
                 opponents: [{
                     lastName: "",
                     firstName: "",
                     team: `${p2.team}` || `${p2.name}`,
                     playerId: null,
-                    prefecture: `${p2.prefecture}` || "",
-                    tempId: `${p2.team}_${p2.prefecture}`,
+                    prefecture: p2.prefecture || "",
+                    tempId: getTeamLabel(p2),
                 }],
                 result: p1IsWinner ? "win" : "lose",
                 games: {
@@ -563,20 +584,21 @@
                 },
                 entryNo: p1.id,
                 name: p1.name,
-                category: "team",
-                retired: !!match.p1.retired
+                category: getCategory(p1),
+                retired: !!p1.retired
             });
 
+            // p2の出力
             results.push({
                 round: match.round,
-                team: `${p2.team}_${p2.prefecture}` || p2.name,
+                team: getTeamLabel(p2),
                 opponents: [{
                     lastName: "",
                     firstName: "",
                     team: `${p1.team}` || `${p1.name}`,
                     playerId: null,
-                    prefecture: `${p1.prefecture}` || "",
-                    tempId: `${p1.team}_${p1.prefecture}`,
+                    prefecture: p1.prefecture || "",
+                    tempId: getTeamLabel(p1),
                 }],
                 result: p1IsWinner ? "lose" : "win",
                 games: {
@@ -585,8 +607,8 @@
                 },
                 entryNo: p2.id,
                 name: p2.name,
-                category: "team",
-                retired: !!match.p2.retired
+                category: getCategory(p2),
+                retired: !!p2.retired
             });
 
             return results;
