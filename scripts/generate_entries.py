@@ -32,8 +32,8 @@ def main():
             obj = {
                 "entryNo": entry["id"]
             }
-            if category == "team":
-                obj["team"] = entry.get("team")
+            if category == "team" or category == "versus":
+                obj["team"] = entry.get("team") or entry.get("name")
                 obj["prefecture"] = entry.get("prefecture")
             else:
                 obj["information"] = [
