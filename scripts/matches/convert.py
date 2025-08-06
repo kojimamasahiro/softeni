@@ -48,7 +48,7 @@ final_results = {}
 
 # 各カテゴリごとに処理
 for category, match_list in matches_by_category.items():
-    if category == "team":
+    if category == "team" or category == "versus":
         processed_pairs = set()
         merged_results = []
 
