@@ -123,7 +123,7 @@ export default function EntryDataPage({
                   '@type': 'ListItem',
                   position: 3,
                   name: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
-                  item: `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`,
+                  item: `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}`,
                 },
                 {
                   '@type': 'ListItem',
@@ -144,7 +144,7 @@ export default function EntryDataPage({
             { label: '大会結果一覧', href: '/tournaments' },
             {
               label: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
-              href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`,
+              href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}`,
             },
             { label: '出場選手データ', href: '#' },
           ]}
