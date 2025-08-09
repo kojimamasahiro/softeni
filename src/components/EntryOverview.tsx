@@ -54,7 +54,7 @@ export default function EntryOverview({ entries }: Props) {
         const sortedTeams = Object.entries(stats.teamMap).sort(
           (a, b) => b[1] - a[1],
         );
-        const label = CATEGORY_LABELS[category] || `${category} 出場者`;
+        const label = CATEGORY_LABELS[category] || ``;
 
         return (
           <div key={category}>

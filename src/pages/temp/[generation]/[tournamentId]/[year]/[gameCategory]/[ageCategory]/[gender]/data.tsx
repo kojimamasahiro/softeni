@@ -55,6 +55,7 @@ interface Props {
   entries: EntryInfo[];
   matches: MatchResult[] | null;
   meta: TournamentMeta;
+  categoryLabel: string;
 }
 
 export default function EntryDataPage({
@@ -67,31 +68,83 @@ export default function EntryDataPage({
   entries,
   matches,
   meta,
+  categoryLabel,
 }: Props) {
   const jsonStr = JSON.stringify(entries, null, 2);
+  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}/data`;
 
   return (
     <>
       <MetaHead
-        title={`${meta.name} ${year} 大会データ（JSON形式） - ソフトテニス情報`}
-        description={`${meta.name} ${year} 年の大会出場選手データを掲載。`}
-        url={`https://softeni-pick.com/temp/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/data`}
+        title={`${meta.name} ${year} 出場選手データ - ソフトテニス情報`}
+        description={`${meta.name} ${year} ${categoryLabel ? `${categoryLabel} ` : ''}年の出場選手データを掲載。非営利目的の活用が可能です。`}
+        url={pageUrl}
         type="article"
       />
 
       <Head>
-        <title>
-          {meta.name} {year} 大会データ | ソフトテニス情報
-        </title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}出場選手データ`,
+              author: { '@type': 'Person', name: 'Softeni Pick' },
+              publisher: { '@type': 'Organization', name: 'Softeni Pick' },
+              datePublished: new Date().toISOString().split('T')[0],
+              dateModified: new Date().toISOString().split('T')[0],
+              inLanguage: 'ja',
+              mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+              description: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}の出場選手データを確認できます。`,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'ホーム',
+                  item: 'https://softeni-pick.com/',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: '大会結果一覧',
+                  item: 'https://softeni-pick.com/tournaments',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
+                  item: `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  name: `出場選手データ`,
+                  item: pageUrl,
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <main className="max-w-3xl mx-auto px-4 py-8">
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
+            { label: '大会結果一覧', href: '/tournaments' },
             {
-              label: meta.name,
-              href: `/temp/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`,
+              label: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
+              href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`,
             },
             { label: '出場選手データ', href: '#' },
           ]}
@@ -101,6 +154,23 @@ export default function EntryDataPage({
           {meta.name} {year}年 出場選手データ
         </h1>
 
+        <section className="text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+          <p className="mb-2">
+            このページでは、<strong>{meta.name}</strong>（{year}
+            年）に出場した選手・ペアの情報を掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
+          </p>
+          <ul className="list-disc list-inside mb-2">
+            <li>個人利用、非営利目的での使用は自由です。</li>
+            <li>
+              選手名やチーム名の表記は、原資料に基づく手動入力のため、誤記の可能性があります。
+            </li>
+            <li>
+              公式発表とは異なる場合があります。正式な記録は大会主催者の情報をご確認ください。
+            </li>
+          </ul>
+        </section>
+
+        <h2 className="text-xl font-semibold mt-8 mb-2">出場選手データ</h2>
         <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
           {jsonStr}
         </pre>
@@ -134,6 +204,47 @@ export default function EntryDataPage({
             大会結果ページ
           </Link>
         </div>
+        <div className="mt-6 text-xs text-gray-500 border-t pt-4">
+          <p>
+            ※ 本データはSofteni
+            Pickが独自に整理・構築したものであり、正確性を保証するものではありません。
+            <br />
+            ご利用にあたって生じた不利益等について、当サイトは一切の責任を負いません。
+          </p>
+        </div>
+
+        {meta.source && (
+          <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
+            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
+              出典・参考情報
+            </h2>
+            <p className="mb-3">
+              本ページの試合結果データは、以下の情報をもとに作成しています。
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                {meta.sourceUrl ? (
+                  <a
+                    href={meta.sourceUrl}
+                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {meta.source}
+                  </a>
+                ) : (
+                  <span className="font-medium">{meta.source}</span>
+                )}
+              </li>
+              <li>
+                一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。
+              </li>
+            </ul>
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+              内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。
+            </p>
+          </section>
+        )}
       </main>
     </>
   );
@@ -226,8 +337,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
     year,
   );
 
-  const metaPath = path.join(path.dirname(basePath), 'meta.json');
-  const meta: TournamentMeta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
+  const tournamentMetaPath = path.join(path.dirname(basePath), 'meta.json');
+  const tournamentMeta: TournamentMeta = JSON.parse(
+    fs.readFileSync(tournamentMetaPath, 'utf-8'),
+  );
+
+  const yearMetaPath = path.join(path.dirname(basePath), year, 'meta.json');
+  const yearMeta = fs.existsSync(yearMetaPath)
+    ? JSON.parse(fs.readFileSync(yearMetaPath, 'utf-8'))
+    : {};
+
+  const meta: TournamentMeta = {
+    ...tournamentMeta,
+    ...(yearMeta.source ? { source: yearMeta.source } : {}),
+    ...(yearMeta.sourceUrl ? { sourceUrl: yearMeta.sourceUrl } : {}),
+  };
 
   const categoryKey = `${gameCategory}-${ageCategory}-${gender}`;
   const entriesPath = path.join(basePath, 'entries', `${categoryKey}.json`);
@@ -240,6 +364,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ? JSON.parse(fs.readFileSync(matchesPath, 'utf-8'))
     : null;
 
+  const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
+  const categoriesPath = path.join(basePath, year, 'categories.json');
+  const categories: { id: string; label: string }[] = fs.existsSync(
+    categoriesPath,
+  )
+    ? JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'))
+    : [];
+  const categoryLabel =
+    categories.find((c) => c.id === categoryId)?.label ?? '';
+
   return {
     props: {
       generation,
@@ -251,6 +385,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       entries,
       matches,
       meta,
+      categoryLabel,
     },
   };
 };
