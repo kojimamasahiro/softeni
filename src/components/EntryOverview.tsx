@@ -46,7 +46,7 @@ export default function EntryOverview({ entries }: Props) {
 
   return (
     <section className="space-y-8 my-6">
-      <h2 className="text-xl font-bold mt-10 mb-2">出場選手情報</h2>
+      <h2 className="text-xl font-bold mt-10 mb-2">エントリー一覧</h2>
       {Object.entries(entries).map(([category, entryList]) => {
         if (!entryList || entryList.length === 0) return null;
 

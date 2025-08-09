@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
@@ -12,7 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
-import { getAllPlayers } from '@/lib//players';
+import { getAllPlayers } from '@/lib/players';
 import { resultPriority } from '@/lib/utils';
 import { EntryInfo } from '@/types/entry';
 import {
@@ -35,6 +35,13 @@ interface TournamentYearResultPageProps {
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
   highlight: string | null;
   otherYears: string[];
+  otherLinks: {
+    year: string;
+    gameCategory: string;
+    ageCategory: string;
+    gender: string;
+    categoryLabel: string;
+  }[];
   categoryLabel: string;
   generation: string;
   tournamentId: string;
@@ -53,6 +60,7 @@ export default function TournamentYearResultPage({
   teamMap,
   highlight,
   otherYears,
+  otherLinks,
   categoryLabel,
   generation,
   gameCategory,
@@ -352,9 +360,47 @@ export default function TournamentYearResultPage({
                   href={`/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}/data`}
                   className="text-blue-600 hover:underline"
                 >
-                  ▶ 出場選手データ
+                  ▶ 大会データ
                 </Link>
               </p>
+            )}
+            {otherLinks.length > 0 && (
+              <section className="mt-4 mb-8 rounded-lg">
+                <h3 className="text-l font-semi mb-2 font-bold ">
+                  他年度・他カテゴリの大会結果
+                </h3>
+                {Object.entries(
+                  otherLinks
+                    .sort((a, b) => Number(b.year) - Number(a.year))
+                    .reduce(
+                      (acc, link) => {
+                        if (!acc[link.year]) acc[link.year] = [];
+                        acc[link.year].push(link);
+                        return acc;
+                      },
+                      {} as Record<string, typeof otherLinks>,
+                    ),
+                ).map(([year, links]) => (
+                  <div key={year} className="mb-4">
+                    <h4 className="text-md mb-2">{year}年</h4>
+                    <ul className="flex flex-wrap gap-2">
+                      {links.map((link) => (
+                        <li
+                          key={`${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
+                        >
+                          <Link
+                            href={`/tournaments/${generation}/${meta.id}/${link.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
+                          >
+                            <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                              {link.categoryLabel}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </section>
             )}
             {otherYears.length > 0 && (
               <section className="mt-4 mb-8 rounded-lg">
@@ -541,23 +587,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
     tournamentId,
   );
 
-  // 大会メタ（大会ルート）
+  // 大会ごとの meta.json
   const tournamentMetaPath = path.join(basePath, 'meta.json');
   const tournamentMeta: TournamentMeta = fs.existsSync(tournamentMetaPath)
     ? JSON.parse(fs.readFileSync(tournamentMetaPath, 'utf-8'))
-    : ({} as TournamentMeta);
+    : null;
 
-  // 年度メタ（年フォルダ内）
+  // 年度ごとの meta.json（上書き優先）
   const yearMetaPath = path.join(basePath, year, 'meta.json');
   const yearMeta = fs.existsSync(yearMetaPath)
     ? JSON.parse(fs.readFileSync(yearMetaPath, 'utf-8'))
     : {};
 
-  // categoryId / ファイル名
+  const meta: TournamentMeta = {
+    ...tournamentMeta,
+    ...yearMeta,
+  };
+
+  // categoryId とファイル名
   const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
   const categoryFileName = `${categoryId}.json`;
 
-  // categories.json から label
+  // categories.json から label を取得
   const categoriesPath = path.join(basePath, year, 'categories.json');
   const categories: { id: string; label: string }[] = fs.existsSync(
     categoriesPath,
@@ -584,20 +635,48 @@ export const getStaticProps: GetStaticProps = async (context) => {
         startDate: null,
         endDate: null,
         highlight: null,
-        status: null,
       };
-
-  // meta は大会メタをベースに年度メタで上書き
-  const meta: TournamentMeta = {
-    ...tournamentMeta,
-    ...(yearMeta.source ? { source: yearMeta.source } : {}),
-    ...(yearMeta.sourceUrl ? { sourceUrl: yearMeta.sourceUrl } : {}),
-  };
 
   const allPlayers = getAllPlayers();
   const playersPath = path.join(process.cwd(), 'data/players');
   const unknownPlayers = JSON.parse(
     fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'),
+  );
+
+  // 他年度・他カテゴリのリンク一覧
+  const siblings: {
+    year: string;
+    gameCategory: string;
+    ageCategory: string;
+    gender: string;
+    categoryLabel: string;
+  }[] = [];
+
+  const years = fs.readdirSync(basePath).filter((y) => /^\d{4}$/.test(y));
+
+  for (const y of years) {
+    const catsPath = path.join(basePath, y, 'categories.json');
+    if (!fs.existsSync(catsPath)) continue;
+    const cats = JSON.parse(fs.readFileSync(catsPath, 'utf-8'));
+    for (const c of cats) {
+      siblings.push({
+        year: y,
+        gameCategory: c.category,
+        ageCategory: c.age ?? 'general',
+        gender: c.gender,
+        categoryLabel: c.label ?? '',
+      });
+    }
+  }
+
+  const otherLinks = siblings.filter(
+    (s) =>
+      !(
+        s.year === year &&
+        s.gameCategory === gameCategory &&
+        s.ageCategory === ageCategory &&
+        s.gender === gender
+      ),
   );
 
   return {
@@ -610,13 +689,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
       entries,
       teamMap: {},
       highlight: resultsData.highlight ?? null,
-      otherYears: [],
+      otherYears: [], // 不要なら削除可
+      otherLinks,
       categoryLabel,
       generation,
       tournamentId,
       gameCategory,
       ageCategory,
       gender,
-    } satisfies TournamentYearResultPageProps,
+    } satisfies TournamentYearResultPageProps & {
+      otherLinks: typeof otherLinks;
+    },
   };
 };

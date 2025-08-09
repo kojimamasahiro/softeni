@@ -76,8 +76,8 @@ export default function EntryDataPage({
   return (
     <>
       <MetaHead
-        title={`${meta.name} ${year} 出場選手データ - ソフトテニス情報`}
-        description={`${meta.name} ${year} ${categoryLabel ? `${categoryLabel} ` : ''}年の出場選手データを掲載。非営利目的の活用が可能です。`}
+        title={`${meta.name} ${year} ${categoryLabel ? `${categoryLabel} ` : ''}大会データ - ソフトテニス情報`}
+        description={`${meta.name} ${year} ${categoryLabel ? `${categoryLabel} ` : ''}年の大会データを掲載。非営利目的の活用が可能です。`}
         url={pageUrl}
         type="article"
       />
@@ -89,14 +89,14 @@ export default function EntryDataPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}出場選手データ`,
+              headline: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}大会データ`,
               author: { '@type': 'Person', name: 'Softeni Pick' },
               publisher: { '@type': 'Organization', name: 'Softeni Pick' },
               datePublished: new Date().toISOString().split('T')[0],
               dateModified: new Date().toISOString().split('T')[0],
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-              description: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}の出場選手データを確認できます。`,
+              description: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}の大会データを確認できます。`,
             }),
           }}
         />
@@ -128,7 +128,7 @@ export default function EntryDataPage({
                 {
                   '@type': 'ListItem',
                   position: 4,
-                  name: `出場選手データ`,
+                  name: `大会データ`,
                   item: pageUrl,
                 },
               ],
@@ -146,18 +146,18 @@ export default function EntryDataPage({
               label: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
               href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}`,
             },
-            { label: '出場選手データ', href: '#' },
+            { label: '大会データ', href: '#' },
           ]}
         />
 
         <h1 className="text-2xl font-bold mb-4">
-          {meta.name} {year}年 出場選手データ
+          {meta.name} {year}年 {categoryLabel ? `${categoryLabel} ` : ''}
+          大会データ
         </h1>
 
         <section className="text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
           <p className="mb-2">
-            このページでは、<strong>{meta.name}</strong>（{year}
-            年）に出場した選手・ペアの情報を掲載しています。学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
+            学校・団体別の選手構成や出場者の分析、資料作成などにご活用いただけます。
           </p>
           <ul className="list-disc list-inside mb-2">
             <li>個人利用、非営利目的での使用は自由です。</li>
@@ -170,7 +170,7 @@ export default function EntryDataPage({
           </ul>
         </section>
 
-        <h2 className="text-xl font-semibold mt-8 mb-2">出場選手データ</h2>
+        <h2 className="text-xl font-semibold mt-8 mb-2">エントリーデータ</h2>
         <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
           {jsonStr}
         </pre>
@@ -194,7 +194,9 @@ export default function EntryDataPage({
           </>
         )}
 
-        <EntryOverview entries={{ default: entries }} />
+        {gameCategory !== 'versus' && (
+          <EntryOverview entries={{ default: entries }} />
+        )}
 
         <div className="mt-6">
           <Link
@@ -365,7 +367,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     : null;
 
   const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
-  const categoriesPath = path.join(basePath, year, 'categories.json');
+  const categoriesPath = path.join(basePath, 'categories.json');
   const categories: { id: string; label: string }[] = fs.existsSync(
     categoriesPath,
   )

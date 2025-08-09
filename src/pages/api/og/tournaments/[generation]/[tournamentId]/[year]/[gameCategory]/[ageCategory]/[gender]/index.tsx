@@ -160,29 +160,22 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { generation, tournamentId, year, gameCategory } = req.query as {
-    generation?: string;
-    tournamentId?: string;
-    year?: string;
-    gameCategory?: string;
-  };
-
-  // rest = [ageCategory?, gender]
-  const rest = req.query.rest as undefined | string | string[];
-  const restArr = Array.isArray(rest) ? rest : rest ? [rest] : [];
-  const ageCategory = restArr.length === 2 ? restArr[0] : 'general';
-  const gender = restArr.length === 2 ? restArr[1] : restArr[0];
+  const { generation, tournamentId, year, gameCategory, ageCategory, gender } =
+    req.query as {
+      generation?: string;
+      tournamentId?: string;
+      year?: string;
+      gameCategory?: string;
+      ageCategory?: string;
+      gender?: string;
+    };
 
   if (!generation || !tournamentId || !year || !gameCategory || !gender) {
     return redirectToFallbackImage(res);
   }
 
   // categoryId例: 'doubles-boys', 'doubles-u12-girls', 'versus-boys'
-  const categoryId = [
-    gameCategory,
-    ageCategory !== 'general' ? ageCategory : null,
-    gender,
-  ]
+  const categoryId = [gameCategory, ageCategory, gender]
     .filter(Boolean)
     .join('-');
 
