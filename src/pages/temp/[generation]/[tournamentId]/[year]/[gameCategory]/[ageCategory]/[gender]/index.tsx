@@ -12,6 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
+import { getAllPlayers } from '@/lib//players';
 import { resultPriority } from '@/lib/utils';
 import { EntryInfo } from '@/types/entry';
 import {
@@ -30,13 +31,13 @@ interface TournamentYearResultPageProps {
     string,
     { firstName: string; lastName: string; team: string }
   >;
-  entries: EntryInfo[]; // nullは返してない
+  entries: EntryInfo[];
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
   highlight: string | null;
   otherYears: string[];
-  categoryLabel: string; // '' が返るのでstringでOK
+  categoryLabel: string;
   generation: string;
-  tournamentId: string; // getStaticPropsで渡してるが型に抜けてる
+  tournamentId: string;
   gameCategory: string;
   ageCategory: string;
   gender: string;
@@ -58,7 +59,7 @@ export default function TournamentYearResultPage({
   ageCategory,
   gender,
 }: TournamentYearResultPageProps) {
-  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory !== 'general' ? `${ageCategory}/` : ''}${gender}`;
+  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`;
 
   const teamGroups: Record<
     string,
@@ -266,7 +267,7 @@ export default function TournamentYearResultPage({
         title={`${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
         description={`${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
         url={pageUrl}
-        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory !== 'general' ? `${ageCategory}/` : ''}${gender}`}
+        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`}
         twitterCardType="summary_large_image"
         type="article"
       />
@@ -328,7 +329,7 @@ export default function TournamentYearResultPage({
               { label: '大会結果一覧', href: '/tournaments' },
               {
                 label: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
-                href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory !== 'general' ? `${ageCategory}/` : ''}${gender}`,
+                href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`,
               },
             ]}
           />
@@ -370,7 +371,7 @@ export default function TournamentYearResultPage({
                             </span>
                           ) : (
                             <Link
-                              href={`/tournaments/${generation}/${meta.id}/${y}/${gameCategory}/${ageCategory !== 'general' ? `${ageCategory}/` : ''}${gender}`}
+                              href={`/tournaments/${generation}/${meta.id}/${y}/${gameCategory}/${ageCategory}${gender}`}
                             >
                               <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
                                 {y}年
@@ -593,13 +594,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ...(yearMeta.sourceUrl ? { sourceUrl: yearMeta.sourceUrl } : {}),
   };
 
+  const allPlayers = getAllPlayers();
+  const playersPath = path.join(process.cwd(), 'data/players');
+  const unknownPlayers = JSON.parse(
+    fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'),
+  );
+
   return {
     props: {
       year,
       meta,
       data: resultsData,
-      allPlayers: [],
-      unknownPlayers: {},
+      allPlayers,
+      unknownPlayers,
       entries,
       teamMap: {},
       highlight: resultsData.highlight ?? null,
