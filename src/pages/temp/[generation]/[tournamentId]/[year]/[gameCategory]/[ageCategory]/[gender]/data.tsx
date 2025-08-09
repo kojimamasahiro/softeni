@@ -284,11 +284,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
         const raw = JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'));
         const categories: Array<{
-          id?: string;
-          label?: string;
+          id: string;
+          label: string;
           category: string; // "doubles" / "versus" など
           gender: string; // "boys" / "girls" など
-          age?: string; // 無ければ general
+          age: string;
         }> = Array.isArray(raw) ? raw : [];
 
         // categories.json が空/不正でも落ちないようにガード
@@ -297,9 +297,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
           const gameCategory = c.category;
           const gender = c.gender;
-          const ageCategory = c.age && c.age.length > 0 ? c.age : 'general';
-
-          if (!gameCategory || !gender) continue;
+          const ageCategory = c.age;
 
           paths.push({
             params: {

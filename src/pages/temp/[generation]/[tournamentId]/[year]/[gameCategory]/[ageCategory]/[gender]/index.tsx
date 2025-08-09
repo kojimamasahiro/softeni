@@ -543,7 +543,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
           // JSONのキーから直接取得
           const gameCategory = c.category;
-          const ageCategory = c.age ?? 'general';
+          const ageCategory = c.age;
           const gender = c.gender;
 
           if (!gameCategory || !gender) continue;
@@ -662,9 +662,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
       siblings.push({
         year: y,
         gameCategory: c.category,
-        ageCategory: c.age ?? 'general',
+        ageCategory: c.age,
         gender: c.gender,
-        categoryLabel: c.label ?? '',
+        categoryLabel: c.label,
       });
     }
   }
