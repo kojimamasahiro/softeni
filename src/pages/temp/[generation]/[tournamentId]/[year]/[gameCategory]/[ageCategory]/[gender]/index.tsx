@@ -540,17 +540,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
     tournamentId,
   );
 
-  // meta.json
-  const metaPath = path.join(basePath, 'meta.json');
-  const meta: TournamentMeta = fs.existsSync(metaPath)
-    ? JSON.parse(fs.readFileSync(metaPath, 'utf-8'))
-    : null;
+  // 大会メタ（大会ルート）
+  const tournamentMetaPath = path.join(basePath, 'meta.json');
+  const tournamentMeta: TournamentMeta = fs.existsSync(tournamentMetaPath)
+    ? JSON.parse(fs.readFileSync(tournamentMetaPath, 'utf-8'))
+    : ({} as TournamentMeta);
 
-  // categoryId を path から生成
+  // 年度メタ（年フォルダ内）
+  const yearMetaPath = path.join(basePath, year, 'meta.json');
+  const yearMeta = fs.existsSync(yearMetaPath)
+    ? JSON.parse(fs.readFileSync(yearMetaPath, 'utf-8'))
+    : {};
+
+  // categoryId / ファイル名
   const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
   const categoryFileName = `${categoryId}.json`;
 
-  // categories.json から label を取得
+  // categories.json から label
   const categoriesPath = path.join(basePath, year, 'categories.json');
   const categories: { id: string; label: string }[] = fs.existsSync(
     categoriesPath,
@@ -566,7 +572,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ? JSON.parse(fs.readFileSync(entryPath, 'utf-8'))
     : [];
 
-  // results（location / startDate / endDate / highlight を含む）
+  // results
   const resultsPath = path.join(basePath, year, 'results', categoryFileName);
   const resultsData = fs.existsSync(resultsPath)
     ? JSON.parse(fs.readFileSync(resultsPath, 'utf-8'))
@@ -577,7 +583,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
         startDate: null,
         endDate: null,
         highlight: null,
+        status: null,
       };
+
+  // meta は大会メタをベースに年度メタで上書き
+  const meta: TournamentMeta = {
+    ...tournamentMeta,
+    ...(yearMeta.source ? { source: yearMeta.source } : {}),
+    ...(yearMeta.sourceUrl ? { sourceUrl: yearMeta.sourceUrl } : {}),
+  };
 
   return {
     props: {
