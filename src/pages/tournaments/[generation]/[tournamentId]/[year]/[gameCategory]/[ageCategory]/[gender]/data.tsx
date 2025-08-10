@@ -1,4 +1,4 @@
-// src/pages/temp/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/data.tsx
+// src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/data.tsx
 import fs from 'fs';
 import path from 'path';
 
@@ -212,7 +212,7 @@ export default function EntryDataPage({
 
         <div className="mt-6">
           <Link
-            href={`/temp/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`}
+            href={`/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`}
             className="text-sm text-blue-600 hover:underline"
           >
             大会結果ページ
@@ -266,7 +266,7 @@ export default function EntryDataPage({
 
 // ✅ 新しい Path 対応
 export const getStaticPaths: GetStaticPaths = async () => {
-  const baseDir = path.join(process.cwd(), 'data/temp');
+  const baseDir = path.join(process.cwd(), 'data/tournaments');
   const generations = fs.readdirSync(baseDir);
 
   const paths: {
@@ -343,7 +343,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const basePath = path.join(
     process.cwd(),
-    'data/temp',
+    'data/tournaments',
     generation,
     tournamentId,
     year,

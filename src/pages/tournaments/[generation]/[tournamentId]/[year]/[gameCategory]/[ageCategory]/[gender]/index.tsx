@@ -1,4 +1,4 @@
-// pages/temp/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx
+// pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx
 
 import fs from 'fs';
 import path from 'path';
@@ -513,7 +513,7 @@ export default function TournamentYearResultPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const baseDir = path.join(process.cwd(), 'data/temp');
+  const baseDir = path.join(process.cwd(), 'data/tournaments');
   const generations = fs.readdirSync(baseDir); // 例: ["junior", "highschool"]
 
   const paths: {
@@ -587,7 +587,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const basePath = path.join(
     process.cwd(),
-    'data/temp',
+    'data/tournaments',
     generation,
     tournamentId,
   );

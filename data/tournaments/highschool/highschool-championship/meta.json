@@ -1,12 +1,8 @@
 {
   "id": "highschool-championship",
-  "sortId": 101,
   "name": "全国高等学校総合体育大会",
-  "region": "日本",
-  "type": "ダブルス、団体",
-  "category": "高校生大会",
-  "officialUrl": "https://www.zen-koutairen.com/",
+  "generation": "junior",
+  "categoryTypes": ["doubles", "team"],
   "isMajorTitle": false,
-  "source": "公益財団法人 日本ソフトテニス連盟",
-  "sourceUrl": "https://www.jsta.or.jp"
+  "officialUrl": "https://www.zen-koutairen.com/"
 }
