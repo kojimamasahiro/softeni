@@ -34,13 +34,16 @@ interface TournamentYearResultPageProps {
   entries: EntryInfo[];
   teamMap: Record<string, { teamId: string; prefectureId: string }>;
   highlight: string | null;
-  otherYears: string[];
-  otherLinks: {
+  groupedLinks: {
     year: string;
-    gameCategory: string;
-    ageCategory: string;
-    gender: string;
-    categoryLabel: string;
+    links: {
+      year: string;
+      gameCategory: string;
+      ageCategory: string;
+      gender: string;
+      categoryLabel: string;
+      isCurrent: boolean;
+    }[];
   }[];
   categoryLabel: string;
   generation: string;
@@ -59,8 +62,7 @@ export default function TournamentYearResultPage({
   entries,
   teamMap,
   highlight,
-  otherYears,
-  otherLinks,
+  groupedLinks,
   categoryLabel,
   generation,
   gameCategory,
@@ -389,72 +391,6 @@ export default function TournamentYearResultPage({
                 </Link>
               </p>
             )}
-            {otherLinks.length > 0 && (
-              <section className="mt-4 mb-8 rounded-lg">
-                <h3 className="text-l font-semi mb-2 font-bold ">
-                  他年度・他カテゴリの大会結果
-                </h3>
-                {Object.entries(
-                  otherLinks
-                    .sort((a, b) => Number(b.year) - Number(a.year))
-                    .reduce(
-                      (acc, link) => {
-                        if (!acc[link.year]) acc[link.year] = [];
-                        acc[link.year].push(link);
-                        return acc;
-                      },
-                      {} as Record<string, typeof otherLinks>,
-                    ),
-                ).map(([year, links]) => (
-                  <div key={year} className="mb-4">
-                    <h4 className="text-md mb-2">{year}年</h4>
-                    <ul className="flex flex-wrap gap-2">
-                      {links.map((link) => (
-                        <li
-                          key={`${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
-                        >
-                          <Link
-                            href={`/tournaments/${generation}/${meta.id}/${link.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
-                          >
-                            <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                              {link.categoryLabel}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </section>
-            )}
-            {otherYears.length > 0 && (
-              <section className="mt-4 mb-8 rounded-lg">
-                <h3 className="text-l font-semi mb-2">他年度の大会結果</h3>
-                <div className="space-y-8">
-                  <ul className="flex flex-wrap gap-2">
-                    {[...otherYears, year]
-                      .sort((a, b) => Number(b) - Number(a))
-                      .map((y) => (
-                        <li key={y}>
-                          {y === year ? (
-                            <span className="inline-block bg-gray-300 text-gray-600 dark:bg-gray-700 dark:text-gray-400 px-3 py-1 rounded-full text-sm cursor-default">
-                              {y}年
-                            </span>
-                          ) : (
-                            <Link
-                              href={`/tournaments/${generation}/${meta.id}/${y}/${gameCategory}/${ageCategory}${gender}`}
-                            >
-                              <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                                {y}年
-                              </span>
-                            </Link>
-                          )}
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              </section>
-            )}
             {highlight && (
               <section className="mt-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-lg font-semibold mb-1">大会ハイライト</h2>
@@ -469,6 +405,50 @@ export default function TournamentYearResultPage({
 
           {/* ✅ チーム別成績 */}
           <TeamResults sortedTeams={sortedTeams} />
+
+          {groupedLinks && groupedLinks.length > 0 && (
+            <section className="mb-10">
+              <h2 className="text-lg font-bold mb-3">その他の大会結果</h2>
+              {groupedLinks.map(({ year: yearValue, links }) => (
+                <div
+                  className="mb-4"
+                  key={`${yearValue}-${links
+                    .map(
+                      (link) =>
+                        `${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`,
+                    )
+                    .join('-')}`}
+                >
+                  <h4 className="text-md mb-2">{yearValue}年</h4>
+                  <ul className="flex flex-wrap gap-2">
+                    {links.map((link) =>
+                      link.isCurrent ? (
+                        <li
+                          key={`${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
+                        >
+                          <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">
+                            {link.categoryLabel}
+                          </span>
+                        </li>
+                      ) : (
+                        <li
+                          key={`${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
+                        >
+                          <Link
+                            href={`/tournaments/${generation}/${meta.id}/${link.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
+                          >
+                            <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                              {link.categoryLabel}
+                            </span>
+                          </Link>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+              ))}
+            </section>
+          )}
 
           <div className="text-right mt-10 mb-2">
             <Link
@@ -669,7 +649,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'),
   );
 
-  // 他年度・他カテゴリのリンク一覧
+  // 他年度・他カテゴリのリンク一覧（現在のものも含む）
   const siblings: {
     year: string;
     gameCategory: string;
@@ -695,15 +675,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
-  const otherLinks = siblings.filter(
-    (s) =>
-      !(
-        s.year === year &&
-        s.gameCategory === gameCategory &&
-        s.ageCategory === ageCategory &&
-        s.gender === gender
-      ),
-  );
+  // 現在表示している年度・カテゴリをフラグ付きで残す
+  const siblingsWithCurrentFlag = siblings.map((s) => ({
+    ...s,
+    isCurrent:
+      s.year === year &&
+      s.gameCategory === gameCategory &&
+      s.ageCategory === ageCategory &&
+      s.gender === gender,
+  }));
+
+  type LinkItem = (typeof siblingsWithCurrentFlag)[number];
+  type GroupedLink = { year: string; links: LinkItem[] };
+
+  // ソート＆グループ化
+  const groupedLinks: GroupedLink[] = siblingsWithCurrentFlag
+    .sort((a, b) => Number(b.year) - Number(a.year)) // 新しい順
+    .reduce((acc: GroupedLink[], link) => {
+      const group = acc.find((g) => g.year === link.year);
+      if (group) {
+        group.links.push(link);
+      } else {
+        acc.push({ year: link.year, links: [link] });
+      }
+      return acc;
+    }, []);
 
   return {
     props: {
@@ -715,16 +711,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
       entries,
       teamMap: {},
       highlight: resultsData.highlight ?? null,
-      otherYears: [], // 不要なら削除可
-      otherLinks,
+      groupedLinks,
       categoryLabel,
       generation,
       tournamentId,
       gameCategory,
       ageCategory,
       gender,
-    } satisfies TournamentYearResultPageProps & {
-      otherLinks: typeof otherLinks;
     },
   };
 };
