@@ -371,17 +371,22 @@
         const prefecture = playerDivs[0]
           .querySelector('.prefecture')
           .value.trim();
-        if (!team) {
-          alert('チーム名は必須です（団体戦モード）');
+        if (!team && !prefecture) {
+          alert('チーム名と都道府県名は必須です（団体戦モード）');
           return;
         }
 
         const obj = {
           id: outputId++,
-          name: `${team}${prefecture ? `（${prefecture}）` : ''}`,
-          team: team,
-          prefecture: prefecture,
-          category: 'team',
+          name: team
+            ? `${team}${prefecture ? `（${prefecture}）` : ''}`
+            : `${prefecture}`,
+          team: team || undefined,
+          prefecture: prefecture || undefined,
+          category: team ? 'team' : 'prefecture',
+          tempId: team
+            ? `${team}_${prefecture}`
+            : `${prefecture}_${prefecture}`,
         };
 
         jsonArray.push(obj);
@@ -457,7 +462,12 @@
     };
 
     // 選手人数に応じて category を付加
-    if (players.length === 1) {
+    let allTeamBlank = players.every((p) => !p.team);
+    let allPrefectureSet = players.every((p) => !!p.prefecture);
+
+    if (allTeamBlank && allPrefectureSet) {
+      obj.category = 'prefecture';
+    } else if (players.length === 1) {
       obj.category = 'singles';
     } else if (players.length === 2) {
       obj.category = 'doubles';

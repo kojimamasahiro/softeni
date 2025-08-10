@@ -30,7 +30,7 @@ interface Props {
 export default function TeamResults({ sortedTeams, shouldLinkTeams }: Props) {
   if (sortedTeams.length === 0) {
     return (
-      <p className="text-center text-gray-600 dark:text-gray-300 mt-6">
+      <p className="text-center text-gray-600 dark:text-gray-300 mt-6 mb-6">
         大会結果はまだすべて揃っていません。判明次第、順次掲載していきます。
       </p>
     );

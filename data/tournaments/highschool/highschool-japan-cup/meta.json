@@ -1,12 +1,8 @@
 {
   "id": "highschool-japan-cup",
-  "sortId": 100,
   "name": "ハイスクールジャパンカップ",
-  "region": "日本",
-  "type": "ダブルス、シングルス",
-  "category": "高校生大会",
-  "officialUrl": "https://www.gosen-sp.jp/hjs/participant/",
+  "generation": "junior",
+  "categoryTypes": ["singles", "doubles"],
   "isMajorTitle": false,
-  "source": "ハイスクールジャパンカップ | HJS | ゴーセン",
-  "sourceUrl": "https://www.gosen-sp.jp/hjs/"
+  "officialUrl": "https://www.gosen-sp.jp/hjs/"
 }

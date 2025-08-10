@@ -4,7 +4,7 @@ import path from 'path';
 import { TournamentSummary } from '@/types/index';
 
 export const getAllTournaments = (): TournamentSummary[] => {
-  const tournamentsPath = path.join(process.cwd(), 'data', 'tournaments');
+  const tournamentsPath = path.join(process.cwd(), 'data', 'temp');
   const tournamentDirs = fs.readdirSync(tournamentsPath);
 
   const allTournaments: TournamentSummary[] = [];
