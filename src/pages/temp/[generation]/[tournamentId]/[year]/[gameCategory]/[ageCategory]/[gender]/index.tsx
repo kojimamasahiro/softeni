@@ -199,7 +199,17 @@ export default function TournamentYearResultPage({
     return a.team.localeCompare(b.team, 'ja');
   });
 
-  const matches = useMemo(() => data.matches ?? [], [data.matches]);
+  const tournamentMatches = useMemo(() => data.matches ?? [], [data.matches]);
+  const roundRobinMatches = useMemo(
+    () => data.roundRobinMatches ?? [],
+    [data.roundRobinMatches],
+  );
+
+  const matches = useMemo(
+    () => [...roundRobinMatches, ...tournamentMatches],
+    [roundRobinMatches, tournamentMatches],
+  );
+
   const allNames = useMemo(
     () => [...new Set(matches.map((m) => m.name))],
     [matches],
@@ -268,6 +278,21 @@ export default function TournamentYearResultPage({
       seedEntryNos.add(entry.entryNo);
     }
   }
+
+  const tournamentMatchSet = new Set(
+    tournamentMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
+  );
+
+  const roundRobinMatchSet = new Set(
+    roundRobinMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
+  );
+
+  const eliminatedEntries = [...roundRobinMatchSet]
+    .filter((key) => !tournamentMatchSet.has(key))
+    .map((key) => {
+      const [name, category] = key.split('|');
+      return { name, result: '予選敗退', category };
+    });
 
   return (
     <>
@@ -463,7 +488,7 @@ export default function TournamentYearResultPage({
                 suggestions={suggestions}
                 filter={filter}
                 setFilter={setFilter}
-                eliminatedEntries={[]}
+                eliminatedEntries={eliminatedEntries}
                 seedEntryNos={seedEntryNos}
               />
             </>
@@ -631,6 +656,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     : {
         results: [],
         matches: [],
+        roundRobinMatches: [],
         location: null,
         startDate: null,
         endDate: null,

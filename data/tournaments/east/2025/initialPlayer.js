@@ -512,4 +512,4 @@ const initialPlayers = [
 {"id":284,"name":"米川・荒木（ヨネックス）","information":[{"lastName":"米川","firstName":"結翔","team":"ヨネックス","prefecture":"","playerId":"yonekawa-yuto","tempId":"米川_結翔_ヨネックス"},{"lastName":"荒木","firstName":"駿","team":"ヨネックス","prefecture":"","playerId":null,"tempId":"荒木_駿_ヨネックス"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]}
 ];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+console.log(JSON.stringify(initialPlayers, null, 2));

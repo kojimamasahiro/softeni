@@ -191,6 +191,15 @@ export default function EntryDataPage({
             <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm max-h-[300px] overflow-auto whitespace-pre-wrap">
               {JSON.stringify(matches, null, 2)}
             </pre>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(JSON.stringify(matches, null, 2));
+                alert('クリップボードにコピーしました');
+              }}
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              JSONをコピー（対戦結果）
+            </button>
           </>
         )}
 
