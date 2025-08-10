@@ -227,6 +227,7 @@ export default async function handler(
         }}
       >
         {overlayPaths.map((filename, idx) => (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             key={idx}
             src={`${IMAGE_URL_BASE}/${filename}`}
