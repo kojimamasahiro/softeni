@@ -1,0 +1,60 @@
+[
+  {
+    "source": "/tournaments/east/:year(\\d{4})/data",
+    "destination": "/tournaments/all/east-japan/:year/doubles/none/boys/data"
+  },
+  {
+    "source": "/tournaments/east/:year(\\d{4})",
+    "destination": "/tournaments/all/east-japan/:year/doubles/none/boys"
+  },
+  {
+    "source": "/tournaments/west/:year(\\d{4})/data",
+    "destination": "/tournaments/all/west-japan/:year/doubles/none/boys/data"
+  },
+  {
+    "source": "/tournaments/west/:year(\\d{4})",
+    "destination": "/tournaments/all/west-japan/:year/doubles/none/boys"
+  },
+  {
+    "source": "/tournaments/zennihon-singles/:year(\\d{4})/data",
+    "destination": "/tournaments/all/zennihon-singles/:year/singles/none/boys/data"
+  },
+  {
+    "source": "/tournaments/zennihon-singles/:year(\\d{4})",
+    "destination": "/tournaments/all/zennihon-singles/:year/singles/none/boys"
+  },
+  {
+    "source": "/tournaments/zennihon-mix-doubles/:year(\\d{4})/data",
+    "destination": "/tournaments/all/zennihon-mixed/:year/doubles/none/mixed/data"
+  },
+  {
+    "source": "/tournaments/zennihon-mix-doubles/:year(\\d{4})",
+    "destination": "/tournaments/all/zennihon-mixed/:year/doubles/none/mixed"
+  },
+
+  {
+    "source": "/tournaments/primaryschool-championship/:year(\\d{4})/data",
+    "destination": "/tournaments/junior/primaryschool-championship/:year/doubles/none/boys/data"
+  },
+  {
+    "source": "/tournaments/primaryschool-championship/:year(\\d{4})",
+    "destination": "/tournaments/junior/primaryschool-championship/:year/doubles/none/boys"
+  },
+
+  {
+    "source": "/tournaments/japan-business-group/:year(\\d{4})/data",
+    "destination": "/tournaments/corporate/zennihon-business-group/:year/team/none/boys/data"
+  },
+  {
+    "source": "/tournaments/japan-business-group/:year(\\d{4})",
+    "destination": "/tournaments/corporate/zennihon-business-group/:year/team/none/boys"
+  },
+  {
+    "source": "/tournaments/highschool/:tournamentId/:year(\\d{4})/data",
+    "destination": "/tournaments/highschool/:tournamentId/:year(\\d{4})/doubles/none/boys/data"
+  },
+  {
+    "source": "/tournaments/highschool/:tournamentId/:year(\\d{4})",
+    "destination": "/tournaments/highschool/:tournamentId/:year(\\d{4})/doubles/none/boys"
+  }
+]
