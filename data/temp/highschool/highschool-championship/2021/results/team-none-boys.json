@@ -1,0 +1,2222 @@
+{
+  "highlight": "仲川・近藤（三重）ペアが優勝。決勝戦では、森川・服部（高田商）ペアにゲームカウント3-1のポイント3-1と先にマッチポイントを握られるもなんとか凌ぎ、そのままファイナルゲームを制して優勝しました。",
+  "status": "completed",
+  "scheduledDate": "(7/30)",
+  "startDate": "2021-07-30",
+  "endDate": "2021-07-31",
+  "location": "石川県",
+  "results": [
+    {
+      "team": "尽誠学園",
+      "prefecture": "香川県",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "高田商",
+      "prefecture": "奈良県",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "東北",
+      "prefecture": "宮城県",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "岡山理大附",
+      "prefecture": "岡山県",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "都城商",
+      "prefecture": "宮崎県",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "三重",
+      "prefecture": "三重県",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "羽黒",
+      "prefecture": "山形県",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "木更津総合",
+      "prefecture": "千葉県",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "team": "大分_大分県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尾道",
+          "playerId": null,
+          "prefecture": "広島県",
+          "tempId": "尾道_広島県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 2,
+      "name": "大分（大分県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "尾道_広島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大分",
+          "playerId": null,
+          "prefecture": "大分県",
+          "tempId": "大分_大分県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 3,
+      "name": "尾道（広島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "昌平_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "都市大塩尻",
+          "playerId": null,
+          "prefecture": "長野県",
+          "tempId": "都市大塩尻_長野県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 4,
+      "name": "昌平（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "都市大塩尻_長野県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "昌平",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "昌平_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 5,
+      "name": "都市大塩尻（長野県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "富士宮北_静岡県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福知山成美",
+          "playerId": null,
+          "prefecture": "京都府",
+          "tempId": "福知山成美_京都府"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 8,
+      "name": "富士宮北（静岡県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "福知山成美_京都府",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "富士宮北",
+          "playerId": null,
+          "prefecture": "静岡県",
+          "tempId": "富士宮北_静岡県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 9,
+      "name": "福知山成美（京都府）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東海大相模_神奈川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明徳義塾",
+          "playerId": null,
+          "prefecture": "高知県",
+          "tempId": "明徳義塾_高知県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 10,
+      "name": "東海大相模（神奈川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "明徳義塾_高知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東海大相模",
+          "playerId": null,
+          "prefecture": "神奈川県",
+          "tempId": "東海大相模_神奈川県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "明徳義塾（高知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "名護_沖縄県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大曲",
+          "playerId": null,
+          "prefecture": "秋田県",
+          "tempId": "大曲_秋田県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 14,
+      "name": "名護（沖縄県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大曲_秋田県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "名護",
+          "playerId": null,
+          "prefecture": "沖縄県",
+          "tempId": "名護_沖縄県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 15,
+      "name": "大曲（秋田県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "つるぎ_徳島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "常磐大高",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "常磐大高_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 16,
+      "name": "つるぎ（徳島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "常磐大高_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "つるぎ",
+          "playerId": null,
+          "prefecture": "徳島県",
+          "tempId": "つるぎ_徳島県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 17,
+      "name": "常磐大高（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "とわの森三愛_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "嬉野",
+          "playerId": null,
+          "prefecture": "佐賀県",
+          "tempId": "嬉野_佐賀県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 20,
+      "name": "とわの森三愛（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "嬉野_佐賀県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "とわの森三愛",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "とわの森三愛_北海道"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 21,
+      "name": "嬉野（佐賀県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "駒大_東京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田村",
+          "playerId": null,
+          "prefecture": "福島県",
+          "tempId": "田村_福島県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 22,
+      "name": "駒大（東京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "田村_福島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "駒大",
+          "playerId": null,
+          "prefecture": "東京都",
+          "tempId": "駒大_東京都"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 23,
+      "name": "田村（福島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "長崎南山_長崎県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "立命館守山",
+          "playerId": null,
+          "prefecture": "滋賀県",
+          "tempId": "立命館守山_滋賀県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 26,
+      "name": "長崎南山（長崎県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "立命館守山_滋賀県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "長崎南山",
+          "playerId": null,
+          "prefecture": "長崎県",
+          "tempId": "長崎南山_長崎県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 27,
+      "name": "立命館守山（滋賀県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "笛吹_山梨県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "金津",
+          "playerId": null,
+          "prefecture": "福井県",
+          "tempId": "金津_福井県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 28,
+      "name": "笛吹（山梨県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "金津_福井県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "笛吹",
+          "playerId": null,
+          "prefecture": "山梨県",
+          "tempId": "笛吹_山梨県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 29,
+      "name": "金津（福井県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "新田_愛媛県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "石川高専",
+          "playerId": null,
+          "prefecture": "石川県",
+          "tempId": "石川高専_石川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 32,
+      "name": "新田（愛媛県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "石川高専_石川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "新田",
+          "playerId": null,
+          "prefecture": "愛媛県",
+          "tempId": "新田_愛媛県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 33,
+      "name": "石川高専（石川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "岩手_岩手県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "真颯館",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "真颯館_福岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 34,
+      "name": "岩手（岩手県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "真颯館_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "岩手",
+          "playerId": null,
+          "prefecture": "岩手県",
+          "tempId": "岩手_岩手県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 35,
+      "name": "真颯館（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "鹿児島商_鹿児島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "八戸工大一",
+          "playerId": null,
+          "prefecture": "青森県",
+          "tempId": "八戸工大一_青森県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 38,
+      "name": "鹿児島商（鹿児島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "八戸工大一_青森県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "鹿児島商",
+          "playerId": null,
+          "prefecture": "鹿児島県",
+          "tempId": "鹿児島商_鹿児島県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 39,
+      "name": "八戸工大一（青森県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大同大学大同_愛知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "柳井",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "柳井_山口"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 40,
+      "name": "大同大学大同（愛知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "柳井_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大同大学大同",
+          "playerId": null,
+          "prefecture": "愛知県",
+          "tempId": "大同大学大同_愛知県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 41,
+      "name": "柳井（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "矢板中央_栃木県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "巻",
+          "playerId": null,
+          "prefecture": "新潟県",
+          "tempId": "巻_新潟県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 44,
+      "name": "矢板中央（栃木県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "巻_新潟県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "矢板中央",
+          "playerId": null,
+          "prefecture": "栃木県",
+          "tempId": "矢板中央_栃木県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 45,
+      "name": "巻（新潟県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "熊本工_熊本県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "米子松蔭",
+          "playerId": null,
+          "prefecture": "鳥取県",
+          "tempId": "米子松蔭_鳥取県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 46,
+      "name": "熊本工（熊本県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "米子松蔭_鳥取県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "熊本工",
+          "playerId": null,
+          "prefecture": "熊本県",
+          "tempId": "熊本工_熊本県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 47,
+      "name": "米子松蔭（鳥取県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東北_宮城県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尾道",
+          "playerId": null,
+          "prefecture": "広島県",
+          "tempId": "尾道_広島県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "東北（宮城県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "尾道_広島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東北",
+          "playerId": null,
+          "prefecture": "宮城県",
+          "tempId": "東北_宮城県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 3,
+      "name": "尾道（広島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "昌平_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "和歌山北",
+          "playerId": null,
+          "prefecture": "和歌山県",
+          "tempId": "和歌山北_和歌山県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 4,
+      "name": "昌平（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "和歌山北_和歌山県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "昌平",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "昌平_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 6,
+      "name": "和歌山北（和歌山県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "能登_石川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "富士宮北",
+          "playerId": null,
+          "prefecture": "静岡県",
+          "tempId": "富士宮北_静岡県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 7,
+      "name": "能登（石川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "富士宮北_静岡県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "能登",
+          "playerId": null,
+          "prefecture": "石川県",
+          "tempId": "能登_石川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 8,
+      "name": "富士宮北（静岡県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "明徳義塾_高知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "都城商",
+          "playerId": null,
+          "prefecture": "宮崎県",
+          "tempId": "都城商_宮崎県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 11,
+      "name": "明徳義塾（高知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "都城商_宮崎県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明徳義塾",
+          "playerId": null,
+          "prefecture": "高知県",
+          "tempId": "明徳義塾_高知県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "都城商（宮崎県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "三重_三重県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "名護",
+          "playerId": null,
+          "prefecture": "沖縄県",
+          "tempId": "名護_沖縄県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 13,
+      "name": "三重（三重県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "名護_沖縄県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重",
+          "playerId": null,
+          "prefecture": "三重県",
+          "tempId": "三重_三重県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 14,
+      "name": "名護（沖縄県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "つるぎ_徳島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松江工",
+          "playerId": null,
+          "prefecture": "島根県",
+          "tempId": "松江工_島根県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "つるぎ（徳島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "松江工_島根県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "つるぎ",
+          "playerId": null,
+          "prefecture": "徳島県",
+          "tempId": "つるぎ_徳島県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 18,
+      "name": "松江工（島根県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "高岡商_富山県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "とわの森三愛",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "とわの森三愛_北海道"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 19,
+      "name": "高岡商（富山県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "とわの森三愛_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高岡商",
+          "playerId": null,
+          "prefecture": "富山県",
+          "tempId": "高岡商_富山県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 20,
+      "name": "とわの森三愛（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "田村_福島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高田商",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "高田商_奈良県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 23,
+      "name": "田村（福島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "高田商_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田村",
+          "playerId": null,
+          "prefecture": "福島県",
+          "tempId": "田村_福島県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "高田商（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "羽黒_山形県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "立命館守山",
+          "playerId": null,
+          "prefecture": "滋賀県",
+          "tempId": "立命館守山_滋賀県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "羽黒（山形県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "立命館守山_滋賀県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "羽黒",
+          "playerId": null,
+          "prefecture": "山形県",
+          "tempId": "羽黒_山形県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "立命館守山（滋賀県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "笛吹_山梨県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "中京",
+          "playerId": null,
+          "prefecture": "岐阜県",
+          "tempId": "中京_岐阜県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 28,
+      "name": "笛吹（山梨県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "中京_岐阜県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "笛吹",
+          "playerId": null,
+          "prefecture": "山梨県",
+          "tempId": "笛吹_山梨県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 30,
+      "name": "中京（岐阜県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "岡山理大附_岡山県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "石川高専",
+          "playerId": null,
+          "prefecture": "石川県",
+          "tempId": "石川高専_石川県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 31,
+      "name": "岡山理大附（岡山県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "石川高専_石川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "岡山理大附",
+          "playerId": null,
+          "prefecture": "岡山県",
+          "tempId": "岡山理大附_岡山県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 33,
+      "name": "石川高専（石川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "真颯館_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高崎商",
+          "playerId": null,
+          "prefecture": "群馬県",
+          "tempId": "高崎商_群馬県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 35,
+      "name": "真颯館（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "高崎商_群馬県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "真颯館",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "真颯館_福岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 36,
+      "name": "高崎商（群馬県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "上宮_大阪府",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "八戸工大一",
+          "playerId": null,
+          "prefecture": "青森県",
+          "tempId": "八戸工大一_青森県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 37,
+      "name": "上宮（大阪府）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "八戸工大一_青森県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "上宮",
+          "playerId": null,
+          "prefecture": "大阪府",
+          "tempId": "上宮_大阪府"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 39,
+      "name": "八戸工大一（青森県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "大同大学大同_愛知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "木更津総合",
+          "playerId": null,
+          "prefecture": "千葉県",
+          "tempId": "木更津総合_千葉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 40,
+      "name": "大同大学大同（愛知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "木更津総合_千葉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大同大学大同",
+          "playerId": null,
+          "prefecture": "愛知県",
+          "tempId": "大同大学大同_愛知県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 42,
+      "name": "木更津総合（千葉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "市尼崎_兵庫県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "矢板中央",
+          "playerId": null,
+          "prefecture": "栃木県",
+          "tempId": "矢板中央_栃木県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 43,
+      "name": "市尼崎（兵庫県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "矢板中央_栃木県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "市尼崎",
+          "playerId": null,
+          "prefecture": "兵庫県",
+          "tempId": "市尼崎_兵庫県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 44,
+      "name": "矢板中央（栃木県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "熊本工_熊本県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尽誠学園",
+          "playerId": null,
+          "prefecture": "香川県",
+          "tempId": "尽誠学園_香川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 46,
+      "name": "熊本工（熊本県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "尽誠学園_香川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "熊本工",
+          "playerId": null,
+          "prefecture": "熊本県",
+          "tempId": "熊本工_熊本県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 48,
+      "name": "尽誠学園（香川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "東北_宮城県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "昌平",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "昌平_埼玉県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "東北（宮城県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "昌平_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東北",
+          "playerId": null,
+          "prefecture": "宮城県",
+          "tempId": "東北_宮城県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "昌平（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "能登_石川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "都城商",
+          "playerId": null,
+          "prefecture": "宮崎県",
+          "tempId": "都城商_宮崎県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 7,
+      "name": "能登（石川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "都城商_宮崎県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "能登",
+          "playerId": null,
+          "prefecture": "石川県",
+          "tempId": "能登_石川県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "都城商（宮崎県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "三重_三重県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "つるぎ",
+          "playerId": null,
+          "prefecture": "徳島県",
+          "tempId": "つるぎ_徳島県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 13,
+      "name": "三重（三重県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "つるぎ_徳島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重",
+          "playerId": null,
+          "prefecture": "三重県",
+          "tempId": "三重_三重県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 16,
+      "name": "つるぎ（徳島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "とわの森三愛_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高田商",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "高田商_奈良県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 20,
+      "name": "とわの森三愛（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "高田商_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "とわの森三愛",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "とわの森三愛_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "高田商（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "羽黒_山形県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "中京",
+          "playerId": null,
+          "prefecture": "岐阜県",
+          "tempId": "中京_岐阜県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 25,
+      "name": "羽黒（山形県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "中京_岐阜県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "羽黒",
+          "playerId": null,
+          "prefecture": "山形県",
+          "tempId": "羽黒_山形県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 30,
+      "name": "中京（岐阜県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "岡山理大附_岡山県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高崎商",
+          "playerId": null,
+          "prefecture": "群馬県",
+          "tempId": "高崎商_群馬県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 31,
+      "name": "岡山理大附（岡山県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "高崎商_群馬県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "岡山理大附",
+          "playerId": null,
+          "prefecture": "岡山県",
+          "tempId": "岡山理大附_岡山県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 36,
+      "name": "高崎商（群馬県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "八戸工大一_青森県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "木更津総合",
+          "playerId": null,
+          "prefecture": "千葉県",
+          "tempId": "木更津総合_千葉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 39,
+      "name": "八戸工大一（青森県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "木更津総合_千葉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "八戸工大一",
+          "playerId": null,
+          "prefecture": "青森県",
+          "tempId": "八戸工大一_青森県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 42,
+      "name": "木更津総合（千葉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "市尼崎_兵庫県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尽誠学園",
+          "playerId": null,
+          "prefecture": "香川県",
+          "tempId": "尽誠学園_香川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 43,
+      "name": "市尼崎（兵庫県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "尽誠学園_香川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "市尼崎",
+          "playerId": null,
+          "prefecture": "兵庫県",
+          "tempId": "市尼崎_兵庫県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 48,
+      "name": "尽誠学園（香川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "東北_宮城県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "都城商",
+          "playerId": null,
+          "prefecture": "宮崎県",
+          "tempId": "都城商_宮崎県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "東北（宮城県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "都城商_宮崎県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東北",
+          "playerId": null,
+          "prefecture": "宮城県",
+          "tempId": "東北_宮城県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 12,
+      "name": "都城商（宮崎県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "三重_三重県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高田商",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "高田商_奈良県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 13,
+      "name": "三重（三重県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "高田商_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重",
+          "playerId": null,
+          "prefecture": "三重県",
+          "tempId": "三重_三重県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "高田商（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "羽黒_山形県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "岡山理大附",
+          "playerId": null,
+          "prefecture": "岡山県",
+          "tempId": "岡山理大附_岡山県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 25,
+      "name": "羽黒（山形県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "岡山理大附_岡山県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "羽黒",
+          "playerId": null,
+          "prefecture": "山形県",
+          "tempId": "羽黒_山形県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 31,
+      "name": "岡山理大附（岡山県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "木更津総合_千葉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尽誠学園",
+          "playerId": null,
+          "prefecture": "香川県",
+          "tempId": "尽誠学園_香川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 42,
+      "name": "木更津総合（千葉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "尽誠学園_香川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "木更津総合",
+          "playerId": null,
+          "prefecture": "千葉県",
+          "tempId": "木更津総合_千葉県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 48,
+      "name": "尽誠学園（香川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "東北_宮城県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高田商",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "高田商_奈良県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "東北（宮城県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "高田商_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東北",
+          "playerId": null,
+          "prefecture": "宮城県",
+          "tempId": "東北_宮城県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "高田商（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "岡山理大附_岡山県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尽誠学園",
+          "playerId": null,
+          "prefecture": "香川県",
+          "tempId": "尽誠学園_香川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 31,
+      "name": "岡山理大附（岡山県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "尽誠学園_香川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "岡山理大附",
+          "playerId": null,
+          "prefecture": "岡山県",
+          "tempId": "岡山理大附_岡山県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 48,
+      "name": "尽誠学園（香川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "高田商_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "尽誠学園",
+          "playerId": null,
+          "prefecture": "香川県",
+          "tempId": "尽誠学園_香川県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 24,
+      "name": "高田商（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "尽誠学園_香川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高田商",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "高田商_奈良県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 48,
+      "name": "尽誠学園（香川県）",
+      "category": "team",
+      "retired": false
+    }
+  ]
+}
