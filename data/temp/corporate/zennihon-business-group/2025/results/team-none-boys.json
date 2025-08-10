@@ -1,0 +1,5442 @@
+{
+  "highlight": "NTT西日本が優勝。同大会4連覇となりました。明電舎は福井県庁を破るなど、準優勝と大躍進を遂げました。",
+  "status": "completed",
+  "scheduledDate": "(7/26)",
+  "startDate": "2025-07-26",
+  "endDate": "2025-07-27",
+  "location": "青森県",
+  "results": [
+    {
+      "team": "NTT西日本",
+      "prefecture": "広島",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "明電舎Ａ",
+      "prefecture": "静岡",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "ワタキューセイモア",
+      "prefecture": "京都",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "福井県庁",
+      "prefecture": "福井",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "ベスト",
+      "prefecture": "東京",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "ヨシザワＡ",
+      "prefecture": "三重",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "ヨネックス",
+      "prefecture": "東京",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "川口市役所",
+      "prefecture": "埼玉",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "team": "八王子市役所_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ｂ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ｂ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 2,
+      "name": "八王子市役所（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "明電舎Ｂ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "八王子市役所",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "八王子市役所_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 3,
+      "name": "明電舎Ｂ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "Astemo_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JAさが",
+          "playerId": null,
+          "prefecture": "佐賀",
+          "tempId": "JAさが_佐賀"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 4,
+      "name": "Astemo（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "JAさが_佐賀",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Astemo",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "Astemo_群馬"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 5,
+      "name": "JAさが（佐賀）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "姫路市役所_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "不二越",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "不二越_富山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 6,
+      "name": "姫路市役所（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "不二越_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "姫路市役所",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "姫路市役所_兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 7,
+      "name": "不二越（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東ソー四日市_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "中国電力島根",
+          "playerId": null,
+          "prefecture": "島根",
+          "tempId": "中国電力島根_島根"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 8,
+      "name": "東ソー四日市（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "中国電力島根_島根",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー四日市",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "東ソー四日市_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 9,
+      "name": "中国電力島根（島根）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "藤沢市役所_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大神子病院",
+          "playerId": null,
+          "prefecture": "徳島",
+          "tempId": "大神子病院_徳島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 10,
+      "name": "藤沢市役所（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大神子病院_徳島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "藤沢市役所",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "藤沢市役所_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "大神子病院（徳島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "甲府市役所_山梨",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "京都第二赤十字病院",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "京都第二赤十字病院_京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 12,
+      "name": "甲府市役所（山梨）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "京都第二赤十字病院_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "甲府市役所",
+          "playerId": null,
+          "prefecture": "山梨",
+          "tempId": "甲府市役所_山梨"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 13,
+      "name": "京都第二赤十字病院（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "盛岡市役所_岩手",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムA",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムA_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 14,
+      "name": "盛岡市役所（岩手）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "アキムA_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "盛岡市役所",
+          "playerId": null,
+          "prefecture": "岩手",
+          "tempId": "盛岡市役所_岩手"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 15,
+      "name": "アキムA（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "UBEB_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本原燃",
+          "playerId": null,
+          "prefecture": "青森",
+          "tempId": "日本原燃_青森"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 17,
+      "name": "UBEB（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "日本原燃_青森",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "UBEB",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "UBEB_山口"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 18,
+      "name": "日本原燃（青森）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ベスト_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三菱電機中津川",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "三菱電機中津川_岐阜"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "ベスト（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "三菱電機中津川_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ベスト",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 20,
+      "name": "三菱電機中津川（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "NTT関西_大阪",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "能登町役場",
+          "playerId": null,
+          "prefecture": "石川",
+          "tempId": "能登町役場_石川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 21,
+      "name": "NTT関西（大阪）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "能登町役場_石川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT関西",
+          "playerId": null,
+          "prefecture": "大阪",
+          "tempId": "NTT関西_大阪"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 22,
+      "name": "能登町役場（石川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "クラレ岡山_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松戸市役所",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "松戸市役所_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "クラレ岡山（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "松戸市役所_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "クラレ岡山",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "クラレ岡山_岡山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 24,
+      "name": "松戸市役所（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "伊豆技研工業上田_長野",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "TD福島",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "TD福島_福島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "伊豆技研工業上田（長野）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "TD福島_福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "伊豆技研工業上田",
+          "playerId": null,
+          "prefecture": "長野",
+          "tempId": "伊豆技研工業上田_長野"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 26,
+      "name": "TD福島（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "デンソーテン_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "平塚市役所",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "平塚市役所_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 27,
+      "name": "デンソーテン（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "平塚市役所_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "デンソーテン",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "デンソーテン_兵庫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 28,
+      "name": "平塚市役所（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ＪＲ東日本東京_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "K'sグループ",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "K'sグループ_岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 31,
+      "name": "ＪＲ東日本東京（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "K'sグループ_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＪＲ東日本東京",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ＪＲ東日本東京_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 32,
+      "name": "K'sグループ（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "日本製鉄大分B_大分",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東北電力宮城",
+          "playerId": null,
+          "prefecture": "宮城",
+          "tempId": "東北電力宮城_宮城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 33,
+      "name": "日本製鉄大分B（大分）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東北電力宮城_宮城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鉄大分B",
+          "playerId": null,
+          "prefecture": "大分",
+          "tempId": "日本製鉄大分B_大分"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 34,
+      "name": "東北電力宮城（宮城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "北陸電力福井A_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トヨタ自動車",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "トヨタ自動車_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 35,
+      "name": "北陸電力福井A（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "トヨタ自動車_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "北陸電力福井A",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "北陸電力福井A_福井"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 36,
+      "name": "トヨタ自動車（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "厚木市役所_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松本市役所A",
+          "playerId": null,
+          "prefecture": "長野",
+          "tempId": "松本市役所A_長野"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "厚木市役所（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "松本市役所A_長野",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "厚木市役所",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "厚木市役所_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 38,
+      "name": "松本市役所A（長野）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "JR北海道_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "医療法人社団心",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "医療法人社団心_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 39,
+      "name": "JR北海道（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "医療法人社団心_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JR北海道",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "JR北海道_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 40,
+      "name": "医療法人社団心（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "日本製鋼所_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "MDS",
+          "playerId": null,
+          "prefecture": "秋田",
+          "tempId": "MDS_秋田"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 41,
+      "name": "日本製鋼所（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "MDS_秋田",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鋼所",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "日本製鋼所_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 42,
+      "name": "MDS（秋田）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "高崎市役所_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川崎重工業明石",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "川崎重工業明石_兵庫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 43,
+      "name": "高崎市役所（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "川崎重工業明石_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "高崎市役所",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "高崎市役所_群馬"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 44,
+      "name": "川崎重工業明石（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東ソー南陽_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "中部電力愛知B",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "中部電力愛知B_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 45,
+      "name": "東ソー南陽（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "中部電力愛知B_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー南陽",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "東ソー南陽_山口"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 46,
+      "name": "中部電力愛知B（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東京ガスＢ_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トヨタ自動車九州",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "トヨタ自動車九州_福岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 47,
+      "name": "東京ガスＢ（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "トヨタ自動車九州_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東京ガスＢ",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "東京ガスＢ_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 48,
+      "name": "トヨタ自動車九州（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ＪＲ東日本盛岡_岩手",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Honda栃木",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "Honda栃木_栃木"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 49,
+      "name": "ＪＲ東日本盛岡（岩手）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "Honda栃木_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＪＲ東日本盛岡",
+          "playerId": null,
+          "prefecture": "岩手",
+          "tempId": "ＪＲ東日本盛岡_岩手"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 50,
+      "name": "Honda栃木（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "金沢市役所_石川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本信号",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "日本信号_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 51,
+      "name": "金沢市役所（石川）",
+      "category": "team",
+      "retired": true
+    },
+    {
+      "round": "1回戦",
+      "team": "日本信号_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "金沢市役所",
+          "playerId": null,
+          "prefecture": "石川",
+          "tempId": "金沢市役所_石川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 52,
+      "name": "日本信号（埼玉）",
+      "category": "team",
+      "retired": true
+    },
+    {
+      "round": "1回戦",
+      "team": "四国ガス産業_愛媛",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "クラレ新潟",
+          "playerId": null,
+          "prefecture": "新潟",
+          "tempId": "クラレ新潟_新潟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 53,
+      "name": "四国ガス産業（愛媛）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "クラレ新潟_新潟",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "四国ガス産業",
+          "playerId": null,
+          "prefecture": "愛媛",
+          "tempId": "四国ガス産業_愛媛"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 54,
+      "name": "クラレ新潟（新潟）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "住友ゴム工業_福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "茨城県庁",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "茨城県庁_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 55,
+      "name": "住友ゴム工業（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "茨城県庁_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "住友ゴム工業",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "住友ゴム工業_福島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 56,
+      "name": "茨城県庁（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大阪市役所_大阪",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東亜工機",
+          "playerId": null,
+          "prefecture": "佐賀",
+          "tempId": "東亜工機_佐賀"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 57,
+      "name": "大阪市役所（大阪）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東亜工機_佐賀",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大阪市役所",
+          "playerId": null,
+          "prefecture": "大阪",
+          "tempId": "大阪市役所_大阪"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 58,
+      "name": "東亜工機（佐賀）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "豊田自動織機_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "青森市役所",
+          "playerId": null,
+          "prefecture": "青森",
+          "tempId": "青森市役所_青森"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 61,
+      "name": "豊田自動織機（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "青森市役所_青森",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "豊田自動織機",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "豊田自動織機_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 62,
+      "name": "青森市役所（青森）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "四国電力_香川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT東日本東京",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "NTT東日本東京_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 63,
+      "name": "四国電力（香川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "NTT東日本東京_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "四国電力",
+          "playerId": null,
+          "prefecture": "香川",
+          "tempId": "四国電力_香川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 64,
+      "name": "NTT東日本東京（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "日本製鉄大分A_大分",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "京都市役所",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "京都市役所_京都"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 65,
+      "name": "日本製鉄大分A（大分）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "京都市役所_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鉄大分A",
+          "playerId": null,
+          "prefecture": "大分",
+          "tempId": "日本製鉄大分A_大分"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 66,
+      "name": "京都市役所（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "UBEA_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大垣市役所",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "大垣市役所_岐阜"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 67,
+      "name": "UBEA（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大垣市役所_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "UBEA",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "UBEA_山口"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 68,
+      "name": "大垣市役所（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ヨネックス新潟_新潟",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "プロテリアル",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "プロテリアル_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 69,
+      "name": "ヨネックス新潟（新潟）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "プロテリアル_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨネックス新潟",
+          "playerId": null,
+          "prefecture": "新潟",
+          "tempId": "ヨネックス新潟_新潟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 70,
+      "name": "プロテリアル（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東北電力岩手_岩手",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTN岡山",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "NTN岡山_岡山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 71,
+      "name": "東北電力岩手（岩手）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "NTN岡山_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東北電力岩手",
+          "playerId": null,
+          "prefecture": "岩手",
+          "tempId": "東北電力岩手_岩手"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 72,
+      "name": "NTN岡山（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "浜松ホトニクス_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三菱重工相模原",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "三菱重工相模原_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 73,
+      "name": "浜松ホトニクス（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "三菱重工相模原_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "浜松ホトニクス",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "浜松ホトニクス_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 74,
+      "name": "三菱重工相模原（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ノアインドアステージ_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "富山県庁",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "富山県庁_富山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 75,
+      "name": "ノアインドアステージ（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "富山県庁_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ノアインドアステージ",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "ノアインドアステージ_兵庫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 76,
+      "name": "富山県庁（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "住友化学愛媛_愛媛",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムB",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムB_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 77,
+      "name": "住友化学愛媛（愛媛）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "アキムB_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "住友化学愛媛",
+          "playerId": null,
+          "prefecture": "愛媛",
+          "tempId": "住友化学愛媛_愛媛"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 78,
+      "name": "アキムB（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "コマツ小山_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "宮島醤油",
+          "playerId": null,
+          "prefecture": "佐賀",
+          "tempId": "宮島醤油_佐賀"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 79,
+      "name": "コマツ小山（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "宮島醤油_佐賀",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "コマツ小山",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "コマツ小山_栃木"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 80,
+      "name": "宮島醤油（佐賀）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "東邦ガスB_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "CROSSTYHOLDINGS",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "CROSSTYHOLDINGS_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 81,
+      "name": "東邦ガスB（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "CROSSTYHOLDINGS_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東邦ガスB",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "東邦ガスB_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 82,
+      "name": "CROSSTYHOLDINGS（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "マツダ_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松本市役所B",
+          "playerId": null,
+          "prefecture": "長野",
+          "tempId": "松本市役所B_長野"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 83,
+      "name": "マツダ（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "松本市役所B_長野",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "マツダ",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "マツダ_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 84,
+      "name": "松本市役所B（長野）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "市川市役所_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トヨタ自動車東日本",
+          "playerId": null,
+          "prefecture": "宮城",
+          "tempId": "トヨタ自動車東日本_宮城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 85,
+      "name": "市川市役所（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "トヨタ自動車東日本_宮城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "市川市役所",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "市川市役所_千葉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 86,
+      "name": "トヨタ自動車東日本（宮城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大阪ガス_大阪",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Panasonic",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "Panasonic_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 87,
+      "name": "大阪ガス（大阪）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "Panasonic_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大阪ガス",
+          "playerId": null,
+          "prefecture": "大阪",
+          "tempId": "大阪ガス_大阪"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 88,
+      "name": "Panasonic（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "FUJITSU_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＪＲ東日本仙台",
+          "playerId": null,
+          "prefecture": "宮城",
+          "tempId": "ＪＲ東日本仙台_宮城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 91,
+      "name": "FUJITSU（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ＪＲ東日本仙台_宮城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "FUJITSU",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "FUJITSU_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 92,
+      "name": "ＪＲ東日本仙台（宮城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "新潟市役所_新潟",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＯＫＩ",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "ＯＫＩ_群馬"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 93,
+      "name": "新潟市役所（新潟）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ＯＫＩ_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "新潟市役所",
+          "playerId": null,
+          "prefecture": "新潟",
+          "tempId": "新潟市役所_新潟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 94,
+      "name": "ＯＫＩ（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "JX金属製錬佐賀関_大分",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "太平洋工業",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "太平洋工業_岐阜"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 95,
+      "name": "JX金属製錬佐賀関（大分）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "太平洋工業_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JX金属製錬佐賀関",
+          "playerId": null,
+          "prefecture": "大分",
+          "tempId": "JX金属製錬佐賀関_大分"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 96,
+      "name": "太平洋工業（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ＹＫＫ_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ルーセント大阪",
+          "playerId": null,
+          "prefecture": "大阪",
+          "tempId": "ルーセント大阪_大阪"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 97,
+      "name": "ＹＫＫ（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ルーセント大阪_大阪",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＹＫＫ",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "ＹＫＫ_富山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 98,
+      "name": "ルーセント大阪（大阪）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "北海道庁_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JX金属倉見",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "JX金属倉見_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 99,
+      "name": "北海道庁（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "JX金属倉見_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "北海道庁",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "北海道庁_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 100,
+      "name": "JX金属倉見（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "トクヤマ_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "二本松市役所",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "二本松市役所_福島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 101,
+      "name": "トクヤマ（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "二本松市役所_福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トクヤマ",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "トクヤマ_山口"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 102,
+      "name": "二本松市役所（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "中部電力愛知A_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日立水戸",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "日立水戸_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 104,
+      "name": "中部電力愛知A（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "日立水戸_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "中部電力愛知A",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "中部電力愛知A_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 105,
+      "name": "日立水戸（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "KAO_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "むつ市役所",
+          "playerId": null,
+          "prefecture": "青森",
+          "tempId": "むつ市役所_青森"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 106,
+      "name": "KAO（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "むつ市役所_青森",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "KAO",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "KAO_和歌山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 107,
+      "name": "むつ市役所（青森）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ヨシザワＢ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "新居浜市役所",
+          "playerId": null,
+          "prefecture": "愛媛",
+          "tempId": "新居浜市役所_愛媛"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 108,
+      "name": "ヨシザワＢ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "新居浜市役所_愛媛",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＢ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＢ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 109,
+      "name": "新居浜市役所（愛媛）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "コマツ粟津工場_石川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川口市役所",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "川口市役所_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 110,
+      "name": "コマツ粟津工場（石川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "川口市役所_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "コマツ粟津工場",
+          "playerId": null,
+          "prefecture": "石川",
+          "tempId": "コマツ粟津工場_石川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 111,
+      "name": "川口市役所（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "TOTO_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "PG",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "PG_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 112,
+      "name": "TOTO（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "PG_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "TOTO",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "TOTO_福岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 113,
+      "name": "PG（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "JFE西日本福山_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大仙市役所",
+          "playerId": null,
+          "prefecture": "秋田",
+          "tempId": "大仙市役所_秋田"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 114,
+      "name": "JFE西日本福山（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大仙市役所_秋田",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JFE西日本福山",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "JFE西日本福山_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 115,
+      "name": "大仙市役所（秋田）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "北陸電力福井B_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "関電兵庫",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "関電兵庫_兵庫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 116,
+      "name": "北陸電力福井B（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "関電兵庫_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "北陸電力福井B",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "北陸電力福井B_福井"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 117,
+      "name": "関電兵庫（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ｂ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ｂ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "明電舎Ｂ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 3,
+      "name": "明電舎Ｂ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "Astemo_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "不二越",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "不二越_富山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 4,
+      "name": "Astemo（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "不二越_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Astemo",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "Astemo_群馬"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 7,
+      "name": "不二越（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東ソー四日市_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大神子病院",
+          "playerId": null,
+          "prefecture": "徳島",
+          "tempId": "大神子病院_徳島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 8,
+      "name": "東ソー四日市（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "大神子病院_徳島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー四日市",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "東ソー四日市_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 11,
+      "name": "大神子病院（徳島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "京都第二赤十字病院_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムA",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムA_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 13,
+      "name": "京都第二赤十字病院（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "アキムA_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "京都第二赤十字病院",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "京都第二赤十字病院_京都"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 15,
+      "name": "アキムA（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "十八親和銀行_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "UBEB",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "UBEB_山口"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "十八親和銀行（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "UBEB_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "十八親和銀行",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "十八親和銀行_長崎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 17,
+      "name": "UBEB（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ベスト_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "能登町役場",
+          "playerId": null,
+          "prefecture": "石川",
+          "tempId": "能登町役場_石川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "ベスト（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "能登町役場_石川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ベスト",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 22,
+      "name": "能登町役場（石川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "クラレ岡山_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "伊豆技研工業上田",
+          "playerId": null,
+          "prefecture": "長野",
+          "tempId": "伊豆技研工業上田_長野"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "クラレ岡山（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "伊豆技研工業上田_長野",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "クラレ岡山",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "クラレ岡山_岡山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 25,
+      "name": "伊豆技研工業上田（長野）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "デンソーテン_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東邦ガスA",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "東邦ガスA_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "デンソーテン（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東邦ガスA_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "デンソーテン",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "デンソーテン_兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 29,
+      "name": "東邦ガスA（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＪＲ東日本東京",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ＪＲ東日本東京_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ＪＲ東日本東京_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 31,
+      "name": "ＪＲ東日本東京（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "日本製鉄大分B_大分",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トヨタ自動車",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "トヨタ自動車_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 33,
+      "name": "日本製鉄大分B（大分）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "トヨタ自動車_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鉄大分B",
+          "playerId": null,
+          "prefecture": "大分",
+          "tempId": "日本製鉄大分B_大分"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 36,
+      "name": "トヨタ自動車（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "厚木市役所_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "医療法人社団心",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "医療法人社団心_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "厚木市役所（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "医療法人社団心_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "厚木市役所",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "厚木市役所_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 40,
+      "name": "医療法人社団心（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "日本製鋼所_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川崎重工業明石",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "川崎重工業明石_兵庫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 41,
+      "name": "日本製鋼所（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "川崎重工業明石_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鋼所",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "日本製鋼所_広島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 44,
+      "name": "川崎重工業明石（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東ソー南陽_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東京ガスＢ",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "東京ガスＢ_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 45,
+      "name": "東ソー南陽（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東京ガスＢ_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー南陽",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "東ソー南陽_山口"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 47,
+      "name": "東京ガスＢ（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ＪＲ東日本盛岡_岩手",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本信号",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "日本信号_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 49,
+      "name": "ＪＲ東日本盛岡（岩手）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "日本信号_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＪＲ東日本盛岡",
+          "playerId": null,
+          "prefecture": "岩手",
+          "tempId": "ＪＲ東日本盛岡_岩手"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 52,
+      "name": "日本信号（埼玉）",
+      "category": "team",
+      "retired": true
+    },
+    {
+      "round": "2回戦",
+      "team": "四国ガス産業_愛媛",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "住友ゴム工業",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "住友ゴム工業_福島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 53,
+      "name": "四国ガス産業（愛媛）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "住友ゴム工業_福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "四国ガス産業",
+          "playerId": null,
+          "prefecture": "愛媛",
+          "tempId": "四国ガス産業_愛媛"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 55,
+      "name": "住友ゴム工業（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東亜工機_佐賀",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＡ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＡ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 58,
+      "name": "東亜工機（佐賀）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ヨシザワＡ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東亜工機",
+          "playerId": null,
+          "prefecture": "佐賀",
+          "tempId": "東亜工機_佐賀"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 59,
+      "name": "ヨシザワＡ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "豊田自動織機",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "豊田自動織機_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "豊田自動織機_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 61,
+      "name": "豊田自動織機（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "NTT東日本東京_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鉄大分A",
+          "playerId": null,
+          "prefecture": "大分",
+          "tempId": "日本製鉄大分A_大分"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 64,
+      "name": "NTT東日本東京（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "日本製鉄大分A_大分",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT東日本東京",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "NTT東日本東京_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 65,
+      "name": "日本製鉄大分A（大分）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "UBEA_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "プロテリアル",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "プロテリアル_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 67,
+      "name": "UBEA（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "プロテリアル_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "UBEA",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "UBEA_山口"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 70,
+      "name": "プロテリアル（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "NTN岡山_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "浜松ホトニクス",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "浜松ホトニクス_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 72,
+      "name": "NTN岡山（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "浜松ホトニクス_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTN岡山",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "NTN岡山_岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 73,
+      "name": "浜松ホトニクス（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ノアインドアステージ_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムB",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムB_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 75,
+      "name": "ノアインドアステージ（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "アキムB_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ノアインドアステージ",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "ノアインドアステージ_兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 78,
+      "name": "アキムB（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "コマツ小山_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東邦ガスB",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "東邦ガスB_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 79,
+      "name": "コマツ小山（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東邦ガスB_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "コマツ小山",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "コマツ小山_栃木"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 81,
+      "name": "東邦ガスB（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "マツダ_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "市川市役所",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "市川市役所_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 83,
+      "name": "マツダ（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "市川市役所_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "マツダ",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "マツダ_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 85,
+      "name": "市川市役所（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "Panasonic_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨネックス",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ヨネックス_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 88,
+      "name": "Panasonic（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ヨネックス_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Panasonic",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "Panasonic_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 89,
+      "name": "ヨネックス（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ＥＮＥＯＳ_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "FUJITSU",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "FUJITSU_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 90,
+      "name": "ＥＮＥＯＳ（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "FUJITSU_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＥＮＥＯＳ",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "ＥＮＥＯＳ_岡山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 91,
+      "name": "FUJITSU（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ＯＫＩ_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "太平洋工業",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "太平洋工業_岐阜"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 94,
+      "name": "ＯＫＩ（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "太平洋工業_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＯＫＩ",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "ＯＫＩ_群馬"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 96,
+      "name": "太平洋工業（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ＹＫＫ_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JX金属倉見",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "JX金属倉見_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 97,
+      "name": "ＹＫＫ（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "JX金属倉見_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＹＫＫ",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "ＹＫＫ_富山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 100,
+      "name": "JX金属倉見（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "トクヤマ_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 101,
+      "name": "トクヤマ（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トクヤマ",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "トクヤマ_山口"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "中部電力愛知A_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "KAO",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "KAO_和歌山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 104,
+      "name": "中部電力愛知A（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "KAO_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "中部電力愛知A",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "中部電力愛知A_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 106,
+      "name": "KAO（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ヨシザワＢ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川口市役所",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "川口市役所_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 108,
+      "name": "ヨシザワＢ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "川口市役所_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＢ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＢ_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 111,
+      "name": "川口市役所（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "TOTO_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JFE西日本福山",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "JFE西日本福山_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 112,
+      "name": "TOTO（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "JFE西日本福山_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "TOTO",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "TOTO_福岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 114,
+      "name": "JFE西日本福山（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "関電兵庫_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東京ガスＡ",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "東京ガスＡ_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 117,
+      "name": "関電兵庫（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "東京ガスＡ_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "関電兵庫",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "関電兵庫_兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 118,
+      "name": "東京ガスＡ（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Astemo",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "Astemo_群馬"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "Astemo_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "Astemo（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "東ソー四日市_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムA",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムA_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 8,
+      "name": "東ソー四日市（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "アキムA_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー四日市",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "東ソー四日市_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 15,
+      "name": "アキムA（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "十八親和銀行_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ベスト",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 16,
+      "name": "十八親和銀行（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "ベスト_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "十八親和銀行",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "十八親和銀行_長崎"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "ベスト（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "クラレ岡山_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東邦ガスA",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "東邦ガスA_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 23,
+      "name": "クラレ岡山（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "東邦ガスA_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "クラレ岡山",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "クラレ岡山_岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 29,
+      "name": "東邦ガスA（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "トヨタ自動車",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "トヨタ自動車_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "トヨタ自動車_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 36,
+      "name": "トヨタ自動車（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "厚木市役所_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川崎重工業明石",
+          "playerId": null,
+          "prefecture": "兵庫",
+          "tempId": "川崎重工業明石_兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 37,
+      "name": "厚木市役所（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "川崎重工業明石_兵庫",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "厚木市役所",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "厚木市役所_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 44,
+      "name": "川崎重工業明石（兵庫）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "東ソー南陽_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本信号",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "日本信号_埼玉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 45,
+      "name": "東ソー南陽（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "日本信号_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー南陽",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "東ソー南陽_山口"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 52,
+      "name": "日本信号（埼玉）",
+      "category": "team",
+      "retired": true
+    },
+    {
+      "round": "3回戦",
+      "team": "四国ガス産業_愛媛",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＡ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＡ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 53,
+      "name": "四国ガス産業（愛媛）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "ヨシザワＡ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "四国ガス産業",
+          "playerId": null,
+          "prefecture": "愛媛",
+          "tempId": "四国ガス産業_愛媛"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 59,
+      "name": "ヨシザワＡ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日本製鉄大分A",
+          "playerId": null,
+          "prefecture": "大分",
+          "tempId": "日本製鉄大分A_大分"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "日本製鉄大分A_大分",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 65,
+      "name": "日本製鉄大分A（大分）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "プロテリアル_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "浜松ホトニクス",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "浜松ホトニクス_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 70,
+      "name": "プロテリアル（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "浜松ホトニクス_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "プロテリアル",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "プロテリアル_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 73,
+      "name": "浜松ホトニクス（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "アキムB_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東邦ガスB",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "東邦ガスB_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 78,
+      "name": "アキムB（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "東邦ガスB_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムB",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムB_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 81,
+      "name": "東邦ガスB（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "マツダ_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨネックス",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ヨネックス_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 83,
+      "name": "マツダ（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "ヨネックス_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "マツダ",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "マツダ_広島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 89,
+      "name": "ヨネックス（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "ＥＮＥＯＳ_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "太平洋工業",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "太平洋工業_岐阜"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 90,
+      "name": "ＥＮＥＯＳ（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "太平洋工業_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＥＮＥＯＳ",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "ＥＮＥＯＳ_岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 96,
+      "name": "太平洋工業（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "ＹＫＫ_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 97,
+      "name": "ＹＫＫ（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＹＫＫ",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "ＹＫＫ_富山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "KAO_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川口市役所",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "川口市役所_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 106,
+      "name": "KAO（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "川口市役所_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "KAO",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "KAO_和歌山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 111,
+      "name": "川口市役所（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "JFE西日本福山_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東京ガスＡ",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "東京ガスＡ_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 114,
+      "name": "JFE西日本福山（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "team": "東京ガスＡ_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "JFE西日本福山",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "JFE西日本福山_広島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 118,
+      "name": "東京ガスＡ（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムA",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムA_埼玉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "アキムA_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 15,
+      "name": "アキムA（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "ベスト_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東邦ガスA",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "東邦ガスA_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 19,
+      "name": "ベスト（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "東邦ガスA_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ベスト",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 29,
+      "name": "東邦ガスA（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "厚木市役所",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "厚木市役所_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "厚木市役所_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 37,
+      "name": "厚木市役所（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "東ソー南陽_山口",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＡ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＡ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 45,
+      "name": "東ソー南陽（山口）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "ヨシザワＡ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東ソー南陽",
+          "playerId": null,
+          "prefecture": "山口",
+          "tempId": "東ソー南陽_山口"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 59,
+      "name": "ヨシザワＡ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "プロテリアル",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "プロテリアル_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "プロテリアル_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 70,
+      "name": "プロテリアル（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "アキムB_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨネックス",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ヨネックス_東京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 78,
+      "name": "アキムB（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "ヨネックス_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "アキムB",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "アキムB_埼玉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 89,
+      "name": "ヨネックス（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "太平洋工業_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 96,
+      "name": "太平洋工業（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "太平洋工業",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "太平洋工業_岐阜"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "川口市役所_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "東京ガスＡ",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "東京ガスＡ_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 111,
+      "name": "川口市役所（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "team": "東京ガスＡ_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川口市役所",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "川口市役所_埼玉"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 118,
+      "name": "東京ガスＡ（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ベスト",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ベスト_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ベスト_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 19,
+      "name": "ベスト（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨシザワＡ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "ヨシザワＡ_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ヨシザワＡ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 59,
+      "name": "ヨシザワＡ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ヨネックス",
+          "playerId": null,
+          "prefecture": "東京",
+          "tempId": "ヨネックス_東京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ヨネックス_東京",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 89,
+      "name": "ヨネックス（東京）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川口市役所",
+          "playerId": null,
+          "prefecture": "埼玉",
+          "tempId": "川口市役所_埼玉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "川口市役所_埼玉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 111,
+      "name": "川口市役所（埼玉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ワタキューセイモア",
+          "playerId": null,
+          "prefecture": "京都",
+          "tempId": "ワタキューセイモア_京都"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "ワタキューセイモア_京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 30,
+      "name": "ワタキューセイモア（京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "福井県庁_福井",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 60,
+      "name": "福井県庁（福井）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "福井県庁",
+          "playerId": null,
+          "prefecture": "福井",
+          "tempId": "福井県庁_福井"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "NTT西日本_広島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明電舎Ａ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "明電舎Ａ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "NTT西日本（広島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "明電舎Ａ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NTT西日本",
+          "playerId": null,
+          "prefecture": "広島",
+          "tempId": "NTT西日本_広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 103,
+      "name": "明電舎Ａ（静岡）",
+      "category": "team",
+      "retired": false
+    }
+  ]
+}

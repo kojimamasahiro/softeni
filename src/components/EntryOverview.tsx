@@ -14,6 +14,7 @@ type EntryInfo = {
 
 interface Props {
   entries: Record<string, EntryInfo[]>; // カテゴリは string
+  fixCategory?: string; // オプションで特定のカテゴリを表示するため
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -41,14 +42,15 @@ function getStats(entryList: EntryInfo[]) {
   };
 }
 
-export default function EntryOverview({ entries }: Props) {
+export default function EntryOverview({ entries, fixCategory }: Props) {
   if (!entries || Object.keys(entries).length === 0) return null;
 
   return (
     <section className="space-y-8 my-6">
       <h2 className="text-xl font-bold mt-10 mb-2">エントリー一覧</h2>
-      {Object.entries(entries).map(([category, entryList]) => {
+      {Object.entries(entries).map(([tempCategory, entryList]) => {
         if (!entryList || entryList.length === 0) return null;
+        const category = fixCategory || tempCategory;
 
         const stats = getStats(entryList);
         const sortedTeams = Object.entries(stats.teamMap).sort(

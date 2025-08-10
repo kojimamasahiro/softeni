@@ -195,7 +195,10 @@ export default function EntryDataPage({
         )}
 
         {gameCategory !== 'versus' && (
-          <EntryOverview entries={{ default: entries }} />
+          <EntryOverview
+            entries={{ default: entries }}
+            fixCategory={gameCategory}
+          />
         )}
 
         <div className="mt-6">
