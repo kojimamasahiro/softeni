@@ -302,7 +302,7 @@ export default function TournamentYearResultPage({
         title={`${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
         description={`${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
         url={pageUrl}
-        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`}
+        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}`}
         twitterCardType="summary_large_image"
         type="article"
       />
