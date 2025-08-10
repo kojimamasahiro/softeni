@@ -1,0 +1,3344 @@
+{
+  "highlight": "",
+  "status": "completed",
+  "scheduledDate": "(6/14)",
+  "startDate": "2023-06-14",
+  "endDate": "2023-06-18",
+  "location": "北海道",
+  "results": [
+    {
+      "playerIds": [
+        "野本_凌生_尽誠学園"
+      ],
+      "result": "優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "result": "準優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "坂口_生磨_尽誠学園"
+      ],
+      "result": "ベスト4",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "白井_大希_鹿児島商"
+      ],
+      "result": "ベスト4",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "野中_翔太_ルーテル学院"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "塚本_星弥_岡崎城西"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "米川_雅翔_尽誠学園"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "樋口_拓海_弘前実"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "大曲_李空_尾道"
+      ],
+      "opponents": [
+        {
+          "lastName": "根田",
+          "firstName": "大地",
+          "team": "北科大高",
+          "originalTeam": "北海道科学大学高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "根田_大地_北科大高"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "大曲 李空（尾道）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "根田_大地_北科大高"
+      ],
+      "opponents": [
+        {
+          "lastName": "大曲",
+          "firstName": "李空",
+          "team": "尾道",
+          "originalTeam": "尾道高等学校",
+          "prefecture": "広島県",
+          "playerId": null,
+          "tempId": "大曲_李空_尾道"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "根田 大地（北科大高）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "吉川_恵大_米子松蔭"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "上宮",
+          "originalTeam": "上宮高等学校",
+          "prefecture": "大阪府",
+          "playerId": null,
+          "tempId": "清水_駿_上宮"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 3,
+      "name": "吉川 恵大（米子松蔭）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "清水_駿_上宮"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉川",
+          "firstName": "恵大",
+          "team": "米子松蔭",
+          "originalTeam": "米子松蔭高等学校",
+          "prefecture": "鳥取県",
+          "playerId": null,
+          "tempId": "吉川_恵大_米子松蔭"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 4,
+      "name": "清水 駿（上宮）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "坂口_生磨_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "安達",
+          "firstName": "諒大",
+          "team": "松江工",
+          "originalTeam": "島根県立松江工業高校",
+          "prefecture": "島根県",
+          "playerId": null,
+          "tempId": "安達_諒大_松江工"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 5,
+      "name": "坂口 生磨（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "安達_諒大_松江工"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "坂口_生磨_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "安達 諒大（松江工）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "稲丸_獅道_都城商"
+      ],
+      "opponents": [
+        {
+          "lastName": "工藤",
+          "firstName": "康治朗",
+          "team": "中京",
+          "originalTeam": "中京高校",
+          "prefecture": "岐阜県",
+          "playerId": null,
+          "tempId": "工藤_康治朗_中京"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 7,
+      "name": "稲丸 獅道（都城商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "工藤_康治朗_中京"
+      ],
+      "opponents": [
+        {
+          "lastName": "稲丸",
+          "firstName": "獅道",
+          "team": "都城商",
+          "originalTeam": "宮崎県立都城商業高等学校",
+          "prefecture": "宮崎県",
+          "playerId": null,
+          "tempId": "稲丸_獅道_都城商"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 8,
+      "name": "工藤 康治朗（中京）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "川原_和馬_旭川工"
+      ],
+      "opponents": [
+        {
+          "lastName": "足利",
+          "firstName": "颯太",
+          "team": "岡山理大附",
+          "originalTeam": "岡山理科大学附属高等学校",
+          "prefecture": "岡山県",
+          "playerId": null,
+          "tempId": "足利_颯太_岡山理大附"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 9,
+      "name": "川原 和馬（旭川工）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "足利_颯太_岡山理大附"
+      ],
+      "opponents": [
+        {
+          "lastName": "川原",
+          "firstName": "和馬",
+          "team": "旭川工",
+          "originalTeam": "北海道旭川工業高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "川原_和馬_旭川工"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 10,
+      "name": "足利 颯太（岡山理大附）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "野中_翔太_ルーテル学院"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉田",
+          "firstName": "陸人",
+          "team": "南陽工",
+          "originalTeam": "山口県立南陽工業高等学校",
+          "prefecture": "山口県",
+          "playerId": null,
+          "tempId": "吉田_陸人_南陽工"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "野中 翔太（ルーテル学院）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "吉田_陸人_南陽工"
+      ],
+      "opponents": [
+        {
+          "lastName": "野中",
+          "firstName": "翔太",
+          "team": "ルーテル学院",
+          "originalTeam": "ルーテル学院高等学校",
+          "prefecture": "熊本県",
+          "playerId": null,
+          "tempId": "野中_翔太_ルーテル学院"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 12,
+      "name": "吉田 陸人（南陽工）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "髙井_凌凱_つるぎ"
+      ],
+      "opponents": [
+        {
+          "lastName": "安達",
+          "firstName": "宣",
+          "team": "高田商",
+          "originalTeam": "大和高田市立高田商業高等学校",
+          "prefecture": "奈良県",
+          "playerId": null,
+          "tempId": "安達_宣_高田商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 13,
+      "name": "髙井 凌凱（つるぎ）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "安達_宣_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙井",
+          "firstName": "凌凱",
+          "team": "つるぎ",
+          "originalTeam": "徳島県立つるぎ高等学校",
+          "prefecture": "徳島県",
+          "playerId": null,
+          "tempId": "髙井_凌凱_つるぎ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 14,
+      "name": "安達 宣（高田商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "西川_陽都_高岡商"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩井",
+          "firstName": "亮樹",
+          "team": "神戸星城",
+          "originalTeam": "神戸星城高等学校",
+          "prefecture": "兵庫県",
+          "playerId": null,
+          "tempId": "岩井_亮樹_神戸星城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 15,
+      "name": "西川 陽都（高岡商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩井_亮樹_神戸星城"
+      ],
+      "opponents": [
+        {
+          "lastName": "西川",
+          "firstName": "陽都",
+          "team": "高岡商",
+          "originalTeam": "富山県立高岡商業高等学校",
+          "prefecture": "富山県",
+          "playerId": null,
+          "tempId": "西川_陽都_高岡商"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 16,
+      "name": "岩井 亮樹（神戸星城）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "小林_健太_OIDE長姫"
+      ],
+      "opponents": [
+        {
+          "lastName": "峯",
+          "firstName": "一誠",
+          "team": "宇都宮短大附",
+          "originalTeam": "宇都宮短期大学附属高等学校",
+          "prefecture": "栃木県",
+          "playerId": null,
+          "tempId": "峯_一誠_宇都宮短大附"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 17,
+      "name": "小林 健太（OIDE長姫）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "峯_一誠_宇都宮短大附"
+      ],
+      "opponents": [
+        {
+          "lastName": "小林",
+          "firstName": "健太",
+          "team": "OIDE長姫",
+          "originalTeam": "長野県飯田OIDE長姫高等学校",
+          "prefecture": "長野県",
+          "playerId": null,
+          "tempId": "小林_健太_OIDE長姫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "峯 一誠（宇都宮短大附）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "西_拓郎_北科大高"
+      ],
+      "opponents": [
+        {
+          "lastName": "村井",
+          "firstName": "晋之介",
+          "team": "立命館守山",
+          "originalTeam": "立命館守山高等学校",
+          "prefecture": "滋賀県",
+          "playerId": null,
+          "tempId": "村井_晋之介_立命館守山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 19,
+      "name": "西 拓郎（北科大高）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "村井_晋之介_立命館守山"
+      ],
+      "opponents": [
+        {
+          "lastName": "西",
+          "firstName": "拓郎",
+          "team": "北科大高",
+          "originalTeam": "北海道科学大学高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "西_拓郎_北科大高"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 20,
+      "name": "村井 晋之介（立命館守山）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "青山_倫大_富士宮北"
+      ],
+      "opponents": [
+        {
+          "lastName": "畠山",
+          "firstName": "颯太",
+          "team": "花輪",
+          "originalTeam": "秋田県立花輪高等学校",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "畠山_颯太_花輪"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 21,
+      "name": "青山 倫大（富士宮北）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "畠山_颯太_花輪"
+      ],
+      "opponents": [
+        {
+          "lastName": "青山",
+          "firstName": "倫大",
+          "team": "富士宮北",
+          "originalTeam": "静岡県立富士宮北高等学校",
+          "prefecture": "静岡県",
+          "playerId": null,
+          "tempId": "青山_倫大_富士宮北"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 22,
+      "name": "畠山 颯太（花輪）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "松場_淳生_和歌山北"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "星弥",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "塚本_星弥_岡崎城西"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 23,
+      "name": "松場 淳生（和歌山北）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "塚本_星弥_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "松場",
+          "firstName": "淳生",
+          "team": "和歌山北",
+          "originalTeam": "和歌山県立和歌山北高等学校",
+          "prefecture": "和歌山県",
+          "playerId": null,
+          "tempId": "松場_淳生_和歌山北"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 24,
+      "name": "塚本 星弥（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "長島_綾汰_松山"
+      ],
+      "opponents": [
+        {
+          "lastName": "前谷",
+          "firstName": "碧人",
+          "team": "北見北斗",
+          "originalTeam": "北海道北見北斗高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "前谷_碧人_北見北斗"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "長島 綾汰（松山）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "前谷_碧人_北見北斗"
+      ],
+      "opponents": [
+        {
+          "lastName": "長島",
+          "firstName": "綾汰",
+          "team": "松山",
+          "originalTeam": "埼玉県立松山高等学校",
+          "prefecture": "埼玉県",
+          "playerId": null,
+          "tempId": "長島_綾汰_松山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 26,
+      "name": "前谷 碧人（北見北斗）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "opponents": [
+        {
+          "lastName": "東",
+          "firstName": "脩蔵",
+          "team": "一関学院",
+          "originalTeam": "一関学院高等学校",
+          "prefecture": "岩手県",
+          "playerId": null,
+          "tempId": "東_脩蔵_一関学院"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "昼間 悠佑（木更津総合）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "東_脩蔵_一関学院"
+      ],
+      "opponents": [
+        {
+          "lastName": "昼間",
+          "firstName": "悠佑",
+          "team": "木更津総合",
+          "originalTeam": "木更津総合高等学校",
+          "prefecture": "千葉県",
+          "playerId": null,
+          "tempId": "昼間_悠佑_木更津総合"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 28,
+      "name": "東 脩蔵（一関学院）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "細川_大峨_那覇西"
+      ],
+      "opponents": [
+        {
+          "lastName": "谷口",
+          "firstName": "健斗",
+          "team": "霞ヶ浦",
+          "originalTeam": "霞ヶ浦高等学校",
+          "prefecture": "茨城県",
+          "playerId": null,
+          "tempId": "谷口_健斗_霞ヶ浦"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 29,
+      "name": "細川 大峨（那覇西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "谷口_健斗_霞ヶ浦"
+      ],
+      "opponents": [
+        {
+          "lastName": "細川",
+          "firstName": "大峨",
+          "team": "那覇西",
+          "originalTeam": "沖縄県立那覇西高等学校",
+          "prefecture": "沖縄県",
+          "playerId": null,
+          "tempId": "細川_大峨_那覇西"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 30,
+      "name": "谷口 健斗（霞ヶ浦）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "今井_奏良_金津"
+      ],
+      "opponents": [
+        {
+          "lastName": "毛利",
+          "firstName": "航太",
+          "team": "新田",
+          "originalTeam": "新田高等学校",
+          "prefecture": "愛媛県",
+          "playerId": null,
+          "tempId": "毛利_航太_新田"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 31,
+      "name": "今井 奏良（金津）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "毛利_航太_新田"
+      ],
+      "opponents": [
+        {
+          "lastName": "今井",
+          "firstName": "奏良",
+          "team": "金津",
+          "originalTeam": "福井県立金津高等学校",
+          "prefecture": "福井県",
+          "playerId": null,
+          "tempId": "今井_奏良_金津"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 32,
+      "name": "毛利 航太（新田）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "植田_璃音_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "山下",
+          "firstName": "凱空",
+          "team": "大牟田",
+          "originalTeam": "大牟田高等学校",
+          "prefecture": "福岡県",
+          "playerId": null,
+          "tempId": "山下_凱空_大牟田"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 33,
+      "name": "植田 璃音（高田商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "山下_凱空_大牟田"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "高田商",
+          "originalTeam": "大和高田市立高田商業高等学校",
+          "prefecture": "奈良県",
+          "playerId": null,
+          "tempId": "植田_璃音_高田商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 34,
+      "name": "山下 凱空（大牟田）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "青木_真尋_秦野"
+      ],
+      "opponents": [
+        {
+          "lastName": "浅見",
+          "firstName": "竣一朗",
+          "team": "東北",
+          "originalTeam": "東北高等学校",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "浅見_竣一朗_東北"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 35,
+      "name": "青木 真尋（秦野）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "浅見_竣一朗_東北"
+      ],
+      "opponents": [
+        {
+          "lastName": "青木",
+          "firstName": "真尋",
+          "team": "秦野",
+          "originalTeam": "神奈川県立秦野高等学校",
+          "prefecture": "神奈川県",
+          "playerId": null,
+          "tempId": "青木_真尋_秦野"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 36,
+      "name": "浅見 竣一朗（東北）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "小泉_瑠唯_岡山理大附"
+      ],
+      "opponents": [
+        {
+          "lastName": "西",
+          "firstName": "健太",
+          "team": "苫小牧工",
+          "originalTeam": "北海道苫小牧工業高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "西_健太_苫小牧工"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "小泉 瑠唯（岡山理大附）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "西_健太_苫小牧工"
+      ],
+      "opponents": [
+        {
+          "lastName": "小泉",
+          "firstName": "瑠唯",
+          "team": "岡山理大附",
+          "originalTeam": "岡山理科大学附属高等学校",
+          "prefecture": "岡山県",
+          "playerId": null,
+          "tempId": "小泉_瑠唯_岡山理大附"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 38,
+      "name": "西 健太（苫小牧工）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "青木_優河_新潟産大附"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "米川_雅翔_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 39,
+      "name": "青木 優河（新潟産大附）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "米川_雅翔_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "青木",
+          "firstName": "優河",
+          "team": "新潟産大附",
+          "originalTeam": "新潟産業大学附属高等学校",
+          "prefecture": "新潟県",
+          "playerId": null,
+          "tempId": "青木_優河_新潟産大附"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 40,
+      "name": "米川 雅翔（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "板倉_豪_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "原田",
+          "firstName": "柊",
+          "team": "大村工",
+          "originalTeam": "長崎県立大村工業高等学校",
+          "prefecture": "長崎県",
+          "playerId": null,
+          "tempId": "原田_柊_大村工"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 41,
+      "name": "板倉 豪（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "原田_柊_大村工"
+      ],
+      "opponents": [
+        {
+          "lastName": "板倉",
+          "firstName": "豪",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "板倉_豪_岡崎城西"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 42,
+      "name": "原田 柊（大村工）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "太田_遥来_とわの森三愛"
+      ],
+      "opponents": [
+        {
+          "lastName": "大山",
+          "firstName": "瑠偉",
+          "team": "都城東",
+          "originalTeam": "都城東高等学校",
+          "prefecture": "宮崎県",
+          "playerId": null,
+          "tempId": "大山_瑠偉_都城東"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 43,
+      "name": "太田 遥来（とわの森三愛）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "大山_瑠偉_都城東"
+      ],
+      "opponents": [
+        {
+          "lastName": "太田",
+          "firstName": "遥来",
+          "team": "とわの森三愛",
+          "originalTeam": "とわの森三愛高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "太田_遥来_とわの森三愛"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 44,
+      "name": "大山 瑠偉（都城東）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "木村_颯_徳山高専"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "鹿児島商",
+          "originalTeam": "鹿児島市立鹿児島商業高等学校",
+          "prefecture": "鹿児島県",
+          "playerId": null,
+          "tempId": "白井_大希_鹿児島商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 45,
+      "name": "木村 颯（徳山高専）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "白井_大希_鹿児島商"
+      ],
+      "opponents": [
+        {
+          "lastName": "木村",
+          "firstName": "颯",
+          "team": "徳山高専",
+          "originalTeam": "徳山工業高等専門学校",
+          "prefecture": "山口県",
+          "playerId": null,
+          "tempId": "木村_颯_徳山高専"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 46,
+      "name": "白井 大希（鹿児島商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "伊藤_幹太_早稲田実"
+      ],
+      "opponents": [
+        {
+          "lastName": "濱川",
+          "firstName": "響輝",
+          "team": "今治工",
+          "originalTeam": "愛媛県立今治工業高等学校",
+          "prefecture": "愛媛県",
+          "playerId": null,
+          "tempId": "濱川_響輝_今治工"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 47,
+      "name": "伊藤 幹太（早稲田実）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "濱川_響輝_今治工"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田実",
+          "originalTeam": "早稲田大学系属早稲田実業学校高等部",
+          "prefecture": "東京都",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田実"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 48,
+      "name": "濱川 響輝（今治工）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "熊木_暖人_昌平"
+      ],
+      "opponents": [
+        {
+          "lastName": "鳥居",
+          "firstName": "悠人",
+          "team": "大同大学大同",
+          "originalTeam": "大同大学大同高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "鳥居_悠人_大同大学大同"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 49,
+      "name": "熊木 暖人（昌平）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "鳥居_悠人_大同大学大同"
+      ],
+      "opponents": [
+        {
+          "lastName": "熊木",
+          "firstName": "暖人",
+          "team": "昌平",
+          "originalTeam": "昌平高等学校",
+          "prefecture": "埼玉県",
+          "playerId": null,
+          "tempId": "熊木_暖人_昌平"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 50,
+      "name": "鳥居 悠人（大同大学大同）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "古橋_迅_小松大谷"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐渡",
+          "firstName": "宝来",
+          "team": "明徳義塾",
+          "originalTeam": "明徳義塾高等学校",
+          "prefecture": "高知県",
+          "playerId": null,
+          "tempId": "佐渡_宝来_明徳義塾"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 51,
+      "name": "古橋 迅（小松大谷）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "佐渡_宝来_明徳義塾"
+      ],
+      "opponents": [
+        {
+          "lastName": "古橋",
+          "firstName": "迅",
+          "team": "小松大谷",
+          "originalTeam": "小松大谷高等学校",
+          "prefecture": "石川県",
+          "playerId": null,
+          "tempId": "古橋_迅_小松大谷"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 52,
+      "name": "佐渡 宝来（明徳義塾）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "長南_理大_とわの森三愛"
+      ],
+      "opponents": [
+        {
+          "lastName": "木下",
+          "firstName": "琉希",
+          "team": "嬉野",
+          "originalTeam": "佐賀県立嬉野高等学校",
+          "prefecture": "佐賀県",
+          "playerId": null,
+          "tempId": "木下_琉希_嬉野"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 53,
+      "name": "長南 理大（とわの森三愛）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "木下_琉希_嬉野"
+      ],
+      "opponents": [
+        {
+          "lastName": "長南",
+          "firstName": "理大",
+          "team": "とわの森三愛",
+          "originalTeam": "とわの森三愛高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "長南_理大_とわの森三愛"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 54,
+      "name": "木下 琉希（嬉野）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "髙垣_佳弘_南丹"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "野本_凌生_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 55,
+      "name": "髙垣 佳弘（南丹）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "野本_凌生_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙垣",
+          "firstName": "佳弘",
+          "team": "南丹",
+          "originalTeam": "京都府立南丹高等学校",
+          "prefecture": "京都府",
+          "playerId": null,
+          "tempId": "髙垣_佳弘_南丹"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 56,
+      "name": "野本 凌生（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "衞藤_結生_大分商"
+      ],
+      "opponents": [
+        {
+          "lastName": "新井",
+          "firstName": "樹",
+          "team": "滝川西",
+          "originalTeam": "北海道滝川西高等学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "新井_樹_滝川西"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 57,
+      "name": "衞藤 結生（大分商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "新井_樹_滝川西"
+      ],
+      "opponents": [
+        {
+          "lastName": "衞藤",
+          "firstName": "結生",
+          "team": "大分商",
+          "originalTeam": "大分県立大分商業高等学校",
+          "prefecture": "大分県",
+          "playerId": null,
+          "tempId": "衞藤_結生_大分商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 58,
+      "name": "新井 樹（滝川西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "木皿_璃夢斗_羽黒"
+      ],
+      "opponents": [
+        {
+          "lastName": "森",
+          "firstName": "煌大",
+          "team": "三重",
+          "originalTeam": "三重高等学校",
+          "prefecture": "三重県",
+          "playerId": null,
+          "tempId": "森_煌大_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 59,
+      "name": "木皿 璃夢斗（羽黒）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "森_煌大_三重"
+      ],
+      "opponents": [
+        {
+          "lastName": "木皿",
+          "firstName": "璃夢斗",
+          "team": "羽黒",
+          "originalTeam": "羽黒高等学校",
+          "prefecture": "山形県",
+          "playerId": null,
+          "tempId": "木皿_璃夢斗_羽黒"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 60,
+      "name": "森 煌大（三重）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "依田_翔_笛吹"
+      ],
+      "opponents": [
+        {
+          "lastName": "樋口",
+          "firstName": "拓海",
+          "team": "弘前実",
+          "originalTeam": "青森県立弘前実業高等学校",
+          "prefecture": "青森県",
+          "playerId": null,
+          "tempId": "樋口_拓海_弘前実"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 61,
+      "name": "依田 翔（笛吹）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "樋口_拓海_弘前実"
+      ],
+      "opponents": [
+        {
+          "lastName": "依田",
+          "firstName": "翔",
+          "team": "笛吹",
+          "originalTeam": "山梨県立笛吹高等学校",
+          "prefecture": "山梨県",
+          "playerId": null,
+          "tempId": "依田_翔_笛吹"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 62,
+      "name": "樋口 拓海（弘前実）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "間庭_賢人_東農大二"
+      ],
+      "opponents": [
+        {
+          "lastName": "草野",
+          "firstName": "春真",
+          "team": "田村",
+          "originalTeam": "福島県立田村高等学校",
+          "prefecture": "福島県",
+          "playerId": null,
+          "tempId": "草野_春真_田村"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 63,
+      "name": "間庭 賢人（東農大二）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "草野_春真_田村"
+      ],
+      "opponents": [
+        {
+          "lastName": "間庭",
+          "firstName": "賢人",
+          "team": "東農大二",
+          "originalTeam": "東京農業大学第二高等学校",
+          "prefecture": "群馬県",
+          "playerId": null,
+          "tempId": "間庭_賢人_東農大二"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 64,
+      "name": "草野 春真（田村）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "大曲_李空_尾道"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "上宮",
+          "originalTeam": "上宮高等学校",
+          "prefecture": "大阪府",
+          "playerId": null,
+          "tempId": "清水_駿_上宮"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 1,
+      "name": "大曲 李空（尾道）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "清水_駿_上宮"
+      ],
+      "opponents": [
+        {
+          "lastName": "大曲",
+          "firstName": "李空",
+          "team": "尾道",
+          "originalTeam": "尾道高等学校",
+          "prefecture": "広島県",
+          "playerId": null,
+          "tempId": "大曲_李空_尾道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "清水 駿（上宮）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "坂口_生磨_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "工藤",
+          "firstName": "康治朗",
+          "team": "中京",
+          "originalTeam": "中京高校",
+          "prefecture": "岐阜県",
+          "playerId": null,
+          "tempId": "工藤_康治朗_中京"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 5,
+      "name": "坂口 生磨（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "工藤_康治朗_中京"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "坂口_生磨_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 8,
+      "name": "工藤 康治朗（中京）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "足利_颯太_岡山理大附"
+      ],
+      "opponents": [
+        {
+          "lastName": "野中",
+          "firstName": "翔太",
+          "team": "ルーテル学院",
+          "originalTeam": "ルーテル学院高等学校",
+          "prefecture": "熊本県",
+          "playerId": null,
+          "tempId": "野中_翔太_ルーテル学院"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "足利 颯太（岡山理大附）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野中_翔太_ルーテル学院"
+      ],
+      "opponents": [
+        {
+          "lastName": "足利",
+          "firstName": "颯太",
+          "team": "岡山理大附",
+          "originalTeam": "岡山理科大学附属高等学校",
+          "prefecture": "岡山県",
+          "playerId": null,
+          "tempId": "足利_颯太_岡山理大附"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 11,
+      "name": "野中 翔太（ルーテル学院）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "安達_宣_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩井",
+          "firstName": "亮樹",
+          "team": "神戸星城",
+          "originalTeam": "神戸星城高等学校",
+          "prefecture": "兵庫県",
+          "playerId": null,
+          "tempId": "岩井_亮樹_神戸星城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 14,
+      "name": "安達 宣（高田商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岩井_亮樹_神戸星城"
+      ],
+      "opponents": [
+        {
+          "lastName": "安達",
+          "firstName": "宣",
+          "team": "高田商",
+          "originalTeam": "大和高田市立高田商業高等学校",
+          "prefecture": "奈良県",
+          "playerId": null,
+          "tempId": "安達_宣_高田商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 16,
+      "name": "岩井 亮樹（神戸星城）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "小林_健太_OIDE長姫"
+      ],
+      "opponents": [
+        {
+          "lastName": "村井",
+          "firstName": "晋之介",
+          "team": "立命館守山",
+          "originalTeam": "立命館守山高等学校",
+          "prefecture": "滋賀県",
+          "playerId": null,
+          "tempId": "村井_晋之介_立命館守山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 17,
+      "name": "小林 健太（OIDE長姫）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "村井_晋之介_立命館守山"
+      ],
+      "opponents": [
+        {
+          "lastName": "小林",
+          "firstName": "健太",
+          "team": "OIDE長姫",
+          "originalTeam": "長野県飯田OIDE長姫高等学校",
+          "prefecture": "長野県",
+          "playerId": null,
+          "tempId": "小林_健太_OIDE長姫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 20,
+      "name": "村井 晋之介（立命館守山）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "畠山_颯太_花輪"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "星弥",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "塚本_星弥_岡崎城西"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 22,
+      "name": "畠山 颯太（花輪）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "塚本_星弥_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "畠山",
+          "firstName": "颯太",
+          "team": "花輪",
+          "originalTeam": "秋田県立花輪高等学校",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "畠山_颯太_花輪"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 24,
+      "name": "塚本 星弥（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "長島_綾汰_松山"
+      ],
+      "opponents": [
+        {
+          "lastName": "昼間",
+          "firstName": "悠佑",
+          "team": "木更津総合",
+          "originalTeam": "木更津総合高等学校",
+          "prefecture": "千葉県",
+          "playerId": null,
+          "tempId": "昼間_悠佑_木更津総合"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 25,
+      "name": "長島 綾汰（松山）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "opponents": [
+        {
+          "lastName": "長島",
+          "firstName": "綾汰",
+          "team": "松山",
+          "originalTeam": "埼玉県立松山高等学校",
+          "prefecture": "埼玉県",
+          "playerId": null,
+          "tempId": "長島_綾汰_松山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 27,
+      "name": "昼間 悠佑（木更津総合）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "谷口_健斗_霞ヶ浦"
+      ],
+      "opponents": [
+        {
+          "lastName": "今井",
+          "firstName": "奏良",
+          "team": "金津",
+          "originalTeam": "福井県立金津高等学校",
+          "prefecture": "福井県",
+          "playerId": null,
+          "tempId": "今井_奏良_金津"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 30,
+      "name": "谷口 健斗（霞ヶ浦）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "今井_奏良_金津"
+      ],
+      "opponents": [
+        {
+          "lastName": "谷口",
+          "firstName": "健斗",
+          "team": "霞ヶ浦",
+          "originalTeam": "霞ヶ浦高等学校",
+          "prefecture": "茨城県",
+          "playerId": null,
+          "tempId": "谷口_健斗_霞ヶ浦"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 31,
+      "name": "今井 奏良（金津）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "植田_璃音_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "浅見",
+          "firstName": "竣一朗",
+          "team": "東北",
+          "originalTeam": "東北高等学校",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "浅見_竣一朗_東北"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 33,
+      "name": "植田 璃音（高田商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "浅見_竣一朗_東北"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "高田商",
+          "originalTeam": "大和高田市立高田商業高等学校",
+          "prefecture": "奈良県",
+          "playerId": null,
+          "tempId": "植田_璃音_高田商"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 36,
+      "name": "浅見 竣一朗（東北）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "小泉_瑠唯_岡山理大附"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "米川_雅翔_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 37,
+      "name": "小泉 瑠唯（岡山理大附）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "米川_雅翔_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "小泉",
+          "firstName": "瑠唯",
+          "team": "岡山理大附",
+          "originalTeam": "岡山理科大学附属高等学校",
+          "prefecture": "岡山県",
+          "playerId": null,
+          "tempId": "小泉_瑠唯_岡山理大附"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 40,
+      "name": "米川 雅翔（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "板倉_豪_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "大山",
+          "firstName": "瑠偉",
+          "team": "都城東",
+          "originalTeam": "都城東高等学校",
+          "prefecture": "宮崎県",
+          "playerId": null,
+          "tempId": "大山_瑠偉_都城東"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 41,
+      "name": "板倉 豪（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "大山_瑠偉_都城東"
+      ],
+      "opponents": [
+        {
+          "lastName": "板倉",
+          "firstName": "豪",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "板倉_豪_岡崎城西"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 44,
+      "name": "大山 瑠偉（都城東）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "白井_大希_鹿児島商"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田実",
+          "originalTeam": "早稲田大学系属早稲田実業学校高等部",
+          "prefecture": "東京都",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田実"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 46,
+      "name": "白井 大希（鹿児島商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "伊藤_幹太_早稲田実"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "鹿児島商",
+          "originalTeam": "鹿児島市立鹿児島商業高等学校",
+          "prefecture": "鹿児島県",
+          "playerId": null,
+          "tempId": "白井_大希_鹿児島商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 47,
+      "name": "伊藤 幹太（早稲田実）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "鳥居_悠人_大同大学大同"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐渡",
+          "firstName": "宝来",
+          "team": "明徳義塾",
+          "originalTeam": "明徳義塾高等学校",
+          "prefecture": "高知県",
+          "playerId": null,
+          "tempId": "佐渡_宝来_明徳義塾"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 50,
+      "name": "鳥居 悠人（大同大学大同）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "佐渡_宝来_明徳義塾"
+      ],
+      "opponents": [
+        {
+          "lastName": "鳥居",
+          "firstName": "悠人",
+          "team": "大同大学大同",
+          "originalTeam": "大同大学大同高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "鳥居_悠人_大同大学大同"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 52,
+      "name": "佐渡 宝来（明徳義塾）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "木下_琉希_嬉野"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "野本_凌生_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 54,
+      "name": "木下 琉希（嬉野）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野本_凌生_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "木下",
+          "firstName": "琉希",
+          "team": "嬉野",
+          "originalTeam": "佐賀県立嬉野高等学校",
+          "prefecture": "佐賀県",
+          "playerId": null,
+          "tempId": "木下_琉希_嬉野"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 56,
+      "name": "野本 凌生（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "衞藤_結生_大分商"
+      ],
+      "opponents": [
+        {
+          "lastName": "木皿",
+          "firstName": "璃夢斗",
+          "team": "羽黒",
+          "originalTeam": "羽黒高等学校",
+          "prefecture": "山形県",
+          "playerId": null,
+          "tempId": "木皿_璃夢斗_羽黒"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 57,
+      "name": "衞藤 結生（大分商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "木皿_璃夢斗_羽黒"
+      ],
+      "opponents": [
+        {
+          "lastName": "衞藤",
+          "firstName": "結生",
+          "team": "大分商",
+          "originalTeam": "大分県立大分商業高等学校",
+          "prefecture": "大分県",
+          "playerId": null,
+          "tempId": "衞藤_結生_大分商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 59,
+      "name": "木皿 璃夢斗（羽黒）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "樋口_拓海_弘前実"
+      ],
+      "opponents": [
+        {
+          "lastName": "間庭",
+          "firstName": "賢人",
+          "team": "東農大二",
+          "originalTeam": "東京農業大学第二高等学校",
+          "prefecture": "群馬県",
+          "playerId": null,
+          "tempId": "間庭_賢人_東農大二"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 62,
+      "name": "樋口 拓海（弘前実）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "間庭_賢人_東農大二"
+      ],
+      "opponents": [
+        {
+          "lastName": "樋口",
+          "firstName": "拓海",
+          "team": "弘前実",
+          "originalTeam": "青森県立弘前実業高等学校",
+          "prefecture": "青森県",
+          "playerId": null,
+          "tempId": "樋口_拓海_弘前実"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 63,
+      "name": "間庭 賢人（東農大二）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "清水_駿_上宮"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "坂口_生磨_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "清水 駿（上宮）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "坂口_生磨_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "上宮",
+          "originalTeam": "上宮高等学校",
+          "prefecture": "大阪府",
+          "playerId": null,
+          "tempId": "清水_駿_上宮"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 5,
+      "name": "坂口 生磨（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "野中_翔太_ルーテル学院"
+      ],
+      "opponents": [
+        {
+          "lastName": "安達",
+          "firstName": "宣",
+          "team": "高田商",
+          "originalTeam": "大和高田市立高田商業高等学校",
+          "prefecture": "奈良県",
+          "playerId": null,
+          "tempId": "安達_宣_高田商"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 11,
+      "name": "野中 翔太（ルーテル学院）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "安達_宣_高田商"
+      ],
+      "opponents": [
+        {
+          "lastName": "野中",
+          "firstName": "翔太",
+          "team": "ルーテル学院",
+          "originalTeam": "ルーテル学院高等学校",
+          "prefecture": "熊本県",
+          "playerId": null,
+          "tempId": "野中_翔太_ルーテル学院"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 14,
+      "name": "安達 宣（高田商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "村井_晋之介_立命館守山"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "星弥",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "塚本_星弥_岡崎城西"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 20,
+      "name": "村井 晋之介（立命館守山）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "塚本_星弥_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "村井",
+          "firstName": "晋之介",
+          "team": "立命館守山",
+          "originalTeam": "立命館守山高等学校",
+          "prefecture": "滋賀県",
+          "playerId": null,
+          "tempId": "村井_晋之介_立命館守山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "塚本 星弥（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "opponents": [
+        {
+          "lastName": "今井",
+          "firstName": "奏良",
+          "team": "金津",
+          "originalTeam": "福井県立金津高等学校",
+          "prefecture": "福井県",
+          "playerId": null,
+          "tempId": "今井_奏良_金津"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "昼間 悠佑（木更津総合）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "今井_奏良_金津"
+      ],
+      "opponents": [
+        {
+          "lastName": "昼間",
+          "firstName": "悠佑",
+          "team": "木更津総合",
+          "originalTeam": "木更津総合高等学校",
+          "prefecture": "千葉県",
+          "playerId": null,
+          "tempId": "昼間_悠佑_木更津総合"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 31,
+      "name": "今井 奏良（金津）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "浅見_竣一朗_東北"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "米川_雅翔_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 36,
+      "name": "浅見 竣一朗（東北）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "米川_雅翔_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "浅見",
+          "firstName": "竣一朗",
+          "team": "東北",
+          "originalTeam": "東北高等学校",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "浅見_竣一朗_東北"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 40,
+      "name": "米川 雅翔（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "板倉_豪_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "鹿児島商",
+          "originalTeam": "鹿児島市立鹿児島商業高等学校",
+          "prefecture": "鹿児島県",
+          "playerId": null,
+          "tempId": "白井_大希_鹿児島商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 41,
+      "name": "板倉 豪（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "白井_大希_鹿児島商"
+      ],
+      "opponents": [
+        {
+          "lastName": "板倉",
+          "firstName": "豪",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "板倉_豪_岡崎城西"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 46,
+      "name": "白井 大希（鹿児島商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "佐渡_宝来_明徳義塾"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "野本_凌生_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 52,
+      "name": "佐渡 宝来（明徳義塾）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "野本_凌生_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐渡",
+          "firstName": "宝来",
+          "team": "明徳義塾",
+          "originalTeam": "明徳義塾高等学校",
+          "prefecture": "高知県",
+          "playerId": null,
+          "tempId": "佐渡_宝来_明徳義塾"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 56,
+      "name": "野本 凌生（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "衞藤_結生_大分商"
+      ],
+      "opponents": [
+        {
+          "lastName": "樋口",
+          "firstName": "拓海",
+          "team": "弘前実",
+          "originalTeam": "青森県立弘前実業高等学校",
+          "prefecture": "青森県",
+          "playerId": null,
+          "tempId": "樋口_拓海_弘前実"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 57,
+      "name": "衞藤 結生（大分商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "樋口_拓海_弘前実"
+      ],
+      "opponents": [
+        {
+          "lastName": "衞藤",
+          "firstName": "結生",
+          "team": "大分商",
+          "originalTeam": "大分県立大分商業高等学校",
+          "prefecture": "大分県",
+          "playerId": null,
+          "tempId": "衞藤_結生_大分商"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 62,
+      "name": "樋口 拓海（弘前実）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "坂口_生磨_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "野中",
+          "firstName": "翔太",
+          "team": "ルーテル学院",
+          "originalTeam": "ルーテル学院高等学校",
+          "prefecture": "熊本県",
+          "playerId": null,
+          "tempId": "野中_翔太_ルーテル学院"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 5,
+      "name": "坂口 生磨（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "野中_翔太_ルーテル学院"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "坂口_生磨_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 11,
+      "name": "野中 翔太（ルーテル学院）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "塚本_星弥_岡崎城西"
+      ],
+      "opponents": [
+        {
+          "lastName": "昼間",
+          "firstName": "悠佑",
+          "team": "木更津総合",
+          "originalTeam": "木更津総合高等学校",
+          "prefecture": "千葉県",
+          "playerId": null,
+          "tempId": "昼間_悠佑_木更津総合"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 24,
+      "name": "塚本 星弥（岡崎城西）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "星弥",
+          "team": "岡崎城西",
+          "originalTeam": "岡崎城西高等学校",
+          "prefecture": "愛知県",
+          "playerId": null,
+          "tempId": "塚本_星弥_岡崎城西"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 27,
+      "name": "昼間 悠佑（木更津総合）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "米川_雅翔_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "鹿児島商",
+          "originalTeam": "鹿児島市立鹿児島商業高等学校",
+          "prefecture": "鹿児島県",
+          "playerId": null,
+          "tempId": "白井_大希_鹿児島商"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 40,
+      "name": "米川 雅翔（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "白井_大希_鹿児島商"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "米川_雅翔_尽誠学園"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 46,
+      "name": "白井 大希（鹿児島商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "野本_凌生_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "樋口",
+          "firstName": "拓海",
+          "team": "弘前実",
+          "originalTeam": "青森県立弘前実業高等学校",
+          "prefecture": "青森県",
+          "playerId": null,
+          "tempId": "樋口_拓海_弘前実"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 56,
+      "name": "野本 凌生（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "樋口_拓海_弘前実"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "野本_凌生_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 62,
+      "name": "樋口 拓海（弘前実）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "坂口_生磨_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "昼間",
+          "firstName": "悠佑",
+          "team": "木更津総合",
+          "originalTeam": "木更津総合高等学校",
+          "prefecture": "千葉県",
+          "playerId": null,
+          "tempId": "昼間_悠佑_木更津総合"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "坂口 生磨（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "坂口_生磨_尽誠学園"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "昼間 悠佑（木更津総合）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "白井_大希_鹿児島商"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "野本_凌生_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 46,
+      "name": "白井 大希（鹿児島商）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "野本_凌生_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "鹿児島商",
+          "originalTeam": "鹿児島市立鹿児島商業高等学校",
+          "prefecture": "鹿児島県",
+          "playerId": null,
+          "tempId": "白井_大希_鹿児島商"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 56,
+      "name": "野本 凌生（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "昼間_悠佑_木更津総合"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "尽誠学園",
+          "originalTeam": "尽誠学園高等学校",
+          "prefecture": "香川県",
+          "playerId": null,
+          "tempId": "野本_凌生_尽誠学園"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 27,
+      "name": "昼間 悠佑（木更津総合）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "野本_凌生_尽誠学園"
+      ],
+      "opponents": [
+        {
+          "lastName": "昼間",
+          "firstName": "悠佑",
+          "team": "木更津総合",
+          "originalTeam": "木更津総合高等学校",
+          "prefecture": "千葉県",
+          "playerId": null,
+          "tempId": "昼間_悠佑_木更津総合"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 56,
+      "name": "野本 凌生（尽誠学園）",
+      "category": "singles",
+      "retired": false
+    }
+  ]
+}
