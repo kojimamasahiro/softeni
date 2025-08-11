@@ -2,59 +2,93 @@
     {
       "round": "1回戦",
       "pair": [
-        "結城_琉衣_関西学院大学",
-        "植田_璃音_高田商"
+        "長谷川_憂華_ワタキューセイモア",
+        "辻倉_奈津_ワタキューセイモア"
       ],
       "opponents": [
         {
-          "lastName": "中尾",
-          "firstName": "彦斗",
-          "team": "中央大学",
-          "prefecture": "",
+          "lastName": "白﨑",
+          "firstName": "ひかる",
+          "team": "ヨネックス",
+          "prefecture": "東京",
           "playerId": null,
-          "tempId": "中尾_彦斗_中央大学"
+          "tempId": "白﨑_ひかる_ヨネックス"
         },
         {
-          "lastName": "根岸",
-          "firstName": "澪紋",
-          "team": "日本体育大学",
-          "prefecture": "",
-          "playerId": "negishi-remon",
-          "tempId": "根岸_澪紋_日本体育大学"
+          "lastName": "大友",
+          "firstName": "紅実",
+          "team": "ヨネックス",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "大友_紅実_ヨネックス"
         }
       ],
       "result": "lose",
       "games": {
-        "won": "3",
+        "won": "1",
         "lost": "5"
       },
-      "entryNo": 35,
-      "name": "結城 琉衣（関西学院大学）・植田 璃音（高田商）",
+      "entryNo": 30,
+      "name": "長谷川 憂華・辻倉 奈津（ワタキューセイモア）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "1回戦",
       "pair": [
-        "中尾_彦斗_中央大学",
-        "根岸_澪紋_日本体育大学"
+        "白﨑_ひかる_ヨネックス",
+        "大友_紅実_ヨネックス"
       ],
       "opponents": [
         {
-          "lastName": "結城",
-          "firstName": "琉衣",
-          "team": "関西学院大学",
-          "prefecture": "",
+          "lastName": "長谷川",
+          "firstName": "憂華",
+          "team": "ワタキューセイモア",
+          "prefecture": "京都",
           "playerId": null,
-          "tempId": "結城_琉衣_関西学院大学"
+          "tempId": "長谷川_憂華_ワタキューセイモア"
         },
         {
-          "lastName": "植田",
-          "firstName": "璃音",
-          "team": "高田商",
-          "prefecture": "",
-          "playerId": "ueda-rio",
-          "tempId": "植田_璃音_高田商"
+          "lastName": "辻倉",
+          "firstName": "奈津",
+          "team": "ワタキューセイモア",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "辻倉_奈津_ワタキューセイモア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      },
+      "entryNo": 29,
+      "name": "白﨑 ひかる・大友 紅実（ヨネックス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "箱崎_愁里_ナガセケンコー",
+        "木原_恵菜_ナガセケンコー"
+      ],
+      "opponents": [
+        {
+          "lastName": "三浦",
+          "firstName": "菜留美",
+          "team": "川口市役所",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "三浦_菜留美_川口市役所"
+        },
+        {
+          "lastName": "上野",
+          "firstName": "美穂",
+          "team": "川口市役所",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "上野_美穂_川口市役所"
         }
       ],
       "result": "win",
@@ -62,67 +96,33 @@
         "won": "5",
         "lost": "3"
       },
-      "entryNo": 27,
-      "name": "中尾 彦斗（中央大学）・根岸 澪紋（日本体育大学）",
+      "entryNo": 24,
+      "name": "箱崎 愁里・木原 恵菜（ナガセケンコー）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "1回戦",
       "pair": [
-        "荒木_駿_ヨネックス",
-        "米川_結翔_ヨネックス"
+        "三浦_菜留美_川口市役所",
+        "上野_美穂_川口市役所"
       ],
       "opponents": [
         {
-          "lastName": "小山",
-          "firstName": "寛晴",
-          "team": "明治大学",
-          "prefecture": "",
-          "playerId": null,
-          "tempId": "小山_寛晴_明治大学"
-        },
-        {
-          "lastName": "坂口",
-          "firstName": "生磨",
-          "team": "明治大学",
-          "prefecture": "",
-          "playerId": null,
-          "tempId": "坂口_生磨_明治大学"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "3"
-      },
-      "entryNo": 8,
-      "name": "荒木 駿・米川 結翔（ヨネックス）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "1回戦",
-      "pair": [
-        "小山_寛晴_明治大学",
-        "坂口_生磨_明治大学"
-      ],
-      "opponents": [
-        {
-          "lastName": "荒木",
-          "firstName": "駿",
-          "team": "ヨネックス",
+          "lastName": "箱崎",
+          "firstName": "愁里",
+          "team": "ナガセケンコー",
           "prefecture": "東京",
           "playerId": null,
-          "tempId": "荒木_駿_ヨネックス"
+          "tempId": "箱崎_愁里_ナガセケンコー"
         },
         {
-          "lastName": "米川",
-          "firstName": "結翔",
-          "team": "ヨネックス",
+          "lastName": "木原",
+          "firstName": "恵菜",
+          "team": "ナガセケンコー",
           "prefecture": "東京",
-          "playerId": "yonekawa-yuto",
-          "tempId": "米川_結翔_ヨネックス"
+          "playerId": null,
+          "tempId": "木原_恵菜_ナガセケンコー"
         }
       ],
       "result": "lose",
@@ -130,135 +130,33 @@
         "won": "3",
         "lost": "5"
       },
-      "entryNo": 32,
-      "name": "小山 寛晴・坂口 生磨（明治大学）",
+      "entryNo": 37,
+      "name": "三浦 菜留美・上野 美穂（川口市役所）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "1回戦",
       "pair": [
-        "塚本_光琉_岡崎城西",
-        "野本_凌生_法政大学"
+        "大橋_玲雨_明治大学",
+        "大野_栞_明治大学"
       ],
       "opponents": [
         {
-          "lastName": "四位",
-          "firstName": "光太",
-          "team": "ベスト",
-          "prefecture": "東京",
-          "playerId": null,
-          "tempId": "四位_光太_ベスト"
-        },
-        {
-          "lastName": "津島",
-          "firstName": "青空",
-          "team": "日本体育大学",
-          "prefecture": "東京",
-          "playerId": "tsushima-sora",
-          "tempId": "津島_青空_日本体育大学"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "0"
-      },
-      "entryNo": 43,
-      "name": "塚本 光琉（岡崎城西）・野本 凌生（法政大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "1回戦",
-      "pair": [
-        "四位_光太_ベスト",
-        "津島_青空_日本体育大学"
-      ],
-      "opponents": [
-        {
-          "lastName": "塚本",
-          "firstName": "光琉",
-          "team": "岡崎城西",
+          "lastName": "青松",
+          "firstName": "淑佳",
+          "team": "明治大学",
           "prefecture": "",
           "playerId": null,
-          "tempId": "塚本_光琉_岡崎城西"
+          "tempId": "青松_淑佳_明治大学"
         },
         {
-          "lastName": "野本",
-          "firstName": "凌生",
-          "team": "法政大学",
+          "lastName": "西山",
+          "firstName": "なつみ",
+          "team": "明治大学",
           "prefecture": "",
           "playerId": null,
-          "tempId": "野本_凌生_法政大学"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "0",
-        "lost": "5"
-      },
-      "entryNo": 20,
-      "name": "四位 光太（ベスト）・津島 青空（日本体育大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "1回戦",
-      "pair": [
-        "井口_雄介_スマッシュイグチ",
-        "鹿島_鉄平_都商OBクラブ"
-      ],
-      "opponents": [
-        {
-          "lastName": "山口",
-          "firstName": "晃輝",
-          "team": "ベスト",
-          "prefecture": "東京",
-          "playerId": null,
-          "tempId": "山口_晃輝_ベスト"
-        },
-        {
-          "lastName": "佐藤",
-          "firstName": "功輝",
-          "team": "ベスト",
-          "prefecture": "東京",
-          "playerId": null,
-          "tempId": "佐藤_功輝_ベスト"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "4",
-        "lost": "5"
-      },
-      "entryNo": 46,
-      "name": "井口 雄介（スマッシュイグチ）・鹿島 鉄平（都商OBクラブ）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "1回戦",
-      "pair": [
-        "山口_晃輝_ベスト",
-        "佐藤_功輝_ベスト"
-      ],
-      "opponents": [
-        {
-          "lastName": "井口",
-          "firstName": "雄介",
-          "team": "スマッシュイグチ",
-          "prefecture": "宮崎",
-          "playerId": null,
-          "tempId": "井口_雄介_スマッシュイグチ"
-        },
-        {
-          "lastName": "鹿島",
-          "firstName": "鉄平",
-          "team": "都商OBクラブ",
-          "prefecture": "宮崎",
-          "playerId": null,
-          "tempId": "鹿島_鉄平_都商OBクラブ"
+          "tempId": "西山_なつみ_明治大学"
         }
       ],
       "result": "win",
@@ -266,33 +164,135 @@
         "won": "5",
         "lost": "4"
       },
-      "entryNo": 40,
-      "name": "山口 晃輝・佐藤 功輝（ベスト）",
+      "entryNo": 8,
+      "name": "大橋 玲雨・大野 栞（明治大学）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "1回戦",
       "pair": [
-        "浅見_竣一朗_早稲田大学",
-        "安達_宣_早稲田大学"
+        "青松_淑佳_明治大学",
+        "西山_なつみ_明治大学"
       ],
       "opponents": [
         {
-          "lastName": "松田",
-          "firstName": "拳弥",
-          "team": "東北高校",
-          "prefecture": "宮城",
+          "lastName": "大橋",
+          "firstName": "玲雨",
+          "team": "明治大学",
+          "prefecture": "",
           "playerId": null,
-          "tempId": "松田_拳弥_東北高校"
+          "tempId": "大橋_玲雨_明治大学"
         },
         {
-          "lastName": "水木",
-          "firstName": "洸",
-          "team": "東北高校",
-          "prefecture": "宮城",
+          "lastName": "大野",
+          "firstName": "栞",
+          "team": "明治大学",
+          "prefecture": "",
           "playerId": null,
-          "tempId": "水木_洸_東北高校"
+          "tempId": "大野_栞_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "4",
+        "lost": "5"
+      },
+      "entryNo": 21,
+      "name": "青松 淑佳・西山 なつみ（明治大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "小林_愛美_ヨネックス",
+        "吉田_澪奈_ヨネックス"
+      ],
+      "opponents": [
+        {
+          "lastName": "天間",
+          "firstName": "美嘉",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "天間_美嘉_日本体育大学"
+        },
+        {
+          "lastName": "左近",
+          "firstName": "知美",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "左近_知美_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      },
+      "entryNo": 14,
+      "name": "小林 愛美・吉田 澪奈（ヨネックス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "天間_美嘉_日本体育大学",
+        "左近_知美_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "小林",
+          "firstName": "愛美",
+          "team": "ヨネックス",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "小林_愛美_ヨネックス"
+        },
+        {
+          "lastName": "吉田",
+          "firstName": "澪奈",
+          "team": "ヨネックス",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉田_澪奈_ヨネックス"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      },
+      "entryNo": 10,
+      "name": "天間 美嘉・左近 知美（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "原口_美咲_ワタキューセイモア",
+        "宮前_希帆_ワタキューセイモア"
+      ],
+      "opponents": [
+        {
+          "lastName": "白﨑",
+          "firstName": "ひかる",
+          "team": "ヨネックス",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "白﨑_ひかる_ヨネックス"
+        },
+        {
+          "lastName": "大友",
+          "firstName": "紅実",
+          "team": "ヨネックス",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "大友_紅実_ヨネックス"
         }
       ],
       "result": "win",
@@ -300,33 +300,33 @@
         "won": "5",
         "lost": "2"
       },
-      "entryNo": 9,
-      "name": "浅見 竣一朗・安達 宣（早稲田大学）",
+      "entryNo": 1,
+      "name": "原口 美咲・宮前 希帆（ワタキューセイモア）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "1回戦",
+      "round": "2回戦",
       "pair": [
-        "松田_拳弥_東北高校",
-        "水木_洸_東北高校"
+        "白﨑_ひかる_ヨネックス",
+        "大友_紅実_ヨネックス"
       ],
       "opponents": [
         {
-          "lastName": "浅見",
-          "firstName": "竣一朗",
-          "team": "早稲田大学",
-          "prefecture": "",
+          "lastName": "原口",
+          "firstName": "美咲",
+          "team": "ワタキューセイモア",
+          "prefecture": "京都",
           "playerId": null,
-          "tempId": "浅見_竣一朗_早稲田大学"
+          "tempId": "原口_美咲_ワタキューセイモア"
         },
         {
-          "lastName": "安達",
-          "firstName": "宣",
-          "team": "早稲田大学",
-          "prefecture": "",
+          "lastName": "宮前",
+          "firstName": "希帆",
+          "team": "ワタキューセイモア",
+          "prefecture": "京都",
           "playerId": null,
-          "tempId": "安達_宣_早稲田大学"
+          "tempId": "宮前_希帆_ワタキューセイモア"
         }
       ],
       "result": "lose",
@@ -334,67 +334,33 @@
         "won": "2",
         "lost": "5"
       },
-      "entryNo": 4,
-      "name": "松田 拳弥・水木 洸（東北高校）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "1回戦",
-      "pair": [
-        "本倉_健太郎_NTT西日本",
-        "広岡_宙_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "星野",
-          "firstName": "雄慈",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
-          "playerId": null,
-          "tempId": "星野_雄慈_ワタキューセイモア"
-        },
-        {
-          "lastName": "北野",
-          "firstName": "亮介",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
-          "playerId": null,
-          "tempId": "北野_亮介_ワタキューセイモア"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "4"
-      },
       "entryNo": 29,
-      "name": "本倉 健太郎・広岡 宙（NTT西日本）",
+      "name": "白﨑 ひかる・大友 紅実（ヨネックス）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "1回戦",
+      "round": "2回戦",
       "pair": [
-        "星野_雄慈_ワタキューセイモア",
-        "北野_亮介_ワタキューセイモア"
+        "浪岡_菜々美_ナガセケンコー",
+        "久保_晴華_ナガセケンコー"
       ],
       "opponents": [
         {
-          "lastName": "本倉",
-          "firstName": "健太郎",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "motokura-kentaro",
-          "tempId": "本倉_健太郎_NTT西日本"
+          "lastName": "海老根",
+          "firstName": "香澄",
+          "team": "芳賀クラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "海老根_香澄_芳賀クラブ"
         },
         {
-          "lastName": "広岡",
-          "firstName": "宙",
-          "team": "NTT西日本",
+          "lastName": "江口",
+          "firstName": "咲礼紗",
+          "team": "関西大学",
           "prefecture": "",
-          "playerId": "hirooka-sora",
-          "tempId": "広岡_宙_NTT西日本"
+          "playerId": null,
+          "tempId": "江口_咲礼紗_関西大学"
         }
       ],
       "result": "lose",
@@ -402,237 +368,237 @@
         "won": "4",
         "lost": "5"
       },
-      "entryNo": 7,
-      "name": "星野 雄慈・北野 亮介（ワタキューセイモア）",
+      "entryNo": 9,
+      "name": "浪岡 菜々美・久保 晴華（ナガセケンコー）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "1回戦",
+      "round": "2回戦",
       "pair": [
-        "丸中_大明_NTT西日本",
-        "長江_光一_NTT西日本"
+        "海老根_香澄_芳賀クラブ",
+        "江口_咲礼紗_関西大学"
       ],
       "opponents": [
         {
-          "lastName": "阪本",
-          "firstName": "崚",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
+          "lastName": "浪岡",
+          "firstName": "菜々美",
+          "team": "ナガセケンコー",
+          "prefecture": "東京",
           "playerId": null,
-          "tempId": "阪本_崚_ワタキューセイモア"
+          "tempId": "浪岡_菜々美_ナガセケンコー"
         },
         {
-          "lastName": "池口",
-          "firstName": "季将",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
+          "lastName": "久保",
+          "firstName": "晴華",
+          "team": "ナガセケンコー",
+          "prefecture": "東京",
           "playerId": null,
-          "tempId": "池口_季将_ワタキューセイモア"
+          "tempId": "久保_晴華_ナガセケンコー"
         }
       ],
       "result": "win",
       "games": {
         "won": "5",
-        "lost": "0"
+        "lost": "4"
       },
-      "entryNo": 17,
-      "name": "丸中 大明・長江 光一（NTT西日本）",
+      "entryNo": 13,
+      "name": "海老根 香澄（芳賀クラブ）・江口 咲礼紗（関西大学）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "1回戦",
+      "round": "2回戦",
       "pair": [
-        "阪本_崚_ワタキューセイモア",
-        "池口_季将_ワタキューセイモア"
+        "細田_美帆_日本体育大学",
+        "高橋_ひかる_日本体育大学"
       ],
       "opponents": [
         {
-          "lastName": "丸中",
-          "firstName": "大明",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": null,
-          "tempId": "丸中_大明_NTT西日本"
-        },
-        {
-          "lastName": "長江",
-          "firstName": "光一",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "nagae-koichi",
-          "tempId": "長江_光一_NTT西日本"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "0",
-        "lost": "5"
-      },
-      "entryNo": 44,
-      "name": "阪本 崚・池口 季将（ワタキューセイモア）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "1回戦",
-      "pair": [
-        "松本_炎_ワタキューセイモア",
-        "仲川_晴智_東邦ガス"
-      ],
-      "opponents": [
-        {
-          "lastName": "伊藤",
-          "firstName": "幹",
-          "team": "ヨネックス",
+          "lastName": "上野",
+          "firstName": "小町",
+          "team": "ナガセケンコー",
           "prefecture": "東京",
           "playerId": null,
-          "tempId": "伊藤_幹_ヨネックス"
+          "tempId": "上野_小町_ナガセケンコー"
         },
         {
-          "lastName": "米澤",
-          "firstName": "要",
-          "team": "ヨネックス",
+          "lastName": "藤城",
+          "firstName": "みちる",
+          "team": "ナガセケンコー",
           "prefecture": "東京",
           "playerId": null,
-          "tempId": "米澤_要_ヨネックス"
+          "tempId": "藤城_みちる_ナガセケンコー"
         }
       ],
       "result": "lose",
       "games": {
         "won": "1",
+        "lost": "5"
+      },
+      "entryNo": 16,
+      "name": "細田 美帆・高橋 ひかる（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "上野_小町_ナガセケンコー",
+        "藤城_みちる_ナガセケンコー"
+      ],
+      "opponents": [
+        {
+          "lastName": "細田",
+          "firstName": "美帆",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "細田_美帆_日本体育大学"
+        },
+        {
+          "lastName": "高橋",
+          "firstName": "ひかる",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "高橋_ひかる_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      },
+      "entryNo": 42,
+      "name": "上野 小町・藤城 みちる（ナガセケンコー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "箱崎_愁里_ナガセケンコー",
+        "木原_恵菜_ナガセケンコー"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩倉",
+          "firstName": "彩佳",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "岩倉_彩佳_どんぐり北広島"
+        },
+        {
+          "lastName": "高橋",
+          "firstName": "偲",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "高橋_偲_どんぐり北広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "4",
         "lost": "5"
       },
       "entryNo": 24,
-      "name": "松本 炎（ワタキューセイモア）・仲川 晴智（東邦ガス）",
+      "name": "箱崎 愁里・木原 恵菜（ナガセケンコー）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "1回戦",
+      "round": "2回戦",
       "pair": [
-        "伊藤_幹_ヨネックス",
-        "米澤_要_ヨネックス"
+        "岩倉_彩佳_どんぐり北広島",
+        "高橋_偲_どんぐり北広島"
       ],
       "opponents": [
         {
-          "lastName": "松本",
-          "firstName": "炎",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
+          "lastName": "箱崎",
+          "firstName": "愁里",
+          "team": "ナガセケンコー",
+          "prefecture": "東京",
           "playerId": null,
-          "tempId": "松本_炎_ワタキューセイモア"
+          "tempId": "箱崎_愁里_ナガセケンコー"
         },
         {
-          "lastName": "仲川",
-          "firstName": "晴智",
-          "team": "東邦ガス",
-          "prefecture": "愛知",
+          "lastName": "木原",
+          "firstName": "恵菜",
+          "team": "ナガセケンコー",
+          "prefecture": "東京",
           "playerId": null,
-          "tempId": "仲川_晴智_東邦ガス"
+          "tempId": "木原_恵菜_ナガセケンコー"
         }
       ],
       "result": "win",
       "games": {
         "won": "5",
-        "lost": "1"
+        "lost": "4"
       },
-      "entryNo": 15,
-      "name": "伊藤 幹・米澤 要（ヨネックス）",
+      "entryNo": 18,
+      "name": "岩倉 彩佳・高橋 偲（どんぐり北広島）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "2回戦",
       "pair": [
-        "上松_俊貴_NTT西日本",
-        "矢野_颯人_NTT西日本"
+        "中谷_さくら_明治大学",
+        "前田_梨緒_明治大学"
       ],
       "opponents": [
         {
-          "lastName": "中尾",
-          "firstName": "彦斗",
-          "team": "中央大学",
+          "lastName": "大橋",
+          "firstName": "玲雨",
+          "team": "明治大学",
           "prefecture": "",
           "playerId": null,
-          "tempId": "中尾_彦斗_中央大学"
+          "tempId": "大橋_玲雨_明治大学"
         },
         {
-          "lastName": "根岸",
-          "firstName": "澪紋",
-          "team": "日本体育大学",
+          "lastName": "大野",
+          "firstName": "栞",
+          "team": "明治大学",
           "prefecture": "",
-          "playerId": "negishi-remon",
-          "tempId": "根岸_澪紋_日本体育大学"
+          "playerId": null,
+          "tempId": "大野_栞_明治大学"
         }
       ],
       "result": "win",
       "games": {
         "won": "5",
-        "lost": "1"
+        "lost": "4"
       },
-      "entryNo": 1,
-      "name": "上松 俊貴・矢野 颯人（NTT西日本）",
+      "entryNo": 22,
+      "name": "中谷 さくら・前田 梨緒（明治大学）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "2回戦",
       "pair": [
-        "中尾_彦斗_中央大学",
-        "根岸_澪紋_日本体育大学"
+        "大橋_玲雨_明治大学",
+        "大野_栞_明治大学"
       ],
       "opponents": [
         {
-          "lastName": "上松",
-          "firstName": "俊貴",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "uematsu-toshiki",
-          "tempId": "上松_俊貴_NTT西日本"
+          "lastName": "中谷",
+          "firstName": "さくら",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "中谷_さくら_明治大学"
         },
-        {
-          "lastName": "矢野",
-          "firstName": "颯人",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "yano-soto",
-          "tempId": "矢野_颯人_NTT西日本"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "1",
-        "lost": "5"
-      },
-      "entryNo": 27,
-      "name": "中尾 彦斗（中央大学）・根岸 澪紋（日本体育大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "荒木_駿_ヨネックス",
-        "米川_結翔_ヨネックス"
-      ],
-      "opponents": [
         {
           "lastName": "前田",
-          "firstName": "晃良",
-          "team": "川崎重工明石",
-          "prefecture": "兵庫",
+          "firstName": "梨緒",
+          "team": "明治大学",
+          "prefecture": "",
           "playerId": null,
-          "tempId": "前田_晃良_川崎重工明石"
-        },
-        {
-          "lastName": "石井",
-          "firstName": "佑一",
-          "team": "ENEOS",
-          "prefecture": "岡山",
-          "playerId": null,
-          "tempId": "石井_佑一_ENEOS"
+          "tempId": "前田_梨緒_明治大学"
         }
       ],
       "result": "lose",
@@ -641,32 +607,270 @@
         "lost": "5"
       },
       "entryNo": 8,
-      "name": "荒木 駿・米川 結翔（ヨネックス）",
+      "name": "大橋 玲雨・大野 栞（明治大学）",
       "category": "doubles",
       "retired": false
     },
     {
       "round": "2回戦",
       "pair": [
-        "前田_晃良_川崎重工明石",
-        "石井_佑一_ENEOS"
+        "清水_麻美_ダンロップ",
+        "小川_木乃花_ダンロップ"
       ],
       "opponents": [
         {
-          "lastName": "荒木",
-          "firstName": "駿",
+          "lastName": "前川",
+          "firstName": "愛生",
+          "team": "広島翔洋高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "前川_愛生_広島翔洋高校"
+        },
+        {
+          "lastName": "塚本",
+          "firstName": "七海",
+          "team": "広島翔洋高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "塚本_七海_広島翔洋高校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      },
+      "entryNo": 4,
+      "name": "清水 麻美・小川 木乃花（ダンロップ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "前川_愛生_広島翔洋高校",
+        "塚本_七海_広島翔洋高校"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "麻美",
+          "team": "ダンロップ",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "清水_麻美_ダンロップ"
+        },
+        {
+          "lastName": "小川",
+          "firstName": "木乃花",
+          "team": "ダンロップ",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "小川_木乃花_ダンロップ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      },
+      "entryNo": 26,
+      "name": "前川 愛生・塚本 七海（広島翔洋高校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "小松_芹奈_ヨネックス",
+        "佐藤_心美_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "浅倉",
+          "firstName": "衣里",
+          "team": "太平洋工業",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "浅倉_衣里_太平洋工業"
+        },
+        {
+          "lastName": "川口",
+          "firstName": "真歩",
+          "team": "太平洋工業",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "川口_真歩_太平洋工業"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "1"
+      },
+      "entryNo": 32,
+      "name": "小松 芹奈（ヨネックス）・佐藤 心美（早稲田大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "浅倉_衣里_太平洋工業",
+        "川口_真歩_太平洋工業"
+      ],
+      "opponents": [
+        {
+          "lastName": "小松",
+          "firstName": "芹奈",
           "team": "ヨネックス",
           "prefecture": "東京",
           "playerId": null,
-          "tempId": "荒木_駿_ヨネックス"
+          "tempId": "小松_芹奈_ヨネックス"
         },
         {
-          "lastName": "米川",
-          "firstName": "結翔",
-          "team": "ヨネックス",
-          "prefecture": "東京",
-          "playerId": "yonekawa-yuto",
-          "tempId": "米川_結翔_ヨネックス"
+          "lastName": "佐藤",
+          "firstName": "心美",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "佐藤_心美_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "5"
+      },
+      "entryNo": 35,
+      "name": "浅倉 衣里・川口 真歩（太平洋工業）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "天間_美嘉_日本体育大学",
+        "左近_知美_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "中谷",
+          "firstName": "ももこ",
+          "team": "須磨学園",
+          "prefecture": "兵庫県",
+          "playerId": null,
+          "tempId": "中谷_ももこ_須磨学園"
+        },
+        {
+          "lastName": "天間",
+          "firstName": "麗奈",
+          "team": "東北",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "天間_麗奈_東北"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "5"
+      },
+      "entryNo": 10,
+      "name": "天間 美嘉・左近 知美（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "中谷_ももこ_須磨学園",
+        "天間_麗奈_東北"
+      ],
+      "opponents": [
+        {
+          "lastName": "天間",
+          "firstName": "美嘉",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "天間_美嘉_日本体育大学"
+        },
+        {
+          "lastName": "左近",
+          "firstName": "知美",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "左近_知美_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "2"
+      },
+      "entryNo": 39,
+      "name": "中谷 ももこ（須磨学園）・天間 麗奈（東北）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "原口_美咲_ワタキューセイモア",
+        "宮前_希帆_ワタキューセイモア"
+      ],
+      "opponents": [
+        {
+          "lastName": "海老根",
+          "firstName": "香澄",
+          "team": "芳賀クラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "海老根_香澄_芳賀クラブ"
+        },
+        {
+          "lastName": "江口",
+          "firstName": "咲礼紗",
+          "team": "関西大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "江口_咲礼紗_関西大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "4",
+        "lost": "5"
+      },
+      "entryNo": 1,
+      "name": "原口 美咲・宮前 希帆（ワタキューセイモア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "海老根_香澄_芳賀クラブ",
+        "江口_咲礼紗_関西大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "原口",
+          "firstName": "美咲",
+          "team": "ワタキューセイモア",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "原口_美咲_ワタキューセイモア"
+        },
+        {
+          "lastName": "宮前",
+          "firstName": "希帆",
+          "team": "ワタキューセイモア",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "宮前_希帆_ワタキューセイモア"
         }
       ],
       "result": "win",
@@ -674,33 +878,237 @@
         "won": "5",
         "lost": "4"
       },
-      "entryNo": 11,
-      "name": "前田 晃良（川崎重工明石）・石井 佑一（ENEOS）",
+      "entryNo": 13,
+      "name": "海老根 香澄（芳賀クラブ）・江口 咲礼紗（関西大学）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "2回戦",
+      "round": "準々決勝",
       "pair": [
-        "山本_貴大_ワタキューセイモア",
-        "川﨑_浩希_ワタキューセイモア"
+        "上野_小町_ナガセケンコー",
+        "藤城_みちる_ナガセケンコー"
       ],
       "opponents": [
         {
-          "lastName": "塚本",
-          "firstName": "光琉",
-          "team": "岡崎城西",
-          "prefecture": "",
+          "lastName": "岩倉",
+          "firstName": "彩佳",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
           "playerId": null,
-          "tempId": "塚本_光琉_岡崎城西"
+          "tempId": "岩倉_彩佳_どんぐり北広島"
         },
         {
-          "lastName": "野本",
-          "firstName": "凌生",
-          "team": "法政大学",
+          "lastName": "高橋",
+          "firstName": "偲",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "高橋_偲_どんぐり北広島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "5"
+      },
+      "entryNo": 42,
+      "name": "上野 小町・藤城 みちる（ナガセケンコー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "岩倉_彩佳_どんぐり北広島",
+        "高橋_偲_どんぐり北広島"
+      ],
+      "opponents": [
+        {
+          "lastName": "上野",
+          "firstName": "小町",
+          "team": "ナガセケンコー",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "上野_小町_ナガセケンコー"
+        },
+        {
+          "lastName": "藤城",
+          "firstName": "みちる",
+          "team": "ナガセケンコー",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "藤城_みちる_ナガセケンコー"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "3"
+      },
+      "entryNo": 18,
+      "name": "岩倉 彩佳・高橋 偲（どんぐり北広島）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "中谷_さくら_明治大学",
+        "前田_梨緒_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "前川",
+          "firstName": "愛生",
+          "team": "広島翔洋高校",
           "prefecture": "",
           "playerId": null,
-          "tempId": "野本_凌生_法政大学"
+          "tempId": "前川_愛生_広島翔洋高校"
+        },
+        {
+          "lastName": "塚本",
+          "firstName": "七海",
+          "team": "広島翔洋高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "塚本_七海_広島翔洋高校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "2"
+      },
+      "entryNo": 22,
+      "name": "中谷 さくら・前田 梨緒（明治大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "前川_愛生_広島翔洋高校",
+        "塚本_七海_広島翔洋高校"
+      ],
+      "opponents": [
+        {
+          "lastName": "中谷",
+          "firstName": "さくら",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "中谷_さくら_明治大学"
+        },
+        {
+          "lastName": "前田",
+          "firstName": "梨緒",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "前田_梨緒_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "5"
+      },
+      "entryNo": 26,
+      "name": "前川 愛生・塚本 七海（広島翔洋高校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "小松_芹奈_ヨネックス",
+        "佐藤_心美_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "中谷",
+          "firstName": "ももこ",
+          "team": "須磨学園",
+          "prefecture": "兵庫県",
+          "playerId": null,
+          "tempId": "中谷_ももこ_須磨学園"
+        },
+        {
+          "lastName": "天間",
+          "firstName": "麗奈",
+          "team": "東北",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "天間_麗奈_東北"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "4",
+        "lost": "5"
+      },
+      "entryNo": 32,
+      "name": "小松 芹奈（ヨネックス）・佐藤 心美（早稲田大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "中谷_ももこ_須磨学園",
+        "天間_麗奈_東北"
+      ],
+      "opponents": [
+        {
+          "lastName": "小松",
+          "firstName": "芹奈",
+          "team": "ヨネックス",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "小松_芹奈_ヨネックス"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "心美",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "佐藤_心美_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "5",
+        "lost": "4"
+      },
+      "entryNo": 39,
+      "name": "中谷 ももこ（須磨学園）・天間 麗奈（東北）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "海老根_香澄_芳賀クラブ",
+        "江口_咲礼紗_関西大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩倉",
+          "firstName": "彩佳",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "岩倉_彩佳_どんぐり北広島"
+        },
+        {
+          "lastName": "高橋",
+          "firstName": "偲",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "高橋_偲_どんぐり北広島"
         }
       ],
       "result": "lose",
@@ -709,32 +1117,32 @@
         "lost": "5"
       },
       "entryNo": 13,
-      "name": "山本 貴大・川﨑 浩希（ワタキューセイモア）",
+      "name": "海老根 香澄（芳賀クラブ）・江口 咲礼紗（関西大学）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "2回戦",
+      "round": "準決勝",
       "pair": [
-        "塚本_光琉_岡崎城西",
-        "野本_凌生_法政大学"
+        "岩倉_彩佳_どんぐり北広島",
+        "高橋_偲_どんぐり北広島"
       ],
       "opponents": [
         {
-          "lastName": "山本",
-          "firstName": "貴大",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
+          "lastName": "海老根",
+          "firstName": "香澄",
+          "team": "芳賀クラブ",
+          "prefecture": "栃木",
           "playerId": null,
-          "tempId": "山本_貴大_ワタキューセイモア"
+          "tempId": "海老根_香澄_芳賀クラブ"
         },
         {
-          "lastName": "川﨑",
-          "firstName": "浩希",
-          "team": "ワタキューセイモア",
-          "prefecture": "京都",
+          "lastName": "江口",
+          "firstName": "咲礼紗",
+          "team": "関西大学",
+          "prefecture": "",
           "playerId": null,
-          "tempId": "川﨑_浩希_ワタキューセイモア"
+          "tempId": "江口_咲礼紗_関西大学"
         }
       ],
       "result": "win",
@@ -742,441 +1150,101 @@
         "won": "5",
         "lost": "1"
       },
-      "entryNo": 43,
-      "name": "塚本 光琉（岡崎城西）・野本 凌生（法政大学）",
+      "entryNo": 18,
+      "name": "岩倉 彩佳・高橋 偲（どんぐり北広島）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "2回戦",
+      "round": "準決勝",
       "pair": [
-        "山口_晃輝_ベスト",
-        "佐藤_功輝_ベスト"
+        "中谷_さくら_明治大学",
+        "前田_梨緒_明治大学"
       ],
       "opponents": [
         {
-          "lastName": "菊山",
-          "firstName": "太陽",
-          "team": "法政大学",
-          "prefecture": "",
+          "lastName": "中谷",
+          "firstName": "ももこ",
+          "team": "須磨学園",
+          "prefecture": "兵庫県",
           "playerId": null,
-          "tempId": "菊山_太陽_法政大学"
+          "tempId": "中谷_ももこ_須磨学園"
         },
         {
-          "lastName": "橋場",
-          "firstName": "柊一郎",
-          "team": "法政大学",
-          "prefecture": "",
-          "playerId": "hashiba-toichiro",
-          "tempId": "橋場_柊一郎_法政大学"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "3",
-        "lost": "5"
-      },
-      "entryNo": 40,
-      "name": "山口 晃輝・佐藤 功輝（ベスト）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "菊山_太陽_法政大学",
-        "橋場_柊一郎_法政大学"
-      ],
-      "opponents": [
-        {
-          "lastName": "山口",
-          "firstName": "晃輝",
-          "team": "ベスト",
-          "prefecture": "東京",
+          "lastName": "天間",
+          "firstName": "麗奈",
+          "team": "東北",
+          "prefecture": "宮城県",
           "playerId": null,
-          "tempId": "山口_晃輝_ベスト"
-        },
-        {
-          "lastName": "佐藤",
-          "firstName": "功輝",
-          "team": "ベスト",
-          "prefecture": "東京",
-          "playerId": null,
-          "tempId": "佐藤_功輝_ベスト"
+          "tempId": "天間_麗奈_東北"
         }
       ],
       "result": "win",
       "games": {
         "won": "5",
-        "lost": "3"
+        "lost": "1"
       },
-      "entryNo": 21,
-      "name": "菊山 太陽・橋場 柊一郎（法政大学）",
+      "entryNo": 22,
+      "name": "中谷 さくら・前田 梨緒（明治大学）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "2回戦",
+      "round": "準決勝",
       "pair": [
-        "上岡_俊介_UpRise",
-        "丸山_海斗_oneteam"
+        "中谷_ももこ_須磨学園",
+        "天間_麗奈_東北"
       ],
       "opponents": [
         {
-          "lastName": "浅見",
-          "firstName": "竣一朗",
-          "team": "早稲田大学",
+          "lastName": "中谷",
+          "firstName": "さくら",
+          "team": "明治大学",
           "prefecture": "",
           "playerId": null,
-          "tempId": "浅見_竣一朗_早稲田大学"
+          "tempId": "中谷_さくら_明治大学"
         },
-        {
-          "lastName": "安達",
-          "firstName": "宣",
-          "team": "早稲田大学",
-          "prefecture": "",
-          "playerId": null,
-          "tempId": "安達_宣_早稲田大学"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "3"
-      },
-      "entryNo": 25,
-      "name": "上岡 俊介（UpRise）・丸山 海斗（oneteam）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "浅見_竣一朗_早稲田大学",
-        "安達_宣_早稲田大学"
-      ],
-      "opponents": [
-        {
-          "lastName": "上岡",
-          "firstName": "俊介",
-          "team": "UpRise",
-          "prefecture": "京都",
-          "playerId": "ueoka-shunsuke",
-          "tempId": "上岡_俊介_UpRise"
-        },
-        {
-          "lastName": "丸山",
-          "firstName": "海斗",
-          "team": "oneteam",
-          "prefecture": "大阪",
-          "playerId": "maruyama-kaito",
-          "tempId": "丸山_海斗_oneteam"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "3",
-        "lost": "5"
-      },
-      "entryNo": 9,
-      "name": "浅見 竣一朗・安達 宣（早稲田大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "本倉_健太郎_NTT西日本",
-        "広岡_宙_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "安藤",
-          "firstName": "圭祐",
-          "team": "東邦ガス",
-          "prefecture": "",
-          "playerId": "ando-kesuke",
-          "tempId": "安藤_圭祐_東邦ガス"
-        },
-        {
-          "lastName": "安藤",
-          "firstName": "悠作",
-          "team": "東邦ガス",
-          "prefecture": "",
-          "playerId": "ando-yusaku",
-          "tempId": "安藤_悠作_東邦ガス"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "4",
-        "lost": "5"
-      },
-      "entryNo": 29,
-      "name": "本倉 健太郎・広岡 宙（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "安藤_圭祐_東邦ガス",
-        "安藤_悠作_東邦ガス"
-      ],
-      "opponents": [
-        {
-          "lastName": "本倉",
-          "firstName": "健太郎",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "motokura-kentaro",
-          "tempId": "本倉_健太郎_NTT西日本"
-        },
-        {
-          "lastName": "広岡",
-          "firstName": "宙",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "hirooka-sora",
-          "tempId": "広岡_宙_NTT西日本"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "4"
-      },
-      "entryNo": 33,
-      "name": "安藤 圭祐・安藤 悠作（東邦ガス）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "片岡_暁紀_日本体育大学",
-        "黒坂_卓矢_日本体育大学"
-      ],
-      "opponents": [
-        {
-          "lastName": "丸中",
-          "firstName": "大明",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": null,
-          "tempId": "丸中_大明_NTT西日本"
-        },
-        {
-          "lastName": "長江",
-          "firstName": "光一",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "nagae-koichi",
-          "tempId": "長江_光一_NTT西日本"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "4",
-        "lost": "5"
-      },
-      "entryNo": 37,
-      "name": "片岡 暁紀・黒坂 卓矢（日本体育大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "丸中_大明_NTT西日本",
-        "長江_光一_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "片岡",
-          "firstName": "暁紀",
-          "team": "日本体育大学",
-          "prefecture": "",
-          "playerId": "kataoka-aki",
-          "tempId": "片岡_暁紀_日本体育大学"
-        },
-        {
-          "lastName": "黒坂",
-          "firstName": "卓矢",
-          "team": "日本体育大学",
-          "prefecture": "",
-          "playerId": "kurosaka-takuya",
-          "tempId": "黒坂_卓矢_日本体育大学"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "4"
-      },
-      "entryNo": 17,
-      "name": "丸中 大明・長江 光一（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "伊藤_幹_ヨネックス",
-        "米澤_要_ヨネックス"
-      ],
-      "opponents": [
-        {
-          "lastName": "内本",
-          "firstName": "貴文",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "uchimoto-takafumi",
-          "tempId": "内本_貴文_NTT西日本"
-        },
-        {
-          "lastName": "内田",
-          "firstName": "理久",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "uchida-riku",
-          "tempId": "内田_理久_NTT西日本"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "4",
-        "lost": "5"
-      },
-      "entryNo": 15,
-      "name": "伊藤 幹・米澤 要（ヨネックス）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "2回戦",
-      "pair": [
-        "内本_貴文_NTT西日本",
-        "内田_理久_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "伊藤",
-          "firstName": "幹",
-          "team": "ヨネックス",
-          "prefecture": "東京",
-          "playerId": null,
-          "tempId": "伊藤_幹_ヨネックス"
-        },
-        {
-          "lastName": "米澤",
-          "firstName": "要",
-          "team": "ヨネックス",
-          "prefecture": "東京",
-          "playerId": null,
-          "tempId": "米澤_要_ヨネックス"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "4"
-      },
-      "entryNo": 45,
-      "name": "内本 貴文・内田 理久（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準々決勝",
-      "pair": [
-        "上松_俊貴_NTT西日本",
-        "矢野_颯人_NTT西日本"
-      ],
-      "opponents": [
         {
           "lastName": "前田",
-          "firstName": "晃良",
-          "team": "川崎重工明石",
-          "prefecture": "兵庫",
+          "firstName": "梨緒",
+          "team": "明治大学",
+          "prefecture": "",
           "playerId": null,
-          "tempId": "前田_晃良_川崎重工明石"
-        },
-        {
-          "lastName": "石井",
-          "firstName": "佑一",
-          "team": "ENEOS",
-          "prefecture": "岡山",
-          "playerId": null,
-          "tempId": "石井_佑一_ENEOS"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "4"
-      },
-      "entryNo": 1,
-      "name": "上松 俊貴・矢野 颯人（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準々決勝",
-      "pair": [
-        "前田_晃良_川崎重工明石",
-        "石井_佑一_ENEOS"
-      ],
-      "opponents": [
-        {
-          "lastName": "上松",
-          "firstName": "俊貴",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "uematsu-toshiki",
-          "tempId": "上松_俊貴_NTT西日本"
-        },
-        {
-          "lastName": "矢野",
-          "firstName": "颯人",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "yano-soto",
-          "tempId": "矢野_颯人_NTT西日本"
+          "tempId": "前田_梨緒_明治大学"
         }
       ],
       "result": "lose",
       "games": {
-        "won": "4",
+        "won": "1",
         "lost": "5"
       },
-      "entryNo": 11,
-      "name": "前田 晃良（川崎重工明石）・石井 佑一（ENEOS）",
+      "entryNo": 39,
+      "name": "中谷 ももこ（須磨学園）・天間 麗奈（東北）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "準々決勝",
+      "round": "決勝",
       "pair": [
-        "塚本_光琉_岡崎城西",
-        "野本_凌生_法政大学"
+        "岩倉_彩佳_どんぐり北広島",
+        "高橋_偲_どんぐり北広島"
       ],
       "opponents": [
         {
-          "lastName": "菊山",
-          "firstName": "太陽",
-          "team": "法政大学",
+          "lastName": "中谷",
+          "firstName": "さくら",
+          "team": "明治大学",
           "prefecture": "",
           "playerId": null,
-          "tempId": "菊山_太陽_法政大学"
+          "tempId": "中谷_さくら_明治大学"
         },
         {
-          "lastName": "橋場",
-          "firstName": "柊一郎",
-          "team": "法政大学",
+          "lastName": "前田",
+          "firstName": "梨緒",
+          "team": "明治大学",
           "prefecture": "",
-          "playerId": "hashiba-toichiro",
-          "tempId": "橋場_柊一郎_法政大学"
+          "playerId": null,
+          "tempId": "前田_梨緒_明治大学"
         }
       ],
       "result": "lose",
@@ -1184,33 +1252,33 @@
         "won": "3",
         "lost": "5"
       },
-      "entryNo": 43,
-      "name": "塚本 光琉（岡崎城西）・野本 凌生（法政大学）",
+      "entryNo": 18,
+      "name": "岩倉 彩佳・高橋 偲（どんぐり北広島）",
       "category": "doubles",
       "retired": false
     },
     {
-      "round": "準々決勝",
+      "round": "決勝",
       "pair": [
-        "菊山_太陽_法政大学",
-        "橋場_柊一郎_法政大学"
+        "中谷_さくら_明治大学",
+        "前田_梨緒_明治大学"
       ],
       "opponents": [
         {
-          "lastName": "塚本",
-          "firstName": "光琉",
-          "team": "岡崎城西",
-          "prefecture": "",
+          "lastName": "岩倉",
+          "firstName": "彩佳",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
           "playerId": null,
-          "tempId": "塚本_光琉_岡崎城西"
+          "tempId": "岩倉_彩佳_どんぐり北広島"
         },
         {
-          "lastName": "野本",
-          "firstName": "凌生",
-          "team": "法政大学",
-          "prefecture": "",
+          "lastName": "高橋",
+          "firstName": "偲",
+          "team": "どんぐり北広島",
+          "prefecture": "広島",
           "playerId": null,
-          "tempId": "野本_凌生_法政大学"
+          "tempId": "高橋_偲_どんぐり北広島"
         }
       ],
       "result": "win",
@@ -1218,348 +1286,8 @@
         "won": "5",
         "lost": "3"
       },
-      "entryNo": 21,
-      "name": "菊山 太陽・橋場 柊一郎（法政大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準々決勝",
-      "pair": [
-        "上岡_俊介_UpRise",
-        "丸山_海斗_oneteam"
-      ],
-      "opponents": [
-        {
-          "lastName": "安藤",
-          "firstName": "圭祐",
-          "team": "東邦ガス",
-          "prefecture": "",
-          "playerId": "ando-kesuke",
-          "tempId": "安藤_圭祐_東邦ガス"
-        },
-        {
-          "lastName": "安藤",
-          "firstName": "悠作",
-          "team": "東邦ガス",
-          "prefecture": "",
-          "playerId": "ando-yusaku",
-          "tempId": "安藤_悠作_東邦ガス"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "1"
-      },
-      "entryNo": 25,
-      "name": "上岡 俊介（UpRise）・丸山 海斗（oneteam）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準々決勝",
-      "pair": [
-        "安藤_圭祐_東邦ガス",
-        "安藤_悠作_東邦ガス"
-      ],
-      "opponents": [
-        {
-          "lastName": "上岡",
-          "firstName": "俊介",
-          "team": "UpRise",
-          "prefecture": "京都",
-          "playerId": "ueoka-shunsuke",
-          "tempId": "上岡_俊介_UpRise"
-        },
-        {
-          "lastName": "丸山",
-          "firstName": "海斗",
-          "team": "oneteam",
-          "prefecture": "大阪",
-          "playerId": "maruyama-kaito",
-          "tempId": "丸山_海斗_oneteam"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "1",
-        "lost": "5"
-      },
-      "entryNo": 33,
-      "name": "安藤 圭祐・安藤 悠作（東邦ガス）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準々決勝",
-      "pair": [
-        "丸中_大明_NTT西日本",
-        "長江_光一_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "内本",
-          "firstName": "貴文",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "uchimoto-takafumi",
-          "tempId": "内本_貴文_NTT西日本"
-        },
-        {
-          "lastName": "内田",
-          "firstName": "理久",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "uchida-riku",
-          "tempId": "内田_理久_NTT西日本"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "1",
-        "lost": "5"
-      },
-      "entryNo": 17,
-      "name": "丸中 大明・長江 光一（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準々決勝",
-      "pair": [
-        "内本_貴文_NTT西日本",
-        "内田_理久_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "丸中",
-          "firstName": "大明",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": null,
-          "tempId": "丸中_大明_NTT西日本"
-        },
-        {
-          "lastName": "長江",
-          "firstName": "光一",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "nagae-koichi",
-          "tempId": "長江_光一_NTT西日本"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "1"
-      },
-      "entryNo": 45,
-      "name": "内本 貴文・内田 理久（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準決勝",
-      "pair": [
-        "上松_俊貴_NTT西日本",
-        "矢野_颯人_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "菊山",
-          "firstName": "太陽",
-          "team": "法政大学",
-          "prefecture": "",
-          "playerId": null,
-          "tempId": "菊山_太陽_法政大学"
-        },
-        {
-          "lastName": "橋場",
-          "firstName": "柊一郎",
-          "team": "法政大学",
-          "prefecture": "",
-          "playerId": "hashiba-toichiro",
-          "tempId": "橋場_柊一郎_法政大学"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "1"
-      },
-      "entryNo": 1,
-      "name": "上松 俊貴・矢野 颯人（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準決勝",
-      "pair": [
-        "菊山_太陽_法政大学",
-        "橋場_柊一郎_法政大学"
-      ],
-      "opponents": [
-        {
-          "lastName": "上松",
-          "firstName": "俊貴",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "uematsu-toshiki",
-          "tempId": "上松_俊貴_NTT西日本"
-        },
-        {
-          "lastName": "矢野",
-          "firstName": "颯人",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "yano-soto",
-          "tempId": "矢野_颯人_NTT西日本"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "1",
-        "lost": "5"
-      },
-      "entryNo": 21,
-      "name": "菊山 太陽・橋場 柊一郎（法政大学）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準決勝",
-      "pair": [
-        "上岡_俊介_UpRise",
-        "丸山_海斗_oneteam"
-      ],
-      "opponents": [
-        {
-          "lastName": "内本",
-          "firstName": "貴文",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "uchimoto-takafumi",
-          "tempId": "内本_貴文_NTT西日本"
-        },
-        {
-          "lastName": "内田",
-          "firstName": "理久",
-          "team": "NTT西日本",
-          "prefecture": "",
-          "playerId": "uchida-riku",
-          "tempId": "内田_理久_NTT西日本"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "2"
-      },
-      "entryNo": 25,
-      "name": "上岡 俊介（UpRise）・丸山 海斗（oneteam）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "準決勝",
-      "pair": [
-        "内本_貴文_NTT西日本",
-        "内田_理久_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "上岡",
-          "firstName": "俊介",
-          "team": "UpRise",
-          "prefecture": "京都",
-          "playerId": "ueoka-shunsuke",
-          "tempId": "上岡_俊介_UpRise"
-        },
-        {
-          "lastName": "丸山",
-          "firstName": "海斗",
-          "team": "oneteam",
-          "prefecture": "大阪",
-          "playerId": "maruyama-kaito",
-          "tempId": "丸山_海斗_oneteam"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "2",
-        "lost": "5"
-      },
-      "entryNo": 45,
-      "name": "内本 貴文・内田 理久（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "決勝",
-      "pair": [
-        "上松_俊貴_NTT西日本",
-        "矢野_颯人_NTT西日本"
-      ],
-      "opponents": [
-        {
-          "lastName": "上岡",
-          "firstName": "俊介",
-          "team": "UpRise",
-          "prefecture": "京都",
-          "playerId": "ueoka-shunsuke",
-          "tempId": "上岡_俊介_UpRise"
-        },
-        {
-          "lastName": "丸山",
-          "firstName": "海斗",
-          "team": "oneteam",
-          "prefecture": "大阪",
-          "playerId": "maruyama-kaito",
-          "tempId": "丸山_海斗_oneteam"
-        }
-      ],
-      "result": "lose",
-      "games": {
-        "won": "3",
-        "lost": "5"
-      },
-      "entryNo": 1,
-      "name": "上松 俊貴・矢野 颯人（NTT西日本）",
-      "category": "doubles",
-      "retired": false
-    },
-    {
-      "round": "決勝",
-      "pair": [
-        "上岡_俊介_UpRise",
-        "丸山_海斗_oneteam"
-      ],
-      "opponents": [
-        {
-          "lastName": "上松",
-          "firstName": "俊貴",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "uematsu-toshiki",
-          "tempId": "上松_俊貴_NTT西日本"
-        },
-        {
-          "lastName": "矢野",
-          "firstName": "颯人",
-          "team": "NTT西日本",
-          "prefecture": "広島",
-          "playerId": "yano-soto",
-          "tempId": "矢野_颯人_NTT西日本"
-        }
-      ],
-      "result": "win",
-      "games": {
-        "won": "5",
-        "lost": "3"
-      },
-      "entryNo": 25,
-      "name": "上岡 俊介（UpRise）・丸山 海斗（oneteam）",
+      "entryNo": 22,
+      "name": "中谷 さくら・前田 梨緒（明治大学）",
       "category": "doubles",
       "retired": false
     }

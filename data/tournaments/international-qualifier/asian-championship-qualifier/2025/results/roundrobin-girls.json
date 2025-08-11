@@ -1,4 +1,5 @@
-[
+{
+  "roundRobinMatches": [
     {
       "group": "A",
       "pair": [
@@ -4623,4 +4624,405 @@
       "category": "doubles",
       "retired": false
     }
-  ]
+  ],
+  "standings": {
+    "A": [
+      {
+        "id": 1,
+        "name": "原口・宮前（ワタキューセイモア）",
+        "wins": 3,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 9,
+        "rank": 1
+      },
+      {
+        "id": 4,
+        "name": "清水・小川（ダンロップ）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 2,
+        "rank": 2
+      },
+      {
+        "id": 2,
+        "name": "田辺・鈴木（ヨネックス新潟）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -1,
+        "rank": 3
+      },
+      {
+        "id": 3,
+        "name": "寺澤・相原（國學院大學）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -10,
+        "rank": 4
+      }
+    ],
+    "B": [
+      {
+        "id": 8,
+        "name": "大橋・大野（明治大学）",
+        "wins": 3,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 11,
+        "rank": 1
+      },
+      {
+        "id": 9,
+        "name": "浪岡・久保（ナガセケンコー）",
+        "wins": 3,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 8,
+        "rank": 2
+      },
+      {
+        "id": 6,
+        "name": "本間・岩元（神戸松蔭大学）",
+        "wins": 2,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -3,
+        "rank": 3
+      },
+      {
+        "id": 5,
+        "name": "久保田・原千（混合）",
+        "wins": 2,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -5,
+        "rank": 4
+      },
+      {
+        "id": 7,
+        "name": "天野・山口（混合）",
+        "wins": 0,
+        "losses": 4,
+        "points": 0,
+        "scoreDiff": -11,
+        "rank": 5
+      }
+    ],
+    "C": [
+      {
+        "id": 13,
+        "name": "海老根・江口（混合）",
+        "wins": 3,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 8,
+        "rank": 1
+      },
+      {
+        "id": 10,
+        "name": "天間・左近（日本体育大学）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 3,
+        "rank": 2
+      },
+      {
+        "id": 12,
+        "name": "赤川・杉本（ヨネックス）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -2,
+        "rank": 3
+      },
+      {
+        "id": 11,
+        "name": "永田・藤井（太平洋工業）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -9,
+        "rank": 4
+      }
+    ],
+    "D": [
+      {
+        "id": 16,
+        "name": "細田・高橋（日本体育大学）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 5,
+        "rank": 1
+      },
+      {
+        "id": 14,
+        "name": "小林・吉田（ヨネックス）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 3,
+        "rank": 2
+      },
+      {
+        "id": 15,
+        "name": "石津・柏（東北）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 2,
+        "rank": 3
+      },
+      {
+        "id": 17,
+        "name": "福田・村上（ワタキューセイモア）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -10,
+        "rank": 4
+      }
+    ],
+    "E": [
+      {
+        "id": 18,
+        "name": "岩倉・高橋（どんぐり北広島）",
+        "wins": 3,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 12,
+        "rank": 1
+      },
+      {
+        "id": 21,
+        "name": "青松・西山（明治大学）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 3,
+        "rank": 2
+      },
+      {
+        "id": 19,
+        "name": "瀬戸口・木原（混合）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -5,
+        "rank": 3
+      },
+      {
+        "id": 20,
+        "name": "縄田・髙濵（ダンロップ）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -10,
+        "rank": 4
+      }
+    ],
+    "F": [
+      {
+        "id": 22,
+        "name": "中谷・前田（明治大学）",
+        "wins": 3,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 12,
+        "rank": 1
+      },
+      {
+        "id": 24,
+        "name": "箱崎・木原（ナガセケンコー）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 3,
+        "rank": 2
+      },
+      {
+        "id": 25,
+        "name": "畑中・矢野（混合）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -7,
+        "rank": 3
+      },
+      {
+        "id": 23,
+        "name": "吉川・清水（トヨタ自動車）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -8,
+        "rank": 4
+      }
+    ],
+    "G": [
+      {
+        "id": 26,
+        "name": "前川・塚本（広島翔洋高校）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 5,
+        "rank": 1
+      },
+      {
+        "id": 27,
+        "name": "濱田・濱田（混合）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 4,
+        "rank": 2
+      },
+      {
+        "id": 28,
+        "name": "小松﨑・近藤（ダンロップ）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 4,
+        "rank": 3
+      },
+      {
+        "id": 29,
+        "name": "白﨑・大友（ヨネックス）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -13,
+        "rank": 4
+      }
+    ],
+    "H": [
+      {
+        "id": 32,
+        "name": "小松・佐藤（混合）",
+        "wins": 3,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 12,
+        "rank": 1
+      },
+      {
+        "id": 30,
+        "name": "長谷川・辻倉（ワタキューセイモア）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 5,
+        "rank": 2
+      },
+      {
+        "id": 31,
+        "name": "宮本・久保田（混合）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -2,
+        "rank": 3
+      },
+      {
+        "id": 33,
+        "name": "坂本・那須（アドマテックス）",
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -15,
+        "rank": 4
+      }
+    ],
+    "I": [
+      {
+        "id": 35,
+        "name": "浅倉・川口（太平洋工業）",
+        "wins": 4,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 7,
+        "rank": 1
+      },
+      {
+        "id": 37,
+        "name": "三浦・上野（川口市役所）",
+        "wins": 2,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": 2,
+        "rank": 2
+      },
+      {
+        "id": 38,
+        "name": "根岸・佐藤（東芝姫路）",
+        "wins": 2,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": 1,
+        "rank": 3
+      },
+      {
+        "id": 34,
+        "name": "柴田・岩元（混合）",
+        "wins": 1,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -5,
+        "rank": 4
+      },
+      {
+        "id": 36,
+        "name": "前本・佐藤（ダンロップ）",
+        "wins": 1,
+        "losses": 3,
+        "points": 0,
+        "scoreDiff": -5,
+        "rank": 5
+      }
+    ],
+    "J": [
+      {
+        "id": 39,
+        "name": "中谷・天間（混合）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 4,
+        "rank": 1
+      },
+      {
+        "id": 42,
+        "name": "上野・藤城（ナガセケンコー）",
+        "wins": 2,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 1,
+        "rank": 2
+      },
+      {
+        "id": 41,
+        "name": "濱口・吉木（日本体育大学）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -1,
+        "rank": 3
+      },
+      {
+        "id": 40,
+        "name": "坂本・川口（どんぐり北広島）",
+        "wins": 1,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -4,
+        "rank": 4
+      }
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"原口・宮前（ワタキューセイモア）","information":[{"lastName":"原口","firstName":"美咲","team":"ワタキューセイモア","prefecture":"京都","playerId":null,"tempId":"原口_美咲_ワタキューセイモア"},{"lastName":"宮前","firstName":"希帆","team":"ワタキューセイモア","prefecture":"京都","playerId":null,"tempId":"宮前_希帆_ワタキューセイモア"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":30,"name":"長谷川・辻倉（ワタキューセイモア）","information":[{"lastName":"長谷川","firstName":"憂華","team":"ワタキューセイモア","prefecture":"京都","playerId":null,"tempId":"長谷川_憂華_ワタキューセイモア"},{"lastName":"辻倉","firstName":"奈津","team":"ワタキューセイモア","prefecture":"京都","playerId":null,"tempId":"辻倉_奈津_ワタキューセイモア"}],"category":"doubles"},
@@ -31,5 +31,4 @@ const initialPlayers = [
 {"id":10,"name":"天間・左近（日本体育大学）","information":[{"lastName":"天間","firstName":"美嘉","team":"日本体育大学","prefecture":"","playerId":null,"tempId":"天間_美嘉_日本体育大学"},{"lastName":"左近","firstName":"知美","team":"日本体育大学","prefecture":"","playerId":null,"tempId":"左近_知美_日本体育大学"}],"category":"doubles"},
 {"id":39,"name":"中谷・天間（混合）","information":[{"lastName":"中谷","firstName":"ももこ","team":"須磨学園","prefecture":"兵庫県","playerId":null,"tempId":"中谷_ももこ_須磨学園"},{"lastName":"天間","firstName":"麗奈","team":"東北","prefecture":"宮城県","playerId":null,"tempId":"天間_麗奈_東北"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]
