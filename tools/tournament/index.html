@@ -32,7 +32,7 @@
     <script src="initialPlayer.js"></script>
     <script>
         // 初期スコア
-        const initScore = 2;
+        const initScore = 5;
         const initScore1 = initScore;
         const initScore2 = initScore;
 
@@ -334,12 +334,11 @@
 
             const getPairKey = (info) => {
                 // playerId が null または undefined の場合は tempId を使う
-                return info?.information?.map(p => p.playerId ?? p.tempId).sort().join("-");
+                return info?.information?.map(p => p.tempId).sort().join("-");
             }
             const getPairArray = (info) => {
                 // playerIdがnullまたはundefinedの場合、tempIdを使う
-                return info?.information?.map(p => p.playerId || p.tempId).filter(id => id != null);
-                // return info?.information?.map(p => p.playerId || p.tempId).filter(id => id != null).sort();
+                return info?.information?.map(p => p.tempId).filter(id => id != null).sort();
             }
             const isValidPair = (arr) => arr.every(id => id !== null && id !== undefined);
 
@@ -491,8 +490,8 @@
 
             const results = [];
 
-            const p1Ids = match.p1.information.map(info => info.playerId || info.tempId);
-            const p2Ids = match.p2.information.map(info => info.playerId || info.tempId);
+            const p1Ids = match.p1.information.map(info => info.tempId);
+            const p2Ids = match.p2.information.map(info => info.tempId);
 
             const p1IsValid = p1Ids.every(id => id != null);
             const p2IsValid = p2Ids.every(id => id != null);

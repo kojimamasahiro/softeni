@@ -10,6 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 
 type GenerationKey =
+  | 'international-qualifier'
   | 'all'
   | 'corporate'
   | 'highschool'
@@ -179,6 +180,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
   const pageUrl = `https://softeni-pick.com/tournaments`;
 
   const generationOrder = [
+    'international-qualifier',
     'all',
     'corporate',
     'highschool',
@@ -192,6 +194,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
     if (gen === 'junior') return 'ジュニアカテゴリ';
     if (gen === 'open') return 'オープンカテゴリ';
     if (gen === 'all') return '総合カテゴリ';
+    if (gen === 'international-qualifier') return '国際予選カテゴリ';
     return String(gen);
   };
 

@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"上松・矢野（NTT西日本）","information":[{"lastName":"上松","firstName":"俊貴","team":"NTT西日本","prefecture":"広島","playerId":"uematsu-toshiki","tempId":"上松_俊貴_NTT西日本"},{"lastName":"矢野","firstName":"颯人","team":"NTT西日本","prefecture":"広島","playerId":"yano-soto","tempId":"矢野_颯人_NTT西日本"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":35,"name":"結城・植田（混合）","information":[{"lastName":"結城","firstName":"琉衣","team":"関西学院大学","prefecture":"","playerId":null,"tempId":"結城_琉衣_関西学院大学"},{"lastName":"植田","firstName":"璃音","team":"高田商","prefecture":"","playerId":"ueda-rio","tempId":"植田_璃音_高田商"}],"category":"doubles"},
@@ -30,6 +30,5 @@ const initialPlayers = [
 {"id":24,"name":"松本・仲川（混合）","information":[{"lastName":"松本","firstName":"炎","team":"ワタキューセイモア","prefecture":"京都","playerId":null,"tempId":"松本_炎_ワタキューセイモア"},{"lastName":"仲川","firstName":"晴智","team":"東邦ガス","prefecture":"愛知","playerId":null,"tempId":"仲川_晴智_東邦ガス"}],"category":"doubles"},
 {"id":15,"name":"伊藤・米澤（ヨネックス）","information":[{"lastName":"伊藤","firstName":"幹","team":"ヨネックス","prefecture":"東京","playerId":null,"tempId":"伊藤_幹_ヨネックス"},{"lastName":"米澤","firstName":"要","team":"ヨネックス","prefecture":"東京","playerId":null,"tempId":"米澤_要_ヨネックス"}],"category":"doubles"},
 {"id":45,"name":"内本・内田（NTT西日本）","information":[{"lastName":"内本","firstName":"貴文","team":"NTT西日本","prefecture":"","playerId":"uchimoto-takafumi","tempId":"内本_貴文_NTT西日本"},{"lastName":"内田","firstName":"理久","team":"NTT西日本","prefecture":"","playerId":"uchida-riku","tempId":"内田_理久_NTT西日本"}],"category":"doubles"},
-{"id":"bye","name":"1回戦免除","information":[]},
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+{"id":"bye","name":"1回戦免除","information":[]}
+]
