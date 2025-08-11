@@ -20,6 +20,8 @@
     <textarea id="jsonOutput"></textarea>
     <script src="initialPlayer.js"></script>
     <script>
+        const initScore = 5; // 初期スコア
+
         const byePlayer = { id: "bye", name: "パッキン", information: [] };
         const allGroupMatches = {};
 
@@ -31,7 +33,7 @@
                     const p1 = players[i];
                     const p2 = players[j];
                     if (p1.id === "bye" || p2.id === "bye") continue;
-                    matches.push({ group, p1, p2, scores: { p1: 4, p2: 4 }, winner: null });
+                    matches.push({ group, p1, p2, scores: { p1: initScore, p2: initScore }, winner: null });
                 }
             }
             allGroupMatches[group] = matches;
@@ -116,7 +118,7 @@
                 const opponent = player === "p1" ? "p2" : "p1";
                 match[player].retired = true;
                 match.scores[player] = 0;
-                match.scores[opponent] = 4;
+                match.scores[opponent] = initScore;
                 match.winner = match[opponent].id;
                 matchDiv.innerHTML = renderMatchHtml(match, idx);
                 updateJsonOutput();

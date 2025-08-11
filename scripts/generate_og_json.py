@@ -1,9 +1,9 @@
 import json
 from collections import OrderedDict
 
-ENTRIES_PATH = 'entries/versus-boys.json'
-MATCHES_PATH = 'matches/versus-boys.json'
-OUTPUT_PATH = 'og.json'
+ENTRIES_PATH = 'entries/doubles-none-boys.json'
+MATCHES_PATH = 'matches/doubles-none-boys.json'
+OUTPUT_PATH = 'og/doubles-none-boys.json'
 
 def load_json(path):
     with open(path, 'r', encoding='utf-8') as f:
@@ -33,8 +33,17 @@ def detect_category(matches):
         raise ValueError("未知のカテゴリ形式")
 
 def generate_og_data(entries_list, matches_list):
-    category = detect_category(matches_list)
-    matches = matches_list[-7:]  # 準々決勝以降
+    category = "doubles"
+
+    # ラウンド名 → 順位のマッピング（大きいほど後の試合）
+    round_order = {
+        "準々決勝": 1,
+        "準決勝": 2,
+        "決勝": 3
+    }
+
+    # 対象ラウンド（準々決勝・準決勝・決勝）
+    matches = [m for m in matches_list if round_order.get(m['round'], 0) >= 1]
 
     # エントリーデータを辞書に変換
     if category == "team":
@@ -49,7 +58,6 @@ def generate_og_data(entries_list, matches_list):
             e['entryNo']: e['information'] for e in entries_list
         }
 
-    # スコア・エントリー番号の抽出
     top_scores = []
     bottom_scores = []
     entry_nos = []
@@ -67,13 +75,11 @@ def generate_og_data(entries_list, matches_list):
             bottom_scores.append(str(match['player2']['won']))
         entry_nos.extend([p1, p2])
 
-    # 重複除去し左右に分割
     unique_entry_nos = list(OrderedDict.fromkeys(entry_nos))
     half = len(unique_entry_nos) // 2
     left_entry_nos = unique_entry_nos[:half]
     right_entry_nos = unique_entry_nos[half:]
 
-    # 出力用整形
     if category == "team":
         def format_entry(no):
             return {
