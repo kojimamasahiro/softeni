@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"天間（東北高校）","information":[{"lastName":"天間","firstName":"麗奈","team":"東北高校","prefecture":"宮城","playerId":null,"tempId":"天間_麗奈_東北高校"}],"category":"singles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"江良（三重高校）","information":[{"lastName":"江良","firstName":"愛葉","team":"三重高校","prefecture":"三重","playerId":null,"tempId":"江良_愛葉_三重高校"}],"category":"singles"},
@@ -511,5 +511,4 @@ const initialPlayers = [
 {"id":261,"name":"西田（エビス商事）","information":[{"lastName":"西田","firstName":"海晴","team":"エビス商事","prefecture":"宮崎","playerId":null,"tempId":"西田_海晴_エビス商事"}],"category":"singles"},
 {"id":262,"name":"前川（広島翔洋高校）","information":[{"lastName":"前川","firstName":"愛生","team":"広島翔洋高校","prefecture":"広島","playerId":null,"tempId":"前川_愛生_広島翔洋高校"}],"category":"singles"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]
