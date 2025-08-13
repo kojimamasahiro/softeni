@@ -1,8 +1,6 @@
 import json
-from collections import defaultdict
 
-INPUT_FILE = "input.json"
-OUTPUT_FILE = "output.json"
+INPUT_FILE = "initialPlayer-over35.json"
 
 def is_bye(entry):
     return entry is not None and entry.get("id") == "bye"
@@ -11,7 +9,7 @@ def main():
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         raw_data = json.load(f)
 
-    result = defaultdict(list)
+    output_items = []
     total = len(raw_data)
     i = 0
     seedCount = 0
@@ -22,9 +20,7 @@ def main():
             i += 1
             continue
 
-        category = entry.get("category", "unknown")
-        output_items = result[category]
-
+        category = entry.get("category", "unknown")  # 出力には使わない
         next_entry = raw_data[i + 1] if i + 1 < total else None
         next3_entry = raw_data[i + 3] if i + 3 < total else None
 
@@ -32,7 +28,7 @@ def main():
             obj = {
                 "entryNo": entry["id"]
             }
-            if category == "team" or category == "versus":
+            if category in ("team", "versus"):
                 obj["team"] = entry.get("team") or entry.get("name")
                 obj["prefecture"] = entry.get("prefecture")
             else:
@@ -47,23 +43,19 @@ def main():
             obj["type"] = type_
             return obj
 
-        # --- 判定ロジック ---
         if len(output_items) == 0:
-            # 先頭の場合
             if is_bye(next_entry):
-                # 自分: seed, 次2つ: packing
-                result[category].append(make_obj(entry, "seed"))
+                output_items.append(make_obj(entry, "seed"))
                 i += 1
-                for j in range(2):
+                for _ in range(2):
                     if i < total:
                         e = raw_data[i]
                         if not is_bye(e):
-                            result[category].append(make_obj(e, "packing"))
+                            output_items.append(make_obj(e, "packing"))
                         i += 1
                 continue
             else:
-                # bye じゃない → packing
-                result[category].append(make_obj(entry, "packing"))
+                output_items.append(make_obj(entry, "packing"))
                 i += 1
                 seedCount += 1
                 continue
@@ -71,41 +63,36 @@ def main():
             if is_bye(next_entry):
                 if is_bye(next3_entry):
                     if seedCount >= 2:
-                        result[category].append(make_obj(entry, "seed"))
+                        output_items.append(make_obj(entry, "seed"))
                         seedCount = -2
                     else:
-                        result[category].append(make_obj(entry, "extra"))
+                        output_items.append(make_obj(entry, "extra"))
                         i += 1
-                        for j in range(2):
+                        for _ in range(2):
                             if i < total:
                                 e = raw_data[i]
                                 if not is_bye(e):
-                                    result[category].append(make_obj(e, "extra"))
+                                    output_items.append(make_obj(e, "extra"))
                                 i += 1
                         seedCount = 0
                         continue
                     i += 1
                 else:
-                    result[category].append(make_obj(entry, "seed"))
-                    i += 2  # seed の次は bye を飛ばす
+                    output_items.append(make_obj(entry, "seed"))
+                    i += 2
                     seedCount = -2
             else:
-                result[category].append(make_obj(entry, "packing"))
+                output_items.append(make_obj(entry, "packing"))
                 i += 1
                 seedCount += 1
 
-    # 出力処理（整形 + 各行に1エントリ）
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write("{\n")
-        for idx, (category, items) in enumerate(result.items()):
-            f.write(f'  "{category}": [\n')
-            for i, item in enumerate(items):
-                line = "    " + json.dumps(item, ensure_ascii=False)
-                if i < len(items) - 1:
-                    line += ","
-                f.write(line + "\n")
-            f.write("  ]" + ("," if idx < len(result) - 1 else "") + "\n")
-        f.write("}\n")
+    print("[")
+    for idx, item in enumerate(output_items):
+        line = "  " + json.dumps(item, ensure_ascii=False)
+        if idx < len(output_items) - 1:
+            line += ","
+        print(line)
+    print("]")
 
 if __name__ == "__main__":
     main()
