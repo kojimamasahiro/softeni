@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"福田・奥村（混合）","information":[{"lastName":"福田","firstName":"江里子","team":"久留米クラブ","prefecture":"福岡","playerId":null,"tempId":"福田_江里子_久留米クラブ"},{"lastName":"奥村","firstName":"陸矢","team":"綾小路クラブ","prefecture":"福岡","playerId":null,"tempId":"奥村_陸矢_綾小路クラブ"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"大釜・大島（混合）","information":[{"lastName":"大釜","firstName":"芳英","team":"藤井寺市連盟","prefecture":"大阪","playerId":null,"tempId":"大釜_芳英_藤井寺市連盟"},{"lastName":"大島","firstName":"美津代","team":"堺ミルフィーズ","prefecture":"大阪","playerId":null,"tempId":"大島_美津代_堺ミルフィーズ"}],"category":"doubles"},
@@ -63,5 +63,4 @@ const initialPlayers = [
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":49,"name":"高橋・澤内（混合）","information":[{"lastName":"高橋","firstName":"寛","team":"春日井クラブ","prefecture":"愛知","playerId":null,"tempId":"高橋_寛_春日井クラブ"},{"lastName":"澤内","firstName":"貴美","team":"淡路クラブ","prefecture":"兵庫","playerId":null,"tempId":"澤内_貴美_淡路クラブ"}],"category":"doubles"},
 {"id":50,"name":"岩永・土江（混合）","information":[{"lastName":"岩永","firstName":"淳","team":"ＮＴＴ西日本中国","prefecture":"広島","playerId":null,"tempId":"岩永_淳_ＮＴＴ西日本中国"},{"lastName":"土江","firstName":"公美子","team":"堀池組","prefecture":"広島","playerId":null,"tempId":"土江_公美子_堀池組"}],"category":"doubles"}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]
