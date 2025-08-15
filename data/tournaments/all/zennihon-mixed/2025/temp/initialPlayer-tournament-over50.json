@@ -1,4 +1,4 @@
-const initialPlayers = [
+[
 {"id":1,"name":"北野・小谷（混合）","information":[{"lastName":"北野","firstName":"敏明","team":"堺連盟","prefecture":"兵庫","playerId":null,"tempId":"北野_敏明_堺連盟"},{"lastName":"小谷","firstName":"麻紀","team":"箕面サングリーン","prefecture":"兵庫","playerId":null,"tempId":"小谷_麻紀_箕面サングリーン"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":5,"name":"佐藤・吉岡（混合）","information":[{"lastName":"佐藤","firstName":"知宏","team":"ごうたま","prefecture":"広島","playerId":null,"tempId":"佐藤_知宏_ごうたま"},{"lastName":"吉岡","firstName":"愛子","team":"堀池組","prefecture":"広島","playerId":null,"tempId":"吉岡_愛子_堀池組"}],"category":"doubles"},
@@ -31,5 +31,4 @@ const initialPlayers = [
 {"id":61,"name":"河本・井上（混合）","information":[{"lastName":"河本","firstName":"厚彦","team":"ＪＦＥスチール西日本","prefecture":"岡山","playerId":null,"tempId":"河本_厚彦_ＪＦＥスチール西日本"},{"lastName":"井上","firstName":"美佳","team":"ソフト浦安","prefecture":"岡山","playerId":null,"tempId":"井上_美佳_ソフト浦安"}],"category":"doubles"},
 {"id":63,"name":"柏木・成田（teamレジェンド）","information":[{"lastName":"柏木","firstName":"恵太","team":"teamレジェンド","prefecture":"大阪","playerId":null,"tempId":"柏木_恵太_teamレジェンド"},{"lastName":"成田","firstName":"扶美代","team":"teamレジェンド","prefecture":"大阪","playerId":null,"tempId":"成田_扶美代_teamレジェンド"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]}
-];
-console.log(`Initial players loaded: ${initialPlayers.length}`);
+]
