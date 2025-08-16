@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>トーナメント管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>トーナメント試合管理</h1>
+    <div style="margin-bottom: 10px;">
+        <label for="roundInput">ラウンド番号を変更:</label>
+        <input type="number" id="roundInput" min="1" value="1" style="width: 60px;">
+        <button id="setRoundBtn">変更</button>
+    </div>
+    <label>
+        <input type="checkbox" id="roundNameToggle" checked>
+        決勝・準決勝の表記にする
+    </label>
+    <button onclick="onClickGenerate()">出力</button>
+
+    <div id="roundName"></div>
+    <div id="matches"></div>
+    <button id="nextRoundBtn">次のラウンドへ</button>
+
+    <h2>最終JSON出力</h2>
+    <textarea id="jsonOutput" style="height: 400px;"></textarea>
+
+<script src="initialPlayer.js"></script>
+<script>
+/** =========================
+ *  全ラウンド同時編集 版
+ *  （既存HTMLの<script>差し替え）
+ *  ========================= */
+
+ // 初期スコア
+ const initScore = 4;
+ const initScore1 = initScore;
+ const initScore2 = initScore;
+
+ // カテゴリ
+ const category = initialPlayers[0].category; // doubles, singles, team, prefecture など
+
+ // パッキン用ダミー
+ const byePlayer = { id: "bye", name: "1回戦免除", information: [] };
+
+ // DOM
+ const matchesRoot = document.getElementById("matches");
+ const roundNameToggleEl = document.getElementById("roundNameToggle");
+ const jsonOutputEl = document.getElementById("jsonOutput");
+ // 既存UIは残すが操作は不要
+ document.getElementById("roundInput").disabled = true;
+ document.getElementById("setRoundBtn").disabled = true;
+ document.getElementById("nextRoundBtn").style.display = "none";
+
+ // ---------- ラウンド名 ----------
+ function roundLabelByCount(numMatches) {
+   if (!roundNameToggleEl.checked) return null;
+   if (numMatches === 1) return "決勝";
+   if (numMatches === 2) return "準決勝";
+   if (numMatches === 4) return "準々決勝";
+   return null;
+ }
+ function getRoundNameByIndex(idx, total) {
+   const rev = total - idx;
+   if (roundNameToggleEl.checked) {
+     if (rev === 1) return "決勝";
+     if (rev === 2) return "準決勝";
+     if (rev === 3) return "準々決勝";
+   }
+   return `${idx + 1}回戦`;
+ }
+
+ // ---------- ブラケット構築 ----------
+ // Round: { matches: [ {p1, p2, scores:{p1,p2}, winner, retiredFlags} ... ] }
+ let bracket = buildBracket(initialPlayers);
+ autoResolveByesAndPropagate();
+
+ // ★ 追加：最初の描画前に未設定スコアへ初期値を適用
+ applyInitialScoresToEditableMatches();
+
+ renderBracket();
+ updateJsonOutput();
+
+ // 初期ラウンドから決勝まで配列で作る（initialPlayersは既にbyeを含め偶数並び前提）
+ function buildBracket(players) {
+   const rounds = [];
+   let current = [];
+
+   for (let i = 0; i < players.length; i += 2) {
+     current.push(newMatch(players[i], players[i + 1]));
+   }
+   rounds.push({ matches: current });
+
+   // 次ラウンド以降は空の枠だけ先に作る
+   let size = current.length;
+   while (size > 1) {
+     size = Math.ceil(size / 2);
+     rounds.push({ matches: Array.from({ length: size }, () => newMatch(null, null)) });
+   }
+   return rounds;
+ }
+
+ function newMatch(p1, p2) {
+   return {
+     p1: p1 ?? byePlayer,
+     p2: p2 ?? byePlayer,
+     scores: { p1: null, p2: null },
+     winner: null,
+     // 個人・団体どちらでも使う退避フラグ
+     p1Retired: false,
+     p2Retired: false,
+     autoFromBye: false,
+   };
+ }
+
+ // ---------- 表示 ----------
+ function renderBracket() {
+   matchesRoot.innerHTML = "";
+
+   const container = document.createElement("div");
+   container.style.display = "grid";
+   container.style.gridTemplateColumns = `repeat(${bracket.length}, minmax(260px, 1fr))`;
+   container.style.gap = "16px";
+
+   bracket.forEach((round, rIdx) => {
+     const roundCol = document.createElement("section");
+     roundCol.className = "round-column";
+
+     const h = document.createElement("h3");
+     h.textContent = getRoundNameByIndex(rIdx, bracket.length);
+     roundCol.appendChild(h);
+
+     round.matches.forEach((m, mIdx) => {
+       // bye同士は編集不要なので薄く表示
+       const isByePair = (m.p1?.id === "bye" && m.p2?.id === "bye");
+       const card = document.createElement("div");
+       card.className = "match-result";
+       if (isByePair) card.style.opacity = "0.5";
+
+       const p1name = printableName(m.p1);
+       const p2name = printableName(m.p2);
+
+       card.innerHTML = `
+         <div class="score-container">
+           <div class="player-score-row">
+             <span class="player-name">${m.p1?.id ?? "-"}: ${p1name}</span>
+             <div class="score-set" data-side="p1"></div>
+           </div>
+           <div class="player-score-row">
+             <span class="player-name">${m.p2?.id ?? "-"}: ${p2name}</span>
+             <div class="score-set" data-side="p2"></div>
+           </div>
+         </div>
+       `;
+
+       // スコアボタン生成
+       ["p1", "p2"].forEach(side => {
+         const box = card.querySelector(`.score-set[data-side="${side}"]`);
+         [0,1,2,3,4,5].forEach(s => {
+           const btn = document.createElement("button");
+           btn.className = "score-button";
+           btn.dataset.round = String(rIdx);
+           btn.dataset.match = String(mIdx);
+           btn.dataset.player = side;
+           btn.dataset.score = String(s);
+           btn.textContent = String(s);
+           btn.addEventListener("click", onScoreClick);
+           box.appendChild(btn);
+         });
+         const rbtn = document.createElement("button");
+         rbtn.className = "retire-button";
+         rbtn.textContent = "R";
+         rbtn.dataset.round = String(rIdx);
+         rbtn.dataset.match = String(mIdx);
+         rbtn.dataset.player = side;
+         rbtn.addEventListener("click", onRetireClick);
+         box.appendChild(rbtn);
+       });
+
+       // byeは入力UI隠す
+       const shouldHide = (m.p1?.id === "bye" || m.p2?.id === "bye");
+       card.querySelectorAll(".score-button,.retire-button").forEach(b=>{
+         b.style.display = shouldHide ? "none" : "inline-block";
+       });
+
+       // 選択状態の反映
+       updateScoreButtonsUI(rIdx, mIdx, card);
+
+       roundCol.appendChild(card);
+     });
+
+     container.appendChild(roundCol);
+   });
+
+   matchesRoot.appendChild(container);
+ }
+
+ function printableName(p) {
+   if (!p) return "未定";
+   if (p.id === "bye") return "パッキン";
+   if (p.information && Array.isArray(p.information)) {
+     return buildPairName(p.information);
+   }
+   return p.name ?? "未定";
+ }
+
+ function getWinnerName(match) {
+   if (!match?.winner) return "未定";
+   if (match.winner === "bye") return "パッキン";
+   if (match.winner === match.p1?.id) return printableName(match.p1);
+   if (match.winner === match.p2?.id) return printableName(match.p2);
+   return "未定";
+ }
+
+ // ---------- クリックハンドラ ----------
+ function onScoreClick(e) {
+   const btn = e.currentTarget;
+   const rIdx = Number(btn.dataset.round);
+   const mIdx = Number(btn.dataset.match);
+   const side = btn.dataset.player;
+   const score = Number(btn.dataset.score);
+   setScore(rIdx, mIdx, side, score);
+ }
+
+ function onRetireClick(e) {
+   const btn = e.currentTarget;
+   const rIdx = Number(btn.dataset.round);
+   const mIdx = Number(btn.dataset.match);
+   const side = btn.dataset.player;
+
+   const match = bracket[rIdx].matches[mIdx];
+   const opp = side === "p1" ? "p2" : "p1";
+   match[`${side}Retired`] = true;
+   match[`${opp}Retired`] = true; // 相手側にも記録（互換維持）
+   match.scores[side] = 0;
+   match.scores[opp] = initScore;
+   match.winner = match[opp]?.id ?? null;
+
+   propagateWinner(rIdx, mIdx);
+   renderBracket();
+   updateJsonOutput();
+ }
+
+ // ---------- 勝者決定＆伝播 ----------
+ function setScore(rIdx, mIdx, side, score) {
+   const match = bracket[rIdx].matches[mIdx];
+
+   if (match.p1?.id === "bye") {
+     match.winner = match.p2?.id ?? null;
+   } else if (match.p2?.id === "bye") {
+     match.winner = match.p1?.id ?? null;
+   } else {
+     match.scores[side] = score;
+     const s1 = match.scores.p1;
+     const s2 = match.scores.p2;
+     if (s1 != null && s2 != null) {
+       if (s1 > s2) match.winner = match.p1?.id ?? null;
+       else if (s2 > s1) match.winner = match.p2?.id ?? null;
+       else match.winner = null; // 引き分けは未決定
+     } else {
+       match.winner = null;
+     }
+   }
+
+   propagateWinner(rIdx, mIdx);
+   renderBracket();
+   updateJsonOutput();
+ }
+
+ function propagateWinner(rIdx, mIdx) {
+   // 次ラウンドがなければ終了
+   if (rIdx >= bracket.length - 1) return;
+
+   const match = bracket[rIdx].matches[mIdx];
+   const nextRound = bracket[rIdx + 1];
+   const nextIndex = Math.floor(mIdx / 2);
+   const isLeft = (mIdx % 2 === 0);
+
+   // 勝者の実体を渡す
+   const winnerId = match.winner;
+   let winnerObj = byePlayer;
+   if (winnerId && winnerId !== "bye") {
+     winnerObj = (match.p1?.id === winnerId) ? match.p1 : match.p2;
+   }
+
+   const targetMatch = nextRound.matches[nextIndex];
+   if (isLeft) targetMatch.p1 = winnerObj;
+   else        targetMatch.p2 = winnerObj;
+
+   // 次枠をクリア（勝者未決時）
+   if (!winnerId) {
+     if (isLeft) targetMatch.p1 = byePlayer;
+     else        targetMatch.p2 = byePlayer;
+     targetMatch.winner = null;
+     targetMatch.scores = { p1: null, p2: null };
+   }
+
+   // 次枠が確定byeなら自動決定
+   if (targetMatch.p1?.id === "bye" && targetMatch.p2?.id !== "bye") {
+     targetMatch.winner = targetMatch.p2.id;
+     targetMatch.scores = { p1: 0, p2: initScore };
+     targetMatch.autoFromBye = true;
+   } else if (targetMatch.p2?.id === "bye" && targetMatch.p1?.id !== "bye") {
+     targetMatch.winner = targetMatch.p1.id;
+     targetMatch.scores = { p1: initScore, p2: 0 };
+     targetMatch.autoFromBye = true;
+   } else if (targetMatch.p1?.id === "bye" && targetMatch.p2?.id === "bye") {
+     targetMatch.winner = "bye";
+     targetMatch.scores = { p1: 0, p2: 0 };
+     targetMatch.autoFromBye = true;
+   }
+
+     // ★ 追加：両者がbyeでなく、スコア未設定なら初期値を与える
+  if (targetMatch.p1?.id !== 'bye' && targetMatch.p2?.id !== 'bye') {
+    if ((targetMatch.scores.p1 == null) && (targetMatch.scores.p2 == null)) {
+      ensureDefaultScoresForMatch(targetMatch);
+      // 勝者は同点なので未決定のまま
+    }
+  }
+
+  // ★ 追加：両者そろったら、BYE由来の自動結果をクリアして初期スコアを適用
+if (targetMatch.p1?.id !== "bye" && targetMatch.p2?.id !== "bye") {
+  const wasAuto = targetMatch.autoFromBye === true;
+  const looksLikeAuto =
+    (Number(targetMatch.scores?.p1) === 0 && Number(targetMatch.scores?.p2) === initScore) ||
+    (Number(targetMatch.scores?.p1) === initScore && Number(targetMatch.scores?.p2) === 0) ||
+    (Number(targetMatch.scores?.p1) === 5 && Number(targetMatch.scores?.p2) === 0) ||
+    (Number(targetMatch.scores?.p1) === 0 && Number(targetMatch.scores?.p2) === 5);
+
+  if (wasAuto || looksLikeAuto) {
+    targetMatch.autoFromBye = false;
+    targetMatch.winner = null;
+    targetMatch.scores = { p1: null, p2: null };
+  }
+  // 未設定なら初期値を反映
+  ensureDefaultScoresForMatch(targetMatch);
+}
+
+  // さらに先も連鎖的にクリア/決定
+   propagateWinner(rIdx + 1, nextIndex);
+ }
+
+ function autoResolveByesAndPropagate() {
+   // 1R目のbyeを自動確定 & 伝播
+   bracket[0].matches.forEach((m, i) => {
+     if (m.p1?.id === "bye" && m.p2?.id !== "bye") {
+       m.winner = m.p2.id;
+       m.scores = { p1: 0, p2: 5 };
+       m.autoFromBye = true;
+     } else if (m.p2?.id === "bye" && m.p1?.id !== "bye") {
+       m.winner = m.p1.id;
+       m.scores = { p1: 5, p2: 0 };
+       m.autoFromBye = true;
+     } else if (m.p1?.id === "bye" && m.p2?.id === "bye") {
+       m.winner = "bye";
+       m.scores = { p1: 0, p2: 0 };
+       m.autoFromBye = true;
+     }
+     propagateWinner(0, i);
+   });
+ }
+
+ // ---------- UIの選択状態反映 ----------
+ function updateScoreButtonsUI(rIdx, mIdx, card) {
+   const m = bracket[rIdx].matches[mIdx];
+   ["p1","p2"].forEach(side => {
+     const selected = m.scores[side];
+     card.querySelectorAll(`.score-button`).forEach(btn=>{
+       const isMine = btn.dataset.round == rIdx && btn.dataset.match == mIdx && btn.dataset.player === side;
+       if (!isMine) return;
+       const val = Number(btn.dataset.score);
+       btn.classList.toggle("selected", selected === val);
+     });
+   });
+   const winnerEl = card.querySelector(".winner");
+   if (winnerEl) winnerEl.textContent = getWinnerName(m);
+ }
+
+ // ---------- JSON 出力 ----------
+ function collectRoundHistory() {
+   // bracket から互換の roundHistory を生成
+   return bracket.map((round, rIdx) => {
+     // ラベル
+     const name = getRoundNameByIndex(rIdx, bracket.length);
+     // ディープコピーして round を付与するのは updateJsonOutput で行う
+     return {
+       round: name,
+       matches: round.matches.map(m => ({
+         p1: m.p1,
+         p2: m.p2,
+         scores: { ...m.scores },
+         winner: m.winner,
+         p1Retired: m.p1Retired,
+         p2Retired: m.p2Retired,
+       }))
+     };
+   });
+ }
+
+ function updateJsonOutput() {
+   const useRoundNames = roundNameToggleEl.checked;
+   const output = {};
+   const roundHistory = collectRoundHistory();
+
+   const roundCount = roundHistory.length;
+   const resultPairs = new Set();
+
+   const roundRankings = {};
+   roundRankings[roundCount - 1] = { winner: "優勝", loser: "準優勝" };
+   if (roundCount - 2 >= 0) roundRankings[roundCount - 2] = { loser: "ベスト4" };
+   if (roundCount - 3 >= 0) roundRankings[roundCount - 3] = { loser: "ベスト8" };
+
+   const getPairKey = (info) => info?.information?.map(p => p.tempId).sort().join("-");
+   const getPairArray = (info) => info?.information?.map(p => p.tempId).filter(Boolean).sort();
+   const isValidPair = (arr) => Array.isArray(arr) && arr.every(id => id != null);
+
+   // results（順位サマリ）
+   if (useRoundNames) {
+     const resultSummary = [];
+     const seenTeams = new Set();
+
+     if (category === "team" || category === "prefecture") {
+       const teamRankingLabels = {
+         [roundCount - 1]: { winner: "優勝", loser: "準優勝" },
+         [roundCount - 2]: { loser: "ベスト4" },
+         [roundCount - 3]: { loser: "ベスト8" },
+       };
+       for (let i = roundCount - 1; i >= 0; i--) {
+         const matches = roundHistory[i].matches;
+         const ranking = teamRankingLabels[i];
+         if (!ranking) continue;
+         for (const match of matches) {
+           if (!match.p1 || !match.p2 || !match.winner) continue;
+           const isP1Winner = match.winner === match.p1.id;
+           const winnerTeam = isP1Winner ? match.p1 : match.p2;
+           const loserTeam  = isP1Winner ? match.p2 : match.p1;
+
+           if (ranking.winner && !seenTeams.has(winnerTeam.id)) {
+             resultSummary.push({
+               team: winnerTeam.team || winnerTeam.name,
+               prefecture: winnerTeam.prefecture || "",
+               result: ranking.winner,
+               category: "team",
+             });
+             seenTeams.add(winnerTeam.id);
+           }
+           if (ranking.loser && !seenTeams.has(loserTeam.id)) {
+             resultSummary.push({
+               team: loserTeam.team || loserTeam.name,
+               prefecture: loserTeam.prefecture || "",
+               result: ranking.loser,
+               category: "team",
+             });
+             seenTeams.add(loserTeam.id);
+           }
+         }
+       }
+     } else {
+       for (let i = roundCount - 1; i >= 0; i--) {
+         const matches = roundHistory[i].matches;
+         const ranking = roundRankings[i];
+         if (!ranking) continue;
+         for (const match of matches) {
+           if (!match.p1 || !match.p2 || !match.winner) continue;
+           const p1Key = getPairKey(match.p1);
+           const p2Key = getPairKey(match.p2);
+           const p1Arr = getPairArray(match.p1);
+           const p2Arr = getPairArray(match.p2);
+           if (!p1Key || !p2Key) continue;
+
+           const isP1Winner = (match.winner === match.p1.id);
+           const winnerArr = isP1Winner ? p1Arr : p2Arr;
+           const loserArr  = isP1Winner ? p2Arr : p1Arr;
+           const winnerKey = isP1Winner ? p1Key : p2Key;
+           const loserKey  = isP1Winner ? p2Key : p1Key;
+
+           if (ranking.winner && !resultPairs.has(winnerKey) && isValidPair(winnerArr)) {
+             resultSummary.push({ playerIds: winnerArr, result: ranking.winner, category });
+             resultPairs.add(winnerKey);
+           }
+           if (ranking.loser && !resultPairs.has(loserKey) && isValidPair(loserArr)) {
+             resultSummary.push({ playerIds: loserArr, result: ranking.loser, category });
+             resultPairs.add(loserKey);
+           }
+         }
+       }
+     }
+     output.results = resultSummary;
+   }
+
+   // matches
+   output.matches = [];
+   for (let i = 0; i < roundCount; i++) {
+     const round = roundHistory[i];
+     for (const match of round.matches) {
+       const mWithRound = structuredClone(match);
+       mWithRound.round = round.round;
+
+       let split = [];
+       if (category === "team" || category === "prefecture") {
+         split = splitMatchByTeams(mWithRound);
+       } else {
+         split = splitMatchByPlayerIds(mWithRound);
+       }
+       output.matches.push(...split);
+     }
+   }
+
+   jsonOutputEl.value = JSON.stringify(output, null, 2);
+ }
+
+ // ---------- 既存互換の補助関数 ----------
+ function buildPairName(information) {
+   const names = information.map(({ lastName, firstName }) => `${lastName} ${firstName}`);
+   const teams = [...new Set(information.map(({ team }) => team).filter(Boolean))];
+   if (teams.length === 1) return `${names.join('・')}（${teams[0]}）`;
+   return information
+     .map(({ lastName, firstName, team }) => `${lastName} ${firstName}（${team}）`)
+     .join('・');
+ }
+
+ function splitMatchByPlayerIds(match) {
+   if (match.p1?.id === 'bye' || match.p2?.id === 'bye') return [];
+   const results = [];
+   const p1Ids = match.p1.information.map(info => info.tempId);
+   const p2Ids = match.p2.information.map(info => info.tempId);
+   const p1IsValid = p1Ids.every(id => id != null);
+   const p2IsValid = p2Ids.every(id => id != null);
+   const p1IsWinner = (match.winner === match.p1.id);
+   const p1Score = String(match.scores.p1 ?? "");
+   const p2Score = String(match.scores.p2 ?? "");
+
+   if (p1IsValid) {
+     results.push({
+       round: match.round,
+       pair: p1Ids,
+       opponents: match.p2.information,
+       result: p1IsWinner ? "win" : "lose",
+       games: { won: p1Score, lost: p2Score },
+       entryNo: match.p1.id,
+       name: buildPairName(match.p1.information),
+       category,
+       retired: !!match.p1Retired
+     });
+   }
+   if (p2IsValid) {
+     results.push({
+       round: match.round,
+       pair: p2Ids,
+       opponents: match.p1.information,
+       result: p1IsWinner ? "lose" : "win",
+       games: { won: p2Score, lost: p1Score },
+       entryNo: match.p2.id,
+       name: buildPairName(match.p2.information),
+       category,
+       retired: !!match.p2Retired
+     });
+   }
+   return results;
+ }
+
+ function splitMatchByTeams(match) {
+   if (match.p1?.id === 'bye' || match.p2?.id === 'bye') return [];
+   const results = [];
+   function getTeamLabel(obj) {
+     if (obj.tempId) return obj.tempId;
+     if (obj.team && obj.prefecture) return `${obj.team}_${obj.prefecture}`;
+     if (obj.team) return `${obj.name}_${obj.team}`;
+     if (obj.prefecture) return `${obj.name}_${obj.prefecture}`;
+     return obj.name;
+   }
+   function getCategory(obj) {
+     if (!obj.team && obj.prefecture) return "prefecture";
+     return "team";
+   }
+   const p1 = match.p1, p2 = match.p2;
+   const p1IsWinner = (match.winner === p1.id);
+   const p1Score = String(match.scores.p1 ?? "");
+   const p2Score = String(match.scores.p2 ?? "");
+
+   results.push({
+     round: match.round,
+     team: getTeamLabel(p1),
+     opponents: [{
+       lastName: "",
+       firstName: "",
+       team: `${p2.team}` || `${p2.name}`,
+       playerId: null,
+       prefecture: p2.prefecture || "",
+       tempId: getTeamLabel(p2),
+     }],
+     result: p1IsWinner ? "win" : "lose",
+     games: { won: p1Score, lost: p2Score },
+     entryNo: p1.id,
+     name: p1.name,
+     category: getCategory(p1),
+     retired: !!match.p1Retired
+   });
+
+   results.push({
+     round: match.round,
+     team: getTeamLabel(p2),
+     opponents: [{
+       lastName: "",
+       firstName: "",
+       team: `${p1.team}` || `${p1.name}`,
+       playerId: null,
+       prefecture: p1.prefecture || "",
+       tempId: getTeamLabel(p1),
+     }],
+     result: p1IsWinner ? "lose" : "win",
+     games: { won: p2Score, lost: p1Score },
+     entryNo: p2.id,
+     name: p2.name,
+     category: getCategory(p2),
+     retired: !!match.p2Retired
+   });
+
+   return results;
+ }
+
+ // ★ 追加：未設定(null)のスコアに初期値を適用
+function ensureDefaultScoresForMatch(m) {
+  // byeは対象外
+  if (!m || m.p1?.id === 'bye' || m.p2?.id === 'bye') return;
+  if (m.scores == null) m.scores = { p1: null, p2: null };
+
+  if (m.scores.p1 == null) m.scores.p1 = initScore1;
+  if (m.scores.p2 == null) m.scores.p2 = initScore2;
+  // 同点なので勝者は未決定のまま
+}
+
+function applyInitialScoresToEditableMatches() {
+  bracket.forEach(round => {
+    round.matches.forEach(m => ensureDefaultScoresForMatch(m));
+  });
+}
+
+ // トグル変更で出力ラベル更新
+ roundNameToggleEl.addEventListener("change", () => {
+   renderBracket();
+   updateJsonOutput();
+ });
+
+
+</script>
+
+
+</body>
+
+</html>
