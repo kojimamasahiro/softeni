@@ -19,6 +19,7 @@
     '日下部',
     '小見山',
     '瀬古沢',
+    '小野川',
   ];
 
   // datalistにplayerId, lastName, firstName, teamを全部追加

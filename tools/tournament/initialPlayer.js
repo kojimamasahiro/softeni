@@ -1,5 +1,5 @@
 const initialPlayers = [
-{"id":1,"name":"北野・小谷（混合）","information":[{"lastName":"北野","firstName":"敏明","team":"堺連盟","prefecture":"兵庫","playerId":null,"tempId":"北野_敏明_堺連盟"},{"lastName":"小谷","firstName":"麻紀","team":"箕面サングリーン","prefecture":"兵庫","playerId":null,"tempId":"小谷_麻紀_箕面サングリーン"}],"category":"doubles"},
+{"id":1,"name":"北野・小谷（混合）","information":[{"lastName":"北野","firstName":"敏明","team":"堺連盟","prefecture":"大阪","playerId":null,"tempId":"北野_敏明_堺連盟"},{"lastName":"小谷","firstName":"麻紀","team":"箕面サングリーン","prefecture":"大阪","playerId":null,"tempId":"小谷_麻紀_箕面サングリーン"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":5,"name":"佐藤・吉岡（混合）","information":[{"lastName":"佐藤","firstName":"知宏","team":"ごうたま","prefecture":"広島","playerId":null,"tempId":"佐藤_知宏_ごうたま"},{"lastName":"吉岡","firstName":"愛子","team":"堀池組","prefecture":"広島","playerId":null,"tempId":"吉岡_愛子_堀池組"}],"category":"doubles"},
 {"id":7,"name":"眞鍋・吉田（混合）","information":[{"lastName":"眞鍋","firstName":"一志","team":"フジカンパニーズ","prefecture":"愛媛","playerId":null,"tempId":"眞鍋_一志_フジカンパニーズ"},{"lastName":"吉田","firstName":"美和","team":"今治連盟","prefecture":"愛媛","playerId":null,"tempId":"吉田_美和_今治連盟"}],"category":"doubles"},
