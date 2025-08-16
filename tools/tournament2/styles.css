@@ -1,0 +1,231 @@
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .match-result {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 12px;
+        border-radius: 5px;
+    }
+
+    .score-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin: 5px 0;
+    }
+
+    .player-score-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .player-name {
+        width: 200px;
+        font-weight: bold;
+    }
+
+    .score-set {
+        display: flex;
+        gap: 4px;
+    }
+
+    .vs-text {
+        font-weight: bold;
+        margin: 4px 0;
+        align-self: center;
+    }
+
+    .score-button {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+
+    .score-button.selected {
+        background: #4caf50;
+        color: white;
+        font-weight: bold;
+    }
+
+    .winner {
+        color: #d32f2f;
+        font-weight: bold;
+    }
+
+    #nextRoundBtn {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    h2 {
+        margin-top: 40px;
+    }
+
+    #jsonOutput {
+        width: 100%;
+        height: 200px;
+        margin-top: 30px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+
+    .retire-button {
+        background-color: #f99;
+        border: 1px solid #c33;
+        color: white;
+        margin-left: 4px;
+        padding: 2px 6px;
+        cursor: pointer;
+    }
+
+    .retire-button:hover {
+        background-color: #d33;
+    }
+    /* 全体幅を拡張（カードを複数列で並べられる） */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  max-width: 1200px;           /* ← 600px → 1200px に拡張 */
+  margin: 20px auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* #matches 内をグリッドで（JSのinline指定があっても補助的に効く） */
+#matches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 可変カラム */
+  gap: 16px;
+}
+
+/* ラウンド毎のカラム */
+.round-column h3 {
+  margin: 6px 0 10px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* 試合カード */
+.match-result {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 0;                   /* グリッド間隔に任せる */
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* スコア周り：窮屈な時に折り返し可 */
+.score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;         /* 左寄せのまま幅いっぱい使う */
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.player-score-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;              /* 幅が足りない時は折り返す */
+}
+
+/* 選手名は可変幅＋省略記号で溢れ防止 */
+.player-name {
+  flex: 1 1 auto;               /* ← 固定200pxから可変へ */
+  min-width: 140px;             /* 極端に小さくならないように */
+  max-width: 100%;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ボタン群が折り返せるように */
+.score-set {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;              /* 折り返し */
+}
+
+/* 中央の vs 表記 */
+.vs-text {
+  font-weight: bold;
+  margin: 4px 0;
+  align-self: center;
+}
+
+/* ボタンはタップしやすいサイズで統一 */
+.score-button,
+.retire-button {
+  padding: 4px 8px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.score-button.selected {
+  background: #4caf50;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* retireボタンの配色は既存踏襲 */
+.retire-button {
+  background-color: #f99;
+  border: 1px solid #c33;
+  color: #fff;
+  margin-left: 4px;
+  cursor: pointer;
+}
+.retire-button:hover {
+  background-color: #d33;
+}
+
+/* 勝者テキスト */
+.winner {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* 旧UI（次ラウンドボタン等）はそのまま */
+#nextRoundBtn {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* 出力欄 */
+h2 {
+  margin-top: 32px;
+}
+#jsonOutput {
+  width: 100%;
+  height: 200px;
+  margin-top: 16px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* --- レスポンシブ調整 --- */
+@media (max-width: 720px) {
+  body { max-width: 100%; }
+  #matches { grid-template-columns: 1fr; }  /* スマホは1列 */
+  .player-name { min-width: 120px; }
+}
