@@ -9,6 +9,16 @@
 
   let jsonArray = [];
 
+  const PRIORITY_LASTNAMES = [
+    '佐々木',
+    '鍜冶田',
+    '小佐野',
+    '五十畑',
+    '新行内',
+    '小野寺',
+    '日下部',
+  ];
+
   // datalistにplayerId, lastName, firstName, teamを全部追加
   function populateDatalist() {
     playerList.innerHTML = '';
@@ -289,6 +299,29 @@
       }
 
       const joinedName = segments.join('');
+
+      // ★ 優先姓ルール（先頭・最長一致）
+      (function applyPriorityLastName() {
+        if (!joinedName) return;
+        // 長い順で照合（"佐々木" が "佐々" より先にマッチ）
+        const sorted = [...PRIORITY_LASTNAMES].sort(
+          (a, b) => b.length - a.length,
+        );
+        for (const ln of sorted) {
+          if (joinedName.startsWith(ln)) {
+            lastNameInput.value = ln;
+            firstNameInput.value = joinedName.slice(ln.length); // 残りを名へ
+            return; // ここで終わり
+          }
+        }
+      })();
+
+      if (firstNameInput.value.trim()) {
+        // すでに優先姓で分割済みなら通常ロジックへ行かない
+        return;
+      }
+
+      // ↓通常の自動分割ルール
       const nameLen = joinedName.length;
       const splitRules = { 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
       const k = splitRules[nameLen] || 2;
