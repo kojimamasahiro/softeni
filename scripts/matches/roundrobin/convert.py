@@ -121,4 +121,4 @@ for category, match_list in matches_by_category.items():
     final_results[category] = merged_results
 
 # 出力
-print(json.dumps(final_results, ensure_ascii=False, indent=2))
+print(json.dumps(merged_results, ensure_ascii=False, indent=2))

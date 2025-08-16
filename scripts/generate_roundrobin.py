@@ -1,4 +1,4 @@
-# python generate_roundrobin.py -i initialPlayers_roundrobin_girls.json -o output.json --default-size 4 --overrides "B=5,I=5" 
+# python generate_roundrobin.py -i initialPlayer-roundrobin-over50.json -o output.json --default-size 3 --label-type numeric --overrides "4=4,15=4"
 
 import json
 import argparse
@@ -19,11 +19,15 @@ def excel_labels():
             yield label
         n += 1
 
+def numeric_labels():
+    """1, 2, 3, ... を無限に生成"""
+    n = 1
+    while True:
+        yield str(n)
+        n += 1
+
 def parse_overrides(text):
-    """
-    例: 'B=5,I=5' -> {'B':5,'I':5}
-    空や None なら {}
-    """
+    """例: 'B=5,I=5' -> {'B':5,'I':5}"""
     if not text:
         return {}
     result = {}
@@ -41,24 +45,23 @@ def parse_overrides(text):
         result[k] = v
     return result
 
-def assign_groups(items, default_size=4, overrides=None):
+def assign_groups(items, default_size=4, overrides=None, label_type="alpha"):
     """
-    items を A, B, C... のキーでグループ化。
-    B, I などは overrides でサイズ上書き。それ以外は default_size。
-    例: overrides={'B':5,'I':5}
+    items を A, B, C... または 1, 2, 3... のキーでグループ化。
+    overrides: 例 {'B':5,'I':5} または {'2':5}
     """
     if overrides is None:
         overrides = {}
 
     out = {}
     idx = 0
-    labels = excel_labels()
+    labels = excel_labels() if label_type == "alpha" else numeric_labels()
 
     while idx < len(items):
         label = next(labels)
         size = overrides.get(label, default_size)
-        group = items[idx : idx + size]
-        if not group:  # 念のため
+        group = items[idx: idx + size]
+        if not group:
             break
         out[label] = group
         idx += len(group)
@@ -66,15 +69,12 @@ def assign_groups(items, default_size=4, overrides=None):
     return out
 
 def main():
-    p = argparse.ArgumentParser(description="配列をラウンドロビン用のグループ（A,B,C...）に分割")
+    p = argparse.ArgumentParser(description="配列をラウンドロビン用のグループに分割")
     p.add_argument("-i", "--input", default="input.json", help="入力ファイル（配列JSON）")
     p.add_argument("-o", "--output", default="output.json", help="出力ファイル")
     p.add_argument("--default-size", type=int, default=4, help="標準のグループサイズ（既定: 4）")
-    p.add_argument(
-        "--overrides",
-        default="",
-        help="特定グループのサイズ上書き（例: 'B=5,I=5'）",
-    )
+    p.add_argument("--overrides", default="", help="特定グループのサイズ上書き（例: 'B=5,I=5' または '2=5'）")
+    p.add_argument("--label-type", choices=["alpha", "numeric"], default="alpha", help="グループラベルの種類（alpha または numeric）")
     args = p.parse_args()
 
     if not os.path.exists(args.input):
@@ -86,7 +86,7 @@ def main():
             raise ValueError("入力JSONは配列である必要があります")
 
     overrides = parse_overrides(args.overrides)
-    grouped = assign_groups(data, default_size=args.default_size, overrides=overrides)
+    grouped = assign_groups(data, default_size=args.default_size, overrides=overrides, label_type=args.label_type)
 
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(grouped, f, ensure_ascii=False, indent=2)
