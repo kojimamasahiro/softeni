@@ -20,7 +20,7 @@
     <textarea id="jsonOutput"></textarea>
     <script src="initialPlayer.js"></script>
     <script>
-        const initScore = 4; // 初期スコア
+        const initScore = 3; // 初期スコア
 
         const byePlayer = { id: "bye", name: "パッキン", information: [] };
         const allGroupMatches = {};
@@ -33,7 +33,13 @@
                     const p1 = players[i];
                     const p2 = players[j];
                     if (p1.id === "bye" || p2.id === "bye") continue;
-                    matches.push({ group, p1, p2, scores: { p1: initScore, p2: initScore }, winner: null });
+                    matches.push({
+                        group,
+                        p1,
+                        p2,
+                        scores: { p1: initScore, p2: initScore },
+                        winner: null
+                    });
                 }
             }
             allGroupMatches[group] = matches;
@@ -50,6 +56,32 @@
                 else match.winner = null;
             }
         }
+
+        // ---- 追加/変更：名前生成・カテゴリ判定 ----
+        function buildPairName(information) {
+            const names = information.map(({ lastName, firstName }) => `${lastName} ${firstName}`);
+            const teams = [...new Set(information.map(({ team }) => team).filter(Boolean))];
+            if (teams.length === 1) return `${names.join("・")}（${teams[0]}）`;
+            return information
+                .map(({ lastName, firstName, team }) => `${lastName} ${firstName}（${team}）`)
+                .join("・");
+        }
+
+        function getDisplayName(entry) {
+            if (Array.isArray(entry.information) && entry.information.length) {
+                return buildPairName(entry.information); // doubles等
+            }
+            return entry.name || String(entry.id); // team等
+        }
+
+        function detectCategory(entry) {
+            if (entry.category) return entry.category;       // 明示があれば最優先
+            if (Array.isArray(entry.information) && entry.information.length) return "doubles";
+            if (entry.team) return "team";
+            return "unknown";
+        }
+        // ---------------------------------------
+
         // 1. 最初に matchesDiv に1回だけイベントを仕込む
         let eventRegistered = false;
 
@@ -65,13 +97,12 @@
                 allGroupMatches[group].forEach((match, i) => {
                     const div = document.createElement("div");
                     div.className = "match-result";
-                    div.dataset.match = `${group}-${i}`; // データ属性に保持
+                    div.dataset.match = `${group}-${i}`;
                     div.innerHTML = renderMatchHtml(match, i);
                     matchesDiv.appendChild(div);
                 });
             }
 
-            // クリックイベントは一度だけ登録
             if (!eventRegistered) {
                 document.getElementById("matches").addEventListener("click", handleScoreClick);
                 eventRegistered = true;
@@ -82,20 +113,24 @@
             i = parseInt(i);
             const matchId = match.group + "-" + i;
             const renderButtons = (playerKey) => {
-                return [0, 1, 2, 3, 4, 5].map(score => {
-                    const selected = match.scores[playerKey] === score ? "selected" : "";
-                    return `<button data-match='${matchId}' data-player='${playerKey}' data-score='${score}' class='score-button ${selected}'>${score}</button>`;
-                }).join("") +
-                    `<button class='retire-button' data-match='${matchId}' data-player='${playerKey}'>R</button>`;
+                return [0, 1, 2, 3, 4, 5]
+                    .map((score) => {
+                        const selected = match.scores[playerKey] === score ? "selected" : "";
+                        return `<button data-match='${matchId}' data-player='${playerKey}' data-score='${score}' class='score-button ${selected}'>${score}</button>`;
+                    })
+                    .join("") + `<button class='retire-button' data-match='${matchId}' data-player='${playerKey}'>R</button>`;
             };
 
+            const p1Name = getDisplayName(match.p1);
+            const p2Name = getDisplayName(match.p2);
+
             return `
-        <strong>試合 ${i + 1}</strong><br />
-        <div>${match.p1.name} vs ${match.p2.name}</div>
-        <div>${renderButtons("p1")} <span>← ${match.p1.name}</span></div>
-        <div>${renderButtons("p2")} <span>← ${match.p2.name}</span></div>
-        <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? match.p1.name : match.winner === match.p2.id ? match.p2.name : "未定"}</span></div>
-    `;
+            <strong>試合 ${i + 1}</strong><br />
+            <div>${p1Name} vs ${p2Name}</div>
+            <div>${renderButtons("p1")} <span>← ${p1Name}</span></div>
+            <div>${renderButtons("p2")} <span>← ${p2Name}</span></div>
+            <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? p1Name : match.winner === match.p2.id ? p2Name : "未定"}</span></div>
+            `;
         }
 
         function handleScoreClick(e) {
@@ -125,78 +160,95 @@
             }
         }
 
-        /**
-         * information 配列から
-         *  - 「lastName firstName(team)」形式
-         *  - 同一チームなら team は最後尾で 1 回だけ
-         * を生成する。
-         */
-        function buildPairName(information) {
-        // 選手名（姓名）を取り出す
-        const names = information.map(({ lastName, firstName }) => `${lastName} ${firstName}`);
-
-        // チームを重複なしで抽出
-        const teams = [...new Set(information.map(({ team }) => team).filter(Boolean))];
-
-        // 全員同じチームなら最後に 1 回だけ付ける
-        if (teams.length === 1) {
-            return `${names.join('・')}（${teams[0]}）`;
-        }
-
-        // 異なるチームが混在する場合は個別に付ける
-        return information
-            .map(({ lastName, firstName, team }) => `${lastName} ${firstName}（${team}）`)
-            .join('・');
-        }
-
         function updateJsonOutput() {
-            const output = { matches: [] };
+            const output = { roundRobinMatches: [] };
 
             for (const group in allGroupMatches) {
                 for (const match of allGroupMatches[group]) {
                     if (!match.winner) continue;
 
-                    const p1Ids = match.p1.information.map(info => info.playerId || info.tempId);
-                    const p2Ids = match.p2.information.map(info => info.playerId || info.tempId);
-
-                    const p1IsValid = p1Ids.every(id => id != null);
-                    const p2IsValid = p2Ids.every(id => id != null);
+                    const cat1 = detectCategory(match.p1);
+                    const cat2 = detectCategory(match.p2);
+                    const category = cat1 === cat2 ? cat1 : cat1; // 混在はまずない想定。あれば p1 優先。
 
                     const p1Score = String(match.scores.p1);
                     const p2Score = String(match.scores.p2);
 
-                    const category = "doubles";
+                    if (category === "team") {
+                        // ---- team カテゴリの出力 ----
+                        const p1Key = match.p1.tempId || match.p1.team || String(match.p1.id);
+                        const p2Key = match.p2.tempId || match.p2.team || String(match.p2.id);
 
-                    if (p1IsValid) {
-                        output.matches.push({
+                        // p1 視点
+                        output.roundRobinMatches.push({
                             group,
-                            pair: p1Ids,
-                            opponents: match.p2.information,
+                            team: p1Key, // 識別キー（tempId/チーム名/IDの順）
+                            opponentTeam: {
+                                team: match.p2.team || p2Key,
+                                prefecture: match.p2.prefecture || ""
+                            },
                             result: match.winner === match.p1.id ? "win" : "lose",
                             games: { won: p1Score, lost: p2Score },
                             entryNo: match.p1.id,
-                            name: buildPairName(match.p1.information),
-                            category: category,
+                            name: getDisplayName(match.p1),
+                            category: "team",
                             retired: match.p1.retired || false
                         });
-                    }
 
-                    if (p2IsValid) {
-                        output.matches.push({
+                        // p2 視点
+                        output.roundRobinMatches.push({
                             group,
-                            pair: p2Ids,
-                            opponents: match.p1.information,
+                            team: p2Key,
+                            opponentTeam: {
+                                team: match.p1.team || p1Key,
+                                prefecture: match.p1.prefecture || ""
+                            },
                             result: match.winner === match.p2.id ? "win" : "lose",
                             games: { won: p2Score, lost: p1Score },
                             entryNo: match.p2.id,
-                            name: buildPairName(match.p2.information),
-                            category: category,
+                            name: getDisplayName(match.p2),
+                            category: "team",
                             retired: match.p2.retired || false
                         });
+                    } else {
+                        // ---- doubles（従来） ----
+                        const p1Ids = (match.p1.information || []).map((info) => info.playerId || info.tempId);
+                        const p2Ids = (match.p2.information || []).map((info) => info.playerId || info.tempId);
+                        const p1IsValid = p1Ids.length > 0 && p1Ids.every((id) => id != null);
+                        const p2IsValid = p2Ids.length > 0 && p2Ids.every((id) => id != null);
+
+                        if (p1IsValid) {
+                            output.roundRobinMatches.push({
+                                group,
+                                pair: p1Ids,
+                                opponents: match.p2.information || [],
+                                result: match.winner === match.p1.id ? "win" : "lose",
+                                games: { won: p1Score, lost: p2Score },
+                                entryNo: match.p1.id,
+                                name: getDisplayName(match.p1),
+                                category: "doubles",
+                                retired: match.p1.retired || false
+                            });
+                        }
+
+                        if (p2IsValid) {
+                            output.roundRobinMatches.push({
+                                group,
+                                pair: p2Ids,
+                                opponents: match.p1.information || [],
+                                result: match.winner === match.p2.id ? "win" : "lose",
+                                games: { won: p2Score, lost: p1Score },
+                                entryNo: match.p2.id,
+                                name: getDisplayName(match.p2),
+                                category: "doubles",
+                                retired: match.p2.retired || false
+                            });
+                        }
                     }
                 }
             }
 
+            // ---- standings はそのままでOK（nameとidがあれば動く）----
             output.standings = {};
 
             for (const group in initialPlayersByGroup) {
@@ -242,13 +294,12 @@
 
                 // 勝ち点・勝率でソートし順位を決定
                 const sorted = Object.values(playerStats).sort((a, b) => {
-                    const winRateA = a.wins / (a.wins + a.losses);
-                    const winRateB = b.wins / (b.wins + b.losses);
+                    const winRateA = a.wins / (a.wins + a.losses || 1);
+                    const winRateB = b.wins / (b.wins + b.losses || 1);
                     if (winRateB !== winRateA) return winRateB - winRateA;
                     return b.scoreDiff - a.scoreDiff;
                 });
 
-                // 順位を追加
                 sorted.forEach((s, index) => {
                     s.rank = index + 1;
                     standings.push(s);
