@@ -1621,14 +1621,14 @@ const initialPlayers = [
   },
   {
     id: 111,
-    name: '辻浦（辻浦壱経）',
+    name: '辻浦（川崎重工明石）',
     information: [
       {
         lastName: '辻浦',
         firstName: '壱経',
-        team: '辻浦壱経',
+        team: '川崎重工明石',
         playerId: null,
-        tempId: '壱経_辻浦_辻浦壱経',
+        tempId: '壱経_辻浦_川崎重工明石',
       },
     ],
   },
