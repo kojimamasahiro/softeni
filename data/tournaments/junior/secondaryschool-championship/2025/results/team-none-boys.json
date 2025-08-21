@@ -5,7 +5,56 @@
   "startDate": "2025-08-19",
   "endDate": "2025-08-21",
   "location": "熊本県",
-  "results": [],
+  "results": [
+    {
+      "team": "上青木中学校",
+      "prefecture": "埼玉県",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "清明学園中学校",
+      "prefecture": "東京都",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "松山中学校",
+      "prefecture": "埼玉県",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "新宮中学校",
+      "prefecture": "福岡県",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "名寄中学校",
+      "prefecture": "北海道",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "明徳義塾中学校",
+      "prefecture": "高知県",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "周南クラブ",
+      "prefecture": "山口県",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "奈良LEGENDS",
+      "prefecture": "奈良県",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
   "matches": [
     {
       "round": "1回戦",
@@ -418,6 +467,696 @@
       },
       "entryNo": 24,
       "name": "知床未来中学校（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "上青木中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "七尾中学校",
+          "playerId": null,
+          "prefecture": "石川県",
+          "tempId": "七尾中学校_石川県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "上青木中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "七尾中学校_石川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "上青木中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "上青木中学校_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 3,
+      "name": "七尾中学校（石川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "名寄中学校_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "一関協会",
+          "playerId": null,
+          "prefecture": "岩手県",
+          "tempId": "一関協会_岩手県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 4,
+      "name": "名寄中学校（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "一関協会_岩手県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "名寄中学校",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "名寄中学校_北海道"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 7,
+      "name": "一関協会（岩手県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "明徳義塾中学校_高知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "iNexus",
+          "playerId": null,
+          "prefecture": "島根県",
+          "tempId": "iNexus_島根県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 8,
+      "name": "明徳義塾中学校（高知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "iNexus_島根県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明徳義塾中学校",
+          "playerId": null,
+          "prefecture": "高知県",
+          "tempId": "明徳義塾中学校_高知県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 9,
+      "name": "iNexus（島根県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "松山中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "朝日中学校",
+          "playerId": null,
+          "prefecture": "愛知県",
+          "tempId": "朝日中学校_愛知県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "松山中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "朝日中学校_愛知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松山中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "松山中学校_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 13,
+      "name": "朝日中学校（愛知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "周南クラブ_山口県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "琴平中学校",
+          "playerId": null,
+          "prefecture": "香川県",
+          "tempId": "琴平中学校_香川県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 14,
+      "name": "周南クラブ（山口県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "琴平中学校_香川県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "周南クラブ",
+          "playerId": null,
+          "prefecture": "山口県",
+          "tempId": "周南クラブ_山口県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 16,
+      "name": "琴平中学校（香川県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "新宮中学校_福岡県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三国STC",
+          "playerId": null,
+          "prefecture": "福井県",
+          "tempId": "三国STC_福井県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 18,
+      "name": "新宮中学校（福岡県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "三国STC_福井県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "新宮中学校",
+          "playerId": null,
+          "prefecture": "福岡県",
+          "tempId": "新宮中学校_福岡県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 19,
+      "name": "三国STC（福井県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "チェストクラブ_鹿児島県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "清明学園中学校",
+          "playerId": null,
+          "prefecture": "東京都",
+          "tempId": "清明学園中学校_東京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 20,
+      "name": "チェストクラブ（鹿児島県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "清明学園中学校_東京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "チェストクラブ",
+          "playerId": null,
+          "prefecture": "鹿児島県",
+          "tempId": "チェストクラブ_鹿児島県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 21,
+      "name": "清明学園中学校（東京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "白神JSTC_秋田県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "奈良LEGENDS_奈良県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 23,
+      "name": "白神JSTC（秋田県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "奈良LEGENDS_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "白神JSTC",
+          "playerId": null,
+          "prefecture": "秋田県",
+          "tempId": "白神JSTC_秋田県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "奈良LEGENDS（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "上青木中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "名寄中学校",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "名寄中学校_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "上青木中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "名寄中学校_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "上青木中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "上青木中学校_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "名寄中学校（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "明徳義塾中学校_高知県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松山中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "松山中学校_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 8,
+      "name": "明徳義塾中学校（高知県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "松山中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "明徳義塾中学校",
+          "playerId": null,
+          "prefecture": "高知県",
+          "tempId": "明徳義塾中学校_高知県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "松山中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "周南クラブ_山口県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "新宮中学校",
+          "playerId": null,
+          "prefecture": "福岡県",
+          "tempId": "新宮中学校_福岡県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 14,
+      "name": "周南クラブ（山口県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "新宮中学校_福岡県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "周南クラブ",
+          "playerId": null,
+          "prefecture": "山口県",
+          "tempId": "周南クラブ_山口県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 18,
+      "name": "新宮中学校（福岡県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "清明学園中学校_東京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良県",
+          "tempId": "奈良LEGENDS_奈良県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 21,
+      "name": "清明学園中学校（東京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "奈良LEGENDS_奈良県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "清明学園中学校",
+          "playerId": null,
+          "prefecture": "東京都",
+          "tempId": "清明学園中学校_東京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 25,
+      "name": "奈良LEGENDS（奈良県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "上青木中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "松山中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "松山中学校_埼玉県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "上青木中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "松山中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "上青木中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "上青木中学校_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 12,
+      "name": "松山中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "新宮中学校_福岡県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "清明学園中学校",
+          "playerId": null,
+          "prefecture": "東京都",
+          "tempId": "清明学園中学校_東京都"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 18,
+      "name": "新宮中学校（福岡県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "清明学園中学校_東京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "新宮中学校",
+          "playerId": null,
+          "prefecture": "福岡県",
+          "tempId": "新宮中学校_福岡県"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 21,
+      "name": "清明学園中学校（東京都）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "上青木中学校_埼玉県",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "清明学園中学校",
+          "playerId": null,
+          "prefecture": "東京都",
+          "tempId": "清明学園中学校_東京都"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "上青木中学校（埼玉県）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "清明学園中学校_東京都",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "上青木中学校",
+          "playerId": null,
+          "prefecture": "埼玉県",
+          "tempId": "上青木中学校_埼玉県"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 21,
+      "name": "清明学園中学校（東京都）",
       "category": "team",
       "retired": false
     }
