@@ -337,6 +337,8 @@
 
       lastNameInput.value = newLastName;
       firstNameInput.value = newFirstName;
+
+      teamInput.focus();
     });
   }
 
@@ -569,6 +571,20 @@
 
   // 初期表示だけリセット
   initializeInputArea();
+
+  // Enterキーで「JSON生成・追加」ボタンと同じ処理を実行し、1人目の姓にカーソルを戻す
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // デフォルト動作（送信や改行）を防ぐ
+      generateBtn.click(); // JSON生成ボタンの処理を呼ぶ
+
+      // 最初の lastName 入力欄にフォーカスを移動
+      const firstLastName = document.querySelector('.player-group .lastName');
+      if (firstLastName) {
+        firstLastName.focus();
+      }
+    }
+  });
 })();
 
 const output = document.getElementById('output');
@@ -589,6 +605,27 @@ copyBtn.addEventListener('click', () => {
       alert('コピーに失敗しました: ' + err);
     });
 });
+
+function focusNextLastName(fromContainer) {
+  const groups = Array.from(document.querySelectorAll('.player-group'));
+  const idx = groups.indexOf(fromContainer);
+
+  let targetGroup;
+  if (idx >= 0 && idx + 1 < groups.length) {
+    targetGroup = groups[idx + 1];
+  } else {
+    // 末尾なら新規行を追加してそこに移動
+    addPlayerBtn.click();
+    const newGroups = document.querySelectorAll('.player-group');
+    targetGroup = newGroups[newGroups.length - 1];
+  }
+
+  const nextLast = targetGroup.querySelector('.lastName');
+  if (nextLast) {
+    nextLast.focus();
+    nextLast.select(); // 既存文字があれば選択状態に
+  }
+}
 
 // スペース・カッコ・数字を削除する関数
 function removeUnwantedChars(event) {
@@ -637,6 +674,19 @@ function setupTeamPrefectureAutoFill(container) {
       }
     } catch (e) {
       console.warn('補完用JSONがパースできませんでした：', e);
+    }
+  });
+
+  teamInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && teamInput.value.trim()) {
+      e.preventDefault();
+      focusNextLastName(container);
+    }
+  });
+
+  teamInput.addEventListener('change', () => {
+    if (teamInput.value.trim()) {
+      focusNextLastName(container);
     }
   });
 }
