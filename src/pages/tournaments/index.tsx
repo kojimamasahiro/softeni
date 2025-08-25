@@ -13,6 +13,7 @@ type GenerationKey =
   | 'international-qualifier'
   | 'all'
   | 'corporate'
+  | 'university'
   | 'highschool'
   | 'junior'
   | 'open'
@@ -183,6 +184,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
     'international-qualifier',
     'all',
     'corporate',
+    'university',
     'highschool',
     'junior',
     'open',
@@ -191,6 +193,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
   const generationTitle = (gen: GenerationKey) => {
     if (gen === 'corporate') return '実業団・社会人カテゴリ';
     if (gen === 'highschool') return '高校カテゴリ';
+    if (gen === 'university') return '大学カテゴリ';
     if (gen === 'junior') return 'ジュニアカテゴリ';
     if (gen === 'open') return 'オープンカテゴリ';
     if (gen === 'all') return '総合カテゴリ';

@@ -25,6 +25,55 @@
     '大多和',
   ];
 
+  // ---- helpers: 空白/数字/カッコ除去・チーム候補抽出・比較用正規化 ----
+  function removeDigitsSpacesParens(s) {
+    // 半角/全角の数字・スペース・カッコを全て除去
+    return s.replace(/[0-9０-９()\uFF08\uFF09\s\u3000]/g, '');
+  }
+
+  function compact(s) {
+    // 空白（半角/全角）を除去
+    return (s || '').replace(/[\s\u3000]/g, '');
+  }
+
+  function extractParenContent(raw) {
+    // 最初に出てくるカッコ内テキストを抽出（（…）/ (...) 両方対応）
+    const m = raw.match(/[（(]([^（）()]+)[）)]/);
+    return m ? m[1] : null;
+  }
+
+  function findTeamFromOutputByCompact(compactTeam) {
+    if (!compactTeam) return null;
+
+    // 1) teamPrefectureMap から正規化一致を探す
+    if (typeof teamPrefectureMap !== 'undefined') {
+      for (const teamName of Object.keys(teamPrefectureMap)) {
+        if (compact(teamName) === compactTeam)
+          return { team: teamName, prefecture: teamPrefectureMap[teamName] };
+      }
+    }
+
+    // 2) output.value の既存JSONから探す
+    try {
+      const parsed = JSON.parse(document.getElementById('output').value);
+      if (Array.isArray(parsed)) {
+        for (const pair of parsed) {
+          for (const player of pair.information || []) {
+            if (player.team && compact(player.team) === compactTeam) {
+              return {
+                team: player.team,
+                prefecture: player.prefecture || null,
+              };
+            }
+          }
+        }
+      }
+    } catch {
+      // パース失敗は無視
+    }
+    return null;
+  }
+
   // datalistにplayerId, lastName, firstName, teamを全部追加
   function populateDatalist() {
     playerList.innerHTML = '';
@@ -182,163 +231,140 @@
     const prefectureInput = container.querySelector('.prefecture');
 
     lastNameInput.addEventListener('input', () => {
-      const original = lastNameInput.value.trim();
-      if (!original) return;
+      const raw = lastNameInput.value;
+      if (!raw.trim()) return;
 
-      let segments = original.split(/[\s　]+/).filter(Boolean);
-      segments = segments
-        .map((s) => s.replace(/[0-9０-９]/g, ''))
-        .filter(Boolean);
+      // 0) カッコ内からチーム候補を先に拾う（空白を除去して比較）
+      const paren = extractParenContent(raw); // 例: " 石川工業 高等 専門 学校 "
+      const parenCompact = compact(paren); // 例: "石川工業高等専門学校"
+      let detectedTeam = null;
+      let detectedPref = null;
 
-      let teamNames = [];
-      let prefectureNames = [];
-      let outputParsed = null;
-
-      // ▼ 辞書から取得
-      if (typeof teamPrefectureMap !== 'undefined') {
-        teamNames = Object.keys(teamPrefectureMap);
-        prefectureNames = [...new Set(Object.values(teamPrefectureMap))];
+      if (parenCompact) {
+        const hit = findTeamFromOutputByCompact(parenCompact);
+        if (hit) {
+          detectedTeam = hit.team;
+          detectedPref = hit.prefecture || null;
+        }
       }
 
-      // ▼ output.value から動的取得
+      // 1) 数字・空白・カッコを削除した文字列を作る（姓名専用）
+      const cleaned = removeDigitsSpacesParens(raw); // 例: "御手洗友哉石川工業高等専門学校"
+      if (!cleaned) return;
+
+      // 2) 既存の「出力JSONと辞書」からチーム一覧/都道府県一覧を取得（後方一致検出用）
+      let teamNames = [];
+      let prefectureNames = [];
       try {
-        outputParsed = JSON.parse(document.getElementById('output').value);
+        const outputParsed = JSON.parse(
+          document.getElementById('output').value,
+        );
         if (Array.isArray(outputParsed)) {
           for (const pair of outputParsed) {
             for (const player of pair.information || []) {
-              if (player.team && !teamNames.includes(player.team)) {
+              if (player.team && !teamNames.includes(player.team))
                 teamNames.push(player.team);
-              }
               if (
                 player.prefecture &&
                 !prefectureNames.includes(player.prefecture)
-              ) {
+              )
                 prefectureNames.push(player.prefecture);
-              }
             }
           }
         }
-      } catch (e) {
-        console.warn('output.value の JSONパース失敗：', e);
+      } catch {
+        /* noop */
+      }
+      if (typeof teamPrefectureMap !== 'undefined') {
+        for (const t of Object.keys(teamPrefectureMap))
+          if (!teamNames.includes(t)) teamNames.push(t);
+        for (const p of new Set(Object.values(teamPrefectureMap)))
+          if (!prefectureNames.includes(p)) prefectureNames.push(p);
       }
 
-      // ▼ チーム名を後方一致で検出
-      let matchedTeam = null;
-      for (let len = Math.min(5, segments.length); len >= 1; len--) {
-        const joined = segments.slice(-len).join('');
-        if (teamNames.includes(joined)) {
-          matchedTeam = joined;
-          segments.splice(-len, len);
-          break;
+      // 3) cleaned から、まず後方に付いている「チーム名/都道府県名」を剥がす（空白なし比較）
+      let rest = cleaned;
+      // （優先的にカッコから見つかったチームを使う）
+      if (detectedTeam) {
+        teamInput.value = detectedTeam;
+        if (detectedPref && !prefectureInput.value) {
+          prefectureInput.value = detectedPref;
+        } else if (
+          !prefectureInput.value &&
+          typeof teamPrefectureMap !== 'undefined'
+        ) {
+          const pref = teamPrefectureMap[detectedTeam];
+          if (pref) prefectureInput.value = pref;
+        }
+        // cleaned 末尾に team が含まれていたら削る（空白無し比較）
+        const teamComp = compact(detectedTeam);
+        if (rest.endsWith(teamComp))
+          rest = rest.slice(0, rest.length - teamComp.length);
+      } else {
+        // カッコから見つからない場合は後方一致で検出
+        for (const t of teamNames) {
+          const tc = compact(t);
+          if (tc && rest.endsWith(tc)) {
+            teamInput.value = t;
+            rest = rest.slice(0, rest.length - tc.length);
+            if (
+              !prefectureInput.value &&
+              typeof teamPrefectureMap !== 'undefined' &&
+              teamPrefectureMap[t]
+            ) {
+              prefectureInput.value = teamPrefectureMap[t];
+            }
+            break;
+          }
+        }
+        for (const p of prefectureNames) {
+          const pc = compact(p);
+          if (pc && rest.endsWith(pc)) {
+            if (!prefectureInput.value) prefectureInput.value = p;
+            rest = rest.slice(0, rest.length - pc.length);
+            break;
+          }
         }
       }
 
-      if (matchedTeam) {
-        teamInput.value = matchedTeam;
-
-        // 他の空欄選手にも team を補完
-        document.querySelectorAll('.player-group').forEach((group) => {
-          const ti = group.querySelector('.team');
-          if (ti && !ti.value.trim()) {
-            ti.value = matchedTeam;
-          }
-        });
-
-        // ▼ prefecture 補完
-        if (!prefectureInput.value) {
-          let pref = null;
-
-          if (typeof teamPrefectureMap !== 'undefined') {
-            pref = teamPrefectureMap[matchedTeam];
-          }
-
-          if (!pref && Array.isArray(outputParsed)) {
-            for (const pair of outputParsed) {
-              for (const player of pair.information || []) {
-                if (player.team === matchedTeam && player.prefecture) {
-                  pref = player.prefecture;
-                  break;
-                }
-              }
-              if (pref) break;
+      // 4) 残り（rest）を姓・名に分割
+      // 既存の優先姓ルール
+      if (!firstNameInput.value.trim()) {
+        const joinedName = rest; // すでに空白/数字/カッコ除去済み
+        (function applyPriorityLastName() {
+          if (!joinedName) return;
+          const sorted = [...PRIORITY_LASTNAMES].sort(
+            (a, b) => b.length - a.length,
+          );
+          for (const ln of sorted) {
+            if (joinedName.startsWith(ln)) {
+              lastNameInput.value = ln;
+              firstNameInput.value = joinedName.slice(ln.length);
+              return;
             }
           }
+        })();
 
-          if (pref) {
-            prefectureInput.value = pref;
-
-            // 他の空欄選手にも補完
-            document.querySelectorAll('.player-group').forEach((group) => {
-              const pi = group.querySelector('.prefecture');
-              if (pi && !pi.value.trim()) {
-                pi.value = pref;
-              }
-            });
-          }
+        // 優先姓で埋まらなければ通常分割
+        if (!firstNameInput.value.trim()) {
+          const nameLen = joinedName.length;
+          const splitRules = { 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
+          const k = splitRules[nameLen] || 2;
+          lastNameInput.value = joinedName.slice(0, k);
+          firstNameInput.value = joinedName.slice(k);
         }
       }
 
-      // ▼ 都道府県名を末尾から検出
-      for (let len = Math.min(4, segments.length); len >= 1; len--) {
-        const joined = segments.slice(-len).join('');
-        if (prefectureNames.includes(joined)) {
-          prefectureInput.value = joined;
-
-          // 他の空欄選手にも補完
-          document.querySelectorAll('.player-group').forEach((group) => {
-            const pi = group.querySelector('.prefecture');
-            if (pi && !pi.value.trim()) {
-              pi.value = joined;
-            }
-          });
-
-          segments.splice(-len, len);
-          break;
+      // 5) チームが空なら、ここで team にフォーカス（前回のご要望）
+      if (!teamInput.value.trim()) {
+        teamInput.focus();
+      } else {
+        // チームも埋まっている場合は、prefecture へ or 次の lastName へ好みで
+        // ここでは team が埋まっていたら prefecture が空なら prefecture に、両方埋まってたら何もしない
+        if (!prefectureInput.value.trim()) {
+          prefectureInput.focus();
         }
       }
-
-      // 残りを姓・名に分割
-
-      // ✅ firstName にすでに値がある場合は補完スキップ
-      if (firstNameInput.value.trim()) {
-        return;
-      }
-
-      const joinedName = segments.join('');
-
-      // ★ 優先姓ルール（先頭・最長一致）
-      (function applyPriorityLastName() {
-        if (!joinedName) return;
-        // 長い順で照合（"佐々木" が "佐々" より先にマッチ）
-        const sorted = [...PRIORITY_LASTNAMES].sort(
-          (a, b) => b.length - a.length,
-        );
-        for (const ln of sorted) {
-          if (joinedName.startsWith(ln)) {
-            lastNameInput.value = ln;
-            firstNameInput.value = joinedName.slice(ln.length); // 残りを名へ
-            return; // ここで終わり
-          }
-        }
-      })();
-
-      if (firstNameInput.value.trim()) {
-        // すでに優先姓で分割済みなら通常ロジックへ行かない
-        return;
-      }
-
-      // ↓通常の自動分割ルール
-      const nameLen = joinedName.length;
-      const splitRules = { 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
-      const k = splitRules[nameLen] || 2;
-
-      const newLastName = joinedName.slice(0, k);
-      const newFirstName = joinedName.slice(k);
-
-      lastNameInput.value = newLastName;
-      firstNameInput.value = newFirstName;
-
-      teamInput.focus();
     });
   }
 
@@ -611,19 +637,24 @@ function focusNextLastName(fromContainer) {
   const idx = groups.indexOf(fromContainer);
 
   let targetGroup;
+
   if (idx >= 0 && idx + 1 < groups.length) {
+    // 既に次の選手が存在する場合だけフォーカス移動
     targetGroup = groups[idx + 1];
-  } else {
-    // 末尾なら新規行を追加してそこに移動
+  } else if (groups.length > 1) {
+    // 末尾だけど、2人以上いるときは新規追加してそこに移動
     addPlayerBtn.click();
     const newGroups = document.querySelectorAll('.player-group');
     targetGroup = newGroups[newGroups.length - 1];
+  } else {
+    // 選手が1人しかいない場合 → 何もしない
+    return;
   }
 
   const nextLast = targetGroup.querySelector('.lastName');
   if (nextLast) {
     nextLast.focus();
-    nextLast.select(); // 既存文字があれば選択状態に
+    nextLast.select();
   }
 }
 
