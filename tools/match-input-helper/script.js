@@ -208,6 +208,9 @@
       firstNameInput.value = '';
       teamInput.value = '';
       prefectureInput.value = '';
+      if (lastNameInput) {
+        lastNameInput.focus();
+      }
     });
 
     setupAutoFill(playerInput);
