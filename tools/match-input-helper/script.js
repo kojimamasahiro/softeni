@@ -23,6 +23,8 @@
     '日野原',
     '大久保',
     '大多和',
+    '前角地',
+    '五十嵐',
   ];
 
   // ---- helpers: 空白/数字/カッコ除去・チーム候補抽出・比較用正規化 ----
@@ -644,11 +646,6 @@ function focusNextLastName(fromContainer) {
   if (idx >= 0 && idx + 1 < groups.length) {
     // 既に次の選手が存在する場合だけフォーカス移動
     targetGroup = groups[idx + 1];
-  } else if (groups.length > 1) {
-    // 末尾だけど、2人以上いるときは新規追加してそこに移動
-    addPlayerBtn.click();
-    const newGroups = document.querySelectorAll('.player-group');
-    targetGroup = newGroups[newGroups.length - 1];
   } else {
     // 選手が1人しかいない場合 → 何もしない
     return;
@@ -680,9 +677,8 @@ function setupTeamPrefectureAutoFill(container) {
   const teamInput = container.querySelector('.team');
   const prefectureInput = container.querySelector('.prefecture');
 
-  teamInput.addEventListener('input', () => {
-    const teamName = teamInput.value.trim();
-    if (!teamName || prefectureInput.value.trim()) return;
+  function autoFillPrefecture(teamName) {
+    if (!teamName) return false;
 
     // 1. teamPrefectureMap から補完
     if (
@@ -690,7 +686,7 @@ function setupTeamPrefectureAutoFill(container) {
       teamPrefectureMap[teamName]
     ) {
       prefectureInput.value = teamPrefectureMap[teamName];
-      return;
+      return true;
     }
 
     // 2. output.value の JSON から補完
@@ -701,7 +697,7 @@ function setupTeamPrefectureAutoFill(container) {
           for (const player of pair.information || []) {
             if (player.team === teamName && player.prefecture) {
               prefectureInput.value = player.prefecture;
-              return;
+              return true;
             }
           }
         }
@@ -709,18 +705,56 @@ function setupTeamPrefectureAutoFill(container) {
     } catch (e) {
       console.warn('補完用JSONがパースできませんでした：', e);
     }
-  });
+    return false;
+  }
 
+  // --- チェックON/OFFで挙動を変える ---
+  function handleTeamInputConfirmed() {
+    const focusPrefectureMode = document.getElementById('focusPrefectureMode');
+    const teamName = teamInput.value.trim();
+
+    if (!teamName) return;
+
+    const filled = autoFillPrefecture(teamName);
+
+    if (focusPrefectureMode && focusPrefectureMode.checked) {
+      if (filled) {
+        // prefectureが補完された場合 → 直接次の選手へ
+        focusNextLastName(container);
+      } else {
+        // 補完されなかった → prefecture入力へ
+        if (prefectureInput) {
+          prefectureInput.focus();
+          prefectureInput.select();
+        }
+      }
+    } else {
+      // チェックOFF時は即次の選手へ
+      focusNextLastName(container);
+    }
+  }
+
+  function handlePrefectureConfirmed() {
+    const focusPrefectureMode = document.getElementById('focusPrefectureMode');
+    if (focusPrefectureMode && focusPrefectureMode.checked) {
+      focusNextLastName(container);
+    }
+  }
+
+  // --- Enter/Changeで確定扱い ---
   teamInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && teamInput.value.trim()) {
+    if (e.key === 'Enter') {
       e.preventDefault();
-      focusNextLastName(container);
+      handleTeamInputConfirmed();
     }
   });
+  teamInput.addEventListener('input', handleTeamInputConfirmed);
 
-  teamInput.addEventListener('change', () => {
-    if (teamInput.value.trim()) {
-      focusNextLastName(container);
+  prefectureInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handlePrefectureConfirmed();
     }
   });
+  prefectureInput.addEventListener('change', handlePrefectureConfirmed);
 }
