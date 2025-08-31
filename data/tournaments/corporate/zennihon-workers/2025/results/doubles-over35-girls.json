@@ -5,8 +5,398 @@
   "startDate": "2025-08-30",
   "endDate": "2025-08-31",
   "location": "北海道",
-  "results": [],
-  "matches": [],
+  "results": [
+    {
+      "playerIds": [
+        "三宅_一美_杉並文化クラブ",
+        "伊佐_久美子_杉並文化クラブ"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ",
+        "谷口_翔子_クレインズクラブ"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "佐伯_麻里_なんせんす",
+        "寺田_理沙_なんせんす"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "池田_さやか_SAKURASTS",
+        "若狭_恵理佳_なんせんす"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "田中_悠希_鳥栖クラブ",
+        "野間_智美_男塾"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "安部_夏子_杉並文化クラブ",
+        "稲垣_彩_千石クラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "準々決勝",
+      "pair": [
+        "寺田_理沙_なんせんす",
+        "佐伯_麻里_なんせんす"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "悠希",
+          "team": "鳥栖クラブ",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "田中_悠希_鳥栖クラブ"
+        },
+        {
+          "lastName": "野間",
+          "firstName": "智美",
+          "team": "男塾",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "野間_智美_男塾"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 4,
+      "name": "寺田 理沙・佐伯 麻里（なんせんす）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "田中_悠希_鳥栖クラブ",
+        "野間_智美_男塾"
+      ],
+      "opponents": [
+        {
+          "lastName": "寺田",
+          "firstName": "理沙",
+          "team": "なんせんす",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "寺田_理沙_なんせんす"
+        },
+        {
+          "lastName": "佐伯",
+          "firstName": "麻里",
+          "team": "なんせんす",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "佐伯_麻里_なんせんす"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 7,
+      "name": "田中 悠希（鳥栖クラブ）・野間 智美（男塾）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "谷口_翔子_クレインズクラブ",
+        "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ"
+      ],
+      "opponents": [
+        {
+          "lastName": "安部",
+          "firstName": "夏子",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "安部_夏子_杉並文化クラブ"
+        },
+        {
+          "lastName": "稲垣",
+          "firstName": "彩",
+          "team": "千石クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "稲垣_彩_千石クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 10,
+      "name": "谷口 翔子（クレインズクラブ）・吉﨑 香奈絵（Ｂ－ＪＯＫＥＲ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "安部_夏子_杉並文化クラブ",
+        "稲垣_彩_千石クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "谷口",
+          "firstName": "翔子",
+          "team": "クレインズクラブ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "谷口_翔子_クレインズクラブ"
+        },
+        {
+          "lastName": "吉﨑",
+          "firstName": "香奈絵",
+          "team": "Ｂ－ＪＯＫＥＲ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 15,
+      "name": "安部 夏子（杉並文化クラブ）・稲垣 彩（千石クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "伊佐_久美子_杉並文化クラブ",
+        "三宅_一美_杉並文化クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "寺田",
+          "firstName": "理沙",
+          "team": "なんせんす",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "寺田_理沙_なんせんす"
+        },
+        {
+          "lastName": "佐伯",
+          "firstName": "麻里",
+          "team": "なんせんす",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "佐伯_麻里_なんせんす"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "伊佐 久美子・三宅 一美（杉並文化クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "寺田_理沙_なんせんす",
+        "佐伯_麻里_なんせんす"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊佐",
+          "firstName": "久美子",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "伊佐_久美子_杉並文化クラブ"
+        },
+        {
+          "lastName": "三宅",
+          "firstName": "一美",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "三宅_一美_杉並文化クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "寺田 理沙・佐伯 麻里（なんせんす）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "谷口_翔子_クレインズクラブ",
+        "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ"
+      ],
+      "opponents": [
+        {
+          "lastName": "若狭",
+          "firstName": "恵理佳",
+          "team": "なんせんす",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "若狭_恵理佳_なんせんす"
+        },
+        {
+          "lastName": "池田",
+          "firstName": "さやか",
+          "team": "SAKURASTS",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "池田_さやか_SAKURASTS"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 10,
+      "name": "谷口 翔子（クレインズクラブ）・吉﨑 香奈絵（Ｂ－ＪＯＫＥＲ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "若狭_恵理佳_なんせんす",
+        "池田_さやか_SAKURASTS"
+      ],
+      "opponents": [
+        {
+          "lastName": "谷口",
+          "firstName": "翔子",
+          "team": "クレインズクラブ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "谷口_翔子_クレインズクラブ"
+        },
+        {
+          "lastName": "吉﨑",
+          "firstName": "香奈絵",
+          "team": "Ｂ－ＪＯＫＥＲ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "若狭 恵理佳（なんせんす）・池田 さやか（SAKURASTS）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "伊佐_久美子_杉並文化クラブ",
+        "三宅_一美_杉並文化クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "谷口",
+          "firstName": "翔子",
+          "team": "クレインズクラブ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "谷口_翔子_クレインズクラブ"
+        },
+        {
+          "lastName": "吉﨑",
+          "firstName": "香奈絵",
+          "team": "Ｂ－ＪＯＫＥＲ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "伊佐 久美子・三宅 一美（杉並文化クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "谷口_翔子_クレインズクラブ",
+        "吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊佐",
+          "firstName": "久美子",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "伊佐_久美子_杉並文化クラブ"
+        },
+        {
+          "lastName": "三宅",
+          "firstName": "一美",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "三宅_一美_杉並文化クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "谷口 翔子（クレインズクラブ）・吉﨑 香奈絵（Ｂ－ＪＯＫＥＲ）",
+      "category": "doubles",
+      "retired": false
+    }
+  ],
   "roundRobinMatches": [
     {
       "group": "A",

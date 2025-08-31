@@ -5,8 +5,550 @@
   "startDate": "2025-08-30",
   "endDate": "2025-08-31",
   "location": "北海道",
-  "results": [],
-  "matches": [],
+  "results": [
+    {
+      "playerIds": [
+        "寺田_祥子_五十鈴クラブ",
+        "渡邉_扶佐子_BLUETAKAX"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "山田_里美_勝田クラブ",
+        "矢崎_美穂_杉並文化クラブ"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "大川原_一美_GEM",
+        "遠藤_百香_三省クラブ"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "前田_仁美_三鷹軟庭クラブ",
+        "平松_智香_せせらぎクラブ"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "土岐_美津子_ウィズ旭川クラブ",
+        "高橋_優美子_ウィズ旭川クラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "小林_友美_TeamＩＧＡ",
+        "横井_恵美子_なかよしクラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "三浦_由加_ウィズ旭川クラブ",
+        "鈴木_みのり_札幌ＭＡクラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "伊東_千恵美_札幌ＭＡクラブ",
+        "佐藤_万恵_札幌ＭＡクラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "準々決勝",
+      "pair": [
+        "山田_里美_勝田クラブ",
+        "矢崎_美穂_杉並文化クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "土岐",
+          "firstName": "美津子",
+          "team": "ウィズ旭川クラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "土岐_美津子_ウィズ旭川クラブ"
+        },
+        {
+          "lastName": "高橋",
+          "firstName": "優美子",
+          "team": "ウィズ旭川クラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "高橋_優美子_ウィズ旭川クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "山田 里美（勝田クラブ）・矢崎 美穂（杉並文化クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "土岐_美津子_ウィズ旭川クラブ",
+        "高橋_優美子_ウィズ旭川クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "里美",
+          "team": "勝田クラブ",
+          "prefecture": "茨城",
+          "playerId": null,
+          "tempId": "山田_里美_勝田クラブ"
+        },
+        {
+          "lastName": "矢崎",
+          "firstName": "美穂",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "矢崎_美穂_杉並文化クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "土岐 美津子・高橋 優美子（ウィズ旭川クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "大川原_一美_GEM",
+        "遠藤_百香_三省クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "小林",
+          "firstName": "友美",
+          "team": "TeamＩＧＡ",
+          "prefecture": "香川",
+          "playerId": null,
+          "tempId": "小林_友美_TeamＩＧＡ"
+        },
+        {
+          "lastName": "横井",
+          "firstName": "恵美子",
+          "team": "なかよしクラブ",
+          "prefecture": "香川",
+          "playerId": null,
+          "tempId": "横井_恵美子_なかよしクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 10,
+      "name": "大川原 一美（GEM）・遠藤 百香（三省クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "小林_友美_TeamＩＧＡ",
+        "横井_恵美子_なかよしクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "大川原",
+          "firstName": "一美",
+          "team": "GEM",
+          "prefecture": "新潟",
+          "playerId": null,
+          "tempId": "大川原_一美_GEM"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "百香",
+          "team": "三省クラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "遠藤_百香_三省クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 13,
+      "name": "小林 友美（TeamＩＧＡ）・横井 恵美子（なかよしクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "寺田_祥子_五十鈴クラブ",
+        "渡邉_扶佐子_BLUETAKAX"
+      ],
+      "opponents": [
+        {
+          "lastName": "三浦",
+          "firstName": "由加",
+          "team": "ウィズ旭川クラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "三浦_由加_ウィズ旭川クラブ"
+        },
+        {
+          "lastName": "鈴木",
+          "firstName": "みのり",
+          "team": "札幌ＭＡクラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "鈴木_みのり_札幌ＭＡクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 14,
+      "name": "寺田 祥子（五十鈴クラブ）・渡邉 扶佐子（BLUETAKAX）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "三浦_由加_ウィズ旭川クラブ",
+        "鈴木_みのり_札幌ＭＡクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "寺田",
+          "firstName": "祥子",
+          "team": "五十鈴クラブ",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "寺田_祥子_五十鈴クラブ"
+        },
+        {
+          "lastName": "渡邉",
+          "firstName": "扶佐子",
+          "team": "BLUETAKAX",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "渡邉_扶佐子_BLUETAKAX"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "三浦 由加（ウィズ旭川クラブ）・鈴木 みのり（札幌ＭＡクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "佐藤_万恵_札幌ＭＡクラブ",
+        "伊東_千恵美_札幌ＭＡクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "仁美",
+          "team": "三鷹軟庭クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "前田_仁美_三鷹軟庭クラブ"
+        },
+        {
+          "lastName": "平松",
+          "firstName": "智香",
+          "team": "せせらぎクラブ",
+          "prefecture": "神奈川",
+          "playerId": null,
+          "tempId": "平松_智香_せせらぎクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 22,
+      "name": "佐藤 万恵・伊東 千恵美（札幌ＭＡクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "前田_仁美_三鷹軟庭クラブ",
+        "平松_智香_せせらぎクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "万恵",
+          "team": "札幌ＭＡクラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "佐藤_万恵_札幌ＭＡクラブ"
+        },
+        {
+          "lastName": "伊東",
+          "firstName": "千恵美",
+          "team": "札幌ＭＡクラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "伊東_千恵美_札幌ＭＡクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 24,
+      "name": "前田 仁美（三鷹軟庭クラブ）・平松 智香（せせらぎクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "山田_里美_勝田クラブ",
+        "矢崎_美穂_杉並文化クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "大川原",
+          "firstName": "一美",
+          "team": "GEM",
+          "prefecture": "新潟",
+          "playerId": null,
+          "tempId": "大川原_一美_GEM"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "百香",
+          "team": "三省クラブ",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "遠藤_百香_三省クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 1,
+      "name": "山田 里美（勝田クラブ）・矢崎 美穂（杉並文化クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "大川原_一美_GEM",
+        "遠藤_百香_三省クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "里美",
+          "team": "勝田クラブ",
+          "prefecture": "茨城",
+          "playerId": null,
+          "tempId": "山田_里美_勝田クラブ"
+        },
+        {
+          "lastName": "矢崎",
+          "firstName": "美穂",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "矢崎_美穂_杉並文化クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "大川原 一美（GEM）・遠藤 百香（三省クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "寺田_祥子_五十鈴クラブ",
+        "渡邉_扶佐子_BLUETAKAX"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "仁美",
+          "team": "三鷹軟庭クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "前田_仁美_三鷹軟庭クラブ"
+        },
+        {
+          "lastName": "平松",
+          "firstName": "智香",
+          "team": "せせらぎクラブ",
+          "prefecture": "神奈川",
+          "playerId": null,
+          "tempId": "平松_智香_せせらぎクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 14,
+      "name": "寺田 祥子（五十鈴クラブ）・渡邉 扶佐子（BLUETAKAX）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "前田_仁美_三鷹軟庭クラブ",
+        "平松_智香_せせらぎクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "寺田",
+          "firstName": "祥子",
+          "team": "五十鈴クラブ",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "寺田_祥子_五十鈴クラブ"
+        },
+        {
+          "lastName": "渡邉",
+          "firstName": "扶佐子",
+          "team": "BLUETAKAX",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "渡邉_扶佐子_BLUETAKAX"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 24,
+      "name": "前田 仁美（三鷹軟庭クラブ）・平松 智香（せせらぎクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "山田_里美_勝田クラブ",
+        "矢崎_美穂_杉並文化クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "寺田",
+          "firstName": "祥子",
+          "team": "五十鈴クラブ",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "寺田_祥子_五十鈴クラブ"
+        },
+        {
+          "lastName": "渡邉",
+          "firstName": "扶佐子",
+          "team": "BLUETAKAX",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "渡邉_扶佐子_BLUETAKAX"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 1,
+      "name": "山田 里美（勝田クラブ）・矢崎 美穂（杉並文化クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "寺田_祥子_五十鈴クラブ",
+        "渡邉_扶佐子_BLUETAKAX"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "里美",
+          "team": "勝田クラブ",
+          "prefecture": "茨城",
+          "playerId": null,
+          "tempId": "山田_里美_勝田クラブ"
+        },
+        {
+          "lastName": "矢崎",
+          "firstName": "美穂",
+          "team": "杉並文化クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "矢崎_美穂_杉並文化クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 14,
+      "name": "寺田 祥子（五十鈴クラブ）・渡邉 扶佐子（BLUETAKAX）",
+      "category": "doubles",
+      "retired": false
+    }
+  ],
   "roundRobinMatches": [
     {
       "group": "A",
