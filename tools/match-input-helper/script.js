@@ -394,6 +394,8 @@
 
   // JSON生成処理（入力欄はそのまま維持）
   generateBtn.addEventListener('click', () => {
+    const overwriteMode = document.getElementById('overwriteMode').checked;
+
     // id入力欄の値を取得
     const idInput = document.getElementById('outputIdInput');
     let outputId = parseInt(idInput.value, 10);
@@ -401,6 +403,13 @@
       alert('有効なIDを入力してください（1以上の整数）');
       return;
     }
+
+    // 既存JSONの読み込み（jsonArray はすでに loadJsonBtn で更新される前提）
+    let existingIndex = -1;
+    if (overwriteMode) {
+      existingIndex = jsonArray.findIndex((obj) => obj.id === outputId);
+    }
+
     const playerDivs = playersContainer.querySelectorAll('.player-group');
     if (playerDivs.length === 0) {
       alert('最低1人以上の選手情報を入力してください');
@@ -436,72 +445,51 @@
           teamSet.add(team);
         }
       }
-
-      if (allBlank) {
-        // 団体戦モードでチームのみ出力
-        const team = playerDivs[0].querySelector('.team').value.trim();
-        const prefecture = playerDivs[0]
-          .querySelector('.prefecture')
-          .value.trim();
-        if (!team && !prefecture) {
-          alert('チーム名と都道府県名は必須です（団体戦モード）');
-          return;
-        }
-
-        const obj = {
-          id: outputId++,
-          name: team
-            ? `${team}${prefecture ? `（${prefecture}）` : ''}`
-            : `${prefecture}`,
-          team: team || undefined,
-          prefecture: prefecture || undefined,
-          category: team ? 'team' : 'prefecture',
-          tempId: team
-            ? `${team}_${prefecture}`
-            : `${prefecture}_${prefecture}`,
-        };
-
-        jsonArray.push(obj);
-        idInput.value = outputId;
-        output.value =
-          '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
-
-        // 入力欄をリセット
-        document
-          .querySelectorAll('.playerInput')
-          .forEach((input) => (input.value = ''));
-        document
-          .querySelectorAll('.lastName')
-          .forEach((input) => (input.value = ''));
-        document
-          .querySelectorAll('.firstName')
-          .forEach((input) => (input.value = ''));
-        document
-          .querySelectorAll('.team')
-          .forEach((input) => (input.value = ''));
-        document
-          .querySelectorAll('.prefecture')
-          .forEach((input) => (input.value = ''));
-
-        if (byeCheckbox.checked) {
-          const byeObj = {
-            id: 'bye',
-            name: '1回戦免除',
-            information: [],
-          };
-          jsonArray.push(byeObj);
-          const compressedWithBreaks =
-            '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
-          output.value = compressedWithBreaks;
-        }
-        return;
-      }
     }
 
+    if (allBlank) {
+      // 団体戦モードでチームのみ出力
+      const team = playerDivs[0].querySelector('.team').value.trim();
+      const prefecture = playerDivs[0]
+        .querySelector('.prefecture')
+        .value.trim();
+      if (!team && !prefecture) {
+        alert('チーム名と都道府県名は必須です（団体戦モード）');
+        return;
+      }
+
+      const obj = {
+        id: outputId,
+        name: team
+          ? `${team}${prefecture ? `（${prefecture}）` : ''}`
+          : `${prefecture}`,
+        team: team || undefined,
+        prefecture: prefecture || undefined,
+        category: team ? 'team' : 'prefecture',
+        tempId: team ? `${team}_${prefecture}` : `${prefecture}_${prefecture}`,
+      };
+
+      if (overwriteMode && existingIndex >= 0) {
+        jsonArray[existingIndex] = obj;
+      } else {
+        jsonArray.push(obj);
+        outputId++;
+      }
+
+      idInput.value = outputId;
+      output.value =
+        '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+
+      resetInputs();
+
+      if (byeCheckbox.checked) addByeObject();
+      return;
+    }
+
+    // 都道府県自動補完（2人の場合のみ）
     if (players.length === 2) {
       const prefecture1 = players[0].prefecture;
       const prefecture2 = players[1].prefecture;
-
       if (prefecture1 && !prefecture2) {
         players[1].prefecture = prefecture1;
       } else if (!prefecture1 && prefecture2) {
@@ -509,6 +497,7 @@
       }
     }
 
+    // 代表チーム名を決定
     let representativeTeam = '';
     if (teamSet.size === 1) {
       representativeTeam = [...teamSet][0];
@@ -528,7 +517,7 @@
       (representativeTeam ? `（${representativeTeam}）` : '');
 
     const obj = {
-      id: outputId++,
+      id: outputId,
       name,
       information: players,
     };
@@ -547,15 +536,24 @@
       obj.category = 'team';
     }
 
-    jsonArray.push(obj);
+    if (overwriteMode && existingIndex >= 0) {
+      jsonArray[existingIndex] = obj;
+    } else {
+      jsonArray.push(obj);
+      outputId++;
+    }
 
     idInput.value = outputId;
-
-    const compressedWithBreaks =
+    output.value =
       '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
-    output.value = compressedWithBreaks;
 
-    // 入力欄をリセット
+    resetInputs();
+
+    if (byeCheckbox.checked) addByeObject();
+  });
+
+  // 入力欄をリセットする関数
+  function resetInputs() {
     document
       .querySelectorAll('.playerInput')
       .forEach((input) => (input.value = ''));
@@ -569,19 +567,14 @@
     document
       .querySelectorAll('.prefecture')
       .forEach((input) => (input.value = ''));
+  }
 
-    if (byeCheckbox.checked) {
-      const byeObj = {
-        id: 'bye',
-        name: '1回戦免除',
-        information: [],
-      };
-      jsonArray.push(byeObj);
-      const compressedWithBreaks =
-        '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
-      output.value = compressedWithBreaks;
-    }
-  });
+  // bye を追加する関数
+  function addByeObject() {
+    jsonArray.push({ id: 'bye', name: '1回戦免除', information: [] });
+    output.value =
+      '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+  }
 
   const addByeBtn = document.getElementById('addByeBtn');
 
