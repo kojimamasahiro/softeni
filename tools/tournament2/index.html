@@ -414,8 +414,8 @@ if (targetMatch.p1?.id !== "bye" && targetMatch.p2?.id !== "bye") {
    if (roundCount - 2 >= 0) roundRankings[roundCount - 2] = { loser: "ベスト4" };
    if (roundCount - 3 >= 0) roundRankings[roundCount - 3] = { loser: "ベスト8" };
 
-   const getPairKey = (info) => info?.information?.map(p => p.tempId).sort().join("-");
-   const getPairArray = (info) => info?.information?.map(p => p.tempId).filter(Boolean).sort();
+   const getPairKey = (info) => info?.information?.map(p => p.tempId).join("-");
+   const getPairArray = (info) => info?.information?.map(p => p.tempId).filter(Boolean)
    const isValidPair = (arr) => Array.isArray(arr) && arr.every(id => id != null);
 
    // results（順位サマリ）
