@@ -5,6 +5,4514 @@
   "startDate": "2025-08-29",
   "endDate": "2025-09-03",
   "location": "千葉県",
-  "results": [],
-  "matches": []
+  "results": [
+    {
+      "playerIds": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "result": "優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "坂口_生磨_明治大学"
+      ],
+      "result": "準優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "米川_雅翔_明治大学"
+      ],
+      "result": "ベスト4",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "竹田_凌_日本体育大学"
+      ],
+      "result": "ベスト4",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "伊藤_幹太_早稲田大学"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "清水_駿_同志社大学"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "安部_蓮生_日本体育大学"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "鈴木_亮太朗_中央大学"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "村井_晋之介_立命館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "和田",
+          "firstName": "好人",
+          "team": "熊本学園大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "和田_好人_熊本学園大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 2,
+      "name": "村井 晋之介（立命館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "和田_好人_熊本学園大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "村井",
+          "firstName": "晋之介",
+          "team": "立命館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "村井_晋之介_立命館大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 3,
+      "name": "和田 好人（熊本学園大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩城_爽太_札幌学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "遥斗",
+          "team": "星城大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "伊藤_遥斗_星城大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 7,
+      "name": "岩城 爽太（札幌学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "伊藤_遥斗_星城大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩城",
+          "firstName": "爽太",
+          "team": "札幌学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "岩城_爽太_札幌学院大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 8,
+      "name": "伊藤 遥斗（星城大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "小山_寛晴_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長根",
+          "firstName": "慎人",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長根_慎人_同志社大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 9,
+      "name": "小山 寛晴（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "長根_慎人_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "小山",
+          "firstName": "寛晴",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "小山_寛晴_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 10,
+      "name": "長根 慎人（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "永江_孝二郎_福岡大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "笹井",
+          "firstName": "悠月",
+          "team": "立教大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "笹井_悠月_立教大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 13,
+      "name": "永江 孝二郎（福岡大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "笹井_悠月_立教大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "永江",
+          "firstName": "孝二郎",
+          "team": "福岡大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "永江_孝二郎_福岡大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 14,
+      "name": "笹井 悠月（立教大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "木村_遥斗_東北学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩田",
+          "firstName": "皓平",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "iwata-kohei",
+          "tempId": "岩田_皓平_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 15,
+      "name": "木村 遥斗（東北学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩田_皓平_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "木村",
+          "firstName": "遥斗",
+          "team": "東北学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "木村_遥斗_東北学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "岩田 皓平（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩井_亮樹_天理大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 19,
+      "name": "岩井 亮樹（天理大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "伊藤_幹太_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩井",
+          "firstName": "亮樹",
+          "team": "天理大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "岩井_亮樹_天理大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 20,
+      "name": "伊藤 幹太（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "荒川_裕貴_北翔大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "榎竜",
+          "firstName": "太郎",
+          "team": "高知工科大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "榎竜_太郎_高知工科大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 21,
+      "name": "荒川 裕貴（北翔大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "榎竜_太郎_高知工科大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "荒川",
+          "firstName": "裕貴",
+          "team": "北翔大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "荒川_裕貴_北翔大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 22,
+      "name": "榎竜 太郎（高知工科大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "内田_陽斗_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "平川",
+          "firstName": "史恩",
+          "team": "天理大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "平川_史恩_天理大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 25,
+      "name": "内田 陽斗（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "平川_史恩_天理大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "陽斗",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "内田_陽斗_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 26,
+      "name": "平川 史恩（天理大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "長根_新太_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "出口",
+          "firstName": "翔太",
+          "team": "中京大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "出口_翔太_中京大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 30,
+      "name": "長根 新太（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "出口_翔太_中京大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長根",
+          "firstName": "新太",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長根_新太_同志社大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 31,
+      "name": "出口 翔太（中京大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "大家_健慎_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩﨑",
+          "firstName": "絢哉",
+          "team": "関西学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "岩﨑_絢哉_関西学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 32,
+      "name": "大家 健慎（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩﨑_絢哉_関西学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大家",
+          "firstName": "健慎",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大家_健慎_東海大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 33,
+      "name": "岩﨑 絢哉（関西学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "東_脩蔵_札幌学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "菊山",
+          "firstName": "太陽",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "菊山_太陽_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 36,
+      "name": "東 脩蔵（札幌学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "菊山_太陽_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "東",
+          "firstName": "脩蔵",
+          "team": "札幌学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "東_脩蔵_札幌学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 37,
+      "name": "菊山 太陽（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "西牧_幹起_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "繁森",
+          "firstName": "匠登",
+          "team": "福岡大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "繁森_匠登_福岡大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 38,
+      "name": "西牧 幹起（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "繁森_匠登_福岡大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "西牧",
+          "firstName": "幹起",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "西牧_幹起_石川工業高等専門学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 39,
+      "name": "繁森 匠登（福岡大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岡原_煌虎_四国大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "福島",
+          "firstName": "涼",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "福島_涼_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 43,
+      "name": "岡原 煌虎（四国大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "福島_涼_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岡原",
+          "firstName": "煌虎",
+          "team": "四国大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "岡原_煌虎_四国大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 44,
+      "name": "福島 涼（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "唐澤_敬悟_四日市大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "浜本",
+          "firstName": "莉輝",
+          "team": "関西外国語大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "浜本_莉輝_関西外国語大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 47,
+      "name": "唐澤 敬悟（四日市大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "浜本_莉輝_関西外国語大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "唐澤",
+          "firstName": "敬悟",
+          "team": "四日市大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "唐澤_敬悟_四日市大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 48,
+      "name": "浜本 莉輝（関西外国語大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "田中_陽稀_北翔大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤井",
+          "firstName": "聡人",
+          "team": "四国大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "藤井_聡人_四国大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 52,
+      "name": "田中 陽稀（北翔大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "藤井_聡人_四国大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "陽稀",
+          "team": "北翔大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "田中_陽稀_北翔大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 53,
+      "name": "藤井 聡人（四国大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "三上",
+          "firstName": "柊二",
+          "team": "関西学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "三上_柊二_関西学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "三上_柊二_関西学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 55,
+      "name": "三上 柊二（関西学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "森川_亮介_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "星弥",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "塚本_星弥_同志社大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 58,
+      "name": "森川 亮介（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "塚本_星弥_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "森川",
+          "firstName": "亮介",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "森川_亮介_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 59,
+      "name": "塚本 星弥（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "福田_和彦_札幌学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "赤松",
+          "firstName": "成",
+          "team": "高知工科大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "赤松_成_高知工科大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 60,
+      "name": "福田 和彦（札幌学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "赤松_成_高知工科大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "福田",
+          "firstName": "和彦",
+          "team": "札幌学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "福田_和彦_札幌学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 61,
+      "name": "赤松 成（高知工科大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "安部_蓮生_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大曲",
+          "firstName": "李空",
+          "team": "吉備国際大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大曲_李空_吉備国際大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 65,
+      "name": "安部 蓮生（日本体育大学）",
+      "category": "singles",
+      "retired": true
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "大曲_李空_吉備国際大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "安部",
+          "firstName": "蓮生",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "abe-rensei",
+          "tempId": "安部_蓮生_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 66,
+      "name": "大曲 李空（吉備国際大学）",
+      "category": "singles",
+      "retired": true
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "関_暖太_天理大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山本",
+          "firstName": "大棋",
+          "team": "星城大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山本_大棋_星城大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 69,
+      "name": "関 暖太（天理大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "山本_大棋_星城大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "関",
+          "firstName": "暖太",
+          "team": "天理大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "関_暖太_天理大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 70,
+      "name": "山本 大棋（星城大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "森_生_熊本学園大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "野本_凌生_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 71,
+      "name": "森 生（熊本学園大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "野本_凌生_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "森",
+          "firstName": "生",
+          "team": "熊本学園大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "森_生_熊本学園大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 72,
+      "name": "野本 凌生（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "杉本_心_福山平成大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "飯渕",
+          "firstName": "真大",
+          "team": "東北学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "飯渕_真大_東北学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 75,
+      "name": "杉本 心（福山平成大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "飯渕_真大_東北学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉本",
+          "firstName": "心",
+          "team": "福山平成大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "杉本_心_福山平成大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 76,
+      "name": "飯渕 真大（東北学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "鈴木_亮太朗_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹内",
+          "firstName": "晴紀",
+          "team": "大阪商業大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "竹内_晴紀_大阪商業大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 77,
+      "name": "鈴木 亮太朗（中央大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "竹内_晴紀_大阪商業大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "亮太朗",
+          "team": "中央大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "鈴木_亮太朗_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 78,
+      "name": "竹内 晴紀（大阪商業大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "木村_奏都_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "平野",
+          "firstName": "敬人",
+          "team": "中京大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "平野_敬人_中京大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 81,
+      "name": "木村 奏都（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "平野_敬人_中京大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "木村",
+          "firstName": "奏都",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "木村_奏都_東海大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 82,
+      "name": "平野 敬人（中京大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "山田_進太_東北大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂本",
+          "firstName": "晃基",
+          "team": "関西学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂本_晃基_関西学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 83,
+      "name": "山田 進太（東北大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "坂本_晃基_関西学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "進太",
+          "team": "東北大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山田_進太_東北大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 84,
+      "name": "坂本 晃基（関西学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "豊田_祐冴_立教大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "今井",
+          "firstName": "奏良",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "今井_奏良_同志社大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 88,
+      "name": "豊田 祐冴（立教大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "今井_奏良_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "豊田",
+          "firstName": "祐冴",
+          "team": "立教大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "豊田_祐冴_立教大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 89,
+      "name": "今井 奏良（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "村井",
+          "firstName": "晋之介",
+          "team": "立命館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "村井_晋之介_立命館大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "橋場 柊一郎（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "村井_晋之介_立命館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "橋場",
+          "firstName": "柊一郎",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "橋場_柊一郎_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "村井 晋之介（立命館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "吉川_柊太_東北福祉"
+      ],
+      "opponents": [
+        {
+          "lastName": "御手洗",
+          "firstName": "友哉",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "御手洗_友哉_石川工業高等専門学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "吉川 柊太（東北福祉）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "御手洗_友哉_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉川",
+          "firstName": "柊太",
+          "team": "東北福祉",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "吉川_柊太_東北福祉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 5,
+      "name": "御手洗 友哉（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "川崎_康平_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩城",
+          "firstName": "爽太",
+          "team": "札幌学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "岩城_爽太_札幌学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 6,
+      "name": "川崎 康平（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岩城_爽太_札幌学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "川崎",
+          "firstName": "康平",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kawasaki-kohei",
+          "tempId": "川崎_康平_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 7,
+      "name": "岩城 爽太（札幌学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "長根_慎人_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "澤田",
+          "firstName": "壮史",
+          "team": "四国大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "澤田_壮史_四国大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 10,
+      "name": "長根 慎人（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "澤田_壮史_四国大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長根",
+          "firstName": "慎人",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長根_慎人_同志社大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 11,
+      "name": "澤田 壮史（四国大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山根_寛人_福山平成大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "笹井",
+          "firstName": "悠月",
+          "team": "立教大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "笹井_悠月_立教大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 12,
+      "name": "山根 寛人（福山平成大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "笹井_悠月_立教大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山根",
+          "firstName": "寛人",
+          "team": "福山平成大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山根_寛人_福山平成大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 14,
+      "name": "笹井 悠月（立教大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岩田_皓平_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "拓空",
+          "team": "関西学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "近藤_拓空_関西学院大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 16,
+      "name": "岩田 皓平（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "近藤_拓空_関西学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩田",
+          "firstName": "皓平",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "iwata-kohei",
+          "tempId": "岩田_皓平_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 17,
+      "name": "近藤 拓空（関西学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "石川_伊吹_中京大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "石川 伊吹（中京大学）",
+      "category": "singles",
+      "retired": true
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "伊藤_幹太_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "石川",
+          "firstName": "伊吹",
+          "team": "中京大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "石川_伊吹_中京大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 20,
+      "name": "伊藤 幹太（早稲田大学）",
+      "category": "singles",
+      "retired": true
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "荒川_裕貴_北翔大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "片岡",
+          "firstName": "暁紀",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kataoka-aki",
+          "tempId": "片岡_暁紀_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 21,
+      "name": "荒川 裕貴（北翔大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "片岡_暁紀_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "荒川",
+          "firstName": "裕貴",
+          "team": "北翔大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "荒川_裕貴_北翔大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "片岡 暁紀（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "福地_想楽_熊本学園大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "陽斗",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "内田_陽斗_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 24,
+      "name": "福地 想楽（熊本学園大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "内田_陽斗_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "福地",
+          "firstName": "想楽",
+          "team": "熊本学園大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "福地_想楽_熊本学園大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 25,
+      "name": "内田 陽斗（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "米川_雅翔_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "庄子",
+          "firstName": "然",
+          "team": "東北学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "庄子_然_東北学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 27,
+      "name": "米川 雅翔（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "庄子_然_東北学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "米川_雅翔_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 28,
+      "name": "庄子 然（東北学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野口_快_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長根",
+          "firstName": "新太",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長根_新太_同志社大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 29,
+      "name": "野口 快（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "長根_新太_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "野口",
+          "firstName": "快",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "noguchi-kai",
+          "tempId": "野口_快_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 30,
+      "name": "長根 新太（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "大家_健慎_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩﨑",
+          "firstName": "絢哉",
+          "team": "関西学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "岩﨑_絢哉_関西学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 32,
+      "name": "大家 健慎（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岩﨑_絢哉_関西学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大家",
+          "firstName": "健慎",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大家_健慎_東海大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 34,
+      "name": "岩﨑 絢哉（関西学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山西_全宇_立命館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "菊山",
+          "firstName": "太陽",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "菊山_太陽_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 35,
+      "name": "山西 全宇（立命館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "菊山_太陽_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山西",
+          "firstName": "全宇",
+          "team": "立命館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山西_全宇_立命館大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "菊山 太陽（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "西牧_幹起_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "昌生",
+          "team": "國學院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大和_昌生_國學院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 38,
+      "name": "西牧 幹起（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "大和_昌生_國學院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "西牧",
+          "firstName": "幹起",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "西牧_幹起_石川工業高等専門学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 40,
+      "name": "大和 昌生（國學院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "工藤_康治朗_星城大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙田",
+          "firstName": "淳貴",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "髙田_淳貴_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 41,
+      "name": "工藤 康治朗（星城大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "髙田_淳貴_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "工藤",
+          "firstName": "康治朗",
+          "team": "星城大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "工藤_康治朗_星城大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 42,
+      "name": "髙田 淳貴（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "福島_涼_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "清水_駿_同志社大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 44,
+      "name": "福島 涼（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "清水_駿_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "福島",
+          "firstName": "涼",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "福島_涼_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 45,
+      "name": "清水 駿（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "黒坂_卓矢_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "浜本",
+          "firstName": "莉輝",
+          "team": "関西外国語大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "浜本_莉輝_関西外国語大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 46,
+      "name": "黒坂 卓矢（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "浜本_莉輝_関西外国語大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "黒坂",
+          "firstName": "卓矢",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kurosaka-takuya",
+          "tempId": "黒坂_卓矢_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 48,
+      "name": "浜本 莉輝（関西外国語大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "安達_宣_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤澤",
+          "firstName": "玲空",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "藤澤_玲空_石川工業高等専門学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 49,
+      "name": "安達 宣（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "藤澤_玲空_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "安達",
+          "firstName": "宣",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "安達_宣_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 50,
+      "name": "藤澤 玲空（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山内_風我_立命館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "陽稀",
+          "team": "北翔大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "田中_陽稀_北翔大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 51,
+      "name": "山内 風我（立命館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "田中_陽稀_北翔大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山内",
+          "firstName": "風我",
+          "team": "立命館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山内_風我_立命館大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 52,
+      "name": "田中 陽稀（北翔大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "白石",
+          "firstName": "貴也",
+          "team": "熊本学園大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "白石_貴也_熊本学園大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "白石_貴也_熊本学園大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 56,
+      "name": "白石 貴也（熊本学園大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "松場_淳生_中京大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "森川",
+          "firstName": "亮介",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "森川_亮介_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 57,
+      "name": "松場 淳生（中京大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "森川_亮介_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "松場",
+          "firstName": "淳生",
+          "team": "中京大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "松場_淳生_中京大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 58,
+      "name": "森川 亮介（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "赤松_成_高知工科大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "松本",
+          "firstName": "隼",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "松本_隼_東海大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 61,
+      "name": "赤松 成（高知工科大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "松本_隼_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "赤松",
+          "firstName": "成",
+          "team": "高知工科大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "赤松_成_高知工科大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 62,
+      "name": "松本 隼（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "深掘_金の翼_天理大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "志學館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "白井_大希_志學館大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 63,
+      "name": "深掘 金の翼（天理大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "白井_大希_志學館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "深掘",
+          "firstName": "金の翼",
+          "team": "天理大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "深掘_金の翼_天理大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 64,
+      "name": "白井 大希（志學館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "安部_蓮生_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "齋藤",
+          "firstName": "楓雅",
+          "team": "東北福祉",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "齋藤_楓雅_東北福祉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 65,
+      "name": "安部 蓮生（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "齋藤_楓雅_東北福祉"
+      ],
+      "opponents": [
+        {
+          "lastName": "安部",
+          "firstName": "蓮生",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "abe-rensei",
+          "tempId": "安部_蓮生_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 67,
+      "name": "齋藤 楓雅（東北福祉）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "佐藤_駿丞_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "関",
+          "firstName": "暖太",
+          "team": "天理大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "関_暖太_天理大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 68,
+      "name": "佐藤 駿丞（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "関_暖太_天理大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "駿丞",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "sato-shunsuke",
+          "tempId": "佐藤_駿丞_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 69,
+      "name": "関 暖太（天理大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野本_凌生_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "木原",
+          "firstName": "真樹",
+          "team": "北翔大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "木原_真樹_北翔大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 72,
+      "name": "野本 凌生（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "木原_真樹_北翔大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "野本_凌生_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 73,
+      "name": "木原 真樹（北翔大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "飯田_航仁_國學院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉本",
+          "firstName": "心",
+          "team": "福山平成大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "杉本_心_福山平成大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 74,
+      "name": "飯田 航仁（國學院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "杉本_心_福山平成大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "飯田",
+          "firstName": "航仁",
+          "team": "國學院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "飯田_航仁_國學院大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 75,
+      "name": "杉本 心（福山平成大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "鈴木_亮太朗_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉原",
+          "firstName": "僚太",
+          "team": "松山大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "杉原_僚太_松山大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 77,
+      "name": "鈴木 亮太朗（中央大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "杉原_僚太_松山大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "亮太朗",
+          "team": "中央大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "鈴木_亮太朗_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 79,
+      "name": "杉原 僚太（松山大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野田_楓麿_福岡大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "木村",
+          "firstName": "奏都",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "木村_奏都_東海大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 80,
+      "name": "野田 楓麿（福岡大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "木村_奏都_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "楓麿",
+          "team": "福岡大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "野田_楓麿_福岡大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 81,
+      "name": "木村 奏都（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山田_進太_東北大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "根岸",
+          "firstName": "澪紋",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "negishi-remon",
+          "tempId": "根岸_澪紋_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 83,
+      "name": "山田 進太（東北大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "根岸_澪紋_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "進太",
+          "team": "東北大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山田_進太_東北大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 85,
+      "name": "根岸 澪紋（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "太田_遥来_札幌学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹田",
+          "firstName": "凌",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "竹田_凌_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 86,
+      "name": "太田 遥来（札幌学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "竹田_凌_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "太田",
+          "firstName": "遥来",
+          "team": "札幌学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "太田_遥来_札幌学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 87,
+      "name": "竹田 凌（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "豊田_祐冴_立教大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "川神",
+          "firstName": "堅汰",
+          "team": "松山大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "川神_堅汰_松山大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 88,
+      "name": "豊田 祐冴（立教大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "川神_堅汰_松山大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "豊田",
+          "firstName": "祐冴",
+          "team": "立教大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "豊田_祐冴_立教大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 90,
+      "name": "川神 堅汰（松山大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "御手洗",
+          "firstName": "友哉",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "御手洗_友哉_石川工業高等専門学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "橋場 柊一郎（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "御手洗_友哉_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "橋場",
+          "firstName": "柊一郎",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "橋場_柊一郎_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "御手洗 友哉（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "川崎_康平_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長根",
+          "firstName": "慎人",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長根_慎人_同志社大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 6,
+      "name": "川崎 康平（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "長根_慎人_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "川崎",
+          "firstName": "康平",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kawasaki-kohei",
+          "tempId": "川崎_康平_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "長根 慎人（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "山根_寛人_福山平成大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "拓空",
+          "team": "関西学院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "近藤_拓空_関西学院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "山根 寛人（福山平成大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "近藤_拓空_関西学院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山根",
+          "firstName": "寛人",
+          "team": "福山平成大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山根_寛人_福山平成大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 17,
+      "name": "近藤 拓空（関西学院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "伊藤_幹太_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "片岡",
+          "firstName": "暁紀",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kataoka-aki",
+          "tempId": "片岡_暁紀_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 20,
+      "name": "伊藤 幹太（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "片岡_暁紀_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 23,
+      "name": "片岡 暁紀（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "内田_陽斗_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "米川_雅翔_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 25,
+      "name": "内田 陽斗（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "米川_雅翔_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "陽斗",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "内田_陽斗_法政大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 27,
+      "name": "米川 雅翔（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "野口_快_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大家",
+          "firstName": "健慎",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大家_健慎_東海大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 29,
+      "name": "野口 快（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "大家_健慎_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "野口",
+          "firstName": "快",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "noguchi-kai",
+          "tempId": "野口_快_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 32,
+      "name": "大家 健慎（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "菊山_太陽_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "西牧",
+          "firstName": "幹起",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "西牧_幹起_石川工業高等専門学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "菊山 太陽（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "西牧_幹起_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "菊山",
+          "firstName": "太陽",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "菊山_太陽_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 38,
+      "name": "西牧 幹起（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "髙田_淳貴_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "清水_駿_同志社大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 42,
+      "name": "髙田 淳貴（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "清水_駿_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙田",
+          "firstName": "淳貴",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "髙田_淳貴_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 45,
+      "name": "清水 駿（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "黒坂_卓矢_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤澤",
+          "firstName": "玲空",
+          "team": "石川工業高等専門学校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "藤澤_玲空_石川工業高等専門学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 46,
+      "name": "黒坂 卓矢（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "藤澤_玲空_石川工業高等専門学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "黒坂",
+          "firstName": "卓矢",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kurosaka-takuya",
+          "tempId": "黒坂_卓矢_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 50,
+      "name": "藤澤 玲空（石川工業高等専門学校）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "山内_風我_立命館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 51,
+      "name": "山内 風我（立命館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山内",
+          "firstName": "風我",
+          "team": "立命館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山内_風我_立命館大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "森川_亮介_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "松本",
+          "firstName": "隼",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "松本_隼_東海大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 58,
+      "name": "森川 亮介（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "松本_隼_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "森川",
+          "firstName": "亮介",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "森川_亮介_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 62,
+      "name": "松本 隼（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "白井_大希_志學館大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "安部",
+          "firstName": "蓮生",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "abe-rensei",
+          "tempId": "安部_蓮生_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 64,
+      "name": "白井 大希（志學館大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "安部_蓮生_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "大希",
+          "team": "志學館大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "白井_大希_志學館大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 65,
+      "name": "安部 蓮生（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "佐藤_駿丞_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "野本",
+          "firstName": "凌生",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "野本_凌生_法政大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 68,
+      "name": "佐藤 駿丞（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "野本_凌生_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "駿丞",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "sato-shunsuke",
+          "tempId": "佐藤_駿丞_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 72,
+      "name": "野本 凌生（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "飯田_航仁_國學院大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "亮太朗",
+          "team": "中央大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "鈴木_亮太朗_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 74,
+      "name": "飯田 航仁（國學院大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "鈴木_亮太朗_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "飯田",
+          "firstName": "航仁",
+          "team": "國學院大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "飯田_航仁_國學院大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 77,
+      "name": "鈴木 亮太朗（中央大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "木村_奏都_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "根岸",
+          "firstName": "澪紋",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "negishi-remon",
+          "tempId": "根岸_澪紋_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 81,
+      "name": "木村 奏都（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "根岸_澪紋_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "木村",
+          "firstName": "奏都",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "木村_奏都_東海大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 85,
+      "name": "根岸 澪紋（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "竹田_凌_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "川神",
+          "firstName": "堅汰",
+          "team": "松山大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "川神_堅汰_松山大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 87,
+      "name": "竹田 凌（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "川神_堅汰_松山大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹田",
+          "firstName": "凌",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "竹田_凌_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 90,
+      "name": "川神 堅汰（松山大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "川崎",
+          "firstName": "康平",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kawasaki-kohei",
+          "tempId": "川崎_康平_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "橋場 柊一郎（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "川崎_康平_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "橋場",
+          "firstName": "柊一郎",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "橋場_柊一郎_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "川崎 康平（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "山根_寛人_福山平成大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 12,
+      "name": "山根 寛人（福山平成大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "伊藤_幹太_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山根",
+          "firstName": "寛人",
+          "team": "福山平成大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山根_寛人_福山平成大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 20,
+      "name": "伊藤 幹太（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "米川_雅翔_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "大家",
+          "firstName": "健慎",
+          "team": "東海大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大家_健慎_東海大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 27,
+      "name": "米川 雅翔（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "大家_健慎_東海大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "米川_雅翔_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 32,
+      "name": "大家 健慎（東海大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "菊山_太陽_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "清水_駿_同志社大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 37,
+      "name": "菊山 太陽（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "清水_駿_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "菊山",
+          "firstName": "太陽",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "菊山_太陽_法政大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 45,
+      "name": "清水 駿（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "黒坂_卓矢_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 46,
+      "name": "黒坂 卓矢（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "黒坂",
+          "firstName": "卓矢",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "kurosaka-takuya",
+          "tempId": "黒坂_卓矢_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "森川_亮介_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "安部",
+          "firstName": "蓮生",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "abe-rensei",
+          "tempId": "安部_蓮生_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 58,
+      "name": "森川 亮介（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "安部_蓮生_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "森川",
+          "firstName": "亮介",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "森川_亮介_法政大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 65,
+      "name": "安部 蓮生（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "佐藤_駿丞_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "亮太朗",
+          "team": "中央大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "鈴木_亮太朗_中央大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 68,
+      "name": "佐藤 駿丞（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "鈴木_亮太朗_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "駿丞",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "sato-shunsuke",
+          "tempId": "佐藤_駿丞_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 77,
+      "name": "鈴木 亮太朗（中央大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "根岸_澪紋_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹田",
+          "firstName": "凌",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "竹田_凌_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 85,
+      "name": "根岸 澪紋（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "4回戦",
+      "pair": [
+        "竹田_凌_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "根岸",
+          "firstName": "澪紋",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "negishi-remon",
+          "tempId": "根岸_澪紋_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 87,
+      "name": "竹田 凌（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "幹太",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "伊藤_幹太_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "橋場 柊一郎（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "伊藤_幹太_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "橋場",
+          "firstName": "柊一郎",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "橋場_柊一郎_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 20,
+      "name": "伊藤 幹太（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "米川_雅翔_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "清水",
+          "firstName": "駿",
+          "team": "同志社大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "清水_駿_同志社大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "米川 雅翔（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "清水_駿_同志社大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "米川_雅翔_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 45,
+      "name": "清水 駿（同志社大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "安部",
+          "firstName": "蓮生",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": "abe-rensei",
+          "tempId": "安部_蓮生_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "安部_蓮生_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 65,
+      "name": "安部 蓮生（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "鈴木_亮太朗_中央大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹田",
+          "firstName": "凌",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "竹田_凌_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 77,
+      "name": "鈴木 亮太朗（中央大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "竹田_凌_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "亮太朗",
+          "team": "中央大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "鈴木_亮太朗_中央大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 87,
+      "name": "竹田 凌（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "米川",
+          "firstName": "雅翔",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "米川_雅翔_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "橋場 柊一郎（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "米川_雅翔_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "橋場",
+          "firstName": "柊一郎",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "橋場_柊一郎_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 27,
+      "name": "米川 雅翔（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹田",
+          "firstName": "凌",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "竹田_凌_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "竹田_凌_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 87,
+      "name": "竹田 凌（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "橋場_柊一郎_法政大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "橋場 柊一郎（法政大学）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "橋場",
+          "firstName": "柊一郎",
+          "team": "法政大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "橋場_柊一郎_法政大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 54,
+      "name": "坂口 生磨（明治大学）",
+      "category": "singles",
+      "retired": false
+    }
+  ]
 }
