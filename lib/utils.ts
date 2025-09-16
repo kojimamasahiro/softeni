@@ -22,10 +22,7 @@ export function sortMatchesByEntryNo(
 ): NonNullable<TournamentYearData['matches']> {
   return matches
     .slice()
-    .sort(
-      (a, b) =>
-        (parseInt(a.entryNo) || Infinity) - (parseInt(b.entryNo) || Infinity),
-    );
+    .sort((a, b) => (a.entryNo || Infinity) - (b.entryNo || Infinity));
 }
 
 export function getTournamentLabel(id: string): string {

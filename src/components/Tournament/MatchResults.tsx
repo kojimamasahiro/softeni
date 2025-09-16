@@ -118,7 +118,7 @@ function MatchGroup({
   tracedMatches,
 }: {
   name: string;
-  entryNo: string;
+  entryNo: number;
   matches: Match[];
   searchQuery: string;
   filter: 'all' | 'top8' | 'winners';
@@ -247,6 +247,8 @@ function MatchGroup({
                                       `${op.team}（${op.prefecture ?? '不明'}）`,
                                   )
                                   .join('・');
+                              } else if (m.team && m.opponentTeam) {
+                                return `${m.opponentTeam.team}`;
                               } else {
                                 return m.opponent ?? '不明';
                               }
@@ -354,7 +356,7 @@ export default function MatchResults({
           <MatchGroup
             key={name}
             name={name}
-            entryNo={matchGroup[0]?.entryNo ?? ''}
+            entryNo={matchGroup[0]?.entryNo ?? -1}
             matches={matchGroup}
             searchQuery={searchQuery}
             filter={filter}

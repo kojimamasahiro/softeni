@@ -289,11 +289,44 @@ export default function TournamentYearResultPage({
     roundRobinMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
   );
 
+  // standingsから id → rank の辞書を作成
+  const standings = data.standings ?? {};
+  const idToRank: Record<number, number> = {};
+
+  // 期待される構造: standings[group][entry] = { id: number, rank: number }
+  for (const groupObj of Object.values(standings)) {
+    for (const item of Object.values(groupObj)) {
+      if (item && typeof item === 'object' && 'id' in item && 'rank' in item) {
+        const { id, rank } = item as { id: number; rank: number };
+        idToRank[id] = rank;
+      }
+    }
+  }
+
+  // 予選で敗退したエントリーを抽出
   const eliminatedEntries = [...roundRobinMatchSet]
     .filter((key) => !tournamentMatchSet.has(key))
     .map((key) => {
       const [name, category] = key.split('|');
-      return { name, result: '予選敗退', category };
+
+      // roundRobinMatchesからentryNoを取得
+      const match = roundRobinMatches.find(
+        (m) => m.name === name && m.category === category,
+      );
+
+      // standings.id から rank を取得
+      let rank: number | null = null;
+      if (match?.entryNo != null) {
+        const entryId = match.entryNo;
+        rank = idToRank[entryId] ?? null;
+      }
+
+      return {
+        name,
+        result: rank ? `予選${rank}位` : '予選敗退',
+        category,
+        rank,
+      };
     });
 
   return (

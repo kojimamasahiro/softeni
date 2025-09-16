@@ -48,11 +48,12 @@ export interface TournamentYearData {
     round: string;
     pair?: string[];
     team?: string;
+    opponentTeam?: MatchOpponentTeam;
     opponents?: MatchOpponent[];
     opponent?: string;
     result: 'win' | 'lose';
     games: { won: string; lost: string };
-    entryNo: string;
+    entryNo: number;
     name: string;
     category?: string;
   }[];
@@ -60,14 +61,28 @@ export interface TournamentYearData {
     round: string;
     pair?: string[];
     team?: string;
+    opponentTeam?: MatchOpponentTeam;
     opponents?: MatchOpponent[];
     opponent?: string;
     result: 'win' | 'lose';
     games: { won: string; lost: string };
-    entryNo: string;
+    entryNo: number;
     name: string;
     category?: string;
   }[];
+  standings?: {
+    [category: string]: {
+      [group: string]: {
+        id: number;
+        name: string;
+        rank: number;
+        wins?: number;
+        losses?: number;
+        points?: number;
+        scoreDiff?: number;
+      }[];
+    };
+  };
 }
 
 export interface MatchOpponent {
@@ -77,6 +92,11 @@ export interface MatchOpponent {
   prefecture: string | null;
   playerId: string | null;
   tempId: string;
+}
+
+export interface MatchOpponentTeam {
+  team: string;
+  prefecture: string;
 }
 
 export interface TournamentMeta {
