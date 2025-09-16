@@ -1,0 +1,1118 @@
+{
+  "highlight": "",
+  "status": "completed",
+  "scheduledDate": "(09/14)",
+  "startDate": "2025-09-14",
+  "endDate": "2025-09-15",
+  "location": "千葉県",
+  "results": [
+    {
+      "team": "奈良LEGENDS",
+      "prefecture": "奈良",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "QueenBee",
+      "prefecture": "愛知",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "双葉台STC",
+      "prefecture": "茨城",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "田辺STC",
+      "prefecture": "和歌山",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "三重高クラブ",
+      "prefecture": "三重",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "半田球友クラブ",
+      "prefecture": "愛知",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "Volare四日市STC",
+      "prefecture": "三重",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "どんぐり垂水クラブ",
+      "prefecture": "鹿児島",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "team": "三重高クラブ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "川崎STC",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "川崎STC_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "三重高クラブ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "川崎STC_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重高クラブ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "三重高クラブ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 42,
+      "name": "川崎STC（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "綾瀬チャレンジ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "行方STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "行方STC_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 8,
+      "name": "綾瀬チャレンジ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "行方STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "綾瀬チャレンジ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "綾瀬チャレンジ_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 47,
+      "name": "行方STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "半田球友クラブ_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Unite",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "Unite_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 28,
+      "name": "半田球友クラブ（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "Unite_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "半田球友クラブ",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "半田球友クラブ_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 18,
+      "name": "Unite（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "MASTER_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "双葉台STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "双葉台STC_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 31,
+      "name": "MASTER（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "双葉台STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "MASTER",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "MASTER_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 34,
+      "name": "双葉台STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "甲斐RSFクラブ_山梨",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Volare四日市STC",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "Volare四日市STC_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 16,
+      "name": "甲斐RSFクラブ（山梨）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "Volare四日市STC_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "甲斐RSFクラブ",
+          "playerId": null,
+          "prefecture": "山梨",
+          "tempId": "甲斐RSFクラブ_山梨"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "Volare四日市STC（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "田辺STC_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "渋川スポ少",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "渋川スポ少_群馬"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 32,
+      "name": "田辺STC（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "渋川スポ少_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田辺STC",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "田辺STC_和歌山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 21,
+      "name": "渋川スポ少（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "LOOP_新潟",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Minommy",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "Minommy_岐阜"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "LOOP（新潟）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "Minommy_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "LOOP",
+          "playerId": null,
+          "prefecture": "新潟",
+          "tempId": "LOOP_新潟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 43,
+      "name": "Minommy（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "豊田健友クラブ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "LacrimaJr.",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "LacrimaJr._山形"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 5,
+      "name": "豊田健友クラブ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "LacrimaJr._山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "豊田健友クラブ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "豊田健友クラブ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "LacrimaJr.（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "飛鳥インドアテニスクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重高クラブ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "三重高クラブ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "飛鳥インドアテニスクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "三重高クラブ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "飛鳥インドアテニスクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "飛鳥インドアテニスクラブ_奈良"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 37,
+      "name": "三重高クラブ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "綾瀬チャレンジ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "QueenBee",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "QueenBee_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 8,
+      "name": "綾瀬チャレンジ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "QueenBee_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "綾瀬チャレンジ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "綾瀬チャレンジ_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "QueenBee（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "土浦STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "半田球友クラブ",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "半田球友クラブ_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 13,
+      "name": "土浦STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "半田球友クラブ_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "土浦STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "土浦STC_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 28,
+      "name": "半田球友クラブ（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "双葉台STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NIKKO",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "NIKKO_栃木"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 34,
+      "name": "双葉台STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "NIKKO_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "双葉台STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "双葉台STC_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 23,
+      "name": "NIKKO（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "B・wing_山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Volare四日市STC",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "Volare四日市STC_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "B・wing（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "Volare四日市STC_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "B・wing",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "B・wing_山形"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "Volare四日市STC（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "田辺STC_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "男塾",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "男塾_福岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 32,
+      "name": "田辺STC（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "男塾_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田辺STC",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "田辺STC_和歌山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 33,
+      "name": "男塾（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Minommy",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "Minommy_岐阜"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 38,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "Minommy_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 43,
+      "name": "Minommy（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "LacrimaJr._山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "どんぐり垂水クラブ",
+          "playerId": null,
+          "prefecture": "鹿児島",
+          "tempId": "どんぐり垂水クラブ_鹿児島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 11,
+      "name": "LacrimaJr.（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "どんぐり垂水クラブ_鹿児島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "LacrimaJr.",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "LacrimaJr._山形"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 48,
+      "name": "どんぐり垂水クラブ（鹿児島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "三重高クラブ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "QueenBee",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "QueenBee_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 37,
+      "name": "三重高クラブ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "QueenBee_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重高クラブ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "三重高クラブ_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 12,
+      "name": "QueenBee（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "半田球友クラブ_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "双葉台STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "双葉台STC_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 28,
+      "name": "半田球友クラブ（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "双葉台STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "半田球友クラブ",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "半田球友クラブ_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 34,
+      "name": "双葉台STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "Volare四日市STC_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田辺STC",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "田辺STC_和歌山"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 19,
+      "name": "Volare四日市STC（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "田辺STC_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Volare四日市STC",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "Volare四日市STC_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 32,
+      "name": "田辺STC（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "どんぐり垂水クラブ",
+          "playerId": null,
+          "prefecture": "鹿児島",
+          "tempId": "どんぐり垂水クラブ_鹿児島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 38,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "どんぐり垂水クラブ_鹿児島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 48,
+      "name": "どんぐり垂水クラブ（鹿児島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "QueenBee_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "双葉台STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "双葉台STC_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 12,
+      "name": "QueenBee（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "双葉台STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "QueenBee",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "QueenBee_愛知"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 34,
+      "name": "双葉台STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "田辺STC_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 32,
+      "name": "田辺STC（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田辺STC",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "田辺STC_和歌山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 38,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "QueenBee_愛知",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 12,
+      "name": "QueenBee（愛知）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "QueenBee",
+          "playerId": null,
+          "prefecture": "愛知",
+          "tempId": "QueenBee_愛知"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 38,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    }
+  ]
+}
