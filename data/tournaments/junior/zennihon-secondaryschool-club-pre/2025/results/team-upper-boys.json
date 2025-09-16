@@ -1,0 +1,842 @@
+{
+  "highlight": "",
+  "status": "completed",
+  "scheduledDate": "(09/14)",
+  "startDate": "2025-09-14",
+  "endDate": "2025-09-15",
+  "location": "千葉県",
+  "results": [
+    {
+      "team": "NCT長崎",
+      "prefecture": "長崎",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "BLACKROI",
+      "prefecture": "山形",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "多治見・Yata",
+      "prefecture": "岐阜",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "三重高クラブ",
+      "prefecture": "三重",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "渋川スポ少",
+      "prefecture": "群馬",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "みらいクラブ",
+      "prefecture": "茨城",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "RISEクラブ",
+      "prefecture": "静岡",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "王寺ユースクラブ",
+      "prefecture": "奈良",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "team": "一関協会_岩手",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "筑西STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "筑西STC_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 36,
+      "name": "一関協会（岩手）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "筑西STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "一関協会",
+          "playerId": null,
+          "prefecture": "岩手",
+          "tempId": "一関協会_岩手"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 22,
+      "name": "筑西STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "NNP_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "黎明",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "黎明_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 20,
+      "name": "NNP（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "黎明_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NNP",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "NNP_長崎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "黎明（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "渋川スポ少_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "筑西STC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "筑西STC_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "渋川スポ少（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "筑西STC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "渋川スポ少",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "渋川スポ少_群馬"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 22,
+      "name": "筑西STC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "多治見・Yata_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "日野フレンズ",
+          "playerId": null,
+          "prefecture": "鳥取",
+          "tempId": "日野フレンズ_鳥取"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 9,
+      "name": "多治見・Yata（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "日野フレンズ_鳥取",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "多治見・Yata",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "多治見・Yata_岐阜"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 10,
+      "name": "日野フレンズ（鳥取）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "BLACKROI_山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "スマイリー",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "スマイリー_群馬"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 14,
+      "name": "BLACKROI（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "スマイリー_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "BLACKROI",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "BLACKROI_山形"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 31,
+      "name": "スマイリー（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "レペゼン千葉_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "みらいクラブ",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "みらいクラブ_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 29,
+      "name": "レペゼン千葉（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "みらいクラブ_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "レペゼン千葉",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "レペゼン千葉_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "みらいクラブ（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "NCT長崎_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "Unite",
+          "playerId": null,
+          "prefecture": "千葉",
+          "tempId": "Unite_千葉"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 25,
+      "name": "NCT長崎（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "Unite_千葉",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NCT長崎",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "NCT長崎_長崎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 15,
+      "name": "Unite（千葉）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "RISEクラブ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "K-NIGHTS",
+          "playerId": null,
+          "prefecture": "岡山",
+          "tempId": "K-NIGHTS_岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "RISEクラブ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "K-NIGHTS_岡山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "RISEクラブ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "RISEクラブ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 28,
+      "name": "K-NIGHTS（岡山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "三重高クラブ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "男塾",
+          "playerId": null,
+          "prefecture": "福岡",
+          "tempId": "男塾_福岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 30,
+      "name": "三重高クラブ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "男塾_福岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重高クラブ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "三重高クラブ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 6,
+      "name": "男塾（福岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "NNP_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "王寺ユースクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "王寺ユースクラブ_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 20,
+      "name": "NNP（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "王寺ユースクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NNP",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "NNP_長崎"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 34,
+      "name": "王寺ユースクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "渋川スポ少_群馬",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "多治見・Yata",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "多治見・Yata_岐阜"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "渋川スポ少（群馬）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "多治見・Yata_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "渋川スポ少",
+          "playerId": null,
+          "prefecture": "群馬",
+          "tempId": "渋川スポ少_群馬"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 9,
+      "name": "多治見・Yata（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "BLACKROI_山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "みらいクラブ",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "みらいクラブ_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 14,
+      "name": "BLACKROI（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "みらいクラブ_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "BLACKROI",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "BLACKROI_山形"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 19,
+      "name": "みらいクラブ（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "NCT長崎_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "RISEクラブ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "RISEクラブ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 25,
+      "name": "NCT長崎（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "RISEクラブ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NCT長崎",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "NCT長崎_長崎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 11,
+      "name": "RISEクラブ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "三重高クラブ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "王寺ユースクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "王寺ユースクラブ_奈良"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 30,
+      "name": "三重高クラブ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "王寺ユースクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重高クラブ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "三重高クラブ_三重"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 34,
+      "name": "王寺ユースクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "多治見・Yata_岐阜",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "BLACKROI",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "BLACKROI_山形"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 9,
+      "name": "多治見・Yata（岐阜）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "BLACKROI_山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "多治見・Yata",
+          "playerId": null,
+          "prefecture": "岐阜",
+          "tempId": "多治見・Yata_岐阜"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 14,
+      "name": "BLACKROI（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "NCT長崎_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "三重高クラブ",
+          "playerId": null,
+          "prefecture": "三重",
+          "tempId": "三重高クラブ_三重"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "NCT長崎（長崎）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "三重高クラブ_三重",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NCT長崎",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "NCT長崎_長崎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 30,
+      "name": "三重高クラブ（三重）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "BLACKROI_山形",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "NCT長崎",
+          "playerId": null,
+          "prefecture": "長崎",
+          "tempId": "NCT長崎_長崎"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 14,
+      "name": "BLACKROI（山形）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "NCT長崎_長崎",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "BLACKROI",
+          "playerId": null,
+          "prefecture": "山形",
+          "tempId": "BLACKROI_山形"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 25,
+      "name": "NCT長崎（長崎）",
+      "category": "team",
+      "retired": false
+    }
+  ]
+}

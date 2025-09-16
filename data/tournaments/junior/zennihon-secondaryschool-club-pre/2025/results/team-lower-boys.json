@@ -1,0 +1,934 @@
+{
+  "highlight": "",
+  "status": "completed",
+  "scheduledDate": "(09/14)",
+  "startDate": "2025-09-14",
+  "endDate": "2025-09-15",
+  "location": "千葉県",
+  "results": [
+    {
+      "team": "奈良LEGENDS",
+      "prefecture": "奈良",
+      "result": "優勝",
+      "category": "team"
+    },
+    {
+      "team": "奈良まほろばクラブ",
+      "prefecture": "奈良",
+      "result": "準優勝",
+      "category": "team"
+    },
+    {
+      "team": "ソフテニ道場クラブ",
+      "prefecture": "北海道",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "大田原Jr.STEP",
+      "prefecture": "栃木",
+      "result": "ベスト4",
+      "category": "team"
+    },
+    {
+      "team": "秦野フレンドリークラブ",
+      "prefecture": "神奈川",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "ＦＵＪＩＹＡＭＡ",
+      "prefecture": "静岡",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "綾瀬チャレンジ",
+      "prefecture": "神奈川",
+      "result": "ベスト8",
+      "category": "team"
+    },
+    {
+      "team": "TEPPENJSC",
+      "prefecture": "茨城",
+      "result": "ベスト8",
+      "category": "team"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "team": "MKクラブ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "秦野フレンドリークラブ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "秦野フレンドリークラブ_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 37,
+      "name": "MKクラブ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "秦野フレンドリークラブ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "MKクラブ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "MKクラブ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "秦野フレンドリークラブ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "ガナドール福島_福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "KAMIMINE",
+          "playerId": null,
+          "prefecture": "佐賀",
+          "tempId": "KAMIMINE_佐賀"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 26,
+      "name": "ガナドール福島（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "KAMIMINE_佐賀",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ガナドール福島",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "ガナドール福島_福島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 38,
+      "name": "KAMIMINE（佐賀）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "UNITY福島S.T.C._福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "甲斐RSFクラブ",
+          "playerId": null,
+          "prefecture": "山梨",
+          "tempId": "甲斐RSFクラブ_山梨"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 3,
+      "name": "UNITY福島S.T.C.（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "甲斐RSFクラブ_山梨",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "UNITY福島S.T.C.",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "UNITY福島S.T.C._福島"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 17,
+      "name": "甲斐RSFクラブ（山梨）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "大田原Jr.STEP_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "富岳JSTC・JHD",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "富岳JSTC・JHD_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 21,
+      "name": "大田原Jr.STEP（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "team": "富岳JSTC・JHD_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大田原Jr.STEP",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "大田原Jr.STEP_栃木"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 2,
+      "name": "富岳JSTC・JHD（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "田辺クラブ_和歌山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "秦野フレンドリークラブ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "秦野フレンドリークラブ_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 5,
+      "name": "田辺クラブ（和歌山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "秦野フレンドリークラブ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "田辺クラブ",
+          "playerId": null,
+          "prefecture": "和歌山",
+          "tempId": "田辺クラブ_和歌山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 24,
+      "name": "秦野フレンドリークラブ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "小松荒屋SYNC_石川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ソフテニ道場クラブ",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "ソフテニ道場クラブ_北海道"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 8,
+      "name": "小松荒屋SYNC（石川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ソフテニ道場クラブ_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "小松荒屋SYNC",
+          "playerId": null,
+          "prefecture": "石川",
+          "tempId": "小松荒屋SYNC_石川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "ソフテニ道場クラブ（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "奈良まほろばクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "D-club",
+          "playerId": null,
+          "prefecture": "富山",
+          "tempId": "D-club_富山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "奈良まほろばクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "D-club_富山",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良まほろばクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良まほろばクラブ_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 33,
+      "name": "D-club（富山）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "KAMIMINE_佐賀",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＦＵＪＩＹＡＭＡ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "ＦＵＪＩＹＡＭＡ_静岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 38,
+      "name": "KAMIMINE（佐賀）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ＦＵＪＩＹＡＭＡ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "KAMIMINE",
+          "playerId": null,
+          "prefecture": "佐賀",
+          "tempId": "KAMIMINE_佐賀"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 18,
+      "name": "ＦＵＪＩＹＡＭＡ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "UNITY福島S.T.C.",
+          "playerId": null,
+          "prefecture": "福島",
+          "tempId": "UNITY福島S.T.C._福島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 23,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "UNITY福島S.T.C._福島",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 3,
+      "name": "UNITY福島S.T.C.（福島）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "綾瀬チャレンジ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ALMARESEMPIENZA",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "ALMARESEMPIENZA_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 13,
+      "name": "綾瀬チャレンジ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "ALMARESEMPIENZA_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "綾瀬チャレンジ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "綾瀬チャレンジ_神奈川"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "ALMARESEMPIENZA（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "岩見沢少年団_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "TEPPENJSC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "TEPPENJSC_茨城"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 32,
+      "name": "岩見沢少年団（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "TEPPENJSC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "岩見沢少年団",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "岩見沢少年団_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 7,
+      "name": "TEPPENJSC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "大田原Jr.STEP_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "県北魁DJC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "県北魁DJC_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 21,
+      "name": "大田原Jr.STEP（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "team": "県北魁DJC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大田原Jr.STEP",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "大田原Jr.STEP_栃木"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 35,
+      "name": "県北魁DJC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "秦野フレンドリークラブ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ソフテニ道場クラブ",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "ソフテニ道場クラブ_北海道"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 24,
+      "name": "秦野フレンドリークラブ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ソフテニ道場クラブ_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "秦野フレンドリークラブ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "秦野フレンドリークラブ_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 12,
+      "name": "ソフテニ道場クラブ（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "奈良まほろばクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ＦＵＪＩＹＡＭＡ",
+          "playerId": null,
+          "prefecture": "静岡",
+          "tempId": "ＦＵＪＩＹＡＭＡ_静岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "奈良まほろばクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "ＦＵＪＩＹＡＭＡ_静岡",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良まほろばクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良まほろばクラブ_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 18,
+      "name": "ＦＵＪＩＹＡＭＡ（静岡）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "綾瀬チャレンジ",
+          "playerId": null,
+          "prefecture": "神奈川",
+          "tempId": "綾瀬チャレンジ_神奈川"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "綾瀬チャレンジ_神奈川",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 13,
+      "name": "綾瀬チャレンジ（神奈川）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "TEPPENJSC_茨城",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大田原Jr.STEP",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "大田原Jr.STEP_栃木"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 7,
+      "name": "TEPPENJSC（茨城）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "team": "大田原Jr.STEP_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "TEPPENJSC",
+          "playerId": null,
+          "prefecture": "茨城",
+          "tempId": "TEPPENJSC_茨城"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 21,
+      "name": "大田原Jr.STEP（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "ソフテニ道場クラブ_北海道",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良まほろばクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良まほろばクラブ_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 12,
+      "name": "ソフテニ道場クラブ（北海道）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "奈良まほろばクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "ソフテニ道場クラブ",
+          "playerId": null,
+          "prefecture": "北海道",
+          "tempId": "ソフテニ道場クラブ_北海道"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "奈良まほろばクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "大田原Jr.STEP",
+          "playerId": null,
+          "prefecture": "栃木",
+          "tempId": "大田原Jr.STEP_栃木"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "1"
+      },
+      "entryNo": 23,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "team": "大田原Jr.STEP_栃木",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "2"
+      },
+      "entryNo": 21,
+      "name": "大田原Jr.STEP（栃木）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "奈良まほろばクラブ_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良LEGENDS",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良LEGENDS_奈良"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "2"
+      },
+      "entryNo": 16,
+      "name": "奈良まほろばクラブ（奈良）",
+      "category": "team",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "team": "奈良LEGENDS_奈良",
+      "opponents": [
+        {
+          "lastName": "",
+          "firstName": "",
+          "team": "奈良まほろばクラブ",
+          "playerId": null,
+          "prefecture": "奈良",
+          "tempId": "奈良まほろばクラブ_奈良"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "2",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "奈良LEGENDS（奈良）",
+      "category": "team",
+      "retired": false
+    }
+  ]
+}
