@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const initialPlayers = [
 {"id":1,"name":"濵田・花園（混合）","information":[{"lastName":"濵田","firstName":"英明","team":"練馬ソフト","prefecture":"東京","playerId":null,"tempId":"濵田_英明_練馬ソフト"},{"lastName":"花園","firstName":"安紀","team":"杉並文化クラブ","prefecture":"東京","playerId":null,"tempId":"花園_安紀_杉並文化クラブ"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},

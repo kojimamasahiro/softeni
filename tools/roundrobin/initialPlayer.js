@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const initialPlayersByGroup = {
   "1": [
