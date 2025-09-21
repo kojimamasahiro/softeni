@@ -29,6 +29,8 @@ function roundOrderIndex(round: string): number {
     '4回戦',
     '5回戦',
     '6回戦',
+    '7回戦',
+    '8回戦',
     '準々決勝',
     '準決勝',
     '決勝',
