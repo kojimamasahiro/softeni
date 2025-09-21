@@ -16,8 +16,8 @@
     },
     {
       "playerIds": [
-        "藤岡_友子_岩槻すみれクラブ",
-        "奥山_奈美_浦和テニス"
+        "上村_知栄子_Ｌ．Ｃ．Ｃ．",
+        "小谷_麻紀_箕面サングリーン"
       ],
       "result": "準優勝",
       "category": "doubles"
@@ -32,8 +32,8 @@
     },
     {
       "playerIds": [
-        "上村_知栄子_Ｌ．Ｃ．Ｃ．",
-        "小谷_麻紀_箕面サングリーン"
+        "藤岡_友子_岩槻すみれクラブ",
+        "奥山_奈美_浦和テニス"
       ],
       "result": "ベスト4",
       "category": "doubles"
@@ -1867,7 +1867,7 @@
       "result": "win",
       "games": {
         "won": "4",
-        "lost": "0"
+        "lost": "3"
       },
       "entryNo": 15,
       "name": "福岡 由香（守山クラブ）・篠田 朋子（すみれクラブ）",
@@ -1900,7 +1900,7 @@
       ],
       "result": "lose",
       "games": {
-        "won": "0",
+        "won": "3",
         "lost": "4"
       },
       "entryNo": 19,
@@ -2544,10 +2544,10 @@
           "tempId": "小谷_麻紀_箕面サングリーン"
         }
       ],
-      "result": "win",
+      "result": "lose",
       "games": {
-        "won": "4",
-        "lost": "3"
+        "won": "3",
+        "lost": "4"
       },
       "entryNo": 24,
       "name": "藤岡 友子（岩槻すみれクラブ）・奥山 奈美（浦和テニス）",
@@ -2578,10 +2578,10 @@
           "tempId": "奥山_奈美_浦和テニス"
         }
       ],
-      "result": "lose",
+      "result": "win",
       "games": {
-        "won": "3",
-        "lost": "4"
+        "won": "4",
+        "lost": "3"
       },
       "entryNo": 34,
       "name": "上村 知栄子（Ｌ．Ｃ．Ｃ．）・小谷 麻紀（箕面サングリーン）",
@@ -2596,20 +2596,20 @@
       ],
       "opponents": [
         {
-          "lastName": "藤岡",
-          "firstName": "友子",
-          "team": "岩槻すみれクラブ",
-          "prefecture": "埼玉",
+          "lastName": "上村",
+          "firstName": "知栄子",
+          "team": "Ｌ．Ｃ．Ｃ．",
+          "prefecture": "和歌山",
           "playerId": null,
-          "tempId": "藤岡_友子_岩槻すみれクラブ"
+          "tempId": "上村_知栄子_Ｌ．Ｃ．Ｃ．"
         },
         {
-          "lastName": "奥山",
-          "firstName": "奈美",
-          "team": "浦和テニス",
-          "prefecture": "埼玉",
+          "lastName": "小谷",
+          "firstName": "麻紀",
+          "team": "箕面サングリーン",
+          "prefecture": "大阪",
           "playerId": null,
-          "tempId": "奥山_奈美_浦和テニス"
+          "tempId": "小谷_麻紀_箕面サングリーン"
         }
       ],
       "result": "win",
@@ -2625,8 +2625,8 @@
     {
       "round": "決勝",
       "pair": [
-        "藤岡_友子_岩槻すみれクラブ",
-        "奥山_奈美_浦和テニス"
+        "上村_知栄子_Ｌ．Ｃ．Ｃ．",
+        "小谷_麻紀_箕面サングリーン"
       ],
       "opponents": [
         {
@@ -2651,8 +2651,8 @@
         "won": "0",
         "lost": "4"
       },
-      "entryNo": 24,
-      "name": "藤岡 友子（岩槻すみれクラブ）・奥山 奈美（浦和テニス）",
+      "entryNo": 34,
+      "name": "上村 知栄子（Ｌ．Ｃ．Ｃ．）・小谷 麻紀（箕面サングリーン）",
       "category": "doubles",
       "retired": false
     }
