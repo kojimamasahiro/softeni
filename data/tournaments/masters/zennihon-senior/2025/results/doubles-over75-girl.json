@@ -1,0 +1,2721 @@
+{
+  "highlight": "",
+  "status": "completed",
+  "scheduledDate": "(09/21)",
+  "startDate": "2025-09-20",
+  "endDate": "2025-09-21",
+  "location": "京都府",
+  "results": [
+    {
+      "playerIds": [
+        "植山_正子_浦和けやきクラブ",
+        "大畑_政子_鴻巣レディス"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "塩谷_智子_豊橋女子クラブ",
+        "富山_郁代_すみれクラブ"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "天明_裕美子_大田支部",
+        "比嘉_ふみ代_チームＮＡＲＯ"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "木暮_道子_天沼ファミリー",
+        "中谷_順子_所沢ペアート"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "中澤_冨士子_深谷ラリー",
+        "中野_喜代江_浦和けやきクラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "鈴木_正枝_宇都宮ＡＣＥクラブ",
+        "吉澤_静江_伊勢崎クラブ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "松田_孝子_サンレディース",
+        "睦月_悦子_大阪ＯＢ軟庭会"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩佐",
+          "firstName": "照代",
+          "team": "アイビー",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "岩佐_照代_アイビー"
+        },
+        {
+          "lastName": "吉田",
+          "firstName": "勝代",
+          "team": "北美クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉田_勝代_北美クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 4,
+      "name": "佐野 邦子（佐野邦子）・小里 節子（本巣ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩佐_照代_アイビー",
+        "吉田_勝代_北美クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐野",
+          "firstName": "邦子",
+          "team": "佐野邦子",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "佐野_邦子_佐野邦子"
+        },
+        {
+          "lastName": "小里",
+          "firstName": "節子",
+          "team": "本巣ＳＴＣ",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "小里_節子_本巣ＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 8,
+      "name": "岩佐 照代（アイビー）・吉田 勝代（北美クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "木暮_道子_天沼ファミリー",
+        "中谷_順子_所沢ペアート"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐野",
+          "firstName": "邦子",
+          "team": "佐野邦子",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "佐野_邦子_佐野邦子"
+        },
+        {
+          "lastName": "小里",
+          "firstName": "節子",
+          "team": "本巣ＳＴＣ",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "小里_節子_本巣ＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 1,
+      "name": "木暮 道子（天沼ファミリー）・中谷 順子（所沢ペアート）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "木暮",
+          "firstName": "道子",
+          "team": "天沼ファミリー",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "木暮_道子_天沼ファミリー"
+        },
+        {
+          "lastName": "中谷",
+          "firstName": "順子",
+          "team": "所沢ペアート",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中谷_順子_所沢ペアート"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "佐野 邦子（佐野邦子）・小里 節子（本巣ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "塩谷_智子_豊橋女子クラブ",
+        "富山_郁代_すみれクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "中澤",
+          "firstName": "冨士子",
+          "team": "深谷ラリー",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中澤_冨士子_深谷ラリー"
+        },
+        {
+          "lastName": "中野",
+          "firstName": "喜代江",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中野_喜代江_浦和けやきクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "塩谷 智子（豊橋女子クラブ）・富山 郁代（すみれクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "中澤_冨士子_深谷ラリー",
+        "中野_喜代江_浦和けやきクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "塩谷",
+          "firstName": "智子",
+          "team": "豊橋女子クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "塩谷_智子_豊橋女子クラブ"
+        },
+        {
+          "lastName": "富山",
+          "firstName": "郁代",
+          "team": "すみれクラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "富山_郁代_すみれクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 13,
+      "name": "中澤 冨士子（深谷ラリー）・中野 喜代江（浦和けやきクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "天明_裕美子_大田支部",
+        "比嘉_ふみ代_チームＮＡＲＯ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "正枝",
+          "team": "宇都宮ＡＣＥクラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_正枝_宇都宮ＡＣＥクラブ"
+        },
+        {
+          "lastName": "吉澤",
+          "firstName": "静江",
+          "team": "伊勢崎クラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "吉澤_静江_伊勢崎クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 16,
+      "name": "天明 裕美子（大田支部）・比嘉 ふみ代（チームＮＡＲＯ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "鈴木_正枝_宇都宮ＡＣＥクラブ",
+        "吉澤_静江_伊勢崎クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "天明",
+          "firstName": "裕美子",
+          "team": "大田支部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "天明_裕美子_大田支部"
+        },
+        {
+          "lastName": "比嘉",
+          "firstName": "ふみ代",
+          "team": "チームＮＡＲＯ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "比嘉_ふみ代_チームＮＡＲＯ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 19,
+      "name": "鈴木 正枝（宇都宮ＡＣＥクラブ）・吉澤 静江（伊勢崎クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "松田_孝子_サンレディース",
+        "睦月_悦子_大阪ＯＢ軟庭会"
+      ],
+      "opponents": [
+        {
+          "lastName": "植山",
+          "firstName": "正子",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "植山_正子_浦和けやきクラブ"
+        },
+        {
+          "lastName": "大畑",
+          "firstName": "政子",
+          "team": "鴻巣レディス",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大畑_政子_鴻巣レディス"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 22,
+      "name": "松田 孝子（サンレディース）・睦月 悦子（大阪ＯＢ軟庭会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "植山_正子_浦和けやきクラブ",
+        "大畑_政子_鴻巣レディス"
+      ],
+      "opponents": [
+        {
+          "lastName": "松田",
+          "firstName": "孝子",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "松田_孝子_サンレディース"
+        },
+        {
+          "lastName": "睦月",
+          "firstName": "悦子",
+          "team": "大阪ＯＢ軟庭会",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "睦月_悦子_大阪ＯＢ軟庭会"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "植山 正子（浦和けやきクラブ）・大畑 政子（鴻巣レディス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "塩谷",
+          "firstName": "智子",
+          "team": "豊橋女子クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "塩谷_智子_豊橋女子クラブ"
+        },
+        {
+          "lastName": "富山",
+          "firstName": "郁代",
+          "team": "すみれクラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "富山_郁代_すみれクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "佐野 邦子（佐野邦子）・小里 節子（本巣ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "塩谷_智子_豊橋女子クラブ",
+        "富山_郁代_すみれクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐野",
+          "firstName": "邦子",
+          "team": "佐野邦子",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "佐野_邦子_佐野邦子"
+        },
+        {
+          "lastName": "小里",
+          "firstName": "節子",
+          "team": "本巣ＳＴＣ",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "小里_節子_本巣ＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 11,
+      "name": "塩谷 智子（豊橋女子クラブ）・富山 郁代（すみれクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "天明_裕美子_大田支部",
+        "比嘉_ふみ代_チームＮＡＲＯ"
+      ],
+      "opponents": [
+        {
+          "lastName": "植山",
+          "firstName": "正子",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "植山_正子_浦和けやきクラブ"
+        },
+        {
+          "lastName": "大畑",
+          "firstName": "政子",
+          "team": "鴻巣レディス",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大畑_政子_鴻巣レディス"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 16,
+      "name": "天明 裕美子（大田支部）・比嘉 ふみ代（チームＮＡＲＯ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "植山_正子_浦和けやきクラブ",
+        "大畑_政子_鴻巣レディス"
+      ],
+      "opponents": [
+        {
+          "lastName": "天明",
+          "firstName": "裕美子",
+          "team": "大田支部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "天明_裕美子_大田支部"
+        },
+        {
+          "lastName": "比嘉",
+          "firstName": "ふみ代",
+          "team": "チームＮＡＲＯ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "比嘉_ふみ代_チームＮＡＲＯ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 25,
+      "name": "植山 正子（浦和けやきクラブ）・大畑 政子（鴻巣レディス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "植山",
+          "firstName": "正子",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "植山_正子_浦和けやきクラブ"
+        },
+        {
+          "lastName": "大畑",
+          "firstName": "政子",
+          "team": "鴻巣レディス",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大畑_政子_鴻巣レディス"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "佐野 邦子（佐野邦子）・小里 節子（本巣ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "植山_正子_浦和けやきクラブ",
+        "大畑_政子_鴻巣レディス"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐野",
+          "firstName": "邦子",
+          "team": "佐野邦子",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "佐野_邦子_佐野邦子"
+        },
+        {
+          "lastName": "小里",
+          "firstName": "節子",
+          "team": "本巣ＳＴＣ",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "小里_節子_本巣ＳＴＣ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 25,
+      "name": "植山 正子（浦和けやきクラブ）・大畑 政子（鴻巣レディス）",
+      "category": "doubles",
+      "retired": false
+    }
+  ],
+  "roundRobinMatches": [
+    {
+      "group": "A",
+      "pair": [
+        "木暮_道子_天沼ファミリー",
+        "中谷_順子_所沢ペアート"
+      ],
+      "opponents": [
+        {
+          "lastName": "中山",
+          "firstName": "善枝",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "中山_善枝_サンレディース"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "芳子",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "佐藤_芳子_サンレディース"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "木暮 道子（天沼ファミリー）・中谷 順子（所沢ペアート）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "中山_善枝_サンレディース",
+        "佐藤_芳子_サンレディース"
+      ],
+      "opponents": [
+        {
+          "lastName": "木暮",
+          "firstName": "道子",
+          "team": "天沼ファミリー",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "木暮_道子_天沼ファミリー"
+        },
+        {
+          "lastName": "中谷",
+          "firstName": "順子",
+          "team": "所沢ペアート",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中谷_順子_所沢ペアート"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "中山 善枝・佐藤 芳子（サンレディース）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "木暮_道子_天沼ファミリー",
+        "中谷_順子_所沢ペアート"
+      ],
+      "opponents": [
+        {
+          "lastName": "菅田",
+          "firstName": "すみ子",
+          "team": "長野市協会",
+          "prefecture": "長野",
+          "playerId": null,
+          "tempId": "菅田_すみ子_長野市協会"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "幸子",
+          "team": "松本市協会",
+          "prefecture": "長野",
+          "playerId": null,
+          "tempId": "石田_幸子_松本市協会"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "木暮 道子（天沼ファミリー）・中谷 順子（所沢ペアート）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "菅田_すみ子_長野市協会",
+        "石田_幸子_松本市協会"
+      ],
+      "opponents": [
+        {
+          "lastName": "木暮",
+          "firstName": "道子",
+          "team": "天沼ファミリー",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "木暮_道子_天沼ファミリー"
+        },
+        {
+          "lastName": "中谷",
+          "firstName": "順子",
+          "team": "所沢ペアート",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中谷_順子_所沢ペアート"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 3,
+      "name": "菅田 すみ子（長野市協会）・石田 幸子（松本市協会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "中山_善枝_サンレディース",
+        "佐藤_芳子_サンレディース"
+      ],
+      "opponents": [
+        {
+          "lastName": "菅田",
+          "firstName": "すみ子",
+          "team": "長野市協会",
+          "prefecture": "長野",
+          "playerId": null,
+          "tempId": "菅田_すみ子_長野市協会"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "幸子",
+          "team": "松本市協会",
+          "prefecture": "長野",
+          "playerId": null,
+          "tempId": "石田_幸子_松本市協会"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "中山 善枝・佐藤 芳子（サンレディース）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "菅田_すみ子_長野市協会",
+        "石田_幸子_松本市協会"
+      ],
+      "opponents": [
+        {
+          "lastName": "中山",
+          "firstName": "善枝",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "中山_善枝_サンレディース"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "芳子",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "佐藤_芳子_サンレディース"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 3,
+      "name": "菅田 すみ子（長野市協会）・石田 幸子（松本市協会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "小池",
+          "firstName": "順子",
+          "team": "西代レディース",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "小池_順子_西代レディース"
+        },
+        {
+          "lastName": "野田",
+          "firstName": "美代子",
+          "team": "河合クラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "野田_美代子_河合クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "佐野 邦子（佐野邦子）・小里 節子（本巣ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "小池_順子_西代レディース",
+        "野田_美代子_河合クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐野",
+          "firstName": "邦子",
+          "team": "佐野邦子",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "佐野_邦子_佐野邦子"
+        },
+        {
+          "lastName": "小里",
+          "firstName": "節子",
+          "team": "本巣ＳＴＣ",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "小里_節子_本巣ＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "小池 順子（西代レディース）・野田 美代子（河合クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "佐野_邦子_佐野邦子",
+        "小里_節子_本巣ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "加藤",
+          "firstName": "栄子",
+          "team": "アクロス広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "加藤_栄子_アクロス広島"
+        },
+        {
+          "lastName": "黒田",
+          "firstName": "玲子",
+          "team": "アクロス広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "黒田_玲子_アクロス広島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "佐野 邦子（佐野邦子）・小里 節子（本巣ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "加藤_栄子_アクロス広島",
+        "黒田_玲子_アクロス広島"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐野",
+          "firstName": "邦子",
+          "team": "佐野邦子",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "佐野_邦子_佐野邦子"
+        },
+        {
+          "lastName": "小里",
+          "firstName": "節子",
+          "team": "本巣ＳＴＣ",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "小里_節子_本巣ＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "加藤 栄子・黒田 玲子（アクロス広島）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "小池_順子_西代レディース",
+        "野田_美代子_河合クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "加藤",
+          "firstName": "栄子",
+          "team": "アクロス広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "加藤_栄子_アクロス広島"
+        },
+        {
+          "lastName": "黒田",
+          "firstName": "玲子",
+          "team": "アクロス広島",
+          "prefecture": "広島",
+          "playerId": null,
+          "tempId": "黒田_玲子_アクロス広島"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 5,
+      "name": "小池 順子（西代レディース）・野田 美代子（河合クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "加藤_栄子_アクロス広島",
+        "黒田_玲子_アクロス広島"
+      ],
+      "opponents": [
+        {
+          "lastName": "小池",
+          "firstName": "順子",
+          "team": "西代レディース",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "小池_順子_西代レディース"
+        },
+        {
+          "lastName": "野田",
+          "firstName": "美代子",
+          "team": "河合クラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "野田_美代子_河合クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "加藤 栄子・黒田 玲子（アクロス広島）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "C",
+      "pair": [
+        "渡辺_作貴子_森林クラブ",
+        "前原_明美_岡崎レディスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩佐",
+          "firstName": "照代",
+          "team": "アイビー",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "岩佐_照代_アイビー"
+        },
+        {
+          "lastName": "吉田",
+          "firstName": "勝代",
+          "team": "北美クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉田_勝代_北美クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 7,
+      "name": "渡辺 作貴子（森林クラブ）・前原 明美（岡崎レディスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "C",
+      "pair": [
+        "岩佐_照代_アイビー",
+        "吉田_勝代_北美クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡辺",
+          "firstName": "作貴子",
+          "team": "森林クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "渡辺_作貴子_森林クラブ"
+        },
+        {
+          "lastName": "前原",
+          "firstName": "明美",
+          "team": "岡崎レディスクラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "前原_明美_岡崎レディスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 8,
+      "name": "岩佐 照代（アイビー）・吉田 勝代（北美クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "C",
+      "pair": [
+        "渡辺_作貴子_森林クラブ",
+        "前原_明美_岡崎レディスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "根上",
+          "firstName": "律子",
+          "team": "守山ＳＴＣ",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "根上_律子_守山ＳＴＣ"
+        },
+        {
+          "lastName": "村上",
+          "firstName": "秀子",
+          "team": "福知山ウイディ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "村上_秀子_福知山ウイディ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 7,
+      "name": "渡辺 作貴子（森林クラブ）・前原 明美（岡崎レディスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "C",
+      "pair": [
+        "根上_律子_守山ＳＴＣ",
+        "村上_秀子_福知山ウイディ"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡辺",
+          "firstName": "作貴子",
+          "team": "森林クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "渡辺_作貴子_森林クラブ"
+        },
+        {
+          "lastName": "前原",
+          "firstName": "明美",
+          "team": "岡崎レディスクラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "前原_明美_岡崎レディスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 9,
+      "name": "根上 律子（守山ＳＴＣ）・村上 秀子（福知山ウイディ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "C",
+      "pair": [
+        "岩佐_照代_アイビー",
+        "吉田_勝代_北美クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "根上",
+          "firstName": "律子",
+          "team": "守山ＳＴＣ",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "根上_律子_守山ＳＴＣ"
+        },
+        {
+          "lastName": "村上",
+          "firstName": "秀子",
+          "team": "福知山ウイディ",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "村上_秀子_福知山ウイディ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 8,
+      "name": "岩佐 照代（アイビー）・吉田 勝代（北美クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "C",
+      "pair": [
+        "根上_律子_守山ＳＴＣ",
+        "村上_秀子_福知山ウイディ"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩佐",
+          "firstName": "照代",
+          "team": "アイビー",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "岩佐_照代_アイビー"
+        },
+        {
+          "lastName": "吉田",
+          "firstName": "勝代",
+          "team": "北美クラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉田_勝代_北美クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 9,
+      "name": "根上 律子（守山ＳＴＣ）・村上 秀子（福知山ウイディ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "D",
+      "pair": [
+        "秋山_千代子_太陽クラブ",
+        "今西_敏子_幸町クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "塩谷",
+          "firstName": "智子",
+          "team": "豊橋女子クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "塩谷_智子_豊橋女子クラブ"
+        },
+        {
+          "lastName": "富山",
+          "firstName": "郁代",
+          "team": "すみれクラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "富山_郁代_すみれクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "秋山 千代子（太陽クラブ）・今西 敏子（幸町クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "D",
+      "pair": [
+        "塩谷_智子_豊橋女子クラブ",
+        "富山_郁代_すみれクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "秋山",
+          "firstName": "千代子",
+          "team": "太陽クラブ",
+          "prefecture": "神奈川",
+          "playerId": null,
+          "tempId": "秋山_千代子_太陽クラブ"
+        },
+        {
+          "lastName": "今西",
+          "firstName": "敏子",
+          "team": "幸町クラブ",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "今西_敏子_幸町クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "塩谷 智子（豊橋女子クラブ）・富山 郁代（すみれクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "D",
+      "pair": [
+        "秋山_千代子_太陽クラブ",
+        "今西_敏子_幸町クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "須原",
+          "firstName": "敏恵",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "須原_敏恵_サンレディース"
+        },
+        {
+          "lastName": "吉村",
+          "firstName": "智恵",
+          "team": "大阪ＯＢ軟庭会",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "吉村_智恵_大阪ＯＢ軟庭会"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "秋山 千代子（太陽クラブ）・今西 敏子（幸町クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "D",
+      "pair": [
+        "須原_敏恵_サンレディース",
+        "吉村_智恵_大阪ＯＢ軟庭会"
+      ],
+      "opponents": [
+        {
+          "lastName": "秋山",
+          "firstName": "千代子",
+          "team": "太陽クラブ",
+          "prefecture": "神奈川",
+          "playerId": null,
+          "tempId": "秋山_千代子_太陽クラブ"
+        },
+        {
+          "lastName": "今西",
+          "firstName": "敏子",
+          "team": "幸町クラブ",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "今西_敏子_幸町クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 12,
+      "name": "須原 敏恵（サンレディース）・吉村 智恵（大阪ＯＢ軟庭会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "D",
+      "pair": [
+        "塩谷_智子_豊橋女子クラブ",
+        "富山_郁代_すみれクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "須原",
+          "firstName": "敏恵",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "須原_敏恵_サンレディース"
+        },
+        {
+          "lastName": "吉村",
+          "firstName": "智恵",
+          "team": "大阪ＯＢ軟庭会",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "吉村_智恵_大阪ＯＢ軟庭会"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 11,
+      "name": "塩谷 智子（豊橋女子クラブ）・富山 郁代（すみれクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "D",
+      "pair": [
+        "須原_敏恵_サンレディース",
+        "吉村_智恵_大阪ＯＢ軟庭会"
+      ],
+      "opponents": [
+        {
+          "lastName": "塩谷",
+          "firstName": "智子",
+          "team": "豊橋女子クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "塩谷_智子_豊橋女子クラブ"
+        },
+        {
+          "lastName": "富山",
+          "firstName": "郁代",
+          "team": "すみれクラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "富山_郁代_すみれクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 12,
+      "name": "須原 敏恵（サンレディース）・吉村 智恵（大阪ＯＢ軟庭会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "E",
+      "pair": [
+        "中澤_冨士子_深谷ラリー",
+        "中野_喜代江_浦和けやきクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "横田",
+          "firstName": "美枝子",
+          "team": "板橋倶楽部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "横田_美枝子_板橋倶楽部"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "明美",
+          "team": "新宿支部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "山田_明美_新宿支部"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 13,
+      "name": "中澤 冨士子（深谷ラリー）・中野 喜代江（浦和けやきクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "E",
+      "pair": [
+        "横田_美枝子_板橋倶楽部",
+        "山田_明美_新宿支部"
+      ],
+      "opponents": [
+        {
+          "lastName": "中澤",
+          "firstName": "冨士子",
+          "team": "深谷ラリー",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中澤_冨士子_深谷ラリー"
+        },
+        {
+          "lastName": "中野",
+          "firstName": "喜代江",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中野_喜代江_浦和けやきクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 14,
+      "name": "横田 美枝子（板橋倶楽部）・山田 明美（新宿支部）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "E",
+      "pair": [
+        "中澤_冨士子_深谷ラリー",
+        "中野_喜代江_浦和けやきクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "幸子",
+          "team": "すずらんクラブ",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "近藤_幸子_すずらんクラブ"
+        },
+        {
+          "lastName": "浅田",
+          "firstName": "道子",
+          "team": "姫路クラブ",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "浅田_道子_姫路クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 13,
+      "name": "中澤 冨士子（深谷ラリー）・中野 喜代江（浦和けやきクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "E",
+      "pair": [
+        "近藤_幸子_すずらんクラブ",
+        "浅田_道子_姫路クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "中澤",
+          "firstName": "冨士子",
+          "team": "深谷ラリー",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中澤_冨士子_深谷ラリー"
+        },
+        {
+          "lastName": "中野",
+          "firstName": "喜代江",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "中野_喜代江_浦和けやきクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 15,
+      "name": "近藤 幸子（すずらんクラブ）・浅田 道子（姫路クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "E",
+      "pair": [
+        "横田_美枝子_板橋倶楽部",
+        "山田_明美_新宿支部"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "幸子",
+          "team": "すずらんクラブ",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "近藤_幸子_すずらんクラブ"
+        },
+        {
+          "lastName": "浅田",
+          "firstName": "道子",
+          "team": "姫路クラブ",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "浅田_道子_姫路クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 14,
+      "name": "横田 美枝子（板橋倶楽部）・山田 明美（新宿支部）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "E",
+      "pair": [
+        "近藤_幸子_すずらんクラブ",
+        "浅田_道子_姫路クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "横田",
+          "firstName": "美枝子",
+          "team": "板橋倶楽部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "横田_美枝子_板橋倶楽部"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "明美",
+          "team": "新宿支部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "山田_明美_新宿支部"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 15,
+      "name": "近藤 幸子（すずらんクラブ）・浅田 道子（姫路クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "F",
+      "pair": [
+        "天明_裕美子_大田支部",
+        "比嘉_ふみ代_チームＮＡＲＯ"
+      ],
+      "opponents": [
+        {
+          "lastName": "芦田",
+          "firstName": "洋子",
+          "team": "西代レディース",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "芦田_洋子_西代レディース"
+        },
+        {
+          "lastName": "小野田",
+          "firstName": "まりゑ",
+          "team": "西代レディース",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "小野田_まりゑ_西代レディース"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "天明 裕美子（大田支部）・比嘉 ふみ代（チームＮＡＲＯ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "F",
+      "pair": [
+        "芦田_洋子_西代レディース",
+        "小野田_まりゑ_西代レディース"
+      ],
+      "opponents": [
+        {
+          "lastName": "天明",
+          "firstName": "裕美子",
+          "team": "大田支部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "天明_裕美子_大田支部"
+        },
+        {
+          "lastName": "比嘉",
+          "firstName": "ふみ代",
+          "team": "チームＮＡＲＯ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "比嘉_ふみ代_チームＮＡＲＯ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 17,
+      "name": "芦田 洋子・小野田 まりゑ（西代レディース）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "F",
+      "pair": [
+        "天明_裕美子_大田支部",
+        "比嘉_ふみ代_チームＮＡＲＯ"
+      ],
+      "opponents": [
+        {
+          "lastName": "浜崎",
+          "firstName": "順子",
+          "team": "滋賀レディース連盟",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "浜崎_順子_滋賀レディース連盟"
+        },
+        {
+          "lastName": "田中",
+          "firstName": "初代",
+          "team": "滋賀レディース連盟",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "田中_初代_滋賀レディース連盟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 16,
+      "name": "天明 裕美子（大田支部）・比嘉 ふみ代（チームＮＡＲＯ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "F",
+      "pair": [
+        "浜崎_順子_滋賀レディース連盟",
+        "田中_初代_滋賀レディース連盟"
+      ],
+      "opponents": [
+        {
+          "lastName": "天明",
+          "firstName": "裕美子",
+          "team": "大田支部",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "天明_裕美子_大田支部"
+        },
+        {
+          "lastName": "比嘉",
+          "firstName": "ふみ代",
+          "team": "チームＮＡＲＯ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "比嘉_ふみ代_チームＮＡＲＯ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "浜崎 順子・田中 初代（滋賀レディース連盟）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "F",
+      "pair": [
+        "芦田_洋子_西代レディース",
+        "小野田_まりゑ_西代レディース"
+      ],
+      "opponents": [
+        {
+          "lastName": "浜崎",
+          "firstName": "順子",
+          "team": "滋賀レディース連盟",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "浜崎_順子_滋賀レディース連盟"
+        },
+        {
+          "lastName": "田中",
+          "firstName": "初代",
+          "team": "滋賀レディース連盟",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "田中_初代_滋賀レディース連盟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 17,
+      "name": "芦田 洋子・小野田 まりゑ（西代レディース）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "F",
+      "pair": [
+        "浜崎_順子_滋賀レディース連盟",
+        "田中_初代_滋賀レディース連盟"
+      ],
+      "opponents": [
+        {
+          "lastName": "芦田",
+          "firstName": "洋子",
+          "team": "西代レディース",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "芦田_洋子_西代レディース"
+        },
+        {
+          "lastName": "小野田",
+          "firstName": "まりゑ",
+          "team": "西代レディース",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "小野田_まりゑ_西代レディース"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "浜崎 順子・田中 初代（滋賀レディース連盟）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "G",
+      "pair": [
+        "鈴木_正枝_宇都宮ＡＣＥクラブ",
+        "吉澤_静江_伊勢崎クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "武内",
+          "firstName": "芙佐子",
+          "team": "高槻クラブ",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "武内_芙佐子_高槻クラブ"
+        },
+        {
+          "lastName": "宮川",
+          "firstName": "祝子",
+          "team": "枚方市連盟",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "宮川_祝子_枚方市連盟"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "鈴木 正枝（宇都宮ＡＣＥクラブ）・吉澤 静江（伊勢崎クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "G",
+      "pair": [
+        "武内_芙佐子_高槻クラブ",
+        "宮川_祝子_枚方市連盟"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "正枝",
+          "team": "宇都宮ＡＣＥクラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_正枝_宇都宮ＡＣＥクラブ"
+        },
+        {
+          "lastName": "吉澤",
+          "firstName": "静江",
+          "team": "伊勢崎クラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "吉澤_静江_伊勢崎クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 20,
+      "name": "武内 芙佐子（高槻クラブ）・宮川 祝子（枚方市連盟）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "G",
+      "pair": [
+        "鈴木_正枝_宇都宮ＡＣＥクラブ",
+        "吉澤_静江_伊勢崎クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉本",
+          "firstName": "由美子",
+          "team": "津レディース",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "杉本_由美子_津レディース"
+        },
+        {
+          "lastName": "猪熊",
+          "firstName": "佐智子",
+          "team": "上田クラブ",
+          "prefecture": "長野",
+          "playerId": null,
+          "tempId": "猪熊_佐智子_上田クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 19,
+      "name": "鈴木 正枝（宇都宮ＡＣＥクラブ）・吉澤 静江（伊勢崎クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "G",
+      "pair": [
+        "杉本_由美子_津レディース",
+        "猪熊_佐智子_上田クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "正枝",
+          "team": "宇都宮ＡＣＥクラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_正枝_宇都宮ＡＣＥクラブ"
+        },
+        {
+          "lastName": "吉澤",
+          "firstName": "静江",
+          "team": "伊勢崎クラブ",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "吉澤_静江_伊勢崎クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 21,
+      "name": "杉本 由美子（津レディース）・猪熊 佐智子（上田クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "G",
+      "pair": [
+        "武内_芙佐子_高槻クラブ",
+        "宮川_祝子_枚方市連盟"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉本",
+          "firstName": "由美子",
+          "team": "津レディース",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "杉本_由美子_津レディース"
+        },
+        {
+          "lastName": "猪熊",
+          "firstName": "佐智子",
+          "team": "上田クラブ",
+          "prefecture": "長野",
+          "playerId": null,
+          "tempId": "猪熊_佐智子_上田クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 20,
+      "name": "武内 芙佐子（高槻クラブ）・宮川 祝子（枚方市連盟）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "G",
+      "pair": [
+        "杉本_由美子_津レディース",
+        "猪熊_佐智子_上田クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "武内",
+          "firstName": "芙佐子",
+          "team": "高槻クラブ",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "武内_芙佐子_高槻クラブ"
+        },
+        {
+          "lastName": "宮川",
+          "firstName": "祝子",
+          "team": "枚方市連盟",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "宮川_祝子_枚方市連盟"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 21,
+      "name": "杉本 由美子（津レディース）・猪熊 佐智子（上田クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "H",
+      "pair": [
+        "松田_孝子_サンレディース",
+        "睦月_悦子_大阪ＯＢ軟庭会"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "輝子",
+          "team": "台東グリーンテニスクラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "山田_輝子_台東グリーンテニスクラブ"
+        },
+        {
+          "lastName": "吉澤",
+          "firstName": "明美",
+          "team": "台東グリーンテニスクラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉澤_明美_台東グリーンテニスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 22,
+      "name": "松田 孝子（サンレディース）・睦月 悦子（大阪ＯＢ軟庭会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "H",
+      "pair": [
+        "山田_輝子_台東グリーンテニスクラブ",
+        "吉澤_明美_台東グリーンテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "松田",
+          "firstName": "孝子",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "松田_孝子_サンレディース"
+        },
+        {
+          "lastName": "睦月",
+          "firstName": "悦子",
+          "team": "大阪ＯＢ軟庭会",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "睦月_悦子_大阪ＯＢ軟庭会"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 23,
+      "name": "山田 輝子・吉澤 明美（台東グリーンテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "H",
+      "pair": [
+        "松田_孝子_サンレディース",
+        "睦月_悦子_大阪ＯＢ軟庭会"
+      ],
+      "opponents": [
+        {
+          "lastName": "浜島",
+          "firstName": "和子",
+          "team": "勝田台クラブ",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "浜島_和子_勝田台クラブ"
+        },
+        {
+          "lastName": "野々口",
+          "firstName": "淑子",
+          "team": "志賀ＳＴＣ",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "野々口_淑子_志賀ＳＴＣ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 22,
+      "name": "松田 孝子（サンレディース）・睦月 悦子（大阪ＯＢ軟庭会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "H",
+      "pair": [
+        "浜島_和子_勝田台クラブ",
+        "野々口_淑子_志賀ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "松田",
+          "firstName": "孝子",
+          "team": "サンレディース",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "松田_孝子_サンレディース"
+        },
+        {
+          "lastName": "睦月",
+          "firstName": "悦子",
+          "team": "大阪ＯＢ軟庭会",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "睦月_悦子_大阪ＯＢ軟庭会"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 24,
+      "name": "浜島 和子（勝田台クラブ）・野々口 淑子（志賀ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "H",
+      "pair": [
+        "山田_輝子_台東グリーンテニスクラブ",
+        "吉澤_明美_台東グリーンテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "浜島",
+          "firstName": "和子",
+          "team": "勝田台クラブ",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "浜島_和子_勝田台クラブ"
+        },
+        {
+          "lastName": "野々口",
+          "firstName": "淑子",
+          "team": "志賀ＳＴＣ",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "野々口_淑子_志賀ＳＴＣ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "山田 輝子・吉澤 明美（台東グリーンテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "H",
+      "pair": [
+        "浜島_和子_勝田台クラブ",
+        "野々口_淑子_志賀ＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "輝子",
+          "team": "台東グリーンテニスクラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "山田_輝子_台東グリーンテニスクラブ"
+        },
+        {
+          "lastName": "吉澤",
+          "firstName": "明美",
+          "team": "台東グリーンテニスクラブ",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉澤_明美_台東グリーンテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 24,
+      "name": "浜島 和子（勝田台クラブ）・野々口 淑子（志賀ＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "I",
+      "pair": [
+        "植山_正子_浦和けやきクラブ",
+        "大畑_政子_鴻巣レディス"
+      ],
+      "opponents": [
+        {
+          "lastName": "大井",
+          "firstName": "多恵",
+          "team": "森林クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "大井_多恵_森林クラブ"
+        },
+        {
+          "lastName": "佐々木",
+          "firstName": "公子",
+          "team": "一関市協会",
+          "prefecture": "岩手",
+          "playerId": null,
+          "tempId": "佐々木_公子_一関市協会"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "植山 正子（浦和けやきクラブ）・大畑 政子（鴻巣レディス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "I",
+      "pair": [
+        "大井_多恵_森林クラブ",
+        "佐々木_公子_一関市協会"
+      ],
+      "opponents": [
+        {
+          "lastName": "植山",
+          "firstName": "正子",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "植山_正子_浦和けやきクラブ"
+        },
+        {
+          "lastName": "大畑",
+          "firstName": "政子",
+          "team": "鴻巣レディス",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大畑_政子_鴻巣レディス"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 26,
+      "name": "大井 多恵（森林クラブ）・佐々木 公子（一関市協会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "I",
+      "pair": [
+        "植山_正子_浦和けやきクラブ",
+        "大畑_政子_鴻巣レディス"
+      ],
+      "opponents": [
+        {
+          "lastName": "堤",
+          "firstName": "恵子",
+          "team": "アイビー",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "堤_恵子_アイビー"
+        },
+        {
+          "lastName": "森田",
+          "firstName": "和代",
+          "team": "奈良クラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "森田_和代_奈良クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "植山 正子（浦和けやきクラブ）・大畑 政子（鴻巣レディス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "I",
+      "pair": [
+        "堤_恵子_アイビー",
+        "森田_和代_奈良クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "植山",
+          "firstName": "正子",
+          "team": "浦和けやきクラブ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "植山_正子_浦和けやきクラブ"
+        },
+        {
+          "lastName": "大畑",
+          "firstName": "政子",
+          "team": "鴻巣レディス",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大畑_政子_鴻巣レディス"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 27,
+      "name": "堤 恵子（アイビー）・森田 和代（奈良クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "I",
+      "pair": [
+        "大井_多恵_森林クラブ",
+        "佐々木_公子_一関市協会"
+      ],
+      "opponents": [
+        {
+          "lastName": "堤",
+          "firstName": "恵子",
+          "team": "アイビー",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "堤_恵子_アイビー"
+        },
+        {
+          "lastName": "森田",
+          "firstName": "和代",
+          "team": "奈良クラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "森田_和代_奈良クラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 26,
+      "name": "大井 多恵（森林クラブ）・佐々木 公子（一関市協会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "I",
+      "pair": [
+        "堤_恵子_アイビー",
+        "森田_和代_奈良クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "大井",
+          "firstName": "多恵",
+          "team": "森林クラブ",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "大井_多恵_森林クラブ"
+        },
+        {
+          "lastName": "佐々木",
+          "firstName": "公子",
+          "team": "一関市協会",
+          "prefecture": "岩手",
+          "playerId": null,
+          "tempId": "佐々木_公子_一関市協会"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 27,
+      "name": "堤 恵子（アイビー）・森田 和代（奈良クラブ）",
+      "category": "doubles",
+      "retired": false
+    }
+  ],
+  "standings": {
+    "A": [
+      {
+        "id": 1,
+        "name": "木暮・中谷（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 8,
+        "rank": 1
+      },
+      {
+        "id": 3,
+        "name": "菅田・石田（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": -2,
+        "rank": 2
+      },
+      {
+        "id": 2,
+        "name": "中山・佐藤（サンレディース）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -6,
+        "rank": 3
+      }
+    ],
+    "B": [
+      {
+        "id": 4,
+        "name": "佐野・小里（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 4,
+        "rank": 1
+      },
+      {
+        "id": 5,
+        "name": "小池・野田（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 0,
+        "rank": 2
+      },
+      {
+        "id": 6,
+        "name": "加藤・黒田（アクロス広島）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -4,
+        "rank": 3
+      }
+    ],
+    "C": [
+      {
+        "id": 8,
+        "name": "岩佐・吉田（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 5,
+        "rank": 1
+      },
+      {
+        "id": 7,
+        "name": "渡辺・前原（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": -1,
+        "rank": 2
+      },
+      {
+        "id": 9,
+        "name": "根上・村上（混合）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -4,
+        "rank": 3
+      }
+    ],
+    "D": [
+      {
+        "id": 11,
+        "name": "塩谷・富山（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 7,
+        "rank": 1
+      },
+      {
+        "id": 12,
+        "name": "須原・吉村（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": -1,
+        "rank": 2
+      },
+      {
+        "id": 10,
+        "name": "秋山・今西（混合）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -6,
+        "rank": 3
+      }
+    ],
+    "E": [
+      {
+        "id": 13,
+        "name": "中澤・中野（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 6,
+        "rank": 1
+      },
+      {
+        "id": 15,
+        "name": "近藤・浅田（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 0,
+        "rank": 2
+      },
+      {
+        "id": 14,
+        "name": "横田・山田（混合）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -6,
+        "rank": 3
+      }
+    ],
+    "F": [
+      {
+        "id": 16,
+        "name": "天明・比嘉（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 8,
+        "rank": 1
+      },
+      {
+        "id": 17,
+        "name": "芦田・小野田（西代レディース）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 0,
+        "rank": 2
+      },
+      {
+        "id": 18,
+        "name": "浜崎・田中（滋賀レディース連盟）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -8,
+        "rank": 3
+      }
+    ],
+    "G": [
+      {
+        "id": 19,
+        "name": "鈴木・吉澤（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 8,
+        "rank": 1
+      },
+      {
+        "id": 20,
+        "name": "武内・宮川（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 0,
+        "rank": 2
+      },
+      {
+        "id": 21,
+        "name": "杉本・猪熊（混合）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -8,
+        "rank": 3
+      }
+    ],
+    "H": [
+      {
+        "id": 22,
+        "name": "松田・睦月（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 6,
+        "rank": 1
+      },
+      {
+        "id": 23,
+        "name": "山田・吉澤（台東グリーンテニスクラブ）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": 2,
+        "rank": 2
+      },
+      {
+        "id": 24,
+        "name": "浜島・野々口（混合）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -8,
+        "rank": 3
+      }
+    ],
+    "I": [
+      {
+        "id": 25,
+        "name": "植山・大畑（混合）",
+        "wins": 2,
+        "losses": 0,
+        "points": 0,
+        "scoreDiff": 6,
+        "rank": 1
+      },
+      {
+        "id": 27,
+        "name": "堤・森田（混合）",
+        "wins": 1,
+        "losses": 1,
+        "points": 0,
+        "scoreDiff": -1,
+        "rank": 2
+      },
+      {
+        "id": 26,
+        "name": "大井・佐々木（混合）",
+        "wins": 0,
+        "losses": 2,
+        "points": 0,
+        "scoreDiff": -5,
+        "rank": 3
+      }
+    ]
+  }
+}
