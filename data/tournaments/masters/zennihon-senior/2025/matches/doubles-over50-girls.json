@@ -368,11 +368,11 @@
     "player1": {
       "entryNo": 15,
       "won": 4,
-      "lost": 0
+      "lost": 3
     },
     "player2": {
       "entryNo": 19,
-      "won": 0,
+      "won": 3,
       "lost": 4
     },
     "winner": 15
@@ -507,15 +507,15 @@
     "round": "準決勝",
     "player1": {
       "entryNo": 24,
-      "won": 4,
-      "lost": 3
-    },
-    "player2": {
-      "entryNo": 34,
       "won": 3,
       "lost": 4
     },
-    "winner": 24
+    "player2": {
+      "entryNo": 34,
+      "won": 4,
+      "lost": 3
+    },
+    "winner": 34
   },
   {
     "round": "決勝",
@@ -525,7 +525,7 @@
       "lost": 0
     },
     "player2": {
-      "entryNo": 24,
+      "entryNo": 34,
       "won": 0,
       "lost": 4
     },
