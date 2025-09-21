@@ -17,6 +17,7 @@ type GenerationKey =
   | 'highschool'
   | 'junior'
   | 'open'
+  | 'masters'
   | string;
 
 type CategoryLink = {
@@ -187,6 +188,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
     'university',
     'highschool',
     'junior',
+    'masters',
     'open',
   ] as GenerationKey[];
 
@@ -198,6 +200,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
     if (gen === 'open') return 'オープンカテゴリ';
     if (gen === 'all') return '総合カテゴリ';
     if (gen === 'international-qualifier') return '国際予選カテゴリ';
+    if (gen === 'masters') return 'シニアカテゴリ';
     return String(gen);
   };
 
