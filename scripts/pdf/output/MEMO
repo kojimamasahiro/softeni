@@ -1,0 +1,9 @@
+cut -d',' -f4 softtennis_players_separated.csv | tail -n +2 | sort -n | uniq | awk 'NR==1{prev=$1; next}
+{
+  if ($1 != prev+1) {
+    for (i=prev+1; i<$1; i++) {
+      print "欠番: " i
+    }
+  }
+  prev=$1
+}'
