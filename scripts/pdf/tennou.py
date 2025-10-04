@@ -16,8 +16,20 @@ SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
 Y_TOLERANCE = 1                   # 同じ行と見なすy座標の許容誤差（ポイント）
 X_MID_ADJUSTMENT = 0             # X軸の中央値調整（PDFのレイアウトにより変更推奨）
-X_MAX_RIGHT_PLAYER = 50                 # 選手名が配置されるX座標の最大値（これより右側にある文字は除外）
-X_MAX_LEFT_PLAYER = 80                  # 選手名が配置されるX座標の最小値（これより左側にある文字は除外）
+
+X_LEFT_PLAYER_MIN = 75    # 選手名の最小X座標
+X_LEFT_PLAYER_MAX = 130    # 選手名の最大X座標
+X_LEFT_AREA_MIN = 140    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 170    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 220   # チーム名の最大X座標
+
+X_RIGHT_PLAYER_MIN = 345    # 選手名の最小X座標
+X_RIGHT_PLAYER_MAX = 400    # 選手名の最大X座標
+X_RIGHT_AREA_MIN = 410  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 430  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 440  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 490  # チーム名の最大X座標
 
 # チーム名を特定するための予備キーワードリスト
 TEAM_KEYWORDS = ['高校', '大学']
@@ -302,17 +314,11 @@ def structure_player_data(chars_df):
     chars_left = chars_df[chars_df['left'] < X_MID_POINT].copy()
     chars_right = chars_df[chars_df['left'] >= X_MID_POINT].copy()
 
-    # スコア文字除外ロジック
-    chars_left = chars_left[chars_left['left'] < X_MID_POINT - X_MAX_RIGHT_PLAYER].copy()
-    chars_right = chars_right[chars_right['left'] > X_MID_POINT + X_MAX_LEFT_PLAYER].copy()
-
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left)
-    results_left = _group_and_extract_side(chars_left)
-    # results_right = _group_and_extract_side(chars_right)
+    results_right = _group_and_extract_side(chars_right)
 
-    FINAL_RESULTS = results_left
-    # FINAL_RESULTS = results_left + results_right
+    FINAL_RESULTS = results_left + results_right
     
     # 4. 最終的な結果を整形
     df_results = pd.DataFrame(FINAL_RESULTS)
@@ -339,7 +345,7 @@ if __name__ == '__main__':
             print("致命的なエラー: PDFから文字データが取得できませんでした。")
         else:
             print("--- PDF文字データ抽出開始 ---")
-            
+            print(chars_data_df)  # 抽出データの先頭10行を表示
             # グローバルカウンターをリセットして、常に1から始まるようにする
             ENTRY_COUNTER = 1 
             
