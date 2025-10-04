@@ -10,7 +10,8 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUM = 1                       # 抽出するページ番号（1から開始）
+PAGE_NUM = 4                       # 抽出するページ番号（1から開始）
+ENTRY_COUNTER = 167                 # エントリー番号の初期値（グローバルカウンター）
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
@@ -40,7 +41,6 @@ TEAM_KEYWORDS = ['高校', '大学']
 UNIVERSITY_NAMES = []
 SURNAME_LIST = []
 AREA_NAMES = []
-ENTRY_COUNTER = 1 # ★★★ グローバルカウンターを初期化 ★★★
 
 try:
     with open(UNIVERSITY_LIST_PATH, 'r', encoding='utf8') as f:
@@ -441,9 +441,6 @@ if __name__ == '__main__':
         else:
             print("--- PDF文字データ抽出開始 ---")
             # print(chars_data_df)  # 抽出データの先頭10行を表示
-            # グローバルカウンターをリセットして、常に1から始まるようにする
-            ENTRY_COUNTER = 1 
-            
             structured_df = structure_player_data(chars_data_df)
             
             if not structured_df.empty:
