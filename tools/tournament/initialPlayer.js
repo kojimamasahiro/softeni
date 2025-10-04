@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const initialPlayers = [
 {"id":1,"name":"北野・小谷（混合）","information":[{"lastName":"北野","firstName":"敏明","team":"堺連盟","prefecture":"大阪","playerId":null,"tempId":"北野_敏明_堺連盟"},{"lastName":"小谷","firstName":"麻紀","team":"箕面サングリーン","prefecture":"大阪","playerId":null,"tempId":"小谷_麻紀_箕面サングリーン"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
