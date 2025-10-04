@@ -15,7 +15,8 @@ UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
-X_MID_ADJUSTMENT = 0             # X軸の中央値調整（PDFのレイアウトにより変更推奨）
+X_START_ADJUSTMENT = 5             # X軸の開始値調整（PDFのレイアウトにより変更推奨）
+X_END_ADJUSTMENT = 5               # X軸の終了値調整（PDFのレイアウトにより変更推奨）
 
 X_LEFT_PLAYER_MIN = 75    # 選手名の最小X座標
 X_LEFT_PLAYER_MAX = 130    # 選手名の最大X座標
@@ -203,13 +204,17 @@ def _group_and_extract_side(side_chars_df, is_left_side):
 
     # 座標設定を決定
     if is_left_side:
-        PLAYER_MIN, PLAYER_MAX = X_LEFT_PLAYER_MIN, X_LEFT_PLAYER_MAX
-        AREA_MIN, AREA_MAX = X_LEFT_AREA_MIN, X_LEFT_AREA_MAX
-        TEAM_MIN, TEAM_MAX = X_LEFT_TEAM_MIN, X_LEFT_TEAM_MAX
+        X_SETTINGS = {
+            'PLAYER_MIN': X_LEFT_PLAYER_MIN, 'PLAYER_MAX': X_LEFT_PLAYER_MAX,
+            'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
+            'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
+        }
     else:
-        PLAYER_MIN, PLAYER_MAX = X_RIGHT_PLAYER_MIN, X_RIGHT_PLAYER_MAX
-        AREA_MIN, AREA_MAX = X_RIGHT_AREA_MIN, X_RIGHT_AREA_MAX
-        TEAM_MIN, TEAM_MAX = X_RIGHT_TEAM_MIN, X_RIGHT_TEAM_MAX
+        X_SETTINGS = {
+            'PLAYER_MIN': X_RIGHT_PLAYER_MIN, 'PLAYER_MAX': X_RIGHT_PLAYER_MAX,
+            'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
+            'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
+        }
 
     # 1. Y座標に基づき、文字レベルのデータを「行レベル」のデータに集約 (既存のロジック)
     data = side_chars_df.sort_values(by=['top', 'left']).copy()
@@ -227,85 +232,122 @@ def _group_and_extract_side(side_chars_df, is_left_side):
     RESULTS = []
     i = 0
     
-    # 3. 行を走査し、ダブルス（選手A -> チーム名+エリア名 -> 選手B）のパターンを抽出
+    # 3. 行を走査する
     while i < len(line_data):
         line = line_data.iloc[i]
+
+        # スコア行などのフィルタリング
+        text_check = line['full_text'].strip()
+        # 非常に短いテキスト、数字・記号のみ、またはスコアパターンの場合はスキップ
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            i += 1
+            continue
+
         # 1行目: 選手A
-        Y_MIN_A, Y_MAX_A = line['top_min'], line['top_max']
-        player_1_chars = data[
-            (data['left'] >= PLAYER_MIN) & 
-            (data['left'] <= PLAYER_MAX) &
-            (data['top'] >= Y_MIN_A - Y_TOLERANCE) & 
-            (data['top'] <= Y_MAX_A + Y_TOLERANCE)
-        ]
-        raw_name_a_text = "".join(player_1_chars['text']).strip()
-        
-        if raw_name_a_text:
-            # i+1: チーム名+エリア名が含まれる行
-            if i + 1 < len(line_data):
-                team_area_line = line_data.iloc[i + 1]
-                Y_MIN_TA, Y_MAX_TA = team_area_line['top_min'], team_area_line['top_max']
-                area_chars = data[
-                    (data['left'] >= AREA_MIN) & 
-                    (data['left'] <= AREA_MAX) &
-                    (data['top'] >= Y_MIN_TA - Y_TOLERANCE) & 
-                    (data['top'] <= Y_MAX_TA + Y_TOLERANCE)
-                ]
-                raw_area_text = "".join(area_chars['text']).strip()
-                
-                team_chars = data[
-                    (data['left'] >= TEAM_MIN) & 
-                    (data['left'] <= TEAM_MAX) &
-                    (data['top'] >= Y_MIN_TA - Y_TOLERANCE) & 
-                    (data['top'] <= Y_MAX_TA + Y_TOLERANCE)
-                ]
-                raw_team_text = "".join(team_chars['text']).strip()
+        raw_name_a_text, _, _ = extract_single_line_content(line, data, X_SETTINGS, Y_TOLERANCE)
 
-                # i+2: 選手B
+        if not raw_name_a_text:
+            i += 1
+            continue 
+
+        p1 = check_line_presence(line, data, X_SETTINGS, Y_TOLERANCE)
+
+        # -----------------------------------------------------------------
+        # 1. パターン2: 2行セット（選手A/エリアA/チームA / 選手B/エリアB/チームB）を試す
+        # -----------------------------------------------------------------
+        if i + 1 < len(line_data):
+            increment = 0
+            line_2 = line_data.iloc[i + 1]
+            p2 = check_line_presence(line_2, data, X_SETTINGS, Y_TOLERANCE)
+            if (not p2['player']) and (not p2['area']) and (not p2['team']):
                 if i + 2 < len(line_data):
-                    player_2_line = line_data.iloc[i + 2]
-                    Y_MIN_B, Y_MAX_B = player_2_line['top_min'], player_2_line['top_max']
+                    increment = 1
+                    line_2 = line_data.iloc[i + 2]
+                    p2 = check_line_presence(line_2, data, X_SETTINGS, Y_TOLERANCE)
+                else:
+                    i += 1
+                    continue
+            
+            # パターン判定ロジック (行iと行i+1の両方が「選手+エリア+チーム」であるか)
+            is_pattern2 = (p1['player'] and p1['area'] and p1['team']) and \
+                            (p2['player'] and p2['area'] and p2['team'])
 
-                    player_2_chars = data[
-                        (data['left'] >= PLAYER_MIN) & 
-                        (data['left'] <= PLAYER_MAX) &
-                        (data['top'] >= Y_MIN_B - Y_TOLERANCE) & 
-                        (data['top'] <= Y_MAX_B + Y_TOLERANCE)
-                    ]
-                    raw_name_b_text = "".join(player_2_chars['text']).strip()
+            if is_pattern2:
+                # パターン2 (2行セット) を適用
+                raw_name_a, area_a, team_a = extract_single_line_content(line, data, X_SETTINGS, Y_TOLERANCE)
+                raw_name_b, area_b, team_b = extract_single_line_content(line_2, data, X_SETTINGS, Y_TOLERANCE)
 
-                    # 4. 抽出と構造化
+                if raw_name_a and raw_name_b and team_a and team_b: # 抽出されたデータが有効か最終確認
                     entry_number = ENTRY_COUNTER
                     
-                    # 選手Aの処理
-                    _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a_text) 
-                    if raw_name_a:
-                        RESULTS.append({
-                            'Player_Name_Raw': raw_name_a,        
-                            'Split_Index': split_index_a,         
-                            'Area_Name': raw_area_text,        
-                            'Team_Name': raw_team_text, 
-                            'Entry_Number': entry_number
-                        })
+                    _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
+                    RESULTS.append({'Player_Name_Raw': raw_name_a, 'Split_Index': split_index_a, 'Area_Name': area_a, 'Team_Name': team_a, 'Entry_Number': entry_number})
                     
-                    _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b_text) 
-                    if raw_name_b:
-                        RESULTS.append({
-                            'Player_Name_Raw': raw_name_b,        
-                            'Split_Index': split_index_b,        
-                            'Area_Name': raw_area_text,        
-                            'Team_Name': raw_team_text, 
-                            'Entry_Number': entry_number
-                        })
+                    _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b) 
+                    RESULTS.append({'Player_Name_Raw': raw_name_b, 'Split_Index': split_index_b, 'Area_Name': area_b, 'Team_Name': team_b, 'Entry_Number': entry_number})
+                    
+                    ENTRY_COUNTER += 1
+                    i += 2 + increment 
+                    continue
+
+        # -----------------------------------------------------------------
+        # 2. パターン1 & 3: 3行セットを試す (i+2までデータが存在する必要がある)
+        # -----------------------------------------------------------------
+        if i + 2 < len(line_data):
+            line_2 = line_data.iloc[i + 1]
+            line_3 = line_data.iloc[i + 2]
+
+            # 各行の要素の有無をチェック
+            p2 = check_line_presence(line_2, data, X_SETTINGS, Y_TOLERANCE)
+            p3 = check_line_presence(line_3, data, X_SETTINGS, Y_TOLERANCE)
+            
+            # パターン判定ロジック:
+            # 1行目: 選手 + チーム名が存在 (P T) (エリアは空か不確実)
+            # 2行目: エリア名のみが存在 (A) (選手名・チーム名は空)
+            # 3行目: 選手 + チーム名が存在 (P T)
+            is_pattern1 = (p1['player'] and p1['team']) and \
+                        (p2['area'] and not p2['player'] and not p2['team']) and \
+                        (p3['player'] and p3['team'])
+            
+            # パターン3判定 (P / A T / P)
+            is_pattern3 = (p1['player'] and not p1['area'] and not p1['team']) and \
+                            (p2['area'] and p2['team'] and not p2['player']) and \
+                            (p3['player'] and not p3['area'] and not p3['team'])
+
+            if is_pattern1 or is_pattern3:
+                
+                # 抽出処理
+                raw_name_a, area_a, team_a = extract_single_line_content(line, data, X_SETTINGS, Y_TOLERANCE)
+                _, area_2, team_2 = extract_single_line_content(line_2, data, X_SETTINGS, Y_TOLERANCE)
+                raw_name_b, area_b, team_b = extract_single_line_content(line_3, data, X_SETTINGS, Y_TOLERANCE)
+                
+                # データを組み立て
+                if is_pattern1:
+                    area_name = area_2 # 2行目のエリア名が共通
+                    team_a_final = team_a
+                    team_b_final = team_b
+                else: # is_pattern3
+                    area_name = area_2 # 2行目のエリア名が共通
+                    team_a_final = team_2 # 2行目のチーム名が共通
+                    team_b_final = team_2 # 2行目のチーム名が共通
+                
+                # 最終確認
+                if raw_name_a and raw_name_b and (team_a_final or team_b_final):
+                    entry_number = ENTRY_COUNTER
+                    
+                    _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
+                    RESULTS.append({'Player_Name_Raw': raw_name_a, 'Split_Index': split_index_a, 'Area_Name': area_name, 'Team_Name': team_a_final, 'Entry_Number': entry_number})
+                    
+                    _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b) 
+                    RESULTS.append({'Player_Name_Raw': raw_name_b, 'Split_Index': split_index_b, 'Area_Name': area_name, 'Team_Name': team_b_final, 'Entry_Number': entry_number})
                     
                     ENTRY_COUNTER += 1
                     i += 3 
                     continue
-                    
-                # 選手Bが見つからない場合
-                i += 2
-                continue
-        
+            
+        # いずれのパターンにも合致しない場合は1行進める
         i += 1
         
     return RESULTS
@@ -318,11 +360,13 @@ def structure_player_data(chars_df):
         return pd.DataFrame(columns=['Player_Name_Raw', 'Split_Index', 'Area_Name', 'Team_Name', 'Entry_Number'])
 
     # 1. X軸中央値の決定
-    X_MID_POINT = chars_df['left'].max() / 2 + X_MID_ADJUSTMENT 
+    X_MID_POINT = chars_df['left'].max() / 2 
     
     # 2. 文字データを左右に分割
     chars_left = chars_df[chars_df['left'] < X_MID_POINT].copy()
     chars_right = chars_df[chars_df['left'] >= X_MID_POINT].copy()
+    chars_left = chars_left[chars_left['left'] > X_LEFT_PLAYER_MIN - X_START_ADJUSTMENT].copy()
+    chars_right = chars_right[chars_right['left'] < X_RIGHT_TEAM_MAX + X_END_ADJUSTMENT].copy()
 
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
@@ -341,6 +385,47 @@ def structure_player_data(chars_df):
     
     # 最終的な出力列を確定
     return df_final[['Player_Name_Raw', 'Split_Index', 'Area_Name', 'Team_Name', 'Entry_Number']]
+
+def check_line_presence(line_data_row, data_df, X_SETTINGS, Y_TOLERANCE):
+    """
+    1行のデータに対して、X座標範囲に文字が存在するかを判定し、辞書で返す。
+    """
+    Y_MIN, Y_MAX = line_data_row['top_min'], line_data_row['top_max']
+    
+    def is_present(min_x, max_x):
+        """指定されたX範囲に文字が存在するかどうか（ブール値）をチェック"""
+        chars_count = data_df[
+            (data_df['left'] >= min_x) & (data_df['left'] <= max_x) &
+            (data_df['top'] >= Y_MIN - Y_TOLERANCE) & (data_df['top'] <= Y_MAX + Y_TOLERANCE)
+        ].shape[0]
+        return chars_count > 0
+
+    return {
+        'player': is_present(X_SETTINGS['PLAYER_MIN'], X_SETTINGS['PLAYER_MAX']),
+        'area': is_present(X_SETTINGS['AREA_MIN'], X_SETTINGS['AREA_MAX']),
+        'team': is_present(X_SETTINGS['TEAM_MIN'], X_SETTINGS['TEAM_MAX']),
+    }
+
+def extract_single_line_content(line_data_row, data_df, X_SETTINGS, Y_TOLERANCE):
+    """
+    1行のデータから、X座標設定に基づき選手名、エリア名、チーム名の実際のテキストを抽出する。
+    """
+    Y_MIN, Y_MAX = line_data_row['top_min'], line_data_row['top_max']
+    
+    def extract_text(min_x, max_x):
+        """指定されたX範囲の文字を抽出し、結合する"""
+        chars = data_df[
+            (data_df['left'] >= min_x) & (data_df['left'] <= max_x) &
+            (data_df['top'] >= Y_MIN - Y_TOLERANCE) & (data_df['top'] <= Y_MAX + Y_TOLERANCE)
+        ]
+        return "".join(chars['text']).strip()
+
+    # 1. 生のテキスト抽出
+    raw_name_text = extract_text(X_SETTINGS['PLAYER_MIN'], X_SETTINGS['PLAYER_MAX'])
+    raw_area_text = extract_text(X_SETTINGS['AREA_MIN'], X_SETTINGS['AREA_MAX'])
+    raw_team_text = extract_text(X_SETTINGS['TEAM_MIN'], X_SETTINGS['TEAM_MAX'])
+
+    return raw_name_text, raw_area_text, raw_team_text
 
 # ---------------------------------------------
 # メイン処理
