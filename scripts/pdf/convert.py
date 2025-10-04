@@ -16,12 +16,13 @@ with open(INPUT_CSV, newline='', encoding="utf-8") as f:
         entry_no = int(row["Entry_Number"])
         last, first = split_name(row["Player_Name_Raw"], int(row["Split_Index"]))
         team = row["Team_Name"]
+        prefecture = row["Area_Name"]
 
         player_obj = {
             "lastName": last,
             "firstName": first,
             "team": team,
-            "prefecture": "学連",
+            "prefecture": prefecture,
             "playerId": None,
             "tempId": f"{last}_{first}_{team}"
         }
