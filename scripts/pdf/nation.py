@@ -10,7 +10,7 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUM = 8                       # 抽出するページ番号（1から開始）
+PAGE_NUM = 1                       # 抽出するページ番号（1から開始）
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
@@ -278,9 +278,6 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         if i + 2 < len(line_data):
             line_2 = line_data.iloc[i + 1] # エントリー番号/エリア/チームの行
             line_3 = line_data.iloc[i + 2] # 選手Bの行
-            print(f"DEBUG: 処理中の行 {i}: '{line_1['full_text']}'")
-            print(f"DEBUG: 処理中の行 {i + 1}: '{line_2['full_text']}'")
-            print(f"DEBUG: 処理中の行 {i + 2}: '{line_3['full_text']}'")
 
             # 2行目からすべての情報を抽出
             # raw_name_2 は通常空（選手名なし）のはず
