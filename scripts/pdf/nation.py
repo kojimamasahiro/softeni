@@ -10,14 +10,12 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUM = 4                       # 抽出するページ番号（1から開始）
-ENTRY_COUNTER = 167                 # エントリー番号の初期値（グローバルカウンター）
+PAGE_NUM = 8                       # 抽出するページ番号（1から開始）
+ENTRY_COUNTER = 91                 # エントリー番号の初期値（グローバルカウンター）
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
-X_START_ADJUSTMENT = 5             # X軸の開始値調整（PDFのレイアウトにより変更推奨）
-X_END_ADJUSTMENT = 5               # X軸の終了値調整（PDFのレイアウトにより変更推奨）
 
 X_LEFT_PLAYER_MIN = 75    # 選手名の最小X座標
 X_LEFT_PLAYER_MAX = 130    # 選手名の最大X座標
@@ -183,7 +181,7 @@ def get_chars_data_from_pdf(pdf_path, page_num):
             if not chars_list:
                 return pd.DataFrame()
 
-            df = pd.DataFrame(chars_list)[['text', 'x0', 'top', 'x1']]
+            df = pd.DataFrame(chars_list)[['text', 'x0', 'top', 'x1', 'size']] 
             df = df.rename(columns={'x0': 'left'}) 
             df = df[df['text'].str.strip() != '']
             
@@ -218,8 +216,32 @@ def _group_and_extract_side(side_chars_df, is_left_side):
 
     # 1. Y座標に基づき、文字レベルのデータを「行レベル」のデータに集約 (既存のロジック)
     data = side_chars_df.sort_values(by=['top', 'left']).copy()
+    # 小さい文字と見なすフォントサイズの閾値 (例: 5.5ポイント未満)
+    SMALL_SIZE_THRESHOLD = 5.5
+    
+    # 'top' の差分と、1つ前の文字の 'size' を計算
     data['top_diff'] = data['top'].diff().fillna(0)
-    data['is_new_line'] = data['top_diff'] > Y_TOLERANCE
+    data['prev_size'] = data['size'].shift(1).fillna(data['size'].iloc[0] if not data.empty else 0)
+
+    def calculate_is_new_line(row):
+        """現在の行または直前の文字のサイズが小さい場合、より大きなY許容誤差を適用する"""
+        
+        # 最初の行は必ず False
+        if row.name == 0:
+            return False
+
+        # デフォルトの許容誤差
+        tolerance = Y_TOLERANCE
+        
+        # 現在の文字または直前の文字のいずれかが小さいフォントサイズであれば、許容誤差を緩める
+        if (row['size'] < SMALL_SIZE_THRESHOLD):
+            tolerance = 3
+        elif (row['prev_size'] < SMALL_SIZE_THRESHOLD):
+            tolerance = 1
+        return row['top_diff'] > tolerance
+
+    # 動的な許容誤差に基づいて新しい行かどうかを判定
+    data['is_new_line'] = data.apply(calculate_is_new_line, axis=1)
     data['line_group'] = data['is_new_line'].cumsum()
     
     # 2. line_dataの生成 (Y座標の範囲を使用するためtop_min/maxを取得)
@@ -364,9 +386,11 @@ def structure_player_data(chars_df):
     
     # 2. 文字データを左右に分割
     chars_left = chars_df[chars_df['left'] < X_MID_POINT].copy()
+    chars_left = chars_left[chars_left['left'] >= X_LEFT_PLAYER_MIN].copy()
+    chars_left = chars_left[chars_left['left'] <= X_LEFT_TEAM_MAX].copy()
     chars_right = chars_df[chars_df['left'] >= X_MID_POINT].copy()
-    chars_left = chars_left[chars_left['left'] > X_LEFT_PLAYER_MIN - X_START_ADJUSTMENT].copy()
-    chars_right = chars_right[chars_right['left'] < X_RIGHT_TEAM_MAX + X_END_ADJUSTMENT].copy()
+    chars_right = chars_right[chars_right['left'] >= X_RIGHT_PLAYER_MIN].copy()
+    chars_right = chars_right[chars_right['left'] <= X_RIGHT_TEAM_MAX].copy()
 
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
@@ -391,12 +415,12 @@ def check_line_presence(line_data_row, data_df, X_SETTINGS, Y_TOLERANCE):
     1行のデータに対して、X座標範囲に文字が存在するかを判定し、辞書で返す。
     """
     Y_MIN, Y_MAX = line_data_row['top_min'], line_data_row['top_max']
-    
+
     def is_present(min_x, max_x):
         """指定されたX範囲に文字が存在するかどうか（ブール値）をチェック"""
         chars_count = data_df[
             (data_df['left'] >= min_x) & (data_df['left'] <= max_x) &
-            (data_df['top'] >= Y_MIN - Y_TOLERANCE) & (data_df['top'] <= Y_MAX + Y_TOLERANCE)
+            (data_df['top'] >= Y_MIN) & (data_df['top'] <= Y_MAX)
         ].shape[0]
         return chars_count > 0
 
