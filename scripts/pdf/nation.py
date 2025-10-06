@@ -15,24 +15,25 @@ UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
+SMALL_SIZE_THRESHOLD = 6.5
 
-X_LEFT_PLAYER_MIN = 75    # 選手名の最小X座標
-X_LEFT_PLAYER_MAX = 130    # 選手名の最大X座標
-X_LEFT_AREA_MIN = 140    # エリア名の最小X座標
+X_LEFT_PLAYER_MIN = 55    # 選手名の最小X座標
+X_LEFT_PLAYER_MAX = 120    # 選手名の最大X座標
+X_LEFT_AREA_MIN = 135    # エリア名の最小X座標
 X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 170    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 225   # チーム名の最大X座標
+X_LEFT_TEAM_MIN = 165    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 230   # チーム名の最大X座標
 X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
 
-X_RIGHT_PLAYER_MIN = 345    # 選手名の最小X座標
-X_RIGHT_PLAYER_MAX = 400    # 選手名の最大X座標
-X_RIGHT_AREA_MIN = 410  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 430  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 440  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 495  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 500  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 560  # 右側エントリー番号の最大X座標
+X_RIGHT_PLAYER_MIN = 360    # 選手名の最小X座標
+X_RIGHT_PLAYER_MAX = 420    # 選手名の最大X座標
+X_RIGHT_AREA_MIN = 430  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 455  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 460  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 525  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 530  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 600  # 右側エントリー番号の最大X座標
 
 # チーム名を特定するための予備キーワードリスト
 TEAM_KEYWORDS = ['高校', '大学']
@@ -219,9 +220,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
 
     # 1. Y座標に基づき、文字レベルのデータを「行レベル」のデータに集約 (既存のロジック)
     data = side_chars_df.sort_values(by=['top', 'left']).copy()
-    # 小さい文字と見なすフォントサイズの閾値 (例: 5.5ポイント未満)
-    SMALL_SIZE_THRESHOLD = 5.5
-    
+
     # 'top' の差分と、1つ前の文字の 'size' を計算
     data['top_diff'] = data['top'].diff().fillna(0)
     data['prev_size'] = data['size'].shift(1).fillna(data['size'].iloc[0] if not data.empty else 0)
@@ -289,7 +288,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
             
             if is_entry_line:
                 p3 = check_line_presence(line_3, data, X_SETTINGS, Y_TOLERANCE)
-                
+
                 # 判定条件: 1行目と3行目に選手名が存在すること
                 is_valid_3_line_group = p1['player'] and p3['player']
 
@@ -342,21 +341,17 @@ def structure_player_data(chars_df):
     if chars_df.empty:
         return pd.DataFrame(columns=['Player_Name_Raw', 'Split_Index', 'Area_Name', 'Team_Name', 'Entry_Number'])
 
-    # 1. X軸中央値の決定
-    X_MID_POINT = chars_df['left'].max() / 2 
-    
     # 2. 文字データを左右に分割
-    chars_left = chars_df[chars_df['left'] < X_MID_POINT].copy()
-    chars_left = chars_left[chars_left['left'] <= X_LEFT_TEAM_MAX].copy()
-    chars_right = chars_df[chars_df['left'] >= X_MID_POINT].copy()
-    chars_right = chars_right[chars_right['left'] >= X_RIGHT_PLAYER_MIN].copy()
+    chars_left = chars_df[chars_df['left'] <= X_LEFT_TEAM_MAX].copy()
+    chars_right = chars_df[chars_df['left'] >= X_RIGHT_PLAYER_MIN].copy()
 
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
     results_right = _group_and_extract_side(chars_right, is_left_side=False)
 
+    # FINAL_RESULTS = results_right
     FINAL_RESULTS = results_left + results_right
-    
+
     # 4. 最終的な結果を整形
     df_results = pd.DataFrame(FINAL_RESULTS)
     
@@ -441,10 +436,10 @@ if __name__ == '__main__':
                 
                 output_cols = ['Entry_Number', 'Surname', 'First_Name', 'Player_Name_Raw', 'Area_Name', 'Team_Name', 'Split_Index']
                 structured_df[output_cols].to_csv(OUTPUT_FILE, index=False, encoding='utf8')
-                
-                print(f"✅ 選手情報（エリア名、連番付き）の抽出が完了しました。")
-                print(f"結果は '{OUTPUT_FILE}' に保存されました。")
-                print("\n--- 抽出結果（先頭5行） ---")
-                print(structured_df[output_cols].head())
+
+                # print(f"✅ 選手情報（エリア名、連番付き）の抽出が完了しました。")
+                # print(f"結果は '{OUTPUT_FILE}' に保存されました。")
+                print("\n--- 抽出結果（先頭3行） ---")
+                print(structured_df[output_cols].head(3))
             else:
                 print("構造化処理の結果、有効な選手データが抽出されませんでした。")

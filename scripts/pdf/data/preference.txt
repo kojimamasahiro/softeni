@@ -1,0 +1,58 @@
+# 2024年 天皇杯
+SMALL_SIZE_THRESHOLD = 5.5
+# X_LEFT_PLAYER_MIN = 75    # 選手名の最小X座標
+# X_LEFT_PLAYER_MAX = 130    # 選手名の最大X座標
+# X_LEFT_AREA_MIN = 140    # エリア名の最小X座標
+# X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
+# X_LEFT_TEAM_MIN = 170    # チーム名の最小X座標
+# X_LEFT_TEAM_MAX = 225   # チーム名の最大X座標
+# X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
+# X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+# X_RIGHT_PLAYER_MIN = 345    # 選手名の最小X座標
+# X_RIGHT_PLAYER_MAX = 400    # 選手名の最大X座標
+# X_RIGHT_AREA_MIN = 410  # エリア名の最小X座標
+# X_RIGHT_AREA_MAX = 430  # エリア名の最大X座標
+# X_RIGHT_TEAM_MIN = 440  # チーム名の最小X座標
+# X_RIGHT_TEAM_MAX = 495  # チーム名の最大X座標
+# X_RIGHT_ENTRY_MIN = 500  # 右側エントリー番号の最小X座標
+# X_RIGHT_ENTRY_MAX = 560  # 右側エントリー番号の最大X座標
+
+# 2023年 天皇杯男子
+SMALL_SIZE_THRESHOLD = 5.5
+# X_LEFT_PLAYER_MIN = 90    # 選手名の最小X座標
+# X_LEFT_PLAYER_MAX = 140    # 選手名の最大X座標
+# X_LEFT_AREA_MIN = 150    # エリア名の最小X座標
+# X_LEFT_AREA_MAX = 175    # エリア名の最大X座標
+# X_LEFT_TEAM_MIN = 180    # チーム名の最小X座標
+# X_LEFT_TEAM_MAX = 230   # チーム名の最大X座標
+# X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
+# X_LEFT_ENTRY_MAX = 80    # 左側エントリー番号の最大X座標
+# X_RIGHT_PLAYER_MIN = 350    # 選手名の最小X座標
+# X_RIGHT_PLAYER_MAX = 410    # 選手名の最大X座標
+# X_RIGHT_AREA_MIN = 415  # エリア名の最小X座標
+# X_RIGHT_AREA_MAX = 445  # エリア名の最大X座標
+# X_RIGHT_TEAM_MIN = 446  # チーム名の最小X座標
+# X_RIGHT_TEAM_MAX = 495  # チーム名の最大X座標
+# X_RIGHT_ENTRY_MIN = 505  # 右側エントリー番号の最小X座標
+# X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
+
+# 2023年　皇后杯女子
+SMALL_SIZE_THRESHOLD = 6.5
+
+X_LEFT_PLAYER_MIN = 55    # 選手名の最小X座標
+X_LEFT_PLAYER_MAX = 120    # 選手名の最大X座標
+X_LEFT_AREA_MIN = 135    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 165    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 230   # チーム名の最大X座標
+X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
+
+X_RIGHT_PLAYER_MIN = 360    # 選手名の最小X座標
+X_RIGHT_PLAYER_MAX = 420    # 選手名の最大X座標
+X_RIGHT_AREA_MIN = 430  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 455  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 460  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 525  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 530  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 600  # 右側エントリー番号の最大X座標
