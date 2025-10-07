@@ -10,30 +10,29 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUM = 1                       # 抽出するページ番号（1から開始）
+PAGE_NUM = 5                       # 抽出するページ番号（1から開始）
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
 
-X_LEFT_PLAYER_MIN = 55    # 選手名の最小X座標
-X_LEFT_PLAYER_MAX = 120    # 選手名の最大X座標
+X_LEFT_PLAYER_MIN = 60    # 選手名の最小X座標
+X_LEFT_PLAYER_MAX = 130    # 選手名の最大X座標
 X_LEFT_AREA_MIN = 135    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 165    # チーム名の最小X座標
+X_LEFT_AREA_MAX = 165    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 170    # チーム名の最小X座標
 X_LEFT_TEAM_MAX = 230   # チーム名の最大X座標
 X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
 X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
-
 X_RIGHT_PLAYER_MIN = 360    # 選手名の最小X座標
-X_RIGHT_PLAYER_MAX = 420    # 選手名の最大X座標
+X_RIGHT_PLAYER_MAX = 430    # 選手名の最大X座標
 X_RIGHT_AREA_MIN = 430  # エリア名の最小X座標
 X_RIGHT_AREA_MAX = 455  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 460  # チーム名の最小X座標
+X_RIGHT_TEAM_MIN = 456  # チーム名の最小X座標
 X_RIGHT_TEAM_MAX = 525  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 530  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 600  # 右側エントリー番号の最大X座標
+X_RIGHT_ENTRY_MIN = 535  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
 
 # チーム名を特定するための予備キーワードリスト
 TEAM_KEYWORDS = ['高校', '大学']
@@ -341,6 +340,18 @@ def structure_player_data(chars_df):
     if chars_df.empty:
         return pd.DataFrame(columns=['Player_Name_Raw', 'Split_Index', 'Area_Name', 'Team_Name', 'Entry_Number'])
 
+    # -----------------------------------------------------------------
+    # ★ デバッグ機能の統合: PDFページを画像として出力し、抽出範囲を描画する
+    # -----------------------------------------------------------------
+    try:
+        with pdfplumber.open(PDF_PATH) as pdf:
+            page = pdf.pages[PAGE_NUM - 1]
+            DEBUG_IMAGE_PATH = f'output/debug_page.png'
+            # draw_extraction_boxesの定義をmainブロックの外側に配置し、アクセス可能にする必要があります
+            draw_extraction_boxes(page, DEBUG_IMAGE_PATH) 
+    except Exception as e:
+        print(f"警告: デバッグ画像の生成中にエラーが発生しました: {e}")
+
     # 2. 文字データを左右に分割
     chars_left = chars_df[chars_df['left'] <= X_LEFT_TEAM_MAX].copy()
     chars_right = chars_df[chars_df['left'] >= X_RIGHT_PLAYER_MIN].copy()
@@ -405,6 +416,73 @@ def extract_single_line_content(line_data_row, data_df, X_SETTINGS):
     raw_entry_text = extract_text(X_SETTINGS['ENTRY_MIN'], X_SETTINGS['ENTRY_MAX'])
 
     return raw_name_text, raw_area_text, raw_team_text, raw_entry_text
+
+def draw_extraction_boxes(page, file_path):
+    """
+    pdfplumberページオブジェクトに、設定されたX座標の抽出範囲を描画する。
+    """
+
+    global X_LEFT_PLAYER_MIN, X_LEFT_PLAYER_MAX, X_LEFT_AREA_MIN, X_LEFT_AREA_MAX, X_LEFT_TEAM_MIN, X_LEFT_TEAM_MAX
+    global X_RIGHT_PLAYER_MIN, X_RIGHT_PLAYER_MAX, X_RIGHT_AREA_MIN, X_RIGHT_AREA_MAX, X_RIGHT_TEAM_MIN, X_RIGHT_TEAM_MAX
+    global X_LEFT_ENTRY_MIN, X_LEFT_ENTRY_MAX, X_RIGHT_ENTRY_MIN, X_RIGHT_ENTRY_MAX 
+    
+    
+    # 左右のエントリー番号のX設定をX_SETTINGSに含めるために統合
+    X_SETTINGS_LEFT = {
+        'PLAYER_MIN': X_LEFT_PLAYER_MIN, 'PLAYER_MAX': X_LEFT_PLAYER_MAX,
+        'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
+        'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
+        'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
+    }
+    
+    X_SETTINGS_RIGHT = {
+        'PLAYER_MIN': X_RIGHT_PLAYER_MIN, 'PLAYER_MAX': X_RIGHT_PLAYER_MAX,
+        'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
+        'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
+        'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
+    }
+
+    # 描画する矩形 (rects) のリスト
+    rects = []
+    
+    # 色の設定 (R, G, B)
+    COLORS = {
+        'PLAYER': (0, 0, 255),    # 青
+        'AREA': (0, 255, 0),      # 緑
+        'TEAM': (255, 0, 0),      # 赤
+        'ENTRY': (255, 165, 0),   # オレンジ
+    }
+
+    def add_rects(settings):
+        # 選手名
+        rects.append({'rect': (settings['PLAYER_MIN'], 0, settings['PLAYER_MAX'], page.height), 'color': COLORS['PLAYER']})
+        # エリア名
+        rects.append({'rect': (settings['AREA_MIN'], 0, settings['AREA_MAX'], page.height), 'color': COLORS['AREA']})
+        # チーム名
+        rects.append({'rect': (settings['TEAM_MIN'], 0, settings['TEAM_MAX'], page.height), 'color': COLORS['TEAM']})
+        # エントリー番号
+        rects.append({'rect': (settings['ENTRY_MIN'], 0, settings['ENTRY_MAX'], page.height), 'color': COLORS['ENTRY']})
+
+    # 左右の範囲を追加
+    add_rects(X_SETTINGS_LEFT)
+    add_rects(X_SETTINGS_RIGHT)
+
+    # ページ全体を画像として取得
+    im = page.to_image()
+
+    # 各矩形を描画
+    for rect in rects:
+        # ページ全体にわたる縦線として描画するため、Y座標は 0 からページ高さまでとする
+        im.draw_rect(
+            rect['rect'], 
+            stroke=rect['color'], # 枠線の色
+            stroke_width=1
+        ) 
+
+    # 画像を保存
+    im.save(file_path)
+
+    print(f"✅ デバッグ画像が '{file_path}' に保存されました。X座標の確認にご利用ください。")
 
 # ---------------------------------------------
 # メイン処理
