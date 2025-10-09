@@ -10,7 +10,7 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUM = 1                       # 抽出するページ番号（1から開始）
+PAGE_NUM = 10                       # 抽出するページ番号（1から開始）
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
@@ -18,22 +18,22 @@ Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差�
 SMALL_SIZE_THRESHOLD = 6.5
 
 X_LEFT_SURNAME_MIN = 60    # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 95   # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 100 # 左側 名の最小X座標
+X_LEFT_SURNAME_MAX = 90   # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 95 # 左側 名の最小X座標
 X_LEFT_FIRSTNAME_MAX = 130 # 左側 名の最大X座標
 X_LEFT_AREA_MIN = 135    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 165    # エリア名の最大X座標
+X_LEFT_AREA_MAX = 155    # エリア名の最大X座標
 X_LEFT_TEAM_MIN = 166    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 230   # チーム名の最大X座標
+X_LEFT_TEAM_MAX = 225   # チーム名の最大X座標
 X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
 X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
 X_RIGHT_SURNAME_MIN = 360   # 右側 姓の最小X座標
 X_RIGHT_SURNAME_MAX = 390   # 右側 姓の最大X座標
 X_RIGHT_FIRSTNAME_MIN = 395 # 右側 名の最小X座標
 X_RIGHT_FIRSTNAME_MAX = 429 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 430  # エリア名の最小X座標
+X_RIGHT_AREA_MIN = 435  # エリア名の最小X座標
 X_RIGHT_AREA_MAX = 460  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 461  # チーム名の最小X座標
+X_RIGHT_TEAM_MIN = 465  # チーム名の最小X座標
 X_RIGHT_TEAM_MAX = 525  # チーム名の最大X座標
 X_RIGHT_ENTRY_MIN = 535  # 右側エントリー番号の最小X座標
 X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
@@ -333,7 +333,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
                     else:
                         print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
                 else:
-                    print(f"警告: 行 {i+1} から始まる3行セットが無効です。選手名が見つかりません。")
+                    print(f"警告: No. {entry_text_2} が無効です。")
             
         # 3行セットとして成立しない場合、またはエントリー番号の行でない場合は1行進める
         i += 1
