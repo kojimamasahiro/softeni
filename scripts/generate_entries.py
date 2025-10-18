@@ -1,11 +1,16 @@
 import json
-
-INPUT_FILE = "initialPlayer-over35.json"
+import argparse
 
 def is_bye(entry):
     return entry is not None and entry.get("id") == "bye"
 
 def main():
+    parser = argparse.ArgumentParser(description="Process a player JSON file.")
+    parser.add_argument("input_file", help="Input JSON file path")
+    args = parser.parse_args()
+
+    INPUT_FILE = args.input_file
+
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         raw_data = json.load(f)
 
@@ -20,14 +25,12 @@ def main():
             i += 1
             continue
 
-        category = entry.get("category", "unknown")  # 出力には使わない
+        category = entry.get("category", "unknown")
         next_entry = raw_data[i + 1] if i + 1 < total else None
         next3_entry = raw_data[i + 3] if i + 3 < total else None
 
         def make_obj(entry, type_):
-            obj = {
-                "entryNo": entry["id"]
-            }
+            obj = {"entryNo": entry["id"]}
             if category in ("team", "versus"):
                 obj["team"] = entry.get("team") or entry.get("name")
                 obj["prefecture"] = entry.get("prefecture")
