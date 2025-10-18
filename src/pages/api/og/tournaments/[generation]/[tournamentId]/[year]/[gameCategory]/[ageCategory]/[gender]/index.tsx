@@ -146,8 +146,14 @@ function getOverlayPaths(topScores: string[], bottomScores: string[]) {
   const overlayLabels = ['qf1', 'qf2', 'qf3', 'qf4', 'sf1', 'sf2', 'final'];
 
   const comparisons = overlayLabels.map((label, i) => {
-    const top = Number(topScores[i]);
-    const bottom = Number(bottomScores[i]);
+    const topScore = topScores[i];
+    if (topScore === 'R') return `${label}-b.png`;
+    if (topScore === '') return `${label}-t.png`;
+    const bottomScore = bottomScores[i];
+    if (bottomScore === 'R') return `${label}-t.png`;
+    if (bottomScore === '') return `${label}-b.png`;
+    const top = Number(topScore);
+    const bottom = Number(bottomScore);
     if (top > bottom) return `${label}-t.png`;
     if (top < bottom) return `${label}-b.png`;
     return null;
