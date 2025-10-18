@@ -1,9 +1,7 @@
 import json
+import argparse
 from collections import OrderedDict
-
-ENTRIES_PATH = 'entries/team-none-girls.json'
-MATCHES_PATH = 'matches/team-none-girls.json'
-OUTPUT_PATH  = 'og/team-none-girls.json'
+import os
 
 def load_json(path):
     with open(path, 'r', encoding='utf-8') as f:
@@ -27,7 +25,6 @@ def get_team_prefecture(entry):
 
 # ---- カテゴリ自動判定 ----
 def detect_category(entries_list, matches_list):
-    # 1) entriesを優先
     if entries_list:
         e0 = entries_list[0]
         if 'category' in e0 and e0['category'] == 'team':
@@ -35,33 +32,27 @@ def detect_category(entries_list, matches_list):
         if 'team' in e0 and 'prefecture' in e0 and 'information' not in e0:
             return 'team'
         if 'information' in e0:
-            return 'doubles'  # （singlesもinformation 1人で基本同様に扱える）
-    # 2) matchesの形で推定（保険）
+            return 'doubles'
     if matches_list:
         m0 = matches_list[0]
         if 'team1' in m0 and 'team2' in m0:
             return 'team'
         if 'player1' in m0 and 'player2' in m0:
             return 'doubles'
-    # 不明ならdoubles扱い（従来互換）
     return 'doubles'
 
 def generate_og_data(entries_list, matches_list):
     category = detect_category(entries_list, matches_list)
 
-    # ラウンド名 → 順位（大きいほど後の試合）
     round_order = {
         "準々決勝": 1,
         "準決勝":  2,
         "決勝":    3,
     }
 
-    # 対象: 準々決勝・準決勝・決勝（グループは除外）
     matches = [m for m in matches_list if round_order.get(m.get('round'), 0) >= 1]
 
-    # エントリーデータを辞書に
     if category == "team":
-        # entries: [{ entryNo, team, prefecture, ... }]
         entries = {
             e['entryNo']: {
                 "team": e.get('team', ''),
@@ -69,7 +60,6 @@ def generate_og_data(entries_list, matches_list):
             } for e in entries_list
         }
     else:
-        # entries: [{ entryNo, information: [...] }]
         entries = {
             e['entryNo']: e['information'] for e in entries_list
         }
@@ -78,7 +68,6 @@ def generate_og_data(entries_list, matches_list):
     bottom_scores = []
     entry_nos = []
 
-    # matches の形が player1/player2 でも team1/team2 でもOKにする
     def get_sides(m):
         if 'team1' in m and 'team2' in m:
             return m['team1'], m['team2']
@@ -94,7 +83,6 @@ def generate_og_data(entries_list, matches_list):
         bottom_scores.append(str(side2['won']))
         entry_nos.extend([p1, p2])
 
-    # 左右（ベスト8なら左4・右4）に分割
     unique_entry_nos = list(OrderedDict.fromkeys(entry_nos))
     half = len(unique_entry_nos) // 2
     left_entry_nos  = unique_entry_nos[:half]
@@ -121,10 +109,20 @@ def generate_og_data(entries_list, matches_list):
     }
 
 def main():
+    parser = argparse.ArgumentParser(description="OGデータ生成スクリプト")
+    parser.add_argument("basename", help="ファイル名ベース（例: team-none-girls）")
+    args = parser.parse_args()
+
+    base = args.basename
+    ENTRIES_PATH = os.path.join("entries", f"{base}.json")
+    MATCHES_PATH = os.path.join("matches", f"{base}.json")
+    OUTPUT_PATH  = os.path.join("og", f"{base}.json")
+
     entries_list = load_json(ENTRIES_PATH)
     matches_list = load_json(MATCHES_PATH)
     og_data = generate_og_data(entries_list, matches_list)
 
+    os.makedirs("og", exist_ok=True)
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
         json.dump(og_data, f, ensure_ascii=False, indent=2)
 
