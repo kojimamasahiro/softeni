@@ -1,0 +1,4360 @@
+{
+  "highlight": "",
+  "status": "completed",
+  "scheduledDate": "(08/19)",
+  "startDate": "2024-08-19",
+  "endDate": "2024-08-21",
+  "location": "石川県",
+  "results": [
+    {
+      "playerIds": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "保海_郁弥_朝桜中学校",
+        "山田_健太郎_朝桜中学校"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "杉_碧翔_松山中学校",
+        "利根川_碧生_松山中学校"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "小沼_優希_明学園中学校",
+        "宇田川_成寿_明学園中学校"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "木原_祐翔_上青木中学校",
+        "奥田_向陽_上青木中学校"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "常包_匠紀_牟礼中学校",
+        "六車_旺雅_牟礼中学校"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "近藤_伶音_附属島田中学校",
+        "齋藤_亘_附属島田中学校"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "保海_郁弥_朝桜中学校",
+        "山田_健太郎_朝桜中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "宇田川",
+          "firstName": "浬",
+          "team": "崎南山中学校",
+          "prefecture": "九州・長崎県",
+          "playerId": null,
+          "tempId": "宇田川_浬_崎南山中学校"
+        },
+        {
+          "lastName": "村山",
+          "firstName": "慶斗",
+          "team": "崎南山中学校",
+          "prefecture": "九州・長崎県",
+          "playerId": null,
+          "tempId": "村山_慶斗_崎南山中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "保海 郁弥・山田 健太郎（朝桜中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "宇田川_浬_崎南山中学校",
+        "村山_慶斗_崎南山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "保海",
+          "firstName": "郁弥",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "保海_郁弥_朝桜中学校"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "健太郎",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "山田_健太郎_朝桜中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "宇田川 浬・村山 慶斗（崎南山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "𠮷田_智志_巻西中学校",
+        "八木澤_星成_巻西中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙德",
+          "firstName": "祐大",
+          "team": "馬中央中学校",
+          "prefecture": "関東・群馬県",
+          "playerId": null,
+          "tempId": "髙德_祐大_馬中央中学校"
+        },
+        {
+          "lastName": "百澤",
+          "firstName": "光祐",
+          "team": "馬中央中学校",
+          "prefecture": "関東・群馬県",
+          "playerId": null,
+          "tempId": "百澤_光祐_馬中央中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 3,
+      "name": "𠮷田 智志・八木澤 星成（巻西中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "髙德_祐大_馬中央中学校",
+        "百澤_光祐_馬中央中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "𠮷田",
+          "firstName": "智志",
+          "team": "巻西中学校",
+          "prefecture": "信越・新潟県",
+          "playerId": null,
+          "tempId": "𠮷田_智志_巻西中学校"
+        },
+        {
+          "lastName": "八木澤",
+          "firstName": "星成",
+          "team": "巻西中学校",
+          "prefecture": "信越・新潟県",
+          "playerId": null,
+          "tempId": "八木澤_星成_巻西中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 4,
+      "name": "髙德 祐大・百澤 光祐（馬中央中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "柴崎_雄斗_徳義塾中学校",
+        "宮武_伊織_徳義塾中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "大竹",
+          "firstName": "潤正",
+          "team": "和学院中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "大竹_潤正_和学院中学校"
+        },
+        {
+          "lastName": "篠",
+          "firstName": "英聖",
+          "team": "和学院中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "篠_英聖_和学院中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "柴崎 雄斗・宮武 伊織（徳義塾中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "大竹_潤正_和学院中学校",
+        "篠_英聖_和学院中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "柴崎",
+          "firstName": "雄斗",
+          "team": "徳義塾中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "柴崎_雄斗_徳義塾中学校"
+        },
+        {
+          "lastName": "宮武",
+          "firstName": "伊織",
+          "team": "徳義塾中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "宮武_伊織_徳義塾中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 6,
+      "name": "大竹 潤正・篠 英聖（和学院中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "加藤_伊武貴_多治見中学校",
+        "宮崎_悠斗_多治見中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "新谷",
+          "firstName": "煌",
+          "team": "三原JST",
+          "prefecture": "中国・広島県",
+          "playerId": null,
+          "tempId": "新谷_煌_三原JST"
+        },
+        {
+          "lastName": "水野",
+          "firstName": "健太朗",
+          "team": "三原JST",
+          "prefecture": "中国・広島県",
+          "playerId": null,
+          "tempId": "水野_健太朗_三原JST"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 7,
+      "name": "加藤 伊武貴・宮崎 悠斗（多治見中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "新谷_煌_三原JST",
+        "水野_健太朗_三原JST"
+      ],
+      "opponents": [
+        {
+          "lastName": "加藤",
+          "firstName": "伊武貴",
+          "team": "多治見中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "加藤_伊武貴_多治見中学校"
+        },
+        {
+          "lastName": "宮崎",
+          "firstName": "悠斗",
+          "team": "多治見中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "宮崎_悠斗_多治見中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 8,
+      "name": "新谷 煌・水野 健太朗（三原JST）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "川上_夏希_西有田中学校",
+        "仁戸田_琉音_西有田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "那須",
+          "firstName": "亮太",
+          "team": "市場中学校",
+          "prefecture": "四国・徳島県",
+          "playerId": null,
+          "tempId": "那須_亮太_市場中学校"
+        },
+        {
+          "lastName": "宮田",
+          "firstName": "亮",
+          "team": "市場中学校",
+          "prefecture": "四国・徳島県",
+          "playerId": null,
+          "tempId": "宮田_亮_市場中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 9,
+      "name": "川上 夏希・仁戸田 琉音（西有田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "那須_亮太_市場中学校",
+        "宮田_亮_市場中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "川上",
+          "firstName": "夏希",
+          "team": "西有田中学校",
+          "prefecture": "九州・佐賀県",
+          "playerId": null,
+          "tempId": "川上_夏希_西有田中学校"
+        },
+        {
+          "lastName": "仁戸田",
+          "firstName": "琉音",
+          "team": "西有田中学校",
+          "prefecture": "九州・佐賀県",
+          "playerId": null,
+          "tempId": "仁戸田_琉音_西有田中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 10,
+      "name": "那須 亮太・宮田 亮（市場中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "小沼_優希_明学園中学校",
+        "宇田川_成寿_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "北島",
+          "firstName": "汰季",
+          "team": "不破中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "北島_汰季_不破中学校"
+        },
+        {
+          "lastName": "北島",
+          "firstName": "空季",
+          "team": "不破中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "北島_空季_不破中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 11,
+      "name": "小沼 優希・宇田川 成寿（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "北島_汰季_不破中学校",
+        "北島_空季_不破中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "小沼",
+          "firstName": "優希",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "小沼_優希_明学園中学校"
+        },
+        {
+          "lastName": "宇田川",
+          "firstName": "成寿",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "宇田川_成寿_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 12,
+      "name": "北島 汰季・北島 空季（不破中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "千葉_史和_藤沢中学校",
+        "橋本_駈丸_藤沢中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "花谷",
+          "firstName": "羽空汰",
+          "team": "ネクサス兵庫",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "花谷_羽空汰_ネクサス兵庫"
+        },
+        {
+          "lastName": "村上",
+          "firstName": "陽向",
+          "team": "ネクサス兵庫",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "村上_陽向_ネクサス兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 13,
+      "name": "千葉 史和・橋本 駈丸（藤沢中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "花谷_羽空汰_ネクサス兵庫",
+        "村上_陽向_ネクサス兵庫"
+      ],
+      "opponents": [
+        {
+          "lastName": "千葉",
+          "firstName": "史和",
+          "team": "藤沢中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "千葉_史和_藤沢中学校"
+        },
+        {
+          "lastName": "橋本",
+          "firstName": "駈丸",
+          "team": "藤沢中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "橋本_駈丸_藤沢中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 14,
+      "name": "花谷 羽空汰・村上 陽向（ネクサス兵庫）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "岩城_駿太_日章中学校",
+        "宮本_桜亮_日章中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤澤",
+          "firstName": "理央馬",
+          "team": "錦城中学校",
+          "prefecture": "信越・石川県",
+          "playerId": null,
+          "tempId": "藤澤_理央馬_錦城中学校"
+        },
+        {
+          "lastName": "古本",
+          "firstName": "竜吾",
+          "team": "錦城中学校",
+          "prefecture": "信越・石川県",
+          "playerId": null,
+          "tempId": "古本_竜吾_錦城中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 15,
+      "name": "岩城 駿太・宮本 桜亮（日章中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "藤澤_理央馬_錦城中学校",
+        "古本_竜吾_錦城中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "岩城",
+          "firstName": "駿太",
+          "team": "日章中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "岩城_駿太_日章中学校"
+        },
+        {
+          "lastName": "宮本",
+          "firstName": "桜亮",
+          "team": "日章中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "宮本_桜亮_日章中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 16,
+      "name": "藤澤 理央馬・古本 竜吾（錦城中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "川田_泰成_江別第一中学校",
+        "村田_剣斗_江別第一中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "新妻",
+          "firstName": "蒼惟",
+          "team": "中央台南中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "新妻_蒼惟_中央台南中学校"
+        },
+        {
+          "lastName": "志賀",
+          "firstName": "悠人",
+          "team": "中央台南中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "志賀_悠人_中央台南中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 17,
+      "name": "川田 泰成・村田 剣斗（江別第一中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "新妻_蒼惟_中央台南中学校",
+        "志賀_悠人_中央台南中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "川田",
+          "firstName": "泰成",
+          "team": "江別第一中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "川田_泰成_江別第一中学校"
+        },
+        {
+          "lastName": "村田",
+          "firstName": "剣斗",
+          "team": "江別第一中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "村田_剣斗_江別第一中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 18,
+      "name": "新妻 蒼惟・志賀 悠人（中央台南中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "阪元_健芯_ESOFIA",
+        "飯山_瑛介_ESOFIA"
+      ],
+      "opponents": [
+        {
+          "lastName": "山中",
+          "firstName": "温人",
+          "team": "土佐中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "山中_温人_土佐中学校"
+        },
+        {
+          "lastName": "野中",
+          "firstName": "崚太郎",
+          "team": "土佐中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "野中_崚太郎_土佐中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 19,
+      "name": "阪元 健芯・飯山 瑛介（ESOFIA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "山中_温人_土佐中学校",
+        "野中_崚太郎_土佐中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "阪元",
+          "firstName": "健芯",
+          "team": "ESOFIA",
+          "prefecture": "九州・鹿児島県",
+          "playerId": null,
+          "tempId": "阪元_健芯_ESOFIA"
+        },
+        {
+          "lastName": "飯山",
+          "firstName": "瑛介",
+          "team": "ESOFIA",
+          "prefecture": "九州・鹿児島県",
+          "playerId": null,
+          "tempId": "飯山_瑛介_ESOFIA"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 20,
+      "name": "山中 温人・野中 崚太郎（土佐中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "横山_大翔_周南クラブ",
+        "西村_優_周南クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "中山",
+          "firstName": "椋太",
+          "team": "大磯中学校",
+          "prefecture": "関東・神奈川県",
+          "playerId": null,
+          "tempId": "中山_椋太_大磯中学校"
+        },
+        {
+          "lastName": "神藏",
+          "firstName": "颯季",
+          "team": "大磯中学校",
+          "prefecture": "関東・神奈川県",
+          "playerId": null,
+          "tempId": "神藏_颯季_大磯中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 21,
+      "name": "横山 大翔・西村 優（周南クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "中山_椋太_大磯中学校",
+        "神藏_颯季_大磯中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "横山",
+          "firstName": "大翔",
+          "team": "周南クラブ",
+          "prefecture": "中国・山口県",
+          "playerId": null,
+          "tempId": "横山_大翔_周南クラブ"
+        },
+        {
+          "lastName": "西村",
+          "firstName": "優",
+          "team": "周南クラブ",
+          "prefecture": "中国・山口県",
+          "playerId": null,
+          "tempId": "西村_優_周南クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 22,
+      "name": "中山 椋太・神藏 颯季（大磯中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "丹羽",
+          "firstName": "悠弦",
+          "team": "朝日中学校",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "丹羽_悠弦_朝日中学校"
+        },
+        {
+          "lastName": "杉田",
+          "firstName": "陽星",
+          "team": "朝日中学校",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "杉田_陽星_朝日中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 23,
+      "name": "前田 蒼生・石田 夏稀（姫路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "丹羽_悠弦_朝日中学校",
+        "杉田_陽星_朝日中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "前田_蒼生_姫路ふぁみりー"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "夏稀",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "石田_夏稀_姫路ふぁみりー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 24,
+      "name": "丹羽 悠弦・杉田 陽星（朝日中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "今野_泰成_中山中学校",
+        "佐竹_颯音_中山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "佑",
+          "team": "スマイリー",
+          "prefecture": "関東・群馬県",
+          "playerId": null,
+          "tempId": "伊藤_佑_スマイリー"
+        },
+        {
+          "lastName": "原田",
+          "firstName": "圭",
+          "team": "スマイリー",
+          "prefecture": "関東・群馬県",
+          "playerId": null,
+          "tempId": "原田_圭_スマイリー"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "今野 泰成・佐竹 颯音（中山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "伊藤_佑_スマイリー",
+        "原田_圭_スマイリー"
+      ],
+      "opponents": [
+        {
+          "lastName": "今野",
+          "firstName": "泰成",
+          "team": "中山中学校",
+          "prefecture": "東北・山形県",
+          "playerId": null,
+          "tempId": "今野_泰成_中山中学校"
+        },
+        {
+          "lastName": "佐竹",
+          "firstName": "颯音",
+          "team": "中山中学校",
+          "prefecture": "東北・山形県",
+          "playerId": null,
+          "tempId": "佐竹_颯音_中山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 26,
+      "name": "伊藤 佑・原田 圭（スマイリー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "近岡_宗一郎_宝達中学校",
+        "岡山_直樹_宝達中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "下辻",
+          "firstName": "悠太",
+          "team": "奈良まほろば",
+          "prefecture": "近畿・奈良県",
+          "playerId": null,
+          "tempId": "下辻_悠太_奈良まほろば"
+        },
+        {
+          "lastName": "一瀬",
+          "firstName": "晴翔",
+          "team": "奈良まほろば",
+          "prefecture": "近畿・奈良県",
+          "playerId": null,
+          "tempId": "一瀬_晴翔_奈良まほろば"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 27,
+      "name": "近岡 宗一郎・岡山 直樹（宝達中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "下辻_悠太_奈良まほろば",
+        "一瀬_晴翔_奈良まほろば"
+      ],
+      "opponents": [
+        {
+          "lastName": "近岡",
+          "firstName": "宗一郎",
+          "team": "宝達中学校",
+          "prefecture": "北信越・石川県",
+          "playerId": null,
+          "tempId": "近岡_宗一郎_宝達中学校"
+        },
+        {
+          "lastName": "岡山",
+          "firstName": "直樹",
+          "team": "宝達中学校",
+          "prefecture": "北信越・石川県",
+          "playerId": null,
+          "tempId": "岡山_直樹_宝達中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 28,
+      "name": "下辻 悠太・一瀬 晴翔（奈良まほろば）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "甲斐_大斗_西階中学校",
+        "岡田_琉斗_西階中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉田",
+          "firstName": "陵",
+          "team": "湊山中学校",
+          "prefecture": "中国・鳥取県",
+          "playerId": null,
+          "tempId": "杉田_陵_湊山中学校"
+        },
+        {
+          "lastName": "杉田",
+          "firstName": "悠",
+          "team": "湊山中学校",
+          "prefecture": "中国・鳥取県",
+          "playerId": null,
+          "tempId": "杉田_悠_湊山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 29,
+      "name": "甲斐 大斗・岡田 琉斗（西階中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "杉田_陵_湊山中学校",
+        "杉田_悠_湊山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "甲斐",
+          "firstName": "大斗",
+          "team": "西階中学校",
+          "prefecture": "九州・宮崎県",
+          "playerId": null,
+          "tempId": "甲斐_大斗_西階中学校"
+        },
+        {
+          "lastName": "岡田",
+          "firstName": "琉斗",
+          "team": "西階中学校",
+          "prefecture": "九州・宮崎県",
+          "playerId": null,
+          "tempId": "岡田_琉斗_西階中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 30,
+      "name": "杉田 陵・杉田 悠（湊山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "粉間_飛羽_RISE",
+        "鈴木_龍真_RISE"
+      ],
+      "opponents": [
+        {
+          "lastName": "木原",
+          "firstName": "祐翔",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "木原_祐翔_上青木中学校"
+        },
+        {
+          "lastName": "奥田",
+          "firstName": "向陽",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "奥田_向陽_上青木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 31,
+      "name": "粉間 飛羽・鈴木 龍真（RISE）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "木原_祐翔_上青木中学校",
+        "奥田_向陽_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "粉間",
+          "firstName": "飛羽",
+          "team": "RISE",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "粉間_飛羽_RISE"
+        },
+        {
+          "lastName": "鈴木",
+          "firstName": "龍真",
+          "team": "RISE",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "鈴木_龍真_RISE"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 32,
+      "name": "木原 祐翔・奥田 向陽（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "常包_匠紀_牟礼中学校",
+        "六車_旺雅_牟礼中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊藤",
+          "firstName": "丈瑠",
+          "team": "宝達中学校",
+          "prefecture": "催地・石川県",
+          "playerId": null,
+          "tempId": "伊藤_丈瑠_宝達中学校"
+        },
+        {
+          "lastName": "坂下",
+          "firstName": "晃介",
+          "team": "宝達中学校",
+          "prefecture": "催地・石川県",
+          "playerId": null,
+          "tempId": "坂下_晃介_宝達中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 33,
+      "name": "常包 匠紀・六車 旺雅（牟礼中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "伊藤_丈瑠_宝達中学校",
+        "坂下_晃介_宝達中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "常包",
+          "firstName": "匠紀",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "常包_匠紀_牟礼中学校"
+        },
+        {
+          "lastName": "六車",
+          "firstName": "旺雅",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "六車_旺雅_牟礼中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 34,
+      "name": "伊藤 丈瑠・坂下 晃介（宝達中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "外川_暁斗_軽米中学校",
+        "下向_庵璃_軽米中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉野",
+          "firstName": "純仁",
+          "team": "朝日STC",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "吉野_純仁_朝日STC"
+        },
+        {
+          "lastName": "山本",
+          "firstName": "駿",
+          "team": "朝日STC",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "山本_駿_朝日STC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 35,
+      "name": "外川 暁斗・下向 庵璃（軽米中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "吉野_純仁_朝日STC",
+        "山本_駿_朝日STC"
+      ],
+      "opponents": [
+        {
+          "lastName": "外川",
+          "firstName": "暁斗",
+          "team": "軽米中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "外川_暁斗_軽米中学校"
+        },
+        {
+          "lastName": "下向",
+          "firstName": "庵璃",
+          "team": "軽米中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "下向_庵璃_軽米中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 36,
+      "name": "吉野 純仁・山本 駿（朝日STC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "実重_遼_ネクサス兵庫",
+        "髙田_睦人_ネクサス兵庫"
+      ],
+      "opponents": [
+        {
+          "lastName": "田王",
+          "firstName": "尚希",
+          "team": "周南クラブ",
+          "prefecture": "中国・山口県",
+          "playerId": null,
+          "tempId": "田王_尚希_周南クラブ"
+        },
+        {
+          "lastName": "宗内",
+          "firstName": "星七",
+          "team": "周南クラブ",
+          "prefecture": "中国・山口県",
+          "playerId": null,
+          "tempId": "宗内_星七_周南クラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 37,
+      "name": "実重 遼・髙田 睦人（ネクサス兵庫）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "田王_尚希_周南クラブ",
+        "宗内_星七_周南クラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "実重",
+          "firstName": "遼",
+          "team": "ネクサス兵庫",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "実重_遼_ネクサス兵庫"
+        },
+        {
+          "lastName": "髙田",
+          "firstName": "睦人",
+          "team": "ネクサス兵庫",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "髙田_睦人_ネクサス兵庫"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 38,
+      "name": "田王 尚希・宗内 星七（周南クラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "川嶋_梓_上青木中学校",
+        "森島_悠里_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "石井",
+          "firstName": "礼都",
+          "team": "小城中学校",
+          "prefecture": "九州・佐賀県",
+          "playerId": null,
+          "tempId": "石井_礼都_小城中学校"
+        },
+        {
+          "lastName": "森",
+          "firstName": "旺亮",
+          "team": "小城中学校",
+          "prefecture": "九州・佐賀県",
+          "playerId": null,
+          "tempId": "森_旺亮_小城中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 39,
+      "name": "川嶋 梓・森島 悠里（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "石井_礼都_小城中学校",
+        "森_旺亮_小城中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "川嶋",
+          "firstName": "梓",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "川嶋_梓_上青木中学校"
+        },
+        {
+          "lastName": "森島",
+          "firstName": "悠里",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "森島_悠里_上青木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 40,
+      "name": "石井 礼都・森 旺亮（小城中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "蒼大",
+          "team": "吉富中学校",
+          "prefecture": "九州・福岡県",
+          "playerId": null,
+          "tempId": "田中_蒼大_吉富中学校"
+        },
+        {
+          "lastName": "秋吉",
+          "firstName": "晴輝",
+          "team": "吉富中学校",
+          "prefecture": "九州・福岡県",
+          "playerId": null,
+          "tempId": "秋吉_晴輝_吉富中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 41,
+      "name": "野田 悠貴・林田 遼太郎（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "田中_蒼大_吉富中学校",
+        "秋吉_晴輝_吉富中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "野田_悠貴_明学園中学校"
+        },
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "林田_遼太郎_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 42,
+      "name": "田中 蒼大・秋吉 晴輝（吉富中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "宮脇_永和_路ふぁみりー",
+        "吉永_友輔_路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "井利元",
+          "firstName": "瑛太",
+          "team": "広島大曲中学校",
+          "prefecture": "海道・北海道",
+          "playerId": null,
+          "tempId": "井利元_瑛太_広島大曲中学校"
+        },
+        {
+          "lastName": "小林",
+          "firstName": "樹",
+          "team": "広島大曲中学校",
+          "prefecture": "海道・北海道",
+          "playerId": null,
+          "tempId": "小林_樹_広島大曲中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 43,
+      "name": "宮脇 永和・吉永 友輔（路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "井利元_瑛太_広島大曲中学校",
+        "小林_樹_広島大曲中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮脇",
+          "firstName": "永和",
+          "team": "路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "宮脇_永和_路ふぁみりー"
+        },
+        {
+          "lastName": "吉永",
+          "firstName": "友輔",
+          "team": "路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "吉永_友輔_路ふぁみりー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 44,
+      "name": "井利元 瑛太・小林 樹（広島大曲中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "白井_柚紀_湊南部中学校",
+        "坂下_遼成_湊南部中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "石井",
+          "firstName": "直也",
+          "team": "横芝中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "石井_直也_横芝中学校"
+        },
+        {
+          "lastName": "石橋",
+          "firstName": "達希",
+          "team": "横芝中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "石橋_達希_横芝中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 45,
+      "name": "白井 柚紀・坂下 遼成（湊南部中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "石井_直也_横芝中学校",
+        "石橋_達希_横芝中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "白井",
+          "firstName": "柚紀",
+          "team": "湊南部中学校",
+          "prefecture": "北信越・富山県",
+          "playerId": null,
+          "tempId": "白井_柚紀_湊南部中学校"
+        },
+        {
+          "lastName": "坂下",
+          "firstName": "遼成",
+          "team": "湊南部中学校",
+          "prefecture": "北信越・富山県",
+          "playerId": null,
+          "tempId": "坂下_遼成_湊南部中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 46,
+      "name": "石井 直也・石橋 達希（横芝中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "肥岡_稜希_向陽中学校",
+        "髙橋_志恩_向陽中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "青木",
+          "firstName": "大",
+          "team": "名浜第二中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "青木_大_名浜第二中学校"
+        },
+        {
+          "lastName": "𥘉瀬",
+          "firstName": "瑛亮",
+          "team": "名浜第二中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "𥘉瀬_瑛亮_名浜第二中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 47,
+      "name": "肥岡 稜希・髙橋 志恩（向陽中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "青木_大_名浜第二中学校",
+        "𥘉瀬_瑛亮_名浜第二中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "肥岡",
+          "firstName": "稜希",
+          "team": "向陽中学校",
+          "prefecture": "中国・広島県",
+          "playerId": null,
+          "tempId": "肥岡_稜希_向陽中学校"
+        },
+        {
+          "lastName": "髙橋",
+          "firstName": "志恩",
+          "team": "向陽中学校",
+          "prefecture": "中国・広島県",
+          "playerId": null,
+          "tempId": "髙橋_志恩_向陽中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 48,
+      "name": "青木 大・𥘉瀬 瑛亮（名浜第二中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "葉末_遼也_益田中学校",
+        "山根_泰介_益田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "叶屋",
+          "firstName": "玲音",
+          "team": "昭和学院中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "叶屋_玲音_昭和学院中学校"
+        },
+        {
+          "lastName": "坂田",
+          "firstName": "侑希",
+          "team": "昭和学院中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "坂田_侑希_昭和学院中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 49,
+      "name": "葉末 遼也・山根 泰介（益田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "叶屋_玲音_昭和学院中学校",
+        "坂田_侑希_昭和学院中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "葉末",
+          "firstName": "遼也",
+          "team": "益田中学校",
+          "prefecture": "中国・島根県",
+          "playerId": null,
+          "tempId": "葉末_遼也_益田中学校"
+        },
+        {
+          "lastName": "山根",
+          "firstName": "泰介",
+          "team": "益田中学校",
+          "prefecture": "中国・島根県",
+          "playerId": null,
+          "tempId": "山根_泰介_益田中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 50,
+      "name": "叶屋 玲音・坂田 侑希（昭和学院中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "近藤_伶音_附属島田中学校",
+        "齋藤_亘_附属島田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "山本",
+          "firstName": "悠人",
+          "team": "明徳義塾中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "山本_悠人_明徳義塾中学校"
+        },
+        {
+          "lastName": "大平",
+          "firstName": "庚真",
+          "team": "明徳義塾中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "大平_庚真_明徳義塾中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 51,
+      "name": "近藤 伶音・齋藤 亘（附属島田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "山本_悠人_明徳義塾中学校",
+        "大平_庚真_明徳義塾中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "伶音",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "近藤_伶音_附属島田中学校"
+        },
+        {
+          "lastName": "齋藤",
+          "firstName": "亘",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "齋藤_亘_附属島田中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 52,
+      "name": "山本 悠人・大平 庚真（明徳義塾中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "西村",
+          "firstName": "つばき",
+          "team": "水沢南中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "西村_つばき_水沢南中学校"
+        },
+        {
+          "lastName": "坂井",
+          "firstName": "那瑠",
+          "team": "水沢南中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "坂井_那瑠_水沢南中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 53,
+      "name": "鈴木 佐禄・別符 湊都（野木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "西村_つばき_水沢南中学校",
+        "坂井_那瑠_水沢南中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "関東・栃木県",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        },
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "関東・栃木県",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 54,
+      "name": "西村 つばき・坂井 那瑠（水沢南中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "竹之内_大樹_新宮中学校",
+        "中島_陸_新宮中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "内藤",
+          "firstName": "理央",
+          "team": "城南中学校",
+          "prefecture": "近畿・京都府",
+          "playerId": null,
+          "tempId": "内藤_理央_城南中学校"
+        },
+        {
+          "lastName": "稲垣",
+          "firstName": "晴舜",
+          "team": "城南中学校",
+          "prefecture": "近畿・京都府",
+          "playerId": null,
+          "tempId": "稲垣_晴舜_城南中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 55,
+      "name": "竹之内 大樹・中島 陸（新宮中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "内藤_理央_城南中学校",
+        "稲垣_晴舜_城南中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹之内",
+          "firstName": "大樹",
+          "team": "新宮中学校",
+          "prefecture": "九州・福岡県",
+          "playerId": null,
+          "tempId": "竹之内_大樹_新宮中学校"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "陸",
+          "team": "新宮中学校",
+          "prefecture": "九州・福岡県",
+          "playerId": null,
+          "tempId": "中島_陸_新宮中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 56,
+      "name": "内藤 理央・稲垣 晴舜（城南中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "髙橋_泰斗_N.N",
+        "山澤_隆人_N.N"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐井",
+          "firstName": "碧月",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "佐井_碧月_朝桜中学校"
+        },
+        {
+          "lastName": "福澤",
+          "firstName": "匠",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "福澤_匠_朝桜中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 57,
+      "name": "髙橋 泰斗・山澤 隆人（N.N）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "佐井_碧月_朝桜中学校",
+        "福澤_匠_朝桜中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙橋",
+          "firstName": "泰斗",
+          "team": "N.N",
+          "prefecture": "北信越・新潟県",
+          "playerId": null,
+          "tempId": "髙橋_泰斗_N.N"
+        },
+        {
+          "lastName": "山澤",
+          "firstName": "隆人",
+          "team": "N.N",
+          "prefecture": "北信越・新潟県",
+          "playerId": null,
+          "tempId": "山澤_隆人_N.N"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 58,
+      "name": "佐井 碧月・福澤 匠（朝桜中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "浅見_陽生_秩父第一中学校",
+        "田野_瑞樹_秩父第一中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "佑",
+          "team": "西階中学校",
+          "prefecture": "九州・宮崎県",
+          "playerId": null,
+          "tempId": "佐藤_佑_西階中学校"
+        },
+        {
+          "lastName": "田中",
+          "firstName": "陸王",
+          "team": "西階中学校",
+          "prefecture": "九州・宮崎県",
+          "playerId": null,
+          "tempId": "田中_陸王_西階中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 59,
+      "name": "浅見 陽生・田野 瑞樹（秩父第一中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "佐藤_佑_西階中学校",
+        "田中_陸王_西階中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "浅見",
+          "firstName": "陽生",
+          "team": "秩父第一中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "浅見_陽生_秩父第一中学校"
+        },
+        {
+          "lastName": "田野",
+          "firstName": "瑞樹",
+          "team": "秩父第一中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "田野_瑞樹_秩父第一中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 60,
+      "name": "佐藤 佑・田中 陸王（西階中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "藤原_悠綺_名寄中学校",
+        "佐々木_准一_名寄中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉",
+          "firstName": "碧翔",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "杉_碧翔_松山中学校"
+        },
+        {
+          "lastName": "利根川",
+          "firstName": "碧生",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "利根川_碧生_松山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 61,
+      "name": "藤原 悠綺・佐々木 准一（名寄中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "杉_碧翔_松山中学校",
+        "利根川_碧生_松山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤原",
+          "firstName": "悠綺",
+          "team": "名寄中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "藤原_悠綺_名寄中学校"
+        },
+        {
+          "lastName": "佐々木",
+          "firstName": "准一",
+          "team": "名寄中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "佐々木_准一_名寄中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 62,
+      "name": "杉 碧翔・利根川 碧生（松山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "福島_将真_犀生中学校",
+        "佐藤_厳_犀生中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "暖人",
+          "team": "朝日中学校",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "田中_暖人_朝日中学校"
+        },
+        {
+          "lastName": "山内",
+          "firstName": "健太",
+          "team": "朝日中学校",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "山内_健太_朝日中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 63,
+      "name": "福島 将真・佐藤 厳（犀生中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "田中_暖人_朝日中学校",
+        "山内_健太_朝日中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "福島",
+          "firstName": "将真",
+          "team": "犀生中学校",
+          "prefecture": "開催地・石川県",
+          "playerId": null,
+          "tempId": "福島_将真_犀生中学校"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "厳",
+          "team": "犀生中学校",
+          "prefecture": "開催地・石川県",
+          "playerId": null,
+          "tempId": "佐藤_厳_犀生中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 64,
+      "name": "田中 暖人・山内 健太（朝日中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "保海_郁弥_朝桜中学校",
+        "山田_健太郎_朝桜中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙德",
+          "firstName": "祐大",
+          "team": "馬中央中学校",
+          "prefecture": "関東・群馬県",
+          "playerId": null,
+          "tempId": "髙德_祐大_馬中央中学校"
+        },
+        {
+          "lastName": "百澤",
+          "firstName": "光祐",
+          "team": "馬中央中学校",
+          "prefecture": "関東・群馬県",
+          "playerId": null,
+          "tempId": "百澤_光祐_馬中央中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "保海 郁弥・山田 健太郎（朝桜中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "髙德_祐大_馬中央中学校",
+        "百澤_光祐_馬中央中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "保海",
+          "firstName": "郁弥",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "保海_郁弥_朝桜中学校"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "健太郎",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "山田_健太郎_朝桜中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "髙德 祐大・百澤 光祐（馬中央中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "大竹_潤正_和学院中学校",
+        "篠_英聖_和学院中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "加藤",
+          "firstName": "伊武貴",
+          "team": "多治見中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "加藤_伊武貴_多治見中学校"
+        },
+        {
+          "lastName": "宮崎",
+          "firstName": "悠斗",
+          "team": "多治見中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "宮崎_悠斗_多治見中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "大竹 潤正・篠 英聖（和学院中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "加藤_伊武貴_多治見中学校",
+        "宮崎_悠斗_多治見中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "大竹",
+          "firstName": "潤正",
+          "team": "和学院中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "大竹_潤正_和学院中学校"
+        },
+        {
+          "lastName": "篠",
+          "firstName": "英聖",
+          "team": "和学院中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "篠_英聖_和学院中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 7,
+      "name": "加藤 伊武貴・宮崎 悠斗（多治見中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "那須_亮太_市場中学校",
+        "宮田_亮_市場中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "小沼",
+          "firstName": "優希",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "小沼_優希_明学園中学校"
+        },
+        {
+          "lastName": "宇田川",
+          "firstName": "成寿",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "宇田川_成寿_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "那須 亮太・宮田 亮（市場中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "小沼_優希_明学園中学校",
+        "宇田川_成寿_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "那須",
+          "firstName": "亮太",
+          "team": "市場中学校",
+          "prefecture": "四国・徳島県",
+          "playerId": null,
+          "tempId": "那須_亮太_市場中学校"
+        },
+        {
+          "lastName": "宮田",
+          "firstName": "亮",
+          "team": "市場中学校",
+          "prefecture": "四国・徳島県",
+          "playerId": null,
+          "tempId": "宮田_亮_市場中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 11,
+      "name": "小沼 優希・宇田川 成寿（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "千葉_史和_藤沢中学校",
+        "橋本_駈丸_藤沢中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤澤",
+          "firstName": "理央馬",
+          "team": "錦城中学校",
+          "prefecture": "信越・石川県",
+          "playerId": null,
+          "tempId": "藤澤_理央馬_錦城中学校"
+        },
+        {
+          "lastName": "古本",
+          "firstName": "竜吾",
+          "team": "錦城中学校",
+          "prefecture": "信越・石川県",
+          "playerId": null,
+          "tempId": "古本_竜吾_錦城中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 13,
+      "name": "千葉 史和・橋本 駈丸（藤沢中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "藤澤_理央馬_錦城中学校",
+        "古本_竜吾_錦城中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "千葉",
+          "firstName": "史和",
+          "team": "藤沢中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "千葉_史和_藤沢中学校"
+        },
+        {
+          "lastName": "橋本",
+          "firstName": "駈丸",
+          "team": "藤沢中学校",
+          "prefecture": "東北・岩手県",
+          "playerId": null,
+          "tempId": "橋本_駈丸_藤沢中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 16,
+      "name": "藤澤 理央馬・古本 竜吾（錦城中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "川田_泰成_江別第一中学校",
+        "村田_剣斗_江別第一中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "山中",
+          "firstName": "温人",
+          "team": "土佐中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "山中_温人_土佐中学校"
+        },
+        {
+          "lastName": "野中",
+          "firstName": "崚太郎",
+          "team": "土佐中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "野中_崚太郎_土佐中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 17,
+      "name": "川田 泰成・村田 剣斗（江別第一中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山中_温人_土佐中学校",
+        "野中_崚太郎_土佐中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "川田",
+          "firstName": "泰成",
+          "team": "江別第一中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "川田_泰成_江別第一中学校"
+        },
+        {
+          "lastName": "村田",
+          "firstName": "剣斗",
+          "team": "江別第一中学校",
+          "prefecture": "北海道・北海道",
+          "playerId": null,
+          "tempId": "村田_剣斗_江別第一中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 20,
+      "name": "山中 温人・野中 崚太郎（土佐中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "中山_椋太_大磯中学校",
+        "神藏_颯季_大磯中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "前田_蒼生_姫路ふぁみりー"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "夏稀",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "石田_夏稀_姫路ふぁみりー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 22,
+      "name": "中山 椋太・神藏 颯季（大磯中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "中山",
+          "firstName": "椋太",
+          "team": "大磯中学校",
+          "prefecture": "関東・神奈川県",
+          "playerId": null,
+          "tempId": "中山_椋太_大磯中学校"
+        },
+        {
+          "lastName": "神藏",
+          "firstName": "颯季",
+          "team": "大磯中学校",
+          "prefecture": "関東・神奈川県",
+          "playerId": null,
+          "tempId": "神藏_颯季_大磯中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 23,
+      "name": "前田 蒼生・石田 夏稀（姫路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "今野_泰成_中山中学校",
+        "佐竹_颯音_中山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "下辻",
+          "firstName": "悠太",
+          "team": "奈良まほろば",
+          "prefecture": "近畿・奈良県",
+          "playerId": null,
+          "tempId": "下辻_悠太_奈良まほろば"
+        },
+        {
+          "lastName": "一瀬",
+          "firstName": "晴翔",
+          "team": "奈良まほろば",
+          "prefecture": "近畿・奈良県",
+          "playerId": null,
+          "tempId": "一瀬_晴翔_奈良まほろば"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 25,
+      "name": "今野 泰成・佐竹 颯音（中山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "下辻_悠太_奈良まほろば",
+        "一瀬_晴翔_奈良まほろば"
+      ],
+      "opponents": [
+        {
+          "lastName": "今野",
+          "firstName": "泰成",
+          "team": "中山中学校",
+          "prefecture": "東北・山形県",
+          "playerId": null,
+          "tempId": "今野_泰成_中山中学校"
+        },
+        {
+          "lastName": "佐竹",
+          "firstName": "颯音",
+          "team": "中山中学校",
+          "prefecture": "東北・山形県",
+          "playerId": null,
+          "tempId": "佐竹_颯音_中山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 28,
+      "name": "下辻 悠太・一瀬 晴翔（奈良まほろば）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "杉田_陵_湊山中学校",
+        "杉田_悠_湊山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "木原",
+          "firstName": "祐翔",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "木原_祐翔_上青木中学校"
+        },
+        {
+          "lastName": "奥田",
+          "firstName": "向陽",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "奥田_向陽_上青木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 30,
+      "name": "杉田 陵・杉田 悠（湊山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "木原_祐翔_上青木中学校",
+        "奥田_向陽_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉田",
+          "firstName": "陵",
+          "team": "湊山中学校",
+          "prefecture": "中国・鳥取県",
+          "playerId": null,
+          "tempId": "杉田_陵_湊山中学校"
+        },
+        {
+          "lastName": "杉田",
+          "firstName": "悠",
+          "team": "湊山中学校",
+          "prefecture": "中国・鳥取県",
+          "playerId": null,
+          "tempId": "杉田_悠_湊山中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 32,
+      "name": "木原 祐翔・奥田 向陽（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "常包_匠紀_牟礼中学校",
+        "六車_旺雅_牟礼中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉野",
+          "firstName": "純仁",
+          "team": "朝日STC",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "吉野_純仁_朝日STC"
+        },
+        {
+          "lastName": "山本",
+          "firstName": "駿",
+          "team": "朝日STC",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "山本_駿_朝日STC"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 33,
+      "name": "常包 匠紀・六車 旺雅（牟礼中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "吉野_純仁_朝日STC",
+        "山本_駿_朝日STC"
+      ],
+      "opponents": [
+        {
+          "lastName": "常包",
+          "firstName": "匠紀",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "常包_匠紀_牟礼中学校"
+        },
+        {
+          "lastName": "六車",
+          "firstName": "旺雅",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "六車_旺雅_牟礼中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 36,
+      "name": "吉野 純仁・山本 駿（朝日STC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "実重_遼_ネクサス兵庫",
+        "髙田_睦人_ネクサス兵庫"
+      ],
+      "opponents": [
+        {
+          "lastName": "川嶋",
+          "firstName": "梓",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "川嶋_梓_上青木中学校"
+        },
+        {
+          "lastName": "森島",
+          "firstName": "悠里",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "森島_悠里_上青木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 37,
+      "name": "実重 遼・髙田 睦人（ネクサス兵庫）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "川嶋_梓_上青木中学校",
+        "森島_悠里_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "実重",
+          "firstName": "遼",
+          "team": "ネクサス兵庫",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "実重_遼_ネクサス兵庫"
+        },
+        {
+          "lastName": "髙田",
+          "firstName": "睦人",
+          "team": "ネクサス兵庫",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "髙田_睦人_ネクサス兵庫"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 39,
+      "name": "川嶋 梓・森島 悠里（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮脇",
+          "firstName": "永和",
+          "team": "路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "宮脇_永和_路ふぁみりー"
+        },
+        {
+          "lastName": "吉永",
+          "firstName": "友輔",
+          "team": "路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "吉永_友輔_路ふぁみりー"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 41,
+      "name": "野田 悠貴・林田 遼太郎（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "宮脇_永和_路ふぁみりー",
+        "吉永_友輔_路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "野田_悠貴_明学園中学校"
+        },
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "林田_遼太郎_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 43,
+      "name": "宮脇 永和・吉永 友輔（路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "石井_直也_横芝中学校",
+        "石橋_達希_横芝中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "青木",
+          "firstName": "大",
+          "team": "名浜第二中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "青木_大_名浜第二中学校"
+        },
+        {
+          "lastName": "𥘉瀬",
+          "firstName": "瑛亮",
+          "team": "名浜第二中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "𥘉瀬_瑛亮_名浜第二中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 46,
+      "name": "石井 直也・石橋 達希（横芝中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "青木_大_名浜第二中学校",
+        "𥘉瀬_瑛亮_名浜第二中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "石井",
+          "firstName": "直也",
+          "team": "横芝中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "石井_直也_横芝中学校"
+        },
+        {
+          "lastName": "石橋",
+          "firstName": "達希",
+          "team": "横芝中学校",
+          "prefecture": "関東・千葉県",
+          "playerId": null,
+          "tempId": "石橋_達希_横芝中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 48,
+      "name": "青木 大・𥘉瀬 瑛亮（名浜第二中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "葉末_遼也_益田中学校",
+        "山根_泰介_益田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "伶音",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "近藤_伶音_附属島田中学校"
+        },
+        {
+          "lastName": "齋藤",
+          "firstName": "亘",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "齋藤_亘_附属島田中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 49,
+      "name": "葉末 遼也・山根 泰介（益田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "近藤_伶音_附属島田中学校",
+        "齋藤_亘_附属島田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "葉末",
+          "firstName": "遼也",
+          "team": "益田中学校",
+          "prefecture": "中国・島根県",
+          "playerId": null,
+          "tempId": "葉末_遼也_益田中学校"
+        },
+        {
+          "lastName": "山根",
+          "firstName": "泰介",
+          "team": "益田中学校",
+          "prefecture": "中国・島根県",
+          "playerId": null,
+          "tempId": "山根_泰介_益田中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 51,
+      "name": "近藤 伶音・齋藤 亘（附属島田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹之内",
+          "firstName": "大樹",
+          "team": "新宮中学校",
+          "prefecture": "九州・福岡県",
+          "playerId": null,
+          "tempId": "竹之内_大樹_新宮中学校"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "陸",
+          "team": "新宮中学校",
+          "prefecture": "九州・福岡県",
+          "playerId": null,
+          "tempId": "中島_陸_新宮中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 53,
+      "name": "鈴木 佐禄・別符 湊都（野木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "竹之内_大樹_新宮中学校",
+        "中島_陸_新宮中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "関東・栃木県",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        },
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "関東・栃木県",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 55,
+      "name": "竹之内 大樹・中島 陸（新宮中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "髙橋_泰斗_N.N",
+        "山澤_隆人_N.N"
+      ],
+      "opponents": [
+        {
+          "lastName": "浅見",
+          "firstName": "陽生",
+          "team": "秩父第一中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "浅見_陽生_秩父第一中学校"
+        },
+        {
+          "lastName": "田野",
+          "firstName": "瑞樹",
+          "team": "秩父第一中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "田野_瑞樹_秩父第一中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 57,
+      "name": "髙橋 泰斗・山澤 隆人（N.N）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "浅見_陽生_秩父第一中学校",
+        "田野_瑞樹_秩父第一中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙橋",
+          "firstName": "泰斗",
+          "team": "N.N",
+          "prefecture": "北信越・新潟県",
+          "playerId": null,
+          "tempId": "髙橋_泰斗_N.N"
+        },
+        {
+          "lastName": "山澤",
+          "firstName": "隆人",
+          "team": "N.N",
+          "prefecture": "北信越・新潟県",
+          "playerId": null,
+          "tempId": "山澤_隆人_N.N"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 59,
+      "name": "浅見 陽生・田野 瑞樹（秩父第一中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "杉_碧翔_松山中学校",
+        "利根川_碧生_松山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "暖人",
+          "team": "朝日中学校",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "田中_暖人_朝日中学校"
+        },
+        {
+          "lastName": "山内",
+          "firstName": "健太",
+          "team": "朝日中学校",
+          "prefecture": "東海・愛知県",
+          "playerId": null,
+          "tempId": "山内_健太_朝日中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 62,
+      "name": "杉 碧翔・利根川 碧生（松山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "田中_暖人_朝日中学校",
+        "山内_健太_朝日中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉",
+          "firstName": "碧翔",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "杉_碧翔_松山中学校"
+        },
+        {
+          "lastName": "利根川",
+          "firstName": "碧生",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "利根川_碧生_松山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 64,
+      "name": "田中 暖人・山内 健太（朝日中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "保海_郁弥_朝桜中学校",
+        "山田_健太郎_朝桜中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "加藤",
+          "firstName": "伊武貴",
+          "team": "多治見中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "加藤_伊武貴_多治見中学校"
+        },
+        {
+          "lastName": "宮崎",
+          "firstName": "悠斗",
+          "team": "多治見中学校",
+          "prefecture": "東海・岐阜県",
+          "playerId": null,
+          "tempId": "宮崎_悠斗_多治見中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "保海 郁弥・山田 健太郎（朝桜中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "加藤_伊武貴_多治見中学校",
+        "宮崎_悠斗_多治見中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "保海",
+          "firstName": "郁弥",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "保海_郁弥_朝桜中学校"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "健太郎",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "山田_健太郎_朝桜中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 7,
+      "name": "加藤 伊武貴・宮崎 悠斗（多治見中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "小沼_優希_明学園中学校",
+        "宇田川_成寿_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤澤",
+          "firstName": "理央馬",
+          "team": "錦城中学校",
+          "prefecture": "信越・石川県",
+          "playerId": null,
+          "tempId": "藤澤_理央馬_錦城中学校"
+        },
+        {
+          "lastName": "古本",
+          "firstName": "竜吾",
+          "team": "錦城中学校",
+          "prefecture": "信越・石川県",
+          "playerId": null,
+          "tempId": "古本_竜吾_錦城中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 11,
+      "name": "小沼 優希・宇田川 成寿（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "藤澤_理央馬_錦城中学校",
+        "古本_竜吾_錦城中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "小沼",
+          "firstName": "優希",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "小沼_優希_明学園中学校"
+        },
+        {
+          "lastName": "宇田川",
+          "firstName": "成寿",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "宇田川_成寿_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 16,
+      "name": "藤澤 理央馬・古本 竜吾（錦城中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "山中_温人_土佐中学校",
+        "野中_崚太郎_土佐中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "前田_蒼生_姫路ふぁみりー"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "夏稀",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "石田_夏稀_姫路ふぁみりー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 20,
+      "name": "山中 温人・野中 崚太郎（土佐中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "山中",
+          "firstName": "温人",
+          "team": "土佐中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "山中_温人_土佐中学校"
+        },
+        {
+          "lastName": "野中",
+          "firstName": "崚太郎",
+          "team": "土佐中学校",
+          "prefecture": "四国・高知県",
+          "playerId": null,
+          "tempId": "野中_崚太郎_土佐中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 23,
+      "name": "前田 蒼生・石田 夏稀（姫路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "今野_泰成_中山中学校",
+        "佐竹_颯音_中山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "木原",
+          "firstName": "祐翔",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "木原_祐翔_上青木中学校"
+        },
+        {
+          "lastName": "奥田",
+          "firstName": "向陽",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "奥田_向陽_上青木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 25,
+      "name": "今野 泰成・佐竹 颯音（中山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "木原_祐翔_上青木中学校",
+        "奥田_向陽_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "今野",
+          "firstName": "泰成",
+          "team": "中山中学校",
+          "prefecture": "東北・山形県",
+          "playerId": null,
+          "tempId": "今野_泰成_中山中学校"
+        },
+        {
+          "lastName": "佐竹",
+          "firstName": "颯音",
+          "team": "中山中学校",
+          "prefecture": "東北・山形県",
+          "playerId": null,
+          "tempId": "佐竹_颯音_中山中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 32,
+      "name": "木原 祐翔・奥田 向陽（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "常包_匠紀_牟礼中学校",
+        "六車_旺雅_牟礼中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "川嶋",
+          "firstName": "梓",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "川嶋_梓_上青木中学校"
+        },
+        {
+          "lastName": "森島",
+          "firstName": "悠里",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "森島_悠里_上青木中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 33,
+      "name": "常包 匠紀・六車 旺雅（牟礼中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "川嶋_梓_上青木中学校",
+        "森島_悠里_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "常包",
+          "firstName": "匠紀",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "常包_匠紀_牟礼中学校"
+        },
+        {
+          "lastName": "六車",
+          "firstName": "旺雅",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "六車_旺雅_牟礼中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 39,
+      "name": "川嶋 梓・森島 悠里（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "青木",
+          "firstName": "大",
+          "team": "名浜第二中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "青木_大_名浜第二中学校"
+        },
+        {
+          "lastName": "𥘉瀬",
+          "firstName": "瑛亮",
+          "team": "名浜第二中学校",
+          "prefecture": "東北・福島県",
+          "playerId": null,
+          "tempId": "𥘉瀬_瑛亮_名浜第二中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 41,
+      "name": "野田 悠貴・林田 遼太郎（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "青木_大_名浜第二中学校",
+        "𥘉瀬_瑛亮_名浜第二中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "野田_悠貴_明学園中学校"
+        },
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "林田_遼太郎_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 48,
+      "name": "青木 大・𥘉瀬 瑛亮（名浜第二中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "近藤_伶音_附属島田中学校",
+        "齋藤_亘_附属島田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "関東・栃木県",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        },
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "関東・栃木県",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 51,
+      "name": "近藤 伶音・齋藤 亘（附属島田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "伶音",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "近藤_伶音_附属島田中学校"
+        },
+        {
+          "lastName": "齋藤",
+          "firstName": "亘",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "齋藤_亘_附属島田中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 53,
+      "name": "鈴木 佐禄・別符 湊都（野木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "髙橋_泰斗_N.N",
+        "山澤_隆人_N.N"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉",
+          "firstName": "碧翔",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "杉_碧翔_松山中学校"
+        },
+        {
+          "lastName": "利根川",
+          "firstName": "碧生",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "利根川_碧生_松山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 57,
+      "name": "髙橋 泰斗・山澤 隆人（N.N）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "杉_碧翔_松山中学校",
+        "利根川_碧生_松山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙橋",
+          "firstName": "泰斗",
+          "team": "N.N",
+          "prefecture": "北信越・新潟県",
+          "playerId": null,
+          "tempId": "髙橋_泰斗_N.N"
+        },
+        {
+          "lastName": "山澤",
+          "firstName": "隆人",
+          "team": "N.N",
+          "prefecture": "北信越・新潟県",
+          "playerId": null,
+          "tempId": "山澤_隆人_N.N"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 62,
+      "name": "杉 碧翔・利根川 碧生（松山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "保海_郁弥_朝桜中学校",
+        "山田_健太郎_朝桜中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "小沼",
+          "firstName": "優希",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "小沼_優希_明学園中学校"
+        },
+        {
+          "lastName": "宇田川",
+          "firstName": "成寿",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "宇田川_成寿_明学園中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "保海 郁弥・山田 健太郎（朝桜中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "小沼_優希_明学園中学校",
+        "宇田川_成寿_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "保海",
+          "firstName": "郁弥",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "保海_郁弥_朝桜中学校"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "健太郎",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "山田_健太郎_朝桜中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 11,
+      "name": "小沼 優希・宇田川 成寿（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "木原",
+          "firstName": "祐翔",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "木原_祐翔_上青木中学校"
+        },
+        {
+          "lastName": "奥田",
+          "firstName": "向陽",
+          "team": "上青木中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "奥田_向陽_上青木中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 23,
+      "name": "前田 蒼生・石田 夏稀（姫路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "木原_祐翔_上青木中学校",
+        "奥田_向陽_上青木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "前田_蒼生_姫路ふぁみりー"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "夏稀",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "石田_夏稀_姫路ふぁみりー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 32,
+      "name": "木原 祐翔・奥田 向陽（上青木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "常包_匠紀_牟礼中学校",
+        "六車_旺雅_牟礼中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "野田_悠貴_明学園中学校"
+        },
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "林田_遼太郎_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 33,
+      "name": "常包 匠紀・六車 旺雅（牟礼中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "常包",
+          "firstName": "匠紀",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "常包_匠紀_牟礼中学校"
+        },
+        {
+          "lastName": "六車",
+          "firstName": "旺雅",
+          "team": "牟礼中学校",
+          "prefecture": "四国・香川県",
+          "playerId": null,
+          "tempId": "六車_旺雅_牟礼中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 41,
+      "name": "野田 悠貴・林田 遼太郎（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "近藤_伶音_附属島田中学校",
+        "齋藤_亘_附属島田中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉",
+          "firstName": "碧翔",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "杉_碧翔_松山中学校"
+        },
+        {
+          "lastName": "利根川",
+          "firstName": "碧生",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "利根川_碧生_松山中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 51,
+      "name": "近藤 伶音・齋藤 亘（附属島田中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "杉_碧翔_松山中学校",
+        "利根川_碧生_松山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "近藤",
+          "firstName": "伶音",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "近藤_伶音_附属島田中学校"
+        },
+        {
+          "lastName": "齋藤",
+          "firstName": "亘",
+          "team": "附属島田中学校",
+          "prefecture": "東海・静岡県",
+          "playerId": null,
+          "tempId": "齋藤_亘_附属島田中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 62,
+      "name": "杉 碧翔・利根川 碧生（松山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "保海_郁弥_朝桜中学校",
+        "山田_健太郎_朝桜中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "前田_蒼生_姫路ふぁみりー"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "夏稀",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "石田_夏稀_姫路ふぁみりー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 1,
+      "name": "保海 郁弥・山田 健太郎（朝桜中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "保海",
+          "firstName": "郁弥",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "保海_郁弥_朝桜中学校"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "健太郎",
+          "team": "朝桜中学校",
+          "prefecture": "近畿・滋賀県",
+          "playerId": null,
+          "tempId": "山田_健太郎_朝桜中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 23,
+      "name": "前田 蒼生・石田 夏稀（姫路ふぁみりー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "杉",
+          "firstName": "碧翔",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "杉_碧翔_松山中学校"
+        },
+        {
+          "lastName": "利根川",
+          "firstName": "碧生",
+          "team": "松山中学校",
+          "prefecture": "関東・埼玉県",
+          "playerId": null,
+          "tempId": "利根川_碧生_松山中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 41,
+      "name": "野田 悠貴・林田 遼太郎（明学園中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "杉_碧翔_松山中学校",
+        "利根川_碧生_松山中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "野田_悠貴_明学園中学校"
+        },
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "林田_遼太郎_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 62,
+      "name": "杉 碧翔・利根川 碧生（松山中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "前田_蒼生_姫路ふぁみりー",
+        "石田_夏稀_姫路ふぁみりー"
+      ],
+      "opponents": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "野田_悠貴_明学園中学校"
+        },
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "明学園中学校",
+          "prefecture": "関東・東京都",
+          "playerId": null,
+          "tempId": "林田_遼太郎_明学園中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 23,
+      "name": "前田 蒼生・石田 夏稀（姫路ふぁみりー）",
+      "category": "doubles",
+      "retired": true
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "野田_悠貴_明学園中学校",
+        "林田_遼太郎_明学園中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "前田_蒼生_姫路ふぁみりー"
+        },
+        {
+          "lastName": "石田",
+          "firstName": "夏稀",
+          "team": "姫路ふぁみりー",
+          "prefecture": "近畿・兵庫県",
+          "playerId": null,
+          "tempId": "石田_夏稀_姫路ふぁみりー"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 41,
+      "name": "野田 悠貴・林田 遼太郎（明学園中学校）",
+      "category": "doubles",
+      "retired": true
+    }
+  ]
+}
