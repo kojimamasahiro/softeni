@@ -114,9 +114,9 @@ def main():
     args = parser.parse_args()
 
     base = args.basename
-    ENTRIES_PATH = os.path.join("entries", f"{base}.json")
-    MATCHES_PATH = os.path.join("matches", f"{base}.json")
-    OUTPUT_PATH  = os.path.join("og", f"{base}.json")
+    ENTRIES_PATH = os.path.join("entries", f"{base}")
+    MATCHES_PATH = os.path.join("matches", f"{base}")
+    OUTPUT_PATH  = os.path.join("og", f"{base}")
 
     entries_list = load_json(ENTRIES_PATH)
     matches_list = load_json(MATCHES_PATH)
