@@ -1,0 +1,566 @@
+{
+  "A": [
+    {
+      "id": 1,
+      "name": "山本（尽誠学園高校）",
+      "information": [
+        {
+          "lastName": "山本",
+          "firstName": "一輝",
+          "team": "尽誠学園高校",
+          "prefecture": "香川",
+          "playerId": null,
+          "tempId": "山本_一輝_尽誠学園高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 2,
+      "name": "仁戸田（西有田中学校）",
+      "information": [
+        {
+          "lastName": "仁戸田",
+          "firstName": "琉音",
+          "team": "西有田中学校",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "仁戸田_琉音_西有田中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 3,
+      "name": "大平（明徳義塾中学校）",
+      "information": [
+        {
+          "lastName": "大平",
+          "firstName": "庚真",
+          "team": "明徳義塾中学校",
+          "prefecture": "高知",
+          "playerId": null,
+          "tempId": "大平_庚真_明徳義塾中学校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "B": [
+    {
+      "id": 4,
+      "name": "山田（岡崎城西高校）",
+      "information": [
+        {
+          "lastName": "山田",
+          "firstName": "健太郎",
+          "team": "岡崎城西高校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "山田_健太郎_岡崎城西高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 5,
+      "name": "野田（高田商業高校）",
+      "information": [
+        {
+          "lastName": "野田",
+          "firstName": "悠貴",
+          "team": "高田商業高校",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "野田_悠貴_高田商業高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 6,
+      "name": "鈴木（野木中学校）",
+      "information": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "C": [
+    {
+      "id": 7,
+      "name": "桐山（上青木中学校）",
+      "information": [
+        {
+          "lastName": "桐山",
+          "firstName": "柊介",
+          "team": "上青木中学校",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "桐山_柊介_上青木中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 8,
+      "name": "佐藤（西階中学校）",
+      "information": [
+        {
+          "lastName": "佐藤",
+          "firstName": "佑",
+          "team": "西階中学校",
+          "prefecture": "宮崎",
+          "playerId": null,
+          "tempId": "佐藤_佑_西階中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 9,
+      "name": "福田（上宮高校）",
+      "information": [
+        {
+          "lastName": "福田",
+          "firstName": "喜大",
+          "team": "上宮高校",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "福田_喜大_上宮高校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "D": [
+    {
+      "id": 10,
+      "name": "伊藤（尽誠学園高校）",
+      "information": [
+        {
+          "lastName": "伊藤",
+          "firstName": "陽聖",
+          "team": "尽誠学園高校",
+          "prefecture": "香川",
+          "playerId": null,
+          "tempId": "伊藤_陽聖_尽誠学園高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 11,
+      "name": "山中（土佐中学校）",
+      "information": [
+        {
+          "lastName": "山中",
+          "firstName": "温人",
+          "team": "土佐中学校",
+          "prefecture": "高知",
+          "playerId": null,
+          "tempId": "山中_温人_土佐中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 12,
+      "name": "宇田川（清明学園中学校）",
+      "information": [
+        {
+          "lastName": "宇田川",
+          "firstName": "成寿",
+          "team": "清明学園中学校",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "宇田川_成寿_清明学園中学校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "E": [
+    {
+      "id": 13,
+      "name": "田中（朝日中学校）",
+      "information": [
+        {
+          "lastName": "田中",
+          "firstName": "暖人",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "田中_暖人_朝日中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 14,
+      "name": "濵﨑（濵﨑広太）",
+      "information": [
+        {
+          "lastName": "濵﨑",
+          "firstName": "広太",
+          "team": "濵﨑広太",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "濵﨑_広太_濵﨑広太"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 15,
+      "name": "前田（高田商業高校）",
+      "information": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼生",
+          "team": "高田商業高校",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "前田_蒼生_高田商業高校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "F": [
+    {
+      "id": 16,
+      "name": "萩原（鹿児島商業高校）",
+      "information": [
+        {
+          "lastName": "萩原",
+          "firstName": "塡ノ祐",
+          "team": "鹿児島商業高校",
+          "prefecture": "鹿児島",
+          "playerId": null,
+          "tempId": "萩原_塡ノ祐_鹿児島商業高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 17,
+      "name": "原田（スマイリー）",
+      "information": [
+        {
+          "lastName": "原田",
+          "firstName": "圭",
+          "team": "スマイリー",
+          "prefecture": "群馬",
+          "playerId": null,
+          "tempId": "原田_圭_スマイリー"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 18,
+      "name": "小吉（上青木中学校）",
+      "information": [
+        {
+          "lastName": "小吉",
+          "firstName": "歩大",
+          "team": "上青木中学校",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "小吉_歩大_上青木中学校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "G": [
+    {
+      "id": 19,
+      "name": "木原（尽誠学園高校）",
+      "information": [
+        {
+          "lastName": "木原",
+          "firstName": "祐翔",
+          "team": "尽誠学園高校",
+          "prefecture": "香川",
+          "playerId": null,
+          "tempId": "木原_祐翔_尽誠学園高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 20,
+      "name": "杉田（湊山中学校）",
+      "information": [
+        {
+          "lastName": "杉田",
+          "firstName": "悠",
+          "team": "湊山中学校",
+          "prefecture": "鳥取",
+          "playerId": null,
+          "tempId": "杉田_悠_湊山中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 21,
+      "name": "林田（高田商業高校）",
+      "information": [
+        {
+          "lastName": "林田",
+          "firstName": "遼太郎",
+          "team": "高田商業高校",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "林田_遼太郎_高田商業高校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "H": [
+    {
+      "id": 22,
+      "name": "山田（朝日中学校）",
+      "information": [
+        {
+          "lastName": "山田",
+          "firstName": "隆真",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "山田_隆真_朝日中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 23,
+      "name": "籠谷（奈良ＬＥＧＥＮＤＳ）",
+      "information": [
+        {
+          "lastName": "籠谷",
+          "firstName": "優佑",
+          "team": "奈良ＬＥＧＥＮＤＳ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "籠谷_優佑_奈良ＬＥＧＥＮＤＳ"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 24,
+      "name": "佐藤（岡山理科大付高校）",
+      "information": [
+        {
+          "lastName": "佐藤",
+          "firstName": "蒼真",
+          "team": "岡山理科大付高校",
+          "prefecture": "岡山",
+          "playerId": null,
+          "tempId": "佐藤_蒼真_岡山理科大付高校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "I": [
+    {
+      "id": 25,
+      "name": "塚本（岡崎城西高校）",
+      "information": [
+        {
+          "lastName": "塚本",
+          "firstName": "光琉",
+          "team": "岡崎城西高校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "塚本_光琉_岡崎城西高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 26,
+      "name": "山田（朝桜中学校）",
+      "information": [
+        {
+          "lastName": "山田",
+          "firstName": "柊輝",
+          "team": "朝桜中学校",
+          "prefecture": "滋賀",
+          "playerId": null,
+          "tempId": "山田_柊輝_朝桜中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 27,
+      "name": "森島（上青木中学校）",
+      "information": [
+        {
+          "lastName": "森島",
+          "firstName": "悠里",
+          "team": "上青木中学校",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "森島_悠里_上青木中学校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "J": [
+    {
+      "id": 28,
+      "name": "村田（上青木中学校）",
+      "information": [
+        {
+          "lastName": "村田",
+          "firstName": "優斗",
+          "team": "上青木中学校",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "村田_優斗_上青木中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 29,
+      "name": "柴崎（明徳義塾中学校）",
+      "information": [
+        {
+          "lastName": "柴崎",
+          "firstName": "雄斗",
+          "team": "明徳義塾中学校",
+          "prefecture": "高知",
+          "playerId": null,
+          "tempId": "柴崎_雄斗_明徳義塾中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 30,
+      "name": "宮田（尽誠学園高校）",
+      "information": [
+        {
+          "lastName": "宮田",
+          "firstName": "亮",
+          "team": "尽誠学園高校",
+          "prefecture": "香川",
+          "playerId": null,
+          "tempId": "宮田_亮_尽誠学園高校"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "K": [
+    {
+      "id": 31,
+      "name": "杉田（朝日中学校）",
+      "information": [
+        {
+          "lastName": "杉田",
+          "firstName": "陽星",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "杉田_陽星_朝日中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 32,
+      "name": "藤原（名寄中学校）",
+      "information": [
+        {
+          "lastName": "藤原",
+          "firstName": "悠綺",
+          "team": "名寄中学校",
+          "prefecture": "北海道",
+          "playerId": null,
+          "tempId": "藤原_悠綺_名寄中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 33,
+      "name": "赤金（清明学園中学校東京）",
+      "information": [
+        {
+          "lastName": "赤金",
+          "firstName": "泰河",
+          "team": "清明学園中学校東京",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "赤金_泰河_清明学園中学校東京"
+        }
+      ],
+      "category": "singles"
+    }
+  ],
+  "L": [
+    {
+      "id": 34,
+      "name": "荻谷（高田商業高校）",
+      "information": [
+        {
+          "lastName": "荻谷",
+          "firstName": "侑磨",
+          "team": "高田商業高校",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "荻谷_侑磨_高田商業高校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 35,
+      "name": "保田（大津中学校）",
+      "information": [
+        {
+          "lastName": "保田",
+          "firstName": "颯志",
+          "team": "大津中学校",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "保田_颯志_大津中学校"
+        }
+      ],
+      "category": "singles"
+    },
+    {
+      "id": 36,
+      "name": "別符（野木中学校）",
+      "information": [
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "category": "singles"
+    }
+  ]
+}
