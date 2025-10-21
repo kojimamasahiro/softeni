@@ -132,19 +132,16 @@ function MatchGroup({
   const matchGroup = sortMatchesByEntryNo(matches);
 
   let finalLabel = '';
-  if (eliminatedLabel) {
+  const lastMatch = matchGroup[matchGroup.length - 1];
+  if (lastMatch && lastMatch.round) {
+    const { round, result } = lastMatch;
+    if (round === '決勝' && result === 'win') finalLabel = '優勝';
+    else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
+    else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
+    else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
+    else if (result === 'lose') finalLabel = `${round}敗退`;
+  } else if (eliminatedLabel) {
     finalLabel = eliminatedLabel;
-  } else {
-    const lastMatch = matchGroup[matchGroup.length - 1];
-    if (lastMatch) {
-      const { round, result } = lastMatch;
-      if (round === '決勝' && result === 'win') finalLabel = '優勝';
-      else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
-      else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
-      else if (round === '準々決勝' && result === 'lose')
-        finalLabel = 'ベスト8';
-      else if (result === 'lose') finalLabel = `${round}敗退`;
-    }
   }
 
   const nameLower = name.toLowerCase();
