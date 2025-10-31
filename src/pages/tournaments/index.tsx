@@ -278,6 +278,29 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
               各大会のページでは、年度ごとの出場選手や試合結果、所属別の記録などを確認できます。
               下記から世代（カテゴリ）ごとにご覧いただけます。
             </p>
+            <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <h2 className="text-lg font-semibold mb-2 text-amber-800 dark:text-amber-200">
+                🧪 ベータ機能（試作版）
+              </h2>
+              <p className="text-xs text-amber-600 dark:text-amber-300 mb-3">
+                新しい機能を試験的に公開しています。開発中のため予告なく変更される可能性があります。
+              </p>
+              <Link href="/beta">
+                <div className="flex items-center justify-between p-3 bg-amber-100 dark:bg-amber-800/30 rounded-lg hover:bg-amber-200 dark:hover:bg-amber-700/40 transition-colors cursor-pointer border border-amber-200 dark:border-amber-700">
+                  <div className="flex items-center">
+                    <span className="text-amber-700 dark:text-amber-400 font-medium">
+                      🧪 ベータ機能を試す
+                    </span>
+                    <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                      - 同姓同名選手検索などの新機能
+                    </span>
+                  </div>
+                  <span className="text-amber-600 dark:text-amber-400 text-sm">
+                    →
+                  </span>
+                </div>
+              </Link>
+            </div>
           </section>
 
           {generationOrder

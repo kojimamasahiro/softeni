@@ -4,6 +4,8 @@ module.exports = {
   generateRobotsTxt: true, // robots.txtを生成
   changefreq: 'daily', // ページ更新頻度
   priority: 0.7, // ページ優先度
+  // ベータ機能は sitemap から除外
+  exclude: ['/beta', '/beta/*'],
   transform: async (config, path) => {
     return {
       loc: path, // ページURL
