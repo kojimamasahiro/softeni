@@ -11,6 +11,12 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
 PAGE_NUM = 1                       # 抽出するページ番号（1から開始）
+
+# ★ Y軸抽出範囲の定義 (単位: ポイント)
+# ページの標準的な高さは約842pt (A4縦)です。
+Y_CROP_MIN = 150                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MAX = 750                 # ★ 抽出範囲の最大Y座標 (下端)
+
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
@@ -18,27 +24,27 @@ Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差�
 SMALL_SIZE_THRESHOLD = 6.5
 
 # ★ 選手名（姓・名）のX座標は、このファイルで使用される。
-X_LEFT_SURNAME_MIN = 70    # 左側 姓の最小X座標
+X_LEFT_SURNAME_MIN = 60    # 左側 姓の最小X座標
 X_LEFT_SURNAME_MAX = 110   # 左側 姓の最大X座標
 X_LEFT_FIRSTNAME_MIN = 120 # 左側 名の最小X座標
-X_LEFT_FIRSTNAME_MAX = 160 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 166    # 左側 地域名/都道府県名の最小X座標
-X_LEFT_AREA_MAX = 225    # 左側 地域名/都道府県名の最大X座標
-X_LEFT_TEAM_MIN = 166    # 左側 チーム名の最小X座標
-X_LEFT_TEAM_MAX = 225   # 左側 チーム名の最大X座標
+X_LEFT_FIRSTNAME_MAX = 175 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 180    # 左側 地域名/都道府県名の最小X座標
+X_LEFT_AREA_MAX = 250    # 左側 地域名/都道府県名の最大X座標
+X_LEFT_TEAM_MIN = 180    # 左側 チーム名の最小X座標
+X_LEFT_TEAM_MAX = 250   # 左側 チーム名の最大X座標
 X_LEFT_ENTRY_MIN = 30    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
 
-X_RIGHT_SURNAME_MIN = 360   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 400   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 405 # 右側 名の最小X座標
-X_RIGHT_FIRSTNAME_MAX = 445 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 450  # 右側 地域名/都道府県名の最小X座標
-X_RIGHT_AREA_MAX = 510  # 右側 地域名/都道府県名の最大X座標
-X_RIGHT_TEAM_MIN = 450  # 右側 チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 510  # 右側 チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 520  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
+X_RIGHT_SURNAME_MIN = 400   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 455   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 460 # 右側 名の最小X座標
+X_RIGHT_FIRSTNAME_MAX = 510 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 515  # 右側 地域名/都道府県名の最小X座標
+X_RIGHT_AREA_MAX = 590  # 右側 地域名/都道府県名の最大X座標
+X_RIGHT_TEAM_MIN = 515  # 右側 チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 590  # 右側 チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 600  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 620  # 右側エントリー番号の最大X座標
 
 # チーム名を特定するための予備キーワードリスト
 TEAM_KEYWORDS = ['高校', '大学']
@@ -106,7 +112,12 @@ def get_name_split_info(raw_text, chars_in_line=pd.DataFrame()):
 # ---------------------------------------------
 
 def get_chars_data_from_pdf(pdf_path, page_num):
-    """PDFから文字情報（テキストと座標）を抽出し、DataFrameとして返す"""
+    """
+    PDFから文字情報（テキストと座標）を抽出し、DataFrameとして返す
+    ★ Y軸フィルタリングを追加
+    """
+    global Y_CROP_MIN, Y_CROP_MAX
+    
     try:
         with pdfplumber.open(pdf_path) as pdf:
             page = pdf.pages[page_num - 1]
@@ -118,6 +129,9 @@ def get_chars_data_from_pdf(pdf_path, page_num):
             df = pd.DataFrame(chars_list)[['text', 'x0', 'top', 'x1', 'size']] 
             df = df.rename(columns={'x0': 'left'}) 
             df = df[df['text'].str.strip() != '']
+            
+            # ★ Y軸フィルタリングの適用
+            df = df[(df['top'] >= Y_CROP_MIN) & (df['top'] <= Y_CROP_MAX)].reset_index(drop=True)
             
             return df.reset_index(drop=True)
 
@@ -183,13 +197,15 @@ def _group_and_extract_side(side_chars_df, is_left_side):
     ).reset_index()
 
     RESULTS = []
-    i = 1
+    i = 0
     
     # 3. 行を走査する
     while i < len(line_data):
         line_1 = line_data.iloc[i] # 選手Aの行 (選手A + 地域名)
 
-        # スコア行などのフィルタリング (Line 1に対してのみ実行)
+        # -----------------------------------------------------------------
+        # フィルタリング ステップ 1: スコア行/短い行/空行の除外
+        # -----------------------------------------------------------------
         text_check = line_1['full_text'].strip()
         if not text_check or len(text_check) < 2 or \
            re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
@@ -304,6 +320,7 @@ def structure_player_data(chars_df):
         print(f"警告: デバッグ画像の生成中にエラーが発生しました: {e}")
 
     # 2. 文字データを左右に分割
+    # 左右の分割は、最大X座標の定義に依存する
     chars_left = chars_df[chars_df['left'] <= X_LEFT_TEAM_MAX].copy()
     chars_right = chars_df[chars_df['left'] >= X_RIGHT_SURNAME_MIN].copy()
 
@@ -380,9 +397,11 @@ def extract_single_line_content(line_data_row, data_df, X_SETTINGS):
 
 def draw_extraction_boxes(page, file_path):
     """
-    pdfplumberページオブジェクトに、設定されたX座標の抽出範囲を描画する。
+    pdfplumberページオブジェクトに、設定されたX座標およびY座標の抽出範囲を描画する。
+    描画ライブラリが整数座標を要求するため、座標はintにキャストされる。
     """
-
+    global Y_CROP_MIN, Y_CROP_MAX
+    # X座標のグローバル変数群
     global X_LEFT_SURNAME_MIN, X_LEFT_SURNAME_MAX, X_LEFT_FIRSTNAME_MIN, X_LEFT_FIRSTNAME_MAX
     global X_LEFT_AREA_MIN, X_LEFT_AREA_MAX, X_LEFT_TEAM_MIN, X_LEFT_TEAM_MAX
     global X_RIGHT_SURNAME_MIN, X_RIGHT_SURNAME_MAX, X_RIGHT_FIRSTNAME_MIN, X_RIGHT_FIRSTNAME_MAX
@@ -414,8 +433,9 @@ def draw_extraction_boxes(page, file_path):
         'AREA': (0, 255, 0),      # 緑 (地域名)
         'TEAM': (255, 0, 0),      # 赤 (チーム名)
         'ENTRY': (255, 165, 0),   # オレンジ
+        'CROP_LINE': (0, 0, 0)     # 黒 (クロップ境界線)
     }
-
+    
     def add_rects(settings):
         # 選手名A/B
         rects.append({'rect': (settings['SURNAME_MIN'], 0, settings['SURNAME_MAX'], page.height), 'color': COLORS['SURNAME']})
@@ -430,6 +450,10 @@ def draw_extraction_boxes(page, file_path):
     add_rects(X_SETTINGS_LEFT)
     add_rects(X_SETTINGS_RIGHT)
 
+    # draw_lineもintの座標を使用
+    rects.append({'rect': (0, Y_CROP_MIN, page.width, Y_CROP_MIN), 'color': COLORS['CROP_LINE'], 'fill': COLORS['CROP_LINE']}) # Top boundary
+    rects.append({'rect': (0, Y_CROP_MAX, page.width, Y_CROP_MAX), 'color': COLORS['CROP_LINE'], 'fill': COLORS['CROP_LINE']}) # Bottom boundary
+
     im = page.to_image()
 
     for rect in rects:
@@ -441,7 +465,7 @@ def draw_extraction_boxes(page, file_path):
 
     im.save(file_path)
 
-    print(f"✅ デバッグ画像が '{file_path}' に保存されました。X座標の確認にご利用ください。")
+    print(f"✅ デバッグ画像が '{file_path}' に保存されました。X座標およびY座標の抽出範囲の確認にご利用ください。")
 
 # ---------------------------------------------
 # メイン処理
