@@ -2572,14 +2572,14 @@ const initialPlayers = [
   },
   {
     id: 180,
-    name: '矢野（ＮＴＴ西日本）',
+    name: '矢野（NTT西日本）',
     information: [
       {
         lastName: '矢野',
         firstName: '颯人',
-        team: 'ＮＴＴ西日本',
+        team: 'NTT西日本',
         playerId: null,
-        tempId: '颯人_矢野_ＮＴＴ西日本',
+        tempId: '颯人_矢野_NTT西日本',
       },
     ],
   },
