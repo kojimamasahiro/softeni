@@ -664,7 +664,7 @@ const MatchInput = () => {
                 <h5 className="text-xs font-medium mb-1 text-center text-blue-600">
                   チーム A
                 </h5>
-                <div className="space-y-1">
+                <div className="grid grid-cols-2 gap-1">
                   {getPlayerNamesFromMatch(match, 'A').map(
                     (playerName: string, index: number) => (
                       <button
@@ -675,7 +675,7 @@ const MatchInput = () => {
                             winner_player: playerName,
                           })
                         }
-                        className={`w-full p-1 border-2 rounded font-medium transition-all text-xs ${
+                        className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                           pointData.winner_player === playerName
                             ? 'border-blue-500 bg-blue-50 text-blue-700'
                             : 'border-gray-300 hover:border-blue-300'
@@ -692,7 +692,7 @@ const MatchInput = () => {
                 <h5 className="text-xs font-medium mb-1 text-center text-red-600">
                   チーム B
                 </h5>
-                <div className="space-y-1">
+                <div className="grid grid-cols-2 gap-1">
                   {getPlayerNamesFromMatch(match, 'B').map(
                     (playerName: string, index: number) => (
                       <button
@@ -703,7 +703,7 @@ const MatchInput = () => {
                             winner_player: playerName,
                           })
                         }
-                        className={`w-full p-1 border-2 rounded font-medium transition-all text-xs ${
+                        className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                           pointData.winner_player === playerName
                             ? 'border-red-500 bg-red-50 text-red-700'
                             : 'border-gray-300 hover:border-red-300'
