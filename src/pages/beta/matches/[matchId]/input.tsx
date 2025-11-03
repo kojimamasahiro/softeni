@@ -616,40 +616,6 @@ const MatchInput = () => {
             </div>
           </div>
 
-          {/* 勝者チーム */}
-          <div className="mb-4">
-            <div className="text-center mb-2">
-              <h4 className="text-sm font-medium">勝者チーム</h4>
-              {pointData.winner_player && pointData.result_type && (
-                <p className="text-xs text-gray-500 mt-1">
-                  💡 関与選手と結果から自動判定されます
-                </p>
-              )}
-            </div>
-            <div className="grid grid-cols-2 gap-2 mb-4">
-              <button
-                onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
-                className={`p-3 border-2 rounded font-medium transition-all ${
-                  pointData.winner_team === 'A'
-                    ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-gray-300 hover:border-blue-300'
-                }`}
-              >
-                チーム A
-              </button>
-              <button
-                onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
-                className={`p-3 border-2 rounded font-medium transition-all ${
-                  pointData.winner_team === 'B'
-                    ? 'border-red-500 bg-red-50 text-red-700'
-                    : 'border-gray-300 hover:border-red-300'
-                }`}
-              >
-                チーム B
-              </button>
-            </div>
-          </div>
-
           {/* ラリー数 */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2 text-center">ラリー数</h4>
@@ -841,6 +807,40 @@ const MatchInput = () => {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* 勝者チーム */}
+          <div className="mb-4">
+            <div className="text-center mb-2">
+              <h4 className="text-sm font-medium">勝者チーム</h4>
+              {pointData.winner_player && pointData.result_type && (
+                <p className="text-xs text-gray-500 mt-1">
+                  💡 関与選手と結果から自動判定されます
+                </p>
+              )}
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
+                className={`p-2 border-2 rounded font-medium transition-all text-sm ${
+                  pointData.winner_team === 'A'
+                    ? 'border-blue-500 bg-blue-50 text-blue-700'
+                    : 'border-gray-300 hover:border-blue-300'
+                }`}
+              >
+                チーム A
+              </button>
+              <button
+                onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
+                className={`p-2 border-2 rounded font-medium transition-all text-sm ${
+                  pointData.winner_team === 'B'
+                    ? 'border-red-500 bg-red-50 text-red-700'
+                    : 'border-gray-300 hover:border-red-300'
+                }`}
+              >
+                チーム B
+              </button>
             </div>
           </div>
 
