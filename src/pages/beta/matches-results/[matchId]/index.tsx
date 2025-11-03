@@ -200,9 +200,6 @@ const PublicMatchDetail = ({
                           key={point.id}
                           className="flex items-center gap-4 text-sm p-2 bg-gray-50 rounded"
                         >
-                          <span className="font-medium">
-                            #{point.point_number || 'N/A'}
-                          </span>
                           <span className="bg-blue-100 px-2 py-1 rounded">
                             {(() => {
                               // このポイント時点での両チームのスコアを計算
