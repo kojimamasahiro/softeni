@@ -21,6 +21,40 @@ export default function MatchesList({
   tournamentInfos,
   lastUpdated,
 }: Props) {
+  // チーム表記を取得（個別フィールド優先、フォールバックでteam_a/team_bから抽出）
+  const getTeamDisplay = (match: Match, team: 'A' | 'B') => {
+    if (team === 'A') {
+      // 個別フィールドがある場合は優先使用
+      if (match.team_a_player1_last_name) {
+        const players = [match.team_a_player1_last_name];
+        if (match.team_a_player2_last_name) {
+          players.push(match.team_a_player2_last_name);
+        }
+        return players.join('・');
+      }
+      // フォールバック: team_aをそのまま表示
+      return getFullTeamName(match.team_a);
+    } else {
+      // 個別フィールドがある場合は優先使用
+      if (match.team_b_player1_last_name) {
+        const players = [match.team_b_player1_last_name];
+        if (match.team_b_player2_last_name) {
+          players.push(match.team_b_player2_last_name);
+        }
+        return players.join('・');
+      }
+      // フォールバック: team_bをそのまま表示
+      return getFullTeamName(match.team_b);
+    }
+  };
+
+  // 文字列をそのまま表示（フォールバック用）
+  const getFullTeamName = (teamName: string | null) => {
+    if (!teamName) return '';
+    // 文字列全体をそのまま返す
+    return teamName.trim();
+  };
+
   // 試合の勝者を取得
   const getMatchWinner = (match: Match) => {
     if (!match?.games) return null;
@@ -97,7 +131,8 @@ export default function MatchesList({
                   <div className="relative">
                     <div className="pr-20">
                       <p className="text-lg font-medium mb-1">
-                        {match.team_a} vs {match.team_b}
+                        {getTeamDisplay(match, 'A')} vs{' '}
+                        {getTeamDisplay(match, 'B')}
                       </p>
 
                       {/* スコア表示 */}
