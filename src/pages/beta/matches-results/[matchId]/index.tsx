@@ -204,9 +204,29 @@ const PublicMatchDetail = ({
                             #{point.point_number || 'N/A'}
                           </span>
                           <span className="bg-blue-100 px-2 py-1 rounded">
-                            {point.winner_team === 'A'
-                              ? match.team_a
-                              : match.team_b}
+                            {(() => {
+                              // このポイント時点での両チームのスコアを計算
+                              const pointsBeforeThis =
+                                game.points?.filter(
+                                  (p) => p.point_number < point.point_number,
+                                ) || [];
+                              const teamAPoints = pointsBeforeThis.filter(
+                                (p) => p.winner_team === 'A',
+                              ).length;
+                              const teamBPoints = pointsBeforeThis.filter(
+                                (p) => p.winner_team === 'B',
+                              ).length;
+
+                              // このポイントで勝ったチームのポイントを+1
+                              const finalTeamAPoints =
+                                teamAPoints +
+                                (point.winner_team === 'A' ? 1 : 0);
+                              const finalTeamBPoints =
+                                teamBPoints +
+                                (point.winner_team === 'B' ? 1 : 0);
+
+                              return `${finalTeamAPoints} - ${finalTeamBPoints}`;
+                            })()}
                           </span>
                           <span>
                             {getResultTypeLabel(point.result_type || '')}
