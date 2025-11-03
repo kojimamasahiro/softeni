@@ -1,0 +1,427 @@
+import { useRouter } from 'next/router';
+import { useCallback as reactUseCallback, useEffect, useState } from 'react';
+
+import { isDebugMode } from '../../../../../lib/env';
+import { Game, Match, Point } from '../../../../types/database';
+
+const MatchInput = () => {
+  const router = useRouter();
+  const { matchId } = router.query;
+
+  const [match, setMatch] = useState<Match | null>(null);
+  const [currentGame, setCurrentGame] = useState<Game | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+
+  // ポイント入力フォームの状態
+  const [pointData, setPointData] = useState({
+    winner_team: '',
+    rally_count: 0,
+    first_serve_fault: false,
+    double_fault: false,
+    result_type: '',
+    winner_player: '',
+    loser_player: '',
+  });
+
+  const fetchMatch = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/matches/${matchId}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        setMatch(data.match);
+        // 現在進行中のゲームを見つける
+        const activeGame = data.match.games?.find(
+          (game: Game) => !game.winner_team,
+        );
+        setCurrentGame(
+          activeGame || data.match.games?.[data.match.games.length - 1],
+        );
+      }
+    } catch (error) {
+      console.error('Failed to fetch match:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [matchId]);
+
+  // マッチデータの取得
+  useEffect(() => {
+    if (matchId && isDebugMode()) {
+      fetchMatch();
+    }
+  }, [matchId, fetchMatch]);
+
+  const submitPoint = async () => {
+    if (!currentGame || !pointData.winner_team) return;
+
+    setSubmitting(true);
+    try {
+      const nextPointNumber = (currentGame.points?.length || 0) + 1;
+
+      const response = await fetch(`/api/matches/${matchId}/points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          game_id: currentGame.id,
+          point_number: nextPointNumber,
+          ...pointData,
+        }),
+      });
+
+      if (response.ok) {
+        // フォームリセット
+        setPointData({
+          winner_team: '',
+          rally_count: 0,
+          first_serve_fault: false,
+          double_fault: false,
+          result_type: '',
+          winner_player: '',
+          loser_player: '',
+        });
+
+        // マッチデータを再取得
+        await fetchMatch();
+      }
+    } catch (error) {
+      console.error('Failed to submit point:', error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  // 試合終了判定
+  const isMatchFinished = (match: Match): boolean => {
+    if (!match.games || match.games.length === 0) return false;
+
+    const gamesWonA = match.games.filter(
+      (game: Game) => game.winner_team === 'A',
+    ).length;
+    const gamesWonB = match.games.filter(
+      (game: Game) => game.winner_team === 'B',
+    ).length;
+    const requiredWins = Math.ceil(match.best_of / 2);
+
+    return gamesWonA >= requiredWins || gamesWonB >= requiredWins;
+  };
+
+  // 試合の勝者を取得
+  const getMatchWinner = (match: Match): 'A' | 'B' | null => {
+    if (!isMatchFinished(match)) return null;
+
+    const gamesWonA =
+      match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+    const gamesWonB =
+      match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+    const requiredWins = Math.ceil(match.best_of / 2);
+
+    if (gamesWonA >= requiredWins) return 'A';
+    if (gamesWonB >= requiredWins) return 'B';
+    return null;
+  };
+
+  const startNewGame = async () => {
+    if (!match) return;
+
+    // 試合が終了している場合は新しいゲームを開始しない
+    if (isMatchFinished(match)) {
+      console.log('Match is already finished');
+      return;
+    }
+
+    const nextGameNumber = (match.games?.length || 0) + 1;
+
+    try {
+      const response = await fetch(`/api/matches/${matchId}/games`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          game_number: nextGameNumber,
+        }),
+      });
+
+      if (response.ok) {
+        await fetchMatch();
+      }
+    } catch (error) {
+      console.error('Failed to start new game:', error);
+    }
+  };
+
+  // 開発環境でない場合はアクセス拒否
+  if (!isDebugMode()) {
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+          <strong className="font-bold">アクセス拒否</strong>
+          <span className="block sm:inline ml-2">
+            この機能は開発環境でのみ利用可能です。
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) return <div>Loading...</div>;
+  if (!match) return <div>Match not found</div>;
+
+  const currentScore = currentGame
+    ? `${currentGame.points_a} - ${currentGame.points_b}`
+    : '';
+  const gameWon = currentGame?.winner_team;
+  const matchFinished = isMatchFinished(match);
+  const matchWinner = getMatchWinner(match);
+
+  // ゲームスコア表示用
+  const getGameScores = () => {
+    if (!match.games) return '';
+
+    const gamesWonA = match.games.filter(
+      (game: Game) => game.winner_team === 'A',
+    ).length;
+    const gamesWonB = match.games.filter(
+      (game: Game) => game.winner_team === 'B',
+    ).length;
+
+    return `${gamesWonA} - ${gamesWonB}`;
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto p-6">
+      {/* マッチ情報 */}
+      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h1 className="text-2xl font-bold mb-4">
+          {match.team_a} vs {match.team_b}
+        </h1>
+        <p className="text-gray-600 mb-2">大会: {match.tournament_name}</p>
+        <p className="text-gray-600">形式: {match.best_of} ゲームマッチ</p>
+
+        {/* ゲームスコア */}
+        <div className="mt-4 p-4 bg-gray-50 rounded">
+          <h3 className="font-semibold mb-2">ゲームスコア</h3>
+          <div className="text-2xl font-bold text-center">
+            {getGameScores()}
+          </div>
+        </div>
+      </div>
+
+      {/* 試合終了表示 */}
+      {matchFinished && matchWinner && (
+        <div className="bg-green-100 border border-green-400 rounded-lg p-6 mb-6 text-center">
+          <h2 className="text-2xl font-bold text-green-800 mb-2">
+            🏆 試合終了！
+          </h2>
+          <p className="text-xl text-green-700">
+            {matchWinner === 'A' ? match.team_a : match.team_b} の勝利！
+          </p>
+          <p className="text-green-600 mt-2">ゲームスコア: {getGameScores()}</p>
+        </div>
+      )}
+
+      {/* 現在のゲーム状況 */}
+      {!matchFinished && (
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h2 className="text-xl font-semibold mb-4">
+            第{currentGame?.game_number}ゲーム
+          </h2>
+          <div className="text-3xl font-bold text-center mb-4">
+            {currentScore}
+          </div>
+          {gameWon && (
+            <div className="text-center">
+              <p className="text-lg text-green-600 font-semibold">
+                チーム{gameWon}の勝利！
+              </p>
+              {!matchFinished && (
+                <button
+                  onClick={startNewGame}
+                  className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+                >
+                  次のゲームを開始
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ポイント入力フォーム */}
+      {!gameWon && !matchFinished && (
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h3 className="text-lg font-semibold mb-4">ポイント記録</h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* 勝者チーム */}
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                勝者チーム
+              </label>
+              <select
+                value={pointData.winner_team}
+                onChange={(e) =>
+                  setPointData({ ...pointData, winner_team: e.target.value })
+                }
+                className="w-full border rounded p-2"
+              >
+                <option value="">選択してください</option>
+                <option value="A">チームA ({match.team_a})</option>
+                <option value="B">チームB ({match.team_b})</option>
+              </select>
+            </div>
+
+            {/* ラリー数 */}
+            <div>
+              <label className="block text-sm font-medium mb-2">ラリー数</label>
+              <input
+                type="number"
+                value={pointData.rally_count}
+                onChange={(e) =>
+                  setPointData({
+                    ...pointData,
+                    rally_count: parseInt(e.target.value),
+                  })
+                }
+                className="w-full border rounded p-2"
+                min="1"
+              />
+            </div>
+
+            {/* 結果タイプ */}
+            <div>
+              <label className="block text-sm font-medium mb-2">結果</label>
+              <select
+                value={pointData.result_type}
+                onChange={(e) =>
+                  setPointData({ ...pointData, result_type: e.target.value })
+                }
+                className="w-full border rounded p-2"
+              >
+                <option value="">選択してください</option>
+                <option value="winner">決定打</option>
+                <option value="forced_error">ミス誘発</option>
+                <option value="unforced_error">凡ミス</option>
+                <option value="net">ネット</option>
+                <option value="out">アウト</option>
+              </select>
+            </div>
+
+            {/* 勝者選手名 */}
+            <div>
+              <label className="block text-sm font-medium mb-2">勝者選手</label>
+              <input
+                type="text"
+                value={pointData.winner_player}
+                onChange={(e) =>
+                  setPointData({ ...pointData, winner_player: e.target.value })
+                }
+                className="w-full border rounded p-2"
+                placeholder="選手名"
+              />
+            </div>
+          </div>
+
+          {/* サーブ関連 */}
+          <div className="mt-4 flex gap-4">
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={pointData.first_serve_fault}
+                onChange={(e) =>
+                  setPointData({
+                    ...pointData,
+                    first_serve_fault: e.target.checked,
+                  })
+                }
+                className="mr-2"
+              />
+              1stサーブフォルト
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={pointData.double_fault}
+                onChange={(e) =>
+                  setPointData({ ...pointData, double_fault: e.target.checked })
+                }
+                className="mr-2"
+              />
+              ダブルフォルト
+            </label>
+          </div>
+
+          {/* 送信ボタン */}
+          <button
+            onClick={submitPoint}
+            disabled={!pointData.winner_team || submitting}
+            className="mt-6 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 disabled:bg-gray-300"
+          >
+            {submitting ? '記録中...' : 'ポイント記録'}
+          </button>
+        </div>
+      )}
+
+      {/* ゲーム履歴 */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h3 className="text-lg font-semibold mb-4">ゲーム履歴</h3>
+        <div className="space-y-4">
+          {match.games?.map((game: Game) => (
+            <div key={game.id} className="border rounded p-4">
+              <div className="flex justify-between items-center mb-2">
+                <h4 className="font-semibold">第{game.game_number}ゲーム</h4>
+                <div className="text-lg font-bold">
+                  {game.points_a} - {game.points_b}
+                  {game.winner_team && (
+                    <span className="ml-2 text-green-600">
+                      (チーム{game.winner_team}勝利)
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* ポイント履歴 */}
+              {game.points && game.points.length > 0 && (
+                <div className="mt-2">
+                  <h5 className="text-sm font-medium mb-2">ポイント詳細:</h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+                    {game.points.map((point: Point) => (
+                      <div key={point.id} className="bg-gray-50 rounded p-2">
+                        <div className="flex justify-between">
+                          <span>#{point.point_number}</span>
+                          <span className="font-medium">
+                            チーム{point.winner_team}
+                          </span>
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          {point.result_type} ({point.rally_count}ラリー)
+                          {point.winner_player && (
+                            <span> - {point.winner_player}</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {(!match.games || match.games.length === 0) && (
+            <div className="text-center text-gray-500 py-4">
+              まだゲームが開始されていません
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MatchInput;
+function useCallback(
+  callback: () => Promise<void>,
+  dependencies: (string | string[] | undefined)[],
+) {
+  return reactUseCallback(callback, dependencies);
+}
