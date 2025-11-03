@@ -323,106 +323,140 @@ const MatchInput = () => {
       {/* ポイント入力フォーム */}
       {!gameWon && !matchFinished && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-4">ポイント記録</h3>
+          <h3 className="text-lg font-semibold mb-6 text-center">
+            ポイント記録
+          </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* 勝者チーム */}
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                勝者チーム
-              </label>
-              <select
-                value={pointData.winner_team}
-                onChange={(e) =>
-                  setPointData({ ...pointData, winner_team: e.target.value })
-                }
-                className="w-full border rounded p-2"
+          {/* 勝者チーム選択 */}
+          <div className="mb-6">
+            <h4 className="text-md font-medium mb-3 text-center">勝者チーム</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
+                className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                  pointData.winner_team === 'A'
+                    ? 'border-blue-500 bg-blue-50 text-blue-700'
+                    : 'border-gray-300 hover:border-blue-300 hover:bg-blue-50'
+                }`}
               >
-                <option value="">選択してください</option>
-                <option value="A">
-                  チームA ({match.team_a?.split(' ')[0] || 'チームA'})
-                </option>
-                <option value="B">
-                  チームB ({match.team_b?.split(' ')[0] || 'チームB'})
-                </option>
-              </select>
+                <div className="text-lg">チーム A</div>
+                <div className="text-sm text-gray-600 mt-1">
+                  {match.team_a?.split(' ')[0] || 'チームA'}
+                </div>
+              </button>
+              <button
+                onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
+                className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                  pointData.winner_team === 'B'
+                    ? 'border-red-500 bg-red-50 text-red-700'
+                    : 'border-gray-300 hover:border-red-300 hover:bg-red-50'
+                }`}
+              >
+                <div className="text-lg">チーム B</div>
+                <div className="text-sm text-gray-600 mt-1">
+                  {match.team_b?.split(' ')[0] || 'チームB'}
+                </div>
+              </button>
             </div>
+          </div>
 
-            {/* ラリー数 */}
-            <div>
-              <label className="block text-sm font-medium mb-2">ラリー数</label>
+          {/* 結果タイプ */}
+          <div className="mb-6">
+            <h4 className="text-md font-medium mb-3 text-center">結果</h4>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { value: 'winner', label: '決定打', color: 'green' },
+                { value: 'forced_error', label: 'ミス誘発', color: 'blue' },
+                { value: 'unforced_error', label: '凡ミス', color: 'orange' },
+                { value: 'net', label: 'ネット', color: 'red' },
+                { value: 'out', label: 'アウト', color: 'red' },
+              ].map(({ value, label, color }) => (
+                <button
+                  key={value}
+                  onClick={() =>
+                    setPointData({ ...pointData, result_type: value })
+                  }
+                  className={`p-3 border-2 rounded-lg font-medium transition-all ${
+                    pointData.result_type === value
+                      ? `border-${color}-500 bg-${color}-50 text-${color}-700`
+                      : `border-gray-300 hover:border-${color}-300 hover:bg-${color}-50`
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* 勝者選手名 */}
+          <div className="mb-6">
+            <h4 className="text-md font-medium mb-3 text-center">勝者選手</h4>
+            {pointData.winner_team ? (
+              <div className="grid grid-cols-2 gap-3">
+                {getPlayerNamesFromMatch(
+                  match,
+                  pointData.winner_team as 'A' | 'B',
+                ).map((playerName: string, index: number) => (
+                  <button
+                    key={index}
+                    onClick={() =>
+                      setPointData({
+                        ...pointData,
+                        winner_player: playerName,
+                      })
+                    }
+                    className={`p-3 border-2 rounded-lg font-medium transition-all ${
+                      pointData.winner_player === playerName
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-300 hover:border-purple-300 hover:bg-purple-50'
+                    }`}
+                  >
+                    {playerName}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="p-4 bg-gray-100 text-gray-500 text-center rounded-lg">
+                まず勝者チームを選択してください
+              </div>
+            )}
+          </div>
+
+          {/* ラリー数 */}
+          <div className="mb-6">
+            <h4 className="text-md font-medium mb-3 text-center">ラリー数</h4>
+            <div className="grid grid-cols-5 gap-2">
+              {[1, 2, 3, 4, 5].map((count) => (
+                <button
+                  key={count}
+                  onClick={() =>
+                    setPointData({ ...pointData, rally_count: count })
+                  }
+                  className={`p-3 border-2 rounded-lg font-medium transition-all ${
+                    pointData.rally_count === count
+                      ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+                      : 'border-gray-300 hover:border-indigo-300 hover:bg-indigo-50'
+                  }`}
+                >
+                  {count}
+                </button>
+              ))}
+            </div>
+            <div className="mt-3 flex items-center gap-2">
+              <span className="text-sm">その他:</span>
               <input
                 type="number"
-                value={pointData.rally_count}
+                value={pointData.rally_count > 5 ? pointData.rally_count : ''}
                 onChange={(e) =>
                   setPointData({
                     ...pointData,
-                    rally_count: parseInt(e.target.value),
+                    rally_count: parseInt(e.target.value) || 1,
                   })
                 }
-                className="w-full border rounded p-2"
-                min="1"
+                className="flex-1 border rounded p-2"
+                min="6"
+                placeholder="6以上の場合"
               />
-            </div>
-
-            {/* 結果タイプ */}
-            <div>
-              <label className="block text-sm font-medium mb-2">結果</label>
-              <select
-                value={pointData.result_type}
-                onChange={(e) =>
-                  setPointData({ ...pointData, result_type: e.target.value })
-                }
-                className="w-full border rounded p-2"
-              >
-                <option value="">選択してください</option>
-                <option value="winner">決定打</option>
-                <option value="forced_error">ミス誘発</option>
-                <option value="unforced_error">凡ミス</option>
-                <option value="net">ネット</option>
-                <option value="out">アウト</option>
-              </select>
-            </div>
-
-            {/* 勝者選手名 */}
-            <div>
-              <label className="block text-sm font-medium mb-2">勝者選手</label>
-              {pointData.winner_team ? (
-                <select
-                  value={pointData.winner_player}
-                  onChange={(e) =>
-                    setPointData({
-                      ...pointData,
-                      winner_player: e.target.value,
-                    })
-                  }
-                  className="w-full border rounded p-2"
-                >
-                  <option value="">選手を選択してください</option>
-                  {getPlayerNamesFromMatch(
-                    match,
-                    pointData.winner_team as 'A' | 'B',
-                  ).map((playerName: string, index: number) => (
-                    <option key={index} value={playerName}>
-                      {playerName}
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <input
-                  type="text"
-                  value={pointData.winner_player}
-                  onChange={(e) =>
-                    setPointData({
-                      ...pointData,
-                      winner_player: e.target.value,
-                    })
-                  }
-                  className="w-full border rounded p-2"
-                  placeholder="まず勝者チームを選択してください"
-                  disabled
-                />
-              )}
             </div>
           </div>
 
