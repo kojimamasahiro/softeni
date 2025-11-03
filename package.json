@@ -53,9 +53,11 @@
     "lint": "eslint --fix ."
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.78.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/og": "^0.6.8",
     "@vercel/speed-insights": "^1.2.0",
+    "dotenv": "^17.2.3",
     "microcms-js-sdk": "^3.2.0",
     "next": "15.3.1",
     "next-sitemap": "^4.2.3",
