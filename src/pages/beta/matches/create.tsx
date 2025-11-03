@@ -20,7 +20,7 @@ const CreateMatch = () => {
     round_name: '',
     team_a: '',
     team_b: '',
-    best_of: 5,
+    best_of: 7,
   });
   const [tournamentOptions, setTournamentOptions] = useState<
     { id: string; name: string }[]
