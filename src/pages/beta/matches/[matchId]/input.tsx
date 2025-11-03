@@ -133,6 +133,7 @@ const MatchInput = () => {
       'smash_error',
       'volley_error',
       'double_fault',
+      'follow_error',
     ];
 
     if (winnerTypes.includes(resultType)) {
@@ -695,6 +696,7 @@ const MatchInput = () => {
                   { value: 'out', label: 'アウト' },
                   { value: 'smash_error', label: 'スマ失敗' },
                   { value: 'volley_error', label: 'ボレ失敗' },
+                  { value: 'follow_error', label: 'フォロー失敗' },
                 ].map(({ value, label }) => (
                   <button
                     key={value}
