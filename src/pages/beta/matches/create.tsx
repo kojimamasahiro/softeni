@@ -6,7 +6,6 @@ import {
   getCategoryOptions,
   getTournamentCategories,
   getTournamentOptions,
-  getTournamentYearsSSR,
 } from '../../../../lib/tournamentHelpers';
 
 const CreateMatch = () => {
@@ -23,7 +22,7 @@ const CreateMatch = () => {
     best_of: 7,
   });
   const [tournamentOptions, setTournamentOptions] = useState<
-    { id: string; name: string }[]
+    { id: string; name: string; year: number }[]
   >([]);
   const [categoryOptions, setCategoryOptions] = useState<{
     generations: { value: string; label: string }[];
@@ -34,7 +33,7 @@ const CreateMatch = () => {
     genders: [],
     gameCategories: [],
   });
-  const [availableYears, setAvailableYears] = useState<number[]>([]);
+
   const [creating, setCreating] = useState(false);
   const [isCustomTournament, setIsCustomTournament] = useState(false);
 
@@ -63,30 +62,25 @@ const CreateMatch = () => {
           genders: [],
           gameCategories: [],
         });
-        setAvailableYears([]);
         return;
       }
 
       try {
-        const [tournamentCategories, years] = await Promise.all([
-          getTournamentCategories(formData.tournament_name),
-          getTournamentYearsSSR(formData.tournament_name),
-        ]);
+        const tournamentCategories = await getTournamentCategories(
+          formData.tournament_name,
+        );
 
         setCategoryOptions(getCategoryOptions(tournamentCategories));
-        setAvailableYears(years);
 
-        // フォームのカテゴリ選択をリセット、年は利用可能な年の最新を自動設定
+        // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
         setFormData((prev) => ({
           ...prev,
           generation: '',
           gender: '',
           category: '',
-          year: years.length > 0 ? years[0] : new Date().getFullYear(),
         }));
       } catch (error) {
         console.error('Failed to fetch tournament data:', error);
-        setAvailableYears([]);
       }
     };
 
@@ -183,9 +177,18 @@ const CreateMatch = () => {
               <select
                 required
                 value={formData.tournament_name}
-                onChange={(e) =>
-                  setFormData({ ...formData, tournament_name: e.target.value })
-                }
+                onChange={(e) => {
+                  const selectedTournament = tournamentOptions.find(
+                    (option) => option.id === e.target.value,
+                  );
+                  setFormData({
+                    ...formData,
+                    tournament_name: e.target.value,
+                    year: selectedTournament
+                      ? selectedTournament.year
+                      : new Date().getFullYear(),
+                  });
+                }}
                 className="w-full border rounded p-2"
               >
                 <option value="">大会を選択してください</option>
@@ -284,22 +287,10 @@ const CreateMatch = () => {
 
         <div>
           <label className="block text-sm font-medium mb-2">開催年</label>
-          {availableYears.length > 0 ? (
-            <select
-              required
-              value={formData.year}
-              onChange={(e) =>
-                setFormData({ ...formData, year: parseInt(e.target.value) })
-              }
-              className="w-full border rounded p-2"
-            >
-              <option value="">年を選択してください</option>
-              {availableYears.map((year) => (
-                <option key={year} value={year}>
-                  {year}年
-                </option>
-              ))}
-            </select>
+          {!isCustomTournament && formData.tournament_name ? (
+            <div className="w-full border rounded p-2 bg-gray-100 text-gray-700">
+              {formData.year}年 (大会データより自動設定)
+            </div>
           ) : (
             <input
               type="number"

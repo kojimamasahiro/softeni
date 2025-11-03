@@ -370,7 +370,7 @@ export const getTournamentInfosSSR = async (
  * 大会情報をマッチ作成時に使用するための選択肢を生成
  */
 export const getTournamentOptions = async (): Promise<
-  { id: string; name: string }[]
+  { id: string; name: string; year: number }[]
 > => {
   try {
     // APIから全ての大会データを取得
@@ -381,11 +381,18 @@ export const getTournamentOptions = async (): Promise<
       throw new Error('Failed to fetch tournaments');
     }
 
-    // 選択肢用の形式に変換
-    return data.tournaments.map((tournament: { id: string; name: string }) => ({
-      id: tournament.id,
-      name: tournament.name,
-    }));
+    // 選択肢用の形式に変換（年情報も含む）
+    return data.tournaments.map(
+      (tournament: {
+        id: string;
+        name: string;
+        yearMeta: { year: number };
+      }) => ({
+        id: tournament.id,
+        name: tournament.name,
+        year: tournament.yearMeta.year,
+      }),
+    );
   } catch (error) {
     console.error('Failed to fetch tournament options:', error);
     return [];
