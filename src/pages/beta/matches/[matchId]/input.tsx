@@ -415,14 +415,14 @@ const MatchInput = () => {
       {!matchFinished && !needsServeSelection && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {/* ゲームスコア */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4">ゲームスコア</h3>
-            <div className="text-4xl font-bold text-center mb-4">
+          <div className="bg-white rounded-lg shadow-md p-4 h-40 flex flex-col">
+            <h3 className="text-lg font-semibold mb-3">ゲームスコア</h3>
+            <div className="text-2xl font-bold text-center mb-3">
               {getGameScores()}
             </div>
             {/* 各ゲームの詳細スコア */}
             {match.games && match.games.length > 0 && (
-              <div className="space-y-2">
+              <div className="flex-1 overflow-y-auto space-y-2 pr-2">
                 {match.games.map((game: Game) => (
                   <div
                     key={game.id}
@@ -458,15 +458,15 @@ const MatchInput = () => {
           </div>
 
           {/* 現在のゲーム状況 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">
+          <div className="bg-white rounded-lg shadow-md p-4 h-40">
+            <h2 className="text-lg font-semibold mb-3">
               第{currentGame?.game_number}ゲーム
             </h2>
 
             {/* サーブ権表示 */}
             {currentGame?.initial_serve_team && match && (
               <div
-                className={`rounded-lg p-4 mb-4 ${
+                className={`rounded-lg p-3 mb-3 ${
                   getCurrentServe() === 'A'
                     ? 'bg-blue-50 border border-blue-200 text-blue-700'
                     : 'bg-red-50 border border-red-200 text-red-700'
@@ -478,7 +478,7 @@ const MatchInput = () => {
               </div>
             )}
 
-            <div className="text-4xl font-bold text-center mb-4">
+            <div className="text-2xl font-bold text-center mb-3">
               {currentScore}
             </div>
             {gameWon && (
