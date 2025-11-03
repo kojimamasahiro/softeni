@@ -144,6 +144,40 @@ const CreateMatch = () => {
         tournament_category: formData.category,
         tournament_year: formData.year,
         round_name: formData.round_name,
+        best_of: formData.best_of,
+        game_type: gameType,
+
+        // チームA詳細情報
+        team_a_entry_number: teamA.entry_number,
+        team_a_player1_last_name: teamA.player1_last_name,
+        team_a_player1_first_name: teamA.player1_first_name,
+        team_a_player1_team_name: teamA.player1_team_name,
+        team_a_player1_region: teamA.player1_region,
+        team_a_player2_last_name:
+          gameType === 'doubles' ? teamA.player2_last_name : null,
+        team_a_player2_first_name:
+          gameType === 'doubles' ? teamA.player2_first_name : null,
+        team_a_player2_team_name:
+          gameType === 'doubles' ? teamA.player2_team_name : null,
+        team_a_player2_region:
+          gameType === 'doubles' ? teamA.player2_region : null,
+
+        // チームB詳細情報
+        team_b_entry_number: teamB.entry_number,
+        team_b_player1_last_name: teamB.player1_last_name,
+        team_b_player1_first_name: teamB.player1_first_name,
+        team_b_player1_team_name: teamB.player1_team_name,
+        team_b_player1_region: teamB.player1_region,
+        team_b_player2_last_name:
+          gameType === 'doubles' ? teamB.player2_last_name : null,
+        team_b_player2_first_name:
+          gameType === 'doubles' ? teamB.player2_first_name : null,
+        team_b_player2_team_name:
+          gameType === 'doubles' ? teamB.player2_team_name : null,
+        team_b_player2_region:
+          gameType === 'doubles' ? teamB.player2_region : null,
+
+        // 表示用（後方互換性のため）
         team_a:
           gameType === 'doubles'
             ? `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}] / ${teamA.player2_last_name} ${teamA.player2_first_name} (${teamA.player2_team_name}) [${teamA.player2_region}]`
@@ -152,7 +186,6 @@ const CreateMatch = () => {
           gameType === 'doubles'
             ? `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}] / ${teamB.player2_last_name} ${teamB.player2_first_name} (${teamB.player2_team_name}) [${teamB.player2_region}]`
             : `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}]`,
-        best_of: formData.best_of,
       };
 
       const response = await fetch('/api/matches', {
