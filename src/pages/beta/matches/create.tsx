@@ -17,9 +17,31 @@ const CreateMatch = () => {
     category: '',
     year: new Date().getFullYear(),
     round_name: '',
-    team_a: '',
-    team_b: '',
     best_of: 7,
+  });
+
+  const [gameType, setGameType] = useState<'singles' | 'doubles'>('doubles');
+  const [teamA, setTeamA] = useState({
+    entry_number: '',
+    player1_last_name: '',
+    player1_first_name: '',
+    player1_team_name: '',
+    player1_region: '',
+    player2_last_name: '', // ダブルスの場合のみ
+    player2_first_name: '', // ダブルスの場合のみ
+    player2_team_name: '', // ダブルスの場合のみ
+    player2_region: '', // ダブルスの場合のみ
+  });
+  const [teamB, setTeamB] = useState({
+    entry_number: '',
+    player1_last_name: '',
+    player1_first_name: '',
+    player1_team_name: '',
+    player1_region: '',
+    player2_last_name: '', // ダブルスの場合のみ
+    player2_first_name: '', // ダブルスの場合のみ
+    player2_team_name: '', // ダブルスの場合のみ
+    player2_region: '', // ダブルスの場合のみ
   });
   const [tournamentOptions, setTournamentOptions] = useState<
     { id: string; name: string; year: number }[]
@@ -122,8 +144,14 @@ const CreateMatch = () => {
         tournament_category: formData.category,
         tournament_year: formData.year,
         round_name: formData.round_name,
-        team_a: formData.team_a,
-        team_b: formData.team_b,
+        team_a:
+          gameType === 'doubles'
+            ? `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}] / ${teamA.player2_last_name} ${teamA.player2_first_name} (${teamA.player2_team_name}) [${teamA.player2_region}]`
+            : `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}]`,
+        team_b:
+          gameType === 'doubles'
+            ? `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}] / ${teamB.player2_last_name} ${teamB.player2_first_name} (${teamB.player2_team_name}) [${teamB.player2_region}]`
+            : `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}]`,
         best_of: formData.best_of,
       };
 
@@ -356,31 +384,283 @@ const CreateMatch = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">チームA</label>
-          <input
-            type="text"
-            required
-            value={formData.team_a}
-            onChange={(e) =>
-              setFormData({ ...formData, team_a: e.target.value })
-            }
-            className="w-full border rounded p-2"
-            placeholder="例: 東京都立高校"
-          />
+          <label className="block text-sm font-medium mb-2">ゲーム形式</label>
+          <div className="space-y-2 mb-6">
+            <label className="flex items-center">
+              <input
+                type="radio"
+                name="gameType"
+                value="singles"
+                checked={gameType === 'singles'}
+                onChange={(e) =>
+                  setGameType(e.target.value as 'singles' | 'doubles')
+                }
+                className="mr-2"
+              />
+              シングルス
+            </label>
+            <label className="flex items-center">
+              <input
+                type="radio"
+                name="gameType"
+                value="doubles"
+                checked={gameType === 'doubles'}
+                onChange={(e) =>
+                  setGameType(e.target.value as 'singles' | 'doubles')
+                }
+                className="mr-2"
+              />
+              ダブルス
+            </label>
+          </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">チームB</label>
-          <input
-            type="text"
-            required
-            value={formData.team_b}
-            onChange={(e) =>
-              setFormData({ ...formData, team_b: e.target.value })
-            }
-            className="w-full border rounded p-2"
-            placeholder="例: 大阪府立高校"
-          />
+          <label className="block text-sm font-medium mb-4">チームA</label>
+          <div className="mb-4">
+            <label className="block text-xs text-gray-600 mb-1">
+              エントリー番号
+            </label>
+            <input
+              type="text"
+              value={teamA.entry_number}
+              onChange={(e) =>
+                setTeamA({ ...teamA, entry_number: e.target.value })
+              }
+              className="w-full border rounded p-2 text-sm"
+              placeholder="例: A001"
+            />
+          </div>
+
+          <div className="space-y-4">
+            <div className="border-l-4 border-blue-500 pl-4">
+              <label className="block text-xs text-gray-600 mb-2">選手1</label>
+              <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <input
+                    type="text"
+                    required
+                    value={teamA.player1_last_name}
+                    onChange={(e) =>
+                      setTeamA({ ...teamA, player1_last_name: e.target.value })
+                    }
+                    className="border rounded p-2 text-sm"
+                    placeholder="姓"
+                  />
+                  <input
+                    type="text"
+                    required
+                    value={teamA.player1_first_name}
+                    onChange={(e) =>
+                      setTeamA({ ...teamA, player1_first_name: e.target.value })
+                    }
+                    className="border rounded p-2 text-sm"
+                    placeholder="名"
+                  />
+                </div>
+                <input
+                  type="text"
+                  required
+                  value={teamA.player1_team_name}
+                  onChange={(e) =>
+                    setTeamA({ ...teamA, player1_team_name: e.target.value })
+                  }
+                  className="w-full border rounded p-2 text-sm"
+                  placeholder="チーム名 (例: 東京都立高校)"
+                />
+                <input
+                  type="text"
+                  value={teamA.player1_region}
+                  onChange={(e) =>
+                    setTeamA({ ...teamA, player1_region: e.target.value })
+                  }
+                  className="w-full border rounded p-2 text-sm"
+                  placeholder="地域 (例: 東京都)"
+                />
+              </div>
+            </div>
+
+            {gameType === 'doubles' && (
+              <div className="border-l-4 border-green-500 pl-4">
+                <label className="block text-xs text-gray-600 mb-2">
+                  選手2
+                </label>
+                <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <input
+                      type="text"
+                      required
+                      value={teamA.player2_last_name}
+                      onChange={(e) =>
+                        setTeamA({
+                          ...teamA,
+                          player2_last_name: e.target.value,
+                        })
+                      }
+                      className="border rounded p-2 text-sm"
+                      placeholder="姓"
+                    />
+                    <input
+                      type="text"
+                      required
+                      value={teamA.player2_first_name}
+                      onChange={(e) =>
+                        setTeamA({
+                          ...teamA,
+                          player2_first_name: e.target.value,
+                        })
+                      }
+                      className="border rounded p-2 text-sm"
+                      placeholder="名"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={teamA.player2_team_name}
+                    onChange={(e) =>
+                      setTeamA({ ...teamA, player2_team_name: e.target.value })
+                    }
+                    className="w-full border rounded p-2 text-sm"
+                    placeholder="チーム名 (例: 神奈川県立高校)"
+                  />
+                  <input
+                    type="text"
+                    value={teamA.player2_region}
+                    onChange={(e) =>
+                      setTeamA({ ...teamA, player2_region: e.target.value })
+                    }
+                    className="w-full border rounded p-2 text-sm"
+                    placeholder="地域 (例: 神奈川県)"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-4">チームB</label>
+          <div className="mb-4">
+            <label className="block text-xs text-gray-600 mb-1">
+              エントリー番号
+            </label>
+            <input
+              type="text"
+              value={teamB.entry_number}
+              onChange={(e) =>
+                setTeamB({ ...teamB, entry_number: e.target.value })
+              }
+              className="w-full border rounded p-2 text-sm"
+              placeholder="例: B001"
+            />
+          </div>
+
+          <div className="space-y-4">
+            <div className="border-l-4 border-blue-500 pl-4">
+              <label className="block text-xs text-gray-600 mb-2">選手1</label>
+              <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <input
+                    type="text"
+                    required
+                    value={teamB.player1_last_name}
+                    onChange={(e) =>
+                      setTeamB({ ...teamB, player1_last_name: e.target.value })
+                    }
+                    className="border rounded p-2 text-sm"
+                    placeholder="姓"
+                  />
+                  <input
+                    type="text"
+                    required
+                    value={teamB.player1_first_name}
+                    onChange={(e) =>
+                      setTeamB({ ...teamB, player1_first_name: e.target.value })
+                    }
+                    className="border rounded p-2 text-sm"
+                    placeholder="名"
+                  />
+                </div>
+                <input
+                  type="text"
+                  required
+                  value={teamB.player1_team_name}
+                  onChange={(e) =>
+                    setTeamB({ ...teamB, player1_team_name: e.target.value })
+                  }
+                  className="w-full border rounded p-2 text-sm"
+                  placeholder="チーム名 (例: 大阪府立高校)"
+                />
+                <input
+                  type="text"
+                  value={teamB.player1_region}
+                  onChange={(e) =>
+                    setTeamB({ ...teamB, player1_region: e.target.value })
+                  }
+                  className="w-full border rounded p-2 text-sm"
+                  placeholder="地域 (例: 大阪府)"
+                />
+              </div>
+            </div>
+
+            {gameType === 'doubles' && (
+              <div className="border-l-4 border-green-500 pl-4">
+                <label className="block text-xs text-gray-600 mb-2">
+                  選手2
+                </label>
+                <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <input
+                      type="text"
+                      required
+                      value={teamB.player2_last_name}
+                      onChange={(e) =>
+                        setTeamB({
+                          ...teamB,
+                          player2_last_name: e.target.value,
+                        })
+                      }
+                      className="border rounded p-2 text-sm"
+                      placeholder="姓"
+                    />
+                    <input
+                      type="text"
+                      required
+                      value={teamB.player2_first_name}
+                      onChange={(e) =>
+                        setTeamB({
+                          ...teamB,
+                          player2_first_name: e.target.value,
+                        })
+                      }
+                      className="border rounded p-2 text-sm"
+                      placeholder="名"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={teamB.player2_team_name}
+                    onChange={(e) =>
+                      setTeamB({ ...teamB, player2_team_name: e.target.value })
+                    }
+                    className="w-full border rounded p-2 text-sm"
+                    placeholder="チーム名 (例: 兵庫県立高校)"
+                  />
+                  <input
+                    type="text"
+                    value={teamB.player2_region}
+                    onChange={(e) =>
+                      setTeamB({ ...teamB, player2_region: e.target.value })
+                    }
+                    className="w-full border rounded p-2 text-sm"
+                    placeholder="地域 (例: 兵庫県)"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div>
