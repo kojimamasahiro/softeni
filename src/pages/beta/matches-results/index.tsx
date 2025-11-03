@@ -94,8 +94,8 @@ export default function MatchesList({
                   className="block p-4 hover:bg-gray-50"
                   aria-label={`${match.team_a} vs ${match.team_b}の試合詳細`}
                 >
-                  <div className="flex justify-between">
-                    <div>
+                  <div className="relative">
+                    <div className="pr-20">
                       <p className="text-lg font-medium mb-1">
                         {match.team_a} vs {match.team_b}
                       </p>
@@ -186,8 +186,10 @@ export default function MatchesList({
                         })()}
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm text-gray-500">
+
+                    {/* 日時を右下に配置 */}
+                    <div className="absolute bottom-0 right-0">
+                      <p className="text-xs text-gray-500">
                         {new Date(match.created_at).toLocaleDateString(
                           'ja-JP',
                           {
