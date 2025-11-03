@@ -2,6 +2,12 @@ import { useRouter } from 'next/router';
 import { useCallback as reactUseCallback, useEffect, useState } from 'react';
 
 import { isDebugMode } from '../../../../../lib/env';
+import {
+  determineInitialServeTeam,
+  getCurrentServingTeam,
+  getServeDisplayText,
+} from '../../../../../lib/serveHelpers';
+import ServeSelection from '../../../../components/ServeSelection';
 import { Game, Match, Point } from '../../../../types/database';
 
 // 構造化データから選手名を取得するヘルパー関数
@@ -73,10 +79,15 @@ const MatchInput = () => {
   const [currentGame, setCurrentGame] = useState<Game | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [needsServeSelection, setNeedsServeSelection] = useState(false);
+  const [initialServeTeam, setInitialServeTeam] = useState<'A' | 'B' | null>(
+    null,
+  );
 
   // ポイント入力フォームの状態
   const [pointData, setPointData] = useState({
     winner_team: '',
+    serving_team: '',
     rally_count: 0,
     first_serve_fault: false,
     double_fault: false,
@@ -96,9 +107,24 @@ const MatchInput = () => {
         const activeGame = data.match.games?.find(
           (game: Game) => !game.winner_team,
         );
-        setCurrentGame(
-          activeGame || data.match.games?.[data.match.games.length - 1],
+        const currentGameData =
+          activeGame || data.match.games?.[data.match.games.length - 1];
+        setCurrentGame(currentGameData);
+
+        // サーブ権が設定されていない場合は選択が必要
+        if (currentGameData && !currentGameData.initial_serve_team) {
+          setNeedsServeSelection(true);
+        } else {
+          setNeedsServeSelection(false);
+        }
+
+        // 第1ゲームの初期サーブ権を保存
+        const firstGame = data.match.games?.find(
+          (game: Game) => game.game_number === 1,
         );
+        if (firstGame?.initial_serve_team) {
+          setInitialServeTeam(firstGame.initial_serve_team as 'A' | 'B');
+        }
       }
     } catch (error) {
       console.error('Failed to fetch match:', error);
@@ -115,11 +141,28 @@ const MatchInput = () => {
   }, [matchId, fetchMatch]);
 
   const submitPoint = async () => {
-    if (!currentGame || !pointData.winner_team) return;
+    if (!currentGame || !pointData.winner_team || !match) return;
 
     setSubmitting(true);
     try {
       const nextPointNumber = (currentGame.points?.length || 0) + 1;
+
+      // ゲームスコアを計算
+      const gamesWonA =
+        match.games?.filter((game: Game) => game.winner_team === 'A').length ||
+        0;
+      const gamesWonB =
+        match.games?.filter((game: Game) => game.winner_team === 'B').length ||
+        0;
+
+      // 現在のサーブ権を計算
+      const currentServingTeam = getCurrentServingTeam(
+        currentGame,
+        nextPointNumber,
+        match.best_of,
+        gamesWonA,
+        gamesWonB,
+      );
 
       const response = await fetch(`/api/matches/${matchId}/points`, {
         method: 'POST',
@@ -127,7 +170,14 @@ const MatchInput = () => {
         body: JSON.stringify({
           game_id: currentGame.id,
           point_number: nextPointNumber,
-          ...pointData,
+          serving_team: currentServingTeam,
+          winner_team: pointData.winner_team,
+          rally_count: pointData.rally_count,
+          first_serve_fault: pointData.first_serve_fault,
+          double_fault: pointData.double_fault,
+          result_type: pointData.result_type,
+          winner_player: pointData.winner_player,
+          loser_player: pointData.loser_player,
         }),
       });
 
@@ -135,6 +185,7 @@ const MatchInput = () => {
         // フォームリセット
         setPointData({
           winner_team: '',
+          serving_team: '',
           rally_count: 0,
           first_serve_fault: false,
           double_fault: false,
@@ -183,6 +234,52 @@ const MatchInput = () => {
     return null;
   };
 
+  // サーブ権を決定してゲームを開始
+  const handleServeTeamSelected = async (selectedTeam: 'A' | 'B') => {
+    if (!match) return;
+
+    const gameToUpdate = currentGame;
+    if (!gameToUpdate) return;
+
+    try {
+      // 第1ゲームの場合は選択されたチーム、それ以外は自動計算
+      let initialServe: 'A' | 'B';
+      if (gameToUpdate.game_number === 1) {
+        initialServe = selectedTeam;
+        setInitialServeTeam(selectedTeam);
+      } else {
+        // 前のゲームの初期サーブ権から計算
+        if (!initialServeTeam) {
+          console.error('Initial serve team not set');
+          return;
+        }
+        initialServe = determineInitialServeTeam(
+          gameToUpdate.game_number,
+          initialServeTeam,
+        );
+      }
+
+      // ゲームのサーブ権を更新
+      const response = await fetch(
+        `/api/matches/${matchId}/games/${gameToUpdate.id}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            initial_serve_team: initialServe,
+          }),
+        },
+      );
+
+      if (response.ok) {
+        await fetchMatch();
+        setNeedsServeSelection(false);
+      }
+    } catch (error) {
+      console.error('Failed to set serve team:', error);
+    }
+  };
+
   const startNewGame = async () => {
     if (!match) return;
 
@@ -209,6 +306,25 @@ const MatchInput = () => {
     } catch (error) {
       console.error('Failed to start new game:', error);
     }
+  };
+
+  // 現在のサーブ権を取得
+  const getCurrentServe = (): 'A' | 'B' | null => {
+    if (!currentGame || !currentGame.initial_serve_team || !match) return null;
+
+    const nextPointNumber = (currentGame.points?.length || 0) + 1;
+    const gamesWonA =
+      match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+    const gamesWonB =
+      match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+
+    return getCurrentServingTeam(
+      currentGame,
+      nextPointNumber,
+      match.best_of,
+      gamesWonA,
+      gamesWonB,
+    );
   };
 
   // 開発環境でない場合はアクセス拒否
@@ -293,12 +409,38 @@ const MatchInput = () => {
         </div>
       )}
 
+      {/* サーブ権選択 */}
+      {needsServeSelection && match && currentGame && (
+        <ServeSelection
+          teamA={match.team_a || 'チーム A'}
+          teamB={match.team_b || 'チーム B'}
+          gameNumber={currentGame.game_number}
+          onServeTeamSelected={handleServeTeamSelected}
+        />
+      )}
+
       {/* 現在のゲーム状況 */}
-      {!matchFinished && (
+      {!matchFinished && !needsServeSelection && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">
             第{currentGame?.game_number}ゲーム
           </h2>
+
+          {/* サーブ権表示 */}
+          {currentGame?.initial_serve_team && match && (
+            <div
+              className={`rounded-lg p-4 mb-4 ${
+                getCurrentServe() === 'A'
+                  ? 'bg-blue-50 border border-blue-200 text-blue-700'
+                  : 'bg-red-50 border border-red-200 text-red-700'
+              }`}
+            >
+              <div className="text-center">
+                {getServeDisplayText(getCurrentServe() || 'A')}
+              </div>
+            </div>
+          )}
+
           <div className="text-3xl font-bold text-center mb-4">
             {currentScore}
           </div>
@@ -321,21 +463,19 @@ const MatchInput = () => {
       )}
 
       {/* ポイント入力フォーム */}
-      {!gameWon && !matchFinished && (
+      {!gameWon && !matchFinished && !needsServeSelection && (
         <div className="bg-white rounded-lg shadow-md p-4 mb-4">
           <h3 className="text-lg font-semibold mb-4 text-center">
             ポイント記録
           </h3>
 
-          {/* 勝者チーム & サーブ情報 */}
+          {/* 勝者チーム */}
           <div className="mb-4">
-            <h4 className="text-sm font-medium mb-2 text-center">
-              勝者チーム & サーブ
-            </h4>
-            <div className="grid grid-cols-4 gap-2">
+            <h4 className="text-sm font-medium mb-2 text-center">勝者チーム</h4>
+            <div className="grid grid-cols-2 gap-2 mb-4">
               <button
                 onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
-                className={`p-2 border-2 rounded font-medium transition-all ${
+                className={`p-3 border-2 rounded font-medium transition-all ${
                   pointData.winner_team === 'A'
                     ? 'border-blue-500 bg-blue-50 text-blue-700'
                     : 'border-gray-300 hover:border-blue-300'
@@ -345,7 +485,7 @@ const MatchInput = () => {
               </button>
               <button
                 onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
-                className={`p-2 border-2 rounded font-medium transition-all ${
+                className={`p-3 border-2 rounded font-medium transition-all ${
                   pointData.winner_team === 'B'
                     ? 'border-red-500 bg-red-50 text-red-700'
                     : 'border-gray-300 hover:border-red-300'
@@ -353,6 +493,13 @@ const MatchInput = () => {
               >
                 チーム B
               </button>
+            </div>
+          </div>
+
+          {/* サーブ情報 */}
+          <div className="mb-4">
+            <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
+            <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() =>
                   setPointData({
@@ -378,7 +525,7 @@ const MatchInput = () => {
                     : 'border-gray-300 hover:border-purple-300'
                 }`}
               >
-                Wフォルト
+                ダブルフォルト
               </button>
             </div>
           </div>
@@ -574,6 +721,9 @@ const MatchInput = () => {
                           <span className="font-medium">
                             チーム{point.winner_team}
                           </span>
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          🏓 {point.serving_team}のサーブ
                         </div>
                         <div className="text-xs text-gray-600">
                           {point.result_type} ({point.rally_count}ラリー)

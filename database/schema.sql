@@ -21,6 +21,7 @@ CREATE TABLE games (
   winner_team TEXT, -- 'A' or 'B' (ゲーム終了時に設定)
   points_a INT DEFAULT 0,
   points_b INT DEFAULT 0,
+  initial_serve_team TEXT, -- 'A' or 'B' (ゲーム開始時のサーブ権)
   created_at TIMESTAMP DEFAULT NOW()
 );
 
@@ -30,6 +31,7 @@ CREATE TABLE points (
   game_id UUID REFERENCES games(id) ON DELETE CASCADE,
   point_number INT,
   winner_team TEXT, -- 'A' or 'B'
+  serving_team TEXT, -- 'A' or 'B' (このポイントでのサーブ権)
   rally_count INT,
   first_serve_fault BOOLEAN,
   double_fault BOOLEAN,

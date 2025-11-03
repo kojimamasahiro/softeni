@@ -12,6 +12,7 @@ interface Player {
 interface PointData {
   game_id: number;
   winner_team: 'A' | 'B';
+  serving_team: 'A' | 'B';
   rally_count?: number;
   first_serve_fault: boolean;
   double_fault: boolean;
@@ -116,6 +117,7 @@ export default async function handler(
       const {
         game_id,
         winner_team,
+        serving_team,
         rally_count,
         first_serve_fault,
         double_fault,
@@ -178,6 +180,7 @@ export default async function handler(
         .insert({
           game_id,
           winner_team,
+          serving_team,
           rally_count,
           first_serve_fault,
           double_fault,
@@ -236,6 +239,7 @@ export default async function handler(
       const {
         point_id,
         winner_team,
+        serving_team,
         rally_count,
         first_serve_fault,
         double_fault,
@@ -263,6 +267,7 @@ export default async function handler(
         .from('points')
         .update({
           winner_team,
+          serving_team,
           rally_count,
           first_serve_fault,
           double_fault,

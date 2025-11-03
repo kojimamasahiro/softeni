@@ -63,6 +63,7 @@ export interface Game {
   winner_team: string | null;
   points_a: number;
   points_b: number;
+  initial_serve_team: string | null; // 'A' or 'B' (ゲーム開始時のサーブ権)
   created_at: string;
   points?: Point[];
 }
@@ -72,6 +73,7 @@ export interface Point {
   game_id: string;
   point_number: number;
   winner_team: string | null;
+  serving_team: string | null; // 'A' or 'B' (このポイントでのサーブ権)
   rally_count: number | null;
   first_serve_fault: boolean | null;
   double_fault: boolean | null;
