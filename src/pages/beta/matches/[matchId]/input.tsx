@@ -370,6 +370,11 @@ const MatchInput = () => {
                 { value: 'unforced_error', label: '凡ミス', color: 'orange' },
                 { value: 'net', label: 'ネット', color: 'red' },
                 { value: 'out', label: 'アウト', color: 'red' },
+                {
+                  value: 'double_fault',
+                  label: 'ダブルフォルト',
+                  color: 'purple',
+                },
               ].map(({ value, label, color }) => (
                 <button
                   key={value}
@@ -475,17 +480,6 @@ const MatchInput = () => {
                 className="mr-2"
               />
               1stサーブフォルト
-            </label>
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                checked={pointData.double_fault}
-                onChange={(e) =>
-                  setPointData({ ...pointData, double_fault: e.target.checked })
-                }
-                className="mr-2"
-              />
-              ダブルフォルト
             </label>
           </div>
 
