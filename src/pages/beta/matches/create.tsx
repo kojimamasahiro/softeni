@@ -6,6 +6,7 @@ import {
   getCategoryOptions,
   getTournamentCategories,
   getTournamentOptions,
+  getTournamentYearsSSR,
 } from '../../../../lib/tournamentHelpers';
 
 const CreateMatch = () => {
@@ -15,6 +16,7 @@ const CreateMatch = () => {
     generation: '',
     gender: '',
     category: '',
+    year: new Date().getFullYear(),
     round_name: '',
     team_a: '',
     team_b: '',
@@ -32,6 +34,7 @@ const CreateMatch = () => {
     genders: [],
     gameCategories: [],
   });
+  const [availableYears, setAvailableYears] = useState<number[]>([]);
   const [creating, setCreating] = useState(false);
   const [isCustomTournament, setIsCustomTournament] = useState(false);
 
@@ -51,35 +54,39 @@ const CreateMatch = () => {
     }
   }, []);
 
-  // 大会選択時にカテゴリを取得
+  // 大会選択時にカテゴリと年を取得
   useEffect(() => {
     const fetchCategories = async () => {
       if (!formData.tournament_name || isCustomTournament) {
-        // Remove or replace this line with the correct logic if needed
         setCategoryOptions({
           generations: [],
           genders: [],
           gameCategories: [],
         });
+        setAvailableYears([]);
         return;
       }
 
       try {
-        const tournamentCategories = await getTournamentCategories(
-          formData.tournament_name,
-        );
-        // Remove or replace this line with the correct logic if needed
-        setCategoryOptions(getCategoryOptions(tournamentCategories));
+        const [tournamentCategories, years] = await Promise.all([
+          getTournamentCategories(formData.tournament_name),
+          getTournamentYearsSSR(formData.tournament_name),
+        ]);
 
-        // フォームのカテゴリ選択をリセット
+        setCategoryOptions(getCategoryOptions(tournamentCategories));
+        setAvailableYears(years);
+
+        // フォームのカテゴリ選択をリセット、年は利用可能な年の最新を自動設定
         setFormData((prev) => ({
           ...prev,
           generation: '',
           gender: '',
           category: '',
+          year: years.length > 0 ? years[0] : new Date().getFullYear(),
         }));
       } catch (error) {
-        console.error('Failed to fetch tournament categories:', error);
+        console.error('Failed to fetch tournament data:', error);
+        setAvailableYears([]);
       }
     };
 
@@ -111,6 +118,7 @@ const CreateMatch = () => {
         tournament_generation: formData.generation,
         tournament_gender: formData.gender,
         tournament_category: formData.category,
+        tournament_year: formData.year,
         round_name: formData.round_name,
         team_a: formData.team_a,
         team_b: formData.team_b,
@@ -273,6 +281,40 @@ const CreateMatch = () => {
             )}
           </div>
         )}
+
+        <div>
+          <label className="block text-sm font-medium mb-2">開催年</label>
+          {availableYears.length > 0 ? (
+            <select
+              required
+              value={formData.year}
+              onChange={(e) =>
+                setFormData({ ...formData, year: parseInt(e.target.value) })
+              }
+              className="w-full border rounded p-2"
+            >
+              <option value="">年を選択してください</option>
+              {availableYears.map((year) => (
+                <option key={year} value={year}>
+                  {year}年
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              type="number"
+              required
+              min="2020"
+              max="2030"
+              value={formData.year}
+              onChange={(e) =>
+                setFormData({ ...formData, year: parseInt(e.target.value) })
+              }
+              className="w-full border rounded p-2"
+              placeholder="例: 2024"
+            />
+          )}
+        </div>
 
         <div>
           <label className="block text-sm font-medium mb-2">回戦</label>

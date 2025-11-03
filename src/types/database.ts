@@ -4,6 +4,7 @@ export interface Match {
   tournament_generation: string | null;
   tournament_gender: string | null;
   tournament_category: string | null;
+  tournament_year?: number | null; // TODO: データベースにカラム追加後に必須にする
   round_name: string | null;
   team_a: string | null;
   team_b: string | null;

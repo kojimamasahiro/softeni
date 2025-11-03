@@ -11,6 +11,8 @@ const MatchDetail = () => {
 
   const [match, setMatch] = useState<Match | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editingPoint, setEditingPoint] = useState<string | null>(null);
+  const [editingData, setEditingData] = useState<Partial<Point>>({});
 
   const fetchMatch = useCallback(async () => {
     try {
@@ -57,6 +59,94 @@ const MatchDetail = () => {
       out: 'アウト',
     };
     return labels[type] || type;
+  };
+
+  const handleEditPoint = (point: Point) => {
+    console.log('編集開始:', point);
+    setEditingPoint(point.id);
+    setEditingData({
+      winner_team: point.winner_team as 'A' | 'B',
+      result_type: point.result_type,
+      rally_count: point.rally_count,
+      first_serve_fault: point.first_serve_fault,
+      double_fault: point.double_fault,
+      winner_player: point.winner_player,
+      loser_player: point.loser_player,
+    });
+  };
+
+  const handleSavePoint = async () => {
+    if (!editingPoint || !matchId) return;
+
+    console.log('保存開始:', { editingPoint, matchId, editingData });
+
+    try {
+      const response = await fetch(`/api/matches/${matchId}/points`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          point_id: editingPoint,
+          ...editingData,
+        }),
+      });
+
+      console.log('API応答:', response.status, response.statusText);
+
+      if (response.ok) {
+        console.log('保存成功');
+        setEditingPoint(null);
+        setEditingData({});
+        // マッチデータを再取得してUIを更新
+        fetchMatch();
+      } else {
+        const errorText = await response.text();
+        console.error('API エラー:', errorText);
+        alert('ポイントの更新に失敗しました: ' + errorText);
+      }
+    } catch (error) {
+      console.error('Failed to update point:', error);
+      alert('ポイントの更新に失敗しました');
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingPoint(null);
+    setEditingData({});
+  };
+
+  const handleDeletePoint = async (pointId: string) => {
+    if (!confirm('このポイントを削除しますか？')) return;
+
+    console.log('削除開始:', pointId);
+
+    try {
+      const response = await fetch(`/api/matches/${matchId}/points`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          point_id: pointId,
+        }),
+      });
+
+      console.log('削除API応答:', response.status, response.statusText);
+
+      if (response.ok) {
+        console.log('削除成功');
+        // マッチデータを再取得してUIを更新
+        fetchMatch();
+      } else {
+        const errorText = await response.text();
+        console.error('削除API エラー:', errorText);
+        alert('ポイントの削除に失敗しました: ' + errorText);
+      }
+    } catch (error) {
+      console.error('Failed to delete point:', error);
+      alert('ポイントの削除に失敗しました');
+    }
   };
 
   // 開発環境でない場合はアクセス拒否
@@ -145,34 +235,144 @@ const MatchDetail = () => {
                   <h4 className="font-medium mb-2">ポイント履歴</h4>
                   <div className="space-y-1">
                     {game.points.map((point: Point) => (
-                      <div
-                        key={point.id}
-                        className="flex items-center gap-4 text-sm p-2 bg-gray-50 rounded"
-                      >
-                        <span className="font-medium">
-                          #{point.point_number}
-                        </span>
-                        <span className="bg-blue-100 px-2 py-1 rounded">
-                          チーム{point.winner_team}
-                        </span>
-                        <span>
-                          {getResultTypeLabel(point.result_type || '')}
-                        </span>
-                        <span>{point.rally_count}ラリー</span>
-                        {point.winner_player && (
-                          <span className="text-blue-600">
-                            {point.winner_player}
-                          </span>
-                        )}
-                        {point.first_serve_fault && (
-                          <span className="text-orange-600 text-xs">
-                            1stフォルト
-                          </span>
-                        )}
-                        {point.double_fault && (
-                          <span className="text-red-600 text-xs">
-                            ダブルフォルト
-                          </span>
+                      <div key={point.id} className="p-2 bg-gray-50 rounded">
+                        {editingPoint === point.id ? (
+                          // 編集モード
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-2 text-sm">
+                              <span className="font-medium">
+                                #{point.point_number}
+                              </span>
+                              <select
+                                value={editingData.winner_team || ''}
+                                onChange={(e) =>
+                                  setEditingData({
+                                    ...editingData,
+                                    winner_team: e.target.value as 'A' | 'B',
+                                  })
+                                }
+                                className="px-2 py-1 border rounded"
+                              >
+                                <option value="A">チームA</option>
+                                <option value="B">チームB</option>
+                              </select>
+                              <select
+                                value={editingData.result_type || ''}
+                                onChange={(e) =>
+                                  setEditingData({
+                                    ...editingData,
+                                    result_type: e.target.value,
+                                  })
+                                }
+                                className="px-2 py-1 border rounded"
+                              >
+                                <option value="winner">決定打</option>
+                                <option value="forced_error">ミス誘発</option>
+                                <option value="unforced_error">凡ミス</option>
+                                <option value="net">ネット</option>
+                                <option value="out">アウト</option>
+                              </select>
+                              <input
+                                type="number"
+                                placeholder="ラリー数"
+                                value={editingData.rally_count || ''}
+                                onChange={(e) =>
+                                  setEditingData({
+                                    ...editingData,
+                                    rally_count: parseInt(e.target.value) || 0,
+                                  })
+                                }
+                                className="w-20 px-2 py-1 border rounded"
+                              />
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <label className="flex items-center gap-1">
+                                <input
+                                  type="checkbox"
+                                  checked={
+                                    editingData.first_serve_fault || false
+                                  }
+                                  onChange={(e) =>
+                                    setEditingData({
+                                      ...editingData,
+                                      first_serve_fault: e.target.checked,
+                                    })
+                                  }
+                                />
+                                <span className="text-xs">1stフォルト</span>
+                              </label>
+                              <label className="flex items-center gap-1">
+                                <input
+                                  type="checkbox"
+                                  checked={editingData.double_fault || false}
+                                  onChange={(e) =>
+                                    setEditingData({
+                                      ...editingData,
+                                      double_fault: e.target.checked,
+                                    })
+                                  }
+                                />
+                                <span className="text-xs">ダブルフォルト</span>
+                              </label>
+                            </div>
+                            <div className="flex gap-2">
+                              <button
+                                onClick={handleSavePoint}
+                                className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600"
+                              >
+                                保存
+                              </button>
+                              <button
+                                onClick={handleCancelEdit}
+                                className="bg-gray-500 text-white px-3 py-1 rounded text-xs hover:bg-gray-600"
+                              >
+                                キャンセル
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          // 表示モード
+                          <div className="flex items-center gap-4 text-sm">
+                            <span className="font-medium">
+                              #{point.point_number}
+                            </span>
+                            <span className="bg-blue-100 px-2 py-1 rounded">
+                              チーム{point.winner_team}
+                            </span>
+                            <span>
+                              {getResultTypeLabel(point.result_type || '')}
+                            </span>
+                            <span>{point.rally_count}ラリー</span>
+                            {point.winner_player && (
+                              <span className="text-blue-600">
+                                {point.winner_player}
+                              </span>
+                            )}
+                            {point.first_serve_fault && (
+                              <span className="text-orange-600 text-xs">
+                                1stフォルト
+                              </span>
+                            )}
+                            {point.double_fault && (
+                              <span className="text-red-600 text-xs">
+                                ダブルフォルト
+                              </span>
+                            )}
+                            <div className="ml-auto flex gap-1">
+                              <button
+                                onClick={() => handleEditPoint(point)}
+                                className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
+                              >
+                                編集
+                              </button>
+                              <button
+                                onClick={() => handleDeletePoint(point.id)}
+                                className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600"
+                              >
+                                削除
+                              </button>
+                            </div>
+                          </div>
                         )}
                       </div>
                     ))}
