@@ -507,6 +507,47 @@ const MatchInput = () => {
             ポイント記録
           </h3>
 
+          {/* サーブ情報 */}
+          <div className="mb-4">
+            <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={() =>
+                  setPointData({
+                    ...pointData,
+                    first_serve_fault: !pointData.first_serve_fault,
+                  })
+                }
+                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
+                  pointData.first_serve_fault
+                    ? 'border-orange-500 bg-orange-50 text-orange-700'
+                    : 'border-gray-300 hover:border-orange-300'
+                }`}
+              >
+                1stフォルト
+              </button>
+              <button
+                onClick={() => {
+                  const currentServe = getCurrentServe();
+                  const oppositeTeam = currentServe === 'A' ? 'B' : 'A';
+                  setPointData({
+                    ...pointData,
+                    result_type: 'double_fault',
+                    winner_team: oppositeTeam,
+                    rally_count: 1,
+                  });
+                }}
+                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
+                  pointData.result_type === 'double_fault'
+                    ? 'border-purple-500 bg-purple-50 text-purple-700'
+                    : 'border-gray-300 hover:border-purple-300'
+                }`}
+              >
+                ダブルフォルト
+              </button>
+            </div>
+          </div>
+
           {/* 勝者チーム */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2 text-center">勝者チーム</h4>
@@ -530,40 +571,6 @@ const MatchInput = () => {
                 }`}
               >
                 チーム B
-              </button>
-            </div>
-          </div>
-
-          {/* サーブ情報 */}
-          <div className="mb-4">
-            <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                onClick={() =>
-                  setPointData({
-                    ...pointData,
-                    first_serve_fault: !pointData.first_serve_fault,
-                  })
-                }
-                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                  pointData.first_serve_fault
-                    ? 'border-orange-500 bg-orange-50 text-orange-700'
-                    : 'border-gray-300 hover:border-orange-300'
-                }`}
-              >
-                1stフォルト
-              </button>
-              <button
-                onClick={() =>
-                  setPointData({ ...pointData, result_type: 'double_fault' })
-                }
-                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                  pointData.result_type === 'double_fault'
-                    ? 'border-purple-500 bg-purple-50 text-purple-700'
-                    : 'border-gray-300 hover:border-purple-300'
-                }`}
-              >
-                ダブルフォルト
               </button>
             </div>
           </div>
