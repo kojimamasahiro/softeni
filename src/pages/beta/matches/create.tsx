@@ -208,6 +208,52 @@ const CreateMatch = () => {
         team_b_player2_region:
           gameType === 'doubles' ? teamB.player2_region : null,
 
+        // 構造化されたチームデータ
+        teams: {
+          A: {
+            entry_number: teamA.entry_number,
+            players: [
+              {
+                last_name: teamA.player1_last_name,
+                first_name: teamA.player1_first_name,
+                team_name: teamA.player1_team_name,
+                region: teamA.player1_region,
+              },
+              ...(gameType === 'doubles'
+                ? [
+                    {
+                      last_name: teamA.player2_last_name,
+                      first_name: teamA.player2_first_name,
+                      team_name: teamA.player2_team_name,
+                      region: teamA.player2_region,
+                    },
+                  ]
+                : []),
+            ],
+          },
+          B: {
+            entry_number: teamB.entry_number,
+            players: [
+              {
+                last_name: teamB.player1_last_name,
+                first_name: teamB.player1_first_name,
+                team_name: teamB.player1_team_name,
+                region: teamB.player1_region,
+              },
+              ...(gameType === 'doubles'
+                ? [
+                    {
+                      last_name: teamB.player2_last_name,
+                      first_name: teamB.player2_first_name,
+                      team_name: teamB.player2_team_name,
+                      region: teamB.player2_region,
+                    },
+                  ]
+                : []),
+            ],
+          },
+        },
+
         // 表示用（後方互換性のため）
         team_a:
           gameType === 'doubles'

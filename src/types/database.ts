@@ -1,15 +1,58 @@
+export interface MatchPlayer {
+  last_name: string;
+  first_name: string;
+  team_name: string;
+  region: string;
+}
+
+export interface MatchTeam {
+  entry_number: string;
+  players: MatchPlayer[];
+}
+
 export interface Match {
   id: string;
   tournament_name: string | null;
   tournament_generation: string | null;
   tournament_gender: string | null;
   tournament_category: string | null;
-  tournament_year?: number | null; // TODO: データベースにカラム追加後に必須にする
+  tournament_year?: number | null;
   round_name: string | null;
+  best_of: number;
+  game_type?: string | null;
+  created_at: string;
+
+  // 個別フィールド（新形式）
+  team_a_entry_number?: string | null;
+  team_a_player1_last_name?: string | null;
+  team_a_player1_first_name?: string | null;
+  team_a_player1_team_name?: string | null;
+  team_a_player1_region?: string | null;
+  team_a_player2_last_name?: string | null;
+  team_a_player2_first_name?: string | null;
+  team_a_player2_team_name?: string | null;
+  team_a_player2_region?: string | null;
+
+  team_b_entry_number?: string | null;
+  team_b_player1_last_name?: string | null;
+  team_b_player1_first_name?: string | null;
+  team_b_player1_team_name?: string | null;
+  team_b_player1_region?: string | null;
+  team_b_player2_last_name?: string | null;
+  team_b_player2_first_name?: string | null;
+  team_b_player2_team_name?: string | null;
+  team_b_player2_region?: string | null;
+
+  // 構造化データ（JSONフィールド）
+  teams?: {
+    A: MatchTeam;
+    B: MatchTeam;
+  } | null;
+
+  // 表示用文字列（後方互換性）
   team_a: string | null;
   team_b: string | null;
-  best_of: number;
-  created_at: string;
+
   games?: Game[];
 }
 

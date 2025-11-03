@@ -4,6 +4,67 @@ import { useCallback as reactUseCallback, useEffect, useState } from 'react';
 import { isDebugMode } from '../../../../../lib/env';
 import { Game, Match, Point } from '../../../../types/database';
 
+// 構造化データから選手名を取得するヘルパー関数
+const getPlayerNamesFromMatch = (match: Match, team: 'A' | 'B'): string[] => {
+  // 構造化データから取得を試行
+  if (match.teams && match.teams[team]) {
+    return match.teams[team].players.map(
+      (player) => `${player.last_name} ${player.first_name}`,
+    );
+  }
+
+  // 個別フィールドから取得
+  const players: string[] = [];
+  const prefix = `team_${team.toLowerCase()}`;
+
+  // プレイヤー1
+  const player1LastName = match[
+    `${prefix}_player1_last_name` as keyof Match
+  ] as string;
+  const player1FirstName = match[
+    `${prefix}_player1_first_name` as keyof Match
+  ] as string;
+
+  if (player1LastName && player1FirstName) {
+    players.push(`${player1LastName} ${player1FirstName}`);
+  }
+
+  // プレイヤー2（ダブルスの場合）
+  const player2LastName = match[
+    `${prefix}_player2_last_name` as keyof Match
+  ] as string;
+  const player2FirstName = match[
+    `${prefix}_player2_first_name` as keyof Match
+  ] as string;
+
+  if (player2LastName && player2FirstName) {
+    players.push(`${player2LastName} ${player2FirstName}`);
+  }
+
+  // フォールバック: 文字列から抽出
+  if (players.length === 0) {
+    const teamString = team === 'A' ? match.team_a : match.team_b;
+    if (teamString) {
+      try {
+        const withoutEntryNumber = teamString.replace(/^[A-Za-z0-9]+\s+/, '');
+        const playerParts = withoutEntryNumber.split(' / ');
+
+        return playerParts
+          .map((part) => {
+            const playerMatch = part.trim().match(/^([^\(]+)/);
+            return playerMatch ? playerMatch[1].trim() : part.trim();
+          })
+          .filter(Boolean);
+      } catch (error) {
+        console.warn('Failed to parse team string:', teamString, error);
+        return [];
+      }
+    }
+  }
+
+  return players;
+};
+
 const MatchInput = () => {
   const router = useRouter();
   const { matchId } = router.query;
@@ -198,6 +259,18 @@ const MatchInput = () => {
         <p className="text-gray-600 mb-2">大会: {match.tournament_name}</p>
         <p className="text-gray-600">形式: {match.best_of} ゲームマッチ</p>
 
+        {/* チーム詳細情報 */}
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-3 bg-blue-50 rounded">
+            <h3 className="font-semibold text-blue-800 mb-2">チーム A</h3>
+            <div className="text-sm break-all">{match.team_a}</div>
+          </div>
+          <div className="p-3 bg-red-50 rounded">
+            <h3 className="font-semibold text-red-800 mb-2">チーム B</h3>
+            <div className="text-sm break-all">{match.team_b}</div>
+          </div>
+        </div>
+
         {/* ゲームスコア */}
         <div className="mt-4 p-4 bg-gray-50 rounded">
           <h3 className="font-semibold mb-2">ゲームスコア</h3>
@@ -266,8 +339,12 @@ const MatchInput = () => {
                 className="w-full border rounded p-2"
               >
                 <option value="">選択してください</option>
-                <option value="A">チームA ({match.team_a})</option>
-                <option value="B">チームB ({match.team_b})</option>
+                <option value="A">
+                  チームA ({match.team_a?.split(' ')[0] || 'チームA'})
+                </option>
+                <option value="B">
+                  チームB ({match.team_b?.split(' ')[0] || 'チームB'})
+                </option>
               </select>
             </div>
 
@@ -310,15 +387,42 @@ const MatchInput = () => {
             {/* 勝者選手名 */}
             <div>
               <label className="block text-sm font-medium mb-2">勝者選手</label>
-              <input
-                type="text"
-                value={pointData.winner_player}
-                onChange={(e) =>
-                  setPointData({ ...pointData, winner_player: e.target.value })
-                }
-                className="w-full border rounded p-2"
-                placeholder="選手名"
-              />
+              {pointData.winner_team ? (
+                <select
+                  value={pointData.winner_player}
+                  onChange={(e) =>
+                    setPointData({
+                      ...pointData,
+                      winner_player: e.target.value,
+                    })
+                  }
+                  className="w-full border rounded p-2"
+                >
+                  <option value="">選手を選択してください</option>
+                  {getPlayerNamesFromMatch(
+                    match,
+                    pointData.winner_team as 'A' | 'B',
+                  ).map((playerName: string, index: number) => (
+                    <option key={index} value={playerName}>
+                      {playerName}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  value={pointData.winner_player}
+                  onChange={(e) =>
+                    setPointData({
+                      ...pointData,
+                      winner_player: e.target.value,
+                    })
+                  }
+                  className="w-full border rounded p-2"
+                  placeholder="まず勝者チームを選択してください"
+                  disabled
+                />
+              )}
             </div>
           </div>
 
