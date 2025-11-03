@@ -89,13 +89,12 @@ export default function MatchesList({
           <ul className="divide-y divide-gray-200">
             {matches.map((match) => (
               <li key={match.id} className="relative">
-                <div className="p-4 hover:bg-gray-50 cursor-pointer">
-                  <Link
-                    href={`/beta/matches-results/${match.id}`}
-                    className="absolute inset-0"
-                    aria-label={`${match.team_a} vs ${match.team_b}の試合詳細`}
-                  />
-                  <div className="flex justify-between relative z-10">
+                <Link
+                  href={`/beta/matches-results/${match.id}`}
+                  className="block p-4 hover:bg-gray-50"
+                  aria-label={`${match.team_a} vs ${match.team_b}の試合詳細`}
+                >
+                  <div className="flex justify-between">
                     <div>
                       <p className="text-lg font-medium mb-1">
                         {match.team_a} vs {match.team_b}
@@ -124,15 +123,19 @@ export default function MatchesList({
                               const tournamentUrl =
                                 generateTournamentUrlFromMatch(match);
                               return tournamentUrl ? (
-                                <Link
-                                  href={tournamentUrl}
-                                  className="text-blue-600 hover:text-blue-800 underline relative z-20"
+                                <span
+                                  className="text-blue-600 hover:text-blue-800 underline cursor-pointer"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    window.open(tournamentUrl, '_blank');
+                                  }}
                                 >
                                   {
                                     tournamentInfos[match.tournament_name].meta
                                       .name
                                   }
-                                </Link>
+                                </span>
                               ) : (
                                 <span className="text-gray-600">
                                   {
@@ -197,7 +200,7 @@ export default function MatchesList({
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               </li>
             ))}
           </ul>
