@@ -20,7 +20,17 @@ const CreateMatch = () => {
     best_of: 7,
   });
 
-  const [gameType, setGameType] = useState<'singles' | 'doubles'>('doubles');
+  // カテゴリからゲーム形式を判定する関数
+  const getGameTypeFromCategory = (
+    selectedCategory: string,
+  ): 'singles' | 'doubles' | 'team' => {
+    if (!selectedCategory || !categoryOptions.gameCategories) return 'singles';
+
+    const category = categoryOptions.gameCategories.find(
+      (cat) => cat.value === selectedCategory,
+    );
+    return (category?.value as 'singles' | 'doubles' | 'team') || 'singles';
+  };
   const [teamA, setTeamA] = useState({
     entry_number: '',
     player1_last_name: '',
@@ -57,7 +67,6 @@ const CreateMatch = () => {
   });
 
   const [creating, setCreating] = useState(false);
-  const [isCustomTournament, setIsCustomTournament] = useState(false);
 
   // 大会データを取得
   useEffect(() => {
@@ -78,7 +87,7 @@ const CreateMatch = () => {
   // 大会選択時にカテゴリと年を取得
   useEffect(() => {
     const fetchCategories = async () => {
-      if (!formData.tournament_name || isCustomTournament) {
+      if (!formData.tournament_name) {
         setCategoryOptions({
           generations: [],
           genders: [],
@@ -115,7 +124,7 @@ const CreateMatch = () => {
     };
 
     fetchCategories();
-  }, [formData.tournament_name, isCustomTournament]);
+  }, [formData.tournament_name]);
 
   // 開発環境でない場合はアクセス拒否
   if (!isDebugMode()) {
@@ -136,6 +145,9 @@ const CreateMatch = () => {
     setCreating(true);
 
     try {
+      // カテゴリ詳細からゲーム形式を取得
+      const gameType = getGameTypeFromCategory(formData.category);
+
       // API用にフィールド名を変換
       const apiData = {
         tournament_name: formData.tournament_name,
@@ -217,32 +229,8 @@ const CreateMatch = () => {
         <div>
           <label className="block text-sm font-medium mb-2">大会名</label>
 
-          {/* 既存大会から選択 or カスタム入力 */}
           <div className="space-y-2">
-            <div className="flex gap-2">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="tournamentType"
-                  checked={!isCustomTournament}
-                  onChange={() => setIsCustomTournament(false)}
-                  className="mr-2"
-                />
-                既存大会から選択
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="tournamentType"
-                  checked={isCustomTournament}
-                  onChange={() => setIsCustomTournament(true)}
-                  className="mr-2"
-                />
-                カスタム入力
-              </label>
-            </div>
-
-            {!isCustomTournament ? (
+            <div>
               <select
                 required
                 value={formData.tournament_name}
@@ -267,23 +255,12 @@ const CreateMatch = () => {
                   </option>
                 ))}
               </select>
-            ) : (
-              <input
-                type="text"
-                required
-                value={formData.tournament_name}
-                onChange={(e) =>
-                  setFormData({ ...formData, tournament_name: e.target.value })
-                }
-                className="w-full border rounded p-2"
-                placeholder="例: 全国高等学校ソフトテニス選手権大会"
-              />
-            )}
+            </div>
           </div>
         </div>
 
-        {/* カテゴリ選択（既存大会選択時のみ） */}
-        {!isCustomTournament && formData.tournament_name && (
+        {/* カテゴリ選択 */}
+        {formData.tournament_name && (
           <div className="space-y-4 p-4 bg-gray-50 rounded">
             <h3 className="font-medium text-gray-700">カテゴリ詳細</h3>
 
@@ -374,7 +351,7 @@ const CreateMatch = () => {
 
         <div>
           <label className="block text-sm font-medium mb-2">開催年</label>
-          {!isCustomTournament && formData.tournament_name ? (
+          {formData.tournament_name ? (
             <div className="w-full border rounded p-2 bg-gray-100 text-gray-700">
               {formData.year}年 (大会データより自動設定)
             </div>
@@ -414,38 +391,6 @@ const CreateMatch = () => {
             <option value="決勝">決勝</option>
             <option value="3位決定戦">3位決定戦</option>
           </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-2">ゲーム形式</label>
-          <div className="space-y-2 mb-6">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="gameType"
-                value="singles"
-                checked={gameType === 'singles'}
-                onChange={(e) =>
-                  setGameType(e.target.value as 'singles' | 'doubles')
-                }
-                className="mr-2"
-              />
-              シングルス
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="gameType"
-                value="doubles"
-                checked={gameType === 'doubles'}
-                onChange={(e) =>
-                  setGameType(e.target.value as 'singles' | 'doubles')
-                }
-                className="mr-2"
-              />
-              ダブルス
-            </label>
-          </div>
         </div>
 
         <div>
@@ -513,7 +458,7 @@ const CreateMatch = () => {
               </div>
             </div>
 
-            {gameType === 'doubles' && (
+            {getGameTypeFromCategory(formData.category) === 'doubles' && (
               <div className="border-l-4 border-green-500 pl-4">
                 <label className="block text-xs text-gray-600 mb-2">
                   選手2
@@ -637,7 +582,7 @@ const CreateMatch = () => {
               </div>
             </div>
 
-            {gameType === 'doubles' && (
+            {getGameTypeFromCategory(formData.category) === 'doubles' && (
               <div className="border-l-4 border-green-500 pl-4">
                 <label className="block text-xs text-gray-600 mb-2">
                   選手2
