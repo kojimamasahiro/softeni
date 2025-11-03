@@ -123,6 +123,7 @@ const MatchInput = () => {
       'volley_winner',
       'passing_winner',
       'drop_winner',
+      'service_ace',
     ];
 
     // ミス系の結果タイプ
@@ -559,7 +560,7 @@ const MatchInput = () => {
           {/* サーブ情報 */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() =>
                   setPointData({
@@ -574,6 +575,24 @@ const MatchInput = () => {
                 }`}
               >
                 1stフォルト
+              </button>
+              <button
+                onClick={() => {
+                  const currentServe = getCurrentServe();
+                  setPointData({
+                    ...pointData,
+                    result_type: 'service_ace',
+                    winner_team: currentServe || 'A',
+                    rally_count: 1,
+                  });
+                }}
+                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
+                  pointData.result_type === 'service_ace'
+                    ? 'border-green-500 bg-green-50 text-green-700'
+                    : 'border-gray-300 hover:border-green-300'
+                }`}
+              >
+                サービスエース
               </button>
               <button
                 onClick={() => {
