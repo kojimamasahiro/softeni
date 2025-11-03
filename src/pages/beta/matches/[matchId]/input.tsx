@@ -85,6 +85,7 @@ const MatchInput = () => {
   );
 
   // ポイント入力フォームの状態
+  // 関与選手
   const [pointData, setPointData] = useState({
     winner_team: '',
     serving_team: '',
@@ -95,6 +96,54 @@ const MatchInput = () => {
     winner_player: '',
     loser_player: '',
   });
+
+  // 関与選手とプレイタイプから勝者チームを自動決定する関数
+  const determineWinnerTeam = (
+    playerName: string,
+    resultType: string,
+  ): 'A' | 'B' | null => {
+    if (!playerName || !resultType || !match) return null;
+
+    // 選手がどのチームに所属しているかを判定
+    const teamAPlayers = getPlayerNamesFromMatch(match, 'A');
+    const teamBPlayers = getPlayerNamesFromMatch(match, 'B');
+
+    let playerTeam: 'A' | 'B' | null = null;
+    if (teamAPlayers.includes(playerName)) {
+      playerTeam = 'A';
+    } else if (teamBPlayers.includes(playerName)) {
+      playerTeam = 'B';
+    }
+
+    if (!playerTeam) return null;
+
+    // ウィナー系の結果タイプ
+    const winnerTypes = [
+      'smash_winner',
+      'volley_winner',
+      'passing_winner',
+      'drop_winner',
+    ];
+
+    // ミス系の結果タイプ
+    const errorTypes = [
+      'net',
+      'out',
+      'smash_error',
+      'volley_error',
+      'double_fault',
+    ];
+
+    if (winnerTypes.includes(resultType)) {
+      // ウィナーの場合、その選手のチームが勝者
+      return playerTeam;
+    } else if (errorTypes.includes(resultType)) {
+      // ミスの場合、相手チームが勝者
+      return playerTeam === 'A' ? 'B' : 'A';
+    }
+
+    return null;
+  };
 
   const fetchMatch = useCallback(async () => {
     try {
@@ -413,7 +462,7 @@ const MatchInput = () => {
 
       {/* ゲームスコアと現在のゲーム状況を横並びで表示 */}
       {!matchFinished && !needsServeSelection && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           {/* ゲームスコア */}
           <div className="bg-white rounded-lg shadow-md p-4 h-40 flex flex-col">
             <h3 className="text-lg font-semibold mb-3">ゲームスコア</h3>
@@ -550,7 +599,14 @@ const MatchInput = () => {
 
           {/* 勝者チーム */}
           <div className="mb-4">
-            <h4 className="text-sm font-medium mb-2 text-center">勝者チーム</h4>
+            <div className="text-center mb-2">
+              <h4 className="text-sm font-medium">勝者チーム</h4>
+              {pointData.winner_player && pointData.result_type && (
+                <p className="text-xs text-gray-500 mt-1">
+                  💡 関与選手と結果から自動判定されます
+                </p>
+              )}
+            </div>
             <div className="grid grid-cols-2 gap-2 mb-4">
               <button
                 onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
@@ -618,9 +674,20 @@ const MatchInput = () => {
                 ].map(({ value, label }) => (
                   <button
                     key={value}
-                    onClick={() =>
-                      setPointData({ ...pointData, result_type: value })
-                    }
+                    onClick={() => {
+                      const newData = { ...pointData, result_type: value };
+                      // 関与選手が設定されていれば勝者チームを自動決定
+                      if (pointData.winner_player) {
+                        const autoWinner = determineWinnerTeam(
+                          pointData.winner_player,
+                          value,
+                        );
+                        if (autoWinner) {
+                          newData.winner_team = autoWinner;
+                        }
+                      }
+                      setPointData(newData);
+                    }}
                     className={`p-2 border-2 rounded font-medium transition-all text-xs ${
                       pointData.result_type === value
                         ? 'border-green-500 bg-green-50 text-green-700'
@@ -646,9 +713,20 @@ const MatchInput = () => {
                 ].map(({ value, label }) => (
                   <button
                     key={value}
-                    onClick={() =>
-                      setPointData({ ...pointData, result_type: value })
-                    }
+                    onClick={() => {
+                      const newData = { ...pointData, result_type: value };
+                      // 関与選手が設定されていれば勝者チームを自動決定
+                      if (pointData.winner_player) {
+                        const autoWinner = determineWinnerTeam(
+                          pointData.winner_player,
+                          value,
+                        );
+                        if (autoWinner) {
+                          newData.winner_team = autoWinner;
+                        }
+                      }
+                      setPointData(newData);
+                    }}
                     className={`p-2 border-2 rounded font-medium transition-all text-xs ${
                       pointData.result_type === value
                         ? 'border-red-500 bg-red-50 text-red-700'
@@ -676,12 +754,23 @@ const MatchInput = () => {
                     (playerName: string, index: number) => (
                       <button
                         key={index}
-                        onClick={() =>
-                          setPointData({
+                        onClick={() => {
+                          const newData = {
                             ...pointData,
                             winner_player: playerName,
-                          })
-                        }
+                          };
+                          // 結果タイプが設定されていれば勝者チームを自動決定
+                          if (pointData.result_type) {
+                            const autoWinner = determineWinnerTeam(
+                              playerName,
+                              pointData.result_type,
+                            );
+                            if (autoWinner) {
+                              newData.winner_team = autoWinner;
+                            }
+                          }
+                          setPointData(newData);
+                        }}
                         className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                           pointData.winner_player === playerName
                             ? 'border-blue-500 bg-blue-50 text-blue-700'
@@ -704,12 +793,23 @@ const MatchInput = () => {
                     (playerName: string, index: number) => (
                       <button
                         key={index}
-                        onClick={() =>
-                          setPointData({
+                        onClick={() => {
+                          const newData = {
                             ...pointData,
                             winner_player: playerName,
-                          })
-                        }
+                          };
+                          // 結果タイプが設定されていれば勝者チームを自動決定
+                          if (pointData.result_type) {
+                            const autoWinner = determineWinnerTeam(
+                              playerName,
+                              pointData.result_type,
+                            );
+                            if (autoWinner) {
+                              newData.winner_team = autoWinner;
+                            }
+                          }
+                          setPointData(newData);
+                        }}
                         className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                           pointData.winner_player === playerName
                             ? 'border-red-500 bg-red-50 text-red-700'
