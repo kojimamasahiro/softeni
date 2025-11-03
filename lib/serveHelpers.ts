@@ -64,20 +64,14 @@ export function getCurrentServingTeam(
   const finalGame = isFinalGame(game.game_number, bestOf, gamesWonA, gamesWonB);
 
   if (finalGame) {
-    // ファイナルゲームの場合
-    if (pointNumber === 1) {
-      // 最初の1ポイント目はゲーム開始時のサーブ権
-      return initialServeTeam;
-    } else {
-      // 2ポイント目以降は2ポイントごとに交代
-      // ポイント2,3: 相手、ポイント4,5: 初期、ポイント6,7: 相手...
-      const switchCount = Math.floor((pointNumber - 2) / 2);
-      return switchCount % 2 === 0
-        ? initialServeTeam === 'A'
-          ? 'B'
-          : 'A'
-        : initialServeTeam;
-    }
+    // ファイナルゲームの場合：2ポイントごとにサーブ交代
+    // ポイント1-2: 初期サーブチーム、ポイント3-4: 相手チーム、ポイント5-6: 初期サーブチーム...
+    const switchCount = Math.floor((pointNumber - 1) / 2);
+    return switchCount % 2 === 0
+      ? initialServeTeam
+      : initialServeTeam === 'A'
+        ? 'B'
+        : 'A';
   } else {
     // 通常のゲームの場合：そのゲーム全体を通して同じチームがサーブ
     return initialServeTeam;
