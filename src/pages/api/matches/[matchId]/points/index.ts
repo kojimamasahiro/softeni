@@ -11,6 +11,7 @@ interface Player {
 
 interface PointData {
   game_id: number;
+  point_number: number;
   winner_team: 'A' | 'B';
   serving_team: 'A' | 'B';
   rally_count?: number;
@@ -116,6 +117,7 @@ export default async function handler(
     try {
       const {
         game_id,
+        point_number,
         winner_team,
         serving_team,
         rally_count,
@@ -179,6 +181,7 @@ export default async function handler(
         .from('points')
         .insert({
           game_id,
+          point_number,
           winner_team,
           serving_team,
           rally_count,
@@ -238,6 +241,7 @@ export default async function handler(
     try {
       const {
         point_id,
+        point_number,
         winner_team,
         serving_team,
         rally_count,
@@ -266,6 +270,7 @@ export default async function handler(
       const { data: updatedPoint, error: updateError } = await supabase
         .from('points')
         .update({
+          point_number,
           winner_team,
           serving_team,
           rally_count,

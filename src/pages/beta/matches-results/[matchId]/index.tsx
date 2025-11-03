@@ -41,11 +41,25 @@ const PublicMatchDetail = ({
 
   const getResultTypeLabel = (type: string) => {
     const labels: { [key: string]: string } = {
+      // ウィナー系
+      smash_winner: 'スマッシュウィナー',
+      volley_winner: 'ボレーウィナー',
+      passing_winner: 'パッシングウィナー',
+      drop_winner: 'ドロップウィナー',
+      service_ace: 'サービスエース',
+
+      // ミス系
+      net: 'ネット',
+      out: 'アウト',
+      smash_error: 'スマッシュミス',
+      volley_error: 'ボレーミス',
+      double_fault: 'ダブルフォルト',
+      follow_error: 'フォローミス',
+
+      // その他
       winner: '決定打',
       forced_error: 'ミス誘発',
       unforced_error: '凡ミス',
-      net: 'ネット',
-      out: 'アウト',
     };
     return labels[type] || type;
   };
@@ -179,40 +193,42 @@ const PublicMatchDetail = ({
                 <div className="mt-4">
                   <h4 className="font-medium mb-2">ポイント詳細</h4>
                   <div className="space-y-1">
-                    {game.points.map((point: Point) => (
-                      <div
-                        key={point.id}
-                        className="flex items-center gap-4 text-sm p-2 bg-gray-50 rounded"
-                      >
-                        <span className="font-medium">
-                          #{point.point_number}
-                        </span>
-                        <span className="bg-blue-100 px-2 py-1 rounded">
-                          {point.winner_team === 'A'
-                            ? match.team_a
-                            : match.team_b}
-                        </span>
-                        <span>
-                          {getResultTypeLabel(point.result_type || '')}
-                        </span>
-                        <span>{point.rally_count}ラリー</span>
-                        {point.winner_player && (
-                          <span className="text-blue-600">
-                            {point.winner_player}
+                    {game.points
+                      .sort((a, b) => a.point_number - b.point_number)
+                      .map((point: Point) => (
+                        <div
+                          key={point.id}
+                          className="flex items-center gap-4 text-sm p-2 bg-gray-50 rounded"
+                        >
+                          <span className="font-medium">
+                            #{point.point_number || 'N/A'}
                           </span>
-                        )}
-                        {point.first_serve_fault && (
-                          <span className="text-orange-600 text-xs">
-                            1stフォルト
+                          <span className="bg-blue-100 px-2 py-1 rounded">
+                            {point.winner_team === 'A'
+                              ? match.team_a
+                              : match.team_b}
                           </span>
-                        )}
-                        {point.double_fault && (
-                          <span className="text-red-600 text-xs">
-                            ダブルフォルト
+                          <span>
+                            {getResultTypeLabel(point.result_type || '')}
                           </span>
-                        )}
-                      </div>
-                    ))}
+                          <span>{point.rally_count}ラリー</span>
+                          {point.winner_player && (
+                            <span className="text-blue-600">
+                              {point.winner_player}
+                            </span>
+                          )}
+                          {point.first_serve_fault && (
+                            <span className="text-orange-600 text-xs">
+                              1stフォルト
+                            </span>
+                          )}
+                          {point.double_fault && (
+                            <span className="text-red-600 text-xs">
+                              ダブルフォルト
+                            </span>
+                          )}
+                        </div>
+                      ))}
                   </div>
                 </div>
               )}
