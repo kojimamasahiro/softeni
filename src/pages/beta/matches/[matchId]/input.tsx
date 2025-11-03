@@ -322,48 +322,37 @@ const MatchInput = () => {
 
       {/* ポイント入力フォーム */}
       {!gameWon && !matchFinished && (
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-6 text-center">
+        <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+          <h3 className="text-lg font-semibold mb-4 text-center">
             ポイント記録
           </h3>
 
-          {/* 勝者チーム選択 */}
-          <div className="mb-6">
-            <h4 className="text-md font-medium mb-3 text-center">勝者チーム</h4>
-            <div className="grid grid-cols-2 gap-4">
+          {/* 勝者チーム & サーブ情報 */}
+          <div className="mb-4">
+            <h4 className="text-sm font-medium mb-2 text-center">
+              勝者チーム & サーブ
+            </h4>
+            <div className="grid grid-cols-4 gap-2">
               <button
                 onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
-                className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                className={`p-2 border-2 rounded font-medium transition-all ${
                   pointData.winner_team === 'A'
                     ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-gray-300 hover:border-blue-300 hover:bg-blue-50'
+                    : 'border-gray-300 hover:border-blue-300'
                 }`}
               >
-                <div className="text-lg">チーム A</div>
-                <div className="text-sm text-gray-600 mt-1">
-                  {match.team_a?.split(' ')[0] || 'チームA'}
-                </div>
+                チーム A
               </button>
               <button
                 onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
-                className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                className={`p-2 border-2 rounded font-medium transition-all ${
                   pointData.winner_team === 'B'
                     ? 'border-red-500 bg-red-50 text-red-700'
-                    : 'border-gray-300 hover:border-red-300 hover:bg-red-50'
+                    : 'border-gray-300 hover:border-red-300'
                 }`}
               >
-                <div className="text-lg">チーム B</div>
-                <div className="text-sm text-gray-600 mt-1">
-                  {match.team_b?.split(' ')[0] || 'チームB'}
-                </div>
+                チーム B
               </button>
-            </div>
-          </div>
-
-          {/* サーブ情報 */}
-          <div className="mb-6">
-            <h4 className="text-md font-medium mb-3 text-center">サーブ</h4>
-            <div className="grid grid-cols-2 gap-4">
               <button
                 onClick={() =>
                   setPointData({
@@ -371,144 +360,126 @@ const MatchInput = () => {
                     first_serve_fault: !pointData.first_serve_fault,
                   })
                 }
-                className={`p-3 border-2 rounded-lg font-medium transition-all ${
+                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
                   pointData.first_serve_fault
                     ? 'border-orange-500 bg-orange-50 text-orange-700'
-                    : 'border-gray-300 hover:border-orange-300 hover:bg-orange-50'
+                    : 'border-gray-300 hover:border-orange-300'
                 }`}
               >
-                1stサーブフォルト
+                1stフォルト
               </button>
               <button
                 onClick={() =>
                   setPointData({ ...pointData, result_type: 'double_fault' })
                 }
-                className={`p-3 border-2 rounded-lg font-medium transition-all ${
+                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
                   pointData.result_type === 'double_fault'
                     ? 'border-purple-500 bg-purple-50 text-purple-700'
-                    : 'border-gray-300 hover:border-purple-300 hover:bg-purple-50'
+                    : 'border-gray-300 hover:border-purple-300'
                 }`}
               >
-                ダブルフォルト
+                Wフォルト
               </button>
             </div>
           </div>
 
           {/* ラリー数 */}
-          <div className="mb-6">
-            <h4 className="text-md font-medium mb-3 text-center">ラリー数</h4>
-            <div className="grid grid-cols-10 gap-1">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((count) => (
-                <button
-                  key={count}
-                  onClick={() =>
-                    setPointData({ ...pointData, rally_count: count })
-                  }
-                  className={`p-2 border-2 rounded-lg font-medium transition-all text-sm ${
-                    pointData.rally_count === count
-                      ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                      : 'border-gray-300 hover:border-indigo-300 hover:bg-indigo-50'
-                  }`}
-                >
-                  {count}
-                </button>
-              ))}
-            </div>
-            <div className="mt-3 flex items-center gap-2">
-              <span className="text-sm">その他:</span>
-              <input
-                type="number"
-                value={pointData.rally_count > 10 ? pointData.rally_count : ''}
-                onChange={(e) =>
-                  setPointData({
-                    ...pointData,
-                    rally_count: parseInt(e.target.value) || 1,
-                  })
-                }
-                className="flex-1 border rounded p-2"
-                min="11"
-                placeholder="11以上の場合"
-              />
+          <div className="mb-4">
+            <h4 className="text-sm font-medium mb-2 text-center">ラリー数</h4>
+            <div className="overflow-x-auto">
+              <div
+                className="flex gap-1 pb-2"
+                style={{ minWidth: 'max-content' }}
+              >
+                {Array.from({ length: 100 }, (_, i) => i + 1).map((count) => (
+                  <button
+                    key={count}
+                    onClick={() =>
+                      setPointData({ ...pointData, rally_count: count })
+                    }
+                    className={`flex-shrink-0 w-8 h-8 border-2 rounded font-medium transition-all text-xs ${
+                      pointData.rally_count === count
+                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+                        : 'border-gray-300 hover:border-indigo-300'
+                    }`}
+                  >
+                    {count}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* ウィナー */}
-          <div className="mb-6">
-            <h4 className="text-md font-medium mb-3 text-center">
-              ウィナー（決定打）
-            </h4>
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { value: 'smash_winner', label: 'スマッシュ', color: 'green' },
-                { value: 'volley_winner', label: 'ボレー', color: 'green' },
-                {
-                  value: 'passing_winner',
-                  label: 'パッシング',
-                  color: 'green',
-                },
-                { value: 'drop_winner', label: 'ドロップ', color: 'green' },
-              ].map(({ value, label, color }) => (
-                <button
-                  key={value}
-                  onClick={() =>
-                    setPointData({ ...pointData, result_type: value })
-                  }
-                  className={`p-3 border-2 rounded-lg font-medium transition-all ${
-                    pointData.result_type === value
-                      ? `border-${color}-500 bg-${color}-50 text-${color}-700`
-                      : `border-gray-300 hover:border-${color}-300 hover:bg-${color}-50`
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
+          {/* ウィナー & ミス */}
+          <div className="mb-4 grid grid-cols-2 gap-4">
+            {/* ウィナー */}
+            <div>
+              <h4 className="text-sm font-medium mb-2 text-center text-green-600">
+                ウィナー
+              </h4>
+              <div className="grid grid-cols-2 gap-1">
+                {[
+                  { value: 'smash_winner', label: 'スマッシュ' },
+                  { value: 'volley_winner', label: 'ボレー' },
+                  { value: 'passing_winner', label: 'パッシング' },
+                  { value: 'drop_winner', label: 'ドロップ' },
+                ].map(({ value, label }) => (
+                  <button
+                    key={value}
+                    onClick={() =>
+                      setPointData({ ...pointData, result_type: value })
+                    }
+                    className={`p-2 border-2 rounded font-medium transition-all text-xs ${
+                      pointData.result_type === value
+                        ? 'border-green-500 bg-green-50 text-green-700'
+                        : 'border-gray-300 hover:border-green-300'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* ミス */}
-          <div className="mb-6">
-            <h4 className="text-md font-medium mb-3 text-center">ミス</h4>
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { value: 'net', label: 'ネット', color: 'red' },
-                { value: 'out', label: 'アウト', color: 'red' },
-                { value: 'smash_error', label: 'スマッシュ失敗', color: 'red' },
-                { value: 'volley_error', label: 'ボレー失敗', color: 'red' },
-                {
-                  value: 'double_fault',
-                  label: 'ダブルフォルト',
-                  color: 'purple',
-                },
-              ].map(({ value, label, color }) => (
-                <button
-                  key={value}
-                  onClick={() =>
-                    setPointData({ ...pointData, result_type: value })
-                  }
-                  className={`p-3 border-2 rounded-lg font-medium transition-all ${
-                    pointData.result_type === value
-                      ? `border-${color}-500 bg-${color}-50 text-${color}-700`
-                      : `border-gray-300 hover:border-${color}-300 hover:bg-${color}-50`
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
+            {/* ミス */}
+            <div>
+              <h4 className="text-sm font-medium mb-2 text-center text-red-600">
+                ミス
+              </h4>
+              <div className="grid grid-cols-2 gap-1">
+                {[
+                  { value: 'net', label: 'ネット' },
+                  { value: 'out', label: 'アウト' },
+                  { value: 'smash_error', label: 'スマ失敗' },
+                  { value: 'volley_error', label: 'ボレ失敗' },
+                ].map(({ value, label }) => (
+                  <button
+                    key={value}
+                    onClick={() =>
+                      setPointData({ ...pointData, result_type: value })
+                    }
+                    className={`p-2 border-2 rounded font-medium transition-all text-xs ${
+                      pointData.result_type === value
+                        ? 'border-red-500 bg-red-50 text-red-700'
+                        : 'border-gray-300 hover:border-red-300'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* 関与選手 */}
-          <div className="mb-6">
-            <h4 className="text-md font-medium mb-3 text-center">
-              関与選手（ウィナーまたはミスをした選手）
-            </h4>
-            <div className="grid grid-cols-2 gap-4">
+          <div className="mb-4">
+            <h4 className="text-sm font-medium mb-2 text-center">関与選手</h4>
+            <div className="grid grid-cols-2 gap-2">
               {/* チームA選手 */}
               <div>
-                <h5 className="text-sm font-medium mb-2 text-center text-blue-600">
+                <h5 className="text-xs font-medium mb-1 text-center text-blue-600">
                   チーム A
                 </h5>
-                <div className="grid grid-cols-1 gap-2">
+                <div className="space-y-1">
                   {getPlayerNamesFromMatch(match, 'A').map(
                     (playerName: string, index: number) => (
                       <button
@@ -519,10 +490,10 @@ const MatchInput = () => {
                             winner_player: playerName,
                           })
                         }
-                        className={`p-2 border-2 rounded-lg font-medium transition-all text-sm ${
+                        className={`w-full p-1 border-2 rounded font-medium transition-all text-xs ${
                           pointData.winner_player === playerName
                             ? 'border-blue-500 bg-blue-50 text-blue-700'
-                            : 'border-gray-300 hover:border-blue-300 hover:bg-blue-50'
+                            : 'border-gray-300 hover:border-blue-300'
                         }`}
                       >
                         {playerName}
@@ -533,10 +504,10 @@ const MatchInput = () => {
               </div>
               {/* チームB選手 */}
               <div>
-                <h5 className="text-sm font-medium mb-2 text-center text-red-600">
+                <h5 className="text-xs font-medium mb-1 text-center text-red-600">
                   チーム B
                 </h5>
-                <div className="grid grid-cols-1 gap-2">
+                <div className="space-y-1">
                   {getPlayerNamesFromMatch(match, 'B').map(
                     (playerName: string, index: number) => (
                       <button
@@ -547,10 +518,10 @@ const MatchInput = () => {
                             winner_player: playerName,
                           })
                         }
-                        className={`p-2 border-2 rounded-lg font-medium transition-all text-sm ${
+                        className={`w-full p-1 border-2 rounded font-medium transition-all text-xs ${
                           pointData.winner_player === playerName
                             ? 'border-red-500 bg-red-50 text-red-700'
-                            : 'border-gray-300 hover:border-red-300 hover:bg-red-50'
+                            : 'border-gray-300 hover:border-red-300'
                         }`}
                       >
                         {playerName}
