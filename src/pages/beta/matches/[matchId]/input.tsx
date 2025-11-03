@@ -965,60 +965,67 @@ const MatchInput = () => {
       <div className="bg-white rounded-lg shadow-md p-6">
         <h3 className="text-lg font-semibold mb-4">ゲーム履歴</h3>
         <div className="space-y-4">
-          {match.games?.map((game: Game) => (
-            <div key={game.id} className="border rounded p-4">
-              <div className="flex justify-between items-center mb-2">
-                <h4 className="font-semibold">第{game.game_number}ゲーム</h4>
-                <div className="text-lg font-bold">
-                  {game.points_a} - {game.points_b}
-                  {game.winner_team && (
-                    <span className="ml-2 text-green-600">
-                      (チーム{game.winner_team}勝利)
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* ポイント履歴 */}
-              {game.points && game.points.length > 0 && (
-                <div className="mt-2">
-                  <h5 className="text-sm font-medium mb-2">ポイント詳細:</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
-                    {game.points.map((point: Point) => (
-                      <div key={point.id} className="bg-gray-50 rounded p-2">
-                        <div className="flex justify-between items-center">
-                          <span>#{point.point_number}</span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium">
-                              チーム{point.winner_team}
-                            </span>
-                            {!gameWon && !matchFinished && (
-                              <button
-                                onClick={() => startEditPoint(point)}
-                                className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-                                title="このポイントを編集"
-                              >
-                                編集
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                        <div className="text-xs text-gray-600">
-                          🏓 {point.serving_team}のサーブ
-                        </div>
-                        <div className="text-xs text-gray-600">
-                          {point.result_type} ({point.rally_count}ラリー)
-                          {point.winner_player && (
-                            <span> - {point.winner_player}</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
+          {match.games
+            ?.sort((a, b) => a.game_number - b.game_number)
+            .map((game: Game) => (
+              <div key={game.id} className="border rounded p-4">
+                <div className="flex justify-between items-center mb-2">
+                  <h4 className="font-semibold">第{game.game_number}ゲーム</h4>
+                  <div className="text-lg font-bold">
+                    {game.points_a} - {game.points_b}
+                    {game.winner_team && (
+                      <span className="ml-2 text-green-600">
+                        (チーム{game.winner_team}勝利)
+                      </span>
+                    )}
                   </div>
                 </div>
-              )}
-            </div>
-          ))}
+
+                {/* ポイント履歴 */}
+                {game.points && game.points.length > 0 && (
+                  <div className="mt-2">
+                    <h5 className="text-sm font-medium mb-2">ポイント詳細:</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+                      {game.points
+                        .sort((a, b) => a.point_number - b.point_number)
+                        .map((point: Point) => (
+                          <div
+                            key={point.id}
+                            className="bg-gray-50 rounded p-2"
+                          >
+                            <div className="flex justify-between items-center">
+                              <span>#{point.point_number}</span>
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium">
+                                  チーム{point.winner_team}
+                                </span>
+                                {!gameWon && !matchFinished && (
+                                  <button
+                                    onClick={() => startEditPoint(point)}
+                                    className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                                    title="このポイントを編集"
+                                  >
+                                    編集
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              🏓 {point.serving_team}のサーブ
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              {point.result_type} ({point.rally_count}ラリー)
+                              {point.winner_player && (
+                                <span> - {point.winner_player}</span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
 
           {(!match.games || match.games.length === 0) && (
             <div className="text-center text-gray-500 py-4">
