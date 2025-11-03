@@ -83,6 +83,8 @@ const MatchInput = () => {
   const [initialServeTeam, setInitialServeTeam] = useState<'A' | 'B' | null>(
     null,
   );
+  const [editingPoint, setEditingPoint] = useState<Point | null>(null);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   // ポイント入力フォームの状態
   // 関与選手
@@ -190,6 +192,80 @@ const MatchInput = () => {
       fetchMatch();
     }
   }, [matchId, fetchMatch]);
+
+  // ポイント編集を開始する関数
+  const startEditPoint = (point: Point) => {
+    setEditingPoint(point);
+    setIsEditMode(true);
+
+    // 編集するポイントの情報をフォームに設定
+    setPointData({
+      winner_team: point.winner_team || '',
+      serving_team: point.serving_team || '',
+      rally_count: point.rally_count || 0,
+      first_serve_fault: point.first_serve_fault || false,
+      double_fault: point.double_fault || false,
+      result_type: point.result_type || '',
+      winner_player: point.winner_player || '',
+      loser_player: point.loser_player || '',
+    });
+  };
+
+  // ポイント編集をキャンセルする関数
+  const cancelEditPoint = () => {
+    setEditingPoint(null);
+    setIsEditMode(false);
+
+    // フォームをリセット
+    setPointData({
+      winner_team: '',
+      serving_team: '',
+      rally_count: 0,
+      first_serve_fault: false,
+      double_fault: false,
+      result_type: '',
+      winner_player: '',
+      loser_player: '',
+    });
+  };
+
+  // ポイントを更新する関数
+  const updatePoint = async () => {
+    if (!editingPoint || !pointData.winner_team || !match) return;
+
+    setSubmitting(true);
+    try {
+      const response = await fetch(`/api/matches/${matchId}/points`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          point_id: editingPoint.id,
+          winner_team: pointData.winner_team,
+          serving_team: pointData.serving_team,
+          rally_count: pointData.rally_count,
+          first_serve_fault: pointData.first_serve_fault,
+          double_fault: pointData.double_fault,
+          result_type: pointData.result_type,
+          winner_player: pointData.winner_player,
+          loser_player: pointData.loser_player,
+        }),
+      });
+
+      if (response.ok) {
+        cancelEditPoint();
+        await fetchMatch();
+      } else {
+        const errorData = await response.json();
+        console.error('Update failed:', errorData);
+        alert(`更新に失敗しました: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Failed to update point:', error);
+      alert('更新中にエラーが発生しました。');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const submitPoint = async () => {
     if (!currentGame || !pointData.winner_team || !match) return;
@@ -552,11 +628,18 @@ const MatchInput = () => {
       )}
 
       {/* ポイント入力フォーム */}
-      {!gameWon && !matchFinished && !needsServeSelection && (
+      {((!gameWon && !matchFinished && !needsServeSelection) || isEditMode) && (
         <div className="bg-white rounded-lg shadow-md p-4 mb-4">
-          <h3 className="text-lg font-semibold mb-4 text-center">
-            ポイント記録
-          </h3>
+          <div className="text-center mb-4">
+            <h3 className="text-lg font-semibold">
+              {isEditMode ? 'ポイント編集' : 'ポイント記録'}
+            </h3>
+            {isEditMode && editingPoint && (
+              <p className="text-sm text-blue-600 mt-1">
+                #{editingPoint.point_number} を編集中
+              </p>
+            )}
+          </div>
 
           {/* サーブ情報 */}
           <div className="mb-4">
@@ -847,13 +930,34 @@ const MatchInput = () => {
           </div>
 
           {/* 送信ボタン */}
-          <button
-            onClick={submitPoint}
-            disabled={!pointData.winner_team || submitting}
-            className="mt-6 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 disabled:bg-gray-300"
-          >
-            {submitting ? '記録中...' : 'ポイント記録'}
-          </button>
+          <div className="mt-6 flex gap-2">
+            {isEditMode ? (
+              <>
+                <button
+                  onClick={updatePoint}
+                  disabled={!pointData.winner_team || submitting}
+                  className="flex-1 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 disabled:bg-gray-300"
+                >
+                  {submitting ? '更新中...' : 'ポイント更新'}
+                </button>
+                <button
+                  onClick={cancelEditPoint}
+                  disabled={submitting}
+                  className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 disabled:bg-gray-100"
+                >
+                  キャンセル
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={submitPoint}
+                disabled={!pointData.winner_team || submitting}
+                className="flex-1 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 disabled:bg-gray-300"
+              >
+                {submitting ? '記録中...' : 'ポイント記録'}
+              </button>
+            )}
+          </div>
         </div>
       )}
 
@@ -882,11 +986,22 @@ const MatchInput = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
                     {game.points.map((point: Point) => (
                       <div key={point.id} className="bg-gray-50 rounded p-2">
-                        <div className="flex justify-between">
+                        <div className="flex justify-between items-center">
                           <span>#{point.point_number}</span>
-                          <span className="font-medium">
-                            チーム{point.winner_team}
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium">
+                              チーム{point.winner_team}
+                            </span>
+                            {!gameWon && !matchFinished && (
+                              <button
+                                onClick={() => startEditPoint(point)}
+                                className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                                title="このポイントを編集"
+                              >
+                                編集
+                              </button>
+                            )}
+                          </div>
                         </div>
                         <div className="text-xs text-gray-600">
                           🏓 {point.serving_team}のサーブ
