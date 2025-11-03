@@ -70,14 +70,22 @@ const CreateMatch = () => {
           formData.tournament_name,
         );
 
-        setCategoryOptions(getCategoryOptions(tournamentCategories));
+        const options = getCategoryOptions(tournamentCategories);
+        setCategoryOptions(options);
 
         // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
+        // 選択肢が1つしかない場合は自動選択
         setFormData((prev) => ({
           ...prev,
-          generation: '',
-          gender: '',
-          category: '',
+          generation:
+            options.generations.length === 1
+              ? options.generations[0].value
+              : '',
+          gender: options.genders.length === 1 ? options.genders[0].value : '',
+          category:
+            options.gameCategories.length === 1
+              ? options.gameCategories[0].value
+              : '',
         }));
       } catch (error) {
         console.error('Failed to fetch tournament data:', error);
@@ -222,20 +230,26 @@ const CreateMatch = () => {
             {categoryOptions.generations.length > 0 && (
               <div>
                 <label className="block text-sm font-medium mb-2">世代</label>
-                <select
-                  value={formData.generation}
-                  onChange={(e) =>
-                    setFormData({ ...formData, generation: e.target.value })
-                  }
-                  className="w-full border rounded p-2"
-                >
-                  <option value="">世代を選択してください</option>
+                <div className="space-y-2">
                   {categoryOptions.generations.map((gen) => (
-                    <option key={gen.value} value={gen.value}>
+                    <label key={gen.value} className="flex items-center">
+                      <input
+                        type="radio"
+                        name="generation"
+                        value={gen.value}
+                        checked={formData.generation === gen.value}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            generation: e.target.value,
+                          })
+                        }
+                        className="mr-2"
+                      />
                       {gen.label}
-                    </option>
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
             )}
 
@@ -243,20 +257,26 @@ const CreateMatch = () => {
             {categoryOptions.genders.length > 0 && (
               <div>
                 <label className="block text-sm font-medium mb-2">性別</label>
-                <select
-                  value={formData.gender}
-                  onChange={(e) =>
-                    setFormData({ ...formData, gender: e.target.value })
-                  }
-                  className="w-full border rounded p-2"
-                >
-                  <option value="">性別を選択してください</option>
+                <div className="space-y-2">
                   {categoryOptions.genders.map((gender) => (
-                    <option key={gender.value} value={gender.value}>
+                    <label key={gender.value} className="flex items-center">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value={gender.value}
+                        checked={formData.gender === gender.value}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            gender: e.target.value,
+                          })
+                        }
+                        className="mr-2"
+                      />
                       {gender.label}
-                    </option>
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
             )}
 
@@ -266,20 +286,26 @@ const CreateMatch = () => {
                 <label className="block text-sm font-medium mb-2">
                   ゲームカテゴリ
                 </label>
-                <select
-                  value={formData.category}
-                  onChange={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
-                  className="w-full border rounded p-2"
-                >
-                  <option value="">カテゴリを選択してください</option>
+                <div className="space-y-2">
                   {categoryOptions.gameCategories.map((cat) => (
-                    <option key={cat.value} value={cat.value}>
+                    <label key={cat.value} className="flex items-center">
+                      <input
+                        type="radio"
+                        name="category"
+                        value={cat.value}
+                        checked={formData.category === cat.value}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            category: e.target.value,
+                          })
+                        }
+                        className="mr-2"
+                      />
                       {cat.label}
-                    </option>
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
             )}
           </div>
@@ -359,18 +385,31 @@ const CreateMatch = () => {
 
         <div>
           <label className="block text-sm font-medium mb-2">マッチ形式</label>
-          <select
-            value={formData.best_of}
-            onChange={(e) =>
-              setFormData({ ...formData, best_of: parseInt(e.target.value) })
-            }
-            className="w-full border rounded p-2"
-          >
-            <option value={3}>3ゲームマッチ</option>
-            <option value={5}>5ゲームマッチ</option>
-            <option value={7}>7ゲームマッチ</option>
-            <option value={9}>9ゲームマッチ</option>
-          </select>
+          <div className="space-y-2">
+            {[
+              { value: 3, label: '3ゲームマッチ' },
+              { value: 5, label: '5ゲームマッチ' },
+              { value: 7, label: '7ゲームマッチ' },
+              { value: 9, label: '9ゲームマッチ' },
+            ].map((option) => (
+              <label key={option.value} className="flex items-center">
+                <input
+                  type="radio"
+                  name="best_of"
+                  value={option.value}
+                  checked={formData.best_of === option.value}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      best_of: parseInt(e.target.value),
+                    })
+                  }
+                  className="mr-2"
+                />
+                {option.label}
+              </label>
+            ))}
+          </div>
         </div>
 
         <button
