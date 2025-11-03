@@ -386,14 +386,6 @@ const MatchInput = () => {
             <div className="text-sm break-all">{match.team_b}</div>
           </div>
         </div>
-
-        {/* ゲームスコア */}
-        <div className="mt-4 p-4 bg-gray-50 rounded">
-          <h3 className="font-semibold mb-2">ゲームスコア</h3>
-          <div className="text-2xl font-bold text-center">
-            {getGameScores()}
-          </div>
-        </div>
       </div>
 
       {/* 試合終了表示 */}
@@ -419,46 +411,92 @@ const MatchInput = () => {
         />
       )}
 
-      {/* 現在のゲーム状況 */}
+      {/* ゲームスコアと現在のゲーム状況を横並びで表示 */}
       {!matchFinished && !needsServeSelection && (
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">
-            第{currentGame?.game_number}ゲーム
-          </h2>
-
-          {/* サーブ権表示 */}
-          {currentGame?.initial_serve_team && match && (
-            <div
-              className={`rounded-lg p-4 mb-4 ${
-                getCurrentServe() === 'A'
-                  ? 'bg-blue-50 border border-blue-200 text-blue-700'
-                  : 'bg-red-50 border border-red-200 text-red-700'
-              }`}
-            >
-              <div className="text-center">
-                {getServeDisplayText(getCurrentServe() || 'A')}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          {/* ゲームスコア */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-xl font-semibold mb-4">ゲームスコア</h3>
+            <div className="text-4xl font-bold text-center mb-4">
+              {getGameScores()}
+            </div>
+            {/* 各ゲームの詳細スコア */}
+            {match.games && match.games.length > 0 && (
+              <div className="space-y-2">
+                {match.games.map((game: Game) => (
+                  <div
+                    key={game.id}
+                    className="flex justify-between items-center p-2 bg-gray-50 rounded"
+                  >
+                    <span className="text-sm font-medium">
+                      第{game.game_number}ゲーム
+                    </span>
+                    <div className="flex items-center space-x-2">
+                      <span
+                        className={`text-sm font-bold ${
+                          game.winner_team === 'A' ? 'text-blue-600' : ''
+                        }`}
+                      >
+                        {game.points_a}
+                      </span>
+                      <span className="text-sm">-</span>
+                      <span
+                        className={`text-sm font-bold ${
+                          game.winner_team === 'B' ? 'text-red-600' : ''
+                        }`}
+                      >
+                        {game.points_b}
+                      </span>
+                      {game.winner_team && (
+                        <span className="text-xs text-green-600 ml-2">✓</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          )}
-
-          <div className="text-3xl font-bold text-center mb-4">
-            {currentScore}
+            )}
           </div>
-          {gameWon && (
-            <div className="text-center">
-              <p className="text-lg text-green-600 font-semibold">
-                チーム{gameWon}の勝利！
-              </p>
-              {!matchFinished && (
-                <button
-                  onClick={startNewGame}
-                  className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
-                >
-                  次のゲームを開始
-                </button>
-              )}
+
+          {/* 現在のゲーム状況 */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4">
+              第{currentGame?.game_number}ゲーム
+            </h2>
+
+            {/* サーブ権表示 */}
+            {currentGame?.initial_serve_team && match && (
+              <div
+                className={`rounded-lg p-4 mb-4 ${
+                  getCurrentServe() === 'A'
+                    ? 'bg-blue-50 border border-blue-200 text-blue-700'
+                    : 'bg-red-50 border border-red-200 text-red-700'
+                }`}
+              >
+                <div className="text-center">
+                  {getServeDisplayText(getCurrentServe() || 'A')}
+                </div>
+              </div>
+            )}
+
+            <div className="text-4xl font-bold text-center mb-4">
+              {currentScore}
             </div>
-          )}
+            {gameWon && (
+              <div className="text-center">
+                <p className="text-lg text-green-600 font-semibold">
+                  チーム{gameWon}の勝利！
+                </p>
+                {!matchFinished && (
+                  <button
+                    onClick={startNewGame}
+                    className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+                  >
+                    次のゲームを開始
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
