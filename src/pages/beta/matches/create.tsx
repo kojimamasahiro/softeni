@@ -31,6 +31,28 @@ const CreateMatch = () => {
     );
     return (category?.value as 'singles' | 'doubles' | 'team') || 'singles';
   };
+
+  // 優先度に基づいてデフォルト選択肢を決定する関数
+  const getDefaultSelection = (
+    options: { value: string; label: string }[],
+    type: 'gender' | 'category',
+  ) => {
+    if (options.length === 0) return '';
+    if (options.length === 1) return options[0].value;
+
+    if (type === 'gender') {
+      // 性別は「boys」(男子)があれば優先
+      const boysOption = options.find((opt) => opt.value === 'boys');
+      if (boysOption) return boysOption.value;
+    } else if (type === 'category') {
+      // ゲームカテゴリは「doubles」があれば優先
+      const doublesOption = options.find((opt) => opt.value === 'doubles');
+      if (doublesOption) return doublesOption.value;
+    }
+
+    // 優先選択肢がない場合は空文字（ユーザーに選択させる）
+    return '';
+  };
   const [teamA, setTeamA] = useState({
     entry_number: '',
     player1_last_name: '',
@@ -105,18 +127,15 @@ const CreateMatch = () => {
         setCategoryOptions(options);
 
         // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
-        // 選択肢が1つしかない場合は自動選択
+        // 選択肢が1つしかない場合は自動選択、複数ある場合は優先度に基づいて選択
         setFormData((prev) => ({
           ...prev,
           generation:
             options.generations.length === 1
               ? options.generations[0].value
               : '',
-          gender: options.genders.length === 1 ? options.genders[0].value : '',
-          category:
-            options.gameCategories.length === 1
-              ? options.gameCategories[0].value
-              : '',
+          gender: getDefaultSelection(options.genders, 'gender'),
+          category: getDefaultSelection(options.gameCategories, 'category'),
         }));
       } catch (error) {
         console.error('Failed to fetch tournament data:', error);
