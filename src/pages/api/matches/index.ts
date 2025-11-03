@@ -20,6 +20,32 @@ export default async function handler(
         team_a,
         team_b,
         best_of = 5,
+        game_type,
+
+        // チームA個別フィールド
+        team_a_entry_number,
+        team_a_player1_last_name,
+        team_a_player1_first_name,
+        team_a_player1_team_name,
+        team_a_player1_region,
+        team_a_player2_last_name,
+        team_a_player2_first_name,
+        team_a_player2_team_name,
+        team_a_player2_region,
+
+        // チームB個別フィールド
+        team_b_entry_number,
+        team_b_player1_last_name,
+        team_b_player1_first_name,
+        team_b_player1_team_name,
+        team_b_player1_region,
+        team_b_player2_last_name,
+        team_b_player2_first_name,
+        team_b_player2_team_name,
+        team_b_player2_region,
+
+        // 構造化データ
+        teams,
       } = req.body;
 
       console.log('Creating match with data:', {
@@ -32,6 +58,12 @@ export default async function handler(
         team_a,
         team_b,
         best_of,
+        game_type,
+        team_a_player1_last_name,
+        team_a_player1_first_name,
+        team_b_player1_last_name,
+        team_b_player1_first_name,
+        teams,
       });
 
       // マッチを作成
@@ -48,6 +80,32 @@ export default async function handler(
             team_a,
             team_b,
             best_of,
+            game_type,
+
+            // チームA個別フィールド
+            team_a_entry_number,
+            team_a_player1_last_name,
+            team_a_player1_first_name,
+            team_a_player1_team_name,
+            team_a_player1_region,
+            team_a_player2_last_name,
+            team_a_player2_first_name,
+            team_a_player2_team_name,
+            team_a_player2_region,
+
+            // チームB個別フィールド
+            team_b_entry_number,
+            team_b_player1_last_name,
+            team_b_player1_first_name,
+            team_b_player1_team_name,
+            team_b_player1_region,
+            team_b_player2_last_name,
+            team_b_player2_first_name,
+            team_b_player2_team_name,
+            team_b_player2_region,
+
+            // 構造化データ
+            teams,
           },
         ])
         .select()
