@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import { createServerClient } from '@/lib/supabase';
 import {
@@ -21,6 +22,24 @@ const PublicMatchDetail = ({
   tournamentInfo,
   lastUpdated,
 }: PublicMatchDetailProps) => {
+  // エキスパンド状態管理（最新ゲームのみ展開）
+  const [expandedGames, setExpandedGames] = useState<Set<number>>(
+    new Set(
+      match?.games ? [Math.max(...match.games.map((g) => g.game_number))] : [],
+    ),
+  );
+
+  // エキスパンドのトグル関数
+  const toggleGameExpansion = (gameNumber: number) => {
+    const newExpandedGames = new Set(expandedGames);
+    if (newExpandedGames.has(gameNumber)) {
+      newExpandedGames.delete(gameNumber);
+    } else {
+      newExpandedGames.add(gameNumber);
+    }
+    setExpandedGames(newExpandedGames);
+  };
+
   // マッチデータから完全なURLを生成
   const fullTournamentUrl = generateTournamentUrlFromMatch(match);
   const getMatchWinner = () => {
@@ -222,98 +241,190 @@ const PublicMatchDetail = ({
         )}
       </div>
 
-      {/* ゲーム結果サマリー */}
+      {/* スコアボード */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-xl font-semibold mb-4">ゲーム結果</h2>
-        <div className="grid gap-4">
-          {match.games?.map((game: Game) => (
-            <div key={game.id} className="border rounded p-4">
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="font-semibold">第{game.game_number}ゲーム</h3>
-                {game.winner_team && (
-                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">
-                    {game.winner_team === 'A' ? match.team_a : match.team_b}{' '}
-                    勝利
-                  </span>
-                )}
-              </div>
-              <div className="text-2xl font-bold mb-4">
-                <span
-                  className={game.winner_team === 'A' ? 'text-green-600' : ''}
+        <h2 className="text-xl font-semibold mb-4">試合結果</h2>
+
+        {/* ゲームスコア表（野球のスコアボード風） */}
+        <div className="overflow-x-auto mb-6">
+          <table className="w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-50">
+                <th className="border border-gray-300 px-3 py-2 text-left">
+                  チーム
+                </th>
+                {match.games
+                  ?.sort((a, b) => a.game_number - b.game_number)
+                  .map((game) => (
+                    <th
+                      key={game.game_number}
+                      className="border border-gray-300 px-3 py-2 text-center min-w-12"
+                    >
+                      {game.game_number}
+                    </th>
+                  ))}
+                <th className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
+                  勝利ゲーム
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="hover:bg-gray-50">
+                <td className="border border-gray-300 px-3 py-2 font-medium">
+                  {match.team_a}
+                </td>
+                {match.games
+                  ?.sort((a, b) => a.game_number - b.game_number)
+                  .map((game) => (
+                    <td
+                      key={game.game_number}
+                      className={`border border-gray-300 px-3 py-2 text-center font-bold ${
+                        game.winner_team === 'A'
+                          ? 'bg-green-100 text-green-800'
+                          : ''
+                      }`}
+                    >
+                      {game.points_a}
+                    </td>
+                  ))}
+                <td className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
+                  {match.games?.filter((game) => game.winner_team === 'A')
+                    .length || 0}
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50">
+                <td className="border border-gray-300 px-3 py-2 font-medium">
+                  {match.team_b}
+                </td>
+                {match.games
+                  ?.sort((a, b) => a.game_number - b.game_number)
+                  .map((game) => (
+                    <td
+                      key={game.game_number}
+                      className={`border border-gray-300 px-3 py-2 text-center font-bold ${
+                        game.winner_team === 'B'
+                          ? 'bg-green-100 text-green-800'
+                          : ''
+                      }`}
+                    >
+                      {game.points_b}
+                    </td>
+                  ))}
+                <td className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
+                  {match.games?.filter((game) => game.winner_team === 'B')
+                    .length || 0}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* ゲーム詳細（降順、エキスパンド対応） */}
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold">ゲーム詳細</h3>
+          {match.games
+            ?.sort((a, b) => b.game_number - a.game_number) // 降順（新しいゲームを上に）
+            .map((game: Game) => {
+              const isExpanded = expandedGames.has(game.game_number);
+              return (
+                <div
+                  key={game.id}
+                  className="border border-gray-200 rounded-lg"
                 >
-                  {game.points_a}
-                </span>
-                {' - '}
-                <span
-                  className={game.winner_team === 'B' ? 'text-green-600' : ''}
-                >
-                  {game.points_b}
-                </span>
-              </div>
+                  {/* ゲームヘッダー（クリック可能） */}
+                  <button
+                    onClick={() => toggleGameExpansion(game.game_number)}
+                    className="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50 rounded-t-lg"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="font-semibold">
+                        第{game.game_number}ゲーム
+                      </span>
+                      <span className="text-sm font-medium">
+                        {game.points_a} - {game.points_b}
+                      </span>
+                      {game.winner_team && (
+                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+                          {game.winner_team === 'A'
+                            ? match.team_a
+                            : match.team_b}{' '}
+                          勝利
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-gray-400 text-xl">
+                      {isExpanded ? '−' : '+'}
+                    </span>
+                  </button>
 
-              {/* ポイント詳細 */}
-              {game.points && game.points.length > 0 && (
-                <div className="mt-4">
-                  <h4 className="font-medium mb-2">ポイント詳細</h4>
-                  <div className="space-y-1">
-                    {game.points
-                      .sort((a, b) => a.point_number - b.point_number)
-                      .map((point: Point) => (
-                        <div
-                          key={point.id}
-                          className="flex items-center gap-4 text-sm p-2 bg-gray-50 rounded"
-                        >
-                          <span className="bg-blue-100 px-2 py-1 rounded">
-                            {(() => {
-                              // このポイント時点での両チームのスコアを計算
-                              const pointsBeforeThis =
-                                game.points?.filter(
-                                  (p) => p.point_number < point.point_number,
-                                ) || [];
-                              const teamAPoints = pointsBeforeThis.filter(
-                                (p) => p.winner_team === 'A',
-                              ).length;
-                              const teamBPoints = pointsBeforeThis.filter(
-                                (p) => p.winner_team === 'B',
-                              ).length;
+                  {/* ゲーム詳細（エキスパンド時のみ表示） */}
+                  {isExpanded && game.points && game.points.length > 0 && (
+                    <div className="px-4 pb-4 border-t border-gray-200">
+                      <div className="space-y-2 mt-3">
+                        {game.points
+                          .sort((a, b) => a.point_number - b.point_number)
+                          .map((point: Point) => {
+                            // スコア計算
+                            const pointsBeforeThis =
+                              game.points?.filter(
+                                (p) => p.point_number < point.point_number,
+                              ) || [];
+                            const teamAPoints = pointsBeforeThis.filter(
+                              (p) => p.winner_team === 'A',
+                            ).length;
+                            const teamBPoints = pointsBeforeThis.filter(
+                              (p) => p.winner_team === 'B',
+                            ).length;
+                            const finalTeamAPoints =
+                              teamAPoints + (point.winner_team === 'A' ? 1 : 0);
+                            const finalTeamBPoints =
+                              teamBPoints + (point.winner_team === 'B' ? 1 : 0);
 
-                              // このポイントで勝ったチームのポイントを+1
-                              const finalTeamAPoints =
-                                teamAPoints +
-                                (point.winner_team === 'A' ? 1 : 0);
-                              const finalTeamBPoints =
-                                teamBPoints +
-                                (point.winner_team === 'B' ? 1 : 0);
+                            return (
+                              <div key={point.id} className="text-sm">
+                                {/* ポイント情報（1行目） */}
+                                <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
+                                  <span>#{point.point_number || 'N/A'}</span>
+                                  <span className="font-medium">
+                                    {finalTeamAPoints} - {finalTeamBPoints}
+                                  </span>
+                                  <span>{point.rally_count}ラリー</span>
+                                </div>
 
-                              return `${finalTeamAPoints} - ${finalTeamBPoints}`;
-                            })()}
-                          </span>
-                          <span>
-                            {getResultTypeLabel(point.result_type || '')}
-                          </span>
-                          <span>{point.rally_count}ラリー</span>
-                          {point.winner_player && (
-                            <span className="text-blue-600">
-                              {point.winner_player}
-                            </span>
-                          )}
-                          {point.first_serve_fault && (
-                            <span className="text-orange-600 text-xs">
-                              1stフォルト
-                            </span>
-                          )}
-                          {point.double_fault && (
-                            <span className="text-red-600 text-xs">
-                              ダブルフォルト
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                  </div>
+                                {/* ポイント内容（2行目） */}
+                                <div className="flex items-center gap-3 pl-4">
+                                  <span className="font-medium text-blue-600">
+                                    {getResultTypeLabel(
+                                      point.result_type || '',
+                                    )}
+                                  </span>
+                                  {point.winner_player && (
+                                    <span className="text-gray-700">
+                                      {point.winner_player}
+                                    </span>
+                                  )}
+                                  <div className="flex gap-2">
+                                    {point.first_serve_fault && (
+                                      <span className="text-orange-600 text-xs bg-orange-50 px-1 rounded">
+                                        1stフォルト
+                                      </span>
+                                    )}
+                                    {point.double_fault && (
+                                      <span className="text-red-600 text-xs bg-red-50 px-1 rounded">
+                                        ダブルフォルト
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
+              );
+            })}
         </div>
       </div>
 
