@@ -384,7 +384,6 @@ const PublicMatchDetail = ({
                             <div key={point.id} className="text-sm">
                               {/* ポイント情報（1行目） */}
                               <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
-                                <span>#{point.point_number || 'N/A'}</span>
                                 <span className="font-medium">
                                   {finalTeamAPoints} - {finalTeamBPoints}
                                 </span>
