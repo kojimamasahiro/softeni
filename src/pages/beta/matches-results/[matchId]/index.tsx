@@ -246,10 +246,10 @@ const PublicMatchDetail = ({
 
       {/* ゲームスコア表（野球のスコアボード風） */}
       <div className="overflow-x-auto mb-6">
-        <table className="w-full border-collapse border border-gray-300">
+        <table className="min-w-full border-collapse border border-gray-300 table-auto">
           <thead>
             <tr className="bg-gray-50">
-              <th className="border border-gray-300 px-3 py-2 text-left">
+              <th className="border border-gray-300 px-3 py-2 text-left w-auto">
                 チーム
               </th>
               {match.games
@@ -269,7 +269,7 @@ const PublicMatchDetail = ({
           </thead>
           <tbody>
             <tr className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-3 py-2 font-medium">
+              <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
                 {match.team_a}
               </td>
               {match.games
@@ -292,7 +292,7 @@ const PublicMatchDetail = ({
               </td>
             </tr>
             <tr className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-3 py-2 font-medium">
+              <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
                 {match.team_b}
               </td>
               {match.games
