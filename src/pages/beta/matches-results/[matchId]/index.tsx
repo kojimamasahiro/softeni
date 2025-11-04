@@ -385,7 +385,25 @@ const PublicMatchDetail = ({
                               {/* ポイント情報（1行目） */}
                               <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
                                 <span className="font-medium">
-                                  {finalTeamAPoints} - {finalTeamBPoints}
+                                  <span
+                                    className={
+                                      point.winner_team === 'A'
+                                        ? 'font-bold'
+                                        : ''
+                                    }
+                                  >
+                                    {finalTeamAPoints}
+                                  </span>
+                                  {' - '}
+                                  <span
+                                    className={
+                                      point.winner_team === 'B'
+                                        ? 'font-bold'
+                                        : ''
+                                    }
+                                  >
+                                    {finalTeamBPoints}
+                                  </span>
                                 </span>
                                 <span>{point.rally_count}ラリー</span>
                               </div>
