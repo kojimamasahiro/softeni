@@ -52,24 +52,37 @@ async function recalculateGameScore(gameId: number) {
     }
   });
 
-  // ファイナルゲーム判定のため、マッチの他のゲーム結果を取得
+  // マッチ情報とファイナルゲーム判定のため、マッチの他のゲーム結果を取得
+  const { data: matchData } = await supabase
+    .from('matches')
+    .select('best_of')
+    .eq('id', game.match_id)
+    .single();
+
+  const bestOf = matchData?.best_of || 5;
+
   const { data: gameStats } = await supabase
     .from('games')
-    .select('points_a, points_b')
+    .select('id, points_a, points_b')
     .eq('match_id', game.match_id);
 
   let gamesA = 0;
   let gamesB = 0;
 
   gameStats?.forEach((g) => {
-    if (g.points_a > g.points_b) {
-      gamesA++;
-    } else if (g.points_b > g.points_a) {
-      gamesB++;
+    // 現在のゲーム以外のゲーム結果のみで勝利数を計算
+    if (g.id !== gameId) {
+      if (g.points_a > g.points_b) {
+        gamesA++;
+      } else if (g.points_b > g.points_a) {
+        gamesB++;
+      }
     }
   });
 
-  const isFinalGame = gamesA === 3 && gamesB === 3;
+  const requiredWins = Math.ceil(bestOf / 2);
+  const isFinalGame =
+    gamesA === requiredWins - 1 && gamesB === requiredWins - 1;
   const pointsToWin = isFinalGame ? 7 : 4;
 
   // 勝利条件チェック
@@ -140,24 +153,38 @@ export default async function handler(
         return res.status(404).json({ error: 'Game not found' });
       }
 
-      // ファイナルゲーム判定
+      // マッチ情報を取得してbest_ofを確認
+      const { data: matchData } = await supabase
+        .from('matches')
+        .select('best_of')
+        .eq('id', matchId)
+        .single();
+
+      const bestOf = matchData?.best_of || 5;
+
+      // ファイナルゲーム判定（現在のゲームを除く）
       const { data: gameStats } = await supabase
         .from('games')
-        .select('points_a, points_b')
+        .select('id, points_a, points_b')
         .eq('match_id', matchId);
 
       let gamesA = 0;
       let gamesB = 0;
 
       gameStats?.forEach((g) => {
-        if (g.points_a > g.points_b) {
-          gamesA++;
-        } else if (g.points_b > g.points_a) {
-          gamesB++;
+        // 現在のゲーム以外のゲーム結果のみで勝利数を計算
+        if (g.id !== game_id) {
+          if (g.points_a > g.points_b) {
+            gamesA++;
+          } else if (g.points_b > g.points_a) {
+            gamesB++;
+          }
         }
       });
 
-      const isFinalGame = gamesA === 3 && gamesB === 3;
+      const requiredWins = Math.ceil(bestOf / 2);
+      const isFinalGame =
+        gamesA === requiredWins - 1 && gamesB === requiredWins - 1;
       const pointsToWin = isFinalGame ? 7 : 4;
 
       // 現在のポイントをカウント
