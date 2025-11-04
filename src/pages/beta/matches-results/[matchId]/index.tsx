@@ -58,6 +58,33 @@ const PublicMatchDetail = ({
     return null;
   };
 
+  // データベースのプレイヤー情報から苗字のみのチーム名を生成する関数
+  const getShortTeamName = (team: 'A' | 'B') => {
+    if (team === 'A') {
+      const player1LastName = match.team_a_player1_last_name;
+      const player2LastName = match.team_a_player2_last_name;
+
+      if (player1LastName && player2LastName) {
+        return `${player1LastName}・${player2LastName}`;
+      } else if (player1LastName) {
+        return player1LastName;
+      }
+      // フォールバック：元のチーム名を使用
+      return match.team_a || '';
+    } else {
+      const player1LastName = match.team_b_player1_last_name;
+      const player2LastName = match.team_b_player2_last_name;
+
+      if (player1LastName && player2LastName) {
+        return `${player1LastName}・${player2LastName}`;
+      } else if (player1LastName) {
+        return player1LastName;
+      }
+      // フォールバック：元のチーム名を使用
+      return match.team_b || '';
+    }
+  };
+
   const getResultTypeLabel = (type: string) => {
     const labels: { [key: string]: string } = {
       // ウィナー系
@@ -235,7 +262,7 @@ const PublicMatchDetail = ({
         {matchWinner && (
           <div className="bg-green-100 border border-green-400 rounded p-4">
             <p className="text-lg font-semibold text-green-800">
-              🏆 {matchWinner === 'A' ? match.team_a : match.team_b} の勝利！
+              🏆 {getShortTeamName(matchWinner)} の勝利！
             </p>
           </div>
         )}
@@ -270,7 +297,7 @@ const PublicMatchDetail = ({
           <tbody>
             <tr className="hover:bg-gray-50">
               <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
-                {match.team_a}
+                {getShortTeamName('A')}
               </td>
               {match.games
                 ?.sort((a, b) => a.game_number - b.game_number)
@@ -293,7 +320,7 @@ const PublicMatchDetail = ({
             </tr>
             <tr className="hover:bg-gray-50">
               <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
-                {match.team_b}
+                {getShortTeamName('B')}
               </td>
               {match.games
                 ?.sort((a, b) => a.game_number - b.game_number)
@@ -347,7 +374,7 @@ const PublicMatchDetail = ({
                             : 'bg-green-100 text-green-800'
                         }`}
                       >
-                        {game.winner_team === 'A' ? match.team_a : match.team_b}{' '}
+                        {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}{' '}
                         勝利
                       </span>
                     )}
