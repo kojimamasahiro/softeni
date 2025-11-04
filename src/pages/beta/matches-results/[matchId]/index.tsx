@@ -340,7 +340,13 @@ const PublicMatchDetail = ({
                       {game.points_a} - {game.points_b}
                     </span>
                     {game.winner_team && (
-                      <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+                      <span
+                        className={`px-2 py-1 rounded text-xs ${
+                          game.winner_team === 'A'
+                            ? 'bg-blue-100 text-blue-800'
+                            : 'bg-green-100 text-green-800'
+                        }`}
+                      >
                         {game.winner_team === 'A' ? match.team_a : match.team_b}{' '}
                         勝利
                       </span>
