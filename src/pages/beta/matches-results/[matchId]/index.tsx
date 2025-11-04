@@ -85,6 +85,149 @@ const PublicMatchDetail = ({
     );
   };
 
+  // 選手統計を計算する関数
+  const getPlayerStats = () => {
+    if (!match?.games) return {};
+
+    const stats: {
+      [playerName: string]: {
+        winners: number;
+        errors: number;
+        points: number;
+        gameStats: {
+          [gameNumber: number]: {
+            winners: number;
+            errors: number;
+            points: number;
+          };
+        };
+      };
+    } = {};
+
+    // ウィナー系の結果タイプ
+    const winnerTypes = [
+      'smash_winner',
+      'volley_winner',
+      'passing_winner',
+      'drop_winner',
+      'service_ace',
+    ];
+
+    // ミス系の結果タイプ
+    const errorTypes = [
+      'net',
+      'out',
+      'smash_error',
+      'volley_error',
+      'double_fault',
+      'follow_error',
+    ];
+
+    match.games.forEach((game) => {
+      if (!game.points) return;
+
+      game.points.forEach((point) => {
+        const playerName = point.winner_player;
+        if (!playerName) return;
+
+        // プレイヤー統計初期化
+        if (!stats[playerName]) {
+          stats[playerName] = {
+            winners: 0,
+            errors: 0,
+            points: 0,
+            gameStats: {},
+          };
+        }
+
+        // ゲーム統計初期化
+        if (!stats[playerName].gameStats[game.game_number]) {
+          stats[playerName].gameStats[game.game_number] = {
+            winners: 0,
+            errors: 0,
+            points: 0,
+          };
+        }
+
+        const resultType = point.result_type || '';
+
+        // ウィナーかミスかを判定
+        if (winnerTypes.includes(resultType)) {
+          stats[playerName].winners++;
+          stats[playerName].gameStats[game.game_number].winners++;
+        } else if (errorTypes.includes(resultType)) {
+          stats[playerName].errors++;
+          stats[playerName].gameStats[game.game_number].errors++;
+        }
+
+        // 総ポイント数
+        stats[playerName].points++;
+        stats[playerName].gameStats[game.game_number].points++;
+      });
+    });
+
+    return stats;
+  };
+
+  // ゲーム統計を計算する関数
+  const getGameStats = () => {
+    if (!match?.games) return {};
+
+    const stats: {
+      [gameNumber: number]: {
+        totalPoints: number;
+        totalRallies: number;
+        avgRallyLength: number;
+        winners: number;
+        errors: number;
+      };
+    } = {};
+
+    match.games.forEach((game) => {
+      if (!game.points) return;
+
+      const totalPoints = game.points.length;
+      const totalRallies = game.points.reduce(
+        (sum, point) => sum + (point.rally_count || 0),
+        0,
+      );
+      const avgRallyLength = totalPoints > 0 ? totalRallies / totalPoints : 0;
+
+      const winnerTypes = [
+        'smash_winner',
+        'volley_winner',
+        'passing_winner',
+        'drop_winner',
+        'service_ace',
+      ];
+      const errorTypes = [
+        'net',
+        'out',
+        'smash_error',
+        'volley_error',
+        'double_fault',
+        'follow_error',
+      ];
+
+      const winners = game.points.filter((point) =>
+        winnerTypes.includes(point.result_type || ''),
+      ).length;
+      const errors = game.points.filter((point) =>
+        errorTypes.includes(point.result_type || ''),
+      ).length;
+
+      stats[game.game_number] = {
+        totalPoints,
+        totalRallies,
+        avgRallyLength,
+        winners,
+        errors,
+      };
+    });
+
+    return stats;
+  };
+
   if (!match) return <div className="p-6">Match not found</div>;
 
   const matchWinner = getMatchWinner();
@@ -255,8 +398,8 @@ const PublicMatchDetail = ({
       </div>
 
       {/* 統計情報 */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">統計情報</h2>
+      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 className="text-xl font-semibold mb-4">基本統計情報</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="text-center p-4 bg-gray-50 rounded">
             <div className="text-2xl font-bold">{getTotalPoints()}</div>
@@ -273,6 +416,134 @@ const PublicMatchDetail = ({
             <div className="text-2xl font-bold">{getTotalRallies()}</div>
             <div className="text-sm text-gray-600">総ラリー数</div>
           </div>
+        </div>
+      </div>
+
+      {/* 選手別統計情報 */}
+      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 className="text-xl font-semibold mb-4">選手別統計情報</h2>
+        <div className="space-y-4">
+          {Object.entries(getPlayerStats()).map(([playerName, stats]) => (
+            <div key={playerName} className="border rounded p-4">
+              <h3 className="font-semibold text-lg mb-3">{playerName}</h3>
+
+              {/* 全体統計 */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                <div className="text-center p-3 bg-green-50 rounded">
+                  <div className="text-2xl font-bold text-green-600">
+                    {stats.winners}
+                  </div>
+                  <div className="text-sm text-green-700">ウィナー</div>
+                </div>
+                <div className="text-center p-3 bg-red-50 rounded">
+                  <div className="text-2xl font-bold text-red-600">
+                    {stats.errors}
+                  </div>
+                  <div className="text-sm text-red-700">ミス</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 rounded">
+                  <div className="text-2xl font-bold text-blue-600">
+                    {stats.points}
+                  </div>
+                  <div className="text-sm text-blue-700">関与ポイント</div>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className="text-2xl font-bold text-gray-600">
+                    {stats.points > 0
+                      ? ((stats.winners / stats.points) * 100).toFixed(1)
+                      : '0.0'}
+                    %
+                  </div>
+                  <div className="text-sm text-gray-700">ウィナー率</div>
+                </div>
+              </div>
+
+              {/* ゲーム別統計 */}
+              <div className="mt-4">
+                <h4 className="font-medium text-sm mb-2">ゲーム別詳細</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                  {Object.entries(stats.gameStats).map(
+                    ([gameNumber, gameStats]) => (
+                      <div
+                        key={gameNumber}
+                        className="text-xs p-2 bg-gray-50 rounded"
+                      >
+                        <div className="font-medium mb-1">
+                          第{gameNumber}ゲーム
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex justify-between">
+                            <span>ウィナー:</span>
+                            <span className="text-green-600 font-medium">
+                              {gameStats.winners}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>ミス:</span>
+                            <span className="text-red-600 font-medium">
+                              {gameStats.errors}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>関与:</span>
+                            <span className="font-medium">
+                              {gameStats.points}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ゲーム別統計情報 */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-xl font-semibold mb-4">ゲーム別統計情報</h2>
+        <div className="grid gap-4">
+          {Object.entries(getGameStats()).map(([gameNumber, stats]) => (
+            <div key={gameNumber} className="border rounded p-4">
+              <h3 className="font-semibold text-lg mb-3">
+                第{gameNumber}ゲーム
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div className="text-center p-3 bg-blue-50 rounded">
+                  <div className="text-xl font-bold text-blue-600">
+                    {stats.totalPoints}
+                  </div>
+                  <div className="text-sm text-blue-700">総ポイント</div>
+                </div>
+                <div className="text-center p-3 bg-purple-50 rounded">
+                  <div className="text-xl font-bold text-purple-600">
+                    {stats.totalRallies}
+                  </div>
+                  <div className="text-sm text-purple-700">総ラリー数</div>
+                </div>
+                <div className="text-center p-3 bg-indigo-50 rounded">
+                  <div className="text-xl font-bold text-indigo-600">
+                    {stats.avgRallyLength.toFixed(1)}
+                  </div>
+                  <div className="text-sm text-indigo-700">平均ラリー</div>
+                </div>
+                <div className="text-center p-3 bg-green-50 rounded">
+                  <div className="text-xl font-bold text-green-600">
+                    {stats.winners}
+                  </div>
+                  <div className="text-sm text-green-700">ウィナー数</div>
+                </div>
+                <div className="text-center p-3 bg-red-50 rounded">
+                  <div className="text-xl font-bold text-red-600">
+                    {stats.errors}
+                  </div>
+                  <div className="text-sm text-red-700">ミス数</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
