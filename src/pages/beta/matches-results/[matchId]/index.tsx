@@ -361,6 +361,13 @@ const PublicMatchDetail = ({
                 {isExpanded && game.points && game.points.length > 0 && (
                   <div className="px-4 pb-4 border-t border-gray-200">
                     <div className="space-y-2 mt-3">
+                      {/* ゲーム開始時の0-0表示 */}
+                      <div className="text-sm">
+                        <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
+                          <span className="font-medium">0 - 0</span>
+                          <span>ゲーム開始</span>
+                        </div>
+                      </div>
                       {game.points
                         .sort((a, b) => a.point_number - b.point_number)
                         .map((point: Point) => {
