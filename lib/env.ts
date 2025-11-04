@@ -11,6 +11,11 @@ export const isDebugMode = () => {
   );
 };
 
+// テストモードかどうかを判定
+export const isTestMode = () => {
+  return process.env.NEXT_PUBLIC_TEST_MODE === 'true';
+};
+
 // 管理者かどうかを判定（開発環境または管理者モード）
 export const isAdmin = () => {
   return (
