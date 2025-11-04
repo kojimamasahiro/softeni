@@ -64,27 +64,6 @@ const PublicMatchDetail = ({
     return labels[type] || type;
   };
 
-  const getTotalPoints = () => {
-    if (!match?.games) return 0;
-    return match.games.reduce(
-      (sum, game) => sum + (game.points?.length || 0),
-      0,
-    );
-  };
-
-  const getTotalRallies = () => {
-    if (!match?.games) return 0;
-    return match.games.reduce(
-      (sum, game) =>
-        sum +
-        (game.points?.reduce(
-          (pSum, point) => pSum + (point.rally_count || 0),
-          0,
-        ) || 0),
-      0,
-    );
-  };
-
   // 選手統計を計算する関数
   const getPlayerStats = () => {
     if (!match?.games) return {};
@@ -164,65 +143,6 @@ const PublicMatchDetail = ({
         stats[playerName].points++;
         stats[playerName].gameStats[game.game_number].points++;
       });
-    });
-
-    return stats;
-  };
-
-  // ゲーム統計を計算する関数
-  const getGameStats = () => {
-    if (!match?.games) return {};
-
-    const stats: {
-      [gameNumber: number]: {
-        totalPoints: number;
-        totalRallies: number;
-        avgRallyLength: number;
-        winners: number;
-        errors: number;
-      };
-    } = {};
-
-    match.games.forEach((game) => {
-      if (!game.points) return;
-
-      const totalPoints = game.points.length;
-      const totalRallies = game.points.reduce(
-        (sum, point) => sum + (point.rally_count || 0),
-        0,
-      );
-      const avgRallyLength = totalPoints > 0 ? totalRallies / totalPoints : 0;
-
-      const winnerTypes = [
-        'smash_winner',
-        'volley_winner',
-        'passing_winner',
-        'drop_winner',
-        'service_ace',
-      ];
-      const errorTypes = [
-        'net',
-        'out',
-        'smash_error',
-        'volley_error',
-        'double_fault',
-        'follow_error',
-      ];
-
-      const winners = game.points.filter((point) =>
-        winnerTypes.includes(point.result_type || ''),
-      ).length;
-      const errors = game.points.filter((point) =>
-        errorTypes.includes(point.result_type || ''),
-      ).length;
-
-      stats[game.game_number] = {
-        totalPoints,
-        totalRallies,
-        avgRallyLength,
-        winners,
-        errors,
-      };
     });
 
     return stats;
@@ -397,28 +317,6 @@ const PublicMatchDetail = ({
         </div>
       </div>
 
-      {/* 統計情報 */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-xl font-semibold mb-4">基本統計情報</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="text-center p-4 bg-gray-50 rounded">
-            <div className="text-2xl font-bold">{getTotalPoints()}</div>
-            <div className="text-sm text-gray-600">総ポイント数</div>
-          </div>
-          <div className="text-center p-4 bg-gray-50 rounded">
-            <div className="text-2xl font-bold">
-              {match.games?.filter((game) => game.winner_team === 'A').length} -{' '}
-              {match.games?.filter((game) => game.winner_team === 'B').length}
-            </div>
-            <div className="text-sm text-gray-600">ゲーム数</div>
-          </div>
-          <div className="text-center p-4 bg-gray-50 rounded">
-            <div className="text-2xl font-bold">{getTotalRallies()}</div>
-            <div className="text-sm text-gray-600">総ラリー数</div>
-          </div>
-        </div>
-      </div>
-
       {/* 選手別統計情報 */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">選手別統計情報</h2>
@@ -494,52 +392,6 @@ const PublicMatchDetail = ({
                       </div>
                     ),
                   )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ゲーム別統計情報 */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">ゲーム別統計情報</h2>
-        <div className="grid gap-4">
-          {Object.entries(getGameStats()).map(([gameNumber, stats]) => (
-            <div key={gameNumber} className="border rounded p-4">
-              <h3 className="font-semibold text-lg mb-3">
-                第{gameNumber}ゲーム
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div className="text-center p-3 bg-blue-50 rounded">
-                  <div className="text-xl font-bold text-blue-600">
-                    {stats.totalPoints}
-                  </div>
-                  <div className="text-sm text-blue-700">総ポイント</div>
-                </div>
-                <div className="text-center p-3 bg-purple-50 rounded">
-                  <div className="text-xl font-bold text-purple-600">
-                    {stats.totalRallies}
-                  </div>
-                  <div className="text-sm text-purple-700">総ラリー数</div>
-                </div>
-                <div className="text-center p-3 bg-indigo-50 rounded">
-                  <div className="text-xl font-bold text-indigo-600">
-                    {stats.avgRallyLength.toFixed(1)}
-                  </div>
-                  <div className="text-sm text-indigo-700">平均ラリー</div>
-                </div>
-                <div className="text-center p-3 bg-green-50 rounded">
-                  <div className="text-xl font-bold text-green-600">
-                    {stats.winners}
-                  </div>
-                  <div className="text-sm text-green-700">ウィナー数</div>
-                </div>
-                <div className="text-center p-3 bg-red-50 rounded">
-                  <div className="text-xl font-bold text-red-600">
-                    {stats.errors}
-                  </div>
-                  <div className="text-sm text-red-700">ミス数</div>
                 </div>
               </div>
             </div>
