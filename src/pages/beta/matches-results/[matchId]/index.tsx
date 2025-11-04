@@ -420,7 +420,7 @@ const PublicMatchDetail = ({
       </div>
 
       {/* 選手別統計情報 */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div className="mb-6">
         <h2 className="text-xl font-semibold mb-4">選手別統計情報</h2>
         <div className="space-y-4">
           {Object.entries(getPlayerStats()).map(([playerName, stats]) => (
