@@ -159,49 +159,95 @@ const PublicMatchDetail = ({
       if (!game.points) return;
 
       game.points.forEach((point) => {
-        const playerName = point.winner_player;
-        if (!playerName) return;
-
-        // プレイヤー統計初期化
-        if (!stats[playerName]) {
-          stats[playerName] = {
-            winners: 0,
-            errors: 0,
-            points: 0,
-            serves: {
-              total: 0,
-              aces: 0,
-              doubleFaults: 0,
-              firstServeFaults: 0,
-              firstServeSuccess: 0,
-            },
-            gameStats: {},
-          };
-        }
-
-        // ゲーム統計初期化
-        if (!stats[playerName].gameStats[game.game_number]) {
-          stats[playerName].gameStats[game.game_number] = {
-            winners: 0,
-            errors: 0,
-            points: 0,
-          };
-        }
-
         const resultType = point.result_type || '';
 
-        // ウィナーかミスかを判定
+        // ウィナー系の処理
         if (winnerTypes.includes(resultType)) {
-          stats[playerName].winners++;
-          stats[playerName].gameStats[game.game_number].winners++;
-        } else if (errorTypes.includes(resultType)) {
-          stats[playerName].errors++;
-          stats[playerName].gameStats[game.game_number].errors++;
+          let playerName = point.winner_player;
+
+          // 一意識別子から選手名を抽出
+          if (playerName && playerName.includes('-')) {
+            const parts = playerName.split('-');
+            playerName = parts.slice(2).join('-');
+          }
+
+          if (playerName) {
+            // プレイヤー統計初期化
+            if (!stats[playerName]) {
+              stats[playerName] = {
+                winners: 0,
+                errors: 0,
+                points: 0,
+                serves: {
+                  total: 0,
+                  aces: 0,
+                  doubleFaults: 0,
+                  firstServeFaults: 0,
+                  firstServeSuccess: 0,
+                },
+                gameStats: {},
+              };
+            }
+
+            // ゲーム統計初期化
+            if (!stats[playerName].gameStats[game.game_number]) {
+              stats[playerName].gameStats[game.game_number] = {
+                winners: 0,
+                errors: 0,
+                points: 0,
+              };
+            }
+
+            stats[playerName].winners++;
+            stats[playerName].gameStats[game.game_number].winners++;
+            stats[playerName].points++;
+            stats[playerName].gameStats[game.game_number].points++;
+          }
         }
 
-        // 総ポイント数
-        stats[playerName].points++;
-        stats[playerName].gameStats[game.game_number].points++;
+        // ミス系の処理
+        if (errorTypes.includes(resultType)) {
+          let playerName = point.loser_player;
+
+          // 一意識別子から選手名を抽出
+          if (playerName && playerName.includes('-')) {
+            const parts = playerName.split('-');
+            playerName = parts.slice(2).join('-');
+          }
+
+          if (playerName) {
+            // プレイヤー統計初期化
+            if (!stats[playerName]) {
+              stats[playerName] = {
+                winners: 0,
+                errors: 0,
+                points: 0,
+                serves: {
+                  total: 0,
+                  aces: 0,
+                  doubleFaults: 0,
+                  firstServeFaults: 0,
+                  firstServeSuccess: 0,
+                },
+                gameStats: {},
+              };
+            }
+
+            // ゲーム統計初期化
+            if (!stats[playerName].gameStats[game.game_number]) {
+              stats[playerName].gameStats[game.game_number] = {
+                winners: 0,
+                errors: 0,
+                points: 0,
+              };
+            }
+
+            stats[playerName].errors++;
+            stats[playerName].gameStats[game.game_number].errors++;
+            stats[playerName].points++;
+            stats[playerName].gameStats[game.game_number].points++;
+          }
+        }
       });
 
       // サーブ統計の計算
