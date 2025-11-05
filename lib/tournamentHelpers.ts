@@ -45,6 +45,22 @@ export interface TournamentCategory {
 }
 
 /**
+ * 世代IDから表示用ラベルを取得する
+ */
+const getGenerationLabel = (generation: string): string => {
+  const generationLabels: Record<string, string> = {
+    all: '一般',
+    highschool: '高校生',
+    junior: 'ジュニア',
+    university: '大学生',
+    corporate: '社会人',
+    masters: 'シニア',
+    'international-qualifier': '国際大会',
+  };
+  return generationLabels[generation] || generation;
+};
+
+/**
  * 大会IDから大会情報を取得する
  */
 export const getTournamentInfo = async (
@@ -403,16 +419,70 @@ export const getTournamentCategories = async (
 };
 
 /**
+ * 特定の大会のカテゴリ情報とメタデータを取得する
+ */
+export const getTournamentCategoriesWithMeta = async (
+  tournamentId: string,
+): Promise<{
+  categories: TournamentCategory[];
+  meta: TournamentMeta | null;
+}> => {
+  try {
+    // まず大会リストから該当する大会のメタデータを取得
+    const tournamentsResponse = await fetch('/api/tournaments');
+    const tournamentsData = await tournamentsResponse.json();
+
+    if (!tournamentsResponse.ok || !tournamentsData.tournaments) {
+      throw new Error('Failed to fetch tournaments');
+    }
+
+    // tournamentIdに一致する大会を検索
+    const tournament = tournamentsData.tournaments.find(
+      (t: TournamentOption) => t.id === tournamentId,
+    );
+
+    // カテゴリ情報を取得
+    const categoriesResponse = await fetch(
+      `/api/tournaments/${tournamentId}/categories`,
+    );
+    const categoriesData = await categoriesResponse.json();
+
+    const categories =
+      categoriesResponse.ok && categoriesData.categories
+        ? categoriesData.categories
+        : [];
+
+    return {
+      categories,
+      meta: tournament?.meta || null,
+    };
+  } catch (error) {
+    console.error('Failed to fetch tournament categories with meta:', error);
+    return { categories: [], meta: null };
+  }
+};
+
+/**
  * カテゴリから選択肢を生成する
  */
-export const getCategoryOptions = (categories: TournamentCategory[]) => {
-  // 世代の選択肢
-  const generations = Array.from(
-    new Set(categories.map((cat) => cat.age || 'none')),
-  ).map((age) => ({
-    value: age,
-    label: age === 'none' ? '一般' : age,
-  }));
+export const getCategoryOptions = (
+  categories: TournamentCategory[],
+  meta?: TournamentMeta,
+) => {
+  // 世代の選択肢（TournamentMetaのgenerationを優先使用）
+  const generations = meta
+    ? [
+        {
+          value: meta.generation,
+          label: getGenerationLabel(meta.generation),
+        },
+      ]
+    : Array.from(new Set(categories.map((cat) => cat.age || 'none'))).map(
+        (age) => ({
+          value: age,
+          label: age === 'none' ? '一般' : age,
+        }),
+      );
 
   // 性別の選択肢
   const genders = Array.from(new Set(categories.map((cat) => cat.gender))).map(

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { isDebugMode, isTestMode } from '../../../../lib/env';
 import {
   getCategoryOptions,
-  getTournamentCategories,
+  getTournamentCategoriesWithMeta,
   getTournamentOptions,
 } from '../../../../lib/tournamentHelpers';
 
@@ -119,11 +119,13 @@ const CreateMatch = () => {
       }
 
       try {
-        const tournamentCategories = await getTournamentCategories(
-          formData.tournament_name,
-        );
+        const { categories: tournamentCategories, meta } =
+          await getTournamentCategoriesWithMeta(formData.tournament_name);
 
-        const options = getCategoryOptions(tournamentCategories);
+        const options = getCategoryOptions(
+          tournamentCategories,
+          meta || undefined,
+        );
         setCategoryOptions(options);
 
         // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
