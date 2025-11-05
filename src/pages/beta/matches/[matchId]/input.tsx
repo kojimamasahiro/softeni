@@ -99,24 +99,33 @@ const MatchInput = () => {
     loser_player: '',
   });
 
+  // 選手の一意識別子を生成（チーム + インデックス + 名前）
+  const getPlayerUniqueId = (team: 'A' | 'B', index: number, name: string) => {
+    return `${team}-${index}-${name}`;
+  };
+
+  // 一意識別子から選手名を抽出
+  const getPlayerNameFromId = (uniqueId: string) => {
+    const parts = uniqueId.split('-');
+    return parts.slice(2).join('-'); // チーム(A/B)とインデックス(0/1)を除いた残り
+  };
+
+  // 一意識別子からチームを抽出
+  const getTeamFromPlayerId = (uniqueId: string): 'A' | 'B' | null => {
+    if (uniqueId.startsWith('A-')) return 'A';
+    if (uniqueId.startsWith('B-')) return 'B';
+    return null;
+  };
+
   // 関与選手とプレイタイプから勝者チームを自動決定する関数
   const determineWinnerTeam = (
-    playerName: string,
+    playerUniqueId: string,
     resultType: string,
   ): 'A' | 'B' | null => {
-    if (!playerName || !resultType || !match) return null;
+    if (!playerUniqueId || !resultType || !match) return null;
 
-    // 選手がどのチームに所属しているかを判定
-    const teamAPlayers = getPlayerNamesFromMatch(match, 'A');
-    const teamBPlayers = getPlayerNamesFromMatch(match, 'B');
-
-    let playerTeam: 'A' | 'B' | null = null;
-    if (teamAPlayers.includes(playerName)) {
-      playerTeam = 'A';
-    } else if (teamBPlayers.includes(playerName)) {
-      playerTeam = 'B';
-    }
-
+    // 一意識別子からチームを取得
+    const playerTeam = getTeamFromPlayerId(playerUniqueId);
     if (!playerTeam) return null;
 
     // ウィナー系の結果タイプ
@@ -236,6 +245,14 @@ const MatchInput = () => {
 
     setSubmitting(true);
     try {
+      // 一意識別子から選手名を抽出（新形式の場合）
+      const winnerPlayerName = pointData.winner_player.includes('-')
+        ? getPlayerNameFromId(pointData.winner_player)
+        : pointData.winner_player;
+      const loserPlayerName = pointData.loser_player.includes('-')
+        ? getPlayerNameFromId(pointData.loser_player)
+        : pointData.loser_player;
+
       const response = await fetch(`/api/matches/${matchId}/points`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -247,8 +264,8 @@ const MatchInput = () => {
           first_serve_fault: pointData.first_serve_fault,
           double_fault: pointData.double_fault,
           result_type: pointData.result_type,
-          winner_player: pointData.winner_player,
-          loser_player: pointData.loser_player,
+          winner_player: winnerPlayerName,
+          loser_player: loserPlayerName,
         }),
       });
 
@@ -292,6 +309,14 @@ const MatchInput = () => {
         gamesWonB,
       );
 
+      // 一意識別子から選手名を抽出（新形式の場合）
+      const winnerPlayerName = pointData.winner_player.includes('-')
+        ? getPlayerNameFromId(pointData.winner_player)
+        : pointData.winner_player;
+      const loserPlayerName = pointData.loser_player.includes('-')
+        ? getPlayerNameFromId(pointData.loser_player)
+        : pointData.loser_player;
+
       const response = await fetch(`/api/matches/${matchId}/points`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -304,8 +329,8 @@ const MatchInput = () => {
           first_serve_fault: pointData.first_serve_fault,
           double_fault: pointData.double_fault,
           result_type: pointData.result_type,
-          winner_player: pointData.winner_player,
-          loser_player: pointData.loser_player,
+          winner_player: winnerPlayerName,
+          loser_player: loserPlayerName,
         }),
       });
 
@@ -829,35 +854,42 @@ const MatchInput = () => {
                 </h5>
                 <div className="grid grid-cols-2 gap-1">
                   {getPlayerNamesFromMatch(match, 'A').map(
-                    (playerName: string, index: number) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          const newData = {
-                            ...pointData,
-                            winner_player: playerName,
-                          };
-                          // 結果タイプが設定されていれば勝者チームを自動決定
-                          if (pointData.result_type) {
-                            const autoWinner = determineWinnerTeam(
-                              playerName,
-                              pointData.result_type,
-                            );
-                            if (autoWinner) {
-                              newData.winner_team = autoWinner;
+                    (playerName: string, index: number) => {
+                      const uniqueId = getPlayerUniqueId(
+                        'A',
+                        index,
+                        playerName,
+                      );
+                      return (
+                        <button
+                          key={uniqueId}
+                          onClick={() => {
+                            const newData = {
+                              ...pointData,
+                              winner_player: uniqueId,
+                            };
+                            // 結果タイプが設定されていれば勝者チームを自動決定
+                            if (pointData.result_type) {
+                              const autoWinner = determineWinnerTeam(
+                                uniqueId,
+                                pointData.result_type,
+                              );
+                              if (autoWinner) {
+                                newData.winner_team = autoWinner;
+                              }
                             }
-                          }
-                          setPointData(newData);
-                        }}
-                        className={`p-1 border-2 rounded font-medium transition-all text-xs ${
-                          pointData.winner_player === playerName
-                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                            : 'border-gray-300 hover:border-blue-300'
-                        }`}
-                      >
-                        {playerName}
-                      </button>
-                    ),
+                            setPointData(newData);
+                          }}
+                          className={`p-1 border-2 rounded font-medium transition-all text-xs ${
+                            pointData.winner_player === uniqueId
+                              ? 'border-blue-500 bg-blue-50 text-blue-700'
+                              : 'border-gray-300 hover:border-blue-300'
+                          }`}
+                        >
+                          {playerName}
+                        </button>
+                      );
+                    },
                   )}
                 </div>
               </div>
@@ -868,35 +900,42 @@ const MatchInput = () => {
                 </h5>
                 <div className="grid grid-cols-2 gap-1">
                   {getPlayerNamesFromMatch(match, 'B').map(
-                    (playerName: string, index: number) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          const newData = {
-                            ...pointData,
-                            winner_player: playerName,
-                          };
-                          // 結果タイプが設定されていれば勝者チームを自動決定
-                          if (pointData.result_type) {
-                            const autoWinner = determineWinnerTeam(
-                              playerName,
-                              pointData.result_type,
-                            );
-                            if (autoWinner) {
-                              newData.winner_team = autoWinner;
+                    (playerName: string, index: number) => {
+                      const uniqueId = getPlayerUniqueId(
+                        'B',
+                        index,
+                        playerName,
+                      );
+                      return (
+                        <button
+                          key={uniqueId}
+                          onClick={() => {
+                            const newData = {
+                              ...pointData,
+                              winner_player: uniqueId,
+                            };
+                            // 結果タイプが設定されていれば勝者チームを自動決定
+                            if (pointData.result_type) {
+                              const autoWinner = determineWinnerTeam(
+                                uniqueId,
+                                pointData.result_type,
+                              );
+                              if (autoWinner) {
+                                newData.winner_team = autoWinner;
+                              }
                             }
-                          }
-                          setPointData(newData);
-                        }}
-                        className={`p-1 border-2 rounded font-medium transition-all text-xs ${
-                          pointData.winner_player === playerName
-                            ? 'border-red-500 bg-red-50 text-red-700'
-                            : 'border-gray-300 hover:border-red-300'
-                        }`}
-                      >
-                        {playerName}
-                      </button>
-                    ),
+                            setPointData(newData);
+                          }}
+                          className={`p-1 border-2 rounded font-medium transition-all text-xs ${
+                            pointData.winner_player === uniqueId
+                              ? 'border-red-500 bg-red-50 text-red-700'
+                              : 'border-gray-300 hover:border-red-300'
+                          }`}
+                        >
+                          {playerName}
+                        </button>
+                      );
+                    },
                   )}
                 </div>
               </div>
@@ -1024,7 +1063,13 @@ const MatchInput = () => {
                             <div className="text-xs text-gray-600">
                               {point.result_type} ({point.rally_count}ラリー)
                               {point.winner_player && (
-                                <span> - {point.winner_player}</span>
+                                <span>
+                                  {' '}
+                                  -{' '}
+                                  {point.winner_player.includes('-')
+                                    ? getPlayerNameFromId(point.winner_player)
+                                    : point.winner_player}
+                                </span>
                               )}
                             </div>
                           </div>
