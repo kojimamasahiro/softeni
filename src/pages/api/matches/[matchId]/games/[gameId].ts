@@ -11,14 +11,24 @@ export default async function handler(
 
   if (req.method === 'PATCH') {
     try {
-      const { initial_serve_team } = req.body;
+      const { initial_serve_team, initial_serve_player_index } = req.body;
+
+      // 更新データを準備
+      const updateData: {
+        initial_serve_team?: string;
+        initial_serve_player_index?: number;
+      } = {};
+      if (initial_serve_team !== undefined) {
+        updateData.initial_serve_team = initial_serve_team;
+      }
+      if (initial_serve_player_index !== undefined) {
+        updateData.initial_serve_player_index = initial_serve_player_index;
+      }
 
       // ゲーム情報を更新
       const { data: game, error } = await supabase
         .from('games')
-        .update({
-          initial_serve_team,
-        })
+        .update(updateData)
         .eq('id', gameId as string)
         .eq('match_id', matchId as string)
         .select()

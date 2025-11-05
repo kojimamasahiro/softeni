@@ -388,7 +388,10 @@ const MatchInput = () => {
   };
 
   // サーブ権を決定してゲームを開始
-  const handleServeTeamSelected = async (selectedTeam: 'A' | 'B') => {
+  const handleServeTeamSelected = async (
+    selectedTeam: 'A' | 'B',
+    playerIndex?: number,
+  ) => {
     if (!match) return;
 
     const gameToUpdate = currentGame;
@@ -397,6 +400,8 @@ const MatchInput = () => {
     try {
       // 第1ゲームの場合は選択されたチーム、それ以外は自動計算
       let initialServe: 'A' | 'B';
+      let initialPlayerIndex = playerIndex ?? 0;
+
       if (gameToUpdate.game_number === 1) {
         initialServe = selectedTeam;
         setInitialServeTeam(selectedTeam);
@@ -410,9 +415,11 @@ const MatchInput = () => {
           gameToUpdate.game_number,
           initialServeTeam,
         );
+        // 他のゲームでは、デフォルトで0番目の選手から開始（ユーザーが選択した場合はそれを使用）
+        initialPlayerIndex = playerIndex ?? 0;
       }
 
-      // ゲームのサーブ権を更新
+      // ゲームのサーブ権と初期サーブ選手を更新
       const response = await fetch(
         `/api/matches/${matchId}/games/${gameToUpdate.id}`,
         {
@@ -420,6 +427,7 @@ const MatchInput = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             initial_serve_team: initialServe,
+            initial_serve_player_index: initialPlayerIndex,
           }),
         },
       );
@@ -510,6 +518,7 @@ const MatchInput = () => {
       gamesWonA,
       gamesWonB,
       teamPlayers,
+      currentGame.initial_serve_player_index ?? undefined,
     );
 
     const playerName = teamPlayers[playerIndex] || teamPlayers[0] || '';
@@ -553,6 +562,7 @@ const MatchInput = () => {
       gamesWonA,
       gamesWonB,
       teamPlayers,
+      game.initial_serve_player_index ?? undefined,
     );
 
     const playerName = teamPlayers[playerIndex] || teamPlayers[0] || '';
@@ -643,7 +653,17 @@ const MatchInput = () => {
         <ServeSelection
           teamA={match.team_a || 'チーム A'}
           teamB={match.team_b || 'チーム B'}
+          teamAPlayers={getPlayerNamesFromMatch(match, 'A')}
+          teamBPlayers={getPlayerNamesFromMatch(match, 'B')}
           gameNumber={currentGame.game_number}
+          preselectedTeam={
+            currentGame.game_number > 1 && initialServeTeam
+              ? determineInitialServeTeam(
+                  currentGame.game_number,
+                  initialServeTeam,
+                )
+              : undefined
+          }
           onServeTeamSelected={handleServeTeamSelected}
         />
       )}

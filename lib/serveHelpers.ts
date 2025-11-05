@@ -127,6 +127,7 @@ export function getServeDisplayText(servingTeam: 'A' | 'B'): string {
  * @param gamesWonA チームAの勝利ゲーム数
  * @param gamesWonB チームBの勝利ゲーム数
  * @param teamPlayers サーブチームの選手配列
+ * @param initialPlayerIndex 初期サーブ選手のインデックス（オプション）
  * @returns サーブを行う選手のインデックス（0または1）
  */
 export function getCurrentServingPlayerIndex(
@@ -136,22 +137,26 @@ export function getCurrentServingPlayerIndex(
   gamesWonA: number = 0,
   gamesWonB: number = 0,
   teamPlayers: string[] = [],
+  initialPlayerIndex?: number,
 ): number {
   // シングルスの場合は常に0番目の選手
   if (teamPlayers.length <= 1) {
     return 0;
   }
 
+  // 初期サーブ選手のインデックスを取得（game.initial_serve_player_indexまたは引数から）
+  const gameInitialPlayerIndex =
+    game.initial_serve_player_index ?? initialPlayerIndex ?? 0;
+
   const finalGame = isFinalGame(game.game_number, bestOf, gamesWonA, gamesWonB);
 
   if (finalGame) {
     // ファイナルゲームの場合：2ポイントごとにサーブ権が交代し、さらにチーム内でも選手が交代
-    // ポイント1-2: 選手A、ポイント3-4: 選手B、ポイント5-6: 選手A...（相手チームにサーブ権が移った場合も同様）
+    // ポイント1-2: 初期選手、ポイント3-4: もう一方の選手、ポイント5-6: 初期選手...（相手チームにサーブ権が移った場合も同様）
     const switchCount = Math.floor((pointNumber - 1) / 2);
-    return switchCount % 2;
+    return (gameInitialPlayerIndex + switchCount) % 2;
   } else {
     // 通常のゲームの場合：ゲーム開始時に決定された選手がずっとサーブ
-    // ゲーム番号によって決定（奇数ゲーム：選手0、偶数ゲーム：選手1）
-    return (game.game_number - 1) % 2;
+    return gameInitialPlayerIndex;
   }
 }
