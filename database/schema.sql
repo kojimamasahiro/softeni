@@ -4,6 +4,7 @@
 CREATE TABLE matches (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tournament_name TEXT,
+  tournament_id TEXT,
   tournament_generation TEXT,
   tournament_gender TEXT,
   tournament_category TEXT,
@@ -45,6 +46,7 @@ CREATE TABLE points (
 CREATE INDEX idx_games_match_id ON games(match_id);
 CREATE INDEX idx_points_game_id ON points(game_id);
 CREATE INDEX idx_matches_created_at ON matches(created_at);
+CREATE INDEX idx_matches_tournament_id ON matches(tournament_id);
 
 -- サンプルデータ（テスト用）
 /*

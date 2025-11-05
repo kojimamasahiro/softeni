@@ -245,6 +245,9 @@ data/tournaments/
 # カラム追加（初回セットアップ時）
 node scripts/database/add-columns.mjs
 
+# tournament_idカラム追加
+node scripts/database/add-tournament-id-migration.mjs
+
 # テストマッチ作成
 node scripts/database/create-test-match.mjs
 

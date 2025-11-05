@@ -219,10 +219,11 @@ export const getTournamentInfoSSR = async (
  */
 export const generateTournamentUrlFromMatch = (match: {
   tournament_name: string | null;
+  tournament_id?: string | null;
   tournament_generation: string | null;
   tournament_gender: string | null;
   tournament_category: string | null;
-  tournament_year?: number | null; // TODO: データベースにカラム追加後に必須にする
+  tournament_year?: number | null;
 }): string | null => {
   // 必要な情報が不足している場合はnullを返す
   if (
@@ -234,20 +235,8 @@ export const generateTournamentUrlFromMatch = (match: {
     return null;
   }
 
-  // tournament_nameからIDを推測（簡単なマッピング）
-  const tournamentIdMapping: Record<string, string> = {
-    全日本選手権: 'zennihon-championship',
-    全日本社会人選手権: 'japan-business-championship',
-    全日本インドア: 'zennihon-indoor',
-    全日本ミックスダブルス: 'zennihon-mix-doubles',
-    全日本シングルス: 'zennihon-singles',
-    国際大会予選: 'international-qualifier',
-    高校選手権: 'highschool-championship',
-  };
-
-  const tournamentId = match.tournament_name
-    ? tournamentIdMapping[match.tournament_name]
-    : null;
+  // tournament_idを使用
+  const tournamentId = match.tournament_id;
 
   if (!tournamentId) {
     return null;

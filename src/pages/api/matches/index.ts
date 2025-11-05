@@ -66,12 +66,16 @@ export default async function handler(
         teams,
       });
 
+      // tournament_nameからtournament_idを取得
+      const tournament_id = tournament_name || null;
+
       // マッチを作成
       const { data: match, error: matchError } = await supabase
         .from('matches')
         .insert([
           {
             tournament_name,
+            tournament_id,
             tournament_generation,
             tournament_gender,
             tournament_category,

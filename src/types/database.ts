@@ -13,6 +13,7 @@ export interface MatchTeam {
 export interface Match {
   id: string;
   tournament_name: string | null;
+  tournament_id: string | null;
   tournament_generation: string | null;
   tournament_gender: string | null;
   tournament_category: string | null;
