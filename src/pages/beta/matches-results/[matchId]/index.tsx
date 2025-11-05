@@ -710,43 +710,51 @@ const PublicMatchDetail = ({
                 )}
 
                 {/* ゲーム別統計 */}
-                <div className="mt-4">
-                  <h5 className="font-medium text-sm mb-2">ゲーム別詳細</h5>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                    {Object.entries(stats.gameStats).map(
-                      ([gameNumber, gameStats]) => (
-                        <div
-                          key={gameNumber}
-                          className="text-xs p-2 bg-gray-50 rounded"
-                        >
-                          <div className="font-medium mb-1">
-                            第{gameNumber}ゲーム
-                          </div>
-                          <div className="space-y-1">
-                            <div className="flex justify-between">
-                              <span>ウィナー:</span>
-                              <span className="text-green-600 font-medium">
-                                {gameStats.winners}
-                              </span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span>ミス:</span>
-                              <span className="text-red-600 font-medium">
-                                {gameStats.errors}
-                              </span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span>関与:</span>
-                              <span className="font-medium">
-                                {gameStats.points}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      ),
-                    )}
+                {Object.keys(stats.gameStats).length > 0 && (
+                  <div className="mt-4">
+                    <h5 className="font-medium text-sm mb-3">ゲーム別詳細</h5>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead className="text-xs">
+                          <tr className="border-b border-gray-200">
+                            <th className="px-2 py-2 text-left font-medium text-gray-700">
+                              ゲーム
+                            </th>
+                            <th className="px-2 py-2 text-center font-medium text-gray-700">
+                              ウィナー
+                            </th>
+                            <th className="px-2 py-2 text-center font-medium text-gray-700">
+                              ミス
+                            </th>
+                            <th className="px-2 py-2 text-center font-medium text-gray-700">
+                              関与
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.entries(stats.gameStats)
+                            .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                            .map(([gameNumber, gameStats]) => (
+                              <tr key={gameNumber}>
+                                <td className="px-2 py-1 font-medium">
+                                  第{gameNumber}ゲーム
+                                </td>
+                                <td className="px-2 py-1 text-center font-medium">
+                                  {gameStats.winners}
+                                </td>
+                                <td className="px-2 py-1 text-center font-medium">
+                                  {gameStats.errors}
+                                </td>
+                                <td className="px-2 py-1 text-center font-medium">
+                                  {gameStats.points}
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             );
 
