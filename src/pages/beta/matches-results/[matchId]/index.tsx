@@ -660,7 +660,7 @@ const PublicMatchDetail = ({
                     <h5 className="font-medium text-sm mb-3">サーブ統計</h5>
 
                     {/* サーブ統計カード */}
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-gray-600">
                           {stats.serves.total}
@@ -679,32 +679,6 @@ const PublicMatchDetail = ({
                         </div>
                         <div className="text-xs text-red-700">
                           ダブルフォルト
-                        </div>
-                      </div>
-                      <div className="text-center p-3 bg-green-50 rounded">
-                        <div className="text-xl font-bold text-green-600">
-                          {(
-                            (stats.serves.firstServeSuccess /
-                              Math.max(stats.serves.total, 1)) *
-                            100
-                          ).toFixed(1)}
-                          %
-                        </div>
-                        <div className="text-xs text-green-700">
-                          1stサーブ成功率
-                        </div>
-                      </div>
-                      <div className="text-center p-3 bg-red-50 rounded">
-                        <div className="text-xl font-bold text-red-600">
-                          {(
-                            (stats.serves.doubleFaults /
-                              Math.max(stats.serves.total, 1)) *
-                            100
-                          ).toFixed(1)}
-                          %
-                        </div>
-                        <div className="text-xs text-red-700">
-                          ダブルフォルト率
                         </div>
                       </div>
                     </div>
