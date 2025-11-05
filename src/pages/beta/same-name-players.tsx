@@ -81,9 +81,14 @@ export default function SameNamePlayerPage({
   const [searchQuery, setSearchQuery] = useState('');
 
   // 検索クエリに一致する部分をハイライトする関数
-  const highlightMatch = (text: string, query: string) => {
-    if (!query.trim()) return text;
+  const highlightMatch = (text: string, searchQuery: string) => {
+    if (!searchQuery.trim()) return text;
 
+    // スペース区切りで複数のクエリを処理
+    const queries = searchQuery.toLowerCase().trim().split(/\s+/);
+
+    // 最初のクエリのみハイライト（シンプルな実装）
+    const query = queries[0];
     const regex = new RegExp(
       `(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
       'gi',
@@ -113,24 +118,31 @@ export default function SameNamePlayerPage({
 
         // 検索クエリフィルター
         if (searchQuery.trim()) {
-          const query = searchQuery.toLowerCase().trim();
-          // 選手名での検索
-          if (group.fullName.toLowerCase().includes(query)) return true;
-          // チーム名での検索
-          if (
-            group.differentTeams.some((team) =>
-              team.toLowerCase().includes(query),
-            )
-          )
-            return true;
-          // 大会名での検索
-          if (
-            group.players.some((player) =>
-              player.tournamentName.toLowerCase().includes(query),
-            )
-          )
-            return true;
-          return false;
+          // スペース区切りでAND検索
+          const queries = searchQuery.toLowerCase().trim().split(/\s+/);
+
+          // 大会記録でのAND検索
+          // 少なくとも1つの大会記録ですべてのクエリが一致する必要がある
+          return group.players.some((player) => {
+            return queries.every((query) => {
+              return (
+                // 選手名での検索
+                group.fullName.toLowerCase().includes(query) ||
+                // チーム名での検索
+                player.team.toLowerCase().includes(query) ||
+                // 大会名での検索
+                player.tournamentName.toLowerCase().includes(query) ||
+                // カテゴリラベルでの検索
+                player.categoryLabel.toLowerCase().includes(query) ||
+                // 年度での検索
+                player.year.includes(query) ||
+                `${player.year}年`.includes(query) ||
+                // 都道府県での検索
+                (player.prefecture &&
+                  player.prefecture.toLowerCase().includes(query))
+              );
+            });
+          });
         }
 
         return true;
@@ -213,7 +225,11 @@ export default function SameNamePlayerPage({
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                 <strong>検索機能:</strong>{' '}
-                選手名、チーム名、大会名で検索できます。部分一致で絞り込み可能です。
+                選手名、チーム名、大会名、年度、カテゴリ、都道府県で検索できます。
+                <br />
+                複数のキーワードをスペースで区切るとAND検索が可能です。
+                <br />
+                1つの大会記録ですべての条件が満たされる必要があります。
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 対象データ: {totalResults.toLocaleString()}件の大会結果
@@ -227,12 +243,12 @@ export default function SameNamePlayerPage({
               htmlFor="searchQuery"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
-              検索（選手名、チーム名、大会名）
+              大会記録検索（スペース区切りでAND検索）
             </label>
             <input
               id="searchQuery"
               type="text"
-              placeholder="例: 田中、全日本、明大..."
+              placeholder="例: 田中 全日本 2024、佐藤 明大 優勝..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -410,7 +426,9 @@ export default function SameNamePlayerPage({
                     」に該当する同姓同名選手が見つかりませんでした。
                   </p>
                   <p className="text-sm">
-                    別のキーワードで検索するか、検索条件を緩めてお試しください。
+                    選手名、チーム名、大会名、年度、カテゴリ、都道府県で検索できます。
+                    <br />
+                    1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードで検索するか、検索条件を緩めてお試しください。
                   </p>
                   <button
                     onClick={() => setSearchQuery('')}
