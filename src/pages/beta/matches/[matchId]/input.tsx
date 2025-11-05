@@ -4,8 +4,8 @@ import { useCallback as reactUseCallback, useEffect, useState } from 'react';
 import { isDebugMode } from '../../../../../lib/env';
 import {
   determineInitialServeTeam,
+  getCurrentServingPlayerIndex,
   getCurrentServingTeam,
-  getServeDisplayText,
 } from '../../../../../lib/serveHelpers';
 import ServeSelection from '../../../../components/ServeSelection';
 import { Game, Match, Point } from '../../../../types/database';
@@ -480,6 +480,90 @@ const MatchInput = () => {
     );
   };
 
+  // 現在のサーブ選手を取得
+  const getCurrentServingPlayer = (): {
+    team: 'A' | 'B';
+    playerName: string;
+    playerIndex: number;
+  } | null => {
+    if (!currentGame || !currentGame.initial_serve_team || !match) return null;
+
+    const nextPointNumber = (currentGame.points?.length || 0) + 1;
+    const gamesWonA =
+      match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+    const gamesWonB =
+      match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+
+    const servingTeam = getCurrentServingTeam(
+      currentGame,
+      nextPointNumber,
+      match.best_of,
+      gamesWonA,
+      gamesWonB,
+    );
+
+    const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
+    const playerIndex = getCurrentServingPlayerIndex(
+      currentGame,
+      nextPointNumber,
+      match.best_of,
+      gamesWonA,
+      gamesWonB,
+      teamPlayers,
+    );
+
+    const playerName = teamPlayers[playerIndex] || teamPlayers[0] || '';
+
+    return {
+      team: servingTeam,
+      playerName,
+      playerIndex,
+    };
+  };
+
+  // 特定のポイントでのサーブ選手を取得
+  const getServingPlayerForPoint = (
+    game: Game,
+    pointNumber: number,
+  ): {
+    team: 'A' | 'B';
+    playerName: string;
+    playerIndex: number;
+  } | null => {
+    if (!game.initial_serve_team || !match) return null;
+
+    const gamesWonA =
+      match.games?.filter((g: Game) => g.winner_team === 'A').length || 0;
+    const gamesWonB =
+      match.games?.filter((g: Game) => g.winner_team === 'B').length || 0;
+
+    const servingTeam = getCurrentServingTeam(
+      game,
+      pointNumber,
+      match.best_of,
+      gamesWonA,
+      gamesWonB,
+    );
+
+    const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
+    const playerIndex = getCurrentServingPlayerIndex(
+      game,
+      pointNumber,
+      match.best_of,
+      gamesWonA,
+      gamesWonB,
+      teamPlayers,
+    );
+
+    const playerName = teamPlayers[playerIndex] || teamPlayers[0] || '';
+
+    return {
+      team: servingTeam,
+      playerName,
+      playerIndex,
+    };
+  };
+
   // 開発環境でない場合はアクセス拒否
   if (!isDebugMode()) {
     return (
@@ -626,7 +710,12 @@ const MatchInput = () => {
                 }`}
               >
                 <div className="text-center">
-                  {getServeDisplayText(getCurrentServe() || 'A')}
+                  <div className="font-semibold">
+                    {getCurrentServingPlayer()?.playerName || 'サーブ選手未定'}
+                  </div>
+                  <div className="text-sm mt-1">
+                    🏓 チーム{getCurrentServe()}のサーブ
+                  </div>
                 </div>
               </div>
             )}
@@ -664,6 +753,13 @@ const MatchInput = () => {
               <p className="text-sm text-blue-600 mt-1">
                 #{editingPoint.point_number} を編集中
               </p>
+            )}
+            {!isEditMode && getCurrentServingPlayer() && (
+              <div className="mt-2 p-2 bg-yellow-50 border border-yellow-200 rounded">
+                <p className="text-sm font-medium text-yellow-800">
+                  次のサーブ: {getCurrentServingPlayer()?.playerName}
+                </p>
+              </div>
             )}
           </div>
 
@@ -1058,7 +1154,16 @@ const MatchInput = () => {
                               </div>
                             </div>
                             <div className="text-xs text-gray-600">
-                              🏓 {point.serving_team}のサーブ
+                              🏓{' '}
+                              {(() => {
+                                const servingPlayer = getServingPlayerForPoint(
+                                  game,
+                                  point.point_number,
+                                );
+                                return servingPlayer
+                                  ? `${servingPlayer.playerName} (チーム${point.serving_team})`
+                                  : `チーム${point.serving_team}のサーブ`;
+                              })()}
                             </div>
                             <div className="text-xs text-gray-600">
                               {point.result_type} ({point.rally_count}ラリー)
