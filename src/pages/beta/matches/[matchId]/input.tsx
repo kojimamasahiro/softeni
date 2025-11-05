@@ -795,10 +795,19 @@ const MatchInput = () => {
               <button
                 onClick={() => {
                   const currentServe = getCurrentServe();
+                  const servingPlayer = getCurrentServingPlayer();
+                  const servingPlayerName = servingPlayer?.playerName || '';
+                  const servingPlayerKey = getPlayerUniqueId(
+                    servingPlayer?.team || currentServe || 'A',
+                    servingPlayer?.playerIndex || 0,
+                    servingPlayerName,
+                  );
+
                   setPointData({
                     ...pointData,
                     result_type: 'service_ace',
                     winner_team: currentServe || 'A',
+                    winner_player: servingPlayerKey,
                     rally_count: 1,
                   });
                 }}
@@ -829,11 +838,20 @@ const MatchInput = () => {
                 onClick={() => {
                   const currentServe = getCurrentServe();
                   const oppositeTeam = currentServe === 'A' ? 'B' : 'A';
+                  const servingPlayer = getCurrentServingPlayer();
+                  const servingPlayerName = servingPlayer?.playerName || '';
+                  const servingPlayerKey = getPlayerUniqueId(
+                    servingPlayer?.team || currentServe || 'A',
+                    servingPlayer?.playerIndex || 0,
+                    servingPlayerName,
+                  );
+
                   setPointData({
                     ...pointData,
                     result_type: 'double_fault',
                     double_fault: true,
                     winner_team: oppositeTeam,
+                    loser_player: servingPlayerKey,
                     rally_count: 1,
                   });
                 }}
@@ -968,6 +986,9 @@ const MatchInput = () => {
           {/* 関与選手 */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2 text-center">関与選手</h4>
+            <p className="text-xs text-gray-500 text-center mb-2">
+              💡 ウィナー系は青、ミス系はオレンジでハイライト
+            </p>
             <div className="grid grid-cols-2 gap-2">
               {/* チームA選手 */}
               <div>
@@ -986,18 +1007,50 @@ const MatchInput = () => {
                         <button
                           key={uniqueId}
                           onClick={() => {
-                            const newData = {
-                              ...pointData,
-                              winner_player: uniqueId,
-                            };
+                            const newData = { ...pointData };
+
+                            // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
+                            const errorTypes = [
+                              'net',
+                              'out',
+                              'smash_error',
+                              'volley_error',
+                              'double_fault',
+                              'receive_error',
+                              'follow_error',
+                            ];
+                            if (
+                              pointData.result_type &&
+                              errorTypes.includes(pointData.result_type)
+                            ) {
+                              newData.loser_player = uniqueId;
+                              // winner_playerをクリアする場合もある
+                              if (pointData.winner_player === uniqueId) {
+                                newData.winner_player = '';
+                              }
+                            } else {
+                              newData.winner_player = uniqueId;
+                              // loser_playerをクリアする場合もある
+                              if (pointData.loser_player === uniqueId) {
+                                newData.loser_player = '';
+                              }
+                            }
+
                             // 結果タイプが設定されていれば勝者チームを自動決定
                             if (pointData.result_type) {
-                              const autoWinner = determineWinnerTeam(
-                                uniqueId,
+                              const playerFieldToUse = errorTypes.includes(
                                 pointData.result_type,
-                              );
-                              if (autoWinner) {
-                                newData.winner_team = autoWinner;
+                              )
+                                ? newData.loser_player
+                                : newData.winner_player;
+                              if (playerFieldToUse) {
+                                const autoWinner = determineWinnerTeam(
+                                  playerFieldToUse,
+                                  pointData.result_type,
+                                );
+                                if (autoWinner) {
+                                  newData.winner_team = autoWinner;
+                                }
                               }
                             }
                             setPointData(newData);
@@ -1005,7 +1058,9 @@ const MatchInput = () => {
                           className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                             pointData.winner_player === uniqueId
                               ? 'border-blue-500 bg-blue-50 text-blue-700'
-                              : 'border-gray-300 hover:border-blue-300'
+                              : pointData.loser_player === uniqueId
+                                ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                : 'border-gray-300 hover:border-blue-300'
                           }`}
                         >
                           {playerName}
@@ -1032,18 +1087,50 @@ const MatchInput = () => {
                         <button
                           key={uniqueId}
                           onClick={() => {
-                            const newData = {
-                              ...pointData,
-                              winner_player: uniqueId,
-                            };
+                            const newData = { ...pointData };
+
+                            // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
+                            const errorTypes = [
+                              'net',
+                              'out',
+                              'smash_error',
+                              'volley_error',
+                              'double_fault',
+                              'receive_error',
+                              'follow_error',
+                            ];
+                            if (
+                              pointData.result_type &&
+                              errorTypes.includes(pointData.result_type)
+                            ) {
+                              newData.loser_player = uniqueId;
+                              // winner_playerをクリアする場合もある
+                              if (pointData.winner_player === uniqueId) {
+                                newData.winner_player = '';
+                              }
+                            } else {
+                              newData.winner_player = uniqueId;
+                              // loser_playerをクリアする場合もある
+                              if (pointData.loser_player === uniqueId) {
+                                newData.loser_player = '';
+                              }
+                            }
+
                             // 結果タイプが設定されていれば勝者チームを自動決定
                             if (pointData.result_type) {
-                              const autoWinner = determineWinnerTeam(
-                                uniqueId,
+                              const playerFieldToUse = errorTypes.includes(
                                 pointData.result_type,
-                              );
-                              if (autoWinner) {
-                                newData.winner_team = autoWinner;
+                              )
+                                ? newData.loser_player
+                                : newData.winner_player;
+                              if (playerFieldToUse) {
+                                const autoWinner = determineWinnerTeam(
+                                  playerFieldToUse,
+                                  pointData.result_type,
+                                );
+                                if (autoWinner) {
+                                  newData.winner_team = autoWinner;
+                                }
                               }
                             }
                             setPointData(newData);
@@ -1051,7 +1138,9 @@ const MatchInput = () => {
                           className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                             pointData.winner_player === uniqueId
                               ? 'border-red-500 bg-red-50 text-red-700'
-                              : 'border-gray-300 hover:border-red-300'
+                              : pointData.loser_player === uniqueId
+                                ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                : 'border-gray-300 hover:border-red-300'
                           }`}
                         >
                           {playerName}
