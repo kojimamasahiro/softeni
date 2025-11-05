@@ -659,30 +659,6 @@ const PublicMatchDetail = ({
                   <div className="mb-4">
                     <h5 className="font-medium text-sm mb-3">サーブ統計</h5>
 
-                    {/* サーブ統計カード */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
-                      <div className="text-center p-3 bg-gray-50 rounded">
-                        <div className="text-xl font-bold text-gray-600">
-                          {stats.serves.total}
-                        </div>
-                        <div className="text-xs text-gray-700">総サーブ数</div>
-                      </div>
-                      <div className="text-center p-3 bg-green-50 rounded">
-                        <div className="text-xl font-bold text-green-600">
-                          {stats.serves.aces}
-                        </div>
-                        <div className="text-xs text-green-700">エース</div>
-                      </div>
-                      <div className="text-center p-3 bg-red-50 rounded">
-                        <div className="text-xl font-bold text-red-600">
-                          {stats.serves.doubleFaults}
-                        </div>
-                        <div className="text-xs text-red-700">
-                          ダブルフォルト
-                        </div>
-                      </div>
-                    </div>
-
                     {/* サーブ横棒グラフ */}
                     {(() => {
                       const total = stats.serves.total;
@@ -701,11 +677,7 @@ const PublicMatchDetail = ({
                       const acePercent = (aces / total) * 100;
 
                       return (
-                        <div className="bg-gray-50 rounded p-4">
-                          <h6 className="font-medium text-xs text-gray-600 mb-4 text-center">
-                            サーブ構成 (総{total}本)
-                          </h6>
-
+                        <div className="rounded p-4">
                           {/* 横棒グラフ */}
                           <div className="space-y-4">
                             {/* 総サーブ数の棒グラフ */}
