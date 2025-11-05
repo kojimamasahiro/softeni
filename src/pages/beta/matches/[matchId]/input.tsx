@@ -85,6 +85,11 @@ const MatchInput = () => {
   );
   const [editingPoint, setEditingPoint] = useState<Point | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
+  // 手動サーブ選手選択
+  const [manualServingPlayer, setManualServingPlayer] = useState<{
+    team: 'A' | 'B';
+    playerIndex: number;
+  } | null>(null);
 
   // ポイント入力フォームの状態
   // 関与選手
@@ -354,6 +359,21 @@ const MatchInput = () => {
 
         // マッチデータを再取得
         await fetchMatch();
+
+        // 次のポイントでサーブチームが変わる場合、手動選択をリセット
+        const nextServingTeam = getCurrentServingTeam(
+          currentGame,
+          nextPointNumber + 1,
+          match.best_of,
+          gamesWonA,
+          gamesWonB,
+        );
+        if (
+          manualServingPlayer &&
+          manualServingPlayer.team !== nextServingTeam
+        ) {
+          setManualServingPlayer(null);
+        }
       }
     } catch (error) {
       console.error('Failed to submit point:', error);
@@ -440,6 +460,8 @@ const MatchInput = () => {
       if (response.ok) {
         await fetchMatch();
         setNeedsServeSelection(false);
+        // 新しいゲーム開始時に手動サーブ選択をリセット
+        setManualServingPlayer(null);
       }
     } catch (error) {
       console.error('Failed to set serve team:', error);
@@ -515,6 +537,19 @@ const MatchInput = () => {
       gamesWonB,
     );
 
+    // 手動選択が有効で、正しいチームが選択されている場合
+    if (manualServingPlayer && manualServingPlayer.team === servingTeam) {
+      const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
+      const playerName =
+        teamPlayers[manualServingPlayer.playerIndex] || teamPlayers[0] || '';
+      return {
+        team: servingTeam,
+        playerName,
+        playerIndex: manualServingPlayer.playerIndex,
+      };
+    }
+
+    // 自動計算
     const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
     const playerIndex = getCurrentServingPlayerIndex(
       currentGame,
@@ -777,10 +812,63 @@ const MatchInput = () => {
               </p>
             )}
             {!isEditMode && getCurrentServingPlayer() && (
-              <div className="mt-2 p-2 bg-yellow-50 border border-yellow-200 rounded">
-                <p className="text-sm font-medium text-yellow-800">
-                  サーバー: {getCurrentServingPlayer()?.playerName}
-                </p>
+              <div className="mt-2 space-y-2">
+                <div className="p-2 bg-yellow-50 border border-yellow-200 rounded">
+                  <p className="text-sm font-medium text-yellow-800">
+                    サーバー: {getCurrentServingPlayer()?.playerName}
+                    {manualServingPlayer && (
+                      <span className="text-xs text-blue-600 ml-2">
+                        (手動選択)
+                      </span>
+                    )}
+                  </p>
+                </div>
+
+                {/* 手動サーブ選手選択 */}
+                {match &&
+                  currentGame &&
+                  (() => {
+                    const servingTeam = getCurrentServe();
+                    if (!servingTeam) return null;
+
+                    const teamPlayers = getPlayerNamesFromMatch(
+                      match,
+                      servingTeam,
+                    );
+                    if (teamPlayers.length <= 1) return null; // シングルスの場合は表示しない
+
+                    return (
+                      <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                        <div className="flex gap-2">
+                          {teamPlayers.map((playerName, index) => (
+                            <button
+                              key={index}
+                              onClick={() => {
+                                setManualServingPlayer({
+                                  team: servingTeam,
+                                  playerIndex: index,
+                                });
+                              }}
+                              className={`px-3 py-1 text-xs border rounded font-medium transition-all ${
+                                manualServingPlayer?.team === servingTeam &&
+                                manualServingPlayer?.playerIndex === index
+                                  ? 'border-blue-500 bg-blue-100 text-blue-700'
+                                  : 'border-gray-300 hover:border-blue-300 text-gray-700'
+                              }`}
+                            >
+                              {playerName}
+                            </button>
+                          ))}
+                          <button
+                            onClick={() => setManualServingPlayer(null)}
+                            className="px-3 py-1 text-xs border border-gray-300 rounded text-gray-600 hover:border-red-300 hover:text-red-600"
+                          >
+                            自動
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })()}
               </div>
             )}
           </div>
@@ -983,9 +1071,6 @@ const MatchInput = () => {
           {/* 関与選手 */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2 text-center">関与選手</h4>
-            <p className="text-xs text-gray-500 text-center mb-2">
-              💡 ウィナー系は青、ミス系はオレンジでハイライト
-            </p>
             <div className="grid grid-cols-2 gap-2">
               {/* チームA選手 */}
               <div>
@@ -1154,11 +1239,6 @@ const MatchInput = () => {
           <div className="mb-4">
             <div className="text-center mb-2">
               <h4 className="text-sm font-medium">勝者チーム</h4>
-              {pointData.winner_player && pointData.result_type && (
-                <p className="text-xs text-gray-500 mt-1">
-                  💡 関与選手と結果から自動判定されます
-                </p>
-              )}
             </div>
             <div className="grid grid-cols-2 gap-2">
               <button
