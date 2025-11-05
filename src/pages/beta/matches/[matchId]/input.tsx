@@ -930,8 +930,8 @@ const MatchInput = () => {
                       >
                         {/* サーバー表示 */}
                         <div className="p-2 bg-yellow-50 border border-yellow-200 rounded">
-                          <p className="text-sm font-medium text-yellow-800">
-                            サーバー: {getCurrentServingPlayer()?.playerName}
+                          <p className="text-m font-medium text-yellow-800">
+                            サーブ: {getCurrentServingPlayer()?.playerName}
                             {manualServingPlayer && (
                               <span className="text-xs text-blue-600 ml-2">
                                 (手動選択)
