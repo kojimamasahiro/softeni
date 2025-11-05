@@ -119,6 +119,12 @@ const PublicMatchDetail = ({
         winners: number;
         errors: number;
         points: number;
+        winnerBreakdown: {
+          [winnerType: string]: number;
+        };
+        errorBreakdown: {
+          [errorType: string]: number;
+        };
         serves: {
           total: number;
           aces: number;
@@ -178,6 +184,8 @@ const PublicMatchDetail = ({
                 winners: 0,
                 errors: 0,
                 points: 0,
+                winnerBreakdown: {},
+                errorBreakdown: {},
                 serves: {
                   total: 0,
                   aces: 0,
@@ -202,6 +210,12 @@ const PublicMatchDetail = ({
             stats[playerName].gameStats[game.game_number].winners++;
             stats[playerName].points++;
             stats[playerName].gameStats[game.game_number].points++;
+
+            // ウィナーの内訳を記録
+            if (!stats[playerName].winnerBreakdown[resultType]) {
+              stats[playerName].winnerBreakdown[resultType] = 0;
+            }
+            stats[playerName].winnerBreakdown[resultType]++;
           }
         }
 
@@ -222,6 +236,8 @@ const PublicMatchDetail = ({
                 winners: 0,
                 errors: 0,
                 points: 0,
+                winnerBreakdown: {},
+                errorBreakdown: {},
                 serves: {
                   total: 0,
                   aces: 0,
@@ -246,6 +262,12 @@ const PublicMatchDetail = ({
             stats[playerName].gameStats[game.game_number].errors++;
             stats[playerName].points++;
             stats[playerName].gameStats[game.game_number].points++;
+
+            // ミスの内訳を記録
+            if (!stats[playerName].errorBreakdown[resultType]) {
+              stats[playerName].errorBreakdown[resultType] = 0;
+            }
+            stats[playerName].errorBreakdown[resultType]++;
           }
         }
       });
@@ -262,6 +284,8 @@ const PublicMatchDetail = ({
             winners: 0,
             errors: 0,
             points: 0,
+            winnerBreakdown: {},
+            errorBreakdown: {},
             serves: {
               total: 0,
               aces: 0,
@@ -298,6 +322,8 @@ const PublicMatchDetail = ({
               winners: 0,
               errors: 0,
               points: 0,
+              winnerBreakdown: {},
+              errorBreakdown: {},
               serves: {
                 total: 0,
                 aces: 0,
@@ -484,6 +510,232 @@ const PublicMatchDetail = ({
         </table>
       </div>
 
+      {/* チーム別ウィナー・ミス内訳サマリー */}
+      {(() => {
+        const playerStats = getPlayerStats();
+
+        // チームA、チームBの選手を整理
+        const teamAPlayers = [
+          match.team_a_player1_first_name && match.team_a_player1_last_name
+            ? `${match.team_a_player1_last_name} ${match.team_a_player1_first_name}`
+            : null,
+          match.team_a_player2_first_name && match.team_a_player2_last_name
+            ? `${match.team_a_player2_last_name} ${match.team_a_player2_first_name}`
+            : null,
+        ].filter((player): player is string => player !== null);
+
+        const teamBPlayers = [
+          match.team_b_player1_first_name && match.team_b_player1_last_name
+            ? `${match.team_b_player1_last_name} ${match.team_b_player1_first_name}`
+            : null,
+          match.team_b_player2_first_name && match.team_b_player2_last_name
+            ? `${match.team_b_player2_last_name} ${match.team_b_player2_first_name}`
+            : null,
+        ].filter((player): player is string => player !== null);
+
+        // チーム別の集計
+        const getTeamStats = (players: string[]) => {
+          const teamWinnerBreakdown: { [type: string]: number } = {};
+          const teamErrorBreakdown: { [type: string]: number } = {};
+          let totalWinners = 0;
+          let totalErrors = 0;
+
+          players.forEach((playerName) => {
+            const stats = playerStats[playerName];
+            if (!stats) return;
+
+            totalWinners += stats.winners;
+            totalErrors += stats.errors;
+
+            Object.entries(stats.winnerBreakdown).forEach(([type, count]) => {
+              teamWinnerBreakdown[type] =
+                (teamWinnerBreakdown[type] || 0) + count;
+            });
+
+            Object.entries(stats.errorBreakdown).forEach(([type, count]) => {
+              teamErrorBreakdown[type] =
+                (teamErrorBreakdown[type] || 0) + count;
+            });
+          });
+
+          return {
+            winnerBreakdown: teamWinnerBreakdown,
+            errorBreakdown: teamErrorBreakdown,
+            totalWinners,
+            totalErrors,
+          };
+        };
+
+        const teamAStats = getTeamStats(teamAPlayers);
+        const teamBStats = getTeamStats(teamBPlayers);
+
+        if (
+          teamAStats.totalWinners === 0 &&
+          teamAStats.totalErrors === 0 &&
+          teamBStats.totalWinners === 0 &&
+          teamBStats.totalErrors === 0
+        ) {
+          return null;
+        }
+
+        return (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-4">チーム別統計サマリー</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* チームA統計 */}
+              <div className="bg-white rounded-lg p-4">
+                <h4 className="font-semibold mb-3 text-blue-600">
+                  {getShortTeamName('A')}
+                </h4>
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  <div className="text-center p-2 bg-green-50 rounded">
+                    <div className="text-lg font-bold text-green-600">
+                      {teamAStats.totalWinners}
+                    </div>
+                    <div className="text-xs text-green-700">ウィナー</div>
+                  </div>
+                  <div className="text-center p-2 bg-red-50 rounded">
+                    <div className="text-lg font-bold text-red-600">
+                      {teamAStats.totalErrors}
+                    </div>
+                    <div className="text-xs text-red-700">ミス</div>
+                  </div>
+                </div>
+
+                {/* ウィナー内訳 */}
+                {Object.keys(teamAStats.winnerBreakdown).length > 0 && (
+                  <div className="mb-3">
+                    <h6 className="text-xs font-medium text-gray-700 mb-1">
+                      ウィナー内訳
+                    </h6>
+                    <div className="space-y-1">
+                      {Object.entries(teamAStats.winnerBreakdown)
+                        .sort(([, a], [, b]) => b - a)
+                        .slice(0, 5) // 上位5つまで表示
+                        .map(([type, count]) => (
+                          <div
+                            key={type}
+                            className="flex justify-between text-xs"
+                          >
+                            <span className="text-gray-600">
+                              {getResultTypeLabel(type)}
+                            </span>
+                            <span className="font-medium text-green-600">
+                              {count}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* ミス内訳 */}
+                {Object.keys(teamAStats.errorBreakdown).length > 0 && (
+                  <div>
+                    <h6 className="text-xs font-medium text-gray-700 mb-1">
+                      ミス内訳
+                    </h6>
+                    <div className="space-y-1">
+                      {Object.entries(teamAStats.errorBreakdown)
+                        .sort(([, a], [, b]) => b - a)
+                        .slice(0, 5) // 上位5つまで表示
+                        .map(([type, count]) => (
+                          <div
+                            key={type}
+                            className="flex justify-between text-xs"
+                          >
+                            <span className="text-gray-600">
+                              {getResultTypeLabel(type)}
+                            </span>
+                            <span className="font-medium text-red-600">
+                              {count}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* チームB統計 */}
+              <div className="bg-white rounded-lg p-4">
+                <h4 className="font-semibold mb-3 text-green-600">
+                  {getShortTeamName('B')}
+                </h4>
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  <div className="text-center p-2 bg-green-50 rounded">
+                    <div className="text-lg font-bold text-green-600">
+                      {teamBStats.totalWinners}
+                    </div>
+                    <div className="text-xs text-green-700">ウィナー</div>
+                  </div>
+                  <div className="text-center p-2 bg-red-50 rounded">
+                    <div className="text-lg font-bold text-red-600">
+                      {teamBStats.totalErrors}
+                    </div>
+                    <div className="text-xs text-red-700">ミス</div>
+                  </div>
+                </div>
+
+                {/* ウィナー内訳 */}
+                {Object.keys(teamBStats.winnerBreakdown).length > 0 && (
+                  <div className="mb-3">
+                    <h6 className="text-xs font-medium text-gray-700 mb-1">
+                      ウィナー内訳
+                    </h6>
+                    <div className="space-y-1">
+                      {Object.entries(teamBStats.winnerBreakdown)
+                        .sort(([, a], [, b]) => b - a)
+                        .slice(0, 5) // 上位5つまで表示
+                        .map(([type, count]) => (
+                          <div
+                            key={type}
+                            className="flex justify-between text-xs"
+                          >
+                            <span className="text-gray-600">
+                              {getResultTypeLabel(type)}
+                            </span>
+                            <span className="font-medium text-green-600">
+                              {count}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* ミス内訳 */}
+                {Object.keys(teamBStats.errorBreakdown).length > 0 && (
+                  <div>
+                    <h6 className="text-xs font-medium text-gray-700 mb-1">
+                      ミス内訳
+                    </h6>
+                    <div className="space-y-1">
+                      {Object.entries(teamBStats.errorBreakdown)
+                        .sort(([, a], [, b]) => b - a)
+                        .slice(0, 5) // 上位5つまで表示
+                        .map(([type, count]) => (
+                          <div
+                            key={type}
+                            className="flex justify-between text-xs"
+                          >
+                            <span className="text-gray-600">
+                              {getResultTypeLabel(type)}
+                            </span>
+                            <span className="font-medium text-red-600">
+                              {count}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
       {/* ゲーム詳細（降順、エキスパンド対応） */}
       <div className="space-y-3">
         <h3 className="text-lg font-semibold">ゲーム詳細</h3>
@@ -667,6 +919,12 @@ const PublicMatchDetail = ({
                 winners: number;
                 errors: number;
                 points: number;
+                winnerBreakdown: {
+                  [winnerType: string]: number;
+                };
+                errorBreakdown: {
+                  [errorType: string]: number;
+                };
                 serves: {
                   total: number;
                   aces: number;
@@ -683,10 +941,7 @@ const PublicMatchDetail = ({
                 };
               },
             ) => (
-              <div
-                key={playerName}
-                className="border border-gray-200 rounded-lg p-4"
-              >
+              <div key={playerName} className="rounded-lg p-4 bg-gray-50">
                 <h4 className="font-semibold text-lg mb-3">{playerName}</h4>
 
                 {/* 全体統計 */}
@@ -719,6 +974,69 @@ const PublicMatchDetail = ({
                     <div className="text-sm text-gray-700">ウィナー率</div>
                   </div>
                 </div>
+
+                {/* ウィナーとミスの内訳 */}
+                {(Object.keys(stats.winnerBreakdown).length > 0 ||
+                  Object.keys(stats.errorBreakdown).length > 0) && (
+                  <div className="mb-4">
+                    <h5 className="font-medium text-sm mb-3">
+                      ウィナーとミスの内訳
+                    </h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* ウィナー内訳 */}
+                      {Object.keys(stats.winnerBreakdown).length > 0 && (
+                        <div className="bg-green-50 p-3 rounded">
+                          <h6 className="font-medium text-green-700 text-sm mb-2">
+                            ウィナー ({stats.winners}回)
+                          </h6>
+                          <div className="space-y-1">
+                            {Object.entries(stats.winnerBreakdown)
+                              .sort(([, a], [, b]) => b - a)
+                              .map(([type, count]) => (
+                                <div
+                                  key={type}
+                                  className="flex justify-between text-xs"
+                                >
+                                  <span className="text-gray-700">
+                                    {getResultTypeLabel(type)}
+                                  </span>
+                                  <span className="font-medium text-green-700">
+                                    {count}回
+                                  </span>
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ミス内訳 */}
+                      {Object.keys(stats.errorBreakdown).length > 0 && (
+                        <div className="bg-red-50 p-3 rounded">
+                          <h6 className="font-medium text-red-700 text-sm mb-2">
+                            ミス ({stats.errors}回)
+                          </h6>
+                          <div className="space-y-1">
+                            {Object.entries(stats.errorBreakdown)
+                              .sort(([, a], [, b]) => b - a)
+                              .map(([type, count]) => (
+                                <div
+                                  key={type}
+                                  className="flex justify-between text-xs"
+                                >
+                                  <span className="text-gray-700">
+                                    {getResultTypeLabel(type)}
+                                  </span>
+                                  <span className="font-medium text-red-700">
+                                    {count}回
+                                  </span>
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* サーブ統計 */}
                 {stats.serves.total > 0 && (
