@@ -493,6 +493,7 @@ const CreateMatch = () => {
             <option value="3回戦">3回戦</option>
             <option value="4回戦">4回戦</option>
             <option value="5回戦">5回戦</option>
+            <option value="6回戦">6回戦</option>
             <option value="準々決勝">準々決勝</option>
             <option value="準決勝">準決勝</option>
             <option value="決勝">決勝</option>
