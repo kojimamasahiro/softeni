@@ -28,7 +28,6 @@ interface TournamentYearMeta {
 interface TournamentOption {
   id: string;
   name: string;
-  generation: string;
   meta: TournamentMeta;
   yearMeta: TournamentYearMeta;
 }
@@ -100,7 +99,6 @@ export default async function handler(
                 tournaments.push({
                   id: `${tournamentId}-${year}`,
                   name: `${meta.name} ${year}`,
-                  generation,
                   meta,
                   yearMeta,
                 });

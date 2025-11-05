@@ -32,7 +32,6 @@ export interface TournamentInfo {
 interface TournamentOption {
   id: string;
   name: string;
-  generation: string;
   meta: TournamentMeta;
   yearMeta: TournamentYearMeta;
 }
@@ -70,7 +69,7 @@ export const getTournamentInfo = async (
       meta: tournament.meta,
       yearMeta: tournament.yearMeta,
       fullName: tournament.name,
-      detailUrl: `/tournaments/${tournament.generation}/${tournament.meta.id}/${tournament.yearMeta.year}`,
+      detailUrl: `/tournaments/${tournament.meta.generation}/${tournament.meta.id}/${tournament.yearMeta.year}`,
       exists: true,
     };
   } catch (error) {
