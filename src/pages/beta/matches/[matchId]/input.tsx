@@ -1015,6 +1015,9 @@ const MatchInput = () => {
                     winner_team: currentServe || 'A',
                     winner_player: servingPlayerKey,
                     rally_count: 1,
+                    // ダブルフォルト関連をクリア
+                    double_fault: false,
+                    loser_player: '',
                   });
                 }}
                 className={`p-2 border-2 rounded font-medium transition-all text-xs ${
@@ -1026,16 +1029,23 @@ const MatchInput = () => {
                 サービスエース
               </button>
               <button
-                onClick={() =>
+                disabled={pointData.result_type === 'double_fault'}
+                onClick={() => {
+                  // ダブルフォルトが選択されている場合は何もしない
+                  if (pointData.result_type === 'double_fault') {
+                    return;
+                  }
                   setPointData({
                     ...pointData,
                     first_serve_fault: !pointData.first_serve_fault,
-                  })
-                }
+                  });
+                }}
                 className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                  pointData.first_serve_fault
-                    ? 'border-orange-500 bg-orange-50 text-orange-700'
-                    : 'border-gray-300 hover:border-orange-300'
+                  pointData.result_type === 'double_fault'
+                    ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : pointData.first_serve_fault
+                      ? 'border-orange-500 bg-orange-50 text-orange-700'
+                      : 'border-gray-300 hover:border-orange-300'
                 }`}
               >
                 1stフォルト
@@ -1056,9 +1066,12 @@ const MatchInput = () => {
                     ...pointData,
                     result_type: 'double_fault',
                     double_fault: true,
+                    first_serve_fault: true, // ダブルフォルトの場合は1stフォルトも自動設定
                     winner_team: oppositeTeam,
                     loser_player: servingPlayerKey,
                     rally_count: 1,
+                    // サービスエース関連をクリア
+                    winner_player: '',
                   });
                 }}
                 className={`p-2 border-2 rounded font-medium transition-all text-xs ${
@@ -1116,7 +1129,13 @@ const MatchInput = () => {
                   <button
                     key={value}
                     onClick={() => {
-                      const newData = { ...pointData, result_type: value };
+                      const newData = {
+                        ...pointData,
+                        result_type: value,
+                        // サーブ関連の自動設定をクリア
+                        double_fault: false,
+                        loser_player: '',
+                      };
                       // 関与選手が設定されていれば勝者チームを自動決定
                       if (pointData.winner_player) {
                         const autoWinner = determineWinnerTeam(
@@ -1163,6 +1182,9 @@ const MatchInput = () => {
                         // レシーブ失敗の場合はラリー数を2に設定
                         rally_count:
                           value === 'receive_error' ? 2 : pointData.rally_count,
+                        // サーブ関連の自動設定をクリア（ただしダブルフォルト以外）
+                        double_fault: false,
+                        winner_player: '',
                       };
                       // 関与選手が設定されていれば勝者チームを自動決定
                       if (pointData.winner_player) {
@@ -1199,7 +1221,7 @@ const MatchInput = () => {
                 <p className="text-xs text-yellow-800">
                   {pointData.result_type === 'service_ace'
                     ? 'サービスエース：サーブ選手が自動選択されています'
-                    : 'ダブルフォルト：サーブ選手が自動選択されています'}
+                    : 'ダブルフォルト：サーブ選手と1stフォルトが自動選択されています'}
                 </p>
                 <p className="text-xs text-yellow-600 mt-1">
                   現在のサーブ選手: {getCurrentServingPlayer()?.playerName}
