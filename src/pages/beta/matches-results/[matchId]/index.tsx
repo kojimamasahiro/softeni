@@ -572,138 +572,231 @@ const PublicMatchDetail = ({
       {/* 選手別統計情報 */}
       <div className="pt-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">選手別統計情報</h2>
-        <div className="space-y-4">
-          {Object.entries(getPlayerStats()).map(([playerName, stats]) => (
-            <div
-              key={playerName}
-              className="border border-gray-200 rounded-lg p-4"
-            >
-              <h3 className="font-semibold text-lg mb-3">{playerName}</h3>
+        <div className="space-y-6">
+          {(() => {
+            const playerStats = getPlayerStats();
 
-              {/* 全体統計 */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                <div className="text-center p-3 bg-green-50 rounded">
-                  <div className="text-2xl font-bold text-green-600">
-                    {stats.winners}
+            // チームA、チームBの選手を順番に整理
+            const teamAPlayers = [
+              match.team_a_player1_first_name && match.team_a_player1_last_name
+                ? `${match.team_a_player1_last_name} ${match.team_a_player1_first_name}`
+                : null,
+              match.team_a_player2_first_name && match.team_a_player2_last_name
+                ? `${match.team_a_player2_last_name} ${match.team_a_player2_first_name}`
+                : null,
+            ].filter((player): player is string => player !== null);
+
+            const teamBPlayers = [
+              match.team_b_player1_first_name && match.team_b_player1_last_name
+                ? `${match.team_b_player1_last_name} ${match.team_b_player1_first_name}`
+                : null,
+              match.team_b_player2_first_name && match.team_b_player2_last_name
+                ? `${match.team_b_player2_last_name} ${match.team_b_player2_first_name}`
+                : null,
+            ].filter((player): player is string => player !== null);
+
+            const renderPlayerStats = (
+              playerName: string,
+              stats: {
+                winners: number;
+                errors: number;
+                points: number;
+                serves: {
+                  total: number;
+                  aces: number;
+                  doubleFaults: number;
+                  firstServeFaults: number;
+                  firstServeSuccess: number;
+                };
+                gameStats: {
+                  [gameNumber: number]: {
+                    winners: number;
+                    errors: number;
+                    points: number;
+                  };
+                };
+              },
+            ) => (
+              <div
+                key={playerName}
+                className="border border-gray-200 rounded-lg p-4"
+              >
+                <h4 className="font-semibold text-lg mb-3">{playerName}</h4>
+
+                {/* 全体統計 */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                  <div className="text-center p-3 bg-green-50 rounded">
+                    <div className="text-2xl font-bold text-green-600">
+                      {stats.winners}
+                    </div>
+                    <div className="text-sm text-green-700">ウィナー</div>
                   </div>
-                  <div className="text-sm text-green-700">ウィナー</div>
+                  <div className="text-center p-3 bg-red-50 rounded">
+                    <div className="text-2xl font-bold text-red-600">
+                      {stats.errors}
+                    </div>
+                    <div className="text-sm text-red-700">ミス</div>
+                  </div>
+                  <div className="text-center p-3 bg-blue-50 rounded">
+                    <div className="text-2xl font-bold text-blue-600">
+                      {stats.points}
+                    </div>
+                    <div className="text-sm text-blue-700">関与ポイント</div>
+                  </div>
+                  <div className="text-center p-3 bg-gray-50 rounded">
+                    <div className="text-2xl font-bold text-gray-600">
+                      {stats.points > 0
+                        ? ((stats.winners / stats.points) * 100).toFixed(1)
+                        : '0.0'}
+                      %
+                    </div>
+                    <div className="text-sm text-gray-700">ウィナー率</div>
+                  </div>
                 </div>
-                <div className="text-center p-3 bg-red-50 rounded">
-                  <div className="text-2xl font-bold text-red-600">
-                    {stats.errors}
+
+                {/* サーブ統計 */}
+                {stats.serves.total > 0 && (
+                  <div className="mb-4">
+                    <h5 className="font-medium text-sm mb-3">サーブ統計</h5>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                      <div className="text-center p-3 bg-purple-50 rounded">
+                        <div className="text-xl font-bold text-purple-600">
+                          {stats.serves.total}
+                        </div>
+                        <div className="text-xs text-purple-700">
+                          総サーブ数
+                        </div>
+                      </div>
+                      <div className="text-center p-3 bg-yellow-50 rounded">
+                        <div className="text-xl font-bold text-yellow-600">
+                          {stats.serves.aces}
+                        </div>
+                        <div className="text-xs text-yellow-700">エース</div>
+                      </div>
+                      <div className="text-center p-3 bg-red-50 rounded">
+                        <div className="text-xl font-bold text-red-600">
+                          {stats.serves.doubleFaults}
+                        </div>
+                        <div className="text-xs text-red-700">
+                          ダブルフォルト
+                        </div>
+                      </div>
+                      <div className="text-center p-3 bg-green-50 rounded">
+                        <div className="text-xl font-bold text-green-600">
+                          {(
+                            (stats.serves.firstServeSuccess /
+                              Math.max(stats.serves.total, 1)) *
+                            100
+                          ).toFixed(1)}
+                          %
+                        </div>
+                        <div className="text-xs text-green-700">
+                          1stサーブ成功率
+                        </div>
+                      </div>
+                      <div className="text-center p-3 bg-orange-50 rounded">
+                        <div className="text-xl font-bold text-orange-600">
+                          {(
+                            (stats.serves.doubleFaults /
+                              Math.max(stats.serves.total, 1)) *
+                            100
+                          ).toFixed(1)}
+                          %
+                        </div>
+                        <div className="text-xs text-orange-700">
+                          ダブルフォルト率
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-sm text-red-700">ミス</div>
-                </div>
-                <div className="text-center p-3 bg-blue-50 rounded">
-                  <div className="text-2xl font-bold text-blue-600">
-                    {stats.points}
+                )}
+
+                {/* ゲーム別統計 */}
+                <div className="mt-4">
+                  <h5 className="font-medium text-sm mb-2">ゲーム別詳細</h5>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {Object.entries(stats.gameStats).map(
+                      ([gameNumber, gameStats]) => (
+                        <div
+                          key={gameNumber}
+                          className="text-xs p-2 bg-gray-50 rounded"
+                        >
+                          <div className="font-medium mb-1">
+                            第{gameNumber}ゲーム
+                          </div>
+                          <div className="space-y-1">
+                            <div className="flex justify-between">
+                              <span>ウィナー:</span>
+                              <span className="text-green-600 font-medium">
+                                {gameStats.winners}
+                              </span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span>ミス:</span>
+                              <span className="text-red-600 font-medium">
+                                {gameStats.errors}
+                              </span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span>関与:</span>
+                              <span className="font-medium">
+                                {gameStats.points}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ),
+                    )}
                   </div>
-                  <div className="text-sm text-blue-700">関与ポイント</div>
-                </div>
-                <div className="text-center p-3 bg-gray-50 rounded">
-                  <div className="text-2xl font-bold text-gray-600">
-                    {stats.points > 0
-                      ? ((stats.winners / stats.points) * 100).toFixed(1)
-                      : '0.0'}
-                    %
-                  </div>
-                  <div className="text-sm text-gray-700">ウィナー率</div>
                 </div>
               </div>
+            );
 
-              {/* サーブ統計 */}
-              {stats.serves.total > 0 && (
-                <div className="mb-4">
-                  <h4 className="font-medium text-sm mb-3">サーブ統計</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                    <div className="text-center p-3 bg-purple-50 rounded">
-                      <div className="text-xl font-bold text-purple-600">
-                        {stats.serves.total}
-                      </div>
-                      <div className="text-xs text-purple-700">総サーブ数</div>
-                    </div>
-                    <div className="text-center p-3 bg-yellow-50 rounded">
-                      <div className="text-xl font-bold text-yellow-600">
-                        {stats.serves.aces}
-                      </div>
-                      <div className="text-xs text-yellow-700">エース</div>
-                    </div>
-                    <div className="text-center p-3 bg-red-50 rounded">
-                      <div className="text-xl font-bold text-red-600">
-                        {stats.serves.doubleFaults}
-                      </div>
-                      <div className="text-xs text-red-700">ダブルフォルト</div>
-                    </div>
-                    <div className="text-center p-3 bg-green-50 rounded">
-                      <div className="text-xl font-bold text-green-600">
-                        {(
-                          (stats.serves.firstServeSuccess /
-                            Math.max(stats.serves.total, 1)) *
-                          100
-                        ).toFixed(1)}
-                        %
-                      </div>
-                      <div className="text-xs text-green-700">
-                        1stサーブ成功率
-                      </div>
-                    </div>
-                    <div className="text-center p-3 bg-orange-50 rounded">
-                      <div className="text-xl font-bold text-orange-600">
-                        {(
-                          (stats.serves.doubleFaults /
-                            Math.max(stats.serves.total, 1)) *
-                          100
-                        ).toFixed(1)}
-                        %
-                      </div>
-                      <div className="text-xs text-orange-700">
-                        ダブルフォルト率
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* ゲーム別統計 */}
-              <div className="mt-4">
-                <h4 className="font-medium text-sm mb-2">ゲーム別詳細</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                  {Object.entries(stats.gameStats).map(
-                    ([gameNumber, gameStats]) => (
-                      <div
-                        key={gameNumber}
-                        className="text-xs p-2 bg-gray-50 rounded"
-                      >
-                        <div className="font-medium mb-1">
-                          第{gameNumber}ゲーム
-                        </div>
-                        <div className="space-y-1">
-                          <div className="flex justify-between">
-                            <span>ウィナー:</span>
-                            <span className="text-green-600 font-medium">
-                              {gameStats.winners}
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span>ミス:</span>
-                            <span className="text-red-600 font-medium">
-                              {gameStats.errors}
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span>関与:</span>
-                            <span className="font-medium">
-                              {gameStats.points}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    ),
+            return (
+              <>
+                {/* チームA選手 */}
+                {teamAPlayers
+                  .filter((player) => playerStats[player])
+                  .map((playerName) =>
+                    renderPlayerStats(playerName, playerStats[playerName]),
                   )}
-                </div>
-              </div>
-            </div>
-          ))}
+
+                {/* チームB選手 */}
+                {teamBPlayers
+                  .filter((player) => playerStats[player])
+                  .map((playerName) =>
+                    renderPlayerStats(playerName, playerStats[playerName]),
+                  )}
+
+                {/* 上記のチーム分類にない選手がいる場合 */}
+                {Object.keys(playerStats).filter(
+                  (player) =>
+                    ![...teamAPlayers, ...teamBPlayers].includes(player),
+                ).length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3 text-gray-600 border-b border-gray-200 pb-2">
+                      その他の選手
+                    </h3>
+                    <div className="space-y-4">
+                      {Object.keys(playerStats)
+                        .filter(
+                          (player) =>
+                            ![...teamAPlayers, ...teamBPlayers].includes(
+                              player,
+                            ),
+                        )
+                        .map((playerName) =>
+                          renderPlayerStats(
+                            playerName,
+                            playerStats[playerName],
+                          ),
+                        )}
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
         </div>
       </div>
     </div>
