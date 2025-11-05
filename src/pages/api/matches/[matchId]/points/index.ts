@@ -14,6 +14,7 @@ interface PointData {
   point_number: number;
   winner_team: 'A' | 'B';
   serving_team: 'A' | 'B';
+  serving_player?: string;
   rally_count?: number;
   first_serve_fault: boolean;
   double_fault: boolean;
@@ -133,6 +134,7 @@ export default async function handler(
         point_number,
         winner_team,
         serving_team,
+        serving_player,
         rally_count,
         first_serve_fault,
         double_fault,
@@ -211,6 +213,7 @@ export default async function handler(
           point_number,
           winner_team,
           serving_team,
+          serving_player,
           rally_count,
           first_serve_fault,
           double_fault,
@@ -271,6 +274,7 @@ export default async function handler(
         point_number,
         winner_team,
         serving_team,
+        serving_player,
         rally_count,
         first_serve_fault,
         double_fault,
@@ -300,6 +304,7 @@ export default async function handler(
           point_number,
           winner_team,
           serving_team,
+          serving_player,
           rally_count,
           first_serve_fault,
           double_fault,

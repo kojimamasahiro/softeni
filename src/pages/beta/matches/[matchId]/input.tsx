@@ -309,6 +309,10 @@ const MatchInput = () => {
         gamesWonB,
       );
 
+      // 現在のサーブ選手を取得
+      const currentServingPlayer = getCurrentServingPlayer();
+      const servingPlayerName = currentServingPlayer?.playerName || '';
+
       // 一意識別子から選手名を抽出（新形式の場合）
       const winnerPlayerName = pointData.winner_player.includes('-')
         ? getPlayerNameFromId(pointData.winner_player)
@@ -324,6 +328,7 @@ const MatchInput = () => {
           game_id: currentGame.id,
           point_number: nextPointNumber,
           serving_team: currentServingTeam,
+          serving_player: servingPlayerName,
           winner_team: pointData.winner_team,
           rally_count: pointData.rally_count,
           first_serve_fault: pointData.first_serve_fault,
@@ -827,6 +832,7 @@ const MatchInput = () => {
                   setPointData({
                     ...pointData,
                     result_type: 'double_fault',
+                    double_fault: true,
                     winner_team: oppositeTeam,
                     rally_count: 1,
                   });

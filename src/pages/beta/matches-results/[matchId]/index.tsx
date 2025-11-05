@@ -119,6 +119,13 @@ const PublicMatchDetail = ({
         winners: number;
         errors: number;
         points: number;
+        serves: {
+          total: number;
+          aces: number;
+          doubleFaults: number;
+          firstServeFaults: number;
+          firstServeSuccess: number;
+        };
         gameStats: {
           [gameNumber: number]: {
             winners: number;
@@ -161,6 +168,13 @@ const PublicMatchDetail = ({
             winners: 0,
             errors: 0,
             points: 0,
+            serves: {
+              total: 0,
+              aces: 0,
+              doubleFaults: 0,
+              firstServeFaults: 0,
+              firstServeSuccess: 0,
+            },
             gameStats: {},
           };
         }
@@ -188,6 +202,89 @@ const PublicMatchDetail = ({
         // 総ポイント数
         stats[playerName].points++;
         stats[playerName].gameStats[game.game_number].points++;
+      });
+
+      // サーブ統計の計算
+      game.points.forEach((point) => {
+        let servingPlayerName = point.serving_player;
+
+        // serving_playerが存在しない場合、サーブチームから推定
+        if (!servingPlayerName && point.serving_team) {
+          // サーブチームの最初の選手を推定（暫定的な対応）
+          const servingTeam = point.serving_team;
+          if (servingTeam === 'A' && match.team_a) {
+            // チーム名から選手名を抽出（簡略化）
+            servingPlayerName = match.team_a.split('/')[0] || match.team_a;
+          } else if (servingTeam === 'B' && match.team_b) {
+            servingPlayerName = match.team_b.split('/')[0] || match.team_b;
+          }
+        }
+
+        if (!servingPlayerName) return;
+
+        // サーブ選手の統計初期化
+        if (!stats[servingPlayerName]) {
+          stats[servingPlayerName] = {
+            winners: 0,
+            errors: 0,
+            points: 0,
+            serves: {
+              total: 0,
+              aces: 0,
+              doubleFaults: 0,
+              firstServeFaults: 0,
+              firstServeSuccess: 0,
+            },
+            gameStats: {},
+          };
+        }
+
+        // サーブ統計の計算
+        stats[servingPlayerName].serves.total++;
+
+        // サービスエース
+        if (point.result_type === 'service_ace') {
+          stats[servingPlayerName].serves.aces++;
+        }
+
+        // ダブルフォルト
+        if (point.double_fault || point.result_type === 'double_fault') {
+          stats[servingPlayerName].serves.doubleFaults++;
+        }
+
+        // ダブルフォルトの場合、loser_playerも考慮（serving_playerが不正確な場合の補完）
+        if (
+          (point.double_fault || point.result_type === 'double_fault') &&
+          point.loser_player &&
+          point.loser_player !== servingPlayerName
+        ) {
+          const loserPlayerName = point.loser_player;
+          if (!stats[loserPlayerName]) {
+            stats[loserPlayerName] = {
+              winners: 0,
+              errors: 0,
+              points: 0,
+              serves: {
+                total: 0,
+                aces: 0,
+                doubleFaults: 0,
+                firstServeFaults: 0,
+                firstServeSuccess: 0,
+              },
+              gameStats: {},
+            };
+          }
+          stats[loserPlayerName].serves.total++;
+          stats[loserPlayerName].serves.doubleFaults++;
+        }
+
+        // 1stサーブフォルト
+        if (point.first_serve_fault) {
+          stats[servingPlayerName].serves.firstServeFaults++;
+        } else {
+          // 1stサーブ成功（フォルトしていない場合）
+          stats[servingPlayerName].serves.firstServeSuccess++;
+        }
       });
     });
 
@@ -518,6 +615,59 @@ const PublicMatchDetail = ({
                   <div className="text-sm text-gray-700">ウィナー率</div>
                 </div>
               </div>
+
+              {/* サーブ統計 */}
+              {stats.serves.total > 0 && (
+                <div className="mb-4">
+                  <h4 className="font-medium text-sm mb-3">サーブ統計</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <div className="text-center p-3 bg-purple-50 rounded">
+                      <div className="text-xl font-bold text-purple-600">
+                        {stats.serves.total}
+                      </div>
+                      <div className="text-xs text-purple-700">総サーブ数</div>
+                    </div>
+                    <div className="text-center p-3 bg-yellow-50 rounded">
+                      <div className="text-xl font-bold text-yellow-600">
+                        {stats.serves.aces}
+                      </div>
+                      <div className="text-xs text-yellow-700">エース</div>
+                    </div>
+                    <div className="text-center p-3 bg-red-50 rounded">
+                      <div className="text-xl font-bold text-red-600">
+                        {stats.serves.doubleFaults}
+                      </div>
+                      <div className="text-xs text-red-700">ダブルフォルト</div>
+                    </div>
+                    <div className="text-center p-3 bg-green-50 rounded">
+                      <div className="text-xl font-bold text-green-600">
+                        {(
+                          (stats.serves.firstServeSuccess /
+                            Math.max(stats.serves.total, 1)) *
+                          100
+                        ).toFixed(1)}
+                        %
+                      </div>
+                      <div className="text-xs text-green-700">
+                        1stサーブ成功率
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-orange-50 rounded">
+                      <div className="text-xl font-bold text-orange-600">
+                        {(
+                          (stats.serves.doubleFaults /
+                            Math.max(stats.serves.total, 1)) *
+                          100
+                        ).toFixed(1)}
+                        %
+                      </div>
+                      <div className="text-xs text-orange-700">
+                        ダブルフォルト率
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* ゲーム別統計 */}
               <div className="mt-4">

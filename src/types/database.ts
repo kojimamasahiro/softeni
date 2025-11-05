@@ -76,6 +76,7 @@ export interface Point {
   point_number: number;
   winner_team: string | null;
   serving_team: string | null; // 'A' or 'B' (このポイントでのサーブ権)
+  serving_player: string | null; // サーブした選手名
   rally_count: number | null;
   first_serve_fault: boolean | null;
   double_fault: boolean | null;
