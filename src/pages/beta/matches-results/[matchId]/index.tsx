@@ -658,7 +658,9 @@ const PublicMatchDetail = ({
                 {stats.serves.total > 0 && (
                   <div className="mb-4">
                     <h5 className="font-medium text-sm mb-3">サーブ統計</h5>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+
+                    {/* サーブ統計カード */}
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-gray-600">
                           {stats.serves.total}
@@ -706,6 +708,130 @@ const PublicMatchDetail = ({
                         </div>
                       </div>
                     </div>
+
+                    {/* サーブ円グラフ */}
+                    {(() => {
+                      const total = stats.serves.total;
+                      const firstServeSuccess = stats.serves.firstServeSuccess;
+                      const doubleFaults = stats.serves.doubleFaults;
+                      // 2ndサーブ成功 = 総サーブ数 - 1stサーブ成功 - ダブルフォルト
+                      const secondServeSuccess =
+                        total - firstServeSuccess - doubleFaults;
+
+                      const firstServePercent =
+                        (firstServeSuccess / total) * 100;
+                      const secondServePercent =
+                        (secondServeSuccess / total) * 100;
+                      const doubleFaultPercent = (doubleFaults / total) * 100;
+
+                      // SVG円グラフ用の角度計算
+                      const firstServeAngle = (firstServePercent / 100) * 360;
+                      const secondServeAngle = (secondServePercent / 100) * 360;
+
+                      const getPath = (
+                        startAngle: number,
+                        endAngle: number,
+                        radius = 40,
+                      ) => {
+                        const start = (startAngle - 90) * (Math.PI / 180);
+                        const end = (endAngle - 90) * (Math.PI / 180);
+                        const largeArcFlag =
+                          endAngle - startAngle <= 180 ? '0' : '1';
+
+                        const x1 = 50 + radius * Math.cos(start);
+                        const y1 = 50 + radius * Math.sin(start);
+                        const x2 = 50 + radius * Math.cos(end);
+                        const y2 = 50 + radius * Math.sin(end);
+
+                        return [
+                          'M',
+                          50,
+                          50,
+                          'L',
+                          x1,
+                          y1,
+                          'A',
+                          radius,
+                          radius,
+                          0,
+                          largeArcFlag,
+                          1,
+                          x2,
+                          y2,
+                          'Z',
+                        ].join(' ');
+                      };
+
+                      return (
+                        <div className="bg-gray-50 rounded p-4">
+                          <h6 className="font-medium text-xs text-gray-600 mb-3 text-center">
+                            サーブ構成比
+                          </h6>
+                          <div className="flex items-center justify-center gap-6">
+                            {/* 円グラフ */}
+                            <div className="relative">
+                              <svg
+                                width="100"
+                                height="100"
+                                viewBox="0 0 100 100"
+                              >
+                                {/* 1stサーブ成功 */}
+                                <path
+                                  d={getPath(0, firstServeAngle)}
+                                  fill="#16a34a"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                />
+                                {/* 2ndサーブ成功 */}
+                                <path
+                                  d={getPath(
+                                    firstServeAngle,
+                                    firstServeAngle + secondServeAngle,
+                                  )}
+                                  fill="#3b82f6"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                />
+                                {/* ダブルフォルト */}
+                                <path
+                                  d={getPath(
+                                    firstServeAngle + secondServeAngle,
+                                    360,
+                                  )}
+                                  fill="#dc2626"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                />
+                              </svg>
+                            </div>
+
+                            {/* 凡例 */}
+                            <div className="space-y-2 text-xs">
+                              <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 bg-green-600 rounded"></div>
+                                <span>
+                                  1stサーブ成功: {firstServePercent.toFixed(1)}%
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                                <span>
+                                  2ndサーブ成功: {secondServePercent.toFixed(1)}
+                                  %
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 bg-red-600 rounded"></div>
+                                <span>
+                                  ダブルフォルト:{' '}
+                                  {doubleFaultPercent.toFixed(1)}%
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
                   </div>
                 )}
 
