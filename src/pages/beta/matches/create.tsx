@@ -170,8 +170,11 @@ const CreateMatch = () => {
       const gameType = getGameTypeFromCategory(formData.category);
 
       // API用にフィールド名を変換
+      // tournament_nameから年を除外してtournament_idとして使用
+      const tournamentId = formData.tournament_name.replace(/-\d{4}$/, '');
       const apiData = {
         tournament_name: formData.tournament_name,
+        tournament_id: tournamentId, // 年を除外したtournament_id
         tournament_generation: formData.generation,
         tournament_gender: formData.gender,
         tournament_category: formData.category,

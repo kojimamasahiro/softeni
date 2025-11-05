@@ -12,6 +12,7 @@ export default async function handler(
     try {
       const {
         tournament_name,
+        tournament_id: providedTournamentId, // フロントエンドから送信されるtournament_id
         tournament_generation,
         tournament_gender,
         tournament_category,
@@ -66,8 +67,8 @@ export default async function handler(
         teams,
       });
 
-      // tournament_nameからtournament_idを取得
-      const tournament_id = tournament_name || null;
+      // tournament_idを使用（フロントエンドから年を除外した値が送信される）
+      const tournament_id = providedTournamentId || null;
 
       // マッチを作成
       const { data: match, error: matchError } = await supabase
