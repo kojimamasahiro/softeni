@@ -135,6 +135,7 @@ const MatchInput = () => {
       'smash_error',
       'volley_error',
       'double_fault',
+      'receive_error',
       'follow_error',
     ];
 
@@ -779,12 +780,19 @@ const MatchInput = () => {
                   { value: 'out', label: 'アウト' },
                   { value: 'smash_error', label: 'スマ失敗' },
                   { value: 'volley_error', label: 'ボレ失敗' },
+                  { value: 'receive_error', label: 'レシーブ失敗' },
                   { value: 'follow_error', label: 'フォロー失敗' },
                 ].map(({ value, label }) => (
                   <button
                     key={value}
                     onClick={() => {
-                      const newData = { ...pointData, result_type: value };
+                      const newData = {
+                        ...pointData,
+                        result_type: value,
+                        // レシーブ失敗の場合はラリー数を2に設定
+                        rally_count:
+                          value === 'receive_error' ? 2 : pointData.rally_count,
+                      };
                       // 関与選手が設定されていれば勝者チームを自動決定
                       if (pointData.winner_player) {
                         const autoWinner = determineWinnerTeam(
