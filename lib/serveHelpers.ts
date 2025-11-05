@@ -61,10 +61,12 @@ export function getCurrentServingTeam(
   }
 
   const initialServeTeam = game.initial_serve_team as 'A' | 'B';
+
+  // ファイナルゲーム判定
   const finalGame = isFinalGame(game.game_number, bestOf, gamesWonA, gamesWonB);
 
   if (finalGame) {
-    // ファイナルゲームの場合：2ポイントごとにサーブ交代
+    // ファイナルゲーム: 2ポイントごとにサーブ交代
     // ポイント1-2: 初期サーブチーム、ポイント3-4: 相手チーム、ポイント5-6: 初期サーブチーム...
     const switchCount = Math.floor((pointNumber - 1) / 2);
     return switchCount % 2 === 0
@@ -73,7 +75,7 @@ export function getCurrentServingTeam(
         ? 'B'
         : 'A';
   } else {
-    // 通常のゲームの場合：そのゲーム全体を通して同じチームがサーブ
+    // 通常のゲーム: ゲーム全体を通して同じチームがサーブ
     return initialServeTeam;
   }
 }
@@ -148,15 +150,28 @@ export function getCurrentServingPlayerIndex(
   const gameInitialPlayerIndex =
     game.initial_serve_player_index ?? initialPlayerIndex ?? 0;
 
+  // ファイナルゲーム判定
   const finalGame = isFinalGame(game.game_number, bestOf, gamesWonA, gamesWonB);
 
-  if (finalGame) {
-    // ファイナルゲームの場合：2ポイントごとにサーブ権が交代し、さらにチーム内でも選手が交代
-    // ポイント1-2: 初期選手、ポイント3-4: もう一方の選手、ポイント5-6: 初期選手...（相手チームにサーブ権が移った場合も同様）
-    const switchCount = Math.floor((pointNumber - 1) / 2);
-    return (gameInitialPlayerIndex + switchCount) % 2;
-  } else {
-    // 通常のゲームの場合：ゲーム開始時に決定された選手がずっとサーブ
-    return gameInitialPlayerIndex;
+  // ダブルスの場合：2ポイントごとに同じチーム内で選手が交代（ファイナルゲーム・通常ゲーム共通）
+  // ポイント1-2: 初期選手、ポイント3-4: もう一方の選手、ポイント5-6: 初期選手...
+  const switchCount = Math.floor((pointNumber - 1) / 2);
+  const result = (gameInitialPlayerIndex + switchCount) % 2;
+
+  // デバッグ用ログ（開発環境のみ）
+  if (
+    typeof window !== 'undefined' &&
+    (window as Window & { DEBUG_SERVE?: boolean }).DEBUG_SERVE
+  ) {
+    console.log('getCurrentServingPlayerIndex:', {
+      gameNumber: game.game_number,
+      pointNumber,
+      finalGame,
+      gameInitialPlayerIndex,
+      result,
+      teamPlayers: teamPlayers.length,
+    });
   }
+
+  return result;
 }

@@ -78,8 +78,11 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
       return (
         <div className="text-sm text-gray-600 mt-2">
           <p>• ゲームごとにサーブ権が交代します</p>
-          <p>• 通常のゲーム: 2ポイントごとにサーブ交代</p>
-          <p>• ファイナルゲーム: 最初の1ポイントで交代、その後2ポイントごと</p>
+          <p>
+            • 通常ゲーム:
+            同じチームがゲーム全体をサーブ、選手は2ポイントごとに交代
+          </p>
+          <p>• ファイナルゲーム: 2ポイントごとにチーム・選手が交代</p>
         </div>
       );
     }
