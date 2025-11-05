@@ -793,21 +793,6 @@ const MatchInput = () => {
             <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
             <div className="grid grid-cols-3 gap-2">
               <button
-                onClick={() =>
-                  setPointData({
-                    ...pointData,
-                    first_serve_fault: !pointData.first_serve_fault,
-                  })
-                }
-                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                  pointData.first_serve_fault
-                    ? 'border-orange-500 bg-orange-50 text-orange-700'
-                    : 'border-gray-300 hover:border-orange-300'
-                }`}
-              >
-                1stフォルト
-              </button>
-              <button
                 onClick={() => {
                   const currentServe = getCurrentServe();
                   setPointData({
@@ -824,6 +809,21 @@ const MatchInput = () => {
                 }`}
               >
                 サービスエース
+              </button>
+              <button
+                onClick={() =>
+                  setPointData({
+                    ...pointData,
+                    first_serve_fault: !pointData.first_serve_fault,
+                  })
+                }
+                className={`p-2 border-2 rounded font-medium transition-all text-xs ${
+                  pointData.first_serve_fault
+                    ? 'border-orange-500 bg-orange-50 text-orange-700'
+                    : 'border-gray-300 hover:border-orange-300'
+                }`}
+              >
+                1stフォルト
               </button>
               <button
                 onClick={() => {
