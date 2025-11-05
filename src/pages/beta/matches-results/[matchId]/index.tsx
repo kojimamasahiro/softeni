@@ -206,19 +206,7 @@ const PublicMatchDetail = ({
 
       // サーブ統計の計算
       game.points.forEach((point) => {
-        let servingPlayerName = point.serving_player;
-
-        // serving_playerが存在しない場合、サーブチームから推定
-        if (!servingPlayerName && point.serving_team) {
-          // サーブチームの最初の選手を推定（暫定的な対応）
-          const servingTeam = point.serving_team;
-          if (servingTeam === 'A' && match.team_a) {
-            // チーム名から選手名を抽出（簡略化）
-            servingPlayerName = match.team_a.split('/')[0] || match.team_a;
-          } else if (servingTeam === 'B' && match.team_b) {
-            servingPlayerName = match.team_b.split('/')[0] || match.team_b;
-          }
-        }
+        const servingPlayerName = point.serving_player;
 
         if (!servingPlayerName) return;
 
