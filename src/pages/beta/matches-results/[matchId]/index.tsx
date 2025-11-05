@@ -92,6 +92,7 @@ const PublicMatchDetail = ({
       volley_winner: 'ボレーウィナー',
       passing_winner: 'パッシングウィナー',
       drop_winner: 'ドロップウィナー',
+      net_in_winner: 'ネットインウィナー',
       service_ace: 'サービスエース',
 
       // ミス系
@@ -148,6 +149,7 @@ const PublicMatchDetail = ({
       'volley_winner',
       'passing_winner',
       'drop_winner',
+      'net_in_winner',
       'service_ace',
     ];
 

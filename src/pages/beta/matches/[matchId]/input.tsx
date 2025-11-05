@@ -139,6 +139,7 @@ const MatchInput = () => {
       'volley_winner',
       'passing_winner',
       'drop_winner',
+      'net_in_winner',
       'service_ace',
     ];
 
@@ -1125,6 +1126,7 @@ const MatchInput = () => {
                   { value: 'volley_winner', label: 'ボレー' },
                   { value: 'passing_winner', label: 'パッシング' },
                   { value: 'drop_winner', label: 'ドロップ' },
+                  { value: 'net_in_winner', label: 'ネットイン' },
                 ].map(({ value, label }) => (
                   <button
                     key={value}

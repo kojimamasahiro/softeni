@@ -52,11 +52,26 @@ const MatchDetail = () => {
 
   const getResultTypeLabel = (type: string) => {
     const labels: { [key: string]: string } = {
+      // ウィナー系
+      smash_winner: 'スマッシュウィナー',
+      volley_winner: 'ボレーウィナー',
+      passing_winner: 'パッシングウィナー',
+      drop_winner: 'ドロップウィナー',
+      net_in_winner: 'ネットインウィナー',
+      service_ace: 'サービスエース',
+      
+      // ミス系
+      net: 'ネット',
+      out: 'アウト',
+      smash_error: 'スマッシュミス',
+      volley_error: 'ボレーミス',
+      double_fault: 'ダブルフォルト',
+      follow_error: 'フォローミス',
+      
+      // その他
       winner: '決定打',
       forced_error: 'ミス誘発',
       unforced_error: '凡ミス',
-      net: 'ネット',
-      out: 'アウト',
     };
     return labels[type] || type;
   };
