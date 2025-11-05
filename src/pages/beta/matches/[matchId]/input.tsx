@@ -910,19 +910,8 @@ const MatchInput = () => {
               </p>
             )}
             {!isEditMode && getCurrentServingPlayer() && (
-              <div className="mt-2 space-y-2">
-                <div className="p-2 bg-yellow-50 border border-yellow-200 rounded">
-                  <p className="text-sm font-medium text-yellow-800">
-                    サーバー: {getCurrentServingPlayer()?.playerName}
-                    {manualServingPlayer && (
-                      <span className="text-xs text-blue-600 ml-2">
-                        (手動選択)
-                      </span>
-                    )}
-                  </p>
-                </div>
-
-                {/* 手動サーブ選手選択 */}
+              <div className="mt-2">
+                {/* サーバー表示と手動選択を横並びに */}
                 {match &&
                   currentGame &&
                   (() => {
@@ -933,37 +922,56 @@ const MatchInput = () => {
                       match,
                       servingTeam,
                     );
-                    if (teamPlayers.length <= 1) return null; // シングルスの場合は表示しない
+                    const isDoubles = teamPlayers.length > 1;
 
                     return (
-                      <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                        <div className="flex gap-2">
-                          {teamPlayers.map((playerName, index) => (
-                            <button
-                              key={index}
-                              onClick={() => {
-                                setManualServingPlayer({
-                                  team: servingTeam,
-                                  playerIndex: index,
-                                });
-                              }}
-                              className={`px-3 py-1 text-xs border rounded font-medium transition-all ${
-                                manualServingPlayer?.team === servingTeam &&
-                                manualServingPlayer?.playerIndex === index
-                                  ? 'border-blue-500 bg-blue-100 text-blue-700'
-                                  : 'border-gray-300 hover:border-blue-300 text-gray-700'
-                              }`}
-                            >
-                              {playerName}
-                            </button>
-                          ))}
-                          <button
-                            onClick={() => setManualServingPlayer(null)}
-                            className="px-3 py-1 text-xs border border-gray-300 rounded text-gray-600 hover:border-red-300 hover:text-red-600"
-                          >
-                            自動
-                          </button>
+                      <div
+                        className={`grid gap-3 ${isDoubles ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}
+                      >
+                        {/* サーバー表示 */}
+                        <div className="p-2 bg-yellow-50 border border-yellow-200 rounded">
+                          <p className="text-sm font-medium text-yellow-800">
+                            サーバー: {getCurrentServingPlayer()?.playerName}
+                            {manualServingPlayer && (
+                              <span className="text-xs text-blue-600 ml-2">
+                                (手動選択)
+                              </span>
+                            )}
+                          </p>
                         </div>
+
+                        {/* 手動サーブ選手選択（ダブルスの場合のみ） */}
+                        {isDoubles && (
+                          <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                            <div className="flex gap-2 justify-center">
+                              {teamPlayers.map((playerName, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => {
+                                    setManualServingPlayer({
+                                      team: servingTeam,
+                                      playerIndex: index,
+                                    });
+                                  }}
+                                  className={`px-3 py-1 text-xs border rounded font-medium transition-all ${
+                                    manualServingPlayer?.team === servingTeam &&
+                                    manualServingPlayer?.playerIndex === index
+                                      ? 'border-blue-500 bg-blue-100 text-blue-700'
+                                      : 'border-gray-300 hover:border-blue-300 text-gray-700'
+                                  }`}
+                                >
+                                  {playerName}
+                                </button>
+                              ))}
+                              <button
+                                onClick={() => setManualServingPlayer(null)}
+                                className="px-3 py-1 text-xs border border-gray-300 rounded text-gray-600 hover:border-red-300 hover:text-red-600"
+                              >
+                                自動
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     );
                   })()}
