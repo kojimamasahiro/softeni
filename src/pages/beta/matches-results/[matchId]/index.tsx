@@ -410,7 +410,11 @@ const PublicMatchDetail = ({
                     {game.points_a}
                   </td>
                 ))}
-              <td className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
+              <td
+                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
+                  matchWinner === 'A' ? 'font-bold' : 'font-normal'
+                }`}
+              >
                 {match.games?.filter((game) => game.winner_team === 'A')
                   .length || 0}
               </td>
@@ -433,7 +437,11 @@ const PublicMatchDetail = ({
                     {game.points_b}
                   </td>
                 ))}
-              <td className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
+              <td
+                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
+                  matchWinner === 'B' ? 'font-bold' : 'font-normal'
+                }`}
+              >
                 {match.games?.filter((game) => game.winner_team === 'B')
                   .length || 0}
               </td>
