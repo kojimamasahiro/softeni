@@ -471,8 +471,7 @@ const PublicMatchDetail = ({
                             : 'bg-green-100 text-green-800'
                         }`}
                       >
-                        {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}{' '}
-                        勝利
+                        {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}
                       </span>
                     )}
                   </div>
