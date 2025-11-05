@@ -121,7 +121,8 @@ export function getServeDisplayText(servingTeam: 'A' | 'B'): string {
 
 /**
  * 現在のポイントでサーブを行う選手を決定する
- * ダブルスの場合：ゲーム内で2人が交互にサーブ
+ * 通常ゲーム: 同じチーム内で2ポイントごとに選手交代
+ * ファイナルゲーム: チーム交代を考慮し、各チーム内で2ポイントごとに選手交代
  * シングルスの場合：常に1人の選手
  * @param game 現在のゲーム
  * @param pointNumber ポイント番号（1から開始）
@@ -153,25 +154,36 @@ export function getCurrentServingPlayerIndex(
   // ファイナルゲーム判定
   const finalGame = isFinalGame(game.game_number, bestOf, gamesWonA, gamesWonB);
 
-  // ダブルスの場合：2ポイントごとに同じチーム内で選手が交代（ファイナルゲーム・通常ゲーム共通）
-  // ポイント1-2: 初期選手、ポイント3-4: もう一方の選手、ポイント5-6: 初期選手...
-  const switchCount = Math.floor((pointNumber - 1) / 2);
-  const result = (gameInitialPlayerIndex + switchCount) % 2;
-
-  // デバッグ用ログ（開発環境のみ）
-  if (
-    typeof window !== 'undefined' &&
-    (window as Window & { DEBUG_SERVE?: boolean }).DEBUG_SERVE
-  ) {
-    console.log('getCurrentServingPlayerIndex:', {
-      gameNumber: game.game_number,
+  if (finalGame) {
+    // ファイナルゲーム: チーム交代を考慮して選手を決定
+    // まず現在のサーブチームを取得
+    const currentServingTeam = getCurrentServingTeam(
+      game,
       pointNumber,
-      finalGame,
-      gameInitialPlayerIndex,
-      result,
-      teamPlayers: teamPlayers.length,
-    });
-  }
+      bestOf,
+      gamesWonA,
+      gamesWonB,
+    );
 
-  return result;
+    // 初期サーブチームと現在のサーブチームが同じかどうかで選手を決定
+    const initialServeTeam = game.initial_serve_team as 'A' | 'B';
+    const isInitialTeamServing = currentServingTeam === initialServeTeam;
+
+    if (isInitialTeamServing) {
+      // 初期サーブチームの場合：設定された初期選手から4ポイントごとに交代
+      // ポイント1-2, 5-6, 9-10...: 初期選手、ポイント3-4, 7-8, 11-12...: もう一方の選手
+      const teamSwitchCount = Math.floor((pointNumber - 1) / 4);
+      return (gameInitialPlayerIndex + teamSwitchCount) % 2;
+    } else {
+      // 相手チームの場合：0番目の選手から4ポイントごとに交代
+      // ポイント1-2, 5-6, 9-10...: 0番目選手、ポイント3-4, 7-8, 11-12...: 1番目選手
+      const adjustedPoint = pointNumber - 2; // 相手チームは3ポイント目から開始
+      const teamSwitchCount = Math.floor(Math.max(0, adjustedPoint - 1) / 4);
+      return teamSwitchCount % 2;
+    }
+  } else {
+    // 通常のゲーム: 同じチーム内で2ポイントごとに選手が交代
+    const switchCount = Math.floor((pointNumber - 1) / 2);
+    return (gameInitialPlayerIndex + switchCount) % 2;
+  }
 }

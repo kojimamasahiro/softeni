@@ -735,9 +735,6 @@ const MatchInput = () => {
                 }`}
               >
                 <div className="text-center">
-                  <div className="font-semibold">
-                    {getCurrentServingPlayer()?.playerName || 'サーブ選手未定'}
-                  </div>
                   <div className="text-sm mt-1">
                     🏓 チーム{getCurrentServe()}のサーブ
                   </div>
@@ -782,7 +779,7 @@ const MatchInput = () => {
             {!isEditMode && getCurrentServingPlayer() && (
               <div className="mt-2 p-2 bg-yellow-50 border border-yellow-200 rounded">
                 <p className="text-sm font-medium text-yellow-800">
-                  次のサーブ: {getCurrentServingPlayer()?.playerName}
+                  サーバー: {getCurrentServingPlayer()?.playerName}
                 </p>
               </div>
             )}
