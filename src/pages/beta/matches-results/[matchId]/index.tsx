@@ -683,11 +683,12 @@ const PublicMatchDetail = ({
                       </div>
                     </div>
 
-                    {/* サーブ円グラフ */}
+                    {/* サーブ横棒グラフ */}
                     {(() => {
                       const total = stats.serves.total;
-                      const firstServeSuccess = stats.serves.firstServeSuccess;
+                      const aces = stats.serves.aces;
                       const doubleFaults = stats.serves.doubleFaults;
+                      const firstServeSuccess = stats.serves.firstServeSuccess;
                       // 2ndサーブ成功 = 総サーブ数 - 1stサーブ成功 - ダブルフォルト
                       const secondServeSuccess =
                         total - firstServeSuccess - doubleFaults;
@@ -697,108 +698,98 @@ const PublicMatchDetail = ({
                       const secondServePercent =
                         (secondServeSuccess / total) * 100;
                       const doubleFaultPercent = (doubleFaults / total) * 100;
-
-                      // SVG円グラフ用の角度計算
-                      const firstServeAngle = (firstServePercent / 100) * 360;
-                      const secondServeAngle = (secondServePercent / 100) * 360;
-
-                      const getPath = (
-                        startAngle: number,
-                        endAngle: number,
-                        radius = 40,
-                      ) => {
-                        const start = (startAngle - 90) * (Math.PI / 180);
-                        const end = (endAngle - 90) * (Math.PI / 180);
-                        const largeArcFlag =
-                          endAngle - startAngle <= 180 ? '0' : '1';
-
-                        const x1 = 50 + radius * Math.cos(start);
-                        const y1 = 50 + radius * Math.sin(start);
-                        const x2 = 50 + radius * Math.cos(end);
-                        const y2 = 50 + radius * Math.sin(end);
-
-                        return [
-                          'M',
-                          50,
-                          50,
-                          'L',
-                          x1,
-                          y1,
-                          'A',
-                          radius,
-                          radius,
-                          0,
-                          largeArcFlag,
-                          1,
-                          x2,
-                          y2,
-                          'Z',
-                        ].join(' ');
-                      };
+                      const acePercent = (aces / total) * 100;
 
                       return (
                         <div className="bg-gray-50 rounded p-4">
-                          <h6 className="font-medium text-xs text-gray-600 mb-3 text-center">
-                            サーブ構成比
+                          <h6 className="font-medium text-xs text-gray-600 mb-4 text-center">
+                            サーブ構成 (総{total}本)
                           </h6>
-                          <div className="flex items-center justify-center gap-6">
-                            {/* 円グラフ */}
+
+                          {/* 横棒グラフ */}
+                          <div className="space-y-4">
+                            {/* 総サーブ数の棒グラフ */}
                             <div className="relative">
-                              <svg
-                                width="100"
-                                height="100"
-                                viewBox="0 0 100 100"
-                              >
+                              <div className="flex items-center justify-between mb-2">
+                                <span className="text-xs font-medium text-gray-700">
+                                  総サーブ数
+                                </span>
+                                <span className="text-xs font-bold text-gray-800">
+                                  {total}本
+                                </span>
+                              </div>
+
+                              {/* 積み重ね棒グラフ */}
+                              <div className="relative h-4 bg-gray-200 rounded overflow-hidden">
                                 {/* 1stサーブ成功 */}
-                                <path
-                                  d={getPath(0, firstServeAngle)}
-                                  fill="#16a34a"
-                                  stroke="white"
-                                  strokeWidth="1"
-                                />
+                                <div
+                                  className="absolute top-0 left-0 h-full bg-green-500"
+                                  style={{ width: `${firstServePercent}%` }}
+                                ></div>
+
                                 {/* 2ndサーブ成功 */}
-                                <path
-                                  d={getPath(
-                                    firstServeAngle,
-                                    firstServeAngle + secondServeAngle,
-                                  )}
-                                  fill="#3b82f6"
-                                  stroke="white"
-                                  strokeWidth="1"
-                                />
+                                <div
+                                  className="absolute top-0 h-full bg-blue-500"
+                                  style={{
+                                    left: `${firstServePercent}%`,
+                                    width: `${secondServePercent}%`,
+                                  }}
+                                ></div>
+
                                 {/* ダブルフォルト */}
-                                <path
-                                  d={getPath(
-                                    firstServeAngle + secondServeAngle,
-                                    360,
-                                  )}
-                                  fill="#dc2626"
-                                  stroke="white"
-                                  strokeWidth="1"
-                                />
-                              </svg>
+                                <div
+                                  className="absolute top-0 h-full bg-red-500"
+                                  style={{
+                                    left: `${firstServePercent + secondServePercent}%`,
+                                    width: `${doubleFaultPercent}%`,
+                                  }}
+                                ></div>
+                              </div>
+
+                              {/* エースとダブルフォルトのマーカー */}
+                              <div className="relative mt-1 h-1">
+                                {/* エースマーカー */}
+                                {aces > 0 && (
+                                  <div
+                                    className="absolute top-0 h-1 bg-yellow-400 rounded-sm"
+                                    style={{
+                                      left: '0%',
+                                      width: `${acePercent}%`,
+                                      minWidth: '2px',
+                                    }}
+                                    title={`エース: ${aces}本`}
+                                  ></div>
+                                )}
+                              </div>
                             </div>
 
-                            {/* 凡例 */}
-                            <div className="space-y-2 text-xs">
+                            {/* 詳細数値 */}
+                            <div className="grid grid-cols-2 gap-3 text-xs">
                               <div className="flex items-center gap-2">
-                                <div className="w-3 h-3 bg-green-600 rounded"></div>
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                                 <span>
-                                  1stサーブ成功: {firstServePercent.toFixed(1)}%
+                                  1stサーブ成功: {firstServeSuccess}本 (
+                                  {firstServePercent.toFixed(1)}%)
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                                <div className="w-2 h-2 bg-yellow-400 border border-yellow-600 rounded-full"></div>
                                 <span>
-                                  2ndサーブ成功: {secondServePercent.toFixed(1)}
-                                  %
+                                  エース: {aces}本 ({acePercent.toFixed(1)}%)
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-3 h-3 bg-red-600 rounded"></div>
+                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                                 <span>
-                                  ダブルフォルト:{' '}
-                                  {doubleFaultPercent.toFixed(1)}%
+                                  2ndサーブ成功: {secondServeSuccess}本 (
+                                  {secondServePercent.toFixed(1)}%)
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <span>
+                                  ダブルフォルト: {doubleFaults}本 (
+                                  {doubleFaultPercent.toFixed(1)}%)
                                 </span>
                               </div>
                             </div>
