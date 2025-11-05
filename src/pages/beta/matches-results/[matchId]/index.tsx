@@ -401,10 +401,10 @@ const PublicMatchDetail = ({
                 .map((game) => (
                   <td
                     key={game.game_number}
-                    className={`border border-gray-300 px-3 py-2 text-center font-bold ${
+                    className={`border border-gray-300 px-3 py-2 text-center ${
                       game.winner_team === 'A'
-                        ? 'bg-green-100 text-green-800'
-                        : ''
+                        ? 'bg-green-100 text-green-800 font-bold'
+                        : 'font-normal'
                     }`}
                   >
                     {game.points_a}
@@ -424,10 +424,10 @@ const PublicMatchDetail = ({
                 .map((game) => (
                   <td
                     key={game.game_number}
-                    className={`border border-gray-300 px-3 py-2 text-center font-bold ${
+                    className={`border border-gray-300 px-3 py-2 text-center ${
                       game.winner_team === 'B'
-                        ? 'bg-green-100 text-green-800'
-                        : ''
+                        ? 'bg-green-100 text-green-800 font-bold'
+                        : 'font-normal'
                     }`}
                   >
                     {game.points_b}
