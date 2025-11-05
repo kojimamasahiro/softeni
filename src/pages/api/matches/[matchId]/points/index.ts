@@ -244,9 +244,49 @@ export default async function handler(
           currentPointsA > currentPointsB ? 'A' : 'B';
       }
 
-      await supabase.from('games').update(gameUpdateData).eq('id', game_id);
+      // ゲームを更新し、更新後のデータを取得
+      const { data: updatedGame } = await supabase
+        .from('games')
+        .update(gameUpdateData)
+        .eq('id', game_id)
+        .select()
+        .single();
 
-      res.status(201).json({ point: data, gameWon });
+      // マッチの他のゲーム結果を取得してゲームスコアを計算
+      const { data: allGames } = await supabase
+        .from('games')
+        .select('id, game_number, points_a, points_b, winner_team')
+        .eq('match_id', matchId)
+        .order('game_number');
+
+      const finalGamesWonA =
+        allGames?.filter((g) => g.winner_team === 'A').length || 0;
+      const finalGamesWonB =
+        allGames?.filter((g) => g.winner_team === 'B').length || 0;
+
+      // マッチ終了判定
+      const finalRequiredWins = Math.ceil(bestOf / 2);
+      const matchFinished =
+        finalGamesWonA >= finalRequiredWins ||
+        finalGamesWonB >= finalRequiredWins;
+      const matchWinner = matchFinished
+        ? finalGamesWonA >= finalRequiredWins
+          ? 'A'
+          : 'B'
+        : null;
+
+      res.status(201).json({
+        point: data,
+        gameWon,
+        updatedGame,
+        matchStats: {
+          gamesWonA: finalGamesWonA,
+          gamesWonB: finalGamesWonB,
+          matchFinished,
+          matchWinner,
+          allGames,
+        },
+      });
     } catch {
       res.status(500).json({ error: 'Internal server error' });
     }
@@ -323,7 +363,52 @@ export default async function handler(
       // ゲームスコアを再計算
       await recalculateGameScore(gameId);
 
-      res.status(200).json({ point: updatedPoint });
+      // 更新後のゲーム情報とマッチ統計を取得
+      const { data: updatedGameAfterRecalc } = await supabase
+        .from('games')
+        .select('*')
+        .eq('id', gameId)
+        .single();
+
+      const { data: matchDataForStats } = await supabase
+        .from('matches')
+        .select('best_of')
+        .eq('id', matchId)
+        .single();
+
+      const { data: allGamesAfterUpdate } = await supabase
+        .from('games')
+        .select('id, game_number, points_a, points_b, winner_team')
+        .eq('match_id', matchId)
+        .order('game_number');
+
+      const updateGamesWonA =
+        allGamesAfterUpdate?.filter((g) => g.winner_team === 'A').length || 0;
+      const updateGamesWonB =
+        allGamesAfterUpdate?.filter((g) => g.winner_team === 'B').length || 0;
+
+      const updateBestOf = matchDataForStats?.best_of || 5;
+      const updateRequiredWins = Math.ceil(updateBestOf / 2);
+      const updateMatchFinished =
+        updateGamesWonA >= updateRequiredWins ||
+        updateGamesWonB >= updateRequiredWins;
+      const updateMatchWinner = updateMatchFinished
+        ? updateGamesWonA >= updateRequiredWins
+          ? 'A'
+          : 'B'
+        : null;
+
+      res.status(200).json({
+        point: updatedPoint,
+        updatedGame: updatedGameAfterRecalc,
+        matchStats: {
+          gamesWonA: updateGamesWonA,
+          gamesWonB: updateGamesWonB,
+          matchFinished: updateMatchFinished,
+          matchWinner: updateMatchWinner,
+          allGames: allGamesAfterUpdate,
+        },
+      });
     } catch {
       res.status(500).json({ error: 'Internal server error' });
     }

@@ -275,16 +275,53 @@ const MatchInput = () => {
       });
 
       if (response.ok) {
+        const result = await response.json();
+
+        // 最適化：レスポンスデータを使ってローカル状態を更新
+        if (
+          result.updatedGame &&
+          result.matchStats &&
+          match.games &&
+          currentGame
+        ) {
+          // 更新されたポイントでローカル状態を更新
+          const updatedPoints =
+            currentGame.points?.map((point: Point) =>
+              point.id === editingPoint.id ? result.point : point,
+            ) || [];
+
+          const updatedCurrentGame = {
+            ...result.updatedGame,
+            points: updatedPoints,
+          };
+
+          // ゲームリストを更新
+          const updatedGames = match.games.map((game: Game) =>
+            game.id === result.updatedGame.id ? updatedCurrentGame : game,
+          );
+
+          const updatedMatch = {
+            ...match,
+            games: updatedGames,
+          };
+
+          setMatch(updatedMatch);
+          setCurrentGame(updatedCurrentGame);
+        }
+
         cancelEditPoint();
-        await fetchMatch();
       } else {
         const errorData = await response.json();
         console.error('Update failed:', errorData);
         alert(`更新に失敗しました: ${errorData.error || 'Unknown error'}`);
+        // エラーの場合は従来通りデータを再取得
+        await fetchMatch();
       }
     } catch (error) {
       console.error('Failed to update point:', error);
       alert('更新中にエラーが発生しました。');
+      // エラーの場合は従来通りデータを再取得
+      await fetchMatch();
     } finally {
       setSubmitting(false);
     }
@@ -326,6 +363,47 @@ const MatchInput = () => {
         ? getPlayerNameFromId(pointData.loser_player)
         : pointData.loser_player;
 
+      // 楽観的UI更新：即座にUIを更新
+      const optimisticPoint = {
+        id: `temp-${Date.now()}`, // 一時的なID
+        game_id: currentGame.id,
+        point_number: nextPointNumber,
+        serving_team: currentServingTeam,
+        serving_player: servingPlayerName,
+        winner_team: pointData.winner_team,
+        rally_count: pointData.rally_count,
+        first_serve_fault: pointData.first_serve_fault,
+        double_fault: pointData.double_fault,
+        result_type: pointData.result_type,
+        winner_player: winnerPlayerName,
+        loser_player: loserPlayerName,
+        created_at: new Date().toISOString(),
+      };
+
+      // UIを即座に更新
+      const optimisticCurrentGame = {
+        ...currentGame,
+        points: [...(currentGame.points || []), optimisticPoint],
+        points_a:
+          currentGame.points_a + (pointData.winner_team === 'A' ? 1 : 0),
+        points_b:
+          currentGame.points_b + (pointData.winner_team === 'B' ? 1 : 0),
+      };
+
+      setCurrentGame(optimisticCurrentGame);
+
+      // フォームを即座にリセット
+      setPointData({
+        winner_team: '',
+        serving_team: '',
+        rally_count: 0,
+        first_serve_fault: false,
+        double_fault: false,
+        result_type: '',
+        winner_player: '',
+        loser_player: '',
+      });
+
       const response = await fetch(`/api/matches/${matchId}/points`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -345,20 +423,32 @@ const MatchInput = () => {
       });
 
       if (response.ok) {
-        // フォームリセット
-        setPointData({
-          winner_team: '',
-          serving_team: '',
-          rally_count: 0,
-          first_serve_fault: false,
-          double_fault: false,
-          result_type: '',
-          winner_player: '',
-          loser_player: '',
-        });
+        const result = await response.json();
 
-        // マッチデータを再取得
-        await fetchMatch();
+        // 最適化：レスポンスデータを使ってローカル状態を更新
+        if (result.updatedGame && result.matchStats && match.games) {
+          // 現在のゲームを更新
+          const updatedGames = match.games.map((game: Game) =>
+            game.id === result.updatedGame.id ? result.updatedGame : game,
+          );
+
+          // ポイントを追加
+          const updatedCurrentGame = {
+            ...result.updatedGame,
+            points: [...(currentGame.points || []), result.point],
+          };
+
+          // マッチデータを更新
+          const updatedMatch = {
+            ...match,
+            games: updatedGames.map((game: Game) =>
+              game.id === updatedCurrentGame.id ? updatedCurrentGame : game,
+            ),
+          };
+
+          setMatch(updatedMatch);
+          setCurrentGame(updatedCurrentGame);
+        }
 
         // 次のポイントでサーブチームが変わる場合、手動選択をリセット
         const nextServingTeam = getCurrentServingTeam(
@@ -374,9 +464,17 @@ const MatchInput = () => {
         ) {
           setManualServingPlayer(null);
         }
+      } else {
+        // エラーの場合：楽観的更新を元に戻し、データを再取得
+        console.error('API error, reverting optimistic update');
+        setCurrentGame(currentGame); // 元の状態に戻す
+        await fetchMatch();
       }
     } catch (error) {
       console.error('Failed to submit point:', error);
+      // エラーの場合：楽観的更新を元に戻し、データを再取得
+      setCurrentGame(currentGame); // 元の状態に戻す
+      await fetchMatch();
     } finally {
       setSubmitting(false);
     }
