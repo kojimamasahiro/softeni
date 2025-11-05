@@ -385,12 +385,18 @@ export const getTournamentOptions = async (): Promise<
       throw new Error('Failed to fetch tournaments');
     }
 
-    // 選択肢用の形式に変換（meta情報から取得）
-    return data.tournaments.map((tournament: TournamentOption) => ({
-      id: tournament.meta.id,
-      name: tournament.meta.name,
-      year: tournament.yearMeta.year,
-    }));
+    // 選択肢用の形式に変換（年情報も含む）
+    return data.tournaments.map(
+      (tournament: {
+        id: string;
+        name: string;
+        yearMeta: { year: number };
+      }) => ({
+        id: tournament.id,
+        name: tournament.name,
+        year: tournament.yearMeta.year,
+      }),
+    );
   } catch (error) {
     console.error('Failed to fetch tournament options:', error);
     return [];
