@@ -404,6 +404,21 @@ const MatchInput = () => {
         loser_player: '',
       });
 
+      // デバッグ用ログ
+      console.log('Submitting point data:', {
+        game_id: currentGame.id,
+        point_number: nextPointNumber,
+        serving_team: currentServingTeam,
+        serving_player: servingPlayerName,
+        winner_team: pointData.winner_team,
+        rally_count: pointData.rally_count,
+        first_serve_fault: pointData.first_serve_fault,
+        double_fault: pointData.double_fault,
+        result_type: pointData.result_type,
+        winner_player: winnerPlayerName,
+        loser_player: loserPlayerName,
+      });
+
       const response = await fetch(`/api/matches/${matchId}/points`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1177,6 +1192,20 @@ const MatchInput = () => {
           {/* 関与選手 */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2 text-center">関与選手</h4>
+            {/* サービスエース・ダブルフォルト時の自動設定表示 */}
+            {(pointData.result_type === 'service_ace' ||
+              pointData.result_type === 'double_fault') && (
+              <div className="mb-3 p-2 bg-yellow-50 border border-yellow-200 rounded text-center">
+                <p className="text-xs text-yellow-800">
+                  {pointData.result_type === 'service_ace'
+                    ? 'サービスエース：サーブ選手が自動選択されています'
+                    : 'ダブルフォルト：サーブ選手が自動選択されています'}
+                </p>
+                <p className="text-xs text-yellow-600 mt-1">
+                  現在のサーブ選手: {getCurrentServingPlayer()?.playerName}
+                </p>
+              </div>
+            )}
             <div className="grid grid-cols-2 gap-2">
               {/* チームA選手 */}
               <div>
@@ -1191,10 +1220,19 @@ const MatchInput = () => {
                         index,
                         playerName,
                       );
+                      const isAutoSelected =
+                        pointData.result_type === 'service_ace' ||
+                        pointData.result_type === 'double_fault';
                       return (
                         <button
                           key={uniqueId}
+                          disabled={isAutoSelected}
                           onClick={() => {
+                            // サービスエース・ダブルフォルトの場合は自動設定のため何もしない
+                            if (isAutoSelected) {
+                              return;
+                            }
+
                             const newData = { ...pointData };
 
                             // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
@@ -1244,11 +1282,13 @@ const MatchInput = () => {
                             setPointData(newData);
                           }}
                           className={`p-1 border-2 rounded font-medium transition-all text-xs ${
-                            pointData.winner_player === uniqueId
-                              ? 'border-blue-500 bg-blue-50 text-blue-700'
-                              : pointData.loser_player === uniqueId
-                                ? 'border-orange-500 bg-orange-50 text-orange-700'
-                                : 'border-gray-300 hover:border-blue-300'
+                            isAutoSelected
+                              ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                              : pointData.winner_player === uniqueId
+                                ? 'border-blue-500 bg-blue-50 text-blue-700'
+                                : pointData.loser_player === uniqueId
+                                  ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                  : 'border-gray-300 hover:border-blue-300'
                           }`}
                         >
                           {playerName}
@@ -1271,10 +1311,18 @@ const MatchInput = () => {
                         index,
                         playerName,
                       );
+                      const isAutoSelected =
+                        pointData.result_type === 'service_ace' ||
+                        pointData.result_type === 'double_fault';
                       return (
                         <button
                           key={uniqueId}
+                          disabled={isAutoSelected}
                           onClick={() => {
+                            // サービスエース・ダブルフォルトの場合は自動設定のため何もしない
+                            if (isAutoSelected) {
+                              return;
+                            }
                             const newData = { ...pointData };
 
                             // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
@@ -1324,11 +1372,13 @@ const MatchInput = () => {
                             setPointData(newData);
                           }}
                           className={`p-1 border-2 rounded font-medium transition-all text-xs ${
-                            pointData.winner_player === uniqueId
-                              ? 'border-red-500 bg-red-50 text-red-700'
-                              : pointData.loser_player === uniqueId
-                                ? 'border-orange-500 bg-orange-50 text-orange-700'
-                                : 'border-gray-300 hover:border-red-300'
+                            isAutoSelected
+                              ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                              : pointData.winner_player === uniqueId
+                                ? 'border-red-500 bg-red-50 text-red-700'
+                                : pointData.loser_player === uniqueId
+                                  ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                  : 'border-gray-300 hover:border-red-300'
                           }`}
                         >
                           {playerName}

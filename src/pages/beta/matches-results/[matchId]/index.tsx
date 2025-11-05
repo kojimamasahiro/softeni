@@ -532,11 +532,31 @@ const PublicMatchDetail = ({
                                 <span className="font-medium text-blue-600">
                                   {getResultTypeLabel(point.result_type || '')}
                                 </span>
-                                {point.winner_player && (
-                                  <span className="text-gray-700">
-                                    {point.winner_player}
-                                  </span>
-                                )}
+                                {/* 選手情報：ウィナー系はwinner_player、ミス系はloser_playerを表示 */}
+                                {(() => {
+                                  const errorTypes = [
+                                    'net',
+                                    'out',
+                                    'smash_error',
+                                    'volley_error',
+                                    'double_fault',
+                                    'receive_error',
+                                    'follow_error',
+                                  ];
+
+                                  const isError =
+                                    point.result_type &&
+                                    errorTypes.includes(point.result_type);
+                                  const playerName = isError
+                                    ? point.loser_player
+                                    : point.winner_player;
+
+                                  return playerName ? (
+                                    <span className="text-gray-700">
+                                      {playerName}
+                                    </span>
+                                  ) : null;
+                                })()}
                                 <div className="flex gap-2">
                                   {point.first_serve_fault && (
                                     <span className="text-orange-600 text-xs bg-orange-50 px-1 rounded">
