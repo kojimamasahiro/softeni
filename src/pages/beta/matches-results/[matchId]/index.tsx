@@ -174,6 +174,24 @@ const PublicMatchDetail = ({
     const avgRally =
       rallyCounts.length > 0 ? totalRallies / rallyCounts.length : 0;
 
+    // 最長ラリーの詳細情報を取得
+    let maxRallyDetails: { gameNumber: number; pointNumber: number } | null =
+      null;
+    if (maxRally > 0) {
+      match.games.forEach((game) => {
+        if (!game.points) return;
+
+        game.points.forEach((point) => {
+          if (point.rally_count === maxRally && !maxRallyDetails) {
+            maxRallyDetails = {
+              gameNumber: game.game_number,
+              pointNumber: point.point_number,
+            };
+          }
+        });
+      });
+    }
+
     // ラリー数分布の計算
     const rallyDistribution: { [range: string]: number } = {
       '1-3': 0,
@@ -212,6 +230,7 @@ const PublicMatchDetail = ({
       winnersTotal,
       errorsTotal,
       maxRally,
+      maxRallyDetails,
       avgRally,
       rallyDistribution,
       winnerErrorRatio:
@@ -695,6 +714,20 @@ const PublicMatchDetail = ({
                       <div className="text-gray-600">中央値</div>
                     </div>
                   </div>
+
+                  {/* 最長ラリーの詳細情報 */}
+                  {matchStats.maxRallyDetails && (
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <h6 className="text-xs font-medium text-gray-700 mb-2">
+                        最長ラリー詳細
+                      </h6>
+                      <div className="text-xs text-gray-600">
+                        第{matchStats.maxRallyDetails.gameNumber}ゲーム・第
+                        {matchStats.maxRallyDetails.pointNumber}ポイント (
+                        {matchStats.maxRally}ラリー)
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
