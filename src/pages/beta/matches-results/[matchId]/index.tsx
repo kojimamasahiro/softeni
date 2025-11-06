@@ -655,33 +655,6 @@ const PublicMatchDetail = ({
                 )}
               </div>
 
-              {/* モメンタム分析 */}
-              {(matchStats.maxStreakA > 0 || matchStats.maxStreakB > 0) && (
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <h5 className="text-sm font-medium text-gray-700 mb-2">
-                    最長連続ポイント
-                  </h5>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-2 bg-blue-50 rounded">
-                      <div className="font-bold text-lg text-blue-600">
-                        {matchStats.maxStreakA}
-                      </div>
-                      <div className="text-xs text-blue-700">
-                        {getShortTeamName('A')}
-                      </div>
-                    </div>
-                    <div className="text-center p-2 bg-green-50 rounded">
-                      <div className="font-bold text-lg text-green-600">
-                        {matchStats.maxStreakB}
-                      </div>
-                      <div className="text-xs text-green-700">
-                        {getShortTeamName('B')}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
               {/* ラリー詳細統計 */}
               {matchStats.rallyCountsArray.length > 0 && (
                 <div className="mt-4 pt-4 border-t border-gray-200">
@@ -797,6 +770,8 @@ const PublicMatchDetail = ({
           return null;
         }
 
+        const matchStats = getMatchStats();
+
         return (
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-4">チーム別統計サマリー</h3>
@@ -806,7 +781,7 @@ const PublicMatchDetail = ({
                 <h4 className="font-semibold mb-3 text-blue-600">
                   {getShortTeamName('A')}
                 </h4>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="grid grid-cols-3 gap-3 mb-4">
                   <div className="text-center p-2 bg-green-50 rounded">
                     <div className="text-lg font-bold text-green-600">
                       {teamAStats.totalWinners}
@@ -818,6 +793,12 @@ const PublicMatchDetail = ({
                       {teamAStats.totalErrors}
                     </div>
                     <div className="text-xs text-red-700">ミス</div>
+                  </div>
+                  <div className="text-center p-2 bg-gray-50 rounded">
+                    <div className="text-lg font-bold text-gray-700">
+                      {matchStats?.maxStreakA || 0}
+                    </div>
+                    <div className="text-xs text-gray-600">最長連続</div>
                   </div>
                 </div>
 
@@ -881,7 +862,7 @@ const PublicMatchDetail = ({
                 <h4 className="font-semibold mb-3 text-green-600">
                   {getShortTeamName('B')}
                 </h4>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="grid grid-cols-3 gap-3 mb-4">
                   <div className="text-center p-2 bg-green-50 rounded">
                     <div className="text-lg font-bold text-green-600">
                       {teamBStats.totalWinners}
@@ -893,6 +874,12 @@ const PublicMatchDetail = ({
                       {teamBStats.totalErrors}
                     </div>
                     <div className="text-xs text-red-700">ミス</div>
+                  </div>
+                  <div className="text-center p-2 bg-gray-50 rounded">
+                    <div className="text-lg font-bold text-gray-700">
+                      {matchStats?.maxStreakB || 0}
+                    </div>
+                    <div className="text-xs text-gray-600">最長連続</div>
                   </div>
                 </div>
 
