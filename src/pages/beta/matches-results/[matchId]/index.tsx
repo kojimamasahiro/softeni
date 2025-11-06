@@ -655,22 +655,6 @@ const PublicMatchDetail = ({
                 )}
               </div>
 
-              {/* ウィナー/ミス比率 */}
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-gray-700">
-                    ウィナー/ミス比率
-                  </span>
-                  <span className="text-lg font-bold text-gray-800">
-                    {matchStats.winnerErrorRatio.toFixed(2)}
-                  </span>
-                </div>
-                <div className="text-xs text-gray-500 mt-1">
-                  {matchStats.winnersTotal} ウィナー / {matchStats.errorsTotal}{' '}
-                  ミス
-                </div>
-              </div>
-
               {/* モメンタム分析 */}
               {(matchStats.maxStreakA > 0 || matchStats.maxStreakB > 0) && (
                 <div className="mt-4 pt-4 border-t border-gray-200">
