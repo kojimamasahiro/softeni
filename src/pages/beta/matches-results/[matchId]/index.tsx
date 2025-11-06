@@ -635,20 +635,6 @@ const PublicMatchDetail = ({
         return (
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-4">試合統計</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="bg-white rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-purple-600">
-                  {matchStats.winnersTotal}
-                </div>
-                <div className="text-sm text-gray-600">総ウィナー</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-red-600">
-                  {matchStats.errorsTotal}
-                </div>
-                <div className="text-sm text-gray-600">総ミス</div>
-              </div>
-            </div>
 
             {/* ラリー数分布 */}
             <div className="bg-white rounded-lg p-4">
