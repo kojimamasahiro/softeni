@@ -59,7 +59,7 @@ const MatchDetail = () => {
       drop_winner: 'ドロップウィナー',
       net_in_winner: 'ネットインウィナー',
       service_ace: 'サービスエース',
-      
+
       // ミス系
       net: 'ネット',
       out: 'アウト',
@@ -67,7 +67,7 @@ const MatchDetail = () => {
       volley_error: 'ボレーミス',
       double_fault: 'ダブルフォルト',
       follow_error: 'フォローミス',
-      
+
       // その他
       winner: '決定打',
       forced_error: 'ミス誘発',
