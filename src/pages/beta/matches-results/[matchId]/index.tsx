@@ -112,6 +112,118 @@ const PublicMatchDetail = ({
     return labels[type] || type;
   };
 
+  // 試合全体の統計を計算する関数
+  const getMatchStats = () => {
+    if (!match?.games) return null;
+
+    const rallyCounts: number[] = [];
+    let totalPoints = 0;
+    let winnersTotal = 0;
+    let errorsTotal = 0;
+    let totalRallies = 0;
+
+    // モメンタム分析のためのデータ
+    const allPoints: Array<{ winner_team: string; game_number: number }> = [];
+
+    match.games.forEach((game) => {
+      if (!game.points) return;
+
+      totalPoints += game.points.length;
+
+      game.points.forEach((point) => {
+        if (point.winner_team) {
+          allPoints.push({
+            winner_team: point.winner_team,
+            game_number: game.game_number,
+          });
+        }
+
+        if (point.rally_count !== null && point.rally_count > 0) {
+          rallyCounts.push(point.rally_count);
+          totalRallies += point.rally_count;
+        }
+
+        const resultType = point.result_type || '';
+        const winnerTypes = [
+          'smash_winner',
+          'volley_winner',
+          'passing_winner',
+          'drop_winner',
+          'net_in_winner',
+          'service_ace',
+        ];
+        const errorTypes = [
+          'net',
+          'out',
+          'smash_error',
+          'volley_error',
+          'double_fault',
+          'follow_error',
+          'receive_error',
+        ];
+
+        if (winnerTypes.includes(resultType)) {
+          winnersTotal++;
+        } else if (errorTypes.includes(resultType)) {
+          errorsTotal++;
+        }
+      });
+    });
+
+    const maxRally = rallyCounts.length > 0 ? Math.max(...rallyCounts) : 0;
+    const avgRally =
+      rallyCounts.length > 0 ? totalRallies / rallyCounts.length : 0;
+
+    // ラリー数分布の計算
+    const rallyDistribution: { [range: string]: number } = {
+      '1-3': 0,
+      '4-10': 0,
+      '11-20': 0,
+      '21+': 0,
+    };
+
+    rallyCounts.forEach((count) => {
+      if (count <= 3) rallyDistribution['1-3']++;
+      else if (count <= 10) rallyDistribution['4-10']++;
+      else if (count <= 20) rallyDistribution['11-20']++;
+      else rallyDistribution['21+']++;
+    });
+
+    // モメンタム分析：最長連続ポイント
+    let maxStreakA = 0;
+    let maxStreakB = 0;
+    let currentStreakA = 0;
+    let currentStreakB = 0;
+
+    allPoints.forEach((point) => {
+      if (point.winner_team === 'A') {
+        currentStreakA++;
+        currentStreakB = 0;
+        maxStreakA = Math.max(maxStreakA, currentStreakA);
+      } else if (point.winner_team === 'B') {
+        currentStreakB++;
+        currentStreakA = 0;
+        maxStreakB = Math.max(maxStreakB, currentStreakB);
+      }
+    });
+
+    return {
+      totalPoints,
+      winnersTotal,
+      errorsTotal,
+      maxRally,
+      avgRally,
+      rallyDistribution,
+      winnerErrorRatio:
+        errorsTotal > 0 ? winnersTotal / errorsTotal : winnersTotal,
+      totalGames: match.games.length,
+      totalRallies,
+      maxStreakA,
+      maxStreakB,
+      rallyCountsArray: rallyCounts,
+    };
+  };
+
   // 選手統計を計算する関数
   const getPlayerStats = () => {
     if (!match?.games) return {};
@@ -513,6 +625,139 @@ const PublicMatchDetail = ({
           </tbody>
         </table>
       </div>
+
+      {/* 試合統計サマリー */}
+      {(() => {
+        const matchStats = getMatchStats();
+
+        if (!matchStats) return null;
+
+        return (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-4">試合統計</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="bg-white rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-purple-600">
+                  {matchStats.winnersTotal}
+                </div>
+                <div className="text-sm text-gray-600">総ウィナー</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-red-600">
+                  {matchStats.errorsTotal}
+                </div>
+                <div className="text-sm text-gray-600">総ミス</div>
+              </div>
+            </div>
+
+            {/* ラリー数分布 */}
+            <div className="bg-white rounded-lg p-4">
+              <h4 className="font-semibold mb-3">ラリー数分布</h4>
+              <div className="grid grid-cols-4 gap-2">
+                {Object.entries(matchStats.rallyDistribution).map(
+                  ([range, count]) => (
+                    <div
+                      key={range}
+                      className="text-center p-2 bg-gray-50 rounded"
+                    >
+                      <div className="font-bold text-lg text-gray-700">
+                        {count}
+                      </div>
+                      <div className="text-xs text-gray-600">{range}ラリー</div>
+                    </div>
+                  ),
+                )}
+              </div>
+
+              {/* ウィナー/ミス比率 */}
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium text-gray-700">
+                    ウィナー/ミス比率
+                  </span>
+                  <span className="text-lg font-bold text-gray-800">
+                    {matchStats.winnerErrorRatio.toFixed(2)}
+                  </span>
+                </div>
+                <div className="text-xs text-gray-500 mt-1">
+                  {matchStats.winnersTotal} ウィナー / {matchStats.errorsTotal}{' '}
+                  ミス
+                </div>
+              </div>
+
+              {/* モメンタム分析 */}
+              {(matchStats.maxStreakA > 0 || matchStats.maxStreakB > 0) && (
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <h5 className="text-sm font-medium text-gray-700 mb-2">
+                    最長連続ポイント
+                  </h5>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-2 bg-blue-50 rounded">
+                      <div className="font-bold text-lg text-blue-600">
+                        {matchStats.maxStreakA}
+                      </div>
+                      <div className="text-xs text-blue-700">
+                        {getShortTeamName('A')}
+                      </div>
+                    </div>
+                    <div className="text-center p-2 bg-green-50 rounded">
+                      <div className="font-bold text-lg text-green-600">
+                        {matchStats.maxStreakB}
+                      </div>
+                      <div className="text-xs text-green-700">
+                        {getShortTeamName('B')}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ラリー詳細統計 */}
+              {matchStats.rallyCountsArray.length > 0 && (
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <h5 className="text-sm font-medium text-gray-700 mb-2">
+                    ラリー詳細
+                  </h5>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
+                    <div>
+                      <div className="font-bold text-gray-700">
+                        {matchStats.maxRally}
+                      </div>
+                      <div className="text-gray-600">最長</div>
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-700">
+                        {Math.min(...matchStats.rallyCountsArray)}
+                      </div>
+                      <div className="text-gray-600">最短</div>
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-700">
+                        {matchStats.avgRally.toFixed(1)}
+                      </div>
+                      <div className="text-gray-600">平均</div>
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-700">
+                        {(() => {
+                          const sorted = [...matchStats.rallyCountsArray].sort(
+                            (a, b) => a - b,
+                          );
+                          const mid = Math.floor(sorted.length / 2);
+                          return sorted.length % 2 === 0
+                            ? ((sorted[mid - 1] + sorted[mid]) / 2).toFixed(1)
+                            : sorted[mid];
+                        })()}
+                      </div>
+                      <div className="text-gray-600">中央値</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* チーム別ウィナー・ミス内訳サマリー */}
       {(() => {
