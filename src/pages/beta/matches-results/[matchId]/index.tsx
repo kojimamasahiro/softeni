@@ -102,6 +102,7 @@ const PublicMatchDetail = ({
       volley_error: 'ボレーミス',
       double_fault: 'ダブルフォルト',
       follow_error: 'フォローミス',
+      receive_error: 'レシーブミス',
 
       // その他
       winner: '決定打',
@@ -161,6 +162,7 @@ const PublicMatchDetail = ({
       'volley_error',
       'double_fault',
       'follow_error',
+      'receive_error',
     ];
 
     match.games.forEach((game) => {
