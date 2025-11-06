@@ -722,9 +722,25 @@ const PublicMatchDetail = ({
                         最長ラリー詳細
                       </h6>
                       <div className="text-xs text-gray-600">
-                        第{matchStats.maxRallyDetails.gameNumber}ゲーム・第
-                        {matchStats.maxRallyDetails.pointNumber}ポイント (
-                        {matchStats.maxRally}ラリー)
+                        第
+                        {
+                          (
+                            matchStats.maxRallyDetails as {
+                              gameNumber: number;
+                              pointNumber: number;
+                            }
+                          )?.gameNumber
+                        }
+                        ゲーム・第
+                        {
+                          (
+                            matchStats.maxRallyDetails as {
+                              gameNumber: number;
+                              pointNumber: number;
+                            }
+                          )?.pointNumber
+                        }
+                        ポイント ({matchStats.maxRally}ラリー)
                       </div>
                     </div>
                   )}
