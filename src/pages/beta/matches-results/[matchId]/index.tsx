@@ -508,17 +508,7 @@ const PublicMatchDetail = ({
         >
           ← 試合一覧に戻る
         </Link>
-        <p className="text-sm text-gray-500">
-          最終更新:{' '}
-          {new Date(lastUpdated).toLocaleString('ja-JP', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: 'Asia/Tokyo',
-          })}
-        </p>
+        <p className="text-sm text-gray-500">最終更新: {lastUpdated}</p>
       </div>
 
       {/* マッチ情報 */}
@@ -1589,11 +1579,22 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
       }
     }
 
+    // サーバー側でローカライズ済み日付文字列を生成
+    const now = new Date();
+    const lastUpdated = now.toLocaleString('ja-JP', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Asia/Tokyo',
+    });
+
     return {
       props: {
         match,
         tournamentInfo,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated,
       },
       // ISR設定: 1分ごとに再生成（詳細ページはあまり変更されないため）
       revalidate: 60,
