@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { createServerClient } from '@/lib/supabase';
 import {
@@ -22,6 +22,14 @@ const PublicMatchDetail = ({
   tournamentInfo,
   lastUpdated,
 }: PublicMatchDetailProps) => {
+  // 3分ごとに自動リロード
+  useEffect(() => {
+    const interval = setInterval(() => {
+      window.location.reload();
+    }, 180000); // 180,000ms = 3分
+    return () => clearInterval(interval);
+  }, []);
+
   // エキスパンド状態管理（最新ゲームのみ展開）
   const [expandedGames, setExpandedGames] = useState<Set<number>>(
     new Set(
