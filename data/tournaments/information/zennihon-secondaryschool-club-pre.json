@@ -8,12 +8,48 @@
     "source": "公益財団法人 日本ソフトテニス連盟",
     "sourceUrl": "https://www.jsta.or.jp",
     "categories": [
-      { "id": "team-qualifying-boys", "label": "男子予選リーグ", "category": "team", "gender": "boys", "age": "qualifying" },
-      { "id": "team-upper-boys", "label": "男子1位・2位トーナメント", "category": "team", "gender": "boys", "age": "upper" },
-      { "id": "team-lower-boys", "label": "男子3位・4位・5位トーナメント", "category": "team", "gender": "boys", "age": "lower" },
-      { "id": "team-qualifying-girls", "label": "女子予選リーグ", "category": "team", "gender": "girls", "age": "qualifying" },
-      { "id": "team-upper-girls", "label": "女子1位・2位トーナメント", "category": "team", "gender": "girls", "age": "upper" },
-      { "id": "team-lower-girls", "label": "女子3位・4位トーナメント", "category": "team", "gender": "girls", "age": "lower" }
+      {
+        "categoryId": "team-qualifying-boys",
+        "label": "男子予選リーグ",
+        "category": "team",
+        "gender": "boys",
+        "age": "qualifying"
+      },
+      {
+        "categoryId": "team-upper-boys",
+        "label": "男子1位・2位トーナメント",
+        "category": "team",
+        "gender": "boys",
+        "age": "upper"
+      },
+      {
+        "categoryId": "team-lower-boys",
+        "label": "男子3位・4位・5位トーナメント",
+        "category": "team",
+        "gender": "boys",
+        "age": "lower"
+      },
+      {
+        "categoryId": "team-qualifying-girls",
+        "label": "女子予選リーグ",
+        "category": "team",
+        "gender": "girls",
+        "age": "qualifying"
+      },
+      {
+        "categoryId": "team-upper-girls",
+        "label": "女子1位・2位トーナメント",
+        "category": "team",
+        "gender": "girls",
+        "age": "upper"
+      },
+      {
+        "categoryId": "team-lower-girls",
+        "label": "女子3位・4位トーナメント",
+        "category": "team",
+        "gender": "girls",
+        "age": "lower"
+      }
     ]
   }
 ]

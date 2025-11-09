@@ -8,20 +8,104 @@
     "source": "公益財団法人 日本ソフトテニス連盟",
     "sourceUrl": "https://www.jsta.or.jp",
     "categories": [
-      { "id": "doubles-over50-boys", "label": "男子50歳", "category": "doubles", "gender": "boys", "age": "over50" },
-      { "id": "doubles-over55-boys", "label": "男子55歳", "category": "doubles", "gender": "boys", "age": "over55" },
-      { "id": "doubles-over60-boys", "label": "男子60歳", "category": "doubles", "gender": "boys", "age": "over60" },
-      { "id": "doubles-over65-boys", "label": "男子65歳", "category": "doubles", "gender": "boys", "age": "over65" },
-      { "id": "doubles-over70-boys", "label": "男子70歳", "category": "doubles", "gender": "boys", "age": "over70" },
-      { "id": "doubles-over75-boys", "label": "男子75歳", "category": "doubles", "gender": "boys", "age": "over75" },
-      { "id": "doubles-over80-boys", "label": "男子80歳", "category": "doubles", "gender": "boys", "age": "over80" },
-      { "id": "doubles-over50-girls", "label": "女子50歳", "category": "doubles", "gender": "girls", "age": "over50" },
-      { "id": "doubles-over55-girls", "label": "女子55歳", "category": "doubles", "gender": "girls", "age": "over55" },
-      { "id": "doubles-over60-girls", "label": "女子60歳", "category": "doubles", "gender": "girls", "age": "over60" },
-      { "id": "doubles-over65-girls", "label": "女子65歳", "category": "doubles", "gender": "girls", "age": "over65" },
-      { "id": "doubles-over70-girls", "label": "女子70歳", "category": "doubles", "gender": "girls", "age": "over70" },
-      { "id": "doubles-over75-girls", "label": "女子75歳", "category": "doubles", "gender": "girls", "age": "over75" },
-      { "id": "doubles-over80-girls", "label": "女子80歳", "category": "doubles", "gender": "girls", "age": "over80" }
+      {
+        "categoryId": "doubles-over50-boys",
+        "label": "男子50歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over50"
+      },
+      {
+        "categoryId": "doubles-over55-boys",
+        "label": "男子55歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over55"
+      },
+      {
+        "categoryId": "doubles-over60-boys",
+        "label": "男子60歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over60"
+      },
+      {
+        "categoryId": "doubles-over65-boys",
+        "label": "男子65歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over65"
+      },
+      {
+        "categoryId": "doubles-over70-boys",
+        "label": "男子70歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over70"
+      },
+      {
+        "categoryId": "doubles-over75-boys",
+        "label": "男子75歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over75"
+      },
+      {
+        "categoryId": "doubles-over80-boys",
+        "label": "男子80歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over80"
+      },
+      {
+        "categoryId": "doubles-over50-girls",
+        "label": "女子50歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over50"
+      },
+      {
+        "categoryId": "doubles-over55-girls",
+        "label": "女子55歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over55"
+      },
+      {
+        "categoryId": "doubles-over60-girls",
+        "label": "女子60歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over60"
+      },
+      {
+        "categoryId": "doubles-over65-girls",
+        "label": "女子65歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over65"
+      },
+      {
+        "categoryId": "doubles-over70-girls",
+        "label": "女子70歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over70"
+      },
+      {
+        "categoryId": "doubles-over75-girls",
+        "label": "女子75歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over75"
+      },
+      {
+        "categoryId": "doubles-over80-girls",
+        "label": "女子80歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over80"
+      }
     ]
   }
 ]
