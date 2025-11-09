@@ -16,8 +16,9 @@
 
 // pages/players/same-name.tsx
 
-import fs from 'fs';
-import path from 'path';
+// NOTE: don't import 'fs' or 'path' at module top-level here —
+// they are Node built-ins and must not be bundled into client code.
+// We'll load them dynamically inside getStaticProps (server-only).
 
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -465,6 +466,11 @@ export default function SameNamePlayerPage({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  // Load Node-only modules dynamically so bundlers won't try to include them
+  // in client-side bundles.
+  const fs = await import('fs');
+  const path = await import('path');
+
   const baseDir = path.join(process.cwd(), 'data/tournaments');
   const playerMap = new Map<string, PlayerResult[]>();
   let totalResults = 0;
