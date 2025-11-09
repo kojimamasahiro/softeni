@@ -6,7 +6,23 @@
     "startDate": "2019-07-25",
     "endDate": "2019-07-28",
     "source": "公益財団法人 日本ソフトテニス連盟",
-    "sourceUrl": "https://www.jsta.or.jp"
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子ダブルス",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "id": "doubles-none-girls",
+        "label": "女子ダブルス",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
   },
   {
     "informationId": "INF00027",
@@ -15,7 +31,16 @@
     "startDate": "2022-07-28",
     "endDate": "2022-07-31",
     "source": "公益財団法人 日本ソフトテニス連盟",
-    "sourceUrl": "https://www.jsta.or.jp"
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子ダブルス",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      }
+    ]
   },
   {
     "informationId": "INF00028",
@@ -24,7 +49,16 @@
     "startDate": "2023-08-03",
     "endDate": "2023-08-06",
     "source": "兵庫県ソフトテニス連盟",
-    "sourceUrl": "https://softtennis-hyogo.com/"
+    "sourceUrl": "https://softtennis-hyogo.com/",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子ダブルス",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      }
+    ]
   },
   {
     "informationId": "INF00029",
@@ -33,7 +67,16 @@
     "startDate": "2024-08-02",
     "endDate": "2024-08-04",
     "source": "岡山県ソフトテニス連盟",
-    "sourceUrl": "https://www.soft-tennis.com/okayama/2024elementary.html"
+    "sourceUrl": "https://www.soft-tennis.com/okayama/2024elementary.html",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子ダブルス",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      }
+    ]
   },
   {
     "informationId": "INF00030",
@@ -42,6 +85,36 @@
     "startDate": "2025-08-01",
     "endDate": "2025-08-03",
     "source": "茨城県ソフトテニス連盟",
-    "sourceUrl": "https://www2.cnet.ne.jp/ibsta/pc_ent.htm"
+    "sourceUrl": "https://www2.cnet.ne.jp/ibsta/pc_ent.htm",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子ダブルス",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "id": "versus-none-boys",
+        "label": "男子対抗戦",
+        "category": "versus",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "id": "doubles-none-girls",
+        "label": "女子ダブルス",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      },
+      {
+        "id": "versus-none-girls",
+        "label": "女子対抗戦",
+        "category": "versus",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
   }
 ]

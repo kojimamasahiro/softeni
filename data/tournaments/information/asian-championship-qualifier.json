@@ -6,6 +6,22 @@
     "startDate": "2025-04-26",
     "endDate": "2025-04-27",
     "source": "公益財団法人 日本ソフトテニス連盟",
-    "sourceUrl": "https://www.jsta.or.jp"
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "id": "doubles-none-girls",
+        "label": "女子",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
   }
 ]

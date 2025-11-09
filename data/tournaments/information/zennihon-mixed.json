@@ -6,6 +6,16 @@
     "startDate": "2025-06-14",
     "endDate": "2025-06-15",
     "source": "公益財団法人 日本ソフトテニス連盟",
-    "sourceUrl": "https://www.jsta.or.jp"
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      { "id": "doubles-none-mixed", "label": "一般", "category": "doubles", "gender": "mixed", "age": "none" },
+      { "id": "doubles-over35-mixed", "label": "35歳", "category": "doubles", "gender": "mixed", "age": "over35" },
+      { "id": "doubles-over45-mixed", "label": "45歳", "category": "doubles", "gender": "mixed", "age": "over45" },
+      { "id": "doubles-over50-mixed", "label": "50歳", "category": "doubles", "gender": "mixed", "age": "over50" },
+      { "id": "doubles-over55-mixed", "label": "55歳", "category": "doubles", "gender": "mixed", "age": "over55" },
+      { "id": "doubles-over60-mixed", "label": "60歳", "category": "doubles", "gender": "mixed", "age": "over60" },
+      { "id": "doubles-over65-mixed", "label": "65歳", "category": "doubles", "gender": "mixed", "age": "over65" },
+      { "id": "doubles-over70-mixed", "label": "70歳", "category": "doubles", "gender": "mixed", "age": "over70" }
+    ]
   }
 ]

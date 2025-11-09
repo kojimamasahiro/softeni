@@ -6,6 +6,22 @@
     "startDate": "2025-07-12",
     "endDate": "2025-07-13",
     "source": "公益財団法人 日本ソフトテニス連盟",
-    "sourceUrl": "https://www.soft-tennis.com/nara/"
+    "sourceUrl": "https://www.soft-tennis.com/nara/",
+    "categories": [
+      {
+        "id": "doubles-none-boys",
+        "label": "男子一般",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "id": "doubles-none-girls",
+        "label": "女子一般",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
   }
 ]

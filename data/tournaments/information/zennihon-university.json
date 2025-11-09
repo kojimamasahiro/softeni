@@ -6,7 +6,10 @@
     "startDate": "2023-09-02",
     "endDate": "2023-09-07",
     "source": "一般社団法人 日本学生ソフトテニス連盟",
-    "sourceUrl": "https://www.jssta.jp/"
+    "sourceUrl": "https://www.jssta.jp/",
+    "categories": [
+      { "id": "doubles-none-boys", "label": "男子ダブルス", "category": "doubles", "gender": "boys", "age": "none" }
+    ]
   },
   {
     "informationId": "INF00012",
@@ -15,7 +18,10 @@
     "startDate": "2024-09-10",
     "endDate": "2024-09-15",
     "source": "一般社団法人 日本学生ソフトテニス連盟",
-    "sourceUrl": "https://www.jssta.jp/"
+    "sourceUrl": "https://www.jssta.jp/",
+    "categories": [
+      { "id": "doubles-none-boys", "label": "男子ダブルス", "category": "doubles", "gender": "boys", "age": "none" }
+    ]
   },
   {
     "informationId": "INF00013",
@@ -24,6 +30,12 @@
     "startDate": "2025-08-29",
     "endDate": "2025-09-03",
     "source": "一般社団法人 日本学生ソフトテニス連盟",
-    "sourceUrl": "https://www.jssta.jp/"
+    "sourceUrl": "https://www.jssta.jp/",
+    "categories": [
+      { "id": "doubles-none-boys", "label": "男子ダブルス", "category": "doubles", "gender": "boys", "age": "none" },
+      { "id": "singles-none-boys", "label": "男子シングルス", "category": "singles", "gender": "boys", "age": "none" },
+      { "id": "doubles-none-girls", "label": "女子ダブルス", "category": "doubles", "gender": "girls", "age": "none" },
+      { "id": "singles-none-girls", "label": "女子シングルス", "category": "singles", "gender": "girls", "age": "none" }
+    ]
   }
 ]

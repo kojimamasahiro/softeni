@@ -6,6 +6,20 @@
     "startDate": "2025-10-18",
     "endDate": "2025-10-19",
     "source": "公益財団法人 日本ソフトテニス連盟",
-    "sourceUrl": "https://www.jsta.or.jp"
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      { "id": "singles-u20-girls", "label": "シングルス U-20女子", "category": "singles", "gender": "girls", "age": "u20" },
+      { "id": "singles-u20-boys", "label": "シングルス U-20男子", "category": "singles", "gender": "boys", "age": "u20" },
+      { "id": "singles-u17-girls", "label": "シングルス U-17女子", "category": "singles", "gender": "girls", "age": "u17" },
+      { "id": "singles-u17-boys", "label": "シングルス U-17男子", "category": "singles", "gender": "boys", "age": "u17" },
+      { "id": "singles-u14-girls", "label": "シングルス U-14女子", "category": "singles", "gender": "girls", "age": "u14" },
+      { "id": "singles-u14-boys", "label": "シングルス U-14男子", "category": "singles", "gender": "boys", "age": "u14" },
+      { "id": "doubles-u20-girls", "label": "ダブルス U-20女子", "category": "doubles", "gender": "girls", "age": "u20" },
+      { "id": "doubles-u20-boys", "label": "ダブルス U-20男子", "category": "doubles", "gender": "boys", "age": "u20" },
+      { "id": "doubles-u17-girls", "label": "ダブルス U-17女子", "category": "doubles", "gender": "girls", "age": "u17" },
+      { "id": "doubles-u17-boys", "label": "ダブルス U-17男子", "category": "doubles", "gender": "boys", "age": "u17" },
+      { "id": "doubles-u14-girls", "label": "ダブルス U-14女子", "category": "doubles", "gender": "girls", "age": "u14" },
+      { "id": "doubles-u14-boys", "label": "ダブルス U-14男子", "category": "doubles", "gender": "boys", "age": "u14" }
+    ]
   }
 ]
