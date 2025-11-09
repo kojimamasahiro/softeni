@@ -1,3 +1,4 @@
+
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -33,7 +34,9 @@ const PublicMatchDetail = ({
   // エキスパンド状態管理（最新ゲームのみ展開）
   const [expandedGames, setExpandedGames] = useState<Set<number>>(
     new Set(
-      match?.games ? [Math.max(...match.games.map((g) => g.game_number))] : [],
+      match?.games && match.games.length > 0
+        ? [Math.max(...match.games.map((g) => g.game_number))]
+        : [],
     ),
   );
 
@@ -681,33 +684,58 @@ const PublicMatchDetail = ({
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
                     <div>
                       <div className="font-bold text-gray-700">
-                        {matchStats.maxRally}
+                        {Array.isArray(matchStats.rallyCountsArray) &&
+                        matchStats.rallyCountsArray.length > 0 &&
+                        Number.isFinite(
+                          Math.max(...matchStats.rallyCountsArray),
+                        )
+                          ? Math.max(...matchStats.rallyCountsArray)
+                          : '-'}
                       </div>
                       <div className="text-gray-600">最長</div>
                     </div>
                     <div>
                       <div className="font-bold text-gray-700">
-                        {Math.min(...matchStats.rallyCountsArray)}
+                        {Array.isArray(matchStats.rallyCountsArray) &&
+                        matchStats.rallyCountsArray.length > 0 &&
+                        Number.isFinite(
+                          Math.min(...matchStats.rallyCountsArray),
+                        )
+                          ? Math.min(...matchStats.rallyCountsArray)
+                          : '-'}
                       </div>
                       <div className="text-gray-600">最短</div>
                     </div>
                     <div>
                       <div className="font-bold text-gray-700">
-                        {matchStats.avgRally.toFixed(1)}
+                        {Array.isArray(matchStats.rallyCountsArray) &&
+                        matchStats.rallyCountsArray.length > 0 &&
+                        Number.isFinite(Number(matchStats.avgRally))
+                          ? Number(matchStats.avgRally).toFixed(1)
+                          : '-'}
                       </div>
                       <div className="text-gray-600">平均</div>
                     </div>
                     <div>
                       <div className="font-bold text-gray-700">
-                        {(() => {
-                          const sorted = [...matchStats.rallyCountsArray].sort(
-                            (a, b) => a - b,
-                          );
-                          const mid = Math.floor(sorted.length / 2);
-                          return sorted.length % 2 === 0
-                            ? ((sorted[mid - 1] + sorted[mid]) / 2).toFixed(1)
-                            : sorted[mid];
-                        })()}
+                        {Array.isArray(matchStats.rallyCountsArray) &&
+                        matchStats.rallyCountsArray.length > 0
+                          ? (() => {
+                              const sorted = [
+                                ...matchStats.rallyCountsArray,
+                              ].sort((a, b) => a - b);
+                              const mid = Math.floor(sorted.length / 2);
+                              let median;
+                              if (sorted.length % 2 === 0) {
+                                median = (sorted[mid - 1] + sorted[mid]) / 2;
+                              } else {
+                                median = sorted[mid];
+                              }
+                              return Number.isFinite(median)
+                                ? Number(median).toFixed(1)
+                                : '-';
+                            })()
+                          : '-'}
                       </div>
                       <div className="text-gray-600">中央値</div>
                     </div>
