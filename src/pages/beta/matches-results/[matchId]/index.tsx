@@ -1,7 +1,6 @@
-
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { createServerClient } from '@/lib/supabase';
 import {
@@ -23,13 +22,35 @@ const PublicMatchDetail = ({
   tournamentInfo,
   lastUpdated,
 }: PublicMatchDetailProps) => {
-  // 3分ごとに自動リロード
+  // マッチ勝者を判定する関数を先に定義
+  const getMatchWinner = useCallback(() => {
+    if (!match?.games) return null;
+
+    const gamesWonA = match.games.filter(
+      (game: Game) => game.winner_team === 'A',
+    ).length;
+    const gamesWonB = match.games.filter(
+      (game: Game) => game.winner_team === 'B',
+    ).length;
+    const requiredWins = Math.ceil(match.best_of / 2);
+
+    if (gamesWonA >= requiredWins) return 'A';
+    if (gamesWonB >= requiredWins) return 'B';
+    return null;
+  }, [match]);
+
+  // 試合が終了していない場合のみ3分ごとに自動リロード
   useEffect(() => {
+    // 試合が終了している場合は自動更新をオフ
+    if (getMatchWinner() !== null) {
+      return;
+    }
+
     const interval = setInterval(() => {
       window.location.reload();
     }, 180000); // 180,000ms = 3分
     return () => clearInterval(interval);
-  }, []);
+  }, [match, getMatchWinner]);
 
   // エキスパンド状態管理（最新ゲームのみ展開）
   const [expandedGames, setExpandedGames] = useState<Set<number>>(
@@ -53,21 +74,6 @@ const PublicMatchDetail = ({
 
   // マッチデータから完全なURLを生成
   const fullTournamentUrl = generateTournamentUrlFromMatch(match);
-  const getMatchWinner = () => {
-    if (!match?.games) return null;
-
-    const gamesWonA = match.games.filter(
-      (game: Game) => game.winner_team === 'A',
-    ).length;
-    const gamesWonB = match.games.filter(
-      (game: Game) => game.winner_team === 'B',
-    ).length;
-    const requiredWins = Math.ceil(match.best_of / 2);
-
-    if (gamesWonA >= requiredWins) return 'A';
-    if (gamesWonB >= requiredWins) return 'B';
-    return null;
-  };
 
   // データベースのプレイヤー情報から苗字のみのチーム名を生成する関数
   const getShortTeamName = (team: 'A' | 'B') => {
