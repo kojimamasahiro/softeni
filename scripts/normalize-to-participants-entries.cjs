@@ -497,7 +497,6 @@ for (const row of rrRaw) {
     const ids = row.opponents
       .map(
         (o) =>
-          o.playerId ||
           o.tempId ||
           (o.lastName && o.firstName ? `${o.lastName}_${o.firstName}` : ''),
       )
