@@ -17,10 +17,12 @@ if (argv[0] === '-h' || argv[0] === '--help') {
   );
   process.exit(0);
 }
+
 const src = argv[0]
   ? path.resolve(argv[0])
   : path.join('doubles-none-boys.json');
-const out = 'output.json';
+const out = argv[1] ? path.resolve(argv[1]) : path.join('output.json');
+// entriesMetaPath intentionally points to sibling entries folder; keep compatibility
 const entriesMetaPath = path.join('..', 'entries', src);
 
 const data = JSON.parse(fs.readFileSync(src, 'utf8'));
@@ -64,6 +66,7 @@ function registerFromIdString(idStr) {
     const last = parts[0] || null;
     const first = parts[1] || null;
     const team = parts.slice(2).join('_') || null;
+
     participantsMap.set(idStr, {
       id: idStr,
       lastName: last,
@@ -74,20 +77,64 @@ function registerFromIdString(idStr) {
   }
 }
 
-// collect participants from matches.opponents and matches.pair
-for (const m of data.matches || []) {
-  if (Array.isArray(m.opponents)) {
-    for (const o of m.opponents) registerOpponent(o);
+// register a team-style participant (team name may be used as id)
+function registerFromTeamString(teamStr, prefecture) {
+  if (!teamStr) return;
+  const id = String(teamStr);
+  if (!participantsMap.has(id)) {
+    participantsMap.set(id, {
+      id,
+      lastName: null,
+      firstName: null,
+      team: id,
+      prefecture: prefecture || null,
+    });
+  } else if (prefecture) {
+    const cur = participantsMap.get(id);
+    if (!cur.prefecture) cur.prefecture = prefecture;
   }
-  if (Array.isArray(m.pair)) {
-    for (const p of m.pair) {
-      if (typeof p === 'string') registerFromIdString(p);
-      else if (p && typeof p === 'object') {
-        // in case pair contains object (unlikely), build id including prefecture
-        const id =
-          p.tempId ||
-          makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture);
-        registerOpponent({ ...p, tempId: id });
+}
+
+// collect participants: prefer round-robin source when available, otherwise use matches
+if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
+  for (const row of data.roundRobinMatches) {
+    if (Array.isArray(row.opponents)) {
+      for (const o of row.opponents) registerOpponent(o);
+    }
+    if (Array.isArray(row.pair)) {
+      for (const p of row.pair) {
+        if (typeof p === 'string') registerFromIdString(p);
+        else if (p && typeof p === 'object') {
+          const id =
+            p.tempId ||
+            makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture);
+          registerOpponent({ ...p, tempId: id });
+        }
+      }
+    }
+    // team-style fields
+    if (row.team) registerFromTeamString(row.team, row.prefecture || null);
+    if (row.opponentTeam && row.opponentTeam.team)
+      registerFromTeamString(
+        row.opponentTeam.team,
+        row.opponentTeam.prefecture || null,
+      );
+  }
+} else {
+  for (const m of data.matches || []) {
+    if (Array.isArray(m.opponents)) {
+      for (const o of m.opponents) registerOpponent(o);
+    }
+    if (Array.isArray(m.pair)) {
+      for (const p of m.pair) {
+        if (typeof p === 'string') registerFromIdString(p);
+        else if (p && typeof p === 'object') {
+          // in case pair contains object (unlikely), build id including prefecture
+          const id =
+            p.tempId ||
+            makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture);
+          registerOpponent({ ...p, tempId: id });
+        }
       }
     }
   }
@@ -95,18 +142,17 @@ for (const m of data.matches || []) {
 // If some participants were registered from plain id-strings ("姓_名_チーム")
 // try to copy prefecture from any detailed entry that has the same name+team.
 for (const p of participantsMap.values()) {
-  if (!p.prefecture) {
-    // search for a detailed record with same last+first+team and a prefecture
-    for (const q of participantsMap.values()) {
-      if (
-        q.prefecture &&
-        q.lastName === p.lastName &&
-        q.firstName === p.firstName &&
-        q.team === p.team
-      ) {
-        p.prefecture = q.prefecture;
-        break;
-      }
+  if (p.prefecture) continue;
+  // search for a detailed record with same last+first+team and a prefecture
+  for (const q of participantsMap.values()) {
+    if (!q.prefecture) continue;
+    if (
+      q.lastName === p.lastName &&
+      q.firstName === p.firstName &&
+      q.team === p.team
+    ) {
+      p.prefecture = q.prefecture;
+      break;
     }
   }
 }
@@ -168,8 +214,39 @@ function remapId(id) {
 
 // remap ids inside entriesMap so playerIds include prefecture when available
 for (const e of entriesMap.values()) {
-  if (Array.isArray(e.playerIds)) {
-    e.playerIds = e.playerIds.map((id) => remapId(id));
+  if (!Array.isArray(e.playerIds)) continue;
+  e.playerIds = e.playerIds.map((id) => remapId(id));
+}
+
+// If round-robin data exists, prefer building entries from roundRobinMatches
+if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
+  entriesMap.clear();
+  for (const row of data.roundRobinMatches) {
+    if (row.entryNo == null) continue;
+    const key = String(row.entryNo);
+    let playerIds = [];
+    if (Array.isArray(row.pair) && row.pair.length) {
+      playerIds = row.pair
+        .map((p) => {
+          if (typeof p === 'string') return String(p);
+          if (p && typeof p === 'object') {
+            return (
+              p.playerId ||
+              p.tempId ||
+              makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture)
+            );
+          }
+          return null;
+        })
+        .filter(Boolean);
+    }
+    entriesMap.set(key, { entryNo: Number(row.entryNo), playerIds });
+  }
+
+  // remap newly-added ids to normalized ids
+  for (const e of entriesMap.values()) {
+    if (!Array.isArray(e.playerIds)) continue;
+    e.playerIds = e.playerIds.map((id) => remapId(String(id)));
   }
 }
 
@@ -371,7 +448,7 @@ try {
   // ignore if missing or parse error; leave map empty
 }
 
-const entries = Array.from(entriesMap.values()).map((e) => ({
+let entries = Array.from(entriesMap.values()).map((e) => ({
   ...e,
   type: entryTypeMap.has(e.entryNo) ? entryTypeMap.get(e.entryNo) : null,
 }));
@@ -393,6 +470,174 @@ const matchesTransformed = matches.map((m) => {
     group: null,
   };
 });
+
+// ---- Round-robin handling: convert data.roundRobinMatches into canonical matches ----
+const rrRaw = Array.isArray(data.roundRobinMatches)
+  ? data.roundRobinMatches
+  : [];
+// rrMap groups perspective rows into a single match by group + sorted pair key
+const rrMap = new Map();
+const rrPlayersByGroup = new Map();
+const entryNameMap = new Map();
+
+for (const row of rrRaw) {
+  const group = row.group || 'group-0';
+  const entryNo = row.entryNo != null ? String(row.entryNo) : null;
+  if (entryNo) entryNameMap.set(String(entryNo), row.name || entryNo);
+  // build pair key for this perspective
+  let myKey = null;
+  if (Array.isArray(row.pair) && row.pair.length)
+    myKey = row.pair.map(String).join('|');
+  else if (row.team) myKey = String(row.team);
+  else if (entryNo) myKey = `E${entryNo}`;
+
+  let oppKey = null;
+  if (Array.isArray(row.opponents) && row.opponents.length) {
+    // try to use opponent playerIds or tempId
+    const ids = row.opponents
+      .map(
+        (o) =>
+          o.playerId ||
+          o.tempId ||
+          (o.lastName && o.firstName ? `${o.lastName}_${o.firstName}` : ''),
+      )
+      .filter(Boolean);
+    if (ids.length) oppKey = ids.join('|');
+  }
+  if (!oppKey && row.opponentTeam && row.opponentTeam.team)
+    oppKey = String(row.opponentTeam.team);
+  if (!oppKey && row.opponentEntryNo != null)
+    oppKey = `E${String(row.opponentEntryNo)}`;
+
+  const a = myKey || entryNo || '';
+  const b = oppKey || '';
+  const pair = [a, b].slice().sort();
+  const mapKey = `${group}|${pair[0]}|${pair[1]}`;
+
+  if (!rrMap.has(mapKey)) rrMap.set(mapKey, []);
+  rrMap.get(mapKey).push({ row, entryNo, myKey, oppKey, group });
+
+  if (entryNo) {
+    if (!rrPlayersByGroup.has(group)) rrPlayersByGroup.set(group, new Set());
+    rrPlayersByGroup.get(group).add(String(entryNo));
+  }
+}
+
+// Build canonical round-robin matches and append to matchesTransformed
+const rrAllGroupMatches = new Map();
+for (const [k, perspectives] of rrMap.entries()) {
+  // pick first perspective as primary
+  const p0 = perspectives[0];
+  const rows = perspectives;
+  // try to find counterpart perspective to get both entryNos
+  let entryA = null;
+  let entryB = null;
+  for (const p of rows)
+    if (p.entryNo) {
+      if (!entryA) entryA = p.entryNo;
+      else if (!entryB && p.entryNo !== entryA) entryB = p.entryNo;
+    }
+
+  // if we only have one entryNo, try to deduce opponent entryNo from other perspective row.opponentEntryNo
+  if (!entryB) {
+    for (const p of rows) {
+      if (p.row.opponentEntryNo != null) {
+        entryB = String(p.row.opponentEntryNo);
+        break;
+      }
+    }
+  }
+
+  // derive scores: prefer the perspective where entryNo is present; aggregate into canonical
+  let scoreA = null;
+  let scoreB = null;
+  let winnerEntryNo = null;
+  if (entryA && entryB) {
+    // find perspective for A vs B
+    const pa = rows.find((r) => r.entryNo === entryA);
+    const pb = rows.find((r) => r.entryNo === entryB);
+    if (pa && pa.row.games) {
+      scoreA = Number(
+        (pa.row.games.won != null ? pa.row.games.won : pa.row.games.for) || 0,
+      );
+      scoreB = Number(
+        (pa.row.games.lost != null
+          ? pa.row.games.lost
+          : pa.row.games.against) || 0,
+      );
+    } else if (pb && pb.row.games) {
+      scoreB = Number(
+        (pb.row.games.won != null ? pb.row.games.won : pb.row.games.for) || 0,
+      );
+      scoreA = Number(
+        (pb.row.games.lost != null
+          ? pb.row.games.lost
+          : pb.row.games.against) || 0,
+      );
+    }
+    if (scoreA != null && scoreB != null) {
+      winnerEntryNo =
+        scoreA > scoreB
+          ? Number(entryA)
+          : scoreB > scoreA
+            ? Number(entryB)
+            : null;
+    }
+  } else {
+    // fallback: try to pick any perspective and build a one-sided match
+    const pr = rows[0].row;
+    const en = rows[0].entryNo;
+    if (pr && pr.games) {
+      const swon = Number(pr.games.won || 0);
+      const slost = Number(pr.games.lost || 0);
+      if (en) {
+        scoreA = swon;
+        scoreB = slost;
+        winnerEntryNo = swon > slost ? Number(en) : swon < slost ? null : null;
+      }
+      // we won't be able to set both sides reliably if opponent missing; accept partial data
+    }
+  }
+
+  // build entries keys for output: prefer numeric entryNo else use P:playerids
+  const keyA = entryA != null ? Number(entryA) || entryA : null;
+  const keyB = entryB != null ? Number(entryB) || entryB : null;
+
+  const scoresObj = {};
+  if (scoreA != null) scoresObj[String(keyA)] = scoreA;
+  if (scoreB != null) scoresObj[String(keyB)] = scoreB;
+
+  const rrMatch = {
+    round: null,
+    stage: 'roundrobin',
+    group: p0.group,
+    entries: [keyA, keyB],
+    scores: scoresObj,
+    winnerEntryNo: winnerEntryNo,
+    nextMatchId: null,
+    prevMatchIds: [],
+    prevMatchId: null,
+  };
+
+  // append
+  matchesTransformed.push(rrMatch);
+
+  // store for standings
+  if (!rrAllGroupMatches.has(p0.group)) rrAllGroupMatches.set(p0.group, []);
+  rrAllGroupMatches.get(p0.group).push({
+    p1: keyA,
+    p2: keyB,
+    scores: { p1: scoreA, p2: scoreB },
+    winner: winnerEntryNo,
+  });
+}
+
+// assign matchId for all matches now (including round-robin appended ones)
+for (let i = 0; i < matchesTransformed.length; i++) {
+  matchesTransformed[i].matchId = `match-${i + 1}`;
+}
+
+// Compute nextMatchId/prev links ONLY for knockout matches
 
 // assign deterministic matchId and compute nextMatchId by finding a match in the next round
 // where the winner's playerIds appear in one of that match's entries.
@@ -422,16 +667,15 @@ function playerIdsForEntry(entryNo) {
   return e && Array.isArray(e.playerIds) ? e.playerIds : [];
 }
 
-// assign matchId
-for (let i = 0; i < matchesTransformed.length; i++) {
-  matchesTransformed[i].matchId = `match-${i + 1}`;
-}
+// NOTE: matchId assignment is done after appending any round-robin matches so
+// the full set of matches (knockout + roundrobin) has stable ids.
 
 // debug helper removed; do not print verbose debug logs in normal runs
 
 // build index by roundOrder
 const matchesByRoundOrder = new Map();
 for (const m of matchesTransformed) {
+  if (m.stage === 'roundrobin') continue; // skip roundrobin matches for linking
   const ord = roundOrder(m.round);
   if (!matchesByRoundOrder.has(ord)) matchesByRoundOrder.set(ord, []);
   matchesByRoundOrder.get(ord).push(m);
@@ -440,6 +684,24 @@ for (const m of matchesTransformed) {
 const sortedOrders = Array.from(matchesByRoundOrder.keys()).sort(
   (a, b) => a - b,
 );
+
+// ---- Ensure round-robin-only entries appear in entries list ----
+// rrPlayersByGroup contains entryNos (strings) of entries that participated in RR
+for (const [group, setOfPlayers] of rrPlayersByGroup.entries()) {
+  for (const entryId of Array.from(setOfPlayers)) {
+    const key = String(entryId);
+    if (!entriesMap.has(key)) {
+      // create a minimal entry record so it appears in entries
+      entriesMap.set(key, { entryNo: Number(key) || key, playerIds: [] });
+    }
+  }
+}
+
+// rebuild entries array after possibly adding rr-only entries
+entries = Array.from(entriesMap.values()).map((e) => ({
+  ...e,
+  type: entryTypeMap.has(e.entryNo) ? entryTypeMap.get(e.entryNo) : null,
+}));
 
 // map from matchId to match for lookup (not needed currently)
 // const matchIdMap = new Map(matchesTransformed.map((m) => [m.matchId, m]));
@@ -450,6 +712,8 @@ const sortedOrders = Array.from(matchesByRoundOrder.keys()).sort(
 
 for (const m of matchesTransformed) {
   m.nextMatchId = null;
+  // do not compute nextMatchId for round-robin matches
+  if (m.stage === 'roundrobin') continue;
   if (m.winnerEntryNo == null) continue;
   const myOrder = roundOrder(m.round);
   // find next order
@@ -488,6 +752,163 @@ for (const m of matchesTransformed) {
   m.prevMatchIds = prevs;
   // convenience single-link field for backwards compatibility
   m.prevMatchId = prevs.length === 1 ? prevs[0] : null;
+}
+
+// ---- Compute round-robin standings and attach roundrobin results ----
+const rrStandingsByGroup = new Map();
+// Build list of players per group from rrPlayersByGroup (may contain entryNos as strings)
+for (const [group, setOfPlayers] of rrPlayersByGroup.entries()) {
+  const players = Array.from(setOfPlayers).map(String);
+  const playerStats = {};
+  players.forEach((id) => {
+    playerStats[id] = {
+      id,
+      wins: 0,
+      losses: 0,
+      scoreDiff: 0,
+      totalPointsFor: 0,
+      totalPointsAgainst: 0,
+    };
+  });
+
+  const matches = rrAllGroupMatches.get(group) || [];
+  for (const mm of matches) {
+    const p1 = mm.p1 != null ? String(mm.p1) : null;
+    const p2 = mm.p2 != null ? String(mm.p2) : null;
+    const s1 =
+      typeof mm.scores.p1 === 'number'
+        ? mm.scores.p1
+        : mm.scores.p1 != null
+          ? Number(mm.scores.p1)
+          : null;
+    const s2 =
+      typeof mm.scores.p2 === 'number'
+        ? mm.scores.p2
+        : mm.scores.p2 != null
+          ? Number(mm.scores.p2)
+          : null;
+    if (!p1 || !p2) continue; // need both sides for standings
+    if (s1 == null || s2 == null) continue;
+
+    if (!playerStats[p1])
+      playerStats[p1] = {
+        id: p1,
+        wins: 0,
+        losses: 0,
+        scoreDiff: 0,
+        totalPointsFor: 0,
+        totalPointsAgainst: 0,
+      };
+    if (!playerStats[p2])
+      playerStats[p2] = {
+        id: p2,
+        wins: 0,
+        losses: 0,
+        scoreDiff: 0,
+        totalPointsFor: 0,
+        totalPointsAgainst: 0,
+      };
+
+    playerStats[p1].scoreDiff += s1 - s2;
+    playerStats[p2].scoreDiff += s2 - s1;
+    playerStats[p1].totalPointsFor += s1;
+    playerStats[p1].totalPointsAgainst += s2;
+    playerStats[p2].totalPointsFor += s2;
+    playerStats[p2].totalPointsAgainst += s1;
+
+    if (mm.winner != null) {
+      if (String(mm.winner) === p1) {
+        playerStats[p1].wins++;
+        playerStats[p2].losses++;
+      } else if (String(mm.winner) === p2) {
+        playerStats[p2].wins++;
+        playerStats[p1].losses++;
+      }
+    } else {
+      // if no explicit winner, derive from scores
+      if (s1 > s2) {
+        playerStats[p1].wins++;
+        playerStats[p2].losses++;
+      } else if (s2 > s1) {
+        playerStats[p2].wins++;
+        playerStats[p1].losses++;
+      }
+    }
+  }
+
+  // tie-breaker helpers
+  function compareHeadToHead(ids) {
+    const sub = {};
+    ids.forEach((id) => {
+      sub[id] = { id, wins: 0, diff: 0 };
+    });
+    for (const mm of matches) {
+      const p1 = mm.p1 != null ? String(mm.p1) : null;
+      const p2 = mm.p2 != null ? String(mm.p2) : null;
+      if (!p1 || !p2) continue;
+      if (!ids.includes(p1) || !ids.includes(p2)) continue;
+      const s1 =
+        typeof mm.scores.p1 === 'number'
+          ? mm.scores.p1
+          : mm.scores.p1 != null
+            ? Number(mm.scores.p1)
+            : null;
+      const s2 =
+        typeof mm.scores.p2 === 'number'
+          ? mm.scores.p2
+          : mm.scores.p2 != null
+            ? Number(mm.scores.p2)
+            : null;
+      if (s1 == null || s2 == null) continue;
+      sub[p1].diff += s1 - s2;
+      sub[p2].diff += s2 - s1;
+      if (mm.winner != null) {
+        if (String(mm.winner) === p1) sub[p1].wins++;
+        else if (String(mm.winner) === p2) sub[p2].wins++;
+      } else {
+        if (s1 > s2) sub[p1].wins++;
+        else if (s2 > s1) sub[p2].wins++;
+      }
+    }
+    return sub;
+  }
+
+  let sorted = Object.values(playerStats);
+  sorted.sort((a, b) => {
+    if (b.wins !== a.wins) return b.wins - a.wins;
+    const tied = sorted.filter((s) => s.wins === a.wins);
+    if (tied.length > 1) {
+      const head = compareHeadToHead(tied.map((s) => s.id));
+      const diffA = head[a.id]?.wins ?? 0;
+      const diffB = head[b.id]?.wins ?? 0;
+      if (diffB !== diffA) return diffB - diffA;
+      const subA = head[a.id]?.diff ?? 0;
+      const subB = head[b.id]?.diff ?? 0;
+      if (subB !== subA) return subB - subA;
+    }
+    if (b.scoreDiff !== a.scoreDiff) return b.scoreDiff - a.scoreDiff;
+    if (b.totalPointsFor !== a.totalPointsFor)
+      return b.totalPointsFor - a.totalPointsFor;
+    return 0;
+  });
+
+  sorted.forEach((s, i) => (s.rank = i + 1));
+  rrStandingsByGroup.set(group, sorted);
+}
+
+// build mapping entryNo -> roundrobin rank
+const entryToRR = new Map();
+for (const [group, arr] of rrStandingsByGroup.entries()) {
+  for (const p of arr) entryToRR.set(String(p.id), { group, rank: p.rank });
+}
+
+// find set of entries that appear in knockout matches
+const knockoutEntries = new Set();
+for (const m of matchesTransformed) {
+  if (m.stage !== 'knockout') continue;
+  if (Array.isArray(m.entries)) {
+    for (const en of m.entries) if (en != null) knockoutEntries.add(String(en));
+  }
 }
 
 const outObj = { participants, entries, matches: matchesTransformed, results };
@@ -579,11 +1000,16 @@ outObj.playerResults = results || [];
 // expose entry-level results as the primary `results` array (replace old output)
 outObj.entryResults = entryResults;
 // results: per-entry objects containing both tournament and roundrobin fields
-outObj.results = resultsFromEntries.map((r) => ({
-  entryNo: r.entryNo,
-  tournament: r.result,
-  roundrobin: null,
-}));
+outObj.results = resultsFromEntries.map((r) => {
+  const key = String(r.entryNo);
+  const rr = entryToRR.has(key) ? entryToRR.get(key) : null;
+  const inKnockout = knockoutEntries.has(key);
+  return {
+    entryNo: r.entryNo,
+    tournament: rr && !inKnockout ? null : r.result,
+    roundrobin: rr ? { group: rr.group, rank: rr.rank } : null,
+  };
+});
 
 // Ensure top-level results are sorted by entryNo ascending (if entryNo exists)
 if (Array.isArray(outObj.results)) {
