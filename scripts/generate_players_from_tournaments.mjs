@@ -5,6 +5,16 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// ---------- Filter definitions (place your filters here) ----------
+// Edit these to change which files are scanned and the default threshold.
+const FILTERS = {
+  // only process files whose basename starts with one of these prefixes
+  filePrefixes: ['doubles', 'singles'],
+  // default minimum occurrence when --min-occurrence is not provided
+  defaultMinOccurrence: 1,
+};
+// -----------------------------------------------------------------
+
 function readJson(file) {
   try {
     return JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -33,7 +43,7 @@ const playersFile = path.join(
 
 // CLI args
 const argv = process.argv.slice(2);
-let minOccurrence = 1;
+let minOccurrence = FILTERS.defaultMinOccurrence;
 let dryRun = false;
 for (let i = 0; i < argv.length; i++) {
   const a = argv[i];
@@ -68,6 +78,8 @@ let added = 0;
 const occurrence = new Map();
 walkDir(detailsRoot, (file) => {
   if (!file.endsWith('.json')) return;
+  const base = path.basename(file);
+  if (!FILTERS.filePrefixes.some((p) => base.startsWith(p))) return;
   const j = readJson(file);
   if (!j || !Array.isArray(j.participants)) return;
   for (const part of j.participants) {
@@ -83,6 +95,8 @@ walkDir(detailsRoot, (file) => {
 const toAdd = [];
 walkDir(detailsRoot, (file) => {
   if (!file.endsWith('.json')) return;
+  const base = path.basename(file);
+  if (!FILTERS.filePrefixes.some((p) => base.startsWith(p))) return;
   const j = readJson(file);
   if (!j || !Array.isArray(j.participants)) return;
   for (const part of j.participants) {
