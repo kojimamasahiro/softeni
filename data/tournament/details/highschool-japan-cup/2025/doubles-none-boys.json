@@ -1204,8 +1204,8 @@
       "matchId": "match-80"
     },
     {
-      "entries": [58,null],
-      "scores": {"58":4,"null":1},
+      "entries": [58,59],
+      "scores": {"58":4,"59":1},
       "round": null,
       "stage": "roundrobin",
       "group": "20",
@@ -1216,20 +1216,8 @@
       "matchId": "match-81"
     },
     {
-      "entries": [59,null],
-      "scores": {"59":1,"null":4},
-      "round": null,
-      "stage": "roundrobin",
-      "group": "20",
-      "winnerEntryNo": null,
-      "nextMatchId": null,
-      "prevMatchIds": [],
-      "prevMatchId": null,
-      "matchId": "match-82"
-    },
-    {
-      "entries": [58,null],
-      "scores": {"58":4,"null":3},
+      "entries": [58,60],
+      "scores": {"58":4,"60":3},
       "round": null,
       "stage": "roundrobin",
       "group": "20",
@@ -1237,19 +1225,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-83"
-    },
-    {
-      "entries": [60,null],
-      "scores": {"60":3,"null":4},
-      "round": null,
-      "stage": "roundrobin",
-      "group": "20",
-      "winnerEntryNo": null,
-      "nextMatchId": null,
-      "prevMatchIds": [],
-      "prevMatchId": null,
-      "matchId": "match-84"
+      "matchId": "match-82"
     },
     {
       "entries": [59,60],
@@ -1261,7 +1237,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-85"
+      "matchId": "match-83"
     },
     {
       "entries": [61,62],
@@ -1273,7 +1249,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-86"
+      "matchId": "match-84"
     },
     {
       "entries": [61,63],
@@ -1285,7 +1261,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-87"
+      "matchId": "match-85"
     },
     {
       "entries": [62,63],
@@ -1297,7 +1273,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-88"
+      "matchId": "match-86"
     },
     {
       "entries": [64,65],
@@ -1309,7 +1285,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-89"
+      "matchId": "match-87"
     },
     {
       "entries": [64,66],
@@ -1321,7 +1297,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-90"
+      "matchId": "match-88"
     },
     {
       "entries": [65,66],
@@ -1333,7 +1309,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-91"
+      "matchId": "match-89"
     },
     {
       "entries": [67,68],
@@ -1345,7 +1321,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-92"
+      "matchId": "match-90"
     },
     {
       "entries": [67,69],
@@ -1357,7 +1333,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-93"
+      "matchId": "match-91"
     },
     {
       "entries": [68,69],
@@ -1369,7 +1345,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-94"
+      "matchId": "match-92"
     },
     {
       "entries": [70,71],
@@ -1381,7 +1357,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-95"
+      "matchId": "match-93"
     },
     {
       "entries": [70,72],
@@ -1393,7 +1369,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-96"
+      "matchId": "match-94"
     },
     {
       "entries": [71,72],
@@ -1405,7 +1381,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-97"
+      "matchId": "match-95"
     }
   ],
   "results": [
@@ -1466,9 +1442,9 @@
     {"entryNo":55,"tournament":null,"roundrobin":{"group":"19","rank":2}},
     {"entryNo":56,"tournament":"2回戦敗退","roundrobin":{"group":"19","rank":1}},
     {"entryNo":57,"tournament":null,"roundrobin":{"group":"19","rank":3}},
-    {"entryNo":58,"tournament":"優勝","roundrobin":{"group":"20","rank":2}},
+    {"entryNo":58,"tournament":"優勝","roundrobin":{"group":"20","rank":1}},
     {"entryNo":59,"tournament":null,"roundrobin":{"group":"20","rank":3}},
-    {"entryNo":60,"tournament":null,"roundrobin":{"group":"20","rank":1}},
+    {"entryNo":60,"tournament":null,"roundrobin":{"group":"20","rank":2}},
     {"entryNo":61,"tournament":null,"roundrobin":{"group":"21","rank":2}},
     {"entryNo":62,"tournament":"1回戦敗退","roundrobin":{"group":"21","rank":1}},
     {"entryNo":63,"tournament":null,"roundrobin":{"group":"21","rank":3}},

@@ -23,7 +23,22 @@ const src = argv[0]
   : path.join('doubles-none-boys.json');
 const out = argv[1] ? path.resolve(argv[1]) : path.join('output.json');
 // entriesMetaPath intentionally points to sibling entries folder; keep compatibility
-const entriesMetaPath = path.join('..', 'entries', src);
+// If the input `src` was provided as a path, compute entriesMetaPath relative
+// to that input file's directory so we look for ../entries/<basename(src>)
+let entriesMetaPath;
+if (argv[0]) {
+  try {
+    const resolvedSrc = path.resolve(argv[0]);
+    const srcDir = path.dirname(resolvedSrc);
+    const srcBase = path.basename(src);
+    entriesMetaPath = path.join(srcDir, '..', 'entries', srcBase);
+  } catch (err) {
+    // fallback to previous behavior on any error
+    entriesMetaPath = path.join('..', 'entries', src);
+  }
+} else {
+  entriesMetaPath = path.join('..', 'entries', src);
+}
 
 const data = JSON.parse(fs.readFileSync(src, 'utf8'));
 
