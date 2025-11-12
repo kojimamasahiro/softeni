@@ -8,9 +8,20 @@
 const fs = require('fs');
 const path = require('path');
 
-const src = path.join('doubles-none-boys.json');
-const out = path.join('doubles-none-boys.normalized.json');
-const entriesMetaPath = path.join('..', 'entries', 'doubles-none-boys.json');
+// allow overriding filenames via CLI args: node script [input] [output] [entriesMetaPath]
+// defaults kept for backward compatibility
+const argv = process.argv.slice(2);
+if (argv[0] === '-h' || argv[0] === '--help') {
+  console.log(
+    'Usage: node normalize-to-participants-entries.cjs [input.json] [output.json] [entriesMeta.json]',
+  );
+  process.exit(0);
+}
+const src = argv[0]
+  ? path.resolve(argv[0])
+  : path.join('doubles-none-boys.json');
+const out = 'output.json';
+const entriesMetaPath = path.join('..', 'entries', src);
 
 const data = JSON.parse(fs.readFileSync(src, 'utf8'));
 
