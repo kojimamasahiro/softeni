@@ -1014,13 +1014,65 @@ outObj.playerResults = results || [];
 // expose entry-level results as the primary `results` array (replace old output)
 outObj.entryResults = entryResults;
 // results: per-entry objects containing both tournament and roundrobin fields
+// Compute a normalized `rank` object from an entry-level result (used to
+// separate `tournament.label` (human string) and `tournament.rank` (machine-friendly)).
+function computeTournamentRank(entryResult) {
+  if (!entryResult || !entryResult.resultLabel) return { kind: 'unknown' };
+  const label = entryResult.resultLabel;
+
+  // Direct mappings for champion / runner-up
+  if (label === '優勝') return { kind: 'winner' };
+  if (label === '準優勝') return { kind: 'runnerup' };
+
+  // Best-n patterns (ベスト4, ベスト8, ベスト16 etc.)
+  const bestMatch = label.match(/ベスト(\d+)/);
+  if (bestMatch) return { kind: 'best', bestLevel: Number(bestMatch[1]) };
+
+  // Numeric round like "3回戦敗退"
+  const roundMatch = label.match(/(\d+)回戦敗退/);
+  if (roundMatch) return { kind: 'round', round: Number(roundMatch[1]) };
+
+  // Fall back to using eliminatedRound heuristics when available
+  if (entryResult.eliminatedRound) {
+    const rr = entryResult.eliminatedRound;
+    if (rr.includes('準々決勝')) return { kind: 'best', bestLevel: 8 };
+    if (rr.includes('準決勝')) return { kind: 'best', bestLevel: 4 };
+    if (rr.includes('決勝')) return { kind: 'runnerup' };
+  }
+
+  return { kind: 'unknown' };
+}
+
 outObj.results = resultsFromEntries.map((r) => {
   const key = String(r.entryNo);
   const rr = entryToRR.has(key) ? entryToRR.get(key) : null;
   const inKnockout = knockoutEntries.has(key);
+
+  // find the corresponding entryResults record for richer info
+  const er = (entryResults || []).find((x) => {
+    return String(x.entryNo) === String(r.entryNo);
+  });
+
+  // If this entry only has round-robin info (not in knockout), leave tournament null
+  if (rr && !inKnockout) {
+    return {
+      entryNo: r.entryNo,
+      tournament: null,
+      roundrobin: rr ? { group: rr.group, rank: rr.rank } : null,
+    };
+  }
+
+  const label = r.result || (er && er.resultLabel) || null;
+  let rank;
+  if (er) {
+    rank = computeTournamentRank(er);
+  } else {
+    rank = computeTournamentRank({ resultLabel: label });
+  }
+
   return {
     entryNo: r.entryNo,
-    tournament: rr && !inKnockout ? null : r.result,
+    tournament: label ? { label, rank } : null,
     roundrobin: rr ? { group: rr.group, rank: rr.rank } : null,
   };
 });
