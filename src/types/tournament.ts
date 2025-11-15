@@ -99,15 +99,80 @@ export interface MatchOpponentTeam {
   prefecture: string;
 }
 
-export interface TournamentMeta {
-  id: string;
-  sortId: number;
-  name: string;
-  region: string;
-  type: string;
-  category: string;
-  officialUrl: string;
+// ----
+export interface TournamentIndexEntry {
+  tournamentId: string;
+  generationId: string;
+  label: string;
   isMajorTitle: boolean;
-  source?: string;
-  sourceUrl?: string;
+  officialUrl: string;
+}
+
+export interface TournamentCategoryInfo {
+  categoryId: string;
+  label: string;
+  category: string;
+  gender: string;
+  age: string;
+}
+
+export interface TournamentInformationEntry {
+  informationId: string;
+  year: number;
+  location: string;
+  startDate: string;
+  endDate: string;
+  source: string;
+  sourceUrl: string;
+  categories: TournamentCategoryInfo[];
+}
+
+export interface TournamentParticipant {
+  id: string;
+  lastName: string;
+  firstName: string;
+  team: string;
+  prefecture: string | null;
+}
+
+export interface TournamentEntry {
+  entryNo: number;
+  playerIds: string[];
+  type?: string;
+}
+
+export interface TournamentMatch {
+  entries: number[];
+  scores: Record<string, number>;
+  round: string | null;
+  winnerEntryNo: number;
+  retired: boolean;
+  stage: string;
+  group: string | null;
+  matchId: string;
+  nextMatchId: string | null;
+  prevMatchIds: string[];
+  prevMatchId: string | null;
+}
+
+export interface TournamentResult {
+  entryNo: number;
+  tournament?: {
+    label: string;
+    rank: {
+      kind: string;
+      value: number;
+    };
+  };
+  roundrobin?: {
+    group: string;
+    rank: number;
+  };
+}
+
+export interface TournamentDetailData {
+  participants: TournamentParticipant[];
+  entries: TournamentEntry[];
+  matches: TournamentMatch[];
+  results: TournamentResult[];
 }

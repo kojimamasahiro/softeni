@@ -6,216 +6,59 @@ import path from 'path';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
-import { getAllPlayers } from '@/lib/players';
-import { resultPriority } from '@/lib/utils';
-import { EntryInfo } from '@/types/entry';
 import {
-  MatchOpponent,
-  PlayerInfo,
-  TournamentMeta,
-  TournamentYearData,
+  TournamentDetailData,
+  TournamentIndexEntry,
+  TournamentInformationEntry,
 } from '@/types/index';
 
-interface TournamentYearResultPageProps {
+type LinkCategory = {
+  label: string;
   year: string;
-  meta: TournamentMeta;
-  data: TournamentYearData;
-  allPlayers: PlayerInfo[];
-  unknownPlayers: Record<
-    string,
-    { firstName: string; lastName: string; team: string }
-  >;
-  entries: EntryInfo[];
-  teamMap: Record<string, { teamId: string; prefectureId: string }>;
-  highlight: string | null;
-  groupedLinks: {
-    year: string;
-    links: {
-      year: string;
-      gameCategory: string;
-      ageCategory: string;
-      gender: string;
-      categoryLabel: string;
-      isCurrent: boolean;
-    }[];
-  }[];
-  categoryLabel: string;
+  category: string;
+  gender: string;
+  age: string;
+  isCurrent: boolean;
+};
+
+interface TournamentYearResultPageProps {
   generation: string;
   tournamentId: string;
+  year: string;
   gameCategory: string;
   ageCategory: string;
   gender: string;
+  label: string;
+  categoryLabel: string;
+  infoForYear: TournamentInformationEntry;
+  detailData: TournamentDetailData | null;
+  linkCategories: LinkCategory[] | null;
+  infoWarnings?: string[];
+  detailsWarnings?: string[];
 }
 
 export default function TournamentYearResultPage({
-  year,
-  meta,
-  data,
-  allPlayers,
-  unknownPlayers,
-  entries,
-  teamMap,
-  highlight,
-  groupedLinks,
-  categoryLabel,
   generation,
+  tournamentId,
+  year,
   gameCategory,
   ageCategory,
   gender,
+  label,
+  categoryLabel,
+  infoForYear,
+  detailData,
+  linkCategories,
+  infoWarnings = [],
+  detailsWarnings = [],
 }: TournamentYearResultPageProps) {
-  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`;
-
-  const teamGroups: Record<
-    string,
-    {
-      team: string;
-      teamId: string;
-      prefectureId: string;
-      members: {
-        result: string;
-        resultOrder: number;
-        displayParts: { text: string; id?: string; noLink?: boolean }[];
-      }[];
-      bestRank: number;
-    }
-  > = {};
-
-  for (const entry of data.results ?? []) {
-    if ('playerIds' in entry) {
-      const players = (entry.playerIds ?? []).map((id) => {
-        const player = allPlayers.find((p) => p.id === id);
-        if (player) {
-          return {
-            id,
-            name: `${player.lastName}${player.firstName}`,
-            team: player.team ?? '所属不明',
-            noLink: false,
-          };
-        } else {
-          const [lastName = '', firstName = '', team = '所属不明'] =
-            id.split('_');
-          const unknown = unknownPlayers[id];
-          return {
-            id,
-            name: unknown
-              ? `${unknown.lastName}${unknown.firstName}`
-              : `${lastName}${firstName}`,
-            team: unknown?.team ?? team,
-            noLink: true,
-          };
-        }
-      });
-
-      const resultOrder = resultPriority(entry.result);
-
-      if (players.length === 1 || players[0].team === players[1].team) {
-        const team = players[0].team;
-        const displayParts = players.flatMap((p, i) => [
-          { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
-          ...(i < players.length - 1 ? [{ text: '・' }] : []),
-        ]);
-
-        const extra = teamMap[team] ?? { teamId: '', prefectureId: '' };
-
-        if (!teamGroups[team]) {
-          teamGroups[team] = {
-            team,
-            teamId: extra.teamId,
-            prefectureId: extra.prefectureId,
-            members: [],
-            bestRank: resultOrder,
-          };
-        }
-        teamGroups[team].members.push({
-          result: entry.result,
-          resultOrder,
-          displayParts,
-        });
-        teamGroups[team].bestRank = Math.min(
-          teamGroups[team].bestRank,
-          resultOrder,
-        );
-      } else {
-        for (const p of players) {
-          const displayParts = [
-            { text: p.name, id: p.noLink ? undefined : p.id, noLink: p.noLink },
-          ];
-          const extra = teamMap[p.team] ?? { teamId: '', prefectureId: '' };
-
-          if (!teamGroups[p.team]) {
-            teamGroups[p.team] = {
-              team: p.team,
-              teamId: extra.teamId,
-              prefectureId: extra.prefectureId,
-              members: [],
-              bestRank: resultOrder,
-            };
-          }
-          teamGroups[p.team].members.push({
-            result: entry.result,
-            resultOrder,
-            displayParts,
-          });
-          teamGroups[p.team].bestRank = Math.min(
-            teamGroups[p.team].bestRank,
-            resultOrder,
-          );
-        }
-      }
-    } else if ('team' in entry && typeof entry.team === 'string') {
-      const team = entry.team;
-      const resultOrder = resultPriority(entry.result);
-      const displayParts = [{ text: team, noLink: true }];
-      const extra = teamMap[team] ?? { teamId: '', prefectureId: '' };
-
-      if (!teamGroups[team]) {
-        teamGroups[team] = {
-          team,
-          teamId: extra.teamId,
-          prefectureId: extra.prefectureId,
-          members: [],
-          bestRank: resultOrder,
-        };
-      }
-
-      teamGroups[team].members.push({
-        result: entry.result,
-        resultOrder,
-        displayParts,
-      });
-      teamGroups[team].bestRank = Math.min(
-        teamGroups[team].bestRank,
-        resultOrder,
-      );
-    }
-  }
-
-  const sortedTeams = Object.values(teamGroups).sort((a, b) => {
-    if (a.bestRank !== b.bestRank) return a.bestRank - b.bestRank;
-    return a.team.localeCompare(b.team, 'ja');
-  });
-
-  const tournamentMatches = useMemo(() => data.matches ?? [], [data.matches]);
-  const roundRobinMatches = useMemo(
-    () => data.roundRobinMatches ?? [],
-    [data.roundRobinMatches],
-  );
-
-  const matches = useMemo(
-    () => [...roundRobinMatches, ...tournamentMatches],
-    [roundRobinMatches, tournamentMatches],
-  );
-
-  const allNames = useMemo(
-    () => [...new Set(matches.map((m) => m.name))],
-    [matches],
-  );
+  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -223,119 +66,134 @@ export default function TournamentYearResultPage({
   useEffect(() => {
     const q = searchQuery.toLowerCase();
     if (q.length > 0) {
-      setSuggestions(
-        allNames.filter((name) => name.toLowerCase().includes(q)).slice(0, 5),
-      );
+      // setSuggestions(
+      //   allNames.filter((name) => name.toLowerCase().includes(q)).slice(0, 5),
+      // );
     } else {
       setSuggestions([]);
     }
-  }, [searchQuery, allNames]);
+  }, [searchQuery]);
 
-  const seenPlayers = new Set<string>();
-  const teamCounter: Record<string, number> = {};
+  // const seenPlayers = new Set<string>();
+  // const teamCounter: Record<string, number> = {};
 
-  function findOpponentById(id: string): MatchOpponent | null {
-    for (const match of matches) {
-      for (const op of match.opponents ?? []) {
-        if (op.playerId === id || op.tempId === id) return op;
-      }
-    }
-    return null;
-  }
+  // function findOpponentById(id: string): MatchOpponent | null {
+  //   for (const match of matches) {
+  //     for (const op of match.opponents ?? []) {
+  //       if (op.playerId === id || op.tempId === id) return op;
+  //     }
+  //   }
+  //   return null;
+  // }
 
-  for (const match of matches) {
-    for (const id of match.pair ?? []) {
-      if (!seenPlayers.has(id)) {
-        const player = findOpponentById(id);
-        if (player?.team) {
-          teamCounter[player.team] = (teamCounter[player.team] || 0) + 1;
-          seenPlayers.add(id);
-        }
-      }
-    }
-  }
+  // for (const match of matches) {
+  //   for (const id of match.pair ?? []) {
+  //     if (!seenPlayers.has(id)) {
+  //       const player = findOpponentById(id);
+  //       if (player?.team) {
+  //         teamCounter[player.team] = (teamCounter[player.team] || 0) + 1;
+  //         seenPlayers.add(id);
+  //       }
+  //     }
+  //   }
+  // }
 
-  const sorted = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
-  const rankedTeams: { rank: number; team: string; count: number }[] = [];
-  let currentRank = 1;
-  let prevCount: number | null = null;
-  let offset = 0;
+  // const sorted = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
+  // const rankedTeams: { rank: number; team: string; count: number }[] = [];
+  // let currentRank = 1;
+  // let prevCount: number | null = null;
+  // let offset = 0;
 
-  for (let i = 0; i < sorted.length; i++) {
-    const [team, count] = sorted[i];
-    if (count === prevCount) {
-      offset++;
-    } else {
-      currentRank = i + 1 + offset;
-      offset = 0;
-    }
-    rankedTeams.push({ rank: currentRank, team, count });
-    prevCount = count;
-  }
+  // for (let i = 0; i < sorted.length; i++) {
+  //   const [team, count] = sorted[i];
+  //   if (count === prevCount) {
+  //     offset++;
+  //   } else {
+  //     currentRank = i + 1 + offset;
+  //     offset = 0;
+  //   }
+  //   rankedTeams.push({ rank: currentRank, team, count });
+  //   prevCount = count;
+  // }
 
-  const seedEntryNos = new Set<number>();
+  // const seedEntryNos = new Set<number>();
 
-  for (const entry of entries ?? []) {
-    if (entry.type === 'seed') {
-      seedEntryNos.add(entry.entryNo);
-    }
-  }
+  // for (const entry of detailData?.entries ?? []) {
+  //   if (entry.type === 'seed') {
+  //     seedEntryNos.add(entry.entryNo);
+  //   }
+  // }
 
-  const tournamentMatchSet = new Set(
-    tournamentMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
-  );
+  // const tournamentMatchSet = new Set(
+  //   tournamentMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
+  // );
 
-  const roundRobinMatchSet = new Set(
-    roundRobinMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
-  );
+  // const roundRobinMatchSet = new Set(
+  //   roundRobinMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
+  // );
 
-  // standingsから id → rank の辞書を作成
-  const standings = data.standings ?? {};
-  const idToRank: Record<number, number> = {};
+  // // standingsから id → rank の辞書を作成
+  // const standings = data.standings ?? {};
+  // const idToRank: Record<number, number> = {};
 
-  // 期待される構造: standings[group][entry] = { id: number, rank: number }
-  for (const groupObj of Object.values(standings)) {
-    for (const item of Object.values(groupObj)) {
-      if (item && typeof item === 'object' && 'id' in item && 'rank' in item) {
-        const { id, rank } = item as { id: number; rank: number };
-        idToRank[id] = rank;
-      }
-    }
-  }
+  // // 期待される構造: standings[group][entry] = { id: number, rank: number }
+  // for (const groupObj of Object.values(standings)) {
+  //   for (const item of Object.values(groupObj)) {
+  //     if (item && typeof item === 'object' && 'id' in item && 'rank' in item) {
+  //       const { id, rank } = item as { id: number; rank: number };
+  //       idToRank[id] = rank;
+  //     }
+  //   }
+  // }
 
-  // 予選で敗退したエントリーを抽出
-  const eliminatedEntries = [...roundRobinMatchSet]
-    .filter((key) => !tournamentMatchSet.has(key))
-    .map((key) => {
-      const [name, category] = key.split('|');
+  // // 予選で敗退したエントリーを抽出
+  // const eliminatedEntries = [...roundRobinMatchSet]
+  //   .filter((key) => !tournamentMatchSet.has(key))
+  //   .map((key) => {
+  //     const [name, category] = key.split('|');
 
-      // roundRobinMatchesからentryNoを取得
-      const match = roundRobinMatches.find(
-        (m) => m.name === name && m.category === category,
-      );
+  //     // roundRobinMatchesからentryNoを取得
+  //     const match = roundRobinMatches.find(
+  //       (m) => m.name === name && m.category === category,
+  //     );
 
-      // standings.id から rank を取得
-      let rank: number | null = null;
-      if (match?.entryNo != null) {
-        const entryId = match.entryNo;
-        rank = idToRank[entryId] ?? null;
-      }
+  //     // standings.id から rank を取得
+  //     let rank: number | null = null;
+  //     if (match?.entryNo != null) {
+  //       const entryId = match.entryNo;
+  //       rank = idToRank[entryId] ?? null;
+  //     }
 
-      return {
-        name,
-        result: rank ? `予選${rank}位` : '予選敗退',
-        category,
-        rank,
-      };
-    });
+  //     return {
+  //       name,
+  //       result: rank ? `予選${rank}位` : '予選敗退',
+  //       category,
+  //       rank,
+  //     };
+  //   });
+
+  // // Build a mapping from entryNo -> result label from data.results (if present)
+  // const resultByEntryNo: Record<number, string | undefined> = {};
+  // for (const r of data.results ?? []) {
+  //   const record = r as unknown as {
+  //     entryNo?: number;
+  //     result?: string;
+  //     tournament?: string;
+  //   };
+  //   const maybeEntryNo = record.entryNo;
+  //   const maybeResult = record.result ?? record.tournament;
+  //   if (typeof maybeEntryNo === 'number' && typeof maybeResult === 'string') {
+  //     resultByEntryNo[maybeEntryNo] = maybeResult;
+  //   }
+  // }
 
   return (
     <>
       <MetaHead
-        title={`${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
-        description={`${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
+        title={`${label} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
+        description={`${label} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
         url={pageUrl}
-        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}`}
+        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`}
         twitterCardType="summary_large_image"
         type="article"
       />
@@ -347,14 +205,14 @@ export default function TournamentYearResultPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}大会結果`,
+              headline: `${label} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}大会結果`,
               author: { '@type': 'Person', name: 'Softeni Pick' },
               publisher: { '@type': 'Organization', name: 'Softeni Pick' },
               datePublished: new Date().toISOString().split('T')[0],
               dateModified: new Date().toISOString().split('T')[0],
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-              description: `${meta.name} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
+              description: `${label} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
             }),
           }}
         />
@@ -380,7 +238,7 @@ export default function TournamentYearResultPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
+                  name: `${label} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
                   item: pageUrl,
                 },
               ],
@@ -396,90 +254,107 @@ export default function TournamentYearResultPage({
               { label: 'ホーム', href: '/' },
               { label: '大会結果一覧', href: '/tournaments' },
               {
-                label: `${meta.name} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
-                href: `/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}${gender}`,
+                label: `${label} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
+                href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}${gender}`,
               },
             ]}
           />
 
           {/* ✅ h1 + 大会紹介文 */}
           <h1 className="text-2xl font-bold mb-4">
-            {meta.name} {year}年 {categoryLabel ? `${categoryLabel} ` : ''}
+            {label} {year}年 {categoryLabel ? `${categoryLabel} ` : ''}
             大会結果
           </h1>
           <section className="mb-6 px-1">
-            {data.location && data.startDate && data.endDate && (
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                開催地：{data.location} ／ 日程：{data.startDate}〜
-                {data.endDate}
-              </p>
-            )}
-            {entries && entries.length > 0 && (
+            {infoForYear.location &&
+              infoForYear.startDate &&
+              infoForYear.endDate && (
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  開催地：{infoForYear.location} ／ 日程：
+                  {infoForYear.startDate}〜{infoForYear.endDate}
+                </p>
+              )}
+            {detailData && detailData.entries.length > 0 && (
               <p className="mt-2 text-sm">
                 <Link
-                  href={`/tournaments/${generation}/${meta.id}/${year}/${gameCategory}/${ageCategory}/${gender}/data`}
+                  href={`/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/data`}
                   className="text-blue-600 hover:underline"
                 >
                   ▶ 大会データ
                 </Link>
               </p>
             )}
-            {highlight && (
-              <section className="mt-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
-                <h2 className="text-lg font-semibold mb-1">大会ハイライト</h2>
-                {highlight.split('\n').map((line, i) => (
-                  <p key={i} className="mb-1 inline-block">
-                    {line}
-                  </p>
-                ))}
-              </section>
-            )}
           </section>
 
           {/* ✅ チーム別成績 */}
-          <TeamResults sortedTeams={sortedTeams} />
+          <TeamResults detailData={detailData ? [detailData] : []} />
 
-          {groupedLinks && groupedLinks.length > 0 && (
+          {(infoWarnings.length > 0 || detailsWarnings.length > 0) && (
+            <section className="mt-6 mb-6 p-4 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded">
+              <h3 className="font-semibold mb-2">データ警告</h3>
+              <ul className="list-disc list-inside text-sm">
+                {infoWarnings.map((w, i) => (
+                  <li key={`info-${i}`}>{w}</li>
+                ))}
+                {detailsWarnings.map((w, i) => (
+                  <li key={`det-${i}`}>{w}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {linkCategories && linkCategories.length > 0 && (
             <section className="mb-10">
               <h2 className="text-lg font-bold mb-3">その他の大会結果</h2>
-              {groupedLinks.map(({ year: yearValue, links }) => (
-                <div
-                  className="mb-4"
-                  key={`${yearValue}-${links
-                    .map(
-                      (link) =>
-                        `${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`,
-                    )
-                    .join('-')}`}
-                >
-                  <h4 className="text-md mb-2">{yearValue}年</h4>
-                  <ul className="flex flex-wrap gap-2">
-                    {links.map((link) =>
-                      link.isCurrent ? (
-                        <li
-                          key={`${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
-                        >
-                          <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">
-                            {link.categoryLabel}
-                          </span>
-                        </li>
-                      ) : (
-                        <li
-                          key={`${link.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
-                        >
-                          <Link
-                            href={`/tournaments/${generation}/${meta.id}/${link.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
+              {Object.entries(
+                linkCategories.reduce<Record<string, LinkCategory[]>>(
+                  (acc, link) => {
+                    if (!acc[link.year]) acc[link.year] = [];
+                    acc[link.year].push(link);
+                    return acc;
+                  },
+                  {},
+                ),
+              )
+                .sort((a, b) => Number(b[0]) - Number(a[0])) // 年で降順
+                .map(([yearValue, links]) => (
+                  <div
+                    className="mb-4"
+                    key={`${yearValue}-${links
+                      .map(
+                        (link) =>
+                          `${link.year}-${link.category}-${link.age}-${link.gender}`,
+                      )
+                      .join('-')}`}
+                  >
+                    <h4 className="text-md mb-2">{yearValue}年</h4>
+                    <ul className="flex flex-wrap gap-2">
+                      {links.map((link) =>
+                        link.isCurrent ? (
+                          <li
+                            key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
                           >
-                            <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                              {link.categoryLabel}
+                            <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">
+                              {link.label}
                             </span>
-                          </Link>
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
-              ))}
+                          </li>
+                        ) : (
+                          <li
+                            key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
+                          >
+                            <Link
+                              href={`/tournaments/${generation}/${tournamentId}/${link.year}/${link.category}/${link.age}/${link.gender}`}
+                            >
+                              <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                                {link.label}
+                              </span>
+                            </Link>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                ))}
             </section>
           )}
 
@@ -492,22 +367,20 @@ export default function TournamentYearResultPage({
             </Link>
           </div>
 
-          {matches.length > 0 && (
+          {detailData && (
             <>
               <MatchResults
-                matches={matches}
+                detail={detailData}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 suggestions={suggestions}
                 filter={filter}
                 setFilter={setFilter}
-                eliminatedEntries={eliminatedEntries}
-                seedEntryNos={seedEntryNos}
               />
             </>
           )}
 
-          {meta.source && (
+          {infoForYear.source && (
             <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
               <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
                 出典・参考情報
@@ -517,17 +390,17 @@ export default function TournamentYearResultPage({
               </p>
               <ul className="list-disc list-inside space-y-1">
                 <li>
-                  {meta.sourceUrl ? (
+                  {infoForYear.sourceUrl ? (
                     <a
-                      href={meta.sourceUrl}
+                      href={infoForYear.sourceUrl}
                       className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {meta.source}
+                      {infoForYear.source}
                     </a>
                   ) : (
-                    <span className="font-medium">{meta.source}</span>
+                    <span className="font-medium">{infoForYear.source}</span>
                   )}
                 </li>
                 <li>
@@ -546,12 +419,11 @@ export default function TournamentYearResultPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const baseDir = path.join(process.cwd(), 'data/tournaments');
-  const generations = fs.readdirSync(baseDir); // 例: ["junior", "highschool"]
-
+  // Build paths by scanning data/tournament/details directory. We don't rely on data/tournaments.
+  const detailsRoot = path.join(process.cwd(), 'data', 'tournament', 'details');
   const paths: {
     params: {
-      generation: string;
+      generation: string; // keep generation empty string because details doesn't include generation; caller expects a value - use 'unknown'
       tournamentId: string;
       year: string;
       gameCategory: string;
@@ -560,43 +432,77 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
   }[] = [];
 
-  for (const generation of generations) {
-    const generationDir = path.join(baseDir, generation);
-    const tournamentIds = fs.readdirSync(generationDir);
+  if (!fs.existsSync(detailsRoot)) {
+    return { paths: [], fallback: false };
+  }
 
-    for (const tid of tournamentIds) {
-      const yearDir = path.join(generationDir, tid);
-      if (!fs.statSync(yearDir).isDirectory()) continue;
+  const tournamentIds = fs.readdirSync(detailsRoot).filter((n) => {
+    const p = path.join(detailsRoot, n);
+    return fs.statSync(p).isDirectory();
+  });
 
-      const years = fs.readdirSync(yearDir);
-      for (const y of years) {
-        const categoriesPath = path.join(yearDir, y, 'categories.json');
-        if (!fs.existsSync(categoriesPath)) continue;
-
-        const raw = JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'));
-        if (!Array.isArray(raw)) continue;
-
-        for (const c of raw) {
-          if (!c || typeof c !== 'object') continue;
-
-          // JSONのキーから直接取得
-          const gameCategory = c.category;
-          const ageCategory = c.age;
-          const gender = c.gender;
-
-          if (!gameCategory || !gender) continue;
-
-          paths.push({
-            params: {
-              generation, // これは外側のループや固定値から取得
-              tournamentId: tid,
-              year: y,
-              gameCategory,
-              ageCategory,
-              gender,
-            },
-          });
+  // try to load data/tournament/index.json to map tournamentId -> generationId
+  const indexPath = path.join(
+    process.cwd(),
+    'data',
+    'tournament',
+    'index.json',
+  );
+  const tournamentGenerationMap: Record<string, string> = {};
+  if (fs.existsSync(indexPath)) {
+    try {
+      const idx = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as unknown;
+      if (Array.isArray(idx)) {
+        for (const it of idx) {
+          if (it && typeof it === 'object') {
+            const entry = it as Record<string, unknown>;
+            const tidVal = entry['tournamentId'];
+            if (typeof tidVal === 'string' || typeof tidVal === 'number') {
+              const tid = String(tidVal);
+              const genVal = entry['generationId'];
+              const gen =
+                typeof genVal === 'string' || typeof genVal === 'number'
+                  ? String(genVal)
+                  : 'unknown';
+              tournamentGenerationMap[tid] = gen;
+            }
+          }
         }
+      }
+    } catch (err) {
+      void err; // ignore parse errors; we'll fallback to 'unknown' per-tournament
+    }
+  }
+
+  for (const tid of tournamentIds) {
+    const tidDir = path.join(detailsRoot, tid);
+    const years = fs.readdirSync(tidDir).filter((y) => {
+      const p = path.join(tidDir, y);
+      return fs.statSync(p).isDirectory();
+    });
+
+    for (const y of years) {
+      const yearDir = path.join(tidDir, y);
+      const files = fs.readdirSync(yearDir).filter((f) => f.endsWith('.json'));
+      for (const f of files) {
+        const base = f.replace(/\.json$/, '');
+        const parts = base.split('-');
+        // expect [gameCategory, ageCategory, gender]
+        if (parts.length < 3) continue;
+        const gender = parts.pop() as string;
+        const ageCategory = parts.pop() as string;
+        const gameCategory = parts.join('-');
+
+        paths.push({
+          params: {
+            generation: tournamentGenerationMap[tid] ?? 'unknown',
+            tournamentId: tid,
+            year: y,
+            gameCategory,
+            ageCategory,
+            gender,
+          },
+        });
       }
     }
   }
@@ -618,139 +524,128 @@ export const getStaticProps: GetStaticProps = async (context) => {
       gender: string;
     };
 
-  const basePath = path.join(
+  const indexPath = path.join(
     process.cwd(),
-    'data/tournaments',
-    generation,
-    tournamentId,
+    'data',
+    'tournament',
+    'index.json',
   );
-
-  // 大会ごとの meta.json
-  const tournamentMetaPath = path.join(basePath, 'meta.json');
-  const tournamentMeta: TournamentMeta = fs.existsSync(tournamentMetaPath)
-    ? JSON.parse(fs.readFileSync(tournamentMetaPath, 'utf-8'))
-    : null;
-
-  // 年度ごとの meta.json（上書き優先）
-  const yearMetaPath = path.join(basePath, year, 'meta.json');
-  const yearMeta = fs.existsSync(yearMetaPath)
-    ? JSON.parse(fs.readFileSync(yearMetaPath, 'utf-8'))
-    : {};
-
-  const meta: TournamentMeta = {
-    ...tournamentMeta,
-    ...yearMeta,
-  };
-
-  // categoryId とファイル名
-  const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
-  const categoryFileName = `${categoryId}.json`;
-
-  // categories.json から label を取得
-  const categoriesPath = path.join(basePath, year, 'categories.json');
-  const categories: { id: string; label: string }[] = fs.existsSync(
-    categoriesPath,
-  )
-    ? JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'))
-    : [];
-  const categoryLabel =
-    categories.find((c) => c.id === categoryId)?.label ?? '';
-
-  // entries
-  const entryPath = path.join(basePath, year, 'entries', categoryFileName);
-  const entries: EntryInfo[] = fs.existsSync(entryPath)
-    ? JSON.parse(fs.readFileSync(entryPath, 'utf-8'))
-    : [];
-
-  // results
-  const resultsPath = path.join(basePath, year, 'results', categoryFileName);
-  const resultsData = fs.existsSync(resultsPath)
-    ? JSON.parse(fs.readFileSync(resultsPath, 'utf-8'))
-    : {
-        results: [],
-        matches: [],
-        roundRobinMatches: [],
-        location: null,
-        startDate: null,
-        endDate: null,
-        highlight: null,
-      };
-
-  const allPlayers = getAllPlayers();
-  const playersPath = path.join(process.cwd(), 'data/players');
-  const unknownPlayers = JSON.parse(
-    fs.readFileSync(path.join(playersPath, 'unknown.json'), 'utf-8'),
-  );
-
-  // 他年度・他カテゴリのリンク一覧（現在のものも含む）
-  const siblings: {
-    year: string;
-    gameCategory: string;
-    ageCategory: string;
-    gender: string;
-    categoryLabel: string;
-  }[] = [];
-
-  const years = fs.readdirSync(basePath).filter((y) => /^\d{4}$/.test(y));
-
-  for (const y of years) {
-    const catsPath = path.join(basePath, y, 'categories.json');
-    if (!fs.existsSync(catsPath)) continue;
-    const cats = JSON.parse(fs.readFileSync(catsPath, 'utf-8'));
-    for (const c of cats) {
-      siblings.push({
-        year: y,
-        gameCategory: c.category,
-        ageCategory: c.age,
-        gender: c.gender,
-        categoryLabel: c.label,
-      });
+  let tournamentIndex: unknown = null;
+  let tournamentIndexEntry: TournamentIndexEntry | null = null;
+  if (fs.existsSync(indexPath)) {
+    try {
+      tournamentIndex = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+      if (Array.isArray(tournamentIndex)) {
+        for (const it of tournamentIndex) {
+          if (it && typeof it === 'object') {
+            const entry = it as TournamentIndexEntry;
+            const tidVal = entry['tournamentId'];
+            if (tidVal === tournamentId) {
+              tournamentIndexEntry = entry;
+            }
+          }
+        }
+      }
+    } catch (err) {
+      // 必要なら警告配列に push する等のハンドリングを追加
+      console.error('failed to parse tournament index.json', err);
     }
   }
 
-  // 現在表示している年度・カテゴリをフラグ付きで残す
-  const siblingsWithCurrentFlag = siblings.map((s) => ({
-    ...s,
-    isCurrent:
-      s.year === year &&
-      s.gameCategory === gameCategory &&
-      s.ageCategory === ageCategory &&
-      s.gender === gender,
-  }));
+  const infoPath = path.join(
+    process.cwd(),
+    'data',
+    'tournament',
+    'information',
+    `${tournamentId}.json`,
+  );
+  const infoWarnings: string[] = [];
+  let infoForYear: TournamentInformationEntry | null = null;
+  let linkCategories: LinkCategory[] | null = null;
 
-  type LinkItem = (typeof siblingsWithCurrentFlag)[number];
-  type GroupedLink = { year: string; links: LinkItem[] };
+  if (fs.existsSync(infoPath)) {
+    try {
+      const raw = fs.readFileSync(infoPath, 'utf-8');
+      const parsed = JSON.parse(raw) as TournamentInformationEntry[];
+      infoForYear =
+        parsed.find((entry) => String(entry.year) === String(year)) ?? null;
 
-  // ソート＆グループ化
-  const groupedLinks: GroupedLink[] = siblingsWithCurrentFlag
-    .sort((a, b) => Number(b.year) - Number(a.year)) // 新しい順
-    .reduce((acc: GroupedLink[], link) => {
-      const group = acc.find((g) => g.year === link.year);
-      if (group) {
-        group.links.push(link);
-      } else {
-        acc.push({ year: link.year, links: [link] });
+      linkCategories = parsed.flatMap((entry) =>
+        (entry.categories ?? []).map((cat) => ({
+          label: cat.label,
+          year: String(entry.year),
+          category: cat.category,
+          gender: cat.gender,
+          age: cat.age,
+          isCurrent:
+            String(entry.year) === String(year) &&
+            cat.category === gameCategory &&
+            cat.gender === gender &&
+            cat.age === ageCategory,
+        })),
+      );
+
+      if (!infoForYear) {
+        infoWarnings.push(
+          `information file found but no entry for year ${year}`,
+        );
       }
-      return acc;
-    }, []);
+    } catch (err) {
+      infoWarnings.push(
+        `information JSON parse error: ${infoPath} - ${String(err)}`,
+      );
+    }
+  } else {
+    infoWarnings.push(
+      `information file not found: ${path.relative(process.cwd(), infoPath)}`,
+    );
+  }
+
+  // We no longer read from data/tournaments; use details + information as canonical sources
+  const detailsBase = path.join(
+    process.cwd(),
+    'data',
+    'tournament',
+    'details',
+    tournamentId,
+  );
+
+  // category file name
+  const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
+  const detailsPath = path.join(detailsBase, year, `${categoryId}.json`);
+
+  let detailData: TournamentDetailData | null = null;
+  const detailsWarnings: string[] = [];
+  if (fs.existsSync(detailsPath)) {
+    try {
+      detailData = JSON.parse(fs.readFileSync(detailsPath, 'utf-8'));
+    } catch (err) {
+      detailsWarnings.push(
+        `details JSON parse error: ${detailsPath} - ${String(err)}`,
+      );
+    }
+  } else {
+    detailsWarnings.push(
+      `details file not found: ${path.relative(process.cwd(), detailsPath)}`,
+    );
+  }
 
   return {
-    props: {
-      year,
-      meta,
-      data: resultsData,
-      allPlayers,
-      unknownPlayers,
-      entries,
-      teamMap: {},
-      highlight: resultsData.highlight ?? null,
-      groupedLinks,
-      categoryLabel,
-      generation,
-      tournamentId,
-      gameCategory,
-      ageCategory,
-      gender,
-    },
+    props: ((): Record<string, unknown> => {
+      return {
+        generation,
+        tournamentId,
+        year,
+        gameCategory,
+        ageCategory,
+        gender,
+        label: tournamentIndexEntry?.label ?? '',
+        infoForYear,
+        detailData,
+        linkCategories,
+        infoWarnings,
+        detailsWarnings,
+      };
+    })(),
   };
 };
