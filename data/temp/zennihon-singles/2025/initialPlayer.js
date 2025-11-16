@@ -3650,10 +3650,10 @@ const initialPlayers = [
     information: [
       {
         lastName: '安藤',
-        firstName: '悠作',
+        firstName: '優作',
         team: '東邦ガス',
         playerId: 'ando-yusaku',
-        tempId: '悠作_安藤_東邦ガス',
+        tempId: '優作_安藤_東邦ガス',
       },
     ],
   },
