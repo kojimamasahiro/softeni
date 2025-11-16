@@ -7,44 +7,47 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
-import LiveResults from '@/components/LiveResults';
 import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
-import PlayerResults from '@/components/PlayerResults';
-import { getAllPlayers } from '@/lib/players';
-import { getAllTournaments } from '@/lib/tournaments';
+import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import {
-  PlayerData,
-  PlayerInfo,
-  PlayerStats,
-  TournamentSummary,
-} from '@/types/index';
+  TournamentDetailData,
+  TournamentEntry,
+  TournamentMatch,
+  TournamentParticipant,
+} from '@/types/tournament';
+
+type AggregatedMatch = {
+  tournamentFile: string;
+  entryNo: number;
+  round: string | null;
+  opponentNames: string[];
+  result: 'win' | 'lose' | 'unknown';
+};
 
 type PlayerResultsProps = {
   playerId: string;
-  playerData: PlayerData;
-  playerInfo: PlayerInfo;
-  allPlayers: PlayerInfo[];
-  allTournaments: TournamentSummary[];
-  playerStats: PlayerStats;
+  lastName: string;
+  firstName: string;
+  aggregatedMatches: AggregatedMatch[];
+  majorTitlesData: MajorTitleData[];
 };
 
 export default function PlayerResultsPage({
   playerId,
-  playerData,
-  playerInfo,
-  allPlayers,
-  allTournaments,
-  playerStats,
+  lastName,
+  firstName,
+  aggregatedMatches,
+  majorTitlesData,
 }: PlayerResultsProps) {
-  const fullName = `${playerInfo.lastName}${playerInfo.firstName}`;
+  const fullName = `${lastName}${firstName}`;
   const pageUrl = `https://softeni-pick.com/players/${playerId}/results`;
 
   return (
     <>
       <MetaHead
         title={`${fullName} 試合結果 | ソフトテニス情報`}
-        description={`${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`}
+        description={`${fullName}の主要大会結果や試合速報を掲載`}
         url={pageUrl}
         type="article"
       />
@@ -72,17 +75,11 @@ export default function PlayerResultsPage({
                 '@type': 'WebPage',
                 '@id': pageUrl,
               },
-              description: `${fullName}（${playerInfo.team}所属）の主要大会結果や試合速報を掲載`,
+              description: `${fullName}の主要大会結果や試合速報を掲載`,
               about: {
                 '@type': 'Person',
                 name: fullName,
-                memberOf: playerInfo.team,
                 url: pageUrl,
-                ...(playerInfo.profileLinks?.length
-                  ? {
-                      sameAs: playerInfo.profileLinks.map((link) => link.url),
-                    }
-                  : {}),
               },
             }),
           }}
@@ -110,12 +107,6 @@ export default function PlayerResultsPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `${fullName}`,
-                  item: `https://softeni-pick.com/players/${playerId}`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
                   name: `試合結果`,
                   item: pageUrl,
                 },
@@ -135,11 +126,7 @@ export default function PlayerResultsPage({
                 href: '/players',
               },
               {
-                label: `${fullName}`,
-                href: `/players/${playerId}`,
-              },
-              {
-                label: '試合結果',
+                label: `${fullName} 試合結果`,
                 href: `/players/${playerId}/results`,
               },
             ]}
@@ -153,22 +140,10 @@ export default function PlayerResultsPage({
             </p>
           </header>
 
-          {playerData.highlight && (
-            <section className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h2 className="text-lg font-semibold mb-1">最近の主な活躍</h2>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                {playerData.highlight}
-              </p>
-            </section>
-          )}
-
-          <section>
-            <LiveResults playerId={playerId} />
-          </section>
-
+          {/* 主な成績（タイトル）(再現未実装) */}
           <section>
             <h2 className="text-xl font-semibold mb-2">主な成績（タイトル）</h2>
-            <MajorTitles id={playerId} tournaments={allTournaments} />
+            <MajorTitles majorTitlesData={majorTitlesData} />
           </section>
 
           <div className="text-right">
@@ -181,14 +156,22 @@ export default function PlayerResultsPage({
           </div>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">
-              {fullName}選手の出場履歴と戦績
-            </h2>
-            <PlayerResults
-              playerData={playerData}
-              playerStats={playerStats}
-              allPlayers={allPlayers}
-            />
+            <h2 className="text-xl font-semibold mb-2">{`${fullName}選手の出場履歴と戦績`}</h2>
+            {/* PlayerResults コンポーネントは既存の playerData 形式を期待するため、
+                TournamentDetailData のみを使って完全再現する実装が必要です。
+                まずは data/tournament/details を走査して集計した最小情報を表示します。 */}
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">{`TournamentDetailData を基に集計した試合数: ${aggregatedMatches.length}`}</p>
+              <ul className="text-sm list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
+                {aggregatedMatches.slice(0, 20).map((m, i) => {
+                  const text = `${path.basename(m.tournamentFile)} — ラウンド: ${m.round ?? 'N/A'} — 対戦相手: ${m.opponentNames.join(', ')} — 結果: ${m.result}`;
+                  return <li key={i}>{text}</li>;
+                })}
+              </ul>
+              {aggregatedMatches.length > 20 && (
+                <p className="text-xs text-gray-500 mt-2">上位20件のみ表示</p>
+              )}
+            </div>
           </section>
 
           <div className="text-right">
@@ -206,79 +189,135 @@ export default function PlayerResultsPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const playersDir = path.join(process.cwd(), 'data/players');
-  const entries = fs.readdirSync(playersDir);
+  // use data/players/index.json ids
+  const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+  const entriesRaw = fs.readFileSync(indexPath, 'utf-8');
+  const index = JSON.parse(entriesRaw) as Array<{ id: number }>;
 
-  const paths = entries
-    .filter((entry) => {
-      const fullPath = path.join(playersDir, entry);
-      return fs.statSync(fullPath).isDirectory(); // ディレクトリのみ
-    })
-    .map((dir) => ({
-      params: { id: dir },
-    }));
+  const paths = index.map((p) => ({ params: { id: String(p.id) } }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const playerId = params?.id as string;
 
-  // 試合結果を取得
-  const resultsPath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    playerId,
-    'results.json',
-  );
-  const playerData: PlayerData = JSON.parse(
-    fs.readFileSync(resultsPath, 'utf-8'),
-  );
+  // read index.json to get name
+  const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+  const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
+    id: number;
+    lastName: string;
+    firstName: string;
+  }>;
 
-  // 選手情報を取得
-  const infoPath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    playerId,
-    'information.json',
-  );
-  const playerInfo: PlayerInfo = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
-
-  // 解析情報を取得
-  const statsPath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    playerId,
-    'analysis.json',
-  );
-  let playerStats: PlayerStats | null = null;
-  if (fs.existsSync(statsPath)) {
-    playerStats = JSON.parse(fs.readFileSync(statsPath, 'utf-8'));
-    if (playerStats) {
-      playerStats.playerId = playerId;
-    }
+  const idx = index.find((it) => String(it.id) === playerId);
+  if (!idx) {
+    return { notFound: true };
   }
 
-  // 全選手情報を取得
-  const allPlayers = getAllPlayers();
+  // aggregate matches from data/tournament/details
+  const detailsRoot = path.join(process.cwd(), 'data', 'tournament', 'details');
+  const jsonFiles: string[] = [];
 
-  // 全トーナメント情報を取得
-  const allTournaments = getAllTournaments();
+  const walk = (dir: string) => {
+    if (!fs.existsSync(dir)) return;
+    const items = fs.readdirSync(dir);
+    for (const it of items) {
+      const p = path.join(dir, it);
+      const stat = fs.statSync(p);
+      if (stat.isDirectory()) walk(p);
+      else if (stat.isFile() && it.endsWith('.json')) jsonFiles.push(p);
+    }
+  };
 
+  walk(detailsRoot);
+
+  const aggregatedMatches: AggregatedMatch[] = [];
+
+  for (const file of jsonFiles) {
+    try {
+      const raw = fs.readFileSync(file, 'utf-8');
+      const detail = JSON.parse(raw) as TournamentDetailData;
+
+      const participants: TournamentParticipant[] = detail.participants || [];
+      const participantById = new Map<string, TournamentParticipant>();
+      for (const p of participants) participantById.set(p.id, p);
+
+      // find participant ids matching name
+      const matchingParticipantIds = participants
+        .filter(
+          (p) => p.lastName === idx.lastName && p.firstName === idx.firstName,
+        )
+        .map((p) => p.id);
+      if (matchingParticipantIds.length === 0) continue;
+
+      const entries: TournamentEntry[] = detail.entries || [];
+      const entryByNo = new Map<number, TournamentEntry>();
+      for (const e of entries) {
+        entryByNo.set(e.entryNo, e);
+      }
+
+      const playerEntryNos = new Set<number>();
+      for (const e of entries) {
+        if (Array.isArray(e.playerIds)) {
+          for (const pid of e.playerIds) {
+            if (matchingParticipantIds.includes(pid)) {
+              playerEntryNos.add(e.entryNo);
+              break;
+            }
+          }
+        }
+      }
+
+      const matches: TournamentMatch[] = detail.matches || [];
+      for (const m of matches) {
+        if (!Array.isArray(m.entries) || m.entries.length === 0) continue;
+        const matchEntries: number[] = m.entries;
+
+        const intersection = matchEntries.filter((n) => playerEntryNos.has(n));
+        if (intersection.length === 0) continue;
+
+        // determine player's entryNo (pick first)
+        const playerEntryNo = intersection[0];
+
+        const opponentEntryNos = matchEntries.filter(
+          (n) => n !== playerEntryNo,
+        );
+        const opponentNames: string[] = [];
+        for (const o of opponentEntryNos) {
+          const oe = entryByNo.get(o);
+          if (oe && Array.isArray(oe.playerIds)) {
+            for (const pid of oe.playerIds) {
+              const p = participantById.get(pid);
+              if (p) opponentNames.push(`${p.lastName}${p.firstName}`);
+            }
+          }
+        }
+
+        let result: 'win' | 'lose' | 'unknown' = 'unknown';
+        if (typeof m.winnerEntryNo === 'number') {
+          result = m.winnerEntryNo === playerEntryNo ? 'win' : 'lose';
+        }
+
+        aggregatedMatches.push({
+          tournamentFile: file,
+          entryNo: playerEntryNo,
+          round: m.round ?? m.stage ?? null,
+          opponentNames,
+          result,
+        });
+      }
+    } catch {
+      // ignore parse errors
+    }
+  }
   return {
     props: {
       playerId,
-      playerData,
-      playerInfo,
-      allPlayers,
-      allTournaments,
-      playerStats,
+      lastName: idx.lastName,
+      firstName: idx.firstName,
+      aggregatedMatches,
+      majorTitlesData: getMajorTitlesForPlayer(idx.lastName, idx.firstName),
     },
   };
 };
