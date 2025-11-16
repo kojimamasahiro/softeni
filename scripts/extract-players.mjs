@@ -42,7 +42,8 @@ async function main() {
     process.exit(1);
   });
 
-  const foundSet = new Set();
+  // count occurrences of each player across files
+  const counts = new Map();
   for (const f of files) {
     try {
       const txt = await fs.readFile(f, 'utf8');
@@ -51,19 +52,24 @@ async function main() {
         for (const p of json.participants) {
           const ln = (p.lastName || '').trim();
           const fn = (p.firstName || '').trim();
-          if (ln || fn) foundSet.add(keyOf(ln, fn));
+          if (ln || fn) {
+            const k = keyOf(ln, fn);
+            counts.set(k, (counts.get(k) || 0) + 1);
+          }
         }
       }
     } catch (e) {
       console.warn('skip', f, e.message);
     }
   }
+  // parse threshold from CLI arg: minimum occurrences required to include a player
+  const arg = parseInt(process.argv[2], 10);
+  const minOccur = Number.isInteger(arg) && arg > 0 ? arg : 1;
 
-  // load existing players
+  // load existing players (to preserve ids when possible)
   const existing = await readExistingPlayers(OUT_PATH);
-  const map = new Map();
+  const existingMap = new Map();
   let maxId = 0;
-  // build map of existing players and find max id
   for (const p of existing) {
     const idNum =
       Number.isInteger(p.id) && p.id > 0
@@ -73,40 +79,40 @@ async function main() {
           : 0;
     if (idNum > maxId) maxId = idNum;
     const k = keyOf(p.lastName, p.firstName);
-    if (!map.has(k)) map.set(k, idNum);
+    if (!existingMap.has(k)) existingMap.set(k, p);
   }
 
-  // assign ids to existing entries that lack a valid id
+  // build list of keys that meet threshold, sorted deterministically
+  const keptKeys = Array.from(counts.keys())
+    .filter((k) => counts.get(k) >= minOccur)
+    .sort((a, b) => {
+      const [la, fa] = a.split('\t');
+      const [lb, fb] = b.split('\t');
+      if (la === lb) return fa.localeCompare(fb, 'ja');
+      return la.localeCompare(lb, 'ja');
+    });
+
+  const out = [];
   let assignedToExisting = 0;
-  for (const p of existing) {
-    const valid = Number.isInteger(p.id) && p.id > 0;
-    if (!valid) {
+  let totalAdded = 0;
+  for (const k of keptKeys) {
+    const [lastName, firstName] = k.split('\t');
+    if (existingMap.has(k)) {
+      const p = existingMap.get(k);
+      const valid = Number.isInteger(p.id) && p.id > 0;
+      if (!valid) {
+        maxId += 1;
+        p.id = maxId;
+        assignedToExisting += 1;
+      }
+      out.push({ id: p.id, lastName: p.lastName, firstName: p.firstName });
+    } else {
       maxId += 1;
-      p.id = maxId;
-      assignedToExisting += 1;
+      const newP = { id: maxId, lastName, firstName };
+      out.push(newP);
+      totalAdded += 1;
     }
   }
-
-  // derive players found from files, sorted for deterministic ordering
-  const newPlayersKeys = Array.from(foundSet).sort((a, b) => {
-    const [la, fa] = a.split('\t');
-    const [lb, fb] = b.split('\t');
-    if (la === lb) return fa.localeCompare(fb, 'ja');
-    return la.localeCompare(lb, 'ja');
-  });
-
-  const additions = [];
-  for (const k of newPlayersKeys) {
-    if (map.has(k)) continue; // already present
-    const [lastName, firstName] = k.split('\t');
-    maxId += 1;
-    const newP = { id: maxId, lastName, firstName };
-    additions.push(newP);
-    map.set(k, maxId);
-  }
-
-  const out = existing.concat(additions);
-  const totalAdded = additions.length;
   await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
   // write as array with each element on a single line: [{...}, {...}]
   const lines = [];
