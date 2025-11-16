@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
 
@@ -191,7 +190,7 @@ export default function Home({ players }: HomeProps) {
                   {
                     id: 'maruyama-kaito',
                     name: '丸山 海斗',
-                    team: 'one team',
+                    team: 'oneteam',
                   },
                 ].map((player) => (
                   <div

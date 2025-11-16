@@ -253,7 +253,7 @@ const initialPlayers = [
 {"id":236,"name":"松野・加納（三田クラブ）","information":[{"lastName":"松野","firstName":"下裕稀","team":"三田クラブ","prefecture":"兵庫県","playerId":null,"tempId":"松野_下裕稀_三田クラブ"},{"lastName":"加納","firstName":"雄一郎","team":"三田クラブ","prefecture":"兵庫県","playerId":null,"tempId":"加納_雄一郎_三田クラブ"}],"category":"doubles"},
 {"id":237,"name":"加納・石河（混合）","information":[{"lastName":"加納","firstName":"雄一郎","team":"大都クラブ","prefecture":"愛知県","playerId":null,"tempId":"加納_雄一郎_大都クラブ"},{"lastName":"石河","firstName":"和樹","team":"あすなろクラブ","prefecture":"愛知県","playerId":null,"tempId":"石河_和樹_あすなろクラブ"}],"category":"doubles"},
 {"id":238,"name":"中村・鳥越（広島修道大学）","information":[{"lastName":"中村","firstName":"元敬","team":"広島修道大学","prefecture":"","playerId":null,"tempId":"中村_元敬_広島修道大学"},{"lastName":"鳥越","firstName":"亮太","team":"広島修道大学","prefecture":"","playerId":null,"tempId":"鳥越_亮太_広島修道大学"}],"category":"doubles"},
-{"id":239,"name":"上岡・丸山（混合）","information":[{"lastName":"上岡","firstName":"俊介","team":"Up Rise","prefecture":"","playerId":"ueoka-shunsuke","tempId":"上岡_俊介_Up Rise"},{"lastName":"丸山","firstName":"海斗","team":"one team","prefecture":"","playerId":"maruyama-kaito","tempId":"丸山_海斗_one team"}],"category":"doubles"},
+{"id":239,"name":"上岡・丸山（混合）","information":[{"lastName":"上岡","firstName":"俊介","team":"Up Rise","prefecture":"","playerId":"ueoka-shunsuke","tempId":"上岡_俊介_Up Rise"},{"lastName":"丸山","firstName":"海斗","team":"oneteam","prefecture":"","playerId":"maruyama-kaito","tempId":"丸山_海斗_oneteam"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]}
 ];
 console.log(`Initial players loaded: ${initialPlayers.length}`);

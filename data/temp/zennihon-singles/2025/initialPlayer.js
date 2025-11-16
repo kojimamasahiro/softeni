@@ -3082,14 +3082,14 @@ const initialPlayers = [
   { id: 'bye', name: '1回戦免除', information: [] },
   {
     id: 217,
-    name: '丸山（one team）',
+    name: '丸山（oneteam）',
     information: [
       {
         lastName: '丸山',
         firstName: '海斗',
-        team: 'one team',
+        team: 'oneteam',
         playerId: 'maruyama-kaito',
-        tempId: '海斗_丸山_one team',
+        tempId: '海斗_丸山_oneteam',
       },
     ],
   },

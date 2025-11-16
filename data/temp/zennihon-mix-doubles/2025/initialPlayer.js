@@ -636,9 +636,9 @@ const initialPlayers = [
       {
         lastName: '丸山',
         firstName: '海斗',
-        team: 'one team',
+        team: 'oneteam',
         playerId: 'maruyama-kaito',
-        tempId: '丸山_海斗_one team',
+        tempId: '丸山_海斗_oneteam',
       },
       {
         lastName: '天間',
