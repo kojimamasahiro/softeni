@@ -44,6 +44,17 @@ const data = JSON.parse(fs.readFileSync(src, 'utf8'));
 
 const participantsMap = new Map();
 
+// map playerId (external short-id) -> tempId (姓_名_チーム[_都道府県])
+const playerIdToTemp = new Map();
+
+// normalize raw id string: if it's a known playerId, return the mapped tempId
+function normalizeRawId(id) {
+  if (id == null) return id;
+  const s = String(id);
+  if (playerIdToTemp.has(s)) return playerIdToTemp.get(s);
+  return s;
+}
+
 // helper: build id "last_first_team_prefecture"
 function makeIdFromParts(last, first, team, prefecture) {
   return [last || '', first || '', team || '', prefecture || '']
@@ -71,19 +82,31 @@ function registerOpponent(o) {
     if (!cur.firstName && o.firstName) cur.firstName = o.firstName;
     if (!cur.lastName && o.lastName) cur.lastName = o.lastName;
   }
+  // if opponent included a playerId (short id), remember mapping to tempId
+  if (o.playerId) {
+    try {
+      playerIdToTemp.set(String(o.playerId), id);
+    } catch (err) {
+      // ignore
+    }
+  }
 }
 
 // register from id-string like "姓_名_チーム"
 function registerFromIdString(idStr) {
   if (!idStr) return;
-  if (!participantsMap.has(idStr)) {
-    const parts = idStr.split('_');
+  // If idStr is a short playerId (like 'takeda-ryo'), normalizeRawId will
+  // convert it to a tempId when we have a mapping from opponents.
+  const normalized = normalizeRawId(String(idStr));
+  const useId = String(normalized);
+  if (!participantsMap.has(useId)) {
+    const parts = useId.split('_');
     const last = parts[0] || null;
     const first = parts[1] || null;
     const team = parts.slice(2).join('_') || null;
 
-    participantsMap.set(idStr, {
-      id: idStr,
+    participantsMap.set(useId, {
+      id: useId,
       lastName: last,
       firstName: first,
       team,
@@ -204,12 +227,34 @@ const oldToNewId = new Map();
   for (const [k, v] of newMap.entries()) participantsMap.set(k, v);
 }
 
+// If we recorded any playerId -> tempId mappings earlier, ensure oldToNewId
+// also maps those short playerId keys to the normalized newId for the tempId.
+for (const [pid, tempId] of playerIdToTemp.entries()) {
+  try {
+    const mapped = oldToNewId.get(tempId) || tempId;
+    oldToNewId.set(pid, mapped);
+  } catch (err) {
+    // ignore
+  }
+}
+
+// Remove placeholder participants whose id is a short playerId we mapped above.
+for (const pid of playerIdToTemp.keys()) {
+  try {
+    if (participantsMap.has(pid)) participantsMap.delete(pid);
+  } catch (err) {
+    // ignore
+  }
+}
+
 // build entries map from entryNo -> playerIds
 const entriesMap = new Map();
 for (const m of data.matches || []) {
   if (m.entryNo != null) {
     const key = String(m.entryNo);
-    const playerIds = Array.isArray(m.pair) ? m.pair.map((x) => String(x)) : [];
+    const playerIds = Array.isArray(m.pair)
+      ? m.pair.map((x) => normalizeRawId(String(x)))
+      : [];
     if (!entriesMap.has(key)) {
       entriesMap.set(key, { entryNo: Number(m.entryNo), playerIds });
     } else {
@@ -243,7 +288,7 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
     if (Array.isArray(row.pair) && row.pair.length) {
       playerIds = row.pair
         .map((p) => {
-          if (typeof p === 'string') return String(p);
+          if (typeof p === 'string') return normalizeRawId(String(p));
           if (p && typeof p === 'object') {
             return (
               p.playerId ||
@@ -288,7 +333,7 @@ function findEntryNoByPlayerIds(playerIds) {
 const groups = new Map();
 for (const m of rawMatches) {
   const teamA_pair = Array.isArray(m.pair)
-    ? m.pair.map((x) => remapId(String(x)))
+    ? m.pair.map((x) => remapId(String(normalizeRawId(String(x)))))
     : [];
   const teamA_entry = m.entryNo != null ? Number(m.entryNo) : null;
   const teamA_key =
@@ -502,21 +547,23 @@ for (const row of rrRaw) {
   // build pair key for this perspective
   let myKey = null;
   if (Array.isArray(row.pair) && row.pair.length)
-    myKey = row.pair.map(String).join('|');
+    myKey = row.pair.map((x) => String(normalizeRawId(String(x)))).join('|');
   else if (row.team) myKey = String(row.team);
   else if (entryNo) myKey = `E${entryNo}`;
 
   let oppKey = null;
   if (Array.isArray(row.opponents) && row.opponents.length) {
     // try to use opponent playerIds or tempId
-    const ids = row.opponents
-      .map(
-        (o) =>
-          o.tempId ||
-          (o.lastName && o.firstName ? `${o.lastName}_${o.firstName}` : ''),
-      )
-      .filter(Boolean);
-    if (ids.length) oppKey = ids.join('|');
+    const idsArr = [];
+    for (const o of row.opponents) {
+      let candidate = '';
+      if (o.tempId) candidate = o.tempId;
+      else if (o.lastName && o.firstName) {
+        candidate = `${o.lastName}_${o.firstName}`;
+      }
+      if (candidate) idsArr.push(candidate);
+    }
+    if (idsArr.length) oppKey = idsArr.join('|');
   }
   if (!oppKey && row.opponentTeam && row.opponentTeam.team)
     oppKey = String(row.opponentTeam.team);
