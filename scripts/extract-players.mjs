@@ -108,7 +108,18 @@ async function main() {
   const out = existing.concat(additions);
   const totalAdded = additions.length;
   await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
-  await fs.writeFile(OUT_PATH, JSON.stringify(out, null, 2), 'utf8');
+  // write as array with each element on a single line: [{...}, {...}]
+  const lines = [];
+  lines.push('[');
+  for (let i = 0; i < out.length; i++) {
+    const obj = out[i];
+    // compact object: no spaces after commas to mimic requested style but keep a space after colon for readability
+    const compact = JSON.stringify(obj);
+    const comma = i === out.length - 1 ? '' : ',';
+    lines.push(`  ${compact}${comma}`);
+  }
+  lines.push(']');
+  await fs.writeFile(OUT_PATH, lines.join('\n') + '\n', 'utf8');
   console.log(
     `wrote ${out.length} players -> ${OUT_PATH} (assigned ${assignedToExisting} ids to existing, appended ${totalAdded} new players)`,
   );
