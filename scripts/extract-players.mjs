@@ -92,27 +92,31 @@ async function main() {
       return la.localeCompare(lb, 'ja');
     });
 
-  const out = [];
+  // Ensure existing entries have valid ids (assign if missing) and start output with them
   let assignedToExisting = 0;
-  let totalAdded = 0;
-  for (const k of keptKeys) {
-    const [lastName, firstName] = k.split('\t');
-    if (existingMap.has(k)) {
-      const p = existingMap.get(k);
-      const valid = Number.isInteger(p.id) && p.id > 0;
-      if (!valid) {
-        maxId += 1;
-        p.id = maxId;
-        assignedToExisting += 1;
-      }
-      out.push({ id: p.id, lastName: p.lastName, firstName: p.firstName });
-    } else {
+  for (const p of existing) {
+    const valid = Number.isInteger(p.id) && p.id > 0;
+    if (!valid) {
       maxId += 1;
-      const newP = { id: maxId, lastName, firstName };
-      out.push(newP);
-      totalAdded += 1;
+      p.id = maxId;
+      assignedToExisting += 1;
     }
   }
+
+  const out = existing.slice(); // preserve all existing players
+  let totalAdded = 0;
+
+  // Append new players that meet the threshold but are not present in existing list
+  for (const k of keptKeys) {
+    if (existingMap.has(k)) continue; // already present
+    const [lastName, firstName] = k.split('\t');
+    maxId += 1;
+    const newP = { id: maxId, lastName, firstName };
+    out.push(newP);
+    existingMap.set(k, newP);
+    totalAdded += 1;
+  }
+
   await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
   // write as array with each element on a single line: [{...}, {...}]
   const lines = [];
@@ -127,7 +131,7 @@ async function main() {
   lines.push(']');
   await fs.writeFile(OUT_PATH, lines.join('\n') + '\n', 'utf8');
   console.log(
-    `wrote ${out.length} players -> ${OUT_PATH} (assigned ${assignedToExisting} ids to existing, appended ${totalAdded} new players)`,
+    `wrote ${out.length} players -> ${OUT_PATH} (preserved ${existing.length} existing, assigned ${assignedToExisting} ids to existing, appended ${totalAdded} new players)`,
   );
 }
 
