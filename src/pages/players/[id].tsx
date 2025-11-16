@@ -13,6 +13,7 @@ import { PlayerInfo } from '@/types/index';
 type Props = {
   player: PlayerInfo;
   id: string;
+  numericId?: number;
   summary?: string;
   latest?: {
     summary: string;
@@ -60,6 +61,7 @@ export default function PlayerInformation({
   player,
   id,
   summary,
+  numericId,
   latest,
 }: Props) {
   const age = calculateAge(player.birthDate);
@@ -226,7 +228,7 @@ export default function PlayerInformation({
           )}
 
           <Link
-            href={`/players/${id}/results`}
+            href={`/players/${numericId ?? id}/results`}
             className="inline-block mt-2 text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
           >
             すべての試合結果を見る
@@ -283,6 +285,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const fileContents = fs.readFileSync(filePath, 'utf-8');
   const player = JSON.parse(fileContents);
 
+  // Resolve numeric id from data/players/index.json by matching name
+  let numericId: number | undefined;
+  try {
+    const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+    const indexData = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
+      id: number;
+      lastName: string;
+      firstName: string;
+    }>;
+
+    const found = indexData.find(
+      (e) => e.lastName === player.lastName && e.firstName === player.firstName,
+    );
+    if (found) numericId = found.id;
+  } catch (err) {
+    void err;
+  }
+
   // 情報ファイル取得に追加
   const summaryPath = path.join(
     process.cwd(),
@@ -318,6 +338,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       id,
       summary,
       latest,
+      numericId,
     },
   };
 };
