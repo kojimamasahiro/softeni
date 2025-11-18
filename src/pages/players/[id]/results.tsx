@@ -268,17 +268,35 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       const opponentNames: string[] = [];
       const opponents: TournamentParticipant[] = [];
+
+      // collect opponent participants first
       for (const o of opponentEntryNos) {
         const oe = entryByNo.get(o);
         if (oe && Array.isArray(oe.playerIds)) {
           for (const pid of oe.playerIds) {
             const p = participantById.get(pid);
-            if (p) {
-              // format as: 苗字（チーム名） — if team is empty, omit parentheses
-              const team = p.team && p.team.trim().length > 0 ? `（${p.team.trim()}）` : '';
-              opponentNames.push(`${p.lastName}${team}`);
-              opponents.push(p);
-            }
+            if (p) opponents.push(p);
+          }
+        }
+      }
+
+      // if all opponents (ペア) have the same non-empty team, show team once at the end:
+      // e.g. "苗字A・苗字B（チーム名）"
+      if (opponents.length > 0) {
+        const lastNames = opponents.map((p) => p.lastName);
+        const teams = opponents.map((p) => (p.team && p.team.trim().length > 0 ? p.team.trim() : ''));
+        const nonEmptyTeams = teams.filter((t) => t.length > 0);
+        const allSameTeam =
+          nonEmptyTeams.length > 0 &&
+          nonEmptyTeams.length === opponents.length &&
+          nonEmptyTeams.every((t) => t === nonEmptyTeams[0]);
+
+        if (allSameTeam && opponents.length > 1) {
+          opponentNames.push(`${lastNames.join('・')}（${nonEmptyTeams[0]}）`);
+        } else {
+          for (let i = 0; i < opponents.length; i++) {
+            const team = teams[i] ? `（${teams[i]}）` : '';
+            opponentNames.push(`${lastNames[i]}${team}`);
           }
         }
       }
@@ -428,11 +446,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             partnerIdForTournament = found.id; // use canonical id
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
           } else {
-            // fallback: keep participant id but display name
+            // if not found in canonical list, set partnerId to null (explicitly indicate unknown id)
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
+            partnerIdForTournament = null;
           }
         } else {
-          partnerNameForTournament = partnerIdForTournament; // fallback to id
+          // partner not in partnersMap: cannot resolve name, clear id
+          partnerNameForTournament = null;
+          partnerIdForTournament = null;
         }
       }
     }
