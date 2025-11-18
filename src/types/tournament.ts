@@ -1,19 +1,5 @@
 // src/types/tournament.ts
 // types/tournament.ts
-import { MatchResult, Stage } from '@/types/common';
-
-export interface Tournament {
-  tournament: string;
-  dateRange?: string;
-  location?: string;
-  link?: string;
-  format: 'round-robin' | 'tournament' | 'combined';
-  finalResult?: string;
-  groupStage?: Stage;
-  finalStage?: Stage;
-  results?: MatchResult[];
-  partner?: string;
-}
 
 export interface TournamentSummary {
   id: string;
@@ -176,3 +162,13 @@ export interface TournamentDetailData {
   matches: TournamentMatch[];
   results: TournamentResult[];
 }
+
+export type MatchRow = {
+  matchId?: string;
+  stage: string | null;
+  group?: string | null;
+  round?: string | null;
+  opponentDisplayName?: string;
+  result: 'win' | 'lose' | 'draw';
+  games: { won: string; lost: string };
+};

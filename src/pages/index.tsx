@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
 

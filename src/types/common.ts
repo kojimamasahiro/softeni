@@ -4,7 +4,7 @@ export interface MatchResult {
   opponent: string;
   result: string;
   score: string;
-  partner?: string;
+  partner?: string | null;
 }
 
 export interface Stage {

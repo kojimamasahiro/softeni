@@ -1,4 +1,5 @@
 // src/pages/players/[id]/results.tsx
+/* eslint-disable prettier/prettier */
 import fs from 'fs';
 import path from 'path';
 
@@ -9,36 +10,40 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
+import PlayerResults, {
+  PlayerMatch,
+  PlayerTournament,
+} from '@/components/PlayerResults';
+import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
-import {
-  TournamentDetailData,
-  TournamentEntry,
-  TournamentMatch,
-  TournamentParticipant,
-} from '@/types/tournament';
-
-type AggregatedMatch = {
-  tournamentFile: string;
-  entryNo: number;
-  round: string | null;
-  opponentNames: string[];
-  result: 'win' | 'lose' | 'unknown';
-};
+import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
+import { MatchResult } from '@/types/common';
+import type {
+  Games as GamesType,
+  MatchStats as MatchStatsType,
+} from '@/types/stats';
+import { TournamentEntry, TournamentParticipant } from '@/types/tournament';
 
 type PlayerResultsProps = {
   playerId: string;
   lastName: string;
   firstName: string;
-  aggregatedMatches: AggregatedMatch[];
+  playerMatches: PlayerMatch[];
+  playerTournaments: PlayerTournament[];
   majorTitlesData: MajorTitleData[];
+  playerStats?: import('@/types/stats').PlayerStats | null;
+  allPlayers?: import('@/types/player').PlayerInfo[];
 };
 
 export default function PlayerResultsPage({
   playerId,
   lastName,
   firstName,
-  aggregatedMatches,
+  playerMatches,
+  playerTournaments,
   majorTitlesData,
+  playerStats,
+  allPlayers,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
   const pageUrl = `https://softeni-pick.com/players/${playerId}/results`;
@@ -142,7 +147,6 @@ export default function PlayerResultsPage({
 
           {/* 主な成績（タイトル）(再現未実装) */}
           <section>
-            <h2 className="text-xl font-semibold mb-2">主な成績（タイトル）</h2>
             <MajorTitles majorTitlesData={majorTitlesData} />
           </section>
 
@@ -156,32 +160,20 @@ export default function PlayerResultsPage({
           </div>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">{`${fullName}選手の出場履歴と戦績`}</h2>
-            {/* PlayerResults コンポーネントは既存の playerData 形式を期待するため、
-                TournamentDetailData のみを使って完全再現する実装が必要です。
-                まずは data/tournament/details を走査して集計した最小情報を表示します。 */}
-            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">{`TournamentDetailData を基に集計した試合数: ${aggregatedMatches.length}`}</p>
-              <ul className="text-sm list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-                {aggregatedMatches.slice(0, 20).map((m, i) => {
-                  const text = `${path.basename(m.tournamentFile)} — ラウンド: ${m.round ?? 'N/A'} — 対戦相手: ${m.opponentNames.join(', ')} — 結果: ${m.result}`;
-                  return <li key={i}>{text}</li>;
-                })}
-              </ul>
-              {aggregatedMatches.length > 20 && (
-                <p className="text-xs text-gray-500 mt-2">上位20件のみ表示</p>
-              )}
-            </div>
+            {playerStats && (
+              <PlayerSummaryStats
+                playerStats={playerStats}
+                allPlayers={allPlayers || []}
+              />
+            )}
           </section>
 
-          <div className="text-right">
-            <Link
-              href={`/players/${playerId}`}
-              className="text-sm text-blue-600 hover:underline"
-            >
-              {fullName}選手のプロフィールを見る
-            </Link>
-          </div>
+          <section>
+            <PlayerResults
+              playerMatches={playerMatches}
+              playerTournaments={playerTournaments}
+            />
+          </section>
         </div>
       </main>
     </>
@@ -215,108 +207,422 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return { notFound: true };
   }
 
-  // aggregate matches from data/tournament/details
-  const detailsRoot = path.join(process.cwd(), 'data', 'tournament', 'details');
-  const jsonFiles: string[] = [];
+  // prepare allPlayers list from index.json with id as string
+  const allPlayersList = index.map((p) => ({
+    id: String(p.id),
+    lastName: p.lastName,
+    firstName: p.firstName,
+  }));
 
-  const walk = (dir: string) => {
-    if (!fs.existsSync(dir)) return;
-    const items = fs.readdirSync(dir);
-    for (const it of items) {
-      const p = path.join(dir, it);
-      const stat = fs.statSync(p);
-      if (stat.isDirectory()) walk(p);
-      else if (stat.isFile() && it.endsWith('.json')) jsonFiles.push(p);
+  // --- Structured loading using shared helpers ---
+  const root = process.cwd();
+  const tournamentIndex = loadTournamentIndex(root);
+  const tournamentMeta = new Map<string, { label?: string; isMajor?: boolean }>();
+  for (const t of tournamentIndex) tournamentMeta.set(t.tournamentId, { label: t.label, isMajor: !!t.isMajorTitle });
+
+  const informationMap = loadInformationMap(root);
+  const allDetails = getAllDetailRecords(root);
+
+  const playerMatches: PlayerMatch[] = [];
+  const playerTournamentsMap = new Map<string, PlayerTournament>();
+  const partnersMap = new Map<string, { id: string; lastName: string; firstName: string; team: string; prefecture: string | null }>();
+  const tournamentMatchesMap = new Map<string, MatchResult[]>();
+  const tournamentFinalResult = new Map<string, string | null>();
+  // map tournamentKey -> map of partnerId -> count (to pick most frequent partner for that tournament)
+  const tournamentPartnerCounts = new Map<string, Map<string, number>>();
+
+  for (const rec of allDetails) {
+    const tournamentId = rec.tournamentId;
+    const year = rec.year;
+    const detail = rec.detail;
+
+    const participants = Array.isArray(detail.participants) ? detail.participants : [];
+    const participantById = new Map<string, TournamentParticipant>();
+    for (const p of participants) participantById.set(p.id, p);
+
+    const matchingParticipantIds = participants.filter((p) => p.lastName === idx.lastName && p.firstName === idx.firstName).map((p) => p.id);
+    if (matchingParticipantIds.length === 0) continue;
+
+    const entries = Array.isArray(detail.entries) ? detail.entries : [];
+    const entryByNo = new Map<number, TournamentEntry>();
+    for (const e of entries) entryByNo.set(e.entryNo, e);
+
+    for (const e of entries) {
+      if (!Array.isArray(e.playerIds)) continue;
+      if (e.playerIds.includes(matchingParticipantIds[0])) {
+        for (const pid of e.playerIds) {
+          if (pid === matchingParticipantIds[0]) continue;
+          const partner = participantById.get(pid);
+          if (partner && !partnersMap.has(pid)) partnersMap.set(pid, { id: partner.id, lastName: partner.lastName, firstName: partner.firstName, team: partner.team, prefecture: partner.prefecture ?? null });
+        }
+      }
     }
-  };
 
-  walk(detailsRoot);
+    const matches = Array.isArray(detail.matches) ? detail.matches : [];
+    for (const m of matches) {
+      if (!Array.isArray(m.entries) || m.entries.length === 0) continue;
+      const intersection = m.entries.filter((n) => entries.some((ee) => Array.isArray(ee.playerIds) && ee.playerIds.some((pid) => matchingParticipantIds.includes(pid)) && ee.entryNo === n));
+      if (intersection.length === 0) continue;
+      const playerEntryNo = intersection[0];
+      const opponentEntryNos = m.entries.filter((n) => n !== playerEntryNo);
 
-  const aggregatedMatches: AggregatedMatch[] = [];
-
-  for (const file of jsonFiles) {
-    try {
-      const raw = fs.readFileSync(file, 'utf-8');
-      const detail = JSON.parse(raw) as TournamentDetailData;
-
-      const participants: TournamentParticipant[] = detail.participants || [];
-      const participantById = new Map<string, TournamentParticipant>();
-      for (const p of participants) participantById.set(p.id, p);
-
-      // find participant ids matching name
-      const matchingParticipantIds = participants
-        .filter(
-          (p) => p.lastName === idx.lastName && p.firstName === idx.firstName,
-        )
-        .map((p) => p.id);
-      if (matchingParticipantIds.length === 0) continue;
-
-      const entries: TournamentEntry[] = detail.entries || [];
-      const entryByNo = new Map<number, TournamentEntry>();
-      for (const e of entries) {
-        entryByNo.set(e.entryNo, e);
-      }
-
-      const playerEntryNos = new Set<number>();
-      for (const e of entries) {
-        if (Array.isArray(e.playerIds)) {
-          for (const pid of e.playerIds) {
-            if (matchingParticipantIds.includes(pid)) {
-              playerEntryNos.add(e.entryNo);
-              break;
+      const opponentNames: string[] = [];
+      const opponents: TournamentParticipant[] = [];
+      for (const o of opponentEntryNos) {
+        const oe = entryByNo.get(o);
+        if (oe && Array.isArray(oe.playerIds)) {
+          for (const pid of oe.playerIds) {
+            const p = participantById.get(pid);
+            if (p) {
+              // format as: 苗字（チーム名） — if team is empty, omit parentheses
+              const team = p.team && p.team.trim().length > 0 ? `（${p.team.trim()}）` : '';
+              opponentNames.push(`${p.lastName}${team}`);
+              opponents.push(p);
             }
           }
         }
       }
 
-      const matches: TournamentMatch[] = detail.matches || [];
-      for (const m of matches) {
-        if (!Array.isArray(m.entries) || m.entries.length === 0) continue;
-        const matchEntries: number[] = m.entries;
+      let score = '';
+      if (m.scores && typeof m.scores === 'object') {
+        const playerScore = (m.scores as Record<string, number>)[String(playerEntryNo)];
+        const oppScore = (m.scores as Record<string, number>)[String(opponentEntryNos[0])];
+        if (typeof playerScore === 'number' && typeof oppScore === 'number') score = `${playerScore}-${oppScore}`;
+      }
 
-        const intersection = matchEntries.filter((n) => playerEntryNos.has(n));
-        if (intersection.length === 0) continue;
+      const resultFlag: 'win' | 'lose' | 'unknown' = typeof m.winnerEntryNo === 'number' ? (m.winnerEntryNo === playerEntryNo ? 'win' : 'lose') : 'unknown';
 
-        // determine player's entryNo (pick first)
-        const playerEntryNo = intersection[0];
-
-        const opponentEntryNos = matchEntries.filter(
-          (n) => n !== playerEntryNo,
-        );
-        const opponentNames: string[] = [];
-        for (const o of opponentEntryNos) {
-          const oe = entryByNo.get(o);
-          if (oe && Array.isArray(oe.playerIds)) {
-            for (const pid of oe.playerIds) {
-              const p = participantById.get(pid);
-              if (p) opponentNames.push(`${p.lastName}${p.firstName}`);
-            }
+      let partnerName: string | null = null;
+      let partnerId: string | null = null;
+      for (const e of entries) {
+        if (!Array.isArray(e.playerIds)) continue;
+        if (e.playerIds.includes(matchingParticipantIds[0]) && e.playerIds.length > 1) {
+          const other = e.playerIds.find((pid) => pid !== matchingParticipantIds[0]);
+          if (other) {
+            const pp = participantById.get(other);
+            if (pp) partnerName = `${pp.lastName}${pp.firstName}`;
+            partnerId = other || null;
           }
         }
-
-        let result: 'win' | 'lose' | 'unknown' = 'unknown';
-        if (typeof m.winnerEntryNo === 'number') {
-          result = m.winnerEntryNo === playerEntryNo ? 'win' : 'lose';
-        }
-
-        aggregatedMatches.push({
-          tournamentFile: file,
-          entryNo: playerEntryNo,
-          round: m.round ?? m.stage ?? null,
-          opponentNames,
-          result,
-        });
       }
-    } catch {
-      // ignore parse errors
+
+      const matchResult: MatchResult = {
+        round: String(m.round ?? '予選'),
+        opponent: opponentNames.length > 0 ? opponentNames.join('・') : (opponentEntryNos.length > 0 ? `#${opponentEntryNos[0]}` : '不明'),
+        result: resultFlag === 'win' ? '勝' : resultFlag === 'lose' ? '敗' : '',
+        score: score,
+        partner: partnerName ?? null,
+      };
+
+      const tournamentKey = `${tournamentId}/${year}`;
+      if (!tournamentMatchesMap.has(tournamentKey)) tournamentMatchesMap.set(tournamentKey, []);
+      tournamentMatchesMap.get(tournamentKey)!.push(matchResult);
+
+      // record partner occurrence for this tournament
+      if (partnerId) {
+        if (!tournamentPartnerCounts.has(tournamentKey)) tournamentPartnerCounts.set(tournamentKey, new Map());
+        const cntMap = tournamentPartnerCounts.get(tournamentKey)!;
+        cntMap.set(partnerId, (cntMap.get(partnerId) || 0) + 1);
+      }
+
+      playerMatches.push({
+        tournamentId,
+        tournamentName: tournamentMeta.get(tournamentId)?.label || tournamentId,
+        year: Number(year),
+        round: m.round ?? '予選',
+        entryNo: playerEntryNo,
+        opponentNames,
+        opponents,
+        score,
+        result: resultFlag,
+        partnerId: partnerId ?? null,
+      });
+    }
+
+    if (Array.isArray(detail.results)) {
+      // compute entryNos for the target player in this tournament (could be multiple)
+      const targetEntryNos: number[] = [];
+      for (const e of entries) {
+        if (!Array.isArray(e.playerIds)) continue;
+        if (e.playerIds.includes(matchingParticipantIds[0])) targetEntryNos.push(e.entryNo);
+      }
+
+      for (const r of detail.results) {
+        try {
+          // TournamentResult can include entryNo or playerIds or a tournament object with label
+          const rec = r as unknown as { playerIds?: unknown; result?: unknown; entryNo?: unknown; tournament?: unknown };
+          const recEntryNo = typeof rec.entryNo === 'number' ? rec.entryNo : undefined;
+          const playerIdsField = Array.isArray(rec.playerIds) ? (rec.playerIds as string[]) : undefined;
+          let isTarget = false;
+
+          // First preference: match by entryNo
+          if (typeof recEntryNo === 'number') {
+            if (targetEntryNos.includes(recEntryNo)) isTarget = true;
+          }
+
+          // Fallback: match by playerIds (legacy)
+          if (!isTarget && Array.isArray(playerIdsField) && playerIdsField.some((pid) => matchingParticipantIds.includes(pid))) {
+            isTarget = true;
+          }
+
+          if (!isTarget) continue;
+
+          let resultField: string | undefined = undefined;
+          // Prefer explicit tournament.label when present
+          if (rec.tournament && typeof rec.tournament === 'object') {
+            try {
+              const t = rec.tournament as { label?: unknown };
+              if (typeof t.label === 'string' && t.label.trim().length > 0) {
+                resultField = t.label;
+              }
+            } catch {
+              // ignore
+            }
+          }
+
+          // fallback to legacy result string
+          if (!resultField && typeof rec.result === 'string') resultField = rec.result;
+
+          const tournamentKey = `${tournamentId}/${year}`;
+          // if no resultField was found, set default to '予選敗退'
+          tournamentFinalResult.set(tournamentKey, resultField ?? '予選敗退');
+        } catch {
+          // ignore
+        }
+      }
     }
   }
+
+  // build playerTournaments array with matches
+  for (const [tournamentKey, matches] of tournamentMatchesMap.entries()) {
+    const [tid, yr] = tournamentKey.split('/');
+    const yearVal = yr ? (Number(yr) ? Number(yr) : yr) : undefined;
+    const infoEntries = informationMap.get(tid) ?? [];
+    const infoForYear = infoEntries.find((it) => String(it.year) === String(yearVal));
+  const startDateVal = infoForYear ? infoForYear.startDate ?? null : null;
+  const endDateVal = infoForYear ? infoForYear.endDate ?? null : null;
+  const dateRange = startDateVal ? `${startDateVal}${endDateVal ? ' - ' + endDateVal : ''}` : (infoForYear ? `${infoForYear.startDate ?? ''}${infoForYear.endDate ? ' - ' + infoForYear.endDate : ''}` : null);
+    const location = infoForYear ? infoForYear.location ?? null : null;
+    const link = infoForYear ? infoForYear.sourceUrl ?? null : null;
+    const tournamentName = tournamentMeta.get(tid)?.label || tid;
+    const finalResult = tournamentFinalResult.get(tournamentKey) ?? null;
+
+    // determine most frequent partner for this tournament, if any
+    let partnerIdForTournament: string | null = null;
+    let partnerNameForTournament: string | null = null;
+    const partnerCounts = tournamentPartnerCounts.get(tournamentKey);
+    if (partnerCounts) {
+      let max = 0;
+      for (const [pid, c] of partnerCounts.entries()) {
+        if (c > max) {
+          max = c;
+          partnerIdForTournament = pid;
+        }
+      }
+      if (partnerIdForTournament) {
+        const p = partnersMap.get(partnerIdForTournament);
+        if (p) {
+          // try to map partner to canonical id from allPlayersList (index.json)
+          const found = allPlayersList.find((ap) => ap.lastName === p.lastName && ap.firstName === p.firstName);
+          if (found) {
+            partnerIdForTournament = found.id; // use canonical id
+            partnerNameForTournament = `${p.lastName}${p.firstName}`;
+          } else {
+            // fallback: keep participant id but display name
+            partnerNameForTournament = `${p.lastName}${p.firstName}`;
+          }
+        } else {
+          partnerNameForTournament = partnerIdForTournament; // fallback to id
+        }
+      }
+    }
+
+    const info: PlayerTournament = {
+      id: tournamentKey,
+      tournamentId: tid,
+      year: yearVal,
+      tournamentName,
+      dateRange,
+      startDate: startDateVal,
+      endDate: endDateVal,
+      location,
+      link,
+      finalResult,
+      partnerId: partnerIdForTournament,
+      partnerName: partnerNameForTournament,
+      matches,
+    };
+    playerTournamentsMap.set(tournamentKey, info);
+  }
+
+  const playerTournaments = Array.from(playerTournamentsMap.values());
+  // detailed playerStats: aggregate by partner and by year
+  const totalMatches = playerMatches.length;
+  const wins = playerMatches.filter((m) => m.result === 'win').length;
+  const losses = playerMatches.filter((m) => m.result === 'lose').length;
+
+  const games = { total: 0, won: 0, lost: 0, gameRate: 0 };
+
+  type Agg = {
+    matches: { total: number; wins: number; losses: number };
+    games: { total: number; won: number; lost: number };
+  };
+
+  const byPartner: Record<string, Agg> = {};
+  const byYear: Record<string, Agg> = {};
+
+  const findPlayerIdByName = (lastName: string, firstName: string) => {
+    const found = allPlayersList.find(
+      (p) => p.lastName === lastName && p.firstName === firstName,
+    );
+    return found ? found.id : undefined;
+  };
+
+  const getYearForTournament = (tournamentKeyOrId: string) => {
+    // tournamentKeyOrId can be either 'tournamentId/year' or the old file key
+    const info =
+      playerTournamentsMap.get(tournamentKeyOrId) ??
+      playerTournamentsMap.get(String(tournamentKeyOrId));
+    // prefer explicit year field if present
+    if (info && info.year) return String(info.year);
+    const dateRange = info?.dateRange || '';
+    const fromDateMatch = String(dateRange).match(/(19|20)\d{2}/);
+    if (fromDateMatch) return fromDateMatch[0];
+    const fileYearMatch = String(tournamentKeyOrId).match(/(19|20)\d{2}/);
+    if (fileYearMatch) return fileYearMatch[0];
+    return 'unknown';
+  };
+
+  for (const m of playerMatches) {
+    // parse games from score
+    if (m.score) {
+      const parts = m.score.split('-').map((s) => Number(s));
+      if (
+        parts.length === 2 &&
+        !Number.isNaN(parts[0]) &&
+        !Number.isNaN(parts[1])
+      ) {
+        games.won += parts[0];
+        games.lost += parts[1];
+        games.total += parts[0] + parts[1];
+      }
+    }
+
+    // partner key: try to map by last+first to canonical player id, else use combined name; singles -> 'singles'
+    let partnerKey = 'singles';
+    if (m.partnerId) {
+      const partner = partnersMap.get(m.partnerId);
+      if (partner) {
+        const maybeId = findPlayerIdByName(partner.lastName, partner.firstName);
+        partnerKey = maybeId ?? `${partner.lastName}${partner.firstName}`;
+      } else {
+        partnerKey = m.partnerId;
+      }
+    }
+
+    if (!byPartner[partnerKey]) {
+      byPartner[partnerKey] = {
+        matches: { total: 0, wins: 0, losses: 0 },
+        games: { total: 0, won: 0, lost: 0 },
+      };
+    }
+
+    byPartner[partnerKey].matches.total += 1;
+    if (m.result === 'win') byPartner[partnerKey].matches.wins += 1;
+    else if (m.result === 'lose') byPartner[partnerKey].matches.losses += 1;
+
+    if (m.score) {
+      const parts = m.score.split('-').map((s) => Number(s));
+      if (
+        parts.length === 2 &&
+        !Number.isNaN(parts[0]) &&
+        !Number.isNaN(parts[1])
+      ) {
+        byPartner[partnerKey].games.won += parts[0];
+        byPartner[partnerKey].games.lost += parts[1];
+        byPartner[partnerKey].games.total += parts[0] + parts[1];
+      }
+    }
+
+    // year aggregation: prefer explicit m.year, otherwise ask map using tournamentKey
+    const tournamentKey = m.year
+      ? `${m.tournamentId}/${m.year}`
+      : String(m.tournamentId);
+    const year = m.year ? String(m.year) : getYearForTournament(tournamentKey);
+    if (!byYear[year]) {
+      byYear[year] = {
+        matches: { total: 0, wins: 0, losses: 0 },
+        games: { total: 0, won: 0, lost: 0 },
+      };
+    }
+    byYear[year].matches.total += 1;
+    if (m.result === 'win') byYear[year].matches.wins += 1;
+    else if (m.result === 'lose') byYear[year].matches.losses += 1;
+    if (m.score) {
+      const parts = m.score.split('-').map((s) => Number(s));
+      if (
+        parts.length === 2 &&
+        !Number.isNaN(parts[0]) &&
+        !Number.isNaN(parts[1])
+      ) {
+        byYear[year].games.won += parts[0];
+        byYear[year].games.lost += parts[1];
+        byYear[year].games.total += parts[0] + parts[1];
+      }
+    }
+  }
+
+  // compute gameRate for overall and per-category
+  games.gameRate = games.total > 0 ? games.won / games.total : 0;
+  const normalizeStats = (s: Agg) => ({
+    matches: {
+      total: s.matches.total,
+      wins: s.matches.wins,
+      losses: s.matches.losses,
+      winRate: s.matches.total > 0 ? s.matches.wins / s.matches.total : 0,
+    },
+    games: {
+      total: s.games.total,
+      won: s.games.won,
+      lost: s.games.lost,
+      gameRate: s.games.total > 0 ? s.games.won / s.games.total : 0,
+    },
+  });
+  const byPartnerNormalized: Record<
+    string,
+    { matches: MatchStatsType; games: GamesType }
+  > = {};
+  for (const k of Object.keys(byPartner)) {
+    byPartnerNormalized[k] = normalizeStats(byPartner[k]);
+  }
+  const byYearNormalized: Record<
+    string,
+    { matches: MatchStatsType; games: GamesType }
+  > = {};
+  for (const k of Object.keys(byYear)) {
+    byYearNormalized[k] = normalizeStats(byYear[k]);
+  }
+
+  const playerStats = {
+    playerId,
+    totalMatches,
+    wins,
+    losses,
+    totalWinRate: totalMatches > 0 ? wins / totalMatches : 0,
+    games,
+    byPartner: byPartnerNormalized,
+    byYear: byYearNormalized,
+  };
+
   return {
     props: {
       playerId,
       lastName: idx.lastName,
       firstName: idx.firstName,
-      aggregatedMatches,
+      playerMatches,
+      playerTournaments,
+      playerStats,
+      allPlayers: allPlayersList,
       majorTitlesData: getMajorTitlesForPlayer(idx.lastName, idx.firstName),
     },
   };

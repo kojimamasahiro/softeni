@@ -1,7 +1,8 @@
 // src/components/Tournament/MatchResults.tsx
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import {
+  MatchRow,
   TournamentDetailData,
   TournamentEntry,
   TournamentMatch,
@@ -16,16 +17,6 @@ interface Props {
   setFilter: (v: 'all' | 'top8') => void;
 }
 
-type MatchRow = {
-  matchId?: string;
-  stage: string | null;
-  group?: string | null;
-  round?: string | null;
-  opponentEntryNo?: number;
-  result: 'win' | 'lose' | 'draw';
-  games: { won: string; lost: string };
-};
-
 function MatchGroup({
   name,
   entryNo,
@@ -35,7 +26,6 @@ function MatchGroup({
   filter,
   isSeed,
   resultLabel,
-  getEntryName,
 }: {
   name: string;
   entryNo: number;
@@ -45,7 +35,6 @@ function MatchGroup({
   filter: 'all' | 'top8' | 'winners';
   isSeed?: boolean;
   resultLabel: string;
-  getEntryName: (entryNo: number) => string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -133,24 +122,24 @@ function MatchGroup({
                     </thead>
                   )}
                   <tbody>
-                    {rows.map((m: MatchRow, i: number) => (
-                      <tr
-                        key={i}
-                        className="border-t border-gray-100 dark:border-gray-700"
-                      >
-                        <td className="px-4 py-2 break-words text-left">
-                          {m.round ?? '予選'}
-                        </td>
-                        <td className="px-4 py-2 break-words text-left">
-                          {m.opponentEntryNo
-                            ? getEntryName(m.opponentEntryNo)
-                            : '不明'}
-                        </td>
-                        <td className="px-4 py-2 text-left">
-                          {m.games.won}-{m.games.lost}
-                        </td>
-                      </tr>
-                    ))}
+                    {rows.map((m: MatchRow, i: number) => {
+                      return (
+                        <tr
+                          key={i}
+                          className="border-t border-gray-100 dark:border-gray-700"
+                        >
+                          <td className="px-4 py-2 break-words text-left">
+                            {m.round ?? '予選'}
+                          </td>
+                          <td className="px-4 py-2 break-words text-left">
+                            {m.opponentDisplayName ?? '不明'}
+                          </td>
+                          <td className="px-4 py-2 text-left">
+                            {m.games.won}-{m.games.lost}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -184,6 +173,34 @@ export default function MatchResults({
     }
     return map;
   }, [detail]);
+
+  // helper: build display name for an entry (used by later logic)
+  const buildNameForEntry = useCallback(
+    (entry: TournamentEntry, opts?: { short?: boolean }) => {
+      const short = !!opts?.short;
+      const players = (entry.playerIds ?? [])
+        .map((pid: string) => participantMap.get(pid))
+        .filter(Boolean) as (typeof detail.participants)[0][];
+      if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
+      const teamMap: Record<string, string[]> = {};
+      for (const pl of players) {
+        const team = (pl && pl.team) || '\u4e0d\u660e';
+        if (!teamMap[team]) teamMap[team] = [];
+        const last = pl?.lastName ?? '';
+        const first = pl?.firstName ?? '';
+        const fullName = `${last}${first}`.trim();
+        const displayName = short ? `${last}`.trim() : fullName;
+        teamMap[team].push(displayName || '');
+      }
+      return Object.entries(teamMap)
+        .map(([team, names]) => {
+          const teamLabel = team;
+          return `${names.join('\u30fb')}\uff08${teamLabel}\uff09`;
+        })
+        .join('\u30fb');
+    },
+    [participantMap, detail],
+  );
 
   // Expand an entry's rows by following nextMatchId from the last match
   const expandMatchGroup = (entryNo: number, rows: MatchRow[]) => {
@@ -225,7 +242,16 @@ export default function MatchResults({
         stage: nm.stage,
         group: nm.group ?? null,
         round: nm.round ?? null,
-        opponentEntryNo: opponent,
+        opponentDisplayName:
+          typeof opponent === 'number'
+            ? buildNameForEntry(
+                (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
+                  entryNo: opponent,
+                  playerIds: [],
+                },
+                { short: true },
+              )
+            : undefined,
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
         games:
@@ -244,33 +270,7 @@ export default function MatchResults({
 
     return extra;
   };
-
-  const buildNameForEntry = (
-    entry: TournamentEntry,
-    opts?: { short?: boolean },
-  ) => {
-    const short = !!opts?.short;
-    const players = (entry.playerIds ?? [])
-      .map((pid: string) => participantMap.get(pid))
-      .filter(Boolean) as (typeof detail.participants)[0][];
-    if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
-    const teamMap: Record<string, string[]> = {};
-    for (const pl of players) {
-      const team = (pl && pl.team) || '\u4e0d\u660e';
-      if (!teamMap[team]) teamMap[team] = [];
-      const last = pl?.lastName ?? '';
-      const first = pl?.firstName ?? '';
-      const fullName = `${last}${first}`.trim();
-      const displayName = short ? `${last}`.trim() : fullName;
-      teamMap[team].push(displayName || '');
-    }
-    return Object.entries(teamMap)
-      .map(([team, names]) => {
-        const teamLabel = team;
-        return `${names.join('\u30fb')}\uff08${teamLabel}\uff09`;
-      })
-      .join('\u30fb');
-  };
+  // buildNameForEntry moved earlier
 
   // build a map: entryNo -> list of MatchRow
   const matchesByEntry = useMemo(() => {
@@ -285,7 +285,16 @@ export default function MatchResults({
         stage: m.stage,
         group: m.group ?? null,
         round: m.round ?? null,
-        opponentEntryNo: b,
+        opponentDisplayName:
+          typeof b === 'number'
+            ? buildNameForEntry(
+                (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
+                  entryNo: b,
+                  playerIds: [],
+                },
+                { short: true },
+              )
+            : undefined,
         result:
           m.winnerEntryNo === a
             ? 'win'
@@ -299,7 +308,16 @@ export default function MatchResults({
         stage: m.stage,
         group: m.group ?? null,
         round: m.round ?? null,
-        opponentEntryNo: a,
+        opponentDisplayName:
+          typeof a === 'number'
+            ? buildNameForEntry(
+                (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
+                  entryNo: a,
+                  playerIds: [],
+                },
+                { short: true },
+              )
+            : undefined,
         result:
           m.winnerEntryNo === b
             ? 'win'
@@ -347,7 +365,7 @@ export default function MatchResults({
     }
 
     return map;
-  }, [detail]);
+  }, [detail, buildNameForEntry]);
 
   // build name list from entries & eliminatedEntries
   const groupedNames = [
@@ -382,12 +400,7 @@ export default function MatchResults({
       parts.length > 0 ? parts.join(' / ') : undefined;
   }
 
-  const getEntryName = (entryNo: number) => {
-    const entry = (detail.entries ?? []).find((e) => e.entryNo === entryNo);
-    return buildNameForEntry(entry ?? { entryNo, playerIds: [] }, {
-      short: true,
-    });
-  };
+  // getEntryName removed; use buildNameForEntry directly where needed
 
   return (
     <section className="mb-10">
@@ -453,7 +466,6 @@ export default function MatchResults({
             filter={filter}
             isSeed={derivedSeedEntryNos.has(Number(entryNo) ?? -1)}
             resultLabel={resultLabel ?? ''}
-            getEntryName={getEntryName}
           />
         );
       })}

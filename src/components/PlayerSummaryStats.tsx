@@ -107,7 +107,7 @@ function StatsTable({
 
             const link =
               !isYear && allPlayers.find((p) => p.id === key)
-                ? `/players/${key}`
+                ? `/players/${key}/results`
                 : undefined;
 
             return (
@@ -127,43 +127,48 @@ export default function PlayerSummaryStats({
   if (!playerStats || !playerStats.totalMatches) return null;
 
   return (
-    <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
-      <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">
-        対戦成績
-      </h3>
+    <>
+      <h2 className="text-xl font-semibold mb-2">サマリー</h2>
+      <div className="mb-6 mx-4 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
+        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">
+          対戦成績
+        </h3>
 
-      {/* 総合成績 */}
-      <table className="w-full mb-4 border border-gray-200 dark:border-gray-700 text-sm">
-        <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
-          <tr>
-            <th className="py-1 px-2 text-center">試合数</th>
-            <th className="py-1 px-2 text-center">勝敗（勝率）</th>
-            <th className="py-1 px-2 text-center">ゲーム（獲得率）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="text-center">
-            <td className="py-1 px-2">{playerStats.totalMatches}</td>
-            <td className="py-1 px-2">
-              {playerStats.wins}勝 {playerStats.losses}敗（
-              {(playerStats.totalWinRate * 100).toFixed(1)}%）
-            </td>
-            <td className="py-1 px-2">{formatGameStats(playerStats.games)}</td>
-          </tr>
-        </tbody>
-      </table>
+        {/* 総合成績 */}
+        <table className="w-full mb-4 border border-gray-200 dark:border-gray-700 text-sm">
+          <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+            <tr>
+              <th className="py-1 px-2 text-center">試合数</th>
+              <th className="py-1 px-2 text-center">勝敗（勝率）</th>
+              <th className="py-1 px-2 text-center">ゲーム（獲得率）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="text-center">
+              <td className="py-1 px-2">{playerStats.totalMatches}</td>
+              <td className="py-1 px-2">
+                {playerStats.wins}勝 {playerStats.losses}敗（
+                {(playerStats.totalWinRate * 100).toFixed(1)}%）
+              </td>
+              <td className="py-1 px-2">
+                {formatGameStats(playerStats.games)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <StatsTable
-        title="パートナー別"
-        data={playerStats.byPartner}
-        allPlayers={allPlayers}
-      />
-      <StatsTable
-        title="年度別"
-        data={playerStats.byYear}
-        allPlayers={allPlayers}
-        isYear
-      />
-    </div>
+        <StatsTable
+          title="パートナー別"
+          data={playerStats.byPartner}
+          allPlayers={allPlayers}
+        />
+        <StatsTable
+          title="年度別"
+          data={playerStats.byYear}
+          allPlayers={allPlayers}
+          isYear
+        />
+      </div>
+    </>
   );
 }

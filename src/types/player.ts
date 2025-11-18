@@ -1,6 +1,4 @@
 // src/types/player.ts
-import { MajorTitle } from '@/types/title';
-import { Tournament } from '@/types/tournament';
 
 export interface PlayerInfo {
   id: string;
@@ -18,10 +16,4 @@ export interface PlayerInfo {
     label: string;
     url: string;
   }[];
-}
-
-export interface PlayerData {
-  highlight?: string;
-  matches: Tournament[];
-  majorTitles: MajorTitle[];
 }

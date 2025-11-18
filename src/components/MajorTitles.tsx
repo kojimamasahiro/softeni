@@ -18,11 +18,11 @@ export default function MajorTitles({
   ).sort((a, b) => b - a);
 
   return (
-    <section className="mb-8 px-4">
+    <section className="mb-8">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
         主要タイトル
       </h2>
-      <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
+      <div className="mx-4 overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
         {/* 横幅を100%に設定 */}
         <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
