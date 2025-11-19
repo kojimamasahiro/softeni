@@ -27,7 +27,7 @@ interface PlayerResult {
   ageCategory: string;
   gender: string;
   categoryLabel: string;
-  playerId?: string | number | null;
+  playerId?: string | null;
 }
 
 interface SameNameGroup {
@@ -426,7 +426,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   const playerMap = new Map<string, PlayerResult[]>();
-  // Collect all participant name keys seen across details (last::first)
   const participantNameSet = new Set<string>();
 
   for (const r of records) {
@@ -435,7 +434,6 @@ export const getStaticProps: GetStaticProps = async () => {
     const detail = r.detail as TournamentDetailData;
     const categoryInfo = parseCombinedCategory(r.fileName);
 
-    // Prepare participant and entry maps so we can resolve results that only reference entryNo
     const participants: TournamentParticipant[] = Array.isArray(
       detail.participants,
     )
@@ -456,10 +454,8 @@ export const getStaticProps: GetStaticProps = async () => {
       : [];
     const entryByNo = new Map<number, TournamentEntry>();
     for (const e of entries) {
-      if (typeof e.entryNo === 'number') entryByNo.set(e.entryNo, e);
+      entryByNo.set(e.entryNo, e);
     }
-
-    // participant lookups use typed TournamentParticipant maps (participantById/participantByName)
 
     if (detail.results && Array.isArray(detail.results)) {
       for (const res of detail.results) {
@@ -505,26 +501,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const sameNameGroups: SameNameGroup[] = [];
   for (const [, players] of playerMap.entries()) {
     const fullName = `${players[0].fullName}`;
-    const uniquePlayers = players.reduce((acc, player) => {
-      const key = `${player.tournamentId}-${player.year}-${player.gameCategory}-${player.ageCategory}-${player.gender}-${player.team}`;
-      if (!acc.has(key)) acc.set(key, player);
-      else {
-        const existing = acc.get(key)!;
-        const resultPriority: Record<string, number> = {
-          優勝: 1,
-          準優勝: 2,
-          ベスト4: 3,
-          ベスト8: 4,
-          出場: 999,
-        };
-        const playerPriority = resultPriority[player.result] || 999;
-        const existingPriority = resultPriority[existing.result] || 999;
-        if (playerPriority < existingPriority) acc.set(key, player);
-      }
-      return acc;
-    }, new Map<string, PlayerResult>());
-
-    const uniquePlayersArray = Array.from(uniquePlayers.values());
+    const uniquePlayersArray = players.slice();
     const differentTeams = [...new Set(uniquePlayersArray.map((p) => p.team))];
     sameNameGroups.push({
       fullName,
