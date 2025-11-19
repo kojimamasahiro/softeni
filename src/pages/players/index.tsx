@@ -392,6 +392,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // Use tournamentData helper to read parsed detail records
   const tournamentData = await import('../../../lib/tournamentData');
   const records = await tournamentData.getAllDetailRecords(process.cwd());
+  const informationMap = await tournamentData.loadInformationMap(process.cwd());
 
   // Load base player index (data/players/index.json)
   const playersIndexPath = path.join(
@@ -433,6 +434,29 @@ export const getStaticProps: GetStaticProps = async () => {
     const year = r.year;
     const detail = r.detail as TournamentDetailData;
     const categoryInfo = parseCombinedCategory(r.fileName);
+    // Try to resolve a human-friendly category label from information map.
+    // fileName is like "doubles-none-boys.json" -> categoryId should be "doubles-none-boys"
+    const categoryId = String(r.fileName).replace(/\.json$/i, '');
+    let humanLabel = undefined as string | undefined;
+    try {
+      const infoEntries = informationMap.get(r.tournamentId);
+      if (infoEntries && Array.isArray(infoEntries)) {
+        // find the entry for this year (year stored as number in information)
+        const yr = parseInt(year, 10);
+        const infoForYear = infoEntries.find((ie) => Number(ie.year) === yr);
+        if (infoForYear && Array.isArray(infoForYear.categories)) {
+          const matchA = categoryId;
+          const matchB = String(categoryId);
+          const cat = infoForYear.categories.find(
+            (c) => c.categoryId === matchA || c.categoryId === matchB,
+          );
+          if (cat && cat.label) humanLabel = cat.label;
+        }
+      }
+    } catch {
+      // ignore lookup errors and fallback to combined label
+      humanLabel = undefined;
+    }
 
     const participants: TournamentParticipant[] = Array.isArray(
       detail.participants,
@@ -488,7 +512,9 @@ export const getStaticProps: GetStaticProps = async () => {
               gameCategory: categoryInfo.gameCategory,
               ageCategory: categoryInfo.ageCategory,
               gender: categoryInfo.gender,
-              categoryLabel: `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
+              categoryLabel:
+                humanLabel ??
+                `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
             };
             if (!playerMap.has(nameKey)) playerMap.set(nameKey, []);
             playerMap.get(nameKey)!.push(playerResult);
