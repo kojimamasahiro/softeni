@@ -1,5 +1,5 @@
 const initialPlayers = [
-{"id":1,"name":"内本・内田（NTT西日本）","information":[{"lastName":"内本","firstName":"貴文","team":"NTT西日本","prefecture":"","playerId":"uchimoto-takafumi","tempId":"内本_貴文_NTT西日本"},{"lastName":"内田","firstName":"理久","team":"NTT西日本","prefecture":"","playerId":"uchida-riku","tempId":"内田_理久_NTT西日本"}],"category":"doubles"},
+{"id":1,"name":"内本・内田（NTT西日本）","information":[{"lastName":"内本","firstName":"隆文","team":"NTT西日本","prefecture":"","playerId":"uchimoto-takafumi","tempId":"内本_隆文_NTT西日本"},{"lastName":"内田","firstName":"理久","team":"NTT西日本","prefecture":"","playerId":"uchida-riku","tempId":"内田_理久_NTT西日本"}],"category":"doubles"},
 {"id":"bye","name":"1回戦免除","information":[]},
 {"id":2,"name":"鈴木・川村（環太平洋大学）","information":[{"lastName":"鈴木","firstName":"大翔","team":"環太平洋大学","prefecture":"","playerId":null,"tempId":"鈴木_大翔_環太平洋大学"},{"lastName":"川村","firstName":"柊翔","team":"環太平洋大学","prefecture":"","playerId":null,"tempId":"川村_柊翔_環太平洋大学"}],"category":"doubles"},
 {"id":3,"name":"塩野谷・西川（豊橋STC）","information":[{"lastName":"塩野谷","firstName":"信伴","team":"豊橋STC","prefecture":"愛知県","playerId":null,"tempId":"塩野谷_信伴_豊橋STC"},{"lastName":"西川","firstName":"崇佳","team":"豊橋STC","prefecture":"愛知県","playerId":null,"tempId":"西川_崇佳_豊橋STC"}],"category":"doubles"},

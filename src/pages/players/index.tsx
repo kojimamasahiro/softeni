@@ -526,15 +526,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
     const uniquePlayersArray = Array.from(uniquePlayers.values());
     const differentTeams = [...new Set(uniquePlayersArray.map((p) => p.team))];
-    // Prefer using the explicit last/first from a sample player to lookup known ids
-    const sample = uniquePlayersArray[0];
-    const lookupKey = makeNameKey(sample.lastName, sample.firstName);
-    const knownIds = indexMap.get(lookupKey) || [];
     sameNameGroups.push({
       fullName,
       players: uniquePlayersArray.map((p) => ({
         ...p,
-        playerId: p.playerId || (knownIds[0] ?? null),
+        playerId: p.playerId ?? null,
       })),
       count: uniquePlayersArray.length,
       differentTeams,

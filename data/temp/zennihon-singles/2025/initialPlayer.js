@@ -1584,10 +1584,10 @@ const initialPlayers = [
     information: [
       {
         lastName: '内本',
-        firstName: '貴文',
+        firstName: '隆文',
         team: 'NTT西日本',
         playerId: 'uchimoto-takafumi',
-        tempId: '貴文_内本_NTT西日本',
+        tempId: '隆文_内本_NTT西日本',
       },
     ],
   },

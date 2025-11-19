@@ -19,7 +19,7 @@ const teamData = {
       team: 'NTT西日本',
     },
     'uchimoto-takafumi': {
-      firstName: '貴文',
+      firstName: '隆文',
       lastName: '内本',
       team: 'NTT西日本',
     },
