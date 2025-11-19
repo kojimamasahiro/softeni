@@ -1,77 +1,114 @@
 // pages/players/index.tsx
-import fs from 'fs';
-import path from 'path';
-
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-import { PlayerInfo } from '@/types';
+import { TournamentDetailData } from '@/types';
+import type {
+  TournamentEntry,
+  TournamentParticipant,
+} from '@/types/tournament';
 
-/** ───────── 型 ───────── */
-interface Props {
-  players: PlayerInfo[];
+interface PlayerResult {
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  team: string;
+  prefecture?: string | null;
+  result: string;
+  tournamentName: string;
+  tournamentId: string;
+  generation: string;
+  year: string;
+  gameCategory: string;
+  ageCategory: string;
+  gender: string;
+  categoryLabel: string;
+  playerId?: string | number | null;
 }
 
-/** ───────── 画面 ───────── */
-export default function PlayersPage({ players }: Props) {
+interface SameNameGroup {
+  fullName: string;
+  players: PlayerResult[];
+  count: number;
+  differentTeams: string[];
+}
+
+interface SameNamePlayerPageProps {
+  sameNameGroups: SameNameGroup[];
+  totalResults: number;
+}
+
+export default function PlayersPage({
+  sameNameGroups,
+}: SameNamePlayerPageProps) {
+  const [sortBy, setSortBy] = useState<'count' | 'name'>('count');
+  const [filterMinCount, setFilterMinCount] = useState(2);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filtered, setFiltered] = useState<PlayerInfo[]>(players);
 
-  /** 初期は五十音順にソート */
-  useEffect(() => {
-    setFiltered(
-      [...players].sort((a, b) =>
-        (a.lastNameKana + a.firstNameKana).localeCompare(
-          b.lastNameKana + b.firstNameKana,
-          'ja',
-        ),
-      ),
+  const highlightMatch = (text: string, searchQuery: string) => {
+    if (!searchQuery.trim()) return text;
+    const queries = searchQuery.toLowerCase().trim().split(/\s+/);
+    const query = queries[0];
+    const regex = new RegExp(
+      `(${query.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')})`,
+      'gi',
     );
-  }, [players]);
-
-  /** 検索処理 */
-  const handleSearch = (q: string) => {
-    setSearchQuery(q);
-    const normalized = q.replace(/\s/g, '').toLowerCase();
-
-    const hits = players.filter((p) => {
-      const haystack = (
-        p.lastName +
-        p.firstName +
-        p.lastNameKana +
-        p.firstNameKana +
-        p.team
-      ).toLowerCase();
-
-      let idx = 0;
-      for (const ch of normalized) {
-        idx = haystack.indexOf(ch, idx);
-        if (idx === -1) return false;
-        idx++;
+    const parts = text.split(regex);
+    return parts.map((part, index) => {
+      if (part.toLowerCase() === query.toLowerCase()) {
+        return (
+          <mark
+            key={index}
+            className="bg-yellow-200 dark:bg-yellow-800 rounded px-1"
+          >
+            {part}
+          </mark>
+        );
       }
-      return true;
+      return part;
     });
-
-    setFiltered(
-      hits.sort((a, b) =>
-        (a.lastNameKana + a.firstNameKana).localeCompare(
-          b.lastNameKana + b.firstNameKana,
-          'ja',
-        ),
-      ),
-    );
   };
+
+  const sortedAndFilteredGroups = useMemo(() => {
+    return sameNameGroups
+      .filter((group) => {
+        if (group.count < filterMinCount) return false;
+        if (searchQuery.trim()) {
+          const queries = searchQuery.toLowerCase().trim().split(/\s+/);
+          return group.players.some((player) => {
+            return queries.every((query) => {
+              return (
+                group.fullName.toLowerCase().includes(query) ||
+                player.team.toLowerCase().includes(query) ||
+                player.tournamentName.toLowerCase().includes(query) ||
+                player.categoryLabel.toLowerCase().includes(query) ||
+                player.year.includes(query) ||
+                `${player.year}年`.includes(query) ||
+                (player.prefecture &&
+                  player.prefecture.toLowerCase().includes(query))
+              );
+            });
+          });
+        }
+        return true;
+      })
+      .sort((a, b) => {
+        if (sortBy === 'count') return b.count - a.count;
+        return a.fullName.localeCompare(b.fullName, 'ja');
+      });
+  }, [sameNameGroups, sortBy, filterMinCount, searchQuery]);
 
   return (
     <>
       <MetaHead
         title="選手一覧 | ソフトテニス情報"
-        description="ソフトテニス選手を名前・所属で検索できます。"
+        description="ソフトテニス大会データから抽出した同姓同名選手一覧。名前・所属・大会で検索できます。"
         url="https://softeni-pick.com/players"
+        type="article"
       />
 
       <Head>
@@ -80,107 +117,251 @@ export default function PlayersPage({ players }: Props) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: '選手一覧',
-                  item: 'https://softeni-pick.com/players',
-                },
-              ],
+              '@type': 'WebPage',
+              headline: '選手一覧',
+              author: { '@type': 'Person', name: 'Softeni Pick' },
+              publisher: { '@type': 'Organization', name: 'Softeni Pick' },
+              datePublished: new Date().toISOString().split('T')[0],
+              dateModified: new Date().toISOString().split('T')[0],
+              inLanguage: 'ja',
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': 'https://softeni-pick.com/players',
+              },
+              description: 'ソフトテニス大会での同姓同名選手の結果を一覧表示',
             }),
           }}
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 py-10 px-4">
-        <div className="max-w-3xl mx-auto">
+      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+        <div className="max-w-4xl mx-auto">
           <Breadcrumbs
             crumbs={[
               { label: 'ホーム', href: '/' },
               { label: '選手一覧', href: '/players' },
             ]}
           />
-          <h1 className="text-2xl font-bold my-6">選手一覧</h1>
-          <p className="mb-6 text-gray-700 dark:text-gray-300">
-            ソフトテニスの現役・引退選手を掲載しています。名前や所属チームで検索が可能です。各選手ページでは試合結果や戦績を詳しく確認できます。
-          </p>
 
-          {/* 検索ボックス */}
-          <input
-            type="text"
-            className="w-full px-4 py-2 mb-6 border rounded-md focus:ring-2 focus:ring-blue-500"
-            placeholder="選手名や所属で検索"
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-          />
+          <h1 className="text-2xl font-bold mb-6">選手一覧</h1>
 
-          {/* 一覧 */}
-          {filtered.length === 0 ? (
-            <p className="text-gray-600">
-              該当する選手が見つかりませんでした。他のキーワードで再度お試しください。
+          <section className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+            <div className="flex items-center gap-2 mb-3">
+              <h2 className="text-sm font-semibold text-amber-800 dark:text-amber-200">
+                同姓同名選手の一覧
+              </h2>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              大会結果データから抽出した同姓同名の選手の一覧です。同じ名前でも異なる選手の可能性があります。所属チームや大会記録を確認してください。
             </p>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filtered.map((p) => {
-                const retired = p.retired;
-                return (
-                  <div
-                    key={p.id}
-                    onClick={() => (window.location.href = `/players/${p.id}`)}
-                    className={`border rounded-xl p-4 shadow cursor-pointer transition
-            hover:bg-gray-50 dark:hover:bg-gray-700
-            ${retired ? 'opacity-70' : ''}`}
-                  >
-                    <h2 className="text-lg font-bold mb-1">
-                      {p.lastName} {p.firstName}（{p.lastNameKana}{' '}
-                      {p.firstNameKana}）
-                    </h2>
-                    <p className="text-sm mb-2">
-                      {retired ? (
-                        <span className="inline-block px-2 py-0.5 text-xs text-white bg-gray-500 rounded">
-                          引退済み
-                        </span>
-                      ) : (
-                        p.team
-                      )}
-                    </p>
-                    <Link
-                      href={`/players/${p.id}/results`}
-                      className="inline-block px-3 py-1 mt-1 bg-gray-200 dark:bg-gray-700 rounded text-sm"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      試合結果
-                    </Link>
+          </section>
+
+          <div className="mb-6">
+            <label
+              htmlFor="searchQuery"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
+              大会記録検索（スペース区切りでAND検索）
+            </label>
+            <input
+              id="searchQuery"
+              type="text"
+              placeholder="例: 田中 全日本 2024、佐藤 明大 優勝..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="mt-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              >
+                検索をクリア ✕
+              </button>
+            )}
+          </div>
+
+          <div className="mb-6 flex flex-wrap gap-4 items-center">
+            <div className="flex items-center gap-2">
+              <label
+                htmlFor="sortBy"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                並び順:
+              </label>
+              <select
+                id="sortBy"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as 'count' | 'name')}
+                className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm"
+              >
+                <option value="count">出現回数順</option>
+                <option value="name">名前順</option>
+              </select>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label
+                htmlFor="filterMinCount"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                最小出現回数:
+              </label>
+              <select
+                id="filterMinCount"
+                value={filterMinCount}
+                onChange={(e) => setFilterMinCount(Number(e.target.value))}
+                className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm"
+              >
+                <option value={2}>2回以上</option>
+                <option value={3}>3回以上</option>
+                <option value={5}>5回以上</option>
+                <option value={10}>10回以上</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              {searchQuery ? (
+                <>
+                  <span className="font-medium">「{searchQuery}」</span>
+                  {sortedAndFilteredGroups.length}組 の検索結果
+                  {filterMinCount > 2 && ` (${filterMinCount}回以上出現)`}
+                </>
+              ) : (
+                <>
+                  {sortedAndFilteredGroups.length}組の同姓同名選手を表示中
+                  {filterMinCount > 2 && ` (${filterMinCount}回以上出現のみ)`}
+                </>
+              )}
+            </div>
+            {sameNameGroups.length > 0 && (
+              <div className="text-xs text-gray-500 dark:text-gray-400">
+                全 {sameNameGroups.length}組
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-6">
+            {sortedAndFilteredGroups.map((group) => (
+              <div
+                key={group.fullName}
+                className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                    {searchQuery
+                      ? highlightMatch(group.fullName, searchQuery)
+                      : group.fullName}
+                  </h2>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    {group.count}回出現
                   </div>
-                );
-              })}
+                </div>
+
+                {group.differentTeams.length > 1 && (
+                  <div className="mb-3 text-sm">
+                    <span className="font-medium text-gray-700 dark:text-gray-300">
+                      所属チーム:
+                    </span>
+                    <span className="ml-2 text-gray-600 dark:text-gray-400">
+                      {searchQuery
+                        ? group.differentTeams.map((team, i) => (
+                            <span key={team}>
+                              {i > 0 && ', '}
+                              {highlightMatch(team, searchQuery)}
+                            </span>
+                          ))
+                        : group.differentTeams.join(', ')}
+                    </span>
+                  </div>
+                )}
+
+                <div className="space-y-2">
+                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    大会結果:
+                  </h3>
+                  <div className="grid gap-2 text-sm">
+                    {group.players
+                      .sort((a, b) => {
+                        if (a.year !== b.year)
+                          return Number(b.year) - Number(a.year);
+                        const resultOrder: Record<string, number> = {
+                          優勝: 1,
+                          準優勝: 2,
+                          ベスト4: 3,
+                          ベスト8: 4,
+                        };
+                        const aOrder = resultOrder[a.result] || 999;
+                        const bOrder = resultOrder[b.result] || 999;
+                        return aOrder - bOrder;
+                      })
+                      .map((player, index) => (
+                        <div
+                          key={`${player.tournamentId}-${player.year}-${player.gameCategory}-${player.ageCategory}-${player.gender}-${index}`}
+                          className="flex flex-wrap items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded"
+                        >
+                          <div className="flex-1 min-w-0">
+                            <Link
+                              href={`/tournaments/${player.generation}/${player.tournamentId}/${player.year}/${player.gameCategory}/${player.ageCategory}/${player.gender}`}
+                              className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                            >
+                              {searchQuery
+                                ? highlightMatch(
+                                    `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
+                                    searchQuery,
+                                  )
+                                : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
+                            </Link>
+                          </div>
+                          <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                            <span className="font-medium">{player.result}</span>
+                            <span>|</span>
+                            <span>
+                              {searchQuery
+                                ? highlightMatch(player.team, searchQuery)
+                                : player.team}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {sortedAndFilteredGroups.length === 0 && (
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+              {searchQuery ? (
+                <div>
+                  <p className="mb-2">
+                    「<span className="font-medium">{searchQuery}</span>
+                    」に該当する同姓同名選手が見つかりませんでした。
+                  </p>
+                  <p className="text-sm">
+                    選手名、チーム名、大会名、年度、カテゴリ、都道府県で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードで検索するか、検索条件を緩めてお試しください。
+                  </p>
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    検索をクリアして全件表示
+                  </button>
+                </div>
+              ) : (
+                <p>条件に該当する同姓同名選手が見つかりませんでした。</p>
+              )}
             </div>
           )}
-        </div>
-        <div className="mt-12 border-t pt-6 text-center">
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
-            お探しの選手が見つからない場合は、チームや大会ページからも探してみてください。
-          </p>
-          <div className="flex justify-center gap-4 flex-wrap">
-            <Link
-              href="/highschool"
-              className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition"
-            >
-              高校カテゴリを見る
-            </Link>
+
+          <div className="mt-12 text-center space-x-4">
             <Link
               href="/tournaments"
-              className="px-4 py-2 bg-gray-600 text-white text-sm rounded hover:bg-gray-700 transition"
+              className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
             >
-              大会から探す
+              大会結果一覧
             </Link>
           </div>
         </div>
@@ -189,15 +370,176 @@ export default function PlayersPage({ players }: Props) {
   );
 }
 
-/** ───────── データ取得 ───────── */
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const dir = path.join(process.cwd(), 'data/players');
-  const ids = fs.readdirSync(dir);
-  const players: PlayerInfo[] = ids.flatMap((id) => {
-    const file = path.join(dir, id, 'information.json');
-    if (!fs.existsSync(file)) return [];
-    return [{ id, ...JSON.parse(fs.readFileSync(file, 'utf8')) }];
-  });
+// ".json" を削除して "-" で分割するヘルパー
+const parseCombinedCategory = (raw?: string | null) => {
+  if (!raw) return { gameCategory: '', ageCategory: 'none', gender: 'none' };
+  const cleaned = String(raw).replace(/\.json$/i, '');
+  const parts = cleaned.split('-');
+  if (parts.length >= 3) {
+    return {
+      gameCategory: parts[0] || '',
+      ageCategory: parts[1] || 'none',
+      gender: parts[2] || 'none',
+    };
+  }
+  return { gameCategory: cleaned, ageCategory: 'none', gender: 'none' };
+};
 
-  return { props: { players } };
+export const getStaticProps: GetStaticProps = async () => {
+  const fs = await import('fs');
+  const path = await import('path');
+
+  // Use tournamentData helper to read parsed detail records
+  const tournamentData = await import('../../../lib/tournamentData');
+  const records = await tournamentData.getAllDetailRecords(process.cwd());
+
+  // Load base player index (data/players/index.json)
+  const playersIndexPath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    'index.json',
+  );
+  let playersIndex: Array<{
+    id: number | string;
+    lastName: string;
+    firstName: string;
+  }> = [];
+  if (fs.existsSync(playersIndexPath)) {
+    try {
+      playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8'));
+    } catch {
+      playersIndex = [];
+    }
+  }
+
+  // Build a map from lastName::firstName -> array of player ids (from index.json)
+  // Use a delimiter to avoid accidental collisions when concatenating names.
+  const indexMap = new Map<string, Array<number | string>>();
+  const makeNameKey = (last?: string | null, first?: string | null) => {
+    return `${String(last || '')}::${String(first || '')}`;
+  };
+  for (const p of playersIndex) {
+    const key = makeNameKey(p.lastName, p.firstName);
+    if (!indexMap.has(key)) indexMap.set(key, []);
+    indexMap.get(key)!.push(p.id);
+  }
+
+  const playerMap = new Map<string, PlayerResult[]>();
+  // Collect all participant name keys seen across details (last::first)
+  const participantNameSet = new Set<string>();
+
+  for (const r of records) {
+    const tournamentId = r.tournamentId;
+    const year = r.year;
+    const detail = r.detail as TournamentDetailData;
+    const categoryInfo = parseCombinedCategory(r.fileName);
+
+    // Prepare participant and entry maps so we can resolve results that only reference entryNo
+    const participants: TournamentParticipant[] = Array.isArray(
+      detail.participants,
+    )
+      ? (detail.participants as TournamentParticipant[])
+      : [];
+    const participantById = new Map<string, TournamentParticipant>();
+    const participantByName = new Map<string, TournamentParticipant>();
+    for (const p of participants) {
+      if (p && p.id) participantById.set(String(p.id), p);
+      if (p && p.lastName && p.firstName) {
+        const key = makeNameKey(p.lastName, p.firstName);
+        participantByName.set(key, p);
+        participantNameSet.add(key);
+      }
+    }
+    const entries: TournamentEntry[] = Array.isArray(detail.entries)
+      ? (detail.entries as TournamentEntry[])
+      : [];
+    const entryByNo = new Map<number, TournamentEntry>();
+    for (const e of entries) {
+      if (typeof e.entryNo === 'number') entryByNo.set(e.entryNo, e);
+    }
+
+    // participant lookups use typed TournamentParticipant maps (participantById/participantByName)
+
+    if (detail.results && Array.isArray(detail.results)) {
+      for (const res of detail.results) {
+        let resultPlayerIds: string[] | undefined;
+        if (typeof res.entryNo === 'number' && entryByNo.has(res.entryNo)) {
+          const ent = entryByNo.get(res.entryNo);
+          resultPlayerIds = ent?.playerIds;
+        }
+
+        if (Array.isArray(resultPlayerIds)) {
+          for (const pid of resultPlayerIds) {
+            // Prefer resolving participant by name (last+first). Fall back to id or encoded pid format.
+            const participant = participantById.get(pid);
+            if (!participant?.lastName || !participant?.firstName) continue;
+            const nameKey = makeNameKey(
+              participant?.lastName || '',
+              participant?.firstName || '',
+            );
+            if (!indexMap.has(nameKey)) continue;
+            const playerResult: PlayerResult = {
+              firstName: participant?.firstName || '',
+              lastName: participant?.lastName || '',
+              fullName: `${participant?.lastName || ''}${participant?.firstName || ''}`,
+              team: participant?.team || '所属不明',
+              result: res.tournament?.label || '予選敗退',
+              tournamentName: r.tournamentName || '大会名不明',
+              tournamentId,
+              generation: r.generation || 'all',
+              year,
+              gameCategory: categoryInfo.gameCategory,
+              ageCategory: categoryInfo.ageCategory,
+              gender: categoryInfo.gender,
+              categoryLabel: `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
+            };
+            if (!playerMap.has(nameKey)) playerMap.set(nameKey, []);
+            playerMap.get(nameKey)!.push(playerResult);
+          }
+        }
+      }
+    }
+  }
+
+  const sameNameGroups: SameNameGroup[] = [];
+  for (const [, players] of playerMap.entries()) {
+    const fullName = `${players[0].fullName}`;
+    const uniquePlayers = players.reduce((acc, player) => {
+      const key = `${player.tournamentId}-${player.year}-${player.gameCategory}-${player.ageCategory}-${player.gender}-${player.team}`;
+      if (!acc.has(key)) acc.set(key, player);
+      else {
+        const existing = acc.get(key)!;
+        const resultPriority: Record<string, number> = {
+          優勝: 1,
+          準優勝: 2,
+          ベスト4: 3,
+          ベスト8: 4,
+          出場: 999,
+        };
+        const playerPriority = resultPriority[player.result] || 999;
+        const existingPriority = resultPriority[existing.result] || 999;
+        if (playerPriority < existingPriority) acc.set(key, player);
+      }
+      return acc;
+    }, new Map<string, PlayerResult>());
+
+    const uniquePlayersArray = Array.from(uniquePlayers.values());
+    const differentTeams = [...new Set(uniquePlayersArray.map((p) => p.team))];
+    // Prefer using the explicit last/first from a sample player to lookup known ids
+    const sample = uniquePlayersArray[0];
+    const lookupKey = makeNameKey(sample.lastName, sample.firstName);
+    const knownIds = indexMap.get(lookupKey) || [];
+    sameNameGroups.push({
+      fullName,
+      players: uniquePlayersArray.map((p) => ({
+        ...p,
+        playerId: p.playerId || (knownIds[0] ?? null),
+      })),
+      count: uniquePlayersArray.length,
+      differentTeams,
+    });
+  }
+
+  return { props: { sameNameGroups } };
 };

@@ -1,7 +1,5 @@
 // src/pages/players/[id]/results.tsx
 /* eslint-disable prettier/prettier */
-import fs from 'fs';
-import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -181,6 +179,9 @@ export default function PlayerResultsPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const fs = await import('fs');
+  const path = await import('path');
+
   // use data/players/index.json ids
   const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
   const entriesRaw = fs.readFileSync(indexPath, 'utf-8');
@@ -195,6 +196,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const playerId = params?.id as string;
 
   // read index.json to get name
+  const fs = await import('fs');
+  const path = await import('path');
   const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
   const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
     id: number;
@@ -216,12 +219,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // --- Structured loading using shared helpers ---
   const root = process.cwd();
-  const tournamentIndex = loadTournamentIndex(root);
+  const tournamentIndex = await loadTournamentIndex(root);
   const tournamentMeta = new Map<string, { label?: string; isMajor?: boolean }>();
   for (const t of tournamentIndex) tournamentMeta.set(t.tournamentId, { label: t.label, isMajor: !!t.isMajorTitle });
-
-  const informationMap = loadInformationMap(root);
-  const allDetails = getAllDetailRecords(root);
+  const informationMap = await loadInformationMap(root);
+  const allDetails = await getAllDetailRecords(root);
+  // majorTitlesData will be awaited and included in the returned props below
 
   const playerMatches: PlayerMatch[] = [];
   const playerTournamentsMap = new Map<string, PlayerTournament>();
@@ -644,7 +647,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerTournaments,
       playerStats,
       allPlayers: allPlayersList,
-      majorTitlesData: getMajorTitlesForPlayer(idx.lastName, idx.firstName),
+  majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),
     },
   };
 };

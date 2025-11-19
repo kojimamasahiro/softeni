@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { createServerClient } from '@/lib/supabase';
 import {
   generateTournamentUrlFromMatch,
-  getTournamentInfoSSR,
   TournamentInfo,
-} from '@/lib/tournamentHelpers';
+} from '@/lib/tournamentClientHelpers';
 
 import { Game, Match } from '../../../types/database';
 
@@ -277,7 +276,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     await Promise.all(
       tournamentIds.map(async (id) => {
         try {
-          const info = await getTournamentInfoSSR(id);
+          const helpers = await import('@/lib/tournamentHelpers');
+          const info = await helpers.getTournamentInfoSSR(id);
           if (info) tournamentInfos[id] = info;
         } catch (e) {
           console.error(`Tournament fetch failed: ${id}`, e);

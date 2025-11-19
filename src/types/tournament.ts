@@ -77,7 +77,7 @@ export interface MatchOpponent {
   team: string;
   prefecture: string | null;
   playerId: string | null;
-  tempId: string;
+  tempId: string | null;
 }
 
 export interface MatchOpponentTeam {
@@ -114,7 +114,7 @@ export interface TournamentInformationEntry {
 }
 
 export interface TournamentParticipant {
-  id: string;
+  id: string; // 金子_凌_松本市役所_長野
   lastName: string;
   firstName: string;
   team: string;

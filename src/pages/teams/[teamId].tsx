@@ -1,6 +1,4 @@
 // src/pages/teams/[teamId].tsx
-import fs from 'fs';
-import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -308,6 +306,8 @@ export default function TeamResultsPage({ info, results }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const fs = await import('fs');
+  const path = await import('path');
   const teamsDir = path.join(process.cwd(), 'data/teams');
   const teamDirs = fs
     .readdirSync(teamsDir)
@@ -324,6 +324,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const fs = await import('fs');
+  const path = await import('path');
   const { teamId } = context.params as { teamId: string };
   const infoPath = path.join(
     process.cwd(),

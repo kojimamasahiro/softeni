@@ -43,17 +43,17 @@ const formatStartDate = (raw?: string): string | undefined => {
  * - data/tournament/details/<tournamentId>/<year>/*.json
  * - data/tournament/information/<tournamentId>.json
  */
-export const getMajorTitlesForPlayer = (
+export const getMajorTitlesForPlayer = async (
   lastName: string,
   firstName: string,
-): MajorTitleData[] => {
-  const index = loadTournamentIndex();
+): Promise<MajorTitleData[]> => {
+  const index = await loadTournamentIndex();
   const majors = index.filter((t) => t.isMajorTitle);
   const now = new Date();
   const out: MajorTitleData[] = [];
 
-  const infoMap = loadInformationMap();
-  const allDetails = getAllDetailRecords();
+  const infoMap = await loadInformationMap();
+  const allDetails = await getAllDetailRecords();
 
   for (const m of majors) {
     const tournamentId = m.tournamentId;
