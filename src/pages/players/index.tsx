@@ -279,9 +279,6 @@ export default function PlayersPage({
                 )}
 
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    大会結果:
-                  </h3>
                   <div className="grid gap-2 text-sm">
                     {group.players
                       .sort((a, b) => {
