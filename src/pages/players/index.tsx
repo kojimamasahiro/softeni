@@ -260,7 +260,7 @@ export default function PlayersPage({
                   </div>
                 </div>
 
-                {group.differentTeams.length > 1 && (
+                {group.differentTeams.length > 0 && (
                   <div className="mb-3 text-sm">
                     <span className="font-medium text-gray-700 dark:text-gray-300">
                       所属チーム:
