@@ -252,9 +252,17 @@ const entriesMap = new Map();
 for (const m of data.matches || []) {
   if (m.entryNo != null) {
     const key = String(m.entryNo);
-    const playerIds = Array.isArray(m.pair)
-      ? m.pair.map((x) => normalizeRawId(String(x)))
-      : [];
+    let playerIds = [];
+    
+    // For team matches, use m.team as the single playerId
+    if (m.team) {
+      playerIds = [normalizeRawId(String(m.team))];
+    }
+    // For individual matches (doubles/singles), use m.pair
+    else if (Array.isArray(m.pair)) {
+      playerIds = m.pair.map((x) => normalizeRawId(String(x)));
+    }
+    
     if (!entriesMap.has(key)) {
       entriesMap.set(key, { entryNo: Number(m.entryNo), playerIds });
     } else {
@@ -285,7 +293,13 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
     if (row.entryNo == null) continue;
     const key = String(row.entryNo);
     let playerIds = [];
-    if (Array.isArray(row.pair) && row.pair.length) {
+    
+    // For team matches, use row.team
+    if (row.team) {
+      playerIds = [normalizeRawId(String(row.team))];
+    }
+    // For individual matches, use row.pair
+    else if (Array.isArray(row.pair) && row.pair.length) {
       playerIds = row.pair
         .map((p) => {
           if (typeof p === 'string') return normalizeRawId(String(p));
@@ -300,6 +314,7 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
         })
         .filter(Boolean);
     }
+    
     entriesMap.set(key, { entryNo: Number(row.entryNo), playerIds });
   }
 
@@ -565,8 +580,12 @@ for (const row of rrRaw) {
     }
     if (idsArr.length) oppKey = idsArr.join('|');
   }
-  if (!oppKey && row.opponentTeam && row.opponentTeam.team)
-    oppKey = String(row.opponentTeam.team);
+  if (!oppKey && row.opponentTeam && row.opponentTeam.team) {
+    // Build oppKey with prefecture if available to match keyToEntryNo format
+    const teamName = String(row.opponentTeam.team);
+    const prefecture = row.opponentTeam.prefecture;
+    oppKey = prefecture ? `${teamName}_${prefecture}` : teamName;
+  }
   if (!oppKey && row.opponentEntryNo != null)
     oppKey = `E${String(row.opponentEntryNo)}`;
 
@@ -581,6 +600,23 @@ for (const row of rrRaw) {
   if (entryNo) {
     if (!rrPlayersByGroup.has(group)) rrPlayersByGroup.set(group, new Set());
     rrPlayersByGroup.get(group).add(String(entryNo));
+  }
+}
+
+// Build a mapping from myKey/oppKey to entryNo for resolving opponents
+const keyToEntryNo = new Map();
+for (const row of rrRaw) {
+  const entryNo = row.entryNo != null ? String(row.entryNo) : null;
+  if (!entryNo) continue;
+  
+  // Map from team key
+  if (row.team) {
+    keyToEntryNo.set(String(row.team), entryNo);
+  }
+  // Map from pair key
+  if (Array.isArray(row.pair) && row.pair.length) {
+    const pairKey = row.pair.map((x) => String(normalizeRawId(String(x)))).join('|');
+    keyToEntryNo.set(pairKey, entryNo);
   }
 }
 
@@ -605,6 +641,17 @@ for (const [k, perspectives] of rrMap.entries()) {
       if (p.row.opponentEntryNo != null) {
         entryB = String(p.row.opponentEntryNo);
         break;
+      }
+    }
+  }
+  
+  // If still no entryB, try to resolve from oppKey using the mapping
+  if (!entryB && perspectives.length > 0) {
+    const firstPerspective = perspectives[0];
+    if (firstPerspective.oppKey) {
+      const resolved = keyToEntryNo.get(firstPerspective.oppKey);
+      if (resolved) {
+        entryB = resolved;
       }
     }
   }

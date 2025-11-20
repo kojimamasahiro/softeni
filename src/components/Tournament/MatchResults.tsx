@@ -12,7 +12,6 @@ interface Props {
   detail: TournamentDetailData;
   searchQuery: string;
   setSearchQuery: (v: string) => void;
-  suggestions: string[];
   filter: 'all' | 'top8' | 'winners';
   setFilter: (v: 'all' | 'top8') => void;
 }
@@ -155,7 +154,6 @@ export default function MatchResults({
   detail,
   searchQuery,
   setSearchQuery,
-  suggestions,
   filter,
   setFilter,
 }: Props) {
@@ -182,6 +180,23 @@ export default function MatchResults({
         .map((pid: string) => participantMap.get(pid))
         .filter(Boolean) as (typeof detail.participants)[0][];
       if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
+
+      // Check if this is a team format (lastName and firstName are both null)
+      const isTeamFormat = players.every(pl => pl?.lastName === null && pl?.firstName === null);
+
+      if (isTeamFormat) {
+        // For team format: display "チーム名（都道府県）"
+        const teamNames = players
+          .map(pl => {
+            const teamName = pl?.team || '不明';
+            const prefecture = pl?.prefecture;
+            return prefecture ? `${teamName}（${prefecture}）` : teamName;
+          })
+          .filter(name => name !== '不明');
+        return teamNames.join('・') || `#${entry.entryNo ?? '?'}`;
+      }
+
+      // For individual format: display "名前（チーム名）"
       const teamMap: Record<string, string[]> = {};
       for (const pl of players) {
         const team = (pl && pl.team) || '\u4e0d\u660e';
@@ -245,12 +260,12 @@ export default function MatchResults({
         opponentDisplayName:
           typeof opponent === 'number'
             ? buildNameForEntry(
-                (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
-                  entryNo: opponent,
-                  playerIds: [],
-                },
-                { short: true },
-              )
+              (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
+                entryNo: opponent,
+                playerIds: [],
+              },
+              { short: true },
+            )
             : undefined,
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
@@ -288,12 +303,12 @@ export default function MatchResults({
         opponentDisplayName:
           typeof b === 'number'
             ? buildNameForEntry(
-                (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
-                  entryNo: b,
-                  playerIds: [],
-                },
-                { short: true },
-              )
+              (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
+                entryNo: b,
+                playerIds: [],
+              },
+              { short: true },
+            )
             : undefined,
         result:
           m.winnerEntryNo === a
@@ -311,12 +326,12 @@ export default function MatchResults({
         opponentDisplayName:
           typeof a === 'number'
             ? buildNameForEntry(
-                (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
-                  entryNo: a,
-                  playerIds: [],
-                },
-                { short: true },
-              )
+              (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
+                entryNo: a,
+                playerIds: [],
+              },
+              { short: true },
+            )
             : undefined,
         result:
           m.winnerEntryNo === b
@@ -414,19 +429,6 @@ export default function MatchResults({
           placeholder="選手名や所属で検索"
           className="h-9 px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm dark:bg-gray-900 dark:text-white"
         />
-        {suggestions.length > 0 && (
-          <ul className="mt-1 bg-white dark:bg-gray-800 border rounded shadow text-sm">
-            {suggestions.map((name, i) => (
-              <li
-                key={i}
-                onClick={() => setSearchQuery(name)}
-                className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
-        )}
 
         <button
           onClick={() => setFilter('all')}

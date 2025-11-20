@@ -92,9 +92,9 @@ export default function TeamResults({ detailData }: Props) {
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
               return idx < players.length - 1
                 ? [
-                    { text: name, id: pl.id },
-                    { text: '・', noLink: true },
-                  ]
+                  { text: name, id: pl.id },
+                  { text: '・', noLink: true },
+                ]
                 : [{ text: name, id: pl.id }];
             });
 
@@ -153,7 +153,7 @@ export default function TeamResults({ detailData }: Props) {
           const prefectureId = pl.prefecture ?? null;
           const last = pl.lastName ?? '';
           const first = pl.firstName ?? '';
-          const name = `${last}${first}`.trim() || '\u4e0d\u660e';
+          const name = `${last}${first}`.trim() || '';
 
           const displayParts: DisplayPart[] = [{ text: name, id: pl.id }];
 

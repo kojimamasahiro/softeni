@@ -62,130 +62,9 @@ export default function TournamentYearResultPage({
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [suggestions, setSuggestions] = useState<string[]>([]);
   useEffect(() => {
     const q = searchQuery.toLowerCase();
-    if (q.length > 0) {
-      // setSuggestions(
-      //   allNames.filter((name) => name.toLowerCase().includes(q)).slice(0, 5),
-      // );
-    } else {
-      setSuggestions([]);
-    }
   }, [searchQuery]);
-
-  // const seenPlayers = new Set<string>();
-  // const teamCounter: Record<string, number> = {};
-
-  // function findOpponentById(id: string): MatchOpponent | null {
-  //   for (const match of matches) {
-  //     for (const op of match.opponents ?? []) {
-  //       if (op.playerId === id || op.tempId === id) return op;
-  //     }
-  //   }
-  //   return null;
-  // }
-
-  // for (const match of matches) {
-  //   for (const id of match.pair ?? []) {
-  //     if (!seenPlayers.has(id)) {
-  //       const player = findOpponentById(id);
-  //       if (player?.team) {
-  //         teamCounter[player.team] = (teamCounter[player.team] || 0) + 1;
-  //         seenPlayers.add(id);
-  //       }
-  //     }
-  //   }
-  // }
-
-  // const sorted = Object.entries(teamCounter).sort((a, b) => b[1] - a[1]);
-  // const rankedTeams: { rank: number; team: string; count: number }[] = [];
-  // let currentRank = 1;
-  // let prevCount: number | null = null;
-  // let offset = 0;
-
-  // for (let i = 0; i < sorted.length; i++) {
-  //   const [team, count] = sorted[i];
-  //   if (count === prevCount) {
-  //     offset++;
-  //   } else {
-  //     currentRank = i + 1 + offset;
-  //     offset = 0;
-  //   }
-  //   rankedTeams.push({ rank: currentRank, team, count });
-  //   prevCount = count;
-  // }
-
-  // const seedEntryNos = new Set<number>();
-
-  // for (const entry of detailData?.entries ?? []) {
-  //   if (entry.type === 'seed') {
-  //     seedEntryNos.add(entry.entryNo);
-  //   }
-  // }
-
-  // const tournamentMatchSet = new Set(
-  //   tournamentMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
-  // );
-
-  // const roundRobinMatchSet = new Set(
-  //   roundRobinMatches.map((m) => `${m.name}|${m.category ?? 'default'}`),
-  // );
-
-  // // standingsから id → rank の辞書を作成
-  // const standings = data.standings ?? {};
-  // const idToRank: Record<number, number> = {};
-
-  // // 期待される構造: standings[group][entry] = { id: number, rank: number }
-  // for (const groupObj of Object.values(standings)) {
-  //   for (const item of Object.values(groupObj)) {
-  //     if (item && typeof item === 'object' && 'id' in item && 'rank' in item) {
-  //       const { id, rank } = item as { id: number; rank: number };
-  //       idToRank[id] = rank;
-  //     }
-  //   }
-  // }
-
-  // // 予選で敗退したエントリーを抽出
-  // const eliminatedEntries = [...roundRobinMatchSet]
-  //   .filter((key) => !tournamentMatchSet.has(key))
-  //   .map((key) => {
-  //     const [name, category] = key.split('|');
-
-  //     // roundRobinMatchesからentryNoを取得
-  //     const match = roundRobinMatches.find(
-  //       (m) => m.name === name && m.category === category,
-  //     );
-
-  //     // standings.id から rank を取得
-  //     let rank: number | null = null;
-  //     if (match?.entryNo != null) {
-  //       const entryId = match.entryNo;
-  //       rank = idToRank[entryId] ?? null;
-  //     }
-
-  //     return {
-  //       name,
-  //       result: rank ? `予選${rank}位` : '予選敗退',
-  //       category,
-  //       rank,
-  //     };
-  //   });
-
-  // // Build a mapping from entryNo -> result label from data.results (if present)
-  // const resultByEntryNo: Record<number, string | undefined> = {};
-  // for (const r of data.results ?? []) {
-  //   const record = r as unknown as {
-  //     entryNo?: number;
-  //     result?: string;
-  //     tournament?: string;
-  //   };
-  //   const maybeEntryNo = record.entryNo;
-  //   const maybeResult = record.result ?? record.tournament;
-  //   if (typeof maybeEntryNo === 'number' && typeof maybeResult === 'string') {
-  //     resultByEntryNo[maybeEntryNo] = maybeResult;
-  //   }
-  // }
 
   return (
     <>
@@ -373,7 +252,6 @@ export default function TournamentYearResultPage({
                 detail={detailData}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
-                suggestions={suggestions}
                 filter={filter}
                 setFilter={setFilter}
               />
