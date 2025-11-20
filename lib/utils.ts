@@ -1,5 +1,4 @@
 // src/lib/utils.ts
-import { TournamentYearData } from '@/types/tournament';
 
 export function resultPriority(result: string): number {
   if (result.includes('優勝') && !result.includes('準')) return 1;
@@ -15,14 +14,6 @@ export function resultPriority(result: string): number {
   if (result.includes('予選敗退')) return 11;
   if (result.includes('未出場')) return 12;
   return 99;
-}
-
-export function sortMatchesByEntryNo(
-  matches: NonNullable<TournamentYearData['matches']>,
-): NonNullable<TournamentYearData['matches']> {
-  return matches
-    .slice()
-    .sort((a, b) => (a.entryNo || Infinity) - (b.entryNo || Infinity));
 }
 
 export function getTournamentLabel(id: string): string {
