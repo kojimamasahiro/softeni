@@ -6,7 +6,7 @@ import path from 'path';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -62,9 +62,7 @@ export default function TournamentYearResultPage({
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  useEffect(() => {
-    const q = searchQuery.toLowerCase();
-  }, [searchQuery]);
+
 
   return (
     <>
@@ -149,20 +147,10 @@ export default function TournamentYearResultPage({
               infoForYear.startDate &&
               infoForYear.endDate && (
                 <p className="text-sm text-gray-600 dark:text-gray-300">
-                  開催地：{infoForYear.location} ／ 日程：
+                  開催地:{infoForYear.location} / 日程:
                   {infoForYear.startDate}〜{infoForYear.endDate}
                 </p>
               )}
-            {detailData && detailData.entries.length > 0 && (
-              <p className="mt-2 text-sm">
-                <Link
-                  href={`/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/data`}
-                  className="text-blue-600 hover:underline"
-                >
-                  ▶ 大会データ
-                </Link>
-              </p>
-            )}
           </section>
 
           {/* ✅ チーム別成績 */}

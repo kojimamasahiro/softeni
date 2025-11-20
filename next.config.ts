@@ -33,6 +33,11 @@ const nextConfig = {
         destination: '/tournaments/highschool/highschool-japan-cup/:year/data',
         permanent: isProd,
       },
+      {
+        source: '/tournaments/:generation/:tournamentId/:year/:gameCategory/:ageCategory/:gender/data',
+        destination: '/tournaments/:generation/:tournamentId/:year/:gameCategory/:ageCategory/:gender',
+        permanent: true, // 301 リダイレクト
+      },
     ];
 
     // 2) 個別マッピング（redirects-map.json）を読む

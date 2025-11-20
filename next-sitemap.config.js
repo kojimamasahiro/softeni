@@ -20,6 +20,7 @@ module.exports = {
     '/api/*', // すべてのAPIエンドポイントを除外
     '/api/test-db', // テスト用DBエンドポイント（明示的）
     '/test-db', // テスト用DBページ
+    '*/data', // すべての /data パスを除外
   ],
   transform: async (config, path) => {
     return {
