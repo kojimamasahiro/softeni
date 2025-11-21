@@ -74,7 +74,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_KEY=your_supabase_service_role_key
 
 # その他の設定
-MICROCMS_SERVICE_DOMAIN=your_microcms_domain
 MICROCMS_API_KEY=your_microcms_api_key
 NEXT_PUBLIC_GA_ID=your_google_analytics_id
 ```

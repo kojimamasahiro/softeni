@@ -96,8 +96,6 @@ export default function Home({ players }: HomeProps) {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
-            {/* <LiveResultsByTournament playersData={players} /> */}
-
             {/* ✅ 最近追加された大会（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
               <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>

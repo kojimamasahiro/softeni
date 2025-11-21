@@ -10,10 +10,6 @@ const BASE_URL = isProd ? 'https://softeni-pick.com' : 'http://localhost:3000';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    MICROCMS_SERVICE_DOMAIN: process.env.MICROCMS_SERVICE_DOMAIN,
-    MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
-  },
   async redirects() {
     // 1) 既存の固定リダイレクト（必ず permanent を入れる）
     const fixedRedirects = [
