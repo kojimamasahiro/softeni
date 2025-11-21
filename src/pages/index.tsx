@@ -168,7 +168,7 @@ export default function Home({ players, recentTournaments }: HomeProps) {
                   {
                     id: 'maruyama-kaito',
                     name: '丸山 海斗',
-                    team: 'oneteam',
+                    team: 'one team',
                   },
                 ].map((player) => (
                   <div
