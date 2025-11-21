@@ -8,14 +8,27 @@ import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import {
+  getAllDetailRecords,
+  loadInformationMap,
+} from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
+
+interface RecentTournament {
+  id: string;
+  year: string;
+  name: string;
+  startDate: string;
+  link: string;
+}
 
 interface HomeProps {
   players: PlayerInfo[];
+  recentTournaments: RecentTournament[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Home({ players }: HomeProps) {
+export default function Home({ players, recentTournaments }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
 
   // クライアントサイドでのみ処理を実行
@@ -105,41 +118,10 @@ export default function Home({ players }: HomeProps) {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
-                {[
-                  {
-                    id: 'primaryschool-championship',
-                    year: 2025,
-                    name: '全日本小学生選手権大会',
-                    category: 'ダブルス、対抗戦',
-                    startDate: '2025-08-01',
-                  },
-                  {
-                    id: 'japan-business-group',
-                    year: 2025,
-                    name: '全日本実業団選手権大会',
-                    category: '団体',
-                    startDate: '2025-07-26',
-                  },
-                  {
-                    id: 'highschool/highschool-championship',
-                    year: 2025,
-                    name: '全国高等学校総合体育大会',
-                    category: 'ダブルス、団体',
-                    startDate: '2025-07-25',
-                  },
-                  {
-                    id: 'east',
-                    year: 2025,
-                    name: '東日本ソフトテニス選手権大会',
-                    category: 'ダブルス',
-                    startDate: '2025-07-19',
-                  },
-                ].map((tournament) => (
+                {recentTournaments.map((tournament) => (
                   <div
                     key={`${tournament.id}-${tournament.year}-${tournament.category}`}
-                    onClick={() =>
-                      (window.location.href = `/tournaments/${tournament.id}/${tournament.year}`)
-                    }
+                    onClick={() => (window.location.href = tournament.link)}
                     className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
@@ -147,7 +129,6 @@ export default function Home({ players }: HomeProps) {
                       {new Date(tournament.startDate).toLocaleDateString(
                         'ja-JP',
                       )}
-                      　{tournament.category}
                     </p>
                     <h3 className="text-lg font-bold">{tournament.name}</h3>
                   </div>
@@ -293,9 +274,53 @@ export async function getStaticProps() {
     }
   }
 
+  // Fetch recent tournaments
+  const detailRecords = await getAllDetailRecords();
+  const infoMap = await loadInformationMap();
+
+  // Group by tournamentId + year to deduplicate
+  const uniqueTournaments = new Map<string, RecentTournament>();
+
+  for (const record of detailRecords) {
+    const key = `${record.tournamentId}-${record.year}`;
+    if (uniqueTournaments.has(key)) continue;
+
+    const infoList = infoMap.get(record.tournamentId);
+    const info = infoList?.find((i) => i.year === Number(record.year));
+
+    if (!info) continue;
+
+    // Find the category info for this specific record (file)
+    // record.fileName is like "doubles-none-boys.json"
+    const categoryId = record.fileName.replace('.json', '');
+    const categoryInfo = info.categories.find(
+      (c) => c.categoryId === categoryId,
+    );
+
+    if (!categoryInfo) continue;
+
+    const link = `/tournaments/${record.generation}/${record.tournamentId}/${record.year}/${categoryInfo.category}/${categoryInfo.age}/${categoryInfo.gender}`;
+
+    uniqueTournaments.set(key, {
+      id: record.tournamentId,
+      year: record.year,
+      name: record.tournamentName || record.tournamentId,
+      startDate: info.startDate,
+      link,
+    });
+  }
+
+  const tournaments = Array.from(uniqueTournaments.values())
+    .sort(
+      (a, b) =>
+        new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
+    )
+    .slice(0, 4);
+
   return {
     props: {
       players,
+      recentTournaments: tournaments,
     },
   };
 }
