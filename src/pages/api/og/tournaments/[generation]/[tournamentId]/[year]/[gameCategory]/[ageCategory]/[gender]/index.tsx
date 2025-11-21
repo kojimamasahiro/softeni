@@ -188,8 +188,7 @@ export default async function handler(
   // ここをユーザー要望どおりに修正： og/{categoryId}.json
   const jsonPath = path.resolve(
     process.cwd(),
-    'data/tournaments',
-    generation,
+    'data/tournament/details',
     tournamentId,
     year,
     'og',
