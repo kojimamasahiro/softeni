@@ -33,6 +33,7 @@ export interface TournamentParticipant {
   firstName: string;
   team: string;
   prefecture: string | null;
+  playerId?: number;
 }
 
 export interface TournamentEntry {

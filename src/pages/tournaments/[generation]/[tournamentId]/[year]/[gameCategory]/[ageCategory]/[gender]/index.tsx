@@ -417,7 +417,33 @@ export const getStaticProps: GetStaticProps = async (context) => {
       console.error('failed to parse tournament index.json', err);
     }
   }
-
+  const playersIndexPath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    'index.json',
+  );
+  const playerIndexMap = new Map<string, number>();
+  if (fs.existsSync(playersIndexPath)) {
+    try {
+      const playersIndex = JSON.parse(
+        fs.readFileSync(playersIndexPath, 'utf-8'),
+      ) as Array<{
+        id: number;
+        lastName: string;
+        firstName: string;
+      }>;
+      for (const p of playersIndex) {
+        const key = `${p.lastName}::${p.firstName}`;
+        // If multiple IDs exist, the first one is used (similar to players/index.tsx)
+        if (!playerIndexMap.has(key)) {
+          playerIndexMap.set(key, p.id);
+        }
+      }
+    } catch (err) {
+      console.error('failed to parse players index.json', err);
+    }
+  }
   const infoPath = path.join(
     process.cwd(),
     'data',
@@ -485,6 +511,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (fs.existsSync(detailsPath)) {
     try {
       detailData = JSON.parse(fs.readFileSync(detailsPath, 'utf-8'));
+
+      // Resolve player IDs
+      if (detailData && Array.isArray(detailData.participants)) {
+        for (const p of detailData.participants) {
+          if (p.lastName && p.firstName) {
+            const key = `${p.lastName}::${p.firstName}`;
+            const pid = playerIndexMap.get(key);
+            if (pid !== undefined) {
+              p.playerId = pid;
+            }
+          }
+        }
+      }
     } catch (err) {
       detailsWarnings.push(
         `details JSON parse error: ${detailsPath} - ${String(err)}`,

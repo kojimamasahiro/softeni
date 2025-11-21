@@ -6,8 +6,7 @@ import { TournamentDetailData } from '@/types';
 
 type DisplayPart = {
   text: string;
-  id?: string;
-  noLink?: boolean;
+  id?: number;
 };
 
 interface Member {
@@ -23,7 +22,6 @@ interface Props {
 export default function TeamResults({ detailData }: Props) {
   // すべての detailData からベスト8以上の選手を集め、チームごとにまとめる
   const shouldLinkTeams = false; // detailData では teamId が安定して取れないためリンクは無効にする
-  const shouldLinkPlayers = false; // 一時的に選手リンクを無効化
 
   const TOP_SET = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
 
@@ -92,10 +90,10 @@ export default function TeamResults({ detailData }: Props) {
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
               return idx < players.length - 1
                 ? [
-                  { text: name, id: pl.id },
+                  { text: name, id: pl.playerId },
                   { text: '・', noLink: true },
                 ]
-                : [{ text: name, id: pl.id }];
+                : [{ text: name, id: pl.playerId }];
             });
 
             const member: Member = {
@@ -124,7 +122,7 @@ export default function TeamResults({ detailData }: Props) {
               const first = pl.firstName ?? '';
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
 
-              const displayParts: DisplayPart[] = [{ text: name, id: pl.id }];
+              const displayParts: DisplayPart[] = [{ text: name, id: pl.playerId }];
 
               const member: Member = {
                 result: label || 'ベスト8',
@@ -155,7 +153,7 @@ export default function TeamResults({ detailData }: Props) {
           const first = pl.firstName ?? '';
           const name = `${last}${first}`.trim() || '';
 
-          const displayParts: DisplayPart[] = [{ text: name, id: pl.id }];
+          const displayParts: DisplayPart[] = [{ text: name, id: pl.playerId }];
 
           const member: Member = {
             result: label || 'ベスト8',
@@ -254,7 +252,7 @@ export default function TeamResults({ detailData }: Props) {
                     {members.map((m, j) => (
                       <span key={j}>
                         {m.displayParts.map((part, k) =>
-                          part.id && !part.noLink && shouldLinkPlayers ? (
+                          part.id ? (
                             <Link
                               key={k}
                               href={`/players/${part.id}/results`}
