@@ -17,6 +17,12 @@ export default function Header() {
           >
             大会結果
           </Link>
+          <Link
+            href="/players"
+            className="hover:text-blue-600 transition-colors"
+          >
+            選手一覧
+          </Link>
           <Link href="/beta" className="hover:text-blue-600 transition-colors">
             ベータ機能
           </Link>
