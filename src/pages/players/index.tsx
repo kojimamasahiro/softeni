@@ -196,7 +196,7 @@ export default function PlayersPage({
                 onChange={(e) => setSortBy(e.target.value as 'count' | 'name')}
                 className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm"
               >
-                <option value="count">出現回数順</option>
+                <option value="count">出場回数順</option>
                 <option value="name">名前順</option>
               </select>
             </div>
@@ -206,7 +206,7 @@ export default function PlayersPage({
                 htmlFor="filterMinCount"
                 className="text-sm font-medium text-gray-700 dark:text-gray-300"
               >
-                最小出現回数:
+                最小出場回数:
               </label>
               <select
                 id="filterMinCount"
@@ -228,12 +228,12 @@ export default function PlayersPage({
                 <>
                   <span className="font-medium">「{searchQuery}」</span>
                   {sortedAndFilteredGroups.length}組 の検索結果
-                  {filterMinCount > 2 && ` (${filterMinCount}回以上出現)`}
+                  {filterMinCount > 2 && ` (${filterMinCount}回以上出場)`}
                 </>
               ) : (
                 <>
                   {sortedAndFilteredGroups.length}組の同姓同名選手を表示中
-                  {filterMinCount > 2 && ` (${filterMinCount}回以上出現のみ)`}
+                  {filterMinCount > 2 && ` (${filterMinCount}回以上出場のみ)`}
                 </>
               )}
             </div>
@@ -268,7 +268,7 @@ export default function PlayersPage({
                     )}
                   </h2>
                   <div className="text-sm text-gray-500 dark:text-gray-400">
-                    {group.count}回出現
+                    {group.count}回出場
                   </div>
                 </div>
 
