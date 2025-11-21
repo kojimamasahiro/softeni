@@ -149,23 +149,23 @@ export default function Home({ recentTournaments }: HomeProps) {
               <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
 
               <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
-                本サイトにてよく見られている選手です。選手ごとにプロフィールや大会の成績を確認できます。
+                本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 {[
                   {
-                    id: 'uematsu-toshiki',
+                    id: '19',
                     name: '上松 俊樹',
                     team: 'NTT西日本',
                   },
                   {
-                    id: 'ueoka-shunsuke',
+                    id: '20',
                     name: '上岡 俊介',
                     team: 'Up Rise',
                   },
                   {
-                    id: 'maruyama-kaito',
+                    id: '12',
                     name: '丸山 海斗',
                     team: 'one team',
                   },
@@ -173,7 +173,7 @@ export default function Home({ recentTournaments }: HomeProps) {
                   <div
                     key={player.id}
                     onClick={() =>
-                      (window.location.href = `/players/${player.id}`)
+                      (window.location.href = `/players/${player.id}/results`)
                     }
                     className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
