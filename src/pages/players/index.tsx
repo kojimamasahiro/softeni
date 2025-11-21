@@ -254,7 +254,7 @@ export default function PlayersPage({
                   <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
                     {group.playerId ? (
                       <Link
-                        href={`/players/${group.playerId}`}
+                        href={`/players/${group.playerId}/results`}
                         className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         {searchQuery
