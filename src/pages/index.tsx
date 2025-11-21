@@ -23,12 +23,11 @@ interface RecentTournament {
 }
 
 interface HomeProps {
-  players: PlayerInfo[];
   recentTournaments: RecentTournament[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Home({ players, recentTournaments }: HomeProps) {
+export default function Home({ recentTournaments }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
 
   // クライアントサイドでのみ処理を実行
@@ -120,7 +119,7 @@ export default function Home({ players, recentTournaments }: HomeProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                 {recentTournaments.map((tournament) => (
                   <div
-                    key={`${tournament.id}-${tournament.year}-${tournament.category}`}
+                    key={`${tournament.id}-${tournament.year}`}
                     onClick={() => (window.location.href = tournament.link)}
                     className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
@@ -319,7 +318,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      players,
       recentTournaments: tournaments,
     },
   };
