@@ -35,6 +35,7 @@ interface SameNameGroup {
   players: PlayerResult[];
   count: number;
   differentTeams: string[];
+  playerId?: string | null;
 }
 
 interface SameNamePlayerPageProps {
@@ -251,9 +252,20 @@ export default function PlayersPage({
               >
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                    {searchQuery
-                      ? highlightMatch(group.fullName, searchQuery)
-                      : group.fullName}
+                    {group.playerId ? (
+                      <Link
+                        href={`/players/${group.playerId}`}
+                        className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        {searchQuery
+                          ? highlightMatch(group.fullName, searchQuery)
+                          : group.fullName}
+                      </Link>
+                    ) : searchQuery ? (
+                      highlightMatch(group.fullName, searchQuery)
+                    ) : (
+                      group.fullName
+                    )}
                   </h2>
                   <div className="text-sm text-gray-500 dark:text-gray-400">
                     {group.count}回出現
@@ -268,11 +280,11 @@ export default function PlayersPage({
                     <span className="ml-2 text-gray-600 dark:text-gray-400">
                       {searchQuery
                         ? group.differentTeams.map((team, i) => (
-                            <span key={team}>
-                              {i > 0 && ', '}
-                              {highlightMatch(team, searchQuery)}
-                            </span>
-                          ))
+                          <span key={team}>
+                            {i > 0 && ', '}
+                            {highlightMatch(team, searchQuery)}
+                          </span>
+                        ))
                         : group.differentTeams.join(', ')}
                     </span>
                   </div>
@@ -306,9 +318,9 @@ export default function PlayersPage({
                             >
                               {searchQuery
                                 ? highlightMatch(
-                                    `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
-                                    searchQuery,
-                                  )
+                                  `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
+                                  searchQuery,
+                                )
                                 : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
                             </Link>
                           </div>
@@ -512,6 +524,7 @@ export const getStaticProps: GetStaticProps = async () => {
               categoryLabel:
                 humanLabel ??
                 `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
+              playerId: String(indexMap.get(nameKey)![0]),
             };
             if (!playerMap.has(nameKey)) playerMap.set(nameKey, []);
             playerMap.get(nameKey)!.push(playerResult);
@@ -534,6 +547,8 @@ export const getStaticProps: GetStaticProps = async () => {
       })),
       count: uniquePlayersArray.length,
       differentTeams,
+      playerId:
+        uniquePlayersArray.find((p) => p.playerId)?.playerId ?? undefined,
     });
   }
 
