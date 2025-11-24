@@ -1,6 +1,5 @@
 [
   {
-    "informationId": "INF00006",
     "year": 2025,
     "location": "広島県",
     "startDate": "2025-06-14",
@@ -63,6 +62,57 @@
         "category": "doubles",
         "gender": "mixed",
         "age": "over70"
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "location": "奈良県",
+    "startDate": "2024-06-15",
+    "endDate": "2024-06-16",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      {
+        "categoryId": "doubles-none-mixed",
+        "label": "一般",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "location": "熊本県",
+    "startDate": "2023-06-10",
+    "endDate": "2023-06-11",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      {
+        "categoryId": "doubles-none-mixed",
+        "label": "一般",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "location": "福島県",
+    "startDate": "2022-06-18",
+    "endDate": "2022-06-19",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp",
+    "categories": [
+      {
+        "categoryId": "doubles-none-mixed",
+        "label": "一般",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "none"
       }
     ]
   }

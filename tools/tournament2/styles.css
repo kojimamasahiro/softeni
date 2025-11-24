@@ -107,6 +107,8 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 可変カラム */
   gap: 16px;
+  max-height: 80vh; /* limit height to enable scrolling */
+  overflow-y: auto; /* enable vertical scroll */
 }
 
 /* ラウンド毎のカラム */

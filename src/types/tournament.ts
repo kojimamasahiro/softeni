@@ -17,7 +17,6 @@ export interface TournamentCategoryInfo {
 }
 
 export interface TournamentInformationEntry {
-  informationId: string;
   year: number;
   location: string;
   startDate: string;

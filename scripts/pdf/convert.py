@@ -18,14 +18,20 @@ with open(INPUT_CSV, newline='', encoding="utf-8") as f:
         team = row["Team_Name"]
         prefecture = row["Area_Name"]
 
+        # 括弧を除去した文字列を使用
+        cleaned_last = last.replace('(', '').replace(')', '').replace('（', '').replace('）', '')
+        cleaned_first = first.replace('(', '').replace(')', '').replace('（', '').replace('）', '')
+        cleaned_team = team.replace('(', '').replace(')', '').replace('（', '').replace('）', '')
+        cleaned_prefecture = prefecture.replace('(', '').replace(')', '').replace('（', '').replace('）', '')
         player_obj = {
-            "lastName": last,
-            "firstName": first,
-            "team": team,
-            "prefecture": prefecture,
+            "lastName": cleaned_last,
+            "firstName": cleaned_first,
+            "team": cleaned_team,
+            "prefecture": cleaned_prefecture,
             "playerId": None,
-            "tempId": f"{last}_{first}_{team}"
+            "tempId": f"{cleaned_last}_{cleaned_first}_{cleaned_team}"
         }
+
 
         players_by_entry.setdefault(entry_no, []).append(player_obj)
 

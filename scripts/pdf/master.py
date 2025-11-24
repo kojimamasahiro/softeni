@@ -10,114 +10,40 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUM = 1                       # 抽出するページ番号（1から開始）
-
-# ★ Y軸抽出範囲の定義 (単位: ポイント)
-# ページの標準的な高さは約842pt (A4縦)です。
-Y_CROP_MIN = 80                  # ★ 抽出範囲の最小Y座標 (上端)
-Y_CROP_MAX = 750                 # ★ 抽出範囲の最大Y座標 (下端)
-
+PAGE_NUMS = list(range(1, 2))       # 抽出するページ番号のリスト（1から開始）
 UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
 SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
 AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
 
-# ★ 選手名（姓・名）のX座標は、このファイルで使用される。
-X_LEFT_SURNAME_MIN = 90    # 左側 姓の最小X座標
+X_LEFT_SURNAME_MIN = 70    # 左側 姓の最小X座標
 X_LEFT_SURNAME_MAX = 110   # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 111 # 左側 名の最小X座標
-X_LEFT_FIRSTNAME_MAX = 135 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 160    # 左側 地域名/都道府県名の最小X座標
-X_LEFT_AREA_MAX = 195    # 左側 地域名/都道府県名の最大X座標
-X_LEFT_TEAM_MIN = 210    # 左側 チーム名の最小X座標
-X_LEFT_TEAM_MAX = 290   # 左側 チーム名の最大X座標
-X_LEFT_ENTRY_MIN = 50    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 80    # 左側エントリー番号の最大X座標
-
-X_RIGHT_SURNAME_MIN = 400   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 455   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 460 # 右側 名の最小X座標
-X_RIGHT_FIRSTNAME_MAX = 510 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 515  # 右側 地域名/都道府県名の最小X座標
-X_RIGHT_AREA_MAX = 590  # 右側 地域名/都道府県名の最大X座標
-X_RIGHT_TEAM_MIN = 515  # 右側 チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 590  # 右側 チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 600  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 620  # 右側エントリー番号の最大X座標
-
-# チーム名を特定するための予備キーワードリスト
-TEAM_KEYWORDS = ['高校', '大学']
-# ---------------------------------------------
-
-# グローバル変数として辞書とカウンターを読み込む
-UNIVERSITY_NAMES = []
-SURNAME_LIST = []
-AREA_NAMES = []
-
-try:
-    with open(UNIVERSITY_LIST_PATH, 'r', encoding='utf8') as f:
-        UNIVERSITY_NAMES = [line.strip() for line in f if line.strip()]
-        UNIVERSITY_NAMES.sort(key=len, reverse=True) 
-except FileNotFoundError:
-    print(f"警告: 大学名辞書ファイル '{UNIVERSITY_LIST_PATH}' が見つかりません。")
-
-try:
-    with open(SURNAME_LIST_PATH, 'r', encoding='utf8') as f:
-        SURNAME_LIST = [line.strip() for line in f if line.strip()]
-        SURNAME_LIST.sort(key=len, reverse=True) 
-except FileNotFoundError:
-    print(f"警告: 姓の辞書ファイル '{SURNAME_LIST_PATH}' が見つかりません。文字数ルールのみ使用されます。")
-    
-try:
-    with open(AREA_LIST_PATH, 'r', encoding='utf8') as f:
-        # エリア名が他のエリア名の一部である可能性があるため、長い順にソートする（最長一致）
-        AREA_NAMES = [line.strip() for line in f if line.strip()]
-        AREA_NAMES.sort(key=len, reverse=True) 
-except FileNotFoundError:
-    print(f"警告: エリア名辞書ファイル '{AREA_LIST_PATH}' が見つかりません。エリア名は空欄になります。")
-
-
-# ---------------------------------------------
-# 判定・整形関数 (ほとんどは互換性維持のためのダミー)
-# ---------------------------------------------
-
-def is_team_name_line(text):
-    """テキストがチーム名を含むかどうかを判定する（辞書とキーワードベース）"""
-    clean_text = re.sub(r'[\(\)\d]+', '', text).strip()
-    if not clean_text: return False
-    return any(keyword in clean_text for keyword in TEAM_KEYWORDS)
-
-def extract_area_and_team_data(raw_text):
-    """チーム名の行から、エリア名、チーム名本体を分離する。"""
-    clean_text = raw_text.replace('(', '').replace(')', '').strip()
-    area_name = ""
-    team_part = clean_text
-    if AREA_NAMES:
-        for a_name in AREA_NAMES:
-            if clean_text.startswith(a_name):
-                area_name = a_name
-                team_part = clean_text[len(a_name):].strip()
-                break
-    team_name = re.sub(r'[\(\)\d]+', '', team_part).strip()
-    return area_name, team_name
-
-def get_name_split_info(raw_text, chars_in_line=pd.DataFrame()):
-    """選手名から姓と名を分離し、元の文字列と分割インデックスを返す。"""
-    player_name_clean = raw_text.strip()
-    return "", "", player_name_clean, 0
+X_LEFT_FIRSTNAME_MIN = 110 # 左側 名の最小X座標
+X_LEFT_FIRSTNAME_MAX = 165 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 175    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 250    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 255    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 360   # チーム名の最大X座標
+X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+X_RIGHT_SURNAME_MIN = 360   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 400   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 400 # 右側 名の最小X座標
+X_RIGHT_FIRSTNAME_MAX = 430 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 436  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 461  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 465  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 530  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 540  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
 # ---------------------------------------------
 
 def get_chars_data_from_pdf(pdf_path, page_num):
-    """
-    PDFから文字情報（テキストと座標）を抽出し、DataFrameとして返す
-    ★ Y軸フィルタリングを追加
-    """
-    global Y_CROP_MIN, Y_CROP_MAX
-    
+    """PDFから文字情報（テキストと座標）を抽出し、DataFrameとして返す"""
     try:
         with pdfplumber.open(pdf_path) as pdf:
             page = pdf.pages[page_num - 1]
@@ -130,9 +56,6 @@ def get_chars_data_from_pdf(pdf_path, page_num):
             df = df.rename(columns={'x0': 'left'}) 
             df = df[df['text'].str.strip() != '']
             
-            # ★ Y軸フィルタリングの適用
-            df = df[(df['top'] >= Y_CROP_MIN) & (df['top'] <= Y_CROP_MAX)].reset_index(drop=True)
-            
             return df.reset_index(drop=True)
 
     except Exception as e:
@@ -142,10 +65,12 @@ def get_chars_data_from_pdf(pdf_path, page_num):
 def _group_and_extract_side(side_chars_df, is_left_side):
     """
     左右どちらか一方の文字データを受け取り、Y軸でグループ化して選手情報を抽出する
-    新しい仕様: 3行で1ペア (1行目: 選手A + 地域, 2行目: エントリー番号, 3行目: 選手B + チーム)
     """
     if side_chars_df.empty:
         return []
+
+    ################## 指定する
+    extraction_strategy = roundrobin_extraction_strategy
 
     # 座標設定を決定
     if is_left_side:
@@ -165,7 +90,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
             'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
         }
 
-    # 1. Y座標に基づき、文字レベルのデータを「行レベル」のデータに集約
+    # 1. Y座標に基づき、文字レベルのデータを「行レベル」のデータに集約 (既存のロジック)
     data = side_chars_df.sort_values(by=['top', 'left']).copy()
 
     # 'top' の差分と、1つ前の文字の 'size' を計算
@@ -173,34 +98,81 @@ def _group_and_extract_side(side_chars_df, is_left_side):
     data['prev_size'] = data['size'].shift(1).fillna(data['size'].iloc[0] if not data.empty else 0)
 
     def calculate_is_new_line(row):
-        """動的な許容誤差に基づいて新しい行かどうかを判定"""
+        """現在の行または直前の文字のサイズが小さい場合、より大きなY許容誤差を適用する"""
         
+        # 最初の行は必ず False
         if row.name == 0:
-            return True
+            return False
 
+        # デフォルトの許容誤差
         tolerance = Y_TOLERANCE
         
-        # フォントサイズが小さい場合は、許容誤差を緩める
-        if (row['size'] < SMALL_SIZE_THRESHOLD) or (row['prev_size'] < SMALL_SIZE_THRESHOLD):
-            tolerance = 3 
+        # 現在の文字または直前の文字のいずれかが小さいフォントサイズであれば、許容誤差を緩める
+        if (row['size'] < SMALL_SIZE_THRESHOLD):
+            tolerance = 3
+        elif (row['prev_size'] < SMALL_SIZE_THRESHOLD):
+            tolerance = 1
         return row['top_diff'] > tolerance
 
     # 動的な許容誤差に基づいて新しい行かどうかを判定
     data['is_new_line'] = data.apply(calculate_is_new_line, axis=1)
     data['line_group'] = data['is_new_line'].cumsum()
     
-    # 2. line_dataの生成
+    # 2. line_dataの生成 (Y座標の範囲を使用するためtop_min/maxを取得)
     line_data = data.groupby('line_group').agg(
         full_text=('text', lambda x: "".join(x).strip()),
         top_min=('top', 'min'),   
         top_max=('top', 'max')    
     ).reset_index()
 
+    # 3. 戦略に基づいてデータを抽出
+    RESULTS = extraction_strategy(line_data, data, X_SETTINGS)
+        
+    return RESULTS
+
+# singles
+def singles_extraction_strategy(line_data, data_df, X_SETTINGS):
+    """
+    標準的な抽出戦略: 1行ずつ走査してデータを抽出する
+    """
     RESULTS = []
-    i = 0
-    
-    # 3. 行を走査する
-    while i < len(line_data):
+    for i in range(len(line_data)):
+        line = line_data.iloc[i]
+
+        # スコア行などのフィルタリング
+        text_check = line['full_text'].strip()
+        # 非常に短いテキスト、数字・記号のみ、またはスコアパターンの場合はスキップ
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            continue
+
+        # 1行からすべての情報を抽出
+        surname, firstname, raw_name, area, team, entry_text = extract_single_line_content(line, data_df, X_SETTINGS)
+
+        # 選手名が存在する場合のみ追加
+        if surname and firstname:
+            entry_number = None
+            if entry_text and entry_text.isdigit():
+                entry_number = int(entry_text)
+            
+            RESULTS.append({
+                'Surname': surname, 'First_Name': firstname,
+                'Player_Name_Raw': raw_name, 'Split_Index': len(surname),
+                'Area_Name': area,
+                'Team_Name': team,
+                'Entry_Number': entry_number
+            })
+    return RESULTS
+
+### roundrobin
+def roundrobin_extraction_strategy(line_data, data_df, X_SETTINGS):
+    """
+    標準的な抽出戦略: 1行ずつ走査してデータを抽出する
+    """
+    RESULTS = []
+    _number = 1
+    for i in range(len(line_data)):
         line_1 = line_data.iloc[i] # 選手Aの行 (選手A + 地域名)
 
         # -----------------------------------------------------------------
@@ -225,18 +197,18 @@ def _group_and_extract_side(side_chars_df, is_left_side):
             # print(f"  行 {i+3} テキスト: '{line_3['full_text']}'")
 
             # --- Line 1 (選手A + 地域名) の抽出 ---
-            surname_a, firstname_a, raw_name_a, area_a, team_a, entry_a = extract_single_line_content(line_1, data, X_SETTINGS)
-            p1 = check_line_presence(line_1, data, X_SETTINGS)
+            surname_a, firstname_a, raw_name_a, area_a, team_a, entry_a = extract_single_line_content(line_1, data_df, X_SETTINGS)
+            p1 = check_line_presence(line_1, data_df, X_SETTINGS)
 
             # --- Line 2 (エントリー番号) の抽出 ---
             # line_2はエントリー番号のみを抽出（他のフィールドは無視）
-            surname_entry, firstname_entry, raw_name_entry, area_entry, team_entry, entry_number_raw = extract_single_line_content(line_2, data, X_SETTINGS)
+            surname_entry, firstname_entry, raw_name_entry, area_entry, team_entry, entry_number_raw = extract_single_line_content(line_2, data_df, X_SETTINGS)
 
-            p2 = check_line_presence(line_2, data, X_SETTINGS) # 存在チェック
+            p2 = check_line_presence(line_2, data_df, X_SETTINGS) # 存在チェック
             
             # --- Line 3 (選手B + チーム名) の抽出 ---
-            surname_b, firstname_b, raw_name_b, area_b, team_b, entry_b = extract_single_line_content(line_3, data, X_SETTINGS)
-            p3 = check_line_presence(line_3, data, X_SETTINGS) # 存在チェック
+            surname_b, firstname_b, raw_name_b, area_b, team_b, entry_b = extract_single_line_content(line_3, data_df, X_SETTINGS)
+            p3 = check_line_presence(line_3, data_df, X_SETTINGS) # 存在チェック
 
             # -------------------------------------------------------------
             # 判定ロジック
@@ -248,13 +220,13 @@ def _group_and_extract_side(side_chars_df, is_left_side):
 
             # 2行目からすべての情報を抽出
             # raw_name_2 は通常空（選手名なし）のはず
-            raw_surname_2, raw_firstname_2, raw_name_2, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data, X_SETTINGS)
+            raw_surname_2, raw_firstname_2, raw_name_2, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
             
             # 必須条件: 2行目に有効な数字（エントリー番号）が存在すること
             is_entry_line = entry_text_2 and entry_text_2.isdigit()
             
             if is_entry_line:
-                p3 = check_line_presence(line_3, data, X_SETTINGS)
+                p3 = check_line_presence(line_3, data_df, X_SETTINGS)
 
                 # 判定条件: 1行目と3行目に選手名が存在すること
                 is_valid_3_line_group = p1['player'] and p3['player']
@@ -262,14 +234,16 @@ def _group_and_extract_side(side_chars_df, is_left_side):
                 if is_valid_3_line_group:
                     
                     # 選手Aと選手Bの行からデータを抽出 (2行目から取れるデータは無視)
-                    surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data, X_SETTINGS)
-                    surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data, X_SETTINGS)
+                    surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                    surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
 
                     # 選手Aと選手Bのどちらからも有効なデータ（選手名）が取得できた場合
                     if surname_a and firstname_a and surname_b and firstname_b: 
                         
                         # 1. エントリー番号を2行目から確定
-                        entry_number = int(entry_text_2)
+                        # entry_number = int(entry_text_2)
+                        entry_number = _number
+                        _number += 1
 
                         # 選手Aの情報を追加
                         # _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
@@ -303,7 +277,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         
     return RESULTS
 
-def structure_player_data(chars_df):
+def structure_player_data(chars_df, page_num):
     """
     PDFの文字データをX軸で左右に分割し、独立して選手情報を抽出する
     """
@@ -314,20 +288,19 @@ def structure_player_data(chars_df):
     # ★ デバッグ機能の統合: PDFページを画像として出力し、抽出範囲を描画する
     # -----------------------------------------------------------------
     try:
-        if not os.path.exists('output'):
-            os.makedirs('output')
         with pdfplumber.open(PDF_PATH) as pdf:
-            page = pdf.pages[PAGE_NUM - 1]
-            DEBUG_IMAGE_PATH = f'output/debug_page.png' # ページ番号をファイル名に含める
+            page = pdf.pages[page_num - 1]
+            DEBUG_IMAGE_PATH = f'output/debug_page_{page_num}.png'
+            # draw_extraction_boxesの定義をmainブロックの外側に配置し、アクセス可能にする必要があります
             draw_extraction_boxes(page, DEBUG_IMAGE_PATH) 
     except Exception as e:
         print(f"警告: デバッグ画像の生成中にエラーが発生しました: {e}")
 
     # 2. 文字データを左右に分割
-    # 左右の分割は、最大X座標の定義に依存する
     chars_left = chars_df[chars_df['left'] <= X_LEFT_TEAM_MAX].copy()
     chars_right = chars_df[chars_df['left'] >= X_RIGHT_SURNAME_MIN].copy()
 
+    # 3. 左右それぞれで抽出ロジックを実行
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
     # results_right = _group_and_extract_side(chars_right, is_left_side=False)
@@ -374,7 +347,7 @@ def check_line_presence(line_data_row, data_df, X_SETTINGS):
 
 def extract_single_line_content(line_data_row, data_df, X_SETTINGS):
     """
-    1行のデータから、X座標設定に基づき選手名、エリア名、チーム名、エントリー番号の実際のテキストを抽出する。
+    1行のデータから、X座標設定に基づき選手名、エリア名、チーム名の実際のテキストを抽出する。
     """
     Y_MIN, Y_MAX = line_data_row['top_min'], line_data_row['top_max']
     
@@ -384,8 +357,7 @@ def extract_single_line_content(line_data_row, data_df, X_SETTINGS):
             (data_df['left'] >= min_x) & (data_df['left'] <= max_x) &
             (data_df['top'] >= Y_MIN) & (data_df['top'] <= Y_MAX)
         ]
-        # X座標の昇順で並び替えて結合
-        return "".join(chars.sort_values(by='left')['text']).strip()
+        return "".join(chars['text']).strip()
 
     # 1. 生のテキスト抽出
     raw_surname_text = extract_text(X_SETTINGS['SURNAME_MIN'], X_SETTINGS['SURNAME_MAX'])
@@ -394,19 +366,13 @@ def extract_single_line_content(line_data_row, data_df, X_SETTINGS):
     raw_team_text = extract_text(X_SETTINGS['TEAM_MIN'], X_SETTINGS['TEAM_MAX'])
     raw_entry_text = extract_text(X_SETTINGS['ENTRY_MIN'], X_SETTINGS['ENTRY_MAX'])
 
-    # 選手名は姓と名を結合（間にスペースなし）
-    raw_name_text = f"{raw_surname_text}{raw_firstname_text}".strip()
-    
-    # 新しいレイアウトに対応するため、戻り値をすべて返す
-    return raw_surname_text, raw_firstname_text, raw_name_text, raw_area_text, raw_team_text, raw_entry_text
+    return raw_surname_text, raw_firstname_text, f"{raw_surname_text}{raw_firstname_text}", raw_area_text, raw_team_text, raw_entry_text
 
 def draw_extraction_boxes(page, file_path):
     """
-    pdfplumberページオブジェクトに、設定されたX座標およびY座標の抽出範囲を描画する。
-    描画ライブラリが整数座標を要求するため、座標はintにキャストされる。
+    pdfplumberページオブジェクトに、設定されたX座標の抽出範囲を描画する。
     """
-    global Y_CROP_MIN, Y_CROP_MAX
-    # X座標のグローバル変数群
+
     global X_LEFT_SURNAME_MIN, X_LEFT_SURNAME_MAX, X_LEFT_FIRSTNAME_MIN, X_LEFT_FIRSTNAME_MAX
     global X_LEFT_AREA_MIN, X_LEFT_AREA_MAX, X_LEFT_TEAM_MIN, X_LEFT_TEAM_MAX
     global X_RIGHT_SURNAME_MIN, X_RIGHT_SURNAME_MAX, X_RIGHT_FIRSTNAME_MIN, X_RIGHT_FIRSTNAME_MAX
@@ -414,6 +380,7 @@ def draw_extraction_boxes(page, file_path):
     global X_LEFT_ENTRY_MIN, X_LEFT_ENTRY_MAX, X_RIGHT_ENTRY_MIN, X_RIGHT_ENTRY_MAX
 
 
+    # 左右のエントリー番号のX設定をX_SETTINGSに含めるために統合
     X_SETTINGS_LEFT = {
         'SURNAME_MIN': X_LEFT_SURNAME_MIN, 'SURNAME_MAX': X_LEFT_SURNAME_MAX,
         'FIRSTNAME_MIN': X_LEFT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_LEFT_FIRSTNAME_MAX,
@@ -430,47 +397,49 @@ def draw_extraction_boxes(page, file_path):
         'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
     }
 
+    # 描画する矩形 (rects) のリスト
     rects = []
     
+    # 色の設定 (R, G, B)
     COLORS = {
         'SURNAME': (0, 0, 255),    # 青
         'FIRSTNAME': (255, 255, 0),# 黄
-        'AREA': (0, 255, 0),      # 緑 (地域名)
-        'TEAM': (255, 0, 0),      # 赤 (チーム名)
+        'AREA': (0, 255, 0),      # 緑
+        'TEAM': (255, 0, 0),      # 赤
         'ENTRY': (255, 165, 0),   # オレンジ
-        'CROP_LINE': (0, 0, 0)     # 黒 (クロップ境界線)
     }
-    
+
     def add_rects(settings):
-        # 選手名A/B
+        # 選手名
         rects.append({'rect': (settings['SURNAME_MIN'], 0, settings['SURNAME_MAX'], page.height), 'color': COLORS['SURNAME']})
         rects.append({'rect': (settings['FIRSTNAME_MIN'], 0, settings['FIRSTNAME_MAX'], page.height), 'color': COLORS['FIRSTNAME']})
-        # 地域名 (Line 1)
+        # エリア名
         rects.append({'rect': (settings['AREA_MIN'], 0, settings['AREA_MAX'], page.height), 'color': COLORS['AREA']})
-        # チーム名 (Line 3)
+        # チーム名
         rects.append({'rect': (settings['TEAM_MIN'], 0, settings['TEAM_MAX'], page.height), 'color': COLORS['TEAM']})
-        # エントリー番号 (Line 2)
+        # エントリー番号
         rects.append({'rect': (settings['ENTRY_MIN'], 0, settings['ENTRY_MAX'], page.height), 'color': COLORS['ENTRY']})
 
+    # 左右の範囲を追加
     add_rects(X_SETTINGS_LEFT)
     add_rects(X_SETTINGS_RIGHT)
 
-    # draw_lineもintの座標を使用
-    rects.append({'rect': (0, Y_CROP_MIN, page.width, Y_CROP_MIN), 'color': COLORS['CROP_LINE'], 'fill': COLORS['CROP_LINE']}) # Top boundary
-    rects.append({'rect': (0, Y_CROP_MAX, page.width, Y_CROP_MAX), 'color': COLORS['CROP_LINE'], 'fill': COLORS['CROP_LINE']}) # Bottom boundary
-
+    # ページ全体を画像として取得
     im = page.to_image()
 
+    # 各矩形を描画
     for rect in rects:
+        # ページ全体にわたる縦線として描画するため、Y座標は 0 からページ高さまでとする
         im.draw_rect(
             rect['rect'], 
-            stroke=rect['color'],
+            stroke=rect['color'], # 枠線の色
             stroke_width=1
         ) 
 
+    # 画像を保存
     im.save(file_path)
 
-    print(f"✅ デバッグ画像が '{file_path}' に保存されました。X座標およびY座標の抽出範囲の確認にご利用ください。")
+    print(f"✅ デバッグ画像が '{file_path}' に保存されました。X座標の確認にご利用ください。")
 
 # ---------------------------------------------
 # メイン処理
@@ -479,21 +448,38 @@ if __name__ == '__main__':
     if not os.path.exists(PDF_PATH):
         print(f"エラー: 入力ファイル '{PDF_PATH}' が見つかりません。ファイルを配置してください。")
     else:
-        chars_data_df = get_chars_data_from_pdf(PDF_PATH, PAGE_NUM)
+        all_structured_dfs = []
         
-        if chars_data_df.empty:
-            print("致命的なエラー: PDFから文字データが取得できませんでした。")
-        else:
-            print("--- PDF文字データ抽出開始 ---")
-            structured_df = structure_player_data(chars_data_df)
-            # print(chars_data_df[['text', 'left', 'top']])
-
+        for page_num in PAGE_NUMS:
+            print(f"--- ページ {page_num} の処理開始 ---")
+            chars_data_df = get_chars_data_from_pdf(PDF_PATH, page_num)
+            
+            if chars_data_df.empty:
+                print(f"警告: ページ {page_num} から文字データが取得できませんでした。スキップします。")
+                continue
+            
+            structured_df = structure_player_data(chars_data_df, page_num)
+            
             if not structured_df.empty:
-                OUTPUT_FILE = 'output/softtennis_players_separated.csv'
-                output_cols = ['Entry_Number', 'Surname', 'First_Name', 'Player_Name_Raw', 'Area_Name', 'Team_Name', 'Split_Index']
-                structured_df[output_cols].to_csv(OUTPUT_FILE, index=False, encoding='utf8')
-
-                print("\n--- 抽出結果（先頭3行） ---")
-                print(structured_df[output_cols].head(3))
+                all_structured_dfs.append(structured_df)
+                print(f"ページ {page_num}: {len(structured_df)} 件のデータを抽出しました。")
             else:
-                print("構造化処理の結果、有効な選手データが抽出されませんでした。")
+                print(f"ページ {page_num}: 有効なデータが見つかりませんでした。")
+
+        if all_structured_dfs:
+            final_df = pd.concat(all_structured_dfs, ignore_index=True)
+            
+            OUTPUT_FILE = 'output/softtennis_players_separated.csv'
+            output_cols = ['Entry_Number', 'Surname', 'First_Name', 'Player_Name_Raw', 'Area_Name', 'Team_Name', 'Split_Index']
+            
+            # 全体での重複排除（必要であれば）
+            # final_df = final_df.drop_duplicates(subset=['Surname', 'First_Name', 'Team_Name']).reset_index(drop=True)
+            
+            final_df[output_cols].to_csv(OUTPUT_FILE, index=False, encoding='utf8')
+
+            print(f"\n✅ 全ページの処理が完了しました。合計 {len(final_df)} 件のデータを抽出しました。")
+            print(f"結果は '{OUTPUT_FILE}' に保存されました。")
+            print("\n--- 抽出結果（先頭3行） ---")
+            print(final_df[output_cols].head(3))
+        else:
+            print("構造化処理の結果、有効な選手データが抽出されませんでした。")
