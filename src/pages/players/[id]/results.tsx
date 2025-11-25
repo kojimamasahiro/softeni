@@ -312,7 +312,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       const opponentNames: string[] = [];
       const opponents: TournamentParticipant[] = [];
 
-      // collect opponent participants first
+      // collect opponent participants for name formatting only
       for (const o of opponentEntryNos) {
         const oe = entryByNo.get(o);
         if (oe && Array.isArray(oe.playerIds)) {
@@ -410,6 +410,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         cntMap.set(partnerId, (cntMap.get(partnerId) || 0) + 1);
       }
 
+      // Don't include opponents array to reduce data size - opponentNames is sufficient
       playerMatches.push({
         tournamentId,
         tournamentName: tournamentMeta.get(tournamentId)?.label || tournamentId,
@@ -417,7 +418,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         round: m.round ?? '予選',
         entryNo: playerEntryNo,
         opponentNames,
-        opponents,
+        opponents: [], // Empty array to maintain type compatibility
         score,
         result: resultFlag,
         partnerId: partnerId ?? null,
@@ -724,6 +725,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     byYear: byYearNormalized,
   };
 
+  // Build minimal allPlayers list - only include partners referenced in stats
+  const referencedPartnerIds = new Set(Object.keys(byPartnerNormalized).filter(k => k !== 'singles'));
+  const minimalPlayersList = allPlayersList.filter(p => referencedPartnerIds.has(p.id));
+
   return {
     props: {
       playerId,
@@ -732,7 +737,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerMatches,
       playerTournaments,
       playerStats,
-      allPlayers: allPlayersList,
+      allPlayers: minimalPlayersList,
       majorTitlesData: await getMajorTitlesForPlayer(
         idx.lastName,
         idx.firstName,

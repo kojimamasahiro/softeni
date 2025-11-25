@@ -23,7 +23,6 @@ interface HomeProps {
   recentTournaments: RecentTournament[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Home({ recentTournaments }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
 
