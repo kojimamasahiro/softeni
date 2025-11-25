@@ -253,7 +253,7 @@ for (const m of data.matches || []) {
   if (m.entryNo != null) {
     const key = String(m.entryNo);
     let playerIds = [];
-    
+
     // For team matches, use m.team as the single playerId
     if (m.team) {
       playerIds = [normalizeRawId(String(m.team))];
@@ -262,7 +262,7 @@ for (const m of data.matches || []) {
     else if (Array.isArray(m.pair)) {
       playerIds = m.pair.map((x) => normalizeRawId(String(x)));
     }
-    
+
     if (!entriesMap.has(key)) {
       entriesMap.set(key, { entryNo: Number(m.entryNo), playerIds });
     } else {
@@ -293,7 +293,7 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
     if (row.entryNo == null) continue;
     const key = String(row.entryNo);
     let playerIds = [];
-    
+
     // For team matches, use row.team
     if (row.team) {
       playerIds = [normalizeRawId(String(row.team))];
@@ -314,7 +314,7 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
         })
         .filter(Boolean);
     }
-    
+
     entriesMap.set(key, { entryNo: Number(row.entryNo), playerIds });
   }
 
@@ -608,14 +608,16 @@ const keyToEntryNo = new Map();
 for (const row of rrRaw) {
   const entryNo = row.entryNo != null ? String(row.entryNo) : null;
   if (!entryNo) continue;
-  
+
   // Map from team key
   if (row.team) {
     keyToEntryNo.set(String(row.team), entryNo);
   }
   // Map from pair key
   if (Array.isArray(row.pair) && row.pair.length) {
-    const pairKey = row.pair.map((x) => String(normalizeRawId(String(x)))).join('|');
+    const pairKey = row.pair
+      .map((x) => String(normalizeRawId(String(x))))
+      .join('|');
     keyToEntryNo.set(pairKey, entryNo);
   }
 }
@@ -644,7 +646,7 @@ for (const [k, perspectives] of rrMap.entries()) {
       }
     }
   }
-  
+
   // If still no entryB, try to resolve from oppKey using the mapping
   if (!entryB && perspectives.length > 0) {
     const firstPerspective = perspectives[0];

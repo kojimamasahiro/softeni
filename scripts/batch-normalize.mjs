@@ -104,7 +104,14 @@ for (const m of matches) {
     if (!e.isFile()) continue;
     if (!e.name.endsWith('.json')) continue;
     // filename filter
-    if (!(e.name.startsWith('doubles') || e.name.startsWith('singles') || e.name.startsWith('team') || e.name.startsWith('versus')))
+    if (
+      !(
+        e.name.startsWith('doubles') ||
+        e.name.startsWith('singles') ||
+        e.name.startsWith('team') ||
+        e.name.startsWith('versus')
+      )
+    )
       continue;
     const filePath = path.join(dir, e.name);
     const outPath = path.join(outDirResolved, e.name);

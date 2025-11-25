@@ -182,17 +182,19 @@ export default function MatchResults({
       if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
 
       // Check if this is a team format (lastName and firstName are both null)
-      const isTeamFormat = players.every(pl => pl?.lastName === null && pl?.firstName === null);
+      const isTeamFormat = players.every(
+        (pl) => pl?.lastName === null && pl?.firstName === null,
+      );
 
       if (isTeamFormat) {
         // For team format: display "チーム名（都道府県）"
         const teamNames = players
-          .map(pl => {
+          .map((pl) => {
             const teamName = pl?.team || '不明';
             const prefecture = pl?.prefecture;
             return prefecture ? `${teamName}（${prefecture}）` : teamName;
           })
-          .filter(name => name !== '不明');
+          .filter((name) => name !== '不明');
         return teamNames.join('・') || `#${entry.entryNo ?? '?'}`;
       }
 
@@ -260,12 +262,12 @@ export default function MatchResults({
         opponentDisplayName:
           typeof opponent === 'number'
             ? buildNameForEntry(
-              (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
-                entryNo: opponent,
-                playerIds: [],
-              },
-              { short: true },
-            )
+                (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
+                  entryNo: opponent,
+                  playerIds: [],
+                },
+                { short: true },
+              )
             : undefined,
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
@@ -303,12 +305,12 @@ export default function MatchResults({
         opponentDisplayName:
           typeof b === 'number'
             ? buildNameForEntry(
-              (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
-                entryNo: b,
-                playerIds: [],
-              },
-              { short: true },
-            )
+                (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
+                  entryNo: b,
+                  playerIds: [],
+                },
+                { short: true },
+              )
             : undefined,
         result:
           m.winnerEntryNo === a
@@ -326,12 +328,12 @@ export default function MatchResults({
         opponentDisplayName:
           typeof a === 'number'
             ? buildNameForEntry(
-              (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
-                entryNo: a,
-                playerIds: [],
-              },
-              { short: true },
-            )
+                (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
+                  entryNo: a,
+                  playerIds: [],
+                },
+                { short: true },
+              )
             : undefined,
         result:
           m.winnerEntryNo === b

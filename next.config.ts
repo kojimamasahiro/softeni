@@ -30,8 +30,10 @@ const nextConfig = {
         permanent: isProd,
       },
       {
-        source: '/tournaments/:generation/:tournamentId/:year/:gameCategory/:ageCategory/:gender/data',
-        destination: '/tournaments/:generation/:tournamentId/:year/:gameCategory/:ageCategory/:gender',
+        source:
+          '/tournaments/:generation/:tournamentId/:year/:gameCategory/:ageCategory/:gender/data',
+        destination:
+          '/tournaments/:generation/:tournamentId/:year/:gameCategory/:ageCategory/:gender',
         permanent: true, // 301 リダイレクト
       },
     ];

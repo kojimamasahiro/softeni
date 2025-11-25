@@ -63,7 +63,6 @@ export default function TournamentYearResultPage({
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-
   return (
     <>
       <MetaHead

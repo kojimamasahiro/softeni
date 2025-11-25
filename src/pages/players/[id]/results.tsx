@@ -14,7 +14,11 @@ import PlayerResults, {
 } from '@/components/PlayerResults';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
-import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
+import {
+  getAllDetailRecords,
+  loadInformationMap,
+  loadTournamentIndex,
+} from '@/lib/tournamentData';
 import { MatchResult } from '@/types/common';
 import type {
   Games as GamesType,
@@ -220,15 +224,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // --- Structured loading using shared helpers ---
   const root = process.cwd();
   const tournamentIndex = await loadTournamentIndex(root);
-  const tournamentMeta = new Map<string, { label?: string; isMajor?: boolean }>();
-  for (const t of tournamentIndex) tournamentMeta.set(t.tournamentId, { label: t.label, isMajor: !!t.isMajorTitle });
+  const tournamentMeta = new Map<
+    string,
+    { label?: string; isMajor?: boolean }
+  >();
+  for (const t of tournamentIndex)
+    tournamentMeta.set(t.tournamentId, {
+      label: t.label,
+      isMajor: !!t.isMajorTitle,
+    });
   const informationMap = await loadInformationMap(root);
   const allDetails = await getAllDetailRecords(root);
   // majorTitlesData will be awaited and included in the returned props below
 
   const playerMatches: PlayerMatch[] = [];
   const playerTournamentsMap = new Map<string, PlayerTournament>();
-  const partnersMap = new Map<string, { id: string; lastName: string; firstName: string; team: string; prefecture: string | null }>();
+  const partnersMap = new Map<
+    string,
+    {
+      id: string;
+      lastName: string;
+      firstName: string;
+      team: string;
+      prefecture: string | null;
+    }
+  >();
   const tournamentMatchesMap = new Map<string, MatchResult[]>();
   const tournamentFinalResult = new Map<string, string | null>();
   // map tournamentKey -> map of partnerId -> count (to pick most frequent partner for that tournament)
@@ -239,11 +259,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const year = rec.year;
     const detail = rec.detail;
 
-    const participants = Array.isArray(detail.participants) ? detail.participants : [];
+    const participants = Array.isArray(detail.participants)
+      ? detail.participants
+      : [];
     const participantById = new Map<string, TournamentParticipant>();
     for (const p of participants) participantById.set(p.id, p);
 
-    const matchingParticipantIds = participants.filter((p) => p.lastName === idx.lastName && p.firstName === idx.firstName).map((p) => p.id);
+    const matchingParticipantIds = participants
+      .filter(
+        (p) => p.lastName === idx.lastName && p.firstName === idx.firstName,
+      )
+      .map((p) => p.id);
     if (matchingParticipantIds.length === 0) continue;
 
     const entries = Array.isArray(detail.entries) ? detail.entries : [];
@@ -256,7 +282,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         for (const pid of e.playerIds) {
           if (pid === matchingParticipantIds[0]) continue;
           const partner = participantById.get(pid);
-          if (partner && !partnersMap.has(pid)) partnersMap.set(pid, { id: partner.id, lastName: partner.lastName, firstName: partner.firstName, team: partner.team, prefecture: partner.prefecture ?? null });
+          if (partner && !partnersMap.has(pid))
+            partnersMap.set(pid, {
+              id: partner.id,
+              lastName: partner.lastName,
+              firstName: partner.firstName,
+              team: partner.team,
+              prefecture: partner.prefecture ?? null,
+            });
         }
       }
     }
@@ -264,7 +297,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const matches = Array.isArray(detail.matches) ? detail.matches : [];
     for (const m of matches) {
       if (!Array.isArray(m.entries) || m.entries.length === 0) continue;
-      const intersection = m.entries.filter((n) => entries.some((ee) => Array.isArray(ee.playerIds) && ee.playerIds.some((pid) => matchingParticipantIds.includes(pid)) && ee.entryNo === n));
+      const intersection = m.entries.filter((n) =>
+        entries.some(
+          (ee) =>
+            Array.isArray(ee.playerIds) &&
+            ee.playerIds.some((pid) => matchingParticipantIds.includes(pid)) &&
+            ee.entryNo === n,
+        ),
+      );
       if (intersection.length === 0) continue;
       const playerEntryNo = intersection[0];
       const opponentEntryNos = m.entries.filter((n) => n !== playerEntryNo);
@@ -287,7 +327,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       // e.g. "苗字A・苗字B（チーム名）"
       if (opponents.length > 0) {
         const lastNames = opponents.map((p) => p.lastName);
-        const teams = opponents.map((p) => (p.team && p.team.trim().length > 0 ? p.team.trim() : ''));
+        const teams = opponents.map((p) =>
+          p.team && p.team.trim().length > 0 ? p.team.trim() : '',
+        );
         const nonEmptyTeams = teams.filter((t) => t.length > 0);
         const allSameTeam =
           nonEmptyTeams.length > 0 &&
@@ -306,19 +348,34 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       let score = '';
       if (m.scores && typeof m.scores === 'object') {
-        const playerScore = (m.scores as Record<string, number>)[String(playerEntryNo)];
-        const oppScore = (m.scores as Record<string, number>)[String(opponentEntryNos[0])];
-        if (typeof playerScore === 'number' && typeof oppScore === 'number') score = `${playerScore}-${oppScore}`;
+        const playerScore = (m.scores as Record<string, number>)[
+          String(playerEntryNo)
+        ];
+        const oppScore = (m.scores as Record<string, number>)[
+          String(opponentEntryNos[0])
+        ];
+        if (typeof playerScore === 'number' && typeof oppScore === 'number')
+          score = `${playerScore}-${oppScore}`;
       }
 
-      const resultFlag: 'win' | 'lose' | 'unknown' = typeof m.winnerEntryNo === 'number' ? (m.winnerEntryNo === playerEntryNo ? 'win' : 'lose') : 'unknown';
+      const resultFlag: 'win' | 'lose' | 'unknown' =
+        typeof m.winnerEntryNo === 'number'
+          ? m.winnerEntryNo === playerEntryNo
+            ? 'win'
+            : 'lose'
+          : 'unknown';
 
       let partnerName: string | null = null;
       let partnerId: string | null = null;
       for (const e of entries) {
         if (!Array.isArray(e.playerIds)) continue;
-        if (e.playerIds.includes(matchingParticipantIds[0]) && e.playerIds.length > 1) {
-          const other = e.playerIds.find((pid) => pid !== matchingParticipantIds[0]);
+        if (
+          e.playerIds.includes(matchingParticipantIds[0]) &&
+          e.playerIds.length > 1
+        ) {
+          const other = e.playerIds.find(
+            (pid) => pid !== matchingParticipantIds[0],
+          );
           if (other) {
             const pp = participantById.get(other);
             if (pp) partnerName = `${pp.lastName}${pp.firstName}`;
@@ -329,19 +386,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       const matchResult: MatchResult = {
         round: String(m.round ?? '予選'),
-        opponent: opponentNames.length > 0 ? opponentNames.join('・') : (opponentEntryNos.length > 0 ? `#${opponentEntryNos[0]}` : '不明'),
+        opponent:
+          opponentNames.length > 0
+            ? opponentNames.join('・')
+            : opponentEntryNos.length > 0
+              ? `#${opponentEntryNos[0]}`
+              : '不明',
         result: resultFlag === 'win' ? '勝' : resultFlag === 'lose' ? '敗' : '',
         score: score,
         partner: partnerName ?? null,
       };
 
       const tournamentKey = `${tournamentId}/${year}`;
-      if (!tournamentMatchesMap.has(tournamentKey)) tournamentMatchesMap.set(tournamentKey, []);
+      if (!tournamentMatchesMap.has(tournamentKey))
+        tournamentMatchesMap.set(tournamentKey, []);
       tournamentMatchesMap.get(tournamentKey)!.push(matchResult);
 
       // record partner occurrence for this tournament
       if (partnerId) {
-        if (!tournamentPartnerCounts.has(tournamentKey)) tournamentPartnerCounts.set(tournamentKey, new Map());
+        if (!tournamentPartnerCounts.has(tournamentKey))
+          tournamentPartnerCounts.set(tournamentKey, new Map());
         const cntMap = tournamentPartnerCounts.get(tournamentKey)!;
         cntMap.set(partnerId, (cntMap.get(partnerId) || 0) + 1);
       }
@@ -365,15 +429,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       const targetEntryNos: number[] = [];
       for (const e of entries) {
         if (!Array.isArray(e.playerIds)) continue;
-        if (e.playerIds.includes(matchingParticipantIds[0])) targetEntryNos.push(e.entryNo);
+        if (e.playerIds.includes(matchingParticipantIds[0]))
+          targetEntryNos.push(e.entryNo);
       }
 
       for (const r of detail.results) {
         try {
           // TournamentResult can include entryNo or playerIds or a tournament object with label
-          const rec = r as unknown as { playerIds?: unknown; result?: unknown; entryNo?: unknown; tournament?: unknown };
-          const recEntryNo = typeof rec.entryNo === 'number' ? rec.entryNo : undefined;
-          const playerIdsField = Array.isArray(rec.playerIds) ? (rec.playerIds as string[]) : undefined;
+          const rec = r as unknown as {
+            playerIds?: unknown;
+            result?: unknown;
+            entryNo?: unknown;
+            tournament?: unknown;
+          };
+          const recEntryNo =
+            typeof rec.entryNo === 'number' ? rec.entryNo : undefined;
+          const playerIdsField = Array.isArray(rec.playerIds)
+            ? (rec.playerIds as string[])
+            : undefined;
           let isTarget = false;
 
           // First preference: match by entryNo
@@ -382,7 +455,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           }
 
           // Fallback: match by playerIds (legacy)
-          if (!isTarget && Array.isArray(playerIdsField) && playerIdsField.some((pid) => matchingParticipantIds.includes(pid))) {
+          if (
+            !isTarget &&
+            Array.isArray(playerIdsField) &&
+            playerIdsField.some((pid) => matchingParticipantIds.includes(pid))
+          ) {
             isTarget = true;
           }
 
@@ -402,7 +479,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           }
 
           // fallback to legacy result string
-          if (!resultField && typeof rec.result === 'string') resultField = rec.result;
+          if (!resultField && typeof rec.result === 'string')
+            resultField = rec.result;
 
           const tournamentKey = `${tournamentId}/${year}`;
           // if no resultField was found, set default to '予選敗退'
@@ -419,12 +497,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const [tid, yr] = tournamentKey.split('/');
     const yearVal = yr ? (Number(yr) ? Number(yr) : yr) : undefined;
     const infoEntries = informationMap.get(tid) ?? [];
-    const infoForYear = infoEntries.find((it) => String(it.year) === String(yearVal));
-  const startDateVal = infoForYear ? infoForYear.startDate ?? null : null;
-  const endDateVal = infoForYear ? infoForYear.endDate ?? null : null;
-  const dateRange = startDateVal ? `${startDateVal}${endDateVal ? ' - ' + endDateVal : ''}` : (infoForYear ? `${infoForYear.startDate ?? ''}${infoForYear.endDate ? ' - ' + infoForYear.endDate : ''}` : null);
-    const location = infoForYear ? infoForYear.location ?? null : null;
-    const link = infoForYear ? infoForYear.sourceUrl ?? null : null;
+    const infoForYear = infoEntries.find(
+      (it) => String(it.year) === String(yearVal),
+    );
+    const startDateVal = infoForYear ? (infoForYear.startDate ?? null) : null;
+    const endDateVal = infoForYear ? (infoForYear.endDate ?? null) : null;
+    const dateRange = startDateVal
+      ? `${startDateVal}${endDateVal ? ' - ' + endDateVal : ''}`
+      : infoForYear
+        ? `${infoForYear.startDate ?? ''}${infoForYear.endDate ? ' - ' + infoForYear.endDate : ''}`
+        : null;
+    const location = infoForYear ? (infoForYear.location ?? null) : null;
+    const link = infoForYear ? (infoForYear.sourceUrl ?? null) : null;
     const tournamentName = tournamentMeta.get(tid)?.label || tid;
     const finalResult = tournamentFinalResult.get(tournamentKey) ?? null;
 
@@ -444,7 +528,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         const p = partnersMap.get(partnerIdForTournament);
         if (p) {
           // try to map partner to canonical id from allPlayersList (index.json)
-          const found = allPlayersList.find((ap) => ap.lastName === p.lastName && ap.firstName === p.firstName);
+          const found = allPlayersList.find(
+            (ap) => ap.lastName === p.lastName && ap.firstName === p.firstName,
+          );
           if (found) {
             partnerIdForTournament = found.id; // use canonical id
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
@@ -647,7 +733,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerTournaments,
       playerStats,
       allPlayers: allPlayersList,
-  majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),
+      majorTitlesData: await getMajorTitlesForPlayer(
+        idx.lastName,
+        idx.firstName,
+      ),
     },
   };
 };

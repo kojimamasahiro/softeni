@@ -8,10 +8,7 @@ import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-import {
-  getAllDetailRecords,
-  loadInformationMap,
-} from '@/lib/tournamentData';
+import { getAllDetailRecords, loadInformationMap } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
 
 interface RecentTournament {

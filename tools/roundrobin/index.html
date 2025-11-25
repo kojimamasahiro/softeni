@@ -2,17 +2,16 @@
     | map({key: ((./3 + 1 | tostring)), value: $a[. : .+3]})
     | from_entries]' input.json |pbcopy -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ラウンドロビン試合管理（グループ対応）</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
+  <body>
     <h1>ラウンドロビン試合管理（グループ対応）</h1>
     <div id="matches"></div>
     <button onclick="onClickGenerate()">出力</button>
@@ -20,342 +19,374 @@
     <textarea id="jsonOutput"></textarea>
     <script src="initialPlayer.js"></script>
     <script>
-        const initScore = 4; // 初期スコア
+      const initScore = 4; // 初期スコア
 
-        const byePlayer = { id: "bye", name: "パッキン", information: [] };
-        const allGroupMatches = {};
+      const byePlayer = { id: 'bye', name: 'パッキン', information: [] };
+      const allGroupMatches = {};
 
-        for (const group in initialPlayersByGroup) {
-            const players = initialPlayersByGroup[group];
-            const matches = [];
-            for (let i = 0; i < players.length; i++) {
-                for (let j = i + 1; j < players.length; j++) {
-                    const p1 = players[i];
-                    const p2 = players[j];
-                    if (p1.id === "bye" || p2.id === "bye") continue;
-                    matches.push({
-                        group,
-                        p1,
-                        p2,
-                        scores: { p1: initScore, p2: initScore },
-                        winner: null
-                    });
-                }
-            }
-            allGroupMatches[group] = matches;
+      for (const group in initialPlayersByGroup) {
+        const players = initialPlayersByGroup[group];
+        const matches = [];
+        for (let i = 0; i < players.length; i++) {
+          for (let j = i + 1; j < players.length; j++) {
+            const p1 = players[i];
+            const p2 = players[j];
+            if (p1.id === 'bye' || p2.id === 'bye') continue;
+            matches.push({
+              group,
+              p1,
+              p2,
+              scores: { p1: initScore, p2: initScore },
+              winner: null,
+            });
+          }
+        }
+        allGroupMatches[group] = matches;
+      }
+
+      function onClickGenerate() {
+        updateJsonOutput();
+      }
+
+      function updateWinner(match) {
+        if (match.scores.p1 != null && match.scores.p2 != null) {
+          if (match.scores.p1 > match.scores.p2) match.winner = match.p1.id;
+          else if (match.scores.p2 > match.scores.p1)
+            match.winner = match.p2.id;
+          else match.winner = null;
+        }
+      }
+
+      // ---- 追加/変更：名前生成・カテゴリ判定 ----
+      function buildPairName(information) {
+        const names = information.map(
+          ({ lastName, firstName }) => `${lastName} ${firstName}`,
+        );
+        const teams = [
+          ...new Set(information.map(({ team }) => team).filter(Boolean)),
+        ];
+        if (teams.length === 1) return `${names.join('・')}（${teams[0]}）`;
+        return information
+          .map(
+            ({ lastName, firstName, team }) =>
+              `${lastName} ${firstName}（${team}）`,
+          )
+          .join('・');
+      }
+
+      function getDisplayName(entry) {
+        if (Array.isArray(entry.information) && entry.information.length) {
+          return buildPairName(entry.information); // doubles等
+        }
+        return entry.name || String(entry.id); // team等
+      }
+
+      function detectCategory(entry) {
+        if (entry.category) return entry.category; // 明示があれば最優先
+        if (Array.isArray(entry.information) && entry.information.length)
+          return 'doubles';
+        if (entry.team) return 'team';
+        return 'unknown';
+      }
+      // ---------------------------------------
+
+      // 1. 最初に matchesDiv に1回だけイベントを仕込む
+      let eventRegistered = false;
+
+      function displayMatches() {
+        const matchesDiv = document.getElementById('matches');
+        matchesDiv.innerHTML = '';
+
+        for (const group in allGroupMatches) {
+          const title = document.createElement('h2');
+          title.textContent = `グループ ${group}`;
+          matchesDiv.appendChild(title);
+
+          allGroupMatches[group].forEach((match, i) => {
+            const div = document.createElement('div');
+            div.className = 'match-result';
+            div.dataset.match = `${group}-${i}`;
+            div.innerHTML = renderMatchHtml(match, i);
+            matchesDiv.appendChild(div);
+          });
         }
 
-        function onClickGenerate() {
-            updateJsonOutput();
+        if (!eventRegistered) {
+          document
+            .getElementById('matches')
+            .addEventListener('click', handleScoreClick);
+          eventRegistered = true;
         }
+      }
 
-        function updateWinner(match) {
-            if (match.scores.p1 != null && match.scores.p2 != null) {
-                if (match.scores.p1 > match.scores.p2) match.winner = match.p1.id;
-                else if (match.scores.p2 > match.scores.p1) match.winner = match.p2.id;
-                else match.winner = null;
-            }
-        }
+      function renderMatchHtml(match, i) {
+        i = parseInt(i);
+        const matchId = match.group + '-' + i;
+        const renderButtons = (playerKey) => {
+          return (
+            [0, 1, 2, 3, 4, 5]
+              .map((score) => {
+                const selected =
+                  match.scores[playerKey] === score ? 'selected' : '';
+                return `<button data-match='${matchId}' data-player='${playerKey}' data-score='${score}' class='score-button ${selected}'>${score}</button>`;
+              })
+              .join('') +
+            `<button class='retire-button' data-match='${matchId}' data-player='${playerKey}'>R</button>`
+          );
+        };
 
-        // ---- 追加/変更：名前生成・カテゴリ判定 ----
-        function buildPairName(information) {
-            const names = information.map(({ lastName, firstName }) => `${lastName} ${firstName}`);
-            const teams = [...new Set(information.map(({ team }) => team).filter(Boolean))];
-            if (teams.length === 1) return `${names.join("・")}（${teams[0]}）`;
-            return information
-                .map(({ lastName, firstName, team }) => `${lastName} ${firstName}（${team}）`)
-                .join("・");
-        }
+        const p1Name = getDisplayName(match.p1);
+        const p2Name = getDisplayName(match.p2);
 
-        function getDisplayName(entry) {
-            if (Array.isArray(entry.information) && entry.information.length) {
-                return buildPairName(entry.information); // doubles等
-            }
-            return entry.name || String(entry.id); // team等
-        }
-
-        function detectCategory(entry) {
-            if (entry.category) return entry.category;       // 明示があれば最優先
-            if (Array.isArray(entry.information) && entry.information.length) return "doubles";
-            if (entry.team) return "team";
-            return "unknown";
-        }
-        // ---------------------------------------
-
-        // 1. 最初に matchesDiv に1回だけイベントを仕込む
-        let eventRegistered = false;
-
-        function displayMatches() {
-            const matchesDiv = document.getElementById("matches");
-            matchesDiv.innerHTML = "";
-
-            for (const group in allGroupMatches) {
-                const title = document.createElement("h2");
-                title.textContent = `グループ ${group}`;
-                matchesDiv.appendChild(title);
-
-                allGroupMatches[group].forEach((match, i) => {
-                    const div = document.createElement("div");
-                    div.className = "match-result";
-                    div.dataset.match = `${group}-${i}`;
-                    div.innerHTML = renderMatchHtml(match, i);
-                    matchesDiv.appendChild(div);
-                });
-            }
-
-            if (!eventRegistered) {
-                document.getElementById("matches").addEventListener("click", handleScoreClick);
-                eventRegistered = true;
-            }
-        }
-
-        function renderMatchHtml(match, i) {
-            i = parseInt(i);
-            const matchId = match.group + "-" + i;
-            const renderButtons = (playerKey) => {
-                return [0, 1, 2, 3, 4, 5]
-                    .map((score) => {
-                        const selected = match.scores[playerKey] === score ? "selected" : "";
-                        return `<button data-match='${matchId}' data-player='${playerKey}' data-score='${score}' class='score-button ${selected}'>${score}</button>`;
-                    })
-                    .join("") + `<button class='retire-button' data-match='${matchId}' data-player='${playerKey}'>R</button>`;
-            };
-
-            const p1Name = getDisplayName(match.p1);
-            const p2Name = getDisplayName(match.p2);
-
-            return `
+        return `
             <strong>試合 ${i + 1}</strong><br />
             <div>${p1Name} vs ${p2Name}</div>
-            <div>${renderButtons("p1")} <span>← ${p1Name}</span></div>
-            <div>${renderButtons("p2")} <span>← ${p2Name}</span></div>
-            <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? p1Name : match.winner === match.p2.id ? p2Name : "未定"}</span></div>
+            <div>${renderButtons('p1')} <span>← ${p1Name}</span></div>
+            <div>${renderButtons('p2')} <span>← ${p2Name}</span></div>
+            <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? p1Name : match.winner === match.p2.id ? p2Name : '未定'}</span></div>
             `;
+      }
+
+      function handleScoreClick(e) {
+        const target = e.target;
+        if (!target.dataset.match) return;
+
+        const [group, idx] = target.dataset.match.split('-');
+        const match = allGroupMatches[group][parseInt(idx)];
+        const matchDiv = document.querySelector(
+          `.match-result[data-match="${group}-${idx}"]`,
+        );
+
+        if (target.classList.contains('score-button')) {
+          const player = target.dataset.player;
+          const score = parseInt(target.dataset.score);
+          match.scores[player] = score;
+          updateWinner(match);
+          matchDiv.innerHTML = renderMatchHtml(match, idx);
+          updateJsonOutput();
+        } else if (target.classList.contains('retire-button')) {
+          const player = target.dataset.player;
+          const opponent = player === 'p1' ? 'p2' : 'p1';
+          match[player].retired = true;
+          match.scores[player] = 0;
+          match.scores[opponent] = initScore;
+          match.winner = match[opponent].id;
+          matchDiv.innerHTML = renderMatchHtml(match, idx);
+          updateJsonOutput();
         }
+      }
 
-        function handleScoreClick(e) {
-            const target = e.target;
-            if (!target.dataset.match) return;
+      function updateJsonOutput() {
+        const output = { roundRobinMatches: [] };
 
-            const [group, idx] = target.dataset.match.split("-");
-            const match = allGroupMatches[group][parseInt(idx)];
-            const matchDiv = document.querySelector(`.match-result[data-match="${group}-${idx}"]`);
+        for (const group in allGroupMatches) {
+          for (const match of allGroupMatches[group]) {
+            if (!match.winner) continue;
 
-            if (target.classList.contains("score-button")) {
-                const player = target.dataset.player;
-                const score = parseInt(target.dataset.score);
-                match.scores[player] = score;
-                updateWinner(match);
-                matchDiv.innerHTML = renderMatchHtml(match, idx);
-                updateJsonOutput();
-            } else if (target.classList.contains("retire-button")) {
-                const player = target.dataset.player;
-                const opponent = player === "p1" ? "p2" : "p1";
-                match[player].retired = true;
-                match.scores[player] = 0;
-                match.scores[opponent] = initScore;
-                match.winner = match[opponent].id;
-                matchDiv.innerHTML = renderMatchHtml(match, idx);
-                updateJsonOutput();
-            }
-        }
+            const cat1 = detectCategory(match.p1);
+            const cat2 = detectCategory(match.p2);
+            const category = cat1 === cat2 ? cat1 : cat1; // 混在はまずない想定。あれば p1 優先。
 
-        function updateJsonOutput() {
-            const output = { roundRobinMatches: [] };
+            const p1Score = String(match.scores.p1);
+            const p2Score = String(match.scores.p2);
 
-            for (const group in allGroupMatches) {
-                for (const match of allGroupMatches[group]) {
-                    if (!match.winner) continue;
+            if (category === 'team') {
+              // ---- team カテゴリの出力 ----
+              const p1Key =
+                match.p1.tempId || match.p1.team || String(match.p1.id);
+              const p2Key =
+                match.p2.tempId || match.p2.team || String(match.p2.id);
 
-                    const cat1 = detectCategory(match.p1);
-                    const cat2 = detectCategory(match.p2);
-                    const category = cat1 === cat2 ? cat1 : cat1; // 混在はまずない想定。あれば p1 優先。
+              // p1 視点
+              output.roundRobinMatches.push({
+                group,
+                team: p1Key, // 識別キー（tempId/チーム名/IDの順）
+                opponentTeam: {
+                  team: match.p2.team || p2Key,
+                  prefecture: match.p2.prefecture || '',
+                },
+                result: match.winner === match.p1.id ? 'win' : 'lose',
+                games: { won: p1Score, lost: p2Score },
+                entryNo: match.p1.id,
+                name: getDisplayName(match.p1),
+                category: 'team',
+                retired: match.p1.retired || false,
+              });
 
-                    const p1Score = String(match.scores.p1);
-                    const p2Score = String(match.scores.p2);
+              // p2 視点
+              output.roundRobinMatches.push({
+                group,
+                team: p2Key,
+                opponentTeam: {
+                  team: match.p1.team || p1Key,
+                  prefecture: match.p1.prefecture || '',
+                },
+                result: match.winner === match.p2.id ? 'win' : 'lose',
+                games: { won: p2Score, lost: p1Score },
+                entryNo: match.p2.id,
+                name: getDisplayName(match.p2),
+                category: 'team',
+                retired: match.p2.retired || false,
+              });
+            } else {
+              // ---- doubles（従来） ----
+              const p1Ids = (match.p1.information || []).map(
+                (info) => info.playerId || info.tempId,
+              );
+              const p2Ids = (match.p2.information || []).map(
+                (info) => info.playerId || info.tempId,
+              );
+              const p1IsValid =
+                p1Ids.length > 0 && p1Ids.every((id) => id != null);
+              const p2IsValid =
+                p2Ids.length > 0 && p2Ids.every((id) => id != null);
 
-                    if (category === "team") {
-                        // ---- team カテゴリの出力 ----
-                        const p1Key = match.p1.tempId || match.p1.team || String(match.p1.id);
-                        const p2Key = match.p2.tempId || match.p2.team || String(match.p2.id);
-
-                        // p1 視点
-                        output.roundRobinMatches.push({
-                            group,
-                            team: p1Key, // 識別キー（tempId/チーム名/IDの順）
-                            opponentTeam: {
-                                team: match.p2.team || p2Key,
-                                prefecture: match.p2.prefecture || ""
-                            },
-                            result: match.winner === match.p1.id ? "win" : "lose",
-                            games: { won: p1Score, lost: p2Score },
-                            entryNo: match.p1.id,
-                            name: getDisplayName(match.p1),
-                            category: "team",
-                            retired: match.p1.retired || false
-                        });
-
-                        // p2 視点
-                        output.roundRobinMatches.push({
-                            group,
-                            team: p2Key,
-                            opponentTeam: {
-                                team: match.p1.team || p1Key,
-                                prefecture: match.p1.prefecture || ""
-                            },
-                            result: match.winner === match.p2.id ? "win" : "lose",
-                            games: { won: p2Score, lost: p1Score },
-                            entryNo: match.p2.id,
-                            name: getDisplayName(match.p2),
-                            category: "team",
-                            retired: match.p2.retired || false
-                        });
-                    } else {
-                        // ---- doubles（従来） ----
-                        const p1Ids = (match.p1.information || []).map((info) => info.playerId || info.tempId);
-                        const p2Ids = (match.p2.information || []).map((info) => info.playerId || info.tempId);
-                        const p1IsValid = p1Ids.length > 0 && p1Ids.every((id) => id != null);
-                        const p2IsValid = p2Ids.length > 0 && p2Ids.every((id) => id != null);
-
-                        if (p1IsValid) {
-                            output.roundRobinMatches.push({
-                                group,
-                                pair: p1Ids,
-                                opponents: match.p2.information || [],
-                                result: match.winner === match.p1.id ? "win" : "lose",
-                                games: { won: p1Score, lost: p2Score },
-                                entryNo: match.p1.id,
-                                name: getDisplayName(match.p1),
-                                category: "doubles",
-                                retired: match.p1.retired || false
-                            });
-                        }
-
-                        if (p2IsValid) {
-                            output.roundRobinMatches.push({
-                                group,
-                                pair: p2Ids,
-                                opponents: match.p1.information || [],
-                                result: match.winner === match.p2.id ? "win" : "lose",
-                                games: { won: p2Score, lost: p1Score },
-                                entryNo: match.p2.id,
-                                name: getDisplayName(match.p2),
-                                category: "doubles",
-                                retired: match.p2.retired || false
-                            });
-                        }
-                    }
-                }
-            }
-
-            // ---- standings はそのままでOK（nameとidがあれば動く）----
-            // ---- standings 修正版 ----
-            output.standings = {};
-
-            for (const group in initialPlayersByGroup) {
-            const players = initialPlayersByGroup[group].filter(p => p.id !== "bye");
-            const playerStats = {};
-
-            // 初期化
-            for (const p of players) {
-                playerStats[p.id] = {
-                    id: p.id,
-                    name: p.name,
-                    wins: 0,
-                    losses: 0,
-                    scoreDiff: 0,
-                    totalPointsFor: 0,
-                    totalPointsAgainst: 0,
-                };
-            }
-
-            // 全試合集計
-            for (const match of allGroupMatches[group]) {
-                const { p1, p2, scores, winner } = match;
-                if (!winner || p1.id === "bye" || p2.id === "bye") continue;
-                const s1 = scores.p1, s2 = scores.p2;
-
-                playerStats[p1.id].scoreDiff += s1 - s2;
-                playerStats[p2.id].scoreDiff += s2 - s1;
-                playerStats[p1.id].totalPointsFor += s1;
-                playerStats[p1.id].totalPointsAgainst += s2;
-                playerStats[p2.id].totalPointsFor += s2;
-                playerStats[p2.id].totalPointsAgainst += s1;
-
-                if (winner === p1.id) {
-                    playerStats[p1.id].wins++;
-                    playerStats[p2.id].losses++;
-                } else {
-                    playerStats[p2.id].wins++;
-                    playerStats[p1.id].losses++;
-                }
-            }
-
-            // 同率時に使う「当該者間」比較関数
-            function compareHeadToHead(ids) {
-                const subStats = {};
-                ids.forEach(id => {
-                    subStats[id] = { id, wins: 0, diff: 0 };
+              if (p1IsValid) {
+                output.roundRobinMatches.push({
+                  group,
+                  pair: p1Ids,
+                  opponents: match.p2.information || [],
+                  result: match.winner === match.p1.id ? 'win' : 'lose',
+                  games: { won: p1Score, lost: p2Score },
+                  entryNo: match.p1.id,
+                  name: getDisplayName(match.p1),
+                  category: 'doubles',
+                  retired: match.p1.retired || false,
                 });
+              }
 
-                // 当該者間だけ再集計
-                for (const match of allGroupMatches[group]) {
-                    const { p1, p2, scores, winner } = match;
-                    if (!winner) continue;
-                    if (!ids.includes(p1.id) || !ids.includes(p2.id)) continue;
-
-                    const s1 = scores.p1, s2 = scores.p2;
-                    subStats[p1.id].diff += s1 - s2;
-                    subStats[p2.id].diff += s2 - s1;
-
-                    if (winner === p1.id) subStats[p1.id].wins++;
-                    else subStats[p2.id].wins++;
-                }
-
-                return subStats;
+              if (p2IsValid) {
+                output.roundRobinMatches.push({
+                  group,
+                  pair: p2Ids,
+                  opponents: match.p1.information || [],
+                  result: match.winner === match.p2.id ? 'win' : 'lose',
+                  games: { won: p2Score, lost: p1Score },
+                  entryNo: match.p2.id,
+                  name: getDisplayName(match.p2),
+                  category: 'doubles',
+                  retired: match.p2.retired || false,
+                });
+              }
             }
+          }
+        }
 
-            // ソート
-            let sorted = Object.values(playerStats);
+        // ---- standings はそのままでOK（nameとidがあれば動く）----
+        // ---- standings 修正版 ----
+        output.standings = {};
 
-            sorted.sort((a, b) => {
-                // まず勝数
-                if (b.wins !== a.wins) return b.wins - a.wins;
+        for (const group in initialPlayersByGroup) {
+          const players = initialPlayersByGroup[group].filter(
+            (p) => p.id !== 'bye',
+          );
+          const playerStats = {};
 
-                // 同率チーム群の当該者間比較
-                const tied = sorted.filter(s => s.wins === a.wins);
-                if (tied.length > 1) {
-                const headToHead = compareHeadToHead(tied.map(s => s.id));
-                const diffA = headToHead[a.id]?.wins ?? 0;
-                const diffB = headToHead[b.id]?.wins ?? 0;
-                if (diffB !== diffA) return diffB - diffA;
+          // 初期化
+          for (const p of players) {
+            playerStats[p.id] = {
+              id: p.id,
+              name: p.name,
+              wins: 0,
+              losses: 0,
+              scoreDiff: 0,
+              totalPointsFor: 0,
+              totalPointsAgainst: 0,
+            };
+          }
 
-                // 当該者間の得失差
-                const subA = headToHead[a.id]?.diff ?? 0;
-                const subB = headToHead[b.id]?.diff ?? 0;
-                if (subB !== subA) return subB - subA;
-                }
+          // 全試合集計
+          for (const match of allGroupMatches[group]) {
+            const { p1, p2, scores, winner } = match;
+            if (!winner || p1.id === 'bye' || p2.id === 'bye') continue;
+            const s1 = scores.p1,
+              s2 = scores.p2;
 
-                // まだ同じなら全試合の得失差
-                if (b.scoreDiff !== a.scoreDiff) return b.scoreDiff - a.scoreDiff;
+            playerStats[p1.id].scoreDiff += s1 - s2;
+            playerStats[p2.id].scoreDiff += s2 - s1;
+            playerStats[p1.id].totalPointsFor += s1;
+            playerStats[p1.id].totalPointsAgainst += s2;
+            playerStats[p2.id].totalPointsFor += s2;
+            playerStats[p2.id].totalPointsAgainst += s1;
 
-                // 同点なら総得点で
-                if (b.totalPointsFor !== a.totalPointsFor)
-                return b.totalPointsFor - a.totalPointsFor;
+            if (winner === p1.id) {
+              playerStats[p1.id].wins++;
+              playerStats[p2.id].losses++;
+            } else {
+              playerStats[p2.id].wins++;
+              playerStats[p1.id].losses++;
+            }
+          }
 
-                return 0; // 完全同点（抽選扱い）
+          // 同率時に使う「当該者間」比較関数
+          function compareHeadToHead(ids) {
+            const subStats = {};
+            ids.forEach((id) => {
+              subStats[id] = { id, wins: 0, diff: 0 };
             });
 
-            // 順位付け
-            sorted.forEach((s, i) => (s.rank = i + 1));
-            output.standings[group] = sorted;
+            // 当該者間だけ再集計
+            for (const match of allGroupMatches[group]) {
+              const { p1, p2, scores, winner } = match;
+              if (!winner) continue;
+              if (!ids.includes(p1.id) || !ids.includes(p2.id)) continue;
+
+              const s1 = scores.p1,
+                s2 = scores.p2;
+              subStats[p1.id].diff += s1 - s2;
+              subStats[p2.id].diff += s2 - s1;
+
+              if (winner === p1.id) subStats[p1.id].wins++;
+              else subStats[p2.id].wins++;
             }
 
-            document.getElementById("jsonOutput").value = JSON.stringify(output, null, 2);
+            return subStats;
+          }
+
+          // ソート
+          let sorted = Object.values(playerStats);
+
+          sorted.sort((a, b) => {
+            // まず勝数
+            if (b.wins !== a.wins) return b.wins - a.wins;
+
+            // 同率チーム群の当該者間比較
+            const tied = sorted.filter((s) => s.wins === a.wins);
+            if (tied.length > 1) {
+              const headToHead = compareHeadToHead(tied.map((s) => s.id));
+              const diffA = headToHead[a.id]?.wins ?? 0;
+              const diffB = headToHead[b.id]?.wins ?? 0;
+              if (diffB !== diffA) return diffB - diffA;
+
+              // 当該者間の得失差
+              const subA = headToHead[a.id]?.diff ?? 0;
+              const subB = headToHead[b.id]?.diff ?? 0;
+              if (subB !== subA) return subB - subA;
+            }
+
+            // まだ同じなら全試合の得失差
+            if (b.scoreDiff !== a.scoreDiff) return b.scoreDiff - a.scoreDiff;
+
+            // 同点なら総得点で
+            if (b.totalPointsFor !== a.totalPointsFor)
+              return b.totalPointsFor - a.totalPointsFor;
+
+            return 0; // 完全同点（抽選扱い）
+          });
+
+          // 順位付け
+          sorted.forEach((s, i) => (s.rank = i + 1));
+          output.standings[group] = sorted;
         }
 
-        displayMatches();
-    </script>
-</body>
+        document.getElementById('jsonOutput').value = JSON.stringify(
+          output,
+          null,
+          2,
+        );
+      }
 
+      displayMatches();
+    </script>
+  </body>
 </html>

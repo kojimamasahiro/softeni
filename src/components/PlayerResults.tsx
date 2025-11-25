@@ -69,7 +69,9 @@ export default function PlayerResults({
   }
 
   for (const m of playerMatches) {
-    const id = m.year ? `${m.tournamentId}/${m.year}` : m.tournamentId || m.tournamentName || '';
+    const id = m.year
+      ? `${m.tournamentId}/${m.year}`
+      : m.tournamentId || m.tournamentName || '';
     if (!tournamentsById[id]) tournamentsById[id] = [];
     tournamentsById[id].push({
       round: m.round ?? '',
@@ -84,7 +86,10 @@ export default function PlayerResults({
   const byYear: { [year: string]: string[] } = {};
   for (const key of Object.keys(tournamentsById)) {
     const info = tournamentInfoById[key];
-    const year = info?.year ?? (key.includes('/') ? key.split('/').pop() : undefined) ?? '不明';
+    const year =
+      info?.year ??
+      (key.includes('/') ? key.split('/').pop() : undefined) ??
+      '不明';
     const yearStr = String(year);
     if (!byYear[yearStr]) byYear[yearStr] = [];
     byYear[yearStr].push(key);
@@ -133,14 +138,16 @@ export default function PlayerResults({
     const iso = s.match(/(\d{4}-\d{2}-\d{2})/);
     if (iso) {
       const d = new Date(iso[1]);
-      if (!Number.isNaN(d.getTime())) return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+      if (!Number.isNaN(d.getTime()))
+        return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
     }
     // slashed
     const slash = s.match(/(\d{4}\/\d{1,2}\/\d{1,2})/);
     if (slash) {
       const ds = slash[1].replace(/\//g, '-');
       const d = new Date(ds);
-      if (!Number.isNaN(d.getTime())) return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+      if (!Number.isNaN(d.getTime()))
+        return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
     }
     // Japanese already
     const jp = s.match(/(\d{4})年\s*(\d{1,2})月\s*(\d{1,2})日/);
@@ -162,7 +169,10 @@ export default function PlayerResults({
       const ib = tournamentInfoById[b];
       const ta = parseStartTime(ia?.startDate ?? ia?.dateRange ?? null);
       const tb = parseStartTime(ib?.startDate ?? ib?.dateRange ?? null);
-      if (ta === tb) return (ib?.tournamentName || '').localeCompare(ia?.tournamentName || '');
+      if (ta === tb)
+        return (ib?.tournamentName || '').localeCompare(
+          ia?.tournamentName || '',
+        );
       return tb - ta;
     });
   }
@@ -201,17 +211,32 @@ export default function PlayerResults({
                   round: mr.round ?? null,
                   opponentDisplayName: mr.opponent,
                   games: { won: parts[0] ?? '', lost: parts[1] ?? '' },
-                  result: mr.result === '勝' ? 'win' : mr.result === '敗' ? 'lose' : 'draw',
+                  result:
+                    mr.result === '勝'
+                      ? 'win'
+                      : mr.result === '敗'
+                        ? 'lose'
+                        : 'draw',
                 };
               });
 
               // If any rows look like round-robin / league matches, prioritize them.
-              const rrPattern = /予選|リーグ|ラウンドロビン|round\s*-?robin|roundrobin|round-robin|\bRR\b|pool|グループ/i;
-              const hasRR = rows.some((r) => typeof r.round === 'string' && rrPattern.test(r.round || ''));
+              const rrPattern =
+                /予選|リーグ|ラウンドロビン|round\s*-?robin|roundrobin|round-robin|\bRR\b|pool|グループ/i;
+              const hasRR = rows.some(
+                (r) =>
+                  typeof r.round === 'string' && rrPattern.test(r.round || ''),
+              );
               if (hasRR) {
                 rows.sort((a, b) => {
-                  const aIsRR = typeof a.round === 'string' && rrPattern.test(a.round || '') ? 0 : 1;
-                  const bIsRR = typeof b.round === 'string' && rrPattern.test(b.round || '') ? 0 : 1;
+                  const aIsRR =
+                    typeof a.round === 'string' && rrPattern.test(a.round || '')
+                      ? 0
+                      : 1;
+                  const bIsRR =
+                    typeof b.round === 'string' && rrPattern.test(b.round || '')
+                      ? 0
+                      : 1;
                   if (aIsRR !== bIsRR) return aIsRR - bIsRR;
                   return 0;
                 });
@@ -227,7 +252,10 @@ export default function PlayerResults({
                   </h3>
                   {(info?.startDate || info?.dateRange) && (
                     <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                      日程 {info.startDate ? `${formatDate(info.startDate)}${info.endDate ? ' - ' + formatDate(info.endDate) : ''}` : formatDate(info.dateRange)}
+                      日程{' '}
+                      {info.startDate
+                        ? `${formatDate(info.startDate)}${info.endDate ? ' - ' + formatDate(info.endDate) : ''}`
+                        : formatDate(info.dateRange)}
                     </div>
                   )}
                   {info?.location && (
@@ -266,7 +294,10 @@ export default function PlayerResults({
                     <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                       ペア{' '}
                       {info?.partnerId ? (
-                        <Link href={`/players/${info.partnerId}/results`} className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid">
+                        <Link
+                          href={`/players/${info.partnerId}/results`}
+                          className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                        >
                           {info.partnerName}
                         </Link>
                       ) : (
@@ -290,4 +321,3 @@ export default function PlayerResults({
     </>
   );
 }
-

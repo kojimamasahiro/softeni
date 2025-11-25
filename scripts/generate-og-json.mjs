@@ -92,7 +92,7 @@ function detectCategory(data) {
 function generateOgData(data) {
   const { participants, entries, matches } = data;
   const category = detectCategory(data);
-  
+
   const roundOrder = {
     準々決勝: 1,
     準決勝: 2,
@@ -189,7 +189,9 @@ async function main() {
 
         // Check if this is a tournament detail file
         if (!data.participants || !data.entries || !data.matches) {
-          console.log(`⏭️  Skipping ${path.relative(BASE_DIR, filePath)} (not a tournament detail file)`);
+          console.log(
+            `⏭️  Skipping ${path.relative(BASE_DIR, filePath)} (not a tournament detail file)`,
+          );
           skipped++;
           continue;
         }
@@ -214,17 +216,26 @@ async function main() {
         await fs.mkdir(ogDir, { recursive: true });
 
         // Write OG JSON file
-        await fs.writeFile(ogPath, JSON.stringify(ogData, null, 2) + '\n', 'utf8');
+        await fs.writeFile(
+          ogPath,
+          JSON.stringify(ogData, null, 2) + '\n',
+          'utf8',
+        );
 
         console.log(`✅ Generated ${path.relative(BASE_DIR, ogPath)}`);
         processed++;
       } catch (err) {
-        console.error(`❌ Error processing ${path.relative(BASE_DIR, filePath)}:`, err.message);
+        console.error(
+          `❌ Error processing ${path.relative(BASE_DIR, filePath)}:`,
+          err.message,
+        );
         skipped++;
       }
     }
 
-    console.log(`\n📊 Summary: ${processed} files processed, ${skipped} skipped`);
+    console.log(
+      `\n📊 Summary: ${processed} files processed, ${skipped} skipped`,
+    );
   } catch (err) {
     console.error('Fatal error:', err);
     process.exit(1);
