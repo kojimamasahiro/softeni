@@ -258,8 +258,22 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       .from('matches')
       .select(
         `
-        *,
-        games(*, points(*))
+        id,
+        team_a,
+        team_b,
+        team_a_player1_last_name,
+        team_a_player2_last_name,
+        team_b_player1_last_name,
+        team_b_player2_last_name,
+        tournament_name,
+        tournament_id,
+        tournament_generation,
+        tournament_gender,
+        tournament_category,
+        round_name,
+        best_of,
+        created_at,
+        games(winner_team)
       `,
       )
       .order('created_at', { ascending: false })
@@ -267,7 +281,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
     if (error) throw error;
 
-    const safeMatches = matches || [];
+    const safeMatches = (matches || []) as Match[];
     const tournamentIds = [
       ...new Set(safeMatches.map((m) => m.tournament_name).filter(Boolean)),
     ] as string[];
