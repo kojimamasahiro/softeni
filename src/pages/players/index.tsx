@@ -2,7 +2,7 @@
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -47,8 +47,32 @@ export default function PlayersPage({
   sameNameGroups,
 }: SameNamePlayerPageProps) {
   const [sortBy, setSortBy] = useState<'count' | 'name'>('count');
-  const [filterMinCount, setFilterMinCount] = useState(2);
+  const [filterMinCount, setFilterMinCount] = useState(20);
   const [searchQuery, setSearchQuery] = useState('');
+  const [dynamicData, setDynamicData] = useState<SameNameGroup[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch data dynamically when filterMinCount changes to less than 20
+  useEffect(() => {
+    if (filterMinCount < 20) {
+      setIsLoading(true);
+      fetch(`/api/players?minMatchCount=${filterMinCount}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setDynamicData(data.sameNameGroups || []);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error fetching player data:', error);
+          setIsLoading(false);
+        });
+    } else {
+      setDynamicData([]);
+    }
+  }, [filterMinCount]);
+
+  // Use dynamic data if available, otherwise use static props data
+  const activeData = dynamicData.length > 0 ? dynamicData : sameNameGroups;
 
   const highlightMatch = (text: string, searchQuery: string) => {
     if (!searchQuery.trim()) return text;
@@ -75,7 +99,7 @@ export default function PlayersPage({
   };
 
   const sortedAndFilteredGroups = useMemo(() => {
-    return sameNameGroups
+    return activeData
       .filter((group) => {
         if (group.count < filterMinCount) return false;
         if (searchQuery.trim()) {
@@ -101,7 +125,7 @@ export default function PlayersPage({
         if (sortBy === 'count') return b.count - a.count;
         return a.fullName.localeCompare(b.fullName, 'ja');
       });
-  }, [sameNameGroups, sortBy, filterMinCount, searchQuery]);
+  }, [activeData, sortBy, filterMinCount, searchQuery]);
 
   return (
     <>
@@ -215,9 +239,8 @@ export default function PlayersPage({
                 className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm"
               >
                 <option value={2}>2回以上</option>
-                <option value={3}>3回以上</option>
-                <option value={5}>5回以上</option>
                 <option value={10}>10回以上</option>
+                <option value={20}>20回以上</option>
               </select>
             </div>
           </div>
@@ -237,9 +260,14 @@ export default function PlayersPage({
                 </>
               )}
             </div>
-            {sameNameGroups.length > 0 && (
+            {isLoading && (
               <div className="text-xs text-gray-500 dark:text-gray-400">
-                全 {sameNameGroups.length}組
+                読み込み中...
+              </div>
+            )}
+            {!isLoading && activeData.length > 0 && (
+              <div className="text-xs text-gray-500 dark:text-gray-400">
+                全 {activeData.length}組
               </div>
             )}
           </div>
@@ -280,11 +308,11 @@ export default function PlayersPage({
                     <span className="ml-2 text-gray-600 dark:text-gray-400">
                       {searchQuery
                         ? group.differentTeams.map((team, i) => (
-                            <span key={team}>
-                              {i > 0 && ', '}
-                              {highlightMatch(team, searchQuery)}
-                            </span>
-                          ))
+                          <span key={team}>
+                            {i > 0 && ', '}
+                            {highlightMatch(team, searchQuery)}
+                          </span>
+                        ))
                         : group.differentTeams.join(', ')}
                     </span>
                   </div>
@@ -318,9 +346,9 @@ export default function PlayersPage({
                             >
                               {searchQuery
                                 ? highlightMatch(
-                                    `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
-                                    searchQuery,
-                                  )
+                                  `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
+                                  searchQuery,
+                                )
                                 : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
                             </Link>
                           </div>
@@ -552,5 +580,7 @@ export const getStaticProps: GetStaticProps = async () => {
     });
   }
 
-  return { props: { sameNameGroups } };
+  const filteredGroups = sameNameGroups.filter((group) => group.count >= 20);
+
+  return { props: { sameNameGroups: filteredGroups } };
 };
