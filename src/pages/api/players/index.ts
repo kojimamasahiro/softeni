@@ -3,8 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import type { TournamentDetailData } from '@/types';
 import type {
-    TournamentEntry,
-    TournamentParticipant,
+  TournamentEntry,
+  TournamentParticipant,
 } from '@/types/tournament';
 
 interface PlayerResult {
@@ -73,8 +73,7 @@ export default async function handler(
     // Use tournamentData helper to read parsed detail records
     const tournamentData = await import('../../../../lib/tournamentData');
     const records = await tournamentData.getAllDetailRecords(process.cwd());
-    const informationMap =
-      await tournamentData.loadInformationMap(process.cwd());
+    const informationMap = await tournamentData.loadInformationMap(process.cwd());
 
     // Load base player index (data/players/index.json)
     const playersIndexPath = path.join(

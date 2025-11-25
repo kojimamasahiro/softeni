@@ -308,11 +308,11 @@ export default function PlayersPage({
                     <span className="ml-2 text-gray-600 dark:text-gray-400">
                       {searchQuery
                         ? group.differentTeams.map((team, i) => (
-                          <span key={team}>
-                            {i > 0 && ', '}
-                            {highlightMatch(team, searchQuery)}
-                          </span>
-                        ))
+                            <span key={team}>
+                              {i > 0 && ', '}
+                              {highlightMatch(team, searchQuery)}
+                            </span>
+                          ))
                         : group.differentTeams.join(', ')}
                     </span>
                   </div>
@@ -346,9 +346,9 @@ export default function PlayersPage({
                             >
                               {searchQuery
                                 ? highlightMatch(
-                                  `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
-                                  searchQuery,
-                                )
+                                    `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
+                                    searchQuery,
+                                  )
                                 : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
                             </Link>
                           </div>
