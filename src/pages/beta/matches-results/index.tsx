@@ -151,7 +151,7 @@ export default function MatchesList({
 
                       <div className="text-sm text-gray-500">
                         {match.tournament_name &&
-                        tournamentInfos[match.tournament_name] ? (
+                          tournamentInfos[match.tournament_name] ? (
                           tournamentInfos[match.tournament_name].exists ? (
                             (() => {
                               const tournamentUrl =
@@ -276,7 +276,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     await Promise.all(
       tournamentIds.map(async (id) => {
         try {
-          const helpers = await import('@/lib/tournamentHelpers');
+          const helpers = await import('@/lib/tournamentHelpers.server');
           const info = await helpers.getTournamentInfoSSR(id);
           if (info) tournamentInfos[id] = info;
         } catch (e) {
