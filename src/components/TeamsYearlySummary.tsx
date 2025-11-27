@@ -23,19 +23,22 @@ export default function TeamsYearlySummary({
             <p className="text-gray-500 dark:text-gray-400">出場大会数</p>
             <p className="text-lg font-bold">{summary.tournaments}回</p>
           </div>
-          <div></div>
+          <div>
+            <p className="text-gray-500 dark:text-gray-400">出場選手数</p>
+            <p className="text-lg font-bold">{summary.totalPairs}人</p>
+          </div>
           <div></div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">優勝</p>
-            <p className="text-lg font-bold">{summary.champions}人</p>
+            <p className="text-lg font-bold">{summary.champions}回</p>
           </div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">準優勝</p>
-            <p className="text-lg font-bold">{summary.runnersUp}人</p>
+            <p className="text-lg font-bold">{summary.runnersUp}回</p>
           </div>
           <div>
             <p className="text-gray-500 dark:text-gray-400">ベスト8以上</p>
-            <p className="text-lg font-bold">{summary.top8OrBetter}人</p>
+            <p className="text-lg font-bold">{summary.top8OrBetter}回</p>
           </div>
         </div>
       </div>
