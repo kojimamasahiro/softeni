@@ -3,6 +3,7 @@ import Link from 'next/link';
 type TeamsEventSummaryProps = {
   overallTable: {
     name: string;
+    categoryLabel?: string;
     link?: string;
     results: string;
     players: string[];
@@ -30,9 +31,21 @@ export default function TeamsEventSummary({
                   className="hover:underline text-blue-600 dark:text-blue-400"
                 >
                   {r.name}
+                  {r.categoryLabel && (
+                    <span className="ml-2 text-sm font-normal text-gray-600 dark:text-gray-400">
+                      ({r.categoryLabel})
+                    </span>
+                  )}
                 </Link>
               ) : (
-                r.name
+                <>
+                  {r.name}
+                  {r.categoryLabel && (
+                    <span className="ml-2 text-sm font-normal text-gray-600 dark:text-gray-400">
+                      ({r.categoryLabel})
+                    </span>
+                  )}
+                </>
               )}
             </h3>
             <div className="text-sm space-y-1">

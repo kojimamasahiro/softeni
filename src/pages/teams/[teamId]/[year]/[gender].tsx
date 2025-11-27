@@ -43,6 +43,7 @@ type EventResult = {
   year: number;
   gender: string;
   tournament: string;
+  categoryLabel?: string;
   link?: string;
   results: {
     playerIds: string[];
@@ -148,6 +149,7 @@ export default function TeamYearGenderPage({
 
         return {
           name: event.tournament,
+          categoryLabel: event.categoryLabel,
           link: event.link || '',
           results: resultWithNames,
           players: playerNames,
@@ -157,13 +159,33 @@ export default function TeamYearGenderPage({
   );
 
   const calculatePlayerStats = useMemo(() => {
-    const stats: Record<string, PlayerStats> = {};
+    // First, collect all player IDs that appear in the filtered results
+    const relevantPlayerIds = new Set<string>();
+    results.forEach((event) => {
+      event.results.forEach((summry) => {
+        summry.playerIds.forEach((pid) => {
+          if (info.players?.[pid]) {
+            relevantPlayerIds.add(pid);
+          }
+        });
+      });
+      event.matches.forEach((match) => {
+        match.pair.forEach((pid) => {
+          if (info.players?.[pid]) {
+            relevantPlayerIds.add(pid);
+          }
+        });
+      });
+    });
 
-    const initializePlayerStats = (pid: string, player: Player) => {
-      if (!stats[pid]) {
-        stats[pid] = {
-          id: pid,
-          name: `${player.lastName} ${player.firstName}`,
+    // Group stats by player name instead of ID to handle duplicate IDs
+    const statsByName: Record<string, PlayerStats> = {};
+
+    const initializePlayerStats = (playerName: string, pid: string) => {
+      if (!statsByName[playerName]) {
+        statsByName[playerName] = {
+          id: pid, // Use the first ID encountered
+          name: playerName,
           appearances: 0,
           wins: 0,
           losses: 0,
@@ -175,39 +197,49 @@ export default function TeamYearGenderPage({
     results.forEach((event) => {
       event.results.forEach((summry) => {
         summry.playerIds.forEach((pid) => {
+          // Only process players that appear in this gender's results
+          if (!relevantPlayerIds.has(pid)) return;
+
           const player = info.players?.[pid];
           if (!player) return;
-          initializePlayerStats(pid, player);
+
+          const playerName = `${player.lastName} ${player.firstName}`;
+          initializePlayerStats(playerName, pid);
 
           if (summry.result) {
-            stats[pid].winsByRound[summry.result] =
-              (stats[pid].winsByRound[summry.result] || 0) + 1;
+            statsByName[playerName].winsByRound[summry.result] =
+              (statsByName[playerName].winsByRound[summry.result] || 0) + 1;
           }
         });
       });
 
-      const countedPlayers = new Set<string>(); // このevent内でappearancesを数えたプレイヤーID
+      const countedPlayers = new Set<string>(); // このevent内でappearancesを数えたプレイヤー名
 
       event.matches.forEach((match) => {
         match.pair.forEach((pid) => {
+          // Only process players that appear in this gender's results
+          if (!relevantPlayerIds.has(pid)) return;
+
           const player = info.players?.[pid];
           if (!player) return;
-          initializePlayerStats(pid, player);
+
+          const playerName = `${player.lastName} ${player.firstName}`;
+          initializePlayerStats(playerName, pid);
 
           // 勝敗数は全試合でカウント
-          if (match.result === 'win') stats[pid].wins++;
-          else stats[pid].losses++;
+          if (match.result === 'win') statsByName[playerName].wins++;
+          else statsByName[playerName].losses++;
 
           // 出場回数はイベントごとに1回だけ
-          if (!countedPlayers.has(pid)) {
-            stats[pid].appearances++;
-            countedPlayers.add(pid);
+          if (!countedPlayers.has(playerName)) {
+            statsByName[playerName].appearances++;
+            countedPlayers.add(playerName);
           }
         });
       });
     });
 
-    return stats;
+    return statsByName;
   }, [results, info.players]);
 
   const statsList = useMemo(

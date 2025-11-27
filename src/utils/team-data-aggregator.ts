@@ -3,7 +3,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { TournamentDetailData } from '@/types/tournament';
+import type {
+  TournamentDetailData,
+  TournamentInformationEntry,
+} from '@/types/tournament';
 
 import {
   getAllTournamentFiles,
@@ -37,6 +40,7 @@ type EventResult = {
   year: number;
   gender: string;
   tournament: string;
+  categoryLabel?: string;
   link?: string;
   results: {
     playerIds: string[];
@@ -251,7 +255,29 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
   const tournamentIndex = getAllTournamentIndex();
   const eventResults: EventResult[] = [];
 
-  // Pass 1: Identify player genders
+  // Load tournament information to get category labels
+  const informationMap = new Map<string, TournamentInformationEntry[]>();
+  const informationRoot = path.join(
+    process.cwd(),
+    'data/tournament/information',
+  );
+  if (fs.existsSync(informationRoot)) {
+    const files = fs
+      .readdirSync(informationRoot)
+      .filter((f) => f.endsWith('.json'));
+    for (const f of files) {
+      try {
+        const tid = path.basename(f, '.json');
+        const raw = fs.readFileSync(path.join(informationRoot, f), 'utf-8');
+        const parsed = JSON.parse(raw);
+        informationMap.set(tid, parsed || []);
+      } catch {
+        // ignore
+      }
+    }
+  }
+
+  // Pass 1: Identify player genders from explicitly gendered tournaments
   const playerGenders = new Map<string, 'boys' | 'girls'>();
 
   for (const file of tournamentFiles) {
@@ -280,6 +306,81 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
     if (gender === 'boys' || gender === 'girls') {
       for (const playerId of extracted.players.keys()) {
         playerGenders.set(playerId, gender);
+      }
+    }
+  }
+
+  // Helper function to normalize player ID by removing prefecture suffix
+  // Player IDs can be: "name_team" or "name_team_prefecture"
+  const normalizePlayerId = (playerId: string): string => {
+    const parts = playerId.split('_');
+    if (parts.length >= 3) {
+      // Return name_team (first 3 parts: lastName_firstName_team)
+      return parts.slice(0, 3).join('_');
+    }
+    return playerId;
+  };
+
+  // Helper function to find a player's gender by normalized ID
+  const findGenderByNormalizedId = (
+    playerId: string,
+    genderMap: Map<string, 'boys' | 'girls'>,
+  ): 'boys' | 'girls' | undefined => {
+    // First try exact match
+    if (genderMap.has(playerId)) {
+      return genderMap.get(playerId);
+    }
+
+    // Try normalized match
+    const normalizedId = normalizePlayerId(playerId);
+    for (const [knownId, gender] of genderMap.entries()) {
+      if (normalizePlayerId(knownId) === normalizedId) {
+        return gender;
+      }
+    }
+
+    return undefined;
+  };
+
+  // Pass 1.5: Infer player genders from mixed tournament pair structures
+  // In mixed doubles, each pair consists of one male and one female player
+  // We can infer gender by cross-referencing with known genders
+  let inferredNewGenders = true;
+  while (inferredNewGenders) {
+    inferredNewGenders = false;
+
+    for (const file of tournamentFiles) {
+      // Only process mixed tournaments
+      if (!file.category.includes('mixed')) continue;
+
+      const tournamentData = loadTournamentData(file.filePath);
+      if (!tournamentData) continue;
+
+      // Check each entry (pair) in the mixed tournament
+      for (const entry of tournamentData.entries) {
+        // Mixed doubles should have exactly 2 players
+        if (entry.playerIds.length !== 2) continue;
+
+        const [player1Id, player2Id] = entry.playerIds;
+        const player1Gender = findGenderByNormalizedId(
+          player1Id,
+          playerGenders,
+        );
+        const player2Gender = findGenderByNormalizedId(
+          player2Id,
+          playerGenders,
+        );
+
+        // If one player has known gender and the other doesn't, infer the opposite gender
+        if (player1Gender && !player2Gender) {
+          const oppositeGender = player1Gender === 'boys' ? 'girls' : 'boys';
+          playerGenders.set(player2Id, oppositeGender);
+          inferredNewGenders = true;
+        } else if (player2Gender && !player1Gender) {
+          const oppositeGender = player2Gender === 'boys' ? 'girls' : 'boys';
+          playerGenders.set(player1Id, oppositeGender);
+          inferredNewGenders = true;
+        }
       }
     }
   }
@@ -337,6 +438,21 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
 
     const link = `/tournaments/${generationId}/${file.tournamentId}/${file.year}/${gameCategory}/${ageCategory}/${genderPart}`;
 
+    // Get category label from information map
+    let categoryLabel: string | undefined;
+    const tournamentInfo = informationMap.get(file.tournamentId);
+    if (tournamentInfo) {
+      const yearInfo = tournamentInfo.find((info) => info.year === file.year);
+      if (yearInfo && yearInfo.categories) {
+        const category = yearInfo.categories.find(
+          (cat) => cat.categoryId === file.category,
+        );
+        if (category) {
+          categoryLabel = category.label;
+        }
+      }
+    }
+
     // Determine gender from category ID (filename)
     let gender = 'unknown';
     if (file.category.includes('boys') || file.category.includes('men')) {
@@ -356,6 +472,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
         year: file.year,
         gender: 'boys',
         tournament: tournamentName,
+        categoryLabel,
         link,
         results: [],
         matches: [],
@@ -364,6 +481,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
         year: file.year,
         gender: 'girls',
         tournament: tournamentName,
+        categoryLabel,
         link,
         results: [],
         matches: [],
@@ -371,24 +489,56 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
 
       // Distribute results
       extracted.results.forEach((r) => {
-        const isBoy = r.playerIds.some(
-          (pid) => playerGenders.get(pid) === 'boys',
+        // Filter player IDs by gender
+        const boyPlayerIds = r.playerIds.filter(
+          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'boys',
         );
-        const isGirl = r.playerIds.some(
-          (pid) => playerGenders.get(pid) === 'girls',
+        const girlPlayerIds = r.playerIds.filter(
+          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'girls',
         );
 
-        if (isBoy) boysEvent.results.push(r);
-        if (isGirl) girlsEvent.results.push(r);
+        // Add to boys event if there are any boys
+        if (boyPlayerIds.length > 0) {
+          boysEvent.results.push({
+            ...r,
+            playerIds: boyPlayerIds,
+          });
+        }
+
+        // Add to girls event if there are any girls
+        if (girlPlayerIds.length > 0) {
+          girlsEvent.results.push({
+            ...r,
+            playerIds: girlPlayerIds,
+          });
+        }
       });
 
       // Distribute matches
       extracted.matches.forEach((m) => {
-        const isBoy = m.pair.some((pid) => playerGenders.get(pid) === 'boys');
-        const isGirl = m.pair.some((pid) => playerGenders.get(pid) === 'girls');
+        // Filter pair by gender
+        const boyPair = m.pair.filter(
+          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'boys',
+        );
+        const girlPair = m.pair.filter(
+          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'girls',
+        );
 
-        if (isBoy) boysEvent.matches.push(m);
-        if (isGirl) girlsEvent.matches.push(m);
+        // Add to boys event if there are any boys
+        if (boyPair.length > 0) {
+          boysEvent.matches.push({
+            ...m,
+            pair: boyPair,
+          });
+        }
+
+        // Add to girls event if there are any girls
+        if (girlPair.length > 0) {
+          girlsEvent.matches.push({
+            ...m,
+            pair: girlPair,
+          });
+        }
       });
 
       if (boysEvent.results.length > 0 || boysEvent.matches.length > 0) {
@@ -403,6 +553,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
         year: file.year,
         gender,
         tournament: tournamentName,
+        categoryLabel,
         link,
         results: extracted.results,
         matches: extracted.matches,
