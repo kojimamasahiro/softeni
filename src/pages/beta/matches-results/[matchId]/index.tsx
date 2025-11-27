@@ -603,17 +603,19 @@ const PublicMatchDetail = ({
                 .map((game) => (
                   <td
                     key={game.game_number}
-                    className={`border border-gray-300 px-3 py-2 text-center ${game.winner_team === 'A'
+                    className={`border border-gray-300 px-3 py-2 text-center ${
+                      game.winner_team === 'A'
                         ? 'bg-green-100 text-green-800 font-bold'
                         : 'font-normal'
-                      }`}
+                    }`}
                   >
                     {game.points_a}
                   </td>
                 ))}
               <td
-                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${matchWinner === 'A' ? 'font-bold' : 'font-normal'
-                  }`}
+                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
+                  matchWinner === 'A' ? 'font-bold' : 'font-normal'
+                }`}
               >
                 {match.games?.filter((game) => game.winner_team === 'A')
                   .length || 0}
@@ -628,17 +630,19 @@ const PublicMatchDetail = ({
                 .map((game) => (
                   <td
                     key={game.game_number}
-                    className={`border border-gray-300 px-3 py-2 text-center ${game.winner_team === 'B'
+                    className={`border border-gray-300 px-3 py-2 text-center ${
+                      game.winner_team === 'B'
                         ? 'bg-green-100 text-green-800 font-bold'
                         : 'font-normal'
-                      }`}
+                    }`}
                   >
                     {game.points_b}
                   </td>
                 ))}
               <td
-                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${matchWinner === 'B' ? 'font-bold' : 'font-normal'
-                  }`}
+                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
+                  matchWinner === 'B' ? 'font-bold' : 'font-normal'
+                }`}
               >
                 {match.games?.filter((game) => game.winner_team === 'B')
                   .length || 0}
@@ -687,10 +691,10 @@ const PublicMatchDetail = ({
                     <div>
                       <div className="font-bold text-gray-700">
                         {Array.isArray(matchStats.rallyCountsArray) &&
-                          matchStats.rallyCountsArray.length > 0 &&
-                          Number.isFinite(
-                            Math.max(...matchStats.rallyCountsArray),
-                          )
+                        matchStats.rallyCountsArray.length > 0 &&
+                        Number.isFinite(
+                          Math.max(...matchStats.rallyCountsArray),
+                        )
                           ? Math.max(...matchStats.rallyCountsArray)
                           : '-'}
                       </div>
@@ -699,10 +703,10 @@ const PublicMatchDetail = ({
                     <div>
                       <div className="font-bold text-gray-700">
                         {Array.isArray(matchStats.rallyCountsArray) &&
-                          matchStats.rallyCountsArray.length > 0 &&
-                          Number.isFinite(
-                            Math.min(...matchStats.rallyCountsArray),
-                          )
+                        matchStats.rallyCountsArray.length > 0 &&
+                        Number.isFinite(
+                          Math.min(...matchStats.rallyCountsArray),
+                        )
                           ? Math.min(...matchStats.rallyCountsArray)
                           : '-'}
                       </div>
@@ -711,8 +715,8 @@ const PublicMatchDetail = ({
                     <div>
                       <div className="font-bold text-gray-700">
                         {Array.isArray(matchStats.rallyCountsArray) &&
-                          matchStats.rallyCountsArray.length > 0 &&
-                          Number.isFinite(Number(matchStats.avgRally))
+                        matchStats.rallyCountsArray.length > 0 &&
+                        Number.isFinite(Number(matchStats.avgRally))
                           ? Number(matchStats.avgRally).toFixed(1)
                           : '-'}
                       </div>
@@ -721,22 +725,22 @@ const PublicMatchDetail = ({
                     <div>
                       <div className="font-bold text-gray-700">
                         {Array.isArray(matchStats.rallyCountsArray) &&
-                          matchStats.rallyCountsArray.length > 0
+                        matchStats.rallyCountsArray.length > 0
                           ? (() => {
-                            const sorted = [
-                              ...matchStats.rallyCountsArray,
-                            ].sort((a, b) => a - b);
-                            const mid = Math.floor(sorted.length / 2);
-                            let median;
-                            if (sorted.length % 2 === 0) {
-                              median = (sorted[mid - 1] + sorted[mid]) / 2;
-                            } else {
-                              median = sorted[mid];
-                            }
-                            return Number.isFinite(median)
-                              ? Number(median).toFixed(1)
-                              : '-';
-                          })()
+                              const sorted = [
+                                ...matchStats.rallyCountsArray,
+                              ].sort((a, b) => a - b);
+                              const mid = Math.floor(sorted.length / 2);
+                              let median;
+                              if (sorted.length % 2 === 0) {
+                                median = (sorted[mid - 1] + sorted[mid]) / 2;
+                              } else {
+                                median = sorted[mid];
+                              }
+                              return Number.isFinite(median)
+                                ? Number(median).toFixed(1)
+                                : '-';
+                            })()
                           : '-'}
                       </div>
                       <div className="text-gray-600">中央値</div>
@@ -1042,10 +1046,11 @@ const PublicMatchDetail = ({
                     </span>
                     {game.winner_team && (
                       <span
-                        className={`px-2 py-1 rounded text-xs ${game.winner_team === 'A'
+                        className={`px-2 py-1 rounded text-xs ${
+                          game.winner_team === 'A'
                             ? 'bg-blue-100 text-blue-800'
                             : 'bg-green-100 text-green-800'
-                          }`}
+                        }`}
                       >
                         {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}
                       </span>
@@ -1260,65 +1265,65 @@ const PublicMatchDetail = ({
                 {/* ウィナーとミスの内訳 */}
                 {(Object.keys(stats.winnerBreakdown).length > 0 ||
                   Object.keys(stats.errorBreakdown).length > 0) && (
-                    <div className="mb-4">
-                      <h5 className="font-medium text-sm mb-3">
-                        ウィナーとミスの内訳
-                      </h5>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* ウィナー内訳 */}
-                        {Object.keys(stats.winnerBreakdown).length > 0 && (
-                          <div className="bg-green-50 p-3 rounded">
-                            <h6 className="font-medium text-green-700 text-sm mb-2">
-                              ウィナー ({stats.winners}回)
-                            </h6>
-                            <div className="space-y-1">
-                              {Object.entries(stats.winnerBreakdown)
-                                .sort(([, a], [, b]) => b - a)
-                                .map(([type, count]) => (
-                                  <div
-                                    key={type}
-                                    className="flex justify-between text-xs"
-                                  >
-                                    <span className="text-gray-700">
-                                      {getResultTypeLabel(type)}
-                                    </span>
-                                    <span className="font-medium text-green-700">
-                                      {count}回
-                                    </span>
-                                  </div>
-                                ))}
-                            </div>
+                  <div className="mb-4">
+                    <h5 className="font-medium text-sm mb-3">
+                      ウィナーとミスの内訳
+                    </h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* ウィナー内訳 */}
+                      {Object.keys(stats.winnerBreakdown).length > 0 && (
+                        <div className="bg-green-50 p-3 rounded">
+                          <h6 className="font-medium text-green-700 text-sm mb-2">
+                            ウィナー ({stats.winners}回)
+                          </h6>
+                          <div className="space-y-1">
+                            {Object.entries(stats.winnerBreakdown)
+                              .sort(([, a], [, b]) => b - a)
+                              .map(([type, count]) => (
+                                <div
+                                  key={type}
+                                  className="flex justify-between text-xs"
+                                >
+                                  <span className="text-gray-700">
+                                    {getResultTypeLabel(type)}
+                                  </span>
+                                  <span className="font-medium text-green-700">
+                                    {count}回
+                                  </span>
+                                </div>
+                              ))}
                           </div>
-                        )}
+                        </div>
+                      )}
 
-                        {/* ミス内訳 */}
-                        {Object.keys(stats.errorBreakdown).length > 0 && (
-                          <div className="bg-red-50 p-3 rounded">
-                            <h6 className="font-medium text-red-700 text-sm mb-2">
-                              ミス ({stats.errors}回)
-                            </h6>
-                            <div className="space-y-1">
-                              {Object.entries(stats.errorBreakdown)
-                                .sort(([, a], [, b]) => b - a)
-                                .map(([type, count]) => (
-                                  <div
-                                    key={type}
-                                    className="flex justify-between text-xs"
-                                  >
-                                    <span className="text-gray-700">
-                                      {getResultTypeLabel(type)}
-                                    </span>
-                                    <span className="font-medium text-red-700">
-                                      {count}回
-                                    </span>
-                                  </div>
-                                ))}
-                            </div>
+                      {/* ミス内訳 */}
+                      {Object.keys(stats.errorBreakdown).length > 0 && (
+                        <div className="bg-red-50 p-3 rounded">
+                          <h6 className="font-medium text-red-700 text-sm mb-2">
+                            ミス ({stats.errors}回)
+                          </h6>
+                          <div className="space-y-1">
+                            {Object.entries(stats.errorBreakdown)
+                              .sort(([, a], [, b]) => b - a)
+                              .map(([type, count]) => (
+                                <div
+                                  key={type}
+                                  className="flex justify-between text-xs"
+                                >
+                                  <span className="text-gray-700">
+                                    {getResultTypeLabel(type)}
+                                  </span>
+                                  <span className="font-medium text-red-700">
+                                    {count}回
+                                  </span>
+                                </div>
+                              ))}
                           </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </div>
+                )}
 
                 {/* サーブ統計 */}
                 {stats.serves.total > 0 && (
@@ -1508,27 +1513,27 @@ const PublicMatchDetail = ({
                   (player) =>
                     ![...teamAPlayers, ...teamBPlayers].includes(player),
                 ).length > 0 && (
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3 text-gray-600 border-b border-gray-200 pb-2">
-                        その他の選手
-                      </h3>
-                      <div className="space-y-4">
-                        {Object.keys(playerStats)
-                          .filter(
-                            (player) =>
-                              ![...teamAPlayers, ...teamBPlayers].includes(
-                                player,
-                              ),
-                          )
-                          .map((playerName) =>
-                            renderPlayerStats(
-                              playerName,
-                              playerStats[playerName],
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3 text-gray-600 border-b border-gray-200 pb-2">
+                      その他の選手
+                    </h3>
+                    <div className="space-y-4">
+                      {Object.keys(playerStats)
+                        .filter(
+                          (player) =>
+                            ![...teamAPlayers, ...teamBPlayers].includes(
+                              player,
                             ),
-                          )}
-                      </div>
+                        )
+                        .map((playerName) =>
+                          renderPlayerStats(
+                            playerName,
+                            playerStats[playerName],
+                          ),
+                        )}
                     </div>
-                  )}
+                  </div>
+                )}
               </>
             );
           })()}
