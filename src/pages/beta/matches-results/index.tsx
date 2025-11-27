@@ -151,7 +151,7 @@ export default function MatchesList({
 
                       <div className="text-sm text-gray-500">
                         {match.tournament_name &&
-                          tournamentInfos[match.tournament_name] ? (
+                        tournamentInfos[match.tournament_name] ? (
                           tournamentInfos[match.tournament_name].exists ? (
                             (() => {
                               const tournamentUrl =

@@ -1,5 +1,4 @@
 // src/pages/players/[id]/results.tsx
-/* eslint-disable prettier/prettier */
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -726,8 +725,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 
   // Build minimal allPlayers list - only include partners referenced in stats
-  const referencedPartnerIds = new Set(Object.keys(byPartnerNormalized).filter(k => k !== 'singles'));
-  const minimalPlayersList = allPlayersList.filter(p => referencedPartnerIds.has(p.id));
+  const referencedPartnerIds = new Set(
+    Object.keys(byPartnerNormalized).filter((k) => k !== 'singles'),
+  );
+  const minimalPlayersList = allPlayersList.filter((p) =>
+    referencedPartnerIds.has(p.id),
+  );
 
   return {
     props: {

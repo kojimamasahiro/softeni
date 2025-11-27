@@ -34,9 +34,7 @@ export function getAllTournamentFiles(): Array<{
   // Scan tournament directories
   const tournamentDirs = fs
     .readdirSync(detailsDir)
-    .filter((file) =>
-      fs.statSync(path.join(detailsDir, file)).isDirectory(),
-    );
+    .filter((file) => fs.statSync(path.join(detailsDir, file)).isDirectory());
 
   for (const tournamentId of tournamentDirs) {
     const tournamentDir = path.join(detailsDir, tournamentId);
@@ -108,10 +106,7 @@ export function getTournamentInfo(
     // Return the most recent entry if no year specified
     return infoArray.sort((a, b) => b.year - a.year)[0] || null;
   } catch (error) {
-    console.error(
-      `Failed to load tournament info from ${infoPath}:`,
-      error,
-    );
+    console.error(`Failed to load tournament info from ${infoPath}:`, error);
     return null;
   }
 }
@@ -156,10 +151,7 @@ export function getAllTournamentInfo(
     const content = fs.readFileSync(infoPath, 'utf-8');
     return JSON.parse(content) as TournamentInformationEntry[];
   } catch (error) {
-    console.error(
-      `Failed to load tournament info from ${infoPath}:`,
-      error,
-    );
+    console.error(`Failed to load tournament info from ${infoPath}:`, error);
     return [];
   }
 }

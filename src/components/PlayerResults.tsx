@@ -1,10 +1,6 @@
 // src/components/PlayerResults.tsx
 // PlayerSummaryStats is intentionally not imported here anymore.
 
-// src/components/PlayerResults.tsx
-/* eslint-disable prettier/prettier */
-// PlayerSummaryStats is intentionally not imported here anymore.
-
 import Link from 'next/link';
 
 import ResultsTable from '@/components/ResultsTable';

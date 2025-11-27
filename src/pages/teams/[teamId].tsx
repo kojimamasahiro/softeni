@@ -142,7 +142,6 @@ export default function TeamResultsPage({ info, results }: Props) {
             <p>今後の分析や応援、記録管理などにぜひお役立てください。</p>
           </section>
 
-
           {/* Group results by year and gender */}
           {Object.entries(
             results.reduce(
@@ -200,7 +199,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const path = await import('path');
 
   // Read team IDs from team-name-mappings.json
-  const mappingsPath = path.join(process.cwd(), 'data/teams/team-name-mappings.json');
+  const mappingsPath = path.join(
+    process.cwd(),
+    'data/teams/team-name-mappings.json',
+  );
 
   if (!fs.existsSync(mappingsPath)) {
     return {
@@ -210,7 +212,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 
   const mappingsContent = fs.readFileSync(mappingsPath, 'utf-8');
-  const teamNameMappings = JSON.parse(mappingsContent) as Record<string, string[]>;
+  const teamNameMappings = JSON.parse(mappingsContent) as Record<
+    string,
+    string[]
+  >;
 
   const paths = Object.keys(teamNameMappings).map((teamId) => ({
     params: { teamId },
@@ -222,9 +227,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { aggregateTeamResults, generateTeamInfo } = await import('@/utils/team-data-aggregator');
+  const { aggregateTeamResults, generateTeamInfo } = await import(
+    '@/utils/team-data-aggregator'
+  );
   const { teamId } = context.params as { teamId: string };
 
   try {
@@ -248,4 +254,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { notFound: true };
   }
 };
-

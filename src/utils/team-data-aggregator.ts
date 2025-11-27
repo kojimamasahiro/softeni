@@ -8,7 +8,6 @@ import type { TournamentDetailData } from '@/types/tournament';
 import {
   getAllTournamentFiles,
   getAllTournamentIndex,
-  getAllTournamentInfo,
   getTournamentLabel,
   loadTournamentData,
 } from './tournament-data-loader';
@@ -310,16 +309,15 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
 
     // Get tournament information
     const tournamentLabel = getTournamentLabel(file.tournamentId);
-    const tournamentInfo = getAllTournamentInfo(file.tournamentId).find(
-      (info) => info.year === file.year,
-    );
 
     const tournamentName = `${tournamentLabel} ${file.year}`;
-    
+
     // Construct internal link
-    const tournamentEntry = tournamentIndex.find(t => t.tournamentId === file.tournamentId);
+    const tournamentEntry = tournamentIndex.find(
+      (t) => t.tournamentId === file.tournamentId,
+    );
     const generationId = tournamentEntry?.generationId || 'all';
-    
+
     // Parse category filename to extract parts
     // Format: [gameCategory]-[ageCategory]-[gender].json or [gameCategory]-[gender].json
     // e.g. doubles-u14-boys.json, team-none-boys.json

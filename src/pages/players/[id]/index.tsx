@@ -13,7 +13,7 @@ import { PlayerInfo } from '@/types/index';
 type Props = {
   player: PlayerInfo;
   id: string;
-  numericId?: number;
+  numericId?: number | null;
   summary?: string;
   latest?: {
     summary: string;
@@ -84,14 +84,16 @@ export default function PlayerInformation({
               '@type': 'Person',
               name: `${player.lastName} ${player.firstName}`,
               alternateName: `${player.lastNameKana} ${player.firstNameKana}`,
-              birthDate: formattedBirthDate,
-              height: `${player.height} cm`,
+              ...(player.birthDate && { birthDate: player.birthDate }),
+              ...(player.height && { height: `${player.height} cm` }),
               memberOf: {
                 '@type': 'Organization',
                 name: player.team,
               },
               url: `https://softeni-pick.com/players/${id}`,
-              sameAs: player.profileLinks.map((link) => link.url),
+              ...(player.profileLinks?.length > 0 && {
+                sameAs: player.profileLinks.map((link) => link.url),
+              }),
             }),
           }}
         />
@@ -286,7 +288,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const player = JSON.parse(fileContents);
 
   // Resolve numeric id from data/players/index.json by matching name
-  let numericId: number | undefined;
+  let numericId: number | null = null;
   try {
     const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
     const indexData = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
