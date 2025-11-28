@@ -4,15 +4,15 @@ import fs from 'fs';
 import path from 'path';
 
 import type {
-    TournamentDetailData,
-    TournamentInformationEntry,
+  TournamentDetailData,
+  TournamentInformationEntry,
 } from '@/types/tournament';
 
 import {
-    getAllTournamentFiles,
-    getAllTournamentIndex,
-    getTournamentLabel,
-    loadTournamentData,
+  getAllTournamentFiles,
+  getAllTournamentIndex,
+  getTournamentLabel,
+  loadTournamentData,
 } from './tournament-data-loader';
 
 type Player = {
