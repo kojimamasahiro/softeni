@@ -42,6 +42,7 @@ type MatchOpponent = {
 type EventResult = {
   year: number;
   gender: string;
+  gameCategory: string;
   tournament: string;
   categoryLabel?: string;
   link?: string;
@@ -400,9 +401,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const info = generateTeamInfo(teamId);
     const allResults = aggregateTeamResults(teamId);
 
-    // Filter results by year and gender
+    // Filter results by year and gender, and exclude team/versus matches
     const filteredResults = allResults.filter(
-      (r) => r.year === Number(year) && r.gender === gender,
+      (r) =>
+        r.year === Number(year) &&
+        r.gender === gender &&
+        !['team', 'versus'].includes(r.gameCategory),
     );
 
     if (

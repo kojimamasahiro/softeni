@@ -21,6 +21,7 @@ type TeamInfo = {
 type EventResult = {
   year: number;
   gender: string;
+  gameCategory: string;
   tournament: string;
   link?: string;
   results: {

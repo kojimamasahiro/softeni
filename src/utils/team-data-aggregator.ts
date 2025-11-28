@@ -4,15 +4,15 @@ import fs from 'fs';
 import path from 'path';
 
 import type {
-  TournamentDetailData,
-  TournamentInformationEntry,
+    TournamentDetailData,
+    TournamentInformationEntry,
 } from '@/types/tournament';
 
 import {
-  getAllTournamentFiles,
-  getAllTournamentIndex,
-  getTournamentLabel,
-  loadTournamentData,
+    getAllTournamentFiles,
+    getAllTournamentIndex,
+    getTournamentLabel,
+    loadTournamentData,
 } from './tournament-data-loader';
 
 type Player = {
@@ -39,6 +39,7 @@ type MatchOpponent = {
 type EventResult = {
   year: number;
   gender: string;
+  gameCategory: string;
   tournament: string;
   categoryLabel?: string;
   link?: string;
@@ -471,6 +472,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
       const boysEvent: EventResult = {
         year: file.year,
         gender: 'boys',
+        gameCategory,
         tournament: tournamentName,
         categoryLabel,
         link,
@@ -480,6 +482,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
       const girlsEvent: EventResult = {
         year: file.year,
         gender: 'girls',
+        gameCategory,
         tournament: tournamentName,
         categoryLabel,
         link,
@@ -552,6 +555,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
       eventResults.push({
         year: file.year,
         gender,
+        gameCategory,
         tournament: tournamentName,
         categoryLabel,
         link,
