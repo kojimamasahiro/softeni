@@ -128,18 +128,12 @@ export default function TeamPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: genderLabel,
-                  item: `https://softeni-pick.com/highschool/${gender}`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
-                  name: prefectureName,
+                  name: `${prefectureName} ${genderLabel}`,
                   item: `https://softeni-pick.com/highschool/${gender}/${prefectureId}`,
                 },
                 {
                   '@type': 'ListItem',
-                  position: 5,
+                  position: 4,
                   name: teamName,
                   item: pageUrl,
                 },
@@ -155,9 +149,8 @@ export default function TeamPage({
             crumbs={[
               { label: 'ホーム', href: '/' },
               { label: '高校カテゴリ', href: '/highschool' },
-              { label: genderLabel, href: `/highschool/${gender}` },
               {
-                label: prefectureName,
+                label: `${prefectureName} ${genderLabel}`,
                 href: `/highschool/${gender}/${prefectureId}`,
               },
               {
