@@ -7,52 +7,25 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 
-type Player = {
-  firstName: string;
-  lastName: string;
-};
-
 type TeamInfo = {
   id: string;
   name: string;
-  players: Record<string, Player>;
 };
 
-type EventResult = {
+type TeamYearlyStats = {
   year: number;
-  gender: string;
-  gameCategory: string;
-  tournament: string;
-  link?: string;
-  results: {
-    playerIds: string[];
-    result: string;
+  stats: {
+    gender: 'boys' | 'girls';
+    count: number;
   }[];
-  matches: {
-    round: string;
-    pair: string[];
-    opponents: MatchOpponent[];
-    result: 'win' | 'lose';
-    games: { won: string; lost: string };
-  }[];
-};
-
-type MatchOpponent = {
-  lastName: string;
-  firstName: string;
-  team: string;
-  playerId: string | null;
-  tempId: string;
-  prefecture?: string;
-  originalTeam?: string;
 };
 
 type Props = {
   info: TeamInfo;
-  results: EventResult[];
+  stats: TeamYearlyStats[];
 };
 
-export default function TeamResultsPage({ info, results }: Props) {
+export default function TeamResultsPage({ info, stats }: Props) {
   const teamName = info.name;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}`;
 
@@ -144,51 +117,34 @@ export default function TeamResultsPage({ info, results }: Props) {
           </section>
 
           {/* Group results by year and gender */}
-          {Object.entries(
-            results.reduce(
-              (acc, event) => {
-                const year = event.year;
-                if (!acc[year]) acc[year] = [];
-                acc[year].push(event);
-                return acc;
-              },
-              {} as Record<number, EventResult[]>,
-            ),
-          )
-            .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
-            .map(([year, yearEvents]) => (
-              <div key={year} className="mb-12">
-                <h2 className="text-2xl font-bold mb-6 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
-                  {year}年
-                </h2>
+          {stats.map(({ year, stats: yearStats }) => (
+            <div key={year} className="mb-12">
+              <h2 className="text-2xl font-bold mb-6 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+                {year}年
+              </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {['boys', 'girls'].map((gender) => {
-                    const genderEvents = yearEvents.filter(
-                      (e) => e.gender === gender,
-                    );
-                    if (genderEvents.length === 0) return null;
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {yearStats.map(({ gender, count }) => {
+                  const genderLabel = gender === 'boys' ? '男子' : '女子';
 
-                    const genderLabel = gender === 'boys' ? '男子' : '女子';
-
-                    return (
-                      <Link
-                        key={gender}
-                        href={`/teams/${info.id}/${year}/${gender}`}
-                        className="block bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-                      >
-                        <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">
-                          {genderLabel}
-                        </h3>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          大会数: {genderEvents.length}
-                        </p>
-                      </Link>
-                    );
-                  })}
-                </div>
+                  return (
+                    <Link
+                      key={gender}
+                      href={`/teams/${info.id}/${year}/${gender}`}
+                      className="block bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
+                    >
+                      <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">
+                        {genderLabel}
+                      </h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        大会数: {count}
+                      </p>
+                    </Link>
+                  );
+                })}
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </main>
     </>
@@ -236,18 +192,48 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     // Generate team information and results from tournament data
-    const info = generateTeamInfo(teamId);
-    const results = aggregateTeamResults(teamId);
+    const fullInfo = generateTeamInfo(teamId);
+    const allResults = aggregateTeamResults(teamId);
 
     // If no data found, return 404
-    if (!info.players || Object.keys(info.players).length === 0) {
+    if (!fullInfo.players || Object.keys(fullInfo.players).length === 0) {
       return { notFound: true };
     }
+
+    // Simplify info to reduce data size
+    const info: TeamInfo = {
+      id: fullInfo.id,
+      name: fullInfo.name,
+    };
+
+    // Aggregate results into stats
+    const statsMap = new Map<number, Map<'boys' | 'girls', number>>();
+
+    for (const result of allResults) {
+      const { year, gender } = result;
+      if (gender !== 'boys' && gender !== 'girls') continue;
+
+      if (!statsMap.has(year)) {
+        statsMap.set(year, new Map());
+      }
+      const yearStats = statsMap.get(year)!;
+      yearStats.set(gender, (yearStats.get(gender) || 0) + 1);
+    }
+
+    const stats: TeamYearlyStats[] = Array.from(statsMap.entries())
+      .sort(([yearA], [yearB]) => yearB - yearA)
+      .map(([year, genderCounts]) => ({
+        year,
+        stats: Array.from(genderCounts.entries())
+          .map(([gender, count]) => ({ gender, count }))
+          // Sort to ensure consistent order (e.g. boys then girls)
+          .sort((a, b) => a.gender.localeCompare(b.gender)),
+      }));
 
     return {
       props: {
         info,
-        results,
+        stats,
       },
     };
   } catch (error) {
