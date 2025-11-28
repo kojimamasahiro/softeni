@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 36,
+  "totalAppearances": 34,
   "byCategory": {
-    "team": 2,
     "doubles": 30,
     "singles": 4
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "岡山理大附",
-        "teamId": "okayamaridaifu",
-        "prefecture": "岡山県",
-        "prefectureId": "okayama",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "岡山理大附",
-        "teamId": "okayamaridaifu",
-        "prefecture": "岡山県",
-        "prefectureId": "okayama",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 39,

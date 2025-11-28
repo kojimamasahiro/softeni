@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 33,
+  "totalAppearances": 31,
   "byCategory": {
-    "team": 2,
     "doubles": 28,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "明徳義塾",
-        "teamId": "meitokugijuku",
-        "prefecture": "高知県",
-        "prefectureId": "kochi",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "明徳義塾",
-        "teamId": "meitokugijuku",
-        "prefecture": "高知県",
-        "prefectureId": "kochi",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 36,

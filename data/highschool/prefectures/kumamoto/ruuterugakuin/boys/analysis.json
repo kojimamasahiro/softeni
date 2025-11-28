@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 11,
   "byCategory": {
-    "team": 1,
     "doubles": 9,
     "singles": 2
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "ルーテル学院",
-        "teamId": "ruuterugakuin",
-        "prefecture": "熊本県",
-        "prefectureId": "kumamoto",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "ルーテル学院",
-        "teamId": "ruuterugakuin",
-        "prefecture": "熊本県",
-        "prefectureId": "kumamoto",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 10,

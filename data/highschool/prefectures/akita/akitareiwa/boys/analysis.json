@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 11,
   "byCategory": {
-    "team": 2,
     "doubles": 10,
     "singles": 1
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "秋田令和",
-        "teamId": "akitareiwa",
-        "prefecture": "秋田県",
-        "prefectureId": "akita",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "秋田令和",
-        "teamId": "akitareiwa",
-        "prefecture": "秋田県",
-        "prefectureId": "akita",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 11,

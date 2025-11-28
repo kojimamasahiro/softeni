@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 20,
   "byCategory": {
-    "team": 2,
     "doubles": 18,
     "singles": 2
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "高岡商",
-        "teamId": "takaokashou",
-        "prefecture": "富山県",
-        "prefectureId": "toyama",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "高岡商",
-        "teamId": "takaokashou",
-        "prefecture": "富山県",
-        "prefectureId": "toyama",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 24,

@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 19,
+  "totalAppearances": 18,
   "byCategory": {
-    "team": 1,
     "doubles": 17,
     "singles": 1
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "東海大相模",
-        "teamId": "toukaidaisagami",
-        "prefecture": "神奈川県",
-        "prefectureId": "kanagawa",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "東海大相模",
-        "teamId": "toukaidaisagami",
-        "prefecture": "神奈川県",
-        "prefectureId": "kanagawa",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 23,

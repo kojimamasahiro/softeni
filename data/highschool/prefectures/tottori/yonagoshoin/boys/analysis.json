@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 29,
+  "totalAppearances": 27,
   "byCategory": {
-    "team": 2,
     "doubles": 25,
     "singles": 2
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "米子松蔭",
-        "teamId": "yonagoshoin",
-        "prefecture": "鳥取県",
-        "prefectureId": "tottori",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "米子松蔭",
-        "teamId": "yonagoshoin",
-        "prefecture": "鳥取県",
-        "prefectureId": "tottori",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 30,

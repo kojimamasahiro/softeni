@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 21,
   "byCategory": {
-    "team": 2,
     "doubles": 19,
     "singles": 2
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "中京",
-        "teamId": "chuukyou",
-        "prefecture": "岐阜県",
-        "prefectureId": "gifu",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "中京",
-        "teamId": "chuukyou",
-        "prefecture": "岐阜県",
-        "prefectureId": "gifu",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 32,

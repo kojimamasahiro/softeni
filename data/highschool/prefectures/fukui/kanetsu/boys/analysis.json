@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 25,
   "byCategory": {
-    "team": 2,
     "doubles": 23,
     "singles": 2
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "金津",
-        "teamId": "kanetsu",
-        "prefecture": "福井県",
-        "prefectureId": "fukui",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "金津",
-        "teamId": "kanetsu",
-        "prefecture": "福井県",
-        "prefectureId": "fukui",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 26,

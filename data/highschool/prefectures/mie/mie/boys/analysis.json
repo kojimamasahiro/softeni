@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 39,
+  "totalAppearances": 38,
   "byCategory": {
-    "team": 1,
     "doubles": 33,
     "singles": 5
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "三重",
-        "teamId": "mie",
-        "prefecture": "三重県",
-        "prefectureId": "mie",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "三重",
-        "teamId": "mie",
-        "prefecture": "三重県",
-        "prefectureId": "mie",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 37,

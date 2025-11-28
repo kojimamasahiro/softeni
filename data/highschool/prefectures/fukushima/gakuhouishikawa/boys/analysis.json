@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 13,
   "byCategory": {
-    "team": 1,
     "doubles": 13
   },
   "resultsByCategory": {
@@ -42,28 +41,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "学法石川",
-        "teamId": "gakuhouishikawa",
-        "prefecture": "福島県",
-        "prefectureId": "fukushima",
-        "result": "準優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "学法石川",
-        "teamId": "gakuhouishikawa",
-        "prefecture": "福島県",
-        "prefectureId": "fukushima",
-        "result": "準優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 22,

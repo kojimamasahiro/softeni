@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 34,
+  "totalAppearances": 32,
   "byCategory": {
-    "team": 2,
     "doubles": 29,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "羽黒",
-        "teamId": "haguro",
-        "prefecture": "山形県",
-        "prefectureId": "yamagata",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "羽黒",
-        "teamId": "haguro",
-        "prefecture": "山形県",
-        "prefectureId": "yamagata",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 37,

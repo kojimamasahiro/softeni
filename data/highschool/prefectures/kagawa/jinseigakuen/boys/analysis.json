@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 51,
+  "totalAppearances": 49,
   "byCategory": {
-    "team": 2,
     "doubles": 42,
     "singles": 7
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "尽誠学園",
-        "teamId": "jinseigakuen",
-        "prefecture": "香川県",
-        "prefectureId": "kagawa",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "尽誠学園",
-        "teamId": "jinseigakuen",
-        "prefecture": "香川県",
-        "prefectureId": "kagawa",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 51,

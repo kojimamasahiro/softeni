@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 4,
   "byCategory": {
-    "team": 1,
     "doubles": 4
   },
   "resultsByCategory": {
@@ -42,28 +41,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "黒沢尻工",
-        "teamId": "kurosawashirikou",
-        "prefecture": "岩手県",
-        "prefectureId": "iwate",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "黒沢尻工",
-        "teamId": "kurosawashirikou",
-        "prefecture": "岩手県",
-        "prefectureId": "iwate",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 6,

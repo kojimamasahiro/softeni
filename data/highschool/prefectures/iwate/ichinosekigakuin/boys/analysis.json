@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 14,
   "byCategory": {
-    "team": 1,
     "doubles": 13,
     "singles": 1
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "一関学院",
-        "teamId": "ichinosekigakuin",
-        "prefecture": "岩手県",
-        "prefectureId": "iwate",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "一関学院",
-        "teamId": "ichinosekigakuin",
-        "prefecture": "岩手県",
-        "prefectureId": "iwate",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 17,

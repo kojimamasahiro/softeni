@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 39,
+  "totalAppearances": 37,
   "byCategory": {
-    "team": 2,
     "doubles": 34,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "東北",
-        "teamId": "touhoku",
-        "prefecture": "宮城県",
-        "prefectureId": "miyagi",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "東北",
-        "teamId": "touhoku",
-        "prefecture": "宮城県",
-        "prefectureId": "miyagi",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 43,

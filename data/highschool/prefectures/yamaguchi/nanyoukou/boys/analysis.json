@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 20,
   "byCategory": {
-    "team": 1,
     "doubles": 17,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "南陽工",
-        "teamId": "nanyoukou",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "準優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "南陽工",
-        "teamId": "nanyoukou",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "準優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 24,

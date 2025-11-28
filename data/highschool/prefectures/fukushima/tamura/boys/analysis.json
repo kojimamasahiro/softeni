@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 23,
   "byCategory": {
-    "team": 1,
     "doubles": 20,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "田村",
-        "teamId": "tamura",
-        "prefecture": "福島県",
-        "prefectureId": "fukushima",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "田村",
-        "teamId": "tamura",
-        "prefecture": "福島県",
-        "prefectureId": "fukushima",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 27,

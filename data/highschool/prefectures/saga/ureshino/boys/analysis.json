@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 29,
+  "totalAppearances": 27,
   "byCategory": {
-    "team": 2,
     "doubles": 24,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "嬉野",
-        "teamId": "ureshino",
-        "prefecture": "佐賀県",
-        "prefectureId": "saga",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "嬉野",
-        "teamId": "ureshino",
-        "prefecture": "佐賀県",
-        "prefectureId": "saga",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 29,

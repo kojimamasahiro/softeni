@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 15,
   "byCategory": {
-    "team": 1,
     "doubles": 13,
     "singles": 2
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "宇都宮短大附",
-        "teamId": "utsunomiyatandaifu",
-        "prefecture": "栃木県",
-        "prefectureId": "tochigi",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "宇都宮短大附",
-        "teamId": "utsunomiyatandaifu",
-        "prefecture": "栃木県",
-        "prefectureId": "tochigi",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 22,

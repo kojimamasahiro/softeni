@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 4,
   "byCategory": {
-    "team": 1,
     "doubles": 4
   },
   "resultsByCategory": {
@@ -42,28 +41,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "上田千曲",
-        "teamId": "uedachikuma",
-        "prefecture": "長野県",
-        "prefectureId": "nagano",
-        "result": "準優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "上田千曲",
-        "teamId": "uedachikuma",
-        "prefecture": "長野県",
-        "prefectureId": "nagano",
-        "result": "準優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 7,

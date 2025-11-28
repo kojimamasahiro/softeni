@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 10,
   "byCategory": {
-    "team": 1,
     "doubles": 9,
     "singles": 1
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "東福岡",
-        "teamId": "toufukuoka",
-        "prefecture": "福岡県",
-        "prefectureId": "fukuoka",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "東福岡",
-        "teamId": "toufukuoka",
-        "prefecture": "福岡県",
-        "prefectureId": "fukuoka",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 16,

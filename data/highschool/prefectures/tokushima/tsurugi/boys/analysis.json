@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 15,
   "byCategory": {
-    "team": 2,
     "doubles": 14,
     "singles": 1
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "つるぎ",
-        "teamId": "tsurugi",
-        "prefecture": "徳島県",
-        "prefectureId": "tokushima",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "つるぎ",
-        "teamId": "tsurugi",
-        "prefecture": "徳島県",
-        "prefectureId": "tokushima",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 19,

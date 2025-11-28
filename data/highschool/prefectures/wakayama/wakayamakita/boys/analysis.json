@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 33,
+  "totalAppearances": 31,
   "byCategory": {
-    "team": 2,
     "doubles": 28,
     "singles": 3
   },
@@ -69,28 +68,8 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "和歌山北",
-        "teamId": "wakayamakita",
-        "prefecture": "和歌山県",
-        "prefectureId": "wakayama",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "和歌山北",
-        "teamId": "wakayamakita",
-        "prefecture": "和歌山県",
-        "prefectureId": "wakayama",
-        "result": "優勝",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
   "uniquePlayers": 37,
