@@ -77,10 +77,11 @@ export default function HighschoolIndex({ grouped }: Props) {
             <div className="flex gap-4 justify-center">
               <button
                 onClick={() => setSelectedGender('boys')}
-                className={`px-8 py-4 rounded-lg border-2 transition ${selectedGender === 'boys'
+                className={`px-8 py-4 rounded-lg border-2 transition ${
+                  selectedGender === 'boys'
                     ? 'border-blue-500 bg-blue-50 dark:bg-blue-900'
                     : 'border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
+                }`}
               >
                 <div className="text-3xl mb-2">👦</div>
                 <div className="text-lg font-bold">男子</div>
@@ -88,10 +89,11 @@ export default function HighschoolIndex({ grouped }: Props) {
 
               <button
                 onClick={() => setSelectedGender('girls')}
-                className={`px-8 py-4 rounded-lg border-2 transition ${selectedGender === 'girls'
+                className={`px-8 py-4 rounded-lg border-2 transition ${
+                  selectedGender === 'girls'
                     ? 'border-pink-500 bg-pink-50 dark:bg-pink-900'
                     : 'border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
+                }`}
               >
                 <div className="text-3xl mb-2">👧</div>
                 <div className="text-lg font-bold">女子</div>
