@@ -246,6 +246,35 @@ export default function Home({ recentTournaments }: HomeProps) {
                     </svg>
                   </a>
                 </div>
+                <div
+                  onClick={() => (window.location.href = `/teams/watakyu`)}
+                  className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <h3 className="text-lg font-bold mb-1">ワタキューセイモア</h3>
+                  <a
+                    href="https://www.watakyu-sports.jp/softtennis/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-blue-700 dark:text-blue-300 underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    公式サイト
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-1 h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </section>
           </div>
