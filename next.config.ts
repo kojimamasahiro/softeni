@@ -91,6 +91,9 @@ const nextConfig = {
 
     return [...fixedRedirects, ...dynamicRedirects];
   },
+  outputFileTracingIncludes: {
+    '/api/players': ['./data/**/*'],
+  },
 };
 
 export default nextConfig;
