@@ -1,0 +1,119 @@
+{
+  "totalAppearances": 11,
+  "byCategory": {
+    "team": 1,
+    "doubles": 9,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "東福岡",
+        "teamId": "toufukuoka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "伊藤_駿平_東福岡_福岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "東福岡",
+        "teamId": "toufukuoka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "伊藤_駿平_東福岡_福岡県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "東福岡",
+        "teamId": "toufukuoka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "藤野_慶汰_東福岡_福岡県",
+          "東條_陽斗_東福岡_福岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "東福岡",
+        "teamId": "toufukuoka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "山田_健人_東福岡_福岡県",
+          "野口_颯太_東福岡_福岡県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "東福岡",
+        "teamId": "toufukuoka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "東福岡",
+        "teamId": "toufukuoka",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 16,
+  "topPlayers": [
+    {
+      "id": "伊藤_駿平_東福岡_福岡県",
+      "appearances": 3
+    },
+    {
+      "id": "山田_侑人_東福岡_福岡県",
+      "appearances": 2
+    },
+    {
+      "id": "伊藤_玲央_東福岡_秋田",
+      "appearances": 1
+    },
+    {
+      "id": "帆足_光平_東福岡_福岡",
+      "appearances": 1
+    },
+    {
+      "id": "木村_蓮_東福岡_福岡県",
+      "appearances": 1
+    }
+  ]
+}

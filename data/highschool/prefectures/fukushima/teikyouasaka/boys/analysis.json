@@ -1,0 +1,67 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "帝京安積",
+        "teamId": "teikyouasaka",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "宗像_瑛汰_帝京安積_福島県",
+          "塩田_悠之介_帝京安積_福島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "帝京安積",
+        "teamId": "teikyouasaka",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "坂本_一樹_帝京安積_福島県",
+          "今泉_賢誠_帝京安積_福島県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "宗像_瑛汰_帝京安積_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "塩田_悠之介_帝京安積_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "坂本_一樹_帝京安積_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "今泉_賢誠_帝京安積_福島県",
+      "appearances": 1
+    }
+  ]
+}

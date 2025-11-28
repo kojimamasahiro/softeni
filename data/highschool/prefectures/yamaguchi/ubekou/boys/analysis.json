@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 11,
+  "byCategory": {
+    "team": 1,
+    "doubles": 10
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "久野_莉輝_宇部工_山口県",
+          "義永_啓人_宇部工_山口県"
+        ]
+      },
+      "historicalBest": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "久野_莉輝_宇部工_山口県",
+          "義永_啓人_宇部工_山口県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "宇部工",
+        "teamId": "ubekou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 16,
+  "topPlayers": [
+    {
+      "id": "久野_莉輝_宇部工_山口県",
+      "appearances": 3
+    },
+    {
+      "id": "白井_春希_宇部工_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "義永_啓人_宇部工_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "植木_陽丸_宇部工_山口",
+      "appearances": 1
+    },
+    {
+      "id": "藤井_太一_宇部工_山口",
+      "appearances": 1
+    }
+  ]
+}

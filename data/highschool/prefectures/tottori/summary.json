@@ -4,22 +4,37 @@
     "teamId": "yonagoshoin",
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": ["中川_龍_米子松蔭", "大田_万葉_米子松蔭"]
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
   },
   {
     "team": "鳥取東",
     "teamId": "tottorihigashi",
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["砂田_隆稔_鳥取東"]
+    "gender": "boys",
+    "playerIds": [
+      "武安_桜人_鳥取東_鳥取県",
+      "砂田_隆稔_鳥取東_鳥取県"
+    ]
   },
   {
     "team": "鳥取西",
@@ -30,355 +45,11 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
-    "playerIds": ["本庄_泰都_鳥取西", "本庄_晃都_鳥取西"]
-  },
-  {
-    "team": "米子工業",
-    "teamId": "yonagokougyou",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["高橋_和志_米子工業", "植田_瑞稀_米子工業"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["佐々木_康太_米子松蔭", "下田_悠貴_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["山本_蓮_米子松蔭", "木村_天_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["中川_龍_米子松蔭", "大田_万葉_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["陶山_楓真_米子松蔭", "下村_駿太_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024
-  },
-  {
-    "team": "鳥取商",
-    "teamId": "tottorishou",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["上野_嶺太_鳥取商", "尾﨑_巧都_鳥取商"]
-  },
-  {
-    "team": "鳥取商",
-    "teamId": "tottorishou",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["澤_優弥_鳥取商", "澤根_空蒼_鳥取商"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["米田_心_米子松蔭", "杉田_大樹_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["陶山_楓真_米子松蔭", "下村_駿太_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["岸本_悠真_米子松蔭", "寺村_虎哲_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["實田_煌羽_米子松蔭", "吉川_恵大_米子松蔭"]
-  },
-  {
-    "team": "米子工",
-    "teamId": "yonagokou",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["白井_幸誠_米子工", "中村_泰壱斗_米子工"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["杉田_大樹_米子松蔭", "吉川_恵大_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["米田_心_米子松蔭", "大田_優_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["細田_詠太_米子松蔭", "寺村_虎哲_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["岸本_悠真_米子松蔭", "重栖_真都_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["橋本_哉太_米子松蔭", "川神_航平_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["川神_堅汰_米子松蔭", "川神_航平_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["上代_零也_米子松蔭", "杉田_大樹_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["豊口_航汰_米子松蔭", "浜田_晃平_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["實田_煌羽_米子松蔭", "吉川_恵大_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["米田_心_米子松蔭", "寺村_虎哲_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["橋本_哉太_米子松蔭", "大田_優_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": ["佐々木_康太_米子松蔭", "下田_隼輝_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": ["下村_駿太_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": ["岸本_悠真_米子松蔭", "寺村_虎哲_米子松蔭"]
-  },
-  {
-    "team": "米子松蔭",
-    "teamId": "yonagoshoin",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": ["吉川_恵大_米子松蔭"]
-  },
-  {
-    "team": "鳥取東",
-    "teamId": "tottorihigashi",
-    "prefecture": "鳥取県",
-    "prefectureId": "tottori",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": ["武安_桜人_鳥取東", "砂田_隆稔_鳥取東"]
+    "gender": "boys",
+    "playerIds": [
+      "本庄_泰都_鳥取西_鳥取県",
+      "本庄_晃都_鳥取西_鳥取県"
+    ]
   },
   {
     "team": "鳥取商",
@@ -389,7 +60,41 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["田辺_凱人_鳥取商", "大野木_跳馬_鳥取商"]
+    "gender": "boys",
+    "playerIds": [
+      "田辺_凱人_鳥取商_鳥取県",
+      "大野木_跳馬_鳥取商_鳥取県"
+    ]
+  },
+  {
+    "team": "鳥取商",
+    "teamId": "tottorishou",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "上野_嶺太_鳥取商_鳥取県",
+      "尾﨑_巧都_鳥取商_鳥取県"
+    ]
+  },
+  {
+    "team": "鳥取商",
+    "teamId": "tottorishou",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "澤_優弥_鳥取商_鳥取県",
+      "澤根_空蒼_鳥取商_鳥取県"
+    ]
   },
   {
     "team": "八頭",
@@ -400,7 +105,161 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["田中_煌音_八頭", "東田_一樹_八頭"]
+    "gender": "boys",
+    "playerIds": [
+      "田中_煌音_八頭_鳥取県",
+      "東田_一樹_八頭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子工",
+    "teamId": "yonagokou",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "白井_幸誠_米子工_鳥取県",
+      "中村_泰壱斗_米子工_鳥取県"
+    ]
+  },
+  {
+    "team": "米子工業",
+    "teamId": "yonagokougyou",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "高橋_和志_米子工業_鳥取県",
+      "植田_瑞稀_米子工業_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "中川_龍_米子松蔭_鳥取",
+      "大田_万葉_米子松蔭_鳥取"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "佐々木_康太_米子松蔭_鳥取",
+      "下田_隼輝_米子松蔭_和歌山"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "岸本_悠真_米子松蔭_鳥取県",
+      "寺村_虎哲_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "杉田_大樹_米子松蔭_鳥取県",
+      "吉川_恵大_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "米田_心_米子松蔭_鳥取県",
+      "大田_優_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "細田_詠太_米子松蔭_鳥取県",
+      "寺村_虎哲_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "準優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "岸本_悠真_米子松蔭_鳥取県",
+      "重栖_真都_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "橋本_哉太_米子松蔭_鳥取県",
+      "川神_航平_米子松蔭_鳥取県"
+    ]
   },
   {
     "team": "米子松蔭",
@@ -411,7 +270,56 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["中川_龍_米子松蔭", "大田_万葉_米子松蔭"]
+    "gender": "girls",
+    "playerIds": [
+      "實田_珠愛_米子松蔭_鳥取県",
+      "沢山_凛_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "藤岡_寿々菜_米子松蔭_鳥取県",
+      "秦本_瑠々_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "吉川_海友_米子松蔭_鳥取県",
+      "仲倉_玲依_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "中前_空_米子松蔭_鳥取県",
+      "木村_唯愛_米子松蔭_鳥取県"
+    ]
   },
   {
     "team": "米子松蔭",
@@ -422,7 +330,41 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["足立_蒼士_米子松蔭", "下田_悠貴_米子松蔭"]
+    "gender": "girls",
+    "playerIds": [
+      "田邉_花_米子松蔭_鳥取県",
+      "山下_千晴_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "山本_萌衣_米子松蔭_鳥取県",
+      "寺村_初花_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "中川_龍_米子松蔭_鳥取県",
+      "大田_万葉_米子松蔭_鳥取県"
+    ]
   },
   {
     "team": "米子松蔭",
@@ -433,7 +375,11 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["藤原_聖_米子松蔭", "足立_悠隼_米子松蔭"]
+    "gender": "boys",
+    "playerIds": [
+      "足立_蒼士_米子松蔭_鳥取県",
+      "下田_悠貴_米子松蔭_鳥取県"
+    ]
   },
   {
     "team": "米子松蔭",
@@ -441,8 +387,355 @@
     "prefecture": "鳥取県",
     "prefectureId": "tottori",
     "result": "1回戦敗退",
-    "category": "team",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "藤原_聖_米子松蔭_鳥取県",
+      "足立_悠隼_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "吉川_海友_米子松蔭_鳥取県",
+      "仲倉_玲依_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "荒木_若菜_米子松蔭_鳥取県",
+      "山本_萌衣_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "福田_芽生_米子松蔭_鳥取県",
+      "木村_唯愛_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "仲倉_理緒_米子松蔭_鳥取県",
+      "松原_一葉_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "田邉_花_米子松蔭_鳥取県",
+      "秦本_瑠々_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "中前_空_米子松蔭_鳥取県",
+      "寺村_初花_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "佐々木_康太_米子松蔭_鳥取県",
+      "下田_悠貴_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "山本_蓮_米子松蔭_鳥取県",
+      "木村_天_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "中川_龍_米子松蔭_鳥取県",
+      "大田_万葉_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "陶山_楓真_米子松蔭_鳥取県",
+      "下村_駿太_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "米田_心_米子松蔭_鳥取県",
+      "杉田_大樹_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "陶山_楓真_米子松蔭_鳥取県",
+      "下村_駿太_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "岸本_悠真_米子松蔭_鳥取県",
+      "寺村_虎哲_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "實田_煌羽_米子松蔭_鳥取県",
+      "吉川_恵大_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "川神_堅汰_米子松蔭_鳥取県",
+      "川神_航平_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "上代_零也_米子松蔭_鳥取県",
+      "杉田_大樹_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "豊口_航汰_米子松蔭_鳥取県",
+      "浜田_晃平_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "實田_煌羽_米子松蔭_鳥取県",
+      "吉川_恵大_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "米田_心_米子松蔭_鳥取県",
+      "寺村_虎哲_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "橋本_哉太_米子松蔭_鳥取県",
+      "大田_優_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "鳥取東",
+    "teamId": "tottorihigashi",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "砂田_隆稔_鳥取東_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "下村_駿太_米子松蔭_鳥取県"
+    ]
+  },
+  {
+    "team": "米子松蔭",
+    "teamId": "yonagoshoin",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "吉川_恵大_米子松蔭_鳥取県"
+    ]
   }
 ]

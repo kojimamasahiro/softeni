@@ -1,0 +1,98 @@
+{
+  "totalAppearances": 8,
+  "byCategory": {
+    "doubles": 7,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "沖中_瑛太_旭川実_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "沖中_瑛太_旭川実_北海道"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "沖中_瑛太_旭川実_北海道",
+          "細川_瞬汰_旭川実_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "森_海翔_旭川実_北海道",
+          "塩谷_駿_旭川実_北海道"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 10,
+  "topPlayers": [
+    {
+      "id": "沖中_瑛太_旭川実_北海道",
+      "appearances": 3
+    },
+    {
+      "id": "森_海翔_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "塩谷_駿_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "細川_瞬汰_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "大村_健斗_旭川実_北海道",
+      "appearances": 1
+    }
+  ]
+}

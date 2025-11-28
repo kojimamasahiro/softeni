@@ -1,0 +1,119 @@
+{
+  "totalAppearances": 39,
+  "byCategory": {
+    "team": 1,
+    "doubles": 33,
+    "singles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "三重",
+        "teamId": "mie",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "南_龍之介_三重_三重県"
+        ]
+      },
+      "historicalBest": {
+        "team": "三重",
+        "teamId": "mie",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "南_龍之介_三重_三重県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "三重",
+        "teamId": "mie",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "南_龍之介_三重_三重",
+          "竹内_慶悟_三重_三重"
+        ]
+      },
+      "historicalBest": {
+        "team": "三重",
+        "teamId": "mie",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "仲川_晴智_三重_三重県",
+          "近藤_拓空_三重_三重県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "三重",
+        "teamId": "mie",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "三重",
+        "teamId": "mie",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 37,
+  "topPlayers": [
+    {
+      "id": "南_龍之介_三重_三重県",
+      "appearances": 5
+    },
+    {
+      "id": "若林_宝来_三重_三重県",
+      "appearances": 4
+    },
+    {
+      "id": "竹内_慶悟_三重_三重県",
+      "appearances": 4
+    },
+    {
+      "id": "中内_謙秀_三重_三重県",
+      "appearances": 3
+    },
+    {
+      "id": "青木_吟斗_三重_三重県",
+      "appearances": 3
+    }
+  ]
+}

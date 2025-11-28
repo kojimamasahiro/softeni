@@ -38,19 +38,16 @@ for pref_id, new_entries in grouped.items():
 
     # ✅ 重複判定用のキーセット（団体戦は team を使う）
     def make_key(e):
-        category = e.get("category")
-        tournament_id = e.get("tournamentId")
-        year = e.get("year")
-
-        if category == "team":
-            return (category, tournament_id, year, e.get("team"))
-        else:
-            return (
-                category,
-                tournament_id,
-                year,
-                tuple(sorted(e.get("playerIds", [])))
-            )
+        # 重複チェック用キーの生成
+        # カテゴリ、大会、年度、性別、および (playerIds or team) で一意性を判断
+        return (
+            e.get("category"),
+            e.get("tournamentId"),
+            e.get("year"),
+            e.get("gender"), # gender を追加
+            tuple(sorted(e.get("playerIds", []))), # playerIds は常にタプルで
+            e.get("team") # team も常に含める (None の場合もある)
+        )
 
     existing_keys = {make_key(e) for e in existing_entries}
 

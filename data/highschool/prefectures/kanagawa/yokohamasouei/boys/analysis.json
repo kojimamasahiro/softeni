@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "青木_優_横浜創英_神奈川県",
+          "斉藤_愁我_横浜創英_神奈川県"
+        ]
+      },
+      "historicalBest": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "川崎_涼吾_横浜創英_神奈川県",
+          "椿_麻央_横浜創英_神奈川県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "川崎_涼吾_横浜創英_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "椿_麻央_横浜創英_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "大沢_風木_横浜創英_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "松野_光希_横浜創英_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "青木_優_横浜創英_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

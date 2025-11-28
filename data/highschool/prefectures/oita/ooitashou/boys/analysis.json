@@ -1,0 +1,119 @@
+{
+  "totalAppearances": 15,
+  "byCategory": {
+    "team": 1,
+    "doubles": 12,
+    "singles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "衞藤_結生_大分商_大分県"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "衞藤_結生_大分商_大分県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "小野_泰輝_大分商_大分県",
+          "小野_弘太郎_大分商_大分県"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "羽田_野吏功_大分商_大分県",
+          "矢野_遥己_大分商_大分県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 17,
+  "topPlayers": [
+    {
+      "id": "衞藤_結生_大分商_大分県",
+      "appearances": 3
+    },
+    {
+      "id": "小野_泰輝_大分商_大分県",
+      "appearances": 3
+    },
+    {
+      "id": "小野_弘太郎_大分商_大分",
+      "appearances": 2
+    },
+    {
+      "id": "簾_友翔_大分商_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "小野_弘太郎_大分商_大分県",
+      "appearances": 2
+    }
+  ]
+}

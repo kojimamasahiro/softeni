@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "team": 1,
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "上田千曲",
+        "teamId": "uedachikuma",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "堀内_裕心_上田千曲_長野県",
+          "髙橋_洸貴_上田千曲_長野県"
+        ]
+      },
+      "historicalBest": {
+        "team": "上田千曲",
+        "teamId": "uedachikuma",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "遠藤_優太_上田千曲_長野県",
+          "杉田_涼哉_上田千曲_長野県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "上田千曲",
+        "teamId": "uedachikuma",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "上田千曲",
+        "teamId": "uedachikuma",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 7,
+  "topPlayers": [
+    {
+      "id": "堀_侑杏_上田千曲_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "山辺_勝也_上田千曲_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "堀内_裕心_上田千曲_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "髙橋_洸貴_上田千曲_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "金井_葵稔_上田千曲_長野県",
+      "appearances": 1
+    }
+  ]
+}

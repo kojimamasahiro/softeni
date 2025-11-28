@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 9,
+  "byCategory": {
+    "team": 1,
+    "doubles": 8
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "河住_昌悟_甲府南",
+          "深沢_秀悠_甲府南"
+        ]
+      },
+      "historicalBest": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "河住_昌悟_甲府南",
+          "深沢_秀悠_甲府南"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 13,
+  "topPlayers": [
+    {
+      "id": "天野_友貴_甲府南_山梨県",
+      "appearances": 2
+    },
+    {
+      "id": "中込_栄治_甲府南_山梨県",
+      "appearances": 2
+    },
+    {
+      "id": "塩谷_佳司_甲府南_山梨県",
+      "appearances": 2
+    },
+    {
+      "id": "河住_昌悟_甲府南_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_大仁_甲府南_山梨県",
+      "appearances": 1
+    }
+  ]
+}

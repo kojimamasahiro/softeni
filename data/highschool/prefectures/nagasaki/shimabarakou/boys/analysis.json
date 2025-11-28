@@ -1,0 +1,49 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "島原工",
+        "teamId": "shimabarakou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "田口_滉_島原工_長崎県",
+          "池田_迅_島原工_長崎県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "田口_滉_島原工_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "池田_迅_島原工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "楠田_啓人_島原工_長崎県",
+      "appearances": 1
+    }
+  ]
+}

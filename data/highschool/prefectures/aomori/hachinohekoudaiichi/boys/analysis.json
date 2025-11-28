@@ -1,0 +1,119 @@
+{
+  "totalAppearances": 21,
+  "byCategory": {
+    "team": 1,
+    "doubles": 18,
+    "singles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "山中_裕太_八戸工大一_青森県"
+        ]
+      },
+      "historicalBest": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "山中_裕太_八戸工大一_青森県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "山中_裕太_八戸工大一_青森県",
+          "地苫米_空隼_八戸工大一_青森県"
+        ]
+      },
+      "historicalBest": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "東_淳之介_八戸工大一_青森県",
+          "苫米地_勝成_八戸工大一_青森県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 30,
+  "topPlayers": [
+    {
+      "id": "山中_裕太_八戸工大一_青森県",
+      "appearances": 4
+    },
+    {
+      "id": "荒関_拓斗_八戸工大一_青森県",
+      "appearances": 3
+    },
+    {
+      "id": "山中_裕太_八戸工大一_青森",
+      "appearances": 2
+    },
+    {
+      "id": "川守田_真翔_八戸工大一_青森県",
+      "appearances": 2
+    },
+    {
+      "id": "葛西_慧_八戸工大一_青森県",
+      "appearances": 2
+    }
+  ]
+}

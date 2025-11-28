@@ -71,14 +71,15 @@ for item in results_data["results"]:
             "prefectureId": team_info["prefectureId"],
             "result": result,
             "category": category,
-            "tournamentId": "highschool-championship",  # 固定値
-            "year": 2025
+            "tournamentId": item.get("tournamentId", "unknown"),
+            "year": item.get("year", 2025),
+            "gender": item.get("gender", "unknown")
         }
 
     # 個人戦: playerIds → team名を抽出
     else:
         player_ids = item["playerIds"]
-        team_names = {pid.split("_")[2] for pid in player_ids}
+        team_names = {pid.split("_")[2] for pid in player_ids if len(pid.split("_")) > 2}
 
         for team_name in team_names:
             team_info = team_map.get(team_name)
@@ -92,8 +93,9 @@ for item in results_data["results"]:
                 "prefectureId": team_info["prefectureId"],
                 "result": result,
                 "category": category,
-                "tournamentId": "highschool-championship",  # 固定値
-                "year": 2025,
+                "tournamentId": item.get("tournamentId", "unknown"),
+                "year": item.get("year", 2025),
+                "gender": item.get("gender", "unknown"),
                 "playerIds": player_ids
             }
 

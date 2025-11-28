@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 14,
+  "byCategory": {
+    "team": 1,
+    "doubles": 13
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "菅原_大馳_学法石川_福島県",
+          "菅原_大馳_学法石川_福島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "菅原_大馳_学法石川_福島県",
+          "菅原_大馳_学法石川_福島県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 22,
+  "topPlayers": [
+    {
+      "id": "菅原_大馳_学法石川_福島県",
+      "appearances": 4
+    },
+    {
+      "id": "佐藤_良吹_学法石川_福島県",
+      "appearances": 2
+    },
+    {
+      "id": "唐澤_季弥_学法石川_福島",
+      "appearances": 1
+    },
+    {
+      "id": "猪股_悠志_学法石川_秋田",
+      "appearances": 1
+    },
+    {
+      "id": "矢吹_蓮_学法石川_福島県",
+      "appearances": 1
+    }
+  ]
+}

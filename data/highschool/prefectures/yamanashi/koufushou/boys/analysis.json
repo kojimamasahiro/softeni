@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "甲府商",
+        "teamId": "koufushou",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "佐野_優達_甲府商_山梨県",
+          "井上_航_甲府商_山梨県"
+        ]
+      },
+      "historicalBest": {
+        "team": "甲府商",
+        "teamId": "koufushou",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "植松_愁生_甲府商_山梨県",
+          "加藤_光希_甲府商_山梨県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 10,
+  "topPlayers": [
+    {
+      "id": "末永_光幸樹_甲府商_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "若尾_聖也_甲府商_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "佐野_優達_甲府商_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "井上_航_甲府商_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "長谷部_太河_甲府商_山梨県",
+      "appearances": 1
+    }
+  ]
+}

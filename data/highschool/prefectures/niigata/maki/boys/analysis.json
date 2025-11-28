@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 7,
+  "byCategory": {
+    "doubles": 7
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "町澤_緯宙_巻_新潟県",
+          "近山_諒成_巻_新潟県"
+        ]
+      },
+      "historicalBest": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "杉山_葉空_巻_新潟県",
+          "丹野_温仁_巻_新潟県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 13,
+  "topPlayers": [
+    {
+      "id": "町澤_緯宙_巻_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "町澤_緯宙_巻_新潟",
+      "appearances": 1
+    },
+    {
+      "id": "近山_諒成_巻_新潟",
+      "appearances": 1
+    },
+    {
+      "id": "若林_韻_巻_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_颯真_巻_新潟県",
+      "appearances": 1
+    }
+  ]
+}

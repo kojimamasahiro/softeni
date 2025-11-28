@@ -1,0 +1,59 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "明星",
+        "teamId": "myoujou",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "児玉_拓海_明星_大阪府",
+          "龍見_京壱_明星_大阪府"
+        ]
+      },
+      "historicalBest": {
+        "team": "明星",
+        "teamId": "myoujou",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "児玉_拓海_明星_大阪府",
+          "龍見_京壱_明星_大阪府"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "児玉_拓海_明星_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "龍見_京壱_明星_大阪府",
+      "appearances": 1
+    }
+  ]
+}

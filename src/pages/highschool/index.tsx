@@ -3,6 +3,7 @@ import path from 'path';
 
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -19,12 +20,15 @@ type Props = {
 
 export default function HighschoolIndex({ grouped }: Props) {
   const pageUrl = 'https://softeni-pick.com/highschool';
+  const [selectedGender, setSelectedGender] = useState<'boys' | 'girls'>(
+    'boys',
+  );
 
   return (
     <>
       <MetaHead
         title="高校カテゴリ | ソフトテニス情報"
-        description="全国の高校ソフトテニスの成績を都道府県別に掲載"
+        description="全国の高校ソフトテニスの成績を男子・女子別に都道府県別に掲載"
         url={pageUrl}
         type="article"
       />
@@ -32,7 +36,6 @@ export default function HighschoolIndex({ grouped }: Props) {
       <Head>
         <title>高校カテゴリ | ソフトテニス情報</title>
 
-        {/* ✅ 構造化データ（パンくずリスト） */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -60,7 +63,6 @@ export default function HighschoolIndex({ grouped }: Props) {
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          {/* ✅ パンくずリスト */}
           <Breadcrumbs
             crumbs={[
               { label: 'ホーム', href: '/' },
@@ -69,8 +71,38 @@ export default function HighschoolIndex({ grouped }: Props) {
           />
 
           <h1 className="text-2xl font-bold mb-6">高校カテゴリ</h1>
+
+          {/* Gender Selection */}
+          <div className="mb-8">
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={() => setSelectedGender('boys')}
+                className={`px-8 py-4 rounded-lg border-2 transition ${selectedGender === 'boys'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900'
+                    : 'border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+              >
+                <div className="text-3xl mb-2">👦</div>
+                <div className="text-lg font-bold">男子</div>
+              </button>
+
+              <button
+                onClick={() => setSelectedGender('girls')}
+                className={`px-8 py-4 rounded-lg border-2 transition ${selectedGender === 'girls'
+                    ? 'border-pink-500 bg-pink-50 dark:bg-pink-900'
+                    : 'border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+              >
+                <div className="text-3xl mb-2">👧</div>
+                <div className="text-lg font-bold">女子</div>
+              </button>
+            </div>
+          </div>
+
+          {/* Prefecture Selection */}
           <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
-            全国の高校ソフトテニス成績を都道府県ごとにまとめています。地域を選んでご覧ください。
+            {selectedGender === 'boys' ? '男子' : '女子'}
+            の成績を都道府県ごとに表示します。地域を選んでご覧ください。
           </p>
 
           <div className="space-y-8">
@@ -81,7 +113,7 @@ export default function HighschoolIndex({ grouped }: Props) {
                   {prefs.map((pref) => (
                     <a
                       key={pref.id}
-                      href={`/highschool/${pref.id}`}
+                      href={`/highschool/${selectedGender}/${pref.id}`}
                       className="block px-4 py-2 text-center border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                     >
                       {pref.name}

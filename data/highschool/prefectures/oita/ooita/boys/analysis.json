@@ -1,0 +1,119 @@
+{
+  "totalAppearances": 18,
+  "byCategory": {
+    "team": 1,
+    "doubles": 15,
+    "singles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "坂口_竣亮_大分_大分県"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "坂口_竣亮_大分_大分県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "坂口_竣亮_大分_大分県",
+          "青野_良真_大分_大分県"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "安部_陸斗_大分_大分県",
+          "樋口_晴喜_大分_大分県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 22,
+  "topPlayers": [
+    {
+      "id": "坂口_竣亮_大分_大分県",
+      "appearances": 4
+    },
+    {
+      "id": "岡本_央睦_大分_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "安部_陸斗_大分_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "樋口_晴喜_大分_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "青野_良真_大分_大分県",
+      "appearances": 2
+    }
+  ]
+}

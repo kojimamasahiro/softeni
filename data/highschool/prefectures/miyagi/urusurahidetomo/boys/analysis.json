@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "ウルスラ英智",
+        "teamId": "urusurahidetomo",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "佐藤_榎南_ウルスラ英智_宮城県",
+          "冨主_純翔_ウルスラ英智_宮城県"
+        ]
+      },
+      "historicalBest": {
+        "team": "ウルスラ英智",
+        "teamId": "urusurahidetomo",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "木幡_一陽_ウルスラ英智_宮城県",
+          "小野_武蔵_ウルスラ英智_宮城県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "青柳_空杜_ウルスラ英智_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "佐々_木成愛_ウルスラ英智_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_榎南_ウルスラ英智_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "冨主_純翔_ウルスラ英智_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "木幡_一陽_ウルスラ英智_宮城県",
+      "appearances": 1
+    }
+  ]
+}

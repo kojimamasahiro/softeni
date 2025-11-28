@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "doubles": 6
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "神戸国際附",
+        "teamId": "koubekokusaifu",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "鍬﨑_駿斗_神戸国際附_兵庫県",
+          "股野_頼悟_神戸国際附_兵庫県"
+        ]
+      },
+      "historicalBest": {
+        "team": "神戸国際附",
+        "teamId": "koubekokusaifu",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "浦田_惟生_神戸国際附_兵庫県",
+          "清原_聖真_神戸国際附_兵庫県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "立花_輝_神戸国際附_兵庫県",
+      "appearances": 3
+    },
+    {
+      "id": "鳥津_颯_神戸国際附_兵庫県",
+      "appearances": 3
+    },
+    {
+      "id": "浦田_惟生_神戸国際附_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "清原_聖真_神戸国際附_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "朝生_迅_神戸国際附_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

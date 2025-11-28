@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 12,
+  "byCategory": {
+    "doubles": 12
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "富山工",
+        "teamId": "toyamakou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "吉藤_蓮斗_富山工_富山県",
+          "金津_結大_富山工_富山県"
+        ]
+      },
+      "historicalBest": {
+        "team": "富山工",
+        "teamId": "toyamakou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "高瀬_泰雅_富山工_富山県",
+          "小森_寛太_富山工_富山県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 15,
+  "topPlayers": [
+    {
+      "id": "金津_結大_富山工_富山県",
+      "appearances": 4
+    },
+    {
+      "id": "赤坂_浩太_富山工_富山県",
+      "appearances": 3
+    },
+    {
+      "id": "佐々木_禅叶_富山工_富山県",
+      "appearances": 2
+    },
+    {
+      "id": "泉原_大地_富山工_富山県",
+      "appearances": 2
+    },
+    {
+      "id": "小森_寛太_富山工_富山県",
+      "appearances": 2
+    }
+  ]
+}

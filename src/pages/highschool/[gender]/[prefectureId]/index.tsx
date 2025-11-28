@@ -1,0 +1,398 @@
+// src/pages/highschool/[gender]/[prefectureId]/index.tsx
+import fs from 'fs';
+import path from 'path';
+
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+
+import Breadcrumbs from '@/components/Breadcrumb';
+import MetaHead from '@/components/MetaHead';
+import { getTournamentLabel, resultPriority } from '@/lib/utils';
+
+type TeamSummary = {
+    teamId: string;
+    teamName: string;
+    results: Record<
+        string, // year
+        {
+            tournament: string;
+            result: string;
+        }[]
+    >;
+};
+
+type SummaryEntry = {
+    team: string;
+    teamId: string;
+    prefecture: string;
+    prefectureId: string;
+    result: string;
+    category: 'singles' | 'doubles' | 'team';
+    tournamentId: string;
+    year: number;
+    gender: 'boys' | 'girls';
+    playerIds?: string[];
+};
+
+type Prefecture = {
+    id: string;
+    name: string;
+    region: string;
+};
+
+type TopTeam = {
+    teamId: string;
+    teamName: string;
+    result: string;
+    tournament: string;
+    year: number;
+};
+
+type Props = {
+    prefecture: Prefecture;
+    gender: 'boys' | 'girls';
+    genderLabel: string;
+    teams: TeamSummary[];
+    topTeams: TopTeam[];
+};
+
+const tournamentPriority: Record<string, number> = {
+    kokutai: 1, // 国体
+    'highschool-championship': 2, // インターハイ
+    'highschool-japan-cup': 3, // J杯
+    'highschool-senbatsu': 4, // 選抜
+};
+
+export default function PrefectureHighschoolPage({
+    prefecture,
+    gender,
+    genderLabel,
+    teams,
+    topTeams,
+}: Props) {
+    const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}`;
+    const prefectureName = prefecture.name;
+    const getPerformanceLabel = (
+        result: string,
+    ): '好成績' | '健闘' | '敗退' | '予選敗退' | null => {
+        if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(result))
+            return '好成績';
+        if (['6回戦敗退', '5回戦敗退', '4回戦敗退', '3回戦敗退'].includes(result))
+            return '健闘';
+        if (['2回戦敗退', '1回戦敗退'].includes(result)) return '敗退';
+        if (result === '予選敗退') return '予選敗退';
+        return null; // "未出場" やそれ以外は無視
+    };
+
+    return (
+        <>
+            <MetaHead
+                title={`${prefectureName}の高校${genderLabel}成績 | ソフトテニス情報`}
+                description={`${prefectureName}の高校${genderLabel}の大会成績を一覧で掲載。`}
+                url={pageUrl}
+                type="article"
+            />
+
+            <Head>
+                <script
+                    title={`${prefectureName}の高校${genderLabel}成績 | ソフトテニス情報`}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'BreadcrumbList',
+                            itemListElement: [
+                                {
+                                    '@type': 'ListItem',
+                                    position: 1,
+                                    name: 'ホーム',
+                                    item: 'https://softeni-pick.com/',
+                                },
+                                {
+                                    '@type': 'ListItem',
+                                    position: 2,
+                                    name: '高校カテゴリ',
+                                    item: 'https://softeni-pick.com/highschool',
+                                },
+                                {
+                                    '@type': 'ListItem',
+                                    position: 3,
+                                    name: genderLabel,
+                                    item: `https://softeni-pick.com/highschool/${gender}`,
+                                },
+                                {
+                                    '@type': 'ListItem',
+                                    position: 4,
+                                    name: prefectureName,
+                                    item: pageUrl,
+                                },
+                            ],
+                        }),
+                    }}
+                />
+            </Head>
+
+            <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+                <div className="max-w-4xl mx-auto">
+                    <Breadcrumbs
+                        crumbs={[
+                            { label: 'ホーム', href: '/' },
+                            { label: '高校カテゴリ', href: '/highschool' },
+                            { label: genderLabel, href: `/highschool/${gender}` },
+                            {
+                                label: prefecture.name,
+                                href: `/highschool/${gender}/${prefecture.id}`,
+                            },
+                        ]}
+                    />
+
+                    <h1 className="text-2xl font-bold mb-2">
+                        {prefecture.name}の高校{genderLabel}成績
+                    </h1>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+                        {prefecture.name}
+                        の高校{genderLabel}
+                        が全国大会で残した成績をまとめています。詳しい内容は、各高校のページからご覧いただけます。
+                    </p>
+
+                    <div className="mb-6">
+                        <p className="text-sm">
+                            出場校数：{teams.length}校（ベスト8以上：
+                            {
+                                teams.filter((t) =>
+                                    Object.values(t.results).some((r) =>
+                                        r.some((entry) =>
+                                            ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(
+                                                entry.result,
+                                            ),
+                                        ),
+                                    ),
+                                ).length
+                            }
+                            校）
+                        </p>
+
+                        {topTeams.length > 0 &&
+                            getPerformanceLabel(topTeams[0].result) !== null && (
+                                <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
+                                    {topTeams[0].year}年の最新大会（{topTeams[0].tournament}
+                                    ）では、
+                                    {topTeams.map((team, index) => (
+                                        <span key={team.teamId}>
+                                            {index > 0 ? '、' : ''}
+                                            <Link
+                                                href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
+                                                className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
+                                            >
+                                                {team.teamName}
+                                            </Link>
+                                        </span>
+                                    ))}
+                                    が<strong>{topTeams[0].result}</strong>
+                                    {(() => {
+                                        const label = getPerformanceLabel(topTeams[0].result);
+                                        switch (label) {
+                                            case '好成績':
+                                                return 'という好成績を収めました。';
+                                            case '健闘':
+                                                return 'と健闘しました。';
+                                            case '敗退':
+                                                return 'となりました。';
+                                            case '予選敗退':
+                                                return 'となりました。';
+                                            default:
+                                                return '';
+                                        }
+                                    })()}
+                                </div>
+                            )}
+                    </div>
+
+                    <ul className="space-y-4">
+                        {teams.map((team) => (
+                            <li key={team.teamId}>
+                                <Link
+                                    href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
+                                    className="block border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                                >
+                                    <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">
+                                        {team.teamName}
+                                    </p>
+                                    <ul className="text-sm mt-2">
+                                        {Object.entries(team.results ?? {}).length === 0 ? (
+                                            <li className="text-sm text-gray-500">
+                                                成績情報がありません
+                                            </li>
+                                        ) : (
+                                            Object.entries(team.results)
+                                                .sort((a, b) => Number(b[0]) - Number(a[0]))
+                                                .map(([year, resultList]) => (
+                                                    <li key={year}>
+                                                        {year}年：
+                                                        {resultList
+                                                            .map(
+                                                                (res) => `${res.tournament}（${res.result}）`,
+                                                            )
+                                                            .join('、')}
+                                                    </li>
+                                                ))
+                                        )}
+                                    </ul>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </main>
+        </>
+    );
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const file = path.join(process.cwd(), 'data/prefectures.json');
+    const prefectures: Prefecture[] = JSON.parse(fs.readFileSync(file, 'utf-8'));
+
+    const paths: { params: { gender: string; prefectureId: string } }[] = [];
+
+    for (const gender of ['boys', 'girls']) {
+        for (const pref of prefectures) {
+            paths.push({
+                params: { gender, prefectureId: pref.id },
+            });
+        }
+    }
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    const { prefectureId, gender } = context.params as {
+        prefectureId: string;
+        gender: 'boys' | 'girls';
+    };
+
+    const prefFile = path.join(process.cwd(), 'data/prefectures.json');
+    const allPrefs: Prefecture[] = JSON.parse(fs.readFileSync(prefFile, 'utf-8'));
+    const prefecture = allPrefs.find((p) => p.id === prefectureId);
+
+    if (!prefecture) return { notFound: true };
+
+    const summaryPath = path.join(
+        process.cwd(),
+        `data/highschool/prefectures/${prefectureId}/summary.json`,
+    );
+
+    const rawData: SummaryEntry[] = fs.existsSync(summaryPath)
+        ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8'))
+        : [];
+
+    // Filter by gender
+    const filteredData = rawData.filter((entry) => entry.gender === gender);
+
+    const grouped: Record<string, TeamSummary> = {};
+
+    for (const entry of filteredData) {
+        const { teamId, team, year, tournamentId, result } = entry;
+        if (!grouped[teamId]) {
+            grouped[teamId] = {
+                teamId,
+                teamName: team,
+                results: {},
+            };
+        }
+
+        const resultPriority = (result: string): number => {
+            const order = [
+                '優勝',
+                '準優勝',
+                'ベスト4',
+                'ベスト8',
+                '6回戦敗退',
+                '5回戦敗退',
+                '4回戦敗退',
+                '3回戦敗退',
+                '2回戦敗退',
+                '1回戦敗退',
+                '予選敗退',
+                '未出場',
+            ];
+            return order.indexOf(result) !== -1
+                ? order.indexOf(result)
+                : order.length;
+        };
+
+        const label = getTournamentLabel(tournamentId);
+
+        if (!grouped[teamId].results[year]) {
+            grouped[teamId].results[year] = [];
+        }
+
+        const existing = grouped[teamId].results[year].find(
+            (r) => r.tournament === label,
+        );
+        if (!existing) {
+            grouped[teamId].results[year].push({ tournament: label, result });
+        } else {
+            // すでに同じ大会がある場合は、より良い結果なら上書き
+            if (resultPriority(result) < resultPriority(existing.result)) {
+                existing.result = result;
+            }
+        }
+    }
+
+    const teams: TeamSummary[] = Object.values(grouped);
+
+    const latestYear = Math.max(...filteredData.map((e) => e.year));
+    const latestYearEntries = filteredData.filter((e) => e.year === latestYear);
+
+    const sortedTournamentIds = Object.entries(tournamentPriority)
+        .sort((a, b) => a[1] - b[1])
+        .map(([id]) => id);
+
+    let topTeams: TopTeam[] = [];
+
+    for (const tournamentId of sortedTournamentIds) {
+        const entries = latestYearEntries.filter(
+            (e) => e.tournamentId === tournamentId,
+        );
+        if (entries.length === 0) continue;
+
+        const bestRank = Math.min(...entries.map((e) => resultPriority(e.result)));
+
+        // 最高成績のエントリのみ
+        const bestEntries = entries.filter(
+            (e) => resultPriority(e.result) === bestRank,
+        );
+
+        // チームIDごとに一意にする（重複排除）
+        const seen = new Set<string>();
+        topTeams = bestEntries
+            .filter((e) => {
+                if (seen.has(e.teamId)) return false;
+                seen.add(e.teamId);
+                return true;
+            })
+            .map((e) => ({
+                teamId: e.teamId,
+                teamName: e.team,
+                result: e.result,
+                tournament: getTournamentLabel(e.tournamentId),
+                year: e.year,
+            }));
+
+        if (topTeams.length > 0) break; // 最初に見つかった大会だけ採用
+    }
+
+    const genderLabel = gender === 'boys' ? '男子' : '女子';
+
+    return {
+        props: {
+            prefecture,
+            gender,
+            genderLabel,
+            teams,
+            topTeams,
+        },
+    };
+};

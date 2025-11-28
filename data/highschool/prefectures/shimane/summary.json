@@ -1,178 +1,55 @@
 [
   {
-    "team": "出雲北陵",
-    "teamId": "izumohokuryou",
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "浜田",
+    "teamId": "hamada",
     "prefecture": "島根県",
     "prefectureId": "shimane",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": ["川角_光夢_出雲北陵", "山下_柊人_出雲北陵"]
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "山本_悠路_浜田_東京",
+      "中川_優月_浜田_島根"
+    ]
   },
   {
-    "team": "出雲工",
-    "teamId": "izumokou",
+    "team": "浜田",
+    "teamId": "hamada",
     "prefecture": "島根県",
     "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "singles",
+    "result": "2回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": ["山本_遥斗_出雲工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": ["井原_蓮_松江工"]
-  },
-  {
-    "team": "浜田",
-    "teamId": "hamada",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["山本_洋輔_浜田", "中川_優月_浜田"]
-  },
-  {
-    "team": "出雲工",
-    "teamId": "izumokou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["小村_駿斗_出雲工", "山本_遥斗_出雲工"]
-  },
-  {
-    "team": "益田翔陽",
-    "teamId": "masudashouyou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["福原_天翔_益田翔陽", "三宅_暖翔_益田翔陽"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["小田川_聖和_松江工", "福田_絢斗_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["尾島_涼太_松江工", "永見_翔_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": ["勝田_珠晏_松江工", "篠原_航_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024
-  },
-  {
-    "team": "浜田",
-    "teamId": "hamada",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
     "year": 2023,
-    "playerIds": ["尾門_駿_浜田", "津田_宙紀_浜田"]
-  },
-  {
-    "team": "浜田",
-    "teamId": "hamada",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["永瀬_祐大郎_浜田", "中川_優月_浜田"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["上田_哲平_松江工", "佐藤_祇斗_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["髙住_天翔_松江工", "永見_翔_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["大島_大翔_松江工", "高見_駿佑_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": ["尾島_涼太_松江工", "安達_諒大_松江工"]
+    "gender": "boys",
+    "playerIds": [
+      "尾門_駿_浜田_島根県",
+      "津田_宙紀_浜田_島根県"
+    ]
   },
   {
     "team": "浜田",
@@ -183,62 +60,56 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
-    "playerIds": ["中村_陸門_浜田", "永瀬_祐大郎_浜田"]
+    "gender": "boys",
+    "playerIds": [
+      "中村_陸門_浜田_島根県",
+      "永瀬_祐大郎_浜田_島根県"
+    ]
   },
   {
-    "team": "出雲北陵",
-    "teamId": "izumohokuryou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["木村_蔵人_出雲北陵", "岡原_煌虎_出雲北陵"]
-  },
-  {
-    "team": "出雲北陵",
-    "teamId": "izumohokuryou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["川角_悠太_出雲北陵", "青木_快生_出雲北陵"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
+    "team": "浜田",
+    "teamId": "hamada",
     "prefecture": "島根県",
     "prefectureId": "shimane",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["髙住_天翔_松江工", "佐藤_祇斗_松江工"]
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "山本_洋輔_浜田_島根県",
+      "中川_優月_浜田_島根県"
+    ]
   },
   {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["平佐_優吏_松江工", "三上_颯汰_松江工"]
-  },
-  {
-    "team": "安来",
-    "teamId": "yasugi",
+    "team": "浜田",
+    "teamId": "hamada",
     "prefecture": "島根県",
     "prefectureId": "shimane",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": ["三上_宗悟_安来", "飯橋_照太_安来"]
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "尾門_駿_浜田_島根県",
+      "津田_宙紀_浜田_島根県"
+    ]
+  },
+  {
+    "team": "浜田",
+    "teamId": "hamada",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "永瀬_祐大郎_浜田_島根県",
+      "中川_優月_浜田_島根県"
+    ]
   },
   {
     "team": "出雲",
@@ -249,7 +120,26 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
-    "playerIds": ["永瀬_元夢_出雲", "糸賀_勇哉_出雲"]
+    "gender": "boys",
+    "playerIds": [
+      "永瀬_元夢_出雲_島根県",
+      "糸賀_勇哉_出雲_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "川角_光夢_出雲北陵_島根",
+      "山下_柊人_出雲北陵_島根"
+    ]
   },
   {
     "team": "出雲北陵",
@@ -259,148 +149,57 @@
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["神田_好太郎_出雲北陵", "岩崎_遥平_出雲北陵"]
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "木村_蔵人_出雲北陵_島根県",
+      "岡原_煌虎_出雲北陵_島根県"
+    ]
   },
   {
-    "team": "松江工",
-    "teamId": "matsuekou",
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "川角_悠太_出雲北陵_島根県",
+      "青木_快生_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "今田_心_出雲北陵_島根県",
+      "栗原_奈々_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
     "prefecture": "島根県",
     "prefectureId": "shimane",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["恩田_結生_松江工", "大庭_優太_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["住田_桜紀_松江工", "田中_太陽_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["細田_諒人_松江工", "三上_颯汰_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": ["平佐_優吏_松江工", "深田_瑛太_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023
-  },
-  {
-    "team": "浜田",
-    "teamId": "hamada",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021
-  },
-  {
-    "team": "浜田",
-    "teamId": "hamada",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": ["山本_悠路_浜田", "中川_優月_浜田"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": ["尾島_涼太_松江工", "永見_翔_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": ["尾島_涼太_松江工"]
-  },
-  {
-    "team": "浜田",
-    "teamId": "hamada",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": ["尾門_駿_浜田", "津田_宙紀_浜田"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": ["尾島_涼太_松江工", "安達_諒太_松江工"]
-  },
-  {
-    "team": "松江工",
-    "teamId": "matsuekou",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": ["安達_諒大_松江工"]
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "落合_遥_出雲北陵_島根県",
+      "森田_早貴_出雲北陵_島根県"
+    ]
   },
   {
     "team": "出雲北陵",
@@ -411,7 +210,116 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["三島_綾太_出雲北陵", "木村_一心_出雲北陵"]
+    "gender": "girls",
+    "playerIds": [
+      "杉谷_皐_出雲北陵_島根県",
+      "髙野_愛未_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "井上_心々奈_出雲北陵_島根県",
+      "牛尾_真緒_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "三島_綾太_出雲北陵_島根県",
+      "木村_一心_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "木村_香夏_出雲北陵_島根県",
+      "森山_音羽_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "水永_花音_出雲北陵_島根県",
+      "岡本_涼香_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "果瀨_暖花_出雲北陵_島根県",
+      "髙野_愛未_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "川角_莉子_出雲北陵_島根県",
+      "栗原_奈々_出雲北陵_島根県"
+    ]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "神田_好太郎_出雲北陵_島根県",
+      "岩崎_遥平_出雲北陵_島根県"
+    ]
   },
   {
     "team": "出雲工",
@@ -422,7 +330,101 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["小村_駿斗_出雲工", "山本_遥斗_出雲工"]
+    "gender": "boys",
+    "playerIds": [
+      "小村_駿斗_出雲工_島根県",
+      "山本_遥斗_出雲工_島根県"
+    ]
+  },
+  {
+    "team": "出雲工",
+    "teamId": "izumokou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "小村_駿斗_出雲工_島根県",
+      "山本_遥斗_出雲工_島根県"
+    ]
+  },
+  {
+    "team": "益田翔陽",
+    "teamId": "masudashouyou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "福原_天翔_益田翔陽_島根県",
+      "三宅_暖翔_益田翔陽_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "尾島_涼太_松江工_島根",
+      "永見_翔_松江工_島根"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "尾島_涼太_松江工_島根県",
+      "安達_諒太_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "髙住_天翔_松江工_島根県",
+      "佐藤_祇斗_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "準優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "平佐_優吏_松江工_島根県",
+      "三上_颯汰_松江工_島根県"
+    ]
   },
   {
     "team": "松江工",
@@ -433,7 +435,11 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["井原_蓮_松江工", "坂根_明大_松江工"]
+    "gender": "boys",
+    "playerIds": [
+      "井原_蓮_松江工_島根県",
+      "坂根_明大_松江工_島根県"
+    ]
   },
   {
     "team": "松江工",
@@ -444,7 +450,11 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["池田_大輝_松江工", "鍜冶_迅亜_松江工"]
+    "gender": "boys",
+    "playerIds": [
+      "池田_大輝_松江工_島根県",
+      "鍜冶_迅亜_松江工_島根県"
+    ]
   },
   {
     "team": "松江工",
@@ -455,7 +465,11 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["平佐_凄凰_松江工", "加藤_陸_松江工"]
+    "gender": "boys",
+    "playerIds": [
+      "平佐_凄凰_松江工_島根県",
+      "加藤_陸_松江工_島根県"
+    ]
   },
   {
     "team": "松江工",
@@ -466,7 +480,56 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
-    "playerIds": ["知野見_陽太_松江工", "曽田_海里_松江工"]
+    "gender": "boys",
+    "playerIds": [
+      "知野見_陽太_松江工_島根県",
+      "曽田_海里_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "小田川_聖和_松江工_島根県",
+      "福田_絢斗_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "尾島_涼太_松江工_島根県",
+      "永見_翔_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "勝田_珠晏_松江工_島根県",
+      "篠原_航_松江工_島根県"
+    ]
   },
   {
     "team": "松江工",
@@ -474,8 +537,189 @@
     "prefecture": "島根県",
     "prefectureId": "shimane",
     "result": "2回戦敗退",
-    "category": "team",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "上田_哲平_松江工_島根県",
+      "佐藤_祇斗_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "髙住_天翔_松江工_島根県",
+      "永見_翔_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "大島_大翔_松江工_島根県",
+      "高見_駿佑_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "尾島_涼太_松江工_島根県",
+      "安達_諒大_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "恩田_結生_松江工_島根県",
+      "大庭_優太_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "住田_桜紀_松江工_島根県",
+      "田中_太陽_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "細田_諒人_松江工_島根県",
+      "三上_颯汰_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "平佐_優吏_松江工_島根県",
+      "深田_瑛太_松江工_島根県"
+    ]
+  },
+  {
+    "team": "安来",
+    "teamId": "yasugi",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "三上_宗悟_安来_島根県",
+      "飯橋_照太_安来_島根県"
+    ]
+  },
+  {
+    "team": "出雲工",
+    "teamId": "izumokou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "山本_遥斗_出雲工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "井原_蓮_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "尾島_涼太_松江工_島根県"
+    ]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "安達_諒大_松江工_島根県"
+    ]
   }
 ]

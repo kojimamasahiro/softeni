@@ -1,5 +1,7 @@
 import json
 import re
+import os
+import glob
 from pykakasi import kakasi
 from collections import OrderedDict, defaultdict
 
@@ -31,10 +33,10 @@ prefecture_id_map = {
     "鹿児島県": "kagoshima", "沖縄県": "okinawa"
 }
 
-# ファイル読み込み
-with open("players.json", encoding="utf-8") as f:
-    players = json.load(f)
+# データソースディレクトリ
+DATA_DIR = "../../../data/tournament/details"
 
+# 手動IDマップ読み込み
 with open("team_id_map.json", encoding="utf-8") as f:
     manual_id_map = json.load(f)
 
@@ -68,27 +70,47 @@ def to_romaji(team_name):
 # チームマップ（team名 → prefecture）
 team_map = {}
 
-# 個人データから抽出
-for entry in players:
-    for info in entry.get("information", []):
-        team = info.get("team", "").strip()
-        pref = info.get("prefecture", "").strip()
-        if team and pref and team not in team_map:
-            team_map[team] = pref
+# データディレクトリを探索
+print(f"📂 {DATA_DIR} を探索します...")
+target_tournaments = [d for d in os.listdir(DATA_DIR) if d.startswith("highschool-")]
 
-# 団体戦エントリー
-for file_name in ["team_entries.json", "team_results.json"]:
-    try:
-        with open(file_name, encoding="utf-8") as f:
-            team_entries = json.load(f)
-            print(f"📄 {file_name} から {len(team_entries)} 件を読み込みました")
-            for entry in team_entries:
-                team = entry.get("team", "").strip()
-                pref = entry.get("prefecture", "").strip()
-                if team and pref and team not in team_map:
-                    team_map[team] = pref
-    except FileNotFoundError:
-        print(f"ℹ️ {file_name} は見つかりませんでした")
+for tournament_id in target_tournaments:
+    tournament_path = os.path.join(DATA_DIR, tournament_id)
+    if not os.path.isdir(tournament_path):
+        continue
+    
+    for year in os.listdir(tournament_path):
+        year_path = os.path.join(tournament_path, year)
+        if not os.path.isdir(year_path):
+            continue
+            
+        # JSONファイルを検索
+        json_files = glob.glob(os.path.join(year_path, "*.json"))
+        for json_file in json_files:
+            try:
+                with open(json_file, encoding="utf-8") as f:
+                    data = json.load(f)
+                    
+                    # participants から抽出
+                    if "participants" in data and isinstance(data["participants"], list):
+                        for p in data["participants"]:
+                            team = p.get("team", "")
+                            if team:
+                                team = team.strip()
+                            
+                            pref = p.get("prefecture")
+                            if pref:
+                                pref = pref.strip()
+                            else:
+                                pref = ""
+
+                            if team and pref and team not in team_map:
+                                team_map[team] = pref
+                                
+            except Exception as e:
+                print(f"⚠️ {json_file} の読み込みに失敗しました: {e}")
+
+print(f"✅ {len(team_map)} チームの情報を抽出しました")
 
 # 重複IDチェック用
 id_counter = defaultdict(list)
