@@ -441,15 +441,37 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
 
     // Get category label from information map
     let categoryLabel: string | undefined;
+    let fiscalYear = file.year;
+
     const tournamentInfo = informationMap.get(file.tournamentId);
     if (tournamentInfo) {
-      const yearInfo = tournamentInfo.find((info) => info.year === file.year);
-      if (yearInfo && yearInfo.categories) {
-        const category = yearInfo.categories.find(
-          (cat) => cat.categoryId === file.category,
-        );
-        if (category) {
-          categoryLabel = category.label;
+      // Try to find by exact match first (assuming directory is fiscal year)
+      let yearInfo = tournamentInfo.find((info) => info.year === file.year);
+
+      // If not found, try to find by calendar year matching start/end date
+      // This handles cases where directory is named after calendar year (e.g. 2024)
+      // but belongs to fiscal year (e.g. 2023) because it's in Jan-March.
+      // We need startDate to resolve this ambiguity.
+      if (!yearInfo) {
+        yearInfo = tournamentInfo.find((info) => {
+          if (!info.startDate) return false;
+          const startYear = parseInt(info.startDate.split('-')[0], 10);
+          const endYear = info.endDate
+            ? parseInt(info.endDate.split('-')[0], 10)
+            : startYear;
+          return startYear === file.year || endYear === file.year;
+        });
+      }
+
+      if (yearInfo) {
+        fiscalYear = yearInfo.year;
+        if (yearInfo.categories) {
+          const category = yearInfo.categories.find(
+            (cat) => cat.categoryId === file.category,
+          );
+          if (category) {
+            categoryLabel = category.label;
+          }
         }
       }
     }
@@ -470,7 +492,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
     if (gender === 'mixed') {
       // Distribute mixed results to boys/girls based on player gender
       const boysEvent: EventResult = {
-        year: file.year,
+        year: fiscalYear,
         gender: 'boys',
         gameCategory,
         tournament: tournamentName,
@@ -480,7 +502,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
         matches: [],
       };
       const girlsEvent: EventResult = {
-        year: file.year,
+        year: fiscalYear,
         gender: 'girls',
         gameCategory,
         tournament: tournamentName,
@@ -553,7 +575,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
     } else {
       // Add as is for non-mixed events
       eventResults.push({
-        year: file.year,
+        year: fiscalYear,
         gender,
         gameCategory,
         tournament: tournamentName,

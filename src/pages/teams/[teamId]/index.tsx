@@ -120,7 +120,7 @@ export default function TeamResultsPage({ info, stats }: Props) {
           {stats.map(({ year, stats: yearStats }) => (
             <div key={year} className="mb-12">
               <h2 className="text-2xl font-bold mb-6 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
-                {year}年
+                {year}年度
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

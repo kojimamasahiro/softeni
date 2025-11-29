@@ -66,8 +66,8 @@ export default function TournamentYearResultPage({
   return (
     <>
       <MetaHead
-        title={`${label} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
-        description={`${label} ${year}年 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
+        title={`${label} ${year}年度 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
+        description={`${label} ${year}年度 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
         url={pageUrl}
         image={`https://softeni-pick.com/api/og/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`}
         twitterCardType="summary_large_image"
@@ -81,14 +81,14 @@ export default function TournamentYearResultPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: `${label} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}大会結果`,
+              headline: `${label} ${year}年度  ${categoryLabel ? `${categoryLabel} ` : ''}大会結果`,
               author: { '@type': 'Person', name: 'Softeni Pick' },
               publisher: { '@type': 'Organization', name: 'Softeni Pick' },
               datePublished: new Date().toISOString().split('T')[0],
               dateModified: new Date().toISOString().split('T')[0],
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-              description: `${label} ${year}年  ${categoryLabel ? `${categoryLabel} ` : ''}のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
+              description: `${label} ${year}年度  ${categoryLabel ? `${categoryLabel} ` : ''}のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
             }),
           }}
         />
@@ -114,7 +114,7 @@ export default function TournamentYearResultPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `${label} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
+                  name: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
                   item: pageUrl,
                 },
               ],
@@ -130,7 +130,7 @@ export default function TournamentYearResultPage({
               { label: 'ホーム', href: '/' },
               { label: '大会結果一覧', href: '/tournaments' },
               {
-                label: `${label} ${year}年 ${categoryLabel ? `${categoryLabel}` : ''}`,
+                label: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
                 href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}${gender}`,
               },
             ]}
@@ -138,7 +138,7 @@ export default function TournamentYearResultPage({
 
           {/* ✅ h1 + 大会紹介文 */}
           <h1 className="text-2xl font-bold mb-4">
-            {label} {year}年 {categoryLabel ? `${categoryLabel} ` : ''}
+            {label} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
             大会結果
           </h1>
           <section className="mb-6 px-1">
@@ -193,7 +193,7 @@ export default function TournamentYearResultPage({
                       )
                       .join('-')}`}
                   >
-                    <h4 className="text-md mb-2">{yearValue}年</h4>
+                    <h4 className="text-md mb-2">{yearValue}年度</h4>
                     <ul className="flex flex-wrap gap-2">
                       {links.map((link) =>
                         link.isCurrent ? (

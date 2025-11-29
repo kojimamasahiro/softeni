@@ -75,7 +75,7 @@ export default function TeamYearGenderPage({
   const teamName = info.name;
   const genderLabel =
     gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : 'ミックス';
-  const pageTitle = `${teamName} ${year}年 ${genderLabel} 成績`;
+  const pageTitle = `${teamName} ${year}年度 ${genderLabel} 成績`;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/${year}/${gender}`;
 
   const calculateSummary = useMemo(() => {
@@ -86,19 +86,21 @@ export default function TeamYearGenderPage({
 
     results.forEach((event) => {
       const validResults = event.results.filter((r) =>
-        r.playerIds.every((pid) => pid in info.players),
+        r.playerIds.some((pid) => pid in info.players),
       );
 
       validResults.forEach((r) => {
-        const count = r.playerIds.length; // 1人 or 2人ペアの対応
+        const teamPlayerCount = r.playerIds.filter(
+          (pid) => pid in info.players,
+        ).length;
 
-        if (r.result === '優勝') champions += count;
-        if (r.result === '準優勝') runnersUp += count;
+        if (r.result === '優勝') champions += teamPlayerCount;
+        if (r.result === '準優勝') runnersUp += teamPlayerCount;
         if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r.result)) {
-          top8OrBetter += count;
+          top8OrBetter += teamPlayerCount;
         }
 
-        totalPairs++; // totalPairs はペアの数そのまま（ペア単位）
+        totalPairs += teamPlayerCount;
       });
     });
 
@@ -134,16 +136,19 @@ export default function TeamYearGenderPage({
 
         const resultWithNames = event.results
           .map((r) => {
+            // Check if at least one player is in the team
+            if (!r.playerIds.some((pid) => pid in info.players)) {
+              return null;
+            }
+
             const playerNames = r.playerIds.map((pid) => {
               const player = info.players[pid];
               return player ? player.lastName + player.firstName : null;
             });
 
-            if (playerNames.includes(null)) {
-              return null;
-            }
-
-            return `${playerNames.join('・')}（${r.result}）`;
+            // Filter out nulls (partners from other teams) and join
+            const validNames = playerNames.filter(Boolean);
+            return `${validNames.join('・')}（${r.result}）`;
           })
           .filter(Boolean)
           .join('、');
@@ -252,7 +257,7 @@ export default function TeamYearGenderPage({
     <>
       <MetaHead
         title={`${pageTitle} | ソフトテニス情報`}
-        description={`${teamName}の${year}年${genderLabel}の大会成績詳細。`}
+        description={`${teamName}の${year}年度${genderLabel}の大会成績詳細。`}
         url={pageUrl}
       />
 
@@ -279,7 +284,7 @@ export default function TeamYearGenderPage({
                 '@type': 'WebPage',
                 '@id': pageUrl,
               },
-              description: `${teamName}の${year}年${genderLabel}の大会成績詳細。`,
+              description: `${teamName}の${year}年度${genderLabel}の大会成績詳細。`,
               about: {
                 '@type': 'SportsTeam',
                 name: teamName,
@@ -311,7 +316,7 @@ export default function TeamYearGenderPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `${year}年 ${genderLabel}`,
+                  name: `${year}年度 ${genderLabel}`,
                   item: pageUrl,
                 },
               ],
@@ -326,7 +331,7 @@ export default function TeamYearGenderPage({
             crumbs={[
               { label: 'ホーム', href: '/' },
               { label: teamName, href: `/teams/${info.id}` },
-              { label: `${year}年 ${genderLabel}`, href: pageUrl },
+              { label: `${year}年度 ${genderLabel}`, href: pageUrl },
             ]}
           />
 
