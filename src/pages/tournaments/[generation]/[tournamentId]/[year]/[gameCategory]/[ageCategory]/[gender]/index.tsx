@@ -548,9 +548,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         ageCategory,
         gender,
         label: tournamentIndexEntry?.label ?? '',
-        categoryLabel: infoForYear?.categories?.find(
-          (cat) => cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`
-        )?.label ?? '',
+        categoryLabel:
+          infoForYear?.categories?.find(
+            (cat) =>
+              cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`,
+          )?.label ?? '',
         infoForYear,
         detailData,
         linkCategories,

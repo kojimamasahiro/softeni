@@ -6,11 +6,6 @@ import { useEffect, useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-import { TournamentDetailData } from '@/types';
-import type {
-  TournamentEntry,
-  TournamentParticipant,
-} from '@/types/tournament';
 
 interface PlayerResult {
   firstName: string;
@@ -412,180 +407,26 @@ export default function PlayersPage({
   );
 }
 
-// ".json" を削除して "-" で分割するヘルパー
-const parseCombinedCategory = (raw?: string | null) => {
-  if (!raw) return { gameCategory: '', ageCategory: 'none', gender: 'none' };
-  const cleaned = String(raw).replace(/\.json$/i, '');
-  const parts = cleaned.split('-');
-  if (parts.length >= 3) {
-    return {
-      gameCategory: parts[0] || '',
-      ageCategory: parts[1] || 'none',
-      gender: parts[2] || 'none',
-    };
-  }
-  return { gameCategory: cleaned, ageCategory: 'none', gender: 'none' };
-};
-
 export const getStaticProps: GetStaticProps = async () => {
   const fs = await import('fs');
   const path = await import('path');
 
-  // Use tournamentData helper to read parsed detail records
-  const tournamentData = await import('../../../lib/tournamentData');
-  const records = await tournamentData.getAllDetailRecords(process.cwd());
-  const informationMap = await tournamentData.loadInformationMap(process.cwd());
-
-  // Load base player index (data/players/index.json)
-  const playersIndexPath = path.join(
+  const jsonPath = path.join(
     process.cwd(),
+    'public',
     'data',
-    'players',
-    'index.json',
+    'players-min20.json',
   );
-  let playersIndex: Array<{
-    id: number | string;
-    lastName: string;
-    firstName: string;
-  }> = [];
-  if (fs.existsSync(playersIndexPath)) {
-    try {
-      playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8'));
-    } catch {
-      playersIndex = [];
-    }
+  let sameNameGroups = [];
+
+  try {
+    const fileContent = fs.readFileSync(jsonPath, 'utf-8');
+    const data = JSON.parse(fileContent);
+    sameNameGroups = data.sameNameGroups || [];
+  } catch (error) {
+    console.error('Error reading players-min20.json:', error);
+    sameNameGroups = [];
   }
 
-  // Build a map from lastName::firstName -> array of player ids (from index.json)
-  // Use a delimiter to avoid accidental collisions when concatenating names.
-  const indexMap = new Map<string, Array<number | string>>();
-  const makeNameKey = (last?: string | null, first?: string | null) => {
-    return `${String(last || '')}::${String(first || '')}`;
-  };
-  for (const p of playersIndex) {
-    const key = makeNameKey(p.lastName, p.firstName);
-    if (!indexMap.has(key)) indexMap.set(key, []);
-    indexMap.get(key)!.push(p.id);
-  }
-
-  const playerMap = new Map<string, PlayerResult[]>();
-  const participantNameSet = new Set<string>();
-
-  for (const r of records) {
-    const tournamentId = r.tournamentId;
-    const year = r.year;
-    const detail = r.detail as TournamentDetailData;
-    const categoryInfo = parseCombinedCategory(r.fileName);
-    // Try to resolve a human-friendly category label from information map.
-    // fileName is like "doubles-none-boys.json" -> categoryId should be "doubles-none-boys"
-    const categoryId = String(r.fileName).replace(/\.json$/i, '');
-    let humanLabel = undefined as string | undefined;
-    try {
-      const infoEntries = informationMap.get(r.tournamentId);
-      if (infoEntries && Array.isArray(infoEntries)) {
-        // find the entry for this year (year stored as number in information)
-        const yr = parseInt(year, 10);
-        const infoForYear = infoEntries.find((ie) => Number(ie.year) === yr);
-        if (infoForYear && Array.isArray(infoForYear.categories)) {
-          const matchA = categoryId;
-          const matchB = String(categoryId);
-          const cat = infoForYear.categories.find(
-            (c) => c.categoryId === matchA || c.categoryId === matchB,
-          );
-          if (cat && cat.label) humanLabel = cat.label;
-        }
-      }
-    } catch {
-      // ignore lookup errors and fallback to combined label
-      humanLabel = undefined;
-    }
-
-    const participants: TournamentParticipant[] = Array.isArray(
-      detail.participants,
-    )
-      ? (detail.participants as TournamentParticipant[])
-      : [];
-    const participantById = new Map<string, TournamentParticipant>();
-    const participantByName = new Map<string, TournamentParticipant>();
-    for (const p of participants) {
-      if (p && p.id) participantById.set(String(p.id), p);
-      if (p && p.lastName && p.firstName) {
-        const key = makeNameKey(p.lastName, p.firstName);
-        participantByName.set(key, p);
-        participantNameSet.add(key);
-      }
-    }
-    const entries: TournamentEntry[] = Array.isArray(detail.entries)
-      ? (detail.entries as TournamentEntry[])
-      : [];
-    const entryByNo = new Map<number, TournamentEntry>();
-    for (const e of entries) {
-      entryByNo.set(e.entryNo, e);
-    }
-
-    if (detail.results && Array.isArray(detail.results)) {
-      for (const res of detail.results) {
-        let resultPlayerIds: string[] | undefined;
-        if (typeof res.entryNo === 'number' && entryByNo.has(res.entryNo)) {
-          const ent = entryByNo.get(res.entryNo);
-          resultPlayerIds = ent?.playerIds;
-        }
-
-        if (Array.isArray(resultPlayerIds)) {
-          for (const pid of resultPlayerIds) {
-            // Prefer resolving participant by name (last+first). Fall back to id or encoded pid format.
-            const participant = participantById.get(pid);
-            if (!participant?.lastName || !participant?.firstName) continue;
-            const nameKey = makeNameKey(
-              participant?.lastName || '',
-              participant?.firstName || '',
-            );
-            if (!indexMap.has(nameKey)) continue;
-            const playerResult: PlayerResult = {
-              firstName: participant?.firstName || '',
-              lastName: participant?.lastName || '',
-              fullName: `${participant?.lastName || ''}${participant?.firstName || ''}`,
-              team: participant?.team || '所属不明',
-              result: res.tournament?.label || '予選敗退',
-              tournamentName: r.tournamentName || '大会名不明',
-              tournamentId,
-              generation: r.generation || 'all',
-              year,
-              gameCategory: categoryInfo.gameCategory,
-              ageCategory: categoryInfo.ageCategory,
-              gender: categoryInfo.gender,
-              categoryLabel:
-                humanLabel ??
-                `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
-              playerId: String(indexMap.get(nameKey)![0]),
-            };
-            if (!playerMap.has(nameKey)) playerMap.set(nameKey, []);
-            playerMap.get(nameKey)!.push(playerResult);
-          }
-        }
-      }
-    }
-  }
-
-  const sameNameGroups: SameNameGroup[] = [];
-  for (const [, players] of playerMap.entries()) {
-    const fullName = `${players[0].fullName}`;
-    const uniquePlayersArray = players.slice();
-    const differentTeams = [...new Set(uniquePlayersArray.map((p) => p.team))];
-    sameNameGroups.push({
-      fullName,
-      players: uniquePlayersArray.map((p) => ({
-        ...p,
-        playerId: p.playerId ?? null,
-      })),
-      count: uniquePlayersArray.length,
-      differentTeams,
-      playerId:
-        uniquePlayersArray.find((p) => p.playerId)?.playerId ?? undefined,
-    });
-  }
-
-  const filteredGroups = sameNameGroups.filter((group) => group.count >= 20);
-
-  return { props: { sameNameGroups: filteredGroups } };
+  return { props: { sameNameGroups } };
 };

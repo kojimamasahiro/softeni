@@ -117,6 +117,12 @@ async function main() {
     totalAdded += 1;
   }
 
+  // Add count to all output players
+  for (const p of out) {
+    const k = keyOf(p.lastName, p.firstName);
+    p.count = counts.get(k) || 0;
+  }
+
   await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
   // write as array with each element on a single line: [{...}, {...}]
   const lines = [];

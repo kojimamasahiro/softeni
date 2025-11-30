@@ -188,9 +188,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // use data/players/index.json ids
   const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
   const entriesRaw = fs.readFileSync(indexPath, 'utf-8');
-  const index = JSON.parse(entriesRaw) as Array<{ id: number }>;
+  const index = JSON.parse(entriesRaw) as Array<{ id: number; count: number }>;
 
-  const paths = index.map((p) => ({ params: { id: String(p.id) } }));
+  const paths = index
+    .filter((p) => p.count >= 5)
+    .map((p) => ({ params: { id: String(p.id) } }));
 
   return { paths, fallback: false };
 };
