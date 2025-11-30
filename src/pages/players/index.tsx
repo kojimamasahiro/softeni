@@ -56,7 +56,12 @@ export default function PlayersPage({
   useEffect(() => {
     if (filterMinCount < 20) {
       setIsLoading(true);
-      fetch(`/api/players?minMatchCount=${filterMinCount}`)
+      // Use static JSON files instead of API route
+      const jsonFile =
+        filterMinCount === 2
+          ? '/data/players-min2.json'
+          : '/data/players-min10.json';
+      fetch(jsonFile)
         .then((res) => res.json())
         .then((data) => {
           setDynamicData(data.sameNameGroups || []);

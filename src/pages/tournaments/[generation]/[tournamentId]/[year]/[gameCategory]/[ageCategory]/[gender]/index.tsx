@@ -66,10 +66,9 @@ export default function TournamentYearResultPage({
   return (
     <>
       <MetaHead
-        title={`${label} ${year}年度 ${categoryLabel ? `${categoryLabel} ` : ''}大会結果 | ソフトテニス情報`}
-        description={`${label} ${year}年度 ${categoryLabel ? `${categoryLabel} ` : ''}の大会結果・試合成績を掲載。開催地や日程、選手ごとの成績も確認できます。`}
+        title={`${label} ${year}年 ${categoryLabel} | ソフトテニス情報`}
+        description={`${label} ${year}年 ${categoryLabel}の試合結果・トーナメント表・成績一覧`}
         url={pageUrl}
-        image={`https://softeni-pick.com/api/og/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`}
         twitterCardType="summary_large_image"
         type="article"
       />

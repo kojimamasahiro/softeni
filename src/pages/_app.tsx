@@ -1,7 +1,6 @@
 // src/pages/_app.tsx
 import '@/styles/globals.css';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
@@ -101,9 +100,6 @@ export default function App({ Component, pageProps }: AppProps) {
       {!hasConsent && (
         <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />
       )}
-
-      <Analytics />
-      <SpeedInsights />
     </>
   );
 }
