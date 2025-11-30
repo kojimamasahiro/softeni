@@ -10,7 +10,7 @@ import type {
 } from '@/types/tournament';
 
 /**
- * Recursively scan data/tournament/details/ for all JSON files
+ * Recursively scan data/tournaments/details/ for all JSON files
  * @returns Array of { tournamentId, year, category, filePath }
  */
 export function getAllTournamentFiles(): Array<{
@@ -19,7 +19,7 @@ export function getAllTournamentFiles(): Array<{
   category: string;
   filePath: string;
 }> {
-  const detailsDir = path.join(process.cwd(), 'data/tournament/details');
+  const detailsDir = path.join(process.cwd(), 'data/tournaments/details');
   const results: Array<{
     tournamentId: string;
     year: number;
@@ -80,7 +80,7 @@ export function loadTournamentData(
 }
 
 /**
- * Get tournament information from data/tournament/information/{tournamentId}.json
+ * Get tournament information from data/tournaments/information/{tournamentId}.json
  */
 export function getTournamentInfo(
   tournamentId: string,
@@ -88,7 +88,7 @@ export function getTournamentInfo(
 ): TournamentInformationEntry | null {
   const infoPath = path.join(
     process.cwd(),
-    `data/tournament/information/${tournamentId}.json`,
+    `data/tournaments/information/${tournamentId}.json`,
   );
 
   if (!fs.existsSync(infoPath)) {
@@ -112,10 +112,10 @@ export function getTournamentInfo(
 }
 
 /**
- * Get tournament label from data/tournament/index.json
+ * Get tournament label from data/tournaments/index.json
  */
 export function getTournamentLabel(tournamentId: string): string {
-  const indexPath = path.join(process.cwd(), 'data/tournament/index.json');
+  const indexPath = path.join(process.cwd(), 'data/tournaments/index.json');
 
   if (!fs.existsSync(indexPath)) {
     return tournamentId;
@@ -140,7 +140,7 @@ export function getAllTournamentInfo(
 ): TournamentInformationEntry[] {
   const infoPath = path.join(
     process.cwd(),
-    `data/tournament/information/${tournamentId}.json`,
+    `data/tournaments/information/${tournamentId}.json`,
   );
 
   if (!fs.existsSync(infoPath)) {
@@ -159,7 +159,7 @@ export function getAllTournamentInfo(
  * Get all tournament index entries
  */
 export function getAllTournamentIndex(): TournamentIndexEntry[] {
-  const indexPath = path.join(process.cwd(), 'data/tournament/index.json');
+  const indexPath = path.join(process.cwd(), 'data/tournaments/index.json');
 
   if (!fs.existsSync(indexPath)) {
     return [];

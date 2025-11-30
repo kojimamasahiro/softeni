@@ -32,7 +32,7 @@ function walkDir(dir, cb) {
   }
 }
 
-const detailsRoot = path.join(__dirname, '..', 'data', 'tournament', 'details');
+const detailsRoot = path.join(__dirname, '..', 'data', 'tournaments', 'details');
 const playersFile = path.join(
   __dirname,
   '..',

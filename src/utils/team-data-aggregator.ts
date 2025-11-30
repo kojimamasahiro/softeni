@@ -260,7 +260,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
   const informationMap = new Map<string, TournamentInformationEntry[]>();
   const informationRoot = path.join(
     process.cwd(),
-    'data/tournament/information',
+    'data/tournaments/information',
   );
   if (fs.existsSync(informationRoot)) {
     const files = fs

@@ -16,7 +16,7 @@ export const loadTournamentIndex = async (
   const fs = await import('fs');
   const path = await import('path');
   const cwd = root || process.cwd();
-  const indexPath = path.join(cwd, 'data', 'tournament', 'index.json');
+  const indexPath = path.join(cwd, 'data', 'tournaments', 'index.json');
   if (!fs.existsSync(indexPath)) return [];
   try {
     const raw = fs.readFileSync(indexPath, 'utf-8');
@@ -33,7 +33,7 @@ export const loadInformationMap = async (
   const fs = await import('fs');
   const path = await import('path');
   const cwd = root || process.cwd();
-  const informationRoot = path.join(cwd, 'data', 'tournament', 'information');
+  const informationRoot = path.join(cwd, 'data', 'tournaments', 'information');
   const map = new Map<string, TournamentInformationEntry[]>();
   if (!fs.existsSync(informationRoot)) return map;
 
@@ -72,7 +72,7 @@ export const getAllDetailRecords = async (
   const fs = await import('fs');
   const path = await import('path');
   const cwd = root || process.cwd();
-  const detailsRoot = path.join(cwd, 'data', 'tournament', 'details');
+  const detailsRoot = path.join(cwd, 'data', 'tournaments', 'details');
   const out: Array<{
     tournamentId: string;
     year: string;
@@ -154,7 +154,7 @@ export const loadGenerations = async (
   const fs = await import('fs');
   const path = await import('path');
   const cwd = root || process.cwd();
-  const genPath = path.join(cwd, 'data', 'tournament', 'genarations.json');
+  const genPath = path.join(cwd, 'data', 'tournaments', 'genarations.json');
   if (!fs.existsSync(genPath)) return [];
   try {
     const raw = fs.readFileSync(genPath, 'utf-8');

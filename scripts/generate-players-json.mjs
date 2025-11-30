@@ -29,8 +29,8 @@ const makeNameKey = (last, first) => {
 
 // Tournament data helper functions (lib/tournamentData.tsから移植)
 function getAllDetailRecords(cwd) {
-  const detailsRoot = path.join(cwd, 'data', 'tournament', 'details');
-  const indexPath = path.join(cwd, 'data', 'tournament', 'index.json');
+  const detailsRoot = path.join(cwd, 'data', 'tournaments', 'details');
+  const indexPath = path.join(cwd, 'data', 'tournaments', 'index.json');
 
   if (!fs.existsSync(detailsRoot)) {
     return [];
@@ -89,7 +89,7 @@ function getAllDetailRecords(cwd) {
 }
 
 function loadInformationMap(cwd) {
-  const informationRoot = path.join(cwd, 'data', 'tournament', 'information');
+  const informationRoot = path.join(cwd, 'data', 'tournaments', 'information');
   const map = new Map();
 
   if (!fs.existsSync(informationRoot)) {

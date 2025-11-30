@@ -36,7 +36,7 @@ interface TournamentYearResultPageProps {
   gender: string;
   label: string;
   categoryLabel: string;
-  infoForYear: TournamentInformationEntry;
+  infoForYear: TournamentInformationEntry | null;
   detailData: TournamentDetailData | null;
   linkCategories: LinkCategory[] | null;
   infoWarnings?: string[];
@@ -141,9 +141,9 @@ export default function TournamentYearResultPage({
             大会結果
           </h1>
           <section className="mb-6 px-1">
-            {infoForYear.location &&
-              infoForYear.startDate &&
-              infoForYear.endDate && (
+            {infoForYear?.location &&
+              infoForYear?.startDate &&
+              infoForYear?.endDate && (
                 <p className="text-sm text-gray-600 dark:text-gray-300">
                   開催地:{infoForYear.location} / 日程:
                   {infoForYear.startDate}〜{infoForYear.endDate}
@@ -244,7 +244,7 @@ export default function TournamentYearResultPage({
             </>
           )}
 
-          {infoForYear.source && (
+          {infoForYear?.source && (
             <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
               <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
                 出典・参考情報
@@ -283,8 +283,13 @@ export default function TournamentYearResultPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Build paths by scanning data/tournament/details directory. We don't rely on data/tournaments.
-  const detailsRoot = path.join(process.cwd(), 'data', 'tournament', 'details');
+  // Build paths by scanning data/tournaments/details directory. We don't rely on data/tournaments.
+  const detailsRoot = path.join(
+    process.cwd(),
+    'data',
+    'tournaments',
+    'details',
+  );
   const paths: {
     params: {
       generation: string; // keep generation empty string because details doesn't include generation; caller expects a value - use 'unknown'
@@ -305,11 +310,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return fs.statSync(p).isDirectory();
   });
 
-  // try to load data/tournament/index.json to map tournamentId -> generationId
+  // try to load data/tournaments/index.json to map tournamentId -> generationId
   const indexPath = path.join(
     process.cwd(),
     'data',
-    'tournament',
+    'tournaments',
     'index.json',
   );
   const tournamentGenerationMap: Record<string, string> = {};
@@ -391,7 +396,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const indexPath = path.join(
     process.cwd(),
     'data',
-    'tournament',
+    'tournaments',
     'index.json',
   );
   let tournamentIndex: unknown = null;
@@ -445,7 +450,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const infoPath = path.join(
     process.cwd(),
     'data',
-    'tournament',
+    'tournaments',
     'information',
     `${tournamentId}.json`,
   );
@@ -495,7 +500,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const detailsBase = path.join(
     process.cwd(),
     'data',
-    'tournament',
+    'tournaments',
     'details',
     tournamentId,
   );
@@ -543,6 +548,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
         ageCategory,
         gender,
         label: tournamentIndexEntry?.label ?? '',
+        categoryLabel: infoForYear?.categories?.find(
+          (cat) => cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`
+        )?.label ?? '',
         infoForYear,
         detailData,
         linkCategories,

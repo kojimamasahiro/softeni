@@ -3,7 +3,7 @@ import path from 'path';
 
 // node scripts/extract-players.mjs
 
-const BASE_DIR = path.join(process.cwd(), 'data', 'tournament', 'details');
+const BASE_DIR = path.join(process.cwd(), 'data', 'tournaments', 'details');
 const OUT_PATH = path.join(process.cwd(), 'data', 'players', 'index.json');
 
 async function findJsonFiles(dir) {

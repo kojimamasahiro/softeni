@@ -3,7 +3,7 @@ import path from 'path';
 
 // node scripts/generate-og-json.mjs
 
-const BASE_DIR = path.join(process.cwd(), 'data', 'tournament', 'details');
+const BASE_DIR = path.join(process.cwd(), 'data', 'tournaments', 'details');
 
 /**
  * Recursively find all JSON files in a directory

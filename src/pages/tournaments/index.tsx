@@ -220,7 +220,7 @@ export default function TournamentListPage({
 
 // ====== 生成時処理 ======
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const tournamentRoot = path.join(process.cwd(), 'data', 'tournament');
+  const tournamentRoot = path.join(process.cwd(), 'data', 'tournaments');
   const generationsPath = path.join(tournamentRoot, 'genarations.json');
   const indexPath = path.join(tournamentRoot, 'index.json');
   const informationDir = path.join(tournamentRoot, 'information');

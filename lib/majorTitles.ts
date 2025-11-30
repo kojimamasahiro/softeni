@@ -39,9 +39,9 @@ const formatStartDate = (raw?: string): string | undefined => {
 /**
  * Build minimal major titles data for a player (by name).
  * Sources:
- * - data/tournament/index.json
- * - data/tournament/details/<tournamentId>/<year>/*.json
- * - data/tournament/information/<tournamentId>.json
+ * - data/tournaments/index.json
+ * - data/tournaments/details/<tournamentId>/<year>/*.json
+ * - data/tournaments/information/<tournamentId>.json
  */
 export const getMajorTitlesForPlayer = async (
   lastName: string,
