@@ -10,33 +10,32 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUMS = list(range(1, 2))       # 抽出するページ番号のリスト（1から開始）
-UNIVERSITY_LIST_PATH = 'data/university_list.txt' # 大学名辞書ファイル
-SURNAME_LIST_PATH = 'data/surname_list.txt' # 姓の辞書ファイル
-AREA_LIST_PATH = 'data/area_list.txt'      # エリア名辞書ファイル
+PAGE_NUMS = list(range(1, 9))       # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
+Y_CROP_MIN = 140                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MAX = 700                 # ★ 抽出範囲の最大Y座標 (下端)
 
 X_LEFT_SURNAME_MIN = 70    # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 110   # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 110 # 左側 名の最小X座標
-X_LEFT_FIRSTNAME_MAX = 165 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 175    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 250    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 255    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 360   # チーム名の最大X座標
-X_LEFT_ENTRY_MIN = 10    # 左側エントリー番号の最小X座標
+X_LEFT_SURNAME_MAX = 120   # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 120 # 左側 名の最小X座標
+X_LEFT_FIRSTNAME_MAX = 155 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 160    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 225    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = X_LEFT_AREA_MIN    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = X_LEFT_AREA_MAX   # チーム名の最大X座標
+X_LEFT_ENTRY_MIN = 40    # 左側エントリー番号の最小X座標
 X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
 X_RIGHT_SURNAME_MIN = 360   # 右側 姓の最小X座標
 X_RIGHT_SURNAME_MAX = 400   # 右側 姓の最大X座標
 X_RIGHT_FIRSTNAME_MIN = 400 # 右側 名の最小X座標
-X_RIGHT_FIRSTNAME_MAX = 430 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 436  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 461  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 465  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 530  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 540  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
+X_RIGHT_FIRSTNAME_MAX = 445 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 450  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 510  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = X_RIGHT_AREA_MIN  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = X_RIGHT_AREA_MAX  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 520  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 540  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -44,6 +43,7 @@ X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
 
 def get_chars_data_from_pdf(pdf_path, page_num):
     """PDFから文字情報（テキストと座標）を抽出し、DataFrameとして返す"""
+    global Y_CROP_MIN, Y_CROP_MAX
     try:
         with pdfplumber.open(pdf_path) as pdf:
             page = pdf.pages[page_num - 1]
@@ -55,6 +55,8 @@ def get_chars_data_from_pdf(pdf_path, page_num):
             df = pd.DataFrame(chars_list)[['text', 'x0', 'top', 'x1', 'size']] 
             df = df.rename(columns={'x0': 'left'}) 
             df = df[df['text'].str.strip() != '']
+
+            df = df[(df['top'] >= Y_CROP_MIN) & (df['top'] <= Y_CROP_MAX)].reset_index(drop=True)
             
             return df.reset_index(drop=True)
 
@@ -70,7 +72,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         return []
 
     ################## 指定する
-    extraction_strategy = roundrobin_extraction_strategy
+    extraction_strategy = interhigh_extraction_strategy
 
     # 座標設定を決定
     if is_left_side:
@@ -163,6 +165,85 @@ def singles_extraction_strategy(line_data, data_df, X_SETTINGS):
                 'Team_Name': team,
                 'Entry_Number': entry_number
             })
+    return RESULTS
+
+# インターハイ
+def interhigh_extraction_strategy(line_data, data_df, X_SETTINGS):
+    """
+    標準的な抽出戦略: 1行ずつ走査してデータを抽出する
+    """
+    RESULTS = []
+    for i in range(len(line_data)):
+        line_1 = line_data.iloc[i] # 選手A/エリア/チームの行
+
+        # スコア行などのフィルタリング
+        text_check = line_1['full_text'].strip()
+        # 非常に短いテキスト、数字・記号のみ、またはスコアパターンの場合はスキップ
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            i += 1
+            continue
+
+        p1 = check_line_presence(line_1, data_df, X_SETTINGS)
+        
+        # -----------------------------------------------------------------
+        # ★ 統一された3行セットの処理 (行 i, i+1, i+2 を使用)
+        # -----------------------------------------------------------------
+        if i + 2 < len(line_data):
+            line_2 = line_data.iloc[i + 1] # エントリー番号
+            line_3 = line_data.iloc[i + 2] # 選手B/エリア/チームの行
+
+            # 2行目
+            raw_surname_2, raw_firstname_2, raw_name_2, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
+            
+            # 必須条件: 2行目に有効な数字（エントリー番号）が存在すること
+            is_entry_line = entry_text_2 and entry_text_2.isdigit()
+            
+            if is_entry_line:
+                p3 = check_line_presence(line_3, data_df, X_SETTINGS)
+
+                # 判定条件: 1行目と3行目に選手名が存在すること
+                is_valid_3_line_group = p1['player'] and p3['player']
+
+                if is_valid_3_line_group:
+                    
+                    # 選手Aと選手Bの行からデータを抽出 (2行目から取れるデータは無視)
+                    surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                    surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
+
+                    # 選手Aと選手Bのどちらからも有効なデータ（選手名）が取得できた場合
+                    if surname_a and firstname_a and surname_b and firstname_b: 
+                        
+                        # 1. エントリー番号を2行目から確定
+                        entry_number = int(entry_text_2)
+
+                        # 選手Aの情報を追加
+                        # _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
+                        RESULTS.append({
+                            'Surname': surname_a, 'First_Name': firstname_a,
+                            'Player_Name_Raw': raw_name_a, 'Split_Index': len(surname_a),
+                            'Area_Name': area_a,
+                            'Team_Name': team_b,
+                            'Entry_Number': entry_number
+                        })
+                        
+                        # 選手Bの情報を追加
+                        # _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b) 
+                        RESULTS.append({
+                            'Surname': surname_b, 'First_Name': firstname_b,
+                            'Player_Name_Raw': raw_name_b, 'Split_Index': len(surname_b),
+                            'Area_Name': area_a,
+                            'Team_Name': team_b,
+                            'Entry_Number': entry_number
+                        })
+                        
+                        i += 3 
+                        continue
+                    else:
+                        print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
+                else:
+                    print(f"警告: No. {entry_text_2} が無効です。")
     return RESULTS
 
 ### roundrobin
@@ -303,10 +384,9 @@ def structure_player_data(chars_df, page_num):
     # 3. 左右それぞれで抽出ロジックを実行
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
-    # results_right = _group_and_extract_side(chars_right, is_left_side=False)
+    results_right = _group_and_extract_side(chars_right, is_left_side=False)
 
-    FINAL_RESULTS = results_left
-    # FINAL_RESULTS = results_left + results_right
+    FINAL_RESULTS = results_left + results_right
 
     # 4. 最終的な結果を整形
     df_results = pd.DataFrame(FINAL_RESULTS)
@@ -372,6 +452,7 @@ def draw_extraction_boxes(page, file_path):
     """
     pdfplumberページオブジェクトに、設定されたX座標の抽出範囲を描画する。
     """
+    global Y_CROP_MIN, Y_CROP_MAX
 
     global X_LEFT_SURNAME_MIN, X_LEFT_SURNAME_MAX, X_LEFT_FIRSTNAME_MIN, X_LEFT_FIRSTNAME_MAX
     global X_LEFT_AREA_MIN, X_LEFT_AREA_MAX, X_LEFT_TEAM_MIN, X_LEFT_TEAM_MAX
@@ -407,6 +488,7 @@ def draw_extraction_boxes(page, file_path):
         'AREA': (0, 255, 0),      # 緑
         'TEAM': (255, 0, 0),      # 赤
         'ENTRY': (255, 165, 0),   # オレンジ
+        'CROP_LINE': (0, 0, 0)     # 黒 (クロップ境界線)
     }
 
     def add_rects(settings):
@@ -423,6 +505,9 @@ def draw_extraction_boxes(page, file_path):
     # 左右の範囲を追加
     add_rects(X_SETTINGS_LEFT)
     add_rects(X_SETTINGS_RIGHT)
+
+    rects.append({'rect': (0, Y_CROP_MIN, page.width, Y_CROP_MIN), 'color': COLORS['CROP_LINE'], 'fill': COLORS['CROP_LINE']}) # Top boundary
+    rects.append({'rect': (0, Y_CROP_MAX, page.width, Y_CROP_MAX), 'color': COLORS['CROP_LINE'], 'fill': COLORS['CROP_LINE']}) # Bottom boundary
 
     # ページ全体を画像として取得
     im = page.to_image()
