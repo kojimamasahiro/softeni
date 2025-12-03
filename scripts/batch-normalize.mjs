@@ -5,11 +5,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 // コマンド node scripts/batch-normalize.mjs "data/tournaments/*/{\$1}/{\$2}/results" "data/tournament/details/{\$1}/{\$2}"
-// node scripts/batch-normalize.mjs "data/tournament/details/{\$1}/{\$2}/temp/results" "data/tournament/details/{\$1}/{\$2}"
+// node scripts/batch-normalize.mjs "data/tournaments/details/{\$1}/{\$2}/temp/results" "data/tournaments/details/{\$1}/{\$2}"
 function usage() {
   console.error(
     'Usage: node scripts/batch-normalize.mjs <srcPattern> <outTemplate>\n' +
-      'Example: node scripts/batch-normalize.mjs "data/tournaments/*/{$1}/{$2}/results" "data/tournament/details/{$1}/{$2}"',
+      'Example: node scripts/batch-normalize.mjs "data/tournaments/details/{\$1}/{\$2}/temp/results" "data/tournaments/details/{\$1}/{\$2}"',
   );
   process.exit(1);
 }
