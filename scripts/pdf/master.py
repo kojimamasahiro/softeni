@@ -16,20 +16,45 @@ SMALL_SIZE_THRESHOLD = 6.5
 Y_CROP_MIN = 140                  # ★ 抽出範囲の最小Y座標 (上端)
 Y_CROP_MAX = 700                 # ★ 抽出範囲の最大Y座標 (下端)
 
-X_LEFT_SURNAME_MIN = 70    # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 120   # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 120 # 左側 名の最小X座標
-X_LEFT_FIRSTNAME_MAX = 155 # 左側 名の最大X座標
+# ★ 名前分割方法の選択
+# True: namedividerを使用して自動分割 (推奨: 精度99.3%)
+# False: 座標ベースで姓と名を分割 (従来の方法)
+USE_NAMEDIVIDER = False
+
+# NameDividerの初期化 (USE_NAMEDIVIDER=Trueの場合のみ使用)
+if USE_NAMEDIVIDER:
+    from namedivider import BasicNameDivider
+    name_divider = BasicNameDivider()
+
+# 座標設定 (USE_NAMEDIVIDERの値によって使い分け)
+if USE_NAMEDIVIDER:
+    # namedivider使用時: フルネームの範囲のみ
+    X_LEFT_NAME_MIN = 70     # 左側 選手名の最小X座標
+    X_LEFT_NAME_MAX = 155    # 左側 選手名の最大X座標
+else:
+    # 座標ベース使用時: 姓と名を別々に指定
+    X_LEFT_NAME_MIN = 70    # 左側 姓の最小X座標
+    X_LEFT_SURNAME_MAX = 112  # 左側 姓の最大X座標
+    X_LEFT_FIRSTNAME_MIN = 113 # 左側 名の最小X座標
+    X_LEFT_NAME_MAX = 155 # 左側 名の最大X座標
 X_LEFT_AREA_MIN = 160    # エリア名の最小X座標
 X_LEFT_AREA_MAX = 225    # エリア名の最大X座標
 X_LEFT_TEAM_MIN = X_LEFT_AREA_MIN    # チーム名の最小X座標
 X_LEFT_TEAM_MAX = X_LEFT_AREA_MAX   # チーム名の最大X座標
 X_LEFT_ENTRY_MIN = 40    # 左側エントリー番号の最小X座標
 X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
-X_RIGHT_SURNAME_MIN = 360   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 400   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 400 # 右側 名の最小X座標
-X_RIGHT_FIRSTNAME_MAX = 445 # 右側 名の最大X座標
+
+if USE_NAMEDIVIDER:
+    # namedivider使用時: フルネームの範囲のみ
+    X_RIGHT_NAME_MIN = 360   # 右側 選手名の最小X座標
+    X_RIGHT_NAME_MAX = 445   # 右側 選手名の最大X座標
+else:
+    # 座標ベース使用時: 姓と名を別々に指定
+    X_RIGHT_NAME_MIN = 360   # 右側 姓の最小X座標
+    X_RIGHT_SURNAME_MAX = 402   # 右側 姓の最大X座標
+    X_RIGHT_FIRSTNAME_MIN = 403 # 右側 名の最小X座標
+    X_RIGHT_NAME_MAX = 445 # 右側 名の最大X座標
+
 X_RIGHT_AREA_MIN = 450  # エリア名の最小X座標
 X_RIGHT_AREA_MAX = 510  # エリア名の最大X座標
 X_RIGHT_TEAM_MIN = X_RIGHT_AREA_MIN  # チーム名の最小X座標
@@ -75,22 +100,40 @@ def _group_and_extract_side(side_chars_df, is_left_side):
     extraction_strategy = interhigh_extraction_strategy
 
     # 座標設定を決定
-    if is_left_side:
-        X_SETTINGS = {
-            'SURNAME_MIN': X_LEFT_SURNAME_MIN, 'SURNAME_MAX': X_LEFT_SURNAME_MAX,
-            'FIRSTNAME_MIN': X_LEFT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_LEFT_FIRSTNAME_MAX,
-            'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
-            'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
-            'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
-        }
+    if USE_NAMEDIVIDER:
+        # namedivider使用時
+        if is_left_side:
+            X_SETTINGS = {
+                'NAME_MIN': X_LEFT_NAME_MIN, 'NAME_MAX': X_LEFT_NAME_MAX,
+                'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
+                'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
+                'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
+            }
+        else:
+            X_SETTINGS = {
+                'NAME_MIN': X_RIGHT_NAME_MIN, 'NAME_MAX': X_RIGHT_NAME_MAX,
+                'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
+                'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
+                'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
+            }
     else:
-        X_SETTINGS = {
-            'SURNAME_MIN': X_RIGHT_SURNAME_MIN, 'SURNAME_MAX': X_RIGHT_SURNAME_MAX,
-            'FIRSTNAME_MIN': X_RIGHT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_RIGHT_FIRSTNAME_MAX,
-            'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
-            'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
-            'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
-        }
+        # 座標ベース使用時
+        if is_left_side:
+            X_SETTINGS = {
+                'SURNAME_MIN': X_LEFT_NAME_MIN, 'SURNAME_MAX': X_LEFT_SURNAME_MAX,
+                'FIRSTNAME_MIN': X_LEFT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_LEFT_NAME_MAX,
+                'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
+                'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
+                'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
+            }
+        else:
+            X_SETTINGS = {
+                'SURNAME_MIN': X_RIGHT_NAME_MIN, 'SURNAME_MAX': X_RIGHT_SURNAME_MAX,
+                'FIRSTNAME_MIN': X_RIGHT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_RIGHT_NAME_MAX,
+                'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
+                'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
+                'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
+            }
 
     # 1. Y座標に基づき、文字レベルのデータを「行レベル」のデータに集約 (既存のロジック)
     data = side_chars_df.sort_values(by=['top', 'left']).copy()
@@ -150,8 +193,19 @@ def singles_extraction_strategy(line_data, data_df, X_SETTINGS):
             continue
 
         # 1行からすべての情報を抽出
-        surname, firstname, raw_name, area, team, entry_text = extract_single_line_content(line, data_df, X_SETTINGS)
-
+        if USE_NAMEDIVIDER:
+            full_name, area, team, entry_text = extract_single_line_content(line, data_df, X_SETTINGS)
+            
+            # 選手名が存在する場合のみ追加
+            if full_name:
+                # NameDividerで姓名を分割
+                divided = name_divider.divide_name(full_name)
+                surname = divided.family
+                firstname = divided.given
+                raw_name = full_name
+        else:
+            surname, firstname, raw_name, area, team, entry_text = extract_single_line_content(line, data_df, X_SETTINGS)
+        
         # 選手名が存在する場合のみ追加
         if surname and firstname:
             entry_number = None
@@ -195,9 +249,12 @@ def interhigh_extraction_strategy(line_data, data_df, X_SETTINGS):
             line_3 = line_data.iloc[i + 2] # 選手B/エリア/チームの行
 
             # 2行目
-            raw_surname_2, raw_firstname_2, raw_name_2, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
+            if USE_NAMEDIVIDER:
+                _, _, _, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
+            else:
+                _, _, _, _, _, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
             
-            # 必須条件: 2行目に有効な数字（エントリー番号）が存在すること
+            # 必須条件: 2行目に有効な数字(エントリー番号)が存在すること
             is_entry_line = entry_text_2 and entry_text_2.isdigit()
             
             if is_entry_line:
@@ -209,41 +266,59 @@ def interhigh_extraction_strategy(line_data, data_df, X_SETTINGS):
                 if is_valid_3_line_group:
                     
                     # 選手Aと選手Bの行からデータを抽出 (2行目から取れるデータは無視)
-                    surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
-                    surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
-
-                    # 選手Aと選手Bのどちらからも有効なデータ（選手名）が取得できた場合
-                    if surname_a and firstname_a and surname_b and firstname_b: 
+                    if USE_NAMEDIVIDER:
+                        full_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                        full_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
                         
-                        # 1. エントリー番号を2行目から確定
-                        entry_number = int(entry_text_2)
-
-                        # 選手Aの情報を追加
-                        # _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
-                        RESULTS.append({
-                            'Surname': surname_a, 'First_Name': firstname_a,
-                            'Player_Name_Raw': raw_name_a, 'Split_Index': len(surname_a),
-                            'Area_Name': area_a,
-                            'Team_Name': team_b,
-                            'Entry_Number': entry_number
-                        })
-                        
-                        # 選手Bの情報を追加
-                        # _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b) 
-                        RESULTS.append({
-                            'Surname': surname_b, 'First_Name': firstname_b,
-                            'Player_Name_Raw': raw_name_b, 'Split_Index': len(surname_b),
-                            'Area_Name': area_a,
-                            'Team_Name': team_b,
-                            'Entry_Number': entry_number
-                        })
-                        
-                        i += 3 
-                        continue
+                        # 選手Aと選手Bのどちらからも有効なデータ(選手名)が取得できた場合
+                        if full_name_a and full_name_b:
+                            # NameDividerで姓名を分割
+                            divided_a = name_divider.divide_name(full_name_a)
+                            surname_a = divided_a.family
+                            firstname_a = divided_a.given
+                            raw_name_a = full_name_a
+                            
+                            divided_b = name_divider.divide_name(full_name_b)
+                            surname_b = divided_b.family
+                            firstname_b = divided_b.given
+                            raw_name_b = full_name_b
+                        else:
+                            continue
                     else:
-                        print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
+                        surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                        surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
+                        
+                        # 選手Aと選手Bのどちらからも有効なデータ(選手名)が取得できた場合
+                        if not (surname_a and firstname_a and surname_b and firstname_b):
+                            continue
+                    
+                    # 1. エントリー番号を2行目から確定
+                    entry_number = int(entry_text_2)
+
+                    # 選手Aの情報を追加
+                    RESULTS.append({
+                        'Surname': surname_a, 'First_Name': firstname_a,
+                        'Player_Name_Raw': raw_name_a, 'Split_Index': len(surname_a),
+                        'Area_Name': area_a,
+                        'Team_Name': team_b,
+                        'Entry_Number': entry_number
+                    })
+                    
+                    # 選手Bの情報を追加
+                    RESULTS.append({
+                        'Surname': surname_b, 'First_Name': firstname_b,
+                        'Player_Name_Raw': raw_name_b, 'Split_Index': len(surname_b),
+                        'Area_Name': area_a,
+                        'Team_Name': team_b,
+                        'Entry_Number': entry_number
+                    })
+                    
+                    i += 3 
+                    continue
                 else:
-                    print(f"警告: No. {entry_text_2} が無効です。")
+                    print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
+            else:
+                print(f"警告: No. {entry_text_2} が無効です。")
     return RESULTS
 
 ### roundrobin
@@ -277,19 +352,7 @@ def roundrobin_extraction_strategy(line_data, data_df, X_SETTINGS):
             # print(f"  行 {i+2} テキスト: '{line_2['full_text']}'")
             # print(f"  行 {i+3} テキスト: '{line_3['full_text']}'")
 
-            # --- Line 1 (選手A + 地域名) の抽出 ---
-            surname_a, firstname_a, raw_name_a, area_a, team_a, entry_a = extract_single_line_content(line_1, data_df, X_SETTINGS)
             p1 = check_line_presence(line_1, data_df, X_SETTINGS)
-
-            # --- Line 2 (エントリー番号) の抽出 ---
-            # line_2はエントリー番号のみを抽出（他のフィールドは無視）
-            surname_entry, firstname_entry, raw_name_entry, area_entry, team_entry, entry_number_raw = extract_single_line_content(line_2, data_df, X_SETTINGS)
-
-            p2 = check_line_presence(line_2, data_df, X_SETTINGS) # 存在チェック
-            
-            # --- Line 3 (選手B + チーム名) の抽出 ---
-            surname_b, firstname_b, raw_name_b, area_b, team_b, entry_b = extract_single_line_content(line_3, data_df, X_SETTINGS)
-            p3 = check_line_presence(line_3, data_df, X_SETTINGS) # 存在チェック
 
             # -------------------------------------------------------------
             # 判定ロジック
@@ -300,10 +363,13 @@ def roundrobin_extraction_strategy(line_data, data_df, X_SETTINGS):
             line_3 = line_data.iloc[i + 2] # 選手Bの行
 
             # 2行目からすべての情報を抽出
-            # raw_name_2 は通常空（選手名なし）のはず
-            raw_surname_2, raw_firstname_2, raw_name_2, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
+            # raw_name_2 は通常空(選手名なし)のはず
+            if USE_NAMEDIVIDER:
+                _, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
+            else:
+                _, _, _, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
             
-            # 必須条件: 2行目に有効な数字（エントリー番号）が存在すること
+            # 必須条件: 2行目に有効な数字(エントリー番号)が存在すること
             is_entry_line = entry_text_2 and entry_text_2.isdigit()
             
             if is_entry_line:
@@ -315,44 +381,62 @@ def roundrobin_extraction_strategy(line_data, data_df, X_SETTINGS):
                 if is_valid_3_line_group:
                     
                     # 選手Aと選手Bの行からデータを抽出 (2行目から取れるデータは無視)
-                    surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
-                    surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
-
-                    # 選手Aと選手Bのどちらからも有効なデータ（選手名）が取得できた場合
-                    if surname_a and firstname_a and surname_b and firstname_b: 
+                    if USE_NAMEDIVIDER:
+                        full_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                        full_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
                         
-                        # 1. エントリー番号を2行目から確定
-                        # entry_number = int(entry_text_2)
-                        entry_number = _number
-                        _number += 1
-
-                        # 選手Aの情報を追加
-                        # _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
-                        RESULTS.append({
-                            'Surname': surname_a, 'First_Name': firstname_a,
-                            'Player_Name_Raw': raw_name_a, 'Split_Index': len(surname_a),
-                            'Area_Name': area_2 if area_2 else area_a,
-                            'Team_Name': team_2 if team_2 else team_a,
-                            'Entry_Number': entry_number
-                        })
-                        
-                        # 選手Bの情報を追加
-                        # _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b) 
-                        RESULTS.append({
-                            'Surname': surname_b, 'First_Name': firstname_b,
-                            'Player_Name_Raw': raw_name_b, 'Split_Index': len(surname_b),
-                            'Area_Name': area_2 if area_2 else area_b,
-                            'Team_Name': team_2 if team_2 else team_b,
-                            'Entry_Number': entry_number
-                        })
-                        
-                        i += 3 
-                        continue
+                        # 選手Aと選手Bのどちらからも有効なデータ(選手名)が取得できた場合
+                        if full_name_a and full_name_b:
+                            # NameDividerで姓名を分割
+                            divided_a = name_divider.divide_name(full_name_a)
+                            surname_a = divided_a.family
+                            firstname_a = divided_a.given
+                            raw_name_a = full_name_a
+                            
+                            divided_b = name_divider.divide_name(full_name_b)
+                            surname_b = divided_b.family
+                            firstname_b = divided_b.given
+                            raw_name_b = full_name_b
+                        else:
+                            continue
                     else:
-                        print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
+                        surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                        surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
+                        
+                        # 選手Aと選手Bのどちらからも有効なデータ(選手名)が取得できた場合
+                        if not (surname_a and firstname_a and surname_b and firstname_b):
+                            continue
+                    
+                    # 1. エントリー番号を2行目から確定
+                    # entry_number = int(entry_text_2)
+                    entry_number = _number
+                    _number += 1
+
+                    # 選手Aの情報を追加
+                    RESULTS.append({
+                        'Surname': surname_a, 'First_Name': firstname_a,
+                        'Player_Name_Raw': raw_name_a, 'Split_Index': len(surname_a),
+                        'Area_Name': area_2 if area_2 else area_a,
+                        'Team_Name': team_2 if team_2 else team_a,
+                        'Entry_Number': entry_number
+                    })
+                    
+                    # 選手Bの情報を追加
+                    RESULTS.append({
+                        'Surname': surname_b, 'First_Name': firstname_b,
+                        'Player_Name_Raw': raw_name_b, 'Split_Index': len(surname_b),
+                        'Area_Name': area_2 if area_2 else area_b,
+                        'Team_Name': team_2 if team_2 else team_b,
+                        'Entry_Number': entry_number
+                    })
+                    
+                    i += 3 
+                    continue
                 else:
-                    print(f"警告: No. {entry_text_2} が無効です。")
-                
+                    print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
+            else:
+                print(f"警告: No. {entry_text_2} が無効です。")
+        
         # 3行セットとして成立しない場合、または無効な場合は1行進める
         i += 1
         
@@ -379,9 +463,8 @@ def structure_player_data(chars_df, page_num):
 
     # 2. 文字データを左右に分割
     chars_left = chars_df[chars_df['left'] <= X_LEFT_TEAM_MAX].copy()
-    chars_right = chars_df[chars_df['left'] >= X_RIGHT_SURNAME_MIN].copy()
+    chars_right = chars_df[chars_df['left'] >= X_RIGHT_NAME_MIN].copy()
 
-    # 3. 左右それぞれで抽出ロジックを実行
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
     results_right = _group_and_extract_side(chars_right, is_left_side=False)
@@ -407,19 +490,24 @@ def check_line_presence(line_data_row, data_df, X_SETTINGS):
     Y_MIN, Y_MAX = line_data_row['top_min'], line_data_row['top_max']
 
     def is_present(min_x, max_x):
-        """指定されたX範囲に文字が存在するかどうか（ブール値）をチェック"""
+        """指定されたX範囲に文字が存在するかどうか(ブール値)をチェック"""
         chars_count = data_df[
             (data_df['left'] >= min_x) & (data_df['left'] <= max_x) &
             (data_df['top'] >= Y_MIN) & (data_df['top'] <= Y_MAX)
         ].shape[0]
         return chars_count > 0
 
-    is_surname_present = is_present(X_SETTINGS['SURNAME_MIN'], X_SETTINGS['SURNAME_MAX'])
-    is_firstname_present = is_present(X_SETTINGS['FIRSTNAME_MIN'], X_SETTINGS['FIRSTNAME_MAX'])
+    if USE_NAMEDIVIDER:
+        is_name_present = is_present(X_SETTINGS['NAME_MIN'], X_SETTINGS['NAME_MAX'])
+        player_present = is_name_present
+    else:
+        is_surname_present = is_present(X_SETTINGS['SURNAME_MIN'], X_SETTINGS['SURNAME_MAX'])
+        is_firstname_present = is_present(X_SETTINGS['FIRSTNAME_MIN'], X_SETTINGS['FIRSTNAME_MAX'])
+        player_present = is_surname_present and is_firstname_present
 
     return {
-        # 選手名：姓と名の両方に文字があることを必須とする
-        'player': is_surname_present and is_firstname_present, 
+        # 選手名:名前範囲に文字があることを確認
+        'player': player_present, 
         'area': is_present(X_SETTINGS['AREA_MIN'], X_SETTINGS['AREA_MAX']),
         'team': is_present(X_SETTINGS['TEAM_MIN'], X_SETTINGS['TEAM_MAX']),
         'entry': is_present(X_SETTINGS['ENTRY_MIN'], X_SETTINGS['ENTRY_MAX']),
@@ -440,13 +528,19 @@ def extract_single_line_content(line_data_row, data_df, X_SETTINGS):
         return "".join(chars['text']).strip()
 
     # 1. 生のテキスト抽出
-    raw_surname_text = extract_text(X_SETTINGS['SURNAME_MIN'], X_SETTINGS['SURNAME_MAX'])
-    raw_firstname_text = extract_text(X_SETTINGS['FIRSTNAME_MIN'], X_SETTINGS['FIRSTNAME_MAX'])
     raw_area_text = extract_text(X_SETTINGS['AREA_MIN'], X_SETTINGS['AREA_MAX'])
     raw_team_text = extract_text(X_SETTINGS['TEAM_MIN'], X_SETTINGS['TEAM_MAX'])
     raw_entry_text = extract_text(X_SETTINGS['ENTRY_MIN'], X_SETTINGS['ENTRY_MAX'])
-
-    return raw_surname_text, raw_firstname_text, f"{raw_surname_text}{raw_firstname_text}", raw_area_text, raw_team_text, raw_entry_text
+    
+    if USE_NAMEDIVIDER:
+        # namedivider使用時: フルネームを返す
+        raw_name_text = extract_text(X_SETTINGS['NAME_MIN'], X_SETTINGS['NAME_MAX'])
+        return raw_name_text, raw_area_text, raw_team_text, raw_entry_text
+    else:
+        # 座標ベース使用時: 姓と名を別々に返す
+        raw_surname_text = extract_text(X_SETTINGS['SURNAME_MIN'], X_SETTINGS['SURNAME_MAX'])
+        raw_firstname_text = extract_text(X_SETTINGS['FIRSTNAME_MIN'], X_SETTINGS['FIRSTNAME_MAX'])
+        return raw_surname_text, raw_firstname_text, f"{raw_surname_text}{raw_firstname_text}", raw_area_text, raw_team_text, raw_entry_text
 
 def draw_extraction_boxes(page, file_path):
     """
@@ -454,53 +548,87 @@ def draw_extraction_boxes(page, file_path):
     """
     global Y_CROP_MIN, Y_CROP_MAX
 
-    global X_LEFT_SURNAME_MIN, X_LEFT_SURNAME_MAX, X_LEFT_FIRSTNAME_MIN, X_LEFT_FIRSTNAME_MAX
+    global X_LEFT_NAME_MIN, X_LEFT_SURNAME_MAX, X_LEFT_FIRSTNAME_MIN, X_LEFT_NAME_MAX
     global X_LEFT_AREA_MIN, X_LEFT_AREA_MAX, X_LEFT_TEAM_MIN, X_LEFT_TEAM_MAX
-    global X_RIGHT_SURNAME_MIN, X_RIGHT_SURNAME_MAX, X_RIGHT_FIRSTNAME_MIN, X_RIGHT_FIRSTNAME_MAX
+    global X_RIGHT_NAME_MIN, X_RIGHT_SURNAME_MAX, X_RIGHT_FIRSTNAME_MIN, X_RIGHT_NAME_MAX
     global X_RIGHT_AREA_MIN, X_RIGHT_AREA_MAX, X_RIGHT_TEAM_MIN, X_RIGHT_TEAM_MAX
     global X_LEFT_ENTRY_MIN, X_LEFT_ENTRY_MAX, X_RIGHT_ENTRY_MIN, X_RIGHT_ENTRY_MAX
 
 
     # 左右のエントリー番号のX設定をX_SETTINGSに含めるために統合
-    X_SETTINGS_LEFT = {
-        'SURNAME_MIN': X_LEFT_SURNAME_MIN, 'SURNAME_MAX': X_LEFT_SURNAME_MAX,
-        'FIRSTNAME_MIN': X_LEFT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_LEFT_FIRSTNAME_MAX,
-        'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
-        'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
-        'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
-    }
-    
-    X_SETTINGS_RIGHT = {
-        'SURNAME_MIN': X_RIGHT_SURNAME_MIN, 'SURNAME_MAX': X_RIGHT_SURNAME_MAX,
-        'FIRSTNAME_MIN': X_RIGHT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_RIGHT_FIRSTNAME_MAX,
-        'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
-        'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
-        'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
-    }
+    if USE_NAMEDIVIDER:
+        X_SETTINGS_LEFT = {
+            'NAME_MIN': X_LEFT_NAME_MIN, 'NAME_MAX': X_LEFT_NAME_MAX,
+            'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
+            'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
+            'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
+        }
+        
+        X_SETTINGS_RIGHT = {
+            'NAME_MIN': X_RIGHT_NAME_MIN, 'NAME_MAX': X_RIGHT_NAME_MAX,
+            'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
+            'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
+            'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
+        }
+    else:
+        X_SETTINGS_LEFT = {
+            'SURNAME_MIN': X_LEFT_NAME_MIN, 'SURNAME_MAX': X_LEFT_SURNAME_MAX,
+            'FIRSTNAME_MIN': X_LEFT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_LEFT_NAME_MAX,
+            'AREA_MIN': X_LEFT_AREA_MIN, 'AREA_MAX': X_LEFT_AREA_MAX,
+            'TEAM_MIN': X_LEFT_TEAM_MIN, 'TEAM_MAX': X_LEFT_TEAM_MAX,
+            'ENTRY_MIN': X_LEFT_ENTRY_MIN, 'ENTRY_MAX': X_LEFT_ENTRY_MAX,
+        }
+        
+        X_SETTINGS_RIGHT = {
+            'SURNAME_MIN': X_RIGHT_NAME_MIN, 'SURNAME_MAX': X_RIGHT_SURNAME_MAX,
+            'FIRSTNAME_MIN': X_RIGHT_FIRSTNAME_MIN, 'FIRSTNAME_MAX': X_RIGHT_NAME_MAX,
+            'AREA_MIN': X_RIGHT_AREA_MIN, 'AREA_MAX': X_RIGHT_AREA_MAX,
+            'TEAM_MIN': X_RIGHT_TEAM_MIN, 'TEAM_MAX': X_RIGHT_TEAM_MAX,
+            'ENTRY_MIN': X_RIGHT_ENTRY_MIN, 'ENTRY_MAX': X_RIGHT_ENTRY_MAX,
+        }
 
     # 描画する矩形 (rects) のリスト
     rects = []
     
     # 色の設定 (R, G, B)
-    COLORS = {
-        'SURNAME': (0, 0, 255),    # 青
-        'FIRSTNAME': (255, 255, 0),# 黄
-        'AREA': (0, 255, 0),      # 緑
-        'TEAM': (255, 0, 0),      # 赤
-        'ENTRY': (255, 165, 0),   # オレンジ
-        'CROP_LINE': (0, 0, 0)     # 黒 (クロップ境界線)
-    }
+    if USE_NAMEDIVIDER:
+        COLORS = {
+            'NAME': (0, 0, 255),      # 青
+            'AREA': (0, 255, 0),      # 緑
+            'TEAM': (255, 0, 0),      # 赤
+            'ENTRY': (255, 165, 0),   # オレンジ
+            'CROP_LINE': (0, 0, 0)     # 黒 (クロップ境界線)
+        }
 
-    def add_rects(settings):
-        # 選手名
-        rects.append({'rect': (settings['SURNAME_MIN'], 0, settings['SURNAME_MAX'], page.height), 'color': COLORS['SURNAME']})
-        rects.append({'rect': (settings['FIRSTNAME_MIN'], 0, settings['FIRSTNAME_MAX'], page.height), 'color': COLORS['FIRSTNAME']})
-        # エリア名
-        rects.append({'rect': (settings['AREA_MIN'], 0, settings['AREA_MAX'], page.height), 'color': COLORS['AREA']})
-        # チーム名
-        rects.append({'rect': (settings['TEAM_MIN'], 0, settings['TEAM_MAX'], page.height), 'color': COLORS['TEAM']})
-        # エントリー番号
-        rects.append({'rect': (settings['ENTRY_MIN'], 0, settings['ENTRY_MAX'], page.height), 'color': COLORS['ENTRY']})
+        def add_rects(settings):
+            # 選手名
+            rects.append({'rect': (settings['NAME_MIN'], 0, settings['NAME_MAX'], page.height), 'color': COLORS['NAME']})
+            # エリア名
+            rects.append({'rect': (settings['AREA_MIN'], 0, settings['AREA_MAX'], page.height), 'color': COLORS['AREA']})
+            # チーム名
+            rects.append({'rect': (settings['TEAM_MIN'], 0, settings['TEAM_MAX'], page.height), 'color': COLORS['TEAM']})
+            # エントリー番号
+            rects.append({'rect': (settings['ENTRY_MIN'], 0, settings['ENTRY_MAX'], page.height), 'color': COLORS['ENTRY']})
+    else:
+        COLORS = {
+            'SURNAME': (0, 0, 255),    # 青
+            'FIRSTNAME': (255, 255, 0),# 黄
+            'AREA': (0, 255, 0),      # 緑
+            'TEAM': (255, 0, 0),      # 赤
+            'ENTRY': (255, 165, 0),   # オレンジ
+            'CROP_LINE': (0, 0, 0)     # 黒 (クロップ境界線)
+        }
+
+        def add_rects(settings):
+            # 選手名
+            rects.append({'rect': (settings['SURNAME_MIN'], 0, settings['SURNAME_MAX'], page.height), 'color': COLORS['SURNAME']})
+            rects.append({'rect': (settings['FIRSTNAME_MIN'], 0, settings['FIRSTNAME_MAX'], page.height), 'color': COLORS['FIRSTNAME']})
+            # エリア名
+            rects.append({'rect': (settings['AREA_MIN'], 0, settings['AREA_MAX'], page.height), 'color': COLORS['AREA']})
+            # チーム名
+            rects.append({'rect': (settings['TEAM_MIN'], 0, settings['TEAM_MAX'], page.height), 'color': COLORS['TEAM']})
+            # エントリー番号
+            rects.append({'rect': (settings['ENTRY_MIN'], 0, settings['ENTRY_MAX'], page.height), 'color': COLORS['ENTRY']})
 
     # 左右の範囲を追加
     add_rects(X_SETTINGS_LEFT)
