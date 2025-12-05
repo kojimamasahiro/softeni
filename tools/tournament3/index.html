@@ -462,53 +462,52 @@
         if (m.p2?.id !== 'bye') allPlayers.push(m.p2);
       });
 
-      // Collect which matches are marked as packin
-      const packinMarks = [];
-      bracket[0].matches.forEach((m, idx) => {
-        if (m.packinMarked) {
-          packinMarks.push(idx);
+      // Collect which players are marked as packin (using player IDs instead of indices)
+      const packinPlayerIds = new Set();
+      bracket[0].matches.forEach((m) => {
+        if (m.packinMarked && m.p1?.id !== 'bye') {
+          packinPlayerIds.add(m.p1.id);
         }
       });
 
-      // Calculate the correct bracket size:
-      // Each packin takes up one slot (the bye), so we need (playerCount + packinCount) total slots
-      // This must be rounded up to the next power of 2 for a proper bracket
-      const packinCount = packinMarks.length;
+      // Calculate the correct bracket size
+      const packinCount = packinPlayerIds.size;
       const totalSlots = allPlayers.length + packinCount;
       let bracketSize = 1;
       while (bracketSize < totalSlots) {
         bracketSize *= 2;
       }
-      const numMatches = bracketSize / 2;
 
-      // Build new player list by inserting byes at packin positions
+      // Build new player list by inserting byes for packin players, preserving original order
       const playersWithByes = [];
       let playerIndex = 0;
-      let packinIndex = 0;
 
-      for (let matchIdx = 0; matchIdx < numMatches; matchIdx++) {
-        if (packinIndex < packinMarks.length && packinMarks[packinIndex] === matchIdx) {
-          // Insert packin at p2 position of this match
-          // p1 gets the current player, p2 gets bye
-          if (playerIndex < allPlayers.length) {
-            playersWithByes.push(allPlayers[playerIndex]);
-            playerIndex++;
-          } else {
-            playersWithByes.push(byePlayer);
-          }
-          playersWithByes.push(byePlayer); // Insert bye at p2
-          packinIndex++;
+      while (playerIndex < allPlayers.length) {
+        const currentPlayer = allPlayers[playerIndex];
+
+        // Check if this player is marked as packin
+        if (currentPlayer?.id !== 'bye' && packinPlayerIds.has(currentPlayer.id)) {
+          // This player gets a bye opponent (packin)
+          playersWithByes.push(currentPlayer);
+          playersWithByes.push(byePlayer);
+          playerIndex++;
         } else {
           // Normal match - take two players
+          playersWithByes.push(currentPlayer);
+          playerIndex++;
+
           if (playerIndex < allPlayers.length) {
-            playersWithByes.push(allPlayers[playerIndex]);
-            playerIndex++;
-          } else {
-            playersWithByes.push(byePlayer);
-          }
-          if (playerIndex < allPlayers.length) {
-            playersWithByes.push(allPlayers[playerIndex]);
-            playerIndex++;
+            const nextPlayer = allPlayers[playerIndex];
+            // Check if next player is also packin
+            if (nextPlayer?.id !== 'bye' && packinPlayerIds.has(nextPlayer.id)) {
+              // Next player is packin, so current player gets a bye opponent
+              playersWithByes.push(byePlayer);
+              // Don't increment playerIndex, we'll process the packin player in next iteration
+            } else {
+              // Normal pair
+              playersWithByes.push(nextPlayer);
+              playerIndex++;
+            }
           } else {
             playersWithByes.push(byePlayer);
           }
@@ -521,17 +520,12 @@
       }
 
       // Rebuild bracket
-      const oldPackinMarks = [];
-      bracket[0].matches.forEach((m, idx) => {
-        if (m.packinMarked) oldPackinMarks.push(idx);
-      });
-
       bracket = buildBracket(playersWithByes);
 
-      // Restore packin marks
-      oldPackinMarks.forEach((idx) => {
-        if (bracket[0].matches[idx]) {
-          bracket[0].matches[idx].packinMarked = true;
+      // Restore packin marks based on player IDs
+      bracket[0].matches.forEach((m) => {
+        if (m.p1?.id && m.p1.id !== 'bye' && packinPlayerIds.has(m.p1.id)) {
+          m.packinMarked = true;
         }
       });
 
