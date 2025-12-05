@@ -10,7 +10,7 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUMS = list(range(1, 9))       # 抽出するページ番号のリスト（1から開始）
+PAGE_NUMS = list(range(3, 11))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
 Y_CROP_MIN = 140                  # ★ 抽出範囲の最小Y座標 (上端)
@@ -317,8 +317,6 @@ def interhigh_extraction_strategy(line_data, data_df, X_SETTINGS):
                     continue
                 else:
                     print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
-            else:
-                print(f"警告: No. {entry_text_2} が無効です。")
     return RESULTS
 
 ### roundrobin
