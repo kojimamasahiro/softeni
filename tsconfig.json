@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,19 +18,49 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./",
-    "types": ["node", "next", "react", "react-dom"],
-    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "types": [
+      "node",
+      "next",
+      "react",
+      "react-dom"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/styles/*": ["./src/styles/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/data/*": ["./data/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/config/*": ["./config/*"],
-      "@/assets/*": ["./src/assets/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/styles/*": [
+        "./src/styles/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/data/*": [
+        "./data/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ],
+      "@/config/*": [
+        "./config/*"
+      ],
+      "@/assets/*": [
+        "./src/assets/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
