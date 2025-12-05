@@ -807,11 +807,89 @@ for (const [group, setOfPlayers] of rrPlayersByGroup.entries()) {
   }
 }
 
+// Calculate entry type based on match analysis
+function calculateEntryType(entryNo, matches) {
+  // Check if entry participates in round-robin
+  const rrMatches = matches.filter(
+    (m) =>
+      m.stage === 'roundrobin' &&
+      Array.isArray(m.entries) &&
+      m.entries.includes(entryNo),
+  );
+  if (rrMatches.length > 0) {
+    return null; // Round-robin participants have null type
+  }
+
+  // Find all knockout matches for this entry
+  const knockoutMatches = matches.filter(
+    (m) =>
+      m.stage === 'knockout' &&
+      Array.isArray(m.entries) &&
+      m.entries.includes(entryNo),
+  );
+
+  if (knockoutMatches.length === 0) {
+    return null; // No knockout matches, keep null
+  }
+
+  // Sort by round order to find first appearance
+  knockoutMatches.sort((a, b) => roundOrder(a.round) - roundOrder(b.round));
+  const firstMatch = knockoutMatches[0];
+  const firstRound = firstMatch.round;
+
+  // Check if starts from round 1 (1回戦)
+  if (firstRound && firstRound.includes('1回戦')) {
+    return 'packing';
+  }
+
+  // Check if starts from round 2 (2回戦)
+  if (firstRound && firstRound.includes('2回戦')) {
+    // Find opponent in this match
+    const opponentEntryNo = firstMatch.entries.find((e) => e !== entryNo);
+    if (opponentEntryNo == null) return null;
+
+    // Check opponent's first appearance
+    const opponentKnockoutMatches = matches.filter(
+      (m) =>
+        m.stage === 'knockout' &&
+        Array.isArray(m.entries) &&
+        m.entries.includes(opponentEntryNo),
+    );
+
+    if (opponentKnockoutMatches.length === 0) return null;
+
+    opponentKnockoutMatches.sort(
+      (a, b) => roundOrder(a.round) - roundOrder(b.round),
+    );
+    const opponentFirstMatch = opponentKnockoutMatches[0];
+    const opponentFirstRound = opponentFirstMatch.round;
+
+    // If opponent started in round 1, this is a seed
+    if (opponentFirstRound && opponentFirstRound.includes('1回戦')) {
+      return 'seed';
+    }
+
+    // If opponent also started in round 2, this is extra
+    if (opponentFirstRound && opponentFirstRound.includes('2回戦')) {
+      return 'extra';
+    }
+  }
+
+  // Default to null for other cases
+  return null;
+}
+
 // rebuild entries array after possibly adding rr-only entries
-entries = Array.from(entriesMap.values()).map((e) => ({
-  ...e,
-  type: entryTypeMap.has(e.entryNo) ? entryTypeMap.get(e.entryNo) : null,
-}));
+entries = Array.from(entriesMap.values()).map((e) => {
+  // Use metadata if available, otherwise calculate from matches
+  let type = entryTypeMap.has(e.entryNo)
+    ? entryTypeMap.get(e.entryNo)
+    : calculateEntryType(e.entryNo, matchesTransformed);
+  return {
+    ...e,
+    type,
+  };
+});
 
 // map from matchId to match for lookup (not needed currently)
 // const matchIdMap = new Map(matchesTransformed.map((m) => [m.matchId, m]));
