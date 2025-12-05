@@ -14,9 +14,7 @@ data/tournament/
 └── details/                      # 大会詳細データ（試合結果等）
     └── {tournamentId}/
         └── {year}/
-            ├── {category}.json
-            └── og/               # OG画像生成用データ
-                └── {category}.json
+            └── {category}.json
 ```
 
 ## ファイル詳細
@@ -292,56 +290,6 @@ export interface TournamentParticipant {
 
 ---
 
-### 5. `details/{tournamentId}/{year}/og/{category}.json` - OG画像生成用データ
-
-Open Graph画像生成用の簡略化されたデータ。
-
-#### データ構造
-
-> **注**: OG画像用データの型定義は `src/types/tournament.ts` には含まれていません。
-
-```typescript
-interface OGImageData {
-  leftPairs: PairInfo[];        // 左側（上位）のペア情報
-  rightPairs: PairInfo[];       // 右側（下位）のペア情報
-  topScores: string[];          // 上位側のスコア配列
-  bottomScores: string[];       // 下位側のスコア配列
-}
-
-interface PairInfo {
-  name: string;                 // ペア名（フルネーム）
-  team: string;                 // チーム名
-}
-```
-
-#### 使用例
-
-```json
-{
-  "leftPairs": [
-    {
-      "name": "手塚康介・竹之内琉汰",
-      "team": "木更津総合"
-    }
-  ],
-  "rightPairs": [
-    {
-      "name": "岩田悠聖・栗岡優志",
-      "team": "市尼崎"
-    }
-  ],
-  "topScores": ["4", "4", "4"],
-  "bottomScores": ["3", "0", "1"]
-}
-```
-
-#### 使用箇所
-
-- `src/pages/api/og/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`
-  - OG画像の動的生成に使用
-
----
-
 ## データフロー
 
 ### 1. ページ生成時（`getStaticPaths`）
@@ -356,11 +304,6 @@ interface PairInfo {
 2. `data/tournament/information/{tournamentId}.json` から開催情報を取得
 3. `data/tournament/details/{tournamentId}/{year}/{category}.json` から試合結果を取得
 4. `data/players/index.json` を使用してプレイヤーIDを解決
-
-### 3. OG画像生成時
-
-1. `data/tournament/details/{tournamentId}/{year}/og/{category}.json` からOG画像用データを取得
-2. 動的にOG画像を生成
 
 ---
 
@@ -419,7 +362,6 @@ interface PairInfo {
 1. PDF等のソースから試合結果を抽出（`scripts/pdf/` 配下のスクリプト使用）
 2. `data/tournament/details/{tournamentId}/{year}/{category}.json` を生成/更新
 3. 必要に応じて `data/tournament/information/{tournamentId}.json` を更新
-4. OG画像用データを生成（`npm run generate:og-json`）
 
 ---
 
@@ -427,7 +369,6 @@ interface PairInfo {
 
 - **型定義**: `src/types/tournament.ts`
 - **データ生成スクリプト**: `scripts/pdf/`
-- **OG画像生成スクリプト**: `scripts/generate-og-json.ts`
 - **プレイヤーマスタ**: `data/players/index.json`
 
 ---
@@ -453,7 +394,6 @@ interface PairInfo {
 以下のデータ構造は `src/types/tournament.ts` に型定義がありません：
 
 - **GenerationEntry** (`genarations.json`)
-- **OGImageData** (`details/{tournamentId}/{year}/og/{category}.json`)
 
 ---
 
