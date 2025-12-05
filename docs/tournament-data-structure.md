@@ -194,7 +194,7 @@ export interface TournamentParticipant {
 export interface TournamentEntry {
   entryNo: number;              // エントリー番号
   playerIds: string[];          // 参加者ID配列（ダブルスは2人、シングルスは1人）
-  type?: string;                // エントリータイプ（"seed", "packing"）
+  type?: string;                // エントリータイプ（"seed", "packing", "extra"）
 }
 
 export interface TournamentMatch {
