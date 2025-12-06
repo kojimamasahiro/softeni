@@ -2,7 +2,7 @@ import json
 import os
 import glob
 
-DATA_DIR = "../../../data/tournament/details"
+DATA_DIR = "../../../data/tournaments/details"
 RESULTS_PATH = "results.json"
 
 def main():
