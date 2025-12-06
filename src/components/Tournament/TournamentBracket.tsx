@@ -8,8 +8,8 @@ interface TournamentBracketProps {
   detailData: TournamentDetailData;
 }
 
-// Build tournament bracket dynamically based on available matches
-// Uses a Canonical Tree approach to ensure alignment even with byes/missing matches
+// 利用可能な試合に基づいてトーナメント表を動的に構築
+// バイや欠場試合がある場合でも整列を確保するための標準木アプローチを使用
 function buildBracket(matches: TournamentMatch[]): {
   rounds: string[];
   entriesByRound: Map<string, (number | null)[]>;
@@ -25,12 +25,12 @@ function buildBracket(matches: TournamentMatch[]): {
   const entriesByRound = new Map<string, (number | null)[]>();
 
   // 2. Identify the Root (Final)
-  // Find a match that is NOT listed as a 'prevMatchId' for any other match
-  // OR simply finding the one with no nextMatchId is usually safer if nextMatchId is populated.
-  // Let's use nextMatchId.
+  // 他の試合の 'prevMatchId' としてリストされていない試合を見つける
+  // または、nextMatchId が設定されている場合、nextMatchId を持たないものを探す方が通常安全
+  // nextMatchId を使用する
   let finalMatch = knockoutMatches.find((m) => !m.nextMatchId);
 
-  // Fallback: if multiple (e.g. 3rd place match?), picking the one with '決勝' round name if available
+  // フォールバック: 複数ある場合（例: 3位決定戦？）、'決勝' ラウンド名を持つものを選ぶ（利用可能な場合）
   const finals = knockoutMatches.filter((m) => !m.nextMatchId);
   if (finals.length > 1) {
     const namedFinal = finals.find((m) => m.round === '決勝');
@@ -38,36 +38,36 @@ function buildBracket(matches: TournamentMatch[]): {
   }
 
   if (!finalMatch) {
-    // Fallback for weird data: just pick one? or return empty?
-    // If circular or broken data, might happen.
-    // Let's assume the first one is root if logic fails.
+    // 奇妙なデータに対するフォールバック: 1つを選ぶか、空を返すか？
+    // 循環または破損データの場合、起こり得る。
+    // ロジックが失敗した場合、最初のものをルートと仮定する。
     finalMatch = knockoutMatches[0];
   }
 
   // 3. Tree Traversal to assign Canonical Slots
-  // Coordinate: (DistanceFromFinal, IndexInLayer)
+  // 座標: (DistanceFromFinal, IndexInLayer)
   // Final = (0, 0)
-  // Inputs to (D, I) are (D+1, I*2) and (D+1, I*2+1)
+  // (D, I) への入力は (D+1, I*2) と (D+1, I*2+1)
 
   // Map: RoundName -> Distance
   const roundToDist = new Map<string, number>();
   // Map: Distance -> Array of Match/Null
-  // We store the Match Object at the slot.
-  // If a match exists at (D, I), we store it.
+  // スロットに Match オブジェクトを格納する。
+  // (D, I) に試合が存在する場合、それを格納する。
   const treeGrid = new Map<number, Map<number, TournamentMatch>>();
 
-  // We need to map MatchID to Match for easy lookup
+  // MatchID を Match にマップする必要がある（簡単な検索のため）
   const matchMap = new Map<string, TournamentMatch>();
   knockoutMatches.forEach((m) => matchMap.set(m.matchId, m));
 
-  // Recursive fill
-  // We traverse from Root.
-  // For a match M at (dist, index):
-  //   - Determine its inputs.
-  //   - Input 0 (Top) comes from prevMatchIds?
-  //     We need to know WHICH prevMatch is Top vs Bottom.
-  //     Assumption: M.entries[0] is the winner of PrevMatchTop.
-  //     M.entries[1] is the winner of PrevMatchBottom.
+  // 再帰的フィル
+  // Root からトラバースする。
+  // (dist, index) にある試合 M に対して:
+  //   - 入力を決定する。
+  //   - Input 0 (Top) は prevMatchIds から来る？
+  //     どの prevMatch が Top と Bottom かを知る必要がある。
+  //     仮定: M.entries[0] は PrevMatchTop の勝者。
+  //     M.entries[1] は PrevMatchBottom の勝者。
 
   let maxDist = 0;
 
@@ -90,8 +90,8 @@ function buildBracket(matches: TournamentMatch[]): {
     const prevMatch0 = knockoutMatches.find(
       (m) => m.winnerEntryNo === entry0 && m.nextMatchId === match.matchId,
     );
-    // Note: checking nextMatchId protects against group matches or previous tournaments.
-    // But strict filtering `knockout` matches usually sufficient.
+    // 注意: nextMatchId のチェックはグループ試合や以前のトーナメントから保護する。
+    // しかし、厳密な 'knockout' 試合のフィルタリングで通常十分。
 
     if (prevMatch0) {
       traverse(prevMatch0, dist + 1, index * 2);
@@ -114,26 +114,26 @@ function buildBracket(matches: TournamentMatch[]): {
   }
 
   // 4. Flatten Grid to entriesByRound
-  // We iterate dist from Max down to 0.
-  // For each dist, valid indices are 0 to 2^dist - 1?
-  // No.
-  // Dist 0 (Final): 1 match (Index 0). Entries: 0, 1.
-  // Dist 1 (Semi): 2 matches (Ind 0, 1). Entries: 0,1 , 2,3.
+  // dist を Max から 0 まで反復する。
+  // 各 dist について、有効なインデックスは 0 から 2^dist - 1？
+  // いいえ。
+  // Dist 0 (Final): 1 試合 (Index 0). Entries: 0, 1.
+  // Dist 1 (Semi): 2 試合 (Ind 0, 1). Entries: 0,1 , 2,3.
   // Dist k: Matches 0 .. 2^k - 1. Entries 0 .. 2^(k+1) - 1.
 
-  // We use `roundToDist` to determine which round name corresponds to which distance.
-  // Inverse map: Distance -> RoundName
+  // `roundToDist` を使用して、どのラウンド名がどの距離に対応するかを決定する。
+  // 逆マップ: Distance -> RoundName
   const distToRound = new Map<number, string>();
   roundToDist.forEach((d, r) => {
-    // If multiple rounds map to same distance (unlikely), pick one.
-    // Usually safe.
+    // 複数のラウンドが同じ距離にマップされる場合（まれ）、1つを選ぶ。
+    // 通常安全。
     if (!distToRound.has(d)) distToRound.set(d, r);
   });
 
   const sortedRounds: string[] = [];
 
-  // Populate from 0 (Final) up to MaxDist (First Round)
-  // This direction allows us to propagate seeds (players entered in parent round but missing match in this round)
+  // 0 (Final) から MaxDist (First Round) までを入力
+  // この方向により、シードを伝播できる（親ラウンドでエントリーされたがこのラウンドで試合がないプレイヤー）
   for (let d = 0; d <= maxDist; d++) {
     const roundName = distToRound.get(d);
     if (!roundName) continue; // Should have a name if matches exist
@@ -181,17 +181,17 @@ function buildBracket(matches: TournamentMatch[]): {
   }
 
   // 5. Champion Column
-  // Same logic: check Winner of Final (0, 0)
+  // 同じロジック: Final (0, 0) の勝者をチェック
   if (finalMatch && finalMatch.winnerEntryNo !== undefined) {
     entriesByRound.set('優勝', [finalMatch.winnerEntryNo]);
     sortedRounds.push('優勝');
   } else if (sortedRounds.length > 0) {
-    // Should add column even if unknown? Maybe placeholder.
+    // 不明でも列を追加するか？ プレースホルダーかも。
     entriesByRound.set('優勝', [-1]);
     sortedRounds.push('優勝');
   }
 
-  // Calculate default start round (4th from bottom, excluding '優勝')
+  // デフォルト開始ラウンドを計算（下から4番目、'優勝' を除く）
   const selectableRounds = sortedRounds.filter((r) => r !== '優勝');
   const defaultIndex = Math.max(0, selectableRounds.length - 4);
   const defaultStartRound = selectableRounds[defaultIndex] || '';
@@ -232,7 +232,7 @@ export default function TournamentBracket({
   const ENTRY_HEIGHT = 34;
   const ROUND_GAP = 20; // Reduced to make connection lines shorter
 
-  // Build a map of entry -> winner status per round
+  // ラウンドごとのエントリー -> 勝者ステータスのマップを構築
   const winnerMap = new Map<string, number>();
   matches
     .filter((m) => m.stage === 'knockout')
@@ -247,7 +247,7 @@ export default function TournamentBracket({
       <div className="flex justify-between items-center mb-4 px-1">
         <h2 className="text-lg font-bold">トーナメント表</h2>
 
-        {/* Round Selector */}
+        {/* ラウンドセレクター */}
         {rounds.length > 1 && (
           <div className="flex items-center gap-2">
             <label
@@ -263,7 +263,7 @@ export default function TournamentBracket({
               className="text-sm border rounded px-2 py-1 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
             >
               {rounds
-                .filter((r) => r !== '優勝') // Don't allow starting from Champion line
+                .filter((r) => r !== '優勝') // 優勝ラインから開始することを許可しない
                 .map((r) => (
                   <option key={r} value={r}>
                     {r}から
@@ -280,14 +280,14 @@ export default function TournamentBracket({
             const roundEntries = entriesByRound.get(roundName) || [];
             const spacingMultiplier = Math.pow(2, roundIndex);
 
-            // Only show boxes for the first round detected (relative to display)
+            // 表示に対する最初のラウンドでボックスを表示
             const showBoxes = roundIndex === 0;
-            // Special handling for Champion round (just a line)
+            // 優勝ラウンドの特別処理（ただの線）
             const isChampionRound = roundName === '優勝';
 
             return (
               <div key={roundName} className="flex flex-col">
-                {/* Entries or connection points */}
+                {/* エントリーまたは接続ポイント */}
                 <div
                   className="flex flex-col"
                   style={{
@@ -297,8 +297,8 @@ export default function TournamentBracket({
                 >
                   {roundEntries.map((entryNo, index) => {
                     if (isChampionRound) {
-                      // Determine color based on whether we have a winner
-                      // The entryNo is the winner's ID or -1 or null
+                      // 勝者がいるかどうかで色を決定
+                      // entryNo は勝者の ID または -1 または null
                       const hasWinner = entryNo !== null && entryNo !== -1;
                       return (
                         <div
@@ -313,7 +313,7 @@ export default function TournamentBracket({
                       );
                     }
 
-                    // Handle NULL entry (Bye/Placeholder)
+                    // NULL エントリを処理（バイ/プレースホルダー）
                     if (entryNo === null) {
                       return (
                         <div
@@ -321,7 +321,7 @@ export default function TournamentBracket({
                           className="relative invisible"
                           style={{ height: `${ENTRY_HEIGHT}px` }}
                         >
-                          {/* Empty placeholder maintains spacing */}
+                          {/* 空のプレースホルダーは間隔を維持 */}
                         </div>
                       );
                     }
@@ -350,7 +350,7 @@ export default function TournamentBracket({
                     const team2 = player2?.team || '';
                     const showTwoTeams = team2 && team1 !== team2;
 
-                    // Check if this entry won in this round
+                    // このラウンドでこのエントリーが勝ったかをチェック
                     const matchForEntry = matches.find(
                       (m) =>
                         m.stage === 'knockout' &&
@@ -377,7 +377,7 @@ export default function TournamentBracket({
                         className="relative"
                         style={{ height: `${ENTRY_HEIGHT}px` }}
                       >
-                        {/* Show entry box only for the first round */}
+                        {/* 最初のラウンドでのみエントリーボックスを表示 */}
                         {showBoxes && (
                           <div
                             className={`
@@ -386,30 +386,32 @@ export default function TournamentBracket({
                                                         `}
                             style={{ width: '220px', minWidth: '220px' }}
                           >
-                            {/* Entry Number: Max 3 digits */}
+                            {/* エントリー番号: 最大3桁 */}
                             <div className="w-8 text-[10px] text-gray-500 dark:text-gray-400 font-mono text-center shrink-0 border-r border-gray-100 dark:border-gray-700">
                               {entryNo}
                             </div>
 
-                            {/* Player Names: Max 6 chars normal, smaller if more */}
+                            {/* プレイヤー名: 通常6文字最大、より多い場合は小さく */}
                             <div
                               className={`
                                                                 flex-1 text-center font-medium truncate px-1 border-r border-gray-100 dark:border-gray-700
-                                                                ${displayName.length >
-                                  6
-                                  ? 'text-[10px]'
-                                  : 'text-xs'
-                                }
-                                                                ${isWinner
-                                  ? 'text-blue-900 dark:text-blue-100'
-                                  : 'text-gray-900 dark:text-gray-100'
-                                }
+                                                                ${
+                                                                  displayName.length >
+                                                                  6
+                                                                    ? 'text-[10px]'
+                                                                    : 'text-xs'
+                                                                }
+                                                                ${
+                                                                  isWinner
+                                                                    ? 'text-blue-900 dark:text-blue-100'
+                                                                    : 'text-gray-900 dark:text-gray-100'
+                                                                }
                                                             `}
                             >
                               {displayName}
                             </div>
 
-                            {/* Team: Max 5 chars normal, smaller if more */}
+                            {/* チーム: 通常5文字最大、より多い場合は小さく */}
                             <div className="w-20 shrink-0 px-1 flex flex-col justify-center items-center leading-tight">
                               <div
                                 className={`
@@ -433,8 +435,8 @@ export default function TournamentBracket({
                           </div>
                         )}
 
-                        {/* Connection line to next round */}
-                        {roundIndex < displayedRounds.length - 1 && ( // Don't draw line from Champion column (last index) or if logic says so
+                        {/* 次のラウンドへの接続線 */}
+                        {roundIndex < displayedRounds.length - 1 && ( // 優勝列（最後のインデックス）から線を描かない、またはロジックが言う場合
                           <svg
                             className="absolute pointer-events-none overflow-visible"
                             style={{
@@ -447,32 +449,32 @@ export default function TournamentBracket({
                             }}
                           >
                             {index % 2 === 0 ? (
-                              // Top entry: Down and Right
+                              // 上エントリー: 下と右
                               <>
-                                {/* Horizontal line from box */}
-                                {/* lineX is now ROUND_GAP (full width) */}
+                                {/* ボックスからの水平線 */}
+                                {/* lineX は現在 ROUND_GAP (全幅) */}
                                 {(() => {
-                                  // Since we are top entry (even), we need to check if we are the winner or valid.
-                                  // Color logic: if !showBoxes, we assume it's a line round.
-                                  // If user won this match, Blue. Else Gray.
-                                  // Or if we are just connecting.
-                                  // Existing logic:
+                                  // 上エントリー（偶数）なので、勝者か有効かをチェックする必要がある。
+                                  // 色ロジック: !showBoxes の場合、線ラウンドと仮定。
+                                  // ユーザーがこの試合に勝った場合、青。それ以外はグレー。
+                                  // または単に接続している場合。
+                                  // 既存ロジック:
                                   // className={(!showBoxes || isWinner || (roundIndex > 0)) ? ... }
-                                  // Wait, renders lines depending on winner status.
+                                  // 待って、勝者ステータスに応じて線を描画。
 
                                   /* 
-                                                                       Correction on lineX:
-                                                                       We reverted to ROUND_GAP for most lines.
-                                                                       Except Champion Round was special but handled in its own block above.
-                                                                       Here we are in normal round block.
+                                                                       lineX の修正:
+                                                                       ほとんどの線で ROUND_GAP に戻した。
+                                                                       優勝ラウンドは特別だったが、上記の独自ブロックで処理。
+                                                                       ここは通常ラウンドブロック。
                                                                        lineX = ROUND_GAP.
                                                                     */
                                   const lineX = ROUND_GAP;
-                                  // Actually svg top is at box center.
+                                  // 実際、svg top はボックス中心。
 
-                                  // But wait, the previous logic had lines inside this SVG block.
-                                  // I need to make sure I didn't delete the internal SVG content logic in my replacement.
-                                  // I replaced the Loop content.
+                                  // 待って、以前のロジックはこの SVG ブロック内に線があった。
+                                  // 置換で内部 SVG コンテンツロジックを削除していないことを確認する必要がある。
+                                  // ループコンテンツを置換した。
 
                                   return (
                                     <>
@@ -488,7 +490,7 @@ export default function TournamentBracket({
                                         }
                                         strokeWidth="1"
                                       />
-                                      {/* Vertical line at right end going down */}
+                                      {/* 右端で下向きの垂直線 */}
                                       <line
                                         x1={lineX}
                                         y1="0"
@@ -508,25 +510,25 @@ export default function TournamentBracket({
                                 })()}
                               </>
                             ) : (
-                              // Bottom entry: Up and Right
+                              // 下エントリー: 上と右
                               <>
                                 {(() => {
                                   const lineX = ROUND_GAP;
-                                  // SVG top is at bottom entry center. (transform translated up?)
-                                  // Wait, transform `translateY(-${ENTRY_HEIGHT * spacingMultiplier}px)`?
-                                  // No, `transform: translateY(...)` is for positioning the SVG relative to the div center?
-                                  // Actually, the SVG is positioned `top: 50%` of the div.
-                                  // If index % 2 === 1 (bottom), we translate Y up by `height`.
-                                  // Wait, the previous code logical structure:
+                                  // SVG top は下エントリー中心。（transform が上へ移動？）
+                                  // 待って、transform `translateY(-${ENTRY_HEIGHT * spacingMultiplier}px)`？
+                                  // いいえ、`transform: translateY(...)` は div 中心に対する SVG の位置決め？
+                                  // 実際、SVG は div の `top: 50%` に配置。
+                                  // index % 2 === 1 (下) の場合、Y を `height` だけ上へ移動。
+                                  // 待って、以前のコード論理構造:
                                   /*
                                                                        style={{
                                                                            ...
                                                                            transform: `translateY(${index % 2 === 0 ? '0' : `-${ENTRY_HEIGHT * spacingMultiplier / 2}px`})` ?? 
-                                                                           No, logic says: 
+                                                                           いいえ、ロジックは: 
                                                                            index % 2 === 0 ? '0' : ...
                                                                            
-                                                                           Let's look at the SVG viewbox or coords.
-                                                                           It renders lines X1, Y1...
+                                                                           SVG viewbox または coords を確認。
+                                                                           X1, Y1... の線を描画。
                                                                     */
 
                                   return (
@@ -563,7 +565,7 @@ export default function TournamentBracket({
                               </>
                             )}
 
-                            {/* Score Display Logic Re-insertion */}
+                            {/* スコア表示ロジック再挿入 */}
                             {matchForEntry && !isChampionRound && !isWinner && (
                               <text
                                 x={ROUND_GAP - 2}
