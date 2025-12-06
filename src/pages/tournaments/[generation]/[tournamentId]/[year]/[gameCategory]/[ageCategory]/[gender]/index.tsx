@@ -12,6 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
+import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import {
   TournamentDetailData,
   TournamentIndexEntry,
@@ -150,6 +151,9 @@ export default function TournamentYearResultPage({
                 </p>
               )}
           </section>
+
+          {/* ✅ トーナメント表 */}
+          {detailData && <TournamentBracket detailData={detailData} />}
 
           {/* ✅ チーム別成績 */}
           <TeamResults detailData={detailData ? [detailData] : []} />
