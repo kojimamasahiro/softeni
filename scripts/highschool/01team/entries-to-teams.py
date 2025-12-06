@@ -34,7 +34,7 @@ prefecture_id_map = {
 }
 
 # データソースディレクトリ
-DATA_DIR = "../../../data/tournament/details"
+DATA_DIR = "../../../data/tournaments/details"
 
 # 手動IDマップ読み込み
 with open("team_id_map.json", encoding="utf-8") as f:

@@ -94,10 +94,10 @@ cd scripts/highschool/analysis
 
 ```bash
 cd scripts/highschool/02result
-../../../.venv/bin/python extract.py && \
-../../../.venv/bin/python ../03list/summary.py && \
-../../../.venv/bin/python ../04summry/generate_prefecture_summaries.py && \
-../../../.venv/bin/python ../analysis/generate_school_analysis.py
+python extract.py && \
+python ../03list/summary.py && \
+python ../04summry/generate_prefecture_summaries.py && \
+python ../analysis/generate_school_analysis.py
 ```
 
 ## データ構造
