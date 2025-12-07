@@ -83,13 +83,20 @@
       }
     }
 
+    // Helper: Check if a number is a power of 2
+    function isPowerOfTwo(n) {
+      return n > 0 && (n & (n - 1)) === 0;
+    }
+
     // Initialize input
     totalScoredMatchesInput.value = totalScoredMatches;
 
     // Listen for manual changes
     totalScoredMatchesInput.addEventListener('change', (e) => {
       totalScoredMatches = Number(e.target.value);
+      validateMatchCount();
     });
+    totalScoredMatchesInput.addEventListener('input', validateMatchCount);
     // 既存UIは残すが操作は不要
     document.getElementById('roundInput').disabled = true;
     document.getElementById('setRoundBtn').disabled = true;
@@ -156,12 +163,14 @@
         p2Retired: false,
         autoFromBye: false,
         packinMarked: false, // パッキン指定フラグ
+        p2PackinMarked: false, // Packin flag for Player 2 (transient for logic)
       };
     }
 
     // ---------- 表示 ----------
     function renderBracket() {
       matchesRoot.innerHTML = '';
+      validateBracketStructure();
 
       const container = document.createElement('div');
       container.style.display = 'grid';
@@ -379,6 +388,9 @@
         if (match.p1?.id !== 'bye') {
           match.packinMarked = true;
         }
+        if (match.p2?.id !== 'bye') {
+          match.p2PackinMarked = true;
+        }
       }
 
       // Rebuild bracket with new packin configuration
@@ -405,6 +417,8 @@
 
       // Toggle packin state
       match.packinMarked = !match.packinMarked;
+      // Clear p2PackinMarked when toggling manually (reset to standard single-seed behavior)
+      match.p2PackinMarked = false;
 
       // Rebuild bracket with new packin configuration
       rebuildBracketWithPackin();
@@ -467,6 +481,9 @@
       bracket[0].matches.forEach((m) => {
         if (m.packinMarked && m.p1?.id !== 'bye') {
           packinPlayerIds.add(m.p1.id);
+        }
+        if (m.p2PackinMarked && m.p2?.id !== 'bye') {
+          packinPlayerIds.add(m.p2.id);
         }
       });
 
@@ -740,6 +757,45 @@
       if (winnerEl) winnerEl.textContent = getWinnerName(m);
     }
 
+    // ---------- 試合数チェック ----------
+    function validateMatchCount() {
+      let actualCount = 0;
+      bracket.forEach((round) => {
+        round.matches.forEach((m) => {
+          if (!m.autoFromBye && m.scores.p1 != null && m.scores.p2 != null) {
+            actualCount++;
+          }
+        });
+      });
+
+      const currentVal = Number(totalScoredMatchesInput.value);
+      if (currentVal !== actualCount) {
+        totalScoredMatchesInput.style.backgroundColor = '#ffcccc';
+      } else {
+        totalScoredMatchesInput.style.backgroundColor = '';
+      }
+    }
+
+    // ---------- ブラケット構造チェック ----------
+    function validateBracketStructure() {
+      // Round 1 check
+      const r1Count = bracket[0]?.matches.length || 0;
+      const r1Valid = isPowerOfTwo(r1Count);
+
+      // Round 2 check (if exists)
+      let r2Valid = true;
+      if (bracket.length > 1) {
+        const r2Count = bracket[1]?.matches.length || 0;
+        r2Valid = isPowerOfTwo(r2Count);
+      }
+
+      if (!r1Valid || !r2Valid) {
+        matchesRoot.style.backgroundColor = '#fff0f0'; // Warning color (mistyrose-ish)
+      } else {
+        matchesRoot.style.backgroundColor = '';
+      }
+    }
+
     // ---------- JSON 出力 ----------
     function collectRoundHistory() {
       // bracket から互換の roundHistory を生成
@@ -892,6 +948,7 @@
       }
 
       jsonOutputEl.value = JSON.stringify(output, null, 2);
+      validateMatchCount();
     }
 
     // ---------- 既存互換の補助関数 ----------
