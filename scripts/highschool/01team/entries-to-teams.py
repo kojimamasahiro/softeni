@@ -41,6 +41,7 @@ with open("team_id_map.json", encoding="utf-8") as f:
     manual_id_map = json.load(f)
 
 # 既存の teams.json を読み込む
+existing_teams = []
 existing_ids = set()
 try:
     with open("teams.json", encoding="utf-8") as f:
@@ -116,24 +117,38 @@ print(f"✅ {len(team_map)} チームの情報を抽出しました")
 id_counter = defaultdict(list)
 
 # 出力
-with open("teams.ndjson", "w", encoding="utf-8") as f:
-    for team, pref in sorted(team_map.items()):
-        romaji_id = to_romaji(team)
-        if romaji_id in existing_ids:
-            continue  # 既存IDスキップ
+# 出力
+new_teams = []
+for team, pref in sorted(team_map.items()):
+    romaji_id = to_romaji(team)
+    if romaji_id in existing_ids:
+        continue  # 既存IDスキップ
 
-        id_counter[romaji_id].append(team)
+    id_counter[romaji_id].append(team)
 
-        obj = OrderedDict()
-        obj["id"] = romaji_id
-        obj["name"] = team
-        full_pref = prefecture_map.get(pref, pref)
-        obj["prefecture"] = full_pref
-        obj["prefectureId"] = prefecture_id_map.get(full_pref, "unknown")
-        json.dump(obj, f, ensure_ascii=False)
-        f.write(",\n")
+    obj = OrderedDict()
+    obj["id"] = romaji_id
+    obj["name"] = team
+    full_pref = prefecture_map.get(pref, pref)
+    obj["prefecture"] = full_pref
+    obj["prefectureId"] = prefecture_id_map.get(full_pref, "unknown")
+    new_teams.append(obj)
 
-print(f"✅ 合計 {len(team_map)} チームの teams.ndjson を出力しました")
+# 結合
+all_teams = existing_teams + new_teams
+
+# teams.json に書き出し
+with open("teams.json", "w", encoding="utf-8") as f:
+    f.write("[\n")
+    for i, team_obj in enumerate(all_teams):
+        json_str = json.dumps(team_obj, ensure_ascii=False)
+        if i < len(all_teams) - 1:
+            f.write(f"  {json_str},\n")
+        else:
+            f.write(f"  {json_str}\n")
+    f.write("]\n")
+
+print(f"✅ 合計 {len(all_teams)} チームの teams.json を出力しました（新規: {len(new_teams)}）")
 
 # 重複IDチェック
 duplicates = {k: v for k, v in id_counter.items() if len(v) > 1}
