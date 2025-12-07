@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "市尼崎",
+        "teamId": "ichiamagasaki",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "安田_理子_市尼崎_兵庫県",
+          "域田_茉絹_市尼崎_兵庫県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "安田_理子_市尼崎_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "域田_茉絹_市尼崎_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

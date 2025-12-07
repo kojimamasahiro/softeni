@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "山形市商",
+        "teamId": "yamagatashishou",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "目黒_陽茉莉_山形市商_山形県",
+          "井上_茉尋_山形市商_山形県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "目黒_陽茉莉_山形市商_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "井上_茉尋_山形市商_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_紗依_山形市商_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_千紗_山形市商_山形県",
+      "appearances": 1
+    }
+  ]
+}

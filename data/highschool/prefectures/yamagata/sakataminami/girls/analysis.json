@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "酒田南",
+        "teamId": "sakataminami",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "鈴木_ねね_酒田南_山形県",
+          "伊田_陽菜理_酒田南_山形県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "川村_のん_酒田南_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "川村_あん_酒田南_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_ねね_酒田南_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "伊田_陽菜理_酒田南_山形県",
+      "appearances": 1
+    }
+  ]
+}

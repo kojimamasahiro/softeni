@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 8
+    "doubles": 15
   },
   "resultsByCategory": {
     "singles": {
@@ -29,14 +29,14 @@
         "teamId": "kakoshimajitsu",
         "prefecture": "鹿児島県",
         "prefectureId": "kagoshima",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "荒井田_空愛_鹿児島実",
-          "須ケ牟田_友菜_鹿児島実_鹿児島"
+          "別府_真恋_鹿児島実_鹿児島県",
+          "荒田_姫來_鹿児島実_鹿児島県"
         ]
       }
     },
@@ -45,26 +45,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
+      "id": "遠矢_夢乃_鹿児島実_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "門松_輝_鹿児島実_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "別府_真恋_鹿児島実_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "荒田_姫來_鹿児島実_鹿児島県",
+      "appearances": 2
+    },
+    {
       "id": "荒井田_空愛_鹿児島実",
-      "appearances": 1
-    },
-    {
-      "id": "須ケ牟田_友菜_鹿児島実_鹿児島",
-      "appearances": 1
-    },
-    {
-      "id": "大田_璃乃_鹿児島実_鹿児島",
-      "appearances": 1
-    },
-    {
-      "id": "大田_瑠乃_鹿児島実_鹿児島",
-      "appearances": 1
-    },
-    {
-      "id": "生田_紘華_鹿児島実_鹿児島",
       "appearances": 1
     }
   ]

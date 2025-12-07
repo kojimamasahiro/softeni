@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 3
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -14,14 +14,14 @@
         "teamId": "hamamatsushou",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "吉野_はる那_浜松商_静岡県",
-          "佐口_玲奈_浜松商_静岡県"
+          "外山_煌羅_浜松商_静岡県",
+          "松井_那奈_浜松商_静岡県"
         ]
       },
       "historicalBest": {
@@ -29,14 +29,14 @@
         "teamId": "hamamatsushou",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2021,
         "gender": "girls",
         "playerIds": [
-          "吉野_はる那_浜松商_静岡県",
-          "佐口_玲奈_浜松商_静岡県"
+          "鈴木_愛奈_浜松商_静岡県",
+          "金子_愛野_浜松商_静岡県"
         ]
       }
     },
@@ -45,10 +45,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "吉野_はる那_浜松商_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "溝上_明璃_浜松商_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "外山_煌羅_浜松商_静岡県",
       "appearances": 2
     },
     {
@@ -57,14 +65,6 @@
     },
     {
       "id": "町田_さくら_浜松商_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "佐口_玲奈_浜松商_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "溝上_明璃_浜松商_静岡県",
       "appearances": 1
     }
   ]

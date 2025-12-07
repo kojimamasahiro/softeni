@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 10
+    "doubles": 20
   },
   "resultsByCategory": {
     "singles": {
@@ -14,14 +14,14 @@
         "teamId": "kousei",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "増田_凜_甲西_滋賀県",
-          "山田_凛子_甲西_滋賀県"
+          "木田_優杏_甲西_滋賀県",
+          "佐々_聖南_甲西_滋賀県"
         ]
       },
       "historicalBest": {
@@ -29,14 +29,14 @@
         "teamId": "kousei",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "増田_凜_甲西_滋賀県",
-          "山田_凛子_甲西_滋賀県"
+          "木田_優杏_甲西_滋賀県",
+          "佐々_聖南_甲西_滋賀県"
         ]
       }
     },
@@ -45,26 +45,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 25,
   "topPlayers": [
     {
-      "id": "増田_凜_甲西_滋賀県",
-      "appearances": 2
-    },
-    {
-      "id": "山田_凛子_甲西_滋賀県",
-      "appearances": 2
-    },
-    {
-      "id": "梅本_愛菜_甲西_滋賀県",
-      "appearances": 2
-    },
-    {
       "id": "久留島_加奈_甲西_滋賀県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "藤井_海優_甲西_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "木田_優杏_甲西_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "瀬川_菜月_甲西_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "増田_凜_甲西_滋賀県",
       "appearances": 2
     }
   ]

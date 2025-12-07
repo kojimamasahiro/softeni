@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "尾崎_瀬里奈_旭川実_北海道",
+          "山田_萌華_旭川実_北海道"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "石井_莉乃_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "今野_愛菜_旭川実_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "清水_心結_旭川実_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "秦_菜摘_旭川実_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "平野_心海_旭川実_北海道",
+      "appearances": 1
+    }
+  ]
+}

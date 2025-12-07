@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宮崎北",
+        "teamId": "miyazakikita",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "齊藤_沙優奈_宮崎北_宮崎県",
+          "長友_光優_宮崎北_宮崎県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "齊藤_沙優奈_宮崎北_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "長友_光優_宮崎北_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

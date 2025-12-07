@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "川之石",
+        "teamId": "kawayukiishi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "西村_留莉_川之石_愛媛県",
+          "今城_佳奈_川之石_愛媛県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "西村_留莉_川之石_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "今城_佳奈_川之石_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "中野_愛菜_川之石_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "宇都宮_礼_川之石_愛媛県",
+      "appearances": 1
+    }
+  ]
+}

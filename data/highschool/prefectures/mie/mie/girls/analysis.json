@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 36,
   "byCategory": {
-    "doubles": 14
+    "doubles": 36
   },
   "resultsByCategory": {
     "singles": {
@@ -14,14 +14,14 @@
         "teamId": "mie",
         "prefecture": "三重県",
         "prefectureId": "mie",
-        "result": "5回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "髙林_さくら_三重_三重県",
-          "起田_亜旺_三重_三重県"
+          "大橋_玲雨_三重_三重県",
+          "岡_美志_三重_三重県"
         ]
       },
       "historicalBest": {
@@ -29,14 +29,14 @@
         "teamId": "mie",
         "prefecture": "三重県",
         "prefectureId": "mie",
-        "result": "5回戦敗退",
+        "result": "優勝",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "髙林_さくら_三重_三重県",
-          "起田_亜旺_三重_三重県"
+          "馬渕_詩_三重_三重県",
+          "竹田_茉由_三重_三重県"
         ]
       }
     },
@@ -45,27 +45,27 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 48,
   "topPlayers": [
+    {
+      "id": "穐吉_花菜実_三重_三重県",
+      "appearances": 3
+    },
+    {
+      "id": "岡_美志_三重_三重県",
+      "appearances": 3
+    },
+    {
+      "id": "林_美桜_三重_三重県",
+      "appearances": 3
+    },
+    {
+      "id": "青木_裕希_三重_三重県",
+      "appearances": 3
+    },
     {
       "id": "小野_愛莉_三重_三重県",
       "appearances": 2
-    },
-    {
-      "id": "穐吉_花菜実_三重_三重県",
-      "appearances": 2
-    },
-    {
-      "id": "髙場_美音_三重_三重県",
-      "appearances": 2
-    },
-    {
-      "id": "野中_稟栞_三重_三重県",
-      "appearances": 2
-    },
-    {
-      "id": "髙林_さくら_三重_三重県",
-      "appearances": 1
     }
   ]
 }

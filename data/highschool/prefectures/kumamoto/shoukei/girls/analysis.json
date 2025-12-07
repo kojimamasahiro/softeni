@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "doubles": 6
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "尚絅",
+        "teamId": "shoukei",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "大久保_杏夏_尚絅_熊本県",
+          "坂本_蒼依_尚絅_熊本県"
+        ]
+      },
+      "historicalBest": {
+        "team": "尚絅",
+        "teamId": "shoukei",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "久原_梨夢_尚絅_熊本県",
+          "池田_雫_尚絅_熊本県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "久原_梨夢_尚絅_熊本県",
+      "appearances": 3
+    },
+    {
+      "id": "池田_雫_尚絅_熊本県",
+      "appearances": 2
+    },
+    {
+      "id": "大久保_杏夏_尚絅_熊本県",
+      "appearances": 2
+    },
+    {
+      "id": "坂本_蒼依_尚絅_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "森_瑚々奈_尚絅_熊本県",
+      "appearances": 1
+    }
+  ]
+}

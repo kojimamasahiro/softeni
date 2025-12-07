@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "米子東",
+        "teamId": "yonagohigashi",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "石指_柚葉_米子東_鳥取県",
+          "遠﨑_結衣_米子東_鳥取県"
+        ]
+      },
+      "historicalBest": {
+        "team": "米子東",
+        "teamId": "yonagohigashi",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "矢野_結子_米子東_鳥取県",
+          "上山_知穂_米子東_鳥取県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "矢野_結子_米子東_鳥取県",
+      "appearances": 2
+    },
+    {
+      "id": "上山_知穂_米子東_鳥取県",
+      "appearances": 2
+    },
+    {
+      "id": "石指_柚葉_米子東_鳥取県",
+      "appearances": 2
+    },
+    {
+      "id": "遠﨑_結衣_米子東_鳥取県",
+      "appearances": 2
+    },
+    {
+      "id": "髙田_歩実_米子東_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

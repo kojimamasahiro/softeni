@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 1
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -29,14 +29,14 @@
         "teamId": "yaeyama",
         "prefecture": "沖縄県",
         "prefectureId": "okinawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "石垣_蒼_八重山_沖縄県",
-          "福本_安汝_八重山_沖縄県"
+          "福本_安汝_八重山_沖縄県",
+          "石垣_蒼_八重山_沖縄県"
         ]
       }
     },
@@ -45,14 +45,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "石垣_蒼_八重山_沖縄県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "福本_安汝_八重山_沖縄県",
+      "appearances": 2
+    },
+    {
+      "id": "下地_莉央_八重山_沖縄県",
+      "appearances": 2
+    },
+    {
+      "id": "髙嶺_来夢_八重山_沖縄県",
+      "appearances": 2
+    },
+    {
+      "id": "仲本_こころ_八重山_沖縄県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "上尾",
+        "teamId": "ageo",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "古城_理名_上尾_埼玉県",
+          "村田_彩歌_上尾_埼玉県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "古城_理名_上尾_埼玉県",
+      "appearances": 2
+    },
+    {
+      "id": "村田_彩歌_上尾_埼玉県",
+      "appearances": 2
+    }
+  ]
+}

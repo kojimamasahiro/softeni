@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "長野商",
+        "teamId": "naganoshou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "小林_彩花里_長野商_長野県",
+          "笹森_菜愛_長野商_長野県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "小林_彩花里_長野商_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "笹森_菜愛_長野商_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "櫻井_莉子_長野商_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "長﨑_あき_長野商_長野県",
+      "appearances": 1
+    }
+  ]
+}

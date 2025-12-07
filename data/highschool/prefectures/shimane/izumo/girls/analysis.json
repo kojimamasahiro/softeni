@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "出雲",
+        "teamId": "izumo",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "石倉_佳歩_出雲_島根県",
+          "水津_陽莉_出雲_島根県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石倉_佳歩_出雲_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "水津_陽莉_出雲_島根県",
+      "appearances": 1
+    }
+  ]
+}

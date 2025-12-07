@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 1
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -14,14 +14,14 @@
         "teamId": "nagahamakita",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "田谷_愛梨_長浜北_滋賀県",
-          "浅井_真愛弥_長浜北_滋賀県"
+          "福島_陽向_長浜北_滋賀県",
+          "三國_そそ来_長浜北_滋賀県"
         ]
       },
       "historicalBest": {
@@ -29,14 +29,14 @@
         "teamId": "nagahamakita",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "1回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "田谷_愛梨_長浜北_滋賀県",
-          "浅井_真愛弥_長浜北_滋賀県"
+          "田_瞭子_長浜北_滋賀県",
+          "三國_ここ菜_長浜北_滋賀県"
         ]
       }
     },
@@ -45,14 +45,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 10,
   "topPlayers": [
     {
-      "id": "田谷_愛梨_長浜北_滋賀県",
-      "appearances": 1
+      "id": "三國_そそ来_長浜北_滋賀県",
+      "appearances": 3
     },
     {
-      "id": "浅井_真愛弥_長浜北_滋賀県",
+      "id": "福島_陽向_長浜北_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "藤田_咲良_長浜北_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "三國_ここ菜_長浜北_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "田谷_愛梨_長浜北_滋賀県",
       "appearances": 1
     }
   ]

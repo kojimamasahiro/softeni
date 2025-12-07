@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "山出_真由_清水ヶ丘_広島県",
+          "大森_千聖_清水ヶ丘_広島県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "山出_真由_清水ヶ丘_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "大森_千聖_清水ヶ丘_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "永山_姫鞠_清水ヶ丘_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "今川_穂香_清水ヶ丘_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_成美_清水ヶ丘_広島県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 2
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -14,14 +14,14 @@
         "teamId": "fukuchiyamanarumi",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "髙田_慈花_福知山成美_京都府",
-          "大西_桃果_福知山成美_京都府"
+          "津波古_莉央_福知山成美_京都府",
+          "井田_まなか_福知山成美_京都府"
         ]
       },
       "historicalBest": {
@@ -29,14 +29,14 @@
         "teamId": "fukuchiyamanarumi",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "髙田_慈花_福知山成美_京都府",
-          "大西_桃果_福知山成美_京都府"
+          "津波古_莉央_福知山成美_京都府",
+          "井田_まなか_福知山成美_京都府"
         ]
       }
     },
@@ -45,8 +45,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "津波古_莉央_福知山成美_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "井田_まなか_福知山成美_京都府",
+      "appearances": 2
+    },
     {
       "id": "髙田_慈花_福知山成美_京都府",
       "appearances": 1
@@ -57,10 +65,6 @@
     },
     {
       "id": "間屋口_紗良_福知山成美_京都府",
-      "appearances": 1
-    },
-    {
-      "id": "吉本_葵_福知山成美_京都府",
       "appearances": 1
     }
   ]

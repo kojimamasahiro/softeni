@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 8,
+  "byCategory": {
+    "doubles": 8
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "神田_木綿_中村_高知県",
+          "下村_莉未_中村_高知県"
+        ]
+      },
+      "historicalBest": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "川村_菜月_中村_高知県",
+          "赤松_こもも_中村_高知県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 10,
+  "topPlayers": [
+    {
+      "id": "下村_莉未_中村_高知県",
+      "appearances": 2
+    },
+    {
+      "id": "新谷_友徠_中村_高知県",
+      "appearances": 2
+    },
+    {
+      "id": "佐竹_俐美_中村_高知県",
+      "appearances": 2
+    },
+    {
+      "id": "神田_木綿_中村_高知県",
+      "appearances": 2
+    },
+    {
+      "id": "川村_菜月_中村_高知県",
+      "appearances": 2
+    }
+  ]
+}

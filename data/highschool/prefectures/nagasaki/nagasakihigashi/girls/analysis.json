@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "doubles": 6
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "長崎東",
+        "teamId": "nagasakihigashi",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "宇田川_ほのか_長崎東_長崎県",
+          "吉田_稟珂_長崎東_長崎県"
+        ]
+      },
+      "historicalBest": {
+        "team": "長崎東",
+        "teamId": "nagasakihigashi",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "片山_二湖_長崎東_長崎県",
+          "八戸_春桜_長崎東_長崎県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "片山_二湖_長崎東_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "宇田川_ほのか_長崎東_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "吉田_稟珂_長崎東_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "土井_寧々_長崎東_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "八戸_春桜_長崎東_長崎県",
+      "appearances": 1
+    }
+  ]
+}

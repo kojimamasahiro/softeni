@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "石山_実来_巻_新潟県",
+          "久保田_渚_巻_新潟県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "石山_実来_巻_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "久保田_渚_巻_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "長井_美桜_巻_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_愛佳_巻_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "山本_菜央_巻_新潟県",
+      "appearances": 1
+    }
+  ]
+}

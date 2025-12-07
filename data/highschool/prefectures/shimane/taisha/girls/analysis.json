@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大社",
+        "teamId": "taisha",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "板垣_菜那_大社_島根県",
+          "三上_星翔_大社_島根県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "板垣_菜那_大社_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "三上_星翔_大社_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "瀬島_莉央_大社_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "三上_陽芽_大社_島根県",
+      "appearances": 1
+    }
+  ]
+}

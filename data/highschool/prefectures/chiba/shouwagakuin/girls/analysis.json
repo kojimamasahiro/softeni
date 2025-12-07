@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 6
+    "doubles": 20
   },
   "resultsByCategory": {
     "singles": {
@@ -29,14 +29,14 @@
         "teamId": "shouwagakuin",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "4回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "篠_未奈美_昭和学院_千葉県",
-          "平野_帆乃花_昭和学院_千葉県"
+          "小川_ことみ_昭和学院_千葉県",
+          "鈴木_叶_昭和学院_千葉県"
         ]
       }
     },
@@ -45,27 +45,27 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 24,
   "topPlayers": [
+    {
+      "id": "服部_七海_昭和学院_千葉県",
+      "appearances": 3
+    },
+    {
+      "id": "篠_未奈美_昭和学院_千葉県",
+      "appearances": 2
+    },
     {
       "id": "平野_帆乃花_昭和学院_千葉県",
       "appearances": 2
     },
     {
-      "id": "篠_未奈美_昭和学院_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "堂上_由萊_昭和学院_千葉県",
-      "appearances": 1
-    },
-    {
       "id": "田中_悠_昭和学院_千葉県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "服部_歩美_昭和学院_千葉県",
-      "appearances": 1
+      "appearances": 2
     }
   ]
 }

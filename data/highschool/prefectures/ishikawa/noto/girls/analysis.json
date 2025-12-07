@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 22,
   "byCategory": {
-    "doubles": 7
+    "doubles": 22
   },
   "resultsByCategory": {
     "singles": {
@@ -29,14 +29,14 @@
         "teamId": "noto",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "5回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "岩見_莉歩_能登_石川県",
-          "宮下_日香莉_能登_石川県"
+          "布施_琴音_能登_石川県",
+          "大村_友里_能登_石川県"
         ]
       }
     },
@@ -45,27 +45,27 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 28,
   "topPlayers": [
     {
       "id": "岩見_莉歩_能登_石川県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "宮下_日香莉_能登_石川県",
+      "appearances": 3
+    },
+    {
+      "id": "中村_楓芽_能登_石川県",
+      "appearances": 3
+    },
+    {
+      "id": "大村_友里_能登_石川県",
+      "appearances": 3
+    },
+    {
+      "id": "宮下_亜華莉_能登_石川県",
       "appearances": 2
-    },
-    {
-      "id": "森川_愛瑠_能登_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "横田_優和_能登_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "黒島_望花_能登_石川県",
-      "appearances": 1
     }
   ]
 }

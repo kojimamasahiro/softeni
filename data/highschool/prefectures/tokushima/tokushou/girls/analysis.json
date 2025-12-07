@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "徳商",
+        "teamId": "tokushou",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "早水_愛果_徳商_徳島県",
+          "堀江_彩愛_徳商_徳島県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "早水_愛果_徳商_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "堀江_彩愛_徳商_徳島県",
+      "appearances": 1
+    }
+  ]
+}

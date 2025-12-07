@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "京都文教",
+        "teamId": "kyoutobunkyou",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "長谷_歩奈_京都文教_京都府",
+          "林_海凪_京都文教_京都府"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "長谷_歩奈_京都文教_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "林_海凪_京都文教_京都府",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "武蔵野千代田",
+        "teamId": "musashinochiyoda",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "中野_香凜_武蔵野千代田_東京都",
+          "倉本_圭奈_武蔵野千代田_東京都"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中野_香凜_武蔵野千代田_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "倉本_圭奈_武蔵野千代田_東京都",
+      "appearances": 1
+    }
+  ]
+}

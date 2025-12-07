@@ -1,0 +1,49 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "小城",
+        "teamId": "ogi",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "秀島_凛_小城_佐賀県",
+          "児玉_有希_小城_佐賀県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "秀島_凛_小城_佐賀県",
+      "appearances": 2
+    },
+    {
+      "id": "児玉_有希_小城_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "藤瀬_愛梨_小城_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

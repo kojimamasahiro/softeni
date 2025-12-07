@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "熊本第一",
+        "teamId": "kumamotodaiichi",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "山口_紗羅_熊本第一_熊本県",
+          "内田_雫_熊本第一_熊本県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山口_紗羅_熊本第一_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "内田_雫_熊本第一_熊本県",
+      "appearances": 1
+    }
+  ]
+}

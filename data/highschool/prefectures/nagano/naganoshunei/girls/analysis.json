@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -29,14 +29,14 @@
         "teamId": "naganoshunei",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2021,
         "gender": "girls",
         "playerIds": [
-          "加藤_憩_長野俊英_長野県",
-          "村上_凛花_長野俊英_長野県"
+          "小林_まどか_長野俊英_長野県",
+          "榎本_優紗_長野俊英_長野県"
         ]
       }
     },
@@ -45,7 +45,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "加藤_憩_長野俊英_長野県",
@@ -53,6 +53,14 @@
     },
     {
       "id": "村上_凛花_長野俊英_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_まどか_長野俊英_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "榎本_優紗_長野俊英_長野県",
       "appearances": 1
     }
   ]
