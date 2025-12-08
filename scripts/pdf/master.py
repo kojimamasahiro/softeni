@@ -26,27 +26,27 @@ if USE_NAMEDIVIDER:
     from namedivider import BasicNameDivider
     name_divider = BasicNameDivider()
 
-X_LEFT_NAME_MIN = 60    # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 112  # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 113 # 左側 名の最小X座標
-X_LEFT_NAME_MAX = 155 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 160    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 225    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = X_LEFT_AREA_MIN    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = X_LEFT_AREA_MAX   # チーム名の最大X座標
+X_LEFT_NAME_MIN = 0    # 左側 姓の最小X座標
+X_LEFT_SURNAME_MAX = 0  # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 0 # 左側 名の最小X座標
+X_LEFT_NAME_MAX = 0 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 145    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 190    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 55    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 140   # チーム名の最大X座標
 X_LEFT_ENTRY_MIN = 30    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
+X_LEFT_ENTRY_MAX = 55    # 左側エントリー番号の最大X座標
 
-X_RIGHT_NAME_MIN = 360   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 402   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 403 # 右側 名の最小X座標
-X_RIGHT_NAME_MAX = 445 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 450  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 510  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = X_RIGHT_AREA_MIN  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = X_RIGHT_AREA_MAX  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 520  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 540  # 右側エントリー番号の最大X座標
+X_RIGHT_NAME_MIN = 0   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 0   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 0 # 右側 名の最小X座標
+X_RIGHT_NAME_MAX = 0 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 490  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 530  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 395  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 480  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 545  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 560  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -83,7 +83,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         return []
 
     ################## 指定する
-    extraction_strategy = singles_extraction_strategy
+    extraction_strategy = team_extraction_strategy
 
     # 座標設定を決定
     if USE_NAMEDIVIDER:
@@ -426,6 +426,60 @@ def roundrobin_extraction_strategy(line_data, data_df, X_SETTINGS):
         
     return RESULTS
 
+def team_extraction_strategy(line_data, data_df, X_SETTINGS):
+    """
+    団体戦用の抽出戦略: 選手名を抽出せず、チーム名と都道府県を優先
+    """
+    RESULTS = []
+    for i in range(len(line_data)):
+        line = line_data.iloc[i]
+
+        # スコア行などのフィルタリング（個人戦と同じ）
+        text_check = line['full_text'].strip()
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            continue
+
+        # チーム名と都道府県を抽出（選手名はスキップ）
+        team, prefecture, entry_text = extract_team_line_content(line, data_df, X_SETTINGS)
+        
+        # チーム名が存在する場合のみ追加
+        if team:
+            entry_number = None
+            if entry_text and entry_text.isdigit():
+                entry_number = int(entry_text)
+            
+            RESULTS.append({
+                'Surname': '',  # 空
+                'First_Name': '',  # 空
+                'Player_Name_Raw': '',  # 空
+                'Split_Index': 0,  # 固定
+                'Area_Name': prefecture,  # 都道府県
+                'Team_Name': team,  # チーム名
+                'Entry_Number': entry_number
+            })
+    return RESULTS
+
+def extract_team_line_content(line_data_row, data_df, X_SETTINGS):
+    """
+    団体戦用: チーム名と都道府県を抽出
+    """
+    Y_MIN, Y_MAX = line_data_row['top_min'], line_data_row['top_max']
+    
+    def extract_text(min_x, max_x):
+        chars = data_df[
+            (data_df['left'] >= min_x) & (data_df['left'] <= max_x) &
+            (data_df['top'] >= Y_MIN) & (data_df['top'] <= Y_MAX)
+        ]
+        return "".join(chars['text']).strip()
+
+    # チーム名と都道府県を抽出（X_SETTINGSに基づく）
+    raw_team_text = extract_text(X_SETTINGS['TEAM_MIN'], X_SETTINGS['TEAM_MAX'])
+    raw_prefecture_text = extract_text(X_SETTINGS['AREA_MIN'], X_SETTINGS['AREA_MAX'])  # Areaをprefectureとして扱う
+    raw_entry_text = extract_text(X_SETTINGS['ENTRY_MIN'], X_SETTINGS['ENTRY_MAX'])
+    
+    return raw_team_text, raw_prefecture_text, raw_entry_text
 def structure_player_data(chars_df, page_num):
     """
     PDFの文字データをX軸で左右に分割し、独立して選手情報を抽出する
@@ -445,9 +499,17 @@ def structure_player_data(chars_df, page_num):
     except Exception as e:
         print(f"警告: デバッグ画像の生成中にエラーが発生しました: {e}")
 
+    try:
+        with pdfplumber.open(PDF_PATH) as pdf:
+            page = pdf.pages[page_num - 1]
+            mid_x = page.width / 2  # ページの真ん中
+    except Exception as e:
+        print(f"警告: ページ幅の取得に失敗しました: {e}")
+        mid_x = 300  # デフォルト値（必要に応じて調整）
+
     # 2. 文字データを左右に分割
-    chars_left = chars_df[chars_df['left'] <= X_LEFT_TEAM_MAX].copy()
-    chars_right = chars_df[chars_df['left'] >= X_RIGHT_NAME_MIN].copy()
+    chars_left = chars_df[chars_df['left'] <= mid_x].copy()
+    chars_right = chars_df[chars_df['left'] > mid_x].copy()
 
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
