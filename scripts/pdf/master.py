@@ -10,11 +10,11 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUMS = list(range(3, 11))      # 抽出するページ番号のリスト（1から開始）
+PAGE_NUMS = list(range(15, 16))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
-Y_CROP_MIN = 140                  # ★ 抽出範囲の最小Y座標 (上端)
-Y_CROP_MAX = 700                 # ★ 抽出範囲の最大Y座標 (下端)
+Y_CROP_MIN = 120                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MAX = 800                 # ★ 抽出範囲の最大Y座標 (下端)
 
 # ★ 名前分割方法の選択
 # True: namedividerを使用して自動分割 (推奨: 精度99.3%)
@@ -26,35 +26,21 @@ if USE_NAMEDIVIDER:
     from namedivider import BasicNameDivider
     name_divider = BasicNameDivider()
 
-# 座標設定 (USE_NAMEDIVIDERの値によって使い分け)
-if USE_NAMEDIVIDER:
-    # namedivider使用時: フルネームの範囲のみ
-    X_LEFT_NAME_MIN = 70     # 左側 選手名の最小X座標
-    X_LEFT_NAME_MAX = 155    # 左側 選手名の最大X座標
-else:
-    # 座標ベース使用時: 姓と名を別々に指定
-    X_LEFT_NAME_MIN = 70    # 左側 姓の最小X座標
-    X_LEFT_SURNAME_MAX = 112  # 左側 姓の最大X座標
-    X_LEFT_FIRSTNAME_MIN = 113 # 左側 名の最小X座標
-    X_LEFT_NAME_MAX = 155 # 左側 名の最大X座標
+X_LEFT_NAME_MIN = 60    # 左側 姓の最小X座標
+X_LEFT_SURNAME_MAX = 112  # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 113 # 左側 名の最小X座標
+X_LEFT_NAME_MAX = 155 # 左側 名の最大X座標
 X_LEFT_AREA_MIN = 160    # エリア名の最小X座標
 X_LEFT_AREA_MAX = 225    # エリア名の最大X座標
 X_LEFT_TEAM_MIN = X_LEFT_AREA_MIN    # チーム名の最小X座標
 X_LEFT_TEAM_MAX = X_LEFT_AREA_MAX   # チーム名の最大X座標
-X_LEFT_ENTRY_MIN = 40    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+X_LEFT_ENTRY_MIN = 30    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 60    # 左側エントリー番号の最大X座標
 
-if USE_NAMEDIVIDER:
-    # namedivider使用時: フルネームの範囲のみ
-    X_RIGHT_NAME_MIN = 360   # 右側 選手名の最小X座標
-    X_RIGHT_NAME_MAX = 445   # 右側 選手名の最大X座標
-else:
-    # 座標ベース使用時: 姓と名を別々に指定
-    X_RIGHT_NAME_MIN = 360   # 右側 姓の最小X座標
-    X_RIGHT_SURNAME_MAX = 402   # 右側 姓の最大X座標
-    X_RIGHT_FIRSTNAME_MIN = 403 # 右側 名の最小X座標
-    X_RIGHT_NAME_MAX = 445 # 右側 名の最大X座標
-
+X_RIGHT_NAME_MIN = 360   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 402   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 403 # 右側 名の最小X座標
+X_RIGHT_NAME_MAX = 445 # 右側 名の最大X座標
 X_RIGHT_AREA_MIN = 450  # エリア名の最小X座標
 X_RIGHT_AREA_MAX = 510  # エリア名の最大X座標
 X_RIGHT_TEAM_MIN = X_RIGHT_AREA_MIN  # チーム名の最小X座標
@@ -97,7 +83,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         return []
 
     ################## 指定する
-    extraction_strategy = interhigh_extraction_strategy
+    extraction_strategy = singles_extraction_strategy
 
     # 座標設定を決定
     if USE_NAMEDIVIDER:
