@@ -278,44 +278,48 @@ export default function TeamPage({
                       .map(([tournamentId, categories]) => (
                         <div key={tournamentId} className="mb-4 ml-4">
                           <h3 className="text-lg font-bold">
-                            <Link
-                              href={`/tournaments/highschool/${tournamentId}/${year}`}
-                              className="text-blue-700 dark:text-blue-300 hover:underline"
-                            >
-                              {getTournamentLabel(tournamentId)}
-                            </Link>
+                            {getTournamentLabel(tournamentId)}
                           </h3>
                           <ul className="ml-4 mt-2 space-y-2">
-                            {Object.entries(categories).map(([cat, items]) => (
-                              <li key={cat}>
-                                <p className="font-semibold">
-                                  {getCategoryLabel(cat)}
-                                </p>
-                                <ul className="ml-4 space-y-1">
-                                  {items.map((item, index) => (
-                                    <li key={index}>
-                                      <p className="text-sm">
-                                        成績: {item.result}
-                                        {item.playerIds && (
-                                          <>
-                                            <br />
-                                            選手:{' '}
-                                            {item.playerIds
-                                              .map((pid) => {
-                                                const parts = pid.split('_');
-                                                return parts.length >= 2
-                                                  ? `${parts[0]} ${parts[1]}`
-                                                  : pid;
-                                              })
-                                              .join('・')}
-                                          </>
-                                        )}
-                                      </p>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </li>
-                            ))}
+                            {Object.entries(categories).map(([cat, items]) => {
+                              // 同じcategory内のgenderは統一されていると仮定（必要に応じて調整）
+                              const categoryGender = gender; // Use the gender prop from component
+                              return (
+                                <li key={cat}>
+                                  <p className="font-semibold">
+                                    <Link
+                                      href={`/tournaments/highschool/${tournamentId}/${year}/${cat}/none/${categoryGender}`}
+                                      className="text-blue-700 dark:text-blue-300 hover:underline"
+                                    >
+                                      {getCategoryLabel(cat)}
+                                    </Link>
+                                  </p>
+                                  <ul className="ml-4 space-y-1">
+                                    {items.map((item, index) => (
+                                      <li key={index}>
+                                        <p className="text-sm">
+                                          成績: {item.result}
+                                          {item.playerIds && (
+                                            <>
+                                              <br />
+                                              選手:{' '}
+                                              {item.playerIds
+                                                .map((pid) => {
+                                                  const parts = pid.split('_');
+                                                  return parts.length >= 2
+                                                    ? `${parts[0]} ${parts[1]}`
+                                                    : pid;
+                                                })
+                                                .join('・')}
+                                            </>
+                                          )}
+                                        </p>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       ))}
