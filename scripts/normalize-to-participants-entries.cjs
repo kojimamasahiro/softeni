@@ -195,6 +195,33 @@ for (const p of participantsMap.values()) {
   }
 }
 
+// Normalize prefecture names so IDs and output consistently include
+// the proper suffix (都/道/府/県). This runs before we rebuild ids below
+// so normalized prefectures are used when constructing new ids.
+function normalizePrefectureName(name) {
+  if (name == null) return name;
+  const s = String(name).trim();
+  if (!s) return s;
+  const special = {
+    東京: '東京都',
+    京都: '京都府',
+    大阪: '大阪府',
+    北海道: '北海道',
+  };
+  if (special[s]) return special[s];
+  // already has proper suffix
+  if (/[都道府県]$/.test(s)) return s;
+  // do not normalize organization-like tokens such as 日本学連
+  if (s.includes('日本学連')) return s;
+
+  // fallback: append 県
+  return s + '県';
+}
+
+for (const p of participantsMap.values()) {
+  if (p && p.prefecture) p.prefecture = normalizePrefectureName(p.prefecture);
+}
+
 // Rebuild participantsMap so that ids always include prefecture when available.
 // Also build a mapping from oldId -> newId so we can remap matches/entries/results.
 const oldToNewId = new Map();
