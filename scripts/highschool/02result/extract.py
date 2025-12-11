@@ -116,8 +116,21 @@ def main():
                             team_names = entry_info.get("playerIds", [])
                             if not team_names:
                                 continue
-                            team_name = team_names[0]
-                            prefecture = team_prefecture_map.get(team_name, "")
+                            team_name_raw = team_names[0]
+                            team_name = team_name_raw
+                            prefecture = team_prefecture_map.get(team_name_raw, "")
+
+                            # participant の id が "チーム名_都道府県" 形式の場合がある。
+                            # その場合、suffix を都道府県として使うか、suffix を取り除いたチーム名でマップを再検索する。
+                            if not prefecture and isinstance(team_name_raw, str) and "_" in team_name_raw:
+                                base, suffix = team_name_raw.rsplit("_", 1)
+                                # まず base 名でマップを探す
+                                if base and base in team_prefecture_map:
+                                    prefecture = team_prefecture_map.get(base, "")
+                                    team_name = base
+                                else:
+                                    # マップに無ければ suffix をそのまま都道府県として使う
+                                    prefecture = suffix
                             
                             all_results.append({
                                 "team": team_name,
