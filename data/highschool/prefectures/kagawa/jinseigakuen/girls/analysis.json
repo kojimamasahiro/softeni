@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 30,
+  "totalAppearances": 35,
   "byCategory": {
-    "doubles": 30
+    "doubles": 30,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 34,

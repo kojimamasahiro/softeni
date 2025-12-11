@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
     "doubles": 14,
-    "singles": 1
+    "singles": 1,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 21,

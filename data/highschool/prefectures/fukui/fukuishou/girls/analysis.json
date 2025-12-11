@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 22,
   "byCategory": {
-    "doubles": 17
+    "doubles": 17,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "福井商",
+        "teamId": "fukuishou",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "福井商",
+        "teamId": "fukuishou",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 20,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 3,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "焼津",
+        "teamId": "yaizu",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 6,

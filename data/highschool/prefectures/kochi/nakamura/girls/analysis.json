@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 8
+    "doubles": 8,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 10,

@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 27,
   "byCategory": {
     "doubles": 20,
-    "singles": 3
+    "singles": 3,
+    "team": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "田村",
+        "teamId": "tamura",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "田村",
+        "teamId": "tamura",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 27,

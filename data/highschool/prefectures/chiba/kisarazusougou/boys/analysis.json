@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 35,
+  "totalAppearances": 40,
   "byCategory": {
     "doubles": 32,
-    "singles": 3
+    "singles": 3,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "木更津総合",
+        "teamId": "kisarazusougou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "ベスト4",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "木更津総合",
+        "teamId": "kisarazusougou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "ベスト4",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 40,

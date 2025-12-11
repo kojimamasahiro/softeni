@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 14,
   "byCategory": {
     "doubles": 9,
-    "singles": 1
+    "singles": 1,
+    "team": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 11,

@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 10,
   "byCategory": {
     "doubles": 8,
-    "singles": 1
+    "singles": 1,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 13,

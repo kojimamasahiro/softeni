@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 13
+    "doubles": 13,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "出雲北陵",
+        "teamId": "izumohokuryou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "出雲北陵",
+        "teamId": "izumohokuryou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 16,

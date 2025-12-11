@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 12
+    "doubles": 12,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "駒大",
+        "teamId": "komadai",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "駒大",
+        "teamId": "komadai",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 17,

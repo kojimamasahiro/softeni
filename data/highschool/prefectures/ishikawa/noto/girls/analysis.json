@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 27,
   "byCategory": {
-    "doubles": 22
+    "doubles": 22,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 28,

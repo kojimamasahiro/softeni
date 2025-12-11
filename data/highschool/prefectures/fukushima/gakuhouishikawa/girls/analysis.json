@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 25,
   "byCategory": {
-    "doubles": 20
+    "doubles": 20,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 23,

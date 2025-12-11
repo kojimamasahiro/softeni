@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 15
+    "doubles": 15,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 19,

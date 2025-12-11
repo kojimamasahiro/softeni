@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8
+    "doubles": 8,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長浜北",
+        "teamId": "nagahamakita",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 10,

@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 14,
   "byCategory": {
     "doubles": 10,
-    "singles": 3
+    "singles": 3,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "松山",
+        "teamId": "matsuyama",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "松山",
+        "teamId": "matsuyama",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 15,

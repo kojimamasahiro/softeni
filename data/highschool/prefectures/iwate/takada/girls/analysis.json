@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 6
+    "doubles": 6,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高田",
+        "teamId": "takada",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 9,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 16,
   "byCategory": {
-    "doubles": 14
+    "doubles": 14,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "綾羽",
+        "teamId": "ayaba",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "綾羽",
+        "teamId": "ayaba",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 23,

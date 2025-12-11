@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 14
+    "doubles": 14,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "奈良育英",
+        "teamId": "naraikuei",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "奈良育英",
+        "teamId": "naraikuei",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 16,

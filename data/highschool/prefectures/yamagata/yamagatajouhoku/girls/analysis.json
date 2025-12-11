@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 10
+    "doubles": 10,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "山形城北",
+        "teamId": "yamagatajouhoku",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "山形城北",
+        "teamId": "yamagatajouhoku",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 11,

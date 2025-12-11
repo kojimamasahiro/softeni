@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 9
+    "doubles": 9,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 12,

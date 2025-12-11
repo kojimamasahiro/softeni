@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -28,7 +29,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "真颯館",
+        "teamId": "shinsokan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 2,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 5
+    "doubles": 5,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 8,

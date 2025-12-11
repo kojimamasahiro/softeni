@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 17
+    "doubles": 17,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "ベスト4",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "ベスト4",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 22,

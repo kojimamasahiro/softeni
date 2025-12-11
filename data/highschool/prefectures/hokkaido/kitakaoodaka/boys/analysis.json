@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 14,
   "byCategory": {
     "doubles": 11,
-    "singles": 2
+    "singles": 2,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "北科大高",
+        "teamId": "kitakaoodaka",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "北科大高",
+        "teamId": "kitakaoodaka",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 14,

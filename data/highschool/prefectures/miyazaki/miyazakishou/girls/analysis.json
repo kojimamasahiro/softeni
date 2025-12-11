@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 26,
   "byCategory": {
-    "doubles": 21
+    "doubles": 21,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "宮崎商",
+        "teamId": "miyazakishou",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "宮崎商",
+        "teamId": "miyazakishou",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 24,

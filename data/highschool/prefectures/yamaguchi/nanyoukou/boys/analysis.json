@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 22,
   "byCategory": {
     "doubles": 17,
-    "singles": 3
+    "singles": 3,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "南陽工",
+        "teamId": "nanyoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "南陽工",
+        "teamId": "nanyoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 24,

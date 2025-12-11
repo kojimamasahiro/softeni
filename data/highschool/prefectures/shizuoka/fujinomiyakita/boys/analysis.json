@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
     "doubles": 7,
-    "singles": 2
+    "singles": 2,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "富士宮北",
+        "teamId": "fujinomiyakita",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 11,

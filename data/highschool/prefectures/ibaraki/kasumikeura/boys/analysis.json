@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 29,
+  "totalAppearances": 31,
   "byCategory": {
     "doubles": 26,
-    "singles": 3
+    "singles": 3,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 33,

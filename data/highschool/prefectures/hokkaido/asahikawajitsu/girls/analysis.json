@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 5
+    "doubles": 5,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -28,7 +29,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 9,

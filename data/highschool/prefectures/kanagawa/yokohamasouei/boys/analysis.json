@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 4
+    "doubles": 4,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "横浜創英",
+        "teamId": "yokohamasouei",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 8,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 30,
+  "totalAppearances": 35,
   "byCategory": {
-    "doubles": 30
+    "doubles": 30,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "準優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 31,

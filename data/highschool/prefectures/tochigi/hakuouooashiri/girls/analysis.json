@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 29,
   "byCategory": {
-    "doubles": 24
+    "doubles": 24,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "白鷗大足利",
+        "teamId": "hakuouooashiri",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "白鷗大足利",
+        "teamId": "hakuouooashiri",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 28,

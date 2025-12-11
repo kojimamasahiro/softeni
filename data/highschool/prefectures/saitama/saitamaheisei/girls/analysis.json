@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 16
+    "doubles": 16,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "埼玉平成",
+        "teamId": "saitamaheisei",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 21,

@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 30,
   "byCategory": {
     "doubles": 23,
-    "singles": 2
+    "singles": 2,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 26,

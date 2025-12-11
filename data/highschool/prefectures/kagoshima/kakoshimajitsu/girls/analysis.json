@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 15
+    "doubles": 15,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "鹿児島実",
+        "teamId": "kakoshimajitsu",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "鹿児島実",
+        "teamId": "kakoshimajitsu",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 26,

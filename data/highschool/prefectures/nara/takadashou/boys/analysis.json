@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 48,
+  "totalAppearances": 53,
   "byCategory": {
     "doubles": 41,
-    "singles": 7
+    "singles": 7,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 50,

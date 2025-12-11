@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 12
+    "doubles": 12,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "豊田大谷",
+        "teamId": "toyodaootani",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 20,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8
+    "doubles": 8,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "水戸女子",
+        "teamId": "mitojoshi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 12,

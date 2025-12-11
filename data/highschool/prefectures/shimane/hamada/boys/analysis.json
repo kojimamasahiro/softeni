@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 6
+    "doubles": 6,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "浜田",
+        "teamId": "hamada",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 8,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 27,
   "byCategory": {
-    "doubles": 23
+    "doubles": 23,
+    "team": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "岡崎城西",
+        "teamId": "okazakijousai",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "岡崎城西",
+        "teamId": "okazakijousai",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 31,

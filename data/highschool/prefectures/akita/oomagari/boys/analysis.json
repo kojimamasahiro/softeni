@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
     "doubles": 4,
-    "singles": 1
+    "singles": 1,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -69,7 +70,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "大曲",
+        "teamId": "oomagari",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 7,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 6
+    "doubles": 6,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "松江南",
+        "teamId": "matsueminami",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "松江南",
+        "teamId": "matsueminami",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 11,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 26,
   "byCategory": {
-    "doubles": 21
+    "doubles": 21,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "明豊",
+        "teamId": "meihou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "明豊",
+        "teamId": "meihou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 27,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 21,
   "byCategory": {
-    "doubles": 17
+    "doubles": 17,
+    "team": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 17,

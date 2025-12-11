@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 24,
   "byCategory": {
-    "doubles": 20
+    "doubles": 20,
+    "team": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高岡商",
+        "teamId": "takaokashou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "高岡商",
+        "teamId": "takaokashou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 21,

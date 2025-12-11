@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "明秀日立",
+        "teamId": "meisyuhitachi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "明秀日立",
+        "teamId": "meisyuhitachi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 4,

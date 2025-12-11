@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 16,
   "byCategory": {
     "doubles": 10,
-    "singles": 2
+    "singles": 2,
+    "team": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "長崎南山",
+        "teamId": "nagasakinanzan",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 14,

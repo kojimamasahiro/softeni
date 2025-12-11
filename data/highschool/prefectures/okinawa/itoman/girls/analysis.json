@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 7
+    "doubles": 7,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "糸満",
+        "teamId": "itoman",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "糸満",
+        "teamId": "itoman",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 12,

@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
     "doubles": 8,
-    "singles": 1
+    "singles": 1,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "大牟田",
+        "teamId": "oomuta",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "大牟田",
+        "teamId": "oomuta",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 13,

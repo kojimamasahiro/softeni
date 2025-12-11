@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 9,
   "byCategory": {
     "doubles": 7,
-    "singles": 1
+    "singles": 1,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 13,

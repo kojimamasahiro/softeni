@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -42,7 +43,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "聖カタリナ",
+        "teamId": "hijirikatarina",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 4,

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 12
+    "doubles": 12,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "熊本中央",
+        "teamId": "kumamotochuuou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "熊本中央",
+        "teamId": "kumamotochuuou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 15,

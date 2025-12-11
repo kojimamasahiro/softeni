@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 6
+    "doubles": 6,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "長崎東",
+        "teamId": "nagasakihigashi",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "長崎東",
+        "teamId": "nagasakihigashi",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 8,

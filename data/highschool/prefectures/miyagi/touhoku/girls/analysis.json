@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 37,
+  "totalAppearances": 42,
   "byCategory": {
-    "doubles": 37
+    "doubles": 37,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -41,8 +42,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "東北",
+        "teamId": "touhoku",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "東北",
+        "teamId": "touhoku",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "優勝",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 45,

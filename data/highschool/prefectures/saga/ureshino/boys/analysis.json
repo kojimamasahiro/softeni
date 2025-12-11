@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 32,
   "byCategory": {
     "doubles": 24,
-    "singles": 3
+    "singles": 3,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -68,8 +69,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "嬉野",
+        "teamId": "ureshino",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 29,
