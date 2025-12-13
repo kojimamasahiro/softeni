@@ -13,18 +13,18 @@ PDF_PATH = 'data/tournament.pdf'        # 入力PDFファイル名
 PAGE_NUMS = list(range(1, 2))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
-Y_CROP_MIN = 75                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MIN = 30                  # ★ 抽出範囲の最小Y座標 (上端)
 Y_CROP_MAX = 1800                 # ★ 抽出範囲の最大Y座標 (下端)
 
 X_LEFT_NAME_MIN = 0    # 左側 姓の最小X座標
-X_LEFT_NAME_MAX = 205 # 左側 名の最大X座標
-X_LEFT_ENTRY_MIN = 210    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 225    # 左側エントリー番号の最大X座標
+X_LEFT_NAME_MAX = 225 # 左側 名の最大X座標
+X_LEFT_ENTRY_MIN = 225    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 245    # 左側エントリー番号の最大X座標
 
-X_RIGHT_NAME_MIN = 400   # 右側 姓の最小X座標
-X_RIGHT_NAME_MAX = 620 # 右側 名の最大X座標
-X_RIGHT_ENTRY_MIN = 380  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 400  # 右側エントリー番号の最大X座標
+X_RIGHT_ENTRY_MIN = 365  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 385  # 右側エントリー番号の最大X座標
+X_RIGHT_NAME_MIN = 385   # 右側 姓の最小X座標
+X_RIGHT_NAME_MAX = 570 # 右側 名の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -123,6 +123,7 @@ def singles_extraction_strategy(line_data, data_df, X_SETTINGS):
     RESULTS = []
     for i in range(len(line_data)):
         line = line_data.iloc[i]
+        print(f"{i+33} {line['full_text']}")
 
         # スコア行などのフィルタリング
         text_check = line['full_text'].strip()
@@ -179,19 +180,58 @@ def structure_player_data(chars_df, page_num):
     chars_right = chars_df[chars_df['left'] > mid_x].copy()
 
     # 3. 左右それぞれで抽出ロジックを実行
+    # 各sideの結果にside情報とtop座標を付与
+    def add_side_and_top(results, side, chars):
+        # chars: chars_left or chars_right
+        # results: [{'Name':..., 'Entry_Number':...}, ...]
+        tops = []
+        for r in results:
+            # Nameに該当するtop座標を取得
+            name = r.get('Name', '')
+            # charsからNameに該当する最小topを取得
+            if name:
+                name_chars = chars[chars['text'].apply(lambda t: name in t)]
+                if not name_chars.empty:
+                    tops.append(name_chars['top'].min())
+                else:
+                    tops.append(None)
+            else:
+                tops.append(None)
+        for i, r in enumerate(results):
+            r['side'] = side
+            r['top'] = tops[i]
+        return results
+
     results_left = _group_and_extract_side(chars_left, is_left_side=True)
     results_right = _group_and_extract_side(chars_right, is_left_side=False)
+    results_left = add_side_and_top(results_left, 'LEFT', chars_left)
+    results_right = add_side_and_top(results_right, 'RIGHT', chars_right)
 
-    FINAL_RESULTS = results_left + results_right
+    # 4. DataFrame化
+    df_left = pd.DataFrame(results_left)
+    df_right = pd.DataFrame(results_right)
 
-    # 4. 最終的な結果を整形
-    df_results = pd.DataFrame(FINAL_RESULTS)
-    
-    if df_results.empty:
+    # 5. sideごとにEntry_NumberがNoneの行はtop順、それ以外はEntry_Number順
+    def sort_side(df):
+        if df.empty:
+            return df
+        # Entry_Numberがある行
+        df_with_entry = df[df['Entry_Number'].notnull()].sort_values(by=['Entry_Number', 'Name'])
+        # Entry_Numberがない行
+        df_no_entry = df[df['Entry_Number'].isnull()].sort_values(by=['top', 'Name'])
+        return pd.concat([df_with_entry, df_no_entry], ignore_index=True)
+
+    df_left_sorted = sort_side(df_left)
+    df_right_sorted = sort_side(df_right)
+
+    # 6. LEFT→RIGHTの順で連結
+    df_final = pd.concat([df_left_sorted, df_right_sorted], ignore_index=True)
+
+    if df_final.empty:
         return pd.DataFrame(columns=['Name', 'Entry_Number'])
-    
+
     # 重複を削除して整形
-    df_final = df_results.drop_duplicates(subset=['Name']).reset_index(drop=True)
+    df_final = df_final.drop_duplicates(subset=['Name']).reset_index(drop=True)
 
     # 最終的な出力列を確定
     return df_final[['Name', 'Entry_Number']]
