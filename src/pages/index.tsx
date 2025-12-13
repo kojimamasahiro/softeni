@@ -201,7 +201,7 @@ export default function Home({ recentTournaments }: HomeProps) {
               </p>
 
               <div
-                onClick={() => (window.location.href = `/highschool`)}
+                onClick={() => (window.location.href = `/highschool/boys`)}
                 className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
