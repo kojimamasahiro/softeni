@@ -112,13 +112,13 @@ export default function PrefectureHighschoolPage({
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: '高校カテゴリ',
-                  item: 'https://softeni-pick.com/highschool',
+                  name: `高校カテゴリ（${genderLabel}）`,
+                  item: `https://softeni-pick.com/highschool/${gender}`,
                 },
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `${prefectureName} ${genderLabel}`,
+                  name: prefectureName,
                   item: pageUrl,
                 },
               ],
@@ -132,9 +132,12 @@ export default function PrefectureHighschoolPage({
           <Breadcrumbs
             crumbs={[
               { label: 'ホーム', href: '/' },
-              { label: '高校カテゴリ', href: '/highschool' },
               {
-                label: `${prefectureName} ${genderLabel}`,
+                label: `高校カテゴリ（${genderLabel}）`,
+                href: `/highschool/${gender}`,
+              },
+              {
+                label: prefectureName,
                 href: `/highschool/${gender}/${prefecture.id}`,
               },
             ]}

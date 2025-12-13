@@ -5,22 +5,37 @@
 ## 1. `index.tsx`
 
 ### 概要
-- **URL**: `/highschool`
-- **目的**: 高校カテゴリのトップページとして、都道府県別に男子・女子の成績を表示する。
-- **主な機能**:
-  - 男子・女子の切り替えボタン。
-  - 都道府県を地域ごとにグループ化して表示。
+- **URL**: `/highschool` (リダイレクト -> `/highschool/boys`)
+- **目的**: 高校カテゴリのアクセスポイント。`/highschool/boys` へリダイレクトする。
 
 ### 主な処理
 - `getStaticProps`:
+  - `redirect` を返して `/highschool/boys` へ転送。
+
+---
+
+## 2. `[gender]/index.tsx`
+
+### 概要
+- **URL**: `/highschool/:gender` (`boys` or `girls`)
+- **目的**: 高校カテゴリのトップページとして、都道府県別に男子・女子の成績を表示する。
+- **主な機能**:
+  - 男子・女子の切り替えタブ（リンク）。
+  - 都道府県を地域ごとにグループ化して表示。
+
+### 主な処理
+- `getStaticPaths`:
+  - `boys`, `girls` のパスを生成。
+- `getStaticProps`:
   - `data/prefectures.json` を読み込み、都道府県データを地域ごとにグループ化してページに渡す。
+  - URLパラメータから `gender` を受け取る。
 - **コンポーネント**:
   - `Breadcrumbs`: パンくずリストを表示。
   - `MetaHead`: SEO用のメタ情報を設定。
 
 ---
 
-## 2. `[gender]/[prefectureId]/index.tsx`
+## 3. `[gender]/[prefectureId]/index.tsx`
 
 ### 概要
 - **URL**: `/highschool/:gender/:prefectureId`
@@ -41,7 +56,7 @@
 
 ---
 
-## 3. `[gender]/[prefectureId]/[teamId].tsx`
+## 4. `[gender]/[prefectureId]/[teamId].tsx`
 
 ### 概要
 - **URL**: `/highschool/:gender/:prefectureId/:teamId`
