@@ -605,8 +605,8 @@
         <div class="keyboard-help-section">
           <h3>📝 スコア入力</h3>
           <div class="keyboard-help-item">
-            <div class="keyboard-help-key">0 - 5</div>
-            <div class="keyboard-help-description">選択中の選手のスコアを設定</div>
+            <div class="keyboard-help-key">1 - 6</div>
+            <div class="keyboard-help-description">スコアを設定（1→0点、2→1点、3→2点、4→3点、5→4点、6→5点）</div>
           </div>
           <div class="keyboard-help-item">
             <div class="keyboard-help-key">R</div>
@@ -622,7 +622,7 @@
           </div>
           <div class="keyboard-help-item">
             <div class="keyboard-help-key">Enter</div>
-            <div class="keyboard-help-description">次の選手へ移動（Tabと同じ）</div>
+            <div class="keyboard-help-description">次の試合へ移動</div>
           </div>
         </div>
 
@@ -838,10 +838,10 @@
       // ヘルプ表示中はショートカットを無効化
       if (isHelpVisible) return;
 
-      // 数字キー（0-5）でスコア入力
-      if (e.key >= '0' && e.key <= '5' && !e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      // 数字キー（1-6）でスコア入力（1→0点、2→1点、3→2点、4→3点、5→4点、6→5点）
+      if (e.key >= '1' && e.key <= '6' && !e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
         e.preventDefault();
-        const score = Number(e.key);
+        const score = Number(e.key) - 1; // キーの数字から1を引く
         setScoreForFocusedPlayer(score);
         return;
       }
