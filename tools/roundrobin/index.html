@@ -75,10 +75,17 @@
       }
 
       function getDisplayName(entry) {
+        let baseName = '';
         if (Array.isArray(entry.information) && entry.information.length) {
-          return buildPairName(entry.information); // doubles等
+          baseName = buildPairName(entry.information); // doubles等
+        } else {
+          baseName = entry.name || String(entry.id); // team等
         }
-        return entry.name || String(entry.id); // team等
+        // idが存在し、byeでなければ先頭に付与
+        if (entry.id && entry.id !== 'bye') {
+          return `${entry.id}. ${baseName}`;
+        }
+        return baseName;
       }
 
       function detectCategory(entry) {
