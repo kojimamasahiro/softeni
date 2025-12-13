@@ -32,6 +32,9 @@
   <h2>最終JSON出力</h2>
   <textarea id="jsonOutput" style="height: 400px"></textarea>
 
+  <!-- キーボードショートカットヘルプボタン -->
+  <button class="keyboard-help-button" onclick="toggleHelp()" title="キーボードショートカット (?)">?</button>
+
   <script src="initialPlayer.js"></script>
   <script>
     /** =========================
@@ -102,6 +105,17 @@
     document.getElementById('setRoundBtn').disabled = true;
     document.getElementById('nextRoundBtn').style.display = 'none';
 
+    // ========================================
+    // キーボードショートカット: 変数の早期宣言
+    // ========================================
+    let currentFocus = {
+      round: 0,
+      match: 0,
+      player: 'p1' // 'p1' or 'p2'
+    };
+    let isHelpVisible = false;
+    let isBulkPackinMode = false;
+
     // ---------- ラウンド名 ----------
     function roundLabelByCount(numMatches) {
       if (!roundNameToggleEl.checked) return null;
@@ -167,6 +181,36 @@
       };
     }
 
+    // ========================================
+    // キーボードショートカット: フォーカス表示関数（早期定義）
+    // ========================================
+
+    // フォーカスを視覚的に表示
+    function applyFocusVisuals() {
+      // すべてのフォーカスをクリア
+      document.querySelectorAll('.match-result.focused').forEach(el => {
+        el.classList.remove('focused');
+      });
+      document.querySelectorAll('.player-score-row.focused').forEach(el => {
+        el.classList.remove('focused');
+      });
+
+      // 現在のフォーカス位置にスタイルを適用
+      const matchCard = document.querySelector(
+        `.match-result[data-round="${currentFocus.round}"][data-match="${currentFocus.match}"]`
+      );
+      if (matchCard) {
+        matchCard.classList.add('focused');
+        const playerRow = matchCard.querySelector(`.player-score-row[data-player="${currentFocus.player}"]`);
+        if (playerRow) {
+          playerRow.classList.add('focused');
+        }
+
+        // スクロールして表示
+        matchCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
     // ---------- 表示 ----------
     function renderBracket() {
       matchesRoot.innerHTML = '';
@@ -192,16 +236,28 @@
           card.className = 'match-result';
           if (isByePair) card.style.opacity = '0.5';
 
+          // キーボードショートカット用のデータ属性を追加
+          card.dataset.round = String(rIdx);
+          card.dataset.match = String(mIdx);
+
+          // 未入力の試合をマーク
+          const hasP1Score = m.scores.p1 != null;
+          const hasP2Score = m.scores.p2 != null;
+          const isEditableMatch = m.p1?.id !== 'bye' && m.p2?.id !== 'bye';
+          if (isEditableMatch && (!hasP1Score || !hasP2Score) && !m.autoFromBye) {
+            card.classList.add('pending');
+          }
+
           const p1name = printableName(m.p1);
           const p2name = printableName(m.p2);
 
           card.innerHTML = `
          <div class="score-container">
-           <div class="player-score-row">
+           <div class="player-score-row" data-player="p1">
              <span class="player-name">${m.p1?.id ?? '-'}: ${p1name}</span>
              <div class="score-set" data-side="p1"></div>
            </div>
-           <div class="player-score-row">
+           <div class="player-score-row" data-player="p2">
              <span class="player-name">${m.p2?.id ?? '-'}: ${p2name}</span>
              <div class="score-set" data-side="p2"></div>
            </div>
@@ -310,7 +366,592 @@
       });
 
       matchesRoot.appendChild(container);
+
+      // キーボードショートカット: フォーカス状態を再適用
+      applyFocusVisuals();
     }
+
+    // ========================================
+    // キーボードショートカット機能
+    // ========================================
+
+    // フォーカスを移動
+    function moveFocusToMatch(roundIdx, matchIdx, playerSide) {
+      // 範囲チェック
+      if (roundIdx < 0 || roundIdx >= bracket.length) return false;
+      if (matchIdx < 0 || matchIdx >= bracket[roundIdx].matches.length) return false;
+
+      currentFocus.round = roundIdx;
+      currentFocus.match = matchIdx;
+      currentFocus.player = playerSide || 'p1';
+      applyFocusVisuals();
+      return true;
+    }
+
+    // 次の選手にフォーカス（Tab）
+    function focusNextPlayer() {
+      const match = bracket[currentFocus.round].matches[currentFocus.match];
+
+      if (currentFocus.player === 'p1') {
+        // p1 → p2
+        currentFocus.player = 'p2';
+      } else {
+        // p2 → 次の試合のp1
+        currentFocus.player = 'p1';
+        currentFocus.match++;
+
+        // 試合がラウンド末尾を超えたら次のラウンドへ
+        if (currentFocus.match >= bracket[currentFocus.round].matches.length) {
+          currentFocus.match = 0;
+          currentFocus.round++;
+
+          // 全ラウンド終了なら最初に戻る
+          if (currentFocus.round >= bracket.length) {
+            currentFocus.round = 0;
+            currentFocus.match = 0;
+          }
+        }
+      }
+      applyFocusVisuals();
+    }
+
+    // 前の選手にフォーカス（Shift+Tab）
+    function focusPrevPlayer() {
+      if (currentFocus.player === 'p2') {
+        // p2 → p1
+        currentFocus.player = 'p1';
+      } else {
+        // p1 → 前の試合のp2
+        currentFocus.player = 'p2';
+        currentFocus.match--;
+
+        // 試合が先頭を超えたら前のラウンドへ
+        if (currentFocus.match < 0) {
+          currentFocus.round--;
+
+          // 最初のラウンドを超えたら最後に戻る
+          if (currentFocus.round < 0) {
+            currentFocus.round = bracket.length - 1;
+          }
+
+          currentFocus.match = bracket[currentFocus.round].matches.length - 1;
+        }
+      }
+      applyFocusVisuals();
+    }
+
+    // 試合を上下に移動（常にp1にフォーカス）
+    function focusMatchUp() {
+      moveFocusToMatch(currentFocus.round, currentFocus.match - 1, 'p1');
+    }
+
+    function focusMatchDown() {
+      moveFocusToMatch(currentFocus.round, currentFocus.match + 1, 'p1');
+    }
+
+    // 次の試合に移動（p1にフォーカス）
+    function focusNextMatch() {
+      const nextMatchIdx = currentFocus.match + 1;
+
+      // 現在のラウンド内に次の試合がある場合
+      if (nextMatchIdx < bracket[currentFocus.round].matches.length) {
+        currentFocus.match = nextMatchIdx;
+        currentFocus.player = 'p1';
+      } else {
+        // 次のラウンドへ
+        if (currentFocus.round + 1 < bracket.length) {
+          currentFocus.round++;
+          currentFocus.match = 0;
+          currentFocus.player = 'p1';
+        } else {
+          // 最後のラウンドの最後の試合なら最初に戻る
+          currentFocus.round = 0;
+          currentFocus.match = 0;
+          currentFocus.player = 'p1';
+        }
+      }
+      applyFocusVisuals();
+    }
+
+    // 選手を左右に切り替え
+    function focusPlayerLeft() {
+      currentFocus.player = 'p1';
+      applyFocusVisuals();
+    }
+
+    function focusPlayerRight() {
+      currentFocus.player = 'p2';
+      applyFocusVisuals();
+    }
+
+    // ラウンドを移動
+    function focusRoundLeft() {
+      if (currentFocus.round > 0) {
+        moveFocusToMatch(currentFocus.round - 1, 0, 'p1');
+      }
+    }
+
+    function focusRoundRight() {
+      if (currentFocus.round < bracket.length - 1) {
+        moveFocusToMatch(currentFocus.round + 1, 0, 'p1');
+      }
+    }
+
+    // 最初/最後の試合へ
+    function focusFirstMatch() {
+      moveFocusToMatch(0, 0, 'p1');
+    }
+
+    function focusLastMatch() {
+      const lastRound = bracket.length - 1;
+      const lastMatch = bracket[lastRound].matches.length - 1;
+      moveFocusToMatch(lastRound, lastMatch, 'p1');
+    }
+
+    // 現在フォーカス中の選手にスコアを設定
+    function setScoreForFocusedPlayer(score) {
+      const rIdx = currentFocus.round;
+      const mIdx = currentFocus.match;
+      const side = currentFocus.player;
+
+      setScore(rIdx, mIdx, side, score);
+
+      // スコア入力後、次の試合に移動
+      focusNextMatch();
+    }
+
+    // 現在フォーカス中の選手をリタイアにする
+    function retireFocusedPlayer() {
+      const rIdx = currentFocus.round;
+      const mIdx = currentFocus.match;
+      const side = currentFocus.player;
+
+      const match = bracket[rIdx].matches[mIdx];
+      const opp = side === 'p1' ? 'p2' : 'p1';
+      match[`${side}Retired`] = true;
+      match[`${opp}Retired`] = true;
+      match.scores[side] = 0;
+      match.scores[opp] = initScore;
+      match.winner = match[opp]?.id ?? null;
+
+      propagateWinner(rIdx, mIdx);
+      renderBracket();
+      updateJsonOutput();
+    }
+
+    // 現在の試合のパッキンをトグル
+    function togglePackinForFocusedMatch() {
+      // 1回戦のみ
+      if (currentFocus.round !== 0) {
+        alert('パッキンは1回戦のみ設定できます');
+        return;
+      }
+
+      const mIdx = currentFocus.match;
+      const match = bracket[0].matches[mIdx];
+      const wasPackinMarked = match.packinMarked;
+
+      match.packinMarked = !match.packinMarked;
+      match.p2PackinMarked = false;
+
+      rebuildBracketWithPackin();
+      renderBracket();
+      updateJsonOutput();
+
+      if (match.packinMarked) {
+        // パッキンをONにした場合
+        packinScrollAmount = SCROLL_AMOUNT_PACKIN;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const amount = typeof packinScrollAmount === 'number' ? packinScrollAmount : SCROLL_AMOUNT_FALLBACK;
+            performScroll(amount, 'instant');
+            packinScrollAmount = null;
+          });
+        });
+
+        // 次の試合にフォーカスを移動
+        const nextMatchIdx = mIdx + 1;
+        if (nextMatchIdx < bracket[0].matches.length) {
+          currentFocus.match = nextMatchIdx;
+          currentFocus.player = 'p1';
+          applyFocusVisuals();
+        }
+      }
+    }
+
+    // ヘルプパネルの表示/非表示
+    function toggleHelp() {
+      isHelpVisible = !isHelpVisible;
+      renderHelpPanel();
+    }
+
+    function renderHelpPanel() {
+      let existingOverlay = document.querySelector('.keyboard-help-overlay');
+      if (existingOverlay) {
+        existingOverlay.remove();
+      }
+
+      if (!isHelpVisible) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'keyboard-help-overlay';
+
+      const panel = document.createElement('div');
+      panel.className = 'keyboard-help-panel';
+
+      panel.innerHTML = `
+        <h2>⌨️ キーボードショートカット</h2>
+        
+        <div class="keyboard-help-section">
+          <h3>📝 スコア入力</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">0 - 5</div>
+            <div class="keyboard-help-description">選択中の選手のスコアを設定</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">R</div>
+            <div class="keyboard-help-description">選択中の選手をリタイア扱いにする</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Tab</div>
+            <div class="keyboard-help-description">次の選手へ移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Shift + Tab</div>
+            <div class="keyboard-help-description">前の選手へ移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Enter</div>
+            <div class="keyboard-help-description">次の選手へ移動（Tabと同じ）</div>
+          </div>
+        </div>
+
+        <div class="keyboard-help-section">
+          <h3>🧭 ナビゲーション</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">↑ / ↓</div>
+            <div class="keyboard-help-description">試合を上下に移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">← / →</div>
+            <div class="keyboard-help-description">同じ試合内で選手を切り替え</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">PageUp / PageDown</div>
+            <div class="keyboard-help-description">ラウンド間を移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Home</div>
+            <div class="keyboard-help-description">最初の試合へジャンプ</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">End</div>
+            <div class="keyboard-help-description">最後の試合へジャンプ</div>
+          </div>
+        </div>
+
+        <div class="keyboard-help-section">
+          <h3>📌 パッキン操作</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">P</div>
+            <div class="keyboard-help-description">現在の試合のパッキンをトグル（1回戦のみ）</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">B</div>
+            <div class="keyboard-help-description">一括パッキンモードを開始</div>
+          </div>
+        </div>
+
+        <div class="keyboard-help-section">
+          <h3>💡 その他</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">?</div>
+            <div class="keyboard-help-description">このヘルプを表示/非表示</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Esc</div>
+            <div class="keyboard-help-description">ヘルプを閉じる / 一括パッキンモードをキャンセル</div>
+          </div>
+        </div>
+
+        <button class="keyboard-help-close">閉じる</button>
+      `;
+
+      overlay.appendChild(panel);
+      document.body.appendChild(overlay);
+
+      // 閉じるボタンとオーバーレイクリックで閉じる
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.classList.contains('keyboard-help-close')) {
+          isHelpVisible = false;
+          renderHelpPanel();
+        }
+      });
+    }
+
+    // 一括パッキンモード
+    function enterBulkPackinMode() {
+      if (currentFocus.round !== 0) {
+        alert('一括パッキンは1回戦のみ設定できます');
+        return;
+      }
+
+      isBulkPackinMode = true;
+      renderBulkPackinOverlay();
+    }
+
+    function exitBulkPackinMode() {
+      isBulkPackinMode = false;
+      const overlay = document.querySelector('.bulk-packin-overlay');
+      if (overlay) {
+        overlay.remove();
+      }
+    }
+
+    function renderBulkPackinOverlay() {
+      let existingOverlay = document.querySelector('.bulk-packin-overlay');
+      if (existingOverlay) {
+        existingOverlay.remove();
+      }
+
+      const overlay = document.createElement('div');
+      overlay.className = 'bulk-packin-overlay';
+
+      const currentMatchNum = currentFocus.match + 1;
+
+      overlay.innerHTML = `
+        <div class="bulk-packin-label">一括パッキン: エントリー ${currentMatchNum} 番から</div>
+        <input type="number" id="bulkPackinTarget" min="${currentMatchNum}" value="${currentMatchNum}" />
+        <div class="bulk-packin-label">番まで</div>
+        <button id="bulkPackinExecute">実行</button>
+        <button id="bulkPackinCancel">キャンセル (Esc)</button>
+      `;
+
+      document.body.appendChild(overlay);
+
+      const input = document.getElementById('bulkPackinTarget');
+      const executeBtn = document.getElementById('bulkPackinExecute');
+      const cancelBtn = document.getElementById('bulkPackinCancel');
+
+      input.focus();
+      input.select();
+
+      executeBtn.addEventListener('click', () => {
+        const targetNum = Number(input.value);
+        executeBulkPackin(currentFocus.match, targetNum);
+        exitBulkPackinMode();
+      });
+
+      cancelBtn.addEventListener('click', () => {
+        exitBulkPackinMode();
+      });
+
+      // Enterで実行
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const targetNum = Number(input.value);
+          executeBulkPackin(currentFocus.match, targetNum);
+          exitBulkPackinMode();
+        }
+      });
+    }
+
+    function executeBulkPackin(startMatchIdx, targetEntryNumber) {
+      if (!targetEntryNumber || targetEntryNumber < 1) {
+        alert('有効なエントリー番号を入力してください');
+        return;
+      }
+
+      const startIndex = startMatchIdx;
+      const endIndex = Math.min(targetEntryNumber - 1, bracket[0].matches.length - 1);
+
+      if (startIndex > endIndex) {
+        alert('指定した番号は現在のエントリー番号より小さいです');
+        return;
+      }
+
+      for (let i = startIndex; i <= endIndex; i++) {
+        const match = bracket[0].matches[i];
+        if (match.p1?.id !== 'bye') {
+          match.packinMarked = true;
+        }
+        if (match.p2?.id !== 'bye') {
+          match.p2PackinMarked = true;
+        }
+      }
+
+      rebuildBracketWithPackin();
+      renderBracket();
+      updateJsonOutput();
+
+      packinScrollAmount = SCROLL_AMOUNT_PACKIN;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const amount = typeof packinScrollAmount === 'number' ? packinScrollAmount : SCROLL_AMOUNT_FALLBACK;
+          performScroll(amount, 'instant');
+          packinScrollAmount = null;
+        });
+      });
+    }
+
+    // グローバルキーボードイベントリスナー
+    document.addEventListener('keydown', (e) => {
+      // 入力フィールドにフォーカスがある場合は無視（一括パッキンモードの入力を除く）
+      const activeElement = document.activeElement;
+      const isInputFocused = activeElement.tagName === 'INPUT' ||
+        activeElement.tagName === 'TEXTAREA' ||
+        activeElement.isContentEditable;
+
+      // 一括パッキンモード中は特別処理
+      if (isBulkPackinMode && e.key === 'Escape') {
+        e.preventDefault();
+        exitBulkPackinMode();
+        return;
+      }
+
+      // 一括パッキンモード中はその入力欄以外のキーは無視
+      if (isBulkPackinMode && activeElement.id === 'bulkPackinTarget') {
+        return; // Enter等は入力欄のイベントリスナーで処理
+      }
+
+      // ヘルプ表示中はEscで閉じる
+      if (isHelpVisible && e.key === 'Escape') {
+        e.preventDefault();
+        isHelpVisible = false;
+        renderHelpPanel();
+        return;
+      }
+
+      // 通常の入力フィールドにフォーカスがある場合は、?とEsc以外は無視
+      if (isInputFocused && e.key !== '?' && e.key !== 'Escape') {
+        return;
+      }
+
+      // ? キーでヘルプ
+      if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+        e.preventDefault();
+        toggleHelp();
+        return;
+      }
+
+      // ヘルプ表示中はショートカットを無効化
+      if (isHelpVisible) return;
+
+      // 数字キー（0-5）でスコア入力
+      if (e.key >= '0' && e.key <= '5' && !e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        const score = Number(e.key);
+        setScoreForFocusedPlayer(score);
+        return;
+      }
+
+      // Rキーでリタイア（Cmd/Ctrl+Rはブラウザのリロードを優先）
+      if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+        retireFocusedPlayer();
+        return;
+      }
+
+      // Tabキーで次の選手へ
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        if (e.shiftKey) {
+          focusPrevPlayer();
+        } else {
+          focusNextPlayer();
+        }
+        return;
+      }
+
+      // Enterキーで次の試合へ
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        focusNextMatch();
+        return;
+      }
+
+      // 矢印キーでナビゲーション
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        focusMatchUp();
+        return;
+      }
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        focusMatchDown();
+        return;
+      }
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        focusPlayerLeft();
+        return;
+      }
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        focusPlayerRight();
+        return;
+      }
+
+      // PageUp/PageDownでラウンド移動
+      if (e.key === 'PageUp') {
+        e.preventDefault();
+        focusRoundLeft();
+        return;
+      }
+
+      if (e.key === 'PageDown') {
+        e.preventDefault();
+        focusRoundRight();
+        return;
+      }
+
+      // Home/Endで最初/最後の試合へ
+      if (e.key === 'Home') {
+        e.preventDefault();
+        focusFirstMatch();
+        return;
+      }
+
+      if (e.key === 'End') {
+        e.preventDefault();
+        focusLastMatch();
+        return;
+      }
+
+      // Pキーでパッキントグル
+      if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePackinForFocusedMatch();
+        return;
+      }
+
+      // Bキーで一括パッキンモード
+      if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        enterBulkPackinMode();
+        return;
+      }
+
+      // Escapeでモーダルを閉じる
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        if (isBulkPackinMode) {
+          exitBulkPackinMode();
+        } else if (isHelpVisible) {
+          isHelpVisible = false;
+          renderHelpPanel();
+        }
+        return;
+      }
+    });
+
+    // ========================================
+    // キーボードショートカット機能ここまで
+    // ========================================
 
     function printableName(p) {
       if (!p) return '未定';
