@@ -1,5 +1,5 @@
 # python generate_roundrobin.py -i initialPlayer-roundrobin-over50.json -o output.json --default-size 3 --label-type numeric --overrides "4=4,15=4"
-
+# jq -s '[.[0].standings[][] | select(.rank == 1) | .id] as $ids | .[1] | map(select(.id as $id | $ids | index($id)))' doubles-none-girls.json ../doubles-none-girls.json
 import json
 import argparse
 import os
