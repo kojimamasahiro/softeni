@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "常磐大",
+        "teamId": "joubandai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "大図_果凛_常磐大_茨城県"
+        ]
+      },
+      "historicalBest": {
+        "team": "常磐大",
+        "teamId": "joubandai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "大図_果凛_常磐大_茨城県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -49,11 +76,11 @@
   "topPlayers": [
     {
       "id": "大図_果凛_常磐大_茨城県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "飯塚_梨乃_常磐大_茨城県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "佐藤_もえ_常磐大_茨城県",

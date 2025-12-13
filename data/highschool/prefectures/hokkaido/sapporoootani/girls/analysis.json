@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 4
+    "doubles": 7,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "札幌大谷",
+        "teamId": "sapporoootani",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "嶋野_杏_札幌大谷_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "札幌大谷",
+        "teamId": "sapporoootani",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "嶋野_杏_札幌大谷_北海道"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,26 +72,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "西畑_咲愛_札幌大谷_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "上原_心音_札幌大谷_北海道",
-      "appearances": 1
+      "appearances": 5
     },
     {
       "id": "嶋野_杏_札幌大谷_北海道",
-      "appearances": 1
+      "appearances": 3
     },
     {
-      "id": "菅原_芽里_札幌大谷_北海道",
-      "appearances": 1
+      "id": "上原_心音_札幌大谷_北海道",
+      "appearances": 2
     },
     {
       "id": "菅原_萌音_札幌大谷_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "菅原_芽里_札幌大谷_北海道",
       "appearances": 1
     }
   ]

@@ -1,28 +1,24 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 37,
   "byCategory": {
-    "doubles": 22,
-    "team": 3
+    "doubles": 28,
+    "team": 3,
+    "singles": 6
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "とわの森三愛",
         "teamId": "towanomorisanai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "関_心那_とわの森三愛_北海道",
-          "佐々木_南帆_とわの森三愛_北海道"
+          "関_心那_とわの森三愛_北海道"
         ]
       },
       "historicalBest": {
@@ -30,14 +26,45 @@
         "teamId": "towanomorisanai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "関_心那_とわの森三愛_北海道"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
           "関_心那_とわの森三愛_北海道",
-          "佐々木_南帆_とわの森三愛_北海道"
+          "佐々木_美空_とわの森三愛_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "とわの森三愛",
+        "teamId": "towanomorisanai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "関_心那_とわの森三愛_北海道",
+          "佐々木_美空_とわの森三愛_北海道"
         ]
       }
     },
@@ -66,27 +93,27 @@
       }
     }
   },
-  "uniquePlayers": 28,
+  "uniquePlayers": 29,
   "topPlayers": [
     {
-      "id": "義達_心陽_とわの森三愛_北海道",
-      "appearances": 3
-    },
-    {
-      "id": "亀田_凜_とわの森三愛_北海道",
-      "appearances": 3
+      "id": "関_心那_とわの森三愛_北海道",
+      "appearances": 6
     },
     {
       "id": "佐々木_南帆_とわの森三愛_北海道",
-      "appearances": 3
+      "appearances": 6
     },
     {
-      "id": "関_心那_とわの森三愛_北海道",
-      "appearances": 2
+      "id": "亀田_凜_とわの森三愛_北海道",
+      "appearances": 5
     },
     {
-      "id": "本吉_愛明_とわの森三愛_北海道",
-      "appearances": 2
+      "id": "義達_心陽_とわの森三愛_北海道",
+      "appearances": 4
+    },
+    {
+      "id": "髙橋_果鈴_とわの森三愛_北海道",
+      "appearances": 4
     }
   ]
 }

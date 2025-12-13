@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 5,
-    "team": 2
+    "doubles": 6,
+    "team": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "中嶋_海音_熊本工_熊本県"
+        ]
+      },
+      "historicalBest": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "中嶋_海音_熊本工_熊本県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,11 +97,11 @@
   "topPlayers": [
     {
       "id": "中嶋_海音_熊本工_熊本県",
-      "appearances": 1
+      "appearances": 3
     },
     {
       "id": "永石_緑暖_熊本工_熊本県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "黒木_彩永_熊本工_熊本県",

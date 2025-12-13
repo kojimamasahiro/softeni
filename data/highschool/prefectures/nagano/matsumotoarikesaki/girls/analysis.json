@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "松本蟻ケ崎",
+        "teamId": "matsumotoarikesaki",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "小林_彩花_松本蟻ケ崎_長野県"
+        ]
+      },
+      "historicalBest": {
+        "team": "松本蟻ケ崎",
+        "teamId": "matsumotoarikesaki",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "小林_彩花_松本蟻ケ崎_長野県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -49,11 +76,11 @@
   "topPlayers": [
     {
       "id": "小林_彩花_松本蟻ケ崎_長野県",
-      "appearances": 1
+      "appearances": 3
     },
     {
       "id": "牛越_香奈羽_松本蟻ケ崎_長野県",
-      "appearances": 1
+      "appearances": 2
     }
   ]
 }

@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 26,
+  "totalAppearances": 32,
   "byCategory": {
-    "doubles": 21,
-    "team": 5
+    "doubles": 24,
+    "team": 5,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "宮崎商",
+        "teamId": "miyazakishou",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "山口_優菜_宮崎商_宮崎県"
+        ]
+      },
+      "historicalBest": {
+        "team": "宮崎商",
+        "teamId": "miyazakishou",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "山口_優菜_宮崎商_宮崎県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,22 +97,22 @@
   "topPlayers": [
     {
       "id": "上米良_凛乃_宮崎商_宮崎県",
-      "appearances": 3
+      "appearances": 5
     },
     {
-      "id": "増田_くるみ_宮崎商_宮崎県",
-      "appearances": 3
+      "id": "山口_優菜_宮崎商_宮崎県",
+      "appearances": 5
     },
     {
       "id": "庄司_梨乃_宮崎商_宮崎県",
-      "appearances": 3
+      "appearances": 4
     },
     {
-      "id": "倉田_真織_宮崎商_宮崎県",
-      "appearances": 3
+      "id": "瀬戸口_快_宮崎商_宮崎県",
+      "appearances": 4
     },
     {
-      "id": "小田_妃莉_宮崎商_宮崎県",
+      "id": "増田_くるみ_宮崎商_宮崎県",
       "appearances": 3
     }
   ]

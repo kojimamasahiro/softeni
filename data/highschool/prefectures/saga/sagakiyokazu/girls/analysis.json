@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 25,
   "byCategory": {
     "doubles": 19,
-    "team": 4
+    "team": 4,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "佐賀清和",
+        "teamId": "sagakiyokazu",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "田代_愛花_佐賀清和_佐賀県"
+        ]
+      },
+      "historicalBest": {
+        "team": "佐賀清和",
+        "teamId": "sagakiyokazu",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "田代_愛花_佐賀清和_佐賀県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,7 +97,7 @@
   "topPlayers": [
     {
       "id": "石井_春菜_佐賀清和_佐賀県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "林田_真奈_佐賀清和_佐賀県",

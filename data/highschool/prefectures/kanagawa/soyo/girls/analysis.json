@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 7,
-    "team": 1
+    "doubles": 8,
+    "team": 1,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "相洋",
+        "teamId": "soyo",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "石井_海菜_相洋_神奈川県"
+        ]
+      },
+      "historicalBest": {
+        "team": "相洋",
+        "teamId": "soyo",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "石井_海菜_相洋_神奈川県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,10 +97,14 @@
   "topPlayers": [
     {
       "id": "西場_まこ_相洋_神奈川県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "五味_陽日_相洋_神奈川県",
+      "appearances": 3
+    },
+    {
+      "id": "伊東_夢来_相洋_神奈川県",
       "appearances": 2
     },
     {
@@ -81,11 +112,7 @@
       "appearances": 2
     },
     {
-      "id": "町田_心優_相洋_神奈川県",
-      "appearances": 2
-    },
-    {
-      "id": "西野_いつは_相洋_神奈川県",
+      "id": "石井_海菜_相洋_神奈川県",
       "appearances": 2
     }
   ]

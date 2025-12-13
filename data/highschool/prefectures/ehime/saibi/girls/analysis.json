@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 27,
   "byCategory": {
-    "doubles": 19,
-    "team": 3
+    "doubles": 22,
+    "team": 3,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "済美",
+        "teamId": "saibi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "鈴木_実秋_済美_愛媛県"
+        ]
+      },
+      "historicalBest": {
+        "team": "済美",
+        "teamId": "saibi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "鈴木_実秋_済美_愛媛県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,24 +96,24 @@
   "uniquePlayers": 29,
   "topPlayers": [
     {
+      "id": "鈴木_実秋_済美_愛媛県",
+      "appearances": 6
+    },
+    {
+      "id": "武下_和奏_済美_愛媛県",
+      "appearances": 3
+    },
+    {
       "id": "山本_彩羽_済美_愛媛県",
       "appearances": 3
     },
     {
-      "id": "鈴木_実秋_済美_愛媛県",
+      "id": "岡原_羽椛_済美_愛媛県",
       "appearances": 3
     },
     {
-      "id": "森松_瑠菜_済美_愛媛県",
-      "appearances": 2
-    },
-    {
-      "id": "岡原_羽椛_済美_愛媛県",
-      "appearances": 2
-    },
-    {
-      "id": "尾田_淳香_済美_愛媛県",
-      "appearances": 2
+      "id": "大澤_鈴夏_済美_愛媛県",
+      "appearances": 3
     }
   ]
 }

@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4,
-    "team": 1
+    "doubles": 5,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "井口_里咲_駿台甲府_山梨県"
+        ]
+      },
+      "historicalBest": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "井口_里咲_駿台甲府_山梨県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,11 +97,11 @@
   "topPlayers": [
     {
       "id": "井口_里咲_駿台甲府_山梨県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "保坂_優月_駿台甲府_山梨県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "網野_彩希_駿台甲府_山梨県",

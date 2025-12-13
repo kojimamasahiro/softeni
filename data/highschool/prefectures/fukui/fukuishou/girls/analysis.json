@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 28,
   "byCategory": {
-    "doubles": 17,
-    "team": 5
+    "doubles": 20,
+    "team": 5,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "福井商",
+        "teamId": "fukuishou",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "柿下_栞凛_福井商_福井県"
+        ]
+      },
+      "historicalBest": {
+        "team": "福井商",
+        "teamId": "fukuishou",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "柿下_栞凛_福井商_福井県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,24 +96,24 @@
   "uniquePlayers": 20,
   "topPlayers": [
     {
+      "id": "桶谷_妃名理_福井商_福井県",
+      "appearances": 5
+    },
+    {
+      "id": "大塚_百音_福井商_福井県",
+      "appearances": 4
+    },
+    {
+      "id": "柿下_栞凛_福井商_福井県",
+      "appearances": 4
+    },
+    {
       "id": "山田_果奈_福井商_福井県",
       "appearances": 3
     },
     {
-      "id": "大塚_百音_福井商_福井県",
+      "id": "宇都宮_杜和_福井商_福井県",
       "appearances": 3
-    },
-    {
-      "id": "右原_優菜_福井商_福井県",
-      "appearances": 2
-    },
-    {
-      "id": "東_鈴菜_福井商_福井県",
-      "appearances": 2
-    },
-    {
-      "id": "小林_花菜_福井商_福井県",
-      "appearances": 2
     }
   ]
 }

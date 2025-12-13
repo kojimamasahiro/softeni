@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 9,
-    "team": 3
+    "doubles": 12,
+    "team": 3,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "徳山商工",
+        "teamId": "tokuyamashoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "清水_瑠夏_徳山商工_山口県"
+        ]
+      },
+      "historicalBest": {
+        "team": "徳山商工",
+        "teamId": "tokuyamashoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "清水_瑠夏_徳山商工_山口県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 13,
   "topPlayers": [
     {
-      "id": "林_奏歩_徳山商工_山口県",
-      "appearances": 2
-    },
-    {
-      "id": "花田_咲依_徳山商工_山口県",
-      "appearances": 2
+      "id": "横山_友香_徳山商工_山口県",
+      "appearances": 5
     },
     {
       "id": "國居_花音_徳山商工_山口県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "清水_瑠夏_徳山商工_山口県",
-      "appearances": 2
+      "appearances": 4
     },
     {
-      "id": "横山_友香_徳山商工_山口県",
+      "id": "林_奏歩_徳山商工_山口県",
+      "appearances": 3
+    },
+    {
+      "id": "花田_咲依_徳山商工_山口県",
       "appearances": 2
     }
   ]

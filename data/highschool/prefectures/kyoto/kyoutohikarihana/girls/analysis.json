@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 36,
+  "totalAppearances": 42,
   "byCategory": {
-    "doubles": 31,
-    "team": 5
+    "doubles": 34,
+    "team": 5,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "京都光華",
+        "teamId": "kyoutohikarihana",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "西村_ひよ_京都光華_京都府"
+        ]
+      },
+      "historicalBest": {
+        "team": "京都光華",
+        "teamId": "kyoutohikarihana",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "西村_ひよ_京都光華_京都府"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,24 +96,24 @@
   "uniquePlayers": 43,
   "topPlayers": [
     {
+      "id": "西村_ひよ_京都光華_京都府",
+      "appearances": 4
+    },
+    {
+      "id": "上田_絆灯_京都光華_京都府",
+      "appearances": 4
+    },
+    {
       "id": "原_綾那_京都光華_京都府",
       "appearances": 3
     },
     {
-      "id": "西村_ひよ_京都光華_京都府",
+      "id": "多鹿_詩織_京都光華_京都府",
       "appearances": 3
     },
     {
-      "id": "奥山_充結_京都光華_京都府",
-      "appearances": 2
-    },
-    {
-      "id": "山室_心結姫_京都光華_京都府",
-      "appearances": 2
-    },
-    {
-      "id": "森田_萌花_京都光華_京都府",
-      "appearances": 2
+      "id": "早川_彩英_京都光華_京都府",
+      "appearances": 3
     }
   ]
 }

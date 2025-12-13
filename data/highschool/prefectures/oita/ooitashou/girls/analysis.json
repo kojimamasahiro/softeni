@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 12
+    "doubles": 15,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "松尾_咲和_大分商_大分県"
+        ]
+      },
+      "historicalBest": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "松尾_咲和_大分商_大分県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -49,23 +76,23 @@
   "topPlayers": [
     {
       "id": "小橋_愛菜_大分商_大分県",
-      "appearances": 3
+      "appearances": 6
     },
     {
       "id": "内藤_彩音_大分商_大分県",
-      "appearances": 3
-    },
-    {
-      "id": "藤澤_詩乃_大分商_大分県",
-      "appearances": 2
-    },
-    {
-      "id": "三村_唯_大分商_大分県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "大海_香桜_大分商_大分県",
-      "appearances": 1
+      "appearances": 2
+    },
+    {
+      "id": "姫嶋_心優_大分商_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "松尾_咲和_大分商_大分県",
+      "appearances": 2
     }
   ]
 }

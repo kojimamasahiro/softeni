@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 30,
   "byCategory": {
-    "doubles": 20,
-    "team": 4
+    "doubles": 23,
+    "team": 4,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高岡商",
+        "teamId": "takaokashou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "清末_七生_高岡商_富山県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高岡商",
+        "teamId": "takaokashou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "清末_七生_高岡商_富山県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 21,
   "topPlayers": [
     {
-      "id": "水谷_朱璃_高岡商_富山県",
-      "appearances": 3
+      "id": "高倉_都羽_高岡商_富山県",
+      "appearances": 5
     },
     {
       "id": "高井_沙彩_高岡商_富山県",
-      "appearances": 3
+      "appearances": 5
+    },
+    {
+      "id": "横山_柑奈_高岡商_富山県",
+      "appearances": 4
     },
     {
       "id": "福田_唯子_高岡商_富山県",
-      "appearances": 3
+      "appearances": 4
     },
     {
-      "id": "山本_莉音_高岡商_富山県",
-      "appearances": 3
-    },
-    {
-      "id": "清都_杏_高岡商_富山県",
+      "id": "水谷_朱璃_高岡商_富山県",
       "appearances": 3
     }
   ]

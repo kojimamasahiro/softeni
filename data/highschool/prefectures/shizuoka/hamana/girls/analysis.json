@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,21 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "浜名",
+        "teamId": "hamana",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "槇林_六花_浜名_静岡県",
+          "吉川_暖音_浜名_静岡県"
+        ]
+      },
       "historicalBest": {
         "team": "浜名",
         "teamId": "hamana",
@@ -35,6 +49,10 @@
   "topPlayers": [
     {
       "id": "吉川_暖音_浜名_静岡県",
+      "appearances": 3
+    },
+    {
+      "id": "槇林_六花_浜名_静岡県",
       "appearances": 2
     },
     {
@@ -47,10 +65,6 @@
     },
     {
       "id": "須田_妃世李_浜名_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "槇林_六花_浜名_静岡県",
       "appearances": 1
     }
   ]

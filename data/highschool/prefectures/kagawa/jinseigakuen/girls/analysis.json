@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 35,
+  "totalAppearances": 41,
   "byCategory": {
-    "doubles": 30,
-    "team": 5
+    "doubles": 33,
+    "team": 5,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "錦見_彩生_尽誠学園_香川県"
+        ]
+      },
+      "historicalBest": {
+        "team": "尽誠学園",
+        "teamId": "jinseigakuen",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "錦見_彩生_尽誠学園_香川県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -15,9 +42,9 @@
         "teamId": "jinseigakuen",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "準優勝",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2023,
         "gender": "girls",
         "playerIds": [
@@ -30,9 +57,9 @@
         "teamId": "jinseigakuen",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "準優勝",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2023,
         "gender": "girls",
         "playerIds": [
@@ -70,22 +97,22 @@
   "topPlayers": [
     {
       "id": "錦見_彩生_尽誠学園_香川県",
-      "appearances": 3
-    },
-    {
-      "id": "福原_苺花_尽誠学園_香川県",
-      "appearances": 3
-    },
-    {
-      "id": "田中_栞_尽誠学園_香川県",
-      "appearances": 3
-    },
-    {
-      "id": "近藤_明日咲_尽誠学園_香川県",
-      "appearances": 3
+      "appearances": 5
     },
     {
       "id": "片山_麻衣_尽誠学園_香川県",
+      "appearances": 5
+    },
+    {
+      "id": "大野_真里七_尽誠学園_香川県",
+      "appearances": 4
+    },
+    {
+      "id": "近藤_明日咲_尽誠学園_香川県",
+      "appearances": 4
+    },
+    {
+      "id": "津田_瑠依_尽誠学園_香川県",
       "appearances": 3
     }
   ]

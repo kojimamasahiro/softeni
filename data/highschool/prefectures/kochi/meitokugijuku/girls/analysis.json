@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 9,
-    "team": 1
+    "doubles": 11,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "高橋_美結_明徳義塾_高知県"
+        ]
+      },
+      "historicalBest": {
+        "team": "明徳義塾",
+        "teamId": "meitokugijuku",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "高橋_美結_明徳義塾_高知県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 12,
   "topPlayers": [
     {
+      "id": "高橋_美結_明徳義塾_高知県",
+      "appearances": 4
+    },
+    {
       "id": "佐藤_由希菜_明徳義塾_高知県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "上田_椿_明徳義塾_高知県",
-      "appearances": 2
-    },
-    {
-      "id": "弘瀬_美咲_明徳義塾_高知県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "湊本_愛華_明徳義塾_高知県",
-      "appearances": 2
+      "appearances": 3
     },
     {
-      "id": "高橋_美結_明徳義塾_高知県",
+      "id": "弘瀬_美咲_明徳義塾_高知県",
       "appearances": 2
     }
   ]

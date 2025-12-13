@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 27,
   "byCategory": {
-    "doubles": 17,
-    "team": 4
+    "doubles": 20,
+    "team": 4,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "高木_己想_県岐阜商_岐阜県"
+        ]
+      },
+      "historicalBest": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "高木_己想_県岐阜商_岐阜県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,11 +93,19 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 18,
   "topPlayers": [
     {
       "id": "桒原_嘉萌_県岐阜商_岐阜県",
-      "appearances": 3
+      "appearances": 5
+    },
+    {
+      "id": "高木_夕愛_県岐阜商_岐阜県",
+      "appearances": 4
+    },
+    {
+      "id": "廣瀬_結花_県岐阜商_岐阜県",
+      "appearances": 4
     },
     {
       "id": "林田_美愛_県岐阜商_岐阜県",
@@ -78,14 +113,6 @@
     },
     {
       "id": "堀_かえで_県岐阜商_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "堀_さくら_県岐阜商_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "廣瀬_結花_県岐阜商_岐阜県",
       "appearances": 3
     }
   ]

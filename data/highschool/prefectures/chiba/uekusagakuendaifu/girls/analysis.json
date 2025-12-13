@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 10
+    "doubles": 10,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "植草学園大附",
+        "teamId": "uekusagakuendaifu",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "宮本_愛梨_植草学園大附_千葉県"
+        ]
+      },
+      "historicalBest": {
+        "team": "植草学園大附",
+        "teamId": "uekusagakuendaifu",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "宮本_愛梨_植草学園大附_千葉県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -48,15 +75,15 @@
   "uniquePlayers": 16,
   "topPlayers": [
     {
+      "id": "宮本_愛梨_植草学園大附_千葉県",
+      "appearances": 4
+    },
+    {
       "id": "相原_愛_植草学園大附_千葉県",
       "appearances": 2
     },
     {
       "id": "平野_心皐_植草学園大附_千葉県",
-      "appearances": 2
-    },
-    {
-      "id": "宮本_愛梨_植草学園大附_千葉県",
       "appearances": 2
     },
     {

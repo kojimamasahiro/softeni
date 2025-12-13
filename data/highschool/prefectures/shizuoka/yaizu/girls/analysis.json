@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
     "doubles": 3,
-    "team": 1
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "焼津",
+        "teamId": "yaizu",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "岡崎_紗奈_焼津_静岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "焼津",
+        "teamId": "yaizu",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "岡崎_紗奈_焼津_静岡県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -60,7 +87,7 @@
   "topPlayers": [
     {
       "id": "岡崎_紗奈_焼津_静岡県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "三田_真優花_焼津_静岡県",

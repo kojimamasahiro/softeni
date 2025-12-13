@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 42,
+  "totalAppearances": 49,
   "byCategory": {
-    "doubles": 37,
-    "team": 5
+    "doubles": 40,
+    "team": 5,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "東北",
+        "teamId": "touhoku",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "大和_美月_東北_宮城県"
+        ]
+      },
+      "historicalBest": {
+        "team": "東北",
+        "teamId": "touhoku",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "大和_美月_東北_宮城県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 45,
   "topPlayers": [
     {
+      "id": "大和_美月_東北_宮城県",
+      "appearances": 6
+    },
+    {
       "id": "天間_麗奈_東北_宮城県",
-      "appearances": 3
+      "appearances": 5
     },
     {
       "id": "佐藤_紗空_東北_宮城県",
+      "appearances": 4
+    },
+    {
+      "id": "柏_春花_東北_宮城県",
       "appearances": 3
     },
     {
-      "id": "千葉_遥菜_東北_宮城県",
-      "appearances": 3
-    },
-    {
-      "id": "工藤_綾乃_東北_宮城県",
-      "appearances": 3
-    },
-    {
-      "id": "佐藤_円_東北_宮城県",
+      "id": "村上_芹_東北_宮城県",
       "appearances": 3
     }
   ]

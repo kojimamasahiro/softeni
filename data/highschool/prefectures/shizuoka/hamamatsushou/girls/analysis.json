@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 8,
-    "team": 1
+    "doubles": 9,
+    "team": 1,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "溝上_明璃_浜松商_静岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "溝上_明璃_浜松商_静岡県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -59,16 +86,16 @@
   "uniquePlayers": 13,
   "topPlayers": [
     {
-      "id": "吉野_はる那_浜松商_静岡県",
-      "appearances": 2
+      "id": "溝上_明璃_浜松商_静岡県",
+      "appearances": 4
     },
     {
-      "id": "溝上_明璃_浜松商_静岡県",
-      "appearances": 2
+      "id": "吉野_はる那_浜松商_静岡県",
+      "appearances": 3
     },
     {
       "id": "外山_煌羅_浜松商_静岡県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "山田_吏優_浜松商_静岡県",

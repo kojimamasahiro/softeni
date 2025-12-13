@@ -1,16 +1,57 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 5,
-    "team": 2
+    "doubles": 9,
+    "team": 2,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "山田_玲華_旭川実_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "山田_玲華_旭川実_北海道"
+        ]
+      }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "旭川実",
+        "teamId": "asahikawajitsu",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "杉林_絢花_旭川実_北海道",
+          "内藤_鈴_旭川実_北海道"
+        ]
+      },
       "historicalBest": {
         "team": "旭川実",
         "teamId": "asahikawajitsu",
@@ -42,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 16,
   "topPlayers": [
+    {
+      "id": "清水_心結_旭川実_北海道",
+      "appearances": 3
+    },
     {
       "id": "石井_莉乃_旭川実_北海道",
       "appearances": 2
     },
     {
-      "id": "今野_愛菜_旭川実_北海道",
-      "appearances": 1
+      "id": "内藤_鈴_旭川実_北海道",
+      "appearances": 2
     },
     {
-      "id": "清水_心結_旭川実_北海道",
-      "appearances": 1
+      "id": "田中_芽依_旭川実_北海道",
+      "appearances": 2
     },
     {
-      "id": "秦_菜摘_旭川実_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "平野_心海_旭川実_北海道",
-      "appearances": 1
+      "id": "山田_玲華_旭川実_北海道",
+      "appearances": 2
     }
   ]
 }

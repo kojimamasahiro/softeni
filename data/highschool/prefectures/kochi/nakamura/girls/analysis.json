@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 8,
-    "team": 3
+    "doubles": 9,
+    "team": 3,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "神田_木綿_中村_高知県"
+        ]
+      },
+      "historicalBest": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "神田_木綿_中村_高知県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,19 +96,19 @@
   "uniquePlayers": 10,
   "topPlayers": [
     {
-      "id": "下村_莉未_中村_高知県",
-      "appearances": 2
-    },
-    {
       "id": "新谷_友徠_中村_高知県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "佐竹_俐美_中村_高知県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "神田_木綿_中村_高知県",
+      "appearances": 3
+    },
+    {
+      "id": "下村_莉未_中村_高知県",
       "appearances": 2
     },
     {

@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 13,
-    "team": 2
+    "doubles": 16,
+    "team": 2,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "出雲北陵",
+        "teamId": "izumohokuryou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "今田_心_出雲北陵_島根県"
+        ]
+      },
+      "historicalBest": {
+        "team": "出雲北陵",
+        "teamId": "izumohokuryou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "今田_心_出雲北陵_島根県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,7 +96,15 @@
   "uniquePlayers": 16,
   "topPlayers": [
     {
+      "id": "髙野_愛未_出雲北陵_島根県",
+      "appearances": 4
+    },
+    {
       "id": "水永_花音_出雲北陵_島根県",
+      "appearances": 4
+    },
+    {
+      "id": "栗原_奈々_出雲北陵_島根県",
       "appearances": 3
     },
     {
@@ -77,16 +112,8 @@
       "appearances": 3
     },
     {
-      "id": "栗原_奈々_出雲北陵_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "髙野_愛未_出雲北陵_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "木村_香夏_出雲北陵_島根県",
-      "appearances": 2
+      "id": "川角_莉子_出雲北陵_島根県",
+      "appearances": 3
     }
   ]
 }

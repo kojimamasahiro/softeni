@@ -1,27 +1,23 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 34,
   "byCategory": {
-    "doubles": 22,
-    "team": 5
+    "doubles": 25,
+    "team": 5,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "能登",
         "teamId": "noto",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "5回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "岩見_莉歩_能登_石川県",
           "宮下_日香莉_能登_石川県"
         ]
       },
@@ -30,14 +26,45 @@
         "teamId": "noto",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "6回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "布施_琴音_能登_石川県",
-          "大村_友里_能登_石川県"
+          "宮下_日香莉_能登_石川県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "大村_友里_能登_石川県",
+          "中村_楓芽_能登_石川県"
+        ]
+      },
+      "historicalBest": {
+        "team": "能登",
+        "teamId": "noto",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "大村_友里_能登_石川県",
+          "中村_楓芽_能登_石川県"
         ]
       }
     },
@@ -70,23 +97,23 @@
   "topPlayers": [
     {
       "id": "岩見_莉歩_能登_石川県",
-      "appearances": 3
+      "appearances": 5
     },
     {
       "id": "宮下_日香莉_能登_石川県",
-      "appearances": 3
+      "appearances": 5
+    },
+    {
+      "id": "竹口_陽菜_能登_石川県",
+      "appearances": 5
     },
     {
       "id": "中村_楓芽_能登_石川県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "大村_友里_能登_石川県",
-      "appearances": 3
-    },
-    {
-      "id": "宮下_亜華莉_能登_石川県",
-      "appearances": 2
+      "appearances": 4
     }
   ]
 }

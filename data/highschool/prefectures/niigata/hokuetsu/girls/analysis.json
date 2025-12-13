@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 11,
-    "team": 4
+    "doubles": 13,
+    "team": 4,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "北越",
+        "teamId": "hokuetsu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "安藤_愛莉_北越_新潟県"
+        ]
+      },
+      "historicalBest": {
+        "team": "北越",
+        "teamId": "hokuetsu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "安藤_愛莉_北越_新潟県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 14,
   "topPlayers": [
     {
-      "id": "土橋_日加里_北越_新潟県",
-      "appearances": 3
+      "id": "吉澤_茉子_北越_新潟県",
+      "appearances": 4
     },
     {
-      "id": "吉澤_茉子_北越_新潟県",
-      "appearances": 2
+      "id": "土橋_日加里_北越_新潟県",
+      "appearances": 4
     },
     {
       "id": "安藤_愛莉_北越_新潟県",
-      "appearances": 2
-    },
-    {
-      "id": "冨樫_凛_北越_新潟県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "高橋_寧々_北越_新潟県",
+      "appearances": 3
+    },
+    {
+      "id": "戸松_煌理_北越_新潟県",
       "appearances": 2
     }
   ]

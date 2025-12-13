@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 11,
-    "team": 3
+    "doubles": 13,
+    "team": 3,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "松商学園",
+        "teamId": "matsushougakuen",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "中島_菜々美_松商学園_長野県"
+        ]
+      },
+      "historicalBest": {
+        "team": "松商学園",
+        "teamId": "matsushougakuen",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "中島_菜々美_松商学園_長野県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 13,
   "topPlayers": [
     {
+      "id": "中島_菜々美_松商学園_長野県",
+      "appearances": 6
+    },
+    {
       "id": "唐澤_すみれ_松商学園_長野県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "関口_みれい_松商学園_長野県",
       "appearances": 3
     },
     {
-      "id": "中島_菜々美_松商学園_長野県",
+      "id": "近藤_愛_松商学園_長野県",
       "appearances": 3
     },
     {
       "id": "中島_彩里_松商学園_長野県",
-      "appearances": 2
-    },
-    {
-      "id": "奥原_彩音_松商学園_長野県",
       "appearances": 2
     }
   ]

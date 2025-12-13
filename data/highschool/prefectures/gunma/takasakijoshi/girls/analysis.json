@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
     "doubles": 2,
-    "team": 1
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "丸山_姫衣_高崎女子_群馬県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "丸山_姫衣_高崎女子_群馬県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -60,7 +87,7 @@
   "topPlayers": [
     {
       "id": "丸山_姫衣_高崎女子_群馬県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "栁井_鈴_高崎女子_群馬県",

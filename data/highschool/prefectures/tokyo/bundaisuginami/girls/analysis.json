@@ -1,28 +1,24 @@
 {
-  "totalAppearances": 36,
+  "totalAppearances": 42,
   "byCategory": {
-    "doubles": 31,
-    "team": 5
+    "doubles": 34,
+    "team": 5,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "文大杉並",
         "teamId": "bundaisuginami",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "6回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "佐久間_結愛_文大杉並_東京都",
-          "富永_紗妃_文大杉並_東京都"
+          "後藤_千尋_文大杉並_東京都"
         ]
       },
       "historicalBest": {
@@ -30,14 +26,45 @@
         "teamId": "bundaisuginami",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "6回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "佐久間_結愛_文大杉並_東京都",
-          "富永_紗妃_文大杉並_東京都"
+          "後藤_千尋_文大杉並_東京都"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "文大杉並",
+        "teamId": "bundaisuginami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "泉屋_初希_文大杉並_東京都",
+          "千葉_翠_文大杉並_東京都"
+        ]
+      },
+      "historicalBest": {
+        "team": "文大杉並",
+        "teamId": "bundaisuginami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "泉屋_初希_文大杉並_東京都",
+          "千葉_翠_文大杉並_東京都"
         ]
       }
     },
@@ -70,23 +97,23 @@
   "topPlayers": [
     {
       "id": "千葉_翠_文大杉並_東京都",
+      "appearances": 5
+    },
+    {
+      "id": "栁川_凜_文大杉並_東京都",
+      "appearances": 4
+    },
+    {
+      "id": "富永_紗妃_文大杉並_東京都",
+      "appearances": 3
+    },
+    {
+      "id": "佐久間_結愛_文大杉並_東京都",
       "appearances": 3
     },
     {
       "id": "大門_菜奈_文大杉並_東京都",
       "appearances": 3
-    },
-    {
-      "id": "栁川_凜_文大杉並_東京都",
-      "appearances": 2
-    },
-    {
-      "id": "富永_紗妃_文大杉並_東京都",
-      "appearances": 2
-    },
-    {
-      "id": "金野_莉来_文大杉並_東京都",
-      "appearances": 2
     }
   ]
 }

@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 4
+    "doubles": 4,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "幡多農",
+        "teamId": "hatanou",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "坂本_琉哩_幡多農_高知県"
+        ]
+      },
+      "historicalBest": {
+        "team": "幡多農",
+        "teamId": "hatanou",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "坂本_琉哩_幡多農_高知県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -52,6 +79,10 @@
       "appearances": 3
     },
     {
+      "id": "坂本_琉哩_幡多農_高知県",
+      "appearances": 2
+    },
+    {
       "id": "走川_愛波_幡多農_高知県",
       "appearances": 2
     },
@@ -61,10 +92,6 @@
     },
     {
       "id": "小田_真綾_幡多農_高知県",
-      "appearances": 1
-    },
-    {
-      "id": "坂本_琉哩_幡多農_高知県",
       "appearances": 1
     }
   ]

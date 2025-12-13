@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 15,
-    "team": 2
+    "doubles": 17,
+    "team": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "福井_理央_高田商_奈良県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高田商",
+        "teamId": "takadashou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "福井_理央_高田商_奈良県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 19,
   "topPlayers": [
     {
+      "id": "福井_理央_高田商_奈良県",
+      "appearances": 5
+    },
+    {
       "id": "朝日_琴音_高田商_奈良県",
+      "appearances": 4
+    },
+    {
+      "id": "木村_莉夢_高田商_奈良県",
       "appearances": 3
     },
     {
-      "id": "福井_理央_高田商_奈良県",
+      "id": "大山_結和_高田商_奈良県",
       "appearances": 3
     },
     {
       "id": "堀_奈帆美_高田商_奈良県",
-      "appearances": 2
-    },
-    {
-      "id": "中條_世蓮_高田商_奈良県",
-      "appearances": 2
-    },
-    {
-      "id": "中田_百香_高田商_奈良県",
       "appearances": 2
     }
   ]

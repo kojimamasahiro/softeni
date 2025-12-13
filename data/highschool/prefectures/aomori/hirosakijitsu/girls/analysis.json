@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "prefectureId": "aomori",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "丹藤_海咲_弘前実_青森県",
-          "千葉_柚季_弘前実_青森県"
+          "小田桐_心愛_弘前実_青森県",
+          "佐々木_莉奈_弘前実_青森県"
         ]
       },
       "historicalBest": {
@@ -31,12 +31,12 @@
         "prefectureId": "aomori",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "丹藤_海咲_弘前実_青森県",
-          "千葉_柚季_弘前実_青森県"
+          "小田桐_心愛_弘前実_青森県",
+          "佐々木_莉奈_弘前実_青森県"
         ]
       }
     },
@@ -45,10 +45,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "三浦_爽来_弘前実_青森県",
+      "appearances": 2
+    },
+    {
+      "id": "小田桐_心愛_弘前実_青森県",
       "appearances": 2
     },
     {
@@ -57,10 +61,6 @@
     },
     {
       "id": "千葉_柚季_弘前実_青森県",
-      "appearances": 1
-    },
-    {
-      "id": "小田桐_心愛_弘前実_青森県",
       "appearances": 1
     },
     {

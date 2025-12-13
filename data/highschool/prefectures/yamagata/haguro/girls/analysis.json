@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 24,
   "byCategory": {
-    "doubles": 17,
-    "team": 3
+    "doubles": 19,
+    "team": 3,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "栗田_みらい_羽黒_山形県"
+        ]
+      },
+      "historicalBest": {
+        "team": "羽黒",
+        "teamId": "haguro",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "栗田_みらい_羽黒_山形県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,22 +97,22 @@
   "topPlayers": [
     {
       "id": "山田_蒼子_羽黒_山形県",
-      "appearances": 3
+      "appearances": 5
+    },
+    {
+      "id": "對馬_優_羽黒_山形県",
+      "appearances": 4
+    },
+    {
+      "id": "栗田_みらい_羽黒_山形県",
+      "appearances": 4
     },
     {
       "id": "今井_寧々_羽黒_山形県",
       "appearances": 3
     },
     {
-      "id": "對馬_優_羽黒_山形県",
-      "appearances": 2
-    },
-    {
       "id": "戸川_瑠花_羽黒_山形県",
-      "appearances": 2
-    },
-    {
-      "id": "三浦_綾花_羽黒_山形県",
       "appearances": 2
     }
   ]

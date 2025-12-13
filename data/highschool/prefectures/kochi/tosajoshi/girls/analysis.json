@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
     "doubles": 5,
-    "team": 1
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "土佐女子",
+        "teamId": "tosajoshi",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "北原_涼葉_土佐女子_高知県"
+        ]
+      },
+      "historicalBest": {
+        "team": "土佐女子",
+        "teamId": "tosajoshi",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "北原_涼葉_土佐女子_高知県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,7 +97,7 @@
   "topPlayers": [
     {
       "id": "北原_涼葉_土佐女子_高知県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "西内_玲花_土佐女子_高知県",

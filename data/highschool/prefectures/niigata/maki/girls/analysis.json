@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 4
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,21 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "藤田_優花_巻_新潟県",
+          "早井_史織_巻_新潟県"
+        ]
+      },
       "historicalBest": {
         "team": "巻",
         "teamId": "maki",
@@ -31,7 +45,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "石山_実来_巻_新潟県",

@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 10,
-    "team": 2
+    "doubles": 11,
+    "team": 2,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "山形城北",
+        "teamId": "yamagatajouhoku",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "三上_紗楠_山形城北_山形県"
+        ]
+      },
+      "historicalBest": {
+        "team": "山形城北",
+        "teamId": "yamagatajouhoku",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "三上_紗楠_山形城北_山形県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -78,14 +105,14 @@
     },
     {
       "id": "滝口_月姫乃_山形城北_山形県",
-      "appearances": 2
+      "appearances": 3
+    },
+    {
+      "id": "氏家_来夢_山形城北_山形県",
+      "appearances": 3
     },
     {
       "id": "安達_瑠花_山形城北_山形県",
-      "appearances": 2
-    },
-    {
-      "id": "佐藤_愛月_山形城北_山形県",
       "appearances": 2
     }
   ]

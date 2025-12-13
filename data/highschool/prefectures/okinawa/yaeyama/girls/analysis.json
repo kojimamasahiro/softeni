@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 6,
-    "team": 1
+    "doubles": 8,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "福本_安汝_八重山_沖縄県"
+        ]
+      },
+      "historicalBest": {
+        "team": "八重山",
+        "teamId": "yaeyama",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "福本_安汝_八重山_沖縄県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -59,12 +86,12 @@
   "uniquePlayers": 8,
   "topPlayers": [
     {
-      "id": "石垣_蒼_八重山_沖縄県",
-      "appearances": 2
+      "id": "福本_安汝_八重山_沖縄県",
+      "appearances": 5
     },
     {
-      "id": "福本_安汝_八重山_沖縄県",
-      "appearances": 2
+      "id": "石垣_蒼_八重山_沖縄県",
+      "appearances": 4
     },
     {
       "id": "下地_莉央_八重山_沖縄県",

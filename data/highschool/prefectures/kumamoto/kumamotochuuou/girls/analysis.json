@@ -1,28 +1,24 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 19,
   "byCategory": {
-    "doubles": 12,
-    "team": 3
+    "doubles": 14,
+    "team": 3,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "熊本中央",
         "teamId": "kumamotochuuou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "3回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "坂中_彩乃_熊本中央_熊本県",
-          "松岡_映璃_熊本中央_熊本県"
+          "竹下_真央_熊本中央_熊本県"
         ]
       },
       "historicalBest": {
@@ -30,14 +26,45 @@
         "teamId": "kumamotochuuou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "4回戦敗退",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "竹下_真央_熊本中央_熊本県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "熊本中央",
+        "teamId": "kumamotochuuou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
           "中原_光琉_熊本中央_熊本県",
-          "松岡_映璃_熊本中央_熊本県"
+          "竹下_真央_熊本中央_熊本県"
+        ]
+      },
+      "historicalBest": {
+        "team": "熊本中央",
+        "teamId": "kumamotochuuou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "中原_光琉_熊本中央_熊本県",
+          "竹下_真央_熊本中央_熊本県"
         ]
       }
     },
@@ -70,7 +97,11 @@
   "topPlayers": [
     {
       "id": "中原_光琉_熊本中央_熊本県",
-      "appearances": 3
+      "appearances": 6
+    },
+    {
+      "id": "竹下_真央_熊本中央_熊本県",
+      "appearances": 5
     },
     {
       "id": "松岡_映璃_熊本中央_熊本県",
@@ -82,10 +113,6 @@
     },
     {
       "id": "内田_なえ_熊本中央_熊本県",
-      "appearances": 2
-    },
-    {
-      "id": "川口_紗慧_熊本中央_熊本県",
       "appearances": 2
     }
   ]

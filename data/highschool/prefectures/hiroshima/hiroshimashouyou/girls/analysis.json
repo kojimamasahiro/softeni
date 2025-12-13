@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 35,
+  "totalAppearances": 46,
   "byCategory": {
-    "doubles": 30,
-    "team": 5
+    "doubles": 33,
+    "team": 5,
+    "singles": 8
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "塚本_七海_広島翔洋_広島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "広島翔洋",
+        "teamId": "hiroshimashouyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "塚本_七海_広島翔洋_広島県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,27 +93,27 @@
       }
     }
   },
-  "uniquePlayers": 31,
+  "uniquePlayers": 32,
   "topPlayers": [
     {
       "id": "塚本_七海_広島翔洋_広島県",
-      "appearances": 3
+      "appearances": 6
     },
     {
       "id": "前川_愛生_広島翔洋_広島県",
-      "appearances": 3
+      "appearances": 6
     },
     {
-      "id": "平川_奈美希_広島翔洋_広島県",
-      "appearances": 3
+      "id": "佐藤_心美_広島翔洋_広島県",
+      "appearances": 5
     },
     {
-      "id": "西村_優那_広島翔洋_広島県",
-      "appearances": 3
+      "id": "杉本_希_広島翔洋_広島県",
+      "appearances": 5
     },
     {
-      "id": "黒沢_朋花_広島翔洋_広島県",
-      "appearances": 3
+      "id": "伊藤_美咲華_広島翔洋_広島県",
+      "appearances": 4
     }
   ]
 }

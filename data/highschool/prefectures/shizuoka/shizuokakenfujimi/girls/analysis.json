@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
     "doubles": 5,
-    "team": 1
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "静岡県富士見",
+        "teamId": "shizuokakenfujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "小林_麻央_静岡県富士見_静岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "静岡県富士見",
+        "teamId": "shizuokakenfujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "小林_麻央_静岡県富士見_静岡県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,7 +97,7 @@
   "topPlayers": [
     {
       "id": "小林_麻央_静岡県富士見_静岡県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "阿部_穂花_静岡県富士見_静岡県",

@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 18,
+  "totalAppearances": 24,
   "byCategory": {
-    "doubles": 15,
-    "team": 3
+    "doubles": 18,
+    "team": 3,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "秋田令和",
+        "teamId": "akitareiwa",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "佐藤_美緒_秋田令和_秋田県"
+        ]
+      },
+      "historicalBest": {
+        "team": "秋田令和",
+        "teamId": "akitareiwa",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "佐藤_美緒_秋田令和_秋田県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -69,23 +96,23 @@
   "uniquePlayers": 17,
   "topPlayers": [
     {
-      "id": "丸岡_希来_秋田令和_秋田県",
-      "appearances": 3
+      "id": "船木_彩花_秋田令和_秋田県",
+      "appearances": 7
     },
     {
       "id": "佐藤_美緒_秋田令和_秋田県",
-      "appearances": 3
+      "appearances": 6
     },
     {
-      "id": "船木_彩花_秋田令和_秋田県",
+      "id": "丸岡_希来_秋田令和_秋田県",
+      "appearances": 4
+    },
+    {
+      "id": "田口_陽向_秋田令和_秋田県",
       "appearances": 3
     },
     {
       "id": "大越_真緒_秋田令和_秋田県",
-      "appearances": 2
-    },
-    {
-      "id": "遠藤_夢知_秋田令和_秋田県",
       "appearances": 2
     }
   ]

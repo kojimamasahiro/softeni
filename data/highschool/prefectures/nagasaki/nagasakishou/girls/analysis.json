@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 10,
-    "team": 1
+    "doubles": 13,
+    "team": 1,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "長崎商",
+        "teamId": "nagasakishou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "西村_奏音_長崎商_長崎県"
+        ]
+      },
+      "historicalBest": {
+        "team": "長崎商",
+        "teamId": "nagasakishou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "西村_奏音_長崎商_長崎県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -70,23 +97,23 @@
   "topPlayers": [
     {
       "id": "竹山_千尋_長崎商_長崎県",
-      "appearances": 3
+      "appearances": 5
     },
     {
       "id": "坂口_美沙姫_長崎商_長崎県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "西村_奏音_長崎商_長崎県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "柴原_鈴_長崎商_長崎県",
-      "appearances": 2
+      "appearances": 4
     },
     {
-      "id": "一丸_佳華_長崎商_長崎県",
-      "appearances": 1
+      "id": "堀田_菜々美_長崎商_長崎県",
+      "appearances": 3
     }
   ]
 }

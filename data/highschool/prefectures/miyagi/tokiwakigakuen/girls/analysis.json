@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,21 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "常盤木学園",
+        "teamId": "tokiwakigakuen",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "安達_心菜_常盤木学園_宮城県",
+          "伊藤_友萌_常盤木学園_宮城県"
+        ]
+      },
       "historicalBest": {
         "team": "常盤木学園",
         "teamId": "tokiwakigakuen",
@@ -31,7 +45,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "山本_渚央_常盤木学園_宮城県",
@@ -39,6 +53,14 @@
     },
     {
       "id": "鈴木_心優_常盤木学園_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "安達_心菜_常盤木学園_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "伊藤_友萌_常盤木学園_宮城県",
       "appearances": 1
     }
   ]
