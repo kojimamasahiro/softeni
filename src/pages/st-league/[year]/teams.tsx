@@ -89,9 +89,8 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
               { label: `${year}年度`, href: `/st-league/${year}/teams` }, // Tentative link, maybe should be just text if index doesn't have year
             ]}
           />
-
           <h1 className="text-2xl font-bold">{pageTitle}</h1>
-
+          <p>本年度の成績を掲載しています。</p>
           {/* Tabs */}
           <div className="flex border-b border-gray-200 dark:border-gray-700">
             <button
@@ -115,23 +114,20 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
               女子
             </button>
           </div>
-
           {/* Content */}
           <div className="space-y-12">
             {activeTeams.map((team) => (
-              <div
-                key={team.info.id}
-                className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6"
-              >
+              <>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                     {team.info.name}
-                  </h2>
+                  </h3>
                 </div>
-
-                <TeamsYearlySummary summary={team.summary} />
-                <TeamsRanking statsList={team.stats} />
-              </div>
+                <div key={team.info.id} className="">
+                  <TeamsYearlySummary summary={team.summary} />
+                  <TeamsRanking statsList={team.stats} />
+                </div>
+              </>
             ))}
 
             {activeTeams.length === 0 && (
