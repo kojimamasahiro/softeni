@@ -13,20 +13,21 @@ import {
   getAllTournamentIndex,
   getTournamentLabel,
   loadTournamentData,
+  PreloadedTournamentData,
 } from './tournament-data-loader';
 
-type Player = {
+export type Player = {
   firstName: string;
   lastName: string;
 };
 
-type TeamInfo = {
+export type TeamInfo = {
   id: string;
   name: string;
   players: Record<string, Player>;
 };
 
-type MatchOpponent = {
+export type MatchOpponent = {
   lastName: string;
   firstName: string;
   team: string;
@@ -36,7 +37,7 @@ type MatchOpponent = {
   originalTeam?: string | null;
 };
 
-type EventResult = {
+export type EventResult = {
   year: number;
   gender: string;
   gameCategory: string;
@@ -250,9 +251,13 @@ export function extractTeamDataFromTournament(
 /**
  * Aggregate all tournament results for a team
  */
-export function aggregateTeamResults(teamId: string): EventResult[] {
-  const teamNameMappings = loadTeamNameMappings();
-  const tournamentFiles = getAllTournamentFiles();
+export function aggregateTeamResults(
+  teamId: string,
+  customMappings?: TeamNameMappings,
+  preloadedData?: PreloadedTournamentData[],
+): EventResult[] {
+  const globalMappings = loadTeamNameMappings();
+  const teamNameMappings = { ...globalMappings, ...customMappings };
   const tournamentIndex = getAllTournamentIndex();
   const eventResults: EventResult[] = [];
 
@@ -281,25 +286,29 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
   // Pass 1: Identify player genders from explicitly gendered tournaments
   const playerGenders = new Map<string, 'boys' | 'girls'>();
 
-  for (const file of tournamentFiles) {
-    const tournamentData = loadTournamentData(file.filePath);
-    if (!tournamentData) continue;
-
+  // Helper to process tournament data for caching
+  const processTournament = (
+    data: TournamentDetailData,
+    descriptor: { tournamentId: string; year: number; category: string },
+  ) => {
     const extracted = extractTeamDataFromTournament(
-      tournamentData,
-      file.tournamentId,
-      file.year,
-      file.category,
+      data,
+      descriptor.tournamentId,
+      descriptor.year,
+      descriptor.category,
       teamId,
       teamNameMappings,
     );
 
     let gender: 'boys' | 'girls' | 'mixed' | 'unknown' = 'unknown';
-    if (file.category.includes('boys') || file.category.includes('men')) {
+    if (
+      descriptor.category.includes('boys') ||
+      descriptor.category.includes('men')
+    ) {
       gender = 'boys';
     } else if (
-      file.category.includes('girls') ||
-      file.category.includes('women')
+      descriptor.category.includes('girls') ||
+      descriptor.category.includes('women')
     ) {
       gender = 'girls';
     }
@@ -308,6 +317,20 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
       for (const playerId of extracted.players.keys()) {
         playerGenders.set(playerId, gender);
       }
+    }
+  };
+
+  if (preloadedData) {
+    for (const item of preloadedData) {
+      processTournament(item.data, item.descriptor);
+    }
+  } else {
+    // Fallback to reading files
+    const tournamentFiles = getAllTournamentFiles();
+    for (const file of tournamentFiles) {
+      const tournamentData = loadTournamentData(file.filePath);
+      if (!tournamentData) continue;
+      processTournament(tournamentData, file);
     }
   }
 
@@ -350,15 +373,12 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
   while (inferredNewGenders) {
     inferredNewGenders = false;
 
-    for (const file of tournamentFiles) {
+    const inferFromData = (data: TournamentDetailData, category: string) => {
       // Only process mixed tournaments
-      if (!file.category.includes('mixed')) continue;
-
-      const tournamentData = loadTournamentData(file.filePath);
-      if (!tournamentData) continue;
+      if (!category.includes('mixed')) return;
 
       // Check each entry (pair) in the mixed tournament
-      for (const entry of tournamentData.entries) {
+      for (const entry of data.entries) {
         // Mixed doubles should have exactly 2 players
         if (entry.playerIds.length !== 2) continue;
 
@@ -383,19 +403,37 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
           inferredNewGenders = true;
         }
       }
+    };
+
+    if (preloadedData) {
+      for (const item of preloadedData) {
+        inferFromData(item.data, item.descriptor.category);
+      }
+    } else {
+      const tournamentFiles = getAllTournamentFiles();
+      for (const file of tournamentFiles) {
+        const tournamentData = loadTournamentData(file.filePath);
+        if (!tournamentData) continue;
+        inferFromData(tournamentData, file.category);
+      }
     }
   }
 
   // Pass 2: Generate results
-  for (const file of tournamentFiles) {
-    const tournamentData = loadTournamentData(file.filePath);
-    if (!tournamentData) continue;
-
+  const generateResults = (
+    data: TournamentDetailData,
+    descriptor: {
+      tournamentId: string;
+      year: number;
+      category: string;
+      filePath: string;
+    },
+  ) => {
     const extracted = extractTeamDataFromTournament(
-      tournamentData,
-      file.tournamentId,
-      file.year,
-      file.category,
+      data,
+      descriptor.tournamentId,
+      descriptor.year,
+      descriptor.category,
       teamId,
       teamNameMappings,
     );
@@ -406,24 +444,24 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
       extracted.results.length === 0 &&
       extracted.matches.length === 0
     ) {
-      continue;
+      return;
     }
 
     // Get tournament information
-    const tournamentLabel = getTournamentLabel(file.tournamentId);
+    const tournamentLabel = getTournamentLabel(descriptor.tournamentId);
 
-    const tournamentName = `${tournamentLabel} ${file.year}`;
+    const tournamentName = `${tournamentLabel} ${descriptor.year}`;
 
     // Construct internal link
     const tournamentEntry = tournamentIndex.find(
-      (t) => t.tournamentId === file.tournamentId,
+      (t) => t.tournamentId === descriptor.tournamentId,
     );
     const generationId = tournamentEntry?.generationId || 'all';
 
     // Parse category filename to extract parts
     // Format: [gameCategory]-[ageCategory]-[gender].json or [gameCategory]-[gender].json
     // e.g. doubles-u14-boys.json, team-none-boys.json
-    const categoryParts = file.category.split('-');
+    const categoryParts = descriptor.category.split('-');
     let gameCategory = 'doubles';
     let ageCategory = 'none';
     let genderPart = 'boys';
@@ -437,16 +475,18 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
       genderPart = categoryParts[1];
     }
 
-    const link = `/tournaments/${generationId}/${file.tournamentId}/${file.year}/${gameCategory}/${ageCategory}/${genderPart}`;
+    const link = `/tournaments/${generationId}/${descriptor.tournamentId}/${descriptor.year}/${gameCategory}/${ageCategory}/${genderPart}`;
 
     // Get category label from information map
     let categoryLabel: string | undefined;
-    let fiscalYear = file.year;
+    let fiscalYear = descriptor.year;
 
-    const tournamentInfo = informationMap.get(file.tournamentId);
+    const tournamentInfo = informationMap.get(descriptor.tournamentId);
     if (tournamentInfo) {
       // Try to find by exact match first (assuming directory is fiscal year)
-      let yearInfo = tournamentInfo.find((info) => info.year === file.year);
+      let yearInfo = tournamentInfo.find(
+        (info) => info.year === descriptor.year,
+      );
 
       // If not found, try to find by calendar year matching start/end date
       // This handles cases where directory is named after calendar year (e.g. 2024)
@@ -459,7 +499,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
           const endYear = info.endDate
             ? parseInt(info.endDate.split('-')[0], 10)
             : startYear;
-          return startYear === file.year || endYear === file.year;
+          return startYear === descriptor.year || endYear === descriptor.year;
         });
       }
 
@@ -467,7 +507,7 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
         fiscalYear = yearInfo.year;
         if (yearInfo.categories) {
           const category = yearInfo.categories.find(
-            (cat) => cat.categoryId === file.category,
+            (cat) => cat.categoryId === descriptor.category,
           );
           if (category) {
             categoryLabel = category.label;
@@ -478,14 +518,17 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
 
     // Determine gender from category ID (filename)
     let gender = 'unknown';
-    if (file.category.includes('boys') || file.category.includes('men')) {
+    if (
+      descriptor.category.includes('boys') ||
+      descriptor.category.includes('men')
+    ) {
       gender = 'boys';
     } else if (
-      file.category.includes('girls') ||
-      file.category.includes('women')
+      descriptor.category.includes('girls') ||
+      descriptor.category.includes('women')
     ) {
       gender = 'girls';
-    } else if (file.category.includes('mixed')) {
+    } else if (descriptor.category.includes('mixed')) {
       gender = 'mixed';
     }
 
@@ -585,6 +628,19 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
         matches: extracted.matches,
       });
     }
+  };
+
+  if (preloadedData) {
+    for (const item of preloadedData) {
+      generateResults(item.data, item.descriptor);
+    }
+  } else {
+    const tournamentFiles = getAllTournamentFiles();
+    for (const file of tournamentFiles) {
+      const tournamentData = loadTournamentData(file.filePath);
+      if (!tournamentData) continue;
+      generateResults(tournamentData, file);
+    }
   }
 
   return eventResults;
@@ -593,25 +649,29 @@ export function aggregateTeamResults(teamId: string): EventResult[] {
 /**
  * Generate team information from tournament data
  */
-export function generateTeamInfo(teamId: string): TeamInfo {
-  const teamNameMappings = loadTeamNameMappings();
-  const tournamentFiles = getAllTournamentFiles();
+export function generateTeamInfo(
+  teamId: string,
+  customMappings?: TeamNameMappings,
+  preloadedData?: PreloadedTournamentData[],
+): TeamInfo {
+  const globalMappings = loadTeamNameMappings();
+  const teamNameMappings = { ...globalMappings, ...customMappings };
   const allPlayers = new Map<string, Player>();
 
   // Get canonical team name from mappings
   const key =
     Object.keys(teamNameMappings).find((id) => id === teamId) || teamId;
-  const teamName = teamNameMappings[key][0];
+  const teamName = teamNameMappings[key]?.[0] || teamId;
 
-  for (const file of tournamentFiles) {
-    const tournamentData = loadTournamentData(file.filePath);
-    if (!tournamentData) continue;
-
+  const processFile = (
+    data: TournamentDetailData,
+    descriptor: { tournamentId: string; year: number; category: string },
+  ) => {
     const extracted = extractTeamDataFromTournament(
-      tournamentData,
-      file.tournamentId,
-      file.year,
-      file.category,
+      data,
+      descriptor.tournamentId,
+      descriptor.year,
+      descriptor.category,
       teamId,
       teamNameMappings,
     );
@@ -621,6 +681,19 @@ export function generateTeamInfo(teamId: string): TeamInfo {
       if (!allPlayers.has(playerId)) {
         allPlayers.set(playerId, player);
       }
+    }
+  };
+
+  if (preloadedData) {
+    for (const item of preloadedData) {
+      processFile(item.data, item.descriptor);
+    }
+  } else {
+    const tournamentFiles = getAllTournamentFiles();
+    for (const file of tournamentFiles) {
+      const tournamentData = loadTournamentData(file.filePath);
+      if (!tournamentData) continue;
+      processFile(tournamentData, file);
     }
   }
 

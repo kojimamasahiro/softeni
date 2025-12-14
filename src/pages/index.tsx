@@ -104,6 +104,19 @@ export default function Home({ recentTournaments }: HomeProps) {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
+            {/* ✅ STリーグへのリンク */}
+            <section className="max-w-4xl mx-auto mb-8 px-4">
+              <div
+                onClick={() => (window.location.href = '/st-league')}
+                className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700 mb-4"
+              >
+                <h2 className="text-xl font-bold mb-1">STリーグ</h2>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  ソフトテニス実業団最高峰の戦い
+                </p>
+              </div>
+            </section>
+
             {/* ✅ 最近追加された大会（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
               <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>

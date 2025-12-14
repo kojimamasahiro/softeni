@@ -173,3 +173,35 @@ export function getAllTournamentIndex(): TournamentIndexEntry[] {
     return [];
   }
 }
+
+export type TournamentDescriptor = {
+  tournamentId: string;
+  year: number;
+  category: string;
+  filePath: string;
+};
+
+export type PreloadedTournamentData = {
+  descriptor: TournamentDescriptor;
+  data: TournamentDetailData;
+};
+
+/**
+ * Load all tournament data into memory
+ */
+export function loadAllTournamentData(): PreloadedTournamentData[] {
+  const files = getAllTournamentFiles();
+  const results: PreloadedTournamentData[] = [];
+
+  for (const file of files) {
+    const data = loadTournamentData(file.filePath);
+    if (data) {
+      results.push({
+        descriptor: file,
+        data,
+      });
+    }
+  }
+
+  return results;
+}

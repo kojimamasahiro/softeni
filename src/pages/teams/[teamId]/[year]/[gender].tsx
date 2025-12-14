@@ -8,15 +8,10 @@ import MetaHead from '@/components/MetaHead';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
-
-type PlayerStats = {
-  id: string;
-  name: string;
-  appearances: number;
-  wins: number;
-  losses: number;
-  winsByRound: Record<string, number>;
-};
+import {
+  calculatePlayerStats,
+  calculateTeamYearlySummary,
+} from '@/utils/team-stats-calculator';
 
 type Player = {
   firstName: string;
@@ -79,39 +74,8 @@ export default function TeamYearGenderPage({
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/${year}/${gender}`;
 
   const calculateSummary = useMemo(() => {
-    let champions = 0,
-      runnersUp = 0,
-      top8OrBetter = 0,
-      totalPairs = 0;
-
-    results.forEach((event) => {
-      const validResults = event.results.filter((r) =>
-        r.playerIds.some((pid) => pid in info.players),
-      );
-
-      validResults.forEach((r) => {
-        const teamPlayerCount = r.playerIds.filter(
-          (pid) => pid in info.players,
-        ).length;
-
-        if (r.result === '優勝') champions += teamPlayerCount;
-        if (r.result === '準優勝') runnersUp += teamPlayerCount;
-        if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(r.result)) {
-          top8OrBetter += teamPlayerCount;
-        }
-
-        totalPairs += teamPlayerCount;
-      });
-    });
-
-    return {
-      tournaments: results.length,
-      champions,
-      runnersUp,
-      top8OrBetter,
-      totalPairs,
-    };
-  }, [results, info.players]);
+    return calculateTeamYearlySummary(results, info);
+  }, [results, info]);
 
   const overallTable = useMemo(
     () =>
@@ -164,93 +128,14 @@ export default function TeamYearGenderPage({
     [results, info.players],
   );
 
-  const calculatePlayerStats = useMemo(() => {
-    // First, collect all player IDs that appear in the filtered results
-    const relevantPlayerIds = new Set<string>();
-    results.forEach((event) => {
-      event.results.forEach((summry) => {
-        summry.playerIds.forEach((pid) => {
-          if (info.players?.[pid]) {
-            relevantPlayerIds.add(pid);
-          }
-        });
-      });
-      event.matches.forEach((match) => {
-        match.pair.forEach((pid) => {
-          if (info.players?.[pid]) {
-            relevantPlayerIds.add(pid);
-          }
-        });
-      });
-    });
-
-    // Group stats by player name instead of ID to handle duplicate IDs
-    const statsByName: Record<string, PlayerStats> = {};
-
-    const initializePlayerStats = (playerName: string, pid: string) => {
-      if (!statsByName[playerName]) {
-        statsByName[playerName] = {
-          id: pid, // Use the first ID encountered
-          name: playerName,
-          appearances: 0,
-          wins: 0,
-          losses: 0,
-          winsByRound: {},
-        };
-      }
-    };
-
-    results.forEach((event) => {
-      event.results.forEach((summry) => {
-        summry.playerIds.forEach((pid) => {
-          // Only process players that appear in this gender's results
-          if (!relevantPlayerIds.has(pid)) return;
-
-          const player = info.players?.[pid];
-          if (!player) return;
-
-          const playerName = `${player.lastName} ${player.firstName}`;
-          initializePlayerStats(playerName, pid);
-
-          if (summry.result) {
-            statsByName[playerName].winsByRound[summry.result] =
-              (statsByName[playerName].winsByRound[summry.result] || 0) + 1;
-          }
-        });
-      });
-
-      const countedPlayers = new Set<string>(); // このevent内でappearancesを数えたプレイヤー名
-
-      event.matches.forEach((match) => {
-        match.pair.forEach((pid) => {
-          // Only process players that appear in this gender's results
-          if (!relevantPlayerIds.has(pid)) return;
-
-          const player = info.players?.[pid];
-          if (!player) return;
-
-          const playerName = `${player.lastName} ${player.firstName}`;
-          initializePlayerStats(playerName, pid);
-
-          // 勝敗数は全試合でカウント
-          if (match.result === 'win') statsByName[playerName].wins++;
-          else statsByName[playerName].losses++;
-
-          // 出場回数はイベントごとに1回だけ
-          if (!countedPlayers.has(playerName)) {
-            statsByName[playerName].appearances++;
-            countedPlayers.add(playerName);
-          }
-        });
-      });
-    });
-
-    return statsByName;
-  }, [results, info.players]);
+  const calculatePlayerStatsValues = useMemo(() => {
+    return calculatePlayerStats(results, info);
+  }, [results, info]);
 
   const statsList = useMemo(
-    () => Object.values(calculatePlayerStats).sort((a, b) => b.wins - a.wins),
-    [calculatePlayerStats],
+    () =>
+      Object.values(calculatePlayerStatsValues).sort((a, b) => b.wins - a.wins),
+    [calculatePlayerStatsValues],
   );
 
   return (
