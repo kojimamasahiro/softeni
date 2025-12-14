@@ -109,8 +109,28 @@ function isTeamMatch(
   targetTeamId: string,
   mappings: TeamNameMappings,
 ): boolean {
-  const normalized = normalizeTeamName(teamName, mappings);
-  return normalized === targetTeamId;
+  // Try exact match first
+  if (!teamName) return false;
+
+  let normalized = normalizeTeamName(teamName, mappings);
+  if (normalized === targetTeamId) return true;
+
+  // Try stripping suffix (e.g. "Name_Prefecture")
+  // Many tournament files use "TeamName_Prefecture" in the team field
+  if (teamName.includes('_')) {
+    const cleanName = teamName.split('_')[0];
+    normalized = normalizeTeamName(cleanName, mappings);
+    if (normalized === targetTeamId) return true;
+  }
+
+  // Also try matching if the teamName starts with any of the variations
+  // This helps when the suffix format is irregular but the prefix is clear
+  // We must be careful not to match "Yonex Niigata" to "Yonex" if "Yonex Niigata" is distinct
+  // But usually participants.json defines the exact names for distinct teams.
+  // If we only have "Yonex" defined, "Yonex Niigata" probably shouldn't match unless specified.
+  // So sticking to underscore stripping is safer than generic startsWith.
+
+  return false;
 }
 
 /**

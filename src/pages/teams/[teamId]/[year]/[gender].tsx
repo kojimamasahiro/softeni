@@ -1,6 +1,8 @@
+import fs from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import path from 'path';
 import { useMemo } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -298,6 +300,74 @@ export const getStaticProps: GetStaticProps = async (context) => {
         r.gender === gender &&
         !['team', 'versus'].includes(r.gameCategory),
     );
+
+    // Filter players based on gender context
+    // 1. Try to load from participants.json if available
+    const participantsPath = path.join(
+      process.cwd(),
+      `data/st-league/${year}/participants.json`
+    );
+
+    let targetPlayerNames: Set<string> | null = null;
+
+    if (fs.existsSync(participantsPath)) {
+      try {
+        const participantsData = JSON.parse(
+          fs.readFileSync(participantsPath, 'utf-8')
+        );
+        const genderKey = gender === 'boys' ? 'boys' : 'girls';
+        const teamList = participantsData[genderKey] as {
+          teamId: string;
+          players?: { lastName: string; firstName: string }[];
+        }[];
+
+        // Find the team in the participant list
+        // We have to use strict check or the same matching logic as aggregator
+        // But since we are looking for THIS team's legitimate roster for THIS gender:
+        const targetTeamEntry = teamList.find(t => t.teamId === teamId);
+
+        if (targetTeamEntry && targetTeamEntry.players) {
+          targetPlayerNames = new Set(
+            targetTeamEntry.players.map(p => `${p.lastName}${p.firstName}`)
+          );
+        }
+      } catch (e) {
+        console.error('Failed to parse participants.json', e);
+      }
+    }
+
+    // Reuse info, but filter players
+    const filteredPlayers: Record<string, Player> = {};
+
+    if (targetPlayerNames) {
+      // Approach 1: We have an explicit roster
+      Object.entries(info.players).forEach(([pid, player]) => {
+        const fullName = `${player.lastName}${player.firstName}`;
+        if (targetPlayerNames!.has(fullName)) {
+          filteredPlayers[pid] = player;
+        }
+      });
+    } else {
+      // Approach 2: No roster, so only show players who actually played in this gender's results
+      const activePlayerIds = new Set<string>();
+      filteredResults.forEach(r => {
+        r.results.forEach(res => {
+          res.playerIds.forEach(pid => activePlayerIds.add(pid));
+        });
+        r.matches.forEach(m => {
+          m.pair.forEach(pid => activePlayerIds.add(pid));
+        });
+      });
+
+      Object.entries(info.players).forEach(([pid, player]) => {
+        if (activePlayerIds.has(pid)) {
+          filteredPlayers[pid] = player;
+        }
+      });
+    }
+
+    // Update info with filtered players
+    info.players = filteredPlayers;
 
     if (
       !info.players ||
