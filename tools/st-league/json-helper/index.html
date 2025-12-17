@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON入力補助ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>JSON入力補助ツール</h1>
+    <form id="jsonForm">
+        <label for="matchId">試合ID:</label>
+        <input type="number" id="matchId" name="matchId" required><br>
+
+        <label for="matchDate">日付:</label>
+        <input type="date" id="matchDate" name="matchDate" required><br>
+
+        <label for="status">ステータス:</label>
+        <select id="status" name="status" required>
+            <option value="scheduled">予定</option>
+            <option value="finished">終了</option>
+        </select><br>
+
+        <label for="teamA">チームA:</label>
+        <select id="teamA" name="teamA" required>
+            <!-- Options will be populated dynamically -->
+        </select><br>
+
+        <label for="teamB">チームB:</label>
+        <select id="teamB" name="teamB" required>
+            <!-- Options will be populated dynamically -->
+        </select><br>
+
+        <label for="winner">勝者:</label>
+        <input type="text" id="winner" name="winner"><br>
+
+        <label for="scoreA">チームAのスコア:</label>
+        <input type="number" id="scoreA" name="scoreA" value="0" readonly><br>
+
+        <label for="scoreB">チームBのスコア:</label>
+        <input type="number" id="scoreB" name="scoreB" value="0" readonly><br>
+
+        <h2>試合詳細</h2>
+        <div id="matchesContainer">
+            <!-- 試合詳細を動的に追加 -->
+        </div>
+        <button type="submit">JSONを生成</button>
+    </form>
+
+    <h2>生成されたJSON</h2>
+    <!-- JSON出力を編集可能に変更 -->
+    <textarea id="output" rows="30" cols="50"></textarea>
+
+    <script src="participants.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
