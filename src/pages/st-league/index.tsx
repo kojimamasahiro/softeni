@@ -159,15 +159,22 @@ export default function STLeagueHub() {
                   </div>
                   <div className="grid md:grid-cols-3 gap-6 mt-8">
                     {menuItems.map((item) =>
-                      item.id === 'teams' || item.id === 'matches' ? (
+                      item.id === 'teams' || item.id === 'matches' || item.id === 'data' ? (
                         <div key={item.id} className="space-y-2">
                           <Link
                             href={
                               item.id === 'teams'
                                 ? `/st-league/${year}/teams`
-                                : `/st-league/${year}/matches`
+                                : item.id === 'matches'
+                                  ? `/st-league/${year}/matches`
+                                  : `/st-league/${year}/analysis`
                             }
-                            className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition block focus:outline-none focus:ring-2 focus:ring-blue-400 ${item.id === 'matches' ? 'ring-green-400' : ''}`}
+                            className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition block focus:outline-none focus:ring-2 focus:ring-blue-400 ${item.id === 'matches'
+                                ? 'ring-green-400'
+                                : item.id === 'data'
+                                  ? 'ring-purple-400'
+                                  : ''
+                              }`}
                             tabIndex={0}
                           >
                             <div
