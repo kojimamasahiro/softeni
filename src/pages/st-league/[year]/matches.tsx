@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -465,29 +464,6 @@ export default function MatchesPage({
                 )}
               </div>
             </section>
-
-            {/* 別ページへの導線 */}
-            <div className="text-center">
-              <Link
-                href={`/st-league/${year}/teams`}
-                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 transition-transform transform hover:-translate-y-0.5"
-              >
-                <span>チーム・選手別詳細データを見る</span>
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </Link>
-            </div>
           </div>
         </div>
       </main>
