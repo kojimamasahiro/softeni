@@ -266,27 +266,48 @@ export default function AnalysisPage({
           <div className="flex border-b border-gray-200 dark:border-gray-700">
             <button
               onClick={() => setActiveGender('boys')}
-              className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-                activeGender === 'boys'
+              className={`py-2 px-4 font-medium text-sm focus:outline-none ${activeGender === 'boys'
                   ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
                   : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-              }`}
+                }`}
             >
               男子
             </button>
             <button
               onClick={() => setActiveGender('girls')}
-              className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-                activeGender === 'girls'
+              className={`py-2 px-4 font-medium text-sm focus:outline-none ${activeGender === 'girls'
                   ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400'
                   : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-              }`}
+                }`}
             >
               女子
             </button>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 overflow-x-auto">
+          {/* Mobile Sort Controls */}
+          <div className="md:hidden flex items-center justify-end mb-4 space-x-2">
+            <span className="text-sm text-gray-500">並び替え:</span>
+            <select
+              value={sortConfig.key}
+              onChange={(e) => requestSort(e.target.value as SortKey)}
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="wins">勝利数</option>
+              <option value="matches">試合数</option>
+              <option value="singles">シングルス</option>
+              <option value="doubles">ダブルス</option>
+              <option value="games">得失ゲーム</option>
+            </select>
+            <button
+              onClick={() => requestSort(sortConfig.key)}
+              className="p-1.5 rounded-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500"
+            >
+              {sortConfig.direction === 'asc' ? '▲' : '▼'}
+            </button>
+          </div>
+
+          {/* Desktop Table View */}
+          <div className="hidden md:block bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 overflow-x-auto">
             <table className="w-full text-sm whitespace-nowrap">
               <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
                 <tr>
@@ -368,6 +389,85 @@ export default function AnalysisPage({
                 })}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="md:hidden space-y-3">
+            {stats.map((player, index) => {
+              const winRate =
+                player.matches > 0
+                  ? (player.wins / player.matches) * 100
+                  : 0;
+              return (
+                <div
+                  key={player.id}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700"
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <div className="flex items-center">
+                      <div
+                        className={`
+                         flex items-center justify-center w-8 h-8 rounded-full font-bold mr-3 text-sm
+                         ${index === 0
+                            ? 'bg-yellow-100 text-yellow-700'
+                            : index === 1
+                              ? 'bg-gray-100 text-gray-700'
+                              : index === 2
+                                ? 'bg-orange-100 text-orange-800'
+                                : 'bg-gray-50 text-gray-500'
+                          }
+                       `}
+                      >
+                        {index + 1}
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg leading-tight">
+                          {player.name}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {player.teamName}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold tracking-tight">
+                        {player.wins}-{player.losses}
+                      </div>
+                      <div className="text-xs text-gray-400 font-medium">
+                        {winRate.toFixed(0)}%
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-2 text-center">
+                      <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">
+                        シングルス
+                      </div>
+                      <div className="font-semibold text-sm">
+                        {player.singlesWins}-{player.singlesLosses}
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-2 text-center">
+                      <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">
+                        ダブルス
+                      </div>
+                      <div className="font-semibold text-sm">
+                        {player.doublesWins}-{player.doublesLosses}
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-2 text-center">
+                      <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">
+                        得失ゲーム
+                      </div>
+                      <div className="font-semibold text-sm">
+                        {player.gamesWon}-{player.gamesLost}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </main>
