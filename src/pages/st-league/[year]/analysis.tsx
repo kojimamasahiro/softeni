@@ -193,13 +193,10 @@ export default function AnalysisPage({
         case 'matches':
           return (a.matches - b.matches) * multiplier;
         case 'wins':
-          // Sort by Wins
-          if (a.wins !== b.wins) return (a.wins - b.wins) * multiplier;
-          // Then by Losses (fewer is better if wins are same? or just sort by winrate?)
-          // Usually if wins are same, fewer losses (higher win rate) is better.
-          // If desc (better first): More wins -> Fewer losses
-          // If asc (worse first): Fewer wins -> More losses
-          return (b.losses - a.losses) * multiplier;
+          const rateA = a.matches > 0 ? a.wins / a.matches : 0;
+          const rateB = b.matches > 0 ? b.wins / b.matches : 0;
+          if (rateA !== rateB) return (rateA - rateB) * multiplier;
+          return (a.wins - b.wins) * multiplier;
         case 'games':
           const diffA = a.gamesWon - a.gamesLost;
           const diffB = b.gamesWon - b.gamesLost;
@@ -294,7 +291,7 @@ export default function AnalysisPage({
               onChange={(e) => requestSort(e.target.value as SortKey)}
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="wins">勝利数</option>
+              <option value="wins">勝率</option>
               <option value="matches">試合数</option>
               <option value="singles">シングルス</option>
               <option value="doubles">ダブルス</option>
@@ -326,7 +323,7 @@ export default function AnalysisPage({
                     className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
                     onClick={() => requestSort('wins')}
                   >
-                    勝-敗(勝率) {getSortIcon('wins')}
+                    勝率(勝-敗) {getSortIcon('wins')}
                   </th>
                   <th
                     className="py-3 px-4 text-center font-medium text-xs text-gray-500 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
@@ -371,10 +368,10 @@ export default function AnalysisPage({
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="font-bold mr-1">
-                          {player.wins}-{player.losses}
+                          {winRate.toFixed(0)}%
                         </span>
                         <span className="text-gray-400 text-xs">
-                          ({winRate.toFixed(0)}%)
+                          ({player.wins}-{player.losses})
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center text-sm text-gray-600 dark:text-gray-400">
@@ -432,10 +429,10 @@ export default function AnalysisPage({
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-bold tracking-tight">
-                        {player.wins}-{player.losses}
+                        {winRate.toFixed(0)}%
                       </div>
                       <div className="text-xs text-gray-400 font-medium">
-                        {winRate.toFixed(0)}%
+                        {player.wins}-{player.losses}
                       </div>
                     </div>
                   </div>
