@@ -10,10 +10,10 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
-PAGE_NUMS = list(range(15, 16))      # 抽出するページ番号のリスト（1から開始）
+PAGE_NUMS = list(range(1, 5))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
-Y_CROP_MIN = 120                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MIN = 10                  # ★ 抽出範囲の最小Y座標 (上端)
 Y_CROP_MAX = 800                 # ★ 抽出範囲の最大Y座標 (下端)
 
 # ★ 名前分割方法の選択
@@ -26,27 +26,27 @@ if USE_NAMEDIVIDER:
     from namedivider import BasicNameDivider
     name_divider = BasicNameDivider()
 
-X_LEFT_NAME_MIN = 0    # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 0  # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 0 # 左側 名の最小X座標
-X_LEFT_NAME_MAX = 0 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 145    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 190    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 55    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 140   # チーム名の最大X座標
-X_LEFT_ENTRY_MIN = 30    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MIN = 20    # 左側エントリー番号の最小X座標
 X_LEFT_ENTRY_MAX = 55    # 左側エントリー番号の最大X座標
+X_LEFT_NAME_MIN = 55    # 左側 姓の最小X座標
+X_LEFT_SURNAME_MAX = 95  # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 95 # 左側 名の最小X座標
+X_LEFT_NAME_MAX = 127 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 132    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 160    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 228   # チーム名の最大X座標
 
-X_RIGHT_NAME_MIN = 0   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 0   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 0 # 右側 名の最小X座標
-X_RIGHT_NAME_MAX = 0 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 490  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 530  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 395  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 480  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 545  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 560  # 右側エントリー番号の最大X座標
+X_RIGHT_NAME_MIN = 360   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 395   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 395 # 右側 名の最小X座標
+X_RIGHT_NAME_MAX = 430 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 435  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 465  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 465  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 530  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 535  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 580  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -83,7 +83,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         return []
 
     ################## 指定する
-    extraction_strategy = team_extraction_strategy
+    extraction_strategy = doubles_extraction_strategy
 
     # 座標設定を決定
     if USE_NAMEDIVIDER:
@@ -205,6 +205,90 @@ def singles_extraction_strategy(line_data, data_df, X_SETTINGS):
                 'Team_Name': team,
                 'Entry_Number': entry_number
             })
+    return RESULTS
+
+# doubles
+def doubles_extraction_strategy(line_data, data_df, X_SETTINGS):
+    """
+    標準的な抽出戦略: 1行ずつ走査してデータを抽出する
+    """
+    RESULTS = []
+    for i in range(len(line_data)):
+        line_1 = line_data.iloc[i] # 選手Aの行
+
+        # スコア行などのフィルタリング
+        text_check = line_1['full_text'].strip()
+        # 非常に短いテキスト、数字・記号のみ、またはスコアパターンの場合はスキップ
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            i += 1
+            continue
+
+        p1 = check_line_presence(line_1, data_df, X_SETTINGS)
+        
+        # -----------------------------------------------------------------
+        # ★ 統一された3行セットの処理 (行 i, i+1, i+2 を使用)
+        # -----------------------------------------------------------------
+        if i + 2 < len(line_data):
+            line_2 = line_data.iloc[i + 1] # エントリー番号/エリア/チームの行
+            line_3 = line_data.iloc[i + 2] # 選手Bの行
+
+            # 2行目からすべての情報を抽出
+            # raw_name_2 は通常空（選手名なし）のはず
+            raw_surname_2, raw_firstname_2, raw_name_2, area_2, team_2, entry_text_2 = extract_single_line_content(line_2, data_df, X_SETTINGS)
+            
+            # 必須条件: 2行目に有効な数字（エントリー番号）が存在すること
+            is_entry_line = entry_text_2 and entry_text_2.isdigit()
+            
+            if is_entry_line:
+                p3 = check_line_presence(line_3, data_df, X_SETTINGS)
+
+                # 判定条件: 1行目と3行目に選手名が存在すること
+                is_valid_3_line_group = p1['player'] and p3['player']
+
+                if is_valid_3_line_group:
+                    
+                    # 選手Aと選手Bの行からデータを抽出 (2行目から取れるデータは無視)
+                    surname_a, firstname_a, raw_name_a, area_a, team_a, _ = extract_single_line_content(line_1, data_df, X_SETTINGS)
+                    surname_b, firstname_b, raw_name_b, area_b, team_b, _ = extract_single_line_content(line_3, data_df, X_SETTINGS)
+
+                    # 選手Aと選手Bのどちらからも有効なデータ（選手名）が取得できた場合
+                    if surname_a and firstname_a and surname_b and firstname_b: 
+                        
+                        # 1. エントリー番号を2行目から確定
+                        entry_number = int(entry_text_2)
+
+                        # 選手Aの情報を追加
+                        # _, _, raw_name_a, split_index_a = get_name_split_info(raw_name_a) 
+                        RESULTS.append({
+                            'Surname': surname_a, 'First_Name': firstname_a,
+                            'Player_Name_Raw': raw_name_a, 'Split_Index': len(surname_a),
+                            'Area_Name': area_2 if area_2 else area_a,
+                            'Team_Name': team_2 if team_2 else team_a,
+                            'Entry_Number': entry_number
+                        })
+                        
+                        # 選手Bの情報を追加
+                        # _, _, raw_name_b, split_index_b = get_name_split_info(raw_name_b) 
+                        RESULTS.append({
+                            'Surname': surname_b, 'First_Name': firstname_b,
+                            'Player_Name_Raw': raw_name_b, 'Split_Index': len(surname_b),
+                            'Area_Name': area_2 if area_2 else area_b,
+                            'Team_Name': team_2 if team_2 else team_b,
+                            'Entry_Number': entry_number
+                        })
+                        
+                        i += 3 
+                        continue
+                    else:
+                        print(f"警告: 行 {i+1} と {i+3} から選手名が抽出できません。")  
+                else:
+                    print(f"警告: No. {entry_text_2} が無効です。")
+            
+        # 3行セットとして成立しない場合、またはエントリー番号の行でない場合は1行進める
+        i += 1
+        
     return RESULTS
 
 # インターハイ
