@@ -58,11 +58,6 @@ export default function App({ Component, pageProps }: AppProps) {
     });
   };
 
-  // デバッグ用（一時的に）
-  if (process.env.NODE_ENV === 'production') {
-    console.log('GA_ID:', GA_ID);
-  }
-
   return (
     <>
       {/* GA ID があるときだけ読み込む */}
