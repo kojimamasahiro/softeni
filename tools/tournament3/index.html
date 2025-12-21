@@ -61,6 +61,9 @@
     // カテゴリ
     const category = initialPlayers[0].category; // doubles, singles, team, prefecture など
 
+    // 編集フラグ（ブラウザバック等の警告用）
+    let isDirty = false;
+
     // パッキン用ダミー
     const byePlayer = { id: 'bye', name: '1回戦免除', information: [] };
 
@@ -526,6 +529,7 @@
       const mIdx = currentFocus.match;
       const side = currentFocus.player;
 
+      isDirty = true;
       const match = bracket[rIdx].matches[mIdx];
       const opp = side === 'p1' ? 'p2' : 'p1';
       match[`${side}Retired`] = true;
@@ -781,6 +785,7 @@
         }
       }
 
+      isDirty = true;
       rebuildBracketWithPackin();
       renderBracket();
       updateJsonOutput();
@@ -949,6 +954,16 @@
       }
     });
 
+    // ブラウザバック・タブ閉じ警告
+    window.addEventListener('beforeunload', (e) => {
+      if (isDirty) {
+        // 標準的なブラウザ警告を表示（メッセージ内容は最近のブラウザでは無視されることが多いが、
+        // 戻り値を設定することでプロンプトが表示される）
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+
     // ========================================
     // キーボードショートカット機能ここまで
     // ========================================
@@ -977,6 +992,7 @@
       const mIdx = Number(btn.dataset.match);
       const side = btn.dataset.player;
       const score = Number(btn.dataset.score);
+      isDirty = true;
       setScore(rIdx, mIdx, side, score);
     }
 
@@ -1034,6 +1050,7 @@
         }
       }
 
+      isDirty = true;
       // Rebuild bracket with new packin configuration
       rebuildBracketWithPackin();
       renderBracket();
@@ -1061,6 +1078,7 @@
       // Clear p2PackinMarked when toggling manually (reset to standard single-seed behavior)
       match.p2PackinMarked = false;
 
+      isDirty = true;
       // Rebuild bracket with new packin configuration
       rebuildBracketWithPackin();
       renderBracket();
