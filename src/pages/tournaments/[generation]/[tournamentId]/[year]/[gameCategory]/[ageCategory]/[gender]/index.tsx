@@ -8,6 +8,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { KantanLink } from '@/components/Ads/KantanLink';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
@@ -226,6 +227,8 @@ export default function TournamentYearResultPage({
                 ))}
             </section>
           )}
+
+          <KantanLink />
 
           <div className="text-right mt-10 mb-2">
             <Link
