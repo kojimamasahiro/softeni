@@ -280,7 +280,7 @@ export default function PlayersPage({
               >
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                    {group.playerId ? (
+                    {group.playerId && group.count >= 5 ? (
                       <Link
                         href={`/players/${group.playerId}/results`}
                         className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -381,10 +381,18 @@ export default function PlayersPage({
                     選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードで検索するか、検索条件を緩めてお試しください。
                   </p>
                   <button
-                    onClick={() => setSearchQuery('')}
+                    onClick={() => {
+                      if (filterMinCount === 20 || filterMinCount === 10) {
+                        setFilterMinCount(2);
+                      } else {
+                        setSearchQuery('');
+                      }
+                    }}
                     className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    検索をクリアして全件表示
+                    {filterMinCount === 20 || filterMinCount === 10
+                      ? '条件を緩めて再検索 (最小出場回数を2回に設定)'
+                      : '検索をクリアして全件表示'}
                   </button>
                 </div>
               ) : (
