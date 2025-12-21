@@ -452,8 +452,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         id: number;
         lastName: string;
         firstName: string;
+        count: number;
       }>;
       for (const p of playersIndex) {
+        if (p.count < 5) continue;
+
         const key = `${p.lastName}::${p.firstName}`;
         // If multiple IDs exist, the first one is used (similar to players/index.tsx)
         if (!playerIndexMap.has(key)) {
