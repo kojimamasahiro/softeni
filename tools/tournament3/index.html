@@ -633,11 +633,11 @@
         <div class="keyboard-help-section">
           <h3>🧭 ナビゲーション</h3>
           <div class="keyboard-help-item">
-            <div class="keyboard-help-key">↑ / ↓</div>
+            <div class="keyboard-help-key">I / M</div>
             <div class="keyboard-help-description">試合を上下に移動</div>
           </div>
           <div class="keyboard-help-item">
-            <div class="keyboard-help-key">← / →</div>
+            <div class="keyboard-help-key">J / K</div>
             <div class="keyboard-help-description">同じ試合内で選手を切り替え</div>
           </div>
           <div class="keyboard-help-item">
@@ -876,26 +876,26 @@
         return;
       }
 
-      // 矢印キーでナビゲーション
-      if (e.key === 'ArrowUp') {
+      // I/M/J/K キーでナビゲーション
+      if (e.key === 'i' || e.key === 'I' || e.key === 'ArrowUp') {
         e.preventDefault();
         focusMatchUp();
         return;
       }
 
-      if (e.key === 'ArrowDown') {
+      if (e.key === 'm' || e.key === 'M' || e.key === 'ArrowDown') {
         e.preventDefault();
         focusMatchDown();
         return;
       }
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key === 'j' || e.key === 'J' || e.key === 'ArrowLeft') {
         e.preventDefault();
         focusPlayerLeft();
         return;
       }
 
-      if (e.key === 'ArrowRight') {
+      if (e.key === 'k' || e.key === 'K' || e.key === 'ArrowRight') {
         e.preventDefault();
         focusPlayerRight();
         return;
