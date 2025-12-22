@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
+  env: {
+    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+  },
   webpack: (config) => {
     config.resolve.fallback = { fs: false, path: false };
     return config;

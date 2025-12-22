@@ -12,7 +12,6 @@ import Header from '@/components/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-  console.log('Debug GA_ID:', GA_ID);
 
   const [hasConsent, setHasConsent] = useState(false);
   const router = useRouter();
