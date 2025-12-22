@@ -1,3 +1,5 @@
+console.log('BUILD TIME GA_ID:', process.env.NEXT_PUBLIC_GA_ID); // これを追記
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export', // Static export for Cloudflare Pages
