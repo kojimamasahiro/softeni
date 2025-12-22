@@ -2,3 +2,7 @@ name = "softeni-pick"
 compatibility_date = "2024-11-30"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "out"
+
+# 以下の2行を追加
+[vars]
+NEXT_PUBLIC_GA_ID = "G-1K5LX0RGJ7"
