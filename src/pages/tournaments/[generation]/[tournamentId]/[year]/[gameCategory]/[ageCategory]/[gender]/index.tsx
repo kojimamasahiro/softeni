@@ -8,7 +8,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import AffiliateLink from '@/components/AffiliateLink';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
@@ -241,8 +240,6 @@ export default function TournamentYearResultPage({
               大会結果一覧
             </Link>
           </div>
-
-          <AffiliateLink />
 
           {detailData && (
             <>

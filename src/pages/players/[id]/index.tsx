@@ -9,7 +9,6 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import { PlayerInfo } from '@/types/index';
-import AffiliateLink from '@/components/AffiliateLink';
 
 type Props = {
   player: PlayerInfo;
@@ -255,8 +254,6 @@ export default function PlayerInformation({
             ))}
           </ul>
         </section>
-
-        <AffiliateLink />
       </div>
     </>
   );

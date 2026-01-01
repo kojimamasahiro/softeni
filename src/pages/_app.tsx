@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
+import AffiliateLink from '@/components/AffiliateLink';
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -90,6 +91,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <main className="flex-1">
           <Component {...pageProps} />
         </main>
+        <AffiliateLink />
         <Footer />
       </div>
 
