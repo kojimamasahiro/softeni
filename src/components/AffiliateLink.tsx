@@ -2,7 +2,7 @@
 
 export default function AffiliateLink() {
   return (
-    <>
+    <div className="flex justify-center">
       {/* START MoshimoAffiliateEasyLink */}
       <script
         type="text/javascript"
@@ -14,6 +14,6 @@ export default function AffiliateLink() {
         リンク
       </div>
       {/* MoshimoAffiliateEasyLink END */}
-    </>
+    </div>
   );
 }
