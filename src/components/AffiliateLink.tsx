@@ -1,6 +1,30 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 export default function AffiliateLink() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent;
+    const mobileRegex =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    setIsMobile(mobileRegex.test(userAgent));
+  }, []);
+
+  if (isMobile) {
+    // モバイル用のアフィリエイトリンク
+    return (
+      <div className="flex justify-center mb-4 mt-6">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `<a href="//af.moshimo.com/af/c/click?a_id=5325564&p_id=55&pc_id=55&pl_id=631" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" attributionsrc><img src="//image.moshimo.com/af-img/0032/000000000631.gif" width="468" height="60" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=5325564&p_id=55&pc_id=55&pl_id=631" width="1" height="1" style="border:none;" loading="lazy">`,
+          }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="flex justify-center">
       {/* START MoshimoAffiliateEasyLink */}
