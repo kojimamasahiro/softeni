@@ -150,7 +150,7 @@ export default function TournamentListPage({
 
           <section className="mb-10">
             <h1 className="text-2xl font-bold mb-4">
-              大会一覧 | ソフトテニス主要大会
+              主要大会一覧
             </h1>
             <p className="text-lg leading-relaxed mb-4">
               こちらは、Softeni
