@@ -171,7 +171,7 @@ export default function TournamentListPage({
                       地域大会
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300">
-                      各都道府県の連盟が主催する大会の結果はこちらからご覧いただけます。
+                      各都道府県の連盟や企業が主催する大会の結果はこちらからご覧いただけます。
                     </p>
                   </div>
                   <div className="text-blue-600 dark:text-blue-400">

@@ -52,7 +52,7 @@ export default function LocalTournamentsPage({
         <>
             <MetaHead
                 title={'地域大会一覧 | ソフトテニス情報'}
-                description={`各都道府県の連盟などが開催する大会結果一覧。`}
+                description={`各都道府県の連盟や企業が主催する大会の結果一覧。`}
                 url={pageUrl}
                 type="article"
             />
@@ -69,7 +69,7 @@ export default function LocalTournamentsPage({
 
                     <h1 className="text-2xl font-bold mb-6">地域大会</h1>
                     <p className="text-gray-600 dark:text-gray-300 mb-8">
-                        各都道府県の連盟が主催する大会の結果を掲載しています。
+                        各都道府県の連盟や企業が主催する大会の結果を掲載しています。
                         連盟公式サイトへのリンクもご活用ください。
                     </p>
 
