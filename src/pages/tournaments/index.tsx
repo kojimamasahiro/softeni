@@ -8,12 +8,11 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-
 import {
   CategoryLink,
   TournamentBlock,
   TournamentCard,
-  YearGroup
+  YearGroup,
 } from '@/components/tournaments/TournamentCard';
 
 // Since GenerationKey was just `string` alias locally, I can either import it if I exported it (I didn't) or keep it here.
@@ -192,9 +191,7 @@ export default function TournamentListPage({
                 </div>
               </Link>
             </div>
-            <h1 className="text-2xl font-bold mb-4">
-              主要大会一覧
-            </h1>
+            <h1 className="text-2xl font-bold mb-4">主要大会一覧</h1>
             <p className="text-lg leading-relaxed mb-4">
               こちらは、Softeni
               Pickが収録しているソフトテニスの大会一覧ページです。

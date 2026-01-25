@@ -75,7 +75,10 @@ export default function TournamentYearResultPage({
 
   if (federationId && prefectureName) {
     breadcrumbs.push({ label: '地域大会', href: '/tournaments/local' });
-    breadcrumbs.push({ label: prefectureName, href: `/tournaments/local/${federationId}` });
+    breadcrumbs.push({
+      label: prefectureName,
+      href: `/tournaments/local/${federationId}`,
+    });
   }
 
   breadcrumbs.push({
@@ -579,12 +582,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const prefPath = path.join(process.cwd(), 'data', 'prefectures.json');
     if (fs.existsSync(prefPath)) {
       try {
-        const prefs = JSON.parse(fs.readFileSync(prefPath, 'utf-8'));
-        const target = prefs.find((p: any) => p.id === federationId);
+        const prefs = JSON.parse(fs.readFileSync(prefPath, 'utf-8')) as Array<{
+          id: string;
+          name: string;
+        }>;
+        const target = prefs.find((p) => p.id === federationId);
         if (target) {
           prefectureName = target.name;
         }
-      } catch (e) {
+      } catch {
         // ignore
       }
     }
