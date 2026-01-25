@@ -42,6 +42,8 @@ interface TournamentYearResultPageProps {
   linkCategories: LinkCategory[] | null;
   infoWarnings?: string[];
   detailsWarnings?: string[];
+  federationId?: string | null;
+  prefectureName?: string | null;
 }
 
 export default function TournamentYearResultPage({
@@ -58,11 +60,28 @@ export default function TournamentYearResultPage({
   linkCategories,
   infoWarnings = [],
   detailsWarnings = [],
+  federationId = null,
+  prefectureName = null,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const breadcrumbs = [
+    { label: 'ホーム', href: '/' },
+    { label: '大会結果一覧', href: '/tournaments' },
+  ];
+
+  if (federationId && prefectureName) {
+    breadcrumbs.push({ label: '地域大会', href: '/tournaments/local' });
+    breadcrumbs.push({ label: prefectureName, href: `/tournaments/local/${federationId}` });
+  }
+
+  breadcrumbs.push({
+    label: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
+    href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}${gender}`,
+  });
 
   return (
     <>
@@ -98,26 +117,12 @@ export default function TournamentYearResultPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: '大会結果一覧',
-                  item: 'https://softeni-pick.com/tournaments',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
-                  item: pageUrl,
-                },
-              ],
+              itemListElement: breadcrumbs.map((crumb, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: crumb.label,
+                item: `https://softeni-pick.com${crumb.href}`,
+              })),
             }),
           }}
         />
@@ -130,16 +135,7 @@ export default function TournamentYearResultPage({
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
         <div className="max-w-3xl mx-auto">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: '大会結果一覧', href: '/tournaments' },
-              {
-                label: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
-                href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}${gender}`,
-              },
-            ]}
-          />
+          <Breadcrumbs crumbs={breadcrumbs} />
 
           {/* ✅ h1 + 大会紹介文 */}
           <h1 className="text-2xl font-bold mb-4">
@@ -326,31 +322,43 @@ export const getStaticPaths: GetStaticPaths = async () => {
     'tournaments',
     'index.json',
   );
+  const localIndexPath = path.join(
+    process.cwd(),
+    'data',
+    'tournaments',
+    'local_index.json',
+  );
   const tournamentGenerationMap: Record<string, string> = {};
-  if (fs.existsSync(indexPath)) {
-    try {
-      const idx = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as unknown;
-      if (Array.isArray(idx)) {
-        for (const it of idx) {
-          if (it && typeof it === 'object') {
-            const entry = it as Record<string, unknown>;
-            const tidVal = entry['tournamentId'];
-            if (typeof tidVal === 'string' || typeof tidVal === 'number') {
-              const tid = String(tidVal);
-              const genVal = entry['generationId'];
-              const gen =
-                typeof genVal === 'string' || typeof genVal === 'number'
-                  ? String(genVal)
-                  : 'unknown';
-              tournamentGenerationMap[tid] = gen;
+
+  const loadIndex = (p: string) => {
+    if (fs.existsSync(p)) {
+      try {
+        const idx = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        if (Array.isArray(idx)) {
+          for (const it of idx) {
+            if (it && typeof it === 'object') {
+              const entry = it as Record<string, unknown>;
+              const tidVal = entry['tournamentId'];
+              if (typeof tidVal === 'string' || typeof tidVal === 'number') {
+                const tid = String(tidVal);
+                const genVal = entry['generationId'];
+                const gen =
+                  typeof genVal === 'string' || typeof genVal === 'number'
+                    ? String(genVal)
+                    : 'unknown';
+                tournamentGenerationMap[tid] = gen;
+              }
             }
           }
         }
+      } catch (err) {
+        void err;
       }
-    } catch (err) {
-      void err; // ignore parse errors; we'll fallback to 'unknown' per-tournament
     }
-  }
+  };
+
+  loadIndex(indexPath);
+  loadIndex(localIndexPath);
 
   for (const tid of tournamentIds) {
     const tidDir = path.join(detailsRoot, tid);
@@ -408,26 +416,39 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'tournaments',
     'index.json',
   );
-  let tournamentIndex: unknown = null;
+  const localIndexPath = path.join(
+    process.cwd(),
+    'data',
+    'tournaments',
+    'local_index.json',
+  );
+
   let tournamentIndexEntry: TournamentIndexEntry | null = null;
-  if (fs.existsSync(indexPath)) {
-    try {
-      tournamentIndex = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
-      if (Array.isArray(tournamentIndex)) {
-        for (const it of tournamentIndex) {
-          if (it && typeof it === 'object') {
-            const entry = it as TournamentIndexEntry;
-            const tidVal = entry['tournamentId'];
-            if (tidVal === tournamentId) {
-              tournamentIndexEntry = entry;
+
+  const loadIndexEntry = (p: string) => {
+    if (fs.existsSync(p)) {
+      try {
+        const index = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        if (Array.isArray(index)) {
+          for (const it of index) {
+            if (it && typeof it === 'object') {
+              const entry = it as TournamentIndexEntry;
+              if (entry['tournamentId'] === tournamentId) {
+                return entry;
+              }
             }
           }
         }
+      } catch (err) {
+        console.error(`failed to parse index json: ${p}`, err);
       }
-    } catch (err) {
-      // 必要なら警告配列に push する等のハンドリングを追加
-      console.error('failed to parse tournament index.json', err);
     }
+    return null;
+  };
+
+  tournamentIndexEntry = loadIndexEntry(indexPath);
+  if (!tournamentIndexEntry) {
+    tournamentIndexEntry = loadIndexEntry(localIndexPath);
   }
   const playersIndexPath = path.join(
     process.cwd(),
@@ -550,6 +571,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
     );
   }
 
+  // Resolving Federation / Prefecture info if available
+  const federationId = tournamentIndexEntry?.federationId ?? null;
+  let prefectureName: string | null = null;
+
+  if (federationId) {
+    const prefPath = path.join(process.cwd(), 'data', 'prefectures.json');
+    if (fs.existsSync(prefPath)) {
+      try {
+        const prefs = JSON.parse(fs.readFileSync(prefPath, 'utf-8'));
+        const target = prefs.find((p: any) => p.id === federationId);
+        if (target) {
+          prefectureName = target.name;
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+  }
+
   return {
     props: ((): Record<string, unknown> => {
       return {
@@ -570,6 +610,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         linkCategories,
         infoWarnings,
         detailsWarnings,
+        federationId,
+        prefectureName,
       };
     })(),
   };

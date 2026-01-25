@@ -2,12 +2,12 @@
 // from client-side code without causing bundler resolution errors. Use
 // dynamic imports of 'fs' and 'path' inside server-only functions.
 import type {
-  TournamentDetailData,
-  TournamentIndexEntry,
-  TournamentInformationEntry,
+    TournamentDetailData,
+    TournamentIndexEntry,
+    TournamentInformationEntry,
 } from '@/types/tournament';
 
-// Load tournament index.json as array
+// Load tournament index.json and local_index.json as array
 export const loadTournamentIndex = async (
   root?: string,
 ): Promise<TournamentIndexEntry[]> => {
@@ -16,14 +16,34 @@ export const loadTournamentIndex = async (
   const fs = await import('fs');
   const path = await import('path');
   const cwd = root || process.cwd();
+  
+  let result: TournamentIndexEntry[] = [];
+  
+  // 1. data/tournaments/index.json
   const indexPath = path.join(cwd, 'data', 'tournaments', 'index.json');
-  if (!fs.existsSync(indexPath)) return [];
-  try {
-    const raw = fs.readFileSync(indexPath, 'utf-8');
-    return JSON.parse(raw) as TournamentIndexEntry[];
-  } catch {
-    return [];
+  if (fs.existsSync(indexPath)) {
+    try {
+      const raw = fs.readFileSync(indexPath, 'utf-8');
+      const data = JSON.parse(raw) as TournamentIndexEntry[];
+      if (Array.isArray(data)) result = result.concat(data);
+    } catch {
+      // ignore
+    }
   }
+
+  // 2. data/tournaments/local_index.json
+  const localIndexPath = path.join(cwd, 'data', 'tournaments', 'local_index.json');
+  if (fs.existsSync(localIndexPath)) {
+    try {
+      const raw = fs.readFileSync(localIndexPath, 'utf-8');
+      const data = JSON.parse(raw) as TournamentIndexEntry[];
+      if (Array.isArray(data)) result = result.concat(data);
+    } catch {
+      // ignore
+    }
+  }
+
+  return result;
 };
 
 // Load all information/*.json files into a map keyed by tournamentId

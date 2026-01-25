@@ -6,6 +6,7 @@ export interface TournamentIndexEntry {
   label: string;
   isMajorTitle: boolean;
   officialUrl: string;
+  federationId?: string;
 }
 
 export interface TournamentCategoryInfo {

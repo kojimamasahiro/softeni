@@ -9,28 +9,20 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 
+import {
+  CategoryLink,
+  TournamentBlock,
+  TournamentCard,
+  YearGroup
+} from '@/components/tournaments/TournamentCard';
+
+// Since GenerationKey was just `string` alias locally, I can either import it if I exported it (I didn't) or keep it here.
+// I didn't export GenerationKey in Previous step. Let's keep it local or modify the previous file.
+// Actually, `TournamentBlock` in the component uses `generation: string`.
+// The local file used `generation: GenerationKey`.
+// Let's adjust imports.
+
 type GenerationKey = string;
-
-type CategoryLink = {
-  year: number;
-  gameCategory: string;
-  ageCategory: string;
-  gender: string;
-  categoryLabel: string;
-  isCurrent?: boolean;
-};
-
-type YearGroup = {
-  year: number;
-  links: CategoryLink[];
-};
-
-type TournamentBlock = {
-  id: string;
-  name: string;
-  generation: GenerationKey;
-  groups: YearGroup[];
-};
 
 type Props = {
   generationOrder: GenerationKey[];
@@ -149,6 +141,57 @@ export default function TournamentListPage({
           />
 
           <section className="mb-10">
+            <div className="mb-8">
+              <Link
+                href="/tournaments/local"
+                className="block bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 rounded-lg p-6 shadow-sm hover:shadow-md transition group"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                      地域大会
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      各都道府県の連盟が主催する大会の結果はこちらからご覧いただけます。
+                    </p>
+                  </div>
+                  <div className="text-blue-600 dark:text-blue-400">
+                    <svg
+                      className="w-8 h-8 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            </div>
             <h1 className="text-2xl font-bold mb-4">
               主要大会一覧
             </h1>
@@ -173,41 +216,7 @@ export default function TournamentListPage({
 
                 <div className="space-y-8">
                   {tournamentsByGeneration[gen].map((t) => (
-                    <div
-                      key={`${gen}-${t.id}`}
-                      className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow"
-                    >
-                      <h3 className="text-lg font-semibold mb-4 border-b text-gray-800 dark:text-white">
-                        {t.name}
-                      </h3>
-
-                      {/* 年ごとにカテゴリチップを並べる */}
-                      {t.groups
-                        .sort((a, b) => b.year - a.year)
-                        .map((group) => (
-                          <div
-                            className="mb-4"
-                            key={`${gen}-${t.id}-${group.year}`}
-                          >
-                            <h4 className="text-md mb-2">{group.year}年</h4>
-                            <ul className="flex flex-wrap gap-2">
-                              {group.links.map((link) => (
-                                <li
-                                  key={`${gen}-${t.id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
-                                >
-                                  <Link
-                                    href={`/tournaments/${gen}/${t.id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
-                                  >
-                                    <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                                      {link.categoryLabel}
-                                    </span>
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                    </div>
+                    <TournamentCard key={`${gen}-${t.id}`} tournament={t} />
                   ))}
                 </div>
               </section>

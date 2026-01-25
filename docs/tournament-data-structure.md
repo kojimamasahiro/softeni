@@ -7,6 +7,8 @@
 ```
 data/tournament/
 ├── index.json                    # 大会マスタデータ
+├── local_index.json              # 地方大会マスタデータ
+├── federations.json              # 連盟情報マスタデータ
 ├── genarations.json              # 世代区分マスタデータ
 ├── information/                  # 大会開催情報
 │   ├── {tournamentId}.json
@@ -34,6 +36,7 @@ export interface TournamentIndexEntry {
   label: string;               // 大会名（例: "ハイスクールジャパンカップ"）
   isMajorTitle: boolean;       // 主要タイトルかどうか
   officialUrl: string;         // 公式サイトURL
+  federationId?: string;       // 連盟ID（local_index.jsonで使用）
 }
 ```
 
@@ -54,6 +57,60 @@ export interface TournamentIndexEntry {
 - `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`
   - `getStaticPaths`: tournamentId → generationId のマッピングに使用
   - `getStaticProps`: 大会名（label）の取得に使用
+
+---
+
+### 1-1. `local_index.json` - 地方大会マスタデータ
+
+地域連盟主催などの大会情報を定義するマスタファイル。構造は `index.json` とほぼ同じですが、`federationId` が必須となる場合があります。
+
+#### データ構造
+
+```typescript
+export interface LocalTournamentIndexEntry extends TournamentIndexEntry {
+  federationId: string;        // 連盟ID（data/prefectures.json のIDと一致）
+}
+```
+
+#### 使用例
+
+```json
+{
+  "tournamentId": "tokyo-highschool-spring",
+  "generationId": "highschool",
+  "federationId": "tokyo",
+  "label": "東京都高等学校 ソフトテニス春季大会",
+  "officialUrl": "http://www.soft-tennis.com/tokyo/h/index.html"
+}
+```
+
+---
+
+### 1-2. `federations.json` - 連盟情報マスタデータ
+
+各地域の連盟情報を定義します。
+
+#### データ構造
+
+```typescript
+interface FederationEntry {
+  federationId: string;        // 連盟ID（例: "tokyo"）
+  region: string;              // 地域区分（例: "関東"）
+  label: string;               // 連盟名（例: "東京都ソフトテニス連盟"）
+  officialUrl: string;         // 連盟公式サイトURL
+}
+```
+
+#### 使用例
+
+```json
+{
+  "federationId": "tokyo",
+  "region": "関東",
+  "label": "東京都ソフトテニス連盟",
+  "officialUrl": "http://www.soft-tennis.com/tokyo/"
+}
+```
 
 ---
 
