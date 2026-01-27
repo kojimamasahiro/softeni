@@ -54,9 +54,9 @@
   "matches": [
     {
       "entries": [1,5],
-      "scores": {"1":4,"5":3},
+      "scores": {"1":3,"5":4},
       "round": "準決勝",
-      "winnerEntryNo": 1,
+      "winnerEntryNo": 5,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -79,8 +79,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [1,13],
-      "scores": {"1":0,"13":4},
+      "entries": [5,13],
+      "scores": {"5":0,"13":4},
       "round": "決勝",
       "winnerEntryNo": 13,
       "retired": false,
@@ -381,11 +381,11 @@
     }
   ],
   "results": [
-    {"entryNo":1,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"A","rank":1}},
+    {"entryNo":1,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"A","rank":1}},
     {"entryNo":2,"tournament":null,"roundrobin":{"group":"A","rank":4}},
     {"entryNo":3,"tournament":null,"roundrobin":{"group":"A","rank":3}},
     {"entryNo":4,"tournament":null,"roundrobin":{"group":"A","rank":2}},
-    {"entryNo":5,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"B","rank":1}},
+    {"entryNo":5,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"B","rank":1}},
     {"entryNo":6,"tournament":null,"roundrobin":{"group":"B","rank":4}},
     {"entryNo":7,"tournament":null,"roundrobin":{"group":"B","rank":3}},
     {"entryNo":8,"tournament":null,"roundrobin":{"group":"B","rank":2}},
