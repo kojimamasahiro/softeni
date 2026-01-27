@@ -92,7 +92,6 @@ export default function TournamentYearResultPage({
         title={`${label} ${year}年 ${categoryLabel} | ソフトテニス情報`}
         description={`${label} ${year}年 ${categoryLabel}の試合結果・トーナメント表・成績一覧`}
         url={pageUrl}
-        twitterCardType="summary_large_image"
         type="article"
       />
 
