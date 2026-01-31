@@ -2,8 +2,8 @@
   "results": [
     {
       "playerIds": [
-        "安藤_快晟_鶯沢STスポ少",
-        "川村_湊_将監JST"
+        "菅原_志馬_長命ケ丘JST",
+        "橋本_真志_北宮PSTC"
       ],
       "result": "優勝",
       "category": "doubles"
@@ -18,10 +18,26 @@
     },
     {
       "playerIds": [
+        "安藤_快晟_鶯沢STスポ少",
+        "川村_湊_将監JST"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
         "秋葉_晴大_将監JST",
         "浅野_駿李_長命ケ丘JST"
       ],
       "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "曽根_朔久_仙台青葉STC",
+        "菅野_千晄_KSTC"
+      ],
+      "result": "ベスト8",
       "category": "doubles"
     },
     {
@@ -550,10 +566,10 @@
           "tempId": "菅野_千晄_KSTC"
         }
       ],
-      "result": "lose",
+      "result": "win",
       "games": {
         "won": "3",
-        "lost": "3"
+        "lost": "0"
       },
       "entryNo": 1,
       "name": "菅原 志馬（長命ケ丘JST）・橋本 真志（北宮PSTC）",
@@ -584,9 +600,9 @@
           "tempId": "橋本_真志_北宮PSTC"
         }
       ],
-      "result": "win",
+      "result": "lose",
       "games": {
-        "won": "3",
+        "won": "0",
         "lost": "3"
       },
       "entryNo": 5,
@@ -801,6 +817,74 @@
     {
       "round": "準決勝",
       "pair": [
+        "菅原_志馬_長命ケ丘JST",
+        "橋本_真志_北宮PSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "安藤",
+          "firstName": "快晟",
+          "team": "鶯沢STスポ少",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "安藤_快晟_鶯沢STスポ少"
+        },
+        {
+          "lastName": "川村",
+          "firstName": "湊",
+          "team": "将監JST",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "川村_湊_将監JST"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "菅原 志馬（長命ケ丘JST）・橋本 真志（北宮PSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "安藤_快晟_鶯沢STスポ少",
+        "川村_湊_将監JST"
+      ],
+      "opponents": [
+        {
+          "lastName": "菅原",
+          "firstName": "志馬",
+          "team": "長命ケ丘JST",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "菅原_志馬_長命ケ丘JST"
+        },
+        {
+          "lastName": "橋本",
+          "firstName": "真志",
+          "team": "北宮PSTC",
+          "prefecture": "宮城県",
+          "playerId": null,
+          "tempId": "橋本_真志_北宮PSTC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 21,
+      "name": "安藤 快晟（鶯沢STスポ少）・川村 湊（将監JST）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
         "秋葉_晴大_将監JST",
         "浅野_駿李_長命ケ丘JST"
       ],
@@ -869,8 +953,8 @@
     {
       "round": "決勝",
       "pair": [
-        "安藤_快晟_鶯沢STスポ少",
-        "川村_湊_将監JST"
+        "菅原_志馬_長命ケ丘JST",
+        "橋本_真志_北宮PSTC"
       ],
       "opponents": [
         {
@@ -895,8 +979,8 @@
         "won": "3",
         "lost": "0"
       },
-      "entryNo": 21,
-      "name": "安藤 快晟（鶯沢STスポ少）・川村 湊（将監JST）",
+      "entryNo": 1,
+      "name": "菅原 志馬（長命ケ丘JST）・橋本 真志（北宮PSTC）",
       "category": "doubles",
       "retired": false
     },
@@ -908,20 +992,20 @@
       ],
       "opponents": [
         {
-          "lastName": "安藤",
-          "firstName": "快晟",
-          "team": "鶯沢STスポ少",
+          "lastName": "菅原",
+          "firstName": "志馬",
+          "team": "長命ケ丘JST",
           "prefecture": "宮城県",
           "playerId": null,
-          "tempId": "安藤_快晟_鶯沢STスポ少"
+          "tempId": "菅原_志馬_長命ケ丘JST"
         },
         {
-          "lastName": "川村",
-          "firstName": "湊",
-          "team": "将監JST",
+          "lastName": "橋本",
+          "firstName": "真志",
+          "team": "北宮PSTC",
           "prefecture": "宮城県",
           "playerId": null,
-          "tempId": "川村_湊_将監JST"
+          "tempId": "橋本_真志_北宮PSTC"
         }
       ],
       "result": "lose",

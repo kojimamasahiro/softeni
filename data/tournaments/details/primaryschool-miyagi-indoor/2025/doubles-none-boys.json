@@ -237,14 +237,14 @@
     },
     {
       "entries": [1,5],
-      "scores": {"1":3,"5":3},
+      "scores": {"1":3,"5":0},
       "round": "準々決勝",
-      "winnerEntryNo": 5,
+      "winnerEntryNo": 1,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-8",
-      "nextMatchId": null,
+      "nextMatchId": "match-12",
       "prevMatchIds": ["match-1"],
       "prevMatchId": "match-1"
     },
@@ -257,7 +257,7 @@
       "stage": "knockout",
       "group": null,
       "matchId": "match-9",
-      "nextMatchId": null,
+      "nextMatchId": "match-12",
       "prevMatchIds": ["match-2","match-3"],
       "prevMatchId": null
     },
@@ -270,7 +270,7 @@
       "stage": "knockout",
       "group": null,
       "matchId": "match-10",
-      "nextMatchId": "match-12",
+      "nextMatchId": "match-13",
       "prevMatchIds": ["match-4","match-5"],
       "prevMatchId": null
     },
@@ -283,8 +283,21 @@
       "stage": "knockout",
       "group": null,
       "matchId": "match-11",
-      "nextMatchId": "match-12",
+      "nextMatchId": "match-13",
       "prevMatchIds": ["match-6","match-7"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [1,21],
+      "scores": {"1":3,"21":0},
+      "round": "準決勝",
+      "winnerEntryNo": 1,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-12",
+      "nextMatchId": "match-14",
+      "prevMatchIds": ["match-8","match-9"],
       "prevMatchId": null
     },
     {
@@ -295,23 +308,23 @@
       "retired": false,
       "stage": "knockout",
       "group": null,
-      "matchId": "match-12",
-      "nextMatchId": "match-13",
+      "matchId": "match-13",
+      "nextMatchId": "match-14",
       "prevMatchIds": ["match-10","match-11"],
       "prevMatchId": null
     },
     {
-      "entries": [21,45],
-      "scores": {"21":3,"45":0},
+      "entries": [1,45],
+      "scores": {"1":3,"45":0},
       "round": "決勝",
-      "winnerEntryNo": 21,
+      "winnerEntryNo": 1,
       "retired": false,
       "stage": "knockout",
       "group": null,
-      "matchId": "match-13",
+      "matchId": "match-14",
       "nextMatchId": null,
-      "prevMatchIds": ["match-12"],
-      "prevMatchId": "match-12"
+      "prevMatchIds": ["match-12","match-13"],
+      "prevMatchId": null
     },
     {
       "entries": [1,2],
@@ -323,7 +336,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-14"
+      "matchId": "match-15"
     },
     {
       "entries": [1,3],
@@ -335,7 +348,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-15"
+      "matchId": "match-16"
     },
     {
       "entries": [1,4],
@@ -347,7 +360,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-16"
+      "matchId": "match-17"
     },
     {
       "entries": [2,3],
@@ -359,7 +372,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-17"
+      "matchId": "match-18"
     },
     {
       "entries": [2,4],
@@ -371,7 +384,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-18"
+      "matchId": "match-19"
     },
     {
       "entries": [3,4],
@@ -383,7 +396,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-19"
+      "matchId": "match-20"
     },
     {
       "entries": [5,6],
@@ -395,7 +408,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-20"
+      "matchId": "match-21"
     },
     {
       "entries": [5,7],
@@ -407,7 +420,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-21"
+      "matchId": "match-22"
     },
     {
       "entries": [6,7],
@@ -419,7 +432,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-22"
+      "matchId": "match-23"
     },
     {
       "entries": [8,9],
@@ -431,7 +444,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-23"
+      "matchId": "match-24"
     },
     {
       "entries": [8,10],
@@ -443,7 +456,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-24"
+      "matchId": "match-25"
     },
     {
       "entries": [8,11],
@@ -455,7 +468,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-25"
+      "matchId": "match-26"
     },
     {
       "entries": [9,10],
@@ -467,7 +480,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-26"
+      "matchId": "match-27"
     },
     {
       "entries": [9,11],
@@ -479,7 +492,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-27"
+      "matchId": "match-28"
     },
     {
       "entries": [10,11],
@@ -491,7 +504,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-28"
+      "matchId": "match-29"
     },
     {
       "entries": [12,13],
@@ -503,7 +516,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-29"
+      "matchId": "match-30"
     },
     {
       "entries": [12,14],
@@ -515,7 +528,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-30"
+      "matchId": "match-31"
     },
     {
       "entries": [13,14],
@@ -527,7 +540,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-31"
+      "matchId": "match-32"
     },
     {
       "entries": [15,16],
@@ -539,7 +552,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-32"
+      "matchId": "match-33"
     },
     {
       "entries": [15,17],
@@ -551,7 +564,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-33"
+      "matchId": "match-34"
     },
     {
       "entries": [16,17],
@@ -563,7 +576,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-34"
+      "matchId": "match-35"
     },
     {
       "entries": [18,19],
@@ -575,7 +588,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-35"
+      "matchId": "match-36"
     },
     {
       "entries": [18,20],
@@ -587,7 +600,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-36"
+      "matchId": "match-37"
     },
     {
       "entries": [19,20],
@@ -599,7 +612,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-37"
+      "matchId": "match-38"
     },
     {
       "entries": [21,22],
@@ -611,7 +624,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-38"
+      "matchId": "match-39"
     },
     {
       "entries": [21,23],
@@ -623,7 +636,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-39"
+      "matchId": "match-40"
     },
     {
       "entries": [22,23],
@@ -635,7 +648,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-40"
+      "matchId": "match-41"
     },
     {
       "entries": [24,25],
@@ -647,7 +660,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-41"
+      "matchId": "match-42"
     },
     {
       "entries": [24,26],
@@ -659,7 +672,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-42"
+      "matchId": "match-43"
     },
     {
       "entries": [25,26],
@@ -671,7 +684,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-43"
+      "matchId": "match-44"
     },
     {
       "entries": [27,28],
@@ -683,7 +696,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-44"
+      "matchId": "match-45"
     },
     {
       "entries": [27,29],
@@ -695,7 +708,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-45"
+      "matchId": "match-46"
     },
     {
       "entries": [28,29],
@@ -707,7 +720,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-46"
+      "matchId": "match-47"
     },
     {
       "entries": [30,31],
@@ -719,7 +732,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-47"
+      "matchId": "match-48"
     },
     {
       "entries": [30,32],
@@ -731,7 +744,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-48"
+      "matchId": "match-49"
     },
     {
       "entries": [31,32],
@@ -743,7 +756,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-49"
+      "matchId": "match-50"
     },
     {
       "entries": [33,34],
@@ -755,7 +768,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-50"
+      "matchId": "match-51"
     },
     {
       "entries": [33,35],
@@ -767,7 +780,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-51"
+      "matchId": "match-52"
     },
     {
       "entries": [34,35],
@@ -779,7 +792,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-52"
+      "matchId": "match-53"
     },
     {
       "entries": [36,37],
@@ -791,7 +804,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-53"
+      "matchId": "match-54"
     },
     {
       "entries": [36,38],
@@ -803,7 +816,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-54"
+      "matchId": "match-55"
     },
     {
       "entries": [37,38],
@@ -815,7 +828,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-55"
+      "matchId": "match-56"
     },
     {
       "entries": [39,40],
@@ -827,7 +840,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-56"
+      "matchId": "match-57"
     },
     {
       "entries": [39,41],
@@ -839,7 +852,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-57"
+      "matchId": "match-58"
     },
     {
       "entries": [40,41],
@@ -851,7 +864,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-58"
+      "matchId": "match-59"
     },
     {
       "entries": [42,43],
@@ -863,7 +876,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-59"
+      "matchId": "match-60"
     },
     {
       "entries": [42,44],
@@ -875,7 +888,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-60"
+      "matchId": "match-61"
     },
     {
       "entries": [43,44],
@@ -887,7 +900,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-61"
+      "matchId": "match-62"
     },
     {
       "entries": [45,46],
@@ -899,7 +912,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-62"
+      "matchId": "match-63"
     },
     {
       "entries": [45,47],
@@ -911,7 +924,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-63"
+      "matchId": "match-64"
     },
     {
       "entries": [46,47],
@@ -923,22 +936,22 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-64"
+      "matchId": "match-65"
     }
   ],
   "results": [
-    {"entryNo":1,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"A","rank":1}},
+    {"entryNo":1,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":{"group":"A","rank":1}},
     {"entryNo":2,"tournament":null,"roundrobin":{"group":"A","rank":3}},
     {"entryNo":3,"tournament":null,"roundrobin":{"group":"A","rank":4}},
     {"entryNo":4,"tournament":null,"roundrobin":{"group":"A","rank":2}},
-    {"entryNo":5,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":{"group":"B","rank":1}},
+    {"entryNo":5,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"B","rank":1}},
     {"entryNo":6,"tournament":null,"roundrobin":{"group":"B","rank":3}},
     {"entryNo":7,"tournament":null,"roundrobin":{"group":"B","rank":2}},
     {"entryNo":8,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"C","rank":1}},
     {"entryNo":9,"tournament":null,"roundrobin":{"group":"C","rank":3}},
     {"entryNo":10,"tournament":null,"roundrobin":{"group":"C","rank":2}},
     {"entryNo":11,"tournament":null,"roundrobin":{"group":"C","rank":4}},
-    {"entryNo":12,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"D","rank":1}},
+    {"entryNo":12,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"D","rank":1}},
     {"entryNo":13,"tournament":null,"roundrobin":{"group":"D","rank":2}},
     {"entryNo":14,"tournament":null,"roundrobin":{"group":"D","rank":3}},
     {"entryNo":15,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"E","rank":1}},
@@ -947,7 +960,7 @@
     {"entryNo":18,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"F","rank":1}},
     {"entryNo":19,"tournament":null,"roundrobin":{"group":"F","rank":3}},
     {"entryNo":20,"tournament":null,"roundrobin":{"group":"F","rank":2}},
-    {"entryNo":21,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":{"group":"G","rank":1}},
+    {"entryNo":21,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"G","rank":1}},
     {"entryNo":22,"tournament":null,"roundrobin":{"group":"G","rank":2}},
     {"entryNo":23,"tournament":null,"roundrobin":{"group":"G","rank":3}},
     {"entryNo":24,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"H","rank":1}},
