@@ -10,7 +10,7 @@ def split_name(name, split_index):
 
 players_by_entry = {}
 
-with open(INPUT_CSV, newline='', encoding="utf-8") as f:
+with open(INPUT_CSV, newline='', encoding="utf-8-sig") as f:
     reader = csv.DictReader(f)
     for row in reader:
         entry_no = int(row["Entry_Number"])
@@ -41,7 +41,7 @@ with open(INPUT_CSV, newline='', encoding="utf-8") as f:
                 "lastName": cleaned_last,
                 "firstName": cleaned_first,
                 "team": cleaned_team,
-                "prefecture": cleaned_prefecture,
+                "prefecture": "秋田県",
                 "playerId": None,
                 "tempId": f"{cleaned_last}_{cleaned_first}_{cleaned_team}"
             }
