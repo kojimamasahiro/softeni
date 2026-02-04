@@ -102,7 +102,7 @@ function StatsTable({
             const label = isYear
               ? `${key}年`
               : allPlayers.find((p) => p.id === key)
-                ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName}`
+                ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName || ''}`
                 : key;
 
             const link =
