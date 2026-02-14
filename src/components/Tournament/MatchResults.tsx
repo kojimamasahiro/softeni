@@ -400,12 +400,17 @@ export default function MatchResults({
     }
   }
 
+  // Check if there are any knockout matches
+  const hasKnockoutStage = useMemo(() => {
+    return (detail.matches ?? []).some((m) => m.stage === 'knockout');
+  }, [detail]);
+
   const derivedResultByEntryNo: Record<number, string | undefined> = {};
   for (const r of detail.results ?? []) {
     const parts: string[] = [];
     if (r.tournament && r.tournament.label) {
       parts.push(r.tournament.label);
-    } else {
+    } else if (hasKnockoutStage) {
       parts.push('予選敗退');
     }
     if (r.roundrobin) {
