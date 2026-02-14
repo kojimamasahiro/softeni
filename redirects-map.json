@@ -31,7 +31,6 @@
     "source": "/tournaments/zennihon-mix-doubles/:year(\\d{4})",
     "destination": "/tournaments/all/zennihon-mixed/:year/doubles/none/mixed"
   },
-
   {
     "source": "/tournaments/primaryschool-championship/:year(\\d{4})/data",
     "destination": "/tournaments/junior/primaryschool-championship/:year/doubles/none/boys/data"
@@ -40,7 +39,6 @@
     "source": "/tournaments/primaryschool-championship/:year(\\d{4})",
     "destination": "/tournaments/junior/primaryschool-championship/:year/doubles/none/boys"
   },
-
   {
     "source": "/tournaments/japan-business-group/:year(\\d{4})/data",
     "destination": "/tournaments/corporate/zennihon-business-group/:year/team/none/boys/data"
@@ -56,5 +54,13 @@
   {
     "source": "/tournaments/highschool/:tournamentId/:year(\\d{4})",
     "destination": "/tournaments/highschool/:tournamentId/:year(\\d{4})/doubles/none/boys"
+  },
+  {
+    "source": "/tournaments/jounior/primaryschool-championship/:year(\\d{4})/doubles/none/boys/",
+    "destination": "/tournaments/junior/zennihon-primaryschool/:year/doubles/none/boys/"
+  },
+  {
+    "source": "/tournaments/jounior/primaryschool-championship/:year(\\d{4})/doubles/none/girls/",
+    "destination": "/tournaments/junior/zennihon-primaryschool/:year/doubles/none/girls/"
   }
 ]
