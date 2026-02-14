@@ -395,15 +395,17 @@ export default function TournamentBracket({
                             <div
                               className={`
                                                                 flex-1 text-center font-medium truncate px-1 border-r border-gray-100 dark:border-gray-700
-                                                                ${displayName.length >
-                                  6
-                                  ? 'text-[10px]'
-                                  : 'text-xs'
-                                }
-                                                                ${isWinner
-                                  ? 'text-blue-900 dark:text-blue-100'
-                                  : 'text-gray-900 dark:text-gray-100'
-                                }
+                                                                ${
+                                                                  displayName.length >
+                                                                  6
+                                                                    ? 'text-[10px]'
+                                                                    : 'text-xs'
+                                                                }
+                                                                ${
+                                                                  isWinner
+                                                                    ? 'text-blue-900 dark:text-blue-100'
+                                                                    : 'text-gray-900 dark:text-gray-100'
+                                                                }
                                                             `}
                             >
                               {displayName}

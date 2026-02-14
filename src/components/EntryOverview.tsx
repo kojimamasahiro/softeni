@@ -87,10 +87,11 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
                     teamSet.size === 1
                       ? `${names.join('・')}（${teams[0]}）`
                       : (entry.information ?? [])
-                        .map(
-                          (p) => `${p.lastName}${p.firstName || ''}（${p.team}）`,
-                        )
-                        .join('・');
+                          .map(
+                            (p) =>
+                              `${p.lastName}${p.firstName || ''}（${p.team}）`,
+                          )
+                          .join('・');
                   return `${entry.entryNo}.　${pairLabel}`;
                 })
                 .join('\n')}
