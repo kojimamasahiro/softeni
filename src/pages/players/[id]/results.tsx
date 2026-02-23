@@ -258,6 +258,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   for (const rec of allDetails) {
     const tournamentId = rec.tournamentId;
     const year = rec.year;
+    const category = rec.fileName.replace('.json', '');
     const detail = rec.detail;
 
     const participants = Array.isArray(detail.participants)
@@ -398,7 +399,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         partner: partnerName ?? null,
       };
 
-      const tournamentKey = `${tournamentId}/${year}`;
+      const tournamentKey = `${tournamentId}/${year}/${category}`;
       if (!tournamentMatchesMap.has(tournamentKey))
         tournamentMatchesMap.set(tournamentKey, []);
       tournamentMatchesMap.get(tournamentKey)!.push(matchResult);
@@ -414,6 +415,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       // Don't include opponents array to reduce data size - opponentNames is sufficient
       playerMatches.push({
         tournamentId,
+        category,
         tournamentName: tournamentMeta.get(tournamentId)?.label || tournamentId,
         year: Number(year),
         round: m.round ?? '予選',
@@ -443,6 +445,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             result?: unknown;
             entryNo?: unknown;
             tournament?: unknown;
+            roundrobin?: unknown;
           };
           const recEntryNo =
             typeof rec.entryNo === 'number' ? rec.entryNo : undefined;
@@ -478,15 +481,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             } catch {
               // ignore
             }
+          } else if (rec.roundrobin && typeof rec.roundrobin === 'object') {
+            try {
+              const t = rec.roundrobin as { rank?: unknown };
+              if (typeof t.rank === 'number') {
+                resultField = `予選${t.rank}位`;
+              }
+            } catch {
+              // ignore
+            }
           }
 
           // fallback to legacy result string
           if (!resultField && typeof rec.result === 'string')
             resultField = rec.result;
 
-          const tournamentKey = `${tournamentId}/${year}`;
-          // if no resultField was found, set default to '予選敗退'
-          tournamentFinalResult.set(tournamentKey, resultField ?? '予選敗退');
+          const tournamentKey = `${tournamentId}/${year}/${category}`;
+          // if no resultField was found, set default to '不明'
+          tournamentFinalResult.set(tournamentKey, resultField ?? '不明');
         } catch {
           // ignore
         }

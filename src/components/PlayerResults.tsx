@@ -9,6 +9,7 @@ import { MatchRow, TournamentParticipant } from '@/types/tournament';
 
 export type PlayerMatch = {
   tournamentId: string;
+  category?: string;
   tournamentName: string;
   year?: number | string;
   round: string | null;
@@ -57,16 +58,13 @@ export default function PlayerResults({
   for (const t of playerTournaments) {
     tournamentInfoById[t.id] = t;
     if (!tournamentsById[t.id]) tournamentsById[t.id] = [];
-    if (t.tournamentId && (t.year || t.year === 0)) {
-      const derived = `${t.tournamentId}/${t.year}`;
-      if (!tournamentInfoById[derived]) tournamentInfoById[derived] = t;
-      if (!tournamentsById[derived]) tournamentsById[derived] = [];
-    }
   }
 
   for (const m of playerMatches) {
     const id = m.year
-      ? `${m.tournamentId}/${m.year}`
+      ? m.category
+        ? `${m.tournamentId}/${m.year}/${m.category}`
+        : `${m.tournamentId}/${m.year}`
       : m.tournamentId || m.tournamentName || '';
     if (!tournamentsById[id]) tournamentsById[id] = [];
     tournamentsById[id].push({
@@ -84,7 +82,7 @@ export default function PlayerResults({
     const info = tournamentInfoById[key];
     const year =
       info?.year ??
-      (key.includes('/') ? key.split('/').pop() : undefined) ??
+      (key.includes('/') ? key.split('/')[1] : undefined) ??
       '不明';
     const yearStr = String(year);
     if (!byYear[yearStr]) byYear[yearStr] = [];
