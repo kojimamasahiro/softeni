@@ -2,8 +2,8 @@
   {
     "year": 2024,
     "location": "千葉県",
-    "startDate": "2024-03-29",
-    "endDate": "2024-03-31",
+    "startDate": "2025-03-29",
+    "endDate": "2025-03-31",
     "source": "千葉県ソフトテニス連盟",
     "sourceUrl": "https://softtennis-chibaren.com/",
     "categories": [
@@ -104,6 +104,34 @@
         "category": "doubles",
         "gender": "boys",
         "age": "1stgrade5"
+      },
+      {
+        "categoryId": "doubles-2ndgrade5-boys",
+        "label": "男子5年生2位トーナメント",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "2ndgrade5"
+      },
+      {
+        "categoryId": "doubles-3rdgrade5-boys",
+        "label": "男子5年生3位トーナメント",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "3rdgrade5"
+      },
+      {
+        "categoryId": "doubles-4thgrade5-boys",
+        "label": "男子5年生4位トーナメント",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "4thgrade5"
+      },
+      {
+        "categoryId": "doubles-5thgrade5-boys",
+        "label": "男子5年生5位トーナメント",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "5thgrade5"
       }
     ]
   }
