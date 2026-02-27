@@ -13,7 +13,7 @@ export default function Header() {
             href="/tournaments"
             className="hover:text-blue-600 transition-colors"
           >
-            大会結果
+            大会一覧
           </Link>
           <Link
             href="/players"

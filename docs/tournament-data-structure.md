@@ -362,6 +362,14 @@ export interface TournamentParticipant {
 3. `data/tournament/details/{tournamentId}/{year}/{category}.json` から試合結果を取得
 4. `data/players/index.json` を使用してプレイヤーIDを解決
 
+### 3. 大会一覧ページ（`/tournaments/list`）のデータ取得
+
+1. `data/tournaments/index.json` および `data/tournaments/local_index.json` から全大会を読み込む
+2. 各大会の `information/{tournamentId}.json` を読み込み、開催年ごとに `TournamentInstance` を生成
+3. `data/tournaments/details/{tournamentId}/{year}/` フォルダの存在確認で `hasInternalResult` を判定
+4. `data/prefectures.json` を使用して開催地名 → 都道府県ID の逆引きマップを生成
+5. 開催日降順にソートして Props として渡す
+
 ---
 
 ## 注意事項
@@ -427,6 +435,9 @@ export interface TournamentParticipant {
 - **型定義**: `src/types/tournament.ts`
 - **データ生成スクリプト**: `scripts/pdf/`
 - **プレイヤーマスタ**: `data/players/index.json`
+- **大会一覧ページ（新・検索ハブ）**: `src/pages/tournaments/index.tsx`
+- **大会一覧ページ（旧・カテゴリ別）**: `src/pages/tournaments/major/index.tsx`
+- **大会検索テーブルコンポーネント**: `src/components/tournaments/TournamentSearchTable.tsx`
 
 ---
 
@@ -451,6 +462,85 @@ export interface TournamentParticipant {
 以下のデータ構造は `src/types/tournament.ts` に型定義がありません：
 
 - **GenerationEntry** (`genarations.json`)
+
+---
+
+## 大会一覧ページ（`/tournaments`）
+
+### URL体系
+
+| URL | ファイル | 説明 |
+|---|---|---|
+| `/tournaments` | `src/pages/tournaments/index.tsx` | 新ページ。全大会を検索・フィルターできるハブ |
+| `/tournaments/major` | `src/pages/tournaments/major/index.tsx` | 旧ページ。カテゴリ（世代）別に大会をカード表示 |
+
+### `TournamentInstance` 型
+
+`/tournaments/list` ページで使用するビュー用の型。`TournamentSearchTable` コンポーネントに渡される。
+
+```typescript
+type TournamentInstance = {
+  tournamentId: string;        // 大会ID
+  generation: string;          // 世代区分ID
+  generationLabel: string;     // 世代区分名（表示用）
+  year: number;                // 開催年
+  label: string;               // 大会名
+  startDate: string;           // 開始日（YYYY-MM-DD）
+  endDate: string;             // 終了日（YYYY-MM-DD）
+  location: string;            // 開催地
+  prefectureId: string | null; // 都道府県ID（data/prefectures.json のID）
+  level: TournamentLevel;      // 大会規模
+  categoryLabels: string[];    // 実施種目名一覧
+  hasInternalResult: boolean;  // 内部結果データの有無
+  officialUrl: string;         // 公式サイトURL
+  firstCategoryPath: string | null; // 結果ページへの最初のリンクパス
+};
+
+type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
+```
+
+### `level`（大会規模）の推定ルール
+
+`data/tournaments/index.json` / `local_index.json` のどちらに属するか、および `tournamentId` のプレフィックスで自動推定する。
+
+| 条件 | level |
+|---|---|
+| `local_index.json` に掲載されており、`areaId` が指定されている | `areaId` の値をそのまま使用 |
+| `local_index.json` に掲載されており、`areaId` が未指定 | `prefecture`（都道府県） |
+| `tournamentId` が `east-` または `west-` で始まる | `block`（ブロック） |
+| それ以外の `index.json` 掲載大会 | `national`（全国） |
+
+`areaId` に設定可能な値は `TournamentLevel` 型と一致する。
+
+| 値 | 説明 |
+|---|---|
+| `national` | 全国大会 |
+| `block` | ブロック大会 |
+| `prefecture` | 都道府県大会 |
+| `city` | 市区町村大会 |
+| `open` | オープン戦（参加資格不問） |
+
+> `city`・`open` は自動推定されない。`local_index.json` の `areaId` フィールドに手動で指定する。
+
+### フィルター項目とデータソース
+
+| フィルター | 選択肢のソース | URL クエリパラメータ |
+|---|---|---|
+| カテゴリ | `data/tournaments/genarations.json` | `?generation=highschool` |
+| 種類 | `TournamentLevel` 定数（ハードコード） | `?level=national` |
+| 開催地 | `data/prefectures.json` | `?prefecture=tokyo` |
+| 年度 | `information/*.json` の `startDate` から自動生成 | `?year=2024` |
+| 結果ありのみ | — | `?hasResult=1` |
+
+複数選択・URL同期・即時反映（Applyボタンなし）に対応。
+
+### 結果列の表示ロジック
+
+| 条件 | 表示 |
+|---|---|
+| `hasInternalResult === true` | 緑の「結果」バッジ（内部リンク） |
+| `hasInternalResult === false` かつ `officialUrl` あり | 「公式」外部リンク |
+| 両方なし | `—` |
 
 ---
 

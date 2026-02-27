@@ -148,7 +148,7 @@ export default function Home({ recentTournaments }: HomeProps) {
                   href="/tournaments"
                   className="text-sm text-blue-500 hover:underline"
                 >
-                  過去の大会結果一覧はこちら
+                  過去の大会一覧はこちら
                 </Link>
               </div>
             </section>
