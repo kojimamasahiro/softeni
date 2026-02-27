@@ -156,7 +156,7 @@ export default function PlayerResultsPage({
               href="/tournaments"
               className="text-sm text-blue-600 hover:underline"
             >
-              大会結果一覧はこちら
+              過去の大会一覧はこちら
             </Link>
           </div>
 

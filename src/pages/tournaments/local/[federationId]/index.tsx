@@ -77,8 +77,8 @@ export default function LocalFederationPage({
           <Breadcrumbs
             crumbs={[
               { label: 'ホーム', href: '/' },
-              { label: '大会結果一覧', href: '/tournaments' },
-              { label: '地域大会', href: '/tournaments/local' },
+              { label: '大会一覧', href: '/tournaments' },
+              { label: '地域大会結果', href: '/tournaments/local' },
               { label: prefecture.name, href: pageUrl },
             ]}
           />

@@ -40,6 +40,7 @@ type TournamentInfo = {
   location: string;
   startDate: string;
   endDate: string;
+  label?: string;
   sourceUrl?: string;
   categories: InfoCategory[];
 };
@@ -253,7 +254,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         generation: t.generationId,
         generationLabel: genLabelMap[t.generationId] ?? t.generationId,
         year: info.year,
-        label: t.label,
+        label: info.label ?? t.label,
         startDate: info.startDate,
         endDate: info.endDate,
         location: info.location,
@@ -301,7 +302,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         generation: t.generationId,
         generationLabel: genLabelMap[t.generationId] ?? t.generationId,
         year: info.year,
-        label: t.label,
+        label: info.label ?? t.label,
         startDate: info.startDate,
         endDate: info.endDate,
         location: info.location,

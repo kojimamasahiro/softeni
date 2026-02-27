@@ -127,7 +127,7 @@ export default function TournamentListPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `主要大会一覧`,
+                  name: `主要大会結果`,
                   item: pageUrl,
                 },
               ],
@@ -142,7 +142,7 @@ export default function TournamentListPage({
             crumbs={[
               { label: 'ホーム', href: '/' },
               { label: '大会一覧', href: '/tournaments' },
-              { label: '主要大会一覧', href: '/tournaments/major' },
+              { label: '主要大会結果', href: '/tournaments/major' },
             ]}
           />
 
@@ -198,10 +198,10 @@ export default function TournamentListPage({
                 </div>
               </Link>
             </div>
-            <h1 className="text-2xl font-bold mb-4">主要大会一覧</h1>
+            <h1 className="text-2xl font-bold mb-4">主要大会結果</h1>
             <p className="text-lg leading-relaxed mb-4">
               こちらは、Softeni
-              Pickが収録しているソフトテニスの大会一覧ページです。
+              Pickが収録しているソフトテニスの大会結果一覧ページです。
               主要な全日本大会をはじめ、インターハイ・選抜、ジュニアなども整理して掲載していきます。
             </p>
             <p className="text-lg leading-relaxed">

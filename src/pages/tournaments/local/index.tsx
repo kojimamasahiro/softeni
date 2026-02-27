@@ -62,12 +62,12 @@ export default function LocalTournamentsPage({
           <Breadcrumbs
             crumbs={[
               { label: 'ホーム', href: '/' },
-              { label: '大会結果一覧', href: '/tournaments' },
-              { label: '地域大会', href: '/tournaments/local' },
+              { label: '大会一覧', href: '/tournaments' },
+              { label: '地域大会結果', href: '/tournaments/local' },
             ]}
           />
 
-          <h1 className="text-2xl font-bold mb-6">地域大会</h1>
+          <h1 className="text-2xl font-bold mb-6">地域大会結果</h1>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
             各都道府県の連盟や企業が主催する大会の結果を掲載しています。
             連盟公式サイトへのリンクもご活用ください。
