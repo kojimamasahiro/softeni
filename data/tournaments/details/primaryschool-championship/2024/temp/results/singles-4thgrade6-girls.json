@@ -1,0 +1,1212 @@
+{
+  "results": [
+    {
+      "playerIds": [
+        "宮下_叶羽_中条スポ少"
+      ],
+      "result": "優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "吉田_七生_大村なんてジュニア"
+      ],
+      "result": "準優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "藤谷_ひなた_就将ソフトテニス部"
+      ],
+      "result": "ベスト4",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "内倉_みなみ_三国STC"
+      ],
+      "result": "ベスト4",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "高田_愛香里_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "佐藤_心彩_秋田市ジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "澤井_美空_堺市テニススポーツ少年団"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "棚橋_星來_芳賀ソフトテニスクラブジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "singles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "竹本_結菜_下松ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "三宅",
+          "firstName": "紗綺",
+          "team": "静内少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "三宅_紗綺_静内少年団"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 106,
+      "name": "竹本 結菜（下松ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "三宅_紗綺_静内少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "竹本",
+          "firstName": "結菜",
+          "team": "下松ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "竹本_結菜_下松ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 110,
+      "name": "三宅 紗綺（静内少年団）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "齋藤_陽歩_二本松ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤谷",
+          "firstName": "ひなた",
+          "team": "就将ソフトテニス部",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "藤谷_ひなた_就将ソフトテニス部"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 114,
+      "name": "齋藤 陽歩（二本松ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "藤谷_ひなた_就将ソフトテニス部"
+      ],
+      "opponents": [
+        {
+          "lastName": "齋藤",
+          "firstName": "陽歩",
+          "team": "二本松ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "齋藤_陽歩_二本松ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 119,
+      "name": "藤谷 ひなた（就将ソフトテニス部）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "榎本_奈月_福井ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉田",
+          "firstName": "七生",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "吉田_七生_大村なんてジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 131,
+      "name": "榎本 奈月（福井ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "吉田_七生_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "榎本",
+          "firstName": "奈月",
+          "team": "福井ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "榎本_奈月_福井ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 134,
+      "name": "吉田 七生（大村なんてジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "久原_アンナ_北伊予ソフトテニススクール"
+      ],
+      "opponents": [
+        {
+          "lastName": "鰐渕",
+          "firstName": "涼音",
+          "team": "丸岡スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鰐渕_涼音_丸岡スポ少"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 138,
+      "name": "久原 アンナ（北伊予ソフトテニススクール）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "鰐渕_涼音_丸岡スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "久原",
+          "firstName": "アンナ",
+          "team": "北伊予ソフトテニススクール",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "久原_アンナ_北伊予ソフトテニススクール"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 142,
+      "name": "鰐渕 涼音（丸岡スポ少）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "長岡_真央_鶴岡ソフトテニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "野中",
+          "firstName": "晴子",
+          "team": "江陽ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "野中_晴子_江陽ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 155,
+      "name": "長岡 真央（鶴岡ソフトテニススポーツ少年団）",
+      "category": "singles",
+      "retired": true
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "野中_晴子_江陽ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "長岡",
+          "firstName": "真央",
+          "team": "鶴岡ソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "長岡_真央_鶴岡ソフトテニススポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 160,
+      "name": "野中 晴子（江陽ジュニア）",
+      "category": "singles",
+      "retired": true
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "前田_蒼依_Willスポーツ"
+      ],
+      "opponents": [
+        {
+          "lastName": "三木",
+          "firstName": "葵羽",
+          "team": "阿波ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "三木_葵羽_阿波ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 162,
+      "name": "前田 蒼依（Willスポーツ）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "三木_葵羽_阿波ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼依",
+          "team": "Willスポーツ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "前田_蒼依_Willスポーツ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 167,
+      "name": "三木 葵羽（阿波ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "前田_菜雪_大宜味ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "和田",
+          "firstName": "采海",
+          "team": "気高ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "和田_采海_気高ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 179,
+      "name": "前田 菜雪（大宜味ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "和田_采海_気高ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "菜雪",
+          "team": "大宜味ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "前田_菜雪_大宜味ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 182,
+      "name": "和田 采海（気高ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "渡部_陽葉_秋田市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "鍋西",
+          "firstName": "柚那",
+          "team": "スターキッズ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鍋西_柚那_スターキッズ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 188,
+      "name": "渡部 陽葉（秋田市ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "鍋西_柚那_スターキッズ"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡部",
+          "firstName": "陽葉",
+          "team": "秋田市ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡部_陽葉_秋田市ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 192,
+      "name": "鍋西 柚那（スターキッズ）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "高田_愛香里_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "三宅",
+          "firstName": "紗綺",
+          "team": "静内少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "三宅_紗綺_静内少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 102,
+      "name": "高田 愛香里（横須賀Ｄｒｅａｍスポーツ少年団）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "三宅_紗綺_静内少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "高田",
+          "firstName": "愛香里",
+          "team": "横須賀Ｄｒｅａｍスポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "高田_愛香里_横須賀Ｄｒｅａｍスポーツ少年団"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 110,
+      "name": "三宅 紗綺（静内少年団）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "藤谷_ひなた_就将ソフトテニス部"
+      ],
+      "opponents": [
+        {
+          "lastName": "小浜",
+          "firstName": "千桜",
+          "team": "なごジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "小浜_千桜_なごジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 119,
+      "name": "藤谷 ひなた（就将ソフトテニス部）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "小浜_千桜_なごジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤谷",
+          "firstName": "ひなた",
+          "team": "就将ソフトテニス部",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "藤谷_ひなた_就将ソフトテニス部"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 122,
+      "name": "小浜 千桜（なごジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "木原_夏凛_絆"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉田",
+          "firstName": "七生",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "吉田_七生_大村なんてジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 126,
+      "name": "木原 夏凛（絆）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "吉田_七生_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "木原",
+          "firstName": "夏凛",
+          "team": "絆",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "木原_夏凛_絆"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 134,
+      "name": "吉田 七生（大村なんてジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "久原_アンナ_北伊予ソフトテニススクール"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "心彩",
+          "team": "秋田市ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_心彩_秋田市ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 138,
+      "name": "久原 アンナ（北伊予ソフトテニススクール）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "佐藤_心彩_秋田市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "久原",
+          "firstName": "アンナ",
+          "team": "北伊予ソフトテニススクール",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "久原_アンナ_北伊予ソフトテニススクール"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 147,
+      "name": "佐藤 心彩（秋田市ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "内倉_みなみ_三国STC"
+      ],
+      "opponents": [
+        {
+          "lastName": "野中",
+          "firstName": "晴子",
+          "team": "江陽ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "野中_晴子_江陽ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 152,
+      "name": "内倉 みなみ（三国STC）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "野中_晴子_江陽ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "内倉",
+          "firstName": "みなみ",
+          "team": "三国STC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内倉_みなみ_三国STC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 160,
+      "name": "野中 晴子（江陽ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "前田_蒼依_Willスポーツ"
+      ],
+      "opponents": [
+        {
+          "lastName": "澤井",
+          "firstName": "美空",
+          "team": "堺市テニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "澤井_美空_堺市テニススポーツ少年団"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 162,
+      "name": "前田 蒼依（Willスポーツ）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "澤井_美空_堺市テニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "前田",
+          "firstName": "蒼依",
+          "team": "Willスポーツ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "前田_蒼依_Willスポーツ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 169,
+      "name": "澤井 美空（堺市テニススポーツ少年団）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "宮下_叶羽_中条スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "和田",
+          "firstName": "采海",
+          "team": "気高ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "和田_采海_気高ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 176,
+      "name": "宮下 叶羽（中条スポ少）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "和田_采海_気高ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮下",
+          "firstName": "叶羽",
+          "team": "中条スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "宮下_叶羽_中条スポ少"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 182,
+      "name": "和田 采海（気高ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "渡部_陽葉_秋田市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "棚橋",
+          "firstName": "星來",
+          "team": "芳賀ソフトテニスクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "棚橋_星來_芳賀ソフトテニスクラブジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 188,
+      "name": "渡部 陽葉（秋田市ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "棚橋_星來_芳賀ソフトテニスクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡部",
+          "firstName": "陽葉",
+          "team": "秋田市ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡部_陽葉_秋田市ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 194,
+      "name": "棚橋 星來（芳賀ソフトテニスクラブジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "高田_愛香里_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤谷",
+          "firstName": "ひなた",
+          "team": "就将ソフトテニス部",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "藤谷_ひなた_就将ソフトテニス部"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 102,
+      "name": "高田 愛香里（横須賀Ｄｒｅａｍスポーツ少年団）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "藤谷_ひなた_就将ソフトテニス部"
+      ],
+      "opponents": [
+        {
+          "lastName": "高田",
+          "firstName": "愛香里",
+          "team": "横須賀Ｄｒｅａｍスポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "高田_愛香里_横須賀Ｄｒｅａｍスポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 119,
+      "name": "藤谷 ひなた（就将ソフトテニス部）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "吉田_七生_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "心彩",
+          "team": "秋田市ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_心彩_秋田市ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 134,
+      "name": "吉田 七生（大村なんてジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "佐藤_心彩_秋田市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉田",
+          "firstName": "七生",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "吉田_七生_大村なんてジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 147,
+      "name": "佐藤 心彩（秋田市ジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "内倉_みなみ_三国STC"
+      ],
+      "opponents": [
+        {
+          "lastName": "澤井",
+          "firstName": "美空",
+          "team": "堺市テニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "澤井_美空_堺市テニススポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 152,
+      "name": "内倉 みなみ（三国STC）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "澤井_美空_堺市テニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "内倉",
+          "firstName": "みなみ",
+          "team": "三国STC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内倉_みなみ_三国STC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 169,
+      "name": "澤井 美空（堺市テニススポーツ少年団）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "宮下_叶羽_中条スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "棚橋",
+          "firstName": "星來",
+          "team": "芳賀ソフトテニスクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "棚橋_星來_芳賀ソフトテニスクラブジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 176,
+      "name": "宮下 叶羽（中条スポ少）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "棚橋_星來_芳賀ソフトテニスクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮下",
+          "firstName": "叶羽",
+          "team": "中条スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "宮下_叶羽_中条スポ少"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 194,
+      "name": "棚橋 星來（芳賀ソフトテニスクラブジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "藤谷_ひなた_就将ソフトテニス部"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉田",
+          "firstName": "七生",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "吉田_七生_大村なんてジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 119,
+      "name": "藤谷 ひなた（就将ソフトテニス部）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "吉田_七生_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤谷",
+          "firstName": "ひなた",
+          "team": "就将ソフトテニス部",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "藤谷_ひなた_就将ソフトテニス部"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 134,
+      "name": "吉田 七生（大村なんてジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "内倉_みなみ_三国STC"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮下",
+          "firstName": "叶羽",
+          "team": "中条スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "宮下_叶羽_中条スポ少"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 152,
+      "name": "内倉 みなみ（三国STC）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "宮下_叶羽_中条スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "内倉",
+          "firstName": "みなみ",
+          "team": "三国STC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内倉_みなみ_三国STC"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 176,
+      "name": "宮下 叶羽（中条スポ少）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "吉田_七生_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮下",
+          "firstName": "叶羽",
+          "team": "中条スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "宮下_叶羽_中条スポ少"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 134,
+      "name": "吉田 七生（大村なんてジュニア）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "宮下_叶羽_中条スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉田",
+          "firstName": "七生",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "吉田_七生_大村なんてジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 176,
+      "name": "宮下 叶羽（中条スポ少）",
+      "category": "singles",
+      "retired": false
+    }
+  ]
+}
