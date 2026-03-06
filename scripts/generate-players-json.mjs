@@ -31,6 +31,12 @@ const makeNameKey = (last, first) => {
 function getAllDetailRecords(cwd) {
   const detailsRoot = path.join(cwd, 'data', 'tournaments', 'details');
   const indexPath = path.join(cwd, 'data', 'tournaments', 'index.json');
+  const localIndexPath = path.join(
+    cwd,
+    'data',
+    'tournaments',
+    'local_index.json',
+  );
 
   if (!fs.existsSync(detailsRoot)) {
     return [];
@@ -45,8 +51,19 @@ function getAllDetailRecords(cwd) {
     }
   }
 
+  let localTournamentIndex = [];
+  if (fs.existsSync(localIndexPath)) {
+    try {
+      localTournamentIndex = JSON.parse(
+        fs.readFileSync(localIndexPath, 'utf-8'),
+      );
+    } catch {
+      localTournamentIndex = [];
+    }
+  }
+
   const tournamentMap = new Map();
-  for (const entry of tournamentIndex) {
+  for (const entry of [...tournamentIndex, ...localTournamentIndex]) {
     if (entry && entry.tournamentId) {
       tournamentMap.set(entry.tournamentId, entry);
     }
@@ -96,7 +113,9 @@ function loadInformationMap(cwd) {
     return map;
   }
 
-  const files = fs.readdirSync(informationRoot).filter((f) => f.endsWith('.json'));
+  const files = fs
+    .readdirSync(informationRoot)
+    .filter((f) => f.endsWith('.json'));
   for (const file of files) {
     const tournamentId = file.replace(/\.json$/i, '');
     const filePath = path.join(informationRoot, file);
