@@ -1,0 +1,750 @@
+{
+  "results": [
+    {
+      "playerIds": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "東郷_翔太_王寺ユースクラブ",
+        "岡部_蓮_王寺ユースクラブ"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "眞﨑_哲平_王寺ジュニアクラブ",
+        "勝村_蒼空_王寺ジュニアクラブ"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "田中_暖人_朝日中学校",
+        "丹羽_悠弦_朝日中学校"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "川畑_恵太_清武ジュニアC",
+        "村中_蒼唯_清武ジュニアC"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "前場_朔_男塾ジュニア",
+        "桑野_寛太_Ｓｈｉｎｇｕ－Ｊｓｔ"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "八重樫_琉映_長命ヶ丘JST",
+        "菅原_志馬_長命ヶ丘JST"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "井橋_瑛大_FSTA",
+        "笹原_太陽_FSTA"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "川畑_恵太_清武ジュニアC",
+        "村中_蒼唯_清武ジュニアC"
+      ],
+      "opponents": [
+        {
+          "lastName": "千葉",
+          "firstName": "柊真",
+          "team": "東郷アイリス",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "千葉_柊真_東郷アイリス"
+        },
+        {
+          "lastName": "佐久間",
+          "firstName": "瑛士朗",
+          "team": "田原STA",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "佐久間_瑛士朗_田原STA"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 2,
+      "name": "川畑 恵太・村中 蒼唯（清武ジュニアC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "千葉_柊真_東郷アイリス",
+        "佐久間_瑛士朗_田原STA"
+      ],
+      "opponents": [
+        {
+          "lastName": "川畑",
+          "firstName": "恵太",
+          "team": "清武ジュニアC",
+          "prefecture": "宮崎",
+          "playerId": null,
+          "tempId": "川畑_恵太_清武ジュニアC"
+        },
+        {
+          "lastName": "村中",
+          "firstName": "蒼唯",
+          "team": "清武ジュニアC",
+          "prefecture": "宮崎",
+          "playerId": null,
+          "tempId": "村中_蒼唯_清武ジュニアC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 3,
+      "name": "千葉 柊真（東郷アイリス）・佐久間 瑛士朗（田原STA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "田中_暖人_朝日中学校",
+        "丹羽_悠弦_朝日中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "那知上",
+          "firstName": "晟生",
+          "team": "T.Mクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "那知上_晟生_T.Mクラブ"
+        },
+        {
+          "lastName": "吉田",
+          "firstName": "純一郎",
+          "team": "T.Mクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "吉田_純一郎_T.Mクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 7,
+      "name": "田中 暖人・丹羽 悠弦（朝日中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "那知上_晟生_T.Mクラブ",
+        "吉田_純一郎_T.Mクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "暖人",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "田中_暖人_朝日中学校"
+        },
+        {
+          "lastName": "丹羽",
+          "firstName": "悠弦",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "丹羽_悠弦_朝日中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 8,
+      "name": "那知上 晟生・吉田 純一郎（T.Mクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "鈴木_大雅_常陸太田スポ少",
+        "小松崎_翔空_常陸太田スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "東郷",
+          "firstName": "翔太",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "東郷_翔太_王寺ユースクラブ"
+        },
+        {
+          "lastName": "岡部",
+          "firstName": "蓮",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "岡部_蓮_王寺ユースクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 9,
+      "name": "鈴木 大雅・小松崎 翔空（常陸太田スポ少）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "東郷_翔太_王寺ユースクラブ",
+        "岡部_蓮_王寺ユースクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "大雅",
+          "team": "常陸太田スポ少",
+          "prefecture": "茨城",
+          "playerId": null,
+          "tempId": "鈴木_大雅_常陸太田スポ少"
+        },
+        {
+          "lastName": "小松崎",
+          "firstName": "翔空",
+          "team": "常陸太田スポ少",
+          "prefecture": "茨城",
+          "playerId": null,
+          "tempId": "小松崎_翔空_常陸太田スポ少"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 10,
+      "name": "東郷 翔太・岡部 蓮（王寺ユースクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "川畑",
+          "firstName": "恵太",
+          "team": "清武ジュニアC",
+          "prefecture": "宮崎",
+          "playerId": null,
+          "tempId": "川畑_恵太_清武ジュニアC"
+        },
+        {
+          "lastName": "村中",
+          "firstName": "蒼唯",
+          "team": "清武ジュニアC",
+          "prefecture": "宮崎",
+          "playerId": null,
+          "tempId": "村中_蒼唯_清武ジュニアC"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "鈴木 佐禄・別符 湊都（野木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "川畑_恵太_清武ジュニアC",
+        "村中_蒼唯_清武ジュニアC"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        },
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "川畑 恵太・村中 蒼唯（清武ジュニアC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "眞﨑_哲平_王寺ジュニアクラブ",
+        "勝村_蒼空_王寺ジュニアクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "前場",
+          "firstName": "朔",
+          "team": "男塾ジュニア",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "前場_朔_男塾ジュニア"
+        },
+        {
+          "lastName": "桑野",
+          "firstName": "寛太",
+          "team": "Ｓｈｉｎｇｕ－Ｊｓｔ",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "桑野_寛太_Ｓｈｉｎｇｕ－Ｊｓｔ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 4,
+      "name": "眞﨑 哲平・勝村 蒼空（王寺ジュニアクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "前場_朔_男塾ジュニア",
+        "桑野_寛太_Ｓｈｉｎｇｕ－Ｊｓｔ"
+      ],
+      "opponents": [
+        {
+          "lastName": "眞﨑",
+          "firstName": "哲平",
+          "team": "王寺ジュニアクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "眞﨑_哲平_王寺ジュニアクラブ"
+        },
+        {
+          "lastName": "勝村",
+          "firstName": "蒼空",
+          "team": "王寺ジュニアクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "勝村_蒼空_王寺ジュニアクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "前場 朔（男塾ジュニア）・桑野 寛太（Ｓｈｉｎｇｕ－Ｊｓｔ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "八重樫_琉映_長命ヶ丘JST",
+        "菅原_志馬_長命ヶ丘JST"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "暖人",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "田中_暖人_朝日中学校"
+        },
+        {
+          "lastName": "丹羽",
+          "firstName": "悠弦",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "丹羽_悠弦_朝日中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "八重樫 琉映・菅原 志馬（長命ヶ丘JST）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "田中_暖人_朝日中学校",
+        "丹羽_悠弦_朝日中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "八重樫",
+          "firstName": "琉映",
+          "team": "長命ヶ丘JST",
+          "prefecture": "宮城",
+          "playerId": null,
+          "tempId": "八重樫_琉映_長命ヶ丘JST"
+        },
+        {
+          "lastName": "菅原",
+          "firstName": "志馬",
+          "team": "長命ヶ丘JST",
+          "prefecture": "宮城",
+          "playerId": null,
+          "tempId": "菅原_志馬_長命ヶ丘JST"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 7,
+      "name": "田中 暖人・丹羽 悠弦（朝日中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "東郷_翔太_王寺ユースクラブ",
+        "岡部_蓮_王寺ユースクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "井橋",
+          "firstName": "瑛大",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "井橋_瑛大_FSTA"
+        },
+        {
+          "lastName": "笹原",
+          "firstName": "太陽",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "笹原_太陽_FSTA"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 10,
+      "name": "東郷 翔太・岡部 蓮（王寺ユースクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "井橋_瑛大_FSTA",
+        "笹原_太陽_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "東郷",
+          "firstName": "翔太",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "東郷_翔太_王寺ユースクラブ"
+        },
+        {
+          "lastName": "岡部",
+          "firstName": "蓮",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "岡部_蓮_王寺ユースクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 11,
+      "name": "井橋 瑛大・笹原 太陽（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "眞﨑",
+          "firstName": "哲平",
+          "team": "王寺ジュニアクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "眞﨑_哲平_王寺ジュニアクラブ"
+        },
+        {
+          "lastName": "勝村",
+          "firstName": "蒼空",
+          "team": "王寺ジュニアクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "勝村_蒼空_王寺ジュニアクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "鈴木 佐禄・別符 湊都（野木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "眞﨑_哲平_王寺ジュニアクラブ",
+        "勝村_蒼空_王寺ジュニアクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        },
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "眞﨑 哲平・勝村 蒼空（王寺ジュニアクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "田中_暖人_朝日中学校",
+        "丹羽_悠弦_朝日中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "東郷",
+          "firstName": "翔太",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "東郷_翔太_王寺ユースクラブ"
+        },
+        {
+          "lastName": "岡部",
+          "firstName": "蓮",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "岡部_蓮_王寺ユースクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 7,
+      "name": "田中 暖人・丹羽 悠弦（朝日中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "東郷_翔太_王寺ユースクラブ",
+        "岡部_蓮_王寺ユースクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "暖人",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "田中_暖人_朝日中学校"
+        },
+        {
+          "lastName": "丹羽",
+          "firstName": "悠弦",
+          "team": "朝日中学校",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "丹羽_悠弦_朝日中学校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 10,
+      "name": "東郷 翔太・岡部 蓮（王寺ユースクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "鈴木_佐禄_野木中学校",
+        "別符_湊都_野木中学校"
+      ],
+      "opponents": [
+        {
+          "lastName": "東郷",
+          "firstName": "翔太",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "東郷_翔太_王寺ユースクラブ"
+        },
+        {
+          "lastName": "岡部",
+          "firstName": "蓮",
+          "team": "王寺ユースクラブ",
+          "prefecture": "奈良",
+          "playerId": null,
+          "tempId": "岡部_蓮_王寺ユースクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "鈴木 佐禄・別符 湊都（野木中学校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "東郷_翔太_王寺ユースクラブ",
+        "岡部_蓮_王寺ユースクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "佐禄",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "鈴木_佐禄_野木中学校"
+        },
+        {
+          "lastName": "別符",
+          "firstName": "湊都",
+          "team": "野木中学校",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "別符_湊都_野木中学校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 10,
+      "name": "東郷 翔太・岡部 蓮（王寺ユースクラブ）",
+      "category": "doubles",
+      "retired": false
+    }
+  ]
+}
