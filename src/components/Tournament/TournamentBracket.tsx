@@ -13,13 +13,19 @@ interface TournamentBracketProps {
 function buildBracket(matches: TournamentMatch[]): {
   rounds: string[];
   entriesByRound: Map<string, (number | null)[]>;
+  layoutByRound: Map<string, { entryNo: number | null; y: number }[]>;
   defaultStartRound: string;
 } {
   // 1. Strict Filter for Knockout
   const knockoutMatches = matches.filter((m) => m.stage === 'knockout');
 
   if (knockoutMatches.length === 0) {
-    return { rounds: [], entriesByRound: new Map(), defaultStartRound: '' };
+    return {
+      rounds: [],
+      entriesByRound: new Map(),
+      layoutByRound: new Map(),
+      defaultStartRound: '',
+    };
   }
 
   const entriesByRound = new Map<string, (number | null)[]>();
@@ -180,15 +186,73 @@ function buildBracket(matches: TournamentMatch[]): {
     entriesByRound.set(roundName, entriesArray);
   }
 
+  const layoutByRound = new Map<
+    string,
+    { entryNo: number | null; y: number }[]
+  >();
+
+  if (sortedRounds.length > 0 && distToRound.has(maxDist)) {
+    const maxDistRound = distToRound.get(maxDist)!;
+    const maxDistEntries = entriesByRound.get(maxDistRound) || [];
+    let currentY = 0;
+    const maxDistLayout = maxDistEntries.map((entryNo) => {
+      if (entryNo === null) return { entryNo, y: -1 };
+      return { entryNo, y: currentY++ };
+    });
+    layoutByRound.set(maxDistRound, maxDistLayout);
+
+    for (let d = maxDist - 1; d >= 0; d--) {
+      const roundName = distToRound.get(d)!;
+      const entries = entriesByRound.get(roundName) || [];
+      const prevRoundName = distToRound.get(d + 1)!;
+      const prevLayout = layoutByRound.get(prevRoundName) || [];
+
+      const roundLayout = entries.map((entryNo, idx) => {
+        if (entryNo === null) return { entryNo, y: -1 };
+        const childTop = prevLayout[idx * 2];
+        const childBottom = prevLayout[idx * 2 + 1];
+
+        let y = -1;
+        if (childTop?.entryNo !== null && childBottom?.entryNo !== null) {
+          y = (childTop.y + childBottom.y) / 2;
+        } else if (childTop?.entryNo !== null) {
+          y = childTop.y;
+        } else if (childBottom?.entryNo !== null) {
+          y = childBottom.y;
+        }
+        return { entryNo, y };
+      });
+      layoutByRound.set(roundName, roundLayout);
+    }
+  }
+
   // 5. Champion Column
   // 同じロジック: Final (0, 0) の勝者をチェック
   if (finalMatch && finalMatch.winnerEntryNo !== undefined) {
     entriesByRound.set('優勝', [finalMatch.winnerEntryNo]);
     sortedRounds.push('優勝');
+
+    // Calculate champion Y
+    const finalRoundName = distToRound.get(0);
+    const finalLayout = finalRoundName ? layoutByRound.get(finalRoundName) : [];
+    const top = finalLayout?.[0];
+    const bottom = finalLayout?.[1];
+    let champY = 0;
+    if (top?.entryNo !== null && bottom?.entryNo !== null) {
+      champY = (top!.y + bottom!.y) / 2;
+    } else if (top?.entryNo !== null) {
+      champY = top!.y;
+    } else if (bottom?.entryNo !== null) {
+      champY = bottom!.y;
+    }
+    layoutByRound.set('優勝', [
+      { entryNo: finalMatch.winnerEntryNo, y: champY },
+    ]);
   } else if (sortedRounds.length > 0) {
     // 不明でも列を追加するか？ プレースホルダーかも。
     entriesByRound.set('優勝', [-1]);
     sortedRounds.push('優勝');
+    layoutByRound.set('優勝', [{ entryNo: -1, y: 0 }]);
   }
 
   // デフォルト開始ラウンドを計算（下から4番目、'優勝' を除く）
@@ -199,6 +263,7 @@ function buildBracket(matches: TournamentMatch[]): {
   return {
     rounds: sortedRounds,
     entriesByRound,
+    layoutByRound,
     defaultStartRound,
   };
 }
@@ -208,7 +273,7 @@ export default function TournamentBracket({
 }: TournamentBracketProps) {
   const { participants, entries, matches } = detailData;
 
-  const { rounds, entriesByRound, defaultStartRound } = useMemo(
+  const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(
     () => buildBracket(matches),
     [matches],
   );
@@ -225,12 +290,110 @@ export default function TournamentBracket({
     return rounds.slice(startIndex);
   }, [rounds, startRound]);
 
+  // startRound に応じて、表示するラウンドだけでレイアウトを再計算する
+  const dynamicLayout = useMemo(() => {
+    const layout = new Map<
+      string,
+      {
+        entryNo: number | null;
+        y: number;
+        originalNode?: { entryNo: number | null; y: number };
+      }[]
+    >();
+
+    if (displayedRounds.length === 0) return layout;
+
+    // 最初の表示ラウンドの Y 座標を 0 から振り直す
+    const firstRoundName = displayedRounds[0];
+    const firstRoundEntries = entriesByRound.get(firstRoundName) || [];
+
+    let currentY = 0;
+    const firstLayout = firstRoundEntries.map((entryNo) => {
+      if (entryNo === null) return { entryNo, y: -1 };
+      return { entryNo, y: currentY++ };
+    });
+    layout.set(firstRoundName, firstLayout);
+
+    // 以降のラウンドは、前のラウンドの座標の中間を取る
+    for (let i = 1; i < displayedRounds.length; i++) {
+      const roundName = displayedRounds[i];
+      if (roundName === '優勝') {
+        // 優勝の特別計算
+        const prevRoundName = displayedRounds[i - 1];
+        const prevLayout = layout.get(prevRoundName) || [];
+        const top = prevLayout[0];
+        const bottom = prevLayout[1];
+        let champY = 0;
+        if (top?.entryNo !== null && bottom?.entryNo !== null) {
+          champY = (top!.y + bottom!.y) / 2;
+        } else if (top?.entryNo !== null) {
+          champY = top!.y;
+        } else if (bottom?.entryNo !== null) {
+          champY = bottom!.y;
+        }
+
+        // 優勝者の entryNo を取得
+        const originalChampLayout = layoutByRound.get('優勝');
+        const champEntryNo = originalChampLayout?.[0]?.entryNo ?? -1;
+
+        layout.set('優勝', [{ entryNo: champEntryNo, y: champY }]);
+        continue;
+      }
+
+      const entries = entriesByRound.get(roundName) || [];
+      const prevRoundName = displayedRounds[i - 1];
+      const prevLayout = layout.get(prevRoundName) || [];
+
+      const roundLayout = entries.map((entryNo, idx) => {
+        if (entryNo === null) return { entryNo, y: -1 };
+
+        // prevLayout から、このエントリーに対応する子要素を探す
+        // originalLayout では `idx * 2` と `idx * 2 + 1` が子だった
+        // displayedRounds でスライスされているため、要素の繋がりは維持されているはず
+        const childTop = prevLayout[idx * 2];
+        const childBottom = prevLayout[idx * 2 + 1];
+
+        let y = -1;
+        if (
+          childTop?.entryNo !== null &&
+          childBottom?.entryNo !== null &&
+          childTop !== undefined &&
+          childBottom !== undefined
+        ) {
+          y = (childTop.y + childBottom.y) / 2;
+        } else if (childTop?.entryNo !== null && childTop !== undefined) {
+          y = childTop.y;
+        } else if (childBottom?.entryNo !== null && childBottom !== undefined) {
+          y = childBottom.y;
+        } else {
+          // 子がどちらも存在しない/null の場合（シード等で prev に上がってこなかった場合）、
+          // このエントリー自身のインデックスをベースにするしかないが、
+          // 上流から辿れる場合はその座標を使うためのフォールバック
+          y = currentY++; // 暫定
+        }
+        return { entryNo, y };
+      });
+      layout.set(roundName, roundLayout);
+    }
+    return layout;
+  }, [displayedRounds, entriesByRound, layoutByRound]);
+
   if (rounds.length === 0) {
     return null;
   }
 
   const ENTRY_HEIGHT = 34;
   const ROUND_GAP = 20; // Reduced to make connection lines shorter
+
+  let maxY = 0;
+  if (dynamicLayout) {
+    dynamicLayout.forEach((layout) => {
+      layout.forEach((node) => {
+        if (node.y > maxY) maxY = node.y;
+      });
+    });
+  }
+  const containerHeight = (maxY + 1) * ENTRY_HEIGHT;
 
   // ラウンドごとのエントリー -> 勝者ステータスのマップを構築
   const winnerMap = new Map<string, number>();
@@ -275,10 +438,12 @@ export default function TournamentBracket({
       </div>
 
       <div className="overflow-x-auto overflow-y-visible pb-4">
-        <div className="relative inline-flex" style={{ gap: `${ROUND_GAP}px` }}>
+        <div
+          className="relative inline-flex"
+          style={{ gap: `${ROUND_GAP}px`, height: `${containerHeight}px` }}
+        >
           {displayedRounds.map((roundName, roundIndex) => {
-            const roundEntries = entriesByRound.get(roundName) || [];
-            const spacingMultiplier = Math.pow(2, roundIndex);
+            const layout = dynamicLayout.get(roundName) || [];
 
             // 表示に対する最初のラウンドでボックスを表示
             const showBoxes = roundIndex === 0;
@@ -286,114 +451,107 @@ export default function TournamentBracket({
             const isChampionRound = roundName === '優勝';
 
             return (
-              <div key={roundName} className="flex flex-col">
+              <div
+                key={roundName}
+                className="relative"
+                style={{ width: showBoxes ? '220px' : '0px' }}
+              >
                 {/* エントリーまたは接続ポイント */}
-                <div
-                  className="flex flex-col"
-                  style={{
-                    gap: `${ENTRY_HEIGHT * (spacingMultiplier - 1)}px`,
-                    paddingTop: `${(ENTRY_HEIGHT * (spacingMultiplier - 1)) / 2}px`,
-                  }}
-                >
-                  {roundEntries.map((entryNo, index) => {
-                    if (isChampionRound) {
-                      // 勝者がいるかどうかで色を決定
-                      // entryNo は勝者の ID または -1 または null
-                      const hasWinner = entryNo !== null && entryNo !== -1;
-                      return (
-                        <div
-                          key={`champion-${index}`}
-                          className="relative flex items-center"
-                          style={{ height: `${ENTRY_HEIGHT}px` }}
-                        >
-                          <div
-                            className={`h-px w-10 ${hasWinner ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`}
-                          />
-                        </div>
-                      );
-                    }
-
-                    // NULL エントリを処理（バイ/プレースホルダー）
-                    if (entryNo === null) {
-                      return (
-                        <div
-                          key={`${roundName}-empty-${index}`}
-                          className="relative invisible"
-                          style={{ height: `${ENTRY_HEIGHT}px` }}
-                        >
-                          {/* 空のプレースホルダーは間隔を維持 */}
-                        </div>
-                      );
-                    }
-
-                    const entry = entries.find((e) => e.entryNo === entryNo);
-                    const player1 = entry
-                      ? participants.find((p) => p.id === entry.playerIds[0])
-                      : null;
-                    const player2 =
-                      entry && entry.playerIds.length > 1
-                        ? participants.find((p) => p.id === entry.playerIds[1])
-                        : null;
-
-                    let displayName = '';
-                    if (player2) {
-                      const n1 = player1?.lastName || player1?.team || '';
-                      const n2 = player2?.lastName || player2?.team || '';
-                      displayName = `${n1}・${n2}`;
-                    } else if (player1) {
-                      displayName = player1.lastName
-                        ? `${player1.lastName} ${player1.firstName || ''}`.trim()
-                        : player1.team || '';
-                    }
-
-                    const team1 = player1?.team || '';
-                    const team2 = player2?.team || '';
-                    const showTwoTeams = team2 && team1 !== team2;
-
-                    // このラウンドでこのエントリーが勝ったかをチェック
-                    const matchForEntry = matches.find(
-                      (m) =>
-                        m.stage === 'knockout' &&
-                        m.round === roundName &&
-                        m.entries.includes(entryNo),
-                    );
-
-                    const nextRoundName = displayedRounds[roundIndex + 1];
-                    const nextRoundEntries = nextRoundName
-                      ? entriesByRound.get(nextRoundName)
-                      : null;
-                    const isSeed =
-                      !matchForEntry &&
-                      !!nextRoundEntries &&
-                      entryNo !== null &&
-                      nextRoundEntries.includes(entryNo);
-
-                    const isWinner =
-                      matchForEntry?.winnerEntryNo === entryNo || isSeed;
-
+                {layout.map((node, index) => {
+                  const entryNo = node.entryNo;
+                  if (entryNo === null) return null; // 枠を消して詰める
+                  if (isChampionRound) {
+                    // 勝者がいるかどうかで色を決定
+                    // entryNo は勝者の ID または -1 または null
+                    const hasWinner = entryNo !== null && entryNo !== -1;
                     return (
                       <div
-                        key={`${roundName}-${entryNo}`}
-                        className="relative"
-                        style={{ height: `${ENTRY_HEIGHT}px` }}
+                        key={`champion-${roundName}-${index}`}
+                        className="absolute flex items-center"
+                        style={{
+                          top: `${node.y * ENTRY_HEIGHT}px`,
+                          height: `${ENTRY_HEIGHT}px`,
+                          width: '40px',
+                        }}
                       >
-                        {/* 最初のラウンドでのみエントリーボックスを表示 */}
-                        {showBoxes && (
-                          <div
-                            className={`
+                        <div
+                          className={`h-px w-10 ${hasWinner ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`}
+                        />
+                      </div>
+                    );
+                  }
+
+                  const entry = entries.find((e) => e.entryNo === entryNo);
+                  const player1 = entry
+                    ? participants.find((p) => p.id === entry.playerIds[0])
+                    : null;
+                  const player2 =
+                    entry && entry.playerIds.length > 1
+                      ? participants.find((p) => p.id === entry.playerIds[1])
+                      : null;
+
+                  let displayName = '';
+                  if (player2) {
+                    const n1 = player1?.lastName || player1?.team || '';
+                    const n2 = player2?.lastName || player2?.team || '';
+                    displayName = `${n1}・${n2}`;
+                  } else if (player1) {
+                    displayName = player1.lastName
+                      ? `${player1.lastName} ${player1.firstName || ''}`.trim()
+                      : player1.team || '';
+                  }
+
+                  const team1 = player1?.team || '';
+                  const team2 = player2?.team || '';
+                  const showTwoTeams = team2 && team1 !== team2;
+
+                  // このラウンドでこのエントリーが勝ったかをチェック
+                  const matchForEntry = matches.find(
+                    (m) =>
+                      m.stage === 'knockout' &&
+                      m.round === roundName &&
+                      m.entries.includes(entryNo),
+                  );
+
+                  const nextRoundName = displayedRounds[roundIndex + 1];
+                  const nextRoundEntries = nextRoundName
+                    ? entriesByRound.get(nextRoundName)
+                    : null;
+                  const isSeed =
+                    !matchForEntry &&
+                    !!nextRoundEntries &&
+                    entryNo !== null &&
+                    nextRoundEntries.includes(entryNo);
+
+                  const isWinner =
+                    matchForEntry?.winnerEntryNo === entryNo || isSeed;
+
+                  return (
+                    <div
+                      key={`${roundName}-${entryNo}`}
+                      className="absolute w-full"
+                      style={{
+                        top: `${node.y * ENTRY_HEIGHT}px`,
+                        height: `${ENTRY_HEIGHT}px`,
+                      }}
+                    >
+                      {/* 最初のラウンドでのみエントリーボックスを表示 */}
+                      {showBoxes && (
+                        <div
+                          className={`
                                                             h-full flex flex-row items-center
                                                             
                                                         `}
-                            style={{ width: '220px', minWidth: '220px' }}
-                          >
-                            {/* エントリー番号: 最大3桁 */}
-                            <div className="w-8 text-[10px] text-gray-500 dark:text-gray-400 font-mono text-center shrink-0 border-r border-gray-100 dark:border-gray-700">
-                              {entryNo}
-                            </div>
+                          style={{ width: '220px', minWidth: '220px' }}
+                        >
+                          {/* エントリー番号: 最大3桁 */}
+                          <div className="w-8 text-[10px] text-gray-500 dark:text-gray-400 font-mono text-center shrink-0 border-r border-gray-100 dark:border-gray-700">
+                            {entryNo}
+                          </div>
 
-                            {/* プレイヤー名: 通常6文字最大、より多い場合は小さく */}
-                            <div
-                              className={`
+                          {/* プレイヤー名: 通常6文字最大、より多い場合は小さく */}
+                          <div
+                            className={`
                                                                 flex-1 text-center font-medium truncate px-1 border-r border-gray-100 dark:border-gray-700
                                                                 ${
                                                                   displayName.length >
@@ -407,191 +565,108 @@ export default function TournamentBracket({
                                                                     : 'text-gray-900 dark:text-gray-100'
                                                                 }
                                                             `}
-                            >
-                              {displayName}
-                            </div>
+                          >
+                            {displayName}
+                          </div>
 
-                            {/* チーム: 通常5文字最大、より多い場合は小さく */}
-                            <div className="w-20 shrink-0 px-1 flex flex-col justify-center items-center leading-tight">
-                              <div
-                                className={`
+                          {/* チーム: 通常5文字最大、より多い場合は小さく */}
+                          <div className="w-20 shrink-0 px-1 flex flex-col justify-center items-center leading-tight">
+                            <div
+                              className={`
                                                                     text-center text-gray-500 dark:text-gray-400 truncate w-full
                                                                     ${team1.length > 5 ? 'text-[9px]' : 'text-[10px]'}
                                                                 `}
-                              >
-                                {team1}
-                              </div>
-                              {showTwoTeams && (
-                                <div
-                                  className={`
+                            >
+                              {team1}
+                            </div>
+                            {showTwoTeams && (
+                              <div
+                                className={`
                                                                         text-center text-gray-500 dark:text-gray-400 truncate w-full
                                                                         ${team2.length > 5 ? 'text-[9px]' : 'text-[10px]'}
                                                                     `}
-                                >
-                                  {team2}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* 次のラウンドへの接続線 */}
-                        {roundIndex < displayedRounds.length - 1 && ( // 優勝列（最後のインデックス）から線を描かない、またはロジックが言う場合
-                          <svg
-                            className="absolute pointer-events-none overflow-visible"
-                            style={{
-                              top: '50%',
-                              left: '100%',
-                              width: `${ROUND_GAP}px`,
-                              height: `${ENTRY_HEIGHT * spacingMultiplier}px`,
-                              transform: `translateY(${index % 2 === 0 ? '0' : `-${ENTRY_HEIGHT * spacingMultiplier}px`})`,
-                              zIndex: 10,
-                            }}
-                          >
-                            {index % 2 === 0 ? (
-                              // 上エントリー: 下と右
-                              <>
-                                {/* ボックスからの水平線 */}
-                                {/* lineX は現在 ROUND_GAP (全幅) */}
-                                {(() => {
-                                  // 上エントリー（偶数）なので、勝者か有効かをチェックする必要がある。
-                                  // 色ロジック: !showBoxes の場合、線ラウンドと仮定。
-                                  // ユーザーがこの試合に勝った場合、青。それ以外はグレー。
-                                  // または単に接続している場合。
-                                  // 既存ロジック:
-                                  // className={(!showBoxes || isWinner || (roundIndex > 0)) ? ... }
-                                  // 待って、勝者ステータスに応じて線を描画。
-
-                                  /* 
-                                                                       lineX の修正:
-                                                                       ほとんどの線で ROUND_GAP に戻した。
-                                                                       優勝ラウンドは特別だったが、上記の独自ブロックで処理。
-                                                                       ここは通常ラウンドブロック。
-                                                                       lineX = ROUND_GAP.
-                                                                    */
-                                  const lineX = ROUND_GAP;
-                                  // 実際、svg top はボックス中心。
-
-                                  // 待って、以前のロジックはこの SVG ブロック内に線があった。
-                                  // 置換で内部 SVG コンテンツロジックを削除していないことを確認する必要がある。
-                                  // ループコンテンツを置換した。
-
-                                  return (
-                                    <>
-                                      <line
-                                        x1="0"
-                                        y1="0"
-                                        x2={lineX}
-                                        y2="0"
-                                        className={
-                                          !showBoxes || isWinner
-                                            ? 'stroke-blue-500 dark:stroke-blue-400'
-                                            : 'stroke-gray-300 dark:stroke-gray-600'
-                                        }
-                                        strokeWidth="1"
-                                      />
-                                      {/* 右端で下向きの垂直線 */}
-                                      <line
-                                        x1={lineX}
-                                        y1="0"
-                                        x2={lineX}
-                                        y2={
-                                          ENTRY_HEIGHT * (spacingMultiplier / 2)
-                                        }
-                                        className={
-                                          isWinner
-                                            ? 'stroke-blue-500 dark:stroke-blue-400'
-                                            : 'stroke-gray-300 dark:stroke-gray-600'
-                                        }
-                                        strokeWidth="1"
-                                      />
-                                    </>
-                                  );
-                                })()}
-                              </>
-                            ) : (
-                              // 下エントリー: 上と右
-                              <>
-                                {(() => {
-                                  const lineX = ROUND_GAP;
-                                  // SVG top は下エントリー中心。（transform が上へ移動？）
-                                  // 待って、transform `translateY(-${ENTRY_HEIGHT * spacingMultiplier}px)`？
-                                  // いいえ、`transform: translateY(...)` は div 中心に対する SVG の位置決め？
-                                  // 実際、SVG は div の `top: 50%` に配置。
-                                  // index % 2 === 1 (下) の場合、Y を `height` だけ上へ移動。
-                                  // 待って、以前のコード論理構造:
-                                  /*
-                                                                       style={{
-                                                                           ...
-                                                                           transform: `translateY(${index % 2 === 0 ? '0' : `-${ENTRY_HEIGHT * spacingMultiplier / 2}px`})` ?? 
-                                                                           いいえ、ロジックは: 
-                                                                           index % 2 === 0 ? '0' : ...
-                                                                           
-                                                                           SVG viewbox または coords を確認。
-                                                                           X1, Y1... の線を描画。
-                                                                    */
-
-                                  return (
-                                    <>
-                                      <line
-                                        x1="0"
-                                        y1={ENTRY_HEIGHT * spacingMultiplier}
-                                        x2={lineX}
-                                        y2={ENTRY_HEIGHT * spacingMultiplier}
-                                        className={
-                                          !showBoxes || isWinner
-                                            ? 'stroke-blue-500 dark:stroke-blue-400'
-                                            : 'stroke-gray-300 dark:stroke-gray-600'
-                                        }
-                                        strokeWidth="1"
-                                      />
-                                      <line
-                                        x1={lineX}
-                                        y1={ENTRY_HEIGHT * spacingMultiplier}
-                                        x2={lineX}
-                                        y2={
-                                          ENTRY_HEIGHT * (spacingMultiplier / 2)
-                                        }
-                                        className={
-                                          isWinner
-                                            ? 'stroke-blue-500 dark:stroke-blue-400'
-                                            : 'stroke-gray-300 dark:stroke-gray-600'
-                                        }
-                                        strokeWidth="1"
-                                      />
-                                    </>
-                                  );
-                                })()}
-                              </>
-                            )}
-
-                            {/* スコア表示ロジック再挿入 */}
-                            {matchForEntry && !isChampionRound && !isWinner && (
-                              <text
-                                x={ROUND_GAP - 2}
-                                y={
-                                  index % 2 === 0
-                                    ? -6
-                                    : ENTRY_HEIGHT * spacingMultiplier + 14
-                                }
-                                textAnchor="end"
-                                fontSize="10"
-                                className="fill-gray-600 dark:fill-gray-400 pointer-events-none select-none"
                               >
-                                {(() => {
-                                  const s = matchForEntry.scores;
-                                  if (!s) return null;
-                                  const val = s[String(entryNo)] ?? s[entryNo];
-                                  return val;
-                                })()}
-                              </text>
+                                {team2}
+                              </div>
                             )}
-                          </svg>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* 次のラウンドへの接続線 */}
+                      {roundIndex < displayedRounds.length - 1 &&
+                        (() => {
+                          const nextRoundName = displayedRounds[roundIndex + 1];
+                          const nextLayout = dynamicLayout.get(nextRoundName);
+                          // 次のラウンドのエントリーは、2つの子を1つにまとめるため、idx = Math.floor(index / 2)
+                          const destNode = nextLayout?.[Math.floor(index / 2)];
+
+                          if (!destNode) return null;
+
+                          return (
+                            <svg
+                              className="absolute pointer-events-none overflow-visible"
+                              style={{
+                                top: '50%',
+                                left: '100%',
+                                width: `${ROUND_GAP}px`,
+                                height: '1px',
+                                zIndex: 10,
+                              }}
+                            >
+                              <line
+                                x1="0"
+                                y1="0"
+                                x2={ROUND_GAP}
+                                y2="0"
+                                className={
+                                  !showBoxes || isWinner
+                                    ? 'stroke-blue-500 dark:stroke-blue-400'
+                                    : 'stroke-gray-300 dark:stroke-gray-600'
+                                }
+                                strokeWidth="1"
+                              />
+
+                              {node.y !== destNode.y && (
+                                <line
+                                  x1={ROUND_GAP}
+                                  y1="0"
+                                  x2={ROUND_GAP}
+                                  y2={(destNode.y - node.y) * ENTRY_HEIGHT}
+                                  className={
+                                    isWinner
+                                      ? 'stroke-blue-500 dark:stroke-blue-400'
+                                      : 'stroke-gray-300 dark:stroke-gray-600'
+                                  }
+                                  strokeWidth="1"
+                                />
+                              )}
+
+                              {matchForEntry &&
+                                !isChampionRound &&
+                                !isWinner && (
+                                  <text
+                                    x={ROUND_GAP - 2}
+                                    y={index % 2 === 0 ? -6 : 14}
+                                    textAnchor="end"
+                                    fontSize="10"
+                                    className="fill-gray-600 dark:fill-gray-400 pointer-events-none select-none"
+                                  >
+                                    {(() => {
+                                      const s = matchForEntry.scores;
+                                      if (!s) return null;
+                                      const val =
+                                        s[String(entryNo)] ?? s[entryNo];
+                                      return val;
+                                    })()}
+                                  </text>
+                                )}
+                            </svg>
+                          );
+                        })()}
+                    </div>
+                  );
+                })}
               </div>
             );
           })}
