@@ -52,8 +52,8 @@ export default function PlayerResultsPage({
   return (
     <>
       <MetaHead
-        title={`${fullName} 試合結果 | ソフトテニス情報`}
-        description={`${fullName}の主要大会結果や試合速報を掲載`}
+        title={`${fullName} 試合結果・経歴 | ソフトテニス情報`}
+        description={`${fullName}の主要大会結果や経歴（出場大会の履歴）を掲載`}
         url={pageUrl}
         type="article"
       />
@@ -65,7 +65,7 @@ export default function PlayerResultsPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: `${fullName}の試合結果・大会成績`,
+              headline: `${fullName}の試合結果・大会成績・経歴`,
               author: {
                 '@type': 'Person',
                 name: 'Softeni Pick',
@@ -81,7 +81,7 @@ export default function PlayerResultsPage({
                 '@type': 'WebPage',
                 '@id': pageUrl,
               },
-              description: `${fullName}の主要大会結果や試合速報を掲載`,
+              description: `${fullName}の主要大会結果や試合速報、経歴（出場大会の履歴）を掲載`,
               about: {
                 '@type': 'Person',
                 name: fullName,
@@ -139,7 +139,9 @@ export default function PlayerResultsPage({
           />
 
           <header>
-            <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
+            <h1 className="text-2xl font-bold">
+              {fullName} 選手の試合結果
+            </h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
               本ページでは、{fullName}{' '}
               選手の出場大会や成績、主な勝ち上がり情報を掲載しています。
