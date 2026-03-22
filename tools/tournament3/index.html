@@ -1635,6 +1635,7 @@
       const p1IsValid = p1Ids.every((id) => id != null);
       const p2IsValid = p2Ids.every((id) => id != null);
       const p1IsWinner = match.winner === match.p1.id;
+      const isUnplayed = match.winner == null;
       const p1Score = String(match.scores.p1 ?? '');
       const p2Score = String(match.scores.p2 ?? '');
 
@@ -1643,8 +1644,8 @@
           round: match.round,
           pair: p1Ids,
           opponents: match.p2.information,
-          result: p1IsWinner ? 'win' : 'lose',
-          games: { won: p1Score, lost: p2Score },
+          result: isUnplayed ? null : (p1IsWinner ? 'win' : 'lose'),
+          games: isUnplayed ? null : { won: p1Score, lost: p2Score },
           entryNo: match.p1.id,
           name: buildPairName(match.p1.information),
           category,
@@ -1656,8 +1657,8 @@
           round: match.round,
           pair: p2Ids,
           opponents: match.p1.information,
-          result: p1IsWinner ? 'lose' : 'win',
-          games: { won: p2Score, lost: p1Score },
+          result: isUnplayed ? null : (p1IsWinner ? 'lose' : 'win'),
+          games: isUnplayed ? null : { won: p2Score, lost: p1Score },
           entryNo: match.p2.id,
           name: buildPairName(match.p2.information),
           category,
@@ -1685,6 +1686,7 @@
       const p1 = match.p1,
         p2 = match.p2;
       const p1IsWinner = match.winner === p1.id;
+      const isUnplayed = match.winner == null;
       const p1Score = String(match.scores.p1 ?? '');
       const p2Score = String(match.scores.p2 ?? '');
 
@@ -1701,8 +1703,8 @@
             tempId: getTeamLabel(p2),
           },
         ],
-        result: p1IsWinner ? 'win' : 'lose',
-        games: { won: p1Score, lost: p2Score },
+        result: isUnplayed ? null : (p1IsWinner ? 'win' : 'lose'),
+        games: isUnplayed ? null : { won: p1Score, lost: p2Score },
         entryNo: p1.id,
         name: p1.name,
         category: getCategory(p1),
@@ -1722,8 +1724,8 @@
             tempId: getTeamLabel(p1),
           },
         ],
-        result: p1IsWinner ? 'lose' : 'win',
-        games: { won: p2Score, lost: p1Score },
+        result: isUnplayed ? null : (p1IsWinner ? 'lose' : 'win'),
+        games: isUnplayed ? null : { won: p2Score, lost: p1Score },
         entryNo: p2.id,
         name: p2.name,
         category: getCategory(p2),

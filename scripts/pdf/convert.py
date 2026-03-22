@@ -2,6 +2,7 @@ import csv
 import json
 
 INPUT_CSV = "output/softtennis_players_separated.csv"
+# INPUT_CSV = "output/round_robin_results.csv"
 OUTPUT_JSON = "output/players.json"
 
 def split_name(name, split_index):
@@ -41,7 +42,7 @@ with open(INPUT_CSV, newline='', encoding="utf-8-sig") as f:
                 "lastName": cleaned_last,
                 "firstName": cleaned_first,
                 "team": cleaned_team,
-                "prefecture": "秋田県",
+                "prefecture": cleaned_prefecture,
                 "playerId": None,
                 "tempId": f"{cleaned_last}_{cleaned_first}_{cleaned_team}"
             }

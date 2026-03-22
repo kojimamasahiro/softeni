@@ -11,10 +11,10 @@ pd.set_option("display.max_colwidth", None)  # 列の内容を省略せず全表
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
 PAGE_NUMS = list(range(1, 2))      # 抽出するページ番号のリスト（1から開始）
-Y_TOLERANCE = 2                   # 同じ行と見なすy座標の許容誤差（ポイント）
+Y_TOLERANCE = 3                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
-Y_CROP_MIN = 100                  # ★ 抽出範囲の最小Y座標 (上端)
-Y_CROP_MAX = 860                 # ★ 抽出範囲の最大Y座標 (下端)
+Y_CROP_MIN = 95                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MAX = 850                 # ★ 抽出範囲の最大Y座標 (下端)
 
 # ★ 名前分割方法の選択
 # True: namedividerを使用して自動分割 (推奨: 精度99.3%)
@@ -26,27 +26,27 @@ if USE_NAMEDIVIDER:
     from namedivider import BasicNameDivider
     name_divider = BasicNameDivider()
 
-X_LEFT_ENTRY_MIN = 40    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 63    # 左側エントリー番号の最大X座標
-X_LEFT_NAME_MIN = 63    # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 88  # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 88 # 左側 名の最小X座標
-X_LEFT_NAME_MAX = 125 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 130    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 200    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 130    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 200   # チーム名の最大X座標
+X_LEFT_ENTRY_MIN = 50    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+X_LEFT_NAME_MIN = 70   # 左側 姓の最小X座標
+X_LEFT_SURNAME_MAX = 95  # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 95 # 左側 名の最小X座標
+X_LEFT_NAME_MAX = 120 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 126    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 165    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 165    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 205   # チーム名の最大X座標
 
-X_RIGHT_NAME_MIN = 380   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 405   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 405 # 右側 名の最小X座標
-X_RIGHT_NAME_MAX = 450 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 455  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 520  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 455  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 520  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 530  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 560  # 右側エントリー番号の最大X座標
+X_RIGHT_NAME_MIN = 370   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 395   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 395 # 右側 名の最小X座標
+X_RIGHT_NAME_MAX = 425 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 430  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 465  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 465  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 510  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 520  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 570  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -139,10 +139,10 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         tolerance = Y_TOLERANCE
         
         # 現在の文字または直前の文字のいずれかが小さいフォントサイズであれば、許容誤差を緩める
-        # if (row['size'] < SMALL_SIZE_THRESHOLD):
-        #     tolerance = 3
-        # elif (row['prev_size'] < SMALL_SIZE_THRESHOLD):
-        #     tolerance = 1
+        if (row['size'] < SMALL_SIZE_THRESHOLD):
+            tolerance = 3
+        elif (row['prev_size'] < SMALL_SIZE_THRESHOLD):
+            tolerance = 1
         return row['top_diff'] > tolerance
 
     # 動的な許容誤差に基づいて新しい行かどうかを判定
@@ -213,7 +213,8 @@ def doubles_extraction_strategy(line_data, data_df, X_SETTINGS):
     標準的な抽出戦略: 1行ずつ走査してデータを抽出する
     """
     RESULTS = []
-    for i in range(len(line_data)):
+    i = 0
+    while i < len(line_data):
         line_1 = line_data.iloc[i] # 選手Aの行
 
         # スコア行などのフィルタリング
@@ -394,6 +395,242 @@ def secondary_extraction_strategy(line_data, data, X_SETTINGS):
         # 3行セットとして成立しない場合、または無効な場合は1行進める
         i += 1
         
+    return RESULTS
+
+# 都道府県対応全日本中学生大会 (シングルス)
+def secondary_versus_singles_extraction_strategy(line_data, data, X_SETTINGS):
+    """
+    標準的な抽出戦略: 1行ずつ走査してデータを抽出する
+    シングルス版: 3行構成
+    1. エリア
+    2. エントリーと選手名
+    3. チーム名
+    """
+    RESULTS = []
+    i = 0
+    while i < len(line_data):
+        # フィルタリング (先頭行の簡易チェック)
+        line_1 = line_data.iloc[i]
+        text_check = line_1['full_text'].strip()
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            i += 1
+            continue
+
+        # 3項目セット (i .. i+2) を試す
+        if i + 2 < len(line_data):
+            group = [line_data.iloc[i + k] for k in range(3)]
+
+            # 各行から抽出
+            extracted = [extract_single_line_content(g, data, X_SETTINGS) for g in group]
+            presence = [check_line_presence(g, data, X_SETTINGS) for g in group]
+
+            # 分解
+            # extracted: (surname, firstname, raw_name, area, team, entry_text)
+            s1, f1, raw1, area1, team1, entry1 = extracted[0]
+            # print(f"行 {i+1} 抽出結果: {extracted[0]}")
+            s2, f2, raw2, area2, team2, entry2 = extracted[1]
+            # print(f"行 {i+2} 抽出結果: {extracted[1]}")
+            s3, f3, raw3, area3, team3, entry3 = extracted[2]
+            # print(f"行 {i+3} 抽出結果: {extracted[2]}")
+
+            p1, p2, p3 = presence
+
+            # 期待パターン:
+            # 1: エリア
+            # 2: エントリーと選手名
+            # 3: チーム名
+
+            is_area_ok = area1 and p1['area']
+            is_name_ok = raw2 and p2['player']
+            is_team_ok = team3 and p3['team']
+
+            # エントリーは2行目にあるはず
+            entry_number = None
+            if entry2 and entry2.isdigit():
+                entry_number = int(entry2)
+            elif entry1 and entry1.isdigit():
+                entry_number = int(entry1)
+            elif entry3 and entry3.isdigit():
+                entry_number = int(entry3)
+
+            is_entry_ok = entry_number is not None
+
+            if is_area_ok and is_name_ok and is_entry_ok and is_team_ok:
+                RESULTS.append({
+                    'Surname': s2, 'First_Name': f2,
+                    'Player_Name_Raw': raw2, 'Split_Index': len(s2) if s2 else 0,
+                    'Area_Name': area1,
+                    'Team_Name': team3,
+                    'Entry_Number': entry_number
+                })
+
+                i += 3
+                # print(f"行 {i-2}～{i} の3項目セットで選手情報を抽出しました。")
+                continue
+            else:
+                # print(f"警告: 行 {i+1}～{i+3} の3項目セットから選手情報を抽出できませんでした。")
+                pass
+
+        # 成立しない場合は次へ
+        i += 1
+
+    return RESULTS
+
+# 都道府県対応全日本中学生大会
+def secondary_versus_extraction_strategy(line_data, data, X_SETTINGS):
+    """
+    標準的な抽出戦略: 1行ずつ走査してデータを抽出する
+    """
+    RESULTS = []
+    i = 0
+    while i < len(line_data):
+        # フィルタリング (先頭行の簡易チェック)
+        line_1 = line_data.iloc[i]
+        text_check = line_1['full_text'].strip()
+        if not text_check or len(text_check) < 2 or \
+           re.fullmatch(r'[\d\s\-\.,:()]+', text_check) or \
+           re.search(r'\d-\d', text_check):
+            i += 1
+            continue
+
+        # 6項目セット (i .. i+5) を試す
+        if i + 5 < len(line_data):
+            group = [line_data.iloc[i + k] for k in range(6)]
+
+            # 各行から抽出
+            extracted = [extract_single_line_content(g, data, X_SETTINGS) for g in group]
+            presence = [check_line_presence(g, data, X_SETTINGS) for g in group]
+
+            # 分解
+            # extracted: (surname, firstname, raw_name, area, team, entry_text)
+            s1, f1, raw1, area1, team1, entry1 = extracted[0]
+            print(f"行 {i+1} 抽出結果: {extracted[0]}")
+            s2, f2, raw2, area2, team2, entry2 = extracted[1]
+            print(f"行 {i+2} 抽出結果: {extracted[1]}")
+            s3, f3, raw3, area3, team3, entry3 = extracted[2]
+            print(f"行 {i+3} 抽出結果: {extracted[2]}")
+            s4, f4, raw4, area4, team4, entry4 = extracted[3]
+            print(f"行 {i+4} 抽出結果: {extracted[3]}")
+            s5, f5, raw5, area5, team5, entry5 = extracted[4]
+            print(f"行 {i+5} 抽出結果: {extracted[4]}")
+            s6, f6, raw6, area6, team6, entry6 = extracted[5]
+            print(f"行 {i+6} 抽出結果: {extracted[5]}")
+
+            p1, p2, p3, p4, p5, p6 = presence
+
+            # 期待パターン:
+            # 1: エリア
+            # 2: 選手Aの名前
+            # 3/4: 選手Aのチーム名 と エントリー (順序が入れ替わる可能性あり)
+            # 5: 選手Bの名前
+            # 6: 選手Bのチーム名
+
+            is_area_ok = area1 and p1['area']
+            is_name_a_ok = raw2 and p2['player']
+            is_name_b_ok = raw5 and p5['player']
+            is_team_b_ok = team6 and p6['team']
+
+            # エントリーと選手Aのチームは3行目と4行目のどちらか
+            entry_number = None
+            team_a = None
+            # 3行目が数字なら3がentry、4がteam
+            if entry3 and entry3.isdigit():
+                entry_number = int(entry3)
+                team_a = team4 if team4 else None
+            # 4行目が数字なら4がentry、3がteam
+            elif entry4 and entry4.isdigit():
+                entry_number = int(entry4)
+                team_a = team3 if team3 else None
+            else:
+                # 両方に数字がない場合は、チーム/エントリー不成立
+                entry_number = None
+
+            is_entry_ok = entry_number is not None
+            is_team_a_ok = team_a is not None
+
+            if is_area_ok and is_name_a_ok and is_entry_ok and is_name_b_ok and is_team_b_ok:
+                # 選手A情報
+                RESULTS.append({
+                    'Surname': s2, 'First_Name': f2,
+                    'Player_Name_Raw': raw2, 'Split_Index': len(s2) if s2 else 0,
+                    'Area_Name': area1,
+                    'Team_Name': team_a,
+                    'Entry_Number': entry_number
+                })
+
+                # 選手B情報
+                RESULTS.append({
+                    'Surname': s5, 'First_Name': f5,
+                    'Player_Name_Raw': raw5, 'Split_Index': len(s5) if s5 else 0,
+                    'Area_Name': area1,
+                    'Team_Name': team6,
+                    'Entry_Number': entry_number
+                })
+
+                i += 6
+                print(f"行 {i-5}～{i} で選手情報を抽出しました。")
+                continue
+            else:
+                # 失敗した場合は警告（詳細はデバッグ用）
+                print(f"警告: 行 {i+1}～{i+6} の6項目セットから選手情報を抽出できませんでした。")
+
+        # 5行パターン: エントリーと team_b が同じ行にある（i .. i+4）
+        if i + 4 < len(line_data):
+            g5 = [line_data.iloc[i + k] for k in range(5)]
+            ex5 = [extract_single_line_content(g, data, X_SETTINGS) for g in g5]
+            pr5 = [check_line_presence(g, data, X_SETTINGS) for g in g5]
+
+            s1, f1, raw1, area1, team1, entry1 = ex5[0]
+            s2, f2, raw2, area2, team2, entry2 = ex5[1]
+            s3, f3, raw3, area3, team3, entry3 = ex5[2]
+            s4, f4, raw4, area4, team4, entry4 = ex5[3]
+            s5, f5, raw5, area5, team5, entry5 = ex5[4]
+
+            p1, p2, p3, p4, p5 = pr5
+
+            # 期待: 1:Area, 2:playerA, 3: teamA or entry, 4:playerB, 5: teamB+entry
+            is_area_ok = area1 and p1['area']
+            is_name_a_ok = raw2 and p2['player']
+            is_name_b_ok = raw4 and p4['player']
+            is_team_b_ok = team5 and p5['team']
+
+            entry_number = None
+            team_a = None
+            # 5行目にエントリーがある場合優先
+            if entry5 and entry5.isdigit():
+                entry_number = int(entry5)
+            elif entry3 and entry3.isdigit():
+                entry_number = int(entry3)
+
+            # team_a は3行目の team を使う（存在すれば）
+            team_a = team3 if team3 else None
+
+            if is_area_ok and is_name_a_ok and entry_number is not None and is_name_b_ok and is_team_b_ok:
+                RESULTS.append({
+                    'Surname': s2, 'First_Name': f2,
+                    'Player_Name_Raw': raw2, 'Split_Index': len(s2) if s2 else 0,
+                    'Area_Name': area1,
+                    'Team_Name': team_a,
+                    'Entry_Number': entry_number
+                })
+
+                RESULTS.append({
+                    'Surname': s4, 'First_Name': f4,
+                    'Player_Name_Raw': raw4, 'Split_Index': len(s4) if s4 else 0,
+                    'Area_Name': area1,
+                    'Team_Name': team5,
+                    'Entry_Number': entry_number
+                })
+
+                i += 5
+                print(f"行 {i-4}～{i} の5項目セットで選手情報を抽出しました。")
+                continue
+
+        # 成立しない場合は次へ
+        i += 1
+
     return RESULTS
 
 ## インターハイ
@@ -782,12 +1019,12 @@ def structure_player_data(chars_df, page_num):
         mid_x = 300  # デフォルト値（必要に応じて調整）
 
     # 2. 文字データを左右に分割
-    chars_left = chars_df[chars_df['left'] <= mid_x].copy()
-    chars_right = chars_df[chars_df['left'] > mid_x].copy()
+    # chars_left = chars_df[chars_df['left'] <= mid_x].copy()
+    # chars_right = chars_df[chars_df['left'] > mid_x].copy()
 
     # 左右それぞれのX範囲でフィルタリング
-    chars_left = chars_left[(chars_left['left'] >= X_LEFT_ENTRY_MIN) & (chars_left['left'] <= X_LEFT_TEAM_MAX)].reset_index(drop=True)
-    chars_right = chars_right[(chars_right['left'] >= X_RIGHT_NAME_MIN) & (chars_right['left'] <= X_RIGHT_ENTRY_MAX)].reset_index(drop=True)
+    chars_left = chars_df[(chars_df['left'] >= X_LEFT_ENTRY_MIN) & (chars_df['left'] <= X_LEFT_TEAM_MAX)].reset_index(drop=True)
+    chars_right = chars_df[(chars_df['left'] >= X_RIGHT_NAME_MIN) & (chars_df['left'] <= X_RIGHT_ENTRY_MAX)].reset_index(drop=True)
 
     # 3. 左右それぞれで抽出ロジックを実行
     results_left = _group_and_extract_side(chars_left, is_left_side=True)

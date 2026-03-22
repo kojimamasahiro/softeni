@@ -5,6 +5,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// コマンド
+// node scripts/generate_players_from_tournaments.mjs
+
 // ---------- Filter definitions (place your filters here) ----------
 // Edit these to change which files are scanned and the default threshold.
 const FILTERS = {
@@ -32,7 +35,13 @@ function walkDir(dir, cb) {
   }
 }
 
-const detailsRoot = path.join(__dirname, '..', 'data', 'tournaments', 'details');
+const detailsRoot = path.join(
+  __dirname,
+  '..',
+  'data',
+  'tournaments',
+  'details',
+);
 const playersFile = path.join(
   __dirname,
   '..',

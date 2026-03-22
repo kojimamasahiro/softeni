@@ -1148,14 +1148,32 @@ function deriveResultLabelForEntry(entryNo) {
   const wasWinner =
     last.winnerEntryNo != null && last.winnerEntryNo === entryNo;
 
+  // true final detection
+  const isFinalMatch = !last.nextMatchId && (
+    lastRound === '決勝' ||
+    matchesTransformed.filter(m => !m.nextMatchId && m.stage === 'knockout').length <= 2
+  );
+
   // champion detection: winner of the match that has no nextMatchId (final)
-  if (wasWinner && !last.nextMatchId) {
+  if (wasWinner && isFinalMatch) {
     return { resultLabel: '優勝', eliminatedRound: null, lastMatchId };
   }
 
   // runner-up: lost the final (last match is final and not winner)
-  if (!wasWinner && !last.nextMatchId) {
+  if (!wasWinner && isFinalMatch && lastRound !== '3位決定戦') {
     return { resultLabel: '準優勝', eliminatedRound: lastRound, lastMatchId };
+  }
+  
+  // if tournament didn't finish, what is their standing?
+  if (wasWinner) {
+    if (lastRound && lastRound.includes('準決勝')) return { resultLabel: '決勝進出', eliminatedRound: null, lastMatchId };
+    if (lastRound && lastRound.includes('準々決勝')) return { resultLabel: 'ベスト4進出', eliminatedRound: null, lastMatchId };
+    if (lastRound) {
+        const num = (lastRound.match(/(\d+)回/) || [])[1];
+        if (num) {
+            return { resultLabel: `${Number(num) + 1}回戦進出`, eliminatedRound: null, lastMatchId };
+        }
+    }
   }
 
   // named round heuristics
@@ -1215,8 +1233,6 @@ outObj.playerResults = results || [];
 // expose entry-level results as the primary `results` array (replace old output)
 outObj.entryResults = entryResults;
 // results: per-entry objects containing both tournament and roundrobin fields
-// Compute a normalized `rank` object from an entry-level result (used to
-// separate `tournament.label` (human string) and `tournament.rank` (machine-friendly)).
 function computeTournamentRank(entryResult) {
   if (!entryResult || !entryResult.resultLabel) return { kind: 'unknown' };
   const label = entryResult.resultLabel;
@@ -1229,8 +1245,8 @@ function computeTournamentRank(entryResult) {
   const bestMatch = label.match(/ベスト(\d+)/);
   if (bestMatch) return { kind: 'best', bestLevel: Number(bestMatch[1]) };
 
-  // Numeric round like "3回戦敗退"
-  const roundMatch = label.match(/(\d+)回戦敗退/);
+  // Numeric round like "3回戦敗退" or "3回戦進出"
+  const roundMatch = label.match(/(\d+)回戦/);
   if (roundMatch) return { kind: 'round', round: Number(roundMatch[1]) };
 
   // Fall back to using eliminatedRound heuristics when available

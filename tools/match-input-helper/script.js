@@ -333,8 +333,12 @@
       }
 
       // 4) 残り（rest）を姓・名に分割
+      const surnameOnlyMode = document.getElementById('surnameOnlyMode');
+      const isSurnameOnly = surnameOnlyMode && surnameOnlyMode.checked;
+
       // 既存の優先姓ルール
-      if (!firstNameInput.value.trim()) {
+      // 苗字のみモードならここをスキップする
+      if (!isSurnameOnly && !firstNameInput.value.trim()) {
         const joinedName = rest; // すでに空白/数字/カッコ除去済み
         (function applyPriorityLastName() {
           if (!joinedName) return;
