@@ -30,24 +30,25 @@ function buildBracket(matches: TournamentMatch[]): {
 
   const entriesByRound = new Map<string, (number | null)[]>();
 
-  // 2. Identify the Root (Final)
-  // 他の試合の 'prevMatchId' としてリストされていない試合を見つける
-  // または、nextMatchId が設定されている場合、nextMatchId を持たないものを探す方が通常安全
-  // nextMatchId を使用する
-  let finalMatch = knockoutMatches.find((m) => !m.nextMatchId);
+  // 2. Identify the Roots (Final or Interrupted round)
+  let finalMatches = knockoutMatches.filter((m) => !m.nextMatchId);
 
-  // フォールバック: 複数ある場合（例: 3位決定戦？）、'決勝' ラウンド名を持つものを選ぶ（利用可能な場合）
-  const finals = knockoutMatches.filter((m) => !m.nextMatchId);
-  if (finals.length > 1) {
-    const namedFinal = finals.find((m) => m.round === '決勝');
-    if (namedFinal) finalMatch = namedFinal;
-  }
-
-  if (!finalMatch) {
-    // 奇妙なデータに対するフォールバック: 1つを選ぶか、空を返すか？
-    // 循環または破損データの場合、起こり得る。
-    // ロジックが失敗した場合、最初のものをルートと仮定する。
-    finalMatch = knockoutMatches[0];
+  if (finalMatches.length > 1) {
+    const namedFinal = finalMatches.find((m) => m.round === '決勝');
+    if (namedFinal) {
+      finalMatches = [namedFinal];
+    } else {
+      // 決勝がなくて複数ルートがある＝途中で終わっているトーナメント
+      // エントリー番号順にソートして、インデックスを割り当てる
+      finalMatches.sort((a, b) => {
+        const aMin = Math.min(...a.entries.map((e) => e ?? Infinity));
+        const bMin = Math.min(...b.entries.map((e) => e ?? Infinity));
+        return aMin - bMin;
+      });
+    }
+  } else if (finalMatches.length === 0) {
+    // 循環または異常データフォールバック
+    finalMatches = [knockoutMatches[0]];
   }
 
   // 3. Tree Traversal to assign Canonical Slots
@@ -115,41 +116,27 @@ function buildBracket(matches: TournamentMatch[]): {
     }
   };
 
-  if (finalMatch) {
-    traverse(finalMatch, 0, 0);
-  }
+  finalMatches.forEach((match, idx) => {
+    traverse(match, 0, idx);
+  });
 
   // 4. Flatten Grid to entriesByRound
-  // dist を Max から 0 まで反復する。
-  // 各 dist について、有効なインデックスは 0 から 2^dist - 1？
-  // いいえ。
-  // Dist 0 (Final): 1 試合 (Index 0). Entries: 0, 1.
-  // Dist 1 (Semi): 2 試合 (Ind 0, 1). Entries: 0,1 , 2,3.
-  // Dist k: Matches 0 .. 2^k - 1. Entries 0 .. 2^(k+1) - 1.
-
   // `roundToDist` を使用して、どのラウンド名がどの距離に対応するかを決定する。
-  // 逆マップ: Distance -> RoundName
   const distToRound = new Map<number, string>();
   roundToDist.forEach((d, r) => {
-    // 複数のラウンドが同じ距離にマップされる場合（まれ）、1つを選ぶ。
-    // 通常安全。
     if (!distToRound.has(d)) distToRound.set(d, r);
   });
 
   const sortedRounds: string[] = [];
 
-  // 0 (Final) から MaxDist (First Round) までを入力
-  // この方向により、シードを伝播できる（親ラウンドでエントリーされたがこのラウンドで試合がないプレイヤー）
   for (let d = 0; d <= maxDist; d++) {
     const roundName = distToRound.get(d);
-    if (!roundName) continue; // Should have a name if matches exist
+    if (!roundName) continue;
 
-    // We want rounds ordered R1, R2... Final
-    // Since we iterate Final -> R1 (0 -> Max), we unshift to reverse order
     sortedRounds.unshift(roundName);
 
     const layerMatches = treeGrid.get(d);
-    const slotsCount = Math.pow(2, d); // Number of Matches
+    const slotsCount = finalMatches.length * Math.pow(2, d); // Number of Matches
     const entriesCount = slotsCount * 2;
 
     const entriesArray: (number | null)[] = new Array(entriesCount).fill(null);
@@ -227,32 +214,33 @@ function buildBracket(matches: TournamentMatch[]): {
   }
 
   // 5. Champion Column
-  // 同じロジック: Final (0, 0) の勝者をチェック
-  if (finalMatch && finalMatch.winnerEntryNo !== undefined) {
-    entriesByRound.set('優勝', [finalMatch.winnerEntryNo]);
-    sortedRounds.push('優勝');
+  if (finalMatches.length === 1) {
+    const singleFinal = finalMatches[0];
+    if (singleFinal.winnerEntryNo !== undefined) {
+      entriesByRound.set('優勝', [singleFinal.winnerEntryNo]);
+      sortedRounds.push('優勝');
 
-    // Calculate champion Y
-    const finalRoundName = distToRound.get(0);
-    const finalLayout = finalRoundName ? layoutByRound.get(finalRoundName) : [];
-    const top = finalLayout?.[0];
-    const bottom = finalLayout?.[1];
-    let champY = 0;
-    if (top?.entryNo !== null && bottom?.entryNo !== null) {
-      champY = (top!.y + bottom!.y) / 2;
-    } else if (top?.entryNo !== null) {
-      champY = top!.y;
-    } else if (bottom?.entryNo !== null) {
-      champY = bottom!.y;
+      // Calculate champion Y
+      const finalRoundName = distToRound.get(0);
+      const finalLayout = finalRoundName ? layoutByRound.get(finalRoundName) : [];
+      const top = finalLayout?.[0];
+      const bottom = finalLayout?.[1];
+      let champY = 0;
+      if (top?.entryNo !== null && bottom?.entryNo !== null) {
+        champY = (top!.y + bottom!.y) / 2;
+      } else if (top?.entryNo !== null) {
+        champY = top!.y;
+      } else if (bottom?.entryNo !== null) {
+        champY = bottom!.y;
+      }
+      layoutByRound.set('優勝', [
+        { entryNo: singleFinal.winnerEntryNo, y: champY },
+      ]);
+    } else if (sortedRounds.length > 0) {
+      entriesByRound.set('優勝', [-1]);
+      sortedRounds.push('優勝');
+      layoutByRound.set('優勝', [{ entryNo: -1, y: 0 }]);
     }
-    layoutByRound.set('優勝', [
-      { entryNo: finalMatch.winnerEntryNo, y: champY },
-    ]);
-  } else if (sortedRounds.length > 0) {
-    // 不明でも列を追加するか？ プレースホルダーかも。
-    entriesByRound.set('優勝', [-1]);
-    sortedRounds.push('優勝');
-    layoutByRound.set('優勝', [{ entryNo: -1, y: 0 }]);
   }
 
   // デフォルト開始ラウンドを計算（下から4番目、'優勝' を除く）
@@ -593,15 +581,15 @@ export default function TournamentBracket({
                         </div>
                       )}
 
-                      {/* 次のラウンドへの接続線 */}
-                      {roundIndex < displayedRounds.length - 1 &&
+                      {/* 次のラウンドへの接続線、または最終・途中結果のスコア線 */}
+                      {(roundIndex < displayedRounds.length - 1 || matchForEntry) &&
                         (() => {
                           const nextRoundName = displayedRounds[roundIndex + 1];
-                          const nextLayout = dynamicLayout.get(nextRoundName);
+                          const nextLayout = nextRoundName ? dynamicLayout.get(nextRoundName) : undefined;
                           // 次のラウンドのエントリーは、2つの子を1つにまとめるため、idx = Math.floor(index / 2)
                           const destNode = nextLayout?.[Math.floor(index / 2)];
 
-                          if (!destNode) return null;
+                          if (roundIndex === displayedRounds.length - 1 && !matchForEntry) return null;
 
                           return (
                             <svg
@@ -627,7 +615,7 @@ export default function TournamentBracket({
                                 strokeWidth="1"
                               />
 
-                              {node.y !== destNode.y && (
+                              {destNode && node.y !== destNode.y && (
                                 <line
                                   x1={ROUND_GAP}
                                   y1="0"
