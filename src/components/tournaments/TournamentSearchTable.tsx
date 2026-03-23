@@ -550,6 +550,9 @@ function ResultCell({ inst }: { inst: TournamentInstance }) {
     const isX = /^https?:\/\/(www\.)?(x\.com|twitter\.com)/.test(
       inst.officialUrl,
     );
+    // 今日の日付（YYYY-MM-DD）と startDate を文字列比較して未来かどうか判定
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const isFuture = !!inst.startDate && inst.startDate > todayStr;
     return (
       <a
         href={inst.officialUrl}
@@ -603,7 +606,7 @@ function ResultCell({ inst }: { inst: TournamentInstance }) {
             />
           </svg>
         )}
-        {isPdf ? 'PDF' : isX ? 'X' : '公式'}
+        {isFuture ? '予定' : isPdf ? 'PDF' : isX ? 'X' : '公式'}
       </a>
     );
   }
