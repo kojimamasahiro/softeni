@@ -10,7 +10,7 @@ pd.set_option("display.max_colwidth", None)
 
 # --- 設定 ---
 PDF_PATH = 'tournament.pdf'       # 入力PDFファイル名
-PAGE_NUMS = list(range(1,2))      # 抽出するページ番号のリスト（1から開始）
+PAGE_NUMS = list(range(1,3))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 3                    # 同じ行と見なすy座標の許容誤差
 Y_CROP_MIN = 50                    # 抽出範囲の最小Y座標
 Y_CROP_MAX = 880                   # 抽出範囲の最大Y座標
@@ -21,29 +21,29 @@ IS_SINGLES = False                 # シングルスの場合はTrueにする
 
 # カラムのX座標定義
 X_ENTRY_MIN = 55
-X_ENTRY_MAX = 80
+X_ENTRY_MAX = 75
 
 # 順位 (要調整 - 必要に応じて変更してください)
-X_RANK_MIN = 400
-X_RANK_MAX = 440
+X_RANK_MIN = 380
+X_RANK_MAX = 435
 
 # 選手A
 X_SURNAME_A_MIN = 80
-X_SURNAME_A_MAX = 112
-X_FIRSTNAME_A_MIN = 112
-X_FIRSTNAME_A_MAX = 140
+X_SURNAME_A_MAX = 108
+X_FIRSTNAME_A_MIN = 108
+X_FIRSTNAME_A_MAX = 150
 
 # 選手B
 X_SURNAME_B_MIN = 80
-X_SURNAME_B_MAX = 112
-X_FIRSTNAME_B_MIN = 112
-X_FIRSTNAME_B_MAX = 140
+X_SURNAME_B_MAX = 108
+X_FIRSTNAME_B_MIN = 108
+X_FIRSTNAME_B_MAX = 150
 
 X_AREA_MIN = 150
 X_AREA_MAX = 180
 
 X_TEAM_MIN = 180
-X_TEAM_MAX = 270
+X_TEAM_MAX = 260
 
 USE_NAMEDIVIDER = False
 
@@ -356,7 +356,7 @@ if __name__ == "__main__":
     else:
         df = main_extraction(PDF_PATH, PAGE_NUMS)
         if not df.empty:
-            output_csv = 'output/round_robin_results.csv'
+            output_csv = 'output/softtennis_players_separated.csv'
             output_cols = ['Entry_Number', 'Rank', 'Surname', 'First_Name', 'Player_Name_Raw', 'Area_Name', 'Team_Name', 'Split_Index']
             df[output_cols].to_csv(output_csv, index=False, encoding='utf-8-sig')
             print(f"Saved results to {output_csv}")
