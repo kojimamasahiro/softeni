@@ -13,7 +13,7 @@ PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
 PAGE_NUMS = list(range(1, 2))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 3                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
-Y_CROP_MIN = 95                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MIN = 35                  # ★ 抽出範囲の最小Y座標 (上端)
 Y_CROP_MAX = 850                 # ★ 抽出範囲の最大Y座標 (下端)
 
 # ★ 名前分割方法の選択
@@ -26,27 +26,27 @@ if USE_NAMEDIVIDER:
     from namedivider import BasicNameDivider
     name_divider = BasicNameDivider()
 
-X_LEFT_ENTRY_MIN = 50    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
-X_LEFT_NAME_MIN = 70   # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 95  # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 95 # 左側 名の最小X座標
-X_LEFT_NAME_MAX = 120 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 126    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 165    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 165    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 205   # チーム名の最大X座標
+X_LEFT_ENTRY_MIN = 25    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 50    # 左側エントリー番号の最大X座標
+X_LEFT_NAME_MIN = 50   # 左側 姓の最小X座標
+X_LEFT_SURNAME_MAX = 75  # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 75 # 左側 名の最小X座標
+X_LEFT_NAME_MAX = 178 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 180    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 220    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 55    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 173   # チーム名の最大X座標
 
-X_RIGHT_NAME_MIN = 370   # 右側 姓の最小X座標
+X_RIGHT_NAME_MIN = 300   # 右側 姓の最小X座標
 X_RIGHT_SURNAME_MAX = 395   # 右側 姓の最大X座標
 X_RIGHT_FIRSTNAME_MIN = 395 # 右側 名の最小X座標
 X_RIGHT_NAME_MAX = 425 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 430  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 465  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 465  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 510  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 520  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 570  # 右側エントリー番号の最大X座標
+X_RIGHT_AREA_MIN = 500  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 540  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 380  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 485  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 550  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 575  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -83,7 +83,7 @@ def _group_and_extract_side(side_chars_df, is_left_side):
         return []
 
     ################## 指定する
-    extraction_strategy = singles_extraction_strategy
+    extraction_strategy = team_extraction_strategy
 
     # 座標設定を決定
     if USE_NAMEDIVIDER:
@@ -1023,7 +1023,7 @@ def structure_player_data(chars_df, page_num):
     # chars_right = chars_df[chars_df['left'] > mid_x].copy()
 
     # 左右それぞれのX範囲でフィルタリング
-    chars_left = chars_df[(chars_df['left'] >= X_LEFT_ENTRY_MIN) & (chars_df['left'] <= X_LEFT_TEAM_MAX)].reset_index(drop=True)
+    chars_left = chars_df[(chars_df['left'] >= X_LEFT_ENTRY_MIN) & (chars_df['left'] <= X_LEFT_AREA_MAX)].reset_index(drop=True)
     chars_right = chars_df[(chars_df['left'] >= X_RIGHT_NAME_MIN) & (chars_df['left'] <= X_RIGHT_ENTRY_MAX)].reset_index(drop=True)
 
     # 3. 左右それぞれで抽出ロジックを実行
