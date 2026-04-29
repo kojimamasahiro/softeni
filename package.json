@@ -47,7 +47,8 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node scripts/generate-players-json.mjs",
-    "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build", 
+    "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
+    "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "start": "next start",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "generate-og-json": "node scripts/generate-og-json.mjs",
