@@ -10,12 +10,12 @@ site.
 Recommended Cloudflare Pages settings:
 
 - Project name: `adinsight`
-- Build command: leave empty
-- Build output directory: `adinsight-site`
+- Build command: `npm run build:adinsight`
+- Build output directory: `out`
 - Custom domain: `adinsight.softeni-pick.com`
 
-Routes provided by `_redirects`:
+Routes are provided as directory index pages to avoid clean URL redirect loops:
 
-- `/privacy` -> `/privacy.html`
-- `/terms` -> `/terms.html`
-- `/account-delete` -> `/account-delete.html`
+- `/privacy`
+- `/terms`
+- `/account-delete`
