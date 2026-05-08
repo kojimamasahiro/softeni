@@ -36,7 +36,7 @@ const CookieConsent = ({ onAccept, onDecline }: Props) => {
         <span>
           当サイトは分析目的でCookieを使用します。詳しくは
           <a
-            href="/about"
+            href="/privacy"
             className="underline text-blue-300 hover:text-blue-200 ml-1"
             target="_blank"
             rel="noopener noreferrer"
