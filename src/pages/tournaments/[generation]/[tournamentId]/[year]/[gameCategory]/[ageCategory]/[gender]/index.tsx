@@ -6,13 +6,18 @@ import path from 'path';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
+import {
+  PackedTournamentDetailData,
+  packTournamentDetailData,
+  unpackTournamentDetailData,
+} from '@/lib/packedPageData';
 import {
   TournamentDetailData,
   TournamentIndexEntry,
@@ -38,7 +43,7 @@ interface TournamentYearResultPageProps {
   label: string;
   categoryLabel: string;
   infoForYear: TournamentInformationEntry | null;
-  detailData: TournamentDetailData | null;
+  detailDataPacked: PackedTournamentDetailData | null;
   linkCategories: LinkCategory[] | null;
   infoWarnings?: string[];
   detailsWarnings?: string[];
@@ -56,7 +61,7 @@ export default function TournamentYearResultPage({
   label,
   categoryLabel,
   infoForYear,
-  detailData,
+  detailDataPacked,
   linkCategories,
   infoWarnings = [],
   detailsWarnings = [],
@@ -67,6 +72,11 @@ export default function TournamentYearResultPage({
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const detailData = useMemo(
+    () =>
+      detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null,
+    [detailDataPacked],
+  );
 
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
@@ -611,7 +621,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
               cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`,
           )?.label ?? '',
         infoForYear,
-        detailData,
+        detailDataPacked: detailData
+          ? packTournamentDetailData(detailData)
+          : null,
         linkCategories,
         infoWarnings,
         detailsWarnings,

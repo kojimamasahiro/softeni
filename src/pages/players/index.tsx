@@ -6,6 +6,11 @@ import { useEffect, useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import {
+  PackedSameNameGroups,
+  packSameNameGroups,
+  unpackSameNameGroups,
+} from '@/lib/packedPageData';
 
 interface PlayerResult {
   firstName: string;
@@ -34,18 +39,21 @@ interface SameNameGroup {
 }
 
 interface SameNamePlayerPageProps {
-  sameNameGroups: SameNameGroup[];
-  totalResults: number;
+  sameNameGroupsPacked: PackedSameNameGroups;
 }
 
 export default function PlayersPage({
-  sameNameGroups,
+  sameNameGroupsPacked,
 }: SameNamePlayerPageProps) {
   const [sortBy, setSortBy] = useState<'count' | 'name'>('count');
   const [filterMinCount, setFilterMinCount] = useState(20);
   const [searchQuery, setSearchQuery] = useState('');
   const [dynamicData, setDynamicData] = useState<SameNameGroup[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const sameNameGroups = useMemo(
+    () => unpackSameNameGroups(sameNameGroupsPacked) as SameNameGroup[],
+    [sameNameGroupsPacked],
+  );
 
   // Fetch data dynamically when filterMinCount changes to less than 20
   useEffect(() => {
@@ -436,5 +444,9 @@ export const getStaticProps: GetStaticProps = async () => {
     sameNameGroups = [];
   }
 
-  return { props: { sameNameGroups } };
+  return {
+    props: {
+      sameNameGroupsPacked: packSameNameGroups(sameNameGroups),
+    },
+  };
 };
