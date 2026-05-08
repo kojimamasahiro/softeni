@@ -1,0 +1,2382 @@
+{
+  "results": [
+    {
+      "playerIds": [
+        "石田_すみれ_藤枝ジュニア少年団",
+        "小出_結愛_阿多古"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "佐藤_花南_テニ研ジュニア",
+        "赤羽_沙月_テニ研ジュニア"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "藤原_楓_FSTA",
+        "高倉_悠理子_FSTA"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "邊見_里紗_FSTA",
+        "下田_咲良_FSTA"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "泉_日菜_横浜泉ジュニア",
+        "岩﨑_裕愛_横浜泉ジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "柳_真鈴_小川ジュニア",
+        "大久保_初香_深谷スキャリオン"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ",
+        "丸山_花咲_大刀洗ジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "河本_しずく_今市ジュニア",
+        "木村_望夢_今市ジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "斎藤_結希_テニ研ジュニア",
+        "岩井_寧々_テニ研ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "上村",
+          "firstName": "陽葵",
+          "team": "ＳＴＣキッズ",
+          "prefecture": "山口",
+          "playerId": null,
+          "tempId": "上村_陽葵_ＳＴＣキッズ"
+        },
+        {
+          "lastName": "味村",
+          "firstName": "渚央莉",
+          "team": "ＳＴＣキッズ",
+          "prefecture": "山口",
+          "playerId": null,
+          "tempId": "味村_渚央莉_ＳＴＣキッズ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 809,
+      "name": "斎藤 結希・岩井 寧々（テニ研ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "上村_陽葵_ＳＴＣキッズ",
+        "味村_渚央莉_ＳＴＣキッズ"
+      ],
+      "opponents": [
+        {
+          "lastName": "斎藤",
+          "firstName": "結希",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "斎藤_結希_テニ研ジュニア"
+        },
+        {
+          "lastName": "岩井",
+          "firstName": "寧々",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "岩井_寧々_テニ研ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 815,
+      "name": "上村 陽葵・味村 渚央莉（ＳＴＣキッズ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "西野_さくら_長篠STC",
+        "伊澤_凛花_長篠STC"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮原",
+          "firstName": "灯花",
+          "team": "弘前あすなろジュニア",
+          "prefecture": "青森",
+          "playerId": null,
+          "tempId": "宮原_灯花_弘前あすなろジュニア"
+        },
+        {
+          "lastName": "須川",
+          "firstName": "叶萌",
+          "team": "しもきたＳＴＣ",
+          "prefecture": "青森",
+          "playerId": null,
+          "tempId": "須川_叶萌_しもきたＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 892,
+      "name": "西野 さくら・伊澤 凛花（長篠STC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "宮原_灯花_弘前あすなろジュニア",
+        "須川_叶萌_しもきたＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "西野",
+          "firstName": "さくら",
+          "team": "長篠STC",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "西野_さくら_長篠STC"
+        },
+        {
+          "lastName": "伊澤",
+          "firstName": "凛花",
+          "team": "長篠STC",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "伊澤_凛花_長篠STC"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 900,
+      "name": "宮原 灯花（弘前あすなろジュニア）・須川 叶萌（しもきたＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "邊見_里紗_FSTA",
+        "下田_咲良_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "武田",
+          "firstName": "采奈",
+          "team": "亀岡スポ少",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "武田_采奈_亀岡スポ少"
+        },
+        {
+          "lastName": "水谷",
+          "firstName": "愛彩",
+          "team": "亀岡スポ少",
+          "prefecture": "京都",
+          "playerId": null,
+          "tempId": "水谷_愛彩_亀岡スポ少"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 961,
+      "name": "邊見 里紗・下田 咲良（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "武田_采奈_亀岡スポ少",
+        "水谷_愛彩_亀岡スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "邊見",
+          "firstName": "里紗",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "邊見_里紗_FSTA"
+        },
+        {
+          "lastName": "下田",
+          "firstName": "咲良",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "下田_咲良_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 967,
+      "name": "武田 采奈・水谷 愛彩（亀岡スポ少）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "石田_すみれ_藤枝ジュニア少年団",
+        "小出_結愛_阿多古"
+      ],
+      "opponents": [
+        {
+          "lastName": "上村",
+          "firstName": "陽葵",
+          "team": "ＳＴＣキッズ",
+          "prefecture": "山口",
+          "playerId": null,
+          "tempId": "上村_陽葵_ＳＴＣキッズ"
+        },
+        {
+          "lastName": "味村",
+          "firstName": "渚央莉",
+          "team": "ＳＴＣキッズ",
+          "prefecture": "山口",
+          "playerId": null,
+          "tempId": "味村_渚央莉_ＳＴＣキッズ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 801,
+      "name": "石田 すみれ（藤枝ジュニア少年団）・小出 結愛（阿多古）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "上村_陽葵_ＳＴＣキッズ",
+        "味村_渚央莉_ＳＴＣキッズ"
+      ],
+      "opponents": [
+        {
+          "lastName": "石田",
+          "firstName": "すみれ",
+          "team": "藤枝ジュニア少年団",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "石田_すみれ_藤枝ジュニア少年団"
+        },
+        {
+          "lastName": "小出",
+          "firstName": "結愛",
+          "team": "阿多古",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "小出_結愛_阿多古"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 815,
+      "name": "上村 陽葵・味村 渚央莉（ＳＴＣキッズ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "髙橋_舞夏_鶴岡スポ少",
+        "佐藤_恵麻_鶴岡スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙山",
+          "firstName": "紗渚",
+          "team": "橋本ジュニア",
+          "prefecture": "歌山",
+          "playerId": null,
+          "tempId": "髙山_紗渚_橋本ジュニア"
+        },
+        {
+          "lastName": "北村",
+          "firstName": "妃菜加",
+          "team": "橋本ジュニア",
+          "prefecture": "歌山",
+          "playerId": null,
+          "tempId": "北村_妃菜加_橋本ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 816,
+      "name": "髙橋 舞夏・佐藤 恵麻（鶴岡スポ少）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "髙山_紗渚_橋本ジュニア",
+        "北村_妃菜加_橋本ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙橋",
+          "firstName": "舞夏",
+          "team": "鶴岡スポ少",
+          "prefecture": "山形",
+          "playerId": null,
+          "tempId": "髙橋_舞夏_鶴岡スポ少"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "恵麻",
+          "team": "鶴岡スポ少",
+          "prefecture": "山形",
+          "playerId": null,
+          "tempId": "佐藤_恵麻_鶴岡スポ少"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 821,
+      "name": "髙山 紗渚・北村 妃菜加（橋本ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山野井_柚日_船橋ジュニア",
+        "瀧口_音愛_船橋ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "泉",
+          "firstName": "日菜",
+          "team": "横浜泉ジュニア",
+          "prefecture": "奈川",
+          "playerId": null,
+          "tempId": "泉_日菜_横浜泉ジュニア"
+        },
+        {
+          "lastName": "岩﨑",
+          "firstName": "裕愛",
+          "team": "横浜泉ジュニア",
+          "prefecture": "奈川",
+          "playerId": null,
+          "tempId": "岩﨑_裕愛_横浜泉ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 830,
+      "name": "山野井 柚日・瀧口 音愛（船橋ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "泉_日菜_横浜泉ジュニア",
+        "岩﨑_裕愛_横浜泉ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "山野井",
+          "firstName": "柚日",
+          "team": "船橋ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "山野井_柚日_船橋ジュニア"
+        },
+        {
+          "lastName": "瀧口",
+          "firstName": "音愛",
+          "team": "船橋ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "瀧口_音愛_船橋ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 831,
+      "name": "泉 日菜・岩﨑 裕愛（横浜泉ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "吉野_衣音_稲城ジュニア",
+        "伊藤_凛_稲城ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "桜愛",
+          "team": "大館市協会",
+          "prefecture": "秋田",
+          "playerId": null,
+          "tempId": "山田_桜愛_大館市協会"
+        },
+        {
+          "lastName": "松崎",
+          "firstName": "柚",
+          "team": "大館市協会",
+          "prefecture": "秋田",
+          "playerId": null,
+          "tempId": "松崎_柚_大館市協会"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 840,
+      "name": "吉野 衣音・伊藤 凛（稲城ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山田_桜愛_大館市協会",
+        "松崎_柚_大館市協会"
+      ],
+      "opponents": [
+        {
+          "lastName": "吉野",
+          "firstName": "衣音",
+          "team": "稲城ジュニア",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "吉野_衣音_稲城ジュニア"
+        },
+        {
+          "lastName": "伊藤",
+          "firstName": "凛",
+          "team": "稲城ジュニア",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "伊藤_凛_稲城ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 845,
+      "name": "山田 桜愛・松崎 柚（大館市協会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "藤原_楓_FSTA",
+        "高倉_悠理子_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "福井",
+          "firstName": "愛深",
+          "team": "さんぶジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "福井_愛深_さんぶジュニア"
+        },
+        {
+          "lastName": "守家",
+          "firstName": "汐柚紅",
+          "team": "浦安ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "守家_汐柚紅_浦安ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 846,
+      "name": "藤原 楓・高倉 悠理子（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "福井_愛深_さんぶジュニア",
+        "守家_汐柚紅_浦安ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤原",
+          "firstName": "楓",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "藤原_楓_FSTA"
+        },
+        {
+          "lastName": "高倉",
+          "firstName": "悠理子",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "高倉_悠理子_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 854,
+      "name": "福井 愛深（さんぶジュニア）・守家 汐柚紅（浦安ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "綱川_怜那_芳賀ジュニア",
+        "町井_珠貴_芳賀ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "中塚",
+          "firstName": "音寧",
+          "team": "明石ジュニア",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "中塚_音寧_明石ジュニア"
+        },
+        {
+          "lastName": "田端",
+          "firstName": "碧葉",
+          "team": "明石ジュニア",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "田端_碧葉_明石ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 858,
+      "name": "綱川 怜那・町井 珠貴（芳賀ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "中塚_音寧_明石ジュニア",
+        "田端_碧葉_明石ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "綱川",
+          "firstName": "怜那",
+          "team": "芳賀ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "綱川_怜那_芳賀ジュニア"
+        },
+        {
+          "lastName": "町井",
+          "firstName": "珠貴",
+          "team": "芳賀ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "町井_珠貴_芳賀ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 861,
+      "name": "中塚 音寧・田端 碧葉（明石ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岡田_柚菜_藤井寺ジュニア",
+        "荻野_晴瑠_藤井寺ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "土本",
+          "firstName": "新菜",
+          "team": "多治見ジュニア",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "土本_新菜_多治見ジュニア"
+        },
+        {
+          "lastName": "上田",
+          "firstName": "怜奈",
+          "team": "多治見ジュニア",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "上田_怜奈_多治見ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 869,
+      "name": "岡田 柚菜・荻野 晴瑠（藤井寺ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "土本_新菜_多治見ジュニア",
+        "上田_怜奈_多治見ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "岡田",
+          "firstName": "柚菜",
+          "team": "藤井寺ジュニア",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "岡田_柚菜_藤井寺ジュニア"
+        },
+        {
+          "lastName": "荻野",
+          "firstName": "晴瑠",
+          "team": "藤井寺ジュニア",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "荻野_晴瑠_藤井寺ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 871,
+      "name": "土本 新菜・上田 怜奈（多治見ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "柳_真鈴_小川ジュニア",
+        "大久保_初香_深谷スキャリオン"
+      ],
+      "opponents": [
+        {
+          "lastName": "岡﨑",
+          "firstName": "真希",
+          "team": "ももっち岡山ジュニア",
+          "prefecture": "岡山",
+          "playerId": null,
+          "tempId": "岡﨑_真希_ももっち岡山ジュニア"
+        },
+        {
+          "lastName": "松岡",
+          "firstName": "芹果",
+          "team": "総社ジュニア",
+          "prefecture": "岡山",
+          "playerId": null,
+          "tempId": "松岡_芹果_総社ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 876,
+      "name": "柳 真鈴（小川ジュニア）・大久保 初香（深谷スキャリオン）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岡﨑_真希_ももっち岡山ジュニア",
+        "松岡_芹果_総社ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "柳",
+          "firstName": "真鈴",
+          "team": "小川ジュニア",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "柳_真鈴_小川ジュニア"
+        },
+        {
+          "lastName": "大久保",
+          "firstName": "初香",
+          "team": "深谷スキャリオン",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大久保_初香_深谷スキャリオン"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 881,
+      "name": "岡﨑 真希（ももっち岡山ジュニア）・松岡 芹果（総社ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "狩野_璃心_Ｔ－フォースｊｒ．ラボ",
+        "神尾_笑麻_沼田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮原",
+          "firstName": "灯花",
+          "team": "弘前あすなろジュニア",
+          "prefecture": "青森",
+          "playerId": null,
+          "tempId": "宮原_灯花_弘前あすなろジュニア"
+        },
+        {
+          "lastName": "須川",
+          "firstName": "叶萌",
+          "team": "しもきたＳＴＣ",
+          "prefecture": "青森",
+          "playerId": null,
+          "tempId": "須川_叶萌_しもきたＳＴＣ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 886,
+      "name": "狩野 璃心（Ｔ－フォースｊｒ．ラボ）・神尾 笑麻（沼田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "宮原_灯花_弘前あすなろジュニア",
+        "須川_叶萌_しもきたＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "狩野",
+          "firstName": "璃心",
+          "team": "Ｔ－フォースｊｒ．ラボ",
+          "prefecture": "群馬",
+          "playerId": null,
+          "tempId": "狩野_璃心_Ｔ－フォースｊｒ．ラボ"
+        },
+        {
+          "lastName": "神尾",
+          "firstName": "笑麻",
+          "team": "沼田ジュニア",
+          "prefecture": "群馬",
+          "playerId": null,
+          "tempId": "神尾_笑麻_沼田ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 900,
+      "name": "宮原 灯花（弘前あすなろジュニア）・須川 叶萌（しもきたＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "中村_空_津凪ＳＴＣ",
+        "田﨑_舞大_松阪ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "徳永",
+          "firstName": "芽生",
+          "team": "Ｓｈｉｎｇｕ-ＪＳＴ",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ"
+        },
+        {
+          "lastName": "丸山",
+          "firstName": "花咲",
+          "team": "大刀洗ジュニア",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "丸山_花咲_大刀洗ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 901,
+      "name": "中村 空（津凪ＳＴＣ）・田﨑 舞大（松阪ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ",
+        "丸山_花咲_大刀洗ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "中村",
+          "firstName": "空",
+          "team": "津凪ＳＴＣ",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "中村_空_津凪ＳＴＣ"
+        },
+        {
+          "lastName": "田﨑",
+          "firstName": "舞大",
+          "team": "松阪ジュニア",
+          "prefecture": "三重",
+          "playerId": null,
+          "tempId": "田﨑_舞大_松阪ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 906,
+      "name": "徳永 芽生（Ｓｈｉｎｇｕ-ＪＳＴ）・丸山 花咲（大刀洗ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "髙井_咲那_船橋ジュニア",
+        "福岡_夏帆_船橋ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "池田",
+          "firstName": "紡叶美",
+          "team": "伊集院ジュニア",
+          "prefecture": "児島",
+          "playerId": null,
+          "tempId": "池田_紡叶美_伊集院ジュニア"
+        },
+        {
+          "lastName": "矢野",
+          "firstName": "芽衣子",
+          "team": "伊集院ジュニア",
+          "prefecture": "児島",
+          "playerId": null,
+          "tempId": "矢野_芽衣子_伊集院ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 911,
+      "name": "髙井 咲那・福岡 夏帆（船橋ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "池田_紡叶美_伊集院ジュニア",
+        "矢野_芽衣子_伊集院ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙井",
+          "firstName": "咲那",
+          "team": "船橋ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "髙井_咲那_船橋ジュニア"
+        },
+        {
+          "lastName": "福岡",
+          "firstName": "夏帆",
+          "team": "船橋ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "福岡_夏帆_船橋ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 916,
+      "name": "池田 紡叶美・矢野 芽衣子（伊集院ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "合田_有里_わかくさ",
+        "齋藤_姪衣_鳩ケ谷ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "花南",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "佐藤_花南_テニ研ジュニア"
+        },
+        {
+          "lastName": "赤羽",
+          "firstName": "沙月",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "赤羽_沙月_テニ研ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 923,
+      "name": "合田 有里（わかくさ）・齋藤 姪衣（鳩ケ谷ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "佐藤_花南_テニ研ジュニア",
+        "赤羽_沙月_テニ研ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "合田",
+          "firstName": "有里",
+          "team": "わかくさ",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "合田_有里_わかくさ"
+        },
+        {
+          "lastName": "齋藤",
+          "firstName": "姪衣",
+          "team": "鳩ケ谷ジュニア",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "齋藤_姪衣_鳩ケ谷ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 926,
+      "name": "佐藤 花南・赤羽 沙月（テニ研ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "柴村_杏奈_武雄ジュニア",
+        "田中_穂波_武雄ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "新海",
+          "firstName": "翼",
+          "team": "インフィニティ水沢",
+          "prefecture": "岩手",
+          "playerId": null,
+          "tempId": "新海_翼_インフィニティ水沢"
+        },
+        {
+          "lastName": "小野寺",
+          "firstName": "麻桜",
+          "team": "インフィニティ水沢",
+          "prefecture": "岩手",
+          "playerId": null,
+          "tempId": "小野寺_麻桜_インフィニティ水沢"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 931,
+      "name": "柴村 杏奈・田中 穂波（武雄ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "新海_翼_インフィニティ水沢",
+        "小野寺_麻桜_インフィニティ水沢"
+      ],
+      "opponents": [
+        {
+          "lastName": "柴村",
+          "firstName": "杏奈",
+          "team": "武雄ジュニア",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "柴村_杏奈_武雄ジュニア"
+        },
+        {
+          "lastName": "田中",
+          "firstName": "穂波",
+          "team": "武雄ジュニア",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "田中_穂波_武雄ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 936,
+      "name": "新海 翼・小野寺 麻桜（インフィニティ水沢）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "河本_しずく_今市ジュニア",
+        "木村_望夢_今市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "山口",
+          "firstName": "璃乃",
+          "team": "打田ジュニア",
+          "prefecture": "歌山",
+          "playerId": null,
+          "tempId": "山口_璃乃_打田ジュニア"
+        },
+        {
+          "lastName": "西平",
+          "firstName": "那津",
+          "team": "打田ジュニア",
+          "prefecture": "歌山",
+          "playerId": null,
+          "tempId": "西平_那津_打田ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 941,
+      "name": "河本 しずく・木村 望夢（今市ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山口_璃乃_打田ジュニア",
+        "西平_那津_打田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "河本",
+          "firstName": "しずく",
+          "team": "今市ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "河本_しずく_今市ジュニア"
+        },
+        {
+          "lastName": "木村",
+          "firstName": "望夢",
+          "team": "今市ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "木村_望夢_今市ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 950,
+      "name": "山口 璃乃・西平 那津（打田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "鈴木_絢芽_東海",
+        "仙田_紗南_東海"
+      ],
+      "opponents": [
+        {
+          "lastName": "北浦",
+          "firstName": "綾乃",
+          "team": "河南ＪＴＣ",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "北浦_綾乃_河南ＪＴＣ"
+        },
+        {
+          "lastName": "湧田",
+          "firstName": "ことみ",
+          "team": "河南ＪＴＣ",
+          "prefecture": "大阪",
+          "playerId": null,
+          "tempId": "湧田_ことみ_河南ＪＴＣ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 951,
+      "name": "鈴木 絢芽・仙田 紗南（東海）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "北浦_綾乃_河南ＪＴＣ",
+        "湧田_ことみ_河南ＪＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "絢芽",
+          "team": "東海",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "鈴木_絢芽_東海"
+        },
+        {
+          "lastName": "仙田",
+          "firstName": "紗南",
+          "team": "東海",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "仙田_紗南_東海"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 956,
+      "name": "北浦 綾乃・湧田 ことみ（河南ＪＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "邊見_里紗_FSTA",
+        "下田_咲良_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "長田",
+          "firstName": "彩愛",
+          "team": "富士川町スポ少",
+          "prefecture": "山梨",
+          "playerId": null,
+          "tempId": "長田_彩愛_富士川町スポ少"
+        },
+        {
+          "lastName": "井上",
+          "firstName": "成菜",
+          "team": "富士川町スポ少",
+          "prefecture": "山梨",
+          "playerId": null,
+          "tempId": "井上_成菜_富士川町スポ少"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 961,
+      "name": "邊見 里紗・下田 咲良（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "長田_彩愛_富士川町スポ少",
+        "井上_成菜_富士川町スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "邊見",
+          "firstName": "里紗",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "邊見_里紗_FSTA"
+        },
+        {
+          "lastName": "下田",
+          "firstName": "咲良",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "下田_咲良_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 975,
+      "name": "長田 彩愛・井上 成菜（富士川町スポ少）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "石田_すみれ_藤枝ジュニア少年団",
+        "小出_結愛_阿多古"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙山",
+          "firstName": "紗渚",
+          "team": "橋本ジュニア",
+          "prefecture": "歌山",
+          "playerId": null,
+          "tempId": "髙山_紗渚_橋本ジュニア"
+        },
+        {
+          "lastName": "北村",
+          "firstName": "妃菜加",
+          "team": "橋本ジュニア",
+          "prefecture": "歌山",
+          "playerId": null,
+          "tempId": "北村_妃菜加_橋本ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 801,
+      "name": "石田 すみれ（藤枝ジュニア少年団）・小出 結愛（阿多古）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "髙山_紗渚_橋本ジュニア",
+        "北村_妃菜加_橋本ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "石田",
+          "firstName": "すみれ",
+          "team": "藤枝ジュニア少年団",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "石田_すみれ_藤枝ジュニア少年団"
+        },
+        {
+          "lastName": "小出",
+          "firstName": "結愛",
+          "team": "阿多古",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "小出_結愛_阿多古"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 821,
+      "name": "髙山 紗渚・北村 妃菜加（橋本ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "泉_日菜_横浜泉ジュニア",
+        "岩﨑_裕愛_横浜泉ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "桜愛",
+          "team": "大館市協会",
+          "prefecture": "秋田",
+          "playerId": null,
+          "tempId": "山田_桜愛_大館市協会"
+        },
+        {
+          "lastName": "松崎",
+          "firstName": "柚",
+          "team": "大館市協会",
+          "prefecture": "秋田",
+          "playerId": null,
+          "tempId": "松崎_柚_大館市協会"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 831,
+      "name": "泉 日菜・岩﨑 裕愛（横浜泉ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "山田_桜愛_大館市協会",
+        "松崎_柚_大館市協会"
+      ],
+      "opponents": [
+        {
+          "lastName": "泉",
+          "firstName": "日菜",
+          "team": "横浜泉ジュニア",
+          "prefecture": "奈川",
+          "playerId": null,
+          "tempId": "泉_日菜_横浜泉ジュニア"
+        },
+        {
+          "lastName": "岩﨑",
+          "firstName": "裕愛",
+          "team": "横浜泉ジュニア",
+          "prefecture": "奈川",
+          "playerId": null,
+          "tempId": "岩﨑_裕愛_横浜泉ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 845,
+      "name": "山田 桜愛・松崎 柚（大館市協会）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "藤原_楓_FSTA",
+        "高倉_悠理子_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "中塚",
+          "firstName": "音寧",
+          "team": "明石ジュニア",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "中塚_音寧_明石ジュニア"
+        },
+        {
+          "lastName": "田端",
+          "firstName": "碧葉",
+          "team": "明石ジュニア",
+          "prefecture": "兵庫",
+          "playerId": null,
+          "tempId": "田端_碧葉_明石ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 846,
+      "name": "藤原 楓・高倉 悠理子（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "中塚_音寧_明石ジュニア",
+        "田端_碧葉_明石ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤原",
+          "firstName": "楓",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "藤原_楓_FSTA"
+        },
+        {
+          "lastName": "高倉",
+          "firstName": "悠理子",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "高倉_悠理子_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 861,
+      "name": "中塚 音寧・田端 碧葉（明石ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "土本_新菜_多治見ジュニア",
+        "上田_怜奈_多治見ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "柳",
+          "firstName": "真鈴",
+          "team": "小川ジュニア",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "柳_真鈴_小川ジュニア"
+        },
+        {
+          "lastName": "大久保",
+          "firstName": "初香",
+          "team": "深谷スキャリオン",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大久保_初香_深谷スキャリオン"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 871,
+      "name": "土本 新菜・上田 怜奈（多治見ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "柳_真鈴_小川ジュニア",
+        "大久保_初香_深谷スキャリオン"
+      ],
+      "opponents": [
+        {
+          "lastName": "土本",
+          "firstName": "新菜",
+          "team": "多治見ジュニア",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "土本_新菜_多治見ジュニア"
+        },
+        {
+          "lastName": "上田",
+          "firstName": "怜奈",
+          "team": "多治見ジュニア",
+          "prefecture": "岐阜",
+          "playerId": null,
+          "tempId": "上田_怜奈_多治見ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 876,
+      "name": "柳 真鈴（小川ジュニア）・大久保 初香（深谷スキャリオン）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "宮原_灯花_弘前あすなろジュニア",
+        "須川_叶萌_しもきたＳＴＣ"
+      ],
+      "opponents": [
+        {
+          "lastName": "徳永",
+          "firstName": "芽生",
+          "team": "Ｓｈｉｎｇｕ-ＪＳＴ",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ"
+        },
+        {
+          "lastName": "丸山",
+          "firstName": "花咲",
+          "team": "大刀洗ジュニア",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "丸山_花咲_大刀洗ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 900,
+      "name": "宮原 灯花（弘前あすなろジュニア）・須川 叶萌（しもきたＳＴＣ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ",
+        "丸山_花咲_大刀洗ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "宮原",
+          "firstName": "灯花",
+          "team": "弘前あすなろジュニア",
+          "prefecture": "青森",
+          "playerId": null,
+          "tempId": "宮原_灯花_弘前あすなろジュニア"
+        },
+        {
+          "lastName": "須川",
+          "firstName": "叶萌",
+          "team": "しもきたＳＴＣ",
+          "prefecture": "青森",
+          "playerId": null,
+          "tempId": "須川_叶萌_しもきたＳＴＣ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 906,
+      "name": "徳永 芽生（Ｓｈｉｎｇｕ-ＪＳＴ）・丸山 花咲（大刀洗ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "髙井_咲那_船橋ジュニア",
+        "福岡_夏帆_船橋ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "花南",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "佐藤_花南_テニ研ジュニア"
+        },
+        {
+          "lastName": "赤羽",
+          "firstName": "沙月",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "赤羽_沙月_テニ研ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 911,
+      "name": "髙井 咲那・福岡 夏帆（船橋ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "佐藤_花南_テニ研ジュニア",
+        "赤羽_沙月_テニ研ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "髙井",
+          "firstName": "咲那",
+          "team": "船橋ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "髙井_咲那_船橋ジュニア"
+        },
+        {
+          "lastName": "福岡",
+          "firstName": "夏帆",
+          "team": "船橋ジュニア",
+          "prefecture": "千葉",
+          "playerId": null,
+          "tempId": "福岡_夏帆_船橋ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 926,
+      "name": "佐藤 花南・赤羽 沙月（テニ研ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "柴村_杏奈_武雄ジュニア",
+        "田中_穂波_武雄ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "河本",
+          "firstName": "しずく",
+          "team": "今市ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "河本_しずく_今市ジュニア"
+        },
+        {
+          "lastName": "木村",
+          "firstName": "望夢",
+          "team": "今市ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "木村_望夢_今市ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 931,
+      "name": "柴村 杏奈・田中 穂波（武雄ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "河本_しずく_今市ジュニア",
+        "木村_望夢_今市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "柴村",
+          "firstName": "杏奈",
+          "team": "武雄ジュニア",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "柴村_杏奈_武雄ジュニア"
+        },
+        {
+          "lastName": "田中",
+          "firstName": "穂波",
+          "team": "武雄ジュニア",
+          "prefecture": "佐賀",
+          "playerId": null,
+          "tempId": "田中_穂波_武雄ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 941,
+      "name": "河本 しずく・木村 望夢（今市ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "鈴木_絢芽_東海",
+        "仙田_紗南_東海"
+      ],
+      "opponents": [
+        {
+          "lastName": "邊見",
+          "firstName": "里紗",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "邊見_里紗_FSTA"
+        },
+        {
+          "lastName": "下田",
+          "firstName": "咲良",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "下田_咲良_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 951,
+      "name": "鈴木 絢芽・仙田 紗南（東海）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "邊見_里紗_FSTA",
+        "下田_咲良_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "絢芽",
+          "team": "東海",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "鈴木_絢芽_東海"
+        },
+        {
+          "lastName": "仙田",
+          "firstName": "紗南",
+          "team": "東海",
+          "prefecture": "愛知",
+          "playerId": null,
+          "tempId": "仙田_紗南_東海"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 961,
+      "name": "邊見 里紗・下田 咲良（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "石田_すみれ_藤枝ジュニア少年団",
+        "小出_結愛_阿多古"
+      ],
+      "opponents": [
+        {
+          "lastName": "泉",
+          "firstName": "日菜",
+          "team": "横浜泉ジュニア",
+          "prefecture": "奈川",
+          "playerId": null,
+          "tempId": "泉_日菜_横浜泉ジュニア"
+        },
+        {
+          "lastName": "岩﨑",
+          "firstName": "裕愛",
+          "team": "横浜泉ジュニア",
+          "prefecture": "奈川",
+          "playerId": null,
+          "tempId": "岩﨑_裕愛_横浜泉ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "0"
+      },
+      "entryNo": 801,
+      "name": "石田 すみれ（藤枝ジュニア少年団）・小出 結愛（阿多古）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "泉_日菜_横浜泉ジュニア",
+        "岩﨑_裕愛_横浜泉ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "石田",
+          "firstName": "すみれ",
+          "team": "藤枝ジュニア少年団",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "石田_すみれ_藤枝ジュニア少年団"
+        },
+        {
+          "lastName": "小出",
+          "firstName": "結愛",
+          "team": "阿多古",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "小出_結愛_阿多古"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "3"
+      },
+      "entryNo": 831,
+      "name": "泉 日菜・岩﨑 裕愛（横浜泉ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "藤原_楓_FSTA",
+        "高倉_悠理子_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "柳",
+          "firstName": "真鈴",
+          "team": "小川ジュニア",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "柳_真鈴_小川ジュニア"
+        },
+        {
+          "lastName": "大久保",
+          "firstName": "初香",
+          "team": "深谷スキャリオン",
+          "prefecture": "埼玉",
+          "playerId": null,
+          "tempId": "大久保_初香_深谷スキャリオン"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 846,
+      "name": "藤原 楓・高倉 悠理子（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "柳_真鈴_小川ジュニア",
+        "大久保_初香_深谷スキャリオン"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤原",
+          "firstName": "楓",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "藤原_楓_FSTA"
+        },
+        {
+          "lastName": "高倉",
+          "firstName": "悠理子",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "高倉_悠理子_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 876,
+      "name": "柳 真鈴（小川ジュニア）・大久保 初香（深谷スキャリオン）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ",
+        "丸山_花咲_大刀洗ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "花南",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "佐藤_花南_テニ研ジュニア"
+        },
+        {
+          "lastName": "赤羽",
+          "firstName": "沙月",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "赤羽_沙月_テニ研ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 906,
+      "name": "徳永 芽生（Ｓｈｉｎｇｕ-ＪＳＴ）・丸山 花咲（大刀洗ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "佐藤_花南_テニ研ジュニア",
+        "赤羽_沙月_テニ研ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "徳永",
+          "firstName": "芽生",
+          "team": "Ｓｈｉｎｇｕ-ＪＳＴ",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "徳永_芽生_Ｓｈｉｎｇｕ-ＪＳＴ"
+        },
+        {
+          "lastName": "丸山",
+          "firstName": "花咲",
+          "team": "大刀洗ジュニア",
+          "prefecture": "福岡",
+          "playerId": null,
+          "tempId": "丸山_花咲_大刀洗ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 926,
+      "name": "佐藤 花南・赤羽 沙月（テニ研ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "河本_しずく_今市ジュニア",
+        "木村_望夢_今市ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "邊見",
+          "firstName": "里紗",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "邊見_里紗_FSTA"
+        },
+        {
+          "lastName": "下田",
+          "firstName": "咲良",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "下田_咲良_FSTA"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 941,
+      "name": "河本 しずく・木村 望夢（今市ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "邊見_里紗_FSTA",
+        "下田_咲良_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "河本",
+          "firstName": "しずく",
+          "team": "今市ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "河本_しずく_今市ジュニア"
+        },
+        {
+          "lastName": "木村",
+          "firstName": "望夢",
+          "team": "今市ジュニア",
+          "prefecture": "栃木",
+          "playerId": null,
+          "tempId": "木村_望夢_今市ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 961,
+      "name": "邊見 里紗・下田 咲良（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "石田_すみれ_藤枝ジュニア少年団",
+        "小出_結愛_阿多古"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤原",
+          "firstName": "楓",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "藤原_楓_FSTA"
+        },
+        {
+          "lastName": "高倉",
+          "firstName": "悠理子",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "高倉_悠理子_FSTA"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "1"
+      },
+      "entryNo": 801,
+      "name": "石田 すみれ（藤枝ジュニア少年団）・小出 結愛（阿多古）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "藤原_楓_FSTA",
+        "高倉_悠理子_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "石田",
+          "firstName": "すみれ",
+          "team": "藤枝ジュニア少年団",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "石田_すみれ_藤枝ジュニア少年団"
+        },
+        {
+          "lastName": "小出",
+          "firstName": "結愛",
+          "team": "阿多古",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "小出_結愛_阿多古"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "3"
+      },
+      "entryNo": 846,
+      "name": "藤原 楓・高倉 悠理子（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "佐藤_花南_テニ研ジュニア",
+        "赤羽_沙月_テニ研ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "邊見",
+          "firstName": "里紗",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "邊見_里紗_FSTA"
+        },
+        {
+          "lastName": "下田",
+          "firstName": "咲良",
+          "team": "FSTA",
+          "prefecture": "東京",
+          "playerId": null,
+          "tempId": "下田_咲良_FSTA"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 926,
+      "name": "佐藤 花南・赤羽 沙月（テニ研ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "邊見_里紗_FSTA",
+        "下田_咲良_FSTA"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "花南",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "佐藤_花南_テニ研ジュニア"
+        },
+        {
+          "lastName": "赤羽",
+          "firstName": "沙月",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "赤羽_沙月_テニ研ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 961,
+      "name": "邊見 里紗・下田 咲良（FSTA）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "石田_すみれ_藤枝ジュニア少年団",
+        "小出_結愛_阿多古"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "花南",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "佐藤_花南_テニ研ジュニア"
+        },
+        {
+          "lastName": "赤羽",
+          "firstName": "沙月",
+          "team": "テニ研ジュニア",
+          "prefecture": "福島",
+          "playerId": null,
+          "tempId": "赤羽_沙月_テニ研ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "3",
+        "lost": "2"
+      },
+      "entryNo": 801,
+      "name": "石田 すみれ（藤枝ジュニア少年団）・小出 結愛（阿多古）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "佐藤_花南_テニ研ジュニア",
+        "赤羽_沙月_テニ研ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "石田",
+          "firstName": "すみれ",
+          "team": "藤枝ジュニア少年団",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "石田_すみれ_藤枝ジュニア少年団"
+        },
+        {
+          "lastName": "小出",
+          "firstName": "結愛",
+          "team": "阿多古",
+          "prefecture": "静岡",
+          "playerId": null,
+          "tempId": "小出_結愛_阿多古"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "3"
+      },
+      "entryNo": 926,
+      "name": "佐藤 花南・赤羽 沙月（テニ研ジュニア）",
+      "category": "doubles",
+      "retired": false
+    }
+  ]
+}
