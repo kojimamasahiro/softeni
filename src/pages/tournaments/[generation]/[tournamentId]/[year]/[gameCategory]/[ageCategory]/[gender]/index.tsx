@@ -83,7 +83,7 @@ export default function TournamentYearResultPage({
 
   breadcrumbs.push({
     label: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
-    href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}${gender}`,
+    href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`,
   });
 
   return (
