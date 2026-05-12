@@ -491,3 +491,43 @@ a:hover {
     min-height: 0;
   }
 }
+
+.store-links {
+  margin-top: 28px;
+}
+
+.play-store-button {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #ffffff !important;
+  text-decoration: none;
+  transition:
+    background-color 0.16s ease,
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+  box-shadow: 0 10px 24px rgba(8, 127, 111, 0.22);
+}
+
+.play-store-button:hover {
+  background: var(--primary-hover);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.store-button-label {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.82;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.store-button-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
