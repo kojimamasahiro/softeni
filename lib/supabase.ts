@@ -36,13 +36,15 @@ const getSupabaseConfig = () => {
   };
 };
 
-const config = getSupabaseConfig();
-
 // クライアント側用（公開API）
-export const supabase = createClient(config.url, config.anonKey);
+export const createBrowserClient = () => {
+  const config = getSupabaseConfig();
+  return createClient(config.url, config.anonKey);
+};
 
 // サーバー側用（Service Key）
 export const createServerClient = () => {
+  const config = getSupabaseConfig();
   return createClient(config.url, config.serviceKey, {
     auth: {
       autoRefreshToken: false,
