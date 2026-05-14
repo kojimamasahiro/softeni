@@ -1,0 +1,109 @@
+{
+  "totalAppearances": 8,
+  "byCategory": {
+    "doubles": 6,
+    "singles": 1,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "青木_優河_新潟産大附_新潟県"
+        ]
+      },
+      "historicalBest": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "青木_優河_新潟産大附_新潟県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "長ケ部_暖_新潟産大附_新潟県",
+          "井口_大輔_新潟産大附_新潟県"
+        ]
+      },
+      "historicalBest": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "加藤_颯人_新潟産大附_新潟県",
+          "山本_楓也_新潟産大附_新潟県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "加藤_颯人_新潟産大附_新潟県",
+      "appearances": 3
+    },
+    {
+      "id": "山本_楓也_新潟産大附_新潟県",
+      "appearances": 3
+    },
+    {
+      "id": "青木_優河_新潟産大附_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "長ケ部_暖_新潟産大附_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "井口_大輔_新潟産大附_新潟県",
+      "appearances": 1
+    }
+  ]
+}

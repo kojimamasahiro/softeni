@@ -1,5 +1,80 @@
 [
   {
+    "team": "明星",
+    "teamId": "myoujou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "児玉_拓海_明星_大阪府",
+      "龍見_京壱_明星_大阪府"
+    ]
+  },
+  {
+    "team": "大塚",
+    "teamId": "ootsuka",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "小谷_大空_大塚_大阪府",
+      "本田_昂暉_大塚_大阪府"
+    ]
+  },
+  {
+    "team": "東海大仰星",
+    "teamId": "toukaidaigyouhoshi",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "日和佐_慶太_東海大仰星_大阪府",
+      "西川_徹平_東海大仰星_大阪府"
+    ]
+  },
+  {
+    "team": "東海大仰星",
+    "teamId": "toukaidaigyouhoshi",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "高田_晄希_東海大仰星_大阪府",
+      "遠矢_楓翔_東海大仰星_大阪府"
+    ]
+  },
+  {
+    "team": "東海大仰星",
+    "teamId": "toukaidaigyouhoshi",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "田首_飛羽_東海大仰星_大阪府",
+      "上迫_凌久_東海大仰星_大阪府"
+    ]
+  },
+  {
     "team": "上宮",
     "teamId": "uenomiya",
     "prefecture": "大阪府",
@@ -8,9 +83,10 @@
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
+    "gender": "boys",
     "playerIds": [
-      "立石_健成_上宮",
-      "中村_悠人_上宮"
+      "立石_健成_上宮_大阪",
+      "中村_悠人_上宮_大阪"
     ]
   },
   {
@@ -18,12 +94,254 @@
     "teamId": "uenomiya",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
-    "result": "ベスト4",
-    "category": "singles",
+    "result": "ベスト8",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
+    "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "福田_喜大_上宮"
+      "三上_柊二_上宮_大阪",
+      "平井_啓吾_上宮_大阪"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "清水_駿_上宮_大阪府",
+      "木内_陸人_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "成田_周平_上宮_大阪府",
+      "山岡_洸輝_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "清水_駿_上宮_大阪府",
+      "木内_陸人_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "北原_太耀_上宮_大阪府",
+      "福井_智也_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "小宮_彰悟_上宮_大阪府",
+      "阪口_蓮_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "渡部_峻史_上宮_大阪府",
+      "前川_晴哉_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "狼_芹凪_上宮_大阪府",
+      "林_宏介_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "三上_柊二_上宮_大阪府",
+      "平井_啓吾_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "三上_輝_上宮_大阪府",
+      "鍜冶田_真育_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "小谷_健_上宮_大阪府",
+      "岸田_瑛稀_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "濱中_純誠_上宮_大阪府",
+      "福井_竣也_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "立石_健成_上宮_大阪府",
+      "中村_悠人_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "足立_匠_上宮_大阪府",
+      "奥村_巧_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "木村_満生_上宮_大阪府",
+      "赤川_奏太_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "清水_勇斗_上宮_大阪府",
+      "西崎_奏斗_上宮_大阪府"
+    ]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "宮𦚰_永和_上宮_大阪府",
+      "六車_旺雅_上宮_大阪府"
     ]
   },
   {
@@ -35,9 +353,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "立石_健成_上宮",
-      "赤川_奏太_上宮"
+      "立石_健成_上宮_大阪府",
+      "赤川_奏太_上宮_大阪府"
     ]
   },
   {
@@ -49,9 +368,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "小谷_健_上宮",
-      "西崎_奏斗_上宮"
+      "小谷_健_上宮_大阪府",
+      "西崎_奏斗_上宮_大阪府"
     ]
   },
   {
@@ -63,9 +383,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "清水_勇斗_上宮",
-      "岸田_瑛稀_上宮"
+      "清水_勇斗_上宮_大阪府",
+      "岸田_瑛稀_上宮_大阪府"
     ]
   },
   {
@@ -77,9 +398,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "福田_喜大_上宮",
-      "中村_悠人_上宮"
+      "福田_喜大_上宮_大阪府",
+      "中村_悠人_上宮_大阪府"
     ]
   },
   {
@@ -91,9 +413,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "須原_蒼_上宮",
-      "林_宏介_上宮"
+      "須原_蒼_上宮_大阪府",
+      "林_宏介_上宮_大阪府"
     ]
   },
   {
@@ -105,9 +428,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "足立_匠_上宮",
-      "奥村_巧_上宮"
+      "足立_匠_上宮_大阪府",
+      "奥村_巧_上宮_大阪府"
     ]
   },
   {
@@ -119,9 +443,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "三上_柊二_上宮",
-      "平井_啓吾_上宮"
+      "三上_柊二_上宮_大阪府",
+      "平井_啓吾_上宮_大阪府"
     ]
   },
   {
@@ -133,61 +458,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "濱中_純誠_上宮",
-      "福井_竣也_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024
-  },
-  {
-    "team": "大塚",
-    "teamId": "ootsuka",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "小谷_大空_大塚",
-      "本田_昂暉_大塚"
-    ]
-  },
-  {
-    "team": "東海大仰星",
-    "teamId": "toukaidaigyouhoshi",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "日和佐_慶太_東海大仰星",
-      "西川_徹平_東海大仰星"
-    ]
-  },
-  {
-    "team": "東海大仰星",
-    "teamId": "toukaidaigyouhoshi",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "高田_晄希_東海大仰星",
-      "遠矢_楓翔_東海大仰星"
+      "濱中_純誠_上宮_大阪府",
+      "福井_竣也_上宮_大阪府"
     ]
   },
   {
@@ -199,9 +473,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "須原_蒼_上宮",
-      "林_宏介_上宮"
+      "須原_蒼_上宮_大阪府",
+      "林_宏介_上宮_大阪府"
     ]
   },
   {
@@ -213,9 +488,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "渡部_峻史_上宮",
-      "鍜冶田_真育_上宮"
+      "渡部_峻史_上宮_大阪府",
+      "鍜冶田_真育_上宮_大阪府"
     ]
   },
   {
@@ -227,9 +503,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "余田_知也_上宮",
-      "岸田_瑛稀_上宮"
+      "余田_知也_上宮_大阪府",
+      "岸田_瑛稀_上宮_大阪府"
     ]
   },
   {
@@ -241,9 +518,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "三上_柊二_上宮",
-      "平井_啓吾_上宮"
+      "三上_柊二_上宮_大阪府",
+      "平井_啓吾_上宮_大阪府"
     ]
   },
   {
@@ -255,135 +533,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "清水_駿_上宮",
-      "木内_陸人_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "成田_周平_上宮",
-      "山岡_洸輝_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "清水_駿_上宮",
-      "木内_陸人_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "北原_太耀_上宮",
-      "福井_智也_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "小宮_彰悟_上宮",
-      "阪口_蓮_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "渡部_峻史_上宮",
-      "前川_晴哉_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "狼_芹凪_上宮",
-      "林_宏介_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "三上_柊二_上宮",
-      "平井_啓吾_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "playerIds": [
-      "三上_輝_上宮",
-      "鍜冶田_真育_上宮"
-    ]
-  },
-  {
-    "team": "東海大仰星",
-    "teamId": "toukaidaigyouhoshi",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "田首_飛羽_東海大仰星",
-      "上迫_凌久_東海大仰星"
+      "清水_駿_上宮_大阪府",
+      "木内_陸人_上宮_大阪府"
     ]
   },
   {
@@ -395,9 +548,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "北原_太耀_上宮",
-      "前川_晴哉_上宮"
+      "北原_太耀_上宮_大阪府",
+      "前川_晴哉_上宮_大阪府"
     ]
   },
   {
@@ -409,9 +563,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "播磨_拓海_上宮",
-      "松島_巧実_上宮"
+      "播磨_拓海_上宮_大阪府",
+      "松島_巧実_上宮_大阪府"
     ]
   },
   {
@@ -423,9 +578,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "髙田_志温_上宮",
-      "木内_陸人_上宮"
+      "髙田_志温_上宮_大阪府",
+      "木内_陸人_上宮_大阪府"
     ]
   },
   {
@@ -437,9 +593,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "川口_那智_上宮",
-      "中西_泰誠_上宮"
+      "川口_那智_上宮_大阪府",
+      "中西_泰誠_上宮_大阪府"
     ]
   },
   {
@@ -451,9 +608,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "片岡_暁紀_上宮",
-      "広岡_大河_上宮"
+      "片岡_暁紀_上宮_大阪府",
+      "広岡_大河_上宮_大阪府"
     ]
   },
   {
@@ -465,9 +623,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "渡部_峻史_上宮",
-      "鍜冶田_真育_上宮"
+      "渡部_峻史_上宮_大阪府",
+      "鍜冶田_真育_上宮_大阪府"
     ]
   },
   {
@@ -479,9 +638,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "小宮_彰悟_上宮",
-      "福井_智也_上宮"
+      "小宮_彰悟_上宮_大阪府",
+      "福井_智也_上宮_大阪府"
     ]
   },
   {
@@ -489,43 +649,13 @@
     "teamId": "uenomiya",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "ベスト8",
-    "category": "doubles",
+    "result": "ベスト4",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2024,
+    "year": 2025,
+    "gender": "boys",
     "playerIds": [
-      "三上_柊二_上宮",
-      "平井_啓吾_上宮"
+      "福田_喜大_上宮_大阪府"
     ]
   },
   {
@@ -537,8 +667,9 @@
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "林_宏介_上宮"
+      "林_宏介_上宮_大阪府"
     ]
   },
   {
@@ -550,22 +681,9 @@
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "福田_喜大_上宮"
-    ]
-  },
-  {
-    "team": "上宮",
-    "teamId": "uenomiya",
-    "prefecture": "大阪府",
-    "prefectureId": "osaka",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "playerIds": [
-      "清水_駿_上宮",
-      "木内_陸人_上宮"
+      "福田_喜大_上宮_大阪府"
     ]
   },
   {
@@ -577,121 +695,665 @@
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "清水_駿_上宮"
+      "清水_駿_上宮_大阪府"
     ]
   },
   {
-    "team": "明星",
-    "teamId": "myoujou",
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "富永_珠羽_昇陽_大阪府",
+      "村本_菜那子_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "大釜_彩乃_昇陽_大阪府",
+      "山内_風音_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "小西_那冬_昇陽_大阪府",
+      "小薮_心愛_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "吉崎_琴葉_昇陽_大阪府",
+      "山住_茉央_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "野間_愛加_昇陽_大阪府",
+      "大辻_奈有子_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "斉藤_愛_昇陽_大阪府",
+      "向畑_奈々未_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "girls",
     "playerIds": [
-      "児玉_拓海_明星",
-      "龍見_京壱_明星"
+      "平尾_叶_昇陽_大阪府",
+      "越野_みずき_昇陽_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "生嶋_風香_昇陽_大阪府",
+      "盛田_日陽里_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "girls",
     "playerIds": [
-      "小谷_健_上宮",
-      "岸田_瑛稀_上宮"
+      "塚本_彩和_昇陽_大阪府",
+      "池田_つばき_昇陽_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "野間_結菜_昇陽_大阪府",
+      "竹田_羽花_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "松原_碧彩_昇陽_大阪府",
+      "前_向日葵_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "野間_結菜_昇陽_大阪府",
+      "竹田_羽花_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "塚本_彩和_昇陽_大阪府",
+      "土田_ひらり_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "野間_愛加_昇陽_大阪府",
+      "山内_風音_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "森川_紗和子_昇陽_大阪府",
+      "前_向日葵_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大釜_彩乃_昇陽_大阪府",
+      "池田_つばき_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "松村_紗希_昇陽_大阪府",
+      "森_真麻_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "平尾_叶_昇陽_大阪府",
+      "山内_風音_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "増田_菜月_昇陽_大阪府",
+      "向畑_奈々未_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "大釜_彩乃_昇陽_大阪府",
+      "池田_つばき_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "富永_珠羽_昇陽_大阪府",
+      "小薮_心愛_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "塚本_彩和_昇陽_大阪府",
+      "前_向日葵_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "野間_愛加_昇陽_大阪府",
+      "土田_ひらり_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "髙橋_朱里_昇陽_大阪府",
+      "青松_淑佳_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "斉藤_愛_昇陽_大阪府",
+      "辻_紗弥香_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "小西_那冬_昇陽_大阪府",
+      "村本_菜那子_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "辻_彩音_昇陽_大阪府",
+      "小藪_心愛_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "吉崎_琴葉_昇陽_大阪府",
+      "竹本_萌花_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2021,
+    "gender": "girls",
     "playerIds": [
-      "濱中_純誠_上宮",
-      "福井_竣也_上宮"
+      "永橋_舞雪_昇陽_大阪府",
+      "山住_茉央_昇陽_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "昇陽",
+    "teamId": "noboruyou",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
-    "result": "5回戦敗退",
+    "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2021,
+    "gender": "girls",
     "playerIds": [
-      "立石_健成_上宮",
-      "中村_悠人_上宮"
+      "富永_珠羽_昇陽_大阪府",
+      "向畑_奈々未_昇陽_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "山本_ゆめか_昇陽_大阪府",
+      "佐藤_心愛_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "松林_花香_四天王寺_大阪府",
+      "尾郷_志帆_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "南埜_美羽_四天王寺_大阪府",
+      "浜辺_明日香_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "girls",
     "playerIds": [
-      "足立_匠_上宮",
-      "奥村_巧_上宮"
+      "森田_優夢_四天王寺_大阪府",
+      "眞田_心晴_四天王寺_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "girls",
     "playerIds": [
-      "木村_満生_上宮",
-      "赤川_奏太_上宮"
+      "房野_紗千_四天王寺_大阪府",
+      "市川_こいと_四天王寺_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
-    "result": "5回戦敗退",
+    "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "girls",
     "playerIds": [
-      "清水_勇斗_上宮",
-      "西崎_奏斗_上宮"
+      "川上_結己_四天王寺_大阪府",
+      "西口_奏_四天王寺_大阪府"
     ]
   },
   {
-    "team": "上宮",
-    "teamId": "uenomiya",
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "川上_結己_四天王寺_大阪府",
+      "橋岡_彩羽_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2024,
+    "gender": "girls",
     "playerIds": [
-      "宮𦚰_永和_上宮",
-      "六車_旺雅_上宮"
+      "清水_あずみ_四天王寺_大阪府",
+      "大西_恵加_四天王寺_大阪府"
     ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "房野_紗千_四天王寺_大阪府",
+      "市川_こいと_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "宮川_渚_四天王寺_大阪府",
+      "大西_恵加_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls"
   },
   {
     "team": "上宮",
@@ -701,6 +1363,196 @@
     "result": "ベスト8",
     "category": "team",
     "tournamentId": "highschool-championship",
-    "year": 2025
+    "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "野間_結菜_昇陽_大阪府",
+      "竹田_羽花_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大釜_彩乃_昇陽_大阪府",
+      "池田_つばき_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "準優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "富永_珠羽_昇陽_大阪府",
+      "小薮_心愛_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "準優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "房野_紗千_四天王寺_大阪府",
+      "市川_こいと_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "房野_紗千_四天王寺_大阪府",
+      "市川_こいと_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "竹田_羽花_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "昇陽",
+    "teamId": "noboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "竹田_羽花_昇陽_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "房野_紗千_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "房野_紗千_四天王寺_大阪府"
+    ]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "山田_記里花_四天王寺_大阪府"
+    ]
   }
 ]

@@ -1,5 +1,7 @@
 import json
 import re
+import os
+import glob
 from pykakasi import kakasi
 from collections import OrderedDict, defaultdict
 
@@ -31,14 +33,15 @@ prefecture_id_map = {
     "鹿児島県": "kagoshima", "沖縄県": "okinawa"
 }
 
-# ファイル読み込み
-with open("players.json", encoding="utf-8") as f:
-    players = json.load(f)
+# データソースディレクトリ
+DATA_DIR = "../../../data/tournaments/details"
 
+# 手動IDマップ読み込み
 with open("team_id_map.json", encoding="utf-8") as f:
     manual_id_map = json.load(f)
 
 # 既存の teams.json を読み込む
+existing_teams = []
 existing_ids = set()
 try:
     with open("teams.json", encoding="utf-8") as f:
@@ -68,50 +71,84 @@ def to_romaji(team_name):
 # チームマップ（team名 → prefecture）
 team_map = {}
 
-# 個人データから抽出
-for entry in players:
-    for info in entry.get("information", []):
-        team = info.get("team", "").strip()
-        pref = info.get("prefecture", "").strip()
-        if team and pref and team not in team_map:
-            team_map[team] = pref
+# データディレクトリを探索
+print(f"📂 {DATA_DIR} を探索します...")
+target_tournaments = [d for d in os.listdir(DATA_DIR) if d.startswith("highschool-")]
 
-# 団体戦エントリー
-for file_name in ["team_entries.json", "team_results.json"]:
-    try:
-        with open(file_name, encoding="utf-8") as f:
-            team_entries = json.load(f)
-            print(f"📄 {file_name} から {len(team_entries)} 件を読み込みました")
-            for entry in team_entries:
-                team = entry.get("team", "").strip()
-                pref = entry.get("prefecture", "").strip()
-                if team and pref and team not in team_map:
-                    team_map[team] = pref
-    except FileNotFoundError:
-        print(f"ℹ️ {file_name} は見つかりませんでした")
+for tournament_id in target_tournaments:
+    tournament_path = os.path.join(DATA_DIR, tournament_id)
+    if not os.path.isdir(tournament_path):
+        continue
+    
+    for year in os.listdir(tournament_path):
+        year_path = os.path.join(tournament_path, year)
+        if not os.path.isdir(year_path):
+            continue
+            
+        # JSONファイルを検索
+        json_files = glob.glob(os.path.join(year_path, "*.json"))
+        for json_file in json_files:
+            try:
+                with open(json_file, encoding="utf-8") as f:
+                    data = json.load(f)
+                    
+                    # participants から抽出
+                    if "participants" in data and isinstance(data["participants"], list):
+                        for p in data["participants"]:
+                            team = p.get("team", "")
+                            if team:
+                                team = team.strip()
+                            
+                            pref = p.get("prefecture")
+                            if pref:
+                                pref = pref.strip()
+                            else:
+                                pref = ""
+
+                            if team and pref and team not in team_map:
+                                team_map[team] = pref
+                                
+            except Exception as e:
+                print(f"⚠️ {json_file} の読み込みに失敗しました: {e}")
+
+print(f"✅ {len(team_map)} チームの情報を抽出しました")
 
 # 重複IDチェック用
 id_counter = defaultdict(list)
 
 # 出力
-with open("teams.ndjson", "w", encoding="utf-8") as f:
-    for team, pref in sorted(team_map.items()):
-        romaji_id = to_romaji(team)
-        if romaji_id in existing_ids:
-            continue  # 既存IDスキップ
+# 出力
+new_teams = []
+for team, pref in sorted(team_map.items()):
+    romaji_id = to_romaji(team)
+    if romaji_id in existing_ids:
+        continue  # 既存IDスキップ
 
-        id_counter[romaji_id].append(team)
+    id_counter[romaji_id].append(team)
 
-        obj = OrderedDict()
-        obj["id"] = romaji_id
-        obj["name"] = team
-        full_pref = prefecture_map.get(pref, pref)
-        obj["prefecture"] = full_pref
-        obj["prefectureId"] = prefecture_id_map.get(full_pref, "unknown")
-        json.dump(obj, f, ensure_ascii=False)
-        f.write(",\n")
+    obj = OrderedDict()
+    obj["id"] = romaji_id
+    obj["name"] = team
+    full_pref = prefecture_map.get(pref, pref)
+    obj["prefecture"] = full_pref
+    obj["prefectureId"] = prefecture_id_map.get(full_pref, "unknown")
+    new_teams.append(obj)
 
-print(f"✅ 合計 {len(team_map)} チームの teams.ndjson を出力しました")
+# 結合
+all_teams = existing_teams + new_teams
+
+# teams.json に書き出し
+with open("teams.json", "w", encoding="utf-8") as f:
+    f.write("[\n")
+    for i, team_obj in enumerate(all_teams):
+        json_str = json.dumps(team_obj, ensure_ascii=False)
+        if i < len(all_teams) - 1:
+            f.write(f"  {json_str},\n")
+        else:
+            f.write(f"  {json_str}\n")
+    f.write("]\n")
+
+print(f"✅ 合計 {len(all_teams)} チームの teams.json を出力しました（新規: {len(new_teams)}）")
 
 # 重複IDチェック
 duplicates = {k: v for k, v in id_counter.items() if len(v) > 1}

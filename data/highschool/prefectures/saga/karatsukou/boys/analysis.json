@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "唐津工",
+        "teamId": "karatsukou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "諸岡_雄心_唐津工_佐賀県",
+          "橋本_政都_唐津工_佐賀県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "諸岡_雄心_唐津工_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "橋本_政都_唐津工_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

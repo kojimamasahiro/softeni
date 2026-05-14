@@ -1,0 +1,101 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 2,
+    "team": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "丸山_姫衣_高崎女子_群馬県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "丸山_姫衣_高崎女子_群馬県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "丸山_姫衣_高崎女子_群馬県",
+          "後藤_理子_高崎女子_群馬県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "丸山_姫衣_高崎女子_群馬県",
+          "後藤_理子_高崎女子_群馬県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高崎女子",
+        "teamId": "takasakijoshi",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "丸山_姫衣_高崎女子_群馬県",
+      "appearances": 3
+    },
+    {
+      "id": "栁井_鈴_高崎女子_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "後藤_理子_高崎女子_群馬県",
+      "appearances": 1
+    }
+  ]
+}

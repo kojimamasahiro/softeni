@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "啓明",
+        "teamId": "keimei",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "大西_真央_啓明_兵庫県",
+          "山田_せいら_啓明_兵庫県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "大西_真央_啓明_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "山田_せいら_啓明_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "三宅_葵衣_啓明_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "奥村_奈央_啓明_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "下関工科",
+        "teamId": "shimonosekikouka",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "田中_樹龍_下関工科_山口県",
+          "古谷_勇人_下関工科_山口県"
+        ]
+      },
+      "historicalBest": {
+        "team": "下関工科",
+        "teamId": "shimonosekikouka",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "田中_樹龍_下関工科_山口県",
+          "古谷_勇人_下関工科_山口県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "下関工科",
+        "teamId": "shimonosekikouka",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "下関工科",
+        "teamId": "shimonosekikouka",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "田中_樹龍_下関工科_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "古谷_勇人_下関工科_山口県",
+      "appearances": 1
+    }
+  ]
+}

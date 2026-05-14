@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "弘前",
+        "teamId": "hirosaki",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "菊池_瑛吉_弘前_青森県",
+          "木村_士湧_弘前_青森県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "笹森_真皓_弘前_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "越田_来翔_弘前_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "菊池_瑛吉_弘前_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "木村_士湧_弘前_青森県",
+      "appearances": 1
+    }
+  ]
+}

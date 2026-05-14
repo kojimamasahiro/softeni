@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 14,
+  "byCategory": {
+    "doubles": 13,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "徳島科技",
+        "teamId": "tokushimakagi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "近藤_拓真_徳島科技_徳島県",
+          "吉田_華汰_徳島科技_徳島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "徳島科技",
+        "teamId": "tokushimakagi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "浜村_梨玖_徳島科技_徳島県",
+          "貝原_颯汰_徳島科技_徳島県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "徳島科技",
+        "teamId": "tokushimakagi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "徳島科技",
+        "teamId": "tokushimakagi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 20,
+  "topPlayers": [
+    {
+      "id": "福見_侑真_徳島科技_徳島県",
+      "appearances": 2
+    },
+    {
+      "id": "武市_哲太_徳島科技_徳島県",
+      "appearances": 2
+    },
+    {
+      "id": "柏木_海頼_徳島科技_徳島県",
+      "appearances": 2
+    },
+    {
+      "id": "柴_誠太郎_徳島科技_徳島県",
+      "appearances": 2
+    },
+    {
+      "id": "近藤_拓真_徳島科技_徳島県",
+      "appearances": 2
+    }
+  ]
+}

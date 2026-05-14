@@ -1,56 +1,28 @@
 // src/components/MajorTitles.tsx
-import {
-  MajorTitle,
-  TournamentSummary,
-  TournamentYearData,
-} from '@/types/index';
+interface MajorTitleData {
+  name: string;
+  years: { year: number; result: string }[];
+}
 
 export default function MajorTitles({
-  id,
-  tournaments,
+  majorTitlesData,
 }: {
-  id: string;
-  tournaments: TournamentSummary[];
+  majorTitlesData: MajorTitleData[];
 }) {
-  if (!tournaments || tournaments.length === 0) {
+  if (!majorTitlesData || majorTitlesData.length === 0) {
     return null;
   }
 
-  const majorTitles: MajorTitle[] = tournaments
-    .filter((tournament) => tournament.meta.isMajorTitle)
-    .sort((a, b) => a.meta.sortId - b.meta.sortId)
-    .map((tournament) => {
-      const years = tournament.years.map((yearData: TournamentYearData) => {
-        const year = parseInt(yearData.year, 10);
-        if (yearData.status === 'scheduled') {
-          return { year, result: yearData.scheduledDate || '(予定)' };
-        } else if (yearData.status === 'canceled') {
-          return { year, result: '(中止)' };
-        } else if (yearData.status === 'completed') {
-          const playerResult = yearData.results?.find((r) =>
-            r.playerIds?.includes(id),
-          );
-          return { year, result: playerResult ? playerResult.result : 'ー' };
-        }
-        return { year, result: 'ー' };
-      });
-
-      return {
-        name: tournament.meta.name,
-        years,
-      };
-    });
-
   const allYears = Array.from(
-    new Set(majorTitles.flatMap((title) => title.years.map((y) => y.year))),
+    new Set(majorTitlesData.flatMap((title) => title.years.map((y) => y.year))),
   ).sort((a, b) => b - a);
 
   return (
-    <section className="mb-8 px-4">
+    <section className="mb-8">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
         主要タイトル
       </h2>
-      <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
+      <div className="mx-4 overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
         {/* 横幅を100%に設定 */}
         <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
@@ -67,7 +39,7 @@ export default function MajorTitles({
             </tr>
           </thead>
           <tbody>
-            {majorTitles.map((title, index) => (
+            {majorTitlesData.map((title, index) => (
               <tr
                 key={index}
                 className="hover:bg-gray-50 dark:hover:bg-gray-700"

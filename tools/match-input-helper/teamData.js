@@ -19,14 +19,14 @@ const teamData = {
       team: 'NTT西日本',
     },
     'uchimoto-takafumi': {
-      firstName: '貴文',
+      firstName: '隆文',
       lastName: '内本',
       team: 'NTT西日本',
     },
     'yano-soto': { firstName: '颯人', lastName: '矢野', team: 'NTT西日本' },
     'maruyama-kaito': { firstName: '海斗', lastName: '丸山', team: 'one team' },
     'nagae-koichi': { firstName: '光一', lastName: '長江', team: 'NTT西日本' },
-    'ando-yusaku': { firstName: '悠作', lastName: '安藤', team: '東邦ガス' },
+    'ando-yusaku': { firstName: '優作', lastName: '安藤', team: '東邦ガス' },
     'ando-kesuke': { firstName: '圭祐', lastName: '安藤', team: '東邦ガス' },
     'uchida-riku': { firstName: '理久', lastName: '内田', team: 'NTT西日本' },
     'kurosaka-takuya': {

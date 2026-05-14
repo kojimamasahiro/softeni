@@ -1,0 +1,49 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "関西中央",
+        "teamId": "kansaichuuou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "中谷_咲羅_関西中央_奈良県",
+          "西川_結_関西中央_奈良県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "西川_結_関西中央_奈良県",
+      "appearances": 2
+    },
+    {
+      "id": "中谷_咲羅_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "赤土_珠莉_関西中央_奈良県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,2382 @@
+{
+  "results": [
+    {
+      "playerIds": [
+        "渡邉_拓磨_唐津ジュニア",
+        "中島_侑吾_上峰ジュニアSTC"
+      ],
+      "result": "優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "西川_拓真_杉戸ジュニアテニススポーツ少年団",
+        "遠藤_斗真_Nextテニスクラブ"
+      ],
+      "result": "準優勝",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "鈴木_駿之介_ふれあいクラブジュニア",
+        "佐藤_琉生_ふれあいクラブジュニア"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "口野_結世_岸和田ジュニア",
+        "坂井_奏太_岸和田ジュニア"
+      ],
+      "result": "ベスト4",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "柿田_涼介_諫早ジュニア",
+        "髙濵_陸斗_大村なんてジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "工藤_煌瑠_都城アトムジュニアクラブ",
+        "豊田_莉久_絆"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "渡邉_碧人_いわきジュニア",
+        "青木_慎士郎_いわきジュニア"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    },
+    {
+      "playerIds": [
+        "山田_嵩人_南大師ジュニアソフトテニスクラブ",
+        "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "result": "ベスト8",
+      "category": "doubles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "1回戦",
+      "pair": [
+        "鈴木_駿之介_ふれあいクラブジュニア",
+        "佐藤_琉生_ふれあいクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "悠哉",
+          "team": "ＫＳＴＣ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内田_悠哉_ＫＳＴＣ"
+        },
+        {
+          "lastName": "田﨑",
+          "firstName": "心都",
+          "team": "尾鷲ソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "田﨑_心都_尾鷲ソフトテニススポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 410,
+      "name": "鈴木 駿之介・佐藤 琉生（ふれあいクラブジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "内田_悠哉_ＫＳＴＣ",
+        "田﨑_心都_尾鷲ソフトテニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "駿之介",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鈴木_駿之介_ふれあいクラブジュニア"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "琉生",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_琉生_ふれあいクラブジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 414,
+      "name": "内田 悠哉（ＫＳＴＣ）・田﨑 心都（尾鷲ソフトテニススポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "松原_庄英_福井市JSTC",
+        "岡本_昊歩_福井市JSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "口野",
+          "firstName": "結世",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "口野_結世_岸和田ジュニア"
+        },
+        {
+          "lastName": "坂井",
+          "firstName": "奏太",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "坂井_奏太_岸和田ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 491,
+      "name": "松原 庄英・岡本 昊歩（福井市JSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "口野_結世_岸和田ジュニア",
+        "坂井_奏太_岸和田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "松原",
+          "firstName": "庄英",
+          "team": "福井市JSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "松原_庄英_福井市JSTC"
+        },
+        {
+          "lastName": "岡本",
+          "firstName": "昊歩",
+          "team": "福井市JSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "岡本_昊歩_福井市JSTC"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 500,
+      "name": "口野 結世・坂井 奏太（岸和田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "樋渡_圭輔_酒田ソフトテニススポーツ少年団",
+        "本間_進二郎_余目ソフトテニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "健晴",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内田_健晴_カブトの森ジュニア"
+        },
+        {
+          "lastName": "古賀",
+          "firstName": "朝陽",
+          "team": "大牟田リトルキッズ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "古賀_朝陽_大牟田リトルキッズ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 563,
+      "name": "樋渡 圭輔（酒田ソフトテニススポーツ少年団）・本間 進二郎（余目ソフトテニススポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "1回戦",
+      "pair": [
+        "内田_健晴_カブトの森ジュニア",
+        "古賀_朝陽_大牟田リトルキッズ"
+      ],
+      "opponents": [
+        {
+          "lastName": "樋渡",
+          "firstName": "圭輔",
+          "team": "酒田ソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "樋渡_圭輔_酒田ソフトテニススポーツ少年団"
+        },
+        {
+          "lastName": "本間",
+          "firstName": "進二郎",
+          "team": "余目ソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "本間_進二郎_余目ソフトテニススポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 569,
+      "name": "内田 健晴（カブトの森ジュニア）・古賀 朝陽（大牟田リトルキッズ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "今井_篤都_大磯ジュニアテニスクラブ",
+        "神蔵_夏樹_大磯ジュニアテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "駿之介",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鈴木_駿之介_ふれあいクラブジュニア"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "琉生",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_琉生_ふれあいクラブジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 405,
+      "name": "今井 篤都・神蔵 夏樹（大磯ジュニアテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "鈴木_駿之介_ふれあいクラブジュニア",
+        "佐藤_琉生_ふれあいクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "今井",
+          "firstName": "篤都",
+          "team": "大磯ジュニアテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "今井_篤都_大磯ジュニアテニスクラブ"
+        },
+        {
+          "lastName": "神蔵",
+          "firstName": "夏樹",
+          "team": "大磯ジュニアテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "神蔵_夏樹_大磯ジュニアテニスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 410,
+      "name": "鈴木 駿之介・佐藤 琉生（ふれあいクラブジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "高松_稜_庄川ソフトテニス少年団",
+        "高桑_結大_庄川ソフトテニス少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "堀江",
+          "firstName": "侑眞",
+          "team": "福島ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "堀江_侑眞_福島ジュニア"
+        },
+        {
+          "lastName": "菅井",
+          "firstName": "快彦",
+          "team": "福島ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "菅井_快彦_福島ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 418,
+      "name": "高松 稜・高桑 結大（庄川ソフトテニス少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "堀江_侑眞_福島ジュニア",
+        "菅井_快彦_福島ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "高松",
+          "firstName": "稜",
+          "team": "庄川ソフトテニス少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "高松_稜_庄川ソフトテニス少年団"
+        },
+        {
+          "lastName": "高桑",
+          "firstName": "結大",
+          "team": "庄川ソフトテニス少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "高桑_結大_庄川ソフトテニス少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 423,
+      "name": "堀江 侑眞・菅井 快彦（福島ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "柿木_遥太_長命ケ丘JST",
+        "橋本_世輝_北宮PSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "柿田",
+          "firstName": "涼介",
+          "team": "諫早ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "柿田_涼介_諫早ジュニア"
+        },
+        {
+          "lastName": "髙濵",
+          "firstName": "陸斗",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "髙濵_陸斗_大村なんてジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 427,
+      "name": "柿木 遥太（長命ケ丘JST）・橋本 世輝（北宮PSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "柿田_涼介_諫早ジュニア",
+        "髙濵_陸斗_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "柿木",
+          "firstName": "遥太",
+          "team": "長命ケ丘JST",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "柿木_遥太_長命ケ丘JST"
+        },
+        {
+          "lastName": "橋本",
+          "firstName": "世輝",
+          "team": "北宮PSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "橋本_世輝_北宮PSTC"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 431,
+      "name": "柿田 涼介（諫早ジュニア）・髙濵 陸斗（大村なんてジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "平野_和輝_JSTC盛岡",
+        "伊藤_龍来_JSTC盛岡"
+      ],
+      "opponents": [
+        {
+          "lastName": "森耕",
+          "firstName": "太郎",
+          "team": "草津あおばなクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "森耕_太郎_草津あおばなクラブ"
+        },
+        {
+          "lastName": "井上",
+          "firstName": "陽斗",
+          "team": "大津ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "井上_陽斗_大津ジュニアソフトテニスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 439,
+      "name": "平野 和輝・伊藤 龍来（JSTC盛岡）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "森耕_太郎_草津あおばなクラブ",
+        "井上_陽斗_大津ジュニアソフトテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "平野",
+          "firstName": "和輝",
+          "team": "JSTC盛岡",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "平野_和輝_JSTC盛岡"
+        },
+        {
+          "lastName": "伊藤",
+          "firstName": "龍来",
+          "team": "JSTC盛岡",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "伊藤_龍来_JSTC盛岡"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 445,
+      "name": "森耕 太郎（草津あおばなクラブ）・井上 陽斗（大津ジュニアソフトテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "松重_奏汰_ももっち岡山",
+        "難波_晴琉_ももっち岡山"
+      ],
+      "opponents": [
+        {
+          "lastName": "西川",
+          "firstName": "拓真",
+          "team": "杉戸ジュニアテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "西川_拓真_杉戸ジュニアテニススポーツ少年団"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "斗真",
+          "team": "Nextテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "遠藤_斗真_Nextテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 450,
+      "name": "松重 奏汰・難波 晴琉（ももっち岡山）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "西川_拓真_杉戸ジュニアテニススポーツ少年団",
+        "遠藤_斗真_Nextテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "松重",
+          "firstName": "奏汰",
+          "team": "ももっち岡山",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "松重_奏汰_ももっち岡山"
+        },
+        {
+          "lastName": "難波",
+          "firstName": "晴琉",
+          "team": "ももっち岡山",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "難波_晴琉_ももっち岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 455,
+      "name": "西川 拓真（杉戸ジュニアテニススポーツ少年団）・遠藤 斗真（Nextテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "原_一翔_カブトの森ジュニア",
+        "鮫島_新_カブトの森ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "伊東",
+          "firstName": "宗志",
+          "team": "蔵王ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "伊東_宗志_蔵王ジュニア"
+        },
+        {
+          "lastName": "瀬戸口",
+          "firstName": "英汰",
+          "team": "蔵王ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "瀬戸口_英汰_蔵王ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 458,
+      "name": "原 一翔・鮫島 新（カブトの森ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "伊東_宗志_蔵王ジュニア",
+        "瀬戸口_英汰_蔵王ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "原",
+          "firstName": "一翔",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "原_一翔_カブトの森ジュニア"
+        },
+        {
+          "lastName": "鮫島",
+          "firstName": "新",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鮫島_新_カブトの森ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 464,
+      "name": "伊東 宗志・瀬戸口 英汰（蔵王ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "水町_英斗_嬉野塩田ジュニア",
+        "岩永_温真_嬉野塩田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "濵地",
+          "firstName": "海稀",
+          "team": "印南ＳＴＣ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "濵地_海稀_印南ＳＴＣ"
+        },
+        {
+          "lastName": "長畠",
+          "firstName": "健吾",
+          "team": "九度山ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "長畠_健吾_九度山ジュニアソフトテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 469,
+      "name": "水町 英斗・岩永 温真（嬉野塩田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "濵地_海稀_印南ＳＴＣ",
+        "長畠_健吾_九度山ジュニアソフトテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "水町",
+          "firstName": "英斗",
+          "team": "嬉野塩田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "水町_英斗_嬉野塩田ジュニア"
+        },
+        {
+          "lastName": "岩永",
+          "firstName": "温真",
+          "team": "嬉野塩田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "岩永_温真_嬉野塩田ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 475,
+      "name": "濵地 海稀（印南ＳＴＣ）・長畠 健吾（九度山ジュニアソフトテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "中崎_翔_霞ヶ浦ソフトテニスクラブ",
+        "中村_匠_美ジュニアソフトテニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "工藤",
+          "firstName": "煌瑠",
+          "team": "都城アトムジュニアクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "工藤_煌瑠_都城アトムジュニアクラブ"
+        },
+        {
+          "lastName": "豊田",
+          "firstName": "莉久",
+          "team": "絆",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "豊田_莉久_絆"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 478,
+      "name": "中崎 翔（霞ヶ浦ソフトテニスクラブ）・中村 匠（美ジュニアソフトテニススポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "工藤_煌瑠_都城アトムジュニアクラブ",
+        "豊田_莉久_絆"
+      ],
+      "opponents": [
+        {
+          "lastName": "中崎",
+          "firstName": "翔",
+          "team": "霞ヶ浦ソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中崎_翔_霞ヶ浦ソフトテニスクラブ"
+        },
+        {
+          "lastName": "中村",
+          "firstName": "匠",
+          "team": "美ジュニアソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中村_匠_美ジュニアソフトテニススポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 485,
+      "name": "工藤 煌瑠（都城アトムジュニアクラブ）・豊田 莉久（絆）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "飯田_将真_国見ジュニア",
+        "飯田_結太_国見ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "口野",
+          "firstName": "結世",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "口野_結世_岸和田ジュニア"
+        },
+        {
+          "lastName": "坂井",
+          "firstName": "奏太",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "坂井_奏太_岸和田ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 488,
+      "name": "飯田 将真・飯田 結太（国見ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "口野_結世_岸和田ジュニア",
+        "坂井_奏太_岸和田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "飯田",
+          "firstName": "将真",
+          "team": "国見ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "飯田_将真_国見ジュニア"
+        },
+        {
+          "lastName": "飯田",
+          "firstName": "結太",
+          "team": "国見ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "飯田_結太_国見ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 500,
+      "name": "口野 結世・坂井 奏太（岸和田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山本_廉人_一宮町ソフトテニススポーツ少年団",
+        "清水_葵斗_一宮町ソフトテニススポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "岸里",
+          "firstName": "翔",
+          "team": "長中",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "岸里_翔_長中"
+        },
+        {
+          "lastName": "橋本",
+          "firstName": "篤哉",
+          "team": "一関スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "橋本_篤哉_一関スポ少"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 503,
+      "name": "山本 廉人・清水 葵斗（一宮町ソフトテニススポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "岸里_翔_長中",
+        "橋本_篤哉_一関スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "山本",
+          "firstName": "廉人",
+          "team": "一宮町ソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "山本_廉人_一宮町ソフトテニススポーツ少年団"
+        },
+        {
+          "lastName": "清水",
+          "firstName": "葵斗",
+          "team": "一宮町ソフトテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "清水_葵斗_一宮町ソフトテニススポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 510,
+      "name": "岸里 翔（長中）・橋本 篤哉（一関スポ少）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "田中_想真_津島ジュニア",
+        "山田_大翔_津島ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "碧人",
+          "team": "いわきジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_碧人_いわきジュニア"
+        },
+        {
+          "lastName": "青木",
+          "firstName": "慎士郎",
+          "team": "いわきジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "青木_慎士郎_いわきジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 514,
+      "name": "田中 想真・山田 大翔（津島ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "渡邉_碧人_いわきジュニア",
+        "青木_慎士郎_いわきジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "田中",
+          "firstName": "想真",
+          "team": "津島ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "田中_想真_津島ジュニア"
+        },
+        {
+          "lastName": "山田",
+          "firstName": "大翔",
+          "team": "津島ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "山田_大翔_津島ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 516,
+      "name": "渡邉 碧人・青木 慎士郎（いわきジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "篠田_桔平_関スポーツ少年団",
+        "高尾_怜和_多治見ジュニアクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "松本",
+          "firstName": "陽明",
+          "team": "T.Mクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "松本_陽明_T.Mクラブ"
+        },
+        {
+          "lastName": "井上",
+          "firstName": "航太朗",
+          "team": "王寺ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "井上_航太朗_王寺ジュニアソフトテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 525,
+      "name": "篠田 桔平（関スポーツ少年団）・高尾 怜和（多治見ジュニアクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "松本_陽明_T.Mクラブ",
+        "井上_航太朗_王寺ジュニアソフトテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "篠田",
+          "firstName": "桔平",
+          "team": "関スポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "篠田_桔平_関スポーツ少年団"
+        },
+        {
+          "lastName": "高尾",
+          "firstName": "怜和",
+          "team": "多治見ジュニアクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "高尾_怜和_多治見ジュニアクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 530,
+      "name": "松本 陽明（T.Mクラブ）・井上 航太朗（王寺ジュニアソフトテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "山田_嵩人_南大師ジュニアソフトテニスクラブ",
+        "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "遥",
+          "team": "小千谷ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_遥_小千谷ジュニア"
+        },
+        {
+          "lastName": "山澤",
+          "firstName": "悠生",
+          "team": "小千谷ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "山澤_悠生_小千谷ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 532,
+      "name": "山田 嵩人（南大師ジュニアソフトテニスクラブ）・弘岩 侑隼（横須賀Ｄｒｅａｍスポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "佐藤_遥_小千谷ジュニア",
+        "山澤_悠生_小千谷ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "嵩人",
+          "team": "南大師ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "山田_嵩人_南大師ジュニアソフトテニスクラブ"
+        },
+        {
+          "lastName": "弘岩",
+          "firstName": "侑隼",
+          "team": "横須賀Ｄｒｅａｍスポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 536,
+      "name": "佐藤 遥・山澤 悠生（小千谷ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "藤田_悠生_苫小牧西Jrクラブ",
+        "松田_翔太_旭川ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "林",
+          "firstName": "勇汰",
+          "team": "サービスエース飯島",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "林_勇汰_サービスエース飯島"
+        },
+        {
+          "lastName": "髙橋",
+          "firstName": "佳希",
+          "team": "松川少年少女",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "髙橋_佳希_松川少年少女"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 543,
+      "name": "藤田 悠生（苫小牧西Jrクラブ）・松田 翔太（旭川ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "林_勇汰_サービスエース飯島",
+        "髙橋_佳希_松川少年少女"
+      ],
+      "opponents": [
+        {
+          "lastName": "藤田",
+          "firstName": "悠生",
+          "team": "苫小牧西Jrクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "藤田_悠生_苫小牧西Jrクラブ"
+        },
+        {
+          "lastName": "松田",
+          "firstName": "翔太",
+          "team": "旭川ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "松田_翔太_旭川ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 548,
+      "name": "林 勇汰（サービスエース飯島）・髙橋 佳希（松川少年少女）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "渡邉_拓磨_唐津ジュニア",
+        "中島_侑吾_上峰ジュニアSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "唯月",
+          "team": "ももっち岡山",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内田_唯月_ももっち岡山"
+        },
+        {
+          "lastName": "小野",
+          "firstName": "福道",
+          "team": "ももっち岡山",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "小野_福道_ももっち岡山"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 551,
+      "name": "渡邉 拓磨（唐津ジュニア）・中島 侑吾（上峰ジュニアSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "内田_唯月_ももっち岡山",
+        "小野_福道_ももっち岡山"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "拓磨",
+          "team": "唐津ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_拓磨_唐津ジュニア"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "侑吾",
+          "team": "上峰ジュニアSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中島_侑吾_上峰ジュニアSTC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 556,
+      "name": "内田 唯月・小野 福道（ももっち岡山）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "内田_健晴_カブトの森ジュニア",
+        "古賀_朝陽_大牟田リトルキッズ"
+      ],
+      "opponents": [
+        {
+          "lastName": "林",
+          "firstName": "環汰",
+          "team": "千本ジュニアクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "林_環汰_千本ジュニアクラブ"
+        },
+        {
+          "lastName": "相澤",
+          "firstName": "邑宇",
+          "team": "千本ジュニアクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "相澤_邑宇_千本ジュニアクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 569,
+      "name": "内田 健晴（カブトの森ジュニア）・古賀 朝陽（大牟田リトルキッズ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "2回戦",
+      "pair": [
+        "林_環汰_千本ジュニアクラブ",
+        "相澤_邑宇_千本ジュニアクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "健晴",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内田_健晴_カブトの森ジュニア"
+        },
+        {
+          "lastName": "古賀",
+          "firstName": "朝陽",
+          "team": "大牟田リトルキッズ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "古賀_朝陽_大牟田リトルキッズ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 573,
+      "name": "林 環汰・相澤 邑宇（千本ジュニアクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "鈴木_駿之介_ふれあいクラブジュニア",
+        "佐藤_琉生_ふれあいクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "堀江",
+          "firstName": "侑眞",
+          "team": "福島ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "堀江_侑眞_福島ジュニア"
+        },
+        {
+          "lastName": "菅井",
+          "firstName": "快彦",
+          "team": "福島ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "菅井_快彦_福島ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 410,
+      "name": "鈴木 駿之介・佐藤 琉生（ふれあいクラブジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "堀江_侑眞_福島ジュニア",
+        "菅井_快彦_福島ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "駿之介",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鈴木_駿之介_ふれあいクラブジュニア"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "琉生",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_琉生_ふれあいクラブジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 423,
+      "name": "堀江 侑眞・菅井 快彦（福島ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "柿田_涼介_諫早ジュニア",
+        "髙濵_陸斗_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "平野",
+          "firstName": "和輝",
+          "team": "JSTC盛岡",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "平野_和輝_JSTC盛岡"
+        },
+        {
+          "lastName": "伊藤",
+          "firstName": "龍来",
+          "team": "JSTC盛岡",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "伊藤_龍来_JSTC盛岡"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 431,
+      "name": "柿田 涼介（諫早ジュニア）・髙濵 陸斗（大村なんてジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "平野_和輝_JSTC盛岡",
+        "伊藤_龍来_JSTC盛岡"
+      ],
+      "opponents": [
+        {
+          "lastName": "柿田",
+          "firstName": "涼介",
+          "team": "諫早ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "柿田_涼介_諫早ジュニア"
+        },
+        {
+          "lastName": "髙濵",
+          "firstName": "陸斗",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "髙濵_陸斗_大村なんてジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 439,
+      "name": "平野 和輝・伊藤 龍来（JSTC盛岡）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "西川_拓真_杉戸ジュニアテニススポーツ少年団",
+        "遠藤_斗真_Nextテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "原",
+          "firstName": "一翔",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "原_一翔_カブトの森ジュニア"
+        },
+        {
+          "lastName": "鮫島",
+          "firstName": "新",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鮫島_新_カブトの森ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 455,
+      "name": "西川 拓真（杉戸ジュニアテニススポーツ少年団）・遠藤 斗真（Nextテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "原_一翔_カブトの森ジュニア",
+        "鮫島_新_カブトの森ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "西川",
+          "firstName": "拓真",
+          "team": "杉戸ジュニアテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "西川_拓真_杉戸ジュニアテニススポーツ少年団"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "斗真",
+          "team": "Nextテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "遠藤_斗真_Nextテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 458,
+      "name": "原 一翔・鮫島 新（カブトの森ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "濵地_海稀_印南ＳＴＣ",
+        "長畠_健吾_九度山ジュニアソフトテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "工藤",
+          "firstName": "煌瑠",
+          "team": "都城アトムジュニアクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "工藤_煌瑠_都城アトムジュニアクラブ"
+        },
+        {
+          "lastName": "豊田",
+          "firstName": "莉久",
+          "team": "絆",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "豊田_莉久_絆"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 475,
+      "name": "濵地 海稀（印南ＳＴＣ）・長畠 健吾（九度山ジュニアソフトテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "工藤_煌瑠_都城アトムジュニアクラブ",
+        "豊田_莉久_絆"
+      ],
+      "opponents": [
+        {
+          "lastName": "濵地",
+          "firstName": "海稀",
+          "team": "印南ＳＴＣ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "濵地_海稀_印南ＳＴＣ"
+        },
+        {
+          "lastName": "長畠",
+          "firstName": "健吾",
+          "team": "九度山ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "長畠_健吾_九度山ジュニアソフトテニスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 485,
+      "name": "工藤 煌瑠（都城アトムジュニアクラブ）・豊田 莉久（絆）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "口野_結世_岸和田ジュニア",
+        "坂井_奏太_岸和田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "岸里",
+          "firstName": "翔",
+          "team": "長中",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "岸里_翔_長中"
+        },
+        {
+          "lastName": "橋本",
+          "firstName": "篤哉",
+          "team": "一関スポ少",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "橋本_篤哉_一関スポ少"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 500,
+      "name": "口野 結世・坂井 奏太（岸和田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "岸里_翔_長中",
+        "橋本_篤哉_一関スポ少"
+      ],
+      "opponents": [
+        {
+          "lastName": "口野",
+          "firstName": "結世",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "口野_結世_岸和田ジュニア"
+        },
+        {
+          "lastName": "坂井",
+          "firstName": "奏太",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "坂井_奏太_岸和田ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 510,
+      "name": "岸里 翔（長中）・橋本 篤哉（一関スポ少）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "渡邉_碧人_いわきジュニア",
+        "青木_慎士郎_いわきジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "松本",
+          "firstName": "陽明",
+          "team": "T.Mクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "松本_陽明_T.Mクラブ"
+        },
+        {
+          "lastName": "井上",
+          "firstName": "航太朗",
+          "team": "王寺ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "井上_航太朗_王寺ジュニアソフトテニスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 516,
+      "name": "渡邉 碧人・青木 慎士郎（いわきジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "松本_陽明_T.Mクラブ",
+        "井上_航太朗_王寺ジュニアソフトテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "碧人",
+          "team": "いわきジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_碧人_いわきジュニア"
+        },
+        {
+          "lastName": "青木",
+          "firstName": "慎士郎",
+          "team": "いわきジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "青木_慎士郎_いわきジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 530,
+      "name": "松本 陽明（T.Mクラブ）・井上 航太朗（王寺ジュニアソフトテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "山田_嵩人_南大師ジュニアソフトテニスクラブ",
+        "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "林",
+          "firstName": "勇汰",
+          "team": "サービスエース飯島",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "林_勇汰_サービスエース飯島"
+        },
+        {
+          "lastName": "髙橋",
+          "firstName": "佳希",
+          "team": "松川少年少女",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "髙橋_佳希_松川少年少女"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 532,
+      "name": "山田 嵩人（南大師ジュニアソフトテニスクラブ）・弘岩 侑隼（横須賀Ｄｒｅａｍスポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "林_勇汰_サービスエース飯島",
+        "髙橋_佳希_松川少年少女"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "嵩人",
+          "team": "南大師ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "山田_嵩人_南大師ジュニアソフトテニスクラブ"
+        },
+        {
+          "lastName": "弘岩",
+          "firstName": "侑隼",
+          "team": "横須賀Ｄｒｅａｍスポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 548,
+      "name": "林 勇汰（サービスエース飯島）・髙橋 佳希（松川少年少女）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "渡邉_拓磨_唐津ジュニア",
+        "中島_侑吾_上峰ジュニアSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "内田",
+          "firstName": "健晴",
+          "team": "カブトの森ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "内田_健晴_カブトの森ジュニア"
+        },
+        {
+          "lastName": "古賀",
+          "firstName": "朝陽",
+          "team": "大牟田リトルキッズ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "古賀_朝陽_大牟田リトルキッズ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 551,
+      "name": "渡邉 拓磨（唐津ジュニア）・中島 侑吾（上峰ジュニアSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "3回戦",
+      "pair": [
+        "内田_健晴_カブトの森ジュニア",
+        "古賀_朝陽_大牟田リトルキッズ"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "拓磨",
+          "team": "唐津ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_拓磨_唐津ジュニア"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "侑吾",
+          "team": "上峰ジュニアSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中島_侑吾_上峰ジュニアSTC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 569,
+      "name": "内田 健晴（カブトの森ジュニア）・古賀 朝陽（大牟田リトルキッズ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "鈴木_駿之介_ふれあいクラブジュニア",
+        "佐藤_琉生_ふれあいクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "柿田",
+          "firstName": "涼介",
+          "team": "諫早ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "柿田_涼介_諫早ジュニア"
+        },
+        {
+          "lastName": "髙濵",
+          "firstName": "陸斗",
+          "team": "大村なんてジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "髙濵_陸斗_大村なんてジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 410,
+      "name": "鈴木 駿之介・佐藤 琉生（ふれあいクラブジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "柿田_涼介_諫早ジュニア",
+        "髙濵_陸斗_大村なんてジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "駿之介",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鈴木_駿之介_ふれあいクラブジュニア"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "琉生",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_琉生_ふれあいクラブジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 431,
+      "name": "柿田 涼介（諫早ジュニア）・髙濵 陸斗（大村なんてジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "西川_拓真_杉戸ジュニアテニススポーツ少年団",
+        "遠藤_斗真_Nextテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "工藤",
+          "firstName": "煌瑠",
+          "team": "都城アトムジュニアクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "工藤_煌瑠_都城アトムジュニアクラブ"
+        },
+        {
+          "lastName": "豊田",
+          "firstName": "莉久",
+          "team": "絆",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "豊田_莉久_絆"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 455,
+      "name": "西川 拓真（杉戸ジュニアテニススポーツ少年団）・遠藤 斗真（Nextテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "工藤_煌瑠_都城アトムジュニアクラブ",
+        "豊田_莉久_絆"
+      ],
+      "opponents": [
+        {
+          "lastName": "西川",
+          "firstName": "拓真",
+          "team": "杉戸ジュニアテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "西川_拓真_杉戸ジュニアテニススポーツ少年団"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "斗真",
+          "team": "Nextテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "遠藤_斗真_Nextテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 485,
+      "name": "工藤 煌瑠（都城アトムジュニアクラブ）・豊田 莉久（絆）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "口野_結世_岸和田ジュニア",
+        "坂井_奏太_岸和田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "碧人",
+          "team": "いわきジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_碧人_いわきジュニア"
+        },
+        {
+          "lastName": "青木",
+          "firstName": "慎士郎",
+          "team": "いわきジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "青木_慎士郎_いわきジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 500,
+      "name": "口野 結世・坂井 奏太（岸和田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "渡邉_碧人_いわきジュニア",
+        "青木_慎士郎_いわきジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "口野",
+          "firstName": "結世",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "口野_結世_岸和田ジュニア"
+        },
+        {
+          "lastName": "坂井",
+          "firstName": "奏太",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "坂井_奏太_岸和田ジュニア"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 516,
+      "name": "渡邉 碧人・青木 慎士郎（いわきジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "山田_嵩人_南大師ジュニアソフトテニスクラブ",
+        "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "拓磨",
+          "team": "唐津ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_拓磨_唐津ジュニア"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "侑吾",
+          "team": "上峰ジュニアSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中島_侑吾_上峰ジュニアSTC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 532,
+      "name": "山田 嵩人（南大師ジュニアソフトテニスクラブ）・弘岩 侑隼（横須賀Ｄｒｅａｍスポーツ少年団）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準々決勝",
+      "pair": [
+        "渡邉_拓磨_唐津ジュニア",
+        "中島_侑吾_上峰ジュニアSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "山田",
+          "firstName": "嵩人",
+          "team": "南大師ジュニアソフトテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "山田_嵩人_南大師ジュニアソフトテニスクラブ"
+        },
+        {
+          "lastName": "弘岩",
+          "firstName": "侑隼",
+          "team": "横須賀Ｄｒｅａｍスポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 551,
+      "name": "渡邉 拓磨（唐津ジュニア）・中島 侑吾（上峰ジュニアSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "鈴木_駿之介_ふれあいクラブジュニア",
+        "佐藤_琉生_ふれあいクラブジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "西川",
+          "firstName": "拓真",
+          "team": "杉戸ジュニアテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "西川_拓真_杉戸ジュニアテニススポーツ少年団"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "斗真",
+          "team": "Nextテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "遠藤_斗真_Nextテニスクラブ"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 410,
+      "name": "鈴木 駿之介・佐藤 琉生（ふれあいクラブジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "西川_拓真_杉戸ジュニアテニススポーツ少年団",
+        "遠藤_斗真_Nextテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "鈴木",
+          "firstName": "駿之介",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "鈴木_駿之介_ふれあいクラブジュニア"
+        },
+        {
+          "lastName": "佐藤",
+          "firstName": "琉生",
+          "team": "ふれあいクラブジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "佐藤_琉生_ふれあいクラブジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 455,
+      "name": "西川 拓真（杉戸ジュニアテニススポーツ少年団）・遠藤 斗真（Nextテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "口野_結世_岸和田ジュニア",
+        "坂井_奏太_岸和田ジュニア"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "拓磨",
+          "team": "唐津ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_拓磨_唐津ジュニア"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "侑吾",
+          "team": "上峰ジュニアSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中島_侑吾_上峰ジュニアSTC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 500,
+      "name": "口野 結世・坂井 奏太（岸和田ジュニア）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "準決勝",
+      "pair": [
+        "渡邉_拓磨_唐津ジュニア",
+        "中島_侑吾_上峰ジュニアSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "口野",
+          "firstName": "結世",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "口野_結世_岸和田ジュニア"
+        },
+        {
+          "lastName": "坂井",
+          "firstName": "奏太",
+          "team": "岸和田ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "坂井_奏太_岸和田ジュニア"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 551,
+      "name": "渡邉 拓磨（唐津ジュニア）・中島 侑吾（上峰ジュニアSTC）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "西川_拓真_杉戸ジュニアテニススポーツ少年団",
+        "遠藤_斗真_Nextテニスクラブ"
+      ],
+      "opponents": [
+        {
+          "lastName": "渡邉",
+          "firstName": "拓磨",
+          "team": "唐津ジュニア",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "渡邉_拓磨_唐津ジュニア"
+        },
+        {
+          "lastName": "中島",
+          "firstName": "侑吾",
+          "team": "上峰ジュニアSTC",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "中島_侑吾_上峰ジュニアSTC"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 455,
+      "name": "西川 拓真（杉戸ジュニアテニススポーツ少年団）・遠藤 斗真（Nextテニスクラブ）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "渡邉_拓磨_唐津ジュニア",
+        "中島_侑吾_上峰ジュニアSTC"
+      ],
+      "opponents": [
+        {
+          "lastName": "西川",
+          "firstName": "拓真",
+          "team": "杉戸ジュニアテニススポーツ少年団",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "西川_拓真_杉戸ジュニアテニススポーツ少年団"
+        },
+        {
+          "lastName": "遠藤",
+          "firstName": "斗真",
+          "team": "Nextテニスクラブ",
+          "prefecture": "秋田県",
+          "playerId": null,
+          "tempId": "遠藤_斗真_Nextテニスクラブ"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 551,
+      "name": "渡邉 拓磨（唐津ジュニア）・中島 侑吾（上峰ジュニアSTC）",
+      "category": "doubles",
+      "retired": false
+    }
+  ]
+}

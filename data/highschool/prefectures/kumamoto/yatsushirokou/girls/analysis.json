@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "八代工",
+        "teamId": "yatsushirokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "原田_あかり_八代工_熊本県",
+          "梶浦_伊依莉_八代工_熊本県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "原田_あかり_八代工_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "梶浦_伊依莉_八代工_熊本県",
+      "appearances": 1
+    }
+  ]
+}

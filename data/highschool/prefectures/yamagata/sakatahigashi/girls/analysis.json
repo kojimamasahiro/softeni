@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "酒田東",
+        "teamId": "sakatahigashi",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "小棹_百果_酒田東_山形県",
+          "奥山_日花里_酒田東_山形県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小棹_百果_酒田東_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "奥山_日花里_酒田東_山形県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,158 +1,54 @@
 // src/components/Tournament/MatchResults.tsx
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-import { sortMatchesByEntryNo } from '@/lib/utils';
-import { TournamentYearData } from '@/types/tournament';
+import {
+  MatchRow,
+  TournamentDetailData,
+  TournamentEntry,
+  TournamentMatch,
+} from '@/types/tournament';
 
 interface Props {
-  matches: NonNullable<TournamentYearData['matches']>;
+  detail: TournamentDetailData;
   searchQuery: string;
   setSearchQuery: (v: string) => void;
-  suggestions: string[];
   filter: 'all' | 'top8' | 'winners';
-  setFilter: (v: 'all' | 'top8' | 'winners') => void;
-  eliminatedEntries: { name: string; result: string }[];
-  seedEntryNos?: Set<number>;
-}
-
-type Match = NonNullable<TournamentYearData['matches']>[number];
-
-function getPairId(pair: string[]): string {
-  return [...pair].sort().join('+');
-}
-
-function roundOrderIndex(round: string): number {
-  const order = [
-    '1回戦',
-    '2回戦',
-    '3回戦',
-    '4回戦',
-    '5回戦',
-    '6回戦',
-    '7回戦',
-    '8回戦',
-    '準々決勝',
-    '準決勝',
-    '決勝',
-  ];
-  return order.indexOf(round) !== -1 ? order.indexOf(round) : 99;
-}
-
-function groupMatchesByPair(matches: Match[]): Map<string, Match[]> {
-  const map = new Map<string, Match[]>();
-  for (const match of matches) {
-    const id =
-      match.category === 'team'
-        ? match.name // チーム名をIDとする
-        : getPairId(match.pair ?? []);
-    if (!map.has(id)) map.set(id, []);
-    map.get(id)!.push(match);
-  }
-  return map;
-}
-
-function traceOpponentChain(
-  pairId: string,
-  currentRoundIndex: number,
-  grouped: Map<string, Match[]>,
-  visited = new Set<string>(),
-): Match[] {
-  const result: Match[] = [];
-  if (visited.has(pairId)) return result;
-  visited.add(pairId);
-
-  const matches = grouped.get(pairId) ?? [];
-
-  for (const match of matches) {
-    const roundIdx = roundOrderIndex(match.round);
-    if (roundIdx > currentRoundIndex) {
-      result.push(match);
-
-      const winnerId =
-        match.result === 'win'
-          ? match.category === 'team'
-            ? match.team
-            : getPairId(match.pair ?? [])
-          : match.category === 'team'
-            ? (match.opponent ?? '')
-            : getPairId(match.opponents?.map((op) => op.tempId) ?? []);
-
-      if (winnerId) {
-        result.push(
-          ...traceOpponentChain(winnerId, roundIdx, grouped, visited),
-        );
-      }
-    }
-  }
-
-  return result;
-}
-
-function traceFromLoser(matches: Match[], myMatches: Match[]): Match[] {
-  const tournamentMatches = matches.filter((m) => m.round !== undefined);
-  const myTournamentMatches = myMatches.filter((m) => m.round !== undefined);
-  if (myTournamentMatches.length === 0) return [];
-
-  const lastMatch = myTournamentMatches[myTournamentMatches.length - 1];
-  if (!lastMatch || lastMatch.result !== 'lose') return [];
-
-  const grouped = groupMatchesByPair(tournamentMatches);
-  const startRoundIdx = roundOrderIndex(lastMatch.round);
-
-  const opponentId =
-    lastMatch.category === 'team'
-      ? (lastMatch.opponent ?? '')
-      : getPairId(
-          lastMatch.opponents?.map((op: { tempId: string }) => op.tempId) ?? [],
-        );
-
-  return traceOpponentChain(opponentId, startRoundIdx, grouped);
+  setFilter: (v: 'all' | 'top8') => void;
 }
 
 function MatchGroup({
   name,
   entryNo,
-  matches,
+  matchGroup,
+  extraRows,
   searchQuery,
   filter,
-  eliminatedLabel,
   isSeed,
-  tracedMatches,
+  resultLabel,
 }: {
   name: string;
   entryNo: number;
-  matches: Match[];
+  matchGroup: MatchRow[];
+  extraRows?: MatchRow[];
   searchQuery: string;
   filter: 'all' | 'top8' | 'winners';
-  eliminatedLabel?: string;
   isSeed?: boolean;
-  tracedMatches?: Match[];
+  resultLabel: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const matchGroup = sortMatchesByEntryNo(matches);
-
-  let finalLabel = '';
-  const lastMatch = matchGroup[matchGroup.length - 1];
-  if (lastMatch && lastMatch.round) {
-    const { round, result } = lastMatch;
-    if (round === '決勝' && result === 'win') finalLabel = '優勝';
-    else if (round === '決勝' && result === 'lose') finalLabel = '準優勝';
-    else if (round === '準決勝' && result === 'lose') finalLabel = 'ベスト4';
-    else if (round === '準々決勝' && result === 'lose') finalLabel = 'ベスト8';
-    else if (result === 'lose') finalLabel = `${round}敗退`;
-  } else if (eliminatedLabel) {
-    finalLabel = eliminatedLabel;
-  }
 
   const nameLower = name.toLowerCase();
   const queryLower = searchQuery.toLowerCase();
   const matchesQuery = nameLower.includes(queryLower);
+  if (typeof name !== 'string' || typeof searchQuery !== 'string') return null;
   const show = (() => {
     if (!matchesQuery) return false;
     if (filter === 'all') return true;
-    if (filter === 'winners') return ['優勝', '準優勝'].includes(finalLabel);
-    if (filter === 'top8')
-      return ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(finalLabel);
+    const top8Set = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
+    if (filter === 'top8') {
+      if (!resultLabel) return false;
+      return top8Set.some((tag) => resultLabel.includes(tag));
+    }
     return true;
   })();
 
@@ -170,14 +66,14 @@ function MatchGroup({
               {entryNo}. {name}
             </span>
             <span className="text-sm">
+              {resultLabel && (
+                <span className="ml-2 text-gray-500 dark:text-gray-400">
+                  {resultLabel}
+                </span>
+              )}
               {isSeed && (
                 <span className="text-yellow-600 dark:text-yellow-300">
                   （シード）
-                </span>
-              )}
-              {finalLabel && (
-                <span className="ml-2 text-gray-500 dark:text-gray-400">
-                  {finalLabel}
                 </span>
               )}
             </span>
@@ -190,7 +86,7 @@ function MatchGroup({
         <div className="w-full overflow-x-auto">
           {[
             { title: null, rows: matchGroup },
-            { title: '以降の試合', rows: tracedMatches ?? [] },
+            { title: '以降の試合', rows: extraRows ?? [] },
           ].map(({ title, rows }, index) =>
             rows.length > 0 ? (
               <div key={title ?? 'main'} className="mb-2 w-full">
@@ -225,56 +121,24 @@ function MatchGroup({
                     </thead>
                   )}
                   <tbody>
-                    {rows.map((m, i) => (
-                      <tr
-                        key={i}
-                        className="border-t border-gray-100 dark:border-gray-700"
-                      >
-                        <td className="px-4 py-2 break-words text-left">
-                          {m.round}
-                        </td>
-                        <td className="px-4 py-2 break-words text-left">
-                          {(() => {
-                            if (
-                              !m.opponents ||
-                              (m.category && m.category === 'team')
-                            ) {
-                              if (m.opponents) {
-                                return m.opponents
-                                  .map(
-                                    (op) =>
-                                      `${op.team}（${op.prefecture ?? '不明'}）`,
-                                  )
-                                  .join('・');
-                              } else if (m.team && m.opponentTeam) {
-                                return `${m.opponentTeam.team}`;
-                              } else {
-                                return m.opponent ?? '不明';
-                              }
-                            }
-
-                            const teamMap = m.opponents.reduce<
-                              Record<string, string[]>
-                            >((acc, op: { team: string; lastName: string }) => {
-                              if (!acc[op.team]) acc[op.team] = [];
-                              acc[op.team].push(op.lastName);
-                              return acc;
-                            }, {});
-
-                            const grouped = (
-                              Object.entries(teamMap) as [string, string[]][]
-                            ).map(
-                              ([team, names]) =>
-                                `${names.join('・')}（${team}）`,
-                            );
-                            return grouped.join('・');
-                          })()}
-                        </td>
-                        <td className="px-4 py-2 text-left">
-                          {m.games.won}-{m.games.lost}
-                        </td>
-                      </tr>
-                    ))}
+                    {rows.map((m: MatchRow, i: number) => {
+                      return (
+                        <tr
+                          key={i}
+                          className="border-t border-gray-100 dark:border-gray-700"
+                        >
+                          <td className="px-4 py-2 break-words text-left">
+                            {m.round ?? '予選'}
+                          </td>
+                          <td className="px-4 py-2 break-words text-left">
+                            {m.opponentDisplayName ?? '不明'}
+                          </td>
+                          <td className="px-4 py-2 text-left">
+                            {m.games.won}-{m.games.lost}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -287,21 +151,278 @@ function MatchGroup({
 }
 
 export default function MatchResults({
-  matches,
+  detail,
   searchQuery,
   setSearchQuery,
-  suggestions,
   filter,
   setFilter,
-  eliminatedEntries,
-  seedEntryNos,
 }: Props) {
+  const participantMap = useMemo(() => {
+    const map = new Map<string, (typeof detail.participants)[0]>();
+    for (const p of detail.participants ?? []) map.set(p.id, p);
+    return map;
+  }, [detail]);
+
+  // build a map: matchId -> match object for following nextMatchId
+  const matchById = useMemo(() => {
+    const map = new Map<string, TournamentMatch>();
+    for (const m of detail.matches ?? []) {
+      if (m.matchId != null) map.set(String(m.matchId), m);
+    }
+    return map;
+  }, [detail]);
+
+  // helper: build display name for an entry (used by later logic)
+  const buildNameForEntry = useCallback(
+    (entry: TournamentEntry, opts?: { short?: boolean }) => {
+      const short = !!opts?.short;
+      const players = (entry.playerIds ?? [])
+        .map((pid: string) => participantMap.get(pid))
+        .filter(Boolean) as (typeof detail.participants)[0][];
+      if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
+
+      // Check if this is a team format (lastName and firstName are both null)
+      const isTeamFormat = players.every(
+        (pl) => pl?.lastName === null && pl?.firstName === null,
+      );
+
+      if (isTeamFormat) {
+        // For team format: display "チーム名（都道府県）"
+        const teamNames = players
+          .map((pl) => {
+            const teamName = pl?.team || '不明';
+            const prefecture = pl?.prefecture;
+            return prefecture ? `${teamName}（${prefecture}）` : teamName;
+          })
+          .filter((name) => name !== '不明');
+        return teamNames.join('・') || `#${entry.entryNo ?? '?'}`;
+      }
+
+      // For individual format: display "名前（チーム名）"
+      const teamMap: Record<string, string[]> = {};
+      for (const pl of players) {
+        const team = (pl && pl.team) || '\u4e0d\u660e';
+        if (!teamMap[team]) teamMap[team] = [];
+        const last = pl?.lastName ?? '';
+        const first = pl?.firstName ?? '';
+        const fullName = `${last}${first}`.trim();
+        const displayName = short ? `${last}`.trim() : fullName;
+        teamMap[team].push(displayName || '');
+      }
+      return Object.entries(teamMap)
+        .map(([team, names]) => {
+          const teamLabel = team;
+          return `${names.join('\u30fb')}\uff08${teamLabel}\uff09`;
+        })
+        .join('\u30fb');
+    },
+    [participantMap, detail],
+  );
+
+  // Expand an entry's rows by following nextMatchId from the last match
+  const expandMatchGroup = (entryNo: number, rows: MatchRow[]) => {
+    const extra: MatchRow[] = [];
+    if (!rows || rows.length === 0) return extra;
+    const last = rows[rows.length - 1];
+    if (!last?.matchId) return extra;
+
+    // Start from the winner of the last match and follow their path.
+    const visited = new Set<string>();
+    const lastMatch = matchById.get(String(last.matchId));
+    if (!lastMatch) return extra;
+
+    let prevWinner = lastMatch.winnerEntryNo;
+    if (typeof prevWinner !== 'number') return extra;
+
+    let nextId = String(lastMatch.nextMatchId ?? '');
+    let depth = 0;
+    const MAX_DEPTH = 10;
+
+    while (nextId && !visited.has(nextId) && depth < MAX_DEPTH) {
+      visited.add(nextId);
+      const nm = matchById.get(nextId);
+      if (!nm) break;
+
+      const [a, b] = nm.entries ?? [];
+
+      // If the previous winner participates in this match, determine their opponent.
+      let opponent: number | undefined;
+      if (a === prevWinner) opponent = b;
+      else if (b === prevWinner) opponent = a;
+      else break; // prevWinner not in this match, stop following
+
+      const scoreA = String(nm.scores?.[String(a)] ?? nm.scores?.[a] ?? '0');
+      const scoreB = String(nm.scores?.[String(b)] ?? nm.scores?.[b] ?? '0');
+
+      const row: MatchRow = {
+        matchId: nm.matchId,
+        stage: nm.stage,
+        group: nm.group ?? null,
+        round: nm.round ?? null,
+        opponentDisplayName:
+          typeof opponent === 'number'
+            ? buildNameForEntry(
+                (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
+                  entryNo: opponent,
+                  playerIds: [],
+                },
+                { short: true },
+              )
+            : undefined,
+        // result from the perspective of prevWinner
+        result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
+        games:
+          a === prevWinner
+            ? { won: scoreA, lost: scoreB }
+            : { won: scoreB, lost: scoreA },
+      };
+
+      extra.push(row);
+
+      // advance: next winner becomes the new prevWinner
+      prevWinner = nm.winnerEntryNo;
+      nextId = String(nm.nextMatchId ?? '');
+      depth += 1;
+    }
+
+    return extra;
+  };
+  // buildNameForEntry moved earlier
+
+  // build a map: entryNo -> list of MatchRow
+  const matchesByEntry = useMemo(() => {
+    const map = new Map<number, MatchRow[]>();
+    for (const m of detail.matches ?? []) {
+      const [a, b] = m.entries ?? [];
+      const scoreA = String(m.scores?.[String(a)] ?? m.scores?.[a] ?? '0');
+      const scoreB = String(m.scores?.[String(b)] ?? m.scores?.[b] ?? '0');
+
+      const rowA: MatchRow = {
+        matchId: m.matchId,
+        stage: m.stage,
+        group: m.group ?? null,
+        round: m.round ?? null,
+        opponentDisplayName:
+          typeof b === 'number'
+            ? buildNameForEntry(
+                (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
+                  entryNo: b,
+                  playerIds: [],
+                },
+                { short: true },
+              )
+            : undefined,
+        result:
+          m.winnerEntryNo === a
+            ? 'win'
+            : m.winnerEntryNo === b
+              ? 'lose'
+              : 'draw',
+        games: { won: scoreA, lost: scoreB },
+      };
+      const rowB: MatchRow = {
+        matchId: m.matchId,
+        stage: m.stage,
+        group: m.group ?? null,
+        round: m.round ?? null,
+        opponentDisplayName:
+          typeof a === 'number'
+            ? buildNameForEntry(
+                (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
+                  entryNo: a,
+                  playerIds: [],
+                },
+                { short: true },
+              )
+            : undefined,
+        result:
+          m.winnerEntryNo === b
+            ? 'win'
+            : m.winnerEntryNo === a
+              ? 'lose'
+              : 'draw',
+        games: { won: scoreB, lost: scoreA },
+      };
+
+      if (typeof a === 'number') map.set(a, [...(map.get(a) ?? []), rowA]);
+      if (typeof b === 'number') map.set(b, [...(map.get(b) ?? []), rowB]);
+    }
+
+    // sort each entry's match list so that roundrobin stage comes first
+    for (const [entryNo, rows] of map) {
+      rows.sort((x, y) => {
+        const xIsRR = x.stage === 'roundrobin' ? 0 : 1;
+        const yIsRR = y.stage === 'roundrobin' ? 0 : 1;
+        if (xIsRR !== yIsRR) return xIsRR - yIsRR;
+
+        const rank = (r?: string | null) => {
+          if (!r) return 0;
+          const s = String(r);
+          // 明示的なマッピング: 決勝を最大にして最後に来るようにする
+          if (/準々決勝/.test(s)) return 70;
+          if (/準決勝/.test(s)) return 80;
+          if (/決勝/.test(s)) return 100;
+          // 回戦表記から数字を抽出して順位付け（大きい数字ほど後）
+          const m = s.match(/(\d+)/);
+          if (m) return parseInt(m[1], 10) * 10;
+          // その他は低優先度
+          return 10;
+        };
+
+        const rx = rank(x.round);
+        const ry = rank(y.round);
+        if (rx !== ry) return rx - ry;
+        // フォールバック: 文字列で安定ソート
+        if (x.round && y.round) {
+          return String(x.round).localeCompare(String(y.round));
+        }
+        return 0;
+      });
+      map.set(entryNo, rows);
+    }
+
+    return map;
+  }, [detail, buildNameForEntry]);
+
+  // build name list from entries & eliminatedEntries
   const groupedNames = [
-    ...new Set([
-      ...sortMatchesByEntryNo(matches).map((m) => m.name),
-      ...(eliminatedEntries?.map((e) => e.name) ?? []),
-    ]),
+    ...new Set([...(detail.entries ?? []).map((e) => buildNameForEntry(e))]),
   ];
+
+  // derive seed entry numbers from detail.entries if not provided
+  const derivedSeedEntryNos: Set<number> = new Set();
+  for (const e of detail.entries ?? []) {
+    // assume entry.type can be 'seed' or 'シード' or similar; be permissive
+    if (e.type && typeof e.type === 'string') {
+      if (e.type.includes('seed')) {
+        derivedSeedEntryNos.add(e.entryNo);
+      }
+    }
+  }
+
+  // Check if there are any knockout matches
+  const hasKnockoutStage = useMemo(() => {
+    return (detail.matches ?? []).some((m) => m.stage === 'knockout');
+  }, [detail]);
+
+  const derivedResultByEntryNo: Record<number, string | undefined> = {};
+  for (const r of detail.results ?? []) {
+    const parts: string[] = [];
+    if (r.tournament && r.tournament.label) {
+      parts.push(r.tournament.label);
+    } else if (hasKnockoutStage) {
+      parts.push('予選敗退');
+    }
+    if (r.roundrobin) {
+      const group = r.roundrobin.group ?? '';
+      const rank = r.roundrobin.rank ?? '';
+      parts.push(`グループ${group} ${rank}位`);
+    }
+    derivedResultByEntryNo[r.entryNo] =
+      parts.length > 0 ? parts.join(' / ') : undefined;
+  }
+
+  // getEntryName removed; use buildNameForEntry directly where needed
 
   return (
     <section className="mb-10">
@@ -315,19 +436,6 @@ export default function MatchResults({
           placeholder="選手名や所属で検索"
           className="h-9 px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm dark:bg-gray-900 dark:text-white"
         />
-        {suggestions.length > 0 && (
-          <ul className="mt-1 bg-white dark:bg-gray-800 border rounded shadow text-sm">
-            {suggestions.map((name, i) => (
-              <li
-                key={i}
-                onClick={() => setSearchQuery(name)}
-                className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
-        )}
 
         <button
           onClick={() => setFilter('all')}
@@ -344,24 +452,29 @@ export default function MatchResults({
       </div>
 
       {groupedNames.map((name) => {
-        const matchGroup = matches.filter((m) => m.name === name);
-        const eliminatedResult = Array.isArray(eliminatedEntries)
-          ? eliminatedEntries.find((e) => e.name === name)?.result || ''
-          : '';
-        const tournamentMatches = matches.filter((m) => m.round !== undefined);
-        const tracedMatches = traceFromLoser(tournamentMatches, matchGroup);
+        // try to find an entryNo by name
+        const entry = (detail.entries ?? []).find(
+          (e) => buildNameForEntry(e) === name,
+        );
+        const entryNo = entry?.entryNo ?? -1;
+        const matchGroup = matchesByEntry.get(entryNo) ?? [];
+
+        // keep original matchGroup, and separately compute expandedRows
+        const expandedRows = expandMatchGroup(entryNo, matchGroup);
+
+        const resultLabel = derivedResultByEntryNo[entryNo];
 
         return (
           <MatchGroup
             key={name}
             name={name}
-            entryNo={matchGroup[0]?.entryNo ?? -1}
-            matches={matchGroup}
+            entryNo={entryNo}
+            matchGroup={matchGroup}
+            extraRows={expandedRows}
             searchQuery={searchQuery}
             filter={filter}
-            eliminatedLabel={eliminatedResult}
-            isSeed={seedEntryNos?.has(Number(matchGroup[0]?.entryNo) ?? -1)}
-            tracedMatches={tracedMatches}
+            isSeed={derivedSeedEntryNos.has(Number(entryNo) ?? -1)}
+            resultLabel={resultLabel ?? ''}
           />
         );
       })}

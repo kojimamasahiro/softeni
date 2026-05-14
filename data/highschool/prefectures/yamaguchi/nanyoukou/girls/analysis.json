@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "南陽工",
+        "teamId": "nanyoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "山本_梨湖_南陽工_山口県",
+          "横山_愛佳_南陽工_山口県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "高井_七海_南陽工_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "横山_愛佳_南陽工_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "川本_里莉_南陽工_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "山本_梨湖_南陽工_山口県",
+      "appearances": 1
+    }
+  ]
+}

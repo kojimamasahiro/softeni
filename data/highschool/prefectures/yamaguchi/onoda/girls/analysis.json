@@ -1,0 +1,82 @@
+{
+  "totalAppearances": 7,
+  "byCategory": {
+    "doubles": 6,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "小野田",
+        "teamId": "onoda",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "村山_美波_小野田_山口県",
+          "杉本_晴菜_小野田_山口県"
+        ]
+      },
+      "historicalBest": {
+        "team": "小野田",
+        "teamId": "onoda",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "村山_美波_小野田_山口県",
+          "杉本_晴菜_小野田_山口県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "小野田",
+        "teamId": "onoda",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "斎藤_咲_小野田_山口県",
+      "appearances": 3
+    },
+    {
+      "id": "岡村_樹那_小野田_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "岡﨑_優菜_小野田_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "村山_美波_小野田_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "末益_千夏子_小野田_山口県",
+      "appearances": 2
+    }
+  ]
+}

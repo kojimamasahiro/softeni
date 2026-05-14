@@ -1,11 +1,11 @@
 // src/components/ResultsTable.tsx
-import { MatchResult } from '@/types/index';
+import { MatchRow } from '@/types/tournament';
 
 export default function ResultsTable({
-  results,
+  rows,
   className = '',
 }: {
-  results: MatchResult[];
+  rows: MatchRow[];
   className?: string;
 }) {
   return (
@@ -23,28 +23,28 @@ export default function ResultsTable({
           <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">
             スコア
           </th>
-          <th className="border-b border-gray-300 dark:border-gray-600 px-2 py-1">
-            勝敗
-          </th>
         </tr>
       </thead>
       <tbody>
-        {results.map((match, i) => (
-          <tr key={i} className="text-center">
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
-              {match.round}
-            </td>
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
-              {match.opponent}
-            </td>
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
-              {match.score}
-            </td>
-            <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
-              {match.result}
-            </td>
-          </tr>
-        ))}
+        {rows.map((match, i) => {
+          const round = match.round ?? '予選';
+          const opponentDisplay = match.opponentDisplayName ?? '不明';
+          const scoreDisplay = `${match.games.won}-${match.games.lost}`;
+
+          return (
+            <tr key={i} className="text-center">
+              <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
+                {round}
+              </td>
+              <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
+                {opponentDisplay}
+              </td>
+              <td className="border-b border-gray-200 dark:border-gray-700 px-2 py-1">
+                {scoreDisplay}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

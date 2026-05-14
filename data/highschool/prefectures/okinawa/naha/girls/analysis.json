@@ -1,0 +1,49 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "那覇",
+        "teamId": "naha",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "稲嶺_奈那_那覇_沖縄県",
+          "金城_風花_那覇_沖縄県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "稲嶺_奈那_那覇_沖縄県",
+      "appearances": 2
+    },
+    {
+      "id": "金城_風花_那覇_沖縄県",
+      "appearances": 1
+    },
+    {
+      "id": "玉村_光_那覇_沖縄県",
+      "appearances": 1
+    }
+  ]
+}

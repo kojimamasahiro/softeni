@@ -1,363 +1,396 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>勤怠ツール（カレンダー対応）</title>
     <style>
-        body {
-            font-family: sans-serif;
-            padding: 2em;
-        }
+      body {
+        font-family: sans-serif;
+        padding: 2em;
+      }
 
-        button {
-            margin: 0.3em;
-            padding: 0.5em 1em;
-        }
+      button {
+        margin: 0.3em;
+        padding: 0.5em 1em;
+      }
 
-        table {
-            border-collapse: collapse;
-            margin-top: 1em;
-            width: 100%;
-            max-width: 600px;
-        }
+      table {
+        border-collapse: collapse;
+        margin-top: 1em;
+        width: 100%;
+        max-width: 600px;
+      }
 
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 0.5em;
-            text-align: center;
-            vertical-align: top;
-            height: 60px;
-        }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5em;
+        text-align: center;
+        vertical-align: top;
+        height: 60px;
+      }
 
-        input.time-edit {
-            width: 60px;
-            text-align: center;
-        }
+      input.time-edit {
+        width: 60px;
+        text-align: center;
+      }
 
-        .calendar-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2em;
-            margin-top: 2em;
-        }
+      .calendar-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+        margin-top: 2em;
+      }
 
-        .calendar {
-            border: 1px solid #aaa;
-            padding: 0.5em;
-        }
+      .calendar {
+        border: 1px solid #aaa;
+        padding: 0.5em;
+      }
 
-        .calendar h2 {
-            text-align: center;
-            margin: 0.5em 0;
-        }
+      .calendar h2 {
+        text-align: center;
+        margin: 0.5em 0;
+      }
 
-        .highlight {
-            background: #def;
-            font-weight: bold;
-        }
+      .highlight {
+        background: #def;
+        font-weight: bold;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>勤怠ツール（カレンダー付き）</h1>
 
     <div class="calendar-wrapper" id="calendarWrapper"></div>
 
-    <div id="summary" style="margin-top:1.5em; font-weight:bold; font-size:1.1em;"></div>
+    <div
+      id="summary"
+      style="margin-top: 1.5em; font-weight: bold; font-size: 1.1em"
+    ></div>
 
     <div>
-        <button onclick="record('in')">出勤</button>
-        <button onclick="record('out')">退勤</button>
-        <button onclick="record('breakStart')">外出</button>
-        <button onclick="record('breakEnd')">戻り</button>
-        <button onclick="downloadCSV()">CSVダウンロード</button>
+      <button onclick="record('in')">出勤</button>
+      <button onclick="record('out')">退勤</button>
+      <button onclick="record('breakStart')">外出</button>
+      <button onclick="record('breakEnd')">戻り</button>
+      <button onclick="downloadCSV()">CSVダウンロード</button>
     </div>
 
     <table id="logTable">
-        <thead>
-            <tr>
-                <th>日付</th>
-                <th>出勤</th>
-                <th>退勤</th>
-                <th>中抜け</th>
-                <th>勤務時間</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>出勤</th>
+          <th>退勤</th>
+          <th>中抜け</th>
+          <th>勤務時間</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
 
     <script>
-        const KEY = 'kintaiData';
-        const BASE_HOUR = 5;
+      const KEY = 'kintaiData';
+      const BASE_HOUR = 5;
 
-        function getWorkDate(now) {
-            const temp = new Date(now);
-            if (now.getHours() < BASE_HOUR) temp.setDate(now.getDate() - 1);
-            return temp.toLocaleDateString('ja-JP');
+      function getWorkDate(now) {
+        const temp = new Date(now);
+        if (now.getHours() < BASE_HOUR) temp.setDate(now.getDate() - 1);
+        return temp.toLocaleDateString('ja-JP');
+      }
+
+      function toHHMM(dt) {
+        let h = dt.getHours(),
+          m = dt.getMinutes();
+        if (h < BASE_HOUR) h += 24;
+        return `${('0' + h).slice(-2)}:${('0' + m).slice(-2)}`;
+      }
+
+      function toDateObj(str) {
+        const [h, m] = str.split(':').map(Number);
+        const date = new Date();
+        if (h >= 24) {
+          date.setDate(date.getDate() + 1);
+          date.setHours(h - 24, m, 0);
+        } else {
+          date.setHours(h, m, 0);
+        }
+        return date;
+      }
+
+      function calcDuration(start, end, breaks = []) {
+        const startTime = toDateObj(start);
+        const endTime = toDateObj(end);
+        let total = (endTime - startTime) / 1000 / 60;
+        for (const b of breaks) {
+          if (b.start && b.end) {
+            total -= (toDateObj(b.end) - toDateObj(b.start)) / 1000 / 60;
+          }
+        }
+        if (total < 0) return '不明';
+        const h = Math.floor(total / 60),
+          m = total % 60;
+        return `${h}時間${m.toFixed(0)}分`;
+      }
+
+      function record(type) {
+        const now = new Date();
+        const time = toHHMM(now);
+        const date = getWorkDate(now);
+        let data = JSON.parse(localStorage.getItem(KEY) || '{}');
+        data[date] = data[date] || { in: '', out: '', breaks: [] };
+
+        if (type === 'in') {
+          if (data[date].in) return alert('すでに出勤済みです。');
+          data[date].in = time;
+        } else if (type === 'out') {
+          const lastBreak = data[date].breaks.at(-1);
+          if (lastBreak && !lastBreak.end) {
+            lastBreak.end = time;
+            alert('外出中だったため、戻り → 退勤として記録しました。');
+          }
+          data[date].out = time;
+        } else if (type === 'breakStart') {
+          const lastBreak = data[date].breaks.at(-1);
+          if (!lastBreak || lastBreak.end) {
+            data[date].breaks.push({ start: time, end: '' });
+          } else {
+            alert('すでに外出中です。戻りを記録してください。');
+          }
+        } else if (type === 'breakEnd') {
+          const lastBreak = data[date].breaks.at(-1);
+          if (lastBreak && !lastBreak.end) lastBreak.end = time;
+          else alert('外出記録がありません。');
         }
 
-        function toHHMM(dt) {
-            let h = dt.getHours(), m = dt.getMinutes();
-            if (h < BASE_HOUR) h += 24;
-            return `${('0' + h).slice(-2)}:${('0' + m).slice(-2)}`;
-        }
+        localStorage.setItem(KEY, JSON.stringify(data));
+        render();
+      }
 
-        function toDateObj(str) {
-            const [h, m] = str.split(':').map(Number);
-            const date = new Date();
-            if (h >= 24) {
-                date.setDate(date.getDate() + 1);
-                date.setHours(h - 24, m, 0);
-            } else {
-                date.setHours(h, m, 0);
-            }
-            return date;
-        }
+      function makeEditableSpan(value, callback) {
+        const span = document.createElement('span');
+        span.textContent = value || '＋'; // 空なら「＋」で表示
+        span.style.cursor = 'pointer';
+        span.style.color = value ? 'inherit' : '#aaa';
+        span.onclick = () => {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = value || '';
+          input.className = 'time-edit';
+          input.onblur = input.onchange = () => {
+            const newValue = input.value.trim();
+            if (newValue === '') callback(null);
+            else if (/^\d{1,2}:\d{2}$/.test(newValue)) callback(newValue);
+            else alert('形式が正しくありません（例：25:30）');
+          };
+          span.replaceWith(input);
+          input.focus();
+        };
+        return span;
+      }
 
-        function calcDuration(start, end, breaks = []) {
-            const startTime = toDateObj(start);
-            const endTime = toDateObj(end);
-            let total = (endTime - startTime) / 1000 / 60;
-            for (const b of breaks) {
-                if (b.start && b.end) {
-                    total -= (toDateObj(b.end) - toDateObj(b.start)) / 1000 / 60;
-                }
-            }
-            if (total < 0) return '不明';
-            const h = Math.floor(total / 60), m = total % 60;
-            return `${h}時間${m.toFixed(0)}分`;
-        }
+      function render() {
+        const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+        const tbody = document.querySelector('#logTable tbody');
+        tbody.innerHTML = '';
 
-        function record(type) {
-            const now = new Date();
-            const time = toHHMM(now);
-            const date = getWorkDate(now);
-            let data = JSON.parse(localStorage.getItem(KEY) || '{}');
-            data[date] = data[date] || { in: '', out: '', breaks: [] };
+        Object.keys(data)
+          .sort()
+          .reverse()
+          .forEach((date) => {
+            const row = data[date];
+            const tr = document.createElement('tr');
 
-            if (type === 'in') {
-                if (data[date].in) return alert('すでに出勤済みです。');
-                data[date].in = time;
-            } else if (type === 'out') {
-                const lastBreak = data[date].breaks.at(-1);
-                if (lastBreak && !lastBreak.end) {
-                    lastBreak.end = time;
-                    alert('外出中だったため、戻り → 退勤として記録しました。');
-                }
-                data[date].out = time;
-            } else if (type === 'breakStart') {
-                const lastBreak = data[date].breaks.at(-1);
-                if (!lastBreak || lastBreak.end) {
-                    data[date].breaks.push({ start: time, end: '' });
-                } else {
-                    alert('すでに外出中です。戻りを記録してください。');
-                }
-            } else if (type === 'breakEnd') {
-                const lastBreak = data[date].breaks.at(-1);
-                if (lastBreak && !lastBreak.end) lastBreak.end = time;
-                else alert('外出記録がありません。');
-            }
+            const tdDate = document.createElement('td');
+            tdDate.textContent = date;
+            tr.appendChild(tdDate);
 
-            localStorage.setItem(KEY, JSON.stringify(data));
-            render();
-        }
+            const tdIn = document.createElement('td');
+            tdIn.appendChild(
+              makeEditableSpan(row.in || '', (val) => {
+                row.in = val || '';
+                localStorage.setItem(KEY, JSON.stringify(data));
+                render();
+              }),
+            );
+            tr.appendChild(tdIn);
 
-        function makeEditableSpan(value, callback) {
-            const span = document.createElement('span');
-            span.textContent = value || '＋'; // 空なら「＋」で表示
-            span.style.cursor = 'pointer';
-            span.style.color = value ? 'inherit' : '#aaa';
-            span.onclick = () => {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.value = value || '';
-                input.className = 'time-edit';
-                input.onblur = input.onchange = () => {
-                    const newValue = input.value.trim();
-                    if (newValue === '') callback(null);
-                    else if (/^\d{1,2}:\d{2}$/.test(newValue)) callback(newValue);
-                    else alert('形式が正しくありません（例：25:30）');
-                };
-                span.replaceWith(input);
-                input.focus();
-            };
-            return span;
-        }
+            const tdOut = document.createElement('td');
+            tdOut.appendChild(
+              makeEditableSpan(row.out || '', (val) => {
+                row.out = val || '';
+                localStorage.setItem(KEY, JSON.stringify(data));
+                render();
+              }),
+            );
+            tr.appendChild(tdOut);
 
-        function render() {
-            const data = JSON.parse(localStorage.getItem(KEY) || '{}');
-            const tbody = document.querySelector('#logTable tbody');
-            tbody.innerHTML = '';
-
-            Object.keys(data).sort().reverse().forEach(date => {
-                const row = data[date];
-                const tr = document.createElement('tr');
-
-                const tdDate = document.createElement('td');
-                tdDate.textContent = date;
-                tr.appendChild(tdDate);
-
-                const tdIn = document.createElement('td');
-                tdIn.appendChild(makeEditableSpan(row.in || '', val => {
-                    row.in = val || '';
-                    localStorage.setItem(KEY, JSON.stringify(data));
-                    render();
-                }));
-                tr.appendChild(tdIn);
-
-                const tdOut = document.createElement('td');
-                tdOut.appendChild(makeEditableSpan(row.out || '', val => {
-                    row.out = val || '';
-                    localStorage.setItem(KEY, JSON.stringify(data));
-                    render();
-                }));
-                tr.appendChild(tdOut);
-
-                const tdBreaks = document.createElement('td');
-                row.breaks.forEach((b, i) => {
-                    const div = document.createElement('div');
-                    div.textContent = `外出${i + 1}：`;
-                    div.appendChild(makeEditableSpan(b.start || '', val => {
-                        b.start = val || '';
-                        if (!b.start && !b.end) row.breaks.splice(i, 1);
-                        localStorage.setItem(KEY, JSON.stringify(data));
-                        render();
-                    }));
-                    div.append(' ～ ');
-                    div.appendChild(makeEditableSpan(b.end || '', val => {
-                        b.end = val || '';
-                        if (!b.start && !b.end) row.breaks.splice(i, 1);
-                        localStorage.setItem(KEY, JSON.stringify(data));
-                        render();
-                    }));
-                    tdBreaks.appendChild(div);
-                });
-                tr.appendChild(tdBreaks);
-
-                const tdWork = document.createElement('td');
-                let workTime = '';
-                if (row.in) {
-                    const assumedOut = row.out || toHHMM(new Date());
-                    workTime = calcDuration(row.in, assumedOut, row.breaks);
-                    if (!row.out) workTime += '（暫定）';
-                }
-                tdWork.textContent = workTime;
-                tr.appendChild(tdWork);
-
-                tbody.appendChild(tr);
+            const tdBreaks = document.createElement('td');
+            row.breaks.forEach((b, i) => {
+              const div = document.createElement('div');
+              div.textContent = `外出${i + 1}：`;
+              div.appendChild(
+                makeEditableSpan(b.start || '', (val) => {
+                  b.start = val || '';
+                  if (!b.start && !b.end) row.breaks.splice(i, 1);
+                  localStorage.setItem(KEY, JSON.stringify(data));
+                  render();
+                }),
+              );
+              div.append(' ～ ');
+              div.appendChild(
+                makeEditableSpan(b.end || '', (val) => {
+                  b.end = val || '';
+                  if (!b.start && !b.end) row.breaks.splice(i, 1);
+                  localStorage.setItem(KEY, JSON.stringify(data));
+                  render();
+                }),
+              );
+              tdBreaks.appendChild(div);
             });
+            tr.appendChild(tdBreaks);
 
-            // 集計表示
-            let totalMinutes = 0, workDays = 0;
-            Object.values(data).forEach(row => {
-                if (row.in) {
-                    workDays++;
-                    const assumedOut = row.out || toHHMM(new Date());
-                    const minutes = (toDateObj(assumedOut) - toDateObj(row.in)) / 1000 / 60;
-                    const breakMinutes = row.breaks?.reduce((sum, b) => {
-                        if (b.start && b.end) sum += (toDateObj(b.end) - toDateObj(b.start)) / 1000 / 60;
-                        return sum;
-                    }, 0) || 0;
-                    totalMinutes += minutes - breakMinutes;
-                }
-            });
-            const totalHours = Math.floor(totalMinutes / 60);
-            const totalRemain = Math.round(totalMinutes % 60);
-            const avgMinutes = workDays ? totalMinutes / workDays : 0;
-            const avgHours = Math.floor(avgMinutes / 60);
-            const avgRemain = Math.round(avgMinutes % 60);
-            document.getElementById('summary').innerHTML = `
+            const tdWork = document.createElement('td');
+            let workTime = '';
+            if (row.in) {
+              const assumedOut = row.out || toHHMM(new Date());
+              workTime = calcDuration(row.in, assumedOut, row.breaks);
+              if (!row.out) workTime += '（暫定）';
+            }
+            tdWork.textContent = workTime;
+            tr.appendChild(tdWork);
+
+            tbody.appendChild(tr);
+          });
+
+        // 集計表示
+        let totalMinutes = 0,
+          workDays = 0;
+        Object.values(data).forEach((row) => {
+          if (row.in) {
+            workDays++;
+            const assumedOut = row.out || toHHMM(new Date());
+            const minutes =
+              (toDateObj(assumedOut) - toDateObj(row.in)) / 1000 / 60;
+            const breakMinutes =
+              row.breaks?.reduce((sum, b) => {
+                if (b.start && b.end)
+                  sum += (toDateObj(b.end) - toDateObj(b.start)) / 1000 / 60;
+                return sum;
+              }, 0) || 0;
+            totalMinutes += minutes - breakMinutes;
+          }
+        });
+        const totalHours = Math.floor(totalMinutes / 60);
+        const totalRemain = Math.round(totalMinutes % 60);
+        const avgMinutes = workDays ? totalMinutes / workDays : 0;
+        const avgHours = Math.floor(avgMinutes / 60);
+        const avgRemain = Math.round(avgMinutes % 60);
+        document.getElementById('summary').innerHTML = `
         🟦 トータル勤務時間：${totalHours}時間${totalRemain}分<br>
         🟩 勤務日数：${workDays}日<br>
         🟨 平均労働時間：${avgHours}時間${avgRemain}分/日
       `;
 
-            renderCalendar(data);
-        }
+        renderCalendar(data);
+      }
 
-        function renderCalendar(data) {
-            const wrapper = document.getElementById('calendarWrapper');
-            wrapper.innerHTML = '';
-            const now = new Date();
-            const months = [new Date(now.getFullYear(), now.getMonth() - 1, 1), new Date(now.getFullYear(), now.getMonth(), 1)];
+      function renderCalendar(data) {
+        const wrapper = document.getElementById('calendarWrapper');
+        wrapper.innerHTML = '';
+        const now = new Date();
+        const months = [
+          new Date(now.getFullYear(), now.getMonth() - 1, 1),
+          new Date(now.getFullYear(), now.getMonth(), 1),
+        ];
 
-            for (const baseDate of months) {
-                const year = baseDate.getFullYear();
-                const month = baseDate.getMonth();
-                const firstDay = new Date(year, month, 1);
-                const lastDay = new Date(year, month + 1, 0);
-                const monthKey = `${year}/${month + 1}`;
-                const table = document.createElement('table');
-                const cal = document.createElement('div');
-                cal.className = 'calendar';
-                const header = document.createElement('h2');
-                header.textContent = `${month + 1}月 ${year}`;
-                cal.appendChild(header);
-                const thead = document.createElement('thead');
-                const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
-                const trHead = document.createElement('tr');
-                weekdays.forEach(d => {
-                    const th = document.createElement('th');
-                    th.textContent = d;
-                    trHead.appendChild(th);
-                });
-                thead.appendChild(trHead);
-                table.appendChild(thead);
+        for (const baseDate of months) {
+          const year = baseDate.getFullYear();
+          const month = baseDate.getMonth();
+          const firstDay = new Date(year, month, 1);
+          const lastDay = new Date(year, month + 1, 0);
+          const monthKey = `${year}/${month + 1}`;
+          const table = document.createElement('table');
+          const cal = document.createElement('div');
+          cal.className = 'calendar';
+          const header = document.createElement('h2');
+          header.textContent = `${month + 1}月 ${year}`;
+          cal.appendChild(header);
+          const thead = document.createElement('thead');
+          const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+          const trHead = document.createElement('tr');
+          weekdays.forEach((d) => {
+            const th = document.createElement('th');
+            th.textContent = d;
+            trHead.appendChild(th);
+          });
+          thead.appendChild(trHead);
+          table.appendChild(thead);
 
-                const tbody = document.createElement('tbody');
-                let tr = document.createElement('tr');
-                let day = 1;
-                for (let i = 0; i < firstDay.getDay(); i++) {
-                    tr.appendChild(document.createElement('td'));
-                }
+          const tbody = document.createElement('tbody');
+          let tr = document.createElement('tr');
+          let day = 1;
+          for (let i = 0; i < firstDay.getDay(); i++) {
+            tr.appendChild(document.createElement('td'));
+          }
 
-                while (day <= lastDay.getDate()) {
-                    const dateObj = new Date(year, month, day);
-                    const dateKey = dateObj.toLocaleDateString('ja-JP');
-                    const cell = document.createElement('td');
-                    let content = `${day}`;
-                    if (data[dateKey]?.in) {
-                        const out = data[dateKey].out || toHHMM(new Date());
-                        const time = calcDuration(data[dateKey].in, out, data[dateKey].breaks);
-                        content += `<br><span class="highlight">● ${time}</span>`;
-                    }
-                    cell.innerHTML = content;
-                    tr.appendChild(cell);
-                    if (dateObj.getDay() === 6) {
-                        tbody.appendChild(tr);
-                        tr = document.createElement('tr');
-                    }
-                    day++;
-                }
-                while (tr.children.length < 7) tr.appendChild(document.createElement('td'));
-                tbody.appendChild(tr);
-                table.appendChild(tbody);
-                cal.appendChild(table);
-                wrapper.appendChild(cal);
+          while (day <= lastDay.getDate()) {
+            const dateObj = new Date(year, month, day);
+            const dateKey = dateObj.toLocaleDateString('ja-JP');
+            const cell = document.createElement('td');
+            let content = `${day}`;
+            if (data[dateKey]?.in) {
+              const out = data[dateKey].out || toHHMM(new Date());
+              const time = calcDuration(
+                data[dateKey].in,
+                out,
+                data[dateKey].breaks,
+              );
+              content += `<br><span class="highlight">● ${time}</span>`;
             }
+            cell.innerHTML = content;
+            tr.appendChild(cell);
+            if (dateObj.getDay() === 6) {
+              tbody.appendChild(tr);
+              tr = document.createElement('tr');
+            }
+            day++;
+          }
+          while (tr.children.length < 7)
+            tr.appendChild(document.createElement('td'));
+          tbody.appendChild(tr);
+          table.appendChild(tbody);
+          cal.appendChild(table);
+          wrapper.appendChild(cal);
         }
+      }
 
-        function downloadCSV() {
-            const data = JSON.parse(localStorage.getItem(KEY) || '{}');
-            let csv = '日付,出勤,退勤,中抜け,勤務時間\n';
-            Object.keys(data).sort().forEach(date => {
-                const row = data[date];
-                const breaks = row.breaks.map(b => `${b.start || ''}～${b.end || ''}`).join(' / ');
-                const workTime = (row.in && row.out) ? calcDuration(row.in, row.out, row.breaks) : '';
-                csv += `${date},${row.in || ''},${row.out || ''},"${breaks}","${workTime}"\n`;
-            });
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'kintai.csv';
-            a.click();
-        }
+      function downloadCSV() {
+        const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+        let csv = '日付,出勤,退勤,中抜け,勤務時間\n';
+        Object.keys(data)
+          .sort()
+          .forEach((date) => {
+            const row = data[date];
+            const breaks = row.breaks
+              .map((b) => `${b.start || ''}～${b.end || ''}`)
+              .join(' / ');
+            const workTime =
+              row.in && row.out
+                ? calcDuration(row.in, row.out, row.breaks)
+                : '';
+            csv += `${date},${row.in || ''},${row.out || ''},"${breaks}","${workTime}"\n`;
+          });
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'kintai.csv';
+        a.click();
+      }
 
-        render();
-        setInterval(render, 60000);
+      render();
+      setInterval(render, 60000);
     </script>
-</body>
-
+  </body>
 </html>

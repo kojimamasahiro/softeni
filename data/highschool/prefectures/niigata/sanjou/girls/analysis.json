@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "doubles": 5,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "三条",
+        "teamId": "sanjou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "齋藤_彩華_三条_新潟県",
+          "山﨑_日万莉_三条_新潟県"
+        ]
+      },
+      "historicalBest": {
+        "team": "三条",
+        "teamId": "sanjou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "齋藤_彩華_三条_新潟県",
+          "山﨑_日万莉_三条_新潟県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "三条",
+        "teamId": "sanjou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "三条",
+        "teamId": "sanjou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "齋藤_彩華_三条_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "山﨑_日万莉_三条_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "渡邉_心陽_三条_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "土田_紗唯_三条_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "岡部_香音_三条_新潟県",
+      "appearances": 1
+    }
+  ]
+}

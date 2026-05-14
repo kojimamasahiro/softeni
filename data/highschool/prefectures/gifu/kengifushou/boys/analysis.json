@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 10,
+  "byCategory": {
+    "doubles": 9,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "樋口_拓海_県岐阜商_岐阜県",
+          "早見_和喜_県岐阜商_岐阜県"
+        ]
+      },
+      "historicalBest": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "樋口_拓海_県岐阜商_岐阜県",
+          "早見_和喜_県岐阜商_岐阜県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "県岐阜商",
+        "teamId": "kengifushou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 12,
+  "topPlayers": [
+    {
+      "id": "早見_和喜_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "樋口_生真_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "廣岡_航輝_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "林_大嘉_県岐阜商_岐阜",
+      "appearances": 1
+    },
+    {
+      "id": "早見_和喜_県岐阜商_岐阜",
+      "appearances": 1
+    }
+  ]
+}

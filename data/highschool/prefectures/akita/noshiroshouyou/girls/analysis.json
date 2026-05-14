@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "能代松陽",
+        "teamId": "noshiroshouyou",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "島田_栞里_能代松陽_秋田県",
+          "細川_柊_能代松陽_秋田県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "島田_栞里_能代松陽_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "細川_柊_能代松陽_秋田県",
+      "appearances": 1
+    }
+  ]
+}

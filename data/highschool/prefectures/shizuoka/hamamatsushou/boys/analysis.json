@@ -1,0 +1,82 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 3,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "伊藤_吟時_浜松商_静岡県",
+          "町田_宙太_浜松商_静岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "鈴木_駿_浜松商_静岡県",
+          "山田_湊_浜松商_静岡県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "鈴木_駿_浜松商_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "山田_湊_浜松商_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "伊藤_吟時_浜松商_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "町田_宙太_浜松商_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "田垣_創羅_浜松商_静岡県",
+      "appearances": 1
+    }
+  ]
+}

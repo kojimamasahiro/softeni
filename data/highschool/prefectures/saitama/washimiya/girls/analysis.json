@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鷲宮",
+        "teamId": "washimiya",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "遠井_凪紗_鷲宮_埼玉県",
+          "菊島_綾乃_鷲宮_埼玉県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "遠井_凪紗_鷲宮_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "菊島_綾乃_鷲宮_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

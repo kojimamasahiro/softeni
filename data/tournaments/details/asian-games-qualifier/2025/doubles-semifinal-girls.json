@@ -1,0 +1,178 @@
+{
+  "participants": [
+    {"id":"左近_知美_日本体育大学_日本学連","lastName":"左近","firstName":"知美","team":"日本体育大学","prefecture":"日本学連"},
+    {"id":"宮前_希帆_ワタキューセイモア_京都府","lastName":"宮前","firstName":"希帆","team":"ワタキューセイモア","prefecture":"京都府"},
+    {"id":"浪岡_菜々美_ナガセケンコー_東京都","lastName":"浪岡","firstName":"菜々美","team":"ナガセケンコー","prefecture":"東京都"},
+    {"id":"長谷川_憂華_ワタキューセイモア_京都府","lastName":"長谷川","firstName":"憂華","team":"ワタキューセイモア","prefecture":"京都府"},
+    {"id":"前川_愛生_広島翔洋高校_日本連盟県","lastName":"前川","firstName":"愛生","team":"広島翔洋高校","prefecture":"日本連盟県"},
+    {"id":"岩倉_彩佳_どんぐり北広島_広島県","lastName":"岩倉","firstName":"彩佳","team":"どんぐり北広島","prefecture":"広島県"},
+    {"id":"天間_麗奈_東北高校_宮城県","lastName":"天間","firstName":"麗奈","team":"東北高校","prefecture":"宮城県"},
+    {"id":"前田_梨緒_明治大学_日本学連","lastName":"前田","firstName":"梨緒","team":"明治大学","prefecture":"日本学連"}
+  ],
+  "entries": [
+    {"entryNo":1,"playerIds":["宮前_希帆_ワタキューセイモア_京都府"],"type":null},
+    {"entryNo":11,"playerIds":["左近_知美_日本体育大学_日本学連"],"type":null},
+    {"entryNo":14,"playerIds":["浪岡_菜々美_ナガセケンコー_東京都"],"type":null},
+    {"entryNo":23,"playerIds":["長谷川_憂華_ワタキューセイモア_京都府"],"type":null},
+    {"entryNo":27,"playerIds":["岩倉_彩佳_どんぐり北広島_広島県"],"type":null},
+    {"entryNo":37,"playerIds":["前川_愛生_広島翔洋高校_日本連盟県"],"type":null},
+    {"entryNo":43,"playerIds":["天間_麗奈_東北高校_宮城県"],"type":null},
+    {"entryNo":46,"playerIds":["前田_梨緒_明治大学_日本学連"],"type":null}
+  ],
+  "matches": [
+    {
+      "entries": [1,11],
+      "scores": {"1":4,"11":1},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": 1,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-1"
+    },
+    {
+      "entries": [1,14],
+      "scores": {"1":4,"14":3},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": 1,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-2"
+    },
+    {
+      "entries": [1,23],
+      "scores": {"1":4,"23":1},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": 1,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-3"
+    },
+    {
+      "entries": [11,14],
+      "scores": {"11":4,"14":3},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": 11,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-4"
+    },
+    {
+      "entries": [11,23],
+      "scores": {"11":3,"23":4},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": 23,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-5"
+    },
+    {
+      "entries": [14,23],
+      "scores": {"14":4,"23":3},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": 14,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-6"
+    },
+    {
+      "entries": [27,37],
+      "scores": {"27":4,"37":3},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 27,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-7"
+    },
+    {
+      "entries": [27,43],
+      "scores": {"27":3,"43":4},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 43,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-8"
+    },
+    {
+      "entries": [27,46],
+      "scores": {"27":4,"46":1},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 27,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-9"
+    },
+    {
+      "entries": [37,43],
+      "scores": {"37":1,"43":4},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 43,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-10"
+    },
+    {
+      "entries": [37,46],
+      "scores": {"37":0,"46":4},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 46,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-11"
+    },
+    {
+      "entries": [43,46],
+      "scores": {"43":3,"46":4},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 46,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-12"
+    }
+  ],
+  "results": [
+    {"entryNo":1,"tournament":null,"roundrobin":{"group":"A","rank":1}},
+    {"entryNo":11,"tournament":null,"roundrobin":{"group":"A","rank":3}},
+    {"entryNo":14,"tournament":null,"roundrobin":{"group":"A","rank":2}},
+    {"entryNo":23,"tournament":null,"roundrobin":{"group":"A","rank":4}},
+    {"entryNo":27,"tournament":null,"roundrobin":{"group":"B","rank":1}},
+    {"entryNo":37,"tournament":null,"roundrobin":{"group":"B","rank":4}},
+    {"entryNo":43,"tournament":null,"roundrobin":{"group":"B","rank":2}},
+    {"entryNo":46,"tournament":null,"roundrobin":{"group":"B","rank":3}}
+  ]
+}

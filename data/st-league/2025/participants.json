@@ -1,0 +1,200 @@
+{
+    "boys": [
+        {
+            "teamId": "ntt-west",
+            "name": ["NTT西日本ブルーグランツ", "NTT西日本", "ＮＴＴ西日本"],
+            "players": [
+                { "lastName": "上松", "firstName": "俊貴", "id": 1 },
+                { "lastName": "内田", "firstName": "理久", "id": 2 },
+                { "lastName": "矢野", "firstName": "颯人", "id": 3 },
+                { "lastName": "広岡", "firstName": "宙", "id": 4 },
+                { "lastName": "長江", "firstName": "光一", "id": 5 },
+                { "lastName": "林", "firstName": "佑太郎", "id": 6 },
+                { "lastName": "内本", "firstName": "隆文", "id": 7 },
+                { "lastName": "本倉", "firstName": "健太郎", "id": 8 }
+            ]
+        },
+        {
+            "teamId": "yonex",
+            "name": ["ヨネックス", "YONEX"],
+            "players": [
+                { "lastName": "船水", "firstName": "颯人", "id": 9 },
+                { "lastName": "高月", "firstName": "拓磨", "id": 10 },
+                { "lastName": "米川", "firstName": "結翔", "id": 11 },
+                { "lastName": "伊藤", "firstName": "幹", "id": 12 },
+                { "lastName": "荒木", "firstName": "駿", "id": 13 },
+                { "lastName": "榊原", "firstName": "耕平", "id": 14 },
+                { "lastName": "米澤", "firstName": "要", "id": 91 }
+            ]
+        },
+        {
+            "teamId": "tokyo-gas",
+            "name": ["東京ガス"],
+            "players": [
+                { "lastName": "遠藤", "firstName": "陸斗", "id": 15 },
+                { "lastName": "松本", "firstName": "倫旺", "id": 16 },
+                { "lastName": "中村", "firstName": "日紀", "id": 17 },
+                { "lastName": "掛川", "firstName": "巧大", "id": 18 },
+                { "lastName": "松橋", "firstName": "嘉依", "id": 19 },
+                { "lastName": "中平", "firstName": "慎吾", "id": 20 },
+                { "lastName": "山下", "firstName": "真央", "id": 94 },
+                { "lastName": "高田", "firstName": "颯太", "id": 95 }
+            ]
+        },
+        {
+            "teamId": "pacific-ind",
+            "name": ["太平洋工業"],
+            "players": [
+                { "lastName": "濱田", "firstName": "祐", "id": 21 },
+                { "lastName": "安井", "firstName": "梧透", "id": 22 },
+                { "lastName": "立木", "firstName": "雅也", "id": 23 },
+                { "lastName": "野田", "firstName": "太陽", "id": 24 },
+                { "lastName": "加藤", "firstName": "英雄", "id": 25 },
+                { "lastName": "齋藤", "firstName": "龍二", "id": 26 }
+            ]
+        },
+        {
+            "teamId": "watakyu",
+            "name": ["ワタキューセイモア"],
+            "players": [
+                { "lastName": "阪本", "firstName": "隆", "id": 27 },
+                { "lastName": "星野", "firstName": "雄慈", "id": 28 },
+                { "lastName": "金山", "firstName": "勇波", "id": 29 },
+                { "lastName": "川﨑", "firstName": "浩希", "id": 30 },
+                { "lastName": "池口", "firstName": "季将", "id": 31 },
+                { "lastName": "松本", "firstName": "炎", "id": 90 }
+            ]
+        },
+        {
+            "teamId": "tohogas",
+            "name": ["東邦ガス"],
+            "players": [
+                { "lastName": "足利", "firstName": "颯太", "id": 32 },
+                { "lastName": "佐渡", "firstName": "宝来", "id": 33 },
+                { "lastName": "大友", "firstName": "駿", "id": 34 },
+                { "lastName": "仲川", "firstName": "晴智", "id": 35 },
+                { "lastName": "安藤", "firstName": "優作", "id": 36 },
+                { "lastName": "安藤", "firstName": "圭祐", "id": 37 },
+                { "lastName": "小原", "firstName": "雅也", "id": 92 },
+                { "lastName": "鈴木", "firstName": "優作", "id": 93 }
+            ]
+        },
+        {
+            "teamId": "fukui",
+            "name": ["福井県庁"],
+            "players": [
+                { "lastName": "中本", "firstName": "圭哉", "id": 38 },
+                { "lastName": "阿部", "firstName": "智貴", "id": 39 },
+                { "lastName": "三崎", "firstName": "光太郎", "id": 40 },
+                { "lastName": "品川", "firstName": "貴紀", "id": 41 },
+                { "lastName": "早川", "firstName": "和宏", "id": 42 },
+                { "lastName": "橋谷", "firstName": "和樹", "id": 43 }
+            ]
+        },
+        {
+            "teamId": "akim",
+            "name": ["アキム"],
+            "players": [
+                { "lastName": "黒須", "firstName": "柾暉", "id": 44 },
+                { "lastName": "佐藤", "firstName": "大和", "id": 45 },
+                { "lastName": "西本", "firstName": "一雅", "id": 46 },
+                { "lastName": "國松", "firstName": "貴洋", "id": 47 },
+                { "lastName": "福田", "firstName": "成海", "id": 48 },
+                { "lastName": "大村", "firstName": "圭志朗", "id": 49 },
+                { "lastName": "平野", "firstName": "翔虎", "id": 89 },
+                { "lastName": "近藤", "firstName": "昴", "id": 96 }
+            ]
+        }
+    ],
+    "girls": [
+        {
+            "teamId": "nagase",
+            "name": ["ナガセケンコー"],
+            "players": [
+                { "lastName": "箱崎", "firstName": "愁里", "id": 50 },
+                { "lastName": "久保", "firstName": "晴華", "id": 51 },
+                { "lastName": "浪岡", "firstName": "菜々美", "id": 52 },
+                { "lastName": "上野", "firstName": "小町", "id": 53 },
+                { "lastName": "藤城", "firstName": "みちる", "id": 54 },
+                { "lastName": "木原", "firstName": "那菜", "id": 55 },
+                { "lastName": "木原", "firstName": "恵菜", "id": 56 }
+            ]
+        },
+        {
+            "teamId": "watakyu",
+            "name": ["ワタキューセイモア"],
+            "players": [
+                { "lastName": "原口", "firstName": "美咲", "id": 57 },
+                { "lastName": "村上", "firstName": "亜優", "id": 58 },
+                { "lastName": "長谷川", "firstName": "憂華", "id": 59 },
+                { "lastName": "福田", "firstName": "麗優", "id": 60 },
+                { "lastName": "宮前", "firstName": "希帆", "id": 61 }
+            ]
+        },
+        {
+            "teamId": "toshiba",
+            "name": ["東芝姫路", "TOSHIBA"],
+            "players": [
+                { "lastName": "宮原", "firstName": "あかり", "id": 62 },
+                { "lastName": "根岸", "firstName": "楓英奈", "id": 63 },
+                { "lastName": "佐藤", "firstName": "日香莉", "id": 64 },
+                { "lastName": "椎名", "firstName": "萌花", "id": 65 },
+                { "lastName": "岡野", "firstName": "若奈", "id": 66 },
+                { "lastName": "高本", "firstName": "來実", "id": 101 }
+            ]
+        },
+        {
+            "teamId": "admatechs",
+            "name": ["アドマテックススフィアーズ", "アドマテックス"],
+            "players": [
+                { "lastName": "庄司", "firstName": "琴里", "id": 67 },
+                { "lastName": "原", "firstName": "千晴", "id": 68 },
+                { "lastName": "那須", "firstName": "暁帆", "id": 69 },
+                { "lastName": "浅見", "firstName": "今日子", "id": 70 },
+                { "lastName": "坂本", "firstName": "茉梨乃", "id": 71 },
+                { "lastName": "澤井", "firstName": "友杏", "id": 103 },
+                { "lastName": "瀬戸口", "firstName": "快", "id": 104 }
+            ]
+        },
+        {
+            "teamId": "akim",
+            "name": ["アキム"],
+            "players": [
+                { "lastName": "小野", "firstName": "夏海", "id": 72 },
+                { "lastName": "吉野", "firstName": "南美", "id": 73 },
+                { "lastName": "田場", "firstName": "遥花", "id": 74 },
+                { "lastName": "久保田", "firstName": "茜", "id": 75 },
+                { "lastName": "田中", "firstName": "瑠奈", "id": 76 },
+                { "lastName": "久田", "firstName": "真由", "id": 97 }
+            ]
+        },
+        {
+            "teamId": "dunlop",
+            "name": ["ダンロップ"],
+            "players": [
+                { "lastName": "小川", "firstName": "木乃花", "id": 77 },
+                { "lastName": "清水", "firstName": "麻美", "id": 78 },
+                { "lastName": "近藤", "firstName": "明日咲", "id": 79 },
+                { "lastName": "小松﨑", "firstName": "茉代", "id": 80 },
+                { "lastName": "縄田", "firstName": "愛実", "id": 81 },
+                { "lastName": "佐藤", "firstName": "あいり", "id": 99 },
+                { "lastName": "前本", "firstName": "真弥", "id": 100 },
+                { "lastName": "高濱", "firstName": "美厘", "id": 102 }
+            ]
+        },
+        {
+            "teamId": "yonex",
+            "name": ["ヨネックス", "YONEX"],
+            "players": [
+                { "lastName": "大友", "firstName": "紅実", "id": 82 },
+                { "lastName": "吉田", "firstName": "澪奈", "id": 83 },
+                { "lastName": "片野", "firstName": "理音", "id": 84 },
+                { "lastName": "赤川", "firstName": "友里奈", "id": 85 },
+                { "lastName": "白﨑", "firstName": "ひかる", "id": 86 },
+                { "lastName": "小林", "firstName": "愛美", "id": 87 },
+                { "lastName": "杉本", "firstName": "希", "id": 88 },
+                { "lastName": "小松", "firstName": "芹奈", "id": 98 }
+            ]
+        }
+    ]
+}

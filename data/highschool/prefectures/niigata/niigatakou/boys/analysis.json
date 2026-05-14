@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "新潟工",
+        "teamId": "niigatakou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "金子_陸斗_新潟工_新潟県",
+          "古俣_琉聖_新潟工_新潟県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "金子_陸斗_新潟工_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "古俣_琉聖_新潟工_新潟県",
+      "appearances": 1
+    }
+  ]
+}

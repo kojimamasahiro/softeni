@@ -1,0 +1,109 @@
+{
+  "totalAppearances": 8,
+  "byCategory": {
+    "doubles": 6,
+    "singles": 1,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "宇都宮工",
+        "teamId": "utsunomiyakou",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "保利_彰大_宇都宮工_栃木県"
+        ]
+      },
+      "historicalBest": {
+        "team": "宇都宮工",
+        "teamId": "utsunomiyakou",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "保利_彰大_宇都宮工_栃木県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "宇都宮工",
+        "teamId": "utsunomiyakou",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "金原_遥人_宇都宮工_栃木県",
+          "野口_椋平_宇都宮工_栃木県"
+        ]
+      },
+      "historicalBest": {
+        "team": "宇都宮工",
+        "teamId": "utsunomiyakou",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "斎藤_隼羽_宇都宮工_栃木県",
+          "野口_椋平_宇都宮工_栃木県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宇都宮工",
+        "teamId": "utsunomiyakou",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "野口_椋平_宇都宮工_栃木県",
+      "appearances": 3
+    },
+    {
+      "id": "金原_遥人_宇都宮工_栃木県",
+      "appearances": 2
+    },
+    {
+      "id": "保利_彰大_宇都宮工_栃木県",
+      "appearances": 2
+    },
+    {
+      "id": "保利_彰大_宇都宮工_栃木",
+      "appearances": 1
+    },
+    {
+      "id": "星_克尚_宇都宮工_栃木",
+      "appearances": 1
+    }
+  ]
+}

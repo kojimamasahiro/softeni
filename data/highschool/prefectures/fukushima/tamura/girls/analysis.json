@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "田村",
+        "teamId": "tamura",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "門馬_椿姫_田村_福島県",
+          "菊池_凜子_田村_福島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "田村",
+        "teamId": "tamura",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "先﨑_琉那_田村_福島県",
+          "佐野_綾音_田村_福島県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 5,
+  "topPlayers": [
+    {
+      "id": "先﨑_琉那_田村_福島県",
+      "appearances": 2
+    },
+    {
+      "id": "門馬_椿姫_田村_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "菊池_凜子_田村_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "佐野_綾音_田村_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "ﾐﾋﾆｬｯｸ_杏菜_田村_福島県",
+      "appearances": 1
+    }
+  ]
+}

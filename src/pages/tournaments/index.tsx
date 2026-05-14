@@ -8,211 +8,84 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import TournamentSearchTable, {
+  TournamentInstance,
+  TournamentLevel,
+} from '@/components/tournaments/TournamentSearchTable';
 
-type GenerationKey =
-  | 'international-qualifier'
-  | 'all'
-  | 'corporate'
-  | 'university'
-  | 'highschool'
-  | 'junior'
-  | 'open'
-  | 'masters'
-  | string;
-
-type CategoryLink = {
-  year: number;
-  gameCategory: string;
-  ageCategory: string;
-  gender: string;
-  categoryLabel: string;
-  isCurrent?: boolean;
+// ─── 型定義（ビルド専用） ──────────────────────────────────────────────────
+type TournamentIndex = {
+  tournamentId: string;
+  generationId: string;
+  label: string;
+  isMajorTitle: boolean;
+  officialUrl: string;
 };
 
-type YearGroup = {
-  year: number;
-  links: CategoryLink[];
+type LocalTournamentIndex = TournamentIndex & {
+  federationId: string;
+  areaId?: TournamentLevel;
 };
 
-type TournamentBlock = {
-  id: string;
-  name: string;
-  sortId: number;
-  generation: GenerationKey;
-  groups: YearGroup[];
-};
-
-type Props = {
-  tournamentsByGeneration: Record<GenerationKey, TournamentBlock[]>;
-};
-
-// ====== ラベル辞書（フォールバック用）======
-const GAME_LABEL: Record<string, string> = {
-  singles: 'シングルス',
-  doubles: 'ダブルス',
-  team: '団体戦',
-  versus: '対抗戦',
-};
-
-const GENDER_LABEL: Record<string, string> = {
-  boys: '男子',
-  girls: '女子',
-  men: '男子',
-  women: '女子',
-  mixed: 'ミックス',
-};
-
-const AGE_LABEL: Record<string, string> = {
-  none: '',
-  general: '',
-  u12: 'U12',
-  u14: 'U14',
-  u15: 'U15',
-  u18: 'U18',
-  u22: 'U22',
-};
-
-// ====== 共通ユーティリティ ======
-function toCategoryLabel(
-  gameCategory: string,
-  ageCategory: string,
-  gender: string,
-) {
-  const game = GAME_LABEL[gameCategory] ?? gameCategory;
-  const age =
-    AGE_LABEL[ageCategory] ??
-    (ageCategory && ageCategory !== 'none' ? ageCategory : '');
-  const gen = GENDER_LABEL[gender] ?? gender;
-  return [game, age, gen].filter(Boolean).join(' / ');
-}
-
-function isYearDir(name: string, dir: string) {
-  return (
-    /^\d{4}$/.test(name) && fs.statSync(path.join(dir, name)).isDirectory()
-  );
-}
-
-function readJSONSafe(p: string) {
-  try {
-    return JSON.parse(fs.readFileSync(p, 'utf-8'));
-  } catch {
-    return null;
-  }
-}
-
-// === categories.json の読み込み ===
-type CategoryDef = {
-  id: string; // 例: "doubles-none-boys"
+type InfoCategory = {
+  categoryId: string;
   label: string;
   category: string;
   gender: string;
   age: string;
 };
 
-function readCategoryLabelMap(yearDir: string): Record<string, string> {
-  const catPath = path.join(yearDir, 'categories.json');
-  if (!fs.existsSync(catPath)) return {};
+type TournamentInfo = {
+  year: number;
+  location: string;
+  startDate: string;
+  endDate: string;
+  label?: string;
+  sourceUrl?: string;
+  categories: InfoCategory[];
+};
+
+type Props = {
+  instances: TournamentInstance[];
+  prefectures: { id: string; name: string }[];
+  years: number[];
+  generations: { id: string; label: string }[];
+};
+
+// ─── ユーティリティ ───────────────────────────────────────────────────────
+function readJSONSafe<T>(p: string): T | null {
   try {
-    const arr = JSON.parse(fs.readFileSync(catPath, 'utf-8')) as CategoryDef[];
-    const map: Record<string, string> = {};
-    for (const c of arr) {
-      map[c.id] = c.label;
-    }
-    return map;
+    return JSON.parse(fs.readFileSync(p, 'utf-8')) as T;
   } catch {
-    return {};
+    return null;
   }
 }
 
-// ====== 年度ごとのカテゴリリンク収集 ======
-function collectCategoryLinks(
-  baseDir: string,
-  generation: GenerationKey,
-  tournamentId: string,
-  year: number,
-): CategoryLink[] {
-  const resultsDir = path.join(baseDir, String(year), 'results');
-  if (!fs.existsSync(resultsDir) || !fs.statSync(resultsDir).isDirectory())
-    return [];
-
-  // ★ 年度ごとの categories.json を読み込み
-  const labelMap = readCategoryLabelMap(path.join(baseDir, String(year)));
-
-  const files = fs.readdirSync(resultsDir).filter((f) => f.endsWith('.json'));
-  const links: CategoryLink[] = [];
-
-  for (const file of files) {
-    const m = /^([a-z0-9-]+)-([a-z0-9-]+)-([a-z0-9-]+)\.json$/i.exec(file);
-    if (!m) continue;
-    const [, gameCategory, ageCategory, gender] = m;
-
-    const full = path.join(resultsDir, file);
-    const data = readJSONSafe(full);
-    if (data && typeof data === 'object' && 'status' in data) {
-      if (data.status !== 'completed') continue;
-    }
-
-    // id を直接キーにしてラベルを探す
-    const idKey = `${gameCategory}-${ageCategory}-${gender}`;
-    const mapped =
-      labelMap[idKey] ?? toCategoryLabel(gameCategory, ageCategory, gender);
-
-    links.push({
-      year,
-      gameCategory,
-      ageCategory,
-      gender,
-      categoryLabel: mapped,
-      isCurrent: false,
-    });
-  }
-
-  links.sort((a, b) => {
-    const al = a.categoryLabel.localeCompare(b.categoryLabel, 'ja');
-    if (al !== 0) return al;
-    if (a.gender !== b.gender) return a.gender.localeCompare(b.gender, 'en');
-    return a.ageCategory.localeCompare(b.ageCategory, 'en');
-  });
-
-  return links;
+/** tournamentId から level を推定する */
+function inferLevel(tournamentId: string, isLocal: boolean): TournamentLevel {
+  if (isLocal) return 'prefecture';
+  if (tournamentId.startsWith('east-') || tournamentId.startsWith('west-'))
+    return 'block';
+  return 'national';
 }
 
-// ====== ページコンポーネント ======
-export default function TournamentListPage({ tournamentsByGeneration }: Props) {
-  const pageUrl = `https://softeni-pick.com/tournaments`;
-
-  const generationOrder = [
-    'international-qualifier',
-    'all',
-    'corporate',
-    'university',
-    'highschool',
-    'junior',
-    'masters',
-    'open',
-  ] as GenerationKey[];
-
-  const generationTitle = (gen: GenerationKey) => {
-    if (gen === 'corporate') return '実業団・社会人カテゴリ';
-    if (gen === 'highschool') return '高校カテゴリ';
-    if (gen === 'university') return '大学カテゴリ';
-    if (gen === 'junior') return 'ジュニアカテゴリ';
-    if (gen === 'open') return 'オープンカテゴリ';
-    if (gen === 'all') return '総合カテゴリ';
-    if (gen === 'international-qualifier') return '国際予選カテゴリ';
-    if (gen === 'masters') return 'シニアカテゴリ';
-    return String(gen);
-  };
+// ─── ページコンポーネント ──────────────────────────────────────────────────
+export default function TournamentsIndexPage({
+  instances,
+  prefectures,
+  years,
+  generations,
+}: Props) {
+  const pageUrl = 'https://softeni-pick.com/tournaments';
 
   return (
     <>
       <MetaHead
-        title={'大会結果一覧 | ソフトテニス情報'}
-        description={`過去の大会結果・試合成績を掲載`}
+        title="大会一覧 | ソフトテニス情報 Softeni Pick"
+        description="ソフトテニスの大会を年・カテゴリ・地域で絞り込み検索できます。全国大会からブロック・都道府県大会まで網羅。"
         url={pageUrl}
         type="article"
       />
-
       <Head>
         <script
           type="application/ld+json"
@@ -220,14 +93,15 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: `大会結果一覧`,
+              headline: '大会一覧',
               author: { '@type': 'Person', name: 'Softeni Pick' },
               publisher: { '@type': 'Organization', name: 'Softeni Pick' },
               datePublished: new Date().toISOString().split('T')[0],
               dateModified: new Date().toISOString().split('T')[0],
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-              description: `過去の大会結果・試合成績を掲載`,
+              description:
+                'ソフトテニスの大会を年・カテゴリ・地域で絞り込み検索できます。',
             }),
           }}
         />
@@ -247,7 +121,7 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: `大会結果一覧`,
+                  name: '大会一覧',
                   item: pageUrl,
                 },
               ],
@@ -257,179 +131,200 @@ export default function TournamentListPage({ tournamentsByGeneration }: Props) {
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Breadcrumbs
             crumbs={[
               { label: 'ホーム', href: '/' },
-              { label: '大会結果一覧', href: '/tournaments' },
+              { label: '大会一覧', href: '/tournaments' },
             ]}
           />
 
-          <section className="mb-10">
-            <h1 className="text-2xl font-bold mb-4">
-              大会一覧 | ソフトテニス主要大会
-            </h1>
-            <p className="text-lg leading-relaxed mb-4">
-              こちらは、Softeni
-              Pickが収録しているソフトテニスの大会一覧ページです。
-              主要な全日本大会をはじめ、インターハイ・選抜、ジュニアなども整理して掲載していきます。
-            </p>
-            <p className="text-lg leading-relaxed">
-              各大会のページでは、年度ごとの出場選手や試合結果、所属別の記録などを確認できます。
-              下記から世代（カテゴリ）ごとにご覧いただけます。
-            </p>
-            <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <h2 className="text-lg font-semibold mb-2 text-amber-800 dark:text-amber-200">
-                🧪 ベータ機能（試作版）
-              </h2>
-              <p className="text-xs text-amber-600 dark:text-amber-300 mb-3">
-                新しい機能を試験的に公開しています。開発中のため予告なく変更される可能性があります。
-              </p>
-              <Link href="/beta">
-                <div className="flex items-center justify-between p-3 bg-amber-100 dark:bg-amber-800/30 rounded-lg hover:bg-amber-200 dark:hover:bg-amber-700/40 transition-colors cursor-pointer border border-amber-200 dark:border-amber-700">
-                  <div className="flex items-center">
-                    <span className="text-amber-700 dark:text-amber-400 font-medium">
-                      🧪 ベータ機能を試す
-                    </span>
-                    <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                      - 同姓同名選手検索などの新機能
-                    </span>
-                  </div>
-                  <span className="text-amber-600 dark:text-amber-400 text-sm">
-                    →
-                  </span>
-                </div>
-              </Link>
-            </div>
-          </section>
+          <h1 className="text-2xl font-bold mb-6">大会一覧</h1>
 
-          {generationOrder
-            .filter((g) => tournamentsByGeneration[g]?.length)
-            .map((gen) => (
-              <section key={gen} className="mb-12">
-                <h2 className="text-xl font-semibold mb-6">
-                  {generationTitle(gen)}
-                </h2>
+          <div className="flex gap-3 mb-6">
+            <Link
+              href="/tournaments/major"
+              className="flex-1 flex flex-col items-center gap-1 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors"
+            >
+              <span className="text-lg">🏆</span>
+              <span className="font-semibold text-sm text-yellow-800 dark:text-yellow-200">
+                主要大会結果
+              </span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                全国・ブロック大会
+              </span>
+            </Link>
+            <Link
+              href="/tournaments/local"
+              className="flex-1 flex flex-col items-center gap-1 p-4 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors"
+            >
+              <span className="text-lg">📍</span>
+              <span className="font-semibold text-sm text-green-800 dark:text-green-200">
+                地域大会結果
+              </span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                都道府県・地域連盟大会
+              </span>
+            </Link>
+          </div>
 
-                <div className="space-y-8">
-                  {tournamentsByGeneration[gen]
-                    .sort((a, b) => a.sortId - b.sortId)
-                    .map((t) => (
-                      <div
-                        key={`${gen}-${t.id}`}
-                        className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow"
-                      >
-                        <h3 className="text-lg font-semibold mb-4 border-b text-gray-800 dark:text-white">
-                          {t.name}
-                        </h3>
-
-                        {/* 年ごとにカテゴリチップを並べる */}
-                        {t.groups
-                          .sort((a, b) => b.year - a.year)
-                          .map((group) => (
-                            <div
-                              className="mb-4"
-                              key={`${gen}-${t.id}-${group.year}`}
-                            >
-                              <h4 className="text-md mb-2">{group.year}年</h4>
-                              <ul className="flex flex-wrap gap-2">
-                                {group.links.map((link) => (
-                                  <li
-                                    key={`${gen}-${t.id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
-                                  >
-                                    <Link
-                                      href={`/tournaments/${gen}/${t.id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
-                                    >
-                                      <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                                        {link.categoryLabel}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                      </div>
-                    ))}
-                </div>
-              </section>
-            ))}
+          <TournamentSearchTable
+            instances={instances}
+            prefectures={prefectures}
+            years={years}
+            generations={generations}
+          />
         </div>
       </main>
     </>
   );
 }
 
-// ====== 生成時処理 ======
+// ─── データ取得 ───────────────────────────────────────────────────────────
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  // 新Path構成に合わせたルート（必要なら 'data/tournaments' に変更）
-  const tournamentsRoot = path.join(process.cwd(), 'data', 'tournaments');
-  if (!fs.existsSync(tournamentsRoot)) {
-    return {
-      props: {
-        tournamentsByGeneration: {} as Record<GenerationKey, TournamentBlock[]>,
-      },
-    };
+  const dataRoot = path.join(process.cwd(), 'data');
+  const tournamentRoot = path.join(dataRoot, 'tournaments');
+
+  const generationsPath = path.join(tournamentRoot, 'genarations.json');
+  const indexPath = path.join(tournamentRoot, 'index.json');
+  const localIndexPath = path.join(tournamentRoot, 'local_index.json');
+  const informationDir = path.join(tournamentRoot, 'information');
+  const detailsDir = path.join(tournamentRoot, 'details');
+  const prefecturesPath = path.join(dataRoot, 'prefectures.json');
+
+  // ── マスターデータ読み込み ──
+  const rawGenerations =
+    readJSONSafe<{ generationId: string; label: string }[]>(generationsPath) ??
+    [];
+  const genLabelMap = Object.fromEntries(
+    rawGenerations.map((g) => [g.generationId, g.label]),
+  );
+  const generations = rawGenerations.map((g) => ({
+    id: g.generationId,
+    label: g.label,
+  }));
+
+  const mainTournaments = readJSONSafe<TournamentIndex[]>(indexPath) ?? [];
+  const localTournaments =
+    readJSONSafe<LocalTournamentIndex[]>(localIndexPath) ?? [];
+
+  const rawPrefectures =
+    readJSONSafe<{ id: string; name: string; region: string }[]>(
+      prefecturesPath,
+    ) ?? [];
+  const prefectures = rawPrefectures.map((p) => ({ id: p.id, name: p.name }));
+
+  // location 文字列 → prefectureId 逆引きマップ
+  const prefNameToId: Record<string, string> = {};
+  for (const p of rawPrefectures) {
+    prefNameToId[p.name] = p.id;
   }
 
-  const generations = fs
-    .readdirSync(tournamentsRoot)
-    .filter((g) => fs.statSync(path.join(tournamentsRoot, g)).isDirectory());
+  const instances: TournamentInstance[] = [];
 
-  const tournamentsByGeneration: Record<GenerationKey, TournamentBlock[]> =
-    {} as Record<GenerationKey, TournamentBlock[]>;
+  // ── 全国・ブロック大会 ──
+  for (const t of mainTournaments) {
+    const infoPath = path.join(informationDir, `${t.tournamentId}.json`);
+    const infos = readJSONSafe<TournamentInfo[]>(infoPath);
+    if (!infos) continue;
 
-  for (const generation of generations) {
-    const genDir = path.join(tournamentsRoot, generation);
-    const tournamentIds = fs
-      .readdirSync(genDir)
-      .filter((tid) => fs.statSync(path.join(genDir, tid)).isDirectory());
+    const level = inferLevel(t.tournamentId, false);
 
-    const blocks: TournamentBlock[] = [];
+    for (const info of infos) {
+      const detailDir = path.join(
+        detailsDir,
+        t.tournamentId,
+        String(info.year),
+      );
+      const hasInternalResult =
+        fs.existsSync(detailDir) &&
+        fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
 
-    for (const tournamentId of tournamentIds) {
-      const tDir = path.join(genDir, tournamentId);
-      const metaPath = path.join(tDir, 'meta.json');
-      if (!fs.existsSync(metaPath)) continue;
-
-      const meta = readJSONSafe(metaPath) ?? {};
-      const yearDirs = fs
-        .readdirSync(tDir)
-        .filter((name) => isYearDir(name, tDir));
-
-      const groups: YearGroup[] = [];
-      for (const y of yearDirs) {
-        const year = parseInt(y, 10);
-        const links = collectCategoryLinks(
-          tDir,
-          generation as GenerationKey,
-          tournamentId,
-          year,
-        );
-        if (links.length > 0) {
-          groups.push({ year, links });
+      let firstCategoryPath: string | null = null;
+      for (const cat of info.categories) {
+        const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
+        if (fs.existsSync(detailPath)) {
+          firstCategoryPath = `/tournaments/${t.generationId}/${t.tournamentId}/${info.year}/${cat.category}/${cat.age}/${cat.gender}`;
+          break;
         }
       }
 
-      if (groups.length === 0) continue;
-
-      blocks.push({
-        id: tournamentId,
-        name: meta.name || tournamentId,
-        sortId: meta.sortId ?? 9999,
-        generation: generation as GenerationKey,
-        groups,
+      instances.push({
+        tournamentId: t.tournamentId,
+        generation: t.generationId,
+        generationLabel: genLabelMap[t.generationId] ?? t.generationId,
+        year: info.year,
+        label: info.label ?? t.label,
+        startDate: info.startDate,
+        endDate: info.endDate,
+        location: info.location,
+        prefectureId: prefNameToId[info.location] ?? null,
+        level,
+        categoryLabels: info.categories.map((c) => c.label),
+        hasInternalResult,
+        officialUrl: info.sourceUrl ?? t.officialUrl,
+        firstCategoryPath,
       });
-    }
-
-    if (blocks.length) {
-      tournamentsByGeneration[generation as GenerationKey] = blocks;
     }
   }
 
+  // ── 地域大会 ──
+  for (const t of localTournaments) {
+    const infoPath = path.join(informationDir, `${t.tournamentId}.json`);
+    const infos = readJSONSafe<TournamentInfo[]>(infoPath);
+    if (!infos) continue;
+
+    const level: TournamentLevel = t.areaId
+      ? t.areaId
+      : inferLevel(t.tournamentId, true);
+
+    for (const info of infos) {
+      const detailDir = path.join(
+        detailsDir,
+        t.tournamentId,
+        String(info.year),
+      );
+      const hasInternalResult =
+        fs.existsSync(detailDir) &&
+        fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+
+      let firstCategoryPath: string | null = null;
+      for (const cat of info.categories) {
+        const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
+        if (fs.existsSync(detailPath)) {
+          firstCategoryPath = `/tournaments/${t.generationId}/${t.tournamentId}/${info.year}/${cat.category}/${cat.age}/${cat.gender}`;
+          break;
+        }
+      }
+
+      instances.push({
+        tournamentId: t.tournamentId,
+        generation: t.generationId,
+        generationLabel: genLabelMap[t.generationId] ?? t.generationId,
+        year: info.year,
+        label: info.label ?? t.label,
+        startDate: info.startDate,
+        endDate: info.endDate,
+        location: info.location,
+        prefectureId: t.federationId,
+        level,
+        categoryLabels: info.categories.map((c) => c.label),
+        hasInternalResult,
+        officialUrl: info.sourceUrl ?? t.officialUrl,
+        firstCategoryPath,
+      });
+    }
+  }
+
+  // 開催日降順
+  instances.sort((a, b) => b.startDate.localeCompare(a.startDate));
+
+  // 年リスト（降順）
+  const years = [...new Set(instances.map((i) => i.year))].sort(
+    (a, b) => b - a,
+  );
+
   return {
-    props: {
-      tournamentsByGeneration,
-    },
+    props: { instances, prefectures, years, generations },
   };
 };

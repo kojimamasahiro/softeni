@@ -1,13 +1,27 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { createServerClient } from '@/lib/supabase';
 import {
-  generateTournamentUrlFromMatch,
+  AnalysisGuideCard,
+  AnalysisReliability,
+  analyzeMatch,
+  MatchAnalysisSummary,
+  RateMetric,
+  TeamKey,
+} from '@/lib/matchAnalysis';
+import {
+  getBetaMatchById,
+  getBetaMatchesGeneratedAt,
+  getBetaTeamDisplayName,
+  getLatestBetaMatchIds,
+} from '@/lib/betaMatchesStatic';
+import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
+import {
   getTournamentInfoSSR,
   TournamentInfo,
-} from '@/lib/tournamentHelpers';
+} from '@/lib/tournamentHelpers.server';
 
 import { Game, Match, Point } from '../../../../types/database';
 
@@ -22,6 +36,8 @@ const PublicMatchDetail = ({
   tournamentInfo,
   lastUpdated,
 }: PublicMatchDetailProps) => {
+  const router = useRouter();
+
   // マッチ勝者を判定する関数を先に定義
   const getMatchWinner = useCallback(() => {
     if (!match?.games) return null;
@@ -39,19 +55,6 @@ const PublicMatchDetail = ({
     return null;
   }, [match]);
 
-  // 試合が終了していない場合のみ3分ごとに自動リロード
-  useEffect(() => {
-    // 試合が終了している場合は自動更新をオフ
-    if (getMatchWinner() !== null) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      window.location.reload();
-    }, 180000); // 180,000ms = 3分
-    return () => clearInterval(interval);
-  }, [match, getMatchWinner]);
-
   // エキスパンド状態管理（最新ゲームのみ展開）
   const [expandedGames, setExpandedGames] = useState<Set<number>>(
     new Set(
@@ -60,6 +63,17 @@ const PublicMatchDetail = ({
         : [],
     ),
   );
+  const [analysisTab, setAnalysisTab] = useState<'neutral' | 'team'>('neutral');
+  const [focusTeam, setFocusTeam] = useState<TeamKey>('A');
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    const queryTeam = router.query.focusTeam;
+    if (queryTeam === 'A' || queryTeam === 'B') {
+      setFocusTeam(queryTeam);
+    }
+  }, [router.isReady, router.query.focusTeam]);
 
   // エキスパンドのトグル関数
   const toggleGameExpansion = (gameNumber: number) => {
@@ -74,33 +88,58 @@ const PublicMatchDetail = ({
 
   // マッチデータから完全なURLを生成
   const fullTournamentUrl = generateTournamentUrlFromMatch(match);
+  const analysisSummary = useMemo<MatchAnalysisSummary>(
+    () => analyzeMatch(match),
+    [match],
+  );
+  const gamesAsc = useMemo(
+    () =>
+      [...(match.games ?? [])].sort((a, b) => a.game_number - b.game_number),
+    [match.games],
+  );
+  const gamesDesc = useMemo(
+    () => [...gamesAsc].sort((a, b) => b.game_number - a.game_number),
+    [gamesAsc],
+  );
 
   // データベースのプレイヤー情報から苗字のみのチーム名を生成する関数
-  const getShortTeamName = (team: 'A' | 'B') => {
-    if (team === 'A') {
-      const player1LastName = match.team_a_player1_last_name;
-      const player2LastName = match.team_a_player2_last_name;
+  const getShortTeamName = (team: 'A' | 'B') =>
+    getBetaTeamDisplayName(match, team);
 
-      if (player1LastName && player2LastName) {
-        return `${player1LastName}・${player2LastName}`;
-      } else if (player1LastName) {
-        return player1LastName;
-      }
-      // フォールバック：元のチーム名を使用
-      return match.team_a || '';
-    } else {
-      const player1LastName = match.team_b_player1_last_name;
-      const player2LastName = match.team_b_player2_last_name;
-
-      if (player1LastName && player2LastName) {
-        return `${player1LastName}・${player2LastName}`;
-      } else if (player1LastName) {
-        return player1LastName;
-      }
-      // フォールバック：元のチーム名を使用
-      return match.team_b || '';
-    }
-  };
+  const teamAPlayers = useMemo(
+    () =>
+      [
+        match.team_a_player1_first_name && match.team_a_player1_last_name
+          ? `${match.team_a_player1_last_name} ${match.team_a_player1_first_name}`
+          : null,
+        match.team_a_player2_first_name && match.team_a_player2_last_name
+          ? `${match.team_a_player2_last_name} ${match.team_a_player2_first_name}`
+          : null,
+      ].filter((player): player is string => player !== null),
+    [
+      match.team_a_player1_first_name,
+      match.team_a_player1_last_name,
+      match.team_a_player2_first_name,
+      match.team_a_player2_last_name,
+    ],
+  );
+  const teamBPlayers = useMemo(
+    () =>
+      [
+        match.team_b_player1_first_name && match.team_b_player1_last_name
+          ? `${match.team_b_player1_last_name} ${match.team_b_player1_first_name}`
+          : null,
+        match.team_b_player2_first_name && match.team_b_player2_last_name
+          ? `${match.team_b_player2_last_name} ${match.team_b_player2_first_name}`
+          : null,
+      ].filter((player): player is string => player !== null),
+    [
+      match.team_b_player1_first_name,
+      match.team_b_player1_last_name,
+      match.team_b_player2_first_name,
+      match.team_b_player2_last_name,
+    ],
+  );
 
   const getResultTypeLabel = (type: string) => {
     const labels: { [key: string]: string } = {
@@ -128,6 +167,76 @@ const PublicMatchDetail = ({
     };
     return labels[type] || type;
   };
+
+  const formatRateMetric = (metric: RateMetric) => {
+    if (metric.denominator === 0 || metric.percentage === null) {
+      return '—';
+    }
+    return `${metric.percentage.toFixed(1)}% (${metric.numerator}/${metric.denominator})`;
+  };
+
+  const formatCountMetric = (
+    count: number,
+    segment?: {
+      startGameNumber: number;
+      endGameNumber: number;
+    } | null,
+  ) => {
+    if (!segment) return `${count}点`;
+    return `${count}点 (第${segment.startGameNumber}〜第${segment.endGameNumber}ゲーム)`;
+  };
+
+  const getReliabilityBadge = (reliability: AnalysisReliability) => {
+    if (reliability === 'low') {
+      return {
+        label: '参考値',
+        className: 'bg-amber-100 text-amber-700 border border-amber-200',
+      };
+    }
+    if (reliability === 'none') {
+      return {
+        label: 'データ不足',
+        className: 'bg-gray-100 text-gray-600 border border-gray-200',
+      };
+    }
+    return null;
+  };
+
+  const formatGuideDetailLabel = (label: string) => {
+    const detailLabelMap: Record<string, string> = {
+      net: 'ネット',
+      out: 'アウト',
+      smash_error: 'スマッシュミス',
+      volley_error: 'ボレーミス',
+      double_fault: 'ダブルフォルト',
+      follow_error: 'フォローミス',
+      receive_error: 'レシーブミス',
+      forced_error: 'ミス誘発',
+      unforced_error: '凡ミス',
+    };
+
+    if (label.startsWith('自チームの確認ポイント: ')) {
+      const rawType = label.replace('自チームの確認ポイント: ', '');
+      return `自チームの確認ポイント: ${detailLabelMap[rawType] || rawType}`;
+    }
+
+    return label;
+  };
+
+  const getPointsDesc = useCallback(
+    (game: Game) =>
+      [...(game.points ?? [])].sort((a, b) => b.point_number - a.point_number),
+    [],
+  );
+
+  useEffect(() => {
+    if (!analysisSummary.scoreIntegrity.ok) {
+      console.error(
+        'Match analysis score integrity mismatch:',
+        analysisSummary.scoreIntegrity.mismatches,
+      );
+    }
+  }, [analysisSummary]);
 
   // 試合全体の統計を計算する関数
   const getMatchStats = () => {
@@ -523,7 +632,7 @@ const PublicMatchDetail = ({
       {/* マッチ情報 */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h1 className="text-2xl font-bold mb-4">
-          {match.team_a} vs {match.team_b}
+          {getShortTeamName('A')} vs {getShortTeamName('B')}
         </h1>
 
         {/* 大会情報 */}
@@ -567,6 +676,460 @@ const PublicMatchDetail = ({
         )}
       </div>
 
+      <section className="mb-8">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+            <div>
+              <h2 className="text-xl font-semibold">分析</h2>
+              <p className="text-sm text-gray-500 mt-1">
+                記録済みポイントデータから算出した中立比較とチーム視点のサマリーです。
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setAnalysisTab('neutral')}
+                className={`px-4 py-2 rounded border text-sm ${
+                  analysisTab === 'neutral'
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white text-gray-700 border-gray-300'
+                }`}
+              >
+                中立比較
+              </button>
+              <button
+                onClick={() => setAnalysisTab('team')}
+                className={`px-4 py-2 rounded border text-sm ${
+                  analysisTab === 'team'
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white text-gray-700 border-gray-300'
+                }`}
+              >
+                このチーム視点
+              </button>
+            </div>
+          </div>
+
+          {!analysisSummary.scoreIntegrity.ok && (
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+              分析用に再構築したゲームスコアが既存スコアと一致しなかったため、分析表示を停止しています。
+              <ul className="mt-2 list-disc list-inside">
+                {analysisSummary.scoreIntegrity.mismatches.map((mismatch) => (
+                  <li key={mismatch.gameNumber}>
+                    第{mismatch.gameNumber}ゲーム: 既存
+                    {` ${mismatch.expected.pointsA}-${mismatch.expected.pointsB} / `}
+                    再構築
+                    {` ${mismatch.actual.pointsA}-${mismatch.actual.pointsB}`}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {analysisSummary.scoreIntegrity.ok && analysisTab === 'neutral' && (
+            <>
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-gray-200">
+                      <th className="py-2 text-left font-medium text-gray-700">
+                        指標
+                      </th>
+                      <th className="py-2 text-center font-medium text-blue-700">
+                        {getShortTeamName('A')}
+                      </th>
+                      <th className="py-2 text-center font-medium text-green-700">
+                        {getShortTeamName('B')}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        label: '1stサーブ成功率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.service
+                            .firstServeSuccessRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.service
+                            .firstServeSuccessRate,
+                        ),
+                      },
+                      {
+                        label: '1stサーブ時得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.service
+                            .firstServePointWinRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.service
+                            .firstServePointWinRate,
+                        ),
+                      },
+                      {
+                        label: '2ndサーブ時得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.service
+                            .secondServePointWinRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.service
+                            .secondServePointWinRate,
+                        ),
+                      },
+                      {
+                        label: 'ダブルフォルト数',
+                        a: `${analysisSummary.neutralComparison.A.service.doubleFaultCount}件`,
+                        b: `${analysisSummary.neutralComparison.B.service.doubleFaultCount}件`,
+                      },
+                      {
+                        label: 'レシーブ時得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.receive
+                            .pointWinRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.receive
+                            .pointWinRate,
+                        ),
+                      },
+                      {
+                        label: '各ゲーム1ポイント目取得率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.keyMoments
+                            .firstPointWinRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.keyMoments
+                            .firstPointWinRate,
+                        ),
+                      },
+                      {
+                        label: 'デュースポイント取得率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.keyMoments
+                            .deucePointWinRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.keyMoments
+                            .deucePointWinRate,
+                        ),
+                      },
+                      {
+                        label: 'ゲームポイント取得率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.keyMoments
+                            .gamePointWinRate,
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.keyMoments
+                            .gamePointWinRate,
+                        ),
+                      },
+                      {
+                        label: '1-2本ラリー得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.rally.buckets[
+                            '1-2'
+                          ],
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.rally.buckets[
+                            '1-2'
+                          ],
+                        ),
+                      },
+                      {
+                        label: '3-4本ラリー得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.rally.buckets[
+                            '3-4'
+                          ],
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.rally.buckets[
+                            '3-4'
+                          ],
+                        ),
+                      },
+                      {
+                        label: '5-8本ラリー得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.rally.buckets[
+                            '5-8'
+                          ],
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.rally.buckets[
+                            '5-8'
+                          ],
+                        ),
+                      },
+                      {
+                        label: '9本以上ラリー得点率',
+                        a: formatRateMetric(
+                          analysisSummary.neutralComparison.A.rally.buckets[
+                            '9+'
+                          ],
+                        ),
+                        b: formatRateMetric(
+                          analysisSummary.neutralComparison.B.rally.buckets[
+                            '9+'
+                          ],
+                        ),
+                      },
+                      {
+                        label: '最大連続得点',
+                        a: formatCountMetric(
+                          analysisSummary.neutralComparison.A.momentum
+                            .maxStreakFor,
+                          analysisSummary.neutralComparison.A.momentum
+                            .maxStreakForSegment,
+                        ),
+                        b: formatCountMetric(
+                          analysisSummary.neutralComparison.B.momentum
+                            .maxStreakFor,
+                          analysisSummary.neutralComparison.B.momentum
+                            .maxStreakForSegment,
+                        ),
+                      },
+                      {
+                        label: '最大連続失点',
+                        a: formatCountMetric(
+                          analysisSummary.neutralComparison.A.momentum
+                            .maxStreakAgainst,
+                          analysisSummary.neutralComparison.A.momentum
+                            .maxStreakAgainstSegment,
+                        ),
+                        b: formatCountMetric(
+                          analysisSummary.neutralComparison.B.momentum
+                            .maxStreakAgainst,
+                          analysisSummary.neutralComparison.B.momentum
+                            .maxStreakAgainstSegment,
+                        ),
+                      },
+                      {
+                        label: 'ウィナー数',
+                        a: `${analysisSummary.neutralComparison.A.endings.winners}件`,
+                        b: `${analysisSummary.neutralComparison.B.endings.winners}件`,
+                      },
+                      {
+                        label: 'ミス数',
+                        a: `${analysisSummary.neutralComparison.A.endings.errors}件`,
+                        b: `${analysisSummary.neutralComparison.B.endings.errors}件`,
+                      },
+                    ].map((row) => (
+                      <tr key={row.label} className="border-b border-gray-100">
+                        <td className="py-3 text-gray-700">{row.label}</td>
+                        <td className="py-3 text-center text-gray-800">
+                          {row.a}
+                        </td>
+                        <td className="py-3 text-center text-gray-800">
+                          {row.b}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                {(['A', 'B'] as TeamKey[]).map((team) => (
+                  <div
+                    key={team}
+                    className="rounded-lg border border-gray-200 p-4"
+                  >
+                    <h3
+                      className={`font-semibold mb-3 ${
+                        team === 'A' ? 'text-blue-700' : 'text-green-700'
+                      }`}
+                    >
+                      {getShortTeamName(team)} の主要エラー内訳
+                    </h3>
+                    {analysisSummary.neutralComparison[team].endings
+                      .errorBreakdown.length > 0 ? (
+                      <div className="space-y-2 text-sm">
+                        {analysisSummary.neutralComparison[
+                          team
+                        ].endings.errorBreakdown
+                          .slice(0, 5)
+                          .map((entry) => (
+                            <div
+                              key={`${team}-${entry.resultType}`}
+                              className="flex justify-between gap-3"
+                            >
+                              <span className="text-gray-600">
+                                {getResultTypeLabel(entry.resultType)}
+                              </span>
+                              <span className="font-medium text-gray-800">
+                                {entry.count}件
+                                {entry.share !== null &&
+                                  ` (${entry.share.toFixed(1)}%)`}
+                              </span>
+                            </div>
+                          ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500">
+                        該当するエラーデータはありません。
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {analysisSummary.scoreIntegrity.ok && analysisTab === 'team' && (
+            <>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 mb-4">
+                <h3 className="font-semibold text-gray-800 mb-2">分析の見方</h3>
+                <p className="text-sm text-gray-600">
+                  この分析は、試合のポイント記録から見返しやすい手がかりをまとめたものです。数字は評価ではなく、次にどの場面を確認するかを考える入口として使います。
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                <span className="text-sm text-gray-600">注目チーム</span>
+                {(['A', 'B'] as TeamKey[]).map((team) => (
+                  <button
+                    key={team}
+                    onClick={() => {
+                      setFocusTeam(team);
+                      void router.replace(
+                        {
+                          pathname: router.pathname,
+                          query: {
+                            ...router.query,
+                            focusTeam: team,
+                          },
+                        },
+                        undefined,
+                        { shallow: true, scroll: false },
+                      );
+                    }}
+                    className={`px-4 py-2 rounded border text-sm ${
+                      focusTeam === team
+                        ? team === 'A'
+                          ? 'bg-blue-600 text-white border-blue-600'
+                          : 'bg-green-600 text-white border-green-600'
+                        : 'bg-white text-gray-700 border-gray-300'
+                    }`}
+                  >
+                    {getShortTeamName(team)}
+                  </button>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {analysisSummary.teamGuideCards[focusTeam].cards.map(
+                  (card: AnalysisGuideCard) => {
+                    const badge = getReliabilityBadge(card.reliability);
+
+                    return (
+                      <div
+                        key={card.id}
+                        className="rounded-lg border border-gray-200 bg-white p-5"
+                      >
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <h3 className="font-semibold text-gray-800 leading-snug">
+                            {card.title}
+                          </h3>
+                          {badge && (
+                            <span
+                              className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${badge.className}`}
+                            >
+                              {badge.label}
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="mb-2">
+                          <div className="text-3xl font-bold text-gray-900">
+                            {card.primaryValue}
+                          </div>
+                          {card.secondaryValue && (
+                            <p className="text-sm text-gray-500 mt-1">
+                              {card.secondaryValue}
+                            </p>
+                          )}
+                        </div>
+
+                        <p className="text-sm text-gray-700 leading-6">
+                          {card.summary}
+                        </p>
+
+                        <details className="mt-4 border-t border-gray-100 pt-3 group">
+                          <summary className="cursor-pointer list-none text-sm font-medium text-blue-600">
+                            この数字の見方
+                          </summary>
+
+                          <div className="mt-3 space-y-3 text-sm text-gray-700">
+                            <div>
+                              <div className="font-medium text-gray-800 mb-1">
+                                これは何？
+                              </div>
+                              <p>{card.description}</p>
+                            </div>
+                            <div>
+                              <div className="font-medium text-gray-800 mb-1">
+                                どう見る？
+                              </div>
+                              <p>{card.howToRead}</p>
+                            </div>
+                            <div>
+                              <div className="font-medium text-gray-800 mb-1">
+                                次に確認
+                              </div>
+                              <p>{card.nextCheck}</p>
+                            </div>
+                            <div>
+                              <div className="font-medium text-gray-800 mb-1">
+                                なぜ見るの？
+                              </div>
+                              <p>{card.whyItMatters}</p>
+                            </div>
+
+                            {card.reliability === 'low' && (
+                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800">
+                                参考値:
+                                対象ポイントが少ないため、傾向としてはまだ判断しにくい数字です。
+                              </div>
+                            )}
+                            {card.reliability === 'none' && (
+                              <div className="rounded bg-gray-100 px-3 py-2 text-gray-700">
+                                データ不足:
+                                対象ポイントがないため、この指標は表示できません。
+                              </div>
+                            )}
+
+                            <div className="space-y-2">
+                              {card.details.map((detail) => (
+                                <div
+                                  key={`${card.id}-${detail.label}`}
+                                  className="flex items-start justify-between gap-3 border-b border-gray-100 pb-2 last:border-b-0 last:pb-0"
+                                >
+                                  <span className="text-gray-600">
+                                    {formatGuideDetailLabel(detail.label)}
+                                  </span>
+                                  <span className="font-medium text-gray-800 text-right">
+                                    {detail.value}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </details>
+                      </div>
+                    );
+                  },
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
       {/* スコアボード */}
       <h2 className="text-xl font-semibold mb-4">試合結果</h2>
 
@@ -578,16 +1141,14 @@ const PublicMatchDetail = ({
               <th className="border border-gray-300 px-3 py-2 text-left w-auto">
                 チーム
               </th>
-              {match.games
-                ?.sort((a, b) => a.game_number - b.game_number)
-                .map((game) => (
-                  <th
-                    key={game.game_number}
-                    className="border border-gray-300 px-3 py-2 text-center min-w-12"
-                  >
-                    {game.game_number}
-                  </th>
-                ))}
+              {gamesAsc.map((game) => (
+                <th
+                  key={game.game_number}
+                  className="border border-gray-300 px-3 py-2 text-center min-w-12"
+                >
+                  {game.game_number}
+                </th>
+              ))}
               <th className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
                 G
               </th>
@@ -598,20 +1159,18 @@ const PublicMatchDetail = ({
               <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
                 {getShortTeamName('A')}
               </td>
-              {match.games
-                ?.sort((a, b) => a.game_number - b.game_number)
-                .map((game) => (
-                  <td
-                    key={game.game_number}
-                    className={`border border-gray-300 px-3 py-2 text-center ${
-                      game.winner_team === 'A'
-                        ? 'bg-green-100 text-green-800 font-bold'
-                        : 'font-normal'
-                    }`}
-                  >
-                    {game.points_a}
-                  </td>
-                ))}
+              {gamesAsc.map((game) => (
+                <td
+                  key={game.game_number}
+                  className={`border border-gray-300 px-3 py-2 text-center ${
+                    game.winner_team === 'A'
+                      ? 'bg-green-100 text-green-800 font-bold'
+                      : 'font-normal'
+                  }`}
+                >
+                  {game.points_a}
+                </td>
+              ))}
               <td
                 className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
                   matchWinner === 'A' ? 'font-bold' : 'font-normal'
@@ -625,20 +1184,18 @@ const PublicMatchDetail = ({
               <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
                 {getShortTeamName('B')}
               </td>
-              {match.games
-                ?.sort((a, b) => a.game_number - b.game_number)
-                .map((game) => (
-                  <td
-                    key={game.game_number}
-                    className={`border border-gray-300 px-3 py-2 text-center ${
-                      game.winner_team === 'B'
-                        ? 'bg-green-100 text-green-800 font-bold'
-                        : 'font-normal'
-                    }`}
-                  >
-                    {game.points_b}
-                  </td>
-                ))}
+              {gamesAsc.map((game) => (
+                <td
+                  key={game.game_number}
+                  className={`border border-gray-300 px-3 py-2 text-center ${
+                    game.winner_team === 'B'
+                      ? 'bg-green-100 text-green-800 font-bold'
+                      : 'font-normal'
+                  }`}
+                >
+                  {game.points_b}
+                </td>
+              ))}
               <td
                 className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
                   matchWinner === 'B' ? 'font-bold' : 'font-normal'
@@ -786,25 +1343,6 @@ const PublicMatchDetail = ({
       {/* チーム別ウィナー・ミス内訳サマリー */}
       {(() => {
         const playerStats = getPlayerStats();
-
-        // チームA、チームBの選手を整理
-        const teamAPlayers = [
-          match.team_a_player1_first_name && match.team_a_player1_last_name
-            ? `${match.team_a_player1_last_name} ${match.team_a_player1_first_name}`
-            : null,
-          match.team_a_player2_first_name && match.team_a_player2_last_name
-            ? `${match.team_a_player2_last_name} ${match.team_a_player2_first_name}`
-            : null,
-        ].filter((player): player is string => player !== null);
-
-        const teamBPlayers = [
-          match.team_b_player1_first_name && match.team_b_player1_last_name
-            ? `${match.team_b_player1_last_name} ${match.team_b_player1_first_name}`
-            : null,
-          match.team_b_player2_first_name && match.team_b_player2_last_name
-            ? `${match.team_b_player2_last_name} ${match.team_b_player2_first_name}`
-            : null,
-        ].filter((player): player is string => player !== null);
 
         // チーム別の集計
         const getTeamStats = (players: string[]) => {
@@ -1026,152 +1564,144 @@ const PublicMatchDetail = ({
       {/* ゲーム詳細（降順、エキスパンド対応） */}
       <div className="space-y-3">
         <h3 className="text-lg font-semibold">ゲーム詳細</h3>
-        {match.games
-          ?.sort((a, b) => b.game_number - a.game_number) // 降順（新しいゲームを上に）
-          .map((game: Game) => {
-            const isExpanded = expandedGames.has(game.game_number);
-            return (
-              <div key={game.id} className="border border-gray-200 rounded-lg">
-                {/* ゲームヘッダー（クリック可能） */}
-                <button
-                  onClick={() => toggleGameExpansion(game.game_number)}
-                  className="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50 rounded-t-lg"
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="font-semibold">
-                      第{game.game_number}ゲーム
-                    </span>
-                    <span className="text-sm font-medium">
-                      {game.points_a} - {game.points_b}
-                    </span>
-                    {game.winner_team && (
-                      <span
-                        className={`px-2 py-1 rounded text-xs ${
-                          game.winner_team === 'A'
-                            ? 'bg-blue-100 text-blue-800'
-                            : 'bg-green-100 text-green-800'
-                        }`}
-                      >
-                        {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-gray-400 text-xl">
-                    {isExpanded ? '−' : '+'}
+        {gamesDesc.map((game: Game) => {
+          const isExpanded = expandedGames.has(game.game_number);
+          return (
+            <div key={game.id} className="border border-gray-200 rounded-lg">
+              {/* ゲームヘッダー（クリック可能） */}
+              <button
+                onClick={() => toggleGameExpansion(game.game_number)}
+                className="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50 rounded-t-lg"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="font-semibold">
+                    第{game.game_number}ゲーム
                   </span>
-                </button>
+                  <span className="text-sm font-medium">
+                    {game.points_a} - {game.points_b}
+                  </span>
+                  {game.winner_team && (
+                    <span
+                      className={`px-2 py-1 rounded text-xs ${
+                        game.winner_team === 'A'
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-green-100 text-green-800'
+                      }`}
+                    >
+                      {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}
+                    </span>
+                  )}
+                </div>
+                <span className="text-gray-400 text-xl">
+                  {isExpanded ? '−' : '+'}
+                </span>
+              </button>
 
-                {/* ゲーム詳細（エキスパンド時のみ表示） */}
-                {isExpanded && game.points && game.points.length > 0 && (
-                  <div className="px-4 pb-4 border-t border-gray-200">
-                    <div className="space-y-2 mt-3">
-                      {game.points
-                        .sort((a, b) => b.point_number - a.point_number)
-                        .map((point: Point) => {
-                          // スコア計算
-                          const pointsBeforeThis =
-                            game.points?.filter(
-                              (p) => p.point_number < point.point_number,
-                            ) || [];
-                          const teamAPoints = pointsBeforeThis.filter(
-                            (p) => p.winner_team === 'A',
-                          ).length;
-                          const teamBPoints = pointsBeforeThis.filter(
-                            (p) => p.winner_team === 'B',
-                          ).length;
-                          const finalTeamAPoints =
-                            teamAPoints + (point.winner_team === 'A' ? 1 : 0);
-                          const finalTeamBPoints =
-                            teamBPoints + (point.winner_team === 'B' ? 1 : 0);
+              {/* ゲーム詳細（エキスパンド時のみ表示） */}
+              {isExpanded && game.points && game.points.length > 0 && (
+                <div className="px-4 pb-4 border-t border-gray-200">
+                  <div className="space-y-2 mt-3">
+                    {getPointsDesc(game).map((point: Point) => {
+                      // スコア計算
+                      const pointsBeforeThis =
+                        game.points?.filter(
+                          (p) => p.point_number < point.point_number,
+                        ) || [];
+                      const teamAPoints = pointsBeforeThis.filter(
+                        (p) => p.winner_team === 'A',
+                      ).length;
+                      const teamBPoints = pointsBeforeThis.filter(
+                        (p) => p.winner_team === 'B',
+                      ).length;
+                      const finalTeamAPoints =
+                        teamAPoints + (point.winner_team === 'A' ? 1 : 0);
+                      const finalTeamBPoints =
+                        teamBPoints + (point.winner_team === 'B' ? 1 : 0);
 
-                          return (
-                            <div key={point.id} className="text-sm">
-                              {/* ポイント情報（1行目） */}
-                              <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
-                                <span className="font-medium">
-                                  <span
-                                    className={
-                                      point.winner_team === 'A'
-                                        ? 'font-bold'
-                                        : ''
-                                    }
-                                  >
-                                    {finalTeamAPoints}
-                                  </span>
-                                  {' - '}
-                                  <span
-                                    className={
-                                      point.winner_team === 'B'
-                                        ? 'font-bold'
-                                        : ''
-                                    }
-                                  >
-                                    {finalTeamBPoints}
-                                  </span>
+                      return (
+                        <div key={point.id} className="text-sm">
+                          {/* ポイント情報（1行目） */}
+                          <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
+                            <span className="font-medium">
+                              <span
+                                className={
+                                  point.winner_team === 'A' ? 'font-bold' : ''
+                                }
+                              >
+                                {finalTeamAPoints}
+                              </span>
+                              {' - '}
+                              <span
+                                className={
+                                  point.winner_team === 'B' ? 'font-bold' : ''
+                                }
+                              >
+                                {finalTeamBPoints}
+                              </span>
+                            </span>
+                            <span>{point.rally_count}ラリー</span>
+                          </div>
+
+                          {/* ポイント内容（2行目） */}
+                          <div className="flex items-center gap-3 pl-4">
+                            <span className="font-medium text-blue-600">
+                              {getResultTypeLabel(point.result_type || '')}
+                            </span>
+                            {/* 選手情報：ウィナー系はwinner_player、ミス系はloser_playerを表示 */}
+                            {(() => {
+                              const errorTypes = [
+                                'net',
+                                'out',
+                                'smash_error',
+                                'volley_error',
+                                'double_fault',
+                                'receive_error',
+                                'follow_error',
+                              ];
+
+                              const isError =
+                                point.result_type &&
+                                errorTypes.includes(point.result_type);
+                              const playerName = isError
+                                ? point.loser_player
+                                : point.winner_player;
+
+                              return playerName ? (
+                                <span className="text-gray-700">
+                                  {playerName}
                                 </span>
-                                <span>{point.rally_count}ラリー</span>
-                              </div>
-
-                              {/* ポイント内容（2行目） */}
-                              <div className="flex items-center gap-3 pl-4">
-                                <span className="font-medium text-blue-600">
-                                  {getResultTypeLabel(point.result_type || '')}
+                              ) : null;
+                            })()}
+                            <div className="flex gap-2">
+                              {point.first_serve_fault && (
+                                <span className="text-orange-600 text-xs bg-orange-50 px-1 rounded">
+                                  1stフォルト
                                 </span>
-                                {/* 選手情報：ウィナー系はwinner_player、ミス系はloser_playerを表示 */}
-                                {(() => {
-                                  const errorTypes = [
-                                    'net',
-                                    'out',
-                                    'smash_error',
-                                    'volley_error',
-                                    'double_fault',
-                                    'receive_error',
-                                    'follow_error',
-                                  ];
-
-                                  const isError =
-                                    point.result_type &&
-                                    errorTypes.includes(point.result_type);
-                                  const playerName = isError
-                                    ? point.loser_player
-                                    : point.winner_player;
-
-                                  return playerName ? (
-                                    <span className="text-gray-700">
-                                      {playerName}
-                                    </span>
-                                  ) : null;
-                                })()}
-                                <div className="flex gap-2">
-                                  {point.first_serve_fault && (
-                                    <span className="text-orange-600 text-xs bg-orange-50 px-1 rounded">
-                                      1stフォルト
-                                    </span>
-                                  )}
-                                  {point.double_fault && (
-                                    <span className="text-red-600 text-xs bg-red-50 px-1 rounded">
-                                      ダブルフォルト
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
+                              )}
+                              {point.double_fault && (
+                                <span className="text-red-600 text-xs bg-red-50 px-1 rounded">
+                                  ダブルフォルト
+                                </span>
+                              )}
                             </div>
-                          );
-                        })}
-
-                      {/* ゲーム開始時の0-0表示（最後に表示） */}
-                      <div className="text-sm">
-                        <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
-                          <span className="font-medium">0 - 0</span>
-                          <span>ゲーム開始</span>
+                          </div>
                         </div>
+                      );
+                    })}
+
+                    {/* ゲーム開始時の0-0表示（最後に表示） */}
+                    <div className="text-sm">
+                      <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
+                        <span className="font-medium">0 - 0</span>
+                        <span>ゲーム開始</span>
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
-            );
-          })}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* 選手別統計情報 */}
@@ -1180,25 +1710,6 @@ const PublicMatchDetail = ({
         <div className="space-y-6">
           {(() => {
             const playerStats = getPlayerStats();
-
-            // チームA、チームBの選手を順番に整理
-            const teamAPlayers = [
-              match.team_a_player1_first_name && match.team_a_player1_last_name
-                ? `${match.team_a_player1_last_name} ${match.team_a_player1_first_name}`
-                : null,
-              match.team_a_player2_first_name && match.team_a_player2_last_name
-                ? `${match.team_a_player2_last_name} ${match.team_a_player2_first_name}`
-                : null,
-            ].filter((player): player is string => player !== null);
-
-            const teamBPlayers = [
-              match.team_b_player1_first_name && match.team_b_player1_last_name
-                ? `${match.team_b_player1_last_name} ${match.team_b_player1_first_name}`
-                : null,
-              match.team_b_player2_first_name && match.team_b_player2_last_name
-                ? `${match.team_b_player2_last_name} ${match.team_b_player2_first_name}`
-                : null,
-            ].filter((player): player is string => player !== null);
 
             const renderPlayerStats = (
               playerName: string,
@@ -1543,36 +2054,28 @@ const PublicMatchDetail = ({
   );
 };
 
-// ISR実装: 静的パス生成
+// Cloudflare静的export用: 最新50件のみ静的パス生成
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const supabase = createServerClient();
-
-    // 最新50件のマッチIDを取得してプリビルド
-    const { data: matches } = await supabase
-      .from('matches')
-      .select('id')
-      .order('created_at', { ascending: false })
-      .limit(50);
-
-    const paths = (matches || []).map((match) => ({
-      params: { matchId: match.id.toString() },
+    const matchIds = await getLatestBetaMatchIds();
+    const paths = matchIds.map((matchId) => ({
+      params: { matchId },
     }));
 
     return {
       paths,
-      fallback: 'blocking', // 新しいマッチは動的生成
+      fallback: false,
     };
   } catch (error) {
     console.error('getStaticPaths error:', error);
     return {
       paths: [],
-      fallback: 'blocking',
+      fallback: false,
     };
   }
 };
 
-// ISR実装: 静的プロパティ生成
+// Cloudflare静的export用: ビルド時に静的プロパティ生成
 export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
   params,
 }) => {
@@ -1583,22 +2086,11 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
       return { notFound: true };
     }
 
-    const supabase = createServerClient();
+    const match = await getBetaMatchById(matchId);
+    const generatedAt = await getBetaMatchesGeneratedAt();
 
-    // マッチデータを取得
-    const { data: match, error } = await supabase
-      .from('matches')
-      .select(
-        `
-        *,
-        games(*, points(*))
-      `,
-      )
-      .eq('id', matchId)
-      .single();
-
-    if (error || !match) {
-      console.error('Match not found:', matchId, error);
+    if (!match) {
+      console.error('Match not found:', matchId);
       return { notFound: true };
     }
 
@@ -1628,10 +2120,8 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
       props: {
         match,
         tournamentInfo,
-        lastUpdated,
+        lastUpdated: generatedAt ?? lastUpdated,
       },
-      // ISR設定: 1分ごとに再生成（詳細ページはあまり変更されないため）
-      revalidate: 60,
     };
   } catch (error) {
     console.error('getStaticProps error:', error);

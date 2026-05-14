@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "伊勢工",
+        "teamId": "isekou",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "北村_優_伊勢工_三重県",
+          "大西_冬真_伊勢工_三重県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "北村_優_伊勢工_三重県",
+      "appearances": 1
+    },
+    {
+      "id": "大西_冬真_伊勢工_三重県",
+      "appearances": 1
+    }
+  ]
+}

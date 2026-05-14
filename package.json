@@ -46,24 +46,21 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-beta-matches-json.mjs",
+    "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
+    "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "start": "next start",
     "generate-sitemap": "node scripts/generate-sitemap.js",
+    "generate-og-json": "node scripts/generate-og-json.mjs",
     "postbuild": "next-sitemap",
     "lint": "eslint --fix ."
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/og": "^0.6.8",
-    "@vercel/speed-insights": "^1.2.0",
-    "dotenv": "^17.2.3",
-    "microcms-js-sdk": "^3.2.0",
-    "next": "15.3.1",
+    "next": "^15.5.7",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "swr": "^2.3.3"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,0 +1,59 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "徳山",
+        "teamId": "tokuyama",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "田中_詣人_徳山_山口県",
+          "阿部_琥太郎_徳山_山口県"
+        ]
+      },
+      "historicalBest": {
+        "team": "徳山",
+        "teamId": "tokuyama",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "田中_詣人_徳山_山口県",
+          "阿部_琥太郎_徳山_山口県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "田中_詣人_徳山_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "阿部_琥太郎_徳山_山口県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 2,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高岡西・高岡",
+        "teamId": "takaokanishikouoka",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "鍋谷_真菜子_高岡西・高岡_富山県",
+          "青江_美南_高岡西・高岡_富山県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高岡西・高岡",
+        "teamId": "takaokanishikouoka",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "鍋谷_真菜子_高岡西・高岡_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "青江_美南_高岡西・高岡_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "小杉_菜月_高岡西・高岡_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "金瀬_萌_高岡西・高岡_富山県",
+      "appearances": 1
+    }
+  ]
+}

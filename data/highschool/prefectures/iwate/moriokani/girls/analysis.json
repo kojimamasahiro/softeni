@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "盛岡二",
+        "teamId": "moriokani",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "藤原_亜寿美_盛岡二_岩手県",
+          "鈴木_佑來_盛岡二_岩手県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "藤原_亜寿美_盛岡二_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_佑來_盛岡二_岩手県",
+      "appearances": 1
+    }
+  ]
+}

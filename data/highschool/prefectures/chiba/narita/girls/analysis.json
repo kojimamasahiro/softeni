@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "成田",
+        "teamId": "narita",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "波多江_光咲_成田_千葉県",
+          "増田_梨菜_成田_千葉県"
+        ]
+      },
+      "historicalBest": {
+        "team": "成田",
+        "teamId": "narita",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "海野_葵_成田_千葉県",
+          "大森_優心_成田_千葉県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "波多江_光咲_成田_千葉県",
+      "appearances": 2
+    },
+    {
+      "id": "林_理瑚_成田_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "増田_好美_成田_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "宮本_果歩_成田_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "新_優依_成田_千葉県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "三沢商",
+        "teamId": "misawashou",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "吉田_瑠杏_三沢商_青森県",
+          "柴崎_日向_三沢商_青森県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "吉田_瑠杏_三沢商_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "柴崎_日向_三沢商_青森県",
+      "appearances": 1
+    }
+  ]
+}

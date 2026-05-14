@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 11,
+  "byCategory": {
+    "doubles": 8,
+    "team": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大村",
+        "teamId": "oomura",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "小林_葵_大村_長崎県",
+          "村川_梨花_大村_長崎県"
+        ]
+      },
+      "historicalBest": {
+        "team": "大村",
+        "teamId": "oomura",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "小林_葵_大村_長崎県",
+          "鳥巣_穂乃香_大村_長崎県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "大村",
+        "teamId": "oomura",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "大村",
+        "teamId": "oomura",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 12,
+  "topPlayers": [
+    {
+      "id": "小林_葵_大村_長崎県",
+      "appearances": 3
+    },
+    {
+      "id": "鳥巣_穂乃香_大村_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "磯田_心優咲_大村_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "櫻田_友夏_大村_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "宮﨑_実果_大村_長崎県",
+      "appearances": 1
+    }
+  ]
+}

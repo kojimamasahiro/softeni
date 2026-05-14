@@ -1,43 +1,47 @@
 [
   {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "準優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "白井_颯_東北",
-      "千田_夏輝_東北"
-    ]
-  },
-  {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "playerIds": [
-      "青柳_空杜_ウルスラ",
-      "佐々木_柊羽_ウルスラ"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
+    "team": "仙台第三",
+    "teamId": "sendaidaisan",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
     "result": "1回戦敗退",
-    "category": "singles",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
+    "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "根津_圭威士_東北"
+      "佐原_蒔大_仙台第三_宮城県",
+      "宇都宮_匠_仙台第三_宮城県"
+    ]
+  },
+  {
+    "team": "仙台第三",
+    "teamId": "sendaidaisan",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "佐原_蒔人_仙台第三_宮城県",
+      "宇都宮_匠_仙台第三_宮城県"
+    ]
+  },
+  {
+    "team": "仙台三",
+    "teamId": "sendaisan",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "村山_博音_仙台三_宮城県",
+      "佐川_隼祐_仙台三_宮城県"
     ]
   },
   {
@@ -49,173 +53,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "大槻_寛介_仙台三",
-      "佐川_隼祐_仙台三"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト4",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "水木_洸_東北",
-      "松田_拳弥_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "白井_颯_東北",
-      "北野_咲斗_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "千葉_琉翔_東北",
-      "國松_巧_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "深山_竜臣_東北",
-      "鎌田_翔唯_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "齋藤_玲壱_東北",
-      "國松_樹人_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "伊関_悠_東北",
-      "大澤_真紗斗_東北"
-    ]
-  },
-  {
-    "team": "ウルスラ英智",
-    "teamId": "urusurahidetomo",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "playerIds": [
-      "佐藤_榎南_ウルスラ英智",
-      "冨主_純翔_ウルスラ英智"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト4",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "浅見_竣一朗_東北",
-      "初鹿_暁哉_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "伊関_悠_東北",
-      "大澤_真紗斗_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "櫻井_稔隼_東北",
-      "増子_朝飛_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "國松_樹人_東北",
-      "鈴木_煌_東北"
+      "大槻_寛介_仙台三_宮城県",
+      "佐川_隼祐_仙台三_宮城県"
     ]
   },
   {
@@ -225,11 +66,12 @@
     "prefectureId": "miyagi",
     "result": "準優勝",
     "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
     "playerIds": [
-      "根岸_澪紋_東北",
-      "中尾_彦斗_東北"
+      "白井_颯_東北_宮城",
+      "千田_夏輝_東北_宮城"
     ]
   },
   {
@@ -237,41 +79,14 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "5回戦敗退",
+    "result": "準優勝",
     "category": "doubles",
-    "tournamentId": "highschool-championship",
+    "tournamentId": "highschool-japan-cup",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "齋藤_玲壱_東北",
-      "國松_巧_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "水木_洸_東北",
-      "松田_拳弥_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "playerIds": [
-      "佐藤_真仁_東北",
-      "手塚_達平_東北"
+      "浅見_竣一朗_東北_宮城県",
+      "初鹿_暁哉_東北_宮城県"
     ]
   },
   {
@@ -283,9 +98,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "根岸_澪紋_東北",
-      "中尾_彦斗_東北"
+      "根岸_澪紋_東北_宮城県",
+      "中尾_彦斗_東北_宮城県"
     ]
   },
   {
@@ -297,9 +113,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "伊関_悠_東北",
-      "大澤_真紗斗_東北"
+      "伊関_悠_東北_宮城県",
+      "大澤_真紗斗_東北_宮城県"
     ]
   },
   {
@@ -311,9 +128,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "國松_樹人_東北",
-      "鈴木_煌_東北"
+      "國松_樹人_東北_宮城県",
+      "鈴木_煌_東北_宮城県"
     ]
   },
   {
@@ -325,9 +143,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "武者_空来_東北",
-      "半田_聖弥_東北"
+      "武者_空来_東北_宮城県",
+      "半田_聖弥_東北_宮城県"
     ]
   },
   {
@@ -339,9 +158,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "浅見_竣一朗_東北",
-      "初鹿_暁哉_東北"
+      "浅見_竣一朗_東北_宮城県",
+      "初鹿_暁哉_東北_宮城県"
     ]
   },
   {
@@ -353,9 +173,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "高橋_拓己_東北",
-      "西宮_想心_東北"
+      "高橋_拓己_東北_宮城県",
+      "西宮_想心_東北_宮城県"
     ]
   },
   {
@@ -367,9 +188,610 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "村田_優斗_東北",
-      "小野寺_蓮_東北"
+      "村田_優斗_東北_宮城県",
+      "小野寺_蓮_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "中山_萌_東北_宮城県",
+      "根岸_ゆず_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "早坂_りおな_東北_宮城県",
+      "赤星_紗那_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "赤間_音寧_東北_宮城県",
+      "武田_紗依_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "天間_麗奈_東北_宮城県",
+      "佐藤_紗空_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "柏_春花_東北_宮城県",
+      "村上_芹_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "鈴木_琴菜_東北_宮城県",
+      "宇田川_ななみ_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "橋場_香久良_東北_宮城県",
+      "石津_緩奈_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "水木_洸_東北_宮城県",
+      "松田_拳弥_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "根津_圭威士_東北_宮城県",
+      "小林_晴斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "白井_颯_東北_宮城県",
+      "千田_夏輝_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "鈴木_大和_東北_宮城県",
+      "髙橋_悠希_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "中嶋_颯汰_東北_宮城県",
+      "北野_咲斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "大村_怜央_東北_宮城県",
+      "髙橋_優斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "義家_來実_東北_宮城県",
+      "新山_千春_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "千葉_遥菜_東北_宮城県",
+      "工藤_綾乃_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "天間_麗奈_東北_宮城県",
+      "大浦_愛珠_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "橋場_香久良_東北_宮城県",
+      "佐藤_円_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "柏_春花_東北_宮城県",
+      "村上_芹_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "濱口_芽花_東北_宮城県",
+      "石津_緩奈_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大和_美月_東北_宮城県",
+      "佐藤_紗空_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "藤井_心愛_東北_宮城県",
+      "阿部_日南_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "水木_洸_東北_宮城県",
+      "松田_拳弥_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "白井_颯_東北_宮城県",
+      "北野_咲斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "千葉_琉翔_東北_宮城県",
+      "國松_巧_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "深山_竜臣_東北_宮城県",
+      "鎌田_翔唯_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "齋藤_玲壱_東北_宮城県",
+      "國松_樹人_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "伊関_悠_東北_宮城県",
+      "大澤_真紗斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "浅見_竣一朗_東北_宮城県",
+      "初鹿_暁哉_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "伊関_悠_東北_宮城県",
+      "大澤_真紗斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "櫻井_稔隼_東北_宮城県",
+      "増子_朝飛_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "國松_樹人_東北_宮城県",
+      "鈴木_煌_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "準優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "根岸_澪紋_東北_宮城県",
+      "中尾_彦斗_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "齋藤_玲壱_東北_宮城県",
+      "國松_巧_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "水木_洸_東北_宮城県",
+      "松田_拳弥_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "佐藤_真仁_東北_宮城県",
+      "手塚_達平_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "高橋_海斗_東北_宮城県",
+      "中村_倖青_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "宮原_貴生_東北_宮城県",
+      "栗谷_直樹_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "浅見_竣一朗_東北_宮城県",
+      "初鹿_暁哉_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "村田_優斗_東北_宮城県",
+      "小野寺_蓮_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "佐藤_駿丞_東北_宮城県",
+      "佐藤_亜結夢_東北_宮城県"
     ]
   },
   {
@@ -381,93 +803,10 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys",
     "playerIds": [
-      "守田_一帆_東北学院",
-      "飯渕_真大_東北学院"
-    ]
-  },
-  {
-    "team": "仙台第三",
-    "teamId": "sendaidaisan",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "佐原_蒔人_仙台第三",
-      "宇都宮_匠_仙台第三"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "高橋_海斗_東北",
-      "中村_倖青_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "宮原_貴生_東北",
-      "栗谷_直樹_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "浅見_竣一朗_東北",
-      "初鹿_暁哉_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "村田_優斗_東北",
-      "小野寺_蓮_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "playerIds": [
-      "佐藤_駿丞_東北",
-      "佐藤_亜結夢_東北"
+      "守田_一帆_東北学院_宮城県",
+      "飯渕_真大_東北学院_宮城県"
     ]
   },
   {
@@ -479,9 +818,70 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "横山_豪人_東北生文大高",
-      "佐藤_翼早_東北生文大高"
+      "横山_豪人_東北生文大高_宮城県",
+      "佐藤_翼早_東北生文大高_宮城県"
+    ]
+  },
+  {
+    "team": "ウルスラ",
+    "teamId": "urusura",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "青柳_空杜_ウルスラ_宮城",
+      "佐々木_柊羽_ウルスラ_宮城"
+    ]
+  },
+  {
+    "team": "ウルスラ",
+    "teamId": "urusura",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "佐藤_光駿_ウルスラ_北海道",
+      "冨主_純翔_ウルスラ_宮城"
+    ]
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "青柳_空杜_ウルスラ英智_宮城県",
+      "佐々_木成愛_ウルスラ英智_宮城県"
+    ]
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "佐藤_榎南_ウルスラ英智_宮城県",
+      "冨主_純翔_ウルスラ英智_宮城県"
     ]
   },
   {
@@ -493,80 +893,24 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "木幡_一陽_ウルスラ英智",
-      "小野_武蔵_ウルスラ英智"
+      "木幡_一陽_ウルスラ英智_宮城県",
+      "小野_武蔵_ウルスラ英智_宮城県"
     ]
   },
   {
     "team": "東北",
     "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "準優勝",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト4",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト4",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021
-  },
-  {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "佐藤_光駿_ウルスラ",
-      "冨主_純翔_ウルスラ"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "playerIds": [
-      "水木_洸_東北"
-    ]
-  },
-  {
-    "team": "仙台第三",
-    "teamId": "sendaidaisan",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
     "result": "1回戦敗退",
-    "category": "doubles",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2023,
+    "year": 2025,
+    "gender": "boys",
     "playerIds": [
-      "佐原_蒔大_仙台第三",
-      "宇都宮_匠_仙台第三"
+      "根津_圭威士_東北_宮城県"
     ]
   },
   {
@@ -574,13 +918,13 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "準優勝",
-    "category": "doubles",
+    "result": "2回戦敗退",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2023,
+    "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "浅見_竣一朗_東北",
-      "初鹿_暁哉_東北"
+      "水木_洸_東北_宮城県"
     ]
   },
   {
@@ -592,78 +936,54 @@
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "浅見_竣一朗_東北"
+      "浅見_竣一朗_東北_宮城県"
     ]
   },
   {
-    "team": "仙台三",
-    "teamId": "sendaisan",
+    "team": "宮城学院",
+    "teamId": "miyagigakuin",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "girls",
     "playerIds": [
-      "村山_博音_仙台三",
-      "佐川_隼祐_仙台三"
+      "小野寺_葵_宮城学院_宮城県",
+      "大原_風花_宮城学院_宮城県"
     ]
   },
   {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "水木_洸_東北",
-      "松田_拳弥_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "根津_圭威士_東北",
-      "小林_晴斗_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "playerIds": [
-      "白井_颯_東北",
-      "千田_夏輝_東北"
-    ]
-  },
-  {
-    "team": "東北",
-    "teamId": "touhoku",
+    "team": "仙台第二",
+    "teamId": "sendaidaini",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2023,
+    "gender": "girls",
     "playerIds": [
-      "鈴木_大和_東北",
-      "髙橋_悠希_東北"
+      "遠藤_理生_仙台第二_宮城県",
+      "打矢_ひかり_仙台第二_宮城県"
+    ]
+  },
+  {
+    "team": "常盤木学園",
+    "teamId": "tokiwakigakuen",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "山本_渚央_常盤木学園_宮城県",
+      "鈴木_心優_常盤木学園_宮城県"
     ]
   },
   {
@@ -674,10 +994,41 @@
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2022,
+    "gender": "girls",
     "playerIds": [
-      "中嶋_颯汰_東北",
-      "北野_咲斗_東北"
+      "永井_優理子_東北_宮城県",
+      "高橋_心菜_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "中島_はな_東北_宮城県",
+      "原田_優_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "及川_咲空_東北_宮城県",
+      "村上_茉悠_東北_宮城県"
     ]
   },
   {
@@ -688,25 +1039,315 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2022,
+    "gender": "girls",
     "playerIds": [
-      "大村_怜央_東北",
-      "髙橋_優斗_東北"
+      "大和_美月_東北_宮城県",
+      "佐藤_円_東北_宮城県"
     ]
   },
   {
-    "team": "ウルスラ英智",
-    "teamId": "urusurahidetomo",
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "坂本_朱羽_東北_宮城県",
+      "向山_せら_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "吉田_咲幸_東北_宮城県",
+      "古山_愛梨奈_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
+    "year": 2022,
+    "gender": "girls",
     "playerIds": [
-      "青柳_空杜_ウルスラ英智",
-      "佐々木_成愛_ウルスラ英智"
+      "千葉_遥菜_東北_宮城県",
+      "工藤_綾乃_東北_宮城県"
     ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "天間_美嘉_東北_宮城県",
+      "横山_心花_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "義家_來実_東北_宮城県",
+      "新山_千春_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "千葉_遥菜_東北_宮城県",
+      "工藤_綾乃_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "大浦_愛珠_東北_宮城県",
+      "佐藤_円_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "永井_優理子_東北_宮城県",
+      "高橋_心菜_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "大和_美月_東北_宮城県",
+      "佐藤_紗空_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "天間_麗奈_東北_宮城県",
+      "武田_紗依_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "坂本_朱羽_東北_宮城県",
+      "向山_せら_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "半田_穂乃花_東北_宮城県",
+      "村上_茉悠_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "及川_咲空_東北_宮城県",
+      "紺野_未実_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "白鳥_和_東北_宮城県",
+      "乙部_なな_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "外久保_妃舞_東北_宮城県",
+      "原田_優_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "山岸_こゆり_東北_宮城県",
+      "齊藤_双葉_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "細田_美帆_東北_宮城県",
+      "下山_香凜_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "天間_美嘉_東北_宮城県",
+      "横山_心花_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls"
   },
   {
     "team": "東北",
@@ -716,6 +1357,218 @@
     "result": "準優勝",
     "category": "team",
     "tournamentId": "highschool-championship",
-    "year": 2025
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "宮城学院",
+    "teamId": "miyagigakuin",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "大原_風花_宮城学院_宮城県",
+      "小野寺_葵_宮城学院_宮城県"
+    ]
+  },
+  {
+    "team": "常盤木学園",
+    "teamId": "tokiwakigakuen",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "安達_心菜_常盤木学園_宮城県",
+      "伊藤_友萌_常盤木学園_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "柏_春花_東北_宮城県",
+      "佐藤_紗空_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大和_美月_東北_宮城県",
+      "天間_麗奈_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "坂本_朱羽_東北_宮城県",
+      "向山_せら_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "村上_芹_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "天間_麗奈_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "優勝",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大和_美月_東北_宮城県"
+    ]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "大和_美月_東北_宮城県"
+    ]
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "坂井_里帆_ウルスラ英智_宮城県"
+    ]
   }
 ]

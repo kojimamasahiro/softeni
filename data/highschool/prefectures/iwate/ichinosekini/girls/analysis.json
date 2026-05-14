@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "一関二",
+        "teamId": "ichinosekini",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "齋藤_禅奈_一関二_岩手県",
+          "小野寺_亜依_一関二_岩手県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "齋藤_禅奈_一関二_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "小野寺_亜依_一関二_岩手県",
+      "appearances": 1
+    }
+  ]
+}

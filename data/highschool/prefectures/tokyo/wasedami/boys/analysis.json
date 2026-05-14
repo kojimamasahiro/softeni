@@ -1,0 +1,119 @@
+{
+  "totalAppearances": 10,
+  "byCategory": {
+    "doubles": 6,
+    "singles": 2,
+    "team": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "伊藤_幹太_早稲田実_東京都"
+        ]
+      },
+      "historicalBest": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "伊藤_幹太_早稲田実_東京都"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "伊藤_幹太_早稲田実_東京都",
+          "浦濱_大馬_早稲田実_東京都"
+        ]
+      },
+      "historicalBest": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "髙田_淳貴_早稲田実_東京都",
+          "飯干_開生_早稲田実_東京都"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "早稲田実",
+        "teamId": "wasedami",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "伊藤_幹太_早稲田実_東京都",
+      "appearances": 3
+    },
+    {
+      "id": "髙田_淳貴_早稲田実_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "飯干_開生_早稲田実_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "浦濱_大馬_早稲田実_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "濱_龍之介_早稲田実_東京都",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "totalAppearances": 7,
+  "byCategory": {
+    "doubles": 6,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "甲府商",
+        "teamId": "koufushou",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "小林_愛佳_甲府商_山梨県",
+          "佐藤_絢音_甲府商_山梨県"
+        ]
+      },
+      "historicalBest": {
+        "team": "甲府商",
+        "teamId": "koufushou",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "雨宮_愛唯_甲府商_山梨県",
+          "吉元_芽唯_甲府商_山梨県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "甲府商",
+        "teamId": "koufushou",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 10,
+  "topPlayers": [
+    {
+      "id": "寉田_來愛_甲府商_山梨県",
+      "appearances": 2
+    },
+    {
+      "id": "雨宮_愛唯_甲府商_山梨県",
+      "appearances": 2
+    },
+    {
+      "id": "小林_愛佳_甲府商_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_絢音_甲府商_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "大森_海和_甲府商_山梨県",
+      "appearances": 1
+    }
+  ]
+}

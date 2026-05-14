@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "剱持_杏衣_高崎商_群馬県",
+          "水野_沙姫_高崎商_群馬県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "渡邉_妃菜乃_高崎商_群馬県",
+          "水野_沙姫_高崎商_群馬県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "水野_沙姫_高崎商_群馬県",
+      "appearances": 2
+    },
+    {
+      "id": "渡邉_妃菜乃_高崎商_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "剱持_杏衣_高崎商_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "橋本_菜々子_高崎商_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "北舘_萌_高崎商_群馬県",
+      "appearances": 1
+    }
+  ]
+}

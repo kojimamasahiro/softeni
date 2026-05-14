@@ -1,0 +1,82 @@
+{
+  "totalAppearances": 10,
+  "byCategory": {
+    "doubles": 8,
+    "team": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "水戸女子",
+        "teamId": "mitojoshi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "高根_夏樹_水戸女子_茨城県",
+          "髙野_友里_水戸女子_茨城県"
+        ]
+      },
+      "historicalBest": {
+        "team": "水戸女子",
+        "teamId": "mitojoshi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "斉藤_奈々_水戸女子_茨城県",
+          "笹本_留衣_水戸女子_茨城県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "水戸女子",
+        "teamId": "mitojoshi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 12,
+  "topPlayers": [
+    {
+      "id": "斉藤_奈々_水戸女子_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "笹本_留衣_水戸女子_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "小川_木乃花_水戸女子_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "宮崎_紫帆_水戸女子_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "増渕_萌夏_水戸女子_茨城県",
+      "appearances": 1
+    }
+  ]
+}

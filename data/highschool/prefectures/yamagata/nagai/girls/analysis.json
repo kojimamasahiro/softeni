@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "長井",
+        "teamId": "nagai",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "川村_理未_長井_山形県",
+          "佐藤_咲良_長井_山形県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "川村_理未_長井_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_咲良_長井_山形県",
+      "appearances": 1
+    }
+  ]
+}

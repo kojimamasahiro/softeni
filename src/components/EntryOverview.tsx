@@ -69,7 +69,7 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
                   if (category === 'singles') {
                     const p = entry.information?.[0];
                     return p
-                      ? `${entry.entryNo}.　${p.lastName}${p.firstName}（${p.team}）`
+                      ? `${entry.entryNo}.　${p.lastName}${p.firstName || ''}（${p.team}）`
                       : `${entry.entryNo}.　情報不明`;
                   }
 
@@ -79,7 +79,7 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
 
                   // doublesなど
                   const names = (entry.information ?? []).map(
-                    (p) => `${p.lastName}${p.firstName}`,
+                    (p) => `${p.lastName}${p.firstName || ''}`,
                   );
                   const teams = (entry.information ?? []).map((p) => p.team);
                   const teamSet = new Set(teams);
@@ -88,7 +88,8 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
                       ? `${names.join('・')}（${teams[0]}）`
                       : (entry.information ?? [])
                           .map(
-                            (p) => `${p.lastName}${p.firstName}（${p.team}）`,
+                            (p) =>
+                              `${p.lastName}${p.firstName || ''}（${p.team}）`,
                           )
                           .join('・');
                   return `${entry.entryNo}.　${pairLabel}`;

@@ -1,0 +1,82 @@
+{
+  "totalAppearances": 7,
+  "byCategory": {
+    "doubles": 6,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高田",
+        "teamId": "takada",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "野口_美貴_高田_岩手県",
+          "林_萌生_高田_岩手県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高田",
+        "teamId": "takada",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "亘理_有沙_高田_岩手県",
+          "村上_心元_高田_岩手県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高田",
+        "teamId": "takada",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "亘理_有沙_高田_岩手県",
+      "appearances": 3
+    },
+    {
+      "id": "門田_真歩_高田_岩手県",
+      "appearances": 2
+    },
+    {
+      "id": "村上_心元_高田_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "金野_里琉_高田_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "野口_美貴_高田_岩手県",
+      "appearances": 1
+    }
+  ]
+}

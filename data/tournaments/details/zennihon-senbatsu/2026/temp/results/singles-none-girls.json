@@ -1,0 +1,438 @@
+{
+  "results": [
+    {
+      "playerIds": [
+        "浪岡_菜々美_ナガセケンコー"
+      ],
+      "result": "優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "天間_麗奈_日本体育大学"
+      ],
+      "result": "準優勝",
+      "category": "singles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "決勝",
+      "pair": [
+        "浪岡_菜々美_ナガセケンコー"
+      ],
+      "opponents": [
+        {
+          "lastName": "天間",
+          "firstName": "麗奈",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "天間_麗奈_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 1,
+      "name": "浪岡 菜々美（ナガセケンコー）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "天間_麗奈_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "浪岡",
+          "firstName": "菜々美",
+          "team": "ナガセケンコー",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "浪岡_菜々美_ナガセケンコー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "天間 麗奈（日本体育大学）",
+      "category": "singles",
+      "retired": false
+    }
+  ],
+  "roundRobinMatches": [
+    {
+      "group": "A",
+      "pair": [
+        "浪岡_菜々美_ナガセケンコー"
+      ],
+      "opponents": [
+        {
+          "lastName": "山口",
+          "firstName": "優菜",
+          "team": "宮崎商業高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山口_優菜_宮崎商業高校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 1,
+      "name": "1. 浪岡 菜々美（ナガセケンコー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "山口_優菜_宮崎商業高校"
+      ],
+      "opponents": [
+        {
+          "lastName": "浪岡",
+          "firstName": "菜々美",
+          "team": "ナガセケンコー",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "浪岡_菜々美_ナガセケンコー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "2. 山口 優菜（宮崎商業高校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "浪岡_菜々美_ナガセケンコー"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "美月",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大和_美月_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 1,
+      "name": "1. 浪岡 菜々美（ナガセケンコー）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "大和_美月_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "浪岡",
+          "firstName": "菜々美",
+          "team": "ナガセケンコー",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "浪岡_菜々美_ナガセケンコー"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 3,
+      "name": "3. 大和 美月（早稲田大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "山口_優菜_宮崎商業高校"
+      ],
+      "opponents": [
+        {
+          "lastName": "大和",
+          "firstName": "美月",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "大和_美月_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "2. 山口 優菜（宮崎商業高校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "大和_美月_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "山口",
+          "firstName": "優菜",
+          "team": "宮崎商業高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "山口_優菜_宮崎商業高校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 3,
+      "name": "3. 大和 美月（早稲田大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "青松_淑佳_ヨネックス"
+      ],
+      "opponents": [
+        {
+          "lastName": "中谷",
+          "firstName": "ももこ",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "中谷_ももこ_明治大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "4. 青松 淑佳（ヨネックス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "中谷_ももこ_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "青松",
+          "firstName": "淑佳",
+          "team": "ヨネックス",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "青松_淑佳_ヨネックス"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 5,
+      "name": "5. 中谷 ももこ（明治大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "青松_淑佳_ヨネックス"
+      ],
+      "opponents": [
+        {
+          "lastName": "天間",
+          "firstName": "麗奈",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "天間_麗奈_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "4. 青松 淑佳（ヨネックス）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "天間_麗奈_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "青松",
+          "firstName": "淑佳",
+          "team": "ヨネックス",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "青松_淑佳_ヨネックス"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 6,
+      "name": "6. 天間 麗奈（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "中谷_ももこ_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "天間",
+          "firstName": "麗奈",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "天間_麗奈_日本体育大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "0",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "5. 中谷 ももこ（明治大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "天間_麗奈_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "中谷",
+          "firstName": "ももこ",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "中谷_ももこ_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "0"
+      },
+      "entryNo": 6,
+      "name": "6. 天間 麗奈（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    }
+  ],
+  "standings": {
+    "A": [
+      {
+        "id": 1,
+        "name": "浪岡（ナガセケンコー）",
+        "wins": 2,
+        "losses": 0,
+        "scoreDiff": 4,
+        "totalPointsFor": 8,
+        "totalPointsAgainst": 4,
+        "rank": 1
+      },
+      {
+        "id": 3,
+        "name": "大和（早稲田大学）",
+        "wins": 1,
+        "losses": 1,
+        "scoreDiff": 1,
+        "totalPointsFor": 7,
+        "totalPointsAgainst": 6,
+        "rank": 2
+      },
+      {
+        "id": 2,
+        "name": "山口（宮崎商業高校）",
+        "wins": 0,
+        "losses": 2,
+        "scoreDiff": -5,
+        "totalPointsFor": 3,
+        "totalPointsAgainst": 8,
+        "rank": 3
+      }
+    ],
+    "B": [
+      {
+        "id": 6,
+        "name": "天間（日本体育大学）",
+        "wins": 2,
+        "losses": 0,
+        "scoreDiff": 8,
+        "totalPointsFor": 8,
+        "totalPointsAgainst": 0,
+        "rank": 1
+      },
+      {
+        "id": 5,
+        "name": "中谷（明治大学）",
+        "wins": 1,
+        "losses": 1,
+        "scoreDiff": -3,
+        "totalPointsFor": 4,
+        "totalPointsAgainst": 7,
+        "rank": 2
+      },
+      {
+        "id": 4,
+        "name": "青松（ヨネックス）",
+        "wins": 0,
+        "losses": 2,
+        "scoreDiff": -5,
+        "totalPointsFor": 3,
+        "totalPointsAgainst": 8,
+        "rank": 3
+      }
+    ]
+  }
+}

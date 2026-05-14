@@ -7,17 +7,23 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import LiveResultsByTournament from '@/components/LiveResultsByTournament';
 import MetaHead from '@/components/MetaHead';
+import { getAllDetailRecords, loadInformationMap } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
 
-interface HomeProps {
-  players: PlayerInfo[];
+interface RecentTournament {
+  id: string;
+  year: string;
+  name: string;
+  startDate: string;
+  link: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Home({ players }: HomeProps) {
+interface HomeProps {
+  recentTournaments: RecentTournament[];
+}
+
+export default function Home({ recentTournaments }: HomeProps) {
   const [isClient, setIsClient] = useState(false);
 
   // クライアントサイドでのみ処理を実行
@@ -98,7 +104,18 @@ export default function Home({ players }: HomeProps) {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
-            {/* <LiveResultsByTournament playersData={players} /> */}
+            {/* ✅ STリーグへのリンク */}
+            <section className="max-w-4xl mx-auto mb-8 px-4">
+              <div
+                onClick={() => (window.location.href = '/st-league')}
+                className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700 mb-4"
+              >
+                <h2 className="text-xl font-bold mb-1">STリーグ</h2>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  ソフトテニス実業団最高峰の戦い
+                </p>
+              </div>
+            </section>
 
             {/* ✅ 最近追加された大会（カード形式） */}
             <section className="max-w-4xl mx-auto mb-12 px-4">
@@ -109,41 +126,10 @@ export default function Home({ players }: HomeProps) {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
-                {[
-                  {
-                    id: 'primaryschool-championship',
-                    year: 2025,
-                    name: '全日本小学生選手権大会',
-                    category: 'ダブルス、対抗戦',
-                    startDate: '2025-08-01',
-                  },
-                  {
-                    id: 'japan-business-group',
-                    year: 2025,
-                    name: '全日本実業団選手権大会',
-                    category: '団体',
-                    startDate: '2025-07-26',
-                  },
-                  {
-                    id: 'highschool/highschool-championship',
-                    year: 2025,
-                    name: '全国高等学校総合体育大会',
-                    category: 'ダブルス、団体',
-                    startDate: '2025-07-25',
-                  },
-                  {
-                    id: 'east',
-                    year: 2025,
-                    name: '東日本ソフトテニス選手権大会',
-                    category: 'ダブルス',
-                    startDate: '2025-07-19',
-                  },
-                ].map((tournament) => (
+                {recentTournaments.map((tournament) => (
                   <div
-                    key={`${tournament.id}-${tournament.year}-${tournament.category}`}
-                    onClick={() =>
-                      (window.location.href = `/tournaments/${tournament.id}/${tournament.year}`)
-                    }
+                    key={`${tournament.id}-${tournament.year}`}
+                    onClick={() => (window.location.href = tournament.link)}
                     className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
@@ -151,7 +137,6 @@ export default function Home({ players }: HomeProps) {
                       {new Date(tournament.startDate).toLocaleDateString(
                         'ja-JP',
                       )}
-                      　{tournament.category}
                     </p>
                     <h3 className="text-lg font-bold">{tournament.name}</h3>
                   </div>
@@ -163,7 +148,7 @@ export default function Home({ players }: HomeProps) {
                   href="/tournaments"
                   className="text-sm text-blue-500 hover:underline"
                 >
-                  過去の大会結果一覧はこちら
+                  過去の大会一覧はこちら
                 </Link>
               </div>
             </section>
@@ -173,23 +158,23 @@ export default function Home({ players }: HomeProps) {
               <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
 
               <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
-                本サイトにてよく見られている選手です。選手ごとにプロフィールや大会の成績を確認できます。
+                本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 {[
                   {
-                    id: 'uematsu-toshiki',
+                    id: '19',
                     name: '上松 俊樹',
                     team: 'NTT西日本',
                   },
                   {
-                    id: 'ueoka-shunsuke',
+                    id: '20',
                     name: '上岡 俊介',
                     team: 'Up Rise',
                   },
                   {
-                    id: 'maruyama-kaito',
+                    id: '12',
                     name: '丸山 海斗',
                     team: 'one team',
                   },
@@ -197,7 +182,7 @@ export default function Home({ players }: HomeProps) {
                   <div
                     key={player.id}
                     onClick={() =>
-                      (window.location.href = `/players/${player.id}`)
+                      (window.location.href = `/players/${player.id}/results`)
                     }
                     className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
@@ -229,7 +214,7 @@ export default function Home({ players }: HomeProps) {
               </p>
 
               <div
-                onClick={() => (window.location.href = `/highschool`)}
+                onClick={() => (window.location.href = `/highschool/boys`)}
                 className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
@@ -252,6 +237,35 @@ export default function Home({ players }: HomeProps) {
                   <h3 className="text-lg font-bold mb-1">日本体育大学</h3>
                   <a
                     href="https://nittai-softtennis.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-blue-700 dark:text-blue-300 underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    公式サイト
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-1 h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                </div>
+                <div
+                  onClick={() => (window.location.href = `/teams/watakyu`)}
+                  className="border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <h3 className="text-lg font-bold mb-1">ワタキューセイモア</h3>
+                  <a
+                    href="https://www.watakyu-sports.jp/softtennis/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-sm text-blue-700 dark:text-blue-300 underline"
@@ -297,9 +311,52 @@ export async function getStaticProps() {
     }
   }
 
+  // Fetch recent tournaments
+  const detailRecords = await getAllDetailRecords();
+  const infoMap = await loadInformationMap();
+
+  // Group by tournamentId + year to deduplicate
+  const uniqueTournaments = new Map<string, RecentTournament>();
+
+  for (const record of detailRecords) {
+    const key = `${record.tournamentId}-${record.year}`;
+    if (uniqueTournaments.has(key)) continue;
+
+    const infoList = infoMap.get(record.tournamentId);
+    const info = infoList?.find((i) => i.year === Number(record.year));
+
+    if (!info) continue;
+
+    // Find the category info for this specific record (file)
+    // record.fileName is like "doubles-none-boys.json"
+    const categoryId = record.fileName.replace('.json', '');
+    const categoryInfo = info.categories.find(
+      (c) => c.categoryId === categoryId,
+    );
+
+    if (!categoryInfo) continue;
+
+    const link = `/tournaments/${record.generation}/${record.tournamentId}/${record.year}/${categoryInfo.category}/${categoryInfo.age}/${categoryInfo.gender}`;
+
+    uniqueTournaments.set(key, {
+      id: record.tournamentId,
+      year: record.year,
+      name: record.tournamentName || record.tournamentId,
+      startDate: info.startDate,
+      link,
+    });
+  }
+
+  const tournaments = Array.from(uniqueTournaments.values())
+    .sort(
+      (a, b) =>
+        new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
+    )
+    .slice(0, 4);
+
   return {
     props: {
-      players,
+      recentTournaments: tournaments,
     },
   };
 }

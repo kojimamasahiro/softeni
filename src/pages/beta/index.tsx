@@ -21,15 +21,6 @@ interface BetaFeature {
 
 const betaFeatures: BetaFeature[] = [
   {
-    id: 'same-name-players',
-    title: '同姓同名選手一覧',
-    description:
-      '大会結果から同じ名前の選手を抽出し、所属チームや成績で識別できる機能です。',
-    href: '/beta/same-name-players',
-    status: '試作中',
-    icon: '👥',
-  },
-  {
     id: 'match-results',
     title: '試合結果 - ポイント詳細記録',
     description:

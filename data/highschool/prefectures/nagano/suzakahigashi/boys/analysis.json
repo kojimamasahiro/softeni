@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "須坂東",
+        "teamId": "suzakahigashi",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": [
+          "中澤_春翔_須坂東_長野県",
+          "池田_拓未_須坂東_長野県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中澤_春翔_須坂東_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "池田_拓未_須坂東_長野県",
+      "appearances": 1
+    }
+  ]
+}

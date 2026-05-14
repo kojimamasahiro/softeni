@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "上伊那農",
+        "teamId": "kamiinanou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "小坂_菜月_上伊那農_長野県",
+          "宮下_優月_上伊那農_長野県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小坂_菜月_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "宮下_優月_上伊那農_長野県",
+      "appearances": 1
+    }
+  ]
+}

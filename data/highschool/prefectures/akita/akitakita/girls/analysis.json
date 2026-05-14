@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 13,
+  "byCategory": {
+    "doubles": 11,
+    "team": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "加藤_寧々_秋田北_秋田県",
+          "若狭_あい_秋田北_秋田県"
+        ]
+      },
+      "historicalBest": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "高貝_ここあ_秋田北_秋田県",
+          "山内_愛乃_秋田北_秋田県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 13,
+  "topPlayers": [
+    {
+      "id": "加藤_寧々_秋田北_秋田県",
+      "appearances": 4
+    },
+    {
+      "id": "星野_珠羽_秋田北_秋田県",
+      "appearances": 3
+    },
+    {
+      "id": "山内_叶愛_秋田北_秋田県",
+      "appearances": 3
+    },
+    {
+      "id": "下村_まこ_秋田北_秋田県",
+      "appearances": 2
+    },
+    {
+      "id": "桑原_暖_秋田北_秋田県",
+      "appearances": 2
+    }
+  ]
+}

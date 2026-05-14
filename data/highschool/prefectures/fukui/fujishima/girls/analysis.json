@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "藤島",
+        "teamId": "fujishima",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "辻_葵衣_藤島_福井県",
+          "中橋_陽_藤島_福井県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "辻_葵衣_藤島_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "中橋_陽_藤島_福井県",
+      "appearances": 1
+    }
+  ]
+}

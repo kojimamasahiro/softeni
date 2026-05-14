@@ -1,0 +1,71 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "doubles": 6
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "国本女子",
+        "teamId": "kunimotojoshi",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "左_恵留風_国本女子_東京都",
+          "安達_碧_国本女子_東京都"
+        ]
+      },
+      "historicalBest": {
+        "team": "国本女子",
+        "teamId": "kunimotojoshi",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "谷_明日里_国本女子_東京都",
+          "秋谷_陽奈_国本女子_東京都"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "谷_明日里_国本女子_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "左_恵留風_国本女子_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "安達_碧_国本女子_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "秋谷_陽奈_国本女子_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "三澤_春花_国本女子_東京都",
+      "appearances": 1
+    }
+  ]
+}

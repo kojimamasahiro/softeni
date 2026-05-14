@@ -93,19 +93,22 @@ for prefecture_id in os.listdir(base_dir):
     with open(summary_path, 'r', encoding='utf-8') as f:
         summary = json.load(f)
 
-    # teamId ごとにグループ化
-    grouped = defaultdict(list)
+    # teamId と gender ごとにグループ化
+    grouped = defaultdict(lambda: defaultdict(list))
     for item in summary:
-        grouped[item['teamId']].append(item)
+        team_id = item['teamId']
+        gender = item.get('gender', 'unknown')
+        grouped[team_id][gender].append(item)
 
-    # 各チームに対して analysis.json を生成
-    for team_id, entries in grouped.items():
-        team_dir = os.path.join(pref_dir, team_id)
-        os.makedirs(team_dir, exist_ok=True)
+    # 各チーム・性別に対して analysis.json を生成
+    for team_id, gender_data in grouped.items():
+        for gender, entries in gender_data.items():
+            team_gender_dir = os.path.join(pref_dir, team_id, gender)
+            os.makedirs(team_gender_dir, exist_ok=True)
 
-        analysis = analyze_team(entries)
-        analysis_path = os.path.join(team_dir, 'analysis.json')
-        with open(analysis_path, 'w', encoding='utf-8') as f:
-            json.dump(analysis, f, ensure_ascii=False, indent=2)
+            analysis = analyze_team(entries)
+            analysis_path = os.path.join(team_gender_dir, 'analysis.json')
+            with open(analysis_path, 'w', encoding='utf-8') as f:
+                json.dump(analysis, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ {analysis_path} を生成しました")
+            print(f"✅ {analysis_path} を生成しました")

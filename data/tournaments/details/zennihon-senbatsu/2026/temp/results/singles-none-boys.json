@@ -1,0 +1,438 @@
+{
+  "results": [
+    {
+      "playerIds": [
+        "長江_光一_NTT西日本"
+      ],
+      "result": "優勝",
+      "category": "singles"
+    },
+    {
+      "playerIds": [
+        "植田_璃音_早稲田大学"
+      ],
+      "result": "準優勝",
+      "category": "singles"
+    }
+  ],
+  "matches": [
+    {
+      "round": "決勝",
+      "pair": [
+        "長江_光一_NTT西日本"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "植田_璃音_早稲田大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 3,
+      "name": "長江 光一（NTT西日本）",
+      "category": "singles",
+      "retired": false
+    },
+    {
+      "round": "決勝",
+      "pair": [
+        "植田_璃音_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長江",
+          "firstName": "光一",
+          "team": "NTT西日本",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長江_光一_NTT西日本"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 4,
+      "name": "植田 璃音（早稲田大学）",
+      "category": "singles",
+      "retired": false
+    }
+  ],
+  "roundRobinMatches": [
+    {
+      "group": "A",
+      "pair": [
+        "塚本_光琉_岡崎城西高校"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "駿丞",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "佐藤_駿丞_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "2"
+      },
+      "entryNo": 1,
+      "name": "1. 塚本 光琉（岡崎城西高校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "佐藤_駿丞_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "光琉",
+          "team": "岡崎城西高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "塚本_光琉_岡崎城西高校"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "2",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "2. 佐藤 駿丞（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "塚本_光琉_岡崎城西高校"
+      ],
+      "opponents": [
+        {
+          "lastName": "長江",
+          "firstName": "光一",
+          "team": "NTT西日本",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長江_光一_NTT西日本"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 1,
+      "name": "1. 塚本 光琉（岡崎城西高校）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "長江_光一_NTT西日本"
+      ],
+      "opponents": [
+        {
+          "lastName": "塚本",
+          "firstName": "光琉",
+          "team": "岡崎城西高校",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "塚本_光琉_岡崎城西高校"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 3,
+      "name": "3. 長江 光一（NTT西日本）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "佐藤_駿丞_日本体育大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "長江",
+          "firstName": "光一",
+          "team": "NTT西日本",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "長江_光一_NTT西日本"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "1",
+        "lost": "4"
+      },
+      "entryNo": 2,
+      "name": "2. 佐藤 駿丞（日本体育大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "A",
+      "pair": [
+        "長江_光一_NTT西日本"
+      ],
+      "opponents": [
+        {
+          "lastName": "佐藤",
+          "firstName": "駿丞",
+          "team": "日本体育大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "佐藤_駿丞_日本体育大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "1"
+      },
+      "entryNo": 3,
+      "name": "3. 長江 光一（NTT西日本）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "植田_璃音_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 4,
+      "name": "4. 植田 璃音（早稲田大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "植田_璃音_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "5. 坂口 生磨（明治大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "植田_璃音_早稲田大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "本倉",
+          "firstName": "健太郎",
+          "team": "NTT西日本",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "本倉_健太郎_NTT西日本"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 4,
+      "name": "4. 植田 璃音（早稲田大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "本倉_健太郎_NTT西日本"
+      ],
+      "opponents": [
+        {
+          "lastName": "植田",
+          "firstName": "璃音",
+          "team": "早稲田大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "植田_璃音_早稲田大学"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 6,
+      "name": "6. 本倉 健太郎（NTT西日本）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "坂口_生磨_明治大学"
+      ],
+      "opponents": [
+        {
+          "lastName": "本倉",
+          "firstName": "健太郎",
+          "team": "NTT西日本",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "本倉_健太郎_NTT西日本"
+        }
+      ],
+      "result": "lose",
+      "games": {
+        "won": "3",
+        "lost": "4"
+      },
+      "entryNo": 5,
+      "name": "5. 坂口 生磨（明治大学）",
+      "category": "doubles",
+      "retired": false
+    },
+    {
+      "group": "B",
+      "pair": [
+        "本倉_健太郎_NTT西日本"
+      ],
+      "opponents": [
+        {
+          "lastName": "坂口",
+          "firstName": "生磨",
+          "team": "明治大学",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "坂口_生磨_明治大学"
+        }
+      ],
+      "result": "win",
+      "games": {
+        "won": "4",
+        "lost": "3"
+      },
+      "entryNo": 6,
+      "name": "6. 本倉 健太郎（NTT西日本）",
+      "category": "doubles",
+      "retired": false
+    }
+  ],
+  "standings": {
+    "A": [
+      {
+        "id": 3,
+        "name": "長江（NTT西日本）",
+        "wins": 2,
+        "losses": 0,
+        "scoreDiff": 4,
+        "totalPointsFor": 8,
+        "totalPointsAgainst": 4,
+        "rank": 1
+      },
+      {
+        "id": 1,
+        "name": "塚本（岡崎城西高校）",
+        "wins": 1,
+        "losses": 1,
+        "scoreDiff": 1,
+        "totalPointsFor": 7,
+        "totalPointsAgainst": 6,
+        "rank": 2
+      },
+      {
+        "id": 2,
+        "name": "佐藤（日本体育大学）",
+        "wins": 0,
+        "losses": 2,
+        "scoreDiff": -5,
+        "totalPointsFor": 3,
+        "totalPointsAgainst": 8,
+        "rank": 3
+      }
+    ],
+    "B": [
+      {
+        "id": 4,
+        "name": "植田（早稲田大学）",
+        "wins": 2,
+        "losses": 0,
+        "scoreDiff": 2,
+        "totalPointsFor": 8,
+        "totalPointsAgainst": 6,
+        "rank": 1
+      },
+      {
+        "id": 6,
+        "name": "本倉（NTT西日本）",
+        "wins": 1,
+        "losses": 1,
+        "scoreDiff": 0,
+        "totalPointsFor": 7,
+        "totalPointsAgainst": 7,
+        "rank": 2
+      },
+      {
+        "id": 5,
+        "name": "坂口（明治大学）",
+        "wins": 0,
+        "losses": 2,
+        "scoreDiff": -2,
+        "totalPointsFor": 6,
+        "totalPointsAgainst": 8,
+        "rank": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 3,
+    "team": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "富士見",
+        "teamId": "fujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "小林_麻央_富士見_静岡県",
+          "佐野_未歩_富士見_静岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "富士見",
+        "teamId": "fujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "小林_麻央_富士見_静岡県",
+          "佐野_未歩_富士見_静岡県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "富士見",
+        "teamId": "fujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "富士見",
+        "teamId": "fujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 5,
+  "topPlayers": [
+    {
+      "id": "小林_麻央_富士見_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "佐野_未歩_富士見_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "野田_雛希_富士見_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "津村_汐那_富士見_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "阿部_穂花_富士見_静岡県",
+      "appearances": 1
+    }
+  ]
+}

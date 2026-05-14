@@ -2,7 +2,16 @@
 import fs from 'fs';
 import path from 'path';
 
-import { TournamentMeta } from '@/types';
+// TournamentMeta type is defined locally in some pages, but not exported from central types.
+// Use a lightweight local type here to avoid a breaking import.
+interface TournamentMeta {
+  id?: string;
+  name?: string;
+  generation?: string;
+  categoryTypes?: string[];
+  isMajorTitle?: boolean;
+  officialUrl?: string;
+}
 
 import { getAllPlayers } from './players';
 

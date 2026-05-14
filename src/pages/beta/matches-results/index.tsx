@@ -1,12 +1,15 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 
-import { createServerClient } from '@/lib/supabase';
+import {
+  getBetaMatchesGeneratedAt,
+  getBetaTeamDisplayName,
+  getLatestBetaMatches,
+} from '@/lib/betaMatchesStatic';
 import {
   generateTournamentUrlFromMatch,
-  getTournamentInfoSSR,
   TournamentInfo,
-} from '@/lib/tournamentHelpers';
+} from '@/lib/tournamentClientHelpers';
 
 import { Game, Match } from '../../../types/database';
 
@@ -21,40 +24,6 @@ export default function MatchesList({
   tournamentInfos,
   lastUpdated,
 }: Props) {
-  // チーム表記を取得（個別フィールド優先、フォールバックでteam_a/team_bから抽出）
-  const getTeamDisplay = (match: Match, team: 'A' | 'B') => {
-    if (team === 'A') {
-      // 個別フィールドがある場合は優先使用
-      if (match.team_a_player1_last_name) {
-        const players = [match.team_a_player1_last_name];
-        if (match.team_a_player2_last_name) {
-          players.push(match.team_a_player2_last_name);
-        }
-        return players.join('・');
-      }
-      // フォールバック: team_aをそのまま表示
-      return getFullTeamName(match.team_a);
-    } else {
-      // 個別フィールドがある場合は優先使用
-      if (match.team_b_player1_last_name) {
-        const players = [match.team_b_player1_last_name];
-        if (match.team_b_player2_last_name) {
-          players.push(match.team_b_player2_last_name);
-        }
-        return players.join('・');
-      }
-      // フォールバック: team_bをそのまま表示
-      return getFullTeamName(match.team_b);
-    }
-  };
-
-  // 文字列をそのまま表示（フォールバック用）
-  const getFullTeamName = (teamName: string | null) => {
-    if (!teamName) return '';
-    // 文字列全体をそのまま返す
-    return teamName.trim();
-  };
-
   // 試合の勝者を取得
   const getMatchWinner = (match: Match) => {
     if (!match?.games) return null;
@@ -126,13 +95,16 @@ export default function MatchesList({
                 <Link
                   href={`/beta/matches-results/${match.id}`}
                   className="block p-4 hover:bg-gray-50"
-                  aria-label={`${match.team_a} vs ${match.team_b}の試合詳細`}
+                  aria-label={`${getBetaTeamDisplayName(
+                    match,
+                    'A',
+                  )} vs ${getBetaTeamDisplayName(match, 'B')}の試合詳細`}
                 >
                   <div className="relative">
                     <div className="pr-20">
                       <p className="text-lg font-medium mb-1">
-                        {getTeamDisplay(match, 'A')} vs{' '}
-                        {getTeamDisplay(match, 'B')}
+                        {getBetaTeamDisplayName(match, 'A')} vs{' '}
+                        {getBetaTeamDisplayName(match, 'B')}
                       </p>
 
                       {/* スコア表示 */}
@@ -254,21 +226,8 @@ export default function MatchesList({
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
-    const supabase = createServerClient();
-    const { data: matches, error } = await supabase
-      .from('matches')
-      .select(
-        `
-        *,
-        games(*, points(*))
-      `,
-      )
-      .order('created_at', { ascending: false })
-      .limit(50);
-
-    if (error) throw error;
-
-    const safeMatches = matches || [];
+    const safeMatches = await getLatestBetaMatches();
+    const generatedAt = await getBetaMatchesGeneratedAt();
     const tournamentIds = [
       ...new Set(safeMatches.map((m) => m.tournament_name).filter(Boolean)),
     ] as string[];
@@ -277,7 +236,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     await Promise.all(
       tournamentIds.map(async (id) => {
         try {
-          const info = await getTournamentInfoSSR(id);
+          const helpers = await import('@/lib/tournamentHelpers.server');
+          const info = await helpers.getTournamentInfoSSR(id);
           if (info) tournamentInfos[id] = info;
         } catch (e) {
           console.error(`Tournament fetch failed: ${id}`, e);
@@ -289,9 +249,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       props: {
         matches: safeMatches,
         tournamentInfos,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: generatedAt ?? new Date().toISOString(),
       },
-      revalidate: 60, // ISR: 60秒ごとに再生成
     };
   } catch (error) {
     console.error('getStaticProps error:', error);
@@ -301,7 +260,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         tournamentInfos: {},
         lastUpdated: new Date().toISOString(),
       },
-      revalidate: 30,
     };
   }
 };

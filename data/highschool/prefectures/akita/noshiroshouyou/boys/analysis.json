@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "能代松陽",
+        "teamId": "noshiroshouyou",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "髙沢_響_能代松陽_秋田県",
+          "成田_辿真_能代松陽_秋田県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "髙沢_響_能代松陽_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "成田_辿真_能代松陽_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "平塚_颯_能代松陽_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "藤井_新_能代松陽_秋田県",
+      "appearances": 1
+    }
+  ]
+}

@@ -38,29 +38,46 @@ for pref_id, new_entries in grouped.items():
 
     # ✅ 重複判定用のキーセット（団体戦は team を使う）
     def make_key(e):
-        category = e.get("category")
-        tournament_id = e.get("tournamentId")
-        year = e.get("year")
+        # 重複チェック用キーの生成
+        # カテゴリ、大会、年度、性別、および (playerIds or team) で一意性を判断
+        # prefer teamId when available to avoid mismatches between team name variations
+        team_key = e.get("teamId") or e.get("team")
+        player_ids = e.get("playerIds") or []
+        # normalize playerIds ordering so pairs compare equal regardless of order
+        try:
+            pid_tuple = tuple(sorted(player_ids))
+        except Exception:
+            pid_tuple = tuple(player_ids)
+        return (
+            e.get("category"),
+            e.get("tournamentId"),
+            e.get("year"),
+            e.get("gender"),
+            pid_tuple,
+            team_key,
+        )
 
-        if category == "team":
-            return (category, tournament_id, year, e.get("team"))
+    # build index for existing entries so we can update (upsert) instead of only appending
+    existing_index = {make_key(e): i for i, e in enumerate(existing_entries)}
+
+    added = 0
+    updated = 0
+    for e in new_entries:
+        key = make_key(e)
+        if key in existing_index:
+            idx = existing_index[key]
+            # if the new entry differs, replace the existing one (treat new as authoritative)
+            if existing_entries[idx] != e:
+                existing_entries[idx] = e
+                updated += 1
         else:
-            return (
-                category,
-                tournament_id,
-                year,
-                tuple(sorted(e.get("playerIds", [])))
-            )
+            existing_entries.append(e)
+            existing_index[key] = len(existing_entries) - 1
+            added += 1
 
-    existing_keys = {make_key(e) for e in existing_entries}
-
-    # まだ存在しない新規エントリのみ抽出
-    filtered_new_entries = [e for e in new_entries if make_key(e) not in existing_keys]
-
-    if filtered_new_entries:
-        combined = existing_entries + filtered_new_entries
+    if added or updated:
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(combined, f, ensure_ascii=False, indent=2)
-        print(f"✅ {output_path} に {len(filtered_new_entries)} 件を追記しました")
+            json.dump(existing_entries, f, ensure_ascii=False, indent=2)
+        print(f"✅ {output_path} を更新しました（追加: {added} 件、更新: {updated} 件）")
     else:
-        print(f"⚠️ {output_path} に追記すべきデータはありません（すでに存在）")
+        print(f"⚠️ {output_path} に変更はありません（既に最新）")
