@@ -13,6 +13,7 @@ import {
 } from '@/lib/matchAnalysis';
 import {
   getBetaMatchById,
+  getBetaMatchesGeneratedAt,
   getBetaTeamDisplayName,
   getLatestBetaMatchIds,
 } from '@/lib/betaMatchesStatic';
@@ -2086,6 +2087,7 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
     }
 
     const match = await getBetaMatchById(matchId);
+    const generatedAt = await getBetaMatchesGeneratedAt();
 
     if (!match) {
       console.error('Match not found:', matchId);
@@ -2118,7 +2120,7 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
       props: {
         match,
         tournamentInfo,
-        lastUpdated,
+        lastUpdated: generatedAt ?? lastUpdated,
       },
     };
   } catch (error) {

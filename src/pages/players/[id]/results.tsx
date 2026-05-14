@@ -139,9 +139,7 @@ export default function PlayerResultsPage({
           />
 
           <header>
-            <h1 className="text-2xl font-bold">
-              {fullName} 選手の試合結果
-            </h1>
+            <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
               本ページでは、{fullName}{' '}
               選手の出場大会や成績、主な勝ち上がり情報を掲載しています。

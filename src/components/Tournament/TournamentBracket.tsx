@@ -222,7 +222,9 @@ function buildBracket(matches: TournamentMatch[]): {
 
       // Calculate champion Y
       const finalRoundName = distToRound.get(0);
-      const finalLayout = finalRoundName ? layoutByRound.get(finalRoundName) : [];
+      const finalLayout = finalRoundName
+        ? layoutByRound.get(finalRoundName)
+        : [];
       const top = finalLayout?.[0];
       const bottom = finalLayout?.[1];
       let champY = 0;
@@ -582,14 +584,21 @@ export default function TournamentBracket({
                       )}
 
                       {/* 次のラウンドへの接続線、または最終・途中結果のスコア線 */}
-                      {(roundIndex < displayedRounds.length - 1 || matchForEntry) &&
+                      {(roundIndex < displayedRounds.length - 1 ||
+                        matchForEntry) &&
                         (() => {
                           const nextRoundName = displayedRounds[roundIndex + 1];
-                          const nextLayout = nextRoundName ? dynamicLayout.get(nextRoundName) : undefined;
+                          const nextLayout = nextRoundName
+                            ? dynamicLayout.get(nextRoundName)
+                            : undefined;
                           // 次のラウンドのエントリーは、2つの子を1つにまとめるため、idx = Math.floor(index / 2)
                           const destNode = nextLayout?.[Math.floor(index / 2)];
 
-                          if (roundIndex === displayedRounds.length - 1 && !matchForEntry) return null;
+                          if (
+                            roundIndex === displayedRounds.length - 1 &&
+                            !matchForEntry
+                          )
+                            return null;
 
                           return (
                             <svg

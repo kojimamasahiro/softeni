@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 
 import {
+  getBetaMatchesGeneratedAt,
   getBetaTeamDisplayName,
   getLatestBetaMatches,
 } from '@/lib/betaMatchesStatic';
@@ -226,6 +227,7 @@ export default function MatchesList({
 export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
     const safeMatches = await getLatestBetaMatches();
+    const generatedAt = await getBetaMatchesGeneratedAt();
     const tournamentIds = [
       ...new Set(safeMatches.map((m) => m.tournament_name).filter(Boolean)),
     ] as string[];
@@ -247,7 +249,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       props: {
         matches: safeMatches,
         tournamentInfos,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: generatedAt ?? new Date().toISOString(),
       },
     };
   } catch (error) {

@@ -1,9 +1,15 @@
-import { createServerClient } from '@/lib/supabase';
-import type { Game, Match, Point } from '@/types/database';
+import fs from 'fs/promises';
+import path from 'path';
 
-const LATEST_BETA_MATCH_LIMIT = 50;
+import type { Match } from '@/types/database';
 
-type SupabaseServerClient = ReturnType<typeof createServerClient>;
+const betaMatchesRoot = path.join(
+  process.cwd(),
+  'public',
+  'data',
+  'beta-matches',
+);
+
 type TeamSide = 'A' | 'B';
 type RawPlayer = {
   last_name?: unknown;
@@ -14,9 +20,29 @@ type RawTeam = {
   name?: unknown;
   players?: RawPlayer[];
 };
+type BetaMatchesIndex = {
+  generatedAt?: string;
+  matches?: Match[];
+};
+type BetaMatchesMeta = {
+  generatedAt?: string;
+  matchIds?: string[];
+};
+type BetaMatchDetail = {
+  generatedAt?: string;
+  match?: Match;
+};
 
-const isMissingTableError = (error: { code?: string } | null) => {
-  return error?.code === 'PGRST205' || error?.code === '42P01';
+const readJson = async <T>(filePath: string): Promise<T | null> => {
+  try {
+    const raw = await fs.readFile(filePath, 'utf-8');
+    return JSON.parse(raw) as T;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      return null;
+    }
+    throw error;
+  }
 };
 
 const stringifyNamePart = (value: unknown) => {
@@ -82,123 +108,29 @@ export const getBetaTeamDisplayName = (match: Match, team: TeamSide) => {
   return formatRawTeamName(team === 'A' ? match.team_a : match.team_b);
 };
 
-const groupPointsByGameId = (points: Point[]) => {
-  const pointsByGameId = new Map<string, Point[]>();
-
-  points.forEach((point) => {
-    const existing = pointsByGameId.get(point.game_id) ?? [];
-    existing.push(point);
-    pointsByGameId.set(point.game_id, existing);
-  });
-
-  pointsByGameId.forEach((gamePoints) => {
-    gamePoints.sort((a, b) => a.point_number - b.point_number);
-  });
-
-  return pointsByGameId;
+export const getLatestBetaMatches = async () => {
+  const indexPath = path.join(betaMatchesRoot, 'index.json');
+  const data = await readJson<BetaMatchesIndex>(indexPath);
+  return data?.matches ?? [];
 };
 
-const attachGamesToMatches = async (
-  supabase: SupabaseServerClient,
-  matches: Match[],
-) => {
-  const matchIds = matches.map((match) => match.id);
-  if (matchIds.length === 0) return matches;
-
-  const { data: games, error: gamesError } = await supabase
-    .from('games')
-    .select('*')
-    .in('match_id', matchIds)
-    .order('game_number', { ascending: true });
-
-  if (gamesError) {
-    if (isMissingTableError(gamesError)) {
-      return matches.map((match) => ({
-        ...match,
-        games: [],
-      }));
-    }
-
-    throw gamesError;
-  }
-
-  const safeGames = (games ?? []) as Game[];
-  const gameIds = safeGames.map((game) => game.id);
-  let pointsByGameId = new Map<string, Point[]>();
-
-  if (gameIds.length > 0) {
-    const { data: points, error: pointsError } = await supabase
-      .from('points')
-      .select('*')
-      .in('game_id', gameIds)
-      .order('point_number', { ascending: true });
-
-    if (pointsError) {
-      if (!isMissingTableError(pointsError)) {
-        throw pointsError;
-      }
-    } else {
-      pointsByGameId = groupPointsByGameId((points ?? []) as Point[]);
-    }
-  }
-
-  const gamesByMatchId = new Map<string, Game[]>();
-  safeGames.forEach((game) => {
-    const matchGames = gamesByMatchId.get(game.match_id) ?? [];
-    matchGames.push({
-      ...game,
-      points: pointsByGameId.get(game.id) ?? [],
-    });
-    gamesByMatchId.set(game.match_id, matchGames);
-  });
-
-  gamesByMatchId.forEach((matchGames) => {
-    matchGames.sort((a, b) => a.game_number - b.game_number);
-  });
-
-  return matches.map((match) => ({
-    ...match,
-    games: gamesByMatchId.get(match.id) ?? [],
-  }));
+export const getBetaMatchesGeneratedAt = async () => {
+  const metaPath = path.join(betaMatchesRoot, 'meta.json');
+  const meta = await readJson<BetaMatchesMeta>(metaPath);
+  return meta?.generatedAt ?? null;
 };
 
-export const getLatestBetaMatches = async (limit = LATEST_BETA_MATCH_LIMIT) => {
-  const supabase = createServerClient();
+export const getLatestBetaMatchIds = async () => {
+  const metaPath = path.join(betaMatchesRoot, 'meta.json');
+  const meta = await readJson<BetaMatchesMeta>(metaPath);
+  if (meta?.matchIds) return meta.matchIds;
 
-  const { data: matches, error } = await supabase
-    .from('matches')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(limit);
-
-  if (error) throw error;
-
-  return attachGamesToMatches(supabase, (matches ?? []) as Match[]);
-};
-
-export const getLatestBetaMatchIds = async (
-  limit = LATEST_BETA_MATCH_LIMIT,
-) => {
-  const matches = await getLatestBetaMatches(limit);
+  const matches = await getLatestBetaMatches();
   return matches.map((match) => match.id);
 };
 
 export const getBetaMatchById = async (matchId: string) => {
-  const supabase = createServerClient();
-
-  const { data: match, error } = await supabase
-    .from('matches')
-    .select('*')
-    .eq('id', matchId)
-    .single();
-
-  if (error || !match) {
-    return null;
-  }
-
-  const [matchWithGames] = await attachGamesToMatches(supabase, [
-    match as Match,
-  ]);
-
-  return matchWithGames;
+  const detailPath = path.join(betaMatchesRoot, 'matches', `${matchId}.json`);
+  const data = await readJson<BetaMatchDetail>(detailPath);
+  return data?.match ?? null;
 };

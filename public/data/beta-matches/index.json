@@ -1,0 +1,1118 @@
+{
+  "generatedAt": "2026-05-14T14:11:44.373Z",
+  "matches": [
+    {
+      "id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+      "tournament_name": "zennihon-championship-2025",
+      "team_a": "49 橋場 柊一郎 (法政大学) [日本学連] / 菊山 太陽 (法政大学) [日本学連]",
+      "team_b": "196 上岡 俊介 (UpＲise) [京都] / 丸山 海斗 (oneteam) [大阪]",
+      "best_of": 9,
+      "created_at": "2025-11-09T00:22:13.862547",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "決勝",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "49",
+      "team_a_player1_last_name": "橋場",
+      "team_a_player1_first_name": "柊一郎",
+      "team_a_player1_team_name": "法政大学",
+      "team_a_player1_region": "日本学連",
+      "team_a_player2_last_name": "菊山",
+      "team_a_player2_first_name": "太陽",
+      "team_a_player2_team_name": "法政大学",
+      "team_a_player2_region": "日本学連",
+      "team_b_entry_number": "196",
+      "team_b_player1_last_name": "上岡",
+      "team_b_player1_first_name": "俊介",
+      "team_b_player1_team_name": "UpＲise",
+      "team_b_player1_region": "京都",
+      "team_b_player2_last_name": "丸山",
+      "team_b_player2_first_name": "海斗",
+      "team_b_player2_team_name": "oneteam",
+      "team_b_player2_region": "大阪",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "橋場",
+              "team_name": "法政大学",
+              "first_name": "柊一郎"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "菊山",
+              "team_name": "法政大学",
+              "first_name": "太陽"
+            }
+          ],
+          "entry_number": "49"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "京都",
+              "last_name": "上岡",
+              "team_name": "UpＲise",
+              "first_name": "俊介"
+            },
+            {
+              "region": "大阪",
+              "last_name": "丸山",
+              "team_name": "oneteam",
+              "first_name": "海斗"
+            }
+          ],
+          "entry_number": "196"
+        }
+      },
+      "tournament_id": "zennihon-championship",
+      "games": [
+        {
+          "id": "cb9a7427-6f34-44c1-b662-4557f781ba5e",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 1,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:22:14.06715"
+        },
+        {
+          "id": "5b6d2170-b389-469b-8bcd-35bb051270f2",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 6,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:25:08.650405"
+        },
+        {
+          "id": "e3c93761-3b81-48c9-87d0-f44077da93f0",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 3,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:30:09.301868"
+        },
+        {
+          "id": "c441d285-3c8d-462d-8209-54d136f5c3a0",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:31:41.313476"
+        },
+        {
+          "id": "0b786f4e-2576-41a8-9147-1b01d10c449b",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 5,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:33:09.830938"
+        },
+        {
+          "id": "57775d8e-7c1e-44f0-a0d3-8e275b75d272",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:59:31.178524"
+        },
+        {
+          "id": "445848bf-431e-440d-ae99-8ad5168ba00b",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T00:59:31.34445"
+        },
+        {
+          "id": "762a1fba-110c-4a3c-ade9-c06d4ed3b41c",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 8,
+          "winner_team": "A",
+          "points_a": 5,
+          "points_b": 3,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T01:07:36.685164"
+        },
+        {
+          "id": "f0544f8a-b936-415c-942f-9b3f4c0f67db",
+          "match_id": "eb0cffa2-1acb-4167-8bfa-6e670f7d1c21",
+          "game_number": 9,
+          "winner_team": "A",
+          "points_a": 7,
+          "points_b": 5,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-09T01:11:54.283924"
+        }
+      ]
+    },
+    {
+      "id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+      "tournament_name": "zennihon-championship-2025",
+      "team_a": "92 橋本 旭陽 (ヨシザワクラブ) [三重] / 増田 洋五豊 (ヨシザワクラブ) [三重]",
+      "team_b": "98 片岡 暁紀 (日本体育大学) [日本学連] / 黒坂 卓矢 (日本体育大学) [日本学連]",
+      "best_of": 9,
+      "created_at": "2025-11-07T09:54:09.472673",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "3回戦",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "92",
+      "team_a_player1_last_name": "橋本",
+      "team_a_player1_first_name": "旭陽",
+      "team_a_player1_team_name": "ヨシザワクラブ",
+      "team_a_player1_region": "三重",
+      "team_a_player2_last_name": "増田",
+      "team_a_player2_first_name": "洋五豊",
+      "team_a_player2_team_name": "ヨシザワクラブ",
+      "team_a_player2_region": "三重",
+      "team_b_entry_number": "98",
+      "team_b_player1_last_name": "片岡",
+      "team_b_player1_first_name": "暁紀",
+      "team_b_player1_team_name": "日本体育大学",
+      "team_b_player1_region": "日本学連",
+      "team_b_player2_last_name": "黒坂",
+      "team_b_player2_first_name": "卓矢",
+      "team_b_player2_team_name": "日本体育大学",
+      "team_b_player2_region": "日本学連",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "三重",
+              "last_name": "橋本",
+              "team_name": "ヨシザワクラブ",
+              "first_name": "旭陽"
+            },
+            {
+              "region": "三重",
+              "last_name": "増田",
+              "team_name": "ヨシザワクラブ",
+              "first_name": "洋五豊"
+            }
+          ],
+          "entry_number": "92"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "片岡",
+              "team_name": "日本体育大学",
+              "first_name": "暁紀"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "黒坂",
+              "team_name": "日本体育大学",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": "98"
+        }
+      },
+      "tournament_id": "zennihon-championship",
+      "games": [
+        {
+          "id": "31520afd-10b6-41f3-bb3b-b3ac412dab6f",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 1,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T09:54:09.735204"
+        },
+        {
+          "id": "f530a690-54da-447a-b810-24cd0a534e44",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 5,
+          "points_b": 3,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T09:57:31.453788"
+        },
+        {
+          "id": "533910be-febb-4ec8-8fdd-75b201d6c7a8",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 6,
+          "points_b": 8,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T09:59:32.745568"
+        },
+        {
+          "id": "ea14cfa4-6b11-4b7d-80ee-c98503c61472",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T10:05:02.664521"
+        },
+        {
+          "id": "5cc3d59e-a6db-418f-90cb-1a668f3594df",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T10:07:05.461839"
+        },
+        {
+          "id": "9f69e430-b665-4781-8768-654ac0e5f9c5",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 6,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T10:08:42.031083"
+        },
+        {
+          "id": "8f2bf4b2-33a7-49a2-be96-f5ff8cf13d21",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 7,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T10:10:03.693112"
+        },
+        {
+          "id": "07d4c66e-14b6-448b-adb4-3db24fb50a35",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 8,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T10:12:08.528321"
+        },
+        {
+          "id": "b56c937d-37a9-40ab-b805-6ad3d789a66b",
+          "match_id": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
+          "game_number": 9,
+          "winner_team": "B",
+          "points_a": 5,
+          "points_b": 7,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-07T10:15:04.463471"
+        }
+      ]
+    },
+    {
+      "id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+      "tournament_name": "zennihon-championship-2025",
+      "team_a": "194 酒井 道矢 (十八親和銀行) [長崎] / 前道 侑典 (十八親和銀行) [長崎]",
+      "team_b": "196 上岡 俊介 (Up Rise) [京都] / 丸山 海斗 (one team) [大阪]",
+      "best_of": 9,
+      "created_at": "2025-11-06T07:42:08.536898",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "2回戦",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "194",
+      "team_a_player1_last_name": "酒井",
+      "team_a_player1_first_name": "道矢",
+      "team_a_player1_team_name": "十八親和銀行",
+      "team_a_player1_region": "長崎",
+      "team_a_player2_last_name": "前道",
+      "team_a_player2_first_name": "侑典",
+      "team_a_player2_team_name": "十八親和銀行",
+      "team_a_player2_region": "長崎",
+      "team_b_entry_number": "196",
+      "team_b_player1_last_name": "上岡",
+      "team_b_player1_first_name": "俊介",
+      "team_b_player1_team_name": "Up Rise",
+      "team_b_player1_region": "京都",
+      "team_b_player2_last_name": "丸山",
+      "team_b_player2_first_name": "海斗",
+      "team_b_player2_team_name": "one team",
+      "team_b_player2_region": "大阪",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "長崎",
+              "last_name": "酒井",
+              "team_name": "十八親和銀行",
+              "first_name": "道矢"
+            },
+            {
+              "region": "長崎",
+              "last_name": "前道",
+              "team_name": "十八親和銀行",
+              "first_name": "侑典"
+            }
+          ],
+          "entry_number": "194"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "京都",
+              "last_name": "上岡",
+              "team_name": "Up Rise",
+              "first_name": "俊介"
+            },
+            {
+              "region": "大阪",
+              "last_name": "丸山",
+              "team_name": "one team",
+              "first_name": "海斗"
+            }
+          ],
+          "entry_number": "196"
+        }
+      },
+      "tournament_id": "zennihon-championship",
+      "games": [
+        {
+          "id": "1b1d317f-7a29-430a-8a75-db9b630c56d1",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 1,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T07:42:08.652034"
+        },
+        {
+          "id": "6ea1c6d1-8af4-44ae-bad4-c41415d16ca6",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T07:45:25.566881"
+        },
+        {
+          "id": "a9856383-cfe8-46da-baa0-607d8e885876",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T07:50:50.447774"
+        },
+        {
+          "id": "c8459a65-3282-4169-80c0-676515ca60f0",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T07:52:15.259428"
+        },
+        {
+          "id": "27c3afe1-15f9-45be-95aa-95763e5b4858",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T07:54:23.35203"
+        },
+        {
+          "id": "92e84831-141a-4210-9b6f-d8d6fc2f9aca",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 6,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T07:57:16.629617"
+        },
+        {
+          "id": "2141a108-2d3f-4544-9bd5-b809b4cf1674",
+          "match_id": "5155b158-3db3-41b9-9062-161dceeb0d34",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T08:00:45.374594"
+        }
+      ]
+    },
+    {
+      "id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+      "tournament_name": "zennihon-championship-2025",
+      "team_a": " 中平 慎吾 (東京ガス) [東京] / 齋藤 大樹 (東京ガス) [東京]",
+      "team_b": " 片岡 暁紀 (日本学連) [日本体育大学] / 黒坂 卓矢 (日本学連) [日本体育大学]",
+      "best_of": 9,
+      "created_at": "2025-11-06T05:01:07.034753",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "2回戦",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "",
+      "team_a_player1_last_name": "中平",
+      "team_a_player1_first_name": "慎吾",
+      "team_a_player1_team_name": "東京ガス",
+      "team_a_player1_region": "東京",
+      "team_a_player2_last_name": "齋藤",
+      "team_a_player2_first_name": "大樹",
+      "team_a_player2_team_name": "東京ガス",
+      "team_a_player2_region": "東京",
+      "team_b_entry_number": "",
+      "team_b_player1_last_name": "片岡",
+      "team_b_player1_first_name": "暁紀",
+      "team_b_player1_team_name": "日本学連",
+      "team_b_player1_region": "日本体育大学",
+      "team_b_player2_last_name": "黒坂",
+      "team_b_player2_first_name": "卓矢",
+      "team_b_player2_team_name": "日本学連",
+      "team_b_player2_region": "日本体育大学",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "東京",
+              "last_name": "中平",
+              "team_name": "東京ガス",
+              "first_name": "慎吾"
+            },
+            {
+              "region": "東京",
+              "last_name": "齋藤",
+              "team_name": "東京ガス",
+              "first_name": "大樹"
+            }
+          ],
+          "entry_number": ""
+        },
+        "B": {
+          "players": [
+            {
+              "region": "日本体育大学",
+              "last_name": "片岡",
+              "team_name": "日本学連",
+              "first_name": "暁紀"
+            },
+            {
+              "region": "日本体育大学",
+              "last_name": "黒坂",
+              "team_name": "日本学連",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": ""
+        }
+      },
+      "tournament_id": "zennihon-championship",
+      "games": [
+        {
+          "id": "6c20cefa-9fab-4683-b168-c9ea268649e7",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 1,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:01:07.172248"
+        },
+        {
+          "id": "e0f1172e-90f0-48b1-8f68-c067c67d434c",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 5,
+          "points_b": 3,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:05:33.074705"
+        },
+        {
+          "id": "cc7047d8-de76-48bd-8ea8-6ef6efc64d17",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:10:37.462741"
+        },
+        {
+          "id": "97e6fb2d-ef68-428d-a96a-5dd44aa7d4dc",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:13:10.349943"
+        },
+        {
+          "id": "54c6e400-40ed-42dd-8cc6-0b9860237de9",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:16:02.629844"
+        },
+        {
+          "id": "c47b8c71-017e-4cdc-9e01-c6738bc256a0",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:20:04.158496"
+        },
+        {
+          "id": "c929ff80-6ca6-4037-b941-868d1e31c48b",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:26:31.654258"
+        },
+        {
+          "id": "a87c88f8-cec4-45ec-a864-3662c3090e4f",
+          "match_id": "0a7e33bb-4a12-4e33-aaf9-857eda5697d2",
+          "game_number": 8,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T05:30:11.004442"
+        }
+      ]
+    },
+    {
+      "id": "4b74d0c4-0d78-4d7d-a3db-6f70d64881ef",
+      "tournament_name": "zennihon-championship-2025",
+      "team_a": "1 内本 隆文 (NTT西日本) [広島] / 上松 俊貴 (NTT西日本) [広島]",
+      "team_b": "2 辻浦 壱経 (川崎重工明石) [兵庫] / 福島 涼 (日本体育大学) [日本学連]",
+      "best_of": 9,
+      "created_at": "2025-11-06T02:26:12.005988",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "2回戦",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "1",
+      "team_a_player1_last_name": "内本",
+      "team_a_player1_first_name": "隆文",
+      "team_a_player1_team_name": "NTT西日本",
+      "team_a_player1_region": "広島",
+      "team_a_player2_last_name": "上松",
+      "team_a_player2_first_name": "俊貴",
+      "team_a_player2_team_name": "NTT西日本",
+      "team_a_player2_region": "広島",
+      "team_b_entry_number": "2",
+      "team_b_player1_last_name": "辻浦",
+      "team_b_player1_first_name": "壱経",
+      "team_b_player1_team_name": "川崎重工明石",
+      "team_b_player1_region": "兵庫",
+      "team_b_player2_last_name": "福島",
+      "team_b_player2_first_name": "涼",
+      "team_b_player2_team_name": "日本体育大学",
+      "team_b_player2_region": "日本学連",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "広島",
+              "last_name": "内本",
+              "team_name": "NTT西日本",
+              "first_name": "隆文"
+            },
+            {
+              "region": "広島",
+              "last_name": "上松",
+              "team_name": "NTT西日本",
+              "first_name": "俊貴"
+            }
+          ],
+          "entry_number": "a"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "兵庫",
+              "last_name": "辻浦",
+              "team_name": "川崎重工明石",
+              "first_name": "壱経"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "福島",
+              "team_name": "日本体育大学",
+              "first_name": "涼"
+            }
+          ],
+          "entry_number": "2"
+        }
+      },
+      "tournament_id": "zennihon-championship",
+      "games": [
+        {
+          "id": "c6d970c3-e632-43cb-b9c3-b06575da1e84",
+          "match_id": "4b74d0c4-0d78-4d7d-a3db-6f70d64881ef",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T02:26:12.289936"
+        },
+        {
+          "id": "431384a3-53ed-45b5-92f2-4c34313eb367",
+          "match_id": "4b74d0c4-0d78-4d7d-a3db-6f70d64881ef",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 5,
+          "points_b": 3,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T03:17:09.405877"
+        },
+        {
+          "id": "2b249354-91ff-4384-82c7-d5499bd2015d",
+          "match_id": "4b74d0c4-0d78-4d7d-a3db-6f70d64881ef",
+          "game_number": 3,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 0,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T03:34:30.914713"
+        },
+        {
+          "id": "62a2fe58-f003-4a9a-bd48-37ff72cf98c3",
+          "match_id": "4b74d0c4-0d78-4d7d-a3db-6f70d64881ef",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T03:36:20.328887"
+        },
+        {
+          "id": "2f5016fb-e222-41e6-8a36-8084d8633d06",
+          "match_id": "4b74d0c4-0d78-4d7d-a3db-6f70d64881ef",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 0,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-06T03:38:11.211085"
+        }
+      ]
+    },
+    {
+      "id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+      "tournament_name": "zennihon-university-2025",
+      "team_a": "284 片岡 暁紀 (日本体育大学) / 黒坂 卓矢 (日本体育大学)",
+      "team_b": "318. 清水 駿 (同志社大学) / 宮田 成将 (同志社大学)",
+      "best_of": 9,
+      "created_at": "2025-11-05T14:41:19.43532",
+      "tournament_generation": "university",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "6回戦",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "284",
+      "team_a_player1_last_name": "片岡",
+      "team_a_player1_first_name": "暁紀",
+      "team_a_player1_team_name": "日本体育大学",
+      "team_a_player1_region": "",
+      "team_a_player2_last_name": "黒坂",
+      "team_a_player2_first_name": "卓矢",
+      "team_a_player2_team_name": "日本体育大学",
+      "team_a_player2_region": "",
+      "team_b_entry_number": "318.",
+      "team_b_player1_last_name": "清水",
+      "team_b_player1_first_name": "駿",
+      "team_b_player1_team_name": "同志社大学",
+      "team_b_player1_region": "",
+      "team_b_player2_last_name": "宮田",
+      "team_b_player2_first_name": "成将",
+      "team_b_player2_team_name": "同志社大学",
+      "team_b_player2_region": "",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "",
+              "last_name": "片岡",
+              "team_name": "日本体育大学",
+              "first_name": "暁紀"
+            },
+            {
+              "region": "",
+              "last_name": "黒坂",
+              "team_name": "日本体育大学",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": "284"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "",
+              "last_name": "清水",
+              "team_name": "同志社大学",
+              "first_name": "駿"
+            },
+            {
+              "region": "",
+              "last_name": "宮田",
+              "team_name": "同志社大学",
+              "first_name": "成将"
+            }
+          ],
+          "entry_number": "318."
+        }
+      },
+      "tournament_id": "zennihon-university",
+      "games": [
+        {
+          "id": "dacc7cd3-aa45-46d5-abcd-596594be7912",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 0,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T14:41:19.565882"
+        },
+        {
+          "id": "c867fc0a-a63f-48a3-b49a-6f3ed4bcfc74",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T14:43:00.338027"
+        },
+        {
+          "id": "3dacb99f-d6ca-4be1-b758-b99fbdd12e8b",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T14:49:39.213122"
+        },
+        {
+          "id": "eb722a69-b5e8-41a7-91f5-e1e37c4b59e9",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T14:55:05.293896"
+        },
+        {
+          "id": "6b4ad3eb-df4a-4107-b450-a51657806b85",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 5,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T14:57:48.836524"
+        },
+        {
+          "id": "7c8349fc-6fec-4610-8a81-55b9cb5cb1de",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 0,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T15:00:44.786661"
+        },
+        {
+          "id": "13d93bd4-6e96-4cfe-9ca7-79096e799276",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 7,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T15:01:58.673644"
+        },
+        {
+          "id": "a6e6e6fb-b3b4-4fe1-9935-261d2ac6053b",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 8,
+          "winner_team": "A",
+          "points_a": 6,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T15:05:05.82663"
+        },
+        {
+          "id": "5b0996a9-b953-4750-b6a2-127707178072",
+          "match_id": "16de8dd3-e117-4c20-9f51-17db8a848b87",
+          "game_number": 9,
+          "winner_team": "A",
+          "points_a": 8,
+          "points_b": 6,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-05T15:13:37.452811"
+        }
+      ]
+    },
+    {
+      "id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+      "tournament_name": "zennihon-championship-2024",
+      "team_a": "95 内本 隆文 (NTT西日本) [広島] / 内田 理久 (NTT西日本) [広島]",
+      "team_b": "189 船水 颯人 (稲門クラブ) [東京] / 上松 俊貴 (NTT西日本) [広島]",
+      "best_of": 9,
+      "created_at": "2025-11-04T05:10:34.785764",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "決勝",
+      "tournament_year": 2024,
+      "game_type": "doubles",
+      "team_a_entry_number": "95",
+      "team_a_player1_last_name": "内本",
+      "team_a_player1_first_name": "隆文",
+      "team_a_player1_team_name": "NTT西日本",
+      "team_a_player1_region": "広島",
+      "team_a_player2_last_name": "内田",
+      "team_a_player2_first_name": "理久",
+      "team_a_player2_team_name": "NTT西日本",
+      "team_a_player2_region": "広島",
+      "team_b_entry_number": "189",
+      "team_b_player1_last_name": "船水",
+      "team_b_player1_first_name": "颯人",
+      "team_b_player1_team_name": "稲門クラブ",
+      "team_b_player1_region": "東京",
+      "team_b_player2_last_name": "上松",
+      "team_b_player2_first_name": "俊貴",
+      "team_b_player2_team_name": "NTT西日本",
+      "team_b_player2_region": "広島",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "広島",
+              "last_name": "内本",
+              "team_name": "NTT西日本",
+              "first_name": "隆文"
+            },
+            {
+              "region": "広島",
+              "last_name": "内田",
+              "team_name": "NTT西日本",
+              "first_name": "理久"
+            }
+          ],
+          "entry_number": "95"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "東京",
+              "last_name": "船水",
+              "team_name": "稲門クラブ",
+              "first_name": "颯人"
+            },
+            {
+              "region": "広島",
+              "last_name": "上松",
+              "team_name": "NTT西日本",
+              "first_name": "俊貴"
+            }
+          ],
+          "entry_number": "189"
+        }
+      },
+      "tournament_id": "zennihon-championship",
+      "games": [
+        {
+          "id": "0835b111-8089-4836-aaaf-d106ccd1a169",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 6,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T05:10:34.930424"
+        },
+        {
+          "id": "5c15afb0-83a2-4a3e-bc15-8f929add0490",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T05:21:17.301771"
+        },
+        {
+          "id": "ac037951-6f6c-43b9-b38a-e7faec6aac1a",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T05:26:24.083575"
+        },
+        {
+          "id": "98fbd0db-edc7-47b3-9e72-90b2b93c2a72",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T06:52:10.678438"
+        },
+        {
+          "id": "bd9810fe-872a-4c41-bde8-d307b55a8c4f",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T06:55:09.45968"
+        },
+        {
+          "id": "f9ea49fe-5889-4125-8984-e85964bbbd45",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T07:13:27.342184"
+        },
+        {
+          "id": "a0658e2f-e346-4579-8a8f-f2807294dd5b",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T07:39:24.098609"
+        },
+        {
+          "id": "a8a533d2-104e-44ed-a381-59a5d54104e4",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 8,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T07:41:26.720139"
+        },
+        {
+          "id": "45a413f0-d7f7-49df-b387-8bd7d5aa496d",
+          "match_id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
+          "game_number": 9,
+          "winner_team": "B",
+          "points_a": 5,
+          "points_b": 7,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2025-11-04T07:43:20.137232"
+        }
+      ]
+    }
+  ]
+}
