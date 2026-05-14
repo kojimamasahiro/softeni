@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-beta-matches-json.mjs",
+    "prebuild": "node --env-file=.env.local scripts/generate-players-json.mjs && node --env-file=.env.local scripts/generate-beta-matches-json.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "start": "next start",

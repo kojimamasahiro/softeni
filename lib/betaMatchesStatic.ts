@@ -25,7 +25,6 @@ type BetaMatchesIndex = {
   matches?: Match[];
 };
 type BetaMatchesMeta = {
-  generatedAt?: string;
   matchIds?: string[];
 };
 type BetaMatchDetail = {
@@ -112,12 +111,6 @@ export const getLatestBetaMatches = async () => {
   const indexPath = path.join(betaMatchesRoot, 'index.json');
   const data = await readJson<BetaMatchesIndex>(indexPath);
   return data?.matches ?? [];
-};
-
-export const getBetaMatchesGeneratedAt = async () => {
-  const metaPath = path.join(betaMatchesRoot, 'meta.json');
-  const meta = await readJson<BetaMatchesMeta>(metaPath);
-  return meta?.generatedAt ?? null;
 };
 
 export const getLatestBetaMatchIds = async () => {

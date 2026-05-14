@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 
 import {
-  getBetaMatchesGeneratedAt,
   getBetaTeamDisplayName,
   getLatestBetaMatches,
 } from '@/lib/betaMatchesStatic';
@@ -16,14 +15,9 @@ import { Game, Match } from '../../../types/database';
 interface Props {
   matches: Match[];
   tournamentInfos: { [key: string]: TournamentInfo };
-  lastUpdated: string;
 }
 
-export default function MatchesList({
-  matches,
-  tournamentInfos,
-  lastUpdated,
-}: Props) {
+export default function MatchesList({ matches, tournamentInfos }: Props) {
   // 試合の勝者を取得
   const getMatchWinner = (match: Match) => {
     if (!match?.games) return null;
@@ -77,17 +71,6 @@ export default function MatchesList({
     <div className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-8">
         <h1 className="text-3xl font-bold text-gray-900">試合結果一覧</h1>
-        <p className="mt-2 text-sm text-gray-600">
-          最終更新:{' '}
-          {new Date(lastUpdated).toLocaleString('ja-JP', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: 'Asia/Tokyo',
-          })}
-        </p>
         <div className="mt-8 bg-white shadow rounded-lg">
           <ul className="divide-y divide-gray-200">
             {matches.map((match) => (
@@ -227,7 +210,6 @@ export default function MatchesList({
 export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
     const safeMatches = await getLatestBetaMatches();
-    const generatedAt = await getBetaMatchesGeneratedAt();
     const tournamentIds = [
       ...new Set(safeMatches.map((m) => m.tournament_name).filter(Boolean)),
     ] as string[];
@@ -249,7 +231,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       props: {
         matches: safeMatches,
         tournamentInfos,
-        lastUpdated: generatedAt ?? new Date().toISOString(),
       },
     };
   } catch (error) {
@@ -258,7 +239,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       props: {
         matches: [],
         tournamentInfos: {},
-        lastUpdated: new Date().toISOString(),
       },
     };
   }

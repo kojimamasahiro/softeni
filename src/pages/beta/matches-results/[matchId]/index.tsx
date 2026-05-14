@@ -13,7 +13,6 @@ import {
 } from '@/lib/matchAnalysis';
 import {
   getBetaMatchById,
-  getBetaMatchesGeneratedAt,
   getBetaTeamDisplayName,
   getLatestBetaMatchIds,
 } from '@/lib/betaMatchesStatic';
@@ -28,13 +27,11 @@ import { Game, Match, Point } from '../../../../types/database';
 interface PublicMatchDetailProps {
   match: Match;
   tournamentInfo: TournamentInfo | null;
-  lastUpdated: string;
 }
 
 const PublicMatchDetail = ({
   match,
   tournamentInfo,
-  lastUpdated,
 }: PublicMatchDetailProps) => {
   const router = useRouter();
 
@@ -626,7 +623,6 @@ const PublicMatchDetail = ({
         >
           ← 試合一覧に戻る
         </Link>
-        <p className="text-sm text-gray-500">最終更新: {lastUpdated}</p>
       </div>
 
       {/* マッチ情報 */}
@@ -2087,7 +2083,6 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
     }
 
     const match = await getBetaMatchById(matchId);
-    const generatedAt = await getBetaMatchesGeneratedAt();
 
     if (!match) {
       console.error('Match not found:', matchId);
@@ -2105,22 +2100,10 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
       }
     }
 
-    // サーバー側でローカライズ済み日付文字列を生成
-    const now = new Date();
-    const lastUpdated = now.toLocaleString('ja-JP', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'Asia/Tokyo',
-    });
-
     return {
       props: {
         match,
         tournamentInfo,
-        lastUpdated: generatedAt ?? lastUpdated,
       },
     };
   } catch (error) {
