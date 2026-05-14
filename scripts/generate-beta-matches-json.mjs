@@ -13,33 +13,39 @@ const LATEST_BETA_MATCH_LIMIT = 50;
 
 const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === 'true';
 
+const hasExistingSnapshot = () => {
+  return (
+    fs.existsSync(path.join(outputRoot, 'index.json')) &&
+    fs.existsSync(path.join(outputRoot, 'meta.json'))
+  );
+};
+
 const getSupabaseConfig = () => {
   if (isTestMode) {
-    if (!process.env.NEXT_PUBLIC_SUPABASE_TEST_URL) {
-      throw new Error(
-        'NEXT_PUBLIC_SUPABASE_TEST_URL is required in test mode.',
-      );
-    }
-    if (!process.env.SUPABASE_TEST_SERVICE_KEY) {
-      throw new Error('SUPABASE_TEST_SERVICE_KEY is required in test mode.');
+    const url = process.env.NEXT_PUBLIC_SUPABASE_TEST_URL;
+    const serviceKey = process.env.SUPABASE_TEST_SERVICE_KEY;
+
+    if (!url || !serviceKey) {
+      return null;
     }
 
     return {
-      url: process.env.NEXT_PUBLIC_SUPABASE_TEST_URL,
-      serviceKey: process.env.SUPABASE_TEST_SERVICE_KEY,
+      url,
+      serviceKey,
     };
   }
 
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-    throw new Error('NEXT_PUBLIC_SUPABASE_URL is required.');
-  }
-  if (!process.env.SUPABASE_SERVICE_KEY) {
-    throw new Error('SUPABASE_SERVICE_KEY is required.');
+  const url =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? null;
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY ?? null;
+
+  if (!url || !serviceKey) {
+    return null;
   }
 
   return {
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    serviceKey: process.env.SUPABASE_SERVICE_KEY,
+    url,
+    serviceKey,
   };
 };
 
@@ -140,6 +146,19 @@ const buildBetaMatchesJson = async () => {
   console.log('Starting beta matches JSON generation...');
 
   const config = getSupabaseConfig();
+  if (!config) {
+    if (hasExistingSnapshot()) {
+      console.warn(
+        'Supabase env is missing. Reusing committed beta matches JSON snapshot.',
+      );
+      return;
+    }
+
+    throw new Error(
+      'Supabase env is missing and no beta matches JSON snapshot exists.',
+    );
+  }
+
   const supabase = createClient(config.url, config.serviceKey, {
     auth: {
       autoRefreshToken: false,
