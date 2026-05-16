@@ -297,6 +297,7 @@ npm run generate-sitemap
 
 ## 📚 関連ドキュメント
 
+- [beta/matches-results 保守ガイド](docs/beta-matches-results.md)
 - [大会データ構造](docs/tournament-data-structure.md)
 - [ポイントシステム](POINT_SYSTEM_README.md)
 - [サーブ統計ガイド](SERVE_STATISTICS_GUIDE.md)
