@@ -687,7 +687,7 @@ const PublicMatchDetail = ({
                 分析
               </h2>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                記録済みポイントデータから算出した中立比較とチーム視点のサマリーです。
+                記録済みポイントデータから算出したサマリーです。
               </p>
             </div>
             <div className="flex gap-2">
@@ -699,7 +699,7 @@ const PublicMatchDetail = ({
                     : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
                 }`}
               >
-                中立比較
+                比較
               </button>
               <button
                 onClick={() => setAnalysisTab('team')}
@@ -709,7 +709,7 @@ const PublicMatchDetail = ({
                     : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
                 }`}
               >
-                このチーム視点
+                チーム別
               </button>
             </div>
           </div>
