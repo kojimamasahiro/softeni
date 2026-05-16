@@ -60,7 +60,6 @@ const PublicMatchDetail = ({
         : [],
     ),
   );
-  const [analysisTab, setAnalysisTab] = useState<'neutral' | 'team'>('neutral');
   const [focusTeam, setFocusTeam] = useState<TeamKey>('A');
 
   useEffect(() => {
@@ -619,6 +618,231 @@ const PublicMatchDetail = ({
     );
 
   const matchWinner = getMatchWinner();
+  const gamesWonA = gamesAsc.filter((game) => game.winner_team === 'A').length;
+  const gamesWonB = gamesAsc.filter((game) => game.winner_team === 'B').length;
+  const recordedDate = new Date(match.created_at).toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Tokyo',
+  });
+  const comparisonRows = [
+    {
+      label: '1stサーブ成功率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.service.firstServeSuccessRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.service.firstServeSuccessRate,
+      ),
+    },
+    {
+      label: '1stサーブ時得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.service.firstServePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.service.firstServePointWinRate,
+      ),
+    },
+    {
+      label: '2ndサーブ時得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.service.secondServePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.service.secondServePointWinRate,
+      ),
+    },
+    {
+      label: 'ダブルフォルト数',
+      a: `${analysisSummary.neutralComparison.A.service.doubleFaultCount}件`,
+      b: `${analysisSummary.neutralComparison.B.service.doubleFaultCount}件`,
+    },
+    {
+      label: 'レシーブ時得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.receive.pointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.receive.pointWinRate,
+      ),
+    },
+    {
+      label: '各ゲーム1ポイント目取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.firstPointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.firstPointWinRate,
+      ),
+    },
+    {
+      label: 'デュースポイント取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.deucePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.deucePointWinRate,
+      ),
+    },
+    {
+      label: 'ゲームポイント取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.gamePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.gamePointWinRate,
+      ),
+    },
+    {
+      label: '1-2本ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['1-2'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['1-2'],
+      ),
+    },
+    {
+      label: '3-4本ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['3-4'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['3-4'],
+      ),
+    },
+    {
+      label: '5-8本ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['5-8'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['5-8'],
+      ),
+    },
+    {
+      label: '9本以上ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['9+'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['9+'],
+      ),
+    },
+    {
+      label: '最大連続得点',
+      a: formatCountMetric(
+        analysisSummary.neutralComparison.A.momentum.maxStreakFor,
+        analysisSummary.neutralComparison.A.momentum.maxStreakForSegment,
+      ),
+      b: formatCountMetric(
+        analysisSummary.neutralComparison.B.momentum.maxStreakFor,
+        analysisSummary.neutralComparison.B.momentum.maxStreakForSegment,
+      ),
+    },
+    {
+      label: '最大連続失点',
+      a: formatCountMetric(
+        analysisSummary.neutralComparison.A.momentum.maxStreakAgainst,
+        analysisSummary.neutralComparison.A.momentum.maxStreakAgainstSegment,
+      ),
+      b: formatCountMetric(
+        analysisSummary.neutralComparison.B.momentum.maxStreakAgainst,
+        analysisSummary.neutralComparison.B.momentum.maxStreakAgainstSegment,
+      ),
+    },
+    {
+      label: 'ウィナー数',
+      a: `${analysisSummary.neutralComparison.A.endings.winners}件`,
+      b: `${analysisSummary.neutralComparison.B.endings.winners}件`,
+    },
+    {
+      label: 'ミス数',
+      a: `${analysisSummary.neutralComparison.A.endings.errors}件`,
+      b: `${analysisSummary.neutralComparison.B.endings.errors}件`,
+    },
+  ];
+
+  const renderScoreboard = () => (
+    <div className="overflow-x-auto">
+      <table className="min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
+        <thead>
+          <tr className="bg-gray-50 dark:bg-gray-800/90">
+            <th className="w-auto border border-gray-300 px-3 py-2 text-left dark:border-gray-600">
+              チーム
+            </th>
+            {gamesAsc.map((game) => (
+              <th
+                key={game.game_number}
+                className="min-w-12 border border-gray-300 px-3 py-2 text-center dark:border-gray-600"
+              >
+                {game.game_number}
+              </th>
+            ))}
+            <th className="border border-gray-300 bg-yellow-50 px-3 py-2 text-center font-bold dark:border-gray-600 dark:bg-yellow-900/30">
+              G
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
+            <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">
+              {getShortTeamName('A')}
+            </td>
+            {gamesAsc.map((game) => (
+              <td
+                key={game.game_number}
+                className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
+                  game.winner_team === 'A'
+                    ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                    : 'font-normal dark:text-gray-200'
+                }`}
+              >
+                {game.points_a}
+              </td>
+            ))}
+            <td
+              className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
+                matchWinner === 'A'
+                  ? 'font-bold dark:text-yellow-100'
+                  : 'font-normal dark:text-gray-200'
+              }`}
+            >
+              {gamesWonA}
+            </td>
+          </tr>
+          <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
+            <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">
+              {getShortTeamName('B')}
+            </td>
+            {gamesAsc.map((game) => (
+              <td
+                key={game.game_number}
+                className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
+                  game.winner_team === 'B'
+                    ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                    : 'font-normal dark:text-gray-200'
+                }`}
+              >
+                {game.points_b}
+              </td>
+            ))}
+            <td
+              className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
+                matchWinner === 'B'
+                  ? 'font-bold dark:text-yellow-100'
+                  : 'font-normal dark:text-gray-200'
+              }`}
+            >
+              {gamesWonB}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 
   return (
     <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
@@ -632,85 +856,76 @@ const PublicMatchDetail = ({
         </Link>
       </div>
 
-      {/* マッチ情報 */}
+      {/* 試合サマリー */}
       <div className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
-          {getShortTeamName('A')} vs {getShortTeamName('B')}
-        </h1>
+        <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+              試合サマリー
+            </p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              {getShortTeamName('A')} vs {getShortTeamName('B')}
+            </h1>
 
-        {/* 大会情報 */}
-        <div className="mb-4">
-          {/* 大会名表示 */}
-          <div className="flex items-center gap-2 mb-2">
-            {tournamentInfo && fullTournamentUrl ? (
-              <Link
-                href={fullTournamentUrl}
-                className="font-medium text-blue-600 hover:underline dark:text-blue-400"
-              >
-                {tournamentInfo.meta.name}
-              </Link>
-            ) : tournamentInfo ? (
-              <span className="font-medium text-gray-800 dark:text-gray-100">
-                {tournamentInfo.meta.name}
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+              {tournamentInfo && fullTournamentUrl ? (
+                <Link
+                  href={fullTournamentUrl}
+                  className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {tournamentInfo.meta.name}
+                </Link>
+              ) : tournamentInfo ? (
+                <span className="font-medium text-gray-800 dark:text-gray-100">
+                  {tournamentInfo.meta.name}
+                </span>
+              ) : (
+                <span className="font-medium text-gray-800 dark:text-gray-100">
+                  {match.tournament_name || '大会名不明'}
+                </span>
+              )}
+              {match.round_name && (
+                <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+                  {match.round_name}
+                </span>
+              )}
+              <span className="text-gray-500 dark:text-gray-400">
+                記録日 {recordedDate}
               </span>
-            ) : (
-              <span className="font-medium text-gray-800 dark:text-gray-100">
-                {match.tournament_name || '大会名不明'}
-              </span>
-            )}
+            </div>
           </div>
 
-          {/* 回戦情報表示のみ */}
-          <div className="flex flex-wrap gap-2 mb-2">
-            {match.round_name && (
-              <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
-                {match.round_name}
-              </span>
-            )}
+          <div className="rounded-lg bg-gray-50 px-4 py-3 text-center dark:bg-gray-700/50">
+            <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+              ゲームカウント
+            </div>
+            <div className="mt-1 font-mono text-3xl font-bold text-gray-900 dark:text-gray-100">
+              {gamesWonA} - {gamesWonB}
+            </div>
           </div>
         </div>
 
         {matchWinner && (
-          <div className="rounded border border-green-300 bg-green-100 p-4 dark:border-green-800 dark:bg-green-900/30">
+          <div className="mb-5 rounded border border-green-300 bg-green-100 p-4 dark:border-green-800 dark:bg-green-900/30">
             <p className="text-lg font-semibold text-green-800 dark:text-green-300">
-              🏆 {getShortTeamName(matchWinner)} の勝利！
+              {getShortTeamName(matchWinner)} の勝利
             </p>
           </div>
         )}
+
+        {renderScoreboard()}
       </div>
 
       <section className="mb-8">
         <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+          <div className="mb-4">
             <div>
               <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                分析
+                振り返りポイント
               </h2>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                記録済みポイントデータから算出したサマリーです。
+                記録済みポイントから、次に見返す場面を絞るための要点です。
               </p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setAnalysisTab('neutral')}
-                className={`px-4 py-2 rounded border text-sm ${
-                  analysisTab === 'neutral'
-                    ? 'border-blue-600 bg-blue-600 text-white'
-                    : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
-                }`}
-              >
-                比較
-              </button>
-              <button
-                onClick={() => setAnalysisTab('team')}
-                className={`px-4 py-2 rounded border text-sm ${
-                  analysisTab === 'team'
-                    ? 'border-blue-600 bg-blue-600 text-white'
-                    : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
-                }`}
-              >
-                チーム別
-              </button>
             </div>
           </div>
 
@@ -730,267 +945,7 @@ const PublicMatchDetail = ({
             </div>
           )}
 
-          {analysisSummary.scoreIntegrity.ok && analysisTab === 'neutral' && (
-            <>
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-sm border-collapse">
-                  <thead>
-                    <tr className="border-b border-gray-200 dark:border-gray-700">
-                      <th className="py-2 text-left font-medium text-gray-700 dark:text-gray-200">
-                        指標
-                      </th>
-                      <th className="py-2 text-center font-medium text-blue-700 dark:text-blue-300">
-                        {getShortTeamName('A')}
-                      </th>
-                      <th className="py-2 text-center font-medium text-green-700 dark:text-green-300">
-                        {getShortTeamName('B')}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        label: '1stサーブ成功率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.service
-                            .firstServeSuccessRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.service
-                            .firstServeSuccessRate,
-                        ),
-                      },
-                      {
-                        label: '1stサーブ時得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.service
-                            .firstServePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.service
-                            .firstServePointWinRate,
-                        ),
-                      },
-                      {
-                        label: '2ndサーブ時得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.service
-                            .secondServePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.service
-                            .secondServePointWinRate,
-                        ),
-                      },
-                      {
-                        label: 'ダブルフォルト数',
-                        a: `${analysisSummary.neutralComparison.A.service.doubleFaultCount}件`,
-                        b: `${analysisSummary.neutralComparison.B.service.doubleFaultCount}件`,
-                      },
-                      {
-                        label: 'レシーブ時得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.receive
-                            .pointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.receive
-                            .pointWinRate,
-                        ),
-                      },
-                      {
-                        label: '各ゲーム1ポイント目取得率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.keyMoments
-                            .firstPointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.keyMoments
-                            .firstPointWinRate,
-                        ),
-                      },
-                      {
-                        label: 'デュースポイント取得率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.keyMoments
-                            .deucePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.keyMoments
-                            .deucePointWinRate,
-                        ),
-                      },
-                      {
-                        label: 'ゲームポイント取得率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.keyMoments
-                            .gamePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.keyMoments
-                            .gamePointWinRate,
-                        ),
-                      },
-                      {
-                        label: '1-2本ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '1-2'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '1-2'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '3-4本ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '3-4'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '3-4'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '5-8本ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '5-8'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '5-8'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '9本以上ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '9+'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '9+'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '最大連続得点',
-                        a: formatCountMetric(
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakFor,
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakForSegment,
-                        ),
-                        b: formatCountMetric(
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakFor,
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakForSegment,
-                        ),
-                      },
-                      {
-                        label: '最大連続失点',
-                        a: formatCountMetric(
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakAgainst,
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakAgainstSegment,
-                        ),
-                        b: formatCountMetric(
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakAgainst,
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakAgainstSegment,
-                        ),
-                      },
-                      {
-                        label: 'ウィナー数',
-                        a: `${analysisSummary.neutralComparison.A.endings.winners}件`,
-                        b: `${analysisSummary.neutralComparison.B.endings.winners}件`,
-                      },
-                      {
-                        label: 'ミス数',
-                        a: `${analysisSummary.neutralComparison.A.endings.errors}件`,
-                        b: `${analysisSummary.neutralComparison.B.endings.errors}件`,
-                      },
-                    ].map((row) => (
-                      <tr
-                        key={row.label}
-                        className="border-b border-gray-100 dark:border-gray-700/70"
-                      >
-                        <td className="py-3 text-gray-700 dark:text-gray-300">
-                          {row.label}
-                        </td>
-                        <td className="py-3 text-center text-gray-800 dark:text-gray-100">
-                          {row.a}
-                        </td>
-                        <td className="py-3 text-center text-gray-800 dark:text-gray-100">
-                          {row.b}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                {(['A', 'B'] as TeamKey[]).map((team) => (
-                  <div
-                    key={team}
-                    className="rounded-lg border border-gray-200 p-4 dark:border-gray-700 dark:bg-gray-800/60"
-                  >
-                    <h3
-                      className={`font-semibold mb-3 ${
-                        team === 'A' ? 'text-blue-700' : 'text-green-700'
-                      }`}
-                    >
-                      {getShortTeamName(team)} の主要エラー内訳
-                    </h3>
-                    {analysisSummary.neutralComparison[team].endings
-                      .errorBreakdown.length > 0 ? (
-                      <div className="space-y-2 text-sm">
-                        {analysisSummary.neutralComparison[
-                          team
-                        ].endings.errorBreakdown
-                          .slice(0, 5)
-                          .map((entry) => (
-                            <div
-                              key={`${team}-${entry.resultType}`}
-                              className="flex justify-between gap-3"
-                            >
-                              <span className="text-gray-600 dark:text-gray-400">
-                                {getResultTypeLabel(entry.resultType)}
-                              </span>
-                              <span className="font-medium text-gray-800 dark:text-gray-100">
-                                {entry.count}件
-                                {entry.share !== null &&
-                                  ` (${entry.share.toFixed(1)}%)`}
-                              </span>
-                            </div>
-                          ))}
-                      </div>
-                    ) : (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        該当するエラーデータはありません。
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {analysisSummary.scoreIntegrity.ok && analysisTab === 'team' && (
+          {analysisSummary.scoreIntegrity.ok && (
             <>
               <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
                 <h3 className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
@@ -1144,90 +1099,51 @@ const PublicMatchDetail = ({
         </div>
       </section>
 
-      {/* スコアボード */}
-      <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
-        試合結果
-      </h2>
-
-      {/* ゲームスコア表（野球のスコアボード風） */}
-      <div className="overflow-x-auto mb-6">
-        <table className="min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
-          <thead>
-            <tr className="bg-gray-50 dark:bg-gray-800/90">
-              <th className="w-auto border border-gray-300 px-3 py-2 text-left dark:border-gray-600">
-                チーム
-              </th>
-              {gamesAsc.map((game) => (
-                <th
-                  key={game.game_number}
-                  className="min-w-12 border border-gray-300 px-3 py-2 text-center dark:border-gray-600"
-                >
-                  {game.game_number}
-                </th>
-              ))}
-              <th className="border border-gray-300 bg-yellow-50 px-3 py-2 text-center font-bold dark:border-gray-600 dark:bg-yellow-900/30">
-                G
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
-              <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">
-                {getShortTeamName('A')}
-              </td>
-              {gamesAsc.map((game) => (
-                <td
-                  key={game.game_number}
-                  className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
-                    game.winner_team === 'A'
-                      ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                      : 'font-normal dark:text-gray-200'
-                  }`}
-                >
-                  {game.points_a}
-                </td>
-              ))}
-              <td
-                className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
-                  matchWinner === 'A'
-                    ? 'font-bold dark:text-yellow-100'
-                    : 'font-normal dark:text-gray-200'
-                }`}
-              >
-                {match.games?.filter((game) => game.winner_team === 'A')
-                  .length || 0}
-              </td>
-            </tr>
-            <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
-              <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">
-                {getShortTeamName('B')}
-              </td>
-              {gamesAsc.map((game) => (
-                <td
-                  key={game.game_number}
-                  className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
-                    game.winner_team === 'B'
-                      ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                      : 'font-normal dark:text-gray-200'
-                  }`}
-                >
-                  {game.points_b}
-                </td>
-              ))}
-              <td
-                className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
-                  matchWinner === 'B'
-                    ? 'font-bold dark:text-yellow-100'
-                    : 'font-normal dark:text-gray-200'
-                }`}
-              >
-                {match.games?.filter((game) => game.winner_team === 'B')
-                  .length || 0}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {analysisSummary.scoreIntegrity.ok && (
+        <details className="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <summary className="cursor-pointer list-none text-lg font-semibold text-gray-900 dark:text-gray-100">
+            詳細比較
+          </summary>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            上部の振り返りポイントの根拠になる、チーム別の比較指標です。
+          </p>
+          <div className="mt-4 overflow-x-auto">
+            <table className="min-w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <th className="py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                    指標
+                  </th>
+                  <th className="py-2 text-center font-medium text-blue-700 dark:text-blue-300">
+                    {getShortTeamName('A')}
+                  </th>
+                  <th className="py-2 text-center font-medium text-green-700 dark:text-green-300">
+                    {getShortTeamName('B')}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr
+                    key={row.label}
+                    className="border-b border-gray-100 dark:border-gray-700/70"
+                  >
+                    <td className="py-3 text-gray-700 dark:text-gray-300">
+                      {row.label}
+                    </td>
+                    <td className="py-3 text-center text-gray-800 dark:text-gray-100">
+                      {row.a}
+                    </td>
+                    <td className="py-3 text-center text-gray-800 dark:text-gray-100">
+                      {row.b}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
 
       {/* 試合統計サマリー */}
       {(() => {
@@ -1238,7 +1154,7 @@ const PublicMatchDetail = ({
         return (
           <div className="mb-6">
             <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-              試合統計
+              補足統計
             </h3>
 
             {/* ラリー数分布 */}
@@ -1369,233 +1285,6 @@ const PublicMatchDetail = ({
                   )}
                 </div>
               )}
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* チーム別ウィナー・ミス内訳サマリー */}
-      {(() => {
-        const playerStats = getPlayerStats();
-
-        // チーム別の集計
-        const getTeamStats = (players: string[]) => {
-          const teamWinnerBreakdown: { [type: string]: number } = {};
-          const teamErrorBreakdown: { [type: string]: number } = {};
-          let totalWinners = 0;
-          let totalErrors = 0;
-
-          players.forEach((playerName) => {
-            const stats = playerStats[playerName];
-            if (!stats) return;
-
-            totalWinners += stats.winners;
-            totalErrors += stats.errors;
-
-            Object.entries(stats.winnerBreakdown).forEach(([type, count]) => {
-              teamWinnerBreakdown[type] =
-                (teamWinnerBreakdown[type] || 0) + count;
-            });
-
-            Object.entries(stats.errorBreakdown).forEach(([type, count]) => {
-              teamErrorBreakdown[type] =
-                (teamErrorBreakdown[type] || 0) + count;
-            });
-          });
-
-          return {
-            winnerBreakdown: teamWinnerBreakdown,
-            errorBreakdown: teamErrorBreakdown,
-            totalWinners,
-            totalErrors,
-          };
-        };
-
-        const teamAStats = getTeamStats(teamAPlayers);
-        const teamBStats = getTeamStats(teamBPlayers);
-
-        if (
-          teamAStats.totalWinners === 0 &&
-          teamAStats.totalErrors === 0 &&
-          teamBStats.totalWinners === 0 &&
-          teamBStats.totalErrors === 0
-        ) {
-          return null;
-        }
-
-        const matchStats = getMatchStats();
-
-        return (
-          <div className="mb-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-              チーム別統計サマリー
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* チームA統計 */}
-              <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-                <h4 className="font-semibold mb-3 text-blue-600">
-                  {getShortTeamName('A')}
-                </h4>
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="rounded bg-green-50 p-2 text-center dark:bg-green-900/20">
-                    <div className="text-lg font-bold text-green-600">
-                      {teamAStats.totalWinners}
-                    </div>
-                    <div className="text-xs text-green-700">ウィナー</div>
-                  </div>
-                  <div className="rounded bg-red-50 p-2 text-center dark:bg-red-900/20">
-                    <div className="text-lg font-bold text-red-600">
-                      {teamAStats.totalErrors}
-                    </div>
-                    <div className="text-xs text-red-700">ミス</div>
-                  </div>
-                  <div className="rounded bg-gray-50 p-2 text-center dark:bg-gray-700/60">
-                    <div className="text-lg font-bold text-gray-700 dark:text-gray-100">
-                      {matchStats?.maxStreakA || 0}
-                    </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-300">
-                      最長連続
-                    </div>
-                  </div>
-                </div>
-
-                {/* ウィナー内訳 */}
-                {Object.keys(teamAStats.winnerBreakdown).length > 0 && (
-                  <div className="mb-3">
-                    <h6 className="mb-1 text-xs font-medium text-gray-700 dark:text-gray-200">
-                      ウィナー内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamAStats.winnerBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600 dark:text-gray-400">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-green-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* ミス内訳 */}
-                {Object.keys(teamAStats.errorBreakdown).length > 0 && (
-                  <div>
-                    <h6 className="mb-1 text-xs font-medium text-gray-700 dark:text-gray-200">
-                      ミス内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamAStats.errorBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600 dark:text-gray-400">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-red-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* チームB統計 */}
-              <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-                <h4 className="font-semibold mb-3 text-green-600">
-                  {getShortTeamName('B')}
-                </h4>
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="rounded bg-green-50 p-2 text-center dark:bg-green-900/20">
-                    <div className="text-lg font-bold text-green-600">
-                      {teamBStats.totalWinners}
-                    </div>
-                    <div className="text-xs text-green-700">ウィナー</div>
-                  </div>
-                  <div className="rounded bg-red-50 p-2 text-center dark:bg-red-900/20">
-                    <div className="text-lg font-bold text-red-600">
-                      {teamBStats.totalErrors}
-                    </div>
-                    <div className="text-xs text-red-700">ミス</div>
-                  </div>
-                  <div className="rounded bg-gray-50 p-2 text-center dark:bg-gray-700/60">
-                    <div className="text-lg font-bold text-gray-700 dark:text-gray-100">
-                      {matchStats?.maxStreakB || 0}
-                    </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-300">
-                      最長連続
-                    </div>
-                  </div>
-                </div>
-
-                {/* ウィナー内訳 */}
-                {Object.keys(teamBStats.winnerBreakdown).length > 0 && (
-                  <div className="mb-3">
-                    <h6 className="mb-1 text-xs font-medium text-gray-700 dark:text-gray-200">
-                      ウィナー内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamBStats.winnerBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600 dark:text-gray-400">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-green-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* ミス内訳 */}
-                {Object.keys(teamBStats.errorBreakdown).length > 0 && (
-                  <div>
-                    <h6 className="mb-1 text-xs font-medium text-gray-700 dark:text-gray-200">
-                      ミス内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamBStats.errorBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600 dark:text-gray-400">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-red-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         );
@@ -1750,11 +1439,14 @@ const PublicMatchDetail = ({
       </div>
 
       {/* 選手別統計情報 */}
-      <div className="mb-6 pt-6">
-        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
+      <details className="mb-6 mt-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <summary className="cursor-pointer list-none text-xl font-semibold text-gray-900 dark:text-gray-100">
           選手別統計情報
-        </h2>
-        <div className="space-y-6">
+        </summary>
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+          選手ごとのウィナー、ミス、サーブ、ゲーム別の内訳を確認できます。
+        </p>
+        <div className="mt-4 space-y-6">
           {(() => {
             const playerStats = getPlayerStats();
 
@@ -2105,7 +1797,7 @@ const PublicMatchDetail = ({
             );
           })()}
         </div>
-      </div>
+      </details>
     </div>
   );
 };
