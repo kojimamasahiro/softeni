@@ -10,6 +10,7 @@ import {
 
 interface Props {
   detail: TournamentDetailData;
+  gameCategory: string;
   searchQuery: string;
   setSearchQuery: (v: string) => void;
   filter: 'all' | 'top8' | 'winners';
@@ -152,11 +153,14 @@ function MatchGroup({
 
 export default function MatchResults({
   detail,
+  gameCategory,
   searchQuery,
   setSearchQuery,
   filter,
   setFilter,
 }: Props) {
+  const shouldUseShortOpponentName = gameCategory !== 'singles';
+
   const participantMap = useMemo(() => {
     const map = new Map<string, (typeof detail.participants)[0]>();
     for (const p of detail.participants ?? []) map.set(p.id, p);
@@ -266,7 +270,7 @@ export default function MatchResults({
                   entryNo: opponent,
                   playerIds: [],
                 },
-                { short: true },
+                { short: shouldUseShortOpponentName },
               )
             : undefined,
         // result from the perspective of prevWinner
@@ -309,7 +313,7 @@ export default function MatchResults({
                   entryNo: b,
                   playerIds: [],
                 },
-                { short: true },
+                { short: shouldUseShortOpponentName },
               )
             : undefined,
         result:
@@ -332,7 +336,7 @@ export default function MatchResults({
                   entryNo: a,
                   playerIds: [],
                 },
-                { short: true },
+                { short: shouldUseShortOpponentName },
               )
             : undefined,
         result:
@@ -382,7 +386,7 @@ export default function MatchResults({
     }
 
     return map;
-  }, [detail, buildNameForEntry]);
+  }, [detail, buildNameForEntry, shouldUseShortOpponentName]);
 
   // build name list from entries & eliminatedEntries
   const groupedNames = [

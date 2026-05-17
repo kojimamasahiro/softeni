@@ -25,6 +25,7 @@ export type ReconstructedPointContext = {
     B: number;
   };
   isFirstPointOfGame: boolean;
+  isTwoTwoPoint: boolean;
   isDeucePoint: boolean;
   isGamePointOpportunity: Record<TeamKey, boolean>;
   isGameWinningPoint: boolean;
@@ -59,6 +60,7 @@ export type TeamAnalysisMetrics = {
   };
   keyMoments: {
     firstPointWinRate: RateMetric;
+    twoTwoPointWinRate: RateMetric;
     deucePointWinRate: RateMetric;
     gamePointWinRate: RateMetric;
   };
@@ -118,11 +120,76 @@ export type TeamGuideSummary = {
   cards: AnalysisGuideCard[];
 };
 
+export type ImprovementHintCategory =
+  | 'serve'
+  | 'receive'
+  | 'rally'
+  | 'key_moment'
+  | 'momentum'
+  | 'error_trend';
+
+export type ImprovementHintConfidence = 'high' | 'medium' | 'low';
+
+export type ImprovementHintSourceMetricKey =
+  | 'service.firstServeInRate'
+  | 'service.firstServePointWinRate'
+  | 'service.secondServeWinRate'
+  | 'service.doubleFaults'
+  | 'receive.pointWinRate'
+  | 'receive.opponentSecondServeWinRate'
+  | 'rally.short1To4WinRate'
+  | 'rally.medium5To8WinRate'
+  | 'rally.long9PlusWinRate'
+  | 'keyMoment.firstPointWinRate'
+  | 'keyMoment.gamePointWinRate'
+  | 'keyMoment.opponentGamePointSaveRate'
+  | 'keyMoment.deucePointWinRate'
+  | 'momentum.maxLostStreak'
+  | 'error.resultTypeShare'
+  | 'error.loserPlayerShare'
+  | 'overall.pointWinRate';
+
+export type ImprovementHintSourceMetric = {
+  key: ImprovementHintSourceMetricKey;
+  label?: string;
+  value: number | string;
+  numerator?: number;
+  denominator?: number;
+  unit?: '%' | 'points' | 'count' | 'rate';
+};
+
+export type ImprovementHint = {
+  id: string;
+  ruleId: string;
+  ruleVersion: string;
+  matchId: string;
+  target: {
+    team: TeamKey;
+    scope: 'player' | 'pair' | 'team';
+    playerName?: string;
+    playerId?: string | null;
+    pairKey?: string | null;
+  };
+  category: ImprovementHintCategory;
+  title: string;
+  evidence: string;
+  evidenceItems?: string[];
+  interpretation: string;
+  nextCheck: string;
+  nextCheckItems?: string[];
+  confidence: ImprovementHintConfidence;
+  confidenceReason: string;
+  priorityScore: number;
+  priorityReasons?: string[];
+  sourceMetrics: ImprovementHintSourceMetric[];
+};
+
 export type MatchAnalysisSummary = {
   reconstructedPoints: ReconstructedPointContext[];
   neutralComparison: NeutralComparisonMetrics;
   teamInsights: Record<TeamKey, TeamPerspectiveInsights>;
   teamGuideCards: Record<TeamKey, TeamGuideSummary>;
+  improvementHints: Record<TeamKey, ImprovementHint[]>;
   scoreIntegrity: {
     ok: boolean;
     mismatches: Array<{
@@ -143,6 +210,15 @@ export const ANALYSIS_THRESHOLDS = {
   LARGE_LOSS_STREAK: 5,
   ERROR_SHARE_RATE: 40,
   ERROR_SHARE_COUNT: 3,
+  LOW_FIRST_SERVE_IN_RATE: 55,
+  LOW_FIRST_SERVE_POINT_WIN_RATE: 45,
+  LOW_RECEIVE_POINT_WIN_RATE: 40,
+  LOW_RALLY_WIN_RATE: 40,
+  LOW_OPPONENT_GAME_POINT_SAVE_RATE: 35,
+  HIGH_DOUBLE_FAULT_COUNT: 2,
+  INDIVIDUAL_ERROR_SHARE_RATE: 60,
+  INDIVIDUAL_ERROR_SHARE_COUNT: 3,
+  LARGE_RELATIVE_DROP: 12,
 } as const;
 
 const WINNER_RESULT_TYPES = new Set([
@@ -182,6 +258,12 @@ const createRate = (numerator: number, denominator: number): RateMetric => ({
   denominator,
   percentage: denominator > 0 ? (numerator / denominator) * 100 : null,
 });
+
+const combineRateMetrics = (...metrics: RateMetric[]): RateMetric =>
+  createRate(
+    metrics.reduce((sum, metric) => sum + metric.numerator, 0),
+    metrics.reduce((sum, metric) => sum + metric.denominator, 0),
+  );
 
 const getRateReliability = (
   metric: RateMetric,
@@ -385,6 +467,872 @@ const buildTeamInsights = (
   };
 };
 
+const IMPROVEMENT_HINT_RULE_VERSION = 'single-match-v1';
+
+const RESULT_TYPE_LABELS: Record<string, string> = {
+  net: 'ネット',
+  out: 'アウト',
+  smash_error: 'スマッシュミス',
+  volley_error: 'ボレーミス',
+  double_fault: 'ダブルフォルト',
+  follow_error: 'フォローミス',
+  receive_error: 'レシーブミス',
+  forced_error: 'ミス誘発',
+  unforced_error: '凡ミス',
+};
+
+const normalizeRecordedPlayerName = (name: string | null | undefined) => {
+  if (!name) return null;
+
+  const trimmed = name.trim();
+  const uniqueIdMatch = trimmed.match(/^[AB]-\d-(.+)$/);
+  return (uniqueIdMatch?.[1] ?? trimmed).replace(/\s+/g, ' ');
+};
+
+const getTeamPlayersFromMatch = (match: Match, team: TeamKey) => {
+  const structuredPlayers = match.teams?.[team]?.players
+    ?.map((player) =>
+      normalizeRecordedPlayerName(`${player.last_name} ${player.first_name}`),
+    )
+    .filter((player): player is string => Boolean(player));
+
+  if (structuredPlayers && structuredPlayers.length > 0) {
+    return structuredPlayers;
+  }
+
+  const prefix = `team_${team.toLowerCase()}`;
+  const players = [1, 2]
+    .map((playerIndex) => {
+      const lastName = match[
+        `${prefix}_player${playerIndex}_last_name` as keyof Match
+      ] as string | null | undefined;
+      const firstName = match[
+        `${prefix}_player${playerIndex}_first_name` as keyof Match
+      ] as string | null | undefined;
+
+      if (!lastName || !firstName) return null;
+      return normalizeRecordedPlayerName(`${lastName} ${firstName}`);
+    })
+    .filter((player): player is string => Boolean(player));
+
+  return players;
+};
+
+const getHintTarget = (
+  match: Match,
+  team: TeamKey,
+  playerName?: string,
+): ImprovementHint['target'] => {
+  const players = getTeamPlayersFromMatch(match, team);
+
+  if (playerName) {
+    return {
+      team,
+      scope: 'player',
+      playerName,
+      playerId: null,
+      pairKey: players.length > 1 ? players.join('|') : null,
+    };
+  }
+
+  if (players.length === 1) {
+    return {
+      team,
+      scope: 'player',
+      playerName: players[0],
+      playerId: null,
+      pairKey: null,
+    };
+  }
+
+  if (players.length > 1) {
+    return {
+      team,
+      scope: 'pair',
+      pairKey: players.join('|'),
+    };
+  }
+
+  return {
+    team,
+    scope: 'team',
+    pairKey: null,
+  };
+};
+
+const getConfidence = (
+  sampleSize: number,
+  minSample: number,
+  isStrongSignal: boolean,
+): ImprovementHintConfidence => {
+  if (sampleSize < minSample) return 'low';
+  if (isStrongSignal && sampleSize >= minSample * 2) return 'high';
+  return 'medium';
+};
+
+const getConfidenceReason = (
+  confidence: ImprovementHintConfidence,
+  sampleSize: number,
+  minSample: number,
+) => {
+  if (confidence === 'low') {
+    return `対象ポイントが${sampleSize}件で目安の${minSample}件に届かないため、参考として確認してください。`;
+  }
+  if (confidence === 'high') {
+    return `対象ポイントが${sampleSize}件あり、差も大きいため注目して確認しやすい項目です。`;
+  }
+  return `対象ポイントが${sampleSize}件あり、次の試合で確認しやすい項目です。`;
+};
+
+const getMetricDropFromOverall = (
+  metric: RateMetric,
+  overallMetric: RateMetric,
+) => {
+  if (metric.percentage === null || overallMetric.percentage === null) return 0;
+  return overallMetric.percentage - metric.percentage;
+};
+
+const formatPointRange = (segment: MomentumSegment | null) => {
+  if (!segment) return '該当区間なし';
+  if (segment.startGameNumber === segment.endGameNumber) {
+    return `第${segment.startGameNumber}ゲーム #${segment.startPointNumber}〜#${segment.endPointNumber}`;
+  }
+  return `第${segment.startGameNumber}ゲーム #${segment.startPointNumber}〜第${segment.endGameNumber}ゲーム #${segment.endPointNumber}`;
+};
+
+const getOpponentGamePointSaveRate = (
+  team: TeamKey,
+  reconstructedPoints: ReconstructedPointContext[],
+) => {
+  const opponent = getOppositeTeam(team);
+  const opponentGamePointPoints = reconstructedPoints.filter(
+    (context) => context.isGamePointOpportunity[opponent],
+  );
+
+  return createRate(
+    opponentGamePointPoints.filter(
+      (context) => context.point.winner_team === team,
+    ).length,
+    opponentGamePointPoints.length,
+  );
+};
+
+const getDominantLoserPlayer = (
+  match: Match,
+  team: TeamKey,
+  reconstructedPoints: ReconstructedPointContext[],
+) => {
+  const teamPlayers = new Set(getTeamPlayersFromMatch(match, team));
+  if (teamPlayers.size <= 1) return null;
+
+  const counts = new Map<string, number>();
+  let totalKnownErrors = 0;
+
+  reconstructedPoints.forEach((context) => {
+    const resultType = context.point.result_type || '';
+    const loserPlayer = normalizeRecordedPlayerName(context.point.loser_player);
+    if (
+      context.point.winner_team === getOppositeTeam(team) &&
+      ERROR_RESULT_TYPES.has(resultType) &&
+      loserPlayer &&
+      teamPlayers.has(loserPlayer)
+    ) {
+      totalKnownErrors += 1;
+      counts.set(loserPlayer, (counts.get(loserPlayer) ?? 0) + 1);
+    }
+  });
+
+  const [topPlayer, topCount] =
+    [...counts.entries()].sort((left, right) => right[1] - left[1])[0] ?? [];
+
+  if (!topPlayer || !topCount || totalKnownErrors === 0) return null;
+
+  const share = (topCount / totalKnownErrors) * 100;
+  if (
+    topCount < ANALYSIS_THRESHOLDS.INDIVIDUAL_ERROR_SHARE_COUNT ||
+    share < ANALYSIS_THRESHOLDS.INDIVIDUAL_ERROR_SHARE_RATE
+  ) {
+    return null;
+  }
+
+  return {
+    playerName: topPlayer,
+    count: topCount,
+    totalKnownErrors,
+    share,
+  };
+};
+
+const buildMetric = (
+  key: ImprovementHintSourceMetricKey,
+  label: string,
+  metric: RateMetric,
+): ImprovementHintSourceMetric => ({
+  key,
+  label,
+  value:
+    metric.percentage !== null ? Number(metric.percentage.toFixed(1)) : '--',
+  numerator: metric.numerator,
+  denominator: metric.denominator,
+  unit: '%',
+});
+
+const buildImprovementHints = (
+  match: Match,
+  team: TeamKey,
+  metrics: TeamAnalysisMetrics,
+  reconstructedPoints: ReconstructedPointContext[],
+): ImprovementHint[] => {
+  const hints: ImprovementHint[] = [];
+  const overallMetric = metrics.overallPointWinRate;
+  const isOneSidedLoss = (overallMetric.percentage ?? 50) < 38;
+  const addHint = (
+    hint: Omit<ImprovementHint, 'id' | 'matchId' | 'target' | 'ruleVersion'> & {
+      playerName?: string;
+    },
+  ) => {
+    const { playerName, ...hintWithoutPlayerName } = hint;
+    const playerSuffix = playerName ? `:${encodeURIComponent(playerName)}` : '';
+    hints.push({
+      id: `${match.id}:${team}:${hintWithoutPlayerName.ruleId}${playerSuffix}`,
+      ruleVersion: IMPROVEMENT_HINT_RULE_VERSION,
+      matchId: match.id,
+      target: getHintTarget(match, team, playerName),
+      ...hintWithoutPlayerName,
+    });
+  };
+
+  const firstServeInRate = metrics.service.firstServeSuccessRate;
+  if (
+    firstServeInRate.denominator > 0 &&
+    (firstServeInRate.percentage ?? 100) <
+      ANALYSIS_THRESHOLDS.LOW_FIRST_SERVE_IN_RATE
+  ) {
+    const confidence = getConfidence(
+      firstServeInRate.denominator,
+      ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+      (firstServeInRate.percentage ?? 100) < 45,
+    );
+    const drop = Math.max(
+      0,
+      ANALYSIS_THRESHOLDS.LOW_FIRST_SERVE_IN_RATE -
+        (firstServeInRate.percentage ?? 0),
+    );
+
+    addHint({
+      ruleId: 'serve.firstServeInRate.low',
+      category: 'serve',
+      title: '1stサーブの入りを確認',
+      evidence: `1stサーブ成功率が ${formatRateForMessage(firstServeInRate)} でした。`,
+      evidenceItems: [
+        `1stサーブ成功率: ${formatRateForMessage(firstServeInRate)}`,
+        `ダブルフォルト: ${metrics.service.doubleFaultCount}本`,
+      ],
+      interpretation:
+        'この試合では、サーブの入りが次に見返す確認ポイントになる可能性があります。',
+      nextCheck:
+        '次の試合では、1stサーブが入らなかった場面の入り方を確認しましょう。',
+      nextCheckItems: [
+        '1stサーブが入らなかったゲーム',
+        '2ndサーブ後の失点パターン',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        firstServeInRate.denominator,
+        ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+      ),
+      priorityScore: 48 + drop + Math.min(firstServeInRate.denominator, 12),
+      priorityReasons: [
+        'サーブの入りは次の試合で確認しやすい',
+        '1stサーブ成功率が低め',
+      ],
+      sourceMetrics: [
+        buildMetric(
+          'service.firstServeInRate',
+          '1stサーブ成功率',
+          firstServeInRate,
+        ),
+        {
+          key: 'service.doubleFaults',
+          label: 'ダブルフォルト',
+          value: metrics.service.doubleFaultCount,
+          unit: 'count',
+        },
+      ],
+    });
+  }
+
+  const firstServePointWinRate = metrics.service.firstServePointWinRate;
+  const firstServePointDrop = getMetricDropFromOverall(
+    firstServePointWinRate,
+    overallMetric,
+  );
+  if (
+    firstServePointWinRate.denominator > 0 &&
+    (firstServeInRate.percentage ?? 0) >=
+      ANALYSIS_THRESHOLDS.LOW_FIRST_SERVE_IN_RATE &&
+    ((firstServePointWinRate.percentage ?? 100) <
+      ANALYSIS_THRESHOLDS.LOW_FIRST_SERVE_POINT_WIN_RATE ||
+      firstServePointDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP)
+  ) {
+    const confidence = getConfidence(
+      firstServePointWinRate.denominator,
+      ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+      firstServePointDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP,
+    );
+
+    addHint({
+      ruleId: 'serve.firstServePointWinRate.low',
+      category: 'serve',
+      title: '1stサーブ後の展開を確認',
+      evidence: `1stサーブ時得点率が ${formatRateForMessage(firstServePointWinRate)} でした。`,
+      evidenceItems: [
+        `1stサーブ時得点率: ${formatRateForMessage(firstServePointWinRate)}`,
+        `総ポイント取得率との差: ${firstServePointDrop.toFixed(1)}pt`,
+      ],
+      interpretation:
+        '1stサーブは入っていても、その後の1本で押し返された可能性があります。',
+      nextCheck:
+        '1stサーブが入った後、3本目までにどこで主導権が変わったか確認しましょう。',
+      nextCheckItems: [
+        '1stサーブ後の次の1本',
+        '短いラリーでの失点',
+        '相手に先に攻められた場面',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        firstServePointWinRate.denominator,
+        ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+      ),
+      priorityScore:
+        52 +
+        Math.max(firstServePointDrop, 0) +
+        Math.min(firstServePointWinRate.denominator, 12),
+      priorityReasons: [
+        '1stサーブ成功後の得点率が低め',
+        '総ポイント取得率との差を確認',
+      ],
+      sourceMetrics: [
+        buildMetric(
+          'service.firstServePointWinRate',
+          '1stサーブ時得点率',
+          firstServePointWinRate,
+        ),
+        buildMetric('overall.pointWinRate', '総ポイント取得率', overallMetric),
+      ],
+    });
+  }
+
+  const secondServePointWinRate = metrics.service.secondServePointWinRate;
+  if (
+    secondServePointWinRate.denominator > 0 &&
+    ((secondServePointWinRate.percentage ?? 100) <
+      ANALYSIS_THRESHOLDS.LOW_SECOND_SERVE_POINT_WIN_RATE ||
+      metrics.service.doubleFaultCount >=
+        ANALYSIS_THRESHOLDS.HIGH_DOUBLE_FAULT_COUNT)
+  ) {
+    const confidence = getConfidence(
+      secondServePointWinRate.denominator + metrics.service.doubleFaultCount,
+      Math.max(3, ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE - 2),
+      (secondServePointWinRate.percentage ?? 100) < 30 ||
+        metrics.service.doubleFaultCount >= 3,
+    );
+
+    addHint({
+      ruleId: 'serve.secondServe.low',
+      category: 'serve',
+      title: '2ndサーブ後の展開を確認',
+      evidence: `2ndサーブ時得点率が ${formatRateForMessage(secondServePointWinRate)} で、ダブルフォルトは ${metrics.service.doubleFaultCount}本でした。`,
+      evidenceItems: [
+        `2ndサーブ時得点率: ${formatRateForMessage(secondServePointWinRate)}`,
+        `ダブルフォルト: ${metrics.service.doubleFaultCount}本`,
+      ],
+      interpretation:
+        '2ndサーブの後に相手へ流れが渡った場面があった可能性があります。',
+      nextCheck:
+        '2ndサーブ後の短いラリーで、どの形の失点が多かったか確認しましょう。',
+      nextCheckItems: [
+        '2ndサーブ直後の返球',
+        'ダブルフォルトが出たゲーム',
+        '2nd後の1-4本ラリー失点',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        secondServePointWinRate.denominator,
+        Math.max(3, ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE - 2),
+      ),
+      priorityScore:
+        56 +
+        Math.max(
+          0,
+          ANALYSIS_THRESHOLDS.LOW_SECOND_SERVE_POINT_WIN_RATE -
+            (secondServePointWinRate.percentage ?? 0),
+        ) +
+        metrics.service.doubleFaultCount * 4,
+      priorityReasons: [
+        '2ndサーブ時得点率が低め',
+        'ダブルフォルト数も確認対象',
+      ],
+      sourceMetrics: [
+        buildMetric(
+          'service.secondServeWinRate',
+          '2ndサーブ時得点率',
+          secondServePointWinRate,
+        ),
+        {
+          key: 'service.doubleFaults',
+          label: 'ダブルフォルト',
+          value: metrics.service.doubleFaultCount,
+          unit: 'count',
+        },
+      ],
+    });
+  }
+
+  const receivePointWinRate = metrics.receive.pointWinRate;
+  const receiveDrop = getMetricDropFromOverall(
+    receivePointWinRate,
+    overallMetric,
+  );
+  if (
+    receivePointWinRate.denominator > 0 &&
+    ((receivePointWinRate.percentage ?? 100) <
+      ANALYSIS_THRESHOLDS.LOW_RECEIVE_POINT_WIN_RATE ||
+      receiveDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP)
+  ) {
+    const confidence = getConfidence(
+      receivePointWinRate.denominator,
+      ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+      receiveDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP,
+    );
+
+    addHint({
+      ruleId: 'receive.pointWinRate.low',
+      category: 'receive',
+      title: 'レシーブ後の展開を確認',
+      evidence: `レシーブ時得点率が ${formatRateForMessage(receivePointWinRate)} でした。`,
+      evidenceItems: [
+        `レシーブ時得点率: ${formatRateForMessage(receivePointWinRate)}`,
+        `総ポイント取得率との差: ${receiveDrop.toFixed(1)}pt`,
+      ],
+      interpretation:
+        '相手サーブからの入りで、主導権を作りにくかった可能性があります。',
+      nextCheck:
+        '相手サーブ後の1本目から3本目で、どこから苦しくなったか確認しましょう。',
+      nextCheckItems: [
+        'レシーブ直後の失点',
+        '相手2ndサーブ時に攻められたか',
+        'レシーブ後の短いラリー',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        receivePointWinRate.denominator,
+        ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+      ),
+      priorityScore:
+        44 +
+        Math.max(receiveDrop, 0) +
+        Math.min(receivePointWinRate.denominator, 12),
+      priorityReasons: [
+        'レシーブは次の試合で確認しやすい',
+        '総ポイント取得率との差を確認',
+      ],
+      sourceMetrics: [
+        buildMetric(
+          'receive.pointWinRate',
+          'レシーブ時得点率',
+          receivePointWinRate,
+        ),
+        buildMetric('overall.pointWinRate', '総ポイント取得率', overallMetric),
+      ],
+    });
+  }
+
+  const shortRallyMetric = combineRateMetrics(
+    metrics.rally.buckets['1-2'],
+    metrics.rally.buckets['3-4'],
+  );
+  const mediumRallyMetric = metrics.rally.buckets['5-8'];
+  const longRallyMetric = metrics.rally.buckets['9+'];
+  const rallyCandidates: Array<{
+    ruleId: string;
+    title: string;
+    metric: RateMetric;
+    metricKey: ImprovementHintSourceMetricKey;
+    label: string;
+    nextCheckItems: string[];
+  }> = [
+    {
+      ruleId: 'rally.short1To4.low',
+      title: '短いラリーの終わり方を確認',
+      metric: shortRallyMetric,
+      metricKey: 'rally.short1To4WinRate',
+      label: '1-4本ラリー得点率',
+      nextCheckItems: ['サーブ・レシーブ直後の失点', '3本目までの判断'],
+    },
+    {
+      ruleId: 'rally.medium5To8.low',
+      title: '中盤ラリーの組み立てを確認',
+      metric: mediumRallyMetric,
+      metricKey: 'rally.medium5To8WinRate',
+      label: '5-8本ラリー得点率',
+      nextCheckItems: ['5-8本目で先に攻められた場面', '無理に決めに行った場面'],
+    },
+    {
+      ruleId: 'rally.long9Plus.low',
+      title: '長いラリーの終わり方を確認',
+      metric: longRallyMetric,
+      metricKey: 'rally.long9PlusWinRate',
+      label: '9本以上ラリー得点率',
+      nextCheckItems: ['長いラリーの最後の2本', '粘った後のミスか決められた形'],
+    },
+  ];
+
+  rallyCandidates.forEach((candidate) => {
+    const rallyDrop = getMetricDropFromOverall(candidate.metric, overallMetric);
+    if (
+      candidate.metric.denominator > 0 &&
+      ((candidate.metric.percentage ?? 100) <
+        ANALYSIS_THRESHOLDS.LOW_RALLY_WIN_RATE ||
+        rallyDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP)
+    ) {
+      const confidence = getConfidence(
+        candidate.metric.denominator,
+        ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+        rallyDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP,
+      );
+
+      addHint({
+        ruleId: candidate.ruleId,
+        category: 'rally',
+        title: candidate.title,
+        evidence: `${candidate.label}が ${formatRateForMessage(candidate.metric)} でした。`,
+        evidenceItems: [
+          `${candidate.label}: ${formatRateForMessage(candidate.metric)}`,
+          `総ポイント取得率との差: ${rallyDrop.toFixed(1)}pt`,
+        ],
+        interpretation:
+          'このラリー帯で点が動いた場面を見返すと、次の確認ポイントが見つかる可能性があります。',
+        nextCheck: `${candidate.label}に含まれる失点場面を確認しましょう。`,
+        nextCheckItems: candidate.nextCheckItems,
+        confidence,
+        confidenceReason: getConfidenceReason(
+          confidence,
+          candidate.metric.denominator,
+          ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
+        ),
+        priorityScore:
+          42 +
+          Math.max(rallyDrop, 0) +
+          Math.min(candidate.metric.denominator, 10),
+        priorityReasons: [
+          '総ポイント取得率との差を確認',
+          isOneSidedLoss
+            ? '全体的に苦しい試合の中でも落ち込みが大きい'
+            : 'ラリー帯ごとの差が見やすい',
+        ],
+        sourceMetrics: [
+          buildMetric(candidate.metricKey, candidate.label, candidate.metric),
+          buildMetric(
+            'overall.pointWinRate',
+            '総ポイント取得率',
+            overallMetric,
+          ),
+        ],
+      });
+    }
+  });
+
+  const gamePointWinRate = metrics.keyMoments.gamePointWinRate;
+  const gamePointDrop = getMetricDropFromOverall(
+    gamePointWinRate,
+    overallMetric,
+  );
+  if (
+    gamePointWinRate.denominator > 0 &&
+    ((gamePointWinRate.percentage ?? 100) <
+      ANALYSIS_THRESHOLDS.LOW_GAME_POINT_CONVERSION ||
+      gamePointDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP)
+  ) {
+    const confidence = getConfidence(
+      gamePointWinRate.denominator,
+      ANALYSIS_THRESHOLDS.MIN_GAME_POINT_SAMPLE,
+      gamePointDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP,
+    );
+
+    addHint({
+      ruleId: 'keyMoment.gamePointWinRate.low',
+      category: 'key_moment',
+      title: 'ゲームポイントの取り切りを確認',
+      evidence: `自チームのゲームポイント取得率が ${formatRateForMessage(gamePointWinRate)} でした。`,
+      evidenceItems: [
+        `ゲームポイント取得率: ${formatRateForMessage(gamePointWinRate)}`,
+        `デュースポイント取得率: ${formatRateForMessage(metrics.keyMoments.deucePointWinRate)}`,
+      ],
+      interpretation:
+        'ゲームを取り切れる場面で、もう一度見る価値のあるポイントがあった可能性があります。',
+      nextCheck:
+        'ゲームポイントの前後で、先に攻めたか、相手に攻められたかを確認しましょう。',
+      nextCheckItems: [
+        '自チームのゲームポイント',
+        'ゲームポイント直前の配球',
+        'デュースになった後の1本',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        gamePointWinRate.denominator,
+        ANALYSIS_THRESHOLDS.MIN_GAME_POINT_SAMPLE,
+      ),
+      priorityScore:
+        50 +
+        Math.max(gamePointDrop, 0) +
+        Math.min(gamePointWinRate.denominator, 8),
+      priorityReasons: ['重要局面の確認価値が高い', '取り切りの場面を絞れる'],
+      sourceMetrics: [
+        buildMetric(
+          'keyMoment.gamePointWinRate',
+          'ゲームポイント取得率',
+          gamePointWinRate,
+        ),
+        buildMetric(
+          'keyMoment.deucePointWinRate',
+          'デュースポイント取得率',
+          metrics.keyMoments.deucePointWinRate,
+        ),
+      ],
+    });
+  }
+
+  const opponentGamePointSaveRate = getOpponentGamePointSaveRate(
+    team,
+    reconstructedPoints,
+  );
+  if (
+    opponentGamePointSaveRate.denominator > 0 &&
+    (opponentGamePointSaveRate.percentage ?? 100) <
+      ANALYSIS_THRESHOLDS.LOW_OPPONENT_GAME_POINT_SAVE_RATE
+  ) {
+    const confidence = getConfidence(
+      opponentGamePointSaveRate.denominator,
+      ANALYSIS_THRESHOLDS.MIN_GAME_POINT_SAMPLE,
+      (opponentGamePointSaveRate.percentage ?? 100) < 25,
+    );
+
+    addHint({
+      ruleId: 'keyMoment.opponentGamePointSaveRate.low',
+      category: 'key_moment',
+      title: '相手ゲームポイントでの粘りを確認',
+      evidence: `相手ゲームポイントでの得点率が ${formatRateForMessage(opponentGamePointSaveRate)} でした。`,
+      evidenceItems: [
+        `相手ゲームポイント得点率: ${formatRateForMessage(opponentGamePointSaveRate)}`,
+      ],
+      interpretation:
+        '相手にゲームポイントを握られた場面で、粘り切れなかった可能性があります。',
+      nextCheck:
+        '相手ゲームポイントで、守るだけになったか、先に仕掛けられたか確認しましょう。',
+      nextCheckItems: [
+        '相手ゲームポイントの入り',
+        'レシーブ側かサーブ側か',
+        '最後の失点の終わり方',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        opponentGamePointSaveRate.denominator,
+        ANALYSIS_THRESHOLDS.MIN_GAME_POINT_SAMPLE,
+      ),
+      priorityScore:
+        45 +
+        Math.max(
+          0,
+          ANALYSIS_THRESHOLDS.LOW_OPPONENT_GAME_POINT_SAVE_RATE -
+            (opponentGamePointSaveRate.percentage ?? 0),
+        ) +
+        Math.min(opponentGamePointSaveRate.denominator, 8),
+      priorityReasons: [
+        '相手ゲームポイントを分けて確認',
+        '重要局面の見返しに向いている',
+      ],
+      sourceMetrics: [
+        buildMetric(
+          'keyMoment.opponentGamePointSaveRate',
+          '相手ゲームポイント得点率',
+          opponentGamePointSaveRate,
+        ),
+      ],
+    });
+  }
+
+  if (
+    metrics.momentum.maxStreakAgainst >= ANALYSIS_THRESHOLDS.LARGE_LOSS_STREAK
+  ) {
+    const segment = metrics.momentum.maxStreakAgainstSegment;
+    const confidence = getConfidence(
+      metrics.momentum.maxStreakAgainst,
+      ANALYSIS_THRESHOLDS.LARGE_LOSS_STREAK,
+      metrics.momentum.maxStreakAgainst >= 7,
+    );
+
+    addHint({
+      ruleId: 'momentum.maxLostStreak.large',
+      category: 'momentum',
+      title: '連続失点の始まりを確認',
+      evidence: `最大連続失点は ${metrics.momentum.maxStreakAgainst}点でした。`,
+      evidenceItems: [
+        `最大連続失点: ${metrics.momentum.maxStreakAgainst}点`,
+        `該当区間: ${formatPointRange(segment)}`,
+      ],
+      interpretation:
+        '流れが相手に傾いた区間があり、始まり方を見返す価値があります。',
+      nextCheck:
+        '連続失点が始まる直前と終わる直後のポイント内容を確認しましょう。',
+      nextCheckItems: [
+        '連続失点が始まる直前のポイント',
+        '連続失点中のサーブ/レシーブ',
+        '連続失点が止まったポイント',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        metrics.momentum.maxStreakAgainst,
+        ANALYSIS_THRESHOLDS.LARGE_LOSS_STREAK,
+      ),
+      priorityScore: 54 + metrics.momentum.maxStreakAgainst * 3,
+      priorityReasons: [
+        '該当区間を特定できる',
+        '次に確認するポイントを絞りやすい',
+      ],
+      sourceMetrics: [
+        {
+          key: 'momentum.maxLostStreak',
+          label: '最大連続失点',
+          value: metrics.momentum.maxStreakAgainst,
+          unit: 'points',
+        },
+      ],
+    });
+  }
+
+  metrics.endings.errorBreakdown.slice(0, 2).forEach((entry) => {
+    if (
+      entry.count >= ANALYSIS_THRESHOLDS.ERROR_SHARE_COUNT &&
+      (entry.share ?? 0) >= ANALYSIS_THRESHOLDS.ERROR_SHARE_RATE
+    ) {
+      const confidence = getConfidence(
+        entry.count,
+        ANALYSIS_THRESHOLDS.ERROR_SHARE_COUNT,
+        (entry.share ?? 0) >= 55,
+      );
+      const label = RESULT_TYPE_LABELS[entry.resultType] ?? entry.resultType;
+
+      addHint({
+        ruleId: `error.resultTypeShare.${entry.resultType}`,
+        category: 'error_trend',
+        title: `${label}の終わり方を確認`,
+        evidence: `${label}が自チームエラーの ${formatPercentage(entry.share) ?? '0%'} を占めていました。`,
+        evidenceItems: [
+          `${label}: ${entry.count}件`,
+          `自チームエラー内の比率: ${formatPercentage(entry.share) ?? '0%'}`,
+        ],
+        interpretation:
+          'この試合では、同じ終わり方の失点がややまとまっていた可能性があります。',
+        nextCheck:
+          '同じミスが出た場面で、直前のボールや立ち位置を確認しましょう。',
+        nextCheckItems: [
+          `${label}が出た直前の1本`,
+          'サーブ側/レシーブ側のどちらで出たか',
+          '連続失点中に重なっていないか',
+        ],
+        confidence,
+        confidenceReason: getConfidenceReason(
+          confidence,
+          entry.count,
+          ANALYSIS_THRESHOLDS.ERROR_SHARE_COUNT,
+        ),
+        priorityScore: 40 + (entry.share ?? 0) / 2 + entry.count * 3,
+        priorityReasons: [
+          '失点の終わり方に偏りがある',
+          '次の試合で記録確認しやすい',
+        ],
+        sourceMetrics: [
+          {
+            key: 'error.resultTypeShare',
+            label: `${label}比率`,
+            value: entry.share !== null ? Number(entry.share.toFixed(1)) : '--',
+            numerator: entry.count,
+            denominator: metrics.endings.errors,
+            unit: '%',
+          },
+        ],
+      });
+    }
+  });
+
+  const dominantLoser = getDominantLoserPlayer(
+    match,
+    team,
+    reconstructedPoints,
+  );
+  if (dominantLoser) {
+    const confidence = getConfidence(
+      dominantLoser.count,
+      ANALYSIS_THRESHOLDS.INDIVIDUAL_ERROR_SHARE_COUNT,
+      dominantLoser.share >= 70,
+    );
+
+    addHint({
+      ruleId: 'error.loserPlayerShare.high',
+      category: 'error_trend',
+      playerName: dominantLoser.playerName,
+      title: '失点の終点になった場面を確認',
+      evidence: `${dominantLoser.playerName} が失点の終点として ${dominantLoser.count}件記録されていました。`,
+      evidenceItems: [
+        `記録された失点終点: ${dominantLoser.count}件`,
+        `既知の自チームエラー内比率: ${dominantLoser.share.toFixed(1)}%`,
+      ],
+      interpretation:
+        '個人の責任ではなく、ペアとしてその選手に最後のボールが集まった可能性があります。',
+      nextCheck:
+        'その選手の前の1本と、ペアの配置・役割を一緒に確認しましょう。',
+      nextCheckItems: [
+        '失点直前にどちらが触ったか',
+        'ペアの立ち位置',
+        '同じ形で狙われていないか',
+      ],
+      confidence,
+      confidenceReason: getConfidenceReason(
+        confidence,
+        dominantLoser.count,
+        ANALYSIS_THRESHOLDS.INDIVIDUAL_ERROR_SHARE_COUNT,
+      ),
+      priorityScore: 38 + dominantLoser.share / 2 + dominantLoser.count * 3,
+      priorityReasons: [
+        'ダブルスでは個人責任ではなく配置確認として扱う',
+        '失点終点の偏りがある',
+      ],
+      sourceMetrics: [
+        {
+          key: 'error.loserPlayerShare',
+          label: '失点終点の比率',
+          value: Number(dominantLoser.share.toFixed(1)),
+          numerator: dominantLoser.count,
+          denominator: dominantLoser.totalKnownErrors,
+          unit: '%',
+        },
+      ],
+    });
+  }
+
+  return hints
+    .sort((left, right) => right.priorityScore - left.priorityScore)
+    .slice(0, 3);
+};
+
 const buildGuideCards = (
   metrics: TeamAnalysisMetrics,
   opponentMetrics: TeamAnalysisMetrics,
@@ -428,7 +1376,11 @@ const buildGuideCards = (
       ? '連続失点が流れの確認ポイントになりそうです。'
       : '流れが止まった場面を見返す手がかりになります。');
 
-  const shortRallyMetric = metrics.rally.buckets['1-2'];
+  const shortRallyMetric = combineRateMetrics(
+    metrics.rally.buckets['1-2'],
+    metrics.rally.buckets['3-4'],
+  );
+  const veryShortRallyMetric = metrics.rally.buckets['1-2'];
   const midShortRallyMetric = metrics.rally.buckets['3-4'];
   const midLongRallyMetric = metrics.rally.buckets['5-8'];
   const longRallyMetric = metrics.rally.buckets['9+'];
@@ -531,6 +1483,10 @@ const buildGuideCards = (
             value: formatRateForMessage(metrics.keyMoments.firstPointWinRate),
           },
           {
+            label: '2-2局面取得率',
+            value: formatRateForMessage(metrics.keyMoments.twoTwoPointWinRate),
+          },
+          {
             label: 'デュースポイント取得率',
             value: formatRateForMessage(metrics.keyMoments.deucePointWinRate),
           },
@@ -587,7 +1543,7 @@ const buildGuideCards = (
             ? '--'
             : `${formatPrimaryPercentage(shortRallyMetric)} / ${formatPrimaryPercentage(longRallyMetric)}`,
         secondaryValue:
-          rallyReliability === 'none' ? undefined : '短いラリー / 長いラリー',
+          rallyReliability === 'none' ? undefined : '1-4本ラリー / 長いラリー',
         reliability: rallyReliability,
         summary: rallySummary,
         description:
@@ -601,6 +1557,10 @@ const buildGuideCards = (
         details: [
           {
             label: '1-2本ラリー得点率',
+            value: formatRateForMessage(veryShortRallyMetric),
+          },
+          {
+            label: '短いラリー合算得点率 (1-4本)',
             value: formatRateForMessage(shortRallyMetric),
           },
           {
@@ -706,6 +1666,7 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
         scoreBefore,
         scoreAfter: { A: scoreA, B: scoreB },
         isFirstPointOfGame: index === 0,
+        isTwoTwoPoint: scoreBefore.A === 2 && scoreBefore.B === 2,
         isDeucePoint: isDeuceScore(scoreBefore.A, scoreBefore.B, pointsToWin),
         isGamePointOpportunity,
         isGameWinningPoint:
@@ -766,6 +1727,9 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
     );
     const firstPointPoints = reconstructedPoints.filter(
       (context) => context.isFirstPointOfGame,
+    );
+    const twoTwoPoints = reconstructedPoints.filter(
+      (context) => context.isTwoTwoPoint,
     );
     const deucePoints = reconstructedPoints.filter(
       (context) => context.isDeucePoint,
@@ -873,6 +1837,11 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
           ).length,
           firstPointPoints.length,
         ),
+        twoTwoPointWinRate: createRate(
+          twoTwoPoints.filter((context) => context.point.winner_team === team)
+            .length,
+          twoTwoPoints.length,
+        ),
         deucePointWinRate: createRate(
           deucePoints.filter((context) => context.point.winner_team === team)
             .length,
@@ -920,6 +1889,20 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
       B: buildGuideCards(
         neutralComparison.B,
         neutralComparison.A,
+        reconstructedPoints,
+      ),
+    },
+    improvementHints: {
+      A: buildImprovementHints(
+        match,
+        'A',
+        neutralComparison.A,
+        reconstructedPoints,
+      ),
+      B: buildImprovementHints(
+        match,
+        'B',
+        neutralComparison.B,
         reconstructedPoints,
       ),
     },

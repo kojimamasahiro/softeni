@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   AnalysisGuideCard,
   AnalysisReliability,
+  ImprovementHint,
   analyzeMatch,
   MatchAnalysisSummary,
   RateMetric,
@@ -210,6 +211,42 @@ const PublicMatchDetail = ({
       };
     }
     return null;
+  };
+
+  const getHintConfidenceBadge = (
+    confidence: ImprovementHint['confidence'],
+  ) => {
+    if (confidence === 'low') {
+      return {
+        label: '参考',
+        className:
+          'border border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
+      };
+    }
+    if (confidence === 'high') {
+      return {
+        label: '注目',
+        className:
+          'border border-rose-200 bg-rose-100 text-rose-800 dark:border-rose-800 dark:bg-rose-900/30 dark:text-rose-300',
+      };
+    }
+    return {
+      label: '確認',
+      className:
+        'border border-blue-200 bg-blue-100 text-blue-800 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
+    };
+  };
+
+  const formatHintMetricValue = (
+    metric: ImprovementHint['sourceMetrics'][number],
+  ) => {
+    if (metric.value === '--') return '--';
+    if (metric.unit === '%' && typeof metric.value === 'number') {
+      return `${metric.value.toFixed(1)}%`;
+    }
+    if (metric.unit === 'points') return `${metric.value}点`;
+    if (metric.unit === 'count') return `${metric.value}件`;
+    return String(metric.value);
   };
 
   const formatGuideDetailLabel = (label: string) => {
@@ -638,6 +675,7 @@ const PublicMatchDetail = ({
     day: '2-digit',
     timeZone: 'Asia/Tokyo',
   });
+  const focusedImprovementHints = analysisSummary.improvementHints[focusTeam];
   const comparisonRows = [
     {
       label: '1stサーブ成功率',
@@ -687,6 +725,15 @@ const PublicMatchDetail = ({
       ),
       b: formatRateMetric(
         analysisSummary.neutralComparison.B.keyMoments.firstPointWinRate,
+      ),
+    },
+    {
+      label: '2-2局面取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.twoTwoPointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.twoTwoPointWinRate,
       ),
     },
     {
@@ -1001,6 +1048,114 @@ const PublicMatchDetail = ({
                   </button>
                 ))}
               </div>
+
+              {focusedImprovementHints.length > 0 && (
+                <div className="mb-6">
+                  <div className="mb-3">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      この試合から見る改善ヒント
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      1試合分の記録から、次に確認しやすい候補を最大3件に絞っています。
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+                    {focusedImprovementHints.map((hint) => {
+                      const confidenceBadge = getHintConfidenceBadge(
+                        hint.confidence,
+                      );
+
+                      return (
+                        <div
+                          key={hint.id}
+                          className="rounded-lg border border-blue-100 bg-blue-50/60 p-5 dark:border-blue-900/60 dark:bg-blue-950/20"
+                        >
+                          <div className="mb-3 flex items-start justify-between gap-3">
+                            <h4 className="font-semibold leading-snug text-gray-900 dark:text-gray-100">
+                              {hint.title}
+                            </h4>
+                            <span
+                              className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${confidenceBadge.className}`}
+                            >
+                              {confidenceBadge.label}
+                            </span>
+                          </div>
+
+                          <div className="space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300">
+                            <p>{hint.evidence}</p>
+                            {hint.evidenceItems &&
+                              hint.evidenceItems.length > 0 && (
+                                <ul className="space-y-1">
+                                  {hint.evidenceItems.map((item) => (
+                                    <li
+                                      key={`${hint.id}-${item}`}
+                                      className="rounded bg-white/70 px-3 py-2 text-gray-700 dark:bg-gray-800/70 dark:text-gray-300"
+                                    >
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+
+                            <div>
+                              <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">
+                                読み取り
+                              </div>
+                              <p>{hint.interpretation}</p>
+                            </div>
+
+                            <div>
+                              <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">
+                                次に見ること
+                              </div>
+                              <p>{hint.nextCheck}</p>
+                              {hint.nextCheckItems &&
+                                hint.nextCheckItems.length > 0 && (
+                                  <ul className="mt-2 list-disc space-y-1 pl-5">
+                                    {hint.nextCheckItems.map((item) => (
+                                      <li key={`${hint.id}-${item}`}>{item}</li>
+                                    ))}
+                                  </ul>
+                                )}
+                            </div>
+
+                            {hint.sourceMetrics.length > 0 && (
+                              <div className="flex flex-wrap gap-2">
+                                {hint.sourceMetrics.map((metric) => (
+                                  <span
+                                    key={`${hint.id}-${metric.key}-${metric.label ?? metric.value}`}
+                                    className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                  >
+                                    {metric.label ?? metric.key}:{' '}
+                                    <span className="font-semibold">
+                                      {formatHintMetricValue(metric)}
+                                    </span>
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+
+                            {hint.confidence === 'low' && (
+                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                                {hint.confidenceReason}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {focusedImprovementHints.length === 0 &&
+                analysisSummary.reconstructedPoints.length > 0 &&
+                analysisSummary.reconstructedPoints.length < 8 && (
+                  <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-700/40 dark:text-gray-300">
+                    十分な記録から改善ヒントを生成できませんでした。ポイント記録が増えると、確認候補を出しやすくなります。
+                  </div>
+                )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {analysisSummary.teamGuideCards[focusTeam].cards.map(
