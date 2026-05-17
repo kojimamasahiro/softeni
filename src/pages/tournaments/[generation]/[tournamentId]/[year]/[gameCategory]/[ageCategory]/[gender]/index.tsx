@@ -253,6 +253,7 @@ export default function TournamentYearResultPage({
             <>
               <MatchResults
                 detail={detailData}
+                gameCategory={gameCategory}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 filter={filter}
