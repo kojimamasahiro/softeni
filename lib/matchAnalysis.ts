@@ -183,6 +183,12 @@ const createRate = (numerator: number, denominator: number): RateMetric => ({
   percentage: denominator > 0 ? (numerator / denominator) * 100 : null,
 });
 
+const combineRateMetrics = (...metrics: RateMetric[]): RateMetric =>
+  createRate(
+    metrics.reduce((sum, metric) => sum + metric.numerator, 0),
+    metrics.reduce((sum, metric) => sum + metric.denominator, 0),
+  );
+
 const getRateReliability = (
   metric: RateMetric,
   minSample: number = ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
@@ -428,7 +434,11 @@ const buildGuideCards = (
       ? '連続失点が流れの確認ポイントになりそうです。'
       : '流れが止まった場面を見返す手がかりになります。');
 
-  const shortRallyMetric = metrics.rally.buckets['1-2'];
+  const shortRallyMetric = combineRateMetrics(
+    metrics.rally.buckets['1-2'],
+    metrics.rally.buckets['3-4'],
+  );
+  const veryShortRallyMetric = metrics.rally.buckets['1-2'];
   const midShortRallyMetric = metrics.rally.buckets['3-4'];
   const midLongRallyMetric = metrics.rally.buckets['5-8'];
   const longRallyMetric = metrics.rally.buckets['9+'];
@@ -587,7 +597,7 @@ const buildGuideCards = (
             ? '--'
             : `${formatPrimaryPercentage(shortRallyMetric)} / ${formatPrimaryPercentage(longRallyMetric)}`,
         secondaryValue:
-          rallyReliability === 'none' ? undefined : '短いラリー / 長いラリー',
+          rallyReliability === 'none' ? undefined : '1-4本ラリー / 長いラリー',
         reliability: rallyReliability,
         summary: rallySummary,
         description:
@@ -601,6 +611,10 @@ const buildGuideCards = (
         details: [
           {
             label: '1-2本ラリー得点率',
+            value: formatRateForMessage(veryShortRallyMetric),
+          },
+          {
+            label: '短いラリー合算得点率 (1-4本)',
             value: formatRateForMessage(shortRallyMetric),
           },
           {
