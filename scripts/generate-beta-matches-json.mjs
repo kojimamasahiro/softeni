@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import nextEnv from '@next/env';
 import { createClient } from '@supabase/supabase-js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -10,6 +11,11 @@ const projectRoot = path.resolve(__dirname, '..');
 const outputRoot = path.join(projectRoot, 'public', 'data', 'beta-matches');
 const matchesOutputRoot = path.join(outputRoot, 'matches');
 const LATEST_BETA_MATCH_LIMIT = 50;
+const { loadEnvConfig } = nextEnv;
+
+// Align local script env loading with Next.js behavior while still allowing
+// CI/CD providers to inject environment variables directly.
+loadEnvConfig(projectRoot);
 
 const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === 'true';
 

@@ -2,12 +2,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback as reactUseCallback, useEffect, useState } from 'react';
 
+import {
+  fetchBetaMatchById,
+  hasLiveMatchApi,
+} from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
 import { Game, Match, Point } from '../../../../types/database';
 
 const MatchDetail = () => {
   const router = useRouter();
   const { matchId } = router.query;
+  const canEditMatches = isDebugMode() && hasLiveMatchApi();
 
   const [match, setMatch] = useState<Match | null>(null);
   const [loading, setLoading] = useState(true);
@@ -15,13 +20,11 @@ const MatchDetail = () => {
   const [editingData, setEditingData] = useState<Partial<Point>>({});
 
   const fetchMatch = useCallback(async () => {
-    try {
-      const response = await fetch(`/api/matches/${matchId}`);
-      const data = await response.json();
+    if (typeof matchId !== 'string') return;
 
-      if (response.ok) {
-        setMatch(data.match);
-      }
+    try {
+      const loadedMatch = await fetchBetaMatchById(matchId);
+      setMatch(loadedMatch);
     } catch (error) {
       console.error('Failed to fetch match:', error);
     } finally {
@@ -91,7 +94,7 @@ const MatchDetail = () => {
   };
 
   const handleSavePoint = async () => {
-    if (!editingPoint || !matchId) return;
+    if (!canEditMatches || !editingPoint || !matchId) return;
 
     console.log('保存開始:', { editingPoint, matchId, editingData });
 
@@ -132,6 +135,11 @@ const MatchDetail = () => {
   };
 
   const handleDeletePoint = async (pointId: string) => {
+    if (!canEditMatches) {
+      alert('この環境ではポイントの削除はできません');
+      return;
+    }
+
     if (!confirm('このポイントを削除しますか？')) return;
 
     console.log('削除開始:', pointId);
@@ -190,12 +198,16 @@ const MatchDetail = () => {
         <Link href="/beta/matches" className="text-blue-500 hover:underline">
           ← マッチ一覧に戻る
         </Link>
-        <Link
-          href={`/beta/matches/${matchId}/input`}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          記録入力
-        </Link>
+        {canEditMatches ? (
+          <Link
+            href={`/beta/matches/${matchId}/input`}
+            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            記録入力
+          </Link>
+        ) : (
+          <span className="text-sm text-gray-500">静的公開中: 閲覧のみ</span>
+        )}
       </div>
 
       {/* マッチ情報 */}
@@ -373,20 +385,22 @@ const MatchDetail = () => {
                                 ダブルフォルト
                               </span>
                             )}
-                            <div className="ml-auto flex gap-1">
-                              <button
-                                onClick={() => handleEditPoint(point)}
-                                className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
-                              >
-                                編集
-                              </button>
-                              <button
-                                onClick={() => handleDeletePoint(point.id)}
-                                className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600"
-                              >
-                                削除
-                              </button>
-                            </div>
+                            {canEditMatches && (
+                              <div className="ml-auto flex gap-1">
+                                <button
+                                  onClick={() => handleEditPoint(point)}
+                                  className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
+                                >
+                                  編集
+                                </button>
+                                <button
+                                  onClick={() => handleDeletePoint(point.id)}
+                                  className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600"
+                                >
+                                  削除
+                                </button>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>

@@ -13,7 +13,6 @@ import {
 } from '@/lib/matchAnalysis';
 import {
   getBetaMatchById,
-  getBetaMatchesGeneratedAt,
   getBetaTeamDisplayName,
   getLatestBetaMatchIds,
 } from '@/lib/betaMatchesStatic';
@@ -28,15 +27,25 @@ import { Game, Match, Point } from '../../../../types/database';
 interface PublicMatchDetailProps {
   match: Match;
   tournamentInfo: TournamentInfo | null;
-  lastUpdated: string;
 }
 
 const PublicMatchDetail = ({
   match,
   tournamentInfo,
-  lastUpdated,
 }: PublicMatchDetailProps) => {
   const router = useRouter();
+
+  const getTournamentDisplayName = () => {
+    const baseName =
+      tournamentInfo?.meta.name || match.tournament_name || '大会名不明';
+    const year = match.tournament_year;
+
+    if (!year) {
+      return baseName;
+    }
+
+    return `${baseName} ${year}`;
+  };
 
   // マッチ勝者を判定する関数を先に定義
   const getMatchWinner = useCallback(() => {
@@ -63,7 +72,6 @@ const PublicMatchDetail = ({
         : [],
     ),
   );
-  const [analysisTab, setAnalysisTab] = useState<'neutral' | 'team'>('neutral');
   const [focusTeam, setFocusTeam] = useState<TeamKey>('A');
 
   useEffect(() => {
@@ -190,13 +198,15 @@ const PublicMatchDetail = ({
     if (reliability === 'low') {
       return {
         label: '参考値',
-        className: 'bg-amber-100 text-amber-700 border border-amber-200',
+        className:
+          'border border-amber-200 bg-amber-100 text-amber-700 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
       };
     }
     if (reliability === 'none') {
       return {
         label: 'データ不足',
-        className: 'bg-gray-100 text-gray-600 border border-gray-200',
+        className:
+          'border border-gray-200 bg-gray-100 text-gray-600 dark:border-gray-700 dark:bg-gray-700/70 dark:text-gray-300',
       };
     }
     return null;
@@ -612,105 +622,327 @@ const PublicMatchDetail = ({
     return stats;
   };
 
-  if (!match) return <div className="p-6">Match not found</div>;
+  if (!match)
+    return (
+      <div className="p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+        Match not found
+      </div>
+    );
 
   const matchWinner = getMatchWinner();
+  const gamesWonA = gamesAsc.filter((game) => game.winner_team === 'A').length;
+  const gamesWonB = gamesAsc.filter((game) => game.winner_team === 'B').length;
+  const recordedDate = new Date(match.created_at).toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Tokyo',
+  });
+  const comparisonRows = [
+    {
+      label: '1stサーブ成功率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.service.firstServeSuccessRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.service.firstServeSuccessRate,
+      ),
+    },
+    {
+      label: '1stサーブ時得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.service.firstServePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.service.firstServePointWinRate,
+      ),
+    },
+    {
+      label: '2ndサーブ時得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.service.secondServePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.service.secondServePointWinRate,
+      ),
+    },
+    {
+      label: 'ダブルフォルト数',
+      a: `${analysisSummary.neutralComparison.A.service.doubleFaultCount}件`,
+      b: `${analysisSummary.neutralComparison.B.service.doubleFaultCount}件`,
+    },
+    {
+      label: 'レシーブ時得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.receive.pointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.receive.pointWinRate,
+      ),
+    },
+    {
+      label: '各ゲーム1ポイント目取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.firstPointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.firstPointWinRate,
+      ),
+    },
+    {
+      label: 'デュースポイント取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.deucePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.deucePointWinRate,
+      ),
+    },
+    {
+      label: 'ゲームポイント取得率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.keyMoments.gamePointWinRate,
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.keyMoments.gamePointWinRate,
+      ),
+    },
+    {
+      label: '1-2本ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['1-2'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['1-2'],
+      ),
+    },
+    {
+      label: '3-4本ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['3-4'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['3-4'],
+      ),
+    },
+    {
+      label: '5-8本ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['5-8'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['5-8'],
+      ),
+    },
+    {
+      label: '9本以上ラリー得点率',
+      a: formatRateMetric(
+        analysisSummary.neutralComparison.A.rally.buckets['9+'],
+      ),
+      b: formatRateMetric(
+        analysisSummary.neutralComparison.B.rally.buckets['9+'],
+      ),
+    },
+    {
+      label: '最大連続得点',
+      a: formatCountMetric(
+        analysisSummary.neutralComparison.A.momentum.maxStreakFor,
+        analysisSummary.neutralComparison.A.momentum.maxStreakForSegment,
+      ),
+      b: formatCountMetric(
+        analysisSummary.neutralComparison.B.momentum.maxStreakFor,
+        analysisSummary.neutralComparison.B.momentum.maxStreakForSegment,
+      ),
+    },
+    {
+      label: '最大連続失点',
+      a: formatCountMetric(
+        analysisSummary.neutralComparison.A.momentum.maxStreakAgainst,
+        analysisSummary.neutralComparison.A.momentum.maxStreakAgainstSegment,
+      ),
+      b: formatCountMetric(
+        analysisSummary.neutralComparison.B.momentum.maxStreakAgainst,
+        analysisSummary.neutralComparison.B.momentum.maxStreakAgainstSegment,
+      ),
+    },
+    {
+      label: 'ウィナー数',
+      a: `${analysisSummary.neutralComparison.A.endings.winners}件`,
+      b: `${analysisSummary.neutralComparison.B.endings.winners}件`,
+    },
+    {
+      label: 'ミス数',
+      a: `${analysisSummary.neutralComparison.A.endings.errors}件`,
+      b: `${analysisSummary.neutralComparison.B.endings.errors}件`,
+    },
+  ];
+
+  const renderScoreboard = () => (
+    <div className="overflow-x-auto">
+      <table className="min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
+        <thead>
+          <tr className="bg-gray-50 dark:bg-gray-800/90">
+            <th className="w-auto border border-gray-300 px-3 py-2 text-left dark:border-gray-600">
+              チーム
+            </th>
+            {gamesAsc.map((game) => (
+              <th
+                key={game.game_number}
+                className="min-w-12 border border-gray-300 px-3 py-2 text-center dark:border-gray-600"
+              >
+                {game.game_number}
+              </th>
+            ))}
+            <th className="border border-gray-300 bg-yellow-50 px-3 py-2 text-center font-bold dark:border-gray-600 dark:bg-yellow-900/30">
+              G
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
+            <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">
+              {getShortTeamName('A')}
+            </td>
+            {gamesAsc.map((game) => (
+              <td
+                key={game.game_number}
+                className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
+                  game.winner_team === 'A'
+                    ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                    : 'font-normal dark:text-gray-200'
+                }`}
+              >
+                {game.points_a}
+              </td>
+            ))}
+            <td
+              className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
+                matchWinner === 'A'
+                  ? 'font-bold dark:text-yellow-100'
+                  : 'font-normal dark:text-gray-200'
+              }`}
+            >
+              {gamesWonA}
+            </td>
+          </tr>
+          <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
+            <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">
+              {getShortTeamName('B')}
+            </td>
+            {gamesAsc.map((game) => (
+              <td
+                key={game.game_number}
+                className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
+                  game.winner_team === 'B'
+                    ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                    : 'font-normal dark:text-gray-200'
+                }`}
+              >
+                {game.points_b}
+              </td>
+            ))}
+            <td
+              className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
+                matchWinner === 'B'
+                  ? 'font-bold dark:text-yellow-100'
+                  : 'font-normal dark:text-gray-200'
+              }`}
+            >
+              {gamesWonB}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
       {/* ヘッダー */}
       <div className="flex justify-between items-center mb-6">
         <Link
           href="/beta/matches-results"
-          className="text-blue-500 hover:underline"
+          className="text-blue-600 hover:underline dark:text-blue-400"
         >
           ← 試合一覧に戻る
         </Link>
-        <p className="text-sm text-gray-500">最終更新: {lastUpdated}</p>
       </div>
 
-      {/* マッチ情報 */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h1 className="text-2xl font-bold mb-4">
-          {getShortTeamName('A')} vs {getShortTeamName('B')}
-        </h1>
+      {/* 試合サマリー */}
+      <div className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+              試合サマリー
+            </p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              {getShortTeamName('A')} vs {getShortTeamName('B')}
+            </h1>
 
-        {/* 大会情報 */}
-        <div className="mb-4">
-          {/* 大会名表示 */}
-          <div className="flex items-center gap-2 mb-2">
-            {tournamentInfo && fullTournamentUrl ? (
-              <Link
-                href={fullTournamentUrl}
-                className="text-blue-600 hover:underline font-medium"
-              >
-                {tournamentInfo.meta.name}
-              </Link>
-            ) : tournamentInfo ? (
-              <span className="font-medium text-gray-800">
-                {tournamentInfo.meta.name}
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+              {tournamentInfo && fullTournamentUrl ? (
+                <Link
+                  href={fullTournamentUrl}
+                  className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {getTournamentDisplayName()}
+                </Link>
+              ) : tournamentInfo ? (
+                <span className="font-medium text-gray-800 dark:text-gray-100">
+                  {getTournamentDisplayName()}
+                </span>
+              ) : (
+                <span className="font-medium text-gray-800 dark:text-gray-100">
+                  {getTournamentDisplayName()}
+                </span>
+              )}
+              {match.round_name && (
+                <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+                  {match.round_name}
+                </span>
+              )}
+              <span className="text-gray-500 dark:text-gray-400">
+                記録日 {recordedDate}
               </span>
-            ) : (
-              <span className="font-medium text-gray-800">
-                {match.tournament_name || '大会名不明'}
-              </span>
-            )}
+            </div>
           </div>
 
-          {/* 回戦情報表示のみ */}
-          <div className="flex flex-wrap gap-2 mb-2">
-            {match.round_name && (
-              <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
-                {match.round_name}
-              </span>
-            )}
+          <div className="rounded-lg bg-gray-50 px-4 py-3 text-center dark:bg-gray-700/50">
+            <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+              ゲームカウント
+            </div>
+            <div className="mt-1 font-mono text-3xl font-bold text-gray-900 dark:text-gray-100">
+              {gamesWonA} - {gamesWonB}
+            </div>
           </div>
         </div>
 
         {matchWinner && (
-          <div className="bg-green-100 border border-green-400 rounded p-4">
-            <p className="text-lg font-semibold text-green-800">
-              🏆 {getShortTeamName(matchWinner)} の勝利！
+          <div className="mb-5 rounded border border-green-300 bg-green-100 p-4 dark:border-green-800 dark:bg-green-900/30">
+            <p className="text-lg font-semibold text-green-800 dark:text-green-300">
+              {getShortTeamName(matchWinner)} の勝利
             </p>
           </div>
         )}
+
+        {renderScoreboard()}
       </div>
 
       <section className="mb-8">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="mb-4">
             <div>
-              <h2 className="text-xl font-semibold">分析</h2>
-              <p className="text-sm text-gray-500 mt-1">
-                記録済みポイントデータから算出した中立比較とチーム視点のサマリーです。
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                振り返りポイント
+              </h2>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                記録済みポイントから、次に見返す場面を絞るための要点です。
               </p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setAnalysisTab('neutral')}
-                className={`px-4 py-2 rounded border text-sm ${
-                  analysisTab === 'neutral'
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-gray-700 border-gray-300'
-                }`}
-              >
-                中立比較
-              </button>
-              <button
-                onClick={() => setAnalysisTab('team')}
-                className={`px-4 py-2 rounded border text-sm ${
-                  analysisTab === 'team'
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-gray-700 border-gray-300'
-                }`}
-              >
-                このチーム視点
-              </button>
             </div>
           </div>
 
           {!analysisSummary.scoreIntegrity.ok && (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
               分析用に再構築したゲームスコアが既存スコアと一致しなかったため、分析表示を停止しています。
               <ul className="mt-2 list-disc list-inside">
                 {analysisSummary.scoreIntegrity.mismatches.map((mismatch) => (
@@ -725,272 +957,21 @@ const PublicMatchDetail = ({
             </div>
           )}
 
-          {analysisSummary.scoreIntegrity.ok && analysisTab === 'neutral' && (
+          {analysisSummary.scoreIntegrity.ok && (
             <>
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-sm border-collapse">
-                  <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="py-2 text-left font-medium text-gray-700">
-                        指標
-                      </th>
-                      <th className="py-2 text-center font-medium text-blue-700">
-                        {getShortTeamName('A')}
-                      </th>
-                      <th className="py-2 text-center font-medium text-green-700">
-                        {getShortTeamName('B')}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        label: '1stサーブ成功率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.service
-                            .firstServeSuccessRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.service
-                            .firstServeSuccessRate,
-                        ),
-                      },
-                      {
-                        label: '1stサーブ時得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.service
-                            .firstServePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.service
-                            .firstServePointWinRate,
-                        ),
-                      },
-                      {
-                        label: '2ndサーブ時得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.service
-                            .secondServePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.service
-                            .secondServePointWinRate,
-                        ),
-                      },
-                      {
-                        label: 'ダブルフォルト数',
-                        a: `${analysisSummary.neutralComparison.A.service.doubleFaultCount}件`,
-                        b: `${analysisSummary.neutralComparison.B.service.doubleFaultCount}件`,
-                      },
-                      {
-                        label: 'レシーブ時得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.receive
-                            .pointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.receive
-                            .pointWinRate,
-                        ),
-                      },
-                      {
-                        label: '各ゲーム1ポイント目取得率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.keyMoments
-                            .firstPointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.keyMoments
-                            .firstPointWinRate,
-                        ),
-                      },
-                      {
-                        label: 'デュースポイント取得率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.keyMoments
-                            .deucePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.keyMoments
-                            .deucePointWinRate,
-                        ),
-                      },
-                      {
-                        label: 'ゲームポイント取得率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.keyMoments
-                            .gamePointWinRate,
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.keyMoments
-                            .gamePointWinRate,
-                        ),
-                      },
-                      {
-                        label: '1-2本ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '1-2'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '1-2'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '3-4本ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '3-4'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '3-4'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '5-8本ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '5-8'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '5-8'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '9本以上ラリー得点率',
-                        a: formatRateMetric(
-                          analysisSummary.neutralComparison.A.rally.buckets[
-                            '9+'
-                          ],
-                        ),
-                        b: formatRateMetric(
-                          analysisSummary.neutralComparison.B.rally.buckets[
-                            '9+'
-                          ],
-                        ),
-                      },
-                      {
-                        label: '最大連続得点',
-                        a: formatCountMetric(
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakFor,
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakForSegment,
-                        ),
-                        b: formatCountMetric(
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakFor,
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakForSegment,
-                        ),
-                      },
-                      {
-                        label: '最大連続失点',
-                        a: formatCountMetric(
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakAgainst,
-                          analysisSummary.neutralComparison.A.momentum
-                            .maxStreakAgainstSegment,
-                        ),
-                        b: formatCountMetric(
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakAgainst,
-                          analysisSummary.neutralComparison.B.momentum
-                            .maxStreakAgainstSegment,
-                        ),
-                      },
-                      {
-                        label: 'ウィナー数',
-                        a: `${analysisSummary.neutralComparison.A.endings.winners}件`,
-                        b: `${analysisSummary.neutralComparison.B.endings.winners}件`,
-                      },
-                      {
-                        label: 'ミス数',
-                        a: `${analysisSummary.neutralComparison.A.endings.errors}件`,
-                        b: `${analysisSummary.neutralComparison.B.endings.errors}件`,
-                      },
-                    ].map((row) => (
-                      <tr key={row.label} className="border-b border-gray-100">
-                        <td className="py-3 text-gray-700">{row.label}</td>
-                        <td className="py-3 text-center text-gray-800">
-                          {row.a}
-                        </td>
-                        <td className="py-3 text-center text-gray-800">
-                          {row.b}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                {(['A', 'B'] as TeamKey[]).map((team) => (
-                  <div
-                    key={team}
-                    className="rounded-lg border border-gray-200 p-4"
-                  >
-                    <h3
-                      className={`font-semibold mb-3 ${
-                        team === 'A' ? 'text-blue-700' : 'text-green-700'
-                      }`}
-                    >
-                      {getShortTeamName(team)} の主要エラー内訳
-                    </h3>
-                    {analysisSummary.neutralComparison[team].endings
-                      .errorBreakdown.length > 0 ? (
-                      <div className="space-y-2 text-sm">
-                        {analysisSummary.neutralComparison[
-                          team
-                        ].endings.errorBreakdown
-                          .slice(0, 5)
-                          .map((entry) => (
-                            <div
-                              key={`${team}-${entry.resultType}`}
-                              className="flex justify-between gap-3"
-                            >
-                              <span className="text-gray-600">
-                                {getResultTypeLabel(entry.resultType)}
-                              </span>
-                              <span className="font-medium text-gray-800">
-                                {entry.count}件
-                                {entry.share !== null &&
-                                  ` (${entry.share.toFixed(1)}%)`}
-                              </span>
-                            </div>
-                          ))}
-                      </div>
-                    ) : (
-                      <p className="text-sm text-gray-500">
-                        該当するエラーデータはありません。
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {analysisSummary.scoreIntegrity.ok && analysisTab === 'team' && (
-            <>
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 mb-4">
-                <h3 className="font-semibold text-gray-800 mb-2">分析の見方</h3>
-                <p className="text-sm text-gray-600">
+              <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
+                <h3 className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
+                  分析の見方
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   この分析は、試合のポイント記録から見返しやすい手がかりをまとめたものです。数字は評価ではなく、次にどの場面を確認するかを考える入口として使います。
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="text-sm text-gray-600">注目チーム</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">
+                  注目チーム
+                </span>
                 {(['A', 'B'] as TeamKey[]).map((team) => (
                   <button
                     key={team}
@@ -1013,7 +994,7 @@ const PublicMatchDetail = ({
                         ? team === 'A'
                           ? 'bg-blue-600 text-white border-blue-600'
                           : 'bg-green-600 text-white border-green-600'
-                        : 'bg-white text-gray-700 border-gray-300'
+                        : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
                     }`}
                   >
                     {getShortTeamName(team)}
@@ -1029,10 +1010,10 @@ const PublicMatchDetail = ({
                     return (
                       <div
                         key={card.id}
-                        className="rounded-lg border border-gray-200 bg-white p-5"
+                        className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800/80"
                       >
                         <div className="flex items-start justify-between gap-3 mb-3">
-                          <h3 className="font-semibold text-gray-800 leading-snug">
+                          <h3 className="font-semibold leading-snug text-gray-800 dark:text-gray-100">
                             {card.title}
                           </h3>
                           {badge && (
@@ -1045,59 +1026,59 @@ const PublicMatchDetail = ({
                         </div>
 
                         <div className="mb-2">
-                          <div className="text-3xl font-bold text-gray-900">
+                          <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                             {card.primaryValue}
                           </div>
                           {card.secondaryValue && (
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                               {card.secondaryValue}
                             </p>
                           )}
                         </div>
 
-                        <p className="text-sm text-gray-700 leading-6">
+                        <p className="text-sm leading-6 text-gray-700 dark:text-gray-300">
                           {card.summary}
                         </p>
 
-                        <details className="mt-4 border-t border-gray-100 pt-3 group">
-                          <summary className="cursor-pointer list-none text-sm font-medium text-blue-600">
+                        <details className="group mt-4 border-t border-gray-100 pt-3 dark:border-gray-700">
+                          <summary className="cursor-pointer list-none text-sm font-medium text-blue-600 dark:text-blue-400">
                             この数字の見方
                           </summary>
 
-                          <div className="mt-3 space-y-3 text-sm text-gray-700">
+                          <div className="mt-3 space-y-3 text-sm text-gray-700 dark:text-gray-300">
                             <div>
-                              <div className="font-medium text-gray-800 mb-1">
+                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
                                 これは何？
                               </div>
                               <p>{card.description}</p>
                             </div>
                             <div>
-                              <div className="font-medium text-gray-800 mb-1">
+                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
                                 どう見る？
                               </div>
                               <p>{card.howToRead}</p>
                             </div>
                             <div>
-                              <div className="font-medium text-gray-800 mb-1">
+                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
                                 次に確認
                               </div>
                               <p>{card.nextCheck}</p>
                             </div>
                             <div>
-                              <div className="font-medium text-gray-800 mb-1">
+                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
                                 なぜ見るの？
                               </div>
                               <p>{card.whyItMatters}</p>
                             </div>
 
                             {card.reliability === 'low' && (
-                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800">
+                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
                                 参考値:
                                 対象ポイントが少ないため、傾向としてはまだ判断しにくい数字です。
                               </div>
                             )}
                             {card.reliability === 'none' && (
-                              <div className="rounded bg-gray-100 px-3 py-2 text-gray-700">
+                              <div className="rounded bg-gray-100 px-3 py-2 text-gray-700 dark:bg-gray-700/70 dark:text-gray-200">
                                 データ不足:
                                 対象ポイントがないため、この指標は表示できません。
                               </div>
@@ -1107,12 +1088,12 @@ const PublicMatchDetail = ({
                               {card.details.map((detail) => (
                                 <div
                                   key={`${card.id}-${detail.label}`}
-                                  className="flex items-start justify-between gap-3 border-b border-gray-100 pb-2 last:border-b-0 last:pb-0"
+                                  className="flex items-start justify-between gap-3 border-b border-gray-100 pb-2 last:border-b-0 last:pb-0 dark:border-gray-700/60"
                                 >
-                                  <span className="text-gray-600">
+                                  <span className="text-gray-600 dark:text-gray-400">
                                     {formatGuideDetailLabel(detail.label)}
                                   </span>
-                                  <span className="font-medium text-gray-800 text-right">
+                                  <span className="text-right font-medium text-gray-800 dark:text-gray-100">
                                     {detail.value}
                                   </span>
                                 </div>
@@ -1130,84 +1111,51 @@ const PublicMatchDetail = ({
         </div>
       </section>
 
-      {/* スコアボード */}
-      <h2 className="text-xl font-semibold mb-4">試合結果</h2>
-
-      {/* ゲームスコア表（野球のスコアボード風） */}
-      <div className="overflow-x-auto mb-6">
-        <table className="min-w-full border-collapse border border-gray-300 table-auto">
-          <thead>
-            <tr className="bg-gray-50">
-              <th className="border border-gray-300 px-3 py-2 text-left w-auto">
-                チーム
-              </th>
-              {gamesAsc.map((game) => (
-                <th
-                  key={game.game_number}
-                  className="border border-gray-300 px-3 py-2 text-center min-w-12"
-                >
-                  {game.game_number}
-                </th>
-              ))}
-              <th className="border border-gray-300 px-3 py-2 text-center font-bold bg-yellow-50">
-                G
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
-                {getShortTeamName('A')}
-              </td>
-              {gamesAsc.map((game) => (
-                <td
-                  key={game.game_number}
-                  className={`border border-gray-300 px-3 py-2 text-center ${
-                    game.winner_team === 'A'
-                      ? 'bg-green-100 text-green-800 font-bold'
-                      : 'font-normal'
-                  }`}
-                >
-                  {game.points_a}
-                </td>
-              ))}
-              <td
-                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
-                  matchWinner === 'A' ? 'font-bold' : 'font-normal'
-                }`}
-              >
-                {match.games?.filter((game) => game.winner_team === 'A')
-                  .length || 0}
-              </td>
-            </tr>
-            <tr className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-3 py-2 font-medium w-auto whitespace-nowrap">
-                {getShortTeamName('B')}
-              </td>
-              {gamesAsc.map((game) => (
-                <td
-                  key={game.game_number}
-                  className={`border border-gray-300 px-3 py-2 text-center ${
-                    game.winner_team === 'B'
-                      ? 'bg-green-100 text-green-800 font-bold'
-                      : 'font-normal'
-                  }`}
-                >
-                  {game.points_b}
-                </td>
-              ))}
-              <td
-                className={`border border-gray-300 px-3 py-2 text-center bg-yellow-50 ${
-                  matchWinner === 'B' ? 'font-bold' : 'font-normal'
-                }`}
-              >
-                {match.games?.filter((game) => game.winner_team === 'B')
-                  .length || 0}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {analysisSummary.scoreIntegrity.ok && (
+        <details className="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <summary className="cursor-pointer list-none text-lg font-semibold text-gray-900 dark:text-gray-100">
+            詳細比較
+          </summary>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            上部の振り返りポイントの根拠になる、チーム別の比較指標です。
+          </p>
+          <div className="mt-4 overflow-x-auto">
+            <table className="min-w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <th className="py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                    指標
+                  </th>
+                  <th className="py-2 text-center font-medium text-blue-700 dark:text-blue-300">
+                    {getShortTeamName('A')}
+                  </th>
+                  <th className="py-2 text-center font-medium text-green-700 dark:text-green-300">
+                    {getShortTeamName('B')}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr
+                    key={row.label}
+                    className="border-b border-gray-100 dark:border-gray-700/70"
+                  >
+                    <td className="py-3 text-gray-700 dark:text-gray-300">
+                      {row.label}
+                    </td>
+                    <td className="py-3 text-center text-gray-800 dark:text-gray-100">
+                      {row.a}
+                    </td>
+                    <td className="py-3 text-center text-gray-800 dark:text-gray-100">
+                      {row.b}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
 
       {/* 試合統計サマリー */}
       {(() => {
@@ -1217,22 +1165,28 @@ const PublicMatchDetail = ({
 
         return (
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-4">試合統計</h3>
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              補足統計
+            </h3>
 
             {/* ラリー数分布 */}
-            <div className="bg-white rounded-lg p-4">
-              <h4 className="font-semibold mb-3">ラリー数分布</h4>
+            <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+              <h4 className="mb-3 font-semibold text-gray-900 dark:text-gray-100">
+                ラリー数分布
+              </h4>
               <div className="grid grid-cols-4 gap-2">
                 {Object.entries(matchStats.rallyDistribution).map(
                   ([range, count]) => (
                     <div
                       key={range}
-                      className="text-center p-2 bg-gray-50 rounded"
+                      className="rounded bg-gray-50 p-2 text-center dark:bg-gray-700/60"
                     >
-                      <div className="font-bold text-lg text-gray-700">
+                      <div className="text-lg font-bold text-gray-700 dark:text-gray-100">
                         {count}
                       </div>
-                      <div className="text-xs text-gray-600">{range}ラリー</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-300">
+                        {range}ラリー
+                      </div>
                     </div>
                   ),
                 )}
@@ -1240,13 +1194,13 @@ const PublicMatchDetail = ({
 
               {/* ラリー詳細統計 */}
               {matchStats.rallyCountsArray.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <h5 className="text-sm font-medium text-gray-700 mb-2">
+                <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+                  <h5 className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
                     ラリー詳細
                   </h5>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
                     <div>
-                      <div className="font-bold text-gray-700">
+                      <div className="font-bold text-gray-700 dark:text-gray-100">
                         {Array.isArray(matchStats.rallyCountsArray) &&
                         matchStats.rallyCountsArray.length > 0 &&
                         Number.isFinite(
@@ -1255,10 +1209,12 @@ const PublicMatchDetail = ({
                           ? Math.max(...matchStats.rallyCountsArray)
                           : '-'}
                       </div>
-                      <div className="text-gray-600">最長</div>
+                      <div className="text-gray-600 dark:text-gray-300">
+                        最長
+                      </div>
                     </div>
                     <div>
-                      <div className="font-bold text-gray-700">
+                      <div className="font-bold text-gray-700 dark:text-gray-100">
                         {Array.isArray(matchStats.rallyCountsArray) &&
                         matchStats.rallyCountsArray.length > 0 &&
                         Number.isFinite(
@@ -1267,20 +1223,24 @@ const PublicMatchDetail = ({
                           ? Math.min(...matchStats.rallyCountsArray)
                           : '-'}
                       </div>
-                      <div className="text-gray-600">最短</div>
+                      <div className="text-gray-600 dark:text-gray-300">
+                        最短
+                      </div>
                     </div>
                     <div>
-                      <div className="font-bold text-gray-700">
+                      <div className="font-bold text-gray-700 dark:text-gray-100">
                         {Array.isArray(matchStats.rallyCountsArray) &&
                         matchStats.rallyCountsArray.length > 0 &&
                         Number.isFinite(Number(matchStats.avgRally))
                           ? Number(matchStats.avgRally).toFixed(1)
                           : '-'}
                       </div>
-                      <div className="text-gray-600">平均</div>
+                      <div className="text-gray-600 dark:text-gray-300">
+                        平均
+                      </div>
                     </div>
                     <div>
-                      <div className="font-bold text-gray-700">
+                      <div className="font-bold text-gray-700 dark:text-gray-100">
                         {Array.isArray(matchStats.rallyCountsArray) &&
                         matchStats.rallyCountsArray.length > 0
                           ? (() => {
@@ -1300,17 +1260,19 @@ const PublicMatchDetail = ({
                             })()
                           : '-'}
                       </div>
-                      <div className="text-gray-600">中央値</div>
+                      <div className="text-gray-600 dark:text-gray-300">
+                        中央値
+                      </div>
                     </div>
                   </div>
 
                   {/* 最長ラリーの詳細情報 */}
                   {matchStats.maxRallyDetails && (
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <h6 className="text-xs font-medium text-gray-700 mb-2">
+                    <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+                      <h6 className="mb-2 text-xs font-medium text-gray-700 dark:text-gray-200">
                         最長ラリー詳細
                       </h6>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-gray-600 dark:text-gray-300">
                         第
                         {
                           (
@@ -1340,266 +1302,50 @@ const PublicMatchDetail = ({
         );
       })()}
 
-      {/* チーム別ウィナー・ミス内訳サマリー */}
-      {(() => {
-        const playerStats = getPlayerStats();
-
-        // チーム別の集計
-        const getTeamStats = (players: string[]) => {
-          const teamWinnerBreakdown: { [type: string]: number } = {};
-          const teamErrorBreakdown: { [type: string]: number } = {};
-          let totalWinners = 0;
-          let totalErrors = 0;
-
-          players.forEach((playerName) => {
-            const stats = playerStats[playerName];
-            if (!stats) return;
-
-            totalWinners += stats.winners;
-            totalErrors += stats.errors;
-
-            Object.entries(stats.winnerBreakdown).forEach(([type, count]) => {
-              teamWinnerBreakdown[type] =
-                (teamWinnerBreakdown[type] || 0) + count;
-            });
-
-            Object.entries(stats.errorBreakdown).forEach(([type, count]) => {
-              teamErrorBreakdown[type] =
-                (teamErrorBreakdown[type] || 0) + count;
-            });
-          });
-
-          return {
-            winnerBreakdown: teamWinnerBreakdown,
-            errorBreakdown: teamErrorBreakdown,
-            totalWinners,
-            totalErrors,
-          };
-        };
-
-        const teamAStats = getTeamStats(teamAPlayers);
-        const teamBStats = getTeamStats(teamBPlayers);
-
-        if (
-          teamAStats.totalWinners === 0 &&
-          teamAStats.totalErrors === 0 &&
-          teamBStats.totalWinners === 0 &&
-          teamBStats.totalErrors === 0
-        ) {
-          return null;
-        }
-
-        const matchStats = getMatchStats();
-
-        return (
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-4">チーム別統計サマリー</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* チームA統計 */}
-              <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold mb-3 text-blue-600">
-                  {getShortTeamName('A')}
-                </h4>
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="text-center p-2 bg-green-50 rounded">
-                    <div className="text-lg font-bold text-green-600">
-                      {teamAStats.totalWinners}
-                    </div>
-                    <div className="text-xs text-green-700">ウィナー</div>
-                  </div>
-                  <div className="text-center p-2 bg-red-50 rounded">
-                    <div className="text-lg font-bold text-red-600">
-                      {teamAStats.totalErrors}
-                    </div>
-                    <div className="text-xs text-red-700">ミス</div>
-                  </div>
-                  <div className="text-center p-2 bg-gray-50 rounded">
-                    <div className="text-lg font-bold text-gray-700">
-                      {matchStats?.maxStreakA || 0}
-                    </div>
-                    <div className="text-xs text-gray-600">最長連続</div>
-                  </div>
-                </div>
-
-                {/* ウィナー内訳 */}
-                {Object.keys(teamAStats.winnerBreakdown).length > 0 && (
-                  <div className="mb-3">
-                    <h6 className="text-xs font-medium text-gray-700 mb-1">
-                      ウィナー内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamAStats.winnerBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-green-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* ミス内訳 */}
-                {Object.keys(teamAStats.errorBreakdown).length > 0 && (
-                  <div>
-                    <h6 className="text-xs font-medium text-gray-700 mb-1">
-                      ミス内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamAStats.errorBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-red-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* チームB統計 */}
-              <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold mb-3 text-green-600">
-                  {getShortTeamName('B')}
-                </h4>
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="text-center p-2 bg-green-50 rounded">
-                    <div className="text-lg font-bold text-green-600">
-                      {teamBStats.totalWinners}
-                    </div>
-                    <div className="text-xs text-green-700">ウィナー</div>
-                  </div>
-                  <div className="text-center p-2 bg-red-50 rounded">
-                    <div className="text-lg font-bold text-red-600">
-                      {teamBStats.totalErrors}
-                    </div>
-                    <div className="text-xs text-red-700">ミス</div>
-                  </div>
-                  <div className="text-center p-2 bg-gray-50 rounded">
-                    <div className="text-lg font-bold text-gray-700">
-                      {matchStats?.maxStreakB || 0}
-                    </div>
-                    <div className="text-xs text-gray-600">最長連続</div>
-                  </div>
-                </div>
-
-                {/* ウィナー内訳 */}
-                {Object.keys(teamBStats.winnerBreakdown).length > 0 && (
-                  <div className="mb-3">
-                    <h6 className="text-xs font-medium text-gray-700 mb-1">
-                      ウィナー内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamBStats.winnerBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-green-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* ミス内訳 */}
-                {Object.keys(teamBStats.errorBreakdown).length > 0 && (
-                  <div>
-                    <h6 className="text-xs font-medium text-gray-700 mb-1">
-                      ミス内訳
-                    </h6>
-                    <div className="space-y-1">
-                      {Object.entries(teamBStats.errorBreakdown)
-                        .sort(([, a], [, b]) => b - a)
-                        .slice(0, 5) // 上位5つまで表示
-                        .map(([type, count]) => (
-                          <div
-                            key={type}
-                            className="flex justify-between text-xs"
-                          >
-                            <span className="text-gray-600">
-                              {getResultTypeLabel(type)}
-                            </span>
-                            <span className="font-medium text-red-600">
-                              {count}
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
       {/* ゲーム詳細（降順、エキスパンド対応） */}
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold">ゲーム詳細</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          ゲーム詳細
+        </h3>
         {gamesDesc.map((game: Game) => {
           const isExpanded = expandedGames.has(game.game_number);
           return (
-            <div key={game.id} className="border border-gray-200 rounded-lg">
+            <div
+              key={game.id}
+              className="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+            >
               {/* ゲームヘッダー（クリック可能） */}
               <button
                 onClick={() => toggleGameExpansion(game.game_number)}
-                className="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50 rounded-t-lg"
+                className="flex w-full items-center justify-between rounded-t-lg px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/60"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-semibold">
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">
                     第{game.game_number}ゲーム
                   </span>
-                  <span className="text-sm font-medium">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
                     {game.points_a} - {game.points_b}
                   </span>
                   {game.winner_team && (
                     <span
-                      className={`px-2 py-1 rounded text-xs ${
+                      className={`rounded px-2 py-1 text-xs ${
                         game.winner_team === 'A'
-                          ? 'bg-blue-100 text-blue-800'
-                          : 'bg-green-100 text-green-800'
+                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+                          : 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
                       }`}
                     >
                       {getShortTeamName(game.winner_team === 'A' ? 'A' : 'B')}
                     </span>
                   )}
                 </div>
-                <span className="text-gray-400 text-xl">
+                <span className="text-xl text-gray-400 dark:text-gray-500">
                   {isExpanded ? '−' : '+'}
                 </span>
               </button>
 
               {/* ゲーム詳細（エキスパンド時のみ表示） */}
               {isExpanded && game.points && game.points.length > 0 && (
-                <div className="px-4 pb-4 border-t border-gray-200">
+                <div className="border-t border-gray-200 px-4 pb-4 dark:border-gray-700">
                   <div className="space-y-2 mt-3">
                     {getPointsDesc(game).map((point: Point) => {
                       // スコア計算
@@ -1621,7 +1367,7 @@ const PublicMatchDetail = ({
                       return (
                         <div key={point.id} className="text-sm">
                           {/* ポイント情報（1行目） */}
-                          <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
+                          <div className="mb-1 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
                             <span className="font-medium">
                               <span
                                 className={
@@ -1644,7 +1390,7 @@ const PublicMatchDetail = ({
 
                           {/* ポイント内容（2行目） */}
                           <div className="flex items-center gap-3 pl-4">
-                            <span className="font-medium text-blue-600">
+                            <span className="font-medium text-blue-600 dark:text-blue-400">
                               {getResultTypeLabel(point.result_type || '')}
                             </span>
                             {/* 選手情報：ウィナー系はwinner_player、ミス系はloser_playerを表示 */}
@@ -1667,19 +1413,19 @@ const PublicMatchDetail = ({
                                 : point.winner_player;
 
                               return playerName ? (
-                                <span className="text-gray-700">
+                                <span className="text-gray-700 dark:text-gray-200">
                                   {playerName}
                                 </span>
                               ) : null;
                             })()}
                             <div className="flex gap-2">
                               {point.first_serve_fault && (
-                                <span className="text-orange-600 text-xs bg-orange-50 px-1 rounded">
+                                <span className="rounded bg-orange-50 px-1 text-xs text-orange-600 dark:bg-orange-900/30 dark:text-orange-300">
                                   1stフォルト
                                 </span>
                               )}
                               {point.double_fault && (
-                                <span className="text-red-600 text-xs bg-red-50 px-1 rounded">
+                                <span className="rounded bg-red-50 px-1 text-xs text-red-600 dark:bg-red-900/30 dark:text-red-300">
                                   ダブルフォルト
                                 </span>
                               )}
@@ -1691,7 +1437,7 @@ const PublicMatchDetail = ({
 
                     {/* ゲーム開始時の0-0表示（最後に表示） */}
                     <div className="text-sm">
-                      <div className="flex items-center gap-3 text-xs text-gray-500 mb-1">
+                      <div className="mb-1 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
                         <span className="font-medium">0 - 0</span>
                         <span>ゲーム開始</span>
                       </div>
@@ -1705,9 +1451,14 @@ const PublicMatchDetail = ({
       </div>
 
       {/* 選手別統計情報 */}
-      <div className="pt-6 mb-6">
-        <h2 className="text-xl font-semibold mb-4">選手別統計情報</h2>
-        <div className="space-y-6">
+      <details className="mb-6 mt-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <summary className="cursor-pointer list-none text-xl font-semibold text-gray-900 dark:text-gray-100">
+          選手別統計情報
+        </summary>
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+          選手ごとのウィナー、ミス、サーブ、ゲーム別の内訳を確認できます。
+        </p>
+        <div className="mt-4 space-y-6">
           {(() => {
             const playerStats = getPlayerStats();
 
@@ -1739,37 +1490,46 @@ const PublicMatchDetail = ({
                 };
               },
             ) => (
-              <div key={playerName} className="rounded-lg p-4 bg-gray-50">
-                <h4 className="font-semibold text-lg mb-3">{playerName}</h4>
+              <div
+                key={playerName}
+                className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+              >
+                <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  {playerName}
+                </h4>
 
                 {/* 全体統計 */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                  <div className="text-center p-3 bg-green-50 rounded">
+                  <div className="rounded bg-green-50 p-3 text-center dark:bg-green-900/20">
                     <div className="text-2xl font-bold text-green-600">
                       {stats.winners}
                     </div>
                     <div className="text-sm text-green-700">ウィナー</div>
                   </div>
-                  <div className="text-center p-3 bg-red-50 rounded">
+                  <div className="rounded bg-red-50 p-3 text-center dark:bg-red-900/20">
                     <div className="text-2xl font-bold text-red-600">
                       {stats.errors}
                     </div>
                     <div className="text-sm text-red-700">ミス</div>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-2xl font-bold text-gray-600">
+                  <div className="rounded bg-gray-50 p-3 text-center dark:bg-gray-700/60">
+                    <div className="text-2xl font-bold text-gray-600 dark:text-gray-100">
                       {stats.points}
                     </div>
-                    <div className="text-sm text-gray-700">関与ポイント</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-200">
+                      関与ポイント
+                    </div>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-2xl font-bold text-gray-600">
+                  <div className="rounded bg-gray-50 p-3 text-center dark:bg-gray-700/60">
+                    <div className="text-2xl font-bold text-gray-600 dark:text-gray-100">
                       {stats.points > 0
                         ? ((stats.winners / stats.points) * 100).toFixed(1)
                         : '0.0'}
                       %
                     </div>
-                    <div className="text-sm text-gray-700">ウィナー率</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-200">
+                      ウィナー率
+                    </div>
                   </div>
                 </div>
 
@@ -1777,13 +1537,13 @@ const PublicMatchDetail = ({
                 {(Object.keys(stats.winnerBreakdown).length > 0 ||
                   Object.keys(stats.errorBreakdown).length > 0) && (
                   <div className="mb-4">
-                    <h5 className="font-medium text-sm mb-3">
+                    <h5 className="mb-3 text-sm font-medium text-gray-800 dark:text-gray-200">
                       ウィナーとミスの内訳
                     </h5>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* ウィナー内訳 */}
                       {Object.keys(stats.winnerBreakdown).length > 0 && (
-                        <div className="bg-green-50 p-3 rounded">
+                        <div className="rounded bg-green-50 p-3 dark:bg-green-900/20">
                           <h6 className="font-medium text-green-700 text-sm mb-2">
                             ウィナー ({stats.winners}回)
                           </h6>
@@ -1795,7 +1555,7 @@ const PublicMatchDetail = ({
                                   key={type}
                                   className="flex justify-between text-xs"
                                 >
-                                  <span className="text-gray-700">
+                                  <span className="text-gray-700 dark:text-gray-200">
                                     {getResultTypeLabel(type)}
                                   </span>
                                   <span className="font-medium text-green-700">
@@ -1809,7 +1569,7 @@ const PublicMatchDetail = ({
 
                       {/* ミス内訳 */}
                       {Object.keys(stats.errorBreakdown).length > 0 && (
-                        <div className="bg-red-50 p-3 rounded">
+                        <div className="rounded bg-red-50 p-3 dark:bg-red-900/20">
                           <h6 className="font-medium text-red-700 text-sm mb-2">
                             ミス ({stats.errors}回)
                           </h6>
@@ -1821,7 +1581,7 @@ const PublicMatchDetail = ({
                                   key={type}
                                   className="flex justify-between text-xs"
                                 >
-                                  <span className="text-gray-700">
+                                  <span className="text-gray-700 dark:text-gray-200">
                                     {getResultTypeLabel(type)}
                                   </span>
                                   <span className="font-medium text-red-700">
@@ -1859,22 +1619,22 @@ const PublicMatchDetail = ({
                       const acePercent = (aces / total) * 100;
 
                       return (
-                        <div className="rounded p-4">
+                        <div className="rounded border border-gray-200 p-4 dark:border-gray-700 dark:bg-gray-800/40">
                           {/* 横棒グラフ */}
                           <div className="space-y-4">
                             {/* 総サーブ数の棒グラフ */}
                             <div className="relative">
                               <div className="flex items-center justify-between mb-2">
-                                <span className="text-xs font-medium text-gray-700">
+                                <span className="text-xs font-medium text-gray-700 dark:text-gray-200">
                                   総サーブ数
                                 </span>
-                                <span className="text-xs font-bold text-gray-800">
+                                <span className="text-xs font-bold text-gray-800 dark:text-gray-100">
                                   {total}本
                                 </span>
                               </div>
 
                               {/* 積み重ね棒グラフ */}
-                              <div className="relative h-4 bg-gray-200 rounded overflow-hidden">
+                              <div className="relative h-4 overflow-hidden rounded bg-gray-200 dark:bg-gray-700">
                                 {/* 1stサーブ成功 */}
                                 <div
                                   className="absolute top-0 left-0 h-full bg-green-500"
@@ -1961,17 +1721,17 @@ const PublicMatchDetail = ({
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
                         <thead className="text-xs">
-                          <tr className="border-b border-gray-200">
-                            <th className="px-2 py-2 text-left font-medium text-gray-700">
+                          <tr className="border-b border-gray-200 dark:border-gray-700">
+                            <th className="px-2 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
                               ゲーム
                             </th>
-                            <th className="px-2 py-2 text-center font-medium text-gray-700">
+                            <th className="px-2 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
                               ウィナー
                             </th>
-                            <th className="px-2 py-2 text-center font-medium text-gray-700">
+                            <th className="px-2 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
                               ミス
                             </th>
-                            <th className="px-2 py-2 text-center font-medium text-gray-700">
+                            <th className="px-2 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
                               関与
                             </th>
                           </tr>
@@ -2025,7 +1785,7 @@ const PublicMatchDetail = ({
                     ![...teamAPlayers, ...teamBPlayers].includes(player),
                 ).length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold mb-3 text-gray-600 border-b border-gray-200 pb-2">
+                    <h3 className="mb-3 border-b border-gray-200 pb-2 text-lg font-semibold text-gray-600 dark:border-gray-700 dark:text-gray-300">
                       その他の選手
                     </h3>
                     <div className="space-y-4">
@@ -2049,7 +1809,7 @@ const PublicMatchDetail = ({
             );
           })()}
         </div>
-      </div>
+      </details>
     </div>
   );
 };
@@ -2087,7 +1847,6 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
     }
 
     const match = await getBetaMatchById(matchId);
-    const generatedAt = await getBetaMatchesGeneratedAt();
 
     if (!match) {
       console.error('Match not found:', matchId);
@@ -2105,22 +1864,10 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
       }
     }
 
-    // サーバー側でローカライズ済み日付文字列を生成
-    const now = new Date();
-    const lastUpdated = now.toLocaleString('ja-JP', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'Asia/Tokyo',
-    });
-
     return {
       props: {
         match,
         tournamentInfo,
-        lastUpdated: generatedAt ?? lastUpdated,
       },
     };
   } catch (error) {

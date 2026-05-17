@@ -1,15 +1,37 @@
+import type { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import { hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode, isTestMode } from '../../../../lib/env';
 import {
   getCategoryOptions,
-  getTournamentCategoriesWithMeta,
-  getTournamentOptions,
+  TournamentCategory,
+  TournamentMeta,
 } from '../../../../lib/tournamentHelpers';
 
-const CreateMatch = () => {
+type TournamentOption = {
+  id: string;
+  name: string;
+  year: number;
+};
+
+type TournamentCatalogEntry = {
+  categories: TournamentCategory[];
+  meta: TournamentMeta | null;
+};
+
+type CreateMatchProps = {
+  tournamentOptions: TournamentOption[];
+  tournamentCatalog: Record<string, TournamentCatalogEntry>;
+};
+
+const CreateMatch = ({
+  tournamentOptions,
+  tournamentCatalog,
+}: CreateMatchProps) => {
   const router = useRouter();
+  const canEditMatches = isDebugMode() && hasLiveMatchApi();
   const [formData, setFormData] = useState({
     tournament_name: '',
     generation: '',
@@ -75,9 +97,6 @@ const CreateMatch = () => {
     player2_team_name: '', // ダブルスの場合のみ
     player2_region: '', // ダブルスの場合のみ
   });
-  const [tournamentOptions, setTournamentOptions] = useState<
-    { id: string; name: string; year: number }[]
-  >([]);
   const [categoryOptions, setCategoryOptions] = useState<{
     generations: { value: string; label: string }[];
     genders: { value: string; label: string }[];
@@ -90,25 +109,9 @@ const CreateMatch = () => {
 
   const [creating, setCreating] = useState(false);
 
-  // 大会データを取得
-  useEffect(() => {
-    const fetchTournaments = async () => {
-      try {
-        const options = await getTournamentOptions();
-        setTournamentOptions(options);
-      } catch (error) {
-        console.error('Failed to fetch tournament options:', error);
-      }
-    };
-
-    if (isDebugMode()) {
-      fetchTournaments();
-    }
-  }, []);
-
   // 大会選択時にカテゴリと年を取得
   useEffect(() => {
-    const fetchCategories = async () => {
+    const updateCategories = () => {
       if (!formData.tournament_name) {
         setCategoryOptions({
           generations: [],
@@ -118,43 +121,35 @@ const CreateMatch = () => {
         return;
       }
 
-      try {
-        const { categories: tournamentCategories, meta } =
-          await getTournamentCategoriesWithMeta(formData.tournament_name);
+      const selected = tournamentCatalog[formData.tournament_name];
+      const options = getCategoryOptions(
+        selected?.categories ?? [],
+        selected?.meta ?? undefined,
+      );
+      setCategoryOptions(options);
 
-        const options = getCategoryOptions(
-          tournamentCategories,
-          meta || undefined,
-        );
-        setCategoryOptions(options);
-
-        // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
-        // 選択肢が1つしかない場合は自動選択、複数ある場合は優先度に基づいて選択
-        setFormData((prev) => ({
-          ...prev,
-          generation:
-            options.generations.length === 1
-              ? options.generations[0].value
-              : '',
-          gender: getDefaultSelection(options.genders, 'gender'),
-          category: getDefaultSelection(options.gameCategories, 'category'),
-        }));
-      } catch (error) {
-        console.error('Failed to fetch tournament data:', error);
-      }
+      // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
+      // 選択肢が1つしかない場合は自動選択、複数ある場合は優先度に基づいて選択
+      setFormData((prev) => ({
+        ...prev,
+        generation:
+          options.generations.length === 1 ? options.generations[0].value : '',
+        gender: getDefaultSelection(options.genders, 'gender'),
+        category: getDefaultSelection(options.gameCategories, 'category'),
+      }));
     };
 
-    fetchCategories();
-  }, [formData.tournament_name]);
+    updateCategories();
+  }, [formData.tournament_name, tournamentCatalog]);
 
   // 開発環境でない場合はアクセス拒否
-  if (!isDebugMode()) {
+  if (!canEditMatches) {
     return (
       <div className="max-w-4xl mx-auto p-6">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          <strong className="font-bold">アクセス拒否</strong>
+          <strong className="font-bold">編集不可</strong>
           <span className="block sm:inline ml-2">
-            この機能は開発環境でのみ利用可能です。
+            このページは開発サーバーでのみ利用できます。静的公開環境ではマッチ作成はできません。
           </span>
         </div>
       </div>
@@ -275,17 +270,48 @@ const CreateMatch = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(apiData),
       });
+      const contentType = response.headers.get('content-type') ?? '';
+      const data = contentType.includes('application/json')
+        ? await response.json()
+        : null;
 
-      const data = await response.json();
+      if (response.ok && data?.match?.id) {
+        const startGameResponse = await fetch(
+          `/api/matches/${data.match.id}/games`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              game_number: 1,
+            }),
+          },
+        );
+        const startGameContentType =
+          startGameResponse.headers.get('content-type') ?? '';
+        const startGameData = startGameContentType.includes('application/json')
+          ? await startGameResponse.json()
+          : null;
 
-      if (response.ok) {
-        // 作成されたマッチの入力ページへ遷移
-        router.push(`/beta/matches/${data.match.id}/input`);
+        if (startGameResponse.ok) {
+          // 作成されたマッチの入力ページへ遷移
+          router.push(`/beta/matches/${data.match.id}/input`);
+        } else {
+          const errorMessage =
+            startGameData?.error ??
+            '第1ゲームの開始に失敗しました。マッチは作成済みです。';
+          console.error('Failed to start first game:', errorMessage);
+          alert(errorMessage);
+        }
       } else {
-        console.error('Failed to create match:', data.error);
+        const errorMessage =
+          data?.error ??
+          'マッチ作成に失敗しました。API から JSON を取得できませんでした。';
+        console.error('Failed to create match:', errorMessage);
+        alert(errorMessage);
       }
     } catch (error) {
       console.error('Error creating match:', error);
+      alert('マッチ作成中にエラーが発生しました。');
     } finally {
       setCreating(false);
     }
@@ -791,3 +817,183 @@ const CreateMatch = () => {
 };
 
 export default CreateMatch;
+
+export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
+  const fs = await import('fs');
+  const path = await import('path');
+
+  const tournamentsRoot = path.join(process.cwd(), 'data', 'tournaments');
+  const detailsRoot = path.join(tournamentsRoot, 'details');
+  const informationRoot = path.join(tournamentsRoot, 'information');
+
+  const tournamentOptions: TournamentOption[] = [];
+  const tournamentCatalog: Record<string, TournamentCatalogEntry> = {};
+
+  try {
+    const tournamentMetaMap = new Map<string, TournamentMeta>();
+    const generationDirs = fs
+      .readdirSync(tournamentsRoot, { withFileTypes: true })
+      .filter(
+        (dirent) =>
+          dirent.isDirectory() &&
+          dirent.name !== 'details' &&
+          dirent.name !== 'information',
+      );
+
+    for (const generationDir of generationDirs) {
+      const generationPath = path.join(tournamentsRoot, generationDir.name);
+      const tournamentDirs = fs
+        .readdirSync(generationPath, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory());
+
+      for (const tournamentDir of tournamentDirs) {
+        const metaPath = path.join(
+          generationPath,
+          tournamentDir.name,
+          'meta.json',
+        );
+        if (!fs.existsSync(metaPath)) {
+          continue;
+        }
+
+        const meta = JSON.parse(
+          fs.readFileSync(metaPath, 'utf8'),
+        ) as TournamentMeta;
+        tournamentMetaMap.set(tournamentDir.name, meta);
+      }
+    }
+
+    const informationMap = new Map<
+      string,
+      Array<{
+        year: number;
+        label?: string;
+        categories?: Array<{
+          categoryId: string;
+          label: string;
+          category: string;
+          gender: string;
+          age: string;
+        }>;
+      }>
+    >();
+
+    if (fs.existsSync(informationRoot)) {
+      const informationFiles = fs
+        .readdirSync(informationRoot)
+        .filter((fileName) => fileName.endsWith('.json'));
+
+      for (const fileName of informationFiles) {
+        const tournamentId = path.basename(fileName, '.json');
+        const entries = JSON.parse(
+          fs.readFileSync(path.join(informationRoot, fileName), 'utf8'),
+        ) as Array<{
+          year: number;
+          label?: string;
+          categories?: Array<{
+            categoryId: string;
+            label: string;
+            category: string;
+            gender: string;
+            age: string;
+          }>;
+        }>;
+        informationMap.set(tournamentId, entries);
+      }
+    }
+
+    const buildCategoriesFromFileNames = (fileNames: string[]) => {
+      const categoryMap = new Map<string, TournamentCategory>();
+
+      for (const fileName of fileNames) {
+        const categoryId = fileName.replace(/\.json$/, '');
+        const [category = '', age = 'none', gender = ''] =
+          categoryId.split('-');
+
+        categoryMap.set(categoryId, {
+          id: categoryId,
+          label: categoryId,
+          category,
+          gender,
+          age,
+        });
+      }
+
+      return Array.from(categoryMap.values());
+    };
+
+    if (fs.existsSync(detailsRoot)) {
+      const tournamentDirs = fs
+        .readdirSync(detailsRoot, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+
+      for (const tournamentDir of tournamentDirs) {
+        const tournamentId = tournamentDir.name;
+        const tournamentPath = path.join(detailsRoot, tournamentId);
+        const meta = tournamentMetaMap.get(tournamentId) ?? null;
+        const informationEntries = informationMap.get(tournamentId) ?? [];
+
+        const yearDirs = fs
+          .readdirSync(tournamentPath, { withFileTypes: true })
+          .filter(
+            (dirent) => dirent.isDirectory() && /^\d{4}$/.test(dirent.name),
+          )
+          .map((dirent) => dirent.name)
+          .sort((a, b) => Number(b) - Number(a));
+
+        for (const yearDir of yearDirs) {
+          const year = Number(yearDir);
+          const optionId = `${tournamentId}-${year}`;
+          const detailYearPath = path.join(tournamentPath, yearDir);
+          const detailFiles = fs
+            .readdirSync(detailYearPath)
+            .filter((fileName) => fileName.endsWith('.json'));
+
+          if (detailFiles.length === 0) {
+            continue;
+          }
+
+          const informationEntry = informationEntries.find(
+            (entry) => entry.year === year,
+          );
+          const categories = informationEntry?.categories?.length
+            ? informationEntry.categories.map((category) => ({
+                id: category.categoryId,
+                label: category.label,
+                category: category.category,
+                gender: category.gender,
+                age: category.age,
+              }))
+            : buildCategoriesFromFileNames(detailFiles);
+
+          const displayName =
+            informationEntry?.label ?? meta?.name ?? tournamentId;
+
+          tournamentOptions.push({
+            id: optionId,
+            name: `${displayName} ${year}`,
+            year,
+          });
+
+          tournamentCatalog[optionId] = {
+            categories,
+            meta,
+          };
+        }
+      }
+    }
+  } catch (error) {
+    console.error(
+      'Failed to build tournament options for beta matches:',
+      error,
+    );
+  }
+
+  return {
+    props: {
+      tournamentOptions,
+      tournamentCatalog,
+    },
+  };
+};

@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 
 import {
-  getBetaMatchesGeneratedAt,
   getBetaTeamDisplayName,
   getLatestBetaMatches,
 } from '@/lib/betaMatchesStatic';
@@ -16,14 +15,24 @@ import { Game, Match } from '../../../types/database';
 interface Props {
   matches: Match[];
   tournamentInfos: { [key: string]: TournamentInfo };
-  lastUpdated: string;
 }
 
-export default function MatchesList({
-  matches,
-  tournamentInfos,
-  lastUpdated,
-}: Props) {
+export default function MatchesList({ matches, tournamentInfos }: Props) {
+  const getTournamentDisplayName = (
+    match: Match,
+    tournamentInfo?: TournamentInfo,
+  ) => {
+    const baseName =
+      tournamentInfo?.meta.name || match.tournament_name || '大会名不明';
+    const year = match.tournament_year;
+
+    if (!year) {
+      return baseName;
+    }
+
+    return `${baseName} ${year}`;
+  };
+
   // 試合の勝者を取得
   const getMatchWinner = (match: Match) => {
     if (!match?.games) return null;
@@ -74,27 +83,23 @@ export default function MatchesList({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="mx-auto max-w-7xl px-4 py-8">
-        <h1 className="text-3xl font-bold text-gray-900">試合結果一覧</h1>
-        <p className="mt-2 text-sm text-gray-600">
-          最終更新:{' '}
-          {new Date(lastUpdated).toLocaleString('ja-JP', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: 'Asia/Tokyo',
-          })}
-        </p>
-        <div className="mt-8 bg-white shadow rounded-lg">
-          <ul className="divide-y divide-gray-200">
+    <div className="min-h-screen bg-white px-4 py-10 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            試合結果一覧
+          </h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            ベータ版のポイント詳細記録から、試合結果と分析ページを確認できます。
+          </p>
+        </div>
+        <div className="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
             {matches.map((match) => (
               <li key={match.id} className="relative">
                 <Link
                   href={`/beta/matches-results/${match.id}`}
-                  className="block p-4 hover:bg-gray-50"
+                  className="block p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/60"
                   aria-label={`${getBetaTeamDisplayName(
                     match,
                     'A',
@@ -102,7 +107,7 @@ export default function MatchesList({
                 >
                   <div className="relative">
                     <div className="pr-20">
-                      <p className="text-lg font-medium mb-1">
+                      <p className="mb-1 text-lg font-medium text-gray-900 dark:text-gray-100">
                         {getBetaTeamDisplayName(match, 'A')} vs{' '}
                         {getBetaTeamDisplayName(match, 'B')}
                       </p>
@@ -114,7 +119,7 @@ export default function MatchesList({
 
                         if (status !== 'not_started') {
                           return (
-                            <div className="text-sm font-mono text-gray-700 mb-1">
+                            <div className="mb-1 font-mono text-sm text-gray-700 dark:text-gray-200">
                               {score.teamA} - {score.teamB}
                             </div>
                           );
@@ -122,44 +127,49 @@ export default function MatchesList({
                         return null;
                       })()}
 
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
                         {match.tournament_name &&
                         tournamentInfos[match.tournament_name] ? (
                           tournamentInfos[match.tournament_name].exists ? (
                             (() => {
+                              const tournamentInfo =
+                                tournamentInfos[match.tournament_name];
                               const tournamentUrl =
                                 generateTournamentUrlFromMatch(match);
                               return tournamentUrl ? (
                                 <span
-                                  className="text-blue-600 hover:text-blue-800 underline cursor-pointer"
+                                  className="cursor-pointer text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                                   onClick={(e) => {
                                     e.preventDefault();
                                     e.stopPropagation();
                                     window.open(tournamentUrl, '_blank');
                                   }}
                                 >
-                                  {
-                                    tournamentInfos[match.tournament_name].meta
-                                      .name
-                                  }
+                                  {getTournamentDisplayName(
+                                    match,
+                                    tournamentInfo,
+                                  )}
                                 </span>
                               ) : (
-                                <span className="text-gray-600">
-                                  {
-                                    tournamentInfos[match.tournament_name].meta
-                                      .name
-                                  }
+                                <span className="text-gray-600 dark:text-gray-300">
+                                  {getTournamentDisplayName(
+                                    match,
+                                    tournamentInfo,
+                                  )}
                                 </span>
                               );
                             })()
                           ) : (
-                            <span className="text-gray-600">
-                              {tournamentInfos[match.tournament_name].meta.name}
+                            <span className="text-gray-600 dark:text-gray-300">
+                              {getTournamentDisplayName(
+                                match,
+                                tournamentInfos[match.tournament_name],
+                              )}
                             </span>
                           )
                         ) : (
-                          <span className="text-gray-600">
-                            {match.tournament_name || '大会名不明'}
+                          <span className="text-gray-600 dark:text-gray-300">
+                            {getTournamentDisplayName(match)}
                           </span>
                         )}
                       </div>
@@ -167,7 +177,7 @@ export default function MatchesList({
                       {/* 回戦情報と試合状態を横並びに */}
                       <div className="flex items-center gap-2 mt-1">
                         {match.round_name && (
-                          <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+                          <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
                             {match.round_name}
                           </span>
                         )}
@@ -178,13 +188,13 @@ export default function MatchesList({
 
                           if (status === 'finished' && winner) {
                             return (
-                              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">
+                              <span className="rounded bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
                                 終了
                               </span>
                             );
                           } else if (status === 'in_progress') {
                             return (
-                              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                              <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
                                 進行中
                               </span>
                             );
@@ -196,7 +206,7 @@ export default function MatchesList({
 
                     {/* 日時を右下に配置 */}
                     <div className="absolute bottom-0 right-0">
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
                         {new Date(match.created_at).toLocaleDateString(
                           'ja-JP',
                           {
@@ -215,7 +225,9 @@ export default function MatchesList({
           </ul>
           {matches.length === 0 && (
             <div className="py-12 text-center">
-              <p className="text-gray-500">まだ試合が登録されていません。</p>
+              <p className="text-gray-500 dark:text-gray-400">
+                まだ試合が登録されていません。
+              </p>
             </div>
           )}
         </div>
@@ -227,7 +239,6 @@ export default function MatchesList({
 export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
     const safeMatches = await getLatestBetaMatches();
-    const generatedAt = await getBetaMatchesGeneratedAt();
     const tournamentIds = [
       ...new Set(safeMatches.map((m) => m.tournament_name).filter(Boolean)),
     ] as string[];
@@ -249,7 +260,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       props: {
         matches: safeMatches,
         tournamentInfos,
-        lastUpdated: generatedAt ?? new Date().toISOString(),
       },
     };
   } catch (error) {
@@ -258,7 +268,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       props: {
         matches: [],
         tournamentInfos: {},
-        lastUpdated: new Date().toISOString(),
       },
     };
   }
