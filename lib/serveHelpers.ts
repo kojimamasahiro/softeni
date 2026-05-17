@@ -1,4 +1,5 @@
 import { Game } from '../src/types/database';
+import { isFinalGame as isFinalGameByWins } from './matchRules';
 
 /**
  * ゲーム開始時のサーブ権を決定する
@@ -33,11 +34,8 @@ export function isFinalGame(
   gamesWonA: number = 0,
   gamesWonB: number = 0,
 ): boolean {
-  // 5ゲームマッチの場合、3-3になった場合の第7ゲームがファイナルゲーム
-  const requiredWins = Math.ceil(bestOf / 2);
-
-  // 両チームが(requiredWins - 1)勝利している場合がファイナルゲーム
-  return gamesWonA === requiredWins - 1 && gamesWonB === requiredWins - 1;
+  void gameNumber;
+  return isFinalGameByWins(bestOf, gamesWonA, gamesWonB);
 }
 
 /**

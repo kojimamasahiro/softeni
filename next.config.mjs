@@ -1,7 +1,10 @@
 // next.config.mjs
 /** @type {import('next').NextConfig} */
+const isProduction = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-  output: 'export', // Static export for Cloudflare Pages
+  // Keep API routes available in development while preserving static export in production.
+  ...(isProduction ? { output: 'export' } : {}),
   trailingSlash: true,
   images: {
     unoptimized: true, // Required for static export

@@ -18,6 +18,21 @@ interface Props {
 }
 
 export default function MatchesList({ matches, tournamentInfos }: Props) {
+  const getTournamentDisplayName = (
+    match: Match,
+    tournamentInfo?: TournamentInfo,
+  ) => {
+    const baseName =
+      tournamentInfo?.meta.name || match.tournament_name || '大会名不明';
+    const year = match.tournament_year;
+
+    if (!year) {
+      return baseName;
+    }
+
+    return `${baseName} ${year}`;
+  };
+
   // 試合の勝者を取得
   const getMatchWinner = (match: Match) => {
     if (!match?.games) return null;
@@ -117,6 +132,8 @@ export default function MatchesList({ matches, tournamentInfos }: Props) {
                         tournamentInfos[match.tournament_name] ? (
                           tournamentInfos[match.tournament_name].exists ? (
                             (() => {
+                              const tournamentInfo =
+                                tournamentInfos[match.tournament_name];
                               const tournamentUrl =
                                 generateTournamentUrlFromMatch(match);
                               return tournamentUrl ? (
@@ -128,28 +145,31 @@ export default function MatchesList({ matches, tournamentInfos }: Props) {
                                     window.open(tournamentUrl, '_blank');
                                   }}
                                 >
-                                  {
-                                    tournamentInfos[match.tournament_name].meta
-                                      .name
-                                  }
+                                  {getTournamentDisplayName(
+                                    match,
+                                    tournamentInfo,
+                                  )}
                                 </span>
                               ) : (
                                 <span className="text-gray-600 dark:text-gray-300">
-                                  {
-                                    tournamentInfos[match.tournament_name].meta
-                                      .name
-                                  }
+                                  {getTournamentDisplayName(
+                                    match,
+                                    tournamentInfo,
+                                  )}
                                 </span>
                               );
                             })()
                           ) : (
                             <span className="text-gray-600 dark:text-gray-300">
-                              {tournamentInfos[match.tournament_name].meta.name}
+                              {getTournamentDisplayName(
+                                match,
+                                tournamentInfos[match.tournament_name],
+                              )}
                             </span>
                           )
                         ) : (
                           <span className="text-gray-600 dark:text-gray-300">
-                            {match.tournament_name || '大会名不明'}
+                            {getTournamentDisplayName(match)}
                           </span>
                         )}
                       </div>

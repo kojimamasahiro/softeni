@@ -44,6 +44,19 @@ export interface TournamentCategory {
   age: string;
 }
 
+const isJsonResponse = (response: Response) => {
+  const contentType = response.headers.get('content-type') ?? '';
+  return contentType.includes('application/json');
+};
+
+const readJsonResponse = async <T>(response: Response) => {
+  if (!response.ok || !isJsonResponse(response)) {
+    return null;
+  }
+
+  return (await response.json()) as T;
+};
+
 /**
  * 世代IDから表示用ラベルを取得する
  */
@@ -69,9 +82,11 @@ export const getTournamentInfo = async (
   try {
     // APIから全ての大会データを取得
     const response = await fetch('/api/tournaments');
-    const data = await response.json();
+    const data = await readJsonResponse<{
+      tournaments?: TournamentOption[];
+    }>(response);
 
-    if (!response.ok || !data.tournaments) {
+    if (!data?.tournaments) {
       throw new Error('Failed to fetch tournaments');
     }
 
@@ -141,9 +156,15 @@ export const getTournamentOptions = async (): Promise<
   try {
     // APIから全ての大会データを取得
     const response = await fetch('/api/tournaments');
-    const data = await response.json();
+    const data = await readJsonResponse<{
+      tournaments?: Array<{
+        id: string;
+        name: string;
+        yearMeta: { year: number };
+      }>;
+    }>(response);
 
-    if (!response.ok || !data.tournaments) {
+    if (!data?.tournaments) {
       throw new Error('Failed to fetch tournaments');
     }
 
@@ -173,9 +194,11 @@ export const getTournamentCategories = async (
 ): Promise<TournamentCategory[]> => {
   try {
     const response = await fetch(`/api/tournaments/${tournamentId}/categories`);
-    const data = await response.json();
+    const data = await readJsonResponse<{
+      categories?: TournamentCategory[];
+    }>(response);
 
-    if (!response.ok || !data.categories) {
+    if (!data?.categories) {
       throw new Error('Failed to fetch tournament categories');
     }
 
@@ -198,9 +221,11 @@ export const getTournamentCategoriesWithMeta = async (
   try {
     // まず大会リストから該当する大会のメタデータを取得
     const tournamentsResponse = await fetch('/api/tournaments');
-    const tournamentsData = await tournamentsResponse.json();
+    const tournamentsData = await readJsonResponse<{
+      tournaments?: TournamentOption[];
+    }>(tournamentsResponse);
 
-    if (!tournamentsResponse.ok || !tournamentsData.tournaments) {
+    if (!tournamentsData?.tournaments) {
       throw new Error('Failed to fetch tournaments');
     }
 
@@ -213,12 +238,11 @@ export const getTournamentCategoriesWithMeta = async (
     const categoriesResponse = await fetch(
       `/api/tournaments/${tournamentId}/categories`,
     );
-    const categoriesData = await categoriesResponse.json();
+    const categoriesData = await readJsonResponse<{
+      categories?: TournamentCategory[];
+    }>(categoriesResponse);
 
-    const categories =
-      categoriesResponse.ok && categoriesData.categories
-        ? categoriesData.categories
-        : [];
+    const categories = categoriesData?.categories ?? [];
 
     return {
       categories,

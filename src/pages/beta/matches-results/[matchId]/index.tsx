@@ -35,6 +35,18 @@ const PublicMatchDetail = ({
 }: PublicMatchDetailProps) => {
   const router = useRouter();
 
+  const getTournamentDisplayName = () => {
+    const baseName =
+      tournamentInfo?.meta.name || match.tournament_name || '大会名不明';
+    const year = match.tournament_year;
+
+    if (!year) {
+      return baseName;
+    }
+
+    return `${baseName} ${year}`;
+  };
+
   // マッチ勝者を判定する関数を先に定義
   const getMatchWinner = useCallback(() => {
     if (!match?.games) return null;
@@ -873,15 +885,15 @@ const PublicMatchDetail = ({
                   href={fullTournamentUrl}
                   className="font-medium text-blue-600 hover:underline dark:text-blue-400"
                 >
-                  {tournamentInfo.meta.name}
+                  {getTournamentDisplayName()}
                 </Link>
               ) : tournamentInfo ? (
                 <span className="font-medium text-gray-800 dark:text-gray-100">
-                  {tournamentInfo.meta.name}
+                  {getTournamentDisplayName()}
                 </span>
               ) : (
                 <span className="font-medium text-gray-800 dark:text-gray-100">
-                  {match.tournament_name || '大会名不明'}
+                  {getTournamentDisplayName()}
                 </span>
               )}
               {match.round_name && (

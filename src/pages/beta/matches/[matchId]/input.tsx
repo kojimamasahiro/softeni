@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useCallback as reactUseCallback, useEffect, useState } from 'react';
 
+import { hasLiveMatchApi } from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
 import {
   determineInitialServeTeam,
@@ -71,9 +72,28 @@ const getPlayerNamesFromMatch = (match: Match, team: 'A' | 'B'): string[] => {
   return players;
 };
 
+const getGamesWon = (match: Match) => {
+  const games = match.games ?? [];
+
+  return {
+    gamesWonA: games.filter((game: Game) => game.winner_team === 'A').length,
+    gamesWonB: games.filter((game: Game) => game.winner_team === 'B').length,
+  };
+};
+
+const isMatchFinishedByGames = (
+  bestOf: number,
+  gamesWonA: number,
+  gamesWonB: number,
+) => {
+  const requiredWins = Math.ceil(bestOf / 2);
+  return gamesWonA >= requiredWins || gamesWonB >= requiredWins;
+};
+
 const MatchInput = () => {
   const router = useRouter();
   const { matchId } = router.query;
+  const canEditMatches = isDebugMode() && hasLiveMatchApi();
 
   const [match, setMatch] = useState<Match | null>(null);
   const [currentGame, setCurrentGame] = useState<Game | null>(null);
@@ -172,25 +192,36 @@ const MatchInput = () => {
 
       if (response.ok) {
         setMatch(data.match);
-        // 現在進行中のゲームを見つける
-        const activeGame = data.match.games?.find(
-          (game: Game) => !game.winner_team,
+        const games = data.match.games ?? [];
+        const { gamesWonA, gamesWonB } = getGamesWon(data.match);
+        const matchFinished = isMatchFinishedByGames(
+          data.match.best_of,
+          gamesWonA,
+          gamesWonB,
         );
-        const currentGameData =
-          activeGame || data.match.games?.[data.match.games.length - 1];
-        setCurrentGame(currentGameData);
 
-        // サーブ権が設定されていない場合は選択が必要
-        if (currentGameData && !currentGameData.initial_serve_team) {
-          setNeedsServeSelection(true);
-        } else {
+        if (games.length === 0) {
+          setCurrentGame(null);
           setNeedsServeSelection(false);
+        } else {
+          // 現在進行中のゲームを見つける
+          const activeGame = games.find((game: Game) => !game.winner_team);
+          if (activeGame) {
+            setCurrentGame(activeGame);
+            // サーブ権が設定されていない場合は選択が必要
+            setNeedsServeSelection(!activeGame.initial_serve_team);
+          } else if (matchFinished) {
+            const lastGame = games[games.length - 1];
+            setCurrentGame(lastGame);
+            setNeedsServeSelection(false);
+          } else {
+            setCurrentGame(null);
+            setNeedsServeSelection(false);
+          }
         }
 
         // 第1ゲームの初期サーブ権を保存
-        const firstGame = data.match.games?.find(
-          (game: Game) => game.game_number === 1,
-        );
+        const firstGame = games.find((game: Game) => game.game_number === 1);
         if (firstGame?.initial_serve_team) {
           setInitialServeTeam(firstGame.initial_serve_team as 'A' | 'B');
         }
@@ -204,10 +235,10 @@ const MatchInput = () => {
 
   // マッチデータの取得
   useEffect(() => {
-    if (matchId && isDebugMode()) {
+    if (matchId && canEditMatches) {
       fetchMatch();
     }
-  }, [matchId, fetchMatch]);
+  }, [canEditMatches, matchId, fetchMatch]);
 
   // ポイント編集を開始する関数
   const startEditPoint = (point: Point) => {
@@ -279,12 +310,7 @@ const MatchInput = () => {
         const result = await response.json();
 
         // 最適化：レスポンスデータを使ってローカル状態を更新
-        if (
-          result.updatedGame &&
-          result.matchStats &&
-          match.games &&
-          currentGame
-        ) {
+        if (result.updatedGame && match.games && currentGame) {
           // 更新されたポイントでローカル状態を更新
           const updatedPoints =
             currentGame.points?.map((point: Point) =>
@@ -442,7 +468,7 @@ const MatchInput = () => {
         const result = await response.json();
 
         // 最適化：レスポンスデータを使ってローカル状態を更新
-        if (result.updatedGame && result.matchStats && match.games) {
+        if (result.updatedGame && match.games) {
           // 現在のゲームを更新
           const updatedGames = match.games.map((game: Game) =>
             game.id === result.updatedGame.id ? result.updatedGame : game,
@@ -464,6 +490,35 @@ const MatchInput = () => {
 
           setMatch(updatedMatch);
           setCurrentGame(updatedCurrentGame);
+
+          if (result.updatedGame.winner_team) {
+            const { gamesWonA, gamesWonB } = getGamesWon(updatedMatch);
+            const finished = isMatchFinishedByGames(
+              updatedMatch.best_of,
+              gamesWonA,
+              gamesWonB,
+            );
+
+            if (!finished) {
+              const nextGameNumber = updatedMatch.games.length + 1;
+              const nextGameResponse = await fetch(
+                `/api/matches/${matchId}/games`,
+                {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    game_number: nextGameNumber,
+                  }),
+                },
+              );
+
+              if (nextGameResponse.ok) {
+                await fetchMatch();
+              } else {
+                console.error('Failed to auto start next game');
+              }
+            }
+          }
         }
 
         // 次のポイントでサーブチームが変わる場合、手動選択をリセット
@@ -500,25 +555,15 @@ const MatchInput = () => {
   const isMatchFinished = (match: Match): boolean => {
     if (!match.games || match.games.length === 0) return false;
 
-    const gamesWonA = match.games.filter(
-      (game: Game) => game.winner_team === 'A',
-    ).length;
-    const gamesWonB = match.games.filter(
-      (game: Game) => game.winner_team === 'B',
-    ).length;
-    const requiredWins = Math.ceil(match.best_of / 2);
-
-    return gamesWonA >= requiredWins || gamesWonB >= requiredWins;
+    const { gamesWonA, gamesWonB } = getGamesWon(match);
+    return isMatchFinishedByGames(match.best_of, gamesWonA, gamesWonB);
   };
 
   // 試合の勝者を取得
   const getMatchWinner = (match: Match): 'A' | 'B' | null => {
     if (!isMatchFinished(match)) return null;
 
-    const gamesWonA =
-      match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
-    const gamesWonB =
-      match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+    const { gamesWonA, gamesWonB } = getGamesWon(match);
     const requiredWins = Math.ceil(match.best_of / 2);
 
     if (gamesWonA >= requiredWins) return 'A';
@@ -607,6 +652,32 @@ const MatchInput = () => {
       }
     } catch (error) {
       console.error('Failed to start new game:', error);
+    }
+  };
+
+  const startFirstGame = async () => {
+    if (!match) return;
+
+    try {
+      const response = await fetch(`/api/matches/${matchId}/games`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          game_number: 1,
+        }),
+      });
+
+      if (response.ok) {
+        await fetchMatch();
+      } else {
+        const errorData = await response.json();
+        alert(
+          `第1ゲームの開始に失敗しました: ${errorData.error || 'Unknown error'}`,
+        );
+      }
+    } catch (error) {
+      console.error('Failed to start first game:', error);
+      alert('第1ゲームの開始中にエラーが発生しました。');
     }
   };
 
@@ -729,13 +800,13 @@ const MatchInput = () => {
   };
 
   // 開発環境でない場合はアクセス拒否
-  if (!isDebugMode()) {
+  if (!canEditMatches) {
     return (
       <div className="max-w-4xl mx-auto p-6">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          <strong className="font-bold">アクセス拒否</strong>
+          <strong className="font-bold">編集不可</strong>
           <span className="block sm:inline ml-2">
-            この機能は開発環境でのみ利用可能です。
+            このページは開発サーバーでのみ利用できます。静的公開環境では閲覧用の詳細ページをご利用ください。
           </span>
         </div>
       </div>
@@ -822,8 +893,35 @@ const MatchInput = () => {
         />
       )}
 
+      {!matchFinished && !needsServeSelection && !currentGame && (
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6 text-center">
+          <h2 className="text-lg font-semibold mb-2">
+            {match.games && match.games.length > 0
+              ? '次のゲーム待ち'
+              : '試合開始前'}
+          </h2>
+          <p className="text-gray-600 mb-4">
+            {match.games && match.games.length > 0
+              ? `第${match.games.length + 1}ゲームを開始するとサーブを決められます。`
+              : 'まだゲームが開始されていません。第1ゲームを開始するとサーブを決められます。'}
+          </p>
+          <button
+            onClick={
+              match.games && match.games.length > 0
+                ? startNewGame
+                : startFirstGame
+            }
+            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            {match.games && match.games.length > 0
+              ? `第${match.games.length + 1}ゲームを開始`
+              : '第1ゲームを開始'}
+          </button>
+        </div>
+      )}
+
       {/* ゲームスコアと現在のゲーム状況を横並びで表示 */}
-      {!matchFinished && !needsServeSelection && (
+      {!matchFinished && !needsServeSelection && currentGame && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           {/* ゲームスコア */}
           <div className="bg-white rounded-lg shadow-md p-4 h-40 flex flex-col">
@@ -914,7 +1012,8 @@ const MatchInput = () => {
       )}
 
       {/* ポイント入力フォーム */}
-      {((!gameWon && !matchFinished && !needsServeSelection) || isEditMode) && (
+      {((!gameWon && !matchFinished && !needsServeSelection && !!currentGame) ||
+        isEditMode) && (
         <div className="bg-white rounded-lg shadow-md p-4 mb-4">
           <div className="text-center mb-4">
             <h3 className="text-lg font-semibold">

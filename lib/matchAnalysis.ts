@@ -1,4 +1,5 @@
 import type { Match, Point } from '@/types/database';
+import { getPointsToWinForGame, isWinningScore } from '@/lib/matchRules';
 
 export type TeamKey = 'A' | 'B';
 
@@ -194,12 +195,6 @@ const getRateReliability = (
 const getPresenceReliability = (count: number): AnalysisReliability =>
   count > 0 ? 'ok' : 'none';
 
-const isGameWinningScore = (
-  scoreFor: number,
-  scoreAgainst: number,
-  pointsToWin: number,
-) => scoreFor >= pointsToWin && scoreFor - scoreAgainst >= 2;
-
 const isDeuceScore = (scoreA: number, scoreB: number, pointsToWin: number) =>
   scoreA === scoreB && scoreA >= pointsToWin - 1;
 
@@ -214,17 +209,6 @@ const getRallyBucket = (
   if (point.rally_count <= 4) return '3-4';
   if (point.rally_count <= 8) return '5-8';
   return '9+';
-};
-
-const getPointsToWinForGame = (
-  gamesWonA: number,
-  gamesWonB: number,
-  bestOf: number,
-) => {
-  const requiredWins = Math.ceil(bestOf / 2);
-  const isFinalGame =
-    gamesWonA === requiredWins - 1 && gamesWonB === requiredWins - 1;
-  return isFinalGame ? 7 : 4;
 };
 
 const formatPercentage = (value: number | null) => {
@@ -690,9 +674,9 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
 
   sortedGames.forEach((game) => {
     const pointsToWin = getPointsToWinForGame(
+      match.best_of,
       gamesWonA,
       gamesWonB,
-      match.best_of,
     );
     const sortedPoints = [...(game.points ?? [])].sort(
       (left, right) => left.point_number - right.point_number,
@@ -704,8 +688,8 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
     sortedPoints.forEach((point, index) => {
       const scoreBefore = { A: scoreA, B: scoreB };
       const isGamePointOpportunity = {
-        A: isGameWinningScore(scoreA + 1, scoreB, pointsToWin),
-        B: isGameWinningScore(scoreB + 1, scoreA, pointsToWin),
+        A: isWinningScore(scoreA + 1, scoreB, pointsToWin),
+        B: isWinningScore(scoreB + 1, scoreA, pointsToWin),
       };
 
       if (point.winner_team === 'A') {
@@ -725,8 +709,8 @@ export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
         isDeucePoint: isDeuceScore(scoreBefore.A, scoreBefore.B, pointsToWin),
         isGamePointOpportunity,
         isGameWinningPoint:
-          isGameWinningScore(scoreA, scoreB, pointsToWin) ||
-          isGameWinningScore(scoreB, scoreA, pointsToWin),
+          isWinningScore(scoreA, scoreB, pointsToWin) ||
+          isWinningScore(scoreB, scoreA, pointsToWin),
         rallyBucket: getRallyBucket(point),
       });
     });
