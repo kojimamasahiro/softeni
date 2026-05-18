@@ -1,5 +1,5 @@
-import type { Match, Point } from '@/types/database';
 import { getPointsToWinForGame, isWinningScore } from '@/lib/matchRules';
+import type { Match, Point } from '@/types/database';
 
 export type TeamKey = 'A' | 'B';
 
@@ -158,6 +158,31 @@ export type ImprovementHintSourceMetric = {
   unit?: '%' | 'points' | 'count' | 'rate';
 };
 
+export type ImprovementHintReviewPoint = {
+  pointId: string;
+  gameNumber: number;
+  pointNumber: number;
+  scoreBefore: Record<TeamKey, number>;
+  scoreAfter: Record<TeamKey, number>;
+  servingTeam: string | null;
+  servingPlayer: string | null;
+  winnerTeam: string | null;
+  resultType: string | null;
+  rallyCount: number | null;
+  playerName: string | null;
+  point_note?: string | null;
+  point_detail?: string | null;
+  shot_type?: string | null;
+  shot_course?: string | null;
+};
+
+export type ImprovementHintReviewGroup = {
+  id: string;
+  label: string;
+  points: ImprovementHintReviewPoint[];
+  emptyMessage: string;
+};
+
 export type ImprovementHint = {
   id: string;
   ruleId: string;
@@ -182,6 +207,7 @@ export type ImprovementHint = {
   priorityScore: number;
   priorityReasons?: string[];
   sourceMetrics: ImprovementHintSourceMetric[];
+  reviewGroups?: ImprovementHintReviewGroup[];
 };
 
 export type MatchAnalysisSummary = {
@@ -468,7 +494,6 @@ const buildTeamInsights = (
 };
 
 const IMPROVEMENT_HINT_RULE_VERSION = 'single-match-v1';
-
 const RESULT_TYPE_LABELS: Record<string, string> = {
   net: 'ネット',
   out: 'アウト',
@@ -677,6 +702,124 @@ const buildMetric = (
   unit: '%',
 });
 
+const getReviewPointPlayerName = (context: ReconstructedPointContext) => {
+  const resultType = context.point.result_type || '';
+
+  if (ERROR_RESULT_TYPES.has(resultType)) {
+    return normalizeRecordedPlayerName(context.point.loser_player);
+  }
+
+  if (WINNER_RESULT_TYPES.has(resultType)) {
+    return normalizeRecordedPlayerName(context.point.winner_player);
+  }
+
+  return (
+    normalizeRecordedPlayerName(context.point.winner_player) ??
+    normalizeRecordedPlayerName(context.point.loser_player)
+  );
+};
+
+const toReviewPoint = (
+  context: ReconstructedPointContext,
+): ImprovementHintReviewPoint => ({
+  pointId: context.point.id,
+  gameNumber: context.gameNumber,
+  pointNumber: context.pointNumber,
+  scoreBefore: context.scoreBefore,
+  scoreAfter: context.scoreAfter,
+  servingTeam: context.point.serving_team,
+  servingPlayer: context.point.serving_player,
+  winnerTeam: context.point.winner_team,
+  resultType: context.point.result_type,
+  rallyCount: context.point.rally_count,
+  playerName: getReviewPointPlayerName(context),
+  point_note: context.point.point_note,
+  point_detail: context.point.point_detail,
+  shot_type: context.point.shot_type,
+  shot_course: context.point.shot_course,
+});
+
+const uniqueReviewContexts = (points: ReconstructedPointContext[]) => {
+  const seenPointIds = new Set<string>();
+
+  return points.filter((context) => {
+    if (seenPointIds.has(context.point.id)) return false;
+    seenPointIds.add(context.point.id);
+    return true;
+  });
+};
+
+const buildReviewGroup = (
+  id: string,
+  label: string,
+  points: ReconstructedPointContext[],
+  emptyMessage = '該当ポイントを絞り込めませんでした。',
+): ImprovementHintReviewGroup => ({
+  id,
+  label,
+  points: uniqueReviewContexts(points).map(toReviewPoint),
+  emptyMessage,
+});
+
+const sortByRallyCountDesc = (points: ReconstructedPointContext[]) =>
+  [...points].sort(
+    (left, right) =>
+      (right.point.rally_count ?? 0) - (left.point.rally_count ?? 0),
+  );
+
+const getPointAt = (
+  reconstructedPoints: ReconstructedPointContext[],
+  gameNumber: number,
+  pointNumber: number,
+) =>
+  reconstructedPoints.find(
+    (context) =>
+      context.gameNumber === gameNumber && context.pointNumber === pointNumber,
+  ) ?? null;
+
+const getPointAfterSegment = (
+  reconstructedPoints: ReconstructedPointContext[],
+  segment: MomentumSegment | null,
+) => {
+  if (!segment) return null;
+  const endIndex = reconstructedPoints.findIndex(
+    (context) =>
+      context.gameNumber === segment.endGameNumber &&
+      context.pointNumber === segment.endPointNumber,
+  );
+  return endIndex >= 0 ? (reconstructedPoints[endIndex + 1] ?? null) : null;
+};
+
+const getPointsBeforeContexts = (
+  reconstructedPoints: ReconstructedPointContext[],
+  points: ReconstructedPointContext[],
+) =>
+  points
+    .map((point) => {
+      const index = reconstructedPoints.findIndex(
+        (context) => context.point.id === point.point.id,
+      );
+      return index > 0 ? reconstructedPoints[index - 1] : null;
+    })
+    .filter(
+      (context): context is ReconstructedPointContext => context !== null,
+    );
+
+const getPointsAfterContexts = (
+  reconstructedPoints: ReconstructedPointContext[],
+  points: ReconstructedPointContext[],
+) =>
+  points
+    .map((point) => {
+      const index = reconstructedPoints.findIndex(
+        (context) => context.point.id === point.point.id,
+      );
+      return index >= 0 ? (reconstructedPoints[index + 1] ?? null) : null;
+    })
+    .filter(
+      (context): context is ReconstructedPointContext => context !== null,
+    );
+
 const buildImprovementHints = (
   match: Match,
   team: TeamKey,
@@ -686,6 +829,19 @@ const buildImprovementHints = (
   const hints: ImprovementHint[] = [];
   const overallMetric = metrics.overallPointWinRate;
   const isOneSidedLoss = (overallMetric.percentage ?? 50) < 38;
+  const opponent = getOppositeTeam(team);
+  const lostPoints = reconstructedPoints.filter(
+    (context) => context.point.winner_team === opponent,
+  );
+  const servedPoints = reconstructedPoints.filter(
+    (context) => context.point.serving_team === team,
+  );
+  const receivedPoints = reconstructedPoints.filter(
+    (context) => context.point.serving_team === opponent,
+  );
+  const shortRallyLosses = lostPoints.filter(
+    (context) => context.rallyBucket === '1-2' || context.rallyBucket === '3-4',
+  );
   const addHint = (
     hint: Omit<ImprovementHint, 'id' | 'matchId' | 'target' | 'ruleVersion'> & {
       playerName?: string;
@@ -733,7 +889,7 @@ const buildImprovementHints = (
       nextCheck:
         '次の試合では、1stサーブが入らなかった場面の入り方を確認しましょう。',
       nextCheckItems: [
-        '1stサーブが入らなかったゲーム',
+        '1stサーブが入らなかったポイント',
         '2ndサーブ後の失点パターン',
       ],
       confidence,
@@ -746,6 +902,24 @@ const buildImprovementHints = (
       priorityReasons: [
         'サーブの入りは次の試合で確認しやすい',
         '1stサーブ成功率が低め',
+      ],
+      reviewGroups: [
+        buildReviewGroup(
+          'first-serve-faults',
+          '1stサーブが入らなかったポイント',
+          servedPoints.filter((context) => context.point.first_serve_fault),
+          '1stサーブフォルトのポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'second-serve-lost-points',
+          '2ndサーブ後の失点パターン',
+          servedPoints.filter(
+            (context) =>
+              context.point.first_serve_fault &&
+              context.point.winner_team === opponent,
+          ),
+          '2ndサーブ後の失点ポイントを絞り込めませんでした。',
+        ),
       ],
       sourceMetrics: [
         buildMetric(
@@ -794,11 +968,11 @@ const buildImprovementHints = (
       interpretation:
         '1stサーブは入っていても、その後の1本で押し返された可能性があります。',
       nextCheck:
-        '1stサーブが入った後、3本目までにどこで主導権が変わったか確認しましょう。',
+        '1stサーブが入ったポイントで、どこから主導権が変わったか確認しましょう。',
       nextCheckItems: [
-        '1stサーブ後の次の1本',
+        '1stサーブでの失点',
         '短いラリーでの失点',
-        '相手に先に攻められた場面',
+        '相手の決定打で終わった場面',
       ],
       confidence,
       confidenceReason: getConfidenceReason(
@@ -813,6 +987,32 @@ const buildImprovementHints = (
       priorityReasons: [
         '1stサーブ成功後の得点率が低め',
         '総ポイント取得率との差を確認',
+      ],
+      reviewGroups: [
+        buildReviewGroup(
+          'first-serve-next-ball',
+          '1stサーブでの失点',
+          servedPoints.filter(
+            (context) =>
+              !context.point.first_serve_fault &&
+              context.point.winner_team === opponent,
+          ),
+          '1stサーブ後の失点ポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'short-rally-lost-points',
+          '短いラリーでの失点',
+          shortRallyLosses,
+          '短いラリーでの失点ポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'opponent-attack-first',
+          '相手の決定打で終わった場面',
+          lostPoints.filter((context) =>
+            WINNER_RESULT_TYPES.has(context.point.result_type || ''),
+          ),
+          '相手の決定打になったポイントを絞り込めませんでした。',
+        ),
       ],
       sourceMetrics: [
         buildMetric(
@@ -854,8 +1054,8 @@ const buildImprovementHints = (
       nextCheck:
         '2ndサーブ後の短いラリーで、どの形の失点が多かったか確認しましょう。',
       nextCheckItems: [
-        '2ndサーブ直後の返球',
-        'ダブルフォルトが出たゲーム',
+        '2ndサーブでの失点',
+        'ダブルフォルトが出たポイント',
         '2nd後の1-4本ラリー失点',
       ],
       confidence,
@@ -875,6 +1075,35 @@ const buildImprovementHints = (
       priorityReasons: [
         '2ndサーブ時得点率が低め',
         'ダブルフォルト数も確認対象',
+      ],
+      reviewGroups: [
+        buildReviewGroup(
+          'second-serve-return',
+          '2ndサーブでの失点',
+          servedPoints.filter(
+            (context) =>
+              context.point.first_serve_fault &&
+              context.point.winner_team === opponent,
+          ),
+          '2ndサーブ後の失点ポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'double-fault-games',
+          'ダブルフォルトが出たポイント',
+          servedPoints.filter((context) => context.point.double_fault),
+          'ダブルフォルトのポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'second-serve-short-rally-lost-points',
+          '2nd後の1-4本ラリー失点',
+          servedPoints.filter(
+            (context) =>
+              context.point.first_serve_fault &&
+              context.point.winner_team === opponent &&
+              (context.rallyBucket === '1-2' || context.rallyBucket === '3-4'),
+          ),
+          '2ndサーブ後の短いラリー失点を絞り込めませんでした。',
+        ),
       ],
       sourceMetrics: [
         buildMetric(
@@ -924,7 +1153,7 @@ const buildImprovementHints = (
         '相手サーブ後の1本目から3本目で、どこから苦しくなったか確認しましょう。',
       nextCheckItems: [
         'レシーブ直後の失点',
-        '相手2ndサーブ時に攻められたか',
+        '相手2ndサーブからの失点',
         'レシーブ後の短いラリー',
       ],
       confidence,
@@ -940,6 +1169,38 @@ const buildImprovementHints = (
       priorityReasons: [
         'レシーブは次の試合で確認しやすい',
         '総ポイント取得率との差を確認',
+      ],
+      reviewGroups: [
+        buildReviewGroup(
+          'receive-lost-points',
+          'レシーブ直後の失点',
+          receivedPoints.filter(
+            (context) =>
+              context.point.winner_team === opponent &&
+              context.point.rally_count === 3,
+          ),
+          'レシーブ時の失点ポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'opponent-second-serve-points',
+          '相手2ndサーブからの失点',
+          receivedPoints.filter(
+            (context) =>
+              context.point.first_serve_fault &&
+              context.point.winner_team === opponent,
+          ),
+          '相手2ndサーブ時の失点ポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'receive-short-rally-lost-points',
+          'レシーブ後の短いラリー',
+          receivedPoints.filter(
+            (context) =>
+              context.point.winner_team === opponent &&
+              (context.rallyBucket === '1-2' || context.rallyBucket === '3-4'),
+          ),
+          'レシーブ後の短いラリーを絞り込めませんでした。',
+        ),
       ],
       sourceMetrics: [
         buildMetric(
@@ -972,7 +1233,7 @@ const buildImprovementHints = (
       metric: shortRallyMetric,
       metricKey: 'rally.short1To4WinRate',
       label: '1-4本ラリー得点率',
-      nextCheckItems: ['サーブ・レシーブ直後の失点', '3本目までの判断'],
+      nextCheckItems: ['1-4本ラリーでの失点', '短いラリーの終わり方'],
     },
     {
       ruleId: 'rally.medium5To8.low',
@@ -980,7 +1241,7 @@ const buildImprovementHints = (
       metric: mediumRallyMetric,
       metricKey: 'rally.medium5To8WinRate',
       label: '5-8本ラリー得点率',
-      nextCheckItems: ['5-8本目で先に攻められた場面', '無理に決めに行った場面'],
+      nextCheckItems: ['5-8本ラリーでの失点', '5-8本ラリーの終わり方'],
     },
     {
       ruleId: 'rally.long9Plus.low',
@@ -988,7 +1249,7 @@ const buildImprovementHints = (
       metric: longRallyMetric,
       metricKey: 'rally.long9PlusWinRate',
       label: '9本以上ラリー得点率',
-      nextCheckItems: ['長いラリーの最後の2本', '粘った後のミスか決められた形'],
+      nextCheckItems: ['9本以上ラリーでの失点', '長いラリーの終わり方'],
     },
   ];
 
@@ -1005,6 +1266,14 @@ const buildImprovementHints = (
         ANALYSIS_THRESHOLDS.MIN_RATE_SAMPLE,
         rallyDrop >= ANALYSIS_THRESHOLDS.LARGE_RELATIVE_DROP,
       );
+      const rallyLosses =
+        candidate.ruleId === 'rally.short1To4.low'
+          ? shortRallyLosses
+          : candidate.ruleId === 'rally.medium5To8.low'
+            ? lostPoints.filter((context) => context.rallyBucket === '5-8')
+            : sortByRallyCountDesc(
+                lostPoints.filter((context) => context.rallyBucket === '9+'),
+              );
 
       addHint({
         ruleId: candidate.ruleId,
@@ -1034,6 +1303,24 @@ const buildImprovementHints = (
           isOneSidedLoss
             ? '全体的に苦しい試合の中でも落ち込みが大きい'
             : 'ラリー帯ごとの差が見やすい',
+        ],
+        reviewGroups: [
+          buildReviewGroup(
+            `${candidate.ruleId}.primary`,
+            candidate.nextCheckItems[0],
+            rallyLosses,
+            `${candidate.label}の失点ポイントを絞り込めませんでした。`,
+          ),
+          buildReviewGroup(
+            `${candidate.ruleId}.secondary`,
+            candidate.nextCheckItems[1],
+            candidate.ruleId === 'rally.long9Plus.low'
+              ? sortByRallyCountDesc(rallyLosses)
+              : rallyLosses.filter((context) =>
+                  ERROR_RESULT_TYPES.has(context.point.result_type || ''),
+                ),
+            `${candidate.label}の終わり方を絞り込めませんでした。`,
+          ),
         ],
         sourceMetrics: [
           buildMetric(candidate.metricKey, candidate.label, candidate.metric),
@@ -1079,7 +1366,7 @@ const buildImprovementHints = (
         'ゲームポイントの前後で、先に攻めたか、相手に攻められたかを確認しましょう。',
       nextCheckItems: [
         '自チームのゲームポイント',
-        'ゲームポイント直前の配球',
+        'ゲームポイント直前のポイント',
         'デュースになった後の1本',
       ],
       confidence,
@@ -1093,6 +1380,40 @@ const buildImprovementHints = (
         Math.max(gamePointDrop, 0) +
         Math.min(gamePointWinRate.denominator, 8),
       priorityReasons: ['重要局面の確認価値が高い', '取り切りの場面を絞れる'],
+      reviewGroups: [
+        buildReviewGroup(
+          'own-game-point-points',
+          '自チームのゲームポイント',
+          reconstructedPoints.filter(
+            (context) => context.isGamePointOpportunity[team],
+          ),
+          '自チームのゲームポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'before-own-game-point',
+          'ゲームポイント直前のポイント',
+          getPointsBeforeContexts(
+            reconstructedPoints,
+            reconstructedPoints.filter(
+              (context) => context.isGamePointOpportunity[team],
+            ),
+          ),
+          'ゲームポイント直前のポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'after-own-game-point-loss',
+          'デュースになった後の1本',
+          getPointsAfterContexts(
+            reconstructedPoints,
+            reconstructedPoints.filter(
+              (context) =>
+                context.isGamePointOpportunity[team] &&
+                context.point.winner_team === opponent,
+            ),
+          ),
+          'ゲームポイントを落とした後のポイントを絞り込めませんでした。',
+        ),
+      ],
       sourceMetrics: [
         buildMetric(
           'keyMoment.gamePointWinRate',
@@ -1158,6 +1479,34 @@ const buildImprovementHints = (
         '相手ゲームポイントを分けて確認',
         '重要局面の見返しに向いている',
       ],
+      reviewGroups: [
+        buildReviewGroup(
+          'opponent-game-point-points',
+          '相手ゲームポイントの入り',
+          reconstructedPoints.filter(
+            (context) => context.isGamePointOpportunity[opponent],
+          ),
+          '相手ゲームポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'opponent-game-point-serve-receive',
+          'レシーブ側かサーブ側か',
+          reconstructedPoints.filter(
+            (context) => context.isGamePointOpportunity[opponent],
+          ),
+          '相手ゲームポイントのサーブ/レシーブ情報を絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'opponent-game-point-lost-endings',
+          '最後の失点の終わり方',
+          reconstructedPoints.filter(
+            (context) =>
+              context.isGamePointOpportunity[opponent] &&
+              context.point.winner_team === opponent,
+          ),
+          '相手ゲームポイントでの失点を絞り込めませんでした。',
+        ),
+      ],
       sourceMetrics: [
         buildMetric(
           'keyMoment.opponentGamePointSaveRate',
@@ -1176,6 +1525,28 @@ const buildImprovementHints = (
       metrics.momentum.maxStreakAgainst,
       ANALYSIS_THRESHOLDS.LARGE_LOSS_STREAK,
       metrics.momentum.maxStreakAgainst >= 7,
+    );
+    const segmentStartPoint = segment
+      ? getPointAt(
+          reconstructedPoints,
+          segment.startGameNumber,
+          segment.startPointNumber,
+        )
+      : null;
+    const segmentPoints = segment
+      ? reconstructedPoints.filter(
+          (context) =>
+            (context.gameNumber > segment.startGameNumber ||
+              (context.gameNumber === segment.startGameNumber &&
+                context.pointNumber >= segment.startPointNumber)) &&
+            (context.gameNumber < segment.endGameNumber ||
+              (context.gameNumber === segment.endGameNumber &&
+                context.pointNumber <= segment.endPointNumber)),
+        )
+      : [];
+    const segmentAfterPoint = getPointAfterSegment(
+      reconstructedPoints,
+      segment,
     );
 
     addHint({
@@ -1207,6 +1578,28 @@ const buildImprovementHints = (
         '該当区間を特定できる',
         '次に確認するポイントを絞りやすい',
       ],
+      reviewGroups: [
+        buildReviewGroup(
+          'before-lost-streak',
+          '連続失点が始まる直前のポイント',
+          segmentStartPoint
+            ? getPointsBeforeContexts(reconstructedPoints, [segmentStartPoint])
+            : [],
+          '連続失点が始まる直前のポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'lost-streak-points',
+          '連続失点中のサーブ/レシーブ',
+          segmentPoints,
+          '連続失点中のポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'after-lost-streak',
+          '連続失点が止まったポイント',
+          segmentAfterPoint ? [segmentAfterPoint] : [],
+          '連続失点が止まったポイントを絞り込めませんでした。',
+        ),
+      ],
       sourceMetrics: [
         {
           key: 'momentum.maxLostStreak',
@@ -1229,6 +1622,21 @@ const buildImprovementHints = (
         (entry.share ?? 0) >= 55,
       );
       const label = RESULT_TYPE_LABELS[entry.resultType] ?? entry.resultType;
+      const errorPoints = lostPoints.filter(
+        (context) => context.point.result_type === entry.resultType,
+      );
+      const lostStreakSegment = metrics.momentum.maxStreakAgainstSegment;
+      const errorPointsInLostStreak = lostStreakSegment
+        ? errorPoints.filter(
+            (context) =>
+              (context.gameNumber > lostStreakSegment.startGameNumber ||
+                (context.gameNumber === lostStreakSegment.startGameNumber &&
+                  context.pointNumber >= lostStreakSegment.startPointNumber)) &&
+              (context.gameNumber < lostStreakSegment.endGameNumber ||
+                (context.gameNumber === lostStreakSegment.endGameNumber &&
+                  context.pointNumber <= lostStreakSegment.endPointNumber)),
+          )
+        : [];
 
       addHint({
         ruleId: `error.resultTypeShare.${entry.resultType}`,
@@ -1245,8 +1653,9 @@ const buildImprovementHints = (
           '同じミスが出た場面で、直前のボールや立ち位置を確認しましょう。',
         nextCheckItems: [
           `${label}が出た直前の1本`,
-          'サーブ側/レシーブ側のどちらで出たか',
-          '連続失点中に重なっていないか',
+          'サーブ側で出たミス',
+          'レシーブ側で出たミス',
+          '連続失点の中で出たミス',
         ],
         confidence,
         confidenceReason: getConfidenceReason(
@@ -1258,6 +1667,34 @@ const buildImprovementHints = (
         priorityReasons: [
           '失点の終わり方に偏りがある',
           '次の試合で記録確認しやすい',
+        ],
+        reviewGroups: [
+          buildReviewGroup(
+            `${entry.resultType}-actual-points`,
+            `${label}が出た直前の1本`,
+            getPointsBeforeContexts(reconstructedPoints, errorPoints),
+            `${label}が出たポイントを絞り込めませんでした。`,
+          ),
+          buildReviewGroup(
+            `${entry.resultType}-serving-side`,
+            'サーブ側で出たミス',
+            errorPoints.filter((context) => context.point.serving_team === team),
+            `${label}がサーブ側で出たポイントを絞り込めませんでした。`,
+          ),
+          buildReviewGroup(
+            `${entry.resultType}-receiving-side`,
+            'レシーブ側で出たミス',
+            errorPoints.filter(
+              (context) => context.point.serving_team === opponent,
+            ),
+            `${label}がレシーブ側で出たポイントを絞り込めませんでした。`,
+          ),
+        buildReviewGroup(
+          `${entry.resultType}-lost-streak`,
+          '連続失点の中で出たミス',
+          errorPointsInLostStreak,
+          `${label}が最大連続失点の区間で出たポイントを絞り込めませんでした。`,
+        ),
         ],
         sourceMetrics: [
           {
@@ -1283,6 +1720,12 @@ const buildImprovementHints = (
       dominantLoser.count,
       ANALYSIS_THRESHOLDS.INDIVIDUAL_ERROR_SHARE_COUNT,
       dominantLoser.share >= 70,
+    );
+    const dominantLoserPoints = lostPoints.filter(
+      (context) =>
+        ERROR_RESULT_TYPES.has(context.point.result_type || '') &&
+        normalizeRecordedPlayerName(context.point.loser_player) ===
+          dominantLoser.playerName,
     );
 
     addHint({
@@ -1314,6 +1757,26 @@ const buildImprovementHints = (
       priorityReasons: [
         'ダブルスでは個人責任ではなく配置確認として扱う',
         '失点終点の偏りがある',
+      ],
+      reviewGroups: [
+        buildReviewGroup(
+          'dominant-loser-touches',
+          '失点直前にどちらが触ったか',
+          getPointsBeforeContexts(reconstructedPoints, dominantLoserPoints),
+          '該当選手が失点終点になったポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'dominant-loser-position',
+          'ペアの立ち位置',
+          dominantLoserPoints,
+          'ペアの立ち位置を確認するポイントを絞り込めませんでした。',
+        ),
+        buildReviewGroup(
+          'dominant-loser-pattern',
+          '同じ形で狙われていないか',
+          dominantLoserPoints,
+          '同じ形を確認するポイントを絞り込めませんでした。',
+        ),
       ],
       sourceMetrics: [
         {
@@ -1434,7 +1897,7 @@ const buildGuideCards = (
         description:
           '1stサーブが入った場面で、どれだけ点につながったかを見る数字です。',
         howToRead:
-          '高いほど、サーブから主導権を取りやすかった可能性があります。低いときは、サーブ後の次の1本も一緒に見返します。',
+          '高いほど、サーブから主導権を取りやすかった可能性があります。低いときは、1stサーブでの失点も一緒に見返します。',
         nextCheck:
           '1stサーブが入った後に、どこで相手に押し返されたかを確認します。',
         whyItMatters:

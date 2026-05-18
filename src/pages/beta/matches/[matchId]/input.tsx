@@ -105,6 +105,12 @@ const MatchInput = () => {
   );
   const [editingPoint, setEditingPoint] = useState<Point | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [metadataSaving, setMetadataSaving] = useState(false);
+  const [matchMetadata, setMatchMetadata] = useState({
+    match_date: '',
+    court_name: '',
+    opponent_level: 'unknown',
+  });
   // 手動サーブ選手選択
   const [manualServingPlayer, setManualServingPlayer] = useState<{
     team: 'A' | 'B';
@@ -192,6 +198,11 @@ const MatchInput = () => {
 
       if (response.ok) {
         setMatch(data.match);
+        setMatchMetadata({
+          match_date: data.match.match_date ?? '',
+          court_name: data.match.court_name ?? '',
+          opponent_level: data.match.opponent_level ?? 'unknown',
+        });
         const games = data.match.games ?? [];
         const { gamesWonA, gamesWonB } = getGamesWon(data.match);
         const matchFinished = isMatchFinishedByGames(
@@ -518,6 +529,9 @@ const MatchInput = () => {
                 console.error('Failed to auto start next game');
               }
             }
+            if (finished) {
+              await markMatchCompleted(updatedMatch);
+            }
           }
         }
 
@@ -548,6 +562,60 @@ const MatchInput = () => {
       await fetchMatch();
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const updateMatchMetadata = async () => {
+    if (!match) return;
+
+    setMetadataSaving(true);
+    try {
+      const response = await fetch(`/api/matches/${match.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          match_date: matchMetadata.match_date || null,
+          court_name: matchMetadata.court_name || null,
+          opponent_level: matchMetadata.opponent_level || 'unknown',
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setMatch({ ...match, ...data.match });
+      } else {
+        const errorData = await response.json();
+        alert(
+          `試合情報の保存に失敗しました: ${errorData.error || 'Unknown error'}`,
+        );
+      }
+    } catch (error) {
+      console.error('Failed to update match metadata:', error);
+      alert('試合情報の保存中にエラーが発生しました。');
+    } finally {
+      setMetadataSaving(false);
+    }
+  };
+
+  const markMatchCompleted = async (completedMatch: Match) => {
+    if (completedMatch.status === 'completed') return;
+
+    try {
+      const response = await fetch(`/api/matches/${completedMatch.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          status: 'completed',
+          completed_at: new Date().toISOString(),
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setMatch({ ...completedMatch, ...data.match });
+      }
+    } catch (error) {
+      console.error('Failed to mark match completed:', error);
     }
   };
 
@@ -846,6 +914,68 @@ const MatchInput = () => {
         </h1>
         <p className="text-gray-600 mb-2">大会: {match.tournament_name}</p>
         <p className="text-gray-600">形式: {match.best_of} ゲームマッチ</p>
+
+        <div className="mt-4 grid gap-3 rounded border border-gray-200 bg-gray-50 p-4 md:grid-cols-4">
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">試合日</label>
+            <input
+              type="date"
+              value={matchMetadata.match_date}
+              onChange={(e) =>
+                setMatchMetadata({
+                  ...matchMetadata,
+                  match_date: e.target.value,
+                })
+              }
+              className="w-full rounded border p-2 text-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">コート</label>
+            <input
+              type="text"
+              value={matchMetadata.court_name}
+              onChange={(e) =>
+                setMatchMetadata({
+                  ...matchMetadata,
+                  court_name: e.target.value,
+                })
+              }
+              className="w-full rounded border p-2 text-sm"
+              placeholder="例: 第1コート"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">
+              相手レベル
+            </label>
+            <select
+              value={matchMetadata.opponent_level}
+              onChange={(e) =>
+                setMatchMetadata({
+                  ...matchMetadata,
+                  opponent_level: e.target.value,
+                })
+              }
+              className="w-full rounded border p-2 text-sm"
+            >
+              <option value="unknown">不明</option>
+              <option value="stronger">格上</option>
+              <option value="same">同格</option>
+              <option value="weaker">格下</option>
+            </select>
+          </div>
+          <div className="flex items-end">
+            <button
+              type="button"
+              onClick={updateMatchMetadata}
+              disabled={metadataSaving}
+              className="w-full rounded bg-gray-800 px-3 py-2 text-sm text-white hover:bg-gray-700 disabled:bg-gray-300"
+            >
+              {metadataSaving ? '保存中...' : '試合情報を保存'}
+            </button>
+          </div>
+        </div>
 
         {/* チーム詳細情報 */}
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">

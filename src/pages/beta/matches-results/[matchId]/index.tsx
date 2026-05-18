@@ -17,6 +17,7 @@ import {
   getBetaTeamDisplayName,
   getLatestBetaMatchIds,
 } from '@/lib/betaMatchesStatic';
+import { getGrowthTargetForSide } from '@/lib/growthAnalysis';
 import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
 import {
   getTournamentInfoSSR,
@@ -29,6 +30,23 @@ interface PublicMatchDetailProps {
   match: Match;
   tournamentInfo: TournamentInfo | null;
 }
+
+type ReviewGroup = NonNullable<ImprovementHint['reviewGroups']>[number];
+type ReviewPoint = ReviewGroup['points'][number];
+type SelectedReviewGroup = {
+  hintTitle: string;
+  group: ReviewGroup;
+};
+
+const POINT_ERROR_TYPES = [
+  'net',
+  'out',
+  'smash_error',
+  'volley_error',
+  'double_fault',
+  'receive_error',
+  'follow_error',
+] as const;
 
 const PublicMatchDetail = ({
   match,
@@ -74,6 +92,11 @@ const PublicMatchDetail = ({
     ),
   );
   const [focusTeam, setFocusTeam] = useState<TeamKey>('A');
+  const [selectedReviewGroup, setSelectedReviewGroup] =
+    useState<SelectedReviewGroup | null>(null);
+  const [highlightedPointId, setHighlightedPointId] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -114,6 +137,66 @@ const PublicMatchDetail = ({
   // データベースのプレイヤー情報から苗字のみのチーム名を生成する関数
   const getShortTeamName = (team: 'A' | 'B') =>
     getBetaTeamDisplayName(match, team);
+
+  const getPointAnchorId = (pointId: string) => `point-${pointId}`;
+
+  const formatTeamName = (team: string | null) => {
+    if (team === 'A' || team === 'B') return getShortTeamName(team);
+    return '不明';
+  };
+
+  const formatScoreTransition = (point: ReviewPoint) =>
+    `${point.scoreBefore.A}-${point.scoreBefore.B} → ${point.scoreAfter.A}-${point.scoreAfter.B}`;
+
+  const getPointPlayerName = (point: Point) => {
+    const isErrorPoint = point.result_type
+      ? POINT_ERROR_TYPES.includes(
+          point.result_type as (typeof POINT_ERROR_TYPES)[number],
+        )
+      : false;
+
+    return isErrorPoint ? point.loser_player : point.winner_player;
+  };
+
+  const getPointPlayerLabel = (point: Point) => {
+    const isErrorPoint = point.result_type
+      ? POINT_ERROR_TYPES.includes(
+          point.result_type as (typeof POINT_ERROR_TYPES)[number],
+        )
+      : false;
+
+    return isErrorPoint ? 'ミス' : '得点者';
+  };
+
+  const formatServerLabel = (point: Point) => {
+    if (point.serving_player) {
+      return point.serving_player;
+    }
+
+    return formatTeamName(point.serving_team);
+  };
+
+  const scrollToReviewPoint = (point: ReviewPoint) => {
+    setExpandedGames((previous) => {
+      const next = new Set(previous);
+      next.add(point.gameNumber);
+      return next;
+    });
+    setHighlightedPointId(point.pointId);
+
+    window.setTimeout(() => {
+      document.getElementById(getPointAnchorId(point.pointId))?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }, 0);
+
+    window.setTimeout(() => {
+      setHighlightedPointId((current) =>
+        current === point.pointId ? null : current,
+      );
+    }, 2600);
+  };
 
   const teamAPlayers = useMemo(
     () =>
@@ -676,6 +759,7 @@ const PublicMatchDetail = ({
     timeZone: 'Asia/Tokyo',
   });
   const focusedImprovementHints = analysisSummary.improvementHints[focusTeam];
+  const focusedGrowthTarget = getGrowthTargetForSide(match, focusTeam);
   const comparisonRows = [
     {
       label: '1stサーブ成功率',
@@ -915,6 +999,127 @@ const PublicMatchDetail = ({
         </Link>
       </div>
 
+      {selectedReviewGroup && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="review-points-title"
+          onClick={() => setSelectedReviewGroup(null)}
+        >
+          <div
+            className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-5 shadow-xl dark:bg-gray-900"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  {selectedReviewGroup.hintTitle}
+                </p>
+                <h2
+                  id="review-points-title"
+                  className="mt-1 text-lg font-semibold text-gray-900 dark:text-gray-100"
+                >
+                  {selectedReviewGroup.group.label}
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedReviewGroup(null)}
+                className="rounded border border-gray-200 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+              >
+                閉じる
+              </button>
+            </div>
+
+            {selectedReviewGroup.group.points.length === 0 ? (
+              <div className="rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                {selectedReviewGroup.group.emptyMessage}
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {selectedReviewGroup.group.points.map((point) => {
+                  const pointDetails = [
+                    point.point_detail,
+                    point.point_note,
+                    point.shot_type,
+                    point.shot_course,
+                  ].filter(Boolean);
+
+                  return (
+                    <div
+                      key={point.pointId}
+                      className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/80"
+                    >
+                      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <div className="font-semibold text-gray-900 dark:text-gray-100">
+                            第{point.gameNumber}ゲーム #{point.pointNumber}
+                          </div>
+                          <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                            {formatScoreTransition(point)}
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            scrollToReviewPoint(point);
+                            setSelectedReviewGroup(null);
+                          }}
+                          className="self-start rounded border border-blue-200 bg-white px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-gray-900 dark:text-blue-300 dark:hover:bg-blue-950/40"
+                        >
+                          ゲーム詳細で見る
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+                        <div>
+                          結果:{' '}
+                          <span className="font-medium text-gray-900 dark:text-gray-100">
+                            {getResultTypeLabel(point.resultType || '') ||
+                              '不明'}
+                          </span>
+                        </div>
+                        <div>
+                          得点:{' '}
+                          <span className="font-medium text-gray-900 dark:text-gray-100">
+                            {formatTeamName(point.winnerTeam)}
+                          </span>
+                        </div>
+                        <div>
+                          選手:{' '}
+                          <span className="font-medium text-gray-900 dark:text-gray-100">
+                            {point.playerName || '未記録'}
+                          </span>
+                        </div>
+                        <div>
+                          サーブ:{' '}
+                          <span className="font-medium text-gray-900 dark:text-gray-100">
+                            {point.servingPlayer || '未記録'}
+                          </span>
+                        </div>
+                        <div>
+                          ラリー:{' '}
+                          <span className="font-medium text-gray-900 dark:text-gray-100">
+                            {point.rallyCount ?? '未記録'}
+                          </span>
+                        </div>
+                      </div>
+
+                      {pointDetails.length > 0 && (
+                        <div className="mt-3 rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/60 dark:text-gray-300">
+                          {pointDetails.join(' / ')}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* 試合サマリー */}
       <div className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -1047,6 +1252,12 @@ const PublicMatchDetail = ({
                     {getShortTeamName(team)}
                   </button>
                 ))}
+                <Link
+                  href={`/beta/matches-results/growth?targetKey=${encodeURIComponent(focusedGrowthTarget.key)}`}
+                  className="rounded border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                >
+                  この対象の成長分析
+                </Link>
               </div>
 
               {focusedImprovementHints.length > 0 && (
@@ -1064,6 +1275,12 @@ const PublicMatchDetail = ({
                     {focusedImprovementHints.map((hint) => {
                       const confidenceBadge = getHintConfidenceBadge(
                         hint.confidence,
+                      );
+                      const reviewGroupsByLabel = new Map(
+                        (hint.reviewGroups ?? []).map((group) => [
+                          group.label,
+                          group,
+                        ]),
                       );
 
                       return (
@@ -1112,10 +1329,37 @@ const PublicMatchDetail = ({
                               <p>{hint.nextCheck}</p>
                               {hint.nextCheckItems &&
                                 hint.nextCheckItems.length > 0 && (
-                                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                                    {hint.nextCheckItems.map((item) => (
-                                      <li key={`${hint.id}-${item}`}>{item}</li>
-                                    ))}
+                                  <ul className="mt-2 space-y-1">
+                                    {hint.nextCheckItems.map((item) => {
+                                      const reviewGroup =
+                                        reviewGroupsByLabel.get(item);
+
+                                      return (
+                                        <li key={`${hint.id}-${item}`}>
+                                          {reviewGroup ? (
+                                            <button
+                                              type="button"
+                                              onClick={() =>
+                                                setSelectedReviewGroup({
+                                                  hintTitle: hint.title,
+                                                  group: reviewGroup,
+                                                })
+                                              }
+                                              className="flex w-full items-center justify-between gap-2 rounded border border-blue-100 bg-white/75 px-3 py-2 text-left text-sm text-blue-800 hover:border-blue-300 hover:bg-white dark:border-blue-900/60 dark:bg-gray-900/40 dark:text-blue-300 dark:hover:border-blue-700"
+                                            >
+                                              <span>{item}</span>
+                                              <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/50 dark:text-blue-200">
+                                                {reviewGroup.points.length}件
+                                              </span>
+                                            </button>
+                                          ) : (
+                                            <span className="block rounded bg-white/50 px-3 py-2 dark:bg-gray-900/30">
+                                              {item}
+                                            </span>
+                                          )}
+                                        </li>
+                                      );
+                                    })}
                                   </ul>
                                 )}
                             </div>
@@ -1520,7 +1764,15 @@ const PublicMatchDetail = ({
                         teamBPoints + (point.winner_team === 'B' ? 1 : 0);
 
                       return (
-                        <div key={point.id} className="text-sm">
+                        <div
+                          key={point.id}
+                          id={getPointAnchorId(point.id)}
+                          className={`rounded px-2 py-1 text-sm transition-colors ${
+                            highlightedPointId === point.id
+                              ? 'bg-blue-100 ring-2 ring-blue-300 dark:bg-blue-900/40 dark:ring-blue-700'
+                              : ''
+                          }`}
+                        >
                           {/* ポイント情報（1行目） */}
                           <div className="mb-1 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
                             <span className="font-medium">
@@ -1540,39 +1792,23 @@ const PublicMatchDetail = ({
                                 {finalTeamBPoints}
                               </span>
                             </span>
-                            <span>{point.rally_count}ラリー</span>
+                            <span>
+                              {point.rally_count !== null
+                                ? `${point.rally_count}ラリー`
+                                : 'ラリー数未記録'}
+                            </span>
+                            <span>サーブ:{formatServerLabel(point)}</span>
                           </div>
 
                           {/* ポイント内容（2行目） */}
-                          <div className="flex items-center gap-3 pl-4">
+                          <div className="flex flex-wrap items-center gap-2 pl-4">
                             <span className="font-medium text-blue-600 dark:text-blue-400">
                               {getResultTypeLabel(point.result_type || '')}
                             </span>
-                            {/* 選手情報：ウィナー系はwinner_player、ミス系はloser_playerを表示 */}
-                            {(() => {
-                              const errorTypes = [
-                                'net',
-                                'out',
-                                'smash_error',
-                                'volley_error',
-                                'double_fault',
-                                'receive_error',
-                                'follow_error',
-                              ];
-
-                              const isError =
-                                point.result_type &&
-                                errorTypes.includes(point.result_type);
-                              const playerName = isError
-                                ? point.loser_player
-                                : point.winner_player;
-
-                              return playerName ? (
-                                <span className="text-gray-700 dark:text-gray-200">
-                                  {playerName}
-                                </span>
-                              ) : null;
-                            })()}
+                            <span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-700/70 dark:text-gray-200">
+                              {getPointPlayerLabel(point)}:{' '}
+                              {getPointPlayerName(point) || '未記録'}
+                            </span>
                             <div className="flex gap-2">
                               {point.first_serve_fault && (
                                 <span className="rounded bg-orange-50 px-1 text-xs text-orange-600 dark:bg-orange-900/30 dark:text-orange-300">

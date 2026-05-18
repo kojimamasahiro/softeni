@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 
 import nextEnv from '@next/env';
@@ -10,8 +11,21 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 const outputRoot = path.join(projectRoot, 'public', 'data', 'beta-matches');
 const matchesOutputRoot = path.join(outputRoot, 'matches');
+const growthOutputRoot = path.join(outputRoot, 'growth');
+const growthReportsOutputRoot = path.join(growthOutputRoot, 'reports');
 const LATEST_BETA_MATCH_LIMIT = 50;
 const { loadEnvConfig } = nextEnv;
+const require = createRequire(import.meta.url);
+
+process.env.TS_NODE_COMPILER_OPTIONS = JSON.stringify({
+  module: 'CommonJS',
+  moduleResolution: 'node',
+});
+require('ts-node/register/transpile-only');
+const {
+  buildGrowthReports,
+  getGrowthReportFileName,
+} = require('../lib/growthAnalysis.ts');
 
 // Align local script env loading with Next.js behavior while still allowing
 // CI/CD providers to inject environment variables directly.
@@ -24,6 +38,23 @@ const hasExistingSnapshot = () => {
     fs.existsSync(path.join(outputRoot, 'index.json')) &&
     fs.existsSync(path.join(outputRoot, 'meta.json'))
   );
+};
+
+const loadExistingSnapshotMatches = () => {
+  const metaPath = path.join(outputRoot, 'meta.json');
+  if (!fs.existsSync(metaPath)) return [];
+
+  const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+  const matchIds = Array.isArray(meta.matchIds) ? meta.matchIds : [];
+
+  return matchIds
+    .map((matchId) => {
+      const detailPath = path.join(matchesOutputRoot, `${matchId}.json`);
+      if (!fs.existsSync(detailPath)) return null;
+      const detail = JSON.parse(fs.readFileSync(detailPath, 'utf8'));
+      return detail.match ?? null;
+    })
+    .filter(Boolean);
 };
 
 const getSupabaseConfig = () => {
@@ -79,6 +110,35 @@ const summarizeMatchForIndex = (match) => ({
     created_at: game.created_at,
   })),
 });
+
+const buildGrowthAnalysisJson = (matches, generatedAt) => {
+  const { targets, reports } = buildGrowthReports(matches, generatedAt);
+
+  fs.mkdirSync(growthReportsOutputRoot, { recursive: true });
+
+  writeJson(path.join(growthOutputRoot, 'targets.json'), {
+    generatedAt,
+    targets,
+  });
+
+  reports.forEach((report) => {
+    writeJson(
+      path.join(
+        growthReportsOutputRoot,
+        getGrowthReportFileName(report.target.key),
+      ),
+      {
+        generatedAt,
+        report,
+      },
+    );
+  });
+
+  return {
+    targetCount: targets.length,
+    reportCount: reports.length,
+  };
+};
 
 const groupPointsByGameId = (points) => {
   const pointsByGameId = new Map();
@@ -157,6 +217,12 @@ const buildBetaMatchesJson = async () => {
       console.warn(
         'Supabase env is missing. Reusing committed beta matches JSON snapshot.',
       );
+      const generatedAt = new Date().toISOString();
+      const snapshotMatches = loadExistingSnapshotMatches();
+      const growthStats = buildGrowthAnalysisJson(snapshotMatches, generatedAt);
+      console.log(
+        `✓ Generated growth JSON from snapshot (${growthStats.reportCount}/${growthStats.targetCount} reports)`,
+      );
       return;
     }
 
@@ -189,6 +255,7 @@ const buildBetaMatchesJson = async () => {
 
   ensureCleanDir(outputRoot);
   fs.mkdirSync(matchesOutputRoot, { recursive: true });
+  fs.mkdirSync(growthOutputRoot, { recursive: true });
 
   writeJson(path.join(outputRoot, 'meta.json'), {
     generatedAt,
@@ -207,8 +274,11 @@ const buildBetaMatchesJson = async () => {
       match,
     });
   });
+  const growthStats = buildGrowthAnalysisJson(safeMatches, generatedAt);
 
-  console.log(`✓ Generated beta matches JSON (${safeMatches.length} matches)`);
+  console.log(
+    `✓ Generated beta matches JSON (${safeMatches.length} matches, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,
+  );
 };
 
 buildBetaMatchesJson().catch((error) => {

@@ -22,6 +22,13 @@ export interface Match {
   best_of: number;
   game_type?: string | null;
   created_at: string;
+  match_date?: string | null;
+  court_name?: string | null;
+  status?: 'draft' | 'in_progress' | 'completed' | 'archived' | null;
+  completed_at?: string | null;
+  opponent_level?: 'stronger' | 'same' | 'weaker' | 'unknown' | null;
+  source_site_match_id?: string | null;
+  source_site_tournament_id?: string | null;
 
   // 個別フィールド（新形式）
   team_a_entry_number?: string | null;
@@ -84,6 +91,12 @@ export interface Point {
   winner_player: string | null;
   loser_player: string | null;
   created_at: string;
+  point_note?: string | null;
+  shot_type?: string | null;
+  shot_course?: string | null;
+  recording_level?: string | null;
+  edited_at?: string | null;
+  point_detail?: string | null;
 }
 
 export interface Database {

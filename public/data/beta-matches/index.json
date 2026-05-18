@@ -1,6 +1,248 @@
 {
-  "generatedAt": "2026-05-17T15:19:09.980Z",
+  "generatedAt": "2026-05-18T14:57:19.448Z",
   "matches": [
+    {
+      "id": "37f9acb5-29c1-4259-b2e1-d443fbcad6ee",
+      "tournament_name": "zennihon-singles-2025",
+      "team_a": "1 上松 俊貴 (NTT西日本) [広島]",
+      "team_b": "36 黒坂 卓矢 (日本体育大学) [日本学連]",
+      "best_of": 7,
+      "created_at": "2026-05-18T14:44:40.092808",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "singles",
+      "round_name": "6回戦",
+      "tournament_year": 2025,
+      "game_type": "singles",
+      "team_a_entry_number": "1",
+      "team_a_player1_last_name": "上松",
+      "team_a_player1_first_name": "俊貴",
+      "team_a_player1_team_name": "NTT西日本",
+      "team_a_player1_region": "広島",
+      "team_a_player2_last_name": null,
+      "team_a_player2_first_name": null,
+      "team_a_player2_team_name": null,
+      "team_a_player2_region": null,
+      "team_b_entry_number": "36",
+      "team_b_player1_last_name": "黒坂",
+      "team_b_player1_first_name": "卓矢",
+      "team_b_player1_team_name": "日本体育大学",
+      "team_b_player1_region": "日本学連",
+      "team_b_player2_last_name": null,
+      "team_b_player2_first_name": null,
+      "team_b_player2_team_name": null,
+      "team_b_player2_region": null,
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "広島",
+              "last_name": "上松",
+              "team_name": "NTT西日本",
+              "first_name": "俊貴"
+            }
+          ],
+          "entry_number": "1"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "黒坂",
+              "team_name": "日本体育大学",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": "36"
+        }
+      },
+      "tournament_id": "zennihon-singles",
+      "match_date": "2025-05-18",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-05-18T14:56:33.848+00:00",
+      "opponent_level": "weaker",
+      "source_site_match_id": null,
+      "source_site_tournament_id": "zennihon-singles",
+      "games": [
+        {
+          "id": "2724590e-edb7-4691-ac75-c1d9c49ba2b5",
+          "match_id": "37f9acb5-29c1-4259-b2e1-d443fbcad6ee",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 6,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:44:40.706949"
+        },
+        {
+          "id": "016948dc-dd07-4513-9071-206ae7fb5553",
+          "match_id": "37f9acb5-29c1-4259-b2e1-d443fbcad6ee",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:49:57.596212"
+        },
+        {
+          "id": "d41b2726-ad26-4e84-ac4e-6430d799b9fa",
+          "match_id": "37f9acb5-29c1-4259-b2e1-d443fbcad6ee",
+          "game_number": 3,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:52:47.348563"
+        },
+        {
+          "id": "99793457-17f2-485f-8d0d-23c10ab484fb",
+          "match_id": "37f9acb5-29c1-4259-b2e1-d443fbcad6ee",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:54:44.318283"
+        }
+      ]
+    },
+    {
+      "id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+      "tournament_name": "zennihon-singles-2025",
+      "team_a": "1 上松 俊貴 (NTT西日本) [広島]",
+      "team_b": "127 植田 璃音 (奈良) [高田商業高校]",
+      "best_of": 7,
+      "created_at": "2026-05-18T14:23:20.327413",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "singles",
+      "round_name": "準決勝",
+      "tournament_year": 2025,
+      "game_type": "singles",
+      "team_a_entry_number": "1",
+      "team_a_player1_last_name": "上松",
+      "team_a_player1_first_name": "俊貴",
+      "team_a_player1_team_name": "NTT西日本",
+      "team_a_player1_region": "広島",
+      "team_a_player2_last_name": null,
+      "team_a_player2_first_name": null,
+      "team_a_player2_team_name": null,
+      "team_a_player2_region": null,
+      "team_b_entry_number": "127",
+      "team_b_player1_last_name": "植田",
+      "team_b_player1_first_name": "璃音",
+      "team_b_player1_team_name": "奈良",
+      "team_b_player1_region": "高田商業高校",
+      "team_b_player2_last_name": null,
+      "team_b_player2_first_name": null,
+      "team_b_player2_team_name": null,
+      "team_b_player2_region": null,
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "広島",
+              "last_name": "上松",
+              "team_name": "NTT西日本",
+              "first_name": "俊貴"
+            }
+          ],
+          "entry_number": "1"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "高田商業高校",
+              "last_name": "植田",
+              "team_name": "奈良",
+              "first_name": "璃音"
+            }
+          ],
+          "entry_number": "127"
+        }
+      },
+      "tournament_id": "zennihon-singles",
+      "match_date": "2025-05-18",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-05-18T14:33:49.805+00:00",
+      "opponent_level": "weaker",
+      "source_site_match_id": null,
+      "source_site_tournament_id": "zennihon-singles",
+      "games": [
+        {
+          "id": "aae8da28-d5d7-4f84-a5c4-276dde88e983",
+          "match_id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:23:20.690798"
+        },
+        {
+          "id": "772c9ac5-71a0-4b93-a00e-2cb6327e7989",
+          "match_id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:25:23.541031"
+        },
+        {
+          "id": "449ae0f3-c8b1-40cd-87c6-b97402ba4d95",
+          "match_id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:27:38.319834"
+        },
+        {
+          "id": "6a374dd6-d79b-437e-863e-203f8038226e",
+          "match_id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:29:07.078971"
+        },
+        {
+          "id": "27a83dce-4d95-4f5f-a6c2-7b88cbe2e30a",
+          "match_id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:30:56.695725"
+        },
+        {
+          "id": "72488d57-05ec-4328-8243-12c5981ebff3",
+          "match_id": "3e2fbc9c-cb76-4e7a-be95-8961103437ae",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-05-18T14:32:16.90816"
+        }
+      ]
+    },
     {
       "id": "4920c088-0a42-4d49-a224-3c0bf6c28a96",
       "tournament_name": "zennihon-singles-2026",
@@ -57,6 +299,13 @@
         }
       },
       "tournament_id": "zennihon-singles",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "c85fb61d-e290-4cd1-ae88-d022136cbdb7",
@@ -182,6 +431,13 @@
         }
       },
       "tournament_id": "zennihon-singles",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "679e44bb-fd9d-4f22-a308-a23c67a3a196",
@@ -318,6 +574,13 @@
         }
       },
       "tournament_id": "zennihon-singles",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "fbead610-764a-4b9d-b454-ece43091531b",
@@ -454,6 +717,13 @@
         }
       },
       "tournament_id": "zennihon-singles",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "b3d31448-980d-4bc9-b7e6-0d8944e7240a",
@@ -591,6 +861,13 @@
         }
       },
       "tournament_id": "zennihon-championship",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "cb9a7427-6f34-44c1-b662-4557f781ba5e",
@@ -761,6 +1038,13 @@
         }
       },
       "tournament_id": "zennihon-championship",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "31520afd-10b6-41f3-bb3b-b3ac412dab6f",
@@ -931,6 +1215,13 @@
         }
       },
       "tournament_id": "zennihon-championship",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "1b1d317f-7a29-430a-8a75-db9b630c56d1",
@@ -1079,6 +1370,13 @@
         }
       },
       "tournament_id": "zennihon-championship",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "6c20cefa-9fab-4683-b168-c9ea268649e7",
@@ -1238,6 +1536,13 @@
         }
       },
       "tournament_id": "zennihon-championship",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "c6d970c3-e632-43cb-b9c3-b06575da1e84",
@@ -1364,6 +1669,13 @@
         }
       },
       "tournament_id": "zennihon-university",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "dacc7cd3-aa45-46d5-abcd-596594be7912",
@@ -1534,6 +1846,13 @@
         }
       },
       "tournament_id": "zennihon-championship",
+      "match_date": null,
+      "court_name": null,
+      "status": "draft",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "source_site_match_id": null,
+      "source_site_tournament_id": null,
       "games": [
         {
           "id": "0835b111-8089-4836-aaaf-d106ccd1a169",

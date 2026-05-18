@@ -40,6 +40,9 @@ const CreateMatch = ({
     year: new Date().getFullYear(),
     round_name: '',
     best_of: 7,
+    match_date: new Date().toISOString().slice(0, 10),
+    court_name: '',
+    opponent_level: 'unknown',
   });
 
   // カテゴリからゲーム形式を判定する関数
@@ -177,6 +180,12 @@ const CreateMatch = ({
         round_name: formData.round_name,
         best_of: formData.best_of,
         game_type: gameType,
+        match_date: formData.match_date || null,
+        court_name: formData.court_name || null,
+        status: 'in_progress',
+        opponent_level: formData.opponent_level,
+        source_site_match_id: null,
+        source_site_tournament_id: tournamentId,
 
         // チームA詳細情報
         team_a_entry_number: teamA.entry_number,
@@ -525,6 +534,47 @@ const CreateMatch = ({
             <option value="決勝">決勝</option>
             <option value="3位決定戦">3位決定戦</option>
           </select>
+        </div>
+
+        <div className="grid gap-4 rounded border border-gray-200 bg-gray-50 p-4 md:grid-cols-3">
+          <div>
+            <label className="block text-sm font-medium mb-2">試合日</label>
+            <input
+              type="date"
+              value={formData.match_date}
+              onChange={(e) =>
+                setFormData({ ...formData, match_date: e.target.value })
+              }
+              className="w-full border rounded p-2"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">コート</label>
+            <input
+              type="text"
+              value={formData.court_name}
+              onChange={(e) =>
+                setFormData({ ...formData, court_name: e.target.value })
+              }
+              className="w-full border rounded p-2"
+              placeholder="例: 第1コート"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">相手レベル</label>
+            <select
+              value={formData.opponent_level}
+              onChange={(e) =>
+                setFormData({ ...formData, opponent_level: e.target.value })
+              }
+              className="w-full border rounded p-2"
+            >
+              <option value="unknown">不明</option>
+              <option value="stronger">格上</option>
+              <option value="same">同格</option>
+              <option value="weaker">格下</option>
+            </select>
+          </div>
         </div>
 
         <div>

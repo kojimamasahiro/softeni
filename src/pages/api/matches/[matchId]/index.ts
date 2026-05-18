@@ -7,6 +7,20 @@ import {
   sendMethodNotAllowed,
   sendSupabaseError,
 } from '@/lib/matchesApi';
+import type { Match } from '@/types/database';
+
+type UpdateMatchBody = Partial<
+  Pick<
+    Match,
+    | 'match_date'
+    | 'court_name'
+    | 'status'
+    | 'completed_at'
+    | 'opponent_level'
+    | 'source_site_match_id'
+    | 'source_site_tournament_id'
+  >
+>;
 
 export default async function handler(
   req: NextApiRequest,
@@ -29,6 +43,44 @@ export default async function handler(
       return res.status(200).json({ match });
     } catch (error) {
       return sendSupabaseError(res, error as Error, 'Failed to load match.');
+    }
+  }
+
+  if (req.method === 'PATCH') {
+    try {
+      const body = req.body as UpdateMatchBody;
+      const allowedUpdates: Record<string, unknown> = {};
+
+      (
+        [
+          'match_date',
+          'court_name',
+          'status',
+          'completed_at',
+          'opponent_level',
+          'source_site_match_id',
+          'source_site_tournament_id',
+        ] as const
+      ).forEach((key) => {
+        if (key in body) {
+          allowedUpdates[key] = body[key] ?? null;
+        }
+      });
+
+      const { data: match, error } = await (supabase as any)
+        .from('matches')
+        .update(allowedUpdates)
+        .eq('id', matchId)
+        .select('*')
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      return res.status(200).json({ match });
+    } catch (error) {
+      return sendSupabaseError(res, error as Error, 'Failed to update match.');
     }
   }
 
@@ -79,5 +131,5 @@ export default async function handler(
     }
   }
 
-  return sendMethodNotAllowed(res, ['GET', 'DELETE']);
+  return sendMethodNotAllowed(res, ['GET', 'PATCH', 'DELETE']);
 }
