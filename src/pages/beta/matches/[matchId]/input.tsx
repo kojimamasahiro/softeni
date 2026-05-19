@@ -1353,7 +1353,7 @@ const MatchInput = () => {
                 {[
                   { value: 'smash_winner', label: 'スマッシュ' },
                   { value: 'volley_winner', label: 'ボレー' },
-                  { value: 'passing_winner', label: 'パッシング' },
+                  { value: 'passing_winner', label: 'ストローク' },
                   { value: 'drop_winner', label: 'ドロップ' },
                   { value: 'net_in_winner', label: 'ネットイン' },
                 ].map(({ value, label }) => (

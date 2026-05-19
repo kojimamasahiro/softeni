@@ -58,7 +58,7 @@ const MatchDetail = () => {
       // ウィナー系
       smash_winner: 'スマッシュウィナー',
       volley_winner: 'ボレーウィナー',
-      passing_winner: 'パッシングウィナー',
+      passing_winner: 'ストロークウィナー',
       drop_winner: 'ドロップウィナー',
       net_in_winner: 'ネットインウィナー',
       service_ace: 'サービスエース',
