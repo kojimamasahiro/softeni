@@ -930,12 +930,18 @@ const PublicMatchDetail = ({
             : null,
         winnerBreakdown: toSortedEntries(stat.winnerBreakdown),
         errorBreakdown: toSortedEntries(stat.errorBreakdown),
-        gameBreakdown: [...stat.gameBreakdown.entries()]
-          .sort(([left], [right]) => left - right)
-          .map(([gameNumber, gameStat]) => ({
-            gameNumber,
+        gameBreakdown: gamesAsc.map((game) => {
+          const gameStat = stat.gameBreakdown.get(game.game_number) ?? {
+            servePoints: 0,
+            scoringInvolvements: 0,
+            concededInvolvements: 0,
+          };
+
+          return {
+            gameNumber: game.game_number,
             ...gameStat,
-          })),
+          };
+        }),
       }))
       .sort((left, right) => {
         const teamOrder = { A: 0, B: 1, unknown: 2 };
@@ -1920,8 +1926,14 @@ const PublicMatchDetail = ({
                         </p>
 
                         <details className="group mt-4 border-t border-gray-100 pt-3 dark:border-gray-700">
-                          <summary className="cursor-pointer list-none text-sm font-medium text-blue-600 dark:text-blue-400">
-                            この数字の見方
+                          <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-blue-600 dark:text-blue-400">
+                            <span>この数字の見方をみる</span>
+                            <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">
+                              ▼
+                            </span>
+                            <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">
+                              ▲
+                            </span>
                           </summary>
 
                           <div className="mt-3 space-y-3 text-sm text-gray-700 dark:text-gray-300">
@@ -1991,9 +2003,15 @@ const PublicMatchDetail = ({
       </section>
 
       {analysisSummary.scoreIntegrity.ok && (
-        <details className="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <summary className="cursor-pointer list-none text-lg font-semibold text-gray-900 dark:text-gray-100">
-            分析の根拠をみる
+        <details className="group mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <span>分析の根拠をみる</span>
+            <span className="text-sm text-gray-500 group-open:hidden dark:text-gray-400">
+              ▼
+            </span>
+            <span className="hidden text-sm text-gray-500 group-open:inline dark:text-gray-400">
+              ▲
+            </span>
           </summary>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
             振り返りポイントの背景にある比較指標です。必要なときだけ開いて確認できます。
@@ -2116,7 +2134,7 @@ const PublicMatchDetail = ({
           {resultViewModel.playerInvolvement.map((player) => (
             <details
               key={player.name}
-              className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60"
+              className="group rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60"
             >
               <summary className="cursor-pointer list-none">
                 <div className="flex flex-col gap-3">
@@ -2134,17 +2152,27 @@ const PublicMatchDetail = ({
                       </div>
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">
-                      サーブ担当 {player.servePoints}本 / サーブ時得点率{' '}
+                      サーブ {player.servePoints}本 / サーブ時得点率{' '}
                       {player.serveWinRate !== null
                         ? `${player.serveWinRate.toFixed(1)}%`
                         : '—'}
                     </div>
                   </div>
 
+                  <div className="flex items-center justify-between rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/40 dark:text-gray-300">
+                    <span>詳細をみる</span>
+                    <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">
+                      ▼
+                    </span>
+                    <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">
+                      ▲
+                    </span>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
                     <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
                       <div className="text-xs text-gray-500 dark:text-gray-400">
-                        サーブ担当
+                        サーブ
                       </div>
                       <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
                         {player.servePoints}本
@@ -2186,7 +2214,7 @@ const PublicMatchDetail = ({
                 </div>
               </summary>
 
-              <div className="mt-4 grid gap-4 lg:grid-cols-3">
+              <div className="mt-4 grid gap-4 lg:grid-cols-2">
                 <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
                   <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     決定打の種類
@@ -2240,34 +2268,74 @@ const PublicMatchDetail = ({
                     )}
                   </div>
                 </div>
+              </div>
 
-                <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                    ゲーム別の関与
-                  </h3>
-                  <div className="mt-3 space-y-2">
-                    {player.gameBreakdown.length > 0 ? (
-                      player.gameBreakdown.map((entry) => (
-                        <div
+              <div className="mt-4 rounded-lg bg-white p-4 dark:bg-gray-900/40">
+                <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  ゲーム別の関与
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="min-w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-200 dark:border-gray-700">
+                        <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                          ゲーム
+                        </th>
+                        <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
+                          サーブ
+                        </th>
+                        <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
+                          得点
+                        </th>
+                        <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
+                          失点
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {player.gameBreakdown.map((entry) => (
+                        <tr
                           key={`${player.name}-game-${entry.gameNumber}`}
-                          className="rounded border border-gray-200 px-3 py-2 text-sm dark:border-gray-700"
+                          className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
                         >
-                          <div className="font-medium text-gray-900 dark:text-gray-100">
-                            第{entry.gameNumber}ゲーム
-                          </div>
-                          <div className="mt-1 text-gray-600 dark:text-gray-300">
-                            サーブ {entry.servePoints}本 / 得点関与{' '}
-                            {entry.scoringInvolvements}件 / 失点記録{' '}
-                            {entry.concededInvolvements}件
-                          </div>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        ゲーム別の個人記録はありません。
-                      </div>
-                    )}
-                  </div>
+                          <td className="px-3 py-2 font-medium text-gray-900 dark:text-gray-100">
+                            {entry.gameNumber}
+                          </td>
+                          <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                            <span
+                              className={
+                                entry.servePoints > 0 ? 'font-semibold' : undefined
+                              }
+                            >
+                              {entry.servePoints}
+                            </span>
+                          </td>
+                          <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                            <span
+                              className={
+                                entry.scoringInvolvements > 0
+                                  ? 'font-semibold'
+                                  : undefined
+                              }
+                            >
+                              {entry.scoringInvolvements}
+                            </span>
+                          </td>
+                          <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                            <span
+                              className={
+                                entry.concededInvolvements > 0
+                                  ? 'font-semibold'
+                                  : undefined
+                              }
+                            >
+                              {entry.concededInvolvements}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </details>
