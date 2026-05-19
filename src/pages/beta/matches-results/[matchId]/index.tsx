@@ -450,15 +450,15 @@ const PublicMatchDetail = ({
 
     // ラリー数分布の計算
     const rallyDistribution: { [range: string]: number } = {
-      '1-3': 0,
-      '4-10': 0,
+      '1-4': 0,
+      '5-10': 0,
       '11-20': 0,
       '21+': 0,
     };
 
     rallyCounts.forEach((count) => {
-      if (count <= 3) rallyDistribution['1-3']++;
-      else if (count <= 10) rallyDistribution['4-10']++;
+      if (count <= 4) rallyDistribution['1-4']++;
+      else if (count <= 10) rallyDistribution['5-10']++;
       else if (count <= 20) rallyDistribution['11-20']++;
       else rallyDistribution['21+']++;
     });
