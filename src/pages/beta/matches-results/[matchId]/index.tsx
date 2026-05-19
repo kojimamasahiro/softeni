@@ -810,7 +810,18 @@ const PublicMatchDetail = ({
       }
 
       const resultLabel = getResultTypeLabel(context.point.result_type || '');
-      const baseDescription = `${context.scoreBefore.A}-${context.scoreBefore.B}から${winnerTeam ? teamNames[winnerTeam] : '得点チーム'}が${resultLabel}でポイント`;
+      const isErrorPoint = context.point.result_type
+        ? EXTENDED_POINT_ERROR_TYPES.includes(
+            context.point
+              .result_type as (typeof EXTENDED_POINT_ERROR_TYPES)[number],
+          )
+        : false;
+      const loserTeam =
+        winnerTeam === 'A' ? 'B' : winnerTeam === 'B' ? 'A' : null;
+      const baseDescription =
+        isErrorPoint && loserTeam
+          ? `${context.scoreBefore.A}-${context.scoreBefore.B}から${teamNames[loserTeam]}が${resultLabel}で失点`
+          : `${context.scoreBefore.A}-${context.scoreBefore.B}から${winnerTeam ? teamNames[winnerTeam] : '得点チーム'}が${resultLabel}でポイント`;
       const addCandidate = (
         category: 'deuce' | 'game_point' | 'two_two' | 'streak_stop',
         weight: number,
@@ -2304,7 +2315,9 @@ const PublicMatchDetail = ({
                           <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
                             <span
                               className={
-                                entry.servePoints > 0 ? 'font-semibold' : undefined
+                                entry.servePoints > 0
+                                  ? 'font-semibold'
+                                  : undefined
                               }
                             >
                               {entry.servePoints}
