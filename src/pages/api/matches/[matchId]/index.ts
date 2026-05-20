@@ -7,6 +7,7 @@ import {
   sendMethodNotAllowed,
   sendSupabaseError,
 } from '@/lib/matchesApi';
+import { isScoreSiteMode } from '@/lib/siteConfig';
 import type { Match } from '@/types/database';
 
 type UpdateMatchBody = Partial<
@@ -47,6 +48,10 @@ export default async function handler(
   }
 
   if (req.method === 'PATCH') {
+    if (isScoreSiteMode()) {
+      return res.status(404).json({ error: 'Not found.' });
+    }
+
     try {
       const body = req.body as UpdateMatchBody;
       const allowedUpdates: Record<string, unknown> = {};
@@ -85,6 +90,10 @@ export default async function handler(
   }
 
   if (req.method === 'DELETE') {
+    if (isScoreSiteMode()) {
+      return res.status(404).json({ error: 'Not found.' });
+    }
+
     try {
       const { data: games, error: gamesError } = await (supabase as any)
         .from('games')

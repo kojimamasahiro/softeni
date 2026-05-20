@@ -1,6 +1,8 @@
 // src/components/MetaHead.tsx
 import Head from 'next/head';
 
+import { siteConfig } from '@/lib/siteConfig';
+
 type MetaHeadProps = {
   title: string;
   description: string;
@@ -16,10 +18,10 @@ export default function MetaHead({
   title,
   description,
   url,
-  image = 'https://softeni-pick.com/og/twitter-card-summary.png',
+  image = siteConfig.ogImage,
   twitterCardType = 'summary',
   type = 'website',
-  siteName = 'Softeni Pick（ソフテニピック）',
+  siteName = siteConfig.siteName,
   locale = 'ja_JP',
 }: MetaHeadProps) {
   return (

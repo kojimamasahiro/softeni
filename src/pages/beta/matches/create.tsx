@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode, isTestMode } from '../../../../lib/env';
+import { isScoreSiteMode } from '../../../../lib/siteConfig';
 import {
   getCategoryOptions,
   TournamentCategory,
@@ -869,6 +870,10 @@ const CreateMatch = ({
 export default CreateMatch;
 
 export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
+  if (isScoreSiteMode()) {
+    return { notFound: true };
+  }
+
   const fs = await import('fs');
   const path = await import('path');
 

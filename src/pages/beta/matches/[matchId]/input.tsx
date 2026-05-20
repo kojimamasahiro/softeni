@@ -1,8 +1,10 @@
+import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { useCallback as reactUseCallback, useEffect, useState } from 'react';
 
 import { hasLiveMatchApi } from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
+import { isScoreSiteMode } from '../../../../../lib/siteConfig';
 import {
   determineInitialServeTeam,
   getCurrentServingPlayerIndex,
@@ -91,6 +93,7 @@ const isMatchFinishedByGames = (
 };
 
 const MatchInput = () => {
+  const scoreSiteMode = isScoreSiteMode();
   const router = useRouter();
   const { matchId } = router.query;
   const canEditMatches = isDebugMode() && hasLiveMatchApi();
@@ -250,6 +253,10 @@ const MatchInput = () => {
       fetchMatch();
     }
   }, [canEditMatches, matchId, fetchMatch]);
+
+  if (scoreSiteMode) {
+    return <Error statusCode={404} />;
+  }
 
   // ポイント編集を開始する関数
   const startEditPoint = (point: Point) => {

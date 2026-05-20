@@ -166,6 +166,23 @@ Cloudflare Pagesのビルド設定:
 
 ## ⚠️ 注意点と制約事項
 
+### score 公開面との関係
+
+現在は `score.softeni-pick.com` 向けの公開面を、別リポジトリではなく同一コードベース内の `siteConfig.mode` で切り替える構成を採っています。
+
+- `softeni-pick` mode
+  本体サイトと記録管理導線を提供
+- `score` mode
+  `/matches*` の閲覧専用公開面を提供
+
+`score` 側は初回リリースでは静的公開 + 閲覧専用です。
+
+- `/matches`
+- `/matches/[matchId]`
+- `/matches/growth`
+
+一方で、記録入力や更新 API は `score` 側では閉じています。Cloudflare Pages 移行時も、この前提は維持する想定です。
+
 ### 1. サーバーサイド機能の制限
 
 現在のプロジェクトは主に静的サイト生成(SSG)を使用していますが、以下の機能は静的エクスポートでは使用できません:

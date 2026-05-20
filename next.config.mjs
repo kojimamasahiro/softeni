@@ -11,6 +11,10 @@ const nextConfig = {
   },
   env: {
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+    NEXT_PUBLIC_SITE_MODE: process.env.NEXT_PUBLIC_SITE_MODE,
+    NEXT_PUBLIC_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL,
+    NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
+    NEXT_PUBLIC_PUBLIC_OG_IMAGE: process.env.NEXT_PUBLIC_PUBLIC_OG_IMAGE,
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false, path: false };

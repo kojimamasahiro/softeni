@@ -8,6 +8,7 @@ import {
   sendMethodNotAllowed,
   sendSupabaseError,
 } from '@/lib/matchesApi';
+import { isScoreSiteMode } from '@/lib/siteConfig';
 import type { Point } from '@/types/database';
 
 type InsertPointBody = Omit<Point, 'id' | 'created_at'> & {
@@ -31,6 +32,10 @@ export default async function handler(
   const supabase = getServerSupabase();
 
   if (req.method === 'POST') {
+    if (isScoreSiteMode()) {
+      return res.status(404).json({ error: 'Not found.' });
+    }
+
     try {
       const body = req.body as InsertPointBody;
       if (!body.game_id || typeof body.point_number !== 'number') {
@@ -61,6 +66,10 @@ export default async function handler(
   }
 
   if (req.method === 'PUT') {
+    if (isScoreSiteMode()) {
+      return res.status(404).json({ error: 'Not found.' });
+    }
+
     try {
       const { point_id, ...updates } = req.body as UpdatePointBody;
       if (!point_id) {
@@ -106,6 +115,10 @@ export default async function handler(
   }
 
   if (req.method === 'DELETE') {
+    if (isScoreSiteMode()) {
+      return res.status(404).json({ error: 'Not found.' });
+    }
+
     try {
       const { point_id } = req.body as { point_id?: string };
       if (!point_id) {
