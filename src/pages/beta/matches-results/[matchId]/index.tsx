@@ -1,8 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import MetaHead from '@/components/MetaHead';
+import YouTubeRangePlayer, {
+  type YouTubeRangePlayerHandle,
+} from '@/components/YouTubeRangePlayer';
 import {
   AnalysisGuideCard,
   AnalysisReliability,
@@ -18,11 +22,23 @@ import {
   getLatestBetaMatchIds,
 } from '@/lib/betaMatchesStatic';
 import { getGrowthTargetForSide } from '@/lib/growthAnalysis';
+import {
+  buildSiteUrl,
+  getPublicMatchDetailPath,
+  getPublicMatchesGrowthPath,
+  getPublicMatchesListPath,
+  isScoreSiteMode,
+} from '@/lib/siteConfig';
 import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
 import {
   getTournamentInfoSSR,
   TournamentInfo,
 } from '@/lib/tournamentHelpers.server';
+import {
+  buildYouTubeWatchUrlFromVideoId,
+  formatVideoTimestamp,
+  getPointVideoEndMs,
+} from '@/lib/youtubePlayback';
 
 import { Game, Match, Point } from '../../../../types/database';
 
@@ -37,6 +53,7 @@ type SelectedReviewGroup = {
   hintTitle: string;
   group: ReviewGroup;
 };
+type FloatingVideoSize = 'sm' | 'md' | 'lg';
 
 const POINT_ERROR_TYPES = [
   'net',
@@ -63,6 +80,34 @@ const EXTENDED_POINT_ERROR_TYPES = [
   'forced_error',
   'unforced_error',
 ] as const;
+
+const FLOATING_VIDEO_SIZE_OPTIONS: {
+  label: string;
+  value: FloatingVideoSize;
+}[] = [
+  { label: '小', value: 'sm' },
+  { label: '中', value: 'md' },
+  { label: '大', value: 'lg' },
+];
+
+const FLOATING_VIDEO_LAYOUT: Record<
+  FloatingVideoSize,
+  { containerWidth: string }
+> = {
+  sm: {
+    containerWidth: 'md:w-[22rem]',
+  },
+  md: {
+    containerWidth: 'md:w-[30rem]',
+  },
+  lg: {
+    containerWidth: 'md:w-[38rem]',
+  },
+};
+
+const FLOATING_VIDEO_SPACER_CLASS = 'mb-[28rem] md:mb-[42rem]';
+const MOBILE_VIDEO_ASPECT_RATIO = 16 / 9;
+const TALL_WIDE_VIDEO_ASPECT_RATIO = 32 / 27;
 
 const normalizePlayerName = (name: string | null | undefined) => {
   if (!name) return null;
@@ -112,11 +157,14 @@ const getTeamPlayerNames = (match: Match, team: TeamKey) => {
     );
 };
 
-const PublicMatchDetail = ({
+export const PublicMatchDetailPage = ({
   match,
   tournamentInfo,
 }: PublicMatchDetailProps) => {
   const router = useRouter();
+  const youtubePlayerRef = useRef<YouTubeRangePlayerHandle | null>(null);
+  const playerSectionRef = useRef<HTMLElement | null>(null);
+  const handledQueryRef = useRef(false);
 
   const getTournamentDisplayName = () => {
     const baseName =
@@ -161,6 +209,13 @@ const PublicMatchDetail = ({
   const [highlightedPointId, setHighlightedPointId] = useState<string | null>(
     null,
   );
+  const [youtubeEmbedBlocked, setYoutubeEmbedBlocked] = useState(
+    match.youtube_embed_allowed === false,
+  );
+  const [isVideoFloating, setIsVideoFloating] = useState(false);
+  const [floatingVideoSize, setFloatingVideoSize] =
+    useState<FloatingVideoSize>('md');
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -170,6 +225,20 @@ const PublicMatchDetail = ({
       setFocusTeam(queryTeam);
     }
   }, [router.isReady, router.query.focusTeam]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const syncViewport = () => setIsDesktopViewport(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncViewport);
+    };
+  }, []);
 
   // エキスパンドのトグル関数
   const toggleGameExpansion = (gameNumber: number) => {
@@ -200,6 +269,8 @@ const PublicMatchDetail = ({
   );
 
   const getPointAnchorId = (pointId: string) => `point-${pointId}`;
+  const youtubeVideoId = match.youtube_video_id ?? null;
+  const youtubeWatchUrl = match.youtube_url ?? null;
 
   const formatTeamName = useCallback(
     (team: string | null) => {
@@ -211,6 +282,11 @@ const PublicMatchDetail = ({
 
   const formatScoreTransition = (point: ReviewPoint) =>
     `${point.scoreBefore.A}-${point.scoreBefore.B} → ${point.scoreAfter.A}-${point.scoreAfter.B}`;
+
+  const floatingVideoLayout = FLOATING_VIDEO_LAYOUT[floatingVideoSize];
+  const activeVideoAspectRatio = isDesktopViewport
+    ? TALL_WIDE_VIDEO_ASPECT_RATIO
+    : MOBILE_VIDEO_ASPECT_RATIO;
 
   const getPointPlayerName = (point: Point) => {
     const isErrorPoint = point.result_type
@@ -247,6 +323,44 @@ const PublicMatchDetail = ({
     [formatTeamName],
   );
 
+  const playPointVideo = useCallback(
+    (point: {
+      id?: string;
+      video_end_ms?: number | null;
+      video_start_ms?: number | null;
+    }) => {
+      if (point.video_start_ms === null || point.video_start_ms === undefined) {
+        return;
+      }
+
+      if (!youtubeVideoId || youtubeEmbedBlocked) {
+        const fallbackUrl =
+          youtubeVideoId !== null
+            ? buildYouTubeWatchUrlFromVideoId(
+                youtubeVideoId,
+                point.video_start_ms,
+              )
+            : youtubeWatchUrl;
+        if (fallbackUrl) {
+          window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+        }
+        return;
+      }
+
+      if (!isVideoFloating) {
+        playerSectionRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+      youtubePlayerRef.current?.playRange(
+        point.video_start_ms,
+        getPointVideoEndMs(point.video_start_ms, point.video_end_ms),
+      );
+    },
+    [isVideoFloating, youtubeEmbedBlocked, youtubeVideoId, youtubeWatchUrl],
+  );
+
   const scrollToReviewPoint = (point: ReviewPoint) => {
     setExpandedGames((previous) => {
       const next = new Set(previous);
@@ -260,6 +374,12 @@ const PublicMatchDetail = ({
         behavior: 'smooth',
         block: 'center',
       });
+      const rawPoint = gamesAsc
+        .flatMap((game) => game.points ?? [])
+        .find((candidate) => candidate.id === point.pointId);
+      if (rawPoint) {
+        playPointVideo(rawPoint);
+      }
     }, 0);
 
     window.setTimeout(() => {
@@ -269,27 +389,113 @@ const PublicMatchDetail = ({
     }, 2600);
   };
 
-  const scrollToPoint = useCallback((gameNumber: number, pointId: string) => {
-    setExpandedGames((previous) => {
-      const next = new Set(previous);
-      next.add(gameNumber);
-      return next;
-    });
-    setHighlightedPointId(pointId);
-
-    window.setTimeout(() => {
-      document.getElementById(getPointAnchorId(pointId))?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+  const scrollToPoint = useCallback(
+    (
+      gameNumber: number,
+      pointId: string,
+      options?: {
+        playVideo?: boolean;
+      },
+    ) => {
+      setExpandedGames((previous) => {
+        const next = new Set(previous);
+        next.add(gameNumber);
+        return next;
       });
-    }, 0);
+      setHighlightedPointId(pointId);
 
-    window.setTimeout(() => {
-      setHighlightedPointId((current) =>
-        current === pointId ? null : current,
-      );
-    }, 2600);
-  }, []);
+      window.setTimeout(() => {
+        document.getElementById(getPointAnchorId(pointId))?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+        if (options?.playVideo) {
+          const rawPoint = gamesAsc
+            .flatMap((game) => game.points ?? [])
+            .find((candidate) => candidate.id === pointId);
+          if (rawPoint) {
+            playPointVideo(rawPoint);
+          }
+        }
+      }, 0);
+
+      window.setTimeout(() => {
+        setHighlightedPointId((current) =>
+          current === pointId ? null : current,
+        );
+      }, 2600);
+    },
+    [gamesAsc, playPointVideo],
+  );
+
+  useEffect(() => {
+    if (!router.isReady || handledQueryRef.current) return;
+
+    const pointIdQuery = router.query.pointId;
+    const pointNumberQuery = router.query.point;
+    const timeQuery = router.query.t;
+
+    if (typeof pointIdQuery === 'string') {
+      const locatedPoint = gamesAsc
+        .flatMap((game) =>
+          (game.points ?? []).map((point) => ({
+            gameNumber: game.game_number,
+            point,
+          })),
+        )
+        .find(({ point }) => point.id === pointIdQuery);
+
+      if (locatedPoint) {
+        handledQueryRef.current = true;
+        scrollToPoint(locatedPoint.gameNumber, locatedPoint.point.id, {
+          playVideo: true,
+        });
+      }
+      return;
+    }
+
+    if (typeof pointNumberQuery === 'string') {
+      const pointNumber = Number(pointNumberQuery);
+      if (!Number.isNaN(pointNumber)) {
+        const locatedPoint = gamesAsc
+          .flatMap((game) =>
+            (game.points ?? []).map((point) => ({
+              gameNumber: game.game_number,
+              point,
+            })),
+          )
+          .find(({ point }) => point.point_number === pointNumber);
+        if (locatedPoint) {
+          handledQueryRef.current = true;
+          scrollToPoint(locatedPoint.gameNumber, locatedPoint.point.id, {
+            playVideo: true,
+          });
+          return;
+        }
+      }
+    }
+
+    if (
+      typeof timeQuery === 'string' &&
+      youtubeVideoId &&
+      !youtubeEmbedBlocked
+    ) {
+      const seconds = Number(timeQuery);
+      if (!Number.isNaN(seconds)) {
+        handledQueryRef.current = true;
+        youtubePlayerRef.current?.playRange(seconds * 1000);
+      }
+    }
+  }, [
+    gamesAsc,
+    router.isReady,
+    router.query.point,
+    router.query.pointId,
+    router.query.t,
+    scrollToPoint,
+    youtubeEmbedBlocked,
+    youtubeVideoId,
+  ]);
 
   const teamAPlayers = useMemo(() => getTeamPlayerNames(match, 'A'), [match]);
   const teamBPlayers = useMemo(() => getTeamPlayerNames(match, 'B'), [match]);
@@ -1264,1103 +1470,1211 @@ const PublicMatchDetail = ({
   );
 
   return (
-    <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-      {/* ヘッダー */}
-      <div className="flex justify-between items-center mb-6">
-        <Link
-          href="/beta/matches-results"
-          className="text-blue-600 hover:underline dark:text-blue-400"
-        >
-          ← 試合一覧に戻る
-        </Link>
-      </div>
-
-      {selectedReviewGroup && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="review-points-title"
-          onClick={() => setSelectedReviewGroup(null)}
-        >
-          <div
-            className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-5 shadow-xl dark:bg-gray-900"
-            onClick={(event) => event.stopPropagation()}
+    <>
+      <MetaHead
+        title={`${getShortTeamName('A')} vs ${getShortTeamName('B')} 試合詳細`}
+        description="ポイント詳細記録から、試合の流れと分析結果を確認できます。"
+        url={buildSiteUrl(getPublicMatchDetailPath(match.id))}
+        type="article"
+      />
+      <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+        {/* ヘッダー */}
+        <div className="flex justify-between items-center mb-6">
+          <Link
+            href={getPublicMatchesListPath()}
+            className="text-blue-600 hover:underline dark:text-blue-400"
           >
-            <div className="mb-4 flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                  {selectedReviewGroup.hintTitle}
-                </p>
-                <h2
-                  id="review-points-title"
-                  className="mt-1 text-lg font-semibold text-gray-900 dark:text-gray-100"
-                >
-                  {selectedReviewGroup.group.label}
-                </h2>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedReviewGroup(null)}
-                className="rounded border border-gray-200 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
-              >
-                閉じる
-              </button>
-            </div>
-
-            {selectedReviewGroup.group.points.length === 0 ? (
-              <div className="rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
-                {selectedReviewGroup.group.emptyMessage}
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {selectedReviewGroup.group.points.map((point) => {
-                  const pointDetails = [
-                    point.point_detail,
-                    point.point_note,
-                    point.shot_type,
-                    point.shot_course,
-                  ].filter(Boolean);
-
-                  return (
-                    <div
-                      key={point.pointId}
-                      className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/80"
-                    >
-                      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                        <div>
-                          <div className="font-semibold text-gray-900 dark:text-gray-100">
-                            第{point.gameNumber}ゲーム #{point.pointNumber}
-                          </div>
-                          <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                            {formatScoreTransition(point)}
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            scrollToReviewPoint(point);
-                            setSelectedReviewGroup(null);
-                          }}
-                          className="self-start rounded border border-blue-200 bg-white px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-gray-900 dark:text-blue-300 dark:hover:bg-blue-950/40"
-                        >
-                          このポイントへ移動
-                        </button>
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
-                        <div>
-                          結果:{' '}
-                          <span className="font-medium text-gray-900 dark:text-gray-100">
-                            {getResultTypeLabel(point.resultType || '') ||
-                              '不明'}
-                          </span>
-                        </div>
-                        <div>
-                          得点:{' '}
-                          <span className="font-medium text-gray-900 dark:text-gray-100">
-                            {formatTeamName(point.winnerTeam)}
-                          </span>
-                        </div>
-                        <div>
-                          選手:{' '}
-                          <span className="font-medium text-gray-900 dark:text-gray-100">
-                            {point.playerName || '未記録'}
-                          </span>
-                        </div>
-                        <div>
-                          サーブ:{' '}
-                          <span className="font-medium text-gray-900 dark:text-gray-100">
-                            {point.servingPlayer || '未記録'}
-                          </span>
-                        </div>
-                        <div>
-                          ラリー本数:{' '}
-                          <span className="font-medium text-gray-900 dark:text-gray-100">
-                            {point.rallyCount ?? '未記録'}
-                          </span>
-                        </div>
-                      </div>
-
-                      {pointDetails.length > 0 && (
-                        <div className="mt-3 rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/60 dark:text-gray-300">
-                          {pointDetails.join(' / ')}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+            ← 試合一覧に戻る
+          </Link>
         </div>
-      )}
 
-      <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div className="flex flex-col gap-5">
-          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-            <div>
-              <p className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-                試合結果
-              </p>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                {getShortTeamName('A')} vs {getShortTeamName('B')}
-              </h1>
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-                {tournamentInfo && fullTournamentUrl ? (
-                  <Link
-                    href={fullTournamentUrl}
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+        {selectedReviewGroup && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="review-points-title"
+            onClick={() => setSelectedReviewGroup(null)}
+          >
+            <div
+              className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-5 shadow-xl dark:bg-gray-900"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="mb-4 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                    {selectedReviewGroup.hintTitle}
+                  </p>
+                  <h2
+                    id="review-points-title"
+                    className="mt-1 text-lg font-semibold text-gray-900 dark:text-gray-100"
                   >
-                    {getTournamentDisplayName()}
-                  </Link>
-                ) : (
-                  <span className="font-medium text-gray-800 dark:text-gray-100">
-                    {getTournamentDisplayName()}
-                  </span>
-                )}
-                {match.round_name && (
-                  <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
-                    {match.round_name}
-                  </span>
-                )}
-                <span className="text-gray-500 dark:text-gray-400">
-                  記録日 {recordedDate}
-                </span>
-              </div>
-            </div>
-
-            <div className="rounded-lg bg-gray-50 px-4 py-3 text-center dark:bg-gray-700/50">
-              <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                最終ゲームカウント
-              </div>
-              <div className="mt-1 font-mono text-3xl font-bold text-gray-900 dark:text-gray-100">
-                {resultViewModel.matchOverview.gamesWon.A} -{' '}
-                {resultViewModel.matchOverview.gamesWon.B}
-              </div>
-            </div>
-          </div>
-
-          {matchWinner && (
-            <div className="rounded border border-green-300 bg-green-100 p-4 dark:border-green-800 dark:bg-green-900/30">
-              <p className="text-lg font-semibold text-green-800 dark:text-green-300">
-                {getShortTeamName(matchWinner)} の勝利
-              </p>
-              <p className="mt-1 text-sm text-green-800/80 dark:text-green-300/80">
-                総ポイント {resultViewModel.matchOverview.totalPoints}
-                本の記録があります。
-              </p>
-            </div>
-          )}
-
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-              <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                総ポイント数
-              </div>
-              <div className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
-                {resultViewModel.matchOverview.totalPoints}
-              </div>
-            </div>
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-              <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                勝敗を分けた局面候補
-              </div>
-              <div className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
-                {resultViewModel.matchOverview.decisiveMoments.length}件
-              </div>
-            </div>
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-              <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                {getShortTeamName('A')}の最大連続得点
-              </div>
-              <div className="mt-2 text-2xl font-bold text-blue-700 dark:text-blue-300">
-                {resultViewModel.matchOverview.streaks.A.for}点
-              </div>
-            </div>
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-              <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                {getShortTeamName('B')}の最大連続得点
-              </div>
-              <div className="mt-2 text-2xl font-bold text-green-700 dark:text-green-300">
-                {resultViewModel.matchOverview.streaks.B.for}点
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-200">
-              ゲームスコア
-            </div>
-            {renderScoreboard()}
-          </div>
-
-          {resultViewModel.matchOverview.decisiveMoments.length > 0 && (
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
-              <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                勝敗を分けた局面候補
-              </h2>
-              <div className="mt-3 grid gap-2">
-                {resultViewModel.matchOverview.decisiveMoments.map((moment) => (
-                  <button
-                    key={moment.id}
-                    type="button"
-                    onClick={() => scrollToPoint(moment.gameNumber, moment.id)}
-                    className="w-full rounded bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                  >
-                    <span className="font-medium text-gray-900 dark:text-gray-100">
-                      {moment.label}
-                    </span>{' '}
-                    {moment.description}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-            試合の流れ
-          </h2>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            各ゲームの途中経過と、連続得点や重要局面をまとめています。
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          {resultViewModel.gameFlow.map((game) => {
-            const isExpanded = expandedGames.has(game.gameNumber);
-            const rawGame = gamesAsc.find(
-              (candidate) => candidate.game_number === game.gameNumber,
-            );
-
-            return (
-              <div
-                key={game.gameNumber}
-                className="rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/60"
-              >
+                    {selectedReviewGroup.group.label}
+                  </h2>
+                </div>
                 <button
                   type="button"
-                  onClick={() => toggleGameExpansion(game.gameNumber)}
-                  className="flex w-full items-start justify-between gap-3 rounded-t-lg p-4 text-left hover:bg-gray-100/70 dark:hover:bg-gray-700/40"
+                  onClick={() => setSelectedReviewGroup(null)}
+                  className="rounded border border-gray-200 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
                 >
-                  <div className="flex-1">
-                    <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                      第{game.gameNumber}ゲーム
-                    </div>
-                    <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                      最終スコア {game.finalScore} / {game.pointCount}ポイント
-                    </div>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {game.winnerTeam && (
-                        <span
-                          className={`rounded-full px-3 py-1 text-xs font-medium ${
-                            game.winnerTeam === 'A'
-                              ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300'
-                              : 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300'
-                          }`}
-                        >
-                          {getShortTeamName(game.winnerTeam)} が取得
-                        </span>
-                      )}
-                      {game.keyMoments.map((label) => (
-                        <span
-                          key={`${game.gameNumber}-${label}`}
-                          className="rounded-full bg-gray-200 px-3 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200"
-                        >
-                          {label}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <span className="pt-1 text-xl text-gray-400 dark:text-gray-500">
-                    {isExpanded ? '−' : '+'}
-                  </span>
+                  閉じる
                 </button>
-
-                {isExpanded && (
-                  <div className="border-t border-gray-200 px-4 pb-4 dark:border-gray-700">
-                    <div className="mt-3 space-y-2">
-                      {(rawGame ? getPointsDesc(rawGame).reverse() : []).map(
-                        (point: Point) => {
-                          const pointsBeforeThis =
-                            rawGame?.points?.filter(
-                              (p) => p.point_number < point.point_number,
-                            ) || [];
-                          const teamAPoints = pointsBeforeThis.filter(
-                            (p) => p.winner_team === 'A',
-                          ).length;
-                          const teamBPoints = pointsBeforeThis.filter(
-                            (p) => p.winner_team === 'B',
-                          ).length;
-                          const finalTeamAPoints =
-                            teamAPoints + (point.winner_team === 'A' ? 1 : 0);
-                          const finalTeamBPoints =
-                            teamBPoints + (point.winner_team === 'B' ? 1 : 0);
-
-                          const pointContext = game.timeline.find(
-                            (candidate) => candidate.pointId === point.id,
-                          );
-
-                          return (
-                            <div
-                              key={point.id}
-                              id={getPointAnchorId(point.id)}
-                              className={`rounded-lg border border-gray-200 px-3 py-3 text-sm transition-colors dark:border-gray-700 ${
-                                highlightedPointId === point.id
-                                  ? 'bg-blue-100 ring-2 ring-blue-300 dark:bg-blue-900/40 dark:ring-blue-700'
-                                  : 'bg-white dark:bg-gray-900/40'
-                              }`}
-                            >
-                              <div className="flex flex-wrap items-center gap-2">
-                                <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
-                                  {finalTeamAPoints} - {finalTeamBPoints}
-                                </span>
-                                <span
-                                  className={`rounded px-2 py-1 text-xs font-medium ${
-                                    point.winner_team === 'A'
-                                      ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
-                                      : point.winner_team === 'B'
-                                        ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                                        : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
-                                  }`}
-                                >
-                                  {formatTeamName(point.winner_team)}のポイント
-                                </span>
-                              </div>
-
-                              <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
-                                サーブ {formatServerLabel(point)} / ラリー本数{' '}
-                                {point.rally_count !== null
-                                  ? `${point.rally_count}本`
-                                  : '未記録'}{' '}
-                                / 終わり方{' '}
-                                {getResultTypeLabel(point.result_type || '')}
-                                {getPointPlayerName(point)
-                                  ? ` / ${getPointPlayerLabel(point)} ${getPointPlayerName(point)}`
-                                  : ''}
-                              </div>
-
-                              <div className="mt-2 flex flex-wrap items-center gap-2">
-                                {point.first_serve_fault && (
-                                  <span className="rounded bg-orange-50 px-2 py-1 text-xs text-orange-600 dark:bg-orange-900/30 dark:text-orange-300">
-                                    1stフォルト
-                                  </span>
-                                )}
-                                {point.double_fault && (
-                                  <span className="rounded bg-red-50 px-2 py-1 text-xs text-red-600 dark:bg-red-900/30 dark:text-red-300">
-                                    ダブルフォルト
-                                  </span>
-                                )}
-                                {pointContext?.tags.map((tag) => (
-                                  <span
-                                    key={`${point.id}-${tag}`}
-                                    className="rounded-full bg-amber-100 px-2.5 py-1 text-xs text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
-                                  >
-                                    {tag}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          );
-                        },
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div className="mb-4">
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                振り返りポイント
-              </h2>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                記録済みポイントから、次に見返す場面を絞るための要点です。
-              </p>
-            </div>
-          </div>
-
-          {!analysisSummary.scoreIntegrity.ok && (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
-              分析用に再構築したゲームスコアが既存スコアと一致しなかったため、分析表示を停止しています。
-              <ul className="mt-2 list-disc list-inside">
-                {analysisSummary.scoreIntegrity.mismatches.map((mismatch) => (
-                  <li key={mismatch.gameNumber}>
-                    第{mismatch.gameNumber}ゲーム: 既存
-                    {` ${mismatch.expected.pointsA}-${mismatch.expected.pointsB} / `}
-                    再構築
-                    {` ${mismatch.actual.pointsA}-${mismatch.actual.pointsB}`}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {analysisSummary.scoreIntegrity.ok && (
-            <>
-              <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
-                <h3 className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
-                  分析の見方
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  この分析は、試合のポイント記録から見返しやすい手がかりをまとめたものです。数字は評価ではなく、次にどの場面を確認するかを考える入口として使います。
-                </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="text-sm text-gray-600 dark:text-gray-300">
-                  注目チーム
-                </span>
-                {(['A', 'B'] as TeamKey[]).map((team) => (
-                  <button
-                    key={team}
-                    onClick={() => {
-                      setFocusTeam(team);
-                      void router.replace(
-                        {
-                          pathname: router.pathname,
-                          query: {
-                            ...router.query,
-                            focusTeam: team,
-                          },
-                        },
-                        undefined,
-                        { shallow: true, scroll: false },
-                      );
-                    }}
-                    className={`px-4 py-2 rounded border text-sm ${
-                      focusTeam === team
-                        ? team === 'A'
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-green-600 text-white border-green-600'
-                        : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
-                    }`}
-                  >
-                    {getShortTeamName(team)}
-                  </button>
-                ))}
-                <Link
-                  href={`/beta/matches-results/growth?targetKey=${encodeURIComponent(focusedGrowthTarget.key)}`}
-                  className="rounded border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-                >
-                  この対象の成長分析
-                </Link>
-              </div>
-
-              {focusedImprovementHints.length > 0 && (
-                <div className="mb-6">
-                  <div className="mb-3">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                      この試合から見る改善ヒント
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      1試合分の記録から、次に確認しやすい候補を最大3件に絞っています。
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-                    {focusedImprovementHints.map((hint) => {
-                      const confidenceBadge = getHintConfidenceBadge(
-                        hint.confidence,
-                      );
-                      const reviewGroupsByLabel = new Map(
-                        (hint.reviewGroups ?? []).map((group) => [
-                          group.label,
-                          group,
-                        ]),
-                      );
-
-                      return (
-                        <div
-                          key={hint.id}
-                          className="rounded-lg border border-blue-100 bg-blue-50/60 p-5 dark:border-blue-900/60 dark:bg-blue-950/20"
-                        >
-                          <div className="mb-3 flex items-start justify-between gap-3">
-                            <h4 className="font-semibold leading-snug text-gray-900 dark:text-gray-100">
-                              {hint.title}
-                            </h4>
-                            <span
-                              className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${confidenceBadge.className}`}
-                            >
-                              {confidenceBadge.label}
-                            </span>
-                          </div>
-
-                          <div className="space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                            <p>{hint.evidence}</p>
-                            {hint.evidenceItems &&
-                              hint.evidenceItems.length > 0 && (
-                                <ul className="space-y-1">
-                                  {hint.evidenceItems.map((item) => (
-                                    <li
-                                      key={`${hint.id}-${item}`}
-                                      className="rounded bg-white/70 px-3 py-2 text-gray-700 dark:bg-gray-800/70 dark:text-gray-300"
-                                    >
-                                      {item}
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-
-                            <div>
-                              <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">
-                                読み取り
-                              </div>
-                              <p>{hint.interpretation}</p>
-                            </div>
-
-                            <div>
-                              <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">
-                                次に見ること
-                              </div>
-                              <p>{hint.nextCheck}</p>
-                              {hint.nextCheckItems &&
-                                hint.nextCheckItems.length > 0 && (
-                                  <ul className="mt-2 space-y-1">
-                                    {hint.nextCheckItems.map((item) => {
-                                      const reviewGroup =
-                                        reviewGroupsByLabel.get(item);
-
-                                      return (
-                                        <li key={`${hint.id}-${item}`}>
-                                          {reviewGroup ? (
-                                            <button
-                                              type="button"
-                                              onClick={() =>
-                                                setSelectedReviewGroup({
-                                                  hintTitle: hint.title,
-                                                  group: reviewGroup,
-                                                })
-                                              }
-                                              className="flex w-full items-center justify-between gap-2 rounded border border-blue-100 bg-white/75 px-3 py-2 text-left text-sm text-blue-800 hover:border-blue-300 hover:bg-white dark:border-blue-900/60 dark:bg-gray-900/40 dark:text-blue-300 dark:hover:border-blue-700"
-                                            >
-                                              <span>{item}</span>
-                                              <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/50 dark:text-blue-200">
-                                                {reviewGroup.points.length}件
-                                              </span>
-                                            </button>
-                                          ) : (
-                                            <span className="block rounded bg-white/50 px-3 py-2 dark:bg-gray-900/30">
-                                              {item}
-                                            </span>
-                                          )}
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                )}
-                            </div>
-
-                            {hint.sourceMetrics.length > 0 && (
-                              <div className="flex flex-wrap gap-2">
-                                {hint.sourceMetrics.map((metric) => (
-                                  <span
-                                    key={`${hint.id}-${metric.key}-${metric.label ?? metric.value}`}
-                                    className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
-                                  >
-                                    {metric.label ?? metric.key}:{' '}
-                                    <span className="font-semibold">
-                                      {formatHintMetricValue(metric)}
-                                    </span>
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-
-                            {hint.confidence === 'low' && (
-                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-                                {hint.confidenceReason}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+              {selectedReviewGroup.group.points.length === 0 ? (
+                <div className="rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                  {selectedReviewGroup.group.emptyMessage}
                 </div>
-              )}
-
-              {focusedImprovementHints.length === 0 &&
-                analysisSummary.reconstructedPoints.length > 0 &&
-                analysisSummary.reconstructedPoints.length < 8 && (
-                  <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-700/40 dark:text-gray-300">
-                    十分な記録から改善ヒントを生成できませんでした。ポイント記録が増えると、確認候補を出しやすくなります。
-                  </div>
-                )}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {analysisSummary.teamGuideCards[focusTeam].cards.map(
-                  (card: AnalysisGuideCard) => {
-                    const badge = getReliabilityBadge(card.reliability);
+              ) : (
+                <div className="space-y-3">
+                  {selectedReviewGroup.group.points.map((point) => {
+                    const pointDetails = [
+                      point.point_detail,
+                      point.point_note,
+                      point.shot_type,
+                      point.shot_course,
+                    ].filter(Boolean);
 
                     return (
                       <div
-                        key={card.id}
-                        className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800/80"
+                        key={point.pointId}
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/80"
                       >
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <h3 className="font-semibold leading-snug text-gray-800 dark:text-gray-100">
-                            {card.title}
-                          </h3>
-                          {badge && (
-                            <span
-                              className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${badge.className}`}
-                            >
-                              {badge.label}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="mb-2">
-                          <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                            {card.primaryValue}
-                          </div>
-                          {card.secondaryValue && (
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                              {card.secondaryValue}
-                            </p>
-                          )}
-                        </div>
-
-                        <p className="text-sm leading-6 text-gray-700 dark:text-gray-300">
-                          {card.summary}
-                        </p>
-
-                        <details className="group mt-4 border-t border-gray-100 pt-3 dark:border-gray-700">
-                          <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-blue-600 dark:text-blue-400">
-                            <span>この数字の見方をみる</span>
-                            <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">
-                              ▼
-                            </span>
-                            <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">
-                              ▲
-                            </span>
-                          </summary>
-
-                          <div className="mt-3 space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                            <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
-                                これは何？
-                              </div>
-                              <p>{card.description}</p>
+                        <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <div className="font-semibold text-gray-900 dark:text-gray-100">
+                              第{point.gameNumber}ゲーム #{point.pointNumber}
                             </div>
-                            <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
-                                どう見る？
-                              </div>
-                              <p>{card.howToRead}</p>
-                            </div>
-                            <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
-                                次に確認
-                              </div>
-                              <p>{card.nextCheck}</p>
-                            </div>
-                            <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
-                                なぜ見るの？
-                              </div>
-                              <p>{card.whyItMatters}</p>
-                            </div>
-
-                            {card.reliability === 'low' && (
-                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-                                参考値:
-                                対象ポイントが少ないため、傾向としてはまだ判断しにくい数字です。
-                              </div>
-                            )}
-                            {card.reliability === 'none' && (
-                              <div className="rounded bg-gray-100 px-3 py-2 text-gray-700 dark:bg-gray-700/70 dark:text-gray-200">
-                                データ不足:
-                                対象ポイントがないため、この指標は表示できません。
-                              </div>
-                            )}
-
-                            <div className="space-y-2">
-                              {card.details.map((detail) => (
-                                <div
-                                  key={`${card.id}-${detail.label}`}
-                                  className="flex items-start justify-between gap-3 border-b border-gray-100 pb-2 last:border-b-0 last:pb-0 dark:border-gray-700/60"
-                                >
-                                  <span className="text-gray-600 dark:text-gray-400">
-                                    {formatGuideDetailLabel(detail.label)}
-                                  </span>
-                                  <span className="text-right font-medium text-gray-800 dark:text-gray-100">
-                                    {detail.value}
-                                  </span>
-                                </div>
-                              ))}
+                            <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                              {formatScoreTransition(point)}
                             </div>
                           </div>
-                        </details>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              scrollToReviewPoint(point);
+                              setSelectedReviewGroup(null);
+                            }}
+                            className="self-start rounded border border-blue-200 bg-white px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-gray-900 dark:text-blue-300 dark:hover:bg-blue-950/40"
+                          >
+                            このポイントへ移動
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+                          <div>
+                            結果:{' '}
+                            <span className="font-medium text-gray-900 dark:text-gray-100">
+                              {getResultTypeLabel(point.resultType || '') ||
+                                '不明'}
+                            </span>
+                          </div>
+                          <div>
+                            得点:{' '}
+                            <span className="font-medium text-gray-900 dark:text-gray-100">
+                              {formatTeamName(point.winnerTeam)}
+                            </span>
+                          </div>
+                          <div>
+                            選手:{' '}
+                            <span className="font-medium text-gray-900 dark:text-gray-100">
+                              {point.playerName || '未記録'}
+                            </span>
+                          </div>
+                          <div>
+                            サーブ:{' '}
+                            <span className="font-medium text-gray-900 dark:text-gray-100">
+                              {point.servingPlayer || '未記録'}
+                            </span>
+                          </div>
+                          <div>
+                            ラリー本数:{' '}
+                            <span className="font-medium text-gray-900 dark:text-gray-100">
+                              {point.rallyCount ?? '未記録'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {pointDetails.length > 0 && (
+                          <div className="mt-3 rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/60 dark:text-gray-300">
+                            {pointDetails.join(' / ')}
+                          </div>
+                        )}
                       </div>
                     );
-                  },
-                )}
-              </div>
-            </>
-          )}
-        </div>
-      </section>
-
-      {analysisSummary.scoreIntegrity.ok && (
-        <details className="group mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-gray-900 dark:text-gray-100">
-            <span>分析の根拠をみる</span>
-            <span className="text-sm text-gray-500 group-open:hidden dark:text-gray-400">
-              ▼
-            </span>
-            <span className="hidden text-sm text-gray-500 group-open:inline dark:text-gray-400">
-              ▲
-            </span>
-          </summary>
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            振り返りポイントの背景にある比較指標です。必要なときだけ開いて確認できます。
-          </p>
-          <div className="mt-4 overflow-x-auto">
-            <table className="min-w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="py-2 text-left font-medium text-gray-700 dark:text-gray-200">
-                    指標
-                  </th>
-                  <th className="py-2 text-center font-medium text-blue-700 dark:text-blue-300">
-                    {getShortTeamName('A')}
-                  </th>
-                  <th className="py-2 text-center font-medium text-green-700 dark:text-green-300">
-                    {getShortTeamName('B')}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map((row) => (
-                  <tr
-                    key={row.label}
-                    className="border-b border-gray-100 dark:border-gray-700/70"
-                  >
-                    <td className="py-3 text-gray-700 dark:text-gray-300">
-                      {row.label}
-                    </td>
-                    <td className="py-3 text-center text-gray-800 dark:text-gray-100">
-                      {row.a}
-                    </td>
-                    <td className="py-3 text-center text-gray-800 dark:text-gray-100">
-                      {row.b}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </details>
-      )}
-
-      <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-            得点・失点の内訳
-          </h2>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            点がどう動いたかを、得点と失点につながった記録に分けて見られます。
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          {resultViewModel.pointBreakdown.map((teamBreakdown) => (
-            <div
-              key={teamBreakdown.team}
-              className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60"
-            >
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                {teamBreakdown.teamName}
-              </h3>
-              <div className="mt-4 grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                    得点につながった記録
-                  </div>
-                  <div className="mt-3 space-y-2">
-                    {teamBreakdown.scoringReasons.map((entry) => (
-                      <div
-                        key={`${teamBreakdown.team}-${entry.label}-for`}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span className="text-gray-700 dark:text-gray-300">
-                          {entry.label}
-                        </span>
-                        <span className="font-semibold text-gray-900 dark:text-gray-100">
-                          {entry.count}件
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  })}
                 </div>
-                <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                    失点につながった記録
-                  </div>
-                  <div className="mt-3 space-y-2">
-                    {teamBreakdown.concededReasons.map((entry) => (
-                      <div
-                        key={`${teamBreakdown.team}-${entry.label}-against`}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span className="text-gray-700 dark:text-gray-300">
-                          {entry.label}
-                        </span>
-                        <span className="font-semibold text-gray-900 dark:text-gray-100">
-                          {entry.count}件
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div>
+                <p className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                  試合結果
+                </p>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  {getShortTeamName('A')} vs {getShortTeamName('B')}
+                </h1>
+                <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+                  {tournamentInfo && fullTournamentUrl ? (
+                    <Link
+                      href={fullTournamentUrl}
+                      className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                    >
+                      {getTournamentDisplayName()}
+                    </Link>
+                  ) : (
+                    <span className="font-medium text-gray-800 dark:text-gray-100">
+                      {getTournamentDisplayName()}
+                    </span>
+                  )}
+                  {match.round_name && (
+                    <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+                      {match.round_name}
+                    </span>
+                  )}
+                  <span className="text-gray-500 dark:text-gray-400">
+                    記録日 {recordedDate}
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-lg bg-gray-50 px-4 py-3 text-center dark:bg-gray-700/50">
+                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  最終ゲームカウント
+                </div>
+                <div className="mt-1 font-mono text-3xl font-bold text-gray-900 dark:text-gray-100">
+                  {resultViewModel.matchOverview.gamesWon.A} -{' '}
+                  {resultViewModel.matchOverview.gamesWon.B}
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-            選手別サマリー
-          </h2>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            各選手がどの役割で関わったかを、まず要点から確認できます。
-          </p>
-        </div>
+            {matchWinner && (
+              <div className="rounded border border-green-300 bg-green-100 p-4 dark:border-green-800 dark:bg-green-900/30">
+                <p className="text-lg font-semibold text-green-800 dark:text-green-300">
+                  {getShortTeamName(matchWinner)} の勝利
+                </p>
+                <p className="mt-1 text-sm text-green-800/80 dark:text-green-300/80">
+                  総ポイント {resultViewModel.matchOverview.totalPoints}
+                  本の記録があります。
+                </p>
+              </div>
+            )}
 
-        <div className="space-y-4">
-          {resultViewModel.playerInvolvement.map((player) => (
-            <details
-              key={player.name}
-              className="group rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60"
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  総ポイント数
+                </div>
+                <div className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  {resultViewModel.matchOverview.totalPoints}
+                </div>
+              </div>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  勝敗を分けた局面候補
+                </div>
+                <div className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  {resultViewModel.matchOverview.decisiveMoments.length}件
+                </div>
+              </div>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  {getShortTeamName('A')}の最大連続得点
+                </div>
+                <div className="mt-2 text-2xl font-bold text-blue-700 dark:text-blue-300">
+                  {resultViewModel.matchOverview.streaks.A.for}点
+                </div>
+              </div>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  {getShortTeamName('B')}の最大連続得点
+                </div>
+                <div className="mt-2 text-2xl font-bold text-green-700 dark:text-green-300">
+                  {resultViewModel.matchOverview.streaks.B.for}点
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-200">
+                ゲームスコア
+              </div>
+              {renderScoreboard()}
+            </div>
+
+            {resultViewModel.matchOverview.decisiveMoments.length > 0 && (
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
+                <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  勝敗を分けた局面候補
+                </h2>
+                <div className="mt-3 grid gap-2">
+                  {resultViewModel.matchOverview.decisiveMoments.map(
+                    (moment) => (
+                      <button
+                        key={moment.id}
+                        type="button"
+                        onClick={() =>
+                          scrollToPoint(moment.gameNumber, moment.id, {
+                            playVideo: true,
+                          })
+                        }
+                        className="w-full rounded bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                      >
+                        <span className="font-medium text-gray-900 dark:text-gray-100">
+                          {moment.label}
+                        </span>{' '}
+                        {moment.description}
+                      </button>
+                    ),
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {(youtubeVideoId || youtubeWatchUrl) && (
+          <>
+            {isVideoFloating && <div className={FLOATING_VIDEO_SPACER_CLASS} />}
+            <section
+              ref={playerSectionRef}
+              className={
+                isVideoFloating
+                  ? `fixed left-0 right-0 top-2 z-40 px-4 md:left-auto md:right-6 md:top-2 md:px-0 ${floatingVideoLayout.containerWidth}`
+                  : 'mb-8'
+              }
             >
-              <summary className="cursor-pointer list-none">
-                <div className="flex flex-col gap-3">
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
+              <div
+                className={`${
+                  isVideoFloating ? 'mx-auto md:mx-0' : 'mx-auto max-w-6xl'
+                }`}
+              >
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoFloating((current) => !current)}
+                      className="rounded-full border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                    >
+                      {isVideoFloating ? '元の位置に戻す' : '動画を固定表示'}
+                    </button>
+                    {isVideoFloating && (
+                      <div className="hidden items-center gap-1 rounded-full bg-gray-100 p-1 dark:bg-gray-700 md:flex">
+                        {FLOATING_VIDEO_SIZE_OPTIONS.map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => setFloatingVideoSize(option.value)}
+                            className={`rounded-full px-2.5 py-1 text-xs font-medium transition ${
+                              floatingVideoSize === option.value
+                                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-900 dark:text-gray-100'
+                                : 'text-gray-600 hover:bg-white/70 dark:text-gray-300 dark:hover:bg-gray-600'
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {youtubeVideoId && !youtubeEmbedBlocked ? (
+                  <div className="overflow-hidden rounded-lg bg-black">
+                    <YouTubeRangePlayer
+                      ref={youtubePlayerRef}
+                      videoId={youtubeVideoId}
+                      onEmbedBlocked={() => setYoutubeEmbedBlocked(true)}
+                      responsive
+                      aspectRatio={activeVideoAspectRatio}
+                      className="w-full"
+                    />
+                  </div>
+                ) : (
+                  <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+                    この動画はページ内に埋め込めないため、各ポイントの再生操作で
+                    YouTube を別タブで開きます。
+                  </div>
+                )}
+              </div>
+            </section>
+          </>
+        )}
+
+        <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              試合の流れ
+            </h2>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              各ゲームの途中経過と、連続得点や重要局面をまとめています。
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {resultViewModel.gameFlow.map((game) => {
+              const isExpanded = expandedGames.has(game.gameNumber);
+              const rawGame = gamesAsc.find(
+                (candidate) => candidate.game_number === game.gameNumber,
+              );
+
+              return (
+                <div
+                  key={game.gameNumber}
+                  className="rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/60"
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleGameExpansion(game.gameNumber)}
+                    className="flex w-full items-start justify-between gap-3 rounded-t-lg p-4 text-left hover:bg-gray-100/70 dark:hover:bg-gray-700/40"
+                  >
+                    <div className="flex-1">
                       <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                        {player.name}
+                        第{game.gameNumber}ゲーム
                       </div>
-                      <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        {player.team === 'A'
-                          ? getShortTeamName('A')
-                          : player.team === 'B'
-                            ? getShortTeamName('B')
-                            : '所属未確定'}
+                      <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                        最終スコア {game.finalScore} / {game.pointCount}ポイント
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {game.winnerTeam && (
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-medium ${
+                              game.winnerTeam === 'A'
+                                ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300'
+                                : 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300'
+                            }`}
+                          >
+                            {getShortTeamName(game.winnerTeam)} が取得
+                          </span>
+                        )}
+                        {game.keyMoments.map((label) => (
+                          <span
+                            key={`${game.gameNumber}-${label}`}
+                            className="rounded-full bg-gray-200 px-3 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200"
+                          >
+                            {label}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">
-                      サーブ {player.servePoints}本 / サーブ時得点率{' '}
-                      {player.serveWinRate !== null
-                        ? `${player.serveWinRate.toFixed(1)}%`
-                        : '—'}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/40 dark:text-gray-300">
-                    <span>詳細をみる</span>
-                    <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">
-                      ▼
+                    <span className="pt-1 text-xl text-gray-400 dark:text-gray-500">
+                      {isExpanded ? '−' : '+'}
                     </span>
-                    <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">
-                      ▲
-                    </span>
-                  </div>
+                  </button>
 
-                  <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
-                    <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        サーブ
-                      </div>
-                      <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
-                        {player.servePoints}本
-                      </div>
-                    </div>
-                    <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        サーブ時得点
-                      </div>
-                      <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
-                        {player.serveWon}本
-                      </div>
-                    </div>
-                    <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        得点に関わった記録
-                      </div>
-                      <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
-                        {player.scoringInvolvements}件
-                      </div>
-                    </div>
-                    <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        失点につながった記録
-                      </div>
-                      <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
-                        {player.concededInvolvements}件
-                      </div>
-                    </div>
-                    <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        ダブルフォルト
-                      </div>
-                      <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
-                        {player.doubleFaults}件
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </summary>
+                  {isExpanded && (
+                    <div className="border-t border-gray-200 px-4 pb-4 dark:border-gray-700">
+                      <div className="mt-3 space-y-2">
+                        {(rawGame ? getPointsDesc(rawGame).reverse() : []).map(
+                          (point: Point) => {
+                            const pointsBeforeThis =
+                              rawGame?.points?.filter(
+                                (p) => p.point_number < point.point_number,
+                              ) || [];
+                            const teamAPoints = pointsBeforeThis.filter(
+                              (p) => p.winner_team === 'A',
+                            ).length;
+                            const teamBPoints = pointsBeforeThis.filter(
+                              (p) => p.winner_team === 'B',
+                            ).length;
+                            const finalTeamAPoints =
+                              teamAPoints + (point.winner_team === 'A' ? 1 : 0);
+                            const finalTeamBPoints =
+                              teamBPoints + (point.winner_team === 'B' ? 1 : 0);
 
-              <div className="mt-4 grid gap-4 lg:grid-cols-2">
-                <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                    決定打の種類
-                  </h3>
-                  <div className="mt-3 space-y-2">
-                    {player.winnerBreakdown.length > 0 ? (
-                      player.winnerBreakdown.map((entry) => (
-                        <div
-                          key={`${player.name}-winner-${entry.label}`}
-                          className="flex items-center justify-between text-sm"
-                        >
-                          <span className="text-gray-700 dark:text-gray-300">
-                            {entry.label}
-                          </span>
-                          <span className="font-semibold text-gray-900 dark:text-gray-100">
-                            {entry.count}件
-                          </span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        この試合では個人名付きの決定打記録はありません。
-                      </div>
-                    )}
-                  </div>
-                </div>
+                            const pointContext = game.timeline.find(
+                              (candidate) => candidate.pointId === point.id,
+                            );
 
-                <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                    改善のヒントになりそうな記録
-                  </h3>
-                  <div className="mt-3 space-y-2">
-                    {player.errorBreakdown.length > 0 ? (
-                      player.errorBreakdown.map((entry) => (
-                        <div
-                          key={`${player.name}-error-${entry.label}`}
-                          className="flex items-center justify-between text-sm"
-                        >
-                          <span className="text-gray-700 dark:text-gray-300">
-                            {entry.label}
-                          </span>
-                          <span className="font-semibold text-gray-900 dark:text-gray-100">
-                            {entry.count}件
-                          </span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        個人名付きの失点記録はありません。
+                            return (
+                              <div
+                                key={point.id}
+                                id={getPointAnchorId(point.id)}
+                                className={`rounded-lg border border-gray-200 px-3 py-3 text-sm transition-colors dark:border-gray-700 ${
+                                  highlightedPointId === point.id
+                                    ? 'bg-blue-100 ring-2 ring-blue-300 dark:bg-blue-900/40 dark:ring-blue-700'
+                                    : 'bg-white dark:bg-gray-900/40'
+                                }`}
+                              >
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+                                    {finalTeamAPoints} - {finalTeamBPoints}
+                                  </span>
+                                  <span
+                                    className={`rounded px-2 py-1 text-xs font-medium ${
+                                      point.winner_team === 'A'
+                                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+                                        : point.winner_team === 'B'
+                                          ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                                          : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
+                                    }`}
+                                  >
+                                    {formatTeamName(point.winner_team)}
+                                    のポイント
+                                  </span>
+                                </div>
+
+                                <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                                  サーブ {formatServerLabel(point)} / ラリー本数{' '}
+                                  {point.rally_count !== null
+                                    ? `${point.rally_count}本`
+                                    : '未記録'}{' '}
+                                  / 終わり方{' '}
+                                  {getResultTypeLabel(point.result_type || '')}
+                                  {getPointPlayerName(point)
+                                    ? ` / ${getPointPlayerLabel(point)} ${getPointPlayerName(point)}`
+                                    : ''}
+                                </div>
+
+                                <div className="mt-2 flex flex-wrap items-center gap-2">
+                                  {point.first_serve_fault && (
+                                    <span className="rounded bg-orange-50 px-2 py-1 text-xs text-orange-600 dark:bg-orange-900/30 dark:text-orange-300">
+                                      1stフォルト
+                                    </span>
+                                  )}
+                                  {point.double_fault && (
+                                    <span className="rounded bg-red-50 px-2 py-1 text-xs text-red-600 dark:bg-red-900/30 dark:text-red-300">
+                                      ダブルフォルト
+                                    </span>
+                                  )}
+                                  {pointContext?.tags.map((tag) => (
+                                    <span
+                                      key={`${point.id}-${tag}`}
+                                      className="rounded-full bg-amber-100 px-2.5 py-1 text-xs text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
+                                    >
+                                      {tag}
+                                    </span>
+                                  ))}
+                                  {point.video_start_ms !== null &&
+                                    point.video_start_ms !== undefined && (
+                                      <>
+                                        <span className="rounded bg-slate-100 px-2 py-1 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                                          動画{' '}
+                                          {formatVideoTimestamp(
+                                            point.video_start_ms,
+                                          )}
+                                          {point.video_end_ms !== null &&
+                                          point.video_end_ms !== undefined
+                                            ? ` - ${formatVideoTimestamp(point.video_end_ms)}`
+                                            : ' から'}
+                                        </span>
+                                        <button
+                                          type="button"
+                                          onClick={() => playPointVideo(point)}
+                                          className="rounded bg-blue-600 px-2.5 py-1 text-xs font-medium text-white hover:bg-blue-700"
+                                        >
+                                          このポイントを見る
+                                        </button>
+                                      </>
+                                    )}
+                                </div>
+                              </div>
+                            );
+                          },
+                        )}
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-4">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                  振り返りポイント
+                </h2>
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  記録済みポイントから、次に見返す場面を絞るための要点です。
+                </p>
               </div>
+            </div>
 
-              <div className="mt-4 rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                  ゲーム別の関与
+            {!analysisSummary.scoreIntegrity.ok && (
+              <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+                分析用に再構築したゲームスコアが既存スコアと一致しなかったため、分析表示を停止しています。
+                <ul className="mt-2 list-disc list-inside">
+                  {analysisSummary.scoreIntegrity.mismatches.map((mismatch) => (
+                    <li key={mismatch.gameNumber}>
+                      第{mismatch.gameNumber}ゲーム: 既存
+                      {` ${mismatch.expected.pointsA}-${mismatch.expected.pointsB} / `}
+                      再構築
+                      {` ${mismatch.actual.pointsA}-${mismatch.actual.pointsB}`}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {analysisSummary.scoreIntegrity.ok && (
+              <>
+                <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
+                  <h3 className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
+                    分析の見方
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    この分析は、試合のポイント記録から見返しやすい手がかりをまとめたものです。数字は評価ではなく、次にどの場面を確認するかを考える入口として使います。
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">
+                    注目チーム
+                  </span>
+                  {(['A', 'B'] as TeamKey[]).map((team) => (
+                    <button
+                      key={team}
+                      onClick={() => {
+                        setFocusTeam(team);
+                        void router.replace(
+                          {
+                            pathname: router.pathname,
+                            query: {
+                              ...router.query,
+                              focusTeam: team,
+                            },
+                          },
+                          undefined,
+                          { shallow: true, scroll: false },
+                        );
+                      }}
+                      className={`px-4 py-2 rounded border text-sm ${
+                        focusTeam === team
+                          ? team === 'A'
+                            ? 'bg-blue-600 text-white border-blue-600'
+                            : 'bg-green-600 text-white border-green-600'
+                          : 'border-gray-300 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200'
+                      }`}
+                    >
+                      {getShortTeamName(team)}
+                    </button>
+                  ))}
+                  <Link
+                    href={getPublicMatchesGrowthPath(focusedGrowthTarget.key)}
+                    className="rounded border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                  >
+                    この対象の成長分析
+                  </Link>
+                </div>
+
+                {focusedImprovementHints.length > 0 && (
+                  <div className="mb-6">
+                    <div className="mb-3">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                        この試合から見る改善ヒント
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        1試合分の記録から、次に確認しやすい候補を最大3件に絞っています。
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+                      {focusedImprovementHints.map((hint) => {
+                        const confidenceBadge = getHintConfidenceBadge(
+                          hint.confidence,
+                        );
+                        const reviewGroupsByLabel = new Map(
+                          (hint.reviewGroups ?? []).map((group) => [
+                            group.label,
+                            group,
+                          ]),
+                        );
+
+                        return (
+                          <div
+                            key={hint.id}
+                            className="rounded-lg border border-blue-100 bg-blue-50/60 p-5 dark:border-blue-900/60 dark:bg-blue-950/20"
+                          >
+                            <div className="mb-3 flex items-start justify-between gap-3">
+                              <h4 className="font-semibold leading-snug text-gray-900 dark:text-gray-100">
+                                {hint.title}
+                              </h4>
+                              <span
+                                className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${confidenceBadge.className}`}
+                              >
+                                {confidenceBadge.label}
+                              </span>
+                            </div>
+
+                            <div className="space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300">
+                              <p>{hint.evidence}</p>
+                              {hint.evidenceItems &&
+                                hint.evidenceItems.length > 0 && (
+                                  <ul className="space-y-1">
+                                    {hint.evidenceItems.map((item) => (
+                                      <li
+                                        key={`${hint.id}-${item}`}
+                                        className="rounded bg-white/70 px-3 py-2 text-gray-700 dark:bg-gray-800/70 dark:text-gray-300"
+                                      >
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+
+                              <div>
+                                <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">
+                                  読み取り
+                                </div>
+                                <p>{hint.interpretation}</p>
+                              </div>
+
+                              <div>
+                                <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">
+                                  次に見ること
+                                </div>
+                                <p>{hint.nextCheck}</p>
+                                {hint.nextCheckItems &&
+                                  hint.nextCheckItems.length > 0 && (
+                                    <ul className="mt-2 space-y-1">
+                                      {hint.nextCheckItems.map((item) => {
+                                        const reviewGroup =
+                                          reviewGroupsByLabel.get(item);
+
+                                        return (
+                                          <li key={`${hint.id}-${item}`}>
+                                            {reviewGroup ? (
+                                              <button
+                                                type="button"
+                                                onClick={() =>
+                                                  setSelectedReviewGroup({
+                                                    hintTitle: hint.title,
+                                                    group: reviewGroup,
+                                                  })
+                                                }
+                                                className="flex w-full items-center justify-between gap-2 rounded border border-blue-100 bg-white/75 px-3 py-2 text-left text-sm text-blue-800 hover:border-blue-300 hover:bg-white dark:border-blue-900/60 dark:bg-gray-900/40 dark:text-blue-300 dark:hover:border-blue-700"
+                                              >
+                                                <span>{item}</span>
+                                                <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/50 dark:text-blue-200">
+                                                  {reviewGroup.points.length}件
+                                                </span>
+                                              </button>
+                                            ) : (
+                                              <span className="block rounded bg-white/50 px-3 py-2 dark:bg-gray-900/30">
+                                                {item}
+                                              </span>
+                                            )}
+                                          </li>
+                                        );
+                                      })}
+                                    </ul>
+                                  )}
+                              </div>
+
+                              {hint.sourceMetrics.length > 0 && (
+                                <div className="flex flex-wrap gap-2">
+                                  {hint.sourceMetrics.map((metric) => (
+                                    <span
+                                      key={`${hint.id}-${metric.key}-${metric.label ?? metric.value}`}
+                                      className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                    >
+                                      {metric.label ?? metric.key}:{' '}
+                                      <span className="font-semibold">
+                                        {formatHintMetricValue(metric)}
+                                      </span>
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+
+                              {hint.confidence === 'low' && (
+                                <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                                  {hint.confidenceReason}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {focusedImprovementHints.length === 0 &&
+                  analysisSummary.reconstructedPoints.length > 0 &&
+                  analysisSummary.reconstructedPoints.length < 8 && (
+                    <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-700/40 dark:text-gray-300">
+                      十分な記録から改善ヒントを生成できませんでした。ポイント記録が増えると、確認候補を出しやすくなります。
+                    </div>
+                  )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {analysisSummary.teamGuideCards[focusTeam].cards.map(
+                    (card: AnalysisGuideCard) => {
+                      const badge = getReliabilityBadge(card.reliability);
+
+                      return (
+                        <div
+                          key={card.id}
+                          className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800/80"
+                        >
+                          <div className="flex items-start justify-between gap-3 mb-3">
+                            <h3 className="font-semibold leading-snug text-gray-800 dark:text-gray-100">
+                              {card.title}
+                            </h3>
+                            {badge && (
+                              <span
+                                className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${badge.className}`}
+                              >
+                                {badge.label}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="mb-2">
+                            <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                              {card.primaryValue}
+                            </div>
+                            {card.secondaryValue && (
+                              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                                {card.secondaryValue}
+                              </p>
+                            )}
+                          </div>
+
+                          <p className="text-sm leading-6 text-gray-700 dark:text-gray-300">
+                            {card.summary}
+                          </p>
+
+                          <details className="group mt-4 border-t border-gray-100 pt-3 dark:border-gray-700">
+                            <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-blue-600 dark:text-blue-400">
+                              <span>この数字の見方をみる</span>
+                              <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">
+                                ▼
+                              </span>
+                              <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">
+                                ▲
+                              </span>
+                            </summary>
+
+                            <div className="mt-3 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                              <div>
+                                <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
+                                  これは何？
+                                </div>
+                                <p>{card.description}</p>
+                              </div>
+                              <div>
+                                <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
+                                  どう見る？
+                                </div>
+                                <p>{card.howToRead}</p>
+                              </div>
+                              <div>
+                                <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
+                                  次に確認
+                                </div>
+                                <p>{card.nextCheck}</p>
+                              </div>
+                              <div>
+                                <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">
+                                  なぜ見るの？
+                                </div>
+                                <p>{card.whyItMatters}</p>
+                              </div>
+
+                              {card.reliability === 'low' && (
+                                <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                                  参考値:
+                                  対象ポイントが少ないため、傾向としてはまだ判断しにくい数字です。
+                                </div>
+                              )}
+                              {card.reliability === 'none' && (
+                                <div className="rounded bg-gray-100 px-3 py-2 text-gray-700 dark:bg-gray-700/70 dark:text-gray-200">
+                                  データ不足:
+                                  対象ポイントがないため、この指標は表示できません。
+                                </div>
+                              )}
+
+                              <div className="space-y-2">
+                                {card.details.map((detail) => (
+                                  <div
+                                    key={`${card.id}-${detail.label}`}
+                                    className="flex items-start justify-between gap-3 border-b border-gray-100 pb-2 last:border-b-0 last:pb-0 dark:border-gray-700/60"
+                                  >
+                                    <span className="text-gray-600 dark:text-gray-400">
+                                      {formatGuideDetailLabel(detail.label)}
+                                    </span>
+                                    <span className="text-right font-medium text-gray-800 dark:text-gray-100">
+                                      {detail.value}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </details>
+                        </div>
+                      );
+                    },
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+        </section>
+
+        {analysisSummary.scoreIntegrity.ok && (
+          <details className="group mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <span>分析の根拠をみる</span>
+              <span className="text-sm text-gray-500 group-open:hidden dark:text-gray-400">
+                ▼
+              </span>
+              <span className="hidden text-sm text-gray-500 group-open:inline dark:text-gray-400">
+                ▲
+              </span>
+            </summary>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              振り返りポイントの背景にある比較指標です。必要なときだけ開いて確認できます。
+            </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="min-w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <th className="py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                      指標
+                    </th>
+                    <th className="py-2 text-center font-medium text-blue-700 dark:text-blue-300">
+                      {getShortTeamName('A')}
+                    </th>
+                    <th className="py-2 text-center font-medium text-green-700 dark:text-green-300">
+                      {getShortTeamName('B')}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map((row) => (
+                    <tr
+                      key={row.label}
+                      className="border-b border-gray-100 dark:border-gray-700/70"
+                    >
+                      <td className="py-3 text-gray-700 dark:text-gray-300">
+                        {row.label}
+                      </td>
+                      <td className="py-3 text-center text-gray-800 dark:text-gray-100">
+                        {row.a}
+                      </td>
+                      <td className="py-3 text-center text-gray-800 dark:text-gray-100">
+                        {row.b}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        )}
+
+        <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              得点・失点の内訳
+            </h2>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              点がどう動いたかを、得点と失点につながった記録に分けて見られます。
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {resultViewModel.pointBreakdown.map((teamBreakdown) => (
+              <div
+                key={teamBreakdown.team}
+                className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  {teamBreakdown.teamName}
                 </h3>
-                <div className="mt-3 overflow-x-auto">
-                  <table className="min-w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
-                          ゲーム
-                        </th>
-                        <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
-                          サーブ
-                        </th>
-                        <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
-                          得点
-                        </th>
-                        <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
-                          失点
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {player.gameBreakdown.map((entry) => (
-                        <tr
-                          key={`${player.name}-game-${entry.gameNumber}`}
-                          className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
+                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      得点につながった記録
+                    </div>
+                    <div className="mt-3 space-y-2">
+                      {teamBreakdown.scoringReasons.map((entry) => (
+                        <div
+                          key={`${teamBreakdown.team}-${entry.label}-for`}
+                          className="flex items-center justify-between text-sm"
                         >
-                          <td className="px-3 py-2 font-medium text-gray-900 dark:text-gray-100">
-                            {entry.gameNumber}
-                          </td>
-                          <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
-                            <span
-                              className={
-                                entry.servePoints > 0
-                                  ? 'font-semibold'
-                                  : undefined
-                              }
-                            >
-                              {entry.servePoints}
-                            </span>
-                          </td>
-                          <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
-                            <span
-                              className={
-                                entry.scoringInvolvements > 0
-                                  ? 'font-semibold'
-                                  : undefined
-                              }
-                            >
-                              {entry.scoringInvolvements}
-                            </span>
-                          </td>
-                          <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
-                            <span
-                              className={
-                                entry.concededInvolvements > 0
-                                  ? 'font-semibold'
-                                  : undefined
-                              }
-                            >
-                              {entry.concededInvolvements}
-                            </span>
-                          </td>
-                        </tr>
+                          <span className="text-gray-700 dark:text-gray-300">
+                            {entry.label}
+                          </span>
+                          <span className="font-semibold text-gray-900 dark:text-gray-100">
+                            {entry.count}件
+                          </span>
+                        </div>
                       ))}
-                    </tbody>
-                  </table>
+                    </div>
+                  </div>
+                  <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
+                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      失点につながった記録
+                    </div>
+                    <div className="mt-3 space-y-2">
+                      {teamBreakdown.concededReasons.map((entry) => (
+                        <div
+                          key={`${teamBreakdown.team}-${entry.label}-against`}
+                          className="flex items-center justify-between text-sm"
+                        >
+                          <span className="text-gray-700 dark:text-gray-300">
+                            {entry.label}
+                          </span>
+                          <span className="font-semibold text-gray-900 dark:text-gray-100">
+                            {entry.count}件
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </details>
-          ))}
-        </div>
-      </section>
-    </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              選手別サマリー
+            </h2>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              各選手がどの役割で関わったかを、まず要点から確認できます。
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {resultViewModel.playerInvolvement.map((player) => (
+              <details
+                key={player.name}
+                className="group rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60"
+              >
+                <summary className="cursor-pointer list-none">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                          {player.name}
+                        </div>
+                        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                          {player.team === 'A'
+                            ? getShortTeamName('A')
+                            : player.team === 'B'
+                              ? getShortTeamName('B')
+                              : '所属未確定'}
+                        </div>
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">
+                        サーブ {player.servePoints}本 / サーブ時得点率{' '}
+                        {player.serveWinRate !== null
+                          ? `${player.serveWinRate.toFixed(1)}%`
+                          : '—'}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/40 dark:text-gray-300">
+                      <span>詳細をみる</span>
+                      <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">
+                        ▼
+                      </span>
+                      <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">
+                        ▲
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
+                      <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          サーブ
+                        </div>
+                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                          {player.servePoints}本
+                        </div>
+                      </div>
+                      <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          サーブ時得点
+                        </div>
+                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                          {player.serveWon}本
+                        </div>
+                      </div>
+                      <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          得点に関わった記録
+                        </div>
+                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                          {player.scoringInvolvements}件
+                        </div>
+                      </div>
+                      <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          失点につながった記録
+                        </div>
+                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                          {player.concededInvolvements}件
+                        </div>
+                      </div>
+                      <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          ダブルフォルト
+                        </div>
+                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                          {player.doubleFaults}件
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </summary>
+
+                <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                  <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
+                    <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      決定打の種類
+                    </h3>
+                    <div className="mt-3 space-y-2">
+                      {player.winnerBreakdown.length > 0 ? (
+                        player.winnerBreakdown.map((entry) => (
+                          <div
+                            key={`${player.name}-winner-${entry.label}`}
+                            className="flex items-center justify-between text-sm"
+                          >
+                            <span className="text-gray-700 dark:text-gray-300">
+                              {entry.label}
+                            </span>
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">
+                              {entry.count}件
+                            </span>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          この試合では個人名付きの決定打記録はありません。
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
+                    <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      改善のヒントになりそうな記録
+                    </h3>
+                    <div className="mt-3 space-y-2">
+                      {player.errorBreakdown.length > 0 ? (
+                        player.errorBreakdown.map((entry) => (
+                          <div
+                            key={`${player.name}-error-${entry.label}`}
+                            className="flex items-center justify-between text-sm"
+                          >
+                            <span className="text-gray-700 dark:text-gray-300">
+                              {entry.label}
+                            </span>
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">
+                              {entry.count}件
+                            </span>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          個人名付きの失点記録はありません。
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-lg bg-white p-4 dark:bg-gray-900/40">
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    ゲーム別の関与
+                  </h3>
+                  <div className="mt-3 overflow-x-auto">
+                    <table className="min-w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                            ゲーム
+                          </th>
+                          <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
+                            サーブ
+                          </th>
+                          <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
+                            得点
+                          </th>
+                          <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">
+                            失点
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {player.gameBreakdown.map((entry) => (
+                          <tr
+                            key={`${player.name}-game-${entry.gameNumber}`}
+                            className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
+                          >
+                            <td className="px-3 py-2 font-medium text-gray-900 dark:text-gray-100">
+                              {entry.gameNumber}
+                            </td>
+                            <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                              <span
+                                className={
+                                  entry.servePoints > 0
+                                    ? 'font-semibold'
+                                    : undefined
+                                }
+                              >
+                                {entry.servePoints}
+                              </span>
+                            </td>
+                            <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                              <span
+                                className={
+                                  entry.scoringInvolvements > 0
+                                    ? 'font-semibold'
+                                    : undefined
+                                }
+                              >
+                                {entry.scoringInvolvements}
+                              </span>
+                            </td>
+                            <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                              <span
+                                className={
+                                  entry.concededInvolvements > 0
+                                    ? 'font-semibold'
+                                    : undefined
+                                }
+                              >
+                                {entry.concededInvolvements}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
 // Cloudflare静的export用: 最新50件のみ静的パス生成
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getPublicMatchDetailStaticPaths: GetStaticPaths = async (
+  context?,
+) => {
+  void context;
   try {
     const matchIds = await getLatestBetaMatchIds();
     const paths = matchIds.map((matchId) => ({
@@ -2381,9 +2695,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 // Cloudflare静的export用: ビルド時に静的プロパティ生成
-export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
-  params,
-}) => {
+export const getPublicMatchDetailStaticProps: GetStaticProps<
+  PublicMatchDetailProps
+> = async ({ params }) => {
   try {
     const matchId = params?.matchId as string;
 
@@ -2421,4 +2735,25 @@ export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async ({
   }
 };
 
-export default PublicMatchDetail;
+export const getStaticPaths: GetStaticPaths = async () => {
+  if (isScoreSiteMode()) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+
+  return getPublicMatchDetailStaticPaths({} as never);
+};
+
+export const getStaticProps: GetStaticProps<PublicMatchDetailProps> = async (
+  context,
+) => {
+  if (isScoreSiteMode()) {
+    return { notFound: true };
+  }
+
+  return getPublicMatchDetailStaticProps(context);
+};
+
+export default PublicMatchDetailPage;

@@ -96,20 +96,59 @@ const writeJson = (filePath, value) => {
   fs.writeFileSync(filePath, JSON.stringify(value, null, 2));
 };
 
-const summarizeMatchForIndex = (match) => ({
-  ...match,
-  games: (match.games ?? []).map((game) => ({
-    id: game.id,
-    match_id: game.match_id,
-    game_number: game.game_number,
-    winner_team: game.winner_team,
-    points_a: game.points_a,
-    points_b: game.points_b,
-    initial_serve_team: game.initial_serve_team,
-    initial_serve_player_index: game.initial_serve_player_index ?? null,
-    created_at: game.created_at,
-  })),
-});
+const INTERNAL_FIELD_NAMES = new Set([
+  'edit_token_hash',
+  'edit_token',
+  'source_site_match_id',
+  'source_site_tournament_id',
+  'recorder_side',
+  'created_by',
+  'updated_by',
+  'internal_note',
+  'import_source',
+]);
+
+const shouldStripInternalField = (key) => {
+  if (INTERNAL_FIELD_NAMES.has(key)) return true;
+  if (key.startsWith('debug_')) return true;
+  if (key.startsWith('_debug')) return true;
+  if (key.startsWith('_supabase')) return true;
+  return false;
+};
+
+const stripInternalFields = (value) => {
+  if (Array.isArray(value)) {
+    return value.map(stripInternalFields);
+  }
+
+  if (!value || typeof value !== 'object') {
+    return value;
+  }
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => !shouldStripInternalField(key))
+      .map(([key, nestedValue]) => [key, stripInternalFields(nestedValue)]),
+  );
+};
+
+const toPublicMatchSnapshot = (match) => stripInternalFields(match);
+
+const summarizeMatchForIndex = (match) =>
+  stripInternalFields({
+    ...match,
+    games: (match.games ?? []).map((game) => ({
+      id: game.id,
+      match_id: game.match_id,
+      game_number: game.game_number,
+      winner_team: game.winner_team,
+      points_a: game.points_a,
+      points_b: game.points_b,
+      initial_serve_team: game.initial_serve_team,
+      initial_serve_player_index: game.initial_serve_player_index ?? null,
+      created_at: game.created_at,
+    })),
+  });
 
 const buildGrowthAnalysisJson = (matches, generatedAt) => {
   const { targets, reports } = buildGrowthReports(matches, generatedAt);
@@ -249,9 +288,10 @@ const buildBetaMatchesJson = async () => {
   }
 
   const safeMatches = await attachGamesToMatches(supabase, matches ?? []);
+  const publicMatches = safeMatches.map(toPublicMatchSnapshot);
   const generatedAt = new Date().toISOString();
-  const matchIds = safeMatches.map((match) => match.id);
-  const summaryMatches = safeMatches.map(summarizeMatchForIndex);
+  const matchIds = publicMatches.map((match) => match.id);
+  const summaryMatches = publicMatches.map(summarizeMatchForIndex);
 
   ensureCleanDir(outputRoot);
   fs.mkdirSync(matchesOutputRoot, { recursive: true });
@@ -268,13 +308,13 @@ const buildBetaMatchesJson = async () => {
     matches: summaryMatches,
   });
 
-  safeMatches.forEach((match) => {
+  publicMatches.forEach((match) => {
     writeJson(path.join(matchesOutputRoot, `${match.id}.json`), {
       generatedAt,
       match,
     });
   });
-  const growthStats = buildGrowthAnalysisJson(safeMatches, generatedAt);
+  const growthStats = buildGrowthAnalysisJson(publicMatches, generatedAt);
 
   console.log(
     `✓ Generated beta matches JSON (${safeMatches.length} matches, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,

@@ -1,3 +1,4 @@
+import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -6,6 +7,7 @@ import {
   hasLiveMatchApi,
 } from '../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../lib/env';
+import { isScoreSiteMode } from '../../../../lib/siteConfig';
 import { Game, Match } from '../../../types/database';
 
 const MatchList = () => {
@@ -144,6 +146,14 @@ const MatchList = () => {
                     記録入力
                   </Link>
                 )}
+                {canEditMatches && (
+                  <Link
+                    href={`/beta/matches/${match.id}/video-review`}
+                    className="bg-indigo-500 text-white px-3 py-1 rounded text-sm hover:bg-indigo-600"
+                  >
+                    動画レビュー
+                  </Link>
+                )}
                 <Link
                   href={`/beta/matches/${match.id}`}
                   className="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600"
@@ -207,3 +217,13 @@ const MatchList = () => {
 };
 
 export default MatchList;
+
+export const getStaticProps: GetStaticProps = async () => {
+  if (isScoreSiteMode()) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {},
+  };
+};

@@ -7,6 +7,7 @@ import {
   sendMethodNotAllowed,
   sendSupabaseError,
 } from '@/lib/matchesApi';
+import { isScoreSiteMode } from '@/lib/siteConfig';
 import type { Match } from '@/types/database';
 
 type CreateMatchBody = Omit<Match, 'id' | 'created_at'> & {
@@ -30,6 +31,10 @@ export default async function handler(
   }
 
   if (req.method === 'POST') {
+    if (isScoreSiteMode()) {
+      return res.status(404).json({ error: 'Not found.' });
+    }
+
     try {
       const body = req.body as CreateMatchBody;
       const { data: match, error } = await (supabase as any)

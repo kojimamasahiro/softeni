@@ -9,6 +9,13 @@
 
 **Softeni Pick（ソフテニ・ピック）** は、ソフトテニスの大会結果や選手・チーム情報を整理・記録する個人運営のWebサービスです。
 
+現在は 2 つの公開面を同一コードベースで運用しています。
+
+- `softeni-pick.com`
+  本体サイト。大会、選手、チーム、ベータ導線、記録管理導線を持つ
+- `score.softeni-pick.com`
+  試合結果と成長分析を公開する閲覧専用サイト
+
 ### 目的
 - 選手ごとの過去成績や出場履歴を簡単に検索・閲覧できる環境の提供
 - 大会データの構造化と長期保存
@@ -24,6 +31,51 @@
 | **デプロイ** | Vercel (現在) → Cloudflare Pages (移行予定) |
 | **言語** | TypeScript, Python |
 | **分析ツール** | Vercel Analytics, Speed Insights |
+
+---
+
+## 🌐 サイトモード
+
+サイトの公開面は Host ではなく `siteConfig.mode` で切り替えています。
+
+実装:
+
+- `lib/siteConfig.ts`
+
+主な設定:
+
+| 変数 | 用途 |
+|------|------|
+| `SITE_MODE` | サーバー側のモード切り替え |
+| `NEXT_PUBLIC_SITE_MODE` | クライアント側のモード切り替え |
+| `NEXT_PUBLIC_PUBLIC_BASE_URL` | canonical / OGP / 共有 URL の基準 URL |
+| `NEXT_PUBLIC_SITE_NAME` | サイト名 |
+| `NEXT_PUBLIC_PUBLIC_OG_IMAGE` | OGP 画像 URL |
+
+モードごとの想定:
+
+| mode | 主ドメイン | 有効な公開導線 |
+|------|-----------|----------------|
+| `softeni-pick` | `https://softeni-pick.com` | `/`, `/players`, `/teams`, `/tournaments`, `/beta/*` |
+| `score` | `https://score.softeni-pick.com` | `/matches`, `/matches/[matchId]`, `/matches/growth` |
+
+### score モードの制約
+
+`score` モードは初回リリースでは閲覧専用です。
+
+- `/matches*` を公開する
+- `/beta/*` は原則 404 にする
+- 記録管理ページは表示しない
+- `POST /api/matches` などの書き込み API は拒否する
+- 公開 JSON には内部連携項目を含めない
+
+### 公開 URL 対応
+
+| 既存導線 | score 側の公開先 |
+|---------|------------------|
+| `/beta/matches-results` | `/matches` |
+| `/beta/matches-results/[matchId]` | `/matches/[matchId]` |
+| `/beta/matches-results/growth` | `/matches/growth` |
 
 ---
 
@@ -63,6 +115,9 @@ softeni-pick/
 - `/players/[id]/results` - 選手詳細・成績
 - `/teams/[teamId]` - チーム別成績
 - `/tournaments` - 大会一覧
+- `/matches` - `score` 側の試合結果一覧
+- `/matches/[matchId]` - `score` 側の試合詳細
+- `/matches/growth` - `score` 側の成長分析
 - `/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]` - 大会詳細
 - `/highschool` - 高校カテゴリ
 - `/about`, `/faq`, `/contact`, `/privacy` - 情報ページ
@@ -221,6 +276,13 @@ pip install -r requirements.txt  # 必要に応じて
 `.env.local`ファイルを作成:
 
 ```bash
+# site mode
+SITE_MODE=softeni-pick
+NEXT_PUBLIC_SITE_MODE=softeni-pick
+NEXT_PUBLIC_PUBLIC_BASE_URL=https://softeni-pick.com
+NEXT_PUBLIC_SITE_NAME=Softeni Pick
+NEXT_PUBLIC_PUBLIC_OG_IMAGE=/og/twitter-card-summary.png
+
 # Supabase (API Routes使用時のみ)
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -243,6 +305,31 @@ npm run build
 npm start
 ```
 
+### ローカル確認の基本パターン
+
+`softeni-pick` mode:
+
+```bash
+NEXT_PUBLIC_SITE_MODE=softeni-pick \
+NEXT_PUBLIC_PUBLIC_BASE_URL=https://softeni-pick.com \
+npm run dev
+```
+
+`score` mode:
+
+```bash
+NEXT_PUBLIC_SITE_MODE=score \
+NEXT_PUBLIC_PUBLIC_BASE_URL=https://score.softeni-pick.com \
+NEXT_PUBLIC_SITE_NAME="Softeni Pick Score" \
+npm run dev
+```
+
+確認観点:
+
+- `softeni-pick` mode では `/beta/matches-results*` と `/beta/matches*` が有効
+- `score` mode では `/matches*` が有効で `/beta/*` は 404
+- canonical / OGP が `NEXT_PUBLIC_PUBLIC_BASE_URL` を向く
+
 ### データ生成 (ローカル)
 
 ```bash
@@ -255,6 +342,8 @@ node scripts/generate-og-json.mjs
 # サイトマップ生成
 npm run generate-sitemap
 ```
+
+`public/data/beta-matches/` は試合結果公開と成長分析のスナップショットです。`score` 側はこの静的 JSON を前提に動作します。
 
 ---
 

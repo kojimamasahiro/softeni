@@ -1,60 +1,89 @@
-# beta/matches-results 保守ガイド
+# beta/matches-results / score 公開 保守ガイド
 
 ## 概要
 
-`/beta/matches-results` は、ポイント詳細記録システムで記録された試合を静的ページとして公開するベータ機能です。役割は大きく次の 4 つに分かれます。
+試合結果公開機能は、1つの記録・分析コアを 2 つの公開面から使う構成になっています。
 
-- 一覧表示
-- 試合詳細表示
-- 分析ロジック
-- 静的データ取得
+- `softeni-pick` mode
+  既存のベータ導線と記録管理導線を持つ本体サイト
+- `score` mode
+  `score.softeni-pick.com` で公開する閲覧専用サイト
+
+モード判定は Host / referer ではなく、`lib/siteConfig.ts` の `siteConfig.mode` だけを基準にします。
 
 この機能は SSR ではなく静的生成前提です。新しい試合を公開するには、`public/data/beta-matches/` の更新と再ビルドが必要です。
 
 ## ルーティングと責務
 
-### `/beta/matches-results`
+### `softeni-pick` mode
 
-実装: `src/pages/beta/matches-results/index.tsx`
+公開系:
 
-- `public/data/beta-matches/index.json` を読み、試合一覧を静的生成する
-- 各行で試合カード名、大会名、回戦、試合状態、ゲームスコア、作成日を表示する
-- 試合状態は `games` と `winner_team` を見て `finished / in_progress / not_started` をその場で判定する
-- 大会情報が引ける場合は大会詳細ページへの導線を表示する
+- `/beta/matches-results`
+- `/beta/matches-results/[matchId]`
+- `/beta/matches-results/growth`
 
-### `/beta/matches-results/[matchId]`
+管理系:
 
-実装: `src/pages/beta/matches-results/[matchId]/index.tsx`
+- `/beta`
+- `/beta/matches`
+- `/beta/matches/create`
+- `/beta/matches/[matchId]`
+- `/beta/matches/[matchId]/input`
 
-- `public/data/beta-matches/matches/{matchId}.json` を読み、試合詳細ページを静的生成する
-- `getStaticPaths` は `meta.json` か `index.json` から `matchId` 一覧を作る
-- 画面は次のブロックで構成される
-  - 試合サマリー
-  - 振り返りポイント
-  - 詳細比較
-  - 補足統計
-  - ゲーム詳細
-  - 選手別統計
-- 試合サマリーは対戦カード、大会名、回戦、勝者、ゲームカウント、ゲーム別スコア、記録日を表示する
-- 振り返りポイントは `teamGuideCards` を使い、注目チームごとの確認ポイントをカード表示する
-- `focusTeam` クエリで振り返りポイントの注目チームを保持する
-- 詳細比較は折りたたみ表示で、上部カードの根拠になるチーム別比較指標を表示する
-- 補足統計はラリー数分布、最長ラリー、平均ラリーなど、上部カードと重複しにくい試合全体の補助情報を表示する
-- ゲーム詳細は最新ゲームのみ初期展開し、ポイントごとの途中スコアと結果種別を表示する
-- 選手別統計は折りたたみ表示で、選手ごとのウィナー、ミス、サーブ、ゲーム別内訳を確認できる
+役割:
+
+- 既存のベータ公開面を維持する
+- 記録入力、編集、試合作成、管理導線を持つ
+- `score` 公開先への案内リンクを置ける
+
+### `score` mode
+
+公開系:
+
+- `/matches`
+- `/matches/[matchId]`
+- `/matches/growth`
+
+役割:
+
+- `score.softeni-pick.com` の閲覧専用公開面
+- 既存 `matchId` をそのまま URL に使う
+- `siteConfig.baseUrl` を使って canonical / OGP / 共有 URL を組み立てる
+
+### `score` mode で閉じるもの
+
+`score` 側では `/beta/*` を原則 404 にします。あわせて管理ページと書き込み API も閉じます。
+
+404 対象ページ:
+
+- `/beta`
+- `/beta/matches-results*`
+- `/beta/matches*`
+
+拒否対象 API:
+
+- `POST /api/matches`
+- `PATCH /api/matches/[matchId]`
+- `DELETE /api/matches/[matchId]`
+- `POST|PUT|DELETE /api/matches/[matchId]/points`
+- `POST /api/matches/[matchId]/games`
+- `PATCH /api/matches/[matchId]/games/[gameId]`
 
 ## データソース
 
 ### 生成物
 
 - `public/data/beta-matches/meta.json`
-  - `matchIds` を保持し、静的パス生成の第一候補になる
+  `matchIds` を保持し、静的パス生成の第一候補になる
 - `public/data/beta-matches/index.json`
-  - 一覧表示用の軽量データ
-  - 各試合にはポイント配列を含めず、ゲーム単位のサマリーだけを持つ
+  一覧表示用の軽量データ
 - `public/data/beta-matches/matches/{matchId}.json`
-  - 詳細ページ用の完全データ
-  - `games[].points[]` まで含む
+  詳細ページ用の完全データ
+- `public/data/beta-matches/growth/targets.json`
+  成長分析一覧用の対象データ
+- `public/data/beta-matches/growth/reports/{target}.json`
+  成長分析詳細用のレポートデータ
 
 ### 生成スクリプト
 
@@ -62,58 +91,125 @@
 
 - Supabase の `matches`、`games`、`points` から公開用 JSON を生成する
 - 取得対象は作成日時降順の最新 50 件
-- 環境変数がない場合は、既存の `public/data/beta-matches/` スナップショットを再利用する
-- 一覧用には `summarizeMatchForIndex` でポイント配列を落として軽量化している
+- 環境変数がない場合は既存スナップショットを再利用する
+- 一覧用には `summarizeMatchForIndex` でポイント配列を落として軽量化する
+- 公開前に `toPublicMatchSnapshot` で内部項目を除外する
+
+### 公開 JSON から除外する内部項目
+
+公開 JSON には、少なくとも次を含めません。
+
+- `source_site_match_id`
+- `source_site_tournament_id`
+- `edit_token`
+- `edit_token_hash`
+- `recorder_side`
+- `created_by`
+- `updated_by`
+- `internal_note`
+- `import_source`
+- `debug_*`
+- `_debug*`
+- `_supabase*`
+
+`score` 側は閲覧専用なので、編集や内部運用にだけ必要なデータは公開 JSON に出さない前提です。
 
 ## 主要ロジック
+
+### モード設定
+
+実装: `lib/siteConfig.ts`
+
+- `siteConfig.mode`
+  `softeni-pick` / `score` の切り替え基準
+- `siteConfig.baseUrl`
+  canonical / OGP / 共有 URL の起点
+- `siteConfig.siteName`
+  サイト名
+- `siteConfig.ogImage`
+  OGP 画像 URL
+- `getPublicMatchesListPath`
+- `getPublicMatchDetailPath`
+- `getPublicMatchesGrowthPath`
+
+環境変数:
+
+- `SITE_MODE`
+- `NEXT_PUBLIC_SITE_MODE`
+- `NEXT_PUBLIC_PUBLIC_BASE_URL`
+- `NEXT_PUBLIC_SITE_NAME`
+- `NEXT_PUBLIC_PUBLIC_OG_IMAGE`
 
 ### データ取得と表示名整形
 
 実装: `lib/betaMatchesStatic.ts`
 
 - `getLatestBetaMatches`
-  - `index.json` を読み、一覧ページ用の試合配列を返す
+  一覧ページ用の試合配列を返す
 - `getLatestBetaMatchIds`
-  - `meta.json` の `matchIds` を優先し、なければ `index.json` から ID を復元する
+  `meta.json` 優先で ID 一覧を返す
 - `getBetaMatchById`
-  - `matches/{matchId}.json` を読み、詳細ページ用の試合データを返す
+  詳細ページ用の試合データを返す
 - `getBetaTeamDisplayName`
-  - 旧形式の `team_*_player*_last_name` と新しい `teams` 構造の両方から表示名を作る
-  - JSON フォーマット変更の影響を受けやすいポイント
+  旧形式フィールドと `teams` 構造の両方から表示名を作る
 
 ### 分析ロジック
 
 実装: `lib/matchAnalysis.ts`
 
 - ポイント列を再構築してチーム別の比較指標を作る
-- 主な集計対象
-  - サーブ
-  - レシーブ
-  - 重要局面
-  - ラリー長
-  - 連続得点
-  - 決着内訳
-- 主な分析カード
-  - `service_to_points`
-  - `key_moments`
-  - `momentum`
-  - `rally_profile`
-  - `point_endings`
+- サーブ、レシーブ、重要局面、ラリー長、連続得点、決着内訳を集計する
 - `scoreIntegrity` で再構築スコアと元データの一致を検証する
-- 不一致時は分析表示だけ停止し、試合スコアやポイント詳細は表示を続ける
+- 不一致時は分析表示だけ停止し、スコア表示とポイント詳細は続ける
 
-### 詳細ページ内の画面専用集計
+### 画面の責務
 
-実装: `src/pages/beta/matches-results/[matchId]/index.tsx`
+一覧:
 
-- `getMatchStats`
-  - 試合全体のラリー数分布、最長ラリー、平均ラリー、最大連続得点などを算出する
-- `getPlayerStats`
-  - 選手別のウィナー、ミス、サーブ、ゲーム別内訳を算出する
+- `src/pages/beta/matches-results/index.tsx`
+- `src/pages/matches/index.tsx`
 
-これら 2 つは `lib/matchAnalysis.ts` とは別管理です。`getMatchStats` は補足統計向け、`getPlayerStats` は折りたたみの選手別統計向けです。振り返りカードや詳細比較の指標定義を変えたいのか、補助集計を変えたいのかで触る場所を切り分けると安全です。
+詳細:
+
+- `src/pages/beta/matches-results/[matchId]/index.tsx`
+- `src/pages/matches/[matchId]/index.tsx`
+
+成長分析:
+
+- `src/pages/beta/matches-results/growth/index.tsx`
+- `src/pages/matches/growth/index.tsx`
+
+`/matches*` 側は既存 UI を再利用し、公開導線と `MetaHead` だけを `siteConfig` ベースで切り替えています。
+
+## 型と境界
+
+実装: `src/types/matchAccess.ts`
+
+- `CommonMatchInput`
+  共通の試合入力境界。試合基本情報、対戦カード、選手情報、`teams` 構造を含む
+- `SofteniPickMatchInput`
+  `CommonMatchInput` に `softeni-pick` 専用の運用項目を足したもの
+- `PublicMatchSnapshot`
+  公開 JSON に出してよい試合データ境界
+
+設計意図:
+
+- 記録・分析コアは共通で持つ
+- `softeni-pick` 専用項目は連携メタデータに寄せる
+- `score` 側へは公開用スナップショットだけを流す
 
 ## 改修時の見方
+
+### ルーティングや公開挙動を変える場合
+
+優先確認箇所:
+
+- `lib/siteConfig.ts`
+- `src/pages/beta/matches-results/*`
+- `src/pages/matches/*`
+- `src/components/MetaHead.tsx`
+
+特に `siteConfig.mode` を増やしたり、`getPublic*Path` を変えたりすると、canonical、OGP、導線、静的生成先がまとめて影響を受けます。
 
 ### データ形式を変更する場合
 
@@ -121,45 +217,40 @@
 
 - `scripts/generate-beta-matches-json.mjs`
 - `lib/betaMatchesStatic.ts`
-- `src/pages/beta/matches-results/index.tsx`
+- `src/types/matchAccess.ts`
 - `src/pages/beta/matches-results/[matchId]/index.tsx`
 - `lib/matchAnalysis.ts`
 
-特に `team` 表示名まわり、`games[].points[]` の有無、`winner_team`、`rally_count`、サーブ関連フラグは画面表示と分析の両方に影響します。
+特に `games[].points[]`、`winner_team`、`rally_count`、サーブ関連フィールドは表示と分析の両方に影響します。
 
-### 分析指標を変更する場合
-
-優先確認箇所:
-
-- `lib/matchAnalysis.ts`
-- `src/pages/beta/matches-results/[matchId]/index.tsx`
-
-`lib/matchAnalysis.ts` はチーム比較とガイドカード向け、詳細ページ内の集計関数は画面の補助統計向けです。片方だけ直すと表示間で数字の意味がずれる可能性があります。
-
-現在の詳細ページでは、ユーザーに最初に伝える内容を上部の「試合サマリー」と「振り返りポイント」に集約しています。詳細比較や選手別統計は、必要なときに根拠を確認するための折りたたみ表示です。チーム別のウィナー・ミス合計サマリーは重複が強いため常時表示していません。
-
-### UI 表示だけを変更する場合
+### API 制約を変える場合
 
 優先確認箇所:
 
-- 一覧: `src/pages/beta/matches-results/index.tsx`
-- 詳細: `src/pages/beta/matches-results/[matchId]/index.tsx`
+- `src/pages/api/matches/index.ts`
+- `src/pages/api/matches/[matchId]/index.ts`
+- `src/pages/api/matches/[matchId]/points/index.ts`
+- `src/pages/api/matches/[matchId]/games/index.ts`
+- `src/pages/api/matches/[matchId]/games/[gameId].ts`
 
-見た目だけの変更でも、詳細ページは表示ロジックと集計ロジックが同居しているため、影響範囲の確認を先に行うのが安全です。
+`score` 側を閲覧専用で保つ前提が崩れないかを先に確認します。
 
 ## 確認項目
 
 改修後は少なくとも次を確認します。
 
-- 一覧に `未開始 / 進行中 / 終了` が正しく出る
-- `matchId` ごとの静的生成が通る
-- 大会情報が取れない試合でも詳細ページが崩れない
-- `games/points` がある試合で試合サマリー、振り返りポイント、詳細比較、補足統計、ゲーム詳細、選手別統計が表示される
-- `focusTeam` クエリで注目チームが切り替わり、URLにも保持される
-- 詳細比較と選手別統計が折りたたみとして表示され、開くと根拠指標や選手別内訳が確認できる
+- `softeni-pick` mode で `/beta/matches-results*` が従来どおり見られる
+- `score` mode で `/matches*` が見られ、`/beta/*` が 404 になる
+- `matchId` ごとの静的生成が両モードで意図どおりに動く
+- `score` mode で書き込み API が拒否される
+- canonical / OGP / 共有 URL が `siteConfig.baseUrl` を向く
+- `games/points` がある試合で試合サマリー、振り返りポイント、成長分析が表示できる
+- `focusTeam` や `targetKey` クエリが URL に保持される
+- 公開 JSON に内部項目が含まれていない
 - `scoreIntegrity` 不一致データで分析のみ停止し、スコア表示とポイント詳細は見られる
 
 ## 補足
 
-- この機能は `src/pages/beta/index.tsx` からベータ機能として公開されている
-- 公開データは `public/data/beta-matches/` にコミット済みスナップショットを置けるため、Supabase 接続がない環境でも表示確認は可能
+- `score.softeni-pick.com` は初回リリースでは閲覧専用
+- モード判定は `siteConfig.mode` のみを基準にする
+- 公開データは `public/data/beta-matches/` にコミット済みスナップショットを置けるため、Supabase 接続がない環境でも確認できる

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import { isAdmin, isDebugMode } from '@/lib/env';
+import { getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 
 interface BetaFeature {
   id: string;
@@ -25,7 +26,7 @@ const betaFeatures: BetaFeature[] = [
     title: '試合結果 - ポイント詳細記録',
     description:
       'ポイント詳細記録システムで記録された試合の結果をご覧いただけます。ラリー数、決定打の種類、選手別統計などの詳細な分析データを確認できます。',
-    href: '/beta/matches-results',
+    href: getPublicMatchesListPath(),
     status: '試作中',
     icon: '🎾',
   },
@@ -208,6 +209,10 @@ export default function BetaIndexPage() {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  if (isScoreSiteMode()) {
+    return { notFound: true };
+  }
+
   return {
     props: {},
   };

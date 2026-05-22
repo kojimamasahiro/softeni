@@ -7,6 +7,7 @@ import {
   sendMethodNotAllowed,
   sendSupabaseError,
 } from '@/lib/matchesApi';
+import { isScoreSiteMode } from '@/lib/siteConfig';
 
 export default async function handler(
   req: NextApiRequest,
@@ -27,6 +28,10 @@ export default async function handler(
   }
 
   const supabase = getServerSupabase();
+
+  if (isScoreSiteMode()) {
+    return res.status(404).json({ error: 'Not found.' });
+  }
 
   try {
     const match = await loadMatchWithRelations(supabase, matchId);
