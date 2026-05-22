@@ -10,6 +10,20 @@ import {
 import { isScoreSiteMode } from '@/lib/siteConfig';
 import type { Match } from '@/types/database';
 
+type TeamKey = 'A' | 'B';
+
+type EditableTeamPlayer = {
+  last_name?: string | null;
+  first_name?: string | null;
+  team_name?: string | null;
+  region?: string | null;
+};
+
+type EditableTeam = {
+  entry_number?: string | null;
+  players?: EditableTeamPlayer[];
+};
+
 type UpdateMatchBody = Partial<
   Pick<
     Match,
@@ -20,8 +34,100 @@ type UpdateMatchBody = Partial<
     | 'opponent_level'
     | 'source_site_match_id'
     | 'source_site_tournament_id'
+    | 'youtube_video_id'
+    | 'youtube_url'
+    | 'youtube_embed_allowed'
+    | 'team_a'
+    | 'team_b'
+    | 'team_a_entry_number'
+    | 'team_a_player1_last_name'
+    | 'team_a_player1_first_name'
+    | 'team_a_player1_team_name'
+    | 'team_a_player1_region'
+    | 'team_a_player2_last_name'
+    | 'team_a_player2_first_name'
+    | 'team_a_player2_team_name'
+    | 'team_a_player2_region'
+    | 'team_b_entry_number'
+    | 'team_b_player1_last_name'
+    | 'team_b_player1_first_name'
+    | 'team_b_player1_team_name'
+    | 'team_b_player1_region'
+    | 'team_b_player2_last_name'
+    | 'team_b_player2_first_name'
+    | 'team_b_player2_team_name'
+    | 'team_b_player2_region'
+    | 'teams'
   >
->;
+> & {
+  teams?: {
+    A?: EditableTeam;
+    B?: EditableTeam;
+  } | null;
+};
+
+const normalizeString = (value: unknown) => {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+};
+
+const buildTeamDisplay = (team: EditableTeam) => {
+  const entryNumber = normalizeString(team.entry_number);
+  const players = (team.players ?? [])
+    .map((player) => {
+      const lastName = normalizeString(player.last_name);
+      const firstName = normalizeString(player.first_name);
+      const teamName = normalizeString(player.team_name);
+      const region = normalizeString(player.region);
+
+      const name = [lastName, firstName].filter(Boolean).join(' ').trim();
+      const details = [
+        name || null,
+        teamName ? `(${teamName})` : null,
+        region ? `[${region}]` : null,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .trim();
+
+      return details || null;
+    })
+    .filter(Boolean);
+
+  const display = [entryNumber, players.join(' / ')].filter(Boolean).join(' ');
+  return display || null;
+};
+
+const buildStructuredTeam = (
+  body: UpdateMatchBody,
+  teamKey: TeamKey,
+): EditableTeam => {
+  const prefix = `team_${teamKey.toLowerCase()}` as 'team_a' | 'team_b';
+
+  const player1: EditableTeamPlayer = {
+    last_name: normalizeString(body[`${prefix}_player1_last_name`]),
+    first_name: normalizeString(body[`${prefix}_player1_first_name`]),
+    team_name: normalizeString(body[`${prefix}_player1_team_name`]),
+    region: normalizeString(body[`${prefix}_player1_region`]),
+  };
+
+  const player2: EditableTeamPlayer = {
+    last_name: normalizeString(body[`${prefix}_player2_last_name`]),
+    first_name: normalizeString(body[`${prefix}_player2_first_name`]),
+    team_name: normalizeString(body[`${prefix}_player2_team_name`]),
+    region: normalizeString(body[`${prefix}_player2_region`]),
+  };
+
+  const players = [player1, player2].filter((player) =>
+    Object.values(player).some(Boolean),
+  );
+
+  return {
+    entry_number: normalizeString(body[`${prefix}_entry_number`]),
+    players,
+  };
+};
 
 export default async function handler(
   req: NextApiRequest,
@@ -55,6 +161,26 @@ export default async function handler(
     try {
       const body = req.body as UpdateMatchBody;
       const allowedUpdates: Record<string, unknown> = {};
+      const teamFieldKeys = [
+        'team_a_entry_number',
+        'team_a_player1_last_name',
+        'team_a_player1_first_name',
+        'team_a_player1_team_name',
+        'team_a_player1_region',
+        'team_a_player2_last_name',
+        'team_a_player2_first_name',
+        'team_a_player2_team_name',
+        'team_a_player2_region',
+        'team_b_entry_number',
+        'team_b_player1_last_name',
+        'team_b_player1_first_name',
+        'team_b_player1_team_name',
+        'team_b_player1_region',
+        'team_b_player2_last_name',
+        'team_b_player2_first_name',
+        'team_b_player2_team_name',
+        'team_b_player2_region',
+      ] as const;
 
       (
         [
@@ -65,12 +191,35 @@ export default async function handler(
           'opponent_level',
           'source_site_match_id',
           'source_site_tournament_id',
+          'youtube_video_id',
+          'youtube_url',
+          'youtube_embed_allowed',
         ] as const
       ).forEach((key) => {
         if (key in body) {
           allowedUpdates[key] = body[key] ?? null;
         }
       });
+
+      teamFieldKeys.forEach((key) => {
+        if (key in body) {
+          allowedUpdates[key] = normalizeString(body[key]);
+        }
+      });
+
+      const shouldRebuildTeams =
+        'teams' in body || teamFieldKeys.some((key) => key in body);
+
+      if (shouldRebuildTeams) {
+        const nextTeams = {
+          A: buildStructuredTeam(body, 'A'),
+          B: buildStructuredTeam(body, 'B'),
+        };
+
+        allowedUpdates.teams = nextTeams;
+        allowedUpdates.team_a = buildTeamDisplay(nextTeams.A);
+        allowedUpdates.team_b = buildTeamDisplay(nextTeams.B);
+      }
 
       const { data: match, error } = await (supabase as any)
         .from('matches')

@@ -44,6 +44,28 @@ export default async function handler(
           .json({ error: 'game_id and point_number are required.' });
       }
 
+      if (
+        body.video_end_ms !== null &&
+        body.video_end_ms !== undefined &&
+        (body.video_start_ms === null || body.video_start_ms === undefined)
+      ) {
+        return res.status(400).json({
+          error: 'video_start_ms is required when video_end_ms is provided.',
+        });
+      }
+
+      if (
+        body.video_start_ms !== null &&
+        body.video_start_ms !== undefined &&
+        body.video_end_ms !== null &&
+        body.video_end_ms !== undefined &&
+        body.video_start_ms > body.video_end_ms
+      ) {
+        return res.status(400).json({
+          error: 'video_start_ms must be less than or equal to video_end_ms.',
+        });
+      }
+
       const { data: point, error } = await (supabase as any)
         .from('points')
         .insert(body)
@@ -86,6 +108,37 @@ export default async function handler(
 
       if (existingPointError) {
         throw existingPointError;
+      }
+
+      const nextVideoStartMs =
+        'video_start_ms' in updates
+          ? updates.video_start_ms
+          : existingPoint.video_start_ms;
+      const nextVideoEndMs =
+        'video_end_ms' in updates
+          ? updates.video_end_ms
+          : existingPoint.video_end_ms;
+
+      if (
+        nextVideoEndMs !== null &&
+        nextVideoEndMs !== undefined &&
+        (nextVideoStartMs === null || nextVideoStartMs === undefined)
+      ) {
+        return res.status(400).json({
+          error: 'video_start_ms is required when video_end_ms is provided.',
+        });
+      }
+
+      if (
+        nextVideoStartMs !== null &&
+        nextVideoStartMs !== undefined &&
+        nextVideoEndMs !== null &&
+        nextVideoEndMs !== undefined &&
+        nextVideoStartMs > nextVideoEndMs
+      ) {
+        return res.status(400).json({
+          error: 'video_start_ms must be less than or equal to video_end_ms.',
+        });
       }
 
       const { data: point, error } = await (supabase as any)

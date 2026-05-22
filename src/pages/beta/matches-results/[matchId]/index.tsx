@@ -1,9 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import MetaHead from '@/components/MetaHead';
+import YouTubeRangePlayer, {
+  type YouTubeRangePlayerHandle,
+} from '@/components/YouTubeRangePlayer';
 import {
   AnalysisGuideCard,
   AnalysisReliability,
@@ -31,6 +34,11 @@ import {
   getTournamentInfoSSR,
   TournamentInfo,
 } from '@/lib/tournamentHelpers.server';
+import {
+  buildYouTubeWatchUrlFromVideoId,
+  formatVideoTimestamp,
+  getPointVideoEndMs,
+} from '@/lib/youtubePlayback';
 
 import { Game, Match, Point } from '../../../../types/database';
 
@@ -45,6 +53,7 @@ type SelectedReviewGroup = {
   hintTitle: string;
   group: ReviewGroup;
 };
+type FloatingVideoSize = 'sm' | 'md' | 'lg';
 
 const POINT_ERROR_TYPES = [
   'net',
@@ -71,6 +80,34 @@ const EXTENDED_POINT_ERROR_TYPES = [
   'forced_error',
   'unforced_error',
 ] as const;
+
+const FLOATING_VIDEO_SIZE_OPTIONS: {
+  label: string;
+  value: FloatingVideoSize;
+}[] = [
+  { label: '小', value: 'sm' },
+  { label: '中', value: 'md' },
+  { label: '大', value: 'lg' },
+];
+
+const FLOATING_VIDEO_LAYOUT: Record<
+  FloatingVideoSize,
+  { containerWidth: string }
+> = {
+  sm: {
+    containerWidth: 'md:w-[22rem]',
+  },
+  md: {
+    containerWidth: 'md:w-[30rem]',
+  },
+  lg: {
+    containerWidth: 'md:w-[38rem]',
+  },
+};
+
+const FLOATING_VIDEO_SPACER_CLASS = 'mb-[28rem] md:mb-[42rem]';
+const MOBILE_VIDEO_ASPECT_RATIO = 16 / 9;
+const TALL_WIDE_VIDEO_ASPECT_RATIO = 32 / 27;
 
 const normalizePlayerName = (name: string | null | undefined) => {
   if (!name) return null;
@@ -125,6 +162,9 @@ export const PublicMatchDetailPage = ({
   tournamentInfo,
 }: PublicMatchDetailProps) => {
   const router = useRouter();
+  const youtubePlayerRef = useRef<YouTubeRangePlayerHandle | null>(null);
+  const playerSectionRef = useRef<HTMLElement | null>(null);
+  const handledQueryRef = useRef(false);
 
   const getTournamentDisplayName = () => {
     const baseName =
@@ -169,6 +209,13 @@ export const PublicMatchDetailPage = ({
   const [highlightedPointId, setHighlightedPointId] = useState<string | null>(
     null,
   );
+  const [youtubeEmbedBlocked, setYoutubeEmbedBlocked] = useState(
+    match.youtube_embed_allowed === false,
+  );
+  const [isVideoFloating, setIsVideoFloating] = useState(false);
+  const [floatingVideoSize, setFloatingVideoSize] =
+    useState<FloatingVideoSize>('md');
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -178,6 +225,20 @@ export const PublicMatchDetailPage = ({
       setFocusTeam(queryTeam);
     }
   }, [router.isReady, router.query.focusTeam]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const syncViewport = () => setIsDesktopViewport(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncViewport);
+    };
+  }, []);
 
   // エキスパンドのトグル関数
   const toggleGameExpansion = (gameNumber: number) => {
@@ -208,6 +269,8 @@ export const PublicMatchDetailPage = ({
   );
 
   const getPointAnchorId = (pointId: string) => `point-${pointId}`;
+  const youtubeVideoId = match.youtube_video_id ?? null;
+  const youtubeWatchUrl = match.youtube_url ?? null;
 
   const formatTeamName = useCallback(
     (team: string | null) => {
@@ -219,6 +282,11 @@ export const PublicMatchDetailPage = ({
 
   const formatScoreTransition = (point: ReviewPoint) =>
     `${point.scoreBefore.A}-${point.scoreBefore.B} → ${point.scoreAfter.A}-${point.scoreAfter.B}`;
+
+  const floatingVideoLayout = FLOATING_VIDEO_LAYOUT[floatingVideoSize];
+  const activeVideoAspectRatio = isDesktopViewport
+    ? TALL_WIDE_VIDEO_ASPECT_RATIO
+    : MOBILE_VIDEO_ASPECT_RATIO;
 
   const getPointPlayerName = (point: Point) => {
     const isErrorPoint = point.result_type
@@ -255,6 +323,44 @@ export const PublicMatchDetailPage = ({
     [formatTeamName],
   );
 
+  const playPointVideo = useCallback(
+    (point: {
+      id?: string;
+      video_end_ms?: number | null;
+      video_start_ms?: number | null;
+    }) => {
+      if (point.video_start_ms === null || point.video_start_ms === undefined) {
+        return;
+      }
+
+      if (!youtubeVideoId || youtubeEmbedBlocked) {
+        const fallbackUrl =
+          youtubeVideoId !== null
+            ? buildYouTubeWatchUrlFromVideoId(
+                youtubeVideoId,
+                point.video_start_ms,
+              )
+            : youtubeWatchUrl;
+        if (fallbackUrl) {
+          window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+        }
+        return;
+      }
+
+      if (!isVideoFloating) {
+        playerSectionRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+      youtubePlayerRef.current?.playRange(
+        point.video_start_ms,
+        getPointVideoEndMs(point.video_start_ms, point.video_end_ms),
+      );
+    },
+    [isVideoFloating, youtubeEmbedBlocked, youtubeVideoId, youtubeWatchUrl],
+  );
+
   const scrollToReviewPoint = (point: ReviewPoint) => {
     setExpandedGames((previous) => {
       const next = new Set(previous);
@@ -268,6 +374,12 @@ export const PublicMatchDetailPage = ({
         behavior: 'smooth',
         block: 'center',
       });
+      const rawPoint = gamesAsc
+        .flatMap((game) => game.points ?? [])
+        .find((candidate) => candidate.id === point.pointId);
+      if (rawPoint) {
+        playPointVideo(rawPoint);
+      }
     }, 0);
 
     window.setTimeout(() => {
@@ -277,27 +389,113 @@ export const PublicMatchDetailPage = ({
     }, 2600);
   };
 
-  const scrollToPoint = useCallback((gameNumber: number, pointId: string) => {
-    setExpandedGames((previous) => {
-      const next = new Set(previous);
-      next.add(gameNumber);
-      return next;
-    });
-    setHighlightedPointId(pointId);
-
-    window.setTimeout(() => {
-      document.getElementById(getPointAnchorId(pointId))?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+  const scrollToPoint = useCallback(
+    (
+      gameNumber: number,
+      pointId: string,
+      options?: {
+        playVideo?: boolean;
+      },
+    ) => {
+      setExpandedGames((previous) => {
+        const next = new Set(previous);
+        next.add(gameNumber);
+        return next;
       });
-    }, 0);
+      setHighlightedPointId(pointId);
 
-    window.setTimeout(() => {
-      setHighlightedPointId((current) =>
-        current === pointId ? null : current,
-      );
-    }, 2600);
-  }, []);
+      window.setTimeout(() => {
+        document.getElementById(getPointAnchorId(pointId))?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+        if (options?.playVideo) {
+          const rawPoint = gamesAsc
+            .flatMap((game) => game.points ?? [])
+            .find((candidate) => candidate.id === pointId);
+          if (rawPoint) {
+            playPointVideo(rawPoint);
+          }
+        }
+      }, 0);
+
+      window.setTimeout(() => {
+        setHighlightedPointId((current) =>
+          current === pointId ? null : current,
+        );
+      }, 2600);
+    },
+    [gamesAsc, playPointVideo],
+  );
+
+  useEffect(() => {
+    if (!router.isReady || handledQueryRef.current) return;
+
+    const pointIdQuery = router.query.pointId;
+    const pointNumberQuery = router.query.point;
+    const timeQuery = router.query.t;
+
+    if (typeof pointIdQuery === 'string') {
+      const locatedPoint = gamesAsc
+        .flatMap((game) =>
+          (game.points ?? []).map((point) => ({
+            gameNumber: game.game_number,
+            point,
+          })),
+        )
+        .find(({ point }) => point.id === pointIdQuery);
+
+      if (locatedPoint) {
+        handledQueryRef.current = true;
+        scrollToPoint(locatedPoint.gameNumber, locatedPoint.point.id, {
+          playVideo: true,
+        });
+      }
+      return;
+    }
+
+    if (typeof pointNumberQuery === 'string') {
+      const pointNumber = Number(pointNumberQuery);
+      if (!Number.isNaN(pointNumber)) {
+        const locatedPoint = gamesAsc
+          .flatMap((game) =>
+            (game.points ?? []).map((point) => ({
+              gameNumber: game.game_number,
+              point,
+            })),
+          )
+          .find(({ point }) => point.point_number === pointNumber);
+        if (locatedPoint) {
+          handledQueryRef.current = true;
+          scrollToPoint(locatedPoint.gameNumber, locatedPoint.point.id, {
+            playVideo: true,
+          });
+          return;
+        }
+      }
+    }
+
+    if (
+      typeof timeQuery === 'string' &&
+      youtubeVideoId &&
+      !youtubeEmbedBlocked
+    ) {
+      const seconds = Number(timeQuery);
+      if (!Number.isNaN(seconds)) {
+        handledQueryRef.current = true;
+        youtubePlayerRef.current?.playRange(seconds * 1000);
+      }
+    }
+  }, [
+    gamesAsc,
+    router.isReady,
+    router.query.point,
+    router.query.pointId,
+    router.query.t,
+    scrollToPoint,
+    youtubeEmbedBlocked,
+    youtubeVideoId,
+  ]);
 
   const teamAPlayers = useMemo(() => getTeamPlayerNames(match, 'A'), [match]);
   const teamBPlayers = useMemo(() => getTeamPlayerNames(match, 'B'), [match]);
@@ -1522,7 +1720,9 @@ export const PublicMatchDetailPage = ({
                         key={moment.id}
                         type="button"
                         onClick={() =>
-                          scrollToPoint(moment.gameNumber, moment.id)
+                          scrollToPoint(moment.gameNumber, moment.id, {
+                            playVideo: true,
+                          })
                         }
                         className="w-full rounded bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                       >
@@ -1538,6 +1738,74 @@ export const PublicMatchDetailPage = ({
             )}
           </div>
         </section>
+
+        {(youtubeVideoId || youtubeWatchUrl) && (
+          <>
+            {isVideoFloating && <div className={FLOATING_VIDEO_SPACER_CLASS} />}
+            <section
+              ref={playerSectionRef}
+              className={
+                isVideoFloating
+                  ? `fixed left-0 right-0 top-2 z-40 px-4 md:left-auto md:right-6 md:top-2 md:px-0 ${floatingVideoLayout.containerWidth}`
+                  : 'mb-8'
+              }
+            >
+              <div
+                className={`${
+                  isVideoFloating ? 'mx-auto md:mx-0' : 'mx-auto max-w-6xl'
+                }`}
+              >
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoFloating((current) => !current)}
+                      className="rounded-full border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                    >
+                      {isVideoFloating ? '元の位置に戻す' : '動画を固定表示'}
+                    </button>
+                    {isVideoFloating && (
+                      <div className="hidden items-center gap-1 rounded-full bg-gray-100 p-1 dark:bg-gray-700 md:flex">
+                        {FLOATING_VIDEO_SIZE_OPTIONS.map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => setFloatingVideoSize(option.value)}
+                            className={`rounded-full px-2.5 py-1 text-xs font-medium transition ${
+                              floatingVideoSize === option.value
+                                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-900 dark:text-gray-100'
+                                : 'text-gray-600 hover:bg-white/70 dark:text-gray-300 dark:hover:bg-gray-600'
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {youtubeVideoId && !youtubeEmbedBlocked ? (
+                  <div className="overflow-hidden rounded-lg bg-black">
+                    <YouTubeRangePlayer
+                      ref={youtubePlayerRef}
+                      videoId={youtubeVideoId}
+                      onEmbedBlocked={() => setYoutubeEmbedBlocked(true)}
+                      responsive
+                      aspectRatio={activeVideoAspectRatio}
+                      className="w-full"
+                    />
+                  </div>
+                ) : (
+                  <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+                    この動画はページ内に埋め込めないため、各ポイントの再生操作で
+                    YouTube を別タブで開きます。
+                  </div>
+                )}
+              </div>
+            </section>
+          </>
+        )}
 
         <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
           <div className="mb-4">
@@ -1683,6 +1951,28 @@ export const PublicMatchDetailPage = ({
                                       {tag}
                                     </span>
                                   ))}
+                                  {point.video_start_ms !== null &&
+                                    point.video_start_ms !== undefined && (
+                                      <>
+                                        <span className="rounded bg-slate-100 px-2 py-1 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                                          動画{' '}
+                                          {formatVideoTimestamp(
+                                            point.video_start_ms,
+                                          )}
+                                          {point.video_end_ms !== null &&
+                                          point.video_end_ms !== undefined
+                                            ? ` - ${formatVideoTimestamp(point.video_end_ms)}`
+                                            : ' から'}
+                                        </span>
+                                        <button
+                                          type="button"
+                                          onClick={() => playPointVideo(point)}
+                                          className="rounded bg-blue-600 px-2.5 py-1 text-xs font-medium text-white hover:bg-blue-700"
+                                        >
+                                          このポイントを見る
+                                        </button>
+                                      </>
+                                    )}
                                 </div>
                               </div>
                             );

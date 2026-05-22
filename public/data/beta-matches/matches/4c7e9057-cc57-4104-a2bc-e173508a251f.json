@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T13:04:41.464Z",
+  "generatedAt": "2026-05-22T04:45:55.725Z",
   "match": {
     "id": "4c7e9057-cc57-4104-a2bc-e173508a251f",
     "tournament_name": "zennihon-championship-2024",
@@ -73,6 +73,9 @@
     "status": "draft",
     "completed_at": null,
     "opponent_level": "unknown",
+    "youtube_video_id": null,
+    "youtube_url": null,
+    "youtube_embed_allowed": null,
     "games": [
       {
         "id": "0835b111-8089-4836-aaaf-d106ccd1a169",
@@ -104,7 +107,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "a96c93da-edf6-444c-a8b5-a0887603f645",
@@ -125,7 +130,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "ccd0c421-ccee-406f-9547-c95e0c5057f5",
@@ -146,7 +153,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "83ceefc7-93e9-4b30-a063-5f458260f32a",
@@ -167,7 +176,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "c14b4b21-6146-44cf-8c5c-bb4ec62e95cc",
@@ -188,7 +199,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "19f23094-c750-4fc3-af88-8e8a9298aad6",
@@ -209,7 +222,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "7568de61-8df9-4373-a373-8cb265db7e08",
@@ -230,7 +245,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "26240df0-8ffe-44eb-87fd-f611ac5b301a",
@@ -251,7 +268,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "85ef8f79-9d59-442f-bfad-1a82221ee03d",
@@ -272,7 +291,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "910ab690-c358-4ca2-a6a1-5f0d845cfc71",
@@ -293,7 +314,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -327,7 +350,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "81033028-d116-4d09-811b-cee9c1e8c321",
@@ -348,7 +373,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "19216f22-6442-4475-81b5-5da5f4c01565",
@@ -369,7 +396,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "d6d303c8-8b01-4846-810b-0fdb6dbec393",
@@ -390,7 +419,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "bab28b3f-f4ef-4e88-8984-1cd2fd9c2aed",
@@ -411,7 +442,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "4e51d0f2-3856-4799-b31d-70ca3ed24a2c",
@@ -432,7 +465,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "975efb2a-6173-4cfc-b80f-94a8c2742fb1",
@@ -453,7 +488,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "0f3a4ef0-e934-4c61-83eb-44c38aa4d16d",
@@ -474,7 +511,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -508,7 +547,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "d4f91096-c8c2-4fe4-b6b4-983410d65789",
@@ -529,7 +570,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "87158bf7-94b9-403a-9603-dad6c88771e6",
@@ -550,7 +593,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "151e502f-fdb5-495f-bf39-c8ffc5d6bdb2",
@@ -571,7 +616,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "b8717121-2b5b-4ac0-9c53-bcaa656a933e",
@@ -592,7 +639,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "03499003-f211-4e63-8ffe-ebe83716f22f",
@@ -613,7 +662,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "ebe3ce6c-58e5-48d2-be98-a2f62a99f590",
@@ -634,7 +685,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "ff418775-d281-47e8-961b-312dc973d3f4",
@@ -655,7 +708,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -689,7 +744,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "9108f40b-513d-41f6-b14e-6d4eb82bdd97",
@@ -710,7 +767,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "0b362488-64b7-4dd9-adb6-4c7002395452",
@@ -731,7 +790,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "61040967-76c1-4a4c-8a14-ee718f0cfb31",
@@ -752,7 +813,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "1cbd427a-cb03-4258-88b3-c877b9e87dc4",
@@ -773,7 +836,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "c0ff9938-827b-4add-9393-a0627ec52271",
@@ -794,7 +859,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -828,7 +895,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "b5b54eff-16bb-4a21-b17a-8c42d20a3762",
@@ -849,7 +918,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "7b49b53e-2764-4618-a4d5-80243d834ffa",
@@ -870,7 +941,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "e7ec6788-c101-4ca1-92ef-f6e0d36ec9f7",
@@ -891,7 +964,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "3eb61f61-2a85-4d71-bc0c-6fc81a47f2c9",
@@ -912,7 +987,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "9d1bb050-43f2-4e2c-94ed-173b26240552",
@@ -933,7 +1010,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -967,7 +1046,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "0caa40d1-44cc-403c-a04f-f46633c969ec",
@@ -988,7 +1069,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "0ec9dc9c-fedf-4f80-8afa-349d1b643534",
@@ -1009,7 +1092,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "9b955b0d-395f-413b-963e-631b2668ee04",
@@ -1030,7 +1115,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "04a234ab-c4c2-4d0a-8df1-17e031013157",
@@ -1051,7 +1138,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "c4621a2e-6e4f-4b8d-b3bf-f6c8dc75cacd",
@@ -1072,7 +1161,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -1106,7 +1197,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "55be686e-6517-4e56-a44a-9703b4e30422",
@@ -1127,7 +1220,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "2ea49e86-7484-48a5-b360-fc352198c7ed",
@@ -1148,7 +1243,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "4ecd16c8-5808-4408-b01f-262b819ce1b5",
@@ -1169,7 +1266,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "bd4cc1e6-7fd2-4b13-8f71-b543151b6f8a",
@@ -1190,7 +1289,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -1224,7 +1325,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "7d5c0a32-27a1-4962-b069-bcf435cf89ad",
@@ -1245,7 +1348,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "4fb8beef-71f6-47f9-90a9-fd3b2bf29b89",
@@ -1266,7 +1371,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "91cc0bad-3ad9-48bb-b7fe-ca6f8f1f43c5",
@@ -1287,7 +1394,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "5435b58c-895e-45d7-a100-223203e4e486",
@@ -1308,7 +1417,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       },
@@ -1342,7 +1453,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "b8003b8d-7ac8-4380-9c45-8426003c77e4",
@@ -1363,7 +1476,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "80ef225d-fd81-49d8-b465-69f3514cbef9",
@@ -1384,7 +1499,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "3e91df42-9530-4c6c-889c-73f35770eb7f",
@@ -1405,7 +1522,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "976f4548-e74a-4aba-82c1-2c747a0212dc",
@@ -1426,7 +1545,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "f097f137-a886-4cb9-b232-91bf94ce33dc",
@@ -1447,7 +1568,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "bb430921-efb9-495f-a4a7-6e209f3f6a24",
@@ -1468,7 +1591,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "c7af8156-76a5-41d6-943c-3b2fe45de8b6",
@@ -1489,7 +1614,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "66748243-f500-4d86-a174-1ed649bf6986",
@@ -1510,7 +1637,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "16c62a4b-20db-430a-ac7b-4f7ae6b5f9cd",
@@ -1531,7 +1660,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "1eb0fae5-798a-449b-9767-d256d11ede00",
@@ -1552,7 +1683,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           },
           {
             "id": "3d1d5972-e82a-4e78-8b6e-f5b611d04b25",
@@ -1573,7 +1706,9 @@
             "shot_course": null,
             "recording_level": "basic",
             "edited_at": null,
-            "point_detail": null
+            "point_detail": null,
+            "video_start_ms": null,
+            "video_end_ms": null
           }
         ]
       }

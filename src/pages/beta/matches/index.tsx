@@ -146,6 +146,14 @@ const MatchList = () => {
                     記録入力
                   </Link>
                 )}
+                {canEditMatches && (
+                  <Link
+                    href={`/beta/matches/${match.id}/video-review`}
+                    className="bg-indigo-500 text-white px-3 py-1 rounded text-sm hover:bg-indigo-600"
+                  >
+                    動画レビュー
+                  </Link>
+                )}
                 <Link
                   href={`/beta/matches/${match.id}`}
                   className="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600"

@@ -24,6 +24,9 @@ export interface Match {
   created_at: string;
   match_date?: string | null;
   court_name?: string | null;
+  youtube_video_id?: string | null;
+  youtube_url?: string | null;
+  youtube_embed_allowed?: boolean | null;
   status?: 'draft' | 'in_progress' | 'completed' | 'archived' | null;
   completed_at?: string | null;
   opponent_level?: 'stronger' | 'same' | 'weaker' | 'unknown' | null;
@@ -97,6 +100,52 @@ export interface Point {
   recording_level?: string | null;
   edited_at?: string | null;
   point_detail?: string | null;
+  video_start_ms?: number | null;
+  video_end_ms?: number | null;
+}
+
+export interface MatchVideoSession {
+  id: string;
+  match_id: string;
+  source_type: 'youtube' | 'upload';
+  source_url: string | null;
+  source_label: string | null;
+  youtube_video_id?: string | null;
+  upload_file_name?: string | null;
+  upload_file_size?: number | null;
+  duration_ms?: number | null;
+  processing_status?:
+    | 'draft'
+    | 'ready'
+    | 'processing'
+    | 'reviewing'
+    | 'committed'
+    | null;
+  created_at: string;
+  updated_at?: string | null;
+  candidates?: MatchPointCandidate[];
+}
+
+export interface MatchPointCandidate {
+  id: string;
+  session_id: string;
+  candidate_order: number;
+  start_ms: number;
+  end_ms: number;
+  confidence: number | null;
+  status: 'pending' | 'confirmed' | 'excluded' | null;
+  winner_team: 'A' | 'B' | null;
+  serving_team: 'A' | 'B' | null;
+  serving_player?: string | null;
+  rally_count: number | null;
+  first_serve_fault?: boolean | null;
+  double_fault?: boolean | null;
+  result_type: string | null;
+  winner_player?: string | null;
+  loser_player?: string | null;
+  notes?: string | null;
+  created_at: string;
+  updated_at?: string | null;
 }
 
 export interface Database {
@@ -125,6 +174,22 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Omit<Point, 'id' | 'created_at'>>;
+      };
+      match_video_sessions: {
+        Row: MatchVideoSession;
+        Insert: Omit<MatchVideoSession, 'id' | 'created_at'> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Omit<MatchVideoSession, 'id' | 'created_at'>>;
+      };
+      match_point_candidates: {
+        Row: MatchPointCandidate;
+        Insert: Omit<MatchPointCandidate, 'id' | 'created_at'> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Omit<MatchPointCandidate, 'id' | 'created_at'>>;
       };
     };
   };
