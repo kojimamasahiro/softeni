@@ -48,10 +48,11 @@
     "dev": "next dev",
     "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-beta-matches-json.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
+    "build:with-sitemap": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build && npm run sitemap",
     "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "check:growth": "node scripts/check-growth-analysis.mjs",
+    "sitemap": "next-sitemap && node scripts/sort-sitemaps.mjs",
     "start": "next start",
-    "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs",
     "lint": "eslint --fix ."
   },
   "dependencies": {

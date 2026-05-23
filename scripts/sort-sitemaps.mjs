@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const publicDir = path.join(process.cwd(), 'public');
+const publicDir = path.join(process.cwd(), 'out');
 const sitemapFiles = fs
   .readdirSync(publicDir)
   .filter((file) => /^sitemap.*\.xml$/.test(file))
@@ -38,7 +38,10 @@ function sortXmlEntries(xml, rootTag, entryTag) {
     return xml;
   }
 
-  const entryPattern = new RegExp(`<${entryTag}>[\\s\\S]*?<\\/${entryTag}>`, 'g');
+  const entryPattern = new RegExp(
+    `<${entryTag}>[\\s\\S]*?<\\/${entryTag}>`,
+    'g',
+  );
   const entries = match.groups.body.match(entryPattern);
 
   if (!entries) {
