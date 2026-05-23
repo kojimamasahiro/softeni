@@ -12,6 +12,8 @@ export type CategoryLink = {
 export type YearGroup = {
   year: number;
   links: CategoryLink[];
+  externalResultUrl?: string | null;
+  tournamentLabel?: string | null;
 };
 
 export type TournamentBlock = {
@@ -39,24 +41,52 @@ export const TournamentCard = ({ tournament }: Props) => {
         .sort((a, b) => b.year - a.year)
         .map((group) => (
           <div key={`${generation}-${id}-${group.year}`} className="mb-4">
-            <h4 className="text-md mb-2">{group.year}年</h4>
-            <ul className="flex flex-wrap gap-2">
-              {group.links.map((link) => (
-                <li
-                  key={`${generation}-${id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <h4 className="text-md">{group.year}年</h4>
+              {group.externalResultUrl && (
+                <a
+                  href={group.externalResultUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2.5 py-1 rounded-full hover:opacity-80 transition"
                 >
-                  <Link
-                    href={`/tournaments/${generation}/${id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
+                  {getExternalResultLabel(group.externalResultUrl)}
+                </a>
+              )}
+            </div>
+            {group.tournamentLabel && group.tournamentLabel !== name && (
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                {group.tournamentLabel}
+              </p>
+            )}
+            {group.links.length > 0 && (
+              <ul className="flex flex-wrap gap-2">
+                {group.links.map((link) => (
+                  <li
+                    key={`${generation}-${id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
                   >
-                    <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                      {link.categoryLabel}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    <Link
+                      href={`/tournaments/${generation}/${id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
+                    >
+                      <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                        {link.categoryLabel}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
     </div>
   );
 };
+
+function getExternalResultLabel(url: string): string {
+  const lower = url.toLowerCase();
+  if (lower.endsWith('.pdf')) return '結果PDF';
+  if (/^https?:\/\/(www\.)?(x\.com|twitter\.com)/.test(lower)) {
+    return 'Xで結果';
+  }
+  return '公式結果';
+}

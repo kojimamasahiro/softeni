@@ -9,6 +9,7 @@
 - [Score Feature](./score-feature.md)
 - [Score Analysis](./score-analysis.md)
 - [Public Pages](./public-pages.md)
+- [Tournaments Local](./tournaments-local.md)
 - [Data Model](./data-model.md)
 - [Data Import](./data-import.md)
 - [Deployment](./deployment.md)

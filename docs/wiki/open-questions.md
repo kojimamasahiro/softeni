@@ -37,3 +37,9 @@
 - tournament details 生成の正式手順はどれか
 - players 生成の最終入力源はどれか
 - 手動補正のルールや履歴をどこに残すか
+
+## 地域大会ページ
+
+- `data/tournaments/local_index.json` の `officialUrl` を今後 UI で使うか
+- `/tournaments/local/[federationId]` の大会カード並び順を明示ソートするか
+- `areaId: "city"` の大会を都道府県ページから分離する予定があるか

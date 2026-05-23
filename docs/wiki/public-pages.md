@@ -38,6 +38,15 @@
 - `/beta/**`
 - `/beta/matches-results/**`
 
+地域大会結果ページ:
+
+- `/tournaments/local`
+- `/tournaments/local/[federationId]`
+
+関連:
+
+- [Tournaments Local](./tournaments-local.md)
+
 `/tournaments` 一覧のモバイル表示:
 
 - カードで大会状態を判別できるようにする
