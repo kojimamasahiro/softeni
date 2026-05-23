@@ -91,9 +91,47 @@ const ensureCleanDir = (dirPath) => {
   fs.mkdirSync(dirPath, { recursive: true });
 };
 
+const readJsonIfExists = (filePath) => {
+  if (!fs.existsSync(filePath)) return null;
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+};
+
 const writeJson = (filePath, value) => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, JSON.stringify(value, null, 2));
+};
+
+const stripGeneratedAtFields = (value) => {
+  if (Array.isArray(value)) {
+    return value.map(stripGeneratedAtFields);
+  }
+
+  if (!value || typeof value !== 'object') {
+    return value;
+  }
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => key !== 'generatedAt')
+      .map(([key, nestedValue]) => [key, stripGeneratedAtFields(nestedValue)]),
+  );
+};
+
+const hasSameContentIgnoringGeneratedAt = (nextValue, existingValue) => {
+  if (!existingValue) return false;
+
+  return (
+    JSON.stringify(stripGeneratedAtFields(nextValue)) ===
+    JSON.stringify(stripGeneratedAtFields(existingValue))
+  );
+};
+
+const preserveExistingValueIfUnchanged = (nextValue, existingValue) => {
+  if (!hasSameContentIgnoringGeneratedAt(nextValue, existingValue)) {
+    return nextValue;
+  }
+
+  return existingValue;
 };
 
 const INTERNAL_FIELD_NAMES = new Set([
@@ -150,26 +188,44 @@ const summarizeMatchForIndex = (match) =>
     })),
   });
 
-const buildGrowthAnalysisJson = (matches, generatedAt) => {
+const buildGrowthAnalysisJson = (
+  matches,
+  generatedAt,
+  existingTargetsJson = null,
+  existingGrowthReportsByFileName = new Map(),
+) => {
   const { targets, reports } = buildGrowthReports(matches, generatedAt);
 
   fs.mkdirSync(growthReportsOutputRoot, { recursive: true });
 
-  writeJson(path.join(growthOutputRoot, 'targets.json'), {
-    generatedAt,
-    targets,
-  });
-
-  reports.forEach((report) => {
-    writeJson(
-      path.join(
-        growthReportsOutputRoot,
-        getGrowthReportFileName(report.target.key),
-      ),
+  writeJson(
+    path.join(growthOutputRoot, 'targets.json'),
+    preserveExistingValueIfUnchanged(
       {
         generatedAt,
-        report,
+        targets,
       },
+      existingTargetsJson,
+    ),
+  );
+
+  reports.forEach((report) => {
+    const reportPath = path.join(
+      growthReportsOutputRoot,
+      getGrowthReportFileName(report.target.key),
+    );
+
+    writeJson(
+      reportPath,
+      preserveExistingValueIfUnchanged(
+        {
+          generatedAt,
+          report,
+        },
+        existingGrowthReportsByFileName.get(
+          getGrowthReportFileName(report.target.key),
+        ),
+      ),
     );
   });
 
@@ -292,29 +348,72 @@ const buildBetaMatchesJson = async () => {
   const generatedAt = new Date().toISOString();
   const matchIds = publicMatches.map((match) => match.id);
   const summaryMatches = publicMatches.map(summarizeMatchForIndex);
+  const existingMeta = readJsonIfExists(path.join(outputRoot, 'meta.json'));
+  const existingIndex = readJsonIfExists(path.join(outputRoot, 'index.json'));
+  const existingMatchDetailsById = new Map(
+    matchIds.map((matchId) => [
+      matchId,
+      readJsonIfExists(path.join(matchesOutputRoot, `${matchId}.json`)),
+    ]),
+  );
+  const existingGrowthTargets = readJsonIfExists(
+    path.join(growthOutputRoot, 'targets.json'),
+  );
+  const existingGrowthReportsByFileName = new Map(
+    buildGrowthReports(publicMatches, generatedAt).reports.map((report) => {
+      const fileName = getGrowthReportFileName(report.target.key);
+      return [
+        fileName,
+        readJsonIfExists(path.join(growthReportsOutputRoot, fileName)),
+      ];
+    }),
+  );
 
   ensureCleanDir(outputRoot);
   fs.mkdirSync(matchesOutputRoot, { recursive: true });
   fs.mkdirSync(growthOutputRoot, { recursive: true });
 
-  writeJson(path.join(outputRoot, 'meta.json'), {
-    generatedAt,
-    matchIds,
-    totalMatches: safeMatches.length,
-  });
+  writeJson(
+    path.join(outputRoot, 'meta.json'),
+    preserveExistingValueIfUnchanged(
+      {
+        generatedAt,
+        matchIds,
+        totalMatches: safeMatches.length,
+      },
+      existingMeta,
+    ),
+  );
 
-  writeJson(path.join(outputRoot, 'index.json'), {
-    generatedAt,
-    matches: summaryMatches,
-  });
+  writeJson(
+    path.join(outputRoot, 'index.json'),
+    preserveExistingValueIfUnchanged(
+      {
+        generatedAt,
+        matches: summaryMatches,
+      },
+      existingIndex,
+    ),
+  );
 
   publicMatches.forEach((match) => {
-    writeJson(path.join(matchesOutputRoot, `${match.id}.json`), {
-      generatedAt,
-      match,
-    });
+    writeJson(
+      path.join(matchesOutputRoot, `${match.id}.json`),
+      preserveExistingValueIfUnchanged(
+        {
+          generatedAt,
+          match,
+        },
+        existingMatchDetailsById.get(match.id),
+      ),
+    );
   });
-  const growthStats = buildGrowthAnalysisJson(publicMatches, generatedAt);
+  const growthStats = buildGrowthAnalysisJson(
+    publicMatches,
+    generatedAt,
+    existingGrowthTargets,
+    existingGrowthReportsByFileName,
+  );
 
   console.log(
     `✓ Generated beta matches JSON (${safeMatches.length} matches, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,

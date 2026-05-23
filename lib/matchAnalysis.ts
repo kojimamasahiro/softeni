@@ -1678,7 +1678,9 @@ const buildImprovementHints = (
           buildReviewGroup(
             `${entry.resultType}-serving-side`,
             'サーブ側で出たミス',
-            errorPoints.filter((context) => context.point.serving_team === team),
+            errorPoints.filter(
+              (context) => context.point.serving_team === team,
+            ),
             `${label}がサーブ側で出たポイントを絞り込めませんでした。`,
           ),
           buildReviewGroup(
@@ -1689,12 +1691,12 @@ const buildImprovementHints = (
             ),
             `${label}がレシーブ側で出たポイントを絞り込めませんでした。`,
           ),
-        buildReviewGroup(
-          `${entry.resultType}-lost-streak`,
-          '連続失点の中で出たミス',
-          errorPointsInLostStreak,
-          `${label}が最大連続失点の区間で出たポイントを絞り込めませんでした。`,
-        ),
+          buildReviewGroup(
+            `${entry.resultType}-lost-streak`,
+            '連続失点の中で出たミス',
+            errorPointsInLostStreak,
+            `${label}が最大連続失点の区間で出たポイントを絞り込めませんでした。`,
+          ),
         ],
         sourceMetrics: [
           {

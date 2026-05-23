@@ -51,7 +51,7 @@
     "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "check:growth": "node scripts/check-growth-analysis.mjs",
     "start": "next start",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs",
     "lint": "eslint --fix ."
   },
   "dependencies": {

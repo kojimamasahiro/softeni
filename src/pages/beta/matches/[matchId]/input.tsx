@@ -140,6 +140,9 @@ const MatchInput = () => {
     shouldPlay: boolean;
     targetPlayer: 'mobile' | 'desktop';
   } | null>(null);
+  const [pendingEditSeekTimeMs, setPendingEditSeekTimeMs] = useState<
+    number | null
+  >(null);
   const [isXlViewport, setIsXlViewport] = useState(false);
   // 手動サーブ選手選択
   const [manualServingPlayer, setManualServingPlayer] = useState<{
@@ -178,6 +181,60 @@ const MatchInput = () => {
     if (uniqueId.startsWith('A-')) return 'A';
     if (uniqueId.startsWith('B-')) return 'B';
     return null;
+  };
+
+  const normalizeTeamValue = (
+    teamValue: string | null | undefined,
+  ): 'A' | 'B' | undefined => {
+    if (teamValue === 'A' || teamValue === 'B') {
+      return teamValue;
+    }
+
+    return undefined;
+  };
+
+  const resolvePlayerSelectionValue = (
+    playerValue: string | null | undefined,
+    preferredTeam?: 'A' | 'B',
+  ) => {
+    if (!playerValue || !match) return '';
+
+    const normalizedValue = playerValue.trim();
+    if (!normalizedValue) return '';
+
+    const candidateTeams: ('A' | 'B')[] = preferredTeam
+      ? [preferredTeam, preferredTeam === 'A' ? 'B' : 'A']
+      : ['A', 'B'];
+
+    for (const team of candidateTeams) {
+      const players = getPlayerNamesFromMatch(match, team);
+      const matchedIndex = players.findIndex(
+        (playerName) => playerName === normalizedValue,
+      );
+
+      if (matchedIndex >= 0) {
+        return getPlayerUniqueId(team, matchedIndex, players[matchedIndex]);
+      }
+    }
+
+    const storedTeam = getTeamFromPlayerId(normalizedValue);
+    if (storedTeam) {
+      const storedName = getPlayerNameFromId(normalizedValue);
+      const players = getPlayerNamesFromMatch(match, storedTeam);
+      const matchedIndex = players.findIndex(
+        (playerName) => playerName === storedName,
+      );
+
+      if (matchedIndex >= 0) {
+        return getPlayerUniqueId(
+          storedTeam,
+          matchedIndex,
+          players[matchedIndex],
+        );
+      }
+    }
+
+    return normalizedValue;
   };
 
   // 関与選手とプレイタイプから勝者チームを自動決定する関数
@@ -400,6 +457,30 @@ const MatchInput = () => {
     getActiveYoutubePlayerRef().current?.seekToMs(startMs);
   };
 
+  const getEditPointSeekTimeMs = (game: Game, point: Point) => {
+    const targetPointNumber = Number(point.point_number);
+    const previousPoint = [...(game.points ?? [])]
+      .sort(
+        (left, right) => Number(left.point_number) - Number(right.point_number),
+      )
+      .find(
+        (candidate) => Number(candidate.point_number) === targetPointNumber - 1,
+      );
+
+    if (
+      previousPoint?.video_end_ms !== null &&
+      previousPoint?.video_end_ms !== undefined
+    ) {
+      return previousPoint.video_end_ms;
+    }
+
+    if (point.video_start_ms !== null && point.video_start_ms !== undefined) {
+      return point.video_start_ms;
+    }
+
+    return null;
+  };
+
   const restorePendingVideoPlayback = (playerType: 'mobile' | 'desktop') => {
     if (!pendingVideoResume) return;
     if (playerType !== pendingVideoResume.targetPlayer) return;
@@ -455,6 +536,50 @@ const MatchInput = () => {
   }, []);
 
   useEffect(() => {
+    if (pendingEditSeekTimeMs === null) return;
+
+    let cancelled = false;
+    let timeoutId: number | null = null;
+    let attempts = 0;
+
+    const trySeek = () => {
+      if (cancelled) return;
+
+      const activePlayerRef = isXlViewport
+        ? desktopYoutubePlayerRef
+        : mobileYoutubePlayerRef;
+      if (activePlayerRef.current) {
+        activePlayerRef.current.pause();
+        activePlayerRef.current.seekToMs(pendingEditSeekTimeMs);
+        setPendingVideoResume({
+          timeMs: pendingEditSeekTimeMs,
+          shouldPlay: false,
+          targetPlayer: isXlViewport ? 'desktop' : 'mobile',
+        });
+        setPendingEditSeekTimeMs(null);
+        return;
+      }
+
+      attempts += 1;
+      if (attempts >= 10) {
+        setPendingEditSeekTimeMs(null);
+        return;
+      }
+
+      timeoutId = window.setTimeout(trySeek, 200);
+    };
+
+    trySeek();
+
+    return () => {
+      cancelled = true;
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [pendingEditSeekTimeMs, isXlViewport]);
+
+  useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
       const isTypingTarget =
@@ -497,9 +622,24 @@ const MatchInput = () => {
   }
 
   // ポイント編集を開始する関数
-  const startEditPoint = (point: Point) => {
+  const startEditPoint = (game: Game, point: Point) => {
     setEditingPoint(point);
     setIsEditMode(true);
+
+    const winnerPlayerValue = resolvePlayerSelectionValue(
+      point.winner_player,
+      normalizeTeamValue(point.winner_team),
+    );
+    const loserTeam =
+      point.winner_team === 'A'
+        ? 'B'
+        : point.winner_team === 'B'
+          ? 'A'
+          : undefined;
+    const loserPlayerValue = resolvePlayerSelectionValue(
+      point.loser_player,
+      loserTeam,
+    );
 
     // 編集するポイントの情報をフォームに設定
     setPointData({
@@ -509,17 +649,21 @@ const MatchInput = () => {
       first_serve_fault: point.first_serve_fault || false,
       double_fault: point.double_fault || false,
       result_type: point.result_type || '',
-      winner_player: point.winner_player || '',
-      loser_player: point.loser_player || '',
+      winner_player: winnerPlayerValue,
+      loser_player: loserPlayerValue,
       video_start_ms: point.video_start_ms ?? null,
       video_end_ms: point.video_end_ms ?? null,
     });
+
+    const seekTimeMs = getEditPointSeekTimeMs(game, point);
+    setPendingEditSeekTimeMs(seekTimeMs);
   };
 
   // ポイント編集をキャンセルする関数
   const cancelEditPoint = () => {
     setEditingPoint(null);
     setIsEditMode(false);
+    setPendingEditSeekTimeMs(null);
 
     // フォームをリセット
     setPointData({
@@ -1243,9 +1387,9 @@ const MatchInput = () => {
                             <span className="font-medium">
                               チーム{point.winner_team}
                             </span>
-                            {!gameWon && !matchFinished && (
+                            {canEditMatches && (
                               <button
-                                onClick={() => startEditPoint(point)}
+                                onClick={() => startEditPoint(game, point)}
                                 className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
                                 title="このポイントを編集"
                               >
