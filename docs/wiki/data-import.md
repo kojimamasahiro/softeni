@@ -67,7 +67,8 @@
 
 ## tournament details / players 生成の見方
 
-- 大会データの元構造は `data/tournaments/**`
+- 大会データの canonical source は `data/tournaments/details/**` と `data/tournaments/information/*.json`
+- 一覧や地域紐付けは `data/tournaments/index.json` / `local_index.json` を使う
 - そこから選手ページ用の `data/players/**` を派生生成する流れがある
 - score 系は `data/**` ではなく Supabase -> `public/data/beta-matches/**` 生成の流れを持つ
 

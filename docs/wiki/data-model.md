@@ -16,15 +16,23 @@
 - `data/tournaments/index.json`
 - `data/tournaments/local_index.json`
 - `data/tournaments/information/*.json`
-- `data/tournaments/**/meta.json`
-- `data/tournaments/**/entries/*.json`
-- `data/tournaments/**/matches/*.json`
-- `data/tournaments/**/results/*.json`
 - `data/tournaments/details/**`
 
 関連ドキュメント:
 
 - `docs/tournament-data-structure.md`
+
+現行の source of truth:
+
+- 大会一覧・世代・地域紐付け: `index.json`, `local_index.json`
+- 年度情報・開催地・外部リンク・カテゴリ表示名: `information/*.json`
+- 結果本体: `details/**`
+
+## Deprecated
+
+- `data/tournaments/{all,corporate,highschool,international-qualifier,junior,masters,university}/**`
+  旧構造の `meta.json` / `entries` / `matches` / `results` / `categories.json`
+  現行実装では canonical source ではない
 
 ### 選手データ
 

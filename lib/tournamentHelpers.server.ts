@@ -4,6 +4,12 @@
 import fs from 'fs';
 import path from 'path';
 
+import type {
+  TournamentCategoryInfo,
+  TournamentIndexEntry,
+  TournamentInformationEntry,
+} from '@/types/tournament';
+
 export interface TournamentMeta {
   id: string;
   name: string;
@@ -33,132 +39,327 @@ export interface TournamentInfo {
   exists: boolean; // 大会データが実際に存在するかどうか
 }
 
+type TournamentLookup = {
+  rawId: string;
+  baseId: string;
+  explicitYear: number | null;
+};
+
+const readJsonSafe = <T>(filePath: string): T | null => {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8')) as T;
+  } catch (error) {
+    console.error(`Failed to parse JSON: ${filePath}`, error);
+    return null;
+  }
+};
+
+const parseTournamentLookup = (rawId: string): TournamentLookup => {
+  const match = rawId.match(/^(.*)-(\d{4})$/);
+  if (!match) {
+    return {
+      rawId,
+      baseId: rawId,
+      explicitYear: null,
+    };
+  }
+
+  return {
+    rawId,
+    baseId: match[1],
+    explicitYear: Number(match[2]),
+  };
+};
+
+const loadTournamentIndexEntries = (): TournamentIndexEntry[] => {
+  const tournamentRoot = path.join(process.cwd(), 'data', 'tournaments');
+  const mainIndex =
+    readJsonSafe<TournamentIndexEntry[]>(path.join(tournamentRoot, 'index.json')) ??
+    [];
+  const localIndex =
+    readJsonSafe<TournamentIndexEntry[]>(
+      path.join(tournamentRoot, 'local_index.json'),
+    ) ?? [];
+
+  return [...mainIndex, ...localIndex];
+};
+
+const findTournamentEntry = (
+  lookup: TournamentLookup,
+  entries: TournamentIndexEntry[],
+): TournamentIndexEntry | null => {
+  return (
+    entries.find((entry) => entry.tournamentId === lookup.rawId) ??
+    entries.find((entry) => entry.tournamentId === lookup.baseId) ??
+    entries.find((entry) => entry.label === lookup.rawId) ??
+    entries.find((entry) => entry.label === lookup.baseId) ??
+    null
+  );
+};
+
+const loadTournamentInformation = (
+  tournamentId: string,
+): TournamentInformationEntry[] => {
+  const filePath = path.join(
+    process.cwd(),
+    'data',
+    'tournaments',
+    'information',
+    `${tournamentId}.json`,
+  );
+  return readJsonSafe<TournamentInformationEntry[]>(filePath) ?? [];
+};
+
+const loadDetailCategoryIds = (
+  tournamentId: string,
+  year: number,
+): string[] => {
+  const detailDir = path.join(
+    process.cwd(),
+    'data',
+    'tournaments',
+    'details',
+    tournamentId,
+    String(year),
+  );
+
+  if (!fs.existsSync(detailDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(detailDir)
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => file.replace(/\.json$/i, ''))
+    .sort();
+};
+
+const loadDetailYears = (tournamentId: string): number[] => {
+  const detailDir = path.join(
+    process.cwd(),
+    'data',
+    'tournaments',
+    'details',
+    tournamentId,
+  );
+
+  if (!fs.existsSync(detailDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(detailDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^\d{4}$/.test(entry.name))
+    .map((entry) => Number(entry.name))
+    .filter((year) => !Number.isNaN(year))
+    .sort((a, b) => b - a);
+};
+
+const getAllAvailableYears = (
+  tournamentId: string,
+  informationEntries: TournamentInformationEntry[],
+): number[] => {
+  const years = new Set<number>();
+
+  for (const info of informationEntries) {
+    years.add(info.year);
+  }
+
+  for (const year of loadDetailYears(tournamentId)) {
+    years.add(year);
+  }
+
+  return [...years].sort((a, b) => b - a);
+};
+
+const inferCategoryTypes = (
+  informationEntries: TournamentInformationEntry[],
+  tournamentId: string,
+  year: number | null,
+): string[] => {
+  const types = new Set<string>();
+
+  for (const info of informationEntries) {
+    for (const category of info.categories ?? []) {
+      if (category.category) {
+        types.add(category.category);
+      }
+    }
+  }
+
+  if (types.size > 0) {
+    return [...types];
+  }
+
+  const fallbackYear = year ?? loadDetailYears(tournamentId)[0] ?? null;
+  if (fallbackYear === null) {
+    return [];
+  }
+
+  for (const categoryId of loadDetailCategoryIds(tournamentId, fallbackYear)) {
+    const parts = categoryId.split('-');
+    if (parts[0]) {
+      types.add(parts[0]);
+    }
+  }
+
+  return [...types];
+};
+
+const categoryIdToPathParts = (
+  categoryId: string,
+): { gameCategory: string; ageCategory: string; gender: string } | null => {
+  const parts = categoryId.split('-');
+  if (parts.length < 3) {
+    return null;
+  }
+
+  const gender = parts.pop();
+  const ageCategory = parts.pop();
+  const gameCategory = parts.join('-');
+
+  if (!gender || !ageCategory || !gameCategory) {
+    return null;
+  }
+
+  return { gameCategory, ageCategory, gender };
+};
+
+const buildDetailUrl = (
+  generationId: string,
+  tournamentId: string,
+  year: number | null,
+  yearInfo: TournamentInformationEntry | null,
+): string => {
+  if (year === null) {
+    return '';
+  }
+
+  const categories: TournamentCategoryInfo[] = yearInfo?.categories ?? [];
+  for (const category of categories) {
+    const detailPath = path.join(
+      process.cwd(),
+      'data',
+      'tournaments',
+      'details',
+      tournamentId,
+      String(year),
+      `${category.categoryId}.json`,
+    );
+
+    if (fs.existsSync(detailPath)) {
+      return `/tournaments/${generationId}/${tournamentId}/${year}/${category.category}/${category.age}/${category.gender}`;
+    }
+  }
+
+  const fallbackCategoryId = loadDetailCategoryIds(tournamentId, year)[0];
+  if (!fallbackCategoryId) {
+    return '';
+  }
+
+  const pathParts = categoryIdToPathParts(fallbackCategoryId);
+  if (!pathParts) {
+    return '';
+  }
+
+  return `/tournaments/${generationId}/${tournamentId}/${year}/${pathParts.gameCategory}/${pathParts.ageCategory}/${pathParts.gender}`;
+};
+
+const buildUnknownTournamentInfo = (
+  rawTournamentId: string,
+  explicitYear: number | null,
+): TournamentInfo => ({
+  meta: {
+    id: rawTournamentId,
+    name: rawTournamentId,
+    generation: 'unknown',
+    categoryTypes: [],
+    isMajorTitle: false,
+  },
+  yearMeta: {
+    year: explicitYear ?? 2024,
+    startDate: '',
+    endDate: '',
+    location: '',
+    status: 'unknown',
+  },
+  fullName: explicitYear ? `${rawTournamentId} ${explicitYear}` : rawTournamentId,
+  detailUrl: '',
+  exists: false,
+});
+
 /**
- * サーバーサイドで大会情報を取得する（動的データ読み込み）
+ * サーバーサイドで大会情報を取得する（新構造: index/local_index/information/details）
  */
 export const getTournamentInfoSSR = async (
   tournamentId: string,
 ): Promise<TournamentInfo | null> => {
   try {
-    // data/tournaments ディレクトリを再帰的に検索
-    const tournamentsDir = path.join(process.cwd(), 'data', 'tournaments');
+    const lookup = parseTournamentLookup(tournamentId);
+    const entries = loadTournamentIndexEntries();
+    const entry = findTournamentEntry(lookup, entries);
 
-    const findTournament = (dir: string): TournamentInfo | null => {
-      try {
-        if (!fs.existsSync(dir)) return null;
-
-        const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-        for (const entry of entries) {
-          if (entry.isDirectory()) {
-            const fullPath = path.join(dir, entry.name);
-
-            // meta.json をチェック
-            const metaPath = path.join(fullPath, 'meta.json');
-            if (fs.existsSync(metaPath)) {
-              try {
-                const metaContent = fs.readFileSync(metaPath, 'utf8');
-                const meta = JSON.parse(metaContent);
-
-                // 完全一致、ベースIDでマッチ、または名前でマッチ
-                const isMatch =
-                  meta.id === tournamentId ||
-                  meta.name === tournamentId ||
-                  (tournamentId.includes('-') &&
-                    meta.id === tournamentId.split('-').slice(0, -1).join('-'));
-
-                if (isMatch) {
-                  // tournamentIdから年度を抽出（例: zennihon-championship-2025 → 2025）
-                  const yearMatch = tournamentId.match(/-(\d{4})$/);
-                  const extractedYear = yearMatch ? yearMatch[1] : null;
-
-                  // 利用可能な年度を探す（抽出した年度を優先）
-                  const years = extractedYear
-                    ? [extractedYear, '2024', '2023', '2025', '2022']
-                    : ['2024', '2023', '2025', '2022'];
-
-                  for (const year of years) {
-                    const yearPath = path.join(fullPath, year, 'meta.json');
-                    if (fs.existsSync(yearPath)) {
-                      try {
-                        const yearContent = fs.readFileSync(yearPath, 'utf8');
-                        const yearMeta = JSON.parse(yearContent);
-
-                        return {
-                          meta,
-                          yearMeta,
-                          fullName: `${meta.name} ${year}`,
-                          detailUrl: `/tournaments/${meta.generation}/${meta.id}/${year}`,
-                          exists: true,
-                        };
-                      } catch (error) {
-                        console.error(
-                          `Error parsing year meta for ${year}:`,
-                          error,
-                        );
-                      }
-                    }
-                  }
-
-                  // 年度データがない場合はメタデータのみ返す
-                  return {
-                    meta,
-                    yearMeta: {
-                      year: 2024,
-                      startDate: '',
-                      endDate: '',
-                      location: '',
-                      status: 'unknown',
-                    },
-                    fullName: meta.name,
-                    detailUrl: `/tournaments/${meta.generation}/${meta.id}`,
-                    exists: true,
-                  };
-                }
-              } catch (error) {
-                console.error(`Error parsing meta.json at ${metaPath}:`, error);
-              }
-            }
-
-            // サブディレクトリを再帰的に検索
-            const result = findTournament(fullPath);
-            if (result) return result;
-          }
-        }
-
-        return null;
-      } catch (error) {
-        console.error(`Error reading directory ${dir}:`, error);
-        return null;
-      }
-    };
-
-    const result = findTournament(tournamentsDir);
-
-    // 見つからない場合は、tournamentIdをそのまま表示名として使用（リンクなし）
-    if (!result && tournamentId) {
-      return {
-        meta: {
-          id: tournamentId,
-          name: tournamentId,
-          generation: 'unknown',
-          categoryTypes: [],
-          isMajorTitle: false,
-        },
-        yearMeta: {
-          year: 2024,
-          startDate: '',
-          endDate: '',
-          location: '',
-          status: 'unknown',
-        },
-        fullName: tournamentId,
-        detailUrl: '', // 存在しない場合は空のURL
-        exists: false, // 存在しないことを明示
-      };
+    if (!entry) {
+      return buildUnknownTournamentInfo(lookup.rawId, lookup.explicitYear);
     }
 
-    return result;
+    const informationEntries = loadTournamentInformation(entry.tournamentId);
+    const availableYears = getAllAvailableYears(entry.tournamentId, informationEntries);
+    const targetYear =
+      lookup.explicitYear ??
+      informationEntries[0]?.year ??
+      availableYears[0] ??
+      null;
+
+    const yearInfo =
+      (targetYear !== null
+        ? informationEntries.find((info) => info.year === targetYear) ?? null
+        : null) ?? null;
+
+    const detailCategoryIds =
+      targetYear !== null ? loadDetailCategoryIds(entry.tournamentId, targetYear) : [];
+    const hasDetails = detailCategoryIds.length > 0;
+
+    const meta: TournamentMeta = {
+      id: entry.tournamentId,
+      name: entry.label,
+      generation: entry.generationId,
+      categoryTypes: inferCategoryTypes(
+        informationEntries,
+        entry.tournamentId,
+        targetYear,
+      ),
+      isMajorTitle: entry.isMajorTitle,
+      officialUrl: entry.officialUrl,
+    };
+
+    const yearMeta: TournamentYearMeta = {
+      year: targetYear ?? 2024,
+      startDate: yearInfo?.startDate ?? '',
+      endDate: yearInfo?.endDate ?? '',
+      location: yearInfo?.location ?? '',
+      status: hasDetails ? 'completed' : 'unknown',
+      source: yearInfo?.source,
+      sourceUrl: yearInfo?.sourceUrl,
+    };
+
+    return {
+      meta,
+      yearMeta,
+      fullName:
+        targetYear !== null ? `${meta.name} ${targetYear}` : meta.name,
+      detailUrl: buildDetailUrl(
+        meta.generation,
+        entry.tournamentId,
+        targetYear,
+        yearInfo,
+      ),
+      exists: true,
+    };
   } catch (error) {
     console.error('getTournamentInfoSSR error:', error);
     return null;
@@ -172,58 +373,13 @@ export const getTournamentYearsSSR = async (
   tournamentId: string,
 ): Promise<number[]> => {
   try {
-    const tournamentsDir = path.join(process.cwd(), 'data/tournaments');
+    const lookup = parseTournamentLookup(tournamentId);
+    const entries = loadTournamentIndexEntries();
+    const entry = findTournamentEntry(lookup, entries);
+    const resolvedTournamentId = entry?.tournamentId ?? lookup.baseId;
+    const informationEntries = loadTournamentInformation(resolvedTournamentId);
 
-    const findYears = (dir: string): number[] => {
-      const years: number[] = [];
-
-      try {
-        const items = fs.readdirSync(dir, { withFileTypes: true });
-
-        for (const item of items) {
-          if (item.isDirectory()) {
-            const itemPath = path.join(dir, item.name);
-
-            // tournaments/[generation]/[tournamentId] の構造を探索
-            if (fs.existsSync(path.join(itemPath, tournamentId))) {
-              const tournamentPath = path.join(itemPath, tournamentId);
-              const yearDirs = fs.readdirSync(tournamentPath, {
-                withFileTypes: true,
-              });
-
-              for (const yearDir of yearDirs) {
-                if (yearDir.isDirectory()) {
-                  const year = parseInt(yearDir.name);
-                  if (!isNaN(year) && year >= 2020 && year <= 2030) {
-                    // meta.json が存在することを確認
-                    const metaPath = path.join(
-                      tournamentPath,
-                      yearDir.name,
-                      'meta.json',
-                    );
-                    if (fs.existsSync(metaPath)) {
-                      years.push(year);
-                    }
-                  }
-                }
-              }
-            } else {
-              // 再帰的に探索
-              years.push(...findYears(itemPath));
-            }
-          }
-        }
-      } catch {
-        // エラーは無視して続行
-      }
-
-      return years;
-    };
-
-    const years = findYears(tournamentsDir);
-
-    // 重複を除去して降順ソート（最新年が最初）
-    return [...new Set(years)].sort((a, b) => b - a);
+    return getAllAvailableYears(resolvedTournamentId, informationEntries);
   } catch (error) {
     console.error('getTournamentYearsSSR error:', error);
     return [];
@@ -237,11 +393,8 @@ export const getTournamentInfosSSR = async (
   tournamentIds: string[],
 ): Promise<Record<string, TournamentInfo>> => {
   const results: Record<string, TournamentInfo> = {};
-
-  // 重複を除去
   const uniqueIds = [...new Set(tournamentIds)];
 
-  // 並列処理でパフォーマンス向上
   const promises = uniqueIds.map(async (id) => {
     const info = await getTournamentInfoSSR(id);
     if (info) {
