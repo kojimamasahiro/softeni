@@ -64,6 +64,48 @@ function formatDateRange(startDate: string, endDate: string): string {
   return `${sm}/${sd}〜${em}/${ed}`;
 }
 
+type TournamentStatus = {
+  label: string;
+  className: string;
+};
+
+function getTodayInTokyo(): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
+function getTournamentStatus(
+  inst: TournamentInstance,
+): TournamentStatus | null {
+  if (inst.hasInternalResult && inst.firstCategoryPath) {
+    return null;
+  }
+
+  const todayStr = getTodayInTokyo();
+  const isUpcoming = !!inst.startDate && inst.startDate >= todayStr;
+  if (isUpcoming) {
+    return {
+      label: '開催予定',
+      className:
+        'bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800',
+    };
+  }
+
+  if (!inst.officialUrl) {
+    return null;
+  }
+
+  return {
+    label: '外部掲載',
+    className:
+      'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700',
+  };
+}
+
 // ─── FilterDropdown コンポーネント ────────────────────────────────────────
 type FilterDropdownProps = {
   label: string;
@@ -465,6 +507,7 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
   // カード全体のタップ先（結果ページ優先、なければ公式URL）
   const cardHref = inst.firstCategoryPath ?? inst.officialUrl ?? null;
   const cardExternal = !inst.firstCategoryPath && !!inst.officialUrl;
+  const status = getTournamentStatus(inst);
 
   return (
     <div className="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm active:bg-blue-50 dark:active:bg-gray-750 transition-colors">
@@ -491,10 +534,24 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
         {inst.label}
       </p>
 
-      {/* 日程・開催地 */}
-      <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-3">
-        <span>{formatDateRange(inst.startDate, inst.endDate)}</span>
-        {inst.location && <span>{inst.location}</span>}
+      {/* 開催予定のみ強調し、それ以外は通常のメタ情報として表示 */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-3">
+        {status ? (
+          <>
+            <span
+              className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}
+            >
+              {status.label}
+            </span>
+            <span>{formatDateRange(inst.startDate, inst.endDate)}</span>
+            {inst.location && <span>{inst.location}</span>}
+          </>
+        ) : (
+          <>
+            <span>{formatDateRange(inst.startDate, inst.endDate)}</span>
+            {inst.location && <span>{inst.location}</span>}
+          </>
+        )}
       </div>
 
       {/* バッジ類（relative z-10 で stretched link より前面に） */}
