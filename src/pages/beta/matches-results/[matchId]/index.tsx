@@ -37,7 +37,6 @@ import {
 import {
   buildYouTubeWatchUrlFromVideoId,
   formatVideoTimestamp,
-  getPointVideoEndMs,
 } from '@/lib/youtubePlayback';
 
 import { Game, Match, Point } from '../../../../types/database';
@@ -353,10 +352,7 @@ export const PublicMatchDetailPage = ({
           block: 'start',
         });
       }
-      youtubePlayerRef.current?.playRange(
-        point.video_start_ms,
-        getPointVideoEndMs(point.video_start_ms, point.video_end_ms),
-      );
+      youtubePlayerRef.current?.playFrom(point.video_start_ms);
     },
     [isVideoFloating, youtubeEmbedBlocked, youtubeVideoId, youtubeWatchUrl],
   );
@@ -1746,7 +1742,7 @@ export const PublicMatchDetailPage = ({
               ref={playerSectionRef}
               className={
                 isVideoFloating
-                  ? `fixed left-0 right-0 top-2 z-40 px-4 md:left-auto md:right-6 md:top-2 md:px-0 ${floatingVideoLayout.containerWidth}`
+                  ? `fixed left-0 right-0 top-2 z-40 px-1 md:left-auto md:right-6 md:top-2 md:px-0 ${floatingVideoLayout.containerWidth}`
                   : 'mb-8'
               }
             >
@@ -1760,10 +1756,23 @@ export const PublicMatchDetailPage = ({
                     <button
                       type="button"
                       onClick={() => setIsVideoFloating((current) => !current)}
-                      className="rounded-full border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${
+                        isVideoFloating
+                          ? 'border-gray-300 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700'
+                          : 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400'
+                      }`}
+                      aria-pressed={isVideoFloating}
                     >
+                      {!isVideoFloating && (
+                        <span className="h-2.5 w-2.5 rounded-full bg-white/90 ring-4 ring-white/20" />
+                      )}
                       {isVideoFloating ? '元の位置に戻す' : '動画を固定表示'}
                     </button>
+                    {!isVideoFloating && (
+                      <span className="text-xs font-medium text-blue-700 dark:text-blue-300">
+                        スクロールしながら動画を見返せます
+                      </span>
+                    )}
                     {isVideoFloating && (
                       <div className="hidden items-center gap-1 rounded-full bg-gray-100 p-1 dark:bg-gray-700 md:flex">
                         {FLOATING_VIDEO_SIZE_OPTIONS.map((option) => (
@@ -1786,7 +1795,11 @@ export const PublicMatchDetailPage = ({
                 </div>
 
                 {youtubeVideoId && !youtubeEmbedBlocked ? (
-                  <div className="overflow-hidden rounded-lg bg-black">
+                  <div
+                    className={`overflow-hidden bg-black ${
+                      isVideoFloating ? 'rounded-none md:rounded-lg' : 'rounded-lg'
+                    }`}
+                  >
                     <YouTubeRangePlayer
                       ref={youtubePlayerRef}
                       videoId={youtubeVideoId}

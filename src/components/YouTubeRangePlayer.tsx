@@ -38,6 +38,7 @@ export type YouTubeRangePlayerHandle = {
   isPlaying: () => boolean;
   pause: () => void;
   play: () => void;
+  playFrom: (startMs: number) => void;
   playRange: (startMs: number, endMs?: number | null) => void;
   seekToMs: (timeMs: number) => void;
 };
@@ -187,6 +188,15 @@ const YouTubeRangePlayer = forwardRef<
       if (!player) return;
       rangeEndMsRef.current = null;
       clearPausePoll();
+      player.playVideo();
+    },
+    playFrom: (startMs: number) => {
+      const player = playerRef.current;
+      if (!player) return;
+
+      rangeEndMsRef.current = null;
+      clearPausePoll();
+      player.seekTo(Math.max(0, startMs) / 1000, true);
       player.playVideo();
     },
     playRange: (startMs: number, endMs?: number | null) => {
