@@ -39,7 +39,6 @@ type TournamentInfo = {
   location: string;
   startDate: string;
   endDate: string;
-  label?: string;
   source: string;
   sourceUrl?: string;
   categories: {
@@ -195,12 +194,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const infos = readJSONSafe(infoPath) as TournamentInfo[];
     if (!infos) continue;
 
-    const sortedInfos = [...infos].sort((a, b) => b.year - a.year);
-    const displayName =
-      sortedInfos.find((info) => info.label?.trim())?.label ?? t.label;
-
     const groups: YearGroup[] = [];
-    for (const info of sortedInfos) {
+    for (const info of infos) {
       const year = info.year;
       const links: CategoryLink[] = [];
       for (const cat of info.categories) {
@@ -229,7 +224,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
           year,
           links,
           externalResultUrl,
-          tournamentLabel: info.label ?? null,
         });
       }
     }
@@ -237,7 +231,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     if (groups.length > 0) {
       tournaments.push({
         id: t.tournamentId,
-        name: displayName,
+        name: t.label,
         generation: t.generationId,
         groups,
       });

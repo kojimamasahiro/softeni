@@ -91,14 +91,11 @@
 - `tournamentId`
 - `generationId`
 - `federationId`
-- `label` ただし表示名は `information/{tournamentId}.json` の `label` を優先する
+- `label`
 
 実装メモ:
 
 - `local_index.json` の `label` は県別ページの大会名として使う
-- `information/{tournamentId}.json` に `label` がある場合、県別ページではその値を優先して使う
-- 大会カード見出しは、利用可能な `info.label` のうち最新年度の値を代表表示名として使う
-- 年度ごとに `info.label` が異なる場合は、年度ブロック内にもそのラベルを表示できる
 - `local_index.json` の `officialUrl` は現在のページ描画では使っていない
 - 連盟リンクは大会単位ではなく、県ページ上部に 1 つだけ表示する
 - 年度単位の外部結果導線は `information/{tournamentId}.json` の `sourceUrl` を使う

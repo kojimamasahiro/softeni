@@ -13,7 +13,6 @@ export type YearGroup = {
   year: number;
   links: CategoryLink[];
   externalResultUrl?: string | null;
-  tournamentLabel?: string | null;
 };
 
 export type TournamentBlock = {
@@ -54,11 +53,6 @@ export const TournamentCard = ({ tournament }: Props) => {
                 </a>
               )}
             </div>
-            {group.tournamentLabel && group.tournamentLabel !== name && (
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                {group.tournamentLabel}
-              </p>
-            )}
             {group.links.length > 0 && (
               <ul className="flex flex-wrap gap-2">
                 {group.links.map((link) => (
