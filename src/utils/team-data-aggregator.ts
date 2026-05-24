@@ -44,6 +44,8 @@ export type EventResult = {
   tournament: string;
   categoryLabel?: string;
   link?: string;
+  startDate?: string;
+  endDate?: string;
   results: {
     playerIds: string[];
     result: string;
@@ -500,6 +502,8 @@ export function aggregateTeamResults(
     // Get category label from information map
     let categoryLabel: string | undefined;
     let fiscalYear = descriptor.year;
+    let startDate: string | undefined;
+    let endDate: string | undefined;
 
     const tournamentInfo = informationMap.get(descriptor.tournamentId);
     if (tournamentInfo) {
@@ -525,6 +529,8 @@ export function aggregateTeamResults(
 
       if (yearInfo) {
         fiscalYear = yearInfo.year;
+        startDate = yearInfo.startDate;
+        endDate = yearInfo.endDate;
         if (yearInfo.categories) {
           const category = yearInfo.categories.find(
             (cat) => cat.categoryId === descriptor.category,
@@ -561,6 +567,8 @@ export function aggregateTeamResults(
         tournament: tournamentName,
         categoryLabel,
         link,
+        startDate,
+        endDate,
         results: [],
         matches: [],
       };
@@ -571,6 +579,8 @@ export function aggregateTeamResults(
         tournament: tournamentName,
         categoryLabel,
         link,
+        startDate,
+        endDate,
         results: [],
         matches: [],
       };
@@ -644,6 +654,8 @@ export function aggregateTeamResults(
         tournament: tournamentName,
         categoryLabel,
         link,
+        startDate,
+        endDate,
         results: extracted.results,
         matches: extracted.matches,
       });

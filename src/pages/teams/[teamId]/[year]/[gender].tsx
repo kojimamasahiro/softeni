@@ -82,52 +82,75 @@ export default function TeamYearGenderPage({
 
   const overallTable = useMemo(
     () =>
-      results.map((event) => {
-        // Extract unique players who participated in this event
-        const uniquePlayerIds = new Set<string>();
-        event.matches.forEach((m) => {
-          m.pair.forEach((pid) => {
-            if (info.players[pid]) {
-              uniquePlayerIds.add(pid);
-            }
+      [...results]
+        .sort((a, b) => {
+          const aDate = Date.parse(a.endDate || a.startDate || '');
+          const bDate = Date.parse(b.endDate || b.startDate || '');
+
+          if (!Number.isNaN(aDate) && !Number.isNaN(bDate) && aDate !== bDate) {
+            return bDate - aDate;
+          }
+
+          if (!Number.isNaN(aDate) && Number.isNaN(bDate)) {
+            return -1;
+          }
+
+          if (Number.isNaN(aDate) && !Number.isNaN(bDate)) {
+            return 1;
+          }
+
+          if (a.year !== b.year) {
+            return b.year - a.year;
+          }
+
+          return a.tournament.localeCompare(b.tournament, 'ja');
+        })
+        .map((event) => {
+          // Extract unique players who participated in this event
+          const uniquePlayerIds = new Set<string>();
+          event.matches.forEach((m) => {
+            m.pair.forEach((pid) => {
+              if (info.players[pid]) {
+                uniquePlayerIds.add(pid);
+              }
+            });
           });
-        });
 
-        // Convert player IDs to full names
-        const playerNames = Array.from(uniquePlayerIds)
-          .map((pid) => {
-            const player = info.players[pid];
-            return player ? player.lastName + player.firstName : null;
-          })
-          .filter(Boolean) as string[];
-
-        const resultWithNames = event.results
-          .map((r) => {
-            // Check if at least one player is in the team
-            if (!r.playerIds.some((pid) => pid in info.players)) {
-              return null;
-            }
-
-            const playerNames = r.playerIds.map((pid) => {
+          // Convert player IDs to full names
+          const playerNames = Array.from(uniquePlayerIds)
+            .map((pid) => {
               const player = info.players[pid];
               return player ? player.lastName + player.firstName : null;
-            });
+            })
+            .filter(Boolean) as string[];
 
-            // Filter out nulls (partners from other teams) and join
-            const validNames = playerNames.filter(Boolean);
-            return `${validNames.join('・')}（${r.result}）`;
-          })
-          .filter(Boolean)
-          .join('、');
+          const resultWithNames = event.results
+            .map((r) => {
+              // Check if at least one player is in the team
+              if (!r.playerIds.some((pid) => pid in info.players)) {
+                return null;
+              }
 
-        return {
-          name: event.tournament,
-          categoryLabel: event.categoryLabel,
-          link: event.link || '',
-          results: resultWithNames,
-          players: playerNames,
-        };
-      }),
+              const playerNames = r.playerIds.map((pid) => {
+                const player = info.players[pid];
+                return player ? player.lastName + player.firstName : null;
+              });
+
+              // Filter out nulls (partners from other teams) and join
+              const validNames = playerNames.filter(Boolean);
+              return `${validNames.join('・')}（${r.result}）`;
+            })
+            .filter(Boolean)
+            .join('、');
+
+          return {
+            name: event.tournament,
+            categoryLabel: event.categoryLabel,
+            link: event.link || '',
+            results: resultWithNames,
+            players: playerNames,
+          };
+        }),
     [results, info.players],
   );
 
