@@ -1,74 +1,44 @@
 {
-  "totalMatches": 30,
-  "wins": 26,
-  "losses": 4,
-  "totalWinRate": 0.867,
+  "totalMatches": 131,
+  "wins": 106,
+  "losses": 24,
+  "totalWinRate": 0.809,
   "games": {
-    "total": 175,
-    "won": 119,
-    "lost": 56,
-    "gameRate": 0.68
+    "total": 756,
+    "won": 500,
+    "lost": 256,
+    "gameRate": 0.661
   },
   "byPartner": {
-    "maruyama-kaito": {
+    "12": {
       "matches": {
-        "total": 20,
-        "wins": 18,
+        "total": 73,
+        "wins": 62,
+        "losses": 11,
+        "winRate": 0.849
+      },
+      "games": {
+        "total": 455,
+        "won": 305,
+        "lost": 150,
+        "gameRate": 0.67
+      }
+    },
+    "40": {
+      "matches": {
+        "total": 12,
+        "wins": 10,
         "losses": 2,
-        "winRate": 0.9
+        "winRate": 0.833
       },
       "games": {
-        "total": 120,
-        "won": 84,
-        "lost": 36,
-        "gameRate": 0.7
+        "total": 64,
+        "won": 42,
+        "lost": 22,
+        "gameRate": 0.656
       }
     },
-    "久保 晴華": {
-      "matches": {
-        "total": 5,
-        "wins": 4,
-        "losses": 1,
-        "winRate": 0.8
-      },
-      "games": {
-        "total": 29,
-        "won": 18,
-        "lost": 11,
-        "gameRate": 0.621
-      }
-    },
-    "シングルス": {
-      "matches": {
-        "total": 5,
-        "wins": 4,
-        "losses": 1,
-        "winRate": 0.8
-      },
-      "games": {
-        "total": 26,
-        "won": 17,
-        "lost": 9,
-        "gameRate": 0.654
-      }
-    }
-  },
-  "byYear": {
-    "2025": {
-      "matches": {
-        "total": 26,
-        "wins": 23,
-        "losses": 3,
-        "winRate": 0.885
-      },
-      "games": {
-        "total": 151,
-        "won": 103,
-        "lost": 48,
-        "gameRate": 0.682
-      }
-    },
-    "2024": {
+    "1233": {
       "matches": {
         "total": 4,
         "wins": 3,
@@ -76,20 +46,104 @@
         "winRate": 0.75
       },
       "games": {
-        "total": 24,
-        "won": 16,
-        "lost": 8,
-        "gameRate": 0.667
+        "total": 22,
+        "won": 13,
+        "lost": 9,
+        "gameRate": 0.591
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 42,
+        "wins": 31,
+        "losses": 10,
+        "winRate": 0.738
+      },
+      "games": {
+        "total": 215,
+        "won": 140,
+        "lost": 75,
+        "gameRate": 0.651
+      }
+    }
+  },
+  "byYear": {
+    "2022": {
+      "matches": {
+        "total": 22,
+        "wins": 17,
+        "losses": 5,
+        "winRate": 0.773
+      },
+      "games": {
+        "total": 120,
+        "won": 78,
+        "lost": 42,
+        "gameRate": 0.65
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 15,
+        "wins": 11,
+        "losses": 4,
+        "winRate": 0.733
+      },
+      "games": {
+        "total": 88,
+        "won": 57,
+        "lost": 31,
+        "gameRate": 0.648
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 36,
+        "wins": 30,
+        "losses": 6,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 214,
+        "won": 142,
+        "lost": 72,
+        "gameRate": 0.664
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 46,
+        "wins": 38,
+        "losses": 7,
+        "winRate": 0.826
+      },
+      "games": {
+        "total": 268,
+        "won": 180,
+        "lost": 88,
+        "gameRate": 0.672
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 12,
+        "wins": 10,
+        "losses": 2,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 66,
+        "won": 43,
+        "lost": 23,
+        "gameRate": 0.652
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "maruyama-kaito",
-    "result": "優勝",
-    "summary": "丸山選手とのペアで、西日本ソフトテニス選手権大会で優勝を果たしました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "ベスト4",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

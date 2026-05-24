@@ -14,9 +14,7 @@ type Props = {
   player: PlayerInfo;
   id: string;
   numericId?: number | null;
-  summary?: string;
   latest?: {
-    summary: string;
     date: string;
     location: string;
     tournament: string;
@@ -60,7 +58,6 @@ const formatJapaneseDate = (dateString?: string): string | null => {
 export default function PlayerInformation({
   player,
   id,
-  summary,
   numericId,
   latest,
 }: Props) {
@@ -154,15 +151,6 @@ export default function PlayerInformation({
           {player.lastName} {player.firstName}
         </h1>
 
-        {summary && (
-          <section className="mb-10">
-            <h2 className="text-xl font-semibold mb-4">注目ポイント</h2>
-            <p className="text-base text-gray-800 dark:text-gray-200">
-              {summary}
-            </p>
-          </section>
-        )}
-
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
           <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
@@ -217,11 +205,6 @@ export default function PlayerInformation({
                 <span className="font-semibold">更新情報：</span>
                 {latest.date} / {latest.tournament}（{latest.result}）
               </p>
-              {latest.summary && (
-                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
-                  {latest.summary}
-                </p>
-              )}
             </div>
           ) : (
             <p className="text-sm text-gray-500">
@@ -305,21 +288,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     void err;
   }
 
-  // 情報ファイル取得に追加
-  const summaryPath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    id,
-    'summary.json',
-  );
-
-  let summary = '';
-  if (fs.existsSync(summaryPath)) {
-    const summaryData = JSON.parse(fs.readFileSync(summaryPath, 'utf-8'));
-    summary = summaryData.summary || '';
-  }
-
   const analysisPath = path.join(
     process.cwd(),
     'data',
@@ -338,7 +306,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       player,
       id,
-      summary,
       latest,
       numericId,
     },

@@ -48,6 +48,10 @@
 - `data/tournaments/{all,corporate,highschool,international-qualifier,junior,masters,university}/**`
   旧構造の `meta.json` / `entries` / `matches` / `results` / `categories.json`
   現行実装では canonical source ではない
+- `data/players/*/summary.json`
+  選手プロフィールの注目ポイント表示は廃止され、現行実装では参照しない
+- `data/players/*/results.json`
+  選手別結果の旧中間データ。現行運用では廃止し、ファイルも削除した
 
 ### 選手データ
 
@@ -55,9 +59,16 @@
 
 - `data/players/index.json`
 - `data/players/*/information.json`
-- `data/players/*/results.json`
 - `data/players/*/analysis.json`
-- `data/players/*/summary.json`
+
+実装メモ:
+
+- `/players/[slug]` のプロフィールページは `data/players/{slug}/information.json` を必須で参照する
+- 同ページは `analysis.json` があれば最新試合情報を表示する
+- `/players/[id]/results` の試合結果ページは `data/players/{slug}/results.json` を直接は参照しない
+- 試合結果ページは `data/players/index.json` で数値 `id` から選手名を引き、`data/tournaments/details/**` と `data/tournaments/information/*.json` から結果を再構築する
+- `data/players/*/analysis.json` は `data/tournaments/details/**` と `data/tournaments/information/*.json` をソースに自動生成する
+- `latestMatch` は `results` ページ相当の大会データから最新開催の大会を選んで生成する
 
 ### score 公開 JSON
 

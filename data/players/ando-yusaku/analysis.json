@@ -1,30 +1,30 @@
 {
-  "totalMatches": 19,
-  "wins": 15,
-  "losses": 4,
-  "totalWinRate": 0.789,
+  "totalMatches": 69,
+  "wins": 49,
+  "losses": 20,
+  "totalWinRate": 0.71,
   "games": {
-    "total": 110,
-    "won": 73,
-    "lost": 37,
-    "gameRate": 0.664
+    "total": 414,
+    "won": 261,
+    "lost": 153,
+    "gameRate": 0.63
   },
   "byPartner": {
-    "ando-kesuke": {
+    "1": {
       "matches": {
-        "total": 16,
-        "wins": 13,
-        "losses": 3,
-        "winRate": 0.812
+        "total": 44,
+        "wins": 33,
+        "losses": 11,
+        "winRate": 0.75
       },
       "games": {
-        "total": 94,
-        "won": 63,
-        "lost": 31,
-        "gameRate": 0.67
+        "total": 287,
+        "won": 180,
+        "lost": 107,
+        "gameRate": 0.627
       }
     },
-    "シングルス": {
+    "40": {
       "matches": {
         "total": 3,
         "wins": 2,
@@ -37,45 +37,113 @@
         "lost": 6,
         "gameRate": 0.625
       }
-    }
-  },
-  "byYear": {
-    "2025": {
+    },
+    "66": {
       "matches": {
-        "total": 17,
-        "wins": 14,
-        "losses": 3,
-        "winRate": 0.824
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
       },
       "games": {
-        "total": 99,
-        "won": 66,
-        "lost": 33,
+        "total": 12,
+        "won": 8,
+        "lost": 4,
         "gameRate": 0.667
       }
     },
-    "2024": {
+    "singles": {
       "matches": {
-        "total": 2,
-        "wins": 1,
-        "losses": 1,
-        "winRate": 0.5
+        "total": 19,
+        "wins": 12,
+        "losses": 7,
+        "winRate": 0.632
       },
       "games": {
-        "total": 11,
-        "won": 7,
-        "lost": 4,
+        "total": 99,
+        "won": 63,
+        "lost": 36,
         "gameRate": 0.636
       }
     }
   },
+  "byYear": {
+    "2022": {
+      "matches": {
+        "total": 14,
+        "wins": 10,
+        "losses": 4,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 75,
+        "won": 50,
+        "lost": 25,
+        "gameRate": 0.667
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 13,
+        "wins": 9,
+        "losses": 4,
+        "winRate": 0.692
+      },
+      "games": {
+        "total": 79,
+        "won": 50,
+        "lost": 29,
+        "gameRate": 0.633
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 20,
+        "wins": 15,
+        "losses": 5,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 129,
+        "won": 79,
+        "lost": 50,
+        "gameRate": 0.612
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 21,
+        "wins": 15,
+        "losses": 6,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 127,
+        "won": 82,
+        "lost": 45,
+        "gameRate": 0.646
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 1,
+        "winRate": 0
+      },
+      "games": {
+        "total": 4,
+        "won": 0,
+        "lost": 4,
+        "gameRate": 0
+      }
+    }
+  },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "ando-kesuke",
-    "result": "4回戦敗退",
-    "summary": "愛知県社会人大会のつけた勢いで兄の安藤選手と組み、西日本ソフトテニス選手権大会に挑みましたが、4回戦敗退となりました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "2回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

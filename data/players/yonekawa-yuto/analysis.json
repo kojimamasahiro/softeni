@@ -1,21 +1,77 @@
 {
-  "totalMatches": 4,
-  "wins": 2,
-  "losses": 2,
-  "totalWinRate": 0.5,
+  "totalMatches": 100,
+  "wins": 73,
+  "losses": 27,
+  "totalWinRate": 0.73,
   "games": {
-    "total": 20,
-    "won": 11,
-    "lost": 9,
-    "gameRate": 0.55
+    "total": 595,
+    "won": 374,
+    "lost": 221,
+    "gameRate": 0.629
   },
   "byPartner": {
-    "白﨑 ひかる": {
+    "59": {
+      "matches": {
+        "total": 16,
+        "wins": 11,
+        "losses": 5,
+        "winRate": 0.688
+      },
+      "games": {
+        "total": 105,
+        "won": 63,
+        "lost": 42,
+        "gameRate": 0.6
+      }
+    },
+    "102": {
+      "matches": {
+        "total": 13,
+        "wins": 9,
+        "losses": 4,
+        "winRate": 0.692
+      },
+      "games": {
+        "total": 86,
+        "won": 50,
+        "lost": 36,
+        "gameRate": 0.581
+      }
+    },
+    "115": {
+      "matches": {
+        "total": 15,
+        "wins": 12,
+        "losses": 3,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 77,
+        "won": 53,
+        "lost": 24,
+        "gameRate": 0.688
+      }
+    },
+    "144": {
+      "matches": {
+        "total": 13,
+        "wins": 10,
+        "losses": 3,
+        "winRate": 0.769
+      },
+      "games": {
+        "total": 84,
+        "won": 58,
+        "lost": 26,
+        "gameRate": 0.69
+      }
+    },
+    "180": {
       "matches": {
         "total": 1,
         "wins": 0,
         "losses": 1,
-        "winRate": 0.0
+        "winRate": 0
       },
       "games": {
         "total": 6,
@@ -24,44 +80,112 @@
         "gameRate": 0.333
       }
     },
-    "シングルス": {
+    "203": {
       "matches": {
-        "total": 3,
-        "wins": 2,
-        "losses": 1,
-        "winRate": 0.667
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
       },
       "games": {
-        "total": 14,
-        "won": 9,
-        "lost": 5,
-        "gameRate": 0.643
+        "total": 59,
+        "won": 34,
+        "lost": 25,
+        "gameRate": 0.576
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 34,
+        "wins": 25,
+        "losses": 9,
+        "winRate": 0.735
+      },
+      "games": {
+        "total": 178,
+        "won": 114,
+        "lost": 64,
+        "gameRate": 0.64
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 4,
-        "wins": 2,
-        "losses": 2,
-        "winRate": 0.5
+        "total": 19,
+        "wins": 14,
+        "losses": 5,
+        "winRate": 0.737
       },
       "games": {
+        "total": 108,
+        "won": 69,
+        "lost": 39,
+        "gameRate": 0.639
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 25,
+        "wins": 20,
+        "losses": 5,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 139,
+        "won": 94,
+        "lost": 45,
+        "gameRate": 0.676
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 31,
+        "wins": 23,
+        "losses": 8,
+        "winRate": 0.742
+      },
+      "games": {
+        "total": 193,
+        "won": 119,
+        "lost": 74,
+        "gameRate": 0.617
+      }
+    },
+    "2025": {
+      "matches": {
         "total": 20,
-        "won": 11,
-        "lost": 9,
-        "gameRate": 0.55
+        "wins": 13,
+        "losses": 7,
+        "winRate": 0.65
+      },
+      "games": {
+        "total": 125,
+        "won": 74,
+        "lost": 51,
+        "gameRate": 0.592
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 5,
+        "wins": 3,
+        "losses": 2,
+        "winRate": 0.6
+      },
+      "games": {
+        "total": 30,
+        "won": 18,
+        "lost": 12,
+        "gameRate": 0.6
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "白﨑 ひかる",
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
     "result": "3回戦敗退",
-    "summary": "第6回 全日本ミックスダブルス選手権大会で3回戦敗退を記録",
-    "link": ""
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

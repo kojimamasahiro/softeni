@@ -1,16 +1,16 @@
 {
-  "totalMatches": 6,
-  "wins": 5,
-  "losses": 1,
-  "totalWinRate": 0.833,
+  "totalMatches": 85,
+  "wins": 56,
+  "losses": 29,
+  "totalWinRate": 0.659,
   "games": {
-    "total": 35,
-    "won": 21,
-    "lost": 14,
-    "gameRate": 0.6
+    "total": 491,
+    "won": 291,
+    "lost": 200,
+    "gameRate": 0.593
   },
   "byPartner": {
-    "シングルス": {
+    "23": {
       "matches": {
         "total": 6,
         "wins": 5,
@@ -18,36 +18,216 @@
         "winRate": 0.833
       },
       "games": {
-        "total": 35,
-        "won": 21,
+        "total": 43,
+        "won": 29,
         "lost": 14,
-        "gameRate": 0.6
+        "gameRate": 0.674
+      }
+    },
+    "29": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 10,
+        "won": 5,
+        "lost": 5,
+        "gameRate": 0.5
+      }
+    },
+    "31": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 8,
+        "won": 4,
+        "lost": 4,
+        "gameRate": 0.5
+      }
+    },
+    "45": {
+      "matches": {
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 46,
+        "won": 32,
+        "lost": 14,
+        "gameRate": 0.696
+      }
+    },
+    "57": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 1,
+        "winRate": 0
+      },
+      "games": {
+        "total": 6,
+        "won": 2,
+        "lost": 4,
+        "gameRate": 0.333
+      }
+    },
+    "89": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 21,
+        "won": 11,
+        "lost": 10,
+        "gameRate": 0.524
+      }
+    },
+    "157": {
+      "matches": {
+        "total": 7,
+        "wins": 4,
+        "losses": 3,
+        "winRate": 0.571
+      },
+      "games": {
+        "total": 45,
+        "won": 24,
+        "lost": 21,
+        "gameRate": 0.533
+      }
+    },
+    "200": {
+      "matches": {
+        "total": 17,
+        "wins": 10,
+        "losses": 7,
+        "winRate": 0.588
+      },
+      "games": {
+        "total": 93,
+        "won": 54,
+        "lost": 39,
+        "gameRate": 0.581
+      }
+    },
+    "263": {
+      "matches": {
+        "total": 3,
+        "wins": 1,
+        "losses": 2,
+        "winRate": 0.333
+      },
+      "games": {
+        "total": 24,
+        "won": 12,
+        "lost": 12,
+        "gameRate": 0.5
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 36,
+        "wins": 26,
+        "losses": 10,
+        "winRate": 0.722
+      },
+      "games": {
+        "total": 195,
+        "won": 118,
+        "lost": 77,
+        "gameRate": 0.605
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 6,
+        "total": 7,
         "wins": 5,
-        "losses": 1,
-        "winRate": 0.833
+        "losses": 2,
+        "winRate": 0.714
       },
       "games": {
-        "total": 35,
-        "won": 21,
-        "lost": 14,
-        "gameRate": 0.6
+        "total": 42,
+        "won": 26,
+        "lost": 16,
+        "gameRate": 0.619
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 15,
+        "wins": 8,
+        "losses": 7,
+        "winRate": 0.533
+      },
+      "games": {
+        "total": 79,
+        "won": 43,
+        "lost": 36,
+        "gameRate": 0.544
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 27,
+        "wins": 19,
+        "losses": 8,
+        "winRate": 0.704
+      },
+      "games": {
+        "total": 162,
+        "won": 100,
+        "lost": 62,
+        "gameRate": 0.617
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 33,
+        "wins": 22,
+        "losses": 11,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 188,
+        "won": 111,
+        "lost": 77,
+        "gameRate": 0.59
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 20,
+        "won": 11,
+        "lost": 9,
+        "gameRate": 0.55
       }
     }
   },
   "latestMatch": {
-    "tournament": "第32回 全日本シングルス選手権大会",
-    "date": "2025年5月17日(土)~5月18日(日)",
-    "location": "生目の杜運動公園",
-    "partner": null,
-    "result": "ベスト8",
-    "summary": "上岡選手の後輩で同志社大学のエース。全日本シングルではベスト8に進出し、今後の活躍が期待されます。",
-    "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/"
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "4回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

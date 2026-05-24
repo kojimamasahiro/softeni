@@ -1,53 +1,163 @@
 {
-  "totalMatches": 6,
-  "wins": 5,
-  "losses": 1,
-  "totalWinRate": 0.833,
+  "totalMatches": 43,
+  "wins": 29,
+  "losses": 14,
+  "totalWinRate": 0.674,
   "games": {
-    "total": 39,
-    "won": 23,
-    "lost": 16,
-    "gameRate": 0.59
+    "total": 240,
+    "won": 143,
+    "lost": 97,
+    "gameRate": 0.596
   },
   "byPartner": {
-    "シングルス": {
+    "102": {
       "matches": {
-        "total": 6,
-        "wins": 5,
-        "losses": 1,
-        "winRate": 0.833
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
       },
       "games": {
-        "total": 39,
-        "won": 23,
-        "lost": 16,
-        "gameRate": 0.59
+        "total": 42,
+        "won": 28,
+        "lost": 14,
+        "gameRate": 0.667
+      }
+    },
+    "273": {
+      "matches": {
+        "total": 10,
+        "wins": 7,
+        "losses": 3,
+        "winRate": 0.7
+      },
+      "games": {
+        "total": 59,
+        "won": 36,
+        "lost": 23,
+        "gameRate": 0.61
+      }
+    },
+    "1727": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 22,
+        "won": 14,
+        "lost": 8,
+        "gameRate": 0.636
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 21,
+        "wins": 13,
+        "losses": 8,
+        "winRate": 0.619
+      },
+      "games": {
+        "total": 117,
+        "won": 65,
+        "lost": 52,
+        "gameRate": 0.556
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2021": {
       "matches": {
-        "total": 6,
-        "wins": 5,
+        "total": 4,
+        "wins": 3,
         "losses": 1,
-        "winRate": 0.833
+        "winRate": 0.75
       },
       "games": {
-        "total": 39,
-        "won": 23,
-        "lost": 16,
+        "total": 22,
+        "won": 14,
+        "lost": 8,
+        "gameRate": 0.636
+      }
+    },
+    "2022": {
+      "matches": {
+        "total": 11,
+        "wins": 8,
+        "losses": 3,
+        "winRate": 0.727
+      },
+      "games": {
+        "total": 58,
+        "won": 37,
+        "lost": 21,
+        "gameRate": 0.638
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 5,
+        "wins": 3,
+        "losses": 2,
+        "winRate": 0.6
+      },
+      "games": {
+        "total": 27,
+        "won": 16,
+        "lost": 11,
+        "gameRate": 0.593
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 10,
+        "won": 5,
+        "lost": 5,
+        "gameRate": 0.5
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 20,
+        "wins": 14,
+        "losses": 6,
+        "winRate": 0.7
+      },
+      "games": {
+        "total": 117,
+        "won": 69,
+        "lost": 48,
         "gameRate": 0.59
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 1,
+        "winRate": 0
+      },
+      "games": {
+        "total": 6,
+        "won": 2,
+        "lost": 4,
+        "gameRate": 0.333
       }
     }
   },
   "latestMatch": {
-    "tournament": "第32回 全日本シングルス選手権大会",
-    "date": "2025年5月17日(土)~5月18日(日)",
-    "location": "生目の杜運動公園",
-    "partner": null,
-    "result": "ベスト8",
-    "summary": "大学生ながら、全日本シングルス選手権でベスト8に進出し、将来が非常に楽しみな選手です。",
-    "link": "https://www.soft-tennis.com/miyazaki/No32-all-jp/"
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "2回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

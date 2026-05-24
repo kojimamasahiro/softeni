@@ -1,16 +1,16 @@
 {
-  "totalMatches": 6,
-  "wins": 4,
-  "losses": 2,
-  "totalWinRate": 0.667,
+  "totalMatches": 43,
+  "wins": 30,
+  "losses": 13,
+  "totalWinRate": 0.698,
   "games": {
-    "total": 41,
-    "won": 21,
-    "lost": 20,
-    "gameRate": 0.512
+    "total": 278,
+    "won": 156,
+    "lost": 122,
+    "gameRate": 0.561
   },
   "byPartner": {
-    "nagae-koichi": {
+    "14": {
       "matches": {
         "total": 6,
         "wins": 4,
@@ -23,9 +23,135 @@
         "lost": 20,
         "gameRate": 0.512
       }
+    },
+    "125": {
+      "matches": {
+        "total": 7,
+        "wins": 6,
+        "losses": 1,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 42,
+        "won": 27,
+        "lost": 15,
+        "gameRate": 0.643
+      }
+    },
+    "136": {
+      "matches": {
+        "total": 11,
+        "wins": 8,
+        "losses": 3,
+        "winRate": 0.727
+      },
+      "games": {
+        "total": 68,
+        "won": 43,
+        "lost": 25,
+        "gameRate": 0.632
+      }
+    },
+    "197": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 18,
+        "won": 10,
+        "lost": 8,
+        "gameRate": 0.556
+      }
+    },
+    "385": {
+      "matches": {
+        "total": 3,
+        "wins": 1,
+        "losses": 2,
+        "winRate": 0.333
+      },
+      "games": {
+        "total": 21,
+        "won": 7,
+        "lost": 14,
+        "gameRate": 0.333
+      }
+    },
+    "3223": {
+      "matches": {
+        "total": 7,
+        "wins": 5,
+        "losses": 2,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 55,
+        "won": 30,
+        "lost": 25,
+        "gameRate": 0.545
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 6,
+        "wins": 4,
+        "losses": 2,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 33,
+        "won": 18,
+        "lost": 15,
+        "gameRate": 0.545
+      }
     }
   },
   "byYear": {
+    "2022": {
+      "matches": {
+        "total": 7,
+        "wins": 5,
+        "losses": 2,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 55,
+        "won": 30,
+        "lost": 25,
+        "gameRate": 0.545
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 17,
+        "wins": 13,
+        "losses": 4,
+        "winRate": 0.765
+      },
+      "games": {
+        "total": 100,
+        "won": 61,
+        "lost": 39,
+        "gameRate": 0.61
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 13,
+        "wins": 8,
+        "losses": 5,
+        "winRate": 0.615
+      },
+      "games": {
+        "total": 82,
+        "won": 44,
+        "lost": 38,
+        "gameRate": 0.537
+      }
+    },
     "2025": {
       "matches": {
         "total": 6,
@@ -42,12 +168,11 @@
     }
   },
   "latestMatch": {
-    "tournament": "第9回 アジア選手権大会日本代表予選会",
-    "date": "2025年4月26日(土)~4月27日(日)",
-    "location": "仙台市青葉山公園庭球場",
-    "partner": "nagae-koichi",
-    "result": "ベスト16",
-    "summary": "2025年引退を表明した丸中選手は、今後はコーチとして活躍を期待します。",
-    "link": "https://www.jsta.or.jp/"
+    "tournament": "アジア選手権大会日本代表予選会",
+    "date": "2025年4月26日〜2025年4月27日",
+    "location": "宮城県",
+    "partner": 14,
+    "result": "ベスト8",
+    "link": "https://www.jsta.or.jp"
   }
 }

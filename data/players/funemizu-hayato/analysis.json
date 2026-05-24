@@ -1,14 +1,177 @@
 {
-  "totalMatches": 0,
-  "wins": 0,
-  "losses": 0,
-  "totalWinRate": 0,
+  "totalMatches": 92,
+  "wins": 79,
+  "losses": 13,
+  "totalWinRate": 0.859,
   "games": {
-    "total": 0,
-    "won": 0,
-    "lost": 0,
-    "gameRate": 0
+    "total": 514,
+    "won": 365,
+    "lost": 149,
+    "gameRate": 0.71
   },
-  "byPartner": {},
-  "byYear": {}
+  "byPartner": {
+    "12": {
+      "matches": {
+        "total": 3,
+        "wins": 1,
+        "losses": 2,
+        "winRate": 0.333
+      },
+      "games": {
+        "total": 19,
+        "won": 8,
+        "lost": 11,
+        "gameRate": 0.421
+      }
+    },
+    "19": {
+      "matches": {
+        "total": 44,
+        "wins": 41,
+        "losses": 3,
+        "winRate": 0.932
+      },
+      "games": {
+        "total": 279,
+        "won": 202,
+        "lost": 77,
+        "gameRate": 0.724
+      }
+    },
+    "63": {
+      "matches": {
+        "total": 11,
+        "wins": 10,
+        "losses": 1,
+        "winRate": 0.909
+      },
+      "games": {
+        "total": 54,
+        "won": 41,
+        "lost": 13,
+        "gameRate": 0.759
+      }
+    },
+    "143": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 17,
+        "won": 9,
+        "lost": 8,
+        "gameRate": 0.529
+      }
+    },
+    "151": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 28,
+        "won": 22,
+        "lost": 6,
+        "gameRate": 0.786
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 25,
+        "wins": 20,
+        "losses": 5,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 117,
+        "won": 83,
+        "lost": 34,
+        "gameRate": 0.709
+      }
+    }
+  },
+  "byYear": {
+    "2022": {
+      "matches": {
+        "total": 21,
+        "wins": 19,
+        "losses": 2,
+        "winRate": 0.905
+      },
+      "games": {
+        "total": 124,
+        "won": 87,
+        "lost": 37,
+        "gameRate": 0.702
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 23,
+        "wins": 20,
+        "losses": 3,
+        "winRate": 0.87
+      },
+      "games": {
+        "total": 125,
+        "won": 93,
+        "lost": 32,
+        "gameRate": 0.744
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 36,
+        "wins": 32,
+        "losses": 4,
+        "winRate": 0.889
+      },
+      "games": {
+        "total": 204,
+        "won": 148,
+        "lost": 56,
+        "gameRate": 0.725
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 3,
+        "wins": 1,
+        "losses": 2,
+        "winRate": 0.333
+      },
+      "games": {
+        "total": 19,
+        "won": 8,
+        "lost": 11,
+        "gameRate": 0.421
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 9,
+        "wins": 7,
+        "losses": 2,
+        "winRate": 0.778
+      },
+      "games": {
+        "total": 42,
+        "won": 29,
+        "lost": 13,
+        "gameRate": 0.69
+      }
+    }
+  },
+  "latestMatch": {
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "ベスト8",
+    "link": "https://www.jsta.or.jp/events/events2026"
+  }
 }

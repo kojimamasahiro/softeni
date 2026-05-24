@@ -1,95 +1,163 @@
 {
-  "totalMatches": 30,
-  "wins": 26,
-  "losses": 4,
-  "totalWinRate": 0.867,
+  "totalMatches": 123,
+  "wins": 101,
+  "losses": 22,
+  "totalWinRate": 0.821,
   "games": {
-    "total": 172,
-    "won": 121,
-    "lost": 51,
-    "gameRate": 0.703
+    "total": 702,
+    "won": 479,
+    "lost": 223,
+    "gameRate": 0.682
   },
   "byPartner": {
-    "uchida-riku": {
+    "16": {
       "matches": {
-        "total": 22,
-        "wins": 20,
-        "losses": 2,
-        "winRate": 0.909
-      },
-      "games": {
-        "total": 129,
-        "won": 94,
-        "lost": 35,
-        "gameRate": 0.729
-      }
-    },
-    "吉田 澪奈": {
-      "matches": {
-        "total": 6,
-        "wins": 5,
-        "losses": 1,
+        "total": 54,
+        "wins": 45,
+        "losses": 9,
         "winRate": 0.833
       },
       "games": {
-        "total": 33,
-        "won": 21,
-        "lost": 12,
-        "gameRate": 0.636
+        "total": 327,
+        "won": 228,
+        "lost": 99,
+        "gameRate": 0.697
       }
     },
-    "シングルス": {
+    "19": {
       "matches": {
-        "total": 2,
-        "wins": 1,
-        "losses": 1,
-        "winRate": 0.5
+        "total": 29,
+        "wins": 25,
+        "losses": 4,
+        "winRate": 0.862
       },
       "games": {
-        "total": 10,
-        "won": 6,
-        "lost": 4,
-        "gameRate": 0.6
+        "total": 162,
+        "won": 118,
+        "lost": 44,
+        "gameRate": 0.728
+      }
+    },
+    "38": {
+      "matches": {
+        "total": 13,
+        "wins": 11,
+        "losses": 2,
+        "winRate": 0.846
+      },
+      "games": {
+        "total": 72,
+        "won": 46,
+        "lost": 26,
+        "gameRate": 0.639
+      }
+    },
+    "40": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 27,
+        "won": 16,
+        "lost": 11,
+        "gameRate": 0.593
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 22,
+        "wins": 16,
+        "losses": 6,
+        "winRate": 0.727
+      },
+      "games": {
+        "total": 114,
+        "won": 71,
+        "lost": 43,
+        "gameRate": 0.623
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 26,
-        "wins": 22,
-        "losses": 4,
-        "winRate": 0.846
+        "total": 23,
+        "wins": 18,
+        "losses": 5,
+        "winRate": 0.783
       },
       "games": {
-        "total": 143,
-        "won": 103,
-        "lost": 40,
-        "gameRate": 0.72
+        "total": 128,
+        "won": 83,
+        "lost": 45,
+        "gameRate": 0.648
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 10,
+        "wins": 8,
+        "losses": 2,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 67,
+        "won": 40,
+        "lost": 27,
+        "gameRate": 0.597
       }
     },
     "2024": {
       "matches": {
-        "total": 4,
-        "wins": 4,
-        "losses": 0,
-        "winRate": 1.0
+        "total": 34,
+        "wins": 29,
+        "losses": 5,
+        "winRate": 0.853
       },
       "games": {
-        "total": 29,
-        "won": 18,
-        "lost": 11,
-        "gameRate": 0.621
+        "total": 199,
+        "won": 138,
+        "lost": 61,
+        "gameRate": 0.693
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 47,
+        "wins": 38,
+        "losses": 9,
+        "winRate": 0.809
+      },
+      "games": {
+        "total": 262,
+        "won": 185,
+        "lost": 77,
+        "gameRate": 0.706
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 9,
+        "wins": 8,
+        "losses": 1,
+        "winRate": 0.889
+      },
+      "games": {
+        "total": 46,
+        "won": 33,
+        "lost": 13,
+        "gameRate": 0.717
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "uchida-riku",
-    "result": "準優勝",
-    "summary": "西日本ソフトテニス選手権大会では内田選手と組み連覇を狙いましたが、決勝戦で敗れ準優勝となりました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "5回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

@@ -17,6 +17,7 @@
   試合結果と成長分析を公開する閲覧専用サイト
 
 ### 目的
+
 - 選手ごとの過去成績や出場履歴を簡単に検索・閲覧できる環境の提供
 - 大会データの構造化と長期保存
 - 指導者・選手・ファンの振り返りや分析への活用
@@ -30,14 +31,14 @@
 
 ### 技術スタック
 
-| カテゴリ | 技術 |
-|---------|------|
-| **フレームワーク** | Next.js 15.3.1 (React 19) |
-| **スタイリング** | Tailwind CSS 4 |
-| **データベース** | Supabase (開発/管理機能用) |
-| **デプロイ** | Vercel (現在) → Cloudflare Pages (移行予定) |
-| **言語** | TypeScript, Python |
-| **分析ツール** | Vercel Analytics, Speed Insights |
+| カテゴリ           | 技術                                        |
+| ------------------ | ------------------------------------------- |
+| **フレームワーク** | Next.js 15.3.1 (React 19)                   |
+| **スタイリング**   | Tailwind CSS 4                              |
+| **データベース**   | Supabase (開発/管理機能用)                  |
+| **デプロイ**       | Vercel (現在) → Cloudflare Pages (移行予定) |
+| **言語**           | TypeScript, Python                          |
+| **分析ツール**     | Vercel Analytics, Speed Insights            |
 
 ---
 
@@ -51,20 +52,20 @@
 
 主な設定:
 
-| 変数 | 用途 |
-|------|------|
-| `SITE_MODE` | サーバー側のモード切り替え |
-| `NEXT_PUBLIC_SITE_MODE` | クライアント側のモード切り替え |
+| 変数                          | 用途                                  |
+| ----------------------------- | ------------------------------------- |
+| `SITE_MODE`                   | サーバー側のモード切り替え            |
+| `NEXT_PUBLIC_SITE_MODE`       | クライアント側のモード切り替え        |
 | `NEXT_PUBLIC_PUBLIC_BASE_URL` | canonical / OGP / 共有 URL の基準 URL |
-| `NEXT_PUBLIC_SITE_NAME` | サイト名 |
-| `NEXT_PUBLIC_PUBLIC_OG_IMAGE` | OGP 画像 URL |
+| `NEXT_PUBLIC_SITE_NAME`       | サイト名                              |
+| `NEXT_PUBLIC_PUBLIC_OG_IMAGE` | OGP 画像 URL                          |
 
 モードごとの想定:
 
-| mode | 主ドメイン | 有効な公開導線 |
-|------|-----------|----------------|
-| `softeni-pick` | `https://softeni-pick.com` | `/`, `/players`, `/teams`, `/tournaments`, `/beta/*` |
-| `score` | `https://score.softeni-pick.com` | `/matches`, `/matches/[matchId]`, `/matches/growth` |
+| mode           | 主ドメイン                       | 有効な公開導線                                       |
+| -------------- | -------------------------------- | ---------------------------------------------------- |
+| `softeni-pick` | `https://softeni-pick.com`       | `/`, `/players`, `/teams`, `/tournaments`, `/beta/*` |
+| `score`        | `https://score.softeni-pick.com` | `/matches`, `/matches/[matchId]`, `/matches/growth`  |
 
 ### score モードの制約
 
@@ -78,11 +79,11 @@
 
 ### 公開 URL 対応
 
-| 既存導線 | score 側の公開先 |
-|---------|------------------|
-| `/beta/matches-results` | `/matches` |
+| 既存導線                          | score 側の公開先     |
+| --------------------------------- | -------------------- |
+| `/beta/matches-results`           | `/matches`           |
 | `/beta/matches-results/[matchId]` | `/matches/[matchId]` |
-| `/beta/matches-results/growth` | `/matches/growth` |
+| `/beta/matches-results/growth`    | `/matches/growth`    |
 
 ---
 
@@ -117,6 +118,7 @@ softeni-pick/
 全ページで **Static Site Generation (SSG)** を使用し、ビルド時に静的HTMLを生成しています。
 
 **主要ページ:**
+
 - `/` - トップページ (最近の大会、注目選手)
 - `/players` - 選手一覧
 - `/players/[id]/results` - 選手詳細・成績
@@ -132,6 +134,7 @@ softeni-pick/
 ### `src/components/` - コンポーネント (18個)
 
 再利用可能なUIコンポーネント:
+
 - `Header`, `Footer`, `Breadcrumb` - レイアウト
 - `MetaHead` - SEO/OGP設定
 - `PlayerResults`, `PlayerSummaryStats` - 選手情報表示
@@ -142,6 +145,7 @@ softeni-pick/
 ### `data/` - 静的JSONデータ (1,398ファイル)
 
 **構造:**
+
 ```
 data/
 ├── tournament/
@@ -155,7 +159,7 @@ data/
 └── players/
     └── [playerId]/
         ├── information.json          # 選手プロフィール
-        └── results.json              # 試合成績
+        └── analysis.json             # 選手集計・最新試合
 ```
 
 ---
@@ -170,27 +174,27 @@ data/
 
 **主要スクリプト:**
 
-| ファイル | 言語 | 機能 |
-|---------|------|------|
-| `convert_image_pdf.py` | Python | PDF→画像→テキスト抽出 |
-| `generate_entries.py` | Python | エントリー情報生成 |
-| `generate_roundrobin.py` | Python | 総当たり戦データ生成 |
-| `extract-players.mjs` | JavaScript | 選手データ抽出 |
-| `generate-players-index-from-info.mjs` | JavaScript | 選手インデックス生成 |
-| `generate-og-json.mjs` | JavaScript | OG画像用JSON生成 |
-| `batch-normalize.mjs` | JavaScript | データ正規化 |
+| ファイル                               | 言語       | 機能                  |
+| -------------------------------------- | ---------- | --------------------- |
+| `convert_image_pdf.py`                 | Python     | PDF→画像→テキスト抽出 |
+| `generate_entries.py`                  | Python     | エントリー情報生成    |
+| `generate_roundrobin.py`               | Python     | 総当たり戦データ生成  |
+| `extract-players.mjs`                  | JavaScript | 選手データ抽出        |
+| `generate-players-index-from-info.mjs` | JavaScript | 選手インデックス生成  |
+| `generate-og-json.mjs`                 | JavaScript | OG画像用JSON生成      |
+| `batch-normalize.mjs`                  | JavaScript | データ正規化          |
 
 ### `tools/` - 開発補助ツール (5ディレクトリ)
 
 **ツール一覧:**
 
-| ディレクトリ | 用途 |
-|-------------|------|
+| ディレクトリ          | 用途                     |
+| --------------------- | ------------------------ |
 | `match-input-helper/` | 試合結果の手動入力支援UI |
-| `tournament/` | トーナメント表管理 |
-| `tournament2/` | トーナメント表管理(v2) |
-| `roundrobin/` | 総当たり戦データ管理 |
-| `kintai/` | その他管理ツール |
+| `tournament/`         | トーナメント表管理       |
+| `tournament2/`        | トーナメント表管理(v2)   |
+| `roundrobin/`         | 総当たり戦データ管理     |
+| `kintai/`             | その他管理ツール         |
 
 これらは **HTMLベースのローカルツール** で、`data/`配下のJSONファイル生成を補助します。
 
@@ -202,20 +206,19 @@ data/
 
 **API Routes一覧:**
 
-| カテゴリ | エンドポイント | 用途 |
-|---------|---------------|------|
-| **OG画像生成** | `/api/og/**/*.tsx` (3) | 動的OG画像生成 |
-| **試合データ** | `/api/matches/**/*.ts` (5) | 試合CRUD操作 |
-| **選手データ** | `/api/players/index.ts` (1) | 選手データ集約 |
-| **大会データ** | `/api/tournaments/**/*.ts` (2) | 大会情報取得 |
-| **その他** | `/api/*.ts` (3) | テスト・管理用 |
+| カテゴリ       | エンドポイント                 | 用途           |
+| -------------- | ------------------------------ | -------------- |
+| **OG画像生成** | `/api/og/**/*.tsx` (3)         | 動的OG画像生成 |
+| **試合データ** | `/api/matches/**/*.ts` (5)     | 試合CRUD操作   |
+| **選手データ** | `/api/players/index.ts` (1)    | 選手データ集約 |
+| **大会データ** | `/api/tournaments/**/*.ts` (2) | 大会情報取得   |
+| **その他**     | `/api/*.ts` (3)                | テスト・管理用 |
 
-> [!WARNING]
-> **静的エクスポート時の制約**
-> 
+> [!WARNING] > **静的エクスポート時の制約**
+>
 > Next.jsの静的エクスポート(`output: 'export'`)では、API Routesは動作しません。
 > Cloudflare移行時には以下のいずれかの対応が必要です:
-> 
+>
 > - Cloudflare Workersで再実装
 > - ビルド時に静的JSONファイルとして生成
 > - 外部APIサービス(Supabase等)に移行
@@ -367,12 +370,14 @@ npm run generate-sitemap
 ### 移行対象
 
 ✅ **Cloudflareにデプロイするもの:**
+
 - `src/` - 全ページ・コンポーネント
 - `data/` - 静的JSONデータ
 - `public/` - 静的アセット
 - `next.config.ts`, `package.json`, `tsconfig.json` - 設定ファイル
 
 ❌ **ローカル専用 (デプロイしない):**
+
 - `scripts/` - データ処理スクリプト
 - `tools/` - 開発補助ツール
 - `database/` - データベーススキーマ

@@ -1,60 +1,16 @@
 {
-  "totalMatches": 17,
-  "wins": 13,
-  "losses": 4,
-  "totalWinRate": 0.765,
+  "totalMatches": 76,
+  "wins": 55,
+  "losses": 21,
+  "totalWinRate": 0.724,
   "games": {
-    "total": 95,
-    "won": 65,
-    "lost": 30,
-    "gameRate": 0.684
+    "total": 438,
+    "won": 278,
+    "lost": 160,
+    "gameRate": 0.635
   },
   "byPartner": {
-    "hirooka-sora": {
-      "matches": {
-        "total": 8,
-        "wins": 6,
-        "losses": 2,
-        "winRate": 0.75
-      },
-      "games": {
-        "total": 52,
-        "won": 34,
-        "lost": 18,
-        "gameRate": 0.654
-      }
-    },
-    "藤城 みちる": {
-      "matches": {
-        "total": 3,
-        "wins": 2,
-        "losses": 1,
-        "winRate": 0.667
-      },
-      "games": {
-        "total": 16,
-        "won": 10,
-        "lost": 6,
-        "gameRate": 0.625
-      }
-    },
-    "シングルス": {
-      "matches": {
-        "total": 6,
-        "wins": 5,
-        "losses": 1,
-        "winRate": 0.833
-      },
-      "games": {
-        "total": 27,
-        "won": 21,
-        "lost": 6,
-        "gameRate": 0.778
-      }
-    }
-  },
-  "byYear": {
-    "2025": {
+    "6": {
       "matches": {
         "total": 17,
         "wins": 13,
@@ -62,20 +18,160 @@
         "winRate": 0.765
       },
       "games": {
-        "total": 95,
-        "won": 65,
-        "lost": 30,
-        "gameRate": 0.684
+        "total": 103,
+        "won": 68,
+        "lost": 35,
+        "gameRate": 0.66
+      }
+    },
+    "38": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 13,
+        "won": 8,
+        "lost": 5,
+        "gameRate": 0.615
+      }
+    },
+    "151": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 11,
+        "won": 7,
+        "lost": 4,
+        "gameRate": 0.636
+      }
+    },
+    "170": {
+      "matches": {
+        "total": 7,
+        "wins": 5,
+        "losses": 2,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 39,
+        "won": 23,
+        "lost": 16,
+        "gameRate": 0.59
+      }
+    },
+    "473": {
+      "matches": {
+        "total": 16,
+        "wins": 11,
+        "losses": 5,
+        "winRate": 0.688
+      },
+      "games": {
+        "total": 105,
+        "won": 66,
+        "lost": 39,
+        "gameRate": 0.629
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 31,
+        "wins": 23,
+        "losses": 8,
+        "winRate": 0.742
+      },
+      "games": {
+        "total": 167,
+        "won": 106,
+        "lost": 61,
+        "gameRate": 0.635
+      }
+    }
+  },
+  "byYear": {
+    "2022": {
+      "matches": {
+        "total": 12,
+        "wins": 8,
+        "losses": 4,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 69,
+        "won": 38,
+        "lost": 31,
+        "gameRate": 0.551
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 9,
+        "wins": 6,
+        "losses": 3,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 56,
+        "won": 37,
+        "lost": 19,
+        "gameRate": 0.661
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 20,
+        "wins": 15,
+        "losses": 5,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 118,
+        "won": 75,
+        "lost": 43,
+        "gameRate": 0.636
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 28,
+        "wins": 21,
+        "losses": 7,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 154,
+        "won": 103,
+        "lost": 51,
+        "gameRate": 0.669
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 7,
+        "wins": 5,
+        "losses": 2,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 41,
+        "won": 25,
+        "lost": 16,
+        "gameRate": 0.61
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "hirooka-sora",
-    "result": "4回戦敗退",
-    "summary": "西日本ソフトテニス選手権大会では、アジア選手権大会日本代表予選会と同じく広岡選手と組みましたが、4回戦で高校生ペアに敗れました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "6回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

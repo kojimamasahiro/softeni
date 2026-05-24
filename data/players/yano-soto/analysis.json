@@ -1,30 +1,86 @@
 {
-  "totalMatches": 26,
-  "wins": 21,
-  "losses": 5,
-  "totalWinRate": 0.808,
+  "totalMatches": 141,
+  "wins": 114,
+  "losses": 26,
+  "totalWinRate": 0.809,
   "games": {
-    "total": 144,
-    "won": 104,
-    "lost": 40,
-    "gameRate": 0.722
+    "total": 789,
+    "won": 550,
+    "lost": 239,
+    "gameRate": 0.697
   },
   "byPartner": {
-    "uematsu-toshiki": {
+    "16": {
       "matches": {
-        "total": 17,
-        "wins": 14,
+        "total": 29,
+        "wins": 26,
         "losses": 3,
-        "winRate": 0.824
+        "winRate": 0.897
       },
       "games": {
-        "total": 99,
-        "won": 70,
-        "lost": 29,
-        "gameRate": 0.707
+        "total": 169,
+        "won": 123,
+        "lost": 46,
+        "gameRate": 0.728
       }
     },
-    "中谷 さくら": {
+    "19": {
+      "matches": {
+        "total": 13,
+        "wins": 11,
+        "losses": 2,
+        "winRate": 0.846
+      },
+      "games": {
+        "total": 75,
+        "won": 54,
+        "lost": 21,
+        "gameRate": 0.72
+      }
+    },
+    "59": {
+      "matches": {
+        "total": 19,
+        "wins": 14,
+        "losses": 5,
+        "winRate": 0.737
+      },
+      "games": {
+        "total": 116,
+        "won": 75,
+        "lost": 41,
+        "gameRate": 0.647
+      }
+    },
+    "126": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 8,
+        "won": 4,
+        "lost": 4,
+        "gameRate": 0.5
+      }
+    },
+    "143": {
+      "matches": {
+        "total": 19,
+        "wins": 15,
+        "losses": 4,
+        "winRate": 0.789
+      },
+      "games": {
+        "total": 123,
+        "won": 84,
+        "lost": 39,
+        "gameRate": 0.683
+      }
+    },
+    "151": {
       "matches": {
         "total": 4,
         "wins": 3,
@@ -38,44 +94,126 @@
         "gameRate": 0.714
       }
     },
-    "シングルス": {
+    "180": {
       "matches": {
-        "total": 5,
-        "wins": 4,
+        "total": 4,
+        "wins": 3,
         "losses": 1,
-        "winRate": 0.8
+        "winRate": 0.75
       },
       "games": {
-        "total": 24,
-        "won": 19,
-        "lost": 5,
-        "gameRate": 0.792
+        "total": 20,
+        "won": 13,
+        "lost": 7,
+        "gameRate": 0.65
+      }
+    },
+    "597": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 17,
+        "won": 11,
+        "lost": 6,
+        "gameRate": 0.647
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 48,
+        "wins": 39,
+        "losses": 8,
+        "winRate": 0.812
+      },
+      "games": {
+        "total": 240,
+        "won": 171,
+        "lost": 69,
+        "gameRate": 0.712
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 26,
-        "wins": 21,
-        "losses": 5,
-        "winRate": 0.808
+        "total": 13,
+        "wins": 9,
+        "losses": 4,
+        "winRate": 0.692
       },
       "games": {
-        "total": 144,
-        "won": 104,
-        "lost": 40,
-        "gameRate": 0.722
+        "total": 75,
+        "won": 47,
+        "lost": 28,
+        "gameRate": 0.627
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 30,
+        "wins": 23,
+        "losses": 7,
+        "winRate": 0.767
+      },
+      "games": {
+        "total": 165,
+        "won": 114,
+        "lost": 51,
+        "gameRate": 0.691
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 33,
+        "wins": 27,
+        "losses": 6,
+        "winRate": 0.818
+      },
+      "games": {
+        "total": 196,
+        "won": 131,
+        "lost": 65,
+        "gameRate": 0.668
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 57,
+        "wins": 49,
+        "losses": 7,
+        "winRate": 0.86
+      },
+      "games": {
+        "total": 310,
+        "won": 229,
+        "lost": 81,
+        "gameRate": 0.739
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 8,
+        "wins": 6,
+        "losses": 2,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 43,
+        "won": 29,
+        "lost": 14,
+        "gameRate": 0.674
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "uematsu-toshiki",
-    "result": "ベスト4",
-    "summary": "西日本ソフトテニス選手権大会では、今年に入り3度目となる上松選手と組みベスト4の成績を残しました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "6回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

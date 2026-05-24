@@ -1,16 +1,16 @@
 {
-  "totalMatches": 8,
-  "wins": 5,
-  "losses": 3,
-  "totalWinRate": 0.625,
+  "totalMatches": 28,
+  "wins": 22,
+  "losses": 6,
+  "totalWinRate": 0.786,
   "games": {
-    "total": 44,
-    "won": 25,
-    "lost": 19,
-    "gameRate": 0.568
+    "total": 153,
+    "won": 102,
+    "lost": 51,
+    "gameRate": 0.667
   },
   "byPartner": {
-    "山口 優菜": {
+    "19": {
       "matches": {
         "total": 3,
         "wins": 2,
@@ -18,13 +18,27 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 17,
-        "won": 9,
-        "lost": 8,
-        "gameRate": 0.529
+        "total": 18,
+        "won": 12,
+        "lost": 6,
+        "gameRate": 0.667
       }
     },
-    "シングルス": {
+    "105": {
+      "matches": {
+        "total": 21,
+        "wins": 18,
+        "losses": 3,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 110,
+        "won": 78,
+        "lost": 32,
+        "gameRate": 0.709
+      }
+    },
+    "912": {
       "matches": {
         "total": 2,
         "wins": 1,
@@ -32,64 +46,91 @@
         "winRate": 0.5
       },
       "games": {
-        "total": 9,
-        "won": 4,
-        "lost": 5,
-        "gameRate": 0.444
+        "total": 14,
+        "won": 7,
+        "lost": 7,
+        "gameRate": 0.5
       }
     },
-    "uematsu-toshiki": {
+    "singles": {
       "matches": {
-        "total": 3,
-        "wins": 2,
+        "total": 2,
+        "wins": 1,
         "losses": 1,
-        "winRate": 0.667
+        "winRate": 0.5
       },
       "games": {
-        "total": 18,
-        "won": 12,
+        "total": 11,
+        "won": 5,
         "lost": 6,
-        "gameRate": 0.667
+        "gameRate": 0.455
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 5,
-        "wins": 3,
-        "losses": 2,
-        "winRate": 0.6
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
       },
       "games": {
-        "total": 26,
-        "won": 13,
-        "lost": 13,
+        "total": 14,
+        "won": 7,
+        "lost": 7,
         "gameRate": 0.5
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 21,
+        "won": 14,
+        "lost": 7,
+        "gameRate": 0.667
       }
     },
     "2024": {
       "matches": {
-        "total": 3,
-        "wins": 2,
-        "losses": 1,
-        "winRate": 0.667
+        "total": 20,
+        "wins": 17,
+        "losses": 3,
+        "winRate": 0.85
       },
       "games": {
-        "total": 18,
-        "won": 12,
+        "total": 106,
+        "won": 75,
+        "lost": 31,
+        "gameRate": 0.708
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 12,
+        "won": 6,
         "lost": 6,
-        "gameRate": 0.667
+        "gameRate": 0.5
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "山口 優菜",
-    "result": "4回戦敗退",
-    "summary": "第6回 全日本ミックスダブルス選手権大会で4回戦敗退を記録",
-    "link": ""
+    "tournament": "全日本選抜大会",
+    "date": "2026年4月4日〜2026年4月5日",
+    "location": "東京都",
+    "partner": 105,
+    "result": "予選2位",
+    "link": "https://zennihon-senbatsu.com/"
   }
 }

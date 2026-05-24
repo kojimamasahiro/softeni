@@ -1,16 +1,30 @@
 {
-  "totalMatches": 25,
-  "wins": 22,
-  "losses": 3,
-  "totalWinRate": 0.88,
+  "totalMatches": 110,
+  "wins": 84,
+  "losses": 25,
+  "totalWinRate": 0.764,
   "games": {
-    "total": 129,
-    "won": 93,
-    "lost": 36,
-    "gameRate": 0.721
+    "total": 590,
+    "won": 391,
+    "lost": 199,
+    "gameRate": 0.663
   },
   "byPartner": {
-    "本間 友里那": {
+    "29": {
+      "matches": {
+        "total": 20,
+        "wins": 17,
+        "losses": 3,
+        "winRate": 0.85
+      },
+      "games": {
+        "total": 105,
+        "won": 74,
+        "lost": 31,
+        "gameRate": 0.705
+      }
+    },
+    "197": {
       "matches": {
         "total": 2,
         "wins": 1,
@@ -24,58 +38,182 @@
         "gameRate": 0.462
       }
     },
-    "荻谷 侑磨": {
+    "261": {
       "matches": {
-        "total": 10,
-        "wins": 9,
-        "losses": 1,
-        "winRate": 0.9
+        "total": 3,
+        "wins": 1,
+        "losses": 2,
+        "winRate": 0.333
       },
       "games": {
-        "total": 51,
-        "won": 37,
-        "lost": 14,
-        "gameRate": 0.725
+        "total": 22,
+        "won": 10,
+        "lost": 12,
+        "gameRate": 0.455
       }
     },
-    "シングルス": {
+    "280": {
       "matches": {
-        "total": 13,
-        "wins": 12,
-        "losses": 1,
-        "winRate": 0.923
+        "total": 2,
+        "wins": 0,
+        "losses": 2,
+        "winRate": 0
       },
       "games": {
-        "total": 65,
-        "won": 50,
-        "lost": 15,
-        "gameRate": 0.769
+        "total": 14,
+        "won": 5,
+        "lost": 9,
+        "gameRate": 0.357
+      }
+    },
+    "285": {
+      "matches": {
+        "total": 20,
+        "wins": 15,
+        "losses": 5,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 114,
+        "won": 75,
+        "lost": 39,
+        "gameRate": 0.658
+      }
+    },
+    "1493": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 23,
+        "won": 15,
+        "lost": 8,
+        "gameRate": 0.652
+      }
+    },
+    "2827": {
+      "matches": {
+        "total": 7,
+        "wins": 7,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 32,
+        "won": 28,
+        "lost": 4,
+        "gameRate": 0.875
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 52,
+        "wins": 40,
+        "losses": 11,
+        "winRate": 0.769
+      },
+      "games": {
+        "total": 267,
+        "won": 178,
+        "lost": 89,
+        "gameRate": 0.667
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2019": {
       "matches": {
-        "total": 25,
-        "wins": 22,
-        "losses": 3,
-        "winRate": 0.88
+        "total": 7,
+        "wins": 7,
+        "losses": 0,
+        "winRate": 1
       },
       "games": {
-        "total": 129,
-        "won": 93,
-        "lost": 36,
-        "gameRate": 0.721
+        "total": 32,
+        "won": 28,
+        "lost": 4,
+        "gameRate": 0.875
+      }
+    },
+    "2022": {
+      "matches": {
+        "total": 5,
+        "wins": 3,
+        "losses": 2,
+        "winRate": 0.6
+      },
+      "games": {
+        "total": 30,
+        "won": 18,
+        "lost": 12,
+        "gameRate": 0.6
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 6,
+        "wins": 2,
+        "losses": 4,
+        "winRate": 0.333
+      },
+      "games": {
+        "total": 34,
+        "won": 17,
+        "lost": 17,
+        "gameRate": 0.5
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 33,
+        "wins": 27,
+        "losses": 6,
+        "winRate": 0.818
+      },
+      "games": {
+        "total": 173,
+        "won": 122,
+        "lost": 51,
+        "gameRate": 0.705
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 48,
+        "wins": 36,
+        "losses": 11,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 256,
+        "won": 165,
+        "lost": 91,
+        "gameRate": 0.645
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 11,
+        "wins": 9,
+        "losses": 2,
+        "winRate": 0.818
+      },
+      "games": {
+        "total": 65,
+        "won": 41,
+        "lost": 24,
+        "gameRate": 0.631
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "本間 友里那",
-    "result": "3回戦敗退",
-    "summary": "全日本シングルスではベスト4、高校の大会では負けなしの今後に期待の選手です。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "準優勝",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

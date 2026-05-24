@@ -1,16 +1,72 @@
 {
-  "totalMatches": 23,
-  "wins": 16,
-  "losses": 7,
-  "totalWinRate": 0.696,
+  "totalMatches": 115,
+  "wins": 94,
+  "losses": 20,
+  "totalWinRate": 0.817,
   "games": {
-    "total": 134,
-    "won": 86,
-    "lost": 48,
-    "gameRate": 0.642
+    "total": 652,
+    "won": 444,
+    "lost": 208,
+    "gameRate": 0.681
   },
   "byPartner": {
-    "motokura-kentaro": {
+    "5": {
+      "matches": {
+        "total": 6,
+        "wins": 4,
+        "losses": 2,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 39,
+        "won": 24,
+        "lost": 15,
+        "gameRate": 0.615
+      }
+    },
+    "13": {
+      "matches": {
+        "total": 17,
+        "wins": 13,
+        "losses": 4,
+        "winRate": 0.765
+      },
+      "games": {
+        "total": 103,
+        "won": 68,
+        "lost": 35,
+        "gameRate": 0.66
+      }
+    },
+    "14": {
+      "matches": {
+        "total": 28,
+        "wins": 24,
+        "losses": 4,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 175,
+        "won": 123,
+        "lost": 52,
+        "gameRate": 0.703
+      }
+    },
+    "158": {
+      "matches": {
+        "total": 12,
+        "wins": 11,
+        "losses": 1,
+        "winRate": 0.917
+      },
+      "games": {
+        "total": 62,
+        "won": 44,
+        "lost": 18,
+        "gameRate": 0.71
+      }
+    },
+    "209": {
       "matches": {
         "total": 8,
         "wins": 6,
@@ -18,92 +74,104 @@
         "winRate": 0.75
       },
       "games": {
-        "total": 52,
-        "won": 34,
-        "lost": 18,
-        "gameRate": 0.654
+        "total": 44,
+        "won": 28,
+        "lost": 16,
+        "gameRate": 0.636
       }
     },
-    "浪岡 菜々美": {
+    "singles": {
       "matches": {
-        "total": 3,
-        "wins": 2,
-        "losses": 1,
-        "winRate": 0.667
+        "total": 44,
+        "wins": 36,
+        "losses": 7,
+        "winRate": 0.818
       },
       "games": {
-        "total": 18,
-        "won": 10,
-        "lost": 8,
-        "gameRate": 0.556
-      }
-    },
-    "シングルス": {
-      "matches": {
-        "total": 8,
-        "wins": 5,
-        "losses": 3,
-        "winRate": 0.625
-      },
-      "games": {
-        "total": 36,
-        "won": 25,
-        "lost": 11,
-        "gameRate": 0.694
-      }
-    },
-    "nagae-koichi": {
-      "matches": {
-        "total": 4,
-        "wins": 3,
-        "losses": 1,
-        "winRate": 0.75
-      },
-      "games": {
-        "total": 28,
-        "won": 17,
-        "lost": 11,
-        "gameRate": 0.607
+        "total": 229,
+        "won": 157,
+        "lost": 72,
+        "gameRate": 0.686
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 19,
-        "wins": 13,
-        "losses": 6,
-        "winRate": 0.684
+        "total": 24,
+        "wins": 20,
+        "losses": 4,
+        "winRate": 0.833
       },
       "games": {
-        "total": 106,
-        "won": 69,
-        "lost": 37,
-        "gameRate": 0.651
+        "total": 133,
+        "won": 89,
+        "lost": 44,
+        "gameRate": 0.669
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 24,
+        "wins": 22,
+        "losses": 2,
+        "winRate": 0.917
+      },
+      "games": {
+        "total": 135,
+        "won": 99,
+        "lost": 36,
+        "gameRate": 0.733
       }
     },
     "2024": {
       "matches": {
-        "total": 4,
-        "wins": 3,
-        "losses": 1,
-        "winRate": 0.75
+        "total": 29,
+        "wins": 24,
+        "losses": 5,
+        "winRate": 0.828
       },
       "games": {
-        "total": 28,
-        "won": 17,
-        "lost": 11,
-        "gameRate": 0.607
+        "total": 170,
+        "won": 118,
+        "lost": 52,
+        "gameRate": 0.694
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 32,
+        "wins": 23,
+        "losses": 8,
+        "winRate": 0.719
+      },
+      "games": {
+        "total": 178,
+        "won": 116,
+        "lost": 62,
+        "gameRate": 0.652
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 36,
+        "won": 22,
+        "lost": 14,
+        "gameRate": 0.611
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "motokura-kentaro",
-    "result": "4回戦敗退",
-    "summary": "西日本ソフトテニス選手権大会では、アジア選手権大会日本代表予選会と同じく本倉選手と組みましたが、4回戦で高校生ペアに敗れました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "ベスト8",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

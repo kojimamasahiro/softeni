@@ -1,67 +1,122 @@
 {
-  "totalMatches": 16,
-  "wins": 13,
-  "losses": 3,
-  "totalWinRate": 0.812,
+  "totalMatches": 53,
+  "wins": 38,
+  "losses": 15,
+  "totalWinRate": 0.717,
   "games": {
-    "total": 94,
-    "won": 63,
-    "lost": 31,
-    "gameRate": 0.67
+    "total": 330,
+    "won": 205,
+    "lost": 125,
+    "gameRate": 0.621
   },
   "byPartner": {
-    "ando-yusaku": {
+    "2": {
       "matches": {
-        "total": 16,
-        "wins": 13,
-        "losses": 3,
-        "winRate": 0.812
+        "total": 44,
+        "wins": 33,
+        "losses": 11,
+        "winRate": 0.75
       },
       "games": {
-        "total": 94,
-        "won": 63,
-        "lost": 31,
-        "gameRate": 0.67
+        "total": 287,
+        "won": 180,
+        "lost": 107,
+        "gameRate": 0.627
+      }
+    },
+    "172": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 23,
+        "won": 17,
+        "lost": 6,
+        "gameRate": 0.739
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 4,
+        "wins": 1,
+        "losses": 3,
+        "winRate": 0.25
+      },
+      "games": {
+        "total": 20,
+        "won": 8,
+        "lost": 12,
+        "gameRate": 0.4
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 14,
-        "wins": 12,
-        "losses": 2,
-        "winRate": 0.857
+        "total": 12,
+        "wins": 7,
+        "losses": 5,
+        "winRate": 0.583
       },
       "games": {
-        "total": 83,
-        "won": 56,
+        "total": 64,
+        "won": 37,
         "lost": 27,
-        "gameRate": 0.675
+        "gameRate": 0.578
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 6,
+        "wins": 4,
+        "losses": 2,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 42,
+        "won": 25,
+        "lost": 17,
+        "gameRate": 0.595
       }
     },
     "2024": {
       "matches": {
-        "total": 2,
-        "wins": 1,
-        "losses": 1,
-        "winRate": 0.5
+        "total": 19,
+        "wins": 15,
+        "losses": 4,
+        "winRate": 0.789
       },
       "games": {
-        "total": 11,
-        "won": 7,
-        "lost": 4,
-        "gameRate": 0.636
+        "total": 124,
+        "won": 78,
+        "lost": 46,
+        "gameRate": 0.629
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 16,
+        "wins": 12,
+        "losses": 4,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 100,
+        "won": 65,
+        "lost": 35,
+        "gameRate": 0.65
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "ando-yusaku",
-    "result": "4回戦敗退",
-    "summary": "愛知県社会人大会のつけた勢いで弟の安藤選手と組み、西日本ソフトテニス選手権大会に挑みましたが、4回戦敗退となりました。",
-    "link": ""
+    "tournament": "天皇賜杯・皇后賜杯 全日本選手権大会",
+    "date": "2025年11月6日〜2025年11月8日",
+    "location": "東京都",
+    "partner": 2,
+    "result": "5回戦敗退",
+    "link": "https://www.jsta.or.jp"
   }
 }

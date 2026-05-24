@@ -1,46 +1,158 @@
 {
-  "totalMatches": 9,
-  "wins": 7,
-  "losses": 2,
-  "totalWinRate": 0.778,
+  "totalMatches": 138,
+  "wins": 109,
+  "losses": 29,
+  "totalWinRate": 0.79,
   "games": {
-    "total": 52,
-    "won": 31,
-    "lost": 21,
-    "gameRate": 0.596
+    "total": 802,
+    "won": 530,
+    "lost": 272,
+    "gameRate": 0.661
   },
   "byPartner": {
-    "根岸 楓英奈": {
+    "23": {
       "matches": {
-        "total": 1,
-        "wins": 0,
-        "losses": 1,
-        "winRate": 0.0
+        "total": 4,
+        "wins": 2,
+        "losses": 2,
+        "winRate": 0.5
       },
       "games": {
-        "total": 5,
-        "won": 1,
-        "lost": 4,
-        "gameRate": 0.2
+        "total": 23,
+        "won": 14,
+        "lost": 9,
+        "gameRate": 0.609
       }
     },
-    "シングルス": {
+    "35": {
       "matches": {
-        "total": 8,
-        "wins": 7,
-        "losses": 1,
-        "winRate": 0.875
+        "total": 68,
+        "wins": 52,
+        "losses": 16,
+        "winRate": 0.765
       },
       "games": {
-        "total": 47,
-        "won": 30,
-        "lost": 17,
-        "gameRate": 0.638
+        "total": 420,
+        "won": 270,
+        "lost": 150,
+        "gameRate": 0.643
+      }
+    },
+    "66": {
+      "matches": {
+        "total": 4,
+        "wins": 2,
+        "losses": 2,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 18,
+        "won": 10,
+        "lost": 8,
+        "gameRate": 0.556
+      }
+    },
+    "253": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 24,
+        "won": 14,
+        "lost": 10,
+        "gameRate": 0.583
+      }
+    },
+    "1439": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 29,
+        "won": 19,
+        "lost": 10,
+        "gameRate": 0.655
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 54,
+        "wins": 47,
+        "losses": 7,
+        "winRate": 0.87
+      },
+      "games": {
+        "total": 288,
+        "won": 203,
+        "lost": 85,
+        "gameRate": 0.705
       }
     }
   },
   "byYear": {
+    "2022": {
+      "matches": {
+        "total": 9,
+        "wins": 6,
+        "losses": 3,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 48,
+        "won": 32,
+        "lost": 16,
+        "gameRate": 0.667
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 28,
+        "wins": 22,
+        "losses": 6,
+        "winRate": 0.786
+      },
+      "games": {
+        "total": 169,
+        "won": 109,
+        "lost": 60,
+        "gameRate": 0.645
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 46,
+        "wins": 38,
+        "losses": 8,
+        "winRate": 0.826
+      },
+      "games": {
+        "total": 272,
+        "won": 179,
+        "lost": 93,
+        "gameRate": 0.658
+      }
+    },
     "2025": {
+      "matches": {
+        "total": 46,
+        "wins": 36,
+        "losses": 10,
+        "winRate": 0.783
+      },
+      "games": {
+        "total": 267,
+        "won": 176,
+        "lost": 91,
+        "gameRate": 0.659
+      }
+    },
+    "2026": {
       "matches": {
         "total": 9,
         "wins": 7,
@@ -48,20 +160,18 @@
         "winRate": 0.778
       },
       "games": {
-        "total": 52,
-        "won": 31,
-        "lost": 21,
-        "gameRate": 0.596
+        "total": 46,
+        "won": 34,
+        "lost": 12,
+        "gameRate": 0.739
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "根岸 楓英奈",
-    "result": "2回戦敗退",
-    "summary": "橋場選手はまだ大学生ながら、今年の全日本シングルス選手権で準優勝を果たし、将来が非常に楽しみな選手です。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "6回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

@@ -1,30 +1,58 @@
 {
-  "totalMatches": 29,
-  "wins": 25,
-  "losses": 4,
-  "totalWinRate": 0.862,
+  "totalMatches": 133,
+  "wins": 110,
+  "losses": 23,
+  "totalWinRate": 0.827,
   "games": {
-    "total": 168,
-    "won": 120,
-    "lost": 48,
-    "gameRate": 0.714
+    "total": 742,
+    "won": 524,
+    "lost": 218,
+    "gameRate": 0.706
   },
   "byPartner": {
-    "uchimoto-takafumi": {
+    "17": {
       "matches": {
-        "total": 22,
-        "wins": 20,
-        "losses": 2,
-        "winRate": 0.909
+        "total": 54,
+        "wins": 45,
+        "losses": 9,
+        "winRate": 0.833
       },
       "games": {
-        "total": 129,
-        "won": 94,
-        "lost": 35,
-        "gameRate": 0.729
+        "total": 327,
+        "won": 228,
+        "lost": 99,
+        "gameRate": 0.697
       }
     },
-    "前川 愛生": {
+    "21": {
+      "matches": {
+        "total": 29,
+        "wins": 26,
+        "losses": 3,
+        "winRate": 0.897
+      },
+      "games": {
+        "total": 169,
+        "won": 123,
+        "lost": 46,
+        "gameRate": 0.728
+      }
+    },
+    "103": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 13,
+        "won": 8,
+        "lost": 5,
+        "gameRate": 0.615
+      }
+    },
+    "123": {
       "matches": {
         "total": 3,
         "wins": 2,
@@ -38,58 +66,126 @@
         "gameRate": 0.579
       }
     },
-    "シングルス": {
+    "293": {
       "matches": {
-        "total": 4,
-        "wins": 3,
+        "total": 3,
+        "wins": 2,
         "losses": 1,
-        "winRate": 0.75
+        "winRate": 0.667
       },
       "games": {
-        "total": 20,
-        "won": 15,
+        "total": 14,
+        "won": 9,
         "lost": 5,
-        "gameRate": 0.75
+        "gameRate": 0.643
+      }
+    },
+    "306": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 22,
+        "won": 18,
+        "lost": 4,
+        "gameRate": 0.818
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 36,
+        "wins": 29,
+        "losses": 7,
+        "winRate": 0.806
+      },
+      "games": {
+        "total": 178,
+        "won": 127,
+        "lost": 51,
+        "gameRate": 0.713
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 25,
+        "total": 26,
         "wins": 21,
-        "losses": 4,
-        "winRate": 0.84
+        "losses": 5,
+        "winRate": 0.808
       },
       "games": {
-        "total": 139,
-        "won": 102,
+        "total": 136,
+        "won": 96,
+        "lost": 40,
+        "gameRate": 0.706
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 19,
+        "wins": 15,
+        "losses": 4,
+        "winRate": 0.789
+      },
+      "games": {
+        "total": 109,
+        "won": 72,
         "lost": 37,
-        "gameRate": 0.734
+        "gameRate": 0.661
       }
     },
     "2024": {
       "matches": {
-        "total": 4,
-        "wins": 4,
-        "losses": 0,
-        "winRate": 1.0
+        "total": 32,
+        "wins": 27,
+        "losses": 5,
+        "winRate": 0.844
       },
       "games": {
-        "total": 29,
-        "won": 18,
+        "total": 181,
+        "won": 130,
+        "lost": 51,
+        "gameRate": 0.718
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 49,
+        "wins": 42,
+        "losses": 7,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 280,
+        "won": 201,
+        "lost": 79,
+        "gameRate": 0.718
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 7,
+        "wins": 5,
+        "losses": 2,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 36,
+        "won": 25,
         "lost": 11,
-        "gameRate": 0.621
+        "gameRate": 0.694
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "uchimoto-takafumi",
-    "result": "準優勝",
-    "summary": "西日本ソフトテニス選手権大会では内本選手と組み連覇を狙いましたが、決勝戦で敗れ準優勝となりました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "5回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

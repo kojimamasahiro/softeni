@@ -8,6 +8,7 @@
 
 - `npm run prebuild`
   - `node scripts/generate-players-json.mjs`
+  - `node scripts/generate-player-analysis.mjs`
   - `node scripts/generate-beta-matches-json.mjs`
 - `npm run check:growth`
   - `node scripts/check-growth-analysis.mjs`
@@ -36,6 +37,7 @@
 確認できた主要スクリプト:
 
 - `scripts/generate-players-json.mjs`
+- `scripts/generate-player-analysis.mjs`
 - `scripts/extract-players.mjs`
 - `scripts/generate-players-index-from-info.mjs`
 - `scripts/generate_players_from_tournaments.mjs`
@@ -44,6 +46,13 @@
 - `scripts/generate_roundrobin.py`
 - `scripts/matches/convert.py`
 - `scripts/matches/roundrobin/convert.py`
+
+Deprecated:
+
+- `scripts/generate_analysis.py`
+  現行運用では `scripts/generate-player-analysis.mjs` を使う
+- `scripts/toPlayer/convert.py`
+  廃止済みの `data/players/*/results.json` を手動追記する旧運用スクリプト
 
 関連データ:
 
@@ -71,6 +80,7 @@
 - 大会データの canonical source は `data/tournaments/details/**` と `data/tournaments/information/*.json`
 - 一覧や地域紐付けは `data/tournaments/index.json` / `local_index.json` を使う
 - そこから選手ページ用の `data/players/**` を派生生成する流れがある
+- `data/players/*/analysis.json` は `data/tournaments/details/**` と `data/tournaments/information/*.json` から `scripts/generate-player-analysis.mjs` で自動生成する
 - score 系は `data/**` ではなく Supabase -> `public/data/beta-matches/**` 生成の流れを持つ
 
 ## 地方大会候補検知

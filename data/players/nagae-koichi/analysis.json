@@ -1,44 +1,30 @@
 {
-  "totalMatches": 21,
-  "wins": 16,
-  "losses": 5,
-  "totalWinRate": 0.762,
+  "totalMatches": 99,
+  "wins": 76,
+  "losses": 22,
+  "totalWinRate": 0.768,
   "games": {
-    "total": 123,
-    "won": 74,
-    "lost": 49,
-    "gameRate": 0.602
+    "total": 570,
+    "won": 367,
+    "lost": 203,
+    "gameRate": 0.644
   },
   "byPartner": {
-    "村上 雄人": {
+    "6": {
       "matches": {
-        "total": 5,
-        "wins": 4,
-        "losses": 1,
-        "winRate": 0.8
+        "total": 28,
+        "wins": 24,
+        "losses": 4,
+        "winRate": 0.857
       },
       "games": {
-        "total": 24,
-        "won": 16,
-        "lost": 8,
-        "gameRate": 0.667
+        "total": 175,
+        "won": 123,
+        "lost": 52,
+        "gameRate": 0.703
       }
     },
-    "シングルス": {
-      "matches": {
-        "total": 6,
-        "wins": 5,
-        "losses": 1,
-        "winRate": 0.833
-      },
-      "games": {
-        "total": 30,
-        "won": 20,
-        "lost": 10,
-        "gameRate": 0.667
-      }
-    },
-    "marunaka-taimei": {
+    "11": {
       "matches": {
         "total": 6,
         "wins": 4,
@@ -52,58 +38,140 @@
         "gameRate": 0.512
       }
     },
-    "hirooka-sora": {
+    "136": {
       "matches": {
-        "total": 4,
-        "wins": 3,
-        "losses": 1,
-        "winRate": 0.75
+        "total": 13,
+        "wins": 10,
+        "losses": 3,
+        "winRate": 0.769
       },
       "games": {
-        "total": 28,
-        "won": 17,
-        "lost": 11,
-        "gameRate": 0.607
+        "total": 80,
+        "won": 51,
+        "lost": 29,
+        "gameRate": 0.638
+      }
+    },
+    "473": {
+      "matches": {
+        "total": 15,
+        "wins": 12,
+        "losses": 3,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 86,
+        "won": 56,
+        "lost": 30,
+        "gameRate": 0.651
+      }
+    },
+    "909": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 12,
+        "won": 7,
+        "lost": 5,
+        "gameRate": 0.583
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 35,
+        "wins": 25,
+        "losses": 9,
+        "winRate": 0.714
+      },
+      "games": {
+        "total": 176,
+        "won": 109,
+        "lost": 67,
+        "gameRate": 0.619
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 17,
-        "wins": 13,
-        "losses": 4,
-        "winRate": 0.765
+        "total": 16,
+        "wins": 11,
+        "losses": 5,
+        "winRate": 0.688
       },
       "games": {
-        "total": 95,
-        "won": 57,
-        "lost": 38,
-        "gameRate": 0.6
+        "total": 100,
+        "won": 61,
+        "lost": 39,
+        "gameRate": 0.61
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 14,
+        "wins": 12,
+        "losses": 2,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 85,
+        "won": 58,
+        "lost": 27,
+        "gameRate": 0.682
       }
     },
     "2024": {
       "matches": {
-        "total": 4,
-        "wins": 3,
-        "losses": 1,
-        "winRate": 0.75
+        "total": 22,
+        "wins": 18,
+        "losses": 4,
+        "winRate": 0.818
       },
       "games": {
-        "total": 28,
-        "won": 17,
-        "lost": 11,
-        "gameRate": 0.607
+        "total": 129,
+        "won": 91,
+        "lost": 38,
+        "gameRate": 0.705
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 39,
+        "wins": 28,
+        "losses": 10,
+        "winRate": 0.718
+      },
+      "games": {
+        "total": 214,
+        "won": 129,
+        "lost": 85,
+        "gameRate": 0.603
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 8,
+        "wins": 7,
+        "losses": 1,
+        "winRate": 0.875
+      },
+      "games": {
+        "total": 42,
+        "won": 28,
+        "lost": 14,
+        "gameRate": 0.667
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "村上 雄人",
-    "result": "ベスト8",
-    "summary": "西日本ソフトテニス選手権大会では引退したはずの村上監督とペアを組み、見事ベスト8まで進みました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "6回戦敗退",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

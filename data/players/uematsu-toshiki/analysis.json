@@ -1,58 +1,30 @@
 {
-  "totalMatches": 32,
-  "wins": 27,
-  "losses": 5,
-  "totalWinRate": 0.844,
+  "totalMatches": 161,
+  "wins": 146,
+  "losses": 14,
+  "totalWinRate": 0.907,
   "games": {
-    "total": 181,
-    "won": 128,
-    "lost": 53,
-    "gameRate": 0.707
+    "total": 882,
+    "won": 661,
+    "lost": 221,
+    "gameRate": 0.749
   },
   "byPartner": {
-    "yano-soto": {
+    "3": {
       "matches": {
-        "total": 17,
-        "wins": 14,
+        "total": 44,
+        "wins": 41,
         "losses": 3,
-        "winRate": 0.824
+        "winRate": 0.932
       },
       "games": {
-        "total": 99,
-        "won": 70,
-        "lost": 29,
-        "gameRate": 0.707
+        "total": 279,
+        "won": 202,
+        "lost": 77,
+        "gameRate": 0.724
       }
     },
-    "前田 梨緒": {
-      "matches": {
-        "total": 4,
-        "wins": 3,
-        "losses": 1,
-        "winRate": 0.75
-      },
-      "games": {
-        "total": 23,
-        "won": 14,
-        "lost": 9,
-        "gameRate": 0.609
-      }
-    },
-    "シングルス": {
-      "matches": {
-        "total": 8,
-        "wins": 8,
-        "losses": 0,
-        "winRate": 1.0
-      },
-      "games": {
-        "total": 41,
-        "won": 32,
-        "lost": 9,
-        "gameRate": 0.78
-      }
-    },
-    "kawasaki-kohei": {
+    "9": {
       "matches": {
         "total": 3,
         "wins": 2,
@@ -65,10 +37,8 @@
         "lost": 6,
         "gameRate": 0.667
       }
-    }
-  },
-  "byYear": {
-    "2025": {
+    },
+    "17": {
       "matches": {
         "total": 29,
         "wins": 25,
@@ -76,13 +46,55 @@
         "winRate": 0.862
       },
       "games": {
-        "total": 163,
-        "won": 116,
-        "lost": 47,
-        "gameRate": 0.712
+        "total": 162,
+        "won": 118,
+        "lost": 44,
+        "gameRate": 0.728
       }
     },
-    "2024": {
+    "21": {
+      "matches": {
+        "total": 13,
+        "wins": 11,
+        "losses": 2,
+        "winRate": 0.846
+      },
+      "games": {
+        "total": 75,
+        "won": 54,
+        "lost": 21,
+        "gameRate": 0.72
+      }
+    },
+    "94": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 24,
+        "won": 15,
+        "lost": 9,
+        "gameRate": 0.625
+      }
+    },
+    "125": {
+      "matches": {
+        "total": 11,
+        "wins": 10,
+        "losses": 1,
+        "winRate": 0.909
+      },
+      "games": {
+        "total": 54,
+        "won": 42,
+        "lost": 12,
+        "gameRate": 0.778
+      }
+    },
+    "509": {
       "matches": {
         "total": 3,
         "wins": 2,
@@ -90,20 +102,104 @@
         "winRate": 0.667
       },
       "games": {
-        "total": 18,
-        "won": 12,
-        "lost": 6,
-        "gameRate": 0.667
+        "total": 14,
+        "won": 10,
+        "lost": 4,
+        "gameRate": 0.714
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 54,
+        "wins": 52,
+        "losses": 1,
+        "winRate": 0.963
+      },
+      "games": {
+        "total": 256,
+        "won": 208,
+        "lost": 48,
+        "gameRate": 0.812
+      }
+    }
+  },
+  "byYear": {
+    "2022": {
+      "matches": {
+        "total": 27,
+        "wins": 25,
+        "losses": 2,
+        "winRate": 0.926
+      },
+      "games": {
+        "total": 150,
+        "won": 111,
+        "lost": 39,
+        "gameRate": 0.74
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 23,
+        "wins": 21,
+        "losses": 2,
+        "winRate": 0.913
+      },
+      "games": {
+        "total": 128,
+        "won": 99,
+        "lost": 29,
+        "gameRate": 0.773
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 40,
+        "wins": 37,
+        "losses": 3,
+        "winRate": 0.925
+      },
+      "games": {
+        "total": 223,
+        "won": 169,
+        "lost": 54,
+        "gameRate": 0.758
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 58,
+        "wins": 50,
+        "losses": 7,
+        "winRate": 0.862
+      },
+      "games": {
+        "total": 315,
+        "won": 230,
+        "lost": 85,
+        "gameRate": 0.73
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 13,
+        "wins": 13,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 66,
+        "won": 52,
+        "lost": 14,
+        "gameRate": 0.788
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "yano-soto",
-    "result": "ベスト4",
-    "summary": "西日本ソフトテニス選手権大会では、今年に入り3度目となる矢野選手と組みベスト4の成績を残しました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "優勝",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

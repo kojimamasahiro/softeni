@@ -1,35 +1,77 @@
 {
-  "totalMatches": 31,
-  "wins": 28,
-  "losses": 3,
-  "totalWinRate": 0.903,
+  "totalMatches": 143,
+  "wins": 116,
+  "losses": 26,
+  "totalWinRate": 0.811,
   "games": {
-    "total": 173,
-    "won": 125,
-    "lost": 48,
-    "gameRate": 0.723
+    "total": 824,
+    "won": 540,
+    "lost": 284,
+    "gameRate": 0.655
   },
   "byPartner": {
-    "ueoka-shunsuke": {
+    "3": {
       "matches": {
-        "total": 20,
-        "wins": 18,
+        "total": 3,
+        "wins": 1,
         "losses": 2,
-        "winRate": 0.9
+        "winRate": 0.333
       },
       "games": {
-        "total": 120,
-        "won": 84,
-        "lost": 36,
-        "gameRate": 0.7
+        "total": 19,
+        "won": 8,
+        "lost": 11,
+        "gameRate": 0.421
       }
     },
-    "天間 麗奈": {
+    "20": {
+      "matches": {
+        "total": 73,
+        "wins": 62,
+        "losses": 11,
+        "winRate": 0.849
+      },
+      "games": {
+        "total": 455,
+        "won": 305,
+        "lost": 150,
+        "gameRate": 0.67
+      }
+    },
+    "61": {
+      "matches": {
+        "total": 10,
+        "wins": 8,
+        "losses": 2,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 57,
+        "won": 36,
+        "lost": 21,
+        "gameRate": 0.632
+      }
+    },
+    "63": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 26,
+        "won": 18,
+        "lost": 8,
+        "gameRate": 0.692
+      }
+    },
+    "164": {
       "matches": {
         "total": 6,
         "wins": 6,
         "losses": 0,
-        "winRate": 1.0
+        "winRate": 1
       },
       "games": {
         "total": 31,
@@ -38,58 +80,112 @@
         "gameRate": 0.774
       }
     },
-    "シングルス": {
+    "377": {
       "matches": {
-        "total": 5,
-        "wins": 4,
+        "total": 2,
+        "wins": 1,
         "losses": 1,
-        "winRate": 0.8
+        "winRate": 0.5
       },
       "games": {
-        "total": 22,
-        "won": 17,
-        "lost": 5,
-        "gameRate": 0.773
+        "total": 12,
+        "won": 6,
+        "lost": 6,
+        "gameRate": 0.5
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 44,
+        "wins": 34,
+        "losses": 9,
+        "winRate": 0.773
+      },
+      "games": {
+        "total": 224,
+        "won": 143,
+        "lost": 81,
+        "gameRate": 0.638
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2022": {
       "matches": {
-        "total": 27,
-        "wins": 25,
-        "losses": 2,
-        "winRate": 0.926
+        "total": 25,
+        "wins": 20,
+        "losses": 5,
+        "winRate": 0.8
       },
       "games": {
-        "total": 149,
-        "won": 109,
-        "lost": 40,
-        "gameRate": 0.732
+        "total": 136,
+        "won": 89,
+        "lost": 47,
+        "gameRate": 0.654
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 18,
+        "wins": 14,
+        "losses": 4,
+        "winRate": 0.778
+      },
+      "games": {
+        "total": 110,
+        "won": 68,
+        "lost": 42,
+        "gameRate": 0.618
       }
     },
     "2024": {
       "matches": {
-        "total": 4,
-        "wins": 3,
-        "losses": 1,
-        "winRate": 0.75
+        "total": 34,
+        "wins": 28,
+        "losses": 6,
+        "winRate": 0.824
       },
       "games": {
-        "total": 24,
-        "won": 16,
-        "lost": 8,
-        "gameRate": 0.667
+        "total": 213,
+        "won": 138,
+        "lost": 75,
+        "gameRate": 0.648
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 54,
+        "wins": 44,
+        "losses": 9,
+        "winRate": 0.815
+      },
+      "games": {
+        "total": 304,
+        "won": 203,
+        "lost": 101,
+        "gameRate": 0.668
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 12,
+        "wins": 10,
+        "losses": 2,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 61,
+        "won": 42,
+        "lost": 19,
+        "gameRate": 0.689
       }
     }
   },
   "latestMatch": {
-    "tournament": "第79回 西日本ソフトテニス選手権大会",
-    "date": "2025年7月12日(土)〜13日(日)",
-    "location": "奈良県",
-    "partner": "ueoka-shunsuke",
-    "result": "優勝",
-    "summary": "2025年は絶好調!上岡選手とのペアで、西日本ソフトテニス選手権大会で優勝を果たしました。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "ベスト4",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }

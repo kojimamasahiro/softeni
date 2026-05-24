@@ -1,81 +1,205 @@
 {
-  "totalMatches": 22,
-  "wins": 18,
-  "losses": 4,
-  "totalWinRate": 0.818,
+  "totalMatches": 142,
+  "wins": 112,
+  "losses": 29,
+  "totalWinRate": 0.789,
   "games": {
-    "total": 118,
-    "won": 86,
-    "lost": 32,
-    "gameRate": 0.729
+    "total": 802,
+    "won": 544,
+    "lost": 258,
+    "gameRate": 0.678
   },
   "byPartner": {
-    "天間 美嘉": {
+    "8": {
       "matches": {
-        "total": 1,
-        "wins": 0,
-        "losses": 1,
-        "winRate": 0.0
+        "total": 70,
+        "wins": 59,
+        "losses": 11,
+        "winRate": 0.843
       },
       "games": {
-        "total": 5,
-        "won": 1,
-        "lost": 4,
-        "gameRate": 0.2
+        "total": 431,
+        "won": 300,
+        "lost": 131,
+        "gameRate": 0.696
       }
     },
-    "シングルス": {
+    "47": {
       "matches": {
-        "total": 13,
-        "wins": 12,
-        "losses": 1,
-        "winRate": 0.923
-      },
-      "games": {
-        "total": 62,
-        "won": 48,
-        "lost": 14,
-        "gameRate": 0.774
-      }
-    },
-    "kataoka-aki": {
-      "matches": {
-        "total": 8,
-        "wins": 6,
+        "total": 10,
+        "wins": 8,
         "losses": 2,
-        "winRate": 0.75
+        "winRate": 0.8
       },
       "games": {
-        "total": 51,
-        "won": 37,
-        "lost": 14,
-        "gameRate": 0.725
+        "total": 56,
+        "won": 38,
+        "lost": 18,
+        "gameRate": 0.679
+      }
+    },
+    "61": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 27,
+        "won": 20,
+        "lost": 7,
+        "gameRate": 0.741
+      }
+    },
+    "163": {
+      "matches": {
+        "total": 3,
+        "wins": 1,
+        "losses": 2,
+        "winRate": 0.333
+      },
+      "games": {
+        "total": 16,
+        "won": 8,
+        "lost": 8,
+        "gameRate": 0.5
+      }
+    },
+    "203": {
+      "matches": {
+        "total": 4,
+        "wins": 4,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 22,
+        "won": 16,
+        "lost": 6,
+        "gameRate": 0.727
+      }
+    },
+    "704": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 24,
+        "won": 17,
+        "lost": 7,
+        "gameRate": 0.708
+      }
+    },
+    "singles": {
+      "matches": {
+        "total": 44,
+        "wins": 31,
+        "losses": 12,
+        "winRate": 0.705
+      },
+      "games": {
+        "total": 226,
+        "won": 145,
+        "lost": 81,
+        "gameRate": 0.642
       }
     }
   },
   "byYear": {
-    "2025": {
+    "2021": {
       "matches": {
-        "total": 22,
-        "wins": 18,
-        "losses": 4,
-        "winRate": 0.818
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
       },
       "games": {
-        "total": 118,
-        "won": 86,
-        "lost": 32,
-        "gameRate": 0.729
+        "total": 24,
+        "won": 17,
+        "lost": 7,
+        "gameRate": 0.708
+      }
+    },
+    "2022": {
+      "matches": {
+        "total": 15,
+        "wins": 11,
+        "losses": 4,
+        "winRate": 0.733
+      },
+      "games": {
+        "total": 82,
+        "won": 53,
+        "lost": 29,
+        "gameRate": 0.646
+      }
+    },
+    "2023": {
+      "matches": {
+        "total": 26,
+        "wins": 21,
+        "losses": 5,
+        "winRate": 0.808
+      },
+      "games": {
+        "total": 153,
+        "won": 105,
+        "lost": 48,
+        "gameRate": 0.686
+      }
+    },
+    "2024": {
+      "matches": {
+        "total": 43,
+        "wins": 35,
+        "losses": 8,
+        "winRate": 0.814
+      },
+      "games": {
+        "total": 245,
+        "won": 167,
+        "lost": 78,
+        "gameRate": 0.682
+      }
+    },
+    "2025": {
+      "matches": {
+        "total": 47,
+        "wins": 36,
+        "losses": 10,
+        "winRate": 0.766
+      },
+      "games": {
+        "total": 264,
+        "won": 179,
+        "lost": 85,
+        "gameRate": 0.678
+      }
+    },
+    "2026": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 34,
+        "won": 23,
+        "lost": 11,
+        "gameRate": 0.676
       }
     }
   },
   "latestMatch": {
-    "tournament": "第6回 全日本ミックスダブルス選手権大会",
-    "date": "2025年6月14日(土)〜15日(日)",
-    "location": "広島県",
-    "partner": "天間 美嘉",
-    "result": "3回戦敗退",
-    "summary": "2025 KOREA CUPでは、上松選手と組み、見事優勝を果たしました。今後の国際大会での活躍が期待されます。",
-    "link": ""
+    "tournament": "全日本シングルス選手権大会",
+    "date": "2026年5月15日〜2026年5月17日",
+    "location": "岐阜県",
+    "result": "ベスト8",
+    "link": "https://www.jsta.or.jp/events/events2026"
   }
 }
