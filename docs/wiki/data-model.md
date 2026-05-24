@@ -65,6 +65,7 @@
 
 - `/players/[slug]` のプロフィールページは `data/players/{slug}/information.json` を必須で参照する
 - 同ページは `analysis.json` があれば最新試合情報を表示する
+- 同ページの `/players/[id]/results` 導線は `data/players/index.json` の `count >= 5` のときだけ表示する
 - `/players/[id]/results` の試合結果ページは `data/players/{slug}/results.json` を直接は参照しない
 - 試合結果ページは `data/players/index.json` で数値 `id` から選手名を引き、`data/tournaments/details/**` と `data/tournaments/information/*.json` から結果を再構築する
 - `data/players/*/analysis.json` は `data/tournaments/details/**` と `data/tournaments/information/*.json` をソースに自動生成する

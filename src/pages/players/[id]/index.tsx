@@ -14,6 +14,7 @@ type Props = {
   player: PlayerInfo;
   id: string;
   numericId?: number | null;
+  hasResultsPage: boolean;
   latest?: {
     date: string;
     location: string;
@@ -59,6 +60,7 @@ export default function PlayerInformation({
   player,
   id,
   numericId,
+  hasResultsPage,
   latest,
 }: Props) {
   const age = calculateAge(player.birthDate);
@@ -120,12 +122,16 @@ export default function PlayerInformation({
                   name: `${player.lastName}${player.firstName}`,
                   item: `https://softeni-pick.com/players/${id}`,
                 },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
-                  name: `試合結果`,
-                  item: `https://softeni-pick.com/players/${id}/results`,
-                },
+                ...(hasResultsPage
+                  ? [
+                      {
+                        '@type': 'ListItem',
+                        position: 4,
+                        name: '試合結果',
+                        item: `https://softeni-pick.com/players/${id}/results`,
+                      },
+                    ]
+                  : []),
               ],
             }),
           }}
@@ -212,12 +218,18 @@ export default function PlayerInformation({
             </p>
           )}
 
-          <Link
-            href={`/players/${numericId ?? id}/results`}
-            className="inline-block mt-2 text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
-          >
-            すべての試合結果を見る
-          </Link>
+          {hasResultsPage ? (
+            <Link
+              href={`/players/${numericId ?? id}/results`}
+              className="inline-block mt-2 text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+            >
+              すべての試合結果を見る
+            </Link>
+          ) : (
+            <p className="mt-2 text-sm text-gray-500">
+              試合結果ページは準備中です。
+            </p>
+          )}
         </section>
 
         <section>
@@ -272,18 +284,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // Resolve numeric id from data/players/index.json by matching name
   let numericId: number | null = null;
+  let hasResultsPage = false;
   try {
     const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
     const indexData = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
       id: number;
       lastName: string;
       firstName: string;
+      count?: number;
     }>;
 
     const found = indexData.find(
       (e) => e.lastName === player.lastName && e.firstName === player.firstName,
     );
-    if (found) numericId = found.id;
+    if (found) {
+      numericId = found.id;
+      hasResultsPage = (found.count ?? 0) >= 5;
+    }
   } catch (err) {
     void err;
   }
@@ -308,6 +325,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       id,
       latest,
       numericId,
+      hasResultsPage,
     },
   };
 };
