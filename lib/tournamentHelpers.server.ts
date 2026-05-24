@@ -78,8 +78,9 @@ const parseTournamentLookup = (rawId: string): TournamentLookup => {
 const loadTournamentIndexEntries = (): TournamentIndexEntry[] => {
   const tournamentRoot = path.join(process.cwd(), 'data', 'tournaments');
   const mainIndex =
-    readJsonSafe<TournamentIndexEntry[]>(path.join(tournamentRoot, 'index.json')) ??
-    [];
+    readJsonSafe<TournamentIndexEntry[]>(
+      path.join(tournamentRoot, 'index.json'),
+    ) ?? [];
   const localIndex =
     readJsonSafe<TournamentIndexEntry[]>(
       path.join(tournamentRoot, 'local_index.json'),
@@ -287,7 +288,9 @@ const buildUnknownTournamentInfo = (
     location: '',
     status: 'unknown',
   },
-  fullName: explicitYear ? `${rawTournamentId} ${explicitYear}` : rawTournamentId,
+  fullName: explicitYear
+    ? `${rawTournamentId} ${explicitYear}`
+    : rawTournamentId,
   detailUrl: '',
   exists: false,
 });
@@ -308,7 +311,10 @@ export const getTournamentInfoSSR = async (
     }
 
     const informationEntries = loadTournamentInformation(entry.tournamentId);
-    const availableYears = getAllAvailableYears(entry.tournamentId, informationEntries);
+    const availableYears = getAllAvailableYears(
+      entry.tournamentId,
+      informationEntries,
+    );
     const targetYear =
       lookup.explicitYear ??
       informationEntries[0]?.year ??
@@ -317,11 +323,13 @@ export const getTournamentInfoSSR = async (
 
     const yearInfo =
       (targetYear !== null
-        ? informationEntries.find((info) => info.year === targetYear) ?? null
+        ? (informationEntries.find((info) => info.year === targetYear) ?? null)
         : null) ?? null;
 
     const detailCategoryIds =
-      targetYear !== null ? loadDetailCategoryIds(entry.tournamentId, targetYear) : [];
+      targetYear !== null
+        ? loadDetailCategoryIds(entry.tournamentId, targetYear)
+        : [];
     const hasDetails = detailCategoryIds.length > 0;
 
     const meta: TournamentMeta = {
@@ -350,8 +358,7 @@ export const getTournamentInfoSSR = async (
     return {
       meta,
       yearMeta,
-      fullName:
-        targetYear !== null ? `${meta.name} ${targetYear}` : meta.name,
+      fullName: targetYear !== null ? `${meta.name} ${targetYear}` : meta.name,
       detailUrl: buildDetailUrl(
         meta.generation,
         entry.tournamentId,

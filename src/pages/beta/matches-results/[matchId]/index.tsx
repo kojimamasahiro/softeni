@@ -1797,7 +1797,9 @@ export const PublicMatchDetailPage = ({
                 {youtubeVideoId && !youtubeEmbedBlocked ? (
                   <div
                     className={`overflow-hidden bg-black ${
-                      isVideoFloating ? 'rounded-none md:rounded-lg' : 'rounded-lg'
+                      isVideoFloating
+                        ? 'rounded-none md:rounded-lg'
+                        : 'rounded-lg'
                     }`}
                   >
                     <YouTubeRangePlayer

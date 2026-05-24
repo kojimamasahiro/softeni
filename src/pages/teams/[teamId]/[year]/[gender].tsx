@@ -11,51 +11,15 @@ import MetaHead from '@/components/MetaHead';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
+import type {
+  EventResult,
+  Player,
+  TeamInfo,
+} from '@/utils/team-data-aggregator';
 import {
   calculatePlayerStats,
   calculateTeamYearlySummary,
 } from '@/utils/team-stats-calculator';
-
-type Player = {
-  firstName: string;
-  lastName: string;
-};
-
-type TeamInfo = {
-  id: string;
-  name: string;
-  players: Record<string, Player>;
-};
-
-type MatchOpponent = {
-  lastName: string;
-  firstName: string;
-  team: string;
-  playerId: string | null;
-  tempId: string;
-  prefecture?: string | null;
-  originalTeam?: string | null;
-};
-
-type EventResult = {
-  year: number;
-  gender: string;
-  gameCategory: string;
-  tournament: string;
-  categoryLabel?: string;
-  link?: string;
-  results: {
-    playerIds: string[];
-    result: string;
-  }[];
-  matches: {
-    round: string;
-    pair: string[];
-    opponents: MatchOpponent[];
-    result: 'win' | 'lose';
-    games: { won: string; lost: string };
-  }[];
-};
 
 type Props = {
   info: TeamInfo;
