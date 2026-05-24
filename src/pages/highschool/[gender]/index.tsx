@@ -20,24 +20,22 @@ type Props = {
 };
 
 export default function HighschoolGenderIndex({ grouped, gender }: Props) {
-  // const router = useRouter();
-  // const { gender } = router.query as { gender: 'boys' | 'girls' };
-  // We get gender from props via getStaticProps now
-
   const pageUrl = `https://softeni-pick.com/highschool/${gender}`;
   const genderLabel = gender === 'boys' ? '男子' : '女子';
 
   return (
     <>
       <MetaHead
-        title={`高校カテゴリ（${genderLabel}） | ソフトテニス情報`}
-        description={`全国の高校ソフトテニスの成績を都道府県別に掲載（${genderLabel}）`}
+        title={`高校${genderLabel} 全国大会成績・都道府県別一覧 | ソフトテニス情報`}
+        description={`高校${genderLabel}の全国大会成績を都道府県別に掲載。ソフトテニスの全国高等学校総合体育大会やハイスクールジャパンカップなど主要大会の結果確認に対応。`}
         url={pageUrl}
         type="article"
       />
 
       <Head>
-        <title>高校カテゴリ（{genderLabel}） | ソフトテニス情報</title>
+        <title>
+          高校{genderLabel} 全国大会成績・都道府県別一覧 | ソフトテニス情報
+        </title>
 
         <script
           type="application/ld+json"
@@ -55,7 +53,7 @@ export default function HighschoolGenderIndex({ grouped, gender }: Props) {
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: `高校カテゴリ（${genderLabel}）`,
+                  name: `高校${genderLabel}`,
                   item: `https://softeni-pick.com/highschool/${gender}`,
                 },
               ],
@@ -70,17 +68,16 @@ export default function HighschoolGenderIndex({ grouped, gender }: Props) {
             crumbs={[
               { label: 'ホーム', href: '/' },
               {
-                label: `高校カテゴリ（${genderLabel}）`,
+                label: `高校${genderLabel}`,
                 href: `/highschool/${gender}`,
               },
             ]}
           />
 
           <h1 className="text-2xl font-bold mb-6">
-            高校カテゴリ（{genderLabel}）
+            高校{genderLabel} 全国大会成績
           </h1>
 
-          {/* Gender Selection */}
           <div className="mb-8">
             <div className="flex gap-4 justify-center">
               <Link
@@ -109,11 +106,18 @@ export default function HighschoolGenderIndex({ grouped, gender }: Props) {
             </div>
           </div>
 
-          {/* Prefecture Selection */}
-          <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
-            {genderLabel}
-            の成績を都道府県ごとに表示します。地域を選んでご覧ください。
-          </p>
+          <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+            <p>
+              高校{genderLabel}
+              の全国大会成績を、都道府県別に確認できる一覧ページです。
+              全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
+              選抜大会など、ソフトテニス主要大会での学校別実績をたどれます。
+            </p>
+            <p>
+              地域または都道府県を選ぶと、その県の出場校一覧、近年の好成績校、
+              学校ごとの詳細成績ページへ進めます。
+            </p>
+          </div>
 
           <div className="space-y-8">
             {Object.entries(grouped).map(([region, prefs]) => (

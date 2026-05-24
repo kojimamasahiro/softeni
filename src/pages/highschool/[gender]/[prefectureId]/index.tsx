@@ -92,15 +92,15 @@ export default function PrefectureHighschoolPage({
   return (
     <>
       <MetaHead
-        title={`${prefectureName}の高校${genderLabel}成績 | ソフトテニス情報`}
-        description={`${prefectureName}の高校${genderLabel}の大会成績を一覧で掲載。`}
+        title={`${prefectureName} 高校${genderLabel} 全国大会成績 | ソフトテニス情報`}
+        description={`${prefectureName}の高校${genderLabel}の全国大会成績を一覧掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の学校別実績を確認できます。`}
         url={pageUrl}
         type="article"
       />
 
       <Head>
         <script
-          title={`${prefectureName}の高校${genderLabel}成績 | ソフトテニス情報`}
+          title={`${prefectureName} 高校${genderLabel} 全国大会成績 | ソフトテニス情報`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -116,7 +116,7 @@ export default function PrefectureHighschoolPage({
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: `高校カテゴリ（${genderLabel}）`,
+                  name: `高校${genderLabel}`,
                   item: `https://softeni-pick.com/highschool/${gender}`,
                 },
                 {
@@ -137,7 +137,7 @@ export default function PrefectureHighschoolPage({
             crumbs={[
               { label: 'ホーム', href: '/' },
               {
-                label: `高校カテゴリ（${genderLabel}）`,
+                label: `高校${genderLabel}`,
                 href: `/highschool/${gender}`,
               },
               {
@@ -148,12 +148,14 @@ export default function PrefectureHighschoolPage({
           />
 
           <h1 className="text-2xl font-bold mb-2">
-            {prefecture.name}の高校{genderLabel}成績
+            {prefecture.name} 高校{genderLabel} 全国大会成績
           </h1>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
             {prefecture.name}
             の高校{genderLabel}
-            が全国大会で残した成績をまとめています。詳しい内容は、各高校のページからご覧いただけます。
+            が全国大会で残した成績をまとめています。全国高等学校総合体育大会、
+            高校総体、ハイスクールジャパンカップなどソフトテニス主要大会での学校別実績を確認できます。
+            詳しい内容は、各高校のページからご覧いただけます。
           </p>
 
           <div className="mb-6">
@@ -171,6 +173,10 @@ export default function PrefectureHighschoolPage({
                 ).length
               }
               校）
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+              学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。
+              気になる学校を選ぶと、年度別・大会別の詳細成績を確認できます。
             </p>
 
             {topTeams.length > 0 &&

@@ -114,14 +114,14 @@ export default function TeamPage({
   return (
     <>
       <MetaHead
-        title={`${teamName}（${genderLabel}）の成績 | ソフトテニス情報`}
-        description={`${teamName}（${genderLabel}）のソフトテニス大会別成績を掲載。出場ペアや結果を年度・大会ごとに整理。${prefectureName}代表としての活躍記録をまとめています。`}
+        title={`${teamName} 高校${genderLabel} 全国大会成績 | ソフトテニス情報`}
+        description={`${teamName}の高校${genderLabel}の全国大会成績を掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`}
         url={pageUrl}
         type="article"
       />
       <Head>
         <title>
-          {teamName}（{genderLabel}）の成績 | ソフトテニス情報
+          {teamName} 高校{genderLabel} 全国大会成績 | ソフトテニス情報
         </title>
         <script
           type="application/ld+json"
@@ -139,7 +139,7 @@ export default function TeamPage({
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: `高校カテゴリ（${genderLabel}）`,
+                  name: `高校${genderLabel}`,
                   item: `https://softeni-pick.com/highschool/${gender}`,
                 },
                 {
@@ -166,7 +166,7 @@ export default function TeamPage({
             crumbs={[
               { label: 'ホーム', href: '/' },
               {
-                label: `高校カテゴリ（${genderLabel}）`,
+                label: `高校${genderLabel}`,
                 href: `/highschool/${gender}`,
               },
               {
@@ -180,8 +180,15 @@ export default function TeamPage({
             ]}
           />
           <h1 className="text-2xl font-bold mb-6">
-            {teamName}（{genderLabel}）の成績
+            {teamName} 高校{genderLabel} 全国大会成績
           </h1>
+
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+            {teamName}
+            の高校{genderLabel}
+            について、全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
+            選抜大会などソフトテニス主要大会での成績を年度別・種目別にまとめています。
+          </p>
 
           {analysis?.resultsByCategory &&
             Object.keys(analysis.resultsByCategory).map((category) => {
