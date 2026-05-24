@@ -16,6 +16,7 @@ type TeamSummary = {
   results: Record<
     string, // year
     {
+      tournamentId: string;
       tournament: string;
       result: string;
     }[]
@@ -58,11 +59,14 @@ type Props = {
 };
 
 const tournamentPriority: Record<string, number> = {
-  kokutai: 1, // 国体
+  'highschool-kokutai': 1, // 国体
   'highschool-championship': 2, // インターハイ
   'highschool-japan-cup': 3, // J杯
   'highschool-senbatsu': 4, // 選抜
 };
+
+const getTournamentSortPriority = (tournamentId: string): number =>
+  tournamentPriority[tournamentId] ?? 99;
 
 export default function PrefectureHighschoolPage({
   prefecture,
@@ -227,6 +231,19 @@ export default function PrefectureHighschoolPage({
                           <li key={year}>
                             {year}年：
                             {resultList
+                              .slice()
+                              .sort((a, b) => {
+                                const tournamentOrder =
+                                  getTournamentSortPriority(a.tournamentId) -
+                                  getTournamentSortPriority(b.tournamentId);
+                                if (tournamentOrder !== 0) {
+                                  return tournamentOrder;
+                                }
+                                return (
+                                  resultPriority(a.result) -
+                                  resultPriority(b.result)
+                                );
+                              })
                               .map(
                                 (res) => `${res.tournament}（${res.result}）`,
                               )
@@ -298,26 +315,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       };
     }
 
-    const resultPriority = (result: string): number => {
-      const order = [
-        '優勝',
-        '準優勝',
-        'ベスト4',
-        'ベスト8',
-        '6回戦敗退',
-        '5回戦敗退',
-        '4回戦敗退',
-        '3回戦敗退',
-        '2回戦敗退',
-        '1回戦敗退',
-        '予選敗退',
-        '未出場',
-      ];
-      return order.indexOf(result) !== -1
-        ? order.indexOf(result)
-        : order.length;
-    };
-
     const label = getTournamentLabel(tournamentId);
 
     if (!grouped[teamId].results[year]) {
@@ -325,10 +322,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
 
     const existing = grouped[teamId].results[year].find(
-      (r) => r.tournament === label,
+      (r) => r.tournamentId === tournamentId,
     );
     if (!existing) {
-      grouped[teamId].results[year].push({ tournament: label, result });
+      grouped[teamId].results[year].push({
+        tournamentId,
+        tournament: label,
+        result,
+      });
     } else {
       // すでに同じ大会がある場合は、より良い結果なら上書き
       if (resultPriority(result) < resultPriority(existing.result)) {
@@ -337,10 +338,33 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
-  const teams: TeamSummary[] = Object.values(grouped);
+  const teams: TeamSummary[] = Object.values(grouped).sort((a, b) => {
+    const getBestRank = (team: TeamSummary) =>
+      Math.min(
+        ...Object.values(team.results).flatMap((resultList) =>
+          resultList.map((resultEntry) => resultPriority(resultEntry.result)),
+        ),
+      );
+    const getLatestYear = (team: TeamSummary) =>
+      Math.max(...Object.keys(team.results).map(Number));
 
-  const latestYear = Math.max(...filteredData.map((e) => e.year));
-  const latestYearEntries = filteredData.filter((e) => e.year === latestYear);
+    const bestRankDiff = getBestRank(a) - getBestRank(b);
+    if (bestRankDiff !== 0) return bestRankDiff;
+
+    const latestYearDiff = getLatestYear(b) - getLatestYear(a);
+    if (latestYearDiff !== 0) return latestYearDiff;
+
+    return a.teamName.localeCompare(b.teamName, 'ja');
+  });
+
+  const latestYear =
+    filteredData.length > 0
+      ? Math.max(...filteredData.map((entry) => entry.year))
+      : null;
+  const latestYearEntries =
+    latestYear === null
+      ? []
+      : filteredData.filter((entry) => entry.year === latestYear);
 
   const sortedTournamentIds = Object.entries(tournamentPriority)
     .sort((a, b) => a[1] - b[1])

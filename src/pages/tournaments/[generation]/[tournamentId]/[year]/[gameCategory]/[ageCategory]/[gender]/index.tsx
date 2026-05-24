@@ -33,6 +33,11 @@ type LinkCategory = {
   isCurrent: boolean;
 };
 
+type HighschoolTeamLink = {
+  prefectureId: string;
+  teamId: string;
+};
+
 interface TournamentYearResultPageProps {
   generation: string;
   tournamentId: string;
@@ -48,6 +53,7 @@ interface TournamentYearResultPageProps {
   infoWarnings?: string[];
   detailsWarnings?: string[];
   federationId?: string | null;
+  highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
   prefectureName?: string | null;
 }
 
@@ -66,6 +72,7 @@ export default function TournamentYearResultPage({
   infoWarnings = [],
   detailsWarnings = [],
   federationId = null,
+  highschoolTeamLinks = null,
   prefectureName = null,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
@@ -169,7 +176,11 @@ export default function TournamentYearResultPage({
           {detailData && <TournamentBracket detailData={detailData} />}
 
           {/* ✅ チーム別成績 */}
-          <TeamResults detailData={detailData ? [detailData] : []} />
+          <TeamResults
+            detailData={detailData ? [detailData] : []}
+            highschoolGender={generation === 'highschool' ? gender : null}
+            highschoolTeamLinks={highschoolTeamLinks}
+          />
 
           {(infoWarnings.length > 0 || detailsWarnings.length > 0) && (
             <section className="mt-6 mb-6 p-4 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded">
@@ -587,6 +598,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // Resolving Federation / Prefecture info if available
   const federationId = tournamentIndexEntry?.federationId ?? null;
   let prefectureName: string | null = null;
+  let highschoolTeamLinks: Record<string, HighschoolTeamLink> | null = null;
 
   if (federationId) {
     const prefPath = path.join(process.cwd(), 'data', 'prefectures.json');
@@ -602,6 +614,55 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
       } catch {
         // ignore
+      }
+    }
+  }
+
+  if (generation === 'highschool' && detailData?.participants?.length) {
+    const highschoolSummaryPath = path.join(
+      process.cwd(),
+      'data',
+      'highschool',
+      'prefecture-summary.json',
+    );
+
+    if (fs.existsSync(highschoolSummaryPath)) {
+      try {
+        const summaryEntries = JSON.parse(
+          fs.readFileSync(highschoolSummaryPath, 'utf-8'),
+        ) as Array<{
+          prefecture: string;
+          prefectureId: string;
+          team: string;
+          teamId: string;
+        }>;
+
+        const relevantKeys = new Set(
+          detailData.participants
+            .filter((participant) => participant.team)
+            .map(
+              (participant) =>
+                `${participant.team}::${participant.prefecture ?? ''}`,
+            ),
+        );
+
+        highschoolTeamLinks = {};
+        for (const entry of summaryEntries) {
+          const key = `${entry.team}::${entry.prefecture ?? ''}`;
+          if (!relevantKeys.has(key) || highschoolTeamLinks[key]) continue;
+
+          highschoolTeamLinks[key] = {
+            teamId: entry.teamId,
+            prefectureId: entry.prefectureId,
+          };
+        }
+      } catch (err) {
+        detailsWarnings.push(
+          `highschool team summary parse error: ${path.relative(
+            process.cwd(),
+            highschoolSummaryPath,
+          )} - ${String(err)}`,
+        );
       }
     }
   }
@@ -629,6 +690,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         infoWarnings,
         detailsWarnings,
         federationId,
+        highschoolTeamLinks,
         prefectureName,
       };
     })(),

@@ -15,20 +15,31 @@ interface Member {
   displayParts: DisplayPart[];
 }
 
-interface Props {
-  detailData: TournamentDetailData[];
+interface HighschoolTeamLink {
+  prefectureId: string;
+  teamId: string;
 }
 
-export default function TeamResults({ detailData }: Props) {
-  // すべての detailData からベスト8以上の選手を集め、チームごとにまとめる
-  const shouldLinkTeams = false; // detailData では teamId が安定して取れないためリンクは無効にする
+interface Props {
+  detailData: TournamentDetailData[];
+  highschoolGender?: string | null;
+  highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
+}
 
+export default function TeamResults({
+  detailData,
+  highschoolGender = null,
+  highschoolTeamLinks = null,
+}: Props) {
   const TOP_SET = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
+  const getHighschoolTeamLookupKey = (
+    team: string,
+    prefecture: string | null,
+  ) => `${team}::${prefecture ?? ''}`;
 
   type TeamBucket = {
     team: string;
-    teamId?: string | null;
-    prefectureId?: string | null;
+    prefecture?: string | null;
     members: Member[];
   };
 
@@ -83,16 +94,17 @@ export default function TeamResults({ detailData }: Props) {
             // 同一チームのペア -> ペア表示として1つの Member を追加
             const teamLabel = Array.from(teamSet)[0];
             const prefectureId = players[0]?.prefecture ?? null;
+            const bucketKey = getHighschoolTeamLookupKey(
+              teamLabel,
+              prefectureId,
+            );
 
             const displayParts: DisplayPart[] = players.flatMap((pl, idx) => {
               const last = pl.lastName ?? '';
               const first = pl.firstName ?? '';
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
               return idx < players.length - 1
-                ? [
-                    { text: name, id: pl.playerId },
-                    { text: '・', noLink: true },
-                  ]
+                ? [{ text: name, id: pl.playerId }, { text: '・' }]
                 : [{ text: name, id: pl.playerId }];
             });
 
@@ -102,15 +114,14 @@ export default function TeamResults({ detailData }: Props) {
               displayParts,
             };
 
-            if (!buckets[teamLabel]) {
-              buckets[teamLabel] = {
+            if (!buckets[bucketKey]) {
+              buckets[bucketKey] = {
                 team: teamLabel,
-                teamId: undefined,
-                prefectureId,
+                prefecture: prefectureId,
                 members: [],
               };
             }
-            buckets[teamLabel].members.push(member);
+            buckets[bucketKey].members.push(member);
           } else {
             // 所属チームが異なるペア -> 各選手をそれぞれのチームに追加
             for (const pl of players) {
@@ -118,6 +129,10 @@ export default function TeamResults({ detailData }: Props) {
 
               const teamLabel = pl.team ?? '\u4e0d\u660e';
               const prefectureId = pl.prefecture ?? null;
+              const bucketKey = getHighschoolTeamLookupKey(
+                teamLabel,
+                prefectureId,
+              );
               const last = pl.lastName ?? '';
               const first = pl.firstName ?? '';
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
@@ -132,15 +147,14 @@ export default function TeamResults({ detailData }: Props) {
                 displayParts,
               };
 
-              if (!buckets[teamLabel]) {
-                buckets[teamLabel] = {
+              if (!buckets[bucketKey]) {
+                buckets[bucketKey] = {
                   team: teamLabel,
-                  teamId: undefined,
-                  prefectureId,
+                  prefecture: prefectureId,
                   members: [],
                 };
               }
-              buckets[teamLabel].members.push(member);
+              buckets[bucketKey].members.push(member);
             }
           }
         } else {
@@ -151,6 +165,7 @@ export default function TeamResults({ detailData }: Props) {
 
           const teamLabel = pl.team ?? '\u4e0d\u660e';
           const prefectureId = pl.prefecture ?? null;
+          const bucketKey = getHighschoolTeamLookupKey(teamLabel, prefectureId);
           const last = pl.lastName ?? '';
           const first = pl.firstName ?? '';
           const name = `${last}${first}`.trim() || '';
@@ -163,15 +178,14 @@ export default function TeamResults({ detailData }: Props) {
             displayParts,
           };
 
-          if (!buckets[teamLabel]) {
-            buckets[teamLabel] = {
+          if (!buckets[bucketKey]) {
+            buckets[bucketKey] = {
               team: teamLabel,
-              teamId: undefined,
-              prefectureId,
+              prefecture: prefectureId,
               members: [],
             };
           }
-          buckets[teamLabel].members.push(member);
+          buckets[bucketKey].members.push(member);
         }
       }
     }
@@ -207,7 +221,13 @@ export default function TeamResults({ detailData }: Props) {
 
   return (
     <section className="mb-10">
-      {sortedTeams.map(({ team, teamId, prefectureId, members }) => {
+      {sortedTeams.map(({ team, prefecture, members }) => {
+        const highschoolTeamLink =
+          highschoolGender && highschoolTeamLinks
+            ? highschoolTeamLinks[
+                getHighschoolTeamLookupKey(team, prefecture ?? null)
+              ]
+            : null;
         const grouped = members.reduce(
           (acc, m) => {
             if (!acc[m.result]) acc[m.result] = [];
@@ -231,9 +251,9 @@ export default function TeamResults({ detailData }: Props) {
             className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
           >
             <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-              {prefectureId && teamId && shouldLinkTeams ? (
+              {highschoolGender && highschoolTeamLink ? (
                 <Link
-                  href={`/highschool/${prefectureId}/${teamId}`}
+                  href={`/highschool/${highschoolGender}/${highschoolTeamLink.prefectureId}/${highschoolTeamLink.teamId}`}
                   className="text-base font-semibold text-blue-600 dark:text-blue-300 hover:underline"
                 >
                   {team}

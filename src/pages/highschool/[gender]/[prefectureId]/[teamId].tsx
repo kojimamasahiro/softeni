@@ -8,7 +8,11 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
-import { getCategoryLabel, getTournamentLabel } from '@/lib/utils';
+import {
+  getCategoryLabel,
+  getTournamentLabel,
+  resultPriority,
+} from '@/lib/utils';
 
 type EntryResult = {
   year: number;
@@ -66,6 +70,19 @@ type Props = {
   teamName: string;
   entries: Entry[];
   analysis: Analysis | null;
+};
+
+const tournamentPriority: Record<string, number> = {
+  'highschool-kokutai': 1,
+  'highschool-championship': 2,
+  'highschool-japan-cup': 3,
+  'highschool-senbatsu': 4,
+};
+
+const categoryPriority: Record<string, number> = {
+  team: 1,
+  doubles: 2,
+  singles: 3,
 };
 
 export default function TeamPage({
@@ -277,52 +294,80 @@ export default function TeamPage({
                     <h2 className="text-xl font-semibold mb-2">{year}年</h2>
 
                     {Object.entries(tourneys)
-                      .sort((a, b) => a[0].localeCompare(b[0])) // tournamentIdで昇順
+                      .sort((a, b) => {
+                        const priorityDiff =
+                          (tournamentPriority[a[0]] ?? 99) -
+                          (tournamentPriority[b[0]] ?? 99);
+                        if (priorityDiff !== 0) return priorityDiff;
+                        return getTournamentLabel(a[0]).localeCompare(
+                          getTournamentLabel(b[0]),
+                          'ja',
+                        );
+                      })
                       .map(([tournamentId, categories]) => (
                         <div key={tournamentId} className="mb-4 ml-4">
                           <h3 className="text-lg font-bold">
                             {getTournamentLabel(tournamentId)}
                           </h3>
                           <ul className="ml-4 mt-2 space-y-2">
-                            {Object.entries(categories).map(([cat, items]) => {
-                              // 同じcategory内のgenderは統一されていると仮定（必要に応じて調整）
-                              const categoryGender = gender; // Use the gender prop from component
-                              return (
-                                <li key={cat}>
-                                  <p className="font-semibold">
-                                    <Link
-                                      href={`/tournaments/highschool/${tournamentId}/${year}/${cat}/none/${categoryGender}`}
-                                      className="text-blue-700 dark:text-blue-300 hover:underline"
-                                    >
-                                      {getCategoryLabel(cat)}
-                                    </Link>
-                                  </p>
-                                  <ul className="ml-4 space-y-1">
-                                    {items.map((item, index) => (
-                                      <li key={index}>
-                                        <p className="text-sm">
-                                          成績: {item.result}
-                                          {item.playerIds && (
-                                            <>
-                                              <br />
-                                              選手:{' '}
-                                              {item.playerIds
-                                                .map((pid) => {
-                                                  const parts = pid.split('_');
-                                                  return parts.length >= 2
-                                                    ? `${parts[0]} ${parts[1]}`
-                                                    : pid;
-                                                })
-                                                .join('・')}
-                                            </>
-                                          )}
-                                        </p>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </li>
-                              );
-                            })}
+                            {Object.entries(categories)
+                              .sort((a, b) => {
+                                const priorityDiff =
+                                  (categoryPriority[a[0]] ?? 99) -
+                                  (categoryPriority[b[0]] ?? 99);
+                                if (priorityDiff !== 0) return priorityDiff;
+                                return getCategoryLabel(a[0]).localeCompare(
+                                  getCategoryLabel(b[0]),
+                                  'ja',
+                                );
+                              })
+                              .map(([cat, items]) => {
+                                // 同じcategory内のgenderは統一されていると仮定（必要に応じて調整）
+                                const categoryGender = gender; // Use the gender prop from component
+                                return (
+                                  <li key={cat}>
+                                    <p className="font-semibold">
+                                      <Link
+                                        href={`/tournaments/highschool/${tournamentId}/${year}/${cat}/none/${categoryGender}`}
+                                        className="text-blue-700 dark:text-blue-300 hover:underline"
+                                      >
+                                        {getCategoryLabel(cat)}
+                                      </Link>
+                                    </p>
+                                    <ul className="ml-4 space-y-1">
+                                      {items
+                                        .slice()
+                                        .sort(
+                                          (a, b) =>
+                                            resultPriority(a.result) -
+                                            resultPriority(b.result),
+                                        )
+                                        .map((item, index) => (
+                                          <li key={index}>
+                                            <p className="text-sm">
+                                              成績: {item.result}
+                                              {item.playerIds && (
+                                                <>
+                                                  <br />
+                                                  選手:{' '}
+                                                  {item.playerIds
+                                                    .map((pid) => {
+                                                      const parts =
+                                                        pid.split('_');
+                                                      return parts.length >= 2
+                                                        ? `${parts[0]} ${parts[1]}`
+                                                        : pid;
+                                                    })
+                                                    .join('・')}
+                                                </>
+                                              )}
+                                            </p>
+                                          </li>
+                                        ))}
+                                    </ul>
+                                  </li>
+                                );
+                              })}
                           </ul>
                         </div>
                       ))}

@@ -22,6 +22,10 @@
 - `src/pages/tournaments/**`
 - `src/pages/highschool/**`
 
+補足:
+
+- `src/pages/highschool/index.tsx` は静的エクスポート互換のため、サーバー redirect ではなく静的 HTML の `meta refresh` で `/highschool/boys` へ遷移する
+
 これらは `data/**` 配下の JSON を読み、静的ページとして公開する構成が中心です。
 
 ### score 公開ページ
