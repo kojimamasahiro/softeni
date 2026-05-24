@@ -39,6 +39,7 @@
 - `scripts/extract-players.mjs`
 - `scripts/generate-players-index-from-info.mjs`
 - `scripts/generate_players_from_tournaments.mjs`
+- `scripts/crawl-local-tournaments.mjs`
 - `scripts/generate_entries.py`
 - `scripts/generate_roundrobin.py`
 - `scripts/matches/convert.py`
@@ -71,6 +72,47 @@
 - 一覧や地域紐付けは `data/tournaments/index.json` / `local_index.json` を使う
 - そこから選手ページ用の `data/players/**` を派生生成する流れがある
 - score 系は `data/**` ではなく Supabase -> `public/data/beta-matches/**` 生成の流れを持つ
+
+## 地方大会候補検知
+
+### `scripts/crawl-local-tournaments.mjs`
+
+役割:
+
+- `data/local-sources/prefecture-sources.json` の都道府県公式サイトを巡回
+- HTML から結果資料らしきリンクを抽出
+- `data/local-sources/detected-documents.json` に候補を蓄積
+- `data/local-sources/ignored-documents.json` にある URL は保存しない
+
+設定メモ:
+
+- 各都道府県は `sourceUrl` 1 本でも `sourceUrls` 複数本でも設定できる
+- `sourceUrls` を使う場合は、結果一覧ページ、年度別一覧、連盟大会情報ページなどを並べてよい
+- `sourceUrls` がある場合はそちらを優先し、`sourceUrl` は後方互換用に扱う
+
+CLI:
+
+- `node scripts/crawl-local-tournaments.mjs`
+- `node scripts/crawl-local-tournaments.mjs --prefecture=ibaraki`
+- `node scripts/crawl-local-tournaments.mjs --dry-run`
+- `node scripts/crawl-local-tournaments.mjs --min-confidence=0.75`
+
+運用メモ:
+
+- `enabled === false` の都道府県だけ巡回対象外
+- `manual` は巡回せずスキップログを出す
+- `html_detail` は v1 では `link_only` と同等で警告ログを出す
+- PDF / Excel 直リンクは保存しない
+- 例外として、島根県の大会一覧ページの `結果` 列にある資料リンクは結果候補として保存する
+- 「要項」「案内」「申込」「募集」など案内系キーワードを含む候補は保存しない
+- 保存対象は当年度候補と年度不明候補に絞る
+  - 現在日付から日本の年度を計算し、4 月始まりで判定する
+  - 今年度以外の候補は保存しない
+- `--min-confidence` を指定した場合、その値未満の候補は保存しない
+- `--min-confidence` の既定値は `0.6`
+- 網羅的に見たい場合は、都道府県ごとに `sourceUrls` へ複数の結果系ページを登録する
+- `--dry-run` はファイルを更新せず、`sources / crawled / skipped / new / updated / ignored / errors / dryRun` を標準出力に出す
+- `detected-documents.json` の `accepted` は候補として確認済みであることだけを意味し、公開データ反映済みは意味しない
 
 ## Assumption
 

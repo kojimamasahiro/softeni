@@ -43,3 +43,5 @@
 - `data/tournaments/local_index.json` の `officialUrl` を今後 UI で使うか
 - `/tournaments/local/[federationId]` の大会カード並び順を明示ソートするか
 - `areaId: "city"` の大会を都道府県ページから分離する予定があるか
+- `detected-documents.json` で `accepted` にした候補を、どの手順で `information/*.json` に反映するか
+- 巡回候補から既存 `local_index.json` の大会をどこまで半自動で推定するか

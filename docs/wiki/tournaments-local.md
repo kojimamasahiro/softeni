@@ -36,6 +36,12 @@
   年度ごとの開催情報とカテゴリ一覧
 - `data/tournaments/details/{tournamentId}/{year}/{categoryId}.json`
   実際に結果表示へ出せるカテゴリ詳細
+- `data/local-sources/prefecture-sources.json`
+  地方大会候補巡回の都道府県別 source URL
+- `data/local-sources/detected-documents.json`
+  巡回で見つけた候補リンクの確認用ストア
+- `data/local-sources/ignored-documents.json`
+  恒久 deny list
 
 関連:
 
@@ -114,6 +120,15 @@ source of truth:
 - 内部結果ページへ出せるカテゴリ詳細
   `data/tournaments/details/{tournamentId}/{year}/{categoryId}.json`
 
+候補検知用の別ストア:
+
+- 巡回元 URL 管理
+  `data/local-sources/prefecture-sources.json`
+- 新規候補の一時保管
+  `data/local-sources/detected-documents.json`
+- 恒久的に無視する URL
+  `data/local-sources/ignored-documents.json`
+
 ### 基本ルール
 
 - `/tournaments/` と `/tournaments/local/[federationId]` で別々の掲載データは持たない
@@ -121,6 +136,8 @@ source of truth:
 - 外部リンクのみで掲載したい年度は `information/{tournamentId}.json` に `sourceUrl` を入れる
 - 内部結果を公開できるカテゴリは `details/**` を追加する
 - UI は `details` の有無で内部結果リンクを出し、`sourceUrl` の有無で年度単位の外部結果導線を出す
+- 候補検知ストアの内容は、そのまま公開ページには使わない
+- `detected-documents.json` の `accepted` は確認済み候補を意味するだけで、公開反映済みは意味しない
 
 ### 推奨運用フロー
 
@@ -129,12 +146,24 @@ source of truth:
 3. 内部結果未整備でも `sourceUrl` があれば県別ページに掲載する
 4. 後から `details/**` を追加したカテゴリは、自動的に内部結果リンクへ昇格する
 
+候補検知の補助フロー:
+
+1. `node scripts/crawl-local-tournaments.mjs` で都道府県サイトを巡回する
+2. 当年度または年度不明で、かつ要項・案内系ではなく PDF / Excel 直リンクでもない候補だけを `data/local-sources/detected-documents.json` に保存する
+3. 採用候補を `accepted` にしても、公開ページにはまだ反映されない
+4. 掲載するものだけ、人手で `information/{tournamentId}.json` の `sourceUrl` に反映する
+
+補足:
+
+- `--min-confidence` で保存対象の下限スコアを調整できる
+
 ### この方針の意図
 
 - `/tournaments/` 用と `/tournaments/local/` 用で二重管理しない
 - 外部掲載から内部掲載への移行を追加作業なしで吸収する
 - 年度単位の `sourceUrl` とカテゴリ単位の `details` という粒度差を、そのまま UI に反映する
 - 手動運用の入力点を増やさず、長期の保守負荷を抑える
+- 候補検知と公開反映を分離して、誤検出の公開を防ぐ
 
 ## 既知の実装上の特徴
 
@@ -146,5 +175,10 @@ source of truth:
 
 - `federationId` は都道府県単位の識別子として運用している
 - `areaId: "city"` を持つ `local_index.json` の大会も、現行 UI では都道府県ページ配下にまとめて表示する
+- `prefecture-sources.json` の `slug` は `data/prefectures.json` の `id` と一致させる
+- `prefecture-sources.json` は `sourceUrl` 1 本でも `sourceUrls` 複数本でも運用できる
+- `html_detail` は v1 では予約値で、実処理は `link_only` と同等
+- 一部の一覧ページはサイト個別の抽出ロジックを使う
+  - 例: 島根県の大会一覧ページでは `結果` 列の資料リンクを候補化する
 
 未解決項目は [Open Questions](./open-questions.md) に集約する。

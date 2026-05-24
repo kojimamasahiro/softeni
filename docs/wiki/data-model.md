@@ -17,6 +17,9 @@
 - `data/tournaments/local_index.json`
 - `data/tournaments/information/*.json`
 - `data/tournaments/details/**`
+- `data/local-sources/prefecture-sources.json`
+- `data/local-sources/detected-documents.json`
+- `data/local-sources/ignored-documents.json`
 
 関連ドキュメント:
 
@@ -27,6 +30,18 @@
 - 大会一覧・世代・地域紐付け: `index.json`, `local_index.json`
 - 年度情報・開催地・外部リンク・カテゴリ表示名: `information/*.json`
 - 結果本体: `details/**`
+- 地方大会巡回元 URL: `data/local-sources/prefecture-sources.json`
+
+地方大会候補検知ストア:
+
+- `detected-documents.json`
+  巡回で見つけた候補リンクの確認用ストア
+- `ignored-documents.json`
+  `prefectureSlug + normalizedUrl` 完全一致で除外する恒久 deny list
+
+注意:
+
+- `detected-documents.json` の `accepted` は確認済み候補を意味するだけで、公開データ反映済みは意味しない
 
 ## Deprecated
 
