@@ -37,13 +37,7 @@
 - `dev`: `next dev`
 - `prebuild`: players JSON と beta-matches JSON の生成
 - `build`: `next build`
-- `sitemap`: `out/` 向け sitemap と robots.txt を生成してソート
-- `build:with-sitemap`: `build` 後に sitemap を生成
-
-運用メモ:
-
-- ローカルの `npm run build` では sitemap は生成しない
-- 配信成果物に sitemap が必要なときだけ `npm run build:with-sitemap` を使う
+- `postbuild`: sitemap 生成とソート
 
 ## 推測を含む整理
 

@@ -1,7 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://softeni-pick.com', // サイトのURLを指定
-  outDir: 'out',
   generateRobotsTxt: true, // robots.txtを生成
   robotsTxtOptions: {
     policies: [

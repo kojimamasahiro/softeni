@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /beta/
+Disallow: /test-db
+
+# Host
+Host: https://softeni-pick.com
+
+# Sitemaps
+Sitemap: https://softeni-pick.com/sitemap.xml
