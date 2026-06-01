@@ -32,7 +32,7 @@ cd scripts/highschool/02result
 ```
 
 **処理内容:**
-- `data/tournament/details` から高校大会データを読み込み
+- `data/tournaments/index.json` に載る大会のうち、`data/tournaments/details` に実体がある大会データを読み込み
 - チーム名と都道府県のマッピングを構築
 - トーナメント結果とラウンドロビン結果を抽出
 - ラウンドロビンで敗退した選手も「予選敗退」として登録

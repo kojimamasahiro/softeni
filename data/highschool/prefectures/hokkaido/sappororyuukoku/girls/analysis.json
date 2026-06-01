@@ -1,28 +1,24 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 19,
   "byCategory": {
-    "doubles": 6,
-    "team": 1
+    "doubles": 13,
+    "team": 1,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "札幌龍谷",
         "teamId": "sappororyuukoku",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "6回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "石垣_陽菜_札幌龍谷_北海道",
-          "藤岡_七星_札幌龍谷_北海道"
+          "栗原_心_札幌龍谷学園_北海道"
         ]
       },
       "historicalBest": {
@@ -30,29 +26,50 @@
         "teamId": "sappororyuukoku",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "6回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "石垣_陽菜_札幌龍谷_北海道",
-          "藤岡_七星_札幌龍谷_北海道"
+          "栗原_心_札幌龍谷学園_北海道"
         ]
       }
     },
-    "team": {
+    "doubles": {
       "recentlyResult": {
         "team": "札幌龍谷",
         "teamId": "sappororyuukoku",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "girls"
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "石垣_陽菜_札幌龍谷学園_北海道",
+          "藤岡_七星_札幌龍谷学園_北海道"
+        ]
       },
+      "historicalBest": {
+        "team": "札幌龍谷",
+        "teamId": "sappororyuukoku",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト4",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "石垣_陽菜_札幌龍谷学園_北海道",
+          "藤岡_七星_札幌龍谷学園_北海道"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
       "historicalBest": {
         "team": "札幌龍谷",
         "teamId": "sappororyuukoku",
@@ -66,8 +83,16 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 19,
   "topPlayers": [
+    {
+      "id": "堀内_絢香_札幌龍谷学園_北海道",
+      "appearances": 4
+    },
+    {
+      "id": "渡辺_玲花_札幌龍谷学園_北海道",
+      "appearances": 3
+    },
     {
       "id": "石垣_陽菜_札幌龍谷_北海道",
       "appearances": 2
@@ -79,14 +104,6 @@
     {
       "id": "三田_智咲_札幌龍谷_北海道",
       "appearances": 2
-    },
-    {
-      "id": "上田_あづ_札幌龍谷_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "栗原_心_札幌龍谷_北海道",
-      "appearances": 1
     }
   ]
 }

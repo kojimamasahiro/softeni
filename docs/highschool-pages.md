@@ -28,10 +28,12 @@
   - `boys`, `girls` のパスを生成。
 - `getStaticProps`:
   - `data/prefectures.json` を読み込み、都道府県データを地域ごとにグループ化してページに渡す。
+  - 各都道府県の `summary.json` を参照し、学校数・ベスト8以上経験校数・最新年度を集計する。
   - URLパラメータから `gender` を受け取る。
 - **コンポーネント**:
   - `Breadcrumbs`: パンくずリストを表示。
   - `MetaHead`: SEO用のメタ情報を設定。
+  - FAQ 構造化データを出力する。
 
 ---
 
@@ -52,9 +54,12 @@
   - `data/highschool/prefectures/:prefectureId/summary.json` を読み込み、指定された性別のデータをフィルタリング。
   - 最新の大会情報や、チームごとの成績を計算。
   - 同一年同大会の複数結果がある場合は、最良成績のみを採用。
+  - `data/tournaments/index.json` と大会情報ファイルを参照し、直近1年の主要大会結果ページに掲載された学校一覧を生成する。
+  - 1回戦敗退や予選敗退も、主要大会掲載校として扱う。
 - **コンポーネント**:
   - `Breadcrumbs`: パンくずリストを表示。
   - `MetaHead`: SEO用のメタ情報を設定。
+  - FAQ 構造化データを出力する。
 
 ---
 
@@ -74,9 +79,11 @@
 - `getStaticProps`:
   - `data/highschool/prefectures/:prefectureId/summary.json` を読み込み、指定されたチームIDと性別のデータをフィルタリング。
   - `data/highschool/prefectures/:prefectureId/:teamId/:gender/analysis.json` を読み込み、チームの分析データを取得。
+  - インターハイ実績の掲載数・最新成績・最高成績を算出する。
 - **コンポーネント**:
   - `Breadcrumbs`: パンくずリストを表示。
   - `MetaHead`: SEO用のメタ情報を設定。
+  - Article / FAQ 構造化データを出力する。
 
 ---
 
@@ -160,3 +167,9 @@
 - 各ページは静的生成（SSG）を使用しており、ビルド時にデータを取得します。
 - データファイルの構造が変更された場合、対応するコードの修正が必要です。
 - SEO 文言は安全寄り方針として、商標語をページ主ラベルにせず、`全国高等学校総合体育大会` や `高校総体` など正式名称・一般名称を優先して使用します。
+- `インターハイ` は補助文脈として本文で扱い、主ラベルは `全国大会成績` を維持します。
+- 大会名の表示は `data/tournaments/index.json` の `label` を優先し、未登録分のみ補助フォールバックを使います。
+- 「直近1年の主要大会掲載校」カードでは、高校カテゴリの大会は除外します。
+- 個人戦の学校名表記揺れは、`data/tournaments/index.json` に載る大会を横断して、`year + lastName + firstName` が一致する選手が別学校名で現れた場合に同一校として寄せる暫定ルールを使用します。
+- 寄せ根拠は `scripts/highschool/03list/inferred-team-aliases.json` に `reasons` として出力します。
+- 誤結合リスクがあるため、確認論点は `docs/wiki/open-questions.md` に残します。

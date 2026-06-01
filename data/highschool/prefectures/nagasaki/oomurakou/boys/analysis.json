@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 5,
-    "singles": 1,
-    "team": 1
+    "doubles": 11,
+    "singles": 2,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "oomurakou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "原田_柊_大村工_長崎県"
+          "保利_彰大_宇都宮工_栃木県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "oomurakou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "原田_柊_大村工_長崎県"
+          "保利_彰大_宇都宮工_栃木県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "oomurakou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "原田_柊_大村工_長崎県",
-          "野口_悠晴_大村工_長崎県"
+          "齋藤_巧夢_大村工_長崎県",
+          "須川_怜皇_大村工_長崎県"
         ]
       },
       "historicalBest": {
@@ -57,29 +57,19 @@
         "teamId": "oomurakou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2022,
         "gender": "boys",
         "playerIds": [
-          "原田_柊_大村工_長崎県",
-          "野口_悠晴_大村工_長崎県"
+          "斎藤_隼羽_宇都宮工_栃木県",
+          "野口_椋平_宇都宮工_栃木県"
         ]
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "大村工",
-        "teamId": "oomurakou",
-        "prefecture": "長崎県",
-        "prefectureId": "nagasaki",
-        "result": "1回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "boys"
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "大村工",
         "teamId": "oomurakou",
@@ -93,26 +83,26 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "原田_柊_大村工_長崎県",
       "appearances": 4
     },
     {
+      "id": "野口_椋平_宇都宮工_栃木県",
+      "appearances": 3
+    },
+    {
+      "id": "金原_遥人_宇都宮工_栃木県",
+      "appearances": 2
+    },
+    {
+      "id": "保利_彰大_宇都宮工_栃木県",
+      "appearances": 2
+    },
+    {
       "id": "野口_椋平_大村工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "北倉_青波_大村工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "齋藤_巧夢_大村工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "須川_怜皇_大村工_長崎県",
       "appearances": 1
     }
   ]

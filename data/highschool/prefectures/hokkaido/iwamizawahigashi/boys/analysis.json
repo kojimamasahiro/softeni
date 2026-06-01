@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 1,
-    "singles": 1
+    "doubles": 10,
+    "singles": 3,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -11,13 +12,13 @@
         "teamId": "iwamizawahigashi",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "坂本_桔平_岩見沢東_北海道"
+          "野中_翔太_ルーテル学院_熊本県"
         ]
       },
       "historicalBest": {
@@ -25,13 +26,13 @@
         "teamId": "iwamizawahigashi",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2023,
         "gender": "boys",
         "playerIds": [
-          "坂本_桔平_岩見沢東_北海道"
+          "野中_翔太_ルーテル学院_熊本県"
         ]
       }
     },
@@ -41,14 +42,14 @@
         "teamId": "iwamizawahigashi",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "予選敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "坂本_桔平_岩見沢東_北海道",
-          "駒谷_颯磨_岩見沢東_北海道"
+          "野中_翔太_ルーテル学院_熊本県",
+          "坂本_旭_ルーテル学院_熊本県"
         ]
       },
       "historicalBest": {
@@ -56,31 +57,63 @@
         "teamId": "iwamizawahigashi",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "予選敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "坂本_桔平_岩見沢東_北海道",
-          "駒谷_颯磨_岩見沢東_北海道"
+          "野中_翔太_ルーテル学院_熊本県",
+          "坂本_旭_ルーテル学院_熊本県"
         ]
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "岩見沢東",
+        "teamId": "iwamizawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "岩見沢東",
+        "teamId": "iwamizawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 12,
   "topPlayers": [
+    {
+      "id": "野中_翔太_ルーテル学院_熊本県",
+      "appearances": 5
+    },
+    {
+      "id": "上村_光希_ルーテル学院_熊本県",
+      "appearances": 3
+    },
+    {
+      "id": "坂本_旭_ルーテル学院_熊本県",
+      "appearances": 3
+    },
     {
       "id": "坂本_桔平_岩見沢東_北海道",
       "appearances": 2
     },
     {
-      "id": "駒谷_颯磨_岩見沢東_北海道",
-      "appearances": 1
+      "id": "藪田_陸人_ルーテル学院_熊本県",
+      "appearances": 2
     }
   ]
 }

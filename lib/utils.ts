@@ -1,5 +1,7 @@
 // src/lib/utils.ts
 
+import tournamentIndex from '@/data/tournaments/index.json';
+
 export function resultPriority(result: string): number {
   if (result.includes('優勝') && !result.includes('準')) return 1;
   if (result.includes('準優勝')) return 2;
@@ -17,6 +19,14 @@ export function resultPriority(result: string): number {
 }
 
 export function getTournamentLabel(id: string): string {
+  const indexedTournament = tournamentIndex.find(
+    (tournament) => tournament.tournamentId === id,
+  );
+
+  if (indexedTournament?.label) {
+    return indexedTournament.label;
+  }
+
   switch (id) {
     case 'highschool-japan-cup':
       return 'ハイスクールジャパンカップ';

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 24,
   "byCategory": {
-    "doubles": 9,
-    "singles": 1,
-    "team": 1
+    "doubles": 19,
+    "singles": 2,
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -74,10 +74,10 @@
         "teamId": "toufukuoka",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys"
       },
       "historicalBest": {
@@ -93,27 +93,27 @@
       }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 27,
   "topPlayers": [
+    {
+      "id": "町田_佳紀_秋田令和_秋田県",
+      "appearances": 4
+    },
     {
       "id": "伊藤_駿平_東福岡_福岡県",
       "appearances": 3
     },
     {
+      "id": "小玉_康正_秋田令和_秋田県",
+      "appearances": 3
+    },
+    {
+      "id": "伊藤_玲央_秋田令和_秋田県",
+      "appearances": 3
+    },
+    {
       "id": "山田_侑人_東福岡_福岡県",
       "appearances": 2
-    },
-    {
-      "id": "伊藤_玲央_東福岡_秋田",
-      "appearances": 1
-    },
-    {
-      "id": "帆足_光平_東福岡_福岡",
-      "appearances": 1
-    },
-    {
-      "id": "木村_蓮_東福岡_福岡県",
-      "appearances": 1
     }
   ]
 }

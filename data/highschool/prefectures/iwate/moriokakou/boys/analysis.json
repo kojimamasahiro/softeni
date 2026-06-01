@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 4,
-    "singles": 1
+    "doubles": 9,
+    "singles": 1,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -68,11 +69,31 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "盛岡工",
+        "teamId": "moriokakou",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "盛岡工",
+        "teamId": "moriokakou",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2024,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "及川_統司_盛岡工_岩手県",
@@ -83,15 +104,15 @@
       "appearances": 2
     },
     {
+      "id": "髙橋_直希_近畿大高専_三重県",
+      "appearances": 2
+    },
+    {
+      "id": "弘田_和航_近畿大高専_三重県",
+      "appearances": 2
+    },
+    {
       "id": "大坪_厚大_盛岡工_岩手県",
-      "appearances": 1
-    },
-    {
-      "id": "城内_純那_盛岡工_岩手県",
-      "appearances": 1
-    },
-    {
-      "id": "髙橋_直希_盛岡工_岩手県",
       "appearances": 1
     }
   ]

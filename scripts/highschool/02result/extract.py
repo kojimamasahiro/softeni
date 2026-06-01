@@ -4,13 +4,30 @@ import glob
 
 DATA_DIR = "../../../data/tournaments/details"
 RESULTS_PATH = "results.json"
+TOURNAMENTS_INDEX_PATH = "../../../data/tournaments/index.json"
+
+
+def load_target_tournaments():
+    with open(TOURNAMENTS_INDEX_PATH, encoding="utf-8") as f:
+        tournaments = json.load(f)
+
+    tournament_ids = []
+    for tournament in tournaments:
+        tournament_id = tournament.get("tournamentId")
+        if not tournament_id:
+            continue
+        tournament_path = os.path.join(DATA_DIR, tournament_id)
+        if os.path.isdir(tournament_path):
+            tournament_ids.append(tournament_id)
+
+    return tournament_ids
 
 def main():
     all_results = []
     team_prefecture_map = {}
 
     print(f"📂 {DATA_DIR} を探索します...")
-    target_tournaments = [d for d in os.listdir(DATA_DIR) if d.startswith("highschool-")]
+    target_tournaments = load_target_tournaments()
 
     # 1. チーム・都道府県マップの構築 (participants があるファイルから)
     print("🔄 チーム・都道府県マップを構築中...")

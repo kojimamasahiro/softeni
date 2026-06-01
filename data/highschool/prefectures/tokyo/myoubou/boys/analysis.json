@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 7
+    "doubles": 13,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -42,10 +43,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "明法",
+        "teamId": "myoubou",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 18,
   "topPlayers": [
     {
       "id": "今井_瞭_明法_東京都",
@@ -64,8 +75,8 @@
       "appearances": 2
     },
     {
-      "id": "山本_悠路_明法_東京",
-      "appearances": 1
+      "id": "尾門_駿_浜田_島根県",
+      "appearances": 2
     }
   ]
 }

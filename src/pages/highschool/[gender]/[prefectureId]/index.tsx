@@ -50,12 +50,41 @@ type TopTeam = {
   year: number;
 };
 
+type RecentMajorTeam = {
+  teamId: string;
+  teamName: string;
+  appearances: {
+    tournamentId: string;
+    tournament: string;
+    year: number;
+    result: string;
+  }[];
+};
+
 type Props = {
   prefecture: Prefecture;
   gender: 'boys' | 'girls';
   genderLabel: string;
   teams: TeamSummary[];
   topTeams: TopTeam[];
+  recentMajorTeams: RecentMajorTeam[];
+  best8SchoolCount: number;
+  recentMajorSchoolCount: number;
+};
+
+type AliasReasonGroup = {
+  canonical: string;
+  aliases: string[];
+};
+
+type RawResultEntry = {
+  team?: string;
+  playerIds?: string[];
+  tournamentId: string;
+  year: number;
+  gender?: string;
+  result: string;
+  category: string;
 };
 
 const tournamentPriority: Record<string, number> = {
@@ -74,9 +103,30 @@ export default function PrefectureHighschoolPage({
   genderLabel,
   teams,
   topTeams,
+  recentMajorTeams,
+  best8SchoolCount,
+  recentMajorSchoolCount,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}`;
   const prefectureName = prefecture.name;
+  const faqItems = [
+    {
+      question: `${prefectureName}の高校${genderLabel}で全国大会成績を調べるには？`,
+      answer: `${prefectureName}の高校${genderLabel}の学校別一覧から、気になる学校を選ぶと年度別・大会別の全国大会成績を確認できます。`,
+    },
+    {
+      question: '主要大会に出場した学校をまとめて見られますか？',
+      answer:
+        'data/tournaments/index.json に載る主要大会の掲載対象になっている学校を、このページ上部で確認できます。',
+    },
+    {
+      question: '最近注目したい学校はどこですか？',
+      answer:
+        recentMajorTeams.length > 0
+          ? '直近1年の主要大会結果ページに掲載された学校を、このページ上部で先に確認できます。1回戦敗退や予選敗退も含めて主要大会出場校として扱います。'
+          : '直近1年の主要大会掲載校が無い場合でも、学校一覧から全国大会成績を確認できます。',
+    },
+  ];
   const getPerformanceLabel = (
     result: string,
   ): '好成績' | '健闘' | '敗退' | '予選敗退' | null => {
@@ -129,6 +179,36 @@ export default function PrefectureHighschoolPage({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'CollectionPage',
+              name: `${prefectureName} 高校${genderLabel} 全国大会成績`,
+              description: `${prefectureName}の高校${genderLabel}の全国大会成績を一覧掲載し、学校別の主要大会実績を確認できるページです。`,
+              url: pageUrl,
+              inLanguage: 'ja',
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map((item) => ({
+                '@type': 'Question',
+                name: item.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: item.answer,
+                },
+              })),
+            }),
+          }}
+        />
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
@@ -158,21 +238,30 @@ export default function PrefectureHighschoolPage({
             詳しい内容は、各高校のページからご覧いただけます。
           </p>
 
+          <section className="grid gap-4 sm:grid-cols-3 mb-8">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                収録学校数
+              </p>
+              <p className="text-2xl font-bold">{teams.length}校</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                ベスト8以上経験校
+              </p>
+              <p className="text-2xl font-bold">{best8SchoolCount}校</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                直近1年の主要大会掲載校
+              </p>
+              <p className="text-2xl font-bold">{recentMajorSchoolCount}校</p>
+            </div>
+          </section>
+
           <div className="mb-6">
             <p className="text-sm">
-              出場校数：{teams.length}校（ベスト8以上：
-              {
-                teams.filter((t) =>
-                  Object.values(t.results).some((r) =>
-                    r.some((entry) =>
-                      ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(
-                        entry.result,
-                      ),
-                    ),
-                  ),
-                ).length
-              }
-              校）
+              出場校数：{teams.length}校（ベスト8以上：{best8SchoolCount}校）
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
               学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。
@@ -214,6 +303,41 @@ export default function PrefectureHighschoolPage({
                 </div>
               )}
           </div>
+
+          {recentMajorTeams.length > 0 && (
+            <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
+              <h2 className="text-xl font-semibold mb-3">
+                直近1年の主要大会掲載校
+              </h2>
+              <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
+                主要大会結果ページに掲載された学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {recentMajorTeams.map((team) => (
+                  <Link
+                    key={team.teamId}
+                    href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
+                    className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4 hover:bg-white dark:hover:bg-gray-900 transition"
+                  >
+                    <p className="font-semibold">{team.teamName}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                      主要大会掲載 {team.appearances.length}件
+                    </p>
+                    <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                      {team.appearances.slice(0, 3).map((appearance) => (
+                        <li
+                          key={`${appearance.tournamentId}-${appearance.year}-${appearance.result}`}
+                        >
+                          {appearance.year}年 {appearance.tournament}（
+                          {appearance.result}）
+                        </li>
+                      ))}
+                    </ul>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           <ul className="space-y-4">
             {teams.map((team) => (
@@ -262,6 +386,21 @@ export default function PrefectureHighschoolPage({
               </li>
             ))}
           </ul>
+
+          <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+            <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
+            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+              {faqItems.map((item) => (
+                <div
+                  key={item.question}
+                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
+                >
+                  <h3 className="font-semibold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
     </>
@@ -410,6 +549,195 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if (topTeams.length > 0) break; // 最初に見つかった大会だけ採用
   }
 
+  const best8SchoolCount = new Set(
+    filteredData
+      .filter((entry) =>
+        ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(entry.result),
+      )
+      .map((entry) => entry.teamId),
+  ).size;
+
+  const tournamentsIndexPath = path.join(
+    process.cwd(),
+    'data/tournaments/index.json',
+  );
+  const majorTournamentIds: string[] = fs.existsSync(tournamentsIndexPath)
+    ? JSON.parse(fs.readFileSync(tournamentsIndexPath, 'utf-8'))
+        .filter(
+          (item: { tournamentId?: string; generationId?: string }) =>
+            item.generationId === 'all',
+        )
+        .map((item: { tournamentId?: string }) => item.tournamentId)
+        .filter((tournamentId: string | undefined): tournamentId is string =>
+          Boolean(tournamentId),
+        )
+    : [];
+  const majorInfoDir = path.join(process.cwd(), 'data/tournaments/information');
+  const now = new Date();
+  const oneYearAgo = new Date(now);
+  oneYearAgo.setFullYear(now.getFullYear() - 1);
+  const recentMajorYearMap = new Map<string, Set<number>>();
+
+  for (const tournamentId of majorTournamentIds) {
+    const informationPath = path.join(majorInfoDir, `${tournamentId}.json`);
+    if (!fs.existsSync(informationPath)) continue;
+    const informationList: { year: number; startDate: string }[] = JSON.parse(
+      fs.readFileSync(informationPath, 'utf-8'),
+    );
+    for (const information of informationList) {
+      const startDate = new Date(information.startDate);
+      if (startDate >= oneYearAgo && startDate <= now) {
+        if (!recentMajorYearMap.has(tournamentId)) {
+          recentMajorYearMap.set(tournamentId, new Set<number>());
+        }
+        recentMajorYearMap.get(tournamentId)?.add(information.year);
+      }
+    }
+  }
+
+  const highschoolTeamsPath = path.join(
+    process.cwd(),
+    'scripts/highschool/01team/teams.json',
+  );
+  const aliasPath = path.join(
+    process.cwd(),
+    'scripts/highschool/03list/inferred-team-aliases.json',
+  );
+  const resultsPath = path.join(
+    process.cwd(),
+    'scripts/highschool/02result/results.json',
+  );
+
+  const prefectureTeams: { id: string; name: string }[] = fs.existsSync(
+    highschoolTeamsPath,
+  )
+    ? JSON.parse(fs.readFileSync(highschoolTeamsPath, 'utf-8'))
+        .filter(
+          (team: {
+            id: string;
+            name: string;
+            prefectureId?: string;
+            prefecture?: string;
+          }) =>
+            team.prefectureId === prefectureId ||
+            team.prefecture === prefecture.name,
+        )
+        .map((team: { id: string; name: string }) => ({
+          id: team.id,
+          name: team.name,
+        }))
+    : [];
+
+  const teamIdByName = new Map(
+    prefectureTeams.map((team) => [team.name, team.id] as const),
+  );
+
+  const inferredAliases: AliasReasonGroup[] = fs.existsSync(aliasPath)
+    ? JSON.parse(fs.readFileSync(aliasPath, 'utf-8'))
+    : [];
+  const canonicalNameByAlias = new Map<string, string>();
+  for (const group of inferredAliases) {
+    for (const alias of group.aliases) {
+      canonicalNameByAlias.set(alias, group.canonical);
+    }
+  }
+
+  const normalizeSchoolName = (name: string) =>
+    canonicalNameByAlias.get(name) ?? name;
+
+  const rawResults: { results: RawResultEntry[] } = fs.existsSync(resultsPath)
+    ? JSON.parse(fs.readFileSync(resultsPath, 'utf-8'))
+    : { results: [] };
+
+  const recentMajorTeamMap = new Map<string, RecentMajorTeam>();
+  rawResults.results
+    .filter(
+      (entry) =>
+        entry.gender === gender &&
+        recentMajorYearMap.get(entry.tournamentId)?.has(entry.year),
+    )
+    .forEach((entry) => {
+      const rawTeamNames =
+        entry.category === 'team'
+          ? entry.team
+            ? [entry.team]
+            : []
+          : Array.from(
+              new Set(
+                (entry.playerIds ?? [])
+                  .map((playerId) => playerId.split('_'))
+                  .filter((parts) => parts.length > 2)
+                  .map((parts) => parts[2]),
+              ),
+            );
+
+      for (const rawTeamName of rawTeamNames) {
+        const teamName = normalizeSchoolName(rawTeamName);
+        const teamId = teamIdByName.get(teamName);
+        if (!teamId) continue;
+
+        const existing = recentMajorTeamMap.get(teamId);
+        const appearance = {
+          tournamentId: entry.tournamentId,
+          tournament: getTournamentLabel(entry.tournamentId),
+          year: entry.year,
+          result: entry.result,
+        };
+
+        if (!existing) {
+          recentMajorTeamMap.set(teamId, {
+            teamId,
+            teamName,
+            appearances: [appearance],
+          });
+          continue;
+        }
+
+        if (
+          !existing.appearances.some(
+            (item) =>
+              item.tournamentId === appearance.tournamentId &&
+              item.year === appearance.year &&
+              item.result === appearance.result,
+          )
+        ) {
+          existing.appearances.push(appearance);
+        }
+      }
+    });
+
+  const recentMajorTeams = Array.from(recentMajorTeamMap.values())
+    .map((team) => ({
+      ...team,
+      appearances: team.appearances.slice().sort((a, b) => {
+        if (b.year !== a.year) return b.year - a.year;
+        const tournamentOrder =
+          getTournamentSortPriority(a.tournamentId) -
+          getTournamentSortPriority(b.tournamentId);
+        if (tournamentOrder !== 0) return tournamentOrder;
+        return resultPriority(a.result) - resultPriority(b.result);
+      }),
+    }))
+    .sort((a, b) => {
+      const latestA = Math.max(...a.appearances.map((item) => item.year));
+      const latestB = Math.max(...b.appearances.map((item) => item.year));
+      if (latestB !== latestA) return latestB - latestA;
+      if (b.appearances.length !== a.appearances.length) {
+        return b.appearances.length - a.appearances.length;
+      }
+      const bestA = Math.min(
+        ...a.appearances.map((item) => resultPriority(item.result)),
+      );
+      const bestB = Math.min(
+        ...b.appearances.map((item) => resultPriority(item.result)),
+      );
+      if (bestA !== bestB) return bestA - bestB;
+      return a.teamName.localeCompare(b.teamName, 'ja');
+    })
+    .slice(0, 8);
+
+  const recentMajorSchoolCount = recentMajorTeamMap.size;
+
   const genderLabel = gender === 'boys' ? '男子' : '女子';
 
   return {
@@ -419,6 +747,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
       genderLabel,
       teams,
       topTeams,
+      recentMajorTeams,
+      best8SchoolCount,
+      recentMajorSchoolCount,
     },
   };
 };

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 33,
+  "totalAppearances": 79,
   "byCategory": {
-    "doubles": 24,
-    "singles": 4,
+    "doubles": 65,
+    "singles": 9,
     "team": 5
   },
   "resultsByCategory": {
@@ -74,10 +74,10 @@
         "teamId": "miyakonojo",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "ベスト8",
+        "result": "優勝",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys"
       },
       "historicalBest": {
@@ -85,16 +85,20 @@
         "teamId": "miyakonojo",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "ベスト8",
+        "result": "優勝",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 32,
+  "uniquePlayers": 88,
   "topPlayers": [
+    {
+      "id": "板倉_豪_岡崎城西_愛知県",
+      "appearances": 5
+    },
     {
       "id": "森_良輔_都城商_宮崎県",
       "appearances": 4
@@ -104,16 +108,12 @@
       "appearances": 4
     },
     {
-      "id": "山口_準斗_都城商_宮崎県",
-      "appearances": 3
+      "id": "藤本_貫太_岡崎城西_愛知県",
+      "appearances": 4
     },
     {
-      "id": "富山_陽太_都城商_宮崎県",
-      "appearances": 3
-    },
-    {
-      "id": "田中_涼介_都城商_宮崎県",
-      "appearances": 3
+      "id": "長濱_瑠飛_岡崎城西_愛知県",
+      "appearances": 4
     }
   ]
 }

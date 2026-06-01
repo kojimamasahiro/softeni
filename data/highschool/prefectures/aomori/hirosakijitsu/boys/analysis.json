@@ -1,26 +1,13 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 19,
   "byCategory": {
-    "doubles": 8,
+    "doubles": 17,
     "singles": 1,
     "team": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "弘前実",
-        "teamId": "hirosakijitsu",
-        "prefecture": "青森県",
-        "prefectureId": "aomori",
-        "result": "ベスト8",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
-        "gender": "boys",
-        "playerIds": [
-          "樋口_拓海_弘前実_青森県"
-        ]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "弘前実",
         "teamId": "hirosakijitsu",
@@ -42,14 +29,14 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "小山_颯斗_弘前実_青森県",
-          "三上_結太_弘前実_青森県"
+          "林_大嘉_県岐阜商_岐阜県",
+          "早見_和喜_県岐阜商_岐阜県"
         ]
       },
       "historicalBest": {
@@ -57,14 +44,14 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "5回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2023,
         "gender": "boys",
         "playerIds": [
-          "澤田_透和_弘前実_青森県",
-          "竹村_華瑠_弘前実_青森県"
+          "樋口_拓海_県岐阜商_岐阜県",
+          "早見_和喜_県岐阜商_岐阜県"
         ]
       }
     },
@@ -74,7 +61,7 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
         "year": 2025,
@@ -85,7 +72,7 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
         "year": 2025,
@@ -93,27 +80,27 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 25,
   "topPlayers": [
     {
       "id": "樋口_拓海_弘前実_青森県",
       "appearances": 4
     },
     {
+      "id": "早見_和喜_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "樋口_生真_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "廣岡_航輝_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
       "id": "工藤_大和_弘前実_青森県",
       "appearances": 2
-    },
-    {
-      "id": "羽場_碧_弘前実_青森県",
-      "appearances": 1
-    },
-    {
-      "id": "石澤_葵音_弘前実_青森県",
-      "appearances": 1
-    },
-    {
-      "id": "山賀_滉己_弘前実_青森県",
-      "appearances": 1
     }
   ]
 }

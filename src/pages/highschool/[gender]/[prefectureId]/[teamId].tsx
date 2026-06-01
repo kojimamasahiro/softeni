@@ -96,6 +96,42 @@ export default function TeamPage({
   analysis,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}`;
+  const championshipEntries = entries.filter(
+    (entry) => entry.tournamentId === 'highschool-championship',
+  );
+  const championshipAppearances = championshipEntries.length;
+  const latestChampionshipEntry =
+    championshipEntries.length > 0
+      ? championshipEntries.slice().sort((a, b) => {
+          if (b.year !== a.year) return b.year - a.year;
+          return resultPriority(a.result) - resultPriority(b.result);
+        })[0]
+      : null;
+  const bestChampionshipEntry =
+    championshipEntries.length > 0
+      ? championshipEntries.slice().sort((a, b) => {
+          const rankDiff = resultPriority(a.result) - resultPriority(b.result);
+          if (rankDiff !== 0) return rankDiff;
+          return b.year - a.year;
+        })[0]
+      : null;
+  const faqItems = [
+    {
+      question: `${teamName}の高校${genderLabel}の全国大会成績では何が分かりますか？`,
+      answer: `${teamName}の全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、選抜大会などの実績を年度別・種目別に確認できます。`,
+    },
+    {
+      question: 'インターハイの成績も確認できますか？',
+      answer:
+        championshipAppearances > 0
+          ? `${teamName}は全国高等学校総合体育大会の記録も収録しており、最新結果や過去の最高成績をこのページで確認できます。`
+          : `${teamName}のインターハイ成績は、収録済みデータがある年度から順次このページで確認できます。`,
+    },
+    {
+      question: '同じ都道府県の他校も見られますか？',
+      answer: `${prefectureName}の一覧ページへ戻ると、同じ都道府県の高校${genderLabel}の全国大会成績をまとめて確認できます。`,
+    },
+  ];
 
   const grouped = entries.reduce(
     (acc, entry) => {
@@ -158,6 +194,38 @@ export default function TeamPage({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: `${teamName} 高校${genderLabel} 全国大会成績`,
+              description: `${teamName}の高校${genderLabel}の全国大会成績を、インターハイを含む主要大会ごとに整理したページです。`,
+              inLanguage: 'ja',
+              mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+              author: { '@type': 'Organization', name: 'Softeni Pick' },
+              publisher: { '@type': 'Organization', name: 'Softeni Pick' },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map((item) => ({
+                '@type': 'Question',
+                name: item.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: item.answer,
+                },
+              })),
+            }),
+          }}
+        />
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
@@ -189,6 +257,77 @@ export default function TeamPage({
             について、全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
             選抜大会などソフトテニス主要大会での成績を年度別・種目別にまとめています。
           </p>
+
+          <section className="grid gap-4 sm:grid-cols-4 mb-8">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                収録成績数
+              </p>
+              <p className="text-2xl font-bold">{entries.length}</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                収録選手数
+              </p>
+              <p className="text-2xl font-bold">
+                {analysis?.uniquePlayers ?? '-'}
+              </p>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                インターハイ掲載数
+              </p>
+              <p className="text-2xl font-bold">{championshipAppearances}</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                インターハイ最高成績
+              </p>
+              <p className="text-2xl font-bold">
+                {bestChampionshipEntry?.result ?? '-'}
+              </p>
+            </div>
+          </section>
+
+          <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
+            <h2 className="text-xl font-semibold mb-3">
+              {teamName}のインターハイ実績サマリー
+            </h2>
+            {championshipAppearances > 0 ? (
+              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
+                <p>
+                  全国高等学校総合体育大会の掲載成績は
+                  <strong>{championshipAppearances}件</strong>あります。
+                </p>
+                {latestChampionshipEntry && (
+                  <p>
+                    最新の掲載成績は
+                    <strong>
+                      {latestChampionshipEntry.year}年{' '}
+                      {getCategoryLabel(latestChampionshipEntry.category)}{' '}
+                      {latestChampionshipEntry.result}
+                    </strong>
+                    です。
+                  </p>
+                )}
+                {bestChampionshipEntry && (
+                  <p>
+                    記録上の最高成績は
+                    <strong>
+                      {bestChampionshipEntry.year}年{' '}
+                      {getCategoryLabel(bestChampionshipEntry.category)}{' '}
+                      {bestChampionshipEntry.result}
+                    </strong>
+                    です。
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p className="text-sm text-gray-700 dark:text-gray-200">
+                現時点では、この学校の全国高等学校総合体育大会の掲載成績は確認中です。掲載済みの主要大会結果は以下から確認できます。
+              </p>
+            )}
+          </section>
 
           {analysis?.resultsByCategory &&
             Object.keys(analysis.resultsByCategory).map((category) => {
@@ -289,6 +428,39 @@ export default function TeamPage({
             </div>
           )}
 
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">関連ページ</h2>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <Link
+                href={`/highschool/${gender}/${prefectureId}`}
+                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              >
+                <p className="font-semibold">{prefectureName}の学校一覧</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  同県の高校{genderLabel}成績をまとめて見る
+                </p>
+              </Link>
+              <Link
+                href={`/highschool/${gender}`}
+                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              >
+                <p className="font-semibold">高校{genderLabel}都道府県別一覧</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  他県の注目校や成績ページへ移動
+                </p>
+              </Link>
+              <Link
+                href="/tournaments/major"
+                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              >
+                <p className="font-semibold">主要大会一覧</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  大会単位で結果を追いたい場合はこちら
+                </p>
+              </Link>
+            </div>
+          </section>
+
           {/* 試合成績リスト（既存表示） */}
           {Object.keys(grouped).length === 0 ? (
             <p className="text-gray-600">成績情報がありません。</p>
@@ -382,6 +554,21 @@ export default function TeamPage({
                 ))}
             </div>
           )}
+
+          <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+            <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
+            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+              {faqItems.map((item) => (
+                <div
+                  key={item.question}
+                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
+                >
+                  <h3 className="font-semibold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
     </>

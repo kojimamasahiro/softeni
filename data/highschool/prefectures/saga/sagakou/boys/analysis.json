@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 10
+    "doubles": 17,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "沖中_瑛太_旭川実_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "沖中_瑛太_旭川実_北海道"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,10 +72,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "山田_枇知_佐賀工_佐賀県",
+      "appearances": 3
+    },
+    {
+      "id": "沖中_瑛太_旭川実_北海道",
       "appearances": 3
     },
     {
@@ -60,12 +91,8 @@
       "appearances": 2
     },
     {
-      "id": "西原_蒼太_佐賀工_佐賀",
-      "appearances": 1
-    },
-    {
-      "id": "石井_礼都_佐賀工_佐賀",
-      "appearances": 1
+      "id": "森_海翔_旭川実_北海道",
+      "appearances": 2
     }
   ]
 }

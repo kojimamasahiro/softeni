@@ -45,3 +45,9 @@
 - `areaId: "city"` の大会を都道府県ページから分離する予定があるか
 - `detected-documents.json` で `accepted` にした候補を、どの手順で `information/*.json` に反映するか
 - 巡回候補から既存 `local_index.json` の大会をどこまで半自動で推定するか
+
+## 高校カテゴリ
+
+- 高校カテゴリの学校名表記揺れは、`data/tournaments/index.json` に載る大会を横断して、同年度・同姓同名選手が別学校名で出た場合に同一校として寄せる暫定ルールを採用している
+- 上記ルールは誤結合を許容した暫定運用であり、別校を同一校として結合するリスクがある
+- `scripts/highschool/03list/inferred-team-aliases.json` の確認頻度と、手動補正ルールの置き場所をどうするか

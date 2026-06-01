@@ -1,28 +1,24 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 3,
-    "team": 1
+    "doubles": 8,
+    "team": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "富士見",
         "teamId": "fujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
         "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "小林_麻央_富士見_静岡県",
-          "佐野_未歩_富士見_静岡県"
+          "小林_麻央_静岡県富士見_静岡県"
         ]
       },
       "historicalBest": {
@@ -31,13 +27,44 @@
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
         "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "小林_麻央_富士見_静岡県",
-          "佐野_未歩_富士見_静岡県"
+          "小林_麻央_静岡県富士見_静岡県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "富士見",
+        "teamId": "fujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "小林_麻央_静岡県富士見_静岡県",
+          "阿部_穂花_静岡県富士見_静岡県"
+        ]
+      },
+      "historicalBest": {
+        "team": "富士見",
+        "teamId": "fujimi",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "小林_麻央_静岡県富士見_静岡県",
+          "阿部_穂花_静岡県富士見_静岡県"
         ]
       }
     },
@@ -47,10 +74,10 @@
         "teamId": "fujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "girls"
       },
       "historicalBest": {
@@ -58,18 +85,26 @@
         "teamId": "fujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
+      "id": "小林_麻央_静岡県富士見_静岡県",
+      "appearances": 3
+    },
+    {
       "id": "小林_麻央_富士見_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "阿部_穂花_静岡県富士見_静岡県",
       "appearances": 2
     },
     {
@@ -78,14 +113,6 @@
     },
     {
       "id": "野田_雛希_富士見_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "津村_汐那_富士見_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "阿部_穂花_富士見_静岡県",
       "appearances": 1
     }
   ]
