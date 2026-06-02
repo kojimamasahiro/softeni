@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
 type TeamSummary = {
@@ -117,7 +118,7 @@ export default function PrefectureHighschoolPage({
     {
       question: '主要大会に出場した学校をまとめて見られますか？',
       answer:
-        'data/tournaments/index.json に載る主要大会の掲載対象になっている学校を、このページ上部で確認できます。',
+        '主要大会に出場した学校を、このページ上部でまとめて確認できます。',
     },
     {
       question: '最近注目したい学校はどこですか？',
@@ -238,6 +239,13 @@ export default function PrefectureHighschoolPage({
             詳しい内容は、各高校のページからご覧いただけます。
           </p>
 
+          <HighschoolGenderToggle
+            gender={gender}
+            boysHref={`/highschool/boys/${prefecture.id}`}
+            girlsHref={`/highschool/girls/${prefecture.id}`}
+            className="mb-8 max-w-sm mx-auto"
+          />
+
           <section className="grid gap-4 sm:grid-cols-3 mb-8">
             <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -310,7 +318,7 @@ export default function PrefectureHighschoolPage({
                 直近1年の主要大会掲載校
               </h2>
               <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
-                主要大会結果ページに掲載された学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
+                直近1年に主要大会へ出場した学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {recentMajorTeams.map((team) => (

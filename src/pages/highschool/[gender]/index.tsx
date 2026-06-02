@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
 
 type Prefecture = {
   id: string;
@@ -154,33 +155,12 @@ export default function HighschoolGenderIndex({
             高校{genderLabel} 全国大会成績
           </h1>
 
-          <div className="mb-8">
-            <div className="flex gap-4 justify-center">
-              <Link
-                href="/highschool/boys"
-                className={`px-8 py-4 rounded-lg border-2 transition block text-center ${
-                  gender === 'boys'
-                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900'
-                    : 'border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                }`}
-              >
-                <div className="text-3xl mb-2">👦</div>
-                <div className="text-lg font-bold">男子</div>
-              </Link>
-
-              <Link
-                href="/highschool/girls"
-                className={`px-8 py-4 rounded-lg border-2 transition block text-center ${
-                  gender === 'girls'
-                    ? 'border-pink-500 bg-pink-50 dark:bg-pink-900'
-                    : 'border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                }`}
-              >
-                <div className="text-3xl mb-2">👧</div>
-                <div className="text-lg font-bold">女子</div>
-              </Link>
-            </div>
-          </div>
+          <HighschoolGenderToggle
+            gender={gender}
+            boysHref="/highschool/boys"
+            girlsHref="/highschool/girls"
+            className="mb-8 max-w-sm mx-auto"
+          />
 
           <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
             <p>
