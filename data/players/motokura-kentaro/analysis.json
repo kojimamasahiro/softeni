@@ -1,13 +1,13 @@
 {
-  "totalMatches": 76,
-  "wins": 55,
+  "totalMatches": 78,
+  "wins": 57,
   "losses": 21,
-  "totalWinRate": 0.724,
+  "totalWinRate": 0.731,
   "games": {
-    "total": 438,
-    "won": 278,
+    "total": 446,
+    "won": 286,
     "lost": 160,
-    "gameRate": 0.635
+    "gameRate": 0.641
   },
   "byPartner": {
     "6": {
@@ -36,6 +36,20 @@
         "won": 8,
         "lost": 5,
         "gameRate": 0.615
+      }
+    },
+    "71": {
+      "matches": {
+        "total": 2,
+        "wins": 2,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 8,
+        "won": 8,
+        "lost": 0,
+        "gameRate": 1
       }
     },
     "151": {
@@ -154,24 +168,25 @@
     },
     "2026": {
       "matches": {
-        "total": 7,
-        "wins": 5,
+        "total": 9,
+        "wins": 7,
         "losses": 2,
-        "winRate": 0.714
+        "winRate": 0.778
       },
       "games": {
-        "total": 41,
-        "won": 25,
+        "total": 49,
+        "won": 33,
         "lost": 16,
-        "gameRate": 0.61
+        "gameRate": 0.673
       }
     }
   },
   "latestMatch": {
-    "tournament": "全日本シングルス選手権大会",
-    "date": "2026年5月15日〜2026年5月17日",
-    "location": "岐阜県",
-    "result": "6回戦敗退",
+    "tournament": "全日本ミックスダブルス選手権大会",
+    "date": "2026年6月6日〜2026年6月7日",
+    "location": "茨城県",
+    "partner": 71,
+    "result": "予選1位",
     "link": "https://www.jsta.or.jp/events/events2026"
   }
 }
