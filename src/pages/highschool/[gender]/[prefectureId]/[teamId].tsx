@@ -13,6 +13,10 @@ import {
   getTournamentLabel,
   resultPriority,
 } from '@/lib/utils';
+import {
+  getAllTournamentIndex,
+  getTournamentInfo,
+} from '@/utils/tournament-data-loader';
 
 type EntryResult = {
   year: number;
@@ -46,6 +50,8 @@ type Entry = {
   result: string;
   category: string;
   playerIds?: string[];
+  generation?: string;
+  ageCategory?: string;
 };
 
 type SummaryEntry = {
@@ -507,7 +513,7 @@ export default function TeamPage({
                                   <li key={cat}>
                                     <p className="font-semibold">
                                       <Link
-                                        href={`/tournaments/highschool/${tournamentId}/${year}/${cat}/none/${categoryGender}`}
+                                        href={`/tournaments/${items[0]?.generation ?? 'highschool'}/${tournamentId}/${year}/${cat}/${items[0]?.ageCategory ?? 'none'}/${categoryGender}`}
                                         className="text-blue-700 dark:text-blue-300 hover:underline"
                                       >
                                         {getCategoryLabel(cat)}
@@ -645,6 +651,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (!teamName) return { notFound: true };
 
+  const tournamentIndex = getAllTournamentIndex();
+  const tournamentGenerationMap = Object.fromEntries(
+    tournamentIndex.map((item) => [item.tournamentId, item.generationId]),
+  );
+
+  const entriesWithMeta: Entry[] = entries.map((entry) => {
+    const generation =
+      tournamentGenerationMap[entry.tournamentId] ?? 'highschool';
+    let ageCategory = 'none';
+
+    const tournamentInfo = getTournamentInfo(entry.tournamentId, entry.year);
+    if (tournamentInfo?.categories) {
+      const match = tournamentInfo.categories.find(
+        (cat) => cat.category === entry.category && cat.gender === entry.gender,
+      );
+      if (match?.age) ageCategory = match.age;
+    }
+
+    return {
+      ...entry,
+      generation,
+      ageCategory,
+    };
+  });
+
   // analysis 読み込み (gender-specific path)
   const analysisPath = path.join(
     process.cwd(),
@@ -668,7 +699,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       genderLabel,
       teamId,
       teamName,
-      entries,
+      entries: entriesWithMeta,
       analysis,
     },
   };
