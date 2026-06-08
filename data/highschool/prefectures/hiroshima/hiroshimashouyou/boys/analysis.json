@@ -1,9 +1,8 @@
 {
-  "totalAppearances": 30,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 25,
-    "singles": 3,
-    "team": 2
+    "doubles": 10,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +11,13 @@
         "teamId": "hiroshimashouyou",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "3回戦敗退",
+        "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "津田_柚翔_福知山成美_京都府"
+          "小保_伶太_広島翔洋_広島県"
         ]
       },
       "historicalBest": {
@@ -28,11 +27,11 @@
         "prefectureId": "hiroshima",
         "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2023,
         "gender": "boys",
         "playerIds": [
-          "津田_柚翔_福知山成美_京都府"
+          "竹之内_陵平_広島翔洋高校_広島県"
         ]
       }
     },
@@ -42,14 +41,14 @@
         "teamId": "hiroshimashouyou",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "5回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "内藤_理央_福知山成美_京都府",
-          "加藤_歩_福知山成美_京都府"
+          "森川_倖志_広島翔洋_広島県",
+          "灰田_麟太郎_広島翔洋_広島県"
         ]
       },
       "historicalBest": {
@@ -60,53 +59,21 @@
         "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "boys",
         "playerIds": [
-          "内藤_理央_福知山成美_京都府",
-          "加藤_歩_福知山成美_京都府"
+          "平川_史恩_広島翔洋_広島県",
+          "大神_晃世_広島翔洋_広島県"
         ]
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "広島翔洋",
-        "teamId": "hiroshimashouyou",
-        "prefecture": "広島県",
-        "prefectureId": "hiroshima",
-        "result": "1回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "広島翔洋",
-        "teamId": "hiroshimashouyou",
-        "prefecture": "広島県",
-        "prefectureId": "hiroshima",
-        "result": "1回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
-  "uniquePlayers": 41,
+  "uniquePlayers": 19,
   "topPlayers": [
-    {
-      "id": "津田_柚翔_福知山成美_京都府",
-      "appearances": 4
-    },
-    {
-      "id": "伊藤_颯人_福知山成美_京都府",
-      "appearances": 3
-    },
-    {
-      "id": "城山_風我_広島翔洋_広島県",
-      "appearances": 2
-    },
     {
       "id": "橋本_聖良_広島翔洋_広島県",
       "appearances": 2
@@ -114,6 +81,18 @@
     {
       "id": "竹之内_陵平_広島翔洋_広島県",
       "appearances": 2
+    },
+    {
+      "id": "小保_伶太_広島翔洋_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "城山_風我_広島翔洋_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "向井_海輝_広島翔洋_広島県",
+      "appearances": 1
     }
   ]
 }

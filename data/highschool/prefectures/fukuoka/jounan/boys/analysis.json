@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4
+    "doubles": 6,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "城南",
+        "teamId": "jounan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "予選敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "内藤_理央_城南中学校_京都府"
+        ]
+      },
+      "historicalBest": {
+        "team": "城南",
+        "teamId": "jounan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "予選敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "内藤_理央_城南中学校_京都府"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,8 +72,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
+    {
+      "id": "内藤_理央_城南中学校_京都府",
+      "appearances": 2
+    },
     {
       "id": "波多江_啓_城南_福岡県",
       "appearances": 1
@@ -61,10 +92,6 @@
     },
     {
       "id": "山口_龍之介_城南_福岡県",
-      "appearances": 1
-    },
-    {
-      "id": "大藪_想太_城南_福岡県",
       "appearances": 1
     }
   ]

@@ -1,9 +1,9 @@
 {
   "totalAppearances": 13,
   "byCategory": {
-    "doubles": 11,
-    "singles": 1,
-    "team": 1
+    "team": 1,
+    "doubles": 10,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -14,11 +14,11 @@
         "prefectureId": "iwate",
         "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "八島_銀音_黒沢尻北_岩手県"
+          "八島_銀音_黒沢尻北高校_岩手県"
         ]
       },
       "historicalBest": {
@@ -28,11 +28,11 @@
         "prefectureId": "iwate",
         "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "八島_銀音_黒沢尻北_岩手県"
+          "八島_銀音_黒沢尻北高校_岩手県"
         ]
       }
     },
@@ -104,16 +104,16 @@
       "appearances": 3
     },
     {
-      "id": "山室_晴廉_黒沢尻北_岩手",
-      "appearances": 2
-    },
-    {
       "id": "千田_琉碧_黒沢尻北_岩手県",
       "appearances": 2
     },
     {
       "id": "髙橋_怜音_黒沢尻北_岩手県",
       "appearances": 2
+    },
+    {
+      "id": "佐藤_駿_黒沢尻北_岩手県",
+      "appearances": 1
     }
   ]
 }

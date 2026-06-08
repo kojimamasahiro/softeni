@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 11,
-    "team": 1
+    "team": 1,
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -36,7 +36,7 @@
         "year": 2023,
         "gender": "boys",
         "playerIds": [
-          "樋口_拓海_県岐阜商_岐阜県",
+          "樋口_生真_県岐阜商_岐阜県",
           "早見_和喜_県岐阜商_岐阜県"
         ]
       }
@@ -66,12 +66,8 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 11,
   "topPlayers": [
-    {
-      "id": "早見_和喜_県岐阜商_岐阜県",
-      "appearances": 4
-    },
     {
       "id": "樋口_生真_県岐阜商_岐阜県",
       "appearances": 4
@@ -81,11 +77,15 @@
       "appearances": 3
     },
     {
-      "id": "林_大嘉_県岐阜商_岐阜",
+      "id": "早見_和喜_県岐阜商_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "松野_快飛_県岐阜商_岐阜県",
       "appearances": 1
     },
     {
-      "id": "早見_和喜_県岐阜商_岐阜",
+      "id": "中家_悠斗_県岐阜商_岐阜県",
       "appearances": 1
     }
   ]

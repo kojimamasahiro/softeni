@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "帝京安積",
+        "teamId": "teikyouasaka",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "深沢_雅人_帝京安積高校"
+        ]
+      },
+      "historicalBest": {
+        "team": "帝京安積",
+        "teamId": "teikyouasaka",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "深沢_雅人_帝京安積高校"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "宗像_瑛汰_帝京安積_福島県",
@@ -61,6 +88,10 @@
     },
     {
       "id": "今泉_賢誠_帝京安積_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "深沢_雅人_帝京安積高校",
       "appearances": 1
     }
   ]

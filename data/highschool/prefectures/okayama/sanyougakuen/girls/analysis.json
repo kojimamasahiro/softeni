@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 34,
   "byCategory": {
-    "doubles": 17,
-    "team": 1,
-    "singles": 6
+    "team": 2,
+    "doubles": 24,
+    "singles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -42,14 +42,14 @@
         "teamId": "sanyougakuen",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "5回戦敗退",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "馬島_沙英_山陽学園_岡山県",
-          "田_莉夢_山陽学園_岡山県"
+          "真野_愛梨_山陽学園中学校_岡山県",
+          "辻田_麗夢_山陽学園中学校_岡山県"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "sanyougakuen",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "5回戦敗退",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "馬島_沙英_山陽学園_岡山県",
-          "田_莉夢_山陽学園_岡山県"
+          "真野_愛梨_山陽学園中学校_岡山県",
+          "辻田_麗夢_山陽学園中学校_岡山県"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 29,
+  "uniquePlayers": 43,
   "topPlayers": [
     {
       "id": "馬島_沙英_山陽学園_岡山県",
@@ -104,15 +104,15 @@
       "appearances": 3
     },
     {
+      "id": "佐々木_莉子_山陽学園高校_岡山",
+      "appearances": 2
+    },
+    {
       "id": "森田_すず_山陽学園_岡山県",
       "appearances": 2
     },
     {
       "id": "松本_遥菜_山陽学園_岡山県",
-      "appearances": 2
-    },
-    {
-      "id": "小柴_心寧_山陽学園_岡山県",
       "appearances": 2
     }
   ]

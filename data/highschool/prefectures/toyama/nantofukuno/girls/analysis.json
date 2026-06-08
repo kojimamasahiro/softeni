@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "prefectureId": "toyama",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "藤澤_京子_南砺福野_富山県",
-          "天野_柚葉_南砺福野_富山県"
+          "小橋_聖那_南砺福野高校_富山",
+          "高和_結生_南砺福野高校_富山"
         ]
       },
       "historicalBest": {
@@ -31,12 +31,12 @@
         "prefectureId": "toyama",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "藤澤_京子_南砺福野_富山県",
-          "天野_柚葉_南砺福野_富山県"
+          "小橋_聖那_南砺福野高校_富山",
+          "高和_結生_南砺福野高校_富山"
         ]
       }
     },
@@ -45,22 +45,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
+      "id": "小橋_聖那_南砺福野高校_富山",
+      "appearances": 1
+    },
+    {
+      "id": "高和_結生_南砺福野高校_富山",
+      "appearances": 1
+    },
+    {
+      "id": "五島_千夏_南砺福野高校_富山",
+      "appearances": 1
+    },
+    {
+      "id": "吉竹_結徠_南砺福野高校_富山",
+      "appearances": 1
+    },
+    {
       "id": "藤澤_京子_南砺福野_富山県",
-      "appearances": 1
-    },
-    {
-      "id": "天野_柚葉_南砺福野_富山県",
-      "appearances": 1
-    },
-    {
-      "id": "保院_愛深_南砺福野_富山県",
-      "appearances": 1
-    },
-    {
-      "id": "脇本_実莉_南砺福野_富山県",
       "appearances": 1
     }
   ]

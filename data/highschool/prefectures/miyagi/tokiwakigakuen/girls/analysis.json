@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -31,12 +31,12 @@
         "prefectureId": "miyagi",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "zennihon-championship",
+        "year": 2022,
         "gender": "girls",
         "playerIds": [
-          "山本_渚央_常盤木学園_宮城県",
-          "鈴木_心優_常盤木学園_宮城県"
+          "石井_涼風_常盤木学園高校_宮城",
+          "菊池_唯亜_常盤木学園高校_宮城"
         ]
       }
     },
@@ -45,8 +45,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "石井_涼風_常盤木学園高校_宮城",
+      "appearances": 1
+    },
+    {
+      "id": "菊池_唯亜_常盤木学園高校_宮城",
+      "appearances": 1
+    },
     {
       "id": "山本_渚央_常盤木学園_宮城県",
       "appearances": 1
@@ -57,10 +65,6 @@
     },
     {
       "id": "安達_心菜_常盤木学園_宮城県",
-      "appearances": 1
-    },
-    {
-      "id": "伊藤_友萌_常盤木学園_宮城県",
       "appearances": 1
     }
   ]

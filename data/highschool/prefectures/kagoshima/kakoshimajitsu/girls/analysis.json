@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 23,
   "byCategory": {
-    "doubles": 17,
     "team": 3,
-    "singles": 5
+    "doubles": 17,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -14,11 +14,11 @@
         "prefectureId": "kagoshima",
         "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "荒田_空愛_鹿児島実業高校_鹿児島"
+          "荒田_空愛_鹿児島実_鹿児島県"
         ]
       },
       "historicalBest": {
@@ -28,11 +28,11 @@
         "prefectureId": "kagoshima",
         "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "荒田_空愛_鹿児島実業高校_鹿児島"
+          "荒田_空愛_鹿児島実_鹿児島県"
         ]
       }
     },
@@ -93,26 +93,26 @@
       }
     }
   },
-  "uniquePlayers": 30,
+  "uniquePlayers": 28,
   "topPlayers": [
-    {
-      "id": "須ケ牟田_友菜_鹿児島実_鹿児島県",
-      "appearances": 3
-    },
     {
       "id": "別府_真恋_鹿児島実_鹿児島県",
       "appearances": 3
     },
     {
-      "id": "遠矢_夢乃_鹿児島実_鹿児島県",
-      "appearances": 2
-    },
-    {
-      "id": "門松_虹_鹿児島実_鹿児島県",
-      "appearances": 2
+      "id": "須ケ牟田_友菜_鹿児島実_鹿児島県",
+      "appearances": 3
     },
     {
       "id": "門松_輝_鹿児島実_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "荒田_姫來_鹿児島実_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "遠矢_夢乃_鹿児島実_鹿児島県",
       "appearances": 2
     }
   ]

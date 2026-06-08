@@ -81,6 +81,12 @@ Deprecated:
 - 現在は `boys` / `girls` / `mixed` を判定対象としている
 - 抽出結果には `gender` フィールドが付与され、後続の高校カテゴリ集計に渡される
 
+### 学校名の寄せ方
+
+- `scripts/highschool/03list/summary.py` は既知の学校名を安全に正規化して集計する
+- 同姓同名選手の証拠から広く alias を推定する処理は、別学校の過剰集約を招くため集計には使わない
+- `scripts/highschool/04summry/generate_prefecture_summaries.py` は毎回 `summary.json` をフル再生成する
+
 ## tournament details / players 生成の見方
 
 - 大会データの canonical source は `data/tournaments/details/**` と `data/tournaments/information/*.json`

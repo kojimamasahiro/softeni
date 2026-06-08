@@ -125,9 +125,6 @@ def build_same_name_team_alias_map(major_tournament_ids, known_highschool_team_n
         sorted_names = sorted(team_names)
         canonical = sorted(sorted_names, key=lambda name: (len(name), name))[0]
 
-        for alias in sorted_names:
-            union(canonical, alias)
-
         alias_debug.append(
             {
                 "year": int(year) if str(year).isdigit() else year,
@@ -212,6 +209,7 @@ def build_same_name_team_alias_map(major_tournament_ids, known_highschool_team_n
 
     compact_alias_debug = []
     suspicious_aliases = []
+    suspicious_group_signatures = set()
 
     for canonical_root, names in sorted(groups_by_canonical.items()):
         aliases = sorted(names, key=lambda name: (len(name), name))
@@ -239,43 +237,47 @@ def build_same_name_team_alias_map(major_tournament_ids, known_highschool_team_n
                 ),
             }
         )
-        for alias in aliases:
-            alias_map[alias] = canonical
+    for item in compact_alias_debug:
+        aliases = item["aliases"]
 
+        normalized = [
+            normalize_school_name(a)
+            for a in aliases
+        ]
 
+        common_lengths = []
 
-        for item in compact_alias_debug:
+        for i in range(len(normalized)):
+            for j in range(i + 1, len(normalized)):
+                common = longest_common_substring(
+                    normalized[i],
+                    normalized[j],
+                )
+                common_lengths.append(common)
 
-            aliases = item["aliases"]
+        min_common = min(common_lengths) if common_lengths else 999
+        signature = (item["canonical"], tuple(aliases))
 
-            normalized = [
-                normalize_school_name(a)
-                for a in aliases
-            ]
+        if min_common < 2:
+            suspicious_aliases.append({
+                **item,
+                "minCommonLength": min_common
+            })
+            suspicious_group_signatures.add(signature)
 
-            common_lengths = []
+    for item in compact_alias_debug:
+        signature = (item["canonical"], tuple(item["aliases"]))
+        if signature in suspicious_group_signatures:
+            continue
+        for alias in item["aliases"]:
+            union(item["canonical"], alias)
 
-            for i in range(len(normalized)):
-                for j in range(i + 1, len(normalized)):
-
-                    common = longest_common_substring(
-                        normalized[i],
-                        normalized[j],
-                    )
-
-                    common_lengths.append(common)
-
-            min_common = (
-                min(common_lengths)
-                if common_lengths
-                else 999
-            )
-
-            if min_common < 2:
-                suspicious_aliases.append({
-                    **item,
-                    "minCommonLength": min_common
-                })
+    for item in compact_alias_debug:
+        signature = (item["canonical"], tuple(item["aliases"]))
+        if signature in suspicious_group_signatures:
+            continue
+        for alias in item["aliases"]:
+            alias_map[alias] = item["canonical"]
 
     return (
         alias_map,
@@ -284,7 +286,14 @@ def build_same_name_team_alias_map(major_tournament_ids, known_highschool_team_n
     )
 
 def normalize_team_name(team_name, alias_map):
-    return alias_map.get(team_name, team_name)
+    if team_name in team_map:
+        return team_name
+
+    normalized = normalize_school_name(team_name)
+    if normalized in safe_team_lookup:
+        return safe_team_lookup[normalized]
+
+    return team_name
 
 def normalize_school_name(name):
     remove_words = [
@@ -344,9 +353,12 @@ for team in teams_data:
             "prefecture": pref_name,
         }
 
-for alias_name, canonical_name in team_alias_map.items():
-    if canonical_name in team_map:
-        team_map[alias_name] = team_map[canonical_name]
+safe_team_lookup = {}
+for team_name in team_map.keys():
+    normalized = normalize_school_name(team_name)
+    current = safe_team_lookup.get(normalized)
+    if current is None or len(team_name) < len(current):
+        safe_team_lookup[normalized] = team_name
 
 # 中間リスト
 summary_list = []

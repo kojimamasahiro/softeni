@@ -1,40 +1,13 @@
 {
-  "totalAppearances": 31,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 17,
     "team": 2,
-    "singles": 12
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "札幌龍谷",
-        "teamId": "sappororyuukoku",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "4回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2024,
-        "gender": "girls",
-        "playerIds": [
-          "三田_智咲_札幌龍谷学園高校_北海道"
-        ]
-      },
-      "historicalBest": {
-        "team": "札幌龍谷",
-        "teamId": "sappororyuukoku",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "4回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2024,
-        "gender": "girls",
-        "playerIds": [
-          "三田_智咲_札幌龍谷学園高校_北海道"
-        ]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -42,14 +15,14 @@
         "teamId": "sappororyuukoku",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "ベスト4",
+        "result": "6回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "石垣_陽菜_札幌龍谷学園_北海道",
-          "藤岡_七星_札幌龍谷学園_北海道"
+          "石垣_陽菜_札幌龍谷_北海道",
+          "藤岡_七星_札幌龍谷_北海道"
         ]
       },
       "historicalBest": {
@@ -57,14 +30,14 @@
         "teamId": "sappororyuukoku",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "ベスト4",
+        "result": "6回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "石垣_陽菜_札幌龍谷学園_北海道",
-          "藤岡_七星_札幌龍谷学園_北海道"
+          "石垣_陽菜_札幌龍谷_北海道",
+          "藤岡_七星_札幌龍谷_北海道"
         ]
       }
     },
@@ -93,20 +66,8 @@
       }
     }
   },
-  "uniquePlayers": 30,
+  "uniquePlayers": 8,
   "topPlayers": [
-    {
-      "id": "堀内_絢香_札幌龍谷学園_北海道",
-      "appearances": 4
-    },
-    {
-      "id": "渡辺_玲花_札幌龍谷学園高校_北海道",
-      "appearances": 4
-    },
-    {
-      "id": "渡辺_玲花_札幌龍谷学園_北海道",
-      "appearances": 3
-    },
     {
       "id": "石垣_陽菜_札幌龍谷_北海道",
       "appearances": 2
@@ -114,6 +75,18 @@
     {
       "id": "藤岡_七星_札幌龍谷_北海道",
       "appearances": 2
+    },
+    {
+      "id": "三田_智咲_札幌龍谷_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "上田_あづ_札幌龍谷_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "栗原_心_札幌龍谷_北海道",
+      "appearances": 1
     }
   ]
 }

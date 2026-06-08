@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -41,18 +42,50 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "七尾",
+        "teamId": "nanao",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "secondaryschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "七尾",
+        "teamId": "nanao",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "secondaryschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
-      "id": "中島_悠真_七尾_石川県",
+      "id": "谷口_太一_七尾中学校",
       "appearances": 1
     },
     {
-      "id": "谷口_太一_七尾_石川県",
+      "id": "中島_悠真_七尾中学校",
+      "appearances": 1
+    },
+    {
+      "id": "西田_湊北_七尾中学校_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "押田_暖真_七尾中学校_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "谷口_太一_七尾中学校_石川県",
       "appearances": 1
     }
   ]

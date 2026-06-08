@@ -1,40 +1,12 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 18,
-    "team": 3,
-    "singles": 3
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "大分",
-        "teamId": "ooita",
-        "prefecture": "大分県",
-        "prefectureId": "oita",
-        "result": "3回戦敗退",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
-        "gender": "girls",
-        "playerIds": [
-          "荒田_空愛_鹿児島実_鹿児島県"
-        ]
-      },
-      "historicalBest": {
-        "team": "大分",
-        "teamId": "ooita",
-        "prefecture": "大分県",
-        "prefectureId": "oita",
-        "result": "3回戦敗退",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
-        "gender": "girls",
-        "playerIds": [
-          "荒田_空愛_鹿児島実_鹿児島県"
-        ]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -42,14 +14,14 @@
         "teamId": "ooita",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "荒井田_空愛_鹿児島実",
-          "須ケ牟田_友菜_鹿児島実_鹿児島"
+          "成松_愛果_大分_大分県",
+          "神品_紗智_大分_大分県"
         ]
       },
       "historicalBest": {
@@ -57,63 +29,31 @@
         "teamId": "ooita",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "4回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "別府_真恋_鹿児島実_鹿児島県",
-          "荒田_姫來_鹿児島実_鹿児島県"
+          "成松_愛果_大分_大分県",
+          "神品_紗智_大分_大分県"
         ]
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "大分",
-        "teamId": "ooita",
-        "prefecture": "大分県",
-        "prefectureId": "oita",
-        "result": "3回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "girls"
-      },
-      "historicalBest": {
-        "team": "大分",
-        "teamId": "ooita",
-        "prefecture": "大分県",
-        "prefectureId": "oita",
-        "result": "3回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "girls"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
-  "uniquePlayers": 30,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "須ケ牟田_友菜_鹿児島実_鹿児島県",
-      "appearances": 3
+      "id": "成松_愛果_大分_大分県",
+      "appearances": 1
     },
     {
-      "id": "別府_真恋_鹿児島実_鹿児島県",
-      "appearances": 3
-    },
-    {
-      "id": "門松_虹_鹿児島実_鹿児島県",
-      "appearances": 2
-    },
-    {
-      "id": "門松_輝_鹿児島実_鹿児島県",
-      "appearances": 2
-    },
-    {
-      "id": "荒田_姫來_鹿児島実_鹿児島県",
-      "appearances": 2
+      "id": "神品_紗智_大分_大分県",
+      "appearances": 1
     }
   ]
 }

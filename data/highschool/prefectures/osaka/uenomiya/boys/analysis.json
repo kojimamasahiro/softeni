@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 88,
+  "totalAppearances": 87,
   "byCategory": {
-    "doubles": 60,
-    "singles": 22,
-    "team": 6
+    "team": 6,
+    "doubles": 58,
+    "singles": 23
   },
   "resultsByCategory": {
     "singles": {
@@ -93,8 +93,12 @@
       }
     }
   },
-  "uniquePlayers": 88,
+  "uniquePlayers": 86,
   "topPlayers": [
+    {
+      "id": "福田_喜大_上宮高校_大阪",
+      "appearances": 4
+    },
     {
       "id": "清水_駿_上宮_大阪府",
       "appearances": 4
@@ -105,10 +109,6 @@
     },
     {
       "id": "林_宏介_上宮_大阪府",
-      "appearances": 4
-    },
-    {
-      "id": "福田_喜大_上宮高校_大阪",
       "appearances": 4
     },
     {

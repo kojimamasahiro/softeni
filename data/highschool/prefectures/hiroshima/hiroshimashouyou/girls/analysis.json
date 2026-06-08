@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 123,
+  "totalAppearances": 115,
   "byCategory": {
-    "doubles": 63,
     "team": 6,
-    "singles": 54
+    "doubles": 56,
+    "singles": 53
   },
   "resultsByCategory": {
     "singles": {
@@ -44,12 +44,12 @@
         "prefectureId": "hiroshima",
         "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "world-championship-qualifier",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "塚本_七海_広島翔洋_広島県",
-          "前川_愛生_広島翔洋_広島県"
+          "前川_愛生_広島翔洋高校_広島県",
+          "宮前_希帆_関西学院大学_日本学連"
         ]
       },
       "historicalBest": {
@@ -59,12 +59,12 @@
         "prefectureId": "hiroshima",
         "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "world-championship-qualifier",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "塚本_七海_広島翔洋_広島県",
-          "前川_愛生_広島翔洋_広島県"
+          "前川_愛生_広島翔洋高校_広島県",
+          "宮前_希帆_関西学院大学_日本学連"
         ]
       }
     },
@@ -93,22 +93,22 @@
       }
     }
   },
-  "uniquePlayers": 97,
+  "uniquePlayers": 85,
   "topPlayers": [
-    {
-      "id": "塚本_七海_広島翔洋_広島県",
-      "appearances": 6
-    },
-    {
-      "id": "前川_愛生_広島翔洋_広島県",
-      "appearances": 6
-    },
     {
       "id": "前川_愛生_広島翔洋高校_広島県",
       "appearances": 6
     },
     {
       "id": "塚本_七海_広島翔洋高校_広島県",
+      "appearances": 6
+    },
+    {
+      "id": "塚本_七海_広島翔洋_広島県",
+      "appearances": 6
+    },
+    {
+      "id": "前川_愛生_広島翔洋_広島県",
       "appearances": 6
     },
     {

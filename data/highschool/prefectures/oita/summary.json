@@ -1,5 +1,137 @@
 [
   {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
     "team": "日田林工",
     "teamId": "hitarinkou",
     "prefecture": "大分県",
@@ -15,644 +147,78 @@
     ]
   },
   {
-    "team": "中津東",
-    "teamId": "nakatsuhigashi",
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "樽村_妹穏_明豊高校_大分",
+      "宮﨑_那々_明豊高校_大分"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_珠暖_明豊中学校_大分",
+      "鹿野_叶恵_明豊中学校_大分"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "小林_司_明豊高校_大分",
+      "片山_伊織_明豊高校_大分"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "西田_海晴_明豊高校_大分",
+      "中嶋_心暖_明豊高校_大分"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
     "prefecture": "大分県",
     "prefectureId": "oita",
     "result": "3回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "佐知_直翔_中津東_大分県",
-      "石元_遥馬_中津東_大分県"
-    ]
-  },
-  {
-    "team": "中津東",
-    "teamId": "nakatsuhigashi",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "稲生_拓斗_中津東_大分県",
-      "藤原_涼太郎_中津東_大分県"
-    ]
-  },
-  {
-    "team": "中津東",
-    "teamId": "nakatsuhigashi",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "矢野_楓太_中津東_大分県",
-      "川底_倖弥_中津東_大分県"
-    ]
-  },
-  {
-    "team": "中津東",
-    "teamId": "nakatsuhigashi",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "佐知_直翔_中津東_大分県",
-      "松岡_亮佑_中津東_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "河野_暖斗_大分_大分",
-      "石本_瑠偉_大分_大分"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "河野_汐苑_大分_大分県",
-      "長野_虎之介_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "木下_了太_大分_大分県",
-      "穴見_陸_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "岡本_央睦_大分_大分県",
-      "一法_師優吾_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "安部_陸斗_大分_大分県",
-      "樋口_晴喜_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "坂口_竣亮_大分_大分県",
-      "青野_良真_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "穴見_舜_大分_大分県",
-      "山田_卓弥_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "河野_暖斗_大分_大分県",
-      "石本_瑠偉_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
     "gender": "girls",
     "playerIds": [
-      "成松_愛果_大分_大分県",
-      "神品_紗智_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "坂口_竣亮_大分_大分県",
-      "青野_良真_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "河野_翔空_大分_大分県",
-      "中橋_蓮_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "池永_陵_大分_大分県",
-      "山田_卓弥_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "中野_大翔_大分_大分県",
-      "宇都宮_大知_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "河野_翔空_大分_大分県",
-      "宇都宮_大知_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "安部_陸斗_大分_大分県",
-      "樋口_晴喜_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "岡本_央睦_大分_大分県",
-      "藤平_優希_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分舞鶴",
-    "teamId": "ooitamaizuru",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "清水_慎之亮_大分舞鶴_大分県",
-      "佐藤_寛人_大分舞鶴_大分県"
-    ]
-  },
-  {
-    "team": "大分舞鶴",
-    "teamId": "ooitamaizuru",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "三宮_周_大分舞鶴_大分県",
-      "藤澤_知彌_大分舞鶴_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "小野_泰輝_大分商_大分",
-      "小野_弘太郎_大分商_大分"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "紀野_文汰_大分商_大分",
-      "小野_弘太郎_大分商_大分"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "衞藤_結生_大分商_大分県",
-      "簾_友翔_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "羽田_野吏功_大分商_大分県",
-      "矢野_遥己_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "大海_香桜_大分商_大分県",
-      "姫嶋_心優_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "松尾_咲和_大分商_大分県",
-      "羽田野_結梨_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "松本_琉世_大分商_大分県",
-      "森迫_翔_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "小野_泰輝_大分商_大分県",
-      "小野_弘太郎_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "小橋_愛菜_大分商_大分県",
-      "内藤_彩音_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "岡本_みひろ_大分商_大分県",
-      "藤塚_らら_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "小野_友梨香_大分商_大分県",
-      "衛藤_こころ_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "小野_泰輝_大分商_大分県",
-      "加藤_蒼唯_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "紀野_文汰_大分商_大分県",
-      "小野_弘太郎_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "後藤_稔哉_大分商_大分県",
-      "北野_颯己_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "衞藤_結生_大分商_大分県",
-      "簾_友翔_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "小野_泰輝_大分商_大分県",
-      "加藤_蒼唯_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "後藤_悠紀_大分商_大分県",
-      "紀野_駿之佑_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "坂口_竣亮_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "坂口_竣亮_大分_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "紀野_文汰_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "衞藤_結生_大分商_大分県"
+      "樽村_妹穏_明豊高校_高体連",
+      "竹松_美紀_明豊高校_高体連"
     ]
   },
   {
@@ -971,6 +537,561 @@
     ]
   },
   {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "西田_海晴_明豊_大分県",
+      "宮﨑_那々_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "岩倉_好美_明豊_九州・大分県",
+      "吉良_璃音_明豊_九州・大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "加藤_美雲_明豊中学校_大分県",
+      "柳原_瑚々_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "佐藤_凜華_明豊中学校_大分県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_珠暖_明豊中学校_大分県",
+      "鹿野_叶恵_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "泉_妃夏_明豊中学校_大分県",
+      "辻本_舞姫_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "松原_萌菜_明豊中学校_九州・大分県",
+      "古川_夢望_明豊中学校_九州・大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "松原_萌菜_明豊中学校_大分県",
+      "柳原_瑚々_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "渡邉_恵衣_明豊中学校_大分県",
+      "原_瑠実花_大神中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "佐藤_凜華_明豊中学校_大分県",
+      "加藤_美雲_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "加藤_美雲_明豊_大分県",
+      "隈井_光梨_PUERICLUB_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "泉_夏妃_明豊_大分県",
+      "辻本_舞姫_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_珠暖_明豊_大分県",
+      "鹿野_叶恵_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "鹿野_叶恵_明豊中学校_大分",
+      "古川_夢望_明豊中学校_大分"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "準優勝",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "吉田_唯杏_西郷第一中学校_福島県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "中津東",
+    "teamId": "nakatsuhigashi",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "佐知_直翔_中津東_大分県",
+      "石元_遥馬_中津東_大分県"
+    ]
+  },
+  {
+    "team": "中津東",
+    "teamId": "nakatsuhigashi",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "稲生_拓斗_中津東_大分県",
+      "藤原_涼太郎_中津東_大分県"
+    ]
+  },
+  {
+    "team": "中津東",
+    "teamId": "nakatsuhigashi",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "矢野_楓太_中津東_大分県",
+      "川底_倖弥_中津東_大分県"
+    ]
+  },
+  {
+    "team": "中津東",
+    "teamId": "nakatsuhigashi",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "佐知_直翔_中津東_大分県",
+      "松岡_亮佑_中津東_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "河野_汐苑_大分_大分県",
+      "長野_虎之介_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "木下_了太_大分_大分県",
+      "穴見_陸_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "岡本_央睦_大分_大分県",
+      "一法_師優吾_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "安部_陸斗_大分_大分県",
+      "樋口_晴喜_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "坂口_竣亮_大分_大分県",
+      "青野_良真_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "穴見_舜_大分_大分県",
+      "山田_卓弥_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "河野_暖斗_大分_大分県",
+      "石本_瑠偉_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "成松_愛果_大分_大分県",
+      "神品_紗智_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "坂口_竣亮_大分_大分県",
+      "青野_良真_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "河野_翔空_大分_大分県",
+      "中橋_蓮_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "池永_陵_大分_大分県",
+      "山田_卓弥_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "中野_大翔_大分_大分県",
+      "宇都宮_大知_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "河野_翔空_大分_大分県",
+      "宇都宮_大知_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "安部_陸斗_大分_大分県",
+      "樋口_晴喜_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "岡本_央睦_大分_大分県",
+      "藤平_優希_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "河野_暖斗_大分_大分",
+      "石本_瑠偉_大分_大分"
+    ]
+  },
+  {
+    "team": "大分舞鶴",
+    "teamId": "ooitamaizuru",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "清水_慎之亮_大分舞鶴_大分県",
+      "佐藤_寛人_大分舞鶴_大分県"
+    ]
+  },
+  {
+    "team": "大分舞鶴",
+    "teamId": "ooitamaizuru",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "三宮_周_大分舞鶴_大分県",
+      "藤澤_知彌_大分舞鶴_大分県"
+    ]
+  },
+  {
     "team": "大分商",
     "teamId": "ooitashou",
     "prefecture": "大分県",
@@ -1023,11 +1144,206 @@
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "羽田_野吏功_大分商_大分県",
+      "矢野_遥己_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "大海_香桜_大分商_大分県",
+      "姫嶋_心優_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "松尾_咲和_大分商_大分県",
+      "羽田野_結梨_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "松本_琉世_大分商_大分県",
+      "森迫_翔_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県",
+      "内藤_彩音_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "岡本_みひろ_大分商_大分県",
+      "藤塚_らら_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "小野_友梨香_大分商_大分県",
+      "衛藤_こころ_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "加藤_蒼唯_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "紀野_文汰_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
     "playerIds": [
       "小橋_愛菜_大分商_大分県",
       "内藤_彩音_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "後藤_稔哉_大分商_大分県",
+      "北野_颯己_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "衞藤_結生_大分商_大分県",
+      "簾_友翔_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "加藤_蒼唯_大分商_大分県"
     ]
   },
   {
@@ -1076,128 +1392,18 @@
     ]
   },
   {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls"
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls"
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls"
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls"
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys"
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys"
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys"
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys"
-  },
-  {
     "team": "大分商",
     "teamId": "ooitashou",
     "prefecture": "大分県",
     "prefectureId": "oita",
     "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys"
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
     "playerIds": [
-      "西田_海晴_明豊_大分県",
-      "宮﨑_那々_明豊_大分県"
+      "後藤_悠紀_大分商_大分県",
+      "紀野_駿之佑_大分商_大分県"
     ]
   },
   {
@@ -1223,11 +1429,41 @@
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "小野_泰輝_大分商_大分",
+      "小野_弘太郎_大分商_大分"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
     "playerIds": [
       "小橋_愛菜_大分商_大分県",
       "内藤_彩音_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "紀野_文汰_大分商_大分",
+      "小野_弘太郎_大分商_大分"
     ]
   },
   {
@@ -1246,743 +1482,32 @@
     ]
   },
   {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "西田_海晴_明豊_大分県"
-    ]
-  },
-  {
     "team": "大分商",
     "teamId": "ooitashou",
     "prefecture": "大分県",
     "prefectureId": "oita",
     "result": "2回戦敗退",
-    "category": "singles",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "girls",
+    "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "松尾_咲和_大分商_大分県"
+      "衞藤_結生_大分商_大分県",
+      "簾_友翔_大分商_大分県"
     ]
   },
   {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "小橋_愛菜_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
+    "team": "明豊",
+    "teamId": "meihou",
     "prefecture": "大分県",
     "prefectureId": "oita",
     "result": "2回戦敗退",
     "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "小橋_愛菜_大分商_大分県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls"
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls"
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
     "playerIds": [
-      "才川_心愛_鹿児島実_鹿児島県",
-      "須ケ牟田_友菜_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "河野_暖斗_鹿児島実_鹿児島",
-      "猪鹿野_奏_鹿児島実_鹿児島"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "門松_虹_鹿児島実_鹿児島県",
-      "須ケ牟田_友菜_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "松元_蓮_鹿児島実_鹿児島",
-      "堀之内_颯汰_鹿児島実_鹿児島"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "赤塚_弘樹_鹿児島実_鹿児島県",
-      "原口_陽向_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "門松_輝_鹿児島実_鹿児島県",
-      "池上_凛海_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "別府_真恋_鹿児島実_鹿児島県",
-      "荒田_姫來_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "荒井田_空愛_鹿児島実",
-      "須ケ牟田_友菜_鹿児島実_鹿児島"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "大田_璃乃_鹿児島実_鹿児島",
-      "大田_瑠乃_鹿児島実_鹿児島"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "生田_紘華_鹿児島実_鹿児島",
-      "竹内_葵凛_鹿児島実_鹿児島"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "才川_心愛_鹿児島実_鹿児島",
-      "田邊_柚樹_鹿児島実_鹿児島"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "河内迫_天翔_鹿児島実_鹿児島県",
-      "隈元_琉孔_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "河野_晃大_鹿児島実_鹿児島県",
-      "猪鹿野_奏_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "肝付_翔星_鹿児島実_鹿児島県",
-      "小幡_陸人_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "堀之内_敢逞_鹿児島実_鹿児島県",
-      "森_義翔_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "遠矢_夢乃_鹿児島実_鹿児島県",
-      "上玉利_綺羅_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "田_空愛_鹿児島実_鹿児島県",
-      "肝付_瑛凜_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "大田_璃乃_鹿児島実_鹿児島県",
-      "田邊_柚樹_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "門松_虹_鹿児島実_鹿児島県",
-      "須ケ牟田_友菜_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "池水_充希_鹿児島実_鹿児島県",
-      "福_陽翔_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "山本_真太朗_鹿児島実_鹿児島県",
-      "乗越_馨大_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "河野_晃大_鹿児島実_鹿児島県",
-      "猪鹿野_奏_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "松元_蓮_鹿児島実_鹿児島県",
-      "堀之内_颯汰_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "大山_彩音_鹿児島実_鹿児島県",
-      "鮫島_彩弥子_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "別府_真恋_鹿児島実_鹿児島県",
-      "荒田_姫來_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "門松_輝_鹿児島実_鹿児島県",
-      "遠矢_夢乃_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "柿山_莉子_鹿児島実_鹿児島県",
-      "淺井_玲杏_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "松元_蓮_鹿児島実_鹿児島県",
-      "嘉野_智仁_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "赤塚_弘樹_鹿児島実_鹿児島県",
-      "原口_陽向_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "満留_璃菜_鹿児島実_鹿児島県",
-      "上村_希生_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "河野_晃大_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "荒田_空愛_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "河野_晃大_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "荒田_空愛_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "大分",
-    "teamId": "ooita",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "別府_真恋_鹿児島実_鹿児島県"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "樽村_妹穏_明豊高校_大分",
-      "宮﨑_那々_明豊高校_大分"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "小林_司_明豊高校_大分",
-      "片山_伊織_明豊高校_大分"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "西田_海晴_明豊高校_大分",
-      "中嶋_心暖_明豊高校_大分"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "樽村_妹穏_明豊高校_高体連",
-      "竹松_美紀_明豊高校_高体連"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "secondaryschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "岩倉_好美_明豊_九州・大分県",
-      "吉良_璃音_明豊_九州・大分県"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-secondaryschool-versus",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "加藤_美雲_明豊_大分県",
-      "隈井_光梨_PUERICLUB_大分県"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-secondaryschool-versus",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "泉_夏妃_明豊_大分県",
-      "辻本_舞姫_明豊_大分県"
-    ]
-  },
-  {
-    "team": "明豊",
-    "teamId": "meihou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-secondaryschool-versus",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "中嶋_珠暖_明豊_大分県",
-      "鹿野_叶恵_明豊_大分県"
+      "古川_夢望_明豊中学校_大分"
     ]
   },
   {
@@ -2076,6 +1601,48 @@
     "prefectureId": "oita",
     "result": "2回戦敗退",
     "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "加藤_美雲_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "西田_海晴_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "泉_妃夏_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "singles",
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "girls",
@@ -2098,31 +1665,73 @@
     ]
   },
   {
-    "team": "大分商",
-    "teamId": "ooitashou",
+    "team": "明豊",
+    "teamId": "meihou",
     "prefecture": "大分県",
     "prefectureId": "oita",
-    "result": "1回戦敗退",
+    "result": "ベスト8",
     "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2022,
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
     "gender": "girls",
     "playerIds": [
-      "廣末_梨桜_大分商業_大分県"
+      "鹿野_叶恵_明豊中学校_大分"
     ]
   },
   {
-    "team": "大分商",
-    "teamId": "ooitashou",
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "古川_夢望_明豊中学校_大分"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "古川_夢望_明豊中学校_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "坂口_竣亮_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
     "prefecture": "大分県",
     "prefectureId": "oita",
     "result": "1回戦敗退",
     "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2022,
-    "gender": "girls",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
     "playerIds": [
-      "三村_唯_大分商業_大分県"
+      "坂口_竣亮_大分_大分県"
     ]
   },
   {
@@ -2132,11 +1741,39 @@
     "prefectureId": "oita",
     "result": "2回戦敗退",
     "category": "singles",
-    "tournamentId": "zennihon-singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
     "playerIds": [
-      "田髙_寧々_大分商業高校_大分"
+      "松尾_咲和_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "紀野_文汰_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県"
     ]
   },
   {
@@ -2146,11 +1783,11 @@
     "prefectureId": "oita",
     "result": "3回戦敗退",
     "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
     "playerIds": [
-      "松尾_咲和_大分商業高校_大分"
+      "衞藤_結生_大分商_大分県"
     ]
   },
   {
@@ -2160,25 +1797,11 @@
     "prefectureId": "oita",
     "result": "2回戦敗退",
     "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "羽田野_結梨_大分商業高校_大分"
-    ]
-  },
-  {
-    "team": "大分商",
-    "teamId": "ooitashou",
-    "prefecture": "大分県",
-    "prefectureId": "oita",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
     "playerIds": [
-      "廣末_梨桜_大分商業高校_大分県"
+      "小橋_愛菜_大分商_大分県"
     ]
   }
 ]

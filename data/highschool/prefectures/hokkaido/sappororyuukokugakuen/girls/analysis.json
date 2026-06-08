@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 23,
   "byCategory": {
-    "doubles": 7,
-    "singles": 5
+    "doubles": 11,
+    "singles": 12
   },
   "resultsByCategory": {
     "singles": {
@@ -11,13 +11,13 @@
         "teamId": "sappororyuukokugakuen",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "栗原_心_札幌龍谷学園_北海道"
+          "三田_智咲_札幌龍谷学園高校_北海道"
         ]
       },
       "historicalBest": {
@@ -25,13 +25,13 @@
         "teamId": "sappororyuukokugakuen",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "栗原_心_札幌龍谷学園_北海道"
+          "三田_智咲_札幌龍谷学園高校_北海道"
         ]
       }
     },
@@ -72,8 +72,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 22,
   "topPlayers": [
+    {
+      "id": "渡辺_玲花_札幌龍谷学園高校_北海道",
+      "appearances": 4
+    },
     {
       "id": "堀内_絢香_札幌龍谷学園_北海道",
       "appearances": 4
@@ -83,15 +87,11 @@
       "appearances": 3
     },
     {
+      "id": "堀内_絢香_札幌龍谷学園高校_北海道",
+      "appearances": 2
+    },
+    {
       "id": "石垣_陽菜_札幌龍谷学園_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "藤岡_七星_札幌龍谷学園_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "上田_あづ_札幌龍谷学園_北海道",
       "appearances": 2
     }
   ]

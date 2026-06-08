@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 2
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -14,14 +14,14 @@
         "teamId": "niigatanishi",
         "prefecture": "新潟県",
         "prefectureId": "niigata",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "長谷川_莉実_新潟西_新潟県",
-          "田邉_聖花_新潟西_新潟県"
+          "阿部_あかね_新潟西高校_新潟",
+          "風間_碧_新潟西高校_新潟"
         ]
       },
       "historicalBest": {
@@ -29,14 +29,14 @@
         "teamId": "niigatanishi",
         "prefecture": "新潟県",
         "prefectureId": "niigata",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "長谷川_莉実_新潟西_新潟県",
-          "田邉_聖花_新潟西_新潟県"
+          "阿部_あかね_新潟西高校_新潟",
+          "風間_碧_新潟西高校_新潟"
         ]
       }
     },
@@ -45,22 +45,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 10,
   "topPlayers": [
     {
-      "id": "長谷川_莉実_新潟西_新潟県",
+      "id": "山岸_里緒_新潟西高校_新潟",
       "appearances": 1
     },
     {
-      "id": "田邉_聖花_新潟西_新潟県",
+      "id": "岡元_優花_長岡商業高校_新潟",
       "appearances": 1
     },
     {
-      "id": "本間_つぐみ_新潟西_新潟県",
+      "id": "阿部_あかね_新潟西高校_新潟",
       "appearances": 1
     },
     {
-      "id": "平野_紗依_新潟西_新潟県",
+      "id": "風間_碧_新潟西高校_新潟",
+      "appearances": 1
+    },
+    {
+      "id": "宇佐美_絢音_新潟西高校_新潟",
       "appearances": 1
     }
   ]

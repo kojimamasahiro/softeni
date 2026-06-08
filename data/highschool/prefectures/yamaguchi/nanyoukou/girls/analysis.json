@@ -1,26 +1,12 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 3,
-    "singles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": {
-        "team": "南陽工",
-        "teamId": "nanyoukou",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2022,
-        "gender": "girls",
-        "playerIds": [
-          "高井_七海_南陽工業高校_山口県"
-        ]
-      }
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": null,
@@ -45,7 +31,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "高井_七海_南陽工_山口県",
@@ -61,10 +47,6 @@
     },
     {
       "id": "山本_梨湖_南陽工_山口県",
-      "appearances": 1
-    },
-    {
-      "id": "山本_梨湖_南陽工業高校_山口県",
       "appearances": 1
     }
   ]

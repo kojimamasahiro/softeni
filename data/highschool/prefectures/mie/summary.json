@@ -1,5 +1,137 @@
 [
   {
+    "team": "近畿大高専",
+    "teamId": "kinkidaikousen",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
     "team": "伊勢工",
     "teamId": "isekou",
     "prefecture": "三重県",
@@ -12,6 +144,21 @@
     "playerIds": [
       "北村_優_伊勢工_三重県",
       "大西_冬真_伊勢工_三重県"
+    ]
+  },
+  {
+    "team": "木本",
+    "teamId": "kimoto",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "大威_寧々_木本_三重県",
+      "奥村_萌杏_木本_三重県"
     ]
   },
   {
@@ -90,18 +237,18 @@
     ]
   },
   {
-    "team": "三重",
-    "teamId": "mie",
+    "team": "松阪",
+    "teamId": "matsusaka",
     "prefecture": "三重県",
     "prefectureId": "mie",
-    "result": "ベスト8",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
     "playerIds": [
-      "南_龍之介_三重_三重",
-      "竹内_慶悟_三重_三重"
+      "西岡_泉帆_松阪_三重県",
+      "園田_ひなた_松阪_三重県"
     ]
   },
   {
@@ -109,14 +256,89 @@
     "teamId": "mie",
     "prefecture": "三重県",
     "prefectureId": "mie",
-    "result": "ベスト4",
+    "result": "予選敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
+    "tournamentId": "asian-championship-qualifier",
+    "year": 2025,
     "gender": "boys",
     "playerIds": [
-      "南_龍之介_三重_三重",
-      "竹内_慶悟_三重_三重"
+      "竹内_慶悟_三重高校_三重",
+      "南_龍之介_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "大橋_玲雨_三重高校_三重",
+      "岡_美志_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "松岡_琴美_三重高校_高体連",
+      "竹田_茉由_三重高校_高体連"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "青木_吟斗_三重高校_三重",
+      "吉村_拓海_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "伊藤_凜_三重高校_三重",
+      "出口_翔太_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "高林_さくら_三重高校_三重",
+      "起田_亜旺_三重高校_三重"
     ]
   },
   {
@@ -126,12 +348,297 @@
     "prefectureId": "mie",
     "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "浅井_優里_脇町高校_日本連盟",
+      "松田_悠那_三重高校_日本連盟"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "池上_陽介_ヨシザワ_三重",
+      "竹内_慶悟_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "田上_深央里_三重高校_三重",
+      "浦野_はづき_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大橋_玲雨_三重高校_日本連盟",
+      "向山_せら_日本体育大学_日本連盟"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "竹内_慶悟_三重高校_高体連",
+      "南龍_之介_三重高校_高体連"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "大橋_玲雨_三重高校_高体連",
+      "岡_美志_三重高校_高体連"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "田上_深央里_三重高校_三重",
+      "早川_瑚乃_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "boys",
     "playerIds": [
-      "若林_宝来_三重_三重県",
-      "中内_謙秀_三重_三重県"
+      "南_龍之介_三重高校_高体連",
+      "竹内_慶悟_三重高校_高体連"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "伊藤_凜_三重高校_三重",
+      "板舛_慶大_三重高校_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "青木_吟斗_三重高校_高体連",
+      "吉村_拓海_三重高校_高体連"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "若林_宝来_三重高校_高体連",
+      "中内_謙秀_三重高校_高体連"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-senbatsu",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "大野_柚芽_三重高校",
+      "野中_稟栞_三重高校"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "伊藤_みやび_三重_三重県",
+      "北村_有実加_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "黒田_玲那_三重_三重県",
+      "澤井_萌々子_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "林_美桜_三重_三重県",
+      "青木_裕希_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "内田_真愛_三重_三重県",
+      "今村_香紅那_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "馬渕_詩_三重_三重県",
+      "竹田_茉由_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "河合_晃羽_三重_三重県",
+      "原_奈々美_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "大_玲雨_三重_三重県",
+      "岡_美志_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "松岡_琴美_三重_三重県",
+      "廣瀬_鈴_三重_三重県"
     ]
   },
   {
@@ -634,391 +1141,6 @@
     "teamId": "mie",
     "prefecture": "三重県",
     "prefectureId": "mie",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "青木_吟斗_三重_三重県",
-      "吉村_拓海_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "岸本_和真_三重_三重県",
-      "吉澤_孝記_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "中川_翔喜_三重_三重県",
-      "盛岡_昂生_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "伊藤_凜_三重_三重県",
-      "板舛_慶大_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "若林_宝来_三重_三重県",
-      "中内_謙秀_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "南_龍之介_三重_三重県",
-      "竹内_慶悟_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "青木_吟斗_三重_三重県",
-      "板舛_慶大_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "松本_椿_三重_三重県",
-      "前川_瞬希_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "小野田_慎_三重_三重県",
-      "諸喜田_孝太郎_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "清水_唯冬_三重_三重県",
-      "朝倉_嵩貴_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "仲川_晴智_三重_三重県",
-      "近藤_拓空_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "竹内_慶悟_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト4",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "南_龍之介_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "南_龍之介_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "盛岡_昂生_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "森_煌大_三重_三重県"
-    ]
-  },
-  {
-    "team": "木本",
-    "teamId": "kimoto",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "大威_寧々_木本_三重県",
-      "奥村_萌杏_木本_三重県"
-    ]
-  },
-  {
-    "team": "松阪",
-    "teamId": "matsusaka",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "西岡_泉帆_松阪_三重県",
-      "園田_ひなた_松阪_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "伊藤_みやび_三重_三重県",
-      "北村_有実加_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "黒田_玲那_三重_三重県",
-      "澤井_萌々子_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "林_美桜_三重_三重県",
-      "青木_裕希_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "内田_真愛_三重_三重県",
-      "今村_香紅那_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "優勝",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "馬渕_詩_三重_三重県",
-      "竹田_茉由_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "河合_晃羽_三重_三重県",
-      "原_奈々美_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "大_玲雨_三重_三重県",
-      "岡_美志_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "松岡_琴美_三重_三重県",
-      "廣瀬_鈴_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1117,6 +1239,96 @@
     "playerIds": [
       "穐吉_花菜実_三重_三重県",
       "浦野_はづき_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "青木_吟斗_三重_三重県",
+      "吉村_拓海_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "岸本_和真_三重_三重県",
+      "吉澤_孝記_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "中川_翔喜_三重_三重県",
+      "盛岡_昂生_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "伊藤_凜_三重_三重県",
+      "板舛_慶大_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "若林_宝来_三重_三重県",
+      "中内_謙秀_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "南_龍之介_三重_三重県",
+      "竹内_慶悟_三重_三重県"
     ]
   },
   {
@@ -1225,59 +1437,49 @@
     ]
   },
   {
-    "team": "近畿大高専",
-    "teamId": "kinkidaikousen",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "準優勝",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys"
-  },
-  {
     "team": "三重",
     "teamId": "mie",
     "prefecture": "三重県",
     "prefectureId": "mie",
     "result": "2回戦敗退",
-    "category": "team",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls"
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "青木_吟斗_三重_三重県",
+      "板舛_慶大_三重_三重県"
+    ]
   },
   {
     "team": "三重",
     "teamId": "mie",
     "prefecture": "三重県",
     "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "team",
+    "result": "4回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys"
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "松本_椿_三重_三重県",
+      "前川_瞬希_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "小野田_慎_三重_三重県",
+      "諸喜田_孝太郎_三重_三重県"
+    ]
   },
   {
     "team": "三重",
@@ -1285,10 +1487,14 @@
     "prefecture": "三重県",
     "prefectureId": "mie",
     "result": "3回戦敗退",
-    "category": "team",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls"
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "清水_唯冬_三重_三重県",
+      "朝倉_嵩貴_三重_三重県"
+    ]
   },
   {
     "team": "三重",
@@ -1296,43 +1502,14 @@
     "prefecture": "三重県",
     "prefectureId": "mie",
     "result": "優勝",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト4",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "準優勝",
-    "category": "team",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
-    "gender": "girls"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys"
+    "gender": "boys",
+    "playerIds": [
+      "仲川_晴智_三重_三重県",
+      "近藤_拓空_三重_三重県"
+    ]
   },
   {
     "team": "三重",
@@ -1347,6 +1524,21 @@
     "playerIds": [
       "田上_深央里_三重_三重県",
       "浦野_はづき_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "南_龍之介_三重_三重",
+      "竹内_慶悟_三重_三重"
     ]
   },
   {
@@ -1369,6 +1561,21 @@
     "teamId": "mie",
     "prefecture": "三重県",
     "prefectureId": "mie",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "南_龍之介_三重_三重",
+      "竹内_慶悟_三重_三重"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
     "result": "ベスト8",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1384,976 +1591,14 @@
     "teamId": "mie",
     "prefecture": "三重県",
     "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "堀口_路葵_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "林_美桜_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "大槁_玲雨_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "林_美桜_三重_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "野口_舞夏_昌平_埼玉県",
-      "徳永_円結_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "髙杉_萌那_星野_埼玉県",
-      "森_菜々花_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "久保_響生_昌平_埼玉",
-      "山端_里玖_昌平_埼玉"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "川崎_愛実_昌平_埼玉県",
-      "丸山_結子_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "南_龍之介_昌平_三重",
-      "北島_光琉_昌平_埼玉"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "野口_愛梨_星野_埼玉県",
-      "立木_こころ_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "野口_愛梨_昌平_埼玉県",
-      "加藤_心愛_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
     "gender": "boys",
     "playerIds": [
-      "池田_功佑_昌平_埼玉県",
-      "林_凌平_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "佐藤_美空_星野_埼玉県",
-      "赤田_桃果_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "後藤_舞月_昌平_埼玉県",
-      "大原_杏菜_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "川崎_愛実_昌平_埼玉県",
-      "丸山_結子_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "折原_真妃_昌平_埼玉県",
-      "福原_萌生_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "髙杉_萌那_星野_埼玉県",
-      "森_菜々花_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "野口_舞夏_昌平_埼玉県",
-      "佐藤_心花_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "猪野_ちひろ_星野_埼玉県",
-      "中島_琉花_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "野口_花梨_星野_埼玉県",
-      "石田_真子_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "川崎_愛実_昌平_埼玉県",
-      "丸山_結子_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "野口_花梨_星野_埼玉県",
-      "石田_真子_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "髙杉_萌那_星野_埼玉県",
-      "森_菜々花_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "猪野_ちひろ_星野_埼玉県",
-      "中島_琉花_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "熊木_暖人_昌平_埼玉県",
-      "吉野_碧_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "萩原_陽介_昌平_埼玉県",
-      "瀬戸_湊_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "野口_美怜_昌平_埼玉県",
-      "加藤_心愛_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "佐藤_花音_星野_埼玉県",
-      "塚越_海羽_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "髙杉_萌那_星野_埼玉県",
-      "森_菜々花_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "野口_愛梨_星野_埼玉県",
-      "立木_こころ_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "川崎_愛実_昌平_埼玉県",
-      "丸山_結子_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "熊木_暖人_昌平_埼玉県",
-      "吉野_碧_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "後藤_舞月_昌平_埼玉県",
-      "大原_杏菜_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "中山_結愛_昌平_埼玉県",
-      "横塚_海佑_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "佐藤_あいり_星野_埼玉県",
-      "立木_こころ_星野_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "秋庭_優羽_昌平_埼玉県",
-      "原田_滉太_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "久住_颯希_昌平_埼玉県",
-      "中茎_虎之介_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "岩元_駿太_昌平_埼玉県",
-      "関_公亮_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "木村_晋太朗_昌平_埼玉県",
-      "伊藤_成那_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "熊木_暖人_昌平_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "boys"
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "asian-championship-qualifier",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "竹内_慶悟_三重高校_三重",
-      "南_龍之介_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "大橋_玲雨_三重高校_三重",
-      "岡_美志_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "松岡_琴美_三重高校_高体連",
-      "竹田_茉由_三重高校_高体連"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "青木_吟斗_三重高校_三重",
-      "吉村_拓海_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "伊藤_凜_三重高校_三重",
-      "出口_翔太_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "高林_さくら_三重高校_三重",
-      "起田_亜旺_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "浅井_優里_脇町高校_日本連盟",
-      "松田_悠那_三重高校_日本連盟"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "池上_陽介_ヨシザワ_三重",
-      "竹内_慶悟_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "田上_深央里_三重高校_三重",
-      "浦野_はづき_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "大橋_玲雨_三重高校_日本連盟",
-      "向山_せら_日本体育大学_日本連盟"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "竹内_慶悟_三重高校_高体連",
-      "南龍_之介_三重高校_高体連"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "大橋_玲雨_三重高校_高体連",
-      "岡_美志_三重高校_高体連"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "田上_深央里_三重高校_三重",
-      "早川_瑚乃_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "南_龍之介_三重高校_高体連",
-      "竹内_慶悟_三重高校_高体連"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "伊藤_凜_三重高校_三重",
-      "板舛_慶大_三重高校_三重"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "青木_吟斗_三重高校_高体連",
-      "吉村_拓海_三重高校_高体連"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "若林_宝来_三重高校_高体連",
-      "中内_謙秀_三重高校_高体連"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2025,
-    "gender": "mixed",
-    "playerIds": [
-      "高橋_彩耶_上尾ＩＭＵＡ",
-      "髙橋_和希_AGEOCLUB"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2025,
-    "gender": "mixed",
-    "playerIds": [
-      "牛﨑_百花_上尾ＩＭＵＡ",
-      "松本_直也_AGEOCLUB"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2025,
-    "gender": "mixed",
-    "playerIds": [
-      "川村_仁美_上尾ＩＭＵＡ",
-      "田﨑_莉玖斗_AGEOCLUB"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2026,
-    "gender": "mixed",
-    "playerIds": [
-      "髙橋_和希_AGEOCLUB_埼玉県",
-      "鈴木_綾華_上尾ＩＭＵＡ_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2026,
-    "gender": "mixed",
-    "playerIds": [
-      "日下部_陽_上尾ＩＭＵＡ_埼玉県",
-      "澤口_将洋_AGEOCLUB_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2026,
-    "gender": "mixed",
-    "playerIds": [
-      "川村_仁美_上尾ＩＭＵＡ_埼玉県",
-      "田﨑_莉玖斗_AGEOCLUB_埼玉県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-senbatsu",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": [
-      "大野_柚芽_三重高校",
-      "野中_稟栞_三重高校"
+      "若林_宝来_三重_三重県",
+      "中内_謙秀_三重_三重県"
     ]
   },
   {
@@ -2474,21 +1719,6 @@
     "playerIds": [
       "南_龍之介_三重高校_三重県",
       "竹内_慶悟_三重高校_三重県"
-    ]
-  },
-  {
-    "team": "三重",
-    "teamId": "mie",
-    "prefecture": "三重県",
-    "prefectureId": "mie",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-senior",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "牛﨑_明美_上尾ＩＭＵＡ_埼玉",
-      "上路_典子_Ｍａｒｓ_京都"
     ]
   },
   {
@@ -3105,6 +2335,132 @@
     "gender": "girls",
     "playerIds": [
       "鈴木_綾華_三重高校_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "竹内_慶悟_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "南_龍之介_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "堀口_路葵_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "南_龍之介_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "盛岡_昂生_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "林_美桜_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "大槁_玲雨_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "森_煌大_三重_三重県"
+    ]
+  },
+  {
+    "team": "三重",
+    "teamId": "mie",
+    "prefecture": "三重県",
+    "prefectureId": "mie",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "林_美桜_三重_三重県"
     ]
   },
   {

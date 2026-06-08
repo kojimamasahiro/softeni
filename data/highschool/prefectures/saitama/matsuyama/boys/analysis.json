@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 22,
   "byCategory": {
-    "doubles": 21,
-    "singles": 3,
-    "team": 1
+    "team": 2,
+    "doubles": 15,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -42,14 +42,14 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "secondaryschool-championship",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "渡辺_幸誠_松山_埼玉県",
-          "木田_大翔_松山_埼玉県"
+          "杉_碧翔_松山中学校_関東・埼玉県",
+          "利根川_碧生_松山中学校_関東・埼玉県"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "secondaryschool-championship",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "渡辺_幸誠_松山_埼玉県",
-          "木田_大翔_松山_埼玉県"
+          "杉_碧翔_松山中学校_関東・埼玉県",
+          "利根川_碧生_松山中学校_関東・埼玉県"
         ]
       }
     },
@@ -74,10 +74,10 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "1回戦敗退",
+        "result": "ベスト4",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "secondaryschool-championship",
+        "year": 2025,
         "gender": "boys"
       },
       "historicalBest": {
@@ -85,15 +85,15 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "1回戦敗退",
+        "result": "ベスト4",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "secondaryschool-championship",
+        "year": 2025,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 30,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
       "id": "長島_綾汰_松山_埼玉県",
@@ -112,8 +112,8 @@
       "appearances": 3
     },
     {
-      "id": "原田_蒼空_松山_埼玉県",
-      "appearances": 2
+      "id": "杉_碧翔_松山中学校_埼玉県",
+      "appearances": 3
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 131,
+  "totalAppearances": 140,
   "byCategory": {
-    "doubles": 74,
     "team": 6,
-    "singles": 51
+    "doubles": 78,
+    "singles": 56
   },
   "resultsByCategory": {
     "singles": {
@@ -14,11 +14,11 @@
         "prefectureId": "miyagi",
         "result": "優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "大和_美月_東北_宮城県"
+          "天間_麗奈_東北高校_宮城県"
         ]
       },
       "historicalBest": {
@@ -28,11 +28,11 @@
         "prefectureId": "miyagi",
         "result": "優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "大和_美月_東北_宮城県"
+          "天間_麗奈_東北高校_宮城県"
         ]
       }
     },
@@ -93,18 +93,18 @@
       }
     }
   },
-  "uniquePlayers": 117,
+  "uniquePlayers": 125,
   "topPlayers": [
+    {
+      "id": "天間_麗奈_東北高校_宮城県",
+      "appearances": 8
+    },
     {
       "id": "天間_麗奈_東北_宮城県",
       "appearances": 6
     },
     {
       "id": "大和_美月_東北_宮城県",
-      "appearances": 6
-    },
-    {
-      "id": "天間_麗奈_東北高校_宮城県",
       "appearances": 6
     },
     {

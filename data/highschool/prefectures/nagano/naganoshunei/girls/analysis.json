@@ -1,8 +1,8 @@
 {
   "totalAppearances": 7,
   "byCategory": {
-    "doubles": 5,
     "team": 1,
+    "doubles": 5,
     "singles": 1
   },
   "resultsByCategory": {
@@ -44,12 +44,12 @@
         "prefectureId": "nagano",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "加藤_憩_長野俊英_長野県",
-          "村上_凛花_長野俊英_長野県"
+          "加藤_憩_長野俊英高校_長野",
+          "村上_凛花_長野俊英高校_長野"
         ]
       },
       "historicalBest": {
@@ -94,15 +94,15 @@
       "appearances": 2
     },
     {
+      "id": "加藤_憩_長野俊英高校_長野",
+      "appearances": 1
+    },
+    {
+      "id": "村上_凛花_長野俊英高校_長野",
+      "appearances": 1
+    },
+    {
       "id": "小林_まどか_長野俊英_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "榎本_優紗_長野俊英_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "篠田_朱莉_長野俊英_長野県",
       "appearances": 1
     }
   ]

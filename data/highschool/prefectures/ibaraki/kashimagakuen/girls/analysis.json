@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,21 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "鹿島学園",
+        "teamId": "kashimagakuen",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-championship",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "貝塚_ひなた_鹿島学園高校_茨城",
+          "田向_ひなの_鹿島学園高校_茨城"
+        ]
+      },
       "historicalBest": {
         "team": "鹿島学園",
         "teamId": "kashimagakuen",
@@ -17,12 +31,12 @@
         "prefectureId": "ibaraki",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "zennihon-championship",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "中川_実咲_鹿島学園_茨城県",
-          "大﨑_千理子_鹿島学園_茨城県"
+          "貝塚_ひなた_鹿島学園高校_茨城",
+          "田向_ひなの_鹿島学園高校_茨城"
         ]
       }
     },
@@ -31,8 +45,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "貝塚_ひなた_鹿島学園高校_茨城",
+      "appearances": 2
+    },
+    {
+      "id": "田向_ひなの_鹿島学園高校_茨城",
+      "appearances": 2
+    },
     {
       "id": "中川_実咲_鹿島学園_茨城県",
       "appearances": 1

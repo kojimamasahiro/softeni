@@ -1,40 +1,13 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 9,
     "team": 2,
-    "singles": 1
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "都市大塩尻",
-        "teamId": "toshiooshioshiri",
-        "prefecture": "長野県",
-        "prefectureId": "nagano",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": [
-          "古幡_悠馬_東京都市大塩尻高校_長野県"
-        ]
-      },
-      "historicalBest": {
-        "team": "都市大塩尻",
-        "teamId": "toshiooshioshiri",
-        "prefecture": "長野県",
-        "prefectureId": "nagano",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": [
-          "古幡_悠馬_東京都市大塩尻高校_長野県"
-        ]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -83,7 +56,7 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "古幡_悠馬_都市大塩尻_長野県",
@@ -102,7 +75,7 @@
       "appearances": 2
     },
     {
-      "id": "古幡_悠馬_都市大塩尻_長野",
+      "id": "小森_悠矢_都市大塩尻_長野県",
       "appearances": 1
     }
   ]

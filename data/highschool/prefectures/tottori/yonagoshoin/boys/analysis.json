@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 47,
+  "totalAppearances": 46,
   "byCategory": {
-    "doubles": 27,
-    "singles": 15,
-    "team": 5
+    "team": 5,
+    "doubles": 26,
+    "singles": 15
   },
   "resultsByCategory": {
     "singles": {
@@ -93,19 +93,15 @@
       }
     }
   },
-  "uniquePlayers": 46,
+  "uniquePlayers": 45,
   "topPlayers": [
-    {
-      "id": "寺村_虎哲_米子松蔭_鳥取県",
-      "appearances": 4
-    },
     {
       "id": "吉川_恵大_米子松蔭_鳥取県",
       "appearances": 4
     },
     {
-      "id": "岸本_悠真_米子松蔭_鳥取県",
-      "appearances": 3
+      "id": "寺村_虎哲_米子松蔭_鳥取県",
+      "appearances": 4
     },
     {
       "id": "杉田_大樹_米子松蔭_鳥取県",
@@ -113,6 +109,10 @@
     },
     {
       "id": "米田_心_米子松蔭_鳥取県",
+      "appearances": 3
+    },
+    {
+      "id": "岸本_悠真_米子松蔭_鳥取県",
       "appearances": 3
     }
   ]

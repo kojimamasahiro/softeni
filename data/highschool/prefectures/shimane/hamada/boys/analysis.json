@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 7,
     "team": 1,
+    "doubles": 6,
     "singles": 1
   },
   "resultsByCategory": {
@@ -59,7 +59,7 @@
         "prefectureId": "shimane",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2023,
         "gender": "boys",
         "playerIds": [
@@ -83,10 +83,14 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
-      "id": "中川_優月_浜田_島根",
+      "id": "永瀬_祐大郎_浜田_島根県",
+      "appearances": 2
+    },
+    {
+      "id": "中川_優月_浜田_島根県",
       "appearances": 2
     },
     {
@@ -98,12 +102,8 @@
       "appearances": 2
     },
     {
-      "id": "永瀬_祐大郎_浜田_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "中川_優月_浜田_島根県",
-      "appearances": 2
+      "id": "中村_陸門_浜田_島根県",
+      "appearances": 1
     }
   ]
 }

@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "doubles": 3,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "延岡学園",
+        "teamId": "nobeokagakuen",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "河野_結花_延岡学園高校_宮崎"
+        ]
+      },
+      "historicalBest": {
+        "team": "延岡学園",
+        "teamId": "nobeokagakuen",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "河野_結花_延岡学園高校_宮崎"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,7 +58,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "久吉_莉央_延岡学園_宮崎県",

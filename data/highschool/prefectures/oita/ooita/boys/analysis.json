@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 35,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 28,
-    "singles": 4,
-    "team": 3
+    "team": 3,
+    "doubles": 15,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "ooita",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "河野_晃大_鹿児島実_鹿児島県"
+          "坂口_竣亮_大分_大分県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "ooita",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "河野_晃大_鹿児島実_鹿児島県"
+          "坂口_竣亮_大分_大分県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "ooita",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "5回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "松元_蓮_鹿児島実_鹿児島県",
-          "堀之内_颯汰_鹿児島実_鹿児島県"
+          "坂口_竣亮_大分_大分県",
+          "青野_良真_大分_大分県"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "ooita",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "5回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2021,
         "gender": "boys",
         "playerIds": [
-          "松元_蓮_鹿児島実_鹿児島県",
-          "堀之内_颯汰_鹿児島実_鹿児島県"
+          "安部_陸斗_大分_大分県",
+          "樋口_晴喜_大分_大分県"
         ]
       }
     },
@@ -83,14 +83,10 @@
       }
     }
   },
-  "uniquePlayers": 43,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
       "id": "坂口_竣亮_大分_大分県",
-      "appearances": 4
-    },
-    {
-      "id": "河野_晃大_鹿児島実_鹿児島県",
       "appearances": 4
     },
     {
@@ -103,6 +99,10 @@
     },
     {
       "id": "樋口_晴喜_大分_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "青野_良真_大分_大分県",
       "appearances": 2
     }
   ]

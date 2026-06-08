@@ -1,5 +1,148 @@
 [
   {
+    "team": "敬愛学園",
+    "teamId": "keiaigakuen",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "拓大紅陵",
+    "teamId": "tadkudaikouryou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
     "team": "愛学園",
     "teamId": "aigakuen",
     "prefecture": "千葉県",
@@ -42,6 +185,36 @@
     "playerIds": [
       "松本_大誠_千葉黎明_千葉県",
       "坂本_譲_千葉黎明_千葉県"
+    ]
+  },
+  {
+    "team": "千葉聖心",
+    "teamId": "chibaseishin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "福岡_紗良_千葉聖心_千葉県",
+      "山口_三結_千葉聖心_千葉県"
+    ]
+  },
+  {
+    "team": "千葉聖心",
+    "teamId": "chibaseishin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "山口_七未_千葉聖心_千葉県",
+      "西部_瑳_千葉聖心_千葉県"
     ]
   },
   {
@@ -109,14 +282,44 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
-    "result": "ベスト4",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": [
+      "小林_駿介_木更津総合高校_千葉",
+      "松村_優成_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
     "playerIds": [
-      "手塚_康介_木更津総合_千葉",
-      "竹之内_琉汰_木更津総合_千葉"
+      "手塚_康介_木更津総合高校_千葉",
+      "竹之内_琉汰_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "髙月_拓磨_ヨネックス_東京",
+      "昼間_悠佑_木更津総合高校_千葉"
     ]
   },
   {
@@ -126,12 +329,12 @@
     "prefectureId": "chiba",
     "result": "1回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
     "playerIds": [
-      "昼間_悠佑_木更津総合_千葉",
-      "竹之内_琉汰_木更津総合_千葉"
+      "松村_泰成_木更津総合高校_高体連",
+      "遠藤_海斗_木更津総合高校_高体連"
     ]
   },
   {
@@ -139,14 +342,149 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
-    "result": "ベスト8",
+    "result": "2回戦敗退",
     "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "赤沼_裕希_木更津総合高校_千葉",
+      "君塚_響_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "佐々木_美緒_木更津総合高校_千葉",
+      "長谷川_優葵_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "boys",
     "playerIds": [
-      "笹井_悠月_木更津総合_千葉県",
-      "山中_一世_木更津総合_千葉県"
+      "山中_一世_木更津総合高校_高体連",
+      "笹井_悠月_木更津総合高校_高体連"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "赤沼_裕希_木更津総合高校_千葉",
+      "中村_烈_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "國松_樹人_東北高校_高体連",
+      "笹井_悠月_木更津総合_高体連"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "原田_裕太_木更津総合高校_千葉",
+      "昼間_悠佑_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "木部_理央_木更津総合高校_千葉",
+      "平野_夏菜_木更津総合高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "布施谷_煌_木更津総合_千葉県",
+      "鈴木_櫂正_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "渡邊_惺矢_木更津総合_千葉県",
+      "下向_庵璃_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "手塚_康介_木更津総合_千葉県",
+      "竹之内_琉汰_木更津総合_千葉県"
     ]
   },
   {
@@ -454,6 +792,21 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "長谷川_優葵_木更津総合_千葉県",
+      "佐々木_美緒_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -600,6 +953,411 @@
     ]
   },
   {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "手塚_康介_木更津総合_千葉",
+      "竹之内_琉汰_木更津総合_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "昼間_悠佑_木更津総合_千葉",
+      "竹之内_琉汰_木更津総合_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "笹井_悠月_木更津総合_千葉県",
+      "山中_一世_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "手塚_康介_木更津総合高校_岡山",
+      "石灘_蒼瑛_岡山理科大付高校_千葉"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "昼間_悠佑_木更津総合高校_千葉県",
+      "平井_啓吾_上宮高校_大阪府"
+    ]
+  },
+  {
+    "team": "成田",
+    "teamId": "narita",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "林_理瑚_成田_千葉県",
+      "増田_好美_成田_千葉県"
+    ]
+  },
+  {
+    "team": "成田",
+    "teamId": "narita",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "宮本_果歩_成田_千葉県",
+      "新_優依_成田_千葉県"
+    ]
+  },
+  {
+    "team": "成田",
+    "teamId": "narita",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "波多江_光咲_成田_千葉県",
+      "増田_梨菜_成田_千葉県"
+    ]
+  },
+  {
+    "team": "成田",
+    "teamId": "narita",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "波多江_光咲_成田_千葉県",
+      "内山_心温_成田_千葉県"
+    ]
+  },
+  {
+    "team": "成田",
+    "teamId": "narita",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": [
+      "海野_葵_成田_千葉県",
+      "大森_優心_成田_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "小川_ことみ_昭和学院高校_高体連",
+      "鈴木_叶_昭和学院高校_高体連"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "藤本_朱里_昭和学院高校_千葉",
+      "多田_真也果_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "稲葉_あこ_昭和学院高校_千葉",
+      "服部_七海_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "西山_なつみ_昭和学院高校_千葉",
+      "大野_栞_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "平野_亜樹_昭和学院中学校_千葉",
+      "堂上_紗萊_昭和学院中学校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "篠_未奈美_昭和学院高校_千葉",
+      "平野_帆乃花_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "堂上_由莱_昭和学院高校_千葉",
+      "服部_七海_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "川﨑_莉奈_昭和学院高校_千葉",
+      "仲野_仁菜_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "鴨志田_綾_昭和学院高校_千葉",
+      "服部_歩美_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "平野_帆乃花_昭和学院高校_千葉",
+      "戸部_真悠香_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "服部_七海_昭和学院高校_千葉",
+      "稲葉_あこ_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "篠_未奈美_昭和学院高校_千葉",
+      "平野_帆乃花_昭和学院高校_千葉"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "稲葉_あこ_昭和学院_千葉県",
+      "服部_七海_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "藤本_朱里_昭和学院_千葉県",
+      "多田_真也果_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "西山_なつみ_昭和学院_千葉県",
+      "大野_栞_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "渡辺_莉央_昭和学院_千葉県",
+      "吉田_光希_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "小川_ことみ_昭和学院_千葉県",
+      "鈴木_叶_昭和学院_千葉県"
+    ]
+  },
+  {
     "team": "昭和学院",
     "teamId": "shouwagakuin",
     "prefecture": "千葉県",
@@ -709,303 +1467,6 @@
     "teamId": "shouwagakuin",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "山﨑_介統_昭和学院_千葉県",
-      "坂入_寿紀_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "河村_颯希_昭和学院_千葉県",
-      "大竹_公陽_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "拓大紅陵",
-    "teamId": "tadkudaikouryou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "鈴木_樹璃_拓大紅陵_千葉県",
-      "地曵_七海_拓大紅陵_千葉県"
-    ]
-  },
-  {
-    "team": "拓大紅陵",
-    "teamId": "tadkudaikouryou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": [
-      "杉山_太志_拓大紅陵_千葉県",
-      "五木田_晃一_拓大紅陵_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "手塚_康介_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "ベスト4",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "昼間_悠佑_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "準優勝",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "昼間_悠佑_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "千葉聖心",
-    "teamId": "chibaseishin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "福岡_紗良_千葉聖心_千葉県",
-      "山口_三結_千葉聖心_千葉県"
-    ]
-  },
-  {
-    "team": "千葉聖心",
-    "teamId": "chibaseishin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "山口_七未_千葉聖心_千葉県",
-      "西部_瑳_千葉聖心_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "長谷川_優葵_木更津総合_千葉県",
-      "佐々木_美緒_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "成田",
-    "teamId": "narita",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "林_理瑚_成田_千葉県",
-      "増田_好美_成田_千葉県"
-    ]
-  },
-  {
-    "team": "成田",
-    "teamId": "narita",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "宮本_果歩_成田_千葉県",
-      "新_優依_成田_千葉県"
-    ]
-  },
-  {
-    "team": "成田",
-    "teamId": "narita",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "波多江_光咲_成田_千葉県",
-      "増田_梨菜_成田_千葉県"
-    ]
-  },
-  {
-    "team": "成田",
-    "teamId": "narita",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "波多江_光咲_成田_千葉県",
-      "内山_心温_成田_千葉県"
-    ]
-  },
-  {
-    "team": "成田",
-    "teamId": "narita",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": [
-      "海野_葵_成田_千葉県",
-      "大森_優心_成田_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "稲葉_あこ_昭和学院_千葉県",
-      "服部_七海_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "藤本_朱里_昭和学院_千葉県",
-      "多田_真也果_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "西山_なつみ_昭和学院_千葉県",
-      "大野_栞_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "渡辺_莉央_昭和学院_千葉県",
-      "吉田_光希_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "6回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "小川_ことみ_昭和学院_千葉県",
-      "鈴木_叶_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1081,6 +1542,36 @@
     "teamId": "shouwagakuin",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "山﨑_介統_昭和学院_千葉県",
+      "坂入_寿紀_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "河村_颯希_昭和学院_千葉県",
+      "大竹_公陽_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1134,6 +1625,231 @@
     "playerIds": [
       "西山_なつみ_昭和学院_千葉県",
       "大野_栞_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "篠_未奈美_昭和学院_千葉県",
+      "平野_帆乃花_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "堂上_由莱_昭和学院_千葉県",
+      "平野_帆乃花_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "渡辺_莉央_昭和学院_千葉県",
+      "服部_七海_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": [
+      "篠_奈美_昭和学院_関東・千葉県",
+      "平野_帆乃花_昭和学院_関東・千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "平野_亜樹_昭和学院中学校_千葉県",
+      "堂上_紗萊_昭和学院中学校_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "平野_亜樹_昭和学院中学校_関東・千葉県",
+      "志太_那帆_昭和学院中学校_関東・千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "吉田_零_昭和学院中学校_関東・千葉県",
+      "堂上_紗萊_昭和学院中学校_関東・千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "叶屋_玲音_昭和学院中学校_関東・千葉県",
+      "坂田_侑希_昭和学院中学校_関東・千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "松尾_柚乃_昭和学院中学校_千葉県",
+      "志太_那帆_昭和学院中学校_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "堂上_紗萊_昭和学院_千葉県",
+      "平野_亜樹_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "篠英_聖_昭和学院_千葉県",
+      "牧野_叶和_昭和学院_千葉県"
+    ]
+  },
+  {
+    "team": "拓大紅陵",
+    "teamId": "tadkudaikouryou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": [
+      "鈴木_樹璃_拓大紅陵_千葉県",
+      "地曵_七海_拓大紅陵_千葉県"
+    ]
+  },
+  {
+    "team": "拓大紅陵",
+    "teamId": "tadkudaikouryou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": [
+      "杉山_太志_拓大紅陵_千葉県",
+      "五木田_晃一_拓大紅陵_千葉県"
+    ]
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "宮本_愛梨_植草学園大附高校_千葉",
+      "高山_莉瑳_植草学園大附高校_千葉"
+    ]
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "宮本_愛梨_植草学園大附高校_高体連",
+      "相原_愛_植草学園大附高校_高体連"
     ]
   },
   {
@@ -1287,161 +2003,6 @@
     ]
   },
   {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "boys"
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys"
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "ベスト4",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys"
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys"
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "ベスト8",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "boys"
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls"
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls"
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "girls"
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls"
-  },
-  {
-    "team": "拓大紅陵",
-    "teamId": "tadkudaikouryou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "篠_未奈美_昭和学院_千葉県",
-      "平野_帆乃花_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "堂上_由莱_昭和学院_千葉県",
-      "平野_帆乃花_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "渡辺_莉央_昭和学院_千葉県",
-      "服部_七海_昭和学院_千葉県"
-    ]
-  },
-  {
     "team": "柏中央",
     "teamId": "kashiwachuuou",
     "prefecture": "千葉県",
@@ -1456,589 +2017,17 @@
     ]
   },
   {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "宮本_愛梨_植草学園大附_千葉県"
-    ]
-  },
-  {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "宮本_愛梨_植草学園大附_千葉県"
-    ]
-  },
-  {
     "team": "敬愛学園",
     "teamId": "keiaigakuen",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "boys"
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
     "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "boys"
-  },
-  {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": [
-      "小林_駿介_木更津総合高校_千葉",
-      "松村_優成_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "手塚_康介_木更津総合高校_千葉",
-      "竹之内_琉汰_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "髙月_拓磨_ヨネックス_東京",
-      "昼間_悠佑_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "松村_泰成_木更津総合高校_高体連",
-      "遠藤_海斗_木更津総合高校_高体連"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "赤沼_裕希_木更津総合高校_千葉",
-      "君塚_響_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "佐々木_美緒_木更津総合高校_千葉",
-      "長谷川_優葵_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
     "playerIds": [
-      "山中_一世_木更津総合高校_高体連",
-      "笹井_悠月_木更津総合高校_高体連"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "赤沼_裕希_木更津総合高校_千葉",
-      "中村_烈_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "國松_樹人_東北高校_高体連",
-      "笹井_悠月_木更津総合_高体連"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": [
-      "原田_裕太_木更津総合高校_千葉",
-      "昼間_悠佑_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "木部_理央_木更津総合高校_千葉",
-      "平野_夏菜_木更津総合高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "布施谷_煌_木更津総合_千葉県",
-      "鈴木_櫂正_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "渡邊_惺矢_木更津総合_千葉県",
-      "下向_庵璃_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "手塚_康介_木更津総合_千葉県",
-      "竹之内_琉汰_木更津総合_千葉県"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "舘田_陸斗_木更津総",
-      "嵯峨_悠平_木更津総"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-junior",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "手塚_康介_木更津総合高校_岡山",
-      "石灘_蒼瑛_岡山理科大付高校_千葉"
-    ]
-  },
-  {
-    "team": "木更津総合",
-    "teamId": "kisarazusougou",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-junior",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "昼間_悠佑_木更津総合高校_千葉県",
-      "平井_啓吾_上宮高校_大阪府"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "小川_ことみ_昭和学院高校_高体連",
-      "鈴木_叶_昭和学院高校_高体連"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "藤本_朱里_昭和学院高校_千葉",
-      "多田_真也果_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "稲葉_あこ_昭和学院高校_千葉",
-      "服部_七海_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "西山_なつみ_昭和学院高校_千葉",
-      "大野_栞_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "篠_未奈美_昭和学院高校_千葉",
-      "平野_帆乃花_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "堂上_由莱_昭和学院高校_千葉",
-      "服部_七海_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "川﨑_莉奈_昭和学院高校_千葉",
-      "仲野_仁菜_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "鴨志田_綾_昭和学院高校_千葉",
-      "服部_歩美_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "平野_帆乃花_昭和学院高校_千葉",
-      "戸部_真悠香_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "服部_七海_昭和学院高校_千葉",
-      "稲葉_あこ_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "篠_未奈美_昭和学院高校_千葉",
-      "平野_帆乃花_昭和学院高校_千葉"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "secondaryschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "篠_奈美_昭和学院_関東・千葉県",
-      "平野_帆乃花_昭和学院_関東・千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-secondaryschool-versus",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "堂上_紗萊_昭和学院_千葉県",
-      "平野_亜樹_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "昭和学院",
-    "teamId": "shouwagakuin",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-secondaryschool-versus",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "篠英_聖_昭和学院_千葉県",
-      "牧野_叶和_昭和学院_千葉県"
-    ]
-  },
-  {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "宮本_愛梨_植草学園大附属高_千葉",
-      "相原_愛_植草学園大附属高_千葉"
-    ]
-  },
-  {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "宮本_愛梨_植草学園大附高校_千葉",
-      "高山_莉瑳_植草学園大附高校_千葉"
-    ]
-  },
-  {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": [
-      "宮本_愛梨_植草学園大附高校_高体連",
-      "相原_愛_植草学園大附高校_高体連"
-    ]
-  },
-  {
-    "team": "植草学園大附",
-    "teamId": "uekusagakuendaifu",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "相生_美桜_植草学園大学附属高校_千葉",
-      "相﨑_里保_植草学園大学附属高校_千葉"
+      "市川_翼_敬愛学園高校_千葉県"
     ]
   },
   {
@@ -2214,6 +2203,48 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "手塚_康介_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "昼間_悠佑_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "準優勝",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": [
+      "昼間_悠佑_木更津総合_千葉県"
+    ]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "zennihon-junior",
@@ -2375,6 +2406,34 @@
     "gender": "girls",
     "playerIds": [
       "稲葉_あこ_昭和学院高校_千葉県"
+    ]
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": [
+      "宮本_愛梨_植草学園大附_千葉県"
+    ]
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": [
+      "宮本_愛梨_植草学園大附_千葉県"
     ]
   }
 ]

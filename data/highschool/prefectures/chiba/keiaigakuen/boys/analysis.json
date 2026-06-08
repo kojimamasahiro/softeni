@@ -1,13 +1,27 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
+    "team": 1,
     "doubles": 3,
-    "team": 1
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "敬愛学園",
+        "teamId": "keiaigakuen",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "市川_翼_敬愛学園高校_千葉県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,7 +80,7 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "倉持_遥_敬愛学園_千葉県",

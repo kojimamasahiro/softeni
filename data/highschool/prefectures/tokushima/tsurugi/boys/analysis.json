@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 22,
   "byCategory": {
+    "team": 5,
     "doubles": 15,
-    "singles": 3,
-    "team": 5
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -80,12 +80,8 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 20,
   "topPlayers": [
-    {
-      "id": "髙井_凌凱_つるぎ_徳島県",
-      "appearances": 4
-    },
     {
       "id": "藤中_奏和_つるぎ_徳島県",
       "appearances": 4
@@ -95,11 +91,15 @@
       "appearances": 4
     },
     {
-      "id": "吉岡_莉玖_つるぎ_徳島県",
-      "appearances": 2
+      "id": "髙井_凌凱_つるぎ_徳島県",
+      "appearances": 4
     },
     {
       "id": "天野_叶夢_つるぎ_徳島県",
+      "appearances": 2
+    },
+    {
+      "id": "矢藤_龍之介_つるぎ_徳島県",
       "appearances": 2
     }
   ]

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 61,
+  "totalAppearances": 72,
   "byCategory": {
-    "doubles": 44,
-    "team": 6,
-    "singles": 11
+    "team": 7,
+    "doubles": 50,
+    "singles": 15
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "kyoutohikarihana",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "3回戦敗退",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "西村_ひよ_京都光華高校_京都"
+          "大星_凛果_京都光華中学校_京都府"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "kyoutohikarihana",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "3回戦敗退",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "西村_ひよ_京都光華高校_京都"
+          "大星_凛果_京都光華中学校_京都府"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "kyoutohikarihana",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "準優勝",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "zennihon-secondaryschool-versus",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "原_綾那_京都光華_京都府",
-          "西村_ひよ_京都光華_京都府"
+          "細川_莉子_京都光華中学校_京都府",
+          "松山_穂乃香_京都光華中学校_京都府"
         ]
       },
       "historicalBest": {
@@ -59,12 +59,12 @@
         "prefectureId": "kyoto",
         "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "寺澤_佑珠妃_京都光華_京都府",
-          "北川_アンナ璃咲_京都光華_京都府"
+          "細川_莉子_京都光華中学校_京都府",
+          "松山_穂乃香_京都光華中学校_京都府"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 66,
+  "uniquePlayers": 78,
   "topPlayers": [
     {
       "id": "西村_ひよ_京都光華_京都府",

@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "菅原_愛未_黒沢尻北高校_岩手県"
+        ]
+      },
+      "historicalBest": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "菅原_愛未_黒沢尻北高校_岩手県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "尾形_未夢_黒沢尻北_岩手県",
@@ -53,6 +80,14 @@
     },
     {
       "id": "阿部_遥花_黒沢尻北_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "菅原_愛未_黒沢尻北高校_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_沙奈_黒沢尻北高校_岩手県",
       "appearances": 1
     }
   ]

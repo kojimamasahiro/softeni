@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 37,
+  "totalAppearances": 29,
   "byCategory": {
-    "doubles": 26,
     "team": 5,
-    "singles": 6
+    "doubles": 21,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -14,11 +14,11 @@
         "prefectureId": "aomori",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "粒來_夏帆_八戸工業大第一高校_青森"
+          "佐藤_光_八戸工大一_青森県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "hachinohekoudaiichi",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2023,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "大西_真可珀_八戸工大第一高校_青森県"
+          "佐藤_光_八戸工大一_青森県"
         ]
       }
     },
@@ -93,26 +93,26 @@
       }
     }
   },
-  "uniquePlayers": 36,
+  "uniquePlayers": 23,
   "topPlayers": [
     {
       "id": "佐藤_光_八戸工大一_青森県",
       "appearances": 6
     },
     {
-      "id": "畠山_真碧_八戸工大一_青森県",
-      "appearances": 4
-    },
-    {
       "id": "大西_真可珀_八戸工大一_青森県",
       "appearances": 4
     },
     {
-      "id": "高橋_陽奏_八戸工大一_青森県",
+      "id": "畠山_真碧_八戸工大一_青森県",
+      "appearances": 4
+    },
+    {
+      "id": "吉田_果恋_八戸工大一_青森県",
       "appearances": 3
     },
     {
-      "id": "真下_弥々_八戸工大一_青森県",
+      "id": "下向_珠璃_八戸工大一_青森県",
       "appearances": 3
     }
   ]

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 23,
   "byCategory": {
-    "doubles": 22,
-    "singles": 2,
-    "team": 3
+    "team": 3,
+    "doubles": 18,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 37,
+  "uniquePlayers": 30,
   "topPlayers": [
     {
       "id": "山中_裕太_八戸工大一_青森県",
@@ -94,15 +94,15 @@
       "appearances": 3
     },
     {
-      "id": "山中_裕太_八戸工大一_青森",
-      "appearances": 2
-    },
-    {
       "id": "川守田_真翔_八戸工大一_青森県",
       "appearances": 2
     },
     {
       "id": "葛西_慧_八戸工大一_青森県",
+      "appearances": 2
+    },
+    {
+      "id": "山中_裕太_八戸工大一_青森",
       "appearances": 2
     }
   ]

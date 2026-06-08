@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 79,
+  "totalAppearances": 109,
   "byCategory": {
-    "doubles": 60,
-    "team": 6,
-    "singles": 13
+    "team": 7,
+    "doubles": 78,
+    "singles": 24
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "noboruyou",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト4",
+        "result": "優勝",
         "category": "singles",
         "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "竹田_羽花_昇陽高校_大阪"
+          "鈴木_陽菜_昇陽中学校_大阪"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "noboruyou",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト4",
+        "result": "優勝",
         "category": "singles",
         "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "竹田_羽花_昇陽高校_大阪"
+          "鈴木_陽菜_昇陽中学校_大阪"
         ]
       }
     },
@@ -74,9 +74,9 @@
         "teamId": "noboruyou",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト4",
+        "result": "優勝",
         "category": "team",
-        "tournamentId": "highschool-senbatsu",
+        "tournamentId": "secondaryschool-championship",
         "year": 2025,
         "gender": "girls"
       },
@@ -85,19 +85,23 @@
         "teamId": "noboruyou",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト4",
+        "result": "優勝",
         "category": "team",
-        "tournamentId": "highschool-senbatsu",
+        "tournamentId": "secondaryschool-championship",
         "year": 2025,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 85,
+  "uniquePlayers": 120,
   "topPlayers": [
     {
       "id": "竹田_羽花_昇陽_大阪府",
       "appearances": 5
+    },
+    {
+      "id": "竹田_羽花_昇陽高校_大阪",
+      "appearances": 4
     },
     {
       "id": "富永_珠羽_昇陽_大阪府",
@@ -109,10 +113,6 @@
     },
     {
       "id": "池田_つばき_昇陽_大阪府",
-      "appearances": 4
-    },
-    {
-      "id": "竹田_羽花_昇陽高校_大阪",
       "appearances": 4
     }
   ]

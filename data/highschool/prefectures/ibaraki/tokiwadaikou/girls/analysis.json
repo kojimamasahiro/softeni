@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4,
-    "team": 1
+    "team": 1,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -10,7 +10,21 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "常磐大高",
+        "teamId": "tokiwadaikou",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-championship",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "大図_果凛_常磐大高_茨城",
+          "飯塚_梨乃_常磐大高_茨城"
+        ]
+      },
       "historicalBest": {
         "team": "常磐大高",
         "teamId": "tokiwadaikou",
@@ -42,7 +56,7 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "大図_果暖_常磐大高_茨城県",
@@ -53,15 +67,15 @@
       "appearances": 2
     },
     {
+      "id": "大図_果凛_常磐大高_茨城",
+      "appearances": 1
+    },
+    {
+      "id": "飯塚_梨乃_常磐大高_茨城",
+      "appearances": 1
+    },
+    {
       "id": "大図_果凛_常磐大高_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "飯塚_梨乃_常磐大高_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "大津_琴海_常磐大高_茨城県",
       "appearances": 1
     }
   ]

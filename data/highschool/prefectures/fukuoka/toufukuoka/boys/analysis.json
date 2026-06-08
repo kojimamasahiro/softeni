@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 26,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 20,
-    "singles": 2,
-    "team": 4
+    "team": 2,
+    "doubles": 9,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -76,7 +76,7 @@
         "prefectureId": "fukuoka",
         "result": "1回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2025,
         "gender": "boys"
       },
@@ -93,27 +93,27 @@
       }
     }
   },
-  "uniquePlayers": 28,
+  "uniquePlayers": 16,
   "topPlayers": [
-    {
-      "id": "町田_佳紀_秋田令和_秋田県",
-      "appearances": 4
-    },
     {
       "id": "伊藤_駿平_東福岡_福岡県",
       "appearances": 3
     },
     {
-      "id": "小玉_康正_秋田令和_秋田県",
-      "appearances": 3
-    },
-    {
-      "id": "伊藤_玲央_秋田令和_秋田県",
-      "appearances": 3
-    },
-    {
-      "id": "帆足_光平_東福岡_福岡",
+      "id": "山田_侑人_東福岡_福岡県",
       "appearances": 2
+    },
+    {
+      "id": "木村_蓮_東福岡_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "白木_宏明_東福岡_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "藤野_慶汰_東福岡_福岡県",
+      "appearances": 1
     }
   ]
 }

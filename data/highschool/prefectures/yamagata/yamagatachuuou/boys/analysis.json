@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 6,
-    "team": 1
+    "team": 1,
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -15,14 +15,14 @@
         "teamId": "yamagatachuuou",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "zennihon-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "遠藤_雄輝_山形中央_山形県",
-          "渡邉_秀哉_山形中央_山形県"
+          "村田_優_羽黒高校_山形",
+          "菅谷_峻大_山形中央高校_山形"
         ]
       },
       "historicalBest": {
@@ -30,14 +30,14 @@
         "teamId": "yamagatachuuou",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "zennihon-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "遠藤_雄輝_山形中央_山形県",
-          "渡邉_秀哉_山形中央_山形県"
+          "村田_優_羽黒高校_山形",
+          "菅谷_峻大_山形中央高校_山形"
         ]
       }
     },
@@ -66,8 +66,16 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 14,
   "topPlayers": [
+    {
+      "id": "村田_優_羽黒高校_山形",
+      "appearances": 1
+    },
+    {
+      "id": "菅谷_峻大_山形中央高校_山形",
+      "appearances": 1
+    },
     {
       "id": "遠藤_雄輝_山形中央_山形県",
       "appearances": 1
@@ -78,14 +86,6 @@
     },
     {
       "id": "二戸_来夢_山形中央_山形県",
-      "appearances": 1
-    },
-    {
-      "id": "竹田_愁人_山形中央_山形県",
-      "appearances": 1
-    },
-    {
-      "id": "小椋_眞尋_山形中央_山形県",
       "appearances": 1
     }
   ]

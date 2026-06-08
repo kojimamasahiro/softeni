@@ -1,40 +1,12 @@
 {
-  "totalAppearances": 31,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 24,
-    "team": 4,
-    "singles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "弘前実",
-        "teamId": "hirosakijitsu",
-        "prefecture": "青森県",
-        "prefectureId": "aomori",
-        "result": "3回戦敗退",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
-        "gender": "girls",
-        "playerIds": [
-          "髙木_夕愛_県岐阜商_岐阜県"
-        ]
-      },
-      "historicalBest": {
-        "team": "弘前実",
-        "teamId": "hirosakijitsu",
-        "prefecture": "青森県",
-        "prefectureId": "aomori",
-        "result": "ベスト8",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
-        "gender": "girls",
-        "playerIds": [
-          "高木_己想_県岐阜商_岐阜県"
-        ]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -42,14 +14,14 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "5回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "廣岡_愛珠_県岐阜商_岐阜県",
-          "上野_裕水_県岐阜商_岐阜県"
+          "小田桐_心愛_弘前実_青森県",
+          "佐々木_莉奈_弘前実_青森県"
         ]
       },
       "historicalBest": {
@@ -57,63 +29,43 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "5回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "廣岡_愛珠_県岐阜商_岐阜県",
-          "上野_裕水_県岐阜商_岐阜県"
+          "小田桐_心愛_弘前実_青森県",
+          "佐々木_莉奈_弘前実_青森県"
         ]
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "弘前実",
-        "teamId": "hirosakijitsu",
-        "prefecture": "青森県",
-        "prefectureId": "aomori",
-        "result": "2回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "girls"
-      },
-      "historicalBest": {
-        "team": "弘前実",
-        "teamId": "hirosakijitsu",
-        "prefecture": "青森県",
-        "prefectureId": "aomori",
-        "result": "ベスト8",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
-        "gender": "girls"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
-      "id": "桒原_嘉萌_県岐阜商_岐阜県",
-      "appearances": 5
+      "id": "三浦_爽来_弘前実_青森県",
+      "appearances": 2
     },
     {
-      "id": "高木_夕愛_県岐阜商_岐阜県",
-      "appearances": 4
+      "id": "小田桐_心愛_弘前実_青森県",
+      "appearances": 2
     },
     {
-      "id": "廣瀬_結花_県岐阜商_岐阜県",
-      "appearances": 4
+      "id": "丹藤_海咲_弘前実_青森県",
+      "appearances": 1
     },
     {
-      "id": "髙木_夕愛_県岐阜商_岐阜県",
-      "appearances": 3
+      "id": "千葉_柚季_弘前実_青森県",
+      "appearances": 1
     },
     {
-      "id": "堀_かえで_県岐阜商_岐阜県",
-      "appearances": 3
+      "id": "清水_里帆_弘前実_青森県",
+      "appearances": 1
     }
   ]
 }

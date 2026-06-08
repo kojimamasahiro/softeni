@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 18,
   "byCategory": {
+    "team": 2,
     "doubles": 14,
-    "team": 2
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "綾羽",
+        "teamId": "ayaba",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": [
+          "有我_聡翼_綾羽高校_滋賀県"
+        ]
+      },
+      "historicalBest": {
+        "team": "綾羽",
+        "teamId": "ayaba",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "深掘_金の翼_綾羽高等学校_滋賀県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 23,
+  "uniquePlayers": 25,
   "topPlayers": [
     {
       "id": "長谷川_結人_綾羽_滋賀県",

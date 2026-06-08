@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 9,
-    "singles": 1,
-    "team": 2
+    "team": 2,
+    "doubles": 8,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -80,12 +80,8 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 13,
   "topPlayers": [
-    {
-      "id": "山下_凱空_大牟田_福岡県",
-      "appearances": 3
-    },
     {
       "id": "武藤_文太_大牟田_福岡県",
       "appearances": 3
@@ -95,11 +91,15 @@
       "appearances": 2
     },
     {
-      "id": "吉田_陸人_大牟田_福岡県",
-      "appearances": 1
+      "id": "山下_凱空_大牟田_福岡県",
+      "appearances": 2
     },
     {
       "id": "野見山_侑也_大牟田_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "三笠_哲平_大牟田_福岡県",
       "appearances": 1
     }
   ]

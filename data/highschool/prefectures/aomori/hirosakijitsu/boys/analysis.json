@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 19,
-    "singles": 1,
-    "team": 1
+    "team": 1,
+    "doubles": 8,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -29,14 +29,14 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "4回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "林_大嘉_県岐阜商_岐阜県",
-          "早見_和喜_県岐阜商_岐阜県"
+          "小山_颯斗_弘前実_青森県",
+          "三上_結太_弘前実_青森県"
         ]
       },
       "historicalBest": {
@@ -44,14 +44,14 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "ベスト8",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "highschool-championship",
+        "year": 2021,
         "gender": "boys",
         "playerIds": [
-          "樋口_拓海_県岐阜商_岐阜県",
-          "早見_和喜_県岐阜商_岐阜県"
+          "澤田_透和_弘前実_青森県",
+          "竹村_華瑠_弘前実_青森県"
         ]
       }
     },
@@ -80,27 +80,27 @@
       }
     }
   },
-  "uniquePlayers": 29,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "樋口_拓海_弘前実_青森県",
       "appearances": 4
     },
     {
-      "id": "早見_和喜_県岐阜商_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "樋口_生真_県岐阜商_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "廣岡_航輝_県岐阜商_岐阜県",
-      "appearances": 3
-    },
-    {
       "id": "工藤_大和_弘前実_青森県",
       "appearances": 2
+    },
+    {
+      "id": "羽場_碧_弘前実_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "石澤_葵音_弘前実_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "山賀_滉己_弘前実_青森県",
+      "appearances": 1
     }
   ]
 }

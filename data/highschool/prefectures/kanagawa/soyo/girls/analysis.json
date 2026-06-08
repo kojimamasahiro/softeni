@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 22,
   "byCategory": {
-    "doubles": 9,
-    "team": 2,
-    "singles": 5
+    "team": 3,
+    "doubles": 12,
+    "singles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "soyo",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2026,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "石井_海菜_相洋高校_神奈川県"
+          "後藤_嘉心_相洋中学校_神奈川県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "soyo",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2026,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "石井_海菜_相洋高校_神奈川県"
+          "後藤_嘉心_相洋中学校_神奈川県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "soyo",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "五味_陽日_相洋_神奈川県",
-          "後藤_和香奈_相洋_神奈川県"
+          "西場_莉夏_相洋中学校_神奈川県",
+          "矢田_恵愛_相洋中学校_神奈川県"
         ]
       },
       "historicalBest": {
@@ -93,26 +93,26 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 20,
   "topPlayers": [
-    {
-      "id": "西場_まこ_相洋_神奈川県",
-      "appearances": 3
-    },
     {
       "id": "五味_陽日_相洋_神奈川県",
       "appearances": 3
     },
     {
-      "id": "伊東_夢来_相洋_神奈川県",
+      "id": "西場_まこ_相洋_神奈川県",
+      "appearances": 3
+    },
+    {
+      "id": "町田_心優_相洋_神奈川県",
+      "appearances": 2
+    },
+    {
+      "id": "西野_いつは_相洋_神奈川県",
       "appearances": 2
     },
     {
       "id": "後藤_和香奈_相洋_神奈川県",
-      "appearances": 2
-    },
-    {
-      "id": "石井_海菜_相洋_神奈川県",
       "appearances": 2
     }
   ]

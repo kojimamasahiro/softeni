@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 51,
+  "totalAppearances": 27,
   "byCategory": {
-    "doubles": 39,
-    "singles": 7,
-    "team": 5
+    "team": 4,
+    "doubles": 21,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2026,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "前川_悠成_高岡商業高校_富山県"
+          "前川_悠成_高岡商_富山県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "ベスト4",
+        "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "白井_大希_鹿児島商_鹿児島県"
+          "前川_悠成_高岡商_富山県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "ベスト8",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "萩原_塡ノ祐_鹿児島商_鹿児島県",
-          "川内_聡一郎_鹿児島商_鹿児島県"
+          "丸山_慈央_高岡商_富山県",
+          "室_愛琉_高岡商_富山県"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "優勝",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "白井_瀬都_鹿児島商_鹿児島県",
-          "草地_凌冴_鹿児島商_鹿児島県"
+          "丸山_慈央_高岡商_富山県",
+          "室_愛琉_高岡商_富山県"
         ]
       }
     },
@@ -93,8 +93,12 @@
       }
     }
   },
-  "uniquePlayers": 54,
+  "uniquePlayers": 25,
   "topPlayers": [
+    {
+      "id": "前川_悠成_高岡商_富山県",
+      "appearances": 4
+    },
     {
       "id": "白井_瀬都_高岡商_富山県",
       "appearances": 4
@@ -104,11 +108,7 @@
       "appearances": 4
     },
     {
-      "id": "前川_悠成_高岡商_富山県",
-      "appearances": 4
-    },
-    {
-      "id": "西川_陽都_高岡商_富山県",
+      "id": "中谷_来稀_高岡商_富山県",
       "appearances": 3
     },
     {

@@ -1,9 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 9,
-    "singles": 2,
-    "team": 1
+    "doubles": 4,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +11,13 @@
         "teamId": "moriokakou",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "吉田_蓮_盛岡工業高校_岩手県"
+          "吉田_蓮_盛岡工_岩手県"
         ]
       },
       "historicalBest": {
@@ -26,13 +25,13 @@
         "teamId": "moriokakou",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "吉田_蓮_盛岡工業高校_岩手県"
+          "吉田_蓮_盛岡工_岩手県"
         ]
       }
     },
@@ -69,31 +68,11 @@
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "盛岡工",
-        "teamId": "moriokakou",
-        "prefecture": "岩手県",
-        "prefectureId": "iwate",
-        "result": "3回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      },
-      "historicalBest": {
-        "team": "盛岡工",
-        "teamId": "moriokakou",
-        "prefecture": "岩手県",
-        "prefectureId": "iwate",
-        "result": "3回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "及川_統司_盛岡工_岩手県",
@@ -104,15 +83,15 @@
       "appearances": 2
     },
     {
-      "id": "髙橋_直希_近畿大高専_三重県",
-      "appearances": 2
-    },
-    {
-      "id": "弘田_和航_近畿大高専_三重県",
-      "appearances": 2
-    },
-    {
       "id": "大坪_厚大_盛岡工_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "城内_純那_盛岡工_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "髙橋_直希_盛岡工_岩手県",
       "appearances": 1
     }
   ]

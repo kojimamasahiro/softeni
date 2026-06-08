@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 9,
-    "team": 1
+    "team": 1,
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -66,8 +66,12 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "加塩_彩夏_静岡商_静岡県",
+      "appearances": 2
+    },
     {
       "id": "中村_ひかり_静岡商_静岡県",
       "appearances": 2
@@ -82,10 +86,6 @@
     },
     {
       "id": "堀田_千尋_静岡商_静岡県",
-      "appearances": 2
-    },
-    {
-      "id": "加塩_彩夏_静岡商_静岡県",
       "appearances": 2
     }
   ]

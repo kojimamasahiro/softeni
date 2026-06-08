@@ -1,38 +1,25 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 12,
-    "singles": 2,
-    "team": 2
+    "team": 1,
+    "doubles": 5,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "大村工",
-        "teamId": "oomurakou",
-        "prefecture": "長崎県",
-        "prefectureId": "nagasaki",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": [
-          "保利_彰大_宇都宮工_栃木県"
-        ]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "大村工",
         "teamId": "oomurakou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2023,
         "gender": "boys",
         "playerIds": [
-          "保利_彰大_宇都宮工_栃木県"
+          "原田_柊_大村工_長崎県"
         ]
       }
     },
@@ -57,14 +44,14 @@
         "teamId": "oomurakou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "5回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2023,
         "gender": "boys",
         "playerIds": [
-          "斎藤_隼羽_宇都宮工_栃木県",
-          "野口_椋平_宇都宮工_栃木県"
+          "原田_柊_大村工_長崎県",
+          "野口_悠晴_大村工_長崎県"
         ]
       }
     },
@@ -83,27 +70,27 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "原田_柊_大村工_長崎県",
-      "appearances": 5
-    },
-    {
-      "id": "野口_椋平_宇都宮工_栃木県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "野口_悠晴_大村工_長崎県",
       "appearances": 2
     },
     {
-      "id": "金原_遥人_宇都宮工_栃木県",
-      "appearances": 2
+      "id": "北倉_青波_大村工_長崎県",
+      "appearances": 1
     },
     {
-      "id": "保利_彰大_宇都宮工_栃木県",
-      "appearances": 2
+      "id": "齋藤_巧夢_大村工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "須川_怜皇_大村工_長崎県",
+      "appearances": 1
     }
   ]
 }

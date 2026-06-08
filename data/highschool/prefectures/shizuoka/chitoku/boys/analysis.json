@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 18,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 15,
-    "singles": 1,
-    "team": 2
+    "team": 2,
+    "doubles": 14,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -93,15 +93,11 @@
       }
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 23,
   "topPlayers": [
     {
       "id": "坂井_優斗_知徳_静岡県",
       "appearances": 3
-    },
-    {
-      "id": "坂井_優斗_知徳_静岡",
-      "appearances": 2
     },
     {
       "id": "冨士本_琉聖_知徳_静岡県",
@@ -113,6 +109,10 @@
     },
     {
       "id": "井手_海哩_知徳_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "鈴木_龍賀_知徳_静岡県",
       "appearances": 2
     }
   ]

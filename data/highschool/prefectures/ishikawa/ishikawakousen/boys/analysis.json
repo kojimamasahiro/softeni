@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 4,
-    "team": 1
+    "team": 1,
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -22,7 +22,7 @@
         "gender": "boys",
         "playerIds": [
           "金森_悠生_石川高専_石川",
-          "齊藤_慧伸_石川高専_石川"
+          "齊藤_秀哉_石川高専_石川"
         ]
       },
       "historicalBest": {
@@ -56,19 +56,11 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 5,
   "topPlayers": [
-    {
-      "id": "金森_悠生_石川高専_石川",
-      "appearances": 2
-    },
     {
       "id": "西牧_幹起_石川高専_石川県",
       "appearances": 2
-    },
-    {
-      "id": "齊藤_慧伸_石川高専_石川",
-      "appearances": 1
     },
     {
       "id": "叶田_慎之介_石川高専_石川県",
@@ -76,6 +68,14 @@
     },
     {
       "id": "堀井_皓介_石川高専_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "金森_悠生_石川高専_石川",
+      "appearances": 1
+    },
+    {
+      "id": "齊藤_秀哉_石川高専_石川",
       "appearances": 1
     }
   ]

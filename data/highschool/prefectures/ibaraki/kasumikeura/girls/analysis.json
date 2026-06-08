@@ -1,8 +1,8 @@
 {
   "totalAppearances": 14,
   "byCategory": {
-    "doubles": 9,
     "team": 1,
+    "doubles": 9,
     "singles": 4
   },
   "resultsByCategory": {
@@ -44,12 +44,12 @@
         "prefectureId": "ibaraki",
         "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "菅原_野々華_霞ヶ浦_茨城県",
-          "片岡_結愛_霞ヶ浦_茨城県"
+          "菅原_野々華_霞ヶ浦高校_茨城",
+          "片岡_結愛_霞ヶ浦高校_茨城"
         ]
       },
       "historicalBest": {
@@ -59,12 +59,12 @@
         "prefectureId": "ibaraki",
         "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "菅原_野々華_霞ヶ浦_茨城県",
-          "片岡_結愛_霞ヶ浦_茨城県"
+          "菅原_野々華_霞ヶ浦高校_茨城",
+          "片岡_結愛_霞ヶ浦高校_茨城"
         ]
       }
     },
@@ -96,6 +96,10 @@
   "uniquePlayers": 14,
   "topPlayers": [
     {
+      "id": "片岡_結愛_霞ヶ浦高校_茨城",
+      "appearances": 3
+    },
+    {
       "id": "菅原_野々華_霞ヶ浦_茨城県",
       "appearances": 3
     },
@@ -104,15 +108,11 @@
       "appearances": 3
     },
     {
-      "id": "片岡_結愛_霞ヶ浦高校_茨城",
-      "appearances": 3
-    },
-    {
-      "id": "郡司_望美_霞ヶ浦_茨城県",
+      "id": "菅原_野々華_霞ヶ浦高校_茨城",
       "appearances": 2
     },
     {
-      "id": "菅原_野々華_霞ヶ浦高校_茨城",
+      "id": "郡司_望美_霞ヶ浦_茨城県",
       "appearances": 2
     }
   ]
