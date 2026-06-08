@@ -33,7 +33,7 @@ type SummaryEntry = {
   category: 'singles' | 'doubles' | 'team';
   tournamentId: string;
   year: number;
-  gender: 'boys' | 'girls';
+  gender: 'boys' | 'girls' | 'mixed';
   playerIds?: string[];
 };
 
@@ -97,6 +97,11 @@ const tournamentPriority: Record<string, number> = {
 
 const getTournamentSortPriority = (tournamentId: string): number =>
   tournamentPriority[tournamentId] ?? 99;
+
+const isVisibleGender = (
+  entryGender: string,
+  pageGender: 'boys' | 'girls',
+) => entryGender === pageGender || entryGender === 'mixed';
 
 export default function PrefectureHighschoolPage({
   prefecture,
@@ -453,8 +458,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8'))
     : [];
 
-  // Filter by gender
-  const filteredData = rawData.filter((entry) => entry.gender === gender);
+  // Filter by gender, and show mixed tournaments on both boys/girls pages
+  const filteredData = rawData.filter((entry) =>
+    isVisibleGender(entry.gender, gender),
+  );
 
   const grouped: Record<string, TeamSummary> = {};
 
@@ -661,7 +668,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   rawResults.results
     .filter(
       (entry) =>
-        entry.gender === gender &&
+        isVisibleGender(entry.gender ?? '', gender) &&
         recentMajorYearMap.get(entry.tournamentId)?.has(entry.year),
     )
     .forEach((entry) => {

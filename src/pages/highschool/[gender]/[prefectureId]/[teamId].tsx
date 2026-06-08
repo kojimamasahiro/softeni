@@ -49,6 +49,7 @@ type Entry = {
   tournamentId: string;
   result: string;
   category: string;
+  gender: 'boys' | 'girls' | 'mixed';
   playerIds?: string[];
   generation?: string;
   ageCategory?: string;
@@ -63,7 +64,7 @@ type SummaryEntry = {
   category: 'singles' | 'doubles' | 'team';
   tournamentId: string;
   year: number;
-  gender: 'boys' | 'girls';
+  gender: 'boys' | 'girls' | 'mixed';
   playerIds?: string[];
 };
 
@@ -90,6 +91,9 @@ const categoryPriority: Record<string, number> = {
   doubles: 2,
   singles: 3,
 };
+
+const isVisibleGender = (entryGender: string, pageGender: 'boys' | 'girls') =>
+  entryGender === pageGender || entryGender === 'mixed';
 
 export default function TeamPage({
   prefectureName,
@@ -144,10 +148,11 @@ export default function TeamPage({
       if (!acc[entry.year]) acc[entry.year] = {};
       if (!acc[entry.year][entry.tournamentId])
         acc[entry.year][entry.tournamentId] = {};
-      if (!acc[entry.year][entry.tournamentId][entry.category]) {
-        acc[entry.year][entry.tournamentId][entry.category] = [];
+      const groupKey = `${entry.category}:${entry.gender}`;
+      if (!acc[entry.year][entry.tournamentId][groupKey]) {
+        acc[entry.year][entry.tournamentId][groupKey] = [];
       }
-      acc[entry.year][entry.tournamentId][entry.category].push(entry);
+      acc[entry.year][entry.tournamentId][groupKey].push(entry);
       return acc;
     },
     {} as Record<string, Record<string, Record<string, Entry[]>>>,
@@ -506,11 +511,15 @@ export default function TeamPage({
                                   'ja',
                                 );
                               })
-                              .map(([cat, items]) => {
-                                // 同じcategory内のgenderは統一されていると仮定（必要に応じて調整）
-                                const categoryGender = gender; // Use the gender prop from component
+                              .map(([groupKey, items]) => {
+                                const [cat, entryGender = gender] =
+                                  groupKey.split(':');
+                                const categoryGender = entryGender as
+                                  | 'boys'
+                                  | 'girls'
+                                  | 'mixed';
                                 return (
-                                  <li key={cat}>
+                                  <li key={groupKey}>
                                     <p className="font-semibold">
                                       <Link
                                         href={`/tournaments/${items[0]?.generation ?? 'highschool'}/${tournamentId}/${year}/${cat}/${items[0]?.ageCategory ?? 'none'}/${categoryGender}`}
@@ -588,7 +597,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { gender: string; prefectureId: string; teamId: string };
   }[] = [];
 
-  for (const gender of ['boys', 'girls']) {
+  for (const gender of ['boys', 'girls'] as const) {
     for (const prefId of prefectures) {
       const summaryPath = path.join(prefDir, prefId, 'summary.json');
       if (!fs.existsSync(summaryPath)) continue;
@@ -600,7 +609,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
       // Filter by gender and get unique team IDs
       const teamIds = [
         ...new Set(
-          summary.filter((e) => e.gender === gender).map((e) => e.teamId),
+          summary
+            .filter((e) => isVisibleGender(e.gender, gender))
+            .map((e) => e.teamId),
         ),
       ];
 
@@ -643,9 +654,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     fs.readFileSync(summaryPath, 'utf-8'),
   );
 
-  // Filter by teamId and gender
+  // Filter by teamId and gender. mixed は boys/girls の両方に表示する。
   const entries = allEntries.filter(
-    (e) => e.teamId === teamId && e.gender === gender,
+    (e) => e.teamId === teamId && isVisibleGender(e.gender, gender),
   );
   const teamName = entries[0]?.team || '';
 

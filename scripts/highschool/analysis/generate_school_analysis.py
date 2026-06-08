@@ -22,6 +22,13 @@ rank_order = {
 }
 default_rank = 999
 
+def visible_genders(entry_gender):
+    if entry_gender == 'mixed':
+        return ['boys', 'girls']
+    if entry_gender in ('boys', 'girls'):
+        return [entry_gender]
+    return []
+
 def get_best_result(entries):
     best_entry = None
     best_rank = default_rank
@@ -94,11 +101,13 @@ for prefecture_id in os.listdir(base_dir):
         summary = json.load(f)
 
     # teamId と gender ごとにグループ化
+    # mixed は boys / girls の両方に含める
     grouped = defaultdict(lambda: defaultdict(list))
     for item in summary:
         team_id = item['teamId']
         gender = item.get('gender', 'unknown')
-        grouped[team_id][gender].append(item)
+        for visible_gender in visible_genders(gender):
+            grouped[team_id][visible_gender].append(item)
 
     # 各チーム・性別に対して analysis.json を生成
     for team_id, gender_data in grouped.items():

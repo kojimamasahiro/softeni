@@ -19,7 +19,7 @@ type SummaryEntry = {
   teamId: string;
   result: string;
   year: number;
-  gender: 'boys' | 'girls';
+  gender: 'boys' | 'girls' | 'mixed';
 };
 
 type PrefectureStat = {
@@ -42,6 +42,11 @@ type Props = {
 };
 
 const HIGH_RESULT_SET = new Set(['優勝', '準優勝', 'ベスト4', 'ベスト8']);
+
+const isVisibleGender = (
+  entryGender: string,
+  pageGender: 'boys' | 'girls',
+) => entryGender === pageGender || entryGender === 'mixed';
 
 export default function HighschoolGenderIndex({
   grouped,
@@ -315,7 +320,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const entries: SummaryEntry[] = fs.existsSync(summaryPath)
       ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8'))
       : [];
-    const filteredEntries = entries.filter((entry) => entry.gender === gender);
+    const filteredEntries = entries.filter((entry) =>
+      isVisibleGender(entry.gender, gender),
+    );
     const teamIds = new Set(filteredEntries.map((entry) => entry.teamId));
     const best8Teams = new Set(
       filteredEntries
