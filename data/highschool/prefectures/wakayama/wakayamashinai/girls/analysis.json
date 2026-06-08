@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 54,
+  "totalAppearances": 93,
   "byCategory": {
-    "doubles": 43,
-    "team": 5,
-    "singles": 6
+    "doubles": 58,
+    "team": 6,
+    "singles": 29
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "wakayamashinai",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "ベスト4",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "佐藤_愛_和歌山信愛_和歌山県"
+          "佐藤_愛_和歌山信愛高校_和歌山"
         ]
       },
       "historicalBest": {
@@ -42,14 +42,14 @@
         "teamId": "wakayamashinai",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "6回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "佐藤_愛_和歌山信愛_和歌山県",
-          "佐々木_真凜_和歌山信愛_和歌山県"
+          "中谷_ももこ_須磨学園高校_兵庫",
+          "佐藤_愛_和歌山信愛高校_和歌山"
         ]
       },
       "historicalBest": {
@@ -59,12 +59,12 @@
         "prefectureId": "wakayama",
         "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "江口_咲礼紗_和歌山信愛_和歌山県",
-          "筒井_萌水_和歌山信愛_和歌山県"
+          "中谷_ももこ_須磨学園高校_兵庫",
+          "佐藤_愛_和歌山信愛高校_和歌山"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 52,
+  "uniquePlayers": 92,
   "topPlayers": [
     {
       "id": "岩元_望美_和歌山信愛_和歌山県",

@@ -36,7 +36,7 @@ cd scripts/highschool/02result
 - チーム名と都道府県のマッピングを構築
 - トーナメント結果とラウンドロビン結果を抽出
 - ラウンドロビンで敗退した選手も「予選敗退」として登録
-- 性別情報 (boys/girls) を自動判定
+- 性別情報 (boys/girls/mixed) を自動判定
 
 **出力:** `results.json` (全大会結果のリスト)
 
@@ -104,7 +104,7 @@ python ../analysis/generate_school_analysis.py
 
 ### 性別の扱い
 
-- ファイル名から性別を自動判定 (`boys` / `girls`)
+- ファイル名から性別を自動判定 (`boys` / `girls` / `mixed`)
 - 全データに `gender` フィールドが付与される
 - 分析データは性別ごとに別ディレクトリに保存
 

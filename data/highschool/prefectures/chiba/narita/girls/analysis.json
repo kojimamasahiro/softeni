@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 5
+    "doubles": 5,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "成田",
+        "teamId": "narita",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "波多江_光咲_成田高校_千葉県"
+        ]
+      },
+      "historicalBest": {
+        "team": "成田",
+        "teamId": "narita",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "波多江_光咲_成田高校_千葉県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "波多江_光咲_成田_千葉県",

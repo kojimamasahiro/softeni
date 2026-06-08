@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 46,
   "byCategory": {
-    "doubles": 11,
-    "singles": 3
+    "doubles": 22,
+    "singles": 23,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -11,13 +12,13 @@
         "teamId": "shitennoutera",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "3回戦敗退",
+        "result": "6回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "房野_紗千_四天王寺_大阪府"
+          "房野_紗千_四天王寺高校_大阪"
         ]
       },
       "historicalBest": {
@@ -25,13 +26,13 @@
         "teamId": "shitennoutera",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "3回戦敗退",
+        "result": "6回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "房野_紗千_四天王寺_大阪府"
+          "房野_紗千_四天王寺高校_大阪"
         ]
       }
     },
@@ -68,14 +69,38 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "四天王寺",
+        "teamId": "shitennoutera",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "四天王寺",
+        "teamId": "shitennoutera",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 41,
   "topPlayers": [
     {
       "id": "房野_紗千_四天王寺_大阪府",
+      "appearances": 6
+    },
+    {
+      "id": "房野_紗千_四天王寺高校_大阪府",
       "appearances": 6
     },
     {
@@ -83,16 +108,12 @@
       "appearances": 4
     },
     {
-      "id": "川上_結己_四天王寺_大阪府",
-      "appearances": 2
+      "id": "房野_紗千_四天王寺高校_大阪",
+      "appearances": 4
     },
     {
-      "id": "大西_恵加_四天王寺_大阪府",
-      "appearances": 2
-    },
-    {
-      "id": "松林_花香_四天王寺_大阪府",
-      "appearances": 1
+      "id": "市川_こいと_四天王寺高校_大阪",
+      "appearances": 4
     }
   ]
 }

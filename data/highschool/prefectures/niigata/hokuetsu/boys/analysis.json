@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 24,
   "byCategory": {
-    "doubles": 15,
+    "doubles": 18,
     "singles": 3,
-    "team": 2
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -74,9 +74,9 @@
         "teamId": "hokuetsu",
         "prefecture": "新潟県",
         "prefectureId": "niigata",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2025,
         "gender": "boys"
       },
@@ -87,32 +87,32 @@
         "prefectureId": "niigata",
         "result": "2回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 22,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "高澤_颯_北越_新潟県",
       "appearances": 5
     },
     {
+      "id": "高澤_颯_北越_新潟",
+      "appearances": 3
+    },
+    {
       "id": "高橋_憐依_北越_新潟県",
       "appearances": 3
     },
     {
-      "id": "高澤_颯_北越_新潟",
+      "id": "高橋_憐依_北越_新潟",
       "appearances": 2
     },
     {
       "id": "長谷川_大輝_北越_新潟県",
-      "appearances": 2
-    },
-    {
-      "id": "早川_寛康_北越_新潟県",
       "appearances": 2
     }
   ]

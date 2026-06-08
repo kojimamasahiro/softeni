@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 10,
-    "singles": 2
+    "doubles": 14,
+    "singles": 2,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -68,11 +69,31 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "植草学園大附",
+        "teamId": "uekusagakuendaifu",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "植草学園大附",
+        "teamId": "uekusagakuendaifu",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 24,
   "topPlayers": [
     {
       "id": "宮本_愛梨_植草学園大附_千葉県",

@@ -1,25 +1,38 @@
 {
-  "totalAppearances": 28,
+  "totalAppearances": 45,
   "byCategory": {
-    "doubles": 22,
-    "team": 5,
-    "singles": 1
+    "doubles": 30,
+    "team": 6,
+    "singles": 9
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "明豊",
+        "teamId": "meihou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "古川_夢望_明豊_大分県"
+        ]
+      },
       "historicalBest": {
         "team": "明豊",
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "2回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "西田_海晴_明豊_大分県"
+          "古川_夢望_明豊_大分県"
         ]
       }
     },
@@ -61,9 +74,9 @@
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2025,
         "gender": "girls"
       },
@@ -72,15 +85,15 @@
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2025,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 27,
+  "uniquePlayers": 51,
   "topPlayers": [
     {
       "id": "西田_海晴_明豊_大分県",

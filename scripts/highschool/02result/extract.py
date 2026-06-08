@@ -92,7 +92,9 @@ def main():
 
                 # 性別判定
                 gender = "unknown"
-                if "boys" in filename:
+                if "mixed" in filename:
+                    gender = "mixed"
+                elif "boys" in filename:
                     gender = "boys"
                 elif "girls" in filename:
                     gender = "girls"

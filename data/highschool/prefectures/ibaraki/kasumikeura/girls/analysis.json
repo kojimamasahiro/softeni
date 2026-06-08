@@ -1,25 +1,38 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 6,
+    "doubles": 9,
     "team": 1,
-    "singles": 1
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": {
+      "recentlyResult": {
         "team": "霞ヶ浦",
         "teamId": "kasumikeura",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "片岡_結愛_霞ヶ浦高校_茨城"
+        ]
+      },
+      "historicalBest": {
+        "team": "霞ヶ浦",
+        "teamId": "kasumikeura",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
         "year": 2023,
         "gender": "girls",
         "playerIds": [
-          "郡司_望美_霞ヶ浦_茨城県"
+          "赤井_琴音_霞ヶ浦高校_茨城県"
         ]
       }
     },
@@ -80,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "菅原_野々華_霞ヶ浦_茨城県",
@@ -91,16 +104,16 @@
       "appearances": 3
     },
     {
+      "id": "片岡_結愛_霞ヶ浦高校_茨城",
+      "appearances": 3
+    },
+    {
       "id": "郡司_望美_霞ヶ浦_茨城県",
       "appearances": 2
     },
     {
-      "id": "村中_美桜_霞ヶ浦_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "折原_詩依奈_霞ヶ浦_茨城県",
-      "appearances": 1
+      "id": "菅原_野々華_霞ヶ浦高校_茨城",
+      "appearances": 2
     }
   ]
 }

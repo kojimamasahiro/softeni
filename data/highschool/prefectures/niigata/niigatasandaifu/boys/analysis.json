@@ -1,13 +1,26 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 6,
-    "singles": 1,
+    "doubles": 8,
+    "singles": 2,
     "team": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "新潟産大附",
+        "teamId": "niigatasandaifu",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "青木_優河_新潟産業大附高校_新潟県"
+        ]
+      },
       "historicalBest": {
         "team": "新潟産大附",
         "teamId": "niigatasandaifu",
@@ -15,11 +28,11 @@
         "prefectureId": "niigata",
         "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "青木_優河_新潟産大附_新潟県"
+          "青木_優河_新潟産業大附高校_新潟県"
         ]
       }
     },
@@ -70,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "加藤_颯人_新潟産大附_新潟県",

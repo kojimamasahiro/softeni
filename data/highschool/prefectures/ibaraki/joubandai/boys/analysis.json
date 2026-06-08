@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 5,
     "team": 1
   },
   "resultsByCategory": {
@@ -56,8 +56,12 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "小沼_海靖_常磐大_茨城県",
+      "appearances": 2
+    },
     {
       "id": "小貫_暁都_常磐大_茨城",
       "appearances": 1
@@ -72,10 +76,6 @@
     },
     {
       "id": "里見_大輔_常磐大_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "小貫_暁都_常磐大_茨城県",
       "appearances": 1
     }
   ]

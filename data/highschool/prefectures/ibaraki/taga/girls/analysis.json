@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "多賀",
+        "teamId": "taga",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "真弓_愛海_多賀高校_茨城県"
+        ]
+      },
+      "historicalBest": {
+        "team": "多賀",
+        "teamId": "taga",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "真弓_愛海_多賀高校_茨城県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,14 +72,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "真弓_愛海_多賀高校_茨城",
+      "appearances": 2
+    },
     {
       "id": "真弓_愛海_多賀_茨城県",
       "appearances": 1
     },
     {
       "id": "千葉_えみり_多賀_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "千葉_えみり_多賀高校_茨城",
+      "appearances": 1
+    },
+    {
+      "id": "真弓_愛海_多賀高校_茨城県",
       "appearances": 1
     }
   ]

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 8,
-    "singles": 1,
+    "doubles": 9,
+    "singles": 2,
     "team": 1
   },
   "resultsByCategory": {
@@ -12,13 +12,13 @@
         "teamId": "takasaki",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "大河原_兜_高崎_群馬県"
+          "大河原_兜_高崎高校"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "takasaki",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "大河原_兜_高崎_群馬県"
+          "大河原_兜_高崎高校"
         ]
       }
     },
@@ -83,11 +83,15 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "大河原_兜_高崎_群馬県",
-      "appearances": 3
+      "appearances": 4
+    },
+    {
+      "id": "齊藤_慧伸_高崎_群馬県",
+      "appearances": 2
     },
     {
       "id": "片貝_匠_高崎_群馬県",
@@ -100,10 +104,6 @@
     {
       "id": "西牧_幹起_石川高専_石川県",
       "appearances": 2
-    },
-    {
-      "id": "大河原_兜_高崎_群馬",
-      "appearances": 1
     }
   ]
 }

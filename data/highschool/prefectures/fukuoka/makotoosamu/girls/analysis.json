@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 9,
-    "team": 1
+    "doubles": 12,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "誠修",
+        "teamId": "makotoosamu",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "栗原_都亜_誠修高校_福岡"
+        ]
+      },
+      "historicalBest": {
+        "team": "誠修",
+        "teamId": "makotoosamu",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "栗原_都亜_誠修高校_福岡"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -56,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 20,
   "topPlayers": [
     {
       "id": "西村_麻央_誠修_福岡県",
@@ -75,8 +102,8 @@
       "appearances": 2
     },
     {
-      "id": "泉_夢夏_誠修_福岡県",
-      "appearances": 1
+      "id": "栗原_都亜_誠修高校_福岡",
+      "appearances": 2
     }
   ]
 }

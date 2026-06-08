@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "singles": 1
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -10,13 +10,13 @@
         "teamId": "utsunomiyajoshi",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "西﨑_美紅_宇都宮女子_栃木県"
+          "西﨑_美紅_宇都宮女子高校_栃木県"
         ]
       },
       "historicalBest": {
@@ -24,13 +24,13 @@
         "teamId": "utsunomiyajoshi",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "西﨑_美紅_宇都宮女子_栃木県"
+          "西﨑_美紅_宇都宮女子高校_栃木県"
         ]
       }
     },
@@ -43,10 +43,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "西﨑_美紅_宇都宮女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "西﨑_美紅_宇都宮女子高校_栃木県",
       "appearances": 1
     }
   ]

@@ -1,12 +1,26 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 10
+    "doubles": 10,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "西城陽",
+        "teamId": "nishijouyou",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": [
+          "山内_風我_西城陽高等学校_京都府"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +59,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 19,
   "topPlayers": [
     {
       "id": "山内_風我_西城陽_京都府",

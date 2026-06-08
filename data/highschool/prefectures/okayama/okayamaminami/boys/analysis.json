@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 2,
-    "team": 1
+    "doubles": 3,
+    "team": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "松永_凌_岡山南高校"
+        ]
+      },
+      "historicalBest": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "松永_凌_岡山南高校"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "後藤_隼人_岡山南_岡山県",
@@ -82,6 +109,10 @@
     },
     {
       "id": "荻野_永二_岡山南_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "松永_凌_岡山南高校_高体連",
       "appearances": 1
     }
   ]

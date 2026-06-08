@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 14,
   "byCategory": {
-    "doubles": 7
+    "doubles": 11,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "北陸",
+        "teamId": "hokuriku",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "枝川_陽向_北陸高校_福井県"
+        ]
+      },
+      "historicalBest": {
+        "team": "北陸",
+        "teamId": "hokuriku",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "枝川_陽向_北陸高校_福井県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 24,
   "topPlayers": [
     {
       "id": "橋本_涼夏_北陸_福井県",

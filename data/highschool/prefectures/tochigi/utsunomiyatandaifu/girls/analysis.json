@@ -1,12 +1,26 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 7
+    "doubles": 9,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "宇都宮短大附",
+        "teamId": "utsunomiyatandaifu",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "螺良_萌々_宇短大附属高校_栃木県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +59,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "廣谷_流凛_宇都宮短大附_栃木県",

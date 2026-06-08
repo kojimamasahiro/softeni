@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 53,
+  "totalAppearances": 87,
   "byCategory": {
-    "doubles": 43,
-    "singles": 6,
-    "team": 4
+    "doubles": 56,
+    "singles": 26,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "mie",
         "prefecture": "三重県",
         "prefectureId": "mie",
-        "result": "ベスト4",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "南_龍之介_三重_三重県"
+          "南_龍之介_三重高校_三重県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "mie",
         "prefecture": "三重県",
         "prefectureId": "mie",
-        "result": "ベスト4",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "南_龍之介_三重_三重県"
+          "南_龍之介_三重高校_三重県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "mie",
         "prefecture": "三重県",
         "prefectureId": "mie",
-        "result": "ベスト4",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "南_龍之介_三重_三重",
-          "竹内_慶悟_三重_三重"
+          "南_龍之介_三重高校_三重県",
+          "竹内_慶悟_三重高校_三重県"
         ]
       },
       "historicalBest": {
@@ -59,12 +59,12 @@
         "prefectureId": "mie",
         "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "仲川_晴智_三重_三重県",
-          "近藤_拓空_三重_三重県"
+          "南_龍之介_三重高校_三重県",
+          "竹内_慶悟_三重高校_三重県"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 55,
+  "uniquePlayers": 91,
   "topPlayers": [
     {
       "id": "南_龍之介_三重_三重県",
@@ -108,12 +108,12 @@
       "appearances": 4
     },
     {
-      "id": "中内_謙秀_三重_三重県",
-      "appearances": 3
+      "id": "竹内_慶悟_三重高校_三重",
+      "appearances": 4
     },
     {
-      "id": "青木_吟斗_三重_三重県",
-      "appearances": 3
+      "id": "南_龍之介_三重高校_三重県",
+      "appearances": 4
     }
   ]
 }

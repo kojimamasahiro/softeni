@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 12,
-    "team": 2
+    "doubles": 13,
+    "team": 2,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "藤本_晴生_清水ヶ丘高校_広島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "藤本_晴生_清水ヶ丘高校_広島県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,8 +93,16 @@
       }
     }
   },
-  "uniquePlayers": 19,
+  "uniquePlayers": 22,
   "topPlayers": [
+    {
+      "id": "藤本_晴生_清水ヶ丘_広島県",
+      "appearances": 3
+    },
+    {
+      "id": "古土井_遼輝_清水ヶ丘_広島県",
+      "appearances": 2
+    },
     {
       "id": "髙木_皆人_清水ヶ丘_広島県",
       "appearances": 2
@@ -78,14 +113,6 @@
     },
     {
       "id": "東_稜久_清水ヶ丘_広島県",
-      "appearances": 2
-    },
-    {
-      "id": "小川_蓮太郎_清水ヶ丘_広島県",
-      "appearances": 2
-    },
-    {
-      "id": "藤本_晴生_清水ヶ丘_広島県",
       "appearances": 2
     }
   ]

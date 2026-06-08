@@ -1,15 +1,56 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "綾部",
+        "teamId": "ayabe",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "湯浅_翔空_綾部_京都府"
+        ]
+      },
+      "historicalBest": {
+        "team": "綾部",
+        "teamId": "ayabe",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "湯浅_翔空_綾部_京都府"
+        ]
+      }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "綾部",
+        "teamId": "ayabe",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "山口_陽向_青葉_京都府",
+          "逆瀬川_琉聖_綾部_京都府"
+        ]
+      },
       "historicalBest": {
         "team": "綾部",
         "teamId": "ayabe",
@@ -17,12 +58,12 @@
         "prefectureId": "kyoto",
         "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "木下_脩希_綾部_京都府",
-          "佐藤_元気_綾部_京都府"
+          "山口_陽向_青葉_京都府",
+          "逆瀬川_琉聖_綾部_京都府"
         ]
       }
     },
@@ -31,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "木下_脩希_綾部_京都府",
@@ -39,6 +80,18 @@
     },
     {
       "id": "佐藤_元気_綾部_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "山口_陽向_青葉_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "逆瀬川_琉聖_綾部_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "湯浅_翔空_綾部_京都府",
       "appearances": 1
     }
   ]

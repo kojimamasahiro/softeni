@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 12,
   "byCategory": {
     "doubles": 10,
-    "team": 1
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "精道三川台",
+        "teamId": "seidousankawadai",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "森_生_精道三川台高校_長崎県"
+        ]
+      },
+      "historicalBest": {
+        "team": "精道三川台",
+        "teamId": "seidousankawadai",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "森_生_精道三川台高校_長崎県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 18,
   "topPlayers": [
     {
       "id": "光井_千綾_精道三川台_長崎県",

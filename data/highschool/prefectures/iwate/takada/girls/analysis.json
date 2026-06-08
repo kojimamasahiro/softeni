@@ -1,13 +1,27 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 6,
-    "team": 1
+    "doubles": 7,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高田",
+        "teamId": "takada",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "門田_真歩_高田高等学校_岩手県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -56,7 +70,7 @@
       }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "亘理_有沙_高田_岩手県",

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 26,
   "byCategory": {
-    "doubles": 17,
-    "team": 2,
-    "singles": 3
+    "doubles": 19,
+    "team": 3,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -69,7 +69,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "埼玉平成",
+        "teamId": "saitamaheisei",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
       "historicalBest": {
         "team": "埼玉平成",
         "teamId": "saitamaheisei",
@@ -77,13 +87,13 @@
         "prefectureId": "saitama",
         "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "庭田_咲月_埼玉平成_埼玉県",

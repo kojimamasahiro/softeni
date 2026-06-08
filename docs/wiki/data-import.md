@@ -75,6 +75,12 @@ Deprecated:
 
 - `data/highschool/prefectures/**`
 
+### 性別の扱い
+
+- `scripts/highschool/02result/extract.py` はファイル名から性別を自動判定する
+- 現在は `boys` / `girls` / `mixed` を判定対象としている
+- 抽出結果には `gender` フィールドが付与され、後続の高校カテゴリ集計に渡される
+
 ## tournament details / players 生成の見方
 
 - 大会データの canonical source は `data/tournaments/details/**` と `data/tournaments/information/*.json`

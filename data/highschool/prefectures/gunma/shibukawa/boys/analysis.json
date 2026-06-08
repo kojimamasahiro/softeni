@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -16,11 +16,11 @@
         "prefectureId": "gunma",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "田中_輝_渋川_群馬県",
+          "田村_悠和_渋川_群馬県",
           "保科_陽向_渋川_群馬県"
         ]
       },
@@ -31,11 +31,11 @@
         "prefectureId": "gunma",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "田中_輝_渋川_群馬県",
+          "田村_悠和_渋川_群馬県",
           "保科_陽向_渋川_群馬県"
         ]
       }
@@ -45,8 +45,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "保科_陽向_渋川_群馬県",
+      "appearances": 2
+    },
     {
       "id": "大須賀_聡汰_渋川_群馬県",
       "appearances": 1
@@ -60,7 +64,7 @@
       "appearances": 1
     },
     {
-      "id": "保科_陽向_渋川_群馬県",
+      "id": "田村_悠和_渋川_群馬県",
       "appearances": 1
     }
   ]

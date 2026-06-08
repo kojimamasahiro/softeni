@@ -1,12 +1,40 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 24,
   "byCategory": {
-    "doubles": 15
+    "doubles": 17,
+    "team": 1,
+    "singles": 6
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "山陽学園",
+        "teamId": "sanyougakuen",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "馬島_汐理_山陽学園高校_岡山県"
+        ]
+      },
+      "historicalBest": {
+        "team": "山陽学園",
+        "teamId": "sanyougakuen",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "馬島_汐理_山陽学園高校_岡山県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -41,11 +69,31 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "山陽学園",
+        "teamId": "sanyougakuen",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "山陽学園",
+        "teamId": "sanyougakuen",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 20,
+  "uniquePlayers": 29,
   "topPlayers": [
     {
       "id": "馬島_沙英_山陽学園_岡山県",

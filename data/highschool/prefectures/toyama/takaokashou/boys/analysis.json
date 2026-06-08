@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 44,
+  "totalAppearances": 51,
   "byCategory": {
-    "doubles": 36,
-    "singles": 3,
+    "doubles": 39,
+    "singles": 7,
     "team": 5
   },
   "resultsByCategory": {
@@ -12,13 +12,13 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "前川_悠成_高岡商_富山県"
+          "前川_悠成_高岡商業高校_富山県"
         ]
       },
       "historicalBest": {
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 49,
+  "uniquePlayers": 54,
   "topPlayers": [
     {
       "id": "白井_瀬都_高岡商_富山県",
@@ -104,15 +104,15 @@
       "appearances": 4
     },
     {
+      "id": "前川_悠成_高岡商_富山県",
+      "appearances": 4
+    },
+    {
       "id": "西川_陽都_高岡商_富山県",
       "appearances": 3
     },
     {
-      "id": "前川_悠成_高岡商_富山県",
-      "appearances": 3
-    },
-    {
-      "id": "草地_凌冴_鹿児島商_鹿児島県",
+      "id": "角崎_豪哉_高岡商_富山県",
       "appearances": 3
     }
   ]

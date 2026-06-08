@@ -1,12 +1,26 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 6
+    "doubles": 8,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "尚絅",
+        "teamId": "shoukei",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "花田_娃子_尚絅高校_熊本県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +59,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "久原_梨夢_尚絅_熊本県",

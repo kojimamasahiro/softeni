@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
     "doubles": 8,
-    "team": 1
+    "team": 1,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "岩手",
+        "teamId": "iwate",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": [
+          "長根_煌和_岩手高校"
+        ]
+      },
+      "historicalBest": {
+        "team": "岩手",
+        "teamId": "iwate",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "高橋_翔琉_岩手高校_岩手県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -56,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "長根_煌和_岩手_岩手県",

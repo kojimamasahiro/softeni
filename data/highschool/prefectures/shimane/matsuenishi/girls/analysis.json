@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "松江西",
+        "teamId": "matsuenishi",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "石津_結麻_松江西高校_島根県"
+        ]
+      },
+      "historicalBest": {
+        "team": "松江西",
+        "teamId": "matsuenishi",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "石津_結麻_松江西高校_島根県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "石津_結麻_松江西_島根県",
@@ -57,6 +84,14 @@
     },
     {
       "id": "藤田_望杏_松江西_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "木須_井心愛_松江西高校_島根",
+      "appearances": 1
+    },
+    {
+      "id": "石津_結麻_松江西高校_島根",
       "appearances": 1
     }
   ]

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 37,
+  "totalAppearances": 57,
   "byCategory": {
-    "doubles": 29,
-    "singles": 3,
+    "doubles": 41,
+    "singles": 11,
     "team": 5
   },
   "resultsByCategory": {
@@ -12,13 +12,13 @@
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "中易_快翔_羽黒_山形県"
+          "中易_快翔_羽黒高校_日本連盟県"
         ]
       },
       "historicalBest": {
@@ -28,11 +28,11 @@
         "prefectureId": "yamagata",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "木皿_璃夢斗_羽黒_山形県"
+          "中易_快翔_羽黒高校_日本連盟県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "4回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "熊谷_春輝_羽黒_山形県",
-          "中易_快翔_羽黒_山形県"
+          "佐藤_悠翔_羽黒_山形県",
+          "日野_莉大_羽黒_山形県"
         ]
       },
       "historicalBest": {
@@ -93,11 +93,15 @@
       }
     }
   },
-  "uniquePlayers": 37,
+  "uniquePlayers": 62,
   "topPlayers": [
     {
       "id": "木皿_璃夢斗_羽黒_山形県",
       "appearances": 5
+    },
+    {
+      "id": "中易_快翔_羽黒_山形県",
+      "appearances": 4
     },
     {
       "id": "川崎_彪雅_羽黒_山形県",
@@ -109,10 +113,6 @@
     },
     {
       "id": "阿部_瑛斗_羽黒_山形県",
-      "appearances": 3
-    },
-    {
-      "id": "小見_碧斗_羽黒_山形県",
       "appearances": 3
     }
   ]

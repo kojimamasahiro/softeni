@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
     "doubles": 3,
-    "team": 1
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -28,7 +28,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "金沢学院",
+        "teamId": "kanazawagakuin",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
       "historicalBest": {
         "team": "金沢学院",
         "teamId": "kanazawagakuin",
@@ -36,8 +46,8 @@
         "prefectureId": "ishikawa",
         "result": "2回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "girls"
       }
     }

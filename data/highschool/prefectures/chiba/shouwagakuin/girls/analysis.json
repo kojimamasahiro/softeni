@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 48,
   "byCategory": {
-    "doubles": 23,
-    "team": 4
+    "doubles": 36,
+    "team": 4,
+    "singles": 8
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "昭和学院",
+        "teamId": "shouwagakuin",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "稲葉_あこ_昭和学院高校_千葉県"
+        ]
+      },
+      "historicalBest": {
+        "team": "昭和学院",
+        "teamId": "shouwagakuin",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "稲葉_あこ_昭和学院高校_千葉県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 25,
+  "uniquePlayers": 52,
   "topPlayers": [
     {
       "id": "平野_帆乃花_昭和学院_千葉県",
@@ -85,8 +112,8 @@
       "appearances": 3
     },
     {
-      "id": "田中_悠_昭和学院_千葉県",
-      "appearances": 2
+      "id": "服部_七海_昭和学院高校_千葉",
+      "appearances": 3
     }
   ]
 }

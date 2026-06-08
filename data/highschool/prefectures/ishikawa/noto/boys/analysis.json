@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 29,
+  "totalAppearances": 51,
   "byCategory": {
-    "doubles": 22,
-    "singles": 2,
-    "team": 5
+    "doubles": 31,
+    "singles": 14,
+    "team": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "noto",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "藤木_晴叶_能登_石川県"
+          "藤岡_蓮_能登高校"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "noto",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "藤木_晴叶_能登_石川県"
+          "藤岡_蓮_能登高校"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 29,
+  "uniquePlayers": 49,
   "topPlayers": [
     {
       "id": "藤木_晴叶_能登_石川県",
@@ -104,16 +104,16 @@
       "appearances": 3
     },
     {
-      "id": "井元_啓斗_能登_石川県",
-      "appearances": 2
+      "id": "阿部_堯_能登_石川県",
+      "appearances": 3
     },
     {
-      "id": "飯田_航仁_能登_石川県",
-      "appearances": 2
+      "id": "髙澤_泉_能登_石川県",
+      "appearances": 3
     },
     {
-      "id": "反保_皐聖_能登_石川県",
-      "appearances": 2
+      "id": "常岡_葵_能登_石川県",
+      "appearances": 3
     }
   ]
 }

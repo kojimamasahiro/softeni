@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 40,
+  "totalAppearances": 49,
   "byCategory": {
-    "doubles": 29,
-    "singles": 6,
-    "team": 5
+    "doubles": 35,
+    "singles": 8,
+    "team": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -74,9 +74,9 @@
         "teamId": "towanomorisanai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2025,
         "gender": "boys"
       },
@@ -93,11 +93,19 @@
       }
     }
   },
-  "uniquePlayers": 35,
+  "uniquePlayers": 43,
   "topPlayers": [
     {
       "id": "岩城_啓太_とわの森三愛_北海道",
-      "appearances": 5
+      "appearances": 6
+    },
+    {
+      "id": "宮崎_航和_とわの森三愛_北海道",
+      "appearances": 4
+    },
+    {
+      "id": "佐藤_諒_とわの森三愛_北海道",
+      "appearances": 4
     },
     {
       "id": "長南_理大_とわの森三愛_北海道",
@@ -106,14 +114,6 @@
     {
       "id": "太田_遥来_とわの森三愛_北海道",
       "appearances": 4
-    },
-    {
-      "id": "宮崎_航和_とわの森三愛_北海道",
-      "appearances": 3
-    },
-    {
-      "id": "佐藤_諒_とわの森三愛_北海道",
-      "appearances": 3
     }
   ]
 }

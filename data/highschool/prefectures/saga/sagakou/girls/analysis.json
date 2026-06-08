@@ -1,0 +1,109 @@
+{
+  "totalAppearances": 15,
+  "byCategory": {
+    "team": 2,
+    "doubles": 9,
+    "singles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "山田_玲華_旭川実_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "山田_玲華_旭川実_北海道"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "杉林_絢花_旭川実_北海道",
+          "内藤_鈴_旭川実_北海道"
+        ]
+      },
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": [
+          "尾崎_瀬里奈_旭川実_北海道",
+          "山田_萌華_旭川実_北海道"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2021,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 16,
+  "topPlayers": [
+    {
+      "id": "清水_心結_旭川実_北海道",
+      "appearances": 3
+    },
+    {
+      "id": "内藤_鈴_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "田中_芽依_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "山田_玲華_旭川実_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "石井_莉乃_旭川実_北海道",
+      "appearances": 2
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 45,
   "byCategory": {
-    "doubles": 19,
-    "team": 3,
-    "singles": 2
+    "doubles": 30,
+    "team": 4,
+    "singles": 11
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "girls",
         "playerIds": [
-          "栗田_みらい_羽黒_山形県"
+          "對馬_優_羽黒高校_山形県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "girls",
         "playerIds": [
-          "栗田_みらい_羽黒_山形県"
+          "對馬_優_羽黒高校_山形県"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 22,
+  "uniquePlayers": 43,
   "topPlayers": [
     {
       "id": "山田_蒼子_羽黒_山形県",
@@ -112,8 +112,8 @@
       "appearances": 3
     },
     {
-      "id": "戸川_瑠花_羽黒_山形県",
-      "appearances": 2
+      "id": "對馬_優_羽黒高校_山形",
+      "appearances": 3
     }
   ]
 }

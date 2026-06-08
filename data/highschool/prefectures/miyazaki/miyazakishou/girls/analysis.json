@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 32,
+  "totalAppearances": 52,
   "byCategory": {
-    "doubles": 24,
-    "team": 5,
-    "singles": 3
+    "doubles": 30,
+    "team": 6,
+    "singles": 16
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "2回戦敗退",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "山口_優菜_宮崎商_宮崎県"
+          "山口_優菜_宮崎商業高校_宮崎"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "2回戦敗退",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "山口_優菜_宮崎商_宮崎県"
+          "山口_優菜_宮崎商業高校_宮崎"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "5回戦敗退",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "瀬戸口_椛_宮崎商_宮崎県",
-          "水谷_静流_宮崎商_宮崎県"
+          "天間_麗奈_東北高校_宮城県",
+          "山口_優菜_宮崎商業高校_宮崎県"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "5回戦敗退",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "瀬戸口_椛_宮崎商_宮崎県",
-          "水谷_静流_宮崎商_宮崎県"
+          "天間_麗奈_東北高校_宮城県",
+          "山口_優菜_宮崎商業高校_宮崎県"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 44,
   "topPlayers": [
     {
       "id": "上米良_凛乃_宮崎商_宮崎県",
@@ -112,8 +112,8 @@
       "appearances": 4
     },
     {
-      "id": "増田_くるみ_宮崎商_宮崎県",
-      "appearances": 3
+      "id": "山口_優菜_宮崎商業高校_宮崎",
+      "appearances": 4
     }
   ]
 }

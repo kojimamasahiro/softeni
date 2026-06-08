@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 42,
+  "totalAppearances": 103,
   "byCategory": {
-    "doubles": 34,
-    "singles": 3,
-    "team": 5
+    "doubles": 60,
+    "singles": 37,
+    "team": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "touhoku",
         "prefecture": "宮城県",
         "prefectureId": "miyagi",
-        "result": "2回戦敗退",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "水木_洸_東北_宮城県"
+          "齋藤_玲壱_東北高校_宮城県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "touhoku",
         "prefecture": "宮城県",
         "prefectureId": "miyagi",
-        "result": "3回戦敗退",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "浅見_竣一朗_東北_宮城県"
+          "齋藤_玲壱_東北高校_宮城県"
         ]
       }
     },
@@ -93,10 +93,14 @@
       }
     }
   },
-  "uniquePlayers": 43,
+  "uniquePlayers": 98,
   "topPlayers": [
     {
       "id": "浅見_竣一朗_東北_宮城県",
+      "appearances": 5
+    },
+    {
+      "id": "水木_洸_東北_宮城県",
       "appearances": 5
     },
     {
@@ -104,16 +108,12 @@
       "appearances": 4
     },
     {
-      "id": "水木_洸_東北_宮城県",
+      "id": "松田_拳弥_東北_宮城県",
       "appearances": 4
     },
     {
-      "id": "伊関_悠_東北_宮城県",
-      "appearances": 3
-    },
-    {
-      "id": "大澤_真紗斗_東北_宮城県",
-      "appearances": 3
+      "id": "白井_颯_東北_宮城県",
+      "appearances": 4
     }
   ]
 }

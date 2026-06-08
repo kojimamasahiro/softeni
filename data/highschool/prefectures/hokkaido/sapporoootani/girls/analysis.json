@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 7,
-    "singles": 2
+    "doubles": 10,
+    "singles": 7,
+    "team": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -11,13 +12,13 @@
         "teamId": "sapporoootani",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "嶋野_杏_札幌大谷_北海道"
+          "西畑_星愛_札幌大谷_北海道"
         ]
       },
       "historicalBest": {
@@ -25,13 +26,13 @@
         "teamId": "sapporoootani",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
         "gender": "girls",
         "playerIds": [
-          "嶋野_杏_札幌大谷_北海道"
+          "西畑_星愛_札幌大谷_北海道"
         ]
       }
     },
@@ -68,11 +69,31 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "札幌大谷",
+        "teamId": "sapporoootani",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "札幌大谷",
+        "teamId": "sapporoootani",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "西畑_咲愛_札幌大谷_北海道",
@@ -83,16 +104,16 @@
       "appearances": 3
     },
     {
+      "id": "西畑_咲愛_札幌大谷高校_北海道",
+      "appearances": 3
+    },
+    {
       "id": "上原_心音_札幌大谷_北海道",
       "appearances": 2
     },
     {
       "id": "菅原_萌音_札幌大谷_北海道",
       "appearances": 2
-    },
-    {
-      "id": "菅原_芽里_札幌大谷_北海道",
-      "appearances": 1
     }
   ]
 }

@@ -1,25 +1,38 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 7,
+    "doubles": 8,
     "team": 3,
-    "singles": 1
+    "singles": 7
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "松江南",
+        "teamId": "matsueminami",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "行田_理佐子_松江南高校_島根"
+        ]
+      },
       "historicalBest": {
         "team": "松江南",
         "teamId": "matsueminami",
         "prefecture": "島根県",
         "prefectureId": "shimane",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "girls",
         "playerIds": [
-          "野津_楓未_松江南_島根県"
+          "行田_理佐子_松江南高校_島根"
         ]
       }
     },
@@ -70,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 19,
   "topPlayers": [
     {
       "id": "野津_楓未_松江南_島根県",

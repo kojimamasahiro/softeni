@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 38,
+  "totalAppearances": 62,
   "byCategory": {
-    "doubles": 29,
-    "singles": 5,
-    "team": 4
+    "doubles": 41,
+    "singles": 16,
+    "team": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "okazakijousai",
         "prefecture": "愛知県",
         "prefectureId": "aichi",
-        "result": "2回戦敗退",
+        "result": "優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "長濱_瑠飛_岡崎城西_愛知県"
+          "塚本_光琉_岡崎城西高校_愛知"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "okazakijousai",
         "prefecture": "愛知県",
         "prefectureId": "aichi",
-        "result": "ベスト8",
+        "result": "優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "塚本_星弥_岡崎城西_愛知県"
+          "塚本_光琉_岡崎城西高校_愛知"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 37,
+  "uniquePlayers": 65,
   "topPlayers": [
     {
       "id": "板倉_豪_岡崎城西_愛知県",

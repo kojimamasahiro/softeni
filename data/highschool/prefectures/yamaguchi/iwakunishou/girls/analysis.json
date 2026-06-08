@@ -1,13 +1,27 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 12,
-    "team": 1
+    "doubles": 13,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "岩国商",
+        "teamId": "iwakunishou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "高橋_瑚子_岩国商業高等学校_山口県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -56,7 +70,7 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 18,
   "topPlayers": [
     {
       "id": "森脇_陽香_岩国商_山口県",

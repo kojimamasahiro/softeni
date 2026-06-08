@@ -1,12 +1,26 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長浜北",
+        "teamId": "nagahamakita",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2023,
+        "gender": "boys",
+        "playerIds": [
+          "玉置_毅斗_長浜北高校_滋賀県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,7 +45,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "佐々_斗輝也_長浜北_滋賀県",
@@ -39,6 +53,18 @@
     },
     {
       "id": "玉置_毅斗_長浜北_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "玉置_毅斗_長浜北高校_滋賀",
+      "appearances": 1
+    },
+    {
+      "id": "千田_拓実_立命館守山高校_滋賀",
+      "appearances": 1
+    },
+    {
+      "id": "玉置_毅斗_長浜北高校_滋賀県",
       "appearances": 1
     }
   ]

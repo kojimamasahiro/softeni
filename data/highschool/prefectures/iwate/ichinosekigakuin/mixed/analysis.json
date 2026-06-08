@@ -1,0 +1,45 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "一関学院",
+        "teamId": "ichinosekigakuin",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2023,
+        "gender": "mixed",
+        "playerIds": [
+          "江原_茂_一関学院高等学校_岩手県",
+          "江原_愛_一関市協会_岩手県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "江原_茂_一関学院高等学校_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "江原_愛_一関市協会_岩手県",
+      "appearances": 1
+    }
+  ]
+}

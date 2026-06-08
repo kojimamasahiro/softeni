@@ -1,0 +1,59 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "東北",
+        "teamId": "touhoku",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2025,
+        "gender": "mixed",
+        "playerIds": [
+          "丸山_海斗_one team",
+          "天間_麗奈_東北高校"
+        ]
+      },
+      "historicalBest": {
+        "team": "東北",
+        "teamId": "touhoku",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "優勝",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2025,
+        "gender": "mixed",
+        "playerIds": [
+          "丸山_海斗_one team",
+          "天間_麗奈_東北高校"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "丸山_海斗_one team",
+      "appearances": 1
+    },
+    {
+      "id": "天間_麗奈_東北高校",
+      "appearances": 1
+    }
+  ]
+}

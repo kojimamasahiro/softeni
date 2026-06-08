@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 21,
   "byCategory": {
-    "doubles": 8,
-    "team": 2
+    "doubles": 12,
+    "team": 2,
+    "singles": 7
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "水戸女子",
+        "teamId": "mitojoshi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "緑川_あい_水戸女子高_茨城県"
+        ]
+      },
+      "historicalBest": {
+        "team": "水戸女子",
+        "teamId": "mitojoshi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "4回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": [
+          "小川_木乃花_水戸女子高等学校_茨城県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -56,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 27,
   "topPlayers": [
     {
       "id": "斉藤_奈々_水戸女子_茨城県",

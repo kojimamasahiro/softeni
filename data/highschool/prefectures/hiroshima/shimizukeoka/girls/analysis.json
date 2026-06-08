@@ -1,12 +1,26 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 3,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": [
+          "寺田_光緒_清水ヶ丘高校_広島県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,7 +45,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "山出_真由_清水ヶ丘_広島県",

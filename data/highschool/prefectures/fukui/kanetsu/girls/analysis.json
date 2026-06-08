@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "谷川_真優_金津_福井県"
+        ]
+      },
+      "historicalBest": {
+        "team": "金津",
+        "teamId": "kanetsu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": [
+          "谷川_真優_金津_福井県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "岸野_心海_金津_福井県",
@@ -61,6 +88,10 @@
     },
     {
       "id": "吉川_凛_金津_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "谷川_真優_金津_福井県",
       "appearances": 1
     }
   ]

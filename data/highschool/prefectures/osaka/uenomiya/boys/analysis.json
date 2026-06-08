@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 49,
+  "totalAppearances": 88,
   "byCategory": {
-    "doubles": 40,
-    "singles": 4,
-    "team": 5
+    "doubles": 60,
+    "singles": 22,
+    "team": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "uenomiya",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト4",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "福田_喜大_上宮_大阪府"
+          "福田_喜大_上宮高校_大阪"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "uenomiya",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト4",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-junior",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "福田_喜大_上宮_大阪府"
+          "福田_喜大_上宮高校_大阪"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "uenomiya",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト8",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "三上_柊二_上宮_大阪",
-          "平井_啓吾_上宮_大阪"
+          "福田_喜大_上宮高校_大阪",
+          "宮田_亮_尽誠学園高校_香川"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "uenomiya",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト8",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "三上_柊二_上宮_大阪",
-          "平井_啓吾_上宮_大阪"
+          "福田_喜大_上宮高校_大阪",
+          "宮田_亮_尽誠学園高校_香川"
         ]
       }
     },
@@ -93,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 47,
+  "uniquePlayers": 88,
   "topPlayers": [
     {
       "id": "清水_駿_上宮_大阪府",
@@ -108,12 +108,12 @@
       "appearances": 4
     },
     {
-      "id": "渡部_峻史_上宮_大阪府",
-      "appearances": 3
+      "id": "福田_喜大_上宮高校_大阪",
+      "appearances": 4
     },
     {
-      "id": "三上_柊二_上宮_大阪府",
-      "appearances": 3
+      "id": "福田_喜大_上宮高校_大阪府",
+      "appearances": 4
     }
   ]
 }

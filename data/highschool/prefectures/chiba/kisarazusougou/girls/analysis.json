@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 2
+    "doubles": 4,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "木更津総合",
+        "teamId": "kisarazusougou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "木部_理央_木更津総合高校_千葉県"
+        ]
+      },
+      "historicalBest": {
+        "team": "木更津総合",
+        "teamId": "kisarazusougou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "木部_理央_木更津総合高校_千葉県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,8 +72,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "木部_理央_木更津総合高校_千葉",
+      "appearances": 2
+    },
     {
       "id": "木部_理央_木更津総合_千葉県",
       "appearances": 1

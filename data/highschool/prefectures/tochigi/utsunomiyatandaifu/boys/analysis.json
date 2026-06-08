@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 21,
   "byCategory": {
-    "doubles": 13,
+    "doubles": 16,
     "singles": 2,
-    "team": 2
+    "team": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -74,10 +74,10 @@
         "teamId": "utsunomiyatandaifu",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "boys"
       },
       "historicalBest": {
@@ -85,10 +85,10 @@
         "teamId": "utsunomiyatandaifu",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "boys"
       }
     }
@@ -97,22 +97,22 @@
   "topPlayers": [
     {
       "id": "並木_孝輔_宇都宮短大附_栃木県",
+      "appearances": 4
+    },
+    {
+      "id": "和久井_結仁_宇都宮短大附_栃木県",
+      "appearances": 3
+    },
+    {
+      "id": "加賀谷_久翔_宇都宮短大附_栃木県",
+      "appearances": 3
+    },
+    {
+      "id": "三森_大蔵_宇都宮短大附_栃木県",
       "appearances": 3
     },
     {
       "id": "渡邉_優心_宇都宮短大附_栃木県",
-      "appearances": 2
-    },
-    {
-      "id": "和久井_結仁_宇都宮短大附_栃木県",
-      "appearances": 2
-    },
-    {
-      "id": "加賀谷_久翔_宇都宮短大附_栃木県",
-      "appearances": 2
-    },
-    {
-      "id": "三森_大蔵_宇都宮短大附_栃木県",
       "appearances": 2
     }
   ]

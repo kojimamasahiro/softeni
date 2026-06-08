@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 23,
   "byCategory": {
-    "doubles": 13,
-    "team": 2
+    "doubles": 16,
+    "team": 2,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "星野",
+        "teamId": "hoshino",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "髙杉_萌那_星野高校_埼玉"
+        ]
+      },
+      "historicalBest": {
+        "team": "星野",
+        "teamId": "hoshino",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
+        "gender": "girls",
+        "playerIds": [
+          "髙杉_萌那_星野高校_埼玉"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -66,7 +93,7 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
       "id": "髙杉_萌那_星野_埼玉県",

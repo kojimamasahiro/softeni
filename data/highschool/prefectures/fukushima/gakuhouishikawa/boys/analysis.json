@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 30,
   "byCategory": {
-    "doubles": 22,
+    "doubles": 25,
     "team": 2,
-    "singles": 1
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "gakuhouishikawa",
         "prefecture": "福島県",
         "prefectureId": "fukushima",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "猪股_悠志_秋田北鷹_秋田県"
+          "渡邉_智隼_学法石川高校"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "gakuhouishikawa",
         "prefecture": "福島県",
         "prefectureId": "fukushima",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-singles",
+        "year": 2025,
         "gender": "boys",
         "playerIds": [
-          "猪股_悠志_秋田北鷹_秋田県"
+          "渡邉_智隼_学法石川高校"
         ]
       }
     },
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 35,
+  "uniquePlayers": 40,
   "topPlayers": [
     {
       "id": "菅原_大馳_学法石川_福島県",
@@ -94,15 +94,15 @@
       "appearances": 4
     },
     {
+      "id": "唐澤_季弥_学法石川_福島",
+      "appearances": 2
+    },
+    {
       "id": "佐藤_良吹_学法石川_福島県",
       "appearances": 2
     },
     {
-      "id": "因幡_颯汰_秋田北鷹_秋田県",
-      "appearances": 2
-    },
-    {
-      "id": "片岡_将武_秋田北鷹_秋田県",
+      "id": "辻本_泰知_学法石川_福島県",
       "appearances": 2
     }
   ]

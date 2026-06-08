@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 9,
-    "team": 1,
+    "doubles": 11,
+    "team": 2,
     "singles": 2
   },
   "resultsByCategory": {
@@ -69,7 +69,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
       "historicalBest": {
         "team": "浜松商",
         "teamId": "hamamatsushou",
@@ -77,13 +87,13 @@
         "prefectureId": "shizuoka",
         "result": "2回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "溝上_明璃_浜松商_静岡県",

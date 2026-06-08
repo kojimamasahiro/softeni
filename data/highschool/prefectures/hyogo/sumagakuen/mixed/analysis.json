@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "須磨学園",
+        "teamId": "sumagakuen",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "準優勝",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2023,
+        "gender": "mixed",
+        "playerIds": [
+          "丸中_大明_NTT西日本_広島県",
+          "前田_梨緒_須磨学園高校_兵庫県"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "丸中_大明_NTT西日本_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "前田_梨緒_須磨学園高校_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "本倉_健太郎_NTT西日本_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "中谷_さくら_須磨学園高校_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

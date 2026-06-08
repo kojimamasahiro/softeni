@@ -1,12 +1,39 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "下山学園",
+        "teamId": "gezangakuen",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "小野_美桜_下山学園高校_青森県"
+        ]
+      },
+      "historicalBest": {
+        "team": "下山学園",
+        "teamId": "gezangakuen",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "小野_美桜_下山学園高校_青森県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -45,14 +72,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "小野_美桜_下山学園高校_青森県",
+      "appearances": 2
+    },
     {
       "id": "小野_美桜_下山学園_青森県",
       "appearances": 1
     },
     {
       "id": "太田_咲良_下山学園_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "小野_美桜_下山学園高校_青森",
+      "appearances": 1
+    },
+    {
+      "id": "差ヶ久保_羽美_東北中学校_青森",
       "appearances": 1
     }
   ]

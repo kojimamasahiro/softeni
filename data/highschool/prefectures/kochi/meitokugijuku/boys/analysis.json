@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 36,
+  "totalAppearances": 66,
   "byCategory": {
-    "doubles": 28,
-    "singles": 3,
-    "team": 5
+    "doubles": 44,
+    "singles": 16,
+    "team": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "meitokugijuku",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "木本_琉偉_明徳義塾_高知県"
+          "木本_琉偉_明徳義塾高校_高知県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "meitokugijuku",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "木本_琉偉_明徳義塾_高知県"
+          "木本_琉偉_明徳義塾高校_高知県"
         ]
       }
     },
@@ -42,14 +42,14 @@
         "teamId": "meitokugijuku",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "ベスト8",
+        "result": "準優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "三田_勇人_明徳義塾_高知県",
-          "西山_友晴_明徳義塾_高知県"
+          "福見_哉太_明徳義塾_高知県",
+          "山本_悠人_明徳義塾_高知県"
         ]
       },
       "historicalBest": {
@@ -57,14 +57,14 @@
         "teamId": "meitokugijuku",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "ベスト8",
+        "result": "準優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "三田_勇人_明徳義塾_高知県",
-          "西山_友晴_明徳義塾_高知県"
+          "福見_哉太_明徳義塾_高知県",
+          "山本_悠人_明徳義塾_高知県"
         ]
       }
     },
@@ -93,15 +93,19 @@
       }
     }
   },
-  "uniquePlayers": 36,
+  "uniquePlayers": 71,
   "topPlayers": [
     {
       "id": "木本_琉偉_明徳義塾_高知県",
-      "appearances": 5
+      "appearances": 6
     },
     {
       "id": "佐渡_宝来_明徳義塾_高知県",
       "appearances": 4
+    },
+    {
+      "id": "福島_惇_明徳義塾_高知",
+      "appearances": 3
     },
     {
       "id": "石川_伊吹_明徳義塾_高知県",
@@ -109,10 +113,6 @@
     },
     {
       "id": "福島_涼_明徳義塾_高知県",
-      "appearances": 3
-    },
-    {
-      "id": "小笠原_健斗_明徳義塾_高知県",
       "appearances": 3
     }
   ]

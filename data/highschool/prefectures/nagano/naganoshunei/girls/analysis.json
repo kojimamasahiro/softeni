@@ -1,13 +1,40 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4,
-    "team": 1
+    "doubles": 5,
+    "team": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "竹内_楓_長野俊英高校_長野県"
+        ]
+      },
+      "historicalBest": {
+        "team": "長野俊英",
+        "teamId": "naganoshunei",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": [
+          "竹内_楓_長野俊英高校_長野県"
+        ]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -56,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "加藤_憩_長野俊英_長野県",

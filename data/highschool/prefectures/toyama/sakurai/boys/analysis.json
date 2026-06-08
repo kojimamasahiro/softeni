@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 5,
-    "singles": 1
+    "doubles": 6,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,9 +41,9 @@
         "teamId": "sakurai",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
@@ -56,9 +56,9 @@
         "teamId": "sakurai",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
         "playerIds": [
@@ -72,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "大家_健慎_桜井_富山県",
@@ -80,7 +80,11 @@
     },
     {
       "id": "大江_陽太_桜井_富山県",
-      "appearances": 3
+      "appearances": 4
+    },
+    {
+      "id": "山崎_陽叶_桜井_富山県",
+      "appearances": 2
     },
     {
       "id": "大家_健慎_桜井_富山",
@@ -88,10 +92,6 @@
     },
     {
       "id": "大江_陽太_桜井_富山",
-      "appearances": 1
-    },
-    {
-      "id": "高縁_悠生_桜井_富山県",
       "appearances": 1
     }
   ]

@@ -689,7 +689,8 @@
     "aliases": [
       "三重",
       "三重高校",
-      "三重高等学校"
+      "三重高等学校",
+      "上尾ＩＭＵＡ"
     ],
     "reasons": [
       {
@@ -1610,6 +1611,27 @@
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-girls.json",
             "team": "三重高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "三重高校"
+          }
+        ]
+      },
+      {
+        "year": 2026,
+        "lastName": "鈴木",
+        "firstName": "綾華",
+        "aliases": [
+          "三重高校",
+          "上尾ＩＭＵＡ"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "zennihon-mixed",
+            "file": "doubles-none-mixed.json",
+            "team": "上尾ＩＭＵＡ"
           },
           {
             "tournamentId": "zennihon-singles",
@@ -6485,7 +6507,8 @@
       "学法石川",
       "石川高校",
       "学法石川高校",
-      "石川高等学校"
+      "石川高等学校",
+      "学校法人石川高校"
     ],
     "reasons": [
       {
@@ -6863,6 +6886,58 @@
             "team": "学法石川"
           }
         ]
+      },
+      {
+        "year": 2026,
+        "lastName": "大武",
+        "firstName": "夢菜",
+        "aliases": [
+          "学校法人石川高校",
+          "学法石川高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "zennihon-mixed",
+            "file": "doubles-none-mixed.json",
+            "team": "学法石川高校"
+          },
+          {
+            "tournamentId": "zennihon-senbatsu",
+            "file": "doubles-none-girls.json",
+            "team": "学校法人石川高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "学校法人石川高校"
+          }
+        ]
+      },
+      {
+        "year": 2026,
+        "lastName": "大武",
+        "firstName": "姫菜",
+        "aliases": [
+          "学校法人石川高校",
+          "学法石川高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "zennihon-mixed",
+            "file": "doubles-none-mixed.json",
+            "team": "学法石川高校"
+          },
+          {
+            "tournamentId": "zennihon-senbatsu",
+            "file": "doubles-none-girls.json",
+            "team": "学校法人石川高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "学校法人石川高校"
+          }
+        ]
       }
     ]
   },
@@ -7051,7 +7126,8 @@
     "canonical": "宮崎商",
     "aliases": [
       "宮崎商",
-      "宮崎商業高校"
+      "宮崎商業高校",
+      "宮崎商業高等学校"
     ],
     "reasons": [
       {
@@ -7301,6 +7377,32 @@
             "tournamentId": "highschool-championship",
             "file": "doubles-none-girls.json",
             "team": "宮崎商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "宮崎商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2026,
+        "lastName": "山口",
+        "firstName": "優菜",
+        "aliases": [
+          "宮崎商業高校",
+          "宮崎商業高等学校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "zennihon-mixed",
+            "file": "doubles-none-mixed.json",
+            "team": "宮崎商業高等学校"
+          },
+          {
+            "tournamentId": "zennihon-senbatsu",
+            "file": "singles-none-girls.json",
+            "team": "宮崎商業高校"
           },
           {
             "tournamentId": "zennihon-singles",

@@ -1,8 +1,9 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 28,
   "byCategory": {
-    "doubles": 6,
-    "singles": 4
+    "doubles": 18,
+    "singles": 8,
+    "team": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -41,14 +42,14 @@
         "teamId": "kitakadai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "竹村_純生_北科大_北海道",
-          "松田_快晴_北科大_北海道"
+          "西_拓郎_北科大高_北海道",
+          "小杉_昂道_北科大高_北海道"
         ]
       },
       "historicalBest": {
@@ -56,43 +57,63 @@
         "teamId": "kitakadai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "竹村_純生_北科大_北海道",
-          "松田_快晴_北科大_北海道"
+          "西_拓郎_北科大高_北海道",
+          "小杉_昂道_北科大高_北海道"
         ]
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "竹村_純生_北科大_北海道",
-      "appearances": 4
+      "appearances": 5
     },
     {
       "id": "松田_快晴_北科大_北海道",
+      "appearances": 4
+    },
+    {
+      "id": "根田_大地_北科大高_北海道",
+      "appearances": 4
+    },
+    {
+      "id": "西_拓郎_北科大高_北海道",
+      "appearances": 4
+    },
+    {
+      "id": "小杉_昂道_北科大高_北海道",
       "appearances": 3
-    },
-    {
-      "id": "西_拓郎_北科大_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "森谷_太一_北科大_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "秋山_想太_北科大_北海道",
-      "appearances": 1
     }
   ]
 }

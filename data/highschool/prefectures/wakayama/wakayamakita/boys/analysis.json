@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 36,
+  "totalAppearances": 47,
   "byCategory": {
-    "doubles": 28,
-    "singles": 3,
-    "team": 5
+    "doubles": 31,
+    "singles": 10,
+    "team": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -12,13 +12,13 @@
         "teamId": "wakayamakita",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "野田_弦輝_和歌山北_和歌山県"
+          "内海_遼太_和歌山北高校_和歌山県"
         ]
       },
       "historicalBest": {
@@ -26,13 +26,13 @@
         "teamId": "wakayamakita",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
         "gender": "boys",
         "playerIds": [
-          "野田_弦輝_和歌山北_和歌山県"
+          "内海_遼太_和歌山北高校_和歌山県"
         ]
       }
     },
@@ -74,9 +74,9 @@
         "teamId": "wakayamakita",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2025,
         "gender": "boys"
       },
@@ -87,13 +87,13 @@
         "prefectureId": "wakayama",
         "result": "ベスト8",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 37,
+  "uniquePlayers": 49,
   "topPlayers": [
     {
       "id": "野田_弦輝_和歌山北_和歌山県",

@@ -1,0 +1,59 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "田村",
+        "teamId": "tamura",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2025,
+        "gender": "mixed",
+        "playerIds": [
+          "草野_春真_田村高校",
+          "北川_アンナ璃咲_明治大学"
+        ]
+      },
+      "historicalBest": {
+        "team": "田村",
+        "teamId": "tamura",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2025,
+        "gender": "mixed",
+        "playerIds": [
+          "草野_春真_田村高校",
+          "北川_アンナ璃咲_明治大学"
+        ]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "草野_春真_田村高校",
+      "appearances": 1
+    },
+    {
+      "id": "北川_アンナ璃咲_明治大学",
+      "appearances": 1
+    }
+  ]
+}

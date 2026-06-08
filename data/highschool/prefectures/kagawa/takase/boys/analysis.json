@@ -1,27 +1,23 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": {
         "team": "高瀬",
         "teamId": "takase",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "1回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "吉田_真紘_高瀬_香川",
-          "入江_辰_高瀬_香川"
+          "富塚_涼雅_高瀬_福島県"
         ]
       },
       "historicalBest": {
@@ -29,14 +25,45 @@
         "teamId": "takase",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "1回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
         "year": 2024,
         "gender": "boys",
         "playerIds": [
-          "吉田_真紘_高瀬_香川",
-          "入江_辰_高瀬_香川"
+          "富塚_涼雅_高瀬_福島県"
+        ]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高瀬",
+        "teamId": "takase",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "星優_惟_高瀬_福島県",
+          "佐藤_絢真_西郷第一_福島県"
+        ]
+      },
+      "historicalBest": {
+        "team": "高瀬",
+        "teamId": "takase",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": [
+          "星優_惟_高瀬_福島県",
+          "佐藤_絢真_西郷第一_福島県"
         ]
       }
     },
@@ -45,7 +72,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "吉田_真紘_高瀬_香川",
@@ -53,6 +80,18 @@
     },
     {
       "id": "入江_辰_高瀬_香川",
+      "appearances": 1
+    },
+    {
+      "id": "影山_達也_高瀬_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "根本_樹希_泉_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "星優_惟_高瀬_福島県",
       "appearances": 1
     }
   ]
