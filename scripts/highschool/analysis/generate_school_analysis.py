@@ -2,6 +2,63 @@ import os
 import json
 from collections import defaultdict, Counter
 from datetime import datetime
+import pathlib
+
+# inferred-team-aliases.json を読み込んでエイリアス->正規名マップを作る
+aliases_path = pathlib.Path(__file__).resolve().parents[1] / '03list' / 'inferred-team-aliases.json'
+alias_map = {}
+alias_match_order = []
+if aliases_path.exists():
+    try:
+        with open(aliases_path, 'r', encoding='utf-8') as f:
+            alias_list = json.load(f)
+        for item in alias_list:
+            canonical = item.get('canonical')
+            for a in item.get('aliases', []) or []:
+                alias_map[a] = canonical
+        # 長いエイリアスからマッチするようソート（部分一致の衝突を避ける）
+        alias_match_order = sorted(alias_map.keys(), key=lambda s: -len(s))
+    except Exception:
+        alias_map = {}
+        alias_match_order = []
+
+
+def normalize_prefecture_suffix(suffix: str, canonical_prefecture: str) -> str:
+    if not canonical_prefecture:
+        return suffix
+    if suffix == canonical_prefecture:
+        return suffix
+
+    def strip_suffix(name: str) -> str:
+        return name.replace('県', '').replace('府', '').replace('都', '').replace('道', '')
+
+    if strip_suffix(suffix) == strip_suffix(canonical_prefecture):
+        return canonical_prefecture
+
+    return suffix
+
+
+def normalize_player_school(player_id: str, entry: dict) -> str:
+    if not alias_map or '_' not in player_id:
+        return player_id
+
+    head, suffix = player_id.rsplit('_', 1)
+    if '_' not in head:
+        return player_id
+
+    name_part, school_part = head.rsplit('_', 1)
+    normalized_school = school_part
+    for alias in alias_match_order:
+        if alias == school_part:
+            normalized_school = alias_map.get(alias, school_part)
+            break
+
+    normalized_prefecture = normalize_prefecture_suffix(
+        suffix,
+        entry.get('prefecture', '')
+    )
+
+    return f"{name_part}_{normalized_school}_{normalized_prefecture}"
 
 # データベース
 base_dir = '../../../data/highschool/prefectures'
@@ -77,7 +134,9 @@ def analyze_team(entries):
 
         if 'playerIds' in e:
             for pid in e['playerIds']:
-                player_counter[pid] += 1
+                # playerId の中の学校名の揺れを吸収して正規化する
+                normalized = normalize_player_school(pid, e)
+                player_counter[normalized] += 1
 
     return {
         "totalAppearances": total,
