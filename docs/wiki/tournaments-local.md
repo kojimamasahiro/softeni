@@ -157,6 +157,27 @@ source of truth:
 
 - `--min-confidence` で保存対象の下限スコアを調整できる
 
+### 定型予選大会(高校総体予選など)の半自動反映
+
+県単位で毎年開催される定型予選大会は、候補検知から公開反映までを半自動化している。
+
+- 候補検知時に「高校総体 / インターハイ / 全国高等学校総合体育大会」等のパターンで `inferred.qualifierType: "interhigh"` を付与する(`scripts/normalize-local-tournament-candidate.mjs`)
+- 該当時は confidence に +0.1 する
+- 例外として、qualifierType 付きかつ結果キーワードを含む候補は PDF / Excel 直リンクでも保存する(予選結果は PDF 直リンク掲載が多いため)
+- `node scripts/apply-accepted-qualifiers.mjs` で `accepted` 済みの予選候補を公開データへ反映する
+  - tournamentId は `highschool-{prefectureSlug}-interhigh-qualifier`
+  - `local_index.json` に大会が無ければ自動登録する(47県の事前一括登録は不要)
+  - `information/{tournamentId}.json` に年度+`sourceUrl` のみのエントリを追加する(`startDate`/`endDate` は空文字、`categories` は空配列)
+  - 既存の `sourceUrl` は `--force` 無しでは上書きしない。反映済み候補には `appliedAt` を記録し再実行は冪等
+  - `--dry-run` / `--allow-new`(new 候補のプレビュー用)/ `--type=` / `--documents=` に対応
+- 県予選の内部データ化(details 追加)は、取得可能なデータがある県だけ行う方針(本戦主・県予選従)
+
+巡回元について:
+
+- IH 予選の結果は都道府県連盟ではなく高体連専門部サイトに掲載されることが多い
+- `prefecture-sources.json` の `sourceUrls` 配列に高体連専門部 URL を追加済み(2026-06 時点で 21 県)
+- Wix / Google Sites 等の JS レンダリング主体のサイトは現行クローラ(fetch + cheerio)では読めない場合がある
+
 ### この方針の意図
 
 - `/tournaments/` 用と `/tournaments/local/` 用で二重管理しない

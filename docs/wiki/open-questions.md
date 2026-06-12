@@ -6,6 +6,12 @@
 - `softeni-pick` mode と `score` mode を今後どこまで別プロダクトとして扱うか
 - score 側のヘッダー/フッターやブランド表現を分ける正式方針はあるか
 
+## 試合詳細の beta 昇格（検討中 2026-06）
+
+- 試合詳細の公開面を `/beta/matches-results/*` から本体ドメインの indexable な URL（候補: `/matches/*`）へ移設するか
+- 移設する場合、`generate-beta-matches-json.mjs` の最新 50 件上限を撤廃するか、アーカイブ方式にするか（上限から漏れた試合の公開 URL が 404 になるため、インデックス開始前に決める必要がある。docs/wiki/data-import.md 参照）
+- `source_site_tournament_id` を大会ページへのリンク用に安全な形で公開 JSON に出すか（内部項目除外ルールとの整合）
+
 ## score データモデル
 
 - score 機能の正式な source of truth は Supabase か、それとも生成済み JSON か

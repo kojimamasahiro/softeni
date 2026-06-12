@@ -57,6 +57,22 @@ function inferYear(...texts) {
   return undefined;
 }
 
+const QUALIFIER_PATTERNS = [
+  {
+    type: 'interhigh',
+    pattern:
+      /高校総体|インターハイ|インハイ|全国高等学校総合体育大会|高等学校総合体育大会|ＩＨ予選|IH予選/i,
+  },
+];
+
+export function inferQualifierType(...texts) {
+  const joined = texts.join(' ');
+  for (const { type, pattern } of QUALIFIER_PATTERNS) {
+    if (pattern.test(joined)) return type;
+  }
+  return undefined;
+}
+
 function inferEventType(...texts) {
   const joined = texts.join(' ');
   if (/シングルス|single/i.test(joined)) return 'singles';
@@ -87,7 +103,13 @@ function inferTournamentName(title, contextText) {
   return stripped || undefined;
 }
 
-function inferConfidence({ title, contextText, normalizedUrl, contentType }) {
+function inferConfidence({
+  title,
+  contextText,
+  normalizedUrl,
+  contentType,
+  qualifierType,
+}) {
   let score = 0.2;
   if (title) score += 0.25;
   if (contextText) score += 0.15;
@@ -95,6 +117,8 @@ function inferConfidence({ title, contextText, normalizedUrl, contentType }) {
   if (hasExcludedKeyword(title, contextText, normalizedUrl)) score -= 0.2;
   if (contentType === 'pdf' || contentType === 'excel') score += 0.2;
   if (contentType === 'html') score += 0.1;
+  // 毎年開催が確実な定型大会(高校総体予選など)は候補としての確度が高い
+  if (qualifierType) score += 0.1;
   return Math.max(0, Math.min(Number(score.toFixed(2)), 0.99));
 }
 
@@ -142,16 +166,22 @@ export function normalizeLocalTournamentCandidate({
       ? link.contentType
       : detectContentType(normalizedUrl);
 
-  if (
-    (contentType === 'pdf' || contentType === 'excel') &&
-    !link.allowDocumentLink
-  ) {
-    return { ignored: true, normalizedUrl };
-  }
-
   const title = buildTitle(link.rawTitle, normalizedUrl);
   const rawTitle = normalizeWhitespace(link.rawTitle);
   const contextText = normalizeWhitespace(link.contextText || '') || undefined;
+
+  // 高校総体予選などの定型大会の「結果」資料は、PDF/Excel 直リンクでも候補として保持する
+  const isQualifierResult =
+    Boolean(inferQualifierType(rawTitle, title, contextText, normalizedUrl)) &&
+    hasResultKeyword(rawTitle, contextText, normalizedUrl);
+
+  if (
+    (contentType === 'pdf' || contentType === 'excel') &&
+    !link.allowDocumentLink &&
+    !isQualifierResult
+  ) {
+    return { ignored: true, normalizedUrl };
+  }
 
   if (
     contentType === 'image' &&
@@ -171,16 +201,25 @@ export function normalizeLocalTournamentCandidate({
     return { ignored: true, normalizedUrl };
   }
 
+  const qualifierType = inferQualifierType(
+    rawTitle,
+    title,
+    contextText,
+    normalizedUrl,
+  );
+
   const inferred = {
     year: inferYear(rawTitle, title, contextText, normalizedUrl),
     tournamentName: inferTournamentName(title, contextText),
     eventType: inferEventType(rawTitle, title, contextText, normalizedUrl),
     category: inferCategory(rawTitle, title, contextText, normalizedUrl),
+    ...(qualifierType ? { qualifierType } : {}),
     confidence: inferConfidence({
       title,
       contextText,
       normalizedUrl,
       contentType,
+      qualifierType,
     }),
   };
 

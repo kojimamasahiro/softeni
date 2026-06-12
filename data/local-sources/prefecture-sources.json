@@ -3,7 +3,11 @@
     "prefecture": "北海道",
     "slug": "hokkaido",
     "sourceUrl": "http://hokkaidosofttennis.com",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "http://hokkaidosofttennis.com",
+      "https://hokkaidokoutairen.wixsite.com/softtennis"
+    ]
   },
   {
     "prefecture": "青森県",
@@ -21,7 +25,11 @@
     "prefecture": "宮城県",
     "slug": "miyagi",
     "sourceUrl": "https://softtennis-miyagi.com/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://softtennis-miyagi.com/",
+      "https://miyagiktst.hits.jp/"
+    ]
   },
   {
     "prefecture": "秋田県",
@@ -39,37 +47,61 @@
     "prefecture": "福島県",
     "slug": "fukushima",
     "sourceUrl": "https://softtennis-fukushima.com/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://softtennis-fukushima.com/",
+      "https://sites.google.com/fcs.ed.jp/fukushima-kst"
+    ]
   },
   {
     "prefecture": "茨城県",
     "slug": "ibaraki",
     "sourceUrl": "https://www2.cnet.ne.jp/ibsta/pc_ent.htm",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www2.cnet.ne.jp/ibsta/pc_ent.htm",
+      "https://ibaraki-koutairen.jp/softtennis/"
+    ]
   },
   {
     "prefecture": "栃木県",
     "slug": "tochigi",
     "sourceUrl": "http://sta.tochigi.jp",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "http://sta.tochigi.jp",
+      "https://thssta.hiho.jp/ths_sta/"
+    ]
   },
   {
     "prefecture": "群馬県",
     "slug": "gunma",
     "sourceUrl": "https://www.soft-tennis.com/gunma/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/gunma/",
+      "https://sites.google.com/edu-g.gsn.ed.jp/gunmahssofttennis/"
+    ]
   },
   {
     "prefecture": "埼玉県",
     "slug": "saitama",
     "sourceUrl": "http://www.saitama-sta.com",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "http://www.saitama-sta.com",
+      "https://www.saitama-hs-softtennis.com/"
+    ]
   },
   {
     "prefecture": "千葉県",
     "slug": "chiba",
     "sourceUrl": "http://softtennis-chibaren.com",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "http://softtennis-chibaren.com",
+      "http://www.chiba-kou-st.com/"
+    ]
   },
   {
     "prefecture": "東京都",
@@ -81,13 +113,21 @@
     "prefecture": "神奈川県",
     "slug": "kanagawa",
     "sourceUrl": "https://kanagawa-softtennis.jp/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://kanagawa-softtennis.jp/",
+      "https://sites.google.com/view/kanagawakenkoutairensofttennis/"
+    ]
   },
   {
     "prefecture": "新潟県",
     "slug": "niigata",
     "sourceUrl": "http://www.nsta-ngt.sakura.ne.jp/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "http://www.nsta-ngt.sakura.ne.jp/",
+      "http://ngt-softtennis.sakura.ne.jp/"
+    ]
   },
   {
     "prefecture": "富山県",
@@ -111,13 +151,21 @@
     "prefecture": "山梨県",
     "slug": "yamanashi",
     "sourceUrl": "https://www.soft-tennis.com/yamanashi/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/yamanashi/",
+      "https://yamanashi-koutairen.jp/soft-tennis/"
+    ]
   },
   {
     "prefecture": "長野県",
     "slug": "nagano",
     "sourceUrl": "https://www.soft-tennis.com/nagano/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/nagano/",
+      "http://softtennis.ngn-hssp.org/"
+    ]
   },
   {
     "prefecture": "岐阜県",
@@ -129,7 +177,11 @@
     "prefecture": "静岡県",
     "slug": "shizuoka",
     "sourceUrl": "https://www.soft-tennis.com/shizuoka/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/shizuoka/",
+      "https://shizuoka-koutairen.com/soft-tennis/"
+    ]
   },
   {
     "prefecture": "愛知県",
@@ -141,7 +193,11 @@
     "prefecture": "三重県",
     "slug": "mie",
     "sourceUrl": "https://www.soft-tennis.com/mie/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/mie/",
+      "https://mie-koutairen.jp/soft-tennis/"
+    ]
   },
   {
     "prefecture": "滋賀県",
@@ -153,19 +209,31 @@
     "prefecture": "京都府",
     "slug": "kyoto",
     "sourceUrl": "https://www.soft-tennis.com/kyoto/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/kyoto/",
+      "https://sites.google.com/view/kyotokotairen-st"
+    ]
   },
   {
     "prefecture": "大阪府",
     "slug": "osaka",
     "sourceUrl": "http://web1.kcn.jp",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "http://web1.kcn.jp",
+      "https://osakahsst.sakura.ne.jp/"
+    ]
   },
   {
     "prefecture": "兵庫県",
     "slug": "hyogo",
     "sourceUrl": "https://softtennis-hyogo.com/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://softtennis-hyogo.com/",
+      "https://www.hyogo-c.ed.jp/~koutairen/softtennis/softtennis.htm"
+    ]
   },
   {
     "prefecture": "奈良県",
@@ -195,13 +263,21 @@
     "prefecture": "岡山県",
     "slug": "okayama",
     "sourceUrl": "https://www.soft-tennis.com/okayama/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/okayama/",
+      "https://sites.google.com/view/oka-softtennis/"
+    ]
   },
   {
     "prefecture": "広島県",
     "slug": "hiroshima",
     "sourceUrl": "https://www.soft-tennis.com/hiroshima/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/hiroshima/",
+      "https://hiroshima-koutairen.jp/softtennis/event/schedule/"
+    ]
   },
   {
     "prefecture": "山口県",
@@ -219,7 +295,11 @@
     "prefecture": "香川県",
     "slug": "kagawa",
     "sourceUrl": "https://softtennis-kagawa.com/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://softtennis-kagawa.com/",
+      "http://www.koutairen.com/softtennis/"
+    ]
   },
   {
     "prefecture": "愛媛県",
@@ -255,7 +335,11 @@
     "prefecture": "熊本県",
     "slug": "kumamoto",
     "sourceUrl": "https://www.soft-tennis.com/kumamoto/",
-    "crawlLevel": "link_only"
+    "crawlLevel": "link_only",
+    "sourceUrls": [
+      "https://www.soft-tennis.com/kumamoto/",
+      "https://sites.google.com/g.bears.ed.jp/ktr-softtennis"
+    ]
   },
   {
     "prefecture": "大分県",
