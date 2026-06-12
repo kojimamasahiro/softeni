@@ -91,6 +91,7 @@
 
 - Supabase の `matches`、`games`、`points` から公開用 JSON を生成する
 - 取得対象は作成日時降順の最新 50 件
+- 出力先 `public/data/beta-matches/` は毎回削除して再生成するため、上限から漏れた試合は JSON ごと消え、該当詳細ページは次回ビルドから 404 になる（インデックスさせる運用に移る場合は上限撤廃が前提。docs/wiki/data-import.md の注意を参照）
 - 環境変数がない場合は既存スナップショットを再利用する
 - 一覧用には `summarizeMatchForIndex` でポイント配列を落として軽量化する
 - 公開前に `toPublicMatchSnapshot` で内部項目を除外する

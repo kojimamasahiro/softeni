@@ -28,9 +28,16 @@
 
 確認できる仕様:
 
-- 最新 50 件を対象
+- 最新 50 件を対象（`LATEST_BETA_MATCH_LIMIT = 50`）
 - 環境変数が無い場合は既存スナップショット再利用
 - `meta.json` / `index.json` / `matches/*.json` / `growth/**` を更新
+- 出力時に `public/data/beta-matches/` を毎回削除して再生成する（`ensureCleanDir`）
+
+### 注意: 50 件上限と公開 URL の消失リスク
+
+- 51 件目以降、作成日時が古い試合は `meta.json` と `matches/*.json` から完全に落ちる
+- `meta.json` の `matchIds` が静的パス生成の第一候補なので、落ちた試合の詳細ページは次回ビルドから 404 になる
+- 現状は `/beta/*` が robots.txt で disallow かつ sitemap 除外のため実害はないが、試合詳細ページを公開 URL としてインデックスさせる場合は、事前に上限撤廃（全件出力）またはアーカイブ方式への変更が必要
 
 ## 大会・選手データ生成
 
