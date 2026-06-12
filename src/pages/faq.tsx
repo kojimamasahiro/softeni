@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 export default function FAQ() {
   return (
@@ -38,7 +39,7 @@ export default function FAQ() {
         />
       </Head>
 
-      <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100">
+      <PageLayout>
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
@@ -74,7 +75,7 @@ export default function FAQ() {
             個人の非営利利用に限り、掲載データの活用は可能です。商用利用を希望される場合はご相談ください。
           </p>
         </section>
-      </main>
+      </PageLayout>
     </>
   );
 }

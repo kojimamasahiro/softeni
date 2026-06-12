@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 export default function Contact() {
   return (
@@ -38,7 +39,7 @@ export default function Contact() {
         />
       </Head>
 
-      <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100">
+      <PageLayout>
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
@@ -60,7 +61,7 @@ export default function Contact() {
         >
           Googleフォームを開く
         </a>
-      </main>
+      </PageLayout>
     </>
   );
 }

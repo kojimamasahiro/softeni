@@ -11,6 +11,7 @@ import MetaHead from '@/components/MetaHead';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
+import PageLayout from '@/components/PageLayout';
 import type {
   EventResult,
   Player,
@@ -200,34 +201,32 @@ export default function TeamYearGenderPage({
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: teamName, href: `/teams/${info.id}` },
-              { label: `${year}年度 ${genderLabel}`, href: pageUrl },
-            ]}
-          />
+      <PageLayout className="space-y-6">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: teamName, href: `/teams/${info.id}` },
+            { label: `${year}年度 ${genderLabel}`, href: pageUrl },
+          ]}
+        />
 
-          <h1 className="text-2xl font-bold">{pageTitle}</h1>
+        <h1 className="text-2xl font-bold">{pageTitle}</h1>
 
-          <TeamsYearlySummary summary={calculateSummary} />
+        <TeamsYearlySummary summary={calculateSummary} />
 
-          <TeamsEventSummary overallTable={overallTable} />
+        <TeamsEventSummary overallTable={overallTable} />
 
-          <TeamsRanking statsList={statsList} />
+        <TeamsRanking statsList={statsList} />
 
-          <div className="mt-8">
-            <Link
-              href={`/teams/${info.id}`}
-              className="text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              ← {teamName} トップへ戻る
-            </Link>
-          </div>
+        <div className="mt-8">
+          <Link
+            href={`/teams/${info.id}`}
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            ← {teamName} トップへ戻る
+          </Link>
         </div>
-      </main>
+      </PageLayout>
     </>
   );
 }

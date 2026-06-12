@@ -9,6 +9,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
+import PageLayout from '@/components/PageLayout';
 import {
   aggregateTeamResults,
   generateTeamInfo,
@@ -80,64 +81,62 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: 'STリーグ', href: '/st-league' },
-              { label: `${year}年度`, href: `/st-league/${year}/teams` }, // Tentative link, maybe should be just text if index doesn't have year
-            ]}
-          />
-          <h1 className="text-2xl font-bold">{pageTitle}</h1>
-          <p>本年度の成績を掲載しています。</p>
-          {/* Tabs */}
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
-            <button
-              className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-                activeTab === 'boys'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-              }`}
-              onClick={() => setActiveTab('boys')}
-            >
-              男子
-            </button>
-            <button
-              className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-                activeTab === 'girls'
-                  ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-              }`}
-              onClick={() => setActiveTab('girls')}
-            >
-              女子
-            </button>
-          </div>
-          {/* Content */}
-          <div className="space-y-12">
-            {activeTeams.map((team) => (
-              <>
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {team.info.name}
-                  </h3>
-                </div>
-                <div key={team.info.id} className="">
-                  <TeamsYearlySummary summary={team.summary} />
-                  <TeamsRanking statsList={team.stats} />
-                </div>
-              </>
-            ))}
-
-            {activeTeams.length === 0 && (
-              <div className="text-center py-10 text-gray-500 dark:text-gray-400">
-                参加チームの情報がありません。
-              </div>
-            )}
-          </div>
+      <PageLayout maxWidth="4xl" className="space-y-8">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: 'STリーグ', href: '/st-league' },
+            { label: `${year}年度`, href: `/st-league/${year}/teams` }, // Tentative link, maybe should be just text if index doesn't have year
+          ]}
+        />
+        <h1 className="text-2xl font-bold">{pageTitle}</h1>
+        <p>本年度の成績を掲載しています。</p>
+        {/* Tabs */}
+        <div className="flex border-b border-gray-200 dark:border-gray-700">
+          <button
+            className={`py-2 px-4 font-medium text-sm focus:outline-none ${
+              activeTab === 'boys'
+                ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
+                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+            }`}
+            onClick={() => setActiveTab('boys')}
+          >
+            男子
+          </button>
+          <button
+            className={`py-2 px-4 font-medium text-sm focus:outline-none ${
+              activeTab === 'girls'
+                ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400'
+                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+            }`}
+            onClick={() => setActiveTab('girls')}
+          >
+            女子
+          </button>
         </div>
-      </main>
+        {/* Content */}
+        <div className="space-y-12">
+          {activeTeams.map((team) => (
+            <>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {team.info.name}
+                </h3>
+              </div>
+              <div key={team.info.id} className="">
+                <TeamsYearlySummary summary={team.summary} />
+                <TeamsRanking statsList={team.stats} />
+              </div>
+            </>
+          ))}
+
+          {activeTeams.length === 0 && (
+            <div className="text-center py-10 text-gray-500 dark:text-gray-400">
+              参加チームの情報がありません。
+            </div>
+          )}
+        </div>
+      </PageLayout>
     </>
   );
 }

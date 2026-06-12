@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 type TeamInfo = {
   id: string;
@@ -95,58 +96,56 @@ export default function TeamResultsPage({ info, stats }: Props) {
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: teamName, href: `/teams/${info.id}` },
-            ]}
-          />
+      <PageLayout className="space-y-6">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: teamName, href: `/teams/${info.id}` },
+          ]}
+        />
 
-          <h1 className="text-2xl font-bold">{teamName} | 所属別成績</h1>
+        <h1 className="text-2xl font-bold">{teamName} | 所属別成績</h1>
 
-          {/* ✅ チーム紹介文の追加 */}
-          <section className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            <p className="mb-2">
-              {teamName}
-              は、全国大会や地域大会で活躍するソフトテニスチームであり、多くの選手が主要大会で優れた成績を収めています。
-              このページでは、大会ごとの成績、出場選手の勝敗、ペア別実績などを一覧で確認できます。
-            </p>
-            <p>今後の分析や応援、記録管理などにぜひお役立てください。</p>
-          </section>
+        {/* ✅ チーム紹介文の追加 */}
+        <section className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="mb-2">
+            {teamName}
+            は、全国大会や地域大会で活躍するソフトテニスチームであり、多くの選手が主要大会で優れた成績を収めています。
+            このページでは、大会ごとの成績、出場選手の勝敗、ペア別実績などを一覧で確認できます。
+          </p>
+          <p>今後の分析や応援、記録管理などにぜひお役立てください。</p>
+        </section>
 
-          {/* Group results by year and gender */}
-          {stats.map(({ year, stats: yearStats }) => (
-            <div key={year} className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
-                {year}年度
-              </h2>
+        {/* Group results by year and gender */}
+        {stats.map(({ year, stats: yearStats }) => (
+          <div key={year} className="mb-12">
+            <h2 className="text-2xl font-bold mb-6 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+              {year}年度
+            </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {yearStats.map(({ gender, count }) => {
-                  const genderLabel = gender === 'boys' ? '男子' : '女子';
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {yearStats.map(({ gender, count }) => {
+                const genderLabel = gender === 'boys' ? '男子' : '女子';
 
-                  return (
-                    <Link
-                      key={gender}
-                      href={`/teams/${info.id}/${year}/${gender}`}
-                      className="block bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-                    >
-                      <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">
-                        {genderLabel}
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        大会数: {count}
-                      </p>
-                    </Link>
-                  );
-                })}
-              </div>
+                return (
+                  <Link
+                    key={gender}
+                    href={`/teams/${info.id}/${year}/${gender}`}
+                    className="block bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
+                  >
+                    <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">
+                      {genderLabel}
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      大会数: {count}
+                    </p>
+                  </Link>
+                );
+              })}
             </div>
-          ))}
-        </div>
-      </main>
+          </div>
+        ))}
+      </PageLayout>
     </>
   );
 }

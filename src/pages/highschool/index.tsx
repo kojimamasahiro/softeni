@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 export default function HighschoolIndex() {
   const redirectHref = '/highschool/boys';
@@ -20,20 +21,18 @@ export default function HighschoolIndex() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://softeni-pick.com/highschool/boys" />
       </Head>
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-2xl font-bold mb-4">高校カテゴリ</h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300">
-            男子ページへ移動しています。
-            <Link
-              href={redirectHref}
-              className="ml-1 text-blue-600 dark:text-blue-300 hover:underline"
-            >
-              移動しない場合はこちら
-            </Link>
-          </p>
-        </div>
-      </main>
+      <PageLayout className="text-center">
+        <h1 className="text-2xl font-bold mb-4">高校カテゴリ</h1>
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+          男子ページへ移動しています。
+          <Link
+            href={redirectHref}
+            className="ml-1 text-blue-600 dark:text-blue-300 hover:underline"
+          >
+            移動しない場合はこちら
+          </Link>
+        </p>
+      </PageLayout>
     </>
   );
 }

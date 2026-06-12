@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import MetaHead from '@/components/MetaHead';
 import Breadcrumbs from '@/components/Breadcrumb';
+import PageLayout from '@/components/PageLayout';
 
 export default function PrivacyPolicy() {
   return (
@@ -38,7 +39,7 @@ export default function PrivacyPolicy() {
         />
       </Head>
 
-      <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-100">
+      <PageLayout>
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
@@ -91,7 +92,7 @@ export default function PrivacyPolicy() {
             当サイトは、法令の改正や運営方針の変更に伴い、プライバシーポリシーを変更することがあります。変更後の内容は本ページにて速やかに公開いたします。
           </p>
         </section>
-      </main>
+      </PageLayout>
     </>
   );
 }

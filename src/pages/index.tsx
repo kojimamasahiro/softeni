@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import { getAllDetailRecords, loadInformationMap } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
 
@@ -77,7 +78,7 @@ export default function Home({ recentTournaments }: HomeProps) {
       </Head>
 
       {!isClient ? null : (
-        <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+        <PageLayout maxWidth="4xl">
           <div className="max-w-3xl mx-auto">
             <Breadcrumbs crumbs={[{ label: 'ホーム', href: '/' }]} />
           </div>
@@ -291,7 +292,7 @@ export default function Home({ recentTournaments }: HomeProps) {
               </div>
             </section>
           </div>
-        </main>
+        </PageLayout>
       )}
     </>
   );

@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import TournamentSearchTable, {
   TournamentInstance,
   TournamentLevel,
@@ -130,52 +131,50 @@ export default function TournamentsIndexPage({
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: '大会一覧', href: '/tournaments' },
-            ]}
-          />
+      <PageLayout maxWidth="4xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '大会一覧', href: '/tournaments' },
+          ]}
+        />
 
-          <h1 className="text-2xl font-bold mb-6">大会一覧</h1>
+        <h1 className="text-2xl font-bold mb-6">大会一覧</h1>
 
-          <div className="flex gap-3 mb-6">
-            <Link
-              href="/tournaments/major"
-              className="flex-1 flex flex-col items-center gap-1 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors"
-            >
-              <span className="text-lg">🏆</span>
-              <span className="font-semibold text-sm text-yellow-800 dark:text-yellow-200">
-                主要大会結果
-              </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                全国・ブロック大会
-              </span>
-            </Link>
-            <Link
-              href="/tournaments/local"
-              className="flex-1 flex flex-col items-center gap-1 p-4 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors"
-            >
-              <span className="text-lg">📍</span>
-              <span className="font-semibold text-sm text-green-800 dark:text-green-200">
-                地域大会結果
-              </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                都道府県・地域連盟大会
-              </span>
-            </Link>
-          </div>
-
-          <TournamentSearchTable
-            instances={instances}
-            prefectures={prefectures}
-            years={years}
-            generations={generations}
-          />
+        <div className="flex gap-3 mb-6">
+          <Link
+            href="/tournaments/major"
+            className="flex-1 flex flex-col items-center gap-1 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors"
+          >
+            <span className="text-lg">🏆</span>
+            <span className="font-semibold text-sm text-yellow-800 dark:text-yellow-200">
+              主要大会結果
+            </span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              全国・ブロック大会
+            </span>
+          </Link>
+          <Link
+            href="/tournaments/local"
+            className="flex-1 flex flex-col items-center gap-1 p-4 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors"
+          >
+            <span className="text-lg">📍</span>
+            <span className="font-semibold text-sm text-green-800 dark:text-green-200">
+              地域大会結果
+            </span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              都道府県・地域連盟大会
+            </span>
+          </Link>
         </div>
-      </main>
+
+        <TournamentSearchTable
+          instances={instances}
+          prefectures={prefectures}
+          years={years}
+          generations={generations}
+        />
+      </PageLayout>
     </>
   );
 }

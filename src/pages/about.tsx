@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 export default function About() {
   const updatedAt = '2025年6月18日';
@@ -41,7 +42,7 @@ export default function About() {
         />
       </Head>
 
-      <main className="max-w-3xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900">
+      <PageLayout>
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
@@ -102,7 +103,7 @@ export default function About() {
         <p className="text-xs text-right text-gray-500 mt-12">
           最終更新日: {updatedAt}
         </p>
-      </main>
+      </PageLayout>
     </>
   );
 }

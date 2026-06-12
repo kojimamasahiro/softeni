@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import { PlayerInfo } from '@/types/index';
 
 type Props = {
@@ -138,7 +139,7 @@ export default function PlayerInformation({
         />
       </Head>
 
-      <div className="max-w-3xl mx-auto px-4 py-8">
+      <PageLayout>
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
@@ -249,7 +250,7 @@ export default function PlayerInformation({
             ))}
           </ul>
         </section>
-      </div>
+      </PageLayout>
     </>
   );
 }

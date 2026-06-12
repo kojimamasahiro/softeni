@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
+import PageLayout from '@/components/PageLayout';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
 type TeamSummary = {
@@ -98,10 +99,8 @@ const tournamentPriority: Record<string, number> = {
 const getTournamentSortPriority = (tournamentId: string): number =>
   tournamentPriority[tournamentId] ?? 99;
 
-const isVisibleGender = (
-  entryGender: string,
-  pageGender: 'boys' | 'girls',
-) => entryGender === pageGender || entryGender === 'mixed';
+const isVisibleGender = (entryGender: string, pageGender: 'boys' | 'girls') =>
+  entryGender === pageGender || entryGender === 'mixed';
 
 export default function PrefectureHighschoolPage({
   prefecture,
@@ -217,205 +216,201 @@ export default function PrefectureHighschoolPage({
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              {
-                label: `高校${genderLabel}`,
-                href: `/highschool/${gender}`,
-              },
-              {
-                label: prefectureName,
-                href: `/highschool/${gender}/${prefecture.id}`,
-              },
-            ]}
-          />
+      <PageLayout maxWidth="4xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            {
+              label: `高校${genderLabel}`,
+              href: `/highschool/${gender}`,
+            },
+            {
+              label: prefectureName,
+              href: `/highschool/${gender}/${prefecture.id}`,
+            },
+          ]}
+        />
 
-          <h1 className="text-2xl font-bold mb-2">
-            {prefecture.name} 高校{genderLabel} 全国大会成績
-          </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-            {prefecture.name}
-            の高校{genderLabel}
-            が全国大会で残した成績をまとめています。全国高等学校総合体育大会、
-            高校総体、ハイスクールジャパンカップなどソフトテニス主要大会での学校別実績を確認できます。
-            詳しい内容は、各高校のページからご覧いただけます。
+        <h1 className="text-2xl font-bold mb-2">
+          {prefecture.name} 高校{genderLabel} 全国大会成績
+        </h1>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+          {prefecture.name}
+          の高校{genderLabel}
+          が全国大会で残した成績をまとめています。全国高等学校総合体育大会、
+          高校総体、ハイスクールジャパンカップなどソフトテニス主要大会での学校別実績を確認できます。
+          詳しい内容は、各高校のページからご覧いただけます。
+        </p>
+
+        <HighschoolGenderToggle
+          gender={gender}
+          boysHref={`/highschool/boys/${prefecture.id}`}
+          girlsHref={`/highschool/girls/${prefecture.id}`}
+          className="mb-8 max-w-sm mx-auto"
+        />
+
+        <section className="grid gap-4 sm:grid-cols-3 mb-8">
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              収録学校数
+            </p>
+            <p className="text-2xl font-bold">{teams.length}校</p>
+          </div>
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              ベスト8以上経験校
+            </p>
+            <p className="text-2xl font-bold">{best8SchoolCount}校</p>
+          </div>
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              直近1年の主要大会掲載校
+            </p>
+            <p className="text-2xl font-bold">{recentMajorSchoolCount}校</p>
+          </div>
+        </section>
+
+        <div className="mb-6">
+          <p className="text-sm">
+            出場校数：{teams.length}校（ベスト8以上：{best8SchoolCount}校）
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+            学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。
+            気になる学校を選ぶと、年度別・大会別の詳細成績を確認できます。
           </p>
 
-          <HighschoolGenderToggle
-            gender={gender}
-            boysHref={`/highschool/boys/${prefecture.id}`}
-            girlsHref={`/highschool/girls/${prefecture.id}`}
-            className="mb-8 max-w-sm mx-auto"
-          />
-
-          <section className="grid gap-4 sm:grid-cols-3 mb-8">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                収録学校数
-              </p>
-              <p className="text-2xl font-bold">{teams.length}校</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                ベスト8以上経験校
-              </p>
-              <p className="text-2xl font-bold">{best8SchoolCount}校</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                直近1年の主要大会掲載校
-              </p>
-              <p className="text-2xl font-bold">{recentMajorSchoolCount}校</p>
-            </div>
-          </section>
-
-          <div className="mb-6">
-            <p className="text-sm">
-              出場校数：{teams.length}校（ベスト8以上：{best8SchoolCount}校）
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
-              学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。
-              気になる学校を選ぶと、年度別・大会別の詳細成績を確認できます。
-            </p>
-
-            {topTeams.length > 0 &&
-              getPerformanceLabel(topTeams[0].result) !== null && (
-                <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
-                  {topTeams[0].year}年の最新大会（{topTeams[0].tournament}
-                  ）では、
-                  {topTeams.map((team, index) => (
-                    <span key={team.teamId}>
-                      {index > 0 ? '、' : ''}
-                      <Link
-                        href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                        className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
-                      >
-                        {team.teamName}
-                      </Link>
-                    </span>
-                  ))}
-                  が<strong>{topTeams[0].result}</strong>
-                  {(() => {
-                    const label = getPerformanceLabel(topTeams[0].result);
-                    switch (label) {
-                      case '好成績':
-                        return 'という好成績を収めました。';
-                      case '健闘':
-                        return 'と健闘しました。';
-                      case '敗退':
-                        return 'となりました。';
-                      case '予選敗退':
-                        return 'となりました。';
-                      default:
-                        return '';
-                    }
-                  })()}
-                </div>
-              )}
-          </div>
-
-          {recentMajorTeams.length > 0 && (
-            <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
-              <h2 className="text-xl font-semibold mb-3">
-                直近1年の主要大会掲載校
-              </h2>
-              <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
-                直近1年に主要大会へ出場した学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
-              </p>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {recentMajorTeams.map((team) => (
-                  <Link
-                    key={team.teamId}
-                    href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                    className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4 hover:bg-white dark:hover:bg-gray-900 transition"
-                  >
-                    <p className="font-semibold">{team.teamName}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                      主要大会掲載 {team.appearances.length}件
-                    </p>
-                    <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
-                      {team.appearances.slice(0, 3).map((appearance) => (
-                        <li
-                          key={`${appearance.tournamentId}-${appearance.year}-${appearance.result}`}
-                        >
-                          {appearance.year}年 {appearance.tournament}（
-                          {appearance.result}）
-                        </li>
-                      ))}
-                    </ul>
-                  </Link>
+          {topTeams.length > 0 &&
+            getPerformanceLabel(topTeams[0].result) !== null && (
+              <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
+                {topTeams[0].year}年の最新大会（{topTeams[0].tournament}
+                ）では、
+                {topTeams.map((team, index) => (
+                  <span key={team.teamId}>
+                    {index > 0 ? '、' : ''}
+                    <Link
+                      href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
+                      className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
+                    >
+                      {team.teamName}
+                    </Link>
+                  </span>
                 ))}
+                が<strong>{topTeams[0].result}</strong>
+                {(() => {
+                  const label = getPerformanceLabel(topTeams[0].result);
+                  switch (label) {
+                    case '好成績':
+                      return 'という好成績を収めました。';
+                    case '健闘':
+                      return 'と健闘しました。';
+                    case '敗退':
+                      return 'となりました。';
+                    case '予選敗退':
+                      return 'となりました。';
+                    default:
+                      return '';
+                  }
+                })()}
               </div>
-            </section>
-          )}
+            )}
+        </div>
 
-          <ul className="space-y-4">
-            {teams.map((team) => (
-              <li key={team.teamId}>
+        {recentMajorTeams.length > 0 && (
+          <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
+            <h2 className="text-xl font-semibold mb-3">
+              直近1年の主要大会掲載校
+            </h2>
+            <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
+              直近1年に主要大会へ出場した学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {recentMajorTeams.map((team) => (
                 <Link
+                  key={team.teamId}
                   href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                  className="block border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                  className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4 hover:bg-white dark:hover:bg-gray-900 transition"
                 >
-                  <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">
-                    {team.teamName}
+                  <p className="font-semibold">{team.teamName}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    主要大会掲載 {team.appearances.length}件
                   </p>
-                  <ul className="text-sm mt-2">
-                    {Object.entries(team.results ?? {}).length === 0 ? (
-                      <li className="text-sm text-gray-500">
-                        成績情報がありません
+                  <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                    {team.appearances.slice(0, 3).map((appearance) => (
+                      <li
+                        key={`${appearance.tournamentId}-${appearance.year}-${appearance.result}`}
+                      >
+                        {appearance.year}年 {appearance.tournament}（
+                        {appearance.result}）
                       </li>
-                    ) : (
-                      Object.entries(team.results)
-                        .sort((a, b) => Number(b[0]) - Number(a[0]))
-                        .map(([year, resultList]) => (
-                          <li key={year}>
-                            {year}年：
-                            {resultList
-                              .slice()
-                              .sort((a, b) => {
-                                const tournamentOrder =
-                                  getTournamentSortPriority(a.tournamentId) -
-                                  getTournamentSortPriority(b.tournamentId);
-                                if (tournamentOrder !== 0) {
-                                  return tournamentOrder;
-                                }
-                                return (
-                                  resultPriority(a.result) -
-                                  resultPriority(b.result)
-                                );
-                              })
-                              .map(
-                                (res) => `${res.tournament}（${res.result}）`,
-                              )
-                              .join('、')}
-                          </li>
-                        ))
-                    )}
+                    ))}
                   </ul>
                 </Link>
-              </li>
-            ))}
-          </ul>
-
-          <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
-            <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
-            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
-              {faqItems.map((item) => (
-                <div
-                  key={item.question}
-                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
-                >
-                  <h3 className="font-semibold mb-2">{item.question}</h3>
-                  <p>{item.answer}</p>
-                </div>
               ))}
             </div>
           </section>
-        </div>
-      </main>
+        )}
+
+        <ul className="space-y-4">
+          {teams.map((team) => (
+            <li key={team.teamId}>
+              <Link
+                href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
+                className="block border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              >
+                <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">
+                  {team.teamName}
+                </p>
+                <ul className="text-sm mt-2">
+                  {Object.entries(team.results ?? {}).length === 0 ? (
+                    <li className="text-sm text-gray-500">
+                      成績情報がありません
+                    </li>
+                  ) : (
+                    Object.entries(team.results)
+                      .sort((a, b) => Number(b[0]) - Number(a[0]))
+                      .map(([year, resultList]) => (
+                        <li key={year}>
+                          {year}年：
+                          {resultList
+                            .slice()
+                            .sort((a, b) => {
+                              const tournamentOrder =
+                                getTournamentSortPriority(a.tournamentId) -
+                                getTournamentSortPriority(b.tournamentId);
+                              if (tournamentOrder !== 0) {
+                                return tournamentOrder;
+                              }
+                              return (
+                                resultPriority(a.result) -
+                                resultPriority(b.result)
+                              );
+                            })
+                            .map((res) => `${res.tournament}（${res.result}）`)
+                            .join('、')}
+                        </li>
+                      ))
+                  )}
+                </ul>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+          <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
+          <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+            {faqItems.map((item) => (
+              <div
+                key={item.question}
+                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
+              >
+                <h3 className="font-semibold mb-2">{item.question}</h3>
+                <p>{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </PageLayout>
     </>
   );
 }

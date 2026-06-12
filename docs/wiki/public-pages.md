@@ -92,6 +92,20 @@
 - `lib/siteConfig.ts`
 - `src/components/MetaHead.tsx`
 
+### 共通ページレイアウト
+
+公開ページ（`/beta/**` を除く）は `src/components/PageLayout.tsx` で統一しています。
+
+- 外側ラッパー: 背景色・余白（`py-10 px-4`）を統一
+- 内側コンテナ: `maxWidth` prop（`3xl`〜`6xl`、デフォルト `3xl`）で各ページの幅を指定
+- `<main>` は `_app.tsx` 側でラップされるため、ページ側では使用しない（入れ子 `<main>` 解消済み）
+- `/beta/**` は対象外（開発中のため）
+
+確認根拠:
+
+- `src/components/PageLayout.tsx`
+- `src/pages/_app.tsx`
+
 ## 現時点での論点
 
 ### URL

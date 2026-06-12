@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 // 型定義
 interface MatchDetail {
@@ -221,252 +222,248 @@ export default function MatchesPage({
         description={`STリーグ${year}シーズンの試合結果と日程、順位表。`}
         url={pageUrl}
       />
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: 'STリーグ', href: '/st-league' },
-              { label: `${year} 試合結果`, href: `/st-league/${year}/matches` },
-            ]}
-          />
+      <PageLayout maxWidth="4xl" className="space-y-8">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: 'STリーグ', href: '/st-league' },
+            { label: `${year} 試合結果`, href: `/st-league/${year}/matches` },
+          ]}
+        />
 
-          <h1 className="text-2xl font-bold">STリーグ {year} 結果・日程</h1>
-          <p>本年度の対戦成績と日程を掲載しています。</p>
+        <h1 className="text-2xl font-bold">STリーグ {year} 結果・日程</h1>
+        <p>本年度の対戦成績と日程を掲載しています。</p>
 
-          {/* Tabs */}
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
-            <button
-              onClick={() => setActiveGender('boys')}
-              className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-                activeGender === 'boys'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-              }`}
-            >
-              男子
-            </button>
-            <button
-              onClick={() => setActiveGender('girls')}
-              className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-                activeGender === 'girls'
-                  ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-              }`}
-            >
-              女子
-            </button>
-          </div>
+        {/* Tabs */}
+        <div className="flex border-b border-gray-200 dark:border-gray-700">
+          <button
+            onClick={() => setActiveGender('boys')}
+            className={`py-2 px-4 font-medium text-sm focus:outline-none ${
+              activeGender === 'boys'
+                ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
+                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+            }`}
+          >
+            男子
+          </button>
+          <button
+            onClick={() => setActiveGender('girls')}
+            className={`py-2 px-4 font-medium text-sm focus:outline-none ${
+              activeGender === 'girls'
+                ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400'
+                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+            }`}
+          >
+            女子
+          </button>
+        </div>
 
-          <div className="space-y-12">
-            {/* 順位サマリー */}
-            <section className="mb-8">
-              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                Ranking
-              </h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                順位は「勝数」→「同勝数内での直接対決勝ち数」→「得失点差」の順で決定されます。
-              </p>
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
-                    <tr>
-                      <th className="py-3 px-4 text-left font-medium w-16">
-                        順位
-                      </th>
-                      <th className="py-3 px-2 text-left font-medium">
-                        チーム
-                      </th>
-                      <th className="py-3 px-2 text-center font-medium w-20">
-                        勝敗
-                      </th>
-                      <th className="py-3 px-4 text-center font-medium w-16">
-                        得失
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                    {ranking.map((team, index) => (
-                      <tr
-                        key={team.teamId}
-                        className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
-                      >
-                        <td className="py-3 text-center font-bold text-gray-700 dark:text-gray-300">
-                          {index + 1}
-                        </td>
-                        <td className="py-3 px-2 font-medium">{team.name}</td>
-                        <td className="py-3 px-2 text-center">
-                          {team.played > 0 ? (
-                            <span className="inline-flex gap-1">
-                              <span className="font-bold">{team.won}</span>
-                              <span className="text-gray-400 mx-0.5">-</span>
-                              <span className="text-gray-500">{team.lost}</span>
-                            </span>
-                          ) : (
-                            <span className="text-gray-400">-</span>
-                          )}
-                        </td>
-                        <td className="py-3 px-4 text-center text-gray-500 dark:text-gray-400 text-xs">
-                          {team.played > 0
-                            ? `${team.pointsWon}-${team.pointsLost}`
-                            : '-'}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            {/* 対戦結果一覧 */}
-            <section className="mb-12">
-              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                Matches
-              </h2>
-              <div className="space-y-3">
-                {currentMatches.map((match) => (
-                  <div
-                    key={match.id}
-                    className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border transition-all ${
-                      expandedMatches.has(match.id)
-                        ? 'border-blue-500 dark:border-blue-500 ring-1 ring-blue-100 dark:ring-blue-900'
-                        : 'border-gray-100 dark:border-gray-700'
-                    }`}
-                  >
-                    {/* ヘッダー行（常に表示） */}
-                    <div
-                      className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 active:bg-gray-100 dark:active:bg-gray-700/80 transition-colors select-none"
-                      onClick={() => toggleMatch(match.id)}
+        <div className="space-y-12">
+          {/* 順位サマリー */}
+          <section className="mb-8">
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+              Ranking
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+              順位は「勝数」→「同勝数内での直接対決勝ち数」→「得失点差」の順で決定されます。
+            </p>
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
+                  <tr>
+                    <th className="py-3 px-4 text-left font-medium w-16">
+                      順位
+                    </th>
+                    <th className="py-3 px-2 text-left font-medium">チーム</th>
+                    <th className="py-3 px-2 text-center font-medium w-20">
+                      勝敗
+                    </th>
+                    <th className="py-3 px-4 text-center font-medium w-16">
+                      得失
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                  {ranking.map((team, index) => (
+                    <tr
+                      key={team.teamId}
+                      className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
-                          {match.status === 'finished' ? '試合終了' : '予定'}
-                        </span>
-                        <span className="text-xs text-gray-400">
-                          {match.date.replace(/-/g, '/')}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center justify-end">
-                          <span className="ml-2 text-xs"> </span>
-                        </div>
-                        <div className="flex-1 text-right">
-                          <span
-                            className={`block font-bold truncate ${match.winner === match.teamA ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
-                          >
-                            {getTeamName(match.teamA)}
+                      <td className="py-3 text-center font-bold text-gray-700 dark:text-gray-300">
+                        {index + 1}
+                      </td>
+                      <td className="py-3 px-2 font-medium">{team.name}</td>
+                      <td className="py-3 px-2 text-center">
+                        {team.played > 0 ? (
+                          <span className="inline-flex gap-1">
+                            <span className="font-bold">{team.won}</span>
+                            <span className="text-gray-400 mx-0.5">-</span>
+                            <span className="text-gray-500">{team.lost}</span>
                           </span>
-                        </div>
+                        ) : (
+                          <span className="text-gray-400">-</span>
+                        )}
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-500 dark:text-gray-400 text-xs">
+                        {team.played > 0
+                          ? `${team.pointsWon}-${team.pointsLost}`
+                          : '-'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-                        <div className="px-4 flex flex-col items-center min-w-[80px]">
-                          {match.status === 'finished' ? (
-                            <>
-                              <div className="flex items-center space-x-2 text-xl font-bold font-mono">
-                                <span
-                                  className={
-                                    match.winner === match.teamA
-                                      ? 'text-blue-600 dark:text-blue-400'
-                                      : 'text-gray-400'
-                                  }
-                                >
-                                  {match.scoreA}
-                                </span>
-                                <span className="text-gray-300">-</span>
-                                <span
-                                  className={
-                                    match.winner === match.teamB
-                                      ? 'text-blue-600 dark:text-blue-400'
-                                      : 'text-gray-400'
-                                  }
-                                >
-                                  {match.scoreB}
-                                </span>
-                              </div>
-                            </>
-                          ) : (
-                            <span className="text-xl font-bold text-gray-300">
-                              VS
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex-1 text-left">
-                          <span
-                            className={`block font-bold truncate ${match.winner === match.teamB ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
-                          >
-                            {getTeamName(match.teamB)}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center justify-end">
-                          {expandedMatches.has(match.id) ? (
-                            <span className="ml-2 text-xs">{'▲'}</span>
-                          ) : (
-                            <span className="ml-2 text-xs">{'▼'}</span>
-                          )}
-                        </div>
-                      </div>
+          {/* 対戦結果一覧 */}
+          <section className="mb-12">
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+              Matches
+            </h2>
+            <div className="space-y-3">
+              {currentMatches.map((match) => (
+                <div
+                  key={match.id}
+                  className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border transition-all ${
+                    expandedMatches.has(match.id)
+                      ? 'border-blue-500 dark:border-blue-500 ring-1 ring-blue-100 dark:ring-blue-900'
+                      : 'border-gray-100 dark:border-gray-700'
+                  }`}
+                >
+                  {/* ヘッダー行（常に表示） */}
+                  <div
+                    className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 active:bg-gray-100 dark:active:bg-gray-700/80 transition-colors select-none"
+                    onClick={() => toggleMatch(match.id)}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
+                        {match.status === 'finished' ? '試合終了' : '予定'}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        {match.date.replace(/-/g, '/')}
+                      </span>
                     </div>
 
-                    {/* 詳細（展開時のみ表示） */}
-                    {expandedMatches.has(match.id) &&
-                      match.status === 'finished' && (
-                        <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4 animate-fadeIn">
-                          <div className="space-y-3">
-                            {match.matches.map((detail, idx) => (
-                              <div
-                                key={idx}
-                                className="flex items-center text-sm"
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-end">
+                        <span className="ml-2 text-xs"> </span>
+                      </div>
+                      <div className="flex-1 text-right">
+                        <span
+                          className={`block font-bold truncate ${match.winner === match.teamA ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
+                        >
+                          {getTeamName(match.teamA)}
+                        </span>
+                      </div>
+
+                      <div className="px-4 flex flex-col items-center min-w-[80px]">
+                        {match.status === 'finished' ? (
+                          <>
+                            <div className="flex items-center space-x-2 text-xl font-bold font-mono">
+                              <span
+                                className={
+                                  match.winner === match.teamA
+                                    ? 'text-blue-600 dark:text-blue-400'
+                                    : 'text-gray-400'
+                                }
                               >
-                                <div className="w-8 font-bold text-gray-400 text-xs uppercase text-center">
-                                  {detail.type}
-                                </div>
+                                {match.scoreA}
+                              </span>
+                              <span className="text-gray-300">-</span>
+                              <span
+                                className={
+                                  match.winner === match.teamB
+                                    ? 'text-blue-600 dark:text-blue-400'
+                                    : 'text-gray-400'
+                                }
+                              >
+                                {match.scoreB}
+                              </span>
+                            </div>
+                          </>
+                        ) : (
+                          <span className="text-xl font-bold text-gray-300">
+                            VS
+                          </span>
+                        )}
+                      </div>
 
-                                {/* Team A Players */}
-                                <div
-                                  className={`flex-1 text-right ${detail.winner === 'A' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
-                                >
-                                  {getPlayerNames(detail.playersA)}
-                                </div>
+                      <div className="flex-1 text-left">
+                        <span
+                          className={`block font-bold truncate ${match.winner === match.teamB ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
+                        >
+                          {getTeamName(match.teamB)}
+                        </span>
+                      </div>
 
-                                {/* Score */}
-                                <div className="px-3">
-                                  <span className="inline-block px-1.5 py-0.5 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded text-xs font-mono font-medium">
-                                    {detail.scoreA}-{detail.scoreB}
-                                  </span>
-                                </div>
+                      <div className="flex items-center justify-end">
+                        {expandedMatches.has(match.id) ? (
+                          <span className="ml-2 text-xs">{'▲'}</span>
+                        ) : (
+                          <span className="ml-2 text-xs">{'▼'}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
 
-                                {/* Team B Players */}
-                                <div
-                                  className={`flex-1 text-left ${detail.winner === 'B' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
-                                >
-                                  {getPlayerNames(detail.playersB)}
-                                </div>
+                  {/* 詳細（展開時のみ表示） */}
+                  {expandedMatches.has(match.id) &&
+                    match.status === 'finished' && (
+                      <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4 animate-fadeIn">
+                        <div className="space-y-3">
+                          {match.matches.map((detail, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-center text-sm"
+                            >
+                              <div className="w-8 font-bold text-gray-400 text-xs uppercase text-center">
+                                {detail.type}
                               </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    {expandedMatches.has(match.id) &&
-                      match.status !== 'finished' && (
-                        <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4 text-center text-sm text-gray-500">
-                          試合データはまだありません
-                        </div>
-                      )}
-                  </div>
-                ))}
 
-                {currentMatches.length === 0 && (
-                  <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
-                    まだ試合情報がありません
-                  </div>
-                )}
-              </div>
-            </section>
-          </div>
+                              {/* Team A Players */}
+                              <div
+                                className={`flex-1 text-right ${detail.winner === 'A' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
+                              >
+                                {getPlayerNames(detail.playersA)}
+                              </div>
+
+                              {/* Score */}
+                              <div className="px-3">
+                                <span className="inline-block px-1.5 py-0.5 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded text-xs font-mono font-medium">
+                                  {detail.scoreA}-{detail.scoreB}
+                                </span>
+                              </div>
+
+                              {/* Team B Players */}
+                              <div
+                                className={`flex-1 text-left ${detail.winner === 'B' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
+                              >
+                                {getPlayerNames(detail.playersB)}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  {expandedMatches.has(match.id) &&
+                    match.status !== 'finished' && (
+                      <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4 text-center text-sm text-gray-500">
+                        試合データはまだありません
+                      </div>
+                    )}
+                </div>
+              ))}
+
+              {currentMatches.length === 0 && (
+                <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
+                  まだ試合情報がありません
+                </div>
+              )}
+            </div>
+          </section>
         </div>
-      </main>
+      </PageLayout>
     </>
   );
 }

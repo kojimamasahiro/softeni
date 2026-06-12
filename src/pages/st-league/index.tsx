@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 
 const stLeagueYears = [2025]; // 必要に応じて年度を追加
 
@@ -98,7 +99,7 @@ export default function STLeagueHub() {
           }}
         />
       </Head>
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+      <PageLayout maxWidth="6xl">
         <div className="max-w-3xl mx-auto">
           <Breadcrumbs
             crumbs={[
@@ -223,7 +224,7 @@ export default function STLeagueHub() {
             </div>
           </section>
         </div>
-      </main>
+      </PageLayout>
     </>
   );
 }

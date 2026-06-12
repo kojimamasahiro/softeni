@@ -13,6 +13,7 @@ import MetaHead from '@/components/MetaHead';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
+import PageLayout from '@/components/PageLayout';
 import {
   PackedTournamentDetailData,
   packTournamentDetailData,
@@ -152,161 +153,159 @@ export default function TournamentYearResultPage({
         ></meta>
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto">
-          <Breadcrumbs crumbs={breadcrumbs} />
+      <PageLayout>
+        <Breadcrumbs crumbs={breadcrumbs} />
 
-          {/* ✅ h1 + 大会紹介文 */}
-          <h1 className="text-2xl font-bold mb-4">
-            {label} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
-            大会結果
-          </h1>
-          <section className="mb-6 px-1">
-            {infoForYear?.location &&
-              infoForYear?.startDate &&
-              infoForYear?.endDate && (
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  開催地:{infoForYear.location} / 日程:
-                  {infoForYear.startDate}〜{infoForYear.endDate}
-                </p>
-              )}
+        {/* ✅ h1 + 大会紹介文 */}
+        <h1 className="text-2xl font-bold mb-4">
+          {label} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
+          大会結果
+        </h1>
+        <section className="mb-6 px-1">
+          {infoForYear?.location &&
+            infoForYear?.startDate &&
+            infoForYear?.endDate && (
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                開催地:{infoForYear.location} / 日程:
+                {infoForYear.startDate}〜{infoForYear.endDate}
+              </p>
+            )}
+        </section>
+
+        {/* ✅ トーナメント表 */}
+        {detailData && <TournamentBracket detailData={detailData} />}
+
+        {/* ✅ チーム別成績 */}
+        <TeamResults
+          detailData={detailData ? [detailData] : []}
+          highschoolGender={generation === 'highschool' ? gender : null}
+          highschoolTeamLinks={highschoolTeamLinks}
+        />
+
+        {(infoWarnings.length > 0 || detailsWarnings.length > 0) && (
+          <section className="mt-6 mb-6 p-4 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded">
+            <h3 className="font-semibold mb-2">データ警告</h3>
+            <ul className="list-disc list-inside text-sm">
+              {infoWarnings.map((w, i) => (
+                <li key={`info-${i}`}>{w}</li>
+              ))}
+              {detailsWarnings.map((w, i) => (
+                <li key={`det-${i}`}>{w}</li>
+              ))}
+            </ul>
           </section>
+        )}
 
-          {/* ✅ トーナメント表 */}
-          {detailData && <TournamentBracket detailData={detailData} />}
-
-          {/* ✅ チーム別成績 */}
-          <TeamResults
-            detailData={detailData ? [detailData] : []}
-            highschoolGender={generation === 'highschool' ? gender : null}
-            highschoolTeamLinks={highschoolTeamLinks}
-          />
-
-          {(infoWarnings.length > 0 || detailsWarnings.length > 0) && (
-            <section className="mt-6 mb-6 p-4 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded">
-              <h3 className="font-semibold mb-2">データ警告</h3>
-              <ul className="list-disc list-inside text-sm">
-                {infoWarnings.map((w, i) => (
-                  <li key={`info-${i}`}>{w}</li>
-                ))}
-                {detailsWarnings.map((w, i) => (
-                  <li key={`det-${i}`}>{w}</li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {linkCategories && linkCategories.length > 0 && (
-            <section className="mb-10">
-              <h2 className="text-lg font-bold mb-3">その他の大会結果</h2>
-              {Object.entries(
-                linkCategories.reduce<Record<string, LinkCategory[]>>(
-                  (acc, link) => {
-                    if (!acc[link.year]) acc[link.year] = [];
-                    acc[link.year].push(link);
-                    return acc;
-                  },
-                  {},
-                ),
-              )
-                .sort((a, b) => Number(b[0]) - Number(a[0])) // 年で降順
-                .map(([yearValue, links]) => (
-                  <div
-                    className="mb-4"
-                    key={`${yearValue}-${links
-                      .map(
-                        (link) =>
-                          `${link.year}-${link.category}-${link.age}-${link.gender}`,
-                      )
-                      .join('-')}`}
-                  >
-                    <h4 className="text-md mb-2">{yearValue}年度</h4>
-                    <ul className="flex flex-wrap gap-2">
-                      {links.map((link) =>
-                        link.isCurrent ? (
-                          <li
-                            key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
+        {linkCategories && linkCategories.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-lg font-bold mb-3">その他の大会結果</h2>
+            {Object.entries(
+              linkCategories.reduce<Record<string, LinkCategory[]>>(
+                (acc, link) => {
+                  if (!acc[link.year]) acc[link.year] = [];
+                  acc[link.year].push(link);
+                  return acc;
+                },
+                {},
+              ),
+            )
+              .sort((a, b) => Number(b[0]) - Number(a[0])) // 年で降順
+              .map(([yearValue, links]) => (
+                <div
+                  className="mb-4"
+                  key={`${yearValue}-${links
+                    .map(
+                      (link) =>
+                        `${link.year}-${link.category}-${link.age}-${link.gender}`,
+                    )
+                    .join('-')}`}
+                >
+                  <h4 className="text-md mb-2">{yearValue}年度</h4>
+                  <ul className="flex flex-wrap gap-2">
+                    {links.map((link) =>
+                      link.isCurrent ? (
+                        <li
+                          key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
+                        >
+                          <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">
+                            {link.label}
+                          </span>
+                        </li>
+                      ) : (
+                        <li
+                          key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
+                        >
+                          <Link
+                            href={`/tournaments/${generation}/${tournamentId}/${link.year}/${link.category}/${link.age}/${link.gender}`}
                           >
-                            <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">
+                            <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
                               {link.label}
                             </span>
-                          </li>
-                        ) : (
-                          <li
-                            key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
-                          >
-                            <Link
-                              href={`/tournaments/${generation}/${tournamentId}/${link.year}/${link.category}/${link.age}/${link.gender}`}
-                            >
-                              <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                                {link.label}
-                              </span>
-                            </Link>
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                ))}
-            </section>
-          )}
+                          </Link>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+              ))}
+          </section>
+        )}
 
-          <div className="text-right mt-10 mb-2">
-            <Link
-              href="/tournaments"
-              className="text-sm text-blue-500 hover:underline"
-            >
-              大会結果一覧
-            </Link>
-          </div>
-
-          {detailData && (
-            <>
-              <MatchResults
-                detail={detailData}
-                gameCategory={gameCategory}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                filter={filter}
-                setFilter={setFilter}
-              />
-            </>
-          )}
-
-          {infoForYear?.source && (
-            <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
-              <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
-                出典・参考情報
-              </h2>
-              <p className="mb-3">
-                本ページの試合結果データは、以下の情報をもとに作成しています。
-              </p>
-              <ul className="list-disc list-inside space-y-1">
-                <li>
-                  {infoForYear.sourceUrl ? (
-                    <a
-                      href={infoForYear.sourceUrl}
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {infoForYear.source}
-                    </a>
-                  ) : (
-                    <span className="font-medium">{infoForYear.source}</span>
-                  )}
-                </li>
-                <li>
-                  一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。
-                </li>
-              </ul>
-              <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。
-              </p>
-            </section>
-          )}
+        <div className="text-right mt-10 mb-2">
+          <Link
+            href="/tournaments"
+            className="text-sm text-blue-500 hover:underline"
+          >
+            大会結果一覧
+          </Link>
         </div>
-      </main>
+
+        {detailData && (
+          <>
+            <MatchResults
+              detail={detailData}
+              gameCategory={gameCategory}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              filter={filter}
+              setFilter={setFilter}
+            />
+          </>
+        )}
+
+        {infoForYear?.source && (
+          <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
+            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
+              出典・参考情報
+            </h2>
+            <p className="mb-3">
+              本ページの試合結果データは、以下の情報をもとに作成しています。
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                {infoForYear.sourceUrl ? (
+                  <a
+                    href={infoForYear.sourceUrl}
+                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {infoForYear.source}
+                  </a>
+                ) : (
+                  <span className="font-medium">{infoForYear.source}</span>
+                )}
+              </li>
+              <li>
+                一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。
+              </li>
+            </ul>
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+              内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。
+            </p>
+          </section>
+        )}
+      </PageLayout>
     </>
   );
 }

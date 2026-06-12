@@ -12,6 +12,7 @@ import PlayerResults, {
   PlayerTournament,
 } from '@/components/PlayerResults';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
+import PageLayout from '@/components/PageLayout';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import {
   getAllDetailRecords,
@@ -122,61 +123,59 @@ export default function PlayerResultsPage({
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto space-y-10">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              {
-                label: '選手一覧',
-                href: '/players',
-              },
-              {
-                label: `${fullName} 試合結果`,
-                href: `/players/${playerId}/results`,
-              },
-            ]}
-          />
+      <PageLayout className="space-y-10">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            {
+              label: '選手一覧',
+              href: '/players',
+            },
+            {
+              label: `${fullName} 試合結果`,
+              href: `/players/${playerId}/results`,
+            },
+          ]}
+        />
 
-          <header>
-            <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-              本ページでは、{fullName}{' '}
-              選手の出場大会や成績、主な勝ち上がり情報を掲載しています。
-            </p>
-          </header>
+        <header>
+          <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            本ページでは、{fullName}{' '}
+            選手の出場大会や成績、主な勝ち上がり情報を掲載しています。
+          </p>
+        </header>
 
-          {/* 主な成績（タイトル）(再現未実装) */}
-          <section>
-            <MajorTitles majorTitlesData={majorTitlesData} />
-          </section>
+        {/* 主な成績（タイトル）(再現未実装) */}
+        <section>
+          <MajorTitles majorTitlesData={majorTitlesData} />
+        </section>
 
-          <div className="text-right">
-            <Link
-              href="/tournaments"
-              className="text-sm text-blue-600 hover:underline"
-            >
-              過去の大会一覧はこちら
-            </Link>
-          </div>
-
-          <section>
-            {playerStats && (
-              <PlayerSummaryStats
-                playerStats={playerStats}
-                allPlayers={allPlayers || []}
-              />
-            )}
-          </section>
-
-          <section>
-            <PlayerResults
-              playerMatches={playerMatches}
-              playerTournaments={playerTournaments}
-            />
-          </section>
+        <div className="text-right">
+          <Link
+            href="/tournaments"
+            className="text-sm text-blue-600 hover:underline"
+          >
+            過去の大会一覧はこちら
+          </Link>
         </div>
-      </main>
+
+        <section>
+          {playerStats && (
+            <PlayerSummaryStats
+              playerStats={playerStats}
+              allPlayers={allPlayers || []}
+            />
+          )}
+        </section>
+
+        <section>
+          <PlayerResults
+            playerMatches={playerMatches}
+            playerTournaments={playerTournaments}
+          />
+        </section>
+      </PageLayout>
     </>
   );
 }

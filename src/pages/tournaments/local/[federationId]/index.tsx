@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import {
   CategoryLink,
   TournamentBlock,
@@ -72,64 +73,59 @@ export default function LocalFederationPage({
         type="article"
       />
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-3xl mx-auto">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              { label: '大会一覧', href: '/tournaments' },
-              { label: '地域大会結果', href: '/tournaments/local' },
-              { label: prefecture.name, href: pageUrl },
-            ]}
-          />
+      <PageLayout>
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '大会一覧', href: '/tournaments' },
+            { label: '地域大会結果', href: '/tournaments/local' },
+            { label: prefecture.name, href: pageUrl },
+          ]}
+        />
 
-          <div className="flex justify-between items-end mb-6">
-            <h1 className="text-2xl font-bold">{prefecture.name}の大会一覧</h1>
-            {federation?.officialUrl && (
-              <a
-                href={federation.officialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+        <div className="flex justify-between items-end mb-6">
+          <h1 className="text-2xl font-bold">{prefecture.name}の大会一覧</h1>
+          {federation?.officialUrl && (
+            <a
+              href={federation.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+            >
+              連盟公式サイト
+              <svg
+                className="w-4 h-4 ml-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                連盟公式サイト
-                <svg
-                  className="w-4 h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-            )}
-          </div>
-
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
-            {prefecture.name}で開催された大会・予選の結果を掲載しています。
-          </p>
-
-          <div className="space-y-8">
-            {tournaments.length === 0 ? (
-              <p className="text-gray-500">
-                現在登録されている大会はありません。
-              </p>
-            ) : (
-              tournaments.map((t) => (
-                <TournamentCard
-                  key={`${t.generation}-${t.id}`}
-                  tournament={t}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                 />
-              ))
-            )}
-          </div>
+              </svg>
+            </a>
+          )}
         </div>
-      </main>
+
+        <p className="text-gray-600 dark:text-gray-300 mb-8">
+          {prefecture.name}で開催された大会・予選の結果を掲載しています。
+        </p>
+
+        <div className="space-y-8">
+          {tournaments.length === 0 ? (
+            <p className="text-gray-500">
+              現在登録されている大会はありません。
+            </p>
+          ) : (
+            tournaments.map((t) => (
+              <TournamentCard key={`${t.generation}-${t.id}`} tournament={t} />
+            ))
+          )}
+        </div>
+      </PageLayout>
     </>
   );
 }

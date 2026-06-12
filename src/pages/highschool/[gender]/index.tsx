@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
+import PageLayout from '@/components/PageLayout';
 
 type Prefecture = {
   id: string;
@@ -43,10 +44,8 @@ type Props = {
 
 const HIGH_RESULT_SET = new Set(['優勝', '準優勝', 'ベスト4', 'ベスト8']);
 
-const isVisibleGender = (
-  entryGender: string,
-  pageGender: 'boys' | 'girls',
-) => entryGender === pageGender || entryGender === 'mixed';
+const isVisibleGender = (entryGender: string, pageGender: 'boys' | 'girls') =>
+  entryGender === pageGender || entryGender === 'mixed';
 
 export default function HighschoolGenderIndex({
   grouped,
@@ -144,144 +143,140 @@ export default function HighschoolGenderIndex({
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Breadcrumbs
-            crumbs={[
-              { label: 'ホーム', href: '/' },
-              {
-                label: `高校${genderLabel}`,
-                href: `/highschool/${gender}`,
-              },
-            ]}
-          />
+      <PageLayout maxWidth="4xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            {
+              label: `高校${genderLabel}`,
+              href: `/highschool/${gender}`,
+            },
+          ]}
+        />
 
-          <h1 className="text-2xl font-bold mb-6">
-            高校{genderLabel} 全国大会成績
-          </h1>
+        <h1 className="text-2xl font-bold mb-6">
+          高校{genderLabel} 全国大会成績
+        </h1>
 
-          <HighschoolGenderToggle
-            gender={gender}
-            boysHref="/highschool/boys"
-            girlsHref="/highschool/girls"
-            className="mb-8 max-w-sm mx-auto"
-          />
+        <HighschoolGenderToggle
+          gender={gender}
+          boysHref="/highschool/boys"
+          girlsHref="/highschool/girls"
+          className="mb-8 max-w-sm mx-auto"
+        />
 
-          <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
-            <p>
-              高校{genderLabel}
-              の全国大会成績を、都道府県別に確認できる一覧ページです。
-              全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
-              選抜大会など、ソフトテニス主要大会での学校別実績をたどれます。
+        <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+          <p>
+            高校{genderLabel}
+            の全国大会成績を、都道府県別に確認できる一覧ページです。
+            全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
+            選抜大会など、ソフトテニス主要大会での学校別実績をたどれます。
+          </p>
+          <p>
+            地域または都道府県を選ぶと、その県の出場校一覧、近年の好成績校、
+            学校ごとの詳細成績ページへ進めます。
+          </p>
+        </div>
+
+        <section className="grid gap-4 sm:grid-cols-3 mb-8">
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              収録学校数
             </p>
-            <p>
-              地域または都道府県を選ぶと、その県の出場校一覧、近年の好成績校、
-              学校ごとの詳細成績ページへ進めます。
+            <p className="text-2xl font-bold">{totalTeams}校</p>
+          </div>
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              ベスト8以上経験校
+            </p>
+            <p className="text-2xl font-bold">{totalBest8Schools}校</p>
+          </div>
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              最新収録年度
+            </p>
+            <p className="text-2xl font-bold">
+              {latestIndexedYear ? `${latestIndexedYear}年` : '-'}
             </p>
           </div>
+        </section>
 
-          <section className="grid gap-4 sm:grid-cols-3 mb-8">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                収録学校数
-              </p>
-              <p className="text-2xl font-bold">{totalTeams}校</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                ベスト8以上経験校
-              </p>
-              <p className="text-2xl font-bold">{totalBest8Schools}校</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                最新収録年度
-              </p>
-              <p className="text-2xl font-bold">
-                {latestIndexedYear ? `${latestIndexedYear}年` : '-'}
-              </p>
+        {featuredPrefectures.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-xl font-semibold mb-3">
+              今、注目したい都道府県
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+              ベスト8以上の学校数と最新年度の掲載状況をもとに、回遊しやすい県を先にまとめています。
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {featuredPrefectures.map((prefecture) => (
+                <Link
+                  key={prefecture.id}
+                  href={`/highschool/${gender}/${prefecture.id}`}
+                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-lg font-semibold">{prefecture.name}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                        {prefecture.region} / 収録 {prefecture.teamCount}校
+                      </p>
+                    </div>
+                    <div className="text-right text-sm">
+                      <p className="font-semibold">
+                        ベスト8以上 {prefecture.best8Count}校
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-400">
+                        最新 {prefecture.latestYear ?? '-'}年
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </section>
+        )}
 
-          {featuredPrefectures.length > 0 && (
-            <section className="mb-10">
-              <h2 className="text-xl font-semibold mb-3">
-                今、注目したい都道府県
-              </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                ベスト8以上の学校数と最新年度の掲載状況をもとに、回遊しやすい県を先にまとめています。
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {featuredPrefectures.map((prefecture) => (
+        <div className="space-y-8">
+          {Object.entries(grouped).map(([region, prefs]) => (
+            <section key={region}>
+              <h2 className="text-lg font-semibold mb-2">{region}</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {prefs.map((pref) => (
                   <Link
-                    key={prefecture.id}
-                    href={`/highschool/${gender}/${prefecture.id}`}
-                    className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                    key={pref.id}
+                    href={`/highschool/${gender}/${pref.id}`}
+                    className="block px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="text-lg font-semibold">
-                          {prefecture.name}
-                        </p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                          {prefecture.region} / 収録 {prefecture.teamCount}校
-                        </p>
-                      </div>
-                      <div className="text-right text-sm">
-                        <p className="font-semibold">
-                          ベスト8以上 {prefecture.best8Count}校
-                        </p>
-                        <p className="text-gray-500 dark:text-gray-400">
-                          最新 {prefecture.latestYear ?? '-'}年
-                        </p>
-                      </div>
-                    </div>
+                    <span className="block font-semibold">{pref.name}</span>
+                    <span className="block mt-1 text-xs text-gray-500 dark:text-gray-400">
+                      {statsByPrefecture[pref.id]?.teamCount ?? 0}校 /
+                      ベスト8以上 {statsByPrefecture[pref.id]?.best8Count ?? 0}
+                      校
+                    </span>
                   </Link>
                 ))}
               </div>
             </section>
-          )}
+          ))}
+        </div>
 
-          <div className="space-y-8">
-            {Object.entries(grouped).map(([region, prefs]) => (
-              <section key={region}>
-                <h2 className="text-lg font-semibold mb-2">{region}</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                  {prefs.map((pref) => (
-                    <Link
-                      key={pref.id}
-                      href={`/highschool/${gender}/${pref.id}`}
-                      className="block px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                    >
-                      <span className="block font-semibold">{pref.name}</span>
-                      <span className="block mt-1 text-xs text-gray-500 dark:text-gray-400">
-                        {statsByPrefecture[pref.id]?.teamCount ?? 0}校 /
-                        ベスト8以上{' '}
-                        {statsByPrefecture[pref.id]?.best8Count ?? 0}校
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </section>
+        <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+          <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
+          <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+            {faqItems.map((item) => (
+              <div
+                key={item.question}
+                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
+              >
+                <h3 className="font-semibold mb-2">{item.question}</h3>
+                <p>{item.answer}</p>
+              </div>
             ))}
           </div>
-
-          <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
-            <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
-            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
-              {faqItems.map((item) => (
-                <div
-                  key={item.question}
-                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
-                >
-                  <h3 className="font-semibold mb-2">{item.question}</h3>
-                  <p>{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-      </main>
+        </section>
+      </PageLayout>
     </>
   );
 }
