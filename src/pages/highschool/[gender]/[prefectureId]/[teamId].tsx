@@ -118,10 +118,52 @@ export default function TeamPage({
           return b.year - a.year;
         })[0]
       : null;
+  // 年度別メンバー一覧（収録大会結果の playerIds を年度ごとに集計）
+  // 同一年度内の同姓同名は同一人物として 1 件にまとめ、リンク可能な pid を優先する
+  const membersByYear = (() => {
+    const byYear = new Map<number, Map<string, { pid: string }>>();
+    for (const entry of entries) {
+      for (const pid of entry.playerIds ?? []) {
+        const parts = pid.split('_');
+        if (parts.length < 2) continue;
+        const name = `${parts[0]} ${parts[1]}`;
+        let yearMap = byYear.get(entry.year);
+        if (!yearMap) {
+          yearMap = new Map();
+          byYear.set(entry.year, yearMap);
+        }
+        const existing = yearMap.get(name);
+        if (!existing) {
+          yearMap.set(name, { pid });
+        } else if (
+          playerLinks[existing.pid] === undefined &&
+          playerLinks[pid] !== undefined
+        ) {
+          existing.pid = pid;
+        }
+      }
+    }
+    return [...byYear.entries()]
+      .sort((a, b) => b[0] - a[0])
+      .map(([year, members]) => ({
+        year,
+        members: [...members.entries()]
+          .map(([name, { pid }]) => ({ name, pid }))
+          .sort((a, b) => a.name.localeCompare(b.name, 'ja')),
+      }));
+  })();
+
   const faqItems = [
     {
       question: `${teamName}の高校${genderLabel}の全国大会成績では何が分かりますか？`,
       answer: `${teamName}の全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、選抜大会などの実績を年度別・種目別に確認できます。`,
+    },
+    {
+      question: `${teamName}のソフトテニス部のメンバーは確認できますか？`,
+      answer:
+        membersByYear.length > 0
+          ? `収録している全国大会・主要大会の結果に掲載された${teamName}の選手を、年度別のメンバー一覧として掲載しています。個人の試合結果ページがある選手は選手名から移動できます。なお、大会結果に掲載された選手のみのため、全部員の名簿ではありません。`
+          : `${teamName}のメンバーは、収録済みの大会結果に選手名が掲載され次第、年度別の一覧として確認できるようになります。`,
     },
     {
       question: 'インターハイの成績も確認できますか？',
@@ -184,14 +226,14 @@ export default function TeamPage({
   return (
     <>
       <MetaHead
-        title={`${teamName} 高校${genderLabel} 全国大会成績 | ソフトテニス情報`}
-        description={`${teamName}の高校${genderLabel}の全国大会成績を掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`}
+        title={`${teamName} 高校${genderLabel} 全国大会成績・メンバー | ソフトテニス情報`}
+        description={`${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`}
         url={pageUrl}
         type="article"
       />
       <Head>
         <title>
-          {teamName} 高校{genderLabel} 全国大会成績 | ソフトテニス情報
+          {teamName} 高校{genderLabel} 全国大会成績・メンバー | ソフトテニス情報
         </title>
         <script
           type="application/ld+json"
@@ -234,8 +276,8 @@ export default function TeamPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Article',
-              headline: `${teamName} 高校${genderLabel} 全国大会成績`,
-              description: `${teamName}の高校${genderLabel}の全国大会成績を、インターハイを含む主要大会ごとに整理したページです。`,
+              headline: `${teamName} 高校${genderLabel} 全国大会成績・メンバー`,
+              description: `${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを、インターハイを含む主要大会ごとに整理したページです。`,
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
               author: { '@type': 'Organization', name: 'Softeni Pick' },
@@ -281,14 +323,14 @@ export default function TeamPage({
           ]}
         />
         <h1 className="text-2xl font-bold mb-6">
-          {teamName} 高校{genderLabel} 全国大会成績
+          {teamName} 高校{genderLabel} 全国大会成績・メンバー
         </h1>
 
         <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
           {teamName}
           の高校{genderLabel}
           について、全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
-          選抜大会などソフトテニス主要大会での成績を年度別・種目別にまとめています。
+          選抜大会などソフトテニス主要大会での成績と出場メンバーを年度別・種目別にまとめています。
         </p>
 
         <section className="grid gap-4 sm:grid-cols-4 mb-8">
@@ -386,6 +428,49 @@ export default function TeamPage({
             </div>
           )}
         </section>
+
+        {membersByYear.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">
+              {teamName} ソフトテニス{genderLabel}の年度別メンバー
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+              収録している全国大会・主要大会の結果に掲載された選手を年度別にまとめています。
+              大会結果に掲載された選手のみのため、全部員の名簿ではありません。
+            </p>
+            <div className="space-y-4">
+              {membersByYear.map(({ year, members }) => (
+                <div
+                  key={year}
+                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
+                >
+                  <h3 className="font-semibold mb-2">
+                    {year}年のメンバー（{members.length}名）
+                  </h3>
+                  <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-700 dark:text-gray-200">
+                    {members.map(({ name, pid }) => {
+                      const linkId = playerLinks[pid];
+                      return (
+                        <li key={pid}>
+                          {linkId ? (
+                            <Link
+                              href={`/players/${linkId}/results`}
+                              className="text-blue-700 dark:text-blue-300 hover:underline"
+                            >
+                              {name}
+                            </Link>
+                          ) : (
+                            name
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {analysis?.resultsByCategory &&
           Object.keys(analysis.resultsByCategory).map((category) => {
