@@ -9,6 +9,11 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
 import PageLayout from '@/components/PageLayout';
+import {
+  getGenderLabel,
+  isBest8Result,
+  isVisibleGender,
+} from '@/lib/highschool';
 
 type Prefecture = {
   id: string;
@@ -42,11 +47,6 @@ type Props = {
   latestIndexedYear: number | null;
 };
 
-const HIGH_RESULT_SET = new Set(['優勝', '準優勝', 'ベスト4', 'ベスト8']);
-
-const isVisibleGender = (entryGender: string, pageGender: 'boys' | 'girls') =>
-  entryGender === pageGender || entryGender === 'mixed';
-
 export default function HighschoolGenderIndex({
   grouped,
   gender,
@@ -57,7 +57,7 @@ export default function HighschoolGenderIndex({
   latestIndexedYear,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}`;
-  const genderLabel = gender === 'boys' ? '男子' : '女子';
+  const genderLabel = getGenderLabel(gender);
   const faqItems = [
     {
       question: `高校${genderLabel} 全国大会成績ページでは何が分かりますか？`,
@@ -138,6 +138,24 @@ export default function HighschoolGenderIndex({
                   text: item.answer,
                 },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: `高校${genderLabel} 都道府県別ページ一覧`,
+              itemListElement: Object.values(statsByPrefecture)
+                .filter((prefecture) => prefecture.teamCount > 0)
+                .map((prefecture, index) => ({
+                  '@type': 'ListItem',
+                  position: index + 1,
+                  name: prefecture.name,
+                  url: `https://softeni-pick.com/highschool/${gender}/${prefecture.id}`,
+                })),
             }),
           }}
         />
@@ -243,20 +261,39 @@ export default function HighschoolGenderIndex({
             <section key={region}>
               <h2 className="text-lg font-semibold mb-2">{region}</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {prefs.map((pref) => (
-                  <Link
-                    key={pref.id}
-                    href={`/highschool/${gender}/${pref.id}`}
-                    className="block px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                  >
-                    <span className="block font-semibold">{pref.name}</span>
-                    <span className="block mt-1 text-xs text-gray-500 dark:text-gray-400">
-                      {statsByPrefecture[pref.id]?.teamCount ?? 0}校 /
-                      ベスト8以上 {statsByPrefecture[pref.id]?.best8Count ?? 0}
-                      校
-                    </span>
-                  </Link>
-                ))}
+                {prefs.map((pref) => {
+                  const stat = statsByPrefecture[pref.id];
+                  const teamCount = stat?.teamCount ?? 0;
+
+                  if (teamCount === 0) {
+                    return (
+                      <div
+                        key={pref.id}
+                        className="block px-4 py-3 border border-dashed border-gray-300 rounded-md bg-gray-50 dark:bg-gray-900 dark:border-gray-700"
+                      >
+                        <span className="block font-semibold text-gray-400 dark:text-gray-500">
+                          {pref.name}
+                        </span>
+                        <span className="block mt-1 text-xs text-gray-400 dark:text-gray-500">
+                          収録準備中
+                        </span>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={pref.id}
+                      href={`/highschool/${gender}/${pref.id}`}
+                      className="block px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                    >
+                      <span className="block font-semibold">{pref.name}</span>
+                      <span className="block mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        {teamCount}校 / ベスト8以上 {stat?.best8Count ?? 0}校
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             </section>
           ))}
@@ -321,7 +358,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const teamIds = new Set(filteredEntries.map((entry) => entry.teamId));
     const best8Teams = new Set(
       filteredEntries
-        .filter((entry) => HIGH_RESULT_SET.has(entry.result))
+        .filter((entry) => isBest8Result(entry.result))
         .map((entry) => entry.teamId),
     );
     const prefectureLatestYear =

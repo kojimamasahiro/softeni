@@ -10,6 +10,12 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import {
+  getGenderLabel,
+  HIGHSCHOOL_CATEGORY_PRIORITY,
+  HIGHSCHOOL_TOURNAMENT_PRIORITY,
+  isVisibleGender,
+} from '@/lib/highschool';
+import {
   getCategoryLabel,
   getTournamentLabel,
   resultPriority,
@@ -80,22 +86,6 @@ type Props = {
   analysis: Analysis | null;
 };
 
-const tournamentPriority: Record<string, number> = {
-  'highschool-kokutai': 1,
-  'highschool-championship': 2,
-  'highschool-japan-cup': 3,
-  'highschool-senbatsu': 4,
-};
-
-const categoryPriority: Record<string, number> = {
-  team: 1,
-  doubles: 2,
-  singles: 3,
-};
-
-const isVisibleGender = (entryGender: string, pageGender: 'boys' | 'girls') =>
-  entryGender === pageGender || entryGender === 'mixed';
-
 export default function TeamPage({
   prefectureName,
   prefectureId,
@@ -143,6 +133,36 @@ export default function TeamPage({
       answer: `${prefectureName}の一覧ページへ戻ると、同じ都道府県の高校${genderLabel}の全国大会成績をまとめて確認できます。`,
     },
   ];
+
+  const majorTournamentSummaries = Object.keys(HIGHSCHOOL_TOURNAMENT_PRIORITY)
+    .sort(
+      (a, b) =>
+        HIGHSCHOOL_TOURNAMENT_PRIORITY[a] - HIGHSCHOOL_TOURNAMENT_PRIORITY[b],
+    )
+    .flatMap((tournamentId) => {
+      const tournamentEntries = entries.filter(
+        (entry) => entry.tournamentId === tournamentId,
+      );
+      if (tournamentEntries.length === 0) return [];
+      const latest = tournamentEntries.slice().sort((a, b) => {
+        if (b.year !== a.year) return b.year - a.year;
+        return resultPriority(a.result) - resultPriority(b.result);
+      })[0];
+      const best = tournamentEntries.slice().sort((a, b) => {
+        const rankDiff = resultPriority(a.result) - resultPriority(b.result);
+        if (rankDiff !== 0) return rankDiff;
+        return b.year - a.year;
+      })[0];
+      return [
+        {
+          tournamentId,
+          label: getTournamentLabel(tournamentId),
+          count: tournamentEntries.length,
+          latest,
+          best,
+        },
+      ];
+    });
 
   const grouped = entries.reduce(
     (acc, entry) => {
@@ -302,12 +322,12 @@ export default function TeamPage({
 
         <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
           <h2 className="text-xl font-semibold mb-3">
-            {teamName}のインターハイ実績サマリー
+            {teamName}の主要大会実績サマリー
           </h2>
           {championshipAppearances > 0 ? (
-            <div className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
+            <div className="space-y-2 text-sm text-gray-700 dark:text-gray-200 mb-4">
               <p>
-                全国高等学校総合体育大会の掲載成績は
+                全国高等学校総合体育大会（インターハイ）の掲載成績は
                 <strong>{championshipAppearances}件</strong>あります。
               </p>
               {latestChampionshipEntry && (
@@ -334,9 +354,34 @@ export default function TeamPage({
               )}
             </div>
           ) : (
-            <p className="text-sm text-gray-700 dark:text-gray-200">
-              現時点では、この学校の全国高等学校総合体育大会の掲載成績は確認中です。掲載済みの主要大会結果は以下から確認できます。
+            <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
+              現時点では、この学校の全国高等学校総合体育大会（インターハイ）の掲載成績は確認中です。掲載済みの主要大会結果は以下から確認できます。
             </p>
+          )}
+          {majorTournamentSummaries.length > 0 && (
+            <div className="grid gap-3 sm:grid-cols-2">
+              {majorTournamentSummaries.map((summary) => (
+                <div
+                  key={summary.tournamentId}
+                  className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4"
+                >
+                  <p className="font-semibold">{summary.label}</p>
+                  <ul className="mt-1 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                    <li>掲載成績 {summary.count}件</li>
+                    <li>
+                      最新: {summary.latest.year}年{' '}
+                      {getCategoryLabel(summary.latest.category)}{' '}
+                      {summary.latest.result}
+                    </li>
+                    <li>
+                      最高: {summary.best.year}年{' '}
+                      {getCategoryLabel(summary.best.category)}{' '}
+                      {summary.best.result}
+                    </li>
+                  </ul>
+                </div>
+              ))}
+            </div>
           )}
         </section>
 
@@ -410,17 +455,6 @@ export default function TeamPage({
                 </li>
               ))}
             </ul>
-            <p className="mt-2 font-semibold">種目別最高成績:</p>
-            <ul className="ml-4 list-disc">
-              {Object.entries(analysis.resultsByCategory).map(
-                ([cat, { recentlyResult, historicalBest }]) => (
-                  <li key={cat}>
-                    {getCategoryLabel(cat)}:{' '}
-                    {recentlyResult?.result || historicalBest?.result}
-                  </li>
-                ),
-              )}
-            </ul>
             {analysis.topPlayers.length > 0 && (
               <>
                 <p className="mt-2 font-semibold">出場回数が多い選手:</p>
@@ -486,8 +520,8 @@ export default function TeamPage({
                   {Object.entries(tourneys)
                     .sort((a, b) => {
                       const priorityDiff =
-                        (tournamentPriority[a[0]] ?? 99) -
-                        (tournamentPriority[b[0]] ?? 99);
+                        (HIGHSCHOOL_TOURNAMENT_PRIORITY[a[0]] ?? 99) -
+                        (HIGHSCHOOL_TOURNAMENT_PRIORITY[b[0]] ?? 99);
                       if (priorityDiff !== 0) return priorityDiff;
                       return getTournamentLabel(a[0]).localeCompare(
                         getTournamentLabel(b[0]),
@@ -503,8 +537,8 @@ export default function TeamPage({
                           {Object.entries(categories)
                             .sort((a, b) => {
                               const priorityDiff =
-                                (categoryPriority[a[0]] ?? 99) -
-                                (categoryPriority[b[0]] ?? 99);
+                                (HIGHSCHOOL_CATEGORY_PRIORITY[a[0]] ?? 99) -
+                                (HIGHSCHOOL_CATEGORY_PRIORITY[b[0]] ?? 99);
                               if (priorityDiff !== 0) return priorityDiff;
                               return getCategoryLabel(a[0]).localeCompare(
                                 getCategoryLabel(b[0]),
@@ -699,7 +733,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ? JSON.parse(fs.readFileSync(analysisPath, 'utf-8'))
     : null;
 
-  const genderLabel = gender === 'boys' ? '男子' : '女子';
+  const genderLabel = getGenderLabel(gender);
 
   return {
     props: {

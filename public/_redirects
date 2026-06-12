@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+# 高校カテゴリ入口は男子ページへ 301 リダイレクト
+/highschool /highschool/boys/ 301
+/highschool/ /highschool/boys/ 301

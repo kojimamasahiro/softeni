@@ -10,6 +10,14 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
 import PageLayout from '@/components/PageLayout';
+import {
+  getGenderLabel,
+  getPerformanceLabel,
+  getTournamentSortPriority,
+  HIGHSCHOOL_TOURNAMENT_PRIORITY,
+  isBest8Result,
+  isVisibleGender,
+} from '@/lib/highschool';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
 type TeamSummary = {
@@ -89,19 +97,6 @@ type RawResultEntry = {
   category: string;
 };
 
-const tournamentPriority: Record<string, number> = {
-  'highschool-kokutai': 1, // 国体
-  'highschool-championship': 2, // インターハイ
-  'highschool-japan-cup': 3, // J杯
-  'highschool-senbatsu': 4, // 選抜
-};
-
-const getTournamentSortPriority = (tournamentId: string): number =>
-  tournamentPriority[tournamentId] ?? 99;
-
-const isVisibleGender = (entryGender: string, pageGender: 'boys' | 'girls') =>
-  entryGender === pageGender || entryGender === 'mixed';
-
 export default function PrefectureHighschoolPage({
   prefecture,
   gender,
@@ -132,17 +127,6 @@ export default function PrefectureHighschoolPage({
           : '直近1年の主要大会掲載校が無い場合でも、学校一覧から全国大会成績を確認できます。',
     },
   ];
-  const getPerformanceLabel = (
-    result: string,
-  ): '好成績' | '健闘' | '敗退' | '予選敗退' | null => {
-    if (['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(result))
-      return '好成績';
-    if (['6回戦敗退', '5回戦敗退', '4回戦敗退', '3回戦敗退'].includes(result))
-      return '健闘';
-    if (['2回戦敗退', '1回戦敗退'].includes(result)) return '敗退';
-    if (result === '予選敗退') return '予選敗退';
-    return null; // "未出場" やそれ以外は無視
-  };
 
   return (
     <>
@@ -210,6 +194,22 @@ export default function PrefectureHighschoolPage({
                   '@type': 'Answer',
                   text: item.answer,
                 },
+              })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: `${prefectureName} 高校${genderLabel} 学校別成績ページ一覧`,
+              itemListElement: teams.map((team, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: team.teamName,
+                url: `https://softeni-pick.com/highschool/${gender}/${prefecture.id}/${team.teamId}`,
               })),
             }),
           }}
@@ -361,35 +361,54 @@ export default function PrefectureHighschoolPage({
                   {team.teamName}
                 </p>
                 <ul className="text-sm mt-2">
-                  {Object.entries(team.results ?? {}).length === 0 ? (
-                    <li className="text-sm text-gray-500">
-                      成績情報がありません
-                    </li>
-                  ) : (
-                    Object.entries(team.results)
-                      .sort((a, b) => Number(b[0]) - Number(a[0]))
-                      .map(([year, resultList]) => (
-                        <li key={year}>
-                          {year}年：
-                          {resultList
-                            .slice()
-                            .sort((a, b) => {
-                              const tournamentOrder =
-                                getTournamentSortPriority(a.tournamentId) -
-                                getTournamentSortPriority(b.tournamentId);
-                              if (tournamentOrder !== 0) {
-                                return tournamentOrder;
-                              }
-                              return (
-                                resultPriority(a.result) -
-                                resultPriority(b.result)
-                              );
-                            })
-                            .map((res) => `${res.tournament}（${res.result}）`)
-                            .join('、')}
+                  {(() => {
+                    const sortedYears = Object.entries(team.results ?? {}).sort(
+                      (a, b) => Number(b[0]) - Number(a[0]),
+                    );
+                    if (sortedYears.length === 0) {
+                      return (
+                        <li className="text-sm text-gray-500">
+                          成績情報がありません
                         </li>
-                      ))
-                  )}
+                      );
+                    }
+                    const visibleYears = sortedYears.slice(0, 3);
+                    const hiddenYearCount =
+                      sortedYears.length - visibleYears.length;
+                    return (
+                      <>
+                        {visibleYears.map(([year, resultList]) => (
+                          <li key={year}>
+                            {year}年：
+                            {resultList
+                              .slice()
+                              .sort((a, b) => {
+                                const tournamentOrder =
+                                  getTournamentSortPriority(a.tournamentId) -
+                                  getTournamentSortPriority(b.tournamentId);
+                                if (tournamentOrder !== 0) {
+                                  return tournamentOrder;
+                                }
+                                return (
+                                  resultPriority(a.result) -
+                                  resultPriority(b.result)
+                                );
+                              })
+                              .map(
+                                (res) => `${res.tournament}（${res.result}）`,
+                              )
+                              .join('、')}
+                          </li>
+                        ))}
+                        {hiddenYearCount > 0 && (
+                          <li className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                            ほか{hiddenYearCount}
+                            年分の成績は学校ページで確認できます
+                          </li>
+                        )}
+                      </>
+                    );
+                  })()}
                 </ul>
               </Link>
             </li>
@@ -521,7 +540,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ? []
       : filteredData.filter((entry) => entry.year === latestYear);
 
-  const sortedTournamentIds = Object.entries(tournamentPriority)
+  const sortedTournamentIds = Object.entries(HIGHSCHOOL_TOURNAMENT_PRIORITY)
     .sort((a, b) => a[1] - b[1])
     .map(([id]) => id);
 
@@ -561,9 +580,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const best8SchoolCount = new Set(
     filteredData
-      .filter((entry) =>
-        ['優勝', '準優勝', 'ベスト4', 'ベスト8'].includes(entry.result),
-      )
+      .filter((entry) => isBest8Result(entry.result))
       .map((entry) => entry.teamId),
   ).size;
 
@@ -748,7 +765,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const recentMajorSchoolCount = recentMajorTeamMap.size;
 
-  const genderLabel = gender === 'boys' ? '男子' : '女子';
+  const genderLabel = getGenderLabel(gender);
 
   return {
     props: {
