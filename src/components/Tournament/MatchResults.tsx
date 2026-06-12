@@ -1,4 +1,5 @@
 // src/components/Tournament/MatchResults.tsx
+import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 
 import {
@@ -7,6 +8,11 @@ import {
   TournamentEntry,
   TournamentMatch,
 } from '@/types/tournament';
+
+type NamePart = {
+  text: string;
+  playerId?: number;
+};
 
 interface Props {
   detail: TournamentDetailData;
@@ -19,6 +25,7 @@ interface Props {
 
 function MatchGroup({
   name,
+  nameParts,
   entryNo,
   matchGroup,
   extraRows,
@@ -28,6 +35,7 @@ function MatchGroup({
   resultLabel,
 }: {
   name: string;
+  nameParts?: NamePart[];
   entryNo: number;
   matchGroup: MatchRow[];
   extraRows?: MatchRow[];
@@ -57,14 +65,39 @@ function MatchGroup({
 
   return (
     <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800">
-      <button
+      <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsOpen((prev) => !prev);
+          }
+        }}
+        className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
       >
         <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
           <span className="flex flex-col">
             <span>
-              {entryNo}. {name}
+              {entryNo}.{' '}
+              {nameParts && nameParts.length > 0
+                ? nameParts.map((part, i) =>
+                    part.playerId ? (
+                      <Link
+                        key={i}
+                        href={`/players/${part.playerId}/results`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                      >
+                        {part.text}
+                      </Link>
+                    ) : (
+                      <span key={i}>{part.text}</span>
+                    ),
+                  )
+                : name}
             </span>
             <span className="text-sm">
               {resultLabel && (
@@ -81,7 +114,7 @@ function MatchGroup({
           </span>
           <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
         </h3>
-      </button>
+      </div>
 
       {isOpen && (
         <div className="w-full overflow-x-auto">
@@ -219,6 +252,50 @@ export default function MatchResults({
           return `${names.join('\u30fb')}\uff08${teamLabel}\uff09`;
         })
         .join('\u30fb');
+    },
+    [participantMap, detail],
+  );
+
+  // build linkable name parts for an entry header (individual format only)
+  const buildNamePartsForEntry = useCallback(
+    (entry: TournamentEntry): NamePart[] => {
+      const players = (entry.playerIds ?? [])
+        .map((pid: string) => participantMap.get(pid))
+        .filter(Boolean) as (typeof detail.participants)[0][];
+      if (!players || players.length === 0) return [];
+
+      const isTeamFormat = players.every(
+        (pl) => pl?.lastName === null && pl?.firstName === null,
+      );
+      if (isTeamFormat) return [];
+
+      // group players by team, keeping per-player link info
+      const teamGroups = new Map<
+        string,
+        { text: string; playerId?: number }[]
+      >();
+      for (const pl of players) {
+        const team = (pl && pl.team) || '不明';
+        if (!teamGroups.has(team)) teamGroups.set(team, []);
+        const fullName = `${pl?.lastName ?? ''}${pl?.firstName ?? ''}`.trim();
+        teamGroups.get(team)!.push({
+          text: fullName || '',
+          playerId: pl?.playerId,
+        });
+      }
+
+      const parts: NamePart[] = [];
+      let groupIndex = 0;
+      for (const [team, names] of teamGroups) {
+        if (groupIndex > 0) parts.push({ text: '・' });
+        names.forEach((n, i) => {
+          if (i > 0) parts.push({ text: '・' });
+          parts.push({ text: n.text, playerId: n.playerId });
+        });
+        parts.push({ text: `（${team}）` });
+        groupIndex += 1;
+      }
+      return parts;
     },
     [participantMap, detail],
   );
@@ -472,6 +549,7 @@ export default function MatchResults({
           <MatchGroup
             key={name}
             name={name}
+            nameParts={entry ? buildNamePartsForEntry(entry) : undefined}
             entryNo={entryNo}
             matchGroup={matchGroup}
             extraRows={expandedRows}

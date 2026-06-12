@@ -30,6 +30,10 @@ type PlayerResultsProps = {
   playerId: string;
   lastName: string;
   firstName: string;
+  team?: string | null;
+  profileSlug?: string | null;
+  firstActivityDate?: string | null;
+  latestActivityDate?: string | null;
   playerMatches: PlayerMatch[];
   playerTournaments: PlayerTournament[];
   majorTitlesData: MajorTitleData[];
@@ -41,6 +45,10 @@ export default function PlayerResultsPage({
   playerId,
   lastName,
   firstName,
+  team = null,
+  profileSlug = null,
+  firstActivityDate = null,
+  latestActivityDate = null,
   playerMatches,
   playerTournaments,
   majorTitlesData,
@@ -48,13 +56,68 @@ export default function PlayerResultsPage({
   allPlayers,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
-  const pageUrl = `https://softeni-pick.com/players/${playerId}/results`;
+  const pageUrl = `https://softeni-pick.com/players/${playerId}/results/`;
+  const displayName = team ? `${fullName}（${team}）` : fullName;
+
+  // latest tournament appearance (for unique description/summary)
+  const latestTournament =
+    playerTournaments.length > 0
+      ? [...playerTournaments].sort((a, b) =>
+          String(a.startDate ?? a.year ?? '').localeCompare(
+            String(b.startDate ?? b.year ?? ''),
+          ),
+        )[playerTournaments.length - 1]
+      : null;
+
+  // overall record
+  const totalMatches = playerStats?.totalMatches ?? 0;
+  const wins = playerStats?.wins ?? 0;
+  const losses = playerStats?.losses ?? 0;
+  const winRatePct =
+    totalMatches > 0 ? Math.round((wins / totalMatches) * 100) : null;
+
+  // most frequent partner (excluding singles)
+  const mainPartnerName = (() => {
+    const byPartner = playerStats?.byPartner ?? {};
+    let bestKey: string | null = null;
+    let bestCount = 0;
+    for (const [key, agg] of Object.entries(byPartner)) {
+      if (key === 'singles') continue;
+      const count = agg?.matches?.total ?? 0;
+      if (count > bestCount) {
+        bestCount = count;
+        bestKey = key;
+      }
+    }
+    if (!bestKey) return null;
+    const found = (allPlayers ?? []).find((p) => String(p.id) === bestKey);
+    return found ? `${found.lastName}${found.firstName}` : null;
+  })();
+
+  const latestResultPhrase = latestTournament
+    ? `${latestTournament.year ?? ''}年${latestTournament.tournamentName}${
+        latestTournament.finalResult
+          ? `で${latestTournament.finalResult}`
+          : 'に出場'
+      }`
+    : null;
+
+  const summarySentence = [
+    `${displayName}のソフトテニス試合結果・戦績。`,
+    latestResultPhrase ? `直近は${latestResultPhrase}。` : '',
+    totalMatches > 0
+      ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${
+          winRatePct !== null ? `（勝率${winRatePct}%）` : ''
+        }。`
+      : '',
+    mainPartnerName ? `主なペアは${mainPartnerName}。` : '',
+  ].join('');
 
   return (
     <>
       <MetaHead
-        title={`${fullName} 試合結果・経歴 | ソフトテニス情報`}
-        description={`${fullName}の主要大会結果や経歴（出場大会の履歴）を掲載`}
+        title={`${displayName}の試合結果・戦績 | ソフトテニス`}
+        description={summarySentence}
         url={pageUrl}
         type="article"
       />
@@ -65,29 +128,30 @@ export default function PlayerResultsPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'Article',
-              headline: `${fullName}の試合結果・大会成績・経歴`,
-              author: {
-                '@type': 'Person',
-                name: 'Softeni Pick',
-              },
-              publisher: {
-                '@type': 'Organization',
-                name: 'Softeni Pick',
-              },
-              datePublished: new Date().toISOString().split('T')[0],
-              dateModified: new Date().toISOString().split('T')[0],
+              '@type': 'ProfilePage',
+              ...(firstActivityDate && { dateCreated: firstActivityDate }),
+              ...(latestActivityDate && { dateModified: latestActivityDate }),
               inLanguage: 'ja',
               mainEntityOfPage: {
                 '@type': 'WebPage',
                 '@id': pageUrl,
               },
-              description: `${fullName}の主要大会結果や試合速報、経歴（出場大会の履歴）を掲載`,
-              about: {
+              mainEntity: {
                 '@type': 'Person',
                 name: fullName,
+                ...(team && {
+                  affiliation: {
+                    '@type': 'Organization',
+                    name: team,
+                  },
+                }),
                 url: pageUrl,
               },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Softeni Pick',
+              },
+              description: summarySentence,
             }),
           }}
         />
@@ -114,7 +178,7 @@ export default function PlayerResultsPage({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `試合結果`,
+                  name: `${fullName} 試合結果`,
                   item: pageUrl,
                 },
               ],
@@ -139,11 +203,23 @@ export default function PlayerResultsPage({
         />
 
         <header>
-          <h1 className="text-2xl font-bold">{fullName} 選手の試合結果</h1>
+          <h1 className="text-2xl font-bold">
+            {fullName} 選手の試合結果{team ? `（${team}）` : ''}
+          </h1>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-            本ページでは、{fullName}{' '}
-            選手の出場大会や成績、主な勝ち上がり情報を掲載しています。
+            {summarySentence}
+            出場大会や成績、主な勝ち上がり情報を掲載しています。
           </p>
+          {profileSlug && (
+            <p className="mt-2 text-sm">
+              <Link
+                href={`/players/${profileSlug}/`}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {fullName} 選手のプロフィール（身長・所属・ポジション）はこちら
+              </Link>
+            </p>
+          )}
         </header>
 
         {/* 主な成績（タイトル）(再現未実装) */}
@@ -238,6 +314,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // majorTitlesData will be awaited and included in the returned props below
 
   const playerMatches: PlayerMatch[] = [];
+  const teamRecords: { year: number; team: string }[] = [];
   const playerTournamentsMap = new Map<string, PlayerTournament>();
   const partnersMap = new Map<
     string,
@@ -272,6 +349,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       )
       .map((p) => p.id);
     if (matchingParticipantIds.length === 0) continue;
+
+    // record the player's own team per year (for latest-team resolution)
+    const selfParticipant = participantById.get(matchingParticipantIds[0]);
+    if (selfParticipant?.team && selfParticipant.team.trim().length > 0) {
+      teamRecords.push({
+        year: Number(year),
+        team: selfParticipant.team.trim(),
+      });
+    }
 
     const entries = Array.isArray(detail.entries) ? detail.entries : [];
     const entryByNo = new Map<number, TournamentEntry>();
@@ -745,11 +831,56 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     referencedPartnerIds.has(p.id),
   );
 
+  // latest team (most recent year wins)
+  const team =
+    teamRecords.length > 0
+      ? teamRecords.sort((a, b) => a.year - b.year).slice(-1)[0].team
+      : null;
+
+  // activity dates from tournament information (real freshness signals)
+  const activityDates = playerTournaments
+    .map((t) => t.endDate ?? t.startDate)
+    .filter((d): d is string => typeof d === 'string' && d.length > 0)
+    .sort();
+  const firstActivityDate = activityDates[0] ?? null;
+  const latestActivityDate = activityDates[activityDates.length - 1] ?? null;
+
+  // resolve curated profile slug (data/players/{slug}/information.json) if any
+  let profileSlug: string | null = null;
+  try {
+    const playersDir = path.join(process.cwd(), 'data', 'players');
+    for (const entry of fs.readdirSync(playersDir)) {
+      const infoFile = path.join(playersDir, entry, 'information.json');
+      if (!fs.existsSync(infoFile)) continue;
+      try {
+        const info = JSON.parse(fs.readFileSync(infoFile, 'utf-8')) as {
+          lastName?: string;
+          firstName?: string;
+        };
+        if (
+          info.lastName === idx.lastName &&
+          info.firstName === idx.firstName
+        ) {
+          profileSlug = entry;
+          break;
+        }
+      } catch {
+        // ignore broken information.json
+      }
+    }
+  } catch {
+    // ignore
+  }
+
   return {
     props: {
       playerId,
       lastName: idx.lastName,
       firstName: idx.firstName,
+      team,
+      profileSlug,
+      firstActivityDate,
+      latestActivityDate,
       playerMatches,
       playerTournaments,
       playerStats,

@@ -97,6 +97,30 @@
 - `lib/siteConfig.ts`
 - `src/components/MetaHead.tsx`
 
+### 選手ページの SEO 方針（2026-06 改善）
+
+設計の経緯は `docs/raw/2026-06-12-player-page-seo-design.md` を参照。
+
+内部リンク:
+
+- 大会結果ページ（対戦詳細）のエントリー見出しで、選手ページを持つ選手（`count>=5`）の名前を `/players/{id}/results/` にリンクする（`MatchResults.tsx`）
+- 高校の学校ページでも掲載選手名を同様にリンクする（pid「姓_名_チーム_県」を `data/players/index.json` と姓名一致で解決）
+- 同姓同名は「最初の ID を使う」既存規約に従う
+- numeric 結果ページから curated プロフィール（`/players/{slug}/`）への逆リンクを表示する（姓名一致で解決）
+- プロフィールと結果ページの URL 統合はしない方針（2026-06 決定）
+
+メタ・構造化データ:
+
+- 選手結果ページの JSON-LD は `ProfilePage` + `Person`。`dateCreated` / `dateModified` は実データ（初出/最新出場大会の日付）由来とし、ビルド日は使わない
+- 大会結果ページの `datePublished` / `dateModified` も大会開催日由来
+- canonical は必ず実 URL（trailingSlash あり）に一致させる。プロフィールの `/information` canonical は不具合だったため修正済み
+- title / description には所属チーム・直近成績・通算成績を埋め込み、ページごとに一意化する
+- curated プロフィールには FAQ（身長・所属・ポジション）を可視コンテンツ + FAQPage 構造化データで掲載する
+
+sitemap:
+
+- `next-sitemap.config.js` で選手結果ページに最新出場大会日、大会結果ページに開催日を `lastmod` として出力する
+
 ### 共通ページレイアウト
 
 公開ページ（`/beta/**` を除く）は `src/components/PageLayout.tsx` で統一しています。

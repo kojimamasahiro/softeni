@@ -84,6 +84,7 @@ type Props = {
   teamName: string;
   entries: Entry[];
   analysis: Analysis | null;
+  playerLinks?: Record<string, number>;
 };
 
 export default function TeamPage({
@@ -95,6 +96,7 @@ export default function TeamPage({
   teamName,
   entries,
   analysis,
+  playerLinks = {},
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}`;
   const championshipEntries = entries.filter(
@@ -578,15 +580,33 @@ export default function TeamPage({
                                               <>
                                                 <br />
                                                 選手:{' '}
-                                                {item.playerIds
-                                                  .map((pid) => {
+                                                {item.playerIds.map(
+                                                  (pid, pidIndex) => {
                                                     const parts =
                                                       pid.split('_');
-                                                    return parts.length >= 2
-                                                      ? `${parts[0]} ${parts[1]}`
-                                                      : pid;
-                                                  })
-                                                  .join('・')}
+                                                    const displayName =
+                                                      parts.length >= 2
+                                                        ? `${parts[0]} ${parts[1]}`
+                                                        : pid;
+                                                    const linkId =
+                                                      playerLinks[pid];
+                                                    return (
+                                                      <span key={pid}>
+                                                        {pidIndex > 0 && '・'}
+                                                        {linkId ? (
+                                                          <Link
+                                                            href={`/players/${linkId}/results`}
+                                                            className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                                                          >
+                                                            {displayName}
+                                                          </Link>
+                                                        ) : (
+                                                          displayName
+                                                        )}
+                                                      </span>
+                                                    );
+                                                  },
+                                                )}
                                               </>
                                             )}
                                           </p>
@@ -735,6 +755,46 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const genderLabel = getGenderLabel(gender);
 
+  // 選手ページ（/players/{id}/results）を持つ選手へのリンクマップを構築
+  // pid 形式: "姓_名_チーム_県"。players/index.json と姓名一致でリンクする。
+  const playerLinks: Record<string, number> = {};
+  const playersIndexPath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    'index.json',
+  );
+  if (fs.existsSync(playersIndexPath)) {
+    try {
+      const playersIndex = JSON.parse(
+        fs.readFileSync(playersIndexPath, 'utf-8'),
+      ) as Array<{
+        id: number;
+        lastName: string;
+        firstName: string;
+        count: number;
+      }>;
+      const nameToId = new Map<string, number>();
+      for (const p of playersIndex) {
+        if (p.count < 5) continue;
+        const key = `${p.lastName}::${p.firstName}`;
+        // 同姓同名は最初の ID を使う（players/index.tsx と同じ規約）
+        if (!nameToId.has(key)) nameToId.set(key, p.id);
+      }
+      for (const entry of entriesWithMeta) {
+        for (const pid of entry.playerIds ?? []) {
+          if (playerLinks[pid] !== undefined) continue;
+          const parts = pid.split('_');
+          if (parts.length < 2) continue;
+          const id = nameToId.get(`${parts[0]}::${parts[1]}`);
+          if (id !== undefined) playerLinks[pid] = id;
+        }
+      }
+    } catch (err) {
+      console.error('failed to parse players index.json', err);
+    }
+  }
+
   return {
     props: {
       prefectureName: prefecture.name,
@@ -745,6 +805,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       teamName,
       entries: entriesWithMeta,
       analysis,
+      playerLinks,
     },
   };
 };

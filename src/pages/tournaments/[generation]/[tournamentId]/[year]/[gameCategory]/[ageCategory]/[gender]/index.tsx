@@ -76,7 +76,7 @@ export default function TournamentYearResultPage({
   highschoolTeamLinks = null,
   prefectureName = null,
 }: TournamentYearResultPageProps) {
-  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
+  const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -123,8 +123,12 @@ export default function TournamentYearResultPage({
               headline: `${label} ${year}年度  ${categoryLabel ? `${categoryLabel} ` : ''}大会結果`,
               author: { '@type': 'Person', name: 'Softeni Pick' },
               publisher: { '@type': 'Organization', name: 'Softeni Pick' },
-              datePublished: new Date().toISOString().split('T')[0],
-              dateModified: new Date().toISOString().split('T')[0],
+              ...(infoForYear?.startDate && {
+                datePublished: infoForYear.startDate,
+              }),
+              ...((infoForYear?.endDate || infoForYear?.startDate) && {
+                dateModified: infoForYear?.endDate || infoForYear?.startDate,
+              }),
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
               description: `${label} ${year}年度  ${categoryLabel ? `${categoryLabel} ` : ''}のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,

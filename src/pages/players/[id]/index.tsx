@@ -66,13 +66,50 @@ export default function PlayerInformation({
 }: Props) {
   const age = calculateAge(player.birthDate);
   const formattedBirthDate = formatJapaneseDate(player.birthDate);
+  const fullName = `${player.lastName}${player.firstName}`;
+  const pageUrl = `https://softeni-pick.com/players/${id}/`;
+
+  const profileFacts = [
+    player.height ? `身長${player.height}cm` : '',
+    player.position ? `ポジションは${player.position}` : '',
+    player.handedness ? `${player.handedness}利き` : '',
+  ]
+    .filter(Boolean)
+    .join('、');
+
+  const faqItems = [
+    ...(player.height
+      ? [
+          {
+            question: `${fullName}選手の身長は？`,
+            answer: `${fullName}選手の身長は${player.height}cmです。`,
+          },
+        ]
+      : []),
+    ...(player.team
+      ? [
+          {
+            question: `${fullName}選手の所属は？`,
+            answer: `${fullName}選手は${player.retired ? '引退済みです' : `${player.team}に所属しています`}。`,
+          },
+        ]
+      : []),
+    ...(player.position
+      ? [
+          {
+            question: `${fullName}選手のポジションは？`,
+            answer: `${fullName}選手のポジションは${player.position}です。`,
+          },
+        ]
+      : []),
+  ];
 
   return (
     <>
       <MetaHead
-        title={`${player.lastName}${player.firstName} 選手情報 | ソフトテニス情報`}
-        description={`${player.lastName}${player.firstName}選手のプロフィール、所属、ポジション、生年月日などを掲載しています。`}
-        url={`https://softeni-pick.com/players/${id}/information`}
+        title={`${fullName}${player.team ? `（${player.team}）` : ''}のプロフィール・身長 | ソフトテニス`}
+        description={`ソフトテニス ${fullName}選手${player.team ? `（${player.team}）` : ''}のプロフィール。${profileFacts ? `${profileFacts}。` : ''}試合結果・戦績も掲載しています。`}
+        url={pageUrl}
       />
 
       <Head>
@@ -90,13 +127,33 @@ export default function PlayerInformation({
                 '@type': 'Organization',
                 name: player.team,
               },
-              url: `https://softeni-pick.com/players/${id}`,
+              url: pageUrl,
               ...(player.profileLinks?.length > 0 && {
                 sameAs: player.profileLinks.map((link) => link.url),
               }),
             }),
           }}
         />
+
+        {faqItems.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqItems.map((item) => ({
+                  '@type': 'Question',
+                  name: item.question,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: item.answer,
+                  },
+                })),
+              }),
+            }}
+          />
+        )}
 
         <script
           type="application/ld+json"
@@ -120,8 +177,8 @@ export default function PlayerInformation({
                 {
                   '@type': 'ListItem',
                   position: 3,
-                  name: `${player.lastName}${player.firstName}`,
-                  item: `https://softeni-pick.com/players/${id}`,
+                  name: fullName,
+                  item: pageUrl,
                 },
                 ...(hasResultsPage
                   ? [
@@ -129,7 +186,7 @@ export default function PlayerInformation({
                         '@type': 'ListItem',
                         position: 4,
                         name: '試合結果',
-                        item: `https://softeni-pick.com/players/${id}/results`,
+                        item: `https://softeni-pick.com/players/${numericId ?? id}/results/`,
                       },
                     ]
                   : []),
@@ -232,6 +289,23 @@ export default function PlayerInformation({
             </p>
           )}
         </section>
+
+        {faqItems.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
+            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+              {faqItems.map((item) => (
+                <div
+                  key={item.question}
+                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
+                >
+                  <h3 className="font-semibold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section>
           <h2 className="text-xl font-semibold mb-2">関連リンク</h2>
