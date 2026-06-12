@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>大会結果ツール - 入力</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 860px;
+        margin: 20px auto;
+        padding: 0 16px;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font-family: monospace;
+        font-size: 12px;
+      }
+      fieldset {
+        margin: 12px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      label {
+        margin-right: 12px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0;
+      }
+      #preview {
+        font-size: 13px;
+        color: #333;
+        white-space: pre-wrap;
+        background: #f6f6f6;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      .error {
+        color: #c62828;
+        font-size: 13px;
+      }
+      button.primary {
+        font-size: 16px;
+        padding: 8px 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>大会結果ツール</h1>
+
+    <h2>1. 入力JSON</h2>
+    <p style="font-size: 13px; color: #555">
+      選手配列（initialPlayers相当）を貼り付け。ラウンドロビンの場合、グループ分割済みオブジェクト（<code>{"A": [...], ...}</code>）も可。
+    </p>
+    <textarea id="inputJson" rows="14" placeholder='[{"id":1,"name":"...","information":[...]}, ...]'></textarea>
+    <div id="inputError" class="error"></div>
+
+    <h2>2. 形式を選択</h2>
+    <div class="row">
+      <label><input type="radio" name="format" value="tournament" checked />トーナメント</label>
+      <label><input type="radio" name="format" value="roundrobin" />ラウンドロビン</label>
+    </div>
+
+    <fieldset id="rrOptions" style="display: none">
+      <legend>ラウンドロビン グループ分割（generate_roundrobin.py 相当）</legend>
+      <div class="row">
+        <label>標準グループサイズ:
+          <input type="number" id="defaultSize" value="4" min="2" style="width: 60px" />
+        </label>
+        <label>ラベル:
+          <select id="labelType">
+            <option value="alpha">A, B, C...</option>
+            <option value="numeric">1, 2, 3...</option>
+          </select>
+        </label>
+        <label>サイズ上書き:
+          <input type="text" id="overrides" placeholder="例: B=5,I=5 または 2=5" style="width: 180px" />
+        </label>
+      </div>
+      <div id="preview"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>任意設定</legend>
+      <div class="row">
+        <label>出力ファイル名:
+          <input type="text" id="outputName" placeholder="例: doubles-none-girls.json" style="width: 260px" />
+        </label>
+      </div>
+      <details>
+        <summary>entries メタJSON（type情報。あれば貼り付け）</summary>
+        <textarea id="entriesMeta" rows="6" placeholder='[{"entryNo":1,"type":"seed"}, ...]'></textarea>
+      </details>
+    </fieldset>
+
+    <h2>3. ツールを開く</h2>
+    <button class="primary" onclick="openTool()">ツールを開く</button>
+    <div id="openError" class="error"></div>
+
+    <script src="shared/tool-bridge.js"></script>
+    <script src="shared/normalize-core.js"></script>
+    <script>
+      // ---- generate_roundrobin.py の移植 ----
+      function* excelLabels() {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let n = 1;
+        while (true) {
+          for (let i = 0; i < Math.pow(26, n); i++) {
+            let label = '';
+            let x = i;
+            for (let k = 0; k < n; k++) {
+              label = letters[x % 26] + label;
+              x = Math.floor(x / 26);
+            }
+            yield label;
+          }
+          n += 1;
+        }
+      }
+      function* numericLabels() {
+        let n = 1;
+        while (true) yield String(n++);
+      }
+      function parseOverrides(text) {
+        const result = {};
+        if (!text) return result;
+        for (let part of text.split(',')) {
+          part = part.trim();
+          if (!part) continue;
+          if (!part.includes('='))
+            throw new Error(`サイズ指定の形式が不正です: ${part}（例: B=5）`);
+          const [k, v] = part.split('=');
+          const size = parseInt(v.trim(), 10);
+          if (!(size > 0))
+            throw new Error(`${k.trim()} のサイズは正の整数にしてください`);
+          result[k.trim().toUpperCase()] = size;
+        }
+        return result;
+      }
+      function assignGroups(items, defaultSize, overrides, labelType) {
+        const out = {};
+        let idx = 0;
+        const labels =
+          labelType === 'alpha' ? excelLabels() : numericLabels();
+        while (idx < items.length) {
+          const label = labels.next().value;
+          const size = overrides[label] || defaultSize;
+          const group = items.slice(idx, idx + size);
+          if (!group.length) break;
+          out[label] = group;
+          idx += group.length;
+        }
+        return out;
+      }
+
+      // ---- UI ----
+      const inputEl = document.getElementById('inputJson');
+      const rrOptions = document.getElementById('rrOptions');
+      const previewEl = document.getElementById('preview');
+      const inputErrorEl = document.getElementById('inputError');
+      const openErrorEl = document.getElementById('openError');
+
+      document.getElementById('outputName').value = ToolBridge.getOutputName('');
+
+      function selectedFormat() {
+        return document.querySelector('input[name="format"]:checked').value;
+      }
+
+      function parseInput() {
+        const text = inputEl.value.trim();
+        if (!text) return null;
+        return JSON.parse(text);
+      }
+
+      function buildGrouped(data) {
+        if (!Array.isArray(data)) {
+          // 既にグループ分割済みオブジェクト
+          if (data && typeof data === 'object') return data;
+          throw new Error('入力JSONは配列またはグループオブジェクトにしてください');
+        }
+        const defaultSize = parseInt(
+          document.getElementById('defaultSize').value, 10) || 4;
+        const overrides = parseOverrides(
+          document.getElementById('overrides').value);
+        const labelType = document.getElementById('labelType').value;
+        return assignGroups(data, defaultSize, overrides, labelType);
+      }
+
+      function refresh() {
+        const isRR = selectedFormat() === 'roundrobin';
+        rrOptions.style.display = isRR ? '' : 'none';
+        inputErrorEl.textContent = '';
+        previewEl.textContent = '';
+        let data;
+        try {
+          data = parseInput();
+        } catch (e) {
+          inputErrorEl.textContent = 'JSONパースエラー: ' + e.message;
+          return;
+        }
+        if (!data) return;
+        if (isRR) {
+          try {
+            const grouped = buildGrouped(data);
+            const counts = Object.entries(grouped)
+              .map(([k, v]) => `${k}: ${v.length}件`)
+              .join(', ');
+            previewEl.textContent =
+              `グループ数: ${Object.keys(grouped).length}\n` + counts;
+          } catch (e) {
+            previewEl.textContent = '';
+            inputErrorEl.textContent = e.message;
+          }
+        }
+      }
+
+      inputEl.addEventListener('input', refresh);
+      document.querySelectorAll('input[name="format"]').forEach((el) =>
+        el.addEventListener('change', refresh),
+      );
+      ['defaultSize', 'overrides', 'labelType'].forEach((id) =>
+        document.getElementById(id).addEventListener('input', refresh),
+      );
+
+      function openTool() {
+        openErrorEl.textContent = '';
+        let data;
+        try {
+          data = parseInput();
+        } catch (e) {
+          openErrorEl.textContent = 'JSONパースエラー: ' + e.message;
+          return;
+        }
+        if (!data) {
+          openErrorEl.textContent = '入力JSONを貼り付けてください';
+          return;
+        }
+
+        // 任意設定の保存
+        const outputName = document.getElementById('outputName').value.trim();
+        if (outputName) ToolBridge.setOutputName(outputName);
+        const metaText = document.getElementById('entriesMeta').value.trim();
+        try {
+          ToolBridge.setEntriesMeta(metaText ? JSON.parse(metaText) : null);
+        } catch (e) {
+          openErrorEl.textContent = 'entriesメタのJSONパースエラー: ' + e.message;
+          return;
+        }
+
+        // 新しい入力で始めるので持ち越しデータはクリア
+        ToolBridge.clearRRCarry();
+
+        try {
+          if (selectedFormat() === 'roundrobin') {
+            ToolBridge.storeInput('roundrobin', buildGrouped(data));
+            location.href = 'roundrobin/index.html';
+          } else {
+            if (!Array.isArray(data))
+              throw new Error('トーナメント形式の入力は配列にしてください');
+            ToolBridge.storeInput('tournament', data);
+            location.href = 'tournament3/index.html';
+          }
+        } catch (e) {
+          openErrorEl.textContent = e.message;
+        }
+      }
+
+      refresh();
+    </script>
+  </body>
+</html>

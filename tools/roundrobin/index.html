@@ -15,17 +15,44 @@
     <h1>ラウンドロビン試合管理（グループ対応）</h1>
     <div id="matches"></div>
     <button onclick="onClickGenerate()">出力</button>
-    <h2>JSON出力</h2>
+    <h2>JSON出力（成形済み）</h2>
+    <div id="saveUi"></div>
     <textarea id="jsonOutput"></textarea>
+
+    <h2>トーナメントへ進出</h2>
+    <div style="margin: 8px 0">
+      <label>
+        各グループ上位
+        <input type="number" id="advanceRank" value="1" min="1" style="width: 50px" />
+        位を進出:
+      </label>
+      <button onclick="onClickExtractAdvancers()">進出ペアを抽出</button>
+      <button onclick="onClickGoTournament()">トーナメント画面へ</button>
+      <span id="advanceStatus" style="font-size: 12px; color: #c62828"></span>
+    </div>
+    <p style="font-size: 12px; color: #555; margin: 4px 0">
+      抽出結果は下で編集できます（並び順がそのまま組み合わせ順になります）。
+    </p>
+    <textarea id="advancersJson" style="height: 160px"></textarea>
+
     <script src="initialPlayer.js"></script>
+    <script src="../shared/normalize-core.js"></script>
+    <script src="../shared/tool-bridge.js"></script>
     <script>
       const initScore = 4; // 初期スコア
+
+      // ハブページからの入力があれば initialPlayer.js より優先
+      const playersByGroup =
+        ToolBridge.loadInput('roundrobin') ||
+        (typeof initialPlayersByGroup !== 'undefined'
+          ? initialPlayersByGroup
+          : {});
 
       const byePlayer = { id: 'bye', name: 'パッキン', information: [] };
       const allGroupMatches = {};
 
-      for (const group in initialPlayersByGroup) {
-        const players = initialPlayersByGroup[group];
+      for (const group in playersByGroup) {
+        const players = playersByGroup[group];
         const matches = [];
         for (let i = 0; i < players.length; i++) {
           for (let j = i + 1; j < players.length; j++) {
@@ -283,8 +310,8 @@
         // ---- standings 修正版 ----
         output.standings = {};
 
-        for (const group in initialPlayersByGroup) {
-          const players = initialPlayersByGroup[group].filter(
+        for (const group in playersByGroup) {
+          const players = playersByGroup[group].filter(
             (p) => p.id !== 'bye',
           );
           const playerStats = {};
@@ -386,11 +413,88 @@
           output.standings[group] = sorted;
         }
 
-        document.getElementById('jsonOutput').value = JSON.stringify(
-          output,
+        lastRawOutput = output;
+        try {
+          document.getElementById('jsonOutput').value =
+            ToolBridge.normalize(output);
+        } catch (e) {
+          document.getElementById('jsonOutput').value =
+            '成形エラー: ' + (e && e.message ? e.message : e);
+        }
+      }
+
+      // ---- 成形済み出力の保存UI ----
+      let lastRawOutput = null;
+      ToolBridge.buildSaveUI(document.getElementById('saveUi'), () =>
+        document.getElementById('jsonOutput').value.startsWith('成形エラー')
+          ? ''
+          : document.getElementById('jsonOutput').value,
+      );
+
+      // ---- トーナメント進出 ----
+      function onClickExtractAdvancers() {
+        const statusEl = document.getElementById('advanceStatus');
+        statusEl.textContent = '';
+        updateJsonOutput();
+        if (!lastRawOutput || !lastRawOutput.standings) {
+          statusEl.textContent = '順位が確定していません';
+          return;
+        }
+        const n =
+          parseInt(document.getElementById('advanceRank').value, 10) || 1;
+        const advancers = [];
+        // rank優先（各グループ1位→各グループ2位…の順）
+        for (let rank = 1; rank <= n; rank++) {
+          for (const group in lastRawOutput.standings) {
+            const standing = lastRawOutput.standings[group].find(
+              (s) => s.rank === rank,
+            );
+            if (!standing) continue;
+            const player = (playersByGroup[group] || []).find(
+              (p) => String(p.id) === String(standing.id),
+            );
+            if (player) advancers.push(player);
+          }
+        }
+        document.getElementById('advancersJson').value = JSON.stringify(
+          advancers,
           null,
           2,
         );
+        statusEl.style.color = '#2e7d32';
+        statusEl.textContent = `${advancers.length}件を抽出しました`;
+      }
+
+      function onClickGoTournament() {
+        const statusEl = document.getElementById('advanceStatus');
+        statusEl.style.color = '#c62828';
+        statusEl.textContent = '';
+        let advancers;
+        try {
+          advancers = JSON.parse(
+            document.getElementById('advancersJson').value,
+          );
+        } catch (e) {
+          statusEl.textContent =
+            '進出ペアのJSONパースエラー: ' + e.message;
+          return;
+        }
+        if (!Array.isArray(advancers) || !advancers.length) {
+          statusEl.textContent = '進出ペアを先に抽出してください';
+          return;
+        }
+        updateJsonOutput();
+        if (!lastRawOutput) {
+          statusEl.textContent = 'ラウンドロビン結果がありません';
+          return;
+        }
+        // RR結果を持ち越してトーナメント出力にマージする
+        ToolBridge.setRRCarry({
+          roundRobinMatches: lastRawOutput.roundRobinMatches,
+          standings: lastRawOutput.standings,
+        });
+        ToolBridge.storeInput('tournament', advancers);
+        location.href = '../tournament3/index.html';
       }
 
       displayMatches();

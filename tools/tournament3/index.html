@@ -29,13 +29,16 @@
   <div id="matches"></div>
   <button id="nextRoundBtn">次のラウンドへ</button>
 
-  <h2>最終JSON出力</h2>
+  <h2>最終JSON出力（成形済み）</h2>
+  <div id="saveUi"></div>
   <textarea id="jsonOutput" style="height: 400px"></textarea>
 
   <!-- キーボードショートカットヘルプボタン -->
   <button class="keyboard-help-button" onclick="toggleHelp()" title="キーボードショートカット (?)">?</button>
 
   <script src="initialPlayer.js"></script>
+  <script src="../shared/normalize-core.js"></script>
+  <script src="../shared/tool-bridge.js"></script>
   <script>
     /** =========================
      *  全ラウンド同時編集 版
@@ -58,8 +61,14 @@
     // When a packin toggle occurs we want to use a smaller scroll amount
     // for the next auto-scroll. After one use it will be reset to null.
     let packinScrollAmount = null;
+    // ハブ/ラウンドロビンからの入力があれば initialPlayer.js より優先
+    const sourcePlayers =
+      ToolBridge.loadInput('tournament') ||
+      (typeof initialPlayers !== 'undefined' ? initialPlayers : []);
+    // ラウンドロビンからの持ち越し結果（あれば出力にマージ）
+    const rrCarry = ToolBridge.getRRCarry();
     // カテゴリ
-    const category = initialPlayers[0].category; // doubles, singles, team, prefecture など
+    const category = sourcePlayers[0].category; // doubles, singles, team, prefecture など
 
     // 編集フラグ（ブラウザバック等の警告用）
     let isDirty = false;
@@ -139,13 +148,19 @@
 
     // ---------- ブラケット構築 ----------
     // Round: { matches: [ {p1, p2, scores:{p1,p2}, winner, retiredFlags} ... ] }
-    let bracket = buildBracket(initialPlayers);
+    let bracket = buildBracket(sourcePlayers);
     autoResolveByesAndPropagate();
 
     // ★ 追加：最初の描画前に未設定スコアへ初期値を適用
     applyInitialScoresToEditableMatches();
 
     renderBracket();
+
+    // 成形済み出力の保存UI
+    ToolBridge.buildSaveUI(document.getElementById('saveUi'), () =>
+      jsonOutputEl.value.startsWith('成形エラー') ? '' : jsonOutputEl.value,
+    );
+
     updateJsonOutput();
 
     // 初期ラウンドから決勝まで配列で作る（initialPlayersは既にbyeを含め偶数並び前提）
@@ -1606,7 +1621,19 @@
         }
       }
 
-      jsonOutputEl.value = JSON.stringify(output, null, 2);
+      // ラウンドロビンからの持ち越し結果をマージ
+      if (rrCarry) {
+        if (rrCarry.roundRobinMatches)
+          output.roundRobinMatches = rrCarry.roundRobinMatches;
+        if (rrCarry.standings) output.standings = rrCarry.standings;
+      }
+
+      try {
+        jsonOutputEl.value = ToolBridge.normalize(output);
+      } catch (e) {
+        jsonOutputEl.value =
+          '成形エラー: ' + (e && e.message ? e.message : e);
+      }
       validateMatchCount();
     }
 

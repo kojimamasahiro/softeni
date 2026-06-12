@@ -146,3 +146,24 @@ CLI:
 - tournament details 生成の標準手順はどのスクリプト列か
 - players 生成で最終的に正とする入力源はどれか
 - どこまでが自動生成で、どこからが手修正か
+
+## 大会結果入力ツール（tools/）
+
+2026-06 更新: 手動工程削減のため、ブラウザツールに入力受け渡し・成形(normalize)機能を統合した。
+
+フロー:
+
+1. `tools/index.html`（ハブ）で選手配列JSONを貼り付け、形式（トーナメント / ラウンドロビン）を選択
+   - ラウンドロビン選択時は `scripts/generate_roundrobin.py` 相当のグループ分割をブラウザ内で実行（標準サイズ / サイズ上書き / ラベル種別に対応）
+   - 入力は localStorage 経由で各ツールに渡る（従来どおり `initialPlayer.js` 直接編集も可。localStorage 入力が優先される）
+2. 各ツール（`tools/roundrobin` / `tools/tournament3`）でスコア入力
+   - 出力 textarea には成形済みJSON（`data/tournaments/details` 用の最終形式）が直接表示される
+   - 保存はコピー / ダウンロード / File System Access API によるフォルダ直接保存（Chrome系のみ）に対応
+3. ラウンドロビン→トーナメント移行: RR画面で「各グループ上位N位を進出」を指定して抽出→編集→トーナメント画面へ遷移
+   - RRの生結果（roundRobinMatches / standings）は持ち越され、トーナメント出力にマージしてから成形される
+
+成形ロジック:
+
+- 本体は `tools/shared/normalize-core.js`（ブラウザ・Node 両対応）
+- `scripts/normalize-to-participants-entries.cjs` は同モジュールを呼ぶ薄いCLIラッパーに変更（`scripts/batch-normalize.mjs` からの利用・出力は従来と同一であることを確認済み）
+- entries メタ（type情報）はハブページの任意入力欄から渡せる。未指定時は従来どおり試合内容から推定
