@@ -302,12 +302,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const tournamentIndex = await loadTournamentIndex(root);
   const tournamentMeta = new Map<
     string,
-    { label?: string; isMajor?: boolean }
+    { label?: string; isMajor?: boolean; generationId?: string }
   >();
   for (const t of tournamentIndex)
     tournamentMeta.set(t.tournamentId, {
       label: t.label,
       isMajor: !!t.isMajorTitle,
+      generationId: t.generationId,
     });
   const informationMap = await loadInformationMap(root);
   const allDetails = await getAllDetailRecords(root);
@@ -593,7 +594,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // build playerTournaments array with matches
   for (const [tournamentKey, matches] of tournamentMatchesMap.entries()) {
-    const [tid, yr] = tournamentKey.split('/');
+    const [tid, yr, category] = tournamentKey.split('/');
     const yearVal = yr ? (Number(yr) ? Number(yr) : yr) : undefined;
     const infoEntries = informationMap.get(tid) ?? [];
     const infoForYear = infoEntries.find(
@@ -607,7 +608,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ? `${infoForYear.startDate ?? ''}${infoForYear.endDate ? ' - ' + infoForYear.endDate : ''}`
         : null;
     const location = infoForYear ? (infoForYear.location ?? null) : null;
-    const link = infoForYear ? (infoForYear.sourceUrl ?? null) : null;
+    // サイト内の大会ページへリンクする（詳細ファイル名 = gameCategory-ageCategory-gender）
+    let link: string | null = null;
+    const categoryParts = (category ?? '').split('-');
+    if (categoryParts.length >= 3) {
+      const gender = categoryParts.pop() as string;
+      const ageCategory = categoryParts.pop() as string;
+      const gameCategory = categoryParts.join('-');
+      const generation = tournamentMeta.get(tid)?.generationId ?? 'unknown';
+      link = `/tournaments/${generation}/${tid}/${yr}/${gameCategory}/${ageCategory}/${gender}/`;
+    }
     const tournamentName = tournamentMeta.get(tid)?.label || tid;
     const finalResult = tournamentFinalResult.get(tournamentKey) ?? null;
 

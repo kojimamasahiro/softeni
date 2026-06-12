@@ -108,6 +108,7 @@
 - 高校の学校ページでも掲載選手名を同様にリンクする（pid「姓_名_チーム_県」を `data/players/index.json` と姓名一致で解決）
 - 同姓同名は「最初の ID を使う」既存規約に従う
 - numeric 結果ページから curated プロフィール（`/players/{slug}/`）への逆リンクを表示する（姓名一致で解決）
+- 選手結果ページの大会ごとの「詳細 大会ページ」リンクは、公式サイト（`sourceUrl`）ではなくサイト内大会ページ `/tournaments/{generation}/{tournamentId}/{year}/{gameCategory}/{ageCategory}/{gender}/` に内部リンクする（詳細ファイル名を右側から gender / ageCategory / gameCategory に分解して組み立てる。2026-06 変更）
 - プロフィールと結果ページの URL 統合はしない方針（2026-06 決定）
 
 メタ・構造化データ:
