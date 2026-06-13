@@ -248,7 +248,7 @@ export function computeRanking(teams: Team[], matches: Match[]): Ranking[] {
 
 /**
  * league.json の divisions を rank 昇順で返す。無ければ既定のⅠ/Ⅱ。
- * hasMatchData === false の部（例: 試合データ未掲載のⅢ部）は除外する。
+ * hasMatchData === false の部（例: 階層構成の位置付け紹介のみで対戦データを持たないⅢ部）は除外する。
  */
 export function getDivisions(meta: LeagueMeta | null): DivisionMeta[] {
   if (meta?.divisions?.length) {

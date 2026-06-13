@@ -35,30 +35,39 @@ const DIV_BADGE =
   'inline-flex items-center px-2 py-0.5 rounded text-xs font-bold';
 const PLAYOFF_ID = 'playoff';
 
-export default function MatchesPage({
-  year,
+interface MatchesPanelProps {
+  gender: Gender;
+  divisionId: string;
+  meta: LeagueMeta | null;
+  divisions: DivisionMeta[];
+  matches: { boys: Match[]; girls: Match[] };
+  teams: { boys: Team[]; girls: Team[] };
+  playerMaps: { boys: PlayerMap; girls: PlayerMap };
+  expanded: Set<string>;
+  toggle: (key: string) => void;
+}
+
+// 1つの gender×division（またはプレーオフ）分の順位表・対戦結果を描画する。
+// 全タブをHTMLに出力するため（SEO）、非アクティブなパネルは親側で `hidden` 切替する。
+// state に依存しない純粋な props のみで計算するので各タブの内容が静的HTMLに含まれる。
+function MatchesPanel({
+  gender,
+  divisionId,
   meta,
   divisions,
   matches,
   teams,
   playerMaps,
-}: MatchesPageProps) {
-  const [gender, setGender] = useState<Gender>('boys');
-  const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
-  const [expanded, setExpanded] = useState<Set<number>>(new Set());
-
-  // プレーオフ（入替戦）はリーグ階層をまたぐため、専用タブとして扱う
-  const hasPlayoff = useMemo(
-    () => matches[gender].some((m) => divisionOf(m) === PLAYOFF_ID),
-    [matches, gender],
-  );
+  expanded,
+  toggle,
+}: MatchesPanelProps) {
   const isPlayoff = divisionId === PLAYOFF_ID;
 
-  const matchesInDiv = useMemo(
-    () => matches[gender].filter((m) => divisionOf(m) === divisionId),
-    [matches, gender, divisionId],
+  const matchesInDiv = matches[gender].filter(
+    (m) => divisionOf(m) === divisionId,
   );
-  const teamsInDiv = useMemo(() => {
+
+  const teamsInDiv = (() => {
     if (isPlayoff) {
       // プレーオフ出場チームは試合データの teamId 集合から division 横断で導出
       const ids = new Set<string>();
@@ -69,7 +78,8 @@ export default function MatchesPage({
       return teams[gender].filter((t) => ids.has(t.teamId));
     }
     return teams[gender].filter((t) => divisionOf(t) === divisionId);
-  }, [teams, gender, divisionId, isPlayoff, matchesInDiv]);
+  })();
+
   const playerMap = playerMaps[gender] || {};
 
   const getTeamName = (teamId: string) =>
@@ -82,16 +92,13 @@ export default function MatchesPage({
     return t ? (divisions.find((d) => d.id === divisionOf(t))?.name ?? '') : '';
   };
 
-  const ranking = useMemo(
-    () => computeRanking(teamsInDiv, matchesInDiv),
-    [teamsInDiv, matchesInDiv],
-  );
+  const ranking = computeRanking(teamsInDiv, matchesInDiv);
 
   // 公式順位（league.json results）。ノックアウト等で総当たり計算が使えない場合に優先
   const officialOrder =
     !isPlayoff && meta?.results?.[divisionId]?.[gender]?.ranking;
   const hasOfficialRanking = !!(officialOrder && officialOrder.length);
-  const displayRanking = useMemo<Ranking[]>(() => {
+  const displayRanking: Ranking[] = (() => {
     if (hasOfficialRanking && officialOrder) {
       const byId = new Map(ranking.map((r) => [r.teamId, r]));
       return officialOrder
@@ -99,12 +106,12 @@ export default function MatchesPage({
         .filter((r): r is Ranking => !!r);
     }
     return ranking;
-  }, [hasOfficialRanking, officialOrder, ranking]);
+  })();
 
   // 予選ブロック別 公式順位表（league.json results.<div>.<gender>.blocks）
   const officialBlocks =
     !isPlayoff && meta?.results?.[divisionId]?.[gender]?.blocks;
-  const blockStandings = useMemo(() => {
+  const blockStandings = (() => {
     if (!officialBlocks) return null;
     return Object.entries(officialBlocks).map(([block, order]) => {
       const blockTeams = teamsInDiv.filter((t) => order.includes(t.teamId));
@@ -116,16 +123,7 @@ export default function MatchesPage({
         .filter((r): r is Ranking => !!r);
       return { block, rows };
     });
-  }, [officialBlocks, teamsInDiv, matchesInDiv]);
-
-  // タブ一覧（リーグ階層 + プレーオフ）
-  const tabs = useMemo(() => {
-    const base = divisions.map((d) => ({ id: d.id, name: d.name }));
-    if (hasPlayoff) {
-      base.push({ id: PLAYOFF_ID, name: meta?.playoff?.name ?? 'プレーオフ' });
-    }
-    return base;
-  }, [divisions, hasPlayoff, meta]);
+  })();
 
   const currentDiv = divisions.find((d) => d.id === divisionId);
   const currentDivName = isPlayoff
@@ -138,14 +136,394 @@ export default function MatchesPage({
       : currentDiv.rank === Math.max(...divisions.map((d) => d.rank));
   const isTop = isPlayoff || !currentDiv ? true : currentDiv.rank === 1;
 
-  const toggle = (id: number) => {
-    const next = new Set(expanded);
-    if (next.has(id)) {
-      next.delete(id);
-    } else {
-      next.add(id);
-    }
-    setExpanded(next);
+  return (
+    <div className="space-y-6">
+      {isPlayoff
+        ? meta?.playoff?.description && (
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {meta.playoff.description}
+            </p>
+          )
+        : currentDiv?.note && (
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {currentDiv.note}
+            </p>
+          )}
+
+      {teamsInDiv.length === 0 ? (
+        <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
+          <p className="font-semibold mb-1">
+            {currentDivName || 'このリーグ'}のデータは準備中です
+          </p>
+          <p className="text-xs">公式記録をもとに順次追加していきます。</p>
+        </div>
+      ) : (
+        <>
+          {/* 順位表 */}
+          <section>
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+              {currentDivName} 順位表
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+              {hasOfficialRanking
+                ? '順位は順位決定戦（公式記録）による。勝敗は同部内の対戦成績。'
+                : '順位は「勝数」→「同勝数内の直接対決」→「得失点差」の順で決定。'}
+            </p>
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
+                  <tr>
+                    <th className="py-3 px-4 text-left font-medium w-16">
+                      順位
+                    </th>
+                    <th className="py-3 px-2 text-left font-medium">チーム</th>
+                    <th className="py-3 px-2 text-center font-medium w-20">
+                      勝敗
+                    </th>
+                    <th className="py-3 px-4 text-center font-medium w-16">
+                      得失
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                  {displayRanking.map((team, index) => {
+                    const rank = index + 1;
+                    const total = displayRanking.length;
+                    // 入替戦ゾーンの目安（最上位リーグの下位2、最下位以外の上位2）
+                    // 公式順位表示時（ノックアウト）はゾーン表示しない
+                    const relegationZone =
+                      !hasOfficialRanking &&
+                      !isLowest &&
+                      rank > total - 2 &&
+                      team.played > 0;
+                    const promotionZone =
+                      !hasOfficialRanking &&
+                      !isTop &&
+                      rank <= 2 &&
+                      team.played > 0;
+                    return (
+                      <tr
+                        key={team.teamId}
+                        className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
+                      >
+                        <td className="py-3 text-center font-bold text-gray-700 dark:text-gray-300">
+                          <span className="inline-flex items-center gap-1">
+                            {rank}
+                            {promotionZone && (
+                              <span
+                                className={`${DIV_BADGE} bg-green-100 text-green-700`}
+                                title="入替戦（昇格）対象の目安"
+                              >
+                                昇
+                              </span>
+                            )}
+                            {relegationZone && (
+                              <span
+                                className={`${DIV_BADGE} bg-red-100 text-red-700`}
+                                title="入替戦（降格）対象の目安"
+                              >
+                                降
+                              </span>
+                            )}
+                          </span>
+                        </td>
+                        <td className="py-3 px-2 font-medium">
+                          {team.name}
+                          {isPlayoff && teamDivName(team.teamId) && (
+                            <span
+                              className={`${DIV_BADGE} bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 ml-2`}
+                            >
+                              {teamDivName(team.teamId)}
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-3 px-2 text-center">
+                          {team.played > 0 ? (
+                            <span className="inline-flex gap-1">
+                              <span className="font-bold">{team.won}</span>
+                              <span className="text-gray-400 mx-0.5">-</span>
+                              <span className="text-gray-500">{team.lost}</span>
+                            </span>
+                          ) : (
+                            <span className="text-gray-400">-</span>
+                          )}
+                        </td>
+                        <td className="py-3 px-4 text-center text-gray-500 dark:text-gray-400 text-xs">
+                          {team.played > 0
+                            ? `${team.pointsWon}-${team.pointsLost}`
+                            : '-'}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            {!hasOfficialRanking && (!isTop || !isLowest) && (
+              <p className="text-[11px] text-gray-400 mt-2">
+                {!isTop && (
+                  <span className="mr-3">
+                    <span
+                      className={`${DIV_BADGE} bg-green-100 text-green-700 mr-1`}
+                    >
+                      昇
+                    </span>
+                    入替戦（昇格）対象の目安
+                  </span>
+                )}
+                {!isLowest && (
+                  <span>
+                    <span
+                      className={`${DIV_BADGE} bg-red-100 text-red-700 mr-1`}
+                    >
+                      降
+                    </span>
+                    入替戦（降格）対象の目安
+                  </span>
+                )}
+              </p>
+            )}
+          </section>
+
+          {/* 予選ブロック別順位表 */}
+          {blockStandings && blockStandings.length > 0 && (
+            <section>
+              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+                予選リーグ ブロック順位表
+              </h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                各ブロック1位が順位決定戦へ進出。順位は公式記録による。
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {blockStandings.map(({ block, rows }) => (
+                  <div
+                    key={block}
+                    className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700"
+                  >
+                    <div className="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-xs font-bold text-gray-600 dark:text-gray-300">
+                      {block}ブロック
+                    </div>
+                    <table className="w-full text-sm">
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                        {rows.map((team, idx) => (
+                          <tr key={team.teamId}>
+                            <td className="py-2 px-3 w-10 text-center font-bold text-gray-700 dark:text-gray-300">
+                              {idx + 1}
+                            </td>
+                            <td className="py-2 px-1 font-medium">
+                              {team.name}
+                              {idx === 0 && (
+                                <span
+                                  className={`${DIV_BADGE} bg-amber-100 text-amber-700 ml-2`}
+                                  title="順位決定戦へ進出"
+                                >
+                                  進出
+                                </span>
+                              )}
+                            </td>
+                            <td className="py-2 px-3 text-center text-gray-500">
+                              {team.played > 0
+                                ? `${team.won}-${team.lost}`
+                                : '-'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 対戦結果一覧 */}
+          <section>
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+              {currentDivName} 対戦結果
+            </h2>
+            <div className="space-y-3">
+              {matchesInDiv.map((match) => {
+                const key = `${gender}-${divisionId}-${match.id}`;
+                const isExpanded = expanded.has(key);
+                return (
+                  <div
+                    key={match.id}
+                    className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border transition-all ${
+                      isExpanded
+                        ? 'border-blue-500 ring-1 ring-blue-100 dark:ring-blue-900'
+                        : 'border-gray-100 dark:border-gray-700'
+                    }`}
+                  >
+                    <div
+                      className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors select-none"
+                      onClick={() => toggle(key)}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
+                            {match.status === 'finished' ? '試合終了' : '予定'}
+                          </span>
+                          {match.label && (
+                            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded">
+                              {match.label}
+                            </span>
+                          )}
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          {match.date.replace(/-/g, '/')}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1 text-right">
+                          <span
+                            className={`block font-bold truncate ${match.winner === match.teamA ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
+                          >
+                            {getTeamName(match.teamA)}
+                          </span>
+                        </div>
+                        <div className="px-4 flex flex-col items-center min-w-[80px]">
+                          {match.status === 'finished' ? (
+                            <div className="flex items-center space-x-2 text-xl font-bold font-mono">
+                              <span
+                                className={
+                                  match.winner === match.teamA
+                                    ? 'text-blue-600 dark:text-blue-400'
+                                    : 'text-gray-400'
+                                }
+                              >
+                                {match.scoreA}
+                              </span>
+                              <span className="text-gray-300">-</span>
+                              <span
+                                className={
+                                  match.winner === match.teamB
+                                    ? 'text-blue-600 dark:text-blue-400'
+                                    : 'text-gray-400'
+                                }
+                              >
+                                {match.scoreB}
+                              </span>
+                            </div>
+                          ) : (
+                            <span className="text-xl font-bold text-gray-300">
+                              VS
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex-1 text-left">
+                          <span
+                            className={`block font-bold truncate ${match.winner === match.teamB ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
+                          >
+                            {getTeamName(match.teamB)}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-end">
+                          <span className="ml-2 text-xs">
+                            {isExpanded ? '▲' : '▼'}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {isExpanded && match.status === 'finished' && (
+                      <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4">
+                        <div className="space-y-3">
+                          {match.matches.map((detail, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-center text-sm"
+                            >
+                              <div className="w-8 font-bold text-gray-400 text-xs uppercase text-center">
+                                {detail.type}
+                              </div>
+                              <div
+                                className={`flex-1 text-right ${detail.winner === 'A' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
+                              >
+                                {getPlayerNames(detail.playersA)}
+                              </div>
+                              <div className="px-3">
+                                <span className="inline-block px-1.5 py-0.5 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded text-xs font-mono font-medium">
+                                  {detail.scoreA}-{detail.scoreB}
+                                </span>
+                              </div>
+                              <div
+                                className={`flex-1 text-left ${detail.winner === 'B' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
+                              >
+                                {getPlayerNames(detail.playersB)}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {isExpanded && match.status !== 'finished' && (
+                      <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4 text-center text-sm text-gray-500">
+                        試合データはまだありません
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+              {matchesInDiv.length === 0 && (
+                <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
+                  まだ試合情報がありません
+                </div>
+              )}
+            </div>
+          </section>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default function MatchesPage({
+  year,
+  meta,
+  divisions,
+  matches,
+  teams,
+  playerMaps,
+}: MatchesPageProps) {
+  const [gender, setGender] = useState<Gender>('boys');
+  const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  // タブ一覧（リーグ階層 + プレーオフ）を男女別に算出。
+  // プレーオフはリーグ階層をまたぐため、その性別に試合がある場合のみ専用タブを足す。
+  const tabsByGender = useMemo(() => {
+    const build = (g: Gender) => {
+      const base = divisions.map((d) => ({ id: d.id, name: d.name }));
+      if (matches[g].some((m) => divisionOf(m) === PLAYOFF_ID)) {
+        base.push({
+          id: PLAYOFF_ID,
+          name: meta?.playoff?.name ?? 'プレーオフ',
+        });
+      }
+      return base;
+    };
+    return { boys: build('boys'), girls: build('girls') } as Record<
+      Gender,
+      { id: string; name: string }[]
+    >;
+  }, [divisions, matches, meta]);
+
+  const activeTabs = tabsByGender[gender];
+  // 性別を切り替えた際、選択中の division がそのタブ一覧に無ければ先頭にフォールバック
+  const effectiveDivId = activeTabs.some((t) => t.id === divisionId)
+    ? divisionId
+    : (activeTabs[0]?.id ?? '1');
+
+  const toggle = (key: string) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
   };
 
   const editionLabel = meta?.title ?? `STリーグ ${year}`;
@@ -240,8 +618,8 @@ export default function MatchesPage({
 
         {/* リーグ（division）切替 + プレーオフ */}
         <div className="flex flex-wrap gap-2">
-          {tabs.map((d) => {
-            const active = d.id === divisionId;
+          {activeTabs.map((d) => {
+            const active = d.id === effectiveDivId;
             const playoffTab = d.id === PLAYOFF_ID;
             return (
               <button
@@ -261,340 +639,30 @@ export default function MatchesPage({
           })}
         </div>
 
-        {isPlayoff
-          ? meta?.playoff?.description && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-2">
-                {meta.playoff.description}
-              </p>
-            )
-          : currentDiv?.note && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-2">
-                {currentDiv.note}
-              </p>
-            )}
-
-        {teamsInDiv.length === 0 ? (
-          <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
-            <p className="font-semibold mb-1">
-              {currentDivName || 'このリーグ'}のデータは準備中です
-            </p>
-            <p className="text-xs">公式記録をもとに順次追加していきます。</p>
-          </div>
-        ) : (
-          <>
-            {/* 順位表 */}
-            <section>
-              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                {currentDivName} 順位表
-              </h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                {hasOfficialRanking
-                  ? '順位は順位決定戦（公式記録）による。勝敗は同部内の対戦成績。'
-                  : '順位は「勝数」→「同勝数内の直接対決」→「得失点差」の順で決定。'}
-              </p>
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
-                    <tr>
-                      <th className="py-3 px-4 text-left font-medium w-16">
-                        順位
-                      </th>
-                      <th className="py-3 px-2 text-left font-medium">
-                        チーム
-                      </th>
-                      <th className="py-3 px-2 text-center font-medium w-20">
-                        勝敗
-                      </th>
-                      <th className="py-3 px-4 text-center font-medium w-16">
-                        得失
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                    {displayRanking.map((team, index) => {
-                      const rank = index + 1;
-                      const total = displayRanking.length;
-                      // 入替戦ゾーンの目安（最上位リーグの下位2、最下位以外の上位2）
-                      // 公式順位表示時（ノックアウト）はゾーン表示しない
-                      const relegationZone =
-                        !hasOfficialRanking &&
-                        !isLowest &&
-                        rank > total - 2 &&
-                        team.played > 0;
-                      const promotionZone =
-                        !hasOfficialRanking &&
-                        !isTop &&
-                        rank <= 2 &&
-                        team.played > 0;
-                      return (
-                        <tr
-                          key={team.teamId}
-                          className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
-                        >
-                          <td className="py-3 text-center font-bold text-gray-700 dark:text-gray-300">
-                            <span className="inline-flex items-center gap-1">
-                              {rank}
-                              {promotionZone && (
-                                <span
-                                  className={`${DIV_BADGE} bg-green-100 text-green-700`}
-                                  title="入替戦（昇格）対象の目安"
-                                >
-                                  昇
-                                </span>
-                              )}
-                              {relegationZone && (
-                                <span
-                                  className={`${DIV_BADGE} bg-red-100 text-red-700`}
-                                  title="入替戦（降格）対象の目安"
-                                >
-                                  降
-                                </span>
-                              )}
-                            </span>
-                          </td>
-                          <td className="py-3 px-2 font-medium">
-                            {team.name}
-                            {isPlayoff && teamDivName(team.teamId) && (
-                              <span
-                                className={`${DIV_BADGE} bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 ml-2`}
-                              >
-                                {teamDivName(team.teamId)}
-                              </span>
-                            )}
-                          </td>
-                          <td className="py-3 px-2 text-center">
-                            {team.played > 0 ? (
-                              <span className="inline-flex gap-1">
-                                <span className="font-bold">{team.won}</span>
-                                <span className="text-gray-400 mx-0.5">-</span>
-                                <span className="text-gray-500">
-                                  {team.lost}
-                                </span>
-                              </span>
-                            ) : (
-                              <span className="text-gray-400">-</span>
-                            )}
-                          </td>
-                          <td className="py-3 px-4 text-center text-gray-500 dark:text-gray-400 text-xs">
-                            {team.played > 0
-                              ? `${team.pointsWon}-${team.pointsLost}`
-                              : '-'}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+        {/* 全 gender×タブ のパネルをHTMLに出力し、非アクティブは hidden で隠す（SEO） */}
+        {(['boys', 'girls'] as Gender[]).map((g) =>
+          tabsByGender[g].map((tab) => {
+            const active = g === gender && tab.id === effectiveDivId;
+            return (
+              <div
+                key={`${g}-${tab.id}`}
+                className={active ? '' : 'hidden'}
+                aria-hidden={!active}
+              >
+                <MatchesPanel
+                  gender={g}
+                  divisionId={tab.id}
+                  meta={meta}
+                  divisions={divisions}
+                  matches={matches}
+                  teams={teams}
+                  playerMaps={playerMaps}
+                  expanded={expanded}
+                  toggle={toggle}
+                />
               </div>
-              {!hasOfficialRanking && (!isTop || !isLowest) && (
-                <p className="text-[11px] text-gray-400 mt-2">
-                  {!isTop && (
-                    <span className="mr-3">
-                      <span
-                        className={`${DIV_BADGE} bg-green-100 text-green-700 mr-1`}
-                      >
-                        昇
-                      </span>
-                      入替戦（昇格）対象の目安
-                    </span>
-                  )}
-                  {!isLowest && (
-                    <span>
-                      <span
-                        className={`${DIV_BADGE} bg-red-100 text-red-700 mr-1`}
-                      >
-                        降
-                      </span>
-                      入替戦（降格）対象の目安
-                    </span>
-                  )}
-                </p>
-              )}
-            </section>
-
-            {/* 予選ブロック別順位表 */}
-            {blockStandings && blockStandings.length > 0 && (
-              <section>
-                <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                  予選リーグ ブロック順位表
-                </h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                  各ブロック1位が順位決定戦へ進出。順位は公式記録による。
-                </p>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {blockStandings.map(({ block, rows }) => (
-                    <div
-                      key={block}
-                      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700"
-                    >
-                      <div className="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-xs font-bold text-gray-600 dark:text-gray-300">
-                        {block}ブロック
-                      </div>
-                      <table className="w-full text-sm">
-                        <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                          {rows.map((team, idx) => (
-                            <tr key={team.teamId}>
-                              <td className="py-2 px-3 w-10 text-center font-bold text-gray-700 dark:text-gray-300">
-                                {idx + 1}
-                              </td>
-                              <td className="py-2 px-1 font-medium">
-                                {team.name}
-                                {idx === 0 && (
-                                  <span
-                                    className={`${DIV_BADGE} bg-amber-100 text-amber-700 ml-2`}
-                                    title="順位決定戦へ進出"
-                                  >
-                                    進出
-                                  </span>
-                                )}
-                              </td>
-                              <td className="py-2 px-3 text-center text-gray-500">
-                                {team.played > 0
-                                  ? `${team.won}-${team.lost}`
-                                  : '-'}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* 対戦結果一覧 */}
-            <section>
-              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                {currentDivName} 対戦結果
-              </h2>
-              <div className="space-y-3">
-                {matchesInDiv.map((match) => (
-                  <div
-                    key={match.id}
-                    className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border transition-all ${
-                      expanded.has(match.id)
-                        ? 'border-blue-500 ring-1 ring-blue-100 dark:ring-blue-900'
-                        : 'border-gray-100 dark:border-gray-700'
-                    }`}
-                  >
-                    <div
-                      className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors select-none"
-                      onClick={() => toggle(match.id)}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="flex items-center gap-2">
-                          <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
-                            {match.status === 'finished' ? '試合終了' : '予定'}
-                          </span>
-                          {match.label && (
-                            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded">
-                              {match.label}
-                            </span>
-                          )}
-                        </span>
-                        <span className="text-xs text-gray-400">
-                          {match.date.replace(/-/g, '/')}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1 text-right">
-                          <span
-                            className={`block font-bold truncate ${match.winner === match.teamA ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
-                          >
-                            {getTeamName(match.teamA)}
-                          </span>
-                        </div>
-                        <div className="px-4 flex flex-col items-center min-w-[80px]">
-                          {match.status === 'finished' ? (
-                            <div className="flex items-center space-x-2 text-xl font-bold font-mono">
-                              <span
-                                className={
-                                  match.winner === match.teamA
-                                    ? 'text-blue-600 dark:text-blue-400'
-                                    : 'text-gray-400'
-                                }
-                              >
-                                {match.scoreA}
-                              </span>
-                              <span className="text-gray-300">-</span>
-                              <span
-                                className={
-                                  match.winner === match.teamB
-                                    ? 'text-blue-600 dark:text-blue-400'
-                                    : 'text-gray-400'
-                                }
-                              >
-                                {match.scoreB}
-                              </span>
-                            </div>
-                          ) : (
-                            <span className="text-xl font-bold text-gray-300">
-                              VS
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex-1 text-left">
-                          <span
-                            className={`block font-bold truncate ${match.winner === match.teamB ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}
-                          >
-                            {getTeamName(match.teamB)}
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-end">
-                          <span className="ml-2 text-xs">
-                            {expanded.has(match.id) ? '▲' : '▼'}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {expanded.has(match.id) && match.status === 'finished' && (
-                      <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4">
-                        <div className="space-y-3">
-                          {match.matches.map((detail, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center text-sm"
-                            >
-                              <div className="w-8 font-bold text-gray-400 text-xs uppercase text-center">
-                                {detail.type}
-                              </div>
-                              <div
-                                className={`flex-1 text-right ${detail.winner === 'A' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
-                              >
-                                {getPlayerNames(detail.playersA)}
-                              </div>
-                              <div className="px-3">
-                                <span className="inline-block px-1.5 py-0.5 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded text-xs font-mono font-medium">
-                                  {detail.scoreA}-{detail.scoreB}
-                                </span>
-                              </div>
-                              <div
-                                className={`flex-1 text-left ${detail.winner === 'B' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
-                              >
-                                {getPlayerNames(detail.playersB)}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {expanded.has(match.id) && match.status !== 'finished' && (
-                      <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4 text-center text-sm text-gray-500">
-                        試合データはまだありません
-                      </div>
-                    )}
-                  </div>
-                ))}
-                {matchesInDiv.length === 0 && (
-                  <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
-                    まだ試合情報がありません
-                  </div>
-                )}
-              </div>
-            </section>
-          </>
+            );
+          }),
         )}
 
         {/* プレーオフ案内 */}

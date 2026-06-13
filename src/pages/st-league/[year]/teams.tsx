@@ -75,11 +75,6 @@ export default function STLeagueTeamsPage({
   const pageTitle = `${editionLabel} 出場チーム・選手`;
   const pageUrl = `https://softeni-pick.com/st-league/${year}/teams`;
 
-  const currentDiv = divisions.find((d) => d.id === divisionId);
-  const activeTeams = teams[activeTab].filter(
-    (t) => (t.division ?? '1') === divisionId,
-  );
-
   return (
     <>
       <MetaHead
@@ -157,28 +152,42 @@ export default function STLeagueTeamsPage({
             );
           })}
         </div>
-        {/* Content */}
-        <div className="space-y-12">
-          {activeTeams.map((team) => (
-            <>
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {team.info.name}
-                </h3>
-              </div>
-              <div key={team.info.id} className="">
-                <TeamsYearlySummary summary={team.summary} />
-                <TeamsRanking statsList={team.stats} />
-              </div>
-            </>
-          ))}
+        {/* Content: 全 gender×division パネルをHTMLに出力し、非アクティブは hidden で隠す（SEO） */}
+        {(['boys', 'girls'] as const).map((g) =>
+          divisions.map((d) => {
+            const active = g === activeTab && d.id === divisionId;
+            const panelTeams = teams[g].filter(
+              (t) => (t.division ?? '1') === d.id,
+            );
+            return (
+              <div
+                key={`${g}-${d.id}`}
+                className={active ? 'space-y-12' : 'hidden'}
+                aria-hidden={!active}
+              >
+                {panelTeams.map((team) => (
+                  <div key={team.info.id} className="space-y-6">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {team.info.name}
+                      </h3>
+                    </div>
+                    <div>
+                      <TeamsYearlySummary summary={team.summary} />
+                      <TeamsRanking statsList={team.stats} />
+                    </div>
+                  </div>
+                ))}
 
-          {activeTeams.length === 0 && (
-            <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
-              {currentDiv?.name ?? 'このリーグ'}の出場チーム情報は準備中です。
-            </div>
-          )}
-        </div>
+                {panelTeams.length === 0 && (
+                  <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                    {d.name}の出場チーム情報は準備中です。
+                  </div>
+                )}
+              </div>
+            );
+          }),
+        )}
       </PageLayout>
     </>
   );

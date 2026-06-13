@@ -7,7 +7,11 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import { getStLeagueYears, loadLeagueMeta } from '@/utils/st-league';
+import {
+  getDivisions,
+  getStLeagueYears,
+  loadLeagueMeta,
+} from '@/utils/st-league';
 
 interface EditionCard {
   year: number;
@@ -111,7 +115,9 @@ export default function STLeagueHub({
 
         {/* 紹介 */}
         <section className="max-w-3xl mx-auto mb-10 px-4">
-          <h1 className="text-2xl font-bold mb-4">STリーグとは</h1>
+          <h1 className="text-2xl font-bold mb-4">
+            STリーグ 結果・順位表・出場チーム
+          </h1>
           <p className="text-lg leading-relaxed mb-4">
             <strong>STリーグ</strong>
             は、日本のソフトテニス実業団チームによる最高峰のリーグ戦です。
@@ -183,7 +189,7 @@ export default function STLeagueHub({
                   className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm overflow-hidden"
                 >
                   <div className="relative z-10">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-s font-bold px-2 py-1 rounded">
+                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">
                       {ed.edition ? `第${ed.edition}回` : `SEASON ${ed.year}`}
                     </span>
                     <h3 className="mt-2 text-xl font-bold">{ed.title}</h3>
@@ -247,9 +253,8 @@ export const getStaticProps = async () => {
 
   const editions: EditionCard[] = years.map((year) => {
     const meta = loadLeagueMeta(year);
-    const divs = (meta?.divisions ?? [])
-      .slice()
-      .sort((a, b) => a.rank - b.rank);
+    // 試合データを持つ部のみ表示（Ⅲ部など hasMatchData:false は除外）
+    const divs = getDivisions(meta);
     return {
       year,
       edition: meta?.edition ?? null,
@@ -267,6 +272,7 @@ export const getStaticProps = async () => {
   const latest = years[0];
   if (latest) {
     const meta = loadLeagueMeta(latest);
+    // リーグ構成カードは Ⅲ部含む全階層を構成として表示する
     divisionOverview = (meta?.divisions ?? [])
       .slice()
       .sort((a, b) => a.rank - b.rank)

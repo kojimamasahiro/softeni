@@ -59,7 +59,9 @@
 
 ## STリーグ
 
-- STリーグⅡ・Ⅲ の出場チーム・対戦データが未入力（公式PDF＝組合せ/進行表からの手入力が必要）。
+- STリーグⅢ は大会データの収集が難しいため、階層構成（Ⅰ・Ⅱ・Ⅲ）の中での位置付けを紹介する扱いとし、対戦データは持たない方針。
+  「準備中」の TODO ではないため、データ収集対象には含めない（`hasMatchData: false`）。
+- STリーグⅡ（女子）の出場チーム・対戦データが未入力（公式PDF＝組合せ/進行表からの手入力が必要）。
   該当 division は `league.json` の `hasMatchData: false`、ページ上は「準備中」表示で運用中。
 - `data/st-league/editions.json` の `promotionRelegation`（年度間の昇格・降格）は一部 Assumption。
   公式記録での裏取りが必要。

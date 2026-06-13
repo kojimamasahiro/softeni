@@ -152,6 +152,25 @@ module.exports = {
   // 仕様: docs/wiki/score-site-link.md
   additionalPaths: async (config) => {
     const result = [];
+
+    // next-sitemap (output: export 構成) は getStaticProps を持たない
+    // 純粋な静的ページを sitemap に含めないため、公開対象の静的ページを明示的に補う。
+    // 動的/SSG ページは自動列挙されるのでここには含めない（重複防止）。
+    const staticPublicPaths = [
+      '/about/',
+      '/contact/',
+      '/faq/',
+      '/privacy/',
+      '/st-league/about/',
+    ];
+    for (const loc of staticPublicPaths) {
+      result.push({
+        loc,
+        changefreq: config.changefreq,
+        priority: config.priority,
+      });
+    }
+
     try {
       const indexPath = path.join(
         process.cwd(),
