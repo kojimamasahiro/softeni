@@ -79,11 +79,25 @@ const roundRank = (roundName) => {
 const sortLinksByRound = (links) =>
   links.sort((a, b) => roundRank(a.round) - roundRank(b.round));
 
+const joinPlayerName = (lastName, firstName) => {
+  const last = (lastName ?? '').toString().trim();
+  const first = (firstName ?? '').toString().trim();
+  if (last && first) return `${last} ${first}`;
+  return last || first;
+};
+
 const buildTeamDisplayName = (match, side) => {
   const p1Last = match[`team_${side}_player1_last_name`];
-  const p2Last = match[`team_${side}_player2_last_name`];
   if (p1Last) {
-    return [p1Last, p2Last].filter(Boolean).join('・');
+    return [
+      joinPlayerName(p1Last, match[`team_${side}_player1_first_name`]),
+      joinPlayerName(
+        match[`team_${side}_player2_last_name`],
+        match[`team_${side}_player2_first_name`],
+      ),
+    ]
+      .filter(Boolean)
+      .join('・');
   }
   return match[`team_${side}`] ?? '';
 };

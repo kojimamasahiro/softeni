@@ -84,6 +84,13 @@ const formatRawTeamName = (teamName: unknown): string => {
   return String(teamName);
 };
 
+const joinName = (lastName: unknown, firstName: unknown) => {
+  const last = stringifyNamePart(lastName);
+  const first = stringifyNamePart(firstName);
+  if (last && first) return `${last} ${first}`;
+  return last || first;
+};
+
 export const getBetaTeamDisplayName = (match: Match, team: TeamSide) => {
   const player1LastName =
     team === 'A'
@@ -93,9 +100,22 @@ export const getBetaTeamDisplayName = (match: Match, team: TeamSide) => {
     team === 'A'
       ? match.team_a_player2_last_name
       : match.team_b_player2_last_name;
+  const player1FirstName =
+    team === 'A'
+      ? match.team_a_player1_first_name
+      : match.team_b_player1_first_name;
+  const player2FirstName =
+    team === 'A'
+      ? match.team_a_player2_first_name
+      : match.team_b_player2_first_name;
 
   if (player1LastName) {
-    return [player1LastName, player2LastName].filter(Boolean).join('・');
+    return [
+      joinName(player1LastName, player1FirstName),
+      joinName(player2LastName, player2FirstName),
+    ]
+      .filter(Boolean)
+      .join('・');
   }
 
   const structuredTeam = match.teams?.[team];
