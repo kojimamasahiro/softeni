@@ -135,13 +135,13 @@ export default function PlayerResultsPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ProfilePage',
-              ...(firstActivityDate && { dateCreated: firstActivityDate }),
-              ...(latestActivityDate && { dateModified: latestActivityDate }),
+              ...(firstActivityDate && {
+                dateCreated: `${firstActivityDate}T00:00:00+09:00`,
+              }),
+              ...(latestActivityDate && {
+                dateModified: `${latestActivityDate}T00:00:00+09:00`,
+              }),
               inLanguage: 'ja',
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                '@id': pageUrl,
-              },
               mainEntity: {
                 '@type': 'Person',
                 name: fullName,
