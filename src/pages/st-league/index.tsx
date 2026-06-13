@@ -1,87 +1,88 @@
+import fs from 'fs';
+import path from 'path';
+
 import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import {
+  getDivisions,
+  getStLeagueYears,
+  loadLeagueMeta,
+} from '@/utils/st-league';
 
-const stLeagueYears = [2025]; // 必要に応じて年度を追加
+interface EditionCard {
+  year: number;
+  edition?: number;
+  title: string;
+  period?: string;
+  venue?: string;
+  divisionNames: string[];
+}
+
+interface DivisionOverview {
+  id: string;
+  name: string;
+  rank: number;
+  note?: string;
+}
+
+interface EditionsFile {
+  overview?: {
+    organizer?: string;
+    structure?: string;
+    predecessor?: string;
+  };
+}
+
+interface Props {
+  editions: EditionCard[];
+  overview: EditionsFile['overview'] | null;
+  divisionOverview: DivisionOverview[];
+}
 
 const menuItems = [
   {
     id: 'teams',
     title: '出場チーム・選手',
     description: '出場全チームの戦力分析と選手紹介',
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
     colorClass: 'bg-blue-500',
   },
   {
     id: 'matches',
-    title: '試合結果・日程',
-    description: '対戦カードごとの詳細スコアと日程',
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-        />
-      </svg>
-    ),
+    title: '試合結果・順位表',
+    description: 'リーグ別の対戦結果・順位表・日程',
     colorClass: 'bg-green-500',
   },
   {
     id: 'data',
     title: 'データ・分析',
-    description: '各種スタッツランキングと傾向分析',
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"
-        />
-      </svg>
-    ),
+    description: '選手別スタッツと勝率ランキング',
     colorClass: 'bg-purple-500',
   },
-];
+] as const;
 
-export default function STLeagueHub() {
-  const pageTitle = 'STリーグ | ソフトテニス情報';
+function hrefFor(id: string, year: number) {
+  if (id === 'teams') return `/st-league/${year}/teams`;
+  if (id === 'matches') return `/st-league/${year}/matches`;
+  return `/st-league/${year}/analysis`;
+}
+
+export default function STLeagueHub({
+  editions,
+  overview,
+  divisionOverview,
+}: Props) {
+  const pageTitle = 'STリーグ｜結果・順位表・出場チーム | ソフトテニス情報';
   const pageUrl = 'https://softeni-pick.com/st-league';
 
   return (
     <>
       <MetaHead
         title={pageTitle}
-        description="ソフトテニスの実業団最高峰リーグ「STリーグ」の情報ページ。STリーグの概要、最新年度の情報、過去の記録など。"
+        description="ソフトテニス実業団最高峰「STリーグ」(Ⅰ・Ⅱ部)の結果・順位表・出場チーム・選手データ。各年度の試合結果や昇格・降格(入替戦)情報をまとめています。"
         url={pageUrl}
       />
       <Head>
@@ -90,11 +91,14 @@ export default function STLeagueHub() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'WebPage',
-              name: 'STリーグ',
-              description:
-                'ソフトテニスの実業団最高峰リーグ「STリーグ」の情報ページ。',
-              url: pageUrl,
+              '@type': 'ItemList',
+              name: 'STリーグ 開催年度一覧',
+              itemListElement: editions.map((e, i) => ({
+                '@type': 'ListItem',
+                position: i + 1,
+                name: e.title,
+                url: `https://softeni-pick.com/st-league/${e.year}/matches`,
+              })),
             }),
           }}
         />
@@ -109,21 +113,24 @@ export default function STLeagueHub() {
           />
         </div>
 
-        {/* サイト紹介文 */}
+        {/* 紹介 */}
         <section className="max-w-3xl mx-auto mb-10 px-4">
-          <h1 className="text-2xl font-bold mb-4">STリーグとは</h1>
+          <h1 className="text-2xl font-bold mb-4">
+            STリーグ 結果・順位表・出場チーム
+          </h1>
           <p className="text-lg leading-relaxed mb-4">
             <strong>STリーグ</strong>
-            は、日本の実業団チームによる最高レベルのリーグ戦です。トップ選手たちがチームの誇りをかけて戦う熱い試合の魅力や、リーグの仕組みについて解説します。
-          </p>
-          <p className="text-lg leading-relaxed mb-4">
-            本ページでは、STリーグの概要、最新年度の情報、過去の記録などをまとめています。
+            は、日本のソフトテニス実業団チームによる最高峰のリーグ戦です。
+            {overview?.predecessor && `（${overview.predecessor}）`}
+            男女それぞれが
+            <strong>STリーグⅠ・Ⅱ・Ⅲ</strong>
+            の階層に分かれて総当たり戦を行い、年度成績に応じてプレーオフ（入替戦）で昇格・降格が決まります。
           </p>
           <Link
             href="/st-league/about"
             className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline"
           >
-            もっと詳しく知る
+            ルール・仕組みを詳しく見る
             <svg
               className="w-4 h-4 ml-2"
               fill="none"
@@ -140,87 +147,99 @@ export default function STLeagueHub() {
           </Link>
         </section>
 
-        {/* 年度ごとのSTリーグブロック */}
-        <div className="max-w-6xl mx-auto">
-          <section className="max-w-4xl mx-auto mb-8 px-4">
-            <div className="space-y-10">
-              {stLeagueYears.map((year) => (
+        {/* リーグ構成の概要 */}
+        {divisionOverview.length > 0 && (
+          <section className="max-w-4xl mx-auto mb-12 px-4">
+            <h2 className="text-lg font-bold mb-4">リーグ構成</h2>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {divisionOverview.map((d) => (
                 <div
-                  key={year}
+                  key={d.id}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold">
+                      {d.rank}
+                    </span>
+                    <span className="font-bold">{d.name}</span>
+                  </div>
+                  {d.note && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                      {d.note}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-3">
+              ※
+              上位・下位リーグ間ではプレーオフ（入替戦）により昇格・降格が行われます。
+            </p>
+          </section>
+        )}
+
+        {/* 年度ごとのブロック */}
+        <div className="max-w-4xl mx-auto">
+          <section className="mb-8 px-4">
+            <h2 className="text-lg font-bold mb-4">開催年度</h2>
+            <div className="space-y-10">
+              {editions.map((ed) => (
+                <div
+                  key={ed.year}
                   className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm overflow-hidden"
                 >
                   <div className="relative z-10">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-s font-bold px-2 py-1 rounded">
-                      SEASON {year}
+                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">
+                      {ed.edition ? `第${ed.edition}回` : `SEASON ${ed.year}`}
                     </span>
+                    <h3 className="mt-2 text-xl font-bold">{ed.title}</h3>
+                    {(ed.period || ed.venue) && (
+                      <p className="text-sm text-gray-500 mt-1">
+                        {ed.period}
+                        {ed.venue && `　${ed.venue}`}
+                      </p>
+                    )}
+                    {ed.divisionNames.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {ed.divisionNames.map((n) => (
+                          <span
+                            key={n}
+                            className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded"
+                          >
+                            {n}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  {/* Background decoration */}
                   <div className="absolute top-0 right-0 -mt-10 -mr-10 text-9xl font-bold text-gray-100 dark:text-gray-700/50 select-none">
-                    {year}
+                    {ed.year}
                   </div>
                   <div className="grid md:grid-cols-3 gap-6 mt-8">
-                    {menuItems.map((item) =>
-                      item.id === 'teams' ||
-                      item.id === 'matches' ||
-                      item.id === 'data' ? (
-                        <div key={item.id} className="space-y-2">
-                          <Link
-                            href={
-                              item.id === 'teams'
-                                ? `/st-league/${year}/teams`
-                                : item.id === 'matches'
-                                  ? `/st-league/${year}/matches`
-                                  : `/st-league/${year}/analysis`
-                            }
-                            className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition block focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                              item.id === 'matches'
-                                ? 'ring-green-400'
-                                : item.id === 'data'
-                                  ? 'ring-purple-400'
-                                  : ''
-                            }`}
-                            tabIndex={0}
-                          >
-                            <div
-                              className={`absolute top-0 right-0 p-3 rounded-bl-2xl text-white ${item.colorClass} opacity-90`}
-                            >
-                              {item.icon}
-                            </div>
-                            <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-                              {item.title}
-                            </h3>
-                            <p className="text-sm text-gray-500 mb-6">
-                              {item.description}
-                            </p>
-                          </Link>
-                        </div>
-                      ) : (
+                    {menuItems.map((item) => (
+                      <Link
+                        key={item.id}
+                        href={hrefFor(item.id, ed.year)}
+                        className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition block focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      >
                         <div
-                          key={item.id}
-                          className="bg-gray-100 dark:bg-gray-700/70 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group transition opacity-80 cursor-not-allowed"
-                        >
-                          <div
-                            className={`absolute top-0 right-0 p-3 rounded-bl-2xl text-white ${item.colorClass} opacity-90`}
-                          >
-                            {item.icon}
-                          </div>
-                          <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-                            {item.title}
-                          </h3>
-                          <p className="text-sm text-gray-500 mb-6">
-                            {item.description}
-                          </p>
-                          <div className="absolute bottom-6 left-6 right-6">
-                            <span className="text-xs text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                              準備中
-                            </span>
-                          </div>
-                        </div>
-                      ),
-                    )}
+                          className={`absolute top-0 right-0 w-2 h-full ${item.colorClass} opacity-80`}
+                        />
+                        <h4 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          {item.description}
+                        </p>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               ))}
+
+              {editions.length === 0 && (
+                <p className="text-gray-500">開催年度の情報がありません。</p>
+              )}
             </div>
           </section>
         </div>
@@ -228,3 +247,51 @@ export default function STLeagueHub() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const years = getStLeagueYears();
+
+  const editions: EditionCard[] = years.map((year) => {
+    const meta = loadLeagueMeta(year);
+    // 試合データを持つ部のみ表示（Ⅲ部など hasMatchData:false は除外）
+    const divs = getDivisions(meta);
+    return {
+      year,
+      edition: meta?.edition ?? null,
+      title: meta?.title ?? `STリーグ ${year}`,
+      period: meta?.period
+        ? `${meta.period.start.replace(/-/g, '/')}〜${meta.period.end.replace(/-/g, '/')}`
+        : null,
+      venue: meta?.venue ?? null,
+      divisionNames: divs.map((d) => d.name),
+    } as EditionCard;
+  });
+
+  // 最新年度の division 構成を概要として使う
+  let divisionOverview: DivisionOverview[] = [];
+  const latest = years[0];
+  if (latest) {
+    const meta = loadLeagueMeta(latest);
+    // リーグ構成カードは Ⅲ部含む全階層を構成として表示する
+    divisionOverview = (meta?.divisions ?? [])
+      .slice()
+      .sort((a, b) => a.rank - b.rank)
+      .map((d) => ({
+        id: d.id,
+        name: d.name,
+        rank: d.rank,
+        note: d.note ?? null,
+      })) as DivisionOverview[];
+  }
+
+  let overview: EditionsFile['overview'] | null = null;
+  const editionsPath = path.join(process.cwd(), 'data/st-league/editions.json');
+  if (fs.existsSync(editionsPath)) {
+    const parsed: EditionsFile = JSON.parse(
+      fs.readFileSync(editionsPath, 'utf8'),
+    );
+    overview = parsed.overview ?? null;
+  }
+
+  return { props: { editions, overview, divisionOverview } };
+};

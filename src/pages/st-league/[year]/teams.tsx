@@ -3,6 +3,7 @@ import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -13,6 +14,7 @@ import PageLayout from '@/components/PageLayout';
 import {
   aggregateTeamResults,
   generateTeamInfo,
+  normalizeJa,
   TeamInfo,
 } from '@/utils/team-data-aggregator';
 import {
@@ -22,9 +24,17 @@ import {
   YearlySummary,
 } from '@/utils/team-stats-calculator';
 import { loadAllTournamentData } from '@/utils/tournament-data-loader';
+import {
+  DivisionMeta,
+  getDivisions,
+  getStLeagueYears,
+  LeagueMeta,
+  loadLeagueMeta,
+} from '@/utils/st-league';
 
 type ParticipantInfo = {
   teamId: string;
+  division?: string;
   name: string | string[];
   players?: {
     lastName: string;
@@ -39,25 +49,33 @@ type ParticipantsData = {
 
 type TeamData = {
   info: TeamInfo;
+  division: string;
   summary: YearlySummary;
   stats: PlayerStats[];
 };
 
 type Props = {
   year: number;
+  meta: LeagueMeta | null;
+  divisions: DivisionMeta[];
   teams: {
     boys: TeamData[];
     girls: TeamData[];
   };
 };
 
-export default function STLeagueTeamsPage({ year, teams }: Props) {
+export default function STLeagueTeamsPage({
+  year,
+  meta,
+  divisions,
+  teams,
+}: Props) {
   const [activeTab, setActiveTab] = useState<'boys' | 'girls'>('boys');
+  const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
 
-  const pageTitle = `STリーグ ${year} 出場チーム・選手`;
+  const editionLabel = meta?.title ?? `STリーグ ${year}`;
+  const pageTitle = `${editionLabel} 出場チーム・選手`;
   const pageUrl = `https://softeni-pick.com/st-league/${year}/teams`;
-
-  const activeTeams = teams[activeTab];
 
   return (
     <>
@@ -90,7 +108,21 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
           ]}
         />
         <h1 className="text-2xl font-bold">{pageTitle}</h1>
-        <p>本年度の成績を掲載しています。</p>
+        <p>
+          STリーグⅠ・Ⅱ、男女別の出場チームと選手個人の成績を掲載しています。
+        </p>
+        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-200">
+          ここに表示する「年間成績」「選手別成績」は、
+          <strong>STリーグ本体の対戦を除いた{year}年度の大会成績</strong>
+          （全日本選手権・全日本実業団など）です。STリーグ内の対戦成績・勝率は
+          <Link
+            href={`/st-league/${year}/analysis`}
+            className="font-semibold text-blue-700 underline dark:text-blue-300"
+          >
+            分析ページ
+          </Link>
+          をご覧ください。
+        </div>
         {/* Tabs */}
         <div className="flex border-b border-gray-200 dark:border-gray-700">
           <button
@@ -114,55 +146,71 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
             女子
           </button>
         </div>
-        {/* Content */}
-        <div className="space-y-12">
-          {activeTeams.map((team) => (
-            <>
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {team.info.name}
-                </h3>
-              </div>
-              <div key={team.info.id} className="">
-                <TeamsYearlySummary summary={team.summary} />
-                <TeamsRanking statsList={team.stats} />
-              </div>
-            </>
-          ))}
 
-          {activeTeams.length === 0 && (
-            <div className="text-center py-10 text-gray-500 dark:text-gray-400">
-              参加チームの情報がありません。
-            </div>
-          )}
+        {/* リーグ（division）切替 */}
+        <div className="flex flex-wrap gap-2">
+          {divisions.map((d) => {
+            const active = d.id === divisionId;
+            return (
+              <button
+                key={d.id}
+                onClick={() => setDivisionId(d.id)}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
+                  active
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
+                }`}
+              >
+                {d.name}
+              </button>
+            );
+          })}
         </div>
+        {/* Content: 全 gender×division パネルをHTMLに出力し、非アクティブは hidden で隠す（SEO） */}
+        {(['boys', 'girls'] as const).map((g) =>
+          divisions.map((d) => {
+            const active = g === activeTab && d.id === divisionId;
+            const panelTeams = teams[g].filter(
+              (t) => (t.division ?? '1') === d.id,
+            );
+            return (
+              <div
+                key={`${g}-${d.id}`}
+                className={active ? 'space-y-12' : 'hidden'}
+                aria-hidden={!active}
+              >
+                {panelTeams.map((team) => (
+                  <div key={team.info.id} className="space-y-6">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {team.info.name}
+                      </h3>
+                    </div>
+                    <div>
+                      <TeamsYearlySummary summary={team.summary} />
+                      <TeamsRanking statsList={team.stats} />
+                    </div>
+                  </div>
+                ))}
+
+                {panelTeams.length === 0 && (
+                  <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                    {d.name}の出場チーム情報は準備中です。
+                  </div>
+                )}
+              </div>
+            );
+          }),
+        )}
       </PageLayout>
     </>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const stLeagueDir = path.join(process.cwd(), 'data/st-league');
-  const years: string[] = [];
-
-  if (fs.existsSync(stLeagueDir)) {
-    const entries = fs.readdirSync(stLeagueDir, { withFileTypes: true });
-    entries.forEach((entry) => {
-      if (entry.isDirectory() && /^\d{4}$/.test(entry.name)) {
-        years.push(entry.name);
-      }
-    });
-  }
-
-  const paths = years.map((year) => ({
-    params: { year },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: getStLeagueYears().map((y) => ({ params: { year: String(y) } })),
+  fallback: false,
+});
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { year } = context.params as { year: string };
@@ -204,11 +252,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
       // Manually add players from participants.json if they are missing
       if (p.players) {
         p.players.forEach((player) => {
-          const fullName = `${player.lastName}${player.firstName}`;
-          // Check if player exists (by name matching)
+          const fullName = normalizeJa(`${player.lastName}${player.firstName}`);
+          // Check if player exists (by name matching; 半角/全角・異体字を吸収)
           const exists = Object.values(info.players).some(
             (existing) =>
-              `${existing.lastName}${existing.firstName}` === fullName,
+              normalizeJa(`${existing.lastName}${existing.firstName}`) ===
+              fullName,
           );
 
           if (!exists) {
@@ -225,13 +274,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
       // Filter players if explicitly listed in participants.json
       if (p.players && p.players.length > 0) {
         const targetPlayers = new Set(
-          p.players.map((pl) => `${pl.lastName}${pl.firstName}`),
+          p.players.map((pl) => normalizeJa(`${pl.lastName}${pl.firstName}`)),
         );
 
-        // Rebuild info.players with only matching players
+        // Rebuild info.players with only matching players（半角/全角・異体字を吸収）
         const filteredPlayers: typeof info.players = {};
         for (const [pid, player] of Object.entries(info.players)) {
-          const fullName = `${player.lastName}${player.firstName}`;
+          const fullName = normalizeJa(`${player.lastName}${player.firstName}`);
           if (targetPlayers.has(fullName)) {
             filteredPlayers[pid] = player;
           }
@@ -258,6 +307,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
       return {
         info,
+        division: p.division ?? '1',
         summary,
         stats,
       };
@@ -267,9 +317,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const boysTeams = processTeams(participantsData.boys, 'boys');
   const girlsTeams = processTeams(participantsData.girls, 'girls');
 
+  const meta = loadLeagueMeta(year);
+  const divisions = getDivisions(meta);
+
   return {
     props: {
       year: Number(year),
+      meta,
+      divisions,
       teams: {
         boys: boysTeams,
         girls: girlsTeams,

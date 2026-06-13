@@ -57,6 +57,18 @@
 - `detected-documents.json` で `accepted` にした候補を、どの手順で `information/*.json` に反映するか
 - 巡回候補から既存 `local_index.json` の大会をどこまで半自動で推定するか
 
+## STリーグ
+
+- STリーグⅢ は大会データの収集が難しいため、階層構成（Ⅰ・Ⅱ・Ⅲ）の中での位置付けを紹介する扱いとし、対戦データは持たない方針。
+  「準備中」の TODO ではないため、データ収集対象には含めない（`hasMatchData: false`）。
+- STリーグⅡ（女子）の出場チーム・対戦データが未入力（公式PDF＝組合せ/進行表からの手入力が必要）。
+  該当 division は `league.json` の `hasMatchData: false`、ページ上は「準備中」表示で運用中。
+- `data/st-league/editions.json` の `promotionRelegation`（年度間の昇格・降格）は一部 Assumption。
+  公式記録での裏取りが必要。
+- 第1回（2023）・第2回（2024）の詳細データ（参加チーム・結果）が未入力。
+- NTT西日本の連覇数など個別記録の裏取り。
+- 詳細は `docs/wiki/st-league.md` を参照。
+
 ## 高校カテゴリ
 
 - 高校カテゴリの学校名表記揺れは、`data/tournaments/index.json` に載る大会を横断して、同年度・同姓同名選手が別学校名で出た場合に同一校として寄せる暫定ルールを採用している

@@ -267,7 +267,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { aggregateTeamResults, generateTeamInfo } = await import(
+  const { aggregateTeamResults, generateTeamInfo, normalizeJa } = await import(
     '@/utils/team-data-aggregator'
   );
   const { teamId, year, gender } = context.params as {
@@ -315,7 +315,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
         if (targetTeamEntry && targetTeamEntry.players) {
           targetPlayerNames = new Set(
-            targetTeamEntry.players.map((p) => `${p.lastName}${p.firstName}`),
+            targetTeamEntry.players.map((p) =>
+              normalizeJa(`${p.lastName}${p.firstName}`),
+            ),
           );
         }
       } catch (e) {
@@ -329,7 +331,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if (targetPlayerNames) {
       // Approach 1: We have an explicit roster
       Object.entries(info.players).forEach(([pid, player]) => {
-        const fullName = `${player.lastName}${player.firstName}`;
+        const fullName = normalizeJa(`${player.lastName}${player.firstName}`);
         if (targetPlayerNames!.has(fullName)) {
           filteredPlayers[pid] = player;
         }
