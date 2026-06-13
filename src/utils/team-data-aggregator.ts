@@ -308,6 +308,28 @@ export function aggregateTeamResults(
   // Pass 1: Identify player genders from explicitly gendered tournaments
   const playerGenders = new Map<string, 'boys' | 'girls'>();
 
+  // Helper function to normalize player ID by removing prefecture suffix
+  // Player IDs can be: "name_team" or "name_team_prefecture"
+  const normalizePlayerId = (playerId: string): string => {
+    const parts = playerId.split('_');
+    if (parts.length >= 3) {
+      // Return name_team (first 3 parts: lastName_firstName_team)
+      return parts.slice(0, 3).join('_');
+    }
+    return playerId;
+  };
+
+  // Secondary index keyed by normalized player ID so gender lookups stay O(1)
+  // instead of scanning the whole gender map on every miss.
+  const normalizedGenders = new Map<string, 'boys' | 'girls'>();
+  const setGender = (playerId: string, gender: 'boys' | 'girls') => {
+    playerGenders.set(playerId, gender);
+    const normalizedId = normalizePlayerId(playerId);
+    if (!normalizedGenders.has(normalizedId)) {
+      normalizedGenders.set(normalizedId, gender);
+    }
+  };
+
   // Helper to process tournament data for caching
   const processTournament = (
     data: TournamentDetailData,
@@ -337,7 +359,7 @@ export function aggregateTeamResults(
 
     if (gender === 'boys' || gender === 'girls') {
       for (const playerId of extracted.players.keys()) {
-        playerGenders.set(playerId, gender);
+        setGender(playerId, gender);
       }
     }
   };
@@ -356,36 +378,18 @@ export function aggregateTeamResults(
     }
   }
 
-  // Helper function to normalize player ID by removing prefecture suffix
-  // Player IDs can be: "name_team" or "name_team_prefecture"
-  const normalizePlayerId = (playerId: string): string => {
-    const parts = playerId.split('_');
-    if (parts.length >= 3) {
-      // Return name_team (first 3 parts: lastName_firstName_team)
-      return parts.slice(0, 3).join('_');
-    }
-    return playerId;
-  };
-
-  // Helper function to find a player's gender by normalized ID
+  // Helper function to find a player's gender by normalized ID.
+  // Uses the normalizedGenders index for an O(1) fallback lookup.
   const findGenderByNormalizedId = (
     playerId: string,
-    genderMap: Map<string, 'boys' | 'girls'>,
   ): 'boys' | 'girls' | undefined => {
     // First try exact match
-    if (genderMap.has(playerId)) {
-      return genderMap.get(playerId);
+    if (playerGenders.has(playerId)) {
+      return playerGenders.get(playerId);
     }
 
-    // Try normalized match
-    const normalizedId = normalizePlayerId(playerId);
-    for (const [knownId, gender] of genderMap.entries()) {
-      if (normalizePlayerId(knownId) === normalizedId) {
-        return gender;
-      }
-    }
-
-    return undefined;
+    // Try normalized match via the index
+    return normalizedGenders.get(normalizePlayerId(playerId));
   };
 
   // Pass 1.5: Infer player genders from mixed tournament pair structures
@@ -405,23 +409,17 @@ export function aggregateTeamResults(
         if (entry.playerIds.length !== 2) continue;
 
         const [player1Id, player2Id] = entry.playerIds;
-        const player1Gender = findGenderByNormalizedId(
-          player1Id,
-          playerGenders,
-        );
-        const player2Gender = findGenderByNormalizedId(
-          player2Id,
-          playerGenders,
-        );
+        const player1Gender = findGenderByNormalizedId(player1Id);
+        const player2Gender = findGenderByNormalizedId(player2Id);
 
         // If one player has known gender and the other doesn't, infer the opposite gender
         if (player1Gender && !player2Gender) {
           const oppositeGender = player1Gender === 'boys' ? 'girls' : 'boys';
-          playerGenders.set(player2Id, oppositeGender);
+          setGender(player2Id, oppositeGender);
           inferredNewGenders = true;
         } else if (player2Gender && !player1Gender) {
           const oppositeGender = player2Gender === 'boys' ? 'girls' : 'boys';
-          playerGenders.set(player1Id, oppositeGender);
+          setGender(player1Id, oppositeGender);
           inferredNewGenders = true;
         }
       }
@@ -589,10 +587,10 @@ export function aggregateTeamResults(
       extracted.results.forEach((r) => {
         // Filter player IDs by gender
         const boyPlayerIds = r.playerIds.filter(
-          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'boys',
+          (pid) => findGenderByNormalizedId(pid) === 'boys',
         );
         const girlPlayerIds = r.playerIds.filter(
-          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'girls',
+          (pid) => findGenderByNormalizedId(pid) === 'girls',
         );
 
         // Add to boys event if there are any boys
@@ -616,10 +614,10 @@ export function aggregateTeamResults(
       extracted.matches.forEach((m) => {
         // Filter pair by gender
         const boyPair = m.pair.filter(
-          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'boys',
+          (pid) => findGenderByNormalizedId(pid) === 'boys',
         );
         const girlPair = m.pair.filter(
-          (pid) => findGenderByNormalizedId(pid, playerGenders) === 'girls',
+          (pid) => findGenderByNormalizedId(pid) === 'girls',
         );
 
         // Add to boys event if there are any boys
