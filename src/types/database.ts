@@ -10,6 +10,14 @@ export interface MatchTeam {
   players: MatchPlayer[];
 }
 
+// 掲載大会への相互リンク用（公開 JSON にのみ存在する派生フィールド）
+// 生成は lib/siteLink.mjs / scripts/generate-beta-matches-json.mjs
+// 仕様は docs/wiki/score-site-link.md
+export interface MatchSiteLink {
+  tournamentPath: string;
+  entryNos: number[];
+}
+
 export interface Match {
   id: string;
   tournament_name: string | null;
@@ -32,6 +40,9 @@ export interface Match {
   opponent_level?: 'stronger' | 'same' | 'weaker' | 'unknown' | null;
   source_site_match_id?: string | null;
   source_site_tournament_id?: string | null;
+
+  // 掲載大会への相互リンク（公開 JSON 生成時にベイクされる派生フィールド）
+  siteLink?: MatchSiteLink | null;
 
   // 個別フィールド（新形式）
   team_a_entry_number?: string | null;

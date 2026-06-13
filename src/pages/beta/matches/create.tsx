@@ -22,6 +22,17 @@ type TournamentCatalogEntry = {
   meta: TournamentMeta | null;
 };
 
+type EntryOption = {
+  entryNo: number;
+  label: string;
+  players: {
+    last_name: string;
+    first_name: string;
+    team_name: string;
+    region: string;
+  }[];
+};
+
 type CreateMatchProps = {
   tournamentOptions: TournamentOption[];
   tournamentCatalog: Record<string, TournamentCatalogEntry>;
@@ -112,6 +123,74 @@ const CreateMatch = ({
   });
 
   const [creating, setCreating] = useState(false);
+
+  // 掲載大会のエントリー候補（dev 専用 API から取得）。
+  // 選択すると entry_number / 選手情報を自動入力し、siteLink の解決精度を上げる。
+  // 仕様: docs/wiki/score-site-link.md
+  const [entryOptions, setEntryOptions] = useState<EntryOption[]>([]);
+
+  // 選択中カテゴリの categoryId（ファイル名規約 {category}-{age}-{gender}）を解決
+  const currentCategoryId = (() => {
+    const selected = tournamentCatalog[formData.tournament_name];
+    if (!selected) return '';
+    const matched = selected.categories.find(
+      (cat) =>
+        cat.category === formData.category && cat.gender === formData.gender,
+    );
+    return matched?.id ?? '';
+  })();
+
+  // カテゴリ確定時にエントリー候補を取得
+  useEffect(() => {
+    if (!formData.tournament_name || !currentCategoryId) {
+      setEntryOptions([]);
+      return;
+    }
+
+    const tournamentId = formData.tournament_name.replace(/-\d{4}$/, '');
+    let cancelled = false;
+
+    fetch(
+      `/api/tournament-entries?tournamentId=${encodeURIComponent(
+        tournamentId,
+      )}&year=${formData.year}&categoryId=${encodeURIComponent(
+        currentCategoryId,
+      )}`,
+    )
+      .then((response) => (response.ok ? response.json() : { entries: [] }))
+      .then((data) => {
+        if (!cancelled) setEntryOptions(data.entries ?? []);
+      })
+      .catch(() => {
+        if (!cancelled) setEntryOptions([]);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [formData.tournament_name, formData.year, currentCategoryId]);
+
+  // エントリー候補を選手フォームへ反映（手入力フィールドは編集可能なまま）
+  const applyEntryToTeam = (side: 'A' | 'B', option: EntryOption | null) => {
+    if (!option) return;
+    const [p1, p2] = option.players;
+    const nextTeam = {
+      entry_number: String(option.entryNo),
+      player1_last_name: p1?.last_name ?? '',
+      player1_first_name: p1?.first_name ?? '',
+      player1_team_name: p1?.team_name ?? '',
+      player1_region: p1?.region ?? '',
+      player2_last_name: p2?.last_name ?? '',
+      player2_first_name: p2?.first_name ?? '',
+      player2_team_name: p2?.team_name ?? '',
+      player2_region: p2?.region ?? '',
+    };
+    if (side === 'A') {
+      setTeamA(nextTeam);
+    } else {
+      setTeamB(nextTeam);
+    }
+  };
 
   // 大会選択時にカテゴリと年を取得
   useEffect(() => {
@@ -580,6 +659,32 @@ const CreateMatch = ({
 
         <div>
           <label className="block text-sm font-medium mb-4">チームA</label>
+          {entryOptions.length > 0 && (
+            <div className="mb-4">
+              <label className="block text-xs text-emerald-700 mb-1">
+                エントリーから選択（自動入力）
+              </label>
+              <select
+                value=""
+                onChange={(e) =>
+                  applyEntryToTeam(
+                    'A',
+                    entryOptions.find(
+                      (option) => String(option.entryNo) === e.target.value,
+                    ) ?? null,
+                  )
+                }
+                className="w-full border border-emerald-300 rounded p-2 text-sm bg-emerald-50"
+              >
+                <option value="">エントリーを選択…</option>
+                {entryOptions.map((option) => (
+                  <option key={option.entryNo} value={option.entryNo}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="mb-4">
             <label className="block text-xs text-gray-600 mb-1">
               エントリー番号
@@ -704,6 +809,32 @@ const CreateMatch = ({
 
         <div>
           <label className="block text-sm font-medium mb-4">チームB</label>
+          {entryOptions.length > 0 && (
+            <div className="mb-4">
+              <label className="block text-xs text-emerald-700 mb-1">
+                エントリーから選択（自動入力）
+              </label>
+              <select
+                value=""
+                onChange={(e) =>
+                  applyEntryToTeam(
+                    'B',
+                    entryOptions.find(
+                      (option) => String(option.entryNo) === e.target.value,
+                    ) ?? null,
+                  )
+                }
+                className="w-full border border-emerald-300 rounded p-2 text-sm bg-emerald-50"
+              >
+                <option value="">エントリーを選択…</option>
+                {entryOptions.map((option) => (
+                  <option key={option.entryNo} value={option.entryNo}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="mb-4">
             <label className="block text-xs text-gray-600 mb-1">
               エントリー番号

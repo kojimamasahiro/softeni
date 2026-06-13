@@ -8,9 +8,14 @@
 
 ## 試合詳細の beta 昇格（検討中 2026-06）
 
-- 試合詳細の公開面を `/beta/matches-results/*` から本体ドメインの indexable な URL（候補: `/matches/*`）へ移設するか
-- 移設する場合の 50 件上限の扱いと、`source_site_tournament_id` を公開 JSON に出す案は、相互リンク設計ドラフト（docs/wiki/score-site-link.md）に統合した（上限撤廃・`siteLink` フィールド方式）
-- 試合詳細 URL の ID を UUID のまま使うか slug 化するか（インデックス開始前が最後の変え時。score-site-link.md 参照）
+設計の詳細とドラフト仕様は docs/wiki/score-site-link.md に集約。主な決定:
+
+- 掲載大会に紐づく試合は大会ページ配下のネスト URL（`/tournaments/.../matches/{UUID}`）で indexable にする
+- 野良試合は当面 `/beta/matches-results/*`（noindex）に残す
+- URL の ID は UUID 維持（slug 化しない）、50 件上限撤廃・追記型生成へ
+- 大会紐付けの誤りは削除→新規作成し直しで対応する
+
+残る Open Question は score-site-link.md 末尾を参照。
 
 ## score データモデル
 

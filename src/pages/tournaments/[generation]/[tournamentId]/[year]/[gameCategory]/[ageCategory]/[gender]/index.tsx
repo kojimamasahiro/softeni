@@ -20,6 +20,10 @@ import {
   unpackTournamentDetailData,
 } from '@/lib/packedPageData';
 import {
+  getScoreMatchLinksForTournament,
+  type ScoreMatchLink,
+} from '@/lib/matchReverseIndex';
+import {
   TournamentDetailData,
   TournamentIndexEntry,
   TournamentInformationEntry,
@@ -56,6 +60,7 @@ interface TournamentYearResultPageProps {
   federationId?: string | null;
   highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
   prefectureName?: string | null;
+  scoreMatchLinks?: ScoreMatchLink[];
 }
 
 export default function TournamentYearResultPage({
@@ -75,6 +80,7 @@ export default function TournamentYearResultPage({
   federationId = null,
   highschoolTeamLinks = null,
   prefectureName = null,
+  scoreMatchLinks = [],
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
 
@@ -178,6 +184,40 @@ export default function TournamentYearResultPage({
 
         {/* ✅ トーナメント表 */}
         {detailData && <TournamentBracket detailData={detailData} />}
+
+        {/* ✅ スコア詳細（ポイント分析つき試合） */}
+        {scoreMatchLinks.length > 0 && (
+          <section className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
+            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">
+              スコア詳細のある試合
+            </h2>
+            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">
+              ポイントごとの記録・分析を掲載しています。
+            </p>
+            <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
+              {scoreMatchLinks.map((link) => (
+                <li key={link.matchId}>
+                  <Link
+                    href={link.detailPath}
+                    className="flex items-center gap-2 py-2 text-sm text-emerald-900 transition-colors hover:text-emerald-700 dark:text-emerald-100 dark:hover:text-emerald-300"
+                  >
+                    {link.round && (
+                      <span className="shrink-0 rounded bg-emerald-200 px-1.5 py-0.5 text-xs font-semibold text-emerald-900 dark:bg-emerald-800 dark:text-emerald-100">
+                        {link.round}
+                      </span>
+                    )}
+                    <span className="font-medium">
+                      {link.teamA} vs {link.teamB}
+                    </span>
+                    <span aria-hidden className="ml-auto text-emerald-500">
+                      ›
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* ✅ チーム別成績 */}
         <TeamResults
@@ -670,6 +710,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // 掲載大会 → 試合詳細（score 系）の逆引きリンク
+  const tournamentPath = `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
+  const scoreMatchLinks = getScoreMatchLinksForTournament(tournamentPath);
+
   return {
     props: ((): Record<string, unknown> => {
       return {
@@ -695,6 +739,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         federationId,
         highschoolTeamLinks,
         prefectureName,
+        scoreMatchLinks,
       };
     })(),
   };

@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import nextEnv from '@next/env';
 import { createClient } from '@supabase/supabase-js';
 
+import { resolveMatchSiteLink } from '../lib/siteLink.mjs';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
@@ -13,7 +15,7 @@ const outputRoot = path.join(projectRoot, 'public', 'data', 'beta-matches');
 const matchesOutputRoot = path.join(outputRoot, 'matches');
 const growthOutputRoot = path.join(outputRoot, 'growth');
 const growthReportsOutputRoot = path.join(growthOutputRoot, 'reports');
-const LATEST_BETA_MATCH_LIMIT = 50;
+const detailsRoot = path.join(projectRoot, 'data', 'tournaments', 'details');
 const { loadEnvConfig } = nextEnv;
 const require = createRequire(import.meta.url);
 
@@ -86,10 +88,12 @@ const getSupabaseConfig = () => {
   };
 };
 
-const ensureCleanDir = (dirPath) => {
-  fs.rmSync(dirPath, { recursive: true, force: true });
-  fs.mkdirSync(dirPath, { recursive: true });
-};
+// 掲載大会に紐づく試合へ siteLink をベイクする（野良試合は null）。
+// 仕様: docs/wiki/score-site-link.md
+const enrichWithSiteLink = (match) => ({
+  ...match,
+  siteLink: resolveMatchSiteLink(match, { detailsRoot }) ?? null,
+});
 
 const readJsonIfExists = (filePath) => {
   if (!fs.existsSync(filePath)) return null;
@@ -303,49 +307,9 @@ const attachGamesToMatches = async (supabase, matches) => {
   }));
 };
 
-const buildBetaMatchesJson = async () => {
-  console.log('Starting beta matches JSON generation...');
-
-  const config = getSupabaseConfig();
-  if (!config) {
-    if (hasExistingSnapshot()) {
-      console.warn(
-        'Supabase env is missing. Reusing committed beta matches JSON snapshot.',
-      );
-      const generatedAt = new Date().toISOString();
-      const snapshotMatches = loadExistingSnapshotMatches();
-      const growthStats = buildGrowthAnalysisJson(snapshotMatches, generatedAt);
-      console.log(
-        `✓ Generated growth JSON from snapshot (${growthStats.reportCount}/${growthStats.targetCount} reports)`,
-      );
-      return;
-    }
-
-    throw new Error(
-      'Supabase env is missing and no beta matches JSON snapshot exists.',
-    );
-  }
-
-  const supabase = createClient(config.url, config.serviceKey, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  });
-
-  const { data: matches, error } = await supabase
-    .from('matches')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(LATEST_BETA_MATCH_LIMIT);
-
-  if (error) {
-    throw error;
-  }
-
-  const safeMatches = await attachGamesToMatches(supabase, matches ?? []);
-  const publicMatches = safeMatches.map(toPublicMatchSnapshot);
-  const generatedAt = new Date().toISOString();
+// 追記型の出力本体。Supabase パス・スナップショット再利用パスの両方から使う。
+// 出力ディレクトリは全削除せず、既存ファイルを更新する（公開 URL 消失を防ぐ）。
+const writeBetaMatchesOutput = (publicMatches, generatedAt) => {
   const matchIds = publicMatches.map((match) => match.id);
   const summaryMatches = publicMatches.map(summarizeMatchForIndex);
   const existingMeta = readJsonIfExists(path.join(outputRoot, 'meta.json'));
@@ -369,7 +333,7 @@ const buildBetaMatchesJson = async () => {
     }),
   );
 
-  ensureCleanDir(outputRoot);
+  fs.mkdirSync(outputRoot, { recursive: true });
   fs.mkdirSync(matchesOutputRoot, { recursive: true });
   fs.mkdirSync(growthOutputRoot, { recursive: true });
 
@@ -379,7 +343,7 @@ const buildBetaMatchesJson = async () => {
       {
         generatedAt,
         matchIds,
-        totalMatches: safeMatches.length,
+        totalMatches: publicMatches.length,
       },
       existingMeta,
     ),
@@ -408,6 +372,7 @@ const buildBetaMatchesJson = async () => {
       ),
     );
   });
+
   const growthStats = buildGrowthAnalysisJson(
     publicMatches,
     generatedAt,
@@ -415,8 +380,65 @@ const buildBetaMatchesJson = async () => {
     existingGrowthReportsByFileName,
   );
 
+  const siteLinkCount = publicMatches.filter((match) => match.siteLink).length;
+  return { growthStats, siteLinkCount };
+};
+
+const buildBetaMatchesJson = async () => {
+  console.log('Starting beta matches JSON generation...');
+
+  const config = getSupabaseConfig();
+  if (!config) {
+    if (hasExistingSnapshot()) {
+      console.warn(
+        'Supabase env is missing. Reusing committed beta matches JSON snapshot.',
+      );
+      const generatedAt = new Date().toISOString();
+      const publicMatches = loadExistingSnapshotMatches().map(enrichWithSiteLink);
+      const { growthStats, siteLinkCount } = writeBetaMatchesOutput(
+        publicMatches,
+        generatedAt,
+      );
+      console.log(
+        `✓ Regenerated beta matches JSON from snapshot (${publicMatches.length} matches, ${siteLinkCount} linked, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,
+      );
+      return;
+    }
+
+    throw new Error(
+      'Supabase env is missing and no beta matches JSON snapshot exists.',
+    );
+  }
+
+  const supabase = createClient(config.url, config.serviceKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
+
+  const { data: matches, error } = await supabase
+    .from('matches')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    throw error;
+  }
+
+  const safeMatches = await attachGamesToMatches(supabase, matches ?? []);
+  const publicMatches = safeMatches
+    .map(toPublicMatchSnapshot)
+    .map(enrichWithSiteLink);
+  const generatedAt = new Date().toISOString();
+
+  const { growthStats, siteLinkCount } = writeBetaMatchesOutput(
+    publicMatches,
+    generatedAt,
+  );
+
   console.log(
-    `✓ Generated beta matches JSON (${safeMatches.length} matches, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,
+    `✓ Generated beta matches JSON (${publicMatches.length} matches, ${siteLinkCount} linked, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,
   );
 };
 

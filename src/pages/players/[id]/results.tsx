@@ -15,6 +15,10 @@ import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PageLayout from '@/components/PageLayout';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import {
+  getScoreMatchLinksForPlayer,
+  type ScoreMatchLink,
+} from '@/lib/matchReverseIndex';
+import {
   getAllDetailRecords,
   loadInformationMap,
   loadTournamentIndex,
@@ -39,6 +43,7 @@ type PlayerResultsProps = {
   majorTitlesData: MajorTitleData[];
   playerStats?: import('@/types/stats').PlayerStats | null;
   allPlayers?: import('@/types/player').PlayerInfo[];
+  scoreMatchLinks?: ScoreMatchLink[];
 };
 
 export default function PlayerResultsPage({
@@ -54,6 +59,7 @@ export default function PlayerResultsPage({
   majorTitlesData,
   playerStats,
   allPlayers,
+  scoreMatchLinks = [],
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
   const pageUrl = `https://softeni-pick.com/players/${playerId}/results/`;
@@ -244,6 +250,39 @@ export default function PlayerResultsPage({
             />
           )}
         </section>
+
+        {scoreMatchLinks.length > 0 && (
+          <section className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
+            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">
+              スコア詳細のある試合
+            </h2>
+            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">
+              ポイントごとの記録・分析を掲載しています。
+            </p>
+            <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
+              {scoreMatchLinks.map((link) => (
+                <li key={link.matchId}>
+                  <Link
+                    href={link.detailPath}
+                    className="flex items-center gap-2 py-2 text-sm text-emerald-900 transition-colors hover:text-emerald-700 dark:text-emerald-100 dark:hover:text-emerald-300"
+                  >
+                    {link.round && (
+                      <span className="shrink-0 rounded bg-emerald-200 px-1.5 py-0.5 text-xs font-semibold text-emerald-900 dark:bg-emerald-800 dark:text-emerald-100">
+                        {link.round}
+                      </span>
+                    )}
+                    <span className="font-medium">
+                      {link.teamA} vs {link.teamB}
+                    </span>
+                    <span aria-hidden className="ml-auto text-emerald-500">
+                      ›
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section>
           <PlayerResults
@@ -899,6 +938,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         idx.lastName,
         idx.firstName,
       ),
+      scoreMatchLinks: getScoreMatchLinksForPlayer(playerId),
     },
   };
 };

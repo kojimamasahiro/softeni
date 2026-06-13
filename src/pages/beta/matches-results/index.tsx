@@ -121,7 +121,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
               {matches.map((match) => (
                 <li key={match.id} className="relative">
                   <Link
-                    href={getPublicMatchDetailPath(match.id)}
+                    href={getPublicMatchDetailPath(match)}
                     className="block p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/60"
                     aria-label={`${getBetaTeamDisplayName(
                       match,

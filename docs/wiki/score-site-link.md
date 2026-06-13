@@ -1,6 +1,31 @@
 # Score Site Link（試合詳細と本体の相互リンク）
 
-ステータス: Draft（2026-06）。未実装の設計仕様。実装後に本文の Draft 表記を外す。
+ステータス: 実装済み（2026-06）。掲載大会に紐づく試合詳細を本体ドメインの indexable な
+ネスト URL で公開し、大会ページ・選手ページと相互リンクする。
+
+## 実装サマリ（2026-06）
+
+- siteLink 解決: `lib/siteLink.mjs`（`resolveMatchSiteLink`）
+- 公開 JSON 生成: `scripts/generate-beta-matches-json.mjs`
+  - 50 件上限を撤廃（全件取得）、出力ディレクトリの全削除をやめ追記型に変更
+  - 各試合に `siteLink`（`{ tournamentPath, entryNos }`）をベイク（野良は null）
+  - Supabase 無し（snapshot 再利用）でも siteLink を再付与するため、`npm run prebuild` で既存試合を移行できる
+- 型: `src/types/database.ts` の `MatchSiteLink` / `Match.siteLink`
+- URL 振り分け: `lib/siteConfig.ts` `getPublicMatchDetailPath(match)`（siteLink 有無で分岐）
+- ネストページ: `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/matches/[matchId].tsx`
+  - 試合詳細コンポーネントは `/beta/matches-results/[matchId]` と共通
+  - 静的パスは `lib/betaMatchesStatic.ts` `getSiteLinkedMatchPaths()`
+- 逆引き表: `scripts/generate-match-reverse-index.mjs` → `public/data/beta-matches/reverse/{by-tournament,by-player}.json`
+  - 読み出し: `lib/matchReverseIndex.ts`
+  - 表示: 大会ページ・選手結果ページに「スコア詳細のある試合」セクション
+- sitemap: `next-sitemap.config.js` の `additionalPaths` でネスト URL を追加
+  （深いネストの動的 SSG ルートを next-sitemap が自動列挙しないため）
+- 作成 UI のエントリー選択: `src/pages/beta/matches/create.tsx` + dev 専用 API `src/pages/api/tournament-entries.ts`
+- prebuild 連鎖: `generate-beta-matches-json` → `generate-match-reverse-index`
+
+野良試合（siteLink なし）は従来どおり `/beta/matches-results/[matchId]`（noindex）に残す。
+
+設計の意図・決定の経緯は以下を参照。
 
 ## 目的
 
@@ -71,10 +96,40 @@
 - `generateTournamentUrlFromMatch` の二重実装（`lib/tournamentHelpers.ts` / `lib/tournamentClientHelpers.ts`）は `siteLink` 導入で削除する
 - 選手名→playerId の解決規約は lib に共有ヘルパーとして集約する（現状は大会ページ・next-sitemap.config.js などに重複実装）
 
-### 7. URL
+### 7. URL（掲載大会試合と野良試合を分離）
 
-- 試合詳細はフラットな `/matches/{id}` 系を維持する。大会 URL 配下へのネストは不採用（大会に紐づかない試合の置き場がなく、大会 URL 構造の変更に巻き込まれるため）
-- 移設先（本体ドメインで indexable にするか）は別判断（docs/wiki/open-questions.md「試合詳細の beta 昇格」参照）
+掲載大会に紐づく試合と、どの掲載大会にも紐づかない試合（野良試合: 練習試合・未収録大会）を、別空間として扱う。
+
+#### 掲載大会に紐づく試合（indexable 公開面）
+
+- URL は大会ページ配下にネストする
+  - `/tournaments/{generation}/{tournamentId}/{year}/{gameCategory}/{ageCategory}/{gender}/matches/{UUID}`
+  - 例: `/tournaments/all/zennihon-mixed/2026/doubles/none/mixed/matches/2157f9e2-9232-4602-86de-a9a24d123eec`
+- 末尾は素の UUID（試合 ID）。プレフィックスがパス自体で文脈を語るため、slug 化（可読化）は不要
+- このネスト URL は飾りではなく階層そのものなので、間違っていてはいけない。URL プレフィックスは**作成時に大会データから引いた検証済み `siteLink` からのみ生成する**。試合レコードのフリーテキスト由来フィールド（`tournament_gender` 等）からは組まない
+- 生成時に `data/tournaments/details/**` に実在するカテゴリかを検証し、解決できない試合はネスト側に出さず警告を出す
+- `ageCategory` は大会データ（カテゴリファイル名 例: `singles-none-boys.json`）から取得する。試合レコードの `'none'` 決め打ちは使わない
+- canonical / OGP / sitemap / パンくず構造化データはこのネスト URL を正とする
+- 実装ルート（案）: `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/matches/[matchId].tsx`。既存の試合詳細コンポーネントを再利用し、getStaticPaths を `siteLink` を持つ試合から生成する
+
+#### 野良試合（当面 noindex）
+
+- 当面 `/beta/matches-results/{UUID}`（noindex）に残す
+- score ドメイン戦略が固まった段階で score サイトの `/matches/{UUID}` へ移す方針。本リリースでは急がない
+- 責務分離: 掲載大会分は本体サイトの資産、野良試合は記録ツールの出力
+
+#### 大会紐付けを間違えて作成した場合
+
+- ネスト URL はプレフィックスに大会情報を含むため、紐付けを修正すると URL が変わる
+- リダイレクトでの URL 引き継ぎは行わない。**既存試合を削除し、内容はそのまま新規作成し直す**運用とする
+- エントリー選択式の作成フロー（仕様 3）により誤紐付けの頻度自体を下げる
+
+### 8. URL 解決と振り分け
+
+- `getPublicMatchDetailPath` を `siteLink` の有無で分岐させる
+  - `siteLink` あり → ネスト URL
+  - `siteLink` なし → 野良試合 URL（`/beta/matches-results/{UUID}`）
+- 末尾 UUID がそのままファイルキー（`matches/{UUID}.json`）なので、URL→データの解決は末尾切り出しで済む（slug→UUID の解決表は不要）
 
 ## 既存データの移行
 
@@ -85,12 +140,18 @@
 
 - `src/pages/beta/matches/create.tsx`（エントリー選択 UI）
 - `scripts/generate-beta-matches-json.mjs`（siteLink 付与・追記型化・上限撤廃）
-- `src/pages/beta/matches-results/[matchId]/index.tsx` / `src/pages/matches/**`（siteLink 表示、URL 再構築廃止）
+- `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/matches/[matchId].tsx`（新規・掲載大会試合の indexable ページ）
+- `src/pages/beta/matches-results/[matchId]/index.tsx` / `src/pages/matches/**`（野良試合表示、URL 振り分け、URL 再構築廃止）
 - 大会ページ・選手ページ（逆引き表の表示）
 - `lib/tournamentHelpers.ts` / `lib/tournamentClientHelpers.ts` / `lib/players.ts`（ヘルパー統一）
 
+## 決定事項
+
+- 試合詳細 URL の ID は UUID を維持し、slug 化はしない（掲載大会試合はネスト URL がパスで文脈を語るため可読化不要）
+- 掲載大会試合と野良試合を別空間に分離する（ネスト URL / `/beta/matches-results`）
+- 大会紐付けの誤りは削除→新規作成し直しで対応し、リダイレクトでの URL 引き継ぎはしない
+
 ## Open Questions
 
-- 試合詳細 URL の ID を UUID のまま使うか、読める slug にするか（インデックス開始前が最後の変え時）
 - 逆引き表の置き場所とファイル分割（全選手 1 ファイルで足りるか）
-- 手入力フォールバック試合に後から `siteLink` を付与する導線を作るか
+- 手入力フォールバック（野良）試合に後から `siteLink` を付与して掲載大会試合へ昇格させる導線を作るか

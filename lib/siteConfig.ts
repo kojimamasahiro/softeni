@@ -67,8 +67,19 @@ export const buildSiteUrl = (path: string) => {
 export const getPublicMatchesListPath = () =>
   isScoreSiteMode() ? '/matches' : '/beta/matches-results';
 
-export const getPublicMatchDetailPath = (matchId: string) =>
-  `${getPublicMatchesListPath()}/${matchId}`;
+// 掲載大会に紐づく試合（siteLink あり）は大会ページ配下のネスト URL、
+// 野良試合（siteLink なし）は従来の一覧配下 URL を返す。
+// score モードでは大会ページ群を持たないため常に一覧配下 URL を使う。
+// 仕様: docs/wiki/score-site-link.md
+export const getPublicMatchDetailPath = (match: {
+  id: string;
+  siteLink?: { tournamentPath: string } | null;
+}) => {
+  if (!isScoreSiteMode() && match.siteLink?.tournamentPath) {
+    return `${match.siteLink.tournamentPath}/matches/${match.id}`;
+  }
+  return `${getPublicMatchesListPath()}/${match.id}`;
+};
 
 export const getPublicMatchesGrowthPath = (targetKey?: string) => {
   const basePath = `${getPublicMatchesListPath()}/growth`;
