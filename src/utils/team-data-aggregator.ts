@@ -62,6 +62,36 @@ export type EventResult = {
 type TeamNameMappings = Record<string, string[]>;
 
 /**
+ * 異体字（旧字体/グリフ違い）を新字体へ畳む対応表。
+ * ここに載せるのは「同一文字の字形違い」だけ（例: 髙＝高, 濵＝濱）。
+ * 嶋/島・澤/沢 のように別姓として扱われ得るものは混同を避けるため入れない。
+ */
+const KANJI_GLYPH_VARIANTS: Record<string, string> = {
+  髙: '高',
+  﨑: '崎',
+  濵: '濱',
+  德: '徳',
+  桒: '桑',
+  槗: '橋',
+  圡: '土',
+};
+
+/**
+ * 名前・チーム名の照合用に正規化する。
+ * - NFKC で半角/全角の揺れを吸収（例: ＥＮＥＯＳ→ENEOS, ＪＲ→JR）
+ * - 異体字を新字体へ畳む（例: 髙濵→高濱）
+ * 表示には使わず、あくまで一致判定にのみ使う。
+ */
+export function normalizeJa(value: string): string {
+  if (!value) return '';
+  let out = '';
+  for (const ch of value.normalize('NFKC')) {
+    out += KANJI_GLYPH_VARIANTS[ch] ?? ch;
+  }
+  return out;
+}
+
+/**
  * Load team name mappings from configuration file
  */
 export function loadTeamNameMappings(): TeamNameMappings {
@@ -90,13 +120,14 @@ export function normalizeTeamName(
   teamName: string,
   mappings: TeamNameMappings,
 ): string | null {
-  // Check if team name matches any mapping
+  // 半角/全角・異体字の揺れを吸収して照合する（ＥＮＥＯＳ⇄ENEOS, ＪＲ⇄JR など）
+  const target = normalizeJa(teamName);
   for (const [teamId, variations] of Object.entries(mappings)) {
-    if (variations.includes(teamName)) {
+    if (variations.some((v) => normalizeJa(v) === target)) {
       return teamId;
     }
     // Also check if the teamId itself matches
-    if (teamId === teamName) {
+    if (normalizeJa(teamId) === target) {
       return teamId;
     }
   }

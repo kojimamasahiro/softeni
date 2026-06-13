@@ -3,6 +3,7 @@ import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -13,6 +14,7 @@ import PageLayout from '@/components/PageLayout';
 import {
   aggregateTeamResults,
   generateTeamInfo,
+  normalizeJa,
   TeamInfo,
 } from '@/utils/team-data-aggregator';
 import {
@@ -109,6 +111,18 @@ export default function STLeagueTeamsPage({
         <p>
           STリーグⅠ・Ⅱ、男女別の出場チームと選手個人の成績を掲載しています。
         </p>
+        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-200">
+          ここに表示する「年間成績」「選手別成績」は、
+          <strong>STリーグ本体の対戦を除いた{year}年度の大会成績</strong>
+          （全日本選手権・全日本実業団など）です。STリーグ内の対戦成績・勝率は
+          <Link
+            href={`/st-league/${year}/analysis`}
+            className="font-semibold text-blue-700 underline dark:text-blue-300"
+          >
+            分析ページ
+          </Link>
+          をご覧ください。
+        </div>
         {/* Tabs */}
         <div className="flex border-b border-gray-200 dark:border-gray-700">
           <button
@@ -238,11 +252,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
       // Manually add players from participants.json if they are missing
       if (p.players) {
         p.players.forEach((player) => {
-          const fullName = `${player.lastName}${player.firstName}`;
-          // Check if player exists (by name matching)
+          const fullName = normalizeJa(`${player.lastName}${player.firstName}`);
+          // Check if player exists (by name matching; 半角/全角・異体字を吸収)
           const exists = Object.values(info.players).some(
             (existing) =>
-              `${existing.lastName}${existing.firstName}` === fullName,
+              normalizeJa(`${existing.lastName}${existing.firstName}`) ===
+              fullName,
           );
 
           if (!exists) {
@@ -259,13 +274,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
       // Filter players if explicitly listed in participants.json
       if (p.players && p.players.length > 0) {
         const targetPlayers = new Set(
-          p.players.map((pl) => `${pl.lastName}${pl.firstName}`),
+          p.players.map((pl) => normalizeJa(`${pl.lastName}${pl.firstName}`)),
         );
 
-        // Rebuild info.players with only matching players
+        // Rebuild info.players with only matching players（半角/全角・異体字を吸収）
         const filteredPlayers: typeof info.players = {};
         for (const [pid, player] of Object.entries(info.players)) {
-          const fullName = `${player.lastName}${player.firstName}`;
+          const fullName = normalizeJa(`${player.lastName}${player.firstName}`);
           if (targetPlayers.has(fullName)) {
             filteredPlayers[pid] = player;
           }

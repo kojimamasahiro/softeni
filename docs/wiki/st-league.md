@@ -58,6 +58,11 @@ data/st-league/
 - `/st-league/about` … ルール・Ⅰ/Ⅱ/Ⅲ構成・プレーオフの解説。
 - `/st-league/[year]/matches` … 男女タブ＋リーグ切替。順位表（昇降格ゾーンの目安表示）＋対戦結果＋プレーオフ案内。SportsEvent構造化データ。
 - `/st-league/[year]/teams` … 男女タブ＋リーグ切替。チーム別年間成績・選手成績。
+  選手成績は `aggregateTeamResults`（`data/tournaments/details/` の一般大会データ）を
+  participants.json のチーム名・選手名で照合して集計する（STリーグ本体の `matches.json` とは
+  別系統。STリーグ内の勝率は analysis ページが `matches.json` から算出）。照合は
+  `normalizeJa()`（NFKC で半角/全角、簡易な異体字フォールドで `ＥＮＥＯＳ⇄ENEOS`・`髙濵⇄高濱`
+  等を吸収）。一般大会の個人戦データが無い選手（主にⅡ部）は0表示のまま。
 - `/st-league/[year]/analysis` … 男女タブ＋リーグ切替。選手別スタッツ・勝率ランキング。
 
 すべての `[year]` ページは `getStLeagueYears()` でパスを動的生成するため、`data/st-league/{year}/` を追加すれば自動でページが増える。
