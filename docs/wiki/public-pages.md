@@ -113,7 +113,9 @@
 
 メタ・構造化データ:
 
-- 選手結果ページの JSON-LD は `ProfilePage` + `Person`。`dateCreated` / `dateModified` は実データ（初出/最新出場大会の日付）由来とし、ビルド日は使わない
+- 選手結果ページの JSON-LD は `ProfilePage` + `mainEntity: Person`。`dateCreated` / `dateModified` は実データ（初出/最新出場大会の日付）由来とし、ビルド日は使わない
+  - `dateCreated` / `dateModified` は ISO 8601 の**日時（タイムゾーン付き）**で出力する（例 `2024-07-28T00:00:00+09:00`）。Google ProfilePage は日付のみだと「日時値が無効」と判定するため、データ上の `YYYY-MM-DD` に JST オフセット `T00:00:00+09:00` を付与する（2026-06 修正）
+  - ProfilePage では `mainEntityOfPage` を出力しない（Google が認識せず「項目を認識できません」になる）。エンティティ指定は `mainEntity` を使う（2026-06 修正）
 - 大会結果ページの `datePublished` / `dateModified` も大会開催日由来
 - canonical は必ず実 URL（trailingSlash あり）に一致させる。プロフィールの `/information` canonical は不具合だったため修正済み
 - title / description には所属チーム・直近成績・通算成績を埋め込み、ページごとに一意化する
