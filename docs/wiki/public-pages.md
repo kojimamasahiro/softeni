@@ -119,6 +119,24 @@
 - title / description には所属チーム・直近成績・通算成績を埋め込み、ページごとに一意化する
 - curated プロフィールには FAQ（身長・所属・ポジション）を可視コンテンツ + FAQPage 構造化データで掲載する
 
+### 試合詳細ページの SEO 方針（2026-06 改善）
+
+対象は `src/pages/beta/matches-results/[matchId]/index.tsx`（実装本体）と、掲載大会配下のネスト URL（`/tournaments/.../matches/[matchId]`）。両者は同じ `PublicMatchDetailPage` を共有するため SEO も共通。
+
+メタ:
+
+- title / description は試合ごとに一意化する。`{チームA} vs {チームB}｜{大会名}{ラウンド} 試合詳細・スコア` を基本形とし、description にはゲームカウント・勝者・総ポイント数・分析観点を埋め込む
+- canonical は `getPublicMatchDetailPath(match)` に末尾スラッシュを付けた実 URL（`trailingSlash: true` に一致）。siteLink 有無で本ネスト URL か一覧配下 URL かが切り替わる
+
+構造化データ（JSON-LD、別 `<Head>` で出力）:
+
+- `SportsEvent`：`sport: ソフトテニス` / `competitor`（両チーム）/ `startDate`（`match_date` 優先、なければ `created_at`。ビルド日は使わない）/ `superEvent`（掲載大会ページがある場合の大会）/ `location`（`court_name` がある場合）
+- `BreadcrumbList`：ホーム → 試合一覧 → （大会）→ 試合
+
+可視パンくず:
+
+- `src/components/Breadcrumb.tsx` を使い、JSON-LD の `BreadcrumbList` と同じ階層・順序で画面上にも表示する（このページは `PageLayout` 対象外のため個別に配置）。大会階層は掲載大会ページがある場合のみ挿入する
+
 sitemap:
 
 - `next-sitemap.config.js` で選手結果ページに最新出場大会日、大会結果ページに開催日を `lastmod` として出力する

@@ -1,8 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import YouTubeRangePlayer, {
   type YouTubeRangePlayerHandle,
@@ -1465,16 +1467,123 @@ export const PublicMatchDetailPage = ({
     </div>
   );
 
+  // --- SEO（試合ごとに一意化した title / description / 構造化データ） ---
+  // 仕様: docs/wiki/public-pages.md「試合詳細ページの SEO 方針」
+  const seoTeamA = getShortTeamName('A');
+  const seoTeamB = getShortTeamName('B');
+  const seoMatchup = `${seoTeamA} vs ${seoTeamB}`;
+  const seoTournamentName = getTournamentDisplayName();
+  const seoRoundLabel = match.round_name ? ` ${match.round_name}` : '';
+  // trailingSlash: true のため canonical も末尾スラッシュ付きの実 URL に揃える。
+  const seoCanonicalUrl = buildSiteUrl(`${getPublicMatchDetailPath(match)}/`);
+  const seoWinnerName = matchWinner ? getShortTeamName(matchWinner) : null;
+  const seoTotalPoints = resultViewModel.matchOverview.totalPoints;
+  const seoResultText = seoWinnerName
+    ? `ゲームカウント${gamesWonA}-${gamesWonB}で${seoWinnerName}が勝利。`
+    : `ゲームカウント${gamesWonA}-${gamesWonB}。`;
+  const seoTitle = `${seoMatchup}｜${seoTournamentName}${seoRoundLabel} 試合詳細・スコア`;
+  const seoDescription = `${seoTournamentName}${seoRoundLabel}、${seoMatchup}の試合詳細。${seoResultText}全${seoTotalPoints}ポイントのスコア記録と、サーブ・レシーブ・ラリーの分析、勝敗を分けた局面を掲載しています。`;
+  // 日付はビルド日ではなく実データ（試合日／記録日）由来とする。
+  const seoEventDate = match.match_date || match.created_at;
+  const seoTournamentUrl =
+    tournamentInfo && fullTournamentUrl
+      ? buildSiteUrl(`${fullTournamentUrl}/`)
+      : null;
+
+  const sportsEventJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SportsEvent',
+    name: `${seoMatchup}（${seoTournamentName}${seoRoundLabel}）`,
+    sport: 'ソフトテニス',
+    url: seoCanonicalUrl,
+    startDate: seoEventDate,
+    description: seoDescription,
+    competitor: [
+      { '@type': 'SportsTeam', name: seoTeamA },
+      { '@type': 'SportsTeam', name: seoTeamB },
+    ],
+    ...(seoTournamentUrl
+      ? {
+          superEvent: {
+            '@type': 'SportsEvent',
+            name: seoTournamentName,
+            url: seoTournamentUrl,
+          },
+        }
+      : {}),
+    ...(match.court_name
+      ? { location: { '@type': 'Place', name: match.court_name } }
+      : {}),
+  };
+
+  // 可視パンくず。JSON-LD の BreadcrumbList と同じ階層・順序に揃える。
+  const breadcrumbItems = [
+    { label: 'ホーム', href: '/' },
+    { label: '試合一覧', href: getPublicMatchesListPath() },
+    ...(tournamentInfo && fullTournamentUrl
+      ? [{ label: seoTournamentName, href: fullTournamentUrl }]
+      : []),
+    { label: seoMatchup, href: seoCanonicalUrl },
+  ];
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'ホーム',
+        item: buildSiteUrl('/'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: '試合一覧',
+        item: buildSiteUrl(`${getPublicMatchesListPath()}/`),
+      },
+      ...(seoTournamentUrl
+        ? [
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: seoTournamentName,
+              item: seoTournamentUrl,
+            },
+          ]
+        : []),
+      {
+        '@type': 'ListItem',
+        position: seoTournamentUrl ? 4 : 3,
+        name: seoMatchup,
+        item: seoCanonicalUrl,
+      },
+    ],
+  };
+
   return (
     <>
       <MetaHead
-        title={`${getShortTeamName('A')} vs ${getShortTeamName('B')} 試合詳細`}
-        description="ポイント詳細記録から、試合の流れと分析結果を確認できます。"
-        url={buildSiteUrl(getPublicMatchDetailPath(match))}
+        title={seoTitle}
+        description={seoDescription}
+        url={seoCanonicalUrl}
         type="article"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(sportsEventJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      </Head>
       <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
         {/* ヘッダー */}
+        <Breadcrumbs crumbs={breadcrumbItems} />
         <div className="flex justify-between items-center mb-6">
           <Link
             href={getPublicMatchesListPath()}
