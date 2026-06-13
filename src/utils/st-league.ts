@@ -19,7 +19,7 @@ export interface MatchDetail {
 
 export interface Match {
   id: number;
-  division: string; // "1" | "2" | "3" ...
+  division: string; // "1" | "2" | "3" | "playoff" ...
   date: string;
   status: 'scheduled' | 'finished';
   teamA: string;
@@ -28,6 +28,8 @@ export interface Match {
   scoreA: number;
   scoreB: number;
   matches: MatchDetail[];
+  label?: string; // ノックアウト等のラウンド名（例: "順位決定戦 1回戦"）
+  block?: string; // 予選リーグのブロック（例: "A"）。本戦試合は未設定
 }
 
 export interface Player {
@@ -41,6 +43,8 @@ export interface Team {
   division: string;
   name: string[];
   players?: Player[];
+  prefecture?: string;
+  block?: string; // 予選リーグのブロック（例: "A"）
 }
 
 export interface GenderedData<T> {
@@ -80,7 +84,13 @@ export interface LeagueMeta {
     Partial<
       Record<
         Gender,
-        { champion?: string | null; runnerUp?: string | null; third?: string[] }
+        {
+          champion?: string | null;
+          runnerUp?: string | null;
+          third?: string[];
+          ranking?: string[]; // 公式順位（teamId を順位順に並べた配列）
+          blocks?: Record<string, string[]>; // 予選ブロック別の公式順位（block -> teamId順）
+        }
       >
     >
   >;
@@ -236,14 +246,18 @@ export function computeRanking(teams: Team[], matches: Match[]): Ranking[] {
   return sorted;
 }
 
-/** league.json の divisions を rank 昇順で返す。無ければ既定のⅠ/Ⅱ/Ⅲ。 */
+/**
+ * league.json の divisions を rank 昇順で返す。無ければ既定のⅠ/Ⅱ。
+ * hasMatchData === false の部（例: 試合データ未掲載のⅢ部）は除外する。
+ */
 export function getDivisions(meta: LeagueMeta | null): DivisionMeta[] {
   if (meta?.divisions?.length) {
-    return [...meta.divisions].sort((a, b) => a.rank - b.rank);
+    return [...meta.divisions]
+      .filter((d) => d.hasMatchData !== false)
+      .sort((a, b) => a.rank - b.rank);
   }
   return [
     { id: '1', name: 'STリーグⅠ', rank: 1 },
     { id: '2', name: 'STリーグⅡ', rank: 2 },
-    { id: '3', name: 'STリーグⅢ', rank: 3 },
   ];
 }

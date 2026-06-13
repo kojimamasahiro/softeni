@@ -38,8 +38,11 @@
             "id": "2",
             "name": "STリーグⅡ",
             "rank": 2,
-            "format": "総当たり戦",
-            "note": "上位はプレーオフ（入替戦）でⅠ部昇格を目指す。 ※現在はサンプルデータ",
+            "format": "順位決定戦（順位別トーナメント）",
+            "teamCount": {
+                "boys": 8
+            },
+            "note": "上位3チームがプレーオフ（入替戦）でⅠ部昇格を目指す。男子は順位決定戦の結果を掲載。",
             "hasMatchData": true
         },
         {
@@ -47,8 +50,8 @@
             "name": "STリーグⅢ",
             "rank": 3,
             "format": "総当たり戦",
-            "note": "Ⅱ部との入替対象。 ※現在はサンプルデータ",
-            "hasMatchData": true
+            "note": "Ⅱ部との入替対象。データは準備中。",
+            "hasMatchData": false
         }
     ],
     "results": {
@@ -71,23 +74,83 @@
         },
         "2": {
             "boys": {
-                "champion": "sample-m2-A"
+                "champion": "nippon-signal",
+                "ranking": [
+                    "nippon-signal",
+                    "best",
+                    "tosoh-nanyo",
+                    "toyota",
+                    "juhachi-shinwa",
+                    "kawaguchi-city",
+                    "kyoto-daini-rc",
+                    "eneos"
+                ],
+                "blocks": {
+                    "A": [
+                        "toyota",
+                        "ube",
+                        "ntt-east-tokyo",
+                        "hokkaido-electric"
+                    ],
+                    "B": [
+                        "eneos",
+                        "proterial",
+                        "noah-indoor-stage",
+                        "fujikoshi"
+                    ],
+                    "C": [
+                        "kawaguchi-city",
+                        "nipponsteel-oita",
+                        "toyota-east",
+                        "jr-hokkaido"
+                    ],
+                    "D": [
+                        "best",
+                        "mazda",
+                        "imabari-city",
+                        "jx-kurami"
+                    ],
+                    "E": [
+                        "juhachi-shinwa",
+                        "atsugi-city",
+                        "kuraray-okayama",
+                        "jr-east-sendai"
+                    ],
+                    "F": [
+                        "nippon-signal",
+                        "meidensha",
+                        "shikoku-gas",
+                        "hachioji-city"
+                    ],
+                    "G": [
+                        "kyoto-daini-rc",
+                        "crossty-holdings",
+                        "fukuoka-city",
+                        "jr-east-tokyo"
+                    ],
+                    "H": [
+                        "tosoh-nanyo",
+                        "matsumoto-city",
+                        "chubu-electric-aichi",
+                        "ichikawa-city"
+                    ]
+                }
             },
             "girls": {
-                "champion": "sample-w2-A"
+                "champion": null
             }
         },
         "3": {
             "boys": {
-                "champion": "sample-m3-A"
+                "champion": null
             },
             "girls": {
-                "champion": "sample-w3-A"
+                "champion": null
             }
         }
     },
     "notes": [
         "男子優勝のNTT西日本は前身の日本リーグから続く連覇記録を更新中（Assumption: 連覇数は要確認）。",
-        "STリーグⅡ・Ⅲは現在サンプルデータ。公式記録（組合せ/進行表PDF）を基に実データへ差し替えること。"
+        "STリーグⅡ（男子）は1日目の予選リーグ（8ブロック）と2日目の順位決定戦の実データを掲載。女子Ⅱ部・Ⅲ部は今後追加予定。"
     ]
 }

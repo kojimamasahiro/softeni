@@ -18,6 +18,7 @@ import {
   loadParticipants,
   Match,
   PlayerMap,
+  Ranking,
   Team,
 } from '@/utils/st-league';
 
@@ -32,6 +33,7 @@ interface MatchesPageProps {
 
 const DIV_BADGE =
   'inline-flex items-center px-2 py-0.5 rounded text-xs font-bold';
+const PLAYOFF_ID = 'playoff';
 
 export default function MatchesPage({
   year,
@@ -45,31 +47,96 @@ export default function MatchesPage({
   const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
-  const teamsInDiv = useMemo(
-    () => teams[gender].filter((t) => divisionOf(t) === divisionId),
-    [teams, gender, divisionId],
+  // プレーオフ（入替戦）はリーグ階層をまたぐため、専用タブとして扱う
+  const hasPlayoff = useMemo(
+    () => matches[gender].some((m) => divisionOf(m) === PLAYOFF_ID),
+    [matches, gender],
   );
+  const isPlayoff = divisionId === PLAYOFF_ID;
+
   const matchesInDiv = useMemo(
     () => matches[gender].filter((m) => divisionOf(m) === divisionId),
     [matches, gender, divisionId],
   );
+  const teamsInDiv = useMemo(() => {
+    if (isPlayoff) {
+      // プレーオフ出場チームは試合データの teamId 集合から division 横断で導出
+      const ids = new Set<string>();
+      matchesInDiv.forEach((m) => {
+        ids.add(m.teamA);
+        ids.add(m.teamB);
+      });
+      return teams[gender].filter((t) => ids.has(t.teamId));
+    }
+    return teams[gender].filter((t) => divisionOf(t) === divisionId);
+  }, [teams, gender, divisionId, isPlayoff, matchesInDiv]);
   const playerMap = playerMaps[gender] || {};
 
   const getTeamName = (teamId: string) =>
     teamsInDiv.find((t) => t.teamId === teamId)?.name[0] ?? teamId;
   const getPlayerNames = (ids?: number[]) =>
     !ids ? '-' : ids.map((id) => playerMap[id] || `ID:${id}`).join('・');
+  // プレーオフ順位表用：各チームの所属リーグ名（Ⅰ/Ⅱ）
+  const teamDivName = (teamId: string) => {
+    const t = teams[gender].find((x) => x.teamId === teamId);
+    return t ? (divisions.find((d) => d.id === divisionOf(t))?.name ?? '') : '';
+  };
 
   const ranking = useMemo(
     () => computeRanking(teamsInDiv, matchesInDiv),
     [teamsInDiv, matchesInDiv],
   );
 
+  // 公式順位（league.json results）。ノックアウト等で総当たり計算が使えない場合に優先
+  const officialOrder =
+    !isPlayoff && meta?.results?.[divisionId]?.[gender]?.ranking;
+  const hasOfficialRanking = !!(officialOrder && officialOrder.length);
+  const displayRanking = useMemo<Ranking[]>(() => {
+    if (hasOfficialRanking && officialOrder) {
+      const byId = new Map(ranking.map((r) => [r.teamId, r]));
+      return officialOrder
+        .map((tid) => byId.get(tid))
+        .filter((r): r is Ranking => !!r);
+    }
+    return ranking;
+  }, [hasOfficialRanking, officialOrder, ranking]);
+
+  // 予選ブロック別 公式順位表（league.json results.<div>.<gender>.blocks）
+  const officialBlocks =
+    !isPlayoff && meta?.results?.[divisionId]?.[gender]?.blocks;
+  const blockStandings = useMemo(() => {
+    if (!officialBlocks) return null;
+    return Object.entries(officialBlocks).map(([block, order]) => {
+      const blockTeams = teamsInDiv.filter((t) => order.includes(t.teamId));
+      const blockMatches = matchesInDiv.filter((m) => m.block === block);
+      const recs = computeRanking(blockTeams, blockMatches);
+      const byId = new Map(recs.map((r) => [r.teamId, r]));
+      const rows = order
+        .map((tid) => byId.get(tid))
+        .filter((r): r is Ranking => !!r);
+      return { block, rows };
+    });
+  }, [officialBlocks, teamsInDiv, matchesInDiv]);
+
+  // タブ一覧（リーグ階層 + プレーオフ）
+  const tabs = useMemo(() => {
+    const base = divisions.map((d) => ({ id: d.id, name: d.name }));
+    if (hasPlayoff) {
+      base.push({ id: PLAYOFF_ID, name: meta?.playoff?.name ?? 'プレーオフ' });
+    }
+    return base;
+  }, [divisions, hasPlayoff, meta]);
+
   const currentDiv = divisions.find((d) => d.id === divisionId);
-  const isLowest = currentDiv
-    ? currentDiv.rank === Math.max(...divisions.map((d) => d.rank))
-    : true;
-  const isTop = currentDiv ? currentDiv.rank === 1 : true;
+  const currentDivName = isPlayoff
+    ? (meta?.playoff?.name ?? 'プレーオフ')
+    : (currentDiv?.name ?? '');
+  // プレーオフは昇降格ゾーン表示の対象外（リーグをまたぐため）
+  const isLowest =
+    isPlayoff || !currentDiv
+      ? true
+      : currentDiv.rank === Math.max(...divisions.map((d) => d.rank));
+  const isTop = isPlayoff || !currentDiv ? true : currentDiv.rank === 1;
 
   const toggle = (id: number) => {
     const next = new Set(expanded);
@@ -92,7 +159,7 @@ export default function MatchesPage({
     <>
       <MetaHead
         title={pageTitle}
-        description={`${editionLabel}（${dateRange}${meta?.venue ? ` / ${meta.venue}` : ''}）の男女・STリーグⅠ/Ⅱ/Ⅲ別の試合結果と順位表。`}
+        description={`${editionLabel}（${dateRange}${meta?.venue ? ` / ${meta.venue}` : ''}）の男女・STリーグⅠ/Ⅱ別の試合結果と順位表。`}
         url={pageUrl}
       />
       <Head>
@@ -143,7 +210,7 @@ export default function MatchesPage({
             </p>
           )}
           <p className="mt-2 text-gray-600 dark:text-gray-300">
-            STリーグⅠ・Ⅱ・Ⅲと男女別に、対戦成績・順位表を掲載しています。
+            STリーグⅠ・Ⅱと男女別に、対戦成績・順位表を掲載しています。
           </p>
         </header>
 
@@ -171,17 +238,20 @@ export default function MatchesPage({
           </button>
         </div>
 
-        {/* リーグ（division）切替 */}
+        {/* リーグ（division）切替 + プレーオフ */}
         <div className="flex flex-wrap gap-2">
-          {divisions.map((d) => {
+          {tabs.map((d) => {
             const active = d.id === divisionId;
+            const playoffTab = d.id === PLAYOFF_ID;
             return (
               <button
                 key={d.id}
                 onClick={() => setDivisionId(d.id)}
                 className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
                   active
-                    ? 'bg-blue-600 text-white border-blue-600'
+                    ? playoffTab
+                      ? 'bg-amber-500 text-white border-amber-500'
+                      : 'bg-blue-600 text-white border-blue-600'
                     : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
                 }`}
               >
@@ -191,16 +261,22 @@ export default function MatchesPage({
           })}
         </div>
 
-        {currentDiv?.note && (
-          <p className="text-xs text-gray-500 dark:text-gray-400 -mt-2">
-            {currentDiv.note}
-          </p>
-        )}
+        {isPlayoff
+          ? meta?.playoff?.description && (
+              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-2">
+                {meta.playoff.description}
+              </p>
+            )
+          : currentDiv?.note && (
+              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-2">
+                {currentDiv.note}
+              </p>
+            )}
 
         {teamsInDiv.length === 0 ? (
           <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
             <p className="font-semibold mb-1">
-              {currentDiv?.name ?? 'このリーグ'}のデータは準備中です
+              {currentDivName || 'このリーグ'}のデータは準備中です
             </p>
             <p className="text-xs">公式記録をもとに順次追加していきます。</p>
           </div>
@@ -209,10 +285,12 @@ export default function MatchesPage({
             {/* 順位表 */}
             <section>
               <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                {currentDiv?.name} 順位表
+                {currentDivName} 順位表
               </h2>
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                順位は「勝数」→「同勝数内の直接対決」→「得失点差」の順で決定。
+                {hasOfficialRanking
+                  ? '順位は順位決定戦（公式記録）による。勝敗は同部内の対戦成績。'
+                  : '順位は「勝数」→「同勝数内の直接対決」→「得失点差」の順で決定。'}
               </p>
               <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
                 <table className="w-full text-sm">
@@ -233,14 +311,21 @@ export default function MatchesPage({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                    {ranking.map((team, index) => {
+                    {displayRanking.map((team, index) => {
                       const rank = index + 1;
-                      const total = ranking.length;
+                      const total = displayRanking.length;
                       // 入替戦ゾーンの目安（最上位リーグの下位2、最下位以外の上位2）
+                      // 公式順位表示時（ノックアウト）はゾーン表示しない
                       const relegationZone =
-                        !isLowest && rank > total - 2 && team.played > 0;
+                        !hasOfficialRanking &&
+                        !isLowest &&
+                        rank > total - 2 &&
+                        team.played > 0;
                       const promotionZone =
-                        !isTop && rank <= 2 && team.played > 0;
+                        !hasOfficialRanking &&
+                        !isTop &&
+                        rank <= 2 &&
+                        team.played > 0;
                       return (
                         <tr
                           key={team.teamId}
@@ -267,7 +352,16 @@ export default function MatchesPage({
                               )}
                             </span>
                           </td>
-                          <td className="py-3 px-2 font-medium">{team.name}</td>
+                          <td className="py-3 px-2 font-medium">
+                            {team.name}
+                            {isPlayoff && teamDivName(team.teamId) && (
+                              <span
+                                className={`${DIV_BADGE} bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 ml-2`}
+                              >
+                                {teamDivName(team.teamId)}
+                              </span>
+                            )}
+                          </td>
                           <td className="py-3 px-2 text-center">
                             {team.played > 0 ? (
                               <span className="inline-flex gap-1">
@@ -292,7 +386,7 @@ export default function MatchesPage({
                   </tbody>
                 </table>
               </div>
-              {(!isTop || !isLowest) && (
+              {!hasOfficialRanking && (!isTop || !isLowest) && (
                 <p className="text-[11px] text-gray-400 mt-2">
                   {!isTop && (
                     <span className="mr-3">
@@ -318,10 +412,61 @@ export default function MatchesPage({
               )}
             </section>
 
+            {/* 予選ブロック別順位表 */}
+            {blockStandings && blockStandings.length > 0 && (
+              <section>
+                <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+                  予選リーグ ブロック順位表
+                </h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                  各ブロック1位が順位決定戦へ進出。順位は公式記録による。
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {blockStandings.map(({ block, rows }) => (
+                    <div
+                      key={block}
+                      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700"
+                    >
+                      <div className="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-xs font-bold text-gray-600 dark:text-gray-300">
+                        {block}ブロック
+                      </div>
+                      <table className="w-full text-sm">
+                        <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                          {rows.map((team, idx) => (
+                            <tr key={team.teamId}>
+                              <td className="py-2 px-3 w-10 text-center font-bold text-gray-700 dark:text-gray-300">
+                                {idx + 1}
+                              </td>
+                              <td className="py-2 px-1 font-medium">
+                                {team.name}
+                                {idx === 0 && (
+                                  <span
+                                    className={`${DIV_BADGE} bg-amber-100 text-amber-700 ml-2`}
+                                    title="順位決定戦へ進出"
+                                  >
+                                    進出
+                                  </span>
+                                )}
+                              </td>
+                              <td className="py-2 px-3 text-center text-gray-500">
+                                {team.played > 0
+                                  ? `${team.won}-${team.lost}`
+                                  : '-'}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* 対戦結果一覧 */}
             <section>
               <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                {currentDiv?.name} 対戦結果
+                {currentDivName} 対戦結果
               </h2>
               <div className="space-y-3">
                 {matchesInDiv.map((match) => (
@@ -338,8 +483,15 @@ export default function MatchesPage({
                       onClick={() => toggle(match.id)}
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
-                          {match.status === 'finished' ? '試合終了' : '予定'}
+                        <span className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
+                            {match.status === 'finished' ? '試合終了' : '予定'}
+                          </span>
+                          {match.label && (
+                            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded">
+                              {match.label}
+                            </span>
+                          )}
                         </span>
                         <span className="text-xs text-gray-400">
                           {match.date.replace(/-/g, '/')}

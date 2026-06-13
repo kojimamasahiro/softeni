@@ -1485,13 +1485,13 @@
             ]
         },
         {
-            "id": 201,
-            "division": "2",
-            "date": "2025-12-12",
+            "id": 307,
+            "division": "playoff",
+            "date": "2025-12-20",
             "status": "finished",
-            "teamA": "sample-m2-A",
-            "teamB": "sample-m2-B",
-            "winner": "sample-m2-A",
+            "teamA": "pacific-ind",
+            "teamB": "tosoh-nanyo",
+            "winner": "pacific-ind",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
@@ -1499,14 +1499,67 @@
                     "type": "D1",
                     "winner": "A",
                     "scoreA": 4,
-                    "scoreB": 2,
+                    "scoreB": 0,
                     "playersA": [
-                        300,
-                        301
+                        23,
+                        26
                     ],
                     "playersB": [
-                        304,
-                        305
+                        456,
+                        457
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        21
+                    ],
+                    "playersB": [
+                        458
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        24,
+                        25
+                    ],
+                    "playersB": [
+                        459,
+                        460
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 308,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "nippon-signal",
+            "teamB": "best",
+            "winner": "best",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        462,
+                        463
+                    ],
+                    "playersB": [
+                        469,
+                        470
                     ]
                 },
                 {
@@ -1515,36 +1568,89 @@
                     "scoreA": 3,
                     "scoreB": 4,
                     "playersA": [
-                        302
+                        464
                     ],
                     "playersB": [
-                        306
+                        471
                     ]
                 },
                 {
                     "type": "D2",
                     "winner": "A",
                     "scoreA": 4,
-                    "scoreB": 1,
+                    "scoreB": 2,
                     "playersA": [
-                        303,
-                        300
+                        465,
+                        466
                     ],
                     "playersB": [
-                        307,
-                        304
+                        472,
+                        473
                     ]
                 }
             ]
         },
         {
-            "id": 202,
-            "division": "2",
-            "date": "2025-12-12",
+            "id": 309,
+            "division": "playoff",
+            "date": "2025-12-20",
             "status": "finished",
-            "teamA": "sample-m2-A",
-            "teamB": "sample-m2-C",
-            "winner": "sample-m2-C",
+            "teamA": "pacific-ind",
+            "teamB": "nippon-signal",
+            "winner": "nippon-signal",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        23,
+                        26
+                    ],
+                    "playersB": [
+                        465,
+                        466
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        21
+                    ],
+                    "playersB": [
+                        467
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        25,
+                        22
+                    ],
+                    "playersB": [
+                        462,
+                        463
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 310,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "tosoh-nanyo",
+            "teamB": "tokyo-gas",
+            "winner": "tokyo-gas",
             "scoreA": 1,
             "scoreB": 2,
             "matches": [
@@ -1554,24 +1660,130 @@
                     "scoreA": 2,
                     "scoreB": 4,
                     "playersA": [
-                        300,
-                        301
+                        459,
+                        460
                     ],
                     "playersB": [
-                        308,
-                        309
+                        20,
+                        475
                     ]
                 },
                 {
                     "type": "S",
                     "winner": "A",
                     "scoreA": 4,
-                    "scoreB": 3,
+                    "scoreB": 0,
                     "playersA": [
-                        302
+                        458
                     ],
                     "playersB": [
-                        310
+                        17
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        456,
+                        461
+                    ],
+                    "playersB": [
+                        18,
+                        16
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 311,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "tosoh-nanyo",
+            "teamB": "nippon-signal",
+            "winner": "tosoh-nanyo",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        456,
+                        461
+                    ],
+                    "playersB": [
+                        462,
+                        463
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        458
+                    ],
+                    "playersB": [
+                        467
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        459,
+                        460
+                    ],
+                    "playersB": [
+                        465,
+                        466
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 312,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "best",
+            "teamB": "tokyo-gas",
+            "winner": "tokyo-gas",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        469,
+                        470
+                    ],
+                    "playersB": [
+                        20,
+                        475
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        471
+                    ],
+                    "playersB": [
+                        17
                     ]
                 },
                 {
@@ -1580,26 +1792,239 @@
                     "scoreA": 1,
                     "scoreB": 4,
                     "playersA": [
-                        303,
-                        300
+                        472,
+                        473
                     ],
                     "playersB": [
-                        311,
-                        308
+                        18,
+                        16
                     ]
                 }
             ]
         },
         {
-            "id": 203,
+            "id": 313,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "pacific-ind",
+            "teamB": "best",
+            "winner": "pacific-ind",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        23,
+                        26
+                    ],
+                    "playersB": [
+                        469,
+                        470
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        21
+                    ],
+                    "playersB": [
+                        471
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        24,
+                        25
+                    ],
+                    "playersB": [
+                        472,
+                        474
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 314,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "nippon-signal",
+            "teamB": "tokyo-gas",
+            "winner": "nippon-signal",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        462,
+                        463
+                    ],
+                    "playersB": [
+                        20,
+                        475
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        464
+                    ],
+                    "playersB": [
+                        17
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        468,
+                        466
+                    ],
+                    "playersB": [
+                        18,
+                        16
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 315,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "pacific-ind",
+            "teamB": "tokyo-gas",
+            "winner": "tokyo-gas",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        23,
+                        26
+                    ],
+                    "playersB": [
+                        20,
+                        475
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        21
+                    ],
+                    "playersB": [
+                        17
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        24,
+                        25
+                    ],
+                    "playersB": [
+                        18,
+                        16
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 316,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "tosoh-nanyo",
+            "teamB": "best",
+            "winner": "tosoh-nanyo",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        456,
+                        461
+                    ],
+                    "playersB": [
+                        469,
+                        470
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        458
+                    ],
+                    "playersB": [
+                        471
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        459,
+                        460
+                    ],
+                    "playersB": [
+                        472,
+                        474
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 317,
             "division": "2",
-            "date": "2025-12-12",
+            "label": "順位決定戦 1回戦",
+            "date": "2025-12-13",
             "status": "finished",
-            "teamA": "sample-m2-A",
-            "teamB": "sample-m2-D",
-            "winner": "sample-m2-A",
+            "teamA": "toyota",
+            "teamB": "eneos",
+            "winner": "toyota",
             "scoreA": 2,
-            "scoreB": 1,
+            "scoreB": 0,
             "matches": [
                 {
                     "type": "D1",
@@ -1607,156 +2032,507 @@
                     "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        300,
-                        301
+                        492,
+                        493
                     ],
                     "playersB": [
-                        312,
-                        313
+                        497,
+                        498
                     ]
                 },
                 {
                     "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        302
-                    ],
-                    "playersB": [
-                        314
-                    ]
-                },
-                {
-                    "type": "D2",
                     "winner": "A",
                     "scoreA": 4,
                     "scoreB": 1,
                     "playersA": [
-                        303,
-                        300
+                        494
                     ],
                     "playersB": [
-                        315,
-                        312
+                        499
                     ]
                 }
             ]
         },
         {
-            "id": 204,
+            "id": 318,
             "division": "2",
-            "date": "2025-12-12",
+            "label": "順位決定戦 1回戦",
+            "date": "2025-12-13",
             "status": "finished",
-            "teamA": "sample-m2-B",
-            "teamB": "sample-m2-C",
-            "winner": "sample-m2-C",
-            "scoreA": 1,
+            "teamA": "kawaguchi-city",
+            "teamB": "best",
+            "winner": "best",
+            "scoreA": 0,
             "scoreB": 2,
             "matches": [
                 {
                     "type": "D1",
                     "winner": "B",
-                    "scoreA": 2,
+                    "scoreA": 1,
                     "scoreB": 4,
                     "playersA": [
-                        304,
-                        305
+                        503,
+                        504
                     ],
                     "playersB": [
-                        308,
-                        309
+                        469,
+                        470
                     ]
                 },
                 {
                     "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        306
-                    ],
-                    "playersB": [
-                        310
-                    ]
-                },
-                {
-                    "type": "D2",
                     "winner": "B",
-                    "scoreA": 1,
+                    "scoreA": 0,
                     "scoreB": 4,
                     "playersA": [
-                        307,
-                        304
+                        505
                     ],
                     "playersB": [
-                        311,
-                        308
+                        471
                     ]
                 }
             ]
         },
         {
-            "id": 205,
+            "id": 319,
             "division": "2",
-            "date": "2025-12-12",
+            "label": "順位決定戦 1回戦",
+            "date": "2025-12-13",
             "status": "finished",
-            "teamA": "sample-m2-B",
-            "teamB": "sample-m2-D",
-            "winner": "sample-m2-B",
-            "scoreA": 2,
-            "scoreB": 1,
+            "teamA": "juhachi-shinwa",
+            "teamB": "nippon-signal",
+            "winner": "nippon-signal",
+            "scoreA": 1,
+            "scoreB": 2,
             "matches": [
                 {
                     "type": "D1",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 2,
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
                     "playersA": [
-                        304,
-                        305
+                        509,
+                        510
                     ],
                     "playersB": [
-                        312,
-                        313
+                        465,
+                        515
                     ]
                 },
                 {
                     "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
                     "playersA": [
-                        306
+                        511
                     ],
                     "playersB": [
-                        314
+                        464
                     ]
                 },
                 {
                     "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
                     "playersA": [
-                        307,
-                        304
+                        512,
+                        513
                     ],
                     "playersB": [
-                        315,
-                        312
+                        462,
+                        463
                     ]
                 }
             ]
         },
         {
-            "id": 206,
+            "id": 320,
             "division": "2",
-            "date": "2025-12-12",
+            "label": "順位決定戦 1回戦",
+            "date": "2025-12-13",
             "status": "finished",
-            "teamA": "sample-m2-C",
-            "teamB": "sample-m2-D",
-            "winner": "sample-m2-D",
+            "teamA": "kyoto-daini-rc",
+            "teamB": "tosoh-nanyo",
+            "winner": "tosoh-nanyo",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        516,
+                        517
+                    ],
+                    "playersB": [
+                        459,
+                        457
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        518
+                    ],
+                    "playersB": [
+                        458
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        519,
+                        520
+                    ],
+                    "playersB": [
+                        456,
+                        461
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 321,
+            "division": "2",
+            "label": "5・6位決定戦 1回戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "juhachi-shinwa",
+            "teamB": "eneos",
+            "winner": "juhachi-shinwa",
+            "scoreA": 2,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        512,
+                        513
+                    ],
+                    "playersB": [
+                        497,
+                        502
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        511
+                    ],
+                    "playersB": [
+                        499
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 322,
+            "division": "2",
+            "label": "5・6位決定戦 1回戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "kyoto-daini-rc",
+            "teamB": "kawaguchi-city",
+            "winner": "kawaguchi-city",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        516,
+                        517
+                    ],
+                    "playersB": [
+                        503,
+                        504
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        518
+                    ],
+                    "playersB": [
+                        508
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        519,
+                        520
+                    ],
+                    "playersB": [
+                        505,
+                        507
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 323,
+            "division": "2",
+            "label": "順位決定戦 2回戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "toyota",
+            "teamB": "best",
+            "winner": "best",
+            "scoreA": 0,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        492,
+                        493
+                    ],
+                    "playersB": [
+                        469,
+                        470
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        494
+                    ],
+                    "playersB": [
+                        471
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 324,
+            "division": "2",
+            "label": "順位決定戦 2回戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "nippon-signal",
+            "teamB": "tosoh-nanyo",
+            "winner": "nippon-signal",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        465,
+                        515
+                    ],
+                    "playersB": [
+                        456,
+                        461
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        464
+                    ],
+                    "playersB": [
+                        458
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        462,
+                        463
+                    ],
+                    "playersB": [
+                        459,
+                        460
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 325,
+            "division": "2",
+            "label": "5・6位決定戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "juhachi-shinwa",
+            "teamB": "kawaguchi-city",
+            "winner": "juhachi-shinwa",
+            "scoreA": 2,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        512,
+                        513
+                    ],
+                    "playersB": [
+                        506,
+                        504
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        511
+                    ],
+                    "playersB": [
+                        508
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 326,
+            "division": "2",
+            "label": "7・8位決定戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "eneos",
+            "teamB": "kyoto-daini-rc",
+            "winner": "kyoto-daini-rc",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        500,
+                        501
+                    ],
+                    "playersB": [
+                        519,
+                        520
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        499
+                    ],
+                    "playersB": [
+                        518
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        497,
+                        502
+                    ],
+                    "playersB": [
+                        516,
+                        517
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 327,
+            "division": "2",
+            "label": "1・2位決定戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "best",
+            "teamB": "nippon-signal",
+            "winner": "nippon-signal",
+            "scoreA": 0,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        469,
+                        470
+                    ],
+                    "playersB": [
+                        462,
+                        463
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        471
+                    ],
+                    "playersB": [
+                        464
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 328,
+            "division": "2",
+            "label": "3・4位決定戦",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "toyota",
+            "teamB": "tosoh-nanyo",
+            "winner": "tosoh-nanyo",
             "scoreA": 1,
             "scoreB": 2,
             "matches": [
@@ -1766,12 +2542,342 @@
                     "scoreA": 2,
                     "scoreB": 4,
                     "playersA": [
-                        308,
-                        309
+                        492,
+                        493
                     ],
                     "playersB": [
-                        312,
-                        313
+                        459,
+                        460
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        494
+                    ],
+                    "playersB": [
+                        458
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        495,
+                        496
+                    ],
+                    "playersB": [
+                        456,
+                        461
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 329,
+            "division": "2",
+            "block": "A",
+            "label": "予選 Aブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "ube",
+            "teamB": "hokkaido-electric",
+            "winner": "ube",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        521,
+                        522
+                    ],
+                    "playersB": [
+                        526,
+                        527
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        523
+                    ],
+                    "playersB": [
+                        528
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        524,
+                        525
+                    ],
+                    "playersB": [
+                        529,
+                        530
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 330,
+            "division": "2",
+            "block": "A",
+            "label": "予選 Aブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "ube",
+            "teamB": "ntt-east-tokyo",
+            "winner": "ube",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        521,
+                        522
+                    ],
+                    "playersB": [
+                        531,
+                        532
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        523
+                    ],
+                    "playersB": [
+                        533
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        524,
+                        525
+                    ],
+                    "playersB": [
+                        534,
+                        535
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 331,
+            "division": "2",
+            "block": "A",
+            "label": "予選 Aブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "ube",
+            "teamB": "toyota",
+            "winner": "toyota",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        521,
+                        522
+                    ],
+                    "playersB": [
+                        492,
+                        493
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        523
+                    ],
+                    "playersB": [
+                        494
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        524,
+                        525
+                    ],
+                    "playersB": [
+                        495,
+                        496
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 332,
+            "division": "2",
+            "block": "A",
+            "label": "予選 Aブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "ntt-east-tokyo",
+            "teamB": "toyota",
+            "winner": "toyota",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        531,
+                        532
+                    ],
+                    "playersB": [
+                        537,
+                        493
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        533
+                    ],
+                    "playersB": [
+                        494
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        534,
+                        535
+                    ],
+                    "playersB": [
+                        495,
+                        496
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 333,
+            "division": "2",
+            "block": "A",
+            "label": "予選 Aブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "hokkaido-electric",
+            "teamB": "toyota",
+            "winner": "toyota",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        526,
+                        527
+                    ],
+                    "playersB": [
+                        492,
+                        496
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        528
+                    ],
+                    "playersB": [
+                        493
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        529,
+                        530
+                    ],
+                    "playersB": [
+                        495,
+                        494
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 334,
+            "division": "2",
+            "block": "A",
+            "label": "予選 Aブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "hokkaido-electric",
+            "teamB": "ntt-east-tokyo",
+            "winner": "ntt-east-tokyo",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        526,
+                        527
+                    ],
+                    "playersB": [
+                        531,
+                        532
                     ]
                 },
                 {
@@ -1780,10 +2886,175 @@
                     "scoreA": 4,
                     "scoreB": 3,
                     "playersA": [
-                        310
+                        528
                     ],
                     "playersB": [
-                        314
+                        533
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        529,
+                        530
+                    ],
+                    "playersB": [
+                        534,
+                        536
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 335,
+            "division": "2",
+            "block": "B",
+            "label": "予選 Bブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "eneos",
+            "teamB": "noah-indoor-stage",
+            "winner": "eneos",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        497,
+                        498
+                    ],
+                    "playersB": [
+                        538,
+                        539
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        499
+                    ],
+                    "playersB": [
+                        540
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        500,
+                        501
+                    ],
+                    "playersB": [
+                        541,
+                        542
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 336,
+            "division": "2",
+            "block": "B",
+            "label": "予選 Bブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "eneos",
+            "teamB": "fujikoshi",
+            "winner": "eneos",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        497,
+                        498
+                    ],
+                    "playersB": [
+                        543,
+                        544
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        499
+                    ],
+                    "playersB": [
+                        545
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        500,
+                        501
+                    ],
+                    "playersB": [
+                        546,
+                        547
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 337,
+            "division": "2",
+            "block": "B",
+            "label": "予選 Bブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "eneos",
+            "teamB": "proterial",
+            "winner": "proterial",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        500,
+                        501
+                    ],
+                    "playersB": [
+                        550,
+                        551
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        499
+                    ],
+                    "playersB": [
+                        552
                     ]
                 },
                 {
@@ -1792,24 +3063,1982 @@
                     "scoreA": 1,
                     "scoreB": 4,
                     "playersA": [
-                        311,
-                        308
+                        497,
+                        498
                     ],
                     "playersB": [
-                        315,
-                        312
+                        553
                     ]
                 }
             ]
         },
         {
-            "id": 301,
-            "division": "3",
-            "date": "2025-12-12",
+            "id": 338,
+            "division": "2",
+            "block": "B",
+            "label": "予選 Bブロック",
+            "date": "2025-12-11",
             "status": "finished",
-            "teamA": "sample-m3-A",
-            "teamB": "sample-m3-B",
-            "winner": "sample-m3-A",
+            "teamA": "fujikoshi",
+            "teamB": "proterial",
+            "winner": "proterial",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        546,
+                        548
+                    ],
+                    "playersB": [
+                        553,
+                        554
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        547
+                    ],
+                    "playersB": [
+                        551
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        543,
+                        544
+                    ],
+                    "playersB": [
+                        550,
+                        555
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 339,
+            "division": "2",
+            "block": "B",
+            "label": "予選 Bブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "noah-indoor-stage",
+            "teamB": "proterial",
+            "winner": "noah-indoor-stage",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        538,
+                        539
+                    ],
+                    "playersB": [
+                        553,
+                        554
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        540
+                    ],
+                    "playersB": [
+                        551
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        541,
+                        542
+                    ],
+                    "playersB": [
+                        550,
+                        555
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 340,
+            "division": "2",
+            "block": "B",
+            "label": "予選 Bブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "noah-indoor-stage",
+            "teamB": "fujikoshi",
+            "winner": "noah-indoor-stage",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        538,
+                        539
+                    ],
+                    "playersB": [
+                        543,
+                        544
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        540
+                    ],
+                    "playersB": [
+                        547
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        541,
+                        542
+                    ],
+                    "playersB": [
+                        548,
+                        549
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 341,
+            "division": "2",
+            "block": "C",
+            "label": "予選 Cブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kawaguchi-city",
+            "teamB": "toyota-east",
+            "winner": "kawaguchi-city",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        505,
+                        504
+                    ],
+                    "playersB": [
+                        556,
+                        557
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        508
+                    ],
+                    "playersB": [
+                        558
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        506,
+                        507
+                    ],
+                    "playersB": [
+                        559,
+                        560
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 342,
+            "division": "2",
+            "block": "C",
+            "label": "予選 Cブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kawaguchi-city",
+            "teamB": "jr-hokkaido",
+            "winner": "kawaguchi-city",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        503,
+                        504
+                    ],
+                    "playersB": [
+                        562,
+                        563
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        505
+                    ],
+                    "playersB": [
+                        564
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        506,
+                        507
+                    ],
+                    "playersB": [
+                        565,
+                        566
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 343,
+            "division": "2",
+            "block": "C",
+            "label": "予選 Cブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kawaguchi-city",
+            "teamB": "nipponsteel-oita",
+            "winner": "kawaguchi-city",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        505,
+                        504
+                    ],
+                    "playersB": [
+                        567,
+                        568
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        508
+                    ],
+                    "playersB": [
+                        569
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        506,
+                        507
+                    ],
+                    "playersB": [
+                        570,
+                        571
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 344,
+            "division": "2",
+            "block": "C",
+            "label": "予選 Cブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "jr-hokkaido",
+            "teamB": "nipponsteel-oita",
+            "winner": "nipponsteel-oita",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        562,
+                        563
+                    ],
+                    "playersB": [
+                        567,
+                        568
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        564
+                    ],
+                    "playersB": [
+                        569
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        565,
+                        566
+                    ],
+                    "playersB": [
+                        570,
+                        571
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 345,
+            "division": "2",
+            "block": "C",
+            "label": "予選 Cブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "toyota-east",
+            "teamB": "nipponsteel-oita",
+            "winner": "nipponsteel-oita",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        556,
+                        557
+                    ],
+                    "playersB": [
+                        567,
+                        568
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        558
+                    ],
+                    "playersB": [
+                        569
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        559,
+                        560
+                    ],
+                    "playersB": [
+                        570,
+                        571
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 346,
+            "division": "2",
+            "block": "C",
+            "label": "予選 Cブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "toyota-east",
+            "teamB": "jr-hokkaido",
+            "winner": "toyota-east",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        556,
+                        557
+                    ],
+                    "playersB": [
+                        565,
+                        566
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        558
+                    ],
+                    "playersB": [
+                        563
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        559,
+                        561
+                    ],
+                    "playersB": [
+                        562,
+                        564
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 347,
+            "division": "2",
+            "block": "D",
+            "label": "予選 Dブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "best",
+            "teamB": "imabari-city",
+            "winner": "best",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        469,
+                        470
+                    ],
+                    "playersB": [
+                        573,
+                        574
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        471
+                    ],
+                    "playersB": [
+                        575
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        472,
+                        474
+                    ],
+                    "playersB": [
+                        576,
+                        577
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 348,
+            "division": "2",
+            "block": "D",
+            "label": "予選 Dブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "best",
+            "teamB": "jx-kurami",
+            "winner": "best",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        469,
+                        470
+                    ],
+                    "playersB": [
+                        579,
+                        580
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        572
+                    ],
+                    "playersB": [
+                        581
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        472,
+                        473
+                    ],
+                    "playersB": [
+                        582,
+                        583
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 349,
+            "division": "2",
+            "block": "D",
+            "label": "予選 Dブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "best",
+            "teamB": "mazda",
+            "winner": "best",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        469,
+                        470
+                    ],
+                    "playersB": [
+                        585,
+                        586
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        471
+                    ],
+                    "playersB": [
+                        587
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        472,
+                        473
+                    ],
+                    "playersB": [
+                        588,
+                        589
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 350,
+            "division": "2",
+            "block": "D",
+            "label": "予選 Dブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "jx-kurami",
+            "teamB": "mazda",
+            "winner": "mazda",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        579,
+                        580
+                    ],
+                    "playersB": [
+                        587,
+                        590
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        581
+                    ],
+                    "playersB": [
+                        589
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        582,
+                        583
+                    ],
+                    "playersB": [
+                        588,
+                        591
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 351,
+            "division": "2",
+            "block": "D",
+            "label": "予選 Dブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "imabari-city",
+            "teamB": "mazda",
+            "winner": "mazda",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        576,
+                        577
+                    ],
+                    "playersB": [
+                        585,
+                        586
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        575
+                    ],
+                    "playersB": [
+                        587
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        573,
+                        574
+                    ],
+                    "playersB": [
+                        588,
+                        589
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 352,
+            "division": "2",
+            "block": "D",
+            "label": "予選 Dブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "imabari-city",
+            "teamB": "jx-kurami",
+            "winner": "imabari-city",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        576,
+                        574
+                    ],
+                    "playersB": [
+                        579,
+                        584
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        575
+                    ],
+                    "playersB": [
+                        581
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        578,
+                        577
+                    ],
+                    "playersB": [
+                        582,
+                        583
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 353,
+            "division": "2",
+            "block": "E",
+            "label": "予選 Eブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "juhachi-shinwa",
+            "teamB": "kuraray-okayama",
+            "winner": "juhachi-shinwa",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        509,
+                        510
+                    ],
+                    "playersB": [
+                        592,
+                        593
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        511
+                    ],
+                    "playersB": [
+                        594
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        512,
+                        513
+                    ],
+                    "playersB": [
+                        595,
+                        596
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 354,
+            "division": "2",
+            "block": "E",
+            "label": "予選 Eブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "juhachi-shinwa",
+            "teamB": "jr-east-sendai",
+            "winner": "juhachi-shinwa",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        509,
+                        510
+                    ],
+                    "playersB": [
+                        597,
+                        598
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        511
+                    ],
+                    "playersB": [
+                        599
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        512,
+                        513
+                    ],
+                    "playersB": [
+                        600,
+                        601
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 355,
+            "division": "2",
+            "block": "E",
+            "label": "予選 Eブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "juhachi-shinwa",
+            "teamB": "atsugi-city",
+            "winner": "juhachi-shinwa",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        509,
+                        510
+                    ],
+                    "playersB": [
+                        603,
+                        604
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        511
+                    ],
+                    "playersB": [
+                        605
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        512,
+                        513
+                    ],
+                    "playersB": [
+                        606,
+                        607
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 356,
+            "division": "2",
+            "block": "E",
+            "label": "予選 Eブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "jr-east-sendai",
+            "teamB": "atsugi-city",
+            "winner": "atsugi-city",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        597,
+                        598
+                    ],
+                    "playersB": [
+                        603,
+                        604
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        599
+                    ],
+                    "playersB": [
+                        605
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        602,
+                        601
+                    ],
+                    "playersB": [
+                        608,
+                        607
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 357,
+            "division": "2",
+            "block": "E",
+            "label": "予選 Eブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kuraray-okayama",
+            "teamB": "atsugi-city",
+            "winner": "atsugi-city",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        595,
+                        596
+                    ],
+                    "playersB": [
+                        603,
+                        604
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        594
+                    ],
+                    "playersB": [
+                        605
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        592,
+                        593
+                    ],
+                    "playersB": [
+                        606,
+                        607
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 358,
+            "division": "2",
+            "block": "E",
+            "label": "予選 Eブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kuraray-okayama",
+            "teamB": "jr-east-sendai",
+            "winner": "kuraray-okayama",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        592,
+                        593
+                    ],
+                    "playersB": [
+                        597,
+                        598
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        594
+                    ],
+                    "playersB": [
+                        599
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        595,
+                        596
+                    ],
+                    "playersB": [
+                        602,
+                        600
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 359,
+            "division": "2",
+            "block": "F",
+            "label": "予選 Fブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "nippon-signal",
+            "teamB": "shikoku-gas",
+            "winner": "nippon-signal",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        462,
+                        463
+                    ],
+                    "playersB": [
+                        609,
+                        610
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        464
+                    ],
+                    "playersB": [
+                        611
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        465,
+                        515
+                    ],
+                    "playersB": [
+                        612,
+                        613
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 360,
+            "division": "2",
+            "block": "F",
+            "label": "予選 Fブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "nippon-signal",
+            "teamB": "hachioji-city",
+            "winner": "nippon-signal",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        462,
+                        463
+                    ],
+                    "playersB": [
+                        616,
+                        617
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        464
+                    ],
+                    "playersB": [
+                        618
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        465,
+                        515
+                    ],
+                    "playersB": [
+                        619,
+                        620
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 361,
+            "division": "2",
+            "block": "F",
+            "label": "予選 Fブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "nippon-signal",
+            "teamB": "meidensha",
+            "winner": "nippon-signal",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        465,
+                        515
+                    ],
+                    "playersB": [
+                        622,
+                        623
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        464
+                    ],
+                    "playersB": [
+                        624
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        462,
+                        463
+                    ],
+                    "playersB": [
+                        625,
+                        626
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 362,
+            "division": "2",
+            "block": "F",
+            "label": "予選 Fブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "hachioji-city",
+            "teamB": "meidensha",
+            "winner": "meidensha",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        616,
+                        617
+                    ],
+                    "playersB": [
+                        622,
+                        627
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        619
+                    ],
+                    "playersB": [
+                        624
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        618,
+                        620
+                    ],
+                    "playersB": [
+                        625,
+                        626
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 363,
+            "division": "2",
+            "block": "F",
+            "label": "予選 Fブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "shikoku-gas",
+            "teamB": "meidensha",
+            "winner": "meidensha",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        609,
+                        610
+                    ],
+                    "playersB": [
+                        622,
+                        623
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        614
+                    ],
+                    "playersB": [
+                        624
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        612,
+                        613
+                    ],
+                    "playersB": [
+                        625,
+                        626
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 364,
+            "division": "2",
+            "block": "F",
+            "label": "予選 Fブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "shikoku-gas",
+            "teamB": "hachioji-city",
+            "winner": "shikoku-gas",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        611
+                    ],
+                    "playersB": [
+                        618
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        615,
+                        613
+                    ],
+                    "playersB": [
+                        619,
+                        620
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 365,
+            "division": "2",
+            "block": "G",
+            "label": "予選 Gブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "crossty-holdings",
+            "teamB": "kyoto-daini-rc",
+            "winner": "kyoto-daini-rc",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        628,
+                        629
+                    ],
+                    "playersB": [
+                        516,
+                        517
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        630
+                    ],
+                    "playersB": [
+                        518
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [],
+                    "playersB": [
+                        519,
+                        520
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 366,
+            "division": "2",
+            "block": "G",
+            "label": "予選 Gブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "crossty-holdings",
+            "teamB": "jr-east-tokyo",
+            "winner": "crossty-holdings",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        628,
+                        629
+                    ],
+                    "playersB": [
+                        632,
+                        633
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        630
+                    ],
+                    "playersB": [
+                        634
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [],
+                    "playersB": [
+                        635,
+                        636
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 367,
+            "division": "2",
+            "block": "G",
+            "label": "予選 Gブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "crossty-holdings",
+            "teamB": "fukuoka-city",
+            "winner": "crossty-holdings",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        631,
+                        629
+                    ],
+                    "playersB": [
+                        637,
+                        638
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        628
+                    ],
+                    "playersB": [
+                        639
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [],
+                    "playersB": [
+                        640,
+                        641
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 368,
+            "division": "2",
+            "block": "G",
+            "label": "予選 Gブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "jr-east-tokyo",
+            "teamB": "fukuoka-city",
+            "winner": "fukuoka-city",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        632,
+                        633
+                    ],
+                    "playersB": [
+                        640,
+                        638
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        634
+                    ],
+                    "playersB": [
+                        639
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        635,
+                        636
+                    ],
+                    "playersB": [
+                        637,
+                        642
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 369,
+            "division": "2",
+            "block": "G",
+            "label": "予選 Gブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kyoto-daini-rc",
+            "teamB": "fukuoka-city",
+            "winner": "kyoto-daini-rc",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        516,
+                        517
+                    ],
+                    "playersB": [
+                        637,
+                        642
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        518
+                    ],
+                    "playersB": [
+                        639
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        519,
+                        520
+                    ],
+                    "playersB": [
+                        640,
+                        641
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 370,
+            "division": "2",
+            "block": "G",
+            "label": "予選 Gブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "kyoto-daini-rc",
+            "teamB": "jr-east-tokyo",
+            "winner": "kyoto-daini-rc",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        516,
+                        517
+                    ],
+                    "playersB": [
+                        632,
+                        633
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        518
+                    ],
+                    "playersB": [
+                        634
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        519,
+                        520
+                    ],
+                    "playersB": [
+                        635,
+                        636
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 371,
+            "division": "2",
+            "block": "H",
+            "label": "予選 Hブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "tosoh-nanyo",
+            "teamB": "matsumoto-city",
+            "winner": "tosoh-nanyo",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        456,
+                        461
+                    ],
+                    "playersB": [
+                        645,
+                        646
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        458
+                    ],
+                    "playersB": [
+                        647
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        459,
+                        460
+                    ],
+                    "playersB": [
+                        648,
+                        649
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 372,
+            "division": "2",
+            "block": "H",
+            "label": "予選 Hブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "tosoh-nanyo",
+            "teamB": "chubu-electric-aichi",
+            "winner": "tosoh-nanyo",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        459,
+                        457
+                    ],
+                    "playersB": [
+                        651,
+                        652
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        458
+                    ],
+                    "playersB": [
+                        653
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        456,
+                        461
+                    ],
+                    "playersB": [
+                        654,
+                        655
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 373,
+            "division": "2",
+            "block": "H",
+            "label": "予選 Hブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "tosoh-nanyo",
+            "teamB": "ichikawa-city",
+            "winner": "ichikawa-city",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        456,
+                        643
+                    ],
+                    "playersB": [
+                        658,
+                        659
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        644
+                    ],
+                    "playersB": [
+                        660
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        459,
+                        460
+                    ],
+                    "playersB": [
+                        661,
+                        662
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 374,
+            "division": "2",
+            "block": "H",
+            "label": "予選 Hブロック",
+            "date": "2025-12-11",
+            "status": "finished",
+            "teamA": "chubu-electric-aichi",
+            "teamB": "ichikawa-city",
+            "winner": "chubu-electric-aichi",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
@@ -1819,12 +5048,12 @@
                     "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        340,
-                        341
+                        654,
+                        655
                     ],
                     "playersB": [
-                        344,
-                        345
+                        658,
+                        659
                     ]
                 },
                 {
@@ -1833,89 +5062,38 @@
                     "scoreA": 3,
                     "scoreB": 4,
                     "playersA": [
-                        342
+                        653
                     ],
                     "playersB": [
-                        346
+                        660
                     ]
                 },
                 {
                     "type": "D2",
                     "winner": "A",
                     "scoreA": 4,
-                    "scoreB": 1,
+                    "scoreB": 2,
                     "playersA": [
-                        343,
-                        340
+                        651,
+                        652
                     ],
                     "playersB": [
-                        347,
-                        344
+                        661,
+                        662
                     ]
                 }
             ]
         },
         {
-            "id": 302,
-            "division": "3",
-            "date": "2025-12-12",
+            "id": 375,
+            "division": "2",
+            "block": "H",
+            "label": "予選 Hブロック",
+            "date": "2025-12-11",
             "status": "finished",
-            "teamA": "sample-m3-A",
-            "teamB": "sample-m3-C",
-            "winner": "sample-m3-C",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        340,
-                        341
-                    ],
-                    "playersB": [
-                        348,
-                        349
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        342
-                    ],
-                    "playersB": [
-                        350
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "B",
-                    "scoreA": 1,
-                    "scoreB": 4,
-                    "playersA": [
-                        343,
-                        340
-                    ],
-                    "playersB": [
-                        351,
-                        348
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 303,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-m3-A",
-            "teamB": "sample-m3-D",
-            "winner": "sample-m3-A",
+            "teamA": "matsumoto-city",
+            "teamB": "ichikawa-city",
+            "winner": "matsumoto-city",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
@@ -1923,199 +5101,95 @@
                     "type": "D1",
                     "winner": "A",
                     "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        645,
+                        646
+                    ],
+                    "playersB": [
+                        658,
+                        659
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        340,
-                        341
+                        647
                     ],
                     "playersB": [
-                        352,
-                        353
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        342
-                    ],
-                    "playersB": [
-                        354
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        343,
-                        340
-                    ],
-                    "playersB": [
-                        355,
-                        352
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 304,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-m3-B",
-            "teamB": "sample-m3-C",
-            "winner": "sample-m3-C",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        344,
-                        345
-                    ],
-                    "playersB": [
-                        348,
-                        349
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        346
-                    ],
-                    "playersB": [
-                        350
+                        660
                     ]
                 },
                 {
                     "type": "D2",
                     "winner": "B",
-                    "scoreA": 1,
+                    "scoreA": 0,
                     "scoreB": 4,
                     "playersA": [
-                        347,
-                        344
+                        650,
+                        649
                     ],
                     "playersB": [
-                        351,
-                        348
+                        661,
+                        662
                     ]
                 }
             ]
         },
         {
-            "id": 305,
-            "division": "3",
-            "date": "2025-12-12",
+            "id": 376,
+            "division": "2",
+            "block": "H",
+            "label": "予選 Hブロック",
+            "date": "2025-12-11",
             "status": "finished",
-            "teamA": "sample-m3-B",
-            "teamB": "sample-m3-D",
-            "winner": "sample-m3-B",
+            "teamA": "matsumoto-city",
+            "teamB": "chubu-electric-aichi",
+            "winner": "matsumoto-city",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
                 {
                     "type": "D1",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 2,
-                    "playersA": [
-                        344,
-                        345
-                    ],
-                    "playersB": [
-                        352,
-                        353
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        346
-                    ],
-                    "playersB": [
-                        354
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        347,
-                        344
-                    ],
-                    "playersB": [
-                        355,
-                        352
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 306,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-m3-C",
-            "teamB": "sample-m3-D",
-            "winner": "sample-m3-D",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        348,
-                        349
-                    ],
-                    "playersB": [
-                        352,
-                        353
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        350
-                    ],
-                    "playersB": [
-                        354
-                    ]
-                },
-                {
-                    "type": "D2",
                     "winner": "B",
                     "scoreA": 1,
                     "scoreB": 4,
                     "playersA": [
-                        351,
-                        348
+                        645,
+                        646
                     ],
                     "playersB": [
-                        355,
-                        352
+                        656,
+                        657
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        647
+                    ],
+                    "playersB": [
+                        653
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        648,
+                        649
+                    ],
+                    "playersB": [
+                        654,
+                        655
                     ]
                 }
             ]
@@ -3236,13 +6310,119 @@
             ]
         },
         {
-            "id": 401,
-            "division": "2",
-            "date": "2025-12-12",
+            "id": 507,
+            "division": "playoff",
+            "date": "2025-12-20",
             "status": "finished",
-            "teamA": "sample-w2-A",
-            "teamB": "sample-w2-B",
-            "winner": "sample-w2-A",
+            "teamA": "toshiba",
+            "teamB": "kawaguchi-city",
+            "winner": "toshiba",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        62,
+                        63
+                    ],
+                    "playersB": [
+                        477,
+                        478
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        64
+                    ],
+                    "playersB": [
+                        479
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        65,
+                        66
+                    ],
+                    "playersB": [
+                        480,
+                        481
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 508,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "toyota",
+            "teamB": "pacific-ind",
+            "winner": "pacific-ind",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        482,
+                        483
+                    ],
+                    "playersB": [
+                        487,
+                        488
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        484
+                    ],
+                    "playersB": [
+                        489
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        485,
+                        486
+                    ],
+                    "playersB": [
+                        490,
+                        491
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 509,
+            "division": "playoff",
+            "date": "2025-12-20",
+            "status": "finished",
+            "teamA": "toshiba",
+            "teamB": "toyota",
+            "winner": "toshiba",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
@@ -3252,103 +6432,103 @@
                     "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        400,
-                        401
+                        62,
+                        63
                     ],
                     "playersB": [
-                        404,
-                        405
+                        482,
+                        483
                     ]
                 },
                 {
                     "type": "S",
                     "winner": "B",
-                    "scoreA": 3,
+                    "scoreA": 2,
                     "scoreB": 4,
                     "playersA": [
-                        402
+                        64
                     ],
                     "playersB": [
-                        406
+                        484
                     ]
                 },
                 {
                     "type": "D2",
                     "winner": "A",
                     "scoreA": 4,
-                    "scoreB": 1,
+                    "scoreB": 2,
                     "playersA": [
-                        403,
-                        400
+                        65,
+                        66
                     ],
                     "playersB": [
-                        407,
-                        404
+                        485,
+                        486
                     ]
                 }
             ]
         },
         {
-            "id": 402,
-            "division": "2",
-            "date": "2025-12-12",
+            "id": 510,
+            "division": "playoff",
+            "date": "2025-12-20",
             "status": "finished",
-            "teamA": "sample-w2-A",
-            "teamB": "sample-w2-C",
-            "winner": "sample-w2-C",
+            "teamA": "kawaguchi-city",
+            "teamB": "pacific-ind",
+            "winner": "pacific-ind",
             "scoreA": 1,
             "scoreB": 2,
             "matches": [
                 {
                     "type": "D1",
                     "winner": "B",
-                    "scoreA": 2,
+                    "scoreA": 0,
                     "scoreB": 4,
                     "playersA": [
-                        400,
-                        401
+                        477,
+                        478
                     ],
                     "playersB": [
-                        408,
-                        409
+                        487,
+                        488
                     ]
                 },
                 {
                     "type": "S",
                     "winner": "A",
                     "scoreA": 4,
-                    "scoreB": 3,
+                    "scoreB": 2,
                     "playersA": [
-                        402
+                        479
                     ],
                     "playersB": [
-                        410
+                        489
                     ]
                 },
                 {
                     "type": "D2",
                     "winner": "B",
-                    "scoreA": 1,
+                    "scoreA": 0,
                     "scoreB": 4,
                     "playersA": [
-                        403,
-                        400
+                        480,
+                        481
                     ],
                     "playersB": [
-                        411,
-                        408
+                        490,
+                        491
                     ]
                 }
             ]
         },
         {
-            "id": 403,
-            "division": "2",
-            "date": "2025-12-12",
+            "id": 511,
+            "division": "playoff",
+            "date": "2025-12-20",
             "status": "finished",
-            "teamA": "sample-w2-A",
-            "teamB": "sample-w2-D",
-            "winner": "sample-w2-A",
+            "teamA": "kawaguchi-city",
+            "teamB": "toyota",
+            "winner": "kawaguchi-city",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
@@ -3356,517 +6536,93 @@
                     "type": "D1",
                     "winner": "A",
                     "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        480,
+                        481
+                    ],
+                    "playersB": [
+                        482,
+                        483
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        400,
-                        401
+                        479
                     ],
                     "playersB": [
-                        412,
-                        413
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        402
-                    ],
-                    "playersB": [
-                        414
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        403,
-                        400
-                    ],
-                    "playersB": [
-                        415,
-                        412
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 404,
-            "division": "2",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w2-B",
-            "teamB": "sample-w2-C",
-            "winner": "sample-w2-C",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        404,
-                        405
-                    ],
-                    "playersB": [
-                        408,
-                        409
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        406
-                    ],
-                    "playersB": [
-                        410
+                        484
                     ]
                 },
                 {
                     "type": "D2",
                     "winner": "B",
-                    "scoreA": 1,
+                    "scoreA": 0,
                     "scoreB": 4,
                     "playersA": [
-                        407,
-                        404
+                        477,
+                        478
                     ],
                     "playersB": [
-                        411,
-                        408
+                        485,
+                        486
                     ]
                 }
             ]
         },
         {
-            "id": 405,
-            "division": "2",
-            "date": "2025-12-12",
+            "id": 512,
+            "division": "playoff",
+            "date": "2025-12-20",
             "status": "finished",
-            "teamA": "sample-w2-B",
-            "teamB": "sample-w2-D",
-            "winner": "sample-w2-B",
+            "teamA": "toshiba",
+            "teamB": "pacific-ind",
+            "winner": "toshiba",
             "scoreA": 2,
             "scoreB": 1,
             "matches": [
                 {
                     "type": "D1",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 2,
-                    "playersA": [
-                        404,
-                        405
-                    ],
-                    "playersB": [
-                        412,
-                        413
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        406
-                    ],
-                    "playersB": [
-                        414
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        407,
-                        404
-                    ],
-                    "playersB": [
-                        415,
-                        412
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 406,
-            "division": "2",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w2-C",
-            "teamB": "sample-w2-D",
-            "winner": "sample-w2-D",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
                     "winner": "B",
                     "scoreA": 2,
                     "scoreB": 4,
                     "playersA": [
-                        408,
-                        409
+                        62,
+                        63
                     ],
                     "playersB": [
-                        412,
-                        413
+                        487,
+                        488
                     ]
                 },
                 {
                     "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        410
-                    ],
-                    "playersB": [
-                        414
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "B",
-                    "scoreA": 1,
-                    "scoreB": 4,
-                    "playersA": [
-                        411,
-                        408
-                    ],
-                    "playersB": [
-                        415,
-                        412
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 501,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w3-A",
-            "teamB": "sample-w3-B",
-            "winner": "sample-w3-A",
-            "scoreA": 2,
-            "scoreB": 1,
-            "matches": [
-                {
-                    "type": "D1",
                     "winner": "A",
                     "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        440,
-                        441
+                        64
                     ],
                     "playersB": [
-                        444,
-                        445
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        442
-                    ],
-                    "playersB": [
-                        446
+                        491
                     ]
                 },
                 {
                     "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        443,
-                        440
-                    ],
-                    "playersB": [
-                        447,
-                        444
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 502,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w3-A",
-            "teamB": "sample-w3-C",
-            "winner": "sample-w3-C",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        440,
-                        441
-                    ],
-                    "playersB": [
-                        448,
-                        449
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        442
-                    ],
-                    "playersB": [
-                        450
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "B",
-                    "scoreA": 1,
-                    "scoreB": 4,
-                    "playersA": [
-                        443,
-                        440
-                    ],
-                    "playersB": [
-                        451,
-                        448
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 503,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w3-A",
-            "teamB": "sample-w3-D",
-            "winner": "sample-w3-A",
-            "scoreA": 2,
-            "scoreB": 1,
-            "matches": [
-                {
-                    "type": "D1",
                     "winner": "A",
                     "scoreA": 4,
                     "scoreB": 2,
                     "playersA": [
-                        440,
-                        441
+                        65,
+                        476
                     ],
                     "playersB": [
-                        452,
-                        453
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        442
-                    ],
-                    "playersB": [
-                        454
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        443,
-                        440
-                    ],
-                    "playersB": [
-                        455,
-                        452
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 504,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w3-B",
-            "teamB": "sample-w3-C",
-            "winner": "sample-w3-C",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        444,
-                        445
-                    ],
-                    "playersB": [
-                        448,
-                        449
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        446
-                    ],
-                    "playersB": [
-                        450
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "B",
-                    "scoreA": 1,
-                    "scoreB": 4,
-                    "playersA": [
-                        447,
-                        444
-                    ],
-                    "playersB": [
-                        451,
-                        448
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 505,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w3-B",
-            "teamB": "sample-w3-D",
-            "winner": "sample-w3-B",
-            "scoreA": 2,
-            "scoreB": 1,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 2,
-                    "playersA": [
-                        444,
-                        445
-                    ],
-                    "playersB": [
-                        452,
-                        453
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "B",
-                    "scoreA": 3,
-                    "scoreB": 4,
-                    "playersA": [
-                        446
-                    ],
-                    "playersB": [
-                        454
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 1,
-                    "playersA": [
-                        447,
-                        444
-                    ],
-                    "playersB": [
-                        455,
-                        452
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 506,
-            "division": "3",
-            "date": "2025-12-12",
-            "status": "finished",
-            "teamA": "sample-w3-C",
-            "teamB": "sample-w3-D",
-            "winner": "sample-w3-D",
-            "scoreA": 1,
-            "scoreB": 2,
-            "matches": [
-                {
-                    "type": "D1",
-                    "winner": "B",
-                    "scoreA": 2,
-                    "scoreB": 4,
-                    "playersA": [
-                        448,
-                        449
-                    ],
-                    "playersB": [
-                        452,
-                        453
-                    ]
-                },
-                {
-                    "type": "S",
-                    "winner": "A",
-                    "scoreA": 4,
-                    "scoreB": 3,
-                    "playersA": [
-                        450
-                    ],
-                    "playersB": [
-                        454
-                    ]
-                },
-                {
-                    "type": "D2",
-                    "winner": "B",
-                    "scoreA": 1,
-                    "scoreB": 4,
-                    "playersA": [
-                        451,
-                        448
-                    ],
-                    "playersB": [
-                        455,
-                        452
+                        490,
+                        489
                     ]
                 }
             ]

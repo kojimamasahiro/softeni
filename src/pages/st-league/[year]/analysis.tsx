@@ -278,7 +278,7 @@ export default function AnalysisPage({
 
         <h1 className="text-2xl font-bold">{editionLabel} データ・分析</h1>
         <p>
-          STリーグⅠ・Ⅱ・Ⅲ、男女別に選手ごとの勝敗数・勝率・ゲーム得失を集計しています。
+          STリーグⅠ・Ⅱ、男女別に選手ごとの勝敗数・勝率・ゲーム得失を集計しています。
         </p>
 
         {/* Gender Tabs */}

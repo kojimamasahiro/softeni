@@ -2,24 +2,25 @@
 """
 STリーグ/プレーオフ（団体戦・総当たり）PDF 解析スクリプト
 
-対象PDF: 「ＳＴリーグ/プレーオフ 対戦成績」のような団体戦リーグ表。
-上部に順位表（5チームの総当たり結果）、下部に各対戦カードの
-ダブルス3番手の選手名・スコアが2カード並びで掲載されている形式。
+対象: 「ＳＴリーグ/プレーオフ 対戦成績」のような団体戦リーグ表PDF。
+  上部に順位表（5チームの総当たり）、下部に各対戦カードの
+  D1(ダブルス①)→S(シングルス)→D2(ダブルス②) の選手名・スコアが
+  2カード並びで掲載されている形式。
 
-既存の round_robin.py / secondary.py などはトーナメント/個人戦向けで
-レイアウトが異なるため、本スクリプトを新設する。
+出力（アプリの data/st-league 実データと同じ形式 / output 配下）:
+  1) st_league_participants.json … 登録用「参照元」。data/st-league/<year>/participants.json と同形式
+                                    （teamId/division/name/players[lastName,firstName,id]）
+  2) st_league_matches.json       … 試合結果。data/st-league/<year>/matches.json と同形式
+                                    （id/division/date/status/teamA/teamB/winner/scoreA/scoreB/matches[D1,S,D2]）
+  参考用CSVも併せて出力（teams / players / matches）。
 
-出力 (output/ 配下):
-  - st_league_teams.csv     : チーム番号・チーム名・最終順位・備考(STリーグ順位)
-  - st_league_players.csv   : チーム別の出場選手（姓/名/フルネーム）
-  - st_league_players.json  : 選手オブジェクト配列（既存players.jsonに寄せた形）
-  - st_league_matches.csv   : 対戦カードごとの番手・スコア（ベストエフォート）
-  - debug_st_league_pX.png  : 列範囲を可視化したデバッグ画像
+ワークフロー（推奨）:
+  STEP1: 本スクリプトを実行 → st_league_participants.json（登録ドラフト）が出る
+  STEP2: teamId・選手ID・異体字などを手入力で補正し、PARTICIPANTS_REF に指定
+  STEP3: 再実行 → 補正後IDで st_league_matches.json が生成される
+         （PARTICIPANTS_REF 未指定時はドラフトの連番IDで暫定生成）
 
-使い方:
-  1) PDF_PATH を対象ファイルに合わせる
-  2) BLOCKS / TEAMS が異なるレイアウトの場合は座標を調整
-  3) python3 st_league.py
+別大会で使う場合は ===設定=== の TEAMS / BLOCKS / 各種定数を調整する。
 """
 
 import os
@@ -31,12 +32,23 @@ from collections import defaultdict
 import pdfplumber
 
 # ====================== 設定 ======================
-PDF_PATH = "st_league.pdf"  # 入力PDF（このファイル名に固定。対象PDFをこの名前で置く）
+PDF_PATH = "st_league.pdf"            # 入力PDF（このファイル名に固定）
 OUTPUT_DIR = "output"
-GENDER = "男子"  # ラベル用
+GENDER_KEY = "boys"                   # 男子=boys / 女子=girls
+ID_BASE = 1                           # 選手IDの開始番号（大会ごとに独立した連番）
+TIE_ID_BASE = 1                       # 試合(タイ)IDの開始番号
+MATCH_DATE = "2025-12-20"             # 試合日（要確認・補正）
+MATCH_DIVISION = "playoff"            # 試合のdivision値（入替戦。要確認）
+STATUS = "finished"
+
+# 補正済み参照元（任意）。存在すればここからID/teamIdを解決する。
+# 例: "output/st_league_participants.fixed.json"
+PARTICIPANTS_REF = ""
+
+# 新規ID採番時に避ける予約ID（性別をまたいだ衝突回避用にmerge側が設定）
+EXTRA_RESERVED_IDS = set()
 
 # チーム番号 -> チーム名（順位表の縦並び順 = 行番号）
-# ※別大会で使う場合はここを書き換える
 TEAMS = {
     1: "太平洋工業",
     2: "東ソー南陽",
@@ -45,22 +57,22 @@ TEAMS = {
     5: "東京ガス",
 }
 
-# 名前列のX座標バンド（左カード左/右、右カード左/右）
-COL_BANDS = {
-    "L1": (55, 150),    # 左カード・左チーム
-    "R1": (200, 300),   # 左カード・右チーム
-    "L2": (305, 410),   # 右カード・左チーム
-    "R2": (470, 535),   # 右カード・右チーム
-}
-# スコア列のX座標バンド
-SCORE_BANDS = {
-    "M1": (135, 205),   # 左カードのスコア
-    "M2": (398, 465),   # 右カードのスコア
+# チーム名 -> teamId（既存は実値、未登録は推測スラッグ。要補正）
+TEAM_ID_MAP = {
+    "太平洋工業": "pacific-ind",
+    "東京ガス": "tokyo-gas",
+    "東ソー南陽": "tosoh-nanyo",     # 未登録（推測）
+    "日本信号": "nippon-signal",     # 未登録（推測）
+    "ベスト": "best",                # 未登録（推測）
 }
 
-# 対戦ブロック定義:
-#   (ページidx0始まり, y_top, y_bottom, (左カード左T, 左カード右T, 右カード左T, 右カード右T))
-# 男子NN ラベルは teamN 対 teamM を表す。
+# 名前列のX座標バンド（左カード左/右、右カード左/右）。男女両テンプレ対応の汎用値。
+COL_BANDS = {
+    "L1": (55, 150), "R1": (200, 300), "L2": (305, 390), "R2": (455, 540),
+}
+SCORE_BANDS = {"M1": (135, 205), "M2": (388, 460)}
+
+# 対戦ブロック: (page0始, y_top, y_bottom, (左カード左T,左カード右T,右カード左T,右カード右T))
 BLOCKS = [
     (0, 260, 395, (1, 2, 3, 4)),  # 男子12 / 男子34
     (0, 430, 560, (1, 3, 2, 5)),  # 男子13 / 男子25
@@ -69,232 +81,286 @@ BLOCKS = [
     (1, 218, 350, (1, 5, 2, 4)),  # 男子15 / 男子24
 ]
 
-NAME_GAP = 14          # 姓名を分割するX座標のしきい値
-ROW_TOL = 3            # 同一行とみなすY許容
+NAME_GAP = 14
+ROW_TOL = 3
 SCORE_CHARS = set("④③②①⓪0123456789-－/対=＝±＋")
+SCORE_NUM = {"④": 4, "③": 3, "②": 2, "①": 1, "⓪": 0}
 
-# 順位表の領域（page1上部）
 STANDINGS_PAGE = 0
 STANDINGS_Y = (55, 235)
 
+# 異体字の正規化（参照元との突合用）
+KANJI_NORMAL = str.maketrans({
+    "濵": "濱", "髙": "高", "﨑": "崎", "邊": "辺", "邉": "辺",
+    "齋": "斎", "齊": "斎", "槗": "橋",
+})
 
-# ====================== 共通処理 ======================
+
+# ====================== 抽出共通 ======================
 def load_chars(page, y0, y1):
     return [c for c in page.chars if c["text"].strip() and y0 < c["top"] < y1]
 
 
 def group_rows(chars):
-    """Y座標で行ごとにまとめる -> {row_top: [chars...]}"""
     rows = {}
     for c in sorted(chars, key=lambda c: c["top"]):
-        key = None
-        for k in rows:
-            if abs(k - c["top"]) <= ROW_TOL:
-                key = k
-                break
+        key = next((k for k in rows if abs(k - c["top"]) <= ROW_TOL), None)
         rows.setdefault(c["top"] if key is None else key, []).append(c)
     return rows
 
 
-def split_name(chars_in_cell):
-    """セル内の文字（x0昇順）を姓と名に分割する。最大のX間隔で区切る。"""
-    cs = sorted(chars_in_cell, key=lambda c: c["x0"])
-    cs = [c for c in cs if c["text"] not in SCORE_CHARS]
+def split_name(cell):
+    cs = sorted([c for c in cell if c["text"] not in SCORE_CHARS], key=lambda c: c["x0"])
     if not cs:
         return None
     if len(cs) == 1:
         return ("", cs[0]["text"])
-    # 最大ギャップを探す
     best_i, best_gap = 1, -1
     for i in range(1, len(cs)):
         gap = cs[i]["x0"] - cs[i - 1]["x1"]
         if gap > best_gap:
             best_gap, best_i = gap, i
     if best_gap < NAME_GAP:
-        # 区切りが弱い -> 2文字姓を既定
         best_i = min(2, len(cs) - 1)
-    surname = "".join(c["text"] for c in cs[:best_i])
-    given = "".join(c["text"] for c in cs[best_i:])
-    return (surname, given)
+    return ("".join(c["text"] for c in cs[:best_i]),
+            "".join(c["text"] for c in cs[best_i:]))
+
+
+def parse_score(text):
+    """'④-0' / '0-④' / '④-3' -> (a, b)。取れなければ (None, None)"""
+    t = text.replace("－", "-")
+    parts = t.split("-")
+    if len(parts) != 2:
+        return None, None
+
+    def val(s):
+        s = s.strip()
+        for k, v in SCORE_NUM.items():
+            if k in s:
+                return v
+        m = re.search(r"\d", s)
+        return int(m.group()) if m else None
+
+    return val(parts[0]), val(parts[1])
 
 
 # ====================== 順位表 ======================
 def parse_standings(page):
-    """チーム番号・名称・最終順位・STリーグ順位（備考）を抽出"""
     chars = load_chars(page, *STANDINGS_Y)
     rows = group_rows(chars)
-    ordered = sorted(rows.items())  # (top, chars)
-
     results = []
-    # 各チームのチーム名行 → 続く行に 勝率/得失差/順位、さらに（STリーグ順位）
-    team_no = 0
-    for top, cs in ordered:
+    for top, cs in sorted(rows.items()):
         line = "".join(c["text"] for c in sorted(cs, key=lambda c: c["x0"]))
-        # チーム名行（左端 x<200 に2文字以上、数字を含まない）
-        name_chars = [c for c in cs if c["x0"] < 205 and not c["text"].isdigit()]
+        name_chars = [c for c in cs if c["x0"] < 240 and not c["text"].isdigit()]
         name = "".join(c["text"] for c in sorted(name_chars, key=lambda c: c["x0"]))
         if name in TEAMS.values():
-            team_no = [k for k, v in TEAMS.items() if v == name][0]
-            results.append({"team_no": team_no, "team": name, "rank": None, "note": ""})
+            no = [k for k, v in TEAMS.items() if v == name][0]
+            results.append({"team_no": no, "team": name, "rank": None, "note": ""})
         elif "（" in line and "リーグ" in line and results:
             results[-1]["note"] = line.strip("（）()")
         else:
-            # 順位（最右端の数字）を拾う: 行右側 x>520 の数字
-            digits = [c for c in cs if c["x0"] > 520 and c["text"].isdigit()]
+            # 順位列はその行で最も右にあるASCII数字（得失差の数字より右）
+            digits = [c for c in cs if c["text"].isdigit() and c["x0"] > 480]
             if digits and results and results[-1]["rank"] is None:
-                results[-1]["rank"] = int(digits[-1]["text"])
-            # 太平洋工業のみ順位が '±03' のように末尾に付くケースを補助
-            if results and results[-1]["rank"] is None:
-                m = re.search(r"(?:±|＋|－|\+|-)\d+(\d)$", line)
-                if m:
-                    results[-1]["rank"] = int(m.group(1))
+                results[-1]["rank"] = int(max(digits, key=lambda c: c["x0"])["text"])
+    # division を note から推定（Ⅱを含めば2部、それ以外1部）
+    for r in results:
+        r["division"] = "2" if "Ⅱ" in r["note"] else "1"
     return results
 
 
 # ====================== 選手・試合 ======================
 def parse_blocks(pdf):
-    roster = defaultdict(dict)   # team_no -> {fullname: (surname, given)}
-    matches = []                 # 試合（ベストエフォート）
+    roster = defaultdict(dict)   # team_no -> {(surname,given): order}
+    order_seq = defaultdict(int)
+    ties = []                    # 各対戦カード
 
     for pi, y0, y1, (ta, tb, tc, td) in BLOCKS:
         page = pdf.pages[pi]
-        chars = load_chars(page, y0, y1)
-        rows = group_rows(chars)
-
-        cards = [
+        rows = group_rows(load_chars(page, y0, y1))
+        for lcol, rcol, mcol, t_left, t_right in (
             ("L1", "R1", "M1", ta, tb),
             ("L2", "R2", "M2", tc, td),
-        ]
-        for lcol, rcol, mcol, t_left, t_right in cards:
+        ):
             lb, rb, mb = COL_BANDS[lcol], COL_BANDS[rcol], SCORE_BANDS[mcol]
-            name_rows = []   # (top, side, (surname,given))
-            score_rows = []  # (top, text)
+            name_rows, score_rows = [], []
             for top in sorted(rows):
                 cs = rows[top]
                 for side, band, tno in (("L", lb, t_left), ("R", rb, t_right)):
-                    cell = [c for c in cs if band[0] <= c["x0"] < band[1]]
-                    nm = split_name(cell)
-                    if nm and (nm[0] or nm[1]) and not all(
-                        ch in SCORE_CHARS for ch in (nm[0] + nm[1])
-                    ):
-                        full = nm[0] + nm[1]
-                        roster[tno][full] = nm
-                        name_rows.append((top, side, nm, tno))
-                # スコア
-                sc = [c for c in cs if mb[0] <= c["x0"] < mb[1]]
-                sc.sort(key=lambda c: c["x0"])
+                    nm = split_name([c for c in cs if band[0] <= c["x0"] < band[1]])
+                    if nm and (nm[0] or nm[1]) and not all(ch in SCORE_CHARS for ch in nm[0] + nm[1]):
+                        if nm not in roster[tno]:
+                            order_seq[tno] += 1
+                            roster[tno][nm] = order_seq[tno]
+                        name_rows.append((top, side, nm))
+                sc = sorted([c for c in cs if mb[0] <= c["x0"] < mb[1]], key=lambda c: c["x0"])
                 txt = "".join(c["text"] for c in sc)
                 if txt and re.search(r"[④③②①0-9]", txt):
                     score_rows.append((top, txt))
-
-            matches.append(
-                build_match(t_left, t_right, name_rows, score_rows)
-            )
-    return roster, matches
+            ties.append(build_tie(t_left, t_right, name_rows, score_rows))
+    return roster, ties
 
 
-def build_match(t_left, t_right, name_rows, score_rows):
-    """名前行とスコア行から番手ごとのペア/スコアをベストエフォートで構成。"""
-    # チーム結果（〇対〇）を分離
-    team_result = ""
-    games = []
+def build_tie(t_left, t_right, name_rows, score_rows):
+    team_result, games = "", []
     for top, txt in score_rows:
-        if "対" in txt:
-            team_result = txt
-        else:
-            games.append((top, txt))
+        (team_result := txt) if "対" in txt else games.append((top, txt))
     games.sort()
 
-    left_names = [(t, nm) for (t, s, nm, tno) in name_rows if s == "L"]
-    right_names = [(t, nm) for (t, s, nm, tno) in name_rows if s == "R"]
-    left_names.sort()
-    right_names.sort()
-
-    def cluster(names):
-        """近接する名前行をペア(番手)単位にまとめる"""
-        clusters = []
-        for t, nm in names:
-            if clusters and t - clusters[-1][-1][0] <= 22:
-                clusters[-1].append((t, nm))
+    def cluster(side):
+        items = sorted([(t, nm) for (t, s, nm) in name_rows if s == side])
+        out = []
+        for t, nm in items:
+            if out and t - out[-1][-1][0] <= 22:
+                out[-1].append((t, nm))
             else:
-                clusters.append([(t, nm)])
-        return clusters
+                out.append([(t, nm)])
+        return out
 
-    lc, rc = cluster(left_names), cluster(right_names)
-
-    rows_out = []
-    n = max(len(lc), len(rc), len(games))
-    for i in range(n):
-        lpair = ["".join(nm) for _, nm in lc[i]] if i < len(lc) else []
-        rpair = ["".join(nm) for _, nm in rc[i]] if i < len(rc) else []
-        score = games[i][1] if i < len(games) else ""
-        rows_out.append(
-            {
-                "ban": i + 1,
-                "left_pair": "・".join(lpair),
-                "right_pair": "・".join(rpair),
-                "score": score,
-            }
-        )
-    return {
-        "left_team": TEAMS[t_left],
-        "right_team": TEAMS[t_right],
-        "team_result": team_result,
-        "games": rows_out,
-    }
+    lc, rc = cluster("L"), cluster("R")
+    types = ["D1", "S", "D2"]
+    sub = []
+    for i in range(max(len(lc), len(rc), len(games))):
+        lpair = [nm for _, nm in lc[i]] if i < len(lc) else []
+        rpair = [nm for _, nm in rc[i]] if i < len(rc) else []
+        a, b = parse_score(games[i][1]) if i < len(games) else (None, None)
+        sub.append({
+            "type": types[i] if i < len(types) else f"G{i+1}",
+            "scoreA": a, "scoreB": b,
+            "winner": "A" if (a or 0) > (b or 0) else ("B" if (b or 0) > (a or 0) else ""),
+            "playersA": lpair, "playersB": rpair,
+        })
+    return {"team_left": t_left, "team_right": t_right, "team_result": team_result, "sub": sub}
 
 
-# ====================== 出力 ======================
-def write_outputs(standings, roster, matches):
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    rank_by_team = {s["team"]: s["rank"] for s in standings}
+# ====================== ID解決 ======================
+def norm(s):
+    return s.translate(KANJI_NORMAL)
 
-    # teams.csv
+
+def build_id_resolver(roster, standings):
+    """選手(team_no,(sur,given))->id、team_no->teamId を決定。
+    PARTICIPANTS_REF があれば名前一致で既存IDを優先採用、無ければ連番付与。"""
+    rank_div = {s["team_no"]: s["division"] for s in standings}
+    ref_players = {}   # norm(team)+norm(name) -> id  /  norm(name)->id
+    ref_team = {}      # norm(team名) -> teamId
+    if PARTICIPANTS_REF and os.path.exists(PARTICIPANTS_REF):
+        ref = json.load(open(PARTICIPANTS_REF, encoding="utf-8"))
+        for t in ref.get(GENDER_KEY, []):
+            for nm in t.get("name", []):
+                ref_team[norm(nm)] = t["teamId"]
+            for p in t.get("players", []):
+                key = norm(p["lastName"] + p["firstName"])
+                ref_players[(t["teamId"], key)] = p["id"]
+                ref_players[(None, key)] = p["id"]
+
+    player_id = {}     # (team_no,(sur,given)) -> id
+    team_id = {}       # team_no -> teamId
+    used = set(ref_players.values()) | set(EXTRA_RESERVED_IDS)
+    # 新規IDは既存最大の続きから（衝突回避）。参照元が無ければ ID_BASE から。
+    next_id = (max(used) + 1) if used else ID_BASE
+
+    for no in sorted(roster):
+        tname = TEAMS[no]
+        tid = ref_team.get(norm(tname)) or TEAM_ID_MAP.get(tname, tname)
+        team_id[no] = tid
+        for (sur, given), _ in sorted(roster[no].items(), key=lambda kv: kv[1]):
+            key = norm(sur + given)
+            # 誤マッピング防止のため「同一teamId内の氏名一致」のみ既存IDを採用
+            rid = ref_players.get((tid, key))
+            if rid is None:
+                rid = next_id
+                next_id += 1
+                while next_id in used:
+                    next_id += 1
+            player_id[(no, (sur, given))] = rid
+    return player_id, team_id, rank_div
+
+
+# ====================== 出力組み立て ======================
+def build_participants(roster, standings, player_id, team_id):
+    teams = []
+    div_by_no = {s["team_no"]: s["division"] for s in standings}
+    for no in sorted(roster):
+        teams.append({
+            "teamId": team_id[no],
+            "division": div_by_no.get(no, "1"),
+            "name": [TEAMS[no]],
+            "players": [
+                {"lastName": sur, "firstName": given, "id": player_id[(no, (sur, given))]}
+                for (sur, given), _ in sorted(roster[no].items(), key=lambda kv: kv[1])
+            ],
+        })
+    return {GENDER_KEY: teams}
+
+
+def build_matches(ties, player_id, team_id):
+    out = []
+    for i, tie in enumerate(ties):
+        nl, nr = tie["team_left"], tie["team_right"]
+        details, a_wins, b_wins = [], 0, 0
+        for s in tie["sub"]:
+            pa = [player_id[(nl, nm)] for nm in s["playersA"]]
+            pb = [player_id[(nr, nm)] for nm in s["playersB"]]
+            if s["winner"] == "A":
+                a_wins += 1
+            elif s["winner"] == "B":
+                b_wins += 1
+            details.append({
+                "type": s["type"], "winner": s["winner"],
+                "scoreA": s["scoreA"], "scoreB": s["scoreB"],
+                "playersA": pa, "playersB": pb,
+            })
+        winner = team_id[nl] if a_wins > b_wins else (team_id[nr] if b_wins > a_wins else "")
+        out.append({
+            "id": TIE_ID_BASE + i,
+            "division": MATCH_DIVISION,
+            "date": MATCH_DATE,
+            "status": STATUS,
+            "teamA": team_id[nl],
+            "teamB": team_id[nr],
+            "winner": winner,
+            "scoreA": a_wins,
+            "scoreB": b_wins,
+            "matches": details,
+        })
+    return {GENDER_KEY: out}
+
+
+# ====================== 書き出し ======================
+def dump_json(obj, path):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=4)
+        f.write("\n")
+
+
+def write_csv_refs(standings, roster, ties, player_id, team_id):
+    rank_by = {s["team_no"]: s["rank"] for s in standings}
     with open(f"{OUTPUT_DIR}/st_league_teams.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
-        w.writerow(["Team_No", "Team_Name", "Final_Rank", "Note"])
+        w.writerow(["Team_No", "Team_Name", "Team_Id", "Division", "Final_Rank", "Note"])
         for s in sorted(standings, key=lambda s: (s["rank"] or 99)):
-            w.writerow([s["team_no"], s["team"], s["rank"], s["note"]])
-
-    # players.csv
+            w.writerow([s["team_no"], s["team"], team_id[s["team_no"]],
+                        s["division"], s["rank"], s["note"]])
     with open(f"{OUTPUT_DIR}/st_league_players.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
-        w.writerow(["Team_No", "Team_Name", "Final_Rank", "Surname", "First_Name", "Full_Name"])
-        for tno in sorted(roster):
-            tname = TEAMS[tno]
-            for full, (sur, given) in sorted(roster[tno].items()):
-                w.writerow([tno, tname, rank_by_team.get(tname), sur, given, full])
-
-    # players.json（既存players.jsonに寄せた個人選手オブジェクト）
-    players = []
-    for tno in sorted(roster):
-        tname = TEAMS[tno]
-        for full, (sur, given) in sorted(roster[tno].items()):
-            players.append({
-                "lastName": sur,
-                "firstName": given,
-                "team": tname,
-                "prefecture": "",
-                "playerId": None,
-                "tempId": f"{sur}_{given}_{tname}",
-            })
-    with open(f"{OUTPUT_DIR}/st_league_players.json", "w", encoding="utf-8") as f:
-        f.write("[\n")
-        for i, o in enumerate(players):
-            line = json.dumps(o, ensure_ascii=False, separators=(",", ":"))
-            f.write(line + (",\n" if i < len(players) - 1 else "\n"))
-        f.write("]")
-
-    # matches.csv（ベストエフォート）
+        w.writerow(["Player_Id", "Team_Id", "Team_Name", "Surname", "First_Name", "Full_Name"])
+        for no in sorted(roster):
+            for (sur, given), _ in sorted(roster[no].items(), key=lambda kv: kv[1]):
+                w.writerow([player_id[(no, (sur, given))], team_id[no], TEAMS[no],
+                            sur, given, sur + given])
     with open(f"{OUTPUT_DIR}/st_league_matches.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
-        w.writerow(["Left_Team", "Right_Team", "Team_Result", "Ban", "Left_Pair", "Right_Pair", "Score"])
-        for m in matches:
-            for g in m["games"]:
-                w.writerow([m["left_team"], m["right_team"], m["team_result"],
-                            g["ban"], g["left_pair"], g["right_pair"], g["score"]])
-
-    return players
+        w.writerow(["Tie_Id", "Team_A", "Team_B", "Type", "ScoreA", "ScoreB",
+                    "Winner", "PlayersA", "PlayersB"])
+        for i, tie in enumerate(ties):
+            for s in tie["sub"]:
+                w.writerow([
+                    TIE_ID_BASE + i, TEAMS[tie["team_left"]], TEAMS[tie["team_right"]],
+                    s["type"], s["scoreA"], s["scoreB"], s["winner"],
+                    "・".join("".join(nm) for nm in s["playersA"]),
+                    "・".join("".join(nm) for nm in s["playersB"]),
+                ])
 
 
 def draw_debug(pdf):
@@ -317,21 +383,31 @@ def main():
     if not os.path.exists(PDF_PATH):
         print(f"File not found: {PDF_PATH}")
         return
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
     with pdfplumber.open(PDF_PATH) as pdf:
         standings = parse_standings(pdf.pages[STANDINGS_PAGE])
-        roster, matches = parse_blocks(pdf)
-        players = write_outputs(standings, roster, matches)
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
+        roster, ties = parse_blocks(pdf)
+        player_id, team_id, _ = build_id_resolver(roster, standings)
+
+        participants = build_participants(roster, standings, player_id, team_id)
+        matches = build_matches(ties, player_id, team_id)
+
+        dump_json(participants, f"{OUTPUT_DIR}/st_league_participants.json")
+        dump_json(matches, f"{OUTPUT_DIR}/st_league_matches.json")
+        write_csv_refs(standings, roster, ties, player_id, team_id)
         draw_debug(pdf)
 
+    ref_note = f"参照元: {PARTICIPANTS_REF}" if PARTICIPANTS_REF and os.path.exists(PARTICIPANTS_REF) else "参照元なし（連番ID自動付与）"
     print("=== 順位表 ===")
     for s in sorted(standings, key=lambda s: (s["rank"] or 99)):
-        print(f"  {s['rank']}位 {s['team']} (No.{s['team_no']}) {s['note']}")
-    print("=== チーム別選手 ===")
-    for tno in sorted(roster):
-        print(f"  {TEAMS[tno]}: {len(roster[tno])}名 ", "／".join(roster[tno].keys()))
-    print(f"=== 合計選手数: {len(players)} / 対戦カード: {len(matches)} ===")
-    print(f"出力先: {OUTPUT_DIR}/ (teams.csv, players.csv, players.json, matches.csv)")
+        print(f"  {s['rank']}位 {s['team']} (No.{s['team_no']} / div{s['division']} / {team_id[s['team_no']]}) {s['note']}")
+    print("=== チーム別選手（ID） ===")
+    for no in sorted(roster):
+        names = "／".join(f"{sur}{given}#{player_id[(no,(sur,given))]}"
+                          for (sur, given), _ in sorted(roster[no].items(), key=lambda kv: kv[1]))
+        print(f"  {team_id[no]}({TEAMS[no]}): {len(roster[no])}名  {names}")
+    print(f"=== 対戦カード: {len(ties)} / {ref_note} ===")
+    print(f"出力: {OUTPUT_DIR}/ st_league_participants.json, st_league_matches.json, *.csv")
 
 
 if __name__ == "__main__":

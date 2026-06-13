@@ -112,7 +112,7 @@ export default function STLeagueTeamsPage({
         />
         <h1 className="text-2xl font-bold">{pageTitle}</h1>
         <p>
-          STリーグⅠ・Ⅱ・Ⅲ、男女別の出場チームと選手個人の成績を掲載しています。
+          STリーグⅠ・Ⅱ、男女別の出場チームと選手個人の成績を掲載しています。
         </p>
         {/* Tabs */}
         <div className="flex border-b border-gray-200 dark:border-gray-700">
