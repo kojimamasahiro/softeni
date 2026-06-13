@@ -127,3 +127,53 @@ export const getBetaMatchById = async (matchId: string) => {
   const data = await readJson<BetaMatchDetail>(detailPath);
   return data?.match ?? null;
 };
+
+export interface SiteLinkedMatchPath {
+  generation: string;
+  tournamentId: string;
+  year: string;
+  gameCategory: string;
+  ageCategory: string;
+  gender: string;
+  matchId: string;
+}
+
+// 掲載大会に紐づく試合（siteLink あり）の、ネスト URL 用パスセグメント一覧。
+// tournamentPath は `/tournaments/{generation}/{tournamentId}/{year}/{gameCategory}/{ageCategory}/{gender}`。
+export const getSiteLinkedMatchPaths = async (): Promise<
+  SiteLinkedMatchPath[]
+> => {
+  const matches = await getLatestBetaMatches();
+  const paths: SiteLinkedMatchPath[] = [];
+
+  for (const match of matches) {
+    const tournamentPath = match.siteLink?.tournamentPath;
+    if (!tournamentPath) continue;
+
+    const segments = tournamentPath.split('/').filter(Boolean);
+    // ['tournaments', generation, tournamentId, year, gameCategory, ageCategory, gender]
+    if (segments.length !== 7 || segments[0] !== 'tournaments') continue;
+
+    const [
+      ,
+      generation,
+      tournamentId,
+      year,
+      gameCategory,
+      ageCategory,
+      gender,
+    ] = segments;
+
+    paths.push({
+      generation,
+      tournamentId,
+      year,
+      gameCategory,
+      ageCategory,
+      gender,
+      matchId: match.id,
+    });
+  }
+
+  return paths;
+};

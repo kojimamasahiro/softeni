@@ -146,4 +146,42 @@ module.exports = {
       priority: config.priority, // 優先度
     };
   },
+  // 掲載大会に紐づく試合詳細（ネスト URL）を sitemap に追加する。
+  // 深いネストの動的 SSG ルートは next-sitemap が自動列挙しないため、
+  // 公開 JSON（siteLink 付き）から直接補う。
+  // 仕様: docs/wiki/score-site-link.md
+  additionalPaths: async (config) => {
+    const result = [];
+    try {
+      const indexPath = path.join(
+        process.cwd(),
+        'public',
+        'data',
+        'beta-matches',
+        'index.json',
+      );
+      if (!fs.existsSync(indexPath)) return result;
+
+      const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+      const matches = Array.isArray(index?.matches) ? index.matches : [];
+
+      for (const match of matches) {
+        const tournamentPath = match?.siteLink?.tournamentPath;
+        if (!tournamentPath) continue;
+
+        const loc = `${tournamentPath}/matches/${match.id}`;
+        const lastmod = match.completed_at || match.match_date || undefined;
+
+        result.push({
+          loc,
+          ...(lastmod ? { lastmod } : {}),
+          changefreq: config.changefreq,
+          priority: config.priority,
+        });
+      }
+    } catch (err) {
+      console.error('next-sitemap: failed to add score match paths', err);
+    }
+    return result;
+  },
 };

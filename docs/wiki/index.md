@@ -7,7 +7,7 @@
 - [Project Overview](./project-overview.md)
 - [Architecture](./architecture.md)
 - [Score Feature](./score-feature.md)
-- [Score Site Link (Draft)](./score-site-link.md)
+- [Score Site Link](./score-site-link.md)
 - [Score Analysis](./score-analysis.md)
 - [Public Pages](./public-pages.md)
 - [Tournaments Local](./tournaments-local.md)

@@ -1470,7 +1470,7 @@ export const PublicMatchDetailPage = ({
       <MetaHead
         title={`${getShortTeamName('A')} vs ${getShortTeamName('B')} 試合詳細`}
         description="ポイント詳細記録から、試合の流れと分析結果を確認できます。"
-        url={buildSiteUrl(getPublicMatchDetailPath(match.id))}
+        url={buildSiteUrl(getPublicMatchDetailPath(match))}
         type="article"
       />
       <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
