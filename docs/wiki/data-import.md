@@ -69,6 +69,20 @@ Deprecated:
 - `scripts/matches/input.json`
 - `scripts/matches/roundrobin/input.json`
 
+### PDFトーナメント表からの選手抽出
+
+- `scripts/pdf/master.py`
+  大会結果のトーナメント表PDFから、文字の座標(X/Y)を指定して選手・チーム情報を抽出する。
+  レイアウト種別(団体/シングルス/ダブルス/全中 等)ごとに抽出戦略と多数のX座標定数を手動調整する運用。
+- `scripts/pdf/calibrate.py`
+  master.py のX座標調整を補助する非破壊のキャリブレーションツール。
+  PDFを解析して左右分割・Y_CROP・列境界・`( )`区切りを自動検出し、
+  X軸ルーラー付きの注釈デバッグ画像(`output/calibrate_pageN.png`)と
+  master.py へ貼り付け可能な定数候補を出力する。
+  `python3 scripts/pdf/calibrate.py <pdf> [--page N] [--gap 6]`
+  ※ 各列が姓/名/チーム/エリアのどれに当たるか(意味づけ)と抽出戦略の選択は
+    レイアウト依存のため、出力値は確認のうえ手動で転記する。
+
 ## 高校カテゴリ系の生成
 
 確認できた主要スクリプト:
