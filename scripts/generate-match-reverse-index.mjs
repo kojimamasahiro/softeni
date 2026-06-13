@@ -61,6 +61,24 @@ const buildPlayerIndexMap = () => {
   return map;
 };
 
+// ラウンドの表示順位（小さいほど決勝に近く、リスト先頭に来る）。
+// 決勝 → 準決勝 → 準々決勝 → 6回戦 → 5回戦 → … → 1回戦 → その他
+const roundRank = (roundName) => {
+  if (!roundName) return 1000;
+  if (roundName === '決勝') return 0;
+  if (roundName === '準決勝') return 1;
+  if (roundName === '準々決勝') return 2;
+  const roundMatch = roundName.match(/^(\d+)回戦$/);
+  if (roundMatch) {
+    // 回戦数が大きいほど決勝に近い（6回戦を5回戦より前に）
+    return 100 - Number(roundMatch[1]);
+  }
+  return 1000;
+};
+
+const sortLinksByRound = (links) =>
+  links.sort((a, b) => roundRank(a.round) - roundRank(b.round));
+
 const buildTeamDisplayName = (match, side) => {
   const p1Last = match[`team_${side}_player1_last_name`];
   const p2Last = match[`team_${side}_player2_last_name`];
@@ -121,6 +139,10 @@ const buildReverseIndex = () => {
       (byPlayer[String(playerId)] ??= []).push(link);
     }
   }
+
+  // ラウンド順（決勝→準決勝→準々決勝→…）に並べ替える
+  Object.values(byTournament).forEach(sortLinksByRound);
+  Object.values(byPlayer).forEach(sortLinksByRound);
 
   return { byTournament, byPlayer };
 };
