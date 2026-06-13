@@ -9,8 +9,8 @@
 ## 試合詳細の beta 昇格（検討中 2026-06）
 
 - 試合詳細の公開面を `/beta/matches-results/*` から本体ドメインの indexable な URL（候補: `/matches/*`）へ移設するか
-- 移設する場合、`generate-beta-matches-json.mjs` の最新 50 件上限を撤廃するか、アーカイブ方式にするか（上限から漏れた試合の公開 URL が 404 になるため、インデックス開始前に決める必要がある。docs/wiki/data-import.md 参照）
-- `source_site_tournament_id` を大会ページへのリンク用に安全な形で公開 JSON に出すか（内部項目除外ルールとの整合）
+- 移設する場合の 50 件上限の扱いと、`source_site_tournament_id` を公開 JSON に出す案は、相互リンク設計ドラフト（docs/wiki/score-site-link.md）に統合した（上限撤廃・`siteLink` フィールド方式）
+- 試合詳細 URL の ID を UUID のまま使うか slug 化するか（インデックス開始前が最後の変え時。score-site-link.md 参照）
 
 ## score データモデル
 

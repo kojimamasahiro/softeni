@@ -113,6 +113,7 @@ Draft / Open Question:
 
 - `score.softeni-pick.com` を本体とどこまで分けるかの正式運用
 - 共有 URL と編集可能 URL を別権限で扱う正式設計
+- 本体サイト（大会・選手ページ）との相互リンク設計: [score-site-link.md](./score-site-link.md)（2026-06 Draft）
 
 ## Assumption
 

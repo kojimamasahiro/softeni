@@ -38,6 +38,7 @@
 - 51 件目以降、作成日時が古い試合は `meta.json` と `matches/*.json` から完全に落ちる
 - `meta.json` の `matchIds` が静的パス生成の第一候補なので、落ちた試合の詳細ページは次回ビルドから 404 になる
 - 現状は `/beta/*` が robots.txt で disallow かつ sitemap 除外のため実害はないが、試合詳細ページを公開 URL としてインデックスさせる場合は、事前に上限撤廃（全件出力）またはアーカイブ方式への変更が必要
+- 解消方針は docs/wiki/score-site-link.md（Draft）の「公開 JSON 生成（追記型へ変更）」に統合済み
 
 ## 大会・選手データ生成
 
