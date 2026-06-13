@@ -2,6 +2,7 @@
     "boys": [
         {
             "id": 1,
+            "division": "1",
             "date": "2025-12-12",
             "status": "finished",
             "teamA": "tokyo-gas",
@@ -54,6 +55,7 @@
         },
         {
             "id": 2,
+            "division": "1",
             "date": "2025-12-12",
             "status": "finished",
             "teamA": "ntt-west",
@@ -63,2492 +65,3811 @@
             "scoreB": 0,
             "matches": [
                 {
-                "type": "D1",
-                "winner": "A",
-                "scoreA": 4,
-                "scoreB": 0,
-                "playersA": [
-                    3,
-                    2
-                ],
-                "playersB": [
-                    44,
-                    45
-                ]
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        3,
+                        2
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
                 },
                 {
-                "type": "S",
-                "winner": "A",
-                "scoreA": 4,
-                "scoreB": 3,
-                "playersA": [
-                    4
-                ],
-                "playersB": [
-                    89
-                ]
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        4
+                    ],
+                    "playersB": [
+                        89
+                    ]
                 },
                 {
-                "type": "D2",
-                "winner": "A",
-                "scoreA": 4,
-                "scoreB": 0,
-                "playersA": [
-                    5,
-                    6
-                ],
-                "playersB": [
-                    47,
-                    48
-                ]
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        5,
+                        6
+                    ],
+                    "playersB": [
+                        47,
+                        48
+                    ]
                 }
             ]
         },
-{
-  "id": 3,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "yonex",
-  "teamB": "fukui",
-  "winner": "yonex",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        9,
-        10
-      ],
-      "playersB": [
-        41,
-        42
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        11
-      ],
-      "playersB": [
-        40
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        12,
-        13
-      ],
-      "playersB": [
-        38,
-        39
-      ]
-    }
-  ]
-},
-{
-  "id": 4,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "pacific-ind",
-  "teamB": "watakyu",
-  "winner": "watakyu",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        26,
-        22
-      ],
-      "playersB": [
-        30,
-        31
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        23
-      ],
-      "playersB": [
-        29
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        24,
-        25
-      ],
-      "playersB": [
-        27,
-        28
-      ]
-    }
-  ]
-},
-{
-  "id": 5,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "tokyo-gas",
-  "teamB": "watakyu",
-  "winner": "watakyu",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        15,
-        16
-      ],
-      "playersB": [
-        30,
-        90
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        17
-      ],
-      "playersB": [
-        28
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        18,
-        19
-      ],
-      "playersB": [
-        27,
-        31
-      ]
-    }
-  ]
-},
-{
-  "id": 6,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "ntt-west",
-  "teamB": "fukui",
-  "winner": "ntt-west",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        7,
-        4
-      ],
-      "playersB": [
-        41,
-        42
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        8
-      ],
-      "playersB": [
-        40
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        3,
-        1
-      ],
-      "playersB": [
-        38,
-        39
-      ]
-    }
-  ]
-},
-{
-  "id": 7,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "yonex",
-  "teamB": "akim",
-  "winner": "yonex",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        9,
-        13
-      ],
-      "playersB": [
-        44,
-        45
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        11
-      ],
-      "playersB": [
-        46
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        91,
-        14
-      ],
-      "playersB": [
-        49,
-        48
-      ]
-    }
-  ]
-},
-{
-  "id": 8,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "pacific-ind",
-  "teamB": "tohogas",
-  "winner": "tohogas",
-  "scoreA": 0,
-  "scoreB": 3,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        24,
-        26
-      ],
-      "playersB": [
-        35,
-        92
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        21
-      ],
-      "playersB": [
-        34
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        23,
-        25
-      ],
-      "playersB": [
-        36,
-        37
-      ]
-    }
-  ]
-},
-{
-  "id": 9,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "tokyo-gas",
-  "teamB": "akim",
-  "winner": "akim",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        18,
-        19
-      ],
-      "playersB": [
-        44,
-        45
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        17
-      ],
-      "playersB": [
-        89
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        20,
-        16
-      ],
-      "playersB": [
-        47,
-        48
-      ]
-    }
-  ]
-},
-{
-  "id": 10,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "ntt-west",
-  "teamB": "tohogas",
-  "winner": "ntt-west",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        5,
-        4
-      ],
-      "playersB": [
-        93,
-        33
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        1
-      ],
-      "playersB": [
-        34
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        7,
-        2
-      ],
-      "playersB": [
-        36,
-        37
-      ]
-    }
-  ]
-},
-{
-  "id": 11,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "yonex",
-  "teamB": "watakyu",
-  "winner": "yonex",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        91,
-        14
-      ],
-      "playersB": [
-        30,
-        31
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        11
-      ],
-      "playersB": [
-        29
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        9,
-        13
-      ],
-      "playersB": [
-        27,
-        28
-      ]
-    }
-  ]
-},
-{
-  "id": 12,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "pacific-ind",
-  "teamB": "fukui",
-  "winner": "fukui",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        21,
-        22
-      ],
-      "playersB": [
-        38,
-        39
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        25
-      ],
-      "playersB": [
-        40
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        23,
-        26
-      ],
-      "playersB": [
-        41,
-        42
-      ]
-    }
-  ]
-},
-{
-  "id": 13,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "tokyo-gas",
-  "teamB": "fukui",
-  "winner": "fukui",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        94,
-        95
-      ],
-      "playersB": [
-        38,
-        39
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        17
-      ],
-      "playersB": [
-        40
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        18,
-        19
-      ],
-      "playersB": [
-        41,
-        42
-      ]
-    }
-  ]
-},
-{
-  "id": 14,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "ntt-west",
-  "teamB": "watakyu",
-  "winner": "ntt-west",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        4,
-        1
-      ],
-      "playersB": [
-        27,
-        28
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        8
-      ],
-      "playersB": [
-        29
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        3,
-        2
-      ],
-      "playersB": [
-        30,
-        31
-      ]
-    }
-  ]
-},
-{
-  "id": 15,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "yonex",
-  "teamB": "tohogas",
-  "winner": "tohogas",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        9,
-        13
-      ],
-      "playersB": [
-        32,
-        33
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        11
-      ],
-      "playersB": [
-        34
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        12,
-        10
-      ],
-      "playersB": [
-        36,
-        37
-      ]
-    }
-  ]
-},
-{
-  "id": 16,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "pacific-ind",
-  "teamB": "akim",
-  "winner": "akim",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        21,
-        22
-      ],
-      "playersB": [
-        44,
-        45
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        23
-      ],
-      "playersB": [
-        46
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        24,
-        25
-      ],
-      "playersB": [
-        47,
-        48
-      ]
-    }
-  ]
-},
-{
-  "id": 17,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "akim",
-  "winner": "watakyu",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        27,
-        28
-      ],
-      "playersB": [
-        44,
-        45
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        29
-      ],
-      "playersB": [
-        96
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        30,
-        31
-      ],
-      "playersB": [
-        47,
-        48
-      ]
-    }
-  ]
-},
-{
-  "id": 18,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "ntt-west",
-  "teamB": "pacific-ind",
-  "winner": "ntt-west",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        4,
-        6
-      ],
-      "playersB": [
-        23,
-        26
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        8
-      ],
-      "playersB": [
-        21
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        5,
-        1
-      ],
-      "playersB": [
-        24,
-        22
-      ]
-    }
-  ]
-},
-{
-  "id": 19,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "yonex",
-  "teamB": "tokyo-gas",
-  "winner": "yonex",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        11,
-        14
-      ],
-      "playersB": [
-        20,
-        19
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        9
-      ],
-      "playersB": [
-        15
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        10,
-        13
-      ],
-      "playersB": [
-        17,
-        16
-      ]
-    }
-  ]
-},
-{
-  "id": 20,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "tohogas",
-  "teamB": "fukui",
-  "winner": "tohogas",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        35,
-        34
-      ],
-      "playersB": [
-        38,
-        39
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        32
-      ],
-      "playersB": [
-        43
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        36,
-        37
-      ],
-      "playersB": [
-        41,
-        42
-      ]
-    }
-  ]
-},
-{
-  "id": 21,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "fukui",
-  "winner": "watakyu",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        27,
-        28
-      ],
-      "playersB": [
-        38,
-        39
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        29
-      ],
-      "playersB": [
-        40
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        30,
-        31
-      ],
-      "playersB": [
-        41,
-        42
-      ]
-    }
-  ]
-},
-{
-  "id": 22,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "ntt-west",
-  "teamB": "tokyo-gas",
-  "winner": "ntt-west",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        3,
-        2
-      ],
-      "playersB": [
-        20,
-        16
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        4
-      ],
-      "playersB": [
-        17
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        5,
-        1
-      ],
-      "playersB": [
-        18,
-        19
-      ]
-    }
-  ]
-},
-{
-  "id": 23,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "yonex",
-  "teamB": "pacific-ind",
-  "winner": "yonex",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        9,
-        13
-      ],
-      "playersB": [
-        23,
-        26
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        11
-      ],
-      "playersB": [
-        21
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        14,
-        91
-      ],
-      "playersB": [
-        24,
-        25
-      ]
-    }
-  ]
-},
-{
-  "id": 24,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "tohogas",
-  "teamB": "akim",
-  "winner": "akim",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        32,
-        33
-      ],
-      "playersB": [
-        44,
-        45
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        34
-      ],
-      "playersB": [
-        96
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        36,
-        37
-      ],
-      "playersB": [
-        49,
-        48
-      ]
-    }
-  ]
-},
-{
-  "id": 25,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "tohogas",
-  "winner": "tohogas",
-  "scoreA": 0,
-  "scoreB": 3,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        27,
-        28
-      ],
-      "playersB": [
-        32,
-        33
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        29
-      ],
-      "playersB": [
-        34
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        30,
-        31
-      ],
-      "playersB": [
-        36,
-        37
-      ]
-    }
-  ]
-},
-{
-  "id": 26,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "ntt-west",
-  "teamB": "yonex",
-  "winner": "ntt-west",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        5,
-        1
-      ],
-      "playersB": [
-        9,
-        13
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        4
-      ],
-      "playersB": [
-        91
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        3,
-        2
-      ],
-      "playersB": [
-        12,
-        10
-      ]
-    }
-  ]
-},
-{
-  "id": 27,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "tokyo-gas",
-  "teamB": "pacific-ind",
-  "winner": "pacific-ind",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        20,
-        19
-      ],
-      "playersB": [
-        23,
-        26
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        17
-      ],
-      "playersB": [
-        21
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        18,
-        16
-      ],
-      "playersB": [
-        25,
-        22
-      ]
-    }
-  ]
-},
-{
-  "id": 28,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "fukui",
-  "teamB": "akim",
-  "winner": "fukui",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        41,
-        42
-      ],
-      "playersB": [
-        44,
-        45
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        38
-      ],
-      "playersB": [
-        96
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        39,
-        43
-      ],
-      "playersB": [
-        49,
-        48
-      ]
-    }
-  ]
-}
+        {
+            "id": 3,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "yonex",
+            "teamB": "fukui",
+            "winner": "yonex",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        9,
+                        10
+                    ],
+                    "playersB": [
+                        41,
+                        42
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        11
+                    ],
+                    "playersB": [
+                        40
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        12,
+                        13
+                    ],
+                    "playersB": [
+                        38,
+                        39
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "pacific-ind",
+            "teamB": "watakyu",
+            "winner": "watakyu",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        26,
+                        22
+                    ],
+                    "playersB": [
+                        30,
+                        31
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        23
+                    ],
+                    "playersB": [
+                        29
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        24,
+                        25
+                    ],
+                    "playersB": [
+                        27,
+                        28
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "tokyo-gas",
+            "teamB": "watakyu",
+            "winner": "watakyu",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        15,
+                        16
+                    ],
+                    "playersB": [
+                        30,
+                        90
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        17
+                    ],
+                    "playersB": [
+                        28
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        18,
+                        19
+                    ],
+                    "playersB": [
+                        27,
+                        31
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "ntt-west",
+            "teamB": "fukui",
+            "winner": "ntt-west",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        7,
+                        4
+                    ],
+                    "playersB": [
+                        41,
+                        42
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        8
+                    ],
+                    "playersB": [
+                        40
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        3,
+                        1
+                    ],
+                    "playersB": [
+                        38,
+                        39
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "yonex",
+            "teamB": "akim",
+            "winner": "yonex",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        9,
+                        13
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        11
+                    ],
+                    "playersB": [
+                        46
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        91,
+                        14
+                    ],
+                    "playersB": [
+                        49,
+                        48
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "pacific-ind",
+            "teamB": "tohogas",
+            "winner": "tohogas",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        24,
+                        26
+                    ],
+                    "playersB": [
+                        35,
+                        92
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        21
+                    ],
+                    "playersB": [
+                        34
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        23,
+                        25
+                    ],
+                    "playersB": [
+                        36,
+                        37
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "tokyo-gas",
+            "teamB": "akim",
+            "winner": "akim",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        18,
+                        19
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        17
+                    ],
+                    "playersB": [
+                        89
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        20,
+                        16
+                    ],
+                    "playersB": [
+                        47,
+                        48
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "ntt-west",
+            "teamB": "tohogas",
+            "winner": "ntt-west",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        5,
+                        4
+                    ],
+                    "playersB": [
+                        93,
+                        33
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        1
+                    ],
+                    "playersB": [
+                        34
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        7,
+                        2
+                    ],
+                    "playersB": [
+                        36,
+                        37
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "yonex",
+            "teamB": "watakyu",
+            "winner": "yonex",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        91,
+                        14
+                    ],
+                    "playersB": [
+                        30,
+                        31
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        11
+                    ],
+                    "playersB": [
+                        29
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        9,
+                        13
+                    ],
+                    "playersB": [
+                        27,
+                        28
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "pacific-ind",
+            "teamB": "fukui",
+            "winner": "fukui",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        21,
+                        22
+                    ],
+                    "playersB": [
+                        38,
+                        39
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        25
+                    ],
+                    "playersB": [
+                        40
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        23,
+                        26
+                    ],
+                    "playersB": [
+                        41,
+                        42
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "tokyo-gas",
+            "teamB": "fukui",
+            "winner": "fukui",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        94,
+                        95
+                    ],
+                    "playersB": [
+                        38,
+                        39
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        17
+                    ],
+                    "playersB": [
+                        40
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        18,
+                        19
+                    ],
+                    "playersB": [
+                        41,
+                        42
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "ntt-west",
+            "teamB": "watakyu",
+            "winner": "ntt-west",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        4,
+                        1
+                    ],
+                    "playersB": [
+                        27,
+                        28
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        8
+                    ],
+                    "playersB": [
+                        29
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        3,
+                        2
+                    ],
+                    "playersB": [
+                        30,
+                        31
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "yonex",
+            "teamB": "tohogas",
+            "winner": "tohogas",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        9,
+                        13
+                    ],
+                    "playersB": [
+                        32,
+                        33
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        11
+                    ],
+                    "playersB": [
+                        34
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        12,
+                        10
+                    ],
+                    "playersB": [
+                        36,
+                        37
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "pacific-ind",
+            "teamB": "akim",
+            "winner": "akim",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        21,
+                        22
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        23
+                    ],
+                    "playersB": [
+                        46
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        24,
+                        25
+                    ],
+                    "playersB": [
+                        47,
+                        48
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "akim",
+            "winner": "watakyu",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        27,
+                        28
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        29
+                    ],
+                    "playersB": [
+                        96
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        30,
+                        31
+                    ],
+                    "playersB": [
+                        47,
+                        48
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "ntt-west",
+            "teamB": "pacific-ind",
+            "winner": "ntt-west",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        4,
+                        6
+                    ],
+                    "playersB": [
+                        23,
+                        26
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        8
+                    ],
+                    "playersB": [
+                        21
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        5,
+                        1
+                    ],
+                    "playersB": [
+                        24,
+                        22
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "yonex",
+            "teamB": "tokyo-gas",
+            "winner": "yonex",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        11,
+                        14
+                    ],
+                    "playersB": [
+                        20,
+                        19
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        9
+                    ],
+                    "playersB": [
+                        15
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        10,
+                        13
+                    ],
+                    "playersB": [
+                        17,
+                        16
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "tohogas",
+            "teamB": "fukui",
+            "winner": "tohogas",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        35,
+                        34
+                    ],
+                    "playersB": [
+                        38,
+                        39
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        32
+                    ],
+                    "playersB": [
+                        43
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        36,
+                        37
+                    ],
+                    "playersB": [
+                        41,
+                        42
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "fukui",
+            "winner": "watakyu",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        27,
+                        28
+                    ],
+                    "playersB": [
+                        38,
+                        39
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        29
+                    ],
+                    "playersB": [
+                        40
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        30,
+                        31
+                    ],
+                    "playersB": [
+                        41,
+                        42
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "ntt-west",
+            "teamB": "tokyo-gas",
+            "winner": "ntt-west",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        3,
+                        2
+                    ],
+                    "playersB": [
+                        20,
+                        16
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        4
+                    ],
+                    "playersB": [
+                        17
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        5,
+                        1
+                    ],
+                    "playersB": [
+                        18,
+                        19
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "yonex",
+            "teamB": "pacific-ind",
+            "winner": "yonex",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        9,
+                        13
+                    ],
+                    "playersB": [
+                        23,
+                        26
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        11
+                    ],
+                    "playersB": [
+                        21
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        14,
+                        91
+                    ],
+                    "playersB": [
+                        24,
+                        25
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "tohogas",
+            "teamB": "akim",
+            "winner": "akim",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        32,
+                        33
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        34
+                    ],
+                    "playersB": [
+                        96
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        36,
+                        37
+                    ],
+                    "playersB": [
+                        49,
+                        48
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "tohogas",
+            "winner": "tohogas",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        27,
+                        28
+                    ],
+                    "playersB": [
+                        32,
+                        33
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        29
+                    ],
+                    "playersB": [
+                        34
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        30,
+                        31
+                    ],
+                    "playersB": [
+                        36,
+                        37
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "ntt-west",
+            "teamB": "yonex",
+            "winner": "ntt-west",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        5,
+                        1
+                    ],
+                    "playersB": [
+                        9,
+                        13
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        4
+                    ],
+                    "playersB": [
+                        91
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        3,
+                        2
+                    ],
+                    "playersB": [
+                        12,
+                        10
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "tokyo-gas",
+            "teamB": "pacific-ind",
+            "winner": "pacific-ind",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        20,
+                        19
+                    ],
+                    "playersB": [
+                        23,
+                        26
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        17
+                    ],
+                    "playersB": [
+                        21
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        18,
+                        16
+                    ],
+                    "playersB": [
+                        25,
+                        22
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "fukui",
+            "teamB": "akim",
+            "winner": "fukui",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        41,
+                        42
+                    ],
+                    "playersB": [
+                        44,
+                        45
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        38
+                    ],
+                    "playersB": [
+                        96
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        39,
+                        43
+                    ],
+                    "playersB": [
+                        49,
+                        48
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 201,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m2-A",
+            "teamB": "sample-m2-B",
+            "winner": "sample-m2-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        300,
+                        301
+                    ],
+                    "playersB": [
+                        304,
+                        305
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        302
+                    ],
+                    "playersB": [
+                        306
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        303,
+                        300
+                    ],
+                    "playersB": [
+                        307,
+                        304
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 202,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m2-A",
+            "teamB": "sample-m2-C",
+            "winner": "sample-m2-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        300,
+                        301
+                    ],
+                    "playersB": [
+                        308,
+                        309
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        302
+                    ],
+                    "playersB": [
+                        310
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        303,
+                        300
+                    ],
+                    "playersB": [
+                        311,
+                        308
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 203,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m2-A",
+            "teamB": "sample-m2-D",
+            "winner": "sample-m2-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        300,
+                        301
+                    ],
+                    "playersB": [
+                        312,
+                        313
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        302
+                    ],
+                    "playersB": [
+                        314
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        303,
+                        300
+                    ],
+                    "playersB": [
+                        315,
+                        312
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 204,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m2-B",
+            "teamB": "sample-m2-C",
+            "winner": "sample-m2-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        304,
+                        305
+                    ],
+                    "playersB": [
+                        308,
+                        309
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        306
+                    ],
+                    "playersB": [
+                        310
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        307,
+                        304
+                    ],
+                    "playersB": [
+                        311,
+                        308
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 205,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m2-B",
+            "teamB": "sample-m2-D",
+            "winner": "sample-m2-B",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        304,
+                        305
+                    ],
+                    "playersB": [
+                        312,
+                        313
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        306
+                    ],
+                    "playersB": [
+                        314
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        307,
+                        304
+                    ],
+                    "playersB": [
+                        315,
+                        312
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 206,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m2-C",
+            "teamB": "sample-m2-D",
+            "winner": "sample-m2-D",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        308,
+                        309
+                    ],
+                    "playersB": [
+                        312,
+                        313
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        310
+                    ],
+                    "playersB": [
+                        314
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        311,
+                        308
+                    ],
+                    "playersB": [
+                        315,
+                        312
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 301,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m3-A",
+            "teamB": "sample-m3-B",
+            "winner": "sample-m3-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        340,
+                        341
+                    ],
+                    "playersB": [
+                        344,
+                        345
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        342
+                    ],
+                    "playersB": [
+                        346
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        343,
+                        340
+                    ],
+                    "playersB": [
+                        347,
+                        344
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 302,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m3-A",
+            "teamB": "sample-m3-C",
+            "winner": "sample-m3-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        340,
+                        341
+                    ],
+                    "playersB": [
+                        348,
+                        349
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        342
+                    ],
+                    "playersB": [
+                        350
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        343,
+                        340
+                    ],
+                    "playersB": [
+                        351,
+                        348
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 303,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m3-A",
+            "teamB": "sample-m3-D",
+            "winner": "sample-m3-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        340,
+                        341
+                    ],
+                    "playersB": [
+                        352,
+                        353
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        342
+                    ],
+                    "playersB": [
+                        354
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        343,
+                        340
+                    ],
+                    "playersB": [
+                        355,
+                        352
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 304,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m3-B",
+            "teamB": "sample-m3-C",
+            "winner": "sample-m3-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        344,
+                        345
+                    ],
+                    "playersB": [
+                        348,
+                        349
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        346
+                    ],
+                    "playersB": [
+                        350
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        347,
+                        344
+                    ],
+                    "playersB": [
+                        351,
+                        348
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 305,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m3-B",
+            "teamB": "sample-m3-D",
+            "winner": "sample-m3-B",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        344,
+                        345
+                    ],
+                    "playersB": [
+                        352,
+                        353
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        346
+                    ],
+                    "playersB": [
+                        354
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        347,
+                        344
+                    ],
+                    "playersB": [
+                        355,
+                        352
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 306,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-m3-C",
+            "teamB": "sample-m3-D",
+            "winner": "sample-m3-D",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        348,
+                        349
+                    ],
+                    "playersB": [
+                        352,
+                        353
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        350
+                    ],
+                    "playersB": [
+                        354
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        351,
+                        348
+                    ],
+                    "playersB": [
+                        355,
+                        352
+                    ]
+                }
+            ]
+        }
     ],
     "girls": [
-{
-  "id": 1,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "toshiba",
-  "teamB": "dunlop",
-  "winner": "dunlop",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        62,
-        63
-      ],
-      "playersB": [
-        77,
-        78
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        64
-      ],
-      "playersB": [
-        79
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        65,
-        66
-      ],
-      "playersB": [
-        80,
-        81
-      ]
-    }
-  ]
-},
-{
-  "id": 2,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "yonex",
-  "winner": "watakyu",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        57,
-        58
-      ],
-      "playersB": [
-        82,
-        83
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        59
-      ],
-      "playersB": [
-        86
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        60,
-        61
-      ],
-      "playersB": [
-        87,
-        88
-      ]
-    }
-  ]
-},
-{
-  "id": 3,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "admatechs",
-  "teamB": "akim",
-  "winner": "admatechs",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        67,
-        68
-      ],
-      "playersB": [
-        72,
-        73
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        69
-      ],
-      "playersB": [
-        74
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        70,
-        71
-      ],
-      "playersB": [
-        75,
-        76
-      ]
-    }
-  ]
-},
-{
-  "id": 4,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "toshiba",
-  "teamB": "akim",
-  "winner": "akim",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        64,
-        63
-      ],
-      "playersB": [
-        75,
-        76
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        65
-      ],
-      "playersB": [
-        72
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        62,
-        66
-      ],
-      "playersB": [
-        97,
-        73
-      ]
-    }
-  ]
-},
-{
-  "id": 5,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "nagase",
-  "teamB": "yonex",
-  "winner": "nagase",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        50,
-        51
-      ],
-      "playersB": [
-        85,
-        86
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        52
-      ],
-      "playersB": [
-        98
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        53,
-        54
-      ],
-      "playersB": [
-        82,
-        83
-      ]
-    }
-  ]
-},
-{
-  "id": 6,
-  "date": "2025-12-12",
-  "status": "finished",
-  "teamA": "admatechs",
-  "teamB": "dunlop",
-  "winner": "admatechs",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        67,
-        68
-      ],
-      "playersB": [
-        77,
-        78
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        69
-      ],
-      "playersB": [
-        79
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        70,
-        71
-      ],
-      "playersB": [
-        80,
-        81
-      ]
-    }
-  ]
-},
-{
-  "id": 7,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "nagase",
-  "teamB": "dunlop",
-  "winner": "nagase",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        50,
-        51
-      ],
-      "playersB": [
-        77,
-        78
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        52
-      ],
-      "playersB": [
-        79
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        53,
-        54
-      ],
-      "playersB": [
-        80,
-        81
-      ]
-    }
-  ]
-},
-{
-  "id": 8,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "akim",
-  "winner": "watakyu",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        57,
-        58
-      ],
-      "playersB": [
-        75,
-        76
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        59
-      ],
-      "playersB": [
-        74
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        60,
-        61
-      ],
-      "playersB": [
-        72,
-        73
-      ]
-    }
-  ]
-},
-{
-  "id": 9,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "admatechs",
-  "teamB": "yonex",
-  "winner": "yonex",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        67,
-        68
-      ],
-      "playersB": [
-        87,
-        83
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        69
-      ],
-      "playersB": [
-        84
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        70,
-        71
-      ],
-      "playersB": [
-        85,
-        86
-      ]
-    }
-  ]
-},
-{
-  "id": 10,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "toshiba",
-  "teamB": "yonex",
-  "winner": "yonex",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        62,
-        63
-      ],
-      "playersB": [
-        85,
-        86
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        64
-      ],
-      "playersB": [
-        83
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        65,
-        66
-      ],
-      "playersB": [
-        87,
-        88
-      ]
-    }
-  ]
-},
-{
-  "id": 11,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "nagase",
-  "teamB": "akim",
-  "winner": "nagase",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        53,
-        51
-      ],
-      "playersB": [
-        75,
-        76
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        52
-      ],
-      "playersB": [
-        72
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        55,
-        56
-      ],
-      "playersB": [
-        97,
-        73
-      ]
-    }
-  ]
-},
-{
-  "id": 12,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "dunlop",
-  "winner": "dunlop",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        57,
-        58
-      ],
-      "playersB": [
-        77,
-        78
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        59
-      ],
-      "playersB": [
-        79
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        60,
-        61
-      ],
-      "playersB": [
-        99,
-        100
-      ]
-    }
-  ]
-},
-{
-  "id": 13,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "nagase",
-  "teamB": "admatechs",
-  "winner": "nagase",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        53,
-        51
-      ],
-      "playersB": [
-        67,
-        68
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        52
-      ],
-      "playersB": [
-        69
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        50,
-        56
-      ],
-      "playersB": [
-        70,
-        71
-      ]
-    }
-  ]
-},
-{
-  "id": 14,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "toshiba",
-  "winner": "watakyu",
-  "scoreA": 3,
-  "scoreB": 0,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        57,
-        58
-      ],
-      "playersB": [
-        62,
-        63
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        59
-      ],
-      "playersB": [
-        64
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 0,
-      "playersA": [
-        60,
-        61
-      ],
-      "playersB": [
-        101,
-        66
-      ]
-    }
-  ]
-},
-{
-  "id": 15,
-  "date": "2025-12-13",
-  "status": "finished",
-  "teamA": "dunlop",
-  "teamB": "yonex",
-  "winner": "yonex",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        77,
-        78
-      ],
-      "playersB": [
-        85,
-        83
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        81
-      ],
-      "playersB": [
-        102
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        80,
-        79
-      ],
-      "playersB": [
-        87,
-        88
-      ]
-    }
-  ]
-},
-{
-  "id": 16,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "akim",
-  "teamB": "yonex",
-  "winner": "yonex",
-  "scoreA": 0,
-  "scoreB": 3,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        97,
-        73
-      ],
-      "playersB": [
-        87,
-        88
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        72
-      ],
-      "playersB": [
-        98
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        75,
-        76
-      ],
-      "playersB": [
-        85,
-        83
-      ]
-    }
-  ]
-},
-{
-  "id": 17,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "nagase",
-  "teamB": "toshiba",
-  "winner": "nagase",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        53,
-        51
-      ],
-      "playersB": [
-        62,
-        63
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        52
-      ],
-      "playersB": [
-        65
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 1,
-      "playersA": [
-        50,
-        56
-      ],
-      "playersB": [
-        64,
-        66
-      ]
-    }
-  ]
-},
-{
-  "id": 18,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "watakyu",
-  "teamB": "admatechs",
-  "winner": "admatechs",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 3,
-      "scoreB": 4,
-      "playersA": [
-        57,
-        58
-      ],
-      "playersB": [
-        67,
-        68
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        59
-      ],
-      "playersB": [
-        69
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        60,
-        61
-      ],
-      "playersB": [
-        70,
-        71
-      ]
-    }
-  ]
-},
-{
-  "id": 19,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "nagase",
-  "teamB": "watakyu",
-  "winner": "watakyu",
-  "scoreA": 1,
-  "scoreB": 2,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        53,
-        51
-      ],
-      "playersB": [
-        57,
-        58
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        52
-      ],
-      "playersB": [
-        59
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        50,
-        55
-      ],
-      "playersB": [
-        60,
-        61
-      ]
-    }
-  ]
-},
-{
-  "id": 20,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "toshiba",
-  "teamB": "admatechs",
-  "winner": "toshiba",
-  "scoreA": 2,
-  "scoreB": 1,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 3,
-      "playersA": [
-        62,
-        63
-      ],
-      "playersB": [
-        67,
-        68
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        64
-      ],
-      "playersB": [
-        69
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "A",
-      "scoreA": 4,
-      "scoreB": 2,
-      "playersA": [
-        65,
-        66
-      ],
-      "playersB": [
-        103,
-        104
-      ]
-    }
-  ]
-},
-{
-  "id": 21,
-  "date": "2025-12-14",
-  "status": "finished",
-  "teamA": "akim",
-  "teamB": "dunlop",
-  "winner": "dunlop",
-  "scoreA": 0,
-  "scoreB": 3,
-  "matches": [
-    {
-      "type": "D1",
-      "winner": "B",
-      "scoreA": 2,
-      "scoreB": 4,
-      "playersA": [
-        72,
-        73
-      ],
-      "playersB": [
-        77,
-        78
-      ]
-    },
-    {
-      "type": "S",
-      "winner": "B",
-      "scoreA": 0,
-      "scoreB": 4,
-      "playersA": [
-        74
-      ],
-      "playersB": [
-        102
-      ]
-    },
-    {
-      "type": "D2",
-      "winner": "B",
-      "scoreA": 1,
-      "scoreB": 4,
-      "playersA": [
-        75,
-        76
-      ],
-      "playersB": [
-        80,
-        79
-      ]
-    }
-  ]
-}
+        {
+            "id": 1,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "toshiba",
+            "teamB": "dunlop",
+            "winner": "dunlop",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        62,
+                        63
+                    ],
+                    "playersB": [
+                        77,
+                        78
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        64
+                    ],
+                    "playersB": [
+                        79
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        65,
+                        66
+                    ],
+                    "playersB": [
+                        80,
+                        81
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "yonex",
+            "winner": "watakyu",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        57,
+                        58
+                    ],
+                    "playersB": [
+                        82,
+                        83
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        59
+                    ],
+                    "playersB": [
+                        86
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        60,
+                        61
+                    ],
+                    "playersB": [
+                        87,
+                        88
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "admatechs",
+            "teamB": "akim",
+            "winner": "admatechs",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        67,
+                        68
+                    ],
+                    "playersB": [
+                        72,
+                        73
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        69
+                    ],
+                    "playersB": [
+                        74
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        70,
+                        71
+                    ],
+                    "playersB": [
+                        75,
+                        76
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "toshiba",
+            "teamB": "akim",
+            "winner": "akim",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        64,
+                        63
+                    ],
+                    "playersB": [
+                        75,
+                        76
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        65
+                    ],
+                    "playersB": [
+                        72
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        62,
+                        66
+                    ],
+                    "playersB": [
+                        97,
+                        73
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "nagase",
+            "teamB": "yonex",
+            "winner": "nagase",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        50,
+                        51
+                    ],
+                    "playersB": [
+                        85,
+                        86
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        52
+                    ],
+                    "playersB": [
+                        98
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        53,
+                        54
+                    ],
+                    "playersB": [
+                        82,
+                        83
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "division": "1",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "admatechs",
+            "teamB": "dunlop",
+            "winner": "admatechs",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        67,
+                        68
+                    ],
+                    "playersB": [
+                        77,
+                        78
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        69
+                    ],
+                    "playersB": [
+                        79
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        70,
+                        71
+                    ],
+                    "playersB": [
+                        80,
+                        81
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "nagase",
+            "teamB": "dunlop",
+            "winner": "nagase",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        50,
+                        51
+                    ],
+                    "playersB": [
+                        77,
+                        78
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        52
+                    ],
+                    "playersB": [
+                        79
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        53,
+                        54
+                    ],
+                    "playersB": [
+                        80,
+                        81
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "akim",
+            "winner": "watakyu",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        57,
+                        58
+                    ],
+                    "playersB": [
+                        75,
+                        76
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        59
+                    ],
+                    "playersB": [
+                        74
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        60,
+                        61
+                    ],
+                    "playersB": [
+                        72,
+                        73
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "admatechs",
+            "teamB": "yonex",
+            "winner": "yonex",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        67,
+                        68
+                    ],
+                    "playersB": [
+                        87,
+                        83
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        69
+                    ],
+                    "playersB": [
+                        84
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        70,
+                        71
+                    ],
+                    "playersB": [
+                        85,
+                        86
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "toshiba",
+            "teamB": "yonex",
+            "winner": "yonex",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        62,
+                        63
+                    ],
+                    "playersB": [
+                        85,
+                        86
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        64
+                    ],
+                    "playersB": [
+                        83
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        65,
+                        66
+                    ],
+                    "playersB": [
+                        87,
+                        88
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "nagase",
+            "teamB": "akim",
+            "winner": "nagase",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        53,
+                        51
+                    ],
+                    "playersB": [
+                        75,
+                        76
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        52
+                    ],
+                    "playersB": [
+                        72
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        55,
+                        56
+                    ],
+                    "playersB": [
+                        97,
+                        73
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "dunlop",
+            "winner": "dunlop",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        57,
+                        58
+                    ],
+                    "playersB": [
+                        77,
+                        78
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        59
+                    ],
+                    "playersB": [
+                        79
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        60,
+                        61
+                    ],
+                    "playersB": [
+                        99,
+                        100
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "nagase",
+            "teamB": "admatechs",
+            "winner": "nagase",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        53,
+                        51
+                    ],
+                    "playersB": [
+                        67,
+                        68
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        52
+                    ],
+                    "playersB": [
+                        69
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        50,
+                        56
+                    ],
+                    "playersB": [
+                        70,
+                        71
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "toshiba",
+            "winner": "watakyu",
+            "scoreA": 3,
+            "scoreB": 0,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        57,
+                        58
+                    ],
+                    "playersB": [
+                        62,
+                        63
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        59
+                    ],
+                    "playersB": [
+                        64
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 0,
+                    "playersA": [
+                        60,
+                        61
+                    ],
+                    "playersB": [
+                        101,
+                        66
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "division": "1",
+            "date": "2025-12-13",
+            "status": "finished",
+            "teamA": "dunlop",
+            "teamB": "yonex",
+            "winner": "yonex",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        77,
+                        78
+                    ],
+                    "playersB": [
+                        85,
+                        83
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        81
+                    ],
+                    "playersB": [
+                        102
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        80,
+                        79
+                    ],
+                    "playersB": [
+                        87,
+                        88
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "akim",
+            "teamB": "yonex",
+            "winner": "yonex",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        97,
+                        73
+                    ],
+                    "playersB": [
+                        87,
+                        88
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        72
+                    ],
+                    "playersB": [
+                        98
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        75,
+                        76
+                    ],
+                    "playersB": [
+                        85,
+                        83
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "nagase",
+            "teamB": "toshiba",
+            "winner": "nagase",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        53,
+                        51
+                    ],
+                    "playersB": [
+                        62,
+                        63
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        52
+                    ],
+                    "playersB": [
+                        65
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        50,
+                        56
+                    ],
+                    "playersB": [
+                        64,
+                        66
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "watakyu",
+            "teamB": "admatechs",
+            "winner": "admatechs",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        57,
+                        58
+                    ],
+                    "playersB": [
+                        67,
+                        68
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        59
+                    ],
+                    "playersB": [
+                        69
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        60,
+                        61
+                    ],
+                    "playersB": [
+                        70,
+                        71
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "nagase",
+            "teamB": "watakyu",
+            "winner": "watakyu",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        53,
+                        51
+                    ],
+                    "playersB": [
+                        57,
+                        58
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        52
+                    ],
+                    "playersB": [
+                        59
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        50,
+                        55
+                    ],
+                    "playersB": [
+                        60,
+                        61
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "toshiba",
+            "teamB": "admatechs",
+            "winner": "toshiba",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        62,
+                        63
+                    ],
+                    "playersB": [
+                        67,
+                        68
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        64
+                    ],
+                    "playersB": [
+                        69
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        65,
+                        66
+                    ],
+                    "playersB": [
+                        103,
+                        104
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "division": "1",
+            "date": "2025-12-14",
+            "status": "finished",
+            "teamA": "akim",
+            "teamB": "dunlop",
+            "winner": "dunlop",
+            "scoreA": 0,
+            "scoreB": 3,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        72,
+                        73
+                    ],
+                    "playersB": [
+                        77,
+                        78
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 0,
+                    "scoreB": 4,
+                    "playersA": [
+                        74
+                    ],
+                    "playersB": [
+                        102
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        75,
+                        76
+                    ],
+                    "playersB": [
+                        80,
+                        79
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 401,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w2-A",
+            "teamB": "sample-w2-B",
+            "winner": "sample-w2-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        400,
+                        401
+                    ],
+                    "playersB": [
+                        404,
+                        405
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        402
+                    ],
+                    "playersB": [
+                        406
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        403,
+                        400
+                    ],
+                    "playersB": [
+                        407,
+                        404
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 402,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w2-A",
+            "teamB": "sample-w2-C",
+            "winner": "sample-w2-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        400,
+                        401
+                    ],
+                    "playersB": [
+                        408,
+                        409
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        402
+                    ],
+                    "playersB": [
+                        410
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        403,
+                        400
+                    ],
+                    "playersB": [
+                        411,
+                        408
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 403,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w2-A",
+            "teamB": "sample-w2-D",
+            "winner": "sample-w2-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        400,
+                        401
+                    ],
+                    "playersB": [
+                        412,
+                        413
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        402
+                    ],
+                    "playersB": [
+                        414
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        403,
+                        400
+                    ],
+                    "playersB": [
+                        415,
+                        412
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 404,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w2-B",
+            "teamB": "sample-w2-C",
+            "winner": "sample-w2-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        404,
+                        405
+                    ],
+                    "playersB": [
+                        408,
+                        409
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        406
+                    ],
+                    "playersB": [
+                        410
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        407,
+                        404
+                    ],
+                    "playersB": [
+                        411,
+                        408
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 405,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w2-B",
+            "teamB": "sample-w2-D",
+            "winner": "sample-w2-B",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        404,
+                        405
+                    ],
+                    "playersB": [
+                        412,
+                        413
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        406
+                    ],
+                    "playersB": [
+                        414
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        407,
+                        404
+                    ],
+                    "playersB": [
+                        415,
+                        412
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 406,
+            "division": "2",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w2-C",
+            "teamB": "sample-w2-D",
+            "winner": "sample-w2-D",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        408,
+                        409
+                    ],
+                    "playersB": [
+                        412,
+                        413
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        410
+                    ],
+                    "playersB": [
+                        414
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        411,
+                        408
+                    ],
+                    "playersB": [
+                        415,
+                        412
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 501,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w3-A",
+            "teamB": "sample-w3-B",
+            "winner": "sample-w3-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        440,
+                        441
+                    ],
+                    "playersB": [
+                        444,
+                        445
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        442
+                    ],
+                    "playersB": [
+                        446
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        443,
+                        440
+                    ],
+                    "playersB": [
+                        447,
+                        444
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 502,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w3-A",
+            "teamB": "sample-w3-C",
+            "winner": "sample-w3-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        440,
+                        441
+                    ],
+                    "playersB": [
+                        448,
+                        449
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        442
+                    ],
+                    "playersB": [
+                        450
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        443,
+                        440
+                    ],
+                    "playersB": [
+                        451,
+                        448
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 503,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w3-A",
+            "teamB": "sample-w3-D",
+            "winner": "sample-w3-A",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        440,
+                        441
+                    ],
+                    "playersB": [
+                        452,
+                        453
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        442
+                    ],
+                    "playersB": [
+                        454
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        443,
+                        440
+                    ],
+                    "playersB": [
+                        455,
+                        452
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 504,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w3-B",
+            "teamB": "sample-w3-C",
+            "winner": "sample-w3-C",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        444,
+                        445
+                    ],
+                    "playersB": [
+                        448,
+                        449
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        446
+                    ],
+                    "playersB": [
+                        450
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        447,
+                        444
+                    ],
+                    "playersB": [
+                        451,
+                        448
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 505,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w3-B",
+            "teamB": "sample-w3-D",
+            "winner": "sample-w3-B",
+            "scoreA": 2,
+            "scoreB": 1,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 2,
+                    "playersA": [
+                        444,
+                        445
+                    ],
+                    "playersB": [
+                        452,
+                        453
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "B",
+                    "scoreA": 3,
+                    "scoreB": 4,
+                    "playersA": [
+                        446
+                    ],
+                    "playersB": [
+                        454
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 1,
+                    "playersA": [
+                        447,
+                        444
+                    ],
+                    "playersB": [
+                        455,
+                        452
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 506,
+            "division": "3",
+            "date": "2025-12-12",
+            "status": "finished",
+            "teamA": "sample-w3-C",
+            "teamB": "sample-w3-D",
+            "winner": "sample-w3-D",
+            "scoreA": 1,
+            "scoreB": 2,
+            "matches": [
+                {
+                    "type": "D1",
+                    "winner": "B",
+                    "scoreA": 2,
+                    "scoreB": 4,
+                    "playersA": [
+                        448,
+                        449
+                    ],
+                    "playersB": [
+                        452,
+                        453
+                    ]
+                },
+                {
+                    "type": "S",
+                    "winner": "A",
+                    "scoreA": 4,
+                    "scoreB": 3,
+                    "playersA": [
+                        450
+                    ],
+                    "playersB": [
+                        454
+                    ]
+                },
+                {
+                    "type": "D2",
+                    "winner": "B",
+                    "scoreA": 1,
+                    "scoreB": 4,
+                    "playersA": [
+                        451,
+                        448
+                    ],
+                    "playersB": [
+                        455,
+                        452
+                    ]
+                }
+            ]
+        }
     ]
 }

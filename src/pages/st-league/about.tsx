@@ -62,7 +62,8 @@ export default function STLeagueAbout() {
             <p>
               STリーグ（Soft Tennis League）は、男女とも実業団チームが参加する
               ソフトテニスのトップリーグ戦です。男女それぞれの実業団トップチームが集い、
-              複数の階層（STリーグⅠ・Ⅱ）によるリーグ構造のもと、昇格・降格をかけた戦いが行われます。
+              <strong>STリーグⅠ・Ⅱ・Ⅲ</strong>
+              の階層によるリーグ構造のもと、昇格・降格をかけた戦いが行われます。
             </p>
             <ul className="list-disc pl-5 mt-4 space-y-2 text-gray-600 dark:text-gray-300">
               <li>
@@ -75,7 +76,7 @@ export default function STLeagueAbout() {
                 <strong className="text-gray-800 dark:text-gray-100">
                   構成
                 </strong>
-                ： STリーグⅠ、Ⅱ などの階層構造（年度成績で昇降格あり）
+                ： STリーグⅠ・Ⅱ・Ⅲ の階層構造（年度成績で昇降格あり）
               </li>
               <li>
                 <strong className="text-gray-800 dark:text-gray-100">
@@ -136,6 +137,56 @@ export default function STLeagueAbout() {
                 ※ 大会規定により変更となる場合があります。
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Content Block 2.5: League structure & playoff */}
+        <section className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
+          <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-900 dark:text-white border-b pb-4 dark:border-gray-700">
+            リーグ構成と昇格・降格
+          </h2>
+          <div className="prose dark:prose-invert max-w-none">
+            <p>
+              STリーグは男女それぞれが
+              <strong>STリーグⅠ・Ⅱ・Ⅲ</strong>
+              の階層に分かれており、各リーグ内で総当たり戦を行います。最上位の
+              <strong>STリーグⅠ</strong>
+              には実業団のトップチームが集まり、その年の日本一を争います。
+            </p>
+            <div className="mt-6 space-y-3">
+              <div className="flex items-start gap-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold shrink-0">
+                  Ⅰ
+                </span>
+                <p className="text-sm text-gray-700 dark:text-gray-300 m-0">
+                  <strong>STリーグⅠ</strong>
+                  ：最上位リーグ。下位チームはプレーオフ（入替戦）で残留を懸けて戦う。
+                </p>
+              </div>
+              <div className="flex items-start gap-3 bg-gray-50 dark:bg-gray-700/40 rounded-lg p-4">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-500 text-white text-sm font-bold shrink-0">
+                  Ⅱ
+                </span>
+                <p className="text-sm text-gray-700 dark:text-gray-300 m-0">
+                  <strong>STリーグⅡ</strong>
+                  ：上位チームはプレーオフでⅠ部昇格を目指す。下位はⅢ部との入替対象。
+                </p>
+              </div>
+              <div className="flex items-start gap-3 bg-gray-50 dark:bg-gray-700/40 rounded-lg p-4">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-400 text-white text-sm font-bold shrink-0">
+                  Ⅲ
+                </span>
+                <p className="text-sm text-gray-700 dark:text-gray-300 m-0">
+                  <strong>STリーグⅢ</strong>
+                  ：上位チームはⅡ部昇格を目指す。
+                </p>
+              </div>
+            </div>
+            <p className="mt-6">
+              リーグ戦終了後には
+              <strong>STリーグプレーオフ（入替戦）</strong>
+              が行われ、上位リーグの下位チームと下位リーグの上位チームが翌年度の所属を懸けて対戦します。これにより毎年メンバーが入れ替わり、各リーグの競争が保たれます。
+            </p>
           </div>
         </section>
 

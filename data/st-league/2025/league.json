@@ -1,0 +1,93 @@
+{
+    "year": 2025,
+    "edition": 3,
+    "title": "第3回STリーグ",
+    "period": {
+        "start": "2025-12-11",
+        "end": "2025-12-14"
+    },
+    "venue": "日環アリーナ栃木",
+    "location": "栃木県宇都宮市",
+    "format": {
+        "tie": "3本勝負（ダブルス① → シングルス → ダブルス②、2本先取）",
+        "game": "7ゲームマッチ"
+    },
+    "playoff": {
+        "name": "STリーグプレーオフ（Ⅰ・Ⅱ部入替戦）",
+        "period": {
+            "start": "2025-12-19",
+            "end": "2025-12-21"
+        },
+        "venue": "広島県福山市",
+        "description": "STリーグⅠ下位とSTリーグⅡ上位が翌年度の所属を懸けて対戦する入替戦。"
+    },
+    "divisions": [
+        {
+            "id": "1",
+            "name": "STリーグⅠ",
+            "rank": 1,
+            "format": "総当たり戦",
+            "teamCount": {
+                "boys": 8,
+                "girls": 7
+            },
+            "note": "最上位カテゴリー。下位はプレーオフ（入替戦）対象。",
+            "hasMatchData": true
+        },
+        {
+            "id": "2",
+            "name": "STリーグⅡ",
+            "rank": 2,
+            "format": "総当たり戦",
+            "note": "上位はプレーオフ（入替戦）でⅠ部昇格を目指す。 ※現在はサンプルデータ",
+            "hasMatchData": true
+        },
+        {
+            "id": "3",
+            "name": "STリーグⅢ",
+            "rank": 3,
+            "format": "総当たり戦",
+            "note": "Ⅱ部との入替対象。 ※現在はサンプルデータ",
+            "hasMatchData": true
+        }
+    ],
+    "results": {
+        "1": {
+            "boys": {
+                "champion": "ntt-west",
+                "runnerUp": null,
+                "third": [
+                    "tohogas",
+                    "yonex"
+                ]
+            },
+            "girls": {
+                "champion": "nagase",
+                "runnerUp": null,
+                "third": [
+                    "yonex"
+                ]
+            }
+        },
+        "2": {
+            "boys": {
+                "champion": "sample-m2-A"
+            },
+            "girls": {
+                "champion": "sample-w2-A"
+            }
+        },
+        "3": {
+            "boys": {
+                "champion": "sample-m3-A"
+            },
+            "girls": {
+                "champion": "sample-w3-A"
+            }
+        }
+    },
+    "notes": [
+        "男子優勝のNTT西日本は前身の日本リーグから続く連覇記録を更新中（Assumption: 連覇数は要確認）。",
+        "STリーグⅡ・Ⅲは現在サンプルデータ。公式記録（組合せ/進行表PDF）を基に実データへ差し替えること。"
+    ]
+}

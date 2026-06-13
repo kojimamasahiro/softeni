@@ -22,9 +22,17 @@ import {
   YearlySummary,
 } from '@/utils/team-stats-calculator';
 import { loadAllTournamentData } from '@/utils/tournament-data-loader';
+import {
+  DivisionMeta,
+  getDivisions,
+  getStLeagueYears,
+  LeagueMeta,
+  loadLeagueMeta,
+} from '@/utils/st-league';
 
 type ParticipantInfo = {
   teamId: string;
+  division?: string;
   name: string | string[];
   players?: {
     lastName: string;
@@ -39,25 +47,38 @@ type ParticipantsData = {
 
 type TeamData = {
   info: TeamInfo;
+  division: string;
   summary: YearlySummary;
   stats: PlayerStats[];
 };
 
 type Props = {
   year: number;
+  meta: LeagueMeta | null;
+  divisions: DivisionMeta[];
   teams: {
     boys: TeamData[];
     girls: TeamData[];
   };
 };
 
-export default function STLeagueTeamsPage({ year, teams }: Props) {
+export default function STLeagueTeamsPage({
+  year,
+  meta,
+  divisions,
+  teams,
+}: Props) {
   const [activeTab, setActiveTab] = useState<'boys' | 'girls'>('boys');
+  const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
 
-  const pageTitle = `STリーグ ${year} 出場チーム・選手`;
+  const editionLabel = meta?.title ?? `STリーグ ${year}`;
+  const pageTitle = `${editionLabel} 出場チーム・選手`;
   const pageUrl = `https://softeni-pick.com/st-league/${year}/teams`;
 
-  const activeTeams = teams[activeTab];
+  const currentDiv = divisions.find((d) => d.id === divisionId);
+  const activeTeams = teams[activeTab].filter(
+    (t) => (t.division ?? '1') === divisionId,
+  );
 
   return (
     <>
@@ -90,7 +111,9 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
           ]}
         />
         <h1 className="text-2xl font-bold">{pageTitle}</h1>
-        <p>本年度の成績を掲載しています。</p>
+        <p>
+          STリーグⅠ・Ⅱ・Ⅲ、男女別の出場チームと選手個人の成績を掲載しています。
+        </p>
         {/* Tabs */}
         <div className="flex border-b border-gray-200 dark:border-gray-700">
           <button
@@ -114,6 +137,26 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
             女子
           </button>
         </div>
+
+        {/* リーグ（division）切替 */}
+        <div className="flex flex-wrap gap-2">
+          {divisions.map((d) => {
+            const active = d.id === divisionId;
+            return (
+              <button
+                key={d.id}
+                onClick={() => setDivisionId(d.id)}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
+                  active
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
+                }`}
+              >
+                {d.name}
+              </button>
+            );
+          })}
+        </div>
         {/* Content */}
         <div className="space-y-12">
           {activeTeams.map((team) => (
@@ -131,8 +174,8 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
           ))}
 
           {activeTeams.length === 0 && (
-            <div className="text-center py-10 text-gray-500 dark:text-gray-400">
-              参加チームの情報がありません。
+            <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+              {currentDiv?.name ?? 'このリーグ'}の出場チーム情報は準備中です。
             </div>
           )}
         </div>
@@ -141,28 +184,10 @@ export default function STLeagueTeamsPage({ year, teams }: Props) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const stLeagueDir = path.join(process.cwd(), 'data/st-league');
-  const years: string[] = [];
-
-  if (fs.existsSync(stLeagueDir)) {
-    const entries = fs.readdirSync(stLeagueDir, { withFileTypes: true });
-    entries.forEach((entry) => {
-      if (entry.isDirectory() && /^\d{4}$/.test(entry.name)) {
-        years.push(entry.name);
-      }
-    });
-  }
-
-  const paths = years.map((year) => ({
-    params: { year },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: getStLeagueYears().map((y) => ({ params: { year: String(y) } })),
+  fallback: false,
+});
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { year } = context.params as { year: string };
@@ -258,6 +283,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
       return {
         info,
+        division: p.division ?? '1',
         summary,
         stats,
       };
@@ -267,9 +293,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const boysTeams = processTeams(participantsData.boys, 'boys');
   const girlsTeams = processTeams(participantsData.girls, 'girls');
 
+  const meta = loadLeagueMeta(year);
+  const divisions = getDivisions(meta);
+
   return {
     props: {
       year: Number(year),
+      meta,
+      divisions,
       teams: {
         boys: boysTeams,
         girls: girlsTeams,

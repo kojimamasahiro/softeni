@@ -1,0 +1,57 @@
+{
+    "overview": {
+        "name": "STリーグ",
+        "fullName": "ソフトテニス STリーグ",
+        "organizer": "公益財団法人 日本ソフトテニス連盟（JSTA）",
+        "categories": ["男子", "女子"],
+        "structure": "STリーグⅠ・Ⅱ・Ⅲ の階層制。各カテゴリー内で総当たり戦を行い、年度成績に応じてプレーオフ（入替戦）で昇格・降格を決定する。",
+        "predecessor": "日本リーグ（実業団リーグ）を改編して発足。"
+    },
+    "editions": [
+        {
+            "year": 2023,
+            "edition": 1,
+            "title": "第1回STリーグ",
+            "hasData": false,
+            "note": "Assumption: 第1回は2023年（令和5年）開催。詳細データ未入力。"
+        },
+        {
+            "year": 2024,
+            "edition": 2,
+            "title": "第2回STリーグ",
+            "hasData": false,
+            "note": "Assumption: 第2回は2024年（令和6年）開催。Ⅱ部1位通過のアキム・ダンロップがプレーオフを経てⅠ部昇格。詳細データ未入力。"
+        },
+        {
+            "year": 2025,
+            "edition": 3,
+            "title": "第3回STリーグ",
+            "hasData": true,
+            "venue": "日環アリーナ栃木（栃木県宇都宮市）",
+            "champions": { "boys": "NTT西日本ブルーグランツ", "girls": "ナガセケンコー" }
+        },
+        {
+            "year": 2026,
+            "edition": 4,
+            "title": "第4回STリーグ（サンプル）",
+            "hasData": true,
+            "note": "構成確認用のサンプルデータ。日程・会場・チーム・結果はすべて仮。実データへ差し替えること。"
+        }
+    ],
+    "promotionRelegation": [
+        {
+            "season": "2024→2025",
+            "category": "boys",
+            "promoted": ["アキム"],
+            "relegated": [],
+            "note": "Assumption: 第2回Ⅱ部からの昇格。降格チームは要確認。"
+        },
+        {
+            "season": "2024→2025",
+            "category": "girls",
+            "promoted": ["アキム", "ダンロップ"],
+            "relegated": [],
+            "note": "Assumption: 第2回Ⅱ部からの昇格。降格チームは要確認。"
+        }
+    ]
+}

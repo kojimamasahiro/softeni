@@ -1,11 +1,18 @@
-import fs from 'fs';
-import path from 'path';
-
 import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import {
+  DivisionMeta,
+  Gender,
+  getDivisions,
+  getStLeagueYears,
+  LeagueMeta,
+  loadLeagueMeta,
+  loadMatches,
+  loadParticipants,
+} from '@/utils/st-league';
 
 // Types
 interface PlayerStats {
@@ -35,6 +42,7 @@ interface MatchDetail {
 
 interface Match {
   id: number;
+  division?: string;
   date: string;
   status: 'scheduled' | 'finished';
   teamA: string;
@@ -44,6 +52,7 @@ interface Match {
 
 interface Team {
   teamId: string;
+  division?: string;
   name: string[];
   players?: {
     lastName: string;
@@ -54,6 +63,8 @@ interface Team {
 
 interface AnalysisPageProps {
   year: number;
+  meta: LeagueMeta | null;
+  divisions: DivisionMeta[];
   matches: {
     boys: Match[];
     girls: Match[];
@@ -69,10 +80,13 @@ type SortDirection = 'asc' | 'desc';
 
 export default function AnalysisPage({
   year,
+  meta,
+  divisions,
   matches,
   teams,
 }: AnalysisPageProps) {
-  const [activeGender, setActiveGender] = useState<'boys' | 'girls'>('boys');
+  const [activeGender, setActiveGender] = useState<Gender>('boys');
+  const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
   const [sortConfig, setSortConfig] = useState<{
     key: SortKey;
     direction: SortDirection;
@@ -82,8 +96,12 @@ export default function AnalysisPage({
   });
 
   const stats = useMemo(() => {
-    const currentMatches = matches[activeGender] || [];
-    const currentTeams = teams[activeGender] || [];
+    const currentMatches = (matches[activeGender] || []).filter(
+      (m) => (m.division ?? '1') === divisionId,
+    );
+    const currentTeams = (teams[activeGender] || []).filter(
+      (t) => (t.division ?? '1') === divisionId,
+    );
 
     // Initialize stats map
     const statsMap = new Map<number, PlayerStats>();
@@ -214,7 +232,7 @@ export default function AnalysisPage({
           return 0;
       }
     });
-  }, [matches, teams, activeGender, sortConfig]);
+  }, [matches, teams, activeGender, divisionId, sortConfig]);
 
   const requestSort = (key: SortKey) => {
     let direction: SortDirection = 'desc';
@@ -234,8 +252,10 @@ export default function AnalysisPage({
     );
   };
 
-  const pageTitle = `STリーグ ${year} データ・分析 | ソフトテニス情報`;
+  const editionLabel = meta?.title ?? `STリーグ ${year}`;
+  const pageTitle = `${editionLabel} データ・分析（選手成績） | ソフトテニス情報`;
   const pageUrl = `https://softeni-pick.com/st-league/${year}/analysis`;
+  const currentDiv = divisions.find((d) => d.id === divisionId);
 
   return (
     <>
@@ -256,8 +276,10 @@ export default function AnalysisPage({
           ]}
         />
 
-        <h1 className="text-2xl font-bold">STリーグ {year} データ・分析</h1>
-        <p>選手ごとの勝敗数、勝率、ゲーム得失などを集計しています。</p>
+        <h1 className="text-2xl font-bold">{editionLabel} データ・分析</h1>
+        <p>
+          STリーグⅠ・Ⅱ・Ⅲ、男女別に選手ごとの勝敗数・勝率・ゲーム得失を集計しています。
+        </p>
 
         {/* Gender Tabs */}
         <div className="flex border-b border-gray-200 dark:border-gray-700">
@@ -282,6 +304,32 @@ export default function AnalysisPage({
             女子
           </button>
         </div>
+
+        {/* リーグ（division）切替 */}
+        <div className="flex flex-wrap gap-2">
+          {divisions.map((d) => {
+            const active = d.id === divisionId;
+            return (
+              <button
+                key={d.id}
+                onClick={() => setDivisionId(d.id)}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
+                  active
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
+                }`}
+              >
+                {d.name}
+              </button>
+            );
+          })}
+        </div>
+
+        {stats.length === 0 && (
+          <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
+            {currentDiv?.name ?? 'このリーグ'}のデータは準備中です。
+          </div>
+        )}
 
         {/* Mobile Sort Controls */}
         <div className="md:hidden flex items-center justify-end mb-4 space-x-2">
@@ -470,12 +518,10 @@ export default function AnalysisPage({
   );
 }
 
-export const getStaticPaths = async () => {
-  return {
-    paths: [{ params: { year: '2025' } }],
-    fallback: false,
-  };
-};
+export const getStaticPaths = async () => ({
+  paths: getStLeagueYears().map((y) => ({ params: { year: String(y) } })),
+  fallback: false,
+});
 
 export const getStaticProps = async ({
   params,
@@ -483,28 +529,20 @@ export const getStaticProps = async ({
   params: { year: string };
 }) => {
   const year = params.year;
-  const dataDir = path.join(process.cwd(), 'data/st-league', year);
+  const matches = loadMatches(year);
+  const participants = loadParticipants(year);
+  if (!matches || !participants) return { notFound: true };
 
-  try {
-    const matchesPath = path.join(dataDir, 'matches.json');
-    const participantsPath = path.join(dataDir, 'participants.json');
+  const meta = loadLeagueMeta(year);
+  const divisions = getDivisions(meta);
 
-    const matchesData = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
-    const participantsData = JSON.parse(
-      fs.readFileSync(participantsPath, 'utf8'),
-    );
-
-    return {
-      props: {
-        year: parseInt(year, 10),
-        matches: matchesData,
-        teams: participantsData,
-      },
-    };
-  } catch (error) {
-    console.error('Data load error:', error);
-    return {
-      notFound: true,
-    };
-  }
+  return {
+    props: {
+      year: parseInt(year, 10),
+      meta,
+      divisions,
+      matches,
+      teams: participants,
+    },
+  };
 };
