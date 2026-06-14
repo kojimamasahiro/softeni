@@ -207,7 +207,7 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
       <MetaHead
         title="最近の成長"
         description="勝ち負けだけでは見えない、試合内容の変化を追える成長分析ページです。"
-        url={buildSiteUrl(getPublicMatchesGrowthPath())}
+        url={buildSiteUrl(`${getPublicMatchesGrowthPath()}/`)}
         type="website"
       />
       <div className="min-h-screen bg-white px-4 py-8 text-gray-900 dark:bg-gray-900 dark:text-gray-100">

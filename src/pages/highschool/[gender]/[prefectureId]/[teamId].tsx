@@ -98,7 +98,7 @@ export default function TeamPage({
   analysis,
   playerLinks = {},
 }: Props) {
-  const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}`;
+  const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
   const championshipEntries = entries.filter(
     (entry) => entry.tournamentId === 'highschool-championship',
   );

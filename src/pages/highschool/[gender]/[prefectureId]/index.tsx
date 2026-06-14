@@ -107,7 +107,7 @@ export default function PrefectureHighschoolPage({
   best8SchoolCount,
   recentMajorSchoolCount,
 }: Props) {
-  const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}`;
+  const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}/`;
   const prefectureName = prefecture.name;
   const faqItems = [
     {

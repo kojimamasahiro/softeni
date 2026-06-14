@@ -30,7 +30,7 @@ export default function LocalTournamentsPage({
   prefectures,
   federationMap,
 }: Props) {
-  const pageUrl = `https://softeni-pick.com/tournaments/local`;
+  const pageUrl = `https://softeni-pick.com/tournaments/local/`;
 
   // Group by region
   const regions = [

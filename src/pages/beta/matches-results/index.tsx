@@ -95,7 +95,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
       <MetaHead
         title="試合結果一覧"
         description="ポイント詳細記録から、試合結果と分析ページを確認できます。"
-        url={buildSiteUrl(getPublicMatchesListPath())}
+        url={buildSiteUrl(`${getPublicMatchesListPath()}/`)}
         type="website"
       />
       <div className="min-h-screen bg-white px-4 py-10 text-gray-800 dark:bg-gray-900 dark:text-gray-100">

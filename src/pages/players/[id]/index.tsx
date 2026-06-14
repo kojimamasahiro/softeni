@@ -172,7 +172,7 @@ export default function PlayerInformation({
                   '@type': 'ListItem',
                   position: 2,
                   name: '選手一覧',
-                  item: 'https://softeni-pick.com/players',
+                  item: 'https://softeni-pick.com/players/',
                 },
                 {
                   '@type': 'ListItem',

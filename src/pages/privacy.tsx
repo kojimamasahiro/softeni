@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       <MetaHead
         title="プライバシーポリシー | ソフトテニス情報"
         description="Softeni Pickのプライバシーポリシー。アクセス解析や広告に関する情報を掲載しています。"
-        url="https://softeni-pick.com/privacy"
+        url="https://softeni-pick.com/privacy/"
       />
       <Head>
         <script
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'プライバシーポリシー',
-                  item: 'https://softeni-pick.com/privacy',
+                  item: 'https://softeni-pick.com/privacy/',
                 },
               ],
             }),

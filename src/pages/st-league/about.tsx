@@ -6,7 +6,7 @@ import PageLayout from '@/components/PageLayout';
 
 export default function STLeagueAbout() {
   const pageTitle = 'STリーグとは | ソフトテニス情報';
-  const pageUrl = 'https://softeni-pick.com/st-league/about';
+  const pageUrl = 'https://softeni-pick.com/st-league/about/';
 
   return (
     <>

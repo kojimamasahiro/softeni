@@ -75,7 +75,7 @@ export default function STLeagueTeamsPage({
 
   const editionLabel = meta?.title ?? `STリーグ ${year}`;
   const pageTitle = `${editionLabel} 出場チーム・選手`;
-  const pageUrl = `https://softeni-pick.com/st-league/${year}/teams`;
+  const pageUrl = `https://softeni-pick.com/st-league/${year}/teams/`;
 
   return (
     <>

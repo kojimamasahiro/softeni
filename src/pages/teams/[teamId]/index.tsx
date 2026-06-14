@@ -28,7 +28,7 @@ type Props = {
 
 export default function TeamResultsPage({ info, stats }: Props) {
   const teamName = info.name;
-  const pageUrl = `https://softeni-pick.com/teams/${info.id}`;
+  const pageUrl = `https://softeni-pick.com/teams/${info.id}/`;
 
   return (
     <>

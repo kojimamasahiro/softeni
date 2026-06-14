@@ -76,7 +76,7 @@ export default function STLeagueHub({
   divisionOverview,
 }: Props) {
   const pageTitle = 'STリーグ｜結果・順位表・出場チーム | ソフトテニス情報';
-  const pageUrl = 'https://softeni-pick.com/st-league';
+  const pageUrl = 'https://softeni-pick.com/st-league/';
 
   return (
     <>

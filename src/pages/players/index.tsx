@@ -152,7 +152,7 @@ export default function PlayersPage({
       <MetaHead
         title="選手一覧 | ソフトテニス情報"
         description="ソフトテニス大会データから抽出した同姓同名選手一覧。名前・所属・大会で検索できます。"
-        url="https://softeni-pick.com/players"
+        url="https://softeni-pick.com/players/"
         type="article"
       />
 
@@ -171,7 +171,7 @@ export default function PlayersPage({
               inLanguage: 'ja',
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': 'https://softeni-pick.com/players',
+                '@id': 'https://softeni-pick.com/players/',
               },
               description: 'ソフトテニス大会での同姓同名選手の結果を一覧表示',
             }),

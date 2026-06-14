@@ -478,7 +478,7 @@ export default function AnalysisPage({
 
   const editionLabel = meta?.title ?? `STリーグ ${year}`;
   const pageTitle = `${editionLabel} データ・分析（選手成績） | ソフトテニス情報`;
-  const pageUrl = `https://softeni-pick.com/st-league/${year}/analysis`;
+  const pageUrl = `https://softeni-pick.com/st-league/${year}/analysis/`;
 
   return (
     <>

@@ -73,7 +73,7 @@ export default function TournamentListPage({
   generationTitleMap,
   tournamentsByGeneration,
 }: Props) {
-  const pageUrl = 'https://softeni-pick.com/tournaments/major';
+  const pageUrl = 'https://softeni-pick.com/tournaments/major/';
 
   const generationTitle = (gen: GenerationKey) => {
     return generationTitleMap[gen] || String(gen);
@@ -123,7 +123,7 @@ export default function TournamentListPage({
                   '@type': 'ListItem',
                   position: 2,
                   name: `大会一覧`,
-                  item: 'https://softeni-pick.com/tournaments',
+                  item: 'https://softeni-pick.com/tournaments/',
                 },
                 {
                   '@type': 'ListItem',

@@ -14,7 +14,7 @@ export default function About() {
       <MetaHead
         title="このサイトについて | ソフトテニス情報"
         description="このサイトは、ソフトテニス競技者の試合結果や大会情報をまとめて発信するサイトです。"
-        url="https://softeni-pick.com/about"
+        url="https://softeni-pick.com/about/"
       />
       <Head>
         <script
@@ -34,7 +34,7 @@ export default function About() {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'このサイトについて',
-                  item: 'https://softeni-pick.com/about',
+                  item: 'https://softeni-pick.com/about/',
                 },
               ],
             }),

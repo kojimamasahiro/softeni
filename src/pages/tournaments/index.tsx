@@ -77,7 +77,7 @@ export default function TournamentsIndexPage({
   years,
   generations,
 }: Props) {
-  const pageUrl = 'https://softeni-pick.com/tournaments';
+  const pageUrl = 'https://softeni-pick.com/tournaments/';
 
   return (
     <>

@@ -56,7 +56,7 @@ export default function HighschoolGenderIndex({
   totalBest8Schools,
   latestIndexedYear,
 }: Props) {
-  const pageUrl = `https://softeni-pick.com/highschool/${gender}`;
+  const pageUrl = `https://softeni-pick.com/highschool/${gender}/`;
   const genderLabel = getGenderLabel(gender);
   const faqItems = [
     {

@@ -37,7 +37,7 @@ export default function Home({ recentTournaments }: HomeProps) {
       <MetaHead
         title="試合結果まとめ | ソフトテニス情報"
         description="最新試合結果・大会情報・成績をまとめたサイトです。"
-        url="https://softeni-pick.com"
+        url="https://softeni-pick.com/"
       />
 
       <Head>

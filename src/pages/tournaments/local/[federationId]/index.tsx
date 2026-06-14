@@ -62,7 +62,7 @@ export default function LocalFederationPage({
   federation,
   tournaments,
 }: Props) {
-  const pageUrl = `https://softeni-pick.com/tournaments/local/${prefecture.id}`;
+  const pageUrl = `https://softeni-pick.com/tournaments/local/${prefecture.id}/`;
 
   return (
     <>

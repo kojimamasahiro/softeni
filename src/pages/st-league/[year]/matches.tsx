@@ -528,7 +528,7 @@ export default function MatchesPage({
 
   const editionLabel = meta?.title ?? `STリーグ ${year}`;
   const pageTitle = `${editionLabel} 試合結果・順位表 | ソフトテニス情報`;
-  const pageUrl = `https://softeni-pick.com/st-league/${year}/matches`;
+  const pageUrl = `https://softeni-pick.com/st-league/${year}/matches/`;
   const dateRange = meta?.period
     ? `${meta.period.start.replace(/-/g, '/')}〜${meta.period.end.replace(/-/g, '/')}`
     : '';

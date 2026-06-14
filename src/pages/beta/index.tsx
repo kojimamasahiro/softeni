@@ -56,7 +56,7 @@ export default function BetaIndexPage() {
       <MetaHead
         title="ベータ機能 | ソフトテニス情報"
         description="試作中・検証中の新機能をお試しいただけます。フィードバックをお待ちしています。"
-        url="https://softeni-pick.com/beta"
+        url="https://softeni-pick.com/beta/"
         type="article"
       />
 
@@ -73,7 +73,7 @@ export default function BetaIndexPage() {
               inLanguage: 'ja',
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': 'https://softeni-pick.com/beta',
+                '@id': 'https://softeni-pick.com/beta/',
               },
             }),
           }}

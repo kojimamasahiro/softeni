@@ -11,7 +11,7 @@ export default function Contact() {
       <MetaHead
         title="お問い合わせ | ソフトテニス情報"
         description="Softeni Pickへのお問い合わせはこちらのフォームよりお願いいたします。"
-        url="https://softeni-pick.com/contact"
+        url="https://softeni-pick.com/contact/"
       />
       <Head>
         <script
@@ -31,7 +31,7 @@ export default function Contact() {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'お問い合わせ',
-                  item: 'https://softeni-pick.com/contact',
+                  item: 'https://softeni-pick.com/contact/',
                 },
               ],
             }),

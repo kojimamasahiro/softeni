@@ -39,7 +39,7 @@ export default function TeamYearGenderPage({
   const genderLabel =
     gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : 'ミックス';
   const pageTitle = `${teamName} ${year}年度 ${genderLabel} 成績`;
-  const pageUrl = `https://softeni-pick.com/teams/${info.id}/${year}/${gender}`;
+  const pageUrl = `https://softeni-pick.com/teams/${info.id}/${year}/${gender}/`;
 
   const calculateSummary = useMemo(() => {
     return calculateTeamYearlySummary(results, info);

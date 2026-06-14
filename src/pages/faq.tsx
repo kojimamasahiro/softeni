@@ -11,7 +11,7 @@ export default function FAQ() {
       <MetaHead
         title="よくあるご質問 | ソフトテニス情報"
         description="Softeni Pickに関してよく寄せられるご質問とその回答をまとめています。"
-        url="https://softeni-pick.com/faq"
+        url="https://softeni-pick.com/faq/"
       />
       <Head>
         <script
@@ -31,7 +31,7 @@ export default function FAQ() {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'よくあるご質問',
-                  item: 'https://softeni-pick.com/faq',
+                  item: 'https://softeni-pick.com/faq/',
                 },
               ],
             }),
