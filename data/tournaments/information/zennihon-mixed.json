@@ -14,6 +14,20 @@
         "category": "doubles",
         "gender": "mixed",
         "age": "none"
+      },
+      {
+        "categoryId": "doubles-over35-mixed",
+        "label": "35歳",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "over35"
+      },
+      {
+        "categoryId": "doubles-over45-mixed",
+        "label": "45歳",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "over45"
       }
     ]
   },
