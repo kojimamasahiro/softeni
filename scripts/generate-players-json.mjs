@@ -271,6 +271,32 @@ async function generatePlayersData(minMatchCount) {
   return { sameNameGroups: filteredGroups };
 }
 
+// 軽量な検索インデックス用にグループを縮約する。
+// 各選手ごとのフルな大会記録配列は持たず、検索に必要なテキストのみを保持する。
+// 詳細は選手結果ページ（/players/{id}/results/）で見せる方針。
+function toSearchGroup(group) {
+  const teams = group.differentTeams || [];
+  const keywords = new Set();
+  keywords.add(group.fullName);
+  for (const t of teams) keywords.add(t);
+  for (const p of group.players) {
+    if (p.tournamentName) keywords.add(p.tournamentName);
+    if (p.categoryLabel) keywords.add(p.categoryLabel);
+    if (p.year) {
+      keywords.add(String(p.year));
+      keywords.add(`${p.year}年`);
+    }
+  }
+  return {
+    fullName: group.fullName,
+    playerId: group.playerId ?? null,
+    count: group.count,
+    differentTeams: teams,
+    // 検索照合用に小文字化して事前結合（クライアントでの毎キー入力時コストを下げる）
+    searchText: [...keywords].join(' ').toLowerCase(),
+  };
+}
+
 async function main() {
   console.log('Starting players JSON generation...');
 
@@ -280,25 +306,35 @@ async function main() {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // 3パターンのJSONファイルを生成
-  const patterns = [
-    { minMatchCount: 2, filename: 'players-min2.json' },
-    { minMatchCount: 10, filename: 'players-min10.json' },
-    { minMatchCount: 20, filename: 'players-min20.json' },
-  ];
+  try {
+    // 収録選手の全グループ（count>=2）を一度だけ構築する。
+    const allData = await generatePlayersData(2);
+    const allGroups = allData.sameNameGroups;
 
-  for (const pattern of patterns) {
-    try {
-      const data = await generatePlayersData(pattern.minMatchCount);
-      const outputPath = path.join(outputDir, pattern.filename);
-      fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
-      console.log(
-        `✓ Generated ${pattern.filename} (${data.sameNameGroups.length} groups)`,
-      );
-    } catch (error) {
-      console.error(`✗ Failed to generate ${pattern.filename}:`, error);
-      process.exit(1);
-    }
+    // SSR（一覧の初期表示）用: 出場回数の多い選手のみ（フル記録つき）
+    const min20Groups = allGroups.filter((g) => g.count >= 20);
+    fs.writeFileSync(
+      path.join(outputDir, 'players-min20.json'),
+      JSON.stringify({ sameNameGroups: min20Groups }, null, 2),
+      'utf-8',
+    );
+    console.log(
+      `✓ Generated players-min20.json (${min20Groups.length} groups)`,
+    );
+
+    // 検索用: 全収録選手の軽量インデックス（フル記録は持たない）
+    const searchGroups = allGroups.map(toSearchGroup);
+    fs.writeFileSync(
+      path.join(outputDir, 'players-search.json'),
+      JSON.stringify({ sameNameGroups: searchGroups }),
+      'utf-8',
+    );
+    console.log(
+      `✓ Generated players-search.json (${searchGroups.length} groups)`,
+    );
+  } catch (error) {
+    console.error('✗ Failed to generate players JSON:', error);
+    process.exit(1);
   }
 
   console.log('✓ All players JSON files generated successfully!');

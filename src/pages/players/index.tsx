@@ -33,10 +33,14 @@ interface PlayerResult {
 
 interface SameNameGroup {
   fullName: string;
-  players: PlayerResult[];
+  // フル記録。SSR の初期表示（players-min20.json）にのみ含まれる。
+  // 検索インデックス（players-search.json）では未定義。
+  players?: PlayerResult[];
   count: number;
   differentTeams: string[];
   playerId?: string | null;
+  // 検索インデックス側のみ持つ、照合用の小文字結合テキスト。
+  searchText?: string;
 }
 
 interface SameNamePlayerPageProps {
@@ -47,41 +51,43 @@ export default function PlayersPage({
   sameNameGroupsPacked,
 }: SameNamePlayerPageProps) {
   const [sortBy, setSortBy] = useState<'count' | 'name'>('count');
-  const [filterMinCount, setFilterMinCount] = useState(20);
   const [searchQuery, setSearchQuery] = useState('');
-  const [dynamicData, setDynamicData] = useState<SameNameGroup[]>([]);
+  const [allData, setAllData] = useState<SameNameGroup[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const sameNameGroups = useMemo(
     () => unpackSameNameGroups(sameNameGroupsPacked) as SameNameGroup[],
     [sameNameGroupsPacked],
   );
 
-  // Fetch data dynamically when filterMinCount changes to less than 20
+  // Prefetch the full player dataset on mount so that search covers every
+  // player (including those with few appearances and no dedicated results
+  // page). The SSR props only contain the lightweight featured list.
   useEffect(() => {
-    if (filterMinCount < 20) {
-      setIsLoading(true);
-      // Use static JSON files instead of API route
-      const jsonFile =
-        filterMinCount === 2
-          ? '/data/players-min2.json'
-          : '/data/players-min10.json';
-      fetch(jsonFile)
-        .then((res) => res.json())
-        .then((data) => {
-          setDynamicData(data.sameNameGroups || []);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error('Error fetching player data:', error);
-          setIsLoading(false);
-        });
-    } else {
-      setDynamicData([]);
-    }
-  }, [filterMinCount]);
+    let cancelled = false;
+    setIsLoading(true);
+    fetch('/data/players-search.json')
+      .then((res) => res.json())
+      .then((data) => {
+        if (cancelled) return;
+        setAllData(data.sameNameGroups || []);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.error('Error fetching player data:', error);
+        setIsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  // Use dynamic data if available, otherwise use static props data
-  const activeData = dynamicData.length > 0 ? dynamicData : sameNameGroups;
+  // While searching, use the full dataset (falling back to SSR data until it
+  // loads). With no query, show the lightweight featured list for a fast,
+  // light initial render.
+  const isSearching = searchQuery.trim().length > 0;
+  const activeData =
+    isSearching && allData.length > 0 ? allData : sameNameGroups;
 
   const highlightMatch = (text: string, searchQuery: string) => {
     if (!searchQuery.trim()) return text;
@@ -110,10 +116,15 @@ export default function PlayersPage({
   const sortedAndFilteredGroups = useMemo(() => {
     return activeData
       .filter((group) => {
-        if (group.count < filterMinCount) return false;
         if (searchQuery.trim()) {
           const queries = searchQuery.toLowerCase().trim().split(/\s+/);
-          return group.players.some((player) => {
+          // 検索インデックス（players-search.json）は事前結合済みの
+          // searchText を持つ。各クエリ語の AND 一致で判定する。
+          if (group.searchText != null) {
+            return queries.every((query) => group.searchText!.includes(query));
+          }
+          // SSR のフルデータ（players-min20.json）はレコード単位で照合する。
+          return (group.players ?? []).some((player) => {
             return queries.every((query) => {
               return (
                 group.fullName.toLowerCase().includes(query) ||
@@ -134,7 +145,7 @@ export default function PlayersPage({
         if (sortBy === 'count') return b.count - a.count;
         return a.fullName.localeCompare(b.fullName, 'ja');
       });
-  }, [activeData, sortBy, filterMinCount, searchQuery]);
+  }, [activeData, sortBy, searchQuery]);
 
   return (
     <>
@@ -185,7 +196,7 @@ export default function PlayersPage({
             </h2>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            大会結果データから抽出した同姓同名の選手の一覧です。同じ名前でも異なる選手の可能性があります。所属チームや大会記録を確認してください。
+            大会結果データから抽出した同姓同名の選手の一覧です。下の検索では収録されている全選手が対象になります（初期表示は出場回数の多い選手のみ）。同じ名前でも異なる選手の可能性があります。所属チームや大会記録を確認してください。
           </p>
         </section>
 
@@ -232,25 +243,6 @@ export default function PlayersPage({
               <option value="name">名前順</option>
             </select>
           </div>
-
-          <div className="flex items-center gap-2">
-            <label
-              htmlFor="filterMinCount"
-              className="text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              最小出場回数:
-            </label>
-            <select
-              id="filterMinCount"
-              value={filterMinCount}
-              onChange={(e) => setFilterMinCount(Number(e.target.value))}
-              className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm"
-            >
-              <option value={2}>2回以上</option>
-              <option value={10}>10回以上</option>
-              <option value={20}>20回以上</option>
-            </select>
-          </div>
         </div>
 
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
@@ -259,149 +251,160 @@ export default function PlayersPage({
               <>
                 <span className="font-medium">「{searchQuery}」</span>
                 {sortedAndFilteredGroups.length}組 の検索結果
-                {filterMinCount > 2 && ` (${filterMinCount}回以上出場)`}
               </>
             ) : (
               <>
                 {sortedAndFilteredGroups.length}組の同姓同名選手を表示中
-                {filterMinCount > 2 && ` (${filterMinCount}回以上出場のみ)`}
+                （出場回数の多い選手のみ・検索で全選手対象）
               </>
             )}
           </div>
           {isLoading && (
             <div className="text-xs text-gray-500 dark:text-gray-400">
-              読み込み中...
+              全選手データを読み込み中...
             </div>
           )}
-          {!isLoading && activeData.length > 0 && (
+          {!isLoading && isSearching && allData.length > 0 && (
             <div className="text-xs text-gray-500 dark:text-gray-400">
-              全 {activeData.length}組
+              全 {allData.length}組から検索
             </div>
           )}
         </div>
 
         <div className="space-y-6">
-          {sortedAndFilteredGroups.map((group, groupIndex) => (
-            <div
-              key={group.playerId || `${group.fullName}-${groupIndex}`}
-              className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                  {group.playerId && group.count >= 5 ? (
-                    <Link
-                      href={`/players/${group.playerId}/results`}
-                      className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    >
-                      {searchQuery
-                        ? highlightMatch(group.fullName, searchQuery)
-                        : group.fullName}
-                    </Link>
-                  ) : searchQuery ? (
-                    highlightMatch(group.fullName, searchQuery)
-                  ) : (
-                    group.fullName
-                  )}
-                </h2>
-                <div className="text-sm text-gray-500 dark:text-gray-400">
-                  {group.count}回出場
-                </div>
-              </div>
-
-              {group.differentTeams.length > 0 && (
-                <div className="mb-3 text-sm">
-                  <span className="font-medium text-gray-700 dark:text-gray-300">
-                    所属チーム:
-                  </span>
-                  <span className="ml-2 text-gray-600 dark:text-gray-400">
-                    {searchQuery
-                      ? group.differentTeams.map((team, i) => (
-                          <span key={team}>
-                            {i > 0 && ', '}
-                            {highlightMatch(team, searchQuery)}
-                          </span>
-                        ))
-                      : group.differentTeams.join(', ')}
-                  </span>
-                </div>
-              )}
-
-              <div className="space-y-2">
-                <div className="grid gap-2 text-sm">
-                  {group.players
-                    .sort((a, b) => {
-                      if (a.year !== b.year)
-                        return Number(b.year) - Number(a.year);
-                      const resultOrder: Record<string, number> = {
-                        優勝: 1,
-                        準優勝: 2,
-                        ベスト4: 3,
-                        ベスト8: 4,
-                      };
-                      const aOrder = resultOrder[a.result] || 999;
-                      const bOrder = resultOrder[b.result] || 999;
-                      return aOrder - bOrder;
-                    })
-                    .map((player, index) => (
-                      <div
-                        key={`${player.tournamentId}-${player.year}-${player.gameCategory}-${player.ageCategory}-${player.gender}-${index}`}
-                        className="flex flex-wrap items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded"
+          {sortedAndFilteredGroups.map((group, groupIndex) => {
+            // 名前リンクがカード唯一の主リンクのとき、カード全体をタップ領域に
+            // する（stretched link）。名前の Link に after:absolute inset-0 の
+            // オーバーレイを敷き、カード内のどこをタップしても遷移させる。
+            const isLinked = Boolean(group.playerId && group.count >= 5);
+            return (
+              <div
+                key={group.playerId || `${group.fullName}-${groupIndex}`}
+                className={`relative border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800${
+                  isLinked
+                    ? ' transition-colors cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 hover:bg-gray-50 dark:hover:bg-gray-700/40 focus-within:ring-2 focus-within:ring-blue-500'
+                    : ''
+                }`}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                    {isLinked ? (
+                      <Link
+                        href={`/players/${group.playerId}/results`}
+                        className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors after:absolute after:inset-0 after:content-[''] focus:outline-none"
                       >
-                        <div className="flex-1 min-w-0">
-                          <Link
-                            href={`/tournaments/${player.generation}/${player.tournamentId}/${player.year}/${player.gameCategory}/${player.ageCategory}/${player.gender}`}
-                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                          >
-                            {searchQuery
-                              ? highlightMatch(
-                                  `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
-                                  searchQuery,
-                                )
-                              : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
-                          </Link>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                          <span className="font-medium">{player.result}</span>
-                          <span>|</span>
-                          <span>
-                            {searchQuery
-                              ? highlightMatch(player.team, searchQuery)
-                              : player.team}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                        {searchQuery
+                          ? highlightMatch(group.fullName, searchQuery)
+                          : group.fullName}
+                      </Link>
+                    ) : searchQuery ? (
+                      highlightMatch(group.fullName, searchQuery)
+                    ) : (
+                      group.fullName
+                    )}
+                  </h2>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    {group.count}回出場
+                  </div>
                 </div>
+
+                {group.differentTeams.length > 0 && (
+                  <div className="mb-3 text-sm">
+                    <span className="font-medium text-gray-700 dark:text-gray-300">
+                      所属チーム:
+                    </span>
+                    <span className="ml-2 text-gray-600 dark:text-gray-400">
+                      {searchQuery
+                        ? group.differentTeams.map((team, i) => (
+                            <span key={team}>
+                              {i > 0 && ', '}
+                              {highlightMatch(team, searchQuery)}
+                            </span>
+                          ))
+                        : group.differentTeams.join(', ')}
+                    </span>
+                  </div>
+                )}
+
+                {group.players && group.players.length > 0 && (
+                  <div className="space-y-2">
+                    <div className="grid gap-2 text-sm">
+                      {group.players
+                        .sort((a, b) => {
+                          if (a.year !== b.year)
+                            return Number(b.year) - Number(a.year);
+                          const resultOrder: Record<string, number> = {
+                            優勝: 1,
+                            準優勝: 2,
+                            ベスト4: 3,
+                            ベスト8: 4,
+                          };
+                          const aOrder = resultOrder[a.result] || 999;
+                          const bOrder = resultOrder[b.result] || 999;
+                          return aOrder - bOrder;
+                        })
+                        .map((player, index) => (
+                          <div
+                            key={`${player.tournamentId}-${player.year}-${player.gameCategory}-${player.ageCategory}-${player.gender}-${index}`}
+                            className="flex flex-wrap items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded"
+                          >
+                            <div className="relative z-10 flex-1 min-w-0">
+                              <Link
+                                href={`/tournaments/${player.generation}/${player.tournamentId}/${player.year}/${player.gameCategory}/${player.ageCategory}/${player.gender}`}
+                                className="relative z-10 text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                              >
+                                {searchQuery
+                                  ? highlightMatch(
+                                      `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
+                                      searchQuery,
+                                    )
+                                  : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
+                              </Link>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                              <span className="font-medium">
+                                {player.result}
+                              </span>
+                              <span>|</span>
+                              <span>
+                                {searchQuery
+                                  ? highlightMatch(player.team, searchQuery)
+                                  : player.team}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {sortedAndFilteredGroups.length === 0 && (
           <div className="text-center py-12 text-gray-500 dark:text-gray-400">
             {searchQuery ? (
               <div>
-                <p className="mb-2">
-                  「<span className="font-medium">{searchQuery}</span>
-                  」に該当する同姓同名選手が見つかりませんでした。
-                </p>
-                <p className="text-sm">
-                  選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードで検索するか、検索条件を緩めてお試しください。
-                </p>
-                <button
-                  onClick={() => {
-                    if (filterMinCount === 20 || filterMinCount === 10) {
-                      setFilterMinCount(2);
-                    } else {
-                      setSearchQuery('');
-                    }
-                  }}
-                  className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  {filterMinCount === 20 || filterMinCount === 10
-                    ? '条件を緩めて再検索 (最小出場回数を2回に設定)'
-                    : '検索をクリアして全件表示'}
-                </button>
+                {isLoading ? (
+                  <p className="mb-2">全選手データを読み込み中です...</p>
+                ) : (
+                  <>
+                    <p className="mb-2">
+                      「<span className="font-medium">{searchQuery}</span>
+                      」に該当する選手が見つかりませんでした。
+                    </p>
+                    <p className="text-sm">
+                      選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードでお試しください。
+                    </p>
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      検索をクリア
+                    </button>
+                  </>
+                )}
               </div>
             ) : (
               <p>条件に該当する同姓同名選手が見つかりませんでした。</p>

@@ -98,6 +98,18 @@
 - `lib/siteConfig.ts`
 - `src/components/MetaHead.tsx`
 
+### 選手一覧ページ（`/players`）の検索対象（2026-06 変更）
+
+- 検索対象は収録されている全選手（`count>=2`）。`count<5` の選手結果ページを持たない選手も検索でヒットする（リンクは付かず名前のみ表示）。
+- 以前は「最小出場回数 2/10/20」ドロップダウンでビルド都合上 `count>=20`（`players-min20.json`）を既定表示していたが、UX 改善のため撤去した。
+- データ構成（`scripts/generate-players-json.mjs` が生成）:
+  - `players-min20.json`: SSR の初期表示用（クエリ無し時）。出場回数の多い 73 組をフル大会記録つきで保持。軽量で初期 HTML に埋め込む。
+  - `players-search.json`: 検索用の軽量インデックス（全 8,174 組、約 2.7MB）。各組は `fullName / playerId / count / differentTeams / searchText`（名前・所属・大会名・年度を小文字結合した照合用テキスト）のみを持ち、選手ごとのフル大会記録配列は持たない。詳細は選手結果ページで見せる。
+  - 旧 `players-min2.json`（約 19MB）/ `players-min10.json` は廃止。
+- 動作: マウント時に `players-search.json` をプリフェッチ。検索クエリが入力されると全選手を `searchText` の AND 一致で絞り込み、結果は名前・所属・出場回数＋（`count>=5` なら）`/players/{id}/results/` へのリンクを表示する。クエリ無しのときは SSR の `players-min20.json` をフル表示。
+- SEO: 検索はクライアント JS のみでクローラは実行しないため、検索インデックスの軽量化はインデックスに影響しない。選手ページの発見は従来どおり `next-sitemap`（`count>=5` を全件出力）が担保する。一覧の SSR 内部リンクは `min20`（73 組）のまま据え置き。
+- 実装: `src/pages/players/index.tsx`。
+
 ### 選手ページの SEO 方針（2026-06 改善）
 
 設計の経緯は `docs/raw/2026-06-12-player-page-seo-design.md` を参照。
