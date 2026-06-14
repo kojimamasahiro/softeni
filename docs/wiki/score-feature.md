@@ -112,7 +112,10 @@ Draft / Open Question:
 ## Draft
 
 - `score.softeni-pick.com` を本体とどこまで分けるかの正式運用
+  → 方針決定済み（2026-06）: [ADR-003](../adr/ADR-003-score-media-tool-separation.md)。
+  「閲覧公開＝本体に統合」「ツール公開（UGC）＝score に分離」。
 - 共有 URL と編集可能 URL を別権限で扱う正式設計
+  → ADR-003 で `edit_token` 廃止・認証所有モデル（`owner_user_id` / `visibility`）へ寄せる方針
 - 本体サイト（大会・選手ページ）との相互リンク設計: [score-site-link.md](./score-site-link.md)（2026-06 Draft）
 
 ## Assumption

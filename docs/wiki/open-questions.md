@@ -2,9 +2,15 @@
 
 ## 公開面 / ドメイン分離
 
-- `score.softeni-pick.com` 分離の正式方針は何か
-- `softeni-pick` mode と `score` mode を今後どこまで別プロダクトとして扱うか
+方針決定済み（2026-06、ADR-003）: 「閲覧公開（メディア）＝本体 `softeni-pick.com` に統合」
+「ツール公開（UGC）＝`score.softeni-pick.com` を本拠地に分離」と役割で割り切る。
+コードベースは分けず、分析エンジン（`lib/`）は共有。詳細は
+[ADR-003](../adr/ADR-003-score-media-tool-separation.md)。
+
+残る Open Question:
+
 - score 側のヘッダー/フッターやブランド表現を分ける正式方針はあるか
+- `score` mode を Phase 2 で UGC 本拠地に転換する際の既存 score mode ラッパとの整合
 
 ## 試合詳細の beta 昇格（検討中 2026-06）
 
@@ -20,14 +26,21 @@
 ## score データモデル
 
 - score 機能の正式な source of truth は Supabase か、それとも生成済み JSON か
-- `edit_token` / `edit_token_hash` はどの画面・API で使う想定か
+- `edit_token` / `edit_token_hash` は ADR-003 で廃止方針（認証所有モデルへ移行）。撤去の段取りは未定
 - `matches.status` / `processing_status` の正式な状態遷移は何か
 - `points.result_type` の正式な enum 一覧はあるか
 
 ## 公開/編集権限
 
-- 公開 / 非公開 / 限定公開の権限設計はあるか
-- 編集可能 URL をトークン方式で残すのか、別の認可に寄せるのか
+方針（2026-06、ADR-003）: UGC 公開を前提に、`edit_token` トークン方式は廃止し、
+認証ユーザー所有モデル（`Match.owner_user_id`）と `visibility`（public / private 既定 /
+限定公開）に寄せる。静的 JSON 生成は public のみを対象にする。
+
+残る Open Question:
+
+- `visibility` の正式 enum と既定値（private 既定で確定だが限定公開の表現方法）
+- 認証方式（プロバイダ・セッション・Supabase Auth を使うか）
+- UGC のモデレーションと公開審査の運用
 - `score` mode 以外の本番環境で API 書き込みをどのように制御しているか
 
 ## YouTube / 動画レビュー
