@@ -1,4 +1,6 @@
 // src/components/TeamsRanking.tsx
+import Link from 'next/link';
+
 type TeamsRankingProps = {
   statsList: {
     id: string;
@@ -8,9 +10,14 @@ type TeamsRankingProps = {
     losses: number;
     winsByRound: Record<string, number>;
   }[];
+  // pid -> 数値選手id（結果ページを持つ選手のみ）。リンク対象の解決済みマップ。
+  playerLinks?: Record<string, number>;
 };
 
-export default function TeamsRanking({ statsList }: TeamsRankingProps) {
+export default function TeamsRanking({
+  statsList,
+  playerLinks = {},
+}: TeamsRankingProps) {
   return (
     <section className="mb-8 px-4">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
@@ -82,7 +89,16 @@ export default function TeamsRanking({ statsList }: TeamsRankingProps) {
               return (
                 <tr key={p.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
-                    {p.name}
+                    {playerLinks[p.id] !== undefined ? (
+                      <Link
+                        href={`/players/${playerLinks[p.id]}/results`}
+                        className="text-blue-700 underline underline-offset-2 decoration-dotted hover:decoration-solid dark:text-blue-300"
+                      >
+                        {p.name}
+                      </Link>
+                    ) : (
+                      p.name
+                    )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                     {p.appearances}

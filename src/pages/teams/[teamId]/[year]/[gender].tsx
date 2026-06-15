@@ -27,6 +27,7 @@ type Props = {
   results: EventResult[];
   year: number;
   gender: string;
+  playerLinks?: Record<string, number>;
 };
 
 export default function TeamYearGenderPage({
@@ -34,6 +35,7 @@ export default function TeamYearGenderPage({
   results,
   year,
   gender,
+  playerLinks = {},
 }: Props) {
   const teamName = info.name;
   const genderLabel =
@@ -216,7 +218,7 @@ export default function TeamYearGenderPage({
 
         <TeamsEventSummary overallTable={overallTable} />
 
-        <TeamsRanking statsList={statsList} />
+        <TeamsRanking statsList={statsList} playerLinks={playerLinks} />
 
         <div className="mt-8">
           <Link
@@ -366,12 +368,48 @@ export const getStaticProps: GetStaticProps = async (context) => {
       return { notFound: true };
     }
 
+    // 選手結果ページ（/players/{id}/results）への内部リンク用に pid→数値id を解決する。
+    // data/players/index.json と姓名一致、count>=5 のみ（高校ページと同じ規約）。
+    const playerLinks: Record<string, number> = {};
+    const playersIndexPath = path.join(
+      process.cwd(),
+      'data',
+      'players',
+      'index.json',
+    );
+    if (fs.existsSync(playersIndexPath)) {
+      try {
+        const playersIndex = JSON.parse(
+          fs.readFileSync(playersIndexPath, 'utf-8'),
+        ) as Array<{
+          id: number;
+          lastName: string;
+          firstName: string;
+          count: number;
+        }>;
+        const nameToId = new Map<string, number>();
+        for (const p of playersIndex) {
+          if (p.count < 5) continue;
+          const key = `${p.lastName}::${p.firstName}`;
+          // 同姓同名は最初の ID を使う（players/index.tsx と同じ規約）
+          if (!nameToId.has(key)) nameToId.set(key, p.id);
+        }
+        for (const [pid, player] of Object.entries(info.players)) {
+          const id = nameToId.get(`${player.lastName}::${player.firstName}`);
+          if (id !== undefined) playerLinks[pid] = id;
+        }
+      } catch (err) {
+        console.error('failed to parse players index.json', err);
+      }
+    }
+
     return {
       props: {
         info,
         results: filteredResults,
         year: Number(year),
         gender,
+        playerLinks,
       },
     };
   } catch (error) {

@@ -98,7 +98,7 @@ def entry_label(entry, pmap):
     if not ps:
         return ("不明", "")
     if ps[0].get("lastName"):
-        names = "・".join((p.get("lastName") or "") for p in ps)
+        names = "・".join(((p.get("lastName") or "") + (p.get("firstName") or "")) for p in ps)
         team = ps[0].get("team") or ""
         pref = ps[0].get("prefecture") or ""
         sub = f"{team}（{pref}）" if team and pref else (team or pref)

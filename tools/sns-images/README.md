@@ -7,6 +7,41 @@
 source .venv/bin/activate  # または python3 を直接
 ```
 
+## 0. 集客特化 1日目投稿（ハイスクールジャパンカップ向け）
+
+種目別の「1日目終了時点」を集客向け4枚構成で生成する。仕様は
+`docs/wiki/sns-day1-images.md`。共通ロジックは `day1lib.py`、キャプションは `captions.py`。
+
+```bash
+# シングルス1日目（ベスト4確定）: 表紙+CTA / ベスト4 / 準決勝カード / ハイライト
+python tools/sns-images/day1_singles.py \
+    data/tournaments/details/highschool-japan-cup/2026/singles-none-boys.json \
+    --next-date "6/27(土)9:00〜" --tournament highschool-japan-cup --year 2026 --out out/sns
+
+# ダブルス1日目（予選リーグ終了）: 表紙+CTA / 進出サマリ / 進出ペア一覧 / 前年実績
+python tools/sns-images/day1_doubles.py \
+    data/tournaments/details/highschool-japan-cup/2026/doubles-none-boys.json \
+    --next-date "6/28(日)9:00〜" --tournament highschool-japan-cup --year 2026 --out out/sns
+
+# シングルス完結報告（土・優勝〜ベスト4）
+python tools/sns-images/result_singles.py \
+    data/tournaments/details/highschool-japan-cup/2026/singles-none-boys.json --out out/sns
+
+# 4カテゴリ一括＋キャプション（captions/<カテゴリ>.txt）
+python tools/sns-images/day1_all.py --tournament highschool-japan-cup --year 2026 \
+    --singles-next "6/27(土)9:00〜" --doubles-next "6/28(日)9:00〜" --out out/sns
+```
+
+ポイント:
+
+- 画像は主役カットのみ。サマリ・番狂わせ・結果ダイジェストは `out/captions/<カテゴリ>.txt`（本文）
+  と `_thread.txt`（スレッド返信）にテキスト出力。氏名はフルネーム。
+- 画像サイズはX向けに 16:9 / 1:1 / 4:5（幅1200固定）に統一、中身は縦中央寄せ。
+- ダブルス本選進出は各グループ1位（勝数→ゲーム差→総得ゲーム）を match群から自前計算。
+- 「番狂わせ」は前年ベスト8以上の選手の生存/敗退（選手id単位・前年のみ）。
+- CTAの会場は information JSON、2日目日付は `--next-date`（種目で日が異なる）。
+- リーグ星取表は出さない（進出ペア一覧重視）。確定カードは前段決着済みの試合のみ。
+
 ## 1. 1日目終了時点の結果画像（day1_results.py）
 
 勝ち残りドロー画像と回戦別結果一覧画像を生成する。未消化の試合は

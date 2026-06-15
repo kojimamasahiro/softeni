@@ -117,11 +117,14 @@
 内部リンク:
 
 - 大会結果ページ（対戦詳細）のエントリー見出しで、選手ページを持つ選手（`count>=5`）の名前を `/players/{id}/results/` にリンクする（`MatchResults.tsx`）
+- トーナメント表（`TournamentBracket.tsx`）の選手名も同様にリンクする。`participant.playerId`（結果ページを持つ選手のみ数値が入る）かつ個人戦（`lastName` あり）の場合だけ `/players/{id}/results/` へリンクし、それ以外は文字のみ表示（2026-06 追加）
 - 高校の学校ページでも掲載選手名を同様にリンクする（pid「姓_名_チーム_県」を `data/players/index.json` と姓名一致で解決）
+- チームの年度別ページ（`/teams/{teamId}/{year}/{gender}`）の「選手別成績」表でも選手名をリンクする。`getStaticProps` で `info.players` の姓名を `index.json`（`count>=5`）と一致させて pid→数値id の `playerLinks` を作り、`TeamsRanking` に渡す。同姓同名は最初のIDを使う既存規約に準拠（`src/components/TeamsRanking.tsx`、2026-06 追加）
+- 選手結果ページに「関連選手（主なペア）」セクションを表示する。`playerStats.byPartner` をペア試合数の降順で上位 8 名まで掲載し、結果ページを持つ選手（`index.json` の `count>=5`）のみ `/players/{id}/results/` へリンクする。選手ページ同士の双方向内部リンクを増やす目的（`src/pages/players/[id]/results.tsx`、2026-06 追加）
 - 同姓同名は「最初の ID を使う」既存規約に従う
 - numeric 結果ページから curated プロフィール（`/players/{slug}/`）への逆リンクを表示する（姓名一致で解決）
 - 選手結果ページの大会ごとの「詳細 大会ページ」リンクは、公式サイト（`sourceUrl`）ではなくサイト内大会ページ `/tournaments/{generation}/{tournamentId}/{year}/{gameCategory}/{ageCategory}/{gender}/` に内部リンクする（詳細ファイル名を右側から gender / ageCategory / gameCategory に分解して組み立てる。2026-06 変更）
-- プロフィールと結果ページの URL 統合はしない方針（2026-06 決定）
+- プロフィール（`/players/{slug}/`）と結果ページ（`/players/{id}/results/`）の URL 統合は当面しない方針（2026-06 決定）。カニバリ対象は curated 23 選手のみとスコープが小さく、統合は 301・コンテンツ移植を伴い毀損リスクがあるため、条件付き先送りとする。GSC でカニバリが無視できない損失を出していると確認できた場合のみ着手する。なお本番は `output: 'export'`（静的書き出し）のため、統合時の 301 はホスト側（Cloudflare `public/_redirects`）で張る必要がある。統合方向（どちらを canonical にするか）は実績の厚い側へ寄せる前提で未確定（Assumption）
 
 メタ・構造化データ:
 
