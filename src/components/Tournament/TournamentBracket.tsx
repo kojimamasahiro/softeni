@@ -1,6 +1,7 @@
 // components/Tournament/TournamentBracket.tsx
 
-import { useMemo, useState } from 'react';
+import Link from 'next/link';
+import { useMemo, useState, type ReactNode } from 'react';
 
 import { TournamentDetailData, TournamentMatch } from '@/types/index';
 
@@ -263,6 +264,25 @@ export default function TournamentBracket({
 }: TournamentBracketProps) {
   const { participants, entries, matches } = detailData;
 
+  // 個人戦で結果ページを持つ選手（playerId あり）のみリンク化する。
+  // 既存の MatchResults / TeamResults と同じ規約に揃える。
+  const renderPlayerName = (
+    player: (typeof participants)[number] | null | undefined,
+    text: string,
+  ): ReactNode => {
+    if (player?.playerId && player.lastName) {
+      return (
+        <Link
+          href={`/players/${player.playerId}/results`}
+          className="text-inherit hover:underline underline-offset-2 decoration-dotted"
+        >
+          {text}
+        </Link>
+      );
+    }
+    return text;
+  };
+
   const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(
     () => buildBracket(matches),
     [matches],
@@ -481,14 +501,23 @@ export default function TournamentBracket({
                       : null;
 
                   let displayName = '';
+                  let nameNodes: ReactNode = '';
                   if (player2) {
                     const n1 = player1?.lastName || player1?.team || '';
                     const n2 = player2?.lastName || player2?.team || '';
                     displayName = `${n1}・${n2}`;
+                    nameNodes = (
+                      <>
+                        {renderPlayerName(player1, n1)}
+                        {'・'}
+                        {renderPlayerName(player2, n2)}
+                      </>
+                    );
                   } else if (player1) {
                     displayName = player1.lastName
                       ? `${player1.lastName} ${player1.firstName || ''}`.trim()
                       : player1.team || '';
+                    nameNodes = renderPlayerName(player1, displayName);
                   }
 
                   const team1 = player1?.team || '';
@@ -556,7 +585,7 @@ export default function TournamentBracket({
                                                                 }
                                                             `}
                           >
-                            {displayName}
+                            {nameNodes}
                           </div>
 
                           {/* チーム: 通常5文字最大、より多い場合は小さく */}
