@@ -42,7 +42,11 @@ next-env.d.ts
 
 scripts/dgsks/*
 scripts/pdf/output/*
-scripts/pdf/*.pdf
 scripts/highjap/data/*
 tools/*/initialPlayer.js
 scripts/matches/input.json
+
+*.pyc
+*.pdf
+
+__pycache__/ 

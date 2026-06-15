@@ -11,6 +11,7 @@
 - [Score Analysis](./score-analysis.md)
 - [Public Pages](./public-pages.md)
 - [Tournaments Local](./tournaments-local.md)
+- [SNS 1日目投稿画像](./sns-day1-images.md)
 - [Data Model](./data-model.md)
 - [Data Import](./data-import.md)
 - [Deployment](./deployment.md)
