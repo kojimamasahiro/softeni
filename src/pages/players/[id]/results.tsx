@@ -43,6 +43,14 @@ type PlayerResultsProps = {
   majorTitlesData: MajorTitleData[];
   playerStats?: import('@/types/stats').PlayerStats | null;
   allPlayers?: import('@/types/player').PlayerInfo[];
+  relatedPlayers?: {
+    id: string;
+    name: string;
+    total: number;
+    wins: number;
+    losses: number;
+    hasPage: boolean;
+  }[];
   scoreMatchLinks?: ScoreMatchLink[];
 };
 
@@ -59,6 +67,7 @@ export default function PlayerResultsPage({
   majorTitlesData,
   playerStats,
   allPlayers,
+  relatedPlayers = [],
   scoreMatchLinks = [],
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
@@ -280,6 +289,38 @@ export default function PlayerResultsPage({
                   </Link>
                 </li>
               ))}
+            </ul>
+          </section>
+        )}
+
+        {relatedPlayers.length > 0 && (
+          <section>
+            <h2 className="mb-2 text-base font-bold text-gray-800 dark:text-gray-100">
+              関連選手（主なペア）
+            </h2>
+            <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">
+              {fullName}選手が収録大会でペアを組んだ選手です。
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              {relatedPlayers.map((p) => {
+                const label = `${p.name}（${p.total}試合 ${p.wins}勝${p.losses}敗）`;
+                return (
+                  <li key={p.id}>
+                    {p.hasPage ? (
+                      <Link
+                        href={`/players/${p.id}/results`}
+                        className="inline-block rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-blue-700 transition-colors hover:bg-blue-50 dark:border-gray-700 dark:bg-gray-800 dark:text-blue-300 dark:hover:bg-gray-700"
+                      >
+                        {label}
+                      </Link>
+                    ) : (
+                      <span className="inline-block rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                        {label}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         )}
@@ -880,6 +921,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     referencedPartnerIds.has(p.id),
   );
 
+  // 関連選手（主なペア）: byPartner を試合数で降順に並べ、
+  // 結果ページを持つ選手（index.json の count>=5）のみリンク対象にする。
+  const partnerNameById = new Map(
+    allPlayersList.map((p) => [p.id, `${p.lastName}${p.firstName}`]),
+  );
+  const countById = new Map(
+    index.map((p) => [
+      String((p as { id: number }).id),
+      (p as { count?: number }).count ?? 0,
+    ]),
+  );
+  const relatedPlayers = Object.entries(byPartnerNormalized)
+    .filter(([k]) => k !== 'singles')
+    .map(([id, agg]) => ({
+      id,
+      name: partnerNameById.get(id) ?? '',
+      total: agg.matches.total,
+      wins: agg.matches.wins,
+      losses: agg.matches.losses,
+      hasPage: (countById.get(id) ?? 0) >= 5,
+    }))
+    .filter((p) => p.name !== '')
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 8);
+
   // latest team (most recent year wins)
   const team =
     teamRecords.length > 0
@@ -934,6 +1000,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerTournaments,
       playerStats,
       allPlayers: minimalPlayersList,
+      relatedPlayers,
       majorTitlesData: await getMajorTitlesForPlayer(
         idx.lastName,
         idx.firstName,
