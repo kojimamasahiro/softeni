@@ -13,12 +13,12 @@ source .venv/bin/activate  # または python3 を直接
 `docs/wiki/sns-day1-images.md`。共通ロジックは `day1lib.py`、キャプションは `captions.py`。
 
 ```bash
-# シングルス1日目（ベスト4確定）: 表紙+CTA / ベスト4 / 準決勝カード / ハイライト
+# シングルス1日目（ベスト4確定）: 表紙+CTA / ベスト4一覧 / 準決勝確定カード（最大3枚）
 python tools/sns-images/day1_singles.py \
     data/tournaments/details/highschool-japan-cup/2026/singles-none-boys.json \
     --next-date "6/27(土)9:00〜" --tournament highschool-japan-cup --year 2026 --out out/sns
 
-# ダブルス1日目（予選リーグ終了）: 表紙+CTA / 進出サマリ / 進出ペア一覧 / 前年実績
+# ダブルス1日目（予選リーグ終了）: 表紙+CTA / 本選進出ペア一覧（1〜2枚）
 python tools/sns-images/day1_doubles.py \
     data/tournaments/details/highschool-japan-cup/2026/doubles-none-boys.json \
     --next-date "6/28(日)9:00〜" --tournament highschool-japan-cup --year 2026 --out out/sns
