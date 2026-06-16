@@ -1,5 +1,12 @@
 # Open Questions
 
+## 全日本学生選抜インドア（zennihon-university-indoor）
+
+- 第59回(2025)の開催会場が公式公開情報から特定できず、`information` の `location` を空にしている。
+  要項PDF等で会場が判明したら補完する（開催日は2025-11-03で確定）。
+- 2023(第57回)・それ以前の年度は別レイアウトの可能性があり、`scripts/pdf/university_indoor.py`
+  のページ割当・座標前提を年度ごとに確認してから取り込む。
+
 ## 公開面 / ドメイン分離
 
 方針決定済み（2026-06、ADR-003）: 「閲覧公開（メディア）＝本体 `softeni-pick.com` に統合」

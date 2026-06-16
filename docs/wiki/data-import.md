@@ -82,6 +82,17 @@ Deprecated:
   `python3 scripts/pdf/calibrate.py <pdf> [--page N] [--gap 6]`
   ※ 各列が姓/名/チーム/エリアのどれに当たるか(意味づけ)と抽出戦略の選択は
     レイアウト依存のため、出力値は確認のうえ手動で転記する。
+- `scripts/pdf/university_indoor.py`
+  全日本学生選抜インドア選手権大会（内閣総理大臣杯, JSSTA）の公式結果PDFから
+  `data/tournaments/details/zennihon-university-indoor/<year>/{doubles-none-boys,doubles-none-girls}.json`
+  を生成する専用パーサ。第59回(2025)のレイアウトを前提とする。
+  - 構成: p1-4 ブロック成績(予選リーグ星取表), p5-6 エントリー一覧+ブロック編成, p8 入賞(優勝/準優勝/3位)
+  - 予選リーグはスコアまで星取表から復元する（丸数字=勝者ゲーム）。
+  - 決勝トーナメントのゲームスコアはPDFに記載が無いため、勝敗のみ公式入賞から確定し
+    `scores` は空にする（捏造しない）。準決勝の組合せは A-D / B-C 固定。
+  - 康熙部首・異体字はNFKC + 変換表で常用字へ寄せて氏名/団体名を照合する。
+  - 棄権等でスコアの無い対戦はスキップし、該当ペアの roundrobin.rank は null。
+  - `python3 scripts/pdf/university_indoor.py <pdf> --year 2025 --out data/tournaments/details/zennihon-university-indoor`
 
 ## 高校カテゴリ系の生成
 
