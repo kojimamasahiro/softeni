@@ -29,11 +29,23 @@ type Props = {
 export const TournamentCard = ({ tournament }: Props) => {
   const { id, name, generation, groups } = tournament;
 
+  const hubHref = `/tournaments/${generation}/${id}`;
+
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-4 border-b text-gray-800 dark:text-white">
-        {name}
-      </h3>
+      <div className="mb-4 border-b pb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+          <Link href={hubHref} className="hover:underline">
+            {name}
+          </Link>
+        </h3>
+        <Link
+          href={hubHref}
+          className="text-sm text-blue-600 dark:text-blue-400 hover:underline whitespace-nowrap"
+        >
+          歴代結果・優勝者まとめ →
+        </Link>
+      </div>
 
       {/* 年ごとにカテゴリチップを並べる */}
       {groups

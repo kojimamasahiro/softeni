@@ -105,6 +105,13 @@ export default function TournamentYearResultPage({
     });
   }
 
+  if (label) {
+    breadcrumbs.push({
+      label: `${label} 結果`,
+      href: `/tournaments/${generation}/${tournamentId}`,
+    });
+  }
+
   breadcrumbs.push({
     label: `${label} ${year}年度 ${categoryLabel ? `${categoryLabel}` : ''}`,
     href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`,
@@ -113,8 +120,8 @@ export default function TournamentYearResultPage({
   return (
     <>
       <MetaHead
-        title={`${label} ${year}年 ${categoryLabel} | ソフトテニス情報`}
-        description={`${label} ${year}年 ${categoryLabel}の試合結果・トーナメント表・成績一覧`}
+        title={`${label} ${year}年${categoryLabel ? ` ${categoryLabel}` : ''} 結果・トーナメント表 | ソフトテニス情報`}
+        description={`ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。`}
         url={pageUrl}
         type="article"
       />
@@ -137,7 +144,32 @@ export default function TournamentYearResultPage({
               }),
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-              description: `${label} ${year}年度  ${categoryLabel ? `${categoryLabel} ` : ''}のソフトテニス大会結果を確認できます。過去の大会結果も掲載`,
+              description: `ソフトテニス「${label}」${year}年度${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。過去大会の結果もまとめて掲載しています。`,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SportsEvent',
+              name: `${label} ${year}年${categoryLabel ? ` ${categoryLabel}` : ''} 結果`,
+              sport: 'ソフトテニス',
+              inLanguage: 'ja',
+              url: pageUrl,
+              ...(infoForYear?.startDate && {
+                startDate: infoForYear.startDate,
+              }),
+              ...(infoForYear?.endDate && { endDate: infoForYear.endDate }),
+              ...(infoForYear?.location && {
+                location: {
+                  '@type': 'Place',
+                  name: infoForYear.location,
+                },
+              }),
+              organizer: { '@type': 'Organization', name: 'Softeni Pick' },
+              description: `ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・成績一覧。`,
             }),
           }}
         />
@@ -172,6 +204,11 @@ export default function TournamentYearResultPage({
           大会結果
         </h1>
         <section className="mb-6 px-1">
+          <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
+            ソフトテニス「{label}」{year}年度
+            {categoryLabel ? `${categoryLabel} ` : ''}
+            の試合結果・トーナメント表・優勝/上位入賞者の成績一覧です。
+          </p>
           {infoForYear?.location &&
             infoForYear?.startDate &&
             infoForYear?.endDate && (
