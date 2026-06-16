@@ -55,7 +55,8 @@
 
 画像は「文字で代替しにくい主役カット」だけにし、サマリ・番狂わせ・結果ダイジェストは
 **投稿本文（caption）＋スレッド返信（thread）のテキスト**で出す。テキストは
-`out/captions/<カテゴリ>.txt`（本文）と `_thread.txt`（返信）に生成する。
+`<--out>/captions/<カテゴリ>.txt`（本文）と `<カテゴリ>_thread.txt`（返信）に生成する
+（例: `--out out/sns` なら `out/sns/captions/`）。
 
 - 氏名は**フルネーム**（姓＋名）。所属は `学校（都道府県）`。
 - 画像サイズはX向けに **16:9(1200×675) / 1:1(1200×1200) / 4:5(1200×1500)** の3種に統一。
@@ -85,14 +86,19 @@
 - 配信URL・コート割・開始時刻詳細は**載せない**（手元に無い／外部依存）。
 - 情報JSONに該当年レコードが無い場合（例: 2026は未登録）は会場を省略して描画する。
 
-## CLI（予定インターフェース）
+## CLI（実装済み）
+
+会場（CTA）の描画には情報JSON参照のため `--tournament` / `--year` が必要。
+個別スクリプトは details.json を位置引数で受ける。
 
 ```bash
 # ダブルス1日目（本選進出）
-python tools/sns-images/day1_doubles.py <details.json> --next-date "6/28(日)9:00〜" --out out/sns
+python tools/sns-images/day1_doubles.py <details.json> \
+    --next-date "6/28(日)9:00〜" --tournament highschool-japan-cup --year 2026 --out out/sns
 
 # シングルス1日目（ベスト4）
-python tools/sns-images/day1_singles.py <details.json> --next-date "6/27(土)9:00〜" --out out/sns
+python tools/sns-images/day1_singles.py <details.json> \
+    --next-date "6/27(土)9:00〜" --tournament highschool-japan-cup --year 2026 --out out/sns
 
 # シングルス完結報告
 python tools/sns-images/result_singles.py <details.json> --out out/sns
