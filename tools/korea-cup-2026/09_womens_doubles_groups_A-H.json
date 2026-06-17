@@ -1,0 +1,731 @@
+{
+  "A": [
+    {
+      "id": 1,
+      "name": "TEMMA・MIYAMAE（JPN-1）",
+      "information": [
+        {
+          "lastName": "TEMMA",
+          "firstName": "RENA",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "TEMMA_RENA_JPN-1"
+        },
+        {
+          "lastName": "MIYAMAE",
+          "firstName": "KIHO",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MIYAMAE_KIHO_JPN-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "SUZUKI・KOSHIBA（JPN-5）",
+      "information": [
+        {
+          "lastName": "SUZUKI",
+          "firstName": "KOKONA",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SUZUKI_KOKONA_JPN-5"
+        },
+        {
+          "lastName": "KOSHIBA",
+          "firstName": "YUKI",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KOSHIBA_YUKI_JPN-5"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "ZHOU・CHIANG（TPE-1）",
+      "information": [
+        {
+          "lastName": "ZHOU",
+          "firstName": "YAN ZHEN",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "ZHOU_YAN ZHEN_TPE-1"
+        },
+        {
+          "lastName": "CHIANG",
+          "firstName": "MIN YU",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "CHIANG_MIN YU_TPE-1"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "B": [
+    {
+      "id": 1,
+      "name": "EOM・LEE（KOR-21）",
+      "information": [
+        {
+          "lastName": "EOM",
+          "firstName": "YEJIN",
+          "team": "KOR-21",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "EOM_YEJIN_KOR-21"
+        },
+        {
+          "lastName": "LEE",
+          "firstName": "SUJIN",
+          "team": "KOR-21",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LEE_SUJIN_KOR-21"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "KOTOU・SUZUKI（JPN-6）",
+      "information": [
+        {
+          "lastName": "KOTOU",
+          "firstName": "RIKO",
+          "team": "JPN-6",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KOTOU_RIKO_JPN-6"
+        },
+        {
+          "lastName": "SUZUKI",
+          "firstName": "KANAU",
+          "team": "JPN-6",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SUZUKI_KANAU_JPN-6"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "NASU・SETOGUCHI（JPN-4）",
+      "information": [
+        {
+          "lastName": "NASU",
+          "firstName": "AKIHO",
+          "team": "JPN-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NASU_AKIHO_JPN-4"
+        },
+        {
+          "lastName": "SETOGUCHI",
+          "firstName": "KOKORO",
+          "team": "JPN-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SETOGUCHI_KOKORO_JPN-4"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "TIWARI（IND-1）・LIM（KOR-24）",
+      "information": [
+        {
+          "lastName": "TIWARI",
+          "firstName": "AADHYA",
+          "team": "IND-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "TIWARI_AADHYA_IND-1"
+        },
+        {
+          "lastName": "LIM",
+          "firstName": "SOYOUNG",
+          "team": "KOR-24",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LIM_SOYOUNG_KOR-24"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "C": [
+    {
+      "id": 1,
+      "name": "MOON・BAEK（KOR-23）",
+      "information": [
+        {
+          "lastName": "MOON",
+          "firstName": "SEONHYE",
+          "team": "KOR-23",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MOON_SEONHYE_KOR-23"
+        },
+        {
+          "lastName": "BAEK",
+          "firstName": "DANBI",
+          "team": "KOR-23",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "BAEK_DANBI_KOR-23"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "HAMAGUCHI・ABE（JPN-7）",
+      "information": [
+        {
+          "lastName": "HAMAGUCHI",
+          "firstName": "MEIKA",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HAMAGUCHI_MEIKA_JPN-7"
+        },
+        {
+          "lastName": "ABE",
+          "firstName": "HINATA",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "ABE_HINATA_JPN-7"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "KIM・KIM（KOR-21）",
+      "information": [
+        {
+          "lastName": "KIM",
+          "firstName": "YEONHWA",
+          "team": "KOR-21",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KIM_YEONHWA_KOR-21"
+        },
+        {
+          "lastName": "KIM",
+          "firstName": "HANSUL",
+          "team": "KOR-21",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KIM_HANSUL_KOR-21"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "LIN・LIN（TPE-2）",
+      "information": [
+        {
+          "lastName": "LIN",
+          "firstName": "HSIN-YING",
+          "team": "TPE-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LIN_HSIN-YING_TPE-2"
+        },
+        {
+          "lastName": "LIN",
+          "firstName": "YI-ZHEN",
+          "team": "TPE-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LIN_YI-ZHEN_TPE-2"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "D": [
+    {
+      "id": 1,
+      "name": "LEE・LIM（KOR-24）",
+      "information": [
+        {
+          "lastName": "LEE",
+          "firstName": "JIA",
+          "team": "KOR-24",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LEE_JIA_KOR-24"
+        },
+        {
+          "lastName": "LIM",
+          "firstName": "JINAH",
+          "team": "KOR-24",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LIM_JINAH_KOR-24"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "LIN・CHEN（TPE-2）",
+      "information": [
+        {
+          "lastName": "LIN",
+          "firstName": "SHU-PING",
+          "team": "TPE-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LIN_SHU-PING_TPE-2"
+        },
+        {
+          "lastName": "CHEN",
+          "firstName": "JUI-TING",
+          "team": "TPE-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "CHEN_JUI-TING_TPE-2"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "IWAKURA・TAKAHASHI（JPN-1）",
+      "information": [
+        {
+          "lastName": "IWAKURA",
+          "firstName": "AYAKA",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "IWAKURA_AYAKA_JPN-1"
+        },
+        {
+          "lastName": "TAKAHASHI",
+          "firstName": "KIZUNA",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "TAKAHASHI_KIZUNA_JPN-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "HASHIBA・SATO（JPN-7）",
+      "information": [
+        {
+          "lastName": "HASHIBA",
+          "firstName": "KAGURA",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HASHIBA_KAGURA_JPN-7"
+        },
+        {
+          "lastName": "SATO",
+          "firstName": "SARA",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SATO_SARA_JPN-7"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "E": [
+    {
+      "id": 1,
+      "name": "HUANG・HSU（TPE-1）",
+      "information": [
+        {
+          "lastName": "HUANG",
+          "firstName": "SHIH YUAN",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HUANG_SHIH YUAN_TPE-1"
+        },
+        {
+          "lastName": "HSU",
+          "firstName": "CHIAO YING",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HSU_CHIAO YING_TPE-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "TENMA・TAKAHASHI（JPN-8）",
+      "information": [
+        {
+          "lastName": "TENMA",
+          "firstName": "MIKA",
+          "team": "JPN-8",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "TENMA_MIKA_JPN-8"
+        },
+        {
+          "lastName": "TAKAHASHI",
+          "firstName": "HIKARU",
+          "team": "JPN-8",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "TAKAHASHI_HIKARU_JPN-8"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "KOTO（JPN-5）・NAKASHIMA（JPN-6）",
+      "information": [
+        {
+          "lastName": "KOTO",
+          "firstName": "HIMARI",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KOTO_HIMARI_JPN-5"
+        },
+        {
+          "lastName": "NAKASHIMA",
+          "firstName": "MAIKO",
+          "team": "JPN-6",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NAKASHIMA_MAIKO_JPN-6"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "KIM・HAN（KOR-24）",
+      "information": [
+        {
+          "lastName": "KIM",
+          "firstName": "YESOL",
+          "team": "KOR-24",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KIM_YESOL_KOR-24"
+        },
+        {
+          "lastName": "HAN",
+          "firstName": "SUBIN",
+          "team": "KOR-24",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HAN_SUBIN_KOR-24"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "F": [
+    {
+      "id": 1,
+      "name": "YOSHINO・HARADA（JPN-5）",
+      "information": [
+        {
+          "lastName": "YOSHINO",
+          "firstName": "MAMI",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "YOSHINO_MAMI_JPN-5"
+        },
+        {
+          "lastName": "HARADA",
+          "firstName": "MIYU",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HARADA_MIYU_JPN-5"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "ASAMI・SAKAMOTO（JPN-4）",
+      "information": [
+        {
+          "lastName": "ASAMI",
+          "firstName": "KYOKO",
+          "team": "JPN-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "ASAMI_KYOKO_JPN-4"
+        },
+        {
+          "lastName": "SAKAMOTO",
+          "firstName": "MARINO",
+          "team": "JPN-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SAKAMOTO_MARINO_JPN-4"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "HWANG（KOR-21）・JEONG（KOR-22）",
+      "information": [
+        {
+          "lastName": "HWANG",
+          "firstName": "JEONGMI",
+          "team": "KOR-21",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HWANG_JEONGMI_KOR-21"
+        },
+        {
+          "lastName": "JEONG",
+          "firstName": "SANGHEE",
+          "team": "KOR-22",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "JEONG_SANGHEE_KOR-22"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "HAN・KIM（KOR-23）",
+      "information": [
+        {
+          "lastName": "HAN",
+          "firstName": "SANGKYUNG",
+          "team": "KOR-23",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HAN_SANGKYUNG_KOR-23"
+        },
+        {
+          "lastName": "KIM",
+          "firstName": "MINJEONG",
+          "team": "KOR-23",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KIM_MINJEONG_KOR-23"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "G": [
+    {
+      "id": 1,
+      "name": "AKIBA・MATAE（JPN-3）",
+      "information": [
+        {
+          "lastName": "AKIBA",
+          "firstName": "HARUKA",
+          "team": "JPN-3",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "AKIBA_HARUKA_JPN-3"
+        },
+        {
+          "lastName": "MATAE",
+          "firstName": "RIN",
+          "team": "JPN-3",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MATAE_RIN_JPN-3"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "HOSODA・NIIYAMA（JPN-7）",
+      "information": [
+        {
+          "lastName": "HOSODA",
+          "firstName": "MIHO",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HOSODA_MIHO_JPN-7"
+        },
+        {
+          "lastName": "NIIYAMA",
+          "firstName": "CHIHARU",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NIIYAMA_CHIHARU_JPN-7"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "LEE・JUNG（KOR-23）",
+      "information": [
+        {
+          "lastName": "LEE",
+          "firstName": "MINSEO",
+          "team": "KOR-23",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LEE_MINSEO_KOR-23"
+        },
+        {
+          "lastName": "JUNG",
+          "firstName": "SUYUN",
+          "team": "KOR-23",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "JUNG_SUYUN_KOR-23"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "LO・HUANG（TPE-1）",
+      "information": [
+        {
+          "lastName": "LO",
+          "firstName": "SHU TING",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LO_SHU TING_TPE-1"
+        },
+        {
+          "lastName": "HUANG",
+          "firstName": "YU TZU",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HUANG_YU TZU_TPE-1"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "H": [
+    {
+      "id": 1,
+      "name": "SHOJI・HARA（JPN-4）",
+      "information": [
+        {
+          "lastName": "SHOJI",
+          "firstName": "KOTORI",
+          "team": "JPN-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SHOJI_KOTORI_JPN-4"
+        },
+        {
+          "lastName": "HARA",
+          "firstName": "CHIHARU",
+          "team": "JPN-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HARA_CHIHARU_JPN-4"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "MATSUOKA・MUKAIYAMA（JPN-8）",
+      "information": [
+        {
+          "lastName": "MATSUOKA",
+          "firstName": "KOTOMI",
+          "team": "JPN-8",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MATSUOKA_KOTOMI_JPN-8"
+        },
+        {
+          "lastName": "MUKAIYAMA",
+          "firstName": "SERA",
+          "team": "JPN-8",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MUKAIYAMA_SERA_JPN-8"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "MAEDA・NAKATANI（JPN-1）",
+      "information": [
+        {
+          "lastName": "MAEDA",
+          "firstName": "RIO",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MAEDA_RIO_JPN-1"
+        },
+        {
+          "lastName": "NAKATANI",
+          "firstName": "SAKURA",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NAKATANI_SAKURA_JPN-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "KIM・PARK（KOR-22）",
+      "information": [
+        {
+          "lastName": "KIM",
+          "firstName": "UNJIN",
+          "team": "KOR-22",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KIM_UNJIN_KOR-22"
+        },
+        {
+          "lastName": "PARK",
+          "firstName": "BITNA",
+          "team": "KOR-22",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "PARK_BITNA_KOR-22"
+        }
+      ],
+      "category": "doubles"
+    }
+  ]
+}
