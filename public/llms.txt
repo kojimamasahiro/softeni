@@ -1,0 +1,41 @@
+# Softeni Pick
+
+> ソフトテニスの試合結果・選手情報を集約したデータベース型 Web メディア。全国大会を中心に、選手ごとの成績、チーム戦績、大会データ、試合データを構造化して掲載しています。
+
+Softeni Pick（ソフテニ・ピック）は、ソフトテニスの大会結果や選手・チーム情報を整理・記録する個人運営の Web サービスです。選手ごとの過去成績や出場履歴の検索・閲覧、大会データの構造化と長期保存、指導者・選手・ファンによる振り返りや分析への活用を目的としています。
+
+公開面は同一コードベースの 2 サイトで運用しています。
+
+- `softeni-pick.com` — 本体サイト（大会・選手・チーム・高校カテゴリ）
+- `score.softeni-pick.com` — 試合結果と成長分析を公開する閲覧専用サイト
+
+すべてのページは Static Site Generation (SSG) で生成され、データは `data/` 配下の静的 JSON を一次ソースとしています。
+
+## 主要ページ（softeni-pick.com）
+
+- [トップページ](https://softeni-pick.com/): 最近の大会と注目選手
+- [選手一覧](https://softeni-pick.com/players): 選手の検索・閲覧
+- [大会一覧](https://softeni-pick.com/tournaments): 全国大会を中心とした大会データ
+- [高校カテゴリ](https://softeni-pick.com/highschool): 全国大会成績を軸にした高校（インターハイ等）情報
+- [ST League](https://softeni-pick.com/st-league): ST リーグ関連ページ
+
+## 試合結果・分析（score.softeni-pick.com）
+
+- [試合結果一覧](https://score.softeni-pick.com/matches): 試合結果の閲覧
+- [成長分析](https://score.softeni-pick.com/matches/growth): 試合データに基づく成長分析
+
+## データ構造
+
+- 大会データ: `data/tournament/[tournamentId]/` 配下に大会基本情報（`information/[year].json`）と試合結果詳細（`details/[year]/[category].json`）
+- 選手データ: `data/players/[playerId]/` 配下に選手プロフィール（`information.json`）と集計・最新試合（`analysis.json`）
+
+## サイト情報
+
+- [このサイトについて](https://softeni-pick.com/about): 運営方針とサービス概要
+- [よくある質問](https://softeni-pick.com/faq)
+- [お問い合わせ](https://softeni-pick.com/contact)
+- [プライバシーポリシー](https://softeni-pick.com/privacy)
+
+## Optional
+
+- [サイトマップ](https://softeni-pick.com/sitemap.xml): 全ページの一覧
