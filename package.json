@@ -52,7 +52,7 @@
     "check:growth": "node scripts/check-growth-analysis.mjs",
     "crawl:local-tournaments": "node scripts/crawl-local-tournaments.mjs",
     "start": "next start",
-    "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs",
+    "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
     "lint": "eslint --fix ."
   },
   "dependencies": {

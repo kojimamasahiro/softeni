@@ -159,6 +159,14 @@
 - title / description には所属チーム・直近成績・通算成績を埋め込み、ページごとに一意化する
 - curated プロフィールには FAQ（身長・所属・ポジション）を可視コンテンツ + FAQPage 構造化データで掲載する
 
+選手結果ページの noindex 選別（2026-06 追加）:
+
+- 背景: GSC の「クロール済み - インデックス未登録」が選手結果ページ（約 1,800 件）でほぼ全件発生していた。調査の結果、内部リンク（全ページ被リンク 3 本以上・トップから 2〜4 クリック）・クロール深度・canonical / robots・重複度はいずれも問題なく、原因は **本文の薄さ + ドメイン評価（インデックス枠）** と判断した。リンク追加は頭打ちのため、薄いページを noindex してインデックス枠を厚いページ・全国高校大会出場選手に集中させる方針を採る。
+- 判定（`src/pages/players/[id]/results.tsx` の `getStaticProps`）: **収録試合数 `totalMatches >= 15`** または **全国高校大会出場歴あり**（`playerMatches` のいずれかの大会の `generationId === 'highschool'`）なら index 対象。どちらも満たさなければ `noindex` にする。全国高校大会出場選手（有名校の主力を含む）は試合数に関わらず常に index 対象とし、「検索対象になってほしい有名校ページ」を保護する。閾値定数は `PLAYER_INDEX_MIN_MATCHES`。
+- robots: noindex 時は `noindex, follow`（`MetaHead` の `noindexFollow`）。薄いページからの内部リンク（関連選手・大会ページ）で残すページへ評価を流すため、`nofollow` にはしない。
+- 自動復帰: 判定はビルド時のデータ由来のため、試合データが増えて `totalMatches` が閾値を超える、または全国高校大会に出場すると、**次回ビルドで自動的に index 対象へ戻る**（手動の解除は不要）。逆に閾値・基準を変えたい場合は `PLAYER_INDEX_MIN_MATCHES` か判定式の 1 箇所だけ変更すればよい。
+- sitemap 連動: `next-sitemap`（`output: 'export'`）は `out/**/*.html` を一括列挙するだけで robots meta を見ないため、noindex ページも sitemap に載る。これを防ぐため postbuild に `scripts/filter-noindex-from-sitemap.mjs` を追加し、生成 HTML の `robots` meta が noindex のページの canonical を sitemap から除去する。判定はページ側 1 箇所に集約し、sitemap は生成物から派生させる（ロジック二重化なし）。postbuild 順: `next-sitemap` → `sort-sitemaps` → `filter-noindex-from-sitemap`。
+
 ### 試合詳細ページの SEO 方針（2026-06 改善）
 
 対象は `src/pages/beta/matches-results/[matchId]/index.tsx`（実装本体）と、掲載大会配下のネスト URL（`/tournaments/.../matches/[matchId]`）。両者は同じ `PublicMatchDetailPage` を共有するため SEO も共通。
@@ -180,6 +188,18 @@
 sitemap:
 
 - `next-sitemap.config.js` で選手結果ページに最新出場大会日、大会結果ページに開催日を `lastmod` として出力する
+
+### SportsEvent 構造化データの推奨項目（2026-06 追加）
+
+GSC「イベント」拡張レポートで `SportsEvent` の推奨項目不足の警告（`eventStatus` / `image` / `endDate` / `location.address` / `organizer.url` / `performer` / `offers` など）が出ていた。必須項目（`name` / `startDate` / `location`）は充足しておりリッチリザルト自体はブロックされない警告だが、データと矛盾しない範囲で補う。
+
+- 共通ヘルパー `lib/sportsEventJsonLd.ts` に集約し、4 箇所（大会年度別結果ページ、大会ハブの歴代優勝者 ItemList、試合詳細ページ、ST リーグ試合ページ）で利用する。
+- 常に付与: `eventStatus = EventScheduled` / `eventAttendanceMode = OfflineEventAttendanceMode` / `image`（`siteConfig.ogImage`）。
+- `endDate` は無ければ `startDate` で補完（`resolveEventDates`）。
+- `location` は常に出力し、`PostalAddress`（最低限 `addressCountry: 'JP'`、都道府県等が分かれば `addressRegion`）を含める（`buildEventPlace`）。
+- `organizer` は `url` 付き（`buildEventOrganizer`、既定 Softeni Pick。ST リーグは日本ソフトテニス連盟）。
+- `performer`: 出演者が一意に定まるページのみ付与する。試合詳細＝対戦両チーム、歴代優勝者＝優勝者。年度別結果ページは出演者が一意でないため付与せず、`performer` の警告は許容する。
+- `offers` は付与しない。無料の結果ページにチケット販売情報を付けるのは実態とずれ、虚偽の構造化データは手動対策リスクがあるため。`offers` の警告は許容する。
 
 ### llms.txt（2026-06 追加）
 

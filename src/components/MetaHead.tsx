@@ -12,6 +12,10 @@ type MetaHeadProps = {
   type?: 'website' | 'article';
   siteName?: string;
   locale?: string;
+  noindex?: boolean;
+  // noindex 時にリンクは follow させたい場合に true（薄いページを noindex しつつ
+  // そこからの内部リンクで残すページへ評価を流す用途）。既定は noindex, nofollow。
+  noindexFollow?: boolean;
 };
 
 export default function MetaHead({
@@ -23,11 +27,19 @@ export default function MetaHead({
   type = 'website',
   siteName = siteConfig.siteName,
   locale = 'ja_JP',
+  noindex = false,
+  noindexFollow = false,
 }: MetaHeadProps) {
   return (
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && (
+        <meta
+          name="robots"
+          content={noindexFollow ? 'noindex, follow' : 'noindex, nofollow'}
+        />
+      )}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />

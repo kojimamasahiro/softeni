@@ -24,6 +24,12 @@ import {
   type ScoreMatchLink,
 } from '@/lib/matchReverseIndex';
 import {
+  buildEventOrganizer,
+  buildEventPlace,
+  resolveEventDates,
+  sportsEventBaseFields,
+} from '@/lib/sportsEventJsonLd';
+import {
   TournamentDetailData,
   TournamentIndexEntry,
   TournamentInformationEntry,
@@ -158,17 +164,13 @@ export default function TournamentYearResultPage({
               sport: 'ソフトテニス',
               inLanguage: 'ja',
               url: pageUrl,
-              ...(infoForYear?.startDate && {
-                startDate: infoForYear.startDate,
-              }),
-              ...(infoForYear?.endDate && { endDate: infoForYear.endDate }),
-              ...(infoForYear?.location && {
-                location: {
-                  '@type': 'Place',
-                  name: infoForYear.location,
-                },
-              }),
-              organizer: { '@type': 'Organization', name: 'Softeni Pick' },
+              ...sportsEventBaseFields,
+              ...resolveEventDates(
+                infoForYear?.startDate,
+                infoForYear?.endDate,
+              ),
+              location: buildEventPlace(infoForYear?.location),
+              organizer: buildEventOrganizer(),
               description: `ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・成績一覧。`,
             }),
           }}

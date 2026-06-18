@@ -13,6 +13,12 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import {
+  buildEventOrganizer,
+  buildEventPlace,
+  resolveEventDates,
+  sportsEventBaseFields,
+} from '@/lib/sportsEventJsonLd';
+import {
   TournamentIndexEntry,
   TournamentInformationEntry,
 } from '@/types/index';
@@ -132,11 +138,19 @@ export default function TournamentHubPage({
                     sport: 'ソフトテニス',
                     inLanguage: 'ja',
                     url: `https://softeni-pick.com${r.href}`,
-                    ...(r.startDate && { startDate: r.startDate }),
-                    ...(r.endDate && { endDate: r.endDate }),
-                    ...(r.location && {
-                      location: { '@type': 'Place', name: r.location },
-                    }),
+                    ...sportsEventBaseFields,
+                    ...resolveEventDates(r.startDate, r.endDate),
+                    location: buildEventPlace(r.location),
+                    organizer: buildEventOrganizer(),
+                    // performer: 優勝者（その大会の出場者）を推奨項目として付与
+                    ...(r.winner
+                      ? {
+                          performer: {
+                            '@type': 'SportsTeam',
+                            name: r.winner,
+                          },
+                        }
+                      : {}),
                     description: `優勝: ${r.winner}`,
                   },
                 })),

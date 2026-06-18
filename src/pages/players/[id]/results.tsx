@@ -52,6 +52,8 @@ type PlayerResultsProps = {
     hasPage: boolean;
   }[];
   scoreMatchLinks?: ScoreMatchLink[];
+  // SEO: 収録試合が薄く全国高校大会出場もない選手ページは noindex にする（インデックス枠の集中）。
+  noindex?: boolean;
 };
 
 export default function PlayerResultsPage({
@@ -69,6 +71,7 @@ export default function PlayerResultsPage({
   allPlayers,
   relatedPlayers = [],
   scoreMatchLinks = [],
+  noindex = false,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
   const pageUrl = `https://softeni-pick.com/players/${playerId}/results/`;
@@ -135,6 +138,8 @@ export default function PlayerResultsPage({
         description={summarySentence}
         url={pageUrl}
         type="article"
+        noindex={noindex}
+        noindexFollow={noindex}
       />
 
       <Head>
@@ -987,9 +992,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // ignore
   }
 
+  // --- SEO: 薄い選手ページの noindex 判定 ---
+  // 「クロール済み - インデックス未登録」対策として、収録試合が薄く、かつ
+  // 全国高校大会（generation = 'highschool'）の出場歴も無い選手ページを noindex にし、
+  // 内容の厚いページ・全国高校大会出場選手にインデックス枠を集中させる。
+  // 全国高校大会出場選手（有名校の主力選手を含む）は試合数に関わらず常にインデックス対象とする。
+  // sitemap からの除外は postbuild（scripts/filter-noindex-from-sitemap.mjs）が
+  // 生成 HTML の robots meta を読んで自動的に行うため、判定はこの 1 箇所に集約する。
+  const PLAYER_INDEX_MIN_MATCHES = 15;
+  const hasHighschoolNational = playerMatches.some(
+    (m) => tournamentMeta.get(m.tournamentId)?.generationId === 'highschool',
+  );
+  const shouldIndex =
+    totalMatches >= PLAYER_INDEX_MIN_MATCHES || hasHighschoolNational;
+
   return {
     props: {
       playerId,
+      noindex: !shouldIndex,
       lastName: idx.lastName,
       firstName: idx.firstName,
       team,

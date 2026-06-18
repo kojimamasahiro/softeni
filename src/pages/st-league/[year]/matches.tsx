@@ -5,6 +5,11 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import {
+  buildEventOrganizer,
+  buildEventPlace,
+  sportsEventBaseFields,
+} from '@/lib/sportsEventJsonLd';
+import {
   buildPlayerMap,
   computeRanking,
   divisionOf,
@@ -549,21 +554,17 @@ export default function MatchesPage({
               '@type': 'SportsEvent',
               name: editionLabel,
               sport: 'ソフトテニス',
+              ...sportsEventBaseFields,
               ...(meta?.period && {
                 startDate: meta.period.start,
-                endDate: meta.period.end,
+                endDate: meta.period.end ?? meta.period.start,
               }),
-              ...(meta?.venue && {
-                location: {
-                  '@type': 'Place',
-                  name: meta.venue,
-                  ...(meta.location && { address: meta.location }),
-                },
-              }),
-              organizer: {
-                '@type': 'Organization',
-                name: '公益財団法人 日本ソフトテニス連盟',
-              },
+              location: buildEventPlace(meta?.venue, meta?.location),
+              organizer: buildEventOrganizer(
+                '公益財団法人 日本ソフトテニス連盟',
+                'https://www.jsta.or.jp/',
+              ),
+              description: `${editionLabel}の試合結果・対戦カード一覧。`,
               url: pageUrl,
             }),
           }}

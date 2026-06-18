@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import { Game, Match, Point } from '../../../../types/database';
+
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import YouTubeRangePlayer, {
@@ -31,6 +33,12 @@ import {
   getPublicMatchesListPath,
   isScoreSiteMode,
 } from '@/lib/siteConfig';
+import {
+  buildEventOrganizer,
+  buildEventPlace,
+  resolveEventDates,
+  sportsEventBaseFields,
+} from '@/lib/sportsEventJsonLd';
 import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
 import {
   getTournamentInfoSSR,
@@ -40,8 +48,6 @@ import {
   buildYouTubeWatchUrlFromVideoId,
   formatVideoTimestamp,
 } from '@/lib/youtubePlayback';
-
-import { Game, Match, Point } from '../../../../types/database';
 
 interface PublicMatchDetailProps {
   match: Match;
@@ -1496,12 +1502,19 @@ export const PublicMatchDetailPage = ({
     name: `${seoMatchup}（${seoTournamentName}${seoRoundLabel}）`,
     sport: 'ソフトテニス',
     url: seoCanonicalUrl,
-    startDate: seoEventDate,
+    ...sportsEventBaseFields,
+    ...resolveEventDates(seoEventDate, seoEventDate),
     description: seoDescription,
     competitor: [
       { '@type': 'SportsTeam', name: seoTeamA },
       { '@type': 'SportsTeam', name: seoTeamB },
     ],
+    // performer: 対戦両チーム（Google「イベント」の performer 推奨項目に対応）
+    performer: [
+      { '@type': 'SportsTeam', name: seoTeamA },
+      { '@type': 'SportsTeam', name: seoTeamB },
+    ],
+    organizer: buildEventOrganizer(),
     ...(seoTournamentUrl
       ? {
           superEvent: {
@@ -1511,9 +1524,7 @@ export const PublicMatchDetailPage = ({
           },
         }
       : {}),
-    ...(match.court_name
-      ? { location: { '@type': 'Place', name: match.court_name } }
-      : {}),
+    location: buildEventPlace(match.court_name),
   };
 
   // 可視パンくず。JSON-LD の BreadcrumbList と同じ階層・順序に揃える。
