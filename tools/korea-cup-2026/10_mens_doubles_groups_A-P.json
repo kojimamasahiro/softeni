@@ -1,4 +1,263 @@
 {
+  "A": [
+    {
+      "id": 1,
+      "name": "UCHIMOTO・UEMATSU（JPN-1）",
+      "information": [
+        {
+          "lastName": "UCHIMOTO",
+          "firstName": "TAKAFUMI",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "UCHIMOTO_TAKAFUMI_JPN-1"
+        },
+        {
+          "lastName": "UEMATSU",
+          "firstName": "TOSHIKI",
+          "team": "JPN-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "UEMATSU_TOSHIKI_JPN-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "AZAMI・HATSUSHIKA（JPN-7）",
+      "information": [
+        {
+          "lastName": "AZAMI",
+          "firstName": "SHUNICHIRO",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "AZAMI_SHUNICHIRO_JPN-7"
+        },
+        {
+          "lastName": "HATSUSHIKA",
+          "firstName": "TOKIYA",
+          "team": "JPN-7",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HATSUSHIKA_TOKIYA_JPN-7"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "BHARDWAJ・VEGDA（IND-2）",
+      "information": [
+        {
+          "lastName": "BHARDWAJ",
+          "firstName": "TANISHK",
+          "team": "IND-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "BHARDWAJ_TANISHK_IND-2"
+        },
+        {
+          "lastName": "VEGDA",
+          "firstName": "JAININ HASMUKHBHAI",
+          "team": "IND-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "VEGDA_JAININ HASMUKHBHAI_IND-2"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "B": [
+    {
+      "id": 1,
+      "name": "YU・LIN（TPE-1）",
+      "information": [
+        {
+          "lastName": "YU",
+          "firstName": "KAI WEN",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "YU_KAI WEN_TPE-1"
+        },
+        {
+          "lastName": "LIN",
+          "firstName": "WEI CHIEH",
+          "team": "TPE-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LIN_WEI CHIEH_TPE-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "JEONG・KIM（KOR-10）",
+      "information": [
+        {
+          "lastName": "JEONG",
+          "firstName": "JEONGIL",
+          "team": "KOR-10",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "JEONG_JEONGIL_KOR-10"
+        },
+        {
+          "lastName": "KIM",
+          "firstName": "HANSOL",
+          "team": "KOR-10",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KIM_HANSOL_KOR-10"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "HAYATO・KENSAKU（JPN-10）",
+      "information": [
+        {
+          "lastName": "HAYATO",
+          "firstName": "OGATA",
+          "team": "JPN-10",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HAYATO_OGATA_JPN-10"
+        },
+        {
+          "lastName": "KENSAKU",
+          "firstName": "YODA",
+          "team": "JPN-10",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KENSAKU_YODA_JPN-10"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "MYAGMARJAV・BATAA（MGL）",
+      "information": [
+        {
+          "lastName": "MYAGMARJAV",
+          "firstName": "GUNBILIG",
+          "team": "MGL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MYAGMARJAV_GUNBILIG_MGL"
+        },
+        {
+          "lastName": "BATAA",
+          "firstName": "MUNKHMURUN",
+          "team": "MGL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "BATAA_MUNKHMURUN_MGL"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "C": [
+    {
+      "id": 1,
+      "name": "LEE・PARK（KOR-1）",
+      "information": [
+        {
+          "lastName": "LEE",
+          "firstName": "HYUNGWON",
+          "team": "KOR-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LEE_HYUNGWON_KOR-1"
+        },
+        {
+          "lastName": "PARK",
+          "firstName": "JAEKYU",
+          "team": "KOR-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "PARK_JAEKYU_KOR-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "MOON・PARK（KOR-6）",
+      "information": [
+        {
+          "lastName": "MOON",
+          "firstName": "JIHYUK",
+          "team": "KOR-6",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MOON_JIHYUK_KOR-6"
+        },
+        {
+          "lastName": "PARK",
+          "firstName": "JAEMIN",
+          "team": "KOR-6",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "PARK_JAEMIN_KOR-6"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "WAKAMIYA・NARUSHIMA（JPN-5）",
+      "information": [
+        {
+          "lastName": "WAKAMIYA",
+          "firstName": "HIROTO",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "WAKAMIYA_HIROTO_JPN-5"
+        },
+        {
+          "lastName": "NARUSHIMA",
+          "firstName": "AYUMU",
+          "team": "JPN-5",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NARUSHIMA_AYUMU_JPN-5"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "AYAZ・MALIK（PAK）",
+      "information": [
+        {
+          "lastName": "AYAZ",
+          "firstName": "NOUFIL",
+          "team": "PAK",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "AYAZ_NOUFIL_PAK"
+        },
+        {
+          "lastName": "MALIK",
+          "firstName": "M. HUSNAIN UL HAQ",
+          "team": "PAK",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MALIK_M. HUSNAIN UL HAQ_PAK"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
   "D": [
     {
       "id": 1,
@@ -840,6 +1099,382 @@
           "prefecture": "",
           "playerId": null,
           "tempId": "SIMPATIAJI_PRIMA_INA"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "M": [
+    {
+      "id": 1,
+      "name": "A.・ABDUHOO（PAK）",
+      "information": [
+        {
+          "lastName": "A.",
+          "firstName": "HAMZA AHMED SAEED",
+          "team": "PAK",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "A._HAMZA AHMED SAEED_PAK"
+        },
+        {
+          "lastName": "ABDUHOO",
+          "firstName": "MUHAMMAD",
+          "team": "PAK",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "ABDUHOO_MUHAMMAD_PAK"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "BATAA・GARIDMAGNAI（MGL）",
+      "information": [
+        {
+          "lastName": "BATAA",
+          "firstName": "MUNKHTULGA",
+          "team": "MGL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "BATAA_MUNKHTULGA_MGL"
+        },
+        {
+          "lastName": "GARIDMAGNAI",
+          "firstName": "TENGIS",
+          "team": "MGL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "GARIDMAGNAI_TENGIS_MGL"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "BONIECKI・JAROSZ（POL）",
+      "information": [
+        {
+          "lastName": "BONIECKI",
+          "firstName": "MICHAL",
+          "team": "POL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "BONIECKI_MICHAL_POL"
+        },
+        {
+          "lastName": "JAROSZ",
+          "firstName": "ALEKSANDER",
+          "team": "POL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "JAROSZ_ALEKSANDER_POL"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "TALATAYOD・ALCOSEBA（PHI）",
+      "information": [
+        {
+          "lastName": "TALATAYOD",
+          "firstName": "DHEO",
+          "team": "PHI",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "TALATAYOD_DHEO_PHI"
+        },
+        {
+          "lastName": "ALCOSEBA",
+          "firstName": "MARK ANTHONY",
+          "team": "PHI",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "ALCOSEBA_MARK ANTHONY_PHI"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "N": [
+    {
+      "id": 1,
+      "name": "ARCILLA・NUGUIT（PHI）",
+      "information": [
+        {
+          "lastName": "ARCILLA",
+          "firstName": "JOSEPH ABAS",
+          "team": "PHI",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "ARCILLA_JOSEPH ABAS_PHI"
+        },
+        {
+          "lastName": "NUGUIT",
+          "firstName": "SAMUEL REANE",
+          "team": "PHI",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NUGUIT_SAMUEL REANE_PHI"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "PATEL・YADAV（IND-1）",
+      "information": [
+        {
+          "lastName": "PATEL",
+          "firstName": "ANIKET CHIRAG",
+          "team": "IND-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "PATEL_ANIKET CHIRAG_IND-1"
+        },
+        {
+          "lastName": "YADAV",
+          "firstName": "OM",
+          "team": "IND-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "YADAV_OM_IND-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "KANG・LEE（KOR-4）",
+      "information": [
+        {
+          "lastName": "KANG",
+          "firstName": "KIMOON",
+          "team": "KOR-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "KANG_KIMOON_KOR-4"
+        },
+        {
+          "lastName": "LEE",
+          "firstName": "DONGGYU",
+          "team": "KOR-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LEE_DONGGYU_KOR-4"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "SANGER・FALEVI（INA）",
+      "information": [
+        {
+          "lastName": "SANGER",
+          "firstName": "FERNANDO",
+          "team": "INA",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SANGER_FERNANDO_INA"
+        },
+        {
+          "lastName": "FALEVI",
+          "firstName": "MUHAMMAD REZA",
+          "team": "INA",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "FALEVI_MUHAMMAD REZA_INA"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "O": [
+    {
+      "id": 1,
+      "name": "STANCZYKIEWICZ（POL）・SINGH（IND-2）",
+      "information": [
+        {
+          "lastName": "STANCZYKIEWICZ",
+          "firstName": "KRZYSZTOF",
+          "team": "POL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "STANCZYKIEWICZ_KRZYSZTOF_POL"
+        },
+        {
+          "lastName": "SINGH",
+          "firstName": "JASRAJAN",
+          "team": "IND-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SINGH_JASRAJAN_IND-2"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "CHAO・SOY（CAM）",
+      "information": [
+        {
+          "lastName": "CHAO",
+          "firstName": "VIVA",
+          "team": "CAM",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "CHAO_VIVA_CAM"
+        },
+        {
+          "lastName": "SOY",
+          "firstName": "SOTHUN",
+          "team": "CAM",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SOY_SOTHUN_CAM"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "SANGTE・MISHRA（IND-2）",
+      "information": [
+        {
+          "lastName": "SANGTE",
+          "firstName": "NIPUN",
+          "team": "IND-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SANGTE_NIPUN_IND-2"
+        },
+        {
+          "lastName": "MISHRA",
+          "firstName": "PRANAV",
+          "team": "IND-2",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MISHRA_PRANAV_IND-2"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "LEE・SONG（KOR-4）",
+      "information": [
+        {
+          "lastName": "LEE",
+          "firstName": "JAEWOOK",
+          "team": "KOR-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "LEE_JAEWOOK_KOR-4"
+        },
+        {
+          "lastName": "SONG",
+          "firstName": "YEONWOO",
+          "team": "KOR-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "SONG_YEONWOO_KOR-4"
+        }
+      ],
+      "category": "doubles"
+    }
+  ],
+  "P": [
+    {
+      "id": 1,
+      "name": "N.・THIENCHAIPONG（THA）",
+      "information": [
+        {
+          "lastName": "N.",
+          "firstName": "PRASROEDCHAI",
+          "team": "THA",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "N._PRASROEDCHAI_THA"
+        },
+        {
+          "lastName": "THIENCHAIPONG",
+          "firstName": "POOMPAT",
+          "team": "THA",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "THIENCHAIPONG_POOMPAT_THA"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 2,
+      "name": "MEENA・CHOUDHARY（IND-1）",
+      "information": [
+        {
+          "lastName": "MEENA",
+          "firstName": "JAY",
+          "team": "IND-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "MEENA_JAY_IND-1"
+        },
+        {
+          "lastName": "CHOUDHARY",
+          "firstName": "YOGESH",
+          "team": "IND-1",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "CHOUDHARY_YOGESH_IND-1"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 3,
+      "name": "K.・NYAMDORJ（MGL）",
+      "information": [
+        {
+          "lastName": "K.",
+          "firstName": "KHALIUNBAYAR",
+          "team": "MGL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "K._KHALIUNBAYAR_MGL"
+        },
+        {
+          "lastName": "NYAMDORJ",
+          "firstName": "BUD",
+          "team": "MGL",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "NYAMDORJ_BUD_MGL"
+        }
+      ],
+      "category": "doubles"
+    },
+    {
+      "id": 4,
+      "name": "HONG・AN（KOR-4）",
+      "information": [
+        {
+          "lastName": "HONG",
+          "firstName": "WONJIN",
+          "team": "KOR-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "HONG_WONJIN_KOR-4"
+        },
+        {
+          "lastName": "AN",
+          "firstName": "SANGHYEON",
+          "team": "KOR-4",
+          "prefecture": "",
+          "playerId": null,
+          "tempId": "AN_SANGHYEON_KOR-4"
         }
       ],
       "category": "doubles"
