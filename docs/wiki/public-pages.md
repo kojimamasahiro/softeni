@@ -43,6 +43,8 @@
 - `/highschool/[gender]`
 - `/highschool/[gender]/[prefectureId]`
 - `/highschool/[gender]/[prefectureId]/[teamId]`
+- `/highschool/tournaments`（全国大会の歴代記録 入口）
+- `/highschool/tournaments/[tournament]`（大会別 歴代記録、`tournament` = `championship` / `japan-cup`）
 
 補足:
 
@@ -66,6 +68,21 @@
 - 学校ページのサマリーはインターハイに加え、国体・ハイスクールジャパンカップ・選抜を含む主要 4 大会の掲載数・最新・最高成績を表示する
 - 学校ページに年度別メンバー一覧を表示する（「◯◯高校 ソフトテニス メンバー」検索意図への対応）。収録大会結果に選手名が掲載された選手のみを年度別に集計し、全部員の名簿ではない旨を明記する。選手ページがある選手は `/players/{id}/results/` へリンクし、title / description / FAQ にも「メンバー」を含める
 - 高校カテゴリ共通の定数・判定ロジック（大会優先度、ベスト8 判定、mixed 表示判定など）は `lib/highschool.ts` に集約する
+
+高校 全国大会の歴代記録ページ（`/highschool/tournaments`、`/highschool/tournaments/[tournament]`、2026-06 追加）:
+
+- 都道府県別・学校別とは別軸で、代表的な全国大会そのものを起点に歴代の上位入賞を確認できる回遊ページ
+- 対象大会はインターハイ（`highschool-championship`）とハイスクールジャパンカップ（`highschool-japan-cup`）。大会定義（スラッグ・正式名称・公式 URL・説明）は `lib/highschoolNationalTournaments.ts` の `HS_NATIONAL_TOURNAMENTS` に集約する
+- `/highschool/tournaments` は 2 大会への入口一覧。`/highschool/tournaments/[tournament]` は大会別ページで、`tournament` スラッグは `championship` / `japan-cup`
+- データは既存の `data/tournaments/details/{tournamentId}/{year}/{category}.json` と `information/{tournamentId}.json`（開催地・日程・種別ラベル）から年度別・種目別に抽出する。上位入賞の判定は `results[].tournament.rank.kind` が `winner` / `runnerup`、または `best` かつ `bestLevel === 4`。記録範囲はベスト4まで
+- 種目は男子→女子、団体→ダブルス→シングルスの順に並べ、各種目から既存の年度別結果ページ（`/tournaments/highschool/{tournamentId}/{year}/{category}/{age}/{gender}`）へ「対戦表を見る」で内部リンクする
+- 上部に種目別の歴代優勝サマリー表を表示する
+- 構造化データは `BreadcrumbList` / `ItemList`（歴代優勝者）/ `FAQPage` を出力する。canonical は各ページ自身
+- 既存の大会ハブ（`/tournaments/[generation]/[tournamentId]`）と対象データは重なるが、こちらは高校カテゴリ内の導線として「ベスト4までの歴代上位入賞」を主軸に差別化する
+- `/highschool/[gender]` の都道府県一覧の上に入口カードを追加して回遊させる
+- 静的ルートが優先されるため `/highschool/[gender]`（boys/girls）とは衝突しない
+- Assumption: 2022 インターハイ男子ダブルスは元データに優勝・準優勝が複数登録されており、ページはこれを忠実に表示する（重複の整理が必要なら元データ側で対応する）
+- 実装: `src/pages/highschool/tournaments/index.tsx`、`src/pages/highschool/tournaments/[tournament]/index.tsx`、`lib/highschoolNationalTournaments.ts`
 
 地域大会結果ページ:
 
