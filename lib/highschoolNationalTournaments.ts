@@ -37,7 +37,7 @@ export const HS_NATIONAL_TOURNAMENTS: Record<
     shortLabel: 'インターハイ',
     officialUrl: 'https://www.zen-koutairen.com/',
     description:
-      '高校ソフトテニスの全国頂点を決める大会（インターハイ）。男子・女子の団体戦・個人戦（ダブルス）の歴代上位校・ペアをまとめています。',
+      '全国高等学校総合体育大会（インターハイ）ソフトテニス競技は、各都道府県予選を勝ち上がった代表が男子・女子の団体戦と個人戦（ダブルス）で全国一を争う、高校ソフトテニス最大級の全国大会です。本ページでは歴代の優勝校・準優勝・ベスト4を年度別・種目別にまとめています。',
   },
   'japan-cup': {
     slug: 'japan-cup',
@@ -46,7 +46,7 @@ export const HS_NATIONAL_TOURNAMENTS: Record<
     shortLabel: 'ハイスクールジャパンカップ',
     officialUrl: 'https://www.gosen-sp.jp/hjs/',
     description:
-      '高校生個人の日本一を争う大会。男子・女子のシングルス・ダブルスの歴代上位選手をまとめています。',
+      'ゴーセン杯争奪ハイスクールジャパンカップは、高校生個人の日本一を決めるソフトテニスの全国大会です。男子・女子それぞれシングルスとダブルスを実施し、各地区の代表選手が頂点を争います。本ページでは歴代の優勝・準優勝・ベスト4を年度別・種目別にまとめ、出場校の戦績ページへもリンクしています。',
   },
 };
 
@@ -71,6 +71,12 @@ const GENDER_ORDER: Record<string, number> = {
   mixed: 2,
 };
 
+/** 所属校と、その学校ページへのリンク（実在しない場合 href=null） */
+export type TeamLink = {
+  name: string;
+  href: string | null;
+};
+
 /** 上位入賞のひとつ（優勝 / 準優勝 / ベスト4 のいずれか） */
 export type RecordPlacement = {
   /** 表示用ラベル: 優勝 / 準優勝 / ベスト4 */
@@ -83,6 +89,8 @@ export type RecordPlacement = {
   players: string[];
   /** 所属校 */
   teams: string[];
+  /** 所属校＋学校ページへのリンク（teams と同じ並び） */
+  teamLinks: TeamLink[];
   /** 都道府県 */
   prefectures: string[];
 };
@@ -108,16 +116,47 @@ export type YearRecord = {
   categories: CategoryRecord[];
 };
 
+/** 歴代優勝サマリーの 1 セル（年度ごとの優勝） */
+export type ChampionCell = {
+  year: number;
+  /** 表示用の文字列（個人: 選手名（所属） / 団体: 校名）。優勝者不明の年は null */
+  winner: string | null;
+  /** 選手名一覧（団体戦は空配列） */
+  players: string[];
+  /** 所属校 */
+  teams: string[];
+  /** 所属校＋学校ページへのリンク（teams と同じ並び） */
+  teamLinks: TeamLink[];
+  /** 都道府県 */
+  prefectures: string[];
+};
+
 /** 歴代優勝サマリーの 1 行（種目ごと） */
 export type ChampionSummaryRow = {
   categoryId: string;
   label: string;
-  byYear: { year: number; winner: string | null }[];
+  byYear: ChampionCell[];
+};
+
+/** まだ結果データが無い、開催予定（または開催中）の大会 */
+export type UpcomingEdition = {
+  year: number;
+  location: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  /** 実施予定の種目ラベル一覧 */
+  categoryLabels: string[];
+  source: string | null;
+  sourceUrl: string | null;
 };
 
 export type TournamentRecords = HsNationalTournamentMeta & {
   years: YearRecord[];
   championSummary: ChampionSummaryRow[];
+  /** information にあり、まだ結果が無い開催予定（新しい年が先） */
+  upcoming: UpcomingEdition[];
+  /** 収録情報の最終更新日（ISO 日付）。構造化データの dateModified 用 */
+  lastModified: string | null;
   yearsCovered: number[];
 };
 
@@ -184,14 +223,109 @@ function classifyRank(
   return null;
 }
 
+/**
+ * 学校名・都道府県・性別から、実在する学校ページの href を返すリゾルバ。
+ * data/highschool/prefectures/<prefId>/summary.json を唯一の正とし、
+ * そこに存在する (teamId, prefectureId, gender) のみリンクする（デッドリンク防止）。
+ * モジュールスコープで一度だけ構築してキャッシュする。
+ */
+type SchoolResolver = (
+  name: string,
+  prefecture: string | null,
+  gender: string,
+) => string | null;
+
+type SchoolEntry = {
+  prefectureId: string;
+  teamId: string;
+  gender: string;
+  prefecture: string | null;
+};
+
+let cachedSchoolResolver: SchoolResolver | null = null;
+
+function getSchoolResolver(): SchoolResolver {
+  if (cachedSchoolResolver) return cachedSchoolResolver;
+
+  const byName = new Map<string, SchoolEntry[]>();
+  const prefRoot = path.join(
+    resolveRoot(),
+    'data',
+    'highschool',
+    'prefectures',
+  );
+
+  try {
+    for (const prefId of fs.readdirSync(prefRoot)) {
+      const summaryPath = path.join(prefRoot, prefId, 'summary.json');
+      if (!fs.existsSync(summaryPath)) continue;
+      let entries: Array<{
+        team?: string;
+        teamId?: string;
+        prefecture?: string | null;
+        gender?: string;
+      }>;
+      try {
+        entries = JSON.parse(fs.readFileSync(summaryPath, 'utf-8'));
+      } catch {
+        continue;
+      }
+      if (!Array.isArray(entries)) continue;
+      for (const e of entries) {
+        if (!e.team || !e.teamId || !e.gender) continue;
+        const list = byName.get(e.team) ?? [];
+        list.push({
+          prefectureId: prefId,
+          teamId: e.teamId,
+          gender: e.gender,
+          prefecture: e.prefecture ?? null,
+        });
+        byName.set(e.team, list);
+      }
+    }
+  } catch {
+    // prefectures ディレクトリが無い等。リンク無しで継続。
+  }
+
+  // mixed はどの性別ページにも出る規約（[teamId].tsx の isVisibleGender に合わせる）
+  const visible = (entryGender: string, target: string) =>
+    entryGender === target || entryGender === 'mixed';
+
+  cachedSchoolResolver = (name, prefecture, gender) => {
+    if (gender !== 'boys' && gender !== 'girls') return null;
+    const cands = (byName.get(name) ?? []).filter((c) =>
+      visible(c.gender, gender),
+    );
+    // 同名校は都道府県で絞り込み
+    const narrowed =
+      prefecture && cands.some((c) => c.prefecture === prefecture)
+        ? cands.filter((c) => c.prefecture === prefecture)
+        : cands;
+    const unique = new Map(
+      narrowed.map((c) => [`${c.prefectureId}/${c.teamId}`, c] as const),
+    );
+    if (unique.size !== 1) return null;
+    const only = unique.values().next().value as SchoolEntry;
+    return `/highschool/${gender}/${only.prefectureId}/${only.teamId}`;
+  };
+
+  return cachedSchoolResolver;
+}
+
 /** entry を選手名・所属・都道府県・表示文字列へ解決する */
 function resolveEntry(
   entry: RawEntry,
   participantById: Map<string, RawParticipant>,
-): Pick<RecordPlacement, 'display' | 'players' | 'teams' | 'prefectures'> {
+  gender: string,
+  resolveSchoolHref: SchoolResolver,
+): Pick<
+  RecordPlacement,
+  'display' | 'players' | 'teams' | 'teamLinks' | 'prefectures'
+> {
   const players: string[] = [];
   const teams: string[] = [];
   const prefectures: string[] = [];
+  const prefByTeam = new Map<string, string | null>();
 
   for (const id of entry.playerIds) {
     const p = participantById.get(id);
@@ -202,11 +336,19 @@ function resolveEntry(
     }
     const name = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
     if (name) players.push(name);
-    if (p.team && !teams.includes(p.team)) teams.push(p.team);
+    if (p.team && !teams.includes(p.team)) {
+      teams.push(p.team);
+      prefByTeam.set(p.team, p.prefecture ?? null);
+    }
     if (p.prefecture && !prefectures.includes(p.prefecture)) {
       prefectures.push(p.prefecture);
     }
   }
+
+  const teamLinks: TeamLink[] = teams.map((name) => ({
+    name,
+    href: resolveSchoolHref(name, prefByTeam.get(name) ?? null, gender),
+  }));
 
   const nameStr = players.join('・');
   let display: string;
@@ -219,11 +361,15 @@ function resolveEntry(
     display = nameStr;
   }
 
-  return { display, players, teams, prefectures };
+  return { display, players, teams, teamLinks, prefectures };
 }
 
 /** 1 種目ファイルから上位入賞（優勝〜ベスト4）を抽出 */
-function extractPlacements(detailPath: string): RecordPlacement[] {
+function extractPlacements(
+  detailPath: string,
+  gender: string,
+  resolveSchoolHref: SchoolResolver,
+): RecordPlacement[] {
   let data: RawDetail;
   try {
     data = JSON.parse(fs.readFileSync(detailPath, 'utf-8')) as RawDetail;
@@ -244,7 +390,12 @@ function extractPlacements(detailPath: string): RecordPlacement[] {
     if (!classified) continue;
     const entry = entryByNo.get(result.entryNo);
     if (!entry) continue;
-    const resolved = resolveEntry(entry, participantById);
+    const resolved = resolveEntry(
+      entry,
+      participantById,
+      gender,
+      resolveSchoolHref,
+    );
     if (!resolved.display) continue;
     placements.push({
       rankLabel: classified.rankLabel,
@@ -305,6 +456,7 @@ export function getHsNationalTournamentRecords(
     labelByYearCategory.set(y, m);
   }
 
+  const resolveSchoolHref = getSchoolResolver();
   const tidDir = path.join(resolveRoot(), ...DETAILS_ROOT, meta.tournamentId);
   const years: YearRecord[] = [];
 
@@ -323,7 +475,11 @@ export function getHsNationalTournamentRecords(
       for (const f of files) {
         const parsed = parseCategoryFile(f);
         if (!parsed) continue;
-        const placements = extractPlacements(path.join(yearDir, f));
+        const placements = extractPlacements(
+          path.join(yearDir, f),
+          parsed.gender,
+          resolveSchoolHref,
+        );
         if (placements.length === 0) continue;
         categories.push({
           categoryId: parsed.categoryId,
@@ -352,10 +508,34 @@ export function getHsNationalTournamentRecords(
   const championSummary = buildChampionSummary(years);
   const yearsCovered = years.map((y) => y.year);
 
+  // information にあるが結果（details）がまだ無い年 = 開催予定（または集計待ち）
+  const resultYears = new Set(yearsCovered);
+  const upcoming: UpcomingEdition[] = information
+    .filter((e) => !resultYears.has(e.year))
+    .sort((a, b) => b.year - a.year)
+    .map((e) => ({
+      year: e.year,
+      location: e.location || null,
+      startDate: e.startDate || null,
+      endDate: e.endDate || null,
+      categoryLabels: (e.categories ?? []).map((c) => c.label),
+      source: e.source || null,
+      sourceUrl: e.sourceUrl || null,
+    }));
+
+  // 構造化データ dateModified 用に、information 中の最新日付を採用
+  const allDates = information
+    .flatMap((e) => [e.endDate, e.startDate])
+    .filter((d): d is string => Boolean(d));
+  const lastModified =
+    allDates.length > 0 ? allDates.sort().slice(-1)[0] : null;
+
   return {
     ...meta,
     years,
     championSummary,
+    upcoming,
+    lastModified,
     yearsCovered,
   };
 }
@@ -378,12 +558,18 @@ function buildChampionSummary(years: YearRecord[]): ChampionSummaryRow[] {
   sample.sort(sortCategories);
 
   return sample.map((c) => {
-    const byYear = years
+    const byYear: ChampionCell[] = years
       .map((yr) => {
         const cat = yr.categories.find((x) => x.categoryId === c.categoryId);
-        const winner =
-          cat?.placements.find((p) => p.order === 1)?.display ?? null;
-        return { year: yr.year, winner };
+        const champ = cat?.placements.find((p) => p.order === 1) ?? null;
+        return {
+          year: yr.year,
+          winner: champ?.display ?? null,
+          players: champ?.players ?? [],
+          teams: champ?.teams ?? [],
+          teamLinks: champ?.teamLinks ?? [],
+          prefectures: champ?.prefectures ?? [],
+        };
       })
       .filter((row) => row.winner !== null);
     return {
