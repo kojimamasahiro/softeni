@@ -196,6 +196,21 @@ export default function HighschoolGenderIndex({
           </p>
         </div>
 
+        <section className="mb-8 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 p-5">
+          <h2 className="text-lg font-semibold mb-1">全国大会の歴代記録</h2>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+            インターハイ（全国高等学校総合体育大会）やハイスクールジャパンカップの
+            歴代優勝〜ベスト4を、年度別・種目別にまとめています。
+            都道府県別・学校別とは別の切り口で、大会ごとの上位入賞を確認できます。
+          </p>
+          <Link
+            href="/highschool/tournaments/"
+            className="inline-block text-sm font-semibold text-blue-700 dark:text-blue-300 hover:underline"
+          >
+            全国大会の歴代記録を見る →
+          </Link>
+        </section>
+
         <section className="grid gap-4 sm:grid-cols-3 mb-8">
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
             <p className="text-xs text-gray-500 dark:text-gray-400">
