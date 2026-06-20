@@ -1,0 +1,4 @@
+{
+  "_note": "成長分析の撤回（オプトアウト）リスト。ここに載せた subject_key は成長レポートを生成・公開しない（ADR-004 Decision 5）。subject_key は lib/growthAnalysis.ts の getSideTargetBase と同じ規則（例: 'player:やまだたろう' / 'pair:すずきいちろう&たなかじろう'）。反映は静的生成サイクル（再ビルド）時。",
+  "exclusions": []
+}

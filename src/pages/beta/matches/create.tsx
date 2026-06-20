@@ -33,14 +33,31 @@ type EntryOption = {
   }[];
 };
 
+type KnownPlayer = {
+  lastName: string;
+  firstName: string;
+};
+
 type CreateMatchProps = {
   tournamentOptions: TournamentOption[];
   tournamentCatalog: Record<string, TournamentCatalogEntry>;
+  knownPlayers: KnownPlayer[];
 };
+
+// 氏名の正規化（成長分析のキーと同じ規約: 前後空白除去＋連続空白を1つ＋小文字化）。
+const normalizeNameText = (value: string) =>
+  value.trim().replace(/\s+/g, ' ').toLowerCase();
+// 空白を全て除いた緩いキー（「上岡俊介」と「上岡 俊介」を同一視するため）。
+const looseNameKey = (lastName: string, firstName: string) =>
+  `${normalizeNameText(lastName)}${normalizeNameText(firstName)}`.replace(
+    /\s+/g,
+    '',
+  );
 
 const CreateMatch = ({
   tournamentOptions,
   tournamentCatalog,
+  knownPlayers,
 }: CreateMatchProps) => {
   const router = useRouter();
   const canEditMatches = isDebugMode() && hasLiveMatchApi();
@@ -241,6 +258,67 @@ const CreateMatch = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 氏名の表記ゆれ（空白・大小）で既存選手と別キーになるのを防ぐ警告。
+    // 完全一致する既存選手はそのまま、緩いキー（空白除去）が既存と一致する場合だけ確認する。
+    // 新規選手（既存に似た名前が無い）は警告しない。
+    const enteredGameType = getGameTypeFromCategory(formData.category);
+    const enteredPlayers = [
+      { lastName: teamA.player1_last_name, firstName: teamA.player1_first_name },
+      ...(enteredGameType === 'doubles'
+        ? [
+            {
+              lastName: teamA.player2_last_name,
+              firstName: teamA.player2_first_name,
+            },
+          ]
+        : []),
+      { lastName: teamB.player1_last_name, firstName: teamB.player1_first_name },
+      ...(enteredGameType === 'doubles'
+        ? [
+            {
+              lastName: teamB.player2_last_name,
+              firstName: teamB.player2_first_name,
+            },
+          ]
+        : []),
+    ];
+    const knownExact = new Set(
+      knownPlayers.map(
+        (p) =>
+          `${normalizeNameText(p.lastName)} ${normalizeNameText(p.firstName)}`,
+      ),
+    );
+    const knownLoose = new Map<string, string>();
+    knownPlayers.forEach((p) => {
+      knownLoose.set(
+        looseNameKey(p.lastName, p.firstName),
+        `${p.lastName} ${p.firstName}`,
+      );
+    });
+    const variantWarnings: string[] = [];
+    for (const pl of enteredPlayers) {
+      const last = pl.lastName.trim();
+      const first = pl.firstName.trim();
+      if (!last || !first) continue;
+      const exact = `${normalizeNameText(last)} ${normalizeNameText(first)}`;
+      if (knownExact.has(exact)) continue;
+      const match = knownLoose.get(looseNameKey(last, first));
+      if (match) {
+        variantWarnings.push(
+          `「${last} ${first}」は既存選手「${match}」の表記ゆれの可能性があります`,
+        );
+      }
+    }
+    if (variantWarnings.length > 0) {
+      const proceed = window.confirm(
+        `${variantWarnings.join(
+          '\n',
+        )}\n\nこのまま作成しますか？（別人なら OK、表記を直すならキャンセル）`,
+      );
+      if (!proceed) return;
+    }
+
     setCreating(true);
 
     try {
@@ -448,6 +526,21 @@ const CreateMatch = ({
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* 氏名サジェスト用（表記ゆれ防止・成長キーの分裂を防ぐ） */}
+        <datalist id="known-last-names">
+          {Array.from(new Set(knownPlayers.map((p) => p.lastName)))
+            .filter(Boolean)
+            .map((lastName) => (
+              <option key={`ln-${lastName}`} value={lastName} />
+            ))}
+        </datalist>
+        <datalist id="known-first-names">
+          {Array.from(new Set(knownPlayers.map((p) => p.firstName)))
+            .filter(Boolean)
+            .map((firstName) => (
+              <option key={`fn-${firstName}`} value={firstName} />
+            ))}
+        </datalist>
         <div>
           <label className="block text-sm font-medium mb-2">大会名</label>
 
@@ -714,6 +807,7 @@ const CreateMatch = ({
                     }
                     className="border rounded p-2 text-sm"
                     placeholder="姓"
+                    list="known-last-names"
                   />
                   <input
                     type="text"
@@ -724,6 +818,7 @@ const CreateMatch = ({
                     }
                     className="border rounded p-2 text-sm"
                     placeholder="名"
+                    list="known-first-names"
                   />
                 </div>
                 <input
@@ -864,6 +959,7 @@ const CreateMatch = ({
                     }
                     className="border rounded p-2 text-sm"
                     placeholder="姓"
+                    list="known-last-names"
                   />
                   <input
                     type="text"
@@ -874,6 +970,7 @@ const CreateMatch = ({
                     }
                     className="border rounded p-2 text-sm"
                     placeholder="名"
+                    list="known-first-names"
                   />
                 </div>
                 <input
@@ -1176,10 +1273,39 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
     );
   }
 
+  // 既知選手（氏名サジェスト・重複検知用）。data/players/index.json から取得。
+  const knownPlayers: KnownPlayer[] = [];
+  try {
+    const playersIndexPath = path.join(
+      process.cwd(),
+      'data',
+      'players',
+      'index.json',
+    );
+    if (fs.existsSync(playersIndexPath)) {
+      const rows = JSON.parse(
+        fs.readFileSync(playersIndexPath, 'utf8'),
+      ) as Array<{ lastName?: string; firstName?: string }>;
+      const seen = new Set<string>();
+      for (const row of rows) {
+        const lastName = (row.lastName ?? '').trim();
+        const firstName = (row.firstName ?? '').trim();
+        if (!lastName && !firstName) continue;
+        const key = `${lastName}|${firstName}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        knownPlayers.push({ lastName, firstName });
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load known players for beta matches:', error);
+  }
+
   return {
     props: {
       tournamentOptions,
       tournamentCatalog,
+      knownPlayers,
     },
   };
 };

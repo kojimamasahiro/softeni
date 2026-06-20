@@ -52,6 +52,8 @@ type PlayerResultsProps = {
     hasPage: boolean;
   }[];
   scoreMatchLinks?: ScoreMatchLink[];
+  // ショーケース対象（data/growth-featured.json）の場合の成長記録ページ slug。なければ null。
+  growthShowcaseSlug?: string | null;
   // SEO: 収録試合が薄く全国高校大会出場もない選手ページは noindex にする（インデックス枠の集中）。
   noindex?: boolean;
 };
@@ -71,6 +73,7 @@ export default function PlayerResultsPage({
   allPlayers,
   relatedPlayers = [],
   scoreMatchLinks = [],
+  growthShowcaseSlug = null,
   noindex = false,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
@@ -295,6 +298,24 @@ export default function PlayerResultsPage({
                 </li>
               ))}
             </ul>
+          </section>
+        )}
+
+        {growthShowcaseSlug && (
+          <section className="rounded-lg border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900 dark:bg-blue-950/30">
+            <h2 className="mb-1 text-base font-bold text-blue-900 dark:text-blue-200">
+              成長記録
+            </h2>
+            <p className="mb-3 text-xs text-blue-800/80 dark:text-blue-300/80">
+              勝ち負けだけでは見えない、試合内容の変化を指標で追っています。
+            </p>
+            <Link
+              href={`/growth/${growthShowcaseSlug}`}
+              className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 hover:underline dark:text-blue-300"
+            >
+              {fullName}の成長記録を見る
+              <span aria-hidden>›</span>
+            </Link>
           </section>
         )}
 
@@ -992,6 +1013,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // ignore
   }
 
+  // ショーケース対象（data/growth-featured.json）なら成長記録ページ slug を引く（ADR-004）。
+  let growthShowcaseSlug: string | null = null;
+  try {
+    const featuredPath = path.join(
+      process.cwd(),
+      'data',
+      'growth-featured.json',
+    );
+    const featuredPayload = JSON.parse(
+      fs.readFileSync(featuredPath, 'utf-8'),
+    ) as {
+      featured?: Array<{ slug?: string; playerId?: string | number }>;
+    };
+    const featuredEntry = (featuredPayload.featured ?? []).find(
+      (entry) => entry?.playerId != null && String(entry.playerId) === playerId,
+    );
+    growthShowcaseSlug = featuredEntry?.slug ?? null;
+  } catch {
+    // featured 設定が無い/壊れている場合は導線を出さない
+  }
+
   // --- SEO: 薄い選手ページの noindex 判定 ---
   // 「クロール済み - インデックス未登録」対策として、収録試合が薄く、かつ
   // 全国高校大会（generation = 'highschool'）の出場歴も無い選手ページを noindex にし、
@@ -1026,6 +1068,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         idx.firstName,
       ),
       scoreMatchLinks: getScoreMatchLinksForPlayer(playerId),
+      growthShowcaseSlug,
     },
   };
 };

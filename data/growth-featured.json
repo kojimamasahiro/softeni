@@ -1,0 +1,27 @@
+{
+  "_note": "成長記録のショーケース対象（1〜2選手）。ここに載せた subjectKey だけが公開・インデックス対象の専用ショーケースページとして静的生成される（ADR-004）。subjectKey は lib/growthAnalysis.ts の getSideTargetBase と同じ規則（例: 'player:やまだたろう'）でレポート読込に使う。slug は公開URL（/beta/matches-results/growth/<slug>）で、SEO 重視のため読める文字列にする。playerId は data/players/index.json の数値 id で、results ページ（/players/<playerId>/results）との相互リンクに使う（任意）。playerName は起点とする個人名（targets.json の playerNames と一致する表記、例 '丸山 海斗'）。シングルス記録が無くダブルスだけの選手を起点にしたいとき指定する（任意。省略時は subjectKey が個人ターゲットならその選手を起点）。title/intro は任意の表示上書き。",
+  "_example": {
+    "subjectKey": "player:やまだたろう",
+    "slug": "yamada-taro",
+    "playerId": 12,
+    "title": "山田太郎 の成長記録",
+    "intro": "公開動画から記録した試合をもとに、最近の試合内容の変化を追っています。"
+  },
+  "featured": [
+    {
+      "subjectKey": "player:上岡 俊介",
+      "slug": "ueoka-shunsuke",
+      "playerId": 20,
+      "title": "上岡 俊介 の成長記録",
+      "intro": "公開試合の動画から記録したデータをもとに、勝ち負けだけでは見えない試合内容の変化を、サーブ・レシーブ・競り合い（デュースやゲームポイント）・流れの立て直しといった指標で追っています。試合を重ねるごとに記録が充実していきます。"
+    },
+    {
+      "subjectKey": "pair:上岡 俊介&丸山 海斗",
+      "playerName": "丸山 海斗",
+      "slug": "maruyama-kaito",
+      "playerId": 12,
+      "title": "丸山 海斗 の成長記録",
+      "intro": "公開試合の動画から記録したデータをもとに、試合内容の変化を指標で追っています。現在はダブルスの記録が中心で、試合を重ねるごとに記録が充実していきます。"
+    }
+  ]
+}

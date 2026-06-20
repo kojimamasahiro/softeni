@@ -19,6 +19,10 @@
     <label for="totalScoredMatchesInput">完了試合数(自動スクロール用):</label>
     <input type="number" id="totalScoredMatchesInput" min="0" value="0" style="width: 60px" />
   </div>
+  <div style="margin-bottom: 10px">
+    <label for="initScoreInput">初期スコア(引き分け表示・パッキン勝者):</label>
+    <input type="number" id="initScoreInput" min="0" value="4" style="width: 60px" />
+  </div>
   <label>
     <input type="checkbox" id="roundNameToggle" checked />
     決勝・準決勝の表記にする
@@ -45,10 +49,8 @@
      *  （既存HTMLの<script>差し替え）
      *  ========================= */
 
-    // 初期スコア
-    const initScore = 4;
-    const initScore1 = initScore;
-    const initScore2 = initScore;
+    // 初期スコア（UIから変更可能）
+    let initScore = 4;
 
     // スクロール量の定数
     const SCROLL_AMOUNT_DEFAULT = 190;        // 通常のスコア入力後のスクロール量
@@ -112,6 +114,33 @@
       validateMatchCount();
     });
     totalScoredMatchesInput.addEventListener('input', validateMatchCount);
+
+    // 初期スコア入力
+    const initScoreInput = document.getElementById('initScoreInput');
+    initScoreInput.value = initScore;
+    initScoreInput.addEventListener('change', (e) => {
+      const next = Number(e.target.value);
+      if (!Number.isFinite(next) || next < 0) {
+        e.target.value = initScore;
+        return;
+      }
+      const prev = initScore;
+      initScore = next;
+      // 未編集（旧初期値の引き分けのまま）の試合だけ新しい初期値へ更新
+      bracket.forEach((round) => {
+        round.matches.forEach((m) => {
+          if (!m || m.p1?.id === 'bye' || m.p2?.id === 'bye') return;
+          if (m.winner != null || m.p1Retired || m.p2Retired) return;
+          if (m.scores?.p1 === prev && m.scores?.p2 === prev) {
+            m.scores.p1 = initScore;
+            m.scores.p2 = initScore;
+          }
+        });
+      });
+      isDirty = true;
+      renderBracket();
+      updateJsonOutput();
+    });
     // 既存UIは残すが操作は不要
     document.getElementById('roundInput').disabled = true;
     document.getElementById('setRoundBtn').disabled = true;
@@ -1768,8 +1797,8 @@
       if (!m || m.p1?.id === 'bye' || m.p2?.id === 'bye') return;
       if (m.scores == null) m.scores = { p1: null, p2: null };
 
-      if (m.scores.p1 == null) m.scores.p1 = initScore1;
-      if (m.scores.p2 == null) m.scores.p2 = initScore2;
+      if (m.scores.p1 == null) m.scores.p1 = initScore;
+      if (m.scores.p2 == null) m.scores.p2 = initScore;
       // 同点なので勝者は未決定のまま
     }
 

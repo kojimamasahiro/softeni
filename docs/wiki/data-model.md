@@ -79,6 +79,11 @@
 - `public/data/beta-matches/growth/targets.json`
 - `public/data/beta-matches/growth/reports/*.json`
 
+### 成長分析の運用設定（手動メンテの静的 JSON）
+
+- `data/growth-featured.json`（成長記録ショーケース `/growth/[slug]` の対象 allowlist。`subjectKey` / `slug` / `playerId` / `playerName` / `title` / `intro`。詳細は ADR-004）
+- `data/growth-exclusions.json`（成長分析の撤回リスト。載せた `subject_key` はレポート生成から除外）
+
 ## Supabase の主なテーブル
 
 ### `matches`

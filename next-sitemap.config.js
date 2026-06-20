@@ -171,6 +171,40 @@ module.exports = {
       });
     }
 
+    // 成長記録ハブ＋ショーケース（/growth・/growth/<slug>）を明示的に追加する。
+    // 公開・インデックス対象（/beta 配下ではない）。対象は data/growth-featured.json の featured のみ。
+    try {
+      result.push({
+        loc: '/growth/',
+        changefreq: config.changefreq,
+        priority: config.priority,
+      });
+
+      const featuredPath = path.join(
+        process.cwd(),
+        'data',
+        'growth-featured.json',
+      );
+      if (fs.existsSync(featuredPath)) {
+        const featuredPayload = JSON.parse(
+          fs.readFileSync(featuredPath, 'utf-8'),
+        );
+        const featured = Array.isArray(featuredPayload?.featured)
+          ? featuredPayload.featured
+          : [];
+        for (const entry of featured) {
+          if (!entry?.slug) continue;
+          result.push({
+            loc: `/growth/${entry.slug}/`,
+            changefreq: config.changefreq,
+            priority: config.priority,
+          });
+        }
+      }
+    } catch (err) {
+      console.error('next-sitemap: failed to add growth paths', err);
+    }
+
     try {
       const indexPath = path.join(
         process.cwd(),

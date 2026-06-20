@@ -15,6 +15,10 @@ const outputRoot = path.join(projectRoot, 'public', 'data', 'beta-matches');
 const matchesOutputRoot = path.join(outputRoot, 'matches');
 const growthOutputRoot = path.join(outputRoot, 'growth');
 const growthReportsOutputRoot = path.join(growthOutputRoot, 'reports');
+// 撤回（オプトアウト）リスト。ここに載せた subject_key は成長レポートを生成しない（ADR-004 Decision 5）。
+const growthExclusionsPath = path.join(projectRoot, 'data', 'growth-exclusions.json');
+// ショーケース（featured）リスト。ここに載せた subject_key は visibility=public に引き上げる（ADR-004）。
+const growthFeaturedPath = path.join(projectRoot, 'data', 'growth-featured.json');
 const detailsRoot = path.join(projectRoot, 'data', 'tournaments', 'details');
 const { loadEnvConfig } = nextEnv;
 const require = createRequire(import.meta.url);
@@ -99,6 +103,23 @@ const readJsonIfExists = (filePath) => {
   if (!fs.existsSync(filePath)) return null;
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 };
+
+// subject_key リストを読み込む汎用ヘルパー。
+// 形式は ["player:やまだたろう", ...] か [{ "subjectKey": "..." }, ...] の両対応。
+const loadSubjectKeys = (raw, listKey) => {
+  const list = Array.isArray(raw) ? raw : raw?.[listKey] ?? [];
+  return list
+    .map((entry) => (typeof entry === 'string' ? entry : entry?.subjectKey))
+    .filter((key) => typeof key === 'string' && key.length > 0);
+};
+
+// 撤回リスト（生成から除外する subject_key）。
+const loadGrowthExcludedKeys = () =>
+  loadSubjectKeys(readJsonIfExists(growthExclusionsPath), 'exclusions');
+
+// ショーケース（featured）リスト（visibility=public に引き上げる subject_key）。
+const loadGrowthFeaturedKeys = () =>
+  loadSubjectKeys(readJsonIfExists(growthFeaturedPath), 'featured');
 
 const writeJson = (filePath, value) => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
@@ -197,8 +218,13 @@ const buildGrowthAnalysisJson = (
   generatedAt,
   existingTargetsJson = null,
   existingGrowthReportsByFileName = new Map(),
+  excludedKeys = [],
+  featuredKeys = [],
 ) => {
-  const { targets, reports } = buildGrowthReports(matches, generatedAt);
+  const { targets, reports } = buildGrowthReports(matches, generatedAt, {
+    excludedKeys,
+    featuredKeys,
+  });
 
   fs.mkdirSync(growthReportsOutputRoot, { recursive: true });
 
@@ -320,17 +346,23 @@ const writeBetaMatchesOutput = (publicMatches, generatedAt) => {
       readJsonIfExists(path.join(matchesOutputRoot, `${matchId}.json`)),
     ]),
   );
+  const excludedKeys = loadGrowthExcludedKeys();
+  const featuredKeys = loadGrowthFeaturedKeys();
   const existingGrowthTargets = readJsonIfExists(
     path.join(growthOutputRoot, 'targets.json'),
   );
   const existingGrowthReportsByFileName = new Map(
-    buildGrowthReports(publicMatches, generatedAt).reports.map((report) => {
-      const fileName = getGrowthReportFileName(report.target.key);
-      return [
-        fileName,
-        readJsonIfExists(path.join(growthReportsOutputRoot, fileName)),
-      ];
-    }),
+    buildGrowthReports(publicMatches, generatedAt, {
+      excludedKeys,
+      featuredKeys,
+    }).reports.map((report) => {
+        const fileName = getGrowthReportFileName(report.target.key);
+        return [
+          fileName,
+          readJsonIfExists(path.join(growthReportsOutputRoot, fileName)),
+        ];
+      },
+    ),
   );
 
   fs.mkdirSync(outputRoot, { recursive: true });
@@ -378,6 +410,8 @@ const writeBetaMatchesOutput = (publicMatches, generatedAt) => {
     generatedAt,
     existingGrowthTargets,
     existingGrowthReportsByFileName,
+    excludedKeys,
+    featuredKeys,
   );
 
   const siteLinkCount = publicMatches.filter((match) => match.siteLink).length;

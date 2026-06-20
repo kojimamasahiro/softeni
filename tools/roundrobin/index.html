@@ -16,6 +16,12 @@
     <div id="matches"></div>
     <button onclick="onClickGenerate()">出力</button>
     <h2>JSON出力（成形済み）</h2>
+    <p style="font-size: 12px; color: #555; margin: 4px 0">
+      下のJSONは直接編集できます。編集するとスコア入力では上書きされなくなり、編集内容がそのままコピー／ダウンロード／保存に使われます。試合結果から作り直したい場合は
+      <button type="button" onclick="onClickRegenerateJson()">試合結果から再生成</button>
+      を押してください。
+      <span id="jsonEditStatus" style="margin-left: 8px"></span>
+    </p>
     <div id="saveUi"></div>
     <textarea id="jsonOutput"></textarea>
 
@@ -71,8 +77,48 @@
         allGroupMatches[group] = matches;
       }
 
+      // ---- JSON出力の手動編集対応 ----
+      let jsonManuallyEdited = false;
+
+      function setJsonEditStatus() {
+        const statusEl = document.getElementById('jsonEditStatus');
+        if (!statusEl) return;
+        if (!jsonManuallyEdited) {
+          statusEl.textContent = '';
+          return;
+        }
+        const value = document.getElementById('jsonOutput').value;
+        let valid = true;
+        try {
+          JSON.parse(value);
+        } catch (e) {
+          valid = false;
+        }
+        if (valid) {
+          statusEl.textContent = '手動編集中（JSON OK）';
+          statusEl.style.color = '#2e7d32';
+        } else {
+          statusEl.textContent = '手動編集中（JSONが不正です）';
+          statusEl.style.color = '#c62828';
+        }
+      }
+
       function onClickGenerate() {
+        // 手動編集を尊重しつつ、未編集なら通常通り生成する
         updateJsonOutput();
+      }
+
+      // 試合結果から作り直す（手動編集を破棄）
+      function onClickRegenerateJson() {
+        if (
+          jsonManuallyEdited &&
+          !confirm('手動編集した内容を破棄して試合結果から再生成しますか？')
+        ) {
+          return;
+        }
+        jsonManuallyEdited = false;
+        updateJsonOutput(true);
+        setJsonEditStatus();
       }
 
       function updateWinner(match) {
@@ -210,7 +256,7 @@
         }
       }
 
-      function updateJsonOutput() {
+      function updateJsonOutput(force = false) {
         const output = { roundRobinMatches: [] };
 
         for (const group in allGroupMatches) {
@@ -414,6 +460,12 @@
         }
 
         lastRawOutput = output;
+
+        // 手動編集済みのときは上書きしない（force時のみ再生成）
+        if (jsonManuallyEdited && !force) {
+          return;
+        }
+
         try {
           document.getElementById('jsonOutput').value =
             ToolBridge.normalize(output);
@@ -465,6 +517,68 @@
         statusEl.textContent = `${advancers.length}件を抽出しました`;
       }
 
+      // 成形済み（正規化）JSON から roundRobinMatches を復元する。
+      // jsonOutput を手動編集した場合、編集内容は allGroupMatches（UI状態）に
+      // 反映されないため、持ち越し用のRR結果は編集後JSONから組み立てる。
+      // これによりRRで敗退した（本戦に進出しない）選手の情報も欠落しない。
+      function rrMatchesFromNormalized(norm) {
+        if (!norm || !Array.isArray(norm.matches)) return [];
+        const partById = new Map(
+          (norm.participants || []).map((p) => [p.id, p]),
+        );
+        const entryById = new Map(
+          (norm.entries || []).map((e) => [e.entryNo, e]),
+        );
+        const infoFor = (entry) =>
+          (entry && Array.isArray(entry.playerIds) ? entry.playerIds : []).map(
+            (id) => {
+              const p = partById.get(id);
+              return p
+                ? {
+                    lastName: p.lastName,
+                    firstName: p.firstName,
+                    team: p.team,
+                    prefecture: p.prefecture,
+                    tempId: id,
+                    playerId: null,
+                  }
+                : { tempId: id, playerId: null };
+            },
+          );
+        const rows = [];
+        for (const m of norm.matches) {
+          if (m.stage !== 'roundrobin') continue;
+          const a = m.entries && m.entries[0];
+          const b = m.entries && m.entries[1];
+          if (a == null || b == null) continue;
+          const ea = entryById.get(a);
+          const eb = entryById.get(b);
+          const sa = m.scores ? m.scores[String(a)] : undefined;
+          const sb = m.scores ? m.scores[String(b)] : undefined;
+          if (sa == null || sb == null) continue;
+          const winA = m.winnerEntryNo === a;
+          rows.push({
+            group: m.group,
+            pair: (ea && ea.playerIds) || [],
+            opponents: infoFor(eb),
+            result: winA ? 'win' : 'lose',
+            games: { won: String(sa), lost: String(sb) },
+            entryNo: a,
+            category: 'doubles',
+          });
+          rows.push({
+            group: m.group,
+            pair: (eb && eb.playerIds) || [],
+            opponents: infoFor(ea),
+            result: winA ? 'lose' : 'win',
+            games: { won: String(sb), lost: String(sa) },
+            entryNo: b,
+            category: 'doubles',
+          });
+        }
+        return rows;
+      }
+
       function onClickGoTournament() {
         const statusEl = document.getElementById('advanceStatus');
         statusEl.style.color = '#c62828';
@@ -488,14 +602,42 @@
           statusEl.textContent = 'ラウンドロビン結果がありません';
           return;
         }
+
+        // 持ち越すRR結果：手動編集済みなら編集後JSONから復元し、
+        // 未編集ならUI状態（lastRawOutput）をそのまま使う。
+        let rrMatchesForCarry = lastRawOutput.roundRobinMatches;
+        if (jsonManuallyEdited) {
+          let edited;
+          try {
+            edited = JSON.parse(document.getElementById('jsonOutput').value);
+          } catch (e) {
+            statusEl.textContent =
+              '編集済みJSONのパースに失敗しました: ' + e.message;
+            return;
+          }
+          rrMatchesForCarry = rrMatchesFromNormalized(edited);
+          if (!rrMatchesForCarry.length) {
+            statusEl.textContent =
+              '編集済みJSONからラウンドロビン結果を取得できませんでした';
+            return;
+          }
+        }
+
         // RR結果を持ち越してトーナメント出力にマージする
+        // （standings は normalize 側で roundRobinMatches から再計算されるため参考値）
         ToolBridge.setRRCarry({
-          roundRobinMatches: lastRawOutput.roundRobinMatches,
+          roundRobinMatches: rrMatchesForCarry,
           standings: lastRawOutput.standings,
         });
         ToolBridge.storeInput('tournament', advancers);
         location.href = '../tournament3/index.html';
       }
+
+      // 手動編集の検知：ユーザーがJSONを編集したら自動上書きを止める
+      document.getElementById('jsonOutput').addEventListener('input', () => {
+        jsonManuallyEdited = true;
+        setJsonEditStatus();
+      });
 
       displayMatches();
     </script>

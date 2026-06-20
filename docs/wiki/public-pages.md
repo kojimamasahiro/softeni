@@ -37,6 +37,13 @@
 - `/tournaments/**`
 - `/beta/**`
 - `/beta/matches-results/**`
+- `/growth`（成長記録ハブ・公開/インデックス対象）
+- `/growth/[slug]`（選手の成長記録ショーケース・公開/インデックス対象。対象は `data/growth-featured.json` の featured のみ。詳細は ADR-004）
+
+補足（成長分析の公開境界・2026-06）:
+
+- 公開・インデックス対象は `/growth`（運営キュレーションのショーケース）。
+- `/beta/matches-results/growth` は内部ツール面で `noindex`（`/beta` は robots Disallow）。対象は公開試合の参加者（`targets.json`）。
 
 高校カテゴリページ:
 

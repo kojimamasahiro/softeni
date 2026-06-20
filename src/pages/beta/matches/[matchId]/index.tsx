@@ -439,6 +439,28 @@ const MatchDetail = () => {
         match.team_b_player2_first_name,
     );
 
+  // 成長分析データの充足度（入力画面のUXは変えず、ここで状態だけ可視化する）。
+  const growthGames = match.games ?? [];
+  const growthTotalGames = growthGames.length;
+  const growthGamesWithPoints = growthGames.filter(
+    (game) => (game.points?.length ?? 0) > 0,
+  ).length;
+  const growthTotalPoints = growthGames.reduce(
+    (sum, game) => sum + (game.points?.length ?? 0),
+    0,
+  );
+  const growthMissingResultType = growthGames.reduce(
+    (sum, game) =>
+      sum + (game.points?.filter((point) => !point.result_type).length ?? 0),
+    0,
+  );
+  const growthGamesWithoutPoints = growthTotalGames - growthGamesWithPoints;
+  const growthReady =
+    growthTotalGames > 0 &&
+    growthTotalPoints > 0 &&
+    growthGamesWithoutPoints === 0 &&
+    growthMissingResultType === 0;
+
   return (
     <div className="mx-auto max-w-6xl p-4 md:p-6">
       <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -551,6 +573,44 @@ const MatchDetail = () => {
         </h1>
         <p className="mb-2 text-gray-600">大会: {match.tournament_name}</p>
         <p className="mb-4 text-gray-600">形式: {match.best_of} ゲームマッチ</p>
+
+        {/* 成長分析データの充足度（ポイント詳細が入っているか） */}
+        {growthTotalGames > 0 && (
+          <div
+            className={`mb-4 rounded-lg border p-3 text-sm ${
+              growthReady
+                ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200'
+                : 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-200'
+            }`}
+          >
+            {growthReady ? (
+              <p>
+                成長分析データ: 充足 ✓（全{growthTotalGames}ゲームにポイント記録 /
+                result_type 完備・{growthTotalPoints}ポイント）
+              </p>
+            ) : (
+              <div className="space-y-1">
+                <p className="font-medium">
+                  成長分析データ: 未充足（未入力ぶんは成長分析に反映されません）
+                </p>
+                <ul className="ml-4 list-disc">
+                  {growthGamesWithoutPoints > 0 && (
+                    <li>ポイント未記録のゲーム: {growthGamesWithoutPoints}件</li>
+                  )}
+                  {growthMissingResultType > 0 && (
+                    <li>result_type 未入力のポイント: {growthMissingResultType}件</li>
+                  )}
+                  {growthTotalPoints === 0 && <li>ポイントが未入力です</li>}
+                </ul>
+                {canEditMatches && (
+                  <p className="text-xs">
+                    入力画面で補完できます（ポイント入力のUXはそのままです）。
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {teamAData && teamBData && canEditMatches && (
           <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4">

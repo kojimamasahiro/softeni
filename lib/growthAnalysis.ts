@@ -15,6 +15,9 @@ export type GrowthConfidence =
   | 'small_sample'
   | 'insufficient_sample';
 export type GrowthTrend = 'improved' | 'declined' | 'stable';
+// 公開レベル（ADR-004）。当面の採用範囲は 'none'（撤回・非生成）と 'link'（グループ限定）のみ。
+// 'public' / 'ranked'（実名の全体公開・ランキング）は保留で、現時点では割り当てない。
+export type GrowthVisibility = 'none' | 'link' | 'public' | 'ranked';
 export type GrowthMetricUnit =
   | 'percent'
   | 'percentage_point'
@@ -37,6 +40,26 @@ export type GrowthTarget = {
   matchCount: number;
   completedMatchCount: number;
   latestMatchDate: string | null;
+  // 公開レベル（ADR-004）。当面は 'link'（グループ限定公開）を既定とする。
+  visibility: GrowthVisibility;
+};
+
+// 当面の既定公開レベル。グループ限定（パスワード/限定リンク前提）。
+export const DEFAULT_GROWTH_VISIBILITY: GrowthVisibility = 'link';
+
+// buildGrowthTargets / buildGrowthReports の生成オプション。
+// excludedKeys: 撤回（オプトアウト）された subject_key。生成段で完全に除外する（ADR-004 Decision 5）。
+// featuredKeys: ショーケース対象の subject_key。visibility を 'public' に引き上げる（ADR-004）。
+export type GrowthBuildOptions = {
+  excludedKeys?: ReadonlySet<string> | string[];
+  featuredKeys?: ReadonlySet<string> | string[];
+};
+
+const toExcludedKeySet = (
+  excludedKeys?: ReadonlySet<string> | string[],
+): ReadonlySet<string> => {
+  if (!excludedKeys) return new Set();
+  return Array.isArray(excludedKeys) ? new Set(excludedKeys) : excludedKeys;
 };
 
 export type GrowthMetric = {
@@ -476,6 +499,7 @@ const getSideTargetBase = (match: Match, side: TeamKey) => {
     playerNames,
     teamNames,
     regions,
+    visibility: DEFAULT_GROWTH_VISIBILITY,
   };
 };
 
@@ -499,11 +523,19 @@ export const getGrowthTargetsForMatch = (match: Match): GrowthTarget[] => [
   getGrowthTargetForSide(match, 'B'),
 ];
 
-export const buildGrowthTargets = (matches: Match[]): GrowthTarget[] => {
+export const buildGrowthTargets = (
+  matches: Match[],
+  options: GrowthBuildOptions = {},
+): GrowthTarget[] => {
   const targetMap = new Map<string, GrowthTarget>();
+  const excludedKeys = toExcludedKeySet(options.excludedKeys);
+  const featuredKeys = toExcludedKeySet(options.featuredKeys);
 
   matches.forEach((match) => {
     getGrowthTargetsForMatch(match).forEach((target) => {
+      // 撤回（オプトアウト）された対象は生成しない（ADR-004 Decision 5）。
+      if (excludedKeys.has(target.key)) return;
+
       const existing = targetMap.get(target.key);
       if (!existing) {
         targetMap.set(target.key, target);
@@ -529,7 +561,14 @@ export const buildGrowthTargets = (matches: Match[]): GrowthTarget[] => {
     });
   });
 
-  return [...targetMap.values()].sort((left, right) => {
+  return [...targetMap.values()]
+    .map((target) =>
+      // ショーケース対象は公開（インデックス対象）に引き上げる（ADR-004）。
+      featuredKeys.has(target.key)
+        ? { ...target, visibility: 'public' as GrowthVisibility }
+        : target,
+    )
+    .sort((left, right) => {
     const dateOrder = (right.latestMatchDate ?? '').localeCompare(
       left.latestMatchDate ?? '',
     );
@@ -1325,8 +1364,9 @@ export const buildGrowthReport = (
 export const buildGrowthReports = (
   matches: Match[],
   generatedAt: string = new Date().toISOString(),
+  options: GrowthBuildOptions = {},
 ) => {
-  const targets = buildGrowthTargets(matches);
+  const targets = buildGrowthTargets(matches, options);
   const reports = targets
     .map((target) => buildGrowthReport(matches, target.key, generatedAt))
     .filter((report): report is GrowthReport => Boolean(report));

@@ -106,7 +106,9 @@ function registerFromTeamString(teamStr, prefecture) {
   }
 }
 
-// collect participants: prefer round-robin source when available, otherwise use matches
+// collect participants from BOTH sources. When a round-robin stage feeds into
+// a knockout tournament (RR carry), `roundRobinMatches` and `matches` coexist
+// and we must register participants from each — they are not mutually exclusive.
 if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
   for (const row of data.roundRobinMatches) {
     if (Array.isArray(row.opponents)) {
@@ -131,24 +133,30 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
         row.opponentTeam.prefecture || null,
       );
   }
-} else {
-  for (const m of data.matches || []) {
-    if (Array.isArray(m.opponents)) {
-      for (const o of m.opponents) registerOpponent(o);
-    }
-    if (Array.isArray(m.pair)) {
-      for (const p of m.pair) {
-        if (typeof p === 'string') registerFromIdString(p);
-        else if (p && typeof p === 'object') {
-          // in case pair contains object (unlikely), build id including prefecture
-          const id =
-            p.tempId ||
-            makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture);
-          registerOpponent({ ...p, tempId: id });
-        }
+}
+for (const m of data.matches || []) {
+  if (Array.isArray(m.opponents)) {
+    for (const o of m.opponents) registerOpponent(o);
+  }
+  if (Array.isArray(m.pair)) {
+    for (const p of m.pair) {
+      if (typeof p === 'string') registerFromIdString(p);
+      else if (p && typeof p === 'object') {
+        // in case pair contains object (unlikely), build id including prefecture
+        const id =
+          p.tempId ||
+          makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture);
+        registerOpponent({ ...p, tempId: id });
       }
     }
   }
+  // team-style fields
+  if (m.team) registerFromTeamString(m.team, m.prefecture || null);
+  if (m.opponentTeam && m.opponentTeam.team)
+    registerFromTeamString(
+      m.opponentTeam.team,
+      m.opponentTeam.prefecture || null,
+    );
 }
 // If some participants were registered from plain id-strings ("姓_名_チーム")
 // try to copy prefecture from any detailed entry that has the same name+team.
@@ -286,9 +294,10 @@ for (const e of entriesMap.values()) {
   e.playerIds = e.playerIds.map((id) => remapId(id));
 }
 
-// If round-robin data exists, prefer building entries from roundRobinMatches
+// If round-robin data exists, MERGE entries derived from roundRobinMatches
+// into the matches-derived entries. Do NOT clear: when RR feeds a knockout
+// tournament both stages coexist and the knockout entries must be preserved.
 if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
-  entriesMap.clear();
   for (const row of data.roundRobinMatches) {
     if (row.entryNo == null) continue;
     const key = String(row.entryNo);
@@ -315,13 +324,18 @@ if (Array.isArray(data.roundRobinMatches) && data.roundRobinMatches.length) {
         .filter(Boolean);
     }
 
-    entriesMap.set(key, { entryNo: Number(row.entryNo), playerIds });
-  }
+    // remap to normalized ids (matches-derived entries are already remapped)
+    playerIds = playerIds.map((id) => remapId(String(id)));
 
-  // remap newly-added ids to normalized ids
-  for (const e of entriesMap.values()) {
-    if (!Array.isArray(e.playerIds)) continue;
-    e.playerIds = e.playerIds.map((id) => remapId(String(id)));
+    if (!entriesMap.has(key)) {
+      entriesMap.set(key, { entryNo: Number(row.entryNo), playerIds });
+    } else {
+      // fill playerIds only if the existing (matches-derived) entry lacks them
+      const e = entriesMap.get(key);
+      if ((!Array.isArray(e.playerIds) || !e.playerIds.length) && playerIds.length) {
+        e.playerIds = playerIds;
+      }
+    }
   }
 }
 

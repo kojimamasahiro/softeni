@@ -28,17 +28,19 @@
 
 確認できる仕様:
 
-- 最新 50 件を対象（`LATEST_BETA_MATCH_LIMIT = 50`）
+- 全件を対象（取得上限なし。`matches` を `created_at` 降順で全件取得）
 - 環境変数が無い場合は既存スナップショット再利用
 - `meta.json` / `index.json` / `matches/*.json` / `growth/**` を更新
-- 出力時に `public/data/beta-matches/` を毎回削除して再生成する（`ensureCleanDir`）
+- 出力は追記型（既存ファイルを更新し、出力ディレクトリの全削除はしない）
 
-### 注意: 50 件上限と公開 URL の消失リスク
+### Deprecated: 50 件上限と公開 URL の消失リスク（解消済み）
 
-- 51 件目以降、作成日時が古い試合は `meta.json` と `matches/*.json` から完全に落ちる
-- `meta.json` の `matchIds` が静的パス生成の第一候補なので、落ちた試合の詳細ページは次回ビルドから 404 になる
-- 現状は `/beta/*` が robots.txt で disallow かつ sitemap 除外のため実害はないが、試合詳細ページを公開 URL としてインデックスさせる場合は、事前に上限撤廃（全件出力）またはアーカイブ方式への変更が必要
-- 解消方針は docs/wiki/score-site-link.md（Draft）の「公開 JSON 生成（追記型へ変更）」に統合済み
+旧仕様では最新 50 件のみを対象（`LATEST_BETA_MATCH_LIMIT = 50`）とし、出力ディレクトリを毎回削除して
+再生成（`ensureCleanDir`）していたため、上限から漏れた古い試合は JSON ごと消え、詳細ページが
+404 になるリスクがあった。
+
+現在は **上限撤廃（全件取得）＋追記型生成** に変更済みで、このリスクは構造的に解消されている
+（経緯は docs/wiki/score-site-link.md）。コード上も `LATEST_BETA_MATCH_LIMIT` / `ensureCleanDir` は存在しない。
 
 ## 大会・選手データ生成
 
@@ -191,12 +193,17 @@ CLI:
    - 入力は localStorage 経由で各ツールに渡る（従来どおり `initialPlayer.js` 直接編集も可。localStorage 入力が優先される）
 2. 各ツール（`tools/roundrobin` / `tools/tournament3`）でスコア入力
    - 出力 textarea には成形済みJSON（`data/tournaments/details` 用の最終形式）が直接表示される
+   - `tools/roundrobin` ではこの成形済みJSONを textarea 上で直接編集でき、編集するとスコア入力による自動上書きが止まる（編集内容がそのままコピー / ダウンロード / 保存に使われる）。試合結果から作り直す場合は「試合結果から再生成」ボタンで編集を破棄して再生成する
    - 保存はコピー / ダウンロード / File System Access API によるフォルダ直接保存（Chrome系のみ）に対応
 3. ラウンドロビン→トーナメント移行: RR画面で「各グループ上位N位を進出」を指定して抽出→編集→トーナメント画面へ遷移
    - RRの生結果（roundRobinMatches / standings）は持ち越され、トーナメント出力にマージしてから成形される
+   - 持ち越すRR結果は、成形済みJSONを**手動編集していない場合はUIのスコア状態**から、**手動編集した場合は編集後の成形済みJSONから復元**して作る。これにより、RR結果をJSON編集で入力した場合でも、RRで敗退し本戦へ進出しない選手が持ち越し（=最終出力の participants / entries / results）から欠落しない
+   - 持ち越しの standings は normalize 側で roundRobinMatches から再計算されるため参考値（最終順位の正は roundRobinMatches）
 
 成形ロジック:
 
 - 本体は `tools/shared/normalize-core.js`（ブラウザ・Node 両対応）
 - `scripts/normalize-to-participants-entries.cjs` は同モジュールを呼ぶ薄いCLIラッパーに変更（`scripts/batch-normalize.mjs` からの利用・出力は従来と同一であることを確認済み）
 - entries メタ（type情報）はハブページの任意入力欄から渡せる。未指定時は従来どおり試合内容から推定
+- ラウンドロビン→トーナメント移行時は `roundRobinMatches`（RR持ち越し）と `matches`（トーナメント）が同一入力に共存する。participants と entries は両方をマージして収集する（どちらか一方だけを採用しない）。これにより、トーナメント側のペア・対戦相手・entryが participants / entries から欠落しない
+- RRで敗退し本戦へ進めなかった選手も `results` に残す。形式は `{"entryNo":N,"tournament":null,"roundrobin":{"group":..,"rank":..}}`（例: `data/tournaments/details/highschool-japan-cup/2025/doubles-none-boys.json`）。「予選敗退」「予選N位」等のラベルはJSONには保存せず、`tournament:null` かつ `roundrobin` ありの形から表示側（選手ページ・メジャータイトル判定等）で導出する

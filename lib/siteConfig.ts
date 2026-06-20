@@ -58,6 +58,12 @@ export const isScoreSiteMode = () => siteConfig.mode === 'score';
 
 export const isSofteniPickSiteMode = () => siteConfig.mode === 'softeni-pick';
 
+// 成長分析のグループ限定アクセス（A1: パスワード/限定リンク）が整うまでは false。
+// false の間は、成長ページで全対象を列挙するドロップダウンを公開しない（ADR-004）。
+export const isGrowthGroupAccessEnabled = () =>
+  (process.env.NEXT_PUBLIC_GROWTH_GROUP_ACCESS ??
+    process.env.GROWTH_GROUP_ACCESS) === 'true';
+
 export const buildSiteUrl = (path: string) => {
   if (!path) return siteConfig.baseUrl;
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
