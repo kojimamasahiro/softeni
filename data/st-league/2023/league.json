@@ -1,0 +1,188 @@
+{
+  "year": 2023,
+  "edition": 1,
+  "title": "第1回STリーグ",
+  "period": {
+    "start": "2023-11-30",
+    "end": "2023-12-03"
+  },
+  "venue": "豊橋市総合体育館",
+  "location": "愛知県豊橋市",
+  "format": {
+    "tie": "3本勝負（ダブルス① → シングルス → ダブルス②、2本先取）",
+    "game": "7ゲームマッチ"
+  },
+  "playoff": {
+    "name": "STリーグプレーオフ（Ⅰ・Ⅱ部入替戦）",
+    "period": {
+      "start": "2023-12-22",
+      "end": "2023-12-24"
+    },
+    "venue": "広島県福山市",
+    "description": "STリーグⅠ下位とSTリーグⅡ上位が翌年度の所属を懸けて対戦する入替戦（男女各5チームの総当たり）。男子はⅠ部勢のＵＢＥ・太平洋工業がいずれも残留、女子は太平洋工業がⅠ部昇格・ダンロップが降格（アキムは残留）。"
+  },
+  "divisions": [
+    {
+      "id": "1",
+      "name": "STリーグⅠ",
+      "rank": 1,
+      "format": "総当たり戦",
+      "teamCount": {
+        "boys": 8,
+        "girls": 8
+      },
+      "note": "最上位カテゴリー。下位はプレーオフ（入替戦）対象。",
+      "hasMatchData": true
+    },
+    {
+      "id": "2",
+      "name": "STリーグⅡ",
+      "rank": 2,
+      "format": "予選リーグ（ブロック）＋順位決定戦",
+      "teamCount": {
+        "boys": 32,
+        "girls": 11
+      },
+      "note": "予選ブロックを勝ち上がった各ブロック1位が順位決定戦で最終順位を争う。上位はプレーオフ（入替戦）でⅠ部昇格を目指す。",
+      "hasMatchData": true
+    },
+    {
+      "id": "3",
+      "name": "STリーグⅢ",
+      "rank": 3,
+      "format": "総当たり戦",
+      "note": "Ⅱ部昇格を目指すチームが集うカテゴリー。全国の実業団チームが上位リーグへの足がかりを争う、STリーグの土台となる階層です。",
+      "hasMatchData": false
+    }
+  ],
+  "results": {
+    "1": {
+      "boys": {
+        "champion": "ntt-west",
+        "runnerUp": "watakyu",
+        "third": [
+          "fukui"
+        ]
+      },
+      "girls": {
+        "champion": "toshiba",
+        "runnerUp": "nagase",
+        "third": [
+          "shiroyama"
+        ]
+      }
+    },
+    "2": {
+      "boys": {
+        "champion": "nippon-signal",
+        "ranking": [
+          "nippon-signal",
+          "juhachi-shinwa",
+          "kawaguchi-city",
+          "crossty-holdings",
+          "mazda",
+          "atsugi-city",
+          "mhi-sagamihara",
+          "nipponsteel-oita"
+        ],
+        "blocks": {
+          "A": [
+            "kawaguchi-city",
+            "tosoh-nanyo",
+            "iryohojin-kokoro",
+            "takikawa-city"
+          ],
+          "B": [
+            "nipponsteel-oita",
+            "lucent",
+            "osaka-gas",
+            "jr-east-morioka"
+          ],
+          "C": [
+            "juhachi-shinwa",
+            "akim",
+            "imabari-city",
+            "kuraray-okayama"
+          ],
+          "D": [
+            "mhi-sagamihara",
+            "wakayama-pref",
+            "ntt-east-tokyo",
+            "noto-town"
+          ],
+          "E": [
+            "crossty-holdings",
+            "kawasaki-heavy-akashi",
+            "hitachi-astemo",
+            "fujitsu"
+          ],
+          "F": [
+            "atsugi-city",
+            "meidensha",
+            "toto",
+            "toyota-east"
+          ],
+          "G": [
+            "mazda",
+            "proterial",
+            "ykk",
+            "niihama-city"
+          ],
+          "H": [
+            "nippon-signal",
+            "best",
+            "noah-indoor-stage",
+            "toyota"
+          ]
+        }
+      },
+      "girls": {
+        "champion": "pacific-ind",
+        "ranking": [
+          "pacific-ind",
+          "kinokuni-shinkin",
+          "toyo-kanko",
+          "kawaguchi-city",
+          "yonex-niigata",
+          "toyota",
+          "best",
+          "sunny-breeze"
+        ],
+        "blocks": {
+          "A": [
+            "pacific-ind",
+            "yonex-niigata",
+            "lucent"
+          ],
+          "B": [
+            "kinokuni-shinkin",
+            "toyo-kanko",
+            "nipponsteel-oita",
+            "ome-shinkin"
+          ],
+          "C": [
+            "kawaguchi-city",
+            "toyota",
+            "best",
+            "sunny-breeze"
+          ]
+        }
+      }
+    },
+    "3": {
+      "boys": {
+        "champion": null
+      },
+      "girls": {
+        "champion": null
+      }
+    }
+  },
+  "notes": [
+    "記念すべき第1回大会。男子はNTT西日本ブルーグランツ、女子は東芝姫路が初代王者。",
+    "STリーグⅡは京都府福知山市で先行開催（2023-10-20〜22）。Ⅰ部本戦は愛知県豊橋市（2023-11-30〜12-03）、プレーオフは広島県福山市（2023-12-22〜24）。",
+    "個々の試合の開催日は結果PDFに日付の記載がないため、各フェーズの代表日（Ⅰ部 2023-12-01、Ⅱ部 2023-10-21、プレーオフ 2023-12-23）を設定（Assumption）。",
+    "STリーグⅡは予選ブロック（男子8ブロック・女子3ブロック）の対戦結果をタイ単位（勝敗のみ）で収録。順位は順位決定戦（公式記録）による。選手別の個人成績は未収録。",
+    "女子プレーオフはPDFの字形・レイアウトの都合によりタイ単位（勝敗のみ）で収録。男子プレーオフは選手別詳細まで収録。"
+  ]
+}

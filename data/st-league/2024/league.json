@@ -1,0 +1,182 @@
+{
+  "year": 2024,
+  "edition": 2,
+  "title": "第2回STリーグ",
+  "period": {
+    "start": "2024-12-12",
+    "end": "2024-12-15"
+  },
+  "venue": "スカイホール豊田",
+  "location": "愛知県豊田市",
+  "format": {
+    "tie": "3本勝負（ダブルス① → シングルス → ダブルス②、2本先取）",
+    "game": "7ゲームマッチ"
+  },
+  "playoff": {
+    "name": "STリーグプレーオフ（Ⅰ・Ⅱ部入替戦）",
+    "description": "STリーグⅠ下位とSTリーグⅡ上位が翌年度の所属を懸けて対戦する入替戦（男女各5チームの総当たり）。男子はアキムがⅠ部昇格・ＵＢＥが降格、女子はダンロップがⅠ部昇格・太平洋工業が降格（ヨネックスは残留）。"
+  },
+  "divisions": [
+    {
+      "id": "1",
+      "name": "STリーグⅠ",
+      "rank": 1,
+      "format": "総当たり戦",
+      "teamCount": {
+        "boys": 8,
+        "girls": 8
+      },
+      "note": "最上位カテゴリー。下位はプレーオフ（入替戦）対象。",
+      "hasMatchData": true
+    },
+    {
+      "id": "2",
+      "name": "STリーグⅡ",
+      "rank": 2,
+      "format": "予選リーグ（ブロック）＋順位決定戦",
+      "teamCount": {
+        "boys": 32,
+        "girls": 10
+      },
+      "note": "予選ブロックを勝ち上がった各ブロック1位が順位決定戦で最終順位を争う。上位はプレーオフ（入替戦）でⅠ部昇格を目指す。",
+      "hasMatchData": true
+    },
+    {
+      "id": "3",
+      "name": "STリーグⅢ",
+      "rank": 3,
+      "format": "総当たり戦",
+      "note": "Ⅱ部昇格を目指すチームが集うカテゴリー。全国の実業団チームが上位リーグへの足がかりを争う、STリーグの土台となる階層です。",
+      "hasMatchData": false
+    }
+  ],
+  "results": {
+    "1": {
+      "boys": {
+        "champion": "ntt-west",
+        "runnerUp": "yonex",
+        "third": [
+          "tokyo-gas"
+        ]
+      },
+      "girls": {
+        "champion": "nagase",
+        "runnerUp": "watakyu",
+        "third": [
+          "toshiba"
+        ]
+      }
+    },
+    "2": {
+      "boys": {
+        "champion": "akim",
+        "ranking": [
+          "akim",
+          "tosoh-nanyo",
+          "juhachi-shinwa",
+          "best",
+          "kawaguchi-city",
+          "nippon-signal",
+          "eneos",
+          "crossty-holdings"
+        ],
+        "blocks": {
+          "A": [
+            "juhachi-shinwa",
+            "noto-town",
+            "ichikawa-city",
+            "jr-east-tokyo"
+          ],
+          "B": [
+            "eneos",
+            "kawasaki-heavy-akashi",
+            "niihama-city",
+            "mhi-sagamihara"
+          ],
+          "C": [
+            "akim",
+            "mazda",
+            "ntt-east-tokyo",
+            "jr-east-morioka"
+          ],
+          "D": [
+            "crossty-holdings",
+            "proterial",
+            "toyota",
+            "jx-saganoseki"
+          ],
+          "E": [
+            "kawaguchi-city",
+            "meidensha",
+            "osaka-gas",
+            "jr-east-sendai"
+          ],
+          "F": [
+            "tosoh-nanyo",
+            "atsugi-city",
+            "fukuoka-city",
+            "jr-hokkaido"
+          ],
+          "G": [
+            "best",
+            "nipponsteel-oita",
+            "hitachi-astemo",
+            "fujikoshi"
+          ],
+          "H": [
+            "nippon-signal",
+            "wakayama-pref",
+            "imabari-city",
+            "chubu-electric-aichi"
+          ]
+        }
+      },
+      "girls": {
+        "champion": "dunlop",
+        "ranking": [
+          "dunlop",
+          "toyo-kanko",
+          "kinokuni-shinkin",
+          "best",
+          "toyota",
+          "lucent",
+          "kawaguchi-city",
+          "ome-shinkin"
+        ],
+        "blocks": {
+          "A": [
+            "toyo-kanko",
+            "lucent",
+            "sunny-breeze"
+          ],
+          "B": [
+            "kinokuni-shinkin",
+            "toyota",
+            "kawaguchi-city",
+            "ome-shinkin"
+          ],
+          "C": [
+            "dunlop",
+            "best",
+            "yonex-niigata"
+          ]
+        }
+      }
+    },
+    "3": {
+      "boys": {
+        "champion": null
+      },
+      "girls": {
+        "champion": null
+      }
+    }
+  },
+  "notes": [
+    "男子はNTT西日本ブルーグランツが優勝しSTリーグ2連覇。女子はナガセケンコーがSTリーグ初優勝。",
+    "個々の試合の開催日は結果PDFに日付の記載がないため、大会会期内の代表日（Ⅰ・Ⅱ部 2024-12-13、プレーオフ 2024-12-15）を設定（Assumption）。",
+    "STリーグⅡは予選ブロック（男子8ブロック・女子3ブロック）の対戦結果をタイ単位（勝敗のみ）で収録。順位は順位決定戦（公式記録）による。選手別の個人成績は未収録。",
+    "女子プレーオフはPDFの字形・レイアウトの都合によりタイ単位（勝敗のみ）で収録。男子プレーオフは選手別詳細まで収録。",
+    "出典PDFの表記ゆれにより同一選手が別表記で登録される場合がある（例: 阿部智紀／阿部智貴）。"
+  ]
+}

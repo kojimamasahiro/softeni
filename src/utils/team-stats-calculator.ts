@@ -75,9 +75,14 @@ export function calculatePlayerStats(
     }
   };
 
+  // 名前の無い参加者（チーム単位レコード等の不正データ）は除外し、"null null" の行を防ぐ
+  const hasName = (player?: { lastName?: string | null; firstName?: string | null }) =>
+    !!player && !!(player.lastName || player.firstName);
+
   // Initialize stats for ALL players in info.players
   if (info.players) {
     Object.entries(info.players).forEach(([pid, player]) => {
+      if (!hasName(player)) return;
       const playerName = `${player.lastName} ${player.firstName}`;
       initializePlayerStats(playerName, pid);
     });
@@ -97,7 +102,7 @@ export function calculatePlayerStats(
         if (!relevantPlayerIds.has(pid)) return;
 
         const player = info.players?.[pid];
-        if (!player) return;
+        if (!player || !hasName(player)) return;
 
         const playerName = `${player.lastName} ${player.firstName}`;
         // Ensure initialized (though should be already if in info.players)
@@ -118,7 +123,7 @@ export function calculatePlayerStats(
         if (!relevantPlayerIds.has(pid)) return;
 
         const player = info.players?.[pid];
-        if (!player) return;
+        if (!player || !hasName(player)) return;
 
         const playerName = `${player.lastName} ${player.firstName}`;
         initializePlayerStats(playerName, pid);
