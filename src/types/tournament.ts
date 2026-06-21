@@ -84,6 +84,8 @@ export type MatchRow = {
   group?: string | null;
   round?: string | null;
   opponentDisplayName?: string;
+  /** 対戦相手のプレーヤーID（結果ページリンク用）。シングルスは1要素、ダブルスは最大2要素。 */
+  opponentPlayerIds?: number[];
   result: 'win' | 'lose' | 'draw';
   games: { won: string; lost: string };
 };

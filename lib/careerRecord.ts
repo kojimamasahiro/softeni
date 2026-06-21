@@ -23,6 +23,7 @@ export type CareerTitle = {
   year: number;
   categoryLabel: string;
   isMajorTitle: boolean;
+  generationId?: string;
 };
 
 export type CareerRecordBlock = {
@@ -79,7 +80,7 @@ type PlayerAnalysis = {
   } | null;
 };
 
-type TournamentMeta = { label: string; isMajorTitle: boolean };
+type TournamentMeta = { label: string; isMajorTitle: boolean; generationId?: string };
 
 let cachedTournamentMeta: Map<string, TournamentMeta> | null = null;
 
@@ -87,12 +88,13 @@ function getTournamentMeta(): Map<string, TournamentMeta> {
   if (cachedTournamentMeta) return cachedTournamentMeta;
   const map = new Map<string, TournamentMeta>();
   const idx = readJson<
-    Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean }>
+    Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean; generationId?: string }>
   >(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
   for (const t of idx ?? []) {
     map.set(t.tournamentId, {
       label: t.label ?? t.tournamentId,
       isMajorTitle: Boolean(t.isMajorTitle),
+      generationId: t.generationId,
     });
   }
   cachedTournamentMeta = map;
@@ -169,6 +171,7 @@ function collectTitles(subjectFullName: string): CareerTitle[] {
           year: champ.year,
           categoryLabel: block.categoryLabel,
           isMajorTitle: m?.isMajorTitle ?? false,
+          generationId: m?.generationId,
         });
       }
     }

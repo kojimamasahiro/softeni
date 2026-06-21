@@ -471,6 +471,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         year: t.year,
         tournamentLabel: t.tournamentLabel,
         categoryLabel: t.categoryLabel,
+        tournamentLink: t.generationId
+          ? `/tournaments/${t.generationId}/${t.tournamentId}`
+          : null,
       })),
       scopeNote: career.scopeNote,
     };

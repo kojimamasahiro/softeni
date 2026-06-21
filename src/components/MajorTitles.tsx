@@ -1,7 +1,10 @@
 // src/components/MajorTitles.tsx
+import Link from 'next/link';
+
 interface MajorTitleData {
   name: string;
   years: { year: number; result: string }[];
+  link?: string;
 }
 
 export default function MajorTitles({
@@ -23,16 +26,12 @@ export default function MajorTitles({
         主要タイトル
       </h2>
       <div className="mx-4 overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
-        {/* 横幅を100%に設定 */}
         <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
             <tr>
-              <th className="px-4 py-2 text-left">
-                {/* borderクラス削除 */}大会名
-              </th>
+              <th className="px-4 py-2 text-left">大会名</th>
               {allYears.map((year) => (
                 <th key={year} className="px-4 py-2">
-                  {/* borderクラス削除 */}
                   {year}
                 </th>
               ))}
@@ -44,7 +43,18 @@ export default function MajorTitles({
                 key={index}
                 className="hover:bg-gray-50 dark:hover:bg-gray-700"
               >
-                <td className="px-4 py-2 font-medium">{title.name}</td>
+                <td className="px-4 py-2 font-medium">
+                  {title.link ? (
+                    <Link
+                      href={title.link}
+                      className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                    >
+                      {title.name}
+                    </Link>
+                  ) : (
+                    title.name
+                  )}
+                </td>
                 {allYears.map((year) => {
                   const found = title.years.find((y) => y.year === year);
                   return (

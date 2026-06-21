@@ -17,6 +17,7 @@
   - 結果ページ差し込み（年度×種目）: `src/components/ResultContextBlocks.tsx` ＋ `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`（その年・種目の repeat-title / first-title / champion-defeat を「注目ポイント」バッジで表示。historical-winners を共有して二重走査を回避）
   - 選手ページ差し込み: `src/components/PlayerCareerHighlights.tsx` ＋ `src/pages/players/[id]/index.tsx`（通算成績・優勝歴・優勝歴由来の連覇/初優勝 milestone。curated 選手のみ）
   - `/news` 記事（プレビュー/結果）: `lib/newsArticle.ts`（記事レコード＋ビュー組み立て）、`src/pages/news/[articleId].tsx`、`src/pages/news/index.tsx`、生成 `scripts/generate-news-drafts.mjs`。記事レコードは `data/news/<articleId>.json`（state: draft→review→published、公開は published のみ）。プレビューは前回王者＋シード中 curated 注目選手＋歴代、結果は優勝者＋milestone＋歴代。プレビュー→結果は同一 articleId で type を昇格。
+  - `/news` 記事の OGP 画像（`summary_large_image` / 1200×630）: `tools/sns-images/news_og.py` が **ローカル生成**し `public/og/news/<articleId>-<hash>.png` を git にコミット（本番ビルドに依存を増やさない方針）。対象は `state==="published"` かつ `type==="result"` のみ。生成時に記事レコードへ `ogImage` を書き戻し、`src/pages/news/[articleId].tsx` が `ogImage` のある記事だけ large カードを出す（無ければ既定の `summary` カードへフォールバック）。`MetaHead` は `imageWidth`/`imageHeight` props で large と既定（192）を共存。preview のOGPは後回し。設計: [raw/2026-06-22-news-ogp-image-design.md](../raw/2026-06-22-news-ogp-image-design.md)。
 - 公開フロー（human-in-the-loop）: 生成スクリプトは state:"draft" を作る。人が確認して `data/news/<articleId>.json` の state を "published" に変更すると公開される（承認 UI は未実装、当面 state 手書き運用）。
 - 未実装: head-to-head ほか名寄せ依存ブロック（Step8）、career-wins / best4-first / first-appearance、承認 UI。
 

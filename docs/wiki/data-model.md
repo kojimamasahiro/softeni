@@ -71,6 +71,15 @@
 - `data/players/*/analysis.json` は `data/tournaments/details/**` と `data/tournaments/information/*.json` をソースに自動生成する
 - `latestMatch` は `results` ページ相当の大会データから最新開催の大会を選んで生成する
 
+選手名の表示ルール:
+
+- 選手名は `lastName`（姓）・`firstName`（名）に分けて保持する。
+- 表示時の結合は `src/utils/playerName.ts` の `joinPlayerName(lastName, firstName)` を使う。
+- 日本語名（ひらがな・カタカナ・漢字を含む）は姓名を詰めて表示する（例: 内本貴文）。
+- ローマ字（英語表記）の国際選手は姓名の間に半角スペースを入れる（例: `UCHIMOTO TAKAFUMI`）。コリアカップ等の国際大会が該当する。
+- 判定は名前にひらがな・カタカナ・漢字が含まれるかで行い、含まれなければローマ字とみなしてスペース区切りにする。大会IDによる分岐はしない。
+- 適用箇所は試合結果（`MatchResults`）・出場選手一覧（`EntryOverview`）・大会トップの優勝者名表示など。トーナメント表（`TournamentBracket`）の単式は元々スペース区切りで表示している。
+
 ### score 公開 JSON
 
 - `public/data/beta-matches/meta.json`

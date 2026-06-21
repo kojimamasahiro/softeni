@@ -29,6 +29,7 @@ import {
   TournamentIndexEntry,
   TournamentInformationEntry,
 } from '@/types/index';
+import { joinPlayerName } from '@/utils/playerName';
 
 type CategoryLink = {
   label: string;
@@ -360,7 +361,7 @@ function extractWinner(detailPath: string): string | null {
     );
     const names = entry.playerIds.map((id) => {
       const p = pmap.get(id);
-      return p ? `${p.lastName ?? ''}${p.firstName ?? ''}` : id;
+      return p ? joinPlayerName(p.lastName, p.firstName) : id;
     });
     const teams = [
       ...new Set(

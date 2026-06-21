@@ -31,6 +31,12 @@ export type NewsArticleRecord = {
   /** テンプレ生成のため通常は空。明示指定があれば優先 */
   title?: string;
   description?: string;
+  /**
+   * OGP 画像のパス（"/og/news/<id>-<hash>.png"）。
+   * tools/sns-images/news_og.py がローカル生成して書き戻す（result の published のみ）。
+   * 設計: docs/raw/2026-06-22-news-ogp-image-design.md
+   */
+  ogImage?: string;
   createdAt?: string;
   updatedAt?: string;
 };
@@ -62,11 +68,17 @@ export type NewsCategoryBlock = {
   }>;
   /** プレビューのみ: シード中の注目選手（curated のみ） */
   notablePlayers: NewsNotablePlayer[];
+  /** その年・種目の結果ページ（年度別）への内部リンク。算出不能なら null */
+  resultHref: string | null;
 };
 
 export type NewsArticleView = {
   record: NewsArticleRecord;
   tournamentLabel: string;
+  /** 大会の generationId（内部リンク URL 構築用） */
+  generation: string;
+  /** 大会ハブ（歴代まとめ）への内部リンク */
+  hubHref: string;
   title: string;
   description: string;
   categories: NewsCategoryBlock[];
@@ -87,13 +99,30 @@ function readJson<T>(filePath: string): T | null {
   }
 }
 
-function tournamentLabelOf(tournamentId: string): string {
-  const idx = readJson<Array<{ tournamentId: string; label?: string }>>(
-    path.join(resolveRoot(), 'data', 'tournaments', 'index.json'),
-  );
-  return (
-    idx?.find((t) => t.tournamentId === tournamentId)?.label ?? tournamentId
-  );
+function tournamentMetaOf(tournamentId: string): {
+  label: string;
+  generationId: string;
+} {
+  const idx = readJson<
+    Array<{ tournamentId: string; label?: string; generationId?: string }>
+  >(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
+  const hit = idx?.find((t) => t.tournamentId === tournamentId);
+  return {
+    label: hit?.label ?? tournamentId,
+    generationId: hit?.generationId ?? '',
+  };
+}
+
+/** categoryId（`category-age-gender`）を URL 構成パーツに分解する */
+function categoryPathParts(
+  categoryId: string,
+): { category: string; age: string; gender: string } | null {
+  const parts = categoryId.split('-');
+  if (parts.length < 3) return null;
+  const gender = parts.pop() as string;
+  const age = parts.pop() as string;
+  const category = parts.join('-');
+  return { category, age, gender };
 }
 
 /** 記事レコードを読む */
@@ -203,6 +232,7 @@ function notablePlayersFromSeeds(
 function buildCategoryBlock(
   record: NewsArticleRecord,
   categoryId: string,
+  generation: string,
 ): NewsCategoryBlock | null {
   const { tournamentId, year, type } = record;
   const hw = getHistoricalWinners(tournamentId, categoryId, {
@@ -229,6 +259,11 @@ function buildCategoryBlock(
     notablePlayers = notablePlayersFromSeeds(tournamentId, year, categoryId);
   }
 
+  const parts = generation ? categoryPathParts(categoryId) : null;
+  const resultHref = parts
+    ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/`
+    : null;
+
   return {
     categoryId,
     categoryLabel: hw.categoryLabel,
@@ -240,6 +275,7 @@ function buildCategoryBlock(
     champion: type === 'result' ? champion : null,
     milestones,
     notablePlayers,
+    resultHref,
   };
 }
 
@@ -265,7 +301,9 @@ function defaultDescription(
 export function buildNewsArticleView(
   record: NewsArticleRecord,
 ): NewsArticleView {
-  const tournamentLabel = tournamentLabelOf(record.tournamentId);
+  const { label: tournamentLabel, generationId } = tournamentMetaOf(
+    record.tournamentId,
+  );
   const categoryIds =
     record.categoryId && record.categoryId.length > 0
       ? [record.categoryId]
@@ -273,13 +311,19 @@ export function buildNewsArticleView(
 
   const categories: NewsCategoryBlock[] = [];
   for (const cid of categoryIds) {
-    const block = buildCategoryBlock(record, cid);
+    const block = buildCategoryBlock(record, cid, generationId);
     if (block) categories.push(block);
   }
+
+  const hubHref = generationId
+    ? `/tournaments/${generationId}/${record.tournamentId}/`
+    : '';
 
   return {
     record,
     tournamentLabel,
+    generation: generationId,
+    hubHref,
     title: record.title || defaultTitle(record, tournamentLabel),
     description:
       record.description || defaultDescription(record, tournamentLabel),

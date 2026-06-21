@@ -1,12 +1,15 @@
 // src/components/TeamsEventSummary.tsx
 import Link from 'next/link';
+
+type PlayerEntry = { name: string; playerId?: number };
+
 type TeamsEventSummaryProps = {
   overallTable: {
     name: string;
     categoryLabel?: string;
     link?: string;
     results: string;
-    players: string[];
+    players: (PlayerEntry | string)[];
   }[];
 };
 
@@ -53,7 +56,25 @@ export default function TeamsEventSummary({
                 <span className="text-gray-500 dark:text-gray-400 font-medium">
                   出場選手:
                 </span>{' '}
-                {r.players.join('、')}
+                {r.players.map((p, idx) => {
+                  const name = typeof p === 'string' ? p : p.name;
+                  const playerId = typeof p === 'string' ? undefined : p.playerId;
+                  return (
+                    <span key={idx}>
+                      {idx > 0 && '、'}
+                      {playerId !== undefined ? (
+                        <Link
+                          href={`/players/${playerId}/results`}
+                          className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                        >
+                          {name}
+                        </Link>
+                      ) : (
+                        name
+                      )}
+                    </span>
+                  );
+                })}
               </p>
             </div>
           </div>

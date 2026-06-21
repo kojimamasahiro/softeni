@@ -8,6 +8,10 @@ type MetaHeadProps = {
   description: string;
   url: string;
   image?: string;
+  // image のサイズ。large カード（例 1200x630）を出すとき明示する。
+  // 省略時は既定 OGP 画像（192x192）のときのみ width/height を付与する。
+  imageWidth?: number;
+  imageHeight?: number;
   twitterCardType?: 'summary' | 'summary_large_image' | 'player' | 'app';
   type?: 'website' | 'article';
   siteName?: string;
@@ -23,6 +27,8 @@ export default function MetaHead({
   description,
   url,
   image = siteConfig.ogImage,
+  imageWidth,
+  imageHeight,
   twitterCardType = 'summary',
   type = 'website',
   siteName = siteConfig.siteName,
@@ -45,11 +51,18 @@ export default function MetaHead({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-      {image === siteConfig.ogImage && (
+      {imageWidth && imageHeight ? (
         <>
-          <meta property="og:image:width" content="192" />
-          <meta property="og:image:height" content="192" />
+          <meta property="og:image:width" content={String(imageWidth)} />
+          <meta property="og:image:height" content={String(imageHeight)} />
         </>
+      ) : (
+        image === siteConfig.ogImage && (
+          <>
+            <meta property="og:image:width" content="192" />
+            <meta property="og:image:height" content="192" />
+          </>
+        )
       )}
       <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content={siteName} />

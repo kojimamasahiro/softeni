@@ -83,13 +83,17 @@ export default function TeamYearGenderPage({
             });
           });
 
-          // Convert player IDs to full names
+          // Convert player IDs to names (with optional link IDs)
           const playerNames = Array.from(uniquePlayerIds)
             .map((pid) => {
               const player = info.players[pid];
-              return player ? player.lastName + player.firstName : null;
+              if (!player) return null;
+              return {
+                name: player.lastName + player.firstName,
+                playerId: playerLinks[pid],
+              };
             })
-            .filter(Boolean) as string[];
+            .filter(Boolean) as { name: string; playerId?: number }[];
 
           const resultWithNames = event.results
             .map((r) => {

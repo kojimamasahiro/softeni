@@ -32,7 +32,7 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: 'ニュース', href: '/news' },
+            { label: 'ニュース', href: '/news/' },
           ]}
         />
         <h1 className="mb-4 text-2xl font-bold">
@@ -51,7 +51,7 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
                 className="rounded-md border border-gray-200 p-3 dark:border-gray-700"
               >
                 <Link
-                  href={`/news/${it.articleId}`}
+                  href={`/news/${it.articleId}/`}
                   className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
                 >
                   {it.title}

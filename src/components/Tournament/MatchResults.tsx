@@ -8,6 +8,7 @@ import {
   TournamentEntry,
   TournamentMatch,
 } from '@/types/tournament';
+import { joinPlayerName } from '@/utils/playerName';
 
 type NamePart = {
   text: string;
@@ -165,7 +166,16 @@ function MatchGroup({
                             {m.round ?? '予選'}
                           </td>
                           <td className="px-4 py-2 break-words text-left">
-                            {m.opponentDisplayName ?? '不明'}
+                            {m.opponentPlayerIds?.length === 1 ? (
+                              <Link
+                                href={`/players/${m.opponentPlayerIds[0]}/results`}
+                                className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                              >
+                                {m.opponentDisplayName ?? '不明'}
+                              </Link>
+                            ) : (
+                              m.opponentDisplayName ?? '不明'
+                            )}
                           </td>
                           <td className="px-4 py-2 text-left">
                             {m.games.won}-{m.games.lost}
@@ -242,7 +252,7 @@ export default function MatchResults({
         if (!teamMap[team]) teamMap[team] = [];
         const last = pl?.lastName ?? '';
         const first = pl?.firstName ?? '';
-        const fullName = `${last}${first}`.trim();
+        const fullName = joinPlayerName(last, first);
         const displayName = short ? `${last}`.trim() : fullName;
         teamMap[team].push(displayName || '');
       }
@@ -254,6 +264,16 @@ export default function MatchResults({
         .join('\u30fb');
     },
     [participantMap, detail],
+  );
+
+  // extract numeric player IDs from an entry (for opponent row links)
+  const buildOpponentPlayerIds = useCallback(
+    (entry: TournamentEntry): number[] => {
+      return (entry.playerIds ?? [])
+        .map((pid: string) => participantMap.get(pid)?.playerId)
+        .filter((id): id is number => typeof id === 'number');
+    },
+    [participantMap],
   );
 
   // build linkable name parts for an entry header (individual format only)
@@ -277,7 +297,7 @@ export default function MatchResults({
       for (const pl of players) {
         const team = (pl && pl.team) || '不明';
         if (!teamGroups.has(team)) teamGroups.set(team, []);
-        const fullName = `${pl?.lastName ?? ''}${pl?.firstName ?? ''}`.trim();
+        const fullName = joinPlayerName(pl?.lastName, pl?.firstName);
         teamGroups.get(team)!.push({
           text: fullName || '',
           playerId: pl?.playerId,
@@ -335,21 +355,19 @@ export default function MatchResults({
       const scoreA = String(nm.scores?.[String(a)] ?? nm.scores?.[a] ?? '0');
       const scoreB = String(nm.scores?.[String(b)] ?? nm.scores?.[b] ?? '0');
 
+      const opponentEntry = typeof opponent === 'number'
+        ? ((detail.entries ?? []).find((e) => e.entryNo === opponent) ?? { entryNo: opponent, playerIds: [] })
+        : null;
+
       const row: MatchRow = {
         matchId: nm.matchId,
         stage: nm.stage,
         group: nm.group ?? null,
         round: nm.round ?? null,
-        opponentDisplayName:
-          typeof opponent === 'number'
-            ? buildNameForEntry(
-                (detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
-                  entryNo: opponent,
-                  playerIds: [],
-                },
-                { short: shouldUseShortOpponentName },
-              )
-            : undefined,
+        opponentDisplayName: opponentEntry
+          ? buildNameForEntry(opponentEntry, { short: shouldUseShortOpponentName })
+          : undefined,
+        opponentPlayerIds: opponentEntry ? buildOpponentPlayerIds(opponentEntry) : undefined,
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
         games:
@@ -378,21 +396,22 @@ export default function MatchResults({
       const scoreA = String(m.scores?.[String(a)] ?? m.scores?.[a] ?? '0');
       const scoreB = String(m.scores?.[String(b)] ?? m.scores?.[b] ?? '0');
 
+      const entryB = typeof b === 'number'
+        ? ((detail.entries ?? []).find((e) => e.entryNo === b) ?? { entryNo: b, playerIds: [] })
+        : null;
+      const entryA = typeof a === 'number'
+        ? ((detail.entries ?? []).find((e) => e.entryNo === a) ?? { entryNo: a, playerIds: [] })
+        : null;
+
       const rowA: MatchRow = {
         matchId: m.matchId,
         stage: m.stage,
         group: m.group ?? null,
         round: m.round ?? null,
-        opponentDisplayName:
-          typeof b === 'number'
-            ? buildNameForEntry(
-                (detail.entries ?? []).find((e) => e.entryNo === b) ?? {
-                  entryNo: b,
-                  playerIds: [],
-                },
-                { short: shouldUseShortOpponentName },
-              )
-            : undefined,
+        opponentDisplayName: entryB
+          ? buildNameForEntry(entryB, { short: shouldUseShortOpponentName })
+          : undefined,
+        opponentPlayerIds: entryB ? buildOpponentPlayerIds(entryB) : undefined,
         result:
           m.winnerEntryNo === a
             ? 'win'
@@ -406,16 +425,10 @@ export default function MatchResults({
         stage: m.stage,
         group: m.group ?? null,
         round: m.round ?? null,
-        opponentDisplayName:
-          typeof a === 'number'
-            ? buildNameForEntry(
-                (detail.entries ?? []).find((e) => e.entryNo === a) ?? {
-                  entryNo: a,
-                  playerIds: [],
-                },
-                { short: shouldUseShortOpponentName },
-              )
-            : undefined,
+        opponentDisplayName: entryA
+          ? buildNameForEntry(entryA, { short: shouldUseShortOpponentName })
+          : undefined,
+        opponentPlayerIds: entryA ? buildOpponentPlayerIds(entryA) : undefined,
         result:
           m.winnerEntryNo === b
             ? 'win'
@@ -463,7 +476,7 @@ export default function MatchResults({
     }
 
     return map;
-  }, [detail, buildNameForEntry, shouldUseShortOpponentName]);
+  }, [detail, buildNameForEntry, buildOpponentPlayerIds, shouldUseShortOpponentName]);
 
   // build name list from entries & eliminatedEntries
   const groupedNames = [

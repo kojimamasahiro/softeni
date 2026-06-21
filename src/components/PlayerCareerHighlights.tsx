@@ -4,6 +4,8 @@
 // データ生成は getStaticProps 側（lib/careerRecord.ts / lib/milestones.ts）。
 // 設計: docs/wiki/news-context-blocks.md / ADR-005。
 
+import Link from 'next/link';
+
 export type PlayerHighlightMilestone = {
   kind: string;
   label: string;
@@ -15,6 +17,7 @@ export type PlayerHighlightTitle = {
   year: number;
   tournamentLabel: string;
   categoryLabel: string;
+  tournamentLink?: string | null;
 };
 
 export type PlayerCareerHighlightsData = {
@@ -82,7 +85,17 @@ export default function PlayerCareerHighlights({
           <ul className="list-inside list-disc space-y-1 text-sm text-gray-700 dark:text-gray-200">
             {data.titles.map((t, i) => (
               <li key={`${t.year}-${t.tournamentLabel}-${i}`}>
-                {t.year}年 {t.tournamentLabel}
+                {t.year}年{' '}
+                {t.tournamentLink ? (
+                  <Link
+                    href={t.tournamentLink}
+                    className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                  >
+                    {t.tournamentLabel}
+                  </Link>
+                ) : (
+                  t.tournamentLabel
+                )}
                 {t.categoryLabel ? `（${t.categoryLabel}）` : ''}
               </li>
             ))}

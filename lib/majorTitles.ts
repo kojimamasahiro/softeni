@@ -19,6 +19,7 @@ interface MajorTitleYear {
 export interface MajorTitleData {
   name: string;
   years: MajorTitleYear[];
+  link?: string;
 }
 
 type MajorTitlesPreparation = {
@@ -243,7 +244,10 @@ export const getMajorTitlesForPlayer = async (
         yearsResults.push({ year: Number(year), result: resultStr || 'ー' });
       }
 
-      out.push({ name, years: yearsResults });
+      const link = m.generationId
+        ? `/tournaments/${m.generationId}/${tournamentId}`
+        : undefined;
+      out.push({ name, years: yearsResults, link });
     }
 
     return out;

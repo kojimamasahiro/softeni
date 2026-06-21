@@ -9,6 +9,30 @@ const path = require('path');
 const tournamentDates = {};
 // playerId(number) -> 最新出場大会の日付 (ISO)
 const playerLastmod = {};
+// articleId -> updatedAt|createdAt (ISO)。/news/<articleId> の lastmod に使う
+const newsLastmod = {};
+
+function loadNews() {
+  try {
+    const newsDir = path.join(process.cwd(), 'data', 'news');
+    if (!fs.existsSync(newsDir)) return;
+    for (const file of fs.readdirSync(newsDir)) {
+      if (!file.endsWith('.json')) continue;
+      try {
+        const rec = JSON.parse(
+          fs.readFileSync(path.join(newsDir, file), 'utf-8'),
+        );
+        if (!rec || rec.state !== 'published' || !rec.articleId) continue;
+        const date = rec.updatedAt || rec.createdAt || null;
+        if (date) newsLastmod[rec.articleId] = date;
+      } catch {
+        // ignore broken file
+      }
+    }
+  } catch (err) {
+    console.error('next-sitemap: failed to build news lastmod table', err);
+  }
+}
 
 function loadData() {
   try {
@@ -95,6 +119,7 @@ function loadData() {
 }
 
 loadData();
+loadNews();
 
 module.exports = {
   siteUrl: 'https://softeni-pick.com', // サイトのURLを指定
@@ -137,6 +162,12 @@ module.exports = {
       lastmod = tournamentDates[tournamentMatch[1]]
         ? tournamentDates[tournamentMatch[1]][tournamentMatch[2]]
         : undefined;
+    }
+
+    // ニュース記事ページ: /news/{articleId}/
+    const newsMatch = loc.match(/^\/news\/([^/]+)\/?$/);
+    if (newsMatch) {
+      lastmod = newsLastmod[newsMatch[1]] ?? lastmod;
     }
 
     return {

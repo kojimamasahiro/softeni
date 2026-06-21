@@ -17,21 +17,39 @@ import {
   listPublishedArticles,
   type NewsArticleView,
 } from '@/lib/newsArticle';
+import { buildSiteUrl, siteConfig } from '@/lib/siteConfig';
 
 function winPct(wins: number, matches: number): string {
   if (matches <= 0) return '-';
   return `${Math.round((wins / matches) * 1000) / 10}%`;
 }
 
+function formatDate(iso: string | undefined): string | null {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+}
+
 export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
-  const { record, tournamentLabel, title, description, categories } = view;
+  const { record, tournamentLabel, title, description, categories, hubHref } =
+    view;
   const pageUrl = `https://softeni-pick.com/news/${record.articleId}/`;
   const isPreview = record.type === 'preview';
 
+  // 記事専用 OGP（tools/sns-images/news_og.py がローカル生成）。無ければ既定カードへフォールバック。
+  const hasArticleOg = Boolean(record.ogImage);
+  const ogImageUrl = record.ogImage
+    ? buildSiteUrl(record.ogImage)
+    : siteConfig.ogImage;
+
+  const publishedLabel = formatDate(record.createdAt);
+  const updatedLabel = formatDate(record.updatedAt);
+
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
-    { label: 'ニュース', href: '/news' },
-    { label: title, href: `/news/${record.articleId}` },
+    { label: 'ニュース', href: '/news/' },
+    { label: title, href: `/news/${record.articleId}/` },
   ];
 
   return (
@@ -41,6 +59,14 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
         description={description}
         url={pageUrl}
         type="article"
+        image={ogImageUrl}
+        {...(hasArticleOg
+          ? {
+              imageWidth: 1200,
+              imageHeight: 630,
+              twitterCardType: 'summary_large_image' as const,
+            }
+          : {})}
       />
       <Head>
         <script
@@ -48,16 +74,35 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'Article',
+              '@type': 'NewsArticle',
               headline: title,
               inLanguage: 'ja',
               url: pageUrl,
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': pageUrl,
+              },
+              image: [ogImageUrl],
               about: {
                 '@type': 'Thing',
                 name: `ソフトテニス ${tournamentLabel}`,
               },
-              ...(record.updatedAt ? { dateModified: record.updatedAt } : {}),
+              author: {
+                '@type': 'Organization',
+                name: siteConfig.siteName,
+                url: siteConfig.baseUrl,
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: siteConfig.siteName,
+                url: siteConfig.baseUrl,
+                logo: {
+                  '@type': 'ImageObject',
+                  url: siteConfig.ogImage,
+                },
+              },
               ...(record.createdAt ? { datePublished: record.createdAt } : {}),
+              dateModified: record.updatedAt ?? record.createdAt,
               description,
             }),
           }}
@@ -68,6 +113,20 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
         <Breadcrumbs crumbs={breadcrumbs} />
 
         <h1 className="mb-2 text-2xl font-bold">{title}</h1>
+        {(publishedLabel || updatedLabel) && (
+          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+            {publishedLabel && record.createdAt && (
+              <time dateTime={record.createdAt}>公開: {publishedLabel}</time>
+            )}
+            {updatedLabel &&
+              record.updatedAt &&
+              record.updatedAt !== record.createdAt && (
+                <time dateTime={record.updatedAt} className="ml-2">
+                  更新: {updatedLabel}
+                </time>
+              )}
+          </p>
+        )}
         <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
           {description}
           <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
@@ -161,11 +220,39 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                 </ul>
               </div>
             )}
+
+            {/* 結果速報: その年・種目の結果詳細ページへ */}
+            {!isPreview && c.resultHref && (
+              <p className="mt-3 text-sm">
+                <Link
+                  href={c.resultHref}
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {record.year}年 {c.categoryLabel} の結果詳細を見る →
+                </Link>
+              </p>
+            )}
           </section>
         ))}
 
+        {hubHref && (
+          <div className="mt-10 border-t border-gray-200 pt-5 dark:border-gray-700">
+            <h2 className="mb-2 text-base font-bold">関連ページ</h2>
+            <ul className="list-inside list-disc space-y-1 text-sm">
+              <li>
+                <Link
+                  href={hubHref}
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {tournamentLabel} の歴代優勝者・大会まとめ
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <div className="mt-10 text-right">
-          <Link href="/news" className="text-sm text-blue-500 hover:underline">
+          <Link href="/news/" className="text-sm text-blue-500 hover:underline">
             ニュース一覧へ
           </Link>
         </div>
