@@ -10,6 +10,7 @@
 - [Score Site Link](./score-site-link.md)
 - [Score Analysis](./score-analysis.md)
 - [Public Pages](./public-pages.md)
+- [SEO（カニバリ/重複制御）](./seo.md)
 - [Tournaments Local](./tournaments-local.md)
 - [SNS 1日目投稿画像](./sns-day1-images.md)
 - [Data Model](./data-model.md)
