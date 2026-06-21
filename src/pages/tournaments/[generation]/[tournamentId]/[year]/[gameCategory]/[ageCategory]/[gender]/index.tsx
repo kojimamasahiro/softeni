@@ -10,10 +10,14 @@ import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import ResultContextBlocks from '@/components/ResultContextBlocks';
+import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import PageLayout from '@/components/PageLayout';
+import { getChampionDefeat, getChampionMilestones } from '@/lib/milestones';
+import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import {
   PackedTournamentDetailData,
   packTournamentDetailData,
@@ -67,6 +71,8 @@ interface TournamentYearResultPageProps {
   highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
   prefectureName?: string | null;
   scoreMatchLinks?: ScoreMatchLink[];
+  // 文脈ブロック（連覇 / 初優勝 / 王者撃破）。docs/wiki/news-context-blocks.md
+  contextMilestones?: ContextMilestone[];
 }
 
 export default function TournamentYearResultPage({
@@ -87,6 +93,7 @@ export default function TournamentYearResultPage({
   highschoolTeamLinks = null,
   prefectureName = null,
   scoreMatchLinks = [],
+  contextMilestones = [],
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
 
@@ -220,6 +227,13 @@ export default function TournamentYearResultPage({
               </p>
             )}
         </section>
+
+        {/* ✅ 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
+        <ResultContextBlocks
+          label={label}
+          year={year}
+          milestones={contextMilestones}
+        />
 
         {/* ✅ トーナメント表 */}
         {detailData && <TournamentBracket detailData={detailData} />}
@@ -753,6 +767,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const tournamentPath = `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
   const scoreMatchLinks = getScoreMatchLinksForTournament(tournamentPath);
 
+  // --- 文脈ブロック（過去データ由来のイベント）---
+  // docs/wiki/news-context-blocks.md / ADR-005。
+  // この年・種目の優勝者視点の milestone（連覇 / 初優勝）と、前回王者視点の
+  // champion-defeat（王者撃破）を生成する。historical-winners は両者で共有して
+  // 二重走査を避ける。
+  const contextMilestones: ContextMilestone[] = [];
+  const targetYearNum = Number(year);
+  if (Number.isFinite(targetYearNum)) {
+    const hw = getHistoricalWinners(tournamentId, categoryId, {
+      targetYear: targetYearNum,
+    });
+    const championMs = getChampionMilestones(
+      tournamentId,
+      categoryId,
+      targetYearNum,
+      hw,
+    );
+    const defeat = getChampionDefeat(
+      tournamentId,
+      categoryId,
+      targetYearNum,
+      hw,
+    );
+    // 重要度順: repeat-title / first-title（getChampionMilestones で整列済み）→ champion-defeat。
+    const events = [...(championMs?.events ?? []), ...(defeat ? [defeat] : [])];
+    for (const e of events) {
+      contextMilestones.push({
+        kind: e.kind,
+        label: e.label,
+        confidence: e.confidence,
+        scopeNote: e.scopeNote ?? null,
+      });
+    }
+  }
+
   return {
     props: ((): Record<string, unknown> => {
       return {
@@ -779,6 +828,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         highschoolTeamLinks,
         prefectureName,
         scoreMatchLinks,
+        contextMilestones,
       };
     })(),
   };

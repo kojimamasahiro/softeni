@@ -6,17 +6,22 @@
 // 設計: docs/raw/2026-06-21-milestone-logic.md / ADR-005。
 //
 // 実装スコープ（段階導入）:
-//  - 実装済み: repeat-title（連覇） / first-title（初優勝）
-//    → いずれも Step1（lib/tournamentRecords.ts）の優勝者データから決定的に導ける。
-//      playerId 名寄せに依存しないため誤判定リスクが低い。
-//  - 未実装（pending）: best4-first / career-wins / first-appearance / champion-defeat
+//  - 実装済み: repeat-title（連覇） / first-title（初優勝） / champion-defeat（王者撃破）
+//    → いずれも Step1（lib/tournamentRecords.ts）の優勝者データ＋当年の試合（matches）から
+//      決定的に導ける。championKey による所属＋名前比較で判定するため playerId 名寄せに
+//      依存せず、誤判定リスクが低い。champion-defeat は前回王者が当年に出場し試合で敗退した
+//      場合のみ検出する（不出場は出さない）。
+//  - 未実装（pending）: best4-first / career-wins / first-appearance
 //    → Step1 の placements 拡張（ベスト4）や analysis.json との突合（playerId 名寄せ）が
 //      必要。名寄せ精度の検証が済むまで出さない（誤った節目表示は信頼を損なうため）。
 //      MilestoneEvent 構造はこれらを後から足せるよう汎用にしている。
 
 import {
+  buildParticipantMap,
   championKey,
   getHistoricalWinners,
+  readYearDetail,
+  resolveEntryToChampion,
   type ChampionEntry,
   type HistoricalWinnersBlock,
 } from './tournamentRecords';
@@ -154,8 +159,9 @@ export function getChampionMilestones(
   }
 
   // --- pending kinds ---
-  // best4-first / career-wins / first-appearance / champion-defeat は
+  // best4-first / career-wins / first-appearance は
   // Step1 placements 拡張・analysis.json 突合（名寄せ）が整うまで出さない。
+  // champion-defeat は主役（優勝者）視点ではないため getChampionDefeat に分離している。
 
   events.sort((a, b) => KIND_IMPORTANCE[a.kind] - KIND_IMPORTANCE[b.kind]);
 
@@ -165,5 +171,106 @@ export function getChampionMilestones(
     categoryId,
     year: targetYear,
     events,
+  };
+}
+
+const DEFEAT_SCOPE_NOTE = '前回優勝は当サイト掲載大会分の判定に基づく';
+
+/**
+ * champion-defeat（王者撃破）イベントを抽出する。
+ *
+ * 「前回王者」＝対象年より前で直近に優勝者が判明している開催の優勝ペア/校。
+ * その前回王者が対象年の大会に出場し、いずれかの試合で敗退している場合に、
+ * 撃破した（勝った）エントリを主役（subject）としたイベントを返す。
+ *
+ * - 前回王者が出場していない → null（ユーザー仕様: 出場して敗退した時のみ表示）。
+ * - 前回王者が敗退していない（連覇など） → null。
+ * - 試合の勝敗自体は確定（confidence: 'confirmed'）。ただし「前回王者」認定は
+ *   掲載範囲に依存するため scopeNote を添える。
+ *
+ * subject は撃破した側（＝「勝った選手の情報」）。
+ */
+export function getChampionDefeat(
+  tournamentId: string,
+  categoryId: string,
+  targetYear: number,
+  precomputed?: HistoricalWinnersBlock | null,
+): MilestoneEvent | null {
+  const block: HistoricalWinnersBlock | null =
+    precomputed ??
+    getHistoricalWinners(tournamentId, categoryId, { targetYear });
+  if (!block) return null;
+
+  // 前回（対象年より前で直近の優勝者が判明している開催）の王者を特定する。
+  const prior = block.champions
+    .filter((c) => c.year < targetYear && c.display)
+    .sort((a, b) => b.year - a.year)[0];
+  if (!prior) return null;
+  const priorKey = championKey(prior);
+  if (!priorKey) return null;
+
+  // 当年の生 detail（matches を含む）を読む。
+  const detail = readYearDetail(tournamentId, targetYear, categoryId);
+  if (!detail) return null;
+  const participantById = buildParticipantMap(detail);
+  const entryByNo = new Map(
+    (detail.entries ?? []).map((e) => [e.entryNo, e] as const),
+  );
+
+  // 当年エントリの中から前回王者と一致するものを探す（同所属・同名で比較）。
+  let championEntryNo: number | null = null;
+  for (const e of detail.entries ?? []) {
+    const ce = resolveEntryToChampion(e, participantById, targetYear);
+    if (championKey(ce) === priorKey) {
+      championEntryNo = e.entryNo;
+      break;
+    }
+  }
+  // 出場していない → 出さない。
+  if (championEntryNo == null) return null;
+
+  // 前回王者が敗れた試合（負けた試合）を抽出する。
+  const defeats = (detail.matches ?? []).filter(
+    (m) =>
+      Array.isArray(m.entries) &&
+      m.entries.includes(championEntryNo as number) &&
+      typeof m.winnerEntryNo === 'number' &&
+      m.winnerEntryNo !== championEntryNo,
+  );
+  // 敗退していない（連覇など） → null。
+  if (defeats.length === 0) return null;
+
+  // knockout の敗戦を優先（リーグの複数敗戦による曖昧さを避ける）。無ければ先頭。
+  const defeat =
+    defeats.find((m) => (m.stage ?? 'knockout') !== 'roundrobin') ?? defeats[0];
+  const winnerEntry =
+    typeof defeat.winnerEntryNo === 'number'
+      ? entryByNo.get(defeat.winnerEntryNo)
+      : undefined;
+  if (!winnerEntry) return null;
+
+  const winner = resolveEntryToChampion(
+    winnerEntry,
+    participantById,
+    targetYear,
+  );
+  if (!winner.display) return null;
+
+  const round = defeat.round ?? '';
+  const subject = subjectOf(winner);
+  const beaten = prior.display as string;
+  const shortLabel = `前回王者 ${beaten} を破る`;
+
+  return {
+    kind: 'champion-defeat',
+    subject,
+    tournamentId,
+    categoryId,
+    year: targetYear,
+    detail: { beaten, beatenYear: prior.year, round },
+    confidence: 'confirmed',
+    label: `${subject.display} が${shortLabel}${round ? `（${round}）` : ''}`,
+    shortLabel,
+    scopeNote: DEFEAT_SCOPE_NOTE,
   };
 }

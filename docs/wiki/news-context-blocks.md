@@ -9,14 +9,16 @@
 実装状況（実装が source of truth）:
 
 - 実装済み:
-  - `lib/tournamentRecords.ts`（historical-winners・連覇判定）
-  - `lib/milestones.ts`（repeat-title / first-title。他種別は名寄せ整備まで保留）
+  - `lib/tournamentRecords.ts`（historical-winners・連覇判定。`readYearDetail` / `buildParticipantMap` / `resolveEntryToChampion` を export し、優勝者以外の試合＝敗退試合の参照を可能にしている）
+  - `lib/milestones.ts`（repeat-title / first-title / champion-defeat。career-wins / best4-first / first-appearance は名寄せ整備まで保留）
+    - `champion-defeat`（王者撃破）: 前回王者（対象年より前で直近に優勝者が判明している開催の優勝ペア/校）が対象年に**出場し試合で敗退した**場合のみ、撃破した側を subject にしたイベントを返す。当年 `matches` から `championKey`（所属＋名前）一致で前回王者エントリを特定し、敗戦試合の勝者を解決する。不出場・無敗（連覇）は出さない。`getChampionDefeat()` として優勝者視点の `getChampionMilestones()` とは分離（主役が優勝者ではないため）。confidence は `confirmed`（試合の勝敗は確定）だが「前回王者」認定は掲載範囲依存のため scopeNote を添える。
   - `lib/careerRecord.ts`（analysis.json＋優勝歴。CareerTitle に categoryId を保持）
   - 大会ハブ差し込み: `src/components/TournamentContextBlocks.tsx` ＋ `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`（最新年度の milestone と curated 優勝者の通算成績）
+  - 結果ページ差し込み（年度×種目）: `src/components/ResultContextBlocks.tsx` ＋ `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`（その年・種目の repeat-title / first-title / champion-defeat を「注目ポイント」バッジで表示。historical-winners を共有して二重走査を回避）
   - 選手ページ差し込み: `src/components/PlayerCareerHighlights.tsx` ＋ `src/pages/players/[id]/index.tsx`（通算成績・優勝歴・優勝歴由来の連覇/初優勝 milestone。curated 選手のみ）
   - `/news` 記事（プレビュー/結果）: `lib/newsArticle.ts`（記事レコード＋ビュー組み立て）、`src/pages/news/[articleId].tsx`、`src/pages/news/index.tsx`、生成 `scripts/generate-news-drafts.mjs`。記事レコードは `data/news/<articleId>.json`（state: draft→review→published、公開は published のみ）。プレビューは前回王者＋シード中 curated 注目選手＋歴代、結果は優勝者＋milestone＋歴代。プレビュー→結果は同一 articleId で type を昇格。
 - 公開フロー（human-in-the-loop）: 生成スクリプトは state:"draft" を作る。人が確認して `data/news/<articleId>.json` の state を "published" に変更すると公開される（承認 UI は未実装、当面 state 手書き運用）。
-- 未実装: head-to-head ほか名寄せ依存ブロック（Step8）、承認 UI。
+- 未実装: head-to-head ほか名寄せ依存ブロック（Step8）、career-wins / best4-first / first-appearance、承認 UI。
 
 ## 設計原則（確定）
 

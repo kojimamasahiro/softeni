@@ -56,7 +56,7 @@ export type HistoricalWinnersBlock = {
 
 // ---- 入力（raw JSON）型 ----
 
-type RawParticipant = {
+export type RawParticipant = {
   id: string;
   lastName?: string | null;
   firstName?: string | null;
@@ -64,7 +64,7 @@ type RawParticipant = {
   prefecture?: string | null;
 };
 
-type RawEntry = { entryNo: number; playerIds: string[] };
+export type RawEntry = { entryNo: number; playerIds: string[] };
 
 type RawRank = { kind?: string; bestLevel?: number; round?: number };
 
@@ -73,10 +73,20 @@ type RawResult = {
   tournament?: { label?: string; rank?: RawRank } | null;
 };
 
-type RawDetail = {
+/** 1 試合ぶん（champion-defeat 検出に必要な最小フィールドのみ） */
+export type RawMatch = {
+  entries?: number[];
+  winnerEntryNo?: number;
+  round?: string | null;
+  stage?: string | null;
+  retired?: boolean;
+};
+
+export type RawDetail = {
   participants?: RawParticipant[];
   entries?: RawEntry[];
   results?: RawResult[];
+  matches?: RawMatch[];
 };
 
 // ---- 内部ヘルパ ----
@@ -193,6 +203,52 @@ function extractWinner(detailPath: string, year: number): ChampionEntry | null {
   }
   // 優勝者を特定できない年も「年の存在」は示す（捏造しない）
   return { year, players: [], teams: [], prefectures: [], display: null };
+}
+
+/**
+ * 指定大会・年・種目の生 detail（matches を含む）を読む。無ければ null。
+ * champion-defeat 等、優勝者以外の試合（敗退試合）を参照したい呼び出し側が使う。
+ */
+export function readYearDetail(
+  tournamentId: string,
+  year: number,
+  categoryId: string,
+): RawDetail | null {
+  const detailPath = path.join(
+    resolveRoot(),
+    ...DETAILS_ROOT,
+    tournamentId,
+    String(year),
+    `${categoryId}.json`,
+  );
+  if (!fs.existsSync(detailPath)) return null;
+  return readJson<RawDetail>(detailPath);
+}
+
+/** detail.participants から id→participant の Map を作る */
+export function buildParticipantMap(
+  detail: RawDetail,
+): Map<string, RawParticipant> {
+  return new Map((detail.participants ?? []).map((p) => [p.id, p] as const));
+}
+
+/**
+ * 任意の entry を ChampionEntry へ解決する（championKey による比較に使える）。
+ * historical-winners の優勝者と同じ resolveEntry を通すため、キーが整合する。
+ */
+export function resolveEntryToChampion(
+  entry: RawEntry,
+  participantById: Map<string, RawParticipant>,
+  year: number,
+): ChampionEntry {
+  const r = resolveEntry(entry, participantById);
+  return {
+    year,
+    players: r.players,
+    teams: r.teams,
+    prefectures: r.prefectures,
+    display: r.display || null,
+  };
 }
 
 /**
