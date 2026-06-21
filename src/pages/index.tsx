@@ -335,7 +335,8 @@ export async function getStaticProps() {
 
     if (!categoryInfo) continue;
 
-    const link = `/tournaments/${record.generation}/${record.tournamentId}/${record.year}/${categoryInfo.category}/${categoryInfo.age}/${categoryInfo.gender}`;
+    // 大会ハブページ（年度なし）へリンクする
+    const link = `/tournaments/${record.generation}/${record.tournamentId}`;
 
     // SSG とクライアントで同じ文字列になるよう、ロケール依存の
     // toLocaleDateString を使わず YYYY-MM-DD から決定的に整形する
