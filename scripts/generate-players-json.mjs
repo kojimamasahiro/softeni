@@ -332,6 +332,41 @@ async function main() {
     console.log(
       `✓ Generated players-search.json (${searchGroups.length} groups)`,
     );
+
+    // 氏名サジェスト・重複検知用: data/players/index.json から重複を除いた氏名一覧。
+    // ページ props に同梱すると数百kBになるため、別ファイルにしてクライアントで遅延取得する。
+    const playersIndexPath = path.join(
+      projectRoot,
+      'data',
+      'players',
+      'index.json',
+    );
+    if (fs.existsSync(playersIndexPath)) {
+      const rows = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8'));
+      const seen = new Set();
+      const knownPlayers = [];
+      for (const row of rows) {
+        const lastName = String(row?.lastName ?? '').trim();
+        const firstName = String(row?.firstName ?? '').trim();
+        if (!lastName && !firstName) continue;
+        const key = `${lastName}|${firstName}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        knownPlayers.push({ lastName, firstName });
+      }
+      fs.writeFileSync(
+        path.join(outputDir, 'known-players.json'),
+        JSON.stringify(knownPlayers),
+        'utf-8',
+      );
+      console.log(
+        `✓ Generated known-players.json (${knownPlayers.length} players)`,
+      );
+    } else {
+      console.warn(
+        '! Skipped known-players.json: data/players/index.json not found',
+      );
+    }
   } catch (error) {
     console.error('✗ Failed to generate players JSON:', error);
     process.exit(1);

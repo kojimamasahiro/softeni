@@ -41,7 +41,6 @@ type KnownPlayer = {
 type CreateMatchProps = {
   tournamentOptions: TournamentOption[];
   tournamentCatalog: Record<string, TournamentCatalogEntry>;
-  knownPlayers: KnownPlayer[];
 };
 
 // 氏名の正規化（成長分析のキーと同じ規約: 前後空白除去＋連続空白を1つ＋小文字化）。
@@ -57,10 +56,26 @@ const looseNameKey = (lastName: string, firstName: string) =>
 const CreateMatch = ({
   tournamentOptions,
   tournamentCatalog,
-  knownPlayers,
 }: CreateMatchProps) => {
   const router = useRouter();
   const canEditMatches = isDebugMode() && hasLiveMatchApi();
+  // 氏名サジェスト・重複検知用の既知選手一覧。ページ props に同梱すると
+  // 数百kBになるため、ビルド時生成の静的JSONをクライアントで遅延取得する。
+  const [knownPlayers, setKnownPlayers] = useState<KnownPlayer[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/data/known-players.json')
+      .then((response) => (response.ok ? response.json() : []))
+      .then((data: KnownPlayer[]) => {
+        if (!cancelled && Array.isArray(data)) setKnownPlayers(data);
+      })
+      .catch(() => {
+        /* 取得失敗時はサジェスト無しで続行 */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   const [formData, setFormData] = useState({
     tournament_name: '',
     generation: '',
@@ -1273,39 +1288,10 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
     );
   }
 
-  // 既知選手（氏名サジェスト・重複検知用）。data/players/index.json から取得。
-  const knownPlayers: KnownPlayer[] = [];
-  try {
-    const playersIndexPath = path.join(
-      process.cwd(),
-      'data',
-      'players',
-      'index.json',
-    );
-    if (fs.existsSync(playersIndexPath)) {
-      const rows = JSON.parse(
-        fs.readFileSync(playersIndexPath, 'utf8'),
-      ) as Array<{ lastName?: string; firstName?: string }>;
-      const seen = new Set<string>();
-      for (const row of rows) {
-        const lastName = (row.lastName ?? '').trim();
-        const firstName = (row.firstName ?? '').trim();
-        if (!lastName && !firstName) continue;
-        const key = `${lastName}|${firstName}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        knownPlayers.push({ lastName, firstName });
-      }
-    }
-  } catch (error) {
-    console.error('Failed to load known players for beta matches:', error);
-  }
-
   return {
     props: {
       tournamentOptions,
       tournamentCatalog,
-      knownPlayers,
     },
   };
 };
