@@ -104,7 +104,8 @@ export default function STLeagueTeamsPage({
           crumbs={[
             { label: 'ホーム', href: '/' },
             { label: 'STリーグ', href: '/st-league' },
-            { label: `${year}年度`, href: `/st-league/${year}/teams` }, // Tentative link, maybe should be just text if index doesn't have year
+            { label: `${year}`, href: `/st-league/${year}` },
+            { label: '出場チーム・選手', href: `/st-league/${year}/teams` },
           ]}
         />
         <h1 className="text-2xl font-bold">{pageTitle}</h1>

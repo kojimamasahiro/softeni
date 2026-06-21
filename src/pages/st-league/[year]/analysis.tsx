@@ -492,8 +492,9 @@ export default function AnalysisPage({
           crumbs={[
             { label: 'ホーム', href: '/' },
             { label: 'STリーグ', href: '/st-league' },
+            { label: `${year}`, href: `/st-league/${year}` },
             {
-              label: `${year} データ・分析`,
+              label: 'データ・分析',
               href: `/st-league/${year}/analysis`,
             },
           ]}

@@ -293,7 +293,7 @@ export default function STLeagueChampions({
                         {e.edition ? `第${e.edition}回` : e.year}
                       </span>
                       <Link
-                        href={`/st-league/${e.year}/matches`}
+                        href={`/st-league/${e.year}`}
                         className="font-bold text-blue-600 dark:text-blue-400 hover:underline"
                       >
                         {e.title}

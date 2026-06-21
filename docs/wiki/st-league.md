@@ -56,6 +56,14 @@ data/st-league/
 
 - `/st-league` … ハブ。年度・リーグ構成の概要、各年度への導線。`getStLeagueYears()`で動的生成。
 - `/st-league/about` … ルール・Ⅰ/Ⅱ/Ⅲ構成・プレーオフの解説。
+- `/st-league/[year]` … 年度ハブ（年度トップ）。`league.json` のメタ＋`editions.json` の王者（表示名）を読み、
+  大会概要（開催回・日程・会場・リーグ構成・対戦/ゲーム形式）／優勝チーム（男女、championsへ）／
+  各サブページ（matches/teams/analysis）への導線／プレーオフ案内を描画する。集計ロジックは不要。
+  狙うキーワードは「STリーグ {年}」「第N回STリーグ 結果・会場」。**matches とのカニバリ回避のため、
+  順位表・対戦結果は再掲せず matches へ委譲し、本ページは概要＋導線に限定する**（intent 分離）。
+  SportsEvent 構造化データを出力。`getStaticProps` を持つため sitemap は自動列挙（`additionalPaths` 不要）。
+  内部リンク: ハブの年度カード見出し→年度ハブ、championsの各回ダイジェスト→年度ハブ、
+  各サブページのパンくず（`STリーグ > {year} > 各ページ`）→年度ハブ、matches の他ページ導線→年度ハブ。
 - `/st-league/[year]/matches` … 男女タブ＋リーグ切替。順位表（昇降格ゾーンの目安表示）＋対戦結果＋プレーオフ案内。SportsEvent構造化データ。
 - `/st-league/[year]/teams` … 男女タブ＋リーグ切替。チーム別年間成績・選手成績。
   選手成績は `aggregateTeamResults`（`data/tournaments/details/` の一般大会データ）を

@@ -213,7 +213,14 @@ export default function STLeagueHub({
                     <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">
                       {ed.edition ? `第${ed.edition}回` : `SEASON ${ed.year}`}
                     </span>
-                    <h3 className="mt-2 text-xl font-bold">{ed.title}</h3>
+                    <h3 className="mt-2 text-xl font-bold">
+                      <Link
+                        href={`/st-league/${ed.year}`}
+                        className="hover:text-blue-600 hover:underline transition-colors"
+                      >
+                        {ed.title}
+                      </Link>
+                    </h3>
                     {(ed.period || ed.venue) && (
                       <p className="text-sm text-gray-500 mt-1">
                         {ed.period}

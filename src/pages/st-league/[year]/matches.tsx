@@ -575,7 +575,8 @@ export default function MatchesPage({
           crumbs={[
             { label: 'ホーム', href: '/' },
             { label: 'STリーグ', href: '/st-league' },
-            { label: `${year} 試合結果`, href: `/st-league/${year}/matches` },
+            { label: `${year}`, href: `/st-league/${year}` },
+            { label: '試合結果・順位表', href: `/st-league/${year}/matches` },
           ]}
         />
 
@@ -689,6 +690,12 @@ export default function MatchesPage({
 
         {/* 他ページ導線 */}
         <nav className="flex flex-wrap gap-3 pt-2">
+          <a
+            href={`/st-league/${year}`}
+            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+          >
+            ▶ {year}年度トップ（大会概要）
+          </a>
           <a
             href={`/st-league/${year}/teams`}
             className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
