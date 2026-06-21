@@ -569,12 +569,12 @@ export const buildGrowthTargets = (
         : target,
     )
     .sort((left, right) => {
-    const dateOrder = (right.latestMatchDate ?? '').localeCompare(
-      left.latestMatchDate ?? '',
-    );
-    if (dateOrder !== 0) return dateOrder;
-    return right.completedMatchCount - left.completedMatchCount;
-  });
+      const dateOrder = (right.latestMatchDate ?? '').localeCompare(
+        left.latestMatchDate ?? '',
+      );
+      if (dateOrder !== 0) return dateOrder;
+      return right.completedMatchCount - left.completedMatchCount;
+    });
 };
 
 const getMatchDate = (match: Match) =>

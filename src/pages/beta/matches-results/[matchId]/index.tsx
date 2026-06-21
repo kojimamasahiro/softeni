@@ -4,28 +4,26 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Game, Match, Point } from '../../../../types/database';
-
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import YouTubeRangePlayer, {
   type YouTubeRangePlayerHandle,
 } from '@/components/YouTubeRangePlayer';
 import {
-  AnalysisGuideCard,
-  AnalysisReliability,
-  ImprovementHint,
-  analyzeMatch,
-  MatchAnalysisSummary,
-  RateMetric,
-  TeamKey,
-} from '@/lib/matchAnalysis';
-import {
   getBetaMatchById,
   getBetaTeamDisplayName,
   getLatestBetaMatchIds,
 } from '@/lib/betaMatchesStatic';
 import { getGrowthTargetForSide } from '@/lib/growthAnalysis';
+import {
+  AnalysisGuideCard,
+  AnalysisReliability,
+  analyzeMatch,
+  ImprovementHint,
+  MatchAnalysisSummary,
+  RateMetric,
+  TeamKey,
+} from '@/lib/matchAnalysis';
 import {
   buildSiteUrl,
   getPublicMatchDetailPath,
@@ -48,6 +46,8 @@ import {
   buildYouTubeWatchUrlFromVideoId,
   formatVideoTimestamp,
 } from '@/lib/youtubePlayback';
+
+import { Game, Match, Point } from '../../../../types/database';
 
 interface PublicMatchDetailProps {
   match: Match;

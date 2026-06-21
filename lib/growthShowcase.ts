@@ -4,6 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import type { Match } from '../src/types/database';
 import {
   getGrowthReportFileName,
   getGrowthTargetForSide,
@@ -11,8 +12,6 @@ import {
   GrowthTarget,
 } from './growthAnalysis';
 import { getPublicMatchDetailPath } from './siteConfig';
-
-import type { Match } from '../src/types/database';
 
 export type FeaturedEntry = {
   subjectKey: string;
@@ -96,13 +95,7 @@ export const loadTournamentLabels = (): Map<string, string> => {
 // 公開試合の一覧（軽量版・ポイントは含まない）。出所表示に使う。
 export const loadPublicMatches = (): Match[] => {
   const payload = readJson<{ matches?: Match[] }>(
-    path.join(
-      process.cwd(),
-      'public',
-      'data',
-      'beta-matches',
-      'index.json',
-    ),
+    path.join(process.cwd(), 'public', 'data', 'beta-matches', 'index.json'),
   );
   return payload?.matches ?? [];
 };
@@ -167,7 +160,7 @@ export const resolveFocusName = (
   const explicit = entry.playerName?.trim();
   if (explicit) return explicit;
   const primary = targets.find((t) => t.key === entry.subjectKey);
-  return primary?.kind === 'player' ? primary.playerNames[0] ?? null : null;
+  return primary?.kind === 'player' ? (primary.playerNames[0] ?? null) : null;
 };
 
 // その選手のシングルス記録＋その選手を含むペア記録を集める（シングルス→ペア、試合数の多い順）。
@@ -213,7 +206,11 @@ export const gatherShowcaseRecords = (
         key: target.key,
         label: buildRecordLabel(target, focusName),
         report,
-        sourceMatches: gatherSourceMatches(target.key, matches, tournamentLabels),
+        sourceMatches: gatherSourceMatches(
+          target.key,
+          matches,
+          tournamentLabels,
+        ),
       });
     }
   }

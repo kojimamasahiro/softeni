@@ -206,7 +206,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<ShowcaseProps> = async (context) => {
+export const getStaticProps: GetStaticProps<ShowcaseProps> = async (
+  context,
+) => {
   if (isScoreSiteMode()) {
     return { notFound: true };
   }

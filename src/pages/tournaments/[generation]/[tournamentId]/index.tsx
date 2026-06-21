@@ -12,7 +12,13 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import TournamentContextBlocks, {
+  type TournamentContextData,
+} from '@/components/TournamentContextBlocks';
+import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
+import { getChampionMilestones } from '@/lib/milestones';
+import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import {
   buildEventOrganizer,
   buildEventPlace,
@@ -52,6 +58,8 @@ interface TournamentHubPageProps {
   // 高校全国大会では noindex,follow にして検索面を高校歴代ページへ集中させる。
   // docs/wiki/seo.md #3 参照。
   hsNationalSlug: string | null;
+  // 文脈ブロック（最新年度の milestone と優勝者の通算成績）。docs/wiki/news-context-blocks.md
+  contextBlocks: TournamentContextData;
 }
 
 export default function TournamentHubPage({
@@ -61,6 +69,7 @@ export default function TournamentHubPage({
   officialUrl,
   yearGroups,
   hsNationalSlug,
+  contextBlocks,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
   const hsNationalHref = hsNationalSlug
@@ -270,6 +279,8 @@ export default function TournamentHubPage({
             </div>
           </section>
         )}
+
+        <TournamentContextBlocks label={label} data={contextBlocks} />
 
         {yearGroups.length === 0 ? (
           <p className="text-sm text-gray-500">
@@ -527,6 +538,74 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // --- 文脈ブロック（最新年度の milestone と優勝者の通算成績）---
+  // docs/wiki/news-context-blocks.md / ADR-005。
+  const latestGroup = yearGroups[0] ?? null;
+  const latestYear = latestGroup?.year ?? null;
+  const contextBlocks: TournamentContextData = {
+    latestYear,
+    milestones: [],
+    championRecords: [],
+  };
+
+  if (latestGroup) {
+    const ty = Number(latestGroup.year);
+    const seenMilestone = new Set<string>();
+    const seenRecord = new Set<string>();
+
+    // 最新年度の種目は yearGroups（解析済み）を再利用し、ディレクトリ再走査と
+    // categoryId の再パースを避ける。
+    for (const c of latestGroup.categories) {
+      const categoryId = `${c.category}-${c.age}-${c.gender}`;
+
+      // historical-winners は milestone と career-record で共有し、二重走査を避ける
+      const hw = getHistoricalWinners(tournamentId, categoryId, {
+        targetYear: ty,
+      });
+
+      // milestone（連覇 / 初優勝）
+      const ms = getChampionMilestones(tournamentId, categoryId, ty, hw);
+      for (const e of ms?.events ?? []) {
+        // ラベルではなくイベント実体（種別×大会×種目×年）で重複排除する。
+        // 同一表示文字列の別イベント（例: 別種目の初優勝）を取りこぼさない。
+        const key = `${e.kind}|${e.tournamentId}|${e.categoryId}|${e.year}`;
+        if (seenMilestone.has(key)) continue;
+        seenMilestone.add(key);
+        contextBlocks.milestones.push({
+          kind: e.kind,
+          label: e.label,
+          confidence: e.confidence,
+          scopeNote: e.scopeNote ?? null,
+        });
+      }
+
+      // 優勝者の career-record（curated 選手のみ取得できる）
+      const champ = hw?.champions.find((cc) => cc.year === ty);
+      for (const name of champ?.players ?? []) {
+        const cr = getCareerRecordByFullName(name);
+        if (!cr || seenRecord.has(cr.subject.slug)) continue;
+        seenRecord.add(cr.subject.slug);
+        contextBlocks.championRecords.push({
+          slug: cr.subject.slug,
+          display: cr.subject.display,
+          team: cr.subject.team,
+          totals: {
+            matches: cr.totals.matches,
+            wins: cr.totals.wins,
+            losses: cr.totals.losses,
+            winRate: cr.totals.winRate,
+          },
+          titles: cr.titles.map((t) => ({
+            year: t.year,
+            tournamentLabel: t.tournamentLabel,
+            categoryLabel: t.categoryLabel,
+          })),
+          scopeNote: cr.scopeNote,
+        });
+      }
+    }
+  }
+
   return {
     props: {
       generation,
@@ -535,6 +614,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       officialUrl,
       yearGroups,
       hsNationalSlug: getHsNationalSlugByTournamentId(tournamentId),
+      contextBlocks,
     },
   };
 };

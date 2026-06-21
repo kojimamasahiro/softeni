@@ -9,6 +9,11 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import PlayerCareerHighlights, {
+  type PlayerCareerHighlightsData,
+} from '@/components/PlayerCareerHighlights';
+import { getCareerRecord } from '@/lib/careerRecord';
+import { getChampionMilestones } from '@/lib/milestones';
 import { PlayerInfo } from '@/types/index';
 
 type Props = {
@@ -24,6 +29,7 @@ type Props = {
     partner?: string;
     link?: string;
   } | null;
+  highlights: PlayerCareerHighlightsData | null;
 };
 
 const calculateAge = (birthDate?: string): number | null => {
@@ -63,6 +69,7 @@ export default function PlayerInformation({
   numericId,
   hasResultsPage,
   latest,
+  highlights,
 }: Props) {
   const age = calculateAge(player.birthDate);
   const formattedBirthDate = formatJapaneseDate(player.birthDate);
@@ -260,6 +267,10 @@ export default function PlayerInformation({
           </table>
         </section>
 
+        {highlights && (
+          <PlayerCareerHighlights fullName={fullName} data={highlights} />
+        )}
+
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">試合結果</h2>
 
@@ -394,6 +405,77 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     latest = analysis.latestMatch || null;
   }
 
+  // --- 文脈ブロック（主な戦績: 通算成績・優勝歴・連覇/初優勝）---
+  // docs/wiki/news-context-blocks.md / ADR-005。career-record は curated 選手のみ。
+  let highlights: PlayerCareerHighlightsData | null = null;
+  const career = getCareerRecord(id);
+  if (career) {
+    // 優勝歴の各タイトルから milestone（連覇/初優勝）を再利用抽出してまとめる
+    const milestones: PlayerCareerHighlightsData['milestones'] = [];
+    const seen = new Set<string>();
+    // 連覇は終了年ごとに重複抽出される（例: 同じ 2022年〜のランが 4連覇・5連覇として
+    // 別々に出る）。同一ラン（大会×種目×開始年）では最長だけを残し、初出位置に維持する。
+    const repeatIndex = new Map<string, number>();
+    const repeatStreak = new Map<string, number>();
+    for (const t of career.titles) {
+      const ms = getChampionMilestones(t.tournamentId, t.categoryId, t.year);
+      for (const e of ms?.events ?? []) {
+        // 選手ページでは主役名は自明なので、代わりに大会名を前置して
+        // 複数の「初優勝」等を区別できるようにする（例:「全日本選手権 初優勝」）。
+        // 単年の出来事（初優勝など）は年も前置する。連覇は shortLabel に
+        // 「（2022年〜）」と開始年が入るため二重表示を避けて年を付けない。
+        const label =
+          e.kind === 'repeat-title'
+            ? `${t.tournamentLabel} ${e.shortLabel}`
+            : `${t.year}年 ${t.tournamentLabel} ${e.shortLabel}`;
+        const entry = {
+          kind: e.kind,
+          label,
+          confidence: e.confidence,
+          scopeNote: e.scopeNote ?? null,
+        };
+
+        if (e.kind === 'repeat-title') {
+          const since = e.detail.since;
+          const streak = Number(e.detail.streak) || 0;
+          const runKey = `${e.tournamentId}|${e.categoryId}|${since}`;
+          const idx = repeatIndex.get(runKey);
+          if (idx === undefined) {
+            repeatIndex.set(runKey, milestones.length);
+            repeatStreak.set(runKey, streak);
+            milestones.push(entry);
+          } else if (streak > (repeatStreak.get(runKey) ?? 0)) {
+            repeatStreak.set(runKey, streak);
+            milestones[idx] = entry; // 最長で上書き
+          }
+          continue;
+        }
+
+        // ラベルではなくイベント実体で重複排除する。同一表示文字列の別イベント
+        // （例: 別大会・別種目での初優勝）を取りこぼさない。
+        const key = `${e.kind}|${e.tournamentId}|${e.categoryId}|${e.year}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        milestones.push(entry);
+      }
+    }
+    highlights = {
+      milestones,
+      totals: {
+        matches: career.totals.matches,
+        wins: career.totals.wins,
+        losses: career.totals.losses,
+        winRate: career.totals.winRate,
+      },
+      titles: career.titles.map((t) => ({
+        year: t.year,
+        tournamentLabel: t.tournamentLabel,
+        categoryLabel: t.categoryLabel,
+      })),
+      scopeNote: career.scopeNote,
+    };
+  }
+
   return {
     props: {
       player,
@@ -401,6 +483,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       latest,
       numericId,
       hasResultsPage,
+      highlights,
     },
   };
 };

@@ -12,12 +12,12 @@ import {
   fetchBetaMatchById,
   hasLiveMatchApi,
 } from '../../../../../lib/betaMatchesClient';
+import { isDebugMode } from '../../../../../lib/env';
+import { isScoreSiteMode } from '../../../../../lib/siteConfig';
 import {
   buildYouTubeEmbedUrl,
   buildYouTubeWatchUrl,
 } from '../../../../../lib/videoReview';
-import { isDebugMode } from '../../../../../lib/env';
-import { isScoreSiteMode } from '../../../../../lib/siteConfig';
 import {
   Game,
   Match,
@@ -585,8 +585,8 @@ const MatchDetail = () => {
           >
             {growthReady ? (
               <p>
-                成長分析データ: 充足 ✓（全{growthTotalGames}ゲームにポイント記録 /
-                result_type 完備・{growthTotalPoints}ポイント）
+                成長分析データ: 充足 ✓（全{growthTotalGames}ゲームにポイント記録
+                / result_type 完備・{growthTotalPoints}ポイント）
               </p>
             ) : (
               <div className="space-y-1">
@@ -595,10 +595,14 @@ const MatchDetail = () => {
                 </p>
                 <ul className="ml-4 list-disc">
                   {growthGamesWithoutPoints > 0 && (
-                    <li>ポイント未記録のゲーム: {growthGamesWithoutPoints}件</li>
+                    <li>
+                      ポイント未記録のゲーム: {growthGamesWithoutPoints}件
+                    </li>
                   )}
                   {growthMissingResultType > 0 && (
-                    <li>result_type 未入力のポイント: {growthMissingResultType}件</li>
+                    <li>
+                      result_type 未入力のポイント: {growthMissingResultType}件
+                    </li>
                   )}
                   {growthTotalPoints === 0 && <li>ポイントが未入力です</li>}
                 </ul>
