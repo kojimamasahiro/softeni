@@ -18,7 +18,11 @@ export type ContextChampionRecord = {
   display: string;
   team: string | null;
   totals: { matches: number; wins: number; losses: number; winRate: number };
-  titles: Array<{ year: number; tournamentLabel: string; categoryLabel: string }>;
+  titles: Array<{
+    year: number;
+    tournamentLabel: string;
+    categoryLabel: string;
+  }>;
   scopeNote: string;
 };
 
@@ -91,8 +95,8 @@ export default function TournamentContextBlocks({
                 )}
               </div>
               <p className="text-gray-700 dark:text-gray-200">
-                通算 {r.totals.matches}試合 {r.totals.wins}勝
-                {r.totals.losses}敗（勝率 {winPct(r.totals.winRate)}）
+                通算 {r.totals.matches}試合 {r.totals.wins}勝{r.totals.losses}
+                敗（勝率 {winPct(r.totals.winRate)}）
                 <span className="ml-1 text-[10px] text-gray-500 dark:text-gray-400">
                   ※{r.scopeNote}
                 </span>

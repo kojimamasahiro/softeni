@@ -15,11 +15,7 @@ import path from 'path';
 
 import { getCareerRecordByFullName } from './careerRecord';
 import { getChampionMilestones, type MilestoneEvent } from './milestones';
-import {
-  getAllHistoricalWinners,
-  getHistoricalWinners,
-  parseCategoryFile,
-} from './tournamentRecords';
+import { getHistoricalWinners, parseCategoryFile } from './tournamentRecords';
 
 export type NewsArticleType = 'preview' | 'result';
 export type NewsArticleState = 'draft' | 'review' | 'published';

@@ -52,7 +52,10 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               headline: title,
               inLanguage: 'ja',
               url: pageUrl,
-              about: { '@type': 'Thing', name: `ソフトテニス ${tournamentLabel}` },
+              about: {
+                '@type': 'Thing',
+                name: `ソフトテニス ${tournamentLabel}`,
+              },
               ...(record.updatedAt ? { dateModified: record.updatedAt } : {}),
               ...(record.createdAt ? { datePublished: record.createdAt } : {}),
               description,

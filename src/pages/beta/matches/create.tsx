@@ -279,7 +279,10 @@ const CreateMatch = ({
     // 新規選手（既存に似た名前が無い）は警告しない。
     const enteredGameType = getGameTypeFromCategory(formData.category);
     const enteredPlayers = [
-      { lastName: teamA.player1_last_name, firstName: teamA.player1_first_name },
+      {
+        lastName: teamA.player1_last_name,
+        firstName: teamA.player1_first_name,
+      },
       ...(enteredGameType === 'doubles'
         ? [
             {
@@ -288,7 +291,10 @@ const CreateMatch = ({
             },
           ]
         : []),
-      { lastName: teamB.player1_last_name, firstName: teamB.player1_first_name },
+      {
+        lastName: teamB.player1_last_name,
+        firstName: teamB.player1_first_name,
+      },
       ...(enteredGameType === 'doubles'
         ? [
             {

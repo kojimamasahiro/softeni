@@ -95,9 +95,7 @@ function readJson<T>(filePath: string): T | null {
   }
 }
 
-function readInformation(
-  tournamentId: string,
-): TournamentInformationEntry[] {
+function readInformation(tournamentId: string): TournamentInformationEntry[] {
   const infoPath = path.join(
     resolveRoot(),
     'data',
@@ -107,9 +105,7 @@ function readInformation(
   );
   if (!fs.existsSync(infoPath)) return [];
   const parsed = readJson<unknown>(infoPath);
-  return Array.isArray(parsed)
-    ? (parsed as TournamentInformationEntry[])
-    : [];
+  return Array.isArray(parsed) ? (parsed as TournamentInformationEntry[]) : [];
 }
 
 /** categoryId（例: doubles-none-boys）を分解。不正なら null。 */
@@ -132,7 +128,12 @@ export function parseCategoryFile(fileName: string): {
 function resolveEntry(
   entry: RawEntry,
   participantById: Map<string, RawParticipant>,
-): { display: string; players: string[]; teams: string[]; prefectures: string[] } {
+): {
+  display: string;
+  players: string[];
+  teams: string[];
+  prefectures: string[];
+} {
   const players: string[] = [];
   const teams: string[] = [];
   const prefectures: string[] = [];
@@ -166,10 +167,7 @@ function resolveEntry(
 }
 
 /** 1 種目ファイルから「優勝」エントリのみ抽出して ChampionEntry を作る */
-function extractWinner(
-  detailPath: string,
-  year: number,
-): ChampionEntry | null {
+function extractWinner(detailPath: string, year: number): ChampionEntry | null {
   const data = readJson<RawDetail>(detailPath);
   if (!data) return null;
 

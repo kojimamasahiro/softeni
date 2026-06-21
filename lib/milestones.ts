@@ -157,9 +157,7 @@ export function getChampionMilestones(
   // best4-first / career-wins / first-appearance / champion-defeat は
   // Step1 placements 拡張・analysis.json 突合（名寄せ）が整うまで出さない。
 
-  events.sort(
-    (a, b) => KIND_IMPORTANCE[a.kind] - KIND_IMPORTANCE[b.kind],
-  );
+  events.sort((a, b) => KIND_IMPORTANCE[a.kind] - KIND_IMPORTANCE[b.kind]);
 
   return {
     blockType: 'milestone',

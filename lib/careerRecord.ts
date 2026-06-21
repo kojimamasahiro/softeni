@@ -103,15 +103,13 @@ function getTournamentMeta(): Map<string, TournamentMeta> {
 function listTournamentIds(): string[] {
   const root = path.join(resolveRoot(), ...DETAILS_ROOT);
   if (!fs.existsSync(root)) return [];
-  return fs
-    .readdirSync(root)
-    .filter((name) => {
-      try {
-        return fs.statSync(path.join(root, name)).isDirectory();
-      } catch {
-        return false;
-      }
-    });
+  return fs.readdirSync(root).filter((name) => {
+    try {
+      return fs.statSync(path.join(root, name)).isDirectory();
+    } catch {
+      return false;
+    }
+  });
 }
 
 function normalizeName(s: string): string {
@@ -190,9 +188,7 @@ function collectTitles(subjectFullName: string): CareerTitle[] {
  */
 export function getCareerRecord(slug: string): CareerRecordBlock | null {
   const dir = path.join(resolveRoot(), ...PLAYERS_ROOT, slug);
-  const info = readJson<PlayerInformation>(
-    path.join(dir, 'information.json'),
-  );
+  const info = readJson<PlayerInformation>(path.join(dir, 'information.json'));
   const analysis = readJson<PlayerAnalysis>(path.join(dir, 'analysis.json'));
   if (!info?.lastName || !info?.firstName) return null;
   if (!analysis || typeof analysis.totalMatches !== 'number') return null;
