@@ -8,9 +8,16 @@ import { useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
-import PageLayout from '@/components/PageLayout';
+import {
+  DivisionMeta,
+  getDivisions,
+  getStLeagueYears,
+  LeagueMeta,
+  loadLeagueMeta,
+} from '@/utils/st-league';
 import {
   aggregateTeamResults,
   generateTeamInfo,
@@ -23,14 +30,10 @@ import {
   PlayerStats,
   YearlySummary,
 } from '@/utils/team-stats-calculator';
-import { loadAllTournamentData } from '@/utils/tournament-data-loader';
 import {
-  DivisionMeta,
-  getDivisions,
-  getStLeagueYears,
-  LeagueMeta,
-  loadLeagueMeta,
-} from '@/utils/st-league';
+  getAllTournamentFiles,
+  loadTournamentData,
+} from '@/utils/tournament-data-loader';
 
 type ParticipantInfo = {
   teamId: string;
@@ -228,7 +231,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     fs.readFileSync(participantsPath, 'utf-8'),
   );
 
-  const preloadedData = loadAllTournamentData();
+  const targetYear = Number(year);
+  const preloadedData = getAllTournamentFiles()
+    .filter((f) => f.year === targetYear)
+    .flatMap((f) => {
+      const data = loadTournamentData(f.filePath);
+      return data ? [{ descriptor: f, data }] : [];
+    });
 
   const processTeams = (
     participants: ParticipantInfo[],
