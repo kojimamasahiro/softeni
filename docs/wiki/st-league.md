@@ -64,6 +64,12 @@ data/st-league/
   `normalizeJa()`（NFKC で半角/全角、簡易な異体字フォールドで `ＥＮＥＯＳ⇄ENEOS`・`髙濵⇄高濱`
   等を吸収）。一般大会の個人戦データが無い選手（主にⅡ部）は0表示のまま。
 - `/st-league/[year]/analysis` … 男女タブ＋リーグ切替。選手別スタッツ・勝率ランキング。
+- `/st-league/champions` … 歴代優勝・記録ページ（年度横断の常緑コンテンツ）。`editions.json` の
+  `editions[]`（男女王者・会場・note）と `promotionRelegation[]`（昇降格の系譜）を読んで描画する。
+  集計ロジックは不要（既存JSONを並べるだけ）。構成: 歴代王者表（男女）／記録ハイライト（連覇など）
+  ／昇降格の系譜／各回ダイジェスト＋各年度 matches への内部リンク。ItemList 構造化データを出力。
+  `getStaticProps` を持つため sitemap は自動列挙される（`additionalPaths` には追加しない）。
+  狙うキーワードは「STリーグ 歴代優勝」「優勝チーム 一覧」「昇格 降格」など、速報系競合が手薄な常緑層。
 
 すべての `[year]` ページは `getStLeagueYears()` でパスを動的生成するため、`data/st-league/{year}/` を追加すれば自動でページが増える。
 
