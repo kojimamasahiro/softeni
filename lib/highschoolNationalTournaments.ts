@@ -54,6 +54,20 @@ export const HS_NATIONAL_SLUGS = Object.keys(
   HS_NATIONAL_TOURNAMENTS,
 ) as HsNationalTournamentSlug[];
 
+// tournamentId（例: 'highschool-championship'）から高校全国大会のスラッグを逆引きする。
+// 汎用大会ハブ（/tournaments/[generation]/[tournamentId]）が高校全国大会の歴代まとめ
+// （/highschool/tournaments/[tournament]）とカニバるため、ハブ側の noindex 判定と
+// 高校歴代ページへの内部リンク生成に使う。詳細は docs/wiki/seo.md #3。
+export function getHsNationalSlugByTournamentId(
+  tournamentId: string,
+): HsNationalTournamentSlug | null {
+  return (
+    HS_NATIONAL_SLUGS.find(
+      (slug) => HS_NATIONAL_TOURNAMENTS[slug].tournamentId === tournamentId,
+    ) ?? null
+  );
+}
+
 const GENERATION = 'highschool';
 const DETAILS_ROOT = ['data', 'tournaments', 'details'];
 

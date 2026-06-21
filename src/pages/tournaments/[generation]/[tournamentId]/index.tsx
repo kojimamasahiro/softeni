@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import {
   buildEventOrganizer,
   buildEventPlace,
@@ -46,6 +47,11 @@ interface TournamentHubPageProps {
   label: string;
   officialUrl: string | null;
   yearGroups: YearGroup[];
+  // 高校全国大会（インターハイ/ジャパンカップ）の場合のみスラッグが入る。
+  // このハブは /highschool/tournaments/[tournament] とカニバるため、
+  // 高校全国大会では noindex,follow にして検索面を高校歴代ページへ集中させる。
+  // docs/wiki/seo.md #3 参照。
+  hsNationalSlug: string | null;
 }
 
 export default function TournamentHubPage({
@@ -54,8 +60,12 @@ export default function TournamentHubPage({
   label,
   officialUrl,
   yearGroups,
+  hsNationalSlug,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
+  const hsNationalHref = hsNationalSlug
+    ? `/highschool/tournaments/${hsNationalSlug}`
+    : null;
 
   const years = yearGroups.map((g) => g.year);
   const latestYear = years[0] ?? '';
@@ -100,6 +110,8 @@ export default function TournamentHubPage({
         description={description}
         url={pageUrl}
         type="website"
+        noindex={!!hsNationalSlug}
+        noindexFollow={!!hsNationalSlug}
       />
 
       <Head>
@@ -181,6 +193,21 @@ export default function TournamentHubPage({
         <h1 className="text-2xl font-bold mb-4">
           {label} 大会結果（歴代一覧）
         </h1>
+
+        {hsNationalHref && (
+          <div className="mb-5 rounded-md border border-blue-200 bg-blue-50 px-4 py-3 text-sm dark:border-blue-900 dark:bg-blue-950">
+            <Link
+              href={hsNationalHref}
+              className="font-semibold text-blue-700 hover:underline dark:text-blue-300"
+            >
+              {label} 歴代記録（優勝・準優勝・ベスト4／開催予定）はこちら →
+            </Link>
+            <p className="mt-1 text-gray-600 dark:text-gray-300">
+              種目別の歴代優勝サマリーや出場校の戦績まで、{label}
+              のまとめは高校カテゴリの歴代記録ページに集約しています。
+            </p>
+          </div>
+        )}
 
         <section className="mb-6 px-1">
           <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
@@ -507,6 +534,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       label,
       officialUrl,
       yearGroups,
+      hsNationalSlug: getHsNationalSlugByTournamentId(tournamentId),
     },
   };
 };

@@ -300,7 +300,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   return (
     <>
       <MetaHead
-        title={`${titleName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`}
+        title={`ソフトテニス ${titleName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`}
         description={`ソフトテニス「${titleName}」の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
           nextEdition
             ? `${nextEdition.year}年大会は${formatDateRange(nextEdition.startDate, nextEdition.endDate) || '開催予定'}${nextEdition.location ? `（${nextEdition.location}）` : ''}。`
