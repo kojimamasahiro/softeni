@@ -58,6 +58,9 @@ export default function Header() {
           >
             選手一覧
           </Link>
+          <Link href="/news" className="hover:text-blue-600 transition-colors">
+            ニュース
+          </Link>
           <Link href="/beta" className="hover:text-blue-600 transition-colors">
             ベータ機能
           </Link>
