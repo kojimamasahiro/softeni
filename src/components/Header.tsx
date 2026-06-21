@@ -61,9 +61,6 @@ export default function Header() {
           <Link href="/news" className="hover:text-blue-600 transition-colors">
             ニュース
           </Link>
-          <Link href="/beta" className="hover:text-blue-600 transition-colors">
-            ベータ機能
-          </Link>
           {isDebugMode() && (
             <Link
               href="/beta/matches"
