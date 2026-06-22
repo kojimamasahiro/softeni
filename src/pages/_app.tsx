@@ -7,9 +7,9 @@ import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
 // import AffiliateLink from '@/components/AffiliateLink';
+import AppShell from '@/components/AppShell';
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -86,14 +86,10 @@ export default function App({ Component, pageProps }: AppProps) {
         </>
       )}
 
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">
-          <Component {...pageProps} />
-        </main>
+      <AppShell footer={<Footer />}>
+        <Component {...pageProps} />
         {/* <AffiliateLink /> */}
-        <Footer />
-      </div>
+      </AppShell>
 
       {!hasConsent && (
         <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />
