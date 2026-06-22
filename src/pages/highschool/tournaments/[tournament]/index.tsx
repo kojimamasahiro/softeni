@@ -271,6 +271,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
     slug,
     label,
     shortLabel,
+    aliases,
     officialUrl,
     description,
     years,
@@ -283,6 +284,12 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/tournaments/${slug}/`;
   const yearRange = formatYearRange(yearsCovered);
   const titleName = label === shortLabel ? label : `${label}（${shortLabel}）`;
+  // 検索略称（例: ハイジャパ）。専用ページは作らず、この大会ハブに literal で集約する。
+  const primaryAlias = aliases?.[0] ?? null;
+  // タイトル/見出し向けの表示名。略称があれば exact 一致用に併記する。
+  const headingName = primaryAlias
+    ? `${titleName}（${primaryAlias}）`
+    : titleName;
   const latestYear = yearsCovered.length ? Math.max(...yearsCovered) : null;
   const categoryCount = championSummary.length;
   const nextEdition = upcoming[0] ?? null;
@@ -296,6 +303,14 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
               formatDateRange(nextEdition.startDate, nextEdition.endDate) ||
               '日程調整中'
             }${nextEdition.location ? `、${nextEdition.location}で` : ''}開催予定です。結果が確定次第このページに掲載します。`,
+          },
+        ]
+      : []),
+    ...(primaryAlias
+      ? [
+          {
+            question: `「${primaryAlias}」とは何ですか？`,
+            answer: `「${primaryAlias}」は${label}の通称です。本ページでは「${primaryAlias}」の歴代の優勝・準優勝・ベスト4を年度別・種目別にまとめ、各年度の対戦表へもリンクしています。`,
           },
         ]
       : []),
@@ -326,8 +341,8 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   return (
     <>
       <MetaHead
-        title={`ソフトテニス ${titleName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`}
-        description={`ソフトテニス「${titleName}」の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
+        title={`ソフトテニス ${headingName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`}
+        description={`ソフトテニス「${titleName}」${primaryAlias ? `（通称「${primaryAlias}」）` : ''}の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
           nextEdition
             ? `${nextEdition.year}年大会は${formatDateRange(nextEdition.startDate, nextEdition.endDate) || '開催予定'}${nextEdition.location ? `（${nextEdition.location}）` : ''}。`
             : ''
@@ -479,7 +494,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
 
         <header className="mb-8 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800/80 dark:to-gray-900 p-6 sm:p-7">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            {titleName} 歴代結果・優勝校一覧
+            {headingName} 歴代結果・優勝校一覧
           </h1>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
             {description}

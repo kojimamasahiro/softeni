@@ -33,7 +33,7 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
     <>
       <MetaHead
         title="高校 全国大会の歴代記録（インターハイ・ハイスクールジャパンカップ） | ソフトテニス情報"
-        description="高校ソフトテニスの代表的な全国大会（インターハイ＝全国高等学校総合体育大会、ハイスクールジャパンカップ）の歴代結果・優勝〜ベスト4を年度別・種目別にまとめた入口ページです。"
+        description="高校ソフトテニスの代表的な全国大会（インターハイ＝全国高等学校総合体育大会、ハイスクールジャパンカップ＝通称「ハイジャパ」）の歴代結果・優勝〜ベスト4を年度別・種目別にまとめた入口ページです。"
         url={pageUrl}
         type="article"
       />
@@ -119,6 +119,11 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
               {t.label !== t.shortLabel && (
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                   {t.label}
+                </p>
+              )}
+              {t.aliases && t.aliases.length > 0 && (
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                  通称: {t.aliases.join('・')}
                 </p>
               )}
               <p className="text-sm text-gray-600 dark:text-gray-300 mt-3">
