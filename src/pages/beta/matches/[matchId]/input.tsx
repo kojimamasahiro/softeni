@@ -716,11 +716,31 @@ const MatchInput = () => {
       if (response.ok) {
         const result = await response.json();
 
-        // 最適化：レスポンスデータを使ってローカル状態を更新
-        if (result.updatedGame && match.games && currentGame) {
-          // 更新されたポイントでローカル状態を更新
+        // 編集対象ポイントが属するゲームを特定する。
+        // 直前に終了したゲームのポイントを編集する場合など、
+        // currentGame（= 新しく開始されたゲーム）とは別のゲームのことがある。
+        const targetGame = match.games?.find(
+          (game: Game) => game.id === result.updatedGame?.id,
+        );
+
+        // 編集によってゲーム勝者が変わると、それ以降の状態
+        // （新規ゲーム生成・試合完了など）も変わり得るため、
+        // ローカルのマージでは整合性を保てない。
+        const winnerChanged =
+          targetGame?.winner_team !== result.updatedGame?.winner_team;
+        const isCurrentGame =
+          Boolean(currentGame) && currentGame?.id === result.updatedGame?.id;
+
+        if (
+          result.updatedGame &&
+          match.games &&
+          targetGame &&
+          isCurrentGame &&
+          !winnerChanged
+        ) {
+          // 最適化：現在進行中ゲーム内の編集で勝者が変わらない場合のみローカル更新
           const updatedPoints =
-            currentGame.points?.map((point: Point) =>
+            targetGame.points?.map((point: Point) =>
               point.id === editingPoint.id ? result.point : point,
             ) || [];
 
@@ -741,9 +761,13 @@ const MatchInput = () => {
 
           setMatch(updatedMatch);
           setCurrentGame(updatedCurrentGame);
+          cancelEditPoint();
+        } else {
+          // 別ゲームの編集、または勝者が変化したケースでは
+          // サーバーの最新状態を取得して確実に反映する。
+          cancelEditPoint();
+          await fetchMatch();
         }
-
-        cancelEditPoint();
       } else {
         const errorData = await response.json();
         console.error('Update failed:', errorData);
