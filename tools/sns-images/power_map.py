@@ -152,7 +152,8 @@ def titles_note(tcounts):
     return "・".join(parts)
 
 
-def render(pref_score, team_score, pref_titles, team_titles, title, subtitle, metric, out_path):
+def render(pref_score, team_score, pref_titles, team_titles, title, subtitle, metric, out_path,
+           units="both"):
     img, d = S.new_canvas(W, H)
     S.draw_header(d, W, title, subtitle)
 
@@ -190,13 +191,14 @@ def render(pref_score, team_score, pref_titles, team_titles, title, subtitle, me
     row_h = 36
     metric_label = "ポイント" if metric == "points" else "タイトルpt"
 
-    def draw_ranking(x, label, items, titles_map, is_team):
+    def draw_ranking(x, label, items, titles_map, is_team, start=1, maxv=None):
         d.rectangle([x, list_top, x + col_w, list_top + 42], fill=S.NAVY)
         d.rectangle([x, list_top, x + 8, list_top + 42], fill=S.YELLOW)
         d.text((x + 20, list_top + 8), label, font=S.font(21, bold=True), fill=S.WHITE)
         y = list_top + 50
-        maxv = items[0][1] if items else 1
-        for i, (key, v) in enumerate(items, 1):
+        if maxv is None:
+            maxv = items[0][1] if items else 1
+        for i, (key, v) in enumerate(items, start):
             name = f"{key[0]}（{short_pref(key[1] or '')}）" if is_team else short_pref(key)
             note = titles_note(titles_map.get(key, {}))
             bar_w = int((col_w - 200) * (v / maxv)) if maxv else 0
@@ -211,11 +213,30 @@ def render(pref_score, team_score, pref_titles, team_titles, title, subtitle, me
             y += row_h
         return y
 
-    n_show = 8
-    prefs = sorted(pref_score.items(), key=lambda kv: -kv[1])[:n_show]
-    teams = sorted(team_score.items(), key=lambda kv: -kv[1])[:n_show]
-    draw_ranking(36, f"都道府県 TOP{len(prefs)}（{metric_label}）", prefs, pref_titles, False)
-    draw_ranking(36 + col_w + 12, f"学校 TOP{len(teams)}（{metric_label}）", teams, team_titles, True)
+    prefs_all = sorted(pref_score.items(), key=lambda kv: -kv[1])
+    teams_all = sorted(team_score.items(), key=lambda kv: -kv[1])
+    x_left = 36
+    x_right = 36 + col_w + 12
+    if units == "school":
+        # 学校ランキングのみを2カラム（1〜7 / 8〜14）に分割表示
+        rows = teams_all[:14]
+        left, right = rows[:7], rows[7:14]
+        shared = rows[0][1] if rows else 1
+        draw_ranking(x_left, f"学校 TOP{len(rows)}（{metric_label}）", left, team_titles, True, maxv=shared)
+        if right:
+            draw_ranking(x_right, "　", right, team_titles, True, start=8, maxv=shared)
+    elif units == "pref":
+        rows = prefs_all[:14]
+        left, right = rows[:7], rows[7:14]
+        shared = rows[0][1] if rows else 1
+        draw_ranking(x_left, f"都道府県 TOP{len(rows)}（{metric_label}）", left, pref_titles, False, maxv=shared)
+        if right:
+            draw_ranking(x_right, "　", right, pref_titles, False, start=8, maxv=shared)
+    else:
+        prefs = prefs_all[:8]
+        teams = teams_all[:8]
+        draw_ranking(x_left, f"都道府県 TOP{len(prefs)}（{metric_label}）", prefs, pref_titles, False)
+        draw_ranking(x_right, f"学校 TOP{len(teams)}（{metric_label}）", teams, team_titles, True)
 
     S.draw_footer(d, W, H)
     img.save(out_path)
@@ -236,6 +257,8 @@ def main():
     ap.add_argument("--category", nargs="+", default=None, help="例: doubles-none-boys（省略時は全カテゴリ）")
     ap.add_argument("--years", default="2021-2025")
     ap.add_argument("--metric", choices=["points", "titles"], default="points")
+    ap.add_argument("--units", choices=["both", "school", "pref"], default="both",
+                    help="下段ランキングの単位。school=学校のみ / pref=都道府県のみ / both=両方（既定）")
     ap.add_argument("--title", required=True)
     ap.add_argument("--subtitle", default=None)
     ap.add_argument("--out", default="out/sns")
@@ -252,9 +275,10 @@ def main():
         + ("勝利数＋上位進出ポイントで集計" if args.metric == "points" else "優勝3pt・準優勝2pt・ベスト4 1ptで集計")
     )
     os.makedirs(args.out, exist_ok=True)
-    name = f"powermap_{args.tournament[0]}_{args.metric}.png"
+    cat_tag = "-".join(args.category) if args.category else "all"
+    name = f"powermap_{args.tournament[0]}_{cat_tag}_{args.units}_{args.metric}.png"
     out = render(pref_score, team_score, pref_titles, team_titles, args.title, sub, args.metric,
-                 os.path.join(args.out, name))
+                 os.path.join(args.out, name), units=args.units)
     print("生成しました:", out, f"（対象 {len(files)} ファイル）")
 
 
