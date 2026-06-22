@@ -91,6 +91,12 @@ export type TeamLink = {
   href: string | null;
 };
 
+/** 選手名と、その試合結果ページへのリンク（結果ページが無い場合 href=null） */
+export type PlayerLink = {
+  name: string;
+  href: string | null;
+};
+
 /** 上位入賞のひとつ（優勝 / 準優勝 / ベスト4 のいずれか） */
 export type RecordPlacement = {
   /** 表示用ラベル: 優勝 / 準優勝 / ベスト4 */
@@ -101,6 +107,8 @@ export type RecordPlacement = {
   display: string;
   /** 選手名一覧（団体戦は空配列） */
   players: string[];
+  /** 選手名＋試合結果ページへのリンク（players と同じ並び。団体戦は空配列） */
+  playerLinks: PlayerLink[];
   /** 所属校 */
   teams: string[];
   /** 所属校＋学校ページへのリンク（teams と同じ並び） */
@@ -137,6 +145,8 @@ export type ChampionCell = {
   winner: string | null;
   /** 選手名一覧（団体戦は空配列） */
   players: string[];
+  /** 選手名＋試合結果ページへのリンク（players と同じ並び。団体戦は空配列） */
+  playerLinks: PlayerLink[];
   /** 所属校 */
   teams: string[];
   /** 所属校＋学校ページへのリンク（teams と同じ並び） */
@@ -326,17 +336,61 @@ function getSchoolResolver(): SchoolResolver {
   return cachedSchoolResolver;
 }
 
+/**
+ * 姓名から、その選手の試合結果ページ（/players/{id}/results）の href を返すリゾルバ。
+ * data/players/index.json を唯一の正とし、結果ページが実在する選手（count>=5、
+ * results.tsx の getStaticPaths と同条件）のみリンクする（デッドリンク防止）。
+ * 同姓同名は最初の ID を使う（players/index.tsx・学校ページと同じ規約）。
+ * モジュールスコープで一度だけ構築してキャッシュする。
+ */
+type PlayerResolver = (lastName: string, firstName: string) => string | null;
+
+let cachedPlayerResolver: PlayerResolver | null = null;
+
+function getPlayerResolver(): PlayerResolver {
+  if (cachedPlayerResolver) return cachedPlayerResolver;
+
+  const nameToId = new Map<string, number>();
+  const indexPath = path.join(resolveRoot(), 'data', 'players', 'index.json');
+
+  try {
+    const arr = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
+      id: number;
+      lastName: string;
+      firstName: string;
+      count?: number;
+    }>;
+    for (const p of arr) {
+      if ((p.count ?? 0) < 5) continue; // 結果ページが無い選手はリンクしない
+      const key = `${p.lastName}::${p.firstName}`;
+      if (!nameToId.has(key)) nameToId.set(key, p.id);
+    }
+  } catch {
+    // index.json が無い/壊れている場合はリンク無しで継続
+  }
+
+  cachedPlayerResolver = (lastName, firstName) => {
+    if (!lastName && !firstName) return null;
+    const id = nameToId.get(`${lastName}::${firstName}`);
+    return id !== undefined ? `/players/${id}/results` : null;
+  };
+
+  return cachedPlayerResolver;
+}
+
 /** entry を選手名・所属・都道府県・表示文字列へ解決する */
 function resolveEntry(
   entry: RawEntry,
   participantById: Map<string, RawParticipant>,
   gender: string,
   resolveSchoolHref: SchoolResolver,
+  resolvePlayerHref: PlayerResolver,
 ): Pick<
   RecordPlacement,
-  'display' | 'players' | 'teams' | 'teamLinks' | 'prefectures'
+  'display' | 'players' | 'playerLinks' | 'teams' | 'teamLinks' | 'prefectures'
 > {
   const players: string[] = [];
+  const playerLinks: PlayerLink[] = [];
   const teams: string[] = [];
   const prefectures: string[] = [];
   const prefByTeam = new Map<string, string | null>();
@@ -344,12 +398,19 @@ function resolveEntry(
   for (const id of entry.playerIds) {
     const p = participantById.get(id);
     if (!p) {
-      // 参加者情報が無い場合は id をそのまま名前として扱う
+      // 参加者情報が無い場合は id をそのまま名前として扱う（リンク無し）
       players.push(id);
+      playerLinks.push({ name: id, href: null });
       continue;
     }
     const name = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
-    if (name) players.push(name);
+    if (name) {
+      players.push(name);
+      playerLinks.push({
+        name,
+        href: resolvePlayerHref(p.lastName ?? '', p.firstName ?? ''),
+      });
+    }
     if (p.team && !teams.includes(p.team)) {
       teams.push(p.team);
       prefByTeam.set(p.team, p.prefecture ?? null);
@@ -375,7 +436,7 @@ function resolveEntry(
     display = nameStr;
   }
 
-  return { display, players, teams, teamLinks, prefectures };
+  return { display, players, playerLinks, teams, teamLinks, prefectures };
 }
 
 /** 1 種目ファイルから上位入賞（優勝〜ベスト4）を抽出 */
@@ -383,6 +444,7 @@ function extractPlacements(
   detailPath: string,
   gender: string,
   resolveSchoolHref: SchoolResolver,
+  resolvePlayerHref: PlayerResolver,
 ): RecordPlacement[] {
   let data: RawDetail;
   try {
@@ -409,6 +471,7 @@ function extractPlacements(
       participantById,
       gender,
       resolveSchoolHref,
+      resolvePlayerHref,
     );
     if (!resolved.display) continue;
     placements.push({
@@ -471,6 +534,7 @@ export function getHsNationalTournamentRecords(
   }
 
   const resolveSchoolHref = getSchoolResolver();
+  const resolvePlayerHref = getPlayerResolver();
   const tidDir = path.join(resolveRoot(), ...DETAILS_ROOT, meta.tournamentId);
   const years: YearRecord[] = [];
 
@@ -493,6 +557,7 @@ export function getHsNationalTournamentRecords(
           path.join(yearDir, f),
           parsed.gender,
           resolveSchoolHref,
+          resolvePlayerHref,
         );
         if (placements.length === 0) continue;
         categories.push({
@@ -580,6 +645,7 @@ function buildChampionSummary(years: YearRecord[]): ChampionSummaryRow[] {
           year: yr.year,
           winner: champ?.display ?? null,
           players: champ?.players ?? [],
+          playerLinks: champ?.playerLinks ?? [],
           teams: champ?.teams ?? [],
           teamLinks: champ?.teamLinks ?? [],
           prefectures: champ?.prefectures ?? [],

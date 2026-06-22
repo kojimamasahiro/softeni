@@ -15,6 +15,7 @@ import {
   HS_NATIONAL_TOURNAMENTS,
   type ChampionSummaryRow,
   type HsNationalTournamentSlug,
+  type PlayerLink,
   type TeamLink,
   type TournamentRecords,
   type UpcomingEdition,
@@ -50,21 +51,46 @@ function SchoolNames({ links }: { links: TeamLink[] }) {
   );
 }
 
+/** 選手名を、試合結果ページが実在する場合のみリンク表示する（・区切り） */
+function PlayerNames({ links }: { links: PlayerLink[] }) {
+  if (links.length === 0) {
+    return <span className="font-normal text-gray-400">—</span>;
+  }
+  return (
+    <>
+      {links.map((p, i) => (
+        <span key={`${p.name}-${i}`}>
+          {i > 0 && '・'}
+          {p.href ? (
+            <Link
+              href={p.href}
+              className="text-blue-700 dark:text-blue-300 hover:underline"
+            >
+              {p.name}
+            </Link>
+          ) : (
+            p.name
+          )}
+        </span>
+      ))}
+    </>
+  );
+}
+
 /** 上位入賞の表示名。個人は「選手名（所属校リンク）」、団体は校名リンク。 */
 function PlacementName({
-  players,
+  playerLinks,
   teamLinks,
 }: {
-  players: string[];
+  playerLinks: PlayerLink[];
   teamLinks: TeamLink[];
 }) {
-  const nameStr = players.join('・');
-  if (!nameStr) {
+  if (playerLinks.length === 0) {
     return <SchoolNames links={teamLinks} />;
   }
   return (
     <>
-      {nameStr}
+      <PlayerNames links={playerLinks} />
       {teamLinks.length > 0 && (
         <>
           （<SchoolNames links={teamLinks} />）
@@ -217,8 +243,8 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
                         <SchoolNames links={cell.teamLinks} />
                       </td>
                       <td className="py-2.5 px-4 align-top">
-                        {cell.players.length > 0 ? (
-                          cell.players.join('・')
+                        {cell.playerLinks.length > 0 ? (
+                          <PlayerNames links={cell.playerLinks} />
                         ) : (
                           <span className="text-gray-400">—</span>
                         )}
@@ -584,7 +610,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
                               </span>
                               <span className="flex-1">
                                 <PlacementName
-                                  players={p.players}
+                                  playerLinks={p.playerLinks}
                                   teamLinks={p.teamLinks}
                                 />
                                 {p.prefectures.length > 0 && (
