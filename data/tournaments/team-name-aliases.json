@@ -1,0 +1,19 @@
+{
+  "description": "大会結果データ（data/tournaments/details）の学校名の表記揺れを正準名へ名寄せするための対応表。scripts/normalize-team-names.mjs が参照する。新しい学校を追加する場合は teamAliases に項目を足す。都道府県の接尾辞揺れ（例: 奈良→奈良県）はスクリプト内蔵の47都道府県マップで自動補完するため、ここには書かない。",
+  "scopeDefault": "highschool-japan-cup",
+  "teamAliases": [
+    {
+      "canonical": "高田商",
+      "aliases": ["高田商業", "高田商業高校", "高田商業高等学校", "大和高田市立高田商業高等学校"],
+      "note": "大和高田市立高田商業（奈良県）。『高田商ＯＢクラブ』はOB（社会人）団体であり別チームのため対象に含めない。"
+    },
+    { "canonical": "大分商", "aliases": ["大分商業"], "note": "大分商業（大分県）。『大分』高校とは別校。" },
+    { "canonical": "明豊", "aliases": ["明豊高校"] },
+    { "canonical": "旭川工", "aliases": ["旭川工業"] },
+    { "canonical": "北科大", "aliases": ["北科大高"], "note": "北海道科学大学高。" },
+    { "canonical": "焼津", "aliases": ["焼津高校"] },
+    { "canonical": "高崎商", "aliases": ["高崎商業"], "note": "高崎商業（群馬県）。『高崎』高校とは別校。" },
+    { "canonical": "県岐阜商", "aliases": ["岐阜商"], "note": "岐阜県立岐阜商業。林大嘉が年度をまたぎ両表記で登場（同一校）。市立岐阜商業＝『市岐商』とは別校。" },
+    { "canonical": "富士見", "aliases": ["静岡県富士見"], "note": "静岡県富士見。小林麻央が年度をまたぎ両表記で登場（同一校）。県名を冠した冗長表記を短縮形へ。" }
+  ]
+}

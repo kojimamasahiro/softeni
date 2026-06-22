@@ -130,6 +130,21 @@ Deprecated:
 - `data/players/*/analysis.json` は `data/tournaments/details/**` と `data/tournaments/information/*.json` から `scripts/generate-player-analysis.mjs` で自動生成する
 - score 系は `data/**` ではなく Supabase -> `public/data/beta-matches/**` 生成の流れを持つ
 
+### 大会結果データの学校名・県名の名寄せ
+
+- 大会結果（`data/tournaments/details/**`）は表示にそのまま使われるため、学校名・県名の表記揺れがあると同一校が別チームのように見える（例: `高田商` / `高田商業` / `高田商業高校`、`徳島` / `徳島県`）
+- `scripts/normalize-team-names.mjs` が2種類の揺れを統一する:
+  - 学校名: 手動メンテの対応表 `data/tournaments/team-name-aliases.json`（`teamAliases` に「正準名 ← 別名」）で寄せる
+  - 都道府県: 接尾辞（県/府/都）が無い短縮表記に正しい接尾辞を補う（スクリプト内蔵の47都道府県マップ。対応表には書かない）
+- **対象スコープは既定で `highschool-japan-cup`（ハイスクールジャパンカップ）のみ**。他大会へ広げる場合のみ `--scope=<tournamentId>`（`--scope=all` で全大会）を明示する
+- 対象は各 JSON の `participants[].team` / `participants[].prefecture` / `participants[].id` と `entries[].playerIds`。`id`（`姓_名_チーム_都道府県`）を再計算し参照も張り替える
+- スクリプトは JSON を再シリアライズせず元テキストへピンポイント置換するため整形（インライン配列など）が保たれる。冪等で、`--dry-run` で事前確認できる
+- `temp/` 配下の中間生成物は対象外。データを再生成した場合は本スクリプトを再実行する
+- 別団体（例: `高田商ＯＢクラブ`＝OB団体）や別校（`大分`≠`大分商`、`高崎`≠`高崎商`）は対象に含めない。新しい揺れは対応表に追記して再実行する
+- 登録済みの学校名エイリアス（HJC適用済み）: 高田商 / 大分商 / 明豊 / 旭川工 / 北科大 / 焼津 / 高崎商
+- 判断保留（別校か同一校か未確定のため未登録）: `岐阜商` vs `県岐阜商`、`富士見` vs `静岡県富士見`
+- 一回限りのデータ破損修復は `scripts/fix-hjc-2024-doubles.mjs`（2024男子ダブルスで和歌山勢の氏名・県名混入により参照切れ等が発生していたもの。氏名はドロー＝`entries` を一次情報として修復）。本スクリプト実行後に上記の正規化を流す
+
 ## 地方大会候補検知
 
 ### `scripts/crawl-local-tournaments.mjs`
