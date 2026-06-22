@@ -20,6 +20,12 @@ export type HsNationalTournamentMeta = {
   label: string;
   /** 短縮・通称（見出し向け） */
   shortLabel: string;
+  /**
+   * 検索略称（例: ハイジャパ）。タイトル/見出し/FAQ に literal で出して
+   * 略称クエリを拾うために使う。専用ページは作らず、この大会ハブに集約する。
+   * 詳細は docs/wiki/seo.md #3。
+   */
+  aliases?: string[];
   officialUrl: string;
   /** カードや概要に出す短い説明 */
   description: string;
@@ -44,9 +50,10 @@ export const HS_NATIONAL_TOURNAMENTS: Record<
     tournamentId: 'highschool-japan-cup',
     label: 'ハイスクールジャパンカップ',
     shortLabel: 'ハイスクールジャパンカップ',
+    aliases: ['ハイジャパ'],
     officialUrl: 'https://www.gosen-sp.jp/hjs/',
     description:
-      'ゴーセン杯争奪ハイスクールジャパンカップは、高校生個人の日本一を決めるソフトテニスの全国大会です。男子・女子それぞれシングルスとダブルスを実施し、各地区の代表選手が頂点を争います。本ページでは歴代の優勝・準優勝・ベスト4を年度別・種目別にまとめ、出場校の戦績ページへもリンクしています。',
+      'ゴーセン杯争奪ハイスクールジャパンカップ（通称「ハイジャパ」）は、高校生個人の日本一を決めるソフトテニスの全国大会です。男子・女子それぞれシングルスとダブルスを実施し、各地区の代表選手が頂点を争います。本ページでは歴代の優勝・準優勝・ベスト4を年度別・種目別にまとめ、出場校の戦績ページへもリンクしています。',
   },
 };
 

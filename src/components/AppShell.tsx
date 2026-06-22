@@ -152,7 +152,8 @@ export default function AppShell({
   // ---- softeni-pick mode: 2ペイン ----
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-30 w-full bg-gray-50 text-gray-800 shadow-sm dark:bg-gray-900 dark:text-gray-100">
+      {/* モバイルは非sticky（自動広告の上部アンカーと最上部で競合させない）。PC のみ固定。 */}
+      <header className="z-30 w-full bg-gray-50 text-gray-800 shadow-sm lg:sticky lg:top-0 dark:bg-gray-900 dark:text-gray-100">
         <div className="flex items-center gap-3 px-4 py-4">
           {/* モバイル: ドロワー開閉 */}
           <button
