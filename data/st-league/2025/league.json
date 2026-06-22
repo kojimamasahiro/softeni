@@ -1,156 +1,131 @@
 {
-    "year": 2025,
-    "edition": 3,
-    "title": "第3回STリーグ",
+  "year": 2025,
+  "edition": 3,
+  "title": "第3回STリーグ",
+  "period": {
+    "start": "2025-12-11",
+    "end": "2025-12-14"
+  },
+  "venue": "日環アリーナ栃木",
+  "location": "栃木県宇都宮市",
+  "format": {
+    "tie": "3本勝負（ダブルス① → シングルス → ダブルス②、2本先取）",
+    "game": "7ゲームマッチ"
+  },
+  "playoff": {
+    "name": "STリーグプレーオフ（Ⅰ・Ⅱ部入替戦）",
     "period": {
-        "start": "2025-12-11",
-        "end": "2025-12-14"
+      "start": "2025-12-19",
+      "end": "2025-12-21"
     },
-    "venue": "日環アリーナ栃木",
-    "location": "栃木県宇都宮市",
-    "format": {
-        "tie": "3本勝負（ダブルス① → シングルス → ダブルス②、2本先取）",
-        "game": "7ゲームマッチ"
+    "venue": "広島県福山市",
+    "description": "STリーグⅠ下位とSTリーグⅡ上位が翌年度の所属を懸けて対戦する入替戦。"
+  },
+  "divisions": [
+    {
+      "id": "1",
+      "name": "STリーグⅠ",
+      "rank": 1,
+      "format": "総当たり戦",
+      "teamCount": {
+        "boys": 8,
+        "girls": 7
+      },
+      "note": "最上位カテゴリー。下位はプレーオフ（入替戦）対象。",
+      "hasMatchData": true
     },
-    "playoff": {
-        "name": "STリーグプレーオフ（Ⅰ・Ⅱ部入替戦）",
-        "period": {
-            "start": "2025-12-19",
-            "end": "2025-12-21"
-        },
-        "venue": "広島県福山市",
-        "description": "STリーグⅠ下位とSTリーグⅡ上位が翌年度の所属を懸けて対戦する入替戦。"
+    {
+      "id": "2",
+      "name": "STリーグⅡ",
+      "rank": 2,
+      "format": "順位決定戦（順位別トーナメント）",
+      "teamCount": {
+        "boys": 8
+      },
+      "note": "上位3チームがプレーオフ（入替戦）でⅠ部昇格を目指す。男子は順位決定戦の結果を掲載。",
+      "hasMatchData": true
     },
-    "divisions": [
-        {
-            "id": "1",
-            "name": "STリーグⅠ",
-            "rank": 1,
-            "format": "総当たり戦",
-            "teamCount": {
-                "boys": 8,
-                "girls": 7
-            },
-            "note": "最上位カテゴリー。下位はプレーオフ（入替戦）対象。",
-            "hasMatchData": true
-        },
-        {
-            "id": "2",
-            "name": "STリーグⅡ",
-            "rank": 2,
-            "format": "順位決定戦（順位別トーナメント）",
-            "teamCount": {
-                "boys": 8
-            },
-            "note": "上位3チームがプレーオフ（入替戦）でⅠ部昇格を目指す。男子は順位決定戦の結果を掲載。",
-            "hasMatchData": true
-        },
-        {
-            "id": "3",
-            "name": "STリーグⅢ",
-            "rank": 3,
-            "format": "総当たり戦",
-            "note": "Ⅱ部昇格を目指すチームが集うカテゴリー。全国の実業団チームが上位リーグへの足がかりを争う、STリーグの土台となる階層です。",
-            "hasMatchData": false
+    {
+      "id": "3",
+      "name": "STリーグⅢ",
+      "rank": 3,
+      "format": "総当たり戦",
+      "note": "Ⅱ部昇格を目指すチームが集うカテゴリー。全国の実業団チームが上位リーグへの足がかりを争う、STリーグの土台となる階層です。",
+      "hasMatchData": false
+    }
+  ],
+  "results": {
+    "1": {
+      "boys": {
+        "champion": "ntt-west",
+        "runnerUp": null,
+        "third": ["tohogas", "yonex"]
+      },
+      "girls": {
+        "champion": "nagase",
+        "runnerUp": null,
+        "third": ["yonex"]
+      }
+    },
+    "2": {
+      "boys": {
+        "champion": "nippon-signal",
+        "ranking": [
+          "nippon-signal",
+          "best",
+          "tosoh-nanyo",
+          "toyota",
+          "juhachi-shinwa",
+          "kawaguchi-city",
+          "kyoto-daini-rc",
+          "eneos"
+        ],
+        "blocks": {
+          "A": ["toyota", "ube", "ntt-east-tokyo", "hokkaido-electric"],
+          "B": ["eneos", "proterial", "noah-indoor-stage", "fujikoshi"],
+          "C": [
+            "kawaguchi-city",
+            "nipponsteel-oita",
+            "toyota-east",
+            "jr-hokkaido"
+          ],
+          "D": ["best", "mazda", "imabari-city", "jx-kurami"],
+          "E": [
+            "juhachi-shinwa",
+            "atsugi-city",
+            "kuraray-okayama",
+            "jr-east-sendai"
+          ],
+          "F": ["nippon-signal", "meidensha", "shikoku-gas", "hachioji-city"],
+          "G": [
+            "kyoto-daini-rc",
+            "crossty-holdings",
+            "fukuoka-city",
+            "jr-east-tokyo"
+          ],
+          "H": [
+            "tosoh-nanyo",
+            "matsumoto-city",
+            "chubu-electric-aichi",
+            "ichikawa-city"
+          ]
         }
-    ],
-    "results": {
-        "1": {
-            "boys": {
-                "champion": "ntt-west",
-                "runnerUp": null,
-                "third": [
-                    "tohogas",
-                    "yonex"
-                ]
-            },
-            "girls": {
-                "champion": "nagase",
-                "runnerUp": null,
-                "third": [
-                    "yonex"
-                ]
-            }
-        },
-        "2": {
-            "boys": {
-                "champion": "nippon-signal",
-                "ranking": [
-                    "nippon-signal",
-                    "best",
-                    "tosoh-nanyo",
-                    "toyota",
-                    "juhachi-shinwa",
-                    "kawaguchi-city",
-                    "kyoto-daini-rc",
-                    "eneos"
-                ],
-                "blocks": {
-                    "A": [
-                        "toyota",
-                        "ube",
-                        "ntt-east-tokyo",
-                        "hokkaido-electric"
-                    ],
-                    "B": [
-                        "eneos",
-                        "proterial",
-                        "noah-indoor-stage",
-                        "fujikoshi"
-                    ],
-                    "C": [
-                        "kawaguchi-city",
-                        "nipponsteel-oita",
-                        "toyota-east",
-                        "jr-hokkaido"
-                    ],
-                    "D": [
-                        "best",
-                        "mazda",
-                        "imabari-city",
-                        "jx-kurami"
-                    ],
-                    "E": [
-                        "juhachi-shinwa",
-                        "atsugi-city",
-                        "kuraray-okayama",
-                        "jr-east-sendai"
-                    ],
-                    "F": [
-                        "nippon-signal",
-                        "meidensha",
-                        "shikoku-gas",
-                        "hachioji-city"
-                    ],
-                    "G": [
-                        "kyoto-daini-rc",
-                        "crossty-holdings",
-                        "fukuoka-city",
-                        "jr-east-tokyo"
-                    ],
-                    "H": [
-                        "tosoh-nanyo",
-                        "matsumoto-city",
-                        "chubu-electric-aichi",
-                        "ichikawa-city"
-                    ]
-                }
-            },
-            "girls": {
-                "champion": null
-            }
-        },
-        "3": {
-            "boys": {
-                "champion": null
-            },
-            "girls": {
-                "champion": null
-            }
-        }
+      },
+      "girls": {
+        "champion": null
+      }
     },
-    "notes": [
-        "男子優勝のNTT西日本は前身の日本リーグから続く連覇記録を更新中（Assumption: 連覇数は要確認）。",
-        "STリーグⅡ（男子）は1日目の予選リーグ（8ブロック）と2日目の順位決定戦の実データを掲載。女子Ⅱ部・Ⅲ部は今後追加予定。"
-    ]
+    "3": {
+      "boys": {
+        "champion": null
+      },
+      "girls": {
+        "champion": null
+      }
+    }
+  },
+  "notes": [
+    "男子優勝のNTT西日本は前身の日本リーグから続く連覇記録を更新中（Assumption: 連覇数は要確認）。",
+    "STリーグⅡ（男子）は1日目の予選リーグ（8ブロック）と2日目の順位決定戦の実データを掲載。女子Ⅱ部・Ⅲ部は今後追加予定。"
+  ]
 }

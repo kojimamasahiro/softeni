@@ -61,20 +61,21 @@ type ChampionEntry = {
 type HistoricalWinnersBlock = {
   blockType: 'historical-winners';
   tournamentId: string;
-  categoryId: string;       // 例 doubles-none-boys
-  categoryLabel: string;    // 例 男子ダブルス
+  categoryId: string; // 例 doubles-none-boys
+  categoryLabel: string; // 例 男子ダブルス
   // 新しい年が先頭
   champions: ChampionEntry[];
   // 当該年（速報/プレビュー対象年）の位置づけ用メタ
   edition: {
     targetYear: number | null;
-    totalEditions: number;      // 収録されている開催回数
-    repeatChampion?: {          // 連覇判定（下記ロジック）
-      streak: number;           // 連続優勝年数（2以上で連覇）
-      since: number;            // 連覇開始年
+    totalEditions: number; // 収録されている開催回数
+    repeatChampion?: {
+      // 連覇判定（下記ロジック）
+      streak: number; // 連続優勝年数（2以上で連覇）
+      since: number; // 連覇開始年
     } | null;
   };
-  sourceYears: number[];        // 集計に使った年（鮮度・dateModified 用）
+  sourceYears: number[]; // 集計に使った年（鮮度・dateModified 用）
 };
 ```
 

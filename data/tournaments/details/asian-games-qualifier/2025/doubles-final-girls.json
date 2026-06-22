@@ -1,20 +1,56 @@
 {
   "participants": [
-    {"id":"長谷川_憂華_ワタキューセイモア_京都府","lastName":"長谷川","firstName":"憂華","team":"ワタキューセイモア","prefecture":"京都府"},
-    {"id":"宮前_希帆_ワタキューセイモア_京都府","lastName":"宮前","firstName":"希帆","team":"ワタキューセイモア","prefecture":"京都府"},
-    {"id":"岩倉_彩佳_どんぐり北広島_広島県","lastName":"岩倉","firstName":"彩佳","team":"どんぐり北広島","prefecture":"広島県"},
-    {"id":"天間_麗奈_東北高校_宮城県","lastName":"天間","firstName":"麗奈","team":"東北高校","prefecture":"宮城県"}
+    {
+      "id": "長谷川_憂華_ワタキューセイモア_京都府",
+      "lastName": "長谷川",
+      "firstName": "憂華",
+      "team": "ワタキューセイモア",
+      "prefecture": "京都府"
+    },
+    {
+      "id": "宮前_希帆_ワタキューセイモア_京都府",
+      "lastName": "宮前",
+      "firstName": "希帆",
+      "team": "ワタキューセイモア",
+      "prefecture": "京都府"
+    },
+    {
+      "id": "岩倉_彩佳_どんぐり北広島_広島県",
+      "lastName": "岩倉",
+      "firstName": "彩佳",
+      "team": "どんぐり北広島",
+      "prefecture": "広島県"
+    },
+    {
+      "id": "天間_麗奈_東北高校_宮城県",
+      "lastName": "天間",
+      "firstName": "麗奈",
+      "team": "東北高校",
+      "prefecture": "宮城県"
+    }
   ],
   "entries": [
-    {"entryNo":1,"playerIds":["宮前_希帆_ワタキューセイモア_京都府"],"type":null},
-    {"entryNo":23,"playerIds":["長谷川_憂華_ワタキューセイモア_京都府"],"type":null},
-    {"entryNo":27,"playerIds":["岩倉_彩佳_どんぐり北広島_広島県"],"type":null},
-    {"entryNo":43,"playerIds":["天間_麗奈_東北高校_宮城県"],"type":null}
+    {
+      "entryNo": 1,
+      "playerIds": ["宮前_希帆_ワタキューセイモア_京都府"],
+      "type": null
+    },
+    {
+      "entryNo": 23,
+      "playerIds": ["長谷川_憂華_ワタキューセイモア_京都府"],
+      "type": null
+    },
+    {
+      "entryNo": 27,
+      "playerIds": ["岩倉_彩佳_どんぐり北広島_広島県"],
+      "type": null
+    },
+    { "entryNo": 43, "playerIds": ["天間_麗奈_東北高校_宮城県"], "type": null }
   ],
   "matches": [
     {
-      "entries": [1,23],
-      "scores": {"1":4,"23":3},
+      "entries": [1, 23],
+      "scores": { "1": 4, "23": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -25,8 +61,8 @@
       "matchId": "match-1"
     },
     {
-      "entries": [1,27],
-      "scores": {"1":4,"27":3},
+      "entries": [1, 27],
+      "scores": { "1": 4, "27": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -37,8 +73,8 @@
       "matchId": "match-2"
     },
     {
-      "entries": [1,43],
-      "scores": {"1":2,"43":4},
+      "entries": [1, 43],
+      "scores": { "1": 2, "43": 4 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -49,8 +85,8 @@
       "matchId": "match-3"
     },
     {
-      "entries": [23,27],
-      "scores": {"23":4,"27":1},
+      "entries": [23, 27],
+      "scores": { "23": 4, "27": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -61,8 +97,8 @@
       "matchId": "match-4"
     },
     {
-      "entries": [23,43],
-      "scores": {"23":4,"43":0},
+      "entries": [23, 43],
+      "scores": { "23": 4, "43": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -73,8 +109,8 @@
       "matchId": "match-5"
     },
     {
-      "entries": [27,43],
-      "scores": {"27":4,"43":2},
+      "entries": [27, 43],
+      "scores": { "27": 4, "43": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -86,9 +122,25 @@
     }
   ],
   "results": [
-    {"entryNo":1,"tournament":null,"roundrobin":{"group":"A","rank":1}},
-    {"entryNo":23,"tournament":null,"roundrobin":{"group":"A","rank":2}},
-    {"entryNo":27,"tournament":null,"roundrobin":{"group":"A","rank":3}},
-    {"entryNo":43,"tournament":null,"roundrobin":{"group":"A","rank":4}}
+    {
+      "entryNo": 1,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 1 }
+    },
+    {
+      "entryNo": 23,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 2 }
+    },
+    {
+      "entryNo": 27,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 3 }
+    },
+    {
+      "entryNo": 43,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 4 }
+    }
   ]
 }

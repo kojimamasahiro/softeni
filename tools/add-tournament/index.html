@@ -5,56 +5,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>大会追加ツール</title>
     <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f7fa; color: #333; padding: 24px; }
-      h1 { font-size: 1.5rem; margin-bottom: 24px; color: #1a1a2e; }
-      h2 { font-size: 1.15rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #4f6cf7; color: #1a1a2e; }
-      h3 { font-size: 1rem; margin-bottom: 10px; color: #444; }
-      .container { max-width: 960px; margin: 0 auto; }
-      .card { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-      .field { display: flex; flex-direction: column; gap: 4px; }
-      .field.full { grid-column: 1 / -1; }
-      label { font-size: 0.8rem; font-weight: 600; color: #555; }
-      label .req { color: #e53; margin-left: 2px; }
-      input[type="text"], input[type="number"], input[type="date"], select, textarea {
-        border: 1px solid #d0d5e0; border-radius: 6px; padding: 8px 10px; font-size: 0.9rem;
-        width: 100%; background: #fafbfc; transition: border-color 0.2s;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-      input:focus, select:focus, textarea:focus { outline: none; border-color: #4f6cf7; background: #fff; }
-      input.error, select.error { border-color: #e53; }
-      .radio-group { display: flex; gap: 16px; padding-top: 4px; }
-      .radio-group label { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: normal; cursor: pointer; color: #333; }
-      .section-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-      .section-toggle select { width: auto; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f5f7fa;
+        color: #333;
+        padding: 24px;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+        color: #1a1a2e;
+      }
+      h2 {
+        font-size: 1.15rem;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #4f6cf7;
+        color: #1a1a2e;
+      }
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #444;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #555;
+      }
+      label .req {
+        color: #e53;
+        margin-left: 2px;
+      }
+      input[type='text'],
+      input[type='number'],
+      input[type='date'],
+      select,
+      textarea {
+        border: 1px solid #d0d5e0;
+        border-radius: 6px;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        width: 100%;
+        background: #fafbfc;
+        transition: border-color 0.2s;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #4f6cf7;
+        background: #fff;
+      }
+      input.error,
+      select.error {
+        border-color: #e53;
+      }
+      .radio-group {
+        display: flex;
+        gap: 16px;
+        padding-top: 4px;
+      }
+      .radio-group label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        cursor: pointer;
+        color: #333;
+      }
+      .section-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .section-toggle select {
+        width: auto;
+      }
       /* カテゴリ追加 */
-      .category-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-      .category-item {
-        display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 8px; align-items: center;
-        background: #f5f7fa; border-radius: 6px; padding: 8px 12px;
+      .category-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
       }
-      .category-item select { background: #fff; }
-      .btn-remove { background: none; border: 1px solid #f87171; color: #f87171; border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 0.8rem; }
-      .btn-remove:hover { background: #fef2f2; }
-      .btn-add { background: #e8edff; border: 1px dashed #4f6cf7; color: #4f6cf7; border-radius: 6px; padding: 8px 16px; cursor: pointer; font-size: 0.85rem; width: 100%; }
-      .btn-add:hover { background: #dce6ff; }
+      .category-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr auto;
+        gap: 8px;
+        align-items: center;
+        background: #f5f7fa;
+        border-radius: 6px;
+        padding: 8px 12px;
+      }
+      .category-item select {
+        background: #fff;
+      }
+      .btn-remove {
+        background: none;
+        border: 1px solid #f87171;
+        color: #f87171;
+        border-radius: 4px;
+        padding: 4px 10px;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+      .btn-remove:hover {
+        background: #fef2f2;
+      }
+      .btn-add {
+        background: #e8edff;
+        border: 1px dashed #4f6cf7;
+        color: #4f6cf7;
+        border-radius: 6px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        width: 100%;
+      }
+      .btn-add:hover {
+        background: #dce6ff;
+      }
       /* 出力 */
-      .output-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-      .output-box { display: flex; flex-direction: column; gap: 8px; }
-      .output-title { display: flex; justify-content: space-between; align-items: center; }
-      .output-title h3 { margin: 0; }
-      .output-path { font-size: 0.75rem; color: #888; font-family: monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px; }
-      textarea.json-output { font-family: 'Courier New', monospace; font-size: 0.8rem; background: #1e1e2e; color: #cdd6f4; border: none; border-radius: 8px; padding: 16px; min-height: 300px; resize: vertical; }
-      .btn-copy { background: #4f6cf7; color: #fff; border: none; border-radius: 6px; padding: 8px 18px; cursor: pointer; font-size: 0.85rem; }
-      .btn-copy:hover { background: #3a57d4; }
-      .btn-copy.copied { background: #22c55e; }
-      .btn-generate { background: #4f6cf7; color: #fff; border: none; border-radius: 8px; padding: 12px 32px; cursor: pointer; font-size: 1rem; font-weight: 600; width: 100%; margin-top: 8px; }
-      .btn-generate:hover { background: #3a57d4; }
-      .alert { background: #fef3cd; border: 1px solid #f5c842; border-radius: 6px; padding: 10px 14px; font-size: 0.85rem; color: #856404; }
-      .hint { font-size: 0.75rem; color: #888; margin-top: 2px; }
-      .separator { border: none; border-top: 1px solid #e8eaf0; margin: 16px 0; }
-      .badge { font-size: 0.7rem; background: #e8edff; color: #4f6cf7; border-radius: 4px; padding: 2px 7px; font-weight: 600; }
+      .output-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .output-box {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .output-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .output-title h3 {
+        margin: 0;
+      }
+      .output-path {
+        font-size: 0.75rem;
+        color: #888;
+        font-family: monospace;
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      textarea.json-output {
+        font-family: 'Courier New', monospace;
+        font-size: 0.8rem;
+        background: #1e1e2e;
+        color: #cdd6f4;
+        border: none;
+        border-radius: 8px;
+        padding: 16px;
+        min-height: 300px;
+        resize: vertical;
+      }
+      .btn-copy {
+        background: #4f6cf7;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 18px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+      .btn-copy:hover {
+        background: #3a57d4;
+      }
+      .btn-copy.copied {
+        background: #22c55e;
+      }
+      .btn-generate {
+        background: #4f6cf7;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 32px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .btn-generate:hover {
+        background: #3a57d4;
+      }
+      .alert {
+        background: #fef3cd;
+        border: 1px solid #f5c842;
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        color: #856404;
+      }
+      .hint {
+        font-size: 0.75rem;
+        color: #888;
+        margin-top: 2px;
+      }
+      .separator {
+        border: none;
+        border-top: 1px solid #e8eaf0;
+        margin: 16px 0;
+      }
+      .badge {
+        font-size: 0.7rem;
+        background: #e8edff;
+        color: #4f6cf7;
+        border-radius: 4px;
+        padding: 2px 7px;
+        font-weight: 600;
+      }
     </style>
   </head>
   <body>
@@ -63,21 +264,50 @@
 
       <!-- STEP 1: 大会マスタ情報 -->
       <div class="card">
-        <h2>① 大会マスタ情報 <span class="badge">index.json / local_index.json</span></h2>
+        <h2>
+          ① 大会マスタ情報
+          <span class="badge">index.json / local_index.json</span>
+        </h2>
 
         <div class="section-toggle">
-          <label style="font-size:0.85rem;font-weight:600;color:#555;">大会種別</label>
+          <label style="font-size: 0.85rem; font-weight: 600; color: #555"
+            >大会種別</label
+          >
           <div class="radio-group">
-            <label><input type="radio" name="tournamentType" value="national" checked onchange="onTypeChange()" /> 全国大会（index.json）</label>
-            <label><input type="radio" name="tournamentType" value="local" onchange="onTypeChange()" /> 地域大会（local_index.json）</label>
+            <label
+              ><input
+                type="radio"
+                name="tournamentType"
+                value="national"
+                checked
+                onchange="onTypeChange()"
+              />
+              全国大会（index.json）</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="tournamentType"
+                value="local"
+                onchange="onTypeChange()"
+              />
+              地域大会（local_index.json）</label
+            >
           </div>
         </div>
 
         <div class="grid">
           <div class="field">
             <label>大会ID（tournamentId）<span class="req">*</span></label>
-            <input type="text" id="tournamentId" placeholder="例: highschool-japan-cup" oninput="syncTournamentId()" />
-            <div class="hint">英小文字・ハイフンのみ使用。URL の一部になります。</div>
+            <input
+              type="text"
+              id="tournamentId"
+              placeholder="例: highschool-japan-cup"
+              oninput="syncTournamentId()"
+            />
+            <div class="hint">
+              英小文字・ハイフンのみ使用。URL の一部になります。
+            </div>
           </div>
           <div class="field">
             <label>世代区分（generationId）<span class="req">*</span></label>
@@ -95,13 +325,29 @@
           </div>
           <div class="field full">
             <label>大会名（label）<span class="req">*</span></label>
-            <input type="text" id="label" placeholder="例: ハイスクールジャパンカップ" oninput="syncInfoLabel()" />
+            <input
+              type="text"
+              id="label"
+              placeholder="例: ハイスクールジャパンカップ"
+              oninput="syncInfoLabel()"
+            />
           </div>
           <div class="field">
             <label>主要タイトル（isMajorTitle）</label>
             <div class="radio-group">
-              <label><input type="radio" name="isMajorTitle" value="false" checked /> いいえ</label>
-              <label><input type="radio" name="isMajorTitle" value="true" /> はい</label>
+              <label
+                ><input
+                  type="radio"
+                  name="isMajorTitle"
+                  value="false"
+                  checked
+                />
+                いいえ</label
+              >
+              <label
+                ><input type="radio" name="isMajorTitle" value="true" />
+                はい</label
+              >
             </div>
           </div>
           <div class="field">
@@ -110,13 +356,13 @@
           </div>
 
           <!-- 地域大会のみ -->
-          <div class="field" id="federationField" style="display:none;">
+          <div class="field" id="federationField" style="display: none">
             <label>連盟ID（federationId）<span class="req">*</span></label>
             <select id="federationId">
               <option value="">選択してください</option>
             </select>
           </div>
-          <div class="field" id="areaField" style="display:none;">
+          <div class="field" id="areaField" style="display: none">
             <label>大会規模（areaId）</label>
             <select id="areaId">
               <option value="">自動推定（都道府県）</option>
@@ -132,21 +378,41 @@
 
       <!-- STEP 2: 開催情報 -->
       <div class="card">
-        <h2>② 開催情報 <span class="badge">information/{tournamentId}.json</span></h2>
+        <h2>
+          ② 開催情報 <span class="badge">information/{tournamentId}.json</span>
+        </h2>
 
         <div class="grid">
           <div class="field">
             <label>informationId <span class="req">*</span></label>
-            <input type="text" id="informationId" value="INF00034" placeholder="INF00034" />
-            <div class="hint">既存の最大値は INF00033。自動インクリメントしてください。</div>
+            <input
+              type="text"
+              id="informationId"
+              value="INF00034"
+              placeholder="INF00034"
+            />
+            <div class="hint">
+              既存の最大値は INF00033。自動インクリメントしてください。
+            </div>
           </div>
           <div class="field">
             <label>開催年（year）<span class="req">*</span></label>
-            <input type="number" id="year" placeholder="2025" min="2000" max="2099" />
+            <input
+              type="number"
+              id="year"
+              placeholder="2025"
+              min="2000"
+              max="2099"
+            />
           </div>
           <div class="field">
             <label>開催地（location）<span class="req">*</span></label>
-            <input type="text" id="location" placeholder="例: 北海道、東京都" list="prefList" />
+            <input
+              type="text"
+              id="location"
+              placeholder="例: 北海道、東京都"
+              list="prefList"
+            />
             <datalist id="prefList"></datalist>
           </div>
           <div class="field"></div>
@@ -160,12 +426,22 @@
           </div>
           <div class="field full">
             <label>大会名（label）</label>
-            <input type="text" id="infoLabel" placeholder="例: ハイスクールジャパンカップ" />
-            <div class="hint">①の大会名から自動入力されます。年度固有の名称がある場合は上書きしてください。</div>
+            <input
+              type="text"
+              id="infoLabel"
+              placeholder="例: ハイスクールジャパンカップ"
+            />
+            <div class="hint">
+              ①の大会名から自動入力されます。年度固有の名称がある場合は上書きしてください。
+            </div>
           </div>
           <div class="field">
             <label>情報ソース名（source）</label>
-            <input type="text" id="source" placeholder="例: ハイスクールジャパンカップ | HJS | ゴーセン" />
+            <input
+              type="text"
+              id="source"
+              placeholder="例: ハイスクールジャパンカップ | HJS | ゴーセン"
+            />
           </div>
           <div class="field">
             <label>情報ソースURL（sourceUrl）</label>
@@ -176,21 +452,54 @@
         <hr class="separator" />
         <h3>実施種目（categories）</h3>
 
-        <div id="quickPresets" style="margin-bottom:12px; display:flex; flex-wrap:wrap; gap:8px;">
-          <span style="font-size:0.8rem;color:#888;align-self:center;">プリセット:</span>
-          <button class="btn-add" style="width:auto;padding:4px 12px;" onclick="addPreset('doubles-singles-both')">ダブルス＋シングルス（男女）</button>
-          <button class="btn-add" style="width:auto;padding:4px 12px;" onclick="addPreset('doubles-both')">ダブルスのみ（男女）</button>
-          <button class="btn-add" style="width:auto;padding:4px 12px;" onclick="addPreset('team-both')">団体のみ（男女）</button>
+        <div
+          id="quickPresets"
+          style="margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 8px"
+        >
+          <span style="font-size: 0.8rem; color: #888; align-self: center"
+            >プリセット:</span
+          >
+          <button
+            class="btn-add"
+            style="width: auto; padding: 4px 12px"
+            onclick="addPreset('doubles-singles-both')"
+          >
+            ダブルス＋シングルス（男女）
+          </button>
+          <button
+            class="btn-add"
+            style="width: auto; padding: 4px 12px"
+            onclick="addPreset('doubles-both')"
+          >
+            ダブルスのみ（男女）
+          </button>
+          <button
+            class="btn-add"
+            style="width: auto; padding: 4px 12px"
+            onclick="addPreset('team-both')"
+          >
+            団体のみ（男女）
+          </button>
         </div>
 
         <div class="category-list" id="categoryList">
           <!-- 行はJSで生成 -->
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;margin-bottom:8px;padding:0 12px;">
-          <span style="font-size:0.75rem;color:#888;">種別</span>
-          <span style="font-size:0.75rem;color:#888;">年齢区分</span>
-          <span style="font-size:0.75rem;color:#888;">性別</span>
-          <span style="font-size:0.75rem;color:#888;">カテゴリID（自動）</span>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr auto;
+            gap: 8px;
+            margin-bottom: 8px;
+            padding: 0 12px;
+          "
+        >
+          <span style="font-size: 0.75rem; color: #888">種別</span>
+          <span style="font-size: 0.75rem; color: #888">年齢区分</span>
+          <span style="font-size: 0.75rem; color: #888">性別</span>
+          <span style="font-size: 0.75rem; color: #888"
+            >カテゴリID（自動）</span
+          >
           <span></span>
         </div>
         <button class="btn-add" onclick="addCategory()">＋ 種目を追加</button>
@@ -200,111 +509,351 @@
       <button class="btn-generate" onclick="generate()">JSON を生成</button>
 
       <!-- 出力 -->
-      <div class="card" id="outputCard" style="margin-top:20px;display:none;">
+      <div class="card" id="outputCard" style="margin-top: 20px; display: none">
         <h2>③ 生成結果</h2>
         <div class="output-section">
           <div class="output-box">
             <div class="output-title">
               <h3>大会マスタ エントリー</h3>
-              <button class="btn-copy" onclick="copyText('indexJson', this)">コピー</button>
+              <button class="btn-copy" onclick="copyText('indexJson', this)">
+                コピー
+              </button>
             </div>
-            <div class="output-path" id="indexPath">data/tournaments/index.json</div>
+            <div class="output-path" id="indexPath">
+              data/tournaments/index.json
+            </div>
             <textarea class="json-output" id="indexJson" readonly></textarea>
           </div>
           <div class="output-box">
             <div class="output-title">
               <h3>開催情報 エントリー</h3>
-              <button class="btn-copy" onclick="copyText('infoJson', this)">コピー</button>
+              <button class="btn-copy" onclick="copyText('infoJson', this)">
+                コピー
+              </button>
             </div>
-            <div class="output-path" id="infoPath">data/tournaments/information/{tournamentId}.json</div>
+            <div class="output-path" id="infoPath">
+              data/tournaments/information/{tournamentId}.json
+            </div>
             <textarea class="json-output" id="infoJson" readonly></textarea>
           </div>
         </div>
-        <div style="margin-top:16px;" class="alert" id="outputAlert"></div>
+        <div style="margin-top: 16px" class="alert" id="outputAlert"></div>
       </div>
     </div>
 
     <script>
       // ---- マスタデータ ----
       const FEDERATIONS = [
-        {federationId:"hokkaido",region:"北海道",label:"北海道ソフトテニス連盟"},
-        {federationId:"aomori",region:"東北",label:"青森県ソフトテニス連盟"},
-        {federationId:"iwate",region:"東北",label:"岩手県ソフトテニス連盟"},
-        {federationId:"miyagi",region:"東北",label:"宮城県ソフトテニス連盟"},
-        {federationId:"akita",region:"東北",label:"秋田県ソフトテニス連盟"},
-        {federationId:"yamagata",region:"東北",label:"山形県ソフトテニス連盟"},
-        {federationId:"fukushima",region:"東北",label:"福島県ソフトテニス連盟"},
-        {federationId:"ibaraki",region:"関東",label:"茨城県ソフトテニス連盟"},
-        {federationId:"tochigi",region:"関東",label:"栃木県ソフトテニス連盟"},
-        {federationId:"gunma",region:"関東",label:"群馬県ソフトテニス連盟"},
-        {federationId:"saitama",region:"関東",label:"埼玉県ソフトテニス連盟"},
-        {federationId:"chiba",region:"関東",label:"千葉県ソフトテニス連盟"},
-        {federationId:"tokyo",region:"関東",label:"東京都ソフトテニス連盟"},
-        {federationId:"kanagawa",region:"関東",label:"神奈川県ソフトテニス連盟"},
-        {federationId:"niigata",region:"中部",label:"新潟県ソフトテニス連盟"},
-        {federationId:"toyama",region:"中部",label:"富山県ソフトテニス連盟"},
-        {federationId:"ishikawa",region:"中部",label:"石川県ソフトテニス連盟"},
-        {federationId:"fukui",region:"中部",label:"福井県ソフトテニス連盟"},
-        {federationId:"yamanashi",region:"中部",label:"山梨県ソフトテニス連盟"},
-        {federationId:"nagano",region:"中部",label:"長野県ソフトテニス連盟"},
-        {federationId:"gifu",region:"中部",label:"岐阜県ソフトテニス連盟"},
-        {federationId:"shizuoka",region:"中部",label:"静岡県ソフトテニス連盟"},
-        {federationId:"aichi",region:"中部",label:"愛知県ソフトテニス連盟"},
-        {federationId:"mie",region:"近畿",label:"三重県ソフトテニス連盟"},
-        {federationId:"shiga",region:"近畿",label:"滋賀県ソフトテニス連盟"},
-        {federationId:"kyoto",region:"近畿",label:"京都府ソフトテニス連盟"},
-        {federationId:"osaka",region:"近畿",label:"大阪府ソフトテニス連盟"},
-        {federationId:"hyogo",region:"近畿",label:"兵庫県ソフトテニス連盟"},
-        {federationId:"nara",region:"近畿",label:"奈良県ソフトテニス連盟"},
-        {federationId:"wakayama",region:"近畿",label:"和歌山県ソフトテニス連盟"},
-        {federationId:"tottori",region:"中国",label:"鳥取県ソフトテニス連盟"},
-        {federationId:"shimane",region:"中国",label:"島根県ソフトテニス連盟"},
-        {federationId:"okayama",region:"中国",label:"岡山県ソフトテニス連盟"},
-        {federationId:"hiroshima",region:"中国",label:"広島県ソフトテニス連盟"},
-        {federationId:"yamaguchi",region:"中国",label:"山口県ソフトテニス連盟"},
-        {federationId:"tokushima",region:"四国",label:"徳島県ソフトテニス連盟"},
-        {federationId:"kagawa",region:"四国",label:"香川県ソフトテニス連盟"},
-        {federationId:"ehime",region:"四国",label:"愛媛県ソフトテニス連盟"},
-        {federationId:"kochi",region:"四国",label:"高知県ソフトテニス連盟"},
-        {federationId:"fukuoka",region:"九州・沖縄",label:"福岡県ソフトテニス連盟"},
-        {federationId:"saga",region:"九州・沖縄",label:"佐賀県ソフトテニス連盟"},
-        {federationId:"nagasaki",region:"九州・沖縄",label:"長崎県ソフトテニス連盟"},
-        {federationId:"kumamoto",region:"九州・沖縄",label:"熊本県ソフトテニス連盟"},
-        {federationId:"oita",region:"九州・沖縄",label:"大分県ソフトテニス連盟"},
-        {federationId:"miyazaki",region:"九州・沖縄",label:"宮崎県ソフトテニス連盟"},
-        {federationId:"kagoshima",region:"九州・沖縄",label:"鹿児島県ソフトテニス連盟"},
-        {federationId:"okinawa",region:"九州・沖縄",label:"沖縄県ソフトテニス連盟"},
+        {
+          federationId: 'hokkaido',
+          region: '北海道',
+          label: '北海道ソフトテニス連盟',
+        },
+        {
+          federationId: 'aomori',
+          region: '東北',
+          label: '青森県ソフトテニス連盟',
+        },
+        {
+          federationId: 'iwate',
+          region: '東北',
+          label: '岩手県ソフトテニス連盟',
+        },
+        {
+          federationId: 'miyagi',
+          region: '東北',
+          label: '宮城県ソフトテニス連盟',
+        },
+        {
+          federationId: 'akita',
+          region: '東北',
+          label: '秋田県ソフトテニス連盟',
+        },
+        {
+          federationId: 'yamagata',
+          region: '東北',
+          label: '山形県ソフトテニス連盟',
+        },
+        {
+          federationId: 'fukushima',
+          region: '東北',
+          label: '福島県ソフトテニス連盟',
+        },
+        {
+          federationId: 'ibaraki',
+          region: '関東',
+          label: '茨城県ソフトテニス連盟',
+        },
+        {
+          federationId: 'tochigi',
+          region: '関東',
+          label: '栃木県ソフトテニス連盟',
+        },
+        {
+          federationId: 'gunma',
+          region: '関東',
+          label: '群馬県ソフトテニス連盟',
+        },
+        {
+          federationId: 'saitama',
+          region: '関東',
+          label: '埼玉県ソフトテニス連盟',
+        },
+        {
+          federationId: 'chiba',
+          region: '関東',
+          label: '千葉県ソフトテニス連盟',
+        },
+        {
+          federationId: 'tokyo',
+          region: '関東',
+          label: '東京都ソフトテニス連盟',
+        },
+        {
+          federationId: 'kanagawa',
+          region: '関東',
+          label: '神奈川県ソフトテニス連盟',
+        },
+        {
+          federationId: 'niigata',
+          region: '中部',
+          label: '新潟県ソフトテニス連盟',
+        },
+        {
+          federationId: 'toyama',
+          region: '中部',
+          label: '富山県ソフトテニス連盟',
+        },
+        {
+          federationId: 'ishikawa',
+          region: '中部',
+          label: '石川県ソフトテニス連盟',
+        },
+        {
+          federationId: 'fukui',
+          region: '中部',
+          label: '福井県ソフトテニス連盟',
+        },
+        {
+          federationId: 'yamanashi',
+          region: '中部',
+          label: '山梨県ソフトテニス連盟',
+        },
+        {
+          federationId: 'nagano',
+          region: '中部',
+          label: '長野県ソフトテニス連盟',
+        },
+        {
+          federationId: 'gifu',
+          region: '中部',
+          label: '岐阜県ソフトテニス連盟',
+        },
+        {
+          federationId: 'shizuoka',
+          region: '中部',
+          label: '静岡県ソフトテニス連盟',
+        },
+        {
+          federationId: 'aichi',
+          region: '中部',
+          label: '愛知県ソフトテニス連盟',
+        },
+        {
+          federationId: 'mie',
+          region: '近畿',
+          label: '三重県ソフトテニス連盟',
+        },
+        {
+          federationId: 'shiga',
+          region: '近畿',
+          label: '滋賀県ソフトテニス連盟',
+        },
+        {
+          federationId: 'kyoto',
+          region: '近畿',
+          label: '京都府ソフトテニス連盟',
+        },
+        {
+          federationId: 'osaka',
+          region: '近畿',
+          label: '大阪府ソフトテニス連盟',
+        },
+        {
+          federationId: 'hyogo',
+          region: '近畿',
+          label: '兵庫県ソフトテニス連盟',
+        },
+        {
+          federationId: 'nara',
+          region: '近畿',
+          label: '奈良県ソフトテニス連盟',
+        },
+        {
+          federationId: 'wakayama',
+          region: '近畿',
+          label: '和歌山県ソフトテニス連盟',
+        },
+        {
+          federationId: 'tottori',
+          region: '中国',
+          label: '鳥取県ソフトテニス連盟',
+        },
+        {
+          federationId: 'shimane',
+          region: '中国',
+          label: '島根県ソフトテニス連盟',
+        },
+        {
+          federationId: 'okayama',
+          region: '中国',
+          label: '岡山県ソフトテニス連盟',
+        },
+        {
+          federationId: 'hiroshima',
+          region: '中国',
+          label: '広島県ソフトテニス連盟',
+        },
+        {
+          federationId: 'yamaguchi',
+          region: '中国',
+          label: '山口県ソフトテニス連盟',
+        },
+        {
+          federationId: 'tokushima',
+          region: '四国',
+          label: '徳島県ソフトテニス連盟',
+        },
+        {
+          federationId: 'kagawa',
+          region: '四国',
+          label: '香川県ソフトテニス連盟',
+        },
+        {
+          federationId: 'ehime',
+          region: '四国',
+          label: '愛媛県ソフトテニス連盟',
+        },
+        {
+          federationId: 'kochi',
+          region: '四国',
+          label: '高知県ソフトテニス連盟',
+        },
+        {
+          federationId: 'fukuoka',
+          region: '九州・沖縄',
+          label: '福岡県ソフトテニス連盟',
+        },
+        {
+          federationId: 'saga',
+          region: '九州・沖縄',
+          label: '佐賀県ソフトテニス連盟',
+        },
+        {
+          federationId: 'nagasaki',
+          region: '九州・沖縄',
+          label: '長崎県ソフトテニス連盟',
+        },
+        {
+          federationId: 'kumamoto',
+          region: '九州・沖縄',
+          label: '熊本県ソフトテニス連盟',
+        },
+        {
+          federationId: 'oita',
+          region: '九州・沖縄',
+          label: '大分県ソフトテニス連盟',
+        },
+        {
+          federationId: 'miyazaki',
+          region: '九州・沖縄',
+          label: '宮崎県ソフトテニス連盟',
+        },
+        {
+          federationId: 'kagoshima',
+          region: '九州・沖縄',
+          label: '鹿児島県ソフトテニス連盟',
+        },
+        {
+          federationId: 'okinawa',
+          region: '九州・沖縄',
+          label: '沖縄県ソフトテニス連盟',
+        },
       ];
 
       const PREFECTURES = [
-        "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
-        "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
-        "新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県",
-        "三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県",
-        "鳥取県","島根県","岡山県","広島県","山口県",
-        "徳島県","香川県","愛媛県","高知県",
-        "福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"
+        '北海道',
+        '青森県',
+        '岩手県',
+        '宮城県',
+        '秋田県',
+        '山形県',
+        '福島県',
+        '茨城県',
+        '栃木県',
+        '群馬県',
+        '埼玉県',
+        '千葉県',
+        '東京都',
+        '神奈川県',
+        '新潟県',
+        '富山県',
+        '石川県',
+        '福井県',
+        '山梨県',
+        '長野県',
+        '岐阜県',
+        '静岡県',
+        '愛知県',
+        '三重県',
+        '滋賀県',
+        '京都府',
+        '大阪府',
+        '兵庫県',
+        '奈良県',
+        '和歌山県',
+        '鳥取県',
+        '島根県',
+        '岡山県',
+        '広島県',
+        '山口県',
+        '徳島県',
+        '香川県',
+        '愛媛県',
+        '高知県',
+        '福岡県',
+        '佐賀県',
+        '長崎県',
+        '熊本県',
+        '大分県',
+        '宮崎県',
+        '鹿児島県',
+        '沖縄県',
       ];
 
       const GAME_CATEGORIES = [
-        { value: "doubles", label: "ダブルス" },
-        { value: "singles", label: "シングルス" },
-        { value: "team", label: "団体" },
+        { value: 'doubles', label: 'ダブルス' },
+        { value: 'singles', label: 'シングルス' },
+        { value: 'team', label: '団体' },
       ];
       const AGE_CATEGORIES = [
-        { value: "none", label: "なし（none）" },
-        { value: "u14", label: "U14" },
-        { value: "u16", label: "U16" },
-        { value: "u18", label: "U18" },
+        { value: 'none', label: 'なし（none）' },
+        { value: 'u14', label: 'U14' },
+        { value: 'u16', label: 'U16' },
+        { value: 'u18', label: 'U18' },
       ];
       const GENDERS = [
-        { value: "boys", label: "男子" },
-        { value: "girls", label: "女子" },
-        { value: "mixed", label: "混合" },
+        { value: 'boys', label: '男子' },
+        { value: 'girls', label: '女子' },
+        { value: 'mixed', label: '混合' },
       ];
 
-      const GENDER_LABELS = { boys: "男子", girls: "女子", mixed: "混合" };
-      const GAME_LABELS = { doubles: "ダブルス", singles: "シングルス", team: "団体" };
+      const GENDER_LABELS = { boys: '男子', girls: '女子', mixed: '混合' };
+      const GAME_LABELS = {
+        doubles: 'ダブルス',
+        singles: 'シングルス',
+        team: '団体',
+      };
 
       let categoryCount = 0;
 
@@ -339,14 +888,21 @@
       }
 
       function onTypeChange() {
-        const isLocal = document.querySelector('input[name="tournamentType"]:checked').value === 'local';
-        document.getElementById('federationField').style.display = isLocal ? '' : 'none';
-        document.getElementById('areaField').style.display = isLocal ? '' : 'none';
+        const isLocal =
+          document.querySelector('input[name="tournamentType"]:checked')
+            .value === 'local';
+        document.getElementById('federationField').style.display = isLocal
+          ? ''
+          : 'none';
+        document.getElementById('areaField').style.display = isLocal
+          ? ''
+          : 'none';
       }
 
       function syncTournamentId() {
         const id = document.getElementById('tournamentId').value;
-        document.getElementById('infoPath').textContent = `data/tournaments/information/${id || '{tournamentId}'}.json`;
+        document.getElementById('infoPath').textContent =
+          `data/tournaments/information/${id || '{tournamentId}'}.json`;
       }
 
       function syncInfoLabel() {
@@ -359,14 +915,21 @@
 
       // 手動編集フラグ
       document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('infoLabel').addEventListener('input', function() {
-          this.dataset.edited = this.value ? '1' : '';
-        });
+        document
+          .getElementById('infoLabel')
+          .addEventListener('input', function () {
+            this.dataset.edited = this.value ? '1' : '';
+          });
       });
 
       // ---- カテゴリ行 ----
       function makeCategoryOptions(items, selectedValue) {
-        return items.map(i => `<option value="${i.value}"${i.value === selectedValue ? ' selected' : ''}>${i.label}</option>`).join('');
+        return items
+          .map(
+            (i) =>
+              `<option value="${i.value}"${i.value === selectedValue ? ' selected' : ''}>${i.label}</option>`,
+          )
+          .join('');
       }
 
       function updateCategoryId(row) {
@@ -375,7 +938,11 @@
         const gender = row.querySelector('.cat-gender').value;
         const id = `${game}-${age}-${gender}`;
         row.querySelector('.cat-id').value = id;
-        row.querySelector('.cat-label-hidden').value = buildCategoryLabel(game, age, gender);
+        row.querySelector('.cat-label-hidden').value = buildCategoryLabel(
+          game,
+          age,
+          gender,
+        );
       }
 
       function buildCategoryLabel(game, age, gender) {
@@ -402,7 +969,9 @@
         list.appendChild(div);
       }
 
-      function addCategory() { addCategoryRow(); }
+      function addCategory() {
+        addCategoryRow();
+      }
 
       function addPreset(type) {
         document.getElementById('categoryList').innerHTML = '';
@@ -427,21 +996,37 @@
         function check(id, cond) {
           const el = document.getElementById(id);
           if (!el) return;
-          if (cond) { el.classList.remove('error'); } else { el.classList.add('error'); ok = false; }
+          if (cond) {
+            el.classList.remove('error');
+          } else {
+            el.classList.add('error');
+            ok = false;
+          }
         }
 
         const tid = document.getElementById('tournamentId').value.trim();
         check('tournamentId', tid && /^[a-z0-9-]+$/.test(tid));
         check('generationId', !!document.getElementById('generationId').value);
         check('label', !!document.getElementById('label').value.trim());
-        check('informationId', /^INF\d{5}$/.test(document.getElementById('informationId').value.trim()));
+        check(
+          'informationId',
+          /^INF\d{5}$/.test(
+            document.getElementById('informationId').value.trim(),
+          ),
+        );
         check('year', !!document.getElementById('year').value);
         check('location', !!document.getElementById('location').value.trim());
         check('startDate', !!document.getElementById('startDate').value);
         check('endDate', !!document.getElementById('endDate').value);
 
-        const isLocal = document.querySelector('input[name="tournamentType"]:checked').value === 'local';
-        if (isLocal) check('federationId', !!document.getElementById('federationId').value);
+        const isLocal =
+          document.querySelector('input[name="tournamentType"]:checked')
+            .value === 'local';
+        if (isLocal)
+          check(
+            'federationId',
+            !!document.getElementById('federationId').value,
+          );
 
         return ok;
       }
@@ -449,16 +1034,22 @@
       // ---- 生成 ----
       function generate() {
         if (!validate()) {
-          alert('入力内容を確認してください（赤枠の項目が未入力または形式が不正です）。');
+          alert(
+            '入力内容を確認してください（赤枠の項目が未入力または形式が不正です）。',
+          );
           return;
         }
 
         const tid = document.getElementById('tournamentId').value.trim();
         const genId = document.getElementById('generationId').value;
         const lbl = document.getElementById('label').value.trim();
-        const isMajor = document.querySelector('input[name="isMajorTitle"]:checked').value === 'true';
+        const isMajor =
+          document.querySelector('input[name="isMajorTitle"]:checked').value ===
+          'true';
         const officialUrl = document.getElementById('officialUrl').value.trim();
-        const isLocal = document.querySelector('input[name="tournamentType"]:checked').value === 'local';
+        const isLocal =
+          document.querySelector('input[name="tournamentType"]:checked')
+            .value === 'local';
         const fedId = document.getElementById('federationId').value;
         const areaId = document.getElementById('areaId').value;
 
@@ -474,7 +1065,7 @@
 
         // --- カテゴリ ---
         const rows = document.querySelectorAll('#categoryList .category-item');
-        const categories = Array.from(rows).map(row => {
+        const categories = Array.from(rows).map((row) => {
           const game = row.querySelector('.cat-game').value;
           const age = row.querySelector('.cat-age').value;
           const gender = row.querySelector('.cat-gender').value;
@@ -496,12 +1087,22 @@
           categories,
         };
 
-        document.getElementById('indexJson').value = JSON.stringify(indexEntry, null, 2);
-        document.getElementById('infoJson').value = JSON.stringify(infoEntry, null, 2);
+        document.getElementById('indexJson').value = JSON.stringify(
+          indexEntry,
+          null,
+          2,
+        );
+        document.getElementById('infoJson').value = JSON.stringify(
+          infoEntry,
+          null,
+          2,
+        );
 
         const targetFile = isLocal ? 'local_index.json' : 'index.json';
-        document.getElementById('indexPath').textContent = `data/tournaments/${targetFile} に追加`;
-        document.getElementById('infoPath').textContent = `data/tournaments/information/${tid}.json に追加（ファイル未作成の場合は新規作成）`;
+        document.getElementById('indexPath').textContent =
+          `data/tournaments/${targetFile} に追加`;
+        document.getElementById('infoPath').textContent =
+          `data/tournaments/information/${tid}.json に追加（ファイル未作成の場合は新規作成）`;
 
         document.getElementById('outputAlert').innerHTML =
           `<strong>追加手順：</strong><br>
@@ -510,7 +1111,9 @@
           3. 試合データは <code>data/tournaments/details/${tid}/${infoEntry.year}/</code> フォルダに種目ごとのJSONを配置してください。`;
 
         document.getElementById('outputCard').style.display = '';
-        document.getElementById('outputCard').scrollIntoView({ behavior: 'smooth' });
+        document
+          .getElementById('outputCard')
+          .scrollIntoView({ behavior: 'smooth' });
       }
 
       function copyText(id, btn) {
@@ -518,7 +1121,10 @@
         navigator.clipboard.writeText(text).then(() => {
           btn.textContent = 'コピー済み！';
           btn.classList.add('copied');
-          setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+          setTimeout(() => {
+            btn.textContent = 'コピー';
+            btn.classList.remove('copied');
+          }, 2000);
         });
       }
 

@@ -73,9 +73,9 @@ Cloudflare Pagesの無料プランは以下を許可しています:
 
 ```typescript
 const nextConfig = {
-  output: 'export',  // 静的エクスポートを有効化
+  output: 'export', // 静的エクスポートを有効化
   images: {
-    unoptimized: true  // Cloudflare Pagesでは画像最適化を無効化
+    unoptimized: true, // Cloudflare Pagesでは画像最適化を無効化
   },
   // 既存の設定...
 };
@@ -85,11 +85,11 @@ const nextConfig = {
 
 以下のパッケージはVercel固有のため、代替が必要です:
 
-| Vercelパッケージ | Cloudflare代替 | 備考 |
-|---|---|---|
-| `@vercel/analytics` | Cloudflare Web Analytics | 無料で利用可能 |
-| `@vercel/speed-insights` | Cloudflare Web Analytics | 同上 |
-| `@vercel/og` | Cloudflare Workers | OG画像生成はWorkers APIで実装 |
+| Vercelパッケージ         | Cloudflare代替           | 備考                          |
+| ------------------------ | ------------------------ | ----------------------------- |
+| `@vercel/analytics`      | Cloudflare Web Analytics | 無料で利用可能                |
+| `@vercel/speed-insights` | Cloudflare Web Analytics | 同上                          |
+| `@vercel/og`             | Cloudflare Workers       | OG画像生成はWorkers APIで実装 |
 
 #### 3. ビルド設定
 
@@ -109,16 +109,16 @@ Cloudflare Pagesのビルド設定:
 
 ### 無料プランの制限
 
-| 項目 | Vercel (Hobby) | Cloudflare Pages (Free) |
-|---|---|---|
-| **商用利用** | ✗ 不可 | ✓ 可能 |
-| **広告掲載** | ✗ 不可 | ✓ 可能 |
-| **帯域幅** | 100GB/月 | 無制限 |
-| **ビルド時間** | 6,000分/月 | 500ビルド/月 |
-| **デプロイ数** | 無制限 | 無制限 |
-| **カスタムドメイン** | ✓ | ✓ |
-| **SSL証明書** | ✓ 自動 | ✓ 自動 |
-| **エッジネットワーク** | ~100拠点 | 300+拠点 |
+| 項目                   | Vercel (Hobby) | Cloudflare Pages (Free) |
+| ---------------------- | -------------- | ----------------------- |
+| **商用利用**           | ✗ 不可         | ✓ 可能                  |
+| **広告掲載**           | ✗ 不可         | ✓ 可能                  |
+| **帯域幅**             | 100GB/月       | 無制限                  |
+| **ビルド時間**         | 6,000分/月     | 500ビルド/月            |
+| **デプロイ数**         | 無制限         | 無制限                  |
+| **カスタムドメイン**   | ✓              | ✓                       |
+| **SSL証明書**          | ✓ 自動         | ✓ 自動                  |
+| **エッジネットワーク** | ~100拠点       | 300+拠点                |
 
 ### パフォーマンス
 
@@ -197,11 +197,13 @@ Cloudflare Pagesのビルド設定:
 プロジェクト内で以下のAPIルートが確認されました:
 
 **OG画像生成 (3ファイル)**
+
 - `/api/og/[tournamentId]/[year].tsx`
 - `/api/og/highschool/tournament/[tournamentId]/[year].tsx`
 - `/api/og/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`
 
 **試合データAPI (5ファイル)**
+
 - `/api/matches/index.ts`
 - `/api/matches/[matchId]/index.ts`
 - `/api/matches/[matchId]/games/index.ts`
@@ -209,18 +211,21 @@ Cloudflare Pagesのビルド設定:
 - `/api/matches/[matchId]/points/index.ts`
 
 **選手データAPI (1ファイル)**
+
 - `/api/players/index.ts`
 
 **大会データAPI (2ファイル)**
+
 - `/api/tournaments/index.ts`
 - `/api/tournaments/[tournamentId]/categories.ts`
 
 **その他 (3ファイル)**
+
 - `/api/hello.ts` (テスト用)
 - `/api/test-db.ts` (データベーステスト)
 - `/api/clear-data.ts` (データクリア)
 
-**対策**: 
+**対策**:
 
 1. **OG画像生成**: Cloudflare Workersで`@vercel/og`の代替実装が必要
 2. **データAPI**: 以下の選択肢があります:

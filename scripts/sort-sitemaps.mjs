@@ -38,7 +38,10 @@ function sortXmlEntries(xml, rootTag, entryTag) {
     return xml;
   }
 
-  const entryPattern = new RegExp(`<${entryTag}>[\\s\\S]*?<\\/${entryTag}>`, 'g');
+  const entryPattern = new RegExp(
+    `<${entryTag}>[\\s\\S]*?<\\/${entryTag}>`,
+    'g',
+  );
   const entries = match.groups.body.match(entryPattern);
 
   if (!entries) {

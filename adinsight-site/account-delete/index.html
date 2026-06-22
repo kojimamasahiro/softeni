@@ -2,15 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AdInsight Account Deletion</title>
-    <meta
-      name="description"
-      content="AdInsight account deletion page."
-    />
+    <meta name="description" content="AdInsight account deletion page." />
     <link rel="stylesheet" href="/styles.css" />
     <script src="/config.js"></script>
     <script type="module" src="/app.js"></script>
@@ -36,7 +30,11 @@
           を確認してください。
         </p>
 
-        <div id="config-error" class="notice notice-error hidden" role="alert"></div>
+        <div
+          id="config-error"
+          class="notice notice-error hidden"
+          role="alert"
+        ></div>
 
         <div id="auth-card" class="auth-card">
           <div id="logged-out-view" class="auth-state hidden">
@@ -67,15 +65,18 @@
           <ul class="list">
             <li><code>users</code> に保存されたプロフィール設定</li>
             <li><code>oauth_tokens</code> の連携トークン</li>
-            <li><code>earnings_daily</code> と <code>analytics_daily</code> の日次データ</li>
+            <li>
+              <code>earnings_daily</code> と
+              <code>analytics_daily</code> の日次データ
+            </li>
             <li><code>daily_summary</code> と異常検知ログ</li>
             <li><code>fcm_tokens</code> と監視対象 app / target データ</li>
           </ul>
 
           <h3>保持する可能性があるデータ</h3>
           <p class="body">
-            不正防止、課金照合、法令対応のため、subscription / entitlement / reward
-            関連の一部記録を必要な期間だけ保持する場合があります。
+            不正防止、課金照合、法令対応のため、subscription / entitlement /
+            reward 関連の一部記録を必要な期間だけ保持する場合があります。
           </p>
 
           <label class="confirm-row" for="confirm-delete">

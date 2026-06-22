@@ -169,7 +169,7 @@
 
 - 大会結果ページ（対戦詳細）のエントリー見出しで、選手ページを持つ選手（`count>=5`）の名前を `/players/{id}/results/` にリンクする（`MatchResults.tsx`）
 - トーナメント表（`TournamentBracket.tsx`）の選手名も同様にリンクする。`participant.playerId`（結果ページを持つ選手のみ数値が入る）かつ個人戦（`lastName` あり）の場合だけ `/players/{id}/results/` へリンクし、それ以外は文字のみ表示（2026-06 追加）
-- 高校の学校ページでも掲載選手名を同様にリンクする（pid「姓_名_チーム_県」を `data/players/index.json` と姓名一致で解決）
+- 高校の学校ページでも掲載選手名を同様にリンクする（pid「姓*名*チーム\_県」を `data/players/index.json` と姓名一致で解決）
 - チームの年度別ページ（`/teams/{teamId}/{year}/{gender}`）の「選手別成績」表でも選手名をリンクする。`getStaticProps` で `info.players` の姓名を `index.json`（`count>=5`）と一致させて pid→数値id の `playerLinks` を作り、`TeamsRanking` に渡す。同姓同名は最初のIDを使う既存規約に準拠（`src/components/TeamsRanking.tsx`、2026-06 追加）
 - 選手結果ページに「関連選手（主なペア）」セクションを表示する。`playerStats.byPartner` をペア試合数の降順で上位 8 名まで掲載し、結果ページを持つ選手（`index.json` の `count>=5`）のみ `/players/{id}/results/` へリンクする。選手ページ同士の双方向内部リンクを増やす目的（`src/pages/players/[id]/results.tsx`、2026-06 追加）
 - 同姓同名は「最初の ID を使う」既存規約に従う

@@ -1,182 +1,4142 @@
 [
-{"id":401,"name":"濱田・上野（ＫＳＴＣ）","information":[{"lastName":"濱田","firstName":"蓮","team":"ＫＳＴＣ","prefecture":"三重","playerId":null,"tempId":"濱田_蓮_ＫＳＴＣ"},{"lastName":"上野","firstName":"昊","team":"成川スポ少","prefecture":"三重","playerId":null,"tempId":"上野_昊_成川スポ少"}],"category":"doubles"},
-{"id":402,"name":"阿部・大森（ＢＣファイターズ）","information":[{"lastName":"阿部","firstName":"弘黄","team":"ＢＣファイターズ","prefecture":"栃木","playerId":null,"tempId":"阿部_弘黄_ＢＣファイターズ"},{"lastName":"大森","firstName":"慧人","team":"ＢＣファイターズ","prefecture":"栃木","playerId":null,"tempId":"大森_慧人_ＢＣファイターズ"}],"category":"doubles"},
-{"id":403,"name":"三神・籔内（福知山ジュニア）","information":[{"lastName":"三神","firstName":"良太","team":"福知山ジュニア","prefecture":"京都","playerId":null,"tempId":"三神_良太_福知山ジュニア"},{"lastName":"籔内","firstName":"湊二郎","team":"福知山ジュニア","prefecture":"京都","playerId":null,"tempId":"籔内_湊二郎_福知山ジュニア"}],"category":"doubles"},
-{"id":404,"name":"田中・岡崎（丸岡町スポ少）","information":[{"lastName":"田中","firstName":"希歩","team":"丸岡町スポ少","prefecture":"福井","playerId":null,"tempId":"田中_希歩_丸岡町スポ少"},{"lastName":"岡崎","firstName":"一生","team":"丸岡町スポ少","prefecture":"福井","playerId":null,"tempId":"岡崎_一生_丸岡町スポ少"}],"category":"doubles"},
-{"id":405,"name":"秋吉・下馬（日田ＳＴＡジュニア）","information":[{"lastName":"秋吉","firstName":"桔平","team":"日田ＳＴＡジュニア","prefecture":"大分","playerId":null,"tempId":"秋吉_桔平_日田ＳＴＡジュニア"},{"lastName":"下馬","firstName":"場誉","team":"日田ＳＴＡジュニア","prefecture":"大分","playerId":null,"tempId":"下馬_場誉_日田ＳＴＡジュニア"}],"category":"doubles"},
-{"id":406,"name":"藤島・松尾（上天草ジュニア）","information":[{"lastName":"藤島","firstName":"悠太","team":"上天草ジュニア","prefecture":"熊本","playerId":null,"tempId":"藤島_悠太_上天草ジュニア"},{"lastName":"松尾","firstName":"莉玖","team":"上天草ジュニア","prefecture":"熊本","playerId":null,"tempId":"松尾_莉玖_上天草ジュニア"}],"category":"doubles"},
-{"id":407,"name":"惣上分・橘髙（焼山ジュニア）","information":[{"lastName":"惣上分","firstName":"恒希","team":"焼山ジュニア","prefecture":"広島","playerId":null,"tempId":"惣上分_恒希_焼山ジュニア"},{"lastName":"橘髙","firstName":"匠","team":"府中市ジュニア","prefecture":"広島","playerId":null,"tempId":"橘髙_匠_府中市ジュニア"}],"category":"doubles"},
-{"id":408,"name":"藤原・平岡（江陽ジュニア）","information":[{"lastName":"藤原","firstName":"康起","team":"江陽ジュニア","prefecture":"高知","playerId":null,"tempId":"藤原_康起_江陽ジュニア"},{"lastName":"平岡","firstName":"蓮大","team":"大用ジュニア","prefecture":"高知","playerId":null,"tempId":"平岡_蓮大_大用ジュニア"}],"category":"doubles"},
-{"id":409,"name":"石井・清水（市原ジュニア）","information":[{"lastName":"石井","firstName":"蒼侑","team":"市原ジュニア","prefecture":"千葉","playerId":null,"tempId":"石井_蒼侑_市原ジュニア"},{"lastName":"清水","firstName":"颯人","team":"市原ジュニア","prefecture":"千葉","playerId":null,"tempId":"清水_颯人_市原ジュニア"}],"category":"doubles"},
-{"id":410,"name":"富樫・加藤（大館市協会）","information":[{"lastName":"富樫","firstName":"快吏","team":"大館市協会","prefecture":"秋田","playerId":null,"tempId":"富樫_快吏_大館市協会"},{"lastName":"加藤","firstName":"大和","team":"横手スポ少","prefecture":"秋田","playerId":null,"tempId":"加藤_大和_横手スポ少"}],"category":"doubles"},
-{"id":411,"name":"石川・本間（巻ジュニア）","information":[{"lastName":"石川","firstName":"葵翔","team":"巻ジュニア","prefecture":"新潟","playerId":null,"tempId":"石川_葵翔_巻ジュニア"},{"lastName":"本間","firstName":"翔李","team":"巻ジュニア","prefecture":"新潟","playerId":null,"tempId":"本間_翔李_巻ジュニア"}],"category":"doubles"},
-{"id":412,"name":"片野・加瀬（藤沢ジュニア）","information":[{"lastName":"片野","firstName":"凌成","team":"藤沢ジュニア","prefecture":"奈川","playerId":null,"tempId":"片野_凌成_藤沢ジュニア"},{"lastName":"加瀬","firstName":"悠翔","team":"藤沢ジュニア","prefecture":"奈川","playerId":null,"tempId":"加瀬_悠翔_藤沢ジュニア"}],"category":"doubles"},
-{"id":413,"name":"石原・尾池（ＷａｓｈｕＫｉｄｓ）","information":[{"lastName":"石原","firstName":"稜真","team":"ＷａｓｈｕＫｉｄｓ","prefecture":"岡山","playerId":null,"tempId":"石原_稜真_ＷａｓｈｕＫｉｄｓ"},{"lastName":"尾池","firstName":"亜佐陽","team":"総社ジュニア","prefecture":"岡山","playerId":null,"tempId":"尾池_亜佐陽_総社ジュニア"}],"category":"doubles"},
-{"id":414,"name":"山本・岩井（堺市スポ少）","information":[{"lastName":"山本","firstName":"蓮","team":"堺市スポ少","prefecture":"大阪","playerId":null,"tempId":"山本_蓮_堺市スポ少"},{"lastName":"岩井","firstName":"碧翔","team":"堺市スポ少","prefecture":"大阪","playerId":null,"tempId":"岩井_碧翔_堺市スポ少"}],"category":"doubles"},
-{"id":415,"name":"薄・四家（二本松ジュニア）","information":[{"lastName":"薄","firstName":"颯久","team":"二本松ジュニア","prefecture":"福島","playerId":null,"tempId":"薄_颯久_二本松ジュニア"},{"lastName":"四家","firstName":"侑芽","team":"二本松ジュニア","prefecture":"福島","playerId":null,"tempId":"四家_侑芽_二本松ジュニア"}],"category":"doubles"},
-{"id":416,"name":"清水・杉本（一宮町スポ少）","information":[{"lastName":"清水","firstName":"葵斗","team":"一宮町スポ少","prefecture":"山梨","playerId":null,"tempId":"清水_葵斗_一宮町スポ少"},{"lastName":"杉本","firstName":"琉心","team":"甲府ストロング","prefecture":"山梨","playerId":null,"tempId":"杉本_琉心_甲府ストロング"}],"category":"doubles"},
-{"id":417,"name":"宮﨑・坂口（嬉野塩田ジュニア）","information":[{"lastName":"宮﨑","firstName":"知輝","team":"嬉野塩田ジュニア","prefecture":"佐賀","playerId":null,"tempId":"宮﨑_知輝_嬉野塩田ジュニア"},{"lastName":"坂口","firstName":"煌易","team":"嬉野塩田ジュニア","prefecture":"佐賀","playerId":null,"tempId":"坂口_煌易_嬉野塩田ジュニア"}],"category":"doubles"},
-{"id":418,"name":"岩﨑・山本（光ジュニア）","information":[{"lastName":"岩﨑","firstName":"煌","team":"光ジュニア","prefecture":"山口","playerId":null,"tempId":"岩﨑_煌_光ジュニア"},{"lastName":"山本","firstName":"諒太郎","team":"光ジュニア","prefecture":"山口","playerId":null,"tempId":"山本_諒太郎_光ジュニア"}],"category":"doubles"},
-{"id":419,"name":"藤田・松井（龍野ジュニア）","information":[{"lastName":"藤田","firstName":"悠真","team":"龍野ジュニア","prefecture":"兵庫","playerId":null,"tempId":"藤田_悠真_龍野ジュニア"},{"lastName":"松井","firstName":"知哉","team":"龍野ジュニア","prefecture":"兵庫","playerId":null,"tempId":"松井_知哉_龍野ジュニア"}],"category":"doubles"},
-{"id":420,"name":"上坂・山本（氷見ジュニア）","information":[{"lastName":"上坂","firstName":"虎太郎","team":"氷見ジュニア","prefecture":"富山","playerId":null,"tempId":"上坂_虎太郎_氷見ジュニア"},{"lastName":"山本","firstName":"瑛仁","team":"滑川ジュニア","prefecture":"富山","playerId":null,"tempId":"山本_瑛仁_滑川ジュニア"}],"category":"doubles"},
-{"id":421,"name":"山本・野間（今治S.O.Cジュニア）","information":[{"lastName":"山本","firstName":"生流","team":"今治S.O.Cジュニア","prefecture":"愛媛","playerId":null,"tempId":"山本_生流_今治S.O.Cジュニア"},{"lastName":"野間","firstName":"太陽","team":"今治S.O.Cジュニア","prefecture":"愛媛","playerId":null,"tempId":"野間_太陽_今治S.O.Cジュニア"}],"category":"doubles"},
-{"id":422,"name":"大德・野入（伊集院ジュニア）","information":[{"lastName":"大德","firstName":"朔也","team":"伊集院ジュニア","prefecture":"児島","playerId":null,"tempId":"大德_朔也_伊集院ジュニア"},{"lastName":"野入","firstName":"旬翔","team":"伊集院ジュニア","prefecture":"児島","playerId":null,"tempId":"野入_旬翔_伊集院ジュニア"}],"category":"doubles"},
-{"id":423,"name":"笠原・石井（潮来スポ少）","information":[{"lastName":"笠原","firstName":"大夢","team":"潮来スポ少","prefecture":"茨城","playerId":null,"tempId":"笠原_大夢_潮来スポ少"},{"lastName":"石井","firstName":"奏多","team":"水戸スポ少","prefecture":"茨城","playerId":null,"tempId":"石井_奏多_水戸スポ少"}],"category":"doubles"},
-{"id":424,"name":"大野・平野（白石協会）","information":[{"lastName":"大野","firstName":"蒼茉","team":"白石協会","prefecture":"宮城","playerId":null,"tempId":"大野_蒼茉_白石協会"},{"lastName":"平野","firstName":"瑛太郎","team":"向陽台ＪＳＴ","prefecture":"宮城","playerId":null,"tempId":"平野_瑛太郎_向陽台ＪＳＴ"}],"category":"doubles"},
-{"id":425,"name":"國枝・曽我（大翔会ジュニア）","information":[{"lastName":"國枝","firstName":"璃月","team":"大翔会ジュニア","prefecture":"岐阜","playerId":null,"tempId":"國枝_璃月_大翔会ジュニア"},{"lastName":"曽我","firstName":"奏飛","team":"大翔会ジュニア","prefecture":"岐阜","playerId":null,"tempId":"曽我_奏飛_大翔会ジュニア"}],"category":"doubles"},
-{"id":426,"name":"長畠・濵地（九度山ジュニア）","information":[{"lastName":"長畠","firstName":"健吾","team":"九度山ジュニア","prefecture":"歌山","playerId":null,"tempId":"長畠_健吾_九度山ジュニア"},{"lastName":"濵地","firstName":"海稀","team":"印南STC","prefecture":"歌山","playerId":null,"tempId":"濵地_海稀_印南STC"}],"category":"doubles"},
-{"id":427,"name":"渡邊・渡邉（浦安ジュニア）","information":[{"lastName":"渡邊","firstName":"惺太郎","team":"浦安ジュニア","prefecture":"千葉","playerId":null,"tempId":"渡邊_惺太郎_浦安ジュニア"},{"lastName":"渡邉","firstName":"陽斗","team":"浦安ジュニア","prefecture":"千葉","playerId":null,"tempId":"渡邉_陽斗_浦安ジュニア"}],"category":"doubles"},
-{"id":428,"name":"後藤・細野（北広島市スポ少）","information":[{"lastName":"後藤","firstName":"聖義","team":"北広島市スポ少","prefecture":"海道","playerId":null,"tempId":"後藤_聖義_北広島市スポ少"},{"lastName":"細野","firstName":"瑛斗","team":"北広島市スポ少","prefecture":"海道","playerId":null,"tempId":"細野_瑛斗_北広島市スポ少"}],"category":"doubles"},
-{"id":429,"name":"江上・安達（宝ジュニア）","information":[{"lastName":"江上","firstName":"櫂生","team":"宝ジュニア","prefecture":"石川","playerId":null,"tempId":"江上_櫂生_宝ジュニア"},{"lastName":"安達","firstName":"煌","team":"宝ジュニア","prefecture":"石川","playerId":null,"tempId":"安達_煌_宝ジュニア"}],"category":"doubles"},
-{"id":430,"name":"長友・佐藤（綾ジュニア）","information":[{"lastName":"長友","firstName":"優翔","team":"綾ジュニア","prefecture":"宮崎","playerId":null,"tempId":"長友_優翔_綾ジュニア"},{"lastName":"佐藤","firstName":"琉生","team":"綾ジュニア","prefecture":"宮崎","playerId":null,"tempId":"佐藤_琉生_綾ジュニア"}],"category":"doubles"},
-{"id":431,"name":"鈴木・齋藤（羽村USC）","information":[{"lastName":"鈴木","firstName":"蓮人","team":"羽村USC","prefecture":"東京","playerId":null,"tempId":"鈴木_蓮人_羽村USC"},{"lastName":"齋藤","firstName":"晃多","team":"砧南ジュニア","prefecture":"東京","playerId":null,"tempId":"齋藤_晃多_砧南ジュニア"}],"category":"doubles"},
-{"id":432,"name":"佐藤・戸田（長井スポ少）","information":[{"lastName":"佐藤","firstName":"優和","team":"長井スポ少","prefecture":"山形","playerId":null,"tempId":"佐藤_優和_長井スポ少"},{"lastName":"戸田","firstName":"祥太郎","team":"米沢ジュニア","prefecture":"山形","playerId":null,"tempId":"戸田_祥太郎_米沢ジュニア"}],"category":"doubles"},
-{"id":433,"name":"池ヶ谷・田口（阿多古）","information":[{"lastName":"池ヶ谷","firstName":"晴斗","team":"阿多古","prefecture":"静岡","playerId":null,"tempId":"池ヶ谷_晴斗_阿多古"},{"lastName":"田口","firstName":"穂咲輝","team":"阿多古","prefecture":"静岡","playerId":null,"tempId":"田口_穂咲輝_阿多古"}],"category":"doubles"},
-{"id":434,"name":"葉末・三浦（Ｓｔ．キッズ益田）","information":[{"lastName":"葉末","firstName":"拓磨","team":"Ｓｔ．キッズ益田","prefecture":"島根","playerId":null,"tempId":"葉末_拓磨_Ｓｔ．キッズ益田"},{"lastName":"三浦","firstName":"蓮治","team":"Ｓｔ．キッズ益田","prefecture":"島根","playerId":null,"tempId":"三浦_蓮治_Ｓｔ．キッズ益田"}],"category":"doubles"},
-{"id":435,"name":"小関・濱﨑（Ｓｈｉｎｇｕ-ＪＳＴ）","information":[{"lastName":"小関","firstName":"結斗","team":"Ｓｈｉｎｇｕ-ＪＳＴ","prefecture":"福岡","playerId":null,"tempId":"小関_結斗_Ｓｈｉｎｇｕ-ＪＳＴ"},{"lastName":"濱﨑","firstName":"健翔","team":"Ｓｈｉｎｇｕ-ＪＳＴ","prefecture":"福岡","playerId":null,"tempId":"濱﨑_健翔_Ｓｈｉｎｇｕ-ＪＳＴ"}],"category":"doubles"},
-{"id":436,"name":"細村・田野（川島STC）","information":[{"lastName":"細村","firstName":"一稀","team":"川島STC","prefecture":"埼玉","playerId":null,"tempId":"細村_一稀_川島STC"},{"lastName":"田野","firstName":"智樹","team":"皆野ジュニア","prefecture":"埼玉","playerId":null,"tempId":"田野_智樹_皆野ジュニア"}],"category":"doubles"},
-{"id":437,"name":"伴野・林（守山ジュニア）","information":[{"lastName":"伴野","firstName":"陽紀","team":"守山ジュニア","prefecture":"滋賀","playerId":null,"tempId":"伴野_陽紀_守山ジュニア"},{"lastName":"林","firstName":"羽玖","team":"長浜","prefecture":"滋賀","playerId":null,"tempId":"林_羽玖_長浜"}],"category":"doubles"},
-{"id":438,"name":"宮武・芳野（国分寺JSC）","information":[{"lastName":"宮武","firstName":"亮佑","team":"国分寺JSC","prefecture":"香川","playerId":null,"tempId":"宮武_亮佑_国分寺JSC"},{"lastName":"芳野","firstName":"泰知","team":"国分寺JSC","prefecture":"香川","playerId":null,"tempId":"芳野_泰知_国分寺JSC"}],"category":"doubles"},
-{"id":439,"name":"山本・須藤（青森市ジュニア）","information":[{"lastName":"山本","firstName":"永","team":"青森市ジュニア","prefecture":"青森","playerId":null,"tempId":"山本_永_青森市ジュニア"},{"lastName":"須藤","firstName":"蓮太","team":"弘前あすなろジュニア","prefecture":"青森","playerId":null,"tempId":"須藤_蓮太_弘前あすなろジュニア"}],"category":"doubles"},
-{"id":440,"name":"藤井・谷岡（琴浦スポ少）","information":[{"lastName":"藤井","firstName":"竜希","team":"琴浦スポ少","prefecture":"鳥取","playerId":null,"tempId":"藤井_竜希_琴浦スポ少"},{"lastName":"谷岡","firstName":"結弦","team":"羽合スポ少","prefecture":"鳥取","playerId":null,"tempId":"谷岡_結弦_羽合スポ少"}],"category":"doubles"},
-{"id":441,"name":"林・髙橋（サービスエース飯島）","information":[{"lastName":"林","firstName":"勇汰","team":"サービスエース飯島","prefecture":"長野","playerId":null,"tempId":"林_勇汰_サービスエース飯島"},{"lastName":"髙橋","firstName":"佳希","team":"松川少年少女","prefecture":"長野","playerId":null,"tempId":"髙橋_佳希_松川少年少女"}],"category":"doubles"},
-{"id":442,"name":"金原・荒木（長田ジュニア）","information":[{"lastName":"金原","firstName":"都輝","team":"長田ジュニア","prefecture":"長崎","playerId":null,"tempId":"金原_都輝_長田ジュニア"},{"lastName":"荒木","firstName":"陵","team":"諫早ジュニア","prefecture":"長崎","playerId":null,"tempId":"荒木_陵_諫早ジュニア"}],"category":"doubles"},
-{"id":443,"name":"齋藤・福田（Ｔ－フォースｊｒ．ラボ）","information":[{"lastName":"齋藤","firstName":"蓮","team":"Ｔ－フォースｊｒ．ラボ","prefecture":"群馬","playerId":null,"tempId":"齋藤_蓮_Ｔ－フォースｊｒ．ラボ"},{"lastName":"福田","firstName":"寛晶","team":"Ｔ－フォースｊｒ．ラボ","prefecture":"群馬","playerId":null,"tempId":"福田_寛晶_Ｔ－フォースｊｒ．ラボ"}],"category":"doubles"},
-{"id":444,"name":"八重樫・髙橋（北上ジュニアスポ少）","information":[{"lastName":"八重樫","firstName":"晴仁","team":"北上ジュニアスポ少","prefecture":"岩手","playerId":null,"tempId":"八重樫_晴仁_北上ジュニアスポ少"},{"lastName":"髙橋","firstName":"碧一","team":"北上ジュニアスポ少","prefecture":"岩手","playerId":null,"tempId":"髙橋_碧一_北上ジュニアスポ少"}],"category":"doubles"},
-{"id":445,"name":"吉福・前川（豊明市小学生）","information":[{"lastName":"吉福","firstName":"海知","team":"豊明市小学生","prefecture":"愛知","playerId":null,"tempId":"吉福_海知_豊明市小学生"},{"lastName":"前川","firstName":"圭吾","team":"豊明市小学生","prefecture":"愛知","playerId":null,"tempId":"前川_圭吾_豊明市小学生"}],"category":"doubles"},
-{"id":446,"name":"對馬・渋谷（鶴岡スポ少）","information":[{"lastName":"對馬","firstName":"倖","team":"鶴岡スポ少","prefecture":"山形","playerId":null,"tempId":"對馬_倖_鶴岡スポ少"},{"lastName":"渋谷","firstName":"俊太","team":"鶴岡スポ少","prefecture":"山形","playerId":null,"tempId":"渋谷_俊太_鶴岡スポ少"}],"category":"doubles"},
-{"id":447,"name":"木村・丸山（千歳）","information":[{"lastName":"木村","firstName":"風太","team":"千歳","prefecture":"東京","playerId":null,"tempId":"木村_風太_千歳"},{"lastName":"丸山","firstName":"櫻太","team":"千歳","prefecture":"東京","playerId":null,"tempId":"丸山_櫻太_千歳"}],"category":"doubles"},
-{"id":448,"name":"小谷・豆柄（東山ジュニア）","information":[{"lastName":"小谷","firstName":"奏介","team":"東山ジュニア","prefecture":"鳥取","playerId":null,"tempId":"小谷_奏介_東山ジュニア"},{"lastName":"豆柄","firstName":"拓実","team":"明道スポ少部","prefecture":"鳥取","playerId":null,"tempId":"豆柄_拓実_明道スポ少部"}],"category":"doubles"},
-{"id":449,"name":"安田・家里（大津ジュニア）","information":[{"lastName":"安田","firstName":"優聖","team":"大津ジュニア","prefecture":"滋賀","playerId":null,"tempId":"安田_優聖_大津ジュニア"},{"lastName":"家里","firstName":"海碧","team":"大津ジュニア","prefecture":"滋賀","playerId":null,"tempId":"家里_海碧_大津ジュニア"}],"category":"doubles"},
-{"id":450,"name":"帯刀・佐藤（別府市）","information":[{"lastName":"帯刀","firstName":"悠聖","team":"別府市","prefecture":"大分","playerId":null,"tempId":"帯刀_悠聖_別府市"},{"lastName":"佐藤","firstName":"語","team":"別府市","prefecture":"大分","playerId":null,"tempId":"佐藤_語_別府市"}],"category":"doubles"},
-{"id":451,"name":"奥野・東（武生スポ少）","information":[{"lastName":"奥野","firstName":"愁人","team":"武生スポ少","prefecture":"福井","playerId":null,"tempId":"奥野_愁人_武生スポ少"},{"lastName":"東","firstName":"航哉","team":"武生スポ少","prefecture":"福井","playerId":null,"tempId":"東_航哉_武生スポ少"}],"category":"doubles"},
-{"id":452,"name":"川村・岡（関スポ少）","information":[{"lastName":"川村","firstName":"弦土","team":"関スポ少","prefecture":"岐阜","playerId":null,"tempId":"川村_弦土_関スポ少"},{"lastName":"岡","firstName":"飛佐","team":"関スポ少","prefecture":"岐阜","playerId":null,"tempId":"岡_飛佐_関スポ少"}],"category":"doubles"},
-{"id":453,"name":"佐藤・渡邉（一関スポ少）","information":[{"lastName":"佐藤","firstName":"晴大","team":"一関スポ少","prefecture":"岩手","playerId":null,"tempId":"佐藤_晴大_一関スポ少"},{"lastName":"渡邉","firstName":"吾郎","team":"こずかた","prefecture":"岩手","playerId":null,"tempId":"渡邉_吾郎_こずかた"}],"category":"doubles"},
-{"id":454,"name":"橋本・新倫（大村なんてジュニア）","information":[{"lastName":"橋本","firstName":"湊心","team":"大村なんてジュニア","prefecture":"長崎","playerId":null,"tempId":"橋本_湊心_大村なんてジュニア"},{"lastName":"新倫","firstName":"太郎","team":"五島市協会","prefecture":"長崎","playerId":null,"tempId":"新倫_太郎_五島市協会"}],"category":"doubles"},
-{"id":455,"name":"福永・塚崎（手賀沼ジュニア）","information":[{"lastName":"福永","firstName":"丈陽","team":"手賀沼ジュニア","prefecture":"千葉","playerId":null,"tempId":"福永_丈陽_手賀沼ジュニア"},{"lastName":"塚崎","firstName":"悟志","team":"手賀沼ジュニア","prefecture":"千葉","playerId":null,"tempId":"塚崎_悟志_手賀沼ジュニア"}],"category":"doubles"},
-{"id":456,"name":"大杉・吉田（クレイスポ少）","information":[{"lastName":"大杉","firstName":"啓太","team":"クレイスポ少","prefecture":"京都","playerId":null,"tempId":"大杉_啓太_クレイスポ少"},{"lastName":"吉田","firstName":"友希人","team":"クレイスポ少","prefecture":"京都","playerId":null,"tempId":"吉田_友希人_クレイスポ少"}],"category":"doubles"},
-{"id":457,"name":"村田・菊地（佐久市スポ少）","information":[{"lastName":"村田","firstName":"侑真","team":"佐久市スポ少","prefecture":"長野","playerId":null,"tempId":"村田_侑真_佐久市スポ少"},{"lastName":"菊地","firstName":"亨","team":"佐久市スポ少","prefecture":"長野","playerId":null,"tempId":"菊地_亨_佐久市スポ少"}],"category":"doubles"},
-{"id":458,"name":"安藤・石川（青藍ジュニア）","information":[{"lastName":"安藤","firstName":"遙真","team":"青藍ジュニア","prefecture":"香川","playerId":null,"tempId":"安藤_遙真_青藍ジュニア"},{"lastName":"石川","firstName":"旬","team":"青藍ジュニア","prefecture":"香川","playerId":null,"tempId":"石川_旬_青藍ジュニア"}],"category":"doubles"},
-{"id":459,"name":"金森・鈴木（神栖スポ少）","information":[{"lastName":"金森","firstName":"葵","team":"神栖スポ少","prefecture":"茨城","playerId":null,"tempId":"金森_葵_神栖スポ少"},{"lastName":"鈴木","firstName":"羚文","team":"友部ジュニア","prefecture":"茨城","playerId":null,"tempId":"鈴木_羚文_友部ジュニア"}],"category":"doubles"},
-{"id":460,"name":"伊波・澤井（三原ジュニア）","information":[{"lastName":"伊波","firstName":"一歩希","team":"三原ジュニア","prefecture":"広島","playerId":null,"tempId":"伊波_一歩希_三原ジュニア"},{"lastName":"澤井","firstName":"駿","team":"原スポ少","prefecture":"広島","playerId":null,"tempId":"澤井_駿_原スポ少"}],"category":"doubles"},
-{"id":461,"name":"中野・山田（東海ジュニア）","information":[{"lastName":"中野","firstName":"誠泰","team":"東海ジュニア","prefecture":"愛知","playerId":null,"tempId":"中野_誠泰_東海ジュニア"},{"lastName":"山田","firstName":"大翔","team":"津島市ジュニア","prefecture":"愛知","playerId":null,"tempId":"山田_大翔_津島市ジュニア"}],"category":"doubles"},
-{"id":462,"name":"大嶋・根本（坂戸ジュニア）","information":[{"lastName":"大嶋","firstName":"拓心","team":"坂戸ジュニア","prefecture":"埼玉","playerId":null,"tempId":"大嶋_拓心_坂戸ジュニア"},{"lastName":"根本","firstName":"凰誠","team":"坂戸ジュニア","prefecture":"埼玉","playerId":null,"tempId":"根本_凰誠_坂戸ジュニア"}],"category":"doubles"},
-{"id":463,"name":"瀬戸・二反（みづまキッズ）","information":[{"lastName":"瀬戸","firstName":"巧","team":"みづまキッズ","prefecture":"福岡","playerId":null,"tempId":"瀬戸_巧_みづまキッズ"},{"lastName":"二反","firstName":"田陽","team":"北九州ジュニア","prefecture":"福岡","playerId":null,"tempId":"二反_田陽_北九州ジュニア"}],"category":"doubles"},
-{"id":464,"name":"菅原・小山（長命ヶ丘ジュニア）","information":[{"lastName":"菅原","firstName":"志雄","team":"長命ヶ丘ジュニア","prefecture":"宮城","playerId":null,"tempId":"菅原_志雄_長命ヶ丘ジュニア"},{"lastName":"小山","firstName":"流生","team":"河北","prefecture":"宮城","playerId":null,"tempId":"小山_流生_河北"}],"category":"doubles"},
-{"id":465,"name":"杉山・田中（ニューウィンズ）","information":[{"lastName":"杉山","firstName":"巧","team":"ニューウィンズ","prefecture":"奈良","playerId":null,"tempId":"杉山_巧_ニューウィンズ"},{"lastName":"田中","firstName":"碧蓮","team":"ニューウィンズ","prefecture":"奈良","playerId":null,"tempId":"田中_碧蓮_ニューウィンズ"}],"category":"doubles"},
-{"id":466,"name":"野間口・伊東（川内スポーツ01）","information":[{"lastName":"野間口","firstName":"雄飛","team":"川内スポーツ01","prefecture":"児島","playerId":null,"tempId":"野間口_雄飛_川内スポーツ01"},{"lastName":"伊東","firstName":"宗志","team":"蔵王ジュニア","prefecture":"児島","playerId":null,"tempId":"伊東_宗志_蔵王ジュニア"}],"category":"doubles"},
-{"id":467,"name":"佐藤・福田（新潟内野STCスポ少）","information":[{"lastName":"佐藤","firstName":"快斗","team":"新潟内野STCスポ少","prefecture":"新潟","playerId":null,"tempId":"佐藤_快斗_新潟内野STCスポ少"},{"lastName":"福田","firstName":"椿","team":"新潟内野STCスポ少","prefecture":"新潟","playerId":null,"tempId":"福田_椿_新潟内野STCスポ少"}],"category":"doubles"},
-{"id":468,"name":"井出・吉田（吹揚スポ少）","information":[{"lastName":"井出","firstName":"陽仁","team":"吹揚スポ少","prefecture":"愛媛","playerId":null,"tempId":"井出_陽仁_吹揚スポ少"},{"lastName":"吉田","firstName":"瑠生","team":"BEING","prefecture":"愛媛","playerId":null,"tempId":"吉田_瑠生_BEING"}],"category":"doubles"},
-{"id":469,"name":"工藤・新田（五所川原市ジュニア）","information":[{"lastName":"工藤","firstName":"加惟","team":"五所川原市ジュニア","prefecture":"青森","playerId":null,"tempId":"工藤_加惟_五所川原市ジュニア"},{"lastName":"新田","firstName":"莉久","team":"Ｗｉｌｌスポーツ","prefecture":"青森","playerId":null,"tempId":"新田_莉久_Ｗｉｌｌスポーツ"}],"category":"doubles"},
-{"id":470,"name":"齋藤・阿久津（芳賀ジュニア）","information":[{"lastName":"齋藤","firstName":"春輝","team":"芳賀ジュニア","prefecture":"栃木","playerId":null,"tempId":"齋藤_春輝_芳賀ジュニア"},{"lastName":"阿久津","firstName":"祐晴","team":"芳賀ジュニア","prefecture":"栃木","playerId":null,"tempId":"阿久津_祐晴_芳賀ジュニア"}],"category":"doubles"},
-{"id":471,"name":"木村・杉山（楠ジュニア）","information":[{"lastName":"木村","firstName":"泰輔","team":"楠ジュニア","prefecture":"山口","playerId":null,"tempId":"木村_泰輔_楠ジュニア"},{"lastName":"杉山","firstName":"琥汰朗","team":"ＳＴＣキッズ","prefecture":"山口","playerId":null,"tempId":"杉山_琥汰朗_ＳＴＣキッズ"}],"category":"doubles"},
-{"id":472,"name":"式町・山﨑（熊本春竹ジュニア）","information":[{"lastName":"式町","firstName":"星馬","team":"熊本春竹ジュニア","prefecture":"熊本","playerId":null,"tempId":"式町_星馬_熊本春竹ジュニア"},{"lastName":"山﨑","firstName":"遥翔","team":"熊本春竹ジュニア","prefecture":"熊本","playerId":null,"tempId":"山﨑_遥翔_熊本春竹ジュニア"}],"category":"doubles"},
-{"id":473,"name":"野澤・関戸（一宮町スポ少）","information":[{"lastName":"野澤","firstName":"岳","team":"一宮町スポ少","prefecture":"山梨","playerId":null,"tempId":"野澤_岳_一宮町スポ少"},{"lastName":"関戸","firstName":"蒼詩","team":"都留ジュニア","prefecture":"山梨","playerId":null,"tempId":"関戸_蒼詩_都留ジュニア"}],"category":"doubles"},
-{"id":474,"name":"松居・中川（松阪ジュニア）","information":[{"lastName":"松居","firstName":"和奏","team":"松阪ジュニア","prefecture":"三重","playerId":null,"tempId":"松居_和奏_松阪ジュニア"},{"lastName":"中川","firstName":"楽唯","team":"松阪ジュニア","prefecture":"三重","playerId":null,"tempId":"中川_楽唯_松阪ジュニア"}],"category":"doubles"},
-{"id":475,"name":"森・中村（橋本ジュニア）","information":[{"lastName":"森","firstName":"蓮","team":"橋本ジュニア","prefecture":"歌山","playerId":null,"tempId":"森_蓮_橋本ジュニア"},{"lastName":"中村","firstName":"琥次郎","team":"貴志川ジュニア","prefecture":"歌山","playerId":null,"tempId":"中村_琥次郎_貴志川ジュニア"}],"category":"doubles"},
-{"id":476,"name":"嶋田・十枝内（北見少年団）","information":[{"lastName":"嶋田","firstName":"凰希","team":"北見少年団","prefecture":"海道","playerId":null,"tempId":"嶋田_凰希_北見少年団"},{"lastName":"十枝内","firstName":"大智","team":"釧路リバティー","prefecture":"海道","playerId":null,"tempId":"十枝内_大智_釧路リバティー"}],"category":"doubles"},
-{"id":477,"name":"白石・鈴木（富津ジュニア）","information":[{"lastName":"白石","firstName":"琉稀","team":"富津ジュニア","prefecture":"千葉","playerId":null,"tempId":"白石_琉稀_富津ジュニア"},{"lastName":"鈴木","firstName":"佑虎","team":"富津ジュニア","prefecture":"千葉","playerId":null,"tempId":"鈴木_佑虎_富津ジュニア"}],"category":"doubles"},
-{"id":478,"name":"原・勝部（出雲ＪＳＴ）","information":[{"lastName":"原","firstName":"晴悟","team":"出雲ＪＳＴ","prefecture":"島根","playerId":null,"tempId":"原_晴悟_出雲ＪＳＴ"},{"lastName":"勝部","firstName":"蒼大","team":"出雲ＪＳＴ","prefecture":"島根","playerId":null,"tempId":"勝部_蒼大_出雲ＪＳＴ"}],"category":"doubles"},
-{"id":479,"name":"師井・三木（明石ジュニア）","information":[{"lastName":"師井","firstName":"健多","team":"明石ジュニア","prefecture":"兵庫","playerId":null,"tempId":"師井_健多_明石ジュニア"},{"lastName":"三木","firstName":"彬史","team":"相生ジュニア","prefecture":"兵庫","playerId":null,"tempId":"三木_彬史_相生ジュニア"}],"category":"doubles"},
-{"id":480,"name":"𠮷野・能任（河北台キッズ）","information":[{"lastName":"𠮷野","firstName":"朝登","team":"河北台キッズ","prefecture":"石川","playerId":null,"tempId":"𠮷野_朝登_河北台キッズ"},{"lastName":"能任","firstName":"勇翔","team":"河北台キッズ","prefecture":"石川","playerId":null,"tempId":"能任_勇翔_河北台キッズ"}],"category":"doubles"},
-{"id":481,"name":"山﨑・平田（桜ジュニア）","information":[{"lastName":"山﨑","firstName":"湊太","team":"桜ジュニア","prefecture":"佐賀","playerId":null,"tempId":"山﨑_湊太_桜ジュニア"},{"lastName":"平田","firstName":"安慈","team":"桜ジュニア","prefecture":"佐賀","playerId":null,"tempId":"平田_安慈_桜ジュニア"}],"category":"doubles"},
-{"id":482,"name":"志賀・渡辺（はまともジュニア）","information":[{"lastName":"志賀","firstName":"蓮人","team":"はまともジュニア","prefecture":"福島","playerId":null,"tempId":"志賀_蓮人_はまともジュニア"},{"lastName":"渡辺","firstName":"瑛斗","team":"はまともジュニア","prefecture":"福島","playerId":null,"tempId":"渡辺_瑛斗_はまともジュニア"}],"category":"doubles"},
-{"id":483,"name":"熊澤・吉賀（エナジーＪＳＴＣ）","information":[{"lastName":"熊澤","firstName":"賢人","team":"エナジーＪＳＴＣ","prefecture":"岡山","playerId":null,"tempId":"熊澤_賢人_エナジーＪＳＴＣ"},{"lastName":"吉賀","firstName":"丈翔","team":"エナジーＪＳＴＣ","prefecture":"岡山","playerId":null,"tempId":"吉賀_丈翔_エナジーＪＳＴＣ"}],"category":"doubles"},
-{"id":484,"name":"下山・笠井（群馬町ジュニア倶楽部）","information":[{"lastName":"下山","firstName":"紘平","team":"群馬町ジュニア倶楽部","prefecture":"群馬","playerId":null,"tempId":"下山_紘平_群馬町ジュニア倶楽部"},{"lastName":"笠井","firstName":"蓮太","team":"群馬町ジュニア倶楽部","prefecture":"群馬","playerId":null,"tempId":"笠井_蓮太_群馬町ジュニア倶楽部"}],"category":"doubles"},
-{"id":485,"name":"伏見・磯部（有度山ジュニア）","information":[{"lastName":"伏見","firstName":"光喜","team":"有度山ジュニア","prefecture":"静岡","playerId":null,"tempId":"伏見_光喜_有度山ジュニア"},{"lastName":"磯部","firstName":"優来","team":"蒲原スポ少部門","prefecture":"静岡","playerId":null,"tempId":"磯部_優来_蒲原スポ少部門"}],"category":"doubles"},
-{"id":486,"name":"神蔵・上野（大磯ジュニア）","information":[{"lastName":"神蔵","firstName":"夏樹","team":"大磯ジュニア","prefecture":"奈川","playerId":null,"tempId":"神蔵_夏樹_大磯ジュニア"},{"lastName":"上野","firstName":"暉介","team":"横須賀Ｄｒｅａｍスポ少","prefecture":"奈川","playerId":null,"tempId":"上野_暉介_横須賀Ｄｒｅａｍスポ少"}],"category":"doubles"},
-{"id":487,"name":"中川・蔭山（堺市スポ少）","information":[{"lastName":"中川","firstName":"大聖","team":"堺市スポ少","prefecture":"大阪","playerId":null,"tempId":"中川_大聖_堺市スポ少"},{"lastName":"蔭山","firstName":"翼","team":"堺市スポ少","prefecture":"大阪","playerId":null,"tempId":"蔭山_翼_堺市スポ少"}],"category":"doubles"},
-{"id":488,"name":"新垣・松山（宮崎ジュニア）","information":[{"lastName":"新垣","firstName":"澄","team":"宮崎ジュニア","prefecture":"宮崎","playerId":null,"tempId":"新垣_澄_宮崎ジュニア"},{"lastName":"松山","firstName":"歩弘","team":"宮崎ジュニア","prefecture":"宮崎","playerId":null,"tempId":"松山_歩弘_宮崎ジュニア"}],"category":"doubles"},
-{"id":489,"name":"村上・小澤（秋田市ジュニア）","information":[{"lastName":"村上","firstName":"結晴","team":"秋田市ジュニア","prefecture":"秋田","playerId":null,"tempId":"村上_結晴_秋田市ジュニア"},{"lastName":"小澤","firstName":"礼慈","team":"三種STC","prefecture":"秋田","playerId":null,"tempId":"小澤_礼慈_三種STC"}],"category":"doubles"},
-{"id":490,"name":"九澤・桑江（砺波）","information":[{"lastName":"九澤","firstName":"佳叶","team":"砺波","prefecture":"富山","playerId":null,"tempId":"九澤_佳叶_砺波"},{"lastName":"桑江","firstName":"湊大","team":"砺波","prefecture":"富山","playerId":null,"tempId":"桑江_湊大_砺波"}],"category":"doubles"},
-{"id":491,"name":"山田・中島（岡崎ジュニア）","information":[{"lastName":"山田","firstName":"佑人","team":"岡崎ジュニア","prefecture":"愛知","playerId":null,"tempId":"山田_佑人_岡崎ジュニア"},{"lastName":"中島","firstName":"悠翔","team":"ＴＥＡＭＮＥＸＵＳ","prefecture":"愛知","playerId":null,"tempId":"中島_悠翔_ＴＥＡＭＮＥＸＵＳ"}],"category":"doubles"},
-{"id":492,"name":"千葉・藤田（北上ジュニアスポ少）","information":[{"lastName":"千葉","firstName":"太陽","team":"北上ジュニアスポ少","prefecture":"岩手","playerId":null,"tempId":"千葉_太陽_北上ジュニアスポ少"},{"lastName":"藤田","firstName":"挙司郎","team":"北上ジュニアスポ少","prefecture":"岩手","playerId":null,"tempId":"藤田_挙司郎_北上ジュニアスポ少"}],"category":"doubles"},
-{"id":493,"name":"本田・德吉（川内スポーツ01）","information":[{"lastName":"本田","firstName":"悠人","team":"川内スポーツ01","prefecture":"児島","playerId":null,"tempId":"本田_悠人_川内スポーツ01"},{"lastName":"德吉","firstName":"輝大","team":"青葉ジュニア","prefecture":"児島","playerId":null,"tempId":"德吉_輝大_青葉ジュニア"}],"category":"doubles"},
-{"id":494,"name":"井出・酒井（伊勢原ジュニア）","information":[{"lastName":"井出","firstName":"悠大","team":"伊勢原ジュニア","prefecture":"奈川","playerId":null,"tempId":"井出_悠大_伊勢原ジュニア"},{"lastName":"酒井","firstName":"陽多","team":"茅ヶ崎","prefecture":"奈川","playerId":null,"tempId":"酒井_陽多_茅ヶ崎"}],"category":"doubles"},
-{"id":495,"name":"坂本・大蔵（砺波）","information":[{"lastName":"坂本","firstName":"航大","team":"砺波","prefecture":"富山","playerId":null,"tempId":"坂本_航大_砺波"},{"lastName":"大蔵","firstName":"悠聖","team":"砺波","prefecture":"富山","playerId":null,"tempId":"大蔵_悠聖_砺波"}],"category":"doubles"},
-{"id":496,"name":"押川・岩城（川南スポ少）","information":[{"lastName":"押川","firstName":"陽紀","team":"川南スポ少","prefecture":"宮崎","playerId":null,"tempId":"押川_陽紀_川南スポ少"},{"lastName":"岩城","firstName":"青波","team":"飫肥ジュニア","prefecture":"宮崎","playerId":null,"tempId":"岩城_青波_飫肥ジュニア"}],"category":"doubles"},
-{"id":497,"name":"佐藤・杉谷（船橋ジュニア）","information":[{"lastName":"佐藤","firstName":"央都","team":"船橋ジュニア","prefecture":"千葉","playerId":null,"tempId":"佐藤_央都_船橋ジュニア"},{"lastName":"杉谷","firstName":"勇征","team":"さんぶジュニア","prefecture":"千葉","playerId":null,"tempId":"杉谷_勇征_さんぶジュニア"}],"category":"doubles"},
-{"id":498,"name":"赤尾・長海（水口ジュニア）","information":[{"lastName":"赤尾","firstName":"恒政","team":"水口ジュニア","prefecture":"滋賀","playerId":null,"tempId":"赤尾_恒政_水口ジュニア"},{"lastName":"長海","firstName":"ケイト","team":"水口ジュニア","prefecture":"滋賀","playerId":null,"tempId":"長海_ケイト_水口ジュニア"}],"category":"doubles"},
-{"id":499,"name":"澤山・林（北広島市スポ少）","information":[{"lastName":"澤山","firstName":"寛二","team":"北広島市スポ少","prefecture":"海道","playerId":null,"tempId":"澤山_寛二_北広島市スポ少"},{"lastName":"林","firstName":"佳亮","team":"北広島市スポ少","prefecture":"海道","playerId":null,"tempId":"林_佳亮_北広島市スポ少"}],"category":"doubles"},
-{"id":500,"name":"串間・上山（永源）","information":[{"lastName":"串間","firstName":"洸那","team":"永源","prefecture":"山口","playerId":null,"tempId":"串間_洸那_永源"},{"lastName":"上山","firstName":"遥輝","team":"永源","prefecture":"山口","playerId":null,"tempId":"上山_遥輝_永源"}],"category":"doubles"},
-{"id":501,"name":"竹本・安波（堺市スポ少）","information":[{"lastName":"竹本","firstName":"亮祐","team":"堺市スポ少","prefecture":"大阪","playerId":null,"tempId":"竹本_亮祐_堺市スポ少"},{"lastName":"安波","firstName":"寿連","team":"堺市スポ少","prefecture":"大阪","playerId":null,"tempId":"安波_寿連_堺市スポ少"}],"category":"doubles"},
-{"id":502,"name":"梅林・下前（江府小）","information":[{"lastName":"梅林","firstName":"蓮","team":"江府小","prefecture":"鳥取","playerId":null,"tempId":"梅林_蓮_江府小"},{"lastName":"下前","firstName":"太登","team":"伯耆ＳＴＣ","prefecture":"鳥取","playerId":null,"tempId":"下前_太登_伯耆ＳＴＣ"}],"category":"doubles"},
-{"id":503,"name":"薄井・長嶋（テニ研ジュニア）","information":[{"lastName":"薄井","firstName":"悠陽","team":"テニ研ジュニア","prefecture":"福島","playerId":null,"tempId":"薄井_悠陽_テニ研ジュニア"},{"lastName":"長嶋","firstName":"隼輝","team":"喜多方少年団","prefecture":"福島","playerId":null,"tempId":"長嶋_隼輝_喜多方少年団"}],"category":"doubles"},
-{"id":504,"name":"山本・大澤（今治S.O.Cジュニア）","information":[{"lastName":"山本","firstName":"礼都","team":"今治S.O.Cジュニア","prefecture":"愛媛","playerId":null,"tempId":"山本_礼都_今治S.O.Cジュニア"},{"lastName":"大澤","firstName":"勢","team":"今治S.O.Cジュニア","prefecture":"愛媛","playerId":null,"tempId":"大澤_勢_今治S.O.Cジュニア"}],"category":"doubles"},
-{"id":505,"name":"山内・山中（あかぼりＪＳＴ）","information":[{"lastName":"山内","firstName":"達己","team":"あかぼりＪＳＴ","prefecture":"群馬","playerId":null,"tempId":"山内_達己_あかぼりＪＳＴ"},{"lastName":"山中","firstName":"俊太","team":"あかぼりＪＳＴ","prefecture":"群馬","playerId":null,"tempId":"山中_俊太_あかぼりＪＳＴ"}],"category":"doubles"},
-{"id":506,"name":"西村・山田（広島土曜ジュニア）","information":[{"lastName":"西村","firstName":"空","team":"広島土曜ジュニア","prefecture":"広島","playerId":null,"tempId":"西村_空_広島土曜ジュニア"},{"lastName":"山田","firstName":"晴翔","team":"広島土曜ジュニア","prefecture":"広島","playerId":null,"tempId":"山田_晴翔_広島土曜ジュニア"}],"category":"doubles"},
-{"id":507,"name":"髙吉・松尾（大村なんてジュニア）","information":[{"lastName":"髙吉","firstName":"慧斗","team":"大村なんてジュニア","prefecture":"長崎","playerId":null,"tempId":"髙吉_慧斗_大村なんてジュニア"},{"lastName":"松尾","firstName":"幸大","team":"大村なんてジュニア","prefecture":"長崎","playerId":null,"tempId":"松尾_幸大_大村なんてジュニア"}],"category":"doubles"},
-{"id":508,"name":"庄司・清水（都留ジュニア）","information":[{"lastName":"庄司","firstName":"登理","team":"都留ジュニア","prefecture":"山梨","playerId":null,"tempId":"庄司_登理_都留ジュニア"},{"lastName":"清水","firstName":"奏良","team":"一宮町スポ少","prefecture":"山梨","playerId":null,"tempId":"清水_奏良_一宮町スポ少"}],"category":"doubles"},
-{"id":509,"name":"小西・九鬼（貴志川ジュニア）","information":[{"lastName":"小西","firstName":"琥太","team":"貴志川ジュニア","prefecture":"歌山","playerId":null,"tempId":"小西_琥太_貴志川ジュニア"},{"lastName":"九鬼","firstName":"良太","team":"貴志川ジュニア","prefecture":"歌山","playerId":null,"tempId":"九鬼_良太_貴志川ジュニア"}],"category":"doubles"},
-{"id":510,"name":"平岡・田野（大用ジュニア）","information":[{"lastName":"平岡","firstName":"湊大","team":"大用ジュニア","prefecture":"高知","playerId":null,"tempId":"平岡_湊大_大用ジュニア"},{"lastName":"田野","firstName":"成都","team":"大用ジュニア","prefecture":"高知","playerId":null,"tempId":"田野_成都_大用ジュニア"}],"category":"doubles"},
-{"id":511,"name":"柿木・橋本（長命ヶ丘ジュニア）","information":[{"lastName":"柿木","firstName":"遥太","team":"長命ヶ丘ジュニア","prefecture":"宮城","playerId":null,"tempId":"柿木_遥太_長命ヶ丘ジュニア"},{"lastName":"橋本","firstName":"世輝","team":"北宮PSTC","prefecture":"宮城","playerId":null,"tempId":"橋本_世輝_北宮PSTC"}],"category":"doubles"},
-{"id":512,"name":"中村・中村（小山）","information":[{"lastName":"中村","firstName":"柊希","team":"小山","prefecture":"栃木","playerId":null,"tempId":"中村_柊希_小山"},{"lastName":"中村","firstName":"壮希","team":"小山","prefecture":"栃木","playerId":null,"tempId":"中村_壮希_小山"}],"category":"doubles"},
-{"id":513,"name":"松﨑・瀬戸口（桜ジュニア）","information":[{"lastName":"松﨑","firstName":"陽亮","team":"桜ジュニア","prefecture":"佐賀","playerId":null,"tempId":"松﨑_陽亮_桜ジュニア"},{"lastName":"瀬戸口","firstName":"竜介","team":"桜ジュニア","prefecture":"佐賀","playerId":null,"tempId":"瀬戸口_竜介_桜ジュニア"}],"category":"doubles"},
-{"id":514,"name":"中山・中山（村上市スポ少）","information":[{"lastName":"中山","firstName":"智巴","team":"村上市スポ少","prefecture":"新潟","playerId":null,"tempId":"中山_智巴_村上市スポ少"},{"lastName":"中山","firstName":"翔矢","team":"燕スポ少","prefecture":"新潟","playerId":null,"tempId":"中山_翔矢_燕スポ少"}],"category":"doubles"},
-{"id":515,"name":"古賀・外岡（韮山ジュニア）","information":[{"lastName":"古賀","firstName":"伊織","team":"韮山ジュニア","prefecture":"静岡","playerId":null,"tempId":"古賀_伊織_韮山ジュニア"},{"lastName":"外岡","firstName":"碧","team":"河津ジュニア","prefecture":"静岡","playerId":null,"tempId":"外岡_碧_河津ジュニア"}],"category":"doubles"},
-{"id":516,"name":"井上・松本（王寺ジュニア）","information":[{"lastName":"井上","firstName":"航太朗","team":"王寺ジュニア","prefecture":"奈良","playerId":null,"tempId":"井上_航太朗_王寺ジュニア"},{"lastName":"松本","firstName":"陽明","team":"王寺ジュニア","prefecture":"奈良","playerId":null,"tempId":"松本_陽明_王寺ジュニア"}],"category":"doubles"},
-{"id":517,"name":"平等・森山（大社スポ少）","information":[{"lastName":"平等","firstName":"歩夢","team":"大社スポ少","prefecture":"島根","playerId":null,"tempId":"平等_歩夢_大社スポ少"},{"lastName":"森山","firstName":"涼太","team":"大社スポ少","prefecture":"島根","playerId":null,"tempId":"森山_涼太_大社スポ少"}],"category":"doubles"},
-{"id":518,"name":"黒川・早乙（下妻Ｊｒ．）","information":[{"lastName":"黒川","firstName":"蒼真","team":"下妻Ｊｒ．","prefecture":"茨城","playerId":null,"tempId":"黒川_蒼真_下妻Ｊｒ．"},{"lastName":"早乙","firstName":"女颯","team":"下妻Ｊｒ．","prefecture":"茨城","playerId":null,"tempId":"早乙_女颯_下妻Ｊｒ．"}],"category":"doubles"},
-{"id":519,"name":"松川・谷（丸岡町スポ少）","information":[{"lastName":"松川","firstName":"徹信","team":"丸岡町スポ少","prefecture":"福井","playerId":null,"tempId":"松川_徹信_丸岡町スポ少"},{"lastName":"谷","firstName":"光琉","team":"丸岡町スポ少","prefecture":"福井","playerId":null,"tempId":"谷_光琉_丸岡町スポ少"}],"category":"doubles"},
-{"id":520,"name":"田村・酒見（玉名ジュニア）","information":[{"lastName":"田村","firstName":"傑嗣","team":"玉名ジュニア","prefecture":"熊本","playerId":null,"tempId":"田村_傑嗣_玉名ジュニア"},{"lastName":"酒見","firstName":"泰斗","team":"南関ジュニア","prefecture":"熊本","playerId":null,"tempId":"酒見_泰斗_南関ジュニア"}],"category":"doubles"},
-{"id":521,"name":"梶原・竹田（カブトの森Ｊｒ．）","information":[{"lastName":"梶原","firstName":"湊","team":"カブトの森Ｊｒ．","prefecture":"福岡","playerId":null,"tempId":"梶原_湊_カブトの森Ｊｒ．"},{"lastName":"竹田","firstName":"雅善","team":"カブトの森Ｊｒ．","prefecture":"福岡","playerId":null,"tempId":"竹田_雅善_カブトの森Ｊｒ．"}],"category":"doubles"},
-{"id":522,"name":"上條・下山（しもきたＳＴＣ）","information":[{"lastName":"上條","firstName":"蒼波","team":"しもきたＳＴＣ","prefecture":"青森","playerId":null,"tempId":"上條_蒼波_しもきたＳＴＣ"},{"lastName":"下山","firstName":"侑楽","team":"弘前あすなろジュニア","prefecture":"青森","playerId":null,"tempId":"下山_侑楽_弘前あすなろジュニア"}],"category":"doubles"},
-{"id":523,"name":"石井・大槻（東松山ジュニア）","information":[{"lastName":"石井","firstName":"悠也","team":"東松山ジュニア","prefecture":"埼玉","playerId":null,"tempId":"石井_悠也_東松山ジュニア"},{"lastName":"大槻","firstName":"陽利","team":"東松山ジュニア","prefecture":"埼玉","playerId":null,"tempId":"大槻_陽利_東松山ジュニア"}],"category":"doubles"},
-{"id":524,"name":"清水・丸山（長野ＪＳＴＣ）","information":[{"lastName":"清水","firstName":"暁文","team":"長野ＪＳＴＣ","prefecture":"長野","playerId":null,"tempId":"清水_暁文_長野ＪＳＴＣ"},{"lastName":"丸山","firstName":"滉介","team":"長野ＪＳＴＣ","prefecture":"長野","playerId":null,"tempId":"丸山_滉介_長野ＪＳＴＣ"}],"category":"doubles"},
-{"id":525,"name":"高尾・山田（多治見ジュニア）","information":[{"lastName":"高尾","firstName":"颯真","team":"多治見ジュニア","prefecture":"岐阜","playerId":null,"tempId":"高尾_颯真_多治見ジュニア"},{"lastName":"山田","firstName":"新汰","team":"多治見ジュニア","prefecture":"岐阜","playerId":null,"tempId":"山田_新汰_多治見ジュニア"}],"category":"doubles"},
-{"id":526,"name":"金瀬戸・出村（野々市ジュニア）","information":[{"lastName":"金瀬戸","firstName":"皇史","team":"野々市ジュニア","prefecture":"石川","playerId":null,"tempId":"金瀬戸_皇史_野々市ジュニア"},{"lastName":"出村","firstName":"悠吏","team":"野々市ジュニア","prefecture":"石川","playerId":null,"tempId":"出村_悠吏_野々市ジュニア"}],"category":"doubles"},
-{"id":527,"name":"濱・柴田（稲城ジュニア）","information":[{"lastName":"濱","firstName":"蓮叶","team":"稲城ジュニア","prefecture":"東京","playerId":null,"tempId":"濱_蓮叶_稲城ジュニア"},{"lastName":"柴田","firstName":"恭利","team":"稲城ジュニア","prefecture":"東京","playerId":null,"tempId":"柴田_恭利_稲城ジュニア"}],"category":"doubles"},
-{"id":528,"name":"渋谷・和田（Ｊ－Ｋｉｄｓ）","information":[{"lastName":"渋谷","firstName":"優心","team":"Ｊ－Ｋｉｄｓ","prefecture":"京都","playerId":null,"tempId":"渋谷_優心_Ｊ－Ｋｉｄｓ"},{"lastName":"和田","firstName":"昊馬","team":"Ｊ－Ｋｉｄｓ","prefecture":"京都","playerId":null,"tempId":"和田_昊馬_Ｊ－Ｋｉｄｓ"}],"category":"doubles"},
-{"id":529,"name":"鈴木・村上（山形ジュニアスポ少）","information":[{"lastName":"鈴木","firstName":"陽仁","team":"山形ジュニアスポ少","prefecture":"山形","playerId":null,"tempId":"鈴木_陽仁_山形ジュニアスポ少"},{"lastName":"村上","firstName":"斗真","team":"余目スポ少","prefecture":"山形","playerId":null,"tempId":"村上_斗真_余目スポ少"}],"category":"doubles"},
-{"id":530,"name":"首藤・隈井（PUERICLUB）","information":[{"lastName":"首藤","firstName":"優誠","team":"PUERICLUB","prefecture":"大分","playerId":null,"tempId":"首藤_優誠_PUERICLUB"},{"lastName":"隈井","firstName":"七斗","team":"PUERICLUB","prefecture":"大分","playerId":null,"tempId":"隈井_七斗_PUERICLUB"}],"category":"doubles"},
-{"id":531,"name":"渡邉・蓮沼（浦安ジュニア）","information":[{"lastName":"渡邉","firstName":"颯馬","team":"浦安ジュニア","prefecture":"千葉","playerId":null,"tempId":"渡邉_颯馬_浦安ジュニア"},{"lastName":"蓮沼","firstName":"大晴","team":"かずさスマイリーズ","prefecture":"千葉","playerId":null,"tempId":"蓮沼_大晴_かずさスマイリーズ"}],"category":"doubles"},
-{"id":532,"name":"桐山・山本（姫路ジュニア）","information":[{"lastName":"桐山","firstName":"莉基","team":"姫路ジュニア","prefecture":"兵庫","playerId":null,"tempId":"桐山_莉基_姫路ジュニア"},{"lastName":"山本","firstName":"稜士","team":"姫路ジュニア","prefecture":"兵庫","playerId":null,"tempId":"山本_稜士_姫路ジュニア"}],"category":"doubles"},
-{"id":533,"name":"多田・村岡（瀬戸ジュニア）","information":[{"lastName":"多田","firstName":"伊織","team":"瀬戸ジュニア","prefecture":"岡山","playerId":null,"tempId":"多田_伊織_瀬戸ジュニア"},{"lastName":"村岡","firstName":"大地","team":"瀬戸ジュニア","prefecture":"岡山","playerId":null,"tempId":"村岡_大地_瀬戸ジュニア"}],"category":"doubles"},
-{"id":534,"name":"田ヶ原・野北（伊勢ジュニア）","information":[{"lastName":"田ヶ原","firstName":"大地","team":"伊勢ジュニア","prefecture":"三重","playerId":null,"tempId":"田ヶ原_大地_伊勢ジュニア"},{"lastName":"野北","firstName":"幸雅","team":"伊勢ジュニア","prefecture":"三重","playerId":null,"tempId":"野北_幸雅_伊勢ジュニア"}],"category":"doubles"},
-{"id":535,"name":"伊藤・江橋（大館市協会）","information":[{"lastName":"伊藤","firstName":"颯彦","team":"大館市協会","prefecture":"秋田","playerId":null,"tempId":"伊藤_颯彦_大館市協会"},{"lastName":"江橋","firstName":"樹","team":"仙北市ジュニア","prefecture":"秋田","playerId":null,"tempId":"江橋_樹_仙北市ジュニア"}],"category":"doubles"},
-{"id":536,"name":"青木・渡邉（いわきジュニアスポ少）","information":[{"lastName":"青木","firstName":"煌士郎","team":"いわきジュニアスポ少","prefecture":"福島","playerId":null,"tempId":"青木_煌士郎_いわきジュニアスポ少"},{"lastName":"渡邉","firstName":"瑛大","team":"いわきジュニアスポ少","prefecture":"福島","playerId":null,"tempId":"渡邉_瑛大_いわきジュニアスポ少"}],"category":"doubles"},
-{"id":537,"name":"増田・田代（Ｔ－フォースｊｒ．ラボ）","information":[{"lastName":"増田","firstName":"圭登","team":"Ｔ－フォースｊｒ．ラボ","prefecture":"群馬","playerId":null,"tempId":"増田_圭登_Ｔ－フォースｊｒ．ラボ"},{"lastName":"田代","firstName":"颯太","team":"Ｔ－フォースｊｒ．ラボ","prefecture":"群馬","playerId":null,"tempId":"田代_颯太_Ｔ－フォースｊｒ．ラボ"}],"category":"doubles"},
-{"id":538,"name":"小堀・大石（氷見ジュニア）","information":[{"lastName":"小堀","firstName":"蒼生","team":"氷見ジュニア","prefecture":"富山","playerId":null,"tempId":"小堀_蒼生_氷見ジュニア"},{"lastName":"大石","firstName":"莉久","team":"氷見ジュニア","prefecture":"富山","playerId":null,"tempId":"大石_莉久_氷見ジュニア"}],"category":"doubles"},
-{"id":539,"name":"松尾・行徳（嬉野塩田ジュニア）","information":[{"lastName":"松尾","firstName":"駿","team":"嬉野塩田ジュニア","prefecture":"佐賀","playerId":null,"tempId":"松尾_駿_嬉野塩田ジュニア"},{"lastName":"行徳","firstName":"篤人","team":"嬉野塩田ジュニア","prefecture":"佐賀","playerId":null,"tempId":"行徳_篤人_嬉野塩田ジュニア"}],"category":"doubles"},
-{"id":540,"name":"日高・坂田（はすみスポ少）","information":[{"lastName":"日高","firstName":"颯人","team":"はすみスポ少","prefecture":"島根","playerId":null,"tempId":"日高_颯人_はすみスポ少"},{"lastName":"坂田","firstName":"一成","team":"はすみスポ少","prefecture":"島根","playerId":null,"tempId":"坂田_一成_はすみスポ少"}],"category":"doubles"},
-{"id":541,"name":"宇都木・中島（古河北利根ジュニア）","information":[{"lastName":"宇都木","firstName":"晟李","team":"古河北利根ジュニア","prefecture":"茨城","playerId":null,"tempId":"宇都木_晟李_古河北利根ジュニア"},{"lastName":"中島","firstName":"悠輝","team":"古河北利根ジュニア","prefecture":"茨城","playerId":null,"tempId":"中島_悠輝_古河北利根ジュニア"}],"category":"doubles"},
-{"id":542,"name":"古牧・伊藤（ｄｏｕｘ）","information":[{"lastName":"古牧","firstName":"桜輝","team":"ｄｏｕｘ","prefecture":"静岡","playerId":null,"tempId":"古牧_桜輝_ｄｏｕｘ"},{"lastName":"伊藤","firstName":"翼","team":"牧之原スポ少","prefecture":"静岡","playerId":null,"tempId":"伊藤_翼_牧之原スポ少"}],"category":"doubles"},
-{"id":543,"name":"竹中・足立（絆）","information":[{"lastName":"竹中","firstName":"建貴","team":"絆","prefecture":"宮崎","playerId":null,"tempId":"竹中_建貴_絆"},{"lastName":"足立","firstName":"夏生","team":"スターキッズ","prefecture":"宮崎","playerId":null,"tempId":"足立_夏生_スターキッズ"}],"category":"doubles"},
-{"id":544,"name":"藤井・井浦（新津ジュニア教室）","information":[{"lastName":"藤井","firstName":"隼也","team":"新津ジュニア教室","prefecture":"新潟","playerId":null,"tempId":"藤井_隼也_新津ジュニア教室"},{"lastName":"井浦","firstName":"雄心","team":"新津ジュニア教室","prefecture":"新潟","playerId":null,"tempId":"井浦_雄心_新津ジュニア教室"}],"category":"doubles"},
-{"id":545,"name":"谷出・森永（宇治ジュニア）","information":[{"lastName":"谷出","firstName":"光優","team":"宇治ジュニア","prefecture":"京都","playerId":null,"tempId":"谷出_光優_宇治ジュニア"},{"lastName":"森永","firstName":"晄生","team":"城陽ジュニア","prefecture":"京都","playerId":null,"tempId":"森永_晄生_城陽ジュニア"}],"category":"doubles"},
-{"id":546,"name":"林旺・徳田（守山ジュニア）","information":[{"lastName":"林旺","firstName":"次郎","team":"守山ジュニア","prefecture":"滋賀","playerId":null,"tempId":"林旺_次郎_守山ジュニア"},{"lastName":"徳田","firstName":"晄大","team":"安土ジュニアＳＴスポ少","prefecture":"滋賀","playerId":null,"tempId":"徳田_晄大_安土ジュニアＳＴスポ少"}],"category":"doubles"},
-{"id":547,"name":"小山・山口（河北台キッズ）","information":[{"lastName":"小山","firstName":"陽","team":"河北台キッズ","prefecture":"石川","playerId":null,"tempId":"小山_陽_河北台キッズ"},{"lastName":"山口","firstName":"莉士","team":"河北台キッズ","prefecture":"石川","playerId":null,"tempId":"山口_莉士_河北台キッズ"}],"category":"doubles"},
-{"id":548,"name":"河合・細井（岐南ジュニア）","information":[{"lastName":"河合","firstName":"悠真","team":"岐南ジュニア","prefecture":"岐阜","playerId":null,"tempId":"河合_悠真_岐南ジュニア"},{"lastName":"細井","firstName":"悠真","team":"岐南ジュニア","prefecture":"岐阜","playerId":null,"tempId":"細井_悠真_岐南ジュニア"}],"category":"doubles"},
-{"id":549,"name":"富岡・髙橋（FSTA）","information":[{"lastName":"富岡","firstName":"大翔","team":"FSTA","prefecture":"東京","playerId":null,"tempId":"富岡_大翔_FSTA"},{"lastName":"髙橋","firstName":"樹生","team":"小竹小","prefecture":"東京","playerId":null,"tempId":"髙橋_樹生_小竹小"}],"category":"doubles"},
-{"id":550,"name":"戸川・髙栁（長中）","information":[{"lastName":"戸川","firstName":"佑友","team":"長中","prefecture":"岩手","playerId":null,"tempId":"戸川_佑友_長中"},{"lastName":"髙栁","firstName":"祐月","team":"久慈スポ少","prefecture":"岩手","playerId":null,"tempId":"髙栁_祐月_久慈スポ少"}],"category":"doubles"},
-{"id":551,"name":"飯田・飯田（国見ジュニア）","information":[{"lastName":"飯田","firstName":"将真","team":"国見ジュニア","prefecture":"長崎","playerId":null,"tempId":"飯田_将真_国見ジュニア"},{"lastName":"飯田","firstName":"結太","team":"国見ジュニア","prefecture":"長崎","playerId":null,"tempId":"飯田_結太_国見ジュニア"}],"category":"doubles"},
-{"id":552,"name":"日下・及川（SKD）","information":[{"lastName":"日下","firstName":"彪牙","team":"SKD","prefecture":"宮城","playerId":null,"tempId":"日下_彪牙_SKD"},{"lastName":"及川","firstName":"快晴","team":"小牛田ＳＴ","prefecture":"宮城","playerId":null,"tempId":"及川_快晴_小牛田ＳＴ"}],"category":"doubles"},
-{"id":553,"name":"岩井・三森（奈良ＵＳＪ）","information":[{"lastName":"岩井","firstName":"優樹","team":"奈良ＵＳＪ","prefecture":"奈良","playerId":null,"tempId":"岩井_優樹_奈良ＵＳＪ"},{"lastName":"三森","firstName":"凰誠","team":"奈良ＵＳＪ","prefecture":"奈良","playerId":null,"tempId":"三森_凰誠_奈良ＵＳＪ"}],"category":"doubles"},
-{"id":554,"name":"林・岩成（明道スポ少部）","information":[{"lastName":"林","firstName":"慶次","team":"明道スポ少部","prefecture":"鳥取","playerId":null,"tempId":"林_慶次_明道スポ少部"},{"lastName":"岩成","firstName":"愛騎","team":"江府小","prefecture":"鳥取","playerId":null,"tempId":"岩成_愛騎_江府小"}],"category":"doubles"},
-{"id":555,"name":"高野・三宅（手賀沼ジュニア）","information":[{"lastName":"高野","firstName":"耀悠","team":"手賀沼ジュニア","prefecture":"千葉","playerId":null,"tempId":"高野_耀悠_手賀沼ジュニア"},{"lastName":"三宅","firstName":"湊仁","team":"手賀沼ジュニア","prefecture":"千葉","playerId":null,"tempId":"三宅_湊仁_手賀沼ジュニア"}],"category":"doubles"},
-{"id":556,"name":"渡邉・塚越（杉戸ジュニアスポ少）","information":[{"lastName":"渡邉","firstName":"凛太郎","team":"杉戸ジュニアスポ少","prefecture":"埼玉","playerId":null,"tempId":"渡邉_凛太郎_杉戸ジュニアスポ少"},{"lastName":"塚越","firstName":"悠太","team":"深谷スキャリオン","prefecture":"埼玉","playerId":null,"tempId":"塚越_悠太_深谷スキャリオン"}],"category":"doubles"},
-{"id":557,"name":"稗・木村（波方ジュニア）","information":[{"lastName":"稗","firstName":"翔太","team":"波方ジュニア","prefecture":"愛媛","playerId":null,"tempId":"稗_翔太_波方ジュニア"},{"lastName":"木村","firstName":"碧斗","team":"波方ジュニア","prefecture":"愛媛","playerId":null,"tempId":"木村_碧斗_波方ジュニア"}],"category":"doubles"},
-{"id":558,"name":"西岡・出口（武生スポ少）","information":[{"lastName":"西岡","firstName":"光","team":"武生スポ少","prefecture":"福井","playerId":null,"tempId":"西岡_光_武生スポ少"},{"lastName":"出口","firstName":"拓磨","team":"武生スポ少","prefecture":"福井","playerId":null,"tempId":"出口_拓磨_武生スポ少"}],"category":"doubles"},
-{"id":559,"name":"杉原・廣澤（原スポ少）","information":[{"lastName":"杉原","firstName":"章仁","team":"原スポ少","prefecture":"広島","playerId":null,"tempId":"杉原_章仁_原スポ少"},{"lastName":"廣澤","firstName":"慶","team":"原スポ少","prefecture":"広島","playerId":null,"tempId":"廣澤_慶_原スポ少"}],"category":"doubles"},
-{"id":560,"name":"青木・池頭（吉野少年団）","information":[{"lastName":"青木","firstName":"煌聖","team":"吉野少年団","prefecture":"児島","playerId":null,"tempId":"青木_煌聖_吉野少年団"},{"lastName":"池頭","firstName":"諒哉","team":"吉野少年団","prefecture":"児島","playerId":null,"tempId":"池頭_諒哉_吉野少年団"}],"category":"doubles"},
-{"id":561,"name":"工藤・工藤（平川市スポ少）","information":[{"lastName":"工藤","firstName":"悠和","team":"平川市スポ少","prefecture":"青森","playerId":null,"tempId":"工藤_悠和_平川市スポ少"},{"lastName":"工藤","firstName":"雅大","team":"平川市スポ少","prefecture":"青森","playerId":null,"tempId":"工藤_雅大_平川市スポ少"}],"category":"doubles"},
-{"id":562,"name":"寺杣・佐々木（金屋ジュニア）","information":[{"lastName":"寺杣","firstName":"拓海","team":"金屋ジュニア","prefecture":"歌山","playerId":null,"tempId":"寺杣_拓海_金屋ジュニア"},{"lastName":"佐々木","firstName":"稟和","team":"金屋ジュニア","prefecture":"歌山","playerId":null,"tempId":"佐々木_稟和_金屋ジュニア"}],"category":"doubles"},
-{"id":563,"name":"栗林・本田（一宮ジュニア）","information":[{"lastName":"栗林","firstName":"慧偉","team":"一宮ジュニア","prefecture":"愛知","playerId":null,"tempId":"栗林_慧偉_一宮ジュニア"},{"lastName":"本田","firstName":"渉","team":"一宮ジュニア","prefecture":"愛知","playerId":null,"tempId":"本田_渉_一宮ジュニア"}],"category":"doubles"},
-{"id":564,"name":"宮川・中尾（熊本春竹ジュニア）","information":[{"lastName":"宮川","firstName":"仁萌也","team":"熊本春竹ジュニア","prefecture":"熊本","playerId":null,"tempId":"宮川_仁萌也_熊本春竹ジュニア"},{"lastName":"中尾","firstName":"梓真","team":"熊本春竹ジュニア","prefecture":"熊本","playerId":null,"tempId":"中尾_梓真_熊本春竹ジュニア"}],"category":"doubles"},
-{"id":565,"name":"馬場・髙橋（野木）","information":[{"lastName":"馬場","firstName":"直汰郎","team":"野木","prefecture":"栃木","playerId":null,"tempId":"馬場_直汰郎_野木"},{"lastName":"髙橋","firstName":"亮至","team":"野木","prefecture":"栃木","playerId":null,"tempId":"髙橋_亮至_野木"}],"category":"doubles"},
-{"id":566,"name":"村岡・堀田（ももっち岡山ジュニア）","information":[{"lastName":"村岡","firstName":"瑛介","team":"ももっち岡山ジュニア","prefecture":"岡山","playerId":null,"tempId":"村岡_瑛介_ももっち岡山ジュニア"},{"lastName":"堀田","firstName":"維槻","team":"ももっち岡山ジュニア","prefecture":"岡山","playerId":null,"tempId":"堀田_維槻_ももっち岡山ジュニア"}],"category":"doubles"},
-{"id":567,"name":"田口・菊池（白神ジュニア）","information":[{"lastName":"田口","firstName":"新大","team":"白神ジュニア","prefecture":"秋田","playerId":null,"tempId":"田口_新大_白神ジュニア"},{"lastName":"菊池","firstName":"央佑","team":"白神ジュニア","prefecture":"秋田","playerId":null,"tempId":"菊池_央佑_白神ジュニア"}],"category":"doubles"},
-{"id":568,"name":"崎田・小林（竜王ジュニア）","information":[{"lastName":"崎田","firstName":"樹","team":"竜王ジュニア","prefecture":"山梨","playerId":null,"tempId":"崎田_樹_竜王ジュニア"},{"lastName":"小林","firstName":"駿太","team":"双葉ジュニア","prefecture":"山梨","playerId":null,"tempId":"小林_駿太_双葉ジュニア"}],"category":"doubles"},
-{"id":569,"name":"大橋・宮川（北広島市スポ少）","information":[{"lastName":"大橋","firstName":"燈人","team":"北広島市スポ少","prefecture":"海道","playerId":null,"tempId":"大橋_燈人_北広島市スポ少"},{"lastName":"宮川","firstName":"結斗","team":"野幌少年団","prefecture":"海道","playerId":null,"tempId":"宮川_結斗_野幌少年団"}],"category":"doubles"},
-{"id":570,"name":"宮城・伊波（玉城）","information":[{"lastName":"宮城","firstName":"満","team":"玉城","prefecture":"沖縄","playerId":null,"tempId":"宮城_満_玉城"},{"lastName":"伊波","firstName":"寛南","team":"宮古島パニパニジュニア","prefecture":"沖縄","playerId":null,"tempId":"伊波_寛南_宮古島パニパニジュニア"}],"category":"doubles"},
-{"id":571,"name":"河野・浅野（青藍ジュニア）","information":[{"lastName":"河野","firstName":"琥心","team":"青藍ジュニア","prefecture":"香川","playerId":null,"tempId":"河野_琥心_青藍ジュニア"},{"lastName":"浅野","firstName":"登稀","team":"豊中小学生","prefecture":"香川","playerId":null,"tempId":"浅野_登稀_豊中小学生"}],"category":"doubles"},
-{"id":572,"name":"服部・松尾（阪南ジュニア）","information":[{"lastName":"服部","firstName":"一颯","team":"阪南ジュニア","prefecture":"大阪","playerId":null,"tempId":"服部_一颯_阪南ジュニア"},{"lastName":"松尾","firstName":"海音","team":"阪南ジュニア","prefecture":"大阪","playerId":null,"tempId":"松尾_海音_阪南ジュニア"}],"category":"doubles"},
-{"id":573,"name":"中野・中野（新星）","information":[{"lastName":"中野","firstName":"蒼琉","team":"新星","prefecture":"福岡","playerId":null,"tempId":"中野_蒼琉_新星"},{"lastName":"中野","firstName":"譲士","team":"新星","prefecture":"福岡","playerId":null,"tempId":"中野_譲士_新星"}],"category":"doubles"},
-{"id":574,"name":"相知・濱口（桑名ジュニア）","information":[{"lastName":"相知","firstName":"稜介","team":"桑名ジュニア","prefecture":"三重","playerId":null,"tempId":"相知_稜介_桑名ジュニア"},{"lastName":"濱口","firstName":"朝彦","team":"松阪ジュニア","prefecture":"三重","playerId":null,"tempId":"濱口_朝彦_松阪ジュニア"}],"category":"doubles"},
-{"id":575,"name":"奥山・戸田（川崎STC）","information":[{"lastName":"奥山","firstName":"雄太","team":"川崎STC","prefecture":"奈川","playerId":null,"tempId":"奥山_雄太_川崎STC"},{"lastName":"戸田","firstName":"羚太","team":"川崎STC","prefecture":"奈川","playerId":null,"tempId":"戸田_羚太_川崎STC"}],"category":"doubles"},
-{"id":576,"name":"大坪・西川（伊丹ジュニア）","information":[{"lastName":"大坪","firstName":"想空","team":"伊丹ジュニア","prefecture":"兵庫","playerId":null,"tempId":"大坪_想空_伊丹ジュニア"},{"lastName":"西川","firstName":"颯貴","team":"伊丹ジュニア","prefecture":"兵庫","playerId":null,"tempId":"西川_颯貴_伊丹ジュニア"}],"category":"doubles"},
-{"id":577,"name":"高木・南野（白子げんきジュニア）","information":[{"lastName":"高木","firstName":"優真","team":"白子げんきジュニア","prefecture":"千葉","playerId":null,"tempId":"高木_優真_白子げんきジュニア"},{"lastName":"南野","firstName":"琉惺","team":"市原ジュニア","prefecture":"千葉","playerId":null,"tempId":"南野_琉惺_市原ジュニア"}],"category":"doubles"},
-{"id":578,"name":"石﨑・金子（山口ジュニア）","information":[{"lastName":"石﨑","firstName":"大翔","team":"山口ジュニア","prefecture":"山口","playerId":null,"tempId":"石﨑_大翔_山口ジュニア"},{"lastName":"金子","firstName":"慶信","team":"山口ジュニア","prefecture":"山口","playerId":null,"tempId":"金子_慶信_山口ジュニア"}],"category":"doubles"},
-{"id":579,"name":"藤木・舟山（スポ少山形）","information":[{"lastName":"藤木","firstName":"翼","team":"スポ少山形","prefecture":"山形","playerId":null,"tempId":"藤木_翼_スポ少山形"},{"lastName":"舟山","firstName":"司紗","team":"スポ少山形","prefecture":"山形","playerId":null,"tempId":"舟山_司紗_スポ少山形"}],"category":"doubles"},
-{"id":580,"name":"山﨑・後藤（あづみ野）","information":[{"lastName":"山﨑","firstName":"蓮恩","team":"あづみ野","prefecture":"長野","playerId":null,"tempId":"山﨑_蓮恩_あづみ野"},{"lastName":"後藤","firstName":"翔万","team":"あづみ野","prefecture":"長野","playerId":null,"tempId":"後藤_翔万_あづみ野"}],"category":"doubles"}
+  {
+    "id": 401,
+    "name": "濱田・上野（ＫＳＴＣ）",
+    "information": [
+      {
+        "lastName": "濱田",
+        "firstName": "蓮",
+        "team": "ＫＳＴＣ",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "濱田_蓮_ＫＳＴＣ"
+      },
+      {
+        "lastName": "上野",
+        "firstName": "昊",
+        "team": "成川スポ少",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "上野_昊_成川スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 402,
+    "name": "阿部・大森（ＢＣファイターズ）",
+    "information": [
+      {
+        "lastName": "阿部",
+        "firstName": "弘黄",
+        "team": "ＢＣファイターズ",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "阿部_弘黄_ＢＣファイターズ"
+      },
+      {
+        "lastName": "大森",
+        "firstName": "慧人",
+        "team": "ＢＣファイターズ",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "大森_慧人_ＢＣファイターズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 403,
+    "name": "三神・籔内（福知山ジュニア）",
+    "information": [
+      {
+        "lastName": "三神",
+        "firstName": "良太",
+        "team": "福知山ジュニア",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "三神_良太_福知山ジュニア"
+      },
+      {
+        "lastName": "籔内",
+        "firstName": "湊二郎",
+        "team": "福知山ジュニア",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "籔内_湊二郎_福知山ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 404,
+    "name": "田中・岡崎（丸岡町スポ少）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "希歩",
+        "team": "丸岡町スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "田中_希歩_丸岡町スポ少"
+      },
+      {
+        "lastName": "岡崎",
+        "firstName": "一生",
+        "team": "丸岡町スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "岡崎_一生_丸岡町スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 405,
+    "name": "秋吉・下馬（日田ＳＴＡジュニア）",
+    "information": [
+      {
+        "lastName": "秋吉",
+        "firstName": "桔平",
+        "team": "日田ＳＴＡジュニア",
+        "prefecture": "大分",
+        "playerId": null,
+        "tempId": "秋吉_桔平_日田ＳＴＡジュニア"
+      },
+      {
+        "lastName": "下馬",
+        "firstName": "場誉",
+        "team": "日田ＳＴＡジュニア",
+        "prefecture": "大分",
+        "playerId": null,
+        "tempId": "下馬_場誉_日田ＳＴＡジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 406,
+    "name": "藤島・松尾（上天草ジュニア）",
+    "information": [
+      {
+        "lastName": "藤島",
+        "firstName": "悠太",
+        "team": "上天草ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "藤島_悠太_上天草ジュニア"
+      },
+      {
+        "lastName": "松尾",
+        "firstName": "莉玖",
+        "team": "上天草ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "松尾_莉玖_上天草ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 407,
+    "name": "惣上分・橘髙（焼山ジュニア）",
+    "information": [
+      {
+        "lastName": "惣上分",
+        "firstName": "恒希",
+        "team": "焼山ジュニア",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "惣上分_恒希_焼山ジュニア"
+      },
+      {
+        "lastName": "橘髙",
+        "firstName": "匠",
+        "team": "府中市ジュニア",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "橘髙_匠_府中市ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 408,
+    "name": "藤原・平岡（江陽ジュニア）",
+    "information": [
+      {
+        "lastName": "藤原",
+        "firstName": "康起",
+        "team": "江陽ジュニア",
+        "prefecture": "高知",
+        "playerId": null,
+        "tempId": "藤原_康起_江陽ジュニア"
+      },
+      {
+        "lastName": "平岡",
+        "firstName": "蓮大",
+        "team": "大用ジュニア",
+        "prefecture": "高知",
+        "playerId": null,
+        "tempId": "平岡_蓮大_大用ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 409,
+    "name": "石井・清水（市原ジュニア）",
+    "information": [
+      {
+        "lastName": "石井",
+        "firstName": "蒼侑",
+        "team": "市原ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "石井_蒼侑_市原ジュニア"
+      },
+      {
+        "lastName": "清水",
+        "firstName": "颯人",
+        "team": "市原ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "清水_颯人_市原ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 410,
+    "name": "富樫・加藤（大館市協会）",
+    "information": [
+      {
+        "lastName": "富樫",
+        "firstName": "快吏",
+        "team": "大館市協会",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "富樫_快吏_大館市協会"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "大和",
+        "team": "横手スポ少",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "加藤_大和_横手スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 411,
+    "name": "石川・本間（巻ジュニア）",
+    "information": [
+      {
+        "lastName": "石川",
+        "firstName": "葵翔",
+        "team": "巻ジュニア",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "石川_葵翔_巻ジュニア"
+      },
+      {
+        "lastName": "本間",
+        "firstName": "翔李",
+        "team": "巻ジュニア",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "本間_翔李_巻ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 412,
+    "name": "片野・加瀬（藤沢ジュニア）",
+    "information": [
+      {
+        "lastName": "片野",
+        "firstName": "凌成",
+        "team": "藤沢ジュニア",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "片野_凌成_藤沢ジュニア"
+      },
+      {
+        "lastName": "加瀬",
+        "firstName": "悠翔",
+        "team": "藤沢ジュニア",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "加瀬_悠翔_藤沢ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 413,
+    "name": "石原・尾池（ＷａｓｈｕＫｉｄｓ）",
+    "information": [
+      {
+        "lastName": "石原",
+        "firstName": "稜真",
+        "team": "ＷａｓｈｕＫｉｄｓ",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "石原_稜真_ＷａｓｈｕＫｉｄｓ"
+      },
+      {
+        "lastName": "尾池",
+        "firstName": "亜佐陽",
+        "team": "総社ジュニア",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "尾池_亜佐陽_総社ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 414,
+    "name": "山本・岩井（堺市スポ少）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "蓮",
+        "team": "堺市スポ少",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "山本_蓮_堺市スポ少"
+      },
+      {
+        "lastName": "岩井",
+        "firstName": "碧翔",
+        "team": "堺市スポ少",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "岩井_碧翔_堺市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 415,
+    "name": "薄・四家（二本松ジュニア）",
+    "information": [
+      {
+        "lastName": "薄",
+        "firstName": "颯久",
+        "team": "二本松ジュニア",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "薄_颯久_二本松ジュニア"
+      },
+      {
+        "lastName": "四家",
+        "firstName": "侑芽",
+        "team": "二本松ジュニア",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "四家_侑芽_二本松ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 416,
+    "name": "清水・杉本（一宮町スポ少）",
+    "information": [
+      {
+        "lastName": "清水",
+        "firstName": "葵斗",
+        "team": "一宮町スポ少",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "清水_葵斗_一宮町スポ少"
+      },
+      {
+        "lastName": "杉本",
+        "firstName": "琉心",
+        "team": "甲府ストロング",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "杉本_琉心_甲府ストロング"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 417,
+    "name": "宮﨑・坂口（嬉野塩田ジュニア）",
+    "information": [
+      {
+        "lastName": "宮﨑",
+        "firstName": "知輝",
+        "team": "嬉野塩田ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "宮﨑_知輝_嬉野塩田ジュニア"
+      },
+      {
+        "lastName": "坂口",
+        "firstName": "煌易",
+        "team": "嬉野塩田ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "坂口_煌易_嬉野塩田ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 418,
+    "name": "岩﨑・山本（光ジュニア）",
+    "information": [
+      {
+        "lastName": "岩﨑",
+        "firstName": "煌",
+        "team": "光ジュニア",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "岩﨑_煌_光ジュニア"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "諒太郎",
+        "team": "光ジュニア",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "山本_諒太郎_光ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 419,
+    "name": "藤田・松井（龍野ジュニア）",
+    "information": [
+      {
+        "lastName": "藤田",
+        "firstName": "悠真",
+        "team": "龍野ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "藤田_悠真_龍野ジュニア"
+      },
+      {
+        "lastName": "松井",
+        "firstName": "知哉",
+        "team": "龍野ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "松井_知哉_龍野ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 420,
+    "name": "上坂・山本（氷見ジュニア）",
+    "information": [
+      {
+        "lastName": "上坂",
+        "firstName": "虎太郎",
+        "team": "氷見ジュニア",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "上坂_虎太郎_氷見ジュニア"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "瑛仁",
+        "team": "滑川ジュニア",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "山本_瑛仁_滑川ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 421,
+    "name": "山本・野間（今治S.O.Cジュニア）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "生流",
+        "team": "今治S.O.Cジュニア",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "山本_生流_今治S.O.Cジュニア"
+      },
+      {
+        "lastName": "野間",
+        "firstName": "太陽",
+        "team": "今治S.O.Cジュニア",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "野間_太陽_今治S.O.Cジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 422,
+    "name": "大德・野入（伊集院ジュニア）",
+    "information": [
+      {
+        "lastName": "大德",
+        "firstName": "朔也",
+        "team": "伊集院ジュニア",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "大德_朔也_伊集院ジュニア"
+      },
+      {
+        "lastName": "野入",
+        "firstName": "旬翔",
+        "team": "伊集院ジュニア",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "野入_旬翔_伊集院ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 423,
+    "name": "笠原・石井（潮来スポ少）",
+    "information": [
+      {
+        "lastName": "笠原",
+        "firstName": "大夢",
+        "team": "潮来スポ少",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "笠原_大夢_潮来スポ少"
+      },
+      {
+        "lastName": "石井",
+        "firstName": "奏多",
+        "team": "水戸スポ少",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "石井_奏多_水戸スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 424,
+    "name": "大野・平野（白石協会）",
+    "information": [
+      {
+        "lastName": "大野",
+        "firstName": "蒼茉",
+        "team": "白石協会",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "大野_蒼茉_白石協会"
+      },
+      {
+        "lastName": "平野",
+        "firstName": "瑛太郎",
+        "team": "向陽台ＪＳＴ",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "平野_瑛太郎_向陽台ＪＳＴ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 425,
+    "name": "國枝・曽我（大翔会ジュニア）",
+    "information": [
+      {
+        "lastName": "國枝",
+        "firstName": "璃月",
+        "team": "大翔会ジュニア",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "國枝_璃月_大翔会ジュニア"
+      },
+      {
+        "lastName": "曽我",
+        "firstName": "奏飛",
+        "team": "大翔会ジュニア",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "曽我_奏飛_大翔会ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 426,
+    "name": "長畠・濵地（九度山ジュニア）",
+    "information": [
+      {
+        "lastName": "長畠",
+        "firstName": "健吾",
+        "team": "九度山ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "長畠_健吾_九度山ジュニア"
+      },
+      {
+        "lastName": "濵地",
+        "firstName": "海稀",
+        "team": "印南STC",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "濵地_海稀_印南STC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 427,
+    "name": "渡邊・渡邉（浦安ジュニア）",
+    "information": [
+      {
+        "lastName": "渡邊",
+        "firstName": "惺太郎",
+        "team": "浦安ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "渡邊_惺太郎_浦安ジュニア"
+      },
+      {
+        "lastName": "渡邉",
+        "firstName": "陽斗",
+        "team": "浦安ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "渡邉_陽斗_浦安ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 428,
+    "name": "後藤・細野（北広島市スポ少）",
+    "information": [
+      {
+        "lastName": "後藤",
+        "firstName": "聖義",
+        "team": "北広島市スポ少",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "後藤_聖義_北広島市スポ少"
+      },
+      {
+        "lastName": "細野",
+        "firstName": "瑛斗",
+        "team": "北広島市スポ少",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "細野_瑛斗_北広島市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 429,
+    "name": "江上・安達（宝ジュニア）",
+    "information": [
+      {
+        "lastName": "江上",
+        "firstName": "櫂生",
+        "team": "宝ジュニア",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "江上_櫂生_宝ジュニア"
+      },
+      {
+        "lastName": "安達",
+        "firstName": "煌",
+        "team": "宝ジュニア",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "安達_煌_宝ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 430,
+    "name": "長友・佐藤（綾ジュニア）",
+    "information": [
+      {
+        "lastName": "長友",
+        "firstName": "優翔",
+        "team": "綾ジュニア",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "長友_優翔_綾ジュニア"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "琉生",
+        "team": "綾ジュニア",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "佐藤_琉生_綾ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 431,
+    "name": "鈴木・齋藤（羽村USC）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "蓮人",
+        "team": "羽村USC",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "鈴木_蓮人_羽村USC"
+      },
+      {
+        "lastName": "齋藤",
+        "firstName": "晃多",
+        "team": "砧南ジュニア",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "齋藤_晃多_砧南ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 432,
+    "name": "佐藤・戸田（長井スポ少）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "優和",
+        "team": "長井スポ少",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "佐藤_優和_長井スポ少"
+      },
+      {
+        "lastName": "戸田",
+        "firstName": "祥太郎",
+        "team": "米沢ジュニア",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "戸田_祥太郎_米沢ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 433,
+    "name": "池ヶ谷・田口（阿多古）",
+    "information": [
+      {
+        "lastName": "池ヶ谷",
+        "firstName": "晴斗",
+        "team": "阿多古",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "池ヶ谷_晴斗_阿多古"
+      },
+      {
+        "lastName": "田口",
+        "firstName": "穂咲輝",
+        "team": "阿多古",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "田口_穂咲輝_阿多古"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 434,
+    "name": "葉末・三浦（Ｓｔ．キッズ益田）",
+    "information": [
+      {
+        "lastName": "葉末",
+        "firstName": "拓磨",
+        "team": "Ｓｔ．キッズ益田",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "葉末_拓磨_Ｓｔ．キッズ益田"
+      },
+      {
+        "lastName": "三浦",
+        "firstName": "蓮治",
+        "team": "Ｓｔ．キッズ益田",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "三浦_蓮治_Ｓｔ．キッズ益田"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 435,
+    "name": "小関・濱﨑（Ｓｈｉｎｇｕ-ＪＳＴ）",
+    "information": [
+      {
+        "lastName": "小関",
+        "firstName": "結斗",
+        "team": "Ｓｈｉｎｇｕ-ＪＳＴ",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "小関_結斗_Ｓｈｉｎｇｕ-ＪＳＴ"
+      },
+      {
+        "lastName": "濱﨑",
+        "firstName": "健翔",
+        "team": "Ｓｈｉｎｇｕ-ＪＳＴ",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "濱﨑_健翔_Ｓｈｉｎｇｕ-ＪＳＴ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 436,
+    "name": "細村・田野（川島STC）",
+    "information": [
+      {
+        "lastName": "細村",
+        "firstName": "一稀",
+        "team": "川島STC",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "細村_一稀_川島STC"
+      },
+      {
+        "lastName": "田野",
+        "firstName": "智樹",
+        "team": "皆野ジュニア",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "田野_智樹_皆野ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 437,
+    "name": "伴野・林（守山ジュニア）",
+    "information": [
+      {
+        "lastName": "伴野",
+        "firstName": "陽紀",
+        "team": "守山ジュニア",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "伴野_陽紀_守山ジュニア"
+      },
+      {
+        "lastName": "林",
+        "firstName": "羽玖",
+        "team": "長浜",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "林_羽玖_長浜"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 438,
+    "name": "宮武・芳野（国分寺JSC）",
+    "information": [
+      {
+        "lastName": "宮武",
+        "firstName": "亮佑",
+        "team": "国分寺JSC",
+        "prefecture": "香川",
+        "playerId": null,
+        "tempId": "宮武_亮佑_国分寺JSC"
+      },
+      {
+        "lastName": "芳野",
+        "firstName": "泰知",
+        "team": "国分寺JSC",
+        "prefecture": "香川",
+        "playerId": null,
+        "tempId": "芳野_泰知_国分寺JSC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 439,
+    "name": "山本・須藤（青森市ジュニア）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "永",
+        "team": "青森市ジュニア",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "山本_永_青森市ジュニア"
+      },
+      {
+        "lastName": "須藤",
+        "firstName": "蓮太",
+        "team": "弘前あすなろジュニア",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "須藤_蓮太_弘前あすなろジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 440,
+    "name": "藤井・谷岡（琴浦スポ少）",
+    "information": [
+      {
+        "lastName": "藤井",
+        "firstName": "竜希",
+        "team": "琴浦スポ少",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "藤井_竜希_琴浦スポ少"
+      },
+      {
+        "lastName": "谷岡",
+        "firstName": "結弦",
+        "team": "羽合スポ少",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "谷岡_結弦_羽合スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 441,
+    "name": "林・髙橋（サービスエース飯島）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "勇汰",
+        "team": "サービスエース飯島",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "林_勇汰_サービスエース飯島"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "佳希",
+        "team": "松川少年少女",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "髙橋_佳希_松川少年少女"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 442,
+    "name": "金原・荒木（長田ジュニア）",
+    "information": [
+      {
+        "lastName": "金原",
+        "firstName": "都輝",
+        "team": "長田ジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "金原_都輝_長田ジュニア"
+      },
+      {
+        "lastName": "荒木",
+        "firstName": "陵",
+        "team": "諫早ジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "荒木_陵_諫早ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 443,
+    "name": "齋藤・福田（Ｔ－フォースｊｒ．ラボ）",
+    "information": [
+      {
+        "lastName": "齋藤",
+        "firstName": "蓮",
+        "team": "Ｔ－フォースｊｒ．ラボ",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "齋藤_蓮_Ｔ－フォースｊｒ．ラボ"
+      },
+      {
+        "lastName": "福田",
+        "firstName": "寛晶",
+        "team": "Ｔ－フォースｊｒ．ラボ",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "福田_寛晶_Ｔ－フォースｊｒ．ラボ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 444,
+    "name": "八重樫・髙橋（北上ジュニアスポ少）",
+    "information": [
+      {
+        "lastName": "八重樫",
+        "firstName": "晴仁",
+        "team": "北上ジュニアスポ少",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "八重樫_晴仁_北上ジュニアスポ少"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "碧一",
+        "team": "北上ジュニアスポ少",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "髙橋_碧一_北上ジュニアスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 445,
+    "name": "吉福・前川（豊明市小学生）",
+    "information": [
+      {
+        "lastName": "吉福",
+        "firstName": "海知",
+        "team": "豊明市小学生",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "吉福_海知_豊明市小学生"
+      },
+      {
+        "lastName": "前川",
+        "firstName": "圭吾",
+        "team": "豊明市小学生",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "前川_圭吾_豊明市小学生"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 446,
+    "name": "對馬・渋谷（鶴岡スポ少）",
+    "information": [
+      {
+        "lastName": "對馬",
+        "firstName": "倖",
+        "team": "鶴岡スポ少",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "對馬_倖_鶴岡スポ少"
+      },
+      {
+        "lastName": "渋谷",
+        "firstName": "俊太",
+        "team": "鶴岡スポ少",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "渋谷_俊太_鶴岡スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 447,
+    "name": "木村・丸山（千歳）",
+    "information": [
+      {
+        "lastName": "木村",
+        "firstName": "風太",
+        "team": "千歳",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "木村_風太_千歳"
+      },
+      {
+        "lastName": "丸山",
+        "firstName": "櫻太",
+        "team": "千歳",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "丸山_櫻太_千歳"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 448,
+    "name": "小谷・豆柄（東山ジュニア）",
+    "information": [
+      {
+        "lastName": "小谷",
+        "firstName": "奏介",
+        "team": "東山ジュニア",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "小谷_奏介_東山ジュニア"
+      },
+      {
+        "lastName": "豆柄",
+        "firstName": "拓実",
+        "team": "明道スポ少部",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "豆柄_拓実_明道スポ少部"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 449,
+    "name": "安田・家里（大津ジュニア）",
+    "information": [
+      {
+        "lastName": "安田",
+        "firstName": "優聖",
+        "team": "大津ジュニア",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "安田_優聖_大津ジュニア"
+      },
+      {
+        "lastName": "家里",
+        "firstName": "海碧",
+        "team": "大津ジュニア",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "家里_海碧_大津ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 450,
+    "name": "帯刀・佐藤（別府市）",
+    "information": [
+      {
+        "lastName": "帯刀",
+        "firstName": "悠聖",
+        "team": "別府市",
+        "prefecture": "大分",
+        "playerId": null,
+        "tempId": "帯刀_悠聖_別府市"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "語",
+        "team": "別府市",
+        "prefecture": "大分",
+        "playerId": null,
+        "tempId": "佐藤_語_別府市"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 451,
+    "name": "奥野・東（武生スポ少）",
+    "information": [
+      {
+        "lastName": "奥野",
+        "firstName": "愁人",
+        "team": "武生スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "奥野_愁人_武生スポ少"
+      },
+      {
+        "lastName": "東",
+        "firstName": "航哉",
+        "team": "武生スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "東_航哉_武生スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 452,
+    "name": "川村・岡（関スポ少）",
+    "information": [
+      {
+        "lastName": "川村",
+        "firstName": "弦土",
+        "team": "関スポ少",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "川村_弦土_関スポ少"
+      },
+      {
+        "lastName": "岡",
+        "firstName": "飛佐",
+        "team": "関スポ少",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "岡_飛佐_関スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 453,
+    "name": "佐藤・渡邉（一関スポ少）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "晴大",
+        "team": "一関スポ少",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "佐藤_晴大_一関スポ少"
+      },
+      {
+        "lastName": "渡邉",
+        "firstName": "吾郎",
+        "team": "こずかた",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "渡邉_吾郎_こずかた"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 454,
+    "name": "橋本・新倫（大村なんてジュニア）",
+    "information": [
+      {
+        "lastName": "橋本",
+        "firstName": "湊心",
+        "team": "大村なんてジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "橋本_湊心_大村なんてジュニア"
+      },
+      {
+        "lastName": "新倫",
+        "firstName": "太郎",
+        "team": "五島市協会",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "新倫_太郎_五島市協会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 455,
+    "name": "福永・塚崎（手賀沼ジュニア）",
+    "information": [
+      {
+        "lastName": "福永",
+        "firstName": "丈陽",
+        "team": "手賀沼ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "福永_丈陽_手賀沼ジュニア"
+      },
+      {
+        "lastName": "塚崎",
+        "firstName": "悟志",
+        "team": "手賀沼ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "塚崎_悟志_手賀沼ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 456,
+    "name": "大杉・吉田（クレイスポ少）",
+    "information": [
+      {
+        "lastName": "大杉",
+        "firstName": "啓太",
+        "team": "クレイスポ少",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "大杉_啓太_クレイスポ少"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "友希人",
+        "team": "クレイスポ少",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "吉田_友希人_クレイスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 457,
+    "name": "村田・菊地（佐久市スポ少）",
+    "information": [
+      {
+        "lastName": "村田",
+        "firstName": "侑真",
+        "team": "佐久市スポ少",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "村田_侑真_佐久市スポ少"
+      },
+      {
+        "lastName": "菊地",
+        "firstName": "亨",
+        "team": "佐久市スポ少",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "菊地_亨_佐久市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 458,
+    "name": "安藤・石川（青藍ジュニア）",
+    "information": [
+      {
+        "lastName": "安藤",
+        "firstName": "遙真",
+        "team": "青藍ジュニア",
+        "prefecture": "香川",
+        "playerId": null,
+        "tempId": "安藤_遙真_青藍ジュニア"
+      },
+      {
+        "lastName": "石川",
+        "firstName": "旬",
+        "team": "青藍ジュニア",
+        "prefecture": "香川",
+        "playerId": null,
+        "tempId": "石川_旬_青藍ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 459,
+    "name": "金森・鈴木（神栖スポ少）",
+    "information": [
+      {
+        "lastName": "金森",
+        "firstName": "葵",
+        "team": "神栖スポ少",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "金森_葵_神栖スポ少"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "羚文",
+        "team": "友部ジュニア",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "鈴木_羚文_友部ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 460,
+    "name": "伊波・澤井（三原ジュニア）",
+    "information": [
+      {
+        "lastName": "伊波",
+        "firstName": "一歩希",
+        "team": "三原ジュニア",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "伊波_一歩希_三原ジュニア"
+      },
+      {
+        "lastName": "澤井",
+        "firstName": "駿",
+        "team": "原スポ少",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "澤井_駿_原スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 461,
+    "name": "中野・山田（東海ジュニア）",
+    "information": [
+      {
+        "lastName": "中野",
+        "firstName": "誠泰",
+        "team": "東海ジュニア",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "中野_誠泰_東海ジュニア"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "大翔",
+        "team": "津島市ジュニア",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "山田_大翔_津島市ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 462,
+    "name": "大嶋・根本（坂戸ジュニア）",
+    "information": [
+      {
+        "lastName": "大嶋",
+        "firstName": "拓心",
+        "team": "坂戸ジュニア",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "大嶋_拓心_坂戸ジュニア"
+      },
+      {
+        "lastName": "根本",
+        "firstName": "凰誠",
+        "team": "坂戸ジュニア",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "根本_凰誠_坂戸ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 463,
+    "name": "瀬戸・二反（みづまキッズ）",
+    "information": [
+      {
+        "lastName": "瀬戸",
+        "firstName": "巧",
+        "team": "みづまキッズ",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "瀬戸_巧_みづまキッズ"
+      },
+      {
+        "lastName": "二反",
+        "firstName": "田陽",
+        "team": "北九州ジュニア",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "二反_田陽_北九州ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 464,
+    "name": "菅原・小山（長命ヶ丘ジュニア）",
+    "information": [
+      {
+        "lastName": "菅原",
+        "firstName": "志雄",
+        "team": "長命ヶ丘ジュニア",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "菅原_志雄_長命ヶ丘ジュニア"
+      },
+      {
+        "lastName": "小山",
+        "firstName": "流生",
+        "team": "河北",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "小山_流生_河北"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 465,
+    "name": "杉山・田中（ニューウィンズ）",
+    "information": [
+      {
+        "lastName": "杉山",
+        "firstName": "巧",
+        "team": "ニューウィンズ",
+        "prefecture": "奈良",
+        "playerId": null,
+        "tempId": "杉山_巧_ニューウィンズ"
+      },
+      {
+        "lastName": "田中",
+        "firstName": "碧蓮",
+        "team": "ニューウィンズ",
+        "prefecture": "奈良",
+        "playerId": null,
+        "tempId": "田中_碧蓮_ニューウィンズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 466,
+    "name": "野間口・伊東（川内スポーツ01）",
+    "information": [
+      {
+        "lastName": "野間口",
+        "firstName": "雄飛",
+        "team": "川内スポーツ01",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "野間口_雄飛_川内スポーツ01"
+      },
+      {
+        "lastName": "伊東",
+        "firstName": "宗志",
+        "team": "蔵王ジュニア",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "伊東_宗志_蔵王ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 467,
+    "name": "佐藤・福田（新潟内野STCスポ少）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "快斗",
+        "team": "新潟内野STCスポ少",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "佐藤_快斗_新潟内野STCスポ少"
+      },
+      {
+        "lastName": "福田",
+        "firstName": "椿",
+        "team": "新潟内野STCスポ少",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "福田_椿_新潟内野STCスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 468,
+    "name": "井出・吉田（吹揚スポ少）",
+    "information": [
+      {
+        "lastName": "井出",
+        "firstName": "陽仁",
+        "team": "吹揚スポ少",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "井出_陽仁_吹揚スポ少"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "瑠生",
+        "team": "BEING",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "吉田_瑠生_BEING"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 469,
+    "name": "工藤・新田（五所川原市ジュニア）",
+    "information": [
+      {
+        "lastName": "工藤",
+        "firstName": "加惟",
+        "team": "五所川原市ジュニア",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "工藤_加惟_五所川原市ジュニア"
+      },
+      {
+        "lastName": "新田",
+        "firstName": "莉久",
+        "team": "Ｗｉｌｌスポーツ",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "新田_莉久_Ｗｉｌｌスポーツ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 470,
+    "name": "齋藤・阿久津（芳賀ジュニア）",
+    "information": [
+      {
+        "lastName": "齋藤",
+        "firstName": "春輝",
+        "team": "芳賀ジュニア",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "齋藤_春輝_芳賀ジュニア"
+      },
+      {
+        "lastName": "阿久津",
+        "firstName": "祐晴",
+        "team": "芳賀ジュニア",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "阿久津_祐晴_芳賀ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 471,
+    "name": "木村・杉山（楠ジュニア）",
+    "information": [
+      {
+        "lastName": "木村",
+        "firstName": "泰輔",
+        "team": "楠ジュニア",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "木村_泰輔_楠ジュニア"
+      },
+      {
+        "lastName": "杉山",
+        "firstName": "琥汰朗",
+        "team": "ＳＴＣキッズ",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "杉山_琥汰朗_ＳＴＣキッズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 472,
+    "name": "式町・山﨑（熊本春竹ジュニア）",
+    "information": [
+      {
+        "lastName": "式町",
+        "firstName": "星馬",
+        "team": "熊本春竹ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "式町_星馬_熊本春竹ジュニア"
+      },
+      {
+        "lastName": "山﨑",
+        "firstName": "遥翔",
+        "team": "熊本春竹ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "山﨑_遥翔_熊本春竹ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 473,
+    "name": "野澤・関戸（一宮町スポ少）",
+    "information": [
+      {
+        "lastName": "野澤",
+        "firstName": "岳",
+        "team": "一宮町スポ少",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "野澤_岳_一宮町スポ少"
+      },
+      {
+        "lastName": "関戸",
+        "firstName": "蒼詩",
+        "team": "都留ジュニア",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "関戸_蒼詩_都留ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 474,
+    "name": "松居・中川（松阪ジュニア）",
+    "information": [
+      {
+        "lastName": "松居",
+        "firstName": "和奏",
+        "team": "松阪ジュニア",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "松居_和奏_松阪ジュニア"
+      },
+      {
+        "lastName": "中川",
+        "firstName": "楽唯",
+        "team": "松阪ジュニア",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "中川_楽唯_松阪ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 475,
+    "name": "森・中村（橋本ジュニア）",
+    "information": [
+      {
+        "lastName": "森",
+        "firstName": "蓮",
+        "team": "橋本ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "森_蓮_橋本ジュニア"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "琥次郎",
+        "team": "貴志川ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "中村_琥次郎_貴志川ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 476,
+    "name": "嶋田・十枝内（北見少年団）",
+    "information": [
+      {
+        "lastName": "嶋田",
+        "firstName": "凰希",
+        "team": "北見少年団",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "嶋田_凰希_北見少年団"
+      },
+      {
+        "lastName": "十枝内",
+        "firstName": "大智",
+        "team": "釧路リバティー",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "十枝内_大智_釧路リバティー"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 477,
+    "name": "白石・鈴木（富津ジュニア）",
+    "information": [
+      {
+        "lastName": "白石",
+        "firstName": "琉稀",
+        "team": "富津ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "白石_琉稀_富津ジュニア"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "佑虎",
+        "team": "富津ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "鈴木_佑虎_富津ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 478,
+    "name": "原・勝部（出雲ＪＳＴ）",
+    "information": [
+      {
+        "lastName": "原",
+        "firstName": "晴悟",
+        "team": "出雲ＪＳＴ",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "原_晴悟_出雲ＪＳＴ"
+      },
+      {
+        "lastName": "勝部",
+        "firstName": "蒼大",
+        "team": "出雲ＪＳＴ",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "勝部_蒼大_出雲ＪＳＴ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 479,
+    "name": "師井・三木（明石ジュニア）",
+    "information": [
+      {
+        "lastName": "師井",
+        "firstName": "健多",
+        "team": "明石ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "師井_健多_明石ジュニア"
+      },
+      {
+        "lastName": "三木",
+        "firstName": "彬史",
+        "team": "相生ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "三木_彬史_相生ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 480,
+    "name": "𠮷野・能任（河北台キッズ）",
+    "information": [
+      {
+        "lastName": "𠮷野",
+        "firstName": "朝登",
+        "team": "河北台キッズ",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "𠮷野_朝登_河北台キッズ"
+      },
+      {
+        "lastName": "能任",
+        "firstName": "勇翔",
+        "team": "河北台キッズ",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "能任_勇翔_河北台キッズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 481,
+    "name": "山﨑・平田（桜ジュニア）",
+    "information": [
+      {
+        "lastName": "山﨑",
+        "firstName": "湊太",
+        "team": "桜ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "山﨑_湊太_桜ジュニア"
+      },
+      {
+        "lastName": "平田",
+        "firstName": "安慈",
+        "team": "桜ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "平田_安慈_桜ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 482,
+    "name": "志賀・渡辺（はまともジュニア）",
+    "information": [
+      {
+        "lastName": "志賀",
+        "firstName": "蓮人",
+        "team": "はまともジュニア",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "志賀_蓮人_はまともジュニア"
+      },
+      {
+        "lastName": "渡辺",
+        "firstName": "瑛斗",
+        "team": "はまともジュニア",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "渡辺_瑛斗_はまともジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 483,
+    "name": "熊澤・吉賀（エナジーＪＳＴＣ）",
+    "information": [
+      {
+        "lastName": "熊澤",
+        "firstName": "賢人",
+        "team": "エナジーＪＳＴＣ",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "熊澤_賢人_エナジーＪＳＴＣ"
+      },
+      {
+        "lastName": "吉賀",
+        "firstName": "丈翔",
+        "team": "エナジーＪＳＴＣ",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "吉賀_丈翔_エナジーＪＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 484,
+    "name": "下山・笠井（群馬町ジュニア倶楽部）",
+    "information": [
+      {
+        "lastName": "下山",
+        "firstName": "紘平",
+        "team": "群馬町ジュニア倶楽部",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "下山_紘平_群馬町ジュニア倶楽部"
+      },
+      {
+        "lastName": "笠井",
+        "firstName": "蓮太",
+        "team": "群馬町ジュニア倶楽部",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "笠井_蓮太_群馬町ジュニア倶楽部"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 485,
+    "name": "伏見・磯部（有度山ジュニア）",
+    "information": [
+      {
+        "lastName": "伏見",
+        "firstName": "光喜",
+        "team": "有度山ジュニア",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "伏見_光喜_有度山ジュニア"
+      },
+      {
+        "lastName": "磯部",
+        "firstName": "優来",
+        "team": "蒲原スポ少部門",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "磯部_優来_蒲原スポ少部門"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 486,
+    "name": "神蔵・上野（大磯ジュニア）",
+    "information": [
+      {
+        "lastName": "神蔵",
+        "firstName": "夏樹",
+        "team": "大磯ジュニア",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "神蔵_夏樹_大磯ジュニア"
+      },
+      {
+        "lastName": "上野",
+        "firstName": "暉介",
+        "team": "横須賀Ｄｒｅａｍスポ少",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "上野_暉介_横須賀Ｄｒｅａｍスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 487,
+    "name": "中川・蔭山（堺市スポ少）",
+    "information": [
+      {
+        "lastName": "中川",
+        "firstName": "大聖",
+        "team": "堺市スポ少",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "中川_大聖_堺市スポ少"
+      },
+      {
+        "lastName": "蔭山",
+        "firstName": "翼",
+        "team": "堺市スポ少",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "蔭山_翼_堺市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 488,
+    "name": "新垣・松山（宮崎ジュニア）",
+    "information": [
+      {
+        "lastName": "新垣",
+        "firstName": "澄",
+        "team": "宮崎ジュニア",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "新垣_澄_宮崎ジュニア"
+      },
+      {
+        "lastName": "松山",
+        "firstName": "歩弘",
+        "team": "宮崎ジュニア",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "松山_歩弘_宮崎ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 489,
+    "name": "村上・小澤（秋田市ジュニア）",
+    "information": [
+      {
+        "lastName": "村上",
+        "firstName": "結晴",
+        "team": "秋田市ジュニア",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "村上_結晴_秋田市ジュニア"
+      },
+      {
+        "lastName": "小澤",
+        "firstName": "礼慈",
+        "team": "三種STC",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "小澤_礼慈_三種STC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 490,
+    "name": "九澤・桑江（砺波）",
+    "information": [
+      {
+        "lastName": "九澤",
+        "firstName": "佳叶",
+        "team": "砺波",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "九澤_佳叶_砺波"
+      },
+      {
+        "lastName": "桑江",
+        "firstName": "湊大",
+        "team": "砺波",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "桑江_湊大_砺波"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 491,
+    "name": "山田・中島（岡崎ジュニア）",
+    "information": [
+      {
+        "lastName": "山田",
+        "firstName": "佑人",
+        "team": "岡崎ジュニア",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "山田_佑人_岡崎ジュニア"
+      },
+      {
+        "lastName": "中島",
+        "firstName": "悠翔",
+        "team": "ＴＥＡＭＮＥＸＵＳ",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "中島_悠翔_ＴＥＡＭＮＥＸＵＳ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 492,
+    "name": "千葉・藤田（北上ジュニアスポ少）",
+    "information": [
+      {
+        "lastName": "千葉",
+        "firstName": "太陽",
+        "team": "北上ジュニアスポ少",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "千葉_太陽_北上ジュニアスポ少"
+      },
+      {
+        "lastName": "藤田",
+        "firstName": "挙司郎",
+        "team": "北上ジュニアスポ少",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "藤田_挙司郎_北上ジュニアスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 493,
+    "name": "本田・德吉（川内スポーツ01）",
+    "information": [
+      {
+        "lastName": "本田",
+        "firstName": "悠人",
+        "team": "川内スポーツ01",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "本田_悠人_川内スポーツ01"
+      },
+      {
+        "lastName": "德吉",
+        "firstName": "輝大",
+        "team": "青葉ジュニア",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "德吉_輝大_青葉ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 494,
+    "name": "井出・酒井（伊勢原ジュニア）",
+    "information": [
+      {
+        "lastName": "井出",
+        "firstName": "悠大",
+        "team": "伊勢原ジュニア",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "井出_悠大_伊勢原ジュニア"
+      },
+      {
+        "lastName": "酒井",
+        "firstName": "陽多",
+        "team": "茅ヶ崎",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "酒井_陽多_茅ヶ崎"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 495,
+    "name": "坂本・大蔵（砺波）",
+    "information": [
+      {
+        "lastName": "坂本",
+        "firstName": "航大",
+        "team": "砺波",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "坂本_航大_砺波"
+      },
+      {
+        "lastName": "大蔵",
+        "firstName": "悠聖",
+        "team": "砺波",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "大蔵_悠聖_砺波"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 496,
+    "name": "押川・岩城（川南スポ少）",
+    "information": [
+      {
+        "lastName": "押川",
+        "firstName": "陽紀",
+        "team": "川南スポ少",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "押川_陽紀_川南スポ少"
+      },
+      {
+        "lastName": "岩城",
+        "firstName": "青波",
+        "team": "飫肥ジュニア",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "岩城_青波_飫肥ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 497,
+    "name": "佐藤・杉谷（船橋ジュニア）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "央都",
+        "team": "船橋ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "佐藤_央都_船橋ジュニア"
+      },
+      {
+        "lastName": "杉谷",
+        "firstName": "勇征",
+        "team": "さんぶジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "杉谷_勇征_さんぶジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 498,
+    "name": "赤尾・長海（水口ジュニア）",
+    "information": [
+      {
+        "lastName": "赤尾",
+        "firstName": "恒政",
+        "team": "水口ジュニア",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "赤尾_恒政_水口ジュニア"
+      },
+      {
+        "lastName": "長海",
+        "firstName": "ケイト",
+        "team": "水口ジュニア",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "長海_ケイト_水口ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 499,
+    "name": "澤山・林（北広島市スポ少）",
+    "information": [
+      {
+        "lastName": "澤山",
+        "firstName": "寛二",
+        "team": "北広島市スポ少",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "澤山_寛二_北広島市スポ少"
+      },
+      {
+        "lastName": "林",
+        "firstName": "佳亮",
+        "team": "北広島市スポ少",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "林_佳亮_北広島市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 500,
+    "name": "串間・上山（永源）",
+    "information": [
+      {
+        "lastName": "串間",
+        "firstName": "洸那",
+        "team": "永源",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "串間_洸那_永源"
+      },
+      {
+        "lastName": "上山",
+        "firstName": "遥輝",
+        "team": "永源",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "上山_遥輝_永源"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 501,
+    "name": "竹本・安波（堺市スポ少）",
+    "information": [
+      {
+        "lastName": "竹本",
+        "firstName": "亮祐",
+        "team": "堺市スポ少",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "竹本_亮祐_堺市スポ少"
+      },
+      {
+        "lastName": "安波",
+        "firstName": "寿連",
+        "team": "堺市スポ少",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "安波_寿連_堺市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 502,
+    "name": "梅林・下前（江府小）",
+    "information": [
+      {
+        "lastName": "梅林",
+        "firstName": "蓮",
+        "team": "江府小",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "梅林_蓮_江府小"
+      },
+      {
+        "lastName": "下前",
+        "firstName": "太登",
+        "team": "伯耆ＳＴＣ",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "下前_太登_伯耆ＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 503,
+    "name": "薄井・長嶋（テニ研ジュニア）",
+    "information": [
+      {
+        "lastName": "薄井",
+        "firstName": "悠陽",
+        "team": "テニ研ジュニア",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "薄井_悠陽_テニ研ジュニア"
+      },
+      {
+        "lastName": "長嶋",
+        "firstName": "隼輝",
+        "team": "喜多方少年団",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "長嶋_隼輝_喜多方少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 504,
+    "name": "山本・大澤（今治S.O.Cジュニア）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "礼都",
+        "team": "今治S.O.Cジュニア",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "山本_礼都_今治S.O.Cジュニア"
+      },
+      {
+        "lastName": "大澤",
+        "firstName": "勢",
+        "team": "今治S.O.Cジュニア",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "大澤_勢_今治S.O.Cジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 505,
+    "name": "山内・山中（あかぼりＪＳＴ）",
+    "information": [
+      {
+        "lastName": "山内",
+        "firstName": "達己",
+        "team": "あかぼりＪＳＴ",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "山内_達己_あかぼりＪＳＴ"
+      },
+      {
+        "lastName": "山中",
+        "firstName": "俊太",
+        "team": "あかぼりＪＳＴ",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "山中_俊太_あかぼりＪＳＴ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 506,
+    "name": "西村・山田（広島土曜ジュニア）",
+    "information": [
+      {
+        "lastName": "西村",
+        "firstName": "空",
+        "team": "広島土曜ジュニア",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "西村_空_広島土曜ジュニア"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "晴翔",
+        "team": "広島土曜ジュニア",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "山田_晴翔_広島土曜ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 507,
+    "name": "髙吉・松尾（大村なんてジュニア）",
+    "information": [
+      {
+        "lastName": "髙吉",
+        "firstName": "慧斗",
+        "team": "大村なんてジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "髙吉_慧斗_大村なんてジュニア"
+      },
+      {
+        "lastName": "松尾",
+        "firstName": "幸大",
+        "team": "大村なんてジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "松尾_幸大_大村なんてジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 508,
+    "name": "庄司・清水（都留ジュニア）",
+    "information": [
+      {
+        "lastName": "庄司",
+        "firstName": "登理",
+        "team": "都留ジュニア",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "庄司_登理_都留ジュニア"
+      },
+      {
+        "lastName": "清水",
+        "firstName": "奏良",
+        "team": "一宮町スポ少",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "清水_奏良_一宮町スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 509,
+    "name": "小西・九鬼（貴志川ジュニア）",
+    "information": [
+      {
+        "lastName": "小西",
+        "firstName": "琥太",
+        "team": "貴志川ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "小西_琥太_貴志川ジュニア"
+      },
+      {
+        "lastName": "九鬼",
+        "firstName": "良太",
+        "team": "貴志川ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "九鬼_良太_貴志川ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 510,
+    "name": "平岡・田野（大用ジュニア）",
+    "information": [
+      {
+        "lastName": "平岡",
+        "firstName": "湊大",
+        "team": "大用ジュニア",
+        "prefecture": "高知",
+        "playerId": null,
+        "tempId": "平岡_湊大_大用ジュニア"
+      },
+      {
+        "lastName": "田野",
+        "firstName": "成都",
+        "team": "大用ジュニア",
+        "prefecture": "高知",
+        "playerId": null,
+        "tempId": "田野_成都_大用ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 511,
+    "name": "柿木・橋本（長命ヶ丘ジュニア）",
+    "information": [
+      {
+        "lastName": "柿木",
+        "firstName": "遥太",
+        "team": "長命ヶ丘ジュニア",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "柿木_遥太_長命ヶ丘ジュニア"
+      },
+      {
+        "lastName": "橋本",
+        "firstName": "世輝",
+        "team": "北宮PSTC",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "橋本_世輝_北宮PSTC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 512,
+    "name": "中村・中村（小山）",
+    "information": [
+      {
+        "lastName": "中村",
+        "firstName": "柊希",
+        "team": "小山",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "中村_柊希_小山"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "壮希",
+        "team": "小山",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "中村_壮希_小山"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 513,
+    "name": "松﨑・瀬戸口（桜ジュニア）",
+    "information": [
+      {
+        "lastName": "松﨑",
+        "firstName": "陽亮",
+        "team": "桜ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "松﨑_陽亮_桜ジュニア"
+      },
+      {
+        "lastName": "瀬戸口",
+        "firstName": "竜介",
+        "team": "桜ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "瀬戸口_竜介_桜ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 514,
+    "name": "中山・中山（村上市スポ少）",
+    "information": [
+      {
+        "lastName": "中山",
+        "firstName": "智巴",
+        "team": "村上市スポ少",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "中山_智巴_村上市スポ少"
+      },
+      {
+        "lastName": "中山",
+        "firstName": "翔矢",
+        "team": "燕スポ少",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "中山_翔矢_燕スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 515,
+    "name": "古賀・外岡（韮山ジュニア）",
+    "information": [
+      {
+        "lastName": "古賀",
+        "firstName": "伊織",
+        "team": "韮山ジュニア",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "古賀_伊織_韮山ジュニア"
+      },
+      {
+        "lastName": "外岡",
+        "firstName": "碧",
+        "team": "河津ジュニア",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "外岡_碧_河津ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 516,
+    "name": "井上・松本（王寺ジュニア）",
+    "information": [
+      {
+        "lastName": "井上",
+        "firstName": "航太朗",
+        "team": "王寺ジュニア",
+        "prefecture": "奈良",
+        "playerId": null,
+        "tempId": "井上_航太朗_王寺ジュニア"
+      },
+      {
+        "lastName": "松本",
+        "firstName": "陽明",
+        "team": "王寺ジュニア",
+        "prefecture": "奈良",
+        "playerId": null,
+        "tempId": "松本_陽明_王寺ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 517,
+    "name": "平等・森山（大社スポ少）",
+    "information": [
+      {
+        "lastName": "平等",
+        "firstName": "歩夢",
+        "team": "大社スポ少",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "平等_歩夢_大社スポ少"
+      },
+      {
+        "lastName": "森山",
+        "firstName": "涼太",
+        "team": "大社スポ少",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "森山_涼太_大社スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 518,
+    "name": "黒川・早乙（下妻Ｊｒ．）",
+    "information": [
+      {
+        "lastName": "黒川",
+        "firstName": "蒼真",
+        "team": "下妻Ｊｒ．",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "黒川_蒼真_下妻Ｊｒ．"
+      },
+      {
+        "lastName": "早乙",
+        "firstName": "女颯",
+        "team": "下妻Ｊｒ．",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "早乙_女颯_下妻Ｊｒ．"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 519,
+    "name": "松川・谷（丸岡町スポ少）",
+    "information": [
+      {
+        "lastName": "松川",
+        "firstName": "徹信",
+        "team": "丸岡町スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "松川_徹信_丸岡町スポ少"
+      },
+      {
+        "lastName": "谷",
+        "firstName": "光琉",
+        "team": "丸岡町スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "谷_光琉_丸岡町スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 520,
+    "name": "田村・酒見（玉名ジュニア）",
+    "information": [
+      {
+        "lastName": "田村",
+        "firstName": "傑嗣",
+        "team": "玉名ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "田村_傑嗣_玉名ジュニア"
+      },
+      {
+        "lastName": "酒見",
+        "firstName": "泰斗",
+        "team": "南関ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "酒見_泰斗_南関ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 521,
+    "name": "梶原・竹田（カブトの森Ｊｒ．）",
+    "information": [
+      {
+        "lastName": "梶原",
+        "firstName": "湊",
+        "team": "カブトの森Ｊｒ．",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "梶原_湊_カブトの森Ｊｒ．"
+      },
+      {
+        "lastName": "竹田",
+        "firstName": "雅善",
+        "team": "カブトの森Ｊｒ．",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "竹田_雅善_カブトの森Ｊｒ．"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 522,
+    "name": "上條・下山（しもきたＳＴＣ）",
+    "information": [
+      {
+        "lastName": "上條",
+        "firstName": "蒼波",
+        "team": "しもきたＳＴＣ",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "上條_蒼波_しもきたＳＴＣ"
+      },
+      {
+        "lastName": "下山",
+        "firstName": "侑楽",
+        "team": "弘前あすなろジュニア",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "下山_侑楽_弘前あすなろジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 523,
+    "name": "石井・大槻（東松山ジュニア）",
+    "information": [
+      {
+        "lastName": "石井",
+        "firstName": "悠也",
+        "team": "東松山ジュニア",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "石井_悠也_東松山ジュニア"
+      },
+      {
+        "lastName": "大槻",
+        "firstName": "陽利",
+        "team": "東松山ジュニア",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "大槻_陽利_東松山ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 524,
+    "name": "清水・丸山（長野ＪＳＴＣ）",
+    "information": [
+      {
+        "lastName": "清水",
+        "firstName": "暁文",
+        "team": "長野ＪＳＴＣ",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "清水_暁文_長野ＪＳＴＣ"
+      },
+      {
+        "lastName": "丸山",
+        "firstName": "滉介",
+        "team": "長野ＪＳＴＣ",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "丸山_滉介_長野ＪＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 525,
+    "name": "高尾・山田（多治見ジュニア）",
+    "information": [
+      {
+        "lastName": "高尾",
+        "firstName": "颯真",
+        "team": "多治見ジュニア",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "高尾_颯真_多治見ジュニア"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "新汰",
+        "team": "多治見ジュニア",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "山田_新汰_多治見ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 526,
+    "name": "金瀬戸・出村（野々市ジュニア）",
+    "information": [
+      {
+        "lastName": "金瀬戸",
+        "firstName": "皇史",
+        "team": "野々市ジュニア",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "金瀬戸_皇史_野々市ジュニア"
+      },
+      {
+        "lastName": "出村",
+        "firstName": "悠吏",
+        "team": "野々市ジュニア",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "出村_悠吏_野々市ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 527,
+    "name": "濱・柴田（稲城ジュニア）",
+    "information": [
+      {
+        "lastName": "濱",
+        "firstName": "蓮叶",
+        "team": "稲城ジュニア",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "濱_蓮叶_稲城ジュニア"
+      },
+      {
+        "lastName": "柴田",
+        "firstName": "恭利",
+        "team": "稲城ジュニア",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "柴田_恭利_稲城ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 528,
+    "name": "渋谷・和田（Ｊ－Ｋｉｄｓ）",
+    "information": [
+      {
+        "lastName": "渋谷",
+        "firstName": "優心",
+        "team": "Ｊ－Ｋｉｄｓ",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "渋谷_優心_Ｊ－Ｋｉｄｓ"
+      },
+      {
+        "lastName": "和田",
+        "firstName": "昊馬",
+        "team": "Ｊ－Ｋｉｄｓ",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "和田_昊馬_Ｊ－Ｋｉｄｓ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 529,
+    "name": "鈴木・村上（山形ジュニアスポ少）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "陽仁",
+        "team": "山形ジュニアスポ少",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "鈴木_陽仁_山形ジュニアスポ少"
+      },
+      {
+        "lastName": "村上",
+        "firstName": "斗真",
+        "team": "余目スポ少",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "村上_斗真_余目スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 530,
+    "name": "首藤・隈井（PUERICLUB）",
+    "information": [
+      {
+        "lastName": "首藤",
+        "firstName": "優誠",
+        "team": "PUERICLUB",
+        "prefecture": "大分",
+        "playerId": null,
+        "tempId": "首藤_優誠_PUERICLUB"
+      },
+      {
+        "lastName": "隈井",
+        "firstName": "七斗",
+        "team": "PUERICLUB",
+        "prefecture": "大分",
+        "playerId": null,
+        "tempId": "隈井_七斗_PUERICLUB"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 531,
+    "name": "渡邉・蓮沼（浦安ジュニア）",
+    "information": [
+      {
+        "lastName": "渡邉",
+        "firstName": "颯馬",
+        "team": "浦安ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "渡邉_颯馬_浦安ジュニア"
+      },
+      {
+        "lastName": "蓮沼",
+        "firstName": "大晴",
+        "team": "かずさスマイリーズ",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "蓮沼_大晴_かずさスマイリーズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 532,
+    "name": "桐山・山本（姫路ジュニア）",
+    "information": [
+      {
+        "lastName": "桐山",
+        "firstName": "莉基",
+        "team": "姫路ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "桐山_莉基_姫路ジュニア"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "稜士",
+        "team": "姫路ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "山本_稜士_姫路ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 533,
+    "name": "多田・村岡（瀬戸ジュニア）",
+    "information": [
+      {
+        "lastName": "多田",
+        "firstName": "伊織",
+        "team": "瀬戸ジュニア",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "多田_伊織_瀬戸ジュニア"
+      },
+      {
+        "lastName": "村岡",
+        "firstName": "大地",
+        "team": "瀬戸ジュニア",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "村岡_大地_瀬戸ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 534,
+    "name": "田ヶ原・野北（伊勢ジュニア）",
+    "information": [
+      {
+        "lastName": "田ヶ原",
+        "firstName": "大地",
+        "team": "伊勢ジュニア",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "田ヶ原_大地_伊勢ジュニア"
+      },
+      {
+        "lastName": "野北",
+        "firstName": "幸雅",
+        "team": "伊勢ジュニア",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "野北_幸雅_伊勢ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 535,
+    "name": "伊藤・江橋（大館市協会）",
+    "information": [
+      {
+        "lastName": "伊藤",
+        "firstName": "颯彦",
+        "team": "大館市協会",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "伊藤_颯彦_大館市協会"
+      },
+      {
+        "lastName": "江橋",
+        "firstName": "樹",
+        "team": "仙北市ジュニア",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "江橋_樹_仙北市ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 536,
+    "name": "青木・渡邉（いわきジュニアスポ少）",
+    "information": [
+      {
+        "lastName": "青木",
+        "firstName": "煌士郎",
+        "team": "いわきジュニアスポ少",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "青木_煌士郎_いわきジュニアスポ少"
+      },
+      {
+        "lastName": "渡邉",
+        "firstName": "瑛大",
+        "team": "いわきジュニアスポ少",
+        "prefecture": "福島",
+        "playerId": null,
+        "tempId": "渡邉_瑛大_いわきジュニアスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 537,
+    "name": "増田・田代（Ｔ－フォースｊｒ．ラボ）",
+    "information": [
+      {
+        "lastName": "増田",
+        "firstName": "圭登",
+        "team": "Ｔ－フォースｊｒ．ラボ",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "増田_圭登_Ｔ－フォースｊｒ．ラボ"
+      },
+      {
+        "lastName": "田代",
+        "firstName": "颯太",
+        "team": "Ｔ－フォースｊｒ．ラボ",
+        "prefecture": "群馬",
+        "playerId": null,
+        "tempId": "田代_颯太_Ｔ－フォースｊｒ．ラボ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 538,
+    "name": "小堀・大石（氷見ジュニア）",
+    "information": [
+      {
+        "lastName": "小堀",
+        "firstName": "蒼生",
+        "team": "氷見ジュニア",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "小堀_蒼生_氷見ジュニア"
+      },
+      {
+        "lastName": "大石",
+        "firstName": "莉久",
+        "team": "氷見ジュニア",
+        "prefecture": "富山",
+        "playerId": null,
+        "tempId": "大石_莉久_氷見ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 539,
+    "name": "松尾・行徳（嬉野塩田ジュニア）",
+    "information": [
+      {
+        "lastName": "松尾",
+        "firstName": "駿",
+        "team": "嬉野塩田ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "松尾_駿_嬉野塩田ジュニア"
+      },
+      {
+        "lastName": "行徳",
+        "firstName": "篤人",
+        "team": "嬉野塩田ジュニア",
+        "prefecture": "佐賀",
+        "playerId": null,
+        "tempId": "行徳_篤人_嬉野塩田ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 540,
+    "name": "日高・坂田（はすみスポ少）",
+    "information": [
+      {
+        "lastName": "日高",
+        "firstName": "颯人",
+        "team": "はすみスポ少",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "日高_颯人_はすみスポ少"
+      },
+      {
+        "lastName": "坂田",
+        "firstName": "一成",
+        "team": "はすみスポ少",
+        "prefecture": "島根",
+        "playerId": null,
+        "tempId": "坂田_一成_はすみスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 541,
+    "name": "宇都木・中島（古河北利根ジュニア）",
+    "information": [
+      {
+        "lastName": "宇都木",
+        "firstName": "晟李",
+        "team": "古河北利根ジュニア",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "宇都木_晟李_古河北利根ジュニア"
+      },
+      {
+        "lastName": "中島",
+        "firstName": "悠輝",
+        "team": "古河北利根ジュニア",
+        "prefecture": "茨城",
+        "playerId": null,
+        "tempId": "中島_悠輝_古河北利根ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 542,
+    "name": "古牧・伊藤（ｄｏｕｘ）",
+    "information": [
+      {
+        "lastName": "古牧",
+        "firstName": "桜輝",
+        "team": "ｄｏｕｘ",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "古牧_桜輝_ｄｏｕｘ"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "翼",
+        "team": "牧之原スポ少",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "伊藤_翼_牧之原スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 543,
+    "name": "竹中・足立（絆）",
+    "information": [
+      {
+        "lastName": "竹中",
+        "firstName": "建貴",
+        "team": "絆",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "竹中_建貴_絆"
+      },
+      {
+        "lastName": "足立",
+        "firstName": "夏生",
+        "team": "スターキッズ",
+        "prefecture": "宮崎",
+        "playerId": null,
+        "tempId": "足立_夏生_スターキッズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 544,
+    "name": "藤井・井浦（新津ジュニア教室）",
+    "information": [
+      {
+        "lastName": "藤井",
+        "firstName": "隼也",
+        "team": "新津ジュニア教室",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "藤井_隼也_新津ジュニア教室"
+      },
+      {
+        "lastName": "井浦",
+        "firstName": "雄心",
+        "team": "新津ジュニア教室",
+        "prefecture": "新潟",
+        "playerId": null,
+        "tempId": "井浦_雄心_新津ジュニア教室"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 545,
+    "name": "谷出・森永（宇治ジュニア）",
+    "information": [
+      {
+        "lastName": "谷出",
+        "firstName": "光優",
+        "team": "宇治ジュニア",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "谷出_光優_宇治ジュニア"
+      },
+      {
+        "lastName": "森永",
+        "firstName": "晄生",
+        "team": "城陽ジュニア",
+        "prefecture": "京都",
+        "playerId": null,
+        "tempId": "森永_晄生_城陽ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 546,
+    "name": "林旺・徳田（守山ジュニア）",
+    "information": [
+      {
+        "lastName": "林旺",
+        "firstName": "次郎",
+        "team": "守山ジュニア",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "林旺_次郎_守山ジュニア"
+      },
+      {
+        "lastName": "徳田",
+        "firstName": "晄大",
+        "team": "安土ジュニアＳＴスポ少",
+        "prefecture": "滋賀",
+        "playerId": null,
+        "tempId": "徳田_晄大_安土ジュニアＳＴスポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 547,
+    "name": "小山・山口（河北台キッズ）",
+    "information": [
+      {
+        "lastName": "小山",
+        "firstName": "陽",
+        "team": "河北台キッズ",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "小山_陽_河北台キッズ"
+      },
+      {
+        "lastName": "山口",
+        "firstName": "莉士",
+        "team": "河北台キッズ",
+        "prefecture": "石川",
+        "playerId": null,
+        "tempId": "山口_莉士_河北台キッズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 548,
+    "name": "河合・細井（岐南ジュニア）",
+    "information": [
+      {
+        "lastName": "河合",
+        "firstName": "悠真",
+        "team": "岐南ジュニア",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "河合_悠真_岐南ジュニア"
+      },
+      {
+        "lastName": "細井",
+        "firstName": "悠真",
+        "team": "岐南ジュニア",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "細井_悠真_岐南ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 549,
+    "name": "富岡・髙橋（FSTA）",
+    "information": [
+      {
+        "lastName": "富岡",
+        "firstName": "大翔",
+        "team": "FSTA",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "富岡_大翔_FSTA"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "樹生",
+        "team": "小竹小",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "髙橋_樹生_小竹小"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 550,
+    "name": "戸川・髙栁（長中）",
+    "information": [
+      {
+        "lastName": "戸川",
+        "firstName": "佑友",
+        "team": "長中",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "戸川_佑友_長中"
+      },
+      {
+        "lastName": "髙栁",
+        "firstName": "祐月",
+        "team": "久慈スポ少",
+        "prefecture": "岩手",
+        "playerId": null,
+        "tempId": "髙栁_祐月_久慈スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 551,
+    "name": "飯田・飯田（国見ジュニア）",
+    "information": [
+      {
+        "lastName": "飯田",
+        "firstName": "将真",
+        "team": "国見ジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "飯田_将真_国見ジュニア"
+      },
+      {
+        "lastName": "飯田",
+        "firstName": "結太",
+        "team": "国見ジュニア",
+        "prefecture": "長崎",
+        "playerId": null,
+        "tempId": "飯田_結太_国見ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 552,
+    "name": "日下・及川（SKD）",
+    "information": [
+      {
+        "lastName": "日下",
+        "firstName": "彪牙",
+        "team": "SKD",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "日下_彪牙_SKD"
+      },
+      {
+        "lastName": "及川",
+        "firstName": "快晴",
+        "team": "小牛田ＳＴ",
+        "prefecture": "宮城",
+        "playerId": null,
+        "tempId": "及川_快晴_小牛田ＳＴ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 553,
+    "name": "岩井・三森（奈良ＵＳＪ）",
+    "information": [
+      {
+        "lastName": "岩井",
+        "firstName": "優樹",
+        "team": "奈良ＵＳＪ",
+        "prefecture": "奈良",
+        "playerId": null,
+        "tempId": "岩井_優樹_奈良ＵＳＪ"
+      },
+      {
+        "lastName": "三森",
+        "firstName": "凰誠",
+        "team": "奈良ＵＳＪ",
+        "prefecture": "奈良",
+        "playerId": null,
+        "tempId": "三森_凰誠_奈良ＵＳＪ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 554,
+    "name": "林・岩成（明道スポ少部）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "慶次",
+        "team": "明道スポ少部",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "林_慶次_明道スポ少部"
+      },
+      {
+        "lastName": "岩成",
+        "firstName": "愛騎",
+        "team": "江府小",
+        "prefecture": "鳥取",
+        "playerId": null,
+        "tempId": "岩成_愛騎_江府小"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 555,
+    "name": "高野・三宅（手賀沼ジュニア）",
+    "information": [
+      {
+        "lastName": "高野",
+        "firstName": "耀悠",
+        "team": "手賀沼ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "高野_耀悠_手賀沼ジュニア"
+      },
+      {
+        "lastName": "三宅",
+        "firstName": "湊仁",
+        "team": "手賀沼ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "三宅_湊仁_手賀沼ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 556,
+    "name": "渡邉・塚越（杉戸ジュニアスポ少）",
+    "information": [
+      {
+        "lastName": "渡邉",
+        "firstName": "凛太郎",
+        "team": "杉戸ジュニアスポ少",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "渡邉_凛太郎_杉戸ジュニアスポ少"
+      },
+      {
+        "lastName": "塚越",
+        "firstName": "悠太",
+        "team": "深谷スキャリオン",
+        "prefecture": "埼玉",
+        "playerId": null,
+        "tempId": "塚越_悠太_深谷スキャリオン"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 557,
+    "name": "稗・木村（波方ジュニア）",
+    "information": [
+      {
+        "lastName": "稗",
+        "firstName": "翔太",
+        "team": "波方ジュニア",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "稗_翔太_波方ジュニア"
+      },
+      {
+        "lastName": "木村",
+        "firstName": "碧斗",
+        "team": "波方ジュニア",
+        "prefecture": "愛媛",
+        "playerId": null,
+        "tempId": "木村_碧斗_波方ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 558,
+    "name": "西岡・出口（武生スポ少）",
+    "information": [
+      {
+        "lastName": "西岡",
+        "firstName": "光",
+        "team": "武生スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "西岡_光_武生スポ少"
+      },
+      {
+        "lastName": "出口",
+        "firstName": "拓磨",
+        "team": "武生スポ少",
+        "prefecture": "福井",
+        "playerId": null,
+        "tempId": "出口_拓磨_武生スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 559,
+    "name": "杉原・廣澤（原スポ少）",
+    "information": [
+      {
+        "lastName": "杉原",
+        "firstName": "章仁",
+        "team": "原スポ少",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "杉原_章仁_原スポ少"
+      },
+      {
+        "lastName": "廣澤",
+        "firstName": "慶",
+        "team": "原スポ少",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "廣澤_慶_原スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 560,
+    "name": "青木・池頭（吉野少年団）",
+    "information": [
+      {
+        "lastName": "青木",
+        "firstName": "煌聖",
+        "team": "吉野少年団",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "青木_煌聖_吉野少年団"
+      },
+      {
+        "lastName": "池頭",
+        "firstName": "諒哉",
+        "team": "吉野少年団",
+        "prefecture": "児島",
+        "playerId": null,
+        "tempId": "池頭_諒哉_吉野少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 561,
+    "name": "工藤・工藤（平川市スポ少）",
+    "information": [
+      {
+        "lastName": "工藤",
+        "firstName": "悠和",
+        "team": "平川市スポ少",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "工藤_悠和_平川市スポ少"
+      },
+      {
+        "lastName": "工藤",
+        "firstName": "雅大",
+        "team": "平川市スポ少",
+        "prefecture": "青森",
+        "playerId": null,
+        "tempId": "工藤_雅大_平川市スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 562,
+    "name": "寺杣・佐々木（金屋ジュニア）",
+    "information": [
+      {
+        "lastName": "寺杣",
+        "firstName": "拓海",
+        "team": "金屋ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "寺杣_拓海_金屋ジュニア"
+      },
+      {
+        "lastName": "佐々木",
+        "firstName": "稟和",
+        "team": "金屋ジュニア",
+        "prefecture": "歌山",
+        "playerId": null,
+        "tempId": "佐々木_稟和_金屋ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 563,
+    "name": "栗林・本田（一宮ジュニア）",
+    "information": [
+      {
+        "lastName": "栗林",
+        "firstName": "慧偉",
+        "team": "一宮ジュニア",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "栗林_慧偉_一宮ジュニア"
+      },
+      {
+        "lastName": "本田",
+        "firstName": "渉",
+        "team": "一宮ジュニア",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "本田_渉_一宮ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 564,
+    "name": "宮川・中尾（熊本春竹ジュニア）",
+    "information": [
+      {
+        "lastName": "宮川",
+        "firstName": "仁萌也",
+        "team": "熊本春竹ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "宮川_仁萌也_熊本春竹ジュニア"
+      },
+      {
+        "lastName": "中尾",
+        "firstName": "梓真",
+        "team": "熊本春竹ジュニア",
+        "prefecture": "熊本",
+        "playerId": null,
+        "tempId": "中尾_梓真_熊本春竹ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 565,
+    "name": "馬場・髙橋（野木）",
+    "information": [
+      {
+        "lastName": "馬場",
+        "firstName": "直汰郎",
+        "team": "野木",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "馬場_直汰郎_野木"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "亮至",
+        "team": "野木",
+        "prefecture": "栃木",
+        "playerId": null,
+        "tempId": "髙橋_亮至_野木"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 566,
+    "name": "村岡・堀田（ももっち岡山ジュニア）",
+    "information": [
+      {
+        "lastName": "村岡",
+        "firstName": "瑛介",
+        "team": "ももっち岡山ジュニア",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "村岡_瑛介_ももっち岡山ジュニア"
+      },
+      {
+        "lastName": "堀田",
+        "firstName": "維槻",
+        "team": "ももっち岡山ジュニア",
+        "prefecture": "岡山",
+        "playerId": null,
+        "tempId": "堀田_維槻_ももっち岡山ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 567,
+    "name": "田口・菊池（白神ジュニア）",
+    "information": [
+      {
+        "lastName": "田口",
+        "firstName": "新大",
+        "team": "白神ジュニア",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "田口_新大_白神ジュニア"
+      },
+      {
+        "lastName": "菊池",
+        "firstName": "央佑",
+        "team": "白神ジュニア",
+        "prefecture": "秋田",
+        "playerId": null,
+        "tempId": "菊池_央佑_白神ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 568,
+    "name": "崎田・小林（竜王ジュニア）",
+    "information": [
+      {
+        "lastName": "崎田",
+        "firstName": "樹",
+        "team": "竜王ジュニア",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "崎田_樹_竜王ジュニア"
+      },
+      {
+        "lastName": "小林",
+        "firstName": "駿太",
+        "team": "双葉ジュニア",
+        "prefecture": "山梨",
+        "playerId": null,
+        "tempId": "小林_駿太_双葉ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 569,
+    "name": "大橋・宮川（北広島市スポ少）",
+    "information": [
+      {
+        "lastName": "大橋",
+        "firstName": "燈人",
+        "team": "北広島市スポ少",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "大橋_燈人_北広島市スポ少"
+      },
+      {
+        "lastName": "宮川",
+        "firstName": "結斗",
+        "team": "野幌少年団",
+        "prefecture": "海道",
+        "playerId": null,
+        "tempId": "宮川_結斗_野幌少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 570,
+    "name": "宮城・伊波（玉城）",
+    "information": [
+      {
+        "lastName": "宮城",
+        "firstName": "満",
+        "team": "玉城",
+        "prefecture": "沖縄",
+        "playerId": null,
+        "tempId": "宮城_満_玉城"
+      },
+      {
+        "lastName": "伊波",
+        "firstName": "寛南",
+        "team": "宮古島パニパニジュニア",
+        "prefecture": "沖縄",
+        "playerId": null,
+        "tempId": "伊波_寛南_宮古島パニパニジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 571,
+    "name": "河野・浅野（青藍ジュニア）",
+    "information": [
+      {
+        "lastName": "河野",
+        "firstName": "琥心",
+        "team": "青藍ジュニア",
+        "prefecture": "香川",
+        "playerId": null,
+        "tempId": "河野_琥心_青藍ジュニア"
+      },
+      {
+        "lastName": "浅野",
+        "firstName": "登稀",
+        "team": "豊中小学生",
+        "prefecture": "香川",
+        "playerId": null,
+        "tempId": "浅野_登稀_豊中小学生"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 572,
+    "name": "服部・松尾（阪南ジュニア）",
+    "information": [
+      {
+        "lastName": "服部",
+        "firstName": "一颯",
+        "team": "阪南ジュニア",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "服部_一颯_阪南ジュニア"
+      },
+      {
+        "lastName": "松尾",
+        "firstName": "海音",
+        "team": "阪南ジュニア",
+        "prefecture": "大阪",
+        "playerId": null,
+        "tempId": "松尾_海音_阪南ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 573,
+    "name": "中野・中野（新星）",
+    "information": [
+      {
+        "lastName": "中野",
+        "firstName": "蒼琉",
+        "team": "新星",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "中野_蒼琉_新星"
+      },
+      {
+        "lastName": "中野",
+        "firstName": "譲士",
+        "team": "新星",
+        "prefecture": "福岡",
+        "playerId": null,
+        "tempId": "中野_譲士_新星"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 574,
+    "name": "相知・濱口（桑名ジュニア）",
+    "information": [
+      {
+        "lastName": "相知",
+        "firstName": "稜介",
+        "team": "桑名ジュニア",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "相知_稜介_桑名ジュニア"
+      },
+      {
+        "lastName": "濱口",
+        "firstName": "朝彦",
+        "team": "松阪ジュニア",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "濱口_朝彦_松阪ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 575,
+    "name": "奥山・戸田（川崎STC）",
+    "information": [
+      {
+        "lastName": "奥山",
+        "firstName": "雄太",
+        "team": "川崎STC",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "奥山_雄太_川崎STC"
+      },
+      {
+        "lastName": "戸田",
+        "firstName": "羚太",
+        "team": "川崎STC",
+        "prefecture": "奈川",
+        "playerId": null,
+        "tempId": "戸田_羚太_川崎STC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 576,
+    "name": "大坪・西川（伊丹ジュニア）",
+    "information": [
+      {
+        "lastName": "大坪",
+        "firstName": "想空",
+        "team": "伊丹ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "大坪_想空_伊丹ジュニア"
+      },
+      {
+        "lastName": "西川",
+        "firstName": "颯貴",
+        "team": "伊丹ジュニア",
+        "prefecture": "兵庫",
+        "playerId": null,
+        "tempId": "西川_颯貴_伊丹ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 577,
+    "name": "高木・南野（白子げんきジュニア）",
+    "information": [
+      {
+        "lastName": "高木",
+        "firstName": "優真",
+        "team": "白子げんきジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "高木_優真_白子げんきジュニア"
+      },
+      {
+        "lastName": "南野",
+        "firstName": "琉惺",
+        "team": "市原ジュニア",
+        "prefecture": "千葉",
+        "playerId": null,
+        "tempId": "南野_琉惺_市原ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 578,
+    "name": "石﨑・金子（山口ジュニア）",
+    "information": [
+      {
+        "lastName": "石﨑",
+        "firstName": "大翔",
+        "team": "山口ジュニア",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "石﨑_大翔_山口ジュニア"
+      },
+      {
+        "lastName": "金子",
+        "firstName": "慶信",
+        "team": "山口ジュニア",
+        "prefecture": "山口",
+        "playerId": null,
+        "tempId": "金子_慶信_山口ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 579,
+    "name": "藤木・舟山（スポ少山形）",
+    "information": [
+      {
+        "lastName": "藤木",
+        "firstName": "翼",
+        "team": "スポ少山形",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "藤木_翼_スポ少山形"
+      },
+      {
+        "lastName": "舟山",
+        "firstName": "司紗",
+        "team": "スポ少山形",
+        "prefecture": "山形",
+        "playerId": null,
+        "tempId": "舟山_司紗_スポ少山形"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 580,
+    "name": "山﨑・後藤（あづみ野）",
+    "information": [
+      {
+        "lastName": "山﨑",
+        "firstName": "蓮恩",
+        "team": "あづみ野",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "山﨑_蓮恩_あづみ野"
+      },
+      {
+        "lastName": "後藤",
+        "firstName": "翔万",
+        "team": "あづみ野",
+        "prefecture": "長野",
+        "playerId": null,
+        "tempId": "後藤_翔万_あづみ野"
+      }
+    ],
+    "category": "doubles"
+  }
 ]

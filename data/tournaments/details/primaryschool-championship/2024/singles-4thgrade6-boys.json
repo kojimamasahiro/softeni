@@ -1,60 +1,300 @@
 {
   "participants": [
-    {"id":"西森_達希_黒潮ジュニア_秋田県","lastName":"西森","firstName":"達希","team":"黒潮ジュニア","prefecture":"秋田県"},
-    {"id":"大泉_遼_比布町少年団_秋田県","lastName":"大泉","firstName":"遼","team":"比布町少年団","prefecture":"秋田県"},
-    {"id":"西原_翼_媛吹揚クラブスポーツ少年団_秋田県","lastName":"西原","firstName":"翼","team":"媛吹揚クラブスポーツ少年団","prefecture":"秋田県"},
-    {"id":"金森_竜也_出雲JST_秋田県","lastName":"金森","firstName":"竜也","team":"出雲JST","prefecture":"秋田県"},
-    {"id":"金田_晃輔_広島土曜クラブジュニア_秋田県","lastName":"金田","firstName":"晃輔","team":"広島土曜クラブジュニア","prefecture":"秋田県"},
-    {"id":"尾石_渉_上天草ジュニア_秋田県","lastName":"尾石","firstName":"渉","team":"上天草ジュニア","prefecture":"秋田県"},
-    {"id":"多田_圭吾_丸岡スポ少_秋田県","lastName":"多田","firstName":"圭吾","team":"丸岡スポ少","prefecture":"秋田県"},
-    {"id":"細川_和也_入田体育協会_秋田県","lastName":"細川","firstName":"和也","team":"入田体育協会","prefecture":"秋田県"},
-    {"id":"竹田_陽希_ダンディズム_秋田県","lastName":"竹田","firstName":"陽希","team":"ダンディズム","prefecture":"秋田県"},
-    {"id":"鹿野_隼矢_郡山ジュニア_秋田県","lastName":"鹿野","firstName":"隼矢","team":"郡山ジュニア","prefecture":"秋田県"},
-    {"id":"鈴木_瑛登_Willスポーツ_秋田県","lastName":"鈴木","firstName":"瑛登","team":"Willスポーツ","prefecture":"秋田県"},
-    {"id":"黒岩_瑞季_白根スポ少_秋田県","lastName":"黒岩","firstName":"瑞季","team":"白根スポ少","prefecture":"秋田県"},
-    {"id":"田中_清比呂_生ジュニアソフトテニスクラブ_秋田県","lastName":"田中","firstName":"清比呂","team":"生ジュニアソフトテニスクラブ","prefecture":"秋田県"},
-    {"id":"村上_遼弥_瑞穂ジュニアクラブ_秋田県","lastName":"村上","firstName":"遼弥","team":"瑞穂ジュニアクラブ","prefecture":"秋田県"},
-    {"id":"間庭_一樹_Ｔ－フォースjr._秋田県","lastName":"間庭","firstName":"一樹","team":"Ｔ－フォースjr.","prefecture":"秋田県"},
-    {"id":"飯田_創太_庄川ソフトテニス少年団_秋田県","lastName":"飯田","firstName":"創太","team":"庄川ソフトテニス少年団","prefecture":"秋田県"},
-    {"id":"甲斐_雅也_PUERICLUB_秋田県","lastName":"甲斐","firstName":"雅也","team":"PUERICLUB","prefecture":"秋田県"},
-    {"id":"藤田_陸人_黒石烏城ジュニア_秋田県","lastName":"藤田","firstName":"陸人","team":"黒石烏城ジュニア","prefecture":"秋田県"},
-    {"id":"徳嵩_颯人_長野JSTC_秋田県","lastName":"徳嵩","firstName":"颯人","team":"長野JSTC","prefecture":"秋田県"},
-    {"id":"川野_旬太郎_寺ジュニアソフトテニスクラブ_秋田県","lastName":"川野","firstName":"旬太郎","team":"寺ジュニアソフトテニスクラブ","prefecture":"秋田県"},
-    {"id":"富田_貫祐_秋田市ジュニア_秋田県","lastName":"富田","firstName":"貫祐","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"伊藤_海音_別府クラブ_秋田県","lastName":"伊藤","firstName":"海音","team":"別府クラブ","prefecture":"秋田県"},
-    {"id":"末野_凱仁_蔵王ジュニア_秋田県","lastName":"末野","firstName":"凱仁","team":"蔵王ジュニア","prefecture":"秋田県"},
-    {"id":"鈴木_瑛人_南房総ジュニア_秋田県","lastName":"鈴木","firstName":"瑛人","team":"南房総ジュニア","prefecture":"秋田県"}
+    {
+      "id": "西森_達希_黒潮ジュニア_秋田県",
+      "lastName": "西森",
+      "firstName": "達希",
+      "team": "黒潮ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "大泉_遼_比布町少年団_秋田県",
+      "lastName": "大泉",
+      "firstName": "遼",
+      "team": "比布町少年団",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "西原_翼_媛吹揚クラブスポーツ少年団_秋田県",
+      "lastName": "西原",
+      "firstName": "翼",
+      "team": "媛吹揚クラブスポーツ少年団",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "金森_竜也_出雲JST_秋田県",
+      "lastName": "金森",
+      "firstName": "竜也",
+      "team": "出雲JST",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "金田_晃輔_広島土曜クラブジュニア_秋田県",
+      "lastName": "金田",
+      "firstName": "晃輔",
+      "team": "広島土曜クラブジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "尾石_渉_上天草ジュニア_秋田県",
+      "lastName": "尾石",
+      "firstName": "渉",
+      "team": "上天草ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "多田_圭吾_丸岡スポ少_秋田県",
+      "lastName": "多田",
+      "firstName": "圭吾",
+      "team": "丸岡スポ少",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "細川_和也_入田体育協会_秋田県",
+      "lastName": "細川",
+      "firstName": "和也",
+      "team": "入田体育協会",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "竹田_陽希_ダンディズム_秋田県",
+      "lastName": "竹田",
+      "firstName": "陽希",
+      "team": "ダンディズム",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "鹿野_隼矢_郡山ジュニア_秋田県",
+      "lastName": "鹿野",
+      "firstName": "隼矢",
+      "team": "郡山ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "鈴木_瑛登_Willスポーツ_秋田県",
+      "lastName": "鈴木",
+      "firstName": "瑛登",
+      "team": "Willスポーツ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "黒岩_瑞季_白根スポ少_秋田県",
+      "lastName": "黒岩",
+      "firstName": "瑞季",
+      "team": "白根スポ少",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "田中_清比呂_生ジュニアソフトテニスクラブ_秋田県",
+      "lastName": "田中",
+      "firstName": "清比呂",
+      "team": "生ジュニアソフトテニスクラブ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "村上_遼弥_瑞穂ジュニアクラブ_秋田県",
+      "lastName": "村上",
+      "firstName": "遼弥",
+      "team": "瑞穂ジュニアクラブ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "間庭_一樹_Ｔ－フォースjr._秋田県",
+      "lastName": "間庭",
+      "firstName": "一樹",
+      "team": "Ｔ－フォースjr.",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "飯田_創太_庄川ソフトテニス少年団_秋田県",
+      "lastName": "飯田",
+      "firstName": "創太",
+      "team": "庄川ソフトテニス少年団",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "甲斐_雅也_PUERICLUB_秋田県",
+      "lastName": "甲斐",
+      "firstName": "雅也",
+      "team": "PUERICLUB",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "藤田_陸人_黒石烏城ジュニア_秋田県",
+      "lastName": "藤田",
+      "firstName": "陸人",
+      "team": "黒石烏城ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "徳嵩_颯人_長野JSTC_秋田県",
+      "lastName": "徳嵩",
+      "firstName": "颯人",
+      "team": "長野JSTC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "川野_旬太郎_寺ジュニアソフトテニスクラブ_秋田県",
+      "lastName": "川野",
+      "firstName": "旬太郎",
+      "team": "寺ジュニアソフトテニスクラブ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "富田_貫祐_秋田市ジュニア_秋田県",
+      "lastName": "富田",
+      "firstName": "貫祐",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "伊藤_海音_別府クラブ_秋田県",
+      "lastName": "伊藤",
+      "firstName": "海音",
+      "team": "別府クラブ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "末野_凱仁_蔵王ジュニア_秋田県",
+      "lastName": "末野",
+      "firstName": "凱仁",
+      "team": "蔵王ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "鈴木_瑛人_南房総ジュニア_秋田県",
+      "lastName": "鈴木",
+      "firstName": "瑛人",
+      "team": "南房総ジュニア",
+      "prefecture": "秋田県"
+    }
   ],
   "entries": [
-    {"entryNo":4,"playerIds":["甲斐_雅也_PUERICLUB_秋田県"],"type":"seed"},
-    {"entryNo":6,"playerIds":["大泉_遼_比布町少年団_秋田県"],"type":"packing"},
-    {"entryNo":11,"playerIds":["西森_達希_黒潮ジュニア_秋田県"],"type":"packing"},
-    {"entryNo":15,"playerIds":["金森_竜也_出雲JST_秋田県"],"type":"packing"},
-    {"entryNo":19,"playerIds":["西原_翼_媛吹揚クラブスポーツ少年団_秋田県"],"type":"packing"},
-    {"entryNo":23,"playerIds":["藤田_陸人_黒石烏城ジュニア_秋田県"],"type":"seed"},
-    {"entryNo":27,"playerIds":["徳嵩_颯人_長野JSTC_秋田県"],"type":"seed"},
-    {"entryNo":30,"playerIds":["尾石_渉_上天草ジュニア_秋田県"],"type":"packing"},
-    {"entryNo":34,"playerIds":["金田_晃輔_広島土曜クラブジュニア_秋田県"],"type":"packing"},
-    {"entryNo":38,"playerIds":["細川_和也_入田体育協会_秋田県"],"type":"packing"},
-    {"entryNo":42,"playerIds":["多田_圭吾_丸岡スポ少_秋田県"],"type":"packing"},
-    {"entryNo":46,"playerIds":["川野_旬太郎_寺ジュニアソフトテニスクラブ_秋田県"],"type":"seed"},
-    {"entryNo":52,"playerIds":["富田_貫祐_秋田市ジュニア_秋田県"],"type":"seed"},
-    {"entryNo":53,"playerIds":["鹿野_隼矢_郡山ジュニア_秋田県"],"type":"packing"},
-    {"entryNo":60,"playerIds":["竹田_陽希_ダンディズム_秋田県"],"type":"packing"},
-    {"entryNo":62,"playerIds":["黒岩_瑞季_白根スポ少_秋田県"],"type":"packing"},
-    {"entryNo":66,"playerIds":["鈴木_瑛登_Willスポーツ_秋田県"],"type":"packing"},
-    {"entryNo":70,"playerIds":["伊藤_海音_別府クラブ_秋田県"],"type":"seed"},
-    {"entryNo":75,"playerIds":["末野_凱仁_蔵王ジュニア_秋田県"],"type":"seed"},
-    {"entryNo":77,"playerIds":["村上_遼弥_瑞穂ジュニアクラブ_秋田県"],"type":"packing"},
-    {"entryNo":84,"playerIds":["田中_清比呂_生ジュニアソフトテニスクラブ_秋田県"],"type":"packing"},
-    {"entryNo":87,"playerIds":["飯田_創太_庄川ソフトテニス少年団_秋田県"],"type":"packing"},
-    {"entryNo":91,"playerIds":["間庭_一樹_Ｔ－フォースjr._秋田県"],"type":"packing"},
-    {"entryNo":94,"playerIds":["鈴木_瑛人_南房総ジュニア_秋田県"],"type":"seed"}
+    {
+      "entryNo": 4,
+      "playerIds": ["甲斐_雅也_PUERICLUB_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 6,
+      "playerIds": ["大泉_遼_比布町少年団_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 11,
+      "playerIds": ["西森_達希_黒潮ジュニア_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 15,
+      "playerIds": ["金森_竜也_出雲JST_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 19,
+      "playerIds": ["西原_翼_媛吹揚クラブスポーツ少年団_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 23,
+      "playerIds": ["藤田_陸人_黒石烏城ジュニア_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 27,
+      "playerIds": ["徳嵩_颯人_長野JSTC_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 30,
+      "playerIds": ["尾石_渉_上天草ジュニア_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 34,
+      "playerIds": ["金田_晃輔_広島土曜クラブジュニア_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 38,
+      "playerIds": ["細川_和也_入田体育協会_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 42,
+      "playerIds": ["多田_圭吾_丸岡スポ少_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 46,
+      "playerIds": ["川野_旬太郎_寺ジュニアソフトテニスクラブ_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 52,
+      "playerIds": ["富田_貫祐_秋田市ジュニア_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 53,
+      "playerIds": ["鹿野_隼矢_郡山ジュニア_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 60,
+      "playerIds": ["竹田_陽希_ダンディズム_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 62,
+      "playerIds": ["黒岩_瑞季_白根スポ少_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 66,
+      "playerIds": ["鈴木_瑛登_Willスポーツ_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 70,
+      "playerIds": ["伊藤_海音_別府クラブ_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 75,
+      "playerIds": ["末野_凱仁_蔵王ジュニア_秋田県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 77,
+      "playerIds": ["村上_遼弥_瑞穂ジュニアクラブ_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 84,
+      "playerIds": ["田中_清比呂_生ジュニアソフトテニスクラブ_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 87,
+      "playerIds": ["飯田_創太_庄川ソフトテニス少年団_秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 91,
+      "playerIds": ["間庭_一樹_Ｔ－フォースjr._秋田県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 94,
+      "playerIds": ["鈴木_瑛人_南房総ジュニア_秋田県"],
+      "type": "seed"
+    }
   ],
   "matches": [
     {
-      "entries": [6,11],
-      "scores": {"6":4,"11":1},
+      "entries": [6, 11],
+      "scores": { "6": 4, "11": 1 },
       "round": "1回戦",
       "winnerEntryNo": 6,
       "retired": false,
@@ -66,8 +306,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [15,19],
-      "scores": {"15":2,"19":4},
+      "entries": [15, 19],
+      "scores": { "15": 2, "19": 4 },
       "round": "1回戦",
       "winnerEntryNo": 19,
       "retired": false,
@@ -79,8 +319,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [30,34],
-      "scores": {"30":4,"34":1},
+      "entries": [30, 34],
+      "scores": { "30": 4, "34": 1 },
       "round": "1回戦",
       "winnerEntryNo": 30,
       "retired": false,
@@ -92,8 +332,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [38,42],
-      "scores": {"38":2,"42":4},
+      "entries": [38, 42],
+      "scores": { "38": 2, "42": 4 },
       "round": "1回戦",
       "winnerEntryNo": 42,
       "retired": false,
@@ -105,8 +345,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [53,60],
-      "scores": {"53":0,"60":4},
+      "entries": [53, 60],
+      "scores": { "53": 0, "60": 4 },
       "round": "1回戦",
       "winnerEntryNo": 60,
       "retired": false,
@@ -118,8 +358,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [62,66],
-      "scores": {"62":0,"66":4},
+      "entries": [62, 66],
+      "scores": { "62": 0, "66": 4 },
       "round": "1回戦",
       "winnerEntryNo": 66,
       "retired": false,
@@ -131,8 +371,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [77,84],
-      "scores": {"77":4,"84":0},
+      "entries": [77, 84],
+      "scores": { "77": 4, "84": 0 },
       "round": "1回戦",
       "winnerEntryNo": 77,
       "retired": false,
@@ -144,8 +384,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [87,91],
-      "scores": {"87":0,"91":4},
+      "entries": [87, 91],
+      "scores": { "87": 0, "91": 4 },
       "round": "1回戦",
       "winnerEntryNo": 91,
       "retired": false,
@@ -157,8 +397,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [4,6],
-      "scores": {"4":4,"6":1},
+      "entries": [4, 6],
+      "scores": { "4": 4, "6": 1 },
       "round": "2回戦",
       "winnerEntryNo": 4,
       "retired": false,
@@ -170,8 +410,8 @@
       "prevMatchId": "match-1"
     },
     {
-      "entries": [19,23],
-      "scores": {"19":0,"23":4},
+      "entries": [19, 23],
+      "scores": { "19": 0, "23": 4 },
       "round": "2回戦",
       "winnerEntryNo": 23,
       "retired": false,
@@ -183,8 +423,8 @@
       "prevMatchId": "match-2"
     },
     {
-      "entries": [27,30],
-      "scores": {"27":0,"30":4},
+      "entries": [27, 30],
+      "scores": { "27": 0, "30": 4 },
       "round": "2回戦",
       "winnerEntryNo": 30,
       "retired": false,
@@ -196,8 +436,8 @@
       "prevMatchId": "match-3"
     },
     {
-      "entries": [42,46],
-      "scores": {"42":2,"46":4},
+      "entries": [42, 46],
+      "scores": { "42": 2, "46": 4 },
       "round": "2回戦",
       "winnerEntryNo": 46,
       "retired": false,
@@ -209,8 +449,8 @@
       "prevMatchId": "match-4"
     },
     {
-      "entries": [52,60],
-      "scores": {"52":1,"60":4},
+      "entries": [52, 60],
+      "scores": { "52": 1, "60": 4 },
       "round": "2回戦",
       "winnerEntryNo": 60,
       "retired": false,
@@ -222,8 +462,8 @@
       "prevMatchId": "match-5"
     },
     {
-      "entries": [66,70],
-      "scores": {"66":2,"70":4},
+      "entries": [66, 70],
+      "scores": { "66": 2, "70": 4 },
       "round": "2回戦",
       "winnerEntryNo": 70,
       "retired": false,
@@ -235,8 +475,8 @@
       "prevMatchId": "match-6"
     },
     {
-      "entries": [75,77],
-      "scores": {"75":1,"77":4},
+      "entries": [75, 77],
+      "scores": { "75": 1, "77": 4 },
       "round": "2回戦",
       "winnerEntryNo": 77,
       "retired": false,
@@ -248,8 +488,8 @@
       "prevMatchId": "match-7"
     },
     {
-      "entries": [91,94],
-      "scores": {"91":2,"94":4},
+      "entries": [91, 94],
+      "scores": { "91": 2, "94": 4 },
       "round": "2回戦",
       "winnerEntryNo": 94,
       "retired": false,
@@ -261,8 +501,8 @@
       "prevMatchId": "match-8"
     },
     {
-      "entries": [4,23],
-      "scores": {"4":2,"23":4},
+      "entries": [4, 23],
+      "scores": { "4": 2, "23": 4 },
       "round": "準々決勝",
       "winnerEntryNo": 23,
       "retired": false,
@@ -270,12 +510,12 @@
       "group": null,
       "matchId": "match-17",
       "nextMatchId": "match-21",
-      "prevMatchIds": ["match-9","match-10"],
+      "prevMatchIds": ["match-9", "match-10"],
       "prevMatchId": null
     },
     {
-      "entries": [30,46],
-      "scores": {"30":4,"46":1},
+      "entries": [30, 46],
+      "scores": { "30": 4, "46": 1 },
       "round": "準々決勝",
       "winnerEntryNo": 30,
       "retired": false,
@@ -283,12 +523,12 @@
       "group": null,
       "matchId": "match-18",
       "nextMatchId": "match-21",
-      "prevMatchIds": ["match-11","match-12"],
+      "prevMatchIds": ["match-11", "match-12"],
       "prevMatchId": null
     },
     {
-      "entries": [60,70],
-      "scores": {"60":4,"70":0},
+      "entries": [60, 70],
+      "scores": { "60": 4, "70": 0 },
       "round": "準々決勝",
       "winnerEntryNo": 60,
       "retired": false,
@@ -296,12 +536,12 @@
       "group": null,
       "matchId": "match-19",
       "nextMatchId": "match-22",
-      "prevMatchIds": ["match-13","match-14"],
+      "prevMatchIds": ["match-13", "match-14"],
       "prevMatchId": null
     },
     {
-      "entries": [77,94],
-      "scores": {"77":4,"94":2},
+      "entries": [77, 94],
+      "scores": { "77": 4, "94": 2 },
       "round": "準々決勝",
       "winnerEntryNo": 77,
       "retired": false,
@@ -309,12 +549,12 @@
       "group": null,
       "matchId": "match-20",
       "nextMatchId": "match-22",
-      "prevMatchIds": ["match-15","match-16"],
+      "prevMatchIds": ["match-15", "match-16"],
       "prevMatchId": null
     },
     {
-      "entries": [23,30],
-      "scores": {"23":4,"30":0},
+      "entries": [23, 30],
+      "scores": { "23": 4, "30": 0 },
       "round": "準決勝",
       "winnerEntryNo": 23,
       "retired": false,
@@ -322,12 +562,12 @@
       "group": null,
       "matchId": "match-21",
       "nextMatchId": "match-23",
-      "prevMatchIds": ["match-17","match-18"],
+      "prevMatchIds": ["match-17", "match-18"],
       "prevMatchId": null
     },
     {
-      "entries": [60,77],
-      "scores": {"60":2,"77":4},
+      "entries": [60, 77],
+      "scores": { "60": 2, "77": 4 },
       "round": "準決勝",
       "winnerEntryNo": 77,
       "retired": false,
@@ -335,12 +575,12 @@
       "group": null,
       "matchId": "match-22",
       "nextMatchId": "match-23",
-      "prevMatchIds": ["match-19","match-20"],
+      "prevMatchIds": ["match-19", "match-20"],
       "prevMatchId": null
     },
     {
-      "entries": [23,77],
-      "scores": {"23":0,"77":4},
+      "entries": [23, 77],
+      "scores": { "23": 0, "77": 4 },
       "round": "決勝",
       "winnerEntryNo": 77,
       "retired": false,
@@ -348,34 +588,196 @@
       "group": null,
       "matchId": "match-23",
       "nextMatchId": null,
-      "prevMatchIds": ["match-21","match-22"],
+      "prevMatchIds": ["match-21", "match-22"],
       "prevMatchId": null
     }
   ],
   "results": [
-    {"entryNo":4,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":6,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":11,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":15,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":19,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":23,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":null},
-    {"entryNo":27,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":30,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":null},
-    {"entryNo":34,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":38,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":42,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":46,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":52,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":53,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":60,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":null},
-    {"entryNo":62,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":66,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":70,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":75,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":77,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":null},
-    {"entryNo":84,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":87,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":91,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":94,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null}
+    {
+      "entryNo": 4,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 6,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 11,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 15,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 19,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 23,
+      "tournament": { "label": "準優勝", "rank": { "kind": "runnerup" } },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 27,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 30,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 34,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 38,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 42,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 46,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 52,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 53,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 60,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 62,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 66,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 70,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 75,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 77,
+      "tournament": { "label": "優勝", "rank": { "kind": "winner" } },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 84,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 87,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 91,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 94,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    }
   ]
 }

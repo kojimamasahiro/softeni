@@ -16,9 +16,17 @@ const matchesOutputRoot = path.join(outputRoot, 'matches');
 const growthOutputRoot = path.join(outputRoot, 'growth');
 const growthReportsOutputRoot = path.join(growthOutputRoot, 'reports');
 // 撤回（オプトアウト）リスト。ここに載せた subject_key は成長レポートを生成しない（ADR-004 Decision 5）。
-const growthExclusionsPath = path.join(projectRoot, 'data', 'growth-exclusions.json');
+const growthExclusionsPath = path.join(
+  projectRoot,
+  'data',
+  'growth-exclusions.json',
+);
 // ショーケース（featured）リスト。ここに載せた subject_key は visibility=public に引き上げる（ADR-004）。
-const growthFeaturedPath = path.join(projectRoot, 'data', 'growth-featured.json');
+const growthFeaturedPath = path.join(
+  projectRoot,
+  'data',
+  'growth-featured.json',
+);
 const detailsRoot = path.join(projectRoot, 'data', 'tournaments', 'details');
 const { loadEnvConfig } = nextEnv;
 const require = createRequire(import.meta.url);
@@ -107,7 +115,7 @@ const readJsonIfExists = (filePath) => {
 // subject_key リストを読み込む汎用ヘルパー。
 // 形式は ["player:やまだたろう", ...] か [{ "subjectKey": "..." }, ...] の両対応。
 const loadSubjectKeys = (raw, listKey) => {
-  const list = Array.isArray(raw) ? raw : raw?.[listKey] ?? [];
+  const list = Array.isArray(raw) ? raw : (raw?.[listKey] ?? []);
   return list
     .map((entry) => (typeof entry === 'string' ? entry : entry?.subjectKey))
     .filter((key) => typeof key === 'string' && key.length > 0);
@@ -356,13 +364,12 @@ const writeBetaMatchesOutput = (publicMatches, generatedAt) => {
       excludedKeys,
       featuredKeys,
     }).reports.map((report) => {
-        const fileName = getGrowthReportFileName(report.target.key);
-        return [
-          fileName,
-          readJsonIfExists(path.join(growthReportsOutputRoot, fileName)),
-        ];
-      },
-    ),
+      const fileName = getGrowthReportFileName(report.target.key);
+      return [
+        fileName,
+        readJsonIfExists(path.join(growthReportsOutputRoot, fileName)),
+      ];
+    }),
   );
 
   fs.mkdirSync(outputRoot, { recursive: true });
@@ -428,7 +435,8 @@ const buildBetaMatchesJson = async () => {
         'Supabase env is missing. Reusing committed beta matches JSON snapshot.',
       );
       const generatedAt = new Date().toISOString();
-      const publicMatches = loadExistingSnapshotMatches().map(enrichWithSiteLink);
+      const publicMatches =
+        loadExistingSnapshotMatches().map(enrichWithSiteLink);
       const { growthStats, siteLinkCount } = writeBetaMatchesOutput(
         publicMatches,
         generatedAt,

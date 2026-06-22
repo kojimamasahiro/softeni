@@ -38,6 +38,7 @@ If specifications are incomplete, contradictory, or ambiguous:
 Critical logic must always be clarified before coding.
 
 Examples:
+
 - timezone handling
 - reward unlock duration
 - sync conflict resolution
@@ -60,7 +61,7 @@ When implementation changes behavior:
 
 ## ADR rules
 
-An ADR records *when and why* a decision was made — it is not a description of the current code.
+An ADR records _when and why_ a decision was made — it is not a description of the current code.
 
 Create or update ADRs when changing:
 
@@ -74,7 +75,7 @@ Create or update ADRs when changing:
 
 How to keep ADRs accurate without losing history:
 
-- "Implementation is the source of truth" applies to *current behavior*. Do NOT rewrite an ADR's Context / Decision / Alternatives to match the implementation — they are a historical snapshot of the reasoning.
+- "Implementation is the source of truth" applies to _current behavior_. Do NOT rewrite an ADR's Context / Decision / Alternatives to match the implementation — they are a historical snapshot of the reasoning.
 - Manage state with the Status field (Draft / Accepted / Deprecated / Superseded).
   - While Draft, editing the body directly is fine.
   - After Accepted, if the decision changes, do NOT rewrite the body. Set Status to Superseded / Deprecated and record the new decision in a new ADR (or an appended note) so the decision history stays auditable.

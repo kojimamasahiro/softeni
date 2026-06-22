@@ -1,18 +1,370 @@
 [
-{"id":1,"name":"天間・左近（日本体育大学）","information":[{"lastName":"天間","firstName":"美嘉","team":"日本体育大学","prefecture":"日本学連","playerId":null,"tempId":"天間_美嘉_日本体育大学"},{"lastName":"左近","firstName":"知美","team":"日本体育大学","prefecture":"日本学連","playerId":null,"tempId":"左近_知美_日本体育大学"}],"category":"doubles"},
-{"id":2,"name":"工藤・増田（札幌学院クラブ）","information":[{"lastName":"工藤","firstName":"亜純","team":"札幌学院クラブ","prefecture":"北海道","playerId":null,"tempId":"工藤_亜純_札幌学院クラブ"},{"lastName":"増田","firstName":"はな","team":"札幌学院クラブ","prefecture":"北海道","playerId":null,"tempId":"増田_はな_札幌学院クラブ"}],"category":"doubles"},
-{"id":3,"name":"義達・佐々木（とわの森三愛）","information":[{"lastName":"義達","firstName":"心陽","team":"とわの森三愛","prefecture":"北海道","playerId":null,"tempId":"義達_心陽_とわの森三愛"},{"lastName":"佐々木","firstName":"南帆","team":"とわの森三愛","prefecture":"北海道","playerId":null,"tempId":"佐々木_南帆_とわの森三愛"}],"category":"doubles"},
-{"id":4,"name":"小林・吉田（ヨネックス）","information":[{"lastName":"小林","firstName":"愛","team":"ヨネックス","prefecture":"東京","playerId":null,"tempId":"小林_愛_ヨネックス"},{"lastName":"吉田","firstName":"英梨","team":"ヨネックス","prefecture":"東京","playerId":null,"tempId":"吉田_英梨_ヨネックス"}],"category":"doubles"},
-{"id":5,"name":"天間・佐藤（東北高校）","information":[{"lastName":"天間","firstName":"麗奈","team":"東北高校","prefecture":"宮城県","playerId":null,"tempId":"天間_麗奈_東北高校"},{"lastName":"佐藤","firstName":"紗空","team":"東北高校","prefecture":"宮城県","playerId":null,"tempId":"佐藤_紗空_東北高校"}],"category":"doubles"},
-{"id":6,"name":"大和・石田（北翔大学）","information":[{"lastName":"大和","firstName":"かのん","team":"北翔大学","prefecture":"日本学連","playerId":null,"tempId":"大和_かのん_北翔大学"},{"lastName":"石田","firstName":"夏美","team":"北翔大学","prefecture":"日本学連","playerId":null,"tempId":"石田_夏美_北翔大学"}],"category":"doubles"},
-{"id":7,"name":"伊東・熊谷（北見市役所）","information":[{"lastName":"伊東","firstName":"礼佳","team":"北見市役所","prefecture":"北海道","playerId":null,"tempId":"伊東_礼佳_北見市役所"},{"lastName":"熊谷","firstName":"舞都","team":"札幌ＭＡクラブ","prefecture":"北海道","playerId":null,"tempId":"熊谷_舞都_札幌ＭＡクラブ"}],"category":"doubles"},
-{"id":8,"name":"チョン・キム（KOR）","information":[{"lastName":"チョン","firstName":"ダヨン","team":"KOR","prefecture":"韓国","playerId":null,"tempId":"チョン_ダヨン_KOR"},{"lastName":"キム","firstName":"ハンソル","team":"KOR","prefecture":"韓国","playerId":null,"tempId":"キム_ハンソル_KOR"}],"category":"doubles"},
-{"id":9,"name":"高橋・岩倉（どんぐり北広島）","information":[{"lastName":"高橋","firstName":"乃綾","team":"どんぐり北広島","prefecture":"広島","playerId":null,"tempId":"高橋_乃綾_どんぐり北広島"},{"lastName":"岩倉","firstName":"幸菜","team":"どんぐり北広島","prefecture":"広島","playerId":null,"tempId":"岩倉_幸菜_どんぐり北広島"}],"category":"doubles"},
-{"id":10,"name":"嶋野・上原（札幌大谷高校）","information":[{"lastName":"嶋野","firstName":"杏","team":"札幌大谷高校","prefecture":"北海道","playerId":null,"tempId":"嶋野_杏_札幌大谷高校"},{"lastName":"上原","firstName":"心音","team":"札幌大谷高校","prefecture":"北海道","playerId":null,"tempId":"上原_心音_札幌大谷高校"}],"category":"doubles"},
-{"id":11,"name":"尾崎・原田（日本体育大学）","information":[{"lastName":"尾崎","firstName":"瀬里奈","team":"日本体育大学","prefecture":"日本学連","playerId":null,"tempId":"尾崎_瀬里奈_日本体育大学"},{"lastName":"原田","firstName":"美結","team":"日本体育大学","prefecture":"日本学連","playerId":null,"tempId":"原田_美結_日本体育大学"}],"category":"doubles"},
-{"id":12,"name":"チョウ・ジャン（TPE）","information":[{"lastName":"チョウ","firstName":"イェンジェン","team":"TPE","prefecture":"台湾","playerId":null,"tempId":"チョウ_イェンジェン_TPE"},{"lastName":"ジャン","firstName":"ミンユ","team":"TPE","prefecture":"台湾","playerId":null,"tempId":"ジャン_ミンユ_TPE"}],"category":"doubles"},
-{"id":13,"name":"原口・宮前（ワタキューセイモア）","information":[{"lastName":"原口","firstName":"梨佳","team":"ワタキューセイモア","prefecture":"京都府","playerId":null,"tempId":"原口_梨佳_ワタキューセイモア"},{"lastName":"宮前","firstName":"愛","team":"ワタキューセイモア","prefecture":"京都府","playerId":null,"tempId":"宮前_愛_ワタキューセイモア"}],"category":"doubles"},
-{"id":14,"name":"山上・宗宮（北翔アルバ）","information":[{"lastName":"山上","firstName":"楓","team":"北翔アルバ","prefecture":"北海道","playerId":null,"tempId":"山上_楓_北翔アルバ"},{"lastName":"宗宮","firstName":"遥菜","team":"北翔アルバ","prefecture":"北海道","playerId":null,"tempId":"宗宮_遥菜_北翔アルバ"}],"category":"doubles"},
-{"id":15,"name":"渡辺・堀内（札幌龍谷学園高校）","information":[{"lastName":"渡辺","firstName":"玲花","team":"札幌龍谷学園高校","prefecture":"北海道","playerId":null,"tempId":"渡辺_玲花_札幌龍谷学園高校"},{"lastName":"堀内","firstName":"絢香","team":"札幌龍谷学園高校","prefecture":"北海道","playerId":null,"tempId":"堀内_絢香_札幌龍谷学園高校"}],"category":"doubles"},
-{"id":16,"name":"前田・中谷（明治大学）","information":[{"lastName":"前田","firstName":"梨緒","team":"明治大学","prefecture":"日本学連","playerId":null,"tempId":"前田_梨緒_明治大学"},{"lastName":"中谷","firstName":"さくら","team":"明治大学","prefecture":"日本学連","playerId":null,"tempId":"中谷_さくら_明治大学"}],"category":"doubles"}
+  {
+    "id": 1,
+    "name": "天間・左近（日本体育大学）",
+    "information": [
+      {
+        "lastName": "天間",
+        "firstName": "美嘉",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "天間_美嘉_日本体育大学"
+      },
+      {
+        "lastName": "左近",
+        "firstName": "知美",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "左近_知美_日本体育大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 2,
+    "name": "工藤・増田（札幌学院クラブ）",
+    "information": [
+      {
+        "lastName": "工藤",
+        "firstName": "亜純",
+        "team": "札幌学院クラブ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "工藤_亜純_札幌学院クラブ"
+      },
+      {
+        "lastName": "増田",
+        "firstName": "はな",
+        "team": "札幌学院クラブ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "増田_はな_札幌学院クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 3,
+    "name": "義達・佐々木（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "義達",
+        "firstName": "心陽",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "義達_心陽_とわの森三愛"
+      },
+      {
+        "lastName": "佐々木",
+        "firstName": "南帆",
+        "team": "とわの森三愛",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "佐々木_南帆_とわの森三愛"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 4,
+    "name": "小林・吉田（ヨネックス）",
+    "information": [
+      {
+        "lastName": "小林",
+        "firstName": "愛",
+        "team": "ヨネックス",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "小林_愛_ヨネックス"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "英梨",
+        "team": "ヨネックス",
+        "prefecture": "東京",
+        "playerId": null,
+        "tempId": "吉田_英梨_ヨネックス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 5,
+    "name": "天間・佐藤（東北高校）",
+    "information": [
+      {
+        "lastName": "天間",
+        "firstName": "麗奈",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "天間_麗奈_東北高校"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "紗空",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "佐藤_紗空_東北高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 6,
+    "name": "大和・石田（北翔大学）",
+    "information": [
+      {
+        "lastName": "大和",
+        "firstName": "かのん",
+        "team": "北翔大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "大和_かのん_北翔大学"
+      },
+      {
+        "lastName": "石田",
+        "firstName": "夏美",
+        "team": "北翔大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "石田_夏美_北翔大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 7,
+    "name": "伊東・熊谷（北見市役所）",
+    "information": [
+      {
+        "lastName": "伊東",
+        "firstName": "礼佳",
+        "team": "北見市役所",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "伊東_礼佳_北見市役所"
+      },
+      {
+        "lastName": "熊谷",
+        "firstName": "舞都",
+        "team": "札幌ＭＡクラブ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "熊谷_舞都_札幌ＭＡクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 8,
+    "name": "チョン・キム（KOR）",
+    "information": [
+      {
+        "lastName": "チョン",
+        "firstName": "ダヨン",
+        "team": "KOR",
+        "prefecture": "韓国",
+        "playerId": null,
+        "tempId": "チョン_ダヨン_KOR"
+      },
+      {
+        "lastName": "キム",
+        "firstName": "ハンソル",
+        "team": "KOR",
+        "prefecture": "韓国",
+        "playerId": null,
+        "tempId": "キム_ハンソル_KOR"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 9,
+    "name": "高橋・岩倉（どんぐり北広島）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "乃綾",
+        "team": "どんぐり北広島",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "高橋_乃綾_どんぐり北広島"
+      },
+      {
+        "lastName": "岩倉",
+        "firstName": "幸菜",
+        "team": "どんぐり北広島",
+        "prefecture": "広島",
+        "playerId": null,
+        "tempId": "岩倉_幸菜_どんぐり北広島"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 10,
+    "name": "嶋野・上原（札幌大谷高校）",
+    "information": [
+      {
+        "lastName": "嶋野",
+        "firstName": "杏",
+        "team": "札幌大谷高校",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "嶋野_杏_札幌大谷高校"
+      },
+      {
+        "lastName": "上原",
+        "firstName": "心音",
+        "team": "札幌大谷高校",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "上原_心音_札幌大谷高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 11,
+    "name": "尾崎・原田（日本体育大学）",
+    "information": [
+      {
+        "lastName": "尾崎",
+        "firstName": "瀬里奈",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "尾崎_瀬里奈_日本体育大学"
+      },
+      {
+        "lastName": "原田",
+        "firstName": "美結",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "原田_美結_日本体育大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 12,
+    "name": "チョウ・ジャン（TPE）",
+    "information": [
+      {
+        "lastName": "チョウ",
+        "firstName": "イェンジェン",
+        "team": "TPE",
+        "prefecture": "台湾",
+        "playerId": null,
+        "tempId": "チョウ_イェンジェン_TPE"
+      },
+      {
+        "lastName": "ジャン",
+        "firstName": "ミンユ",
+        "team": "TPE",
+        "prefecture": "台湾",
+        "playerId": null,
+        "tempId": "ジャン_ミンユ_TPE"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 13,
+    "name": "原口・宮前（ワタキューセイモア）",
+    "information": [
+      {
+        "lastName": "原口",
+        "firstName": "梨佳",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "原口_梨佳_ワタキューセイモア"
+      },
+      {
+        "lastName": "宮前",
+        "firstName": "愛",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "宮前_愛_ワタキューセイモア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 14,
+    "name": "山上・宗宮（北翔アルバ）",
+    "information": [
+      {
+        "lastName": "山上",
+        "firstName": "楓",
+        "team": "北翔アルバ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "山上_楓_北翔アルバ"
+      },
+      {
+        "lastName": "宗宮",
+        "firstName": "遥菜",
+        "team": "北翔アルバ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "宗宮_遥菜_北翔アルバ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 15,
+    "name": "渡辺・堀内（札幌龍谷学園高校）",
+    "information": [
+      {
+        "lastName": "渡辺",
+        "firstName": "玲花",
+        "team": "札幌龍谷学園高校",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "渡辺_玲花_札幌龍谷学園高校"
+      },
+      {
+        "lastName": "堀内",
+        "firstName": "絢香",
+        "team": "札幌龍谷学園高校",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "堀内_絢香_札幌龍谷学園高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 16,
+    "name": "前田・中谷（明治大学）",
+    "information": [
+      {
+        "lastName": "前田",
+        "firstName": "梨緒",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "前田_梨緒_明治大学"
+      },
+      {
+        "lastName": "中谷",
+        "firstName": "さくら",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "中谷_さくら_明治大学"
+      }
+    ],
+    "category": "doubles"
+  }
 ]

@@ -96,7 +96,7 @@
 
 - `src/components/Header.tsx`: 役割を「上部バー（ロゴ＋ハンバーガー＋最小リンク）」
   に縮小、もしくはサイドバーへ統合。スコアサイト分岐は保持。
-- `src/components/PageLayout.tsx`: 現在は中央寄せ1カラム（max-w-*）。
+- `src/components/PageLayout.tsx`: 現在は中央寄せ1カラム（max-w-\*）。
   2ペイン化に伴い「サイドバー＋コンテンツ」のシェル（例: `AppShell`）を新設し、
   PageLayout はコンテンツ側の最大幅制御に専念させる。
 - `src/pages/_app.tsx`: `<main>` ラップ箇所。AppShell の挿入位置を確認。

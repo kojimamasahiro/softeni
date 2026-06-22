@@ -5,10 +5,12 @@
 ## 1. `index.tsx`
 
 ### 概要
+
 - **URL**: `/highschool` (リダイレクト -> `/highschool/boys`)
 - **目的**: 高校カテゴリのアクセスポイント。`/highschool/boys` へリダイレクトする。
 
 ### 主な処理
+
 - 静的ページとして `meta refresh` を出し、`/highschool/boys` へ即時遷移。
 - JavaScript に依存せず、静的エクスポート環境でも動く構成。
 
@@ -17,6 +19,7 @@
 ## 2. `[gender]/index.tsx`
 
 ### 概要
+
 - **URL**: `/highschool/:gender` (`boys` or `girls`)
 - **目的**: 高校カテゴリのトップページとして、都道府県別に男子・女子の成績を表示する。
 - **主な機能**:
@@ -24,6 +27,7 @@
   - 男子・女子の切り替えセグメント（リンク）。
 
 ### 主な処理
+
 - `getStaticPaths`:
   - `boys`, `girls` のパスを生成。
 - `getStaticProps`:
@@ -41,6 +45,7 @@
 ## 3. `[gender]/[prefectureId]/index.tsx`
 
 ### 概要
+
 - **URL**: `/highschool/:gender/:prefectureId`
 - **目的**: 指定された都道府県の男子または女子の高校成績を表示する。
 - **主な機能**:
@@ -49,6 +54,7 @@
   - 学校一覧を「より良い成績 → 新しい年度 → 学校名」で表示。
 
 ### 主な処理
+
 - `getStaticPaths`:
   - `data/prefectures.json` を使用して、すべての都道府県と性別の組み合わせのパスを生成。
 - `getStaticProps`:
@@ -68,6 +74,7 @@
 ## 4. `[gender]/[prefectureId]/[teamId].tsx`
 
 ### 概要
+
 - **URL**: `/highschool/:gender/:prefectureId/:teamId`
 - **目的**: 指定されたチームの成績詳細を表示する。
 - **主な機能**:
@@ -76,6 +83,7 @@
   - 大会は主要大会順、種目は団体戦 → ダブルス → シングルスの順で表示。
 
 ### 主な処理
+
 - `getStaticPaths`:
   - `data/highschool/prefectures/:prefectureId/summary.json` を使用して、すべてのチームIDと性別の組み合わせのパスを生成。
 - `getStaticProps`:
@@ -92,6 +100,7 @@
 ## データ構造
 
 ### `data/prefectures.json`
+
 - 都道府県の基本情報を格納。
 - **例**:
   ```json
@@ -110,6 +119,7 @@
   ```
 
 ### `data/highschool/prefectures/:prefectureId/summary.json`
+
 - 都道府県ごとの高校成績データを格納。
 - **例**:
   ```json
@@ -129,6 +139,7 @@
   ```
 
 ### `data/highschool/prefectures/:prefectureId/:teamId/:gender/analysis.json`
+
 - チームごとの分析データを格納。
 - **例**:
   ```json
@@ -166,6 +177,7 @@
 ---
 
 ## 注意点
+
 - 各ページは静的生成（SSG）を使用しており、ビルド時にデータを取得します。
 - データファイルの構造が変更された場合、対応するコードの修正が必要です。
 - SEO 文言は安全寄り方針として、商標語をページ主ラベルにせず、`全国高等学校総合体育大会` や `高校総体` など正式名称・一般名称を優先して使用します。

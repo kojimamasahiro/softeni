@@ -34,7 +34,14 @@ python tools/sns-images/h2h.py --pair-a "水木・松田" --pair-b "丸山・内
     "aWins": 2,
     "bWins": 1,
     "matches": [
-      { "year": 2024, "tournament": "全日本選手権", "round": "準々決勝", "score": "4-2", "winner": "A", "retired": false }
+      {
+        "year": 2024,
+        "tournament": "全日本選手権",
+        "round": "準々決勝",
+        "score": "4-2",
+        "winner": "A",
+        "retired": false
+      }
     ]
   }
 }

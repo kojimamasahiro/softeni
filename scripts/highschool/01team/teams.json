@@ -1,500 +1,2990 @@
 [
-  {"id": "uedasomeyaoka", "name": "上田染谷丘", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "shimonosekikouka", "name": "下関工科", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "yazu", "name": "八頭", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "himejishou", "name": "姫路商", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "komatsu", "name": "小松", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "okayamaminami", "name": "岡山南", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "tokuyama", "name": "徳山", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "myoujou", "name": "明星", "prefecture": "大阪府", "prefectureId": "osaka"},
-  {"id": "sapporokotonikou", "name": "札幌琴似工", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "tsuna", "name": "津名", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "tamanakou", "name": "玉名工", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "naganoyoshida", "name": "長野吉田", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "takaoka", "name": "高岡", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "uozu", "name": "魚津", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "tsurumine", "name": "鶴嶺", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "oideosahime", "name": "OIDE長姫", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "asahikawakou", "name": "旭川工", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "hanawa", "name": "花輪", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "kamiinanou", "name": "上伊那農", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "ageominami", "name": "上尾南", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "kudamatsu", "name": "下松", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "nakatsuhigashi", "name": "中津東", "prefecture": "大分県", "prefectureId": "oita"},
-  {"id": "inakita", "name": "伊那北", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "yawatahamakou", "name": "八幡浜工", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "kitasuma", "name": "北須磨", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "kuremiyahara", "name": "呉宮原", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "karatsunishi", "name": "唐津西", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "saitamaheisei", "name": "埼玉平成", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "ootawara", "name": "大田原", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "yasugi", "name": "安来", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "sukumokou", "name": "宿毛工", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "fujinomiyanishi", "name": "富士宮西", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "onoda", "name": "小野田", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "okayamamisaoyama", "name": "岡山操山", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "iwasenichidai", "name": "岩瀬日大", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "shimabarakou", "name": "島原工", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "kawagoe", "name": "川越", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "hirosaki", "name": "弘前", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "aisanoomikawa", "name": "愛産大三河", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "keiaigakuen", "name": "敬愛学園", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "shibatachuuou", "name": "新発田中央", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "akashikita", "name": "明石北", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "touhokugakuin", "name": "東北学院", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "musashiogose", "name": "武蔵越生", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "musashinochiyoda", "name": "武蔵野千代田", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "numata", "name": "沼田", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "kumamotokou", "name": "熊本工", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "ushiku", "name": "牛久", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "kagigakuenhitachi", "name": "科技学園日立", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "yonagokou", "name": "米子工", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "kokawa", "name": "粉河", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "ayabe", "name": "綾部", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "noshiroshouyou", "name": "能代松陽", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "seishin", "name": "誠信", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "ashikagakou", "name": "足利工", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "kouriyama", "name": "郡山", "prefecture": "奈良県", "prefectureId": "nara"},
-  {"id": "kanazawagakuin", "name": "金沢学院", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "aoyutaka", "name": "青豊", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "sannohe", "name": "三戸", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "uedachikuma", "name": "上田千曲", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "kurumeshou", "name": "久留米商", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "imabarikita", "name": "今治北", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "hokuriku", "name": "北陸", "prefecture": "福井県", "prefectureId": "fukui"},
-  {"id": "chiyoda", "name": "千代田", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "chibashou", "name": "千葉商", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "meishoukou", "name": "名商工", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "nago", "name": "名護", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "kureminato", "name": "呉港", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "wakayamakousen", "name": "和歌山高専", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "jounan", "name": "城南", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "ooitamaizuru", "name": "大分舞鶴", "prefecture": "大分県", "prefectureId": "oita"},
-  {"id": "ootsuka", "name": "大塚", "prefecture": "大阪府", "prefectureId": "osaka"},
-  {"id": "oomurakou", "name": "大村工", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "oodateootorimei", "name": "大館鳳鳴", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "gakuhouishikawa", "name": "学法石川", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "ube", "name": "宇部", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "sendaifu", "name": "専大附", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "komatsuootani", "name": "小松大谷", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "kawaguchishiritsu", "name": "川口市立", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "hirosakijitsu", "name": "弘前実", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "tokuyamakousen", "name": "徳山高専", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "aigakuen", "name": "愛学園", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "nichidaibuzan", "name": "日大豊山", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "hitarinkou", "name": "日田林工", "prefecture": "大分県", "prefectureId": "oita"},
-  {"id": "shouwagakuin", "name": "昭和学院", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "honjouhigashi", "name": "本庄東", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "toukaidaigyouhoshi", "name": "東海大仰星", "prefecture": "大阪府", "prefectureId": "osaka"},
-  {"id": "tounoudaini", "name": "東農大二", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "tochigi", "name": "栃木", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "yokoteseiryougakuin", "name": "横手清陵学院", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "houseini", "name": "法政二", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "hamana", "name": "浜名", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "hamamatsushou", "name": "浜松商", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "kumagaya", "name": "熊谷", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "kotooka", "name": "琴丘", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "makotokoukou", "name": "真工高", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "yaitachuuou", "name": "矢板中央", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "koubeseijou", "name": "神戸星城", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "hadano", "name": "秦野", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "ritsumeikan", "name": "立命館", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "rikkyouniiza", "name": "立教新座", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "yonezawachuuou", "name": "米沢中央", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "hakuikou", "name": "羽咋工", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "kuraogose", "name": "蔵越生", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "fujishiroshisui", "name": "藤代紫水", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "fujishima", "name": "藤島", "prefecture": "福井県", "prefectureId": "fukui"},
-  {"id": "nishiwaki", "name": "西脇", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "toyokawa", "name": "豊川", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "tomigusuku", "name": "豊見城", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "kindaiwakayama", "name": "近大和歌山", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "nagahamakita", "name": "長浜北", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "naganohigashi", "name": "長野東", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "sekinegakuen", "name": "関根学園", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "ananhikari", "name": "阿南光", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "shizuoka", "name": "静岡", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "tottorishou", "name": "鳥取商", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "ootorigakuen", "name": "鵬学園", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "kakoshima", "name": "鹿児島", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "kuroisominami", "name": "黒磯南", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "tsurugi", "name": "つるぎ", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "urusurahidetomo", "name": "ウルスラ英智", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "ruuterugakuin", "name": "ルーテル学院", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "sanbongi", "name": "三本木", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "miuragakuen", "name": "三浦学苑", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "shimoda", "name": "下田", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "nakagoshi", "name": "中越", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "kyoutobunkyou", "name": "京都文教", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "imabarikou", "name": "今治工", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "sendaisan", "name": "仙台三", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "takeshioodakasaki", "name": "健大高崎", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "hachinohegakuinhikarihoshi", "name": "八戸学院光星", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "maebashishou", "name": "前橋商", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "kitakaoodaka", "name": "北科大高", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "kouyou", "name": "向陽", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "daidoudaigakudaidou", "name": "大同大学大同", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "oomagari", "name": "大曲", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "oomagarikou", "name": "大曲工", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "oosuginami", "name": "大杉並", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "oomuta", "name": "大牟田", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "himejinishi", "name": "姫路西", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "utsunomiyakou", "name": "宇都宮工", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "miyazakinishi", "name": "宮崎西", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "fujinomiyakita", "name": "富士宮北", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "toyamakou", "name": "富山工", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "sansonkokusai", "name": "山村国際", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "okou", "name": "岡豊", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "iwate", "name": "岩手", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "iwamurada", "name": "岩村田", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "kawagoehigashi", "name": "川越東", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "joubandai", "name": "常磐大", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "nobeokagakuen", "name": "延岡学園", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "tokushimakagi", "name": "徳島科技", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "niigatasandaifu", "name": "新潟産大附", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "nitta", "name": "新田", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "wasedami", "name": "早稲田実", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "myoubou", "name": "明法", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "tounichidaishouhei", "name": "東日大昌平", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "toufukuoka", "name": "東福岡", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "sakurai", "name": "桜井", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "yokoteseiryou", "name": "横手清陵", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "yokohamasouei", "name": "横浜創英", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "sumoto", "name": "洲本", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "hamada", "name": "浜田", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "kaisei", "name": "海星", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "shimizukeoka", "name": "清水ヶ丘", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "shibukawa", "name": "渋川", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "kumakou", "name": "球磨工", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "koufuminami", "name": "甲府南", "prefecture": "山梨県", "prefectureId": "yamanashi"},
-  {"id": "koufushou", "name": "甲府商", "prefecture": "山梨県", "prefectureId": "yamanashi"},
-  {"id": "masudashouyou", "name": "益田翔陽", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "moriokakou", "name": "盛岡工", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "kengifushou", "name": "県岐阜商", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "chinen", "name": "知念", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "koubekokusaifu", "name": "神戸国際附", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "fukuoka", "name": "福岡", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "akitakitataka", "name": "秋田北鷹", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "yonagokougyou", "name": "米子工業", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "seidousankawadai", "name": "精道三川台", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "ayaba", "name": "綾羽", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "seishinurusura", "name": "聖心ウルスラ", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "nishikawaetsu", "name": "西川越", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "seishou", "name": "西湘", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "kindaifukuyama", "name": "近大福山", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "kinkidaikousen", "name": "近畿大高専", "prefecture": "三重県", "prefectureId": "mie"},
-  {"id": "nahanishi", "name": "那覇西", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "tomishirohigashi", "name": "都城東", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "toshiooshioshiri", "name": "都市大塩尻", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "kanazawagakuindaifu", "name": "金沢学院大附", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "nagasakinichidai", "name": "長崎日大", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "nagano", "name": "長野", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "shizuokashou", "name": "静岡商", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "kazeetsu", "name": "風越", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "komadai", "name": "駒大", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "sundaikoufu", "name": "駿台甲府", "prefecture": "山梨県", "prefectureId": "yamanashi"},
-  {"id": "tottorinishi", "name": "鳥取西", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "shikamachikou", "name": "鹿町工", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "kurosawashirikou", "name": "黒沢尻工", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "urusura", "name": "ウルスラ", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "ichinosekigakuin", "name": "一関学院", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "chuukyou", "name": "中京", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "kyuushuubunka", "name": "九州文化", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "kyouei", "name": "享栄", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "sagakou", "name": "佐賀工", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "izumohokuryou", "name": "出雲北陵", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "ooitashou", "name": "大分商", "prefecture": "大分県", "prefectureId": "oita"},
-  {"id": "ubekou", "name": "宇部工", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "yamagatashiritsushou", "name": "山形市立商", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "gifushou", "name": "岐阜商", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "maki", "name": "巻", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "bundaisuginami", "name": "文大杉並", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "bunseigeidaifu", "name": "文星芸大附", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "shohei", "name": "昌平", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "toukaidaisagami", "name": "東海大相模", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "tanabe", "name": "田辺", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "kousei", "name": "甲西", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "ishikawakousen", "name": "石川高専", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "kannabeasahi", "name": "神辺旭", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "tachibanagakuen", "name": "立花学園", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "yonagoshoin", "name": "米子松蔭", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "wakimachi", "name": "脇町", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "nishijouyou", "name": "西城陽", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "saijou", "name": "西条", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "kanetsu", "name": "金津", "prefecture": "福井県", "prefectureId": "fukui"},
-  {"id": "takasaki", "name": "高崎", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "kagoshimashou", "name": "鹿児島商", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "towanomorisanai", "name": "とわの森三愛", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "mie", "name": "三重", "prefecture": "三重県", "prefectureId": "mie"},
-  {"id": "uenomiya", "name": "上宮", "prefecture": "大阪府", "prefectureId": "osaka"},
-  {"id": "hachinohekoudaiichi", "name": "八戸工大一", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "yaeyama", "name": "八重山", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "izumokou", "name": "出雲工", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "kitakadai", "name": "北科大", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "hokuetsu", "name": "北越", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "nanyoukou", "name": "南陽工", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "wakayamakita", "name": "和歌山北", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "ooita", "name": "大分", "prefecture": "大分県", "prefectureId": "oita"},
-  {"id": "ootanimuroran", "name": "大谷室蘭", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "ureshino", "name": "嬉野", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "utsunomiyatandaifu", "name": "宇都宮短大附", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "tomiokahigashi", "name": "富岡東", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "odawara", "name": "小田原", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "jinseigakuen", "name": "尽誠学園", "prefecture": "香川県", "prefectureId": "kagawa"},
-  {"id": "onomichi", "name": "尾道", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "okayamaridaifu", "name": "岡山理大附", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "okazakijousai", "name": "岡崎城西", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "ichiamagasaki", "name": "市尼崎", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "obihironou", "name": "帯広農", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "hiroshimashouyou", "name": "広島翔洋", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "keiougijuku", "name": "慶應義塾", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "tsuruga", "name": "敦賀", "prefecture": "福井県", "prefectureId": "fukui"},
-  {"id": "buntoku", "name": "文徳", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "asahikawajitsu", "name": "旭川実", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "meitokugijuku", "name": "明徳義塾", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "kisarazusougou", "name": "木更津総合", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "touhoku", "name": "東北", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "matsuyama", "name": "松山", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "matsuekou", "name": "松江工", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "saibi", "name": "済美", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "takikawakou", "name": "滝川工", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "tamura", "name": "田村", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "chitoku", "name": "知徳", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "fukuchiyamanarumi", "name": "福知山成美", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "akitareiwa", "name": "秋田令和", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "ritsumeikanmoriyama", "name": "立命館守山", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "usui", "name": "笛吹", "prefecture": "山梨県", "prefectureId": "yamanashi"},
-  {"id": "chikushidai", "name": "筑紫台", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "minokamo", "name": "美濃加茂", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "haguro", "name": "羽黒", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "noto", "name": "能登", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "kusatsuhigashi", "name": "草津東", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "honan", "name": "豊南", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "miyakonojo", "name": "都城商", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "nagasakinanzan", "name": "長崎南山", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "naganoshunei", "name": "長野俊英", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "kasumikeura", "name": "霞ヶ浦", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "aomorimeinohoshi", "name": "青森明の星", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "takaokashou", "name": "高岡商", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "takasakishou", "name": "高崎商", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "takadashou", "name": "高田商", "prefecture": "奈良県", "prefectureId": "nara"},
-  {"id": "tottorihigashi", "name": "鳥取東", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "kakoshimajitsu", "name": "鹿児島実", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "kurosawashirikita", "name": "黒沢尻北", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "ageo", "name": "上尾", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "sendaidaisan", "name": "仙台第三", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "isekou", "name": "伊勢工", "prefecture": "三重県", "prefectureId": "mie"},
-  {"id": "kouseigakuen", "name": "佼成学園", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "kurashikiminami", "name": "倉敷南", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "izumo", "name": "出雲", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "kitahiroshima", "name": "北広島", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "chibareimei", "name": "千葉黎明", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "nantan", "name": "南丹", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "minamitsuku", "name": "南筑", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "karatsukou", "name": "唐津工", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "kaho", "name": "嘉穂", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "miyazakiminami", "name": "宮崎南", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "yamagatachuuou", "name": "山形中央", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "gifukousen", "name": "岐阜高専", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "iwatehigashi", "name": "岩手東", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "ichikawa", "name": "市川", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "teikyouasaka", "name": "帝京安積", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "tokiwadaikou", "name": "常磐大高", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "yanagaokashou", "name": "弥長岡商", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "tadkudaikouryou", "name": "拓大紅陵", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "niigatakou", "name": "新潟工", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "hoyatomo", "name": "早鞆", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "meisyuhitachi", "name": "明秀日立", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "meiseigakuin", "name": "明誠学院", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "touhokuseibunoodaka", "name": "東北生文大高", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "kiryuushiritsushou", "name": "桐生市立商", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "hashimoto", "name": "橋本", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "kiyose", "name": "清瀬", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "setakou", "name": "瀬田工", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "kumamotomarisuto", "name": "熊本マリスト", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "soyo", "name": "相洋", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "shinsokan", "name": "真颯館", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "fukushimakou", "name": "福島工", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "aboshi", "name": "網干", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "fujisawashouryou", "name": "藤沢翔陵", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "kaichi", "name": "開智", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "kansaichuuou", "name": "関西中央", "prefecture": "奈良県", "prefectureId": "nara"},
-  {"id": "suzaka", "name": "須坂", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "suzakahigashi", "name": "須坂東", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "takamatsuchuuou", "name": "高松中央", "prefecture": "香川県", "prefectureId": "kagawa"},
-  {"id": "kouchiozu", "name": "高知小津", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "kakoshimaminami", "name": "鹿児島南", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "nara", "name": "奈良", "prefecture": "奈良県", "prefectureId": "nara"},
-  {"id": "iwamizawahigashi", "name": "岩見沢東", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "asahikawahigashi", "name": "旭川東", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "takikawanishi", "name": "滝川西", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "takase", "name": "高瀬", "prefecture": "香川県", "prefectureId": "kagawa"},
-  {"id": "kitamihokuto", "name": "北見北斗", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "niigatasandaifu", "name": "新潟産大附", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "tomakomaikou", "name": "苫小牧工", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "ichinosekiichi", "name": "一関一", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "ichinosekini", "name": "一関二", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "ichinosekidaini", "name": "一関第二", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "nanao", "name": "七尾", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "sanjou", "name": "三条", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "misawashou", "name": "三沢商", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "uwamizominami", "name": "上溝南", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "gezangakuen", "name": "下山学園", "prefecture": "青森県", "prefectureId": "aomori"},
-  {"id": "nakamura", "name": "中村", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "nakamuragakuenjoshi", "name": "中村学園女子", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "nakatsushou", "name": "中津商", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "kyoutohikarihana", "name": "京都光華", "prefecture": "京都府", "prefectureId": "kyoto"},
-  {"id": "sendaidaini", "name": "仙台第二", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "sasebohigashishou", "name": "佐世保東翔", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "sasebonishi", "name": "佐世保西", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "sagakiyokazu", "name": "佐賀清和", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "osamudaikyousou", "name": "修大協創", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "kurashikichuuou", "name": "倉敷中央", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "yatsushirokou", "name": "八代工", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "katougakuen", "name": "加藤学園", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "chibaseishin", "name": "千葉聖心", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "nantofukuno", "name": "南砺福野", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "hakatajoshi", "name": "博多女子", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "wakayamashinai", "name": "和歌山信愛", "prefecture": "和歌山県", "prefectureId": "wakayama"},
-  {"id": "keimei", "name": "啓明", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "shitennoutera", "name": "四天王寺", "prefecture": "大阪府", "prefectureId": "osaka"},
-  {"id": "kunimotojoshi", "name": "国本女子", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "tosajoshi", "name": "土佐女子", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "tajiminishi", "name": "多治見西", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "taga", "name": "多賀", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "oogakikita", "name": "大垣北", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "oomura", "name": "大村", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "taisha", "name": "大社", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "naraikuei", "name": "奈良育英", "prefecture": "奈良県", "prefectureId": "nara"},
-  {"id": "utsunomiyabunhoshionna", "name": "宇都宮文星女", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "miyagigakuin", "name": "宮城学院", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "miyazakikita", "name": "宮崎北", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "miyazakishou", "name": "宮崎商", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "fujimi", "name": "富士見", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "toyamaizumi", "name": "富山いずみ", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "toyamashou", "name": "富山商", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "ogi", "name": "小城", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "shoukei", "name": "尚絅", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "shuujitsu", "name": "就実", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "yamagatajouhoku", "name": "山形城北", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "yamagatashishou", "name": "山形市商", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "sanyougakuen", "name": "山陽学園", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "okayamasozan", "name": "岡山操山", "prefecture": "岡山県", "prefectureId": "okayama"},
-  {"id": "iwakunishou", "name": "岩国商", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "shimabara", "name": "島原", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "shimabarashou", "name": "島原商", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "kawayukiishi", "name": "川之石", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "kawasakitachibana", "name": "川崎橘", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "teikyounagaoka", "name": "帝京長岡", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "tokiwakigakuen", "name": "常盤木学園", "prefecture": "宮城県", "prefectureId": "miyagi"},
-  {"id": "hatanou", "name": "幡多農", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "hiroshimashinjou", "name": "広島新庄", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "tokushou", "name": "徳商", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "tokuyamashoukou", "name": "徳山商工", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "tokushimashougyou", "name": "徳島商業", "prefecture": "徳島県", "prefectureId": "tokushima"},
-  {"id": "narita", "name": "成田", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "ibusukishou", "name": "指宿商", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "niigatanishi", "name": "新潟西", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "nichinangakuen", "name": "日南学園", "prefecture": "宮崎県", "prefectureId": "miyazaki"},
-  {"id": "nichidaifujisawa", "name": "日大藤沢", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "noboruyou", "name": "昇陽", "prefecture": "大阪府", "prefectureId": "osaka"},
-  {"id": "akashishou", "name": "明石商", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "meihou", "name": "明豊", "prefecture": "大分県", "prefectureId": "oita"},
-  {"id": "hoshino", "name": "星野", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "kimoto", "name": "木本", "prefecture": "三重県", "prefectureId": "mie"},
-  {"id": "sapporoootani", "name": "札幌大谷", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "sappororyuukoku", "name": "札幌龍谷", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "sappororyuukokugakuen", "name": "札幌龍谷学園", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "murakami", "name": "村上", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "toukyounoudaini", "name": "東京農大二", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "touyoudaiushiku", "name": "東洋大牛久", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "toukaidaisuwa", "name": "東海大諏訪", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "matsushougakuen", "name": "松商学園", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "matsumotoarikesaki", "name": "松本蟻ケ崎", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "matsueminami", "name": "松江南", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "matsuenishi", "name": "松江西", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "matsusaka", "name": "松阪", "prefecture": "三重県", "prefectureId": "mie"},
-  {"id": "yanai", "name": "柳井", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "uekusagakuendaifu", "name": "植草学園大附", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "takefu", "name": "武生", "prefecture": "福井県", "prefectureId": "fukui"},
-  {"id": "hichisanjoshi", "name": "比治山女子", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "mitojoshi", "name": "水戸女子", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "mitosakuranomaki", "name": "水戸桜ノ牧", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "mizusawa", "name": "水沢", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "tsushima", "name": "津島", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "seiseikou", "name": "済々黌", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "yaizu", "name": "焼津", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "kumamotochuuou", "name": "熊本中央", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "kumamotodaiichi", "name": "熊本第一", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "ushizu", "name": "牛津", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "koufushouwa", "name": "甲府昭和", "prefecture": "山梨県", "prefectureId": "yamanashi"},
-  {"id": "kaikiyokazu", "name": "甲斐清和", "prefecture": "山梨県", "prefectureId": "yamanashi"},
-  {"id": "unebi", "name": "畝傍", "prefecture": "奈良県", "prefectureId": "nara"},
-  {"id": "hakuouooashiri", "name": "白鷗大足利", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "moriokasan", "name": "盛岡三", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "moriokani", "name": "盛岡二", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "moriokamakotosakura", "name": "盛岡誠桜", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "iwamisatorusuikan", "name": "石見智翠館", "prefecture": "島根県", "prefectureId": "shimane"},
-  {"id": "tonami", "name": "砺波", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "iwakidaiichi", "name": "磐城第一", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "fukuishou", "name": "福井商", "prefecture": "福井県", "prefectureId": "fukui"},
-  {"id": "fukudaiwakaba", "name": "福大若葉", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "fukuokajoshi", "name": "福岡女子", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "fukushimanishi", "name": "福島西", "prefecture": "福島県", "prefectureId": "fukushima"},
-  {"id": "akitakita", "name": "秋田北", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "akitanishi", "name": "秋田西", "prefecture": "秋田県", "prefectureId": "akita"},
-  {"id": "hadanosougou", "name": "秦野総合", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "ryuugasakiichi", "name": "竜ヶ崎一", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "daiichi", "name": "第一", "prefecture": "熊本県", "prefectureId": "kumamoto"},
-  {"id": "yonagohigashi", "name": "米子東", "prefecture": "鳥取県", "prefectureId": "tottori"},
-  {"id": "itoman", "name": "糸満", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "sougougijutsu", "name": "総合技術", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "hijirikatarina", "name": "聖カタリナ", "prefecture": "愛媛県", "prefectureId": "ehime"},
-  {"id": "hanamakiminami", "name": "花巻南", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "torahime", "name": "虎姫", "prefecture": "滋賀県", "prefectureId": "shiga"},
-  {"id": "makotoosamu", "name": "誠修", "prefecture": "福岡県", "prefectureId": "fukuoka"},
-  {"id": "toyohashichuuou", "name": "豊橋中央", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "toyodaootani", "name": "豊田大谷", "prefecture": "愛知県", "prefectureId": "aichi"},
-  {"id": "ottemae", "name": "追手前", "prefecture": "高知県", "prefectureId": "kochi"},
-  {"id": "naha", "name": "那覇", "prefecture": "沖縄県", "prefectureId": "okinawa"},
-  {"id": "sakataminami", "name": "酒田南", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "sakatahigashi", "name": "酒田東", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "kanazawashou", "name": "金沢商", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "hokotaichi", "name": "鉾田一", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "nagai", "name": "長井", "prefecture": "山形県", "prefectureId": "yamagata"},
-  {"id": "nagaokashou", "name": "長岡商", "prefecture": "新潟県", "prefectureId": "niigata"},
-  {"id": "nagasakishou", "name": "長崎商", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "nagasakijoshi", "name": "長崎女子", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "nagasakihigashi", "name": "長崎東", "prefecture": "長崎県", "prefectureId": "nagasaki"},
-  {"id": "naganoshou", "name": "長野商", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "nagato", "name": "長門", "prefecture": "山口県", "prefectureId": "yamaguchi"},
-  {"id": "shizuokakenfujimi", "name": "静岡県富士見", "prefecture": "静岡県", "prefectureId": "shizuoka"},
-  {"id": "sumagakuen", "name": "須磨学園", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "iida", "name": "飯田", "prefecture": "石川県", "prefectureId": "ishikawa"},
-  {"id": "iidajoshi", "name": "飯田女子", "prefecture": "長野県", "prefectureId": "nagano"},
-  {"id": "takaokanishikouoka", "name": "高岡西・高岡", "prefecture": "富山県", "prefectureId": "toyama"},
-  {"id": "takasakijoshi", "name": "高崎女子", "prefecture": "群馬県", "prefectureId": "gunma"},
-  {"id": "takamatsushou", "name": "高松商", "prefecture": "香川県", "prefectureId": "kagawa"},
-  {"id": "takatsu", "name": "高津", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "takada", "name": "高田", "prefecture": "岩手県", "prefectureId": "iwate"},
-  {"id": "tosushou", "name": "鳥栖商", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "uguisudani", "name": "鶯谷", "prefecture": "岐阜県", "prefectureId": "gifu"},
-  {"id": "washimiya", "name": "鷲宮", "prefecture": "埼玉県", "prefectureId": "saitama"},
-  {"id": "kakoshimajoshi", "name": "鹿児島女子", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "kanoyajoshi", "name": "鹿屋女子", "prefecture": "鹿児島県", "prefectureId": "kagoshima"},
-  {"id": "kashima", "name": "鹿島", "prefecture": "佐賀県", "prefectureId": "saga"},
-  {"id": "kashimagakuen", "name": "鹿島学園", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "koujimachigakuen", "name": "麹町学園", "prefecture": "東京都", "prefectureId": "tokyo"},
-  {"id": "tatsunokita", "name": "龍野北", "prefecture": "兵庫県", "prefectureId": "hyogo"},
-  {"id": "kakegeihoku", "name": "加計芸北", "prefecture": "広島県", "prefectureId": "hiroshima"},
-  {"id": "kitamikashiwayou", "name": "北見柏陽", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "atsugikita", "name": "厚木北", "prefecture": "神奈川県", "prefectureId": "kanagawa"},
-  {"id": "utsunomiyajoshi", "name": "宇都宮女子", "prefecture": "栃木県", "prefectureId": "tochigi"},
-  {"id": "obihirominamishou", "name": "帯広南商", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "obihiroootani", "name": "帯広大谷", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "obihiromidoriyou", "name": "帯広緑陽", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "hitachikita", "name": "日立北", "prefecture": "茨城県", "prefectureId": "ibaraki"},
-  {"id": "kashiwachuuou", "name": "柏中央", "prefecture": "千葉県", "prefectureId": "chiba"},
-  {"id": "noboribetsuasujuunado", "name": "登別明日中等", "prefecture": "北海道", "prefectureId": "hokkaido"},
-  {"id": "moriokadaisan", "name": "盛岡第三", "prefecture": "岩手県", "prefectureId": "iwate"}
+  {
+    "id": "uedasomeyaoka",
+    "name": "上田染谷丘",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "shimonosekikouka",
+    "name": "下関工科",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "yazu",
+    "name": "八頭",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "himejishou",
+    "name": "姫路商",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "komatsu",
+    "name": "小松",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "okayamaminami",
+    "name": "岡山南",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "tokuyama",
+    "name": "徳山",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "myoujou",
+    "name": "明星",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka"
+  },
+  {
+    "id": "sapporokotonikou",
+    "name": "札幌琴似工",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "tsuna",
+    "name": "津名",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "tamanakou",
+    "name": "玉名工",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "naganoyoshida",
+    "name": "長野吉田",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "takaoka",
+    "name": "高岡",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "uozu",
+    "name": "魚津",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "tsurumine",
+    "name": "鶴嶺",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "oideosahime",
+    "name": "OIDE長姫",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "asahikawakou",
+    "name": "旭川工",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "hanawa",
+    "name": "花輪",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "kamiinanou",
+    "name": "上伊那農",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "ageominami",
+    "name": "上尾南",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "kudamatsu",
+    "name": "下松",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "nakatsuhigashi",
+    "name": "中津東",
+    "prefecture": "大分県",
+    "prefectureId": "oita"
+  },
+  {
+    "id": "inakita",
+    "name": "伊那北",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "yawatahamakou",
+    "name": "八幡浜工",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "kitasuma",
+    "name": "北須磨",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "kuremiyahara",
+    "name": "呉宮原",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "karatsunishi",
+    "name": "唐津西",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "saitamaheisei",
+    "name": "埼玉平成",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "ootawara",
+    "name": "大田原",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "yasugi",
+    "name": "安来",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "sukumokou",
+    "name": "宿毛工",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "fujinomiyanishi",
+    "name": "富士宮西",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "onoda",
+    "name": "小野田",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "okayamamisaoyama",
+    "name": "岡山操山",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "iwasenichidai",
+    "name": "岩瀬日大",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "shimabarakou",
+    "name": "島原工",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "kawagoe",
+    "name": "川越",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "hirosaki",
+    "name": "弘前",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "aisanoomikawa",
+    "name": "愛産大三河",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "keiaigakuen",
+    "name": "敬愛学園",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "shibatachuuou",
+    "name": "新発田中央",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "akashikita",
+    "name": "明石北",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "touhokugakuin",
+    "name": "東北学院",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "musashiogose",
+    "name": "武蔵越生",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "musashinochiyoda",
+    "name": "武蔵野千代田",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "numata",
+    "name": "沼田",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "kumamotokou",
+    "name": "熊本工",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "ushiku",
+    "name": "牛久",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "kagigakuenhitachi",
+    "name": "科技学園日立",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "yonagokou",
+    "name": "米子工",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "kokawa",
+    "name": "粉河",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "ayabe",
+    "name": "綾部",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "noshiroshouyou",
+    "name": "能代松陽",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "seishin",
+    "name": "誠信",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "ashikagakou",
+    "name": "足利工",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "kouriyama",
+    "name": "郡山",
+    "prefecture": "奈良県",
+    "prefectureId": "nara"
+  },
+  {
+    "id": "kanazawagakuin",
+    "name": "金沢学院",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "aoyutaka",
+    "name": "青豊",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "sannohe",
+    "name": "三戸",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "uedachikuma",
+    "name": "上田千曲",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "kurumeshou",
+    "name": "久留米商",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "imabarikita",
+    "name": "今治北",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "hokuriku",
+    "name": "北陸",
+    "prefecture": "福井県",
+    "prefectureId": "fukui"
+  },
+  {
+    "id": "chiyoda",
+    "name": "千代田",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "chibashou",
+    "name": "千葉商",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "meishoukou",
+    "name": "名商工",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "nago",
+    "name": "名護",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "kureminato",
+    "name": "呉港",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "wakayamakousen",
+    "name": "和歌山高専",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "jounan",
+    "name": "城南",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "ooitamaizuru",
+    "name": "大分舞鶴",
+    "prefecture": "大分県",
+    "prefectureId": "oita"
+  },
+  {
+    "id": "ootsuka",
+    "name": "大塚",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka"
+  },
+  {
+    "id": "oomurakou",
+    "name": "大村工",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "oodateootorimei",
+    "name": "大館鳳鳴",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "gakuhouishikawa",
+    "name": "学法石川",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "ube",
+    "name": "宇部",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "sendaifu",
+    "name": "専大附",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "komatsuootani",
+    "name": "小松大谷",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "kawaguchishiritsu",
+    "name": "川口市立",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "hirosakijitsu",
+    "name": "弘前実",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "tokuyamakousen",
+    "name": "徳山高専",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "aigakuen",
+    "name": "愛学園",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "nichidaibuzan",
+    "name": "日大豊山",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "hitarinkou",
+    "name": "日田林工",
+    "prefecture": "大分県",
+    "prefectureId": "oita"
+  },
+  {
+    "id": "shouwagakuin",
+    "name": "昭和学院",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "honjouhigashi",
+    "name": "本庄東",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "toukaidaigyouhoshi",
+    "name": "東海大仰星",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka"
+  },
+  {
+    "id": "tounoudaini",
+    "name": "東農大二",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "tochigi",
+    "name": "栃木",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "yokoteseiryougakuin",
+    "name": "横手清陵学院",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "houseini",
+    "name": "法政二",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "hamana",
+    "name": "浜名",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "hamamatsushou",
+    "name": "浜松商",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "kumagaya",
+    "name": "熊谷",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "kotooka",
+    "name": "琴丘",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "makotokoukou",
+    "name": "真工高",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "yaitachuuou",
+    "name": "矢板中央",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "koubeseijou",
+    "name": "神戸星城",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "hadano",
+    "name": "秦野",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "ritsumeikan",
+    "name": "立命館",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "rikkyouniiza",
+    "name": "立教新座",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "yonezawachuuou",
+    "name": "米沢中央",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "hakuikou",
+    "name": "羽咋工",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "kuraogose",
+    "name": "蔵越生",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "fujishiroshisui",
+    "name": "藤代紫水",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "fujishima",
+    "name": "藤島",
+    "prefecture": "福井県",
+    "prefectureId": "fukui"
+  },
+  {
+    "id": "nishiwaki",
+    "name": "西脇",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "toyokawa",
+    "name": "豊川",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "tomigusuku",
+    "name": "豊見城",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "kindaiwakayama",
+    "name": "近大和歌山",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "nagahamakita",
+    "name": "長浜北",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "naganohigashi",
+    "name": "長野東",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "sekinegakuen",
+    "name": "関根学園",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "ananhikari",
+    "name": "阿南光",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "shizuoka",
+    "name": "静岡",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "tottorishou",
+    "name": "鳥取商",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "ootorigakuen",
+    "name": "鵬学園",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "kakoshima",
+    "name": "鹿児島",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "kuroisominami",
+    "name": "黒磯南",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "tsurugi",
+    "name": "つるぎ",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "urusurahidetomo",
+    "name": "ウルスラ英智",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "ruuterugakuin",
+    "name": "ルーテル学院",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "sanbongi",
+    "name": "三本木",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "miuragakuen",
+    "name": "三浦学苑",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "shimoda",
+    "name": "下田",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "nakagoshi",
+    "name": "中越",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "kyoutobunkyou",
+    "name": "京都文教",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "imabarikou",
+    "name": "今治工",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "sendaisan",
+    "name": "仙台三",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "takeshioodakasaki",
+    "name": "健大高崎",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "hachinohegakuinhikarihoshi",
+    "name": "八戸学院光星",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "maebashishou",
+    "name": "前橋商",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "kitakaoodaka",
+    "name": "北科大高",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "kouyou",
+    "name": "向陽",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "daidoudaigakudaidou",
+    "name": "大同大学大同",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "oomagari",
+    "name": "大曲",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "oomagarikou",
+    "name": "大曲工",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "oosuginami",
+    "name": "大杉並",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "oomuta",
+    "name": "大牟田",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "himejinishi",
+    "name": "姫路西",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "utsunomiyakou",
+    "name": "宇都宮工",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "miyazakinishi",
+    "name": "宮崎西",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "fujinomiyakita",
+    "name": "富士宮北",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "toyamakou",
+    "name": "富山工",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "sansonkokusai",
+    "name": "山村国際",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "okou",
+    "name": "岡豊",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "iwate",
+    "name": "岩手",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "iwamurada",
+    "name": "岩村田",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "kawagoehigashi",
+    "name": "川越東",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "joubandai",
+    "name": "常磐大",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "nobeokagakuen",
+    "name": "延岡学園",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "tokushimakagi",
+    "name": "徳島科技",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "niigatasandaifu",
+    "name": "新潟産大附",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "nitta",
+    "name": "新田",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "wasedami",
+    "name": "早稲田実",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "myoubou",
+    "name": "明法",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "tounichidaishouhei",
+    "name": "東日大昌平",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "toufukuoka",
+    "name": "東福岡",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "sakurai",
+    "name": "桜井",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "yokoteseiryou",
+    "name": "横手清陵",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "yokohamasouei",
+    "name": "横浜創英",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "sumoto",
+    "name": "洲本",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "hamada",
+    "name": "浜田",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "kaisei",
+    "name": "海星",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "shimizukeoka",
+    "name": "清水ヶ丘",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "shibukawa",
+    "name": "渋川",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "kumakou",
+    "name": "球磨工",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "koufuminami",
+    "name": "甲府南",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi"
+  },
+  {
+    "id": "koufushou",
+    "name": "甲府商",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi"
+  },
+  {
+    "id": "masudashouyou",
+    "name": "益田翔陽",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "moriokakou",
+    "name": "盛岡工",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "kengifushou",
+    "name": "県岐阜商",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "chinen",
+    "name": "知念",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "koubekokusaifu",
+    "name": "神戸国際附",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "fukuoka",
+    "name": "福岡",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "akitakitataka",
+    "name": "秋田北鷹",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "yonagokougyou",
+    "name": "米子工業",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "seidousankawadai",
+    "name": "精道三川台",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "ayaba",
+    "name": "綾羽",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "seishinurusura",
+    "name": "聖心ウルスラ",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "nishikawaetsu",
+    "name": "西川越",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "seishou",
+    "name": "西湘",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "kindaifukuyama",
+    "name": "近大福山",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "kinkidaikousen",
+    "name": "近畿大高専",
+    "prefecture": "三重県",
+    "prefectureId": "mie"
+  },
+  {
+    "id": "nahanishi",
+    "name": "那覇西",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "tomishirohigashi",
+    "name": "都城東",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "toshiooshioshiri",
+    "name": "都市大塩尻",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "kanazawagakuindaifu",
+    "name": "金沢学院大附",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "nagasakinichidai",
+    "name": "長崎日大",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "nagano",
+    "name": "長野",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "shizuokashou",
+    "name": "静岡商",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "kazeetsu",
+    "name": "風越",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "komadai",
+    "name": "駒大",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "sundaikoufu",
+    "name": "駿台甲府",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi"
+  },
+  {
+    "id": "tottorinishi",
+    "name": "鳥取西",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "shikamachikou",
+    "name": "鹿町工",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "kurosawashirikou",
+    "name": "黒沢尻工",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "urusura",
+    "name": "ウルスラ",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "ichinosekigakuin",
+    "name": "一関学院",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "chuukyou",
+    "name": "中京",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "kyuushuubunka",
+    "name": "九州文化",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "kyouei",
+    "name": "享栄",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "sagakou",
+    "name": "佐賀工",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "izumohokuryou",
+    "name": "出雲北陵",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "ooitashou",
+    "name": "大分商",
+    "prefecture": "大分県",
+    "prefectureId": "oita"
+  },
+  {
+    "id": "ubekou",
+    "name": "宇部工",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "yamagatashiritsushou",
+    "name": "山形市立商",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "gifushou",
+    "name": "岐阜商",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "maki",
+    "name": "巻",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "bundaisuginami",
+    "name": "文大杉並",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "bunseigeidaifu",
+    "name": "文星芸大附",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "shohei",
+    "name": "昌平",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "toukaidaisagami",
+    "name": "東海大相模",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "tanabe",
+    "name": "田辺",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "kousei",
+    "name": "甲西",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "ishikawakousen",
+    "name": "石川高専",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "kannabeasahi",
+    "name": "神辺旭",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "tachibanagakuen",
+    "name": "立花学園",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "yonagoshoin",
+    "name": "米子松蔭",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "wakimachi",
+    "name": "脇町",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "nishijouyou",
+    "name": "西城陽",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "saijou",
+    "name": "西条",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "kanetsu",
+    "name": "金津",
+    "prefecture": "福井県",
+    "prefectureId": "fukui"
+  },
+  {
+    "id": "takasaki",
+    "name": "高崎",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "kagoshimashou",
+    "name": "鹿児島商",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "towanomorisanai",
+    "name": "とわの森三愛",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "mie",
+    "name": "三重",
+    "prefecture": "三重県",
+    "prefectureId": "mie"
+  },
+  {
+    "id": "uenomiya",
+    "name": "上宮",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka"
+  },
+  {
+    "id": "hachinohekoudaiichi",
+    "name": "八戸工大一",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "yaeyama",
+    "name": "八重山",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "izumokou",
+    "name": "出雲工",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "kitakadai",
+    "name": "北科大",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "hokuetsu",
+    "name": "北越",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "nanyoukou",
+    "name": "南陽工",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "wakayamakita",
+    "name": "和歌山北",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "ooita",
+    "name": "大分",
+    "prefecture": "大分県",
+    "prefectureId": "oita"
+  },
+  {
+    "id": "ootanimuroran",
+    "name": "大谷室蘭",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "ureshino",
+    "name": "嬉野",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "utsunomiyatandaifu",
+    "name": "宇都宮短大附",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "tomiokahigashi",
+    "name": "富岡東",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "odawara",
+    "name": "小田原",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "jinseigakuen",
+    "name": "尽誠学園",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa"
+  },
+  {
+    "id": "onomichi",
+    "name": "尾道",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "okayamaridaifu",
+    "name": "岡山理大附",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "okazakijousai",
+    "name": "岡崎城西",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "ichiamagasaki",
+    "name": "市尼崎",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "obihironou",
+    "name": "帯広農",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "hiroshimashouyou",
+    "name": "広島翔洋",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "keiougijuku",
+    "name": "慶應義塾",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "tsuruga",
+    "name": "敦賀",
+    "prefecture": "福井県",
+    "prefectureId": "fukui"
+  },
+  {
+    "id": "buntoku",
+    "name": "文徳",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "asahikawajitsu",
+    "name": "旭川実",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "meitokugijuku",
+    "name": "明徳義塾",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "kisarazusougou",
+    "name": "木更津総合",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "touhoku",
+    "name": "東北",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "matsuyama",
+    "name": "松山",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "matsuekou",
+    "name": "松江工",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "saibi",
+    "name": "済美",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "takikawakou",
+    "name": "滝川工",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "tamura",
+    "name": "田村",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "chitoku",
+    "name": "知徳",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "fukuchiyamanarumi",
+    "name": "福知山成美",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "akitareiwa",
+    "name": "秋田令和",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "ritsumeikanmoriyama",
+    "name": "立命館守山",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "usui",
+    "name": "笛吹",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi"
+  },
+  {
+    "id": "chikushidai",
+    "name": "筑紫台",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "minokamo",
+    "name": "美濃加茂",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "haguro",
+    "name": "羽黒",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "noto",
+    "name": "能登",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "kusatsuhigashi",
+    "name": "草津東",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "honan",
+    "name": "豊南",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "miyakonojo",
+    "name": "都城商",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "nagasakinanzan",
+    "name": "長崎南山",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "naganoshunei",
+    "name": "長野俊英",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "kasumikeura",
+    "name": "霞ヶ浦",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "aomorimeinohoshi",
+    "name": "青森明の星",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "takaokashou",
+    "name": "高岡商",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "takasakishou",
+    "name": "高崎商",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "takadashou",
+    "name": "高田商",
+    "prefecture": "奈良県",
+    "prefectureId": "nara"
+  },
+  {
+    "id": "tottorihigashi",
+    "name": "鳥取東",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "kakoshimajitsu",
+    "name": "鹿児島実",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "kurosawashirikita",
+    "name": "黒沢尻北",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "ageo",
+    "name": "上尾",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "sendaidaisan",
+    "name": "仙台第三",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "isekou",
+    "name": "伊勢工",
+    "prefecture": "三重県",
+    "prefectureId": "mie"
+  },
+  {
+    "id": "kouseigakuen",
+    "name": "佼成学園",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "kurashikiminami",
+    "name": "倉敷南",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "izumo",
+    "name": "出雲",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "kitahiroshima",
+    "name": "北広島",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "chibareimei",
+    "name": "千葉黎明",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "nantan",
+    "name": "南丹",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "minamitsuku",
+    "name": "南筑",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "karatsukou",
+    "name": "唐津工",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "kaho",
+    "name": "嘉穂",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "miyazakiminami",
+    "name": "宮崎南",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "yamagatachuuou",
+    "name": "山形中央",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "gifukousen",
+    "name": "岐阜高専",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "iwatehigashi",
+    "name": "岩手東",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "ichikawa",
+    "name": "市川",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "teikyouasaka",
+    "name": "帝京安積",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "tokiwadaikou",
+    "name": "常磐大高",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "yanagaokashou",
+    "name": "弥長岡商",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "tadkudaikouryou",
+    "name": "拓大紅陵",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "niigatakou",
+    "name": "新潟工",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "hoyatomo",
+    "name": "早鞆",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "meisyuhitachi",
+    "name": "明秀日立",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "meiseigakuin",
+    "name": "明誠学院",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "touhokuseibunoodaka",
+    "name": "東北生文大高",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "kiryuushiritsushou",
+    "name": "桐生市立商",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "hashimoto",
+    "name": "橋本",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "kiyose",
+    "name": "清瀬",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "setakou",
+    "name": "瀬田工",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "kumamotomarisuto",
+    "name": "熊本マリスト",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "soyo",
+    "name": "相洋",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "shinsokan",
+    "name": "真颯館",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "fukushimakou",
+    "name": "福島工",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "aboshi",
+    "name": "網干",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "fujisawashouryou",
+    "name": "藤沢翔陵",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "kaichi",
+    "name": "開智",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "kansaichuuou",
+    "name": "関西中央",
+    "prefecture": "奈良県",
+    "prefectureId": "nara"
+  },
+  {
+    "id": "suzaka",
+    "name": "須坂",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "suzakahigashi",
+    "name": "須坂東",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "takamatsuchuuou",
+    "name": "高松中央",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa"
+  },
+  {
+    "id": "kouchiozu",
+    "name": "高知小津",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "kakoshimaminami",
+    "name": "鹿児島南",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "nara",
+    "name": "奈良",
+    "prefecture": "奈良県",
+    "prefectureId": "nara"
+  },
+  {
+    "id": "iwamizawahigashi",
+    "name": "岩見沢東",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "asahikawahigashi",
+    "name": "旭川東",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "takikawanishi",
+    "name": "滝川西",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "takase",
+    "name": "高瀬",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa"
+  },
+  {
+    "id": "kitamihokuto",
+    "name": "北見北斗",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "niigatasandaifu",
+    "name": "新潟産大附",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "tomakomaikou",
+    "name": "苫小牧工",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "ichinosekiichi",
+    "name": "一関一",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "ichinosekini",
+    "name": "一関二",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "ichinosekidaini",
+    "name": "一関第二",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "nanao",
+    "name": "七尾",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "sanjou",
+    "name": "三条",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "misawashou",
+    "name": "三沢商",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "uwamizominami",
+    "name": "上溝南",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "gezangakuen",
+    "name": "下山学園",
+    "prefecture": "青森県",
+    "prefectureId": "aomori"
+  },
+  {
+    "id": "nakamura",
+    "name": "中村",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "nakamuragakuenjoshi",
+    "name": "中村学園女子",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "nakatsushou",
+    "name": "中津商",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "kyoutohikarihana",
+    "name": "京都光華",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto"
+  },
+  {
+    "id": "sendaidaini",
+    "name": "仙台第二",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "sasebohigashishou",
+    "name": "佐世保東翔",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "sasebonishi",
+    "name": "佐世保西",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "sagakiyokazu",
+    "name": "佐賀清和",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "osamudaikyousou",
+    "name": "修大協創",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "kurashikichuuou",
+    "name": "倉敷中央",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "yatsushirokou",
+    "name": "八代工",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "katougakuen",
+    "name": "加藤学園",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "chibaseishin",
+    "name": "千葉聖心",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "nantofukuno",
+    "name": "南砺福野",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "hakatajoshi",
+    "name": "博多女子",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "wakayamashinai",
+    "name": "和歌山信愛",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama"
+  },
+  {
+    "id": "keimei",
+    "name": "啓明",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "shitennoutera",
+    "name": "四天王寺",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka"
+  },
+  {
+    "id": "kunimotojoshi",
+    "name": "国本女子",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "tosajoshi",
+    "name": "土佐女子",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "tajiminishi",
+    "name": "多治見西",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "taga",
+    "name": "多賀",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "oogakikita",
+    "name": "大垣北",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "oomura",
+    "name": "大村",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "taisha",
+    "name": "大社",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "naraikuei",
+    "name": "奈良育英",
+    "prefecture": "奈良県",
+    "prefectureId": "nara"
+  },
+  {
+    "id": "utsunomiyabunhoshionna",
+    "name": "宇都宮文星女",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "miyagigakuin",
+    "name": "宮城学院",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "miyazakikita",
+    "name": "宮崎北",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "miyazakishou",
+    "name": "宮崎商",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "fujimi",
+    "name": "富士見",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "toyamaizumi",
+    "name": "富山いずみ",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "toyamashou",
+    "name": "富山商",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "ogi",
+    "name": "小城",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "shoukei",
+    "name": "尚絅",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "shuujitsu",
+    "name": "就実",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "yamagatajouhoku",
+    "name": "山形城北",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "yamagatashishou",
+    "name": "山形市商",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "sanyougakuen",
+    "name": "山陽学園",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "okayamasozan",
+    "name": "岡山操山",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama"
+  },
+  {
+    "id": "iwakunishou",
+    "name": "岩国商",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "shimabara",
+    "name": "島原",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "shimabarashou",
+    "name": "島原商",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "kawayukiishi",
+    "name": "川之石",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "kawasakitachibana",
+    "name": "川崎橘",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "teikyounagaoka",
+    "name": "帝京長岡",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "tokiwakigakuen",
+    "name": "常盤木学園",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi"
+  },
+  {
+    "id": "hatanou",
+    "name": "幡多農",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "hiroshimashinjou",
+    "name": "広島新庄",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "tokushou",
+    "name": "徳商",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "tokuyamashoukou",
+    "name": "徳山商工",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "tokushimashougyou",
+    "name": "徳島商業",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima"
+  },
+  {
+    "id": "narita",
+    "name": "成田",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "ibusukishou",
+    "name": "指宿商",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "niigatanishi",
+    "name": "新潟西",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "nichinangakuen",
+    "name": "日南学園",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki"
+  },
+  {
+    "id": "nichidaifujisawa",
+    "name": "日大藤沢",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "noboruyou",
+    "name": "昇陽",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka"
+  },
+  {
+    "id": "akashishou",
+    "name": "明石商",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "meihou",
+    "name": "明豊",
+    "prefecture": "大分県",
+    "prefectureId": "oita"
+  },
+  {
+    "id": "hoshino",
+    "name": "星野",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "kimoto",
+    "name": "木本",
+    "prefecture": "三重県",
+    "prefectureId": "mie"
+  },
+  {
+    "id": "sapporoootani",
+    "name": "札幌大谷",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "sappororyuukoku",
+    "name": "札幌龍谷",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "sappororyuukokugakuen",
+    "name": "札幌龍谷学園",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "murakami",
+    "name": "村上",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "toukyounoudaini",
+    "name": "東京農大二",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "touyoudaiushiku",
+    "name": "東洋大牛久",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "toukaidaisuwa",
+    "name": "東海大諏訪",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "matsushougakuen",
+    "name": "松商学園",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "matsumotoarikesaki",
+    "name": "松本蟻ケ崎",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "matsueminami",
+    "name": "松江南",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "matsuenishi",
+    "name": "松江西",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "matsusaka",
+    "name": "松阪",
+    "prefecture": "三重県",
+    "prefectureId": "mie"
+  },
+  {
+    "id": "yanai",
+    "name": "柳井",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "uekusagakuendaifu",
+    "name": "植草学園大附",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "takefu",
+    "name": "武生",
+    "prefecture": "福井県",
+    "prefectureId": "fukui"
+  },
+  {
+    "id": "hichisanjoshi",
+    "name": "比治山女子",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "mitojoshi",
+    "name": "水戸女子",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "mitosakuranomaki",
+    "name": "水戸桜ノ牧",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "mizusawa",
+    "name": "水沢",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "tsushima",
+    "name": "津島",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "seiseikou",
+    "name": "済々黌",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "yaizu",
+    "name": "焼津",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "kumamotochuuou",
+    "name": "熊本中央",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "kumamotodaiichi",
+    "name": "熊本第一",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "ushizu",
+    "name": "牛津",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "koufushouwa",
+    "name": "甲府昭和",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi"
+  },
+  {
+    "id": "kaikiyokazu",
+    "name": "甲斐清和",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi"
+  },
+  {
+    "id": "unebi",
+    "name": "畝傍",
+    "prefecture": "奈良県",
+    "prefectureId": "nara"
+  },
+  {
+    "id": "hakuouooashiri",
+    "name": "白鷗大足利",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "moriokasan",
+    "name": "盛岡三",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "moriokani",
+    "name": "盛岡二",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "moriokamakotosakura",
+    "name": "盛岡誠桜",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "iwamisatorusuikan",
+    "name": "石見智翠館",
+    "prefecture": "島根県",
+    "prefectureId": "shimane"
+  },
+  {
+    "id": "tonami",
+    "name": "砺波",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "iwakidaiichi",
+    "name": "磐城第一",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "fukuishou",
+    "name": "福井商",
+    "prefecture": "福井県",
+    "prefectureId": "fukui"
+  },
+  {
+    "id": "fukudaiwakaba",
+    "name": "福大若葉",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "fukuokajoshi",
+    "name": "福岡女子",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "fukushimanishi",
+    "name": "福島西",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima"
+  },
+  {
+    "id": "akitakita",
+    "name": "秋田北",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "akitanishi",
+    "name": "秋田西",
+    "prefecture": "秋田県",
+    "prefectureId": "akita"
+  },
+  {
+    "id": "hadanosougou",
+    "name": "秦野総合",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "ryuugasakiichi",
+    "name": "竜ヶ崎一",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "daiichi",
+    "name": "第一",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto"
+  },
+  {
+    "id": "yonagohigashi",
+    "name": "米子東",
+    "prefecture": "鳥取県",
+    "prefectureId": "tottori"
+  },
+  {
+    "id": "itoman",
+    "name": "糸満",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "sougougijutsu",
+    "name": "総合技術",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "hijirikatarina",
+    "name": "聖カタリナ",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime"
+  },
+  {
+    "id": "hanamakiminami",
+    "name": "花巻南",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "torahime",
+    "name": "虎姫",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga"
+  },
+  {
+    "id": "makotoosamu",
+    "name": "誠修",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka"
+  },
+  {
+    "id": "toyohashichuuou",
+    "name": "豊橋中央",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "toyodaootani",
+    "name": "豊田大谷",
+    "prefecture": "愛知県",
+    "prefectureId": "aichi"
+  },
+  {
+    "id": "ottemae",
+    "name": "追手前",
+    "prefecture": "高知県",
+    "prefectureId": "kochi"
+  },
+  {
+    "id": "naha",
+    "name": "那覇",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa"
+  },
+  {
+    "id": "sakataminami",
+    "name": "酒田南",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "sakatahigashi",
+    "name": "酒田東",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "kanazawashou",
+    "name": "金沢商",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "hokotaichi",
+    "name": "鉾田一",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "nagai",
+    "name": "長井",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata"
+  },
+  {
+    "id": "nagaokashou",
+    "name": "長岡商",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata"
+  },
+  {
+    "id": "nagasakishou",
+    "name": "長崎商",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "nagasakijoshi",
+    "name": "長崎女子",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "nagasakihigashi",
+    "name": "長崎東",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki"
+  },
+  {
+    "id": "naganoshou",
+    "name": "長野商",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "nagato",
+    "name": "長門",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi"
+  },
+  {
+    "id": "shizuokakenfujimi",
+    "name": "静岡県富士見",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka"
+  },
+  {
+    "id": "sumagakuen",
+    "name": "須磨学園",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "iida",
+    "name": "飯田",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa"
+  },
+  {
+    "id": "iidajoshi",
+    "name": "飯田女子",
+    "prefecture": "長野県",
+    "prefectureId": "nagano"
+  },
+  {
+    "id": "takaokanishikouoka",
+    "name": "高岡西・高岡",
+    "prefecture": "富山県",
+    "prefectureId": "toyama"
+  },
+  {
+    "id": "takasakijoshi",
+    "name": "高崎女子",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma"
+  },
+  {
+    "id": "takamatsushou",
+    "name": "高松商",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa"
+  },
+  {
+    "id": "takatsu",
+    "name": "高津",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "takada",
+    "name": "高田",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  },
+  {
+    "id": "tosushou",
+    "name": "鳥栖商",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "uguisudani",
+    "name": "鶯谷",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu"
+  },
+  {
+    "id": "washimiya",
+    "name": "鷲宮",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama"
+  },
+  {
+    "id": "kakoshimajoshi",
+    "name": "鹿児島女子",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "kanoyajoshi",
+    "name": "鹿屋女子",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima"
+  },
+  {
+    "id": "kashima",
+    "name": "鹿島",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga"
+  },
+  {
+    "id": "kashimagakuen",
+    "name": "鹿島学園",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "koujimachigakuen",
+    "name": "麹町学園",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo"
+  },
+  {
+    "id": "tatsunokita",
+    "name": "龍野北",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo"
+  },
+  {
+    "id": "kakegeihoku",
+    "name": "加計芸北",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima"
+  },
+  {
+    "id": "kitamikashiwayou",
+    "name": "北見柏陽",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "atsugikita",
+    "name": "厚木北",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa"
+  },
+  {
+    "id": "utsunomiyajoshi",
+    "name": "宇都宮女子",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi"
+  },
+  {
+    "id": "obihirominamishou",
+    "name": "帯広南商",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "obihiroootani",
+    "name": "帯広大谷",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "obihiromidoriyou",
+    "name": "帯広緑陽",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "hitachikita",
+    "name": "日立北",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki"
+  },
+  {
+    "id": "kashiwachuuou",
+    "name": "柏中央",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba"
+  },
+  {
+    "id": "noboribetsuasujuunado",
+    "name": "登別明日中等",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido"
+  },
+  {
+    "id": "moriokadaisan",
+    "name": "盛岡第三",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate"
+  }
 ]

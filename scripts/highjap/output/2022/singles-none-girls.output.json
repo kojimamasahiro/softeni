@@ -1,66 +1,1026 @@
 [
-{"id":1,"name":"天間美嘉（東北）","information":[{"lastName":"天間","firstName":"美嘉","team":"東北","originalTeam":null,"prefecture":"宮城県","playerId":null,"tempId":"天間_美嘉_東北"}],"category":"singles"},
-{"id":2,"name":"高橋瑚子（岩国商）","information":[{"lastName":"高橋","firstName":"瑚子","team":"岩国商","originalTeam":null,"prefecture":"山口県","playerId":null,"tempId":"高橋_瑚子_岩国商"}],"category":"singles"},
-{"id":3,"name":"布施琴音（能登）","information":[{"lastName":"布施","firstName":"琴音","team":"能登","originalTeam":null,"prefecture":"石川県","playerId":null,"tempId":"布施_琴音_能登"}],"category":"singles"},
-{"id":4,"name":"関口みれい（松商学園）","information":[{"lastName":"関口","firstName":"みれい","team":"松商学園","originalTeam":null,"prefecture":"長野県","playerId":null,"tempId":"関口_みれい_松商学園"}],"category":"singles"},
-{"id":5,"name":"古園由彩（千歳）","information":[{"lastName":"古園","firstName":"由彩","team":"千歳","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"古園_由彩_千歳"}],"category":"singles"},
-{"id":6,"name":"岩元望美（和歌山信愛）","information":[{"lastName":"岩元","firstName":"望美","team":"和歌山信愛","originalTeam":null,"prefecture":"和歌山県","playerId":null,"tempId":"岩元_望美_和歌山信愛"}],"category":"singles"},
-{"id":7,"name":"螺良萌々（宇都宮短大附）","information":[{"lastName":"螺良","firstName":"萌々","team":"宇都宮短大附","originalTeam":null,"prefecture":"栃木県","playerId":null,"tempId":"螺良_萌々_宇都宮短大附"}],"category":"singles"},
-{"id":8,"name":"近藤明日咲（尽誠学園）","information":[{"lastName":"近藤","firstName":"明日咲","team":"尽誠学園","originalTeam":null,"prefecture":"香川県","playerId":null,"tempId":"近藤_明日咲_尽誠学園"}],"category":"singles"},
-{"id":9,"name":"﨑山七海（今治北）","information":[{"lastName":"﨑山","firstName":"七海","team":"今治北","originalTeam":null,"prefecture":"愛媛県","playerId":null,"tempId":"﨑山_七海_今治北"}],"category":"singles"},
-{"id":10,"name":"今野愛菜（旭川実業）","information":[{"lastName":"今野","firstName":"愛菜","team":"旭川実業","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"今野_愛菜_旭川実業"}],"category":"singles"},
-{"id":11,"name":"西村麻央（誠修）","information":[{"lastName":"西村","firstName":"麻央","team":"誠修","originalTeam":null,"prefecture":"福岡県","playerId":null,"tempId":"西村_麻央_誠修"}],"category":"singles"},
-{"id":12,"name":"西山なつみ（昭和学院）","information":[{"lastName":"西山","firstName":"なつみ","team":"昭和学院","originalTeam":null,"prefecture":"千葉県","playerId":null,"tempId":"西山_なつみ_昭和学院"}],"category":"singles"},
-{"id":13,"name":"斉藤愛（昇陽）","information":[{"lastName":"斉藤","firstName":"愛","team":"昇陽","originalTeam":null,"prefecture":"大阪府","playerId":null,"tempId":"斉藤_愛_昇陽"}],"category":"singles"},
-{"id":14,"name":"松浦都子（浜松商）","information":[{"lastName":"松浦","firstName":"都子","team":"浜松商","originalTeam":null,"prefecture":"静岡県","playerId":null,"tempId":"松浦_都子_浜松商"}],"category":"singles"},
-{"id":15,"name":"椎名萌花（日大藤沢）","information":[{"lastName":"椎名","firstName":"萌花","team":"日大藤沢","originalTeam":null,"prefecture":"神奈川県","playerId":null,"tempId":"椎名_萌花_日大藤沢"}],"category":"singles"},
-{"id":16,"name":"青木香林（健大高崎）","information":[{"lastName":"青木","firstName":"香林","team":"健大高崎","originalTeam":null,"prefecture":"群馬県","playerId":null,"tempId":"青木_香林_健大高崎"}],"category":"singles"},
-{"id":17,"name":"丸田梨瑚（須磨学園）","information":[{"lastName":"丸田","firstName":"梨瑚","team":"須磨学園","originalTeam":null,"prefecture":"兵庫県","playerId":null,"tempId":"丸田_梨瑚_須磨学園"}],"category":"singles"},
-{"id":18,"name":"堀かえで（県岐阜商）","information":[{"lastName":"堀","firstName":"かえで","team":"県岐阜商","originalTeam":null,"prefecture":"岐阜県","playerId":null,"tempId":"堀_かえで_県岐阜商"}],"category":"singles"},
-{"id":19,"name":"黒田花音（札幌大谷）","information":[{"lastName":"黒田","firstName":"花音","team":"札幌大谷","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"黒田_花音_札幌大谷"}],"category":"singles"},
-{"id":20,"name":"杉本希（広島翔洋）","information":[{"lastName":"杉本","firstName":"希","team":"広島翔洋","originalTeam":null,"prefecture":"広島県","playerId":null,"tempId":"杉本_希_広島翔洋"}],"category":"singles"},
-{"id":21,"name":"花田娃子（尚絅）","information":[{"lastName":"花田","firstName":"娃子","team":"尚絅","originalTeam":null,"prefecture":"熊本県","playerId":null,"tempId":"花田_娃子_尚絅"}],"category":"singles"},
-{"id":22,"name":"多賀伊純（高岡商業）","information":[{"lastName":"多賀","firstName":"伊純","team":"高岡商業","originalTeam":null,"prefecture":"富山県","playerId":null,"tempId":"多賀_伊純_高岡商業"}],"category":"singles"},
-{"id":23,"name":"松端さくら（尽誠学園）","information":[{"lastName":"松端","firstName":"さくら","team":"尽誠学園","originalTeam":null,"prefecture":"香川県","playerId":null,"tempId":"松端_さくら_尽誠学園"}],"category":"singles"},
-{"id":24,"name":"樽村妹穏（明豊高校）","information":[{"lastName":"樽村","firstName":"妹穏","team":"明豊高校","originalTeam":null,"prefecture":"大分県","playerId":null,"tempId":"樽村_妹穏_明豊高校"}],"category":"singles"},
-{"id":25,"name":"田中もも（盛岡第三）","information":[{"lastName":"田中","firstName":"もも","team":"盛岡第三","originalTeam":null,"prefecture":"岩手県","playerId":null,"tempId":"田中_もも_盛岡第三"}],"category":"singles"},
-{"id":26,"name":"西原知里（旭川商業）","information":[{"lastName":"西原","firstName":"知里","team":"旭川商業","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"西原_知里_旭川商業"}],"category":"singles"},
-{"id":27,"name":"田村羽瑠（追手前）","information":[{"lastName":"田村","firstName":"羽瑠","team":"追手前","originalTeam":null,"prefecture":"高知県","playerId":null,"tempId":"田村_羽瑠_追手前"}],"category":"singles"},
-{"id":28,"name":"清水千里（米子松蔭）","information":[{"lastName":"清水","firstName":"千里","team":"米子松蔭","originalTeam":null,"prefecture":"鳥取県","playerId":null,"tempId":"清水_千里_米子松蔭"}],"category":"singles"},
-{"id":29,"name":"松岡琴美（三重）","information":[{"lastName":"松岡","firstName":"琴美","team":"三重","originalTeam":null,"prefecture":"三重県","playerId":null,"tempId":"松岡_琴美_三重"}],"category":"singles"},
-{"id":30,"name":"古城理名（上尾）","information":[{"lastName":"古城","firstName":"理名","team":"上尾","originalTeam":null,"prefecture":"埼玉県","playerId":null,"tempId":"古城_理名_上尾"}],"category":"singles"},
-{"id":31,"name":"岩元愛美（和歌山信愛）","information":[{"lastName":"岩元","firstName":"愛美","team":"和歌山信愛","originalTeam":null,"prefecture":"和歌山県","playerId":null,"tempId":"岩元_愛美_和歌山信愛"}],"category":"singles"},
-{"id":32,"name":"岡崎嗣乃（松江南）","information":[{"lastName":"岡崎","firstName":"嗣乃","team":"松江南","originalTeam":null,"prefecture":"島根県","playerId":null,"tempId":"岡崎_嗣乃_松江南"}],"category":"singles"},
-{"id":33,"name":"生原萌詩（甲斐清和）","information":[{"lastName":"生原","firstName":"萌詩","team":"甲斐清和","originalTeam":null,"prefecture":"山梨県","playerId":null,"tempId":"生原_萌詩_甲斐清和"}],"category":"singles"},
-{"id":34,"name":"中島那菜（嬉野）","information":[{"lastName":"中島","firstName":"那菜","team":"嬉野","originalTeam":null,"prefecture":"佐賀県","playerId":null,"tempId":"中島_那菜_嬉野"}],"category":"singles"},
-{"id":35,"name":"八島知優（とわの森三愛）","information":[{"lastName":"八島","firstName":"知優","team":"とわの森三愛","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"八島_知優_とわの森三愛"}],"category":"singles"},
-{"id":36,"name":"佐藤心美（広島翔洋）","information":[{"lastName":"佐藤","firstName":"心美","team":"広島翔洋","originalTeam":null,"prefecture":"広島県","playerId":null,"tempId":"佐藤_心美_広島翔洋"}],"category":"singles"},
-{"id":37,"name":"福本安汝（八重山）","information":[{"lastName":"福本","firstName":"安汝","team":"八重山","originalTeam":null,"prefecture":"沖縄県","playerId":null,"tempId":"福本_安汝_八重山"}],"category":"singles"},
-{"id":38,"name":"門田真歩（高田）","information":[{"lastName":"門田","firstName":"真歩","team":"高田","originalTeam":null,"prefecture":"岩手県","playerId":null,"tempId":"門田_真歩_高田"}],"category":"singles"},
-{"id":39,"name":"川戸優奈（豊田大谷）","information":[{"lastName":"川戸","firstName":"優奈","team":"豊田大谷","originalTeam":null,"prefecture":"愛知県","playerId":null,"tempId":"川戸_優奈_豊田大谷"}],"category":"singles"},
-{"id":40,"name":"右原優菜（福井商）","information":[{"lastName":"右原","firstName":"優菜","team":"福井商","originalTeam":null,"prefecture":"福井県","playerId":null,"tempId":"右原_優菜_福井商"}],"category":"singles"},
-{"id":41,"name":"佐藤日香莉（学法石川）","information":[{"lastName":"佐藤","firstName":"日香莉","team":"学法石川","originalTeam":null,"prefecture":"福島県","playerId":null,"tempId":"佐藤_日香莉_学法石川"}],"category":"singles"},
-{"id":42,"name":"中村心茉（奈良育英）","information":[{"lastName":"中村","firstName":"心茉","team":"奈良育英","originalTeam":null,"prefecture":"奈良県","playerId":null,"tempId":"中村_心茉_奈良育英"}],"category":"singles"},
-{"id":43,"name":"本間友里那（北越）","information":[{"lastName":"本間","firstName":"友里那","team":"北越","originalTeam":null,"prefecture":"新潟県","playerId":null,"tempId":"本間_友里那_北越"}],"category":"singles"},
-{"id":44,"name":"石田夏美（札幌龍谷学園）","information":[{"lastName":"石田","firstName":"夏美","team":"札幌龍谷学園","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"石田_夏美_札幌龍谷学園"}],"category":"singles"},
-{"id":45,"name":"藤野仁音（和歌山商業）","information":[{"lastName":"藤野","firstName":"仁音","team":"和歌山商業","originalTeam":null,"prefecture":"和歌山県","playerId":null,"tempId":"藤野_仁音_和歌山商業"}],"category":"singles"},
-{"id":46,"name":"田中栞（尽誠学園）","information":[{"lastName":"田中","firstName":"栞","team":"尽誠学園","originalTeam":null,"prefecture":"香川県","playerId":null,"tempId":"田中_栞_尽誠学園"}],"category":"singles"},
-{"id":47,"name":"遠藤夢知（秋田令和）","information":[{"lastName":"遠藤","firstName":"夢知","team":"秋田令和","originalTeam":null,"prefecture":"秋田県","playerId":null,"tempId":"遠藤_夢知_秋田令和"}],"category":"singles"},
-{"id":48,"name":"小川木乃花（水戸女子）","information":[{"lastName":"小川","firstName":"木乃花","team":"水戸女子","originalTeam":null,"prefecture":"茨城県","playerId":null,"tempId":"小川_木乃花_水戸女子"}],"category":"singles"},
-{"id":49,"name":"菊次萌花（白鷗大足利）","information":[{"lastName":"菊次","firstName":"萌花","team":"白鷗大足利","originalTeam":null,"prefecture":"栃木県","playerId":null,"tempId":"菊次_萌花_白鷗大足利"}],"category":"singles"},
-{"id":50,"name":"吉田瞭子（長浜北）","information":[{"lastName":"吉田","firstName":"瞭子","team":"長浜北","originalTeam":null,"prefecture":"滋賀県","playerId":null,"tempId":"吉田_瞭子_長浜北"}],"category":"singles"},
-{"id":51,"name":"西田美織（済美）","information":[{"lastName":"西田","firstName":"美織","team":"済美","originalTeam":null,"prefecture":"愛媛県","playerId":null,"tempId":"西田_美織_済美"}],"category":"singles"},
-{"id":52,"name":"吉木理彩（指宿商）","information":[{"lastName":"吉木","firstName":"理彩","team":"指宿商","originalTeam":null,"prefecture":"鹿児島県","playerId":null,"tempId":"吉木_理彩_指宿商"}],"category":"singles"},
-{"id":53,"name":"畑中望来（就実）","information":[{"lastName":"畑中","firstName":"望来","team":"就実","originalTeam":null,"prefecture":"岡山県","playerId":null,"tempId":"畑中_望来_就実"}],"category":"singles"},
-{"id":54,"name":"田中歩美（とわの森三愛）","information":[{"lastName":"田中","firstName":"歩美","team":"とわの森三愛","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"田中_歩美_とわの森三愛"}],"category":"singles"},
-{"id":55,"name":"中馬青瑠（宮崎商）","information":[{"lastName":"中馬","firstName":"青瑠","team":"宮崎商","originalTeam":null,"prefecture":"宮崎県","playerId":null,"tempId":"中馬_青瑠_宮崎商"}],"category":"singles"},
-{"id":56,"name":"竹山千尋（長崎商）","information":[{"lastName":"竹山","firstName":"千尋","team":"長崎商","originalTeam":null,"prefecture":"長崎県","playerId":null,"tempId":"竹山_千尋_長崎商"}],"category":"singles"},
-{"id":57,"name":"大和かのん（山形城北）","information":[{"lastName":"大和","firstName":"かのん","team":"山形城北","originalTeam":null,"prefecture":"山形県","playerId":null,"tempId":"大和_かのん_山形城北"}],"category":"singles"},
-{"id":58,"name":"中尾陽菜（京都光華）","information":[{"lastName":"中尾","firstName":"陽菜","team":"京都光華","originalTeam":null,"prefecture":"京都府","playerId":null,"tempId":"中尾_陽菜_京都光華"}],"category":"singles"},
-{"id":59,"name":"浅野つかさ（好文学園女子）","information":[{"lastName":"浅野","firstName":"つかさ","team":"好文学園女子","originalTeam":null,"prefecture":"大阪府","playerId":null,"tempId":"浅野_つかさ_好文学園女子"}],"category":"singles"},
-{"id":60,"name":"藤井真菜（文大杉並）","information":[{"lastName":"藤井","firstName":"真菜","team":"文大杉並","originalTeam":null,"prefecture":"東京都","playerId":null,"tempId":"藤井_真菜_文大杉並"}],"category":"singles"},
-{"id":61,"name":"美馬天珠（脇町）","information":[{"lastName":"美馬","firstName":"天珠","team":"脇町","originalTeam":null,"prefecture":"徳島県","playerId":null,"tempId":"美馬_天珠_脇町"}],"category":"singles"},
-{"id":62,"name":"工藤夢叶（八戸工大一）","information":[{"lastName":"工藤","firstName":"夢叶","team":"八戸工大一","originalTeam":null,"prefecture":"青森県","playerId":null,"tempId":"工藤_夢叶_八戸工大一"}],"category":"singles"},
-{"id":63,"name":"石井莉乃（旭川実業）","information":[{"lastName":"石井","firstName":"莉乃","team":"旭川実業","originalTeam":null,"prefecture":"北海道","playerId":null,"tempId":"石井_莉乃_旭川実業"}],"category":"singles"},
-{"id":64,"name":"小坂朋加（焼津高校）","information":[{"lastName":"小坂","firstName":"朋加","team":"焼津高校","originalTeam":null,"prefecture":"静岡県","playerId":null,"tempId":"小坂_朋加_焼津高校"}],"category":"singles"}
+  {
+    "id": 1,
+    "name": "天間美嘉（東北）",
+    "information": [
+      {
+        "lastName": "天間",
+        "firstName": "美嘉",
+        "team": "東北",
+        "originalTeam": null,
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "天間_美嘉_東北"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 2,
+    "name": "高橋瑚子（岩国商）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "瑚子",
+        "team": "岩国商",
+        "originalTeam": null,
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "高橋_瑚子_岩国商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 3,
+    "name": "布施琴音（能登）",
+    "information": [
+      {
+        "lastName": "布施",
+        "firstName": "琴音",
+        "team": "能登",
+        "originalTeam": null,
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "布施_琴音_能登"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 4,
+    "name": "関口みれい（松商学園）",
+    "information": [
+      {
+        "lastName": "関口",
+        "firstName": "みれい",
+        "team": "松商学園",
+        "originalTeam": null,
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "関口_みれい_松商学園"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 5,
+    "name": "古園由彩（千歳）",
+    "information": [
+      {
+        "lastName": "古園",
+        "firstName": "由彩",
+        "team": "千歳",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "古園_由彩_千歳"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 6,
+    "name": "岩元望美（和歌山信愛）",
+    "information": [
+      {
+        "lastName": "岩元",
+        "firstName": "望美",
+        "team": "和歌山信愛",
+        "originalTeam": null,
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "岩元_望美_和歌山信愛"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 7,
+    "name": "螺良萌々（宇都宮短大附）",
+    "information": [
+      {
+        "lastName": "螺良",
+        "firstName": "萌々",
+        "team": "宇都宮短大附",
+        "originalTeam": null,
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "螺良_萌々_宇都宮短大附"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 8,
+    "name": "近藤明日咲（尽誠学園）",
+    "information": [
+      {
+        "lastName": "近藤",
+        "firstName": "明日咲",
+        "team": "尽誠学園",
+        "originalTeam": null,
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "近藤_明日咲_尽誠学園"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 9,
+    "name": "﨑山七海（今治北）",
+    "information": [
+      {
+        "lastName": "﨑山",
+        "firstName": "七海",
+        "team": "今治北",
+        "originalTeam": null,
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "﨑山_七海_今治北"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 10,
+    "name": "今野愛菜（旭川実業）",
+    "information": [
+      {
+        "lastName": "今野",
+        "firstName": "愛菜",
+        "team": "旭川実業",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "今野_愛菜_旭川実業"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 11,
+    "name": "西村麻央（誠修）",
+    "information": [
+      {
+        "lastName": "西村",
+        "firstName": "麻央",
+        "team": "誠修",
+        "originalTeam": null,
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "西村_麻央_誠修"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 12,
+    "name": "西山なつみ（昭和学院）",
+    "information": [
+      {
+        "lastName": "西山",
+        "firstName": "なつみ",
+        "team": "昭和学院",
+        "originalTeam": null,
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "西山_なつみ_昭和学院"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 13,
+    "name": "斉藤愛（昇陽）",
+    "information": [
+      {
+        "lastName": "斉藤",
+        "firstName": "愛",
+        "team": "昇陽",
+        "originalTeam": null,
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "斉藤_愛_昇陽"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 14,
+    "name": "松浦都子（浜松商）",
+    "information": [
+      {
+        "lastName": "松浦",
+        "firstName": "都子",
+        "team": "浜松商",
+        "originalTeam": null,
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "松浦_都子_浜松商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 15,
+    "name": "椎名萌花（日大藤沢）",
+    "information": [
+      {
+        "lastName": "椎名",
+        "firstName": "萌花",
+        "team": "日大藤沢",
+        "originalTeam": null,
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "椎名_萌花_日大藤沢"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 16,
+    "name": "青木香林（健大高崎）",
+    "information": [
+      {
+        "lastName": "青木",
+        "firstName": "香林",
+        "team": "健大高崎",
+        "originalTeam": null,
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "青木_香林_健大高崎"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 17,
+    "name": "丸田梨瑚（須磨学園）",
+    "information": [
+      {
+        "lastName": "丸田",
+        "firstName": "梨瑚",
+        "team": "須磨学園",
+        "originalTeam": null,
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "丸田_梨瑚_須磨学園"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 18,
+    "name": "堀かえで（県岐阜商）",
+    "information": [
+      {
+        "lastName": "堀",
+        "firstName": "かえで",
+        "team": "県岐阜商",
+        "originalTeam": null,
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "堀_かえで_県岐阜商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 19,
+    "name": "黒田花音（札幌大谷）",
+    "information": [
+      {
+        "lastName": "黒田",
+        "firstName": "花音",
+        "team": "札幌大谷",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "黒田_花音_札幌大谷"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 20,
+    "name": "杉本希（広島翔洋）",
+    "information": [
+      {
+        "lastName": "杉本",
+        "firstName": "希",
+        "team": "広島翔洋",
+        "originalTeam": null,
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "杉本_希_広島翔洋"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 21,
+    "name": "花田娃子（尚絅）",
+    "information": [
+      {
+        "lastName": "花田",
+        "firstName": "娃子",
+        "team": "尚絅",
+        "originalTeam": null,
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "花田_娃子_尚絅"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 22,
+    "name": "多賀伊純（高岡商業）",
+    "information": [
+      {
+        "lastName": "多賀",
+        "firstName": "伊純",
+        "team": "高岡商業",
+        "originalTeam": null,
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "多賀_伊純_高岡商業"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 23,
+    "name": "松端さくら（尽誠学園）",
+    "information": [
+      {
+        "lastName": "松端",
+        "firstName": "さくら",
+        "team": "尽誠学園",
+        "originalTeam": null,
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "松端_さくら_尽誠学園"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 24,
+    "name": "樽村妹穏（明豊高校）",
+    "information": [
+      {
+        "lastName": "樽村",
+        "firstName": "妹穏",
+        "team": "明豊高校",
+        "originalTeam": null,
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "樽村_妹穏_明豊高校"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 25,
+    "name": "田中もも（盛岡第三）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "もも",
+        "team": "盛岡第三",
+        "originalTeam": null,
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "田中_もも_盛岡第三"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 26,
+    "name": "西原知里（旭川商業）",
+    "information": [
+      {
+        "lastName": "西原",
+        "firstName": "知里",
+        "team": "旭川商業",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "西原_知里_旭川商業"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 27,
+    "name": "田村羽瑠（追手前）",
+    "information": [
+      {
+        "lastName": "田村",
+        "firstName": "羽瑠",
+        "team": "追手前",
+        "originalTeam": null,
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "田村_羽瑠_追手前"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 28,
+    "name": "清水千里（米子松蔭）",
+    "information": [
+      {
+        "lastName": "清水",
+        "firstName": "千里",
+        "team": "米子松蔭",
+        "originalTeam": null,
+        "prefecture": "鳥取県",
+        "playerId": null,
+        "tempId": "清水_千里_米子松蔭"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 29,
+    "name": "松岡琴美（三重）",
+    "information": [
+      {
+        "lastName": "松岡",
+        "firstName": "琴美",
+        "team": "三重",
+        "originalTeam": null,
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "松岡_琴美_三重"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 30,
+    "name": "古城理名（上尾）",
+    "information": [
+      {
+        "lastName": "古城",
+        "firstName": "理名",
+        "team": "上尾",
+        "originalTeam": null,
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "古城_理名_上尾"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 31,
+    "name": "岩元愛美（和歌山信愛）",
+    "information": [
+      {
+        "lastName": "岩元",
+        "firstName": "愛美",
+        "team": "和歌山信愛",
+        "originalTeam": null,
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "岩元_愛美_和歌山信愛"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 32,
+    "name": "岡崎嗣乃（松江南）",
+    "information": [
+      {
+        "lastName": "岡崎",
+        "firstName": "嗣乃",
+        "team": "松江南",
+        "originalTeam": null,
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "岡崎_嗣乃_松江南"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 33,
+    "name": "生原萌詩（甲斐清和）",
+    "information": [
+      {
+        "lastName": "生原",
+        "firstName": "萌詩",
+        "team": "甲斐清和",
+        "originalTeam": null,
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "生原_萌詩_甲斐清和"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 34,
+    "name": "中島那菜（嬉野）",
+    "information": [
+      {
+        "lastName": "中島",
+        "firstName": "那菜",
+        "team": "嬉野",
+        "originalTeam": null,
+        "prefecture": "佐賀県",
+        "playerId": null,
+        "tempId": "中島_那菜_嬉野"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 35,
+    "name": "八島知優（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "八島",
+        "firstName": "知優",
+        "team": "とわの森三愛",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "八島_知優_とわの森三愛"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 36,
+    "name": "佐藤心美（広島翔洋）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "心美",
+        "team": "広島翔洋",
+        "originalTeam": null,
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "佐藤_心美_広島翔洋"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 37,
+    "name": "福本安汝（八重山）",
+    "information": [
+      {
+        "lastName": "福本",
+        "firstName": "安汝",
+        "team": "八重山",
+        "originalTeam": null,
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "福本_安汝_八重山"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 38,
+    "name": "門田真歩（高田）",
+    "information": [
+      {
+        "lastName": "門田",
+        "firstName": "真歩",
+        "team": "高田",
+        "originalTeam": null,
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "門田_真歩_高田"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 39,
+    "name": "川戸優奈（豊田大谷）",
+    "information": [
+      {
+        "lastName": "川戸",
+        "firstName": "優奈",
+        "team": "豊田大谷",
+        "originalTeam": null,
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "川戸_優奈_豊田大谷"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 40,
+    "name": "右原優菜（福井商）",
+    "information": [
+      {
+        "lastName": "右原",
+        "firstName": "優菜",
+        "team": "福井商",
+        "originalTeam": null,
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "右原_優菜_福井商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 41,
+    "name": "佐藤日香莉（学法石川）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "日香莉",
+        "team": "学法石川",
+        "originalTeam": null,
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "佐藤_日香莉_学法石川"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 42,
+    "name": "中村心茉（奈良育英）",
+    "information": [
+      {
+        "lastName": "中村",
+        "firstName": "心茉",
+        "team": "奈良育英",
+        "originalTeam": null,
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "中村_心茉_奈良育英"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 43,
+    "name": "本間友里那（北越）",
+    "information": [
+      {
+        "lastName": "本間",
+        "firstName": "友里那",
+        "team": "北越",
+        "originalTeam": null,
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "本間_友里那_北越"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 44,
+    "name": "石田夏美（札幌龍谷学園）",
+    "information": [
+      {
+        "lastName": "石田",
+        "firstName": "夏美",
+        "team": "札幌龍谷学園",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "石田_夏美_札幌龍谷学園"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 45,
+    "name": "藤野仁音（和歌山商業）",
+    "information": [
+      {
+        "lastName": "藤野",
+        "firstName": "仁音",
+        "team": "和歌山商業",
+        "originalTeam": null,
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "藤野_仁音_和歌山商業"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 46,
+    "name": "田中栞（尽誠学園）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "栞",
+        "team": "尽誠学園",
+        "originalTeam": null,
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "田中_栞_尽誠学園"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 47,
+    "name": "遠藤夢知（秋田令和）",
+    "information": [
+      {
+        "lastName": "遠藤",
+        "firstName": "夢知",
+        "team": "秋田令和",
+        "originalTeam": null,
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "遠藤_夢知_秋田令和"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 48,
+    "name": "小川木乃花（水戸女子）",
+    "information": [
+      {
+        "lastName": "小川",
+        "firstName": "木乃花",
+        "team": "水戸女子",
+        "originalTeam": null,
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "小川_木乃花_水戸女子"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 49,
+    "name": "菊次萌花（白鷗大足利）",
+    "information": [
+      {
+        "lastName": "菊次",
+        "firstName": "萌花",
+        "team": "白鷗大足利",
+        "originalTeam": null,
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "菊次_萌花_白鷗大足利"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 50,
+    "name": "吉田瞭子（長浜北）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "瞭子",
+        "team": "長浜北",
+        "originalTeam": null,
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "吉田_瞭子_長浜北"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 51,
+    "name": "西田美織（済美）",
+    "information": [
+      {
+        "lastName": "西田",
+        "firstName": "美織",
+        "team": "済美",
+        "originalTeam": null,
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "西田_美織_済美"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 52,
+    "name": "吉木理彩（指宿商）",
+    "information": [
+      {
+        "lastName": "吉木",
+        "firstName": "理彩",
+        "team": "指宿商",
+        "originalTeam": null,
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "吉木_理彩_指宿商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 53,
+    "name": "畑中望来（就実）",
+    "information": [
+      {
+        "lastName": "畑中",
+        "firstName": "望来",
+        "team": "就実",
+        "originalTeam": null,
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "畑中_望来_就実"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 54,
+    "name": "田中歩美（とわの森三愛）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "歩美",
+        "team": "とわの森三愛",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "田中_歩美_とわの森三愛"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 55,
+    "name": "中馬青瑠（宮崎商）",
+    "information": [
+      {
+        "lastName": "中馬",
+        "firstName": "青瑠",
+        "team": "宮崎商",
+        "originalTeam": null,
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "中馬_青瑠_宮崎商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 56,
+    "name": "竹山千尋（長崎商）",
+    "information": [
+      {
+        "lastName": "竹山",
+        "firstName": "千尋",
+        "team": "長崎商",
+        "originalTeam": null,
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "竹山_千尋_長崎商"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 57,
+    "name": "大和かのん（山形城北）",
+    "information": [
+      {
+        "lastName": "大和",
+        "firstName": "かのん",
+        "team": "山形城北",
+        "originalTeam": null,
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "大和_かのん_山形城北"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 58,
+    "name": "中尾陽菜（京都光華）",
+    "information": [
+      {
+        "lastName": "中尾",
+        "firstName": "陽菜",
+        "team": "京都光華",
+        "originalTeam": null,
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "中尾_陽菜_京都光華"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 59,
+    "name": "浅野つかさ（好文学園女子）",
+    "information": [
+      {
+        "lastName": "浅野",
+        "firstName": "つかさ",
+        "team": "好文学園女子",
+        "originalTeam": null,
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "浅野_つかさ_好文学園女子"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 60,
+    "name": "藤井真菜（文大杉並）",
+    "information": [
+      {
+        "lastName": "藤井",
+        "firstName": "真菜",
+        "team": "文大杉並",
+        "originalTeam": null,
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "藤井_真菜_文大杉並"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 61,
+    "name": "美馬天珠（脇町）",
+    "information": [
+      {
+        "lastName": "美馬",
+        "firstName": "天珠",
+        "team": "脇町",
+        "originalTeam": null,
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "美馬_天珠_脇町"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 62,
+    "name": "工藤夢叶（八戸工大一）",
+    "information": [
+      {
+        "lastName": "工藤",
+        "firstName": "夢叶",
+        "team": "八戸工大一",
+        "originalTeam": null,
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "工藤_夢叶_八戸工大一"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 63,
+    "name": "石井莉乃（旭川実業）",
+    "information": [
+      {
+        "lastName": "石井",
+        "firstName": "莉乃",
+        "team": "旭川実業",
+        "originalTeam": null,
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "石井_莉乃_旭川実業"
+      }
+    ],
+    "category": "singles"
+  },
+  {
+    "id": 64,
+    "name": "小坂朋加（焼津高校）",
+    "information": [
+      {
+        "lastName": "小坂",
+        "firstName": "朋加",
+        "team": "焼津高校",
+        "originalTeam": null,
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "小坂_朋加_焼津高校"
+      }
+    ],
+    "category": "singles"
+  }
 ]

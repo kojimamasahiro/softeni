@@ -174,7 +174,7 @@ function MatchGroup({
                                 {m.opponentDisplayName ?? '不明'}
                               </Link>
                             ) : (
-                              m.opponentDisplayName ?? '不明'
+                              (m.opponentDisplayName ?? '不明')
                             )}
                           </td>
                           <td className="px-4 py-2 text-left">
@@ -355,9 +355,13 @@ export default function MatchResults({
       const scoreA = String(nm.scores?.[String(a)] ?? nm.scores?.[a] ?? '0');
       const scoreB = String(nm.scores?.[String(b)] ?? nm.scores?.[b] ?? '0');
 
-      const opponentEntry = typeof opponent === 'number'
-        ? ((detail.entries ?? []).find((e) => e.entryNo === opponent) ?? { entryNo: opponent, playerIds: [] })
-        : null;
+      const opponentEntry =
+        typeof opponent === 'number'
+          ? ((detail.entries ?? []).find((e) => e.entryNo === opponent) ?? {
+              entryNo: opponent,
+              playerIds: [],
+            })
+          : null;
 
       const row: MatchRow = {
         matchId: nm.matchId,
@@ -365,9 +369,13 @@ export default function MatchResults({
         group: nm.group ?? null,
         round: nm.round ?? null,
         opponentDisplayName: opponentEntry
-          ? buildNameForEntry(opponentEntry, { short: shouldUseShortOpponentName })
+          ? buildNameForEntry(opponentEntry, {
+              short: shouldUseShortOpponentName,
+            })
           : undefined,
-        opponentPlayerIds: opponentEntry ? buildOpponentPlayerIds(opponentEntry) : undefined,
+        opponentPlayerIds: opponentEntry
+          ? buildOpponentPlayerIds(opponentEntry)
+          : undefined,
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
         games:
@@ -396,12 +404,20 @@ export default function MatchResults({
       const scoreA = String(m.scores?.[String(a)] ?? m.scores?.[a] ?? '0');
       const scoreB = String(m.scores?.[String(b)] ?? m.scores?.[b] ?? '0');
 
-      const entryB = typeof b === 'number'
-        ? ((detail.entries ?? []).find((e) => e.entryNo === b) ?? { entryNo: b, playerIds: [] })
-        : null;
-      const entryA = typeof a === 'number'
-        ? ((detail.entries ?? []).find((e) => e.entryNo === a) ?? { entryNo: a, playerIds: [] })
-        : null;
+      const entryB =
+        typeof b === 'number'
+          ? ((detail.entries ?? []).find((e) => e.entryNo === b) ?? {
+              entryNo: b,
+              playerIds: [],
+            })
+          : null;
+      const entryA =
+        typeof a === 'number'
+          ? ((detail.entries ?? []).find((e) => e.entryNo === a) ?? {
+              entryNo: a,
+              playerIds: [],
+            })
+          : null;
 
       const rowA: MatchRow = {
         matchId: m.matchId,
@@ -476,7 +492,12 @@ export default function MatchResults({
     }
 
     return map;
-  }, [detail, buildNameForEntry, buildOpponentPlayerIds, shouldUseShortOpponentName]);
+  }, [
+    detail,
+    buildNameForEntry,
+    buildOpponentPlayerIds,
+    shouldUseShortOpponentName,
+  ]);
 
   // build name list from entries & eliminatedEntries
   const groupedNames = [

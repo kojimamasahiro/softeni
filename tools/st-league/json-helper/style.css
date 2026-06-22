@@ -1,55 +1,58 @@
 /* JSON入力補助ツールのCSSファイルを作成しました。 */
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
-h1, h2 {
-    color: #333;
+h1,
+h2 {
+  color: #333;
 }
 
 form {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 label {
-    display: inline-block;
-    width: 150px;
-    margin-bottom: 10px;
+  display: inline-block;
+  width: 150px;
+  margin-bottom: 10px;
 }
 
-input, select, button {
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 14px;
+input,
+select,
+button {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 14px;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #matchesContainer {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .match {
-    border: 1px solid #ccc;
-    padding: 10px;
-    flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  flex: 1;
 }
 
 pre {
-    background: #f4f4f4;
-    padding: 10px;
-    border: 1px solid #ddd;
-    overflow-x: auto;
+  background: #f4f4f4;
+  padding: 10px;
+  border: 1px solid #ddd;
+  overflow-x: auto;
 }
 
 /* スコアボタンの選択状態を示すスタイル */
 .score-button.selected {
-    background-color: #007BFF;
-    color: white;
-    border: 1px solid #0056b3;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #0056b3;
 }

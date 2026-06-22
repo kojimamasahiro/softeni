@@ -18,7 +18,9 @@
     <h2>JSON出力（成形済み）</h2>
     <p style="font-size: 12px; color: #555; margin: 4px 0">
       下のJSONは直接編集できます。編集するとスコア入力では上書きされなくなり、編集内容がそのままコピー／ダウンロード／保存に使われます。試合結果から作り直したい場合は
-      <button type="button" onclick="onClickRegenerateJson()">試合結果から再生成</button>
+      <button type="button" onclick="onClickRegenerateJson()">
+        試合結果から再生成
+      </button>
       を押してください。
       <span id="jsonEditStatus" style="margin-left: 8px"></span>
     </p>
@@ -29,7 +31,13 @@
     <div style="margin: 8px 0">
       <label>
         各グループ上位
-        <input type="number" id="advanceRank" value="1" min="1" style="width: 50px" />
+        <input
+          type="number"
+          id="advanceRank"
+          value="1"
+          min="1"
+          style="width: 50px"
+        />
         位を進出:
       </label>
       <button onclick="onClickExtractAdvancers()">進出ペアを抽出</button>
@@ -357,9 +365,7 @@
         output.standings = {};
 
         for (const group in playersByGroup) {
-          const players = playersByGroup[group].filter(
-            (p) => p.id !== 'bye',
-          );
+          const players = playersByGroup[group].filter((p) => p.id !== 'bye');
           const playerStats = {};
 
           // 初期化
@@ -589,8 +595,7 @@
             document.getElementById('advancersJson').value,
           );
         } catch (e) {
-          statusEl.textContent =
-            '進出ペアのJSONパースエラー: ' + e.message;
+          statusEl.textContent = '進出ペアのJSONパースエラー: ' + e.message;
           return;
         }
         if (!Array.isArray(advancers) || !advancers.length) {

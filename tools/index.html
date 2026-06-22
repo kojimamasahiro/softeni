@@ -55,31 +55,66 @@
 
     <h2>1. 入力JSON</h2>
     <p style="font-size: 13px; color: #555">
-      選手配列（initialPlayers相当）を貼り付け。ラウンドロビンの場合、グループ分割済みオブジェクト（<code>{"A": [...], ...}</code>）も可。
+      選手配列（initialPlayers相当）を貼り付け。ラウンドロビンの場合、グループ分割済みオブジェクト（<code
+        >{"A": [...], ...}</code
+      >）も可。
     </p>
-    <textarea id="inputJson" rows="14" placeholder='[{"id":1,"name":"...","information":[...]}, ...]'></textarea>
+    <textarea
+      id="inputJson"
+      rows="14"
+      placeholder='[{"id":1,"name":"...","information":[...]}, ...]'
+    ></textarea>
     <div id="inputError" class="error"></div>
 
     <h2>2. 形式を選択</h2>
     <div class="row">
-      <label><input type="radio" name="format" value="tournament" checked />トーナメント</label>
-      <label><input type="radio" name="format" value="roundrobin" />ラウンドロビン</label>
+      <label
+        ><input
+          type="radio"
+          name="format"
+          value="tournament"
+          checked
+        />トーナメント</label
+      >
+      <label
+        ><input
+          type="radio"
+          name="format"
+          value="roundrobin"
+        />ラウンドロビン</label
+      >
     </div>
 
     <fieldset id="rrOptions" style="display: none">
-      <legend>ラウンドロビン グループ分割（generate_roundrobin.py 相当）</legend>
+      <legend>
+        ラウンドロビン グループ分割（generate_roundrobin.py 相当）
+      </legend>
       <div class="row">
-        <label>標準グループサイズ:
-          <input type="number" id="defaultSize" value="4" min="2" style="width: 60px" />
+        <label
+          >標準グループサイズ:
+          <input
+            type="number"
+            id="defaultSize"
+            value="4"
+            min="2"
+            style="width: 60px"
+          />
         </label>
-        <label>ラベル:
+        <label
+          >ラベル:
           <select id="labelType">
             <option value="alpha">A, B, C...</option>
             <option value="numeric">1, 2, 3...</option>
           </select>
         </label>
-        <label>サイズ上書き:
-          <input type="text" id="overrides" placeholder="例: B=5,I=5 または 2=5" style="width: 180px" />
+        <label
+          >サイズ上書き:
+          <input
+            type="text"
+            id="overrides"
+            placeholder="例: B=5,I=5 または 2=5"
+            style="width: 180px"
+          />
         </label>
       </div>
       <div id="preview"></div>
@@ -88,13 +123,23 @@
     <fieldset>
       <legend>任意設定</legend>
       <div class="row">
-        <label>出力ファイル名:
-          <input type="text" id="outputName" placeholder="例: doubles-none-girls.json" style="width: 260px" />
+        <label
+          >出力ファイル名:
+          <input
+            type="text"
+            id="outputName"
+            placeholder="例: doubles-none-girls.json"
+            style="width: 260px"
+          />
         </label>
       </div>
       <details>
         <summary>entries メタJSON（type情報。あれば貼り付け）</summary>
-        <textarea id="entriesMeta" rows="6" placeholder='[{"entryNo":1,"type":"seed"}, ...]'></textarea>
+        <textarea
+          id="entriesMeta"
+          rows="6"
+          placeholder='[{"entryNo":1,"type":"seed"}, ...]'
+        ></textarea>
       </details>
     </fieldset>
 
@@ -145,8 +190,7 @@
       function assignGroups(items, defaultSize, overrides, labelType) {
         const out = {};
         let idx = 0;
-        const labels =
-          labelType === 'alpha' ? excelLabels() : numericLabels();
+        const labels = labelType === 'alpha' ? excelLabels() : numericLabels();
         while (idx < items.length) {
           const label = labels.next().value;
           const size = overrides[label] || defaultSize;
@@ -165,7 +209,8 @@
       const inputErrorEl = document.getElementById('inputError');
       const openErrorEl = document.getElementById('openError');
 
-      document.getElementById('outputName').value = ToolBridge.getOutputName('');
+      document.getElementById('outputName').value =
+        ToolBridge.getOutputName('');
 
       function selectedFormat() {
         return document.querySelector('input[name="format"]:checked').value;
@@ -181,12 +226,15 @@
         if (!Array.isArray(data)) {
           // 既にグループ分割済みオブジェクト
           if (data && typeof data === 'object') return data;
-          throw new Error('入力JSONは配列またはグループオブジェクトにしてください');
+          throw new Error(
+            '入力JSONは配列またはグループオブジェクトにしてください',
+          );
         }
-        const defaultSize = parseInt(
-          document.getElementById('defaultSize').value, 10) || 4;
+        const defaultSize =
+          parseInt(document.getElementById('defaultSize').value, 10) || 4;
         const overrides = parseOverrides(
-          document.getElementById('overrides').value);
+          document.getElementById('overrides').value,
+        );
         const labelType = document.getElementById('labelType').value;
         return assignGroups(data, defaultSize, overrides, labelType);
       }
@@ -220,9 +268,9 @@
       }
 
       inputEl.addEventListener('input', refresh);
-      document.querySelectorAll('input[name="format"]').forEach((el) =>
-        el.addEventListener('change', refresh),
-      );
+      document
+        .querySelectorAll('input[name="format"]')
+        .forEach((el) => el.addEventListener('change', refresh));
       ['defaultSize', 'overrides', 'labelType'].forEach((id) =>
         document.getElementById(id).addEventListener('input', refresh),
       );
@@ -248,7 +296,8 @@
         try {
           ToolBridge.setEntriesMeta(metaText ? JSON.parse(metaText) : null);
         } catch (e) {
-          openErrorEl.textContent = 'entriesメタのJSONパースエラー: ' + e.message;
+          openErrorEl.textContent =
+            'entriesメタのJSONパースエラー: ' + e.message;
           return;
         }
 

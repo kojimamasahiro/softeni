@@ -1,68 +1,417 @@
 {
   "participants": [
-    {"id":"我妻_万美_杉並文化クラブ_東京都","lastName":"我妻","firstName":"万美","team":"杉並文化クラブ","prefecture":"東京都"},
-    {"id":"林_麻理_杉並文化クラブ_東京都","lastName":"林","firstName":"麻理","team":"杉並文化クラブ","prefecture":"東京都"},
-    {"id":"髙橋_和恵_山形市役所_山形県","lastName":"髙橋","firstName":"和恵","team":"山形市役所","prefecture":"山形県"},
-    {"id":"三浦_洋美_Palaistra_群馬県","lastName":"三浦","firstName":"洋美","team":"Palaistra","prefecture":"群馬県"},
-    {"id":"川島_真織_ＥＡＳＴＣ_静岡県","lastName":"川島","firstName":"真織","team":"ＥＡＳＴＣ","prefecture":"静岡県"},
-    {"id":"小柳_惟子_野々市クラブ_石川県","lastName":"小柳","firstName":"惟子","team":"野々市クラブ","prefecture":"石川県"},
-    {"id":"吉田_美姫_ふたばクラブ_石川県","lastName":"吉田","firstName":"美姫","team":"ふたばクラブ","prefecture":"石川県"},
-    {"id":"加納_亜由美_ヨネックス名古屋_愛知県","lastName":"加納","firstName":"亜由美","team":"ヨネックス名古屋","prefecture":"愛知県"},
-    {"id":"松浦_朱里_ヨネックスクラブ_東京都","lastName":"松浦","firstName":"朱里","team":"ヨネックスクラブ","prefecture":"東京都"},
-    {"id":"前田_綾子_井原クラブ_岡山県","lastName":"前田","firstName":"綾子","team":"井原クラブ","prefecture":"岡山県"},
-    {"id":"諸岡_敬子_井原クラブ_岡山県","lastName":"諸岡","firstName":"敬子","team":"井原クラブ","prefecture":"岡山県"},
-    {"id":"関谷_香織_所沢ペアート_埼玉県","lastName":"関谷","firstName":"香織","team":"所沢ペアート","prefecture":"埼玉県"},
-    {"id":"宮原_沙弥佳_千石クラブ_東京都","lastName":"宮原","firstName":"沙弥佳","team":"千石クラブ","prefecture":"東京都"},
-    {"id":"吉松_朋美_新星レディース_鹿児島県","lastName":"吉松","firstName":"朋美","team":"新星レディース","prefecture":"鹿児島県"},
-    {"id":"橋本_聡美_新星レディース_鹿児島県","lastName":"橋本","firstName":"聡美","team":"新星レディース","prefecture":"鹿児島県"},
-    {"id":"坂井_美香_ヨネックスクラブ_大阪府","lastName":"坂井","firstName":"美香","team":"ヨネックスクラブ","prefecture":"大阪府"},
-    {"id":"山本_真理恵_ヨネックスクラブ_大阪府","lastName":"山本","firstName":"真理恵","team":"ヨネックスクラブ","prefecture":"大阪府"},
-    {"id":"加藤_あかね_松葉クラブ_愛知県","lastName":"加藤","firstName":"あかね","team":"松葉クラブ","prefecture":"愛知県"},
-    {"id":"西田_朋子_松任コスモスクラブ_石川県","lastName":"西田","firstName":"朋子","team":"松任コスモスクラブ","prefecture":"石川県"},
-    {"id":"伊佐_久美子_杉並文化クラブ_東京都","lastName":"伊佐","firstName":"久美子","team":"杉並文化クラブ","prefecture":"東京都"},
-    {"id":"三宅_一美_葛飾クラブ_東京都","lastName":"三宅","firstName":"一美","team":"葛飾クラブ","prefecture":"東京都"},
-    {"id":"利根川_空観_坂戸クラブ_埼玉県","lastName":"利根川","firstName":"空観","team":"坂戸クラブ","prefecture":"埼玉県"},
-    {"id":"前澤_明恵_狭山クラブ_埼玉県","lastName":"前澤","firstName":"明恵","team":"狭山クラブ","prefecture":"埼玉県"},
-    {"id":"米塚_えみ子_武蔵野クラブ_東京都","lastName":"米塚","firstName":"えみ子","team":"武蔵野クラブ","prefecture":"東京都"},
-    {"id":"平岡_佐和子_武蔵野クラブ_東京都","lastName":"平岡","firstName":"佐和子","team":"武蔵野クラブ","prefecture":"東京都"},
-    {"id":"野間_智美_男塾_福岡県","lastName":"野間","firstName":"智美","team":"男塾","prefecture":"福岡県"},
-    {"id":"田中_悠希_鳥栖クラブ_佐賀県","lastName":"田中","firstName":"悠希","team":"鳥栖クラブ","prefecture":"佐賀県"},
-    {"id":"朝倉_弥生_ＥＡＳＴＣ_静岡県","lastName":"朝倉","firstName":"弥生","team":"ＥＡＳＴＣ","prefecture":"静岡県"},
-    {"id":"河原崎_晶子_大成クラブ_静岡県","lastName":"河原崎","firstName":"晶子","team":"大成クラブ","prefecture":"静岡県"},
-    {"id":"矢野_知咲希_松葉クラブ_愛知県","lastName":"矢野","firstName":"知咲希","team":"松葉クラブ","prefecture":"愛知県"},
-    {"id":"足立_朋香_ヨネックス名古屋_愛知県","lastName":"足立","firstName":"朋香","team":"ヨネックス名古屋","prefecture":"愛知県"},
-    {"id":"吉﨑_香奈絵_クレインズ_京都府","lastName":"吉﨑","firstName":"香奈絵","team":"クレインズ","prefecture":"京都府"},
-    {"id":"谷口_翔子_B-JOKER_京都府","lastName":"谷口","firstName":"翔子","team":"B-JOKER","prefecture":"京都府"},
-    {"id":"安部_夏子_杉並文化クラブ_東京都","lastName":"安部","firstName":"夏子","team":"杉並文化クラブ","prefecture":"東京都"},
-    {"id":"豊田_朋恵_杉並文化クラブ_東京都","lastName":"豊田","firstName":"朋恵","team":"杉並文化クラブ","prefecture":"東京都"},
-    {"id":"瀬田_歩_内灘V遊クラブ_石川県","lastName":"瀬田","firstName":"歩","team":"内灘V遊クラブ","prefecture":"石川県"},
-    {"id":"松本_清加_野々市クラブ_石川県","lastName":"松本","firstName":"清加","team":"野々市クラブ","prefecture":"石川県"}
+    {
+      "id": "我妻_万美_杉並文化クラブ_東京都",
+      "lastName": "我妻",
+      "firstName": "万美",
+      "team": "杉並文化クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "林_麻理_杉並文化クラブ_東京都",
+      "lastName": "林",
+      "firstName": "麻理",
+      "team": "杉並文化クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "髙橋_和恵_山形市役所_山形県",
+      "lastName": "髙橋",
+      "firstName": "和恵",
+      "team": "山形市役所",
+      "prefecture": "山形県"
+    },
+    {
+      "id": "三浦_洋美_Palaistra_群馬県",
+      "lastName": "三浦",
+      "firstName": "洋美",
+      "team": "Palaistra",
+      "prefecture": "群馬県"
+    },
+    {
+      "id": "川島_真織_ＥＡＳＴＣ_静岡県",
+      "lastName": "川島",
+      "firstName": "真織",
+      "team": "ＥＡＳＴＣ",
+      "prefecture": "静岡県"
+    },
+    {
+      "id": "小柳_惟子_野々市クラブ_石川県",
+      "lastName": "小柳",
+      "firstName": "惟子",
+      "team": "野々市クラブ",
+      "prefecture": "石川県"
+    },
+    {
+      "id": "吉田_美姫_ふたばクラブ_石川県",
+      "lastName": "吉田",
+      "firstName": "美姫",
+      "team": "ふたばクラブ",
+      "prefecture": "石川県"
+    },
+    {
+      "id": "加納_亜由美_ヨネックス名古屋_愛知県",
+      "lastName": "加納",
+      "firstName": "亜由美",
+      "team": "ヨネックス名古屋",
+      "prefecture": "愛知県"
+    },
+    {
+      "id": "松浦_朱里_ヨネックスクラブ_東京都",
+      "lastName": "松浦",
+      "firstName": "朱里",
+      "team": "ヨネックスクラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "前田_綾子_井原クラブ_岡山県",
+      "lastName": "前田",
+      "firstName": "綾子",
+      "team": "井原クラブ",
+      "prefecture": "岡山県"
+    },
+    {
+      "id": "諸岡_敬子_井原クラブ_岡山県",
+      "lastName": "諸岡",
+      "firstName": "敬子",
+      "team": "井原クラブ",
+      "prefecture": "岡山県"
+    },
+    {
+      "id": "関谷_香織_所沢ペアート_埼玉県",
+      "lastName": "関谷",
+      "firstName": "香織",
+      "team": "所沢ペアート",
+      "prefecture": "埼玉県"
+    },
+    {
+      "id": "宮原_沙弥佳_千石クラブ_東京都",
+      "lastName": "宮原",
+      "firstName": "沙弥佳",
+      "team": "千石クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "吉松_朋美_新星レディース_鹿児島県",
+      "lastName": "吉松",
+      "firstName": "朋美",
+      "team": "新星レディース",
+      "prefecture": "鹿児島県"
+    },
+    {
+      "id": "橋本_聡美_新星レディース_鹿児島県",
+      "lastName": "橋本",
+      "firstName": "聡美",
+      "team": "新星レディース",
+      "prefecture": "鹿児島県"
+    },
+    {
+      "id": "坂井_美香_ヨネックスクラブ_大阪府",
+      "lastName": "坂井",
+      "firstName": "美香",
+      "team": "ヨネックスクラブ",
+      "prefecture": "大阪府"
+    },
+    {
+      "id": "山本_真理恵_ヨネックスクラブ_大阪府",
+      "lastName": "山本",
+      "firstName": "真理恵",
+      "team": "ヨネックスクラブ",
+      "prefecture": "大阪府"
+    },
+    {
+      "id": "加藤_あかね_松葉クラブ_愛知県",
+      "lastName": "加藤",
+      "firstName": "あかね",
+      "team": "松葉クラブ",
+      "prefecture": "愛知県"
+    },
+    {
+      "id": "西田_朋子_松任コスモスクラブ_石川県",
+      "lastName": "西田",
+      "firstName": "朋子",
+      "team": "松任コスモスクラブ",
+      "prefecture": "石川県"
+    },
+    {
+      "id": "伊佐_久美子_杉並文化クラブ_東京都",
+      "lastName": "伊佐",
+      "firstName": "久美子",
+      "team": "杉並文化クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "三宅_一美_葛飾クラブ_東京都",
+      "lastName": "三宅",
+      "firstName": "一美",
+      "team": "葛飾クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "利根川_空観_坂戸クラブ_埼玉県",
+      "lastName": "利根川",
+      "firstName": "空観",
+      "team": "坂戸クラブ",
+      "prefecture": "埼玉県"
+    },
+    {
+      "id": "前澤_明恵_狭山クラブ_埼玉県",
+      "lastName": "前澤",
+      "firstName": "明恵",
+      "team": "狭山クラブ",
+      "prefecture": "埼玉県"
+    },
+    {
+      "id": "米塚_えみ子_武蔵野クラブ_東京都",
+      "lastName": "米塚",
+      "firstName": "えみ子",
+      "team": "武蔵野クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "平岡_佐和子_武蔵野クラブ_東京都",
+      "lastName": "平岡",
+      "firstName": "佐和子",
+      "team": "武蔵野クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "野間_智美_男塾_福岡県",
+      "lastName": "野間",
+      "firstName": "智美",
+      "team": "男塾",
+      "prefecture": "福岡県"
+    },
+    {
+      "id": "田中_悠希_鳥栖クラブ_佐賀県",
+      "lastName": "田中",
+      "firstName": "悠希",
+      "team": "鳥栖クラブ",
+      "prefecture": "佐賀県"
+    },
+    {
+      "id": "朝倉_弥生_ＥＡＳＴＣ_静岡県",
+      "lastName": "朝倉",
+      "firstName": "弥生",
+      "team": "ＥＡＳＴＣ",
+      "prefecture": "静岡県"
+    },
+    {
+      "id": "河原崎_晶子_大成クラブ_静岡県",
+      "lastName": "河原崎",
+      "firstName": "晶子",
+      "team": "大成クラブ",
+      "prefecture": "静岡県"
+    },
+    {
+      "id": "矢野_知咲希_松葉クラブ_愛知県",
+      "lastName": "矢野",
+      "firstName": "知咲希",
+      "team": "松葉クラブ",
+      "prefecture": "愛知県"
+    },
+    {
+      "id": "足立_朋香_ヨネックス名古屋_愛知県",
+      "lastName": "足立",
+      "firstName": "朋香",
+      "team": "ヨネックス名古屋",
+      "prefecture": "愛知県"
+    },
+    {
+      "id": "吉﨑_香奈絵_クレインズ_京都府",
+      "lastName": "吉﨑",
+      "firstName": "香奈絵",
+      "team": "クレインズ",
+      "prefecture": "京都府"
+    },
+    {
+      "id": "谷口_翔子_B-JOKER_京都府",
+      "lastName": "谷口",
+      "firstName": "翔子",
+      "team": "B-JOKER",
+      "prefecture": "京都府"
+    },
+    {
+      "id": "安部_夏子_杉並文化クラブ_東京都",
+      "lastName": "安部",
+      "firstName": "夏子",
+      "team": "杉並文化クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "豊田_朋恵_杉並文化クラブ_東京都",
+      "lastName": "豊田",
+      "firstName": "朋恵",
+      "team": "杉並文化クラブ",
+      "prefecture": "東京都"
+    },
+    {
+      "id": "瀬田_歩_内灘V遊クラブ_石川県",
+      "lastName": "瀬田",
+      "firstName": "歩",
+      "team": "内灘V遊クラブ",
+      "prefecture": "石川県"
+    },
+    {
+      "id": "松本_清加_野々市クラブ_石川県",
+      "lastName": "松本",
+      "firstName": "清加",
+      "team": "野々市クラブ",
+      "prefecture": "石川県"
+    }
   ],
   "entries": [
-    {"entryNo":1,"playerIds":["髙橋_和恵_山形市役所_山形県","三浦_洋美_Palaistra_群馬県"],"type":null},
-    {"entryNo":2,"playerIds":["我妻_万美_杉並文化クラブ_東京都","林_麻理_杉並文化クラブ_東京都"],"type":null},
-    {"entryNo":3,"playerIds":["川島_真織_ＥＡＳＴＣ_静岡県"],"type":null},
-    {"entryNo":4,"playerIds":["加納_亜由美_ヨネックス名古屋_愛知県","松浦_朱里_ヨネックスクラブ_東京都"],"type":null},
-    {"entryNo":5,"playerIds":["小柳_惟子_野々市クラブ_石川県","吉田_美姫_ふたばクラブ_石川県"],"type":null},
-    {"entryNo":6,"playerIds":["前田_綾子_井原クラブ_岡山県","諸岡_敬子_井原クラブ_岡山県"],"type":null},
-    {"entryNo":7,"playerIds":["吉松_朋美_新星レディース_鹿児島県","橋本_聡美_新星レディース_鹿児島県"],"type":null},
-    {"entryNo":8,"playerIds":["関谷_香織_所沢ペアート_埼玉県","宮原_沙弥佳_千石クラブ_東京都"],"type":null},
-    {"entryNo":9,"playerIds":["坂井_美香_ヨネックスクラブ_大阪府","山本_真理恵_ヨネックスクラブ_大阪府"],"type":null},
-    {"entryNo":10,"playerIds":["伊佐_久美子_杉並文化クラブ_東京都","三宅_一美_葛飾クラブ_東京都"],"type":null},
-    {"entryNo":11,"playerIds":["加藤_あかね_松葉クラブ_愛知県","西田_朋子_松任コスモスクラブ_石川県"],"type":null},
-    {"entryNo":12,"playerIds":["利根川_空観_坂戸クラブ_埼玉県","前澤_明恵_狭山クラブ_埼玉県"],"type":null},
-    {"entryNo":13,"playerIds":["野間_智美_男塾_福岡県","田中_悠希_鳥栖クラブ_佐賀県"],"type":null},
-    {"entryNo":14,"playerIds":["米塚_えみ子_武蔵野クラブ_東京都","平岡_佐和子_武蔵野クラブ_東京都"],"type":null},
-    {"entryNo":15,"playerIds":["朝倉_弥生_ＥＡＳＴＣ_静岡県","河原崎_晶子_大成クラブ_静岡県"],"type":null},
-    {"entryNo":16,"playerIds":["吉﨑_香奈絵_クレインズ_京都府","谷口_翔子_B-JOKER_京都府"],"type":null},
-    {"entryNo":17,"playerIds":["矢野_知咲希_松葉クラブ_愛知県","足立_朋香_ヨネックス名古屋_愛知県"],"type":null},
-    {"entryNo":18,"playerIds":["安部_夏子_杉並文化クラブ_東京都","豊田_朋恵_杉並文化クラブ_東京都"],"type":null},
-    {"entryNo":19,"playerIds":["瀬田_歩_内灘V遊クラブ_石川県","松本_清加_野々市クラブ_石川県"],"type":null}
+    {
+      "entryNo": 1,
+      "playerIds": [
+        "髙橋_和恵_山形市役所_山形県",
+        "三浦_洋美_Palaistra_群馬県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 2,
+      "playerIds": [
+        "我妻_万美_杉並文化クラブ_東京都",
+        "林_麻理_杉並文化クラブ_東京都"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 3,
+      "playerIds": ["川島_真織_ＥＡＳＴＣ_静岡県"],
+      "type": null
+    },
+    {
+      "entryNo": 4,
+      "playerIds": [
+        "加納_亜由美_ヨネックス名古屋_愛知県",
+        "松浦_朱里_ヨネックスクラブ_東京都"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 5,
+      "playerIds": [
+        "小柳_惟子_野々市クラブ_石川県",
+        "吉田_美姫_ふたばクラブ_石川県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 6,
+      "playerIds": [
+        "前田_綾子_井原クラブ_岡山県",
+        "諸岡_敬子_井原クラブ_岡山県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 7,
+      "playerIds": [
+        "吉松_朋美_新星レディース_鹿児島県",
+        "橋本_聡美_新星レディース_鹿児島県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 8,
+      "playerIds": [
+        "関谷_香織_所沢ペアート_埼玉県",
+        "宮原_沙弥佳_千石クラブ_東京都"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 9,
+      "playerIds": [
+        "坂井_美香_ヨネックスクラブ_大阪府",
+        "山本_真理恵_ヨネックスクラブ_大阪府"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 10,
+      "playerIds": [
+        "伊佐_久美子_杉並文化クラブ_東京都",
+        "三宅_一美_葛飾クラブ_東京都"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 11,
+      "playerIds": [
+        "加藤_あかね_松葉クラブ_愛知県",
+        "西田_朋子_松任コスモスクラブ_石川県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 12,
+      "playerIds": [
+        "利根川_空観_坂戸クラブ_埼玉県",
+        "前澤_明恵_狭山クラブ_埼玉県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 13,
+      "playerIds": ["野間_智美_男塾_福岡県", "田中_悠希_鳥栖クラブ_佐賀県"],
+      "type": null
+    },
+    {
+      "entryNo": 14,
+      "playerIds": [
+        "米塚_えみ子_武蔵野クラブ_東京都",
+        "平岡_佐和子_武蔵野クラブ_東京都"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 15,
+      "playerIds": [
+        "朝倉_弥生_ＥＡＳＴＣ_静岡県",
+        "河原崎_晶子_大成クラブ_静岡県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 16,
+      "playerIds": [
+        "吉﨑_香奈絵_クレインズ_京都府",
+        "谷口_翔子_B-JOKER_京都府"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 17,
+      "playerIds": [
+        "矢野_知咲希_松葉クラブ_愛知県",
+        "足立_朋香_ヨネックス名古屋_愛知県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 18,
+      "playerIds": [
+        "安部_夏子_杉並文化クラブ_東京都",
+        "豊田_朋恵_杉並文化クラブ_東京都"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 19,
+      "playerIds": [
+        "瀬田_歩_内灘V遊クラブ_石川県",
+        "松本_清加_野々市クラブ_石川県"
+      ],
+      "type": null
+    }
   ],
   "matches": [
     {
-      "entries": [6,7],
-      "scores": {"6":4,"7":3},
+      "entries": [6, 7],
+      "scores": { "6": 4, "7": 3 },
       "round": "準々決勝",
       "winnerEntryNo": 6,
       "retired": false,
@@ -74,8 +423,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [10,13],
-      "scores": {"10":4,"13":1},
+      "entries": [10, 13],
+      "scores": { "10": 4, "13": 1 },
       "round": "準々決勝",
       "winnerEntryNo": 10,
       "retired": false,
@@ -87,8 +436,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [1,6],
-      "scores": {"1":4,"6":1},
+      "entries": [1, 6],
+      "scores": { "1": 4, "6": 1 },
       "round": "準決勝",
       "winnerEntryNo": 1,
       "retired": false,
@@ -100,8 +449,8 @@
       "prevMatchId": "match-1"
     },
     {
-      "entries": [10,16],
-      "scores": {"10":4,"16":3},
+      "entries": [10, 16],
+      "scores": { "10": 4, "16": 3 },
       "round": "準決勝",
       "winnerEntryNo": 10,
       "retired": false,
@@ -113,8 +462,8 @@
       "prevMatchId": "match-2"
     },
     {
-      "entries": [1,10],
-      "scores": {"1":4,"10":1},
+      "entries": [1, 10],
+      "scores": { "1": 4, "10": 1 },
       "round": "決勝",
       "winnerEntryNo": 1,
       "retired": false,
@@ -122,12 +471,12 @@
       "group": null,
       "matchId": "match-5",
       "nextMatchId": null,
-      "prevMatchIds": ["match-3","match-4"],
+      "prevMatchIds": ["match-3", "match-4"],
       "prevMatchId": null
     },
     {
-      "entries": [1,2],
-      "scores": {"1":4,"2":0},
+      "entries": [1, 2],
+      "scores": { "1": 4, "2": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -138,8 +487,8 @@
       "matchId": "match-6"
     },
     {
-      "entries": [1,3],
-      "scores": {"1":4,"3":1},
+      "entries": [1, 3],
+      "scores": { "1": 4, "3": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -150,8 +499,8 @@
       "matchId": "match-7"
     },
     {
-      "entries": [2,3],
-      "scores": {"2":4,"3":3},
+      "entries": [2, 3],
+      "scores": { "2": 4, "3": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -162,8 +511,8 @@
       "matchId": "match-8"
     },
     {
-      "entries": [4,5],
-      "scores": {"4":4,"5":2},
+      "entries": [4, 5],
+      "scores": { "4": 4, "5": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -174,8 +523,8 @@
       "matchId": "match-9"
     },
     {
-      "entries": [4,6],
-      "scores": {"4":1,"6":4},
+      "entries": [4, 6],
+      "scores": { "4": 1, "6": 4 },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -186,8 +535,8 @@
       "matchId": "match-10"
     },
     {
-      "entries": [5,6],
-      "scores": {"5":4,"6":2},
+      "entries": [5, 6],
+      "scores": { "5": 4, "6": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -198,8 +547,8 @@
       "matchId": "match-11"
     },
     {
-      "entries": [7,8],
-      "scores": {"7":4,"8":3},
+      "entries": [7, 8],
+      "scores": { "7": 4, "8": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "C",
@@ -210,8 +559,8 @@
       "matchId": "match-12"
     },
     {
-      "entries": [7,9],
-      "scores": {"7":4,"9":2},
+      "entries": [7, 9],
+      "scores": { "7": 4, "9": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "C",
@@ -222,8 +571,8 @@
       "matchId": "match-13"
     },
     {
-      "entries": [8,9],
-      "scores": {"8":2,"9":4},
+      "entries": [8, 9],
+      "scores": { "8": 2, "9": 4 },
       "round": null,
       "stage": "roundrobin",
       "group": "C",
@@ -234,8 +583,8 @@
       "matchId": "match-14"
     },
     {
-      "entries": [10,11],
-      "scores": {"10":4,"11":1},
+      "entries": [10, 11],
+      "scores": { "10": 4, "11": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "D",
@@ -246,8 +595,8 @@
       "matchId": "match-15"
     },
     {
-      "entries": [10,12],
-      "scores": {"10":4,"12":0},
+      "entries": [10, 12],
+      "scores": { "10": 4, "12": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "D",
@@ -258,8 +607,8 @@
       "matchId": "match-16"
     },
     {
-      "entries": [11,12],
-      "scores": {"11":0,"12":4},
+      "entries": [11, 12],
+      "scores": { "11": 0, "12": 4 },
       "round": null,
       "stage": "roundrobin",
       "group": "D",
@@ -270,8 +619,8 @@
       "matchId": "match-17"
     },
     {
-      "entries": [13,14],
-      "scores": {"13":4,"14":1},
+      "entries": [13, 14],
+      "scores": { "13": 4, "14": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "E",
@@ -282,8 +631,8 @@
       "matchId": "match-18"
     },
     {
-      "entries": [13,15],
-      "scores": {"13":4,"15":0},
+      "entries": [13, 15],
+      "scores": { "13": 4, "15": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "E",
@@ -294,8 +643,8 @@
       "matchId": "match-19"
     },
     {
-      "entries": [14,15],
-      "scores": {"14":1,"15":4},
+      "entries": [14, 15],
+      "scores": { "14": 1, "15": 4 },
       "round": null,
       "stage": "roundrobin",
       "group": "E",
@@ -306,8 +655,8 @@
       "matchId": "match-20"
     },
     {
-      "entries": [16,17],
-      "scores": {"16":4,"17":2},
+      "entries": [16, 17],
+      "scores": { "16": 4, "17": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -318,8 +667,8 @@
       "matchId": "match-21"
     },
     {
-      "entries": [16,18],
-      "scores": {"16":4,"18":0},
+      "entries": [16, 18],
+      "scores": { "16": 4, "18": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -330,8 +679,8 @@
       "matchId": "match-22"
     },
     {
-      "entries": [16,19],
-      "scores": {"16":4,"19":0},
+      "entries": [16, 19],
+      "scores": { "16": 4, "19": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -342,8 +691,8 @@
       "matchId": "match-23"
     },
     {
-      "entries": [17,18],
-      "scores": {"17":4,"18":1},
+      "entries": [17, 18],
+      "scores": { "17": 4, "18": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -354,8 +703,8 @@
       "matchId": "match-24"
     },
     {
-      "entries": [17,19],
-      "scores": {"17":4,"19":1},
+      "entries": [17, 19],
+      "scores": { "17": 4, "19": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -366,8 +715,8 @@
       "matchId": "match-25"
     },
     {
-      "entries": [18,19],
-      "scores": {"18":4,"19":1},
+      "entries": [18, 19],
+      "scores": { "18": 4, "19": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -379,24 +728,112 @@
     }
   ],
   "results": [
-    {"entryNo":1,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":{"group":"A","rank":1}},
-    {"entryNo":2,"tournament":null,"roundrobin":{"group":"A","rank":2}},
-    {"entryNo":3,"tournament":null,"roundrobin":{"group":"A","rank":3}},
-    {"entryNo":4,"tournament":null,"roundrobin":{"group":"B","rank":3}},
-    {"entryNo":5,"tournament":null,"roundrobin":{"group":"B","rank":2}},
-    {"entryNo":6,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"B","rank":1}},
-    {"entryNo":7,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"C","rank":1}},
-    {"entryNo":8,"tournament":null,"roundrobin":{"group":"C","rank":3}},
-    {"entryNo":9,"tournament":null,"roundrobin":{"group":"C","rank":2}},
-    {"entryNo":10,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"D","rank":1}},
-    {"entryNo":11,"tournament":null,"roundrobin":{"group":"D","rank":3}},
-    {"entryNo":12,"tournament":null,"roundrobin":{"group":"D","rank":2}},
-    {"entryNo":13,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"E","rank":1}},
-    {"entryNo":14,"tournament":null,"roundrobin":{"group":"E","rank":3}},
-    {"entryNo":15,"tournament":null,"roundrobin":{"group":"E","rank":2}},
-    {"entryNo":16,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"F","rank":1}},
-    {"entryNo":17,"tournament":null,"roundrobin":{"group":"F","rank":2}},
-    {"entryNo":18,"tournament":null,"roundrobin":{"group":"F","rank":3}},
-    {"entryNo":19,"tournament":null,"roundrobin":{"group":"F","rank":4}}
+    {
+      "entryNo": 1,
+      "tournament": { "label": "優勝", "rank": { "kind": "winner" } },
+      "roundrobin": { "group": "A", "rank": 1 }
+    },
+    {
+      "entryNo": 2,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 2 }
+    },
+    {
+      "entryNo": 3,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 3 }
+    },
+    {
+      "entryNo": 4,
+      "tournament": null,
+      "roundrobin": { "group": "B", "rank": 3 }
+    },
+    {
+      "entryNo": 5,
+      "tournament": null,
+      "roundrobin": { "group": "B", "rank": 2 }
+    },
+    {
+      "entryNo": 6,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": { "group": "B", "rank": 1 }
+    },
+    {
+      "entryNo": 7,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": { "group": "C", "rank": 1 }
+    },
+    {
+      "entryNo": 8,
+      "tournament": null,
+      "roundrobin": { "group": "C", "rank": 3 }
+    },
+    {
+      "entryNo": 9,
+      "tournament": null,
+      "roundrobin": { "group": "C", "rank": 2 }
+    },
+    {
+      "entryNo": 10,
+      "tournament": { "label": "準優勝", "rank": { "kind": "runnerup" } },
+      "roundrobin": { "group": "D", "rank": 1 }
+    },
+    {
+      "entryNo": 11,
+      "tournament": null,
+      "roundrobin": { "group": "D", "rank": 3 }
+    },
+    {
+      "entryNo": 12,
+      "tournament": null,
+      "roundrobin": { "group": "D", "rank": 2 }
+    },
+    {
+      "entryNo": 13,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": { "group": "E", "rank": 1 }
+    },
+    {
+      "entryNo": 14,
+      "tournament": null,
+      "roundrobin": { "group": "E", "rank": 3 }
+    },
+    {
+      "entryNo": 15,
+      "tournament": null,
+      "roundrobin": { "group": "E", "rank": 2 }
+    },
+    {
+      "entryNo": 16,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": { "group": "F", "rank": 1 }
+    },
+    {
+      "entryNo": 17,
+      "tournament": null,
+      "roundrobin": { "group": "F", "rank": 2 }
+    },
+    {
+      "entryNo": 18,
+      "tournament": null,
+      "roundrobin": { "group": "F", "rank": 3 }
+    },
+    {
+      "entryNo": 19,
+      "tournament": null,
+      "roundrobin": { "group": "F", "rank": 4 }
+    }
   ]
 }

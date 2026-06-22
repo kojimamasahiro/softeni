@@ -27,17 +27,30 @@ type CareerRecordBlock = {
   // 主役（個人 or ペア）
   subject: { playerIds: string[]; display: string };
   // 当サイト掲載範囲であることを必ず示すフラグ
-  scope: 'site-covered';        // 描画側で「当サイト掲載大会分」と明示
+  scope: 'site-covered'; // 描画側で「当サイト掲載大会分」と明示
   totals: {
-    matches: number; wins: number; losses: number; winRate: number;
+    matches: number;
+    wins: number;
+    losses: number;
+    winRate: number;
     games?: { total: number; won: number; lost: number; gameRate: number };
   };
   // 主要タイトル（優勝歴）。Step1 placements の winner を横断抽出
-  titles: Array<{ tournamentId: string; tournamentLabel: string; year: number; categoryLabel: string }>;
+  titles: Array<{
+    tournamentId: string;
+    tournamentLabel: string;
+    year: number;
+    categoryLabel: string;
+  }>;
   // 直近成績（analysis.latestMatch 由来）
   latest?: { tournament: string; date: string; result: string };
   // ペア成績（任意。byPartner から対象パートナーぶん）
-  withPartner?: { partnerDisplay: string; matches: number; wins: number; winRate: number };
+  withPartner?: {
+    partnerDisplay: string;
+    matches: number;
+    wins: number;
+    winRate: number;
+  };
 };
 ```
 

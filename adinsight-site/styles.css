@@ -25,7 +25,12 @@
 
 body {
   margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -162,7 +167,9 @@ a:hover {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.16s ease, opacity 0.16s ease;
+  transition:
+    background-color 0.16s ease,
+    opacity 0.16s ease;
 }
 
 .button:disabled {
@@ -403,7 +410,7 @@ a:hover {
 }
 
 .link-grid a::after {
-  content: "›";
+  content: '›';
   color: var(--primary);
   font-size: 22px;
   line-height: 1;

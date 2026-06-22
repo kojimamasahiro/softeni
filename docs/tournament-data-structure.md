@@ -31,12 +31,12 @@ data/tournament/
 
 ```typescript
 export interface TournamentIndexEntry {
-  tournamentId: string;        // 大会ID（例: "highschool-japan-cup"）
-  generationId: string;        // 世代区分ID（例: "highschool", "university"）
-  label: string;               // 大会名（例: "ハイスクールジャパンカップ"）
-  isMajorTitle: boolean;       // 主要タイトルかどうか
-  officialUrl: string;         // 公式サイトURL
-  federationId?: string;       // 連盟ID（local_index.jsonで使用）
+  tournamentId: string; // 大会ID（例: "highschool-japan-cup"）
+  generationId: string; // 世代区分ID（例: "highschool", "university"）
+  label: string; // 大会名（例: "ハイスクールジャパンカップ"）
+  isMajorTitle: boolean; // 主要タイトルかどうか
+  officialUrl: string; // 公式サイトURL
+  federationId?: string; // 連盟ID（local_index.jsonで使用）
 }
 ```
 
@@ -68,7 +68,7 @@ export interface TournamentIndexEntry {
 
 ```typescript
 export interface LocalTournamentIndexEntry extends TournamentIndexEntry {
-  federationId: string;        // 連盟ID（data/prefectures.json のIDと一致）
+  federationId: string; // 連盟ID（data/prefectures.json のIDと一致）
 }
 ```
 
@@ -94,10 +94,10 @@ export interface LocalTournamentIndexEntry extends TournamentIndexEntry {
 
 ```typescript
 interface FederationEntry {
-  federationId: string;        // 連盟ID（例: "tokyo"）
-  region: string;              // 地域区分（例: "関東"）
-  label: string;               // 連盟名（例: "東京都ソフトテニス連盟"）
-  officialUrl: string;         // 連盟公式サイトURL
+  federationId: string; // 連盟ID（例: "tokyo"）
+  region: string; // 地域区分（例: "関東"）
+  label: string; // 連盟名（例: "東京都ソフトテニス連盟"）
+  officialUrl: string; // 連盟公式サイトURL
 }
 ```
 
@@ -124,8 +124,8 @@ interface FederationEntry {
 
 ```typescript
 interface GenerationEntry {
-  generationId: string;        // 世代区分ID
-  label: string;               // 世代区分名
+  generationId: string; // 世代区分ID
+  label: string; // 世代区分名
 }
 ```
 
@@ -161,21 +161,21 @@ interface GenerationEntry {
 
 ```typescript
 export interface TournamentInformationEntry {
-  year: number;                // 開催年
-  location: string;            // 開催地
-  startDate: string;           // 開始日（YYYY-MM-DD形式）
-  endDate: string;             // 終了日（YYYY-MM-DD形式）
-  source: string;              // 情報ソース名
-  sourceUrl: string;           // 情報ソースURL
-  categories: TournamentCategoryInfo[];  // 実施種目情報
+  year: number; // 開催年
+  location: string; // 開催地
+  startDate: string; // 開始日（YYYY-MM-DD形式）
+  endDate: string; // 終了日（YYYY-MM-DD形式）
+  source: string; // 情報ソース名
+  sourceUrl: string; // 情報ソースURL
+  categories: TournamentCategoryInfo[]; // 実施種目情報
 }
 
 export interface TournamentCategoryInfo {
-  categoryId: string;          // カテゴリID（例: "doubles-none-boys"）
-  label: string;               // カテゴリ名（例: "男子ダブルス"）
-  category: string;            // 競技種別（"doubles", "singles", "team"）
-  gender: string;              // 性別（"boys", "girls"）
-  age: string;                 // 年齢区分（"none", "u14", "u16"等）
+  categoryId: string; // カテゴリID（例: "doubles-none-boys"）
+  label: string; // カテゴリ名（例: "男子ダブルス"）
+  category: string; // 競技種別（"doubles", "singles", "team"）
+  gender: string; // 性別（"boys", "girls"）
+  age: string; // 年齢区分（"none", "u14", "u16"等）
 }
 ```
 
@@ -221,6 +221,7 @@ export interface TournamentCategoryInfo {
 `{gameCategory}-{ageCategory}-{gender}.json`
 
 例:
+
 - `doubles-none-boys.json` - 男子ダブルス
 - `singles-none-boys.json` - 男子シングルス
 - `team-none-boys.json` - 男子団体
@@ -233,53 +234,56 @@ export interface TournamentCategoryInfo {
 
 ```typescript
 export interface TournamentDetailData {
-  participants: TournamentParticipant[];  // 参加者リスト
-  entries: TournamentEntry[];             // エントリー情報
-  matches: TournamentMatch[];             // 試合結果
-  results: TournamentResult[];            // 最終結果
+  participants: TournamentParticipant[]; // 参加者リスト
+  entries: TournamentEntry[]; // エントリー情報
+  matches: TournamentMatch[]; // 試合結果
+  results: TournamentResult[]; // 最終結果
 }
 
 export interface TournamentParticipant {
-  id: string;                   // 参加者ID（姓_名_チーム_都道府県）
-  lastName: string;             // 姓
-  firstName: string;            // 名
-  team: string;                 // 所属チーム
-  prefecture: string | null;    // 都道府県
-  playerId?: number;            // プレイヤーマスタID（動的に付与）
+  id: string; // 参加者ID（姓_名_チーム_都道府県）
+  lastName: string; // 姓
+  firstName: string; // 名
+  team: string; // 所属チーム
+  prefecture: string | null; // 都道府県
+  playerId?: number; // プレイヤーマスタID（動的に付与）
 }
 
 export interface TournamentEntry {
-  entryNo: number;              // エントリー番号
-  playerIds: string[];          // 参加者ID配列（ダブルスは2人、シングルスは1人）
-  type?: string;                // エントリータイプ（"seed", "packing", "extra"）
+  entryNo: number; // エントリー番号
+  playerIds: string[]; // 参加者ID配列（ダブルスは2人、シングルスは1人）
+  type?: string; // エントリータイプ（"seed", "packing", "extra"）
 }
 
 export interface TournamentMatch {
-  entries: number[];            // 対戦エントリー番号配列
+  entries: number[]; // 対戦エントリー番号配列
   scores: Record<string, number>; // スコア（エントリー番号 → 得点）
-  round: string | null;         // ラウンド名（"1回戦", "準決勝", "決勝"等）
-  winnerEntryNo: number;        // 勝者エントリー番号
-  retired: boolean;             // 棄権フラグ
-  stage: string;                // ステージ（"knockout", "roundrobin"）
-  group: string | null;         // グループ名（総当たり戦の場合）
-  matchId: string;              // 試合ID
-  nextMatchId: string | null;   // 次の試合ID
-  prevMatchIds: string[];       // 前の試合ID配列
-  prevMatchId: string | null;   // 前の試合ID（単一）
+  round: string | null; // ラウンド名（"1回戦", "準決勝", "決勝"等）
+  winnerEntryNo: number; // 勝者エントリー番号
+  retired: boolean; // 棄権フラグ
+  stage: string; // ステージ（"knockout", "roundrobin"）
+  group: string | null; // グループ名（総当たり戦の場合）
+  matchId: string; // 試合ID
+  nextMatchId: string | null; // 次の試合ID
+  prevMatchIds: string[]; // 前の試合ID配列
+  prevMatchId: string | null; // 前の試合ID（単一）
 }
 
 export interface TournamentResult {
-  entryNo: number;              // エントリー番号
-  tournament?: {                // トーナメント結果
-    label: string;              // 結果ラベル（"優勝", "準優勝"等）
-    rank: {                     // ランク情報
-      kind: string;             // ランク種別（"winner", "runnerup", "best", "round"）
-      value: number;            // ランク値（bestLevelやround番号）
+  entryNo: number; // エントリー番号
+  tournament?: {
+    // トーナメント結果
+    label: string; // 結果ラベル（"優勝", "準優勝"等）
+    rank: {
+      // ランク情報
+      kind: string; // ランク種別（"winner", "runnerup", "best", "round"）
+      value: number; // ランク値（bestLevelやround番号）
     };
   };
-  roundrobin?: {                // 総当たり戦の結果
-    group: string;              // グループ名
-    rank: number;               // グループ内順位
+  roundrobin?: {
+    // 総当たり戦の結果
+    group: string; // グループ名
+    rank: number; // グループ内順位
   };
 }
 ```
@@ -290,12 +294,12 @@ export interface TournamentResult {
 
 ```typescript
 export interface TournamentParticipant {
-  id: string;                   // チームID（チーム名_都道府県）
-  lastName: string;             // 空文字列またはnull（団体戦では使用しない）
-  firstName: string;            // 空文字列またはnull（団体戦では使用しない）
-  team: string;                 // チーム名
-  prefecture: string | null;    // 都道府県
-  playerId?: number;            // 使用しない
+  id: string; // チームID（チーム名_都道府県）
+  lastName: string; // 空文字列またはnull（団体戦では使用しない）
+  firstName: string; // 空文字列またはnull（団体戦では使用しない）
+  team: string; // チーム名
+  prefecture: string | null; // 都道府県
+  playerId?: number; // 使用しない
 }
 ```
 
@@ -324,7 +328,7 @@ export interface TournamentParticipant {
   "matches": [
     {
       "entries": [1, 2],
-      "scores": {"1": 4, "2": 1},
+      "scores": { "1": 4, "2": 1 },
       "round": "1回戦",
       "winnerEntryNo": 1,
       "retired": false,
@@ -387,6 +391,7 @@ export interface TournamentParticipant {
 - **gender**: `boys`, `girls`, `mixed`
 
 例:
+
 - `doubles-none-boys` - 男子ダブルス（年齢制限なし）
 - `singles-u16-girls` - 女子シングルス（U16）
 - `team-none-boys` - 男子団体（年齢制限なし）
@@ -469,9 +474,9 @@ export interface TournamentParticipant {
 
 ### URL体系
 
-| URL | ファイル | 説明 |
-|---|---|---|
-| `/tournaments` | `src/pages/tournaments/index.tsx` | 新ページ。全大会を検索・フィルターできるハブ |
+| URL                  | ファイル                                | 説明                                           |
+| -------------------- | --------------------------------------- | ---------------------------------------------- |
+| `/tournaments`       | `src/pages/tournaments/index.tsx`       | 新ページ。全大会を検索・フィルターできるハブ   |
 | `/tournaments/major` | `src/pages/tournaments/major/index.tsx` | 旧ページ。カテゴリ（世代）別に大会をカード表示 |
 
 ### `TournamentInstance` 型
@@ -480,19 +485,19 @@ export interface TournamentParticipant {
 
 ```typescript
 type TournamentInstance = {
-  tournamentId: string;        // 大会ID
-  generation: string;          // 世代区分ID
-  generationLabel: string;     // 世代区分名（表示用）
-  year: number;                // 開催年
-  label: string;               // 大会名
-  startDate: string;           // 開始日（YYYY-MM-DD）
-  endDate: string;             // 終了日（YYYY-MM-DD）
-  location: string;            // 開催地
+  tournamentId: string; // 大会ID
+  generation: string; // 世代区分ID
+  generationLabel: string; // 世代区分名（表示用）
+  year: number; // 開催年
+  label: string; // 大会名
+  startDate: string; // 開始日（YYYY-MM-DD）
+  endDate: string; // 終了日（YYYY-MM-DD）
+  location: string; // 開催地
   prefectureId: string | null; // 都道府県ID（data/prefectures.json のID）
-  level: TournamentLevel;      // 大会規模
-  categoryLabels: string[];    // 実施種目名一覧
-  hasInternalResult: boolean;  // 内部結果データの有無
-  officialUrl: string;         // 公式サイトURL
+  level: TournamentLevel; // 大会規模
+  categoryLabels: string[]; // 実施種目名一覧
+  hasInternalResult: boolean; // 内部結果データの有無
+  officialUrl: string; // 公式サイトURL
   firstCategoryPath: string | null; // 結果ページへの最初のリンクパス
 };
 
@@ -503,44 +508,44 @@ type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
 
 `data/tournaments/index.json` / `local_index.json` のどちらに属するか、および `tournamentId` のプレフィックスで自動推定する。
 
-| 条件 | level |
-|---|---|
+| 条件                                                           | level                       |
+| -------------------------------------------------------------- | --------------------------- |
 | `local_index.json` に掲載されており、`areaId` が指定されている | `areaId` の値をそのまま使用 |
-| `local_index.json` に掲載されており、`areaId` が未指定 | `prefecture`（都道府県） |
-| `tournamentId` が `east-` または `west-` で始まる | `block`（ブロック） |
-| それ以外の `index.json` 掲載大会 | `national`（全国） |
+| `local_index.json` に掲載されており、`areaId` が未指定         | `prefecture`（都道府県）    |
+| `tournamentId` が `east-` または `west-` で始まる              | `block`（ブロック）         |
+| それ以外の `index.json` 掲載大会                               | `national`（全国）          |
 
 `areaId` に設定可能な値は `TournamentLevel` 型と一致する。
 
-| 値 | 説明 |
-|---|---|
-| `national` | 全国大会 |
-| `block` | ブロック大会 |
-| `prefecture` | 都道府県大会 |
-| `city` | 市区町村大会 |
-| `open` | オープン戦（参加資格不問） |
+| 値           | 説明                       |
+| ------------ | -------------------------- |
+| `national`   | 全国大会                   |
+| `block`      | ブロック大会               |
+| `prefecture` | 都道府県大会               |
+| `city`       | 市区町村大会               |
+| `open`       | オープン戦（参加資格不問） |
 
 > `city`・`open` は自動推定されない。`local_index.json` の `areaId` フィールドに手動で指定する。
 
 ### フィルター項目とデータソース
 
-| フィルター | 選択肢のソース | URL クエリパラメータ |
-|---|---|---|
-| カテゴリ | `data/tournaments/genarations.json` | `?generation=highschool` |
-| 種類 | `TournamentLevel` 定数（ハードコード） | `?level=national` |
-| 開催地 | `data/prefectures.json` | `?prefecture=tokyo` |
-| 年度 | `information/*.json` の `startDate` から自動生成 | `?year=2024` |
-| 結果ありのみ | — | `?hasResult=1` |
+| フィルター   | 選択肢のソース                                   | URL クエリパラメータ     |
+| ------------ | ------------------------------------------------ | ------------------------ |
+| カテゴリ     | `data/tournaments/genarations.json`              | `?generation=highschool` |
+| 種類         | `TournamentLevel` 定数（ハードコード）           | `?level=national`        |
+| 開催地       | `data/prefectures.json`                          | `?prefecture=tokyo`      |
+| 年度         | `information/*.json` の `startDate` から自動生成 | `?year=2024`             |
+| 結果ありのみ | —                                                | `?hasResult=1`           |
 
 複数選択・URL同期・即時反映（Applyボタンなし）に対応。
 
 ### 結果列の表示ロジック
 
-| 条件 | 表示 |
-|---|---|
-| `hasInternalResult === true` | 緑の「結果」バッジ（内部リンク） |
-| `hasInternalResult === false` かつ `officialUrl` あり | 「公式」外部リンク |
-| 両方なし | `—` |
+| 条件                                                  | 表示                             |
+| ----------------------------------------------------- | -------------------------------- |
+| `hasInternalResult === true`                          | 緑の「結果」バッジ（内部リンク） |
+| `hasInternalResult === false` かつ `officialUrl` あり | 「公式」外部リンク               |
+| 両方なし                                              | `—`                              |
 
 ---
 

@@ -19,12 +19,12 @@
 
 ```ts
 type MilestoneKind =
-  | 'first-title'        // 初優勝（この大会で）
-  | 'repeat-title'       // 連覇（2連覇以上）
-  | 'first-appearance'   // 初出場（当サイト掲載範囲で）
-  | 'champion-defeat'    // 王者撃破（前回王者/連覇中ペアを破った）
-  | 'career-wins'        // 通算N勝の節目（50/100…）
-  | 'best4-first';       // ベスト4初進出
+  | 'first-title' // 初優勝（この大会で）
+  | 'repeat-title' // 連覇（2連覇以上）
+  | 'first-appearance' // 初出場（当サイト掲載範囲で）
+  | 'champion-defeat' // 王者撃破（前回王者/連覇中ペアを破った）
+  | 'career-wins' // 通算N勝の節目（50/100…）
+  | 'best4-first'; // ベスト4初進出
 
 type MilestoneEvent = {
   kind: MilestoneKind;
@@ -43,7 +43,7 @@ type MilestoneEvent = {
 
 type MilestoneBlock = {
   blockType: 'milestone';
-  events: MilestoneEvent[];   // 重要度降順
+  events: MilestoneEvent[]; // 重要度降順
 };
 ```
 

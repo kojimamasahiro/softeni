@@ -1,172 +1,964 @@
 {
   "participants": [
-    {"id":"舟川_和斗_筑波大学_茨城県","lastName":"舟川","firstName":"和斗","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"小林_和聖_O.T.B._茨城県","lastName":"小林","firstName":"和聖","team":"O.T.B.","prefecture":"茨城県"},
-    {"id":"永田_隼也_筑西クラブ_茨城県","lastName":"永田","firstName":"隼也","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"塩谷_駿_筑波大学_茨城県","lastName":"塩谷","firstName":"駿","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"秦野_拓登_筑波大学_茨城県","lastName":"秦野","firstName":"拓登","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"慶野_玖向_常磐大学高校_茨城県","lastName":"慶野","firstName":"玖向","team":"常磐大学高校","prefecture":"茨城県"},
-    {"id":"入江_優志_T-bonds_茨城県","lastName":"入江","firstName":"優志","team":"T-bonds","prefecture":"茨城県"},
-    {"id":"小久保_樹_岩瀬日本大学高校_茨城県","lastName":"小久保","firstName":"樹","team":"岩瀬日本大学高校","prefecture":"茨城県"},
-    {"id":"園部_練也_水戸桜ノ牧高校_茨城県","lastName":"園部","firstName":"練也","team":"水戸桜ノ牧高校","prefecture":"茨城県"},
-    {"id":"小林_僚太_茨城県教職員ソフトテニスクラブ_茨城県","lastName":"小林","firstName":"僚太","team":"茨城県教職員ソフトテニスクラブ","prefecture":"茨城県"},
-    {"id":"石島_歩_筑西クラブ_茨城県","lastName":"石島","firstName":"歩","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"堀口_一_筑波大学_茨城県","lastName":"堀口","firstName":"一","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"吉井_翼_霞ヶ浦高校_茨城県","lastName":"吉井","firstName":"翼","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"堤友_星_古澤クラブ_茨城県","lastName":"堤友","firstName":"星","team":"古澤クラブ","prefecture":"茨城県"},
-    {"id":"若林_土野_翼翼クラブ_茨城県","lastName":"若林","firstName":"土野","team":"翼翼クラブ","prefecture":"茨城県"},
-    {"id":"三橋_渉_プロテリアル_茨城県","lastName":"三橋","firstName":"渉","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"梅田_賢吾_山王クラブ_茨城県","lastName":"梅田","firstName":"賢吾","team":"山王クラブ","prefecture":"茨城県"},
-    {"id":"塩谷_佳司_筑波大学_茨城県","lastName":"塩谷","firstName":"佳司","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"サンロレンゾ_ジロ_古澤クラブ_茨城県","lastName":"サンロレンゾ","firstName":"ジロ","team":"古澤クラブ","prefecture":"茨城県"},
-    {"id":"大久保_俊貴_岩瀬日本大学高校_茨城県","lastName":"大久保","firstName":"俊貴","team":"岩瀬日本大学高校","prefecture":"茨城県"},
-    {"id":"野村_優翔_筑波大学_茨城県","lastName":"野村","firstName":"優翔","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"中里_祐基_古河クラブ_茨城県","lastName":"中里","firstName":"祐基","team":"古河クラブ","prefecture":"茨城県"},
-    {"id":"堀越_隆太_翼翼クラブ_茨城県","lastName":"堀越","firstName":"隆太","team":"翼翼クラブ","prefecture":"茨城県"},
-    {"id":"浅見_孔明_筑波大学_茨城県","lastName":"浅見","firstName":"孔明","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"直井_勝紀_筑西クラブ_茨城県","lastName":"直井","firstName":"勝紀","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"菅原_壮真_水戸桜ノ牧高校_茨城県","lastName":"菅原","firstName":"壮真","team":"水戸桜ノ牧高校","prefecture":"茨城県"},
-    {"id":"坂入_裕次朗_筑西クラブ_茨城県","lastName":"坂入","firstName":"裕次朗","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"川上_駿_境高校_茨城県","lastName":"川上","firstName":"駿","team":"境高校","prefecture":"茨城県"},
-    {"id":"河住_昌悟_筑波大学_茨城県","lastName":"河住","firstName":"昌悟","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"山田_祐樹_古河クラブ_茨城県","lastName":"山田","firstName":"祐樹","team":"古河クラブ","prefecture":"茨城県"},
-    {"id":"五十嵐_祐樹_友部クラブ_茨城県","lastName":"五十嵐","firstName":"祐樹","team":"友部クラブ","prefecture":"茨城県"},
-    {"id":"久下沼_竜真_筑波大学_茨城県","lastName":"久下沼","firstName":"竜真","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"田村_律_茨城県教職員ソフトテニスクラブ_茨城県","lastName":"田村","firstName":"律","team":"茨城県教職員ソフトテニスクラブ","prefecture":"茨城県"},
-    {"id":"井橋_篤紀_霞ヶ浦高校_茨城県","lastName":"井橋","firstName":"篤紀","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"岡野_湧貴_古河クラブ_茨城県","lastName":"岡野","firstName":"湧貴","team":"古河クラブ","prefecture":"茨城県"},
-    {"id":"秋野_紘士_境高校_茨城県","lastName":"秋野","firstName":"紘士","team":"境高校","prefecture":"茨城県"},
-    {"id":"田中_祐太郎_プロテリアル_茨城県","lastName":"田中","firstName":"祐太郎","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"白川_隼平_霞ヶ浦高校_茨城県","lastName":"白川","firstName":"隼平","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"長岡_拓実_ＰＰＣ_茨城県","lastName":"長岡","firstName":"拓実","team":"ＰＰＣ","prefecture":"茨城県"},
-    {"id":"小栁_有輝_土浦ソフトテニスクラブ_茨城県","lastName":"小栁","firstName":"有輝","team":"土浦ソフトテニスクラブ","prefecture":"茨城県"},
-    {"id":"後藤_諒馬_筑西クラブ_茨城県","lastName":"後藤","firstName":"諒馬","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"早坂_恒嬉_筑西クラブ_茨城県","lastName":"早坂","firstName":"恒嬉","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"堀_ひかる_霞ヶ浦高校_茨城県","lastName":"堀","firstName":"ひかる","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"深野_尚矢_プロテリアル_茨城県","lastName":"深野","firstName":"尚矢","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"武藤_晴飛_T-bonds_茨城県","lastName":"武藤","firstName":"晴飛","team":"T-bonds","prefecture":"茨城県"},
-    {"id":"高橋_良輔_霞ヶ浦高校_茨城県","lastName":"高橋","firstName":"良輔","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"楢畑_陽大_筑波大学_茨城県","lastName":"楢畑","firstName":"陽大","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"八木澤_望_日立はくあ_茨城県","lastName":"八木澤","firstName":"望","team":"日立はくあ","prefecture":"茨城県"},
-    {"id":"佐々木_陽向_霞ヶ浦高校_茨城県","lastName":"佐々木","firstName":"陽向","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"渡邉_仁_プロテリアル_茨城県","lastName":"渡邉","firstName":"仁","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"清水_直紀_古河クラブ_茨城県","lastName":"清水","firstName":"直紀","team":"古河クラブ","prefecture":"茨城県"},
-    {"id":"村端_良太_筑西クラブ_茨城県","lastName":"村端","firstName":"良太","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"坂田_知己_T-bonds_茨城県","lastName":"坂田","firstName":"知己","team":"T-bonds","prefecture":"茨城県"},
-    {"id":"石川_将_ＭＩＬＤ_茨城県","lastName":"石川","firstName":"将","team":"ＭＩＬＤ","prefecture":"茨城県"},
-    {"id":"小杉_咲人_筑波大学_茨城県","lastName":"小杉","firstName":"咲人","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"善福_留生_霞ヶ浦高校_茨城県","lastName":"善福","firstName":"留生","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"酒井_光生_プロテリアル_茨城県","lastName":"酒井","firstName":"光生","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"石橋_達希_霞ヶ浦高校_茨城県","lastName":"石橋","firstName":"達希","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"岡野_拓也_古河クラブ_茨城県","lastName":"岡野","firstName":"拓也","team":"古河クラブ","prefecture":"茨城県"},
-    {"id":"大部_輝理_T-bonds_茨城県","lastName":"大部","firstName":"輝理","team":"T-bonds","prefecture":"茨城県"},
-    {"id":"飯田_陸斗_筑西クラブ_茨城県","lastName":"飯田","firstName":"陸斗","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"菊池_健_常磐大学高校_茨城県","lastName":"菊池","firstName":"健","team":"常磐大学高校","prefecture":"茨城県"},
-    {"id":"小室_玲雄_T-bonds_茨城県","lastName":"小室","firstName":"玲雄","team":"T-bonds","prefecture":"茨城県"},
-    {"id":"桐山_浩輔_霞ヶ浦高校_茨城県","lastName":"桐山","firstName":"浩輔","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"中山_拓祕_土浦ソフトテニスクラブ_茨城県","lastName":"中山","firstName":"拓祕","team":"土浦ソフトテニスクラブ","prefecture":"茨城県"},
-    {"id":"塚原_拓也_筑西クラブ_茨城県","lastName":"塚原","firstName":"拓也","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"冨田_朝陽_プロテリアル_茨城県","lastName":"冨田","firstName":"朝陽","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"髙嶋_雅弥_霞ヶ浦高校_茨城県","lastName":"髙嶋","firstName":"雅弥","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"山口_和晃_茨城県教職員ソフトテニスクラブ_茨城県","lastName":"山口","firstName":"和晃","team":"茨城県教職員ソフトテニスクラブ","prefecture":"茨城県"},
-    {"id":"齋藤_大貴_霞ヶ浦高校_茨城県","lastName":"齋藤","firstName":"大貴","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"岡﨑_雄介_水戸白友会_茨城県","lastName":"岡﨑","firstName":"雄介","team":"水戸白友会","prefecture":"茨城県"},
-    {"id":"堀江_朔矢_筑波大学_茨城県","lastName":"堀江","firstName":"朔矢","team":"筑波大学","prefecture":"茨城県"},
-    {"id":"藤塚_琉来_T-bonds_茨城県","lastName":"藤塚","firstName":"琉来","team":"T-bonds","prefecture":"茨城県"},
-    {"id":"淀川_大成_霞ヶ浦高校_茨城県","lastName":"淀川","firstName":"大成","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"小島_大佑_筑西クラブ_茨城県","lastName":"小島","firstName":"大佑","team":"筑西クラブ","prefecture":"茨城県"},
-    {"id":"櫻田_啓介_プロテリアル_茨城県","lastName":"櫻田","firstName":"啓介","team":"プロテリアル","prefecture":"茨城県"},
-    {"id":"篠原_多喜_O.T.B._茨城県","lastName":"篠原","firstName":"多喜","team":"O.T.B.","prefecture":"茨城県"},
-    {"id":"菊悠_斗_古澤クラブ_茨城県","lastName":"菊悠","firstName":"斗","team":"古澤クラブ","prefecture":"茨城県"},
-    {"id":"飯田_陽之助_霞ヶ浦高校_茨城県","lastName":"飯田","firstName":"陽之助","team":"霞ヶ浦高校","prefecture":"茨城県"},
-    {"id":"吉久保_太晴_T-bonds_茨城県","lastName":"吉久保","firstName":"太晴","team":"T-bonds","prefecture":"茨城県"}
+    {
+      "id": "舟川_和斗_筑波大学_茨城県",
+      "lastName": "舟川",
+      "firstName": "和斗",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小林_和聖_O.T.B._茨城県",
+      "lastName": "小林",
+      "firstName": "和聖",
+      "team": "O.T.B.",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "永田_隼也_筑西クラブ_茨城県",
+      "lastName": "永田",
+      "firstName": "隼也",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "塩谷_駿_筑波大学_茨城県",
+      "lastName": "塩谷",
+      "firstName": "駿",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "秦野_拓登_筑波大学_茨城県",
+      "lastName": "秦野",
+      "firstName": "拓登",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "慶野_玖向_常磐大学高校_茨城県",
+      "lastName": "慶野",
+      "firstName": "玖向",
+      "team": "常磐大学高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "入江_優志_T-bonds_茨城県",
+      "lastName": "入江",
+      "firstName": "優志",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小久保_樹_岩瀬日本大学高校_茨城県",
+      "lastName": "小久保",
+      "firstName": "樹",
+      "team": "岩瀬日本大学高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "園部_練也_水戸桜ノ牧高校_茨城県",
+      "lastName": "園部",
+      "firstName": "練也",
+      "team": "水戸桜ノ牧高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小林_僚太_茨城県教職員ソフトテニスクラブ_茨城県",
+      "lastName": "小林",
+      "firstName": "僚太",
+      "team": "茨城県教職員ソフトテニスクラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "石島_歩_筑西クラブ_茨城県",
+      "lastName": "石島",
+      "firstName": "歩",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "堀口_一_筑波大学_茨城県",
+      "lastName": "堀口",
+      "firstName": "一",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "吉井_翼_霞ヶ浦高校_茨城県",
+      "lastName": "吉井",
+      "firstName": "翼",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "堤友_星_古澤クラブ_茨城県",
+      "lastName": "堤友",
+      "firstName": "星",
+      "team": "古澤クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "若林_土野_翼翼クラブ_茨城県",
+      "lastName": "若林",
+      "firstName": "土野",
+      "team": "翼翼クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "三橋_渉_プロテリアル_茨城県",
+      "lastName": "三橋",
+      "firstName": "渉",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "梅田_賢吾_山王クラブ_茨城県",
+      "lastName": "梅田",
+      "firstName": "賢吾",
+      "team": "山王クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "塩谷_佳司_筑波大学_茨城県",
+      "lastName": "塩谷",
+      "firstName": "佳司",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "サンロレンゾ_ジロ_古澤クラブ_茨城県",
+      "lastName": "サンロレンゾ",
+      "firstName": "ジロ",
+      "team": "古澤クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "大久保_俊貴_岩瀬日本大学高校_茨城県",
+      "lastName": "大久保",
+      "firstName": "俊貴",
+      "team": "岩瀬日本大学高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "野村_優翔_筑波大学_茨城県",
+      "lastName": "野村",
+      "firstName": "優翔",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "中里_祐基_古河クラブ_茨城県",
+      "lastName": "中里",
+      "firstName": "祐基",
+      "team": "古河クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "堀越_隆太_翼翼クラブ_茨城県",
+      "lastName": "堀越",
+      "firstName": "隆太",
+      "team": "翼翼クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "浅見_孔明_筑波大学_茨城県",
+      "lastName": "浅見",
+      "firstName": "孔明",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "直井_勝紀_筑西クラブ_茨城県",
+      "lastName": "直井",
+      "firstName": "勝紀",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "菅原_壮真_水戸桜ノ牧高校_茨城県",
+      "lastName": "菅原",
+      "firstName": "壮真",
+      "team": "水戸桜ノ牧高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "坂入_裕次朗_筑西クラブ_茨城県",
+      "lastName": "坂入",
+      "firstName": "裕次朗",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "川上_駿_境高校_茨城県",
+      "lastName": "川上",
+      "firstName": "駿",
+      "team": "境高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "河住_昌悟_筑波大学_茨城県",
+      "lastName": "河住",
+      "firstName": "昌悟",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "山田_祐樹_古河クラブ_茨城県",
+      "lastName": "山田",
+      "firstName": "祐樹",
+      "team": "古河クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "五十嵐_祐樹_友部クラブ_茨城県",
+      "lastName": "五十嵐",
+      "firstName": "祐樹",
+      "team": "友部クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "久下沼_竜真_筑波大学_茨城県",
+      "lastName": "久下沼",
+      "firstName": "竜真",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "田村_律_茨城県教職員ソフトテニスクラブ_茨城県",
+      "lastName": "田村",
+      "firstName": "律",
+      "team": "茨城県教職員ソフトテニスクラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "井橋_篤紀_霞ヶ浦高校_茨城県",
+      "lastName": "井橋",
+      "firstName": "篤紀",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "岡野_湧貴_古河クラブ_茨城県",
+      "lastName": "岡野",
+      "firstName": "湧貴",
+      "team": "古河クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "秋野_紘士_境高校_茨城県",
+      "lastName": "秋野",
+      "firstName": "紘士",
+      "team": "境高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "田中_祐太郎_プロテリアル_茨城県",
+      "lastName": "田中",
+      "firstName": "祐太郎",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "白川_隼平_霞ヶ浦高校_茨城県",
+      "lastName": "白川",
+      "firstName": "隼平",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "長岡_拓実_ＰＰＣ_茨城県",
+      "lastName": "長岡",
+      "firstName": "拓実",
+      "team": "ＰＰＣ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小栁_有輝_土浦ソフトテニスクラブ_茨城県",
+      "lastName": "小栁",
+      "firstName": "有輝",
+      "team": "土浦ソフトテニスクラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "後藤_諒馬_筑西クラブ_茨城県",
+      "lastName": "後藤",
+      "firstName": "諒馬",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "早坂_恒嬉_筑西クラブ_茨城県",
+      "lastName": "早坂",
+      "firstName": "恒嬉",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "堀_ひかる_霞ヶ浦高校_茨城県",
+      "lastName": "堀",
+      "firstName": "ひかる",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "深野_尚矢_プロテリアル_茨城県",
+      "lastName": "深野",
+      "firstName": "尚矢",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "武藤_晴飛_T-bonds_茨城県",
+      "lastName": "武藤",
+      "firstName": "晴飛",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "高橋_良輔_霞ヶ浦高校_茨城県",
+      "lastName": "高橋",
+      "firstName": "良輔",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "楢畑_陽大_筑波大学_茨城県",
+      "lastName": "楢畑",
+      "firstName": "陽大",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "八木澤_望_日立はくあ_茨城県",
+      "lastName": "八木澤",
+      "firstName": "望",
+      "team": "日立はくあ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "佐々木_陽向_霞ヶ浦高校_茨城県",
+      "lastName": "佐々木",
+      "firstName": "陽向",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "渡邉_仁_プロテリアル_茨城県",
+      "lastName": "渡邉",
+      "firstName": "仁",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "清水_直紀_古河クラブ_茨城県",
+      "lastName": "清水",
+      "firstName": "直紀",
+      "team": "古河クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "村端_良太_筑西クラブ_茨城県",
+      "lastName": "村端",
+      "firstName": "良太",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "坂田_知己_T-bonds_茨城県",
+      "lastName": "坂田",
+      "firstName": "知己",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "石川_将_ＭＩＬＤ_茨城県",
+      "lastName": "石川",
+      "firstName": "将",
+      "team": "ＭＩＬＤ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小杉_咲人_筑波大学_茨城県",
+      "lastName": "小杉",
+      "firstName": "咲人",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "善福_留生_霞ヶ浦高校_茨城県",
+      "lastName": "善福",
+      "firstName": "留生",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "酒井_光生_プロテリアル_茨城県",
+      "lastName": "酒井",
+      "firstName": "光生",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "石橋_達希_霞ヶ浦高校_茨城県",
+      "lastName": "石橋",
+      "firstName": "達希",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "岡野_拓也_古河クラブ_茨城県",
+      "lastName": "岡野",
+      "firstName": "拓也",
+      "team": "古河クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "大部_輝理_T-bonds_茨城県",
+      "lastName": "大部",
+      "firstName": "輝理",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "飯田_陸斗_筑西クラブ_茨城県",
+      "lastName": "飯田",
+      "firstName": "陸斗",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "菊池_健_常磐大学高校_茨城県",
+      "lastName": "菊池",
+      "firstName": "健",
+      "team": "常磐大学高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小室_玲雄_T-bonds_茨城県",
+      "lastName": "小室",
+      "firstName": "玲雄",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "桐山_浩輔_霞ヶ浦高校_茨城県",
+      "lastName": "桐山",
+      "firstName": "浩輔",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "中山_拓祕_土浦ソフトテニスクラブ_茨城県",
+      "lastName": "中山",
+      "firstName": "拓祕",
+      "team": "土浦ソフトテニスクラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "塚原_拓也_筑西クラブ_茨城県",
+      "lastName": "塚原",
+      "firstName": "拓也",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "冨田_朝陽_プロテリアル_茨城県",
+      "lastName": "冨田",
+      "firstName": "朝陽",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "髙嶋_雅弥_霞ヶ浦高校_茨城県",
+      "lastName": "髙嶋",
+      "firstName": "雅弥",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "山口_和晃_茨城県教職員ソフトテニスクラブ_茨城県",
+      "lastName": "山口",
+      "firstName": "和晃",
+      "team": "茨城県教職員ソフトテニスクラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "齋藤_大貴_霞ヶ浦高校_茨城県",
+      "lastName": "齋藤",
+      "firstName": "大貴",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "岡﨑_雄介_水戸白友会_茨城県",
+      "lastName": "岡﨑",
+      "firstName": "雄介",
+      "team": "水戸白友会",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "堀江_朔矢_筑波大学_茨城県",
+      "lastName": "堀江",
+      "firstName": "朔矢",
+      "team": "筑波大学",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "藤塚_琉来_T-bonds_茨城県",
+      "lastName": "藤塚",
+      "firstName": "琉来",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "淀川_大成_霞ヶ浦高校_茨城県",
+      "lastName": "淀川",
+      "firstName": "大成",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "小島_大佑_筑西クラブ_茨城県",
+      "lastName": "小島",
+      "firstName": "大佑",
+      "team": "筑西クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "櫻田_啓介_プロテリアル_茨城県",
+      "lastName": "櫻田",
+      "firstName": "啓介",
+      "team": "プロテリアル",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "篠原_多喜_O.T.B._茨城県",
+      "lastName": "篠原",
+      "firstName": "多喜",
+      "team": "O.T.B.",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "菊悠_斗_古澤クラブ_茨城県",
+      "lastName": "菊悠",
+      "firstName": "斗",
+      "team": "古澤クラブ",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "飯田_陽之助_霞ヶ浦高校_茨城県",
+      "lastName": "飯田",
+      "firstName": "陽之助",
+      "team": "霞ヶ浦高校",
+      "prefecture": "茨城県"
+    },
+    {
+      "id": "吉久保_太晴_T-bonds_茨城県",
+      "lastName": "吉久保",
+      "firstName": "太晴",
+      "team": "T-bonds",
+      "prefecture": "茨城県"
+    }
   ],
   "entries": [
-    {"entryNo":1,"playerIds":["田村_律_茨城県教職員ソフトテニスクラブ_茨城県"],"type":"seed"},
-    {"entryNo":2,"playerIds":["小林_和聖_O.T.B._茨城県"],"type":"packing"},
-    {"entryNo":3,"playerIds":["舟川_和斗_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":4,"playerIds":["岡野_湧貴_古河クラブ_茨城県"],"type":"extra"},
-    {"entryNo":5,"playerIds":["井橋_篤紀_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":6,"playerIds":["田中_祐太郎_プロテリアル_茨城県"],"type":"extra"},
-    {"entryNo":7,"playerIds":["秋野_紘士_境高校_茨城県"],"type":"extra"},
-    {"entryNo":8,"playerIds":["塩谷_駿_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":9,"playerIds":["永田_隼也_筑西クラブ_茨城県"],"type":"packing"},
-    {"entryNo":10,"playerIds":["白川_隼平_霞ヶ浦高校_茨城県"],"type":"seed"},
-    {"entryNo":11,"playerIds":["長岡_拓実_ＰＰＣ_茨城県"],"type":"seed"},
-    {"entryNo":12,"playerIds":["慶野_玖向_常磐大学高校_茨城県"],"type":"packing"},
-    {"entryNo":13,"playerIds":["秦野_拓登_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":14,"playerIds":["後藤_諒馬_筑西クラブ_茨城県"],"type":"extra"},
-    {"entryNo":15,"playerIds":["小栁_有輝_土浦ソフトテニスクラブ_茨城県"],"type":"extra"},
-    {"entryNo":16,"playerIds":["堀_ひかる_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":17,"playerIds":["早坂_恒嬉_筑西クラブ_茨城県"],"type":"extra"},
-    {"entryNo":18,"playerIds":["小久保_樹_岩瀬日本大学高校_茨城県"],"type":"packing"},
-    {"entryNo":19,"playerIds":["入江_優志_T-bonds_茨城県"],"type":"packing"},
-    {"entryNo":20,"playerIds":["深野_尚矢_プロテリアル_茨城県"],"type":"seed"},
-    {"entryNo":21,"playerIds":["武藤_晴飛_T-bonds_茨城県"],"type":"seed"},
-    {"entryNo":22,"playerIds":["小林_僚太_茨城県教職員ソフトテニスクラブ_茨城県"],"type":"packing"},
-    {"entryNo":23,"playerIds":["園部_練也_水戸桜ノ牧高校_茨城県"],"type":"packing"},
-    {"entryNo":24,"playerIds":["楢畑_陽大_筑波大学_茨城県"],"type":"extra"},
-    {"entryNo":25,"playerIds":["高橋_良輔_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":26,"playerIds":["佐々木_陽向_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":27,"playerIds":["八木澤_望_日立はくあ_茨城県"],"type":"extra"},
-    {"entryNo":28,"playerIds":["堀口_一_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":29,"playerIds":["石島_歩_筑西クラブ_茨城県"],"type":"packing"},
-    {"entryNo":30,"playerIds":["渡邉_仁_プロテリアル_茨城県"],"type":"seed"},
-    {"entryNo":31,"playerIds":["清水_直紀_古河クラブ_茨城県"],"type":"seed"},
-    {"entryNo":32,"playerIds":["堤友_星_古澤クラブ_茨城県"],"type":"packing"},
-    {"entryNo":33,"playerIds":["吉井_翼_霞ヶ浦高校_茨城県"],"type":"packing"},
-    {"entryNo":34,"playerIds":["坂田_知己_T-bonds_茨城県"],"type":"extra"},
-    {"entryNo":35,"playerIds":["村端_良太_筑西クラブ_茨城県"],"type":"extra"},
-    {"entryNo":36,"playerIds":["小杉_咲人_筑波大学_茨城県"],"type":"extra"},
-    {"entryNo":37,"playerIds":["石川_将_ＭＩＬＤ_茨城県"],"type":"extra"},
-    {"entryNo":38,"playerIds":["三橋_渉_プロテリアル_茨城県"],"type":"packing"},
-    {"entryNo":39,"playerIds":["若林_土野_翼翼クラブ_茨城県"],"type":"packing"},
-    {"entryNo":40,"playerIds":["善福_留生_霞ヶ浦高校_茨城県"],"type":"seed"},
-    {"entryNo":41,"playerIds":["酒井_光生_プロテリアル_茨城県"],"type":"seed"},
-    {"entryNo":42,"playerIds":["塩谷_佳司_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":43,"playerIds":["梅田_賢吾_山王クラブ_茨城県"],"type":"packing"},
-    {"entryNo":44,"playerIds":["岡野_拓也_古河クラブ_茨城県"],"type":"extra"},
-    {"entryNo":45,"playerIds":["石橋_達希_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":46,"playerIds":["飯田_陸斗_筑西クラブ_茨城県"],"type":"extra"},
-    {"entryNo":47,"playerIds":["大部_輝理_T-bonds_茨城県"],"type":"extra"},
-    {"entryNo":48,"playerIds":["大久保_俊貴_岩瀬日本大学高校_茨城県"],"type":"packing"},
-    {"entryNo":49,"playerIds":["サンロレンゾ_ジロ_古澤クラブ_茨城県"],"type":"packing"},
-    {"entryNo":50,"playerIds":["菊池_健_常磐大学高校_茨城県"],"type":"seed"},
-    {"entryNo":51,"playerIds":["小室_玲雄_T-bonds_茨城県"],"type":"seed"},
-    {"entryNo":52,"playerIds":["中里_祐基_古河クラブ_茨城県"],"type":"packing"},
-    {"entryNo":53,"playerIds":["野村_優翔_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":54,"playerIds":["中山_拓祕_土浦ソフトテニスクラブ_茨城県"],"type":"extra"},
-    {"entryNo":55,"playerIds":["桐山_浩輔_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":56,"playerIds":["冨田_朝陽_プロテリアル_茨城県"],"type":"extra"},
-    {"entryNo":57,"playerIds":["塚原_拓也_筑西クラブ_茨城県"],"type":"extra"},
-    {"entryNo":58,"playerIds":["浅見_孔明_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":59,"playerIds":["堀越_隆太_翼翼クラブ_茨城県"],"type":"packing"},
-    {"entryNo":60,"playerIds":["髙嶋_雅弥_霞ヶ浦高校_茨城県"],"type":"seed"},
-    {"entryNo":61,"playerIds":["山口_和晃_茨城県教職員ソフトテニスクラブ_茨城県"],"type":"seed"},
-    {"entryNo":62,"playerIds":["菅原_壮真_水戸桜ノ牧高校_茨城県"],"type":"packing"},
-    {"entryNo":63,"playerIds":["直井_勝紀_筑西クラブ_茨城県"],"type":"packing"},
-    {"entryNo":64,"playerIds":["岡﨑_雄介_水戸白友会_茨城県"],"type":"extra"},
-    {"entryNo":65,"playerIds":["齋藤_大貴_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":66,"playerIds":["藤塚_琉来_T-bonds_茨城県"],"type":"extra"},
-    {"entryNo":67,"playerIds":["堀江_朔矢_筑波大学_茨城県"],"type":"extra"},
-    {"entryNo":68,"playerIds":["川上_駿_境高校_茨城県"],"type":"packing"},
-    {"entryNo":69,"playerIds":["坂入_裕次朗_筑西クラブ_茨城県"],"type":"packing"},
-    {"entryNo":70,"playerIds":["淀川_大成_霞ヶ浦高校_茨城県"],"type":"seed"},
-    {"entryNo":71,"playerIds":["小島_大佑_筑西クラブ_茨城県"],"type":"seed"},
-    {"entryNo":72,"playerIds":["山田_祐樹_古河クラブ_茨城県"],"type":"packing"},
-    {"entryNo":73,"playerIds":["河住_昌悟_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":74,"playerIds":["篠原_多喜_O.T.B._茨城県"],"type":"extra"},
-    {"entryNo":75,"playerIds":["櫻田_啓介_プロテリアル_茨城県"],"type":"extra"},
-    {"entryNo":76,"playerIds":["飯田_陽之助_霞ヶ浦高校_茨城県"],"type":"extra"},
-    {"entryNo":77,"playerIds":["菊悠_斗_古澤クラブ_茨城県"],"type":"extra"},
-    {"entryNo":78,"playerIds":["久下沼_竜真_筑波大学_茨城県"],"type":"packing"},
-    {"entryNo":79,"playerIds":["五十嵐_祐樹_友部クラブ_茨城県"],"type":"packing"},
-    {"entryNo":80,"playerIds":["吉久保_太晴_T-bonds_茨城県"],"type":"seed"}
+    {
+      "entryNo": 1,
+      "playerIds": ["田村_律_茨城県教職員ソフトテニスクラブ_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 2,
+      "playerIds": ["小林_和聖_O.T.B._茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 3,
+      "playerIds": ["舟川_和斗_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 4,
+      "playerIds": ["岡野_湧貴_古河クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 5,
+      "playerIds": ["井橋_篤紀_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 6,
+      "playerIds": ["田中_祐太郎_プロテリアル_茨城県"],
+      "type": "extra"
+    },
+    { "entryNo": 7, "playerIds": ["秋野_紘士_境高校_茨城県"], "type": "extra" },
+    {
+      "entryNo": 8,
+      "playerIds": ["塩谷_駿_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 9,
+      "playerIds": ["永田_隼也_筑西クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 10,
+      "playerIds": ["白川_隼平_霞ヶ浦高校_茨城県"],
+      "type": "seed"
+    },
+    { "entryNo": 11, "playerIds": ["長岡_拓実_ＰＰＣ_茨城県"], "type": "seed" },
+    {
+      "entryNo": 12,
+      "playerIds": ["慶野_玖向_常磐大学高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 13,
+      "playerIds": ["秦野_拓登_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 14,
+      "playerIds": ["後藤_諒馬_筑西クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 15,
+      "playerIds": ["小栁_有輝_土浦ソフトテニスクラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 16,
+      "playerIds": ["堀_ひかる_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 17,
+      "playerIds": ["早坂_恒嬉_筑西クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 18,
+      "playerIds": ["小久保_樹_岩瀬日本大学高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 19,
+      "playerIds": ["入江_優志_T-bonds_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 20,
+      "playerIds": ["深野_尚矢_プロテリアル_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 21,
+      "playerIds": ["武藤_晴飛_T-bonds_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 22,
+      "playerIds": ["小林_僚太_茨城県教職員ソフトテニスクラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 23,
+      "playerIds": ["園部_練也_水戸桜ノ牧高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 24,
+      "playerIds": ["楢畑_陽大_筑波大学_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 25,
+      "playerIds": ["高橋_良輔_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 26,
+      "playerIds": ["佐々木_陽向_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 27,
+      "playerIds": ["八木澤_望_日立はくあ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 28,
+      "playerIds": ["堀口_一_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 29,
+      "playerIds": ["石島_歩_筑西クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 30,
+      "playerIds": ["渡邉_仁_プロテリアル_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 31,
+      "playerIds": ["清水_直紀_古河クラブ_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 32,
+      "playerIds": ["堤友_星_古澤クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 33,
+      "playerIds": ["吉井_翼_霞ヶ浦高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 34,
+      "playerIds": ["坂田_知己_T-bonds_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 35,
+      "playerIds": ["村端_良太_筑西クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 36,
+      "playerIds": ["小杉_咲人_筑波大学_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 37,
+      "playerIds": ["石川_将_ＭＩＬＤ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 38,
+      "playerIds": ["三橋_渉_プロテリアル_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 39,
+      "playerIds": ["若林_土野_翼翼クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 40,
+      "playerIds": ["善福_留生_霞ヶ浦高校_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 41,
+      "playerIds": ["酒井_光生_プロテリアル_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 42,
+      "playerIds": ["塩谷_佳司_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 43,
+      "playerIds": ["梅田_賢吾_山王クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 44,
+      "playerIds": ["岡野_拓也_古河クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 45,
+      "playerIds": ["石橋_達希_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 46,
+      "playerIds": ["飯田_陸斗_筑西クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 47,
+      "playerIds": ["大部_輝理_T-bonds_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 48,
+      "playerIds": ["大久保_俊貴_岩瀬日本大学高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 49,
+      "playerIds": ["サンロレンゾ_ジロ_古澤クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 50,
+      "playerIds": ["菊池_健_常磐大学高校_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 51,
+      "playerIds": ["小室_玲雄_T-bonds_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 52,
+      "playerIds": ["中里_祐基_古河クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 53,
+      "playerIds": ["野村_優翔_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 54,
+      "playerIds": ["中山_拓祕_土浦ソフトテニスクラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 55,
+      "playerIds": ["桐山_浩輔_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 56,
+      "playerIds": ["冨田_朝陽_プロテリアル_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 57,
+      "playerIds": ["塚原_拓也_筑西クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 58,
+      "playerIds": ["浅見_孔明_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 59,
+      "playerIds": ["堀越_隆太_翼翼クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 60,
+      "playerIds": ["髙嶋_雅弥_霞ヶ浦高校_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 61,
+      "playerIds": ["山口_和晃_茨城県教職員ソフトテニスクラブ_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 62,
+      "playerIds": ["菅原_壮真_水戸桜ノ牧高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 63,
+      "playerIds": ["直井_勝紀_筑西クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 64,
+      "playerIds": ["岡﨑_雄介_水戸白友会_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 65,
+      "playerIds": ["齋藤_大貴_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 66,
+      "playerIds": ["藤塚_琉来_T-bonds_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 67,
+      "playerIds": ["堀江_朔矢_筑波大学_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 68,
+      "playerIds": ["川上_駿_境高校_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 69,
+      "playerIds": ["坂入_裕次朗_筑西クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 70,
+      "playerIds": ["淀川_大成_霞ヶ浦高校_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 71,
+      "playerIds": ["小島_大佑_筑西クラブ_茨城県"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 72,
+      "playerIds": ["山田_祐樹_古河クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 73,
+      "playerIds": ["河住_昌悟_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 74,
+      "playerIds": ["篠原_多喜_O.T.B._茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 75,
+      "playerIds": ["櫻田_啓介_プロテリアル_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 76,
+      "playerIds": ["飯田_陽之助_霞ヶ浦高校_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 77,
+      "playerIds": ["菊悠_斗_古澤クラブ_茨城県"],
+      "type": "extra"
+    },
+    {
+      "entryNo": 78,
+      "playerIds": ["久下沼_竜真_筑波大学_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 79,
+      "playerIds": ["五十嵐_祐樹_友部クラブ_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 80,
+      "playerIds": ["吉久保_太晴_T-bonds_茨城県"],
+      "type": "seed"
+    }
   ],
   "matches": [
     {
-      "entries": [2,3],
-      "scores": {"2":2,"3":4},
+      "entries": [2, 3],
+      "scores": { "2": 2, "3": 4 },
       "round": "1回戦",
       "winnerEntryNo": 3,
       "retired": false,
@@ -178,8 +970,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [8,9],
-      "scores": {"8":4,"9":3},
+      "entries": [8, 9],
+      "scores": { "8": 4, "9": 3 },
       "round": "1回戦",
       "winnerEntryNo": 8,
       "retired": false,
@@ -191,8 +983,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [12,13],
-      "scores": {"12":4,"13":1},
+      "entries": [12, 13],
+      "scores": { "12": 4, "13": 1 },
       "round": "1回戦",
       "winnerEntryNo": 12,
       "retired": false,
@@ -204,8 +996,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [18,19],
-      "scores": {"18":4,"19":2},
+      "entries": [18, 19],
+      "scores": { "18": 4, "19": 2 },
       "round": "1回戦",
       "winnerEntryNo": 18,
       "retired": false,
@@ -217,8 +1009,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [22,23],
-      "scores": {"22":4,"23":0},
+      "entries": [22, 23],
+      "scores": { "22": 4, "23": 0 },
       "round": "1回戦",
       "winnerEntryNo": 22,
       "retired": false,
@@ -230,8 +1022,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [28,29],
-      "scores": {"28":3,"29":4},
+      "entries": [28, 29],
+      "scores": { "28": 3, "29": 4 },
       "round": "1回戦",
       "winnerEntryNo": 29,
       "retired": false,
@@ -243,8 +1035,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [32,33],
-      "scores": {"32":0,"33":4},
+      "entries": [32, 33],
+      "scores": { "32": 0, "33": 4 },
       "round": "1回戦",
       "winnerEntryNo": 33,
       "retired": false,
@@ -256,8 +1048,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [38,39],
-      "scores": {"38":0,"39":4},
+      "entries": [38, 39],
+      "scores": { "38": 0, "39": 4 },
       "round": "1回戦",
       "winnerEntryNo": 39,
       "retired": true,
@@ -269,8 +1061,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [42,43],
-      "scores": {"42":4,"43":2},
+      "entries": [42, 43],
+      "scores": { "42": 4, "43": 2 },
       "round": "1回戦",
       "winnerEntryNo": 42,
       "retired": false,
@@ -282,8 +1074,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [48,49],
-      "scores": {"48":4,"49":0},
+      "entries": [48, 49],
+      "scores": { "48": 4, "49": 0 },
       "round": "1回戦",
       "winnerEntryNo": 48,
       "retired": false,
@@ -295,8 +1087,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [52,53],
-      "scores": {"52":1,"53":4},
+      "entries": [52, 53],
+      "scores": { "52": 1, "53": 4 },
       "round": "1回戦",
       "winnerEntryNo": 53,
       "retired": false,
@@ -308,8 +1100,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [58,59],
-      "scores": {"58":0,"59":4},
+      "entries": [58, 59],
+      "scores": { "58": 0, "59": 4 },
       "round": "1回戦",
       "winnerEntryNo": 59,
       "retired": true,
@@ -321,8 +1113,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [62,63],
-      "scores": {"62":2,"63":4},
+      "entries": [62, 63],
+      "scores": { "62": 2, "63": 4 },
       "round": "1回戦",
       "winnerEntryNo": 63,
       "retired": false,
@@ -334,8 +1126,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [68,69],
-      "scores": {"68":4,"69":3},
+      "entries": [68, 69],
+      "scores": { "68": 4, "69": 3 },
       "round": "1回戦",
       "winnerEntryNo": 68,
       "retired": false,
@@ -347,8 +1139,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [72,73],
-      "scores": {"72":3,"73":4},
+      "entries": [72, 73],
+      "scores": { "72": 3, "73": 4 },
       "round": "1回戦",
       "winnerEntryNo": 73,
       "retired": false,
@@ -360,8 +1152,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [78,79],
-      "scores": {"78":0,"79":4},
+      "entries": [78, 79],
+      "scores": { "78": 0, "79": 4 },
       "round": "1回戦",
       "winnerEntryNo": 79,
       "retired": false,
@@ -373,8 +1165,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [1,3],
-      "scores": {"1":4,"3":1},
+      "entries": [1, 3],
+      "scores": { "1": 4, "3": 1 },
       "round": "2回戦",
       "winnerEntryNo": 1,
       "retired": false,
@@ -386,8 +1178,8 @@
       "prevMatchId": "match-1"
     },
     {
-      "entries": [4,5],
-      "scores": {"4":4,"5":2},
+      "entries": [4, 5],
+      "scores": { "4": 4, "5": 2 },
       "round": "2回戦",
       "winnerEntryNo": 4,
       "retired": false,
@@ -399,8 +1191,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [6,7],
-      "scores": {"6":4,"7":1},
+      "entries": [6, 7],
+      "scores": { "6": 4, "7": 1 },
       "round": "2回戦",
       "winnerEntryNo": 6,
       "retired": false,
@@ -412,8 +1204,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [8,10],
-      "scores": {"8":0,"10":4},
+      "entries": [8, 10],
+      "scores": { "8": 0, "10": 4 },
       "round": "2回戦",
       "winnerEntryNo": 10,
       "retired": false,
@@ -425,8 +1217,8 @@
       "prevMatchId": "match-2"
     },
     {
-      "entries": [11,12],
-      "scores": {"11":2,"12":4},
+      "entries": [11, 12],
+      "scores": { "11": 2, "12": 4 },
       "round": "2回戦",
       "winnerEntryNo": 12,
       "retired": false,
@@ -438,8 +1230,8 @@
       "prevMatchId": "match-3"
     },
     {
-      "entries": [14,15],
-      "scores": {"14":1,"15":4},
+      "entries": [14, 15],
+      "scores": { "14": 1, "15": 4 },
       "round": "2回戦",
       "winnerEntryNo": 15,
       "retired": false,
@@ -451,8 +1243,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [16,17],
-      "scores": {"16":4,"17":2},
+      "entries": [16, 17],
+      "scores": { "16": 4, "17": 2 },
       "round": "2回戦",
       "winnerEntryNo": 16,
       "retired": false,
@@ -464,8 +1256,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [18,20],
-      "scores": {"18":1,"20":4},
+      "entries": [18, 20],
+      "scores": { "18": 1, "20": 4 },
       "round": "2回戦",
       "winnerEntryNo": 20,
       "retired": false,
@@ -477,8 +1269,8 @@
       "prevMatchId": "match-4"
     },
     {
-      "entries": [21,22],
-      "scores": {"21":4,"22":0},
+      "entries": [21, 22],
+      "scores": { "21": 4, "22": 0 },
       "round": "2回戦",
       "winnerEntryNo": 21,
       "retired": false,
@@ -490,8 +1282,8 @@
       "prevMatchId": "match-5"
     },
     {
-      "entries": [24,25],
-      "scores": {"24":3,"25":4},
+      "entries": [24, 25],
+      "scores": { "24": 3, "25": 4 },
       "round": "2回戦",
       "winnerEntryNo": 25,
       "retired": false,
@@ -503,8 +1295,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [26,27],
-      "scores": {"26":4,"27":0},
+      "entries": [26, 27],
+      "scores": { "26": 4, "27": 0 },
       "round": "2回戦",
       "winnerEntryNo": 26,
       "retired": false,
@@ -516,8 +1308,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [29,30],
-      "scores": {"29":2,"30":4},
+      "entries": [29, 30],
+      "scores": { "29": 2, "30": 4 },
       "round": "2回戦",
       "winnerEntryNo": 30,
       "retired": false,
@@ -529,8 +1321,8 @@
       "prevMatchId": "match-6"
     },
     {
-      "entries": [31,33],
-      "scores": {"31":3,"33":4},
+      "entries": [31, 33],
+      "scores": { "31": 3, "33": 4 },
       "round": "2回戦",
       "winnerEntryNo": 33,
       "retired": false,
@@ -542,8 +1334,8 @@
       "prevMatchId": "match-7"
     },
     {
-      "entries": [34,35],
-      "scores": {"34":2,"35":4},
+      "entries": [34, 35],
+      "scores": { "34": 2, "35": 4 },
       "round": "2回戦",
       "winnerEntryNo": 35,
       "retired": false,
@@ -555,8 +1347,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [36,37],
-      "scores": {"36":4,"37":2},
+      "entries": [36, 37],
+      "scores": { "36": 4, "37": 2 },
       "round": "2回戦",
       "winnerEntryNo": 36,
       "retired": false,
@@ -568,8 +1360,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [39,40],
-      "scores": {"39":0,"40":4},
+      "entries": [39, 40],
+      "scores": { "39": 0, "40": 4 },
       "round": "2回戦",
       "winnerEntryNo": 40,
       "retired": true,
@@ -581,8 +1373,8 @@
       "prevMatchId": "match-8"
     },
     {
-      "entries": [41,42],
-      "scores": {"41":4,"42":0},
+      "entries": [41, 42],
+      "scores": { "41": 4, "42": 0 },
       "round": "2回戦",
       "winnerEntryNo": 41,
       "retired": false,
@@ -594,8 +1386,8 @@
       "prevMatchId": "match-9"
     },
     {
-      "entries": [44,45],
-      "scores": {"44":0,"45":4},
+      "entries": [44, 45],
+      "scores": { "44": 0, "45": 4 },
       "round": "2回戦",
       "winnerEntryNo": 45,
       "retired": false,
@@ -607,8 +1399,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [46,47],
-      "scores": {"46":4,"47":0},
+      "entries": [46, 47],
+      "scores": { "46": 4, "47": 0 },
       "round": "2回戦",
       "winnerEntryNo": 46,
       "retired": false,
@@ -620,8 +1412,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [48,50],
-      "scores": {"48":4,"50":0},
+      "entries": [48, 50],
+      "scores": { "48": 4, "50": 0 },
       "round": "2回戦",
       "winnerEntryNo": 48,
       "retired": false,
@@ -633,8 +1425,8 @@
       "prevMatchId": "match-10"
     },
     {
-      "entries": [51,53],
-      "scores": {"51":4,"53":3},
+      "entries": [51, 53],
+      "scores": { "51": 4, "53": 3 },
       "round": "2回戦",
       "winnerEntryNo": 51,
       "retired": false,
@@ -646,8 +1438,8 @@
       "prevMatchId": "match-11"
     },
     {
-      "entries": [54,55],
-      "scores": {"54":4,"55":1},
+      "entries": [54, 55],
+      "scores": { "54": 4, "55": 1 },
       "round": "2回戦",
       "winnerEntryNo": 54,
       "retired": false,
@@ -659,8 +1451,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [56,57],
-      "scores": {"56":0,"57":4},
+      "entries": [56, 57],
+      "scores": { "56": 0, "57": 4 },
       "round": "2回戦",
       "winnerEntryNo": 57,
       "retired": true,
@@ -672,8 +1464,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [59,60],
-      "scores": {"59":0,"60":4},
+      "entries": [59, 60],
+      "scores": { "59": 0, "60": 4 },
       "round": "2回戦",
       "winnerEntryNo": 60,
       "retired": false,
@@ -685,8 +1477,8 @@
       "prevMatchId": "match-12"
     },
     {
-      "entries": [61,63],
-      "scores": {"61":4,"63":1},
+      "entries": [61, 63],
+      "scores": { "61": 4, "63": 1 },
       "round": "2回戦",
       "winnerEntryNo": 61,
       "retired": false,
@@ -698,8 +1490,8 @@
       "prevMatchId": "match-13"
     },
     {
-      "entries": [64,65],
-      "scores": {"64":0,"65":4},
+      "entries": [64, 65],
+      "scores": { "64": 0, "65": 4 },
       "round": "2回戦",
       "winnerEntryNo": 65,
       "retired": false,
@@ -711,8 +1503,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [66,67],
-      "scores": {"66":4,"67":0},
+      "entries": [66, 67],
+      "scores": { "66": 4, "67": 0 },
       "round": "2回戦",
       "winnerEntryNo": 66,
       "retired": true,
@@ -724,8 +1516,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [68,70],
-      "scores": {"68":0,"70":4},
+      "entries": [68, 70],
+      "scores": { "68": 0, "70": 4 },
       "round": "2回戦",
       "winnerEntryNo": 70,
       "retired": false,
@@ -737,8 +1529,8 @@
       "prevMatchId": "match-14"
     },
     {
-      "entries": [71,73],
-      "scores": {"71":4,"73":3},
+      "entries": [71, 73],
+      "scores": { "71": 4, "73": 3 },
       "round": "2回戦",
       "winnerEntryNo": 71,
       "retired": false,
@@ -750,8 +1542,8 @@
       "prevMatchId": "match-15"
     },
     {
-      "entries": [74,75],
-      "scores": {"74":0,"75":4},
+      "entries": [74, 75],
+      "scores": { "74": 0, "75": 4 },
       "round": "2回戦",
       "winnerEntryNo": 75,
       "retired": false,
@@ -763,8 +1555,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [76,77],
-      "scores": {"76":4,"77":1},
+      "entries": [76, 77],
+      "scores": { "76": 4, "77": 1 },
       "round": "2回戦",
       "winnerEntryNo": 76,
       "retired": false,
@@ -776,8 +1568,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [79,80],
-      "scores": {"79":1,"80":4},
+      "entries": [79, 80],
+      "scores": { "79": 1, "80": 4 },
       "round": "2回戦",
       "winnerEntryNo": 80,
       "retired": false,
@@ -789,8 +1581,8 @@
       "prevMatchId": "match-16"
     },
     {
-      "entries": [1,4],
-      "scores": {"1":4,"4":0},
+      "entries": [1, 4],
+      "scores": { "1": 4, "4": 0 },
       "round": "3回戦",
       "winnerEntryNo": 1,
       "retired": false,
@@ -798,12 +1590,12 @@
       "group": null,
       "matchId": "match-49",
       "nextMatchId": "match-65",
-      "prevMatchIds": ["match-17","match-18"],
+      "prevMatchIds": ["match-17", "match-18"],
       "prevMatchId": null
     },
     {
-      "entries": [6,10],
-      "scores": {"6":4,"10":0},
+      "entries": [6, 10],
+      "scores": { "6": 4, "10": 0 },
       "round": "3回戦",
       "winnerEntryNo": 6,
       "retired": false,
@@ -811,12 +1603,12 @@
       "group": null,
       "matchId": "match-50",
       "nextMatchId": "match-65",
-      "prevMatchIds": ["match-19","match-20"],
+      "prevMatchIds": ["match-19", "match-20"],
       "prevMatchId": null
     },
     {
-      "entries": [12,15],
-      "scores": {"12":1,"15":4},
+      "entries": [12, 15],
+      "scores": { "12": 1, "15": 4 },
       "round": "3回戦",
       "winnerEntryNo": 15,
       "retired": false,
@@ -824,12 +1616,12 @@
       "group": null,
       "matchId": "match-51",
       "nextMatchId": "match-66",
-      "prevMatchIds": ["match-21","match-22"],
+      "prevMatchIds": ["match-21", "match-22"],
       "prevMatchId": null
     },
     {
-      "entries": [16,20],
-      "scores": {"16":1,"20":4},
+      "entries": [16, 20],
+      "scores": { "16": 1, "20": 4 },
       "round": "3回戦",
       "winnerEntryNo": 20,
       "retired": false,
@@ -837,12 +1629,12 @@
       "group": null,
       "matchId": "match-52",
       "nextMatchId": "match-66",
-      "prevMatchIds": ["match-23","match-24"],
+      "prevMatchIds": ["match-23", "match-24"],
       "prevMatchId": null
     },
     {
-      "entries": [21,25],
-      "scores": {"21":4,"25":1},
+      "entries": [21, 25],
+      "scores": { "21": 4, "25": 1 },
       "round": "3回戦",
       "winnerEntryNo": 21,
       "retired": false,
@@ -850,12 +1642,12 @@
       "group": null,
       "matchId": "match-53",
       "nextMatchId": "match-67",
-      "prevMatchIds": ["match-25","match-26"],
+      "prevMatchIds": ["match-25", "match-26"],
       "prevMatchId": null
     },
     {
-      "entries": [26,30],
-      "scores": {"26":4,"30":1},
+      "entries": [26, 30],
+      "scores": { "26": 4, "30": 1 },
       "round": "3回戦",
       "winnerEntryNo": 26,
       "retired": false,
@@ -863,12 +1655,12 @@
       "group": null,
       "matchId": "match-54",
       "nextMatchId": "match-67",
-      "prevMatchIds": ["match-27","match-28"],
+      "prevMatchIds": ["match-27", "match-28"],
       "prevMatchId": null
     },
     {
-      "entries": [33,35],
-      "scores": {"33":4,"35":0},
+      "entries": [33, 35],
+      "scores": { "33": 4, "35": 0 },
       "round": "3回戦",
       "winnerEntryNo": 33,
       "retired": false,
@@ -876,12 +1668,12 @@
       "group": null,
       "matchId": "match-55",
       "nextMatchId": "match-68",
-      "prevMatchIds": ["match-29","match-30"],
+      "prevMatchIds": ["match-29", "match-30"],
       "prevMatchId": null
     },
     {
-      "entries": [36,40],
-      "scores": {"36":1,"40":4},
+      "entries": [36, 40],
+      "scores": { "36": 1, "40": 4 },
       "round": "3回戦",
       "winnerEntryNo": 40,
       "retired": false,
@@ -889,12 +1681,12 @@
       "group": null,
       "matchId": "match-56",
       "nextMatchId": "match-68",
-      "prevMatchIds": ["match-31","match-32"],
+      "prevMatchIds": ["match-31", "match-32"],
       "prevMatchId": null
     },
     {
-      "entries": [41,45],
-      "scores": {"41":4,"45":0},
+      "entries": [41, 45],
+      "scores": { "41": 4, "45": 0 },
       "round": "3回戦",
       "winnerEntryNo": 41,
       "retired": false,
@@ -902,12 +1694,12 @@
       "group": null,
       "matchId": "match-57",
       "nextMatchId": "match-69",
-      "prevMatchIds": ["match-33","match-34"],
+      "prevMatchIds": ["match-33", "match-34"],
       "prevMatchId": null
     },
     {
-      "entries": [46,48],
-      "scores": {"46":2,"48":4},
+      "entries": [46, 48],
+      "scores": { "46": 2, "48": 4 },
       "round": "3回戦",
       "winnerEntryNo": 48,
       "retired": false,
@@ -915,12 +1707,12 @@
       "group": null,
       "matchId": "match-58",
       "nextMatchId": "match-69",
-      "prevMatchIds": ["match-35","match-36"],
+      "prevMatchIds": ["match-35", "match-36"],
       "prevMatchId": null
     },
     {
-      "entries": [51,54],
-      "scores": {"51":4,"54":2},
+      "entries": [51, 54],
+      "scores": { "51": 4, "54": 2 },
       "round": "3回戦",
       "winnerEntryNo": 51,
       "retired": false,
@@ -928,12 +1720,12 @@
       "group": null,
       "matchId": "match-59",
       "nextMatchId": "match-70",
-      "prevMatchIds": ["match-37","match-38"],
+      "prevMatchIds": ["match-37", "match-38"],
       "prevMatchId": null
     },
     {
-      "entries": [57,60],
-      "scores": {"57":0,"60":4},
+      "entries": [57, 60],
+      "scores": { "57": 0, "60": 4 },
       "round": "3回戦",
       "winnerEntryNo": 60,
       "retired": false,
@@ -941,12 +1733,12 @@
       "group": null,
       "matchId": "match-60",
       "nextMatchId": "match-70",
-      "prevMatchIds": ["match-39","match-40"],
+      "prevMatchIds": ["match-39", "match-40"],
       "prevMatchId": null
     },
     {
-      "entries": [61,65],
-      "scores": {"61":3,"65":4},
+      "entries": [61, 65],
+      "scores": { "61": 3, "65": 4 },
       "round": "3回戦",
       "winnerEntryNo": 65,
       "retired": false,
@@ -954,12 +1746,12 @@
       "group": null,
       "matchId": "match-61",
       "nextMatchId": "match-71",
-      "prevMatchIds": ["match-41","match-42"],
+      "prevMatchIds": ["match-41", "match-42"],
       "prevMatchId": null
     },
     {
-      "entries": [66,70],
-      "scores": {"66":3,"70":4},
+      "entries": [66, 70],
+      "scores": { "66": 3, "70": 4 },
       "round": "3回戦",
       "winnerEntryNo": 70,
       "retired": false,
@@ -967,12 +1759,12 @@
       "group": null,
       "matchId": "match-62",
       "nextMatchId": "match-71",
-      "prevMatchIds": ["match-43","match-44"],
+      "prevMatchIds": ["match-43", "match-44"],
       "prevMatchId": null
     },
     {
-      "entries": [71,75],
-      "scores": {"71":4,"75":1},
+      "entries": [71, 75],
+      "scores": { "71": 4, "75": 1 },
       "round": "3回戦",
       "winnerEntryNo": 71,
       "retired": false,
@@ -980,12 +1772,12 @@
       "group": null,
       "matchId": "match-63",
       "nextMatchId": "match-72",
-      "prevMatchIds": ["match-45","match-46"],
+      "prevMatchIds": ["match-45", "match-46"],
       "prevMatchId": null
     },
     {
-      "entries": [76,80],
-      "scores": {"76":0,"80":4},
+      "entries": [76, 80],
+      "scores": { "76": 0, "80": 4 },
       "round": "3回戦",
       "winnerEntryNo": 80,
       "retired": false,
@@ -993,12 +1785,12 @@
       "group": null,
       "matchId": "match-64",
       "nextMatchId": "match-72",
-      "prevMatchIds": ["match-47","match-48"],
+      "prevMatchIds": ["match-47", "match-48"],
       "prevMatchId": null
     },
     {
-      "entries": [1,6],
-      "scores": {"1":4,"6":1},
+      "entries": [1, 6],
+      "scores": { "1": 4, "6": 1 },
       "round": "4回戦",
       "winnerEntryNo": 1,
       "retired": false,
@@ -1006,12 +1798,12 @@
       "group": null,
       "matchId": "match-65",
       "nextMatchId": "match-73",
-      "prevMatchIds": ["match-49","match-50"],
+      "prevMatchIds": ["match-49", "match-50"],
       "prevMatchId": null
     },
     {
-      "entries": [15,20],
-      "scores": {"15":3,"20":4},
+      "entries": [15, 20],
+      "scores": { "15": 3, "20": 4 },
       "round": "4回戦",
       "winnerEntryNo": 20,
       "retired": false,
@@ -1019,12 +1811,12 @@
       "group": null,
       "matchId": "match-66",
       "nextMatchId": "match-73",
-      "prevMatchIds": ["match-51","match-52"],
+      "prevMatchIds": ["match-51", "match-52"],
       "prevMatchId": null
     },
     {
-      "entries": [21,26],
-      "scores": {"21":4,"26":2},
+      "entries": [21, 26],
+      "scores": { "21": 4, "26": 2 },
       "round": "4回戦",
       "winnerEntryNo": 21,
       "retired": false,
@@ -1032,12 +1824,12 @@
       "group": null,
       "matchId": "match-67",
       "nextMatchId": "match-74",
-      "prevMatchIds": ["match-53","match-54"],
+      "prevMatchIds": ["match-53", "match-54"],
       "prevMatchId": null
     },
     {
-      "entries": [33,40],
-      "scores": {"33":2,"40":4},
+      "entries": [33, 40],
+      "scores": { "33": 2, "40": 4 },
       "round": "4回戦",
       "winnerEntryNo": 40,
       "retired": false,
@@ -1045,12 +1837,12 @@
       "group": null,
       "matchId": "match-68",
       "nextMatchId": "match-74",
-      "prevMatchIds": ["match-55","match-56"],
+      "prevMatchIds": ["match-55", "match-56"],
       "prevMatchId": null
     },
     {
-      "entries": [41,48],
-      "scores": {"41":4,"48":0},
+      "entries": [41, 48],
+      "scores": { "41": 4, "48": 0 },
       "round": "4回戦",
       "winnerEntryNo": 41,
       "retired": false,
@@ -1058,12 +1850,12 @@
       "group": null,
       "matchId": "match-69",
       "nextMatchId": "match-75",
-      "prevMatchIds": ["match-57","match-58"],
+      "prevMatchIds": ["match-57", "match-58"],
       "prevMatchId": null
     },
     {
-      "entries": [51,60],
-      "scores": {"51":4,"60":3},
+      "entries": [51, 60],
+      "scores": { "51": 4, "60": 3 },
       "round": "4回戦",
       "winnerEntryNo": 51,
       "retired": false,
@@ -1071,12 +1863,12 @@
       "group": null,
       "matchId": "match-70",
       "nextMatchId": "match-75",
-      "prevMatchIds": ["match-59","match-60"],
+      "prevMatchIds": ["match-59", "match-60"],
       "prevMatchId": null
     },
     {
-      "entries": [65,70],
-      "scores": {"65":4,"70":2},
+      "entries": [65, 70],
+      "scores": { "65": 4, "70": 2 },
       "round": "4回戦",
       "winnerEntryNo": 65,
       "retired": false,
@@ -1084,12 +1876,12 @@
       "group": null,
       "matchId": "match-71",
       "nextMatchId": "match-76",
-      "prevMatchIds": ["match-61","match-62"],
+      "prevMatchIds": ["match-61", "match-62"],
       "prevMatchId": null
     },
     {
-      "entries": [71,80],
-      "scores": {"71":1,"80":4},
+      "entries": [71, 80],
+      "scores": { "71": 1, "80": 4 },
       "round": "4回戦",
       "winnerEntryNo": 80,
       "retired": false,
@@ -1097,12 +1889,12 @@
       "group": null,
       "matchId": "match-72",
       "nextMatchId": "match-76",
-      "prevMatchIds": ["match-63","match-64"],
+      "prevMatchIds": ["match-63", "match-64"],
       "prevMatchId": null
     },
     {
-      "entries": [1,20],
-      "scores": {"1":3,"20":4},
+      "entries": [1, 20],
+      "scores": { "1": 3, "20": 4 },
       "round": "準々決勝",
       "winnerEntryNo": 20,
       "retired": false,
@@ -1110,12 +1902,12 @@
       "group": null,
       "matchId": "match-73",
       "nextMatchId": "match-77",
-      "prevMatchIds": ["match-65","match-66"],
+      "prevMatchIds": ["match-65", "match-66"],
       "prevMatchId": null
     },
     {
-      "entries": [21,40],
-      "scores": {"21":2,"40":4},
+      "entries": [21, 40],
+      "scores": { "21": 2, "40": 4 },
       "round": "準々決勝",
       "winnerEntryNo": 40,
       "retired": false,
@@ -1123,12 +1915,12 @@
       "group": null,
       "matchId": "match-74",
       "nextMatchId": "match-77",
-      "prevMatchIds": ["match-67","match-68"],
+      "prevMatchIds": ["match-67", "match-68"],
       "prevMatchId": null
     },
     {
-      "entries": [41,51],
-      "scores": {"41":4,"51":0},
+      "entries": [41, 51],
+      "scores": { "41": 4, "51": 0 },
       "round": "準々決勝",
       "winnerEntryNo": 41,
       "retired": false,
@@ -1136,12 +1928,12 @@
       "group": null,
       "matchId": "match-75",
       "nextMatchId": "match-78",
-      "prevMatchIds": ["match-69","match-70"],
+      "prevMatchIds": ["match-69", "match-70"],
       "prevMatchId": null
     },
     {
-      "entries": [65,80],
-      "scores": {"65":0,"80":4},
+      "entries": [65, 80],
+      "scores": { "65": 0, "80": 4 },
       "round": "準々決勝",
       "winnerEntryNo": 80,
       "retired": false,
@@ -1149,12 +1941,12 @@
       "group": null,
       "matchId": "match-76",
       "nextMatchId": "match-78",
-      "prevMatchIds": ["match-71","match-72"],
+      "prevMatchIds": ["match-71", "match-72"],
       "prevMatchId": null
     },
     {
-      "entries": [20,40],
-      "scores": {"20":2,"40":4},
+      "entries": [20, 40],
+      "scores": { "20": 2, "40": 4 },
       "round": "準決勝",
       "winnerEntryNo": 40,
       "retired": false,
@@ -1162,12 +1954,12 @@
       "group": null,
       "matchId": "match-77",
       "nextMatchId": "match-79",
-      "prevMatchIds": ["match-73","match-74"],
+      "prevMatchIds": ["match-73", "match-74"],
       "prevMatchId": null
     },
     {
-      "entries": [41,80],
-      "scores": {"41":4,"80":2},
+      "entries": [41, 80],
+      "scores": { "41": 4, "80": 2 },
       "round": "準決勝",
       "winnerEntryNo": 41,
       "retired": false,
@@ -1175,12 +1967,12 @@
       "group": null,
       "matchId": "match-78",
       "nextMatchId": "match-79",
-      "prevMatchIds": ["match-75","match-76"],
+      "prevMatchIds": ["match-75", "match-76"],
       "prevMatchId": null
     },
     {
-      "entries": [40,41],
-      "scores": {"40":4,"41":1},
+      "entries": [40, 41],
+      "scores": { "40": 4, "41": 1 },
       "round": "決勝",
       "winnerEntryNo": 40,
       "retired": false,
@@ -1188,90 +1980,644 @@
       "group": null,
       "matchId": "match-79",
       "nextMatchId": null,
-      "prevMatchIds": ["match-77","match-78"],
+      "prevMatchIds": ["match-77", "match-78"],
       "prevMatchId": null
     }
   ],
   "results": [
-    {"entryNo":1,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":2,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":3,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":4,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":5,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":6,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":7,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":8,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":9,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":10,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":11,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":12,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":13,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":14,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":15,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":16,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":17,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":18,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":19,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":20,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":null},
-    {"entryNo":21,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":22,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":23,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":24,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":25,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":26,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":27,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":28,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":29,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":30,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":31,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":32,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":33,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":34,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":35,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":36,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":37,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":38,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":39,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":40,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":null},
-    {"entryNo":41,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":null},
-    {"entryNo":42,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":43,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":44,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":45,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":46,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":47,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":48,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":49,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":50,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":51,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":52,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":53,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":54,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":55,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":56,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":57,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":58,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":59,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":60,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":61,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":62,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":63,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":64,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":65,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":null},
-    {"entryNo":66,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":67,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":68,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":69,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":70,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":71,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
-    {"entryNo":72,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":73,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":74,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":75,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":76,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
-    {"entryNo":77,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":78,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":79,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
-    {"entryNo":80,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":null}
+    {
+      "entryNo": 1,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 2,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 3,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 4,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 5,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 6,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 7,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 8,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 9,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 10,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 11,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 12,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 13,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 14,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 15,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 16,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 17,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 18,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 19,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 20,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 21,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 22,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 23,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 24,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 25,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 26,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 27,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 28,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 29,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 30,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 31,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 32,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 33,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 34,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 35,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 36,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 37,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 38,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 39,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 40,
+      "tournament": { "label": "優勝", "rank": { "kind": "winner" } },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 41,
+      "tournament": { "label": "準優勝", "rank": { "kind": "runnerup" } },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 42,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 43,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 44,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 45,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 46,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 47,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 48,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 49,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 50,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 51,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 52,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 53,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 54,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 55,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 56,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 57,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 58,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 59,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 60,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 61,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 62,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 63,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 64,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 65,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 66,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 67,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 68,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 69,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 70,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 71,
+      "tournament": {
+        "label": "4回戦敗退",
+        "rank": { "kind": "round", "round": 4 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 72,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 73,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 74,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 75,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 76,
+      "tournament": {
+        "label": "3回戦敗退",
+        "rank": { "kind": "round", "round": 3 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 77,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 78,
+      "tournament": {
+        "label": "1回戦敗退",
+        "rank": { "kind": "round", "round": 1 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 79,
+      "tournament": {
+        "label": "2回戦敗退",
+        "rank": { "kind": "round", "round": 2 }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 80,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": null
+    }
   ]
 }

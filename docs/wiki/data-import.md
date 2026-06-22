@@ -83,7 +83,7 @@ Deprecated:
   master.py へ貼り付け可能な定数候補を出力する。
   `python3 scripts/pdf/calibrate.py <pdf> [--page N] [--gap 6]`
   ※ 各列が姓/名/チーム/エリアのどれに当たるか(意味づけ)と抽出戦略の選択は
-    レイアウト依存のため、出力値は確認のうえ手動で転記する。
+  レイアウト依存のため、出力値は確認のうえ手動で転記する。
 - `scripts/pdf/university_indoor.py`
   全日本学生選抜インドア選手権大会（内閣総理大臣杯, JSSTA）の公式結果PDFから
   `data/tournaments/details/zennihon-university-indoor/<year>/{doubles-none-boys,doubles-none-girls}.json`

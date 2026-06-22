@@ -242,7 +242,7 @@ h2 {
 
 /* フォーカス中の試合カード */
 .match-result.focused {
-  border: 3px solid #2196F3;
+  border: 3px solid #2196f3;
   box-shadow: 0 0 8px rgba(33, 150, 243, 0.5);
   background-color: #f5f9ff;
 }
@@ -287,7 +287,7 @@ h2 {
 
 .keyboard-help-panel h2 {
   margin-top: 0;
-  border-bottom: 2px solid #2196F3;
+  border-bottom: 2px solid #2196f3;
   padding-bottom: 8px;
 }
 
@@ -296,7 +296,7 @@ h2 {
 }
 
 .keyboard-help-section h3 {
-  color: #2196F3;
+  color: #2196f3;
   margin: 12px 0 8px;
   font-size: 16px;
 }
@@ -326,7 +326,7 @@ h2 {
 .keyboard-help-close {
   margin-top: 16px;
   padding: 8px 24px;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   border: none;
   border-radius: 4px;
@@ -335,7 +335,7 @@ h2 {
 }
 
 .keyboard-help-close:hover {
-  background-color: #1976D2;
+  background-color: #1976d2;
 }
 
 /* 一括パッキンモード */
@@ -344,7 +344,7 @@ h2 {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -371,7 +371,7 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  color: #2196F3;
+  color: #2196f3;
   font-weight: bold;
 }
 
@@ -392,7 +392,7 @@ h2 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   border: none;
   font-size: 24px;
@@ -405,5 +405,5 @@ h2 {
 }
 
 .keyboard-help-button:hover {
-  background-color: #1976D2;
+  background-color: #1976d2;
 }

@@ -1,37 +1,807 @@
 [
-{"id":405,"name":"今井・神蔵（大磯ジュニアテニスクラブ）","information":[{"lastName":"今井","firstName":"篤都","team":"大磯ジュニアテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"今井_篤都_大磯ジュニアテニスクラブ"},{"lastName":"神蔵","firstName":"夏樹","team":"大磯ジュニアテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"神蔵_夏樹_大磯ジュニアテニスクラブ"}],"category":"doubles"},
-{"id":410,"name":"鈴木・佐藤（ふれあいクラブジュニア）","information":[{"lastName":"鈴木","firstName":"駿之介","team":"ふれあいクラブジュニア","prefecture":"秋田県","playerId":null,"tempId":"鈴木_駿之介_ふれあいクラブジュニア"},{"lastName":"佐藤","firstName":"琉生","team":"ふれあいクラブジュニア","prefecture":"秋田県","playerId":null,"tempId":"佐藤_琉生_ふれあいクラブジュニア"}],"category":"doubles"},
-{"id":414,"name":"内田・田﨑（ＫＳＴＣ）","information":[{"lastName":"内田","firstName":"悠哉","team":"ＫＳＴＣ","prefecture":"秋田県","playerId":null,"tempId":"内田_悠哉_ＫＳＴＣ"},{"lastName":"田﨑","firstName":"心都","team":"尾鷲ソフトテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"田﨑_心都_尾鷲ソフトテニススポーツ少年団"}],"category":"doubles"},
-{"id":418,"name":"高松・高桑（庄川ソフトテニス少年団）","information":[{"lastName":"高松","firstName":"稜","team":"庄川ソフトテニス少年団","prefecture":"秋田県","playerId":null,"tempId":"高松_稜_庄川ソフトテニス少年団"},{"lastName":"高桑","firstName":"結大","team":"庄川ソフトテニス少年団","prefecture":"秋田県","playerId":null,"tempId":"高桑_結大_庄川ソフトテニス少年団"}],"category":"doubles"},
-{"id":423,"name":"堀江・菅井（福島ジュニア）","information":[{"lastName":"堀江","firstName":"侑眞","team":"福島ジュニア","prefecture":"秋田県","playerId":null,"tempId":"堀江_侑眞_福島ジュニア"},{"lastName":"菅井","firstName":"快彦","team":"福島ジュニア","prefecture":"秋田県","playerId":null,"tempId":"菅井_快彦_福島ジュニア"}],"category":"doubles"},
-{"id":427,"name":"柿木・橋本（長命ケ丘JST）","information":[{"lastName":"柿木","firstName":"遥太","team":"長命ケ丘JST","prefecture":"秋田県","playerId":null,"tempId":"柿木_遥太_長命ケ丘JST"},{"lastName":"橋本","firstName":"世輝","team":"北宮PSTC","prefecture":"秋田県","playerId":null,"tempId":"橋本_世輝_北宮PSTC"}],"category":"doubles"},
-{"id":431,"name":"柿田・髙濵（諫早ジュニア）","information":[{"lastName":"柿田","firstName":"涼介","team":"諫早ジュニア","prefecture":"秋田県","playerId":null,"tempId":"柿田_涼介_諫早ジュニア"},{"lastName":"髙濵","firstName":"陸斗","team":"大村なんてジュニア","prefecture":"秋田県","playerId":null,"tempId":"髙濵_陸斗_大村なんてジュニア"}],"category":"doubles"},
-{"id":439,"name":"平野・伊藤（JSTC盛岡）","information":[{"lastName":"平野","firstName":"和輝","team":"JSTC盛岡","prefecture":"秋田県","playerId":null,"tempId":"平野_和輝_JSTC盛岡"},{"lastName":"伊藤","firstName":"龍来","team":"JSTC盛岡","prefecture":"秋田県","playerId":null,"tempId":"伊藤_龍来_JSTC盛岡"}],"category":"doubles"},
-{"id":445,"name":"森耕・井上（草津あおばなクラブ）","information":[{"lastName":"森耕","firstName":"太郎","team":"草津あおばなクラブ","prefecture":"秋田県","playerId":null,"tempId":"森耕_太郎_草津あおばなクラブ"},{"lastName":"井上","firstName":"陽斗","team":"大津ジュニアソフトテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"井上_陽斗_大津ジュニアソフトテニスクラブ"}],"category":"doubles"},
-{"id":450,"name":"松重・難波（ももっち岡山）","information":[{"lastName":"松重","firstName":"奏汰","team":"ももっち岡山","prefecture":"秋田県","playerId":null,"tempId":"松重_奏汰_ももっち岡山"},{"lastName":"難波","firstName":"晴琉","team":"ももっち岡山","prefecture":"秋田県","playerId":null,"tempId":"難波_晴琉_ももっち岡山"}],"category":"doubles"},
-{"id":455,"name":"西川・遠藤（杉戸ジュニアテニススポーツ少年団）","information":[{"lastName":"西川","firstName":"拓真","team":"杉戸ジュニアテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"西川_拓真_杉戸ジュニアテニススポーツ少年団"},{"lastName":"遠藤","firstName":"斗真","team":"Nextテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"遠藤_斗真_Nextテニスクラブ"}],"category":"doubles"},
-{"id":458,"name":"原・鮫島（カブトの森ジュニア）","information":[{"lastName":"原","firstName":"一翔","team":"カブトの森ジュニア","prefecture":"秋田県","playerId":null,"tempId":"原_一翔_カブトの森ジュニア"},{"lastName":"鮫島","firstName":"新","team":"カブトの森ジュニア","prefecture":"秋田県","playerId":null,"tempId":"鮫島_新_カブトの森ジュニア"}],"category":"doubles"},
-{"id":464,"name":"伊東・瀬戸口（蔵王ジュニア）","information":[{"lastName":"伊東","firstName":"宗志","team":"蔵王ジュニア","prefecture":"秋田県","playerId":null,"tempId":"伊東_宗志_蔵王ジュニア"},{"lastName":"瀬戸口","firstName":"英汰","team":"蔵王ジュニア","prefecture":"秋田県","playerId":null,"tempId":"瀬戸口_英汰_蔵王ジュニア"}],"category":"doubles"},
-{"id":469,"name":"水町・岩永（嬉野塩田ジュニア）","information":[{"lastName":"水町","firstName":"英斗","team":"嬉野塩田ジュニア","prefecture":"秋田県","playerId":null,"tempId":"水町_英斗_嬉野塩田ジュニア"},{"lastName":"岩永","firstName":"温真","team":"嬉野塩田ジュニア","prefecture":"秋田県","playerId":null,"tempId":"岩永_温真_嬉野塩田ジュニア"}],"category":"doubles"},
-{"id":475,"name":"濵地・長畠（印南ＳＴＣ）","information":[{"lastName":"濵地","firstName":"海稀","team":"印南ＳＴＣ","prefecture":"秋田県","playerId":null,"tempId":"濵地_海稀_印南ＳＴＣ"},{"lastName":"長畠","firstName":"健吾","team":"九度山ジュニアソフトテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"長畠_健吾_九度山ジュニアソフトテニスクラブ"}],"category":"doubles"},
-{"id":478,"name":"中崎・中村（霞ヶ浦ソフトテニスクラブ）","information":[{"lastName":"中崎","firstName":"翔","team":"霞ヶ浦ソフトテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"中崎_翔_霞ヶ浦ソフトテニスクラブ"},{"lastName":"中村","firstName":"匠","team":"美ジュニアソフトテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"中村_匠_美ジュニアソフトテニススポーツ少年団"}],"category":"doubles"},
-{"id":485,"name":"工藤・豊田（都城アトムジュニアクラブ）","information":[{"lastName":"工藤","firstName":"煌瑠","team":"都城アトムジュニアクラブ","prefecture":"秋田県","playerId":null,"tempId":"工藤_煌瑠_都城アトムジュニアクラブ"},{"lastName":"豊田","firstName":"莉久","team":"絆","prefecture":"秋田県","playerId":null,"tempId":"豊田_莉久_絆"}],"category":"doubles"},
-{"id":488,"name":"飯田・飯田（国見ジュニア）","information":[{"lastName":"飯田","firstName":"将真","team":"国見ジュニア","prefecture":"秋田県","playerId":null,"tempId":"飯田_将真_国見ジュニア"},{"lastName":"飯田","firstName":"結太","team":"国見ジュニア","prefecture":"秋田県","playerId":null,"tempId":"飯田_結太_国見ジュニア"}],"category":"doubles"},
-{"id":491,"name":"松原・岡本（福井市JSTC）","information":[{"lastName":"松原","firstName":"庄英","team":"福井市JSTC","prefecture":"秋田県","playerId":null,"tempId":"松原_庄英_福井市JSTC"},{"lastName":"岡本","firstName":"昊歩","team":"福井市JSTC","prefecture":"秋田県","playerId":null,"tempId":"岡本_昊歩_福井市JSTC"}],"category":"doubles"},
-{"id":500,"name":"口野・坂井（岸和田ジュニア）","information":[{"lastName":"口野","firstName":"結世","team":"岸和田ジュニア","prefecture":"秋田県","playerId":null,"tempId":"口野_結世_岸和田ジュニア"},{"lastName":"坂井","firstName":"奏太","team":"岸和田ジュニア","prefecture":"秋田県","playerId":null,"tempId":"坂井_奏太_岸和田ジュニア"}],"category":"doubles"},
-{"id":503,"name":"山本・清水（一宮町ソフトテニススポーツ少年団）","information":[{"lastName":"山本","firstName":"廉人","team":"一宮町ソフトテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"山本_廉人_一宮町ソフトテニススポーツ少年団"},{"lastName":"清水","firstName":"葵斗","team":"一宮町ソフトテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"清水_葵斗_一宮町ソフトテニススポーツ少年団"}],"category":"doubles"},
-{"id":510,"name":"岸里・橋本（長中）","information":[{"lastName":"岸里","firstName":"翔","team":"長中","prefecture":"秋田県","playerId":null,"tempId":"岸里_翔_長中"},{"lastName":"橋本","firstName":"篤哉","team":"一関スポ少","prefecture":"秋田県","playerId":null,"tempId":"橋本_篤哉_一関スポ少"}],"category":"doubles"},
-{"id":514,"name":"田中・山田（津島ジュニア）","information":[{"lastName":"田中","firstName":"想真","team":"津島ジュニア","prefecture":"秋田県","playerId":null,"tempId":"田中_想真_津島ジュニア"},{"lastName":"山田","firstName":"大翔","team":"津島ジュニア","prefecture":"秋田県","playerId":null,"tempId":"山田_大翔_津島ジュニア"}],"category":"doubles"},
-{"id":516,"name":"渡邉・青木（いわきジュニア）","information":[{"lastName":"渡邉","firstName":"碧人","team":"いわきジュニア","prefecture":"秋田県","playerId":null,"tempId":"渡邉_碧人_いわきジュニア"},{"lastName":"青木","firstName":"慎士郎","team":"いわきジュニア","prefecture":"秋田県","playerId":null,"tempId":"青木_慎士郎_いわきジュニア"}],"category":"doubles"},
-{"id":525,"name":"篠田・高尾（関スポーツ少年団）","information":[{"lastName":"篠田","firstName":"桔平","team":"関スポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"篠田_桔平_関スポーツ少年団"},{"lastName":"高尾","firstName":"怜和","team":"多治見ジュニアクラブ","prefecture":"秋田県","playerId":null,"tempId":"高尾_怜和_多治見ジュニアクラブ"}],"category":"doubles"},
-{"id":530,"name":"松本・井上（T.Mクラブ）","information":[{"lastName":"松本","firstName":"陽明","team":"T.Mクラブ","prefecture":"秋田県","playerId":null,"tempId":"松本_陽明_T.Mクラブ"},{"lastName":"井上","firstName":"航太朗","team":"王寺ジュニアソフトテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"井上_航太朗_王寺ジュニアソフトテニスクラブ"}],"category":"doubles"},
-{"id":532,"name":"山田・弘岩（南大師ジュニアソフトテニスクラブ）","information":[{"lastName":"山田","firstName":"嵩人","team":"南大師ジュニアソフトテニスクラブ","prefecture":"秋田県","playerId":null,"tempId":"山田_嵩人_南大師ジュニアソフトテニスクラブ"},{"lastName":"弘岩","firstName":"侑隼","team":"横須賀Ｄｒｅａｍスポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"}],"category":"doubles"},
-{"id":536,"name":"佐藤・山澤（小千谷ジュニア）","information":[{"lastName":"佐藤","firstName":"遥","team":"小千谷ジュニア","prefecture":"秋田県","playerId":null,"tempId":"佐藤_遥_小千谷ジュニア"},{"lastName":"山澤","firstName":"悠生","team":"小千谷ジュニア","prefecture":"秋田県","playerId":null,"tempId":"山澤_悠生_小千谷ジュニア"}],"category":"doubles"},
-{"id":543,"name":"藤田・松田（苫小牧西Jrクラブ）","information":[{"lastName":"藤田","firstName":"悠生","team":"苫小牧西Jrクラブ","prefecture":"秋田県","playerId":null,"tempId":"藤田_悠生_苫小牧西Jrクラブ"},{"lastName":"松田","firstName":"翔太","team":"旭川ジュニア","prefecture":"秋田県","playerId":null,"tempId":"松田_翔太_旭川ジュニア"}],"category":"doubles"},
-{"id":548,"name":"林・髙橋（サービスエース飯島）","information":[{"lastName":"林","firstName":"勇汰","team":"サービスエース飯島","prefecture":"秋田県","playerId":null,"tempId":"林_勇汰_サービスエース飯島"},{"lastName":"髙橋","firstName":"佳希","team":"松川少年少女","prefecture":"秋田県","playerId":null,"tempId":"髙橋_佳希_松川少年少女"}],"category":"doubles"},
-{"id":551,"name":"渡邉・中島（唐津ジュニア）","information":[{"lastName":"渡邉","firstName":"拓磨","team":"唐津ジュニア","prefecture":"秋田県","playerId":null,"tempId":"渡邉_拓磨_唐津ジュニア"},{"lastName":"中島","firstName":"侑吾","team":"上峰ジュニアSTC","prefecture":"秋田県","playerId":null,"tempId":"中島_侑吾_上峰ジュニアSTC"}],"category":"doubles"},
-{"id":556,"name":"内田・小野（ももっち岡山）","information":[{"lastName":"内田","firstName":"唯月","team":"ももっち岡山","prefecture":"秋田県","playerId":null,"tempId":"内田_唯月_ももっち岡山"},{"lastName":"小野","firstName":"福道","team":"ももっち岡山","prefecture":"秋田県","playerId":null,"tempId":"小野_福道_ももっち岡山"}],"category":"doubles"},
-{"id":563,"name":"樋渡・本間（酒田ソフトテニススポーツ少年団）","information":[{"lastName":"樋渡","firstName":"圭輔","team":"酒田ソフトテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"樋渡_圭輔_酒田ソフトテニススポーツ少年団"},{"lastName":"本間","firstName":"進二郎","team":"余目ソフトテニススポーツ少年団","prefecture":"秋田県","playerId":null,"tempId":"本間_進二郎_余目ソフトテニススポーツ少年団"}],"category":"doubles"},
-{"id":569,"name":"内田・古賀（カブトの森ジュニア）","information":[{"lastName":"内田","firstName":"健晴","team":"カブトの森ジュニア","prefecture":"秋田県","playerId":null,"tempId":"内田_健晴_カブトの森ジュニア"},{"lastName":"古賀","firstName":"朝陽","team":"大牟田リトルキッズ","prefecture":"秋田県","playerId":null,"tempId":"古賀_朝陽_大牟田リトルキッズ"}],"category":"doubles"},
-{"id":573,"name":"林・相澤（千本ジュニアクラブ）","information":[{"lastName":"林","firstName":"環汰","team":"千本ジュニアクラブ","prefecture":"秋田県","playerId":null,"tempId":"林_環汰_千本ジュニアクラブ"},{"lastName":"相澤","firstName":"邑宇","team":"千本ジュニアクラブ","prefecture":"秋田県","playerId":null,"tempId":"相澤_邑宇_千本ジュニアクラブ"}],"category":"doubles"}
+  {
+    "id": 405,
+    "name": "今井・神蔵（大磯ジュニアテニスクラブ）",
+    "information": [
+      {
+        "lastName": "今井",
+        "firstName": "篤都",
+        "team": "大磯ジュニアテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "今井_篤都_大磯ジュニアテニスクラブ"
+      },
+      {
+        "lastName": "神蔵",
+        "firstName": "夏樹",
+        "team": "大磯ジュニアテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "神蔵_夏樹_大磯ジュニアテニスクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 410,
+    "name": "鈴木・佐藤（ふれあいクラブジュニア）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "駿之介",
+        "team": "ふれあいクラブジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "鈴木_駿之介_ふれあいクラブジュニア"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "琉生",
+        "team": "ふれあいクラブジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "佐藤_琉生_ふれあいクラブジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 414,
+    "name": "内田・田﨑（ＫＳＴＣ）",
+    "information": [
+      {
+        "lastName": "内田",
+        "firstName": "悠哉",
+        "team": "ＫＳＴＣ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "内田_悠哉_ＫＳＴＣ"
+      },
+      {
+        "lastName": "田﨑",
+        "firstName": "心都",
+        "team": "尾鷲ソフトテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "田﨑_心都_尾鷲ソフトテニススポーツ少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 418,
+    "name": "高松・高桑（庄川ソフトテニス少年団）",
+    "information": [
+      {
+        "lastName": "高松",
+        "firstName": "稜",
+        "team": "庄川ソフトテニス少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "高松_稜_庄川ソフトテニス少年団"
+      },
+      {
+        "lastName": "高桑",
+        "firstName": "結大",
+        "team": "庄川ソフトテニス少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "高桑_結大_庄川ソフトテニス少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 423,
+    "name": "堀江・菅井（福島ジュニア）",
+    "information": [
+      {
+        "lastName": "堀江",
+        "firstName": "侑眞",
+        "team": "福島ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "堀江_侑眞_福島ジュニア"
+      },
+      {
+        "lastName": "菅井",
+        "firstName": "快彦",
+        "team": "福島ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "菅井_快彦_福島ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 427,
+    "name": "柿木・橋本（長命ケ丘JST）",
+    "information": [
+      {
+        "lastName": "柿木",
+        "firstName": "遥太",
+        "team": "長命ケ丘JST",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "柿木_遥太_長命ケ丘JST"
+      },
+      {
+        "lastName": "橋本",
+        "firstName": "世輝",
+        "team": "北宮PSTC",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "橋本_世輝_北宮PSTC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 431,
+    "name": "柿田・髙濵（諫早ジュニア）",
+    "information": [
+      {
+        "lastName": "柿田",
+        "firstName": "涼介",
+        "team": "諫早ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "柿田_涼介_諫早ジュニア"
+      },
+      {
+        "lastName": "髙濵",
+        "firstName": "陸斗",
+        "team": "大村なんてジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "髙濵_陸斗_大村なんてジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 439,
+    "name": "平野・伊藤（JSTC盛岡）",
+    "information": [
+      {
+        "lastName": "平野",
+        "firstName": "和輝",
+        "team": "JSTC盛岡",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "平野_和輝_JSTC盛岡"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "龍来",
+        "team": "JSTC盛岡",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "伊藤_龍来_JSTC盛岡"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 445,
+    "name": "森耕・井上（草津あおばなクラブ）",
+    "information": [
+      {
+        "lastName": "森耕",
+        "firstName": "太郎",
+        "team": "草津あおばなクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "森耕_太郎_草津あおばなクラブ"
+      },
+      {
+        "lastName": "井上",
+        "firstName": "陽斗",
+        "team": "大津ジュニアソフトテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "井上_陽斗_大津ジュニアソフトテニスクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 450,
+    "name": "松重・難波（ももっち岡山）",
+    "information": [
+      {
+        "lastName": "松重",
+        "firstName": "奏汰",
+        "team": "ももっち岡山",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "松重_奏汰_ももっち岡山"
+      },
+      {
+        "lastName": "難波",
+        "firstName": "晴琉",
+        "team": "ももっち岡山",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "難波_晴琉_ももっち岡山"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 455,
+    "name": "西川・遠藤（杉戸ジュニアテニススポーツ少年団）",
+    "information": [
+      {
+        "lastName": "西川",
+        "firstName": "拓真",
+        "team": "杉戸ジュニアテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "西川_拓真_杉戸ジュニアテニススポーツ少年団"
+      },
+      {
+        "lastName": "遠藤",
+        "firstName": "斗真",
+        "team": "Nextテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "遠藤_斗真_Nextテニスクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 458,
+    "name": "原・鮫島（カブトの森ジュニア）",
+    "information": [
+      {
+        "lastName": "原",
+        "firstName": "一翔",
+        "team": "カブトの森ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "原_一翔_カブトの森ジュニア"
+      },
+      {
+        "lastName": "鮫島",
+        "firstName": "新",
+        "team": "カブトの森ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "鮫島_新_カブトの森ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 464,
+    "name": "伊東・瀬戸口（蔵王ジュニア）",
+    "information": [
+      {
+        "lastName": "伊東",
+        "firstName": "宗志",
+        "team": "蔵王ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "伊東_宗志_蔵王ジュニア"
+      },
+      {
+        "lastName": "瀬戸口",
+        "firstName": "英汰",
+        "team": "蔵王ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "瀬戸口_英汰_蔵王ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 469,
+    "name": "水町・岩永（嬉野塩田ジュニア）",
+    "information": [
+      {
+        "lastName": "水町",
+        "firstName": "英斗",
+        "team": "嬉野塩田ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "水町_英斗_嬉野塩田ジュニア"
+      },
+      {
+        "lastName": "岩永",
+        "firstName": "温真",
+        "team": "嬉野塩田ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "岩永_温真_嬉野塩田ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 475,
+    "name": "濵地・長畠（印南ＳＴＣ）",
+    "information": [
+      {
+        "lastName": "濵地",
+        "firstName": "海稀",
+        "team": "印南ＳＴＣ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "濵地_海稀_印南ＳＴＣ"
+      },
+      {
+        "lastName": "長畠",
+        "firstName": "健吾",
+        "team": "九度山ジュニアソフトテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "長畠_健吾_九度山ジュニアソフトテニスクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 478,
+    "name": "中崎・中村（霞ヶ浦ソフトテニスクラブ）",
+    "information": [
+      {
+        "lastName": "中崎",
+        "firstName": "翔",
+        "team": "霞ヶ浦ソフトテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "中崎_翔_霞ヶ浦ソフトテニスクラブ"
+      },
+      {
+        "lastName": "中村",
+        "firstName": "匠",
+        "team": "美ジュニアソフトテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "中村_匠_美ジュニアソフトテニススポーツ少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 485,
+    "name": "工藤・豊田（都城アトムジュニアクラブ）",
+    "information": [
+      {
+        "lastName": "工藤",
+        "firstName": "煌瑠",
+        "team": "都城アトムジュニアクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "工藤_煌瑠_都城アトムジュニアクラブ"
+      },
+      {
+        "lastName": "豊田",
+        "firstName": "莉久",
+        "team": "絆",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "豊田_莉久_絆"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 488,
+    "name": "飯田・飯田（国見ジュニア）",
+    "information": [
+      {
+        "lastName": "飯田",
+        "firstName": "将真",
+        "team": "国見ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "飯田_将真_国見ジュニア"
+      },
+      {
+        "lastName": "飯田",
+        "firstName": "結太",
+        "team": "国見ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "飯田_結太_国見ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 491,
+    "name": "松原・岡本（福井市JSTC）",
+    "information": [
+      {
+        "lastName": "松原",
+        "firstName": "庄英",
+        "team": "福井市JSTC",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "松原_庄英_福井市JSTC"
+      },
+      {
+        "lastName": "岡本",
+        "firstName": "昊歩",
+        "team": "福井市JSTC",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "岡本_昊歩_福井市JSTC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 500,
+    "name": "口野・坂井（岸和田ジュニア）",
+    "information": [
+      {
+        "lastName": "口野",
+        "firstName": "結世",
+        "team": "岸和田ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "口野_結世_岸和田ジュニア"
+      },
+      {
+        "lastName": "坂井",
+        "firstName": "奏太",
+        "team": "岸和田ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "坂井_奏太_岸和田ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 503,
+    "name": "山本・清水（一宮町ソフトテニススポーツ少年団）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "廉人",
+        "team": "一宮町ソフトテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "山本_廉人_一宮町ソフトテニススポーツ少年団"
+      },
+      {
+        "lastName": "清水",
+        "firstName": "葵斗",
+        "team": "一宮町ソフトテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "清水_葵斗_一宮町ソフトテニススポーツ少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 510,
+    "name": "岸里・橋本（長中）",
+    "information": [
+      {
+        "lastName": "岸里",
+        "firstName": "翔",
+        "team": "長中",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "岸里_翔_長中"
+      },
+      {
+        "lastName": "橋本",
+        "firstName": "篤哉",
+        "team": "一関スポ少",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "橋本_篤哉_一関スポ少"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 514,
+    "name": "田中・山田（津島ジュニア）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "想真",
+        "team": "津島ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "田中_想真_津島ジュニア"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "大翔",
+        "team": "津島ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "山田_大翔_津島ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 516,
+    "name": "渡邉・青木（いわきジュニア）",
+    "information": [
+      {
+        "lastName": "渡邉",
+        "firstName": "碧人",
+        "team": "いわきジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "渡邉_碧人_いわきジュニア"
+      },
+      {
+        "lastName": "青木",
+        "firstName": "慎士郎",
+        "team": "いわきジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "青木_慎士郎_いわきジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 525,
+    "name": "篠田・高尾（関スポーツ少年団）",
+    "information": [
+      {
+        "lastName": "篠田",
+        "firstName": "桔平",
+        "team": "関スポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "篠田_桔平_関スポーツ少年団"
+      },
+      {
+        "lastName": "高尾",
+        "firstName": "怜和",
+        "team": "多治見ジュニアクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "高尾_怜和_多治見ジュニアクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 530,
+    "name": "松本・井上（T.Mクラブ）",
+    "information": [
+      {
+        "lastName": "松本",
+        "firstName": "陽明",
+        "team": "T.Mクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "松本_陽明_T.Mクラブ"
+      },
+      {
+        "lastName": "井上",
+        "firstName": "航太朗",
+        "team": "王寺ジュニアソフトテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "井上_航太朗_王寺ジュニアソフトテニスクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 532,
+    "name": "山田・弘岩（南大師ジュニアソフトテニスクラブ）",
+    "information": [
+      {
+        "lastName": "山田",
+        "firstName": "嵩人",
+        "team": "南大師ジュニアソフトテニスクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "山田_嵩人_南大師ジュニアソフトテニスクラブ"
+      },
+      {
+        "lastName": "弘岩",
+        "firstName": "侑隼",
+        "team": "横須賀Ｄｒｅａｍスポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "弘岩_侑隼_横須賀Ｄｒｅａｍスポーツ少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 536,
+    "name": "佐藤・山澤（小千谷ジュニア）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "遥",
+        "team": "小千谷ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "佐藤_遥_小千谷ジュニア"
+      },
+      {
+        "lastName": "山澤",
+        "firstName": "悠生",
+        "team": "小千谷ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "山澤_悠生_小千谷ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 543,
+    "name": "藤田・松田（苫小牧西Jrクラブ）",
+    "information": [
+      {
+        "lastName": "藤田",
+        "firstName": "悠生",
+        "team": "苫小牧西Jrクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "藤田_悠生_苫小牧西Jrクラブ"
+      },
+      {
+        "lastName": "松田",
+        "firstName": "翔太",
+        "team": "旭川ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "松田_翔太_旭川ジュニア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 548,
+    "name": "林・髙橋（サービスエース飯島）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "勇汰",
+        "team": "サービスエース飯島",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "林_勇汰_サービスエース飯島"
+      },
+      {
+        "lastName": "髙橋",
+        "firstName": "佳希",
+        "team": "松川少年少女",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "髙橋_佳希_松川少年少女"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 551,
+    "name": "渡邉・中島（唐津ジュニア）",
+    "information": [
+      {
+        "lastName": "渡邉",
+        "firstName": "拓磨",
+        "team": "唐津ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "渡邉_拓磨_唐津ジュニア"
+      },
+      {
+        "lastName": "中島",
+        "firstName": "侑吾",
+        "team": "上峰ジュニアSTC",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "中島_侑吾_上峰ジュニアSTC"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 556,
+    "name": "内田・小野（ももっち岡山）",
+    "information": [
+      {
+        "lastName": "内田",
+        "firstName": "唯月",
+        "team": "ももっち岡山",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "内田_唯月_ももっち岡山"
+      },
+      {
+        "lastName": "小野",
+        "firstName": "福道",
+        "team": "ももっち岡山",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "小野_福道_ももっち岡山"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 563,
+    "name": "樋渡・本間（酒田ソフトテニススポーツ少年団）",
+    "information": [
+      {
+        "lastName": "樋渡",
+        "firstName": "圭輔",
+        "team": "酒田ソフトテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "樋渡_圭輔_酒田ソフトテニススポーツ少年団"
+      },
+      {
+        "lastName": "本間",
+        "firstName": "進二郎",
+        "team": "余目ソフトテニススポーツ少年団",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "本間_進二郎_余目ソフトテニススポーツ少年団"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 569,
+    "name": "内田・古賀（カブトの森ジュニア）",
+    "information": [
+      {
+        "lastName": "内田",
+        "firstName": "健晴",
+        "team": "カブトの森ジュニア",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "内田_健晴_カブトの森ジュニア"
+      },
+      {
+        "lastName": "古賀",
+        "firstName": "朝陽",
+        "team": "大牟田リトルキッズ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "古賀_朝陽_大牟田リトルキッズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 573,
+    "name": "林・相澤（千本ジュニアクラブ）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "環汰",
+        "team": "千本ジュニアクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "林_環汰_千本ジュニアクラブ"
+      },
+      {
+        "lastName": "相澤",
+        "firstName": "邑宇",
+        "team": "千本ジュニアクラブ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "相澤_邑宇_千本ジュニアクラブ"
+      }
+    ],
+    "category": "doubles"
+  }
 ]

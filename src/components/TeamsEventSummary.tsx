@@ -58,7 +58,8 @@ export default function TeamsEventSummary({
                 </span>{' '}
                 {r.players.map((p, idx) => {
                   const name = typeof p === 'string' ? p : p.name;
-                  const playerId = typeof p === 'string' ? undefined : p.playerId;
+                  const playerId =
+                    typeof p === 'string' ? undefined : p.playerId;
                   return (
                     <span key={idx}>
                       {idx > 0 && '、'}

@@ -1,38 +1,254 @@
 [
-{"id":1,"name":"尽誠学園（香川）","team":"尽誠学園","prefecture":"香川","category":"team"},
-{"id":2,"name":"北科大（北海道）","team":"北科大","prefecture":"北海道","category":"team"},
-{"id":3,"name":"東福岡（福岡）","team":"東福岡","prefecture":"福岡","category":"team"},
-{"id":4,"name":"田村（福島）","team":"田村","prefecture":"福島","category":"team"},
-{"id":5,"name":"霞ヶ浦（茨城）","team":"霞ヶ浦","prefecture":"茨城","category":"team"},
-{"id":6,"name":"能登（石川）","team":"能登","prefecture":"石川","category":"team"},
-{"id":7,"name":"近大高専（三重）","team":"近大高専","prefecture":"三重","category":"team"},
-{"id":8,"name":"鹿児島商（鹿児島）","team":"鹿児島商","prefecture":"鹿児島","category":"team"},
-{"id":9,"name":"和歌山北（和歌山）","team":"和歌山北","prefecture":"和歌山","category":"team"},
-{"id":10,"name":"上宮（大阪）","team":"上宮","prefecture":"大阪","category":"team"},
-{"id":11,"name":"東海大相模（神奈川）","team":"東海大相模","prefecture":"神奈川","category":"team"},
-{"id":12,"name":"済美（愛媛）","team":"済美","prefecture":"愛媛","category":"team"},
-{"id":13,"name":"岡山理大附（岡山）","team":"岡山理大附","prefecture":"岡山","category":"team"},
-{"id":14,"name":"中京（岐阜）","team":"中京","prefecture":"岐阜","category":"team"},
-{"id":15,"name":"文徳（熊本）","team":"文徳","prefecture":"熊本","category":"team"},
-{"id":16,"name":"敬愛学園（千葉）","team":"敬愛学園","prefecture":"千葉","category":"team"},
-{"id":17,"name":"金津（福井）","team":"金津","prefecture":"福井","category":"team"},
-{"id":18,"name":"東北（宮城）","team":"東北","prefecture":"宮城","category":"team"},
-{"id":19,"name":"高田商（奈良）","team":"高田商","prefecture":"奈良","category":"team"},
-{"id":20,"name":"つるぎ（徳島）","team":"つるぎ","prefecture":"徳島","category":"team"},
-{"id":21,"name":"岡山南（岡山）","team":"岡山南","prefecture":"岡山","category":"team"},
-{"id":22,"name":"嬉野（佐賀）","team":"嬉野","prefecture":"佐賀","category":"team"},
-{"id":23,"name":"木更津総合（千葉）","team":"木更津総合","prefecture":"千葉","category":"team"},
-{"id":24,"name":"とわの森三愛（北海道）","team":"とわの森三愛","prefecture":"北海道","category":"team"},
-{"id":25,"name":"山形中央（山形）","team":"山形中央","prefecture":"山形","category":"team"},
-{"id":26,"name":"長崎南山（長崎）","team":"長崎南山","prefecture":"長崎","category":"team"},
-{"id":27,"name":"三重（三重）","team":"三重","prefecture":"三重","category":"team"},
-{"id":28,"name":"明徳義塾（高知）","team":"明徳義塾","prefecture":"高知","category":"team"},
-{"id":29,"name":"北越（新潟）","team":"北越","prefecture":"新潟","category":"team"},
-{"id":30,"name":"駒大（東京）","team":"駒大","prefecture":"東京","category":"team"},
-{"id":31,"name":"都城商（宮崎）","team":"都城商","prefecture":"宮崎","category":"team"},
-{"id":32,"name":"宇都宮短大附（栃木）","team":"宇都宮短大附","prefecture":"栃木","category":"team"},
-{"id":33,"name":"南陽工（山口）","team":"南陽工","prefecture":"山口","category":"team"},
-{"id":34,"name":"聖ウルスラ英智（宮城）","team":"聖ウルスラ英智","prefecture":"宮城","category":"team"},
-{"id":35,"name":"福知山成美（京都）","team":"福知山成美","prefecture":"京都","category":"team"},
-{"id":36,"name":"岡崎城西（愛知）","team":"岡崎城西","prefecture":"愛知","category":"team"}
+  {
+    "id": 1,
+    "name": "尽誠学園（香川）",
+    "team": "尽誠学園",
+    "prefecture": "香川",
+    "category": "team"
+  },
+  {
+    "id": 2,
+    "name": "北科大（北海道）",
+    "team": "北科大",
+    "prefecture": "北海道",
+    "category": "team"
+  },
+  {
+    "id": 3,
+    "name": "東福岡（福岡）",
+    "team": "東福岡",
+    "prefecture": "福岡",
+    "category": "team"
+  },
+  {
+    "id": 4,
+    "name": "田村（福島）",
+    "team": "田村",
+    "prefecture": "福島",
+    "category": "team"
+  },
+  {
+    "id": 5,
+    "name": "霞ヶ浦（茨城）",
+    "team": "霞ヶ浦",
+    "prefecture": "茨城",
+    "category": "team"
+  },
+  {
+    "id": 6,
+    "name": "能登（石川）",
+    "team": "能登",
+    "prefecture": "石川",
+    "category": "team"
+  },
+  {
+    "id": 7,
+    "name": "近大高専（三重）",
+    "team": "近大高専",
+    "prefecture": "三重",
+    "category": "team"
+  },
+  {
+    "id": 8,
+    "name": "鹿児島商（鹿児島）",
+    "team": "鹿児島商",
+    "prefecture": "鹿児島",
+    "category": "team"
+  },
+  {
+    "id": 9,
+    "name": "和歌山北（和歌山）",
+    "team": "和歌山北",
+    "prefecture": "和歌山",
+    "category": "team"
+  },
+  {
+    "id": 10,
+    "name": "上宮（大阪）",
+    "team": "上宮",
+    "prefecture": "大阪",
+    "category": "team"
+  },
+  {
+    "id": 11,
+    "name": "東海大相模（神奈川）",
+    "team": "東海大相模",
+    "prefecture": "神奈川",
+    "category": "team"
+  },
+  {
+    "id": 12,
+    "name": "済美（愛媛）",
+    "team": "済美",
+    "prefecture": "愛媛",
+    "category": "team"
+  },
+  {
+    "id": 13,
+    "name": "岡山理大附（岡山）",
+    "team": "岡山理大附",
+    "prefecture": "岡山",
+    "category": "team"
+  },
+  {
+    "id": 14,
+    "name": "中京（岐阜）",
+    "team": "中京",
+    "prefecture": "岐阜",
+    "category": "team"
+  },
+  {
+    "id": 15,
+    "name": "文徳（熊本）",
+    "team": "文徳",
+    "prefecture": "熊本",
+    "category": "team"
+  },
+  {
+    "id": 16,
+    "name": "敬愛学園（千葉）",
+    "team": "敬愛学園",
+    "prefecture": "千葉",
+    "category": "team"
+  },
+  {
+    "id": 17,
+    "name": "金津（福井）",
+    "team": "金津",
+    "prefecture": "福井",
+    "category": "team"
+  },
+  {
+    "id": 18,
+    "name": "東北（宮城）",
+    "team": "東北",
+    "prefecture": "宮城",
+    "category": "team"
+  },
+  {
+    "id": 19,
+    "name": "高田商（奈良）",
+    "team": "高田商",
+    "prefecture": "奈良",
+    "category": "team"
+  },
+  {
+    "id": 20,
+    "name": "つるぎ（徳島）",
+    "team": "つるぎ",
+    "prefecture": "徳島",
+    "category": "team"
+  },
+  {
+    "id": 21,
+    "name": "岡山南（岡山）",
+    "team": "岡山南",
+    "prefecture": "岡山",
+    "category": "team"
+  },
+  {
+    "id": 22,
+    "name": "嬉野（佐賀）",
+    "team": "嬉野",
+    "prefecture": "佐賀",
+    "category": "team"
+  },
+  {
+    "id": 23,
+    "name": "木更津総合（千葉）",
+    "team": "木更津総合",
+    "prefecture": "千葉",
+    "category": "team"
+  },
+  {
+    "id": 24,
+    "name": "とわの森三愛（北海道）",
+    "team": "とわの森三愛",
+    "prefecture": "北海道",
+    "category": "team"
+  },
+  {
+    "id": 25,
+    "name": "山形中央（山形）",
+    "team": "山形中央",
+    "prefecture": "山形",
+    "category": "team"
+  },
+  {
+    "id": 26,
+    "name": "長崎南山（長崎）",
+    "team": "長崎南山",
+    "prefecture": "長崎",
+    "category": "team"
+  },
+  {
+    "id": 27,
+    "name": "三重（三重）",
+    "team": "三重",
+    "prefecture": "三重",
+    "category": "team"
+  },
+  {
+    "id": 28,
+    "name": "明徳義塾（高知）",
+    "team": "明徳義塾",
+    "prefecture": "高知",
+    "category": "team"
+  },
+  {
+    "id": 29,
+    "name": "北越（新潟）",
+    "team": "北越",
+    "prefecture": "新潟",
+    "category": "team"
+  },
+  {
+    "id": 30,
+    "name": "駒大（東京）",
+    "team": "駒大",
+    "prefecture": "東京",
+    "category": "team"
+  },
+  {
+    "id": 31,
+    "name": "都城商（宮崎）",
+    "team": "都城商",
+    "prefecture": "宮崎",
+    "category": "team"
+  },
+  {
+    "id": 32,
+    "name": "宇都宮短大附（栃木）",
+    "team": "宇都宮短大附",
+    "prefecture": "栃木",
+    "category": "team"
+  },
+  {
+    "id": 33,
+    "name": "南陽工（山口）",
+    "team": "南陽工",
+    "prefecture": "山口",
+    "category": "team"
+  },
+  {
+    "id": 34,
+    "name": "聖ウルスラ英智（宮城）",
+    "team": "聖ウルスラ英智",
+    "prefecture": "宮城",
+    "category": "team"
+  },
+  {
+    "id": 35,
+    "name": "福知山成美（京都）",
+    "team": "福知山成美",
+    "prefecture": "京都",
+    "category": "team"
+  },
+  {
+    "id": 36,
+    "name": "岡崎城西（愛知）",
+    "team": "岡崎城西",
+    "prefecture": "愛知",
+    "category": "team"
+  }
 ]

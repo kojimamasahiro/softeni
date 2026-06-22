@@ -80,7 +80,11 @@ type PlayerAnalysis = {
   } | null;
 };
 
-type TournamentMeta = { label: string; isMajorTitle: boolean; generationId?: string };
+type TournamentMeta = {
+  label: string;
+  isMajorTitle: boolean;
+  generationId?: string;
+};
 
 let cachedTournamentMeta: Map<string, TournamentMeta> | null = null;
 
@@ -88,7 +92,12 @@ function getTournamentMeta(): Map<string, TournamentMeta> {
   if (cachedTournamentMeta) return cachedTournamentMeta;
   const map = new Map<string, TournamentMeta>();
   const idx = readJson<
-    Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean; generationId?: string }>
+    Array<{
+      tournamentId: string;
+      label?: string;
+      isMajorTitle?: boolean;
+      generationId?: string;
+    }>
   >(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
   for (const t of idx ?? []) {
     map.set(t.tournamentId, {

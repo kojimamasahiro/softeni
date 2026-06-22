@@ -1,69 +1,421 @@
 {
   "participants": [
-    {"id":"伊藤_樹成_大館ジュニア_秋田県","lastName":"伊藤","firstName":"樹成","team":"大館ジュニア","prefecture":"秋田県"},
-    {"id":"佐藤_仁_大館ジュニア_秋田県","lastName":"佐藤","firstName":"仁","team":"大館ジュニア","prefecture":"秋田県"},
-    {"id":"田口_新大_白神JSTC_秋田県","lastName":"田口","firstName":"新大","team":"白神JSTC","prefecture":"秋田県"},
-    {"id":"菊池_央佑_白神JSTC_秋田県","lastName":"菊池","firstName":"央佑","team":"白神JSTC","prefecture":"秋田県"},
-    {"id":"吉田_悠人_港北スポ少_秋田県","lastName":"吉田","firstName":"悠人","team":"港北スポ少","prefecture":"秋田県"},
-    {"id":"黒澤_奏人_港北スポ少_秋田県","lastName":"黒澤","firstName":"奏人","team":"港北スポ少","prefecture":"秋田県"},
-    {"id":"渡部_太葵_秋田市ジュニア_秋田県","lastName":"渡部","firstName":"太葵","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"宮坂_和歩_秋田市ジュニア_秋田県","lastName":"宮坂","firstName":"和歩","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"齋藤_楓太_大館ジュニア_秋田県","lastName":"齋藤","firstName":"楓太","team":"大館ジュニア","prefecture":"秋田県"},
-    {"id":"川口_璃凰_大館ジュニア_秋田県","lastName":"川口","firstName":"璃凰","team":"大館ジュニア","prefecture":"秋田県"},
-    {"id":"伊藤_心麓_南外神岡STC_秋田県","lastName":"伊藤","firstName":"心麓","team":"南外神岡STC","prefecture":"秋田県"},
-    {"id":"伊藤_天汰_南外神岡STC_秋田県","lastName":"伊藤","firstName":"天汰","team":"南外神岡STC","prefecture":"秋田県"},
-    {"id":"蒔野_結歩_十文字キッズ_秋田県","lastName":"蒔野","firstName":"結歩","team":"十文字キッズ","prefecture":"秋田県"},
-    {"id":"平良木_翔誠_増田ジュニア_秋田県","lastName":"平良木","firstName":"翔誠","team":"増田ジュニア","prefecture":"秋田県"},
-    {"id":"佐々木_颯甫_秋田市ジュニア_秋田県","lastName":"佐々木","firstName":"颯甫","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"畠山_蒼_秋田市ジュニア_秋田県","lastName":"畠山","firstName":"蒼","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"山谷_藍_二ツ井ジュニア_秋田県","lastName":"山谷","firstName":"藍","team":"二ツ井ジュニア","prefecture":"秋田県"},
-    {"id":"菊池_良輔_二ツ井ジュニア_秋田県","lastName":"菊池","firstName":"良輔","team":"二ツ井ジュニア","prefecture":"秋田県"},
-    {"id":"後藤_葵羽_横手スポ少／白_秋田県","lastName":"後藤","firstName":"葵羽","team":"横手スポ少／白","prefecture":"秋田県"},
-    {"id":"時田_恵斗_神JSTC_秋田県","lastName":"時田","firstName":"恵斗","team":"神JSTC","prefecture":"秋田県"},
-    {"id":"高寺_煌汰朗_南外神岡STC_秋田県","lastName":"高寺","firstName":"煌汰朗","team":"南外神岡STC","prefecture":"秋田県"},
-    {"id":"高寺_朗之介_南外神岡STC_秋田県","lastName":"高寺","firstName":"朗之介","team":"南外神岡STC","prefecture":"秋田県"},
-    {"id":"佐藤_聖空_十文字キッズ_秋田県","lastName":"佐藤","firstName":"聖空","team":"十文字キッズ","prefecture":"秋田県"},
-    {"id":"小松田_來玖_横手スポ少_秋田県","lastName":"小松田","firstName":"來玖","team":"横手スポ少","prefecture":"秋田県"},
-    {"id":"伊藤_颯來_二ツ井ジュニア_秋田県","lastName":"伊藤","firstName":"颯來","team":"二ツ井ジュニア","prefecture":"秋田県"},
-    {"id":"山谷_充輝_二ツ井ジュニア_秋田県","lastName":"山谷","firstName":"充輝","team":"二ツ井ジュニア","prefecture":"秋田県"},
-    {"id":"信太_偉央_三種STC_秋田県","lastName":"信太","firstName":"偉央","team":"三種STC","prefecture":"秋田県"},
-    {"id":"信太_玲央_三種STC_秋田県","lastName":"信太","firstName":"玲央","team":"三種STC","prefecture":"秋田県"},
-    {"id":"貝塚_涼太郎_秋田市ジュニア_秋田県","lastName":"貝塚","firstName":"涼太郎","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"柴田_佳人_秋田市ジュニア_秋田県","lastName":"柴田","firstName":"佳人","team":"秋田市ジュニア","prefecture":"秋田県"},
-    {"id":"鈴木_将平_協和スポ少／仙_秋田県","lastName":"鈴木","firstName":"将平","team":"協和スポ少／仙","prefecture":"秋田県"},
-    {"id":"武藤_文之介_北市ジュニア_秋田県","lastName":"武藤","firstName":"文之介","team":"北市ジュニア","prefecture":"秋田県"},
-    {"id":"今野_遥人_秋田市ジュニア／仙北_秋田県","lastName":"今野","firstName":"遥人","team":"秋田市ジュニア／仙北","prefecture":"秋田県"},
-    {"id":"鈴木_琉火_市ジュニア_秋田県","lastName":"鈴木","firstName":"琉火","team":"市ジュニア","prefecture":"秋田県"},
-    {"id":"金_璃來_森吉ジュニア_秋田県","lastName":"金","firstName":"璃來","team":"森吉ジュニア","prefecture":"秋田県"},
-    {"id":"畠山_稜都_森吉ジュニア_秋田県","lastName":"畠山","firstName":"稜都","team":"森吉ジュニア","prefecture":"秋田県"},
-    {"id":"三浦_綾人_三種STC_秋田県","lastName":"三浦","firstName":"綾人","team":"三種STC","prefecture":"秋田県"},
-    {"id":"髙橋_悠斗_三種STC_秋田県","lastName":"髙橋","firstName":"悠斗","team":"三種STC","prefecture":"秋田県"}
+    {
+      "id": "伊藤_樹成_大館ジュニア_秋田県",
+      "lastName": "伊藤",
+      "firstName": "樹成",
+      "team": "大館ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "佐藤_仁_大館ジュニア_秋田県",
+      "lastName": "佐藤",
+      "firstName": "仁",
+      "team": "大館ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "田口_新大_白神JSTC_秋田県",
+      "lastName": "田口",
+      "firstName": "新大",
+      "team": "白神JSTC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "菊池_央佑_白神JSTC_秋田県",
+      "lastName": "菊池",
+      "firstName": "央佑",
+      "team": "白神JSTC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "吉田_悠人_港北スポ少_秋田県",
+      "lastName": "吉田",
+      "firstName": "悠人",
+      "team": "港北スポ少",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "黒澤_奏人_港北スポ少_秋田県",
+      "lastName": "黒澤",
+      "firstName": "奏人",
+      "team": "港北スポ少",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "渡部_太葵_秋田市ジュニア_秋田県",
+      "lastName": "渡部",
+      "firstName": "太葵",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "宮坂_和歩_秋田市ジュニア_秋田県",
+      "lastName": "宮坂",
+      "firstName": "和歩",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "齋藤_楓太_大館ジュニア_秋田県",
+      "lastName": "齋藤",
+      "firstName": "楓太",
+      "team": "大館ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "川口_璃凰_大館ジュニア_秋田県",
+      "lastName": "川口",
+      "firstName": "璃凰",
+      "team": "大館ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "伊藤_心麓_南外神岡STC_秋田県",
+      "lastName": "伊藤",
+      "firstName": "心麓",
+      "team": "南外神岡STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "伊藤_天汰_南外神岡STC_秋田県",
+      "lastName": "伊藤",
+      "firstName": "天汰",
+      "team": "南外神岡STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "蒔野_結歩_十文字キッズ_秋田県",
+      "lastName": "蒔野",
+      "firstName": "結歩",
+      "team": "十文字キッズ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "平良木_翔誠_増田ジュニア_秋田県",
+      "lastName": "平良木",
+      "firstName": "翔誠",
+      "team": "増田ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "佐々木_颯甫_秋田市ジュニア_秋田県",
+      "lastName": "佐々木",
+      "firstName": "颯甫",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "畠山_蒼_秋田市ジュニア_秋田県",
+      "lastName": "畠山",
+      "firstName": "蒼",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "山谷_藍_二ツ井ジュニア_秋田県",
+      "lastName": "山谷",
+      "firstName": "藍",
+      "team": "二ツ井ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "菊池_良輔_二ツ井ジュニア_秋田県",
+      "lastName": "菊池",
+      "firstName": "良輔",
+      "team": "二ツ井ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "後藤_葵羽_横手スポ少／白_秋田県",
+      "lastName": "後藤",
+      "firstName": "葵羽",
+      "team": "横手スポ少／白",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "時田_恵斗_神JSTC_秋田県",
+      "lastName": "時田",
+      "firstName": "恵斗",
+      "team": "神JSTC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "高寺_煌汰朗_南外神岡STC_秋田県",
+      "lastName": "高寺",
+      "firstName": "煌汰朗",
+      "team": "南外神岡STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "高寺_朗之介_南外神岡STC_秋田県",
+      "lastName": "高寺",
+      "firstName": "朗之介",
+      "team": "南外神岡STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "佐藤_聖空_十文字キッズ_秋田県",
+      "lastName": "佐藤",
+      "firstName": "聖空",
+      "team": "十文字キッズ",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "小松田_來玖_横手スポ少_秋田県",
+      "lastName": "小松田",
+      "firstName": "來玖",
+      "team": "横手スポ少",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "伊藤_颯來_二ツ井ジュニア_秋田県",
+      "lastName": "伊藤",
+      "firstName": "颯來",
+      "team": "二ツ井ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "山谷_充輝_二ツ井ジュニア_秋田県",
+      "lastName": "山谷",
+      "firstName": "充輝",
+      "team": "二ツ井ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "信太_偉央_三種STC_秋田県",
+      "lastName": "信太",
+      "firstName": "偉央",
+      "team": "三種STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "信太_玲央_三種STC_秋田県",
+      "lastName": "信太",
+      "firstName": "玲央",
+      "team": "三種STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "貝塚_涼太郎_秋田市ジュニア_秋田県",
+      "lastName": "貝塚",
+      "firstName": "涼太郎",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "柴田_佳人_秋田市ジュニア_秋田県",
+      "lastName": "柴田",
+      "firstName": "佳人",
+      "team": "秋田市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "鈴木_将平_協和スポ少／仙_秋田県",
+      "lastName": "鈴木",
+      "firstName": "将平",
+      "team": "協和スポ少／仙",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "武藤_文之介_北市ジュニア_秋田県",
+      "lastName": "武藤",
+      "firstName": "文之介",
+      "team": "北市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "今野_遥人_秋田市ジュニア／仙北_秋田県",
+      "lastName": "今野",
+      "firstName": "遥人",
+      "team": "秋田市ジュニア／仙北",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "鈴木_琉火_市ジュニア_秋田県",
+      "lastName": "鈴木",
+      "firstName": "琉火",
+      "team": "市ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "金_璃來_森吉ジュニア_秋田県",
+      "lastName": "金",
+      "firstName": "璃來",
+      "team": "森吉ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "畠山_稜都_森吉ジュニア_秋田県",
+      "lastName": "畠山",
+      "firstName": "稜都",
+      "team": "森吉ジュニア",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "三浦_綾人_三種STC_秋田県",
+      "lastName": "三浦",
+      "firstName": "綾人",
+      "team": "三種STC",
+      "prefecture": "秋田県"
+    },
+    {
+      "id": "髙橋_悠斗_三種STC_秋田県",
+      "lastName": "髙橋",
+      "firstName": "悠斗",
+      "team": "三種STC",
+      "prefecture": "秋田県"
+    }
   ],
   "entries": [
-    {"entryNo":41,"playerIds":["田口_新大_白神JSTC_秋田県","菊池_央佑_白神JSTC_秋田県"],"type":null},
-    {"entryNo":42,"playerIds":["伊藤_樹成_大館ジュニア_秋田県","佐藤_仁_大館ジュニア_秋田県"],"type":null},
-    {"entryNo":43,"playerIds":["吉田_悠人_港北スポ少_秋田県","黒澤_奏人_港北スポ少_秋田県"],"type":null},
-    {"entryNo":44,"playerIds":["渡部_太葵_秋田市ジュニア_秋田県","宮坂_和歩_秋田市ジュニア_秋田県"],"type":null},
-    {"entryNo":45,"playerIds":["伊藤_心麓_南外神岡STC_秋田県","伊藤_天汰_南外神岡STC_秋田県"],"type":null},
-    {"entryNo":46,"playerIds":["齋藤_楓太_大館ジュニア_秋田県","川口_璃凰_大館ジュニア_秋田県"],"type":null},
-    {"entryNo":47,"playerIds":["蒔野_結歩_十文字キッズ_秋田県","平良木_翔誠_増田ジュニア_秋田県"],"type":null},
-    {"entryNo":48,"playerIds":["山谷_藍_二ツ井ジュニア_秋田県","菊池_良輔_二ツ井ジュニア_秋田県"],"type":null},
-    {"entryNo":49,"playerIds":["佐々木_颯甫_秋田市ジュニア_秋田県","畠山_蒼_秋田市ジュニア_秋田県"],"type":null},
-    {"entryNo":50,"playerIds":["後藤_葵羽_横手スポ少／白_秋田県","時田_恵斗_神JSTC_秋田県"],"type":null},
-    {"entryNo":51,"playerIds":["佐藤_聖空_十文字キッズ_秋田県","小松田_來玖_横手スポ少_秋田県"],"type":null},
-    {"entryNo":52,"playerIds":["高寺_煌汰朗_南外神岡STC_秋田県","高寺_朗之介_南外神岡STC_秋田県"],"type":null},
-    {"entryNo":53,"playerIds":["伊藤_颯來_二ツ井ジュニア_秋田県","山谷_充輝_二ツ井ジュニア_秋田県"],"type":null},
-    {"entryNo":54,"playerIds":["貝塚_涼太郎_秋田市ジュニア_秋田県","柴田_佳人_秋田市ジュニア_秋田県"],"type":null},
-    {"entryNo":55,"playerIds":["信太_偉央_三種STC_秋田県","信太_玲央_三種STC_秋田県"],"type":null},
-    {"entryNo":56,"playerIds":["鈴木_将平_協和スポ少／仙_秋田県","武藤_文之介_北市ジュニア_秋田県"],"type":null},
-    {"entryNo":57,"playerIds":["金_璃來_森吉ジュニア_秋田県","畠山_稜都_森吉ジュニア_秋田県"],"type":null},
-    {"entryNo":58,"playerIds":["今野_遥人_秋田市ジュニア／仙北_秋田県","鈴木_琉火_市ジュニア_秋田県"],"type":null},
-    {"entryNo":59,"playerIds":["三浦_綾人_三種STC_秋田県","髙橋_悠斗_三種STC_秋田県"],"type":null}
+    {
+      "entryNo": 41,
+      "playerIds": ["田口_新大_白神JSTC_秋田県", "菊池_央佑_白神JSTC_秋田県"],
+      "type": null
+    },
+    {
+      "entryNo": 42,
+      "playerIds": [
+        "伊藤_樹成_大館ジュニア_秋田県",
+        "佐藤_仁_大館ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 43,
+      "playerIds": [
+        "吉田_悠人_港北スポ少_秋田県",
+        "黒澤_奏人_港北スポ少_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 44,
+      "playerIds": [
+        "渡部_太葵_秋田市ジュニア_秋田県",
+        "宮坂_和歩_秋田市ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 45,
+      "playerIds": [
+        "伊藤_心麓_南外神岡STC_秋田県",
+        "伊藤_天汰_南外神岡STC_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 46,
+      "playerIds": [
+        "齋藤_楓太_大館ジュニア_秋田県",
+        "川口_璃凰_大館ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 47,
+      "playerIds": [
+        "蒔野_結歩_十文字キッズ_秋田県",
+        "平良木_翔誠_増田ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 48,
+      "playerIds": [
+        "山谷_藍_二ツ井ジュニア_秋田県",
+        "菊池_良輔_二ツ井ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 49,
+      "playerIds": [
+        "佐々木_颯甫_秋田市ジュニア_秋田県",
+        "畠山_蒼_秋田市ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 50,
+      "playerIds": [
+        "後藤_葵羽_横手スポ少／白_秋田県",
+        "時田_恵斗_神JSTC_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 51,
+      "playerIds": [
+        "佐藤_聖空_十文字キッズ_秋田県",
+        "小松田_來玖_横手スポ少_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 52,
+      "playerIds": [
+        "高寺_煌汰朗_南外神岡STC_秋田県",
+        "高寺_朗之介_南外神岡STC_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 53,
+      "playerIds": [
+        "伊藤_颯來_二ツ井ジュニア_秋田県",
+        "山谷_充輝_二ツ井ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 54,
+      "playerIds": [
+        "貝塚_涼太郎_秋田市ジュニア_秋田県",
+        "柴田_佳人_秋田市ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 55,
+      "playerIds": ["信太_偉央_三種STC_秋田県", "信太_玲央_三種STC_秋田県"],
+      "type": null
+    },
+    {
+      "entryNo": 56,
+      "playerIds": [
+        "鈴木_将平_協和スポ少／仙_秋田県",
+        "武藤_文之介_北市ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 57,
+      "playerIds": [
+        "金_璃來_森吉ジュニア_秋田県",
+        "畠山_稜都_森吉ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 58,
+      "playerIds": [
+        "今野_遥人_秋田市ジュニア／仙北_秋田県",
+        "鈴木_琉火_市ジュニア_秋田県"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 59,
+      "playerIds": ["三浦_綾人_三種STC_秋田県", "髙橋_悠斗_三種STC_秋田県"],
+      "type": null
+    }
   ],
   "matches": [
     {
-      "entries": [45,48],
-      "scores": {"45":3,"48":1},
+      "entries": [45, 48],
+      "scores": { "45": 3, "48": 1 },
       "round": "準々決勝",
       "winnerEntryNo": 45,
       "retired": false,
@@ -75,8 +427,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [51,54],
-      "scores": {"51":3,"54":0},
+      "entries": [51, 54],
+      "scores": { "51": 3, "54": 0 },
       "round": "準々決勝",
       "winnerEntryNo": 51,
       "retired": false,
@@ -88,8 +440,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [41,45],
-      "scores": {"41":0,"45":3},
+      "entries": [41, 45],
+      "scores": { "41": 0, "45": 3 },
       "round": "準決勝",
       "winnerEntryNo": 45,
       "retired": false,
@@ -101,8 +453,8 @@
       "prevMatchId": "match-1"
     },
     {
-      "entries": [51,59],
-      "scores": {"51":3,"59":1},
+      "entries": [51, 59],
+      "scores": { "51": 3, "59": 1 },
       "round": "準決勝",
       "winnerEntryNo": 51,
       "retired": false,
@@ -114,8 +466,8 @@
       "prevMatchId": "match-2"
     },
     {
-      "entries": [45,51],
-      "scores": {"45":3,"51":1},
+      "entries": [45, 51],
+      "scores": { "45": 3, "51": 1 },
       "round": "決勝",
       "winnerEntryNo": 45,
       "retired": false,
@@ -123,12 +475,12 @@
       "group": null,
       "matchId": "match-5",
       "nextMatchId": null,
-      "prevMatchIds": ["match-3","match-4"],
+      "prevMatchIds": ["match-3", "match-4"],
       "prevMatchId": null
     },
     {
-      "entries": [41,42],
-      "scores": {"41":3,"42":0},
+      "entries": [41, 42],
+      "scores": { "41": 3, "42": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -139,8 +491,8 @@
       "matchId": "match-6"
     },
     {
-      "entries": [41,43],
-      "scores": {"41":3,"43":0},
+      "entries": [41, 43],
+      "scores": { "41": 3, "43": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -151,8 +503,8 @@
       "matchId": "match-7"
     },
     {
-      "entries": [41,44],
-      "scores": {"41":3,"44":2},
+      "entries": [41, 44],
+      "scores": { "41": 3, "44": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -163,8 +515,8 @@
       "matchId": "match-8"
     },
     {
-      "entries": [42,43],
-      "scores": {"42":1,"43":3},
+      "entries": [42, 43],
+      "scores": { "42": 1, "43": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -175,8 +527,8 @@
       "matchId": "match-9"
     },
     {
-      "entries": [42,44],
-      "scores": {"42":2,"44":3},
+      "entries": [42, 44],
+      "scores": { "42": 2, "44": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -187,8 +539,8 @@
       "matchId": "match-10"
     },
     {
-      "entries": [43,44],
-      "scores": {"43":2,"44":3},
+      "entries": [43, 44],
+      "scores": { "43": 2, "44": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -199,8 +551,8 @@
       "matchId": "match-11"
     },
     {
-      "entries": [45,46],
-      "scores": {"45":3,"46":1},
+      "entries": [45, 46],
+      "scores": { "45": 3, "46": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -211,8 +563,8 @@
       "matchId": "match-12"
     },
     {
-      "entries": [45,47],
-      "scores": {"45":3,"47":1},
+      "entries": [45, 47],
+      "scores": { "45": 3, "47": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -223,8 +575,8 @@
       "matchId": "match-13"
     },
     {
-      "entries": [46,47],
-      "scores": {"46":0,"47":3},
+      "entries": [46, 47],
+      "scores": { "46": 0, "47": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -235,8 +587,8 @@
       "matchId": "match-14"
     },
     {
-      "entries": [48,49],
-      "scores": {"48":3,"49":0},
+      "entries": [48, 49],
+      "scores": { "48": 3, "49": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "C",
@@ -247,8 +599,8 @@
       "matchId": "match-15"
     },
     {
-      "entries": [48,50],
-      "scores": {"48":3,"50":0},
+      "entries": [48, 50],
+      "scores": { "48": 3, "50": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "C",
@@ -259,8 +611,8 @@
       "matchId": "match-16"
     },
     {
-      "entries": [49,50],
-      "scores": {"49":3,"50":2},
+      "entries": [49, 50],
+      "scores": { "49": 3, "50": 2 },
       "round": null,
       "stage": "roundrobin",
       "group": "C",
@@ -271,8 +623,8 @@
       "matchId": "match-17"
     },
     {
-      "entries": [51,52],
-      "scores": {"51":3,"52":0},
+      "entries": [51, 52],
+      "scores": { "51": 3, "52": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "D",
@@ -283,8 +635,8 @@
       "matchId": "match-18"
     },
     {
-      "entries": [51,53],
-      "scores": {"51":3,"53":0},
+      "entries": [51, 53],
+      "scores": { "51": 3, "53": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "D",
@@ -295,8 +647,8 @@
       "matchId": "match-19"
     },
     {
-      "entries": [52,53],
-      "scores": {"52":0,"53":3},
+      "entries": [52, 53],
+      "scores": { "52": 0, "53": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "D",
@@ -307,8 +659,8 @@
       "matchId": "match-20"
     },
     {
-      "entries": [54,55],
-      "scores": {"54":3,"55":0},
+      "entries": [54, 55],
+      "scores": { "54": 3, "55": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "E",
@@ -319,8 +671,8 @@
       "matchId": "match-21"
     },
     {
-      "entries": [54,56],
-      "scores": {"54":3,"56":1},
+      "entries": [54, 56],
+      "scores": { "54": 3, "56": 1 },
       "round": null,
       "stage": "roundrobin",
       "group": "E",
@@ -331,8 +683,8 @@
       "matchId": "match-22"
     },
     {
-      "entries": [55,56],
-      "scores": {"55":0,"56":3},
+      "entries": [55, 56],
+      "scores": { "55": 0, "56": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "E",
@@ -343,8 +695,8 @@
       "matchId": "match-23"
     },
     {
-      "entries": [57,58],
-      "scores": {"57":3,"58":0},
+      "entries": [57, 58],
+      "scores": { "57": 3, "58": 0 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -355,8 +707,8 @@
       "matchId": "match-24"
     },
     {
-      "entries": [57,59],
-      "scores": {"57":1,"59":3},
+      "entries": [57, 59],
+      "scores": { "57": 1, "59": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -367,8 +719,8 @@
       "matchId": "match-25"
     },
     {
-      "entries": [58,59],
-      "scores": {"58":0,"59":3},
+      "entries": [58, 59],
+      "scores": { "58": 0, "59": 3 },
       "round": null,
       "stage": "roundrobin",
       "group": "F",
@@ -380,24 +732,112 @@
     }
   ],
   "results": [
-    {"entryNo":41,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"A","rank":1}},
-    {"entryNo":42,"tournament":null,"roundrobin":{"group":"A","rank":4}},
-    {"entryNo":43,"tournament":null,"roundrobin":{"group":"A","rank":3}},
-    {"entryNo":44,"tournament":null,"roundrobin":{"group":"A","rank":2}},
-    {"entryNo":45,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":{"group":"B","rank":1}},
-    {"entryNo":46,"tournament":null,"roundrobin":{"group":"B","rank":3}},
-    {"entryNo":47,"tournament":null,"roundrobin":{"group":"B","rank":2}},
-    {"entryNo":48,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"C","rank":1}},
-    {"entryNo":49,"tournament":null,"roundrobin":{"group":"C","rank":2}},
-    {"entryNo":50,"tournament":null,"roundrobin":{"group":"C","rank":3}},
-    {"entryNo":51,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"D","rank":1}},
-    {"entryNo":52,"tournament":null,"roundrobin":{"group":"D","rank":3}},
-    {"entryNo":53,"tournament":null,"roundrobin":{"group":"D","rank":2}},
-    {"entryNo":54,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"E","rank":1}},
-    {"entryNo":55,"tournament":null,"roundrobin":{"group":"E","rank":3}},
-    {"entryNo":56,"tournament":null,"roundrobin":{"group":"E","rank":2}},
-    {"entryNo":57,"tournament":null,"roundrobin":{"group":"F","rank":2}},
-    {"entryNo":58,"tournament":null,"roundrobin":{"group":"F","rank":3}},
-    {"entryNo":59,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"F","rank":1}}
+    {
+      "entryNo": 41,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": { "group": "A", "rank": 1 }
+    },
+    {
+      "entryNo": 42,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 4 }
+    },
+    {
+      "entryNo": 43,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 3 }
+    },
+    {
+      "entryNo": 44,
+      "tournament": null,
+      "roundrobin": { "group": "A", "rank": 2 }
+    },
+    {
+      "entryNo": 45,
+      "tournament": { "label": "優勝", "rank": { "kind": "winner" } },
+      "roundrobin": { "group": "B", "rank": 1 }
+    },
+    {
+      "entryNo": 46,
+      "tournament": null,
+      "roundrobin": { "group": "B", "rank": 3 }
+    },
+    {
+      "entryNo": 47,
+      "tournament": null,
+      "roundrobin": { "group": "B", "rank": 2 }
+    },
+    {
+      "entryNo": 48,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": { "group": "C", "rank": 1 }
+    },
+    {
+      "entryNo": 49,
+      "tournament": null,
+      "roundrobin": { "group": "C", "rank": 2 }
+    },
+    {
+      "entryNo": 50,
+      "tournament": null,
+      "roundrobin": { "group": "C", "rank": 3 }
+    },
+    {
+      "entryNo": 51,
+      "tournament": { "label": "準優勝", "rank": { "kind": "runnerup" } },
+      "roundrobin": { "group": "D", "rank": 1 }
+    },
+    {
+      "entryNo": 52,
+      "tournament": null,
+      "roundrobin": { "group": "D", "rank": 3 }
+    },
+    {
+      "entryNo": 53,
+      "tournament": null,
+      "roundrobin": { "group": "D", "rank": 2 }
+    },
+    {
+      "entryNo": 54,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
+      "roundrobin": { "group": "E", "rank": 1 }
+    },
+    {
+      "entryNo": 55,
+      "tournament": null,
+      "roundrobin": { "group": "E", "rank": 3 }
+    },
+    {
+      "entryNo": 56,
+      "tournament": null,
+      "roundrobin": { "group": "E", "rank": 2 }
+    },
+    {
+      "entryNo": 57,
+      "tournament": null,
+      "roundrobin": { "group": "F", "rank": 2 }
+    },
+    {
+      "entryNo": 58,
+      "tournament": null,
+      "roundrobin": { "group": "F", "rank": 3 }
+    },
+    {
+      "entryNo": 59,
+      "tournament": {
+        "label": "ベスト4",
+        "rank": { "kind": "best", "bestLevel": 4 }
+      },
+      "roundrobin": { "group": "F", "rank": 1 }
+    }
   ]
 }

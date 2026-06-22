@@ -1,6 +1,7 @@
 # ADR-001: 地方大会候補検知ストアを公開データから分離する
 
 ## Status
+
 Accepted
 
 ## Context

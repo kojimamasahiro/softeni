@@ -32,6 +32,7 @@ cd scripts/highschool/02result
 ```
 
 **処理内容:**
+
 - `data/tournaments/index.json` に載る大会のうち、`data/tournaments/details` に実体がある大会データを読み込み
 - チーム名と都道府県のマッピングを構築
 - トーナメント結果とラウンドロビン結果を抽出
@@ -50,6 +51,7 @@ cd scripts/highschool/03list
 ```
 
 **処理内容:**
+
 - `results.json` を読み込み
 - 都道府県別、種目別にデータを集計
 - チーム情報とプレイヤー情報を紐付け
@@ -66,6 +68,7 @@ cd scripts/highschool/04summry
 ```
 
 **処理内容:**
+
 - `prefecture-summary.json` を読み込み
 - 各都道府県のデータを抽出
 - 重複を除去して個別ファイルに保存
@@ -82,6 +85,7 @@ cd scripts/highschool/analysis
 ```
 
 **処理内容:**
+
 - 各都道府県の `summary.json` を読み込み
 - 学校×性別ごとにデータを集計
 - 総出場回数、種目別出場回数、最高成績、トッププレイヤーなどを算出

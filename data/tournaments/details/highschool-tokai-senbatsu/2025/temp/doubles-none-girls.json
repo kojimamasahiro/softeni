@@ -1,34 +1,738 @@
 [
-{"id":1,"name":"髙林・起田（三重）","information":[{"lastName":"髙林","firstName":"さくら","team":"三重","prefecture":"三重","playerId":null,"tempId":"髙林_さくら_三重"},{"lastName":"起田","firstName":"亜旺","team":"三重","prefecture":"三重","playerId":null,"tempId":"起田_亜旺_三重"}],"category":"doubles"},
-{"id":2,"name":"長屋・川野（県岐阜商）","information":[{"lastName":"長屋","firstName":"心遥","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"長屋_心遥_県岐阜商"},{"lastName":"川野","firstName":"百華","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"川野_百華_県岐阜商"}],"category":"doubles"},
-{"id":3,"name":"滝谷・破田野（豊田大谷）","information":[{"lastName":"滝谷","firstName":"咲良","team":"豊田大谷","prefecture":"愛知","playerId":null,"tempId":"滝谷_咲良_豊田大谷"},{"lastName":"破田野","firstName":"早映","team":"豊田大谷","prefecture":"愛知","playerId":null,"tempId":"破田野_早映_豊田大谷"}],"category":"doubles"},
-{"id":4,"name":"日吉・寺嶋（下田）","information":[{"lastName":"日吉","firstName":"凛乃","team":"下田","prefecture":"静岡","playerId":null,"tempId":"日吉_凛乃_下田"},{"lastName":"寺嶋","firstName":"煌莉","team":"下田","prefecture":"静岡","playerId":null,"tempId":"寺嶋_煌莉_下田"}],"category":"doubles"},
-{"id":5,"name":"藤・三輪（岡崎城西）","information":[{"lastName":"藤","firstName":"ひなこ","team":"岡崎城西","prefecture":"愛知","playerId":null,"tempId":"藤_ひなこ_岡崎城西"},{"lastName":"三輪","firstName":"愛奈","team":"岡崎城西","prefecture":"愛知","playerId":null,"tempId":"三輪_愛奈_岡崎城西"}],"category":"doubles"},
-{"id":6,"name":"江良・小早川（三重）","information":[{"lastName":"江良","firstName":"愛葉","team":"三重","prefecture":"三重","playerId":null,"tempId":"江良_愛葉_三重"},{"lastName":"小早川","firstName":"如実","team":"三重","prefecture":"三重","playerId":null,"tempId":"小早川_如実_三重"}],"category":"doubles"},
-{"id":7,"name":"井上・岩崎（浜松修学舎）","information":[{"lastName":"井上","firstName":"美夕","team":"浜松修学舎","prefecture":"静岡","playerId":null,"tempId":"井上_美夕_浜松修学舎"},{"lastName":"岩崎","firstName":"愛美","team":"浜松修学舎","prefecture":"静岡","playerId":null,"tempId":"岩崎_愛美_浜松修学舎"}],"category":"doubles"},
-{"id":8,"name":"森・武山（美濃加茂）","information":[{"lastName":"森","firstName":"彩恵","team":"美濃加茂","prefecture":"岐阜","playerId":null,"tempId":"森_彩恵_美濃加茂"},{"lastName":"武山","firstName":"愛佳","team":"美濃加茂","prefecture":"岐阜","playerId":null,"tempId":"武山_愛佳_美濃加茂"}],"category":"doubles"},
-{"id":9,"name":"山田・鈴木（浜松商）","information":[{"lastName":"山田","firstName":"吏優","team":"浜松商","prefecture":"静岡","playerId":null,"tempId":"山田_吏優_浜松商"},{"lastName":"鈴木","firstName":"海楓","team":"浜松商","prefecture":"静岡","playerId":null,"tempId":"鈴木_海楓_浜松商"}],"category":"doubles"},
-{"id":10,"name":"長尾・岩淺（鶯谷）","information":[{"lastName":"長尾","firstName":"梨央","team":"鶯谷","prefecture":"岐阜","playerId":null,"tempId":"長尾_梨央_鶯谷"},{"lastName":"岩淺","firstName":"万葉","team":"鶯谷","prefecture":"岐阜","playerId":null,"tempId":"岩淺_万葉_鶯谷"}],"category":"doubles"},
-{"id":11,"name":"花井・蟹江（横須賀）","information":[{"lastName":"花井","firstName":"絢","team":"横須賀","prefecture":"愛知","playerId":null,"tempId":"花井_絢_横須賀"},{"lastName":"蟹江","firstName":"瑠那","team":"横須賀","prefecture":"愛知","playerId":null,"tempId":"蟹江_瑠那_横須賀"}],"category":"doubles"},
-{"id":12,"name":"大野・野中（三重）","information":[{"lastName":"大野","firstName":"柚芽","team":"三重","prefecture":"三重","playerId":null,"tempId":"大野_柚芽_三重"},{"lastName":"野中","firstName":"稟栞","team":"三重","prefecture":"三重","playerId":null,"tempId":"野中_稟栞_三重"}],"category":"doubles"},
-{"id":13,"name":"林田・遠山（県岐阜商）","information":[{"lastName":"林田","firstName":"美輝","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"林田_美輝_県岐阜商"},{"lastName":"遠山","firstName":"琴心","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"遠山_琴心_県岐阜商"}],"category":"doubles"},
-{"id":14,"name":"堀口・積木（三重）","information":[{"lastName":"堀口","firstName":"路葵","team":"三重","prefecture":"三重","playerId":null,"tempId":"堀口_路葵_三重"},{"lastName":"積木","firstName":"七海","team":"三重","prefecture":"三重","playerId":null,"tempId":"積木_七海_三重"}],"category":"doubles"},
-{"id":15,"name":"須藤・榑林（静岡商）","information":[{"lastName":"須藤","firstName":"美咲","team":"静岡商","prefecture":"静岡","playerId":null,"tempId":"須藤_美咲_静岡商"},{"lastName":"榑林","firstName":"咲希","team":"静岡商","prefecture":"静岡","playerId":null,"tempId":"榑林_咲希_静岡商"}],"category":"doubles"},
-{"id":16,"name":"渡邉・田原（豊橋中央）","information":[{"lastName":"渡邉","firstName":"柚月","team":"豊橋中央","prefecture":"愛知","playerId":null,"tempId":"渡邉_柚月_豊橋中央"},{"lastName":"田原","firstName":"小麻千","team":"豊橋中央","prefecture":"愛知","playerId":null,"tempId":"田原_小麻千_豊橋中央"}],"category":"doubles"},
-{"id":17,"name":"飯塚・村松（焼津）","information":[{"lastName":"飯塚","firstName":"なぎ","team":"焼津","prefecture":"静岡","playerId":null,"tempId":"飯塚_なぎ_焼津"},{"lastName":"村松","firstName":"凜歩","team":"焼津","prefecture":"静岡","playerId":null,"tempId":"村松_凜歩_焼津"}],"category":"doubles"},
-{"id":18,"name":"齋藤・堀（三重）","information":[{"lastName":"齋藤","firstName":"初柚","team":"三重","prefecture":"三重","playerId":null,"tempId":"齋藤_初柚_三重"},{"lastName":"堀","firstName":"愛梨","team":"三重","prefecture":"三重","playerId":null,"tempId":"堀_愛梨_三重"}],"category":"doubles"},
-{"id":19,"name":"土屋・川原（美濃加茂）","information":[{"lastName":"土屋","firstName":"莉愛","team":"美濃加茂","prefecture":"岐阜","playerId":null,"tempId":"土屋_莉愛_美濃加茂"},{"lastName":"川原","firstName":"茜心","team":"美濃加茂","prefecture":"岐阜","playerId":null,"tempId":"川原_茜心_美濃加茂"}],"category":"doubles"},
-{"id":20,"name":"堤・大見（享栄）","information":[{"lastName":"堤","firstName":"妃依里","team":"享栄","prefecture":"愛知","playerId":null,"tempId":"堤_妃依里_享栄"},{"lastName":"大見","firstName":"留加","team":"享栄","prefecture":"愛知","playerId":null,"tempId":"大見_留加_享栄"}],"category":"doubles"},
-{"id":21,"name":"髙橋・佐藤（県岐阜商）","information":[{"lastName":"髙橋","firstName":"優芽","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"髙橋_優芽_県岐阜商"},{"lastName":"佐藤","firstName":"梨南","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"佐藤_梨南_県岐阜商"}],"category":"doubles"},
-{"id":22,"name":"鈴木・隅谷（下田）","information":[{"lastName":"鈴木","firstName":"みのり","team":"下田","prefecture":"静岡","playerId":null,"tempId":"鈴木_みのり_下田"},{"lastName":"隅谷","firstName":"心珀","team":"下田","prefecture":"静岡","playerId":null,"tempId":"隅谷_心珀_下田"}],"category":"doubles"},
-{"id":23,"name":"川野・山内（豊橋中央）","information":[{"lastName":"川野","firstName":"晏朱","team":"豊橋中央","prefecture":"愛知","playerId":null,"tempId":"川野_晏朱_豊橋中央"},{"lastName":"山内","firstName":"優和","team":"豊橋中央","prefecture":"愛知","playerId":null,"tempId":"山内_優和_豊橋中央"}],"category":"doubles"},
-{"id":24,"name":"鈴木・高橋（三重）","information":[{"lastName":"鈴木","firstName":"綾華","team":"三重","prefecture":"三重","playerId":null,"tempId":"鈴木_綾華_三重"},{"lastName":"高橋","firstName":"百合雲","team":"三重","prefecture":"三重","playerId":null,"tempId":"高橋_百合雲_三重"}],"category":"doubles"},
-{"id":25,"name":"佐藤・久野（豊田大谷）","information":[{"lastName":"佐藤","firstName":"心雪","team":"豊田大谷","prefecture":"愛知","playerId":null,"tempId":"佐藤_心雪_豊田大谷"},{"lastName":"久野","firstName":"菜摘","team":"豊田大谷","prefecture":"愛知","playerId":null,"tempId":"久野_菜摘_豊田大谷"}],"category":"doubles"},
-{"id":26,"name":"小野・市村（三重）","information":[{"lastName":"小野","firstName":"愛莉","team":"三重","prefecture":"三重","playerId":null,"tempId":"小野_愛莉_三重"},{"lastName":"市村","firstName":"花","team":"三重","prefecture":"三重","playerId":null,"tempId":"市村_花_三重"}],"category":"doubles"},
-{"id":27,"name":"冨田・佐藤（鶯谷）","information":[{"lastName":"冨田","firstName":"彩莉","team":"鶯谷","prefecture":"岐阜","playerId":null,"tempId":"冨田_彩莉_鶯谷"},{"lastName":"佐藤","firstName":"凛音","team":"鶯谷","prefecture":"岐阜","playerId":null,"tempId":"佐藤_凛音_鶯谷"}],"category":"doubles"},
-{"id":28,"name":"田畑・佐口（浜松商）","information":[{"lastName":"田畑","firstName":"杏菜","team":"浜松商","prefecture":"静岡","playerId":null,"tempId":"田畑_杏菜_浜松商"},{"lastName":"佐口","firstName":"玲奈","team":"浜松商","prefecture":"静岡","playerId":null,"tempId":"佐口_玲奈_浜松商"}],"category":"doubles"},
-{"id":29,"name":"中島・松田（三重）","information":[{"lastName":"中島","firstName":"ひめ","team":"三重","prefecture":"三重","playerId":null,"tempId":"中島_ひめ_三重"},{"lastName":"松田","firstName":"悠那","team":"三重","prefecture":"三重","playerId":null,"tempId":"松田_悠那_三重"}],"category":"doubles"},
-{"id":30,"name":"青木・角谷（富士宮北）","information":[{"lastName":"青木","firstName":"はな","team":"富士宮北","prefecture":"静岡","playerId":null,"tempId":"青木_はな_富士宮北"},{"lastName":"角谷","firstName":"怜夏","team":"富士宮北","prefecture":"静岡","playerId":null,"tempId":"角谷_怜夏_富士宮北"}],"category":"doubles"},
-{"id":31,"name":"水野・平岩（岡崎城西）","information":[{"lastName":"水野","firstName":"史菜","team":"岡崎城西","prefecture":"愛知","playerId":null,"tempId":"水野_史菜_岡崎城西"},{"lastName":"平岩","firstName":"千裕","team":"岡崎城西","prefecture":"愛知","playerId":null,"tempId":"平岩_千裕_岡崎城西"}],"category":"doubles"},
-{"id":32,"name":"廣岡・早見（県岐阜商）","information":[{"lastName":"廣岡","firstName":"愛珠","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"廣岡_愛珠_県岐阜商"},{"lastName":"早見","firstName":"優里","team":"県岐阜商","prefecture":"岐阜","playerId":null,"tempId":"早見_優里_県岐阜商"}],"category":"doubles"}
+  {
+    "id": 1,
+    "name": "髙林・起田（三重）",
+    "information": [
+      {
+        "lastName": "髙林",
+        "firstName": "さくら",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "髙林_さくら_三重"
+      },
+      {
+        "lastName": "起田",
+        "firstName": "亜旺",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "起田_亜旺_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 2,
+    "name": "長屋・川野（県岐阜商）",
+    "information": [
+      {
+        "lastName": "長屋",
+        "firstName": "心遥",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "長屋_心遥_県岐阜商"
+      },
+      {
+        "lastName": "川野",
+        "firstName": "百華",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "川野_百華_県岐阜商"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 3,
+    "name": "滝谷・破田野（豊田大谷）",
+    "information": [
+      {
+        "lastName": "滝谷",
+        "firstName": "咲良",
+        "team": "豊田大谷",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "滝谷_咲良_豊田大谷"
+      },
+      {
+        "lastName": "破田野",
+        "firstName": "早映",
+        "team": "豊田大谷",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "破田野_早映_豊田大谷"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 4,
+    "name": "日吉・寺嶋（下田）",
+    "information": [
+      {
+        "lastName": "日吉",
+        "firstName": "凛乃",
+        "team": "下田",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "日吉_凛乃_下田"
+      },
+      {
+        "lastName": "寺嶋",
+        "firstName": "煌莉",
+        "team": "下田",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "寺嶋_煌莉_下田"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 5,
+    "name": "藤・三輪（岡崎城西）",
+    "information": [
+      {
+        "lastName": "藤",
+        "firstName": "ひなこ",
+        "team": "岡崎城西",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "藤_ひなこ_岡崎城西"
+      },
+      {
+        "lastName": "三輪",
+        "firstName": "愛奈",
+        "team": "岡崎城西",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "三輪_愛奈_岡崎城西"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 6,
+    "name": "江良・小早川（三重）",
+    "information": [
+      {
+        "lastName": "江良",
+        "firstName": "愛葉",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "江良_愛葉_三重"
+      },
+      {
+        "lastName": "小早川",
+        "firstName": "如実",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "小早川_如実_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 7,
+    "name": "井上・岩崎（浜松修学舎）",
+    "information": [
+      {
+        "lastName": "井上",
+        "firstName": "美夕",
+        "team": "浜松修学舎",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "井上_美夕_浜松修学舎"
+      },
+      {
+        "lastName": "岩崎",
+        "firstName": "愛美",
+        "team": "浜松修学舎",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "岩崎_愛美_浜松修学舎"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 8,
+    "name": "森・武山（美濃加茂）",
+    "information": [
+      {
+        "lastName": "森",
+        "firstName": "彩恵",
+        "team": "美濃加茂",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "森_彩恵_美濃加茂"
+      },
+      {
+        "lastName": "武山",
+        "firstName": "愛佳",
+        "team": "美濃加茂",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "武山_愛佳_美濃加茂"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 9,
+    "name": "山田・鈴木（浜松商）",
+    "information": [
+      {
+        "lastName": "山田",
+        "firstName": "吏優",
+        "team": "浜松商",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "山田_吏優_浜松商"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "海楓",
+        "team": "浜松商",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "鈴木_海楓_浜松商"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 10,
+    "name": "長尾・岩淺（鶯谷）",
+    "information": [
+      {
+        "lastName": "長尾",
+        "firstName": "梨央",
+        "team": "鶯谷",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "長尾_梨央_鶯谷"
+      },
+      {
+        "lastName": "岩淺",
+        "firstName": "万葉",
+        "team": "鶯谷",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "岩淺_万葉_鶯谷"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 11,
+    "name": "花井・蟹江（横須賀）",
+    "information": [
+      {
+        "lastName": "花井",
+        "firstName": "絢",
+        "team": "横須賀",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "花井_絢_横須賀"
+      },
+      {
+        "lastName": "蟹江",
+        "firstName": "瑠那",
+        "team": "横須賀",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "蟹江_瑠那_横須賀"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 12,
+    "name": "大野・野中（三重）",
+    "information": [
+      {
+        "lastName": "大野",
+        "firstName": "柚芽",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "大野_柚芽_三重"
+      },
+      {
+        "lastName": "野中",
+        "firstName": "稟栞",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "野中_稟栞_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 13,
+    "name": "林田・遠山（県岐阜商）",
+    "information": [
+      {
+        "lastName": "林田",
+        "firstName": "美輝",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "林田_美輝_県岐阜商"
+      },
+      {
+        "lastName": "遠山",
+        "firstName": "琴心",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "遠山_琴心_県岐阜商"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 14,
+    "name": "堀口・積木（三重）",
+    "information": [
+      {
+        "lastName": "堀口",
+        "firstName": "路葵",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "堀口_路葵_三重"
+      },
+      {
+        "lastName": "積木",
+        "firstName": "七海",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "積木_七海_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 15,
+    "name": "須藤・榑林（静岡商）",
+    "information": [
+      {
+        "lastName": "須藤",
+        "firstName": "美咲",
+        "team": "静岡商",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "須藤_美咲_静岡商"
+      },
+      {
+        "lastName": "榑林",
+        "firstName": "咲希",
+        "team": "静岡商",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "榑林_咲希_静岡商"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 16,
+    "name": "渡邉・田原（豊橋中央）",
+    "information": [
+      {
+        "lastName": "渡邉",
+        "firstName": "柚月",
+        "team": "豊橋中央",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "渡邉_柚月_豊橋中央"
+      },
+      {
+        "lastName": "田原",
+        "firstName": "小麻千",
+        "team": "豊橋中央",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "田原_小麻千_豊橋中央"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 17,
+    "name": "飯塚・村松（焼津）",
+    "information": [
+      {
+        "lastName": "飯塚",
+        "firstName": "なぎ",
+        "team": "焼津",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "飯塚_なぎ_焼津"
+      },
+      {
+        "lastName": "村松",
+        "firstName": "凜歩",
+        "team": "焼津",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "村松_凜歩_焼津"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 18,
+    "name": "齋藤・堀（三重）",
+    "information": [
+      {
+        "lastName": "齋藤",
+        "firstName": "初柚",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "齋藤_初柚_三重"
+      },
+      {
+        "lastName": "堀",
+        "firstName": "愛梨",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "堀_愛梨_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 19,
+    "name": "土屋・川原（美濃加茂）",
+    "information": [
+      {
+        "lastName": "土屋",
+        "firstName": "莉愛",
+        "team": "美濃加茂",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "土屋_莉愛_美濃加茂"
+      },
+      {
+        "lastName": "川原",
+        "firstName": "茜心",
+        "team": "美濃加茂",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "川原_茜心_美濃加茂"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 20,
+    "name": "堤・大見（享栄）",
+    "information": [
+      {
+        "lastName": "堤",
+        "firstName": "妃依里",
+        "team": "享栄",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "堤_妃依里_享栄"
+      },
+      {
+        "lastName": "大見",
+        "firstName": "留加",
+        "team": "享栄",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "大見_留加_享栄"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 21,
+    "name": "髙橋・佐藤（県岐阜商）",
+    "information": [
+      {
+        "lastName": "髙橋",
+        "firstName": "優芽",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "髙橋_優芽_県岐阜商"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "梨南",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "佐藤_梨南_県岐阜商"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 22,
+    "name": "鈴木・隅谷（下田）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "みのり",
+        "team": "下田",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "鈴木_みのり_下田"
+      },
+      {
+        "lastName": "隅谷",
+        "firstName": "心珀",
+        "team": "下田",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "隅谷_心珀_下田"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 23,
+    "name": "川野・山内（豊橋中央）",
+    "information": [
+      {
+        "lastName": "川野",
+        "firstName": "晏朱",
+        "team": "豊橋中央",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "川野_晏朱_豊橋中央"
+      },
+      {
+        "lastName": "山内",
+        "firstName": "優和",
+        "team": "豊橋中央",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "山内_優和_豊橋中央"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 24,
+    "name": "鈴木・高橋（三重）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "綾華",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "鈴木_綾華_三重"
+      },
+      {
+        "lastName": "高橋",
+        "firstName": "百合雲",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "高橋_百合雲_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 25,
+    "name": "佐藤・久野（豊田大谷）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "心雪",
+        "team": "豊田大谷",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "佐藤_心雪_豊田大谷"
+      },
+      {
+        "lastName": "久野",
+        "firstName": "菜摘",
+        "team": "豊田大谷",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "久野_菜摘_豊田大谷"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 26,
+    "name": "小野・市村（三重）",
+    "information": [
+      {
+        "lastName": "小野",
+        "firstName": "愛莉",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "小野_愛莉_三重"
+      },
+      {
+        "lastName": "市村",
+        "firstName": "花",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "市村_花_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 27,
+    "name": "冨田・佐藤（鶯谷）",
+    "information": [
+      {
+        "lastName": "冨田",
+        "firstName": "彩莉",
+        "team": "鶯谷",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "冨田_彩莉_鶯谷"
+      },
+      {
+        "lastName": "佐藤",
+        "firstName": "凛音",
+        "team": "鶯谷",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "佐藤_凛音_鶯谷"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 28,
+    "name": "田畑・佐口（浜松商）",
+    "information": [
+      {
+        "lastName": "田畑",
+        "firstName": "杏菜",
+        "team": "浜松商",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "田畑_杏菜_浜松商"
+      },
+      {
+        "lastName": "佐口",
+        "firstName": "玲奈",
+        "team": "浜松商",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "佐口_玲奈_浜松商"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 29,
+    "name": "中島・松田（三重）",
+    "information": [
+      {
+        "lastName": "中島",
+        "firstName": "ひめ",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "中島_ひめ_三重"
+      },
+      {
+        "lastName": "松田",
+        "firstName": "悠那",
+        "team": "三重",
+        "prefecture": "三重",
+        "playerId": null,
+        "tempId": "松田_悠那_三重"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 30,
+    "name": "青木・角谷（富士宮北）",
+    "information": [
+      {
+        "lastName": "青木",
+        "firstName": "はな",
+        "team": "富士宮北",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "青木_はな_富士宮北"
+      },
+      {
+        "lastName": "角谷",
+        "firstName": "怜夏",
+        "team": "富士宮北",
+        "prefecture": "静岡",
+        "playerId": null,
+        "tempId": "角谷_怜夏_富士宮北"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 31,
+    "name": "水野・平岩（岡崎城西）",
+    "information": [
+      {
+        "lastName": "水野",
+        "firstName": "史菜",
+        "team": "岡崎城西",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "水野_史菜_岡崎城西"
+      },
+      {
+        "lastName": "平岩",
+        "firstName": "千裕",
+        "team": "岡崎城西",
+        "prefecture": "愛知",
+        "playerId": null,
+        "tempId": "平岩_千裕_岡崎城西"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 32,
+    "name": "廣岡・早見（県岐阜商）",
+    "information": [
+      {
+        "lastName": "廣岡",
+        "firstName": "愛珠",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "廣岡_愛珠_県岐阜商"
+      },
+      {
+        "lastName": "早見",
+        "firstName": "優里",
+        "team": "県岐阜商",
+        "prefecture": "岐阜",
+        "playerId": null,
+        "tempId": "早見_優里_県岐阜商"
+      }
+    ],
+    "category": "doubles"
+  }
 ]
