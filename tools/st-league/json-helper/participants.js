@@ -3,7 +3,7 @@ const participants = {
   boys: [
     {
       teamId: 'ntt-west',
-      name: ['NTT西日本ブルーグランツ', 'NTT西日本', 'ＮＴＴ西日本'],
+      name: ['NTT西日本ブルーグランツ', 'NTT西日本', 'NTT西日本'],
       players: [
         { lastName: '上松', firstName: '俊貴', id: 1 },
         { lastName: '内田', firstName: '理久', id: 2 },
