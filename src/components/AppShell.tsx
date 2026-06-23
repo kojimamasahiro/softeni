@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 
+import ScrollToTop from '@/components/ScrollToTop';
 import SideNav from '@/components/nav/SideNav';
 import { getNavItems } from '@/lib/navigation';
 import { isScoreSiteMode, siteConfig } from '@/lib/siteConfig';
@@ -145,6 +146,7 @@ export default function AppShell({
         </header>
         <main className="flex-1">{children}</main>
         {footer}
+        <ScrollToTop />
       </div>
     );
   }
@@ -230,6 +232,7 @@ export default function AppShell({
       </div>
 
       {footer}
+      <ScrollToTop />
     </div>
   );
 }
