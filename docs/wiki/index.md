@@ -10,6 +10,8 @@
 - [Score Site Link](./score-site-link.md)
 - [Score Analysis](./score-analysis.md)
 - [Public Pages](./public-pages.md)
+- [Players Pages（選手ページ）](./players-pages.md)
+- [Highschool Pages（高校カテゴリ）](./highschool.md)
 - [SEO（カニバリ/重複制御）](./seo.md)
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md)
 - [Tournaments Local](./tournaments-local.md)

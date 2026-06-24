@@ -25,6 +25,14 @@
 
 野良試合（siteLink なし）は従来どおり `/beta/matches-results/[matchId]`（noindex）に残す。
 
+### 未了（仕様ドラフト §6 との差分・2026-06 時点）
+
+実装が source of truth。下記ドラフト「6. 共有ヘルパーの統一」は**未実施**で、コードと乖離している。
+
+- `generateTournamentUrlFromMatch` は `lib/tournamentHelpers.ts` / `lib/tournamentClientHelpers.ts` に**二重実装のまま残存**し、`src/pages/beta/matches-results/index.tsx` と `.../[matchId]/index.tsx` で現役利用中。
+- canonical / ネスト URL は `getPublicMatchDetailPath`（`siteLink` ベース）で生成しており正だが、`/beta/matches-results` 側の大会リンクはまだ旧ヘルパー経由。
+- ドラフト §6・影響範囲の「二重実装の削除」「表示側 URL 再構築の廃止」は今後の整理対象（Open Question 扱い）。
+
 設計の意図・決定の経緯は以下を参照。
 
 ## 目的

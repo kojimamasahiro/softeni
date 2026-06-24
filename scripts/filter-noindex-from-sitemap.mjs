@@ -13,7 +13,7 @@
 //   判定ロジックを二重に持たないため、ページ側の基準を変えるだけで sitemap も追従する。
 //
 // 実行: postbuild（next-sitemap → sort-sitemaps → 本スクリプト）
-// 仕様: docs/wiki/public-pages.md
+// 仕様: docs/wiki/players-pages.md「選手結果ページの noindex 選別」
 
 import fs from 'node:fs';
 import path from 'node:path';
