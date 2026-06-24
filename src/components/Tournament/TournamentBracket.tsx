@@ -415,6 +415,9 @@ export default function TournamentBracket({
       }
     });
 
+  // 優勝者の entryNo（名前の強調表示に使用）
+  const championEntryNo = entriesByRound.get('優勝')?.[0];
+
   return (
     <section className="mb-8">
       <div className="flex justify-between items-center mb-4 px-1">
@@ -545,6 +548,12 @@ export default function TournamentBracket({
                   const isWinner =
                     matchForEntry?.winnerEntryNo === entryNo || isSeed;
 
+                  // 名前の強調表示は優勝者のみ
+                  const isChampion =
+                    championEntryNo !== undefined &&
+                    championEntryNo !== -1 &&
+                    entryNo === championEntryNo;
+
                   return (
                     <div
                       key={`${roundName}-${entryNo}`}
@@ -579,7 +588,7 @@ export default function TournamentBracket({
                                                                     : 'text-xs'
                                                                 }
                                                                 ${
-                                                                  isWinner
+                                                                  isChampion
                                                                     ? 'text-blue-900 dark:text-blue-100'
                                                                     : 'text-gray-900 dark:text-gray-100'
                                                                 }
