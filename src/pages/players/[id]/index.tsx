@@ -417,9 +417,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // 別々に出る）。同一ラン（大会×種目×開始年）では最長だけを残し、初出位置に維持する。
     const repeatIndex = new Map<string, number>();
     const repeatStreak = new Map<string, number>();
+    // milestone はダブルスを「選手個人」単位で出すため、同一年・種目でパートナーの
+    // イベントも返る。この選手ページの主役だけに絞る（主役名で照合）。
+    const normalizeName = (s: string) =>
+      s.replace(/\s+/g, '').normalize('NFKC');
+    const subjectName = normalizeName(career.subject.display);
     for (const t of career.titles) {
       const ms = getChampionMilestones(t.tournamentId, t.categoryId, t.year);
       for (const e of ms?.events ?? []) {
+        // 団体戦（players 空）は従来どおり通す。個人戦は主役名一致のみ採用。
+        if (
+          e.subject.players.length > 0 &&
+          !e.subject.players.some((p) => normalizeName(p) === subjectName)
+        ) {
+          continue;
+        }
         // 選手ページでは主役名は自明なので、代わりに大会名を前置して
         // 複数の「初優勝」等を区別できるようにする（例:「全日本選手権 初優勝」）。
         // 単年の出来事（初優勝など）は年も前置する。連覇は shortLabel に

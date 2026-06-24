@@ -208,9 +208,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* 共通: 歴代優勝者 */}
             {c.historicalWinners.length > 0 && (
               <div>
-                <h3 className="mb-1 text-sm font-semibold">
-                  {tournamentLabel} 歴代優勝者（{c.categoryLabel}）
-                </h3>
+                <h3 className="mb-1 text-sm font-semibold">歴代優勝者</h3>
                 <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                   {c.historicalWinners.map((w) => (
                     <li key={w.year}>

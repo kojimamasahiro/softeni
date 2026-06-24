@@ -567,9 +567,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
       // milestone（連覇 / 初優勝）
       const ms = getChampionMilestones(tournamentId, categoryId, ty, hw);
       for (const e of ms?.events ?? []) {
-        // ラベルではなくイベント実体（種別×大会×種目×年）で重複排除する。
+        // ラベルではなくイベント実体（種別×大会×種目×年×主役）で重複排除する。
         // 同一表示文字列の別イベント（例: 別種目の初優勝）を取りこぼさない。
-        const key = `${e.kind}|${e.tournamentId}|${e.categoryId}|${e.year}`;
+        // 主役（subject.display）まで含めるのは、ダブルスを選手個人単位で判定する
+        // ため同一年・同一種目で複数選手のイベント（例: 2人とも初優勝）が出るから。
+        const key = `${e.kind}|${e.tournamentId}|${e.categoryId}|${e.year}|${e.subject.display}`;
         if (seenMilestone.has(key)) continue;
         seenMilestone.add(key);
         contextBlocks.milestones.push({

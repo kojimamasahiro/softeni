@@ -21,6 +21,12 @@ export type ChampionEntry = {
   year: number;
   /** 個人: 選手名一覧 / 団体: 空配列 */
   players: string[];
+  /**
+   * 個人の選手別比較キー（players と同じ index で対応）。各要素は
+   * 正規化済みの「名前@所属」。ダブルスで「選手個人」を主役に連覇/初優勝を
+   * 判定するために使う（ペア単位の championKey とは別軸）。団体は空配列。
+   */
+  playerKeys: string[];
   /** 所属（個人=ペアの所属校、団体=校名） */
   teams: string[];
   prefectures: string[];
@@ -134,6 +140,20 @@ export function parseCategoryFile(fileName: string): {
   return { categoryId: `${category}-${age}-${gender}`, category, age, gender };
 }
 
+/** 表記揺れを吸収する正規化（空白除去＋NFKC）。比較キー用。 */
+function normalizeKeyPart(s: string): string {
+  return s.replace(/\s+/g, '').normalize('NFKC');
+}
+
+/**
+ * 選手個人の比較キー（名前＋所属）。同姓同名を所属で区別しつつ、ペアが替わっても
+ * 同一選手として連覇/初優勝を判定できるようにする。所属不明なら名前のみ。
+ */
+export function playerKey(name: string, team?: string | null): string {
+  const base = team ? `${name}@${team}` : name;
+  return normalizeKeyPart(base);
+}
+
 /** entry を選手名・所属・表示文字列へ解決する（団体は校名表示） */
 function resolveEntry(
   entry: RawEntry,
@@ -141,10 +161,12 @@ function resolveEntry(
 ): {
   display: string;
   players: string[];
+  playerKeys: string[];
   teams: string[];
   prefectures: string[];
 } {
   const players: string[] = [];
+  const playerKeys: string[] = [];
   const teams: string[] = [];
   const prefectures: string[] = [];
 
@@ -153,10 +175,14 @@ function resolveEntry(
     if (!p) {
       // 参加者情報が無い場合は id をそのまま名前として扱う
       players.push(id);
+      playerKeys.push(playerKey(id));
       continue;
     }
     const name = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
-    if (name) players.push(name);
+    if (name) {
+      players.push(name);
+      playerKeys.push(playerKey(name, p.team));
+    }
     if (p.team && !teams.includes(p.team)) teams.push(p.team);
     if (p.prefecture && !prefectures.includes(p.prefecture)) {
       prefectures.push(p.prefecture);
@@ -173,7 +199,7 @@ function resolveEntry(
     display = nameStr;
   }
 
-  return { display, players, teams, prefectures };
+  return { display, players, playerKeys, teams, prefectures };
 }
 
 /** 1 種目ファイルから「優勝」エントリのみ抽出して ChampionEntry を作る */
@@ -196,13 +222,21 @@ function extractWinner(detailPath: string, year: number): ChampionEntry | null {
     return {
       year,
       players: resolved.players,
+      playerKeys: resolved.playerKeys,
       teams: resolved.teams,
       prefectures: resolved.prefectures,
       display: resolved.display || null,
     };
   }
   // 優勝者を特定できない年も「年の存在」は示す（捏造しない）
-  return { year, players: [], teams: [], prefectures: [], display: null };
+  return {
+    year,
+    players: [],
+    playerKeys: [],
+    teams: [],
+    prefectures: [],
+    display: null,
+  };
 }
 
 /**
@@ -245,6 +279,7 @@ export function resolveEntryToChampion(
   return {
     year,
     players: r.players,
+    playerKeys: r.playerKeys,
     teams: r.teams,
     prefectures: r.prefectures,
     display: r.display || null,

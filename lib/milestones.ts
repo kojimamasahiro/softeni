@@ -24,7 +24,9 @@ import {
   resolveEntryToChampion,
   type ChampionEntry,
   type HistoricalWinnersBlock,
+  type RepeatChampion,
 } from './tournamentRecords';
+import { getCategoryLabel } from './utils';
 
 export type MilestoneKind =
   | 'first-title' // 初優勝（当サイト掲載範囲で）
@@ -80,12 +82,133 @@ const KIND_IMPORTANCE: Record<MilestoneKind, number> = {
   'first-appearance': 5,
 };
 
+/**
+ * categoryId（例: doubles-none-boys）から「性別＋種目」ラベルを作る。
+ * 種目（シングルス/ダブルス/団体戦）と性別（男子/女子/混合）を区別して表示するため、
+ * information の categoryLabel（「男子一般」など種目が落ちる表記揺れがある）には頼らず
+ * categoryId から決定的に組み立てる。連覇/初優勝バッジに前置して種目を区別する。
+ */
+function genreGenderLabel(categoryId: string): string {
+  const parts = categoryId.split('-');
+  // categoryId = `${category}-${age}-${gender}`。category はハイフンを含みうる。
+  const gender = parts[parts.length - 1];
+  const category = parts.slice(0, -2).join('-');
+  const genderLabel =
+    gender === 'boys'
+      ? '男子'
+      : gender === 'girls'
+        ? '女子'
+        : gender === 'mixed'
+          ? '混合'
+          : '';
+  return `${genderLabel}${getCategoryLabel(category)}`;
+}
+
 function subjectOf(c: ChampionEntry): MilestoneEvent['subject'] {
   return {
     players: c.players,
     teams: c.teams,
     display: c.display ?? '',
   };
+}
+
+/**
+ * 選手個人（playerKey）の連覇情報を返す。ペアが替わっても、その選手が連続開催で
+ * 優勝していれば連覇とみなす（ダブルスを「選手個人」軸で判定するための関数）。
+ * 対象年にその選手が優勝者に含まれない場合は null。
+ */
+function computePlayerStreak(
+  championsDesc: ChampionEntry[],
+  targetYear: number,
+  key: string,
+): RepeatChampion | null {
+  const asc = championsDesc.slice().sort((a, b) => a.year - b.year);
+  const idx = asc.findIndex((c) => c.year === targetYear);
+  if (idx < 0) return null;
+  if (!asc[idx].playerKeys.includes(key)) return null;
+
+  let streak = 1;
+  let since = asc[idx].year;
+  for (let i = idx - 1; i >= 0; i--) {
+    // 連続する開催年であることも条件にする（隔年・欠落は連覇を切る）
+    if (asc[i + 1].year - asc[i].year !== 1) break;
+    if (!asc[i].playerKeys.includes(key)) break;
+    streak += 1;
+    since = asc[i].year;
+  }
+  return streak >= 2 ? { streak, since } : null;
+}
+
+/**
+ * 個人戦（シングルス/ダブルス）の repeat-title / first-title を「選手個人」単位で
+ * 抽出する。ダブルスでも各選手をそれぞれ主役にし、パートナーが替わっても本人の
+ * 連続優勝を連覇、本人が掲載範囲で初優勝なら初優勝として 1 選手 1 イベントを返す。
+ */
+function buildIndividualMilestones(
+  block: HistoricalWinnersBlock,
+  target: ChampionEntry,
+  targetYear: number,
+  tournamentId: string,
+  categoryId: string,
+): MilestoneEvent[] {
+  const events: MilestoneEvent[] = [];
+  // 種目（性別＋シングルス/ダブルス/団体）を区別するためのラベル前置。
+  const cat = genreGenderLabel(categoryId);
+  // 「優勝者が判明している」過去の収録年のみ「初」の反証に使える
+  const priorKnownYears = block.champions.filter(
+    (c) => c.year < targetYear && c.display,
+  );
+
+  target.players.forEach((name, i) => {
+    const key = target.playerKeys[i];
+    if (!key) return;
+    const subject: MilestoneEvent['subject'] = {
+      players: [name],
+      teams: target.teams,
+      display: name,
+    };
+
+    // --- repeat-title（連覇）: 本人の連続優勝（confirmed） ---
+    const streak = computePlayerStreak(block.champions, targetYear, key);
+    if (streak) {
+      const streakLabel =
+        streak.streak >= 3 ? `${streak.streak}連覇` : '連覇（2連覇）';
+      const shortLabel = `${cat}${streakLabel}（${streak.since}年〜）`;
+      events.push({
+        kind: 'repeat-title',
+        subject,
+        tournamentId,
+        categoryId,
+        year: targetYear,
+        detail: { streak: streak.streak, since: streak.since },
+        confidence: 'confirmed',
+        label: `${name} ${shortLabel}`,
+        shortLabel,
+      });
+      return; // 連覇のときは初優勝ではない
+    }
+
+    // --- first-title（初優勝）: 本人が掲載範囲の過去年に優勝していない（scope-limited） ---
+    if (priorKnownYears.length > 0) {
+      const wonBefore = priorKnownYears.some((c) => c.playerKeys.includes(key));
+      if (!wonBefore) {
+        events.push({
+          kind: 'first-title',
+          subject,
+          tournamentId,
+          categoryId,
+          year: targetYear,
+          detail: { coveredSince: block.sourceYears[0] },
+          confidence: 'scope-limited',
+          label: `${name} ${cat}初優勝`,
+          shortLabel: `${cat}初優勝`,
+          scopeNote: SCOPE_NOTE,
+        });
+      }
+    }
+  });
+
+  return events;
 }
 
 /**
@@ -110,51 +233,67 @@ export function getChampionMilestones(
   const targetKey = championKey(target);
   if (!targetKey) return null;
 
-  const events: MilestoneEvent[] = [];
-  const subject = subjectOf(target);
+  let events: MilestoneEvent[] = [];
 
-  // --- repeat-title（連覇）: Step1 の連覇判定をそのまま使う（confirmed） ---
-  const repeat = block.edition.repeatChampion;
-  if (repeat && repeat.streak >= 2) {
-    const streakLabel =
-      repeat.streak >= 3 ? `${repeat.streak}連覇` : '連覇（2連覇）';
-    const shortLabel = `${streakLabel}（${repeat.since}年〜）`;
-    events.push({
-      kind: 'repeat-title',
-      subject,
+  if (target.players.length > 0) {
+    // --- 個人戦（シングルス/ダブルス）: 「選手個人」単位で判定する ---
+    // ダブルスはペア単位ではなく各選手をそれぞれ主役にし、パートナーが替わっても
+    // 本人の連続優勝を連覇・本人の掲載範囲初優勝を初優勝として 1 選手 1 イベント出す。
+    events = buildIndividualMilestones(
+      block,
+      target,
+      targetYear,
       tournamentId,
       categoryId,
-      year: targetYear,
-      detail: { streak: repeat.streak, since: repeat.since },
-      confidence: 'confirmed',
-      label: `${subject.display} ${shortLabel}`,
-      shortLabel,
-    });
-  }
+    );
+  } else {
+    // --- 団体戦: 校（championKey）単位で判定する（従来どおり） ---
+    const subject = subjectOf(target);
+    const cat = genreGenderLabel(categoryId);
 
-  // --- first-title（初優勝）: 掲載範囲の過去年に同一優勝者がいない（scope-limited） ---
-  // 連覇のときは初優勝ではないので抑制。
-  // 「優勝者が判明している」過去の収録年が存在する場合のみ「初」と言える。
-  // 優勝者不明年（display=null）は反証にならない（その年に主役が勝っていた可能性を
-  // 排除できない）ため、誤った「初優勝」を出さないよう除外する。
-  const priorKnownYears = block.champions.filter(
-    (c) => c.year < targetYear && c.display,
-  );
-  if (!repeat && priorKnownYears.length > 0) {
-    const wonBefore = priorKnownYears.some((c) => championKey(c) === targetKey);
-    if (!wonBefore) {
+    // repeat-title（連覇）: Step1 の連覇判定をそのまま使う（confirmed）
+    const repeat: RepeatChampion | null = block.edition.repeatChampion;
+    if (repeat && repeat.streak >= 2) {
+      const streakLabel =
+        repeat.streak >= 3 ? `${repeat.streak}連覇` : '連覇（2連覇）';
+      const shortLabel = `${cat}${streakLabel}（${repeat.since}年〜）`;
       events.push({
-        kind: 'first-title',
+        kind: 'repeat-title',
         subject,
         tournamentId,
         categoryId,
         year: targetYear,
-        detail: { coveredSince: block.sourceYears[0] },
-        confidence: 'scope-limited',
-        label: `${subject.display} 初優勝`,
-        shortLabel: '初優勝',
-        scopeNote: SCOPE_NOTE,
+        detail: { streak: repeat.streak, since: repeat.since },
+        confidence: 'confirmed',
+        label: `${subject.display} ${shortLabel}`,
+        shortLabel,
       });
+    }
+
+    // first-title（初優勝）: 掲載範囲の過去年に同一優勝校がいない（scope-limited）
+    // 連覇のときは初優勝ではないので抑制。優勝者不明年（display=null）は反証に
+    // ならないため除外する。
+    const priorKnownYears = block.champions.filter(
+      (c) => c.year < targetYear && c.display,
+    );
+    if (!repeat && priorKnownYears.length > 0) {
+      const wonBefore = priorKnownYears.some(
+        (c) => championKey(c) === targetKey,
+      );
+      if (!wonBefore) {
+        events.push({
+          kind: 'first-title',
+          subject,
+          tournamentId,
+          categoryId,
+          year: targetYear,
+          detail: { coveredSince: block.sourceYears[0] },
+          confidence: 'scope-limited',
+          label: `${subject.display} ${cat}初優勝`,
+          shortLabel: `${cat}初優勝`,
+          scopeNote: SCOPE_NOTE,
+        });
+      }
     }
   }
 
