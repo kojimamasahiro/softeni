@@ -47,9 +47,36 @@ function CloseIcon() {
   );
 }
 
+/** サイドバー開閉トグル（パネル左）アイコン。 */
+function SidebarIcon() {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <line x1="9" y1="4" x2="9" y2="20" />
+    </svg>
+  );
+}
+
 /**
- * 公開サイト共通シェル（上部バー＋サイドバー＋ドロワー）。
- * - softeni-pick mode: PC=2ペイン（折りたたみ可能・状態保持）、モバイル=ドロワー。
+ * 公開サイト共通シェル（左サイドバー + 上部ヘッダー + ドロワー）。
+ * - softeni-pick mode:
+ *   - PC: 左に固定サイドバー（幅 280px・独立スクロール）、右に上部固定ヘッダー
+ *     （高さ 64px・sticky）＋本文。サイドバーは閉じるボタンで折りたたみでき
+ *     （状態は localStorage 保持）、閉じるとヘッダーに開くボタンを出す。
+ *   - モバイル: サイドバーはドロワー化。ヘッダーは上部固定のまま、左にハンバーガー。
+ *   スクロールはページ（window）スクロールを採用し、サイドバー/ヘッダーを sticky で
+ *   固定する。これにより既存の ScrollToTop・スクロール復元・アンカー遷移を壊さず、
+ *   見た目は「本文だけがスクロールする」構成になる。
  * - score mode: サイドバーは出さず上部バーのみ（ADR-006）。
  */
 export default function AppShell({
@@ -69,6 +96,7 @@ export default function AppShell({
   const [sidebarOpen, setSidebarOpen] = useState(true);
   // モバイルドロワーの開閉（保持しない）
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const closeDrawer = useCallback(() => setDrawerOpen(false), []);
 
   useEffect(() => {
     if (scoreMode) return;
@@ -76,7 +104,7 @@ export default function AppShell({
       const saved = localStorage.getItem(SIDEBAR_PREF_KEY);
       if (saved != null) setSidebarOpen(saved === 'true');
     } catch {
-      // localStorage 不可環境では既定値のまま
+      // localStorage 不可環境では既定値（開いた状態）のまま
     }
   }, [scoreMode]);
 
@@ -91,8 +119,6 @@ export default function AppShell({
       return next;
     });
   }, []);
-
-  const closeDrawer = useCallback(() => setDrawerOpen(false), []);
 
   // ルート遷移でドロワーを閉じる
   useEffect(() => {
@@ -151,13 +177,74 @@ export default function AppShell({
     );
   }
 
-  // ---- softeni-pick mode: 2ペイン ----
+  // ---- softeni-pick mode: 左固定サイドバー + 上部固定ヘッダー ----
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* モバイルは非sticky（自動広告の上部アンカーと最上部で競合させない）。PC のみ固定。 */}
-      <header className="z-30 w-full bg-gray-50 text-gray-800 shadow-sm lg:sticky lg:top-0 dark:bg-gray-900 dark:text-gray-100">
-        <div className="flex items-center gap-3 px-4 py-4">
-          {/* モバイル: ドロワー開閉 */}
+    <div className="flex min-h-screen">
+      {/* 左サイドバー: 幅 280px・独立スクロール（PC のみ）。閉じると幅 0。 */}
+      <aside
+        aria-hidden={!sidebarOpen}
+        className={`hidden shrink-0 border-r border-gray-200 bg-gray-50 transition-[width] duration-200 lg:block dark:border-gray-800 dark:bg-gray-900 ${
+          sidebarOpen
+            ? 'lg:w-[280px]'
+            : 'lg:w-0 lg:overflow-hidden lg:border-r-0'
+        }`}
+      >
+        <div className="sticky top-0 flex h-screen w-[280px] flex-col">
+          {/* サイドバー上部: 閉じるボタン（高さ 64px でヘッダーと揃える） */}
+          <div className="flex h-16 shrink-0 items-center justify-end border-b border-gray-200 px-3 dark:border-gray-800">
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              aria-label="サイドバーを閉じる"
+              aria-expanded={sidebarOpen}
+              className="rounded-md p-1.5 text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
+            >
+              <SidebarIcon />
+            </button>
+          </div>
+          {/* ナビ本体（独立スクロール） */}
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            <SideNav pathname={pathname} />
+          </div>
+        </div>
+      </aside>
+
+      {/* モバイルドロワー */}
+      {drawerOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={closeDrawer}
+            aria-hidden="true"
+          />
+          <div
+            id="mobile-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="サイトナビゲーション"
+            className="absolute left-0 top-0 h-full w-72 max-w-[80%] overflow-y-auto bg-gray-50 shadow-xl dark:bg-gray-900"
+          >
+            <div className="flex h-16 items-center justify-between px-4">
+              <span className="text-lg font-bold">{siteConfig.siteName}</span>
+              <button
+                type="button"
+                onClick={closeDrawer}
+                aria-label="メニューを閉じる"
+                className="rounded-md p-1 hover:bg-gray-200 dark:hover:bg-gray-800"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+            <SideNav pathname={pathname} onNavigate={closeDrawer} />
+          </div>
+        </div>
+      )}
+
+      {/* 右カラム: 上部固定ヘッダー + 本文 + フッター */}
+      <div className="flex min-w-0 flex-1 flex-col">
+        {/* ヘッダー: 高さ 64px・上部固定（sticky）。コンテンツが長くても消えない。 */}
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-gray-200 bg-gray-50 px-4 text-gray-800 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100">
+          {/* モバイル: ハンバーガー（ヘッダー左） */}
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
@@ -168,70 +255,25 @@ export default function AppShell({
           >
             <HamburgerIcon />
           </button>
-          {/* PC: サイドバー折りたたみ */}
-          <button
-            type="button"
-            onClick={toggleSidebar}
-            aria-label={
-              sidebarOpen ? 'サイドバーを折りたたむ' : 'サイドバーを開く'
-            }
-            aria-expanded={sidebarOpen}
-            className="hidden rounded-md p-1 hover:bg-gray-200 lg:inline-flex dark:hover:bg-gray-800"
-          >
-            <HamburgerIcon />
-          </button>
-          {brand}
-        </div>
-      </header>
-
-      <div className="flex flex-1">
-        {/* PC サイドバー */}
-        <aside
-          aria-hidden={!sidebarOpen}
-          className={`hidden shrink-0 border-r border-gray-200 bg-gray-50 transition-all duration-200 lg:block dark:border-gray-800 dark:bg-gray-900 ${
-            sidebarOpen ? 'lg:w-60' : 'lg:w-0 lg:overflow-hidden lg:border-r-0'
-          }`}
-        >
-          <div className="sticky top-16 max-h-[calc(100vh-4rem)] w-60 overflow-y-auto">
-            <SideNav pathname={pathname} />
-          </div>
-        </aside>
-
-        {/* モバイルドロワー */}
-        {drawerOpen && (
-          <div className="fixed inset-0 z-40 lg:hidden">
-            <div
-              className="absolute inset-0 bg-black/40"
-              onClick={closeDrawer}
-              aria-hidden="true"
-            />
-            <div
-              id="mobile-drawer"
-              role="dialog"
-              aria-modal="true"
-              aria-label="サイトナビゲーション"
-              className="absolute left-0 top-0 h-full w-72 max-w-[80%] overflow-y-auto bg-gray-50 shadow-xl dark:bg-gray-900"
+          {/* PC: サイドバーを開く（折りたたみ時のみ表示） */}
+          {!sidebarOpen && (
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              aria-label="サイドバーを開く"
+              aria-expanded={sidebarOpen}
+              className="hidden rounded-md p-1.5 hover:bg-gray-200 lg:inline-flex dark:hover:bg-gray-800"
             >
-              <div className="flex items-center justify-between px-4 py-4">
-                <span className="text-lg font-bold">{siteConfig.siteName}</span>
-                <button
-                  type="button"
-                  onClick={closeDrawer}
-                  aria-label="メニューを閉じる"
-                  className="rounded-md p-1 hover:bg-gray-200 dark:hover:bg-gray-800"
-                >
-                  <CloseIcon />
-                </button>
-              </div>
-              <SideNav pathname={pathname} onNavigate={closeDrawer} />
-            </div>
-          </div>
-        )}
+              <SidebarIcon />
+            </button>
+          )}
+          {brand}
+        </header>
 
         <main className="min-w-0 flex-1">{children}</main>
+        {footer}
       </div>
 
-      {footer}
       <ScrollToTop />
     </div>
   );
