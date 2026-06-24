@@ -16,19 +16,44 @@ import {
   getArticleRecord,
   listPublishedArticles,
   type NewsArticleView,
+  type PreviewPlayerRef,
 } from '@/lib/newsArticle';
 import { buildSiteUrl, siteConfig } from '@/lib/siteConfig';
-
-function winPct(wins: number, matches: number): string {
-  if (matches <= 0) return '-';
-  return `${Math.round((wins / matches) * 1000) / 10}%`;
-}
 
 function formatDate(iso: string | undefined): string | null {
   if (!iso) return null;
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return null;
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+}
+
+/** 選手名。結果ページ（/players/{id}/results）がある選手はリンク化する */
+function PlayerName({ p }: { p: PreviewPlayerRef }) {
+  if (p.playerId != null) {
+    return (
+      <Link
+        href={`/players/${p.playerId}/results/`}
+        className="text-blue-600 hover:underline dark:text-blue-400"
+      >
+        {p.name}
+      </Link>
+    );
+  }
+  return <>{p.name}</>;
+}
+
+/** 選手名を「・」区切りで並べる（各名はリンク化されうる） */
+function PlayerNames({ players }: { players: PreviewPlayerRef[] }) {
+  return (
+    <>
+      {players.map((p, i) => (
+        <span key={`${p.name}-${i}`}>
+          {i > 0 && '・'}
+          <PlayerName p={p} />
+        </span>
+      ))}
+    </>
+  );
 }
 
 export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
@@ -163,45 +188,134 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               </ul>
             )}
 
-            {/* プレビュー: 前回王者 + 注目選手 */}
-            {isPreview && c.previousChampion && (
+            {/* プレビュー: 連覇・防衛ウォッチ（前回王者の出場状況） */}
+            {isPreview && c.titleDefense && (
+              <div className="mb-3">
+                <h3 className="mb-1 text-sm font-semibold">連覇・防衛の行方</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-200">
+                  前回王者{' '}
+                  <span className="font-semibold">
+                    {c.titleDefense.players.length > 0 ? (
+                      <>
+                        {c.titleDefense.status === 'partial' ? (
+                          <PlayerNames
+                            players={c.titleDefense.players.filter(
+                              (p) => p.returning,
+                            )}
+                          />
+                        ) : (
+                          <PlayerNames players={c.titleDefense.players} />
+                        )}
+                      </>
+                    ) : (
+                      c.titleDefense.defendingChampionDisplay
+                    )}
+                  </span>
+                  {c.titleDefense.players.length > 0 &&
+                    c.titleDefense.status !== 'partial' &&
+                    c.titleDefense.team &&
+                    `（${c.titleDefense.team}）`}
+                  （{c.titleDefense.defendingYear}年優勝）
+                  {c.titleDefense.status === 'intact' && 'が連覇に挑む。'}
+                  {c.titleDefense.status === 'partial' &&
+                    'が今大会も出場し、新ペアで連覇を狙う。'}
+                  {c.titleDefense.status === 'absent' &&
+                    'は不在。新王者が誕生する。'}
+                </p>
+              </div>
+            )}
+            {isPreview && !c.titleDefense && c.previousChampion && (
               <p className="mb-2 text-sm">
                 <span className="font-semibold">前回王者:</span>{' '}
                 {c.previousChampion}
               </p>
             )}
-            {isPreview && c.notablePlayers.length > 0 && (
+
+            {/* プレビュー: 前回入賞者（準優勝/ベスト4）の再登場 */}
+            {isPreview && c.returningPlacers.length > 0 && (
               <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">注目選手</h3>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {c.notablePlayers.map((p) => (
-                    <div
-                      key={p.slug}
-                      className="rounded-md border border-gray-200 p-2 text-sm dark:border-gray-700"
-                    >
-                      <Link
-                        href={`/players/${p.slug}`}
-                        className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
-                      >
-                        {p.display}
-                      </Link>
-                      {p.team && (
-                        <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
-                          （{p.team}）
-                        </span>
-                      )}
-                      <div className="text-gray-700 dark:text-gray-200">
-                        通算 {p.matches}試合 {p.wins}勝（勝率{' '}
-                        {winPct(p.wins, p.matches)}）
-                      </div>
-                      {p.titles.length > 0 && (
-                        <div className="text-xs text-gray-600 dark:text-gray-300">
-                          主なタイトル: {p.titles.join(' / ')}
-                        </div>
-                      )}
-                    </div>
+                <h3 className="mb-1 text-sm font-semibold">
+                  前回入賞者の再登場
+                </h3>
+                <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
+                  {c.returningPlacers.map((p, i) => (
+                    <li key={`${p.placement}-${i}`}>
+                      前回{p.placement}:{' '}
+                      <span className="font-semibold">
+                        {p.players.length > 0 ? (
+                          <PlayerNames players={p.players} />
+                        ) : (
+                          p.display
+                        )}
+                      </span>
+                      {p.players.length > 0 && p.team && `（${p.team}）`}
+                      {!p.intact && '（一部継続）'}
+                    </li>
                   ))}
-                </div>
+                </ul>
+              </div>
+            )}
+
+            {/* プレビュー: 過去の優勝者（前々回以前）の再挑戦 */}
+            {isPreview && c.returningFormerChampions.length > 0 && (
+              <div className="mb-3">
+                <h3 className="mb-1 text-sm font-semibold">
+                  過去の優勝者が再挑戦
+                </h3>
+                <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
+                  {c.returningFormerChampions.map((f, i) => (
+                    <li key={`former-${i}`}>
+                      {f.years.join('・')}年優勝:{' '}
+                      <span className="font-semibold">
+                        {f.players.length > 0 ? (
+                          <PlayerNames players={f.players} />
+                        ) : (
+                          f.display
+                        )}
+                      </span>
+                      {f.players.length > 0 && f.team && `（${f.team}）`}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* プレビュー: 出場規模・勢力図 */}
+            {isPreview && c.fieldOverview && (
+              <div className="mb-3">
+                <h3 className="mb-1 text-sm font-semibold">今大会の概況</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-200">
+                  出場{' '}
+                  <span className="font-semibold">
+                    {c.fieldOverview.entryCount}
+                  </span>
+                  {c.categoryId.startsWith('singles')
+                    ? '選手'
+                    : c.categoryId.startsWith('doubles')
+                      ? 'ペア'
+                      : c.categoryId.startsWith('team')
+                        ? '校'
+                        : '組'}
+                  。
+                  {c.fieldOverview.topPrefectures.length > 0 && (
+                    <>
+                      {' '}
+                      都道府県別では{' '}
+                      {c.fieldOverview.topPrefectures
+                        .map((p) => `${p.prefecture}${p.count}`)
+                        .join('、')}{' '}
+                      が上位。
+                    </>
+                  )}
+                </p>
+                {c.fieldOverview.multiEntryTeams.length > 0 && (
+                  <p className="text-sm text-gray-700 dark:text-gray-200">
+                    複数エントリー校:{' '}
+                    {c.fieldOverview.multiEntryTeams
+                      .map((t) => `${t.team}（${t.count}）`)
+                      .join('、')}
+                  </p>
+                )}
               </div>
             )}
 

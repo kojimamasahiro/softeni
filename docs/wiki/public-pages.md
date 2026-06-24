@@ -150,6 +150,30 @@
 - `lib/siteConfig.ts`
 - `src/components/MetaHead.tsx`
 
+### 選手 URL の 2 系統：`/players/{slug}` と `/players/{id}/results`（区別・重要）
+
+選手まわりには **別系統の 2 種類の URL / 識別子** があり、混同しやすいので明確に区別する。
+
+| 観点 | プロフィール系（slug） | 結果ページ系（id） |
+| --- | --- | --- |
+| URL | `/players/{slug}/`（＋ `/players/{slug}/information`） | `/players/{id}/results/` |
+| 識別子 | **slug**（文字列。例 `funemizu-hayato`） | **数値 id**（例 `29`） |
+| 正データ | `data/players/{slug}/`（`information.json` ＋ `analysis.json`） | `data/players/index.json`（全選手の `id` / 姓名 / `count`） |
+| 対象範囲 | **curated のみ**（約 23 選手。手動整備したプロフィール） | **掲載選手全体**（結果ページが実在するのは `count>=5`、約 8,000 組） |
+| 主な中身 | プロフィール（身長・所属・ポジション）＋通算成績＋career-record/milestone | 収録試合の結果一覧・対戦相手・主なペア |
+| 実装 | `src/pages/players/[id]/index.tsx`（`[id]` には slug が入る）、`lib/careerRecord.ts` | `src/pages/players/[id]/results.tsx`、`data/players/index.json` |
+| 名前からの解決 | `resolveSlugByFullName()`（`lib/careerRecord.ts`）。姓名**完全一致かつ一意**のときのみ slug を返す（曖昧なら null） | `data/players/index.json` を姓名一致（`lastName::firstName`、`count>=5`）。**同姓同名は最初の id**（学校ページ・高校歴代・チーム年度・news プレビュー共通の既存規約） |
+| リンク付与条件 | curated 選手のみ（解決できた時だけ） | 結果ページが実在する選手（`count>=5`）のみ。無ければ名前のみ表示（デッドリンク防止） |
+
+使い分けの原則:
+
+- **選手名から「その選手の成績ページ」へ内部リンクしたい一般用途**は、原則 **id 系（`/players/{id}/results/`）** を使う。curated でない選手にも付くため網羅性が高い（学校ページ・高校歴代ページ・チーム年度ページ・/news プレビューはすべてこの方式）。
+- **slug 系（`/players/{slug}`）** は curated プロフィールに限定。career-record/milestone など「手動整備済みの濃い情報」を出す場面でのみ使う（大会ハブの curated 優勝者など）。
+- 結果ページ（id）→ プロフィール（slug）への**逆リンク**は、姓名一致で curated プロフィールがある時のみ表示する（`results.tsx`）。
+- 2 系統の **URL 統合は当面しない**方針（2026-06 決定。カニバリ対象は curated 約 23 選手のみとスコープが小さく、統合は 301・移植の毀損リスクが上回るため）。
+
+注意（Assumption）: `data/players/index.json` には所属（team）が無いため id 解決は**姓名のみ**で行い、同姓同名は最初の id に寄せる。所属で曖昧性を解消したい照合（連覇判定など）は別途 `tournamentRecords` の `playerKey`（名前@所属）を使う。
+
 ### 選手一覧ページ（`/players`）の検索対象（2026-06 変更）
 
 - 検索対象は収録されている全選手（`count>=2`）。`count<5` の選手結果ページを持たない選手も検索でヒットする（リンクは付かず名前のみ表示）。
