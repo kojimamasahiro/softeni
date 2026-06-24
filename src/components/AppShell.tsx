@@ -1,7 +1,13 @@
 // src/components/AppShell.tsx
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 
 import ScrollToTop from '@/components/ScrollToTop';
 import SideNav from '@/components/nav/SideNav';
@@ -9,6 +15,11 @@ import { getNavItems } from '@/lib/navigation';
 import { isScoreSiteMode, siteConfig } from '@/lib/siteConfig';
 
 const SIDEBAR_PREF_KEY = 'sideNavOpen';
+
+// SSR では useLayoutEffect が使えないため、クライアントのみ layout effect を使う。
+// 保存済みのサイドバー状態を「描画前」に反映してチラつきを防ぐ目的。
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 function HamburgerIcon() {
   return (
@@ -92,13 +103,18 @@ export default function AppShell({
   const scoreMode = isScoreSiteMode();
   const navItems = getNavItems();
 
-  // PC サイドバーの開閉（localStorage で状態保持）
+  // PC サイドバーの開閉（localStorage で状態保持）。
+  // SSR の既定は「開いた状態」。クライアントで保存値を描画前に反映する。
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  // 初回マウント後のみ true。これが true の間だけ幅トランジションを有効化し、
+  // リロード直後の「開く→閉じる」アニメーションを防ぐ。
+  const [hydrated, setHydrated] = useState(false);
   // モバイルドロワーの開閉（保持しない）
   const [drawerOpen, setDrawerOpen] = useState(false);
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
 
-  useEffect(() => {
+  // 描画前に保存済みの開閉状態へ切り替える（チラつき・初回アニメーション防止）。
+  useIsomorphicLayoutEffect(() => {
     if (scoreMode) return;
     try {
       const saved = localStorage.getItem(SIDEBAR_PREF_KEY);
@@ -107,6 +123,16 @@ export default function AppShell({
       // localStorage 不可環境では既定値（開いた状態）のまま
     }
   }, [scoreMode]);
+
+  // 初回ペイント後に: トランジションを有効化し、FOUC 防止用クラスを外す。
+  // この時点で React 側の状態が確定しているため、以降は React が幅を制御する。
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      setHydrated(true);
+      document.documentElement.classList.remove('sidebar-collapsed');
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const toggleSidebar = useCallback(() => {
     setSidebarOpen((prev) => {
@@ -182,8 +208,11 @@ export default function AppShell({
     <div className="flex min-h-screen">
       {/* 左サイドバー: 幅 280px・独立スクロール（PC のみ）。閉じると幅 0。 */}
       <aside
+        data-sidebar
         aria-hidden={!sidebarOpen}
-        className={`hidden shrink-0 border-r border-gray-200 bg-gray-50 transition-[width] duration-200 lg:block dark:border-gray-800 dark:bg-gray-900 ${
+        className={`hidden shrink-0 border-r border-gray-200 bg-gray-50 lg:block dark:border-gray-800 dark:bg-gray-900 ${
+          hydrated ? 'transition-[width] duration-200' : ''
+        } ${
           sidebarOpen
             ? 'lg:w-[280px]'
             : 'lg:w-0 lg:overflow-hidden lg:border-r-0'

@@ -27,6 +27,20 @@ body {
 }
 
 /*
+ * サイドバー状態のチラつき(FOUC)防止。
+ * _document のインラインスクリプトが描画前に html.sidebar-collapsed を付与し、
+ * PC ではサイドバー幅を 0 に上書きする。React マウント後はクラスが外れ、
+ * 以降は AppShell（Tailwind クラス）が幅を制御する。
+ */
+@media (min-width: 1024px) {
+  html.sidebar-collapsed aside[data-sidebar] {
+    width: 0 !important;
+    overflow: hidden !important;
+    border-right-width: 0 !important;
+  }
+}
+
+/*
  * AdSense 自動広告（ページ内自動挿入）が配信されなかった枠を畳む。
  * 未配信時に予約済みの空白だけが残り、ヘッダーとコンテンツの間に
  * 大きな余白ができる症状を防ぐ。配信された枠（filled）はそのまま表示。
