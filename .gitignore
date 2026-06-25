@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# 生成物（prebuild の generate-players-lite.mjs が毎回生成。約6,400ファイルあるためコミットしない）
+/public/data/players-lite/
+
 # production
 /build
 

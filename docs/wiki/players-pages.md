@@ -48,6 +48,16 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 - ヘッダ（`{fullName} 選手の試合結果（{team}）`）や JSON-LD の `affiliation` は従来どおり **最新の所属**（`teamRecords` の最終年）を使う。大会ごとの所属はカード単位の表示のみ。
 - 表示: `src/components/PlayerResults.tsx` の各大会カードで「ペア」の下（ペアが無い場合は「詳細」の下）に「所属 {team}」を表示（`info.team` がある時のみ）。
 
+## 結果ページを持たない選手（count<5）の情報表示（2026-06 追加）
+
+結果ページが実在するのは `count>=5` の選手のみ（`getStaticPaths`）。`count<5`（約 6,400 人）はページ化すると薄いページの量産になり SEO 上不利なので**個別ページは作らない**。一方で「どの大会に・誰と出たか」だけはユーザーに見せたいため、**固有 URL を持たないクライアントモーダル**で表示する。
+
+- 非インデックスの担保: 固有 URL を持たず、クリック時に JSON を fetch して JS で描画するだけ。クローラは JS を実行せず URL も無いので**インデックス対象にならない**。`noindex` ページを量産する案（クロールバジェットを消費する）より優れる。
+- データ生成: `scripts/generate-players-lite.mjs`（`prebuild` に追加）が `count<5` の各選手について `public/data/players-lite/{id}.json` を出力する（1 選手 1 ファイル）。中身は出場大会ごとの `tournamentName / year / team（当時の所属）/ partner{ name, id, hasPage }`。`id` は「同姓同名は最初の id」規約に合わせた canonical id。
+- 表示: `src/components/PlayerLiteLink.tsx`。名前クリックでモーダルを開き当該 JSON を fetch（簡易キャッシュあり）。モーダル内のペアは `hasPage`（count>=5）なら `/players/{id}/results` へリンク、`count<5` は入れ子モーダルにせず名前のみ表示。
+- 起点: ①結果ページの大会カードの「ペア」（`PlayerResults.tsx`、`PlayerTournament.partnerLiteId`）、②サマリーの「パートナー別」表（`PlayerSummaryStats.tsx`、`liteId`）。いずれも `count>=5` はページリンク、`count<5` は `PlayerLiteLink` に振り分ける。
+- デッドリンク防止: 以前は `count<5` のペアにも `/players/{id}/results` を張って 404 になっていた。リンク可否は `data/players/index.json` の `count`（`PlayerInfo.count` として伝播）で判定する。
+
 ## 選手ページの SEO 方針（2026-06 改善）
 
 設計の経緯は `docs/raw/2026-06-12-player-page-seo-design.md` を参照。

@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 
+import PlayerLiteLink from '@/components/PlayerLiteLink';
 import ResultsTable from '@/components/ResultsTable';
 import { MatchResult } from '@/types/common';
 import { MatchRow, TournamentParticipant } from '@/types/tournament';
@@ -33,6 +34,8 @@ export type PlayerTournament = {
   location?: string | null;
   link?: string | null;
   partnerId?: string | null;
+  // 結果ページを持たない（count<5）ペアの id。モーダル表示に使う（results リンクは張らない）
+  partnerLiteId?: string | null;
   partnerName?: string | null;
   finalResult?: string | null;
   matches?: MatchResult[];
@@ -279,8 +282,13 @@ export default function PlayerResults({
                         >
                           {info.partnerName}
                         </Link>
+                      ) : info?.partnerLiteId && info?.partnerName ? (
+                        <PlayerLiteLink
+                          id={info.partnerLiteId}
+                          name={info.partnerName}
+                        />
                       ) : (
-                        <>{info.partnerName}</>
+                        <>{info?.partnerName}</>
                       )}
                     </div>
                   )}

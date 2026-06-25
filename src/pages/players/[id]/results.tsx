@@ -745,6 +745,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     // determine most frequent partner for this tournament, if any
     let partnerIdForTournament: string | null = null;
+    let partnerLiteIdForTournament: string | null = null;
     let partnerNameForTournament: string | null = null;
     const partnerCounts = tournamentPartnerCounts.get(tournamentKey);
     if (partnerCounts) {
@@ -764,10 +765,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           );
           if (found) {
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
-            // 結果ページが実在する（count>=5）選手のみリンク化する。
-            // 無い選手に id を付けると 404 になるため、その場合は id を落として名前のみ表示する。
-            partnerIdForTournament =
-              (countById.get(found.id) ?? 0) >= 5 ? found.id : null;
+            // 結果ページが実在する（count>=5）選手のみページへリンク化する。
+            // 無い選手に results リンクを付けると 404 になるため、その場合は
+            // partnerLiteId にだけ id を入れてモーダル（PlayerLiteLink）で表示する。
+            if ((countById.get(found.id) ?? 0) >= 5) {
+              partnerIdForTournament = found.id;
+            } else {
+              // 結果ページが無い選手。生の参加者 id が partnerIdForTournament に
+              // 残っていると /players/{生id}/results へのデッドリンクになるので null にし、
+              // モーダル用の partnerLiteId にだけ canonical id を入れる。
+              partnerIdForTournament = null;
+              partnerLiteIdForTournament = found.id;
+            }
           } else {
             // if not found in canonical list, set partnerId to null (explicitly indicate unknown id)
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
@@ -794,6 +803,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       link,
       finalResult,
       partnerId: partnerIdForTournament,
+      partnerLiteId: partnerLiteIdForTournament,
       partnerName: partnerNameForTournament,
       matches,
     };

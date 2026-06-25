@@ -1,6 +1,7 @@
 // src/components/PlayerSummaryStats.tsx
 import Link from 'next/link';
 
+import PlayerLiteLink from '@/components/PlayerLiteLink';
 import { PlayerInfo, PlayerStats } from '@/types/index';
 
 type SummaryStatsProps = {
@@ -12,6 +13,8 @@ type StatsRowProps = {
   label: string;
   stats: MatchGameStats;
   link?: string;
+  // 結果ページを持たない（count<5）パートナーはモーダル表示。id を渡す。
+  liteId?: string;
 };
 
 export type GameStats = {
@@ -49,7 +52,7 @@ function formatGameStats(games?: {
   return `${games.won} - ${games.lost}（${(games.gameRate * 100).toFixed(1)}%）`;
 }
 
-function StatsRow({ label, stats, link }: StatsRowProps) {
+function StatsRow({ label, stats, link, liteId }: StatsRowProps) {
   return (
     <tr className="border-t border-gray-200 dark:border-gray-600 text-center">
       <td className="py-1 px-2">
@@ -60,6 +63,8 @@ function StatsRow({ label, stats, link }: StatsRowProps) {
           >
             {label}
           </Link>
+        ) : liteId ? (
+          <PlayerLiteLink id={liteId} name={label} />
         ) : (
           label
         )}
@@ -105,18 +110,23 @@ function StatsTable({
                 ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName || ''}`
                 : key;
 
-            // 結果ページが実在する（count>=5）選手のみリンク化する。
-            // 無い選手に id を付けると 404 になるため名前のみ表示する。
+            // 結果ページが実在する（count>=5）選手のみページへリンクする。
+            // count<5 の選手は 404 になるためリンクせず、モーダル（PlayerLiteLink）で表示する。
             const partner = !isYear
               ? allPlayers.find((p) => p.id === key)
               : undefined;
-            const link =
-              partner && (partner.count ?? 0) >= 5
-                ? `/players/${key}/results`
-                : undefined;
+            const hasPage = partner ? (partner.count ?? 0) >= 5 : false;
+            const link = hasPage ? `/players/${key}/results` : undefined;
+            const liteId = partner && !hasPage ? key : undefined;
 
             return (
-              <StatsRow key={key} label={label} stats={stats} link={link} />
+              <StatsRow
+                key={key}
+                label={label}
+                stats={stats}
+                link={link}
+                liteId={liteId}
+              />
             );
           })}
         </tbody>
