@@ -105,8 +105,13 @@ function StatsTable({
                 ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName || ''}`
                 : key;
 
+            // 結果ページが実在する（count>=5）選手のみリンク化する。
+            // 無い選手に id を付けると 404 になるため名前のみ表示する。
+            const partner = !isYear
+              ? allPlayers.find((p) => p.id === key)
+              : undefined;
             const link =
-              !isYear && allPlayers.find((p) => p.id === key)
+              partner && (partner.count ?? 0) >= 5
                 ? `/players/${key}/results`
                 : undefined;
 

@@ -401,7 +401,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     id: String(p.id),
     lastName: p.lastName,
     firstName: p.firstName,
+    count: (p as { count?: number }).count ?? 0,
   }));
+
+  // id -> count（結果ページが実在するのは count>=5 のみ。デッドリンク防止に使う）
+  const countById = new Map(
+    index.map((p) => [
+      String((p as { id: number }).id),
+      (p as { count?: number }).count ?? 0,
+    ]),
+  );
 
   // --- Structured loading using shared helpers ---
   const root = process.cwd();
@@ -754,8 +763,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             (ap) => ap.lastName === p.lastName && ap.firstName === p.firstName,
           );
           if (found) {
-            partnerIdForTournament = found.id; // use canonical id
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
+            // 結果ページが実在する（count>=5）選手のみリンク化する。
+            // 無い選手に id を付けると 404 になるため、その場合は id を落として名前のみ表示する。
+            partnerIdForTournament =
+              (countById.get(found.id) ?? 0) >= 5 ? found.id : null;
           } else {
             // if not found in canonical list, set partnerId to null (explicitly indicate unknown id)
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
@@ -959,12 +971,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // 結果ページを持つ選手（index.json の count>=5）のみリンク対象にする。
   const partnerNameById = new Map(
     allPlayersList.map((p) => [p.id, `${p.lastName}${p.firstName}`]),
-  );
-  const countById = new Map(
-    index.map((p) => [
-      String((p as { id: number }).id),
-      (p as { count?: number }).count ?? 0,
-    ]),
   );
   const relatedPlayers = Object.entries(byPartnerNormalized)
     .filter(([k]) => k !== 'singles')
