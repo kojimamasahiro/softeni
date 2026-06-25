@@ -56,10 +56,20 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 
 ## 計測
 
-- `src/pages/_app.tsx` で Google Analytics を読込
+- `src/pages/_app.tsx` で Google Analytics (GA4, Consent Mode v2) を読込
 - Cookie 同意 UI は `src/components/CookieConsent.tsx`
-- 同意前は `ad_storage` / `analytics_storage` を denied
+- 同意前は `ad_storage` / `analytics_storage` を denied（cookieless ping は送信される＝advanced consent mode 相当）
 - 同意後に granted へ更新
+- 再訪ユーザーの同意は inline スクリプト内で `localStorage` を同期読みし、**初回 page_view より前**に復元する（hydration 後に復元すると初回PVが denied 計測になるため）
+- `wait_for_update: 500` / `url_passthrough` / `ads_data_redaction` を設定し、同意確定待ち・クッキー不可時の計測ロスを軽減
+- SPA 遷移は `gtag('config')` 再実行ではなく `gtag('event','page_view')` で送信（二重計上・セッション分断の回避）
+- クッキーは `SameSite=Lax;Secure`（同一ドメイン first-party 用途のため Lax）
+
+### 計測精度に関する注意（2026-06）
+
+- GA4 は client-side 計測のため、広告ブロッカー・Safari ITP・同意 denied により**実トラフィックより常に少なく出る**（一般に10〜40%）。これは実装では完全には解消できない。
+- なお GA4 の `_ga` は **first-party クッキー**であり、ブラウザの「サードパーティクッキー許可」設定では精度は改善しない。
+- 実数に近い基準値が必要な場合は、Cloudflare 配信を活かして **Cloudflare Web Analytics（cookieless・ブロックされにくい）** を併用し GA4 と突き合わせるのが有効（要 Open Question / 別途導入判断）。
 
 ## プライバシー・法務
 
