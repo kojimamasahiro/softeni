@@ -435,6 +435,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   >();
   const tournamentMatchesMap = new Map<string, MatchResult[]>();
   const tournamentFinalResult = new Map<string, string | null>();
+  // map tournamentKey -> 当時のその選手の所属（大会ごとに異なりうるので大会単位で保持）
+  const tournamentSelfTeam = new Map<string, string>();
   // map tournamentKey -> map of partnerId -> count (to pick most frequent partner for that tournament)
   const tournamentPartnerCounts = new Map<string, Map<string, number>>();
 
@@ -464,6 +466,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         year: Number(year),
         team: selfParticipant.team.trim(),
       });
+      // 大会（tournamentId/year/category）ごとの当時の所属を保持する
+      tournamentSelfTeam.set(
+        `${tournamentId}/${year}/${category}`,
+        selfParticipant.team.trim(),
+      );
     }
 
     const entries = Array.isArray(detail.entries) ? detail.entries : [];
@@ -767,6 +774,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       tournamentId: tid,
       year: yearVal,
       tournamentName,
+      team: tournamentSelfTeam.get(tournamentKey) ?? null,
       dateRange,
       startDate: startDateVal,
       endDate: endDateVal,

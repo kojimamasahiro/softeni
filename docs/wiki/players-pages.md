@@ -40,6 +40,14 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 - SEO: 検索はクライアント JS のみでクローラは実行しないため、検索インデックスの軽量化はインデックスに影響しない。選手ページの発見は従来どおり `next-sitemap`（`count>=5` を全件出力）が担保する。一覧の SSR 内部リンクは `min20`（73 組）のまま据え置き。
 - 実装: `src/pages/players/index.tsx`。
 
+## 結果ページの大会ごとの所属表示（2026-06 追加）
+
+選手の所属は大会（年度・カテゴリ）ごとに異なりうるため、結果ページ（`/players/{id}/results/`）の各大会カードには **その大会当時の所属** を表示する。
+
+- データ取得: `src/pages/players/[id]/results.tsx` の `getStaticProps` で、各大会レコードの該当選手 participant の `team` を `tournamentSelfTeam`（キー `tournamentId/year/category`）に保持し、`PlayerTournament.team` として渡す。
+- ヘッダ（`{fullName} 選手の試合結果（{team}）`）や JSON-LD の `affiliation` は従来どおり **最新の所属**（`teamRecords` の最終年）を使う。大会ごとの所属はカード単位の表示のみ。
+- 表示: `src/components/PlayerResults.tsx` の各大会カードで「ペア」の下（ペアが無い場合は「詳細」の下）に「所属 {team}」を表示（`info.team` がある時のみ）。
+
 ## 選手ページの SEO 方針（2026-06 改善）
 
 設計の経緯は `docs/raw/2026-06-12-player-page-seo-design.md` を参照。

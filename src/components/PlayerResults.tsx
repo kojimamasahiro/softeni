@@ -26,6 +26,7 @@ export type PlayerTournament = {
   tournamentName: string;
   tournamentId?: string; // short id
   year?: number | string;
+  team?: string | null; // その大会当時の所属
   dateRange?: string | null;
   startDate?: string | null;
   endDate?: string | null;
@@ -269,7 +270,7 @@ export default function PlayerResults({
                     </div>
                   )}
                   {info?.partnerName && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
                       ペア{' '}
                       {info?.partnerId ? (
                         <Link
@@ -283,8 +284,13 @@ export default function PlayerResults({
                       )}
                     </div>
                   )}
+                  {info?.team && (
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                      所属 {info.team}
+                    </div>
+                  )}
                   {info?.finalResult && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-2 mt-1">
                       最終結果：{info.finalResult}
                     </div>
                   )}
