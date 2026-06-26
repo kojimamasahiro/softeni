@@ -40,9 +40,10 @@
       "rank": 2,
       "format": "順位決定戦（順位別トーナメント）",
       "teamCount": {
-        "boys": 8
+        "boys": 8,
+        "girls": 12
       },
-      "note": "上位3チームがプレーオフ（入替戦）でⅠ部昇格を目指す。男子は順位決定戦の結果を掲載。",
+      "note": "上位チームがプレーオフ（入替戦）でⅠ部昇格を目指す。男子は予選リーグ（8ブロック）＋順位決定戦、女子は予選リーグ（3ブロック）の結果を掲載。",
       "hasMatchData": true
     },
     {
@@ -112,7 +113,27 @@
         }
       },
       "girls": {
-        "champion": null
+        "champion": "pacific-ind",
+        "ranking": [
+          "pacific-ind",
+          "toyota",
+          "kawaguchi-city",
+          "kinokuni-shinkin",
+          "yonex-niigata",
+          "lucent",
+          "toyo-kanko",
+          "ebis-shoji"
+        ],
+        "blocks": {
+          "A": ["pacific-ind", "lucent", "ebis-shoji", "ome-shinkin"],
+          "B": [
+            "kawaguchi-city",
+            "kinokuni-shinkin",
+            "best",
+            "nipponsteel-oita"
+          ],
+          "C": ["toyota", "yonex-niigata", "toyo-kanko", "sunny-breeze"]
+        }
       }
     },
     "3": {
@@ -126,6 +147,8 @@
   },
   "notes": [
     "男子優勝のNTT西日本は前身の日本リーグから続く連覇記録を更新中（Assumption: 連覇数は要確認）。",
-    "STリーグⅡ（男子）は1日目の予選リーグ（8ブロック）と2日目の順位決定戦の実データを掲載。女子Ⅱ部・Ⅲ部は今後追加予定。"
+    "STリーグⅡ（男子）は1日目の予選リーグ（8ブロック）と2日目の順位決定戦の実データを掲載。",
+    "STリーグⅡ（女子）は予選リーグ（3ブロック・各4チーム）の星取りと最終順位（公式記録）を掲載。順位決定戦の個別対戦・選手別データは未入力。Assumption: 女子Ⅱ部の開催日（2025-12-11）は男子Ⅱ部に合わせた仮置きで要確認。",
+    "STリーグⅢは今後追加予定。"
   ]
 }
