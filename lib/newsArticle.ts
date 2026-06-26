@@ -14,6 +14,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { getChampionMilestones, type MilestoneEvent } from './milestones';
+import { getCategoryLabel } from './utils';
 import {
   buildParticipantMap,
   getHistoricalWinners,
@@ -92,9 +93,9 @@ export type TitleDefenseWatch = {
   standing: EntryStanding | null;
 };
 
-/** プレビュー: 前回入賞者（準優勝/ベスト4）で今大会も出場 */
+/** プレビュー: 前回入賞者（準優勝/ベスト4/ベスト8）で今大会も出場 */
 export type ReturningPlacer = {
-  placement: '準優勝' | 'ベスト4';
+  placement: '準優勝' | 'ベスト4' | 'ベスト8';
   /** 前回の表示（ペア/校）。団体戦用 */
   display: string;
   /** 所属校（表示用・正規化済み） */
@@ -119,6 +120,28 @@ export type ReturningFormerChampion = {
   players: PreviewPlayerRef[];
   /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
   standing: EntryStanding | null;
+};
+
+/**
+ * プレビュー: 直近大会の好成績者の再登場。
+ * 当プレビュー種目の出場者のうち、直近の他大会（プレビュー開催日から3ヶ月以内・最大2大会・
+ * isMajorTitle 優先）で **ベスト4以上**（優勝/準優勝/ベスト4）の成績を残した選手をピックアップする。
+ * 「種目を問わない」: 直近大会のどの種目での好成績でもよい（個人戦のみ。団体戦は per-player 不可のため対象外）。
+ * 照合は playerKey（名前@正規化所属）で当大会の出場者と突合する。
+ */
+export type RecentAchiever = {
+  /** ピックアップ選手（当プレビュー種目の出場者）。playerId は結果ページリンク用 */
+  player: PreviewPlayerRef;
+  /** 直近大会の表示名（index.json の label） */
+  tournamentLabel: string;
+  /** 直近大会の開催年 */
+  year: number;
+  /** 好成績を残した種目の表示ラベル（例: 男子シングルス） */
+  categoryLabel: string;
+  /** その大会での成績 */
+  placement: '優勝' | '準優勝' | 'ベスト4';
+  /** isMajorTitle の大会か */
+  isMajor: boolean;
 };
 
 /** プレビュー: 出場規模・勢力図（純粋な事実） */
@@ -153,6 +176,8 @@ export type NewsCategoryBlock = {
   returningPlacers: ReturningPlacer[];
   /** プレビューのみ: 前々回以前の優勝者で今大会も出場する者 */
   returningFormerChampions: ReturningFormerChampion[];
+  /** プレビューのみ: 直近他大会でベスト4以上の好成績を残した出場者 */
+  recentAchievers: RecentAchiever[];
   /** プレビューのみ: 出場規模・勢力図。算出不能なら null */
   fieldOverview: FieldOverview | null;
   /** その年・種目の結果ページ（年度別）への内部リンク。算出不能なら null */
@@ -516,10 +541,11 @@ function teamDisplayOf(c: ChampionEntry): string | null {
 /** 前年 results の rank を入賞ラベルへ。優勝は別ブロック（連覇ウォッチ）が扱うため除く */
 function placerLabel(
   rank: { kind?: string; bestLevel?: number } | undefined | null,
-): '準優勝' | 'ベスト4' | null {
+): '準優勝' | 'ベスト4' | 'ベスト8' | null {
   if (!rank) return null;
   if (rank.kind === 'runnerup') return '準優勝';
   if (rank.kind === 'best' && rank.bestLevel === 4) return 'ベスト4';
+  if (rank.kind === 'best' && rank.bestLevel === 8) return 'ベスト8';
   return null;
 }
 
@@ -553,6 +579,7 @@ function buildReturningPlacers(
   const order: Record<ReturningPlacer['placement'], number> = {
     準優勝: 0,
     ベスト4: 1,
+    ベスト8: 2,
   };
   for (const r of detail.results) {
     const label = placerLabel(r.tournament?.rank);
@@ -641,10 +668,241 @@ function buildFieldOverview(field: FieldIndex | null): FieldOverview | null {
   return { entryCount: field.entryCount, topPrefectures, multiEntryTeams };
 }
 
+// ---- 直近大会の好成績者（種目を問わず・3ヶ月以内・最大2大会・major優先） ----
+
+/** 当プレビュー種目の出場者 1 人に紐づく、直近大会での好成績（人物単位で最良を保持） */
+type RecentAchievementInfo = {
+  name: string;
+  tournamentLabel: string;
+  year: number;
+  categoryLabel: string;
+  placement: '優勝' | '準優勝' | 'ベスト4';
+  isMajor: boolean;
+};
+
+/** 直近候補に選ばれた大会の 1 開催 */
+type RecentTournamentEdition = {
+  tournamentId: string;
+  year: number;
+  label: string;
+  isMajor: boolean;
+  startDate: string;
+};
+
+const RECENT_WINDOW_MONTHS = 3;
+const RECENT_TOURNAMENT_LIMIT = 2;
+const RECENT_ACHIEVERS_PER_CATEGORY = 8;
+
+function readTournamentIndex(): Array<{
+  tournamentId: string;
+  label?: string;
+  isMajorTitle?: boolean;
+}> {
+  return (
+    readJson<
+      Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean }>
+    >(path.join(resolveRoot(), 'data', 'tournaments', 'index.json')) ?? []
+  );
+}
+
+/** 大会情報（開催日）を読む。年度ごとの startDate を持つ */
+function readTournamentEditions(
+  tournamentId: string,
+): Array<{ year: number; startDate?: string }> {
+  const arr = readJson<Array<{ year: number; startDate?: string }>>(
+    path.join(
+      resolveRoot(),
+      'data',
+      'tournaments',
+      'information',
+      `${tournamentId}.json`,
+    ),
+  );
+  return Array.isArray(arr) ? arr : [];
+}
+
+/** categoryId（category-age-gender）→ 表示ラベル（例: 男子シングルス） */
+function categoryDisplayLabel(categoryId: string): string {
+  const parts = categoryPathParts(categoryId);
+  if (!parts) return categoryId;
+  const g =
+    parts.gender === 'boys'
+      ? '男子'
+      : parts.gender === 'girls'
+        ? '女子'
+        : parts.gender === 'mixed'
+          ? '混合'
+          : '';
+  return `${g}${getCategoryLabel(parts.category)}`;
+}
+
+/** rank → ベスト4以上の好成績ラベル。該当しなければ null */
+function bestPlacement(
+  rank: { kind?: string; bestLevel?: number } | undefined | null,
+): '優勝' | '準優勝' | 'ベスト4' | null {
+  if (!rank) return null;
+  if (rank.kind === 'winner') return '優勝';
+  if (rank.kind === 'runnerup') return '準優勝';
+  if (rank.kind === 'best' && rank.bestLevel === 4) return 'ベスト4';
+  return null;
+}
+
+function placementRank(p: '優勝' | '準優勝' | 'ベスト4'): number {
+  return p === '優勝' ? 3 : p === '準優勝' ? 2 : 1;
+}
+
+/** preview 開催日（startDate, ISO）。情報が無ければ null */
+function previewStartDate(tournamentId: string, year: number): string | null {
+  const ed = readTournamentEditions(tournamentId).find((e) => e.year === year);
+  return ed?.startDate ?? null;
+}
+
+/**
+ * プレビュー開催日から見た「直近の他大会」を最大 RECENT_TOURNAMENT_LIMIT 件選ぶ。
+ * 条件: 開催日が (previewDate − 3ヶ月, previewDate) の窓内・自大会は除外。
+ * 並び: isMajorTitle 優先 → 新しい順。これで major を優先しつつ枠を埋める。
+ */
+function findRecentTournaments(
+  previewTournamentId: string,
+  previewDateIso: string,
+): RecentTournamentEdition[] {
+  const previewDate = new Date(previewDateIso);
+  if (Number.isNaN(previewDate.getTime())) return [];
+  const windowStart = new Date(previewDate);
+  windowStart.setMonth(windowStart.getMonth() - RECENT_WINDOW_MONTHS);
+
+  const idx = readTournamentIndex();
+  const candidates: RecentTournamentEdition[] = [];
+  for (const t of idx) {
+    if (!t.tournamentId || t.tournamentId === previewTournamentId) continue;
+    for (const ed of readTournamentEditions(t.tournamentId)) {
+      if (!ed.startDate) continue;
+      const d = new Date(ed.startDate);
+      if (Number.isNaN(d.getTime())) continue;
+      if (d > windowStart && d < previewDate) {
+        candidates.push({
+          tournamentId: t.tournamentId,
+          year: ed.year,
+          label: t.label ?? t.tournamentId,
+          isMajor: Boolean(t.isMajorTitle),
+          startDate: ed.startDate,
+        });
+      }
+    }
+  }
+  candidates.sort(
+    (a, b) =>
+      Number(b.isMajor) - Number(a.isMajor) ||
+      b.startDate.localeCompare(a.startDate),
+  );
+  return candidates.slice(0, RECENT_TOURNAMENT_LIMIT);
+}
+
+/**
+ * 直近大会（最大2）の全種目から、ベスト4以上の選手を playerKey で索引化する。
+ * 種目を問わず（個人戦のみ。団体は per-player 不可のため対象外）、人物単位で最良成績を保持。
+ * 当プレビュー種目の出場者照合に使うため、キーは `playerMatchKey`（buildFieldIndex と同一）。
+ */
+function buildRecentAchieverIndex(
+  previewTournamentId: string,
+  previewYear: number,
+): Map<string, RecentAchievementInfo> {
+  const out = new Map<string, RecentAchievementInfo>();
+  const startDate = previewStartDate(previewTournamentId, previewYear);
+  if (!startDate) return out;
+  const recents = findRecentTournaments(previewTournamentId, startDate);
+
+  const better = (a: RecentAchievementInfo, b: RecentAchievementInfo) => {
+    // 成績優先 → major 優先 → 新しい年
+    if (placementRank(a.placement) !== placementRank(b.placement))
+      return placementRank(a.placement) > placementRank(b.placement) ? a : b;
+    if (a.isMajor !== b.isMajor) return a.isMajor ? a : b;
+    return a.year >= b.year ? a : b;
+  };
+
+  for (const rt of recents) {
+    for (const cid of listCategoryIds(rt.tournamentId, rt.year)) {
+      const detail = readYearDetail(rt.tournamentId, rt.year, cid);
+      if (!detail || !detail.entries || !detail.results) continue;
+      const pmap = buildParticipantMap(detail);
+      const entryByNo = new Map(
+        detail.entries.map((e) => [e.entryNo, e] as const),
+      );
+      const categoryLabel = categoryDisplayLabel(cid);
+      for (const r of detail.results) {
+        const placement = bestPlacement(r.tournament?.rank);
+        if (!placement) continue;
+        const entry = entryByNo.get(r.entryNo);
+        if (!entry) continue;
+        const ce = resolveEntryToChampion(entry, pmap, rt.year);
+        if (ce.players.length === 0) continue; // 団体戦は対象外
+        for (const name of ce.players) {
+          const info: RecentAchievementInfo = {
+            name,
+            tournamentLabel: rt.label,
+            year: rt.year,
+            categoryLabel,
+            placement,
+            isMajor: rt.isMajor,
+          };
+          // 所属表記揺れを吸収するため、ペアの各所属でキーを張る
+          for (const team of ce.teams.length > 0 ? ce.teams : [null]) {
+            const key = playerMatchKey(name, team);
+            const cur = out.get(key);
+            out.set(key, cur ? better(cur, info) : info);
+          }
+        }
+      }
+    }
+  }
+  return out;
+}
+
+/**
+ * 当プレビュー種目の出場者のうち、直近大会で好成績を残した選手を抽出する。
+ * 既に他ブロック（連覇ウォッチ・前回入賞者・過去の優勝者）で出ている選手は重複排除する。
+ */
+function buildRecentAchievers(
+  field: FieldIndex | null,
+  recentIndex: Map<string, RecentAchievementInfo>,
+  alreadyShownNames: Set<string>,
+): RecentAchiever[] {
+  if (!field || recentIndex.size === 0) return [];
+  const seen = new Set<string>(alreadyShownNames);
+  const out: RecentAchiever[] = [];
+  for (const [key, info] of recentIndex) {
+    if (!field.playerKeySet.has(key)) continue; // 当大会の出場者でない
+    const nameKey = normPart(info.name);
+    if (seen.has(nameKey)) continue; // 既出（他ブロック or 同一人物の別所属キー）
+    seen.add(nameKey);
+    out.push({
+      player: {
+        name: info.name,
+        playerId: resolvePlayerId(info.name),
+        returning: true,
+      },
+      tournamentLabel: info.tournamentLabel,
+      year: info.year,
+      categoryLabel: info.categoryLabel,
+      placement: info.placement,
+      isMajor: info.isMajor,
+    });
+  }
+  out.sort(
+    (a, b) =>
+      placementRank(b.placement) - placementRank(a.placement) ||
+      Number(b.isMajor) - Number(a.isMajor) ||
+      b.year - a.year ||
+      a.player.name.localeCompare(b.player.name),
+  );
+  return out.slice(0, RECENT_ACHIEVERS_PER_CATEGORY);
+}
+
 function buildCategoryBlock(
   record: NewsArticleRecord,
   categoryId: string,
   generation: string,
+  recentIndex: Map<string, RecentAchievementInfo>,
 ): NewsCategoryBlock | null {
   const { tournamentId, year, type } = record;
   const hw = getHistoricalWinners(tournamentId, categoryId, {
@@ -660,6 +918,7 @@ function buildCategoryBlock(
   let titleDefense: TitleDefenseWatch | null = null;
   let returningPlacers: ReturningPlacer[] = [];
   let returningFormerChampions: ReturningFormerChampion[] = [];
+  let recentAchievers: RecentAchiever[] = [];
   let fieldOverview: FieldOverview | null = null;
 
   if (type === 'result') {
@@ -682,6 +941,19 @@ function buildCategoryBlock(
       hw.champions,
       field,
       year,
+    );
+    // 直近大会の好成績者は、上記ブロックで既出の選手を除いてピックアップする
+    const alreadyShownNames = new Set<string>();
+    for (const p of titleDefense?.players ?? [])
+      alreadyShownNames.add(normPart(p.name));
+    for (const rp of returningPlacers)
+      for (const p of rp.players) alreadyShownNames.add(normPart(p.name));
+    for (const rf of returningFormerChampions)
+      for (const p of rf.players) alreadyShownNames.add(normPart(p.name));
+    recentAchievers = buildRecentAchievers(
+      field,
+      recentIndex,
+      alreadyShownNames,
     );
     fieldOverview = buildFieldOverview(field);
   }
@@ -711,6 +983,7 @@ function buildCategoryBlock(
     titleDefense,
     returningPlacers,
     returningFormerChampions,
+    recentAchievers,
     fieldOverview,
     resultHref,
   };
@@ -746,9 +1019,16 @@ export function buildNewsArticleView(
       ? [record.categoryId]
       : listCategoryIds(record.tournamentId, record.year);
 
+  // 直近大会の好成績者インデックスは種目に依存しないので記事単位で 1 回だけ構築する。
+  // result 記事では使わないため preview のときのみ。
+  const recentIndex =
+    record.type === 'preview'
+      ? buildRecentAchieverIndex(record.tournamentId, record.year)
+      : new Map<string, RecentAchievementInfo>();
+
   const categories: NewsCategoryBlock[] = [];
   for (const cid of categoryIds) {
-    const block = buildCategoryBlock(record, cid, generationId);
+    const block = buildCategoryBlock(record, cid, generationId, recentIndex);
     if (block) categories.push(block);
   }
 
