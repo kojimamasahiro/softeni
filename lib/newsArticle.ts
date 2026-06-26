@@ -576,10 +576,15 @@ function buildCategoryBlock(
     fieldOverview = buildFieldOverview(field);
   }
 
+  // その年・種目の結果ページは details ファイルが存在する場合のみ生成される
+  // （結果ページの getStaticPaths が details ディレクトリを走査するため）。
+  // プレビューでは公開時点で結果が未掲載のことがあるので、実在する場合のみリンクを張る。
   const parts = generation ? categoryPathParts(categoryId) : null;
-  const resultHref = parts
-    ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/`
-    : null;
+  const hasResultDetail = Boolean(readYearDetail(tournamentId, year, categoryId));
+  const resultHref =
+    parts && hasResultDetail
+      ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/`
+      : null;
 
   return {
     categoryId,

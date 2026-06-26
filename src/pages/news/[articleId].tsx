@@ -344,6 +344,18 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                 </Link>
               </p>
             )}
+
+            {/* プレビュー: その年・種目の大会結果ページへ（結果掲載後のみリンク化） */}
+            {isPreview && c.resultHref && (
+              <p className="mt-3 text-sm">
+                <Link
+                  href={c.resultHref}
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {record.year}年 {c.categoryLabel} の大会結果を見る →
+                </Link>
+              </p>
+            )}
           </section>
         ))}
 
