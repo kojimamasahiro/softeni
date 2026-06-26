@@ -18,6 +18,7 @@ import {
   type EntryStanding,
   type NewsArticleView,
   type PreviewPlayerRef,
+  type RecentAchiever,
 } from '@/lib/newsArticle';
 import { buildSiteUrl, siteConfig } from '@/lib/siteConfig';
 
@@ -301,6 +302,32 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                       </span>
                       {f.players.length > 0 && f.team && `（${f.team}）`}
                       <StandingBadge standing={f.standing} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* プレビュー: 直近大会で好成績を残した出場者 */}
+            {isPreview && c.recentAchievers.length > 0 && (
+              <div className="mb-3">
+                <h3 className="mb-1 text-sm font-semibold">
+                  直近大会の好成績者
+                </h3>
+                <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
+                  {c.recentAchievers.map((a: RecentAchiever, i) => (
+                    <li key={`recent-${i}`}>
+                      <span className="font-semibold">
+                        <PlayerName p={a.player} />
+                      </span>
+                      {' — '}
+                      {a.tournamentLabel} {a.year} {a.categoryLabel}
+                      <span className="ml-1 font-semibold">{a.placement}</span>
+                      {a.isMajor && (
+                        <span className="ml-2 inline-block rounded-full bg-rose-100 px-2 py-0.5 text-xs font-semibold text-rose-800 dark:bg-rose-900 dark:text-rose-100">
+                          主要大会
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
