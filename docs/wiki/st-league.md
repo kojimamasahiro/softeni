@@ -65,6 +65,15 @@ data/st-league/
   内部リンク: ハブの年度カード見出し→年度ハブ、championsの各回ダイジェスト→年度ハブ、
   各サブページのパンくず（`STリーグ > {year} > 各ページ`）→年度ハブ、matches の他ページ導線→年度ハブ。
 - `/st-league/[year]/matches` … 男女タブ＋リーグ切替。順位表（昇降格ゾーンの目安表示）＋対戦結果＋プレーオフ案内。SportsEvent構造化データ。
+  Ⅰ部・finished の各対戦行には「この対戦の詳細 →」リンク（下記 `[matchId]` ページへ）を出す（展開UIは維持）。
+- `/st-league/[year]/matches/[matchId]` … 個別対戦の詳細ページ（ADR-008）。**Ⅰ部かつ `status:"finished"` の対戦のみ**を
+  静的生成する。「{チームA} vs {チームB}」系クエリの受け皿。スラッグは `${gender}-${teamA}-vs-${teamB}`
+  （男女で id が衝突するため gender 接頭辞、teamId ペアで対戦主体をURLに含める）。Ⅰ部は年度×男女ごとに
+  各無順序ペアが1回のみ対戦するため一意。内容: スコア要約／D1・S・D2の個別結果と出場選手／両チームの
+  リーグ順位／この2チームの過去対戦（他年度Ⅰ部、`[matchId]`へ内部リンク）／各チームの他の対戦（同年度Ⅰ部）
+  ／順位表・チーム・分析・年度トップへの導線。SportsEvent（competitor付き）＋BreadcrumbList構造化データ。
+  `getStaticPaths(fallback:false)`+`getStaticProps` で全対戦を事前生成（2023〜2025で計161ページ）。
+  将来Ⅱ部/プレーオフへ拡張する場合、同一ペアがリーグ戦と入替戦で重複しうるためスラッグへ division/round の付与が必要。
 - `/st-league/[year]/teams` … 男女タブ＋リーグ切替。チーム別年間成績・選手成績。
   選手成績は `aggregateTeamResults`（`data/tournaments/details/` の一般大会データ）を
   participants.json のチーム名・選手名で照合して集計する（STリーグ本体の `matches.json` とは
@@ -104,6 +113,11 @@ data/st-league/
   そのため `/about` `/contact` `/faq` `/privacy` `/st-league/about` は
   `next-sitemap.config.js` の `additionalPaths` で明示的に補っている（動的/SSG ページは自動列挙
   されるので追加しない＝重複防止）。新たに純静的な公開ページを追加したらこのリストにも足すこと。
+- `/st-league/[year]/matches/[matchId]`（対戦詳細）は `fallback:false` で全対戦を静的書き出しするため、
+  既存の `/st-league/{year}/matches/` と同じ仕組みで自動列挙される想定（`additionalPaths` には足さない）。
+  **要ビルド後確認**: `npm run build` 後に `out/sitemap-0.xml`（または `public/sitemap-0.xml`）へ
+  `https://softeni-pick.com/st-league/2025/matches/<slug>/` が含まれるか確認すること。含まれない場合のみ、
+  st-league JSON から生成する `additionalPaths` ジェネレータを追加する（その際は二重計上に注意）。
 
 ## データ追加手順（新年度・新リーグ）
 

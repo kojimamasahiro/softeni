@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -41,6 +42,7 @@ const DIV_BADGE =
 const PLAYOFF_ID = 'playoff';
 
 interface MatchesPanelProps {
+  year: number;
   gender: Gender;
   divisionId: string;
   meta: LeagueMeta | null;
@@ -56,6 +58,7 @@ interface MatchesPanelProps {
 // 全タブをHTMLに出力するため（SEO）、非アクティブなパネルは親側で `hidden` 切替する。
 // state に依存しない純粋な props のみで計算するので各タブの内容が静的HTMLに含まれる。
 function MatchesPanel({
+  year,
   gender,
   divisionId,
   meta,
@@ -466,6 +469,16 @@ function MatchesPanel({
                         試合データはまだありません
                       </div>
                     )}
+                    {divisionId === '1' && match.status === 'finished' && (
+                      <div className="border-t border-gray-100 dark:border-gray-700 px-4 py-2 text-right">
+                        <Link
+                          href={`/st-league/${year}/matches/${gender}-${match.teamA}-vs-${match.teamB}`}
+                          className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                          この対戦の詳細 →
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -652,6 +665,7 @@ export default function MatchesPage({
                 aria-hidden={!active}
               >
                 <MatchesPanel
+                  year={year}
                   gender={g}
                   divisionId={tab.id}
                   meta={meta}
