@@ -61,6 +61,17 @@ export type PreviewPlayerRef = {
   returning: boolean;
 };
 
+/**
+ * プレビュー: ピックアップ選手の「今大会の途中経過/敗退」。
+ * 進行中の年でも results 配列が入る運用（normalize-core の rank.kind:'ongoing'）に対応し、
+ * 当年・種目の detail.results から該当エントリーの状況を引く。results 未掲載なら null（非表示）。
+ *   state: alive=進行中（◯◯進出） / eliminated=敗退 / champion=優勝 / runnerup=準優勝
+ */
+export type EntryStanding = {
+  label: string;
+  state: 'alive' | 'eliminated' | 'champion' | 'runnerup';
+};
+
 /** プレビュー: 前回王者の今大会への出場状況（連覇・防衛ウォッチ） */
 export type TitleDefenseWatch = {
   /** 前回王者の表示（ペア/校）。団体戦や選手が空のとき用 */
@@ -77,6 +88,8 @@ export type TitleDefenseWatch = {
    * absent: 前回王者は不在（新王者へ）
    */
   status: 'intact' | 'partial' | 'absent';
+  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  standing: EntryStanding | null;
 };
 
 /** プレビュー: 前回入賞者（準優勝/ベスト4）で今大会も出場 */
@@ -90,6 +103,8 @@ export type ReturningPlacer = {
   players: PreviewPlayerRef[];
   /** ペア/校の全員が継続出場か */
   intact: boolean;
+  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  standing: EntryStanding | null;
 };
 
 /** プレビュー: 過去の優勝者（前々回以前）で今大会も出場 */
@@ -102,6 +117,8 @@ export type ReturningFormerChampion = {
   team: string | null;
   /** 当時の優勝選手（個人戦/ダブルス。団体は空） */
   players: PreviewPlayerRef[];
+  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  standing: EntryStanding | null;
 };
 
 /** プレビュー: 出場規模・勢力図（純粋な事実） */
@@ -250,11 +267,49 @@ type FieldIndex = {
   playerKeySet: Set<string>;
   /** 各エントリーの championKey 集合。ペア/校単位の一致判定に使う */
   championKeySet: Set<string>;
+  /** championKey → 今大会の entryNo（途中経過の引き当て用。最初の一致を採用） */
+  championKeyToEntryNo: Map<string, number>;
+  /** playerKey → 今大会の entryNo（partial=新ペアの継続選手の引き当て用） */
+  playerKeyToEntryNo: Map<string, number>;
+  /** entryNo → 今大会の途中経過/敗退（detail.results 由来。未掲載なら空） */
+  standingByEntryNo: Map<number, EntryStanding>;
   /** 都道府県別エントリー数 */
   prefectureCount: Map<string, number>;
   /** 所属校別エントリー数 */
   teamCount: Map<string, number>;
 };
+
+/** 当年・種目の detail.results 1 件 → 途中経過/敗退の表示情報。判定不能なら null */
+function standingFromResult(r: {
+  tournament?: {
+    label?: string;
+    rank?: { kind?: string; bestLevel?: number; round?: number };
+  } | null;
+}): EntryStanding | null {
+  const rank = r.tournament?.rank;
+  const label = r.tournament?.label ?? null;
+  if (!rank || !rank.kind) return null;
+  switch (rank.kind) {
+    case 'winner':
+      return { label: label ?? '優勝', state: 'champion' };
+    case 'runnerup':
+      return { label: label ?? '準優勝', state: 'runnerup' };
+    case 'ongoing':
+      return { label: label ?? '勝ち上がり中', state: 'alive' };
+    case 'best':
+      return {
+        label: label ?? (rank.bestLevel ? `ベスト${rank.bestLevel}` : '入賞'),
+        state: 'eliminated',
+      };
+    case 'round':
+      return {
+        label: label ?? (rank.round ? `${rank.round}回戦敗退` : '敗退'),
+        state: 'eliminated',
+      };
+    default:
+      return null; // unknown
+  }
+}
 
 // 年度間で所属校の表記が揺れる（2025「嬉野」 vs 2026「嬉野_佐賀県」など、
 // 末尾に "_<都道府県>" が付くデータが混在）。照合キー・表示の両方でこれを吸収する。
@@ -332,6 +387,8 @@ function buildFieldIndex(
 
   const playerKeySet = new Set<string>();
   const championKeySet = new Set<string>();
+  const championKeyToEntryNo = new Map<string, number>();
+  const playerKeyToEntryNo = new Map<string, number>();
   const prefectureCount = new Map<string, number>();
   const teamCount = new Map<string, number>();
   let entryCount = 0;
@@ -347,7 +404,9 @@ function buildFieldIndex(
       const team = p?.team ?? '';
       if (name) {
         names.push(name);
-        playerKeySet.add(playerMatchKey(name, team));
+        const pk = playerMatchKey(name, team);
+        playerKeySet.add(pk);
+        if (!playerKeyToEntryNo.has(pk)) playerKeyToEntryNo.set(pk, e.entryNo);
       }
       if (team) {
         const nt = normalizeTeam(team);
@@ -361,7 +420,11 @@ function buildFieldIndex(
       names.length > 0
         ? `${namesSorted.join('|')}@${teamsSorted.join('|')}`
         : teamsSorted.join('|');
-    if (ck) championKeySet.add(ck);
+    if (ck) {
+      championKeySet.add(ck);
+      if (!championKeyToEntryNo.has(ck))
+        championKeyToEntryNo.set(ck, e.entryNo);
+    }
     if (firstPref) {
       prefectureCount.set(firstPref, (prefectureCount.get(firstPref) ?? 0) + 1);
     }
@@ -369,13 +432,54 @@ function buildFieldIndex(
     if (team0) teamCount.set(team0, (teamCount.get(team0) ?? 0) + 1);
   }
 
+  // 当年・種目の途中経過/敗退（detail.results 由来）。進行中で results 未掲載なら空のまま。
+  const standingByEntryNo = new Map<number, EntryStanding>();
+  for (const r of detail.results ?? []) {
+    if (r.entryNo == null) continue;
+    const s = standingFromResult(r);
+    if (s) standingByEntryNo.set(r.entryNo, s);
+  }
+
   return {
     entryCount,
     playerKeySet,
     championKeySet,
+    championKeyToEntryNo,
+    playerKeyToEntryNo,
+    standingByEntryNo,
     prefectureCount,
     teamCount,
   };
+}
+
+/**
+ * ピックアップ対象（前年の ChampionEntry）→ 今大会の途中経過/敗退。
+ * ペア/校一致（championKey）で当年 entryNo を引き、無ければ（partial=新ペア）
+ * 継続選手の playerKey で引く。entryNo が引けなければ、または results 未掲載なら null。
+ */
+function currentStandingOf(
+  c: ChampionEntry,
+  field: FieldIndex | null,
+): EntryStanding | null {
+  if (!field) return null;
+  const isTeam = c.players.length === 0;
+  let entryNo: number | undefined;
+  const ck = teamMatchKey(c);
+  if (ck) entryNo = field.championKeyToEntryNo.get(ck);
+  if (entryNo == null && !isTeam) {
+    // partial: ペアが替わっても継続している選手の entry を引く
+    outer: for (const name of c.players) {
+      for (const t of c.teams) {
+        const en = field.playerKeyToEntryNo.get(playerMatchKey(name, t));
+        if (en != null) {
+          entryNo = en;
+          break outer;
+        }
+      }
+    }
+  }
+  if (entryNo == null) return null;
+  return field.standingByEntryNo.get(entryNo) ?? null;
 }
 
 /** ChampionEntry が今大会に「継続出場」しているかを判定する（所属表記揺れを吸収） */
@@ -432,6 +536,7 @@ function buildTitleDefense(
     team: teamDisplayOf(prevChampionEntry),
     players,
     status,
+    standing: currentStandingOf(prevChampionEntry, field),
   };
 }
 
@@ -464,6 +569,7 @@ function buildReturningPlacers(
       team: teamDisplayOf(ce),
       players,
       intact: status === 'intact',
+      standing: currentStandingOf(ce, field),
     });
   }
   out.sort((a, b) => order[a.placement] - order[b.placement]);
@@ -485,6 +591,7 @@ function buildReturningFormerChampions(
       display: string;
       team: string | null;
       players: PreviewPlayerRef[];
+      standing: EntryStanding | null;
     }
   >();
   for (const c of champions) {
@@ -502,6 +609,8 @@ function buildReturningFormerChampions(
         display: cleanDisplay(c.display),
         team: teamDisplayOf(c),
         players,
+        // 途中経過は「人物」基準なので最新年（最初に出会う要素）の解決で十分
+        standing: currentStandingOf(c, field),
       });
     }
   }
@@ -511,6 +620,7 @@ function buildReturningFormerChampions(
       display: v.display,
       team: v.team,
       players: v.players,
+      standing: v.standing,
     }))
     .sort((a, b) => b.years[0] - a.years[0]);
 }
@@ -580,7 +690,9 @@ function buildCategoryBlock(
   // （結果ページの getStaticPaths が details ディレクトリを走査するため）。
   // プレビューでは公開時点で結果が未掲載のことがあるので、実在する場合のみリンクを張る。
   const parts = generation ? categoryPathParts(categoryId) : null;
-  const hasResultDetail = Boolean(readYearDetail(tournamentId, year, categoryId));
+  const hasResultDetail = Boolean(
+    readYearDetail(tournamentId, year, categoryId),
+  );
   const resultHref =
     parts && hasResultDetail
       ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/`

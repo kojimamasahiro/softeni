@@ -246,3 +246,4 @@ CLI:
 - entries メタ（type情報）はハブページの任意入力欄から渡せる。未指定時は従来どおり試合内容から推定
 - ラウンドロビン→トーナメント移行時は `roundRobinMatches`（RR持ち越し）と `matches`（トーナメント）が同一入力に共存する。participants と entries は両方をマージして収集する（どちらか一方だけを採用しない）。これにより、トーナメント側のペア・対戦相手・entryが participants / entries から欠落しない
 - RRで敗退し本戦へ進めなかった選手も `results` に残す。形式は `{"entryNo":N,"tournament":null,"roundrobin":{"group":..,"rank":..}}`（例: `data/tournaments/details/highschool-japan-cup/2025/doubles-none-boys.json`）。「予選敗退」「予選N位」等のラベルはJSONには保存せず、`tournament:null` かつ `roundrobin` ありの形から表示側（選手ページ・メジャータイトル判定等）で導出する
+- エントリー成績（`results[].tournament.rank`）は `matches` から `deriveEntryStanding` で算出する。**最深試合が未確定（`winnerEntryNo==null`）の間は敗退でなく進行中（`rank.kind:'ongoing'`）**として扱うため、大会途中の export でも `results` を生成できる（完了大会の出力は不変）。語彙・運用は [tournament-data-structure.md](../tournament-data-structure.md) と [ADR-007](../adr/ADR-007-in-progress-tournament-standing.md) を参照

@@ -273,10 +273,10 @@ export interface TournamentResult {
   entryNo: number; // エントリー番号
   tournament?: {
     // トーナメント結果
-    label: string; // 結果ラベル（"優勝", "準優勝"等）
+    label: string; // 結果ラベル（"優勝", "準優勝", "ベスト8進出", "2回戦敗退"等）
     rank: {
       // ランク情報
-      kind: string; // ランク種別（"winner", "runnerup", "best", "round"）
+      kind: string; // ランク種別（"winner", "runnerup", "best", "round", "ongoing"）
       value: number; // ランク値（bestLevelやround番号）
     };
   };
@@ -289,6 +289,20 @@ export interface TournamentResult {
 ```
 
 > **注**: 実際のJSONデータでは `rank` の構造が異なる場合があります（Union型として `{ kind: "winner" }` 等）。型定義は簡略化されています。
+
+##### `rank.kind` の語彙と「途中経過」運用（2026-06-26〜）
+
+`results[].tournament.rank.kind` は `matches` から `tools/shared/normalize-core.js`（`deriveEntryStanding` / `computeRankFromStanding`）が決定的に算出する。
+
+- `winner` … 優勝（決勝=`nextMatchId` 無しの試合の勝者）
+- `runnerup` … 準優勝（決勝で敗北が確定）
+- `best`（`bestLevel`）… ベスト4/8 等で敗退（確定）
+- `round`（`round`）… N 回戦で敗退（確定）
+- `ongoing`（`round?`）… **進行中**。その回戦に到達／勝ち上がり中で、最終結果は未確定。`label` は "ベスト4進出" / "3回戦進出" / "出場" 等
+
+**大会途中でも `results` を生成できる**（以前は途中だと配列ごと省く運用だった）。鍵は、最深試合の `winnerEntryNo` が `null`（未実施）の間は **敗退ではなく `ongoing`** として扱うこと。これにより速報（プレビュー）段階でも各エントリーの途中経過/敗退を出せる。完了大会では `ongoing` は出ず、従来どおり winner/runnerup/best/round のみになる（既存出力は不変）。
+
+この `ongoing` を `/news` のプレビュー記事が読み、ピックアップ選手（前回王者・前回入賞者・過去の優勝者）の「今大会の途中経過/敗退」バッジに使う。詳細は [news-context-blocks.md](./wiki/news-context-blocks.md)。
 
 ##### 団体戦の場合
 

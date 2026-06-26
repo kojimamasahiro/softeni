@@ -13,6 +13,186 @@
     root.NormalizeCore = factory();
   }
 })(typeof self !== 'undefined' ? self : this, function () {
+  // ラウンド名 → 深さ順序（昇順）。"1回戦" < "2回戦" < ... < 準々決勝 < 準決勝 < 決勝。
+  function roundOrderOf(roundName) {
+    if (!roundName) return -1;
+    const num = (String(roundName).match(/(\d+)/) || [])[0];
+    if (num) return Number(num);
+    const map = { 準々決勝: 8000, 準決勝: 9000, 決勝: 10000 };
+    const mapKeys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of mapKeys) if (String(roundName).includes(k)) return map[k];
+    return 0;
+  }
+
+  /**
+   * 1 エントリーの大会内成績を matches から決定的に導出する。
+   * 大会途中（未確定試合あり）でも安全に評価でき、未確定試合を「敗退」とはみなさない。
+   *   state: 'winner' | 'runnerup' | 'eliminated' | 'alive' | 'unknown'
+   *     - alive   … 進行中（その回戦に到達／勝ち上がり中）。最終結果は未確定。
+   *     - eliminated … 敗北が確定（敗退）。
+   * resultLabel は表示用（例: "ベスト8進出" / "2回戦敗退" / "優勝"）。
+   * 注意: 最深試合の winnerEntryNo が null（未実施）の間は alive を返す。これにより
+   * 途中経過でも results 配列を生成できる（従来は途中だと配列ごと省いていた）。
+   */
+  function deriveEntryStanding(entryNo, matches) {
+    const played = (matches || []).filter(
+      (m) =>
+        m && Array.isArray(m.entries) && m.entries.some((en) => en === entryNo),
+    );
+    if (!played.length) {
+      return {
+        resultLabel: '不明',
+        eliminatedRound: null,
+        lastMatchId: null,
+        state: 'unknown',
+      };
+    }
+    played.sort((a, b) => roundOrderOf(a.round) - roundOrderOf(b.round));
+    const last = played[played.length - 1];
+    const lastRound = last.round || null;
+    const lastMatchId = last.matchId || null;
+    const decided = last.winnerEntryNo != null;
+    const wasWinner = decided && last.winnerEntryNo === entryNo;
+
+    const isFinalMatch =
+      !last.nextMatchId &&
+      (lastRound === '決勝' ||
+        (matches || []).filter(
+          (m) => m && !m.nextMatchId && m.stage === 'knockout',
+        ).length <= 2);
+
+    // 進行中: 最深試合が未確定 → その回戦に到達済み（敗退ではない）。
+    if (!decided) {
+      let label = '出場';
+      if (lastRound) {
+        if (lastRound.includes('準々決勝')) label = 'ベスト8進出';
+        else if (lastRound.includes('準決勝')) label = 'ベスト4進出';
+        else if (lastRound.includes('決勝')) label = '決勝進出';
+        else {
+          const num = (lastRound.match(/(\d+)回/) || [])[1];
+          if (num && Number(num) >= 2) label = `${num}回戦進出`;
+        }
+      }
+      return {
+        resultLabel: label,
+        eliminatedRound: null,
+        lastMatchId,
+        state: 'alive',
+      };
+    }
+
+    // 優勝: 決勝（nextMatchId 無し）の勝者
+    if (wasWinner && isFinalMatch) {
+      return {
+        resultLabel: '優勝',
+        eliminatedRound: null,
+        lastMatchId,
+        state: 'winner',
+      };
+    }
+    // 準優勝: 決勝で敗北（確定）
+    if (!wasWinner && isFinalMatch && lastRound !== '3位決定戦') {
+      return {
+        resultLabel: '準優勝',
+        eliminatedRound: lastRound,
+        lastMatchId,
+        state: 'runnerup',
+      };
+    }
+    // 勝者だが最深試合が決勝でない → 勝ち上がり中（次戦未生成）。進行中扱い。
+    if (wasWinner) {
+      if (lastRound && lastRound.includes('準決勝'))
+        return {
+          resultLabel: '決勝進出',
+          eliminatedRound: null,
+          lastMatchId,
+          state: 'alive',
+        };
+      if (lastRound && lastRound.includes('準々決勝'))
+        return {
+          resultLabel: 'ベスト4進出',
+          eliminatedRound: null,
+          lastMatchId,
+          state: 'alive',
+        };
+      if (lastRound) {
+        const num = (lastRound.match(/(\d+)回/) || [])[1];
+        if (num)
+          return {
+            resultLabel: `${Number(num) + 1}回戦進出`,
+            eliminatedRound: null,
+            lastMatchId,
+            state: 'alive',
+          };
+      }
+    }
+
+    // 敗退（最深試合で敗北が確定）
+    if (lastRound) {
+      if (lastRound.includes('準決勝'))
+        return {
+          resultLabel: 'ベスト4',
+          eliminatedRound: lastRound,
+          lastMatchId,
+          state: 'eliminated',
+        };
+      if (lastRound.includes('準々決勝'))
+        return {
+          resultLabel: 'ベスト8',
+          eliminatedRound: lastRound,
+          lastMatchId,
+          state: 'eliminated',
+        };
+      const num = (lastRound.match(/(\d+)回/) || [])[1];
+      if (num)
+        return {
+          resultLabel: `${num}回戦敗退`,
+          eliminatedRound: lastRound,
+          lastMatchId,
+          state: 'eliminated',
+        };
+      return {
+        resultLabel: `${lastRound}敗退`,
+        eliminatedRound: lastRound,
+        lastMatchId,
+        state: 'eliminated',
+      };
+    }
+
+    return {
+      resultLabel: '不明',
+      eliminatedRound: null,
+      lastMatchId: null,
+      state: 'unknown',
+    };
+  }
+
+  /** entryResult.state / resultLabel から results 用の rank を決める。 */
+  function computeRankFromStanding(entryResult) {
+    if (!entryResult) return { kind: 'unknown' };
+    const state = entryResult.state;
+    const label = entryResult.resultLabel || '';
+    if (state === 'winner' || label === '優勝') return { kind: 'winner' };
+    if (state === 'runnerup' || label === '準優勝') return { kind: 'runnerup' };
+    if (state === 'alive') {
+      // 進行中（到達ラウンド）。数値回戦が読めれば round を添える。
+      const m = label.match(/(\d+)回戦/);
+      return m ? { kind: 'ongoing', round: Number(m[1]) } : { kind: 'ongoing' };
+    }
+    // eliminated（または state 未設定の従来ラベル）
+    const bestMatch = label.match(/ベスト(\d+)/);
+    if (bestMatch) return { kind: 'best', bestLevel: Number(bestMatch[1]) };
+    const roundMatch = label.match(/(\d+)回戦/);
+    if (roundMatch) return { kind: 'round', round: Number(roundMatch[1]) };
+    if (entryResult.eliminatedRound) {
+      const rr = entryResult.eliminatedRound;
+      if (rr.includes('準々決勝')) return { kind: 'best', bestLevel: 8 };
+      if (rr.includes('準決勝')) return { kind: 'best', bestLevel: 4 };
+      if (rr.includes('決勝')) return { kind: 'runnerup' };
+    }
+    return { kind: 'unknown' };
+  }
+
   function normalizeResults(data, entriesMetaInput) {
     const participantsMap = new Map();
 
@@ -82,7 +262,10 @@
         const rest = parts.slice(2);
         let team = null;
         let prefecture = null;
-        if (rest.length >= 2 && /(?:都|道|府|県)$/.test(rest[rest.length - 1])) {
+        if (
+          rest.length >= 2 &&
+          /(?:都|道|府|県)$/.test(rest[rest.length - 1])
+        ) {
           prefecture = rest[rest.length - 1];
           team = rest.slice(0, -1).join('_') || null;
         } else {
@@ -1150,107 +1333,10 @@
     // For each entry, find all matches they participated in, pick the latest by roundOrder
     // and derive a human-friendly result label. We keep this as `entryResults` so
     // the original `results` (player-based) remains unchanged.
+    // 成績導出は factory スコープの純粋関数 deriveEntryStanding に委譲する（単体テスト可能）。
+    // 大会途中（未確定試合あり）でも「敗退」と誤判定せず alive を返す。
     function deriveResultLabelForEntry(entryNo) {
-      // gather matches that include this entry
-      const played = matchesTransformed.filter(
-        (m) =>
-          Array.isArray(m.entries) && m.entries.some((en) => en === entryNo),
-      );
-      if (!played || !played.length) {
-        return {
-          resultLabel: '不明',
-          eliminatedRound: null,
-          lastMatchId: null,
-        };
-      }
-      // sort by roundOrder (ascending), take the last (deepest) match
-      played.sort((a, b) => roundOrder(a.round) - roundOrder(b.round));
-      const last = played[played.length - 1];
-      const lastRound = last.round || null;
-      const lastMatchId = last.matchId || null;
-      const wasWinner =
-        last.winnerEntryNo != null && last.winnerEntryNo === entryNo;
-
-      // true final detection
-      const isFinalMatch =
-        !last.nextMatchId &&
-        (lastRound === '決勝' ||
-          matchesTransformed.filter(
-            (m) => !m.nextMatchId && m.stage === 'knockout',
-          ).length <= 2);
-
-      // champion detection: winner of the match that has no nextMatchId (final)
-      if (wasWinner && isFinalMatch) {
-        return { resultLabel: '優勝', eliminatedRound: null, lastMatchId };
-      }
-
-      // runner-up: lost the final (last match is final and not winner)
-      if (!wasWinner && isFinalMatch && lastRound !== '3位決定戦') {
-        return {
-          resultLabel: '準優勝',
-          eliminatedRound: lastRound,
-          lastMatchId,
-        };
-      }
-
-      // if tournament didn't finish, what is their standing?
-      if (wasWinner) {
-        if (lastRound && lastRound.includes('準決勝'))
-          return {
-            resultLabel: '決勝進出',
-            eliminatedRound: null,
-            lastMatchId,
-          };
-        if (lastRound && lastRound.includes('準々決勝'))
-          return {
-            resultLabel: 'ベスト4進出',
-            eliminatedRound: null,
-            lastMatchId,
-          };
-        if (lastRound) {
-          const num = (lastRound.match(/(\d+)回/) || [])[1];
-          if (num) {
-            return {
-              resultLabel: `${Number(num) + 1}回戦進出`,
-              eliminatedRound: null,
-              lastMatchId,
-            };
-          }
-        }
-      }
-
-      // named round heuristics
-      if (lastRound) {
-        if (lastRound.includes('準決勝'))
-          return {
-            resultLabel: 'ベスト4',
-            eliminatedRound: lastRound,
-            lastMatchId,
-          };
-        if (lastRound.includes('準々決勝'))
-          return {
-            resultLabel: 'ベスト8',
-            eliminatedRound: lastRound,
-            lastMatchId,
-          };
-        // numeric rounds like "3回戦"
-        const num = (lastRound.match(/(\d+)回/) || [])[1];
-        if (num)
-          return {
-            resultLabel: `${num}回戦敗退`,
-            eliminatedRound: lastRound,
-            lastMatchId,
-          };
-        // fallback: round name + 敗退
-        return {
-          resultLabel: `${lastRound}敗退`,
-          eliminatedRound: lastRound,
-          lastMatchId,
-        };
-      }
-
-      // default unknown
-      return { resultLabel: '不明', eliminatedRound: null, lastMatchId };
+      return deriveEntryStanding(entryNo, matchesTransformed);
     }
 
     const entryResults = (entries || []).map((e) => {
@@ -1261,6 +1347,7 @@
         resultLabel: r.resultLabel,
         eliminatedRound: r.eliminatedRound,
         lastMatchId: r.lastMatchId,
+        state: r.state,
       };
     });
 
@@ -1276,32 +1363,9 @@
     // expose entry-level results as the primary `results` array (replace old output)
     outObj.entryResults = entryResults;
     // results: per-entry objects containing both tournament and roundrobin fields
-    function computeTournamentRank(entryResult) {
-      if (!entryResult || !entryResult.resultLabel) return { kind: 'unknown' };
-      const label = entryResult.resultLabel;
-
-      // Direct mappings for champion / runner-up
-      if (label === '優勝') return { kind: 'winner' };
-      if (label === '準優勝') return { kind: 'runnerup' };
-
-      // Best-n patterns (ベスト4, ベスト8, ベスト16 etc.)
-      const bestMatch = label.match(/ベスト(\d+)/);
-      if (bestMatch) return { kind: 'best', bestLevel: Number(bestMatch[1]) };
-
-      // Numeric round like "3回戦敗退" or "3回戦進出"
-      const roundMatch = label.match(/(\d+)回戦/);
-      if (roundMatch) return { kind: 'round', round: Number(roundMatch[1]) };
-
-      // Fall back to using eliminatedRound heuristics when available
-      if (entryResult.eliminatedRound) {
-        const rr = entryResult.eliminatedRound;
-        if (rr.includes('準々決勝')) return { kind: 'best', bestLevel: 8 };
-        if (rr.includes('準決勝')) return { kind: 'best', bestLevel: 4 };
-        if (rr.includes('決勝')) return { kind: 'runnerup' };
-      }
-
-      return { kind: 'unknown' };
-    }
+    // rank 算出は factory スコープの computeRankFromStanding に委譲（state を見て
+    // 進行中=ongoing と 敗退=round/best を区別する）。
+    const computeTournamentRank = computeRankFromStanding;
 
     outObj.results = resultsFromEntries.map((r) => {
       const key = String(r.entryNo);
@@ -1422,5 +1486,12 @@
     return buildOutput(outObj);
   }
 
-  return { normalizeResults, serializeOutput, buildOutput };
+  return {
+    normalizeResults,
+    serializeOutput,
+    buildOutput,
+    deriveEntryStanding,
+    computeRankFromStanding,
+    roundOrderOf,
+  };
 });

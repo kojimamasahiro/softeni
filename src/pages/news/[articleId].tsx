@@ -15,6 +15,7 @@ import {
   buildNewsArticleView,
   getArticleRecord,
   listPublishedArticles,
+  type EntryStanding,
   type NewsArticleView,
   type PreviewPlayerRef,
 } from '@/lib/newsArticle';
@@ -40,6 +41,27 @@ function PlayerName({ p }: { p: PreviewPlayerRef }) {
     );
   }
   return <>{p.name}</>;
+}
+
+/**
+ * 今大会の途中経過/敗退バッジ（進行中の年のみ。results 未掲載なら何も出ない）。
+ * alive=進行中（緑）/ champion=優勝（琥珀）/ runnerup=準優勝（琥珀）/ eliminated=敗退（灰）
+ */
+function StandingBadge({ standing }: { standing: EntryStanding | null }) {
+  if (!standing) return null;
+  const cls =
+    standing.state === 'alive'
+      ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100'
+      : standing.state === 'eliminated'
+        ? 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
+        : 'bg-amber-100 text-amber-900 dark:bg-amber-900 dark:text-amber-100';
+  return (
+    <span
+      className={`ml-2 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${cls}`}
+    >
+      今大会: {standing.label}
+    </span>
+  );
 }
 
 /** 選手名を「・」区切りで並べる（各名はリンク化されうる） */
@@ -221,6 +243,9 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                     'が今大会も出場し、新ペアで連覇を狙う。'}
                   {c.titleDefense.status === 'absent' &&
                     'は不在。新王者が誕生する。'}
+                  {c.titleDefense.status !== 'absent' && (
+                    <StandingBadge standing={c.titleDefense.standing} />
+                  )}
                 </p>
               </div>
             )}
@@ -250,6 +275,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                       </span>
                       {p.players.length > 0 && p.team && `（${p.team}）`}
                       {!p.intact && '（一部継続）'}
+                      <StandingBadge standing={p.standing} />
                     </li>
                   ))}
                 </ul>
@@ -274,6 +300,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                         )}
                       </span>
                       {f.players.length > 0 && f.team && `（${f.team}）`}
+                      <StandingBadge standing={f.standing} />
                     </li>
                   ))}
                 </ul>
