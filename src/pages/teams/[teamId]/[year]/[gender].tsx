@@ -8,10 +8,10 @@ import { useMemo } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
-import PageLayout from '@/components/PageLayout';
 import type {
   EventResult,
   Player,
@@ -122,7 +122,7 @@ export default function TeamYearGenderPage({
             players: playerNames,
           };
         }),
-    [results, info.players],
+    [results, info.players, playerLinks],
   );
 
   const calculatePlayerStatsValues = useMemo(() => {

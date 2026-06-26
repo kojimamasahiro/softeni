@@ -21,6 +21,13 @@
 - `data/local-sources/detected-documents.json`
 - `data/local-sources/ignored-documents.json`
 
+識別・名寄せ用データ:
+
+- チームマスタ（連番id）: `data/teams/teams.json` ＋ 文脈 `data/teams/team-context.json`
+- チーム名の正準対応表: `data/tournaments/team-name-aliases.json`
+- 同姓同名の別人分割: `data/players/homonyms.json`
+- 詳しくは [チーム・選手の名寄せと識別](./team-player-identity.md)
+
 関連ドキュメント:
 
 - `docs/tournament-data-structure.md`

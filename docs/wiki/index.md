@@ -18,6 +18,7 @@
 - [SNS 1日目投稿画像](./sns-day1-images.md)
 - [Data Model](./data-model.md)
 - [Data Import](./data-import.md)
+- [チーム・選手の名寄せと識別](./team-player-identity.md)
 - [Deployment](./deployment.md)
 - [Open Questions](./open-questions.md)
 

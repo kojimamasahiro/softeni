@@ -4,16 +4,4137 @@
   "teamAliases": [
     {
       "canonical": "高田商",
-      "aliases": ["高田商業", "高田商業高校", "高田商業高等学校", "大和高田市立高田商業高等学校"],
+      "aliases": [
+        "高田商業",
+        "高田商業高校",
+        "高田商業高等学校",
+        "大和高田市立高田商業高等学校"
+      ],
       "note": "大和高田市立高田商業（奈良県）。『高田商ＯＢクラブ』はOB（社会人）団体であり別チームのため対象に含めない。"
     },
-    { "canonical": "大分商", "aliases": ["大分商業"], "note": "大分商業（大分県）。『大分』高校とは別校。" },
-    { "canonical": "明豊", "aliases": ["明豊高校"] },
-    { "canonical": "旭川工", "aliases": ["旭川工業"] },
-    { "canonical": "北科大", "aliases": ["北科大高"], "note": "北海道科学大学高。" },
-    { "canonical": "焼津", "aliases": ["焼津高校"] },
-    { "canonical": "高崎商", "aliases": ["高崎商業"], "note": "高崎商業（群馬県）。『高崎』高校とは別校。" },
-    { "canonical": "県岐阜商", "aliases": ["岐阜商"], "note": "岐阜県立岐阜商業。林大嘉が年度をまたぎ両表記で登場（同一校）。市立岐阜商業＝『市岐商』とは別校。" },
-    { "canonical": "富士見", "aliases": ["静岡県富士見"], "note": "静岡県富士見。小林麻央が年度をまたぎ両表記で登場（同一校）。県名を冠した冗長表記を短縮形へ。" }
+    {
+      "canonical": "大分商",
+      "aliases": [
+        "大分商業"
+      ],
+      "note": "大分商業（大分県）。『大分』高校とは別校。"
+    },
+    {
+      "canonical": "明豊",
+      "aliases": [
+        "明豊高校"
+      ]
+    },
+    {
+      "canonical": "旭川工",
+      "aliases": [
+        "旭川工業"
+      ]
+    },
+    {
+      "canonical": "北科大",
+      "aliases": [
+        "北科大高"
+      ],
+      "note": "北海道科学大学高。"
+    },
+    {
+      "canonical": "焼津",
+      "aliases": [
+        "焼津高校"
+      ]
+    },
+    {
+      "canonical": "高崎商",
+      "aliases": [
+        "高崎商業"
+      ],
+      "note": "高崎商業（群馬県）。『高崎』高校とは別校。"
+    },
+    {
+      "canonical": "県岐阜商",
+      "aliases": [
+        "岐阜商"
+      ],
+      "note": "岐阜県立岐阜商業。林大嘉が年度をまたぎ両表記で登場（同一校）。市立岐阜商業＝『市岐商』とは別校。"
+    },
+    {
+      "canonical": "富士見",
+      "aliases": [
+        "静岡県富士見"
+      ],
+      "note": "静岡県富士見。小林麻央が年度をまたぎ両表記で登場（同一校）。県名を冠した冗長表記を短縮形へ。"
+    },
+    {
+      "canonical": "東北",
+      "aliases": [
+        "東北高校",
+        "東北高等学校"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "尽誠学園",
+      "aliases": [
+        "尽誠学園高校",
+        "尽誠学園高等学校"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "三重",
+      "aliases": [
+        "三重高校",
+        "三重高等学校"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "能登",
+      "aliases": [
+        "能登高校",
+        "能登高等学校"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "能登スポーツ少年団",
+      "aliases": [
+        "能登スポ少"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "広島翔洋",
+      "aliases": [
+        "広島翔洋高校"
+      ],
+      "note": "広島県"
+    },
+    {
+      "canonical": "昇陽",
+      "aliases": [
+        "昇陽高校"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "岡崎城西",
+      "aliases": [
+        "岡崎城西高校",
+        "岡崎城西高等学校"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "とわの森三愛",
+      "aliases": [
+        "とわの森三愛高校",
+        "とわの森三愛高等学校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "米子松蔭",
+      "aliases": [
+        "米子松蔭高校",
+        "米子松蔭高等学校"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "羽黒",
+      "aliases": [
+        "羽黒高校"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "明徳義塾",
+      "aliases": [
+        "明徳義塾高校"
+      ],
+      "note": "高知県"
+    },
+    {
+      "canonical": "和歌山信愛",
+      "aliases": [
+        "和歌山信愛高校"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "上宮",
+      "aliases": [
+        "上宮高校",
+        "上宮高等学校"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "京都光華",
+      "aliases": [
+        "京都光華高校",
+        "京都光華高等学校"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "木更津総合",
+      "aliases": [
+        "木更津総合高校"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "嬉野",
+      "aliases": [
+        "嬉野高校"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "霞ヶ浦",
+      "aliases": [
+        "霞ヶ浦高校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "学法石川",
+      "aliases": [
+        "学法石川高校"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "昭和学院",
+      "aliases": [
+        "昭和学院高校",
+        "昭和学院高等学校"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "明豊中学校",
+      "aliases": [
+        "明豊中学",
+        "明豊中"
+      ],
+      "note": "大分県"
+    },
+    {
+      "canonical": "就実",
+      "aliases": [
+        "就実高校",
+        "就実高等学校"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "文大杉並",
+      "aliases": [
+        "文大杉並高校"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "須磨学園",
+      "aliases": [
+        "須磨学園高校",
+        "須磨学園高等学校"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "田村",
+      "aliases": [
+        "田村高校"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "済美",
+      "aliases": [
+        "済美高校"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "脇町",
+      "aliases": [
+        "脇町高校"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "和歌山北",
+      "aliases": [
+        "和歌山北高校"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "岡山理大附",
+      "aliases": [
+        "岡山理大附高校"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "一関学院",
+      "aliases": [
+        "一関学院高校",
+        "一関学院高等学校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "ヨシザワ",
+      "aliases": [
+        "ヨシザワクラブ"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "笛吹",
+      "aliases": [
+        "笛吹高校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "秋田令和",
+      "aliases": [
+        "秋田令和高校"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "北越",
+      "aliases": [
+        "北越高等学校"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "白鷗大足利",
+      "aliases": [
+        "白鷗大足利高校"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "健大高崎",
+      "aliases": [
+        "健大高崎高校"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "多治見ジュニアクラブ",
+      "aliases": [
+        "多治見ジュニア"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "多治見",
+      "aliases": [
+        "多治見中学校",
+        "多治見中"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "中京",
+      "aliases": [
+        "中京高校"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "姫路ジュニア",
+      "aliases": [
+        "姫路ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "田辺STC",
+      "aliases": [
+        "田辺ジュニアクラブ"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "武生スポ少",
+      "aliases": [
+        "武生スポーツ少年団"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "中村学園女子",
+      "aliases": [
+        "中村学園女子高校"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "奈良育英",
+      "aliases": [
+        "奈良育英高校",
+        "奈良育英高等学校"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "都城商",
+      "aliases": [
+        "都城商高校"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "東北福祉大学",
+      "aliases": [
+        "東北福祉"
+      ]
+    },
+    {
+      "canonical": "四天王寺高校",
+      "aliases": [
+        "四天王寺"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "出雲北陵",
+      "aliases": [
+        "出雲北陵高校"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "清明学園中学校",
+      "aliases": [
+        "清明学園",
+        "清明学園中"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "宇都宮短大附",
+      "aliases": [
+        "宇都宮短大附高校"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "福知山成美",
+      "aliases": [
+        "福知山成美高校"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "山陽学園",
+      "aliases": [
+        "山陽学園高校"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "舞鶴ひまわりクラブ",
+      "aliases": [
+        "舞鶴ひまわり"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "巻",
+      "aliases": [
+        "巻高校"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "巻ジュニア",
+      "aliases": [
+        "巻ジュニアクラブ"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "佐賀清和",
+      "aliases": [
+        "佐賀清和高校"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "札幌大谷",
+      "aliases": [
+        "札幌大谷高校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "芳賀クラブジュニア",
+      "aliases": [
+        "芳賀ジュニア"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "芳賀",
+      "aliases": [
+        "芳賀中学校",
+        "芳賀中"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "稲城ジュニア",
+      "aliases": [
+        "稲城ジュニアクラブ",
+        "稲城"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "綾瀬チャレンジ",
+      "aliases": [
+        "綾瀬チャレンジジュニアクラブ",
+        "綾瀬チャレンジジュニア",
+        "綾瀬チャレンジジュニアSTC"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "埼玉平成",
+      "aliases": [
+        "埼玉平成高校"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "ふれあいクラブジュニア",
+      "aliases": [
+        "ふれあいジュニア",
+        "ふれあいクラブ"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "立命館守山",
+      "aliases": [
+        "立命館守山高校"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "八重山",
+      "aliases": [
+        "八重山高校"
+      ],
+      "note": "沖縄県"
+    },
+    {
+      "canonical": "龍野ジュニア",
+      "aliases": [
+        "龍野ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "ももっち岡山",
+      "aliases": [
+        "ももっち岡山ジュニア",
+        "ももっち岡山ジュニアクラブ"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "長野俊英",
+      "aliases": [
+        "長野俊英高校"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "阿多古クラブ",
+      "aliases": [
+        "阿多古"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "桑名ジュニアクラブ",
+      "aliases": [
+        "桑名ジュニア"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "上青木中学校",
+      "aliases": [
+        "上青木",
+        "上青木中"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "横須賀Ｄｒｅａｍスポーツ少年団",
+      "aliases": [
+        "横須賀Ｄｒｅａｍスポ少",
+        "横須賀Ｄｒｅａｍ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "はすみスポーツ少年団",
+      "aliases": [
+        "はすみスポ少"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "諫早ジュニア",
+      "aliases": [
+        "諫早ジュニアクラブ"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "諫早",
+      "aliases": [
+        "諫早中学校"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "高田ジュニアクラブ",
+      "aliases": [
+        "高田ジュニア"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "市場中学校",
+      "aliases": [
+        "市場",
+        "市場中"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "蒲生スポーツ少年団",
+      "aliases": [
+        "蒲生スポ少"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "男塾",
+      "aliases": [
+        "男塾ジュニア"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "松商学園",
+      "aliases": [
+        "松商学園高校"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "札幌龍谷学園",
+      "aliases": [
+        "札幌龍谷学園高校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "明石ジュニア",
+      "aliases": [
+        "明石ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "日大藤沢",
+      "aliases": [
+        "日大藤沢高校"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "土浦クラブ",
+      "aliases": [
+        "土浦STC",
+        "土浦ソフトテニスクラブ"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "中条スポ少",
+      "aliases": [
+        "中条スポーツ少年団"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "中条",
+      "aliases": [
+        "中条中学校"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "北上ジュニア",
+      "aliases": [
+        "北上ジュニアスポ少",
+        "北上ジュニアスポーツ少年団"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "堺市テニススポーツ少年団",
+      "aliases": [
+        "堺市テニススポ少"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "美濃加茂",
+      "aliases": [
+        "美濃加茂高校"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "つるぎ",
+      "aliases": [
+        "つるぎ高校"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "大村なんてジュニア",
+      "aliases": [
+        "大村なんてジュニアクラブ"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "清水ヶ丘",
+      "aliases": [
+        "清水ヶ丘高校",
+        "清水ヶ丘高等学校"
+      ],
+      "note": "広島県"
+    },
+    {
+      "canonical": "星野",
+      "aliases": [
+        "星野高校"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "豊田大谷",
+      "aliases": [
+        "豊田大谷高校"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "瑞穂ジュニアクラブ",
+      "aliases": [
+        "瑞穂ジュニア"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "徳山商工",
+      "aliases": [
+        "徳山商工高校"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "水戸女子",
+      "aliases": [
+        "水戸女子高校",
+        "水戸女子高等学校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "高岡商業高校",
+      "aliases": [
+        "高岡商業"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "倉敷ジュニアクラブ",
+      "aliases": [
+        "倉敷ジュニア"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "北陸",
+      "aliases": [
+        "北陸高校"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "綾羽",
+      "aliases": [
+        "綾羽高校",
+        "綾羽高等学校"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "一関スポ少",
+      "aliases": [
+        "一関スポーツ少年団"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "大津ジュニアクラブ",
+      "aliases": [
+        "大津ジュニア"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "徳島科技",
+      "aliases": [
+        "徳島科技高校"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "甲斐清和",
+      "aliases": [
+        "甲斐清和高校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "西袋中学校",
+      "aliases": [
+        "西袋"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "黒沢尻北",
+      "aliases": [
+        "黒沢尻北高校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "長浜北",
+      "aliases": [
+        "長浜北高校"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "王寺ジュニアクラブ",
+      "aliases": [
+        "王寺ジュニア"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "秋田北",
+      "aliases": [
+        "秋田北高校"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "川崎橘",
+      "aliases": [
+        "川崎橘高校"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "誠修",
+      "aliases": [
+        "誠修高校"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "武庫川女子大学",
+      "aliases": [
+        "武庫川女子"
+      ]
+    },
+    {
+      "canonical": "駿台甲府",
+      "aliases": [
+        "駿台甲府高校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "松江南",
+      "aliases": [
+        "松江南高校",
+        "松江南高等学校"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "東海ジュニア",
+      "aliases": [
+        "東海",
+        "東海ジュニアクラブ"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "植草学園大附",
+      "aliases": [
+        "植草学園大附高校"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "弘前あすなろジュニア",
+      "aliases": [
+        "弘前あすなろジュニアクラブ"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "ルーテル学院",
+      "aliases": [
+        "ルーテル学院高校"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "東中筋ジュニアクラブ",
+      "aliases": [
+        "東中筋ジュニア"
+      ],
+      "note": "高知県"
+    },
+    {
+      "canonical": "常陸太田スポ少",
+      "aliases": [
+        "常陸太田スポーツ少年団"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "ＷＩＮＧ射水スポーツ少年団",
+      "aliases": [
+        "ＷＩＮＧ射水スポ少"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "都城アトムジュニアクラブ",
+      "aliases": [
+        "都城アトムジュニア",
+        "都城アトム"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "鹿児島女子",
+      "aliases": [
+        "鹿児島女子高校"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "尾道",
+      "aliases": [
+        "尾道高校"
+      ],
+      "note": "広島県"
+    },
+    {
+      "canonical": "郡山ジュニア",
+      "aliases": [
+        "郡山ジュニアクラブ"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "相生ジュニア",
+      "aliases": [
+        "相生ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "横芝中学校",
+      "aliases": [
+        "横芝",
+        "横芝中"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "宮崎商業高校",
+      "aliases": [
+        "宮崎商業高等学校"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "延岡学園",
+      "aliases": [
+        "延岡学園高校"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "一宮町スポ少",
+      "aliases": [
+        "一宮町スポーツ少年団"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "仙北市ジュニア",
+      "aliases": [
+        "仙北市ジュニアクラブ"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "八郎潟町スポ少",
+      "aliases": [
+        "八郎潟町スポーツ少年団"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "将監JST",
+      "aliases": [
+        "将監ジュニアクラブ"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "長命ヶ丘JST",
+      "aliases": [
+        "長命ヶ丘ジュニア",
+        "長命ヶ丘ジュニアクラブ"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "杉戸ジュニアテニススポーツ少年団",
+      "aliases": [
+        "杉戸ジュニアテニススポ少"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "藤井寺ジュニアクラブ",
+      "aliases": [
+        "藤井寺ジュニア"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "富士宮北",
+      "aliases": [
+        "富士宮北高校"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "精道三川台",
+      "aliases": [
+        "精道三川台高校"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "時津ジュニア",
+      "aliases": [
+        "時津ジュニアクラブ"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "西郷第一中学校",
+      "aliases": [
+        "西郷第一",
+        "西郷第一中"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "丸岡町スポ少",
+      "aliases": [
+        "丸岡町スポーツ少年団"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "福井市ジュニアクラブ",
+      "aliases": [
+        "福井市ジュニア"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "岩手",
+      "aliases": [
+        "岩手高校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "朝桜中学校",
+      "aliases": [
+        "朝桜",
+        "朝桜中"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "国見ジュニア",
+      "aliases": [
+        "国見ジュニアクラブ"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "西城陽",
+      "aliases": [
+        "西城陽高等学校"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "クレイスポ少",
+      "aliases": [
+        "クレイスポーツ少年団"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "金沢学院大附",
+      "aliases": [
+        "金沢学院大附高校"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "朝日丘中学校",
+      "aliases": [
+        "朝日丘",
+        "朝日丘中"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "大用ジュニアクラブ",
+      "aliases": [
+        "大用ジュニア"
+      ],
+      "note": "高知県"
+    },
+    {
+      "canonical": "上郡ジュニア",
+      "aliases": [
+        "上郡ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "武雄ジュニア",
+      "aliases": [
+        "武雄ジュニアクラブ"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "甲府南",
+      "aliases": [
+        "甲府南高校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "大垣市スポーツ少年団",
+      "aliases": [
+        "大垣市スポ少",
+        "大垣市少年団"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "常磐大",
+      "aliases": [
+        "常磐大高校",
+        "常磐大高"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "連島中学校",
+      "aliases": [
+        "連島"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "甲賀テニススポーツ少年団",
+      "aliases": [
+        "甲賀テニススポ少"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "八幡スポ少",
+      "aliases": [
+        "八幡スポーツ少年団"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "安城ジュニアクラブ",
+      "aliases": [
+        "安城ジュニア"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "いすみジュニア",
+      "aliases": [
+        "いすみジュニアクラブ"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "水沢大鐘ジュニア",
+      "aliases": [
+        "水沢大鐘ジュニアクラブ"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "森吉ジュニア",
+      "aliases": [
+        "森吉ジュニアクラブ"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "南陽スポ少",
+      "aliases": [
+        "南陽スポーツ少年団"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "弘前",
+      "aliases": [
+        "弘前高校"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "伊勢ジュニアクラブ",
+      "aliases": [
+        "伊勢ジュニア"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "スポ少山形",
+      "aliases": [
+        "スポ少山形クラブ"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "芝東",
+      "aliases": [
+        "芝東中学校",
+        "芝東中"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "泉南ジュニアクラブ",
+      "aliases": [
+        "泉南ジュニア"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "美浦ジュニアスポ少",
+      "aliases": [
+        "美浦ジュニアスポーツ少年団"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "宮田ジュニア",
+      "aliases": [
+        "宮田ジュニアクラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "羽須美",
+      "aliases": [
+        "羽須美中学校",
+        "羽須美中"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "浜北ジュニアクラブ",
+      "aliases": [
+        "浜北ジュニア"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "岡崎ジュニア",
+      "aliases": [
+        "岡崎ジュニアクラブ"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "名寄",
+      "aliases": [
+        "名寄中学校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "蕨テニスクラブ",
+      "aliases": [
+        "蕨クラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "秩父第一中学校",
+      "aliases": [
+        "秩父第一",
+        "秩父第一中"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "福井ジュニアクラブ",
+      "aliases": [
+        "福井ジュニア"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "座間ジュニアクラブ",
+      "aliases": [
+        "座間ジュニア"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "大刀洗ジュニア",
+      "aliases": [
+        "大刀洗ジュニアクラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "宮崎ジュニア",
+      "aliases": [
+        "宮崎ジュニアクラブ"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "さざジュニア",
+      "aliases": [
+        "さざジュニアクラブ"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "北仙台中学校",
+      "aliases": [
+        "北仙台",
+        "北仙台中"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "砧南ジュニア",
+      "aliases": [
+        "砧南ジュニアクラブ",
+        "砧南"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "山形中央",
+      "aliases": [
+        "山形中央高校"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "鶯谷",
+      "aliases": [
+        "鶯谷高校"
+      ],
+      "note": "岐阜県"
+    },
+    {
+      "canonical": "桜井",
+      "aliases": [
+        "桜井高校"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "富士吉田スポ少",
+      "aliases": [
+        "富士吉田スポーツ少年団"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "宮古島パニパニ",
+      "aliases": [
+        "宮古島パニパニジュニアクラブ",
+        "宮古島パニパニジュニア"
+      ],
+      "note": "沖縄県"
+    },
+    {
+      "canonical": "金沢学院",
+      "aliases": [
+        "金沢学院高校"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "旭川実業",
+      "aliases": [
+        "旭川実業高校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "はまともジュニア",
+      "aliases": [
+        "はまともジュニアクラブ"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "富山輝STC",
+      "aliases": [
+        "富山輝クラブ"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "港北スポ少",
+      "aliases": [
+        "港北スポーツ少年団"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "高崎女子",
+      "aliases": [
+        "高崎女子高校"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "都城商業高校ＯＢクラブ",
+      "aliases": [
+        "都城商業高校ＯＢ"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "西階中学校",
+      "aliases": [
+        "西階"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "熊本春竹ジュニア",
+      "aliases": [
+        "熊本春竹ジュニアクラブ"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "亀岡スポ少",
+      "aliases": [
+        "亀岡ジュニアクラブ",
+        "亀岡ジュニア",
+        "亀岡スポーツ少年団"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "豊中小学生クラブ",
+      "aliases": [
+        "豊中小学生"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "日進ジュニア",
+      "aliases": [
+        "日進ジュニアクラブ"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "南都田スポ少",
+      "aliases": [
+        "南都田スポーツ少年団"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "白神ジュニア",
+      "aliases": [
+        "白神ジュニアクラブ"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "筑前ジュニア",
+      "aliases": [
+        "筑前ジュニアクラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "宝ジュニアクラブ",
+      "aliases": [
+        "宝ジュニア"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "香南ジュニア",
+      "aliases": [
+        "香南ジュニアクラブ"
+      ],
+      "note": "高知県"
+    },
+    {
+      "canonical": "大津中学校",
+      "aliases": [
+        "大津"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "多良ジュニア",
+      "aliases": [
+        "多良ジュニアクラブ"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "常磐大学高校",
+      "aliases": [
+        "常磐大学高等学校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "井原テニスクラブ",
+      "aliases": [
+        "井原クラブ"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "竜王クラブジュニア",
+      "aliases": [
+        "竜王ジュニア"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "吉富",
+      "aliases": [
+        "吉富中学校"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "上田染谷丘",
+      "aliases": [
+        "上田染谷丘高校"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "青藍ジュニア",
+      "aliases": [
+        "青藍ジュニアクラブ"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "芝SCジュニアクラブ",
+      "aliases": [
+        "芝SCジュニア"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "小川ジュニアテニスクラブ",
+      "aliases": [
+        "小川ジュニア",
+        "小川ジュニアクラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "和田山ジュニア",
+      "aliases": [
+        "和田山ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "水沢",
+      "aliases": [
+        "水沢高校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "水沢南",
+      "aliases": [
+        "水沢南中学校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "村上市スポ少",
+      "aliases": [
+        "村上市スポーツ少年団"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "見附市スポーツ少年団",
+      "aliases": [
+        "見附市スポ少"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "秋田西",
+      "aliases": [
+        "秋田西高校"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "南大師ジュニア",
+      "aliases": [
+        "南大師ジュニアクラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "都城東",
+      "aliases": [
+        "都城東高校"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "高畑ジュニア",
+      "aliases": [
+        "高畑ジュニアクラブ"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "関西中央",
+      "aliases": [
+        "関西中央高等学校"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "附属旭川",
+      "aliases": [
+        "附属旭川中学校",
+        "附属旭川中"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "羽合スポ少",
+      "aliases": [
+        "羽合スポーツ少年団"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "かなんジュニアクラブ",
+      "aliases": [
+        "かなんジュニア"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "阪南ジュニアクラブ",
+      "aliases": [
+        "阪南ジュニア"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "中野中学校",
+      "aliases": [
+        "中野",
+        "中野中"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "境川スポ少",
+      "aliases": [
+        "境川スポーツ少年団"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "伊集院ジュニア",
+      "aliases": [
+        "伊集院ジュニアクラブ"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "都商OBクラブ",
+      "aliases": [
+        "都商OB"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "福知山ジュニア",
+      "aliases": [
+        "福知山ジュニアクラブ"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "常盤木学園",
+      "aliases": [
+        "常盤木学園高校"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "英明",
+      "aliases": [
+        "英明高校"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "加木屋",
+      "aliases": [
+        "加木屋中学校"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "気高ジュニア",
+      "aliases": [
+        "気高ジュニアクラブ"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "福島西",
+      "aliases": [
+        "福島西高校"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "敬愛学園",
+      "aliases": [
+        "敬愛学園高校"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "西有田中学校",
+      "aliases": [
+        "西有田"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "多賀高校",
+      "aliases": [
+        "多賀"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "岩瀬日大",
+      "aliases": [
+        "岩瀬日大高校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "取手第一",
+      "aliases": [
+        "取手第一中学校",
+        "取手第一中"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "南砺福野",
+      "aliases": [
+        "南砺福野高校"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "黒石野中学校",
+      "aliases": [
+        "黒石野"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "協和スポ少",
+      "aliases": [
+        "協和スポーツ少年団"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "上溝南",
+      "aliases": [
+        "上溝南高校"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "有度山ジュニアクラブ",
+      "aliases": [
+        "有度山ジュニア"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "東海大諏訪",
+      "aliases": [
+        "東海大諏訪高校"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "大矢野",
+      "aliases": [
+        "大矢野中学校"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "日南スポ少",
+      "aliases": [
+        "日南スポーツ少年団"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "武蔵越生",
+      "aliases": [
+        "武蔵越生高校"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "長門",
+      "aliases": [
+        "長門高校"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "丹沢ジュニア",
+      "aliases": [
+        "丹沢ジュニアクラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "甘楽町ジュニア",
+      "aliases": [
+        "甘楽町ジュニアクラブ"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "赤堀",
+      "aliases": [
+        "赤堀中学校"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "直方ジュニア",
+      "aliases": [
+        "直方ジュニアクラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "篠栗北中学校",
+      "aliases": [
+        "篠栗北",
+        "篠栗北中"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "松江西",
+      "aliases": [
+        "松江西高校"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "水口ジュニア",
+      "aliases": [
+        "水口ジュニアクラブ"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "鈴鹿ジュニアクラブ",
+      "aliases": [
+        "鈴鹿ジュニア"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "宝達中学校",
+      "aliases": [
+        "宝達",
+        "宝達中"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "能登香島",
+      "aliases": [
+        "能登香島中学校"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "日章中学校",
+      "aliases": [
+        "日章"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "山形ジュニアスポ少",
+      "aliases": [
+        "山形ジュニアスポーツ少年団"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "貴志川ジュニア",
+      "aliases": [
+        "貴志川ジュニアクラブ"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "三春・船引ジュニアクラブ",
+      "aliases": [
+        "三春・船引ジュニア"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "鹿島学園高校",
+      "aliases": [
+        "鹿島学園"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "新居浜ジュニアクラブ",
+      "aliases": [
+        "新居浜ジュニア"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "佐那河内",
+      "aliases": [
+        "佐那河内中学校"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "羽ノ浦",
+      "aliases": [
+        "羽ノ浦中学校"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "盛岡第三",
+      "aliases": [
+        "盛岡第三高校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "別府クラブ",
+      "aliases": [
+        "別府ソフトテニスクラブ"
+      ],
+      "note": "大分県"
+    },
+    {
+      "canonical": "石和町スポ少",
+      "aliases": [
+        "石和町スポーツ少年団"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "横浜泉ジュニア",
+      "aliases": [
+        "横浜泉ジュニアクラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "藤沢ジュニア",
+      "aliases": [
+        "藤沢ジュニアクラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "中村学園",
+      "aliases": [
+        "中村学園高校"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "安土ジュニアＳＴスポーツ少年団",
+      "aliases": [
+        "安土ジュニアＳＴスポ少"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "函南ジュニア",
+      "aliases": [
+        "函南ジュニアクラブ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "西海あおぞらジュニア",
+      "aliases": [
+        "西海あおぞらジュニアクラブ"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "ファミリージュニア",
+      "aliases": [
+        "ファミリー"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "稲城第三",
+      "aliases": [
+        "稲城第三中学校",
+        "稲城第三中"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "中広",
+      "aliases": [
+        "中広中学校"
+      ],
+      "note": "広島県"
+    },
+    {
+      "canonical": "中山中学校",
+      "aliases": [
+        "中山"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "天童ウィナーズスポーツ少年団",
+      "aliases": [
+        "天童ウィナーズスポ少"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "所沢テニスクラブ",
+      "aliases": [
+        "所沢クラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "新宮スポ少",
+      "aliases": [
+        "新宮スポーツ少年団"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "金屋ジュニアクラブ",
+      "aliases": [
+        "金屋ジュニア"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "土佐中学校",
+      "aliases": [
+        "土佐"
+      ],
+      "note": "高知県"
+    },
+    {
+      "canonical": "須賀川スポーツ少年団",
+      "aliases": [
+        "須賀川スポ少"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "入善ＥＡＳＴクラブスポ少",
+      "aliases": [
+        "入善ＥＡＳＴクラブスポーツ少年団"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "下山学園高校",
+      "aliases": [
+        "下山学園"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "前沢ジュニア",
+      "aliases": [
+        "前沢ジュニアスポーツ少年団"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "吉田中学校",
+      "aliases": [
+        "吉田"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "能代山本ジュニア",
+      "aliases": [
+        "能代山本ジュニアクラブ"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "宮郷",
+      "aliases": [
+        "宮郷中学校"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "群馬中央中学校",
+      "aliases": [
+        "群馬中央",
+        "群馬中央中"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "東出雲スポ少",
+      "aliases": [
+        "東出雲スポーツ少年団"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "益田中学校",
+      "aliases": [
+        "益田",
+        "益田中"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "浜田第一",
+      "aliases": [
+        "浜田第一中学校"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "MKクラブ",
+      "aliases": [
+        "MKテニスクラブ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "掛川ジュニアクラブ",
+      "aliases": [
+        "掛川ジュニア"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "韮山ジュニア",
+      "aliases": [
+        "韮山ジュニアテニスクラブ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "八代第六中学校",
+      "aliases": [
+        "八代第六"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "倉田山",
+      "aliases": [
+        "倉田山中学校"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "生駒ジュニア",
+      "aliases": [
+        "生駒ジュニアクラブ"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "加賀ジュニア",
+      "aliases": [
+        "加賀ジュニアクラブ"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "江別第一",
+      "aliases": [
+        "江別第一中学校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "宮内",
+      "aliases": [
+        "宮内中学校",
+        "宮内中"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "会津若松ジュニア",
+      "aliases": [
+        "会津若松ジュニアクラブ"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "中央台南",
+      "aliases": [
+        "中央台南中学校",
+        "中央台南中"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "泉",
+      "aliases": [
+        "泉中学校"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "石川高校",
+      "aliases": [
+        "石川高等学校"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "安乎",
+      "aliases": [
+        "安乎中学校"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "古河第一",
+      "aliases": [
+        "古河第一中学校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "水戸桜ノ牧",
+      "aliases": [
+        "水戸桜ノ牧高校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "藤代紫水",
+      "aliases": [
+        "藤代紫水高校"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "高岡",
+      "aliases": [
+        "高岡高校"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "おいらせ町スポーツ少年団",
+      "aliases": [
+        "おいらせ町スポ少"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "東北町ジュニアクラブ",
+      "aliases": [
+        "東北町スポーツ少年団"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "丹原東",
+      "aliases": [
+        "丹原東中学校"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "三重町ウインズジュニア",
+      "aliases": [
+        "三重町ウインズジュニアクラブ"
+      ],
+      "note": "大分県"
+    },
+    {
+      "canonical": "犬飼町スポーツ少年団",
+      "aliases": [
+        "犬飼町スポ少"
+      ],
+      "note": "大分県"
+    },
+    {
+      "canonical": "内野",
+      "aliases": [
+        "内野中学校"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "帝京長岡",
+      "aliases": [
+        "帝京長岡高校"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "一宮",
+      "aliases": [
+        "一宮中学校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "下吉田",
+      "aliases": [
+        "下吉田中学校",
+        "下吉田中"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "浅川",
+      "aliases": [
+        "浅川中学校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "甲府西",
+      "aliases": [
+        "甲府西中学校"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "土崎",
+      "aliases": [
+        "土崎中学校",
+        "土崎中"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "片岡",
+      "aliases": [
+        "片岡中学校"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "河津ジュニアクラブ",
+      "aliases": [
+        "河津ジュニア"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "清竜",
+      "aliases": [
+        "清竜中学校"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "小禄",
+      "aliases": [
+        "小禄中学校"
+      ],
+      "note": "沖縄県"
+    },
+    {
+      "canonical": "玉名ジュニアクラブ",
+      "aliases": [
+        "玉名ジュニア"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "大河原中学校",
+      "aliases": [
+        "大河原"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "高松商業高校",
+      "aliases": [
+        "高松商業高等学校"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "飛鳥インドアクラブ",
+      "aliases": [
+        "飛鳥インドアテニスクラブ"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "小松",
+      "aliases": [
+        "小松高校"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "江別スポーツ少年団",
+      "aliases": [
+        "江別スポ少"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "緑陽",
+      "aliases": [
+        "緑陽中学校"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "湯梨浜中学校",
+      "aliases": [
+        "湯梨浜"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "山形市スポーツ協会クラブ",
+      "aliases": [
+        "山形市スポーツ協会"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "鶴岡第四中学校",
+      "aliases": [
+        "鶴岡第四"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "キノウエジュニアクラブ",
+      "aliases": [
+        "キノウエジュニア"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "石川義塾",
+      "aliases": [
+        "石川義塾中学校",
+        "石川義塾中"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "蔵の町クラブ",
+      "aliases": [
+        "蔵の町テニスクラブ"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "八街ジュニアクラブ",
+      "aliases": [
+        "八街ジュニア"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "笠松クラブ",
+      "aliases": [
+        "笠松ソフトテニスクラブ"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "平賀西",
+      "aliases": [
+        "平賀西中学校"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "北上南",
+      "aliases": [
+        "北上南中学校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "大槌",
+      "aliases": [
+        "大槌中学校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "指宿商業高校",
+      "aliases": [
+        "指宿商業高等学校"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "紫原",
+      "aliases": [
+        "紫原中学校"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "妻ヶ丘",
+      "aliases": [
+        "妻ヶ丘中学校"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "小松原",
+      "aliases": [
+        "小松原中学校"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "甲南中学校",
+      "aliases": [
+        "甲南"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "佐々中学校",
+      "aliases": [
+        "佐々"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "鶴城",
+      "aliases": [
+        "鶴城中学校"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "大台",
+      "aliases": [
+        "大台中学校",
+        "大台中"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "になか",
+      "aliases": [
+        "になかジュニアクラブ"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "龍野西",
+      "aliases": [
+        "龍野西中学校"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "石動",
+      "aliases": [
+        "石動中学校"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "八郎潟",
+      "aliases": [
+        "八郎潟中学校"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "宇都宮女子",
+      "aliases": [
+        "宇都宮女子高校"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "東郷ジュニア",
+      "aliases": [
+        "東郷ジュニアクラブ"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "新旭スポーツ少年団",
+      "aliases": [
+        "新旭スポ少"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "膳所",
+      "aliases": [
+        "膳所高校"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "新津",
+      "aliases": [
+        "新津中学校"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "三国クラブ",
+      "aliases": [
+        "三国STC",
+        "三国ジュニアクラブ"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "徳山ジュニア",
+      "aliases": [
+        "徳山ジュニアクラブ"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "徳山クラブ",
+      "aliases": [
+        "徳山ソフトテニスクラブ"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "小金原クラブ",
+      "aliases": [
+        "小金原ソフトテニスクラブ"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "野々市ジュニア",
+      "aliases": [
+        "野々市ジュニアクラブ"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "永源クラブ",
+      "aliases": [
+        "永源",
+        "永源ソフトテニスクラブ"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "船橋ジュニア",
+      "aliases": [
+        "船橋ジュニアクラブ"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "総社ジュニア",
+      "aliases": [
+        "総社ジュニアクラブ"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "野木クラブ",
+      "aliases": [
+        "野木ジュニアクラブ"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "能美ジュニアクラブ",
+      "aliases": [
+        "能美ジュニア"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "伊丹ジュニア",
+      "aliases": [
+        "伊丹ジュニアクラブ"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "スマイリー",
+      "aliases": [
+        "スマイリークラブ"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "河北STC",
+      "aliases": [
+        "河北クラブ",
+        "河北"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "仙台東STC",
+      "aliases": [
+        "仙台東クラブ",
+        "仙台東"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "平川市スポ少",
+      "aliases": [
+        "平川市スポーツ少年団"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "丸岡",
+      "aliases": [
+        "丸岡中学校"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "浜田",
+      "aliases": [
+        "浜田高校"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "城陽テニスクラブ",
+      "aliases": [
+        "城陽クラブ"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "城陽ジュニアクラブ",
+      "aliases": [
+        "城陽ジュニアテニスクラブ",
+        "城陽ジュニア"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "二本松ジュニア",
+      "aliases": [
+        "二本松ジュニアクラブ"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "七尾ジュニアクラブ",
+      "aliases": [
+        "七尾ジュニア"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "印南STC",
+      "aliases": [
+        "印南ジュニアクラブ"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "向陽台",
+      "aliases": [
+        "向陽台中学校",
+        "向陽台中"
+      ],
+      "note": "宮城県"
+    },
+    {
+      "canonical": "仙北スポ少",
+      "aliases": [
+        "仙北スポーツ少年団"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "大曲",
+      "aliases": [
+        "大曲高校"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "大曲ジュニア",
+      "aliases": [
+        "大曲ジュニアクラブ"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "瀬戸ジュニア",
+      "aliases": [
+        "瀬戸ジュニアクラブ"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "下松ジュニア",
+      "aliases": [
+        "下松ジュニアクラブ"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "奈良まほろばクラブ",
+      "aliases": [
+        "奈良まほろば"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "広島土曜クラブジュニア",
+      "aliases": [
+        "広島土曜ジュニア"
+      ],
+      "note": "広島県"
+    },
+    {
+      "canonical": "江府小STC",
+      "aliases": [
+        "江府小",
+        "江府小クラブ"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "飯能スポ少",
+      "aliases": [
+        "飯能スポーツ少年団"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "今市ジュニア",
+      "aliases": [
+        "今市ジュニアクラブ"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "江津ジュニア",
+      "aliases": [
+        "江津ジュニアクラブ"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "白根スポ少",
+      "aliases": [
+        "白根スポーツ少年団"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "大宜味",
+      "aliases": [
+        "大宜味中学校"
+      ],
+      "note": "沖縄県"
+    },
+    {
+      "canonical": "松阪ジュニアクラブ",
+      "aliases": [
+        "松阪ジュニア"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "城端中学校",
+      "aliases": [
+        "城端",
+        "城端中"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "城端スポーツ少年団",
+      "aliases": [
+        "城端スポ少"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "丸亀スポ少",
+      "aliases": [
+        "丸亀スポーツ少年団"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "三原ジュニアクラブ",
+      "aliases": [
+        "三原ジュニア"
+      ],
+      "note": "広島県"
+    },
+    {
+      "canonical": "手賀沼ジュニア",
+      "aliases": [
+        "手賀沼ジュニアクラブ"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "阿波ジュニアクラブ",
+      "aliases": [
+        "阿波ジュニア"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "阿波",
+      "aliases": [
+        "阿波中学校"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "都留クラブジュニア",
+      "aliases": [
+        "都留ジュニア"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "東風平ジュニア",
+      "aliases": [
+        "東風平ジュニアクラブ"
+      ],
+      "note": "沖縄県"
+    },
+    {
+      "canonical": "東風平中学校",
+      "aliases": [
+        "東風平"
+      ],
+      "note": "沖縄県"
+    },
+    {
+      "canonical": "南関ジュニア",
+      "aliases": [
+        "南関ジュニアクラブ"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "箕郷スポ少",
+      "aliases": [
+        "箕郷スポ少テニスクラブ"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "箕郷中学校",
+      "aliases": [
+        "箕郷"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "大磯ジュニアテニスクラブ",
+      "aliases": [
+        "大磯ジュニア",
+        "大磯ジュニアソフトテニスクラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "大磯",
+      "aliases": [
+        "大磯中学校"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "甲賀",
+      "aliases": [
+        "甲賀中学校"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "佐倉クラブジュニア",
+      "aliases": [
+        "佐倉ジュニア"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "氷見ジュニアクラブ",
+      "aliases": [
+        "氷見ジュニア"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "篠山ジュニアクラブ",
+      "aliases": [
+        "篠山ジュニア"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "篠山中学校",
+      "aliases": [
+        "篠山",
+        "篠山中"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "琴平",
+      "aliases": [
+        "琴平中学校",
+        "琴平中"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "安曇川スポーツ少年団",
+      "aliases": [
+        "安曇川スポ少"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "安曇川",
+      "aliases": [
+        "安曇川中学校"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "橋本ジュニアクラブ",
+      "aliases": [
+        "橋本ジュニア"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "九度山ジュニアクラブ",
+      "aliases": [
+        "九度山ジュニア"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "九度山",
+      "aliases": [
+        "九度山中学校",
+        "九度山中"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "宇治ジュニアクラブ",
+      "aliases": [
+        "宇治ジュニア"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "常磐",
+      "aliases": [
+        "常磐ジュニアクラブ"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "津島市ジュニアクラブ",
+      "aliases": [
+        "津島市ジュニア"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "湊山",
+      "aliases": [
+        "湊山中学校"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "日高ジュニアクラブ",
+      "aliases": [
+        "日高ジュニア"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "日高中学校",
+      "aliases": [
+        "日高"
+      ],
+      "note": "和歌山県"
+    },
+    {
+      "canonical": "滑川ジュニアクラブ",
+      "aliases": [
+        "滑川ジュニア"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "いわきジュニアスポ少",
+      "aliases": [
+        "いわきジュニアスポーツ少年団"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "大田原ジュニア",
+      "aliases": [
+        "大田原ジュニアクラブ"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "大社スポーツ少年団",
+      "aliases": [
+        "大社スポ少"
+      ],
+      "note": "島根県"
+    },
+    {
+      "canonical": "余目",
+      "aliases": [
+        "余目中学校"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "杉戸中学校",
+      "aliases": [
+        "杉戸"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "増田ジュニア",
+      "aliases": [
+        "増田ジュニアスポーツ少年団",
+        "増田ジュニアスポ少"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "下山門ジュニア",
+      "aliases": [
+        "下山門ジュニアクラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "二ツ井ジュニア",
+      "aliases": [
+        "二ツ井ジュニアスポーツ少年団",
+        "二ツ井ジュニアスポ少"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "綾川ジュニア",
+      "aliases": [
+        "綾川ジュニアクラブ"
+      ],
+      "note": "香川県"
+    },
+    {
+      "canonical": "榛名ジュニア",
+      "aliases": [
+        "榛名ジュニアテニスクラブ"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "宝塚中学校",
+      "aliases": [
+        "宝塚"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "南房総ジュニア",
+      "aliases": [
+        "南房総ジュニアクラブ"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "牛津ジュニアクラブ",
+      "aliases": [
+        "牛津ジュニア"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "柏崎ジュニア",
+      "aliases": [
+        "柏崎"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "長井スポーツ少年団",
+      "aliases": [
+        "長井スポ少"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "川越クラブ",
+      "aliases": [
+        "川越テニスクラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "浜岡クラブジュニア",
+      "aliases": [
+        "浜岡ジュニア"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "三国",
+      "aliases": [
+        "三国中学校"
+      ],
+      "note": "福井県"
+    },
+    {
+      "canonical": "相洋",
+      "aliases": [
+        "相洋高校"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "砺波",
+      "aliases": [
+        "砺波高校"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "燕スポ少",
+      "aliases": [
+        "燕スポーツ少年団"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "燕テニスクラブ",
+      "aliases": [
+        "燕クラブ"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "鶴岡スポ少",
+      "aliases": [
+        "鶴岡STC"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "十和田STC",
+      "aliases": [
+        "十和田ジュニア",
+        "十和田ジュニアクラブ"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "永遠クラブジュニア",
+      "aliases": [
+        "永遠"
+      ],
+      "note": "徳島県"
+    },
+    {
+      "canonical": "ニューウィンズクラブ",
+      "aliases": [
+        "ニューウィンズ"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "福部",
+      "aliases": [
+        "福部クラブ"
+      ],
+      "note": "鳥取県"
+    },
+    {
+      "canonical": "カブトの森Ｊｒ．",
+      "aliases": [
+        "カブトの森Ｊｒ．クラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "豊田健友ジュニア",
+      "aliases": [
+        "豊田健友ジュニアクラブ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "豊田健友クラブ",
+      "aliases": [
+        "豊田健友"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "四日市ジュニアクラブ",
+      "aliases": [
+        "四日市ジュニア"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "刈谷ジュニア",
+      "aliases": [
+        "刈谷ジュニアクラブ"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "山口ジュニア",
+      "aliases": [
+        "山口ジュニアクラブ"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "所沢ペアートテニスクラブ",
+      "aliases": [
+        "所沢ペアート"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "姫路ふぁみりークラブ",
+      "aliases": [
+        "姫路ふぁみりー"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "高田高校",
+      "aliases": [
+        "高田高等学校"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "大志生木STC",
+      "aliases": [
+        "大志生木スポーツ少年団"
+      ],
+      "note": "大分県"
+    },
+    {
+      "canonical": "王寺ユースクラブ",
+      "aliases": [
+        "王寺ユース"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "新潟内野STCスポ少",
+      "aliases": [
+        "新潟内野STCスポーツ少年団",
+        "新潟内野STC"
+      ],
+      "note": "新潟県"
+    },
+    {
+      "canonical": "祇園",
+      "aliases": [
+        "祇園クラブ"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "春日部クラブ",
+      "aliases": [
+        "春日部",
+        "春日部STC"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "新宮中学校",
+      "aliases": [
+        "新宮"
+      ],
+      "note": "福岡県"
+    },
+    {
+      "canonical": "世田谷ジュニア",
+      "aliases": [
+        "世田谷ジュニアクラブ"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "あづみ野クラブ",
+      "aliases": [
+        "あづみ野"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "綾部ジュニアクラブ",
+      "aliases": [
+        "綾部ジュニア"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "スマッシュイグチ",
+      "aliases": [
+        "スマッシュイグチクラブ"
+      ],
+      "note": "宮崎県"
+    },
+    {
+      "canonical": "ＡＪクラブ",
+      "aliases": [
+        "ＡＪ"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "天水オレンジ",
+      "aliases": [
+        "天水オレンジクラブ"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "桜井ガンバクラブ",
+      "aliases": [
+        "桜井ガンバ"
+      ],
+      "note": "奈良県"
+    },
+    {
+      "canonical": "友部ジュニア",
+      "aliases": [
+        "友部ジュニアクラブ"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "前橋ジュニアクラブ",
+      "aliases": [
+        "前橋ジュニア"
+      ],
+      "note": "群馬県"
+    },
+    {
+      "canonical": "Willスポーツ",
+      "aliases": [
+        "Willスポーツクラブ"
+      ],
+      "note": "青森県"
+    },
+    {
+      "canonical": "十文字キッズ",
+      "aliases": [
+        "十文字キッズクラブ"
+      ],
+      "note": "秋田県"
+    },
+    {
+      "canonical": "本渡北クラブ",
+      "aliases": [
+        "本渡北"
+      ],
+      "note": "熊本県"
+    },
+    {
+      "canonical": "北浜クラブ",
+      "aliases": [
+        "北浜"
+      ],
+      "note": "三重県"
+    },
+    {
+      "canonical": "わんぱく",
+      "aliases": [
+        "わんぱくクラブ"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "鉢盛クラブ",
+      "aliases": [
+        "鉢盛"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "犀生中学校",
+      "aliases": [
+        "犀生"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "水戸スポーツ少年団",
+      "aliases": [
+        "水戸スポ少"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "吹揚クラブ",
+      "aliases": [
+        "吹揚スポ少",
+        "吹揚クラブスポ少"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "インフィニティ水沢",
+      "aliases": [
+        "インフィニティ水沢クラブ"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "ｄｏｕｘクラブ",
+      "aliases": [
+        "ｄｏｕｘ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "オレンジテニスクラブ",
+      "aliases": [
+        "オレンジクラブ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "富士宮スポーツ少年団",
+      "aliases": [
+        "富士宮スポ少"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "クレインズクラブ",
+      "aliases": [
+        "クレインズ"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "御津",
+      "aliases": [
+        "御津中学校"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "こずかたSTC",
+      "aliases": [
+        "こずかたクラブ",
+        "こずかた"
+      ],
+      "note": "岩手県"
+    },
+    {
+      "canonical": "双葉クラブジュニア",
+      "aliases": [
+        "双葉ジュニア"
+      ],
+      "note": "山梨県"
+    },
+    {
+      "canonical": "岩槻すみれクラブ",
+      "aliases": [
+        "岩槻すみれ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "ＷａｓｈｕＫｉｄｓクラブ",
+      "aliases": [
+        "ＷａｓｈｕＫｉｄｓ"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "姫島ジュニアクラブ",
+      "aliases": [
+        "姫島クラブ"
+      ],
+      "note": "大分県"
+    },
+    {
+      "canonical": "清水キッズ",
+      "aliases": [
+        "清水キッズクラブ"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "松川少年少女クラブ",
+      "aliases": [
+        "松川少年少女"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "熊谷ホリデー",
+      "aliases": [
+        "熊谷ホリデークラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "ネクサス兵庫",
+      "aliases": [
+        "ネクサス兵庫STC"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "備前フレンド",
+      "aliases": [
+        "備前フレンドテニスクラブ"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "秦野フレンドリー",
+      "aliases": [
+        "秦野フレンドリークラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "白岡",
+      "aliases": [
+        "白岡クラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "狭山入間川クラブ",
+      "aliases": [
+        "狭山入間川テニスクラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "二本松市役所クラブ",
+      "aliases": [
+        "二本松市役所"
+      ],
+      "note": "福島県"
+    },
+    {
+      "canonical": "プロシードクラブ",
+      "aliases": [
+        "プロシード"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "四国ガス産業クラブ",
+      "aliases": [
+        "四国ガス産業"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "長浜クラブ",
+      "aliases": [
+        "長浜"
+      ],
+      "note": "滋賀県"
+    },
+    {
+      "canonical": "寿都",
+      "aliases": [
+        "寿都クラブ"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "蕨サリクテニスクラブ",
+      "aliases": [
+        "蕨サリククラブ"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "土浦市ママさんテニスクラブ",
+      "aliases": [
+        "土浦市ママさんクラブ"
+      ],
+      "note": "茨城県"
+    },
+    {
+      "canonical": "岩国れんこんクラブ",
+      "aliases": [
+        "岩国れんこん"
+      ],
+      "note": "山口県"
+    },
+    {
+      "canonical": "川崎レディーステニスクラブ",
+      "aliases": [
+        "川崎レディースクラブ"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "広木FSCクラブ",
+      "aliases": [
+        "広木FSC"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "ファニーテニスクラブ",
+      "aliases": [
+        "ファニークラブ"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "清須クラブ",
+      "aliases": [
+        "清須STC"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "桜Jrsakata",
+      "aliases": [
+        "桜Jrsakataクラブ"
+      ],
+      "note": "山形県"
+    },
+    {
+      "canonical": "もぐらクラブ",
+      "aliases": [
+        "もぐら"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "松川中学校",
+      "aliases": [
+        "松川STC"
+      ],
+      "note": "長野県"
+    },
+    {
+      "canonical": "昇陽中学校",
+      "aliases": [
+        "昇陽中"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "明徳義塾中学校",
+      "aliases": [
+        "明徳義塾中"
+      ],
+      "note": "高知県"
+    },
+    {
+      "canonical": "京都光華中学校",
+      "aliases": [
+        "京都光華中"
+      ],
+      "note": "京都府"
+    },
+    {
+      "canonical": "昭和学院中学校",
+      "aliases": [
+        "昭和学院中"
+      ],
+      "note": "千葉県"
+    },
+    {
+      "canonical": "就実中学校",
+      "aliases": [
+        "就実中"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "松山中学校",
+      "aliases": [
+        "松山中"
+      ],
+      "note": "埼玉県"
+    },
+    {
+      "canonical": "山陽学園中学校",
+      "aliases": [
+        "山陽学園中"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "札幌大谷中学校",
+      "aliases": [
+        "札幌大谷中"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "朝日中学校",
+      "aliases": [
+        "朝日中"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "野木中学校",
+      "aliases": [
+        "野木中"
+      ],
+      "note": "栃木県"
+    },
+    {
+      "canonical": "庄川少年団",
+      "aliases": [
+        "庄川スポ少"
+      ],
+      "note": "富山県"
+    },
+    {
+      "canonical": "広木小スポーツ少年団",
+      "aliases": [
+        "広木スポ少"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "上宮学園",
+      "aliases": [
+        "上宮学園中"
+      ],
+      "note": "大阪府"
+    },
+    {
+      "canonical": "岡山理科大附高校",
+      "aliases": [
+        "岡山理科大付高校"
+      ],
+      "note": "岡山県"
+    },
+    {
+      "canonical": "小城中",
+      "aliases": [
+        "小城中学校"
+      ],
+      "note": "佐賀県"
+    },
+    {
+      "canonical": "旭テニスクラブ",
+      "aliases": [
+        "旭テニス"
+      ],
+      "note": "東京都"
+    },
+    {
+      "canonical": "植田中学校",
+      "aliases": [
+        "植田中"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "東長崎",
+      "aliases": [
+        "東長崎中"
+      ],
+      "note": "長崎県"
+    },
+    {
+      "canonical": "旭川啓北",
+      "aliases": [
+        "旭川啓北中"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "綾瀬",
+      "aliases": [
+        "綾瀬中"
+      ],
+      "note": "神奈川県"
+    },
+    {
+      "canonical": "垂水中央",
+      "aliases": [
+        "垂水中央中"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "大里",
+      "aliases": [
+        "大里中"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "松元中学校",
+      "aliases": [
+        "松元中"
+      ],
+      "note": "鹿児島県"
+    },
+    {
+      "canonical": "寺井",
+      "aliases": [
+        "寺井中"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "錦城中",
+      "aliases": [
+        "錦城中学校"
+      ],
+      "note": "石川県"
+    },
+    {
+      "canonical": "岩見沢光陵",
+      "aliases": [
+        "岩見沢光陵中"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "早来学園",
+      "aliases": [
+        "早来学園中"
+      ],
+      "note": "北海道"
+    },
+    {
+      "canonical": "北条北中",
+      "aliases": [
+        "北条北中学校"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "近見中",
+      "aliases": [
+        "近見中学校"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "牧之原少年団",
+      "aliases": [
+        "牧之原スポ少"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "附属島田中",
+      "aliases": [
+        "附属島田中学校"
+      ],
+      "note": "静岡県"
+    },
+    {
+      "canonical": "葉栗中",
+      "aliases": [
+        "葉栗"
+      ],
+      "note": "愛知県"
+    },
+    {
+      "canonical": "太子東中",
+      "aliases": [
+        "太子東"
+      ],
+      "note": "兵庫県"
+    },
+    {
+      "canonical": "城辺中",
+      "aliases": [
+        "城辺"
+      ],
+      "note": "愛媛県"
+    },
+    {
+      "canonical": "北海道科学大学高校",
+      "aliases": [
+        "北海道科学大高校"
+      ],
+      "note": "北海道"
+    }
   ]
 }

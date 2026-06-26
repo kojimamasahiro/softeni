@@ -76,14 +76,25 @@
         const parts = useId.split('_');
         const last = parts[0] || null;
         const first = parts[1] || null;
-        const team = parts.slice(2).join('_') || null;
+        // id文字列は "姓_名_チーム[_都道府県]" 形式。末尾が都道府県の場合は
+        // チームに吸収せず prefecture として分離する（吸収すると後段のid再構築で
+        // 都道府県が二重付与されてしまうため）。
+        const rest = parts.slice(2);
+        let team = null;
+        let prefecture = null;
+        if (rest.length >= 2 && /(?:都|道|府|県)$/.test(rest[rest.length - 1])) {
+          prefecture = rest[rest.length - 1];
+          team = rest.slice(0, -1).join('_') || null;
+        } else {
+          team = rest.join('_') || null;
+        }
 
         participantsMap.set(useId, {
           id: useId,
           lastName: last,
           firstName: first,
           team,
-          prefecture: null,
+          prefecture,
         });
       }
     }

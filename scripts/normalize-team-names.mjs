@@ -60,16 +60,22 @@ function canonPref(pref) {
   return PREF_CANON.get(pref) ?? pref; // 既知の短縮形のみ補完
 }
 
-/** team別名 -> 正準名 のルックアップを構築。 */
+/** チーム名のNFKC正規化（全角半角・空白・中黒の差を吸収）。マスタ生成と同じ規則。 */
+function normTeam(s) {
+  return s == null ? s : s.normalize('NFKC').replace(/[ 　]/g, '').replace(/[･•]/g, '・');
+}
+
+/** team別名 -> 正準名 のルックアップを構築（キーはNFKC正規化形で照合）。 */
 function buildTeamAliasMap() {
   const raw = JSON.parse(fs.readFileSync(ALIAS_FILE, 'utf8'));
   const map = new Map();
   for (const e of raw.teamAliases ?? []) {
     for (const a of e.aliases ?? []) {
-      if (map.has(a) && map.get(a) !== e.canonical) {
-        throw new Error(`alias table conflict: "${a}" -> ${map.get(a)} / ${e.canonical}`);
+      const k = normTeam(a);
+      if (map.has(k) && map.get(k) !== e.canonical) {
+        throw new Error(`alias table conflict: "${a}" -> ${map.get(k)} / ${e.canonical}`);
       }
-      map.set(a, e.canonical);
+      map.set(k, e.canonical);
     }
   }
   return map;
@@ -99,7 +105,7 @@ function normalizeFile(file, teamAliasMap) {
   const idRepl = []; // { oldId, newId }
 
   for (const p of data.participants) {
-    const newTeam = teamAliasMap.get(p.team) ?? p.team;
+    const newTeam = teamAliasMap.get(normTeam(p.team)) ?? p.team;
     const newPref = canonPref(p.prefecture);
     if (newTeam !== p.team) teamRepl.set(p.team, newTeam);
     if (newPref !== p.prefecture && p.prefecture != null) prefRepl.set(p.prefecture, newPref);
