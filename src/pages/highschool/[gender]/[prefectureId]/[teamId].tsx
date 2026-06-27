@@ -188,24 +188,41 @@ export default function TeamPage({
         (entry) => entry.tournamentId === tournamentId,
       );
       if (tournamentEntries.length === 0) return [];
-      const latest = tournamentEntries.slice().sort((a, b) => {
-        if (b.year !== a.year) return b.year - a.year;
-        return resultPriority(a.result) - resultPriority(b.result);
-      })[0];
-      const best = tournamentEntries.slice().sort((a, b) => {
-        const rankDiff = resultPriority(a.result) - resultPriority(b.result);
-        if (rankDiff !== 0) return rankDiff;
-        return b.year - a.year;
-      })[0];
-      return [
-        {
-          tournamentId,
-          label: getTournamentLabel(tournamentId),
-          count: tournamentEntries.length,
-          latest,
-          best,
-        },
-      ];
+
+      // 種目（team/doubles/singles）ごとに分けて集計
+      const byCategory = new Map<string, typeof tournamentEntries>();
+      for (const entry of tournamentEntries) {
+        const cat = entry.category;
+        if (!byCategory.has(cat)) byCategory.set(cat, []);
+        byCategory.get(cat)!.push(entry);
+      }
+
+      return [...byCategory.entries()]
+        .sort(
+          (a, b) =>
+            (HIGHSCHOOL_CATEGORY_PRIORITY[a[0]] ?? 99) -
+            (HIGHSCHOOL_CATEGORY_PRIORITY[b[0]] ?? 99),
+        )
+        .map(([category, catEntries]) => {
+          const latest = catEntries.slice().sort((a, b) => {
+            if (b.year !== a.year) return b.year - a.year;
+            return resultPriority(a.result) - resultPriority(b.result);
+          })[0];
+          const best = catEntries.slice().sort((a, b) => {
+            const rankDiff =
+              resultPriority(a.result) - resultPriority(b.result);
+            if (rankDiff !== 0) return rankDiff;
+            return b.year - a.year;
+          })[0];
+          return {
+            key: `${tournamentId}-${category}`,
+            tournamentId,
+            label: `${getTournamentLabel(tournamentId)} ${getCategoryLabel(category)}`,
+            count: catEntries.length,
+            latest,
+            best,
+          };
+        });
     });
 
   const grouped = entries.reduce(
@@ -406,21 +423,17 @@ export default function TeamPage({
             <div className="grid gap-3 sm:grid-cols-2">
               {majorTournamentSummaries.map((summary) => (
                 <div
-                  key={summary.tournamentId}
+                  key={summary.key}
                   className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4"
                 >
                   <p className="font-semibold">{summary.label}</p>
                   <ul className="mt-1 space-y-1 text-sm text-gray-700 dark:text-gray-200">
                     <li>掲載成績 {summary.count}件</li>
                     <li>
-                      最新: {summary.latest.year}年{' '}
-                      {getCategoryLabel(summary.latest.category)}{' '}
-                      {summary.latest.result}
+                      最新: {summary.latest.year}年 {summary.latest.result}
                     </li>
                     <li>
-                      最高: {summary.best.year}年{' '}
-                      {getCategoryLabel(summary.best.category)}{' '}
-                      {summary.best.result}
+                      最高: {summary.best.year}年 {summary.best.result}
                     </li>
                   </ul>
                 </div>
