@@ -240,7 +240,8 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                     c.titleDefense.team &&
                     `（${c.titleDefense.team}）`}
                   （{c.titleDefense.defendingYear}年優勝）
-                  {c.titleDefense.status === 'absent' && 'は不在。新王者が誕生する。'}
+                  {c.titleDefense.status === 'absent' &&
+                    'は不在。新王者が誕生する。'}
                   {c.titleDefense.status !== 'absent' && (
                     <>
                       {c.titleDefense.standing?.state === 'champion'
@@ -248,17 +249,11 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                         : c.titleDefense.standing?.state === 'runnerup'
                           ? 'は準優勝（連覇ならず）。'
                           : c.titleDefense.standing?.state === 'eliminated'
-                            ? `は${c.titleDefense.standing.label}（連覇ならず）。`
+                            ? `は連覇ならず。`
                             : c.titleDefense.status === 'partial'
                               ? 'が今大会も出場し、新ペアで連覇を狙う。'
                               : 'が連覇に挑む。'}
-                      <StandingBadge
-                        standing={
-                          c.titleDefense.standing?.state === 'alive'
-                            ? c.titleDefense.standing
-                            : null
-                        }
-                      />
+                      <StandingBadge standing={c.titleDefense.standing} />
                     </>
                   )}
                 </p>

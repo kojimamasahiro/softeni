@@ -329,7 +329,7 @@ function standingFromResult(r: {
   // 予選リーグ敗退
   if (r.roundrobin && !r.tournament) {
     return {
-      label: `予選リーグ敗退`,
+      label: `予選敗退`,
       state: 'eliminated',
     };
   }
