@@ -102,6 +102,7 @@ python extract.py && \
 python ../03list/summary.py && \
 python ../04summry/generate_prefecture_summaries.py && \
 python ../analysis/generate_school_analysis.py
+npx prettier --write ../../../data/
 ```
 
 ## データ構造
