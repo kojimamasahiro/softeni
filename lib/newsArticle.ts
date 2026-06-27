@@ -14,7 +14,6 @@ import fs from 'fs';
 import path from 'path';
 
 import { getChampionMilestones, type MilestoneEvent } from './milestones';
-import { getCategoryLabel } from './utils';
 import {
   buildParticipantMap,
   getHistoricalWinners,
@@ -24,6 +23,7 @@ import {
   type ChampionEntry,
   type RawDetail,
 } from './tournamentRecords';
+import { getCategoryLabel } from './utils';
 
 export type NewsArticleType = 'preview' | 'result';
 export type NewsArticleState = 'draft' | 'review' | 'published';
@@ -321,10 +321,23 @@ function standingFromResult(r: {
     label?: string;
     rank?: { kind?: string; bestLevel?: number; round?: number };
   } | null;
+  roundrobin?: {
+    group?: string;
+    rank?: number;
+  } | null;
 }): EntryStanding | null {
+  // 予選リーグ敗退
+  if (r.roundrobin && !r.tournament) {
+    return {
+      label: `予選リーグ敗退`,
+      state: 'eliminated',
+    };
+  }
+
   const rank = r.tournament?.rank;
   const label = r.tournament?.label ?? null;
   if (!rank || !rank.kind) return null;
+
   switch (rank.kind) {
     case 'winner':
       return { label: label ?? '優勝', state: 'champion' };
