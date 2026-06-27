@@ -236,7 +236,12 @@ function MatchesPanel({
                           </span>
                         </td>
                         <td className="py-3 px-2 font-medium">
-                          {team.name}
+                          <Link
+                            href={`/teams/${team.teamId}`}
+                            className="hover:text-blue-600 hover:underline"
+                          >
+                            {team.name}
+                          </Link>
                           {isPlayoff && teamDivName(team.teamId) && (
                             <span
                               className={`${DIV_BADGE} bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 ml-2`}

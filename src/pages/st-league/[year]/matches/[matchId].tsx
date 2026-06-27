@@ -185,7 +185,7 @@ export default function STLeagueMatchDetail({
             <div className="flex items-center justify-between">
               <div className="flex-1 text-right">
                 <Link
-                  href={`/st-league/${year}/teams`}
+                  href={`/teams/${teamA.teamId}`}
                   className="font-bold hover:text-blue-600 hover:underline"
                 >
                   {teamA.name}
@@ -226,7 +226,7 @@ export default function STLeagueMatchDetail({
               </div>
               <div className="flex-1 text-left">
                 <Link
-                  href={`/st-league/${year}/teams`}
+                  href={`/teams/${teamB.teamId}`}
                   className="font-bold hover:text-blue-600 hover:underline"
                 >
                   {teamB.name}
@@ -326,7 +326,9 @@ export default function STLeagueMatchDetail({
                 </h3>
                 <div className="space-y-1.5">
                   {list.length === 0 && (
-                    <p className="text-xs text-gray-400">他の対戦はありません。</p>
+                    <p className="text-xs text-gray-400">
+                      他の対戦はありません。
+                    </p>
                   )}
                   {list.map((n) => (
                     <Link
@@ -385,9 +387,7 @@ export const getStaticPaths = async () => {
     if (!matches) continue;
     (['boys', 'girls'] as Gender[]).forEach((gender) => {
       matches[gender]
-        .filter(
-          (m) => divisionOf(m) === DIVISION_ID && m.status === 'finished',
-        )
+        .filter((m) => divisionOf(m) === DIVISION_ID && m.status === 'finished')
         .forEach((m) => {
           paths.push({
             params: { year: String(year), matchId: slugFor(gender, m) },
@@ -416,9 +416,7 @@ export const getStaticProps = async ({
   const div1 = matches[gender].filter(
     (m) => divisionOf(m) === DIVISION_ID && m.status === 'finished',
   );
-  const match = div1.find(
-    (m) => m.teamA === teamAId && m.teamB === teamBId,
-  );
+  const match = div1.find((m) => m.teamA === teamAId && m.teamB === teamBId);
   if (!match) return { notFound: true };
 
   const teamsDiv1 = participants[gender].filter(
@@ -444,8 +442,7 @@ export const getStaticProps = async ({
   const neighborsFor = (teamId: string): NeighborMatch[] =>
     ordered
       .filter(
-        (m) =>
-          (m.teamA === teamId || m.teamB === teamId) && m.id !== match.id,
+        (m) => (m.teamA === teamId || m.teamB === teamId) && m.id !== match.id,
       )
       .map((m) => {
         const isA = m.teamA === teamId;

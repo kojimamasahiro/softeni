@@ -246,6 +246,126 @@ export function computeRanking(teams: Team[], matches: Match[]): Ranking[] {
   return sorted;
 }
 
+// =============================================================
+// チーム軸の横断集計（/teams/[teamId] の「STリーグでの成績」セクション用）
+// =============================================================
+
+export interface StLeagueTeamSeason {
+  year: number;
+  edition?: number;
+  gender: Gender;
+  divisionId: string;
+  divisionName: string;
+  played: number;
+  won: number;
+  lost: number;
+  rank: number | null; // 公式順位があればそれ、無ければ計算順位
+  isChampion: boolean; // その部の優勝（divisionName で文脈表示）
+}
+
+export interface StLeagueTeamSummary {
+  teamId: string;
+  name: string;
+  seasons: StLeagueTeamSeason[]; // 年度降順→男女
+  titlesTop: number; // Ⅰ部優勝の通算回数
+  firstYear: number;
+  lastYear: number;
+}
+
+/**
+ * teamId を全年度横断で集計し、STリーグ出場の各シーズン成績を返す。
+ * 出場記録が無ければ null。
+ */
+export function aggregateStLeagueTeam(
+  teamId: string,
+): StLeagueTeamSummary | null {
+  const seasons: StLeagueTeamSeason[] = [];
+  let name = teamId;
+
+  for (const year of getStLeagueYears()) {
+    const meta = loadLeagueMeta(year);
+    const participants = loadParticipants(year);
+    const matches = loadMatches(year);
+    if (!participants || !matches) continue;
+
+    (['boys', 'girls'] as Gender[]).forEach((gender) => {
+      const team = participants[gender].find((t) => t.teamId === teamId);
+      if (!team) return;
+      name = team.name[0] ?? name;
+
+      const divisionId = divisionOf(team);
+      const divisionName =
+        meta?.divisions?.find((d) => d.id === divisionId)?.name ?? '';
+
+      const teamsInDiv = participants[gender].filter(
+        (t) => divisionOf(t) === divisionId,
+      );
+      const matchesInDiv = matches[gender].filter(
+        (m) => divisionOf(m) === divisionId,
+      );
+      const ranking = computeRanking(teamsInDiv, matchesInDiv);
+      const rec = ranking.find((r) => r.teamId === teamId);
+
+      // 順位: 公式 ranking 優先、無ければ計算順位
+      const official = meta?.results?.[divisionId]?.[gender]?.ranking;
+      let rank: number | null = null;
+      if (official && official.length) {
+        const idx = official.indexOf(teamId);
+        rank = idx >= 0 ? idx + 1 : null;
+      } else if (rec && rec.played > 0) {
+        const idx = ranking.findIndex((r) => r.teamId === teamId);
+        rank = idx >= 0 ? idx + 1 : null;
+      }
+
+      const champion = meta?.results?.[divisionId]?.[gender]?.champion;
+      seasons.push({
+        year,
+        edition: meta?.edition,
+        gender,
+        divisionId,
+        divisionName,
+        played: rec?.played ?? 0,
+        won: rec?.won ?? 0,
+        lost: rec?.lost ?? 0,
+        rank,
+        isChampion: champion === teamId,
+      });
+    });
+  }
+
+  if (seasons.length === 0) return null;
+  seasons.sort((a, b) =>
+    b.year !== a.year ? b.year - a.year : a.gender.localeCompare(b.gender),
+  );
+
+  const titlesTop = seasons.filter(
+    (s) => s.isChampion && s.divisionId === '1',
+  ).length;
+  const years = seasons.map((s) => s.year);
+
+  return {
+    teamId,
+    name,
+    seasons,
+    titlesTop,
+    firstYear: Math.min(...years),
+    lastYear: Math.max(...years),
+  };
+}
+
+/** 全年度の STリーグ参加チームの teamId 一覧（重複排除） */
+export function getAllStLeagueTeamIds(): string[] {
+  const ids = new Set<string>();
+  for (const year of getStLeagueYears()) {
+    const participants = loadParticipants(year);
+    if (!participants) continue;
+    (['boys', 'girls'] as Gender[]).forEach((g) =>
+      participants[g].forEach((t) => ids.add(t.teamId)),
+    );
+  }
+  return Array.from(ids);
+}
+
 /**
  * league.json の divisions を rank 昇順で返す。無ければ既定のⅠ/Ⅱ。
  * hasMatchData === false の部（例: 階層構成の位置付け紹介のみで対戦データを持たないⅢ部）は除外する。

@@ -238,9 +238,11 @@ export default function TeamYearGenderPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { aggregateTeamResults, loadTeamNameMappings } = await import(
-    '@/utils/team-data-aggregator'
-  );
+  const {
+    aggregateTeamResults,
+    loadTeamNameMappings,
+    gendersWithRealPresence,
+  } = await import('@/utils/team-data-aggregator');
 
   const teamNameMappings = loadTeamNameMappings();
   const paths: {
@@ -249,9 +251,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   for (const teamId of Object.keys(teamNameMappings)) {
     const results = aggregateTeamResults(teamId);
+    // 混合ダブルスしか無い性別（実体の無い性別）はページを生成しない。
+    const realGenders = gendersWithRealPresence(results);
     const combinations = new Set<string>();
 
     for (const result of results) {
+      if (
+        (result.gender === 'boys' || result.gender === 'girls') &&
+        !realGenders.has(result.gender)
+      ) {
+        continue;
+      }
       const key = `${result.year}-${result.gender}`;
       if (!combinations.has(key)) {
         combinations.add(key);

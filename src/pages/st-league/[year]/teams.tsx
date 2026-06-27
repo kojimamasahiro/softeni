@@ -187,7 +187,12 @@ export default function STLeagueTeamsPage({
                   <div key={team.info.id} className="space-y-6">
                     <div className="flex items-center justify-between">
                       <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {team.info.name}
+                        <Link
+                          href={`/teams/${team.info.id}`}
+                          className="hover:text-blue-600 hover:underline"
+                        >
+                          {team.info.name}
+                        </Link>
                       </h3>
                     </div>
                     <div>

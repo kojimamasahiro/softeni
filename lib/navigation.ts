@@ -42,7 +42,8 @@ const SOFTENI_GROUPS: NavGroup[] = [
       { label: '大会', href: '/tournaments', matchPrefix: '/tournaments' },
       { label: '選手', href: '/players', matchPrefix: '/players' },
       // チームは一覧ページ（/teams index）が無く /teams/[teamId] のみのため
-      // グローバルナビには出さない（/teams は 404）。
+      // グローバルナビには出さない（/teams は 404）。STリーグ出場チーム一覧は
+      // /st-league/teams（STリーグ特集内）に置く。
     ],
   },
   {

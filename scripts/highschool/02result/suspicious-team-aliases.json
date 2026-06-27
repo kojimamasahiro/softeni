@@ -1,54 +1,43 @@
 [
   {
-    "canonical": "北科大",
-    "aliases": ["北科大", "北科大高", "北海道科学大高校"],
+    "canonical": "三重",
+    "aliases": ["三重", "上尾ＩＭＵＡ"],
     "reasons": [
       {
-        "year": 2024,
-        "lastName": "小杉",
-        "firstName": "昂道",
-        "aliases": ["北科大", "北科大高"],
+        "year": 2026,
+        "lastName": "鈴木",
+        "firstName": "綾華",
+        "aliases": ["三重", "上尾ＩＭＵＡ"],
         "evidence": [
           {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "北科大高"
+            "tournamentId": "zennihon-mixed",
+            "file": "doubles-none-mixed.json",
+            "team": "上尾ＩＭＵＡ"
           },
           {
-            "tournamentId": "highschool-japan-cup",
-            "file": "doubles-none-boys.json",
-            "team": "北科大"
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "三重"
           }
         ]
-      },
+      }
+    ],
+    "minCommonLength": 0
+  },
+  {
+    "canonical": "北科大",
+    "aliases": ["北科大", "北海道科学大学高校"],
+    "reasons": [
       {
-        "year": 2024,
-        "lastName": "竹村",
-        "firstName": "純生",
-        "aliases": ["北科大", "北科大高"],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "北科大高"
-          },
-          {
-            "tournamentId": "highschool-japan-cup",
-            "file": "singles-none-boys.json",
-            "team": "北科大"
-          }
-        ]
-      },
-      {
-        "year": 2024,
+        "year": 2023,
         "lastName": "西",
         "firstName": "拓郎",
-        "aliases": ["北海道科学大高校", "北科大", "北科大高"],
+        "aliases": ["北海道科学大学高校", "北科大"],
         "evidence": [
           {
             "tournamentId": "highschool-championship",
             "file": "doubles-none-boys.json",
-            "team": "北科大高"
+            "team": "北科大"
           },
           {
             "tournamentId": "highschool-japan-cup",
@@ -63,37 +52,30 @@
           {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-boys.json",
-            "team": "北海道科学大高校"
+            "team": "北海道科学大学高校"
           }
         ]
-      }
-    ],
-    "minCommonLength": 1
-  },
-  {
-    "canonical": "北科大高",
-    "aliases": ["北科大高", "北海道科学大学高校"],
-    "reasons": [
+      },
       {
-        "year": 2023,
+        "year": 2024,
         "lastName": "西",
         "firstName": "拓郎",
-        "aliases": ["北海道科学大学高校", "北科大高"],
+        "aliases": ["北海道科学大学高校", "北科大"],
         "evidence": [
           {
             "tournamentId": "highschool-championship",
             "file": "doubles-none-boys.json",
-            "team": "北科大高"
+            "team": "北科大"
           },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
-            "team": "北科大高"
+            "team": "北科大"
           },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "singles-none-boys.json",
-            "team": "北科大高"
+            "team": "北科大"
           },
           {
             "tournamentId": "zennihon-singles",
@@ -107,33 +89,41 @@
   },
   {
     "canonical": "巻",
-    "aliases": ["巻", "巻高校"],
+    "aliases": ["巻", "新潟巻"],
     "reasons": [
       {
-        "year": 2025,
-        "lastName": "町澤",
-        "firstName": "緯宙",
-        "aliases": ["巻", "巻高校"],
+        "year": 2022,
+        "lastName": "久保田",
+        "firstName": "渚",
+        "aliases": ["巻", "新潟巻"],
         "evidence": [
           {
-            "tournamentId": "east-japan",
-            "file": "doubles-none-boys.json",
-            "team": "巻"
-          },
-          {
             "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
+            "file": "doubles-none-girls.json",
             "team": "巻"
           },
           {
             "tournamentId": "highschool-japan-cup",
-            "file": "doubles-none-boys.json",
+            "file": "doubles-none-girls.json",
+            "team": "新潟巻"
+          }
+        ]
+      },
+      {
+        "year": 2022,
+        "lastName": "石山",
+        "firstName": "実来",
+        "aliases": ["巻", "新潟巻"],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
             "team": "巻"
           },
           {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "巻高校"
+            "tournamentId": "highschool-japan-cup",
+            "file": "doubles-none-girls.json",
+            "team": "新潟巻"
           }
         ]
       }
@@ -142,7 +132,7 @@
   },
   {
     "canonical": "高崎女子",
-    "aliases": ["高崎女子", "高崎女子高校", "JOHNNY'S"],
+    "aliases": ["高崎女子", "JOHNNY'S"],
     "reasons": [
       {
         "year": 2024,
@@ -174,29 +164,6 @@
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
             "team": "JOHNNY'S"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "丸山",
-        "firstName": "姫衣",
-        "aliases": ["高崎女子", "高崎女子高校"],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-girls.json",
-            "team": "高崎女子"
-          },
-          {
-            "tournamentId": "highschool-japan-cup",
-            "file": "singles-none-girls.json",
-            "team": "高崎女子"
-          },
-          {
-            "tournamentId": "zennihon-singles",
-            "file": "singles-none-girls.json",
-            "team": "高崎女子高校"
           }
         ]
       }

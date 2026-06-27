@@ -165,6 +165,25 @@ export default function STLeagueHub({
                 />
               </svg>
             </Link>
+            <Link
+              href="/st-league/teams"
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+            >
+              掲載チーム一覧を見る
+              <svg
+                className="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
           </div>
         </section>
 

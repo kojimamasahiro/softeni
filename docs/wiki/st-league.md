@@ -90,6 +90,26 @@ data/st-league/
 
 すべての `[year]` ページは `getStLeagueYears()` でパスを動的生成するため、`data/st-league/{year}/` を追加すれば自動でページが増える。
 
+### チームページ連携（回遊 / ADR-009）
+
+- `/st-league/teams` … **STリーグ 掲載チーム一覧**（年度横断）。男女×所属リーグ別に各チーム→`/teams/[teamId]` へ
+  リンク。STリーグ特集の一部（全体ハブ `/teams` は作らない）。Ⅲ部など未掲載があるため「掲載チーム」と表現。
+  `getStaticProps` を持つため sitemap 自動列挙。STリーグハブ（`/st-league`）から導線。
+- `data/teams/team-name-mappings.json` に**STリーグ全 teamId をエイリアス（正式名先頭）付きで追加**。
+  これで `/teams/[teamId]` と下層 `/teams/[teamId]/[year]/[gender]` が生成され、tournament データの
+  名寄せ（`normalizeJa` 完全一致）も有効化される。名称衝突なし（participants の name[] 由来、検証済）。
+- `/teams/[teamId]` は従来 `team-name-mappings.json` のキーのみ生成していたが、上記により**STリーグ出場チーム
+  にも生成**し、「STリーグでの成績」セクション（年度別の所属部・W-L・順位・優勝、
+  各年度→`/st-league/{year}/matches`）を描画する。集計は `aggregateStLeagueTeam(teamId)`（st-league.ts）。
+- トップ「所属別成績」枠（日体大・ワタキューセイモア＋外部公式リンク）とグローバルナビは現状維持。
+- STリーグ各ページのチーム名は `/teams/[teamId]` へリンクする（順位表＝matches、見出し＝teams、
+  対戦詳細ヘッダー＝matches/[matchId]）。
+- **404 回避**: tournament の年度別下層 `/teams/[teamId]/[year]/[gender]` は mapping キーのチームしか
+  生成しないため、「大会別成績」セクション（下層リンク）は `hasSubPages`（mapping キー）チームのみ描画。
+  STリーグのみのチームでは大会別リンクを出さない。
+- **選手名はリンク化しない**: `/players/[id]` は手動整備の22名のみで id 体系も別。誤リンク/404 回避のため
+  対象外（将来、選手ページ整備とあわせて検討）。
+
 ## SEO / UX
 
 - ハブ: ItemList 構造化データ（開催年度一覧）。h1 は「STリーグ 結果・順位表・出場チーム」（

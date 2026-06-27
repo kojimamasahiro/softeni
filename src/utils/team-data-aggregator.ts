@@ -62,6 +62,33 @@ export type EventResult = {
 type TeamNameMappings = Record<string, string[]>;
 
 /**
+ * その結果が混合ダブルス（ミックス）由来かどうか。
+ * link の末尾セグメント（genderPart）が "mixed" で判定。link が無い場合は大会名で補完。
+ * 混合は男女双方に計上されるため、「その性別の実体があるか」を判定する際に除外する用途で使う。
+ */
+export function isMixedResult(r: EventResult): boolean {
+  const seg = (r.link ?? '').split('/').filter(Boolean).pop();
+  if (seg === 'mixed') return true;
+  return /ミックス|mixed/i.test(r.tournament ?? '');
+}
+
+/**
+ * 大会結果から、実体（非混合の成績）がある性別の集合を返す。
+ * 混合ダブルスしか無い性別は「その性別の実体なし」とみなす。
+ */
+export function gendersWithRealPresence(
+  results: EventResult[],
+): Set<'boys' | 'girls'> {
+  const set = new Set<'boys' | 'girls'>();
+  for (const r of results) {
+    if ((r.gender === 'boys' || r.gender === 'girls') && !isMixedResult(r)) {
+      set.add(r.gender);
+    }
+  }
+  return set;
+}
+
+/**
  * 異体字（旧字体/グリフ違い）を新字体へ畳む対応表。
  * ここに載せるのは「同一文字の字形違い」だけ（例: 髙＝高, 濵＝濱）。
  * 嶋/島・澤/沢 のように別姓として扱われ得るものは混同を避けるため入れない。
@@ -116,22 +143,35 @@ export function loadTeamNameMappings(): TeamNameMappings {
 /**
  * Normalize team name to canonical team ID
  */
+// normalizeTeamName の逆引きインデックス（normalizeJa(変種) -> teamId）を
+// mappings オブジェクトごとにキャッシュする。mappings 件数が増えても照合が O(1) で済み、
+// 出場数の多いチーム（例: 日本体育大学）でビルドが線形走査でタイムアウトするのを防ぐ。
+const reverseIndexCache = new WeakMap<TeamNameMappings, Map<string, string>>();
+
+function getReverseIndex(mappings: TeamNameMappings): Map<string, string> {
+  const cached = reverseIndexCache.get(mappings);
+  if (cached) return cached;
+  const index = new Map<string, string>();
+  // Object.entries の順序で「先勝ち」にして従来の優先順位（先頭エントリ優先）を踏襲する。
+  for (const [teamId, variations] of Object.entries(mappings)) {
+    for (const v of variations) {
+      const key = normalizeJa(v);
+      if (!index.has(key)) index.set(key, teamId);
+    }
+    const idKey = normalizeJa(teamId);
+    if (!index.has(idKey)) index.set(idKey, teamId);
+  }
+  reverseIndexCache.set(mappings, index);
+  return index;
+}
+
 export function normalizeTeamName(
   teamName: string,
   mappings: TeamNameMappings,
 ): string | null {
   // 半角/全角・異体字の揺れを吸収して照合する（ＥＮＥＯＳ⇄ENEOS, ＪＲ⇄JR など）
   const target = normalizeJa(teamName);
-  for (const [teamId, variations] of Object.entries(mappings)) {
-    if (variations.some((v) => normalizeJa(v) === target)) {
-      return teamId;
-    }
-    // Also check if the teamId itself matches
-    if (normalizeJa(teamId) === target) {
-      return teamId;
-    }
-  }
-  return null;
+  return getReverseIndex(mappings).get(target) ?? null;
 }
 
 /**
