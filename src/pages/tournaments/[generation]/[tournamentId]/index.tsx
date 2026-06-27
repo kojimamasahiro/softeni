@@ -101,6 +101,25 @@ export default function TournamentHubPage({
       })),
   );
 
+  // 歴代優勝者を種目（種別）ごとにまとめる。yearGroups が年度降順のため、
+  // 各種目の優勝者リストも新しい年が先頭になる。種目の並びは最新年度での
+  // 出現順を踏襲する（削除した結果記事の「種目ごとに歴代優勝者を並べる」見た目に合わせる）。
+  const championCategoryGroups = (() => {
+    const order: string[] = [];
+    const map = new Map<string, typeof championRows>();
+    for (const r of championRows) {
+      if (!map.has(r.categoryLabel)) {
+        map.set(r.categoryLabel, []);
+        order.push(r.categoryLabel);
+      }
+      map.get(r.categoryLabel)!.push(r);
+    }
+    return order.map((categoryLabel) => ({
+      categoryLabel,
+      winners: map.get(categoryLabel)!,
+    }));
+  })();
+
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
     { label: '大会結果一覧', href: '/tournaments' },
@@ -241,42 +260,33 @@ export default function TournamentHubPage({
           )}
         </section>
 
-        {championRows.length > 0 && (
+        {championCategoryGroups.length > 0 && (
           <section className="mb-10">
             <h2 className="text-lg font-bold mb-3">{label} 歴代優勝者</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-gray-300 dark:border-gray-600 text-left">
-                    <th className="py-2 pr-3 font-semibold whitespace-nowrap">
-                      年度
-                    </th>
-                    <th className="py-2 pr-3 font-semibold whitespace-nowrap">
-                      種別
-                    </th>
-                    <th className="py-2 pr-3 font-semibold">優勝</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {championRows.map((r) => (
-                    <tr
-                      key={`${r.year}-${r.categoryLabel}`}
-                      className="border-b border-gray-100 dark:border-gray-800"
-                    >
-                      <td className="py-2 pr-3 align-top whitespace-nowrap">
+            <div className="space-y-5">
+              {championCategoryGroups.map((group) => (
+                <div
+                  key={group.categoryLabel}
+                  className="border-t border-gray-200 pt-4 dark:border-gray-700"
+                >
+                  <h3 className="mb-1 text-sm font-semibold">
+                    {group.categoryLabel}
+                  </h3>
+                  <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
+                    {group.winners.map((r) => (
+                      <li key={`${r.year}-${r.categoryLabel}`}>
                         <Link
                           href={r.href}
-                          className="text-blue-600 dark:text-blue-400 hover:underline"
+                          className="text-blue-600 hover:underline dark:text-blue-400"
                         >
-                          {r.year}年度
+                          {r.year}年
                         </Link>
-                      </td>
-                      <td className="py-2 pr-3 align-top">{r.categoryLabel}</td>
-                      <td className="py-2 pr-3 align-top">{r.winner}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        : {r.winner}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </section>
         )}

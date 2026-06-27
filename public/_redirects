@@ -2,3 +2,17 @@
 # 高校カテゴリ入口は男子ページへ 301 リダイレクト
 /highschool /highschool/boys/ 301
 /highschool/ /highschool/boys/ 301
+
+# 結果記事（/news/*-result）は廃止し、結果・優勝・歴代まとめは大会ハブ／高校歴代ページに集約（ADR-008）
+# 高校全国大会は高校歴代ページへ集中（seo.md #3）
+/news/highschool-japan-cup-2022-result /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2022-result/ /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2023-result /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2023-result/ /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2024-result /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2024-result/ /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2025-result /highschool/tournaments/japan-cup/ 301
+/news/highschool-japan-cup-2025-result/ /highschool/tournaments/japan-cup/ 301
+# 一般大会は大会ハブへ
+/news/international-korea-cup-2026-result /tournaments/international/international-korea-cup/ 301
+/news/international-korea-cup-2026-result/ /tournaments/international/international-korea-cup/ 301

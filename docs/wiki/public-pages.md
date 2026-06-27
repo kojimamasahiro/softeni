@@ -39,6 +39,7 @@
 - `/beta/matches-results/**`
 - `/growth`（成長記録ハブ・公開/インデックス対象）
 - `/growth/[slug]`（選手の成長記録ショーケース・公開/インデックス対象。対象は `data/growth-featured.json` の featured のみ。詳細は ADR-004）
+- `/news`・`/news/[articleId]`（大会**展望（preview）専用**。結果記事は廃止し、結果・優勝・歴代まとめは大会ハブ／高校歴代ページに集約＝ADR-010。公開は `state==='published'` かつ `type==='preview'` のみ。詳細は [news-context-blocks.md](./news-context-blocks.md)）
 
 補足（成長分析の公開境界・2026-06）:
 

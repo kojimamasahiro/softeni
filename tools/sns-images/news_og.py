@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 """/news 記事の OGP 画像（summary_large_image / 1200x630）を生成する。
 
+DEPRECATED（2026-06-27, ADR-010）: 対象だった result 記事は廃止した。結果・優勝・
+歴代まとめは大会ハブ／高校歴代ページに集約したため、現状この生成器の対象（published かつ
+type=="result"）は 0 件で何も出力しない。preview の OGP 対応を入れる場合は type 条件を見直すこと。
+
 設計: docs/raw/2026-06-22-news-ogp-image-design.md
 方針（確定 2026-06-22）:
   - 対象は data/news/<id>.json のうち state=="published" かつ type=="result" のみ。

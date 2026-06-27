@@ -1,8 +1,9 @@
 // src/pages/news/[articleId].tsx
-// /news/<articleId> 記事ページ（プレビュー / 結果速報）。
-// 本文は LLM を使わず、文脈ブロック（historical-winners / milestone / career-record）から
-// 決定的に構成する。公開は state==='published' の記事のみ。
-// 設計: docs/wiki/news-context-blocks.md / ADR-005。
+// /news/<articleId> 記事ページ（大会展望 / preview のみ）。
+// 結果記事（result）は廃止し、結果・優勝・歴代まとめは大会ハブ／高校歴代ページに集約した（ADR-008）。
+// 本文は LLM を使わず、文脈ブロック（前回王者・出場校 ほか）から決定的に構成する。
+// 公開は state==='published' かつ type==='preview' の記事のみ。
+// 設計: docs/wiki/news-context-blocks.md / ADR-005 / ADR-008。
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -14,7 +15,7 @@ import PageLayout from '@/components/PageLayout';
 import {
   buildNewsArticleView,
   getArticleRecord,
-  listPublishedArticles,
+  listPublishedPreviews,
   type EntryStanding,
   type NewsArticleView,
   type PreviewPlayerRef,
@@ -96,7 +97,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
 
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
-    { label: 'ニュース', href: '/news/' },
+    { label: '大会展望', href: '/news/' },
     { label: title, href: `/news/${record.articleId}/` },
   ];
 
@@ -440,7 +441,9 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = listPublishedArticles().map((r) => ({
+  // 展望（preview）のみビルドする。結果記事は廃止し、結果・優勝・歴代まとめは
+  // 大会ハブ／高校歴代ページに集約した（ADR-008）。
+  const paths = listPublishedPreviews().map((r) => ({
     params: { articleId: r.articleId },
   }));
   return { paths, fallback: false };
@@ -449,7 +452,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const articleId = (context.params as { articleId: string }).articleId;
   const record = getArticleRecord(articleId);
-  if (!record || record.state !== 'published') {
+  if (!record || record.state !== 'published' || record.type !== 'preview') {
     return { notFound: true };
   }
   return { props: { view: buildNewsArticleView(record) } };

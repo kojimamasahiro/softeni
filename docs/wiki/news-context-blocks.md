@@ -4,7 +4,9 @@
 
 時事系（速報・プレビュー）流入を、運用負荷を上げずに獲得するための機能群。本機能の本質的価値は「記事生成」ではなく **「文脈ブロック生成」** にある。競合のテンプレ SEO サイトでも結果記事は生成できるが、Softeni Pick の大会・選手・試合データを横断して生成する文脈情報は再現が難しい。よって**文脈ブロックを一次成果物**とし、記事はその再利用先の一つとして扱う。
 
-状態: **一部実装済み（2026-06-21）**。優先度A 3ブロックの生成ロジック、大会ハブ・選手ページへの差し込み、`/news` 記事（プレビュー/結果）まで実装（Step1-7）。head-to-head（Step8）と承認 UI は未実装。詳細設計は raw を参照: [親仕様](../raw/2026-06-21-news-auto-draft-design.md)、[Step1](../raw/2026-06-21-historical-winners-logic.md)、[Step2](../raw/2026-06-21-milestone-logic.md)、[Step3](../raw/2026-06-21-career-record-logic.md)。
+状態: **一部実装済み（2026-06-21）**。優先度A 3ブロックの生成ロジック、大会ハブ・選手ページへの差し込み、`/news` 記事まで実装（Step1-7）。head-to-head（Step8）と承認 UI は未実装。詳細設計は raw を参照: [親仕様](../raw/2026-06-21-news-auto-draft-design.md)、[Step1](../raw/2026-06-21-historical-winners-logic.md)、[Step2](../raw/2026-06-21-milestone-logic.md)、[Step3](../raw/2026-06-21-career-record-logic.md)。
+
+> **更新（2026-06-27, ADR-010）**: `/news` の **結果記事（result）は廃止**した。「大会ごとの結果・優勝・歴代まとめ」は、年度ごとに増える result 記事ではなく、**大会ごと 1 枚で全年度を蓄積する大会ハブ `/tournaments/[generation]/[tournamentId]`**（高校全国大会は `/highschool/tournaments/[tournament]`）に一本化する。`/news` は大会前の **preview（展望: 前回王者・出場校 ほか）専用**。result はハブと同一実体の二重ページ（[seo.md](./seo.md) #8）になっていたため。実装: `lib/newsArticle.ts` の `listPublishedPreviews()`、`src/pages/news/*`（preview 限定）、`scripts/generate-news-drafts.mjs`（preview 専用）、`public/_redirects`（旧 result URL の 301）。以下の result に関する記述は **Deprecated**（preview と既存ページ差し込みは有効）。
 
 実装状況（実装が source of truth）:
 
@@ -56,11 +58,13 @@
 
 文脈ブロックは記事ページと既存ページ（大会・選手）の両方で再利用する。記事は `/news/<articleId>`（独立ツリー）に置く。`/tournaments/.../preview` のようなツリー内配置は既存大会ページとのカニバリ距離が近いため採らない。大会ページとの関連性は記事→大会/選手/歴代ページへの内部リンクで担保する。カニバリ制御の詳細は [seo.md](./seo.md) の重複マップ #8 を参照。
 
-プレビュー記事は結果確定後に**同一 URL で結果記事へ昇格**させ（`articleId` 共有）、検索面を継続保有する。これは canonical 統一にも有利。
+~~プレビュー記事は結果確定後に**同一 URL で結果記事へ昇格**させ（`articleId` 共有）、検索面を継続保有する。~~ **Deprecated（2026-06-27, ADR-010）**: result 記事は廃止したため昇格は行わない。結果確定後の検索面は大会ハブ／高校歴代ページが受ける。preview は結果確定後、不要になれば取り下げる（または開催前の次年度 preview に置き換わる）。
 
 ## 実装順序
 
-記事機能が未完成でも既存ページの情報密度向上による SEO 効果を先取りできる順序にする。`historical-winners` → `milestone` → `career-record` → 大会ページ差し込み → 選手ページ差し込み → preview 記事（B）→ result 記事（A）→ `head-to-head`。B（プレビュー）を A（結果）より先にするのは、需要曲線（プレビューは大会前から需要が立ち結果へ育成できる）と品質リスク（結果は優勝者・スコア誤りが致命的）の両面から。
+記事機能が未完成でも既存ページの情報密度向上による SEO 効果を先取りできる順序にする。`historical-winners` → `milestone` → `career-record` → 大会ページ差し込み → 選手ページ差し込み → preview 記事（B）→ ~~result 記事（A）~~ → `head-to-head`。
+
+> **更新（2026-06-27, ADR-010）**: result 記事（A）は廃止。結果・優勝・歴代まとめは大会ハブに集約したため、この順序の result 段階は実施しない。preview（B）と既存ページ差し込みは有効。
 
 ## 関連
 

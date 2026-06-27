@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import { buildNewsArticleView, listPublishedArticles } from '@/lib/newsArticle';
+import { buildNewsArticleView, listPublishedPreviews } from '@/lib/newsArticle';
 
 type NewsListItem = {
   articleId: string;
@@ -22,8 +22,8 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
   return (
     <>
       <MetaHead
-        title="ソフトテニス ニュース（大会展望・結果速報）"
-        description="ソフトテニスの大会展望・結果速報。注目選手・前回王者・歴代優勝者・連覇/初優勝などを当サイト掲載データからまとめています。"
+        title="ソフトテニス 大会展望（前回王者・出場校）"
+        description="ソフトテニスの大会展望。前回王者の連覇・防衛、前回入賞者の再登場、出場校の勢力図などを当サイト掲載データからまとめています。確定した結果・優勝・歴代は各大会ページに掲載しています。"
         url={pageUrl}
         type="website"
         noindex={items.length === 0}
@@ -32,12 +32,10 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: 'ニュース', href: '/news/' },
+            { label: '大会展望', href: '/news/' },
           ]}
         />
-        <h1 className="mb-4 text-2xl font-bold">
-          ニュース（大会展望・結果速報）
-        </h1>
+        <h1 className="mb-4 text-2xl font-bold">大会展望</h1>
 
         {items.length === 0 ? (
           <p className="text-sm text-gray-500">
@@ -69,7 +67,7 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const items: NewsListItem[] = listPublishedArticles().map((r) => ({
+  const items: NewsListItem[] = listPublishedPreviews().map((r) => ({
     articleId: r.articleId,
     type: r.type,
     title: buildNewsArticleView(r).title,

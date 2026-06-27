@@ -264,6 +264,17 @@ export function listPublishedArticles(): NewsArticleRecord[] {
     .sort((a, b) => (b.updatedAt ?? '').localeCompare(a.updatedAt ?? ''));
 }
 
+/**
+ * 公開済みの「展望（preview）」記事のみ。
+ * 結果（result）記事は廃止し、「大会ごとの結果・優勝・歴代まとめ」は
+ * 大会ハブ（/tournaments/[generation]/[tournamentId]、高校全国大会は
+ * /highschool/tournaments/[tournament]）に集約する（ADR-008）。
+ * /news は大会前の展望（前回王者・出場校 ほか）専用とする。
+ */
+export function listPublishedPreviews(): NewsArticleRecord[] {
+  return listPublishedArticles().filter((r) => r.type === 'preview');
+}
+
 /** 対象 tournamentId/year に存在する categoryId 一覧（details 実体から） */
 function listCategoryIds(tournamentId: string, year: number): string[] {
   const dir = path.join(
