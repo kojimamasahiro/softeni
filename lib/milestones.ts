@@ -31,6 +31,7 @@ import { getCategoryLabel } from './utils';
 export type MilestoneKind =
   | 'first-title' // 初優勝（当サイト掲載範囲で）
   | 'repeat-title' // 連覇（2連覇以上）
+  | 'nth-title' // n回目の優勝（連覇でも初優勝でもない複数回優勝）
   | 'first-appearance' // 初出場（pending）
   | 'champion-defeat' // 王者撃破（pending）
   | 'career-wins' // 通算N勝の節目（pending）
@@ -76,10 +77,11 @@ const SCOPE_NOTE = '当サイト掲載大会分の集計に基づく';
 const KIND_IMPORTANCE: Record<MilestoneKind, number> = {
   'repeat-title': 0,
   'first-title': 1,
-  'champion-defeat': 2,
-  'career-wins': 3,
-  'best4-first': 4,
-  'first-appearance': 5,
+  'nth-title': 2,
+  'champion-defeat': 3,
+  'career-wins': 4,
+  'best4-first': 5,
+  'first-appearance': 6,
 };
 
 /**
@@ -188,10 +190,15 @@ function buildIndividualMilestones(
       return; // 連覇のときは初優勝ではない
     }
 
-    // --- first-title（初優勝）: 本人が掲載範囲の過去年に優勝していない（scope-limited） ---
+    // --- first-title / nth-title ---
+    // playerKey は「名前@所属」形式のため、所属変更後の選手が別人と判定されないよう
+    // playerKeys による一致に加えて players（名前）でも突合する。
     if (priorKnownYears.length > 0) {
-      const wonBefore = priorKnownYears.some((c) => c.playerKeys.includes(key));
-      if (!wonBefore) {
+      const priorWins = priorKnownYears.filter(
+        (c) => c.playerKeys.includes(key) || c.players.includes(name),
+      );
+      if (priorWins.length === 0) {
+        // first-title（初優勝）: 掲載範囲の過去年に優勝歴がない（scope-limited）
         events.push({
           kind: 'first-title',
           subject,
@@ -202,6 +209,22 @@ function buildIndividualMilestones(
           confidence: 'scope-limited',
           label: `${name} ${cat}初優勝`,
           shortLabel: `${cat}初優勝`,
+          scopeNote: SCOPE_NOTE,
+        });
+      } else {
+        // nth-title（n回目の優勝）: 連覇ではないが過去に優勝実績あり（scope-limited）
+        const n = priorWins.length + 1;
+        const shortLabel = `${cat}${n}回目の優勝`;
+        events.push({
+          kind: 'nth-title',
+          subject,
+          tournamentId,
+          categoryId,
+          year: targetYear,
+          detail: { n, coveredSince: block.sourceYears[0] },
+          confidence: 'scope-limited',
+          label: `${name} ${shortLabel}`,
+          shortLabel,
           scopeNote: SCOPE_NOTE,
         });
       }
@@ -270,17 +293,17 @@ export function getChampionMilestones(
       });
     }
 
-    // first-title（初優勝）: 掲載範囲の過去年に同一優勝校がいない（scope-limited）
-    // 連覇のときは初優勝ではないので抑制。優勝者不明年（display=null）は反証に
-    // ならないため除外する。
+    // first-title / nth-title: 連覇でないとき過去優勝歴で分岐。
+    // 優勝者不明年（display=null）は反証にならないため除外する。
     const priorKnownYears = block.champions.filter(
       (c) => c.year < targetYear && c.display,
     );
     if (!repeat && priorKnownYears.length > 0) {
-      const wonBefore = priorKnownYears.some(
+      const priorWins = priorKnownYears.filter(
         (c) => championKey(c) === targetKey,
       );
-      if (!wonBefore) {
+      if (priorWins.length === 0) {
+        // first-title（初優勝）
         events.push({
           kind: 'first-title',
           subject,
@@ -291,6 +314,22 @@ export function getChampionMilestones(
           confidence: 'scope-limited',
           label: `${subject.display} ${cat}初優勝`,
           shortLabel: `${cat}初優勝`,
+          scopeNote: SCOPE_NOTE,
+        });
+      } else {
+        // nth-title（n回目の優勝）
+        const n = priorWins.length + 1;
+        const shortLabel = `${cat}${n}回目の優勝`;
+        events.push({
+          kind: 'nth-title',
+          subject,
+          tournamentId,
+          categoryId,
+          year: targetYear,
+          detail: { n, coveredSince: block.sourceYears[0] },
+          confidence: 'scope-limited',
+          label: `${subject.display} ${shortLabel}`,
+          shortLabel,
           scopeNote: SCOPE_NOTE,
         });
       }
