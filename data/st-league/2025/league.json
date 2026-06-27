@@ -71,67 +71,24 @@
     "2": {
       "boys": {
         "champion": "nippon-signal",
-        "ranking": [
-          "nippon-signal",
-          "best",
-          "tosoh-nanyo",
-          "toyota",
-          "juhachi-shinwa",
-          "kawaguchi-city",
-          "kyoto-daini-rc",
-          "eneos"
-        ],
+        "ranking": ["nippon-signal", "best", "tosoh-nanyo", "toyota", "juhachi-shinwa", "kawaguchi-city", "kyoto-daini-rc", "eneos"],
         "blocks": {
           "A": ["toyota", "ube", "ntt-east-tokyo", "hokkaido-electric"],
           "B": ["eneos", "proterial", "noah-indoor-stage", "fujikoshi"],
-          "C": [
-            "kawaguchi-city",
-            "nipponsteel-oita",
-            "toyota-east",
-            "jr-hokkaido"
-          ],
+          "C": ["kawaguchi-city", "nipponsteel-oita", "toyota-east", "jr-hokkaido"],
           "D": ["best", "mazda", "imabari-city", "jx-kurami"],
-          "E": [
-            "juhachi-shinwa",
-            "atsugi-city",
-            "kuraray-okayama",
-            "jr-east-sendai"
-          ],
+          "E": ["juhachi-shinwa", "atsugi-city", "kuraray-okayama", "jr-east-sendai"],
           "F": ["nippon-signal", "meidensha", "shikoku-gas", "hachioji-city"],
-          "G": [
-            "kyoto-daini-rc",
-            "crossty-holdings",
-            "fukuoka-city",
-            "jr-east-tokyo"
-          ],
-          "H": [
-            "tosoh-nanyo",
-            "matsumoto-city",
-            "chubu-electric-aichi",
-            "ichikawa-city"
-          ]
+          "G": ["kyoto-daini-rc", "crossty-holdings", "fukuoka-city", "jr-east-tokyo"],
+          "H": ["tosoh-nanyo", "matsumoto-city", "chubu-electric-aichi", "ichikawa-city"]
         }
       },
       "girls": {
         "champion": "pacific-ind",
-        "ranking": [
-          "pacific-ind",
-          "toyota",
-          "kawaguchi-city",
-          "kinokuni-shinkin",
-          "yonex-niigata",
-          "lucent",
-          "toyo-kanko",
-          "ebis-shoji"
-        ],
+        "ranking": ["pacific-ind", "toyota", "kawaguchi-city", "kinokuni-shinkin", "yonex-niigata", "lucent", "toyo-kanko", "ebis-shoji"],
         "blocks": {
           "A": ["pacific-ind", "lucent", "ebis-shoji", "ome-shinkin"],
-          "B": [
-            "kawaguchi-city",
-            "kinokuni-shinkin",
-            "best",
-            "nipponsteel-oita"
-          ],
+          "B": ["kawaguchi-city", "kinokuni-shinkin", "best", "nipponsteel-oita"],
           "C": ["toyota", "yonex-niigata", "toyo-kanko", "sunny-breeze"]
         }
       }

@@ -26,6 +26,17 @@
     "teamId": "fujimi",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -84,17 +95,6 @@
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "girls"
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls"
   },
@@ -274,7 +274,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["山本_凌夢_知徳_静岡", "井手_海哩_知徳_静岡"]
+    "playerIds": ["山本_凌夢_知徳_静岡県", "井手_海哩_知徳_静岡県"]
   },
   {
     "team": "知徳",
@@ -286,7 +286,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["坂井_優斗_知徳_静岡", "鈴木_龍賀_知徳_静岡"]
+    "playerIds": ["坂井_優斗_知徳_静岡県", "鈴木_龍賀_知徳_静岡県"]
   },
   {
     "team": "富士見",
@@ -298,7 +298,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["大滝_瑠菜_富士見高校_静岡", "金刺_穂佳_富士見高校_静岡"]
+    "playerIds": ["大滝_瑠菜_富士見高校_静岡県", "金刺_穂佳_富士見高校_静岡県"]
   },
   {
     "team": "富士見",
@@ -310,7 +310,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["小林_麻央_富士見高校_静岡", "阿部_穂花_富士見高校_静岡"]
+    "playerIds": ["小林_麻央_富士見高校_静岡県", "阿部_穂花_富士見高校_静岡県"]
   },
   {
     "team": "富士見",
@@ -322,7 +322,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["阿部_穂花_富士見高校_静岡", "塩川_結菜_富士見高校_静岡"]
+    "playerIds": ["阿部_穂花_富士見高校_静岡県", "塩川_結菜_富士見高校_静岡県"]
   },
   {
     "team": "富士見",
@@ -334,7 +334,67 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["佐野_未歩_富士見高校_静岡", "塩川_結菜_富士見高校_静岡"]
+    "playerIds": ["佐野_未歩_富士見高校_静岡県", "塩川_結菜_富士見高校_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["堀内_こうみ_富士見_静岡県", "佐野_未歩_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["小林_麻央_富士見_静岡県", "阿部_穂花_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["大滝_瑠菜_富士見_静岡県", "金刺_穂佳_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["小林_麻央_富士見_静岡県", "酒井_愛弥_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["塩川_結菜_富士見_静岡県", "阿部_穂花_富士見_静岡県"]
   },
   {
     "team": "富士見",
@@ -382,7 +442,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["笠井_初夏_富士宮北高校_静岡", "角谷_佑彩_富士宮北高校_静岡"]
+    "playerIds": ["笠井_初夏_富士宮北_静岡県", "角谷_佑彩_富士宮北_静岡県"]
   },
   {
     "team": "富士宮北",
@@ -653,6 +713,30 @@
     "teamId": "hamamatsushou",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["外山_煌羅_浜松商_静岡県", "松浦_都子_浜松商_静岡県"]
+  },
+  {
+    "team": "浜松商",
+    "teamId": "hamamatsushou",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["鈴木_駿_浜松商_静岡県", "山田_湊_浜松商_静岡県"]
+  },
+  {
+    "team": "浜松商",
+    "teamId": "hamamatsushou",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -670,7 +754,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["須田_妃世李_浜名高校_静岡", "宮下_姫菜野_浜名高校_静岡"]
+    "playerIds": ["須田_妃世李_浜名高校_静岡県", "宮下_姫菜野_浜名高校_静岡県"]
   },
   {
     "team": "浜名",
@@ -682,7 +766,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["槇林_六花_浜名高校_静岡", "小玉_果怜_浜名高校_静岡"]
+    "playerIds": ["槇林_六花_浜名高校_静岡県", "小玉_果怜_浜名高校_静岡県"]
   },
   {
     "team": "浜名",
@@ -805,81 +889,6 @@
     "playerIds": ["伊藤_万絋_静岡_静岡県", "中野_束冴_静岡_静岡県"]
   },
   {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": [
-      "堀内_こうみ_静岡県富士見_静岡県",
-      "佐野_未歩_静岡県富士見_静岡県"
-    ]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "小林_麻央_静岡県富士見_静岡県",
-      "阿部_穂花_静岡県富士見_静岡県"
-    ]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": [
-      "大滝_瑠菜_静岡県富士見_静岡県",
-      "金刺_穂佳_静岡県富士見_静岡県"
-    ]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "小林_麻央_静岡県富士見_静岡県",
-      "酒井_愛弥_静岡県富士見_静岡県"
-    ]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": [
-      "塩川_結菜_静岡県富士見_静岡県",
-      "阿部_穂花_静岡県富士見_静岡県"
-    ]
-  },
-  {
     "team": "静岡商",
     "teamId": "shizuokashou",
     "prefecture": "静岡県",
@@ -997,7 +1006,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["岡崎_紗奈_焼津高校_静岡", "三田_真優花_焼津高校_静岡"]
+    "playerIds": ["岡崎_紗奈_焼津_静岡県", "三田_真優花_焼津_静岡県"]
   },
   {
     "team": "焼津",
@@ -1021,7 +1030,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["岡崎_紗奈_焼津高校_静岡県", "中西_麻矢_焼津高校_静岡県"]
+    "playerIds": ["岡崎_紗奈_焼津_静岡県", "中西_麻矢_焼津_静岡県"]
   },
   {
     "team": "焼津",
@@ -1060,6 +1069,30 @@
     "playerIds": ["坂井_優斗_知徳_静岡県"]
   },
   {
+    "team": "知徳",
+    "teamId": "chitoku",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["鈴木_龍真_知徳_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["小林_麻央_富士見_静岡県"]
+  },
+  {
     "team": "富士宮北",
     "teamId": "fujinomiyakita",
     "prefecture": "静岡県",
@@ -1082,6 +1115,30 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["青山_倫大_富士宮北_静岡県"]
+  },
+  {
+    "team": "浜松商",
+    "teamId": "hamamatsushou",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["鈴木_輝_浜松商_静岡県"]
+  },
+  {
+    "team": "浜松商",
+    "teamId": "hamamatsushou",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["松浦_都子_浜松商_静岡県"]
   },
   {
     "team": "浜松商",
@@ -1120,16 +1177,28 @@
     "playerIds": ["小出_優真_浜名_静岡県"]
   },
   {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
+    "team": "下田",
+    "teamId": "shimoda",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
+    "result": "1回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
-    "year": 2024,
+    "year": 2026,
     "gender": "girls",
-    "playerIds": ["小林_麻央_静岡県富士見_静岡県"]
+    "playerIds": ["日吉_凛乃_下田_静岡県"]
+  },
+  {
+    "team": "焼津",
+    "teamId": "yaizu",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["小坂_朋加_焼津_静岡県"]
   },
   {
     "team": "焼津",

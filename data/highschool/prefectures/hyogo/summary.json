@@ -382,7 +382,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["岩田_悠聖_市尼崎_兵庫", "栗岡_優志_市尼崎_兵庫"]
+    "playerIds": ["岩田_悠聖_市尼崎_兵庫県", "栗岡_優志_市尼崎_兵庫県"]
   },
   {
     "team": "市尼崎",
@@ -394,7 +394,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["本勝_裕人_市尼崎_兵庫", "藤井_歩陸_市尼崎_兵庫"]
+    "playerIds": ["本勝_裕人_市尼崎_兵庫県", "藤井_歩陸_市尼崎_兵庫県"]
   },
   {
     "team": "市尼崎",
@@ -418,7 +418,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["嘉納_駿_市川", "池田_蓮汰_市川"]
+    "playerIds": ["嘉納_駿_市川_", "池田_蓮汰_市川_"]
   },
   {
     "team": "市川",
@@ -781,6 +781,18 @@
     "playerIds": ["金本_慎_神戸星城_兵庫県", "池野_大珠_神戸星城_兵庫県"]
   },
   {
+    "team": "神戸星城",
+    "teamId": "koubeseijou",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["塩谷_晃平_神戸星城_兵庫県", "才之神_叶太_神戸星城_兵庫県"]
+  },
+  {
     "team": "西脇",
     "teamId": "nishiwaki",
     "prefecture": "兵庫県",
@@ -814,7 +826,7 @@
     "tournamentId": "asian-games-qualifier",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中谷_ももこ_須磨学園高校_兵庫県"]
+    "playerIds": ["中谷_ももこ_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -826,10 +838,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "天間_麗奈_東北高校_日本連盟",
-      "中谷_ももこ_須磨学園高校_日本連盟"
-    ]
+    "playerIds": ["天間_麗奈_東北_日本連盟", "中谷_ももこ_須磨学園_日本連盟"]
   },
   {
     "team": "須磨学園",
@@ -841,10 +850,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "前田_梨緒_須磨学園高校_高体連",
-      "中谷_さくら_須磨学園高校_高体連"
-    ]
+    "playerIds": ["前田_梨緒_須磨学園_高体連", "中谷_さくら_須磨学園_高体連"]
   },
   {
     "team": "須磨学園",
@@ -856,10 +862,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "上田_咲乃_須磨学園高校_高体連",
-      "杉本_咲楽_須磨学園高校_高体連"
-    ]
+    "playerIds": ["上田_咲乃_須磨学園_高体連", "杉本_咲楽_須磨学園_高体連"]
   },
   {
     "team": "須磨学園",
@@ -871,10 +874,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "丸田_梨瑚_須磨学園高校_高体連",
-      "高谷_紗英_須磨学園高校_高体連"
-    ]
+    "playerIds": ["丸田_梨瑚_須磨学園_高体連", "高谷_紗英_須磨学園_高体連"]
   },
   {
     "team": "須磨学園",
@@ -886,7 +886,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2023,
     "gender": "mixed",
-    "playerIds": ["丸中_大明_NTT西日本_広島県", "前田_梨緒_須磨学園高校_兵庫県"]
+    "playerIds": ["丸中_大明_NTT西日本_広島県", "前田_梨緒_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -898,10 +898,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2023,
     "gender": "mixed",
-    "playerIds": [
-      "本倉_健太郎_NTT西日本_広島県",
-      "中谷_さくら_須磨学園高校_兵庫県"
-    ]
+    "playerIds": ["本倉_健太郎_NTT西日本_広島県", "中谷_さくら_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -913,10 +910,7 @@
     "tournamentId": "zennihon-indoor",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "天間_麗奈_東北高校_秋田県",
-      "中谷_ももこ_須磨学園高校_秋田県"
-    ]
+    "playerIds": ["天間_麗奈_東北_秋田県", "中谷_ももこ_須磨学園_秋田県"]
   },
   {
     "team": "須磨学園",
@@ -928,10 +922,7 @@
     "tournamentId": "zennihon-indoor",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "前田_梨緒_須磨学園高校_兵庫県",
-      "中谷_さくら_須磨学園高校_兵庫県"
-    ]
+    "playerIds": ["前田_梨緒_須磨学園_兵庫県", "中谷_さくら_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -943,7 +934,7 @@
     "tournamentId": "zennihon-senbatsu",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["金井_涼_須磨学園高校", "横田_桃_須磨学園高校"]
+    "playerIds": ["金井_涼_須磨学園_", "横田_桃_須磨学園_"]
   },
   {
     "team": "須磨学園",
@@ -1217,6 +1208,18 @@
     "result": "優勝",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["前田_梨緒_須磨学園_兵庫県", "中谷_さくら_須磨学園_兵庫県"]
+  },
+  {
+    "team": "須磨学園",
+    "teamId": "sumagakuen",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
     "playerIds": ["竹平_碧純_須磨学園_兵庫県", "中谷_ももこ_須磨学園_兵庫県"]
@@ -1255,10 +1258,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "中谷_ももこ_須磨学園高校_兵庫",
-      "佐藤_愛_和歌山信愛高校_和歌山"
-    ]
+    "playerIds": ["中谷_ももこ_須磨学園_兵庫県", "佐藤_愛_和歌山信愛_和歌山県"]
   },
   {
     "team": "洲本",
@@ -1306,7 +1306,7 @@
     "tournamentId": "zennihon-senior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["間嶋_孝史_教友クラブ_兵庫", "高松_信之_洲本高等学校_兵庫"]
+    "playerIds": ["間嶋_孝史_教友クラブ_兵庫県", "高松_信之_洲本高等学校_兵庫県"]
   },
   {
     "team": "龍野北",
@@ -1343,6 +1343,18 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["速谷_優樹_津名_兵庫県", "冨本_翔太_津名_兵庫県"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["守山_湧叶_市尼崎_兵庫県"]
   },
   {
     "team": "市尼崎",
@@ -1390,7 +1402,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["前田_梨緒_須磨学園高等学校_兵庫県"]
+    "playerIds": ["前田_梨緒_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1402,7 +1414,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["野中_萌花_須磨学園高校_兵庫"]
+    "playerIds": ["野中_萌花_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1414,7 +1426,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["竹平_碧純(_須磨学園高校_兵庫"]
+    "playerIds": ["竹平_碧純(_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1426,7 +1438,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中谷_ももこ_須磨学園高校_兵庫"]
+    "playerIds": ["中谷_ももこ_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1438,7 +1450,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["竹村_瑠稀愛_須磨学園高校_兵庫"]
+    "playerIds": ["竹村_瑠稀愛_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1450,7 +1462,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中谷_ももこ_須磨学園高校_兵庫県"]
+    "playerIds": ["中谷_ももこ_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1462,7 +1474,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["竹村_瑠稀愛_須磨学園高校_兵庫県"]
+    "playerIds": ["竹村_瑠稀愛_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1474,7 +1486,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["竹平_碧純_須磨学園高校_兵庫県"]
+    "playerIds": ["竹平_碧純_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1486,7 +1498,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["前田_梨緒_須磨学園高校_兵庫県"]
+    "playerIds": ["前田_梨緒_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1498,7 +1510,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["高谷_紗英_須磨学園高校_兵庫県"]
+    "playerIds": ["高谷_紗英_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1510,7 +1522,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["山本_響彩_須磨学園高校_兵庫県"]
+    "playerIds": ["山本_響彩_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1522,7 +1534,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中谷_ももこ_須磨学園高校_兵庫県"]
+    "playerIds": ["中谷_ももこ_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1534,7 +1546,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["野中_萌花_須磨学園高校_兵庫県"]
+    "playerIds": ["野中_萌花_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1546,7 +1558,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["竹平_碧純_須磨学園高校_兵庫県"]
+    "playerIds": ["竹平_碧純_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1558,7 +1570,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["竹村_瑠稀愛_須磨学園高校_兵庫県"]
+    "playerIds": ["竹村_瑠稀愛_須磨学園_兵庫県"]
+  },
+  {
+    "team": "須磨学園",
+    "teamId": "sumagakuen",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["丸田_梨瑚_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -1601,11 +1625,23 @@
     "teamId": "sumagakuen",
     "prefecture": "兵庫県",
     "prefectureId": "hyogo",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["竹村_瑠稀愛_須磨学園_兵庫県"]
+  },
+  {
+    "team": "須磨学園",
+    "teamId": "sumagakuen",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中谷_ももこ_須磨学園高校_兵庫"]
+    "playerIds": ["中谷_ももこ_須磨学園_兵庫県"]
   }
 ]

@@ -249,7 +249,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["中山_太稀_筑紫台_福岡", "中島_遥斗_筑紫台_福岡"]
+    "playerIds": ["中山_太稀_筑紫台_福岡県", "中島_遥斗_筑紫台_福岡県"]
   },
   {
     "team": "福大若葉",
@@ -429,10 +429,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "内藤_理央_城南中学校_近畿・京都府",
-      "稲垣_晴舜_城南中学校_近畿・京都府"
-    ]
+    "playerIds": ["内藤_理央_城南中学校_京都府", "稲垣_晴舜_城南中学校_京都府"]
   },
   {
     "team": "城南",
@@ -492,7 +489,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["西村_麻央_誠修高校_福岡", "板橋_杏奈_誠修高校_福岡"]
+    "playerIds": ["西村_麻央_誠修_福岡県", "板橋_杏奈_誠修_福岡県"]
   },
   {
     "team": "誠修",
@@ -504,7 +501,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["栗原_都亜_誠修高校_福岡", "早木_結麻_誠修高校_福岡"]
+    "playerIds": ["栗原_都亜_誠修_福岡県", "早木_結麻_誠修_福岡県"]
   },
   {
     "team": "誠修",
@@ -516,7 +513,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["児玉_美奈_誠修高校_福岡", "渡邊_麻凛_誠修高校_福岡"]
+    "playerIds": ["児玉_美奈_誠修_福岡県", "渡邊_麻凛_誠修_福岡県"]
   },
   {
     "team": "誠修",
@@ -627,6 +624,18 @@
     "playerIds": ["西林_樹里_誠修_福岡県", "板橋_杏奈_誠修_福岡県"]
   },
   {
+    "team": "誠修",
+    "teamId": "makotoosamu",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["西村_麻央_誠修_福岡県", "板橋_杏奈_誠修_福岡県"]
+  },
+  {
     "team": "南筑",
     "teamId": "minamitsuku",
     "prefecture": "福岡県",
@@ -648,10 +657,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "山下_永遠_中村学園女子高校_高体連",
-      "岩田_愛美_中村学園女子高校_高体連"
-    ]
+    "playerIds": ["山下_永遠_中村学園女子_高体連", "岩田_愛美_中村学園女子_高体連"]
   },
   {
     "team": "中村学園女子",
@@ -663,10 +669,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "長谷部_百咲_中村学園女子高校_福岡",
-      "長島_朱伽_中村学園女子高校_福岡"
-    ]
+    "playerIds": ["長谷部_百咲_中村学園女子_福岡県", "長島_朱伽_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -678,10 +681,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "長谷_部百咲_中村学園女子高校_福岡",
-      "長島_朱伽_中村学園女子高校_福岡"
-    ]
+    "playerIds": ["長谷_部百咲_中村学園女子_福岡県", "長島_朱伽_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -693,10 +693,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "岩隈_彩乃_中村学園女子高校_高体連",
-      "安保_陽菜子_中村学園女子高校_高体連"
-    ]
+    "playerIds": ["岩隈_彩乃_中村学園女子_高体連", "安保_陽菜子_中村学園女子_高体連"]
   },
   {
     "team": "中村学園女子",
@@ -708,10 +705,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "山下_永遠_中村学園女子高校_高体連",
-      "岩田_愛美_中村学園女子高校_高体連"
-    ]
+    "playerIds": ["山下_永遠_中村学園女子_高体連", "岩田_愛美_中村学園女子_高体連"]
   },
   {
     "team": "中村学園女子",
@@ -723,10 +717,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "岩隈_彩乃_中村学園女子高校_福岡",
-      "安保_陽菜子_中村学園女子高校_福岡"
-    ]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県", "安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -738,10 +729,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "岩隈_彩乃_中村学園女子_福岡県",
-      "安保_陽菜子_中村学園女子_福岡県"
-    ]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県", "安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -753,10 +741,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "山下_永遠_中村学園女子_福岡県",
-      "岩田_愛美_中村学園女子_福岡県"
-    ]
+    "playerIds": ["山下_永遠_中村学園女子_福岡県", "岩田_愛美_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -768,10 +753,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "林_優花_中村学園女子_福岡県",
-      "古野_あおい_中村学園女子_福岡県"
-    ]
+    "playerIds": ["林_優花_中村学園女子_福岡県", "古野_あおい_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -783,10 +765,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "深澤_里菜_中村学園女子_福岡県",
-      "田代_柚花_中村学園女子_福岡県"
-    ]
+    "playerIds": ["深澤_里菜_中村学園女子_福岡県", "田代_柚花_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -798,10 +777,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "長谷部_百咲_中村学園女子_福岡県",
-      "長島_朱伽_中村学園女子_福岡県"
-    ]
+    "playerIds": ["長谷部_百咲_中村学園女子_福岡県", "長島_朱伽_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -813,10 +789,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "岩隈_彩乃_中村学園女子_福岡県",
-      "安保_陽菜子_中村学園女子_福岡県"
-    ]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県", "安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -828,10 +801,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "水野_伊央里_中村学園女子_福岡県",
-      "佐伯_紀佳_中村学園女子_福岡県"
-    ]
+    "playerIds": ["水野_伊央里_中村学園女子_福岡県", "佐伯_紀佳_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -843,10 +813,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "吉宗_汐菜_中村学園女子_福岡県",
-      "大小原_明花_中村学園女子_福岡県"
-    ]
+    "playerIds": ["吉宗_汐菜_中村学園女子_福岡県", "大小原_明花_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -858,10 +825,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "長谷部_百咲_中村学園女子_福岡県",
-      "長島_朱伽_中村学園女子_福岡県"
-    ]
+    "playerIds": ["長谷部_百咲_中村学園女子_福岡県", "長島_朱伽_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -873,10 +837,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "岩隈_彩乃_中村学園女子_福岡県",
-      "安保_陽菜子_中村学園女子_福岡県"
-    ]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県", "安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -900,10 +861,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "山下_永遠_中村学園女子_福岡県",
-      "岩田_愛美_中村学園女子_福岡県"
-    ]
+    "playerIds": ["山下_永遠_中村学園女子_福岡県", "岩田_愛美_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -915,10 +873,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": [
-      "岡田_采華_中村学園女子_福岡県",
-      "山岡_衣織_中村学園女子_福岡県"
-    ]
+    "playerIds": ["岡田_采華_中村学園女子_福岡県", "山岡_衣織_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -930,10 +885,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": [
-      "武藤_日菜_中村学園女子_福岡県",
-      "岩田_美和_中村学園女子_福岡県"
-    ]
+    "playerIds": ["武藤_日菜_中村学園女子_福岡県", "岩田_美和_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -945,10 +897,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": [
-      "丸目_萌_中村学園女子_福岡県",
-      "佐々木_夏_中村学園女子_福岡県"
-    ]
+    "playerIds": ["丸目_萌_中村学園女子_福岡県", "佐々木_夏_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -960,10 +909,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": [
-      "山下_永遠_中村学園女子_福岡県",
-      "岩田_愛美_中村学園女子_福岡県"
-    ]
+    "playerIds": ["山下_永遠_中村学園女子_福岡県", "岩田_愛美_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -975,10 +921,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "長島_朱伽_中村学園女子_福岡県",
-      "長谷部_百咲_中村学園女子_福岡県"
-    ]
+    "playerIds": ["長島_朱伽_中村学園女子_福岡県", "長谷部_百咲_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -990,10 +933,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "岩隈_彩乃_中村学園女子_福岡県",
-      "安保_陽菜子_中村学園女子_福岡県"
-    ]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県", "安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1005,10 +945,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "山下_永遠_中村学園女子_福岡県",
-      "岩田_愛美_中村学園女子_福岡県"
-    ]
+    "playerIds": ["山下_永遠_中村学園女子_福岡県", "岩田_愛美_中村学園女子_福岡県"]
   },
   {
     "team": "大牟田",
@@ -1093,6 +1030,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["平川_竜乃介_大牟田_福岡県", "谷村_洋斗_大牟田_福岡県"]
+  },
+  {
+    "team": "大牟田",
+    "teamId": "oomuta",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["長友_海晴_大牟田_福岡県", "澤田_壮史_大牟田_福岡県"]
   },
   {
     "team": "大牟田",
@@ -1224,7 +1173,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["伊藤_駿平_東福岡_秋田", "帆足_光平_東福岡_福岡"]
+    "playerIds": ["伊藤_駿平_東福岡_福岡県", "帆足_光平_東福岡_福岡県"]
   },
   {
     "team": "筑紫台",
@@ -1260,7 +1209,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["栗原_都亜_誠修高校_福岡"]
+    "playerIds": ["栗原_都亜_誠修_福岡県"]
+  },
+  {
+    "team": "誠修",
+    "teamId": "makotoosamu",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["西村_麻央_誠修_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1272,7 +1233,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["山下_永遠_中村学園女子高校_福岡県"]
+    "playerIds": ["山下_永遠_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1284,7 +1245,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["門松_苺_中村学園女子高校_福岡県"]
+    "playerIds": ["門松_苺_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1296,7 +1257,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["原野_湊_中村学園女子高校_福岡県"]
+    "playerIds": ["原野_湊_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1308,7 +1269,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["安保_陽菜子_中村学園女子高校_福岡県"]
+    "playerIds": ["安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1320,7 +1281,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["大小原_明花_中村学園女子高校_福岡県"]
+    "playerIds": ["大小原_明花_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1332,7 +1293,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["岩隈_彩乃_中村学園女子高校_福岡県"]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1344,7 +1305,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["吉宗_汐菜_中村学園女子高校_福岡県"]
+    "playerIds": ["吉宗_汐菜_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1356,7 +1317,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["岩隈_彩乃_中村学園女子高校_福岡県"]
+    "playerIds": ["岩隈_彩乃_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1368,7 +1329,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["安保_陽菜子_中村学園女子高校_福岡県"]
+    "playerIds": ["安保_陽菜子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1380,7 +1341,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["岩田_愛美_中村学園女子高校_福岡県"]
+    "playerIds": ["岩田_愛美_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1392,7 +1353,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["原野_湊_中村学園女子高校_福岡県"]
+    "playerIds": ["原野_湊_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1404,7 +1365,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["山下_永遠_中村学園女子高校_福岡県"]
+    "playerIds": ["山下_永遠_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -1450,9 +1411,33 @@
     "result": "1回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["澤田_壮史_大牟田_福岡県"]
+  },
+  {
+    "team": "大牟田",
+    "teamId": "oomuta",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
     "playerIds": ["山下_凱空_大牟田_福岡県"]
+  },
+  {
+    "team": "大牟田",
+    "teamId": "oomuta",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["野田_暖仁_大牟田_福岡県"]
   },
   {
     "team": "東福岡",

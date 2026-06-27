@@ -837,7 +837,11 @@
     { "entryNo": 7, "playerIds": ["__不二越_富山県"], "type": "packing" },
     { "entryNo": 8, "playerIds": ["__東ソー四日市_三重県"], "type": "packing" },
     { "entryNo": 9, "playerIds": ["__中国電力島根_島根県"], "type": "packing" },
-    { "entryNo": 10, "playerIds": ["__藤沢市役所_神奈川県"], "type": "packing" },
+    {
+      "entryNo": 10,
+      "playerIds": ["__藤沢市役所_神奈川県"],
+      "type": "packing"
+    },
     { "entryNo": 11, "playerIds": ["__大神子病院_徳島県"], "type": "packing" },
     { "entryNo": 12, "playerIds": ["__甲府市役所_山梨県"], "type": "packing" },
     {
@@ -851,7 +855,11 @@
     { "entryNo": 17, "playerIds": ["__UBEB_山口県"], "type": "packing" },
     { "entryNo": 18, "playerIds": ["__日本原燃_青森県"], "type": "packing" },
     { "entryNo": 19, "playerIds": ["__ベスト_東京都"], "type": "packing" },
-    { "entryNo": 20, "playerIds": ["__三菱電機中津川_岐阜県"], "type": "packing" },
+    {
+      "entryNo": 20,
+      "playerIds": ["__三菱電機中津川_岐阜県"],
+      "type": "packing"
+    },
     { "entryNo": 21, "playerIds": ["__NTT関西_大阪府"], "type": "packing" },
     { "entryNo": 22, "playerIds": ["__能登町役場_石川県"], "type": "packing" },
     { "entryNo": 23, "playerIds": ["__クラレ岡山_岡山県"], "type": "packing" },
@@ -862,57 +870,145 @@
       "type": "packing"
     },
     { "entryNo": 26, "playerIds": ["__TD福島_福島県"], "type": "packing" },
-    { "entryNo": 27, "playerIds": ["__デンソーテン_兵庫県"], "type": "packing" },
-    { "entryNo": 28, "playerIds": ["__平塚市役所_神奈川県"], "type": "packing" },
+    {
+      "entryNo": 27,
+      "playerIds": ["__デンソーテン_兵庫県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 28,
+      "playerIds": ["__平塚市役所_神奈川県"],
+      "type": "packing"
+    },
     { "entryNo": 29, "playerIds": ["__東邦ガスA_愛知県"], "type": "seed" },
-    { "entryNo": 30, "playerIds": ["__ワタキューセイモア_京都府"], "type": "seed" },
-    { "entryNo": 31, "playerIds": ["__ＪＲ東日本東京_東京都"], "type": "packing" },
+    {
+      "entryNo": 30,
+      "playerIds": ["__ワタキューセイモア_京都府"],
+      "type": "seed"
+    },
+    {
+      "entryNo": 31,
+      "playerIds": ["__ＪＲ東日本東京_東京都"],
+      "type": "packing"
+    },
     { "entryNo": 32, "playerIds": ["__K'sグループ_岡山県"], "type": "packing" },
-    { "entryNo": 33, "playerIds": ["__日本製鉄大分B_大分県"], "type": "packing" },
-    { "entryNo": 34, "playerIds": ["__東北電力宮城_宮城県"], "type": "packing" },
-    { "entryNo": 35, "playerIds": ["__北陸電力福井A_福井県"], "type": "packing" },
-    { "entryNo": 36, "playerIds": ["__トヨタ自動車_愛知県"], "type": "packing" },
-    { "entryNo": 37, "playerIds": ["__厚木市役所_神奈川県"], "type": "packing" },
+    {
+      "entryNo": 33,
+      "playerIds": ["__日本製鉄大分B_大分県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 34,
+      "playerIds": ["__東北電力宮城_宮城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 35,
+      "playerIds": ["__北陸電力福井A_福井県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 36,
+      "playerIds": ["__トヨタ自動車_愛知県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 37,
+      "playerIds": ["__厚木市役所_神奈川県"],
+      "type": "packing"
+    },
     { "entryNo": 38, "playerIds": ["__松本市役所A_長野県"], "type": "packing" },
     { "entryNo": 39, "playerIds": ["__ＪＲ北海道_北海道"], "type": "packing" },
-    { "entryNo": 40, "playerIds": ["__医療法人社団心_静岡県"], "type": "packing" },
+    {
+      "entryNo": 40,
+      "playerIds": ["__医療法人社団心_静岡県"],
+      "type": "packing"
+    },
     { "entryNo": 41, "playerIds": ["__日本製鋼所_広島県"], "type": "packing" },
     { "entryNo": 42, "playerIds": ["__MDS_秋田県"], "type": "packing" },
     { "entryNo": 43, "playerIds": ["__高崎市役所_群馬県"], "type": "packing" },
-    { "entryNo": 44, "playerIds": ["__川崎重工業明石_兵庫県"], "type": "packing" },
+    {
+      "entryNo": 44,
+      "playerIds": ["__川崎重工業明石_兵庫県"],
+      "type": "packing"
+    },
     { "entryNo": 45, "playerIds": ["__東ソー南陽_山口県"], "type": "packing" },
-    { "entryNo": 46, "playerIds": ["__中部電力愛知B_愛知県"], "type": "packing" },
+    {
+      "entryNo": 46,
+      "playerIds": ["__中部電力愛知B_愛知県"],
+      "type": "packing"
+    },
     { "entryNo": 47, "playerIds": ["__東京ガスＢ_東京都"], "type": "packing" },
     {
       "entryNo": 48,
       "playerIds": ["__トヨタ自動車九州_福岡県"],
       "type": "packing"
     },
-    { "entryNo": 49, "playerIds": ["__ＪＲ東日本盛岡_岩手県"], "type": "packing" },
+    {
+      "entryNo": 49,
+      "playerIds": ["__ＪＲ東日本盛岡_岩手県"],
+      "type": "packing"
+    },
     { "entryNo": 50, "playerIds": ["__Honda栃木_栃木県"], "type": "packing" },
     { "entryNo": 51, "playerIds": ["__金沢市役所_石川県"], "type": "packing" },
     { "entryNo": 52, "playerIds": ["__日本信号_埼玉県"], "type": "packing" },
-    { "entryNo": 53, "playerIds": ["__四国ガス産業クラブ_愛媛県"], "type": "packing" },
+    {
+      "entryNo": 53,
+      "playerIds": ["__四国ガス産業クラブ_愛媛県"],
+      "type": "packing"
+    },
     { "entryNo": 54, "playerIds": ["__クラレ新潟_新潟県"], "type": "packing" },
-    { "entryNo": 55, "playerIds": ["__住友ゴム工業_福島県"], "type": "packing" },
+    {
+      "entryNo": 55,
+      "playerIds": ["__住友ゴム工業_福島県"],
+      "type": "packing"
+    },
     { "entryNo": 56, "playerIds": ["__茨城県庁_茨城県"], "type": "packing" },
     { "entryNo": 57, "playerIds": ["__大阪市役所_大阪府"], "type": "packing" },
     { "entryNo": 58, "playerIds": ["__東亜工機_佐賀県"], "type": "packing" },
     { "entryNo": 59, "playerIds": ["__ヨシザワＡ_三重県"], "type": "seed" },
     { "entryNo": 60, "playerIds": ["__福井県庁_福井県"], "type": "seed" },
-    { "entryNo": 61, "playerIds": ["__豊田自動織機_愛知県"], "type": "packing" },
+    {
+      "entryNo": 61,
+      "playerIds": ["__豊田自動織機_愛知県"],
+      "type": "packing"
+    },
     { "entryNo": 62, "playerIds": ["__青森市役所_青森県"], "type": "packing" },
     { "entryNo": 63, "playerIds": ["__四国電力_香川県"], "type": "packing" },
-    { "entryNo": 64, "playerIds": ["__NTT東日本東京_東京都"], "type": "packing" },
-    { "entryNo": 65, "playerIds": ["__日本製鉄大分A_大分県"], "type": "packing" },
+    {
+      "entryNo": 64,
+      "playerIds": ["__NTT東日本東京_東京都"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 65,
+      "playerIds": ["__日本製鉄大分A_大分県"],
+      "type": "packing"
+    },
     { "entryNo": 66, "playerIds": ["__京都市役所_京都府"], "type": "packing" },
     { "entryNo": 67, "playerIds": ["__UBEA_山口県"], "type": "packing" },
     { "entryNo": 68, "playerIds": ["__大垣市役所_岐阜県"], "type": "packing" },
-    { "entryNo": 69, "playerIds": ["__ヨネックス新潟_新潟県"], "type": "packing" },
-    { "entryNo": 70, "playerIds": ["__プロテリアル_茨城県"], "type": "packing" },
-    { "entryNo": 71, "playerIds": ["__東北電力岩手_岩手県"], "type": "packing" },
+    {
+      "entryNo": 69,
+      "playerIds": ["__ヨネックス新潟_新潟県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 70,
+      "playerIds": ["__プロテリアル_茨城県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 71,
+      "playerIds": ["__東北電力岩手_岩手県"],
+      "type": "packing"
+    },
     { "entryNo": 72, "playerIds": ["__NTN岡山_岡山県"], "type": "packing" },
-    { "entryNo": 73, "playerIds": ["__浜松ホトニクス_静岡県"], "type": "packing" },
+    {
+      "entryNo": 73,
+      "playerIds": ["__浜松ホトニクス_静岡県"],
+      "type": "packing"
+    },
     {
       "entryNo": 74,
       "playerIds": ["__三菱重工相模原_神奈川県"],
@@ -924,7 +1020,11 @@
       "type": "packing"
     },
     { "entryNo": 76, "playerIds": ["__富山県庁_富山県"], "type": "packing" },
-    { "entryNo": 77, "playerIds": ["__住友化学愛媛_愛媛県"], "type": "packing" },
+    {
+      "entryNo": 77,
+      "playerIds": ["__住友化学愛媛_愛媛県"],
+      "type": "packing"
+    },
     { "entryNo": 78, "playerIds": ["__アキムB_埼玉県"], "type": "packing" },
     { "entryNo": 79, "playerIds": ["__コマツ小山_栃木県"], "type": "packing" },
     { "entryNo": 80, "playerIds": ["__宮島醤油_佐賀県"], "type": "packing" },
@@ -947,7 +1047,11 @@
     { "entryNo": 89, "playerIds": ["__ヨネックス_東京都"], "type": "seed" },
     { "entryNo": 90, "playerIds": ["__ENEOS_岡山県"], "type": "seed" },
     { "entryNo": 91, "playerIds": ["__FUJITSU_東京都"], "type": "packing" },
-    { "entryNo": 92, "playerIds": ["__ＪＲ東日本仙台_宮城県"], "type": "packing" },
+    {
+      "entryNo": 92,
+      "playerIds": ["__ＪＲ東日本仙台_宮城県"],
+      "type": "packing"
+    },
     { "entryNo": 93, "playerIds": ["__新潟市役所_新潟県"], "type": "packing" },
     { "entryNo": 94, "playerIds": ["__ＯＫＩ_群馬県"], "type": "packing" },
     {
@@ -957,25 +1061,57 @@
     },
     { "entryNo": 96, "playerIds": ["__太平洋工業_岐阜県"], "type": "packing" },
     { "entryNo": 97, "playerIds": ["__ＹＫＫ_富山県"], "type": "packing" },
-    { "entryNo": 98, "playerIds": ["__ルーセント大阪_大阪府"], "type": "packing" },
+    {
+      "entryNo": 98,
+      "playerIds": ["__ルーセント大阪_大阪府"],
+      "type": "packing"
+    },
     { "entryNo": 99, "playerIds": ["__北海道庁_北海道"], "type": "packing" },
-    { "entryNo": 100, "playerIds": ["__JX金属倉見_神奈川県"], "type": "packing" },
+    {
+      "entryNo": 100,
+      "playerIds": ["__JX金属倉見_神奈川県"],
+      "type": "packing"
+    },
     { "entryNo": 101, "playerIds": ["__トクヤマ_山口県"], "type": "packing" },
-    { "entryNo": 102, "playerIds": ["__二本松市役所クラブ_福島県"], "type": "packing" },
+    {
+      "entryNo": 102,
+      "playerIds": ["__二本松市役所クラブ_福島県"],
+      "type": "packing"
+    },
     { "entryNo": 103, "playerIds": ["__明電舎Ａ_静岡県"], "type": "seed" },
-    { "entryNo": 104, "playerIds": ["__中部電力愛知A_愛知県"], "type": "packing" },
+    {
+      "entryNo": 104,
+      "playerIds": ["__中部電力愛知A_愛知県"],
+      "type": "packing"
+    },
     { "entryNo": 105, "playerIds": ["__日立水戸_茨城県"], "type": "packing" },
     { "entryNo": 106, "playerIds": ["__KAO_和歌山県"], "type": "packing" },
     { "entryNo": 107, "playerIds": ["__むつ市役所_青森県"], "type": "packing" },
     { "entryNo": 108, "playerIds": ["__ヨシザワＢ_三重県"], "type": "packing" },
-    { "entryNo": 109, "playerIds": ["__新居浜市役所_愛媛県"], "type": "packing" },
-    { "entryNo": 110, "playerIds": ["__コマツ粟津工場_石川県"], "type": "packing" },
+    {
+      "entryNo": 109,
+      "playerIds": ["__新居浜市役所_愛媛県"],
+      "type": "packing"
+    },
+    {
+      "entryNo": 110,
+      "playerIds": ["__コマツ粟津工場_石川県"],
+      "type": "packing"
+    },
     { "entryNo": 111, "playerIds": ["__川口市役所_埼玉県"], "type": "packing" },
     { "entryNo": 112, "playerIds": ["__ＴＯＴＯ_福岡県"], "type": "packing" },
     { "entryNo": 113, "playerIds": ["__PG_千葉県"], "type": "packing" },
-    { "entryNo": 114, "playerIds": ["__JFE西日本福山_広島県"], "type": "packing" },
+    {
+      "entryNo": 114,
+      "playerIds": ["__JFE西日本福山_広島県"],
+      "type": "packing"
+    },
     { "entryNo": 115, "playerIds": ["__大仙市役所_秋田県"], "type": "packing" },
-    { "entryNo": 116, "playerIds": ["__北陸電力福井B_福井県"], "type": "packing" },
+    {
+      "entryNo": 116,
+      "playerIds": ["__北陸電力福井B_福井県"],
+      "type": "packing"
+    },
     { "entryNo": 117, "playerIds": ["__関電兵庫_兵庫県"], "type": "packing" },
     { "entryNo": 118, "playerIds": ["__東京ガスＡ_東京都"], "type": "seed" }
   ],

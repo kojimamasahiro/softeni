@@ -169,6 +169,18 @@
     "playerIds": ["田中_千夏_比治山女子_広島県", "小川_悠希_比治山女子_広島県"]
   },
   {
+    "team": "比治山女子",
+    "teamId": "hichisanjoshi",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["東脇_光希_比治山女子_広島県", "澄谷_美咲_比治山女子_広島県"]
+  },
+  {
     "team": "広島新庄",
     "teamId": "hiroshimashinjou",
     "prefecture": "広島県",
@@ -190,10 +202,7 @@
     "tournamentId": "world-championship-qualifier",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "前川_愛生_広島翔洋高校_広島県",
-      "宮前_希帆_関西学院大学_日本学連"
-    ]
+    "playerIds": ["前川_愛生_広島翔洋_広島県", "宮前_希帆_関西学院大学_日本学連"]
   },
   {
     "team": "広島翔洋",
@@ -205,7 +214,7 @@
     "tournamentId": "asian-championship-qualifier",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校", "塚本_七海_広島翔洋高校"]
+    "playerIds": ["前川_愛生_広島翔洋_", "塚本_七海_広島翔洋_"]
   },
   {
     "team": "広島翔洋",
@@ -217,7 +226,7 @@
     "tournamentId": "asian-games-qualifier",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_日本連盟県"]
+    "playerIds": ["前川_愛生_広島翔洋_日本連盟"]
   },
   {
     "team": "広島翔洋",
@@ -229,7 +238,7 @@
     "tournamentId": "asian-games-qualifier",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島県"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -241,7 +250,7 @@
     "tournamentId": "asian-games-qualifier",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_日本連盟県"]
+    "playerIds": ["前川_愛生_広島翔洋_日本連盟"]
   },
   {
     "team": "広島翔洋",
@@ -253,10 +262,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "佐藤_心美_広島翔洋高校_高体連",
-      "杉本_希_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["佐藤_心美_広島翔洋_高体連", "杉本_希_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -268,10 +274,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "林_美心_広島翔洋高校_高体連",
-      "平川_奈美希_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["林_美心_広島翔洋_高体連", "平川_奈美希_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -283,7 +286,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["廣瀬_礼衣_広島翔洋高校_広島", "中村_明愛_広島翔洋高校_広島"]
+    "playerIds": ["廣瀬_礼衣_広島翔洋_広島県", "中村_明愛_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -295,10 +298,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "髙住_莉舞奈_広島翔洋高校_高体連",
-      "久野_凪桜_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["髙住_莉舞奈_広島翔洋_高体連", "久野_凪桜_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -310,7 +310,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["伊藤_美咲華_広島翔洋高校_広島", "村上_鈴_広島翔洋高校_広島"]
+    "playerIds": ["伊藤_美咲華_広島翔洋_広島県", "村上_鈴_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -322,7 +322,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島", "前川_愛生_広島翔洋高校_広島"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県", "前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -334,10 +334,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "松井_文音_広島翔洋高校_高体連",
-      "栗原_みのり_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["松井_文音_広島翔洋_高体連", "栗原_みのり_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -349,10 +346,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "塚本_七海_広島翔洋高校_高体連",
-      "前川_愛生_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["塚本_七海_広島翔洋_高体連", "前川_愛生_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -364,10 +358,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "西村_優那_広島翔洋高校_高体連",
-      "黒沢_朋花_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["西村_優那_広島翔洋_高体連", "黒沢_朋花_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -379,10 +370,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "佐藤_心美_広島翔洋高校_高体連",
-      "杉本_希_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["佐藤_心美_広島翔洋_高体連", "杉本_希_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -394,10 +382,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "田畑_蘭_広島翔洋高校_高体連",
-      "桑木_愛花_広島翔洋高校_高体連"
-    ]
+    "playerIds": ["田畑_蘭_広島翔洋_高体連", "桑木_愛花_広島翔洋_高体連"]
   },
   {
     "team": "広島翔洋",
@@ -409,7 +394,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2025,
     "gender": "mixed",
-    "playerIds": ["塚本_七海_広島翔洋高校", "端山_羅行_稲門クラブ"]
+    "playerIds": ["塚本_七海_広島翔洋_", "端山_羅行_稲門クラブ_"]
   },
   {
     "team": "広島翔洋",
@@ -421,7 +406,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2025,
     "gender": "mixed",
-    "playerIds": ["前川_愛生_広島翔洋高校", "内田_理久_NTT西日本"]
+    "playerIds": ["前川_愛生_広島翔洋_", "内田_理久_NTT西日本_"]
   },
   {
     "team": "広島翔洋",
@@ -433,10 +418,7 @@
     "tournamentId": "zennihon-indoor",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "塚本_七海_広島翔洋高校_広島県",
-      "前川_愛生_広島翔洋高校_広島県"
-    ]
+    "playerIds": ["塚本_七海_広島翔洋_広島県", "前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -448,7 +430,7 @@
     "tournamentId": "zennihon-senbatsu",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["松井_文音_広島翔洋高校", "村上_鈴_広島翔洋高校"]
+    "playerIds": ["松井_文音_広島翔洋_", "村上_鈴_広島翔洋_"]
   },
   {
     "team": "広島翔洋",
@@ -520,7 +502,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["城山_風我_広島翔洋_広島県", "向井_海輝_広島翔洋_広島県"]
+    "playerIds": ["城山_風我_広島翔洋_広島県", "堀谷_優友_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -923,6 +905,30 @@
     "teamId": "hiroshimashouyou",
     "prefecture": "広島県",
     "prefectureId": "hiroshima",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["佐藤_心美_広島翔洋_広島県", "杉本_希_広島翔洋_広島県"]
+  },
+  {
+    "team": "広島翔洋",
+    "teamId": "hiroshimashouyou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["平川_史恩_広島翔洋_広島県", "大神_晃世_広島翔洋_広島県"]
+  },
+  {
+    "team": "広島翔洋",
+    "teamId": "hiroshimashouyou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -940,7 +946,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["森川_倖志_広島翔洋_広島", "灰田_麟太郎_広島翔洋_広島"]
+    "playerIds": ["森川_倖志_広島翔洋_広島県", "灰田_麟太郎_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -976,7 +982,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島", "前川_愛生_広島翔洋高校_広島"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県", "前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -988,10 +994,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "髙住_莉舞奈_広島翔洋高校_広島",
-      "久野_凪桜_広島翔洋高校_広島"
-    ]
+    "playerIds": ["髙住_莉舞奈_広島翔洋_広島県", "久野_凪桜_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1003,10 +1006,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "螺良_寧々_白鴎大学足利高校_栃木",
-      "村上_鈴_広島翔洋高校_広島"
-    ]
+    "playerIds": ["螺良_寧々_白鴎大学足利高校_栃木県", "村上_鈴_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1018,7 +1018,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["竹田_羽花_昇陽高校_大阪", "廣瀬_礼衣_広島翔洋高校_広島"]
+    "playerIds": ["竹田_羽花_昇陽_大阪府", "廣瀬_礼衣_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1030,10 +1030,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "塚本_七海_広島翔洋高校_広島県",
-      "前川_愛生_広島翔洋高校_広島県"
-    ]
+    "playerIds": ["塚本_七海_広島翔洋_広島県", "前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "加計芸北",
@@ -1100,12 +1097,24 @@
     "teamId": "kannabeasahi",
     "prefecture": "広島県",
     "prefectureId": "hiroshima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["飯田_幸誠_神辺旭_広島県", "小川_雄平_神辺旭_広島県"]
+  },
+  {
+    "team": "神辺旭",
+    "teamId": "kannabeasahi",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["岡本_大登_神辺旭_広島", "上貝_悠斗_神辺旭_広島"]
+    "playerIds": ["岡本_大登_神辺旭_広島県", "上貝_悠斗_神辺旭_広島県"]
   },
   {
     "team": "神辺旭",
@@ -1117,7 +1126,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["武山_悠成_神辺旭_広島", "上貝_悠斗_神辺旭_広島"]
+    "playerIds": ["武山_悠成_神辺旭_広島県", "上貝_悠斗_神辺旭_広島県"]
   },
   {
     "team": "神辺旭",
@@ -1465,7 +1474,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["藤本_晴生_清水ヶ丘_広島", "神田_陽飛_清水ヶ丘_広島"]
+    "playerIds": ["藤本_晴生_清水ヶ丘_広島県", "神田_陽飛_清水ヶ丘_広島県"]
   },
   {
     "team": "清水ヶ丘",
@@ -1501,7 +1510,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["石田_蓮_広島翔洋高校_広島県"]
+    "playerIds": ["石田_蓮_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1513,7 +1522,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["黒沢_朋花_広島翔洋高校_広島県"]
+    "playerIds": ["黒沢_朋花_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1525,7 +1534,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["杉本_希_広島翔洋高校_広島県"]
+    "playerIds": ["杉本_希_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1537,7 +1546,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["桑木_愛花_広島翔洋高校_広島県"]
+    "playerIds": ["桑木_愛花_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1549,7 +1558,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["宮前_希帆_広島翔洋高校_広島県"]
+    "playerIds": ["宮前_希帆_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1561,7 +1570,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["佐藤_心美_広島翔洋高校_広島県"]
+    "playerIds": ["佐藤_心美_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1573,7 +1582,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中村_明愛_広島翔洋高校_広島"]
+    "playerIds": ["中村_明愛_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1585,7 +1594,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["廣瀬_礼衣_広島翔洋高校_広島"]
+    "playerIds": ["廣瀬_礼衣_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1597,7 +1606,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["村上_鈴_広島翔洋高校_広島"]
+    "playerIds": ["村上_鈴_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1609,7 +1618,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["深井_やちる_広島翔洋高校_広島"]
+    "playerIds": ["深井_やちる_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1621,7 +1630,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1633,7 +1642,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["伊藤_美咲華_広島翔洋高校_広島"]
+    "playerIds": ["伊藤_美咲華_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1645,7 +1654,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["黒木_詩_広島翔洋高校_広島"]
+    "playerIds": ["黒木_詩_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1657,7 +1666,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_広島"]
+    "playerIds": ["前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1669,7 +1678,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["伊藤_美咲華_広島翔洋高校_広島県"]
+    "playerIds": ["伊藤_美咲華_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1681,7 +1690,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["平川_奈美希_広島翔洋高校_広島県"]
+    "playerIds": ["平川_奈美希_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1693,7 +1702,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島県"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1705,7 +1714,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_広島県"]
+    "playerIds": ["前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1717,7 +1726,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["黒沢_朋花_広島翔洋高校_広島県"]
+    "playerIds": ["黒沢_朋花_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1729,7 +1738,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["西村_優那_広島翔洋高校_広島県"]
+    "playerIds": ["西村_優那_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1741,7 +1750,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["竹之内_陵平_広島翔洋高校_広島県"]
+    "playerIds": ["竹之内_陵平_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1753,7 +1762,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島県"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1765,7 +1774,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["杉本_希_広島翔洋高校_広島県"]
+    "playerIds": ["杉本_希_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1777,7 +1786,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["石田_蓮_広島翔洋高校_広島県"]
+    "playerIds": ["石田_蓮_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1789,7 +1798,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["宮前_希帆_広島翔洋高校_広島県"]
+    "playerIds": ["宮前_希帆_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1801,7 +1810,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["田畑_蘭_広島翔洋高校_広島県"]
+    "playerIds": ["田畑_蘭_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1813,7 +1822,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_広島県"]
+    "playerIds": ["前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1825,7 +1834,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["佐藤_心美_広島翔洋高校_広島県"]
+    "playerIds": ["佐藤_心美_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1837,7 +1846,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["村上_鈴_広島翔洋高校_広島県"]
+    "playerIds": ["村上_鈴_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1849,7 +1858,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["久野_凪桜_広島翔洋高校_広島県"]
+    "playerIds": ["久野_凪桜_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1861,7 +1870,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["黒木_詩_広島翔洋高校_広島県"]
+    "playerIds": ["黒木_詩_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1873,7 +1882,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["鍜冶田_芽依_広島翔洋高校_広島県"]
+    "playerIds": ["鍜冶田_芽依_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1885,7 +1894,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["中村_明愛_広島翔洋高校_広島県"]
+    "playerIds": ["中村_明愛_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1897,7 +1906,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["波多_凜七_広島翔洋高校_広島県"]
+    "playerIds": ["波多_凜七_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1909,7 +1918,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["松井_文音_広島翔洋高校_広島県"]
+    "playerIds": ["松井_文音_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1921,7 +1930,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["古川_夢望_広島翔洋高校_広島県"]
+    "playerIds": ["古川_夢望_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1933,7 +1942,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["伊藤_美咲華_広島翔洋高校_広島県"]
+    "playerIds": ["伊藤_美咲華_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -1945,7 +1954,31 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["深井_やちる_広島翔洋高校_広島県"]
+    "playerIds": ["深井_やちる_広島翔洋_広島県"]
+  },
+  {
+    "team": "広島翔洋",
+    "teamId": "hiroshimashouyou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["杉本_希_広島翔洋_広島県"]
+  },
+  {
+    "team": "広島翔洋",
+    "teamId": "hiroshimashouyou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["佐藤_心美_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2060,12 +2093,24 @@
     "teamId": "hiroshimashouyou",
     "prefecture": "広島県",
     "prefectureId": "hiroshima",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["村上_鈴_広島翔洋_広島県"]
+  },
+  {
+    "team": "広島翔洋",
+    "teamId": "hiroshimashouyou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2077,7 +2122,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_広島"]
+    "playerIds": ["前川_愛生_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2089,7 +2134,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["髙住_莉舞奈_広島翔洋高校_広島"]
+    "playerIds": ["髙住_莉舞奈_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2101,7 +2146,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["久野_凪桜_広島翔洋高校_広島"]
+    "playerIds": ["久野_凪桜_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2113,7 +2158,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["廣瀬_礼衣_広島翔洋高校_広島"]
+    "playerIds": ["廣瀬_礼衣_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2125,7 +2170,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["村上_鈴_広島翔洋高校_広島"]
+    "playerIds": ["村上_鈴_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2137,7 +2182,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["塚本_七海_広島翔洋高校_広島県"]
+    "playerIds": ["塚本_七海_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -2149,7 +2194,19 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["前川_愛生_広島翔洋高校_広島県"]
+    "playerIds": ["前川_愛生_広島翔洋_広島県"]
+  },
+  {
+    "team": "神辺旭",
+    "teamId": "kannabeasahi",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["飯田_幸誠_神辺旭_広島県"]
   },
   {
     "team": "尾道",
@@ -2161,7 +2218,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["大曲_李空_尾道高校_広島県"]
+    "playerIds": ["大曲_李空_尾道_広島県"]
   },
   {
     "team": "尾道",
@@ -2200,6 +2257,18 @@
     "playerIds": ["大曲_李空_尾道_広島県"]
   },
   {
+    "team": "尾道",
+    "teamId": "onomichi",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["大名_快青_尾道_広島県"]
+  },
+  {
     "team": "清水ヶ丘",
     "teamId": "shimizukeoka",
     "prefecture": "広島県",
@@ -2209,7 +2278,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["工藤_祐輝_清水ヶ丘高等学校_広島県"]
+    "playerIds": ["工藤_祐輝_清水ヶ丘_広島県"]
   },
   {
     "team": "清水ヶ丘",
@@ -2221,7 +2290,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["藤本_晴生_清水ヶ丘高校_広島県"]
+    "playerIds": ["藤本_晴生_清水ヶ丘_広島県"]
   },
   {
     "team": "清水ヶ丘",
@@ -2233,7 +2302,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["神田_陽飛_清水ヶ丘高校_広島県"]
+    "playerIds": ["神田_陽飛_清水ヶ丘_広島県"]
   },
   {
     "team": "清水ヶ丘",
@@ -2245,6 +2314,18 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["寺田_光緒_清水ヶ丘高校_広島県"]
+    "playerIds": ["寺田_光緒_清水ヶ丘_広島県"]
+  },
+  {
+    "team": "清水ヶ丘",
+    "teamId": "shimizukeoka",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["東_稜久_清水ヶ丘_広島県"]
   }
 ]

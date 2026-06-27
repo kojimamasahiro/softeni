@@ -119,7 +119,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["雨宮_夢奈_善笑倶楽部_山梨", "佐藤_莉子_甲斐清和高校_山梨"]
+    "playerIds": ["雨宮_夢奈_善笑倶楽部_山梨県", "佐藤_莉子_甲斐清和_山梨県"]
   },
   {
     "team": "甲斐清和",
@@ -258,6 +258,18 @@
     "teamId": "kaikiyokazu",
     "prefecture": "山梨県",
     "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["渡邊_この葉_甲斐清和_山梨県", "雨宮_夢奈_甲斐清和_山梨県"]
+  },
+  {
+    "team": "甲斐清和",
+    "teamId": "kaikiyokazu",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -299,7 +311,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["河住_昌悟_甲府南高校_山梨", "深沢_秀悠_甲府南高校_山梨"]
+    "playerIds": ["河住_昌悟_甲府南_山梨県", "深沢_秀悠_甲府南_山梨県"]
   },
   {
     "team": "甲府南",
@@ -335,7 +347,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["河住_昌悟_甲府南", "深沢_秀悠_甲府南"]
+    "playerIds": ["河住_昌悟_甲府南_", "深沢_秀悠_甲府南_"]
   },
   {
     "team": "甲府南",
@@ -563,7 +575,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["井口_里咲_駿台甲府高校_山梨", "保坂_優月_駿台甲府高校_山梨"]
+    "playerIds": ["井口_里咲_駿台甲府_山梨県", "保坂_優月_駿台甲府_山梨県"]
   },
   {
     "team": "駿台甲府",
@@ -575,7 +587,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["箭本_茉央_双葉クラブ_山梨", "井口_里咲_駿台甲府高校_山梨"]
+    "playerIds": ["箭本_茉央_双葉クラブ_山梨県", "井口_里咲_駿台甲府_山梨県"]
   },
   {
     "team": "駿台甲府",
@@ -707,7 +719,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["河西_穂果_笛吹高校_山梨", "根尾_心咲_笛吹高校_山梨"]
+    "playerIds": ["河西_穂果_笛吹_山梨県", "根尾_心咲_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -719,7 +731,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["雨宮_陸_笛吹高校_高体連", "八巻_隼人_笛吹高校_高体連"]
+    "playerIds": ["雨宮_陸_笛吹_高体連", "八巻_隼人_笛吹_高体連"]
   },
   {
     "team": "笛吹",
@@ -731,7 +743,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["藤原_妃花_笛吹高校_山梨", "櫻井_亜朱_笛吹高校_山梨"]
+    "playerIds": ["藤原_妃花_笛吹_山梨県", "櫻井_亜朱_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -743,7 +755,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小澤_柚依花_笛吹高校_山梨", "鈴木_なお_笛吹高校_山梨"]
+    "playerIds": ["小澤_柚依花_笛吹_山梨県", "鈴木_なお_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -755,7 +767,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中村_美雨_笛吹高校_山梨", "河西_陽愛_笛吹高校_山梨"]
+    "playerIds": ["中村_美雨_笛吹_山梨県", "河西_陽愛_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -767,7 +779,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["小澤_柚依花_笛吹高校_山梨", "鈴木_なお_笛吹高校_山梨"]
+    "playerIds": ["小澤_柚依花_笛吹_山梨県", "鈴木_なお_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -1002,12 +1014,24 @@
     "teamId": "usui",
     "prefecture": "山梨県",
     "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["雨宮_陸_笛吹_山梨県", "八巻_隼人_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["小林_侑永_笛吹_山梨", "藤原_奏_笛吹_山梨"]
+    "playerIds": ["小林_侑永_笛吹_山梨県", "藤原_奏_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -1019,7 +1043,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["有村_翔空_笛吹_山梨", "藤原_奏_笛吹_山梨"]
+    "playerIds": ["有村_翔空_笛吹_山梨県", "藤原_奏_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -1034,6 +1058,30 @@
     "playerIds": ["依田_翔_笛吹_山梨県", "藤原_奏_笛吹_山梨県"]
   },
   {
+    "team": "甲斐清和",
+    "teamId": "kaikiyokazu",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["生原_萌詩_甲斐清和_山梨県"]
+  },
+  {
+    "team": "甲府南",
+    "teamId": "koufuminami",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["天野_友貴_甲府南_山梨県"]
+  },
+  {
     "team": "駿台甲府",
     "teamId": "sundaikoufu",
     "prefecture": "山梨県",
@@ -1044,6 +1092,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["井口_里咲_駿台甲府_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["雨宮_陸_笛吹_山梨県"]
   },
   {
     "team": "笛吹",
@@ -1104,5 +1164,29 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["依田_翔_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["小林_侑永_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["櫻井_亜朱_笛吹_山梨県"]
   }
 ]

@@ -176,10 +176,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "津波古_莉央_福知山成美高校_京都",
-      "井田_まなか_福知山成美高校_京都"
-    ]
+    "playerIds": ["津波古_莉央_福知山成美_京都府", "井田_まなか_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -191,10 +188,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "瓦井_ひより_福知山成美_京都府",
-      "塩見_咲希_福知山成美_京都府"
-    ]
+    "playerIds": ["瓦井_ひより_福知山成美_京都府", "塩見_咲希_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -206,10 +200,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "津波古_莉央_福知山成美_京都府",
-      "井田_まなか_福知山成美_京都府"
-    ]
+    "playerIds": ["津波古_莉央_福知山成美_京都府", "井田_まなか_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -221,10 +212,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "間屋口_莉子_福知山成美_京都府",
-      "吉本_裕香_福知山成美_京都府"
-    ]
+    "playerIds": ["間屋口_莉子_福知山成美_京都府", "吉本_裕香_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -356,10 +344,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "坂田_賢吾_福知山成美_京都府",
-      "白波瀬_由麻_福知山成美_京都府"
-    ]
+    "playerIds": ["坂田_賢吾_福知山成美_京都府", "白波瀬_由麻_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -371,10 +356,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "津波古_莉央_福知山成美_京都府",
-      "井田_まなか_福知山成美_京都府"
-    ]
+    "playerIds": ["津波古_莉央_福知山成美_京都府", "井田_まなか_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -435,6 +417,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["足立_翔紀_福知山成美_京都府", "内藤_拓磨_福知山成美_京都府"]
+  },
+  {
+    "team": "福知山成美",
+    "teamId": "fukuchiyamanarumi",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["堀谷_優友_福知山成美_京都府", "内藤_拓磨_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -549,12 +543,24 @@
     "teamId": "kyoutobunkyou",
     "prefecture": "京都府",
     "prefectureId": "kyoto",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["長谷_歩奈_京都文教_京都府", "林_海凪_京都文教_京都府"]
+  },
+  {
+    "team": "京都文教",
+    "teamId": "kyoutobunkyou",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["坂手_拓海_京都文教_京都", "小杉_優太_京都文教_北海道"]
+    "playerIds": ["坂手_拓海_京都文教_京都府", "小杉_優太_京都文教_京都府"]
   },
   {
     "team": "京都文教",
@@ -578,10 +584,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "太田_倫_京都光華高校_高体連",
-      "松井_颯花_京都光華高校_高体連"
-    ]
+    "playerIds": ["太田_倫_京都光華_高体連", "松井_颯花_京都光華_高体連"]
   },
   {
     "team": "京都光華",
@@ -593,10 +596,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "原_綾那_京都光華高校_高体連",
-      "西村_ひよ_京都光華高校_高体連"
-    ]
+    "playerIds": ["原_綾那_京都光華_高体連", "西村_ひよ_京都光華_高体連"]
   },
   {
     "team": "京都光華",
@@ -608,10 +608,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "原綾_那_京都光華高校_高体連",
-      "西村_ひよ_京都光華高校_高体連"
-    ]
+    "playerIds": ["原綾_那_京都光華_高体連", "西村_ひよ_京都光華_高体連"]
   },
   {
     "team": "京都光華",
@@ -623,10 +620,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "大原_彩葉_京都光華高校_高体連",
-      "加藤_視央_京都光華高校_高体連"
-    ]
+    "playerIds": ["大原_彩葉_京都光華_高体連", "加藤_視央_京都光華_高体連"]
   },
   {
     "team": "京都光華",
@@ -638,10 +632,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "山室_心結姫_京都光華高校_高体連",
-      "吉田_実桜_京都光華高校_高体連"
-    ]
+    "playerIds": ["山室_心結姫_京都光華_高体連", "吉田_実桜_京都光華_高体連"]
   },
   {
     "team": "京都光華",
@@ -953,10 +944,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": [
-      "寺澤_佑珠妃_京都光華_京都府",
-      "北川_アンナ璃咲_京都光華_京都府"
-    ]
+    "playerIds": ["寺澤_佑珠妃_京都光華_京都府", "北川_アンナ璃咲_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1026,6 +1014,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["中尾_陽菜_京都光華_京都府", "武田_悠里_京都光華_京都府"]
+  },
+  {
+    "team": "京都光華",
+    "teamId": "kyoutohikarihana",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
     "playerIds": ["伊藤_亜沙華_京都光華_京都府", "山本_好来_京都光華_京都府"]
@@ -1064,10 +1064,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "細川_莉子_京都光華中学校_京都府",
-      "松山_穂乃香_京都光華中学校_京都府"
-    ]
+    "playerIds": ["細川_莉子_京都光華中学校_京都府", "松山_穂乃香_京都光華中学校_京都府"]
   },
   {
     "team": "京都光華",
@@ -1079,10 +1076,19 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "大星_心愛_京都光華中学校_近畿・京都府",
-      "早藤_杏樹_京都光華中学校_近畿・京都府"
-    ]
+    "playerIds": ["大星_心愛_京都光華中学校_京都府", "早藤_杏樹_京都光華中学校_京都府"]
+  },
+  {
+    "team": "京都光華",
+    "teamId": "kyoutohikarihana",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["中田_葵彩_京都光華中学校_京都府", "山本_好来_京都光華中学校_京都府"]
   },
   {
     "team": "京都光華",
@@ -1094,10 +1100,7 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "岸川_柚菜_京都光華中学校_京都府",
-      "岸川_柑菜_京都光華中学校_京都府"
-    ]
+    "playerIds": ["岸川_柚菜_京都光華中学校_京都府", "岸川_柑菜_京都光華中学校_京都府"]
   },
   {
     "team": "京都光華",
@@ -1109,10 +1112,7 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "山本_結愛_京都光華中学校_京都府",
-      "前田_蓮夏_京都光華中学校_京都府"
-    ]
+    "playerIds": ["山本_結愛_京都光華中学校_京都府", "前田_蓮夏_京都光華中学校_京都府"]
   },
   {
     "team": "京都光華",
@@ -1124,10 +1124,7 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "細川_莉子_京都光華中学校_京都府",
-      "松山_穂乃香_京都光華中学校_京都府"
-    ]
+    "playerIds": ["細川_莉子_京都光華中学校_京都府", "松山_穂乃香_京都光華中学校_京都府"]
   },
   {
     "team": "京都光華",
@@ -1175,7 +1172,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["原_綾那_京都光華高校_京都", "松井_颯花_京都光華高校_京都"]
+    "playerIds": ["原_綾那_京都光華_京都府", "松井_颯花_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1187,10 +1184,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "大星_心愛_京都光華中学校_京都府",
-      "早藤_杏樹_京都光華中学校_京都府"
-    ]
+    "playerIds": ["大星_心愛_京都光華中学校_京都府", "早藤_杏樹_京都光華中学校_京都府"]
   },
   {
     "team": "京都光華",
@@ -1202,10 +1196,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "原_綾那_京都光華高校_京都府",
-      "西村_ひよ_京都光華高校_京都府"
-    ]
+    "playerIds": ["原_綾那_京都光華_京都府", "西村_ひよ_京都光華_京都府"]
   },
   {
     "team": "南丹",
@@ -1229,7 +1220,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["西村_脩_南丹_京都", "木村_秀人_南丹_京都"]
+    "playerIds": ["西村_脩_南丹_京都府", "木村_秀人_南丹_京都府"]
   },
   {
     "team": "西城陽",
@@ -1320,12 +1311,24 @@
     "teamId": "nishijouyou",
     "prefecture": "京都府",
     "prefectureId": "kyoto",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["山内_風我_西城陽_京都府", "是常_遼_西城陽_京都府"]
+  },
+  {
+    "team": "西城陽",
+    "teamId": "nishijouyou",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["高山_泰志_西城陽_京都", "清見_悠仁_西城陽_京都"]
+    "playerIds": ["高山_泰志_西城陽_京都府", "清見_悠仁_西城陽_京都府"]
   },
   {
     "team": "立命館",
@@ -1388,6 +1391,30 @@
     "playerIds": ["津波古_莉央_福知山成美_京都府"]
   },
   {
+    "team": "福知山成美",
+    "teamId": "fukuchiyamanarumi",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["内藤_理央_福知山成美_京都府"]
+  },
+  {
+    "team": "京都文教",
+    "teamId": "kyoutobunkyou",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["濱本_莉輝_京都文教_京都府"]
+  },
+  {
     "team": "京都文教",
     "teamId": "kyoutobunkyou",
     "prefecture": "京都府",
@@ -1409,7 +1436,7 @@
     "tournamentId": "asian-games-qualifier",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中尾_陽菜_京都光華高等学校_京都府"]
+    "playerIds": ["中尾_陽菜_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1421,7 +1448,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["西村_ひよ_京都光華高校_京都"]
+    "playerIds": ["西村_ひよ_京都光華_京都府"]
+  },
+  {
+    "team": "京都光華",
+    "teamId": "kyoutohikarihana",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["中尾_陽菜_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1458,6 +1497,18 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["上田_絆灯_京都光華_京都府"]
+  },
+  {
+    "team": "京都光華",
+    "teamId": "kyoutohikarihana",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["濱岡_理愛_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1517,7 +1568,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["松井_颯花_京都光華高校_京都"]
+    "playerIds": ["松井_颯花_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1529,7 +1580,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["原_綾那_京都光華高校_京都"]
+    "playerIds": ["原_綾那_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1553,7 +1604,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["原_綾那_京都光華高校_京都府"]
+    "playerIds": ["原_綾那_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1565,7 +1616,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["西村_ひよ_京都光華高校_京都府"]
+    "playerIds": ["西村_ひよ_京都光華_京都府"]
   },
   {
     "team": "京都光華",
@@ -1601,6 +1652,18 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["山内_風我_西城陽高等学校_京都府"]
+    "playerIds": ["山内_風我_西城陽_京都府"]
+  },
+  {
+    "team": "西城陽",
+    "teamId": "nishijouyou",
+    "prefecture": "京都府",
+    "prefectureId": "kyoto",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["山内_風我_西城陽_京都府"]
   }
 ]

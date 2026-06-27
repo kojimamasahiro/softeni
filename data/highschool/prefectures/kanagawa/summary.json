@@ -308,10 +308,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "石田_柚々子_川崎橘高校_神奈川",
-      "石渡_日湖_川崎橘高校_神奈川"
-    ]
+    "playerIds": ["石田_柚々子_川崎橘_神奈川県", "石渡_日湖_川崎橘_神奈川県"]
   },
   {
     "team": "川崎橘",
@@ -503,7 +500,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["高橋_勇貴_慶應義塾_神奈川", "赤阪_英昭_慶應義塾_神奈川"]
+    "playerIds": ["高橋_勇貴_慶應義塾_神奈川県", "赤阪_英昭_慶應義塾_神奈川県"]
   },
   {
     "team": "三浦学苑",
@@ -539,10 +536,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": [
-      "鈴木_瑠衣斗_三浦学苑_神奈川県",
-      "川口_侑久_三浦学苑_神奈川県"
-    ]
+    "playerIds": ["鈴木_瑠衣斗_三浦学苑_神奈川県", "川口_侑久_三浦学苑_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -554,10 +548,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "溝井_美月_日大藤沢高校_神奈川",
-      "髙橋_萌楠_日大藤沢高校_神奈川"
-    ]
+    "playerIds": ["溝井_美月_日大藤沢_神奈川県", "髙橋_萌楠_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -581,10 +572,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "椎名_萌花_日大藤沢_神奈川県",
-      "五十嵐_優音_日大藤沢_神奈川県"
-    ]
+    "playerIds": ["椎名_萌花_日大藤沢_神奈川県", "五十嵐_優音_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -632,10 +620,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "古川_未知瑠_日大藤沢_神奈川県",
-      "青木_未来_日大藤沢_神奈川県"
-    ]
+    "playerIds": ["古川_未知瑠_日大藤沢_神奈川県", "青木_未来_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -695,10 +680,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "五十嵐_優音_日大藤沢_神奈川県",
-      "恩田_彩華_日大藤沢_神奈川県"
-    ]
+    "playerIds": ["五十嵐_優音_日大藤沢_神奈川県", "恩田_彩華_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -722,10 +704,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "古川_未知瑠_日大藤沢_神奈川県",
-      "小宮_楓南_日大藤沢_神奈川県"
-    ]
+    "playerIds": ["古川_未知瑠_日大藤沢_神奈川県", "小宮_楓南_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -750,6 +729,18 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["河上_真優_日大藤沢_神奈川県", "椎名_萌花_日大藤沢_神奈川県"]
+  },
+  {
+    "team": "日大藤沢",
+    "teamId": "nichidaifujisawa",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["椎名_萌花_日大藤沢_神奈川県", "五十嵐_優音_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -797,7 +788,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["小澤_陽樹_西湘高校", "芹澤_千哲_西湘高校"]
+    "playerIds": ["小澤_陽樹_西湘高校_", "芹澤_千哲_西湘高校_"]
   },
   {
     "team": "西湘",
@@ -833,7 +824,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["伊東_夢来_相洋高校_神奈川", "西場_まこ_相洋高校_神奈川"]
+    "playerIds": ["伊東_夢来_相洋_神奈川県", "西場_まこ_相洋_神奈川県"]
   },
   {
     "team": "相洋",
@@ -953,10 +944,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "水上_智永里_相洋中学校_神奈川県",
-      "後藤_嘉心_相洋中学校_神奈川県"
-    ]
+    "playerIds": ["水上_智永里_相洋中学校_神奈川県", "後藤_嘉心_相洋中学校_神奈川県"]
   },
   {
     "team": "相洋",
@@ -968,10 +956,7 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "関野_琴梨_相洋中学校_神奈川県",
-      "三枝_由空_相洋中学校_神奈川県"
-    ]
+    "playerIds": ["関野_琴梨_相洋中学校_神奈川県", "三枝_由空_相洋中学校_神奈川県"]
   },
   {
     "team": "相洋",
@@ -983,10 +968,7 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "西場_莉夏_相洋中学校_神奈川県",
-      "矢田_恵愛_相洋中学校_神奈川県"
-    ]
+    "playerIds": ["西場_莉夏_相洋中学校_神奈川県", "矢田_恵愛_相洋中学校_神奈川県"]
   },
   {
     "team": "立花学園",
@@ -998,7 +980,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["高山_輝也_立花学園", "大谷地_蒼星_立花学園"]
+    "playerIds": ["高山_輝也_立花学園_", "大谷地_蒼星_立花学園_"]
   },
   {
     "team": "立花学園",
@@ -1010,10 +992,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "髙山_輝也_立花学園_神奈川県",
-      "大谷地_蒼星_立花学園_神奈川県"
-    ]
+    "playerIds": ["髙山_輝也_立花学園_神奈川県", "大谷地_蒼星_立花学園_神奈川県"]
   },
   {
     "team": "立花学園",
@@ -1025,7 +1004,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["髙山_輝也_立花学園_神奈川", "大谷地_蒼星_立花学園_神奈川"]
+    "playerIds": ["髙山_輝也_立花学園_神奈川県", "大谷地_蒼星_立花学園_神奈川県"]
   },
   {
     "team": "高津",
@@ -1049,10 +1028,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "原田_興勇_東海大相模高校_高体連",
-      "神藏_悠月_東海大相模高校_高体連"
-    ]
+    "playerIds": ["原田_興勇_東海大相模高校_高体連", "神藏_悠月_東海大相模高校_高体連"]
   },
   {
     "team": "東海大相模",
@@ -1064,10 +1040,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": [
-      "脇田_大吉_東海大相模_神奈川県",
-      "斎藤_恭平_東海大相模_神奈川県"
-    ]
+    "playerIds": ["脇田_大吉_東海大相模_神奈川県", "斎藤_恭平_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1079,10 +1052,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": [
-      "木村_奏都_東海大相模_神奈川県",
-      "藤田_颯汰_東海大相模_神奈川県"
-    ]
+    "playerIds": ["木村_奏都_東海大相模_神奈川県", "藤田_颯汰_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1094,10 +1064,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "小山_大翔_東海大相模_神奈川県",
-      "髙野_晃世_東海大相模_神奈川県"
-    ]
+    "playerIds": ["小山_大翔_東海大相模_神奈川県", "髙野_晃世_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1109,10 +1076,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "宮城_和弥_東海大相模_神奈川県",
-      "横瀬_由弥_東海大相模_神奈川県"
-    ]
+    "playerIds": ["宮城_和弥_東海大相模_神奈川県", "横瀬_由弥_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1124,10 +1088,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "原田_興勇_東海大相模_神奈川県",
-      "神藏_悠月_東海大相模_神奈川県"
-    ]
+    "playerIds": ["原田_興勇_東海大相模_神奈川県", "神藏_悠月_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1139,10 +1100,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "岩石_珀琥斗_東海大相模_神奈川県",
-      "鹿志村_和輝_東海大相模_神奈川県"
-    ]
+    "playerIds": ["岩石_珀琥斗_東海大相模_神奈川県", "鹿志村_和輝_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1154,10 +1112,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "鍵和田_海斗_東海大相模_神奈川県",
-      "秋山_陽希_東海大相模_神奈川県"
-    ]
+    "playerIds": ["鍵和田_海斗_東海大相模_神奈川県", "秋山_陽希_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1169,10 +1124,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "髙橋_稜空_東海大相模_神奈川県",
-      "尾形_涼_東海大相模_神奈川県"
-    ]
+    "playerIds": ["髙橋_稜空_東海大相模_神奈川県", "尾形_涼_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1184,10 +1136,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "原田_興勇_東海大相模_神奈川県",
-      "神藏_悠月_東海大相模_神奈川県"
-    ]
+    "playerIds": ["原田_興勇_東海大相模_神奈川県", "神藏_悠月_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1199,10 +1148,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "脇田_大吉_東海大相模_神奈川県",
-      "斎藤_恭平_東海大相模_神奈川県"
-    ]
+    "playerIds": ["脇田_大吉_東海大相模_神奈川県", "斎藤_恭平_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1214,10 +1160,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "中原_颯人_東海大相模_神奈川県",
-      "佐藤_匠馬_東海大相模_神奈川県"
-    ]
+    "playerIds": ["中原_颯人_東海大相模_神奈川県", "佐藤_匠馬_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1229,10 +1172,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "髙橋_稜空_東海大相模_神奈川県",
-      "佐川_温斗_東海大相模_神奈川県"
-    ]
+    "playerIds": ["髙橋_稜空_東海大相模_神奈川県", "佐川_温斗_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1244,10 +1184,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": [
-      "木村_奏都_東海大相模_神奈川県",
-      "藤田_颯汰_東海大相模_神奈川県"
-    ]
+    "playerIds": ["木村_奏都_東海大相模_神奈川県", "藤田_颯汰_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1259,10 +1196,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": [
-      "鍛代_優亮_東海大相模_神奈川県",
-      "松野_晃大_東海大相模_神奈川県"
-    ]
+    "playerIds": ["鍛代_優亮_東海大相模_神奈川県", "松野_晃大_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1274,10 +1208,19 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": [
-      "中原_颯人_東海大相模_神奈川県",
-      "佐川_温斗_東海大相模_神奈川県"
-    ]
+    "playerIds": ["中原_颯人_東海大相模_神奈川県", "佐川_温斗_東海大相模_神奈川県"]
+  },
+  {
+    "team": "東海大相模",
+    "teamId": "toukaidaisagami",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["脇田_大吉_東海大相模_神奈川県", "斎藤_恭平_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1289,7 +1232,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["原田_興勇_東海大相模_神奈川", "神藏_悠月_東海大相模_神奈川"]
+    "playerIds": ["原田_興勇_東海大相模_神奈川県", "神藏_悠月_東海大相模_神奈川県"]
   },
   {
     "team": "東海大相模",
@@ -1301,10 +1244,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "脇田_大吉_東海大相模_神奈川県",
-      "斎藤_恭平_東海大相模_神奈川県"
-    ]
+    "playerIds": ["脇田_大吉_東海大相模_神奈川県", "斎藤_恭平_東海大相模_神奈川県"]
   },
   {
     "team": "鶴嶺",
@@ -1316,7 +1256,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松田_悠生_鶴嶺_神奈川", "淵野_宙英_鶴嶺_神奈川"]
+    "playerIds": ["松田_悠生_鶴嶺_神奈川県", "淵野_宙英_鶴嶺_神奈川県"]
   },
   {
     "team": "鶴嶺",
@@ -1340,7 +1280,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["櫻川_未来_上溝南高校_神奈川", "大谷_鞠歌_上溝南高校_神奈川"]
+    "playerIds": ["櫻川_未来_上溝南_神奈川県", "大谷_鞠歌_上溝南_神奈川県"]
   },
   {
     "team": "上溝南",
@@ -1451,6 +1391,30 @@
     "playerIds": ["青木_真尋_秦野_神奈川県"]
   },
   {
+    "team": "法政二",
+    "teamId": "houseini",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["中山_椋太_法政二_神奈川県"]
+  },
+  {
+    "team": "慶應義塾",
+    "teamId": "keiougijuku",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["小池_賀久_慶應義塾_神奈川県"]
+  },
+  {
     "team": "慶應義塾",
     "teamId": "keiougijuku",
     "prefecture": "神奈川県",
@@ -1461,6 +1425,18 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["赤阪_英昭_慶應義塾_神奈川県"]
+  },
+  {
+    "team": "日大藤沢",
+    "teamId": "nichidaifujisawa",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["椎名_萌花_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -1496,7 +1472,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["石井_海菜_相洋高校_神奈川県"]
+    "playerIds": ["石井_海菜_相洋_神奈川県"]
   },
   {
     "team": "相洋",
@@ -1521,6 +1497,18 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["五味_陽日_相洋_神奈川県"]
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["石井_海菜_相洋_神奈川県"]
   },
   {
     "team": "相洋",
@@ -1592,6 +1580,6 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["櫻川_未来_上溝南高校_神奈川県"]
+    "playerIds": ["櫻川_未来_上溝南_神奈川県"]
   }
 ]

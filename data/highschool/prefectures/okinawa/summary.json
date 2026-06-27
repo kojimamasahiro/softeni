@@ -239,7 +239,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["玉城_みりあ_糸満高校_沖縄", "伊芸_美由華_糸満高校_沖縄"]
+    "playerIds": ["玉城_みりあ_糸満高校_沖縄県", "伊芸_美由華_糸満高校_沖縄県"]
   },
   {
     "team": "糸満",
@@ -330,6 +330,18 @@
     "teamId": "itoman",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["石塚_可憐_糸満_沖縄県", "宮里_来瞳_糸満_沖縄県"]
+  },
+  {
+    "team": "糸満",
+    "teamId": "itoman",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -402,12 +414,24 @@
     "teamId": "kouyou",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["白川_拓夢_向陽_和歌山県", "田中_亮太_向陽_和歌山県"]
+  },
+  {
+    "team": "向陽",
+    "teamId": "kouyou",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["照屋_盛也_向陽_沖縄", "渡邉_波輝_向陽_沖縄"]
+    "playerIds": ["照屋_盛也_向陽_和歌山県", "渡邉_波輝_向陽_和歌山県"]
   },
   {
     "team": "向陽",
@@ -419,10 +443,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "肥岡_稜希_向陽中学校_中国・広島県",
-      "髙橋_志恩_向陽中学校_中国・広島県"
-    ]
+    "playerIds": ["肥岡_稜希_向陽中学校_広島県", "髙橋_志恩_向陽中学校_広島県"]
   },
   {
     "team": "向陽",
@@ -785,6 +806,18 @@
     "playerIds": ["金城_正太郎_那覇西_沖縄県", "牧野_夏海_那覇西_沖縄県"]
   },
   {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["牧野_夏海_那覇西_沖縄県", "細川_大峨_那覇西_沖縄県"]
+  },
+  {
     "team": "豊見城",
     "teamId": "tomigusuku",
     "prefecture": "沖縄県",
@@ -806,7 +839,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["宮良_真梨乃_八重山_沖縄", "松田_里美_JAおきなわ_沖縄"]
+    "playerIds": ["宮良_真梨乃_八重山_沖縄県", "松田_里美_JAおきなわ_沖縄県"]
   },
   {
     "team": "八重山",
@@ -818,7 +851,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["大橋_夏海_軟友会_沖縄", "髙嶺_彩羽_八重山高校_沖縄"]
+    "playerIds": ["大橋_夏海_軟友会_沖縄県", "髙嶺_彩羽_八重山_沖縄県"]
   },
   {
     "team": "八重山",
@@ -830,7 +863,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["吉川_洋一朗_八重山高校_沖縄", "高嶺_星弥_八重山高校_沖縄"]
+    "playerIds": ["吉川_洋一朗_八重山_沖縄県", "高嶺_星弥_八重山_沖縄県"]
   },
   {
     "team": "八重山",
@@ -842,7 +875,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["石垣_蒼_八重山高校_沖縄", "福本_安汝_八重山高校_沖縄"]
+    "playerIds": ["石垣_蒼_八重山_沖縄県", "福本_安汝_八重山_沖縄県"]
   },
   {
     "team": "八重山",
@@ -854,7 +887,7 @@
     "tournamentId": "zennihon-workers",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["木瀬_晶絵_TeamSSP_佐賀県", "髙嶺_彩羽_八重山高校_沖縄県"]
+    "playerIds": ["木瀬_晶絵_TeamSSP_佐賀県", "髙嶺_彩羽_八重山_沖縄県"]
   },
   {
     "team": "八重山",
@@ -1010,7 +1043,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["福本_礼央夏_八重山_沖縄", "座波_晃也_八重山_沖縄"]
+    "playerIds": ["福本_礼央夏_八重山_沖縄県", "座波_晃也_八重山_沖縄県"]
   },
   {
     "team": "八重山",
@@ -1034,7 +1067,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["髙嶺_大弥_八重山_沖縄", "福本_礼央夏_八重山_沖縄"]
+    "playerIds": ["髙嶺_大弥_八重山_沖縄県", "福本_礼央夏_八重山_沖縄県"]
   },
   {
     "team": "八重山",
@@ -1077,12 +1110,36 @@
     "teamId": "itoman",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["伊芸_美桜_糸満_沖縄県"]
+  },
+  {
+    "team": "糸満",
+    "teamId": "itoman",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "primaryschool-championship",
     "year": 2025,
     "gender": "girls",
     "playerIds": ["大城_莉結_糸満_沖縄県"]
+  },
+  {
+    "team": "向陽",
+    "teamId": "kouyou",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["照屋_盛麻_向陽_沖縄県"]
   },
   {
     "team": "名護",
@@ -1143,6 +1200,30 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["細川_大峨_那覇西_沖縄県"]
+  },
+  {
+    "team": "八重山",
+    "teamId": "yaeyama",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["吉川_洋一朗_八重山_沖縄県"]
+  },
+  {
+    "team": "八重山",
+    "teamId": "yaeyama",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["福本_安汝_八重山_沖縄県"]
   },
   {
     "team": "八重山",

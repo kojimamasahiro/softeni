@@ -153,7 +153,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["相馬_心寧_福島西高校_福島", "佐藤_愛來_福島西高校_福島"]
+    "playerIds": ["相馬_心寧_福島西_福島県", "佐藤_愛來_福島西_福島県"]
   },
   {
     "team": "福島西",
@@ -213,10 +213,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "宮本_絢菜_学法石川高校_高体連",
-      "久保田_笑心_学法石川高校_高体連"
-    ]
+    "playerIds": ["宮本_絢菜_学法石川_高体連", "久保田_笑心_学法石川_高体連"]
   },
   {
     "team": "学法石川",
@@ -228,7 +225,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["富塚_遥翔_学法石川高校_福島", "髙島_蒼太_学法石川高校_福島"]
+    "playerIds": ["富塚_遥翔_学法石川_福島県", "髙島_蒼太_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -240,10 +237,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "佐藤_日香莉_学法石川高校_福島",
-      "大和田_桃菜_TEAMひだまり_福島"
-    ]
+    "playerIds": ["佐藤_日香莉_学法石川_福島県", "大和田_桃菜_ＴＥＡＭひだまり_福島県"]
   },
   {
     "team": "学法石川",
@@ -255,10 +249,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2026,
     "gender": "mixed",
-    "playerIds": [
-      "大武_夢菜_学法石川高校_日本連盟県",
-      "林寿_李稀_明徳義塾高校_日本連盟県"
-    ]
+    "playerIds": ["大武_夢菜_学法石川_日本連盟", "林寿_李稀_明徳義塾_日本連盟"]
   },
   {
     "team": "学法石川",
@@ -270,10 +261,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2026,
     "gender": "mixed",
-    "playerIds": [
-      "福見_優心_明徳義塾高校_日本連盟県",
-      "大武_姫菜_学法石川高校_日本連盟県"
-    ]
+    "playerIds": ["福見_優心_明徳義塾_日本連盟", "大武_姫菜_学法石川_日本連盟"]
   },
   {
     "team": "学法石川",
@@ -285,10 +273,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "生田目_和奈_学法石川高校_福島",
-      "馬上世_愛_学法石川高校_福島"
-    ]
+    "playerIds": ["生田目_和奈_学法石川_福島県", "馬上世_愛_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -300,7 +285,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山本_栞奈_学法石川高校_福島", "都竹_叶愛_学法石川高校_福島"]
+    "playerIds": ["山本_栞奈_学法石川_福島県", "都竹_叶愛_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -312,7 +297,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["鈴木_幸桃_学法石川高校_福島", "青木_希_学法石川高校_福島"]
+    "playerIds": ["鈴木_幸桃_学法石川_福島県", "青木_希_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -732,7 +717,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["唐澤_季弥_学法石川_福島", "猪股_健人_学法石川_福島"]
+    "playerIds": ["唐澤_季弥_学法石川_福島県", "猪股_健人_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -768,10 +753,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "宮本_絢菜_学法石川高校_福島県",
-      "久保田_笑心_学法石川高校_福島県"
-    ]
+    "playerIds": ["宮本_絢菜_学法石川_福島県", "久保田_笑心_学法石川_福島県"]
   },
   {
     "team": "磐城第一",
@@ -858,6 +840,18 @@
     "playerIds": ["大和田_桃菜_磐城第一_福島県", "安富_朱莉_磐城第一_福島県"]
   },
   {
+    "team": "磐城第一",
+    "teamId": "iwakidaiichi",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["馬上_愛菜_磐城第一_福島県", "馬上_結愛_磐城第一_福島県"]
+  },
+  {
     "team": "田村",
     "teamId": "tamura",
     "prefecture": "福島県",
@@ -867,7 +861,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["齋藤_楓雅_田村高校_福島", "安部_蓮生_田村高校_福島"]
+    "playerIds": ["齋藤_楓雅_田村_福島県", "安部_蓮生_田村_福島県"]
   },
   {
     "team": "田村",
@@ -879,7 +873,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["相山_尚慧_田村高校_福島", "櫻本_珠穏_田村高校_福島"]
+    "playerIds": ["相山_尚慧_田村_福島県", "櫻本_珠穏_田村_福島県"]
   },
   {
     "team": "田村",
@@ -891,7 +885,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村高校_福島", "宗像_鷲_田村高校_福島"]
+    "playerIds": ["草野_春真_田村_福島県", "宗像_鷲_田村_福島県"]
   },
   {
     "team": "田村",
@@ -903,7 +897,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["伊賀_凌巧_田村高校_福島", "相山_尚慧_田村高校_福島"]
+    "playerIds": ["伊賀_凌巧_田村_福島県", "相山_尚慧_田村_福島県"]
   },
   {
     "team": "田村",
@@ -915,7 +909,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["吉田_拓翔_田村高校_高体連", "相山_昂慧_田村高校_高体連"]
+    "playerIds": ["吉田_拓翔_田村_高体連", "相山_昂慧_田村_高体連"]
   },
   {
     "team": "田村",
@@ -927,7 +921,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["菅野_百音_田村高校_福島", "草野_春真_田村高校_福島"]
+    "playerIds": ["菅野_百音_田村_福島県", "草野_春真_田村_福島県"]
   },
   {
     "team": "田村",
@@ -939,7 +933,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2025,
     "gender": "mixed",
-    "playerIds": ["草野_春真_田村高校", "北川_アンナ璃咲_明治大学"]
+    "playerIds": ["草野_春真_田村_", "北川_アンナ璃咲_明治大学_"]
   },
   {
     "team": "田村",
@@ -1213,9 +1207,33 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["先﨑_琉那_田村_福島県", "佐野_綾音_田村_福島県"]
+  },
+  {
+    "team": "田村",
+    "teamId": "tamura",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["齋藤_楓雅_田村_福島県", "安部_蓮生_田村_福島県"]
+  },
+  {
+    "team": "田村",
+    "teamId": "tamura",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村_福島", "宗像_鷲_田村_福島"]
+    "playerIds": ["草野_春真_田村_福島県", "宗像_鷲_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1227,7 +1245,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["袴塚_昊和_田村_福島", "樋口_琥珀_田村_福島"]
+    "playerIds": ["袴塚_昊和_田村_福島県", "樋口_琥珀_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1251,7 +1269,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦高校_福島", "草野_春真_田村高校_茨城"]
+    "playerIds": ["善福_留生_霞ヶ浦_福島県", "草野_春真_田村_茨城県"]
   },
   {
     "team": "田村",
@@ -1263,7 +1281,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["相山_昂慧_田村高校_福島県", "吉田_拓翔_田村高校_福島県"]
+    "playerIds": ["相山_昂慧_田村_福島県", "吉田_拓翔_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1275,7 +1293,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村高校_福島県", "木本_琉偉_明徳義塾高校_高知県"]
+    "playerIds": ["草野_春真_田村_福島県", "木本_琉偉_明徳義塾_高知県"]
   },
   {
     "team": "帝京安積",
@@ -1323,7 +1341,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["渡邉_智隼_学法石川高校"]
+    "playerIds": ["渡邉_智隼_学法石川_"]
   },
   {
     "team": "学法石川",
@@ -1335,7 +1353,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["宮本_絢菜_学法石川高校_福島"]
+    "playerIds": ["宮本_絢菜_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -1347,7 +1365,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["生田目_和奈_学法石川高校_福島県"]
+    "playerIds": ["生田目_和奈_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -1359,7 +1377,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["宮本_絢菜_学法石川高校_福島県"]
+    "playerIds": ["宮本_絢菜_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -1371,7 +1389,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["根本_いずみ_学法石川高校_福島県"]
+    "playerIds": ["根本_いずみ_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -1383,7 +1401,31 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["安田_舜_学法石川高校_福島県"]
+    "playerIds": ["安田_舜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["安田_舜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["佐藤_日香莉_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -1426,12 +1468,36 @@
     "teamId": "gakuhouishikawa",
     "prefecture": "福島県",
     "prefectureId": "fukushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["大武_夢菜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["大武_姫菜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["久保田_笑心_学法石川高校_福島県"]
+    "playerIds": ["久保田_笑心_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -1443,7 +1509,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["宮本_絢菜_学法石川高校_福島県"]
+    "playerIds": ["宮本_絢菜_学法石川_福島県"]
   },
   {
     "team": "田村",
@@ -1455,7 +1521,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["伊賀_凌巧_田村高校"]
+    "playerIds": ["伊賀_凌巧_田村_"]
   },
   {
     "team": "田村",
@@ -1467,7 +1533,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村高校"]
+    "playerIds": ["草野_春真_田村_"]
   },
   {
     "team": "田村",
@@ -1479,7 +1545,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["相山_尚慧_田村高校"]
+    "playerIds": ["相山_尚慧_田村_"]
   },
   {
     "team": "田村",
@@ -1491,7 +1557,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村高校_福島県"]
+    "playerIds": ["草野_春真_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1503,7 +1569,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["袴塚_昊和_田村高校_福島県"]
+    "playerIds": ["袴塚_昊和_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1515,7 +1581,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["吉田_拓翔_田村高校_福島県"]
+    "playerIds": ["吉田_拓翔_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1527,7 +1593,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["相山_昂慧_田村高校_福島県"]
+    "playerIds": ["相山_昂慧_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1539,7 +1605,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["相山_尚慧_田村高校_福島県"]
+    "playerIds": ["相山_尚慧_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1551,7 +1617,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["佐藤_凛空_田村高校_福島県"]
+    "playerIds": ["佐藤_凛空_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1563,7 +1629,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["佐藤_佑樹_田村高校_福島県"]
+    "playerIds": ["佐藤_佑樹_田村_福島県"]
+  },
+  {
+    "team": "田村",
+    "teamId": "tamura",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["安部_蓮生_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1606,12 +1684,24 @@
     "teamId": "tamura",
     "prefecture": "福島県",
     "prefectureId": "fukushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["相山_尚慧_田村_福島県"]
+  },
+  {
+    "team": "田村",
+    "teamId": "tamura",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村高校_福島"]
+    "playerIds": ["草野_春真_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1623,7 +1713,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["相山_昂慧_田村高校_福島県"]
+    "playerIds": ["相山_昂慧_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1635,7 +1725,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["吉田_拓翔_田村高校_福島県"]
+    "playerIds": ["吉田_拓翔_田村_福島県"]
   },
   {
     "team": "田村",
@@ -1647,7 +1737,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["草野_春真_田村高校_福島県"]
+    "playerIds": ["草野_春真_田村_福島県"]
   },
   {
     "team": "帝京安積",
@@ -1659,6 +1749,6 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["深沢_雅人_帝京安積高校"]
+    "playerIds": ["深沢_雅人_帝京安積高校_"]
   }
 ]

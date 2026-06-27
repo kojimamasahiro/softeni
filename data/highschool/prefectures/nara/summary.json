@@ -157,6 +157,18 @@
     "playerIds": ["小林_歩輝_関西中央_奈良県", "井場_想大_関西中央_奈良県"]
   },
   {
+    "team": "関西中央",
+    "teamId": "kansaichuuou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["中谷_咲羅_関西中央_奈良県", "西川_結_関西中央_奈良県"]
+  },
+  {
     "team": "郡山",
     "teamId": "kouriyama",
     "prefecture": "奈良県",
@@ -178,7 +190,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["島谷_拓和_奈良_奈良", "久下_素輝_奈良_奈良"]
+    "playerIds": ["島谷_拓和_奈良_奈良県", "久下_素輝_奈良_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -190,7 +202,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["山口_陽菜_奈良育英高校_奈良", "平林_花渚_奈良育英高校_奈良"]
+    "playerIds": ["山口_陽菜_奈良育英_奈良県", "平林_花渚_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -202,7 +214,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["井手_遥菜_奈良育英高校_奈良", "横山_葵_奈良育英高校_奈良"]
+    "playerIds": ["井手_遥菜_奈良育英_奈良県", "横山_葵_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -214,7 +226,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["山口_陽菜_奈良育英高校_奈良", "平林_花渚_奈良育英高校_奈良"]
+    "playerIds": ["山口_陽菜_奈良育英_奈良県", "平林_花渚_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -226,7 +238,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["井手_遥菜_奈良育英高校_奈良", "平林_花渚_奈良育英高校_奈良"]
+    "playerIds": ["井手_遥菜_奈良育英_奈良県", "平林_花渚_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -238,10 +250,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "中島_ひめ_奈良育英中学校_中体連",
-      "山口_優菜_奈良育英中学校_中体連"
-    ]
+    "playerIds": ["中島_ひめ_奈良育英中学校_中体連", "山口_優菜_奈良育英中学校_中体連"]
   },
   {
     "team": "奈良育英",
@@ -253,7 +262,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["山口_陽菜_奈良育英高校_奈良", "中村_心茉_奈良育英高校_奈良"]
+    "playerIds": ["山口_陽菜_奈良育英_奈良県", "中村_心茉_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -265,10 +274,7 @@
     "tournamentId": "west-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "井手_遥菜_奈良育英高等学校_奈良",
-      "横山_葵_奈良育英高等学校_奈良"
-    ]
+    "playerIds": ["井手_遥菜_奈良育英_奈良県", "横山_葵_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -443,6 +449,18 @@
     "teamId": "naraikuei",
     "prefecture": "奈良県",
     "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["木村_光玖_奈良育英_奈良県", "中村_心茉_奈良育英_奈良県"]
+  },
+  {
+    "team": "奈良育英",
+    "teamId": "naraikuei",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -484,10 +502,19 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "井手_遥菜_奈良育英_近畿・奈良県",
-      "横山_葵_奈良育英_近畿・奈良県"
-    ]
+    "playerIds": ["井手_遥菜_奈良育英_奈良県", "横山_葵_奈良育英_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "world-championship-qualifier",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["藤﨑_広大_明治大学_日本学連", "植田_璃音_高田商_奈良県"]
   },
   {
     "team": "高田商",
@@ -499,7 +526,295 @@
     "tournamentId": "asian-championship-qualifier",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["結城_琉衣_関西学院大学", "植田_璃音_高田商"]
+    "playerIds": ["結城_琉衣_関西学院大学_", "植田_璃音_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "asian-games-qualifier",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["荻谷_侑磨_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "asian-games-qualifier",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "asian-games-qualifier",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "asian-games-qualifier",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["野口_快_高田商_高体連", "菊山_太陽_高田商_高体連"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["團野_佑紀_高田商_奈良県", "金澤_慧_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["橋場_柊一郎_高田商_奈良県", "安達_宣_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["中條_世蓮_高田商_奈良県", "中田_百香_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["髙橋_ヒカル_高田商_奈良県", "宮下_光希_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["飯降_脩_高田商_奈良県", "久田_遼_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_高体連", "荻谷_侑磨_高田商_高体連"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["阿部_倖大_高田商_奈良県", "鈴木_唯斗_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["結城_琉衣_高田商_高体連", "植田_璃音_高田商_高体連"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["早川_悠佑_高田商_奈良県", "長根_慎人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["飯降_脩_高田商_高体連", "荻谷_侑磨_高田商_高体連"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県", "宮下_光希_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["野口_快_日本体育大学_日本連盟", "安達_宣_高田商_日本連盟"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["田中_蘭聖_高田商_高体連", "保住_弥英_高田商_高体連"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-mixed",
+    "year": 2025,
+    "gender": "mixed",
+    "playerIds": ["本間_友里那_神戸松蔭大学_", "植田_璃音_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-indoor",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["野口_快_高田商_奈良県", "菊山_太陽_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-senbatsu",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["前田_蒼生_高田商_", "荻谷_侑磨_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "west-japan",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["朝日_琴音_高田商_奈良県", "福井_理央_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "west-japan",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["中條_世蓮_高田商_奈良県", "堀_奈帆美_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "west-japan",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["中谷_紗耶加_高田商_奈良県", "森田_桃香_高田商_奈良県"]
   },
   {
     "team": "高田商",
@@ -626,7 +941,7 @@
     "teamId": "takadashou",
     "prefecture": "奈良県",
     "prefectureId": "nara",
-    "result": "優勝",
+    "result": "6回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
@@ -1193,6 +1508,18 @@
     "result": "優勝",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["野口_快_高田商_奈良県", "菊山_太陽_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["植田_璃音_高田商_奈良県", "荻谷_侑磨_高田商_奈良県"]
@@ -1219,7 +1546,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["植田_璃音_高田商_奈良", "結城_琉衣_高田商_奈良"]
+    "playerIds": ["植田_璃音_高田商_奈良県", "結城_琉衣_高田商_奈良県"]
   },
   {
     "team": "高田商",
@@ -1246,6 +1573,78 @@
     "playerIds": ["川口_隼_高田商_奈良県", "阿部_倖大_高田商_奈良県"]
   },
   {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["清水_駿_同志社大学_奈良県", "荻谷_侑磨_高田商_日本学連"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["飯降_脩_高田商_奈良県", "竹内_慶悟_三重_三重県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["前田_蒼生_高田商_奈良県", "林田_遼太郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["野田_悠貴_高田商_奈良県", "籠谷_優佑_奈良LEGENDS_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県", "結城_琉衣_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["荻谷_侑磨_高田商_奈良県", "福田_喜大_上宮_大阪府"]
+  },
+  {
     "team": "畝傍",
     "teamId": "unebi",
     "prefecture": "奈良県",
@@ -1267,7 +1666,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中谷_咲羅_関西中央高等学校_奈良県"]
+    "playerIds": ["中谷_咲羅_関西中央_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1291,7 +1690,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中村_心茉_奈良育英高等学校_奈良県"]
+    "playerIds": ["中村_心茉_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1303,7 +1702,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["平林_花渚_奈良育英高等学校_奈良県"]
+    "playerIds": ["平林_花渚_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1315,7 +1714,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["横山_葵_奈良育英高校_奈良"]
+    "playerIds": ["横山_葵_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1327,7 +1726,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["井手_遥菜_奈良育英高校_奈良"]
+    "playerIds": ["井手_遥菜_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1339,7 +1738,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["山口_陽菜_奈良育英高校_奈良県"]
+    "playerIds": ["山口_陽菜_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1351,7 +1750,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["平林_花渚_奈良育英高校_奈良県"]
+    "playerIds": ["平林_花渚_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1375,7 +1774,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["平林_花渚_奈良育英高校_奈良県"]
+    "playerIds": ["平林_花渚_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1387,7 +1786,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["山口_陽菜_奈良育英高校_奈良県"]
+    "playerIds": ["山口_陽菜_奈良育英_奈良県"]
+  },
+  {
+    "team": "奈良育英",
+    "teamId": "naraikuei",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["中村_心茉_奈良育英_奈良県"]
   },
   {
     "team": "奈良育英",
@@ -1424,6 +1835,486 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["山口_咲菜_奈良育英_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["安達_宣_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "6回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["橋場_柊一郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "5回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["菊山_太陽_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["金澤_慧_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["長根_慎人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["野口_快_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["井上_弘翔_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["前田_蒼生_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["林田_遼太郎_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["中村_智葵_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["野田_悠貴_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["飯降_脩_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["樋口_大翔_高田商_"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["福井_理央_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["長根_慎人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["飯降_脩_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["荻谷_侑磨_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["早川_悠佑_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["鈴木_唯斗_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["福井_理央_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["川口_隼_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["長根_慎人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["安達_宣_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["田中_蘭聖_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["島尾_一吹_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["前田_蒼生_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["中村_智葵_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["荻谷_侑磨_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["野田_悠貴_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["樋口_大翔_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["中谷_紗耶加_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["森田_桃香_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["丸木_花音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["中條_世蓮_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["野口_快_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["菊山_太陽_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["橋場_柊一郎_高田商_奈良県"]
   },
   {
     "team": "高田商",
@@ -1518,6 +2409,126 @@
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
+    "gender": "boys",
+    "playerIds": ["植田_璃音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["前田_蒼生_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["丸木_花音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["飯降_脩_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["野田_悠貴_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["前田_蒼生_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["林田_遼太郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["荻谷_侑磨_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["結城_琉衣_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["荻谷_侑磨_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "優勝",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2024,
     "gender": "boys",
     "playerIds": ["植田_璃音_高田商_奈良県"]
   }

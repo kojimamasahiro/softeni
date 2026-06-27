@@ -139,9 +139,15 @@ def main():
                             team_name = team_name_raw
                             prefecture = team_prefecture_map.get(team_name_raw, "")
 
-                            # participant の id が "チーム名_都道府県" 形式の場合がある。
-                            # その場合、suffix を都道府県として使うか、suffix を取り除いたチーム名でマップを再検索する。
-                            if not prefecture and isinstance(team_name_raw, str) and "_" in team_name_raw:
+                            # 新フォーマット: "__チーム名_都道府県"（姓_名_チーム_都道府県 の統一形式で姓名が空）
+                            if not prefecture and isinstance(team_name_raw, str) and team_name_raw.startswith("__"):
+                                stripped = team_name_raw[2:]  # "__" を除去
+                                if "_" in stripped:
+                                    team_name, prefecture = stripped.rsplit("_", 1)
+                                else:
+                                    team_name = stripped
+                            # 旧フォーマット: "チーム名_都道府県"
+                            elif not prefecture and isinstance(team_name_raw, str) and "_" in team_name_raw:
                                 base, suffix = team_name_raw.rsplit("_", 1)
                                 # まず base 名でマップを探す
                                 if base and base in team_prefecture_map:

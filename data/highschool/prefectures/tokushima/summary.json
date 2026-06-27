@@ -300,6 +300,18 @@
     "playerIds": ["柴_誠太郎_徳島科技_徳島県", "武市_哲太_徳島科技_徳島県"]
   },
   {
+    "team": "徳島科技",
+    "teamId": "tokushimakagi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["藤井_晃生_徳島科技_徳島県", "柴_誠太郎_徳島科技_徳島県"]
+  },
+  {
     "team": "徳島商業",
     "teamId": "tokushimashougyou",
     "prefecture": "徳島県",
@@ -525,7 +537,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["澤田_空_つるぎ_徳島", "大谷_瑠尉_つるぎ_徳島"]
+    "playerIds": ["澤田_空_つるぎ_徳島県", "大谷_瑠尉_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",
@@ -549,7 +561,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["逸見_真子_脇町高校_徳島", "亀井_美来_脇町高校_徳島"]
+    "playerIds": ["逸見_真子_脇町_徳島県", "亀井_美来_脇町_徳島県"]
   },
   {
     "team": "脇町",
@@ -561,7 +573,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["浅井_優里_脇町高校_日本連盟", "松田_悠那_三重高校_日本連盟"]
+    "playerIds": ["浅井_優里_脇町_日本連盟", "松田_悠那_三重_日本連盟"]
   },
   {
     "team": "脇町",
@@ -928,6 +940,18 @@
     "teamId": "wakimachi",
     "prefecture": "徳島県",
     "prefectureId": "tokushima",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["美馬_天珠_脇町_徳島県", "逸見_真子_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -945,7 +969,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["吉田_涼介_脇町_徳島", "亀井_奏佑_脇町_徳島"]
+    "playerIds": ["吉田_涼介_脇町_徳島県", "亀井_奏佑_脇町_徳島県"]
   },
   {
     "team": "脇町",
@@ -981,7 +1005,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["浅井_優里_脇町高校_徳島", "松田_悠那_三重高校_三重"]
+    "playerIds": ["浅井_優里_脇町_徳島県", "松田_悠那_三重_三重県"]
   },
   {
     "team": "徳島科技",
@@ -993,7 +1017,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["柴_誠太郎_徳島科技高校_徳島県"]
+    "playerIds": ["柴_誠太郎_徳島科技_徳島県"]
   },
   {
     "team": "富岡東",
@@ -1005,7 +1029,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["花垣_陸_富岡東高校"]
+    "playerIds": ["花垣_陸_富岡東高校_"]
   },
   {
     "team": "富岡東",
@@ -1041,7 +1065,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["髙井_凌凱_つるぎ高校_徳島県"]
+    "playerIds": ["髙井_凌凱_つるぎ_徳島県"]
+  },
+  {
+    "team": "つるぎ",
+    "teamId": "tsurugi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["髙井_凌凱_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",
@@ -1054,6 +1090,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["髙井_凌凱_つるぎ_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["美馬_天珠_脇町_徳島県"]
   },
   {
     "team": "脇町",
@@ -1096,11 +1144,35 @@
     "teamId": "wakimachi",
     "prefecture": "徳島県",
     "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["𠮷田_圭汰_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["原_百花_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
     "result": "予選敗退",
     "category": "singles",
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["浅井_優里_脇町高校_徳島"]
+    "playerIds": ["浅井_優里_脇町_徳島県"]
   }
 ]

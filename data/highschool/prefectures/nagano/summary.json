@@ -215,10 +215,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "小林_彩花_松本蟻ケ崎_長野県",
-      "牛越_香奈羽_松本蟻ケ崎_長野県"
-    ]
+    "playerIds": ["小林_彩花_松本蟻ケ崎_長野県", "牛越_香奈羽_松本蟻ケ崎_長野県"]
   },
   {
     "team": "松本蟻ケ崎",
@@ -230,10 +227,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "小林_彩花_松本蟻ケ崎_長野県",
-      "牛越_香奈羽_松本蟻ケ崎_長野県"
-    ]
+    "playerIds": ["小林_彩花_松本蟻ケ崎_長野県", "牛越_香奈羽_松本蟻ケ崎_長野県"]
   },
   {
     "team": "松商学園",
@@ -245,10 +239,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "唐澤_すみれ_松商学園高校_長野",
-      "関口_みれい_松商学園高校_長野"
-    ]
+    "playerIds": ["唐澤_すみれ_松商学園_長野県", "関口_みれい_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -260,7 +251,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中島_菜々美_松商学園高校_長野", "近藤_愛_松商学園高校_長野"]
+    "playerIds": ["中島_菜々美_松商学園_長野県", "近藤_愛_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -272,7 +263,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["倉嶋_優花_松商学園高校_長野", "村田_実優_松商学園高校_長野"]
+    "playerIds": ["倉嶋_優花_松商学園_長野県", "村田_実優_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -284,7 +275,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["南原_葵衣_松商学園高校_長野", "土田_萌々_松商学園高校_長野"]
+    "playerIds": ["南原_葵衣_松商学園_長野県", "土田_萌々_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -426,6 +417,18 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["唐澤_すみれ_松商学園_長野県", "関口_みれい_松商学園_長野県"]
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
     "playerIds": ["中島_菜々美_松商学園_長野県", "髙橋_日向子_松商学園_長野県"]
@@ -515,6 +518,18 @@
     "playerIds": ["櫻井_莉子_長野商_長野県", "長﨑_あき_長野商_長野県"]
   },
   {
+    "team": "長野商",
+    "teamId": "naganoshou",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["小林_彩花里_長野商_長野県", "笹森_菜愛_長野商_長野県"]
+  },
+  {
     "team": "長野俊英",
     "teamId": "naganoshunei",
     "prefecture": "長野県",
@@ -524,10 +539,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "川上_琳太郎_長野俊英高校_長野",
-      "飛岡_煌志朗_長野俊英高校_長野"
-    ]
+    "playerIds": ["川上_琳太郎_長野俊英_長野県", "飛岡_煌志朗_長野俊英_長野県"]
   },
   {
     "team": "長野俊英",
@@ -539,7 +551,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["加藤_憩_長野俊英高校_長野", "村上_凛花_長野俊英高校_長野"]
+    "playerIds": ["加藤_憩_長野俊英_長野県", "村上_凛花_長野俊英_長野県"]
   },
   {
     "team": "長野俊英",
@@ -719,7 +731,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["川上_琳太郎_長野俊英_長野", "飛岡_煌志朗_長野俊英_長野"]
+    "playerIds": ["川上_琳太郎_長野俊英_長野県", "飛岡_煌志朗_長野俊英_長野県"]
   },
   {
     "team": "長野俊英",
@@ -731,7 +743,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["川上_琳太郎_長野俊英_長野", "鹿田_陸_長野俊英_長野"]
+    "playerIds": ["川上_琳太郎_長野俊英_長野県", "鹿田_陸_長野俊英_長野県"]
   },
   {
     "team": "長野俊英",
@@ -767,7 +779,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["西澤_大貴_長野吉田", "竹田_真翔_長野吉田"]
+    "playerIds": ["西澤_大貴_長野吉田_", "竹田_真翔_長野吉田_"]
   },
   {
     "team": "長野吉田",
@@ -851,10 +863,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "黒岩_陽夏_都市大塩尻_長野県",
-      "宮本_菜々子_都市大塩尻_長野県"
-    ]
+    "playerIds": ["黒岩_陽夏_都市大塩尻_長野県", "宮本_菜々子_都市大塩尻_長野県"]
   },
   {
     "team": "都市大塩尻",
@@ -885,7 +894,7 @@
     "teamId": "toshiooshioshiri",
     "prefecture": "長野県",
     "prefectureId": "nagano",
-    "result": "準優勝",
+    "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2022,
@@ -914,10 +923,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "宮本_菜々子_都市大塩尻_長野県",
-      "永井_美羽_都市大塩尻_長野県"
-    ]
+    "playerIds": ["宮本_菜々子_都市大塩尻_長野県", "永井_美羽_都市大塩尻_長野県"]
   },
   {
     "team": "都市大塩尻",
@@ -972,12 +978,24 @@
     "teamId": "toshiooshioshiri",
     "prefecture": "長野県",
     "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["古幡_悠馬_都市大塩尻_長野県", "神尾_優介_都市大塩尻_長野県"]
+  },
+  {
+    "team": "都市大塩尻",
+    "teamId": "toshiooshioshiri",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["古幡_悠馬_都市大塩尻_長野", "笠原_朗杜_都市大塩尻_長野"]
+    "playerIds": ["古幡_悠馬_都市大塩尻_長野県", "笠原_朗杜_都市大塩尻_長野県"]
   },
   {
     "team": "都市大塩尻",
@@ -1001,10 +1019,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "守谷_胡美_東海大諏訪高校_長野",
-      "石川_苺奈_東海大諏訪高校_長野"
-    ]
+    "playerIds": ["守谷_胡美_東海大諏訪_長野県", "石川_苺奈_東海大諏訪_長野県"]
   },
   {
     "team": "東海大諏訪",
@@ -1028,10 +1043,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "丸山_彩希_東海大諏訪_長野県",
-      "有賀_日向子_東海大諏訪_長野県"
-    ]
+    "playerIds": ["丸山_彩希_東海大諏訪_長野県", "有賀_日向子_東海大諏訪_長野県"]
   },
   {
     "team": "東海大諏訪",
@@ -1043,10 +1055,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": [
-      "福本_日奈子_東海大諏訪_長野県",
-      "丸山_愛稀_東海大諏訪_長野県"
-    ]
+    "playerIds": ["福本_日奈子_東海大諏訪_長野県", "丸山_愛稀_東海大諏訪_長野県"]
   },
   {
     "team": "上田千曲",
@@ -1097,6 +1106,18 @@
     "playerIds": ["遠藤_優太_上田千曲_長野県", "杉田_涼哉_上田千曲_長野県"]
   },
   {
+    "team": "上田千曲",
+    "teamId": "uedachikuma",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["山辺_勝也_上田千曲_長野県", "髙橋_伶介_上田千曲_長野県"]
+  },
+  {
     "team": "上田染谷丘",
     "teamId": "uedasomeyaoka",
     "prefecture": "長野県",
@@ -1106,10 +1127,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "横関_真帆_上田染谷丘高校_長野",
-      "柴田_耀_上田染谷丘高校_長野"
-    ]
+    "playerIds": ["横関_真帆_上田染谷丘_長野県", "柴田_耀_上田染谷丘_長野県"]
   },
   {
     "team": "上田染谷丘",
@@ -1181,7 +1199,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["南原_葵衣_松商学園高校_長野県"]
+    "playerIds": ["南原_葵衣_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -1193,7 +1211,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["村田_実優_松商学園高校_長野県"]
+    "playerIds": ["村田_実優_松商学園_長野県"]
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["関口_みれい_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -1229,7 +1259,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["竹内_楓_長野俊英高校_長野県"]
+    "playerIds": ["竹内_楓_長野俊英_長野県"]
   },
   {
     "team": "長野俊英",
@@ -1256,6 +1286,30 @@
     "playerIds": ["岩吉_海利_長野俊英_長野県"]
   },
   {
+    "team": "長野俊英",
+    "teamId": "naganoshunei",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["飛岡_煌志朗_長野俊英_長野県"]
+  },
+  {
+    "team": "長野俊英",
+    "teamId": "naganoshunei",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["竹内_楓_長野俊英_長野県"]
+  },
+  {
     "team": "OIDE長姫",
     "teamId": "oideosahime",
     "prefecture": "長野県",
@@ -1266,5 +1320,17 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["小林_健太_OIDE長姫_長野県"]
+  },
+  {
+    "team": "都市大塩尻",
+    "teamId": "toshiooshioshiri",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["小森_悠矢_都市大塩尻_長野県"]
   }
 ]

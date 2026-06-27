@@ -176,7 +176,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["澤田_博史_九州文化_長崎", "吉松_要琉生_九州文化_長崎"]
+    "playerIds": ["澤田_博史_九州文化_長崎県", "吉松_要琉生_九州文化_長崎県"]
   },
   {
     "team": "長崎東",
@@ -495,12 +495,24 @@
     "teamId": "nagasakinichidai",
     "prefecture": "長崎県",
     "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["桒原_大知_長崎日大_長崎県", "石橋_樹人_長崎日大_長崎県"]
+  },
+  {
+    "team": "長崎日大",
+    "teamId": "nagasakinichidai",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["丸田_一仁_長崎日大_長崎", "山下_将毅_長崎日大_長崎"]
+    "playerIds": ["丸田_一仁_長崎日大_長崎県", "山下_将毅_長崎日大_長崎県"]
   },
   {
     "team": "長崎日大",
@@ -631,6 +643,18 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "girls",
+    "playerIds": ["竹山_千尋_長崎商_長崎県", "坂口_美沙姫_長崎商_長崎県"]
+  },
+  {
+    "team": "長崎商",
+    "teamId": "nagasakishou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
     "gender": "girls",
     "playerIds": ["竹山_千尋_長崎商_長崎県", "坂口_美沙姫_長崎商_長崎県"]
   },
@@ -836,10 +860,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": [
-      "山田_莉帆_佐世保東翔_長崎県",
-      "里見_真依子_佐世保東翔_長崎県"
-    ]
+    "playerIds": ["山田_莉帆_佐世保東翔_長崎県", "里見_真依子_佐世保東翔_長崎県"]
   },
   {
     "team": "佐世保西",
@@ -887,10 +908,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": [
-      "須川_琥太郎_精道三川台_長崎県",
-      "木田_大翔_精道三川台_長崎県"
-    ]
+    "playerIds": ["須川_琥太郎_精道三川台_長崎県", "木田_大翔_精道三川台_長崎県"]
   },
   {
     "team": "精道三川台",
@@ -938,10 +956,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "須川_琥太郎_精道三川台_長崎県",
-      "諌山_紘聖精道三川台_精道三川台_長崎県"
-    ]
+    "playerIds": ["須川_琥太郎_精道三川台_長崎県", "諌山_紘聖精道三川台_精道三川台_長崎県"]
   },
   {
     "team": "精道三川台",
@@ -989,7 +1004,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["三村_遥人_精道三川台_長崎", "立川_凌世_精道三川台_長崎"]
+    "playerIds": ["三村_遥人_精道三川台_長崎県", "立川_凌世_精道三川台_長崎県"]
   },
   {
     "team": "鹿町工",
@@ -1056,6 +1071,18 @@
     "teamId": "nagasakinanzan",
     "prefecture": "長崎県",
     "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["古藤_瑛亘_長崎南山_長崎県"]
+  },
+  {
+    "team": "長崎南山",
+    "teamId": "nagasakinanzan",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
     "result": "3回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
@@ -1074,6 +1101,42 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["白濱_凪騎_長崎南山_長崎県"]
+  },
+  {
+    "team": "長崎南山",
+    "teamId": "nagasakinanzan",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["深浦_琉可_長崎南山_長崎県"]
+  },
+  {
+    "team": "長崎日大",
+    "teamId": "nagasakinichidai",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["松尾_寛斗_長崎日大_長崎県"]
+  },
+  {
+    "team": "長崎商",
+    "teamId": "nagasakishou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["竹山_千尋_長崎商_長崎県"]
   },
   {
     "team": "長崎商",
@@ -1112,6 +1175,30 @@
     "playerIds": ["竹山_千尋_長崎商_長崎県"]
   },
   {
+    "team": "長崎商",
+    "teamId": "nagasakishou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["西村_奏音_長崎商_長崎県"]
+  },
+  {
+    "team": "大村工",
+    "teamId": "oomurakou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["原田_柊_大村工_長崎県"]
+  },
+  {
     "team": "大村工",
     "teamId": "oomurakou",
     "prefecture": "長崎県",
@@ -1133,6 +1220,6 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["森_生_精道三川台高校_長崎県"]
+    "playerIds": ["森_生_精道三川台_長崎県"]
   }
 ]

@@ -142,7 +142,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["町澤_緯宙_巻高校_新潟", "髙澤_颯_北越高校_新潟"]
+    "playerIds": ["町澤_緯宙_巻_新潟県", "髙澤_颯_北越高校_新潟県"]
   },
   {
     "team": "北越",
@@ -413,6 +413,18 @@
     "teamId": "hokuetsu",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["入澤_瑛麻_北越_新潟県", "本間_友里那_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -430,7 +442,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["高橋_憐依_北越_新潟", "高澤_颯_北越_新潟"]
+    "playerIds": ["高橋_憐依_北越_新潟県", "高澤_颯_北越_新潟県"]
   },
   {
     "team": "北越",
@@ -454,7 +466,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["高橋_憐依_北越_新潟", "高澤_颯_北越_新潟"]
+    "playerIds": ["高橋_憐依_北越_新潟県", "高澤_颯_北越_新潟県"]
   },
   {
     "team": "巻",
@@ -466,7 +478,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["町澤_緯宙_巻高校_新潟", "髙澤_颯_北越高校_新潟"]
+    "playerIds": ["町澤_緯宙_巻_新潟県", "髙澤_颯_北越高校_新潟県"]
   },
   {
     "team": "巻",
@@ -605,12 +617,24 @@
     "teamId": "maki",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["菅井_雄大_巻_新潟県", "中野_仁_巻_新潟県"]
+  },
+  {
+    "team": "巻",
+    "teamId": "maki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["町澤_緯宙_巻_新潟", "近山_諒成_巻_新潟"]
+    "playerIds": ["町澤_緯宙_巻_新潟県", "近山_諒成_巻_新潟県"]
   },
   {
     "team": "巻",
@@ -706,7 +730,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["廣川_月乃_中越高校_新潟", "小川_望恵_中越高校_新潟"]
+    "playerIds": ["廣川_月乃_中越高校_新潟県", "小川_望恵_中越高校_新潟県"]
   },
   {
     "team": "中越",
@@ -718,7 +742,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山本_夏希_中越高校_新潟", "中野_ゆな_中越高校_新潟"]
+    "playerIds": ["山本_夏希_中越高校_新潟県", "中野_ゆな_中越高校_新潟県"]
   },
   {
     "team": "中越",
@@ -862,7 +886,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山岸_里緒_新潟西高校_新潟", "岡元_優花_長岡商業高校_新潟"]
+    "playerIds": ["山岸_里緒_新潟西高校_新潟県", "岡元_優花_長岡商業高校_新潟県"]
   },
   {
     "team": "新潟西",
@@ -874,7 +898,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["阿部_あかね_新潟西高校_新潟", "風間_碧_新潟西高校_新潟"]
+    "playerIds": ["阿部_あかね_新潟西高校_新潟県", "風間_碧_新潟西高校_新潟県"]
   },
   {
     "team": "新潟西",
@@ -886,7 +910,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["宇佐美_絢音_新潟西高校_新潟", "櫻井_姫愛來_新潟西高校_新潟"]
+    "playerIds": ["宇佐美_絢音_新潟西高校_新潟県", "櫻井_姫愛來_新潟西高校_新潟県"]
   },
   {
     "team": "新潟西",
@@ -934,10 +958,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "五十嵐_瑶仁_新潟産大附_新潟県",
-      "小林_煌典_新潟産大附_新潟県"
-    ]
+    "playerIds": ["五十嵐_瑶仁_新潟産大附_新潟県", "小林_煌典_新潟産大附_新潟県"]
   },
   {
     "team": "新潟産大附",
@@ -973,10 +994,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "青木_優河_新潟産大附_新潟県",
-      "深井_葉太郎_新潟産大附_新潟県"
-    ]
+    "playerIds": ["青木_優河_新潟産大附_新潟県", "深井_葉太郎_新潟産大附_新潟県"]
   },
   {
     "team": "新潟産大附",
@@ -1108,10 +1126,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "新保_といろ_帝京長岡高校_新潟",
-      "齋藤_莉々_帝京長岡高校_新潟"
-    ]
+    "playerIds": ["新保_といろ_帝京長岡_新潟県", "齋藤_莉々_帝京長岡_新潟県"]
   },
   {
     "team": "帝京長岡",
@@ -1147,7 +1162,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["本間_友里那_北越高等学校_新潟県"]
+    "playerIds": ["本間_友里那_北越_新潟県"]
   },
   {
     "team": "北越",
@@ -1159,7 +1174,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["入澤_瑛麻_北越高等学校_新潟県"]
+    "playerIds": ["入澤_瑛麻_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["本間_友里那_北越_新潟県"]
   },
   {
     "team": "北越",
@@ -1220,6 +1247,42 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["高橋_寧々_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["山澤_隆人_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["薄_優心_北越_新潟県"]
+  },
+  {
+    "team": "新潟工",
+    "teamId": "niigatakou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["古俣_翼_新潟工_新潟県"]
   },
   {
     "team": "新潟産大附",

@@ -224,7 +224,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["猪野_ちひろ_星野高校_埼玉", "中島_琉花_星野高校_埼玉"]
+    "playerIds": ["猪野_ちひろ_星野_埼玉県", "中島_琉花_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -236,7 +236,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["野口_花梨_星野高校_埼玉", "石田_真子_星野高校_埼玉"]
+    "playerIds": ["野口_花梨_星野_埼玉県", "石田_真子_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -248,7 +248,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["髙杉_萌那_星野高校_埼玉", "森_菜々花_星野高校_埼玉"]
+    "playerIds": ["髙杉_萌那_星野_埼玉県", "森_菜々花_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -495,6 +495,18 @@
     "teamId": "kawagoehigashi",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["池田_蒼空_川越東_埼玉県", "平田_泰一_川越東_埼玉県"]
+  },
+  {
+    "team": "川越東",
+    "teamId": "kawagoehigashi",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -668,7 +680,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["渡辺_幸誠_松山_埼玉", "木田_大翔_松山_埼玉"]
+    "playerIds": ["渡辺_幸誠_松山_埼玉県", "木田_大翔_松山_埼玉県"]
   },
   {
     "team": "松山",
@@ -680,7 +692,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["長島_綾汰_松山_埼玉", "郷_暖太_松山_埼玉"]
+    "playerIds": ["長島_綾汰_松山_埼玉県", "郷_暖太_松山_埼玉県"]
   },
   {
     "team": "松山",
@@ -692,7 +704,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["佐藤_愛_松山_関東・埼玉県", "皆上_心_松山_関東・埼玉県"]
+    "playerIds": ["佐藤_愛_松山_埼玉県", "皆上_心_松山_埼玉県"]
   },
   {
     "team": "松山",
@@ -704,7 +716,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["髙橋_彩月_松山_関東・埼玉県", "中山_萌_松山_関東・埼玉県"]
+    "playerIds": ["髙橋_彩月_松山_埼玉県", "中山_萌_松山_埼玉県"]
   },
   {
     "team": "松山",
@@ -728,10 +740,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": [
-      "五十畑_咲和_松山中学校_埼玉県",
-      "髙橋_真響_松山中学校_埼玉県"
-    ]
+    "playerIds": ["五十畑_咲和_松山中学校_埼玉県", "髙橋_真響_松山中学校_埼玉県"]
   },
   {
     "team": "松山",
@@ -755,10 +764,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "中山_萌_松山中学校_関東・埼玉県",
-      "五十畑_咲和_松山中学校_関東・埼玉県"
-    ]
+    "playerIds": ["中山_萌_松山中学校_埼玉県", "五十畑_咲和_松山中学校_埼玉県"]
   },
   {
     "team": "松山",
@@ -770,10 +776,7 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": [
-      "篠澤_美海_松山中学校_関東・埼玉県",
-      "手塚_咲希_松山中学校_関東・埼玉県"
-    ]
+    "playerIds": ["篠澤_美海_松山中学校_埼玉県", "手塚_咲希_松山中学校_埼玉県"]
   },
   {
     "team": "松山",
@@ -785,10 +788,19 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "杉_碧翔_松山中学校_関東・埼玉県",
-      "利根川_碧生_松山中学校_関東・埼玉県"
-    ]
+    "playerIds": ["杉_碧翔_松山中学校_埼玉県", "利根川_碧生_松山中学校_埼玉県"]
+  },
+  {
+    "team": "松山",
+    "teamId": "matsuyama",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["中山_萌_松山中学校_埼玉県", "五十畑_咲和_松山中学校_埼玉県"]
   },
   {
     "team": "松山",
@@ -824,7 +836,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石田_にこ_新潟UCHINO_新潟", "五十畑_咲和_松山中学校_埼玉"]
+    "playerIds": ["石田_にこ_新潟UCHINO_新潟県", "五十畑_咲和_松山中学校_埼玉県"]
   },
   {
     "team": "松山",
@@ -932,10 +944,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": [
-      "山田_菜乃葉_埼玉平成高校_高体連",
-      "長根_理子_埼玉平成高校_高体連"
-    ]
+    "playerIds": ["山田_菜乃葉_埼玉平成_高体連", "長根_理子_埼玉平成_高体連"]
   },
   {
     "team": "埼玉平成",
@@ -947,7 +956,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["平田_心美_埼玉平成高校_埼玉", "原田_絵麻_埼玉平成高校_埼玉"]
+    "playerIds": ["平田_心美_埼玉平成_埼玉県", "原田_絵麻_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -1158,6 +1167,18 @@
     "teamId": "saitamaheisei",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["山田_菜乃葉_埼玉平成_埼玉県", "長根_理子_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1272,6 +1293,18 @@
     "year": 2022,
     "gender": "girls",
     "playerIds": ["折原_真妃_昌平_埼玉県", "福原_萌生_昌平_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["木村_晋太朗_昌平_埼玉県", "原田_滉太_昌平_埼玉県"]
   },
   {
     "team": "昌平",
@@ -1434,6 +1467,30 @@
     "teamId": "shohei",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["折原_真妃_昌平_埼玉県", "福原_萌生_昌平_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["木村_晋太朗_昌平_埼玉県", "赤津_優希_昌平_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1451,7 +1508,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["久保_響生_昌平_埼玉", "山端_里玖_昌平_埼玉"]
+    "playerIds": ["久保_響生_昌平_埼玉県", "山端_里玖_昌平_埼玉県"]
   },
   {
     "team": "昌平",
@@ -1475,7 +1532,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["南_亮斗_昌平_埼玉", "北島_光琉_昌平_埼玉"]
+    "playerIds": ["南_亮斗_昌平_埼玉県", "北島_光琉_昌平_埼玉県"]
   },
   {
     "team": "昌平",
@@ -1514,16 +1571,16 @@
     "playerIds": ["遠井_凪紗_鷲宮_埼玉県", "菊島_綾乃_鷲宮_埼玉県"]
   },
   {
-    "team": "星野",
-    "teamId": "hoshino",
+    "team": "上尾",
+    "teamId": "ageo",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
     "result": "1回戦敗退",
     "category": "singles",
-    "tournamentId": "zennihon-singles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["野口_愛梨_星野高校_埼玉県"]
+    "playerIds": ["古城_理名_上尾_埼玉県"]
   },
   {
     "team": "星野",
@@ -1535,7 +1592,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["立木_こころ_星野高校_埼玉県"]
+    "playerIds": ["野口_愛梨_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -1547,7 +1604,19 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["須田_葵_星野高校_埼玉県"]
+    "playerIds": ["立木_こころ_星野_埼玉県"]
+  },
+  {
+    "team": "星野",
+    "teamId": "hoshino",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["須田_葵_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -1559,7 +1628,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["髙杉_萌那_星野高校_埼玉"]
+    "playerIds": ["髙杉_萌那_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -1571,7 +1640,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["猪野_ちひろ_星野高校_埼玉"]
+    "playerIds": ["猪野_ちひろ_星野_埼玉県"]
   },
   {
     "team": "松山",
@@ -1655,7 +1724,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["五十畑_咲和_松山中学校_埼玉"]
+    "playerIds": ["五十畑_咲和_松山中学校_埼玉県"]
   },
   {
     "team": "松山",
@@ -1715,7 +1784,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["寺門_共生_武蔵越生高校_埼玉県"]
+    "playerIds": ["寺門_共生_武蔵越生_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -1727,7 +1796,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["庭田_咲月_埼玉平成高校_埼玉県"]
+    "playerIds": ["庭田_咲月_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -1770,11 +1839,35 @@
     "teamId": "shohei",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["相澤_波月_昌平_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "1回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
     "playerIds": ["熊木_暖人_昌平_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["江口_真叶_昌平_埼玉県"]
   }
 ]

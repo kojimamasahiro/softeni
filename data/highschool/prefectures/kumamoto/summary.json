@@ -280,12 +280,24 @@
     "teamId": "buntoku",
     "prefecture": "熊本県",
     "prefectureId": "kumamoto",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["白石_貴也_文徳_熊本県", "川本_健士郎_文徳_熊本県"]
+  },
+  {
+    "team": "文徳",
+    "teamId": "buntoku",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["下森_吏_文徳_熊本", "外田_悠斗_文徳_熊本"]
+    "playerIds": ["下森_吏_文徳_熊本県", "外田_悠斗_文徳_熊本県"]
   },
   {
     "team": "第一",
@@ -322,6 +334,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["緒方_実李_第一_熊本県", "大群_凛音_第一_熊本県"]
+  },
+  {
+    "team": "第一",
+    "teamId": "daiichi",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["山口_紗羅_第一_熊本県", "工_咲季_第一_熊本県"]
   },
   {
     "team": "球磨工",
@@ -693,10 +717,7 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": [
-      "中山_秀哉_熊本マリスト_熊本県",
-      "中原_壮琉_熊本マリスト_熊本県"
-    ]
+    "playerIds": ["中山_秀哉_熊本マリスト_熊本県", "中原_壮琉_熊本マリスト_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -708,10 +729,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": [
-      "上村_光希_ルーテル学院_熊本県",
-      "坂本_旭_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["上村_光希_ルーテル学院_熊本県", "坂本_旭_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -723,10 +741,7 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": [
-      "冨來_辿馬_ルーテル学院_熊本県",
-      "和田_楓_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["冨來_辿馬_ルーテル学院_熊本県", "和田_楓_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -738,10 +753,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "上村_光希_ルーテル学院_熊本県",
-      "和田_楓_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["上村_光希_ルーテル学院_熊本県", "和田_楓_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -753,10 +765,7 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "野中_翔太_ルーテル学院_熊本県",
-      "坂本_旭_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["野中_翔太_ルーテル学院_熊本県", "坂本_旭_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -768,10 +777,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "岩田_壮央_ルーテル学院_熊本県",
-      "藪田_陸人_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["岩田_壮央_ルーテル学院_熊本県", "藪田_陸人_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -783,10 +789,7 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "和田_好人_ルーテル学院_熊本県",
-      "坂本_旭_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["和田_好人_ルーテル学院_熊本県", "坂本_旭_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -798,10 +801,19 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "上村_光希_ルーテル学院_熊本県",
-      "野中_翔太_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["上村_光希_ルーテル学院_熊本県", "野中_翔太_ルーテル学院_熊本県"]
+  },
+  {
+    "team": "ルーテル学院",
+    "teamId": "ruuterugakuin",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["倉本_駿汰_ルーテル学院_熊本県", "蓮尾_佑也_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -813,7 +825,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["野中_翔太_ルーテル学院_熊本", "坂本_旭_ルーテル学院_熊本"]
+    "playerIds": ["野中_翔太_ルーテル学院_熊本県", "坂本_旭_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -825,10 +837,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": [
-      "野中_翔太_ルーテル学院_熊本県",
-      "藪田_陸人_ルーテル学院_熊本県"
-    ]
+    "playerIds": ["野中_翔太_ルーテル学院_熊本県", "藪田_陸人_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -840,10 +849,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": [
-      "野中_翔太_ルーテル学院高校_熊本県",
-      "藤井_智暉_嬉野高校_佐賀県"
-    ]
+    "playerIds": ["野中_翔太_ルーテル学院_熊本県", "藤井_智暉_嬉野_佐賀県"]
   },
   {
     "team": "済々黌",
@@ -879,7 +885,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["久原_梨夢_尚絅高校_熊本", "久川_憂納_濟々黌高校_熊本"]
+    "playerIds": ["久原_梨夢_尚絅高校_熊本県", "久川_憂納_濟々黌高校_熊本県"]
   },
   {
     "team": "尚絅",
@@ -958,6 +964,18 @@
     "teamId": "shoukei",
     "prefecture": "熊本県",
     "prefectureId": "kumamoto",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["花田_娃子_尚絅_熊本県", "池田_雫_尚絅_熊本県"]
+  },
+  {
+    "team": "尚絅",
+    "teamId": "shoukei",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "zennihon-secondaryschool-versus",
@@ -1002,6 +1020,18 @@
     "playerIds": ["下森_吏_文徳_熊本県"]
   },
   {
+    "team": "文徳",
+    "teamId": "buntoku",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["髙宮_聡真_文徳_熊本県"]
+  },
+  {
     "team": "熊本中央",
     "teamId": "kumamotochuuou",
     "prefecture": "熊本県",
@@ -1024,6 +1054,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["中原_光琉_熊本中央_熊本県"]
+  },
+  {
+    "team": "熊本工",
+    "teamId": "kumamotokou",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["黒木_瑛太_熊本工_熊本県"]
   },
   {
     "team": "熊本工",
@@ -1071,7 +1113,19 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["野中_翔太_ルーテル学院高校_熊本県"]
+    "playerIds": ["野中_翔太_ルーテル学院_熊本県"]
+  },
+  {
+    "team": "済々黌",
+    "teamId": "seiseikou",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["桑原_ゆかり_済々黌_熊本県"]
   },
   {
     "team": "尚絅",
@@ -1084,5 +1138,17 @@
     "year": 2022,
     "gender": "girls",
     "playerIds": ["花田_娃子_尚絅高校_熊本県"]
+  },
+  {
+    "team": "尚絅",
+    "teamId": "shoukei",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["花田_娃子_尚絅_熊本県"]
   }
 ]

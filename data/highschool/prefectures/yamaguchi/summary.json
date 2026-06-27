@@ -299,6 +299,18 @@
     "playerIds": ["木村_明日香_岩国商_山口県", "稲田_みのり_岩国商_山口県"]
   },
   {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["高橋_瑚子_岩国商_山口県", "粟野_杏菜_岩国商_山口県"]
+  },
+  {
     "team": "下松",
     "teamId": "kudamatsu",
     "prefecture": "山口県",
@@ -555,12 +567,24 @@
     "teamId": "nanyoukou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["吉田_陸人_南陽工_山口県", "西岡_青春_南陽工_山口県"]
+  },
+  {
+    "team": "南陽工",
+    "teamId": "nanyoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松本_一真_南陽工_山口", "山本_大輔_南陽工_山口"]
+    "playerIds": ["松本_一真_南陽工_山口県", "山本_大輔_南陽工_山口県"]
   },
   {
     "team": "南陽工",
@@ -728,7 +752,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["清水_瑠夏_徳山商工高校_山口", "横山_友香_徳山商工高校_山口"]
+    "playerIds": ["清水_瑠夏_徳山商工_山口県", "横山_友香_徳山商工_山口県"]
   },
   {
     "team": "徳山商工",
@@ -999,12 +1023,24 @@
     "teamId": "ubekou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["白井_春希_宇部工_山口県", "藤井_晴太_宇部工_山口県"]
+  },
+  {
+    "team": "宇部工",
+    "teamId": "ubekou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["植木_陽丸_宇部工_山口", "藤井_太一_宇部工_山口"]
+    "playerIds": ["植木_陽丸_宇部工_山口県", "藤井_太一_宇部工_山口県"]
   },
   {
     "team": "宇部工",
@@ -1016,7 +1052,19 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["久野_莉輝_宇部工_山口", "義永_啓人_宇部工_山口"]
+    "playerIds": ["久野_莉輝_宇部工_山口県", "義永_啓人_宇部工_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "ベスト4",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["高橋_瑚子_岩国商_山口県"]
   },
   {
     "team": "長門",
@@ -1028,7 +1076,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["林_優奈_長門高校_山口県"]
+    "playerIds": ["林_優奈_長門_山口県"]
   },
   {
     "team": "長門",
@@ -1079,6 +1127,42 @@
     "playerIds": ["吉田_陸人_南陽工_山口県"]
   },
   {
+    "team": "南陽工",
+    "teamId": "nanyoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["松本_一真_南陽工_山口県"]
+  },
+  {
+    "team": "小野田",
+    "teamId": "onoda",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["岡﨑_優菜_小野田_山口県"]
+  },
+  {
+    "team": "徳山高専",
+    "teamId": "tokuyamakousen",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["木村_颯_徳山高専_山口県"]
+  },
+  {
     "team": "徳山高専",
     "teamId": "tokuyamakousen",
     "prefecture": "山口県",
@@ -1100,7 +1184,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["國居_花音_徳山商工高校_山口県"]
+    "playerIds": ["國居_花音_徳山商工_山口県"]
   },
   {
     "team": "徳山商工",
@@ -1112,7 +1196,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["村山_千夏_徳山商工高校_山口県"]
+    "playerIds": ["村山_千夏_徳山商工_山口県"]
   },
   {
     "team": "徳山商工",
@@ -1149,6 +1233,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["清水_瑠夏_徳山商工_山口県"]
+  },
+  {
+    "team": "徳山商工",
+    "teamId": "tokuyamashoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["國居_花音_徳山商工_山口県"]
   },
   {
     "team": "宇部",
