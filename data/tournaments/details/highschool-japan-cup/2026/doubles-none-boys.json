@@ -221,159 +221,302 @@
   ],
   "matches": [
     {
-      "entries": [3,6],
-      "scores": {},
+      "entries": [6,8],
+      "scores": {"6":0,"8":4},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 8,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-1",
-      "nextMatchId": null,
+      "nextMatchId": "match-9",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [8,10],
-      "scores": {},
+      "entries": [10,13],
+      "scores": {"10":2,"13":4},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 13,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-2",
-      "nextMatchId": null,
+      "nextMatchId": "match-10",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [13,16],
-      "scores": {},
+      "entries": [23,25],
+      "scores": {"23":0,"25":4},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 25,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-3",
-      "nextMatchId": null,
+      "nextMatchId": "match-11",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [21,23],
-      "scores": {},
+      "entries": [28,31],
+      "scores": {"28":1,"31":4},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 31,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-4",
-      "nextMatchId": null,
+      "nextMatchId": "match-12",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [25,28],
-      "scores": {},
+      "entries": [42,44],
+      "scores": {"42":4,"44":2},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 42,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-5",
-      "nextMatchId": null,
+      "nextMatchId": "match-13",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [31,36],
-      "scores": {},
+      "entries": [47,51],
+      "scores": {"47":4,"51":3},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 47,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-6",
-      "nextMatchId": null,
+      "nextMatchId": "match-14",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [37,42],
-      "scores": {},
+      "entries": [58,63],
+      "scores": {"58":4,"63":0},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 58,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-7",
-      "nextMatchId": null,
+      "nextMatchId": "match-15",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [44,47],
-      "scores": {},
+      "entries": [65,69],
+      "scores": {"65":4,"69":3},
       "round": "1回戦",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 65,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-8",
-      "nextMatchId": null,
+      "nextMatchId": "match-16",
       "prevMatchIds": [],
       "prevMatchId": null
     },
     {
-      "entries": [51,54],
-      "scores": {},
-      "round": "1回戦",
-      "winnerEntryNo": null,
+      "entries": [3,8],
+      "scores": {"3":0,"8":4},
+      "round": "2回戦",
+      "winnerEntryNo": 8,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-9",
-      "nextMatchId": null,
-      "prevMatchIds": [],
-      "prevMatchId": null
+      "nextMatchId": "match-17",
+      "prevMatchIds": ["match-1"],
+      "prevMatchId": "match-1"
     },
     {
-      "entries": [55,58],
-      "scores": {},
-      "round": "1回戦",
-      "winnerEntryNo": null,
+      "entries": [13,16],
+      "scores": {"13":0,"16":4},
+      "round": "2回戦",
+      "winnerEntryNo": 16,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-10",
-      "nextMatchId": null,
-      "prevMatchIds": [],
-      "prevMatchId": null
+      "nextMatchId": "match-17",
+      "prevMatchIds": ["match-2"],
+      "prevMatchId": "match-2"
     },
     {
-      "entries": [63,65],
-      "scores": {},
-      "round": "1回戦",
-      "winnerEntryNo": null,
+      "entries": [21,25],
+      "scores": {"21":0,"25":4},
+      "round": "2回戦",
+      "winnerEntryNo": 25,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-11",
-      "nextMatchId": null,
-      "prevMatchIds": [],
-      "prevMatchId": null
+      "nextMatchId": "match-18",
+      "prevMatchIds": ["match-3"],
+      "prevMatchId": "match-3"
     },
     {
-      "entries": [69,70],
-      "scores": {},
-      "round": "1回戦",
-      "winnerEntryNo": null,
+      "entries": [31,36],
+      "scores": {"31":1,"36":4},
+      "round": "2回戦",
+      "winnerEntryNo": 36,
       "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-12",
+      "nextMatchId": "match-18",
+      "prevMatchIds": ["match-4"],
+      "prevMatchId": "match-4"
+    },
+    {
+      "entries": [37,42],
+      "scores": {"37":2,"42":4},
+      "round": "2回戦",
+      "winnerEntryNo": 42,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-13",
+      "nextMatchId": "match-19",
+      "prevMatchIds": ["match-5"],
+      "prevMatchId": "match-5"
+    },
+    {
+      "entries": [47,54],
+      "scores": {"47":0,"54":4},
+      "round": "2回戦",
+      "winnerEntryNo": 54,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-14",
+      "nextMatchId": "match-19",
+      "prevMatchIds": ["match-6"],
+      "prevMatchId": "match-6"
+    },
+    {
+      "entries": [55,58],
+      "scores": {"55":2,"58":4},
+      "round": "2回戦",
+      "winnerEntryNo": 58,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-15",
+      "nextMatchId": "match-20",
+      "prevMatchIds": ["match-7"],
+      "prevMatchId": "match-7"
+    },
+    {
+      "entries": [65,72],
+      "scores": {"65":4,"72":2},
+      "round": "2回戦",
+      "winnerEntryNo": 65,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-16",
+      "nextMatchId": "match-20",
+      "prevMatchIds": ["match-8"],
+      "prevMatchId": "match-8"
+    },
+    {
+      "entries": [8,16],
+      "scores": {"8":4,"16":0},
+      "round": "準々決勝",
+      "winnerEntryNo": 8,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-17",
+      "nextMatchId": "match-21",
+      "prevMatchIds": ["match-9","match-10"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [25,36],
+      "scores": {"25":4,"36":0},
+      "round": "準々決勝",
+      "winnerEntryNo": 25,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-18",
+      "nextMatchId": "match-21",
+      "prevMatchIds": ["match-11","match-12"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [42,54],
+      "scores": {"42":4,"54":2},
+      "round": "準々決勝",
+      "winnerEntryNo": 42,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-19",
+      "nextMatchId": "match-22",
+      "prevMatchIds": ["match-13","match-14"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [58,65],
+      "scores": {"58":2,"65":4},
+      "round": "準々決勝",
+      "winnerEntryNo": 65,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-20",
+      "nextMatchId": "match-22",
+      "prevMatchIds": ["match-15","match-16"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [8,25],
+      "scores": {"8":3,"25":4},
+      "round": "準決勝",
+      "winnerEntryNo": 25,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-21",
+      "nextMatchId": "match-23",
+      "prevMatchIds": ["match-17","match-18"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [42,65],
+      "scores": {"42":4,"65":3},
+      "round": "準決勝",
+      "winnerEntryNo": 42,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-22",
+      "nextMatchId": "match-23",
+      "prevMatchIds": ["match-19","match-20"],
+      "prevMatchId": null
+    },
+    {
+      "entries": [25,42],
+      "scores": {"25":4,"42":3},
+      "round": "決勝",
+      "winnerEntryNo": 25,
+      "retired": false,
+      "stage": "knockout",
+      "group": null,
+      "matchId": "match-23",
       "nextMatchId": null,
-      "prevMatchIds": [],
+      "prevMatchIds": ["match-21","match-22"],
       "prevMatchId": null
     },
     {
@@ -386,7 +529,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-13"
+      "matchId": "match-24"
     },
     {
       "entries": [1,3],
@@ -398,7 +541,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-14"
+      "matchId": "match-25"
     },
     {
       "entries": [2,3],
@@ -410,7 +553,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-15"
+      "matchId": "match-26"
     },
     {
       "entries": [4,5],
@@ -422,7 +565,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-16"
+      "matchId": "match-27"
     },
     {
       "entries": [4,6],
@@ -434,7 +577,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-17"
+      "matchId": "match-28"
     },
     {
       "entries": [5,6],
@@ -446,7 +589,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-18"
+      "matchId": "match-29"
     },
     {
       "entries": [7,8],
@@ -458,7 +601,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-19"
+      "matchId": "match-30"
     },
     {
       "entries": [7,9],
@@ -470,7 +613,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-20"
+      "matchId": "match-31"
     },
     {
       "entries": [8,9],
@@ -482,7 +625,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-21"
+      "matchId": "match-32"
     },
     {
       "entries": [10,11],
@@ -494,11 +637,11 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-22"
+      "matchId": "match-33"
     },
     {
       "entries": [10,12],
-      "scores": {"10":4,"12":2},
+      "scores": {"10":4,"12":3},
       "round": null,
       "stage": "roundrobin",
       "group": "4",
@@ -506,11 +649,11 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-23"
+      "matchId": "match-34"
     },
     {
       "entries": [11,12],
-      "scores": {"11":4,"12":3},
+      "scores": {"11":4,"12":2},
       "round": null,
       "stage": "roundrobin",
       "group": "4",
@@ -518,7 +661,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-24"
+      "matchId": "match-35"
     },
     {
       "entries": [13,14],
@@ -530,7 +673,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-25"
+      "matchId": "match-36"
     },
     {
       "entries": [13,15],
@@ -542,7 +685,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-26"
+      "matchId": "match-37"
     },
     {
       "entries": [14,15],
@@ -554,7 +697,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-27"
+      "matchId": "match-38"
     },
     {
       "entries": [16,17],
@@ -566,7 +709,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-28"
+      "matchId": "match-39"
     },
     {
       "entries": [16,18],
@@ -578,7 +721,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-29"
+      "matchId": "match-40"
     },
     {
       "entries": [17,18],
@@ -590,7 +733,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-30"
+      "matchId": "match-41"
     },
     {
       "entries": [19,20],
@@ -602,7 +745,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-31"
+      "matchId": "match-42"
     },
     {
       "entries": [19,21],
@@ -614,7 +757,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-32"
+      "matchId": "match-43"
     },
     {
       "entries": [20,21],
@@ -626,7 +769,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-33"
+      "matchId": "match-44"
     },
     {
       "entries": [22,23],
@@ -638,7 +781,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-34"
+      "matchId": "match-45"
     },
     {
       "entries": [22,24],
@@ -650,7 +793,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-35"
+      "matchId": "match-46"
     },
     {
       "entries": [23,24],
@@ -662,7 +805,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-36"
+      "matchId": "match-47"
     },
     {
       "entries": [25,26],
@@ -674,7 +817,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-37"
+      "matchId": "match-48"
     },
     {
       "entries": [25,27],
@@ -686,7 +829,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-38"
+      "matchId": "match-49"
     },
     {
       "entries": [26,27],
@@ -698,11 +841,11 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-39"
+      "matchId": "match-50"
     },
     {
       "entries": [28,29],
-      "scores": {"28":4,"29":2},
+      "scores": {"28":4,"29":1},
       "round": null,
       "stage": "roundrobin",
       "group": "10",
@@ -710,11 +853,11 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-40"
+      "matchId": "match-51"
     },
     {
       "entries": [28,30],
-      "scores": {"28":4,"30":3},
+      "scores": {"28":4,"30":0},
       "round": null,
       "stage": "roundrobin",
       "group": "10",
@@ -722,11 +865,11 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-41"
+      "matchId": "match-52"
     },
     {
       "entries": [29,30],
-      "scores": {"29":4,"30":1},
+      "scores": {"29":4,"30":3},
       "round": null,
       "stage": "roundrobin",
       "group": "10",
@@ -734,7 +877,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-42"
+      "matchId": "match-53"
     },
     {
       "entries": [31,32],
@@ -746,7 +889,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-43"
+      "matchId": "match-54"
     },
     {
       "entries": [31,33],
@@ -758,7 +901,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-44"
+      "matchId": "match-55"
     },
     {
       "entries": [32,33],
@@ -770,7 +913,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-45"
+      "matchId": "match-56"
     },
     {
       "entries": [34,35],
@@ -782,7 +925,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-46"
+      "matchId": "match-57"
     },
     {
       "entries": [34,36],
@@ -794,7 +937,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-47"
+      "matchId": "match-58"
     },
     {
       "entries": [35,36],
@@ -806,7 +949,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-48"
+      "matchId": "match-59"
     },
     {
       "entries": [37,38],
@@ -818,7 +961,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-49"
+      "matchId": "match-60"
     },
     {
       "entries": [37,39],
@@ -830,7 +973,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-50"
+      "matchId": "match-61"
     },
     {
       "entries": [38,39],
@@ -842,7 +985,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-51"
+      "matchId": "match-62"
     },
     {
       "entries": [40,41],
@@ -854,7 +997,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-52"
+      "matchId": "match-63"
     },
     {
       "entries": [40,42],
@@ -866,7 +1009,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-53"
+      "matchId": "match-64"
     },
     {
       "entries": [41,42],
@@ -878,7 +1021,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-54"
+      "matchId": "match-65"
     },
     {
       "entries": [43,44],
@@ -890,7 +1033,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-55"
+      "matchId": "match-66"
     },
     {
       "entries": [43,45],
@@ -902,7 +1045,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-56"
+      "matchId": "match-67"
     },
     {
       "entries": [44,45],
@@ -914,7 +1057,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-57"
+      "matchId": "match-68"
     },
     {
       "entries": [46,47],
@@ -926,7 +1069,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-58"
+      "matchId": "match-69"
     },
     {
       "entries": [46,48],
@@ -938,7 +1081,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-59"
+      "matchId": "match-70"
     },
     {
       "entries": [47,48],
@@ -950,7 +1093,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-60"
+      "matchId": "match-71"
     },
     {
       "entries": [49,50],
@@ -962,7 +1105,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-61"
+      "matchId": "match-72"
     },
     {
       "entries": [49,51],
@@ -974,7 +1117,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-62"
+      "matchId": "match-73"
     },
     {
       "entries": [50,51],
@@ -986,7 +1129,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-63"
+      "matchId": "match-74"
     },
     {
       "entries": [52,53],
@@ -998,7 +1141,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-64"
+      "matchId": "match-75"
     },
     {
       "entries": [52,54],
@@ -1010,7 +1153,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-65"
+      "matchId": "match-76"
     },
     {
       "entries": [53,54],
@@ -1022,7 +1165,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-66"
+      "matchId": "match-77"
     },
     {
       "entries": [55,56],
@@ -1034,7 +1177,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-67"
+      "matchId": "match-78"
     },
     {
       "entries": [55,57],
@@ -1046,7 +1189,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-68"
+      "matchId": "match-79"
     },
     {
       "entries": [56,57],
@@ -1058,7 +1201,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-69"
+      "matchId": "match-80"
     },
     {
       "entries": [58,59],
@@ -1070,7 +1213,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-70"
+      "matchId": "match-81"
     },
     {
       "entries": [58,60],
@@ -1082,7 +1225,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-71"
+      "matchId": "match-82"
     },
     {
       "entries": [59,60],
@@ -1094,7 +1237,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-72"
+      "matchId": "match-83"
     },
     {
       "entries": [61,62],
@@ -1106,7 +1249,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-73"
+      "matchId": "match-84"
     },
     {
       "entries": [61,63],
@@ -1118,7 +1261,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-74"
+      "matchId": "match-85"
     },
     {
       "entries": [62,63],
@@ -1130,7 +1273,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-75"
+      "matchId": "match-86"
     },
     {
       "entries": [64,65],
@@ -1142,7 +1285,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-76"
+      "matchId": "match-87"
     },
     {
       "entries": [64,66],
@@ -1154,7 +1297,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-77"
+      "matchId": "match-88"
     },
     {
       "entries": [65,66],
@@ -1166,7 +1309,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-78"
+      "matchId": "match-89"
     },
     {
       "entries": [67,68],
@@ -1178,7 +1321,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-79"
+      "matchId": "match-90"
     },
     {
       "entries": [67,69],
@@ -1190,7 +1333,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-80"
+      "matchId": "match-91"
     },
     {
       "entries": [68,69],
@@ -1202,7 +1345,7 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-81"
+      "matchId": "match-92"
     },
     {
       "entries": [70,71],
@@ -1214,105 +1357,105 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-82"
+      "matchId": "match-93"
     },
     {
       "entries": [70,72],
-      "scores": {"70":4,"72":0},
+      "scores": {"70":0,"72":4},
       "round": null,
       "stage": "roundrobin",
       "group": "24",
-      "winnerEntryNo": 70,
+      "winnerEntryNo": 72,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-83"
+      "matchId": "match-94"
     },
     {
       "entries": [71,72],
-      "scores": {"71":4,"72":2},
+      "scores": {"71":2,"72":4},
       "round": null,
       "stage": "roundrobin",
       "group": "24",
-      "winnerEntryNo": 71,
+      "winnerEntryNo": 72,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-84"
+      "matchId": "match-95"
     }
   ],
   "results": [
     {"entryNo":1,"tournament":null,"roundrobin":{"group":"1","rank":3}},
     {"entryNo":2,"tournament":null,"roundrobin":{"group":"1","rank":2}},
-    {"entryNo":3,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"1","rank":1}},
+    {"entryNo":3,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"1","rank":1}},
     {"entryNo":4,"tournament":null,"roundrobin":{"group":"2","rank":2}},
     {"entryNo":5,"tournament":null,"roundrobin":{"group":"2","rank":3}},
-    {"entryNo":6,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"2","rank":1}},
+    {"entryNo":6,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"2","rank":1}},
     {"entryNo":7,"tournament":null,"roundrobin":{"group":"3","rank":3}},
-    {"entryNo":8,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"3","rank":1}},
+    {"entryNo":8,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"3","rank":1}},
     {"entryNo":9,"tournament":null,"roundrobin":{"group":"3","rank":2}},
-    {"entryNo":10,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"4","rank":1}},
+    {"entryNo":10,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"4","rank":1}},
     {"entryNo":11,"tournament":null,"roundrobin":{"group":"4","rank":2}},
     {"entryNo":12,"tournament":null,"roundrobin":{"group":"4","rank":3}},
-    {"entryNo":13,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"5","rank":1}},
+    {"entryNo":13,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"5","rank":1}},
     {"entryNo":14,"tournament":null,"roundrobin":{"group":"5","rank":3}},
     {"entryNo":15,"tournament":null,"roundrobin":{"group":"5","rank":2}},
-    {"entryNo":16,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"6","rank":1}},
+    {"entryNo":16,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"6","rank":1}},
     {"entryNo":17,"tournament":null,"roundrobin":{"group":"6","rank":3}},
     {"entryNo":18,"tournament":null,"roundrobin":{"group":"6","rank":2}},
     {"entryNo":19,"tournament":null,"roundrobin":{"group":"7","rank":2}},
     {"entryNo":20,"tournament":null,"roundrobin":{"group":"7","rank":3}},
-    {"entryNo":21,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"7","rank":1}},
+    {"entryNo":21,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"7","rank":1}},
     {"entryNo":22,"tournament":null,"roundrobin":{"group":"8","rank":2}},
-    {"entryNo":23,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"8","rank":1}},
+    {"entryNo":23,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"8","rank":1}},
     {"entryNo":24,"tournament":null,"roundrobin":{"group":"8","rank":3}},
-    {"entryNo":25,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"9","rank":1}},
+    {"entryNo":25,"tournament":{"label":"優勝","rank":{"kind":"winner"}},"roundrobin":{"group":"9","rank":1}},
     {"entryNo":26,"tournament":null,"roundrobin":{"group":"9","rank":2}},
     {"entryNo":27,"tournament":null,"roundrobin":{"group":"9","rank":3}},
-    {"entryNo":28,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"10","rank":1}},
+    {"entryNo":28,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"10","rank":1}},
     {"entryNo":29,"tournament":null,"roundrobin":{"group":"10","rank":2}},
     {"entryNo":30,"tournament":null,"roundrobin":{"group":"10","rank":3}},
-    {"entryNo":31,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"11","rank":1}},
+    {"entryNo":31,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"11","rank":1}},
     {"entryNo":32,"tournament":null,"roundrobin":{"group":"11","rank":2}},
     {"entryNo":33,"tournament":null,"roundrobin":{"group":"11","rank":3}},
     {"entryNo":34,"tournament":null,"roundrobin":{"group":"12","rank":2}},
     {"entryNo":35,"tournament":null,"roundrobin":{"group":"12","rank":3}},
-    {"entryNo":36,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"12","rank":1}},
-    {"entryNo":37,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"13","rank":1}},
+    {"entryNo":36,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"12","rank":1}},
+    {"entryNo":37,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"13","rank":1}},
     {"entryNo":38,"tournament":null,"roundrobin":{"group":"13","rank":2}},
     {"entryNo":39,"tournament":null,"roundrobin":{"group":"13","rank":3}},
     {"entryNo":40,"tournament":null,"roundrobin":{"group":"14","rank":3}},
     {"entryNo":41,"tournament":null,"roundrobin":{"group":"14","rank":2}},
-    {"entryNo":42,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"14","rank":1}},
+    {"entryNo":42,"tournament":{"label":"準優勝","rank":{"kind":"runnerup"}},"roundrobin":{"group":"14","rank":1}},
     {"entryNo":43,"tournament":null,"roundrobin":{"group":"15","rank":3}},
-    {"entryNo":44,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"15","rank":1}},
+    {"entryNo":44,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"15","rank":1}},
     {"entryNo":45,"tournament":null,"roundrobin":{"group":"15","rank":2}},
     {"entryNo":46,"tournament":null,"roundrobin":{"group":"16","rank":2}},
-    {"entryNo":47,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"16","rank":1}},
+    {"entryNo":47,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"16","rank":1}},
     {"entryNo":48,"tournament":null,"roundrobin":{"group":"16","rank":3}},
     {"entryNo":49,"tournament":null,"roundrobin":{"group":"17","rank":3}},
     {"entryNo":50,"tournament":null,"roundrobin":{"group":"17","rank":2}},
-    {"entryNo":51,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"17","rank":1}},
+    {"entryNo":51,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"17","rank":1}},
     {"entryNo":52,"tournament":null,"roundrobin":{"group":"18","rank":3}},
     {"entryNo":53,"tournament":null,"roundrobin":{"group":"18","rank":2}},
-    {"entryNo":54,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"18","rank":1}},
-    {"entryNo":55,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"19","rank":1}},
+    {"entryNo":54,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"18","rank":1}},
+    {"entryNo":55,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"19","rank":1}},
     {"entryNo":56,"tournament":null,"roundrobin":{"group":"19","rank":3}},
     {"entryNo":57,"tournament":null,"roundrobin":{"group":"19","rank":2}},
-    {"entryNo":58,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"20","rank":1}},
+    {"entryNo":58,"tournament":{"label":"ベスト8","rank":{"kind":"best","bestLevel":8}},"roundrobin":{"group":"20","rank":1}},
     {"entryNo":59,"tournament":null,"roundrobin":{"group":"20","rank":3}},
     {"entryNo":60,"tournament":null,"roundrobin":{"group":"20","rank":2}},
     {"entryNo":61,"tournament":null,"roundrobin":{"group":"21","rank":3}},
     {"entryNo":62,"tournament":null,"roundrobin":{"group":"21","rank":2}},
-    {"entryNo":63,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"21","rank":1}},
+    {"entryNo":63,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"21","rank":1}},
     {"entryNo":64,"tournament":null,"roundrobin":{"group":"22","rank":2}},
-    {"entryNo":65,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"22","rank":1}},
+    {"entryNo":65,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":{"group":"22","rank":1}},
     {"entryNo":66,"tournament":null,"roundrobin":{"group":"22","rank":3}},
     {"entryNo":67,"tournament":null,"roundrobin":{"group":"23","rank":2}},
     {"entryNo":68,"tournament":null,"roundrobin":{"group":"23","rank":3}},
-    {"entryNo":69,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"23","rank":1}},
-    {"entryNo":70,"tournament":{"label":"予選通過","rank":{"kind":"ongoing"}},"roundrobin":{"group":"24","rank":1}},
-    {"entryNo":71,"tournament":null,"roundrobin":{"group":"24","rank":2}},
-    {"entryNo":72,"tournament":null,"roundrobin":{"group":"24","rank":3}}
+    {"entryNo":69,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":{"group":"23","rank":1}},
+    {"entryNo":70,"tournament":null,"roundrobin":{"group":"24","rank":2}},
+    {"entryNo":71,"tournament":null,"roundrobin":{"group":"24","rank":3}},
+    {"entryNo":72,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":{"group":"24","rank":1}}
   ]
 }
