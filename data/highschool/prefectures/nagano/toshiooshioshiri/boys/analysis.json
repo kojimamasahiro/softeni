@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 13,
   "byCategory": {
     "team": 2,
-    "doubles": 9
+    "doubles": 10,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["小森_悠矢_都市大塩尻_長野県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -27,12 +39,12 @@
         "teamId": "toshiooshioshiri",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "準優勝",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2022,
         "gender": "boys",
-        "playerIds": ["古幡_悠馬_都市大塩尻_長野県", "神尾_優介_都市大塩尻_長野県"]
+        "playerIds": ["小森_悠矢_都市大塩尻_長野県", "平林_和真_都市大塩尻_長野県"]
       }
     },
     "team": {
@@ -54,7 +66,7 @@
   "topPlayers": [
     {
       "id": "古幡_悠馬_都市大塩尻_長野県",
-      "appearances": 5
+      "appearances": 6
     },
     {
       "id": "平林_和真_都市大塩尻_長野県",
@@ -69,7 +81,7 @@
       "appearances": 2
     },
     {
-      "id": "笠原_朗杜_都市大塩尻_長野県",
+      "id": "小森_悠矢_都市大塩尻_長野県",
       "appearances": 2
     }
   ]

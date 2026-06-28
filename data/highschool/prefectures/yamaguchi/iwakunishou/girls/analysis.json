@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 15,
   "byCategory": {
     "team": 1,
-    "doubles": 12
+    "doubles": 13,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "岩国商",
+        "teamId": "iwakunishou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["高橋_瑚子_岩国商_山口県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -27,9 +39,9 @@
         "teamId": "iwakunishou",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "6回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2022,
         "gender": "girls",
         "playerIds": ["高橋_瑚子_岩国商_山口県", "粟野_杏菜_岩国商_山口県"]
@@ -53,6 +65,10 @@
   "uniquePlayers": 15,
   "topPlayers": [
     {
+      "id": "高橋_瑚子_岩国商_山口県",
+      "appearances": 4
+    },
+    {
       "id": "森脇_陽香_岩国商_山口県",
       "appearances": 3
     },
@@ -61,12 +77,8 @@
       "appearances": 3
     },
     {
-      "id": "高橋_瑚子_岩国商_山口県",
-      "appearances": 2
-    },
-    {
       "id": "粟野_杏菜_岩国商_山口県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "兒玉_琉南_岩国商_山口県",

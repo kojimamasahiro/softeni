@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
     "doubles": 5,
-    "singles": 1
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["竹内_楓_長野俊英高校_長野県"]
+        "playerIds": ["竹内_楓_長野俊英_長野県"]
       },
       "historicalBest": {
         "team": "長野俊英",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["竹内_楓_長野俊英高校_長野県"]
+        "playerIds": ["竹内_楓_長野俊英_長野県"]
       }
     },
     "doubles": {
@@ -43,7 +43,7 @@
         "tournamentId": "east-japan",
         "year": 2025,
         "gender": "girls",
-        "playerIds": ["加藤_憩_長野俊英高校_長野", "村上_凛花_長野俊英高校_長野"]
+        "playerIds": ["加藤_憩_長野俊英_長野県", "村上_凛花_長野俊英_長野県"]
       },
       "historicalBest": {
         "team": "長野俊英",
@@ -84,15 +84,15 @@
       "appearances": 3
     },
     {
+      "id": "竹内_楓_長野俊英_長野県",
+      "appearances": 2
+    },
+    {
       "id": "小林_まどか_長野俊英_長野県",
       "appearances": 1
     },
     {
       "id": "榎本_優紗_長野俊英_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "篠田_朱莉_長野俊英_長野県",
       "appearances": 1
     }
   ]

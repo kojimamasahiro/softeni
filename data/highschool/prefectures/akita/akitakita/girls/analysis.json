@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 15,
   "byCategory": {
     "team": 2,
-    "doubles": 12
+    "doubles": 12,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["戸澤_碧衣_秋田北_秋田県"]
+      },
+      "historicalBest": {
+        "team": "秋田北",
+        "teamId": "akitakita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["戸澤_碧衣_秋田北_秋田県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -60,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "加藤_寧々_秋田北_秋田県",

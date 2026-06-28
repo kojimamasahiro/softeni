@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 54,
+  "totalAppearances": 57,
   "byCategory": {
     "team": 5,
-    "doubles": 32,
-    "singles": 17
+    "doubles": 33,
+    "singles": 19
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-junior",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["草野_春真_田村高校_福島県"]
+        "playerIds": ["草野_春真_田村_福島県"]
       },
       "historicalBest": {
         "team": "田村",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-junior",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["草野_春真_田村高校_福島県"]
+        "playerIds": ["草野_春真_田村_福島県"]
       }
     },
     "doubles": {
@@ -90,6 +90,10 @@
       "appearances": 13
     },
     {
+      "id": "相山_尚慧_田村_福島県",
+      "appearances": 7
+    },
+    {
       "id": "相山_昂慧_田村_福島県",
       "appearances": 7
     },
@@ -98,11 +102,7 @@
       "appearances": 7
     },
     {
-      "id": "相山_尚慧_田村_福島県",
-      "appearances": 6
-    },
-    {
-      "id": "宗像_鷲_田村_福島県",
+      "id": "安部_蓮生_田村_福島県",
       "appearances": 5
     }
   ]

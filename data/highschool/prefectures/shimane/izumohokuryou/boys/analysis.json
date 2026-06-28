@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 5
+    "doubles": 5,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "出雲北陵",
+        "teamId": "izumohokuryou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["陰山_晃成_出雲北陵_島根県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -31,7 +43,7 @@
         "tournamentId": "highschool-championship",
         "year": 2022,
         "gender": "boys",
-        "playerIds": ["木村_蔵人_出雲北陵_島根県", "岩崎_遥平_出雲北陵_島根県"]
+        "playerIds": ["木村_蔵人_出雲北陵_島根県", "岡原_煌虎_出雲北陵_島根県"]
       }
     },
     "team": {
@@ -39,14 +51,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
-      "id": "岩崎_遥平_出雲北陵_島根県",
-      "appearances": 2
+      "id": "木村_蔵人_出雲北陵_島根県",
+      "appearances": 1
     },
     {
-      "id": "木村_蔵人_出雲北陵_島根県",
+      "id": "岡原_煌虎_出雲北陵_島根県",
       "appearances": 1
     },
     {

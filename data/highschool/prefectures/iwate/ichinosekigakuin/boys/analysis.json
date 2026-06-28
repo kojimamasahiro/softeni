@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 24,
   "byCategory": {
     "team": 2,
-    "doubles": 16,
-    "singles": 4
+    "doubles": 17,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -18,7 +18,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2023,
         "gender": "boys",
-        "playerIds": ["江原_茂_一関学院高校_岩手県"]
+        "playerIds": ["江原_茂_一関学院_岩手県"]
       }
     },
     "doubles": {
@@ -32,7 +32,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["山内_蒼良_一関学院_岩手", "佐々木_柊羽_一関学院_岩手"]
+        "playerIds": ["山内_蒼良_一関学院_岩手県", "佐々木_柊羽_一関学院_岩手県"]
       },
       "historicalBest": {
         "team": "一関学院",
@@ -62,11 +62,11 @@
       }
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "東_脩蔵_一関学院_岩手県",
-      "appearances": 4
+      "appearances": 5
     },
     {
       "id": "津田_聖弥_一関学院_岩手県",
@@ -81,7 +81,7 @@
       "appearances": 3
     },
     {
-      "id": "及川_莉央_一関学院_岩手県",
+      "id": "澤舘_大智_一関学院_岩手県",
       "appearances": 3
     }
   ]

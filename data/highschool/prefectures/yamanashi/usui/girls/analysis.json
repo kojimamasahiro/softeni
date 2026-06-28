@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 18,
   "byCategory": {
     "team": 3,
     "doubles": 12,
-    "singles": 2
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,9 +15,9 @@
         "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["藤原_妃花_笛吹_山梨県"]
+        "playerIds": ["櫻井_亜朱_笛吹_山梨県"]
       },
       "historicalBest": {
         "team": "笛吹",
@@ -27,9 +27,9 @@
         "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["藤原_妃花_笛吹_山梨県"]
+        "playerIds": ["櫻井_亜朱_笛吹_山梨県"]
       }
     },
     "doubles": {
@@ -90,6 +90,10 @@
       "appearances": 4
     },
     {
+      "id": "櫻井_亜朱_笛吹_山梨県",
+      "appearances": 4
+    },
+    {
       "id": "小澤_柚依花_笛吹_山梨県",
       "appearances": 4
     },
@@ -99,10 +103,6 @@
     },
     {
       "id": "根尾_心咲_笛吹_山梨県",
-      "appearances": 3
-    },
-    {
-      "id": "櫻井_亜朱_笛吹_山梨県",
       "appearances": 3
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "obihiroootani",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "予選敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["平松_あすか_帯広大谷_北海道", "三浦_愛里_帯広大谷_北海道"]
+        "playerIds": ["横内_悠茉_帯広大谷_北海道", "鈴木_陽菜乃_帯広大谷_北海道"]
       }
     },
     "team": {
@@ -39,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "横内_悠茉_帯広大谷_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_陽菜乃_帯広大谷_北海道",
+      "appearances": 1
+    },
     {
       "id": "平松_あすか_帯広大谷_北海道",
       "appearances": 1

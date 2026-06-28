@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 28,
+  "totalAppearances": 31,
   "byCategory": {
     "team": 5,
-    "doubles": 20,
-    "singles": 3
+    "doubles": 21,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -50,12 +50,12 @@
         "teamId": "kengifushou",
         "prefecture": "岐阜県",
         "prefectureId": "gifu",
-        "result": "5回戦敗退",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["廣岡_愛珠_県岐阜商_岐阜県", "上野_裕水_県岐阜商_岐阜県"]
+        "playerIds": ["堀_さくら_県岐阜商_岐阜県", "堀_かえで_県岐阜商_岐阜県"]
       }
     },
     "team": {
@@ -86,8 +86,16 @@
   "uniquePlayers": 18,
   "topPlayers": [
     {
+      "id": "堀_かえで_県岐阜商_岐阜県",
+      "appearances": 5
+    },
+    {
       "id": "桒原_嘉萌_県岐阜商_岐阜県",
       "appearances": 5
+    },
+    {
+      "id": "堀_さくら_県岐阜商_岐阜県",
+      "appearances": 4
     },
     {
       "id": "廣瀬_結花_県岐阜商_岐阜県",
@@ -96,14 +104,6 @@
     {
       "id": "高木_夕愛_県岐阜商_岐阜県",
       "appearances": 4
-    },
-    {
-      "id": "堀_かえで_県岐阜商_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "堀_さくら_県岐阜商_岐阜県",
-      "appearances": 3
     }
   ]
 }

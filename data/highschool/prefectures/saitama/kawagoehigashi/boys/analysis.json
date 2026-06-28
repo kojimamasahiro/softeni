@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 9,
   "byCategory": {
     "team": 1,
-    "doubles": 7
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -27,12 +27,12 @@
         "teamId": "kawagoehigashi",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
         "gender": "boys",
-        "playerIds": ["平田_康晟_川越東_埼玉県", "栁澤_昊輝_川越東_埼玉県"]
+        "playerIds": ["池田_蒼空_川越東_埼玉県", "平田_泰一_川越東_埼玉県"]
       }
     },
     "team": {
@@ -63,11 +63,15 @@
   "uniquePlayers": 10,
   "topPlayers": [
     {
+      "id": "平田_泰一_川越東_埼玉県",
+      "appearances": 3
+    },
+    {
       "id": "平田_康晟_川越東_埼玉県",
       "appearances": 2
     },
     {
-      "id": "平田_泰一_川越東_埼玉県",
+      "id": "池田_蒼空_川越東_埼玉県",
       "appearances": 2
     },
     {
@@ -77,10 +81,6 @@
     {
       "id": "藤田_大雅_川越東_埼玉県",
       "appearances": 2
-    },
-    {
-      "id": "栁澤_昊輝_川越東_埼玉県",
-      "appearances": 1
     }
   ]
 }

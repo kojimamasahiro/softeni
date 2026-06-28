@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 56,
+  "totalAppearances": 59,
   "byCategory": {
     "team": 5,
-    "doubles": 40,
-    "singles": 11
+    "doubles": 41,
+    "singles": 13
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["中易_快翔_羽黒高校_日本連盟県"]
+        "playerIds": ["中易_快翔_羽黒_日本連盟"]
       },
       "historicalBest": {
         "team": "羽黒",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["中易_快翔_羽黒高校_日本連盟県"]
+        "playerIds": ["中易_快翔_羽黒_日本連盟"]
       }
     },
     "doubles": {
@@ -50,12 +50,12 @@
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "準優勝",
+        "result": "6回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["入江_快成_羽黒_山形県", "佐藤_直輝_羽黒_山形県"]
+        "playerIds": ["佐藤_悠翔_羽黒_山形県", "日野_莉大_羽黒_山形県"]
       }
     },
     "team": {
@@ -91,18 +91,18 @@
     },
     {
       "id": "小見_碧斗_羽黒_山形県",
-      "appearances": 6
+      "appearances": 7
     },
     {
       "id": "阿部_瑛斗_羽黒_山形県",
       "appearances": 6
     },
     {
-      "id": "佐藤_悠翔_羽黒_山形県",
+      "id": "関川_結斗_羽黒_山形県",
       "appearances": 4
     },
     {
-      "id": "日野_莉大_羽黒_山形県",
+      "id": "佐藤_悠翔_羽黒_山形県",
       "appearances": 4
     }
   ]

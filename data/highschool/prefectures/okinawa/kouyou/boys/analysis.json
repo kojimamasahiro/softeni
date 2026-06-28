@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 5
+    "doubles": 6,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "向陽",
+        "teamId": "kouyou",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["照屋_盛麻_向陽_沖縄県"]
+      },
+      "historicalBest": {
+        "team": "向陽",
+        "teamId": "kouyou",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["照屋_盛麻_向陽_沖縄県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -39,18 +62,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
-      "id": "照屋_盛也_向陽_沖縄県",
+      "id": "照屋_盛麻_向陽_沖縄県",
       "appearances": 2
+    },
+    {
+      "id": "照屋_盛也_向陽_沖縄県",
+      "appearances": 1
     },
     {
       "id": "渡邉_波輝_向陽_沖縄県",
-      "appearances": 2
-    },
-    {
-      "id": "照屋_盛麻_向陽_沖縄県",
       "appearances": 1
     },
     {
@@ -58,7 +81,7 @@
       "appearances": 1
     },
     {
-      "id": "肥岡_稜希_向陽中学校_中国・広島県",
+      "id": "白川_拓夢_向陽_和歌山県",
       "appearances": 1
     }
   ]

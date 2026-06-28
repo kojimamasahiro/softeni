@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 16,
   "byCategory": {
     "team": 2,
-    "doubles": 9,
-    "singles": 3
+    "doubles": 10,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2023,
         "gender": "girls",
-        "playerIds": ["三國_そそ来_長浜北高校_滋賀県"]
+        "playerIds": ["三國_そそ来_長浜北_滋賀県"]
       }
     },
     "doubles": {
@@ -85,15 +85,15 @@
     },
     {
       "id": "藤田_咲良_長浜北_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "川島_若奈_長浜北_滋賀県",
       "appearances": 2
     },
     {
       "id": "三國_ここ菜_長浜北_滋賀県",
       "appearances": 2
-    },
-    {
-      "id": "川島_若奈_長浜北_滋賀県",
-      "appearances": 1
     }
   ]
 }

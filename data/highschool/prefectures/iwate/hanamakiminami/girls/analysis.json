@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "花巻南",
+        "teamId": "hanamakiminami",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["菅木_春香_花巻南_岩手県"]
+      },
+      "historicalBest": {
+        "team": "花巻南",
+        "teamId": "hanamakiminami",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["菅木_春香_花巻南_岩手県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -43,7 +66,7 @@
   "topPlayers": [
     {
       "id": "菅木_春香_花巻南_岩手県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "渡邉_みなみ_花巻南_岩手県",

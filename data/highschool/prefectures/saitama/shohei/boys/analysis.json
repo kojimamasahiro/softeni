@@ -1,14 +1,13 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 19,
   "byCategory": {
     "team": 3,
-    "doubles": 11,
-    "singles": 1
+    "doubles": 13,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": {
+      "recentlyResult": {
         "team": "昌平",
         "teamId": "shohei",
         "prefecture": "埼玉県",
@@ -16,9 +15,21 @@
         "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["熊木_暖人_昌平_埼玉県"]
+        "playerIds": ["江口_真叶_昌平_埼玉県"]
+      },
+      "historicalBest": {
+        "team": "昌平",
+        "teamId": "shohei",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["相澤_波月_昌平_埼玉県"]
       }
     },
     "doubles": {
@@ -62,8 +73,12 @@
       }
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 21,
   "topPlayers": [
+    {
+      "id": "木村_晋太朗_昌平_埼玉県",
+      "appearances": 3
+    },
     {
       "id": "熊木_暖人_昌平_埼玉県",
       "appearances": 3
@@ -77,12 +92,8 @@
       "appearances": 2
     },
     {
-      "id": "吉野_碧_昌平_埼玉県",
+      "id": "原田_滉太_昌平_埼玉県",
       "appearances": 2
-    },
-    {
-      "id": "萩原_陽介_昌平_埼玉県",
-      "appearances": 1
     }
   ]
 }

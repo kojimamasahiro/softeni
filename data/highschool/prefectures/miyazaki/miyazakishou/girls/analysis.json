@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 34,
+  "totalAppearances": 37,
   "byCategory": {
     "team": 6,
-    "doubles": 25,
-    "singles": 3
+    "doubles": 26,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -15,7 +15,7 @@
         "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["山口_優菜_宮崎商_宮崎県"]
       },
@@ -27,7 +27,7 @@
         "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["山口_優菜_宮崎商_宮崎県"]
       }
@@ -87,11 +87,15 @@
   "topPlayers": [
     {
       "id": "山口_優菜_宮崎商_宮崎県",
-      "appearances": 6
+      "appearances": 7
     },
     {
       "id": "上米良_凛乃_宮崎商_宮崎県",
       "appearances": 5
+    },
+    {
+      "id": "中馬_青瑠_宮崎商_宮崎県",
+      "appearances": 4
     },
     {
       "id": "庄司_梨乃_宮崎商_宮崎県",
@@ -100,10 +104,6 @@
     {
       "id": "瀬戸口_快_宮崎商_宮崎県",
       "appearances": 4
-    },
-    {
-      "id": "増田_くるみ_宮崎商_宮崎県",
-      "appearances": 3
     }
   ]
 }

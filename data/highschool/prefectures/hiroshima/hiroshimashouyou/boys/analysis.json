@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 12,
+    "doubles": 13,
     "singles": 2
   },
   "resultsByCategory": {
@@ -28,7 +28,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2023,
         "gender": "boys",
-        "playerIds": ["竹之内_陵平_広島翔洋高校_広島県"]
+        "playerIds": ["竹之内_陵平_広島翔洋_広島県"]
       }
     },
     "doubles": {
@@ -42,7 +42,7 @@
         "tournamentId": "zennihon-mixed",
         "year": 2025,
         "gender": "mixed",
-        "playerIds": ["前川_愛生_広島翔洋高校", "内田_理久_NTT西日本"]
+        "playerIds": ["前川_愛生_広島翔洋_", "内田_理久_NTT西日本_"]
       },
       "historicalBest": {
         "team": "広島翔洋",
@@ -54,7 +54,7 @@
         "tournamentId": "zennihon-mixed",
         "year": 2025,
         "gender": "mixed",
-        "playerIds": ["前川_愛生_広島翔洋高校", "内田_理久_NTT西日本"]
+        "playerIds": ["前川_愛生_広島翔洋_", "内田_理久_NTT西日本_"]
       }
     },
     "team": {
@@ -69,19 +69,19 @@
       "appearances": 3
     },
     {
+      "id": "平川_史恩_広島翔洋_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "大神_晃世_広島翔洋_広島県",
+      "appearances": 2
+    },
+    {
       "id": "橋本_聖良_広島翔洋_広島県",
       "appearances": 2
     },
     {
       "id": "森川_倖志_広島翔洋_広島県",
-      "appearances": 2
-    },
-    {
-      "id": "灰田_麟太郎_広島翔洋_広島県",
-      "appearances": 2
-    },
-    {
-      "id": "小保_伶太_広島翔洋_広島県",
       "appearances": 2
     }
   ]

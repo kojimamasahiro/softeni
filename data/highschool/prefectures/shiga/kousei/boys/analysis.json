@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "甲西",
+        "teamId": "kousei",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["沢田_直紀_甲西_滋賀県"]
+      },
+      "historicalBest": {
+        "team": "甲西",
+        "teamId": "kousei",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["沢田_直紀_甲西_滋賀県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -42,15 +65,15 @@
   "uniquePlayers": 4,
   "topPlayers": [
     {
+      "id": "沢田_直紀_甲西_滋賀県",
+      "appearances": 2
+    },
+    {
       "id": "井村_亮介_甲西_滋賀県",
       "appearances": 1
     },
     {
       "id": "小林_蓮斗_甲西_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "沢田_直紀_甲西_滋賀県",
       "appearances": 1
     },
     {

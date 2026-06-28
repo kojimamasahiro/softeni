@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 105,
+  "totalAppearances": 108,
   "byCategory": {
     "team": 6,
-    "doubles": 61,
-    "singles": 38
+    "doubles": 62,
+    "singles": 40
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-junior",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["齋藤_玲壱_東北高校_宮城県"]
+        "playerIds": ["齋藤_玲壱_東北_宮城県"]
       },
       "historicalBest": {
         "team": "東北",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-junior",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["齋藤_玲壱_東北高校_宮城県"]
+        "playerIds": ["齋藤_玲壱_東北_宮城県"]
       }
     },
     "doubles": {
@@ -43,7 +43,7 @@
         "tournamentId": "zennihon-mixed",
         "year": 2025,
         "gender": "mixed",
-        "playerIds": ["丸山_海斗_one team", "天間_麗奈_東北高校"]
+        "playerIds": ["丸山_海斗_one team_", "天間_麗奈_東北_"]
       },
       "historicalBest": {
         "team": "東北",
@@ -55,7 +55,7 @@
         "tournamentId": "zennihon-mixed",
         "year": 2025,
         "gender": "mixed",
-        "playerIds": ["丸山_海斗_one team", "天間_麗奈_東北高校"]
+        "playerIds": ["丸山_海斗_one team_", "天間_麗奈_東北_"]
       }
     },
     "team": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 75,
+  "uniquePlayers": 74,
   "topPlayers": [
     {
       "id": "松田_拳弥_東北_宮城県",
@@ -95,15 +95,15 @@
     },
     {
       "id": "浅見_竣一朗_東北_宮城県",
-      "appearances": 8
+      "appearances": 10
     },
     {
-      "id": "國松_樹人_東北_宮城県",
+      "id": "北野_咲斗_東北_宮城県",
       "appearances": 7
     },
     {
-      "id": "白井_颯_東北_宮城県",
-      "appearances": 6
+      "id": "初鹿_暁哉_東北_宮城県",
+      "appearances": 7
     }
   ]
 }

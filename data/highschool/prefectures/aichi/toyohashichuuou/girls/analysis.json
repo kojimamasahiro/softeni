@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
     "team": 1,
-    "doubles": 2
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "豊橋中央",
+        "teamId": "toyohashichuuou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["渡邉_柚月_豊橋中央_愛知県"]
+      },
+      "historicalBest": {
+        "team": "豊橋中央",
+        "teamId": "toyohashichuuou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "ベスト4",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["渡邉_柚月_豊橋中央_愛知県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -60,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "城所_結菜_豊橋中央_愛知県",
@@ -69,6 +92,10 @@
     {
       "id": "服部_麻衣_豊橋中央_愛知県",
       "appearances": 2
+    },
+    {
+      "id": "渡邉_柚月_豊橋中央_愛知県",
+      "appearances": 1
     }
   ]
 }

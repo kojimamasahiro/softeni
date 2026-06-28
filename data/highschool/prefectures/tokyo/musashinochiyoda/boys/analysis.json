@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "武蔵野千代田",
+        "teamId": "musashinochiyoda",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["櫻井_叶人_武蔵野千代田_東京都", "熊谷_春輝_武蔵野千代田_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "櫻井_叶人_武蔵野千代田_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "熊谷_春輝_武蔵野千代田_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_陸斗_武蔵野千代田_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "金山_翔太_武蔵野千代田_東京都",
+      "appearances": 1
+    }
+  ]
+}

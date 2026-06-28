@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 31,
   "byCategory": {
-    "team": 1,
-    "doubles": 7,
-    "singles": 4
+    "team": 2,
+    "doubles": 20,
+    "singles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -38,24 +38,24 @@
         "teamId": "kitakadai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["竹村_純生_北科大_北海道", "松田_快晴_北科大_北海道"]
+        "playerIds": ["西_拓郎_北科大_北海道", "小杉_昂道_北科大_北海道"]
       },
       "historicalBest": {
         "team": "北科大",
         "teamId": "kitakadai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["竹村_純生_北科大_北海道", "松田_快晴_北科大_北海道"]
+        "playerIds": ["西_拓郎_北科大_北海道", "小杉_昂道_北科大_北海道"]
       }
     },
     "team": {
@@ -83,10 +83,18 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 24,
   "topPlayers": [
     {
       "id": "竹村_純生_北科大_北海道",
+      "appearances": 6
+    },
+    {
+      "id": "西_拓郎_北科大_北海道",
+      "appearances": 6
+    },
+    {
+      "id": "根田_大地_北科大_北海道",
       "appearances": 5
     },
     {
@@ -94,16 +102,8 @@
       "appearances": 4
     },
     {
-      "id": "西_拓郎_北科大_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "川田_泰成_北科大_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "勝俣_力飛_北科大_北海道",
-      "appearances": 1
+      "id": "西村_優_北科大_北海道",
+      "appearances": 4
     }
   ]
 }

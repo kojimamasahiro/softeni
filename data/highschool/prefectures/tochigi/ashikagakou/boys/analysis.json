@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "足利工",
+        "teamId": "ashikagakou",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["堀越_友翔_足利工_栃木県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -32,7 +44,7 @@
   "topPlayers": [
     {
       "id": "堀越_友翔_足利工_栃木県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "瀬戸_風汰_足利工_栃木県",

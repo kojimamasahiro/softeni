@@ -1,13 +1,24 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 28,
   "byCategory": {
     "team": 6,
-    "doubles": 18,
-    "singles": 1
+    "doubles": 19,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "鹿児島商",
+        "teamId": "kagoshimashou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["美坂_瑛人_鹿児島商_鹿児島県"]
+      },
       "historicalBest": {
         "team": "鹿児島商",
         "teamId": "kagoshimashou",
@@ -79,19 +90,19 @@
       "appearances": 4
     },
     {
+      "id": "長野_瑛寿_鹿児島商_鹿児島県",
+      "appearances": 3
+    },
+    {
       "id": "草地_凌冴_鹿児島商_鹿児島県",
       "appearances": 3
     },
     {
+      "id": "美坂_瑛人_鹿児島商_鹿児島県",
+      "appearances": 3
+    },
+    {
       "id": "今村_陸士_鹿児島商_鹿児島県",
-      "appearances": 2
-    },
-    {
-      "id": "藺牟田_礼雄_鹿児島商_鹿児島県",
-      "appearances": 2
-    },
-    {
-      "id": "長野_瑛寿_鹿児島商_鹿児島県",
       "appearances": 2
     }
   ]

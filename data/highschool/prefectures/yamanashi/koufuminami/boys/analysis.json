@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 9
+    "doubles": 9,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["天野_友貴_甲府南_山梨県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -20,7 +32,7 @@
         "tournamentId": "highschool-championship",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["河住_昌悟_甲府南", "深沢_秀悠_甲府南"]
+        "playerIds": ["河住_昌悟_甲府南_", "深沢_秀悠_甲府南_"]
       },
       "historicalBest": {
         "team": "甲府南",
@@ -32,7 +44,7 @@
         "tournamentId": "highschool-championship",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["河住_昌悟_甲府南", "深沢_秀悠_甲府南"]
+        "playerIds": ["河住_昌悟_甲府南_", "深沢_秀悠_甲府南_"]
       }
     },
     "team": {
@@ -53,15 +65,15 @@
   "uniquePlayers": 13,
   "topPlayers": [
     {
+      "id": "天野_友貴_甲府南_山梨県",
+      "appearances": 3
+    },
+    {
       "id": "河住_昌悟_甲府南_山梨県",
       "appearances": 2
     },
     {
       "id": "深沢_秀悠_甲府南_山梨県",
-      "appearances": 2
-    },
-    {
-      "id": "天野_友貴_甲府南_山梨県",
       "appearances": 2
     },
     {

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 19,
+  "totalAppearances": 20,
   "byCategory": {
     "team": 3,
     "doubles": 14,
-    "singles": 2
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,9 +15,9 @@
         "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["高澤_颯_北越_新潟県"]
+        "playerIds": ["山澤_隆人_北越_新潟県"]
       },
       "historicalBest": {
         "team": "北越",
@@ -27,9 +27,9 @@
         "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["高澤_颯_北越_新潟県"]
+        "playerIds": ["山澤_隆人_北越_新潟県"]
       }
     },
     "doubles": {
@@ -43,7 +43,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["高橋_憐依_北越_新潟", "高澤_颯_北越_新潟"]
+        "playerIds": ["高橋_憐依_北越_新潟県", "高澤_颯_北越_新潟県"]
       },
       "historicalBest": {
         "team": "北越",
@@ -55,7 +55,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["高橋_憐依_北越_新潟", "高澤_颯_北越_新潟"]
+        "playerIds": ["高橋_憐依_北越_新潟県", "高澤_颯_北越_新潟県"]
       }
     },
     "team": {
@@ -98,12 +98,12 @@
       "appearances": 2
     },
     {
-      "id": "早川_寛康_北越_新潟県",
+      "id": "山澤_隆人_北越_新潟県",
       "appearances": 2
     },
     {
-      "id": "町澤_緯宙_巻_新潟県",
-      "appearances": 1
+      "id": "早川_寛康_北越_新潟県",
+      "appearances": 2
     }
   ]
 }

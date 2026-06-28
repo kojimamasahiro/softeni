@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 21,
   "byCategory": {
     "team": 1,
     "doubles": 17,
-    "singles": 2
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["渡邉_智隼_学法石川高校"]
+        "playerIds": ["渡邉_智隼_学法石川_"]
       },
       "historicalBest": {
         "team": "学法石川",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["渡邉_智隼_学法石川高校"]
+        "playerIds": ["渡邉_智隼_学法石川_"]
       }
     },
     "doubles": {
@@ -80,6 +80,10 @@
       "appearances": 4
     },
     {
+      "id": "安田_舜_学法石川_福島県",
+      "appearances": 3
+    },
+    {
       "id": "富塚_遥翔_学法石川_福島県",
       "appearances": 2
     },
@@ -89,10 +93,6 @@
     },
     {
       "id": "辻本_泰知_学法石川_福島県",
-      "appearances": 2
-    },
-    {
-      "id": "渡邉_智隼_学法石川_福島県",
       "appearances": 2
     }
   ]

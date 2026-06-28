@@ -1,13 +1,24 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 14,
   "byCategory": {
     "team": 2,
-    "doubles": 8,
-    "singles": 1
+    "doubles": 9,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "大牟田",
+        "teamId": "oomuta",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["野田_暖仁_大牟田_福岡県"]
+      },
       "historicalBest": {
         "team": "大牟田",
         "teamId": "oomuta",
@@ -16,9 +27,9 @@
         "result": "1回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["山下_凱空_大牟田_福岡県"]
+        "playerIds": ["野田_暖仁_大牟田_福岡県"]
       }
     },
     "doubles": {
@@ -72,10 +83,14 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "武藤_文太_大牟田_福岡県",
+      "appearances": 3
+    },
+    {
+      "id": "澤田_壮史_大牟田_福岡県",
       "appearances": 3
     },
     {
@@ -83,16 +98,12 @@
       "appearances": 2
     },
     {
-      "id": "山下_凱空_大牟田_福岡県",
+      "id": "長友_海晴_大牟田_福岡県",
       "appearances": 2
     },
     {
-      "id": "野見山_侑也_大牟田_福岡県",
-      "appearances": 1
-    },
-    {
-      "id": "三笠_哲平_大牟田_福岡県",
-      "appearances": 1
+      "id": "山下_凱空_大牟田_福岡県",
+      "appearances": 2
     }
   ]
 }

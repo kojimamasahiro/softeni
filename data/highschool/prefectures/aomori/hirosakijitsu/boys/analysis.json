@@ -1,13 +1,24 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 13,
   "byCategory": {
     "team": 1,
-    "doubles": 8,
-    "singles": 1
+    "doubles": 9,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "弘前実",
+        "teamId": "hirosakijitsu",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["北山_悠月_弘前実_青森県"]
+      },
       "historicalBest": {
         "team": "弘前実",
         "teamId": "hirosakijitsu",
@@ -72,11 +83,15 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "樋口_拓海_弘前実_青森県",
-      "appearances": 4
+      "appearances": 5
+    },
+    {
+      "id": "山賀_滉己_弘前実_青森県",
+      "appearances": 3
     },
     {
       "id": "工藤_大和_弘前実_青森県",
@@ -88,10 +103,6 @@
     },
     {
       "id": "石澤_葵音_弘前実_青森県",
-      "appearances": 1
-    },
-    {
-      "id": "山賀_滉己_弘前実_青森県",
       "appearances": 1
     }
   ]

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 28,
   "byCategory": {
     "team": 4,
     "doubles": 21,
-    "singles": 2
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -12,10 +12,10 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["前川_悠成_高岡商_富山県"]
       },
@@ -24,10 +24,10 @@
         "teamId": "takaokashou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["前川_悠成_高岡商_富山県"]
       }
@@ -87,7 +87,7 @@
   "topPlayers": [
     {
       "id": "前川_悠成_高岡商_富山県",
-      "appearances": 5
+      "appearances": 6
     },
     {
       "id": "角崎_豪哉_高岡商_富山県",

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 80,
+  "totalAppearances": 86,
   "byCategory": {
     "team": 7,
-    "doubles": 52,
-    "singles": 21
+    "doubles": 55,
+    "singles": 24
   },
   "resultsByCategory": {
     "singles": {
@@ -12,24 +12,24 @@
         "teamId": "meitokugijuku",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "ベスト8",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["木本_琉偉_明徳義塾高校_高知県"]
+        "playerIds": ["福見_優心_明徳義塾_高知県"]
       },
       "historicalBest": {
         "team": "明徳義塾",
         "teamId": "meitokugijuku",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "ベスト8",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["木本_琉偉_明徳義塾高校_高知県"]
+        "playerIds": ["福見_優心_明徳義塾_高知県"]
       }
     },
     "doubles": {
@@ -83,14 +83,18 @@
       }
     }
   },
-  "uniquePlayers": 75,
+  "uniquePlayers": 70,
   "topPlayers": [
     {
       "id": "木本_琉偉_明徳義塾_高知県",
-      "appearances": 13
+      "appearances": 14
     },
     {
       "id": "福島_惇_明徳義塾_高知県",
+      "appearances": 6
+    },
+    {
+      "id": "加藤_歓基_明徳義塾_高知県",
       "appearances": 6
     },
     {
@@ -100,10 +104,6 @@
     {
       "id": "三田_勇人_明徳義塾_高知県",
       "appearances": 5
-    },
-    {
-      "id": "加藤_歓基_明徳義塾_高知県",
-      "appearances": 4
     }
   ]
 }

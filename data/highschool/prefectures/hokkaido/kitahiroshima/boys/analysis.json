@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kitahiroshima",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
         "gender": "boys",
-        "playerIds": ["石塚_裕貴_北広島_北海道", "横尾_陸斗_北広島_北海道"]
+        "playerIds": ["満保_天翔_北広島_北海道", "忠岡_龍之介_北広島_北海道"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "石塚_裕貴_北広島_北海道",
@@ -36,6 +36,14 @@
     },
     {
       "id": "横尾_陸斗_北広島_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "満保_天翔_北広島_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "忠岡_龍之介_北広島_北海道",
       "appearances": 1
     }
   ]

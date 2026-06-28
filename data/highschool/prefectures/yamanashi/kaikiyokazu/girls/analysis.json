@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 15
+    "doubles": 16,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "甲斐清和",
+        "teamId": "kaikiyokazu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["生原_萌詩_甲斐清和_山梨県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -47,19 +59,19 @@
     },
     {
       "id": "雨宮_夢奈_甲斐清和_山梨県",
-      "appearances": 5
+      "appearances": 6
     },
     {
       "id": "渡邊_この葉_甲斐清和_山梨県",
+      "appearances": 4
+    },
+    {
+      "id": "生原_萌詩_甲斐清和_山梨県",
       "appearances": 3
     },
     {
       "id": "森嶋_サラ_甲斐清和_山梨県",
       "appearances": 3
-    },
-    {
-      "id": "生原_萌詩_甲斐清和_山梨県",
-      "appearances": 2
     }
   ]
 }

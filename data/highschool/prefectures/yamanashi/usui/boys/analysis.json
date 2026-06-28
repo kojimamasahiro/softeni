@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 25,
   "byCategory": {
     "team": 3,
-    "doubles": 16,
-    "singles": 3
+    "doubles": 17,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "usui",
         "prefecture": "山梨県",
         "prefectureId": "yamanashi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2022,
         "gender": "boys",
-        "playerIds": ["藤原_奏_笛吹_山梨県"]
+        "playerIds": ["雨宮_陸_笛吹_山梨県"]
       }
     },
     "doubles": {
@@ -94,16 +94,16 @@
       "appearances": 4
     },
     {
+      "id": "雨宮_陸_笛吹_山梨県",
+      "appearances": 4
+    },
+    {
       "id": "有村_翔空_笛吹_山梨県",
       "appearances": 4
     },
     {
-      "id": "雨宮_陸_笛吹_山梨県",
-      "appearances": 2
-    },
-    {
       "id": "八巻_隼人_笛吹_山梨県",
-      "appearances": 2
+      "appearances": 3
     }
   ]
 }

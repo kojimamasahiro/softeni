@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
     "doubles": 3,
-    "singles": 3
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -12,24 +12,24 @@
         "teamId": "takasakijoshi",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["丸山_姫衣_高崎女子高校_群馬県"]
+        "playerIds": ["丸山_姫衣_高崎女子_群馬県"]
       },
       "historicalBest": {
         "team": "高崎女子",
         "teamId": "takasakijoshi",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["丸山_姫衣_高崎女子高校_群馬県"]
+        "playerIds": ["丸山_姫衣_高崎女子_群馬県"]
       }
     },
     "doubles": {
@@ -77,7 +77,7 @@
   "topPlayers": [
     {
       "id": "丸山_姫衣_高崎女子_群馬県",
-      "appearances": 5
+      "appearances": 6
     },
     {
       "id": "佐野_天音_高崎女子_群馬県",

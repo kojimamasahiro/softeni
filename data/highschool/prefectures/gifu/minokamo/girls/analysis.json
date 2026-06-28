@@ -16,7 +16,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["森_彩恵_美濃加茂高校_岐阜県"]
+        "playerIds": ["森_彩恵_美濃加茂_岐阜県"]
       },
       "historicalBest": {
         "team": "美濃加茂",
@@ -28,7 +28,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["森_彩恵_美濃加茂高校_岐阜県"]
+        "playerIds": ["森_彩恵_美濃加茂_岐阜県"]
       }
     },
     "doubles": {
@@ -62,10 +62,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "小栗_紗和_美濃加茂_岐阜県",
+      "appearances": 2
+    },
+    {
+      "id": "森_彩恵_美濃加茂_岐阜県",
       "appearances": 2
     },
     {
@@ -73,16 +77,12 @@
       "appearances": 2
     },
     {
+      "id": "土屋_莉愛_美濃加茂_岐阜県",
+      "appearances": 2
+    },
+    {
       "id": "志津_夢子_美濃加茂_岐阜県",
       "appearances": 2
-    },
-    {
-      "id": "瀬戸口_珂乃_美濃加茂_岐阜県",
-      "appearances": 2
-    },
-    {
-      "id": "前田_海伶_美濃加茂_岐阜県",
-      "appearances": 1
     }
   ]
 }

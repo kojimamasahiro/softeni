@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 3,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "倉敷中央",
+        "teamId": "kurashikichuuou",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["桑原_日和_倉敷中央_岡山県"]
+      },
+      "historicalBest": {
+        "team": "倉敷中央",
+        "teamId": "kurashikichuuou",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["桑原_日和_倉敷中央_岡山県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -43,7 +66,7 @@
   "topPlayers": [
     {
       "id": "桑原_日和_倉敷中央_岡山県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "内田_充咲_倉敷中央_岡山県",

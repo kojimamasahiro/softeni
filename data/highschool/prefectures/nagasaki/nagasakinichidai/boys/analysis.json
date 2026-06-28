@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 6
+    "doubles": 7,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "長崎日大",
+        "teamId": "nagasakinichidai",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["松尾_寛斗_長崎日大_長崎県"]
+      },
+      "historicalBest": {
+        "team": "長崎日大",
+        "teamId": "nagasakinichidai",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["松尾_寛斗_長崎日大_長崎県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -39,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "山下_将毅_長崎日大_長崎県",
@@ -54,12 +77,12 @@
       "appearances": 2
     },
     {
-      "id": "江島_涼太郎_長崎日大_長崎県",
-      "appearances": 1
+      "id": "石橋_樹人_長崎日大_長崎県",
+      "appearances": 2
     },
     {
-      "id": "石橋_樹人_長崎日大_長崎県",
-      "appearances": 1
+      "id": "桒原_大知_長崎日大_長崎県",
+      "appearances": 2
     }
   ]
 }

@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 1,
-    "doubles": 14
+    "doubles": 15,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "豊田大谷",
+        "teamId": "toyodaootani",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["川戸_優奈_豊田大谷_愛知県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -53,23 +65,23 @@
   "uniquePlayers": 21,
   "topPlayers": [
     {
+      "id": "柴田_季歩_豊田大谷_愛知県",
+      "appearances": 3
+    },
+    {
+      "id": "渋田_葉水_豊田大谷_愛知県",
+      "appearances": 3
+    },
+    {
       "id": "加藤_咲来_豊田大谷_愛知県",
       "appearances": 3
     },
     {
-      "id": "柴田_季歩_豊田大谷_愛知県",
-      "appearances": 2
-    },
-    {
-      "id": "渋田_葉水_豊田大谷_愛知県",
+      "id": "川戸_優奈_豊田大谷_愛知県",
       "appearances": 2
     },
     {
       "id": "伊藤_美結_豊田大谷_愛知県",
-      "appearances": 2
-    },
-    {
-      "id": "大元_寧々_豊田大谷_愛知県",
       "appearances": 2
     }
   ]

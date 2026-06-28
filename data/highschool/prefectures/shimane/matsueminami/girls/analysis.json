@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 19,
   "byCategory": {
     "team": 3,
-    "doubles": 8,
-    "singles": 6
+    "doubles": 9,
+    "singles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "girls",
-        "playerIds": ["行田_理佐子_松江南高校_島根"]
+        "playerIds": ["行田_理佐子_松江南_島根県"]
       },
       "historicalBest": {
         "team": "松江南",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "girls",
-        "playerIds": ["行田_理佐子_松江南高校_島根"]
+        "playerIds": ["行田_理佐子_松江南_島根県"]
       }
     },
     "doubles": {
@@ -73,26 +73,26 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "岡崎_嗣乃_松江南_島根県",
+      "appearances": 7
+    },
     {
       "id": "野津_楓未_松江南_島根県",
       "appearances": 5
-    },
-    {
-      "id": "岡崎_嗣乃_松江南_島根県",
-      "appearances": 4
     },
     {
       "id": "行田_理佐子_松江南_島根県",
       "appearances": 4
     },
     {
-      "id": "野尻_りむ_松江南_島根県",
-      "appearances": 1
+      "id": "糸賀_りの_松江南_島根県",
+      "appearances": 2
     },
     {
-      "id": "妹尾_菜央_松江南_島根県",
+      "id": "野尻_りむ_松江南_島根県",
       "appearances": 1
     }
   ]

@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 6
+    "doubles": 6,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "小野田",
+        "teamId": "onoda",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["岡﨑_優菜_小野田_山口県"]
+      },
+      "historicalBest": {
+        "team": "小野田",
+        "teamId": "onoda",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["岡﨑_優菜_小野田_山口県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -57,15 +80,15 @@
       "appearances": 3
     },
     {
+      "id": "岡﨑_優菜_小野田_山口県",
+      "appearances": 3
+    },
+    {
       "id": "末益_千夏子_小野田_山口県",
       "appearances": 2
     },
     {
       "id": "岡村_樹那_小野田_山口県",
-      "appearances": 2
-    },
-    {
-      "id": "岡﨑_優菜_小野田_山口県",
       "appearances": 2
     },
     {

@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 3
+    "doubles": 4,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["鈴木_輝_浜松商_静岡県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -16,9 +28,9 @@
         "teamId": "hamamatsushou",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2022,
         "gender": "boys",
         "playerIds": ["鈴木_駿_浜松商_静岡県", "山田_湊_浜松商_静岡県"]
@@ -39,15 +51,15 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "鈴木_駿_浜松商_静岡県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "山田_湊_浜松商_静岡県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "伊藤_吟時_浜松商_静岡県",

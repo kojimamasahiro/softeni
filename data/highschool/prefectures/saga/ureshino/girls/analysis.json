@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 29,
   "byCategory": {
     "team": 2,
     "doubles": 18,
-    "singles": 7
+    "singles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -14,20 +14,20 @@
         "prefectureId": "saga",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["阿辺_未羽_嬉野高校_佐賀"]
+        "playerIds": ["杉原_澄_嬉野_佐賀県"]
       },
       "historicalBest": {
         "team": "嬉野",
         "teamId": "ureshino",
         "prefecture": "佐賀県",
         "prefectureId": "saga",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2022,
         "gender": "girls",
         "playerIds": ["中島_那菜_嬉野_佐賀県"]
       }
@@ -90,6 +90,10 @@
       "appearances": 10
     },
     {
+      "id": "中島_那菜_嬉野_佐賀県",
+      "appearances": 5
+    },
+    {
       "id": "中村_旭_嬉野_佐賀県",
       "appearances": 5
     },
@@ -98,12 +102,8 @@
       "appearances": 5
     },
     {
-      "id": "中島_那菜_嬉野_佐賀県",
+      "id": "杉原_澄_嬉野_佐賀県",
       "appearances": 4
-    },
-    {
-      "id": "阿辺_未羽_嬉野_佐賀県",
-      "appearances": 3
     }
   ]
 }

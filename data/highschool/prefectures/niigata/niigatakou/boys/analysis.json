@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "新潟工",
+        "teamId": "niigatakou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["古俣_翼_新潟工_新潟県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -28,7 +40,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "金子_陸斗_新潟工_新潟県",
@@ -36,6 +48,10 @@
     },
     {
       "id": "古俣_琉聖_新潟工_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "古俣_翼_新潟工_新潟県",
       "appearances": 1
     }
   ]

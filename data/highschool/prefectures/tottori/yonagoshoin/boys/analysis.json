@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 46,
+  "totalAppearances": 48,
   "byCategory": {
     "team": 5,
-    "doubles": 26,
-    "singles": 15
+    "doubles": 27,
+    "singles": 16
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["中川_龍_米子松蔭高校_鳥取県"]
+        "playerIds": ["中川_龍_米子松蔭_鳥取県"]
       },
       "historicalBest": {
         "team": "米子松蔭",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2023,
         "gender": "boys",
-        "playerIds": ["杉田_大樹_米子松蔭高校_鳥取県"]
+        "playerIds": ["杉田_大樹_米子松蔭_鳥取県"]
       }
     },
     "doubles": {
@@ -50,12 +50,12 @@
         "teamId": "yonagoshoin",
         "prefecture": "鳥取県",
         "prefectureId": "tottori",
-        "result": "準優勝",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2023,
         "gender": "boys",
-        "playerIds": ["岸本_悠真_米子松蔭_鳥取県", "重栖_真都_米子松蔭_鳥取県"]
+        "playerIds": ["實田_煌羽_米子松蔭_鳥取県", "吉川_恵大_米子松蔭_鳥取県"]
       }
     },
     "team": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 29,
+  "uniquePlayers": 28,
   "topPlayers": [
     {
       "id": "吉川_恵大_米子松蔭_鳥取県",
@@ -98,11 +98,11 @@
       "appearances": 5
     },
     {
-      "id": "岸本_悠真_米子松蔭_鳥取県",
+      "id": "大田_優_米子松蔭_鳥取県",
       "appearances": 4
     },
     {
-      "id": "中川_龍_米子松蔭_鳥取県",
+      "id": "岸本_悠真_米子松蔭_鳥取県",
       "appearances": 4
     }
   ]

@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "下田",
+        "teamId": "shimoda",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["日吉_凛乃_下田_静岡県"]
+      },
+      "historicalBest": {
+        "team": "下田",
+        "teamId": "shimoda",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["日吉_凛乃_下田_静岡県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -39,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "石川_智子_静南クラブ_静岡県",
@@ -47,6 +70,10 @@
     },
     {
       "id": "外岡_羽実_下田中学校_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "日吉_凛乃_下田_静岡県",
       "appearances": 1
     }
   ]

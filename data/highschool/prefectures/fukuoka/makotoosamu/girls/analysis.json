@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 16,
   "byCategory": {
     "team": 1,
-    "doubles": 12,
-    "singles": 1
+    "doubles": 13,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -17,19 +17,19 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "girls",
-        "playerIds": ["栗原_都亜_誠修高校_福岡"]
+        "playerIds": ["栗原_都亜_誠修_福岡県"]
       },
       "historicalBest": {
         "team": "誠修",
         "teamId": "makotoosamu",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["栗原_都亜_誠修高校_福岡"]
+        "playerIds": ["西村_麻央_誠修_福岡県"]
       }
     },
     "doubles": {
@@ -77,11 +77,11 @@
   "topPlayers": [
     {
       "id": "西村_麻央_誠修_福岡県",
-      "appearances": 3
+      "appearances": 5
     },
     {
       "id": "板橋_杏奈_誠修_福岡県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "栗原_都亜_誠修_福岡県",

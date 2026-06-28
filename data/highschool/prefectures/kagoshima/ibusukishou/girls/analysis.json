@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 13,
   "byCategory": {
     "team": 1,
-    "doubles": 9
+    "doubles": 10,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "指宿商",
+        "teamId": "ibusukishou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["東瀬戸_彩夏_指宿商_鹿児島県"]
+      },
+      "historicalBest": {
+        "team": "指宿商",
+        "teamId": "ibusukishou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "準優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["吉木_理彩_指宿商_鹿児島県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -20,7 +43,7 @@
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "girls",
-        "playerIds": ["山迫_咲弥_指宿商_鹿児島", "鶴田_奈々_指宿商_鹿児島"]
+        "playerIds": ["山迫_咲弥_指宿商_鹿児島県", "鶴田_奈々_指宿商_鹿児島県"]
       },
       "historicalBest": {
         "team": "指宿商",
@@ -50,14 +73,14 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
-      "id": "山口_ひなた_指宿商_鹿児島県",
-      "appearances": 2
+      "id": "吉木_理彩_指宿商_鹿児島県",
+      "appearances": 3
     },
     {
-      "id": "吉木_理彩_指宿商_鹿児島県",
+      "id": "山口_ひなた_指宿商_鹿児島県",
       "appearances": 2
     },
     {
@@ -65,12 +88,12 @@
       "appearances": 2
     },
     {
-      "id": "山平_瑞希_指宿商_鹿児島県",
-      "appearances": 1
+      "id": "水迫_流花_指宿商_鹿児島県",
+      "appearances": 2
     },
     {
-      "id": "水迫_流花_指宿商_鹿児島県",
-      "appearances": 1
+      "id": "﨑森_詩乃_指宿商_鹿児島県",
+      "appearances": 2
     }
   ]
 }

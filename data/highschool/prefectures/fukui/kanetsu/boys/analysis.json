@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 31,
+  "totalAppearances": 34,
   "byCategory": {
     "team": 6,
-    "doubles": 23,
-    "singles": 2
+    "doubles": 24,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -12,12 +12,12 @@
         "teamId": "kanetsu",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["佐藤_雅紀_金津_福井県"]
+        "playerIds": ["石隅_空峨_金津_福井県"]
       },
       "historicalBest": {
         "team": "金津",
@@ -90,20 +90,20 @@
       "appearances": 5
     },
     {
+      "id": "今井_奏良_金津_福井県",
+      "appearances": 5
+    },
+    {
+      "id": "内倉_海響_金津_福井県",
+      "appearances": 4
+    },
+    {
       "id": "戸田_大晴_金津_福井県",
       "appearances": 4
     },
     {
       "id": "佐藤_雅紀_金津_福井県",
       "appearances": 4
-    },
-    {
-      "id": "内倉_海響_金津_福井県",
-      "appearances": 3
-    },
-    {
-      "id": "渡辺_優希_金津_福井県",
-      "appearances": 3
     }
   ]
 }

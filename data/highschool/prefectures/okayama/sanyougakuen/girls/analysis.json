@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 34,
+  "totalAppearances": 35,
   "byCategory": {
     "team": 2,
-    "doubles": 24,
+    "doubles": 25,
     "singles": 8
   },
   "resultsByCategory": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["馬島_汐理_山陽学園高校_岡山県"]
+        "playerIds": ["馬島_汐理_山陽学園_岡山県"]
       },
       "historicalBest": {
         "team": "山陽学園",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["馬島_汐理_山陽学園高校_岡山県"]
+        "playerIds": ["馬島_汐理_山陽学園_岡山県"]
       }
     },
     "doubles": {
@@ -83,11 +83,19 @@
       }
     }
   },
-  "uniquePlayers": 33,
+  "uniquePlayers": 31,
   "topPlayers": [
     {
       "id": "馬島_沙英_山陽学園_岡山県",
       "appearances": 5
+    },
+    {
+      "id": "阿部_寧々_山陽学園中学校_岡山県",
+      "appearances": 4
+    },
+    {
+      "id": "馬島_汐理_山陽学園中学校_岡山県",
+      "appearances": 4
     },
     {
       "id": "森田_すず_山陽学園_岡山県",
@@ -96,14 +104,6 @@
     {
       "id": "佐々木_莉子_山陽学園_岡山県",
       "appearances": 3
-    },
-    {
-      "id": "神﨑_萌花_山陽学園_岡山県",
-      "appearances": 3
-    },
-    {
-      "id": "川島_莉乃_山陽学園_岡山県",
-      "appearances": 2
     }
   ]
 }

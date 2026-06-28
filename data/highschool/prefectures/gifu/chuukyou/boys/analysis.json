@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 29,
+  "totalAppearances": 31,
   "byCategory": {
     "team": 4,
-    "doubles": 20,
-    "singles": 5
+    "doubles": 21,
+    "singles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["北島_青季_中京高校_岐阜県"]
+        "playerIds": ["北島_青季_中京_岐阜県"]
       },
       "historicalBest": {
         "team": "中京",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["北島_青季_中京高校_岐阜県"]
+        "playerIds": ["北島_青季_中京_岐阜県"]
       }
     },
     "doubles": {
@@ -43,7 +43,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["秋山_知暉_中京_岐阜", "吉松_駿佑_中京_岐阜"]
+        "playerIds": ["秋山_知暉_中京_岐阜県", "吉松_駿佑_中京_岐阜県"]
       },
       "historicalBest": {
         "team": "中京",
@@ -55,7 +55,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["秋山_知暉_中京_岐阜", "吉松_駿佑_中京_岐阜"]
+        "playerIds": ["秋山_知暉_中京_岐阜県", "吉松_駿佑_中京_岐阜県"]
       }
     },
     "team": {
@@ -90,20 +90,20 @@
       "appearances": 3
     },
     {
+      "id": "森_友弥_中京_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "與川_賢樹_中京_岐阜県",
+      "appearances": 3
+    },
+    {
       "id": "吉松_駿佑_中京_岐阜県",
       "appearances": 3
     },
     {
       "id": "佐藤_直輝_中京_岐阜県",
       "appearances": 3
-    },
-    {
-      "id": "前田_英貴_中京_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "森_友弥_中京_岐阜県",
-      "appearances": 2
     }
   ]
 }

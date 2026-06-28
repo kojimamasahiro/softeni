@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 39,
+  "totalAppearances": 42,
   "byCategory": {
     "team": 6,
-    "doubles": 28,
-    "singles": 5
+    "doubles": 29,
+    "singles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -12,12 +12,12 @@
         "teamId": "hakuouooashiri",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "ベスト8",
+        "result": "ベスト4",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["螺良_寧々_白鷗大足利高校_栃木県"]
+        "playerIds": ["螺良_寧々_白鷗大足利_栃木県"]
       },
       "historicalBest": {
         "team": "白鷗大足利",
@@ -27,9 +27,9 @@
         "result": "ベスト4",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2023,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["日笠_愛美_白鷗大足利_栃木県"]
+        "playerIds": ["螺良_寧々_白鷗大足利_栃木県"]
       }
     },
     "doubles": {
@@ -83,26 +83,26 @@
       }
     }
   },
-  "uniquePlayers": 31,
+  "uniquePlayers": 29,
   "topPlayers": [
     {
-      "id": "日笠_愛美_白鷗大足利_栃木県",
-      "appearances": 5
-    },
-    {
       "id": "富山_鈴香_白鷗大足利_栃木県",
-      "appearances": 5
+      "appearances": 7
     },
     {
       "id": "螺良_寧々_白鷗大足利_栃木県",
-      "appearances": 4
+      "appearances": 7
+    },
+    {
+      "id": "日笠_愛美_白鷗大足利_栃木県",
+      "appearances": 6
     },
     {
       "id": "西牧_結愛_白鷗大足利_栃木県",
       "appearances": 4
     },
     {
-      "id": "梶原_理央_白鷗大足利_栃木県",
+      "id": "菊次_萌花_白鷗大足利_栃木県",
       "appearances": 3
     }
   ]

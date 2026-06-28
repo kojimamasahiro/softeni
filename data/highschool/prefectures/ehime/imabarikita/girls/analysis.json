@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 13,
   "byCategory": {
     "team": 1,
-    "doubles": 9,
-    "singles": 1
+    "doubles": 10,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "imabarikita",
         "prefecture": "愛媛県",
         "prefectureId": "ehime",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["中路_心結_今治北_愛媛県"]
+        "playerIds": ["﨑山_七海_今治北_愛媛県"]
       }
     },
     "doubles": {
@@ -83,11 +83,19 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "中路_心結_今治北_愛媛県",
       "appearances": 3
+    },
+    {
+      "id": "正岡_由衣_今治北_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "西本_奈津希_今治北_愛媛県",
+      "appearances": 2
     },
     {
       "id": "矢野_朱莉_今治北_愛媛県",
@@ -96,14 +104,6 @@
     {
       "id": "伊東_ひなた_今治北_愛媛県",
       "appearances": 2
-    },
-    {
-      "id": "森本_汐夏_今治北_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "正岡_由衣_今治北_愛媛県",
-      "appearances": 1
     }
   ]
 }

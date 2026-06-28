@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 6
+    "doubles": 6,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "法政二",
+        "teamId": "houseini",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["中山_椋太_法政二_神奈川県"]
+      },
+      "historicalBest": {
+        "team": "法政二",
+        "teamId": "houseini",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["中山_椋太_法政二_神奈川県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -39,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "松川_倫大_法政二_神奈川県",

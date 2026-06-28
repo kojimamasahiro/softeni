@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "旭川東",
+        "teamId": "asahikawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["駒津_太珂_旭川東_北海道"]
+      },
+      "historicalBest": {
+        "team": "旭川東",
+        "teamId": "asahikawahigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["駒津_太珂_旭川東_北海道"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -39,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "那須_雄太_旭川東_北海道",
@@ -47,6 +70,14 @@
     },
     {
       "id": "谷口_康生_旭川東_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "前田_朝杜_旭川東_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "駒津_太珂_旭川東_北海道",
       "appearances": 1
     }
   ]

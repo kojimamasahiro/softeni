@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 27,
   "byCategory": {
     "team": 4,
-    "doubles": 18,
-    "singles": 3
+    "doubles": 19,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "akitareiwa",
         "prefecture": "秋田県",
         "prefectureId": "akita",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["佐藤_美緒_秋田令和_秋田県"]
+        "playerIds": ["遠藤_夢知_秋田令和_秋田県"]
       }
     },
     "doubles": {
@@ -94,16 +94,16 @@
       "appearances": 6
     },
     {
+      "id": "遠藤_夢知_秋田令和_秋田県",
+      "appearances": 4
+    },
+    {
       "id": "丸岡_希来_秋田令和_秋田県",
       "appearances": 4
     },
     {
       "id": "田口_陽向_秋田令和_秋田県",
       "appearances": 3
-    },
-    {
-      "id": "大越_真緒_秋田令和_秋田県",
-      "appearances": 2
     }
   ]
 }

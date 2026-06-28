@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 1,
-    "doubles": 9,
+    "doubles": 10,
     "singles": 6
   },
   "resultsByCategory": {
@@ -43,7 +43,7 @@
         "tournamentId": "secondaryschool-championship",
         "year": 2024,
         "gender": "girls",
-        "playerIds": ["中山_萌_松山中学校_関東・埼玉県", "五十畑_咲和_松山中学校_関東・埼玉県"]
+        "playerIds": ["中山_萌_松山中学校_埼玉県", "五十畑_咲和_松山中学校_埼玉県"]
       },
       "historicalBest": {
         "team": "松山",
@@ -55,7 +55,7 @@
         "tournamentId": "secondaryschool-championship",
         "year": 2024,
         "gender": "girls",
-        "playerIds": ["中山_萌_松山中学校_関東・埼玉県", "五十畑_咲和_松山中学校_関東・埼玉県"]
+        "playerIds": ["中山_萌_松山中学校_埼玉県", "五十畑_咲和_松山中学校_埼玉県"]
       }
     },
     "team": {
@@ -83,26 +83,26 @@
       }
     }
   },
-  "uniquePlayers": 19,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "五十畑_咲和_松山中学校_埼玉県",
-      "appearances": 5
+      "appearances": 7
     },
     {
       "id": "中山_萌_松山中学校_埼玉県",
+      "appearances": 4
+    },
+    {
+      "id": "篠澤_美海_松山中学校_埼玉県",
       "appearances": 2
     },
     {
-      "id": "佐藤_愛_松山_関東・埼玉県",
-      "appearances": 1
+      "id": "手塚_咲希_松山中学校_埼玉県",
+      "appearances": 2
     },
     {
-      "id": "皆上_心_松山_関東・埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "髙橋_彩月_松山_関東・埼玉県",
+      "id": "佐藤_愛_松山_埼玉県",
       "appearances": 1
     }
   ]

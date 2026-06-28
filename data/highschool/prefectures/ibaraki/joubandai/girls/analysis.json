@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 5,
+    "team": 1,
+    "doubles": 10,
     "singles": 1
   },
   "resultsByCategory": {
@@ -59,30 +60,40 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "常磐大",
+        "teamId": "joubandai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "大図_果凛_常磐大_茨城県",
-      "appearances": 4
+      "appearances": 6
     },
     {
       "id": "飯塚_梨乃_常磐大_茨城県",
-      "appearances": 3
+      "appearances": 5
     },
     {
-      "id": "大津_琴海_常磐大高_茨城県",
-      "appearances": 1
+      "id": "大津_琴海_常磐大_茨城県",
+      "appearances": 2
     },
     {
-      "id": "鈴木_ゆり乃_常磐大高_茨城県",
-      "appearances": 1
+      "id": "鈴木_ゆり乃_常磐大_茨城県",
+      "appearances": 2
     },
     {
-      "id": "佐藤_もえ_常磐大_茨城県",
-      "appearances": 1
+      "id": "大図_果暖_常磐大_茨城県",
+      "appearances": 2
     }
   ]
 }

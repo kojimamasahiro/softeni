@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4
+    "doubles": 5,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "愛産大三河",
+        "teamId": "aisanoomikawa",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["伊藤_匠_愛産大三河_愛知県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -32,11 +44,11 @@
   "topPlayers": [
     {
       "id": "伊藤_匠_愛産大三河_愛知県",
-      "appearances": 1
+      "appearances": 3
     },
     {
       "id": "伊藤_遥_愛産大三河_愛知県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "武_龍之介_愛産大三河_愛知県",

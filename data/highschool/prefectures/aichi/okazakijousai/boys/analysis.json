@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 63,
+  "totalAppearances": 66,
   "byCategory": {
     "team": 5,
-    "doubles": 42,
-    "singles": 16
+    "doubles": 43,
+    "singles": 18
   },
   "resultsByCategory": {
     "singles": {
@@ -14,10 +14,10 @@
         "prefectureId": "aichi",
         "result": "優勝",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["塚本_光琉_岡崎城西高校_愛知"]
+        "playerIds": ["塚本_光琉_岡崎城西_愛知県"]
       },
       "historicalBest": {
         "team": "岡崎城西",
@@ -26,10 +26,10 @@
         "prefectureId": "aichi",
         "result": "優勝",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["塚本_光琉_岡崎城西高校_愛知"]
+        "playerIds": ["塚本_光琉_岡崎城西_愛知県"]
       }
     },
     "doubles": {
@@ -43,7 +43,7 @@
         "tournamentId": "asian-championship-qualifier",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["塚本_光琉_岡崎城西", "野本_凌生_法政大学"]
+        "playerIds": ["塚本_光琉_岡崎城西_", "野本_凌生_法政大学_"]
       },
       "historicalBest": {
         "team": "岡崎城西",
@@ -83,10 +83,18 @@
       }
     }
   },
-  "uniquePlayers": 49,
+  "uniquePlayers": 48,
   "topPlayers": [
     {
       "id": "長濱_瑠飛_岡崎城西_愛知県",
+      "appearances": 6
+    },
+    {
+      "id": "板倉_豪_岡崎城西_愛知県",
+      "appearances": 6
+    },
+    {
+      "id": "塚本_光琉_岡崎城西_愛知県",
       "appearances": 6
     },
     {
@@ -94,16 +102,8 @@
       "appearances": 5
     },
     {
-      "id": "板倉_豪_岡崎城西_愛知県",
+      "id": "山田_健太郎_岡崎城西_愛知県",
       "appearances": 5
-    },
-    {
-      "id": "塚本_光琉_岡崎城西_愛知県",
-      "appearances": 5
-    },
-    {
-      "id": "藤本_貫太_岡崎城西_愛知県",
-      "appearances": 4
     }
   ]
 }
