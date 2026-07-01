@@ -91,3 +91,40 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 - robots: noindex 時は `noindex, follow`（`MetaHead` の `noindexFollow`）。薄いページからの内部リンク（関連選手・大会ページ）で残すページへ評価を流すため、`nofollow` にはしない。
 - 自動復帰: 判定はビルド時のデータ由来のため、試合データが増えて `totalMatches` が閾値を超える、または全国高校大会に出場すると、**次回ビルドで自動的に index 対象へ戻る**（手動の解除は不要）。逆に閾値・基準を変えたい場合は `PLAYER_INDEX_MIN_MATCHES` か判定式の 1 箇所だけ変更すればよい。
 - sitemap 連動: `next-sitemap`（`output: 'export'`）は `out/**/*.html` を一括列挙するだけで robots meta を見ないため、noindex ページも sitemap に載る。これを防ぐため postbuild に `scripts/filter-noindex-from-sitemap.mjs` を追加し、生成 HTML の `robots` meta が noindex のページの canonical を sitemap から除去する。判定はページ側 1 箇所に集約し、sitemap は生成物から派生させる（ロジック二重化なし）。postbuild 順: `next-sitemap` → `sort-sitemaps` → `filter-noindex-from-sitemap`。
+
+## 選手データベース拡張（計画・未実装 2026-07-01）
+
+選手ページを「国内で最も情報量の多い選手データベース」にするための集計機能群の設計。
+**まだ実装していない**（本節は計画スナップショット）。ドラフト仕様は 2 本:
+機能仕様 [docs/raw/2026-07-01-player-page-comprehensive-design.md](../raw/2026-07-01-player-page-comprehensive-design.md)、
+集計エンジン [docs/raw/2026-07-01-player-statistics-engine.md](../raw/2026-07-01-player-statistics-engine.md)
+（`playerStatistics.ts` 単一ファサード → `PlayerStatistics` を返す設計）。
+
+対象機能（自動生成）: 歴代戦績 / 年度別成績 / 大会別成績 / ペア別勝敗 / 全国大会初出場 /
+全国大会初優勝 / 連覇・○回目優勝 / 通算優勝数 / 主要大会優勝数 / 年度ランキング推移 / 対戦相手 H2H。
+追加統計（2026-07-01）: 最長連勝 / 最高勝率（年度別・最小10試合）/ 苦手選手・得意選手（H2H 3対戦以上）/
+最多対戦相手 / 最多ペア / 所属別成績 / 決勝・準決勝進出率（ノックアウト個人戦を分母）/ キャリア年表。
+※「学年別成績」は確実な生年・入学年データが無いため**除外（実装しない）**。
+※追加統計はいずれも既存 Facts への単一パス fold で導け、データ構造・計算量（1選手 O(m log m)）を変えない。
+
+設計の核（単一プリミティブ方式）:
+
+- 全機能は、選手 1 人ぶんの中間データ `PlayerMatchFact[]`（1 試合 1 件）と `PlayerEntryFact[]`（1 大会カテゴリ 1 件＝最終順位）へ、
+  一度だけ前計算してから軽く畳み込む。個別機能ごとに `details/**` を走査し直さない。
+- 生成は prebuild スクリプト（`scripts/generate-player-facts.mjs` 想定）→ `data/players/_facts/{id}.json`（中間）→
+  純関数 fold で `data/players/_agg/{id}.json`（選手集計）。既存 `analysis.json` / `careerRecord` / `milestones` /
+  `majorTitles` はこの facts 入力へ統合し、ロジック二重化を解消する。
+- 年度ランキングのみ全選手横断のグローバル計算のため 2 段目 `scripts/generate-rankings.mjs` →
+  `data/rankings/{year}-{discipline}.json` を経由し、各選手へ逆展開する。
+- すべてビルド時前計算（本番 `output:'export'`）。ランタイム集計はしない。全 H2H・全ペア等の大量データは既存 lite 方式で遅延取得。
+
+確定した集計ルール（2026-07-01）:
+
+- **年区切り = 年度**。大会データの `year` が既に年度指定のため `year` をそのまま使う（日付からの再計算不要）。
+- **全国大会 = `index.json` の大会のうち `generationId` が `international` / `international-qualifier` 以外**（国際大会・国際予選は含めない）。`isMajorTitle` は従来どおり 4 大全日本。
+- **勝率・ゲーム率の算入**（データ実体に基づき改訂）: 不戦勝と途中棄権はデータ上 `retired:true` で区別できないため、`retired:true` は勝率・ゲーム率から全除外（実際に戦った試合ベース）、draw は勝率の分母から除外。ただし順位・進出率・出場回数・優勝判定など placement 側には反映する（retired の勝者は勝ち上がっているため）。
+- **年度ランキング**: 決定的な「シーズンポイント制」を主指標とし、大会格 `tier` × 順位係数を **その年度の上位 3 大会のみ合算**（掲載範囲の偏り補正）＋ `scope-limited` 注記。tier・係数は `data/ranking-config.json` に外出し。副指標として Elo 系レーティングの時系列推移を将来追加可能。
+- **対戦相手 H2H の既定軸 = 対個人**（相方問わず相手選手で名寄せ）。ペア対ペアは絞り込みオプション。
+- 全集計は当サイト掲載大会分。`scope: 'site-covered'` と `scopeNote` を付し、「初」「通算」は `confidence: 'scope-limited'` を明示する。
+
+データ実体確認済み（2026-07-01）: 不戦勝 / bye は独立表現を持たず `retired:true` で登録され途中棄権と判別不能（上記ルールに反映済み）。実装時に残る確認: `ranking-config.json` の tier・係数・閾値初期値の運用調整。[open-questions.md](./open-questions.md) 参照。

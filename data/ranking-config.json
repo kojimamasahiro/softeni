@@ -1,0 +1,40 @@
+{
+  "_readme": "選手統計エンジン（playerStatistics.ts）の調整可能パラメータ。値を変えて再ビルドすれば集計に反映される（集計ロジックを変えた場合は engineVersion を上げて全再計算）。初期値は推奨のプレースホルダーで、運用開始後に実データを見て微調整する。設計: docs/raw/2026-07-01-player-statistics-engine.md / docs/raw/2026-07-01-player-page-comprehensive-design.md",
+  "version": 1,
+  "ranking": {
+    "_note": "年度ランキング（§11）。tier 分類は大会マスタから導出: major=isMajorTitle / national=isNational かつ非major / local=非isNational。",
+    "topNTournamentsPerSeason": 3,
+    "tier": {
+      "major": 100,
+      "national": 60,
+      "local": 20
+    },
+    "placementCoefficient": {
+      "_note": "最終順位の係数。best4/best8 は placement.kind='best' の value から解決。entry=ベスト8未満の出場（kind='round'）。",
+      "winner": 1.0,
+      "runnerup": 0.7,
+      "best4": 0.5,
+      "best8": 0.3,
+      "entry": 0.1
+    },
+    "disciplines": ["singles", "doubles"],
+    "rating": {
+      "_note": "副指標の Elo 系レーティング（将来）。当面は無効。",
+      "enabled": false,
+      "initial": 1500,
+      "kByTier": { "major": 40, "national": 32, "local": 24 },
+      "provisionalMatches": 10
+    }
+  },
+  "stats": {
+    "_note": "追加統計項目（§4.1 / §12.5）の閾値・分母。",
+    "minMatchesForSeasonWinRate": 10,
+    "minMeetingsForH2H": 3,
+    "headToHeadDefaultAxis": "individual",
+    "reachRate": {
+      "_note": "決勝・準決勝進出率の分母。ノックアウトの個人戦のみ（団体・リーグ戦は除外）。",
+      "denominatorStage": "knockout",
+      "denominatorCategories": ["singles", "doubles", "mixed"]
+    }
+  }
+}
