@@ -92,13 +92,35 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 - 自動復帰: 判定はビルド時のデータ由来のため、試合データが増えて `totalMatches` が閾値を超える、または全国高校大会に出場すると、**次回ビルドで自動的に index 対象へ戻る**（手動の解除は不要）。逆に閾値・基準を変えたい場合は `PLAYER_INDEX_MIN_MATCHES` か判定式の 1 箇所だけ変更すればよい。
 - sitemap 連動: `next-sitemap`（`output: 'export'`）は `out/**/*.html` を一括列挙するだけで robots meta を見ないため、noindex ページも sitemap に載る。これを防ぐため postbuild に `scripts/filter-noindex-from-sitemap.mjs` を追加し、生成 HTML の `robots` meta が noindex のページの canonical を sitemap から除去する。判定はページ側 1 箇所に集約し、sitemap は生成物から派生させる（ロジック二重化なし）。postbuild 順: `next-sitemap` → `sort-sitemaps` → `filter-noindex-from-sitemap`。
 
-## 選手データベース拡張（計画・未実装 2026-07-01）
+## 選手統計エンジン（Player Statistics Engine・実装済み P1–P6 / 2026-07-02）
 
-選手ページを「国内で最も情報量の多い選手データベース」にするための集計機能群の設計。
-**まだ実装していない**（本節は計画スナップショット）。ドラフト仕様は 2 本:
+選手ページを「国内で最も情報量の多い選手データベース」にするための集計機能群。
+実行計画 [docs/raw/2026-07-01-player-statistics-engine-implementation-plan.md](../raw/2026-07-01-player-statistics-engine-implementation-plan.md)
+の **P1〜P6 を実装済み**（P7 増分・性能・golden 全体突合は未了）。設計 2 本:
 機能仕様 [docs/raw/2026-07-01-player-page-comprehensive-design.md](../raw/2026-07-01-player-page-comprehensive-design.md)、
-集計エンジン [docs/raw/2026-07-01-player-statistics-engine.md](../raw/2026-07-01-player-statistics-engine.md)
-（`playerStatistics.ts` 単一ファサード → `PlayerStatistics` を返す設計）。
+集計エンジン [docs/raw/2026-07-01-player-statistics-engine.md](../raw/2026-07-01-player-statistics-engine.md)、
+データ契約 [docs/raw/2026-07-01-player-statistics-engine-data-contract.md](../raw/2026-07-01-player-statistics-engine-data-contract.md)（実装はこれを正とする）。
+
+### 実装状況（2026-07-02）
+
+- **配置**: エンジンは `lib/playerStats/`。公開ファサードは `lib/playerStats/playerStatistics.ts`
+  （`getPlayerStatistics(id, options)` → `PlayerStatistics`。`getAllPlayerIds` / `toPlayerMeta` / `toPlayerJsonLd` も）。
+  公開型は `src/types/playerStatistics.ts`、内部型は `lib/playerStats/types.ts`。
+- **層構造**: L0 `sourceAdapter.ts`（読込・スキーマ変種判定・大会メタ join）/ L1 `facts.ts`（`PlayerMatchFact`・`PlayerEntryFact`）/
+  L2 `aggregators/*.ts`（純関数 fold）/ L3 `playerStatistics.ts`（オーケストレーション・プロセス内 memo）。
+- **生成スクリプト**（TS・`ts-node`。`scripts/playerStats/`）: `generate-facts.ts`（逆引き `_index/by-player.json` ＋ `_facts/{id}.json`）/
+  `generate-rankings.ts`（`data/rankings/{year}-{discipline}.json`・`--years` で増分）/ `generate-public-json.ts`（`public/data/player-stats/{id}.json`）。
+  `prebuild` に連結済み。中間・成果物（`_facts`/`_agg`/`_index`/`rankings`/`public/data/player-stats`）は `.gitignore`。
+- **既存資産の一本化（P6）**: `data/players/<slug>/analysis.json` は **エンジン Facts 由来で生成**（`lib/playerStats/legacyAnalysis.ts`）。
+  旧 `scripts/generate-player-analysis.mjs` はこの生成器へ委譲する薄いラッパになり、独自の全大会スキャン集計は削除（二重ロジック解消）。
+  外部 JSON 形は従来互換（curated 22 名で byte 一致を検証）。`careerRecord` の通算値はこの `analysis.json` を読むため transitively エンジン由来。
+- **利用文脈の配線（P5・非破壊）**: SSR `players/[id]/results.tsx` の `getStaticProps` が `playerStatistics` を追加提供（既存表示は維持）。
+  記事供給は `lib/playerStats/articleMaterial.ts`。SEO 日付は `coverage`（実データ）由来。
+- **テスト**: `npm run playerstats:test`（config/placement/aggregators/ranking 単体）/ `playerstats:verify`（golden・facade）/
+  `verify-analysis-migration.ts`（analysis byte 一致）。
+- **未了（P7）**: contentHash による増分再生成 / 性能予算の実測 / golden 全体突合 / ADR 追加。
+
+> Assumption: 現状 SSR は `playerStatistics` を props に渡すのみで描画は未接続（新セクション UI は今後）。既存の戦績表示は従来ロジックのまま。
 
 対象機能（自動生成）: 歴代戦績 / 年度別成績 / 大会別成績 / ペア別勝敗 / 全国大会初出場 /
 全国大会初優勝 / 連覇・○回目優勝 / 通算優勝数 / 主要大会優勝数 / 年度ランキング推移 / 対戦相手 H2H。

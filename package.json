@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && npm run playerstats:facts && npm run playerstats:rankings && npm run playerstats:public",
+    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && npm run playerstats:rankings && npm run playerstats:public",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "check:growth": "node scripts/check-growth-analysis.mjs",
@@ -55,7 +55,7 @@
     "playerstats:rankings": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-rankings.ts",
     "playerstats:public": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-public-json.ts",
     "playerstats:test": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/run-tests.ts",
-    "playerstats:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facts-golden.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facade.ts",
+    "playerstats:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facts-golden.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facade.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-analysis-migration.ts",
     "start": "next start",
     "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
     "lint": "eslint --fix ."
