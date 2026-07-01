@@ -18,6 +18,7 @@ import {
   getScoreMatchLinksForPlayer,
   type ScoreMatchLink,
 } from '@/lib/matchReverseIndex';
+import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
 import {
   getAllDetailRecords,
   loadInformationMap,
@@ -42,6 +43,8 @@ type PlayerResultsProps = {
   playerTournaments: PlayerTournament[];
   majorTitlesData: MajorTitleData[];
   playerStats?: import('@/types/stats').PlayerStats | null;
+  // Player Statistics Engine 由来の統計（既存表示は維持しつつ新データを追加提供・P5）。
+  playerStatistics?: import('@/types/playerStatistics').PlayerStatistics | null;
   allPlayers?: import('@/types/player').PlayerInfo[];
   relatedPlayers?: {
     id: string;
@@ -1072,6 +1075,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const shouldIndex =
     totalMatches >= PLAYER_INDEX_MIN_MATCHES || hasHighschoolNational;
 
+  // Player Statistics Engine（facade）を併用し新データを追加提供する（P5・非破壊）。
+  // 既存の playerMatches/playerTournaments 等の表示ロジックはそのまま維持する。
+  // ビルド時は prebuild が生成した _facts/_index/rankings を読む（freshness:'cache'）。
+  let playerStatistics:
+    | import('@/types/playerStatistics').PlayerStatistics
+    | null = null;
+  try {
+    playerStatistics = await getPlayerStatistics(Number(playerId), {}, root);
+  } catch {
+    playerStatistics = null;
+  }
+
   return {
     props: {
       playerId,
@@ -1085,6 +1100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerMatches,
       playerTournaments,
       playerStats,
+      playerStatistics,
       allPlayers: minimalPlayersList,
       relatedPlayers,
       majorTitlesData: await getMajorTitlesForPlayer(

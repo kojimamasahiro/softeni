@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs",
+    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && npm run playerstats:facts && npm run playerstats:rankings && npm run playerstats:public",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "check:growth": "node scripts/check-growth-analysis.mjs",
