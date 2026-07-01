@@ -51,6 +51,9 @@
     "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "check:growth": "node scripts/check-growth-analysis.mjs",
     "crawl:local-tournaments": "node scripts/crawl-local-tournaments.mjs",
+    "playerstats:facts": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-facts.ts",
+    "playerstats:test": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/run-tests.ts",
+    "playerstats:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facts-golden.ts",
     "start": "next start",
     "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
     "lint": "eslint --fix ."
