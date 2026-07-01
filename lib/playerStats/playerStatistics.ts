@@ -149,6 +149,7 @@ function defaultStats(
       displayName: facts.displayName,
       currentTeam: facts.currentTeam,
       slug,
+      homonymRisk: facts.homonymRisk,
     },
     scope: 'site-covered',
     scopeNote: '当サイト掲載大会分の集計に基づく（実戦のみ。不戦勝・途中棄権は除外）',

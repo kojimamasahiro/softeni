@@ -119,6 +119,11 @@ export interface PlayerFacts {
   playerId: number;
   displayName: string;
   currentTeam: string | null;
+  /**
+   * 同姓同名融合リスク（homonyms.json 登録名）。true の id は複数実在人物を
+   * 融合している可能性があり、下流で注記すべき（人物別 id 分離は P7/設計）。
+   */
+  homonymRisk: boolean;
   matches: PlayerMatchFact[];
   entries: PlayerEntryFact[];
   /** 依存した大会ファイル群の合成ハッシュ（増分判定）。 */

@@ -18,6 +18,13 @@ export interface Identity {
   byName: Map<string, number>;
   /** 数値 id → 表示名/姓名。 */
   byId: Map<number, { lastName: string; firstName: string }>;
+  /**
+   * homonyms.json に登録された「同姓同名で複数実在人物」を示す nameKey 集合。
+   * index.json は 1 名前 = 1 数値 id しか持たないため、これらの id は複数人物を
+   * 融合している可能性がある（データ契約 §D）。分離は人物別 id 払い出し（P7/設計）が必要。
+   * 当面は homonymRisk フラグとして下流（UI 注記・記事）へ伝える。
+   */
+  homonymNames: Set<string>;
 }
 
 function readJson<T>(filePath: string): T | null {
@@ -53,8 +60,28 @@ export function loadIdentity(root?: string): Identity {
       byId.set(r.id, { lastName: r.lastName, firstName: r.firstName });
     }
   }
-  cached = { byName, byId };
+
+  // homonyms.json（同姓同名で複数実在人物）を読み、nameKey 集合を作る。
+  const homonyms =
+    readJson<Array<{ lastName?: string; firstName?: string }>>(
+      path.join(cwd, 'data', 'players', 'homonyms.json'),
+    ) ?? [];
+  const homonymNames = new Set<string>();
+  for (const h of homonyms) {
+    if (h?.lastName && h?.firstName) {
+      homonymNames.add(nameKey(h.lastName, h.firstName));
+    }
+  }
+
+  cached = { byName, byId, homonymNames };
   return cached;
+}
+
+/** 数値 id が同姓同名融合のリスクを持つか（homonyms.json 登録名）。 */
+export function isHomonymId(identity: Identity, id: number): boolean {
+  const info = identity.byId.get(id);
+  if (!info) return false;
+  return identity.homonymNames.has(nameKey(info.lastName, info.firstName));
 }
 
 export function __resetIdentityCache(): void {

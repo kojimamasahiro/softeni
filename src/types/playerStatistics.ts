@@ -150,7 +150,13 @@ export interface PlayerMeta {
 
 export interface PlayerStatistics {
   playerId: number;
-  identity: { displayName: string; currentTeam: string | null; slug?: string };
+  identity: {
+    displayName: string;
+    currentTeam: string | null;
+    slug?: string;
+    /** 同姓同名融合の可能性（homonyms.json 登録名）。UI で注記する用。 */
+    homonymRisk?: boolean;
+  };
 
   scope: 'site-covered';
   scopeNote: string;

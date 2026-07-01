@@ -62,15 +62,39 @@ function main(): void {
     } catch {
       continue;
     }
+    // #2: 年度別の順位表には「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
+    // (year, discipline) ごとに、その季の entries から最頻の selfTeam を採る。
+    const teamBySeason = new Map<string, string | null>();
+    const teamCounts = new Map<string, Map<string, number>>();
+    for (const e of facts.entries) {
+      if (!e.selfTeam) continue;
+      const k = `${e.year}\t${e.category}`;
+      const cm = teamCounts.get(k) ?? new Map<string, number>();
+      cm.set(e.selfTeam, (cm.get(e.selfTeam) ?? 0) + 1);
+      teamCounts.set(k, cm);
+    }
+    for (const [k, cm] of teamCounts) {
+      let best: string | null = null;
+      let bestN = 0;
+      for (const [team, n] of cm) {
+        if (n > bestN) {
+          bestN = n;
+          best = team;
+        }
+      }
+      teamBySeason.set(k, best);
+    }
+
     const seasons = computeSeasonPoints(facts.entries, config);
     for (const s of seasons) {
       if (years && !years.has(s.year)) continue;
       if (s.points <= 0) continue;
       const key = `${s.year}\t${s.discipline}`;
+      const seasonTeam = teamBySeason.get(key) ?? facts.currentTeam;
       const arr = boards.get(key) ?? [];
       arr.push({
         playerId: facts.playerId,
-        playerKey: playerKey(facts.displayName, facts.currentTeam),
+        playerKey: playerKey(facts.displayName, seasonTeam),
         playerName: facts.displayName,
         points: s.points,
       });
@@ -83,19 +107,28 @@ function main(): void {
 
   let written = 0;
   for (const [key, rows] of boards) {
+    // 表示順は points 降順（同点は playerId 昇順で決定的に）。
     rows.sort((a, b) => b.points - a.points || a.playerId - b.playerId);
     const [yearStr, discipline] = key.split('\t');
+    // #3: 標準競技順位（1224 方式）。同ポイントは同順位、次は件数分飛ばす。
+    let prevPoints: number | null = null;
+    let prevRank = 0;
     const out: RankingFile = {
       year: Number(yearStr),
       discipline,
       outOf: rows.length,
-      entries: rows.map((r, i) => ({
-        rank: i + 1,
-        playerId: r.playerId,
-        playerKey: r.playerKey,
-        playerName: r.playerName,
-        points: r.points,
-      })),
+      entries: rows.map((r, i) => {
+        const rank = prevPoints !== null && r.points === prevPoints ? prevRank : i + 1;
+        prevPoints = r.points;
+        prevRank = rank;
+        return {
+          rank,
+          playerId: r.playerId,
+          playerKey: r.playerKey,
+          playerName: r.playerName,
+          points: r.points,
+        };
+      }),
     };
     fs.writeFileSync(
       path.join(outDir, `${yearStr}-${discipline}.json`),

@@ -78,6 +78,7 @@ function facts(matches: PlayerMatchFact[], entries: PlayerEntryFact[] = []): Pla
     playerId: 1,
     displayName: '本人',
     currentTeam: 'A校',
+    homonymRisk: false,
     matches,
     entries,
     sourceHash: 'x',

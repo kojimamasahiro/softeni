@@ -99,6 +99,10 @@ function factsFromCategory(
     if (playerEntryNo === undefined) continue;
     const oppEntryNo = m.entries.find((no) => no !== playerEntryNo);
     if (oppEntryNo === undefined) continue;
+    // #1 ガード: 同一カテゴリに同姓同名の別人物が居ると、両エントリーが self 判定になり
+    // 自己対戦（self-vs-self）として勝敗を二重計上してしまう。相手も self なら除外する
+    // （名前単位 id の限界。人物別 id 分離は P7/設計。データ契約 §D）。
+    if (targetEntryNoSet.has(oppEntryNo)) continue;
 
     const scores = m.scores ?? {};
     const gw = Number(scores[String(playerEntryNo)]);
@@ -320,10 +324,15 @@ export function buildFacts(
     .digest('hex')
     .slice(0, 16);
 
+  const homonymRisk = idInfo
+    ? identity.homonymNames.has(`${idInfo.lastName}\t${idInfo.firstName}`)
+    : false;
+
   return {
     playerId,
     displayName,
     currentTeam,
+    homonymRisk,
     matches: allMatches,
     entries: allEntries,
     sourceHash,
