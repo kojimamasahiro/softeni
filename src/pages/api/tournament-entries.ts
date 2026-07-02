@@ -54,29 +54,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const categoryId = String(req.query.categoryId ?? '');
 
   if (!tournamentId || !year || !categoryId) {
-    return res
-      .status(400)
-      .json({ error: 'tournamentId, year, categoryId are required.' });
+    return res.status(400).json({ error: 'tournamentId, year, categoryId are required.' });
   }
 
   // パストラバーサル対策（外部入力をパスに使うため）
-  if (
-    !isSafeSegment(tournamentId) ||
-    !/^\d{4}$/.test(year) ||
-    !isSafeSegment(categoryId)
-  ) {
+  if (!isSafeSegment(tournamentId) || !/^\d{4}$/.test(year) || !isSafeSegment(categoryId)) {
     return res.status(400).json({ error: 'Invalid parameter format.' });
   }
 
-  const detailPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'details',
-    tournamentId,
-    year,
-    `${categoryId}.json`,
-  );
+  const detailPath = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId, year, `${categoryId}.json`);
 
   if (!fs.existsSync(detailPath)) {
     return res.status(200).json({ entries: [] });
@@ -88,12 +74,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       entries?: DetailEntry[];
     };
 
-    const participantById = new Map<string, DetailParticipant>(
-      (detail.participants ?? []).map((participant) => [
-        participant.id,
-        participant,
-      ]),
-    );
+    const participantById = new Map<string, DetailParticipant>((detail.participants ?? []).map((participant) => [participant.id, participant]));
 
     const entries: TournamentEntryOption[] = (detail.entries ?? [])
       .map((entry) => {
@@ -107,9 +88,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             region: p.prefecture ?? '',
           }));
 
-        const label = `${entry.entryNo} ${players
-          .map((p) => `${p.last_name}${p.first_name}`)
-          .join('・')}`;
+        const label = `${entry.entryNo} ${players.map((p) => `${p.last_name}${p.first_name}`).join('・')}`;
 
         return { entryNo: entry.entryNo, label, players };
       })

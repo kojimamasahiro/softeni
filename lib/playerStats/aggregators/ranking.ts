@@ -25,10 +25,7 @@ export interface RankingFile {
 
 const RANKINGS_DIR = ['data', 'rankings'];
 
-export function readRankingTrend(
-  playerId: number,
-  root?: string,
-): RankingPoint[] {
+export function readRankingTrend(playerId: number, root?: string): RankingPoint[] {
   const cwd = root || process.cwd();
   const dir = path.join(cwd, ...RANKINGS_DIR);
   let files: string[] = [];

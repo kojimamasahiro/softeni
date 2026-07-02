@@ -22,18 +22,10 @@ type Props = {
  * 内側: max-w-* mx-auto のコンテンツコンテナ
  * 注意: <main> は _app.tsx 側でラップされるため、ここでは div を使う。
  */
-export default function PageLayout({
-  maxWidth = '3xl',
-  className,
-  children,
-}: Props) {
+export default function PageLayout({ maxWidth = '3xl', className, children }: Props) {
   return (
     <div className="min-h-screen bg-white px-4 py-10 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-      <div
-        className={`mx-auto ${WIDTH_CLASSES[maxWidth]}${className ? ` ${className}` : ''}`}
-      >
-        {children}
-      </div>
+      <div className={`mx-auto ${WIDTH_CLASSES[maxWidth]}${className ? ` ${className}` : ''}`}>{children}</div>
     </div>
   );
 }

@@ -2,12 +2,7 @@
 import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 
-import {
-  MatchRow,
-  TournamentDetailData,
-  TournamentEntry,
-  TournamentMatch,
-} from '@/types/tournament';
+import { MatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
 import { joinPlayerName } from '@/utils/playerName';
 
 type NamePart = {
@@ -101,16 +96,8 @@ function MatchGroup({
                 : name}
             </span>
             <span className="text-sm">
-              {resultLabel && (
-                <span className="ml-2 text-gray-500 dark:text-gray-400">
-                  {resultLabel}
-                </span>
-              )}
-              {isSeed && (
-                <span className="text-yellow-600 dark:text-yellow-300">
-                  （シード）
-                </span>
-              )}
+              {resultLabel && <span className="ml-2 text-gray-500 dark:text-gray-400">{resultLabel}</span>}
+              {isSeed && <span className="text-yellow-600 dark:text-yellow-300">（シード）</span>}
             </span>
           </span>
           <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
@@ -125,24 +112,14 @@ function MatchGroup({
           ].map(({ title, rows }, index) =>
             rows.length > 0 ? (
               <div key={title ?? 'main'} className="mb-2 w-full">
-                {title && (
-                  <div className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 text-left">
-                    {title}
-                  </div>
-                )}
+                {title && <div className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 text-left">{title}</div>}
                 <table className="w-full text-sm table-fixed border-collapse text-left">
                   {index === 0 && (
                     <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
                       <tr>
-                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                          ラウンド
-                        </th>
-                        <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                          対戦相手
-                        </th>
-                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">
-                          スコア
-                        </th>
+                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
+                        <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
+                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
                       </tr>
                     </thead>
                   )}
@@ -158,13 +135,8 @@ function MatchGroup({
                   <tbody>
                     {rows.map((m: MatchRow, i: number) => {
                       return (
-                        <tr
-                          key={i}
-                          className="border-t border-gray-100 dark:border-gray-700"
-                        >
-                          <td className="px-4 py-2 break-words text-left">
-                            {m.round ?? '予選'}
-                          </td>
+                        <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
+                          <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
                           <td className="px-4 py-2 break-words text-left">
                             {m.opponentPlayerIds?.length === 1 ? (
                               <Link
@@ -194,14 +166,7 @@ function MatchGroup({
   );
 }
 
-export default function MatchResults({
-  detail,
-  gameCategory,
-  searchQuery,
-  setSearchQuery,
-  filter,
-  setFilter,
-}: Props) {
+export default function MatchResults({ detail, gameCategory, searchQuery, setSearchQuery, filter, setFilter }: Props) {
   const shouldUseShortOpponentName = gameCategory !== 'singles';
 
   const participantMap = useMemo(() => {
@@ -223,15 +188,11 @@ export default function MatchResults({
   const buildNameForEntry = useCallback(
     (entry: TournamentEntry, opts?: { short?: boolean }) => {
       const short = !!opts?.short;
-      const players = (entry.playerIds ?? [])
-        .map((pid: string) => participantMap.get(pid))
-        .filter(Boolean) as (typeof detail.participants)[0][];
+      const players = (entry.playerIds ?? []).map((pid: string) => participantMap.get(pid)).filter(Boolean) as (typeof detail.participants)[0][];
       if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
 
       // Check if this is a team format (lastName and firstName are both null)
-      const isTeamFormat = players.every(
-        (pl) => pl?.lastName === null && pl?.firstName === null,
-      );
+      const isTeamFormat = players.every((pl) => pl?.lastName === null && pl?.firstName === null);
 
       if (isTeamFormat) {
         // For team format: display "チーム名（都道府県）"
@@ -269,9 +230,7 @@ export default function MatchResults({
   // extract numeric player IDs from an entry (for opponent row links)
   const buildOpponentPlayerIds = useCallback(
     (entry: TournamentEntry): number[] => {
-      return (entry.playerIds ?? [])
-        .map((pid: string) => participantMap.get(pid)?.playerId)
-        .filter((id): id is number => typeof id === 'number');
+      return (entry.playerIds ?? []).map((pid: string) => participantMap.get(pid)?.playerId).filter((id): id is number => typeof id === 'number');
     },
     [participantMap],
   );
@@ -279,21 +238,14 @@ export default function MatchResults({
   // build linkable name parts for an entry header (individual format only)
   const buildNamePartsForEntry = useCallback(
     (entry: TournamentEntry): NamePart[] => {
-      const players = (entry.playerIds ?? [])
-        .map((pid: string) => participantMap.get(pid))
-        .filter(Boolean) as (typeof detail.participants)[0][];
+      const players = (entry.playerIds ?? []).map((pid: string) => participantMap.get(pid)).filter(Boolean) as (typeof detail.participants)[0][];
       if (!players || players.length === 0) return [];
 
-      const isTeamFormat = players.every(
-        (pl) => pl?.lastName === null && pl?.firstName === null,
-      );
+      const isTeamFormat = players.every((pl) => pl?.lastName === null && pl?.firstName === null);
       if (isTeamFormat) return [];
 
       // group players by team, keeping per-player link info
-      const teamGroups = new Map<
-        string,
-        { text: string; playerId?: number }[]
-      >();
+      const teamGroups = new Map<string, { text: string; playerId?: number }[]>();
       for (const pl of players) {
         const team = (pl && pl.team) || '不明';
         if (!teamGroups.has(team)) teamGroups.set(team, []);
@@ -373,15 +325,10 @@ export default function MatchResults({
               short: shouldUseShortOpponentName,
             })
           : undefined,
-        opponentPlayerIds: opponentEntry
-          ? buildOpponentPlayerIds(opponentEntry)
-          : undefined,
+        opponentPlayerIds: opponentEntry ? buildOpponentPlayerIds(opponentEntry) : undefined,
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
-        games:
-          a === prevWinner
-            ? { won: scoreA, lost: scoreB }
-            : { won: scoreB, lost: scoreA },
+        games: a === prevWinner ? { won: scoreA, lost: scoreB } : { won: scoreB, lost: scoreA },
       };
 
       extra.push(row);
@@ -424,16 +371,9 @@ export default function MatchResults({
         stage: m.stage,
         group: m.group ?? null,
         round: m.round ?? null,
-        opponentDisplayName: entryB
-          ? buildNameForEntry(entryB, { short: shouldUseShortOpponentName })
-          : undefined,
+        opponentDisplayName: entryB ? buildNameForEntry(entryB, { short: shouldUseShortOpponentName }) : undefined,
         opponentPlayerIds: entryB ? buildOpponentPlayerIds(entryB) : undefined,
-        result:
-          m.winnerEntryNo === a
-            ? 'win'
-            : m.winnerEntryNo === b
-              ? 'lose'
-              : 'draw',
+        result: m.winnerEntryNo === a ? 'win' : m.winnerEntryNo === b ? 'lose' : 'draw',
         games: { won: scoreA, lost: scoreB },
       };
       const rowB: MatchRow = {
@@ -441,16 +381,9 @@ export default function MatchResults({
         stage: m.stage,
         group: m.group ?? null,
         round: m.round ?? null,
-        opponentDisplayName: entryA
-          ? buildNameForEntry(entryA, { short: shouldUseShortOpponentName })
-          : undefined,
+        opponentDisplayName: entryA ? buildNameForEntry(entryA, { short: shouldUseShortOpponentName }) : undefined,
         opponentPlayerIds: entryA ? buildOpponentPlayerIds(entryA) : undefined,
-        result:
-          m.winnerEntryNo === b
-            ? 'win'
-            : m.winnerEntryNo === a
-              ? 'lose'
-              : 'draw',
+        result: m.winnerEntryNo === b ? 'win' : m.winnerEntryNo === a ? 'lose' : 'draw',
         games: { won: scoreB, lost: scoreA },
       };
 
@@ -492,17 +425,10 @@ export default function MatchResults({
     }
 
     return map;
-  }, [
-    detail,
-    buildNameForEntry,
-    buildOpponentPlayerIds,
-    shouldUseShortOpponentName,
-  ]);
+  }, [detail, buildNameForEntry, buildOpponentPlayerIds, shouldUseShortOpponentName]);
 
   // build name list from entries & eliminatedEntries
-  const groupedNames = [
-    ...new Set([...(detail.entries ?? []).map((e) => buildNameForEntry(e))]),
-  ];
+  const groupedNames = [...new Set([...(detail.entries ?? []).map((e) => buildNameForEntry(e))])];
 
   // derive seed entry numbers from detail.entries if not provided
   const derivedSeedEntryNos: Set<number> = new Set();
@@ -533,8 +459,7 @@ export default function MatchResults({
       const rank = r.roundrobin.rank ?? '';
       parts.push(`グループ${group} ${rank}位`);
     }
-    derivedResultByEntryNo[r.entryNo] =
-      parts.length > 0 ? parts.join(' / ') : undefined;
+    derivedResultByEntryNo[r.entryNo] = parts.length > 0 ? parts.join(' / ') : undefined;
   }
 
   // getEntryName removed; use buildNameForEntry directly where needed
@@ -568,9 +493,7 @@ export default function MatchResults({
 
       {groupedNames.map((name) => {
         // try to find an entryNo by name
-        const entry = (detail.entries ?? []).find(
-          (e) => buildNameForEntry(e) === name,
-        );
+        const entry = (detail.entries ?? []).find((e) => buildNameForEntry(e) === name);
         const entryNo = entry?.entryNo ?? -1;
         const matchGroup = matchesByEntry.get(entryNo) ?? [];
 

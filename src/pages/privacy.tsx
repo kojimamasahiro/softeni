@@ -57,13 +57,9 @@ export default function PrivacyPolicy() {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">
-            2. アクセス解析ツールについて
-          </h2>
+          <h2 className="text-xl font-semibold mb-2">2. アクセス解析ツールについて</h2>
           <p>
-            当サイトでは、Google Analytics
-            を利用してアクセス解析を行っています。Google Analytics
-            はトラフィックデータの収集のために Cookie
+            当サイトでは、Google Analytics を利用してアクセス解析を行っています。Google Analytics はトラフィックデータの収集のために Cookie
             を使用しています。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
           </p>
         </section>
@@ -71,26 +67,19 @@ export default function PrivacyPolicy() {
         <section className="mb-6">
           <h2 className="text-xl font-semibold mb-2">3. 広告について</h2>
           <p>
-            当サイトでは、第三者配信の広告サービス（Google AdSense
-            など）を利用する予定です。これらの広告配信事業者は、ユーザーの興味に応じた広告を表示するため
+            当サイトでは、第三者配信の広告サービス（Google AdSense など）を利用する予定です。これらの広告配信事業者は、ユーザーの興味に応じた広告を表示するため
             Cookie を使用することがあります。
           </p>
         </section>
 
         <section className="mb-6">
           <h2 className="text-xl font-semibold mb-2">4. 免責事項</h2>
-          <p>
-            当サイトからリンクやバナーなどによって他サイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。
-          </p>
+          <p>当サイトからリンクやバナーなどによって他サイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold mb-2">
-            5. プライバシーポリシーの変更について
-          </h2>
-          <p>
-            当サイトは、法令の改正や運営方針の変更に伴い、プライバシーポリシーを変更することがあります。変更後の内容は本ページにて速やかに公開いたします。
-          </p>
+          <h2 className="text-xl font-semibold mb-2">5. プライバシーポリシーの変更について</h2>
+          <p>当サイトは、法令の改正や運営方針の変更に伴い、プライバシーポリシーを変更することがあります。変更後の内容は本ページにて速やかに公開いたします。</p>
         </section>
       </PageLayout>
     </>

@@ -4,11 +4,7 @@
 // 参照: docs/wiki/public-pages.md「ナビゲーション再設計方針」/ ADR-006
 
 import { isDebugMode } from './env';
-import {
-  getPublicMatchesGrowthPath,
-  getPublicMatchesListPath,
-  isScoreSiteMode,
-} from './siteConfig';
+import { getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from './siteConfig';
 
 export type NavItem = {
   /** 表示ラベル */

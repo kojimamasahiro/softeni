@@ -4,11 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {
-  TournamentCategoryInfo,
-  TournamentIndexEntry,
-  TournamentInformationEntry,
-} from '@/types/tournament';
+import type { TournamentCategoryInfo, TournamentIndexEntry, TournamentInformationEntry } from '@/types/tournament';
 
 export interface TournamentMeta {
   id: string;
@@ -77,22 +73,13 @@ const parseTournamentLookup = (rawId: string): TournamentLookup => {
 
 const loadTournamentIndexEntries = (): TournamentIndexEntry[] => {
   const tournamentRoot = path.join(process.cwd(), 'data', 'tournaments');
-  const mainIndex =
-    readJsonSafe<TournamentIndexEntry[]>(
-      path.join(tournamentRoot, 'index.json'),
-    ) ?? [];
-  const localIndex =
-    readJsonSafe<TournamentIndexEntry[]>(
-      path.join(tournamentRoot, 'local_index.json'),
-    ) ?? [];
+  const mainIndex = readJsonSafe<TournamentIndexEntry[]>(path.join(tournamentRoot, 'index.json')) ?? [];
+  const localIndex = readJsonSafe<TournamentIndexEntry[]>(path.join(tournamentRoot, 'local_index.json')) ?? [];
 
   return [...mainIndex, ...localIndex];
 };
 
-const findTournamentEntry = (
-  lookup: TournamentLookup,
-  entries: TournamentIndexEntry[],
-): TournamentIndexEntry | null => {
+const findTournamentEntry = (lookup: TournamentLookup, entries: TournamentIndexEntry[]): TournamentIndexEntry | null => {
   return (
     entries.find((entry) => entry.tournamentId === lookup.rawId) ??
     entries.find((entry) => entry.tournamentId === lookup.baseId) ??
@@ -102,31 +89,13 @@ const findTournamentEntry = (
   );
 };
 
-const loadTournamentInformation = (
-  tournamentId: string,
-): TournamentInformationEntry[] => {
-  const filePath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'information',
-    `${tournamentId}.json`,
-  );
+const loadTournamentInformation = (tournamentId: string): TournamentInformationEntry[] => {
+  const filePath = path.join(process.cwd(), 'data', 'tournaments', 'information', `${tournamentId}.json`);
   return readJsonSafe<TournamentInformationEntry[]>(filePath) ?? [];
 };
 
-const loadDetailCategoryIds = (
-  tournamentId: string,
-  year: number,
-): string[] => {
-  const detailDir = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'details',
-    tournamentId,
-    String(year),
-  );
+const loadDetailCategoryIds = (tournamentId: string, year: number): string[] => {
+  const detailDir = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId, String(year));
 
   if (!fs.existsSync(detailDir)) {
     return [];
@@ -140,13 +109,7 @@ const loadDetailCategoryIds = (
 };
 
 const loadDetailYears = (tournamentId: string): number[] => {
-  const detailDir = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'details',
-    tournamentId,
-  );
+  const detailDir = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId);
 
   if (!fs.existsSync(detailDir)) {
     return [];
@@ -160,10 +123,7 @@ const loadDetailYears = (tournamentId: string): number[] => {
     .sort((a, b) => b - a);
 };
 
-const getAllAvailableYears = (
-  tournamentId: string,
-  informationEntries: TournamentInformationEntry[],
-): number[] => {
+const getAllAvailableYears = (tournamentId: string, informationEntries: TournamentInformationEntry[]): number[] => {
   const years = new Set<number>();
 
   for (const info of informationEntries) {
@@ -177,11 +137,7 @@ const getAllAvailableYears = (
   return [...years].sort((a, b) => b - a);
 };
 
-const inferCategoryTypes = (
-  informationEntries: TournamentInformationEntry[],
-  tournamentId: string,
-  year: number | null,
-): string[] => {
+const inferCategoryTypes = (informationEntries: TournamentInformationEntry[], tournamentId: string, year: number | null): string[] => {
   const types = new Set<string>();
 
   for (const info of informationEntries) {
@@ -211,9 +167,7 @@ const inferCategoryTypes = (
   return [...types];
 };
 
-const categoryIdToPathParts = (
-  categoryId: string,
-): { gameCategory: string; ageCategory: string; gender: string } | null => {
+const categoryIdToPathParts = (categoryId: string): { gameCategory: string; ageCategory: string; gender: string } | null => {
   const parts = categoryId.split('-');
   if (parts.length < 3) {
     return null;
@@ -230,27 +184,14 @@ const categoryIdToPathParts = (
   return { gameCategory, ageCategory, gender };
 };
 
-const buildDetailUrl = (
-  generationId: string,
-  tournamentId: string,
-  year: number | null,
-  yearInfo: TournamentInformationEntry | null,
-): string => {
+const buildDetailUrl = (generationId: string, tournamentId: string, year: number | null, yearInfo: TournamentInformationEntry | null): string => {
   if (year === null) {
     return '';
   }
 
   const categories: TournamentCategoryInfo[] = yearInfo?.categories ?? [];
   for (const category of categories) {
-    const detailPath = path.join(
-      process.cwd(),
-      'data',
-      'tournaments',
-      'details',
-      tournamentId,
-      String(year),
-      `${category.categoryId}.json`,
-    );
+    const detailPath = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId, String(year), `${category.categoryId}.json`);
 
     if (fs.existsSync(detailPath)) {
       return `/tournaments/${generationId}/${tournamentId}/${year}/${category.category}/${category.age}/${category.gender}`;
@@ -270,10 +211,7 @@ const buildDetailUrl = (
   return `/tournaments/${generationId}/${tournamentId}/${year}/${pathParts.gameCategory}/${pathParts.ageCategory}/${pathParts.gender}`;
 };
 
-const buildUnknownTournamentInfo = (
-  rawTournamentId: string,
-  explicitYear: number | null,
-): TournamentInfo => ({
+const buildUnknownTournamentInfo = (rawTournamentId: string, explicitYear: number | null): TournamentInfo => ({
   meta: {
     id: rawTournamentId,
     name: rawTournamentId,
@@ -288,9 +226,7 @@ const buildUnknownTournamentInfo = (
     location: '',
     status: 'unknown',
   },
-  fullName: explicitYear
-    ? `${rawTournamentId} ${explicitYear}`
-    : rawTournamentId,
+  fullName: explicitYear ? `${rawTournamentId} ${explicitYear}` : rawTournamentId,
   detailUrl: '',
   exists: false,
 });
@@ -298,9 +234,7 @@ const buildUnknownTournamentInfo = (
 /**
  * サーバーサイドで大会情報を取得する（新構造: index/local_index/information/details）
  */
-export const getTournamentInfoSSR = async (
-  tournamentId: string,
-): Promise<TournamentInfo | null> => {
+export const getTournamentInfoSSR = async (tournamentId: string): Promise<TournamentInfo | null> => {
   try {
     const lookup = parseTournamentLookup(tournamentId);
     const entries = loadTournamentIndexEntries();
@@ -311,36 +245,19 @@ export const getTournamentInfoSSR = async (
     }
 
     const informationEntries = loadTournamentInformation(entry.tournamentId);
-    const availableYears = getAllAvailableYears(
-      entry.tournamentId,
-      informationEntries,
-    );
-    const targetYear =
-      lookup.explicitYear ??
-      informationEntries[0]?.year ??
-      availableYears[0] ??
-      null;
+    const availableYears = getAllAvailableYears(entry.tournamentId, informationEntries);
+    const targetYear = lookup.explicitYear ?? informationEntries[0]?.year ?? availableYears[0] ?? null;
 
-    const yearInfo =
-      (targetYear !== null
-        ? (informationEntries.find((info) => info.year === targetYear) ?? null)
-        : null) ?? null;
+    const yearInfo = (targetYear !== null ? (informationEntries.find((info) => info.year === targetYear) ?? null) : null) ?? null;
 
-    const detailCategoryIds =
-      targetYear !== null
-        ? loadDetailCategoryIds(entry.tournamentId, targetYear)
-        : [];
+    const detailCategoryIds = targetYear !== null ? loadDetailCategoryIds(entry.tournamentId, targetYear) : [];
     const hasDetails = detailCategoryIds.length > 0;
 
     const meta: TournamentMeta = {
       id: entry.tournamentId,
       name: entry.label,
       generation: entry.generationId,
-      categoryTypes: inferCategoryTypes(
-        informationEntries,
-        entry.tournamentId,
-        targetYear,
-      ),
+      categoryTypes: inferCategoryTypes(informationEntries, entry.tournamentId, targetYear),
       isMajorTitle: entry.isMajorTitle,
       officialUrl: entry.officialUrl,
     };
@@ -359,12 +276,7 @@ export const getTournamentInfoSSR = async (
       meta,
       yearMeta,
       fullName: targetYear !== null ? `${meta.name} ${targetYear}` : meta.name,
-      detailUrl: buildDetailUrl(
-        meta.generation,
-        entry.tournamentId,
-        targetYear,
-        yearInfo,
-      ),
+      detailUrl: buildDetailUrl(meta.generation, entry.tournamentId, targetYear, yearInfo),
       exists: true,
     };
   } catch (error) {
@@ -376,9 +288,7 @@ export const getTournamentInfoSSR = async (
 /**
  * 大会IDから利用可能な年のリストを取得する
  */
-export const getTournamentYearsSSR = async (
-  tournamentId: string,
-): Promise<number[]> => {
+export const getTournamentYearsSSR = async (tournamentId: string): Promise<number[]> => {
   try {
     const lookup = parseTournamentLookup(tournamentId);
     const entries = loadTournamentIndexEntries();
@@ -396,9 +306,7 @@ export const getTournamentYearsSSR = async (
 /**
  * 複数の大会情報を効率的に取得する（動的データ読み込み）
  */
-export const getTournamentInfosSSR = async (
-  tournamentIds: string[],
-): Promise<Record<string, TournamentInfo>> => {
+export const getTournamentInfosSSR = async (tournamentIds: string[]): Promise<Record<string, TournamentInfo>> => {
   const results: Record<string, TournamentInfo> = {};
   const uniqueIds = [...new Set(tournamentIds)];
 

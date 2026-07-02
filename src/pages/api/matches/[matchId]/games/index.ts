@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  loadMatchWithRelations,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, loadMatchWithRelations, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { isScoreSiteMode } from '@/lib/siteConfig';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return sendMethodNotAllowed(res, ['POST']);
   }

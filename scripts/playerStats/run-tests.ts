@@ -12,6 +12,7 @@ const files = fs
   .sort();
 
 for (const f of files) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
+  // 動的なテストファイル読み込みのため require を使う（import() は ts-node CJS で非同期になるため）
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require(path.join(testsDir, f));
 }

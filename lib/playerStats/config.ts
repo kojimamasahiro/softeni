@@ -74,14 +74,7 @@ export const DEFAULT_CONFIG: PlayerStatsConfig = {
 };
 
 function deepMerge<T>(base: T, override: unknown): T {
-  if (
-    typeof base !== 'object' ||
-    base === null ||
-    Array.isArray(base) ||
-    typeof override !== 'object' ||
-    override === null ||
-    Array.isArray(override)
-  ) {
+  if (typeof base !== 'object' || base === null || Array.isArray(base) || typeof override !== 'object' || override === null || Array.isArray(override)) {
     return (override === undefined ? base : (override as T)) ?? base;
   }
   const out: Record<string, unknown> = { ...(base as Record<string, unknown>) };
@@ -120,10 +113,7 @@ export function __resetConfigCache(): void {
  * 大会格 tier を分類する（分類ロジックはコード側・重みは config）。
  * major=isMajorTitle / national=isNational かつ非 major / local=非 isNational。
  */
-export function resolveTier(meta: {
-  isMajorTitle: boolean;
-  isNational: boolean;
-}): 'major' | 'national' | 'local' {
+export function resolveTier(meta: { isMajorTitle: boolean; isNational: boolean }): 'major' | 'national' | 'local' {
   if (meta.isMajorTitle) return 'major';
   if (meta.isNational) return 'national';
   return 'local';

@@ -7,11 +7,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  PackedSameNameGroups,
-  packSameNameGroups,
-  unpackSameNameGroups,
-} from '@/lib/packedPageData';
+import { PackedSameNameGroups, packSameNameGroups, unpackSameNameGroups } from '@/lib/packedPageData';
 
 interface PlayerResult {
   firstName: string;
@@ -47,17 +43,12 @@ interface SameNamePlayerPageProps {
   sameNameGroupsPacked: PackedSameNameGroups;
 }
 
-export default function PlayersPage({
-  sameNameGroupsPacked,
-}: SameNamePlayerPageProps) {
+export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPageProps) {
   const [sortBy, setSortBy] = useState<'count' | 'name'>('count');
   const [searchQuery, setSearchQuery] = useState('');
   const [allData, setAllData] = useState<SameNameGroup[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const sameNameGroups = useMemo(
-    () => unpackSameNameGroups(sameNameGroupsPacked) as SameNameGroup[],
-    [sameNameGroupsPacked],
-  );
+  const sameNameGroups = useMemo(() => unpackSameNameGroups(sameNameGroupsPacked) as SameNameGroup[], [sameNameGroupsPacked]);
 
   // Prefetch the full player dataset on mount so that search covers every
   // player (including those with few appearances and no dedicated results
@@ -86,25 +77,18 @@ export default function PlayersPage({
   // loads). With no query, show the lightweight featured list for a fast,
   // light initial render.
   const isSearching = searchQuery.trim().length > 0;
-  const activeData =
-    isSearching && allData.length > 0 ? allData : sameNameGroups;
+  const activeData = isSearching && allData.length > 0 ? allData : sameNameGroups;
 
   const highlightMatch = (text: string, searchQuery: string) => {
     if (!searchQuery.trim()) return text;
     const queries = searchQuery.toLowerCase().trim().split(/\s+/);
     const query = queries[0];
-    const regex = new RegExp(
-      `(${query.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')})`,
-      'gi',
-    );
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')})`, 'gi');
     const parts = text.split(regex);
     return parts.map((part, index) => {
       if (part.toLowerCase() === query.toLowerCase()) {
         return (
-          <mark
-            key={index}
-            className="bg-yellow-200 dark:bg-yellow-800 rounded px-1"
-          >
+          <mark key={index} className="bg-yellow-200 dark:bg-yellow-800 rounded px-1">
             {part}
           </mark>
         );
@@ -133,8 +117,7 @@ export default function PlayersPage({
                 player.categoryLabel.toLowerCase().includes(query) ||
                 player.year.includes(query) ||
                 `${player.year}年`.includes(query) ||
-                (player.prefecture &&
-                  player.prefecture.toLowerCase().includes(query))
+                (player.prefecture && player.prefecture.toLowerCase().includes(query))
               );
             });
           });
@@ -191,9 +174,7 @@ export default function PlayersPage({
 
         <section className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
-            <h2 className="text-sm font-semibold text-amber-800 dark:text-amber-200">
-              同姓同名選手の一覧
-            </h2>
+            <h2 className="text-sm font-semibold text-amber-800 dark:text-amber-200">同姓同名選手の一覧</h2>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-300">
             大会結果データから抽出した同姓同名の選手の一覧です。下の検索では収録されている全選手が対象になります（初期表示は出場回数の多い選手のみ）。同じ名前でも異なる選手の可能性があります。所属チームや大会記録を確認してください。
@@ -201,10 +182,7 @@ export default function PlayersPage({
         </section>
 
         <div className="mb-6">
-          <label
-            htmlFor="searchQuery"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-          >
+          <label htmlFor="searchQuery" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             大会記録検索（スペース区切りでAND検索）
           </label>
           <input
@@ -216,10 +194,7 @@ export default function PlayersPage({
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           {searchQuery && (
-            <button
-              onClick={() => setSearchQuery('')}
-              className="mt-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-            >
+            <button onClick={() => setSearchQuery('')} className="mt-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
               検索をクリア ✕
             </button>
           )}
@@ -227,10 +202,7 @@ export default function PlayersPage({
 
         <div className="mb-6 flex flex-wrap gap-4 items-center">
           <div className="flex items-center gap-2">
-            <label
-              htmlFor="sortBy"
-              className="text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
+            <label htmlFor="sortBy" className="text-sm font-medium text-gray-700 dark:text-gray-300">
               並び順:
             </label>
             <select
@@ -253,22 +225,11 @@ export default function PlayersPage({
                 {sortedAndFilteredGroups.length}組 の検索結果
               </>
             ) : (
-              <>
-                {sortedAndFilteredGroups.length}組の同姓同名選手を表示中
-                （出場回数の多い選手のみ・検索で全選手対象）
-              </>
+              <>{sortedAndFilteredGroups.length}組の同姓同名選手を表示中 （出場回数の多い選手のみ・検索で全選手対象）</>
             )}
           </div>
-          {isLoading && (
-            <div className="text-xs text-gray-500 dark:text-gray-400">
-              全選手データを読み込み中...
-            </div>
-          )}
-          {!isLoading && isSearching && allData.length > 0 && (
-            <div className="text-xs text-gray-500 dark:text-gray-400">
-              全 {allData.length}組から検索
-            </div>
-          )}
+          {isLoading && <div className="text-xs text-gray-500 dark:text-gray-400">全選手データを読み込み中...</div>}
+          {!isLoading && isSearching && allData.length > 0 && <div className="text-xs text-gray-500 dark:text-gray-400">全 {allData.length}組から検索</div>}
         </div>
 
         <div className="space-y-6">
@@ -293,9 +254,7 @@ export default function PlayersPage({
                         href={`/players/${group.playerId}/results`}
                         className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors after:absolute after:inset-0 after:content-[''] focus:outline-none"
                       >
-                        {searchQuery
-                          ? highlightMatch(group.fullName, searchQuery)
-                          : group.fullName}
+                        {searchQuery ? highlightMatch(group.fullName, searchQuery) : group.fullName}
                       </Link>
                     ) : searchQuery ? (
                       highlightMatch(group.fullName, searchQuery)
@@ -303,16 +262,12 @@ export default function PlayersPage({
                       group.fullName
                     )}
                   </h2>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
-                    {group.count}回出場
-                  </div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{group.count}回出場</div>
                 </div>
 
                 {group.differentTeams.length > 0 && (
                   <div className="mb-3 text-sm">
-                    <span className="font-medium text-gray-700 dark:text-gray-300">
-                      所属チーム:
-                    </span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300">所属チーム:</span>
                     <span className="ml-2 text-gray-600 dark:text-gray-400">
                       {searchQuery
                         ? group.differentTeams.map((team, i) => (
@@ -331,8 +286,7 @@ export default function PlayersPage({
                     <div className="grid gap-2 text-sm">
                       {group.players
                         .sort((a, b) => {
-                          if (a.year !== b.year)
-                            return Number(b.year) - Number(a.year);
+                          if (a.year !== b.year) return Number(b.year) - Number(a.year);
                           const resultOrder: Record<string, number> = {
                             優勝: 1,
                             準優勝: 2,
@@ -354,23 +308,14 @@ export default function PlayersPage({
                                 className="relative z-10 text-blue-600 dark:text-blue-400 hover:underline font-medium"
                               >
                                 {searchQuery
-                                  ? highlightMatch(
-                                      `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`,
-                                      searchQuery,
-                                    )
+                                  ? highlightMatch(`${player.tournamentName} ${player.year}年 ${player.categoryLabel}`, searchQuery)
                                   : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
                               </Link>
                             </div>
                             <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                              <span className="font-medium">
-                                {player.result}
-                              </span>
+                              <span className="font-medium">{player.result}</span>
                               <span>|</span>
-                              <span>
-                                {searchQuery
-                                  ? highlightMatch(player.team, searchQuery)
-                                  : player.team}
-                              </span>
+                              <span>{searchQuery ? highlightMatch(player.team, searchQuery) : player.team}</span>
                             </div>
                           </div>
                         ))}
@@ -397,10 +342,7 @@ export default function PlayersPage({
                     <p className="text-sm">
                       選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードでお試しください。
                     </p>
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                    >
+                    <button onClick={() => setSearchQuery('')} className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
                       検索をクリア
                     </button>
                   </>
@@ -413,10 +355,7 @@ export default function PlayersPage({
         )}
 
         <div className="mt-12 text-center space-x-4">
-          <Link
-            href="/tournaments"
-            className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
-          >
+          <Link href="/tournaments" className="text-blue-600 dark:text-blue-400 hover:underline text-sm">
             大会結果一覧
           </Link>
         </div>
@@ -429,12 +368,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const fs = await import('fs');
   const path = await import('path');
 
-  const jsonPath = path.join(
-    process.cwd(),
-    'public',
-    'data',
-    'players-min20.json',
-  );
+  const jsonPath = path.join(process.cwd(), 'public', 'data', 'players-min20.json');
   let sameNameGroups = [];
 
   try {

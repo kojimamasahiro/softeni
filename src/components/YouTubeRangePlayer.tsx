@@ -1,18 +1,9 @@
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 declare global {
   interface Window {
     YT?: {
-      Player: new (
-        element: HTMLElement,
-        config: Record<string, unknown>,
-      ) => YouTubePlayerInstance;
+      Player: new (element: HTMLElement, config: Record<string, unknown>) => YouTubePlayerInstance;
       PlayerState?: {
         ENDED: number;
         PLAYING: number;
@@ -69,9 +60,7 @@ const loadYouTubeIframeApi = () =>
       return;
     }
 
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[src="https://www.youtube.com/iframe_api"]',
-    );
+    const existingScript = document.querySelector<HTMLScriptElement>('script[src="https://www.youtube.com/iframe_api"]');
 
     const previousReady = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = () => {
@@ -87,19 +76,8 @@ const loadYouTubeIframeApi = () =>
     }
   });
 
-const YouTubeRangePlayer = forwardRef<
-  YouTubeRangePlayerHandle,
-  YouTubeRangePlayerProps
->(function YouTubeRangePlayer(
-  {
-    aspectRatio,
-    className,
-    onEmbedBlocked,
-    onReady,
-    playerHeight,
-    responsive,
-    videoId,
-  },
+const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlayerProps>(function YouTubeRangePlayer(
+  { aspectRatio, className, onEmbedBlocked, onReady, playerHeight, responsive, videoId },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -110,12 +88,8 @@ const YouTubeRangePlayer = forwardRef<
   const pausePollRef = useRef<number | null>(null);
   const [playerKey, setPlayerKey] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
-  const resolvedAspectRatio =
-    aspectRatio ?? PLAYER_WIDTH / DEFAULT_PLAYER_HEIGHT;
-  const resolvedPlayerHeight =
-    responsive && containerWidth > 0
-      ? Math.round(containerWidth / resolvedAspectRatio)
-      : (playerHeight ?? DEFAULT_PLAYER_HEIGHT);
+  const resolvedAspectRatio = aspectRatio ?? PLAYER_WIDTH / DEFAULT_PLAYER_HEIGHT;
+  const resolvedPlayerHeight = responsive && containerWidth > 0 ? Math.round(containerWidth / resolvedAspectRatio) : (playerHeight ?? DEFAULT_PLAYER_HEIGHT);
 
   useEffect(() => {
     if (!responsive || !containerRef.current || typeof window === 'undefined') {
@@ -204,10 +178,7 @@ const YouTubeRangePlayer = forwardRef<
       if (!player) return;
 
       const safeStartMs = Math.max(0, startMs);
-      const safeEndMs =
-        typeof endMs === 'number' && endMs >= safeStartMs
-          ? endMs
-          : safeStartMs + DEFAULT_PLAYBACK_WINDOW_MS;
+      const safeEndMs = typeof endMs === 'number' && endMs >= safeStartMs ? endMs : safeStartMs + DEFAULT_PLAYBACK_WINDOW_MS;
 
       rangeEndMsRef.current = safeEndMs;
       player.seekTo(safeStartMs / 1000, true);
@@ -232,8 +203,7 @@ const YouTubeRangePlayer = forwardRef<
       await loadYouTubeIframeApi();
       if (cancelled || !containerRef.current || !window.YT?.Player) return;
 
-      const resolvedWidth =
-        responsive && containerWidth > 0 ? '100%' : String(PLAYER_WIDTH);
+      const resolvedWidth = responsive && containerWidth > 0 ? '100%' : String(PLAYER_WIDTH);
       const player = new window.YT.Player(containerRef.current, {
         height: String(resolvedPlayerHeight),
         width: resolvedWidth,
@@ -252,10 +222,7 @@ const YouTubeRangePlayer = forwardRef<
             onReadyRef.current?.();
           },
           onStateChange: (event: { data?: number }) => {
-            if (
-              event.data === window.YT?.PlayerState?.PAUSED ||
-              event.data === window.YT?.PlayerState?.ENDED
-            ) {
+            if (event.data === window.YT?.PlayerState?.PAUSED || event.data === window.YT?.PlayerState?.ENDED) {
               clearPausePoll();
             }
           },

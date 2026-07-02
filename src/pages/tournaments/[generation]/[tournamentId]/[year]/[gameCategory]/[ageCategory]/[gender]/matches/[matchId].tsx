@@ -1,9 +1,6 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 
-import {
-  getPublicMatchDetailStaticProps,
-  PublicMatchDetailPage,
-} from '@/pages/beta/matches-results/[matchId]';
+import { getPublicMatchDetailStaticProps, PublicMatchDetailPage } from '@/pages/beta/matches-results/[matchId]';
 import { getSiteLinkedMatchPaths } from '@/lib/betaMatchesStatic';
 import { isScoreSiteMode } from '@/lib/siteConfig';
 

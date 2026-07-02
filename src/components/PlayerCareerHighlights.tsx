@@ -36,13 +36,7 @@ function winPct(rate: number): string {
   return `${Math.round(rate * 1000) / 10}%`;
 }
 
-export default function PlayerCareerHighlights({
-  fullName,
-  data,
-}: {
-  fullName: string;
-  data: PlayerCareerHighlightsData;
-}) {
+export default function PlayerCareerHighlights({ fullName, data }: { fullName: string; data: PlayerCareerHighlightsData }) {
   const hasMilestones = data.milestones.length > 0;
   const hasTotals = !!data.totals && data.totals.matches > 0;
   const hasTitles = data.titles.length > 0;
@@ -52,9 +46,7 @@ export default function PlayerCareerHighlights({
     <section className="mb-10">
       <h2 className="text-xl font-semibold mb-3">
         主な戦績
-        <span className="ml-2 text-xs font-normal text-gray-500 dark:text-gray-400">
-          ※{data.scopeNote}
-        </span>
+        <span className="ml-2 text-xs font-normal text-gray-500 dark:text-gray-400">※{data.scopeNote}</span>
       </h2>
 
       {hasMilestones && (
@@ -74,8 +66,7 @@ export default function PlayerCareerHighlights({
 
       {hasTotals && data.totals && (
         <p className="mb-3 text-sm text-gray-800 dark:text-gray-200">
-          {fullName}の通算成績は {data.totals.matches}試合 {data.totals.wins}勝
-          {data.totals.losses}敗（勝率 {winPct(data.totals.winRate)}）です。
+          {fullName}の通算成績は {data.totals.matches}試合 {data.totals.wins}勝{data.totals.losses}敗（勝率 {winPct(data.totals.winRate)}）です。
         </p>
       )}
 
@@ -87,10 +78,7 @@ export default function PlayerCareerHighlights({
               <li key={`${t.year}-${t.tournamentLabel}-${i}`}>
                 {t.year}年{' '}
                 {t.tournamentLink ? (
-                  <Link
-                    href={t.tournamentLink}
-                    className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
-                  >
+                  <Link href={t.tournamentLink} className="underline underline-offset-2 decoration-dotted hover:decoration-solid">
                     {t.tournamentLabel}
                   </Link>
                 ) : (

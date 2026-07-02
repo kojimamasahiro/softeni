@@ -6,10 +6,7 @@ import type { PersonRef, PlayerFacts, PlayerMatchFact } from '../types';
 import { foldGames, foldWinLoss } from './util';
 
 export function aggregateByPartner(facts: PlayerFacts): PartnerRow[] {
-  const byKey = new Map<
-    string,
-    { ref: PersonRef; matches: PlayerMatchFact[] }
-  >();
+  const byKey = new Map<string, { ref: PersonRef; matches: PlayerMatchFact[] }>();
   for (const m of facts.matches) {
     if (!m.partner) continue;
     const key = m.partner.key;

@@ -7,19 +7,13 @@ const getSupabaseConfig = () => {
   if (isTestMode()) {
     // テストモードでは専用の環境変数が必須
     if (!process.env.NEXT_PUBLIC_SUPABASE_TEST_URL) {
-      throw new Error(
-        'テストモードが有効ですが、NEXT_PUBLIC_SUPABASE_TEST_URLが設定されていません。',
-      );
+      throw new Error('テストモードが有効ですが、NEXT_PUBLIC_SUPABASE_TEST_URLが設定されていません。');
     }
     if (!process.env.NEXT_PUBLIC_SUPABASE_TEST_ANON_KEY) {
-      throw new Error(
-        'テストモードが有効ですが、NEXT_PUBLIC_SUPABASE_TEST_ANON_KEYが設定されていません。',
-      );
+      throw new Error('テストモードが有効ですが、NEXT_PUBLIC_SUPABASE_TEST_ANON_KEYが設定されていません。');
     }
     if (!process.env.SUPABASE_TEST_SERVICE_KEY) {
-      throw new Error(
-        'テストモードが有効ですが、SUPABASE_TEST_SERVICE_KEYが設定されていません。',
-      );
+      throw new Error('テストモードが有効ですが、SUPABASE_TEST_SERVICE_KEYが設定されていません。');
     }
 
     return {

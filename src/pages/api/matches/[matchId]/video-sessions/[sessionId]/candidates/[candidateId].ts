@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { isScoreSiteMode } from '@/lib/siteConfig';
 
 type UpdateCandidateBody = {
@@ -22,10 +18,7 @@ type UpdateCandidateBody = {
   notes?: string | null;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'PATCH') {
     return sendMethodNotAllowed(res, ['PATCH']);
   }
@@ -48,14 +41,9 @@ export default async function handler(
       winner_team: body.winner_team ?? null,
       serving_team: body.serving_team ?? null,
       serving_player: body.serving_player ?? null,
-      rally_count:
-        typeof body.rally_count === 'number' ? body.rally_count : null,
-      first_serve_fault:
-        typeof body.first_serve_fault === 'boolean'
-          ? body.first_serve_fault
-          : null,
-      double_fault:
-        typeof body.double_fault === 'boolean' ? body.double_fault : null,
+      rally_count: typeof body.rally_count === 'number' ? body.rally_count : null,
+      first_serve_fault: typeof body.first_serve_fault === 'boolean' ? body.first_serve_fault : null,
+      double_fault: typeof body.double_fault === 'boolean' ? body.double_fault : null,
       result_type: body.result_type ?? null,
       winner_player: body.winner_player ?? null,
       loser_player: body.loser_player ?? null,
@@ -75,10 +63,6 @@ export default async function handler(
 
     return res.status(200).json({ candidate });
   } catch (error) {
-    return sendSupabaseError(
-      res,
-      error as Error,
-      'Failed to update point candidate.',
-    );
+    return sendSupabaseError(res, error as Error, 'Failed to update point candidate.');
   }
 }

@@ -8,12 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {
-  PlayerMeta,
-  PlayerStatistics,
-  PlayerStatisticsOptions,
-  StatSection,
-} from '../../src/types/playerStatistics';
+import type { PlayerMeta, PlayerStatistics, PlayerStatisticsOptions, StatSection } from '../../src/types/playerStatistics';
 import { aggregateByPartner } from './aggregators/byPartner';
 import { aggregateByTeam } from './aggregators/byTeam';
 import { aggregateByTournament } from './aggregators/byTournament';
@@ -28,12 +23,9 @@ import { aggregateReachRates } from './aggregators/reachRates';
 import { aggregateRecords } from './aggregators/records';
 import { aggregateTitles } from './aggregators/titles';
 import { loadRankingConfig, PlayerStatsConfig } from './config';
-import { ENGINE_VERSION, buildFacts } from './facts';
+import { buildFacts, ENGINE_VERSION } from './facts';
 import { Identity, loadIdentity } from './identity';
-import {
-  buildReverseIndex,
-  readReverseIndex,
-} from './reverseIndex';
+import { buildReverseIndex, readReverseIndex } from './reverseIndex';
 import { SourceAdapter } from './sourceAdapter';
 import type { PlayerFacts, ReverseIndex } from './types';
 
@@ -71,30 +63,19 @@ function getEngine(root: string): Engine {
   const adapter = new SourceAdapter(root);
   const identity = loadIdentity(root);
   const config = loadRankingConfig(root);
-  const reverseIndex =
-    readReverseIndex(root) ?? buildReverseIndex(adapter, identity);
+  const reverseIndex = readReverseIndex(root) ?? buildReverseIndex(adapter, identity);
   const engine: Engine = { root, adapter, identity, config, reverseIndex };
   engineCache.set(root, engine);
   return engine;
 }
 
-function getFacts(
-  engine: Engine,
-  playerId: number,
-  freshness: 'cache' | 'recompute',
-): PlayerFacts {
+function getFacts(engine: Engine, playerId: number, freshness: 'cache' | 'recompute'): PlayerFacts {
   const key = `${engine.root}:${playerId}`;
   if (freshness === 'cache') {
     const memo = factsCache.get(key);
     if (memo) return memo;
     // 成果物キャッシュ（_facts）
-    const filePath = path.join(
-      engine.root,
-      'data',
-      'players',
-      '_facts',
-      `${playerId}.json`,
-    );
+    const filePath = path.join(engine.root, 'data', 'players', '_facts', `${playerId}.json`);
     try {
       const cached = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as PlayerFacts;
       if (cached.engineVersion === ENGINE_VERSION) {
@@ -105,21 +86,13 @@ function getFacts(
       // fall through to compute
     }
   }
-  const facts = buildFacts(
-    playerId,
-    engine.adapter,
-    engine.identity,
-    engine.reverseIndex,
-  );
+  const facts = buildFacts(playerId, engine.adapter, engine.identity, engine.reverseIndex);
   factsCache.set(key, facts);
   return facts;
 }
 
 /** discipline フィルタ（指定時、その種目の match/entry のみに絞る）。 */
-function filterFactsByDiscipline(
-  facts: PlayerFacts,
-  discipline: PlayerStatisticsOptions['discipline'],
-): PlayerFacts {
+function filterFactsByDiscipline(facts: PlayerFacts, discipline: PlayerStatisticsOptions['discipline']): PlayerFacts {
   if (!discipline) return facts;
   return {
     ...facts,
@@ -135,10 +108,7 @@ function emptyGames() {
   return { total: 0, won: 0, lost: 0, gameRate: 0 };
 }
 
-function defaultStats(
-  facts: PlayerFacts,
-  slug?: string,
-): PlayerStatistics {
+function defaultStats(facts: PlayerFacts, slug?: string | null): PlayerStatistics {
   const dates: string[] = [];
   for (const m of facts.matches) if (m.date) dates.push(m.date);
   for (const e of facts.entries) if (e.date) dates.push(e.date);
@@ -148,7 +118,7 @@ function defaultStats(
     identity: {
       displayName: facts.displayName,
       currentTeam: facts.currentTeam,
-      slug,
+      slug: slug ?? null,
       homonymRisk: facts.homonymRisk,
     },
     scope: 'site-covered',
@@ -224,11 +194,7 @@ function resolveSlug(engine: Engine, facts: PlayerFacts): string | undefined {
  * 選手 1 人の全統計を返す（唯一の公開 API）。
  * options.sections で計算を絞れる（既定は全部）。
  */
-export async function getPlayerStatistics(
-  playerId: number,
-  options: PlayerStatisticsOptions = {},
-  root?: string,
-): Promise<PlayerStatistics> {
+export async function getPlayerStatistics(playerId: number, options: PlayerStatisticsOptions = {}, root?: string): Promise<PlayerStatistics> {
   const cwd = root || process.cwd();
   const engine = getEngine(cwd);
   const freshness = options.freshness ?? 'cache';
@@ -270,11 +236,7 @@ export async function getPlayerStatistics(
   if (needH2H) stats.headToHead = aggregateHeadToHead(facts);
   if (need('records')) stats.records = aggregateRecords(facts, engine.config);
   if (need('highlights')) {
-    stats.highlights = aggregateHighlights(
-      stats.headToHead,
-      stats.byPartner,
-      engine.config,
-    );
+    stats.highlights = aggregateHighlights(stats.headToHead, stats.byPartner, engine.config);
   }
   if (need('reachRates')) stats.reachRates = aggregateReachRates(facts);
   if (needTitles) stats.titles = aggregateTitles(facts);
@@ -339,12 +301,8 @@ export function toPlayerJsonLd(stats: PlayerStatistics): object {
     mainEntity: {
       '@type': 'Person',
       name,
-      ...(stats.identity.currentTeam
-        ? { affiliation: { '@type': 'Organization', name: stats.identity.currentTeam } }
-        : {}),
-      ...(stats.identity.slug
-        ? { identifier: stats.identity.slug }
-        : {}),
+      ...(stats.identity.currentTeam ? { affiliation: { '@type': 'Organization', name: stats.identity.currentTeam } } : {}),
+      ...(stats.identity.slug ? { identifier: stats.identity.slug } : {}),
     },
   };
 }

@@ -5,10 +5,7 @@
 //
 // 既存の news パイプラインを書き換えず、必要時にこの 1 本を呼んで素材を得る（非破壊）。
 
-import type {
-  MilestoneEvent,
-  TimelineEvent,
-} from '../../src/types/playerStatistics';
+import type { MilestoneEvent, TimelineEvent } from '../../src/types/playerStatistics';
 import { getPlayerStatistics } from './playerStatistics';
 
 export interface PlayerArticleMaterial {
@@ -26,15 +23,8 @@ export interface PlayerArticleMaterial {
 /**
  * 記事の骨子となる構造化素材を返す。sections を絞って最小計算で取得する。
  */
-export async function getPlayerArticleMaterial(
-  playerId: number,
-  root?: string,
-): Promise<PlayerArticleMaterial> {
-  const stats = await getPlayerStatistics(
-    playerId,
-    { sections: ['milestones', 'titles', 'careerTimeline', 'headToHead'] },
-    root,
-  );
+export async function getPlayerArticleMaterial(playerId: number, root?: string): Promise<PlayerArticleMaterial> {
+  const stats = await getPlayerStatistics(playerId, { sections: ['milestones', 'titles', 'careerTimeline', 'headToHead'] }, root);
   return {
     playerId: stats.playerId,
     displayName: stats.identity.displayName,

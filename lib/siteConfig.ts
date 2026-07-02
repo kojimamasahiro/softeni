@@ -6,35 +6,20 @@ const normalizeSiteMode = (value: string | undefined): SiteMode => {
 
 const trimTrailingSlash = (value: string) => value.replace(/\/+$/, '');
 
-const siteMode = normalizeSiteMode(
-  process.env.NEXT_PUBLIC_SITE_MODE ?? process.env.SITE_MODE,
-);
+const siteMode = normalizeSiteMode(process.env.NEXT_PUBLIC_SITE_MODE ?? process.env.SITE_MODE);
 
-const defaultBaseUrl =
-  siteMode === 'score'
-    ? 'https://score.softeni-pick.com'
-    : 'https://softeni-pick.com';
+const defaultBaseUrl = siteMode === 'score' ? 'https://score.softeni-pick.com' : 'https://softeni-pick.com';
 
-const defaultSiteName =
-  siteMode === 'score' ? 'Softeni Pick Score' : 'Softeni Pick';
+const defaultSiteName = siteMode === 'score' ? 'Softeni Pick Score' : 'Softeni Pick';
 
 const defaultOgImage =
-  siteMode === 'score'
-    ? 'https://score.softeni-pick.com/og/twitter-card-summary.png'
-    : 'https://softeni-pick.com/og/twitter-card-summary.png';
+  siteMode === 'score' ? 'https://score.softeni-pick.com/og/twitter-card-summary.png' : 'https://softeni-pick.com/og/twitter-card-summary.png';
 
-const rawBaseUrl =
-  process.env.NEXT_PUBLIC_PUBLIC_BASE_URL ??
-  process.env.PUBLIC_BASE_URL ??
-  defaultBaseUrl;
+const rawBaseUrl = process.env.NEXT_PUBLIC_PUBLIC_BASE_URL ?? process.env.PUBLIC_BASE_URL ?? defaultBaseUrl;
 
-const rawSiteName =
-  process.env.NEXT_PUBLIC_SITE_NAME ?? process.env.SITE_NAME ?? defaultSiteName;
+const rawSiteName = process.env.NEXT_PUBLIC_SITE_NAME ?? process.env.SITE_NAME ?? defaultSiteName;
 
-const rawOgImage =
-  process.env.NEXT_PUBLIC_PUBLIC_OG_IMAGE ??
-  process.env.PUBLIC_OG_IMAGE ??
-  defaultOgImage;
+const rawOgImage = process.env.NEXT_PUBLIC_PUBLIC_OG_IMAGE ?? process.env.PUBLIC_OG_IMAGE ?? defaultOgImage;
 
 const normalizedBaseUrl = trimTrailingSlash(rawBaseUrl);
 
@@ -60,9 +45,7 @@ export const isSofteniPickSiteMode = () => siteConfig.mode === 'softeni-pick';
 
 // 成長分析のグループ限定アクセス（A1: パスワード/限定リンク）が整うまでは false。
 // false の間は、成長ページで全対象を列挙するドロップダウンを公開しない（ADR-004）。
-export const isGrowthGroupAccessEnabled = () =>
-  (process.env.NEXT_PUBLIC_GROWTH_GROUP_ACCESS ??
-    process.env.GROWTH_GROUP_ACCESS) === 'true';
+export const isGrowthGroupAccessEnabled = () => (process.env.NEXT_PUBLIC_GROWTH_GROUP_ACCESS ?? process.env.GROWTH_GROUP_ACCESS) === 'true';
 
 export const buildSiteUrl = (path: string) => {
   if (!path) return siteConfig.baseUrl;
@@ -70,17 +53,13 @@ export const buildSiteUrl = (path: string) => {
   return `${siteConfig.baseUrl}${normalizedPath}`;
 };
 
-export const getPublicMatchesListPath = () =>
-  isScoreSiteMode() ? '/matches' : '/beta/matches-results';
+export const getPublicMatchesListPath = () => (isScoreSiteMode() ? '/matches' : '/beta/matches-results');
 
 // 掲載大会に紐づく試合（siteLink あり）は大会ページ配下のネスト URL、
 // 野良試合（siteLink なし）は従来の一覧配下 URL を返す。
 // score モードでは大会ページ群を持たないため常に一覧配下 URL を使う。
 // 仕様: docs/wiki/score-site-link.md
-export const getPublicMatchDetailPath = (match: {
-  id: string;
-  siteLink?: { tournamentPath: string } | null;
-}) => {
+export const getPublicMatchDetailPath = (match: { id: string; siteLink?: { tournamentPath: string } | null }) => {
   if (!isScoreSiteMode() && match.siteLink?.tournamentPath) {
     return `${match.siteLink.tournamentPath}/matches/${match.id}`;
   }
@@ -93,5 +72,4 @@ export const getPublicMatchesGrowthPath = (targetKey?: string) => {
   return `${basePath}?targetKey=${encodeURIComponent(targetKey)}`;
 };
 
-export const getScoreMatchesUrl = () =>
-  'https://score.softeni-pick.com/matches';
+export const getScoreMatchesUrl = () => 'https://score.softeni-pick.com/matches';

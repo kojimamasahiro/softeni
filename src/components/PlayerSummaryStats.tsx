@@ -43,11 +43,7 @@ type StatsTableProps = {
   allPlayers: PlayerInfo[];
 };
 
-function formatGameStats(games?: {
-  won: number;
-  lost: number;
-  gameRate: number;
-}) {
+function formatGameStats(games?: { won: number; lost: number; gameRate: number }) {
   if (!games) return '―';
   return `${games.won} - ${games.lost}（${(games.gameRate * 100).toFixed(1)}%）`;
 }
@@ -57,10 +53,7 @@ function StatsRow({ label, stats, link, liteId }: StatsRowProps) {
     <tr className="border-t border-gray-200 dark:border-gray-600 text-center">
       <td className="py-1 px-2">
         {link ? (
-          <Link
-            href={link}
-            className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid"
-          >
+          <Link href={link} className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid">
             {label}
           </Link>
         ) : liteId ? (
@@ -78,16 +71,9 @@ function StatsRow({ label, stats, link, liteId }: StatsRowProps) {
   );
 }
 
-function StatsTable({
-  title,
-  data,
-  isYear = false,
-  allPlayers,
-}: StatsTableProps) {
+function StatsTable({ title, data, isYear = false, allPlayers }: StatsTableProps) {
   const entries = Object.entries(data);
-  const sortedEntries = isYear
-    ? entries.sort(([a], [b]) => Number(b) - Number(a))
-    : entries;
+  const sortedEntries = isYear ? entries.sort(([a], [b]) => Number(b) - Number(a)) : entries;
 
   return (
     <div className="mb-4">
@@ -95,9 +81,7 @@ function StatsTable({
       <table className="w-full border border-gray-200 dark:border-gray-600 text-sm">
         <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
           <tr>
-            <th className="py-1 px-2 text-center">
-              {isYear ? '年度' : 'パートナー'}
-            </th>
+            <th className="py-1 px-2 text-center">{isYear ? '年度' : 'パートナー'}</th>
             <th className="py-1 px-2 text-center">勝敗（勝率）</th>
             <th className="py-1 px-2 text-center">ゲーム（獲得率）</th>
           </tr>
@@ -112,22 +96,12 @@ function StatsTable({
 
             // 結果ページが実在する（count>=5）選手のみページへリンクする。
             // count<5 の選手は 404 になるためリンクせず、モーダル（PlayerLiteLink）で表示する。
-            const partner = !isYear
-              ? allPlayers.find((p) => p.id === key)
-              : undefined;
+            const partner = !isYear ? allPlayers.find((p) => p.id === key) : undefined;
             const hasPage = partner ? (partner.count ?? 0) >= 5 : false;
             const link = hasPage ? `/players/${key}/results` : undefined;
             const liteId = partner && !hasPage ? key : undefined;
 
-            return (
-              <StatsRow
-                key={key}
-                label={label}
-                stats={stats}
-                link={link}
-                liteId={liteId}
-              />
-            );
+            return <StatsRow key={key} label={label} stats={stats} link={link} liteId={liteId} />;
           })}
         </tbody>
       </table>
@@ -135,19 +109,14 @@ function StatsTable({
   );
 }
 
-export default function PlayerSummaryStats({
-  playerStats,
-  allPlayers,
-}: SummaryStatsProps) {
+export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryStatsProps) {
   if (!playerStats || !playerStats.totalMatches) return null;
 
   return (
     <>
       <h2 className="text-xl font-semibold mb-2">サマリー</h2>
       <div className="mb-6 mx-4 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">
-          対戦成績
-        </h3>
+        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">対戦成績</h3>
 
         {/* 総合成績 */}
         <table className="w-full mb-4 border border-gray-200 dark:border-gray-700 text-sm">
@@ -165,24 +134,13 @@ export default function PlayerSummaryStats({
                 {playerStats.wins}勝 {playerStats.losses}敗（
                 {(playerStats.totalWinRate * 100).toFixed(1)}%）
               </td>
-              <td className="py-1 px-2">
-                {formatGameStats(playerStats.games)}
-              </td>
+              <td className="py-1 px-2">{formatGameStats(playerStats.games)}</td>
             </tr>
           </tbody>
         </table>
 
-        <StatsTable
-          title="パートナー別"
-          data={playerStats.byPartner}
-          allPlayers={allPlayers}
-        />
-        <StatsTable
-          title="年度別"
-          data={playerStats.byYear}
-          allPlayers={allPlayers}
-          isYear
-        />
+        <StatsTable title="パートナー別" data={playerStats.byPartner} allPlayers={allPlayers} />
+        <StatsTable title="年度別" data={playerStats.byYear} allPlayers={allPlayers} isYear />
       </div>
     </>
   );

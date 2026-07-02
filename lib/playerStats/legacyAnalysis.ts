@@ -85,11 +85,7 @@ function formatJapaneseDate(value?: string | null): string {
   return String(value);
 }
 
-function formatDateRange(
-  startDate?: string | null,
-  endDate?: string | null,
-  fallbackYear?: number,
-): string {
+function formatDateRange(startDate?: string | null, endDate?: string | null, fallbackYear?: number): string {
   if (startDate && endDate) {
     if (startDate === endDate) return formatJapaneseDate(startDate);
     return `${formatJapaneseDate(startDate)}〜${formatJapaneseDate(endDate)}`;
@@ -110,20 +106,13 @@ function resolveFinalResult(
 ): string | null {
   const detail = adapter.readStandardDetail(tournamentId, year, categoryId);
   if (!detail) return null;
-  const matchingIds = detail.participants
-    .filter((p) => p.lastName === lastName && p.firstName === firstName)
-    .map((p) => p.id);
+  const matchingIds = detail.participants.filter((p) => p.lastName === lastName && p.firstName === firstName).map((p) => p.id);
   if (matchingIds.length === 0) return null;
-  const targetEntryNos = detail.entries
-    .filter((e) => e.playerIds.some((id) => matchingIds.includes(id)))
-    .map((e) => e.entryNo);
+  const targetEntryNos = detail.entries.filter((e) => e.playerIds.some((id) => matchingIds.includes(id))).map((e) => e.entryNo);
 
   for (const r of detail.results) {
-    const entryNoMatch =
-      typeof r.entryNo === 'number' && targetEntryNos.includes(r.entryNo);
-    const pidMatch =
-      Array.isArray(r.playerIds) &&
-      r.playerIds.some((id) => matchingIds.includes(id));
+    const entryNoMatch = typeof r.entryNo === 'number' && targetEntryNos.includes(r.entryNo);
+    const pidMatch = Array.isArray(r.playerIds) && r.playerIds.some((id) => matchingIds.includes(id));
     if (!entryNoMatch && !pidMatch) continue;
 
     if (r.tournament && typeof r.tournament === 'object') {
@@ -141,12 +130,7 @@ function resolveFinalResult(
  * Facts から analysis.json 互換オブジェクトを組み立てる。
  * lastName/firstName は latestMatch の finalResult 解決に使う。
  */
-export function buildLegacyAnalysis(
-  facts: PlayerFacts,
-  adapter: SourceAdapter,
-  lastName: string,
-  firstName: string,
-): LegacyAnalysis {
+export function buildLegacyAnalysis(facts: PlayerFacts, adapter: SourceAdapter, lastName: string, firstName: string): LegacyAnalysis {
   const overall = foldAll(facts.matches);
 
   const byPartnerMatches = new Map<string, PlayerMatchFact[]>();
@@ -205,10 +189,7 @@ export function buildLegacyAnalysis(
       tmap.set(key, info);
     }
     if (m.partner && m.partner.id != null) {
-      info.partnerCounts.set(
-        m.partner.id,
-        (info.partnerCounts.get(m.partner.id) ?? 0) + 1,
-      );
+      info.partnerCounts.set(m.partner.id, (info.partnerCounts.get(m.partner.id) ?? 0) + 1);
     }
   }
 
@@ -229,14 +210,7 @@ export function buildLegacyAnalysis(
         partnerId = pid;
       }
     }
-    const finalResult = resolveFinalResult(
-      adapter,
-      latest.tid,
-      latest.year,
-      latest.categoryId,
-      lastName,
-      firstName,
-    );
+    const finalResult = resolveFinalResult(adapter, latest.tid, latest.year, latest.categoryId, lastName, firstName);
     analysis.latestMatch = {
       tournament: latest.name ?? '',
       date: formatDateRange(latest.startDate, latest.endDate, latest.year),

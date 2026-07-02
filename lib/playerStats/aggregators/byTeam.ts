@@ -7,10 +7,7 @@ import type { PlayerFacts, PlayerMatchFact } from '../types';
 import { canonicalizeTeam, foldGames, foldWinLoss } from './util';
 
 export function aggregateByTeam(facts: PlayerFacts, root?: string): TeamRow[] {
-  const byTeam = new Map<
-    string,
-    { matches: PlayerMatchFact[]; dates: string[]; titles: number }
-  >();
+  const byTeam = new Map<string, { matches: PlayerMatchFact[]; dates: string[]; titles: number }>();
 
   for (const m of facts.matches) {
     const team = canonicalizeTeam(m.selfTeam, root);

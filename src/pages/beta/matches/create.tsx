@@ -5,11 +5,7 @@ import { useEffect, useState } from 'react';
 import { hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode, isTestMode } from '../../../../lib/env';
 import { isScoreSiteMode } from '../../../../lib/siteConfig';
-import {
-  getCategoryOptions,
-  TournamentCategory,
-  TournamentMeta,
-} from '../../../../lib/tournamentHelpers';
+import { getCategoryOptions, TournamentCategory, TournamentMeta } from '../../../../lib/tournamentHelpers';
 
 type TournamentOption = {
   id: string;
@@ -44,19 +40,11 @@ type CreateMatchProps = {
 };
 
 // 氏名の正規化（成長分析のキーと同じ規約: 前後空白除去＋連続空白を1つ＋小文字化）。
-const normalizeNameText = (value: string) =>
-  value.trim().replace(/\s+/g, ' ').toLowerCase();
+const normalizeNameText = (value: string) => value.trim().replace(/\s+/g, ' ').toLowerCase();
 // 空白を全て除いた緩いキー（「上岡俊介」と「上岡 俊介」を同一視するため）。
-const looseNameKey = (lastName: string, firstName: string) =>
-  `${normalizeNameText(lastName)}${normalizeNameText(firstName)}`.replace(
-    /\s+/g,
-    '',
-  );
+const looseNameKey = (lastName: string, firstName: string) => `${normalizeNameText(lastName)}${normalizeNameText(firstName)}`.replace(/\s+/g, '');
 
-const CreateMatch = ({
-  tournamentOptions,
-  tournamentCatalog,
-}: CreateMatchProps) => {
+const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps) => {
   const router = useRouter();
   const canEditMatches = isDebugMode() && hasLiveMatchApi();
   // 氏名サジェスト・重複検知用の既知選手一覧。ページ props に同梱すると
@@ -90,22 +78,15 @@ const CreateMatch = ({
   });
 
   // カテゴリからゲーム形式を判定する関数
-  const getGameTypeFromCategory = (
-    selectedCategory: string,
-  ): 'singles' | 'doubles' | 'team' => {
+  const getGameTypeFromCategory = (selectedCategory: string): 'singles' | 'doubles' | 'team' => {
     if (!selectedCategory || !categoryOptions.gameCategories) return 'singles';
 
-    const category = categoryOptions.gameCategories.find(
-      (cat) => cat.value === selectedCategory,
-    );
+    const category = categoryOptions.gameCategories.find((cat) => cat.value === selectedCategory);
     return (category?.value as 'singles' | 'doubles' | 'team') || 'singles';
   };
 
   // 優先度に基づいてデフォルト選択肢を決定する関数
-  const getDefaultSelection = (
-    options: { value: string; label: string }[],
-    type: 'gender' | 'category',
-  ) => {
+  const getDefaultSelection = (options: { value: string; label: string }[], type: 'gender' | 'category') => {
     if (options.length === 0) return '';
     if (options.length === 1) return options[0].value;
 
@@ -165,10 +146,7 @@ const CreateMatch = ({
   const currentCategoryId = (() => {
     const selected = tournamentCatalog[formData.tournament_name];
     if (!selected) return '';
-    const matched = selected.categories.find(
-      (cat) =>
-        cat.category === formData.category && cat.gender === formData.gender,
-    );
+    const matched = selected.categories.find((cat) => cat.category === formData.category && cat.gender === formData.gender);
     return matched?.id ?? '';
   })();
 
@@ -182,13 +160,7 @@ const CreateMatch = ({
     const tournamentId = formData.tournament_name.replace(/-\d{4}$/, '');
     let cancelled = false;
 
-    fetch(
-      `/api/tournament-entries?tournamentId=${encodeURIComponent(
-        tournamentId,
-      )}&year=${formData.year}&categoryId=${encodeURIComponent(
-        currentCategoryId,
-      )}`,
-    )
+    fetch(`/api/tournament-entries?tournamentId=${encodeURIComponent(tournamentId)}&year=${formData.year}&categoryId=${encodeURIComponent(currentCategoryId)}`)
       .then((response) => (response.ok ? response.json() : { entries: [] }))
       .then((data) => {
         if (!cancelled) setEntryOptions(data.entries ?? []);
@@ -237,18 +209,14 @@ const CreateMatch = ({
       }
 
       const selected = tournamentCatalog[formData.tournament_name];
-      const options = getCategoryOptions(
-        selected?.categories ?? [],
-        selected?.meta ?? undefined,
-      );
+      const options = getCategoryOptions(selected?.categories ?? [], selected?.meta ?? undefined);
       setCategoryOptions(options);
 
       // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
       // 選択肢が1つしかない場合は自動選択、複数ある場合は優先度に基づいて選択
       setFormData((prev) => ({
         ...prev,
-        generation:
-          options.generations.length === 1 ? options.generations[0].value : '',
+        generation: options.generations.length === 1 ? options.generations[0].value : '',
         gender: getDefaultSelection(options.genders, 'gender'),
         category: getDefaultSelection(options.gameCategories, 'category'),
       }));
@@ -263,9 +231,7 @@ const CreateMatch = ({
       <div className="max-w-4xl mx-auto p-6">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           <strong className="font-bold">編集不可</strong>
-          <span className="block sm:inline ml-2">
-            このページは開発サーバーでのみ利用できます。静的公開環境ではマッチ作成はできません。
-          </span>
+          <span className="block sm:inline ml-2">このページは開発サーバーでのみ利用できます。静的公開環境ではマッチ作成はできません。</span>
         </div>
       </div>
     );
@@ -304,18 +270,10 @@ const CreateMatch = ({
           ]
         : []),
     ];
-    const knownExact = new Set(
-      knownPlayers.map(
-        (p) =>
-          `${normalizeNameText(p.lastName)} ${normalizeNameText(p.firstName)}`,
-      ),
-    );
+    const knownExact = new Set(knownPlayers.map((p) => `${normalizeNameText(p.lastName)} ${normalizeNameText(p.firstName)}`));
     const knownLoose = new Map<string, string>();
     knownPlayers.forEach((p) => {
-      knownLoose.set(
-        looseNameKey(p.lastName, p.firstName),
-        `${p.lastName} ${p.firstName}`,
-      );
+      knownLoose.set(looseNameKey(p.lastName, p.firstName), `${p.lastName} ${p.firstName}`);
     });
     const variantWarnings: string[] = [];
     for (const pl of enteredPlayers) {
@@ -326,17 +284,11 @@ const CreateMatch = ({
       if (knownExact.has(exact)) continue;
       const match = knownLoose.get(looseNameKey(last, first));
       if (match) {
-        variantWarnings.push(
-          `「${last} ${first}」は既存選手「${match}」の表記ゆれの可能性があります`,
-        );
+        variantWarnings.push(`「${last} ${first}」は既存選手「${match}」の表記ゆれの可能性があります`);
       }
     }
     if (variantWarnings.length > 0) {
-      const proceed = window.confirm(
-        `${variantWarnings.join(
-          '\n',
-        )}\n\nこのまま作成しますか？（別人なら OK、表記を直すならキャンセル）`,
-      );
+      const proceed = window.confirm(`${variantWarnings.join('\n')}\n\nこのまま作成しますか？（別人なら OK、表記を直すならキャンセル）`);
       if (!proceed) return;
     }
 
@@ -372,14 +324,10 @@ const CreateMatch = ({
         team_a_player1_first_name: teamA.player1_first_name,
         team_a_player1_team_name: teamA.player1_team_name,
         team_a_player1_region: teamA.player1_region,
-        team_a_player2_last_name:
-          gameType === 'doubles' ? teamA.player2_last_name : null,
-        team_a_player2_first_name:
-          gameType === 'doubles' ? teamA.player2_first_name : null,
-        team_a_player2_team_name:
-          gameType === 'doubles' ? teamA.player2_team_name : null,
-        team_a_player2_region:
-          gameType === 'doubles' ? teamA.player2_region : null,
+        team_a_player2_last_name: gameType === 'doubles' ? teamA.player2_last_name : null,
+        team_a_player2_first_name: gameType === 'doubles' ? teamA.player2_first_name : null,
+        team_a_player2_team_name: gameType === 'doubles' ? teamA.player2_team_name : null,
+        team_a_player2_region: gameType === 'doubles' ? teamA.player2_region : null,
 
         // チームB詳細情報
         team_b_entry_number: teamB.entry_number,
@@ -387,14 +335,10 @@ const CreateMatch = ({
         team_b_player1_first_name: teamB.player1_first_name,
         team_b_player1_team_name: teamB.player1_team_name,
         team_b_player1_region: teamB.player1_region,
-        team_b_player2_last_name:
-          gameType === 'doubles' ? teamB.player2_last_name : null,
-        team_b_player2_first_name:
-          gameType === 'doubles' ? teamB.player2_first_name : null,
-        team_b_player2_team_name:
-          gameType === 'doubles' ? teamB.player2_team_name : null,
-        team_b_player2_region:
-          gameType === 'doubles' ? teamB.player2_region : null,
+        team_b_player2_last_name: gameType === 'doubles' ? teamB.player2_last_name : null,
+        team_b_player2_first_name: gameType === 'doubles' ? teamB.player2_first_name : null,
+        team_b_player2_team_name: gameType === 'doubles' ? teamB.player2_team_name : null,
+        team_b_player2_region: gameType === 'doubles' ? teamB.player2_region : null,
 
         // 構造化されたチームデータ
         teams: {
@@ -459,41 +403,29 @@ const CreateMatch = ({
         body: JSON.stringify(apiData),
       });
       const contentType = response.headers.get('content-type') ?? '';
-      const data = contentType.includes('application/json')
-        ? await response.json()
-        : null;
+      const data = contentType.includes('application/json') ? await response.json() : null;
 
       if (response.ok && data?.match?.id) {
-        const startGameResponse = await fetch(
-          `/api/matches/${data.match.id}/games`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              game_number: 1,
-            }),
-          },
-        );
-        const startGameContentType =
-          startGameResponse.headers.get('content-type') ?? '';
-        const startGameData = startGameContentType.includes('application/json')
-          ? await startGameResponse.json()
-          : null;
+        const startGameResponse = await fetch(`/api/matches/${data.match.id}/games`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            game_number: 1,
+          }),
+        });
+        const startGameContentType = startGameResponse.headers.get('content-type') ?? '';
+        const startGameData = startGameContentType.includes('application/json') ? await startGameResponse.json() : null;
 
         if (startGameResponse.ok) {
           // 作成されたマッチの入力ページへ遷移
           router.push(`/beta/matches/${data.match.id}/input`);
         } else {
-          const errorMessage =
-            startGameData?.error ??
-            '第1ゲームの開始に失敗しました。マッチは作成済みです。';
+          const errorMessage = startGameData?.error ?? '第1ゲームの開始に失敗しました。マッチは作成済みです。';
           console.error('Failed to start first game:', errorMessage);
           alert(errorMessage);
         }
       } else {
-        const errorMessage =
-          data?.error ??
-          'マッチ作成に失敗しました。API から JSON を取得できませんでした。';
+        const errorMessage = data?.error ?? 'マッチ作成に失敗しました。API から JSON を取得できませんでした。';
         console.error('Failed to create match:', errorMessage);
         alert(errorMessage);
       }
@@ -509,22 +441,14 @@ const CreateMatch = ({
     <div className="max-w-2xl mx-auto p-6">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">新しいマッチを作成</h1>
-        {isTestMode() && (
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-3 py-1 rounded text-sm">
-            テストモード
-          </div>
-        )}
+        {isTestMode() && <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-3 py-1 rounded text-sm">テストモード</div>}
       </div>
 
       {isTestMode() && (
         <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
           <div className="flex items-start">
             <div className="flex-shrink-0">
-              <svg
-                className="h-5 w-5 text-yellow-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+              <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                 <path
                   fillRule="evenodd"
                   d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
@@ -533,13 +457,9 @@ const CreateMatch = ({
               </svg>
             </div>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-yellow-800">
-                テスト環境で実行中
-              </h3>
+              <h3 className="text-sm font-medium text-yellow-800">テスト環境で実行中</h3>
               <div className="mt-2 text-sm text-yellow-700">
-                <p>
-                  このデータはテスト用データベースに保存されます。本番環境には影響しません。
-                </p>
+                <p>このデータはテスト用データベースに保存されます。本番環境には影響しません。</p>
               </div>
             </div>
           </div>
@@ -571,15 +491,11 @@ const CreateMatch = ({
                 required
                 value={formData.tournament_name}
                 onChange={(e) => {
-                  const selectedTournament = tournamentOptions.find(
-                    (option) => option.id === e.target.value,
-                  );
+                  const selectedTournament = tournamentOptions.find((option) => option.id === e.target.value);
                   setFormData({
                     ...formData,
                     tournament_name: e.target.value,
-                    year: selectedTournament
-                      ? selectedTournament.year
-                      : new Date().getFullYear(),
+                    year: selectedTournament ? selectedTournament.year : new Date().getFullYear(),
                   });
                 }}
                 className="w-full border rounded p-2"
@@ -657,9 +573,7 @@ const CreateMatch = ({
             {/* ゲームカテゴリ選択 */}
             {categoryOptions.gameCategories.length > 0 && (
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  ゲームカテゴリ
-                </label>
+                <label className="block text-sm font-medium mb-2">ゲームカテゴリ</label>
                 <div className="space-y-2">
                   {categoryOptions.gameCategories.map((cat) => (
                     <label key={cat.value} className="flex items-center">
@@ -688,9 +602,7 @@ const CreateMatch = ({
         <div>
           <label className="block text-sm font-medium mb-2">開催年</label>
           {formData.tournament_name ? (
-            <div className="w-full border rounded p-2 bg-gray-100 text-gray-700">
-              {formData.year}年 (大会データより自動設定)
-            </div>
+            <div className="w-full border rounded p-2 bg-gray-100 text-gray-700">{formData.year}年 (大会データより自動設定)</div>
           ) : (
             <input
               type="number"
@@ -698,9 +610,7 @@ const CreateMatch = ({
               min="2020"
               max="2030"
               value={formData.year}
-              onChange={(e) =>
-                setFormData({ ...formData, year: parseInt(e.target.value) })
-              }
+              onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) })}
               className="w-full border rounded p-2"
               placeholder="例: 2024"
             />
@@ -709,13 +619,7 @@ const CreateMatch = ({
 
         <div>
           <label className="block text-sm font-medium mb-2">回戦</label>
-          <select
-            value={formData.round_name}
-            onChange={(e) =>
-              setFormData({ ...formData, round_name: e.target.value })
-            }
-            className="w-full border rounded p-2"
-          >
+          <select value={formData.round_name} onChange={(e) => setFormData({ ...formData, round_name: e.target.value })} className="w-full border rounded p-2">
             <option value="">回戦を選択してください（任意）</option>
             <option value="1回戦">1回戦</option>
             <option value="2回戦">2回戦</option>
@@ -736,9 +640,7 @@ const CreateMatch = ({
             <input
               type="date"
               value={formData.match_date}
-              onChange={(e) =>
-                setFormData({ ...formData, match_date: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, match_date: e.target.value })}
               className="w-full border rounded p-2"
             />
           </div>
@@ -747,9 +649,7 @@ const CreateMatch = ({
             <input
               type="text"
               value={formData.court_name}
-              onChange={(e) =>
-                setFormData({ ...formData, court_name: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, court_name: e.target.value })}
               className="w-full border rounded p-2"
               placeholder="例: 第1コート"
             />
@@ -758,9 +658,7 @@ const CreateMatch = ({
             <label className="block text-sm font-medium mb-2">相手レベル</label>
             <select
               value={formData.opponent_level}
-              onChange={(e) =>
-                setFormData({ ...formData, opponent_level: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, opponent_level: e.target.value })}
               className="w-full border rounded p-2"
             >
               <option value="unknown">不明</option>
@@ -775,19 +673,10 @@ const CreateMatch = ({
           <label className="block text-sm font-medium mb-4">チームA</label>
           {entryOptions.length > 0 && (
             <div className="mb-4">
-              <label className="block text-xs text-emerald-700 mb-1">
-                エントリーから選択（自動入力）
-              </label>
+              <label className="block text-xs text-emerald-700 mb-1">エントリーから選択（自動入力）</label>
               <select
                 value=""
-                onChange={(e) =>
-                  applyEntryToTeam(
-                    'A',
-                    entryOptions.find(
-                      (option) => String(option.entryNo) === e.target.value,
-                    ) ?? null,
-                  )
-                }
+                onChange={(e) => applyEntryToTeam('A', entryOptions.find((option) => String(option.entryNo) === e.target.value) ?? null)}
                 className="w-full border border-emerald-300 rounded p-2 text-sm bg-emerald-50"
               >
                 <option value="">エントリーを選択…</option>
@@ -800,15 +689,11 @@ const CreateMatch = ({
             </div>
           )}
           <div className="mb-4">
-            <label className="block text-xs text-gray-600 mb-1">
-              エントリー番号
-            </label>
+            <label className="block text-xs text-gray-600 mb-1">エントリー番号</label>
             <input
               type="text"
               value={teamA.entry_number}
-              onChange={(e) =>
-                setTeamA({ ...teamA, entry_number: e.target.value })
-              }
+              onChange={(e) => setTeamA({ ...teamA, entry_number: e.target.value })}
               className="w-full border rounded p-2 text-sm"
               placeholder="例: A001"
             />
@@ -823,9 +708,7 @@ const CreateMatch = ({
                     type="text"
                     required
                     value={teamA.player1_last_name}
-                    onChange={(e) =>
-                      setTeamA({ ...teamA, player1_last_name: e.target.value })
-                    }
+                    onChange={(e) => setTeamA({ ...teamA, player1_last_name: e.target.value })}
                     className="border rounded p-2 text-sm"
                     placeholder="姓"
                     list="known-last-names"
@@ -834,9 +717,7 @@ const CreateMatch = ({
                     type="text"
                     required
                     value={teamA.player1_first_name}
-                    onChange={(e) =>
-                      setTeamA({ ...teamA, player1_first_name: e.target.value })
-                    }
+                    onChange={(e) => setTeamA({ ...teamA, player1_first_name: e.target.value })}
                     className="border rounded p-2 text-sm"
                     placeholder="名"
                     list="known-first-names"
@@ -846,18 +727,14 @@ const CreateMatch = ({
                   type="text"
                   required
                   value={teamA.player1_team_name}
-                  onChange={(e) =>
-                    setTeamA({ ...teamA, player1_team_name: e.target.value })
-                  }
+                  onChange={(e) => setTeamA({ ...teamA, player1_team_name: e.target.value })}
                   className="w-full border rounded p-2 text-sm"
                   placeholder="チーム名 (例: 東京都立高校)"
                 />
                 <input
                   type="text"
                   value={teamA.player1_region}
-                  onChange={(e) =>
-                    setTeamA({ ...teamA, player1_region: e.target.value })
-                  }
+                  onChange={(e) => setTeamA({ ...teamA, player1_region: e.target.value })}
                   className="w-full border rounded p-2 text-sm"
                   placeholder="地域 (例: 東京都)"
                 />
@@ -866,9 +743,7 @@ const CreateMatch = ({
 
             {getGameTypeFromCategory(formData.category) === 'doubles' && (
               <div className="border-l-4 border-green-500 pl-4">
-                <label className="block text-xs text-gray-600 mb-2">
-                  選手2
-                </label>
+                <label className="block text-xs text-gray-600 mb-2">選手2</label>
                 <div className="space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <input
@@ -902,18 +777,14 @@ const CreateMatch = ({
                     type="text"
                     required
                     value={teamA.player2_team_name}
-                    onChange={(e) =>
-                      setTeamA({ ...teamA, player2_team_name: e.target.value })
-                    }
+                    onChange={(e) => setTeamA({ ...teamA, player2_team_name: e.target.value })}
                     className="w-full border rounded p-2 text-sm"
                     placeholder="チーム名 (例: 神奈川県立高校)"
                   />
                   <input
                     type="text"
                     value={teamA.player2_region}
-                    onChange={(e) =>
-                      setTeamA({ ...teamA, player2_region: e.target.value })
-                    }
+                    onChange={(e) => setTeamA({ ...teamA, player2_region: e.target.value })}
                     className="w-full border rounded p-2 text-sm"
                     placeholder="地域 (例: 神奈川県)"
                   />
@@ -927,19 +798,10 @@ const CreateMatch = ({
           <label className="block text-sm font-medium mb-4">チームB</label>
           {entryOptions.length > 0 && (
             <div className="mb-4">
-              <label className="block text-xs text-emerald-700 mb-1">
-                エントリーから選択（自動入力）
-              </label>
+              <label className="block text-xs text-emerald-700 mb-1">エントリーから選択（自動入力）</label>
               <select
                 value=""
-                onChange={(e) =>
-                  applyEntryToTeam(
-                    'B',
-                    entryOptions.find(
-                      (option) => String(option.entryNo) === e.target.value,
-                    ) ?? null,
-                  )
-                }
+                onChange={(e) => applyEntryToTeam('B', entryOptions.find((option) => String(option.entryNo) === e.target.value) ?? null)}
                 className="w-full border border-emerald-300 rounded p-2 text-sm bg-emerald-50"
               >
                 <option value="">エントリーを選択…</option>
@@ -952,15 +814,11 @@ const CreateMatch = ({
             </div>
           )}
           <div className="mb-4">
-            <label className="block text-xs text-gray-600 mb-1">
-              エントリー番号
-            </label>
+            <label className="block text-xs text-gray-600 mb-1">エントリー番号</label>
             <input
               type="text"
               value={teamB.entry_number}
-              onChange={(e) =>
-                setTeamB({ ...teamB, entry_number: e.target.value })
-              }
+              onChange={(e) => setTeamB({ ...teamB, entry_number: e.target.value })}
               className="w-full border rounded p-2 text-sm"
               placeholder="例: B001"
             />
@@ -975,9 +833,7 @@ const CreateMatch = ({
                     type="text"
                     required
                     value={teamB.player1_last_name}
-                    onChange={(e) =>
-                      setTeamB({ ...teamB, player1_last_name: e.target.value })
-                    }
+                    onChange={(e) => setTeamB({ ...teamB, player1_last_name: e.target.value })}
                     className="border rounded p-2 text-sm"
                     placeholder="姓"
                     list="known-last-names"
@@ -986,9 +842,7 @@ const CreateMatch = ({
                     type="text"
                     required
                     value={teamB.player1_first_name}
-                    onChange={(e) =>
-                      setTeamB({ ...teamB, player1_first_name: e.target.value })
-                    }
+                    onChange={(e) => setTeamB({ ...teamB, player1_first_name: e.target.value })}
                     className="border rounded p-2 text-sm"
                     placeholder="名"
                     list="known-first-names"
@@ -998,18 +852,14 @@ const CreateMatch = ({
                   type="text"
                   required
                   value={teamB.player1_team_name}
-                  onChange={(e) =>
-                    setTeamB({ ...teamB, player1_team_name: e.target.value })
-                  }
+                  onChange={(e) => setTeamB({ ...teamB, player1_team_name: e.target.value })}
                   className="w-full border rounded p-2 text-sm"
                   placeholder="チーム名 (例: 大阪府立高校)"
                 />
                 <input
                   type="text"
                   value={teamB.player1_region}
-                  onChange={(e) =>
-                    setTeamB({ ...teamB, player1_region: e.target.value })
-                  }
+                  onChange={(e) => setTeamB({ ...teamB, player1_region: e.target.value })}
                   className="w-full border rounded p-2 text-sm"
                   placeholder="地域 (例: 大阪府)"
                 />
@@ -1018,9 +868,7 @@ const CreateMatch = ({
 
             {getGameTypeFromCategory(formData.category) === 'doubles' && (
               <div className="border-l-4 border-green-500 pl-4">
-                <label className="block text-xs text-gray-600 mb-2">
-                  選手2
-                </label>
+                <label className="block text-xs text-gray-600 mb-2">選手2</label>
                 <div className="space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <input
@@ -1054,18 +902,14 @@ const CreateMatch = ({
                     type="text"
                     required
                     value={teamB.player2_team_name}
-                    onChange={(e) =>
-                      setTeamB({ ...teamB, player2_team_name: e.target.value })
-                    }
+                    onChange={(e) => setTeamB({ ...teamB, player2_team_name: e.target.value })}
                     className="w-full border rounded p-2 text-sm"
                     placeholder="チーム名 (例: 兵庫県立高校)"
                   />
                   <input
                     type="text"
                     value={teamB.player2_region}
-                    onChange={(e) =>
-                      setTeamB({ ...teamB, player2_region: e.target.value })
-                    }
+                    onChange={(e) => setTeamB({ ...teamB, player2_region: e.target.value })}
                     className="w-full border rounded p-2 text-sm"
                     placeholder="地域 (例: 兵庫県)"
                   />
@@ -1104,11 +948,7 @@ const CreateMatch = ({
           </div>
         </div>
 
-        <button
-          type="submit"
-          disabled={creating}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:bg-gray-300"
-        >
+        <button type="submit" disabled={creating} className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:bg-gray-300">
           {creating ? 'マッチを作成中...' : 'マッチを作成して開始'}
         </button>
       </form>
@@ -1137,32 +977,19 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
     const tournamentMetaMap = new Map<string, TournamentMeta>();
     const generationDirs = fs
       .readdirSync(tournamentsRoot, { withFileTypes: true })
-      .filter(
-        (dirent) =>
-          dirent.isDirectory() &&
-          dirent.name !== 'details' &&
-          dirent.name !== 'information',
-      );
+      .filter((dirent) => dirent.isDirectory() && dirent.name !== 'details' && dirent.name !== 'information');
 
     for (const generationDir of generationDirs) {
       const generationPath = path.join(tournamentsRoot, generationDir.name);
-      const tournamentDirs = fs
-        .readdirSync(generationPath, { withFileTypes: true })
-        .filter((dirent) => dirent.isDirectory());
+      const tournamentDirs = fs.readdirSync(generationPath, { withFileTypes: true }).filter((dirent) => dirent.isDirectory());
 
       for (const tournamentDir of tournamentDirs) {
-        const metaPath = path.join(
-          generationPath,
-          tournamentDir.name,
-          'meta.json',
-        );
+        const metaPath = path.join(generationPath, tournamentDir.name, 'meta.json');
         if (!fs.existsSync(metaPath)) {
           continue;
         }
 
-        const meta = JSON.parse(
-          fs.readFileSync(metaPath, 'utf8'),
-        ) as TournamentMeta;
+        const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8')) as TournamentMeta;
         tournamentMetaMap.set(tournamentDir.name, meta);
       }
     }
@@ -1183,15 +1010,11 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
     >();
 
     if (fs.existsSync(informationRoot)) {
-      const informationFiles = fs
-        .readdirSync(informationRoot)
-        .filter((fileName) => fileName.endsWith('.json'));
+      const informationFiles = fs.readdirSync(informationRoot).filter((fileName) => fileName.endsWith('.json'));
 
       for (const fileName of informationFiles) {
         const tournamentId = path.basename(fileName, '.json');
-        const entries = JSON.parse(
-          fs.readFileSync(path.join(informationRoot, fileName), 'utf8'),
-        ) as Array<{
+        const entries = JSON.parse(fs.readFileSync(path.join(informationRoot, fileName), 'utf8')) as Array<{
           year: number;
           label?: string;
           categories?: Array<{
@@ -1211,8 +1034,7 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
 
       for (const fileName of fileNames) {
         const categoryId = fileName.replace(/\.json$/, '');
-        const [category = '', age = 'none', gender = ''] =
-          categoryId.split('-');
+        const [category = '', age = 'none', gender = ''] = categoryId.split('-');
 
         categoryMap.set(categoryId, {
           id: categoryId,
@@ -1240,9 +1062,7 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
 
         const yearDirs = fs
           .readdirSync(tournamentPath, { withFileTypes: true })
-          .filter(
-            (dirent) => dirent.isDirectory() && /^\d{4}$/.test(dirent.name),
-          )
+          .filter((dirent) => dirent.isDirectory() && /^\d{4}$/.test(dirent.name))
           .map((dirent) => dirent.name)
           .sort((a, b) => Number(b) - Number(a));
 
@@ -1250,17 +1070,13 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
           const year = Number(yearDir);
           const optionId = `${tournamentId}-${year}`;
           const detailYearPath = path.join(tournamentPath, yearDir);
-          const detailFiles = fs
-            .readdirSync(detailYearPath)
-            .filter((fileName) => fileName.endsWith('.json'));
+          const detailFiles = fs.readdirSync(detailYearPath).filter((fileName) => fileName.endsWith('.json'));
 
           if (detailFiles.length === 0) {
             continue;
           }
 
-          const informationEntry = informationEntries.find(
-            (entry) => entry.year === year,
-          );
+          const informationEntry = informationEntries.find((entry) => entry.year === year);
           const categories = informationEntry?.categories?.length
             ? informationEntry.categories.map((category) => ({
                 id: category.categoryId,
@@ -1271,8 +1087,7 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
               }))
             : buildCategoriesFromFileNames(detailFiles);
 
-          const displayName =
-            informationEntry?.label ?? meta?.name ?? tournamentId;
+          const displayName = informationEntry?.label ?? meta?.name ?? tournamentId;
 
           tournamentOptions.push({
             id: optionId,
@@ -1288,10 +1103,7 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
       }
     }
   } catch (error) {
-    console.error(
-      'Failed to build tournament options for beta matches:',
-      error,
-    );
+    console.error('Failed to build tournament options for beta matches:', error);
   }
 
   return {

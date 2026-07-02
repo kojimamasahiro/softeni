@@ -215,9 +215,7 @@ function tournamentMetaOf(tournamentId: string): {
   label: string;
   generationId: string;
 } {
-  const idx = readJson<
-    Array<{ tournamentId: string; label?: string; generationId?: string }>
-  >(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
+  const idx = readJson<Array<{ tournamentId: string; label?: string; generationId?: string }>>(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
   const hit = idx?.find((t) => t.tournamentId === tournamentId);
   return {
     label: hit?.label ?? tournamentId,
@@ -226,9 +224,7 @@ function tournamentMetaOf(tournamentId: string): {
 }
 
 /** categoryId（`category-age-gender`）を URL 構成パーツに分解する */
-function categoryPathParts(
-  categoryId: string,
-): { category: string; age: string; gender: string } | null {
+function categoryPathParts(categoryId: string): { category: string; age: string; gender: string } | null {
   const parts = categoryId.split('-');
   if (parts.length < 3) return null;
   const gender = parts.pop() as string;
@@ -239,9 +235,7 @@ function categoryPathParts(
 
 /** 記事レコードを読む */
 export function getArticleRecord(articleId: string): NewsArticleRecord | null {
-  return readJson<NewsArticleRecord>(
-    path.join(resolveRoot(), ...NEWS_ROOT, `${articleId}.json`),
-  );
+  return readJson<NewsArticleRecord>(path.join(resolveRoot(), ...NEWS_ROOT, `${articleId}.json`));
 }
 
 /** 全記事レコード（state 問わず） */
@@ -277,12 +271,7 @@ export function listPublishedPreviews(): NewsArticleRecord[] {
 
 /** 対象 tournamentId/year に存在する categoryId 一覧（details 実体から） */
 function listCategoryIds(tournamentId: string, year: number): string[] {
-  const dir = path.join(
-    resolveRoot(),
-    ...DETAILS_ROOT,
-    tournamentId,
-    String(year),
-  );
+  const dir = path.join(resolveRoot(), ...DETAILS_ROOT, tournamentId, String(year));
   if (!fs.existsSync(dir)) return [];
   const ids: string[] = [];
   for (const f of fs.readdirSync(dir)) {
@@ -393,9 +382,7 @@ let cachedPlayerIdMap: Map<string, number> | null = null;
 function getPlayerIdMap(): Map<string, number> {
   if (cachedPlayerIdMap) return cachedPlayerIdMap;
   const m = new Map<string, number>();
-  const idx = readJson<
-    Array<{ id: number; lastName: string; firstName: string; count: number }>
-  >(path.join(resolveRoot(), 'data', 'players', 'index.json'));
+  const idx = readJson<Array<{ id: number; lastName: string; firstName: string; count: number }>>(path.join(resolveRoot(), 'data', 'players', 'index.json'));
   if (idx) {
     for (const p of idx) {
       if (p.count < 5) continue;
@@ -417,19 +404,12 @@ function teamMatchKey(c: ChampionEntry): string | null {
   if (!c.display) return null;
   const teams = c.teams.map((t) => normPart(normalizeTeam(t))).sort();
   const names = c.players.map((n) => normPart(n)).sort();
-  const base =
-    names.length > 0
-      ? `${names.join('|')}@${teams.join('|')}`
-      : teams.join('|');
+  const base = names.length > 0 ? `${names.join('|')}@${teams.join('|')}` : teams.join('|');
   return base || null;
 }
 
 /** 対象年・種目のエントリーから出場者インデックスを構築する */
-function buildFieldIndex(
-  tournamentId: string,
-  year: number,
-  categoryId: string,
-): FieldIndex | null {
+function buildFieldIndex(tournamentId: string, year: number, categoryId: string): FieldIndex | null {
   const detail = readYearDetail(tournamentId, year, categoryId);
   if (!detail || !detail.entries || detail.entries.length === 0) return null;
   const pmap = buildParticipantMap(detail);
@@ -465,14 +445,10 @@ function buildFieldIndex(
     }
     const namesSorted = names.map(normPart).sort();
     const teamsSorted = teams.map(normPart).sort();
-    const ck =
-      names.length > 0
-        ? `${namesSorted.join('|')}@${teamsSorted.join('|')}`
-        : teamsSorted.join('|');
+    const ck = names.length > 0 ? `${namesSorted.join('|')}@${teamsSorted.join('|')}` : teamsSorted.join('|');
     if (ck) {
       championKeySet.add(ck);
-      if (!championKeyToEntryNo.has(ck))
-        championKeyToEntryNo.set(ck, e.entryNo);
+      if (!championKeyToEntryNo.has(ck)) championKeyToEntryNo.set(ck, e.entryNo);
     }
     if (firstPref) {
       prefectureCount.set(firstPref, (prefectureCount.get(firstPref) ?? 0) + 1);
@@ -506,10 +482,7 @@ function buildFieldIndex(
  * ペア/校一致（championKey）で当年 entryNo を引き、無ければ（partial=新ペア）
  * 継続選手の playerKey で引く。entryNo が引けなければ、または results 未掲載なら null。
  */
-function currentStandingOf(
-  c: ChampionEntry,
-  field: FieldIndex | null,
-): EntryStanding | null {
+function currentStandingOf(c: ChampionEntry, field: FieldIndex | null): EntryStanding | null {
   if (!field) return null;
   const isTeam = c.players.length === 0;
   let entryNo: number | undefined;
@@ -532,10 +505,7 @@ function currentStandingOf(
 }
 
 /** ChampionEntry が今大会に「継続出場」しているかを判定する（所属表記揺れを吸収） */
-function returningOf(
-  c: ChampionEntry,
-  field: FieldIndex,
-): { status: 'intact' | 'partial' | 'absent'; players: PreviewPlayerRef[] } {
+function returningOf(c: ChampionEntry, field: FieldIndex): { status: 'intact' | 'partial' | 'absent'; players: PreviewPlayerRef[] } {
   const isTeam = c.players.length === 0;
   if (isTeam) {
     const ck = teamMatchKey(c);
@@ -546,9 +516,7 @@ function returningOf(
   const players: PreviewPlayerRef[] = c.players.map((name) => ({
     name,
     playerId: resolvePlayerId(name),
-    returning: c.teams.some((t) =>
-      field.playerKeySet.has(playerMatchKey(name, t)),
-    ),
+    returning: c.teams.some((t) => field.playerKeySet.has(playerMatchKey(name, t))),
   }));
   const returningCount = players.filter((p) => p.returning).length;
   let status: 'intact' | 'partial' | 'absent' = 'absent';
@@ -563,9 +531,7 @@ function teamDisplayOf(c: ChampionEntry): string | null {
 }
 
 /** 前年 results の rank を入賞ラベルへ。優勝は別ブロック（連覇ウォッチ）が扱うため除く */
-function placerLabel(
-  rank: { kind?: string; bestLevel?: number } | undefined | null,
-): '準優勝' | 'ベスト4' | 'ベスト8' | null {
+function placerLabel(rank: { kind?: string; bestLevel?: number } | undefined | null): '準優勝' | 'ベスト4' | 'ベスト8' | null {
   if (!rank) return null;
   if (rank.kind === 'runnerup') return '準優勝';
   if (rank.kind === 'best' && rank.bestLevel === 4) return 'ベスト4';
@@ -574,10 +540,7 @@ function placerLabel(
 }
 
 /** プレビュー: 連覇・防衛ウォッチ（前回王者の今大会出場状況） */
-function buildTitleDefense(
-  prevChampionEntry: ChampionEntry | null,
-  field: FieldIndex | null,
-): TitleDefenseWatch | null {
+function buildTitleDefense(prevChampionEntry: ChampionEntry | null, field: FieldIndex | null): TitleDefenseWatch | null {
   if (!prevChampionEntry || !prevChampionEntry.display || !field) return null;
   const { status, players } = returningOf(prevChampionEntry, field);
   return {
@@ -591,11 +554,7 @@ function buildTitleDefense(
 }
 
 /** プレビュー: 前回入賞者（準優勝/ベスト4）で今大会も出場する者 */
-function buildReturningPlacers(
-  detail: RawDetail | null,
-  field: FieldIndex | null,
-  prevYear: number,
-): ReturningPlacer[] {
+function buildReturningPlacers(detail: RawDetail | null, field: FieldIndex | null, prevYear: number): ReturningPlacer[] {
   if (!detail || !detail.entries || !detail.results || !field) return [];
   const pmap = buildParticipantMap(detail);
   const entryByNo = new Map(detail.entries.map((e) => [e.entryNo, e] as const));
@@ -628,11 +587,7 @@ function buildReturningPlacers(
 }
 
 /** プレビュー: 前々回以前の優勝者で今大会も出場する者（前回王者は連覇ウォッチで扱うため除く） */
-function buildReturningFormerChampions(
-  champions: ChampionEntry[],
-  field: FieldIndex | null,
-  year: number,
-): ReturningFormerChampion[] {
+function buildReturningFormerChampions(champions: ChampionEntry[], field: FieldIndex | null, year: number): ReturningFormerChampion[] {
   if (!field) return [];
   // championKey でまとめ、複数年優勝を集約する（players/team は最新年のものを採用）
   const byKey = new Map<
@@ -681,9 +636,7 @@ function buildFieldOverview(field: FieldIndex | null): FieldOverview | null {
   if (!field || field.entryCount === 0) return null;
   const topPrefectures = Array.from(field.prefectureCount.entries())
     .map(([prefecture, count]) => ({ prefecture, count }))
-    .sort(
-      (a, b) => b.count - a.count || a.prefecture.localeCompare(b.prefecture),
-    )
+    .sort((a, b) => b.count - a.count || a.prefecture.localeCompare(b.prefecture))
     .slice(0, 5);
   const multiEntryTeams = Array.from(field.teamCount.entries())
     .filter(([, count]) => count >= 2)
@@ -722,26 +675,12 @@ function readTournamentIndex(): Array<{
   label?: string;
   isMajorTitle?: boolean;
 }> {
-  return (
-    readJson<
-      Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean }>
-    >(path.join(resolveRoot(), 'data', 'tournaments', 'index.json')) ?? []
-  );
+  return readJson<Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean }>>(path.join(resolveRoot(), 'data', 'tournaments', 'index.json')) ?? [];
 }
 
 /** 大会情報（開催日）を読む。年度ごとの startDate を持つ */
-function readTournamentEditions(
-  tournamentId: string,
-): Array<{ year: number; startDate?: string }> {
-  const arr = readJson<Array<{ year: number; startDate?: string }>>(
-    path.join(
-      resolveRoot(),
-      'data',
-      'tournaments',
-      'information',
-      `${tournamentId}.json`,
-    ),
-  );
+function readTournamentEditions(tournamentId: string): Array<{ year: number; startDate?: string }> {
+  const arr = readJson<Array<{ year: number; startDate?: string }>>(path.join(resolveRoot(), 'data', 'tournaments', 'information', `${tournamentId}.json`));
   return Array.isArray(arr) ? arr : [];
 }
 
@@ -749,21 +688,12 @@ function readTournamentEditions(
 function categoryDisplayLabel(categoryId: string): string {
   const parts = categoryPathParts(categoryId);
   if (!parts) return categoryId;
-  const g =
-    parts.gender === 'boys'
-      ? '男子'
-      : parts.gender === 'girls'
-        ? '女子'
-        : parts.gender === 'mixed'
-          ? '混合'
-          : '';
+  const g = parts.gender === 'boys' ? '男子' : parts.gender === 'girls' ? '女子' : parts.gender === 'mixed' ? '混合' : '';
   return `${g}${getCategoryLabel(parts.category)}`;
 }
 
 /** rank → ベスト4以上の好成績ラベル。該当しなければ null */
-function bestPlacement(
-  rank: { kind?: string; bestLevel?: number } | undefined | null,
-): '優勝' | '準優勝' | 'ベスト4' | null {
+function bestPlacement(rank: { kind?: string; bestLevel?: number } | undefined | null): '優勝' | '準優勝' | 'ベスト4' | null {
   if (!rank) return null;
   if (rank.kind === 'winner') return '優勝';
   if (rank.kind === 'runnerup') return '準優勝';
@@ -786,10 +716,7 @@ function previewStartDate(tournamentId: string, year: number): string | null {
  * 条件: 開催日が (previewDate − 3ヶ月, previewDate) の窓内・自大会は除外。
  * 並び: isMajorTitle 優先 → 新しい順。これで major を優先しつつ枠を埋める。
  */
-function findRecentTournaments(
-  previewTournamentId: string,
-  previewDateIso: string,
-): RecentTournamentEdition[] {
+function findRecentTournaments(previewTournamentId: string, previewDateIso: string): RecentTournamentEdition[] {
   const previewDate = new Date(previewDateIso);
   if (Number.isNaN(previewDate.getTime())) return [];
   const windowStart = new Date(previewDate);
@@ -814,11 +741,7 @@ function findRecentTournaments(
       }
     }
   }
-  candidates.sort(
-    (a, b) =>
-      Number(b.isMajor) - Number(a.isMajor) ||
-      b.startDate.localeCompare(a.startDate),
-  );
+  candidates.sort((a, b) => Number(b.isMajor) - Number(a.isMajor) || b.startDate.localeCompare(a.startDate));
   return candidates.slice(0, RECENT_TOURNAMENT_LIMIT);
 }
 
@@ -827,10 +750,7 @@ function findRecentTournaments(
  * 種目を問わず（個人戦のみ。団体は per-player 不可のため対象外）、人物単位で最良成績を保持。
  * 当プレビュー種目の出場者照合に使うため、キーは `playerMatchKey`（buildFieldIndex と同一）。
  */
-function buildRecentAchieverIndex(
-  previewTournamentId: string,
-  previewYear: number,
-): Map<string, RecentAchievementInfo> {
+function buildRecentAchieverIndex(previewTournamentId: string, previewYear: number): Map<string, RecentAchievementInfo> {
   const out = new Map<string, RecentAchievementInfo>();
   const startDate = previewStartDate(previewTournamentId, previewYear);
   if (!startDate) return out;
@@ -838,8 +758,7 @@ function buildRecentAchieverIndex(
 
   const better = (a: RecentAchievementInfo, b: RecentAchievementInfo) => {
     // 成績優先 → major 優先 → 新しい年
-    if (placementRank(a.placement) !== placementRank(b.placement))
-      return placementRank(a.placement) > placementRank(b.placement) ? a : b;
+    if (placementRank(a.placement) !== placementRank(b.placement)) return placementRank(a.placement) > placementRank(b.placement) ? a : b;
     if (a.isMajor !== b.isMajor) return a.isMajor ? a : b;
     return a.year >= b.year ? a : b;
   };
@@ -849,9 +768,7 @@ function buildRecentAchieverIndex(
       const detail = readYearDetail(rt.tournamentId, rt.year, cid);
       if (!detail || !detail.entries || !detail.results) continue;
       const pmap = buildParticipantMap(detail);
-      const entryByNo = new Map(
-        detail.entries.map((e) => [e.entryNo, e] as const),
-      );
+      const entryByNo = new Map(detail.entries.map((e) => [e.entryNo, e] as const));
       const categoryLabel = categoryDisplayLabel(cid);
       for (const r of detail.results) {
         const placement = bestPlacement(r.tournament?.rank);
@@ -886,11 +803,7 @@ function buildRecentAchieverIndex(
  * 当プレビュー種目の出場者のうち、直近大会で好成績を残した選手を抽出する。
  * 既に他ブロック（連覇ウォッチ・前回入賞者・過去の優勝者）で出ている選手は重複排除する。
  */
-function buildRecentAchievers(
-  field: FieldIndex | null,
-  recentIndex: Map<string, RecentAchievementInfo>,
-  alreadyShownNames: Set<string>,
-): RecentAchiever[] {
+function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string, RecentAchievementInfo>, alreadyShownNames: Set<string>): RecentAchiever[] {
   if (!field || recentIndex.size === 0) return [];
   const seen = new Set<string>(alreadyShownNames);
   const out: RecentAchiever[] = [];
@@ -934,8 +847,7 @@ function buildCategoryBlock(
   });
   if (!hw) return null;
 
-  const previousChampion =
-    hw.champions.find((c) => c.year === year - 1)?.display ?? null;
+  const previousChampion = hw.champions.find((c) => c.year === year - 1)?.display ?? null;
   const champion = hw.champions.find((c) => c.year === year)?.display ?? null;
 
   let milestones: NewsCategoryBlock['milestones'] = [];
@@ -956,29 +868,17 @@ function buildCategoryBlock(
   } else {
     // プレビュー: 当サイト掲載のエントリー＋前年データを照合し、決定的に展望を構成する。
     const field = buildFieldIndex(tournamentId, year, categoryId);
-    const prevChampionEntry =
-      hw.champions.find((c) => c.year === year - 1) ?? null;
+    const prevChampionEntry = hw.champions.find((c) => c.year === year - 1) ?? null;
     const prevDetail = readYearDetail(tournamentId, year - 1, categoryId);
     titleDefense = buildTitleDefense(prevChampionEntry, field);
     returningPlacers = buildReturningPlacers(prevDetail, field, year - 1);
-    returningFormerChampions = buildReturningFormerChampions(
-      hw.champions,
-      field,
-      year,
-    );
+    returningFormerChampions = buildReturningFormerChampions(hw.champions, field, year);
     // 直近大会の好成績者は、上記ブロックで既出の選手を除いてピックアップする
     const alreadyShownNames = new Set<string>();
-    for (const p of titleDefense?.players ?? [])
-      alreadyShownNames.add(normPart(p.name));
-    for (const rp of returningPlacers)
-      for (const p of rp.players) alreadyShownNames.add(normPart(p.name));
-    for (const rf of returningFormerChampions)
-      for (const p of rf.players) alreadyShownNames.add(normPart(p.name));
-    recentAchievers = buildRecentAchievers(
-      field,
-      recentIndex,
-      alreadyShownNames,
-    );
+    for (const p of titleDefense?.players ?? []) alreadyShownNames.add(normPart(p.name));
+    for (const rp of returningPlacers) for (const p of rp.players) alreadyShownNames.add(normPart(p.name));
+    for (const rf of returningFormerChampions) for (const p of rf.players) alreadyShownNames.add(normPart(p.name));
+    recentAchievers = buildRecentAchievers(field, recentIndex, alreadyShownNames);
     fieldOverview = buildFieldOverview(field);
   }
 
@@ -986,13 +886,8 @@ function buildCategoryBlock(
   // （結果ページの getStaticPaths が details ディレクトリを走査するため）。
   // プレビューでは公開時点で結果が未掲載のことがあるので、実在する場合のみリンクを張る。
   const parts = generation ? categoryPathParts(categoryId) : null;
-  const hasResultDetail = Boolean(
-    readYearDetail(tournamentId, year, categoryId),
-  );
-  const resultHref =
-    parts && hasResultDetail
-      ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/`
-      : null;
+  const hasResultDetail = Boolean(readYearDetail(tournamentId, year, categoryId));
+  const resultHref = parts && hasResultDetail ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/` : null;
 
   return {
     categoryId,
@@ -1013,42 +908,26 @@ function buildCategoryBlock(
   };
 }
 
-function defaultTitle(
-  record: NewsArticleRecord,
-  tournamentLabel: string,
-): string {
+function defaultTitle(record: NewsArticleRecord, tournamentLabel: string): string {
   return record.type === 'preview'
     ? `${tournamentLabel} ${record.year} 展望・連覇/前回王者・出場校`
     : `${tournamentLabel} ${record.year} 結果・優勝・歴代まとめ`;
 }
 
-function defaultDescription(
-  record: NewsArticleRecord,
-  tournamentLabel: string,
-): string {
+function defaultDescription(record: NewsArticleRecord, tournamentLabel: string): string {
   return record.type === 'preview'
     ? `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト掲載データからまとめています。`
     : `ソフトテニス「${tournamentLabel}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
 }
 
 /** 記事レコードから描画用ビューを組み立てる */
-export function buildNewsArticleView(
-  record: NewsArticleRecord,
-): NewsArticleView {
-  const { label: tournamentLabel, generationId } = tournamentMetaOf(
-    record.tournamentId,
-  );
-  const categoryIds =
-    record.categoryId && record.categoryId.length > 0
-      ? [record.categoryId]
-      : listCategoryIds(record.tournamentId, record.year);
+export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView {
+  const { label: tournamentLabel, generationId } = tournamentMetaOf(record.tournamentId);
+  const categoryIds = record.categoryId && record.categoryId.length > 0 ? [record.categoryId] : listCategoryIds(record.tournamentId, record.year);
 
   // 直近大会の好成績者インデックスは種目に依存しないので記事単位で 1 回だけ構築する。
   // result 記事では使わないため preview のときのみ。
-  const recentIndex =
-    record.type === 'preview'
-      ? buildRecentAchieverIndex(record.tournamentId, record.year)
-      : new Map<string, RecentAchievementInfo>();
+  const recentIndex = record.type === 'preview' ? buildRecentAchieverIndex(record.tournamentId, record.year) : new Map<string, RecentAchievementInfo>();
 
   const categories: NewsCategoryBlock[] = [];
   for (const cid of categoryIds) {
@@ -1056,9 +935,7 @@ export function buildNewsArticleView(
     if (block) categories.push(block);
   }
 
-  const hubHref = generationId
-    ? `/tournaments/${generationId}/${record.tournamentId}/`
-    : '';
+  const hubHref = generationId ? `/tournaments/${generationId}/${record.tournamentId}/` : '';
 
   return {
     record,
@@ -1066,8 +943,7 @@ export function buildNewsArticleView(
     generation: generationId,
     hubHref,
     title: record.title || defaultTitle(record, tournamentLabel),
-    description:
-      record.description || defaultDescription(record, tournamentLabel),
+    description: record.description || defaultDescription(record, tournamentLabel),
     categories,
   };
 }

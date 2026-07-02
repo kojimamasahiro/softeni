@@ -21,11 +21,7 @@ export default function SideNav({ pathname, onNavigate }: Props) {
     <nav aria-label="サイトナビゲーション" className="flex flex-col gap-4 p-3">
       {groups.map((group, gi) => (
         <div key={group.label ?? `group-${gi}`} className="flex flex-col gap-1">
-          {group.label && (
-            <p className="px-3 pb-1 text-xs font-medium tracking-wide text-gray-400 dark:text-gray-500">
-              {group.label}
-            </p>
-          )}
+          {group.label && <p className="px-3 pb-1 text-xs font-medium tracking-wide text-gray-400 dark:text-gray-500">{group.label}</p>}
           {group.items.map((item) => {
             const active = isNavItemActive(item, pathname);
             const base = 'rounded-md px-3 py-2 text-sm transition-colors block';
@@ -36,13 +32,7 @@ export default function SideNav({ pathname, onNavigate }: Props) {
                 : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800';
 
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={onNavigate}
-                aria-current={active ? 'page' : undefined}
-                className={`${base} ${state}`}
-              >
+              <Link key={item.href} href={item.href} onClick={onNavigate} aria-current={active ? 'page' : undefined} className={`${base} ${state}`}>
                 {item.label}
               </Link>
             );

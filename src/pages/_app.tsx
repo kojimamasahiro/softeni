@@ -65,10 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* GA ID があるときだけ読み込む */}
       {GA_ID && (
         <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
-          />
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
           <Script id="gtag-init" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
@@ -112,9 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* <AffiliateLink /> */}
       </AppShell>
 
-      {!hasConsent && (
-        <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />
-      )}
+      {!hasConsent && <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />}
     </>
   );
 }

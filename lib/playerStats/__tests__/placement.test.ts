@@ -1,32 +1,15 @@
 // lib/playerStats/__tests__/placement.test.ts
-import {
-  normalizeRoundOrder,
-  parseCategoryId,
-  resolvePlacement,
-} from '../placement';
+import { normalizeRoundOrder, parseCategoryId, resolvePlacement } from '../placement';
 import { playerKey } from '../identity';
 import { assert, summary, test } from './harness';
 
-// eslint-disable-next-line no-console
 console.log('placement.test.ts');
 
 test('resolvePlacement maps rank kinds (bestLevel, roundLoss, groupOnly, unknown)', () => {
-  assert.deepStrictEqual(
-    resolvePlacement({ tournament: { rank: { kind: 'winner' } } }),
-    { kind: 'winner' },
-  );
-  assert.deepStrictEqual(
-    resolvePlacement({ tournament: { rank: { kind: 'best', bestLevel: 4 } } }),
-    { kind: 'best', bestLevel: 4 },
-  );
-  assert.deepStrictEqual(
-    resolvePlacement({ tournament: { rank: { kind: 'round', round: 3 } } }),
-    { kind: 'roundLoss', round: 3 },
-  );
-  assert.deepStrictEqual(
-    resolvePlacement({ tournament: null, roundrobin: { group: 'A', rank: 2 } }),
-    { kind: 'groupOnly', groupRank: 2 },
-  );
+  assert.deepStrictEqual(resolvePlacement({ tournament: { rank: { kind: 'winner' } } }), { kind: 'winner' });
+  assert.deepStrictEqual(resolvePlacement({ tournament: { rank: { kind: 'best', bestLevel: 4 } } }), { kind: 'best', bestLevel: 4 });
+  assert.deepStrictEqual(resolvePlacement({ tournament: { rank: { kind: 'round', round: 3 } } }), { kind: 'roundLoss', round: 3 });
+  assert.deepStrictEqual(resolvePlacement({ tournament: null, roundrobin: { group: 'A', rank: 2 } }), { kind: 'groupOnly', groupRank: 2 });
   assert.deepStrictEqual(resolvePlacement({ tournament: null }), {
     kind: 'unknown',
   });

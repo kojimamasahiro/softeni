@@ -1,10 +1,6 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 
-import {
-  getPublicMatchDetailStaticPaths,
-  getPublicMatchDetailStaticProps,
-  PublicMatchDetailPage,
-} from '@/pages/beta/matches-results/[matchId]';
+import { getPublicMatchDetailStaticPaths, getPublicMatchDetailStaticProps, PublicMatchDetailPage } from '@/pages/beta/matches-results/[matchId]';
 import { isScoreSiteMode } from '@/lib/siteConfig';
 
 export const getStaticPaths: GetStaticPaths = async (context) => {

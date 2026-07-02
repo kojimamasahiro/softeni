@@ -36,13 +36,7 @@ function winPct(rate: number): string {
   return `${Math.round(rate * 1000) / 10}%`;
 }
 
-export default function TournamentContextBlocks({
-  label,
-  data,
-}: {
-  label: string;
-  data: TournamentContextData;
-}) {
+export default function TournamentContextBlocks({ label, data }: { label: string; data: TournamentContextData }) {
   const hasMilestones = data.milestones.length > 0;
   const hasRecords = data.championRecords.length > 0;
   if (!hasMilestones && !hasRecords) return null;
@@ -63,11 +57,7 @@ export default function TournamentContextBlocks({
                 title={m.scopeNote ?? undefined}
               >
                 {m.label}
-                {m.confidence === 'scope-limited' && (
-                  <span className="ml-1 align-middle text-[10px] font-normal opacity-70">
-                    ※当サイト掲載分
-                  </span>
-                )}
+                {m.confidence === 'scope-limited' && <span className="ml-1 align-middle text-[10px] font-normal opacity-70">※当サイト掲載分</span>}
               </span>
             </li>
           ))}
@@ -77,29 +67,16 @@ export default function TournamentContextBlocks({
       {hasRecords && (
         <div className="grid gap-3 sm:grid-cols-2">
           {data.championRecords.map((r) => (
-            <div
-              key={r.slug}
-              className="rounded-md border border-gray-200 p-3 text-sm dark:border-gray-700"
-            >
+            <div key={r.slug} className="rounded-md border border-gray-200 p-3 text-sm dark:border-gray-700">
               <div className="mb-1 font-semibold">
-                <Link
-                  href={`/players/${r.slug}`}
-                  className="text-blue-600 hover:underline dark:text-blue-400"
-                >
+                <Link href={`/players/${r.slug}`} className="text-blue-600 hover:underline dark:text-blue-400">
                   {r.display}
                 </Link>
-                {r.team && (
-                  <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
-                    （{r.team}）
-                  </span>
-                )}
+                {r.team && <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">（{r.team}）</span>}
               </div>
               <p className="text-gray-700 dark:text-gray-200">
                 通算 {r.totals.matches}試合 {r.totals.wins}勝{r.totals.losses}
-                敗（勝率 {winPct(r.totals.winRate)}）
-                <span className="ml-1 text-[10px] text-gray-500 dark:text-gray-400">
-                  ※{r.scopeNote}
-                </span>
+                敗（勝率 {winPct(r.totals.winRate)}）<span className="ml-1 text-[10px] text-gray-500 dark:text-gray-400">※{r.scopeNote}</span>
               </p>
               {r.titles.length > 0 && (
                 <p className="mt-1 text-gray-600 dark:text-gray-300">

@@ -2,10 +2,7 @@ import { parseYouTubeVideoId } from './videoReview';
 
 export const DEFAULT_POINT_VIDEO_WINDOW_MS = 15_000;
 
-export const buildYouTubeWatchUrlFromVideoId = (
-  videoId: string,
-  startMs = 0,
-) => {
+export const buildYouTubeWatchUrlFromVideoId = (videoId: string, startMs = 0) => {
   const url = new URL(`https://www.youtube.com/watch?v=${videoId}`);
   if (startMs > 0) {
     url.searchParams.set('t', `${Math.floor(startMs / 1000)}s`);
@@ -29,19 +26,13 @@ export const normalizeYouTubeInput = (input: string) => {
   };
 };
 
-export const getPointVideoEndMs = (
-  videoStartMs: number | null | undefined,
-  videoEndMs: number | null | undefined,
-) => {
+export const getPointVideoEndMs = (videoStartMs: number | null | undefined, videoEndMs: number | null | undefined) => {
   if (videoStartMs === null || videoStartMs === undefined) return null;
   if (videoEndMs !== null && videoEndMs !== undefined) return videoEndMs;
   return videoStartMs + DEFAULT_POINT_VIDEO_WINDOW_MS;
 };
 
-export const formatVideoTimestamp = (
-  valueMs: number | null | undefined,
-  includeMilliseconds = false,
-) => {
+export const formatVideoTimestamp = (valueMs: number | null | undefined, includeMilliseconds = false) => {
   if (valueMs === null || valueMs === undefined) return '未設定';
 
   const totalMs = Math.max(0, valueMs);

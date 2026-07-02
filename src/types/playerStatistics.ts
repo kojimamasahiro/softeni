@@ -153,7 +153,7 @@ export interface PlayerStatistics {
   identity: {
     displayName: string;
     currentTeam: string | null;
-    slug?: string;
+    slug?: string | null;
     /** 同姓同名融合の可能性（homonyms.json 登録名）。UI で注記する用。 */
     homonymRisk?: boolean;
   };

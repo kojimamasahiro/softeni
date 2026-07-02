@@ -19,9 +19,7 @@ export function resultPriority(result: string): number {
 }
 
 export function getTournamentLabel(id: string): string {
-  const indexedTournament = tournamentIndex.find(
-    (tournament) => tournament.tournamentId === id,
-  );
+  const indexedTournament = tournamentIndex.find((tournament) => tournament.tournamentId === id);
 
   if (indexedTournament?.label) {
     return indexedTournament.label;
@@ -42,9 +40,5 @@ export function getTournamentLabel(id: string): string {
 }
 
 export function getCategoryLabel(cat: string): string {
-  return cat === 'singles'
-    ? 'シングルス'
-    : cat === 'doubles'
-      ? 'ダブルス'
-      : '団体戦';
+  return cat === 'singles' ? 'シングルス' : cat === 'doubles' ? 'ダブルス' : '団体戦';
 }

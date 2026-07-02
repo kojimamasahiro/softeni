@@ -129,23 +129,15 @@ function readJson<T>(file: string): T | null {
 }
 
 export function loadLeagueMeta(year: number | string): LeagueMeta | null {
-  return readJson<LeagueMeta>(
-    path.join(DATA_ROOT, String(year), 'league.json'),
-  );
+  return readJson<LeagueMeta>(path.join(DATA_ROOT, String(year), 'league.json'));
 }
 
-export function loadParticipants(
-  year: number | string,
-): GenderedData<Team> | null {
-  return readJson<GenderedData<Team>>(
-    path.join(DATA_ROOT, String(year), 'participants.json'),
-  );
+export function loadParticipants(year: number | string): GenderedData<Team> | null {
+  return readJson<GenderedData<Team>>(path.join(DATA_ROOT, String(year), 'participants.json'));
 }
 
 export function loadMatches(year: number | string): GenderedData<Match> | null {
-  return readJson<GenderedData<Match>>(
-    path.join(DATA_ROOT, String(year), 'matches.json'),
-  );
+  return readJson<GenderedData<Match>>(path.join(DATA_ROOT, String(year), 'matches.json'));
 }
 
 /** division 未設定の古いデータは "1" とみなす */
@@ -205,12 +197,7 @@ export function computeRanking(teams: Team[], matches: Match[]): Ranking[] {
     const win: Record<string, number> = {};
     ids.forEach((id) => (win[id] = 0));
     matches.forEach((m) => {
-      if (
-        m.status === 'finished' &&
-        ids.includes(m.teamA) &&
-        ids.includes(m.teamB) &&
-        m.winner
-      ) {
+      if (m.status === 'finished' && ids.includes(m.teamA) && ids.includes(m.teamB) && m.winner) {
         win[m.winner]++;
       }
     });
@@ -234,8 +221,7 @@ export function computeRanking(teams: Team[], matches: Match[]): Ranking[] {
       }
       const win = headToHead(group.map((t) => t.teamId));
       group.sort((a, b) => {
-        if (win[b.teamId] !== win[a.teamId])
-          return win[b.teamId] - win[a.teamId];
+        if (win[b.teamId] !== win[a.teamId]) return win[b.teamId] - win[a.teamId];
         const dA = a.pointsWon - a.pointsLost;
         const dB = b.pointsWon - b.pointsLost;
         if (dB !== dA) return dB - dA;
@@ -276,9 +262,7 @@ export interface StLeagueTeamSummary {
  * teamId を全年度横断で集計し、STリーグ出場の各シーズン成績を返す。
  * 出場記録が無ければ null。
  */
-export function aggregateStLeagueTeam(
-  teamId: string,
-): StLeagueTeamSummary | null {
+export function aggregateStLeagueTeam(teamId: string): StLeagueTeamSummary | null {
   const seasons: StLeagueTeamSeason[] = [];
   let name = teamId;
 
@@ -294,15 +278,10 @@ export function aggregateStLeagueTeam(
       name = team.name[0] ?? name;
 
       const divisionId = divisionOf(team);
-      const divisionName =
-        meta?.divisions?.find((d) => d.id === divisionId)?.name ?? '';
+      const divisionName = meta?.divisions?.find((d) => d.id === divisionId)?.name ?? '';
 
-      const teamsInDiv = participants[gender].filter(
-        (t) => divisionOf(t) === divisionId,
-      );
-      const matchesInDiv = matches[gender].filter(
-        (m) => divisionOf(m) === divisionId,
-      );
+      const teamsInDiv = participants[gender].filter((t) => divisionOf(t) === divisionId);
+      const matchesInDiv = matches[gender].filter((m) => divisionOf(m) === divisionId);
       const ranking = computeRanking(teamsInDiv, matchesInDiv);
       const rec = ranking.find((r) => r.teamId === teamId);
 
@@ -334,13 +313,9 @@ export function aggregateStLeagueTeam(
   }
 
   if (seasons.length === 0) return null;
-  seasons.sort((a, b) =>
-    b.year !== a.year ? b.year - a.year : a.gender.localeCompare(b.gender),
-  );
+  seasons.sort((a, b) => (b.year !== a.year ? b.year - a.year : a.gender.localeCompare(b.gender)));
 
-  const titlesTop = seasons.filter(
-    (s) => s.isChampion && s.divisionId === '1',
-  ).length;
+  const titlesTop = seasons.filter((s) => s.isChampion && s.divisionId === '1').length;
   const years = seasons.map((s) => s.year);
 
   return {
@@ -359,9 +334,7 @@ export function getAllStLeagueTeamIds(): string[] {
   for (const year of getStLeagueYears()) {
     const participants = loadParticipants(year);
     if (!participants) continue;
-    (['boys', 'girls'] as Gender[]).forEach((g) =>
-      participants[g].forEach((t) => ids.add(t.teamId)),
-    );
+    (['boys', 'girls'] as Gender[]).forEach((g) => participants[g].forEach((t) => ids.add(t.teamId)));
   }
   return Array.from(ids);
 }
@@ -372,9 +345,7 @@ export function getAllStLeagueTeamIds(): string[] {
  */
 export function getDivisions(meta: LeagueMeta | null): DivisionMeta[] {
   if (meta?.divisions?.length) {
-    return [...meta.divisions]
-      .filter((d) => d.hasMatchData !== false)
-      .sort((a, b) => a.rank - b.rank);
+    return [...meta.divisions].filter((d) => d.hasMatchData !== false).sort((a, b) => a.rank - b.rank);
   }
   return [
     { id: '1', name: 'STリーグⅠ', rank: 1 },

@@ -1,11 +1,7 @@
 // Avoid top-level imports of Node built-ins so this module can be imported
 // from client-side code without causing bundler resolution errors. Use
 // dynamic imports of 'fs' and 'path' inside server-only functions.
-import type {
-  TournamentDetailData,
-  TournamentIndexEntry,
-  TournamentInformationEntry,
-} from '@/types/tournament';
+import type { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/tournament';
 
 type DetailRecord = {
   tournamentId: string;
@@ -38,9 +34,7 @@ const getCacheEntry = (root?: string): TournamentDataCacheEntry => {
 };
 
 // Load tournament index.json and local_index.json as array
-export const loadTournamentIndex = async (
-  root?: string,
-): Promise<TournamentIndexEntry[]> => {
+export const loadTournamentIndex = async (root?: string): Promise<TournamentIndexEntry[]> => {
   const cacheEntry = getCacheEntry(root);
   if (cacheEntry.tournamentIndex) {
     return cacheEntry.tournamentIndex;
@@ -68,12 +62,7 @@ export const loadTournamentIndex = async (
     }
 
     // 2. data/tournaments/local_index.json
-    const localIndexPath = path.join(
-      cwd,
-      'data',
-      'tournaments',
-      'local_index.json',
-    );
+    const localIndexPath = path.join(cwd, 'data', 'tournaments', 'local_index.json');
     if (fs.existsSync(localIndexPath)) {
       try {
         const raw = fs.readFileSync(localIndexPath, 'utf-8');
@@ -91,9 +80,7 @@ export const loadTournamentIndex = async (
 };
 
 // Load all information/*.json files into a map keyed by tournamentId
-export const loadInformationMap = async (
-  root?: string,
-): Promise<Map<string, TournamentInformationEntry[]>> => {
+export const loadInformationMap = async (root?: string): Promise<Map<string, TournamentInformationEntry[]>> => {
   const cacheEntry = getCacheEntry(root);
   if (cacheEntry.informationMap) {
     return cacheEntry.informationMap;
@@ -103,18 +90,11 @@ export const loadInformationMap = async (
     const fs = await import('fs');
     const path = await import('path');
     const cwd = root || process.cwd();
-    const informationRoot = path.join(
-      cwd,
-      'data',
-      'tournaments',
-      'information',
-    );
+    const informationRoot = path.join(cwd, 'data', 'tournaments', 'information');
     const map = new Map<string, TournamentInformationEntry[]>();
     if (!fs.existsSync(informationRoot)) return map;
 
-    const files = fs
-      .readdirSync(informationRoot)
-      .filter((f: string) => f.endsWith('.json'));
+    const files = fs.readdirSync(informationRoot).filter((f: string) => f.endsWith('.json'));
 
     for (const f of files) {
       try {
@@ -133,9 +113,7 @@ export const loadInformationMap = async (
 };
 
 // Return all detail files as records containing tournamentId, year and parsed detail
-export const getAllDetailRecords = async (
-  root?: string,
-): Promise<DetailRecord[]> => {
+export const getAllDetailRecords = async (root?: string): Promise<DetailRecord[]> => {
   const cacheEntry = getCacheEntry(root);
   if (cacheEntry.detailRecords) {
     return cacheEntry.detailRecords;
@@ -156,25 +134,15 @@ export const getAllDetailRecords = async (
       if (it && it.tournamentId) indexMap.set(it.tournamentId, it);
     }
 
-    const tournamentDirs = fs
-      .readdirSync(detailsRoot)
-      .filter((n: string) =>
-        fs.statSync(path.join(detailsRoot, n)).isDirectory(),
-      );
+    const tournamentDirs = fs.readdirSync(detailsRoot).filter((n: string) => fs.statSync(path.join(detailsRoot, n)).isDirectory());
 
     for (const tournamentId of tournamentDirs) {
       const tournamentDir = path.join(detailsRoot, tournamentId);
-      const yearDirs = fs
-        .readdirSync(tournamentDir)
-        .filter((n: string) =>
-          fs.statSync(path.join(tournamentDir, n)).isDirectory(),
-        );
+      const yearDirs = fs.readdirSync(tournamentDir).filter((n: string) => fs.statSync(path.join(tournamentDir, n)).isDirectory());
 
       for (const year of yearDirs) {
         const yearDir = path.join(tournamentDir, year);
-        const files = fs
-          .readdirSync(yearDir)
-          .filter((f: string) => f.endsWith('.json'));
+        const files = fs.readdirSync(yearDir).filter((f: string) => f.endsWith('.json'));
         for (const f of files) {
           const filePath = path.join(yearDir, f);
           try {
@@ -216,9 +184,7 @@ export interface GenerationEntry {
 }
 
 // Load generations.json which contains an array of generation entries.
-export const loadGenerations = async (
-  root?: string,
-): Promise<GenerationEntry[]> => {
+export const loadGenerations = async (root?: string): Promise<GenerationEntry[]> => {
   const cacheEntry = getCacheEntry(root);
   if (cacheEntry.generations) {
     return cacheEntry.generations;
@@ -242,10 +208,7 @@ export const loadGenerations = async (
 };
 
 // Convenience lookup by id. Returns undefined if not found.
-export const getGenerationById = async (
-  generationId: string,
-  root?: string,
-): Promise<GenerationEntry | undefined> => {
+export const getGenerationById = async (generationId: string, root?: string): Promise<GenerationEntry | undefined> => {
   const gens = await loadGenerations(root);
   return gens.find((g) => g.generationId === generationId);
 };

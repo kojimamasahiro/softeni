@@ -82,16 +82,8 @@ export function parseCategoryId(fileNameOrId: string): ParsedCategory | null {
   const gender = parts.pop() as string;
   const age = parts.pop() as string;
   const disc = parts.join('-');
-  const genderToken: Gender =
-    gender === 'boys' ? 'boys' : gender === 'girls' ? 'girls' : 'mixed';
-  const category: Discipline =
-    gender === 'mixed'
-      ? 'mixed'
-      : disc === 'singles'
-        ? 'singles'
-        : disc === 'doubles'
-          ? 'doubles'
-          : 'team';
+  const genderToken: Gender = gender === 'boys' ? 'boys' : gender === 'girls' ? 'girls' : 'mixed';
+  const category: Discipline = gender === 'mixed' ? 'mixed' : disc === 'singles' ? 'singles' : disc === 'doubles' ? 'doubles' : 'team';
   return {
     categoryId: `${disc}-${age}-${gender}`,
     category,

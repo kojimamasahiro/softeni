@@ -7,11 +7,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  aggregateStLeagueTeam,
-  getAllStLeagueTeamIds,
-  StLeagueTeamSummary,
-} from '@/utils/st-league';
+import { aggregateStLeagueTeam, getAllStLeagueTeamIds, StLeagueTeamSummary } from '@/utils/st-league';
 
 type TeamInfo = {
   id: string;
@@ -40,19 +36,12 @@ const GENDER_LABEL: Record<'boys' | 'girls', string> = {
   girls: '女子',
 };
 
-export default function TeamResultsPage({
-  info,
-  stats,
-  hasSubPages,
-  stLeague,
-}: Props) {
+export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: Props) {
   const teamName = info.name;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/`;
 
   const hasStLeague = !!stLeague && stLeague.seasons.length > 0;
-  const title = hasStLeague
-    ? `${teamName}｜STリーグ出場成績・順位 | ソフトテニス情報`
-    : `${teamName} 所属別成績 | ソフトテニス情報`;
+  const title = hasStLeague ? `${teamName}｜STリーグ出場成績・順位 | ソフトテニス情報` : `${teamName} 所属別成績 | ソフトテニス情報`;
   const description = hasStLeague
     ? `${teamName}のSTリーグ（ソフトテニス実業団リーグ）出場成績。年度別の所属リーグ・対戦成績・順位${
         stLeague!.titlesTop > 0 ? `・優勝${stLeague!.titlesTop}回` : ''
@@ -136,10 +125,7 @@ export default function TeamResultsPage({
           <section>
             <div className="flex items-baseline justify-between mb-3">
               <h2 className="text-xl font-bold">STリーグでの成績</h2>
-              <Link
-                href="/st-league"
-                className="text-sm text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-              >
+              <Link href="/st-league" className="text-sm text-blue-600 dark:text-blue-400 font-semibold hover:underline">
                 STリーグ トップ →
               </Link>
             </div>
@@ -147,9 +133,7 @@ export default function TeamResultsPage({
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
               出場: {stLeague!.firstYear}〜{stLeague!.lastYear}
               {stLeague!.titlesTop > 0 && (
-                <span className="ml-2 inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-semibold">
-                  🏆 Ⅰ部優勝 {stLeague!.titlesTop}回
-                </span>
+                <span className="ml-2 inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-semibold">🏆 Ⅰ部優勝 {stLeague!.titlesTop}回</span>
               )}
             </p>
 
@@ -159,25 +143,15 @@ export default function TeamResultsPage({
                   <tr>
                     <th className="py-2.5 px-3 text-left font-medium">年度</th>
                     <th className="py-2.5 px-2 text-left font-medium">区分</th>
-                    <th className="py-2.5 px-2 text-center font-medium">
-                      成績
-                    </th>
-                    <th className="py-2.5 px-3 text-center font-medium">
-                      順位
-                    </th>
+                    <th className="py-2.5 px-2 text-center font-medium">成績</th>
+                    <th className="py-2.5 px-3 text-center font-medium">順位</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                   {stLeague!.seasons.map((s) => (
-                    <tr
-                      key={`${s.year}-${s.gender}`}
-                      className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
-                    >
+                    <tr key={`${s.year}-${s.gender}`} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
                       <td className="py-2.5 px-3 font-medium whitespace-nowrap">
-                        <Link
-                          href={`/st-league/${s.year}/matches`}
-                          className="hover:text-blue-600 hover:underline"
-                        >
+                        <Link href={`/st-league/${s.year}/matches`} className="hover:text-blue-600 hover:underline">
                           {s.year}
                           {s.edition ? `（第${s.edition}回）` : ''}
                         </Link>
@@ -198,9 +172,7 @@ export default function TeamResultsPage({
                       </td>
                       <td className="py-2.5 px-3 text-center whitespace-nowrap">
                         {s.isChampion ? (
-                          <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold">
-                            🏆 優勝
-                          </span>
+                          <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold">🏆 優勝</span>
                         ) : s.rank ? (
                           `${s.rank}位`
                         ) : (
@@ -212,9 +184,7 @@ export default function TeamResultsPage({
                 </tbody>
               </table>
             </div>
-            <p className="mt-2 text-xs text-gray-400">
-              各年度の対戦結果・順位表は年度リンクから確認できます。
-            </p>
+            <p className="mt-2 text-xs text-gray-400">各年度の対戦結果・順位表は年度リンクから確認できます。</p>
           </section>
         )}
 
@@ -224,9 +194,7 @@ export default function TeamResultsPage({
             <h2 className="text-xl font-bold mb-4">大会別成績</h2>
             {stats.map(({ year, stats: yearStats }) => (
               <div key={year} className="mb-10">
-                <h3 className="text-lg font-bold mb-4 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
-                  {year}年度
-                </h3>
+                <h3 className="text-lg font-bold mb-4 border-b-2 border-gray-200 dark:border-gray-700 pb-2">{year}年度</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {yearStats.map(({ gender, count }) => (
                     <Link
@@ -234,12 +202,8 @@ export default function TeamResultsPage({
                       href={`/teams/${info.id}/${year}/${gender}`}
                       className="block bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
                     >
-                      <h4 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">
-                        {GENDER_LABEL[gender]}
-                      </h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        大会数: {count}
-                      </p>
+                      <h4 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">{GENDER_LABEL[gender]}</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">大会数: {count}</p>
                     </Link>
                   ))}
                 </div>
@@ -256,16 +220,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const fs = await import('fs');
   const path = await import('path');
 
-  const mappingsPath = path.join(
-    process.cwd(),
-    'data/teams/team-name-mappings.json',
-  );
+  const mappingsPath = path.join(process.cwd(), 'data/teams/team-name-mappings.json');
 
   const ids = new Set<string>();
   if (fs.existsSync(mappingsPath)) {
-    const teamNameMappings = JSON.parse(
-      fs.readFileSync(mappingsPath, 'utf-8'),
-    ) as Record<string, string[]>;
+    const teamNameMappings = JSON.parse(fs.readFileSync(mappingsPath, 'utf-8')) as Record<string, string[]>;
     Object.keys(teamNameMappings).forEach((id) => ids.add(id));
   }
   // STリーグ出場チームにもページを生成する（チーム名リンクの受け皿）
@@ -280,23 +239,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const fs = await import('fs');
   const path = await import('path');
-  const { aggregateTeamResults, generateTeamInfo, gendersWithRealPresence } =
-    await import('@/utils/team-data-aggregator');
+  const { aggregateTeamResults, generateTeamInfo, gendersWithRealPresence } = await import('@/utils/team-data-aggregator');
   const { teamId } = context.params as { teamId: string };
 
   // tournament の年度別下層ページが生成される対象か（mapping キーのみ）。
-  const mappingsPath = path.join(
-    process.cwd(),
-    'data/teams/team-name-mappings.json',
-  );
+  const mappingsPath = path.join(process.cwd(), 'data/teams/team-name-mappings.json');
   let hasSubPages = false;
   if (fs.existsSync(mappingsPath)) {
-    const keys = Object.keys(
-      JSON.parse(fs.readFileSync(mappingsPath, 'utf-8')) as Record<
-        string,
-        string[]
-      >,
-    );
+    const keys = Object.keys(JSON.parse(fs.readFileSync(mappingsPath, 'utf-8')) as Record<string, string[]>);
     hasSubPages = keys.includes(teamId);
   }
 

@@ -2,10 +2,7 @@ import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import {
-  fetchBetaMatches,
-  hasLiveMatchApi,
-} from '../../../../lib/betaMatchesClient';
+import { fetchBetaMatches, hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../lib/env';
 import { isScoreSiteMode } from '../../../../lib/siteConfig';
 import { Game, Match } from '../../../types/database';
@@ -28,9 +25,7 @@ const MatchList = () => {
       <div className="max-w-4xl mx-auto p-6">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           <strong className="font-bold">アクセス拒否</strong>
-          <span className="block sm:inline ml-2">
-            この機能は開発環境でのみ利用可能です。
-          </span>
+          <span className="block sm:inline ml-2">この機能は開発環境でのみ利用可能です。</span>
         </div>
       </div>
     );
@@ -53,11 +48,7 @@ const MatchList = () => {
       return;
     }
 
-    if (
-      !confirm(
-        '本当にこのマッチを削除しますか？\n関連するゲームやポイントデータもすべて削除されます。',
-      )
-    ) {
+    if (!confirm('本当にこのマッチを削除しますか？\n関連するゲームやポイントデータもすべて削除されます。')) {
       return;
     }
 
@@ -85,12 +76,8 @@ const MatchList = () => {
   const getMatchStatus = (match: Match) => {
     if (!match.games || match.games.length === 0) return '未開始';
 
-    const gamesWonA = match.games.filter(
-      (game: Game) => game.winner_team === 'A',
-    ).length;
-    const gamesWonB = match.games.filter(
-      (game: Game) => game.winner_team === 'B',
-    ).length;
+    const gamesWonA = match.games.filter((game: Game) => game.winner_team === 'A').length;
+    const gamesWonB = match.games.filter((game: Game) => game.winner_team === 'B').length;
     const requiredWins = Math.ceil(match.best_of / 2);
 
     if (gamesWonA >= requiredWins || gamesWonB >= requiredWins) {
@@ -112,10 +99,7 @@ const MatchList = () => {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">マッチ一覧</h1>
         {canEditMatches ? (
-          <Link
-            href="/beta/matches/create"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
+          <Link href="/beta/matches/create" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
             新しいマッチを作成
           </Link>
         ) : (
@@ -139,25 +123,16 @@ const MatchList = () => {
 
               <div className="flex gap-2">
                 {canEditMatches && (
-                  <Link
-                    href={`/beta/matches/${match.id}/input`}
-                    className="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600"
-                  >
+                  <Link href={`/beta/matches/${match.id}/input`} className="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">
                     記録入力
                   </Link>
                 )}
                 {canEditMatches && (
-                  <Link
-                    href={`/beta/matches/${match.id}/video-review`}
-                    className="bg-indigo-500 text-white px-3 py-1 rounded text-sm hover:bg-indigo-600"
-                  >
+                  <Link href={`/beta/matches/${match.id}/video-review`} className="bg-indigo-500 text-white px-3 py-1 rounded text-sm hover:bg-indigo-600">
                     動画レビュー
                   </Link>
                 )}
-                <Link
-                  href={`/beta/matches/${match.id}`}
-                  className="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600"
-                >
+                <Link href={`/beta/matches/${match.id}`} className="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600">
                   詳細表示
                 </Link>
                 {canEditMatches && (
@@ -179,17 +154,8 @@ const MatchList = () => {
                   {match.games.map((game: Game) => (
                     <div key={game.id} className="text-sm">
                       <span className="font-medium">G{game.game_number}:</span>
-                      <span
-                        className={game.winner_team === 'A' ? 'font-bold' : ''}
-                      >
-                        {game.points_a}
-                      </span>
-                      -
-                      <span
-                        className={game.winner_team === 'B' ? 'font-bold' : ''}
-                      >
-                        {game.points_b}
-                      </span>
+                      <span className={game.winner_team === 'A' ? 'font-bold' : ''}>{game.points_a}</span>-
+                      <span className={game.winner_team === 'B' ? 'font-bold' : ''}>{game.points_b}</span>
                     </div>
                   ))}
                 </div>
@@ -202,10 +168,7 @@ const MatchList = () => {
           <div className="text-center py-12">
             <p className="text-gray-500 mb-4">まだマッチがありません</p>
             {canEditMatches && (
-              <Link
-                href="/beta/matches/create"
-                className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
-              >
+              <Link href="/beta/matches/create" className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
                 最初のマッチを作成
               </Link>
             )}

@@ -18,11 +18,7 @@ class MyDocument extends Document {
                 "(function(){try{if(localStorage.getItem('sideNavOpen')==='false'){document.documentElement.classList.add('sidebar-collapsed');}}catch(e){}})();",
             }}
           />
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626448782460921"
-            crossOrigin="anonymous"
-          ></script>
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626448782460921" crossOrigin="anonymous"></script>
 
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" />

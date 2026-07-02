@@ -15,18 +15,8 @@ interface Props {
   rankedTeams: RankedTeam[];
 }
 
-export default function Statistics({
-  totalPlayers,
-  uniqueTeams,
-  totalMatches,
-  totalGamesWon,
-  totalGamesLost,
-  rankedTeams,
-}: Props) {
-  const rate =
-    totalGamesWon + totalGamesLost > 0
-      ? ((totalGamesWon / (totalGamesWon + totalGamesLost)) * 100).toFixed(2)
-      : '0.00';
+export default function Statistics({ totalPlayers, uniqueTeams, totalMatches, totalGamesWon, totalGamesLost, rankedTeams }: Props) {
+  const rate = totalGamesWon + totalGamesLost > 0 ? ((totalGamesWon / (totalGamesWon + totalGamesLost)) * 100).toFixed(2) : '0.00';
 
   return (
     <section className="mb-10">

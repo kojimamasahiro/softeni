@@ -24,7 +24,10 @@ export function aggregateMilestones(facts: PlayerFacts): MilestoneEvent[] {
     yearsByCat.set(key, arr);
   }
   for (const [k, arr] of yearsByCat) {
-    yearsByCat.set(k, Array.from(new Set(arr)).sort((a, b) => a - b));
+    yearsByCat.set(
+      k,
+      Array.from(new Set(arr)).sort((a, b) => a - b),
+    );
   }
 
   const events: MilestoneEvent[] = [];

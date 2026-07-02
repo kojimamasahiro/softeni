@@ -4,24 +4,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 
 import MetaHead from '@/components/MetaHead';
-import {
-  Card,
-  comparisonLabels,
-  getTargetMeta,
-  PracticeThemes,
-} from '@/components/growth/GrowthReportView';
-import {
-  getGrowthReportFileName,
-  GrowthComparison,
-  GrowthReport,
-  GrowthTarget,
-} from '@/lib/growthAnalysis';
-import {
-  buildSiteUrl,
-  getPublicMatchesGrowthPath,
-  getPublicMatchesListPath,
-  isScoreSiteMode,
-} from '@/lib/siteConfig';
+import { Card, comparisonLabels, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
+import { getGrowthReportFileName, GrowthComparison, GrowthReport, GrowthTarget } from '@/lib/growthAnalysis';
+import { buildSiteUrl, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 
 type GrowthTargetsPayload = {
   generatedAt?: string;
@@ -41,8 +26,7 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
   const router = useRouter();
   const [report, setReport] = useState<GrowthReport | null>(null);
   const [loading, setLoading] = useState(false);
-  const [selectedComparisonKind, setSelectedComparisonKind] =
-    useState<GrowthComparison['kind']>('recent_period');
+  const [selectedComparisonKind, setSelectedComparisonKind] = useState<GrowthComparison['kind']>('recent_period');
 
   const selectedTargetKey = useMemo(() => {
     const queryTarget = router.query.targetKey;
@@ -54,11 +38,7 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
     if (!selectedTargetKey) return;
 
     setLoading(true);
-    fetch(
-      `/data/beta-matches/growth/reports/${getGrowthReportFileName(
-        selectedTargetKey,
-      )}`,
-    )
+    fetch(`/data/beta-matches/growth/reports/${getGrowthReportFileName(selectedTargetKey)}`)
       .then(async (response) => {
         if (!response.ok) return null;
         return (await response.json()) as GrowthReportPayload;
@@ -76,18 +56,10 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
 
   const selectedComparison = useMemo(() => {
     if (!report) return null;
-    return (
-      report.comparisons.find(
-        (comparison) => comparison.kind === selectedComparisonKind,
-      ) ??
-      report.comparison ??
-      null
-    );
+    return report.comparisons.find((comparison) => comparison.kind === selectedComparisonKind) ?? report.comparison ?? null;
   }, [report, selectedComparisonKind]);
 
-  const selectedTarget = targets.find(
-    (target) => target.key === selectedTargetKey,
-  );
+  const selectedTarget = targets.find((target) => target.key === selectedTargetKey);
 
   // 対象は「公開されている試合結果（/beta/matches-results）に登場する選手・ペア」。
   // targets.json は同じ公開試合から生成されるため、表示中の試合の参加者と一致する。
@@ -117,22 +89,15 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <Link
-                href={getPublicMatchesListPath()}
-                className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-              >
+              <Link href={getPublicMatchesListPath()} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
                 試合結果一覧へ
               </Link>
               <h1 className="mt-2 text-3xl font-bold">最近の成長</h1>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                勝ち負けだけでは見えない、試合内容の変化を追えます。
-              </p>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">勝ち負けだけでは見えない、試合内容の変化を追えます。</p>
             </div>
             <div className="grid gap-3 md:grid-cols-[minmax(260px,360px)_minmax(180px,240px)]">
               <label className="block">
-                <span className="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">
-                  対象
-                </span>
+                <span className="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">対象</span>
                 <select
                   value={selectedTargetKey}
                   onChange={(event) => handleTargetChange(event.target.value)}
@@ -146,16 +111,10 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">
-                  比較
-                </span>
+                <span className="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">比較</span>
                 <select
                   value={selectedComparisonKind}
-                  onChange={(event) =>
-                    setSelectedComparisonKind(
-                      event.target.value as GrowthComparison['kind'],
-                    )
-                  }
+                  onChange={(event) => setSelectedComparisonKind(event.target.value as GrowthComparison['kind'])}
                   className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800"
                   disabled={!report || report.comparisons.length === 0}
                 >
@@ -171,19 +130,13 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
 
           {selectedTarget && (
             <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/70">
-              <p className="text-xl font-semibold">
-                {selectedTarget.displayName}
-              </p>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                {getTargetMeta(selectedTarget)}
-              </p>
+              <p className="text-xl font-semibold">{selectedTarget.displayName}</p>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{getTargetMeta(selectedTarget)}</p>
             </div>
           )}
 
           {loading && (
-            <div className="rounded-lg border border-gray-200 p-6 text-center text-gray-600 dark:border-gray-700 dark:text-gray-300">
-              読み込み中...
-            </div>
+            <div className="rounded-lg border border-gray-200 p-6 text-center text-gray-600 dark:border-gray-700 dark:text-gray-300">読み込み中...</div>
           )}
 
           {!loading && targets.length === 0 && (
@@ -203,30 +156,15 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
               {selectedComparison.kind !== 'recent_period' && (
                 <Card
                   title={selectedComparison.title}
-                  messages={[
-                    selectedComparison.description,
-                    ...selectedComparison.messages,
-                  ]}
-                  metrics={selectedComparison.metrics.filter(
-                    (metric) =>
-                      metric.denominator > 0 || metric.previousDenominator > 0,
-                  )}
+                  messages={[selectedComparison.description, ...selectedComparison.messages]}
+                  metrics={selectedComparison.metrics.filter((metric) => metric.denominator > 0 || metric.previousDenominator > 0)}
                 />
               )}
 
               {selectedComparison.kind === 'recent_period' &&
-                report.sections.map((section) => (
-                  <Card
-                    key={section.id}
-                    title={section.title}
-                    messages={section.messages}
-                    metrics={section.metrics}
-                  />
-                ))}
+                report.sections.map((section) => <Card key={section.id} title={section.title} messages={section.messages} metrics={section.metrics} />)}
 
-              {selectedComparison.kind === 'recent_period' && (
-                <PracticeThemes themes={report.practiceThemes} />
-              )}
+              {selectedComparison.kind === 'recent_period' && <PracticeThemes themes={report.practiceThemes} />}
             </div>
           )}
         </div>
@@ -235,23 +173,14 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
   );
 }
 
-export const getPublicGrowthAnalysisStaticProps: GetStaticProps<
-  GrowthPageProps
-> = async (context?) => {
+export const getPublicGrowthAnalysisStaticProps: GetStaticProps<GrowthPageProps> = async (context?) => {
   void context;
 
   // 対象一覧は targets.json（公開試合から生成）をそのまま使う。
   // ＝ /beta/matches-results に表示されている試合の参加者と一致する（ADR-004）。
   const fs = await import('fs/promises');
   const path = await import('path');
-  const targetsPath = path.join(
-    process.cwd(),
-    'public',
-    'data',
-    'beta-matches',
-    'growth',
-    'targets.json',
-  );
+  const targetsPath = path.join(process.cwd(), 'public', 'data', 'beta-matches', 'growth', 'targets.json');
 
   try {
     const raw = await fs.readFile(targetsPath, 'utf-8');

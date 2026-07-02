@@ -3,18 +3,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import MetaHead from '@/components/MetaHead';
-import {
-  Card,
-  getTargetMeta,
-  PracticeThemes,
-} from '@/components/growth/GrowthReportView';
-import {
-  gatherShowcaseRecords,
-  loadFeaturedEntries,
-  loadGrowthTargets,
-  showcaseDisplayName,
-  type ShowcaseRecord,
-} from '@/lib/growthShowcase';
+import { Card, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
+import { gatherShowcaseRecords, loadFeaturedEntries, loadGrowthTargets, showcaseDisplayName, type ShowcaseRecord } from '@/lib/growthShowcase';
 import { buildSiteUrl, isScoreSiteMode } from '@/lib/siteConfig';
 
 type ShowcaseProps = {
@@ -28,13 +18,7 @@ type ShowcaseProps = {
 // 成長記録ショーケース（運営キュレーションの公開ページ・インデックス対象）。
 // 対象は data/growth-featured.json の featured のみ（ADR-004）。
 // その選手のシングルス記録と、その選手を含むペア記録の両方を表示する。
-export default function GrowthShowcasePage({
-  slug,
-  title,
-  intro,
-  records,
-  playerId,
-}: ShowcaseProps) {
+export default function GrowthShowcasePage({ slug, title, intro, records, playerId }: ShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = records[activeIndex] ?? records[0];
   const target = active?.report.target;
@@ -51,17 +35,11 @@ export default function GrowthShowcasePage({
       <div className="min-h-screen bg-white px-4 py-8 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/growth"
-              className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-            >
+            <Link href="/growth" className="text-sm text-blue-600 hover:underline dark:text-blue-400">
               成長記録一覧へ
             </Link>
             {playerId && (
-              <Link
-                href={`/players/${playerId}/results`}
-                className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-              >
+              <Link href={`/players/${playerId}/results`} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
                 この選手の試合結果ページへ
               </Link>
             )}
@@ -111,12 +89,7 @@ export default function GrowthShowcasePage({
             active && (
               <div className="mt-4 space-y-5">
                 {active.report.sections.map((section) => (
-                  <Card
-                    key={section.id}
-                    title={section.title}
-                    messages={section.messages}
-                    metrics={section.metrics}
-                  />
+                  <Card key={section.id} title={section.title} messages={section.messages} metrics={section.metrics} />
                 ))}
 
                 <PracticeThemes themes={active.report.practiceThemes} />
@@ -127,25 +100,13 @@ export default function GrowthShowcasePage({
           {/* もとにした試合（出所） */}
           {active && active.sourceMatches.length > 0 && (
             <section className="mt-5 rounded-lg border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                もとにした試合（{active.sourceMatches.length}試合）
-              </h2>
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                この成長記録は、以下の試合の記録から作成しています。
-              </p>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">もとにした試合（{active.sourceMatches.length}試合）</h2>
+              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">この成長記録は、以下の試合の記録から作成しています。</p>
               <ul className="mt-3 divide-y divide-gray-100 dark:divide-gray-700">
                 {active.sourceMatches.map((source) => (
-                  <li
-                    key={source.id}
-                    className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 text-sm"
-                  >
-                    <span className="text-gray-500 dark:text-gray-400">
-                      {source.date ?? '日付不明'}
-                    </span>
-                    <Link
-                      href={source.detailPath}
-                      className="font-medium text-blue-600 hover:underline dark:text-blue-400"
-                    >
+                  <li key={source.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 text-sm">
+                    <span className="text-gray-500 dark:text-gray-400">{source.date ?? '日付不明'}</span>
+                    <Link href={source.detailPath} className="font-medium text-blue-600 hover:underline dark:text-blue-400">
                       vs {source.opponentName}
                     </Link>
                     {source.tournamentName && (
@@ -155,12 +116,7 @@ export default function GrowthShowcasePage({
                       </span>
                     )}
                     {source.videoUrl && (
-                      <a
-                        href={source.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-red-600 hover:underline dark:text-red-400"
-                      >
+                      <a href={source.videoUrl} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline dark:text-red-400">
                         動画
                       </a>
                     )}
@@ -172,12 +128,8 @@ export default function GrowthShowcasePage({
 
           {/* score 導線プレースホルダ。score の方針が固まるまで配線しない（ADR-004）。 */}
           <section className="mt-8 rounded-lg border border-dashed border-gray-300 bg-white p-5 text-center dark:border-gray-600 dark:bg-gray-800">
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
-              自分の試合でもこうした成長記録をつけられます
-            </p>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-              （score 連携は準備中です）
-            </p>
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-200">自分の試合でもこうした成長記録をつけられます</p>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">（score 連携は準備中です）</p>
             <button
               type="button"
               disabled
@@ -206,9 +158,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<ShowcaseProps> = async (
-  context,
-) => {
+export const getStaticProps: GetStaticProps<ShowcaseProps> = async (context) => {
   if (isScoreSiteMode()) {
     return { notFound: true };
   }

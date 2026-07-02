@@ -8,10 +8,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
-const INTERNATIONAL_GENERATIONS = new Set([
-  'international',
-  'international-qualifier',
-]);
+const INTERNATIONAL_GENERATIONS = new Set(['international', 'international-qualifier']);
 
 export interface TournamentMeta {
   tournamentId: string;
@@ -105,18 +102,20 @@ export class SourceAdapter {
   /** 大会メタ（isNational/isMajorTitle/generationId/label）を join した Map。 */
   getTournamentMeta(): Map<string, TournamentMeta> {
     if (this.metaByTid) return this.metaByTid;
+    type RawIndexRow = {
+      tournamentId?: string;
+      label?: string;
+      generationId?: string | null;
+      isMajorTitle?: boolean;
+    };
     const map = new Map<string, TournamentMeta>();
     const load = (file: string, national: boolean) => {
-      const parsed = readJsonRaw(
-        path.join(this.root, 'data', 'tournaments', file),
-      );
-      const arr = Array.isArray(parsed?.data) ? (parsed!.data as any[]) : [];
+      const parsed = readJsonRaw(path.join(this.root, 'data', 'tournaments', file));
+      const arr = Array.isArray(parsed?.data) ? (parsed!.data as RawIndexRow[]) : [];
       for (const t of arr) {
         if (!t?.tournamentId) continue;
         const generationId: string | null = t.generationId ?? null;
-        const isNational =
-          national &&
-          !(generationId && INTERNATIONAL_GENERATIONS.has(generationId));
+        const isNational = national && !(generationId && INTERNATIONAL_GENERATIONS.has(generationId));
         map.set(t.tournamentId, {
           tournamentId: t.tournamentId,
           label: t.label ?? t.tournamentId,
@@ -128,12 +127,8 @@ export class SourceAdapter {
     };
     // index.json（national 候補）→ local_index.json（常に非 national・未登録のみ）
     load('index.json', true);
-    const localParsed = readJsonRaw(
-      path.join(this.root, 'data', 'tournaments', 'local_index.json'),
-    );
-    const localArr = Array.isArray(localParsed?.data)
-      ? (localParsed!.data as any[])
-      : [];
+    const localParsed = readJsonRaw(path.join(this.root, 'data', 'tournaments', 'local_index.json'));
+    const localArr = Array.isArray(localParsed?.data) ? (localParsed!.data as RawIndexRow[]) : [];
     for (const t of localArr) {
       if (!t?.tournamentId || map.has(t.tournamentId)) continue;
       map.set(t.tournamentId, {
@@ -164,33 +159,19 @@ export class SourceAdapter {
   getInformation(tournamentId: string): InformationEntry[] {
     const hit = this.infoByTid.get(tournamentId);
     if (hit) return hit;
-    const parsed = readJsonRaw(
-      path.join(
-        this.root,
-        'data',
-        'tournaments',
-        'information',
-        `${tournamentId}.json`,
-      ),
-    );
-    const arr = Array.isArray(parsed?.data)
-      ? (parsed!.data as InformationEntry[])
-      : [];
+    const parsed = readJsonRaw(path.join(this.root, 'data', 'tournaments', 'information', `${tournamentId}.json`));
+    const arr = Array.isArray(parsed?.data) ? (parsed!.data as InformationEntry[]) : [];
     this.infoByTid.set(tournamentId, arr);
     return arr;
   }
 
   getInfoForYear(tournamentId: string, year: number): InformationEntry | null {
-    return (
-      this.getInformation(tournamentId).find(
-        (e) => Number(e.year) === Number(year),
-      ) ?? null
-    );
+    return this.getInformation(tournamentId).find((e) => Number(e.year) === Number(year)) ?? null;
   }
 
   /** keys からスキーマ変種を判定（§A）。 */
   detectVariant(data: Record<string, unknown>): SchemaVariant {
-    const has = (k: string) => Array.isArray((data as any)[k]);
+    const has = (k: string) => Array.isArray(data[k]);
     const std = has('entries') && has('matches') && has('participants') && has('results');
     const rr = has('roundRobinMatches') && has('standings');
     if (std && rr) return 'mixed';
@@ -203,7 +184,7 @@ export class SourceAdapter {
   private warnOnce(key: string, msg: string): void {
     if (this.warned.has(key)) return;
     this.warned.add(key);
-    // eslint-disable-next-line no-console
+
     console.warn(`[sourceAdapter] ${msg}`);
   }
 
@@ -211,17 +192,8 @@ export class SourceAdapter {
    * 標準スキーマ detail を読む。標準の実体（entries/matches/participants/results）が
    * 揃っていれば mixed も標準部として返す。非標準は null（ログして skip）。
    */
-  readStandardDetail(
-    tournamentId: string,
-    year: number | string,
-    categoryId: string,
-  ): StandardDetail | null {
-    const filePath = path.join(
-      this.detailsRoot(),
-      tournamentId,
-      String(year),
-      `${categoryId}.json`,
-    );
+  readStandardDetail(tournamentId: string, year: number | string, categoryId: string): StandardDetail | null {
+    const filePath = path.join(this.detailsRoot(), tournamentId, String(year), `${categoryId}.json`);
     const parsed = readJsonRaw(filePath);
     if (!parsed || typeof parsed.data !== 'object' || parsed.data === null) {
       return null;
@@ -236,10 +208,7 @@ export class SourceAdapter {
         results: (data.results as RawResult[]) ?? [],
       };
     }
-    this.warnOnce(
-      `${tournamentId}/${year}/${categoryId}`,
-      `non-standard schema (${variant}) skipped: ${tournamentId}/${year}/${categoryId}`,
-    );
+    this.warnOnce(`${tournamentId}/${year}/${categoryId}`, `non-standard schema (${variant}) skipped: ${tournamentId}/${year}/${categoryId}`);
     return null;
   }
 
@@ -248,12 +217,7 @@ export class SourceAdapter {
     const rel = `${tournamentId}/${year}/${categoryId}`;
     const hit = this.hashCache.get(rel);
     if (hit) return hit;
-    const filePath = path.join(
-      this.detailsRoot(),
-      tournamentId,
-      String(year),
-      `${categoryId}.json`,
-    );
+    const filePath = path.join(this.detailsRoot(), tournamentId, String(year), `${categoryId}.json`);
     let hash = '0';
     try {
       const buf = fs.readFileSync(filePath);
@@ -274,8 +238,7 @@ export class SourceAdapter {
     year: string;
     categoryId: string;
   }> {
-    const out: Array<{ tournamentId: string; year: string; categoryId: string }> =
-      [];
+    const out: Array<{ tournamentId: string; year: string; categoryId: string }> = [];
     const root = this.detailsRoot();
     if (!fs.existsSync(root)) return out;
     for (const tid of fs.readdirSync(root)) {

@@ -112,13 +112,7 @@ function readJson<T>(filePath: string): T | null {
 }
 
 function readInformation(tournamentId: string): TournamentInformationEntry[] {
-  const infoPath = path.join(
-    resolveRoot(),
-    'data',
-    'tournaments',
-    'information',
-    `${tournamentId}.json`,
-  );
+  const infoPath = path.join(resolveRoot(), 'data', 'tournaments', 'information', `${tournamentId}.json`);
   if (!fs.existsSync(infoPath)) return [];
   const parsed = readJson<unknown>(infoPath);
   return Array.isArray(parsed) ? (parsed as TournamentInformationEntry[]) : [];
@@ -207,12 +201,8 @@ function extractWinner(detailPath: string, year: number): ChampionEntry | null {
   const data = readJson<RawDetail>(detailPath);
   if (!data) return null;
 
-  const participantById = new Map<string, RawParticipant>(
-    (data.participants ?? []).map((p) => [p.id, p] as const),
-  );
-  const entryByNo = new Map<number, RawEntry>(
-    (data.entries ?? []).map((e) => [e.entryNo, e] as const),
-  );
+  const participantById = new Map<string, RawParticipant>((data.participants ?? []).map((p) => [p.id, p] as const));
+  const entryByNo = new Map<number, RawEntry>((data.entries ?? []).map((e) => [e.entryNo, e] as const));
 
   for (const result of data.results ?? []) {
     if (result.tournament?.rank?.kind !== 'winner') continue;
@@ -243,26 +233,14 @@ function extractWinner(detailPath: string, year: number): ChampionEntry | null {
  * 指定大会・年・種目の生 detail（matches を含む）を読む。無ければ null。
  * champion-defeat 等、優勝者以外の試合（敗退試合）を参照したい呼び出し側が使う。
  */
-export function readYearDetail(
-  tournamentId: string,
-  year: number,
-  categoryId: string,
-): RawDetail | null {
-  const detailPath = path.join(
-    resolveRoot(),
-    ...DETAILS_ROOT,
-    tournamentId,
-    String(year),
-    `${categoryId}.json`,
-  );
+export function readYearDetail(tournamentId: string, year: number, categoryId: string): RawDetail | null {
+  const detailPath = path.join(resolveRoot(), ...DETAILS_ROOT, tournamentId, String(year), `${categoryId}.json`);
   if (!fs.existsSync(detailPath)) return null;
   return readJson<RawDetail>(detailPath);
 }
 
 /** detail.participants から id→participant の Map を作る */
-export function buildParticipantMap(
-  detail: RawDetail,
-): Map<string, RawParticipant> {
+export function buildParticipantMap(detail: RawDetail): Map<string, RawParticipant> {
   return new Map((detail.participants ?? []).map((p) => [p.id, p] as const));
 }
 
@@ -270,11 +248,7 @@ export function buildParticipantMap(
  * 任意の entry を ChampionEntry へ解決する（championKey による比較に使える）。
  * historical-winners の優勝者と同じ resolveEntry を通すため、キーが整合する。
  */
-export function resolveEntryToChampion(
-  entry: RawEntry,
-  participantById: Map<string, RawParticipant>,
-  year: number,
-): ChampionEntry {
+export function resolveEntryToChampion(entry: RawEntry, participantById: Map<string, RawParticipant>, year: number): ChampionEntry {
   const r = resolveEntry(entry, participantById);
   return {
     year,
@@ -292,18 +266,12 @@ export function resolveEntryToChampion(
  */
 export function championKey(c: ChampionEntry): string | null {
   if (!c.display) return null;
-  const base =
-    c.players.length > 0
-      ? `${c.players.slice().sort().join('|')}@${c.teams.slice().sort().join('|')}`
-      : c.teams.slice().sort().join('|');
+  const base = c.players.length > 0 ? `${c.players.slice().sort().join('|')}@${c.teams.slice().sort().join('|')}` : c.teams.slice().sort().join('|');
   return base.replace(/\s+/g, '').normalize('NFKC') || null;
 }
 
 /** 対象年が連続優勝区間の末尾にある場合の連覇情報を返す */
-function computeRepeatChampion(
-  championsDesc: ChampionEntry[],
-  targetYear: number | null,
-): RepeatChampion | null {
+function computeRepeatChampion(championsDesc: ChampionEntry[], targetYear: number | null): RepeatChampion | null {
   if (targetYear == null) return null;
   const asc = championsDesc.slice().sort((a, b) => a.year - b.year);
   const idx = asc.findIndex((c) => c.year === targetYear);
@@ -334,11 +302,7 @@ export type HistoricalWinnersOptions = {
  * 指定大会・種目の historical-winners ブロックを生成する。
  * 対象 categoryId の details が 1 年も無い場合は null。
  */
-export function getHistoricalWinners(
-  tournamentId: string,
-  categoryId: string,
-  options: HistoricalWinnersOptions = {},
-): HistoricalWinnersBlock | null {
+export function getHistoricalWinners(tournamentId: string, categoryId: string, options: HistoricalWinnersOptions = {}): HistoricalWinnersBlock | null {
   const tournamentDir = path.join(resolveRoot(), ...DETAILS_ROOT, tournamentId);
   if (!fs.existsSync(tournamentDir)) return null;
 
@@ -350,11 +314,7 @@ export function getHistoricalWinners(
 
   const champions: ChampionEntry[] = [];
   for (const year of years) {
-    const detailPath = path.join(
-      tournamentDir,
-      String(year),
-      `${categoryId}.json`,
-    );
+    const detailPath = path.join(tournamentDir, String(year), `${categoryId}.json`);
     if (!fs.existsSync(detailPath)) continue;
     const champ = extractWinner(detailPath, year);
     if (champ) champions.push(champ);
@@ -365,9 +325,7 @@ export function getHistoricalWinners(
   const information = readInformation(tournamentId);
   let categoryLabel = categoryId;
   for (const entry of information) {
-    const hit = (entry.categories ?? []).find(
-      (c) => c.categoryId === categoryId,
-    );
+    const hit = (entry.categories ?? []).find((c) => c.categoryId === categoryId);
     if (hit?.label) {
       categoryLabel = hit.label;
       break;
@@ -375,8 +333,7 @@ export function getHistoricalWinners(
   }
 
   const sourceYears = champions.map((c) => c.year);
-  const targetYear =
-    options.targetYear ?? sourceYears[sourceYears.length - 1] ?? null;
+  const targetYear = options.targetYear ?? sourceYears[sourceYears.length - 1] ?? null;
 
   const championsDesc = champions.slice().sort((a, b) => b.year - a.year);
   const repeatChampion = computeRepeatChampion(champions, targetYear);
@@ -405,10 +362,7 @@ export function getHistoricalWinners(
  */
 let cachedAllWinners: Map<string, HistoricalWinnersBlock[]> | null = null;
 
-export function getAllHistoricalWinners(
-  tournamentId: string,
-  options: HistoricalWinnersOptions = {},
-): HistoricalWinnersBlock[] {
+export function getAllHistoricalWinners(tournamentId: string, options: HistoricalWinnersOptions = {}): HistoricalWinnersBlock[] {
   if (!cachedAllWinners) cachedAllWinners = new Map();
   const cacheKey = `${tournamentId}::${options.targetYear ?? 'latest'}`;
   const cached = cachedAllWinners.get(cacheKey);

@@ -34,16 +34,11 @@ export const generateTournamentUrlFromMatch = (match: {
   tournament_category: string | null;
   tournament_year?: number | null;
 }): string | null => {
-  if (
-    !match.tournament_generation ||
-    !match.tournament_gender ||
-    !match.tournament_id
-  ) {
+  if (!match.tournament_generation || !match.tournament_gender || !match.tournament_id) {
     return null;
   }
   const year = match.tournament_year || new Date().getFullYear();
-  const gameCategory =
-    match.tournament_category === 'singles' ? 'singles' : 'doubles';
+  const gameCategory = match.tournament_category === 'singles' ? 'singles' : 'doubles';
   const ageCategory = 'none';
   const gender = match.tournament_gender;
 

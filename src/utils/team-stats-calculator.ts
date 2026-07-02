@@ -17,24 +17,17 @@ export type YearlySummary = {
   totalPairs: number;
 };
 
-export function calculateTeamYearlySummary(
-  results: EventResult[],
-  info: TeamInfo,
-): YearlySummary {
+export function calculateTeamYearlySummary(results: EventResult[], info: TeamInfo): YearlySummary {
   let champions = 0,
     runnersUp = 0,
     top8OrBetter = 0,
     totalPairs = 0;
 
   results.forEach((event) => {
-    const validResults = event.results.filter((r) =>
-      r.playerIds.some((pid) => pid in info.players),
-    );
+    const validResults = event.results.filter((r) => r.playerIds.some((pid) => pid in info.players));
 
     validResults.forEach((r) => {
-      const teamPlayerCount = r.playerIds.filter(
-        (pid) => pid in info.players,
-      ).length;
+      const teamPlayerCount = r.playerIds.filter((pid) => pid in info.players).length;
 
       if (r.result === '優勝') champions += teamPlayerCount;
       if (r.result === '準優勝') runnersUp += teamPlayerCount;
@@ -55,10 +48,7 @@ export function calculateTeamYearlySummary(
   };
 }
 
-export function calculatePlayerStats(
-  results: EventResult[],
-  info: TeamInfo,
-): Record<string, PlayerStats> {
+export function calculatePlayerStats(results: EventResult[], info: TeamInfo): Record<string, PlayerStats> {
   // Group stats by player name instead of ID to handle duplicate IDs
   const statsByName: Record<string, PlayerStats> = {};
 
@@ -76,10 +66,7 @@ export function calculatePlayerStats(
   };
 
   // 名前の無い参加者（チーム単位レコード等の不正データ）は除外し、"null null" の行を防ぐ
-  const hasName = (player?: {
-    lastName?: string | null;
-    firstName?: string | null;
-  }) => !!player && !!(player.lastName || player.firstName);
+  const hasName = (player?: { lastName?: string | null; firstName?: string | null }) => !!player && !!(player.lastName || player.firstName);
 
   // Initialize stats for ALL players in info.players
   if (info.players) {
@@ -111,8 +98,7 @@ export function calculatePlayerStats(
         initializePlayerStats(playerName, pid);
 
         if (summry.result) {
-          statsByName[playerName].winsByRound[summry.result] =
-            (statsByName[playerName].winsByRound[summry.result] || 0) + 1;
+          statsByName[playerName].winsByRound[summry.result] = (statsByName[playerName].winsByRound[summry.result] || 0) + 1;
         }
       });
     });

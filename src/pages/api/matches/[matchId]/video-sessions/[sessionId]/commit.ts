@@ -1,22 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  loadMatchWithRelations,
-  recomputeGameScore,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, loadMatchWithRelations, recomputeGameScore, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { isScoreSiteMode } from '@/lib/siteConfig';
-import {
-  commitVideoCandidatesToMatch,
-  loadVideoSessionWithCandidates,
-} from '@/lib/videoReview';
+import { commitVideoCandidatesToMatch, loadVideoSessionWithCandidates } from '@/lib/videoReview';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return sendMethodNotAllowed(res, ['POST']);
   }
@@ -38,11 +26,7 @@ export default async function handler(
       return res.status(404).json({ error: 'Match not found.' });
     }
 
-    const session = await loadVideoSessionWithCandidates(
-      supabase,
-      matchId,
-      sessionId,
-    );
+    const session = await loadVideoSessionWithCandidates(supabase, matchId, sessionId);
     if (!session) {
       return res.status(404).json({ error: 'Session not found.' });
     }
@@ -63,10 +47,6 @@ export default async function handler(
       match: updatedMatch,
     });
   } catch (error) {
-    return sendSupabaseError(
-      res,
-      error as Error,
-      'Failed to commit point candidates.',
-    );
+    return sendSupabaseError(res, error as Error, 'Failed to commit point candidates.');
   }
 }

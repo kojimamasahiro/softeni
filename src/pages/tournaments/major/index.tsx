@@ -9,12 +9,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  CategoryLink,
-  TournamentBlock,
-  TournamentCard,
-  YearGroup,
-} from '@/components/tournaments/TournamentCard';
+import { CategoryLink, TournamentBlock, TournamentCard, YearGroup } from '@/components/tournaments/TournamentCard';
 
 // Since GenerationKey was just `string` alias locally, I can either import it if I exported it (I didn't) or keep it here.
 // I didn't export GenerationKey in Previous step. Let's keep it local or modify the previous file.
@@ -68,11 +63,7 @@ type TournamentInfo = {
 };
 
 // ====== ページコンポーネント ======
-export default function TournamentListPage({
-  generationOrder,
-  generationTitleMap,
-  tournamentsByGeneration,
-}: Props) {
+export default function TournamentListPage({ generationOrder, generationTitleMap, tournamentsByGeneration }: Props) {
   const pageUrl = 'https://softeni-pick.com/tournaments/major/';
 
   const generationTitle = (gen: GenerationKey) => {
@@ -81,12 +72,7 @@ export default function TournamentListPage({
 
   return (
     <>
-      <MetaHead
-        title={'主要大会一覧 | ソフトテニス情報'}
-        description={`過去の大会結果・試合成績を掲載`}
-        url={pageUrl}
-        type="article"
-      />
+      <MetaHead title={'主要大会一覧 | ソフトテニス情報'} description={`過去の大会結果・試合成績を掲載`} url={pageUrl} type="article" />
 
       <Head>
         <script
@@ -155,44 +141,22 @@ export default function TournamentListPage({
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center">
-                    <svg
-                      className="w-6 h-6 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
                         d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                       />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     地域大会
                   </h2>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    各都道府県の連盟や企業が主催する大会の結果はこちらからご覧いただけます。
-                  </p>
+                  <p className="text-gray-600 dark:text-gray-300">各都道府県の連盟や企業が主催する大会の結果はこちらからご覧いただけます。</p>
                 </div>
                 <div className="text-blue-600 dark:text-blue-400">
-                  <svg
-                    className="w-8 h-8 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg className="w-8 h-8 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
               </div>
@@ -200,13 +164,11 @@ export default function TournamentListPage({
           </div>
           <h1 className="text-2xl font-bold mb-4">主要大会結果</h1>
           <p className="text-lg leading-relaxed mb-4">
-            こちらは、Softeni
-            Pickが収録しているソフトテニスの大会結果一覧ページです。
+            こちらは、Softeni Pickが収録しているソフトテニスの大会結果一覧ページです。
             主要な全日本大会をはじめ、インターハイ・選抜、ジュニアなども整理して掲載していきます。
           </p>
           <p className="text-lg leading-relaxed">
-            各大会のページでは、年度ごとの出場選手や試合結果、所属別の記録などを確認できます。
-            下記から世代（カテゴリ）ごとにご覧いただけます。
+            各大会のページでは、年度ごとの出場選手や試合結果、所属別の記録などを確認できます。 下記から世代（カテゴリ）ごとにご覧いただけます。
           </p>
         </section>
 
@@ -214,9 +176,7 @@ export default function TournamentListPage({
           .filter((g) => tournamentsByGeneration[g]?.length)
           .map((gen) => (
             <section key={gen} className="mb-12">
-              <h2 className="text-xl font-semibold mb-6">
-                {generationTitle(gen)}カテゴリ
-              </h2>
+              <h2 className="text-xl font-semibold mb-6">{generationTitle(gen)}カテゴリ</h2>
 
               <div className="space-y-8">
                 {tournamentsByGeneration[gen].map((t) => (
@@ -259,8 +219,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 
   const tournaments = readJSONSafe(indexPath) as TournamentIndex[];
-  const tournamentsByGeneration: Record<GenerationKey, TournamentBlock[]> =
-    {} as Record<GenerationKey, TournamentBlock[]>;
+  const tournamentsByGeneration: Record<GenerationKey, TournamentBlock[]> = {} as Record<GenerationKey, TournamentBlock[]>;
 
   for (const tournament of tournaments) {
     const generation = tournament.generationId as GenerationKey;
@@ -268,10 +227,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       tournamentsByGeneration[generation] = [];
     }
 
-    const infoPath = path.join(
-      informationDir,
-      `${tournament.tournamentId}.json`,
-    );
+    const infoPath = path.join(informationDir, `${tournament.tournamentId}.json`);
     const infos = readJSONSafe(infoPath) as TournamentInfo[];
     if (!infos) continue;
 
@@ -281,12 +237,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       const links: CategoryLink[] = [];
       for (const cat of info.categories) {
         const categoryId = cat.categoryId;
-        const detailPath = path.join(
-          detailsDir,
-          tournament.tournamentId,
-          String(year),
-          `${categoryId}.json`,
-        );
+        const detailPath = path.join(detailsDir, tournament.tournamentId, String(year), `${categoryId}.json`);
         if (fs.existsSync(detailPath)) {
           links.push({
             year,

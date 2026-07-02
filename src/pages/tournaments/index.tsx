@@ -9,10 +9,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import TournamentSearchTable, {
-  TournamentInstance,
-  TournamentLevel,
-} from '@/components/tournaments/TournamentSearchTable';
+import TournamentSearchTable, { TournamentInstance, TournamentLevel } from '@/components/tournaments/TournamentSearchTable';
 
 // ─── 型定義（ビルド専用） ──────────────────────────────────────────────────
 type TournamentIndex = {
@@ -65,18 +62,12 @@ function readJSONSafe<T>(p: string): T | null {
 /** tournamentId から level を推定する */
 function inferLevel(tournamentId: string, isLocal: boolean): TournamentLevel {
   if (isLocal) return 'prefecture';
-  if (tournamentId.startsWith('east-') || tournamentId.startsWith('west-'))
-    return 'block';
+  if (tournamentId.startsWith('east-') || tournamentId.startsWith('west-')) return 'block';
   return 'national';
 }
 
 // ─── ページコンポーネント ──────────────────────────────────────────────────
-export default function TournamentsIndexPage({
-  instances,
-  prefectures,
-  years,
-  generations,
-}: Props) {
+export default function TournamentsIndexPage({ instances, prefectures, years, generations }: Props) {
   const pageUrl = 'https://softeni-pick.com/tournaments/';
 
   return (
@@ -101,8 +92,7 @@ export default function TournamentsIndexPage({
               dateModified: new Date().toISOString().split('T')[0],
               inLanguage: 'ja',
               mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-              description:
-                'ソフトテニスの大会を年・カテゴリ・地域で絞り込み検索できます。',
+              description: 'ソフトテニスの大会を年・カテゴリ・地域で絞り込み検索できます。',
             }),
           }}
         />
@@ -147,33 +137,20 @@ export default function TournamentsIndexPage({
             className="flex-1 flex flex-col items-center gap-1 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors"
           >
             <span className="text-lg">🏆</span>
-            <span className="font-semibold text-sm text-yellow-800 dark:text-yellow-200">
-              主要大会結果
-            </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">
-              全国・ブロック大会
-            </span>
+            <span className="font-semibold text-sm text-yellow-800 dark:text-yellow-200">主要大会結果</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">全国・ブロック大会</span>
           </Link>
           <Link
             href="/tournaments/local"
             className="flex-1 flex flex-col items-center gap-1 p-4 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors"
           >
             <span className="text-lg">📍</span>
-            <span className="font-semibold text-sm text-green-800 dark:text-green-200">
-              地域大会結果
-            </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">
-              都道府県・地域連盟大会
-            </span>
+            <span className="font-semibold text-sm text-green-800 dark:text-green-200">地域大会結果</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">都道府県・地域連盟大会</span>
           </Link>
         </div>
 
-        <TournamentSearchTable
-          instances={instances}
-          prefectures={prefectures}
-          years={years}
-          generations={generations}
-        />
+        <TournamentSearchTable instances={instances} prefectures={prefectures} years={years} generations={generations} />
       </PageLayout>
     </>
   );
@@ -192,25 +169,17 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const prefecturesPath = path.join(dataRoot, 'prefectures.json');
 
   // ── マスターデータ読み込み ──
-  const rawGenerations =
-    readJSONSafe<{ generationId: string; label: string }[]>(generationsPath) ??
-    [];
-  const genLabelMap = Object.fromEntries(
-    rawGenerations.map((g) => [g.generationId, g.label]),
-  );
+  const rawGenerations = readJSONSafe<{ generationId: string; label: string }[]>(generationsPath) ?? [];
+  const genLabelMap = Object.fromEntries(rawGenerations.map((g) => [g.generationId, g.label]));
   const generations = rawGenerations.map((g) => ({
     id: g.generationId,
     label: g.label,
   }));
 
   const mainTournaments = readJSONSafe<TournamentIndex[]>(indexPath) ?? [];
-  const localTournaments =
-    readJSONSafe<LocalTournamentIndex[]>(localIndexPath) ?? [];
+  const localTournaments = readJSONSafe<LocalTournamentIndex[]>(localIndexPath) ?? [];
 
-  const rawPrefectures =
-    readJSONSafe<{ id: string; name: string; region: string }[]>(
-      prefecturesPath,
-    ) ?? [];
+  const rawPrefectures = readJSONSafe<{ id: string; name: string; region: string }[]>(prefecturesPath) ?? [];
   const prefectures = rawPrefectures.map((p) => ({ id: p.id, name: p.name }));
 
   // location 文字列 → prefectureId 逆引きマップ
@@ -230,14 +199,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const level = inferLevel(t.tournamentId, false);
 
     for (const info of infos) {
-      const detailDir = path.join(
-        detailsDir,
-        t.tournamentId,
-        String(info.year),
-      );
-      const hasInternalResult =
-        fs.existsSync(detailDir) &&
-        fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
+      const hasInternalResult = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
 
       let firstCategoryPath: string | null = null;
       for (const cat of info.categories) {
@@ -273,19 +236,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const infos = readJSONSafe<TournamentInfo[]>(infoPath);
     if (!infos) continue;
 
-    const level: TournamentLevel = t.areaId
-      ? t.areaId
-      : inferLevel(t.tournamentId, true);
+    const level: TournamentLevel = t.areaId ? t.areaId : inferLevel(t.tournamentId, true);
 
     for (const info of infos) {
-      const detailDir = path.join(
-        detailsDir,
-        t.tournamentId,
-        String(info.year),
-      );
-      const hasInternalResult =
-        fs.existsSync(detailDir) &&
-        fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
+      const hasInternalResult = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
 
       let firstCategoryPath: string | null = null;
       for (const cat of info.categories) {
@@ -319,9 +274,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   instances.sort((a, b) => b.startDate.localeCompare(a.startDate));
 
   // 年リスト（降順）
-  const years = [...new Set(instances.map((i) => i.year))].sort(
-    (a, b) => b - a,
-  );
+  const years = [...new Set(instances.map((i) => i.year))].sort((a, b) => b - a);
 
   return {
     props: { instances, prefectures, years, generations },

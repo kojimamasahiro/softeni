@@ -2,11 +2,7 @@
 // 通算優勝数 / 主要大会優勝数 / 大会別優勝 / 連覇 / n回目 / 全国初出場・初優勝。
 // winner entry（placement.kind==='winner'）を素に集計。scope=当サイト掲載分。
 
-import type {
-  FirstEvent,
-  PlayerStatistics,
-  TitleStreak,
-} from '../../../src/types/playerStatistics';
+import type { FirstEvent, PlayerStatistics, TitleStreak } from '../../../src/types/playerStatistics';
 import type { PlayerEntryFact, PlayerFacts } from '../types';
 import { disciplineGenderLabel } from './util';
 
@@ -39,7 +35,7 @@ export function aggregateTitles(facts: PlayerFacts): PlayerStatistics['titles'] 
     const years = Array.from(new Set(yearsRaw)).sort((a, b) => a - b);
     let runStart = years[0];
     let runLen = 1;
-    const flush = (endIdx: number) => {
+    const flush = () => {
       if (runLen >= 2) {
         const [tournamentId, categoryId] = catKey.split('/');
         streaks.push({
@@ -55,18 +51,17 @@ export function aggregateTitles(facts: PlayerFacts): PlayerStatistics['titles'] 
       if (years[i] - years[i - 1] === 1) {
         runLen += 1;
       } else {
-        flush(i - 1);
+        flush();
         runStart = years[i];
         runLen = 1;
       }
     }
-    flush(years.length - 1);
+    flush();
   }
   streaks.sort((a, b) => b.streak - a.streak);
 
   // 全国初出場 / 全国初優勝（date 昇順の最初）
-  const byDate = (a: PlayerEntryFact, b: PlayerEntryFact) =>
-    (a.date || '') < (b.date || '') ? -1 : (a.date || '') > (b.date || '') ? 1 : 0;
+  const byDate = (a: PlayerEntryFact, b: PlayerEntryFact) => ((a.date || '') < (b.date || '') ? -1 : (a.date || '') > (b.date || '') ? 1 : 0);
 
   const toFirstEvent = (e: PlayerEntryFact | undefined): FirstEvent | null =>
     e

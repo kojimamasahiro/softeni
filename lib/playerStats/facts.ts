@@ -7,35 +7,13 @@
 import crypto from 'crypto';
 
 import { Identity, playerKey, resolveNumericId } from './identity';
-import {
-  isFinalRound,
-  isSemifinalRound,
-  normalizeRoundOrder,
-  parseCategoryId,
-  resolvePlacement,
-} from './placement';
-import {
-  RawEntry,
-  RawParticipant,
-  SourceAdapter,
-  StandardDetail,
-} from './sourceAdapter';
-import type {
-  PersonRef,
-  Placement,
-  PlayerEntryFact,
-  PlayerFacts,
-  PlayerMatchFact,
-  ReverseIndex,
-} from './types';
+import { isFinalRound, isSemifinalRound, normalizeRoundOrder, parseCategoryId, resolvePlacement } from './placement';
+import { RawEntry, RawParticipant, SourceAdapter, StandardDetail } from './sourceAdapter';
+import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFact, ReverseIndex } from './types';
 
 export const ENGINE_VERSION = '1.0.0';
 
-function personRefFromParticipant(
-  identity: Identity,
-  p: RawParticipant | undefined,
-  fallbackId?: string,
-): PersonRef {
+function personRefFromParticipant(identity: Identity, p: RawParticipant | undefined, fallbackId?: string): PersonRef {
   if (!p) {
     const name = fallbackId ?? '';
     return { id: null, key: playerKey(name), name, team: null };
@@ -71,21 +49,11 @@ function factsFromCategory(
   const entries: PlayerEntryFact[] = [];
   const matchingSet = new Set(matchingIds);
 
-  const participantById = new Map<string, RawParticipant>(
-    detail.participants.map((p) => [p.id, p] as const),
-  );
-  const entryByNo = new Map<number, RawEntry>(
-    detail.entries.map((e) => [e.entryNo, e] as const),
-  );
+  const participantById = new Map<string, RawParticipant>(detail.participants.map((p) => [p.id, p] as const));
+  const entryByNo = new Map<number, RawEntry>(detail.entries.map((e) => [e.entryNo, e] as const));
 
   // 対象選手が属する entryNo 群
-  const targetEntryNos = detail.entries
-    .filter(
-      (e) =>
-        Array.isArray(e.playerIds) &&
-        e.playerIds.some((id) => matchingSet.has(id)),
-    )
-    .map((e) => e.entryNo);
+  const targetEntryNos = detail.entries.filter((e) => Array.isArray(e.playerIds) && e.playerIds.some((id) => matchingSet.has(id))).map((e) => e.entryNo);
   const targetEntryNoSet = new Set(targetEntryNos);
 
   // 自分の participant（team 解決用。最初の一致）
@@ -122,20 +90,13 @@ function factsFromCategory(
     if (selfEntry && selfEntry.playerIds.length > 1) {
       const partnerId = selfEntry.playerIds.find((id) => !matchingSet.has(id));
       if (partnerId) {
-        partner = personRefFromParticipant(
-          identity,
-          participantById.get(partnerId),
-          partnerId,
-        );
+        partner = personRefFromParticipant(identity, participantById.get(partnerId), partnerId);
       }
     }
 
-    const opponents: PersonRef[] = (oppEntry?.playerIds ?? []).map((id) =>
-      personRefFromParticipant(identity, participantById.get(id), id),
-    );
+    const opponents: PersonRef[] = (oppEntry?.playerIds ?? []).map((id) => personRefFromParticipant(identity, participantById.get(id), id));
 
-    const stage: 'knockout' | 'roundrobin' =
-      m.stage === 'roundrobin' ? 'roundrobin' : 'knockout';
+    const stage: 'knockout' | 'roundrobin' = m.stage === 'roundrobin' ? 'roundrobin' : 'knockout';
 
     matches.push({
       tournamentId: ctx.tournamentId,
@@ -173,50 +134,29 @@ function factsFromCategory(
     const entry = entryByNo.get(entryNo);
     if (!entry) continue;
     const rawResult = resultByEntryNo.get(entryNo);
-    const placement: Placement = rawResult
-      ? resolvePlacement(rawResult)
-      : { kind: 'unknown' };
+    const placement: Placement = rawResult ? resolvePlacement(rawResult) : { kind: 'unknown' };
 
     // 進出率判定（round 名リテラル + placement）
-    const entryMatches = detail.matches.filter(
-      (m) => Array.isArray(m.entries) && m.entries.includes(entryNo),
-    );
-    const appearsInKnockout = entryMatches.some(
-      (m) => (m.stage ?? 'knockout') !== 'roundrobin',
-    );
+    const entryMatches = detail.matches.filter((m) => Array.isArray(m.entries) && m.entries.includes(entryNo));
+    const appearsInKnockout = entryMatches.some((m) => (m.stage ?? 'knockout') !== 'roundrobin');
     const reachedFinal =
       placement.kind === 'winner' ||
       placement.kind === 'runnerup' ||
-      entryMatches.some(
-        (m) => (m.stage ?? 'knockout') !== 'roundrobin' && isFinalRound(m.round),
-      );
+      entryMatches.some((m) => (m.stage ?? 'knockout') !== 'roundrobin' && isFinalRound(m.round));
     const reachedSemifinal =
       reachedFinal ||
       (placement.kind === 'best' && placement.bestLevel === 4) ||
-      entryMatches.some(
-        (m) =>
-          (m.stage ?? 'knockout') !== 'roundrobin' && isSemifinalRound(m.round),
-      );
+      entryMatches.some((m) => (m.stage ?? 'knockout') !== 'roundrobin' && isSemifinalRound(m.round));
 
     const isKnockoutSDM =
-      (ctx.category === 'singles' ||
-        ctx.category === 'doubles' ||
-        ctx.category === 'mixed') &&
-      (appearsInKnockout ||
-        placement.kind === 'winner' ||
-        placement.kind === 'runnerup' ||
-        placement.kind === 'best' ||
-        placement.kind === 'roundLoss');
+      (ctx.category === 'singles' || ctx.category === 'doubles' || ctx.category === 'mixed') &&
+      (appearsInKnockout || placement.kind === 'winner' || placement.kind === 'runnerup' || placement.kind === 'best' || placement.kind === 'roundLoss');
 
     let partner: PersonRef | null = null;
     if (entry.playerIds.length > 1) {
       const partnerId = entry.playerIds.find((id) => !matchingSet.has(id));
       if (partnerId) {
-        partner = personRefFromParticipant(
-          identity,
-          participantById.get(partnerId),
-          partnerId,
-        );
+        partner = personRefFromParticipant(identity, participantById.get(partnerId), partnerId);
       }
     }
 
@@ -253,12 +193,7 @@ function sortMatchesChronologically(matches: PlayerMatchFact[]): void {
 }
 
 /** 選手 1 人の Facts を構築する（O(m log m)）。 */
-export function buildFacts(
-  playerId: number,
-  adapter: SourceAdapter,
-  identity: Identity,
-  reverseIndex: ReverseIndex,
-): PlayerFacts {
+export function buildFacts(playerId: number, adapter: SourceAdapter, identity: Identity, reverseIndex: ReverseIndex): PlayerFacts {
   const idInfo = identity.byId.get(playerId);
   const displayName = idInfo ? `${idInfo.lastName}${idInfo.firstName}` : String(playerId);
   const categories = reverseIndex[String(playerId)]?.categories ?? [];
@@ -279,12 +214,7 @@ export function buildFacts(
     const detail = adapter.readStandardDetail(tournamentId, yearStr, categoryId);
     if (!detail || !idInfo) continue;
 
-    const matchingIds = detail.participants
-      .filter(
-        (p) =>
-          p.lastName === idInfo.lastName && p.firstName === idInfo.firstName,
-      )
-      .map((p) => p.id);
+    const matchingIds = detail.participants.filter((p) => p.lastName === idInfo.lastName && p.firstName === idInfo.firstName).map((p) => p.id);
     if (matchingIds.length === 0) continue;
 
     const meta = adapter.metaFor(tournamentId);
@@ -308,8 +238,7 @@ export function buildFacts(
     allEntries.push(...entries);
 
     // currentTeam = 最新出場時の所属
-    const selfTeam =
-      matches[0]?.selfTeam ?? entries[0]?.selfTeam ?? null;
+    const selfTeam = matches[0]?.selfTeam ?? entries[0]?.selfTeam ?? null;
     if (selfTeam && date >= latestDate) {
       latestDate = date;
       currentTeam = selfTeam;
@@ -324,9 +253,7 @@ export function buildFacts(
     .digest('hex')
     .slice(0, 16);
 
-  const homonymRisk = idInfo
-    ? identity.homonymNames.has(`${idInfo.lastName}\t${idInfo.firstName}`)
-    : false;
+  const homonymRisk = idInfo ? identity.homonymNames.has(`${idInfo.lastName}\t${idInfo.firstName}`) : false;
 
   return {
     playerId,

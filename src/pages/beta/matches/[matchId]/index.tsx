@@ -1,29 +1,13 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  useCallback as reactUseCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { useCallback as reactUseCallback, useEffect, useMemo, useState } from 'react';
 
-import {
-  fetchBetaMatchById,
-  hasLiveMatchApi,
-} from '../../../../../lib/betaMatchesClient';
+import { fetchBetaMatchById, hasLiveMatchApi } from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
 import { isScoreSiteMode } from '../../../../../lib/siteConfig';
-import {
-  buildYouTubeEmbedUrl,
-  buildYouTubeWatchUrl,
-} from '../../../../../lib/videoReview';
-import {
-  Game,
-  Match,
-  MatchVideoSession,
-  Point,
-} from '../../../../types/database';
+import { buildYouTubeEmbedUrl, buildYouTubeWatchUrl } from '../../../../../lib/videoReview';
+import { Game, Match, MatchVideoSession, Point } from '../../../../types/database';
 
 type TeamEditorState = {
   entry_number: string;
@@ -52,31 +36,19 @@ type SelectedPointMeta = {
   point: Point;
 };
 
-const createTeamEditorState = (
-  match: Match,
-  team: 'A' | 'B',
-): TeamEditorState => {
+const createTeamEditorState = (match: Match, team: 'A' | 'B'): TeamEditorState => {
   const prefix = `team_${team.toLowerCase()}` as 'team_a' | 'team_b';
 
   return {
-    entry_number:
-      (match[`${prefix}_entry_number` as keyof Match] as string) ?? '',
-    player1_last_name:
-      (match[`${prefix}_player1_last_name` as keyof Match] as string) ?? '',
-    player1_first_name:
-      (match[`${prefix}_player1_first_name` as keyof Match] as string) ?? '',
-    player1_team_name:
-      (match[`${prefix}_player1_team_name` as keyof Match] as string) ?? '',
-    player1_region:
-      (match[`${prefix}_player1_region` as keyof Match] as string) ?? '',
-    player2_last_name:
-      (match[`${prefix}_player2_last_name` as keyof Match] as string) ?? '',
-    player2_first_name:
-      (match[`${prefix}_player2_first_name` as keyof Match] as string) ?? '',
-    player2_team_name:
-      (match[`${prefix}_player2_team_name` as keyof Match] as string) ?? '',
-    player2_region:
-      (match[`${prefix}_player2_region` as keyof Match] as string) ?? '',
+    entry_number: (match[`${prefix}_entry_number` as keyof Match] as string) ?? '',
+    player1_last_name: (match[`${prefix}_player1_last_name` as keyof Match] as string) ?? '',
+    player1_first_name: (match[`${prefix}_player1_first_name` as keyof Match] as string) ?? '',
+    player1_team_name: (match[`${prefix}_player1_team_name` as keyof Match] as string) ?? '',
+    player1_region: (match[`${prefix}_player1_region` as keyof Match] as string) ?? '',
+    player2_last_name: (match[`${prefix}_player2_last_name` as keyof Match] as string) ?? '',
+    player2_first_name: (match[`${prefix}_player2_first_name` as keyof Match] as string) ?? '',
+    player2_team_name: (match[`${prefix}_player2_team_name` as keyof Match] as string) ?? '',
+    player2_region: (match[`${prefix}_player2_region` as keyof Match] as string) ?? '',
   };
 };
 
@@ -87,16 +59,10 @@ const formatVideoTimestamp = (ms: number) => {
   const seconds = totalSeconds % 60;
 
   if (hours > 0) {
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(
-      2,
-      '0',
-    )}:${String(seconds).padStart(2, '0')}`;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   }
 
-  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
-    2,
-    '0',
-  )}`;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 };
 
 const MatchDetail = () => {
@@ -130,8 +96,7 @@ const MatchDetail = () => {
                   throw new globalThis.Error('Failed to load video sessions.');
                 }
 
-                const data =
-                  (await response.json()) as VideoSessionListResponse;
+                const data = (await response.json()) as VideoSessionListResponse;
                 return data.sessions ?? [];
               })
               .catch((error) => {
@@ -162,16 +127,11 @@ const MatchDetail = () => {
   }, [matchId, fetchMatch]);
 
   const activeYoutubeSource = useMemo<ActiveYoutubeSource | null>(() => {
-    const youtubeSession = videoSessions.find(
-      (session) =>
-        session.source_type === 'youtube' &&
-        Boolean(session.source_url ?? session.youtube_video_id),
-    );
+    const youtubeSession = videoSessions.find((session) => session.source_type === 'youtube' && Boolean(session.source_url ?? session.youtube_video_id));
 
     if (youtubeSession) {
       return {
-        input:
-          youtubeSession.source_url ?? youtubeSession.youtube_video_id ?? '',
+        input: youtubeSession.source_url ?? youtubeSession.youtube_video_id ?? '',
         label: youtubeSession.source_label || '最新の動画セッション',
         sourceType: 'session',
       };
@@ -237,12 +197,8 @@ const MatchDetail = () => {
   const getMatchWinner = () => {
     if (!match?.games) return null;
 
-    const gamesWonA = match.games.filter(
-      (game) => game.winner_team === 'A',
-    ).length;
-    const gamesWonB = match.games.filter(
-      (game) => game.winner_team === 'B',
-    ).length;
+    const gamesWonA = match.games.filter((game) => game.winner_team === 'A').length;
+    const gamesWonB = match.games.filter((game) => game.winner_team === 'B').length;
     const requiredWins = Math.ceil(match.best_of / 2);
 
     if (gamesWonA >= requiredWins) return 'A';
@@ -359,13 +315,7 @@ const MatchDetail = () => {
   };
 
   const handleSaveTeams = async () => {
-    if (
-      !canEditMatches ||
-      typeof matchId !== 'string' ||
-      !match ||
-      !teamAData ||
-      !teamBData
-    ) {
+    if (!canEditMatches || typeof matchId !== 'string' || !match || !teamAData || !teamBData) {
       return;
     }
 
@@ -418,9 +368,7 @@ const MatchDetail = () => {
       <div className="mx-auto max-w-4xl p-6">
         <div className="rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
           <strong className="font-bold">アクセス拒否</strong>
-          <span className="ml-2 block sm:inline">
-            この機能は開発環境でのみ利用可能です。
-          </span>
+          <span className="ml-2 block sm:inline">この機能は開発環境でのみ利用可能です。</span>
         </div>
       </div>
     );
@@ -432,34 +380,16 @@ const MatchDetail = () => {
   const matchWinner = getMatchWinner();
   const isDoublesMatch =
     match.game_type === 'doubles' ||
-    Boolean(
-      match.team_a_player2_last_name ||
-        match.team_a_player2_first_name ||
-        match.team_b_player2_last_name ||
-        match.team_b_player2_first_name,
-    );
+    Boolean(match.team_a_player2_last_name || match.team_a_player2_first_name || match.team_b_player2_last_name || match.team_b_player2_first_name);
 
   // 成長分析データの充足度（入力画面のUXは変えず、ここで状態だけ可視化する）。
   const growthGames = match.games ?? [];
   const growthTotalGames = growthGames.length;
-  const growthGamesWithPoints = growthGames.filter(
-    (game) => (game.points?.length ?? 0) > 0,
-  ).length;
-  const growthTotalPoints = growthGames.reduce(
-    (sum, game) => sum + (game.points?.length ?? 0),
-    0,
-  );
-  const growthMissingResultType = growthGames.reduce(
-    (sum, game) =>
-      sum + (game.points?.filter((point) => !point.result_type).length ?? 0),
-    0,
-  );
+  const growthGamesWithPoints = growthGames.filter((game) => (game.points?.length ?? 0) > 0).length;
+  const growthTotalPoints = growthGames.reduce((sum, game) => sum + (game.points?.length ?? 0), 0);
+  const growthMissingResultType = growthGames.reduce((sum, game) => sum + (game.points?.filter((point) => !point.result_type).length ?? 0), 0);
   const growthGamesWithoutPoints = growthTotalGames - growthGamesWithPoints;
-  const growthReady =
-    growthTotalGames > 0 &&
-    growthTotalPoints > 0 &&
-    growthGamesWithoutPoints === 0 &&
-    growthMissingResultType === 0;
+  const growthReady = growthTotalGames > 0 && growthTotalPoints > 0 && growthGamesWithoutPoints === 0 && growthMissingResultType === 0;
 
   return (
     <div className="mx-auto max-w-6xl p-4 md:p-6">
@@ -469,16 +399,10 @@ const MatchDetail = () => {
         </Link>
         {canEditMatches ? (
           <div className="flex flex-wrap gap-2">
-            <Link
-              href={`/beta/matches/${matchId}/video-review`}
-              className="rounded bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-600"
-            >
+            <Link href={`/beta/matches/${matchId}/video-review`} className="rounded bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-600">
               動画レビュー
             </Link>
-            <Link
-              href={`/beta/matches/${matchId}/input`}
-              className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600"
-            >
+            <Link href={`/beta/matches/${matchId}/input`} className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600">
               記録入力
             </Link>
           </div>
@@ -509,18 +433,10 @@ const MatchDetail = () => {
           <div className="flex flex-col gap-3 border-t border-gray-100 p-4">
             <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
               <div>
-                <p className="text-sm font-semibold text-gray-900">
-                  {activeYoutubeSource
-                    ? 'ポイント連動プレイヤー'
-                    : '動画ソース未設定'}
-                </p>
+                <p className="text-sm font-semibold text-gray-900">{activeYoutubeSource ? 'ポイント連動プレイヤー' : '動画ソース未設定'}</p>
                 <p className="text-xs text-gray-500">
                   {activeYoutubeSource
-                    ? `${activeYoutubeSource.label} / ${
-                        activeYoutubeSource.sourceType === 'session'
-                          ? '動画セッション'
-                          : 'マッチ設定'
-                      }`
+                    ? `${activeYoutubeSource.label} / ${activeYoutubeSource.sourceType === 'session' ? '動画セッション' : 'マッチ設定'}`
                     : 'YouTube セッションか match.youtube_url を設定するとここに表示されます。'}
                 </p>
               </div>
@@ -539,29 +455,18 @@ const MatchDetail = () => {
             {selectedPointMeta ? (
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 <span className="rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-700">
-                  第{selectedPointMeta.gameNumber}ゲーム #
-                  {selectedPointMeta.point.point_number}
+                  第{selectedPointMeta.gameNumber}ゲーム #{selectedPointMeta.point.point_number}
                 </span>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-                  開始{' '}
-                  {formatVideoTimestamp(
-                    selectedPointMeta.point.video_start_ms ?? 0,
-                  )}
+                  開始 {formatVideoTimestamp(selectedPointMeta.point.video_start_ms ?? 0)}
                 </span>
                 {selectedPointMeta.point.video_end_ms != null && (
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-                    終了{' '}
-                    {formatVideoTimestamp(selectedPointMeta.point.video_end_ms)}
-                  </span>
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">終了 {formatVideoTimestamp(selectedPointMeta.point.video_end_ms)}</span>
                 )}
-                <span className="text-xs text-gray-500">
-                  ポイントをタップするとこのプレイヤーがその位置から再生されます。
-                </span>
+                <span className="text-xs text-gray-500">ポイントをタップするとこのプレイヤーがその位置から再生されます。</span>
               </div>
             ) : (
-              <p className="text-xs text-gray-500">
-                下のポイント一覧から動画時刻付きポイントを選ぶと、ここでその場面を確認できます。
-              </p>
+              <p className="text-xs text-gray-500">下のポイント一覧から動画時刻付きポイントを選ぶと、ここでその場面を確認できます。</p>
             )}
           </div>
         </div>
@@ -585,32 +490,17 @@ const MatchDetail = () => {
           >
             {growthReady ? (
               <p>
-                成長分析データ: 充足 ✓（全{growthTotalGames}ゲームにポイント記録
-                / result_type 完備・{growthTotalPoints}ポイント）
+                成長分析データ: 充足 ✓（全{growthTotalGames}ゲームにポイント記録 / result_type 完備・{growthTotalPoints}ポイント）
               </p>
             ) : (
               <div className="space-y-1">
-                <p className="font-medium">
-                  成長分析データ: 未充足（未入力ぶんは成長分析に反映されません）
-                </p>
+                <p className="font-medium">成長分析データ: 未充足（未入力ぶんは成長分析に反映されません）</p>
                 <ul className="ml-4 list-disc">
-                  {growthGamesWithoutPoints > 0 && (
-                    <li>
-                      ポイント未記録のゲーム: {growthGamesWithoutPoints}件
-                    </li>
-                  )}
-                  {growthMissingResultType > 0 && (
-                    <li>
-                      result_type 未入力のポイント: {growthMissingResultType}件
-                    </li>
-                  )}
+                  {growthGamesWithoutPoints > 0 && <li>ポイント未記録のゲーム: {growthGamesWithoutPoints}件</li>}
+                  {growthMissingResultType > 0 && <li>result_type 未入力のポイント: {growthMissingResultType}件</li>}
                   {growthTotalPoints === 0 && <li>ポイントが未入力です</li>}
                 </ul>
-                {canEditMatches && (
-                  <p className="text-xs">
-                    入力画面で補完できます（ポイント入力のUXはそのままです）。
-                  </p>
-                )}
+                {canEditMatches && <p className="text-xs">入力画面で補完できます（ポイント入力のUXはそのままです）。</p>}
               </div>
             )}
           </div>
@@ -637,14 +527,7 @@ const MatchDetail = () => {
                   ['B', 'チーム B', teamBData, setTeamBData, 'red'],
                 ] as const
               ).map(([teamKey, label, teamData, setTeamData, color]) => (
-                <div
-                  key={teamKey}
-                  className={`rounded border p-4 ${
-                    color === 'blue'
-                      ? 'border-blue-200 bg-blue-50'
-                      : 'border-red-200 bg-red-50'
-                  }`}
-                >
+                <div key={teamKey} className={`rounded border p-4 ${color === 'blue' ? 'border-blue-200 bg-blue-50' : 'border-red-200 bg-red-50'}`}>
                   <h3 className="mb-3 font-semibold">{label}</h3>
                   <div className="grid gap-3">
                     <input
@@ -778,8 +661,7 @@ const MatchDetail = () => {
         {matchWinner && (
           <div className="rounded border border-green-400 bg-green-100 p-4">
             <p className="text-lg font-semibold text-green-800">
-              🏆 チーム{matchWinner} (
-              {matchWinner === 'A' ? match.team_a : match.team_b}) の勝利！
+              🏆 チーム{matchWinner} ({matchWinner === 'A' ? match.team_a : match.team_b}) の勝利！
             </p>
           </div>
         )}
@@ -792,24 +674,12 @@ const MatchDetail = () => {
             <div key={game.id} className="rounded border p-4">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="font-semibold">第{game.game_number}ゲーム</h3>
-                {game.winner_team && (
-                  <span className="rounded bg-green-100 px-2 py-1 text-sm text-green-800">
-                    チーム{game.winner_team}勝利
-                  </span>
-                )}
+                {game.winner_team && <span className="rounded bg-green-100 px-2 py-1 text-sm text-green-800">チーム{game.winner_team}勝利</span>}
               </div>
               <div className="mb-4 text-2xl font-bold">
-                <span
-                  className={game.winner_team === 'A' ? 'text-green-600' : ''}
-                >
-                  {game.points_a}
-                </span>
+                <span className={game.winner_team === 'A' ? 'text-green-600' : ''}>{game.points_a}</span>
                 {' - '}
-                <span
-                  className={game.winner_team === 'B' ? 'text-green-600' : ''}
-                >
-                  {game.points_b}
-                </span>
+                <span className={game.winner_team === 'B' ? 'text-green-600' : ''}>{game.points_b}</span>
               </div>
 
               {game.points && game.points.length > 0 && (
@@ -824,17 +694,13 @@ const MatchDetail = () => {
                         <div
                           key={point.id}
                           className={`rounded border p-3 transition ${
-                            isSelectedPoint
-                              ? 'border-blue-300 bg-blue-50 shadow-sm'
-                              : 'border-transparent bg-gray-50'
+                            isSelectedPoint ? 'border-blue-300 bg-blue-50 shadow-sm' : 'border-transparent bg-gray-50'
                           }`}
                         >
                           {editingPoint === point.id ? (
                             <div className="space-y-2">
                               <div className="flex flex-wrap items-center gap-2 text-sm">
-                                <span className="font-medium">
-                                  #{point.point_number}
-                                </span>
+                                <span className="font-medium">#{point.point_number}</span>
                                 <select
                                   value={editingData.winner_team || ''}
                                   onChange={(e) =>
@@ -871,8 +737,7 @@ const MatchDetail = () => {
                                   onChange={(e) =>
                                     setEditingData({
                                       ...editingData,
-                                      rally_count:
-                                        parseInt(e.target.value) || 0,
+                                      rally_count: parseInt(e.target.value) || 0,
                                     })
                                   }
                                   className="w-20 rounded border px-2 py-1"
@@ -882,9 +747,7 @@ const MatchDetail = () => {
                                 <label className="flex items-center gap-1">
                                   <input
                                     type="checkbox"
-                                    checked={
-                                      editingData.first_serve_fault || false
-                                    }
+                                    checked={editingData.first_serve_fault || false}
                                     onChange={(e) =>
                                       setEditingData({
                                         ...editingData,
@@ -905,22 +768,14 @@ const MatchDetail = () => {
                                       })
                                     }
                                   />
-                                  <span className="text-xs">
-                                    ダブルフォルト
-                                  </span>
+                                  <span className="text-xs">ダブルフォルト</span>
                                 </label>
                               </div>
                               <div className="flex gap-2">
-                                <button
-                                  onClick={handleSavePoint}
-                                  className="rounded bg-green-500 px-3 py-1 text-xs text-white hover:bg-green-600"
-                                >
+                                <button onClick={handleSavePoint} className="rounded bg-green-500 px-3 py-1 text-xs text-white hover:bg-green-600">
                                   保存
                                 </button>
-                                <button
-                                  onClick={handleCancelEdit}
-                                  className="rounded bg-gray-500 px-3 py-1 text-xs text-white hover:bg-gray-600"
-                                >
+                                <button onClick={handleCancelEdit} className="rounded bg-gray-500 px-3 py-1 text-xs text-white hover:bg-gray-600">
                                   キャンセル
                                 </button>
                               </div>
@@ -928,43 +783,20 @@ const MatchDetail = () => {
                           ) : (
                             <div className="flex flex-col gap-3">
                               <div className="flex flex-wrap items-center gap-2 text-sm">
-                                <span className="font-medium">
-                                  #{point.point_number}
-                                </span>
-                                <span className="rounded bg-blue-100 px-2 py-1">
-                                  チーム{point.winner_team}
-                                </span>
-                                <span>
-                                  {getResultTypeLabel(point.result_type || '')}
-                                </span>
+                                <span className="font-medium">#{point.point_number}</span>
+                                <span className="rounded bg-blue-100 px-2 py-1">チーム{point.winner_team}</span>
+                                <span>{getResultTypeLabel(point.result_type || '')}</span>
                                 <span>{point.rally_count}ラリー</span>
-                                {point.winner_player && (
-                                  <span className="text-blue-600">
-                                    {point.winner_player}
-                                  </span>
-                                )}
-                                {point.first_serve_fault && (
-                                  <span className="text-xs text-orange-600">
-                                    1stフォルト
-                                  </span>
-                                )}
-                                {point.double_fault && (
-                                  <span className="text-xs text-red-600">
-                                    ダブルフォルト
-                                  </span>
-                                )}
+                                {point.winner_player && <span className="text-blue-600">{point.winner_player}</span>}
+                                {point.first_serve_fault && <span className="text-xs text-orange-600">1stフォルト</span>}
+                                {point.double_fault && <span className="text-xs text-red-600">ダブルフォルト</span>}
                               </div>
 
                               {hasVideoAnchor && (
                                 <div className="flex flex-wrap items-center gap-2">
                                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700">
-                                    動画{' '}
-                                    {formatVideoTimestamp(
-                                      point.video_start_ms ?? 0,
-                                    )}
-                                    {point.video_end_ms != null
-                                      ? ` - ${formatVideoTimestamp(point.video_end_ms)}`
-                                      : ' から'}
+                                    動画 {formatVideoTimestamp(point.video_start_ms ?? 0)}
+                                    {point.video_end_ms != null ? ` - ${formatVideoTimestamp(point.video_end_ms)}` : ' から'}
                                   </span>
                                   <button
                                     type="button"
@@ -974,20 +806,13 @@ const MatchDetail = () => {
                                   >
                                     このポイントを見る
                                   </button>
-                                  {isSelectedPoint && (
-                                    <span className="text-xs font-medium text-blue-700">
-                                      再生中のポイント
-                                    </span>
-                                  )}
+                                  {isSelectedPoint && <span className="text-xs font-medium text-blue-700">再生中のポイント</span>}
                                 </div>
                               )}
 
                               {canEditMatches && (
                                 <div className="flex gap-1">
-                                  <button
-                                    onClick={() => handleEditPoint(point)}
-                                    className="rounded bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600"
-                                  >
+                                  <button onClick={() => handleEditPoint(point)} className="rounded bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600">
                                     編集
                                   </button>
                                   <button
@@ -1015,32 +840,18 @@ const MatchDetail = () => {
         <h2 className="mb-4 text-xl font-semibold">統計情報</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="rounded bg-gray-50 p-4 text-center">
-            <div className="text-2xl font-bold">
-              {match.games?.reduce(
-                (sum, game) => sum + (game.points?.length || 0),
-                0,
-              )}
-            </div>
+            <div className="text-2xl font-bold">{match.games?.reduce((sum, game) => sum + (game.points?.length || 0), 0)}</div>
             <div className="text-sm text-gray-600">総ポイント数</div>
           </div>
           <div className="rounded bg-gray-50 p-4 text-center">
             <div className="text-2xl font-bold">
-              {match.games?.filter((game) => game.winner_team === 'A').length} -{' '}
-              {match.games?.filter((game) => game.winner_team === 'B').length}
+              {match.games?.filter((game) => game.winner_team === 'A').length} - {match.games?.filter((game) => game.winner_team === 'B').length}
             </div>
             <div className="text-sm text-gray-600">ゲーム数</div>
           </div>
           <div className="rounded bg-gray-50 p-4 text-center">
             <div className="text-2xl font-bold">
-              {match.games?.reduce(
-                (sum, game) =>
-                  sum +
-                  (game.points?.reduce(
-                    (pSum, point) => pSum + (point.rally_count || 0),
-                    0,
-                  ) || 0),
-                0,
-              )}
+              {match.games?.reduce((sum, game) => sum + (game.points?.reduce((pSum, point) => pSum + (point.rally_count || 0), 0) || 0), 0)}
             </div>
             <div className="text-sm text-gray-600">総ラリー数</div>
           </div>

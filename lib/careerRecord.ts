@@ -147,10 +147,7 @@ export function resolveSlugByFullName(fullName: string): string | null {
 }
 
 /** 姓・名で curated slug を解決する。曖昧（複数該当）なら null。 */
-export function resolveSlugByName(
-  lastName: string,
-  firstName: string,
-): string | null {
+export function resolveSlugByName(lastName: string, firstName: string): string | null {
   return resolveSlugByFullName(`${lastName}${firstName}`);
 }
 
@@ -165,9 +162,7 @@ function collectTitles(subjectFullName: string): CareerTitle[] {
     for (const block of blocks) {
       for (const champ of block.champions) {
         if (!champ.display) continue;
-        const matched = champ.players.some(
-          (p) => p.replace(/\s+/g, '').normalize('NFKC') === subjectFullName,
-        );
+        const matched = champ.players.some((p) => p.replace(/\s+/g, '').normalize('NFKC') === subjectFullName);
         if (!matched) continue;
         const key = `${tournamentId}|${block.categoryId}|${champ.year}`;
         if (seen.has(key)) continue;
@@ -211,9 +206,7 @@ export function getCareerRecord(slug: string): CareerRecordBlock | null {
   const titles = collectTitles(subjectFullName);
 
   const latest =
-    analysis.latestMatch &&
-    analysis.latestMatch.tournament &&
-    analysis.latestMatch.result
+    analysis.latestMatch && analysis.latestMatch.tournament && analysis.latestMatch.result
       ? {
           tournament: analysis.latestMatch.tournament,
           date: analysis.latestMatch.date ?? '',
@@ -239,18 +232,13 @@ export function getCareerRecord(slug: string): CareerRecordBlock | null {
 }
 
 /** 姓・名から career-record を生成する便宜関数（slug 解決込み）。曖昧なら null。 */
-export function getCareerRecordByName(
-  lastName: string,
-  firstName: string,
-): CareerRecordBlock | null {
+export function getCareerRecordByName(lastName: string, firstName: string): CareerRecordBlock | null {
   const slug = resolveSlugByName(lastName, firstName);
   return slug ? getCareerRecord(slug) : null;
 }
 
 /** 連結済み氏名（例: 「船水颯人」）から career-record を生成する。曖昧なら null。 */
-export function getCareerRecordByFullName(
-  fullName: string,
-): CareerRecordBlock | null {
+export function getCareerRecordByFullName(fullName: string): CareerRecordBlock | null {
   const slug = resolveSlugByFullName(fullName);
   return slug ? getCareerRecord(slug) : null;
 }

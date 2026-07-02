@@ -27,15 +27,8 @@ const groupPointsByGameId = (points: Point[]) => {
 
 export const getServerSupabase = () => createServerClient() as ServerClient;
 
-export const loadMatchWithRelations = async (
-  supabase: ServerClient,
-  matchId: string,
-): Promise<Match | null> => {
-  const { data: match, error: matchError } = await supabase
-    .from('matches')
-    .select('*')
-    .eq('id', matchId)
-    .maybeSingle();
+export const loadMatchWithRelations = async (supabase: ServerClient, matchId: string): Promise<Match | null> => {
+  const { data: match, error: matchError } = await supabase.from('matches').select('*').eq('id', matchId).maybeSingle();
 
   if (matchError) {
     throw matchError;
@@ -82,13 +75,8 @@ export const loadMatchWithRelations = async (
   };
 };
 
-export const loadMatchesWithRelations = async (
-  supabase: ServerClient,
-): Promise<Match[]> => {
-  const { data: matches, error } = await (supabase as any)
-    .from('matches')
-    .select('*')
-    .order('created_at', { ascending: false });
+export const loadMatchesWithRelations = async (supabase: ServerClient): Promise<Match[]> => {
+  const { data: matches, error } = await (supabase as any).from('matches').select('*').order('created_at', { ascending: false });
 
   if (error) {
     throw error;
@@ -103,11 +91,7 @@ export const loadMatchesWithRelations = async (
   );
 };
 
-const decideGameWinner = (
-  pointsA: number,
-  pointsB: number,
-  pointsToWin: number,
-): 'A' | 'B' | null => {
+const decideGameWinner = (pointsA: number, pointsB: number, pointsToWin: number): 'A' | 'B' | null => {
   if (!isWinningScore(pointsA, pointsB, pointsToWin)) {
     if (!isWinningScore(pointsB, pointsA, pointsToWin)) {
       return null;
@@ -119,33 +103,20 @@ const decideGameWinner = (
   return 'A';
 };
 
-export const recomputeGameScore = async (
-  supabase: ServerClient,
-  gameId: string,
-) => {
-  const { data: game, error: gameError } = await (supabase as any)
-    .from('games')
-    .select('id, match_id, game_number')
-    .eq('id', gameId)
-    .single();
+export const recomputeGameScore = async (supabase: ServerClient, gameId: string) => {
+  const { data: game, error: gameError } = await (supabase as any).from('games').select('id, match_id, game_number').eq('id', gameId).single();
 
   if (gameError) {
     throw gameError;
   }
 
-  const { data: match, error: matchError } = await (supabase as any)
-    .from('matches')
-    .select('best_of')
-    .eq('id', game.match_id)
-    .single();
+  const { data: match, error: matchError } = await (supabase as any).from('matches').select('best_of').eq('id', game.match_id).single();
 
   if (matchError) {
     throw matchError;
   }
 
-  const { data: previousGames, error: previousGamesError } = await (
-    supabase as any
-  )
+  const { data: previousGames, error: previousGamesError } = await (supabase as any)
     .from('games')
     .select('winner_team')
     .eq('match_id', game.match_id)
@@ -166,23 +137,11 @@ export const recomputeGameScore = async (
   }
 
   const safePoints = (points ?? []) as Point[];
-  const pointsA = safePoints.filter(
-    (point) => point.winner_team === 'A',
-  ).length;
-  const pointsB = safePoints.filter(
-    (point) => point.winner_team === 'B',
-  ).length;
-  const gamesWonA = (
-    (previousGames ?? []) as Pick<Game, 'winner_team'>[]
-  ).filter((previousGame) => previousGame.winner_team === 'A').length;
-  const gamesWonB = (
-    (previousGames ?? []) as Pick<Game, 'winner_team'>[]
-  ).filter((previousGame) => previousGame.winner_team === 'B').length;
-  const pointsToWin = getPointsToWinForGame(
-    (match as Pick<Match, 'best_of'>).best_of,
-    gamesWonA,
-    gamesWonB,
-  );
+  const pointsA = safePoints.filter((point) => point.winner_team === 'A').length;
+  const pointsB = safePoints.filter((point) => point.winner_team === 'B').length;
+  const gamesWonA = ((previousGames ?? []) as Pick<Game, 'winner_team'>[]).filter((previousGame) => previousGame.winner_team === 'A').length;
+  const gamesWonB = ((previousGames ?? []) as Pick<Game, 'winner_team'>[]).filter((previousGame) => previousGame.winner_team === 'B').length;
+  const pointsToWin = getPointsToWinForGame((match as Pick<Match, 'best_of'>).best_of, gamesWonA, gamesWonB);
   const winnerTeam = decideGameWinner(pointsA, pointsB, pointsToWin);
 
   const { data: updatedGame, error: updateError } = await (supabase as any)
@@ -206,10 +165,7 @@ export const recomputeGameScore = async (
   };
 };
 
-export const renumberPoints = async (
-  supabase: ServerClient,
-  gameId: string,
-) => {
+export const renumberPoints = async (supabase: ServerClient, gameId: string) => {
   const { data: points, error } = await (supabase as any)
     .from('points')
     .select('id, point_number')
@@ -241,21 +197,12 @@ export const renumberPoints = async (
 
 export const sendMethodNotAllowed = (res: ApiResponse, methods: string[]) => {
   res.setHeader('Allow', methods);
-  res
-    .status(405)
-    .json({ error: `Method ${String(res.req?.method)} Not Allowed` });
+  res.status(405).json({ error: `Method ${String(res.req?.method)} Not Allowed` });
 };
 
-export const sendSupabaseError = (
-  res: ApiResponse,
-  error: PostgrestError | Error,
-  fallbackMessage: string,
-) => {
+export const sendSupabaseError = (res: ApiResponse, error: PostgrestError | Error, fallbackMessage: string) => {
   console.error(fallbackMessage, error);
   res.status(500).json({
-    error:
-      'message' in error && typeof error.message === 'string'
-        ? error.message
-        : fallbackMessage,
+    error: 'message' in error && typeof error.message === 'string' ? error.message : fallbackMessage,
   });
 };

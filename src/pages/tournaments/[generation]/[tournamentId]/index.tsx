@@ -12,23 +12,13 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import TournamentContextBlocks, {
-  type TournamentContextData,
-} from '@/components/TournamentContextBlocks';
+import TournamentContextBlocks, { type TournamentContextData } from '@/components/TournamentContextBlocks';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getChampionMilestones } from '@/lib/milestones';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
-import {
-  buildEventOrganizer,
-  buildEventPlace,
-  resolveEventDates,
-  sportsEventBaseFields,
-} from '@/lib/sportsEventJsonLd';
-import {
-  TournamentIndexEntry,
-  TournamentInformationEntry,
-} from '@/types/index';
+import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
 
 type CategoryLink = {
@@ -63,29 +53,14 @@ interface TournamentHubPageProps {
   contextBlocks: TournamentContextData;
 }
 
-export default function TournamentHubPage({
-  generation,
-  tournamentId,
-  label,
-  officialUrl,
-  yearGroups,
-  hsNationalSlug,
-  contextBlocks,
-}: TournamentHubPageProps) {
+export default function TournamentHubPage({ generation, tournamentId, label, officialUrl, yearGroups, hsNationalSlug, contextBlocks }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
-  const hsNationalHref = hsNationalSlug
-    ? `/highschool/tournaments/${hsNationalSlug}`
-    : null;
+  const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
 
   const years = yearGroups.map((g) => g.year);
   const latestYear = years[0] ?? '';
   const oldestYear = years[years.length - 1] ?? '';
-  const yearRange =
-    latestYear && oldestYear && latestYear !== oldestYear
-      ? `${oldestYear}〜${latestYear}年`
-      : latestYear
-        ? `${latestYear}年`
-        : '';
+  const yearRange = latestYear && oldestYear && latestYear !== oldestYear ? `${oldestYear}〜${latestYear}年` : latestYear ? `${latestYear}年` : '';
 
   const championRows = yearGroups.flatMap((g) =>
     g.categories
@@ -134,14 +109,7 @@ export default function TournamentHubPage({
 
   return (
     <>
-      <MetaHead
-        title={title}
-        description={description}
-        url={pageUrl}
-        type="website"
-        noindex={!!hsNationalSlug}
-        noindexFollow={!!hsNationalSlug}
-      />
+      <MetaHead title={title} description={description} url={pageUrl} type="website" noindex={!!hsNationalSlug} noindexFollow={!!hsNationalSlug} />
 
       <Head>
         <script
@@ -219,16 +187,11 @@ export default function TournamentHubPage({
       <PageLayout>
         <Breadcrumbs crumbs={breadcrumbs} />
 
-        <h1 className="text-2xl font-bold mb-4">
-          {label} 大会結果（歴代一覧）
-        </h1>
+        <h1 className="text-2xl font-bold mb-4">{label} 大会結果（歴代一覧）</h1>
 
         {hsNationalHref && (
           <div className="mb-5 rounded-md border border-blue-200 bg-blue-50 px-4 py-3 text-sm dark:border-blue-900 dark:bg-blue-950">
-            <Link
-              href={hsNationalHref}
-              className="font-semibold text-blue-700 hover:underline dark:text-blue-300"
-            >
+            <Link href={hsNationalHref} className="font-semibold text-blue-700 hover:underline dark:text-blue-300">
               {label} 歴代記録（優勝・準優勝・ベスト4／開催予定）はこちら →
             </Link>
             <p className="mt-1 text-gray-600 dark:text-gray-300">
@@ -248,12 +211,7 @@ export default function TournamentHubPage({
           {officialUrl && (
             <p className="text-sm text-gray-600 dark:text-gray-300">
               公式サイト:{' '}
-              <a
-                href={officialUrl}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={officialUrl} className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
                 {officialUrl}
               </a>
             </p>
@@ -265,20 +223,12 @@ export default function TournamentHubPage({
             <h2 className="text-lg font-bold mb-3">{label} 歴代優勝者</h2>
             <div className="space-y-5">
               {championCategoryGroups.map((group) => (
-                <div
-                  key={group.categoryLabel}
-                  className="border-t border-gray-200 pt-4 dark:border-gray-700"
-                >
-                  <h3 className="mb-1 text-sm font-semibold">
-                    {group.categoryLabel}
-                  </h3>
+                <div key={group.categoryLabel} className="border-t border-gray-200 pt-4 dark:border-gray-700">
+                  <h3 className="mb-1 text-sm font-semibold">{group.categoryLabel}</h3>
                   <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                     {group.winners.map((r) => (
                       <li key={`${r.year}-${r.categoryLabel}`}>
-                        <Link
-                          href={r.href}
-                          className="text-blue-600 hover:underline dark:text-blue-400"
-                        >
+                        <Link href={r.href} className="text-blue-600 hover:underline dark:text-blue-400">
                           {r.year}年
                         </Link>
                         : {r.winner}
@@ -294,9 +244,7 @@ export default function TournamentHubPage({
         <TournamentContextBlocks label={label} data={contextBlocks} />
 
         {yearGroups.length === 0 ? (
-          <p className="text-sm text-gray-500">
-            現在、掲載中の結果データがありません。
-          </p>
+          <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
         ) : (
           yearGroups.map((g) => (
             <section className="mb-8" key={g.year}>
@@ -307,9 +255,7 @@ export default function TournamentHubPage({
                 <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
                   {g.location ? `開催地:${g.location}` : ''}
                   {g.location && g.startDate ? ' / ' : ''}
-                  {g.startDate
-                    ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}`
-                    : ''}
+                  {g.startDate ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}` : ''}
                 </p>
               )}
               <ul className="flex flex-wrap gap-2">
@@ -328,10 +274,7 @@ export default function TournamentHubPage({
         )}
 
         <div className="text-right mt-10 mb-2">
-          <Link
-            href="/tournaments"
-            className="text-sm text-blue-500 hover:underline"
-          >
+          <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
             大会結果一覧へ
           </Link>
         </div>
@@ -358,28 +301,16 @@ function extractWinner(detailPath: string): string | null {
         tournament?: { rank?: { kind?: string } };
       }>;
     };
-    const winResult = (data.results ?? []).find(
-      (r) => r.tournament?.rank?.kind === 'winner',
-    );
+    const winResult = (data.results ?? []).find((r) => r.tournament?.rank?.kind === 'winner');
     if (!winResult) return null;
-    const entry = (data.entries ?? []).find(
-      (e) => e.entryNo === winResult.entryNo,
-    );
+    const entry = (data.entries ?? []).find((e) => e.entryNo === winResult.entryNo);
     if (!entry) return null;
-    const pmap = new Map(
-      (data.participants ?? []).map((p) => [p.id, p] as const),
-    );
+    const pmap = new Map((data.participants ?? []).map((p) => [p.id, p] as const));
     const names = entry.playerIds.map((id) => {
       const p = pmap.get(id);
       return p ? joinPlayerName(p.lastName, p.firstName) : id;
     });
-    const teams = [
-      ...new Set(
-        entry.playerIds
-          .map((id) => pmap.get(id)?.team)
-          .filter((t): t is string => Boolean(t)),
-      ),
-    ];
+    const teams = [...new Set(entry.playerIds.map((id) => pmap.get(id)?.team).filter((t): t is string => Boolean(t)))];
     const nameStr = names.join('・');
     return teams.length > 0 ? `${nameStr}（${teams.join('・')}）` : nameStr;
   } catch {
@@ -420,12 +351,7 @@ function loadIndexEntry(tournamentId: string): TournamentIndexEntry | null {
     try {
       const idx = JSON.parse(fs.readFileSync(p, 'utf-8'));
       if (Array.isArray(idx)) {
-        const found = idx.find(
-          (it) =>
-            it &&
-            typeof it === 'object' &&
-            (it as TournamentIndexEntry).tournamentId === tournamentId,
-        );
+        const found = idx.find((it) => it && typeof it === 'object' && (it as TournamentIndexEntry).tournamentId === tournamentId);
         if (found) return found as TournamentIndexEntry;
       }
     } catch {
@@ -468,13 +394,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const officialUrl = indexEntry?.officialUrl || null;
 
   // information から年度ごとの開催情報・カテゴリラベルを取得
-  const infoPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'information',
-    `${tournamentId}.json`,
-  );
+  const infoPath = path.join(process.cwd(), 'data', 'tournaments', 'information', `${tournamentId}.json`);
   let information: TournamentInformationEntry[] = [];
   if (fs.existsSync(infoPath)) {
     try {

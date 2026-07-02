@@ -36,10 +36,7 @@ function SchoolNames({ links }: { links: TeamLink[] }) {
         <span key={`${t.name}-${i}`}>
           {i > 0 && '・'}
           {t.href ? (
-            <Link
-              href={t.href}
-              className="text-blue-700 dark:text-blue-300 hover:underline"
-            >
+            <Link href={t.href} className="text-blue-700 dark:text-blue-300 hover:underline">
               {t.name}
             </Link>
           ) : (
@@ -62,10 +59,7 @@ function PlayerNames({ links }: { links: PlayerLink[] }) {
         <span key={`${p.name}-${i}`}>
           {i > 0 && '・'}
           {p.href ? (
-            <Link
-              href={p.href}
-              className="text-blue-700 dark:text-blue-300 hover:underline"
-            >
+            <Link href={p.href} className="text-blue-700 dark:text-blue-300 hover:underline">
               {p.name}
             </Link>
           ) : (
@@ -78,13 +72,7 @@ function PlayerNames({ links }: { links: PlayerLink[] }) {
 }
 
 /** 上位入賞の表示名。個人は「選手名（所属校リンク）」、団体は校名リンク。 */
-function PlacementName({
-  playerLinks,
-  teamLinks,
-}: {
-  playerLinks: PlayerLink[];
-  teamLinks: TeamLink[];
-}) {
+function PlacementName({ playerLinks, teamLinks }: { playerLinks: PlayerLink[]; teamLinks: TeamLink[] }) {
   if (playerLinks.length === 0) {
     return <SchoolNames links={teamLinks} />;
   }
@@ -100,10 +88,7 @@ function PlacementName({
   );
 }
 
-function formatDateRange(
-  startDate: string | null,
-  endDate: string | null,
-): string {
+function formatDateRange(startDate: string | null, endDate: string | null): string {
   if (!startDate) return '';
   const fmt = (d: string) => {
     const [y, m, day] = d.split('-');
@@ -115,29 +100,16 @@ function formatDateRange(
 }
 
 /** 次回大会（開催予定）の案内。結果が出る前から大会の存在を示す。 */
-function UpcomingSection({
-  editions,
-  shortLabel,
-  officialUrl,
-}: {
-  editions: UpcomingEdition[];
-  shortLabel: string;
-  officialUrl: string;
-}) {
+function UpcomingSection({ editions, shortLabel, officialUrl }: { editions: UpcomingEdition[]; shortLabel: string; officialUrl: string }) {
   if (editions.length === 0) return null;
   return (
     <section className="mb-10">
       {editions.map((ed) => {
         const dateRange = formatDateRange(ed.startDate, ed.endDate);
         return (
-          <div
-            key={ed.year}
-            className="rounded-2xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-950/30 p-5 sm:p-6"
-          >
+          <div key={ed.year} className="rounded-2xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-950/30 p-5 sm:p-6">
             <div className="flex items-center gap-2 mb-2">
-              <span className="rounded-full bg-emerald-600 text-white px-2.5 py-0.5 text-xs font-bold">
-                開催予定
-              </span>
+              <span className="rounded-full bg-emerald-600 text-white px-2.5 py-0.5 text-xs font-bold">開催予定</span>
               <h2 className="text-lg font-bold">
                 {ed.year}年 {shortLabel}
               </h2>
@@ -158,15 +130,12 @@ function UpcomingSection({
               {ed.categoryLabels.length > 0 && (
                 <div className="flex gap-2">
                   <dt className="text-gray-500 dark:text-gray-400">種目</dt>
-                  <dd className="font-semibold">
-                    {ed.categoryLabels.join('・')}
-                  </dd>
+                  <dd className="font-semibold">{ed.categoryLabels.join('・')}</dd>
                 </div>
               )}
             </dl>
             <p className="mt-3 text-sm text-gray-600 dark:text-gray-300">
-              結果が確定し次第、本ページの「年度別の記録」に追加します。
-              最新情報は
+              結果が確定し次第、本ページの「年度別の記録」に追加します。 最新情報は
               <a
                 href={ed.sourceUrl || officialUrl}
                 target="_blank"
@@ -204,24 +173,16 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
     <section className="mb-12">
       <h2 className="text-xl font-bold mb-1">歴代優勝（種目別）</h2>
       <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-        年度ごとの優勝を種目別に並べています。学校・都道府県の列を縦に見比べると、
-        優勝の傾向を自分で確認できます。
+        年度ごとの優勝を種目別に並べています。学校・都道府県の列を縦に見比べると、 優勝の傾向を自分で確認できます。
       </p>
 
       <div className="space-y-6">
         {rows.map((row) => (
-          <div
-            key={row.categoryId}
-            className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
-          >
-            <h3 className="font-semibold px-4 py-2.5 bg-gray-50 dark:bg-gray-800/60 border-b border-gray-200 dark:border-gray-700">
-              {row.label}
-            </h3>
+          <div key={row.categoryId} className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <h3 className="font-semibold px-4 py-2.5 bg-gray-50 dark:bg-gray-800/60 border-b border-gray-200 dark:border-gray-700">{row.label}</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
-                <caption className="sr-only">
-                  {row.label}の歴代優勝（年度・学校・選手・都道府県）
-                </caption>
+                <caption className="sr-only">{row.label}の歴代優勝（年度・学校・選手・都道府県）</caption>
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                     <th className="py-2 px-4 font-semibold w-16">年度</th>
@@ -232,27 +193,16 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
                 </thead>
                 <tbody>
                   {row.byYear.map((cell) => (
-                    <tr
-                      key={`${row.categoryId}-${cell.year}`}
-                      className="border-t border-gray-100 dark:border-gray-800"
-                    >
-                      <td className="py-2.5 px-4 align-top whitespace-nowrap tabular-nums text-gray-500 dark:text-gray-400">
-                        {cell.year}
-                      </td>
+                    <tr key={`${row.categoryId}-${cell.year}`} className="border-t border-gray-100 dark:border-gray-800">
+                      <td className="py-2.5 px-4 align-top whitespace-nowrap tabular-nums text-gray-500 dark:text-gray-400">{cell.year}</td>
                       <td className="py-2.5 px-4 align-top font-semibold">
                         <SchoolNames links={cell.teamLinks} />
                       </td>
                       <td className="py-2.5 px-4 align-top">
-                        {cell.playerLinks.length > 0 ? (
-                          <PlayerNames links={cell.playerLinks} />
-                        ) : (
-                          <span className="text-gray-400">—</span>
-                        )}
+                        {cell.playerLinks.length > 0 ? <PlayerNames links={cell.playerLinks} /> : <span className="text-gray-400">—</span>}
                       </td>
                       <td className="py-2.5 px-4 align-top text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                        {cell.prefectures.length > 0
-                          ? cell.prefectures.join('・')
-                          : '—'}
+                        {cell.prefectures.length > 0 ? cell.prefectures.join('・') : '—'}
                       </td>
                     </tr>
                   ))}
@@ -267,19 +217,7 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
 }
 
 export default function HighschoolTournamentRecordsPage({ records }: Props) {
-  const {
-    slug,
-    label,
-    shortLabel,
-    aliases,
-    officialUrl,
-    description,
-    years,
-    championSummary,
-    upcoming,
-    lastModified,
-    yearsCovered,
-  } = records;
+  const { slug, label, shortLabel, aliases, officialUrl, description, years, championSummary, upcoming, lastModified, yearsCovered } = records;
 
   const pageUrl = `https://softeni-pick.com/highschool/tournaments/${slug}/`;
   const yearRange = formatYearRange(yearsCovered);
@@ -287,9 +225,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   // 検索略称（例: ハイジャパ）。専用ページは作らず、この大会ハブに literal で集約する。
   const primaryAlias = aliases?.[0] ?? null;
   // タイトル/見出し向けの表示名。略称があれば exact 一致用に併記する。
-  const headingName = primaryAlias
-    ? `${titleName}（${primaryAlias}）`
-    : titleName;
+  const headingName = primaryAlias ? `${titleName}（${primaryAlias}）` : titleName;
   const latestYear = yearsCovered.length ? Math.max(...yearsCovered) : null;
   const categoryCount = championSummary.length;
   const nextEdition = upcoming[0] ?? null;
@@ -300,8 +236,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
           {
             question: `次回の${shortLabel}（${nextEdition.year}年）はいつ・どこで開催されますか？`,
             answer: `${nextEdition.year}年大会は${
-              formatDateRange(nextEdition.startDate, nextEdition.endDate) ||
-              '日程調整中'
+              formatDateRange(nextEdition.startDate, nextEdition.endDate) || '日程調整中'
             }${nextEdition.location ? `、${nextEdition.location}で` : ''}開催予定です。結果が確定次第このページに掲載します。`,
           },
         ]
@@ -325,8 +260,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
     },
     {
       question: '対戦表（トーナメント表）も見られますか？',
-      answer:
-        '各種目の「対戦表を見る」リンクから、その年度・種目の全試合結果・トーナメント表ページへ移動できます。',
+      answer: '各種目の「対戦表を見る」リンクから、その年度・種目の全試合結果・トーナメント表ページへ移動できます。',
     },
   ];
 
@@ -455,8 +389,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
                 ...(ed.startDate ? { startDate: ed.startDate } : {}),
                 ...(ed.endDate ? { endDate: ed.endDate } : {}),
                 eventStatus: 'https://schema.org/EventScheduled',
-                eventAttendanceMode:
-                  'https://schema.org/OfflineEventAttendanceMode',
+                eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
                 ...(ed.location
                   ? {
                       location: {
@@ -493,31 +426,21 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         />
 
         <header className="mb-8 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800/80 dark:to-gray-900 p-6 sm:p-7">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            {headingName} 歴代結果・優勝校一覧
-          </h1>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-            {description}
-          </p>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{headingName} 歴代結果・優勝校一覧</h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{description}</p>
 
           {(yearRange || categoryCount > 0) && (
             <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-sm">
               {yearRange && (
                 <div>
-                  <dt className="text-xs text-gray-500 dark:text-gray-400">
-                    収録年度
-                  </dt>
+                  <dt className="text-xs text-gray-500 dark:text-gray-400">収録年度</dt>
                   <dd className="font-semibold tabular-nums">{yearRange}</dd>
                 </div>
               )}
               {categoryCount > 0 && (
                 <div>
-                  <dt className="text-xs text-gray-500 dark:text-gray-400">
-                    収録種目
-                  </dt>
-                  <dd className="font-semibold tabular-nums">
-                    {categoryCount}種目
-                  </dd>
+                  <dt className="text-xs text-gray-500 dark:text-gray-400">収録種目</dt>
+                  <dd className="font-semibold tabular-nums">{categoryCount}種目</dd>
                 </div>
               )}
             </dl>
@@ -536,44 +459,26 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
           )}
         </header>
 
-        <UpcomingSection
-          editions={upcoming}
-          shortLabel={shortLabel}
-          officialUrl={officialUrl}
-        />
+        <UpcomingSection editions={upcoming} shortLabel={shortLabel} officialUrl={officialUrl} />
 
         <p className="mb-8 text-sm text-gray-600 dark:text-gray-300">
-          {yearRange ? `${yearRange}にかけての` : ''}各年度・種目別に、
-          優勝・準優勝・ベスト4の上位入賞をまとめています。
-          気になる年度は「対戦表を見る」から全試合結果・トーナメント表へ進めます。
-          学校名から各校の戦績ページへも移動できます。
+          {yearRange ? `${yearRange}にかけての` : ''}各年度・種目別に、 優勝・準優勝・ベスト4の上位入賞をまとめています。
+          気になる年度は「対戦表を見る」から全試合結果・トーナメント表へ進めます。 学校名から各校の戦績ページへも移動できます。
         </p>
 
-        {lastModified && (
-          <p className="mb-8 -mt-4 text-xs text-gray-400 dark:text-gray-500">
-            最終更新: {formatDateRange(lastModified, null)}
-          </p>
-        )}
+        {lastModified && <p className="mb-8 -mt-4 text-xs text-gray-400 dark:text-gray-500">最終更新: {formatDateRange(lastModified, null)}</p>}
 
         <ChampionSummary rows={championSummary} />
 
         {years.length === 0 ? (
-          <p className="text-sm text-gray-500">
-            現在、掲載中の結果データがありません。
-          </p>
+          <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
         ) : (
           <section>
             <h2 className="text-xl font-bold mb-1">年度別の記録</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-5">
-              各年度の優勝〜ベスト4を種目別に掲載。新しい年度から並べています。
-            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-5">各年度の優勝〜ベスト4を種目別に掲載。新しい年度から並べています。</p>
             <div className="space-y-10">
               {years.map((yr) => (
-                <section
-                  key={yr.year}
-                  className="scroll-mt-20"
-                  id={`y${yr.year}`}
-                >
+                <section key={yr.year} className="scroll-mt-20" id={`y${yr.year}`}>
                   <div className="flex items-baseline gap-2 mb-1">
                     <h3 className="text-lg font-bold">
                       {yr.year}年度 {shortLabel}
@@ -588,51 +493,32 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
                     <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">
                       {yr.location ? `開催地: ${yr.location}` : ''}
                       {yr.location && yr.startDate ? ' / ' : ''}
-                      {yr.startDate
-                        ? `日程: ${formatDateRange(yr.startDate, yr.endDate)}`
-                        : ''}
+                      {yr.startDate ? `日程: ${formatDateRange(yr.startDate, yr.endDate)}` : ''}
                     </p>
                   )}
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     {yr.categories.map((cat) => (
-                      <div
-                        key={cat.categoryId}
-                        className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800"
-                      >
+                      <div key={cat.categoryId} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800">
                         <div className="flex items-center justify-between gap-2 mb-3">
                           <h4 className="font-semibold">{cat.label}</h4>
-                          <Link
-                            href={cat.bracketHref}
-                            className="text-xs text-blue-600 dark:text-blue-300 hover:underline whitespace-nowrap"
-                          >
+                          <Link href={cat.bracketHref} className="text-xs text-blue-600 dark:text-blue-300 hover:underline whitespace-nowrap">
                             対戦表を見る
                           </Link>
                         </div>
                         <ul className="space-y-2">
                           {cat.placements.map((p, idx) => (
-                            <li
-                              key={`${cat.categoryId}-${p.order}-${idx}`}
-                              className="flex items-start gap-2 text-sm"
-                            >
+                            <li key={`${cat.categoryId}-${p.order}-${idx}`} className="flex items-start gap-2 text-sm">
                               <span
                                 className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap ${
-                                  RANK_BADGE_CLASS[p.rankLabel] ??
-                                  'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100'
+                                  RANK_BADGE_CLASS[p.rankLabel] ?? 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100'
                                 }`}
                               >
                                 {p.rankLabel}
                               </span>
                               <span className="flex-1">
-                                <PlacementName
-                                  playerLinks={p.playerLinks}
-                                  teamLinks={p.teamLinks}
-                                />
-                                {p.prefectures.length > 0 && (
-                                  <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
-                                    {p.prefectures.join('・')}
-                                  </span>
-                                )}
+                                <PlacementName playerLinks={p.playerLinks} teamLinks={p.teamLinks} />
+                                {p.prefectures.length > 0 && <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">{p.prefectures.join('・')}</span>}
                               </span>
                             </li>
                           ))}
@@ -650,10 +536,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
           <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
           <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
             {faqItems.map((item) => (
-              <div
-                key={item.question}
-                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
-              >
+              <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
                 <h3 className="font-semibold mb-2">{item.question}</h3>
                 <p>{item.answer}</p>
               </div>
@@ -662,16 +545,10 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         </section>
 
         <div className="mt-10 flex flex-wrap gap-4 text-sm">
-          <Link
-            href="/highschool/tournaments/"
-            className="text-blue-600 dark:text-blue-300 hover:underline"
-          >
+          <Link href="/highschool/tournaments/" className="text-blue-600 dark:text-blue-300 hover:underline">
             ← 全国大会の歴代記録 一覧へ
           </Link>
-          <Link
-            href="/highschool/boys/"
-            className="text-blue-600 dark:text-blue-300 hover:underline"
-          >
+          <Link href="/highschool/boys/" className="text-blue-600 dark:text-blue-300 hover:underline">
             高校 都道府県別ページへ
           </Link>
         </div>

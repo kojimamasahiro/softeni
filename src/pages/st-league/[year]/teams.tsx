@@ -11,29 +11,10 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
-import {
-  DivisionMeta,
-  getDivisions,
-  getStLeagueYears,
-  LeagueMeta,
-  loadLeagueMeta,
-} from '@/utils/st-league';
-import {
-  aggregateTeamResults,
-  generateTeamInfo,
-  normalizeJa,
-  TeamInfo,
-} from '@/utils/team-data-aggregator';
-import {
-  calculatePlayerStats,
-  calculateTeamYearlySummary,
-  PlayerStats,
-  YearlySummary,
-} from '@/utils/team-stats-calculator';
-import {
-  getAllTournamentFiles,
-  loadTournamentData,
-} from '@/utils/tournament-data-loader';
+import { DivisionMeta, getDivisions, getStLeagueYears, LeagueMeta, loadLeagueMeta } from '@/utils/st-league';
+import { aggregateTeamResults, generateTeamInfo, normalizeJa, TeamInfo } from '@/utils/team-data-aggregator';
+import { calculatePlayerStats, calculateTeamYearlySummary, PlayerStats, YearlySummary } from '@/utils/team-stats-calculator';
+import { getAllTournamentFiles, loadTournamentData } from '@/utils/tournament-data-loader';
 
 type ParticipantInfo = {
   teamId: string;
@@ -67,12 +48,7 @@ type Props = {
   };
 };
 
-export default function STLeagueTeamsPage({
-  year,
-  meta,
-  divisions,
-  teams,
-}: Props) {
+export default function STLeagueTeamsPage({ year, meta, divisions, teams }: Props) {
   const [activeTab, setActiveTab] = useState<'boys' | 'girls'>('boys');
   const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
 
@@ -82,11 +58,7 @@ export default function STLeagueTeamsPage({
 
   return (
     <>
-      <MetaHead
-        title={`${pageTitle} | ソフトテニス情報`}
-        description={`STリーグ${year}年度の出場チームと選手個人の成績詳細。`}
-        url={pageUrl}
-      />
+      <MetaHead title={`${pageTitle} | ソフトテニス情報`} description={`STリーグ${year}年度の出場チームと選手個人の成績詳細。`} url={pageUrl} />
       <Head>
         <script
           type="application/ld+json"
@@ -112,17 +84,12 @@ export default function STLeagueTeamsPage({
           ]}
         />
         <h1 className="text-2xl font-bold">{pageTitle}</h1>
-        <p>
-          STリーグⅠ・Ⅱ、男女別の出場チームと選手個人の成績を掲載しています。
-        </p>
+        <p>STリーグⅠ・Ⅱ、男女別の出場チームと選手個人の成績を掲載しています。</p>
         <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-200">
           ここに表示する「年間成績」「選手別成績」は、
           <strong>STリーグ本体の対戦を除いた{year}年度の大会成績</strong>
           （全日本選手権・全日本実業団など）です。STリーグ内の対戦成績・勝率は
-          <Link
-            href={`/st-league/${year}/analysis`}
-            className="font-semibold text-blue-700 underline dark:text-blue-300"
-          >
+          <Link href={`/st-league/${year}/analysis`} className="font-semibold text-blue-700 underline dark:text-blue-300">
             分析ページ
           </Link>
           をご覧ください。
@@ -174,23 +141,14 @@ export default function STLeagueTeamsPage({
         {(['boys', 'girls'] as const).map((g) =>
           divisions.map((d) => {
             const active = g === activeTab && d.id === divisionId;
-            const panelTeams = teams[g].filter(
-              (t) => (t.division ?? '1') === d.id,
-            );
+            const panelTeams = teams[g].filter((t) => (t.division ?? '1') === d.id);
             return (
-              <div
-                key={`${g}-${d.id}`}
-                className={active ? 'space-y-12' : 'hidden'}
-                aria-hidden={!active}
-              >
+              <div key={`${g}-${d.id}`} className={active ? 'space-y-12' : 'hidden'} aria-hidden={!active}>
                 {panelTeams.map((team) => (
                   <div key={team.info.id} className="space-y-6">
                     <div className="flex items-center justify-between">
                       <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                        <Link
-                          href={`/teams/${team.info.id}`}
-                          className="hover:text-blue-600 hover:underline"
-                        >
+                        <Link href={`/teams/${team.info.id}`} className="hover:text-blue-600 hover:underline">
                           {team.info.name}
                         </Link>
                       </h3>
@@ -223,18 +181,13 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { year } = context.params as { year: string };
-  const participantsPath = path.join(
-    process.cwd(),
-    `data/st-league/${year}/participants.json`,
-  );
+  const participantsPath = path.join(process.cwd(), `data/st-league/${year}/participants.json`);
 
   if (!fs.existsSync(participantsPath)) {
     return { notFound: true };
   }
 
-  const participantsData: ParticipantsData = JSON.parse(
-    fs.readFileSync(participantsPath, 'utf-8'),
-  );
+  const participantsData: ParticipantsData = JSON.parse(fs.readFileSync(participantsPath, 'utf-8'));
 
   const targetYear = Number(year);
   const preloadedData = getAllTournamentFiles()
@@ -244,10 +197,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       return data ? [{ descriptor: f, data }] : [];
     });
 
-  const processTeams = (
-    participants: ParticipantInfo[],
-    gender: 'boys' | 'girls',
-  ): TeamData[] => {
+  const processTeams = (participants: ParticipantInfo[], gender: 'boys' | 'girls'): TeamData[] => {
     return participants.map((p) => {
       // Create custom mappings for this team
       const customMappings: Record<string, string[]> = {};
@@ -269,11 +219,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         p.players.forEach((player) => {
           const fullName = normalizeJa(`${player.lastName}${player.firstName}`);
           // Check if player exists (by name matching; 半角/全角・異体字を吸収)
-          const exists = Object.values(info.players).some(
-            (existing) =>
-              normalizeJa(`${existing.lastName}${existing.firstName}`) ===
-              fullName,
-          );
+          const exists = Object.values(info.players).some((existing) => normalizeJa(`${existing.lastName}${existing.firstName}`) === fullName);
 
           if (!exists) {
             // Generate a synthetic ID
@@ -288,9 +234,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
       // Filter players if explicitly listed in participants.json
       if (p.players && p.players.length > 0) {
-        const targetPlayers = new Set(
-          p.players.map((pl) => normalizeJa(`${pl.lastName}${pl.firstName}`)),
-        );
+        const targetPlayers = new Set(p.players.map((pl) => normalizeJa(`${pl.lastName}${pl.firstName}`)));
 
         // Rebuild info.players with only matching players（半角/全角・異体字を吸収）
         const filteredPlayers: typeof info.players = {};
@@ -303,22 +247,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
         info.players = filteredPlayers;
       }
 
-      const allResults = aggregateTeamResults(
-        p.teamId,
-        customMappings,
-        preloadedData,
-      );
+      const allResults = aggregateTeamResults(p.teamId, customMappings, preloadedData);
 
       // Filter results for the target year
-      const filteredResults = allResults.filter(
-        (r) => r.year === Number(year) && r.gender === gender,
-      );
+      const filteredResults = allResults.filter((r) => r.year === Number(year) && r.gender === gender);
 
       const summary = calculateTeamYearlySummary(filteredResults, info);
       const statsByPlayer = calculatePlayerStats(filteredResults, info);
-      const stats = Object.values(statsByPlayer).sort(
-        (a, b) => b.wins - a.wins,
-      );
+      const stats = Object.values(statsByPlayer).sort((a, b) => b.wins - a.wins);
 
       return {
         info,

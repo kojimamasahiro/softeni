@@ -10,16 +10,12 @@ const JAPANESE_CHAR_RE = /[぀-ヿ㐀-鿿豈-﫿ｦ-ﾟ]/;
  * - 日本語名: スペースなしで結合（内本貴文）
  * - ローマ字名: 半角スペースで結合（UCHIMOTO TAKAFUMI）
  */
-export function joinPlayerName(
-  lastName?: string | null,
-  firstName?: string | null,
-): string {
+export function joinPlayerName(lastName?: string | null, firstName?: string | null): string {
   const last = (lastName ?? '').trim();
   const first = (firstName ?? '').trim();
   if (!last) return first;
   if (!first) return last;
 
-  const isJapanese =
-    JAPANESE_CHAR_RE.test(last) || JAPANESE_CHAR_RE.test(first);
+  const isJapanese = JAPANESE_CHAR_RE.test(last) || JAPANESE_CHAR_RE.test(first);
   return isJapanese ? `${last}${first}` : `${last} ${first}`;
 }

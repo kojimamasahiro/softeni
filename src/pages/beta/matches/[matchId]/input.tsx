@@ -1,40 +1,22 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  useCallback as reactUseCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback as reactUseCallback, useEffect, useRef, useState } from 'react';
 
 import { hasLiveMatchApi } from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
 import { isScoreSiteMode } from '../../../../../lib/siteConfig';
-import {
-  determineInitialServeTeam,
-  getCurrentServingPlayerIndex,
-  getCurrentServingTeam,
-} from '../../../../../lib/serveHelpers';
-import {
-  formatMsForInput,
-  formatVideoTimestamp,
-  normalizeYouTubeInput,
-  parseSecondsInputToMs,
-} from '../../../../../lib/youtubePlayback';
+import { determineInitialServeTeam, getCurrentServingPlayerIndex, getCurrentServingTeam } from '../../../../../lib/serveHelpers';
+import { formatMsForInput, formatVideoTimestamp, normalizeYouTubeInput, parseSecondsInputToMs } from '../../../../../lib/youtubePlayback';
 import ServeSelection from '../../../../components/ServeSelection';
-import YouTubeRangePlayer, {
-  type YouTubeRangePlayerHandle,
-} from '../../../../components/YouTubeRangePlayer';
+import YouTubeRangePlayer, { type YouTubeRangePlayerHandle } from '../../../../components/YouTubeRangePlayer';
 import { Game, Match, Point } from '../../../../types/database';
 
 // 構造化データから選手名を取得するヘルパー関数
 const getPlayerNamesFromMatch = (match: Match, team: 'A' | 'B'): string[] => {
   // 構造化データから取得を試行
   if (match.teams && match.teams[team]) {
-    return match.teams[team].players.map(
-      (player) => `${player.last_name} ${player.first_name}`,
-    );
+    return match.teams[team].players.map((player) => `${player.last_name} ${player.first_name}`);
   }
 
   // 個別フィールドから取得
@@ -42,24 +24,16 @@ const getPlayerNamesFromMatch = (match: Match, team: 'A' | 'B'): string[] => {
   const prefix = `team_${team.toLowerCase()}`;
 
   // プレイヤー1
-  const player1LastName = match[
-    `${prefix}_player1_last_name` as keyof Match
-  ] as string;
-  const player1FirstName = match[
-    `${prefix}_player1_first_name` as keyof Match
-  ] as string;
+  const player1LastName = match[`${prefix}_player1_last_name` as keyof Match] as string;
+  const player1FirstName = match[`${prefix}_player1_first_name` as keyof Match] as string;
 
   if (player1LastName && player1FirstName) {
     players.push(`${player1LastName} ${player1FirstName}`);
   }
 
   // プレイヤー2（ダブルスの場合）
-  const player2LastName = match[
-    `${prefix}_player2_last_name` as keyof Match
-  ] as string;
-  const player2FirstName = match[
-    `${prefix}_player2_first_name` as keyof Match
-  ] as string;
+  const player2LastName = match[`${prefix}_player2_last_name` as keyof Match] as string;
+  const player2FirstName = match[`${prefix}_player2_first_name` as keyof Match] as string;
 
   if (player2LastName && player2FirstName) {
     players.push(`${player2LastName} ${player2FirstName}`);
@@ -98,11 +72,7 @@ const getGamesWon = (match: Match) => {
   };
 };
 
-const isMatchFinishedByGames = (
-  bestOf: number,
-  gamesWonA: number,
-  gamesWonB: number,
-) => {
+const isMatchFinishedByGames = (bestOf: number, gamesWonA: number, gamesWonB: number) => {
   const requiredWins = Math.ceil(bestOf / 2);
   return gamesWonA >= requiredWins || gamesWonB >= requiredWins;
 };
@@ -120,9 +90,7 @@ const MatchInput = () => {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [needsServeSelection, setNeedsServeSelection] = useState(false);
-  const [initialServeTeam, setInitialServeTeam] = useState<'A' | 'B' | null>(
-    null,
-  );
+  const [initialServeTeam, setInitialServeTeam] = useState<'A' | 'B' | null>(null);
   const [editingPoint, setEditingPoint] = useState<Point | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
   const [metadataSaving, setMetadataSaving] = useState(false);
@@ -140,9 +108,7 @@ const MatchInput = () => {
     shouldPlay: boolean;
     targetPlayer: 'mobile' | 'desktop';
   } | null>(null);
-  const [pendingEditSeekTimeMs, setPendingEditSeekTimeMs] = useState<
-    number | null
-  >(null);
+  const [pendingEditSeekTimeMs, setPendingEditSeekTimeMs] = useState<number | null>(null);
   const [isXlViewport, setIsXlViewport] = useState(false);
   // 手動サーブ選手選択
   const [manualServingPlayer, setManualServingPlayer] = useState<{
@@ -183,9 +149,7 @@ const MatchInput = () => {
     return null;
   };
 
-  const normalizeTeamValue = (
-    teamValue: string | null | undefined,
-  ): 'A' | 'B' | undefined => {
+  const normalizeTeamValue = (teamValue: string | null | undefined): 'A' | 'B' | undefined => {
     if (teamValue === 'A' || teamValue === 'B') {
       return teamValue;
     }
@@ -193,24 +157,17 @@ const MatchInput = () => {
     return undefined;
   };
 
-  const resolvePlayerSelectionValue = (
-    playerValue: string | null | undefined,
-    preferredTeam?: 'A' | 'B',
-  ) => {
+  const resolvePlayerSelectionValue = (playerValue: string | null | undefined, preferredTeam?: 'A' | 'B') => {
     if (!playerValue || !match) return '';
 
     const normalizedValue = playerValue.trim();
     if (!normalizedValue) return '';
 
-    const candidateTeams: ('A' | 'B')[] = preferredTeam
-      ? [preferredTeam, preferredTeam === 'A' ? 'B' : 'A']
-      : ['A', 'B'];
+    const candidateTeams: ('A' | 'B')[] = preferredTeam ? [preferredTeam, preferredTeam === 'A' ? 'B' : 'A'] : ['A', 'B'];
 
     for (const team of candidateTeams) {
       const players = getPlayerNamesFromMatch(match, team);
-      const matchedIndex = players.findIndex(
-        (playerName) => playerName === normalizedValue,
-      );
+      const matchedIndex = players.findIndex((playerName) => playerName === normalizedValue);
 
       if (matchedIndex >= 0) {
         return getPlayerUniqueId(team, matchedIndex, players[matchedIndex]);
@@ -221,16 +178,10 @@ const MatchInput = () => {
     if (storedTeam) {
       const storedName = getPlayerNameFromId(normalizedValue);
       const players = getPlayerNamesFromMatch(match, storedTeam);
-      const matchedIndex = players.findIndex(
-        (playerName) => playerName === storedName,
-      );
+      const matchedIndex = players.findIndex((playerName) => playerName === storedName);
 
       if (matchedIndex >= 0) {
-        return getPlayerUniqueId(
-          storedTeam,
-          matchedIndex,
-          players[matchedIndex],
-        );
+        return getPlayerUniqueId(storedTeam, matchedIndex, players[matchedIndex]);
       }
     }
 
@@ -238,10 +189,7 @@ const MatchInput = () => {
   };
 
   // 関与選手とプレイタイプから勝者チームを自動決定する関数
-  const determineWinnerTeam = (
-    playerUniqueId: string,
-    resultType: string,
-  ): 'A' | 'B' | null => {
+  const determineWinnerTeam = (playerUniqueId: string, resultType: string): 'A' | 'B' | null => {
     if (!playerUniqueId || !resultType || !match) return null;
 
     // 一意識別子からチームを取得
@@ -249,25 +197,10 @@ const MatchInput = () => {
     if (!playerTeam) return null;
 
     // ウィナー系の結果タイプ
-    const winnerTypes = [
-      'smash_winner',
-      'volley_winner',
-      'passing_winner',
-      'drop_winner',
-      'net_in_winner',
-      'service_ace',
-    ];
+    const winnerTypes = ['smash_winner', 'volley_winner', 'passing_winner', 'drop_winner', 'net_in_winner', 'service_ace'];
 
     // ミス系の結果タイプ
-    const errorTypes = [
-      'net',
-      'out',
-      'smash_error',
-      'volley_error',
-      'double_fault',
-      'receive_error',
-      'follow_error',
-    ];
+    const errorTypes = ['net', 'out', 'smash_error', 'volley_error', 'double_fault', 'receive_error', 'follow_error'];
 
     if (winnerTypes.includes(resultType)) {
       // ウィナーの場合、その選手のチームが勝者
@@ -298,11 +231,7 @@ const MatchInput = () => {
         setYoutubeEmbedBlocked(data.match.youtube_embed_allowed === false);
         const games = data.match.games ?? [];
         const { gamesWonA, gamesWonB } = getGamesWon(data.match);
-        const matchFinished = isMatchFinishedByGames(
-          data.match.best_of,
-          gamesWonA,
-          gamesWonB,
-        );
+        const matchFinished = isMatchFinishedByGames(data.match.best_of, gamesWonA, gamesWonB);
 
         if (games.length === 0) {
           setCurrentGame(null);
@@ -353,20 +282,14 @@ const MatchInput = () => {
   };
 
   const getYoutubePlayerRefByType = (playerType: 'mobile' | 'desktop') => {
-    return playerType === 'desktop'
-      ? desktopYoutubePlayerRef
-      : mobileYoutubePlayerRef;
+    return playerType === 'desktop' ? desktopYoutubePlayerRef : mobileYoutubePlayerRef;
   };
 
   const getVideoStartInput = () => formatMsForInput(pointData.video_start_ms);
   const getVideoEndInput = () => formatMsForInput(pointData.video_end_ms);
 
   const validatePointVideoRange = (data = pointData) => {
-    if (
-      data.video_end_ms !== null &&
-      data.video_end_ms !== undefined &&
-      (data.video_start_ms === null || data.video_start_ms === undefined)
-    ) {
+    if (data.video_end_ms !== null && data.video_end_ms !== undefined && (data.video_start_ms === null || data.video_start_ms === undefined)) {
       alert('動画終了時刻を入れる場合は、開始時刻も設定してください。');
       return false;
     }
@@ -386,8 +309,7 @@ const MatchInput = () => {
   };
 
   const captureVideoTime = (target: 'start' | 'end') => {
-    const capturedMs =
-      getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
+    const capturedMs = getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
     if (capturedMs === null || capturedMs === undefined) {
       alert('YouTubeプレイヤーの現在時刻を取得できませんでした。');
       return;
@@ -417,8 +339,7 @@ const MatchInput = () => {
   };
 
   const seekVideoByMs = (deltaMs: number) => {
-    const currentMs =
-      getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
+    const currentMs = getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
     if (currentMs === null || currentMs === undefined) {
       return;
     }
@@ -447,10 +368,7 @@ const MatchInput = () => {
     }
 
     if (point.video_end_ms !== null && point.video_end_ms !== undefined) {
-      getActiveYoutubePlayerRef().current?.playRange(
-        startMs,
-        point.video_end_ms,
-      );
+      getActiveYoutubePlayerRef().current?.playRange(startMs, point.video_end_ms);
       return;
     }
 
@@ -460,17 +378,10 @@ const MatchInput = () => {
   const getEditPointSeekTimeMs = (game: Game, point: Point) => {
     const targetPointNumber = Number(point.point_number);
     const previousPoint = [...(game.points ?? [])]
-      .sort(
-        (left, right) => Number(left.point_number) - Number(right.point_number),
-      )
-      .find(
-        (candidate) => Number(candidate.point_number) === targetPointNumber - 1,
-      );
+      .sort((left, right) => Number(left.point_number) - Number(right.point_number))
+      .find((candidate) => Number(candidate.point_number) === targetPointNumber - 1);
 
-    if (
-      previousPoint?.video_end_ms !== null &&
-      previousPoint?.video_end_ms !== undefined
-    ) {
+    if (previousPoint?.video_end_ms !== null && previousPoint?.video_end_ms !== undefined) {
       return previousPoint.video_end_ms;
     }
 
@@ -494,16 +405,11 @@ const MatchInput = () => {
   };
 
   const withAutoCapturedVideoEnd = (data: typeof pointData) => {
-    if (
-      data.video_start_ms === null ||
-      data.video_start_ms === undefined ||
-      data.video_end_ms !== null
-    ) {
+    if (data.video_start_ms === null || data.video_start_ms === undefined || data.video_end_ms !== null) {
       return data;
     }
 
-    const capturedMs =
-      getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
+    const capturedMs = getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
     if (capturedMs === null || capturedMs === undefined) {
       return data;
     }
@@ -545,9 +451,7 @@ const MatchInput = () => {
     const trySeek = () => {
       if (cancelled) return;
 
-      const activePlayerRef = isXlViewport
-        ? desktopYoutubePlayerRef
-        : mobileYoutubePlayerRef;
+      const activePlayerRef = isXlViewport ? desktopYoutubePlayerRef : mobileYoutubePlayerRef;
       if (activePlayerRef.current) {
         activePlayerRef.current.pause();
         activePlayerRef.current.seekToMs(pendingEditSeekTimeMs);
@@ -626,20 +530,9 @@ const MatchInput = () => {
     setEditingPoint(point);
     setIsEditMode(true);
 
-    const winnerPlayerValue = resolvePlayerSelectionValue(
-      point.winner_player,
-      normalizeTeamValue(point.winner_team),
-    );
-    const loserTeam =
-      point.winner_team === 'A'
-        ? 'B'
-        : point.winner_team === 'B'
-          ? 'A'
-          : undefined;
-    const loserPlayerValue = resolvePlayerSelectionValue(
-      point.loser_player,
-      loserTeam,
-    );
+    const winnerPlayerValue = resolvePlayerSelectionValue(point.winner_player, normalizeTeamValue(point.winner_team));
+    const loserTeam = point.winner_team === 'A' ? 'B' : point.winner_team === 'B' ? 'A' : undefined;
+    const loserPlayerValue = resolvePlayerSelectionValue(point.loser_player, loserTeam);
 
     // 編集するポイントの情報をフォームに設定
     setPointData({
@@ -688,12 +581,8 @@ const MatchInput = () => {
     setSubmitting(true);
     try {
       // 一意識別子から選手名を抽出（新形式の場合）
-      const winnerPlayerName = pointData.winner_player.includes('-')
-        ? getPlayerNameFromId(pointData.winner_player)
-        : pointData.winner_player;
-      const loserPlayerName = pointData.loser_player.includes('-')
-        ? getPlayerNameFromId(pointData.loser_player)
-        : pointData.loser_player;
+      const winnerPlayerName = pointData.winner_player.includes('-') ? getPlayerNameFromId(pointData.winner_player) : pointData.winner_player;
+      const loserPlayerName = pointData.loser_player.includes('-') ? getPlayerNameFromId(pointData.loser_player) : pointData.loser_player;
 
       const response = await fetch(`/api/matches/${matchId}/points`, {
         method: 'PUT',
@@ -719,30 +608,17 @@ const MatchInput = () => {
         // 編集対象ポイントが属するゲームを特定する。
         // 直前に終了したゲームのポイントを編集する場合など、
         // currentGame（= 新しく開始されたゲーム）とは別のゲームのことがある。
-        const targetGame = match.games?.find(
-          (game: Game) => game.id === result.updatedGame?.id,
-        );
+        const targetGame = match.games?.find((game: Game) => game.id === result.updatedGame?.id);
 
         // 編集によってゲーム勝者が変わると、それ以降の状態
         // （新規ゲーム生成・試合完了など）も変わり得るため、
         // ローカルのマージでは整合性を保てない。
-        const winnerChanged =
-          targetGame?.winner_team !== result.updatedGame?.winner_team;
-        const isCurrentGame =
-          Boolean(currentGame) && currentGame?.id === result.updatedGame?.id;
+        const winnerChanged = targetGame?.winner_team !== result.updatedGame?.winner_team;
+        const isCurrentGame = Boolean(currentGame) && currentGame?.id === result.updatedGame?.id;
 
-        if (
-          result.updatedGame &&
-          match.games &&
-          targetGame &&
-          isCurrentGame &&
-          !winnerChanged
-        ) {
+        if (result.updatedGame && match.games && targetGame && isCurrentGame && !winnerChanged) {
           // 最適化：現在進行中ゲーム内の編集で勝者が変わらない場合のみローカル更新
-          const updatedPoints =
-            targetGame.points?.map((point: Point) =>
-              point.id === editingPoint.id ? result.point : point,
-            ) || [];
+          const updatedPoints = targetGame.points?.map((point: Point) => (point.id === editingPoint.id ? result.point : point)) || [];
 
           const updatedCurrentGame = {
             ...result.updatedGame,
@@ -750,9 +626,7 @@ const MatchInput = () => {
           };
 
           // ゲームリストを更新
-          const updatedGames = match.games.map((game: Game) =>
-            game.id === result.updatedGame.id ? updatedCurrentGame : game,
-          );
+          const updatedGames = match.games.map((game: Game) => (game.id === result.updatedGame.id ? updatedCurrentGame : game));
 
           const updatedMatch = {
             ...match,
@@ -788,10 +662,7 @@ const MatchInput = () => {
   const submitPoint = async () => {
     if (!currentGame || !pointData.winner_team || !match) return;
     const pointDataToSubmit = withAutoCapturedVideoEnd(pointData);
-    if (
-      pointDataToSubmit.video_end_ms !== pointData.video_end_ms &&
-      pointDataToSubmit.video_end_ms !== null
-    ) {
+    if (pointDataToSubmit.video_end_ms !== pointData.video_end_ms && pointDataToSubmit.video_end_ms !== null) {
       setPointData(pointDataToSubmit);
     }
     if (!validatePointVideoRange(pointDataToSubmit)) return;
@@ -801,21 +672,11 @@ const MatchInput = () => {
       const nextPointNumber = (currentGame.points?.length || 0) + 1;
 
       // ゲームスコアを計算
-      const gamesWonA =
-        match.games?.filter((game: Game) => game.winner_team === 'A').length ||
-        0;
-      const gamesWonB =
-        match.games?.filter((game: Game) => game.winner_team === 'B').length ||
-        0;
+      const gamesWonA = match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+      const gamesWonB = match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
 
       // 現在のサーブ権を計算
-      const currentServingTeam = getCurrentServingTeam(
-        currentGame,
-        nextPointNumber,
-        match.best_of,
-        gamesWonA,
-        gamesWonB,
-      );
+      const currentServingTeam = getCurrentServingTeam(currentGame, nextPointNumber, match.best_of, gamesWonA, gamesWonB);
 
       // 現在のサーブ選手を取得
       const currentServingPlayer = getCurrentServingPlayer();
@@ -852,12 +713,8 @@ const MatchInput = () => {
       const optimisticCurrentGame = {
         ...currentGame,
         points: [...(currentGame.points || []), optimisticPoint],
-        points_a:
-          currentGame.points_a +
-          (pointDataToSubmit.winner_team === 'A' ? 1 : 0),
-        points_b:
-          currentGame.points_b +
-          (pointDataToSubmit.winner_team === 'B' ? 1 : 0),
+        points_a: currentGame.points_a + (pointDataToSubmit.winner_team === 'A' ? 1 : 0),
+        points_b: currentGame.points_b + (pointDataToSubmit.winner_team === 'B' ? 1 : 0),
       };
 
       setCurrentGame(optimisticCurrentGame);
@@ -919,9 +776,7 @@ const MatchInput = () => {
         // 最適化：レスポンスデータを使ってローカル状態を更新
         if (result.updatedGame && match.games) {
           // 現在のゲームを更新
-          const updatedGames = match.games.map((game: Game) =>
-            game.id === result.updatedGame.id ? result.updatedGame : game,
-          );
+          const updatedGames = match.games.map((game: Game) => (game.id === result.updatedGame.id ? result.updatedGame : game));
 
           // ポイントを追加
           const updatedCurrentGame = {
@@ -932,9 +787,7 @@ const MatchInput = () => {
           // マッチデータを更新
           const updatedMatch = {
             ...match,
-            games: updatedGames.map((game: Game) =>
-              game.id === updatedCurrentGame.id ? updatedCurrentGame : game,
-            ),
+            games: updatedGames.map((game: Game) => (game.id === updatedCurrentGame.id ? updatedCurrentGame : game)),
           };
 
           setMatch(updatedMatch);
@@ -942,25 +795,18 @@ const MatchInput = () => {
 
           if (result.updatedGame.winner_team) {
             const { gamesWonA, gamesWonB } = getGamesWon(updatedMatch);
-            const finished = isMatchFinishedByGames(
-              updatedMatch.best_of,
-              gamesWonA,
-              gamesWonB,
-            );
+            const finished = isMatchFinishedByGames(updatedMatch.best_of, gamesWonA, gamesWonB);
 
             if (!finished) {
               const nextGameNumber = updatedMatch.games.length + 1;
               preserveVideoPlaybackPosition();
-              const nextGameResponse = await fetch(
-                `/api/matches/${matchId}/games`,
-                {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    game_number: nextGameNumber,
-                  }),
-                },
-              );
+              const nextGameResponse = await fetch(`/api/matches/${matchId}/games`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  game_number: nextGameNumber,
+                }),
+              });
 
               if (nextGameResponse.ok) {
                 await fetchMatch();
@@ -975,17 +821,8 @@ const MatchInput = () => {
         }
 
         // 次のポイントでサーブチームが変わる場合、手動選択をリセット
-        const nextServingTeam = getCurrentServingTeam(
-          currentGame,
-          nextPointNumber + 1,
-          match.best_of,
-          gamesWonA,
-          gamesWonB,
-        );
-        if (
-          manualServingPlayer &&
-          manualServingPlayer.team !== nextServingTeam
-        ) {
+        const nextServingTeam = getCurrentServingTeam(currentGame, nextPointNumber + 1, match.best_of, gamesWonA, gamesWonB);
+        if (manualServingPlayer && manualServingPlayer.team !== nextServingTeam) {
           setManualServingPlayer(null);
         }
       } else {
@@ -1013,9 +850,7 @@ const MatchInput = () => {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: (() => {
-          const normalizedYouTube = normalizeYouTubeInput(
-            matchMetadata.youtube_url,
-          );
+          const normalizedYouTube = normalizeYouTubeInput(matchMetadata.youtube_url);
 
           return JSON.stringify({
             match_date: matchMetadata.match_date || null,
@@ -1023,9 +858,7 @@ const MatchInput = () => {
             opponent_level: matchMetadata.opponent_level || 'unknown',
             youtube_url: normalizedYouTube.watchUrl,
             youtube_video_id: normalizedYouTube.videoId,
-            youtube_embed_allowed: youtubeEmbedBlocked
-              ? false
-              : matchMetadata.youtube_embed_allowed,
+            youtube_embed_allowed: youtubeEmbedBlocked ? false : matchMetadata.youtube_embed_allowed,
           });
         })(),
       });
@@ -1042,9 +875,7 @@ const MatchInput = () => {
         setYoutubeEmbedBlocked(data.match.youtube_embed_allowed === false);
       } else {
         const errorData = await response.json();
-        alert(
-          `試合情報の保存に失敗しました: ${errorData.error || 'Unknown error'}`,
-        );
+        alert(`試合情報の保存に失敗しました: ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Failed to update match metadata:', error);
@@ -1097,10 +928,7 @@ const MatchInput = () => {
   };
 
   // サーブ権を決定してゲームを開始
-  const handleServeTeamSelected = async (
-    selectedTeam: 'A' | 'B',
-    playerIndex?: number,
-  ) => {
+  const handleServeTeamSelected = async (selectedTeam: 'A' | 'B', playerIndex?: number) => {
     if (!match) return;
 
     const gameToUpdate = currentGame;
@@ -1121,26 +949,20 @@ const MatchInput = () => {
           console.error('Initial serve team not set');
           return;
         }
-        initialServe = determineInitialServeTeam(
-          gameToUpdate.game_number,
-          initialServeTeam,
-        );
+        initialServe = determineInitialServeTeam(gameToUpdate.game_number, initialServeTeam);
         // 他のゲームでは、デフォルトで0番目の選手から開始（ユーザーが選択した場合はそれを使用）
         initialPlayerIndex = playerIndex ?? 0;
       }
 
       // ゲームのサーブ権と初期サーブ選手を更新
-      const response = await fetch(
-        `/api/matches/${matchId}/games/${gameToUpdate.id}`,
-        {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            initial_serve_team: initialServe,
-            initial_serve_player_index: initialPlayerIndex,
-          }),
-        },
-      );
+      const response = await fetch(`/api/matches/${matchId}/games/${gameToUpdate.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          initial_serve_team: initialServe,
+          initial_serve_player_index: initialPlayerIndex,
+        }),
+      });
 
       if (response.ok) {
         await fetchMatch();
@@ -1199,9 +1021,7 @@ const MatchInput = () => {
         await fetchMatch();
       } else {
         const errorData = await response.json();
-        alert(
-          `第1ゲームの開始に失敗しました: ${errorData.error || 'Unknown error'}`,
-        );
+        alert(`第1ゲームの開始に失敗しました: ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Failed to start first game:', error);
@@ -1214,18 +1034,10 @@ const MatchInput = () => {
     if (!currentGame || !currentGame.initial_serve_team || !match) return null;
 
     const nextPointNumber = (currentGame.points?.length || 0) + 1;
-    const gamesWonA =
-      match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
-    const gamesWonB =
-      match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+    const gamesWonA = match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+    const gamesWonB = match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
 
-    return getCurrentServingTeam(
-      currentGame,
-      nextPointNumber,
-      match.best_of,
-      gamesWonA,
-      gamesWonB,
-    );
+    return getCurrentServingTeam(currentGame, nextPointNumber, match.best_of, gamesWonA, gamesWonB);
   };
 
   // 現在のサーブ選手を取得
@@ -1237,24 +1049,15 @@ const MatchInput = () => {
     if (!currentGame || !currentGame.initial_serve_team || !match) return null;
 
     const nextPointNumber = (currentGame.points?.length || 0) + 1;
-    const gamesWonA =
-      match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
-    const gamesWonB =
-      match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+    const gamesWonA = match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+    const gamesWonB = match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
 
-    const servingTeam = getCurrentServingTeam(
-      currentGame,
-      nextPointNumber,
-      match.best_of,
-      gamesWonA,
-      gamesWonB,
-    );
+    const servingTeam = getCurrentServingTeam(currentGame, nextPointNumber, match.best_of, gamesWonA, gamesWonB);
 
     // 手動選択が有効で、正しいチームが選択されている場合
     if (manualServingPlayer && manualServingPlayer.team === servingTeam) {
       const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
-      const playerName =
-        teamPlayers[manualServingPlayer.playerIndex] || teamPlayers[0] || '';
+      const playerName = teamPlayers[manualServingPlayer.playerIndex] || teamPlayers[0] || '';
       return {
         team: servingTeam,
         playerName,
@@ -1294,18 +1097,10 @@ const MatchInput = () => {
   } | null => {
     if (!game.initial_serve_team || !match) return null;
 
-    const gamesWonA =
-      match.games?.filter((g: Game) => g.winner_team === 'A').length || 0;
-    const gamesWonB =
-      match.games?.filter((g: Game) => g.winner_team === 'B').length || 0;
+    const gamesWonA = match.games?.filter((g: Game) => g.winner_team === 'A').length || 0;
+    const gamesWonB = match.games?.filter((g: Game) => g.winner_team === 'B').length || 0;
 
-    const servingTeam = getCurrentServingTeam(
-      game,
-      pointNumber,
-      match.best_of,
-      gamesWonA,
-      gamesWonB,
-    );
+    const servingTeam = getCurrentServingTeam(game, pointNumber, match.best_of, gamesWonA, gamesWonB);
 
     const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
     const playerIndex = getCurrentServingPlayerIndex(
@@ -1333,9 +1128,7 @@ const MatchInput = () => {
       <div className="max-w-4xl mx-auto p-6">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           <strong className="font-bold">編集不可</strong>
-          <span className="block sm:inline ml-2">
-            このページは開発サーバーでのみ利用できます。静的公開環境では閲覧用の詳細ページをご利用ください。
-          </span>
+          <span className="block sm:inline ml-2">このページは開発サーバーでのみ利用できます。静的公開環境では閲覧用の詳細ページをご利用ください。</span>
         </div>
       </div>
     );
@@ -1344,22 +1137,13 @@ const MatchInput = () => {
   if (loading) return <div>Loading...</div>;
   if (!match) return <div>Match not found</div>;
 
-  const currentScore = currentGame
-    ? `${currentGame.points_a} - ${currentGame.points_b}`
-    : '';
+  const currentScore = currentGame ? `${currentGame.points_a} - ${currentGame.points_b}` : '';
   const gameWon = currentGame?.winner_team;
   const matchFinished = isMatchFinished(match);
   const matchWinner = getMatchWinner(match);
-  const isPointInputActive = Boolean(
-    currentGame &&
-      ((!gameWon && !matchFinished && !needsServeSelection) || isEditMode),
-  );
+  const isPointInputActive = Boolean(currentGame && ((!gameWon && !matchFinished && !needsServeSelection) || isEditMode));
   const activeYouTubeVideoId = getActiveYouTubeVideoId();
-  const showDesktopVideoLayout = Boolean(
-    activeYouTubeVideoId &&
-      isXlViewport &&
-      (isPointInputActive || needsServeSelection),
-  );
+  const showDesktopVideoLayout = Boolean(activeYouTubeVideoId && isXlViewport && (isPointInputActive || needsServeSelection));
   const sortedGames = [...(match.games ?? [])].sort((a, b) => {
     if (currentGame) {
       if (a.id === currentGame.id) return -1;
@@ -1369,11 +1153,7 @@ const MatchInput = () => {
     return a.game_number - b.game_number;
   });
   const gameHistorySection = (
-    <div
-      className={`bg-white rounded-lg shadow-md p-6 ${
-        isPointInputActive ? 'mt-4 xl:col-start-2 xl:mt-0' : ''
-      }`}
-    >
+    <div className={`bg-white rounded-lg shadow-md p-6 ${isPointInputActive ? 'mt-4 xl:col-start-2 xl:mt-0' : ''}`}>
       <h3 className="text-lg font-semibold mb-4">ゲーム履歴</h3>
       <div className="space-y-4">
         {sortedGames.map((game: Game) => (
@@ -1381,19 +1161,11 @@ const MatchInput = () => {
             <div className="flex justify-between items-center mb-2">
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">第{game.game_number}ゲーム</h4>
-                {currentGame?.id === game.id && (
-                  <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
-                    現在のゲーム
-                  </span>
-                )}
+                {currentGame?.id === game.id && <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">現在のゲーム</span>}
               </div>
               <div className="text-lg font-bold">
                 {game.points_a} - {game.points_b}
-                {game.winner_team && (
-                  <span className="ml-2 text-green-600">
-                    (チーム{game.winner_team}勝利)
-                  </span>
-                )}
+                {game.winner_team && <span className="ml-2 text-green-600">(チーム{game.winner_team}勝利)</span>}
               </div>
             </div>
 
@@ -1408,9 +1180,7 @@ const MatchInput = () => {
                         <div className="flex justify-between items-center">
                           <span>#{point.point_number}</span>
                           <div className="flex items-center gap-2">
-                            <span className="font-medium">
-                              チーム{point.winner_team}
-                            </span>
+                            <span className="font-medium">チーム{point.winner_team}</span>
                             {canEditMatches && (
                               <button
                                 onClick={() => startEditPoint(game, point)}
@@ -1425,43 +1195,22 @@ const MatchInput = () => {
                         <div className="text-xs text-gray-600">
                           🏓{' '}
                           {(() => {
-                            const servingPlayer = getServingPlayerForPoint(
-                              game,
-                              point.point_number,
-                            );
-                            return servingPlayer
-                              ? `${servingPlayer.playerName} (チーム${point.serving_team})`
-                              : `チーム${point.serving_team}のサーブ`;
+                            const servingPlayer = getServingPlayerForPoint(game, point.point_number);
+                            return servingPlayer ? `${servingPlayer.playerName} (チーム${point.serving_team})` : `チーム${point.serving_team}のサーブ`;
                           })()}
                         </div>
                         <div className="text-xs text-gray-600">
                           {point.result_type} ({point.rally_count}ラリー)
                           {point.winner_player && (
-                            <span>
-                              {' '}
-                              -{' '}
-                              {point.winner_player.includes('-')
-                                ? getPlayerNameFromId(point.winner_player)
-                                : point.winner_player}
-                            </span>
+                            <span> - {point.winner_player.includes('-') ? getPlayerNameFromId(point.winner_player) : point.winner_player}</span>
                           )}
                         </div>
-                        {(point.video_start_ms !== null ||
-                          point.video_end_ms !== null) && (
+                        {(point.video_start_ms !== null || point.video_end_ms !== null) && (
                           <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
                             <span className="text-gray-500">
                               動画:
-                              {point.video_start_ms !== null
-                                ? ` ${formatVideoTimestamp(
-                                    point.video_start_ms,
-                                    true,
-                                  )}`
-                                : ' -'}
-                              {point.video_end_ms !== null &&
-                                ` - ${formatVideoTimestamp(
-                                  point.video_end_ms,
-                                  true,
-                                )}`}
+                              {point.video_start_ms !== null ? ` ${formatVideoTimestamp(point.video_start_ms, true)}` : ' -'}
+                              {point.video_end_ms !== null && ` - ${formatVideoTimestamp(point.video_end_ms, true)}`}
                             </span>
                             {activeYouTubeVideoId && !youtubeEmbedBlocked && (
                               <button
@@ -1469,9 +1218,7 @@ const MatchInput = () => {
                                 onClick={() => jumpToPointVideo(point)}
                                 className="rounded bg-slate-700 px-2 py-1 text-white hover:bg-slate-600"
                               >
-                                {point.video_end_ms !== null
-                                  ? 'この範囲を再生'
-                                  : 'この時刻へ移動'}
+                                {point.video_end_ms !== null ? 'この範囲を再生' : 'この時刻へ移動'}
                               </button>
                             )}
                           </div>
@@ -1481,18 +1228,12 @@ const MatchInput = () => {
                 </div>
               </div>
             ) : currentGame?.id === game.id ? (
-              <div className="mt-2 rounded bg-blue-50 px-3 py-4 text-center text-sm text-blue-700">
-                現在のゲームはまだポイントがありません
-              </div>
+              <div className="mt-2 rounded bg-blue-50 px-3 py-4 text-center text-sm text-blue-700">現在のゲームはまだポイントがありません</div>
             ) : null}
           </div>
         ))}
 
-        {sortedGames.length === 0 && (
-          <div className="text-center text-gray-500 py-4">
-            まだゲームが開始されていません
-          </div>
-        )}
+        {sortedGames.length === 0 && <div className="text-center text-gray-500 py-4">まだゲームが開始されていません</div>}
       </div>
     </div>
   );
@@ -1501,31 +1242,19 @@ const MatchInput = () => {
   const getGameScores = () => {
     if (!match.games) return '';
 
-    const gamesWonA = match.games.filter(
-      (game: Game) => game.winner_team === 'A',
-    ).length;
-    const gamesWonB = match.games.filter(
-      (game: Game) => game.winner_team === 'B',
-    ).length;
+    const gamesWonA = match.games.filter((game: Game) => game.winner_team === 'A').length;
+    const gamesWonB = match.games.filter((game: Game) => game.winner_team === 'B').length;
 
     return `${gamesWonA} - ${gamesWonB}`;
   };
 
   return (
-    <div
-      className={`mx-auto p-6 ${isPointInputActive ? 'max-w-8xl' : 'max-w-4xl'}`}
-    >
+    <div className={`mx-auto p-6 ${isPointInputActive ? 'max-w-8xl' : 'max-w-4xl'}`}>
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <Link
-          href={`/beta/matches/${match.id}`}
-          className="text-blue-600 hover:underline"
-        >
+        <Link href={`/beta/matches/${match.id}`} className="text-blue-600 hover:underline">
           ← マッチ詳細に戻る
         </Link>
-        <Link
-          href={`/beta/matches/${match.id}/video-review`}
-          className="rounded bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700"
-        >
+        <Link href={`/beta/matches/${match.id}/video-review`} className="rounded bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700">
           動画レビューへ
         </Link>
       </div>
@@ -1569,9 +1298,7 @@ const MatchInput = () => {
             />
           </div>
           <div className="xl:col-span-2">
-            <label className="block text-xs text-gray-600 mb-1">
-              YouTube URL
-            </label>
+            <label className="block text-xs text-gray-600 mb-1">YouTube URL</label>
             <input
               type="url"
               value={matchMetadata.youtube_url}
@@ -1588,16 +1315,10 @@ const MatchInput = () => {
               className="w-full rounded border p-2 text-sm"
               placeholder="https://www.youtube.com/watch?v=..."
             />
-            {matchMetadata.youtube_video_id && (
-              <p className="mt-1 text-xs text-gray-500">
-                動画ID: {matchMetadata.youtube_video_id}
-              </p>
-            )}
+            {matchMetadata.youtube_video_id && <p className="mt-1 text-xs text-gray-500">動画ID: {matchMetadata.youtube_video_id}</p>}
           </div>
           <div>
-            <label className="block text-xs text-gray-600 mb-1">
-              相手レベル
-            </label>
+            <label className="block text-xs text-gray-600 mb-1">相手レベル</label>
             <select
               value={matchMetadata.opponent_level}
               onChange={(e) =>
@@ -1639,28 +1360,14 @@ const MatchInput = () => {
         </div>
 
         {activeYouTubeVideoId && (
-          <div
-            className={`mt-4 rounded border border-gray-200 bg-gray-50 p-4 ${
-              showDesktopVideoLayout ? 'xl:hidden' : ''
-            }`}
-          >
+          <div className={`mt-4 rounded border border-gray-200 bg-gray-50 p-4 ${showDesktopVideoLayout ? 'xl:hidden' : ''}`}>
             <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h3 className="text-sm font-semibold text-gray-800">
-                  YouTube ポイント記録補助
-                </h3>
-                <p className="text-xs text-gray-500">
-                  `Ctrl + S` で開始、`Ctrl + E` で終了、`Ctrl + D` で再生、`Ctrl
-                  + F` でクリア、`← / →` で 5 秒移動
-                </p>
+                <h3 className="text-sm font-semibold text-gray-800">YouTube ポイント記録補助</h3>
+                <p className="text-xs text-gray-500">`Ctrl + S` で開始、`Ctrl + E` で終了、`Ctrl + D` で再生、`Ctrl + F` でクリア、`← / →` で 5 秒移動</p>
               </div>
               {youtubeEmbedBlocked && matchMetadata.youtube_url && (
-                <a
-                  href={matchMetadata.youtube_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-blue-600 hover:underline"
-                >
+                <a href={matchMetadata.youtube_url} target="_blank" rel="noreferrer" className="text-sm text-blue-600 hover:underline">
                   YouTubeで開く
                 </a>
               )}
@@ -1668,8 +1375,7 @@ const MatchInput = () => {
 
             {youtubeEmbedBlocked ? (
               <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-                この動画は埋め込み再生できなかったため、外部 YouTube
-                で確認してください。
+                この動画は埋め込み再生できなかったため、外部 YouTube で確認してください。
               </div>
             ) : (
               <div className="space-y-3">
@@ -1689,18 +1395,10 @@ const MatchInput = () => {
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={resumeVideoPlayback}
-                    className="rounded bg-slate-800 px-3 py-2 text-sm text-white hover:bg-slate-700"
-                  >
+                  <button type="button" onClick={resumeVideoPlayback} className="rounded bg-slate-800 px-3 py-2 text-sm text-white hover:bg-slate-700">
                     続きから再生
                   </button>
-                  <button
-                    type="button"
-                    onClick={pauseVideoPlayback}
-                    className="rounded border border-gray-300 px-3 py-2 text-sm hover:bg-white"
-                  >
+                  <button type="button" onClick={pauseVideoPlayback} className="rounded border border-gray-300 px-3 py-2 text-sm hover:bg-white">
                     一時停止
                   </button>
                 </div>
@@ -1713,12 +1411,8 @@ const MatchInput = () => {
       {/* 試合終了表示 */}
       {matchFinished && matchWinner && (
         <div className="bg-green-100 border border-green-400 rounded-lg p-6 mb-6 text-center">
-          <h2 className="text-2xl font-bold text-green-800 mb-2">
-            🏆 試合終了！
-          </h2>
-          <p className="text-xl text-green-700">
-            {matchWinner === 'A' ? match.team_a : match.team_b} の勝利！
-          </p>
+          <h2 className="text-2xl font-bold text-green-800 mb-2">🏆 試合終了！</h2>
+          <p className="text-xl text-green-700">{matchWinner === 'A' ? match.team_a : match.team_b} の勝利！</p>
           <p className="text-green-600 mt-2">ゲームスコア: {getGameScores()}</p>
         </div>
       )}
@@ -1731,73 +1425,40 @@ const MatchInput = () => {
           teamAPlayers={getPlayerNamesFromMatch(match, 'A')}
           teamBPlayers={getPlayerNamesFromMatch(match, 'B')}
           gameNumber={currentGame.game_number}
-          preselectedTeam={
-            currentGame.game_number > 1 && initialServeTeam
-              ? determineInitialServeTeam(
-                  currentGame.game_number,
-                  initialServeTeam,
-                )
-              : undefined
-          }
+          preselectedTeam={currentGame.game_number > 1 && initialServeTeam ? determineInitialServeTeam(currentGame.game_number, initialServeTeam) : undefined}
           onServeTeamSelected={handleServeTeamSelected}
         />
       )}
 
       {!matchFinished && !needsServeSelection && !currentGame && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6 text-center">
-          <h2 className="text-lg font-semibold mb-2">
-            {match.games && match.games.length > 0
-              ? '次のゲーム待ち'
-              : '試合開始前'}
-          </h2>
+          <h2 className="text-lg font-semibold mb-2">{match.games && match.games.length > 0 ? '次のゲーム待ち' : '試合開始前'}</h2>
           <p className="text-gray-600 mb-4">
             {match.games && match.games.length > 0
               ? `第${match.games.length + 1}ゲームを開始するとサーブを決められます。`
               : 'まだゲームが開始されていません。第1ゲームを開始するとサーブを決められます。'}
           </p>
           <button
-            onClick={
-              match.games && match.games.length > 0
-                ? startNewGame
-                : startFirstGame
-            }
+            onClick={match.games && match.games.length > 0 ? startNewGame : startFirstGame}
             className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
           >
-            {match.games && match.games.length > 0
-              ? `第${match.games.length + 1}ゲームを開始`
-              : '第1ゲームを開始'}
+            {match.games && match.games.length > 0 ? `第${match.games.length + 1}ゲームを開始` : '第1ゲームを開始'}
           </button>
         </div>
       )}
 
-      <div
-        className={
-          showDesktopVideoLayout
-            ? 'xl:grid xl:grid-cols-[minmax(420px,1.35fr)_minmax(380px,0.9fr)] xl:items-start xl:gap-4'
-            : ''
-        }
-      >
+      <div className={showDesktopVideoLayout ? 'xl:grid xl:grid-cols-[minmax(420px,1.35fr)_minmax(380px,0.9fr)] xl:items-start xl:gap-4' : ''}>
         {showDesktopVideoLayout && (
           <div className="hidden xl:flex xl:h-[calc(100vh-2rem)] xl:min-h-0 xl:flex-col xl:gap-4">
             {activeYouTubeVideoId && (
               <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 shadow-md">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <h3 className="text-sm font-semibold text-gray-800">
-                      YouTube ポイント記録補助
-                    </h3>
-                    <p className="text-xs text-gray-500">
-                      `Ctrl + S` で開始、`Ctrl + E` で終了、`Ctrl + D`
-                      で再生、`Ctrl + F` でクリア、`← / →` で 5 秒移動
-                    </p>
+                    <h3 className="text-sm font-semibold text-gray-800">YouTube ポイント記録補助</h3>
+                    <p className="text-xs text-gray-500">`Ctrl + S` で開始、`Ctrl + E` で終了、`Ctrl + D` で再生、`Ctrl + F` でクリア、`← / →` で 5 秒移動</p>
                   </div>
                   {youtubeEmbedBlocked && matchMetadata.youtube_url && (
-                    <a
-                      href={matchMetadata.youtube_url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-sm text-blue-600 hover:underline"
-                    >
+                    <a href={matchMetadata.youtube_url} target="_blank" rel="noreferrer" className="text-sm text-blue-600 hover:underline">
                       YouTubeで開く
                     </a>
                   )}
@@ -1805,8 +1466,7 @@ const MatchInput = () => {
 
                 {youtubeEmbedBlocked ? (
                   <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-                    この動画は埋め込み再生できなかったため、外部 YouTube
-                    で確認してください。
+                    この動画は埋め込み再生できなかったため、外部 YouTube で確認してください。
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -1827,18 +1487,10 @@ const MatchInput = () => {
                       />
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <button
-                        type="button"
-                        onClick={resumeVideoPlayback}
-                        className="rounded bg-slate-800 px-3 py-2 text-sm text-white hover:bg-slate-700"
-                      >
+                      <button type="button" onClick={resumeVideoPlayback} className="rounded bg-slate-800 px-3 py-2 text-sm text-white hover:bg-slate-700">
                         続きから再生
                       </button>
-                      <button
-                        type="button"
-                        onClick={pauseVideoPlayback}
-                        className="rounded border border-gray-300 px-3 py-2 text-sm hover:bg-white"
-                      >
+                      <button type="button" onClick={pauseVideoPlayback} className="rounded border border-gray-300 px-3 py-2 text-sm hover:bg-white">
                         一時停止
                       </button>
                     </div>
@@ -1851,18 +1503,13 @@ const MatchInput = () => {
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h4 className="text-sm font-medium">動画時刻</h4>
-                  <p className="text-xs text-gray-500">
-                    開始だけでも保存できます。終了未設定時は詳細画面で 15
-                    秒再生します。
-                  </p>
+                  <p className="text-xs text-gray-500">開始だけでも保存できます。終了未設定時は詳細画面で 15 秒再生します。</p>
                 </div>
               </div>
 
               <div className="grid gap-3 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs text-gray-600">
-                    開始時刻 (秒)
-                  </label>
+                  <label className="mb-1 block text-xs text-gray-600">開始時刻 (秒)</label>
                   <input
                     type="text"
                     inputMode="decimal"
@@ -1870,22 +1517,16 @@ const MatchInput = () => {
                     onChange={(event) =>
                       setPointData({
                         ...pointData,
-                        video_start_ms: parseSecondsInputToMs(
-                          event.target.value,
-                        ),
+                        video_start_ms: parseSecondsInputToMs(event.target.value),
                       })
                     }
                     className="w-full rounded border p-2 text-sm"
                     placeholder="例: 83.4 or 1:23"
                   />
-                  <p className="mt-1 text-xs text-gray-500">
-                    表示: {formatVideoTimestamp(pointData.video_start_ms, true)}
-                  </p>
+                  <p className="mt-1 text-xs text-gray-500">表示: {formatVideoTimestamp(pointData.video_start_ms, true)}</p>
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs text-gray-600">
-                    終了時刻 (秒)
-                  </label>
+                  <label className="mb-1 block text-xs text-gray-600">終了時刻 (秒)</label>
                   <input
                     type="text"
                     inputMode="decimal"
@@ -1899,9 +1540,7 @@ const MatchInput = () => {
                     className="w-full rounded border p-2 text-sm"
                     placeholder="例: 95.0 or 1:35"
                   />
-                  <p className="mt-1 text-xs text-gray-500">
-                    表示: {formatVideoTimestamp(pointData.video_end_ms, true)}
-                  </p>
+                  <p className="mt-1 text-xs text-gray-500">表示: {formatVideoTimestamp(pointData.video_end_ms, true)}</p>
                 </div>
               </div>
             </div>
@@ -1909,9 +1548,7 @@ const MatchInput = () => {
             <div className="rounded-lg bg-white p-4 shadow-md">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-800">
-                    第{currentGame?.game_number}ゲーム
-                  </h3>
+                  <h3 className="text-sm font-semibold text-gray-800">第{currentGame?.game_number}ゲーム</h3>
                   <p className="mt-1 text-2xl font-bold">{getGameScores()}</p>
                   <p className="text-xs text-gray-500">ゲームスコア</p>
                 </div>
@@ -1924,11 +1561,7 @@ const MatchInput = () => {
               {currentGame?.initial_serve_team && match && (
                 <div className="mt-3 grid gap-2 md:grid-cols-2">
                   <div
-                    className={`rounded-lg px-3 py-2 text-sm font-medium ${
-                      getCurrentServe() === 'A'
-                        ? 'bg-blue-50 text-blue-700'
-                        : 'bg-red-50 text-red-700'
-                    }`}
+                    className={`rounded-lg px-3 py-2 text-sm font-medium ${getCurrentServe() === 'A' ? 'bg-blue-50 text-blue-700' : 'bg-red-50 text-red-700'}`}
                   >
                     サーブ側: チーム{getCurrentServe()}
                   </div>
@@ -1940,14 +1573,9 @@ const MatchInput = () => {
 
               {gameWon && (
                 <div className="mt-3 text-center">
-                  <p className="text-sm font-semibold text-green-600">
-                    チーム{gameWon}の勝利
-                  </p>
+                  <p className="text-sm font-semibold text-green-600">チーム{gameWon}の勝利</p>
                   {!matchFinished && (
-                    <button
-                      onClick={startNewGame}
-                      className="mt-3 rounded bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600"
-                    >
+                    <button onClick={startNewGame} className="mt-3 rounded bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600">
                       次のゲームを開始
                     </button>
                   )}
@@ -1959,47 +1587,22 @@ const MatchInput = () => {
 
         {/* ゲームスコアと現在のゲーム状況を横並びで表示 */}
         {!matchFinished && !needsServeSelection && currentGame && (
-          <div
-            className={`mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 ${
-              isPointInputActive ? 'xl:hidden' : ''
-            }`}
-          >
+          <div className={`mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 ${isPointInputActive ? 'xl:hidden' : ''}`}>
             {/* ゲームスコア */}
             <div className="bg-white rounded-lg shadow-md p-4 h-40 flex flex-col">
               <h3 className="text-lg font-semibold mb-3">ゲームスコア</h3>
-              <div className="text-2xl font-bold text-center mb-3">
-                {getGameScores()}
-              </div>
+              <div className="text-2xl font-bold text-center mb-3">{getGameScores()}</div>
               {/* 各ゲームの詳細スコア */}
               {match.games && match.games.length > 0 && (
                 <div className="flex-1 overflow-y-auto space-y-2 pr-2">
                   {match.games.map((game: Game) => (
-                    <div
-                      key={game.id}
-                      className="flex justify-between items-center p-2 bg-gray-50 rounded"
-                    >
-                      <span className="text-sm font-medium">
-                        第{game.game_number}ゲーム
-                      </span>
+                    <div key={game.id} className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                      <span className="text-sm font-medium">第{game.game_number}ゲーム</span>
                       <div className="flex items-center space-x-2">
-                        <span
-                          className={`text-sm font-bold ${
-                            game.winner_team === 'A' ? 'text-blue-600' : ''
-                          }`}
-                        >
-                          {game.points_a}
-                        </span>
+                        <span className={`text-sm font-bold ${game.winner_team === 'A' ? 'text-blue-600' : ''}`}>{game.points_a}</span>
                         <span className="text-sm">-</span>
-                        <span
-                          className={`text-sm font-bold ${
-                            game.winner_team === 'B' ? 'text-red-600' : ''
-                          }`}
-                        >
-                          {game.points_b}
-                        </span>
-                        {game.winner_team && (
-                          <span className="text-xs text-green-600 ml-2">✓</span>
-                        )}
+                        <span className={`text-sm font-bold ${game.winner_team === 'B' ? 'text-red-600' : ''}`}>{game.points_b}</span>
+                        {game.winner_team && <span className="text-xs text-green-600 ml-2">✓</span>}
                       </div>
                     </div>
                   ))}
@@ -2009,40 +1612,27 @@ const MatchInput = () => {
 
             {/* 現在のゲーム状況 */}
             <div className="bg-white rounded-lg shadow-md p-4 h-40">
-              <h2 className="text-lg font-semibold mb-3">
-                第{currentGame?.game_number}ゲーム
-              </h2>
+              <h2 className="text-lg font-semibold mb-3">第{currentGame?.game_number}ゲーム</h2>
 
               {/* サーブ権表示 */}
               {currentGame?.initial_serve_team && match && (
                 <div
                   className={`rounded-lg p-3 mb-3 ${
-                    getCurrentServe() === 'A'
-                      ? 'bg-blue-50 border border-blue-200 text-blue-700'
-                      : 'bg-red-50 border border-red-200 text-red-700'
+                    getCurrentServe() === 'A' ? 'bg-blue-50 border border-blue-200 text-blue-700' : 'bg-red-50 border border-red-200 text-red-700'
                   }`}
                 >
                   <div className="text-center">
-                    <div className="text-sm mt-1">
-                      🏓 チーム{getCurrentServe()}のサーブ
-                    </div>
+                    <div className="text-sm mt-1">🏓 チーム{getCurrentServe()}のサーブ</div>
                   </div>
                 </div>
               )}
 
-              <div className="text-2xl font-bold text-center mb-3">
-                {currentScore}
-              </div>
+              <div className="text-2xl font-bold text-center mb-3">{currentScore}</div>
               {gameWon && (
                 <div className="text-center">
-                  <p className="text-lg text-green-600 font-semibold">
-                    チーム{gameWon}の勝利！
-                  </p>
+                  <p className="text-lg text-green-600 font-semibold">チーム{gameWon}の勝利！</p>
                   {!matchFinished && (
-                    <button
-                      onClick={startNewGame}
-                      className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
-                    >
+                    <button onClick={startNewGame} className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
                       次のゲームを開始
                     </button>
                   )}
@@ -2057,14 +1647,8 @@ const MatchInput = () => {
           <div className="xl:col-start-2 xl:row-start-1">
             <div className="bg-white rounded-lg shadow-md p-4">
               <div className="text-center mb-4">
-                <h3 className="text-lg font-semibold">
-                  {isEditMode ? 'ポイント編集' : 'ポイント記録'}
-                </h3>
-                {isEditMode && editingPoint && (
-                  <p className="text-sm text-blue-600 mt-1">
-                    #{editingPoint.point_number} を編集中
-                  </p>
-                )}
+                <h3 className="text-lg font-semibold">{isEditMode ? 'ポイント編集' : 'ポイント記録'}</h3>
+                {isEditMode && editingPoint && <p className="text-sm text-blue-600 mt-1">#{editingPoint.point_number} を編集中</p>}
                 {!isEditMode && getCurrentServingPlayer() && (
                   <div className="mt-2">
                     {/* サーバー表示と手動選択を横並びに */}
@@ -2074,25 +1658,16 @@ const MatchInput = () => {
                         const servingTeam = getCurrentServe();
                         if (!servingTeam) return null;
 
-                        const teamPlayers = getPlayerNamesFromMatch(
-                          match,
-                          servingTeam,
-                        );
+                        const teamPlayers = getPlayerNamesFromMatch(match, servingTeam);
                         const isDoubles = teamPlayers.length > 1;
 
                         return (
-                          <div
-                            className={`grid gap-3 ${isDoubles ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}
-                          >
+                          <div className={`grid gap-3 ${isDoubles ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                             {/* サーバー表示 */}
                             <div className="p-2 bg-yellow-50 border border-yellow-200 rounded">
                               <p className="text-m font-medium text-yellow-800">
                                 サーブ: {getCurrentServingPlayer()?.playerName}
-                                {manualServingPlayer && (
-                                  <span className="text-xs text-blue-600 ml-2">
-                                    (手動選択)
-                                  </span>
-                                )}
+                                {manualServingPlayer && <span className="text-xs text-blue-600 ml-2">(手動選択)</span>}
                               </p>
                             </div>
 
@@ -2110,10 +1685,7 @@ const MatchInput = () => {
                                         });
                                       }}
                                       className={`px-3 py-1 text-xs border rounded font-medium transition-all ${
-                                        manualServingPlayer?.team ===
-                                          servingTeam &&
-                                        manualServingPlayer?.playerIndex ===
-                                          index
+                                        manualServingPlayer?.team === servingTeam && manualServingPlayer?.playerIndex === index
                                           ? 'border-blue-500 bg-blue-100 text-blue-700'
                                           : 'border-gray-300 hover:border-blue-300 text-gray-700'
                                       }`}
@@ -2139,9 +1711,7 @@ const MatchInput = () => {
 
               {/* サーブ情報 */}
               <div className="mb-4">
-                <h4 className="text-sm font-medium mb-2 text-center">
-                  サーブ情報
-                </h4>
+                <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
                 <div className="grid grid-cols-3 gap-2">
                   <button
                     onClick={() => {
@@ -2166,9 +1736,7 @@ const MatchInput = () => {
                       });
                     }}
                     className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                      pointData.result_type === 'service_ace'
-                        ? 'border-green-500 bg-green-50 text-green-700'
-                        : 'border-gray-300 hover:border-green-300'
+                      pointData.result_type === 'service_ace' ? 'border-green-500 bg-green-50 text-green-700' : 'border-gray-300 hover:border-green-300'
                     }`}
                   >
                     サービスエース
@@ -2220,9 +1788,7 @@ const MatchInput = () => {
                       });
                     }}
                     className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                      pointData.result_type === 'double_fault'
-                        ? 'border-purple-500 bg-purple-50 text-purple-700'
-                        : 'border-gray-300 hover:border-purple-300'
+                      pointData.result_type === 'double_fault' ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-gray-300 hover:border-purple-300'
                     }`}
                   >
                     ダブルフォルト
@@ -2232,31 +1798,20 @@ const MatchInput = () => {
 
               {/* ラリー数 */}
               <div className="mb-4">
-                <h4 className="text-sm font-medium mb-2 text-center">
-                  ラリー数
-                </h4>
+                <h4 className="text-sm font-medium mb-2 text-center">ラリー数</h4>
                 <div className="overflow-x-auto">
-                  <div
-                    className="flex gap-1 pb-2"
-                    style={{ minWidth: 'max-content' }}
-                  >
-                    {Array.from({ length: 100 }, (_, i) => i + 1).map(
-                      (count) => (
-                        <button
-                          key={count}
-                          onClick={() =>
-                            setPointData({ ...pointData, rally_count: count })
-                          }
-                          className={`flex-shrink-0 w-8 h-8 border-2 rounded font-medium transition-all text-xs ${
-                            pointData.rally_count === count
-                              ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                              : 'border-gray-300 hover:border-indigo-300'
-                          }`}
-                        >
-                          {count}
-                        </button>
-                      ),
-                    )}
+                  <div className="flex gap-1 pb-2" style={{ minWidth: 'max-content' }}>
+                    {Array.from({ length: 100 }, (_, i) => i + 1).map((count) => (
+                      <button
+                        key={count}
+                        onClick={() => setPointData({ ...pointData, rally_count: count })}
+                        className={`flex-shrink-0 w-8 h-8 border-2 rounded font-medium transition-all text-xs ${
+                          pointData.rally_count === count ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-gray-300 hover:border-indigo-300'
+                        }`}
+                      >
+                        {count}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -2265,9 +1820,7 @@ const MatchInput = () => {
               <div className="mb-4 grid grid-cols-2 gap-4">
                 {/* ウィナー */}
                 <div>
-                  <h4 className="text-sm font-medium mb-2 text-center text-green-600">
-                    ウィナー
-                  </h4>
+                  <h4 className="text-sm font-medium mb-2 text-center text-green-600">ウィナー</h4>
                   <div className="grid grid-cols-2 gap-1">
                     {[
                       { value: 'smash_winner', label: 'スマッシュ' },
@@ -2288,10 +1841,7 @@ const MatchInput = () => {
                           };
                           // 関与選手が設定されていれば勝者チームを自動決定
                           if (pointData.winner_player) {
-                            const autoWinner = determineWinnerTeam(
-                              pointData.winner_player,
-                              value,
-                            );
+                            const autoWinner = determineWinnerTeam(pointData.winner_player, value);
                             if (autoWinner) {
                               newData.winner_team = autoWinner;
                             }
@@ -2299,9 +1849,7 @@ const MatchInput = () => {
                           setPointData(newData);
                         }}
                         className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                          pointData.result_type === value
-                            ? 'border-green-500 bg-green-50 text-green-700'
-                            : 'border-gray-300 hover:border-green-300'
+                          pointData.result_type === value ? 'border-green-500 bg-green-50 text-green-700' : 'border-gray-300 hover:border-green-300'
                         }`}
                       >
                         {label}
@@ -2311,9 +1859,7 @@ const MatchInput = () => {
                 </div>
                 {/* ミス */}
                 <div>
-                  <h4 className="text-sm font-medium mb-2 text-center text-red-600">
-                    ミス
-                  </h4>
+                  <h4 className="text-sm font-medium mb-2 text-center text-red-600">ミス</h4>
                   <div className="grid grid-cols-2 gap-1">
                     {[
                       { value: 'net', label: 'ネット' },
@@ -2330,20 +1876,14 @@ const MatchInput = () => {
                             ...pointData,
                             result_type: value,
                             // レシーブ失敗の場合はラリー数を2に設定
-                            rally_count:
-                              value === 'receive_error'
-                                ? 2
-                                : pointData.rally_count,
+                            rally_count: value === 'receive_error' ? 2 : pointData.rally_count,
                             // サーブ関連の自動設定をクリア（ただしダブルフォルト以外）
                             double_fault: false,
                             winner_player: '',
                           };
                           // 関与選手が設定されていれば勝者チームを自動決定
                           if (pointData.winner_player) {
-                            const autoWinner = determineWinnerTeam(
-                              pointData.winner_player,
-                              value,
-                            );
+                            const autoWinner = determineWinnerTeam(pointData.winner_player, value);
                             if (autoWinner) {
                               newData.winner_team = autoWinner;
                             }
@@ -2351,9 +1891,7 @@ const MatchInput = () => {
                           setPointData(newData);
                         }}
                         className={`p-2 border-2 rounded font-medium transition-all text-xs ${
-                          pointData.result_type === value
-                            ? 'border-red-500 bg-red-50 text-red-700'
-                            : 'border-gray-300 hover:border-red-300'
+                          pointData.result_type === value ? 'border-red-500 bg-red-50 text-red-700' : 'border-gray-300 hover:border-red-300'
                         }`}
                       >
                         {label}
@@ -2365,229 +1903,159 @@ const MatchInput = () => {
 
               {/* 関与選手 */}
               <div className="mb-4">
-                <h4 className="text-sm font-medium mb-2 text-center">
-                  関与選手
-                </h4>
+                <h4 className="text-sm font-medium mb-2 text-center">関与選手</h4>
                 {/* サービスエース・ダブルフォルト時の自動設定表示 */}
-                {(pointData.result_type === 'service_ace' ||
-                  pointData.result_type === 'double_fault') && (
+                {(pointData.result_type === 'service_ace' || pointData.result_type === 'double_fault') && (
                   <div className="mb-3 p-2 bg-yellow-50 border border-yellow-200 rounded text-center">
                     <p className="text-xs text-yellow-800">
                       {pointData.result_type === 'service_ace'
                         ? 'サービスエース：サーブ選手が自動選択されています'
                         : 'ダブルフォルト：サーブ選手と1stフォルトが自動選択されています'}
                     </p>
-                    <p className="text-xs text-yellow-600 mt-1">
-                      現在のサーブ選手: {getCurrentServingPlayer()?.playerName}
-                    </p>
+                    <p className="text-xs text-yellow-600 mt-1">現在のサーブ選手: {getCurrentServingPlayer()?.playerName}</p>
                   </div>
                 )}
                 <div className="grid grid-cols-2 gap-2">
                   {/* チームA選手 */}
                   <div>
-                    <h5 className="text-xs font-medium mb-1 text-center text-blue-600">
-                      チーム A
-                    </h5>
+                    <h5 className="text-xs font-medium mb-1 text-center text-blue-600">チーム A</h5>
                     <div className="grid grid-cols-2 gap-1">
-                      {getPlayerNamesFromMatch(match, 'A').map(
-                        (playerName: string, index: number) => {
-                          const uniqueId = getPlayerUniqueId(
-                            'A',
-                            index,
-                            playerName,
-                          );
-                          const isAutoSelected =
-                            pointData.result_type === 'service_ace' ||
-                            pointData.result_type === 'double_fault';
-                          return (
-                            <button
-                              key={uniqueId}
-                              disabled={isAutoSelected}
-                              onClick={() => {
-                                // サービスエース・ダブルフォルトの場合は自動設定のため何もしない
-                                if (isAutoSelected) {
-                                  return;
+                      {getPlayerNamesFromMatch(match, 'A').map((playerName: string, index: number) => {
+                        const uniqueId = getPlayerUniqueId('A', index, playerName);
+                        const isAutoSelected = pointData.result_type === 'service_ace' || pointData.result_type === 'double_fault';
+                        return (
+                          <button
+                            key={uniqueId}
+                            disabled={isAutoSelected}
+                            onClick={() => {
+                              // サービスエース・ダブルフォルトの場合は自動設定のため何もしない
+                              if (isAutoSelected) {
+                                return;
+                              }
+
+                              const newData = { ...pointData };
+
+                              // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
+                              const errorTypes = ['net', 'out', 'smash_error', 'volley_error', 'double_fault', 'receive_error', 'follow_error'];
+                              if (pointData.result_type && errorTypes.includes(pointData.result_type)) {
+                                newData.loser_player = uniqueId;
+                                // winner_playerをクリアする場合もある
+                                if (pointData.winner_player === uniqueId) {
+                                  newData.winner_player = '';
                                 }
+                              } else {
+                                newData.winner_player = uniqueId;
+                                // loser_playerをクリアする場合もある
+                                if (pointData.loser_player === uniqueId) {
+                                  newData.loser_player = '';
+                                }
+                              }
 
-                                const newData = { ...pointData };
-
-                                // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
-                                const errorTypes = [
-                                  'net',
-                                  'out',
-                                  'smash_error',
-                                  'volley_error',
-                                  'double_fault',
-                                  'receive_error',
-                                  'follow_error',
-                                ];
-                                if (
-                                  pointData.result_type &&
-                                  errorTypes.includes(pointData.result_type)
-                                ) {
-                                  newData.loser_player = uniqueId;
-                                  // winner_playerをクリアする場合もある
-                                  if (pointData.winner_player === uniqueId) {
-                                    newData.winner_player = '';
-                                  }
-                                } else {
-                                  newData.winner_player = uniqueId;
-                                  // loser_playerをクリアする場合もある
-                                  if (pointData.loser_player === uniqueId) {
-                                    newData.loser_player = '';
+                              // 結果タイプが設定されていれば勝者チームを自動決定
+                              if (pointData.result_type) {
+                                const playerFieldToUse = errorTypes.includes(pointData.result_type) ? newData.loser_player : newData.winner_player;
+                                if (playerFieldToUse) {
+                                  const autoWinner = determineWinnerTeam(playerFieldToUse, pointData.result_type);
+                                  if (autoWinner) {
+                                    newData.winner_team = autoWinner;
                                   }
                                 }
-
-                                // 結果タイプが設定されていれば勝者チームを自動決定
-                                if (pointData.result_type) {
-                                  const playerFieldToUse = errorTypes.includes(
-                                    pointData.result_type,
-                                  )
-                                    ? newData.loser_player
-                                    : newData.winner_player;
-                                  if (playerFieldToUse) {
-                                    const autoWinner = determineWinnerTeam(
-                                      playerFieldToUse,
-                                      pointData.result_type,
-                                    );
-                                    if (autoWinner) {
-                                      newData.winner_team = autoWinner;
-                                    }
-                                  }
-                                }
-                                setPointData(newData);
-                              }}
-                              className={`p-1 border-2 rounded font-medium transition-all text-xs ${
-                                isAutoSelected
-                                  ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
-                                  : pointData.winner_player === uniqueId
-                                    ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                    : pointData.loser_player === uniqueId
-                                      ? 'border-orange-500 bg-orange-50 text-orange-700'
-                                      : 'border-gray-300 hover:border-blue-300'
-                              }`}
-                            >
-                              {playerName}
-                            </button>
-                          );
-                        },
-                      )}
+                              }
+                              setPointData(newData);
+                            }}
+                            className={`p-1 border-2 rounded font-medium transition-all text-xs ${
+                              isAutoSelected
+                                ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                                : pointData.winner_player === uniqueId
+                                  ? 'border-blue-500 bg-blue-50 text-blue-700'
+                                  : pointData.loser_player === uniqueId
+                                    ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                    : 'border-gray-300 hover:border-blue-300'
+                            }`}
+                          >
+                            {playerName}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                   {/* チームB選手 */}
                   <div>
-                    <h5 className="text-xs font-medium mb-1 text-center text-red-600">
-                      チーム B
-                    </h5>
+                    <h5 className="text-xs font-medium mb-1 text-center text-red-600">チーム B</h5>
                     <div className="grid grid-cols-2 gap-1">
-                      {getPlayerNamesFromMatch(match, 'B').map(
-                        (playerName: string, index: number) => {
-                          const uniqueId = getPlayerUniqueId(
-                            'B',
-                            index,
-                            playerName,
-                          );
-                          const isAutoSelected =
-                            pointData.result_type === 'service_ace' ||
-                            pointData.result_type === 'double_fault';
-                          return (
-                            <button
-                              key={uniqueId}
-                              disabled={isAutoSelected}
-                              onClick={() => {
-                                // サービスエース・ダブルフォルトの場合は自動設定のため何もしない
-                                if (isAutoSelected) {
-                                  return;
-                                }
-                                const newData = { ...pointData };
+                      {getPlayerNamesFromMatch(match, 'B').map((playerName: string, index: number) => {
+                        const uniqueId = getPlayerUniqueId('B', index, playerName);
+                        const isAutoSelected = pointData.result_type === 'service_ace' || pointData.result_type === 'double_fault';
+                        return (
+                          <button
+                            key={uniqueId}
+                            disabled={isAutoSelected}
+                            onClick={() => {
+                              // サービスエース・ダブルフォルトの場合は自動設定のため何もしない
+                              if (isAutoSelected) {
+                                return;
+                              }
+                              const newData = { ...pointData };
 
-                                // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
-                                const errorTypes = [
-                                  'net',
-                                  'out',
-                                  'smash_error',
-                                  'volley_error',
-                                  'double_fault',
-                                  'receive_error',
-                                  'follow_error',
-                                ];
-                                if (
-                                  pointData.result_type &&
-                                  errorTypes.includes(pointData.result_type)
-                                ) {
-                                  newData.loser_player = uniqueId;
-                                  // winner_playerをクリアする場合もある
-                                  if (pointData.winner_player === uniqueId) {
-                                    newData.winner_player = '';
-                                  }
-                                } else {
-                                  newData.winner_player = uniqueId;
-                                  // loser_playerをクリアする場合もある
-                                  if (pointData.loser_player === uniqueId) {
-                                    newData.loser_player = '';
-                                  }
+                              // エラー系の結果タイプの場合はloser_playerに設定、それ以外はwinner_playerに設定
+                              const errorTypes = ['net', 'out', 'smash_error', 'volley_error', 'double_fault', 'receive_error', 'follow_error'];
+                              if (pointData.result_type && errorTypes.includes(pointData.result_type)) {
+                                newData.loser_player = uniqueId;
+                                // winner_playerをクリアする場合もある
+                                if (pointData.winner_player === uniqueId) {
+                                  newData.winner_player = '';
                                 }
+                              } else {
+                                newData.winner_player = uniqueId;
+                                // loser_playerをクリアする場合もある
+                                if (pointData.loser_player === uniqueId) {
+                                  newData.loser_player = '';
+                                }
+                              }
 
-                                // 結果タイプが設定されていれば勝者チームを自動決定
-                                if (pointData.result_type) {
-                                  const playerFieldToUse = errorTypes.includes(
-                                    pointData.result_type,
-                                  )
-                                    ? newData.loser_player
-                                    : newData.winner_player;
-                                  if (playerFieldToUse) {
-                                    const autoWinner = determineWinnerTeam(
-                                      playerFieldToUse,
-                                      pointData.result_type,
-                                    );
-                                    if (autoWinner) {
-                                      newData.winner_team = autoWinner;
-                                    }
+                              // 結果タイプが設定されていれば勝者チームを自動決定
+                              if (pointData.result_type) {
+                                const playerFieldToUse = errorTypes.includes(pointData.result_type) ? newData.loser_player : newData.winner_player;
+                                if (playerFieldToUse) {
+                                  const autoWinner = determineWinnerTeam(playerFieldToUse, pointData.result_type);
+                                  if (autoWinner) {
+                                    newData.winner_team = autoWinner;
                                   }
                                 }
-                                setPointData(newData);
-                              }}
-                              className={`p-1 border-2 rounded font-medium transition-all text-xs ${
-                                isAutoSelected
-                                  ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
-                                  : pointData.winner_player === uniqueId
-                                    ? 'border-red-500 bg-red-50 text-red-700'
-                                    : pointData.loser_player === uniqueId
-                                      ? 'border-orange-500 bg-orange-50 text-orange-700'
-                                      : 'border-gray-300 hover:border-red-300'
-                              }`}
-                            >
-                              {playerName}
-                            </button>
-                          );
-                        },
-                      )}
+                              }
+                              setPointData(newData);
+                            }}
+                            className={`p-1 border-2 rounded font-medium transition-all text-xs ${
+                              isAutoSelected
+                                ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                                : pointData.winner_player === uniqueId
+                                  ? 'border-red-500 bg-red-50 text-red-700'
+                                  : pointData.loser_player === uniqueId
+                                    ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                    : 'border-gray-300 hover:border-red-300'
+                            }`}
+                          >
+                            {playerName}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* 勝者チーム */}
-              <div
-                className={`mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 ${
-                  isPointInputActive ? 'xl:hidden' : ''
-                }`}
-              >
+              <div className={`mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 ${isPointInputActive ? 'xl:hidden' : ''}`}>
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <h4 className="text-sm font-medium">動画時刻</h4>
-                    <p className="text-xs text-gray-500">
-                      開始だけでも保存できます。終了未設定時は詳細画面で 15
-                      秒再生します。
-                    </p>
+                    <p className="text-xs text-gray-500">開始だけでも保存できます。終了未設定時は詳細画面で 15 秒再生します。</p>
                   </div>
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-2">
                   <div>
-                    <label className="mb-1 block text-xs text-gray-600">
-                      開始時刻 (秒)
-                    </label>
+                    <label className="mb-1 block text-xs text-gray-600">開始時刻 (秒)</label>
                     <input
                       type="text"
                       inputMode="decimal"
@@ -2595,23 +2063,16 @@ const MatchInput = () => {
                       onChange={(event) =>
                         setPointData({
                           ...pointData,
-                          video_start_ms: parseSecondsInputToMs(
-                            event.target.value,
-                          ),
+                          video_start_ms: parseSecondsInputToMs(event.target.value),
                         })
                       }
                       className="w-full rounded border p-2 text-sm"
                       placeholder="例: 83.4 or 1:23"
                     />
-                    <p className="mt-1 text-xs text-gray-500">
-                      表示:{' '}
-                      {formatVideoTimestamp(pointData.video_start_ms, true)}
-                    </p>
+                    <p className="mt-1 text-xs text-gray-500">表示: {formatVideoTimestamp(pointData.video_start_ms, true)}</p>
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs text-gray-600">
-                      終了時刻 (秒)
-                    </label>
+                    <label className="mb-1 block text-xs text-gray-600">終了時刻 (秒)</label>
                     <input
                       type="text"
                       inputMode="decimal"
@@ -2619,17 +2080,13 @@ const MatchInput = () => {
                       onChange={(event) =>
                         setPointData({
                           ...pointData,
-                          video_end_ms: parseSecondsInputToMs(
-                            event.target.value,
-                          ),
+                          video_end_ms: parseSecondsInputToMs(event.target.value),
                         })
                       }
                       className="w-full rounded border p-2 text-sm"
                       placeholder="例: 95.0 or 1:35"
                     />
-                    <p className="mt-1 text-xs text-gray-500">
-                      表示: {formatVideoTimestamp(pointData.video_end_ms, true)}
-                    </p>
+                    <p className="mt-1 text-xs text-gray-500">表示: {formatVideoTimestamp(pointData.video_end_ms, true)}</p>
                   </div>
                 </div>
               </div>
@@ -2641,25 +2098,17 @@ const MatchInput = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <button
-                    onClick={() =>
-                      setPointData({ ...pointData, winner_team: 'A' })
-                    }
+                    onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
                     className={`p-2 border-2 rounded font-medium transition-all text-sm ${
-                      pointData.winner_team === 'A'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
-                        : 'border-gray-300 hover:border-blue-300'
+                      pointData.winner_team === 'A' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:border-blue-300'
                     }`}
                   >
                     チーム A
                   </button>
                   <button
-                    onClick={() =>
-                      setPointData({ ...pointData, winner_team: 'B' })
-                    }
+                    onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
                     className={`p-2 border-2 rounded font-medium transition-all text-sm ${
-                      pointData.winner_team === 'B'
-                        ? 'border-red-500 bg-red-50 text-red-700'
-                        : 'border-gray-300 hover:border-red-300'
+                      pointData.winner_team === 'B' ? 'border-red-500 bg-red-50 text-red-700' : 'border-gray-300 hover:border-red-300'
                     }`}
                   >
                     チーム B
@@ -2713,11 +2162,7 @@ const MatchInput = () => {
                   >
                     終了を記録
                   </button>
-                  <button
-                    type="button"
-                    onClick={clearVideoRange}
-                    className="rounded border border-gray-300 px-3 py-1.5 text-xs hover:bg-white"
-                  >
+                  <button type="button" onClick={clearVideoRange} className="rounded border border-gray-300 px-3 py-1.5 text-xs hover:bg-white">
                     クリア
                   </button>
                 </div>
@@ -2735,9 +2180,6 @@ const MatchInput = () => {
 };
 
 export default MatchInput;
-function useCallback(
-  callback: () => Promise<void>,
-  dependencies: (string | string[] | undefined)[],
-) {
+function useCallback(callback: () => Promise<void>, dependencies: (string | string[] | undefined)[]) {
   return reactUseCallback(callback, dependencies);
 }

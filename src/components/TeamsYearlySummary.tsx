@@ -9,14 +9,10 @@ type TeamsYearlySummaryProps = {
   };
 };
 
-export default function TeamsYearlySummary({
-  summary,
-}: TeamsYearlySummaryProps) {
+export default function TeamsYearlySummary({ summary }: TeamsYearlySummaryProps) {
   return (
     <section className="mb-8 px-4">
-      <h2 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100">
-        年間成績
-      </h2>
+      <h2 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100">年間成績</h2>
       <div className="bg-white rounded-xl shadow-sm dark:bg-gray-800 p-4 border border-gray-200 dark:border-gray-700">
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm justify-start items-baseline">
           <div className="flex items-center gap-1">
@@ -37,9 +33,7 @@ export default function TeamsYearlySummary({
             <span className="text-lg font-bold">{summary.runnersUp}</span>
           </div>
           <div className="flex items-center gap-1">
-            <span className="text-gray-500 dark:text-gray-400">
-              ベスト8以上
-            </span>
+            <span className="text-gray-500 dark:text-gray-400">ベスト8以上</span>
             <span className="text-lg font-bold">{summary.top8OrBetter}</span>
           </div>
         </div>

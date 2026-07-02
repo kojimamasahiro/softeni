@@ -1,16 +1,11 @@
 // lib/playerStats/__tests__/ranking.test.ts
 // シーズンポイント: 上位N大会合算 / tier×係数 / config 変更が結果に反映されること。
 
-import {
-  computeSeasonPoints,
-  entryScore,
-  placementCoefficient,
-} from '../aggregators/rankingCompute';
+import { computeSeasonPoints, entryScore, placementCoefficient } from '../aggregators/rankingCompute';
 import { DEFAULT_CONFIG, PlayerStatsConfig } from '../config';
 import type { PlayerEntryFact } from '../types';
 import { assert, summary, test } from './harness';
 
-// eslint-disable-next-line no-console
 console.log('ranking.test.ts');
 
 function entry(over: Partial<PlayerEntryFact>): PlayerEntryFact {
@@ -38,18 +33,9 @@ function entry(over: Partial<PlayerEntryFact>): PlayerEntryFact {
 
 test('entryScore = tier重み × 順位係数', () => {
   // major winner = 100 * 1.0
-  assert.strictEqual(
-    entryScore(entry({ isMajorTitle: true, placement: { kind: 'winner' } }), DEFAULT_CONFIG),
-    100,
-  );
+  assert.strictEqual(entryScore(entry({ isMajorTitle: true, placement: { kind: 'winner' } }), DEFAULT_CONFIG), 100);
   // national best4 = 60 * 0.5
-  assert.strictEqual(
-    entryScore(
-      entry({ isMajorTitle: false, isNational: true, placement: { kind: 'best', bestLevel: 4 } }),
-      DEFAULT_CONFIG,
-    ),
-    30,
-  );
+  assert.strictEqual(entryScore(entry({ isMajorTitle: false, isNational: true, placement: { kind: 'best', bestLevel: 4 } }), DEFAULT_CONFIG), 30);
 });
 
 test('上位N大会（=3）のみ合算する', () => {

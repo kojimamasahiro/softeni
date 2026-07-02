@@ -6,15 +6,7 @@
 
 import type { ContextMilestone } from './TournamentContextBlocks';
 
-export default function ResultContextBlocks({
-  label,
-  year,
-  milestones,
-}: {
-  label: string;
-  year: string;
-  milestones: ContextMilestone[];
-}) {
+export default function ResultContextBlocks({ label, year, milestones }: { label: string; year: string; milestones: ContextMilestone[] }) {
   if (milestones.length === 0) return null;
 
   return (
@@ -30,11 +22,7 @@ export default function ResultContextBlocks({
               title={m.scopeNote ?? undefined}
             >
               {m.label}
-              {m.scopeNote && (
-                <span className="ml-1 align-middle text-[10px] font-normal opacity-70">
-                  ※当サイト掲載分
-                </span>
-              )}
+              {m.scopeNote && <span className="ml-1 align-middle text-[10px] font-normal opacity-70">※当サイト掲載分</span>}
             </span>
           </li>
         ))}

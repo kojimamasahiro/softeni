@@ -1,30 +1,13 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ChangeEvent,
-  type FormEvent,
-} from 'react';
+import { useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 
 import { hasLiveMatchApi } from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
 import { isScoreSiteMode } from '../../../../../lib/siteConfig';
-import {
-  buildYouTubeEmbedUrl,
-  formatDurationLabel,
-  getConfidenceLabel,
-  parseYouTubeVideoId,
-  VIDEO_REVIEW_RESULT_TYPES,
-} from '../../../../../lib/videoReview';
-import type {
-  Match,
-  MatchPointCandidate,
-  MatchVideoSession,
-} from '../../../../types/database';
+import { buildYouTubeEmbedUrl, formatDurationLabel, getConfidenceLabel, parseYouTubeVideoId, VIDEO_REVIEW_RESULT_TYPES } from '../../../../../lib/videoReview';
+import type { Match, MatchPointCandidate, MatchVideoSession } from '../../../../types/database';
 
 type SessionListResponse = {
   sessions?: MatchVideoSession[];
@@ -69,19 +52,9 @@ const ERROR_BUTTONS = [
   { value: 'follow_error', label: 'フォロー失敗' },
 ] as const;
 
-const ERROR_RESULT_TYPES = new Set([
-  'net',
-  'out',
-  'smash_error',
-  'volley_error',
-  'double_fault',
-  'receive_error',
-  'follow_error',
-]);
+const ERROR_RESULT_TYPES = new Set(['net', 'out', 'smash_error', 'volley_error', 'double_fault', 'receive_error', 'follow_error']);
 
-const createCandidateEditorState = (
-  candidate: MatchPointCandidate | null,
-): CandidateEditorState => ({
+const createCandidateEditorState = (candidate: MatchPointCandidate | null): CandidateEditorState => ({
   status: candidate?.status ?? 'pending',
   winner_team: candidate?.winner_team ?? null,
   serving_team: candidate?.serving_team ?? null,
@@ -101,8 +74,7 @@ const getStatusLabel = (status: MatchPointCandidate['status']) => {
   return '未確認';
 };
 
-const getPlayerUniqueId = (team: 'A' | 'B', index: number, name: string) =>
-  `${team}-${index}-${name}`;
+const getPlayerUniqueId = (team: 'A' | 'B', index: number, name: string) => `${team}-${index}-${name}`;
 
 const getTeamFromPlayerId = (uniqueId: string): 'A' | 'B' | null => {
   if (uniqueId.startsWith('A-')) return 'A';
@@ -110,24 +82,13 @@ const getTeamFromPlayerId = (uniqueId: string): 'A' | 'B' | null => {
   return null;
 };
 
-const determineWinnerTeam = (
-  playerUniqueId: string,
-  resultType: string,
-): 'A' | 'B' | null => {
+const determineWinnerTeam = (playerUniqueId: string, resultType: string): 'A' | 'B' | null => {
   if (!playerUniqueId || !resultType) return null;
 
   const playerTeam = getTeamFromPlayerId(playerUniqueId);
   if (!playerTeam) return null;
 
-  const winnerTypes = new Set([
-    'smash_winner',
-    'volley_winner',
-    'passing_winner',
-    'drop_winner',
-    'net_in_winner',
-    'service_ace',
-    'winner',
-  ]);
+  const winnerTypes = new Set(['smash_winner', 'volley_winner', 'passing_winner', 'drop_winner', 'net_in_winner', 'service_ace', 'winner']);
 
   if (winnerTypes.has(resultType)) {
     return playerTeam;
@@ -142,31 +103,21 @@ const determineWinnerTeam = (
 
 const getPlayerNamesFromMatch = (match: Match, team: 'A' | 'B'): string[] => {
   if (match.teams?.[team]) {
-    return match.teams[team].players.map(
-      (player) => `${player.last_name} ${player.first_name}`,
-    );
+    return match.teams[team].players.map((player) => `${player.last_name} ${player.first_name}`);
   }
 
   const players: string[] = [];
   const prefix = `team_${team.toLowerCase()}`;
 
-  const player1LastName = match[
-    `${prefix}_player1_last_name` as keyof Match
-  ] as string;
-  const player1FirstName = match[
-    `${prefix}_player1_first_name` as keyof Match
-  ] as string;
+  const player1LastName = match[`${prefix}_player1_last_name` as keyof Match] as string;
+  const player1FirstName = match[`${prefix}_player1_first_name` as keyof Match] as string;
 
   if (player1LastName && player1FirstName) {
     players.push(`${player1LastName} ${player1FirstName}`);
   }
 
-  const player2LastName = match[
-    `${prefix}_player2_last_name` as keyof Match
-  ] as string;
-  const player2FirstName = match[
-    `${prefix}_player2_first_name` as keyof Match
-  ] as string;
+  const player2LastName = match[`${prefix}_player2_last_name` as keyof Match] as string;
+  const player2FirstName = match[`${prefix}_player2_first_name` as keyof Match] as string;
 
   if (player2LastName && player2FirstName) {
     players.push(`${player2LastName} ${player2FirstName}`);
@@ -197,17 +148,10 @@ const VideoReviewPage = () => {
 
   const [match, setMatch] = useState<Match | null>(null);
   const [sessions, setSessions] = useState<MatchVideoSession[]>([]);
-  const [selectedSessionId, setSelectedSessionId] = useState<string | null>(
-    null,
-  );
-  const [selectedSession, setSelectedSession] =
-    useState<MatchVideoSession | null>(null);
-  const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(
-    null,
-  );
-  const [candidateEditor, setCandidateEditor] = useState<CandidateEditorState>(
-    createCandidateEditorState(null),
-  );
+  const [selectedSessionId, setSelectedSessionId] = useState<string | null>(null);
+  const [selectedSession, setSelectedSession] = useState<MatchVideoSession | null>(null);
+  const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(null);
+  const [candidateEditor, setCandidateEditor] = useState<CandidateEditorState>(createCandidateEditorState(null));
   const [loading, setLoading] = useState(true);
   const [sessionLoading, setSessionLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -215,9 +159,7 @@ const VideoReviewPage = () => {
   const [durationMsInput, setDurationMsInput] = useState('');
   const [playerStartSeconds, setPlayerStartSeconds] = useState(0);
   const [localUploadUrl, setLocalUploadUrl] = useState<string | null>(null);
-  const [boundUploadSessionId, setBoundUploadSessionId] = useState<
-    string | null
-  >(null);
+  const [boundUploadSessionId, setBoundUploadSessionId] = useState<string | null>(null);
   const [segmentationConfig, setSegmentationConfig] = useState({
     pointIntervalMs: 12000,
     clipLeadMs: 4000,
@@ -233,39 +175,19 @@ const VideoReviewPage = () => {
   });
 
   const selectedCandidates = selectedSession?.candidates ?? [];
-  const selectedCandidate =
-    selectedCandidates.find(
-      (candidate) => candidate.id === selectedCandidateId,
-    ) ?? null;
-  const confirmedCount = selectedCandidates.filter(
-    (candidate) => candidate.status === 'confirmed',
-  ).length;
-  const excludedCount = selectedCandidates.filter(
-    (candidate) => candidate.status === 'excluded',
-  ).length;
+  const selectedCandidate = selectedCandidates.find((candidate) => candidate.id === selectedCandidateId) ?? null;
+  const confirmedCount = selectedCandidates.filter((candidate) => candidate.status === 'confirmed').length;
+  const excludedCount = selectedCandidates.filter((candidate) => candidate.status === 'excluded').length;
 
   const playerEmbedUrl = useMemo(() => {
-    if (!selectedSession || selectedSession.source_type !== 'youtube')
-      return null;
-    return buildYouTubeEmbedUrl(
-      selectedSession.source_url ?? selectedSession.youtube_video_id ?? '',
-      playerStartSeconds,
-    );
+    if (!selectedSession || selectedSession.source_type !== 'youtube') return null;
+    return buildYouTubeEmbedUrl(selectedSession.source_url ?? selectedSession.youtube_video_id ?? '', playerStartSeconds);
   }, [playerStartSeconds, selectedSession]);
 
-  const canPreviewLocalUpload =
-    selectedSession?.source_type === 'upload' &&
-    selectedSession.id === boundUploadSessionId &&
-    localUploadUrl;
+  const canPreviewLocalUpload = selectedSession?.source_type === 'upload' && selectedSession.id === boundUploadSessionId && localUploadUrl;
 
-  const teamAPlayers = useMemo(
-    () => (match ? getPlayerNamesFromMatch(match, 'A') : []),
-    [match],
-  );
-  const teamBPlayers = useMemo(
-    () => (match ? getPlayerNamesFromMatch(match, 'B') : []),
-    [match],
-  );
+  const teamAPlayers = useMemo(() => (match ? getPlayerNamesFromMatch(match, 'A') : []), [match]);
+  const teamBPlayers = useMemo(() => (match ? getPlayerNamesFromMatch(match, 'B') : []), [match]);
 
   useEffect(() => {
     return () => {
@@ -280,9 +202,7 @@ const VideoReviewPage = () => {
 
     setSessionLoading(true);
     try {
-      const response = await fetch(
-        `/api/matches/${matchId}/video-sessions/${sessionId}`,
-      );
+      const response = await fetch(`/api/matches/${matchId}/video-sessions/${sessionId}`);
       const data = (await response.json()) as SessionDetailResponse;
       const session = data.session ?? null;
       setSelectedSession(session);
@@ -290,20 +210,11 @@ const VideoReviewPage = () => {
         setDurationMsInput(String(session.duration_ms));
       }
       const nextCandidateId =
-        selectedCandidateId &&
-        session?.candidates?.some(
-          (candidate) => candidate.id === selectedCandidateId,
-        )
+        selectedCandidateId && session?.candidates?.some((candidate) => candidate.id === selectedCandidateId)
           ? selectedCandidateId
           : (session?.candidates?.[0]?.id ?? null);
       setSelectedCandidateId(nextCandidateId);
-      setCandidateEditor(
-        createCandidateEditorState(
-          session?.candidates?.find(
-            (candidate) => candidate.id === nextCandidateId,
-          ) ?? null,
-        ),
-      );
+      setCandidateEditor(createCandidateEditorState(session?.candidates?.find((candidate) => candidate.id === nextCandidateId) ?? null));
     } catch (error) {
       console.error('Failed to fetch session:', error);
     } finally {
@@ -316,19 +227,12 @@ const VideoReviewPage = () => {
 
     setLoading(true);
     try {
-      const [matchResponse, sessionsResponse] = await Promise.all([
-        fetch(`/api/matches/${matchId}`),
-        fetch(`/api/matches/${matchId}/video-sessions`),
-      ]);
+      const [matchResponse, sessionsResponse] = await Promise.all([fetch(`/api/matches/${matchId}`), fetch(`/api/matches/${matchId}/video-sessions`)]);
 
       const matchData = (await matchResponse.json()) as MatchResponse;
-      const sessionsData =
-        (await sessionsResponse.json()) as SessionListResponse;
+      const sessionsData = (await sessionsResponse.json()) as SessionListResponse;
       const nextSessions = sessionsData.sessions ?? [];
-      const nextSelectedId =
-        targetSessionId ??
-        selectedSessionId ??
-        (nextSessions.length > 0 ? nextSessions[0].id : null);
+      const nextSelectedId = targetSessionId ?? selectedSessionId ?? (nextSessions.length > 0 ? nextSessions[0].id : null);
 
       setMatch(matchData.match ?? null);
       setSessions(nextSessions);
@@ -396,8 +300,7 @@ const VideoReviewPage = () => {
     event.preventDefault();
     if (typeof matchId !== 'string') return;
 
-    const durationMs =
-      Number(durationMsInput) > 0 ? Number(durationMsInput) : null;
+    const durationMs = Number(durationMsInput) > 0 ? Number(durationMsInput) : null;
 
     setSubmitting(true);
     try {
@@ -439,20 +342,17 @@ const VideoReviewPage = () => {
 
     setSubmitting(true);
     try {
-      const response = await fetch(
-        `/api/matches/${matchId}/video-sessions/${selectedSessionId}/segment`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            duration_ms: Number(durationMsInput),
-            point_interval_ms: segmentationConfig.pointIntervalMs,
-            clip_lead_ms: segmentationConfig.clipLeadMs,
-            clip_tail_ms: segmentationConfig.clipTailMs,
-            start_offset_ms: segmentationConfig.startOffsetMs,
-          }),
-        },
-      );
+      const response = await fetch(`/api/matches/${matchId}/video-sessions/${selectedSessionId}/segment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          duration_ms: Number(durationMsInput),
+          point_interval_ms: segmentationConfig.pointIntervalMs,
+          clip_lead_ms: segmentationConfig.clipLeadMs,
+          clip_tail_ms: segmentationConfig.clipTailMs,
+          start_offset_ms: segmentationConfig.startOffsetMs,
+        }),
+      });
 
       const data = await response.json();
       if (!response.ok) {
@@ -469,20 +369,14 @@ const VideoReviewPage = () => {
     }
   };
 
-  const patchCandidate = async (
-    candidateId: string,
-    updates: Partial<MatchPointCandidate>,
-  ) => {
+  const patchCandidate = async (candidateId: string, updates: Partial<MatchPointCandidate>) => {
     if (typeof matchId !== 'string' || !selectedSessionId) return null;
 
-    const response = await fetch(
-      `/api/matches/${matchId}/video-sessions/${selectedSessionId}/candidates/${candidateId}`,
-      {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updates),
-      },
-    );
+    const response = await fetch(`/api/matches/${matchId}/video-sessions/${selectedSessionId}/candidates/${candidateId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates),
+    });
 
     const data = await response.json();
     if (!response.ok) {
@@ -495,10 +389,7 @@ const VideoReviewPage = () => {
       if (!current) return current;
       return {
         ...current,
-        candidates:
-          current.candidates?.map((candidate) =>
-            candidate.id === candidateId ? updatedCandidate : candidate,
-          ) ?? [],
+        candidates: current.candidates?.map((candidate) => (candidate.id === candidateId ? updatedCandidate : candidate)) ?? [],
       };
     });
 
@@ -509,10 +400,7 @@ const VideoReviewPage = () => {
     return updatedCandidate;
   };
 
-  const handleQuickStatusUpdate = async (
-    candidate: MatchPointCandidate,
-    updates: Partial<MatchPointCandidate>,
-  ) => {
+  const handleQuickStatusUpdate = async (candidate: MatchPointCandidate, updates: Partial<MatchPointCandidate>) => {
     try {
       await patchCandidate(candidate.id, updates);
     } catch (error) {
@@ -526,12 +414,9 @@ const VideoReviewPage = () => {
 
     setSubmitting(true);
     try {
-      const response = await fetch(
-        `/api/matches/${matchId}/video-sessions/${selectedSessionId}/commit`,
-        {
-          method: 'POST',
-        },
-      );
+      const response = await fetch(`/api/matches/${matchId}/video-sessions/${selectedSessionId}/commit`, {
+        method: 'POST',
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -557,24 +442,12 @@ const VideoReviewPage = () => {
       ...candidateEditor,
       result_type: resultType,
       double_fault: resultType === 'double_fault',
-      first_serve_fault:
-        resultType === 'double_fault'
-          ? true
-          : candidateEditor.first_serve_fault,
-      rally_count:
-        resultType === 'receive_error'
-          ? 2
-          : resultType === 'service_ace' || resultType === 'double_fault'
-            ? 1
-            : candidateEditor.rally_count,
+      first_serve_fault: resultType === 'double_fault' ? true : candidateEditor.first_serve_fault,
+      rally_count: resultType === 'receive_error' ? 2 : resultType === 'service_ace' || resultType === 'double_fault' ? 1 : candidateEditor.rally_count,
     };
 
-    const pivotPlayer = ERROR_RESULT_TYPES.has(resultType)
-      ? nextState.loser_player
-      : nextState.winner_player;
-    const autoWinner = pivotPlayer
-      ? determineWinnerTeam(pivotPlayer, resultType)
-      : null;
+    const pivotPlayer = ERROR_RESULT_TYPES.has(resultType) ? nextState.loser_player : nextState.winner_player;
+    const autoWinner = pivotPlayer ? determineWinnerTeam(pivotPlayer, resultType) : null;
 
     if (autoWinner) {
       nextState.winner_team = autoWinner;
@@ -589,11 +462,7 @@ const VideoReviewPage = () => {
     updateEditor(nextState);
   };
 
-  const handlePlayerSelect = (
-    uniqueId: string,
-    team: 'A' | 'B',
-    kind: 'winner' | 'loser',
-  ) => {
+  const handlePlayerSelect = (uniqueId: string, team: 'A' | 'B', kind: 'winner' | 'loser') => {
     const nextState = { ...candidateEditor };
     if (kind === 'winner') {
       nextState.winner_player = uniqueId;
@@ -608,12 +477,8 @@ const VideoReviewPage = () => {
     }
 
     if (nextState.result_type) {
-      const pivotPlayer = ERROR_RESULT_TYPES.has(nextState.result_type)
-        ? nextState.loser_player
-        : nextState.winner_player;
-      const autoWinner = pivotPlayer
-        ? determineWinnerTeam(pivotPlayer, nextState.result_type)
-        : null;
+      const pivotPlayer = ERROR_RESULT_TYPES.has(nextState.result_type) ? nextState.loser_player : nextState.winner_player;
+      const autoWinner = pivotPlayer ? determineWinnerTeam(pivotPlayer, nextState.result_type) : null;
       if (autoWinner) {
         nextState.winner_team = autoWinner;
       }
@@ -630,8 +495,7 @@ const VideoReviewPage = () => {
       serving_player:
         team === null
           ? ''
-          : candidateEditor.serving_player &&
-              getTeamFromPlayerId(candidateEditor.serving_player) === team
+          : candidateEditor.serving_player && getTeamFromPlayerId(candidateEditor.serving_player) === team
             ? candidateEditor.serving_player
             : '',
     });
@@ -672,9 +536,7 @@ const VideoReviewPage = () => {
       <div className="max-w-4xl mx-auto p-6">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           <strong className="font-bold">編集不可</strong>
-          <span className="block sm:inline ml-2">
-            このページは開発サーバーでのみ利用できます。
-          </span>
+          <span className="block sm:inline ml-2">このページは開発サーバーでのみ利用できます。</span>
         </div>
       </div>
     );
@@ -691,16 +553,10 @@ const VideoReviewPage = () => {
   return (
     <div className="mx-auto max-w-[1500px] p-6 space-y-6">
       <div className="flex flex-wrap items-center gap-3">
-        <Link
-          href={`/beta/matches/${match.id}`}
-          className="text-blue-600 hover:underline"
-        >
+        <Link href={`/beta/matches/${match.id}`} className="text-blue-600 hover:underline">
           ← マッチ詳細に戻る
         </Link>
-        <Link
-          href={`/beta/matches/${match.id}/input`}
-          className="rounded bg-green-600 px-4 py-2 text-sm text-white hover:bg-green-700"
-        >
+        <Link href={`/beta/matches/${match.id}/input`} className="rounded bg-green-600 px-4 py-2 text-sm text-white hover:bg-green-700">
           通常入力へ
         </Link>
       </div>
@@ -721,9 +577,7 @@ const VideoReviewPage = () => {
             <h2 className="mb-4 text-lg font-semibold">動画セッション作成</h2>
             <form className="space-y-4" onSubmit={handleCreateSession}>
               <div>
-                <label className="mb-1 block text-sm text-gray-700">
-                  入力元
-                </label>
+                <label className="mb-1 block text-sm text-gray-700">入力元</label>
                 <select
                   value={sessionForm.source_type}
                   onChange={(event) =>
@@ -741,9 +595,7 @@ const VideoReviewPage = () => {
 
               {sessionForm.source_type === 'youtube' ? (
                 <div>
-                  <label className="mb-1 block text-sm text-gray-700">
-                    YouTube URL
-                  </label>
+                  <label className="mb-1 block text-sm text-gray-700">YouTube URL</label>
                   <input
                     type="url"
                     value={sessionForm.source_url}
@@ -757,34 +609,20 @@ const VideoReviewPage = () => {
                     className="w-full rounded border p-2 text-sm"
                     required
                   />
-                  {sessionForm.source_url &&
-                    !parseYouTubeVideoId(sessionForm.source_url) && (
-                      <p className="mt-1 text-xs text-red-500">
-                        動画IDを読み取れないURLです。
-                      </p>
-                    )}
+                  {sessionForm.source_url && !parseYouTubeVideoId(sessionForm.source_url) && (
+                    <p className="mt-1 text-xs text-red-500">動画IDを読み取れないURLです。</p>
+                  )}
                 </div>
               ) : (
                 <div>
-                  <label className="mb-1 block text-sm text-gray-700">
-                    ローカル動画
-                  </label>
-                  <input
-                    type="file"
-                    accept="video/*"
-                    onChange={handleUploadFileChange}
-                    className="w-full rounded border p-2 text-sm"
-                  />
-                  <p className="mt-1 text-xs text-gray-500">
-                    MVPではローカル再生用です。再訪時は再選択が必要です。
-                  </p>
+                  <label className="mb-1 block text-sm text-gray-700">ローカル動画</label>
+                  <input type="file" accept="video/*" onChange={handleUploadFileChange} className="w-full rounded border p-2 text-sm" />
+                  <p className="mt-1 text-xs text-gray-500">MVPではローカル再生用です。再訪時は再選択が必要です。</p>
                 </div>
               )}
 
               <div>
-                <label className="mb-1 block text-sm text-gray-700">
-                  ラベル
-                </label>
+                <label className="mb-1 block text-sm text-gray-700">ラベル</label>
                 <input
                   type="text"
                   value={sessionForm.source_label}
@@ -800,9 +638,7 @@ const VideoReviewPage = () => {
               </div>
 
               <div>
-                <label className="mb-1 block text-sm text-gray-700">
-                  動画長さ (ms)
-                </label>
+                <label className="mb-1 block text-sm text-gray-700">動画長さ (ms)</label>
                 <input
                   type="number"
                   min="1"
@@ -826,9 +662,7 @@ const VideoReviewPage = () => {
           <div className="rounded-lg bg-white p-5 shadow-md">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg font-semibold">既存セッション</h2>
-              <span className="text-xs text-gray-500">
-                {sessions.length} 件
-              </span>
+              <span className="text-xs text-gray-500">{sessions.length} 件</span>
             </div>
             <div className="space-y-3">
               {sessions.map((session) => (
@@ -837,35 +671,21 @@ const VideoReviewPage = () => {
                   type="button"
                   onClick={() => void handleSelectSession(session.id)}
                   className={`w-full rounded border p-3 text-left ${
-                    selectedSessionId === session.id
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-200 hover:border-gray-300'
+                    selectedSessionId === session.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <span className="font-medium">
-                      {session.source_label || '無題セッション'}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {session.source_type === 'youtube'
-                        ? 'YouTube'
-                        : 'ローカル動画'}
-                    </span>
+                    <span className="font-medium">{session.source_label || '無題セッション'}</span>
+                    <span className="text-xs text-gray-500">{session.source_type === 'youtube' ? 'YouTube' : 'ローカル動画'}</span>
                   </div>
                   <div className="mt-1 text-xs text-gray-500">
-                    {session.duration_ms
-                      ? formatDurationLabel(session.duration_ms)
-                      : '動画長未設定'}
+                    {session.duration_ms ? formatDurationLabel(session.duration_ms) : '動画長未設定'}
                     {' · '}
                     {session.processing_status || 'draft'}
                   </div>
                 </button>
               ))}
-              {sessions.length === 0 && (
-                <p className="text-sm text-gray-500">
-                  まだ動画セッションがありません。
-                </p>
-              )}
+              {sessions.length === 0 && <p className="text-sm text-gray-500">まだ動画セッションがありません。</p>}
             </div>
           </div>
 
@@ -874,20 +694,14 @@ const VideoReviewPage = () => {
               <div className="mb-4 flex items-center justify-between gap-3">
                 <h2 className="text-lg font-semibold">候補生成設定</h2>
                 <div className="flex flex-wrap gap-2 text-sm">
-                  <span className="rounded bg-green-50 px-3 py-1 text-green-700">
-                    確定 {confirmedCount}
-                  </span>
-                  <span className="rounded bg-gray-100 px-3 py-1 text-gray-700">
-                    除外 {excludedCount}
-                  </span>
+                  <span className="rounded bg-green-50 px-3 py-1 text-green-700">確定 {confirmedCount}</span>
+                  <span className="rounded bg-gray-100 px-3 py-1 text-gray-700">除外 {excludedCount}</span>
                 </div>
               </div>
 
               <div className="grid gap-3">
                 <div>
-                  <label className="mb-1 block text-xs text-gray-600">
-                    予測ポイント間隔 (ms)
-                  </label>
+                  <label className="mb-1 block text-xs text-gray-600">予測ポイント間隔 (ms)</label>
                   <input
                     type="number"
                     min="6000"
@@ -903,9 +717,7 @@ const VideoReviewPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs text-gray-600">
-                    前余白 (ms)
-                  </label>
+                  <label className="mb-1 block text-xs text-gray-600">前余白 (ms)</label>
                   <input
                     type="number"
                     min="1500"
@@ -921,9 +733,7 @@ const VideoReviewPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs text-gray-600">
-                    後余白 (ms)
-                  </label>
+                  <label className="mb-1 block text-xs text-gray-600">後余白 (ms)</label>
                   <input
                     type="number"
                     min="4000"
@@ -939,9 +749,7 @@ const VideoReviewPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs text-gray-600">
-                    開始オフセット (ms)
-                  </label>
+                  <label className="mb-1 block text-xs text-gray-600">開始オフセット (ms)</label>
                   <input
                     type="number"
                     min="0"
@@ -976,9 +784,7 @@ const VideoReviewPage = () => {
                   確定候補を既存スコアへ反映
                 </button>
                 <p className="text-xs text-gray-500">
-                  {selectedSession.duration_ms
-                    ? `動画長 ${formatDurationLabel(selectedSession.duration_ms)}`
-                    : '動画長未設定'}
+                  {selectedSession.duration_ms ? `動画長 ${formatDurationLabel(selectedSession.duration_ms)}` : '動画長未設定'}
                 </p>
               </div>
             </div>
@@ -990,19 +796,12 @@ const VideoReviewPage = () => {
             <div className="space-y-6">
               <div className="rounded-lg bg-white p-5 shadow-md">
                 <div className="mb-4">
-                  <h2 className="text-lg font-semibold">
-                    {selectedSession.source_label || '無題セッション'}
-                  </h2>
-                  <p className="text-sm text-gray-500">
-                    {selectedSession.source_type === 'youtube'
-                      ? 'YouTube 埋め込み再生'
-                      : 'ローカル動画プレビュー'}
-                  </p>
+                  <h2 className="text-lg font-semibold">{selectedSession.source_label || '無題セッション'}</h2>
+                  <p className="text-sm text-gray-500">{selectedSession.source_type === 'youtube' ? 'YouTube 埋め込み再生' : 'ローカル動画プレビュー'}</p>
                 </div>
 
                 <div className="mb-4 overflow-hidden rounded-lg bg-black">
-                  {selectedSession.source_type === 'youtube' &&
-                  playerEmbedUrl ? (
+                  {selectedSession.source_type === 'youtube' && playerEmbedUrl ? (
                     <iframe
                       key={`${selectedSession.id}-${playerStartSeconds}`}
                       src={playerEmbedUrl}
@@ -1034,15 +833,11 @@ const VideoReviewPage = () => {
                 <section className="rounded-lg bg-white p-5 shadow-md">
                   <div className="mb-4 flex items-center justify-between gap-3">
                     <h2 className="text-lg font-semibold">ポイント候補一覧</h2>
-                    <span className="text-sm text-gray-500">
-                      {selectedCandidates.length} 件
-                    </span>
+                    <span className="text-sm text-gray-500">{selectedCandidates.length} 件</span>
                   </div>
 
                   {sessionLoading ? (
-                    <div className="py-8 text-center text-gray-500">
-                      セッションを読み込み中...
-                    </div>
+                    <div className="py-8 text-center text-gray-500">セッションを読み込み中...</div>
                   ) : selectedCandidates.length === 0 ? (
                     <div className="rounded border border-dashed p-8 text-center text-sm text-gray-500">
                       まだ候補がありません。上の設定を調整して候補を再生成してください。
@@ -1055,43 +850,26 @@ const VideoReviewPage = () => {
                           type="button"
                           onClick={() => handleSelectCandidate(candidate)}
                           className={`w-full rounded-lg border p-4 text-left ${
-                            selectedCandidateId === candidate.id
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
+                            selectedCandidateId === candidate.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
                           }`}
                         >
                           <div className="mb-2 flex items-center justify-between gap-2">
-                            <span className="font-medium">
-                              候補 #{candidate.candidate_order}
-                            </span>
-                            <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700">
-                              {getStatusLabel(candidate.status)}
-                            </span>
+                            <span className="font-medium">候補 #{candidate.candidate_order}</span>
+                            <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700">{getStatusLabel(candidate.status)}</span>
                           </div>
                           <div className="text-sm text-gray-500">
-                            {formatDurationLabel(candidate.start_ms)} -{' '}
-                            {formatDurationLabel(candidate.end_ms)}
+                            {formatDurationLabel(candidate.start_ms)} - {formatDurationLabel(candidate.end_ms)}
                           </div>
                           <div className="mt-2 flex flex-wrap gap-2 text-xs">
                             <span
                               className={`rounded px-2 py-1 ${
-                                (candidate.confidence ?? 0) < 0.6
-                                  ? 'bg-amber-100 text-amber-700'
-                                  : 'bg-slate-100 text-slate-700'
+                                (candidate.confidence ?? 0) < 0.6 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700'
                               }`}
                             >
                               {getConfidenceLabel(candidate.confidence)}
                             </span>
-                            {candidate.winner_team && (
-                              <span className="rounded bg-white px-2 py-1 text-gray-700">
-                                得点: {candidate.winner_team}
-                              </span>
-                            )}
-                            {candidate.result_type && (
-                              <span className="rounded bg-white px-2 py-1 text-gray-700">
-                                {candidate.result_type}
-                              </span>
-                            )}
+                            {candidate.winner_team && <span className="rounded bg-white px-2 py-1 text-gray-700">得点: {candidate.winner_team}</span>}
+                            {candidate.result_type && <span className="rounded bg-white px-2 py-1 text-gray-700">{candidate.result_type}</span>}
                           </div>
                           <div className="mt-3 flex flex-wrap gap-2">
                             <span
@@ -1142,29 +920,18 @@ const VideoReviewPage = () => {
                     <div className="space-y-6">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div>
-                          <h2 className="text-lg font-semibold">
-                            候補 #{selectedCandidate.candidate_order} を編集
-                          </h2>
+                          <h2 className="text-lg font-semibold">候補 #{selectedCandidate.candidate_order} を編集</h2>
                           <p className="text-sm text-gray-500">
-                            {formatDurationLabel(selectedCandidate.start_ms)} -{' '}
-                            {formatDurationLabel(selectedCandidate.end_ms)}
+                            {formatDurationLabel(selectedCandidate.start_ms)} - {formatDurationLabel(selectedCandidate.end_ms)}
                           </p>
                         </div>
                         <button
                           type="button"
                           onClick={() => {
-                            setPlayerStartSeconds(
-                              Math.max(
-                                0,
-                                Math.floor(selectedCandidate.start_ms / 1000),
-                              ),
-                            );
+                            setPlayerStartSeconds(Math.max(0, Math.floor(selectedCandidate.start_ms / 1000)));
                             if (videoRef.current) {
-                              videoRef.current.currentTime =
-                                selectedCandidate.start_ms / 1000;
-                              void videoRef.current
-                                .play()
-                                .catch(() => undefined);
+                              videoRef.current.currentTime = selectedCandidate.start_ms / 1000;
+                              void videoRef.current.play().catch(() => undefined);
                             }
                           }}
                           className="rounded bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-700"
@@ -1186,14 +953,11 @@ const VideoReviewPage = () => {
                               type="button"
                               onClick={() =>
                                 updateEditor({
-                                  status:
-                                    option.value as CandidateEditorState['status'],
+                                  status: option.value as CandidateEditorState['status'],
                                 })
                               }
                               className={`rounded border-2 px-3 py-2 text-sm ${
-                                candidateEditor.status === option.value
-                                  ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                  : 'border-gray-300 hover:border-blue-300'
+                                candidateEditor.status === option.value ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:border-blue-300'
                               }`}
                             >
                               {option.label}
@@ -1208,10 +972,8 @@ const VideoReviewPage = () => {
                           <button
                             type="button"
                             onClick={() => {
-                              const servingTeam =
-                                candidateEditor.serving_team ?? 'A';
-                              const servingPlayer =
-                                candidateEditor.serving_player;
+                              const servingTeam = candidateEditor.serving_team ?? 'A';
+                              const servingPlayer = candidateEditor.serving_player;
                               updateEditor({
                                 result_type: 'service_ace',
                                 serving_team: servingTeam,
@@ -1234,14 +996,11 @@ const VideoReviewPage = () => {
                             type="button"
                             onClick={() =>
                               updateEditor({
-                                first_serve_fault:
-                                  !candidateEditor.first_serve_fault,
+                                first_serve_fault: !candidateEditor.first_serve_fault,
                               })
                             }
                             className={`rounded border-2 p-2 text-xs font-medium ${
-                              candidateEditor.first_serve_fault
-                                ? 'border-orange-500 bg-orange-50 text-orange-700'
-                                : 'border-gray-300 hover:border-orange-300'
+                              candidateEditor.first_serve_fault ? 'border-orange-500 bg-orange-50 text-orange-700' : 'border-gray-300 hover:border-orange-300'
                             }`}
                           >
                             1stフォルト
@@ -1249,10 +1008,8 @@ const VideoReviewPage = () => {
                           <button
                             type="button"
                             onClick={() => {
-                              const servingTeam =
-                                candidateEditor.serving_team ?? 'A';
-                              const servingPlayer =
-                                candidateEditor.serving_player;
+                              const servingTeam = candidateEditor.serving_team ?? 'A';
+                              const servingPlayer = candidateEditor.serving_player;
                               updateEditor({
                                 result_type: 'double_fault',
                                 double_fault: true,
@@ -1277,20 +1034,12 @@ const VideoReviewPage = () => {
                       <div>
                         <h3 className="mb-2 text-sm font-medium">ラリー数</h3>
                         <div className="overflow-x-auto">
-                          <div
-                            className="flex gap-1 pb-2"
-                            style={{ minWidth: 'max-content' }}
-                          >
-                            {Array.from(
-                              { length: 20 },
-                              (_, index) => index + 1,
-                            ).map((count) => (
+                          <div className="flex gap-1 pb-2" style={{ minWidth: 'max-content' }}>
+                            {Array.from({ length: 20 }, (_, index) => index + 1).map((count) => (
                               <button
                                 key={count}
                                 type="button"
-                                onClick={() =>
-                                  updateEditor({ rally_count: count })
-                                }
+                                onClick={() => updateEditor({ rally_count: count })}
                                 className={`h-8 w-8 flex-shrink-0 rounded border-2 text-xs font-medium ${
                                   candidateEditor.rally_count === count
                                     ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
@@ -1306,17 +1055,13 @@ const VideoReviewPage = () => {
 
                       <div className="grid gap-4 lg:grid-cols-2">
                         <div>
-                          <h3 className="mb-2 text-sm font-medium text-green-600">
-                            ウィナー
-                          </h3>
+                          <h3 className="mb-2 text-sm font-medium text-green-600">ウィナー</h3>
                           <div className="grid grid-cols-2 gap-2">
                             {WINNER_BUTTONS.map((option) => (
                               <button
                                 key={option.value}
                                 type="button"
-                                onClick={() =>
-                                  handleResultTypeSelect(option.value)
-                                }
+                                onClick={() => handleResultTypeSelect(option.value)}
                                 className={`rounded border-2 p-2 text-xs font-medium ${
                                   candidateEditor.result_type === option.value
                                     ? 'border-green-500 bg-green-50 text-green-700'
@@ -1330,17 +1075,13 @@ const VideoReviewPage = () => {
                         </div>
 
                         <div>
-                          <h3 className="mb-2 text-sm font-medium text-red-600">
-                            ミス
-                          </h3>
+                          <h3 className="mb-2 text-sm font-medium text-red-600">ミス</h3>
                           <div className="grid grid-cols-2 gap-2">
                             {ERROR_BUTTONS.map((option) => (
                               <button
                                 key={option.value}
                                 type="button"
-                                onClick={() =>
-                                  handleResultTypeSelect(option.value)
-                                }
+                                onClick={() => handleResultTypeSelect(option.value)}
                                 className={`rounded border-2 p-2 text-xs font-medium ${
                                   candidateEditor.result_type === option.value
                                     ? 'border-red-500 bg-red-50 text-red-700'
@@ -1356,18 +1097,10 @@ const VideoReviewPage = () => {
 
                       <div className="grid gap-4 md:grid-cols-3">
                         <div>
-                          <label className="mb-1 block text-xs text-gray-600">
-                            サーブ側
-                          </label>
+                          <label className="mb-1 block text-xs text-gray-600">サーブ側</label>
                           <select
                             value={candidateEditor.serving_team ?? ''}
-                            onChange={(event) =>
-                              handleServingTeamChange(
-                                event.target.value
-                                  ? (event.target.value as 'A' | 'B')
-                                  : null,
-                              )
-                            }
+                            onChange={(event) => handleServingTeamChange(event.target.value ? (event.target.value as 'A' | 'B') : null)}
                             className="w-full rounded border p-2 text-sm"
                           >
                             <option value="">未設定</option>
@@ -1376,14 +1109,10 @@ const VideoReviewPage = () => {
                           </select>
                         </div>
                         <div>
-                          <label className="mb-1 block text-xs text-gray-600">
-                            結果種別
-                          </label>
+                          <label className="mb-1 block text-xs text-gray-600">結果種別</label>
                           <select
                             value={candidateEditor.result_type}
-                            onChange={(event) =>
-                              handleResultTypeSelect(event.target.value)
-                            }
+                            onChange={(event) => handleResultTypeSelect(event.target.value)}
                             className="w-full rounded border p-2 text-sm"
                           >
                             {VIDEO_REVIEW_RESULT_TYPES.map((option) => (
@@ -1394,17 +1123,13 @@ const VideoReviewPage = () => {
                           </select>
                         </div>
                         <div>
-                          <label className="mb-1 block text-xs text-gray-600">
-                            勝者チーム
-                          </label>
+                          <label className="mb-1 block text-xs text-gray-600">勝者チーム</label>
                           <div className="grid grid-cols-2 gap-2">
                             <button
                               type="button"
                               onClick={() => updateEditor({ winner_team: 'A' })}
                               className={`rounded border-2 p-2 text-sm ${
-                                candidateEditor.winner_team === 'A'
-                                  ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                  : 'border-gray-300 hover:border-blue-300'
+                                candidateEditor.winner_team === 'A' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:border-blue-300'
                               }`}
                             >
                               チーム A
@@ -1413,9 +1138,7 @@ const VideoReviewPage = () => {
                               type="button"
                               onClick={() => updateEditor({ winner_team: 'B' })}
                               className={`rounded border-2 p-2 text-sm ${
-                                candidateEditor.winner_team === 'B'
-                                  ? 'border-red-500 bg-red-50 text-red-700'
-                                  : 'border-gray-300 hover:border-red-300'
+                                candidateEditor.winner_team === 'B' ? 'border-red-500 bg-red-50 text-red-700' : 'border-gray-300 hover:border-red-300'
                               }`}
                             >
                               チーム B
@@ -1426,26 +1149,15 @@ const VideoReviewPage = () => {
 
                       {candidateEditor.serving_team && (
                         <div>
-                          <h3 className="mb-2 text-sm font-medium">
-                            サーブ選手
-                          </h3>
+                          <h3 className="mb-2 text-sm font-medium">サーブ選手</h3>
                           <div className="grid gap-2 md:grid-cols-2">
-                            {(candidateEditor.serving_team === 'A'
-                              ? teamAPlayers
-                              : teamBPlayers
-                            ).map((playerName, index) => {
-                              const uniqueId = getPlayerUniqueId(
-                                candidateEditor.serving_team as 'A' | 'B',
-                                index,
-                                playerName,
-                              );
+                            {(candidateEditor.serving_team === 'A' ? teamAPlayers : teamBPlayers).map((playerName, index) => {
+                              const uniqueId = getPlayerUniqueId(candidateEditor.serving_team as 'A' | 'B', index, playerName);
                               return (
                                 <button
                                   key={uniqueId}
                                   type="button"
-                                  onClick={() =>
-                                    updateEditor({ serving_player: uniqueId })
-                                  }
+                                  onClick={() => updateEditor({ serving_player: uniqueId })}
                                   className={`rounded border-2 p-2 text-sm ${
                                     candidateEditor.serving_player === uniqueId
                                       ? 'border-yellow-500 bg-yellow-50 text-yellow-800'
@@ -1464,36 +1176,19 @@ const VideoReviewPage = () => {
                         <h3 className="mb-2 text-sm font-medium">関与選手</h3>
                         <div className="grid gap-4 md:grid-cols-2">
                           <div>
-                            <h4 className="mb-2 text-xs font-medium text-blue-600">
-                              チーム A
-                            </h4>
+                            <h4 className="mb-2 text-xs font-medium text-blue-600">チーム A</h4>
                             <div className="grid grid-cols-2 gap-2">
                               {teamAPlayers.map((playerName, index) => {
-                                const uniqueId = getPlayerUniqueId(
-                                  'A',
-                                  index,
-                                  playerName,
-                                );
+                                const uniqueId = getPlayerUniqueId('A', index, playerName);
                                 return (
                                   <button
                                     key={uniqueId}
                                     type="button"
-                                    onClick={() =>
-                                      handlePlayerSelect(
-                                        uniqueId,
-                                        'A',
-                                        ERROR_RESULT_TYPES.has(
-                                          candidateEditor.result_type,
-                                        )
-                                          ? 'loser'
-                                          : 'winner',
-                                      )
-                                    }
+                                    onClick={() => handlePlayerSelect(uniqueId, 'A', ERROR_RESULT_TYPES.has(candidateEditor.result_type) ? 'loser' : 'winner')}
                                     className={`rounded border-2 p-2 text-xs ${
                                       candidateEditor.winner_player === uniqueId
                                         ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                        : candidateEditor.loser_player ===
-                                            uniqueId
+                                        : candidateEditor.loser_player === uniqueId
                                           ? 'border-orange-500 bg-orange-50 text-orange-700'
                                           : 'border-gray-300 hover:border-blue-300'
                                     }`}
@@ -1506,36 +1201,19 @@ const VideoReviewPage = () => {
                           </div>
 
                           <div>
-                            <h4 className="mb-2 text-xs font-medium text-red-600">
-                              チーム B
-                            </h4>
+                            <h4 className="mb-2 text-xs font-medium text-red-600">チーム B</h4>
                             <div className="grid grid-cols-2 gap-2">
                               {teamBPlayers.map((playerName, index) => {
-                                const uniqueId = getPlayerUniqueId(
-                                  'B',
-                                  index,
-                                  playerName,
-                                );
+                                const uniqueId = getPlayerUniqueId('B', index, playerName);
                                 return (
                                   <button
                                     key={uniqueId}
                                     type="button"
-                                    onClick={() =>
-                                      handlePlayerSelect(
-                                        uniqueId,
-                                        'B',
-                                        ERROR_RESULT_TYPES.has(
-                                          candidateEditor.result_type,
-                                        )
-                                          ? 'loser'
-                                          : 'winner',
-                                      )
-                                    }
+                                    onClick={() => handlePlayerSelect(uniqueId, 'B', ERROR_RESULT_TYPES.has(candidateEditor.result_type) ? 'loser' : 'winner')}
                                     className={`rounded border-2 p-2 text-xs ${
                                       candidateEditor.winner_player === uniqueId
                                         ? 'border-red-500 bg-red-50 text-red-700'
-                                        : candidateEditor.loser_player ===
-                                            uniqueId
+                                        : candidateEditor.loser_player === uniqueId
                                           ? 'border-orange-500 bg-orange-50 text-orange-700'
                                           : 'border-gray-300 hover:border-red-300'
                                     }`}
@@ -1550,14 +1228,10 @@ const VideoReviewPage = () => {
                       </div>
 
                       <div>
-                        <label className="mb-1 block text-xs text-gray-600">
-                          メモ
-                        </label>
+                        <label className="mb-1 block text-xs text-gray-600">メモ</label>
                         <textarea
                           value={candidateEditor.notes}
-                          onChange={(event) =>
-                            updateEditor({ notes: event.target.value })
-                          }
+                          onChange={(event) => updateEditor({ notes: event.target.value })}
                           rows={3}
                           className="w-full rounded border p-2 text-sm"
                           placeholder="この候補に関する補足"
@@ -1573,23 +1247,17 @@ const VideoReviewPage = () => {
                         >
                           {savingCandidate ? '保存中...' : '候補内容を保存'}
                         </button>
-                        <div className="text-sm text-gray-500">
-                          得点者、サーブ、ラリー数、結果種別、関与選手を通常入力に近い形で調整できます。
-                        </div>
+                        <div className="text-sm text-gray-500">得点者、サーブ、ラリー数、結果種別、関与選手を通常入力に近い形で調整できます。</div>
                       </div>
                     </div>
                   ) : (
-                    <div className="flex h-full items-center justify-center text-sm text-gray-500">
-                      左の候補一覧から編集したい候補を選んでください。
-                    </div>
+                    <div className="flex h-full items-center justify-center text-sm text-gray-500">左の候補一覧から編集したい候補を選んでください。</div>
                   )}
                 </section>
               </div>
             </div>
           ) : (
-            <div className="rounded-lg bg-white p-10 text-center text-gray-500 shadow-md">
-              左側で動画セッションを作成または選択してください。
-            </div>
+            <div className="rounded-lg bg-white p-10 text-center text-gray-500 shadow-md">左側で動画セッションを作成または選択してください。</div>
           )}
         </main>
       </div>

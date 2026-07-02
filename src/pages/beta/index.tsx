@@ -24,8 +24,7 @@ const betaFeatures: BetaFeature[] = [
   {
     id: 'match-results',
     title: '試合結果 - ポイント詳細記録',
-    description:
-      'ポイント詳細記録システムで記録された試合の結果をご覧いただけます。ラリー数、決定打の種類、選手別統計などの詳細な分析データを確認できます。',
+    description: 'ポイント詳細記録システムで記録された試合の結果をご覧いただけます。ラリー数、決定打の種類、選手別統計などの詳細な分析データを確認できます。',
     href: getPublicMatchesListPath(),
     status: '試作中',
     icon: '🎾',
@@ -33,8 +32,7 @@ const betaFeatures: BetaFeature[] = [
   {
     id: 'point-recording-admin',
     title: '[管理者] ポイント記録入力システム',
-    description:
-      '管理者専用機能です。試合のポイントごとの詳細な記録・入力ができます。ラリー数、決定打の種類、選手名などを詳細に記録できます。',
+    description: '管理者専用機能です。試合のポイントごとの詳細な記録・入力ができます。ラリー数、決定打の種類、選手名などを詳細に記録できます。',
     href: '/beta/matches',
     status: '試作中',
     icon: '🔧',
@@ -92,25 +90,17 @@ export default function BetaIndexPage() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-4 flex items-center gap-3">
               🧪 ベータ機能
-              <span className="text-lg font-normal text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded text-sm">
-                試作版
-              </span>
+              <span className="text-lg font-normal text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded text-sm">試作版</span>
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 text-lg">
-              新しい機能を試験的に公開しています。
-            </p>
+            <p className="text-gray-600 dark:text-gray-300 text-lg">新しい機能を試験的に公開しています。</p>
           </div>
 
           <section className="mb-8 p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-            <h2 className="text-lg font-semibold text-amber-800 dark:text-amber-200 mb-3 flex items-center gap-2">
-              ⚠️ ベータ機能について
-            </h2>
+            <h2 className="text-lg font-semibold text-amber-800 dark:text-amber-200 mb-3 flex items-center gap-2">⚠️ ベータ機能について</h2>
             <ul className="space-y-2 text-sm text-amber-700 dark:text-amber-300">
               <li className="flex items-start gap-2">
                 <span>•</span>
-                <span>
-                  これらの機能は開発中のため、予告なく変更・削除される可能性があります
-                </span>
+                <span>これらの機能は開発中のため、予告なく変更・削除される可能性があります</span>
               </li>
               <li className="flex items-start gap-2">
                 <span>•</span>
@@ -118,17 +108,13 @@ export default function BetaIndexPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span>•</span>
-                <span>
-                  不具合やご要望がございましたら、お気軽にフィードバックをお寄せください
-                </span>
+                <span>不具合やご要望がございましたら、お気軽にフィードバックをお寄せください</span>
               </li>
             </ul>
           </section>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-              利用可能な機能
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">利用可能な機能</h2>
 
             {visibleFeatures.length > 0 ? (
               visibleFeatures.map((feature) => (
@@ -148,23 +134,11 @@ export default function BetaIndexPage() {
                           {feature.status}
                         </span>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                        {feature.description}
-                      </p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{feature.description}</p>
                     </div>
                     <div className="text-gray-400 group-hover:text-amber-500 transition-colors">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
                   </div>
@@ -180,14 +154,9 @@ export default function BetaIndexPage() {
 
           {isDebugMode() && (
             <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-              <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">
-                🔧 開発者向け機能
-              </h3>
+              <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">🔧 開発者向け機能</h3>
               <div className="flex gap-4">
-                <Link
-                  href="/test-db"
-                  className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
+                <Link href="/test-db" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
                   データベーステスト
                 </Link>
               </div>
@@ -195,10 +164,7 @@ export default function BetaIndexPage() {
           )}
 
           <div className="mt-12 text-center">
-            <Link
-              href="/"
-              className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
-            >
+            <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline text-sm">
               ← ホームに戻る
             </Link>
           </div>

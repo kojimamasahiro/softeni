@@ -2536,17 +2536,11 @@ export function DrawTable() {
   return (
     <div>
       {entries.doubles.map((entry) => {
-        const fullNames = entry.information.map(
-          (p) => `${p.lastName}${p.firstName}（${p.team}）`,
-        );
+        const fullNames = entry.information.map((p) => `${p.lastName}${p.firstName}（${p.team}）`);
         const label = fullNames.join('・');
 
         return (
-          <div
-            key={entry.entryNo}
-            id={`entry-${entry.entryNo}`}
-            className={`border px-4 py-2 my-2 rounded bg-white'`}
-          >
+          <div key={entry.entryNo} id={`entry-${entry.entryNo}`} className={`border px-4 py-2 my-2 rounded bg-white'`}>
             <div className="text-sm text-gray-500">
               No.{entry.entryNo} {entry.type === 'seed' ? '（シード）' : ''}
             </div>

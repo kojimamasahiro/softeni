@@ -2,33 +2,14 @@ import type { Game, Match, MatchPlayer, Point } from '../src/types/database';
 
 export type TeamKey = 'A' | 'B';
 export type GrowthTargetKind = 'player' | 'pair';
-export type GrowthComparisonKind =
-  | 'recent_period'
-  | 'win_loss'
-  | 'same_opponent'
-  | 'same_tournament'
-  | 'same_format'
-  | 'same_pair'
-  | 'opponent_level';
-export type GrowthConfidence =
-  | 'enough_sample'
-  | 'small_sample'
-  | 'insufficient_sample';
+export type GrowthComparisonKind = 'recent_period' | 'win_loss' | 'same_opponent' | 'same_tournament' | 'same_format' | 'same_pair' | 'opponent_level';
+export type GrowthConfidence = 'enough_sample' | 'small_sample' | 'insufficient_sample';
 export type GrowthTrend = 'improved' | 'declined' | 'stable';
 // 公開レベル（ADR-004）。当面の採用範囲は 'none'（撤回・非生成）と 'link'（グループ限定）のみ。
 // 'public' / 'ranked'（実名の全体公開・ランキング）は保留で、現時点では割り当てない。
 export type GrowthVisibility = 'none' | 'link' | 'public' | 'ranked';
-export type GrowthMetricUnit =
-  | 'percent'
-  | 'percentage_point'
-  | 'count'
-  | 'average';
-export type GrowthMetricCategory =
-  | 'serve'
-  | 'receive'
-  | 'key_moment'
-  | 'momentum'
-  | 'rally';
+export type GrowthMetricUnit = 'percent' | 'percentage_point' | 'count' | 'average';
+export type GrowthMetricCategory = 'serve' | 'receive' | 'key_moment' | 'momentum' | 'rally';
 
 export type GrowthTarget = {
   key: string;
@@ -55,9 +36,7 @@ export type GrowthBuildOptions = {
   featuredKeys?: ReadonlySet<string> | string[];
 };
 
-const toExcludedKeySet = (
-  excludedKeys?: ReadonlySet<string> | string[],
-): ReadonlySet<string> => {
+const toExcludedKeySet = (excludedKeys?: ReadonlySet<string> | string[]): ReadonlySet<string> => {
   if (!excludedKeys) return new Set();
   return Array.isArray(excludedKeys) ? new Set(excludedKeys) : excludedKeys;
 };
@@ -332,14 +311,10 @@ const metricDefinitions: Array<{
   },
 ];
 
-const practiceThemeMap: Record<
-  string,
-  Omit<PracticeTheme, 'id' | 'sourceMetricKey' | 'priority'>
-> = {
+const practiceThemeMap: Record<string, Omit<PracticeTheme, 'id' | 'sourceMetricKey' | 'priority'>> = {
   secondServePointWinRate: {
     title: '2ndサービス後の1本目を安定させる',
-    description:
-      '2ndサービス時のポイントを、次の試合でも続けて確認してみましょう。',
+    description: '2ndサービス時のポイントを、次の試合でも続けて確認してみましょう。',
   },
   doubleFaultRate: {
     title: '2ndサービスを入れにいく形を確認する',
@@ -347,8 +322,7 @@ const practiceThemeMap: Record<
   },
   receivePointWinRate: {
     title: 'レシーブから先にミスしない',
-    description:
-      'レシーブ後の1本目まで含めて、落ち着いて入ることを確認します。',
+    description: 'レシーブ後の1本目まで含めて、落ち着いて入ることを確認します。',
   },
   longRallyWinRate: {
     title: '6本以上のラリーで無理に決めにいかない',
@@ -372,49 +346,28 @@ const practiceThemeMap: Record<
   },
 };
 
-const isTeamKey = (value: unknown): value is TeamKey =>
-  value === 'A' || value === 'B';
+const isTeamKey = (value: unknown): value is TeamKey => value === 'A' || value === 'B';
 
 const getOppositeTeam = (team: TeamKey): TeamKey => (team === 'A' ? 'B' : 'A');
 
 const getRequiredWins = (bestOf: number) => Math.ceil(bestOf / 2);
 
-const isFinalGame = (
-  bestOf: number,
-  gamesWonA: number = 0,
-  gamesWonB: number = 0,
-) => {
+const isFinalGame = (bestOf: number, gamesWonA: number = 0, gamesWonB: number = 0) => {
   const requiredWins = getRequiredWins(bestOf);
   return gamesWonA === requiredWins - 1 && gamesWonB === requiredWins - 1;
 };
 
-const getPointsToWinForGame = (
-  bestOf: number,
-  gamesWonA: number = 0,
-  gamesWonB: number = 0,
-) =>
-  isFinalGame(bestOf, gamesWonA, gamesWonB)
-    ? FINAL_GAME_WIN_POINTS
-    : NORMAL_GAME_WIN_POINTS;
+const getPointsToWinForGame = (bestOf: number, gamesWonA: number = 0, gamesWonB: number = 0) =>
+  isFinalGame(bestOf, gamesWonA, gamesWonB) ? FINAL_GAME_WIN_POINTS : NORMAL_GAME_WIN_POINTS;
 
-const isWinningScore = (
-  scoreFor: number,
-  scoreAgainst: number,
-  pointsToWin: number,
-) => scoreFor >= pointsToWin && scoreFor - scoreAgainst >= 2;
+const isWinningScore = (scoreFor: number, scoreAgainst: number, pointsToWin: number) => scoreFor >= pointsToWin && scoreFor - scoreAgainst >= 2;
 
-const normalizeText = (value: string | null | undefined) =>
-  (value ?? '').trim().replace(/\s+/g, ' ');
+const normalizeText = (value: string | null | undefined) => (value ?? '').trim().replace(/\s+/g, ' ');
 
-const normalizeKeyText = (value: string | null | undefined) =>
-  normalizeText(value).toLowerCase();
+const normalizeKeyText = (value: string | null | undefined) => normalizeText(value).toLowerCase();
 
 const formatPlayerName = (player: MatchPlayer | PlayerIdentity) => {
-  const name = normalizeText(
-    'last_name' in player
-      ? `${player.last_name ?? ''} ${player.first_name ?? ''}`
-      : player.name,
-  );
+  const name = normalizeText('last_name' in player ? `${player.last_name ?? ''} ${player.first_name ?? ''}` : player.name);
   return name || '選手名不明';
 };
 
@@ -431,66 +384,33 @@ const getTeamPlayers = (match: Match, team: TeamKey): PlayerIdentity[] => {
   const prefix = `team_${team.toLowerCase()}`;
   const players = [1, 2]
     .map((playerIndex) => {
-      const lastName = normalizeText(
-        match[`${prefix}_player${playerIndex}_last_name` as keyof Match] as
-          | string
-          | null
-          | undefined,
-      );
-      const firstName = normalizeText(
-        match[`${prefix}_player${playerIndex}_first_name` as keyof Match] as
-          | string
-          | null
-          | undefined,
-      );
+      const lastName = normalizeText(match[`${prefix}_player${playerIndex}_last_name` as keyof Match] as string | null | undefined);
+      const firstName = normalizeText(match[`${prefix}_player${playerIndex}_first_name` as keyof Match] as string | null | undefined);
       if (!lastName && !firstName) return null;
 
       return {
         name: normalizeText(`${lastName} ${firstName}`),
-        teamName: normalizeText(
-          match[`${prefix}_player${playerIndex}_team_name` as keyof Match] as
-            | string
-            | null
-            | undefined,
-        ),
-        region: normalizeText(
-          match[`${prefix}_player${playerIndex}_region` as keyof Match] as
-            | string
-            | null
-            | undefined,
-        ),
+        teamName: normalizeText(match[`${prefix}_player${playerIndex}_team_name` as keyof Match] as string | null | undefined),
+        region: normalizeText(match[`${prefix}_player${playerIndex}_region` as keyof Match] as string | null | undefined),
       };
     })
     .filter((player): player is PlayerIdentity => Boolean(player));
 
   if (players.length > 0) return players;
 
-  const fallbackName = normalizeText(
-    team === 'A' ? match.team_a : match.team_b,
-  );
-  return fallbackName
-    ? [{ name: fallbackName, teamName: '', region: '' }]
-    : [{ name: `チーム${team}`, teamName: '', region: '' }];
+  const fallbackName = normalizeText(team === 'A' ? match.team_a : match.team_b);
+  return fallbackName ? [{ name: fallbackName, teamName: '', region: '' }] : [{ name: `チーム${team}`, teamName: '', region: '' }];
 };
 
-const getPlayerIdentityKey = (player: PlayerIdentity) =>
-  normalizeKeyText(player.name);
+const getPlayerIdentityKey = (player: PlayerIdentity) => normalizeKeyText(player.name);
 
 const getSideTargetBase = (match: Match, side: TeamKey) => {
   const players = getTeamPlayers(match, side);
-  const kind: GrowthTargetKind =
-    players.length > 1 || match.game_type === 'doubles' ? 'pair' : 'player';
-  const playerKeys =
-    kind === 'pair'
-      ? players.map(getPlayerIdentityKey).sort()
-      : [getPlayerIdentityKey(players[0])];
+  const kind: GrowthTargetKind = players.length > 1 || match.game_type === 'doubles' ? 'pair' : 'player';
+  const playerKeys = kind === 'pair' ? players.map(getPlayerIdentityKey).sort() : [getPlayerIdentityKey(players[0])];
   const playerNames = players.map((player) => player.name);
-  const teamNames = [
-    ...new Set(players.map((player) => player.teamName).filter(Boolean)),
-  ];
-  const regions = [
-    ...new Set(players.map((player) => player.region).filter(Boolean)),
-  ];
+  const teamNames = [...new Set(players.map((player) => player.teamName).filter(Boolean))];
+  const regions = [...new Set(players.map((player) => player.region).filter(Boolean))];
 
   return {
     key: `${kind}:${playerKeys.join('&')}`,
@@ -503,10 +423,7 @@ const getSideTargetBase = (match: Match, side: TeamKey) => {
   };
 };
 
-export const getGrowthTargetForSide = (
-  match: Match,
-  side: TeamKey,
-): GrowthTarget => {
+export const getGrowthTargetForSide = (match: Match, side: TeamKey): GrowthTarget => {
   const base = getSideTargetBase(match, side);
   const date = getMatchDate(match);
 
@@ -518,15 +435,9 @@ export const getGrowthTargetForSide = (
   };
 };
 
-export const getGrowthTargetsForMatch = (match: Match): GrowthTarget[] => [
-  getGrowthTargetForSide(match, 'A'),
-  getGrowthTargetForSide(match, 'B'),
-];
+export const getGrowthTargetsForMatch = (match: Match): GrowthTarget[] => [getGrowthTargetForSide(match, 'A'), getGrowthTargetForSide(match, 'B')];
 
-export const buildGrowthTargets = (
-  matches: Match[],
-  options: GrowthBuildOptions = {},
-): GrowthTarget[] => {
+export const buildGrowthTargets = (matches: Match[], options: GrowthBuildOptions = {}): GrowthTarget[] => {
   const targetMap = new Map<string, GrowthTarget>();
   const excludedKeys = toExcludedKeySet(options.excludedKeys);
   const featuredKeys = toExcludedKeySet(options.featuredKeys);
@@ -543,9 +454,7 @@ export const buildGrowthTargets = (
       }
 
       const latestMatchDate =
-        !existing.latestMatchDate ||
-        (target.latestMatchDate &&
-          target.latestMatchDate > existing.latestMatchDate)
+        !existing.latestMatchDate || (target.latestMatchDate && target.latestMatchDate > existing.latestMatchDate)
           ? target.latestMatchDate
           : existing.latestMatchDate;
 
@@ -554,8 +463,7 @@ export const buildGrowthTargets = (
         teamNames: [...new Set([...existing.teamNames, ...target.teamNames])],
         regions: [...new Set([...existing.regions, ...target.regions])],
         matchCount: existing.matchCount + 1,
-        completedMatchCount:
-          existing.completedMatchCount + target.completedMatchCount,
+        completedMatchCount: existing.completedMatchCount + target.completedMatchCount,
         latestMatchDate,
       });
     });
@@ -564,21 +472,16 @@ export const buildGrowthTargets = (
   return [...targetMap.values()]
     .map((target) =>
       // ショーケース対象は公開（インデックス対象）に引き上げる（ADR-004）。
-      featuredKeys.has(target.key)
-        ? { ...target, visibility: 'public' as GrowthVisibility }
-        : target,
+      featuredKeys.has(target.key) ? { ...target, visibility: 'public' as GrowthVisibility } : target,
     )
     .sort((left, right) => {
-      const dateOrder = (right.latestMatchDate ?? '').localeCompare(
-        left.latestMatchDate ?? '',
-      );
+      const dateOrder = (right.latestMatchDate ?? '').localeCompare(left.latestMatchDate ?? '');
       if (dateOrder !== 0) return dateOrder;
       return right.completedMatchCount - left.completedMatchCount;
     });
 };
 
-const getMatchDate = (match: Match) =>
-  match.match_date ?? match.completed_at ?? match.created_at ?? null;
+const getMatchDate = (match: Match) => match.match_date ?? match.completed_at ?? match.created_at ?? null;
 
 const getMatchWinner = (match: Match): TeamKey | null => {
   const games = match.games ?? [];
@@ -591,12 +494,10 @@ const getMatchWinner = (match: Match): TeamKey | null => {
   return null;
 };
 
-export const isCompletedMatch = (match: Match) =>
-  match.status === 'completed' || getMatchWinner(match) !== null;
+export const isCompletedMatch = (match: Match) => match.status === 'completed' || getMatchWinner(match) !== null;
 
 const createRate = (points: ReconstructedPoint[], team: TeamKey): RateStat => ({
-  numerator: points.filter((context) => context.point.winner_team === team)
-    .length,
+  numerator: points.filter((context) => context.point.winner_team === team).length,
   denominator: points.length,
 });
 
@@ -605,19 +506,11 @@ const reconstructPoints = (match: Match): ReconstructedPoint[] => {
   let gamesWonA = 0;
   let gamesWonB = 0;
 
-  const games = [...(match.games ?? [])].sort(
-    (left, right) => left.game_number - right.game_number,
-  );
+  const games = [...(match.games ?? [])].sort((left, right) => left.game_number - right.game_number);
 
   games.forEach((game) => {
-    const pointsToWin = getPointsToWinForGame(
-      match.best_of,
-      gamesWonA,
-      gamesWonB,
-    );
-    const sortedPoints = [...(game.points ?? [])].sort(
-      (left, right) => left.point_number - right.point_number,
-    );
+    const pointsToWin = getPointsToWinForGame(match.best_of, gamesWonA, gamesWonB);
+    const sortedPoints = [...(game.points ?? [])].sort((left, right) => left.point_number - right.point_number);
     let scoreA = 0;
     let scoreB = 0;
 
@@ -647,11 +540,7 @@ const reconstructPoints = (match: Match): ReconstructedPoint[] => {
 
 const isGamePointOpportunity = (context: ReconstructedPoint, team: TeamKey) => {
   const opponent = getOppositeTeam(team);
-  return isWinningScore(
-    context.scoreBefore[team] + 1,
-    context.scoreBefore[opponent],
-    context.pointsToWin,
-  );
+  return isWinningScore(context.scoreBefore[team] + 1, context.scoreBefore[opponent], context.pointsToWin);
 };
 
 const getRallyBucket = (point: Point) => {
@@ -663,10 +552,7 @@ const getRallyBucket = (point: Point) => {
   return 'long';
 };
 
-const getLostStreakStats = (
-  reconstructedPoints: ReconstructedPoint[],
-  team: TeamKey,
-) => {
+const getLostStreakStats = (reconstructedPoints: ReconstructedPoint[], team: TeamKey) => {
   let currentLostStreak = 0;
   let maxLostStreak = 0;
   let threePointLostStreakCount = 0;
@@ -734,56 +620,27 @@ const getTwoPointLeadHoldRate = (match: Match, team: TeamKey): RateStat => {
   return { numerator, denominator };
 };
 
-const getSingleMatchGrowthStats = (
-  match: Match,
-  side: TeamKey,
-): SingleMatchGrowthStats | null => {
+const getSingleMatchGrowthStats = (match: Match, side: TeamKey): SingleMatchGrowthStats | null => {
   const targetKey = getGrowthTargetForSide(match, side).key;
   if (!targetKey) return null;
 
   const opponent = getOppositeTeam(side);
   const reconstructedPoints = reconstructPoints(match);
-  const servedPoints = reconstructedPoints.filter(
-    (context) => context.point.serving_team === side,
-  );
-  const firstServePoints = servedPoints.filter(
-    (context) => !context.point.first_serve_fault,
-  );
-  const secondServePoints = servedPoints.filter(
-    (context) => context.point.first_serve_fault,
-  );
-  const receivePoints = reconstructedPoints.filter(
-    (context) => context.point.serving_team === opponent,
-  );
-  const twoTwoPoints = reconstructedPoints.filter(
-    (context) => context.scoreBefore.A === 2 && context.scoreBefore.B === 2,
-  );
+  const servedPoints = reconstructedPoints.filter((context) => context.point.serving_team === side);
+  const firstServePoints = servedPoints.filter((context) => !context.point.first_serve_fault);
+  const secondServePoints = servedPoints.filter((context) => context.point.first_serve_fault);
+  const receivePoints = reconstructedPoints.filter((context) => context.point.serving_team === opponent);
+  const twoTwoPoints = reconstructedPoints.filter((context) => context.scoreBefore.A === 2 && context.scoreBefore.B === 2);
   const deucePoints = reconstructedPoints.filter(
-    (context) =>
-      context.scoreBefore.A === context.scoreBefore.B &&
-      context.scoreBefore.A >= context.pointsToWin - 1,
+    (context) => context.scoreBefore.A === context.scoreBefore.B && context.scoreBefore.A >= context.pointsToWin - 1,
   );
-  const gamePointPoints = reconstructedPoints.filter((context) =>
-    isGamePointOpportunity(context, side),
-  );
-  const opponentGamePointPoints = reconstructedPoints.filter((context) =>
-    isGamePointOpportunity(context, opponent),
-  );
-  const finalGamePoints = reconstructedPoints.filter(
-    (context) => context.isFinalGame,
-  );
-  const rallyPoints = reconstructedPoints.filter(
-    (context) => getRallyBucket(context.point) !== 'unknown',
-  );
-  const shortRallyPoints = rallyPoints.filter(
-    (context) => getRallyBucket(context.point) === 'short',
-  );
-  const middleRallyPoints = rallyPoints.filter(
-    (context) => getRallyBucket(context.point) === 'middle',
-  );
-  const longRallyPoints = rallyPoints.filter(
-    (context) => getRallyBucket(context.point) === 'long',
-  );
+  const gamePointPoints = reconstructedPoints.filter((context) => isGamePointOpportunity(context, side));
+  const opponentGamePointPoints = reconstructedPoints.filter((context) => isGamePointOpportunity(context, opponent));
+  const finalGamePoints = reconstructedPoints.filter((context) => context.isFinalGame);
+  const rallyPoints = reconstructedPoints.filter((context) => getRallyBucket(context.point) !== 'unknown');
+  const shortRallyPoints = rallyPoints.filter((context) => getRallyBucket(context.point) === 'short');
+  const middleRallyPoints = rallyPoints.filter((context) => getRallyBucket(context.point) === 'middle');
+  const longRallyPoints = rallyPoints.filter((context) => getRallyBucket(context.point) === 'long');
   const lostStreakStats = getLostStreakStats(reconstructedPoints, side);
   const matchWinner = getMatchWinner(match);
   const opponentTarget = getGrowthTargetForSide(match, opponent);
@@ -804,8 +661,7 @@ const getSingleMatchGrowthStats = (
       firstServePointWinRate: createRate(firstServePoints, side),
       secondServePointWinRate: createRate(secondServePoints, side),
       doubleFaultRate: {
-        numerator: servedPoints.filter((context) => context.point.double_fault)
-          .length,
+        numerator: servedPoints.filter((context) => context.point.double_fault).length,
         denominator: servedPoints.length,
       },
       receivePointWinRate: createRate(receivePoints, side),
@@ -814,8 +670,7 @@ const getSingleMatchGrowthStats = (
       gamePointWinRate: createRate(gamePointPoints, side),
       opponentGamePointSaveRate: createRate(opponentGamePointPoints, side),
       finalGamePointWinRate: createRate(finalGamePoints, side),
-      afterConsecutiveLostPointWinRate:
-        lostStreakStats.afterConsecutiveLostPointWinRate,
+      afterConsecutiveLostPointWinRate: lostStreakStats.afterConsecutiveLostPointWinRate,
       twoPointLeadHoldRate: getTwoPointLeadHoldRate(match, side),
       shortRallyWinRate: createRate(shortRallyPoints, side),
       middleRallyWinRate: createRate(middleRallyPoints, side),
@@ -840,9 +695,7 @@ const getStatsForTarget = (matches: Match[], targetKey: string) =>
     )
     .sort((left, right) => left.matchDate.localeCompare(right.matchDate));
 
-const aggregateStats = (
-  statsList: SingleMatchGrowthStats[],
-): AggregatedMetricSource => {
+const aggregateStats = (statsList: SingleMatchGrowthStats[]): AggregatedMetricSource => {
   const aggregated: AggregatedMetricSource = {
     rates: {},
     averages: {},
@@ -880,39 +733,23 @@ const getAverageValue = (average: AverageStat | undefined) => {
   return average.total / average.matches;
 };
 
-const getConfidence = (
-  currentSample: number,
-  previousSample: number,
-  currentMatches: number,
-  previousMatches: number,
-): GrowthConfidence => {
+const getConfidence = (currentSample: number, previousSample: number, currentMatches: number, previousMatches: number): GrowthConfidence => {
   if (currentMatches === 0 || previousMatches === 0) {
     return 'insufficient_sample';
   }
   if (currentSample === 0 || previousSample === 0) {
     return 'insufficient_sample';
   }
-  if (
-    currentSample < RATE_SAMPLE_SMALL ||
-    previousSample < RATE_SAMPLE_SMALL ||
-    currentMatches < 2 ||
-    previousMatches < 2
-  ) {
+  if (currentSample < RATE_SAMPLE_SMALL || previousSample < RATE_SAMPLE_SMALL || currentMatches < 2 || previousMatches < 2) {
     return 'small_sample';
   }
-  if (
-    currentSample < RATE_SAMPLE_ENOUGH ||
-    previousSample < RATE_SAMPLE_ENOUGH
-  ) {
+  if (currentSample < RATE_SAMPLE_ENOUGH || previousSample < RATE_SAMPLE_ENOUGH) {
     return 'small_sample';
   }
   return 'enough_sample';
 };
 
-const getTrend = (
-  delta: number | null,
-  higherIsBetter: boolean,
-): GrowthTrend => {
+const getTrend = (delta: number | null, higherIsBetter: boolean): GrowthTrend => {
   if (delta === null || Math.abs(delta) < STABLE_DELTA) return 'stable';
   const movedUp = delta > 0;
   return movedUp === higherIsBetter ? 'improved' : 'declined';
@@ -949,35 +786,17 @@ const buildMetricSummary = (metric: GrowthMetric) => {
   return `${metric.label}は ${previous} から ${current} で、大きな変化はありません。`;
 };
 
-const buildGrowthMetrics = (
-  current: AggregatedMetricSource,
-  previous: AggregatedMetricSource,
-) =>
+const buildGrowthMetrics = (current: AggregatedMetricSource, previous: AggregatedMetricSource) =>
   metricDefinitions.map((definition): GrowthMetric => {
     const currentRate = current.rates[definition.key];
     const previousRate = previous.rates[definition.key];
     const currentAverage = current.averages[definition.key];
     const previousAverage = previous.averages[definition.key];
-    const currentValue =
-      definition.kind === 'rate'
-        ? getRateValue(currentRate)
-        : getAverageValue(currentAverage);
-    const previousValue =
-      definition.kind === 'rate'
-        ? getRateValue(previousRate)
-        : getAverageValue(previousAverage);
-    const currentSample =
-      definition.kind === 'rate'
-        ? (currentRate?.denominator ?? 0)
-        : (currentAverage?.matches ?? 0);
-    const previousSample =
-      definition.kind === 'rate'
-        ? (previousRate?.denominator ?? 0)
-        : (previousAverage?.matches ?? 0);
-    const delta =
-      currentValue !== null && previousValue !== null
-        ? currentValue - previousValue
-        : null;
+    const currentValue = definition.kind === 'rate' ? getRateValue(currentRate) : getAverageValue(currentAverage);
+    const previousValue = definition.kind === 'rate' ? getRateValue(previousRate) : getAverageValue(previousAverage);
+    const currentSample = definition.kind === 'rate' ? (currentRate?.denominator ?? 0) : (currentAverage?.matches ?? 0);
+    const previousSample = definition.kind === 'rate' ? (previousRate?.denominator ?? 0) : (previousAverage?.matches ?? 0);
+    const delta = currentValue !== null && previousValue !== null ? currentValue - previousValue : null;
     const metric: GrowthMetric = {
       key: definition.key,
       label: definition.label,
@@ -988,28 +807,11 @@ const buildGrowthMetrics = (
       previousValue,
       delta,
       trend: getTrend(delta, definition.higherIsBetter),
-      confidence: getConfidence(
-        currentSample,
-        previousSample,
-        current.matchCount,
-        previous.matchCount,
-      ),
-      numerator:
-        definition.kind === 'rate'
-          ? (currentRate?.numerator ?? 0)
-          : (currentAverage?.total ?? 0),
-      denominator:
-        definition.kind === 'rate'
-          ? (currentRate?.denominator ?? 0)
-          : (currentAverage?.matches ?? 0),
-      previousNumerator:
-        definition.kind === 'rate'
-          ? (previousRate?.numerator ?? 0)
-          : (previousAverage?.total ?? 0),
-      previousDenominator:
-        definition.kind === 'rate'
-          ? (previousRate?.denominator ?? 0)
-          : (previousAverage?.matches ?? 0),
+      confidence: getConfidence(currentSample, previousSample, current.matchCount, previous.matchCount),
+      numerator: definition.kind === 'rate' ? (currentRate?.numerator ?? 0) : (currentAverage?.total ?? 0),
+      denominator: definition.kind === 'rate' ? (currentRate?.denominator ?? 0) : (currentAverage?.matches ?? 0),
+      previousNumerator: definition.kind === 'rate' ? (previousRate?.numerator ?? 0) : (previousAverage?.total ?? 0),
+      previousDenominator: definition.kind === 'rate' ? (previousRate?.denominator ?? 0) : (previousAverage?.matches ?? 0),
       matchCount: current.matchCount,
       previousMatchCount: previous.matchCount,
       summary: '',
@@ -1022,26 +824,17 @@ const buildGrowthMetrics = (
   });
 
 const getComparableMetrics = (metrics: GrowthMetric[]) =>
-  metrics.filter(
-    (metric) =>
-      metric.currentValue !== null &&
-      metric.previousValue !== null &&
-      metric.confidence !== 'insufficient_sample',
-  );
+  metrics.filter((metric) => metric.currentValue !== null && metric.previousValue !== null && metric.confidence !== 'insufficient_sample');
 
 const getImprovedMetrics = (metrics: GrowthMetric[]) =>
   getComparableMetrics(metrics)
     .filter((metric) => metric.trend === 'improved')
-    .sort(
-      (left, right) => Math.abs(right.delta ?? 0) - Math.abs(left.delta ?? 0),
-    );
+    .sort((left, right) => Math.abs(right.delta ?? 0) - Math.abs(left.delta ?? 0));
 
 const getDeclinedMetrics = (metrics: GrowthMetric[]) =>
   getComparableMetrics(metrics)
     .filter((metric) => metric.trend === 'declined')
-    .sort(
-      (left, right) => Math.abs(right.delta ?? 0) - Math.abs(left.delta ?? 0),
-    );
+    .sort((left, right) => Math.abs(right.delta ?? 0) - Math.abs(left.delta ?? 0));
 
 const buildComparisonMessages = (metrics: GrowthMetric[]) => {
   const improved = getImprovedMetrics(metrics)[0];
@@ -1055,9 +848,7 @@ const buildComparisonMessages = (metrics: GrowthMetric[]) => {
     messages.push(declined.summary);
   }
   if (messages.length === 0) {
-    messages.push(
-      '大きな変化はまだ見えにくい状態です。次の数試合も続けて確認してみましょう。',
-    );
+    messages.push('大きな変化はまだ見えにくい状態です。次の数試合も続けて確認してみましょう。');
   }
 
   return messages;
@@ -1082,10 +873,7 @@ const buildComparison = ({
 }): GrowthComparison | null => {
   if (currentStats.length === 0 || previousStats.length === 0) return null;
 
-  const metrics = buildGrowthMetrics(
-    aggregateStats(currentStats),
-    aggregateStats(previousStats),
-  );
+  const metrics = buildGrowthMetrics(aggregateStats(currentStats), aggregateStats(previousStats));
 
   return {
     kind,
@@ -1100,9 +888,7 @@ const buildComparison = ({
   };
 };
 
-const getRecentPeriodComparison = (
-  stats: SingleMatchGrowthStats[],
-): GrowthComparison | null => {
+const getRecentPeriodComparison = (stats: SingleMatchGrowthStats[]): GrowthComparison | null => {
   if (stats.length < 2) return null;
   const windowSize = stats.length >= 10 ? 5 : stats.length >= 6 ? 3 : 1;
   const currentStats = stats.slice(-windowSize);
@@ -1119,9 +905,7 @@ const getRecentPeriodComparison = (
   });
 };
 
-const getWinLossComparison = (
-  stats: SingleMatchGrowthStats[],
-): GrowthComparison | null => {
+const getWinLossComparison = (stats: SingleMatchGrowthStats[]): GrowthComparison | null => {
   const wonStats = stats.filter((entry) => entry.targetWon);
   const lostStats = stats.filter((entry) => !entry.targetWon);
 
@@ -1136,28 +920,14 @@ const getWinLossComparison = (
   });
 };
 
-const getSameOpponentComparison = (
-  stats: SingleMatchGrowthStats[],
-): GrowthComparison | null => {
+const getSameOpponentComparison = (stats: SingleMatchGrowthStats[]): GrowthComparison | null => {
   const latest = stats[stats.length - 1];
   if (!latest) return null;
-  const sameOpponentStats = stats.filter(
-    (entry) => entry.opponentKey === latest.opponentKey,
-  );
-  return getRecentPeriodComparisonForKind(
-    sameOpponentStats,
-    'same_opponent',
-    `同じ相手との比較`,
-    `${latest.opponentName} との試合だけで比べています。`,
-  );
+  const sameOpponentStats = stats.filter((entry) => entry.opponentKey === latest.opponentKey);
+  return getRecentPeriodComparisonForKind(sameOpponentStats, 'same_opponent', `同じ相手との比較`, `${latest.opponentName} との試合だけで比べています。`);
 };
 
-const getRecentPeriodComparisonForKind = (
-  stats: SingleMatchGrowthStats[],
-  kind: GrowthComparisonKind,
-  title: string,
-  description: string,
-) => {
+const getRecentPeriodComparisonForKind = (stats: SingleMatchGrowthStats[], kind: GrowthComparisonKind, title: string, description: string) => {
   if (stats.length < 2) return null;
   const currentStats = stats.slice(-1);
   const previousStats = stats.slice(0, -1);
@@ -1190,16 +960,12 @@ const getSameFieldComparison = (
   );
 };
 
-const getOpponentLevelComparison = (
-  stats: SingleMatchGrowthStats[],
-): GrowthComparison | null => {
+const getOpponentLevelComparison = (stats: SingleMatchGrowthStats[]): GrowthComparison | null => {
   const latest = stats[stats.length - 1];
   const level = latest?.match.opponent_level ?? 'unknown';
   if (!latest || level === 'unknown') return null;
   return getRecentPeriodComparisonForKind(
-    stats.filter(
-      (entry) => (entry.match.opponent_level ?? 'unknown') === level,
-    ),
+    stats.filter((entry) => (entry.match.opponent_level ?? 'unknown') === level),
     'opponent_level',
     '相手レベル別比較',
     `相手レベル「${getOpponentLevelLabel(level)}」の試合だけで比べています。`,
@@ -1213,12 +979,9 @@ const getOpponentLevelLabel = (level: string) => {
   return '不明';
 };
 
-const buildSections = (
-  comparison: GrowthComparison | null,
-): GrowthReportSection[] => {
+const buildSections = (comparison: GrowthComparison | null): GrowthReportSection[] => {
   if (!comparison) return [];
-  const byCategory = (category: GrowthMetricCategory) =>
-    comparison.metrics.filter((metric) => metric.category === category);
+  const byCategory = (category: GrowthMetricCategory) => comparison.metrics.filter((metric) => metric.category === category);
 
   const sections: GrowthReportSection[] = [
     {
@@ -1231,10 +994,7 @@ const buildSections = (
       id: 'tracking',
       title: '改善トラッキング',
       messages: buildTrackingMessages(comparison.metrics),
-      metrics: [
-        ...getImprovedMetrics(comparison.metrics),
-        ...getDeclinedMetrics(comparison.metrics),
-      ].slice(0, 3),
+      metrics: [...getImprovedMetrics(comparison.metrics), ...getDeclinedMetrics(comparison.metrics)].slice(0, 3),
     },
     {
       id: 'serve',
@@ -1277,21 +1037,15 @@ const buildTrackingMessages = (metrics: GrowthMetric[]) => {
     messages.push(`前回まで確認していた「${improved.label}」は改善傾向です。`);
   }
   if (declined) {
-    messages.push(
-      `一方で「${declined.label}」は次の試合で確認してみましょう。`,
-    );
+    messages.push(`一方で「${declined.label}」は次の試合で確認してみましょう。`);
   }
   if (messages.length === 0) {
-    messages.push(
-      '改善トラッキングは、あと数試合記録すると見えやすくなります。',
-    );
+    messages.push('改善トラッキングは、あと数試合記録すると見えやすくなります。');
   }
   return messages;
 };
 
-const buildPracticeThemes = (
-  comparison: GrowthComparison | null,
-): PracticeTheme[] => {
+const buildPracticeThemes = (comparison: GrowthComparison | null): PracticeTheme[] => {
   if (!comparison) return [];
 
   return getDeclinedMetrics(comparison.metrics)
@@ -1305,14 +1059,8 @@ const buildPracticeThemes = (
     }));
 };
 
-export const buildGrowthReport = (
-  matches: Match[],
-  targetKey: string,
-  generatedAt: string = new Date().toISOString(),
-): GrowthReport | null => {
-  const target = buildGrowthTargets(matches).find(
-    (candidate) => candidate.key === targetKey,
-  );
+export const buildGrowthReport = (matches: Match[], targetKey: string, generatedAt: string = new Date().toISOString()): GrowthReport | null => {
+  const target = buildGrowthTargets(matches).find((candidate) => candidate.key === targetKey);
   if (!target) return null;
 
   const stats = getStatsForTarget(matches, targetKey);
@@ -1328,19 +1076,9 @@ export const buildGrowthReport = (
       '同じ大会の試合だけで比べています。',
       (match) => match.tournament_id ?? match.tournament_name,
     ),
-    getSameFieldComparison(
-      stats,
-      'same_format',
-      '同じ形式での比較',
-      'シングルス/ダブルスなど同じ形式の試合だけで比べています。',
-      (match) => match.game_type,
-    ),
-    getSameFieldComparison(
-      stats,
-      'same_pair',
-      '同じペアでの比較',
-      '同じペア構成の試合だけで比べています。',
-      (match) => (match.game_type === 'doubles' ? targetKey : null),
+    getSameFieldComparison(stats, 'same_format', '同じ形式での比較', 'シングルス/ダブルスなど同じ形式の試合だけで比べています。', (match) => match.game_type),
+    getSameFieldComparison(stats, 'same_pair', '同じペアでの比較', '同じペア構成の試合だけで比べています。', (match) =>
+      match.game_type === 'doubles' ? targetKey : null,
     ),
     getOpponentLevelComparison(stats),
   ].filter((comparison): comparison is GrowthComparison => Boolean(comparison));
@@ -1354,22 +1092,13 @@ export const buildGrowthReport = (
     comparisons,
     sections: buildSections(recentComparison),
     practiceThemes: buildPracticeThemes(recentComparison),
-    emptyMessage:
-      stats.length < 2
-        ? 'もう少し記録すると、前回との変化や最近の傾向が見えます。'
-        : null,
+    emptyMessage: stats.length < 2 ? 'もう少し記録すると、前回との変化や最近の傾向が見えます。' : null,
   };
 };
 
-export const buildGrowthReports = (
-  matches: Match[],
-  generatedAt: string = new Date().toISOString(),
-  options: GrowthBuildOptions = {},
-) => {
+export const buildGrowthReports = (matches: Match[], generatedAt: string = new Date().toISOString(), options: GrowthBuildOptions = {}) => {
   const targets = buildGrowthTargets(matches, options);
-  const reports = targets
-    .map((target) => buildGrowthReport(matches, target.key, generatedAt))
-    .filter((report): report is GrowthReport => Boolean(report));
+  const reports = targets.map((target) => buildGrowthReport(matches, target.key, generatedAt)).filter((report): report is GrowthReport => Boolean(report));
 
   return { targets, reports };
 };
@@ -1383,8 +1112,7 @@ const getStableHash = (value: string) => {
   return (hash >>> 0).toString(36);
 };
 
-export const getGrowthReportFileName = (targetKey: string) =>
-  `${getStableHash(targetKey)}.json`;
+export const getGrowthReportFileName = (targetKey: string) => `${getStableHash(targetKey)}.json`;
 
 export const formatGrowthMetricValue = formatMetricValue;
 export const formatGrowthMetricDelta = formatDelta;

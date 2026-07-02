@@ -15,13 +15,7 @@ export interface ScoreMatchLink {
   teamB: string;
 }
 
-const reverseRoot = path.join(
-  process.cwd(),
-  'public',
-  'data',
-  'beta-matches',
-  'reverse',
-);
+const reverseRoot = path.join(process.cwd(), 'public', 'data', 'beta-matches', 'reverse');
 
 const readJsonIfExists = <T>(filePath: string): T | null => {
   if (!fs.existsSync(filePath)) return null;
@@ -32,18 +26,14 @@ const readJsonIfExists = <T>(filePath: string): T | null => {
   }
 };
 
-export const getScoreMatchLinksForTournament = (
-  tournamentPath: string,
-): ScoreMatchLink[] => {
+export const getScoreMatchLinksForTournament = (tournamentPath: string): ScoreMatchLink[] => {
   const data = readJsonIfExists<{
     tournaments?: Record<string, ScoreMatchLink[]>;
   }>(path.join(reverseRoot, 'by-tournament.json'));
   return data?.tournaments?.[tournamentPath] ?? [];
 };
 
-export const getScoreMatchLinksForPlayer = (
-  playerId: string | number,
-): ScoreMatchLink[] => {
+export const getScoreMatchLinksForPlayer = (playerId: string | number): ScoreMatchLink[] => {
   const data = readJsonIfExists<{
     players?: Record<string, ScoreMatchLink[]>;
   }>(path.join(reverseRoot, 'by-player.json'));

@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  loadMatchWithRelations,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, loadMatchWithRelations, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { isScoreSiteMode } from '@/lib/siteConfig';
 import type { Match } from '@/types/database';
 
@@ -82,14 +77,7 @@ const buildTeamDisplay = (team: EditableTeam) => {
       const region = normalizeString(player.region);
 
       const name = [lastName, firstName].filter(Boolean).join(' ').trim();
-      const details = [
-        name || null,
-        teamName ? `(${teamName})` : null,
-        region ? `[${region}]` : null,
-      ]
-        .filter(Boolean)
-        .join(' ')
-        .trim();
+      const details = [name || null, teamName ? `(${teamName})` : null, region ? `[${region}]` : null].filter(Boolean).join(' ').trim();
 
       return details || null;
     })
@@ -99,10 +87,7 @@ const buildTeamDisplay = (team: EditableTeam) => {
   return display || null;
 };
 
-const buildStructuredTeam = (
-  body: UpdateMatchBody,
-  teamKey: TeamKey,
-): EditableTeam => {
+const buildStructuredTeam = (body: UpdateMatchBody, teamKey: TeamKey): EditableTeam => {
   const prefix = `team_${teamKey.toLowerCase()}` as 'team_a' | 'team_b';
 
   const player1: EditableTeamPlayer = {
@@ -119,9 +104,7 @@ const buildStructuredTeam = (
     region: normalizeString(body[`${prefix}_player2_region`]),
   };
 
-  const players = [player1, player2].filter((player) =>
-    Object.values(player).some(Boolean),
-  );
+  const players = [player1, player2].filter((player) => Object.values(player).some(Boolean));
 
   return {
     entry_number: normalizeString(body[`${prefix}_entry_number`]),
@@ -129,10 +112,7 @@ const buildStructuredTeam = (
   };
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { matchId } = req.query;
   if (typeof matchId !== 'string') {
     return res.status(400).json({ error: 'Invalid match id.' });
@@ -207,8 +187,7 @@ export default async function handler(
         }
       });
 
-      const shouldRebuildTeams =
-        'teams' in body || teamFieldKeys.some((key) => key in body);
+      const shouldRebuildTeams = 'teams' in body || teamFieldKeys.some((key) => key in body);
 
       if (shouldRebuildTeams) {
         const nextTeams = {
@@ -221,12 +200,7 @@ export default async function handler(
         allowedUpdates.team_b = buildTeamDisplay(nextTeams.B);
       }
 
-      const { data: match, error } = await (supabase as any)
-        .from('matches')
-        .update(allowedUpdates)
-        .eq('id', matchId)
-        .select('*')
-        .single();
+      const { data: match, error } = await (supabase as any).from('matches').update(allowedUpdates).eq('id', matchId).select('*').single();
 
       if (error) {
         throw error;
@@ -244,10 +218,7 @@ export default async function handler(
     }
 
     try {
-      const { data: games, error: gamesError } = await (supabase as any)
-        .from('games')
-        .select('id')
-        .eq('match_id', matchId);
+      const { data: games, error: gamesError } = await (supabase as any).from('games').select('id').eq('match_id', matchId);
 
       if (gamesError) {
         throw gamesError;
@@ -255,29 +226,20 @@ export default async function handler(
 
       const gameIds = (games ?? []).map((game: { id: string }) => game.id);
       if (gameIds.length > 0) {
-        const { error: pointsError } = await (supabase as any)
-          .from('points')
-          .delete()
-          .in('game_id', gameIds);
+        const { error: pointsError } = await (supabase as any).from('points').delete().in('game_id', gameIds);
 
         if (pointsError) {
           throw pointsError;
         }
       }
 
-      const { error: deleteGamesError } = await (supabase as any)
-        .from('games')
-        .delete()
-        .eq('match_id', matchId);
+      const { error: deleteGamesError } = await (supabase as any).from('games').delete().eq('match_id', matchId);
 
       if (deleteGamesError) {
         throw deleteGamesError;
       }
 
-      const { error: deleteMatchError } = await (supabase as any)
-        .from('matches')
-        .delete()
-        .eq('id', matchId);
+      const { error: deleteMatchError } = await (supabase as any).from('matches').delete().eq('id', matchId);
 
       if (deleteMatchError) {
         throw deleteMatchError;

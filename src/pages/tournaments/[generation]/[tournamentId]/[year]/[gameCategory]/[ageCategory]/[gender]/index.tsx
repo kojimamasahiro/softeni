@@ -18,26 +18,10 @@ import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import PageLayout from '@/components/PageLayout';
 import { getChampionDefeat, getChampionMilestones } from '@/lib/milestones';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
-import {
-  PackedTournamentDetailData,
-  packTournamentDetailData,
-  unpackTournamentDetailData,
-} from '@/lib/packedPageData';
-import {
-  getScoreMatchLinksForTournament,
-  type ScoreMatchLink,
-} from '@/lib/matchReverseIndex';
-import {
-  buildEventOrganizer,
-  buildEventPlace,
-  resolveEventDates,
-  sportsEventBaseFields,
-} from '@/lib/sportsEventJsonLd';
-import {
-  TournamentDetailData,
-  TournamentIndexEntry,
-  TournamentInformationEntry,
-} from '@/types/index';
+import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
+import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
+import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 
 type LinkCategory = {
   label: string;
@@ -99,11 +83,7 @@ export default function TournamentYearResultPage({
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const detailData = useMemo(
-    () =>
-      detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null,
-    [detailDataPacked],
-  );
+  const detailData = useMemo(() => (detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null), [detailDataPacked]);
 
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
@@ -172,10 +152,7 @@ export default function TournamentYearResultPage({
               inLanguage: 'ja',
               url: pageUrl,
               ...sportsEventBaseFields,
-              ...resolveEventDates(
-                infoForYear?.startDate,
-                infoForYear?.endDate,
-              ),
+              ...resolveEventDates(infoForYear?.startDate, infoForYear?.endDate),
               location: buildEventPlace(infoForYear?.location),
               organizer: buildEventOrganizer(),
               description: `ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・成績一覧。`,
@@ -198,10 +175,7 @@ export default function TournamentYearResultPage({
           }}
         />
 
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1.0"
-        ></meta>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
       </Head>
 
       <PageLayout>
@@ -218,22 +192,16 @@ export default function TournamentYearResultPage({
             {categoryLabel ? `${categoryLabel} ` : ''}
             の試合結果・トーナメント表・優勝/上位入賞者の成績一覧です。
           </p>
-          {infoForYear?.location &&
-            infoForYear?.startDate &&
-            infoForYear?.endDate && (
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                開催地:{infoForYear.location} / 日程:
-                {infoForYear.startDate}〜{infoForYear.endDate}
-              </p>
-            )}
+          {infoForYear?.location && infoForYear?.startDate && infoForYear?.endDate && (
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              開催地:{infoForYear.location} / 日程:
+              {infoForYear.startDate}〜{infoForYear.endDate}
+            </p>
+          )}
         </section>
 
         {/* ✅ 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
-        <ResultContextBlocks
-          label={label}
-          year={year}
-          milestones={contextMilestones}
-        />
+        <ResultContextBlocks label={label} year={year} milestones={contextMilestones} />
 
         {/* ✅ トーナメント表 */}
         {detailData && <TournamentBracket detailData={detailData} />}
@@ -241,12 +209,8 @@ export default function TournamentYearResultPage({
         {/* ✅ スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (
           <section className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
-            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">
-              スコア詳細のある試合
-            </h2>
-            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">
-              ポイントごとの記録・分析を掲載しています。
-            </p>
+            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">スコア詳細のある試合</h2>
+            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">ポイントごとの記録・分析を掲載しています。</p>
             <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
               {scoreMatchLinks.map((link) => (
                 <li key={link.matchId}>
@@ -297,44 +261,25 @@ export default function TournamentYearResultPage({
           <section className="mb-10">
             <h2 className="text-lg font-bold mb-3">その他の大会結果</h2>
             {Object.entries(
-              linkCategories.reduce<Record<string, LinkCategory[]>>(
-                (acc, link) => {
-                  if (!acc[link.year]) acc[link.year] = [];
-                  acc[link.year].push(link);
-                  return acc;
-                },
-                {},
-              ),
+              linkCategories.reduce<Record<string, LinkCategory[]>>((acc, link) => {
+                if (!acc[link.year]) acc[link.year] = [];
+                acc[link.year].push(link);
+                return acc;
+              }, {}),
             )
               .sort((a, b) => Number(b[0]) - Number(a[0])) // 年で降順
               .map(([yearValue, links]) => (
-                <div
-                  className="mb-4"
-                  key={`${yearValue}-${links
-                    .map(
-                      (link) =>
-                        `${link.year}-${link.category}-${link.age}-${link.gender}`,
-                    )
-                    .join('-')}`}
-                >
+                <div className="mb-4" key={`${yearValue}-${links.map((link) => `${link.year}-${link.category}-${link.age}-${link.gender}`).join('-')}`}>
                   <h4 className="text-md mb-2">{yearValue}年度</h4>
                   <ul className="flex flex-wrap gap-2">
                     {links.map((link) =>
                       link.isCurrent ? (
-                        <li
-                          key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
-                        >
-                          <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">
-                            {link.label}
-                          </span>
+                        <li key={`${link.year}-${link.category}-${link.age}-${link.gender}`}>
+                          <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">{link.label}</span>
                         </li>
                       ) : (
-                        <li
-                          key={`${link.year}-${link.category}-${link.age}-${link.gender}`}
-                        >
-                          <Link
-                            href={`/tournaments/${generation}/${tournamentId}/${link.year}/${link.category}/${link.age}/${link.gender}`}
-                          >
+                        <li key={`${link.year}-${link.category}-${link.age}-${link.gender}`}>
+                          <Link href={`/tournaments/${generation}/${tournamentId}/${link.year}/${link.category}/${link.age}/${link.gender}`}>
                             <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
                               {link.label}
                             </span>
@@ -349,10 +294,7 @@ export default function TournamentYearResultPage({
         )}
 
         <div className="text-right mt-10 mb-2">
-          <Link
-            href="/tournaments"
-            className="text-sm text-blue-500 hover:underline"
-          >
+          <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
             大会結果一覧
           </Link>
         </div>
@@ -372,12 +314,8 @@ export default function TournamentYearResultPage({
 
         {infoForYear?.source && (
           <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
-            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
-              出典・参考情報
-            </h2>
-            <p className="mb-3">
-              本ページの試合結果データは、以下の情報をもとに作成しています。
-            </p>
+            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">出典・参考情報</h2>
+            <p className="mb-3">本ページの試合結果データは、以下の情報をもとに作成しています。</p>
             <ul className="list-disc list-inside space-y-1">
               <li>
                 {infoForYear.sourceUrl ? (
@@ -393,13 +331,9 @@ export default function TournamentYearResultPage({
                   <span className="font-medium">{infoForYear.source}</span>
                 )}
               </li>
-              <li>
-                一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。
-              </li>
+              <li>一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。</li>
             </ul>
-            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-              内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。
-            </p>
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。</p>
           </section>
         )}
       </PageLayout>
@@ -409,12 +343,7 @@ export default function TournamentYearResultPage({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Build paths by scanning data/tournaments/details directory. We don't rely on data/tournaments.
-  const detailsRoot = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'details',
-  );
+  const detailsRoot = path.join(process.cwd(), 'data', 'tournaments', 'details');
   const paths: {
     params: {
       generation: string; // keep generation empty string because details doesn't include generation; caller expects a value - use 'unknown'
@@ -436,18 +365,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   // try to load data/tournaments/index.json to map tournamentId -> generationId
-  const indexPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'index.json',
-  );
-  const localIndexPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'local_index.json',
-  );
+  const indexPath = path.join(process.cwd(), 'data', 'tournaments', 'index.json');
+  const localIndexPath = path.join(process.cwd(), 'data', 'tournaments', 'local_index.json');
   const tournamentGenerationMap: Record<string, string> = {};
 
   const loadIndex = (p: string) => {
@@ -462,10 +381,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
               if (typeof tidVal === 'string' || typeof tidVal === 'number') {
                 const tid = String(tidVal);
                 const genVal = entry['generationId'];
-                const gen =
-                  typeof genVal === 'string' || typeof genVal === 'number'
-                    ? String(genVal)
-                    : 'unknown';
+                const gen = typeof genVal === 'string' || typeof genVal === 'number' ? String(genVal) : 'unknown';
                 tournamentGenerationMap[tid] = gen;
               }
             }
@@ -520,28 +436,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { generation, tournamentId, year, gameCategory, ageCategory, gender } =
-    context.params as {
-      generation: string;
-      tournamentId: string;
-      year: string;
-      gameCategory: string;
-      ageCategory: string;
-      gender: string;
-    };
+  const { generation, tournamentId, year, gameCategory, ageCategory, gender } = context.params as {
+    generation: string;
+    tournamentId: string;
+    year: string;
+    gameCategory: string;
+    ageCategory: string;
+    gender: string;
+  };
 
-  const indexPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'index.json',
-  );
-  const localIndexPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'local_index.json',
-  );
+  const indexPath = path.join(process.cwd(), 'data', 'tournaments', 'index.json');
+  const localIndexPath = path.join(process.cwd(), 'data', 'tournaments', 'local_index.json');
 
   let tournamentIndexEntry: TournamentIndexEntry | null = null;
 
@@ -570,18 +475,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (!tournamentIndexEntry) {
     tournamentIndexEntry = loadIndexEntry(localIndexPath);
   }
-  const playersIndexPath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    'index.json',
-  );
+  const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
   const playerIndexMap = new Map<string, number>();
   if (fs.existsSync(playersIndexPath)) {
     try {
-      const playersIndex = JSON.parse(
-        fs.readFileSync(playersIndexPath, 'utf-8'),
-      ) as Array<{
+      const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
         id: number;
         lastName: string;
         firstName: string;
@@ -600,13 +498,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       console.error('failed to parse players index.json', err);
     }
   }
-  const infoPath = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'information',
-    `${tournamentId}.json`,
-  );
+  const infoPath = path.join(process.cwd(), 'data', 'tournaments', 'information', `${tournamentId}.json`);
   const infoWarnings: string[] = [];
   let infoForYear: TournamentInformationEntry | null = null;
   let linkCategories: LinkCategory[] | null = null;
@@ -615,8 +507,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     try {
       const raw = fs.readFileSync(infoPath, 'utf-8');
       const parsed = JSON.parse(raw) as TournamentInformationEntry[];
-      infoForYear =
-        parsed.find((entry) => String(entry.year) === String(year)) ?? null;
+      infoForYear = parsed.find((entry) => String(entry.year) === String(year)) ?? null;
 
       linkCategories = parsed.flatMap((entry) =>
         (entry.categories ?? []).map((cat) => ({
@@ -625,38 +516,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
           category: cat.category,
           gender: cat.gender,
           age: cat.age,
-          isCurrent:
-            String(entry.year) === String(year) &&
-            cat.category === gameCategory &&
-            cat.gender === gender &&
-            cat.age === ageCategory,
+          isCurrent: String(entry.year) === String(year) && cat.category === gameCategory && cat.gender === gender && cat.age === ageCategory,
         })),
       );
 
       if (!infoForYear) {
-        infoWarnings.push(
-          `information file found but no entry for year ${year}`,
-        );
+        infoWarnings.push(`information file found but no entry for year ${year}`);
       }
     } catch (err) {
-      infoWarnings.push(
-        `information JSON parse error: ${infoPath} - ${String(err)}`,
-      );
+      infoWarnings.push(`information JSON parse error: ${infoPath} - ${String(err)}`);
     }
   } else {
-    infoWarnings.push(
-      `information file not found: ${path.relative(process.cwd(), infoPath)}`,
-    );
+    infoWarnings.push(`information file not found: ${path.relative(process.cwd(), infoPath)}`);
   }
 
   // We no longer read from data/tournaments; use details + information as canonical sources
-  const detailsBase = path.join(
-    process.cwd(),
-    'data',
-    'tournaments',
-    'details',
-    tournamentId,
-  );
+  const detailsBase = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId);
 
   // category file name
   const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
@@ -681,14 +556,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
       }
     } catch (err) {
-      detailsWarnings.push(
-        `details JSON parse error: ${detailsPath} - ${String(err)}`,
-      );
+      detailsWarnings.push(`details JSON parse error: ${detailsPath} - ${String(err)}`);
     }
   } else {
-    detailsWarnings.push(
-      `details file not found: ${path.relative(process.cwd(), detailsPath)}`,
-    );
+    detailsWarnings.push(`details file not found: ${path.relative(process.cwd(), detailsPath)}`);
   }
 
   // Resolving Federation / Prefecture info if available
@@ -715,18 +586,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   if (generation === 'highschool' && detailData?.participants?.length) {
-    const highschoolSummaryPath = path.join(
-      process.cwd(),
-      'data',
-      'highschool',
-      'prefecture-summary.json',
-    );
+    const highschoolSummaryPath = path.join(process.cwd(), 'data', 'highschool', 'prefecture-summary.json');
 
     if (fs.existsSync(highschoolSummaryPath)) {
       try {
-        const summaryEntries = JSON.parse(
-          fs.readFileSync(highschoolSummaryPath, 'utf-8'),
-        ) as Array<{
+        const summaryEntries = JSON.parse(fs.readFileSync(highschoolSummaryPath, 'utf-8')) as Array<{
           prefecture: string;
           prefectureId: string;
           team: string;
@@ -734,12 +598,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }>;
 
         const relevantKeys = new Set(
-          detailData.participants
-            .filter((participant) => participant.team)
-            .map(
-              (participant) =>
-                `${participant.team}::${participant.prefecture ?? ''}`,
-            ),
+          detailData.participants.filter((participant) => participant.team).map((participant) => `${participant.team}::${participant.prefecture ?? ''}`),
         );
 
         highschoolTeamLinks = {};
@@ -753,12 +612,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           };
         }
       } catch (err) {
-        detailsWarnings.push(
-          `highschool team summary parse error: ${path.relative(
-            process.cwd(),
-            highschoolSummaryPath,
-          )} - ${String(err)}`,
-        );
+        detailsWarnings.push(`highschool team summary parse error: ${path.relative(process.cwd(), highschoolSummaryPath)} - ${String(err)}`);
       }
     }
   }
@@ -778,18 +632,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const hw = getHistoricalWinners(tournamentId, categoryId, {
       targetYear: targetYearNum,
     });
-    const championMs = getChampionMilestones(
-      tournamentId,
-      categoryId,
-      targetYearNum,
-      hw,
-    );
-    const defeat = getChampionDefeat(
-      tournamentId,
-      categoryId,
-      targetYearNum,
-      hw,
-    );
+    const championMs = getChampionMilestones(tournamentId, categoryId, targetYearNum, hw);
+    const defeat = getChampionDefeat(tournamentId, categoryId, targetYearNum, hw);
     // 重要度順: repeat-title / first-title（getChampionMilestones で整列済み）→ champion-defeat。
     const events = [...(championMs?.events ?? []), ...(defeat ? [defeat] : [])];
     for (const e of events) {
@@ -812,15 +656,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
         ageCategory,
         gender,
         label: tournamentIndexEntry?.label ?? '',
-        categoryLabel:
-          infoForYear?.categories?.find(
-            (cat) =>
-              cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`,
-          )?.label ?? '',
+        categoryLabel: infoForYear?.categories?.find((cat) => cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`)?.label ?? '',
         infoForYear,
-        detailDataPacked: detailData
-          ? packTournamentDetailData(detailData)
-          : null,
+        detailDataPacked: detailData ? packTournamentDetailData(detailData) : null,
         linkCategories,
         infoWarnings,
         detailsWarnings,

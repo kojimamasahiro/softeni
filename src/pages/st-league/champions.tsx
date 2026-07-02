@@ -42,13 +42,8 @@ interface Props {
 
 const GENDER_LABEL: Record<Gender, string> = { boys: '男子', girls: '女子' };
 
-export default function STLeagueChampions({
-  editions,
-  records,
-  promotions,
-}: Props) {
-  const pageTitle =
-    'STリーグ歴代優勝チーム一覧｜男子・女子の王者と記録 | ソフトテニス情報';
+export default function STLeagueChampions({ editions, records, promotions }: Props) {
+  const pageTitle = 'STリーグ歴代優勝チーム一覧｜男子・女子の王者と記録 | ソフトテニス情報';
   const pageUrl = 'https://softeni-pick.com/st-league/champions/';
   const description =
     'ソフトテニスSTリーグの歴代優勝チームを男子・女子別に一覧でまとめました。各回（第1回〜）の王者・会場、連覇などの記録、プレーオフ（入替戦）による昇格・降格の歴史を掲載しています。';
@@ -71,9 +66,7 @@ export default function STLeagueChampions({
               itemListElement: editions.map((e, i) => ({
                 '@type': 'ListItem',
                 position: i + 1,
-                name: `${e.title}（男子: ${e.champions.boys ?? '—'} / 女子: ${
-                  e.champions.girls ?? '—'
-                }）`,
+                name: `${e.title}（男子: ${e.champions.boys ?? '—'} / 女子: ${e.champions.girls ?? '—'}）`,
                 url: `https://softeni-pick.com/st-league/${e.year}/matches`,
               })),
             }),
@@ -92,32 +85,17 @@ export default function STLeagueChampions({
 
         {/* Header */}
         <section className="max-w-3xl mx-auto mb-10 px-4">
-          <h1 className="text-2xl font-bold mb-4">
-            STリーグ 歴代優勝チーム一覧・記録
-          </h1>
+          <h1 className="text-2xl font-bold mb-4">STリーグ 歴代優勝チーム一覧・記録</h1>
           <p className="text-lg leading-relaxed mb-4">
             ソフトテニス実業団最高峰
             <strong>STリーグ</strong>の<strong>歴代優勝チーム</strong>
             を男子・女子別にまとめました。各回の王者・会場に加え、連覇などの記録、プレーオフ（入替戦）による
             <strong>昇格・降格</strong>の歴史も掲載しています。
           </p>
-          <Link
-            href="/st-league/about"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href="/st-league/about" className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             STリーグのルール・仕組みを見る
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
         </section>
@@ -128,16 +106,11 @@ export default function STLeagueChampions({
             <h2 className="text-lg font-bold mb-4">記録ハイライト</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {records.map((r, i) => (
-                <div
-                  key={i}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm"
-                >
+                <div key={i} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
                   <div className="flex items-center gap-2 mb-2">
                     <span
                       className={`inline-block text-xs font-bold px-2 py-0.5 rounded ${
-                        r.gender === 'boys'
-                          ? 'bg-blue-100 text-blue-800'
-                          : 'bg-rose-100 text-rose-800'
+                        r.gender === 'boys' ? 'bg-blue-100 text-blue-800' : 'bg-rose-100 text-rose-800'
                       }`}
                     >
                       {GENDER_LABEL[r.gender]}
@@ -154,9 +127,7 @@ export default function STLeagueChampions({
 
         {/* 歴代王者表 */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
-          <h2 className="text-lg font-bold mb-4">
-            歴代優勝チーム（男子・女子）
-          </h2>
+          <h2 className="text-lg font-bold mb-4">歴代優勝チーム（男子・女子）</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -164,69 +135,43 @@ export default function STLeagueChampions({
                   <th className="py-2 pr-3 whitespace-nowrap">回</th>
                   <th className="py-2 pr-3 whitespace-nowrap">年</th>
                   <th className="py-2 pr-3">
-                    <span className="text-blue-700 dark:text-blue-400">
-                      男子優勝
-                    </span>
+                    <span className="text-blue-700 dark:text-blue-400">男子優勝</span>
                   </th>
                   <th className="py-2 pr-3">
-                    <span className="text-rose-700 dark:text-rose-400">
-                      女子優勝
-                    </span>
+                    <span className="text-rose-700 dark:text-rose-400">女子優勝</span>
                   </th>
                   <th className="py-2 pr-3 hidden sm:table-cell">会場</th>
                 </tr>
               </thead>
               <tbody>
                 {editions.map((e) => (
-                  <tr
-                    key={e.year}
-                    className="border-b border-gray-100 dark:border-gray-800"
-                  >
+                  <tr key={e.year} className="border-b border-gray-100 dark:border-gray-800">
                     <td className="py-2.5 pr-3 whitespace-nowrap font-bold">
-                      <Link
-                        href={`/st-league/${e.year}/matches`}
-                        className="text-blue-600 dark:text-blue-400 hover:underline"
-                      >
+                      <Link href={`/st-league/${e.year}/matches`} className="text-blue-600 dark:text-blue-400 hover:underline">
                         {e.edition ? `第${e.edition}回` : e.year}
                       </Link>
                     </td>
-                    <td className="py-2.5 pr-3 whitespace-nowrap text-gray-500">
-                      {e.year}
-                    </td>
-                    <td className="py-2.5 pr-3 font-medium">
-                      {e.champions.boys ?? '—'}
-                    </td>
-                    <td className="py-2.5 pr-3 font-medium">
-                      {e.champions.girls ?? '—'}
-                    </td>
-                    <td className="py-2.5 pr-3 hidden sm:table-cell text-gray-500 text-xs">
-                      {e.venue ?? '—'}
-                    </td>
+                    <td className="py-2.5 pr-3 whitespace-nowrap text-gray-500">{e.year}</td>
+                    <td className="py-2.5 pr-3 font-medium">{e.champions.boys ?? '—'}</td>
+                    <td className="py-2.5 pr-3 font-medium">{e.champions.girls ?? '—'}</td>
+                    <td className="py-2.5 pr-3 hidden sm:table-cell text-gray-500 text-xs">{e.venue ?? '—'}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-400 mt-2">
-            ※
-            各回の「回」をタップすると、その年度の試合結果・順位表へ移動します。
-          </p>
+          <p className="text-xs text-gray-400 mt-2">※ 各回の「回」をタップすると、その年度の試合結果・順位表へ移動します。</p>
         </section>
 
         {/* 昇降格の系譜 */}
         {seasons.length > 0 && (
           <section className="max-w-4xl mx-auto mb-12 px-4">
-            <h2 className="text-lg font-bold mb-4">
-              昇格・降格の系譜（プレーオフ／入替戦）
-            </h2>
+            <h2 className="text-lg font-bold mb-4">昇格・降格の系譜（プレーオフ／入替戦）</h2>
             <div className="space-y-4">
               {seasons.map((season) => {
                 const rows = promotions.filter((p) => p.season === season);
                 return (
-                  <div
-                    key={season}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm"
-                  >
+                  <div key={season} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
                     <p className="font-bold mb-3">{season} シーズン</p>
                     <div className="grid sm:grid-cols-2 gap-4">
                       {(['boys', 'girls'] as Gender[]).map((g) => {
@@ -235,31 +180,18 @@ export default function STLeagueChampions({
                           <div key={g}>
                             <span
                               className={`inline-block text-xs font-bold px-2 py-0.5 rounded mb-2 ${
-                                g === 'boys'
-                                  ? 'bg-blue-100 text-blue-800'
-                                  : 'bg-rose-100 text-rose-800'
+                                g === 'boys' ? 'bg-blue-100 text-blue-800' : 'bg-rose-100 text-rose-800'
                               }`}
                             >
                               {GENDER_LABEL[g]}
                             </span>
-                            {row &&
-                            (row.promoted.length || row.relegated.length) ? (
+                            {row && (row.promoted.length || row.relegated.length) ? (
                               <div className="space-y-1 text-sm">
-                                {row.promoted.length > 0 && (
-                                  <p className="text-emerald-700 dark:text-emerald-400">
-                                    ▲ 昇格：{row.promoted.join('、')}
-                                  </p>
-                                )}
-                                {row.relegated.length > 0 && (
-                                  <p className="text-gray-500">
-                                    ▼ 降格：{row.relegated.join('、')}
-                                  </p>
-                                )}
+                                {row.promoted.length > 0 && <p className="text-emerald-700 dark:text-emerald-400">▲ 昇格：{row.promoted.join('、')}</p>}
+                                {row.relegated.length > 0 && <p className="text-gray-500">▼ 降格：{row.relegated.join('、')}</p>}
                               </div>
                             ) : (
-                              <p className="text-sm text-gray-400">
-                                Ⅰ部の昇降格なし／データ未入力
-                              </p>
+                              <p className="text-sm text-gray-400">Ⅰ部の昇降格なし／データ未入力</p>
                             )}
                           </div>
                         );
@@ -269,10 +201,7 @@ export default function STLeagueChampions({
                 );
               })}
             </div>
-            <p className="text-xs text-gray-400 mt-2">
-              ※
-              昇降格はⅠ部とⅡ部間のプレーオフ（入替戦）の結果です。一部はAssumptionを含みます。
-            </p>
+            <p className="text-xs text-gray-400 mt-2">※ 昇降格はⅠ部とⅡ部間のプレーオフ（入替戦）の結果です。一部はAssumptionを含みます。</p>
           </section>
         )}
 
@@ -284,24 +213,16 @@ export default function STLeagueChampions({
               {editions
                 .filter((e) => e.note)
                 .map((e) => (
-                  <div
-                    key={e.year}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm"
-                  >
+                  <div key={e.year} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded">
                         {e.edition ? `第${e.edition}回` : e.year}
                       </span>
-                      <Link
-                        href={`/st-league/${e.year}`}
-                        className="font-bold text-blue-600 dark:text-blue-400 hover:underline"
-                      >
+                      <Link href={`/st-league/${e.year}`} className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
                         {e.title}
                       </Link>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                      {e.note}
-                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{e.note}</p>
                   </div>
                 ))}
             </div>
@@ -329,9 +250,7 @@ function computeRecords(editions: EditionRow[]): RecordCard[] {
 
   (['boys', 'girls'] as Gender[]).forEach((g) => {
     // 年代順（昇順）に王者を並べる
-    const seq = editions
-      .map((e) => ({ year: e.year, team: e.champions[g] }))
-      .filter((x): x is { year: number; team: string } => Boolean(x.team));
+    const seq = editions.map((e) => ({ year: e.year, team: e.champions[g] })).filter((x): x is { year: number; team: string } => Boolean(x.team));
     if (seq.length === 0) return;
 
     // 最多優勝

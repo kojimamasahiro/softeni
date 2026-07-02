@@ -49,9 +49,7 @@ export default function Contact() {
 
         <h1 className="text-3xl font-bold mb-8">お問い合わせ</h1>
 
-        <p className="text-lg leading-relaxed mb-6">
-          当サイトへのご質問・ご要望・掲載内容に関するお問い合わせは、以下のGoogleフォームよりお願いいたします。
-        </p>
+        <p className="text-lg leading-relaxed mb-6">当サイトへのご質問・ご要望・掲載内容に関するお問い合わせは、以下のGoogleフォームよりお願いいたします。</p>
 
         <a
           href="https://forms.gle/A3xPcmiENHtgkskh7"

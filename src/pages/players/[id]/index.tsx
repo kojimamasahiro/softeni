@@ -9,9 +9,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import PlayerCareerHighlights, {
-  type PlayerCareerHighlightsData,
-} from '@/components/PlayerCareerHighlights';
+import PlayerCareerHighlights, { type PlayerCareerHighlightsData } from '@/components/PlayerCareerHighlights';
 import { getCareerRecord } from '@/lib/careerRecord';
 import { getChampionMilestones } from '@/lib/milestones';
 import { PlayerInfo } from '@/types/index';
@@ -63,14 +61,7 @@ const formatJapaneseDate = (dateString?: string): string | null => {
   });
 };
 
-export default function PlayerInformation({
-  player,
-  id,
-  numericId,
-  hasResultsPage,
-  latest,
-  highlights,
-}: Props) {
+export default function PlayerInformation({ player, id, numericId, hasResultsPage, latest, highlights }: Props) {
   const age = calculateAge(player.birthDate);
   const formattedBirthDate = formatJapaneseDate(player.birthDate);
   const fullName = `${player.lastName}${player.firstName}`;
@@ -227,49 +218,31 @@ export default function PlayerInformation({
           <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
             <tbody>
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">
-                  所属
-                </th>
-                <td className="p-2">
-                  {player.retired ? '引退済み' : player.team}
-                </td>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
+                <td className="p-2">{player.retired ? '引退済み' : player.team}</td>
               </tr>
 
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
-                  ポジション
-                </th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
                 <td className="p-2">{player.position}</td>
               </tr>
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
-                  誕生日
-                </th>
-                <td className="p-2">
-                  {formattedBirthDate
-                    ? `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}`
-                    : '年月日（歳）'}
-                </td>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
+                <td className="p-2">{formattedBirthDate ? `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}` : '年月日（歳）'}</td>
               </tr>
               <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
-                  身長
-                </th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
                 <td className="p-2">{player.height}cm</td>
               </tr>
               <tr>
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">
-                  利き手
-                </th>
+                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">利き手</th>
                 <td className="p-2">{player.handedness}</td>
               </tr>
             </tbody>
           </table>
         </section>
 
-        {highlights && (
-          <PlayerCareerHighlights fullName={fullName} data={highlights} />
-        )}
+        {highlights && <PlayerCareerHighlights fullName={fullName} data={highlights} />}
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-2">試合結果</h2>
@@ -282,9 +255,7 @@ export default function PlayerInformation({
               </p>
             </div>
           ) : (
-            <p className="text-sm text-gray-500">
-              最近の試合情報はまだありません。
-            </p>
+            <p className="text-sm text-gray-500">最近の試合情報はまだありません。</p>
           )}
 
           {hasResultsPage ? (
@@ -295,9 +266,7 @@ export default function PlayerInformation({
               すべての試合結果を見る
             </Link>
           ) : (
-            <p className="mt-2 text-sm text-gray-500">
-              試合結果ページは準備中です。
-            </p>
+            <p className="mt-2 text-sm text-gray-500">試合結果ページは準備中です。</p>
           )}
         </section>
 
@@ -306,10 +275,7 @@ export default function PlayerInformation({
             <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
             <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
               {faqItems.map((item) => (
-                <div
-                  key={item.question}
-                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
-                >
+                <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
                   <h3 className="font-semibold mb-2">{item.question}</h3>
                   <p>{item.answer}</p>
                 </div>
@@ -358,13 +324,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string;
-  const filePath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    id,
-    'information.json',
-  );
+  const filePath = path.join(process.cwd(), 'data', 'players', id, 'information.json');
   const fileContents = fs.readFileSync(filePath, 'utf-8');
   const player = JSON.parse(fileContents);
 
@@ -380,9 +340,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       count?: number;
     }>;
 
-    const found = indexData.find(
-      (e) => e.lastName === player.lastName && e.firstName === player.firstName,
-    );
+    const found = indexData.find((e) => e.lastName === player.lastName && e.firstName === player.firstName);
     if (found) {
       numericId = found.id;
       hasResultsPage = (found.count ?? 0) >= 5;
@@ -391,13 +349,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     void err;
   }
 
-  const analysisPath = path.join(
-    process.cwd(),
-    'data',
-    'players',
-    id,
-    'analysis.json',
-  );
+  const analysisPath = path.join(process.cwd(), 'data', 'players', id, 'analysis.json');
 
   let latest = null;
   if (fs.existsSync(analysisPath)) {
@@ -419,27 +371,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const repeatStreak = new Map<string, number>();
     // milestone はダブルスを「選手個人」単位で出すため、同一年・種目でパートナーの
     // イベントも返る。この選手ページの主役だけに絞る（主役名で照合）。
-    const normalizeName = (s: string) =>
-      s.replace(/\s+/g, '').normalize('NFKC');
+    const normalizeName = (s: string) => s.replace(/\s+/g, '').normalize('NFKC');
     const subjectName = normalizeName(career.subject.display);
     for (const t of career.titles) {
       const ms = getChampionMilestones(t.tournamentId, t.categoryId, t.year);
       for (const e of ms?.events ?? []) {
         // 団体戦（players 空）は従来どおり通す。個人戦は主役名一致のみ採用。
-        if (
-          e.subject.players.length > 0 &&
-          !e.subject.players.some((p) => normalizeName(p) === subjectName)
-        ) {
+        if (e.subject.players.length > 0 && !e.subject.players.some((p) => normalizeName(p) === subjectName)) {
           continue;
         }
         // 選手ページでは主役名は自明なので、代わりに大会名を前置して
         // 複数の「初優勝」等を区別できるようにする（例:「全日本選手権 初優勝」）。
         // 単年の出来事（初優勝など）は年も前置する。連覇は shortLabel に
         // 「（2022年〜）」と開始年が入るため二重表示を避けて年を付けない。
-        const label =
-          e.kind === 'repeat-title'
-            ? `${t.tournamentLabel} ${e.shortLabel}`
-            : `${t.year}年 ${t.tournamentLabel} ${e.shortLabel}`;
+        const label = e.kind === 'repeat-title' ? `${t.tournamentLabel} ${e.shortLabel}` : `${t.year}年 ${t.tournamentLabel} ${e.shortLabel}`;
         const entry = {
           kind: e.kind,
           label,
@@ -483,9 +428,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         year: t.year,
         tournamentLabel: t.tournamentLabel,
         categoryLabel: t.categoryLabel,
-        tournamentLink: t.generationId
-          ? `/tournaments/${t.generationId}/${t.tournamentId}`
-          : null,
+        tournamentLink: t.generationId ? `/tournaments/${t.generationId}/${t.tournamentId}` : null,
       })),
       scopeNote: career.scopeNote,
     };

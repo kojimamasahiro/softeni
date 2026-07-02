@@ -76,7 +76,6 @@ function main(): void {
 
     if (okAll) {
       exact += 1;
-      // eslint-disable-next-line no-console
       console.log(
         `  ✓ ${fx.slug} (id=${fx.id}) matches golden exactly | M=${agg.total} W=${agg.wins} L=${agg.losses} G=${agg.gWon}-${agg.gLost} | retired=${retired}`,
       );
@@ -92,14 +91,12 @@ function main(): void {
       } else {
         failed += 1;
       }
-      // eslint-disable-next-line no-console
       console.log(
         `  ✗ ${fx.slug} (id=${fx.id}) DIFF | facts M=${agg.total} W=${agg.wins} L=${agg.losses} G=${agg.gWon}-${agg.gLost} vs golden M=${golden.totalMatches} W=${golden.wins} L=${golden.losses} G=${golden.games.won}-${golden.games.lost} | ΔM=${diffM} ΔW=${diffW} ΔL=${diffL} ΔG=${diffG} retired=${retired}`,
       );
     }
   }
 
-  // eslint-disable-next-line no-console
   console.log(
     `\n  exact=${exact} explainable=${explainable} failed=${failed}`,
   );

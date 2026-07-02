@@ -1,17 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { isScoreSiteMode } from '@/lib/siteConfig';
-import {
-  buildHeuristicCandidates,
-  loadVideoSessionById,
-  loadVideoSessionWithCandidates,
-} from '@/lib/videoReview';
+import { buildHeuristicCandidates, loadVideoSessionById, loadVideoSessionWithCandidates } from '@/lib/videoReview';
 
 type SegmentBody = {
   duration_ms?: number | null;
@@ -21,10 +13,7 @@ type SegmentBody = {
   start_offset_ms?: number | null;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return sendMethodNotAllowed(res, ['POST']);
   }
@@ -38,13 +27,7 @@ export default async function handler(
     return res.status(400).json({ error: 'Invalid route parameters.' });
   }
 
-  const {
-    duration_ms,
-    point_interval_ms,
-    clip_lead_ms,
-    clip_tail_ms,
-    start_offset_ms,
-  } = req.body as SegmentBody;
+  const { duration_ms, point_interval_ms, clip_lead_ms, clip_tail_ms, start_offset_ms } = req.body as SegmentBody;
   const supabase = getServerSupabase();
 
   try {
@@ -58,27 +41,20 @@ export default async function handler(
       return res.status(400).json({ error: 'duration_ms is required.' });
     }
 
-    const { error: deleteError } = await (supabase as any)
-      .from('match_point_candidates')
-      .delete()
-      .eq('session_id', sessionId);
+    const { error: deleteError } = await (supabase as any).from('match_point_candidates').delete().eq('session_id', sessionId);
 
     if (deleteError) throw deleteError;
 
     const candidates = buildHeuristicCandidates({
       sessionId,
       durationMs,
-      pointIntervalMs:
-        typeof point_interval_ms === 'number' ? point_interval_ms : undefined,
+      pointIntervalMs: typeof point_interval_ms === 'number' ? point_interval_ms : undefined,
       clipLeadMs: typeof clip_lead_ms === 'number' ? clip_lead_ms : undefined,
       clipTailMs: typeof clip_tail_ms === 'number' ? clip_tail_ms : undefined,
-      startOffsetMs:
-        typeof start_offset_ms === 'number' ? start_offset_ms : undefined,
+      startOffsetMs: typeof start_offset_ms === 'number' ? start_offset_ms : undefined,
     });
 
-    const { error: insertError } = await (supabase as any)
-      .from('match_point_candidates')
-      .insert(candidates);
+    const { error: insertError } = await (supabase as any).from('match_point_candidates').insert(candidates);
 
     if (insertError) throw insertError;
 
@@ -93,21 +69,13 @@ export default async function handler(
 
     if (sessionUpdateError) throw sessionUpdateError;
 
-    const updatedSession = await loadVideoSessionWithCandidates(
-      supabase,
-      matchId,
-      sessionId,
-    );
+    const updatedSession = await loadVideoSessionWithCandidates(supabase, matchId, sessionId);
 
     return res.status(200).json({
       session: updatedSession,
       candidateCount: updatedSession?.candidates?.length ?? 0,
     });
   } catch (error) {
-    return sendSupabaseError(
-      res,
-      error as Error,
-      'Failed to generate point candidates.',
-    );
+    return sendSupabaseError(res, error as Error, 'Failed to generate point candidates.');
   }
 }

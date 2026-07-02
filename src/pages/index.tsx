@@ -79,11 +79,7 @@ export default function Home({ recentTournaments }: HomeProps) {
 
       <Head>
         {jsonLd.map((schema, i) => (
-          <script
-            key={i}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
+          <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         ))}
       </Head>
 
@@ -94,9 +90,7 @@ export default function Home({ recentTournaments }: HomeProps) {
 
         {/* ✅ サイト紹介文（ページ最上部に設置） */}
         <section className="max-w-3xl mx-auto mb-10 px-4">
-          <h1 className="text-2xl font-bold mb-4">
-            ソフトテニスの大会結果・選手成績データベース「Softeni Pick」
-          </h1>
+          <h1 className="text-2xl font-bold mb-4">ソフトテニスの大会結果・選手成績データベース「Softeni Pick」</h1>
           <p className="text-lg leading-relaxed mb-4">
             <strong>Softeni Pick（ソフテニ・ピック）</strong>
             は、ソフトテニスの大会結果・選手成績・チーム戦績を1か所で調べられる、個人運営のデータベース型Webメディアです。
@@ -123,9 +117,7 @@ export default function Home({ recentTournaments }: HomeProps) {
               className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700 mb-4"
             >
               <h3 className="text-xl font-bold mb-1">STリーグ</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm">
-                ソフトテニス実業団最高峰の戦い
-              </p>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">ソフトテニス実業団最高峰の戦い</p>
             </Link>
           </section>
 
@@ -144,19 +136,14 @@ export default function Home({ recentTournaments }: HomeProps) {
                   href={tournament.link}
                   className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                    開催日: {tournament.displayDate}
-                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">開催日: {tournament.displayDate}</p>
                   <h3 className="text-lg font-bold">{tournament.name}</h3>
                 </Link>
               ))}
             </div>
 
             <div className="text-right mb-10">
-              <Link
-                href="/tournaments"
-                className="text-sm text-blue-500 hover:underline"
-              >
+              <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
                 過去の大会一覧はこちら
               </Link>
             </div>
@@ -166,9 +153,7 @@ export default function Home({ recentTournaments }: HomeProps) {
           <section className="max-w-4xl mx-auto mb-12 px-4">
             <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
 
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
-              本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。
-            </p>
+            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
               {[
@@ -194,19 +179,14 @@ export default function Home({ recentTournaments }: HomeProps) {
                   className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <h3 className="text-lg font-bold mb-1">{player.name}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {player.team}
-                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{player.team}</p>
                 </Link>
               ))}
             </div>
 
             {/* ✅ 一覧ページへのリンク */}
             <div className="text-right mb-10">
-              <Link
-                href="/players"
-                className="text-sm text-blue-500 hover:underline"
-              >
+              <Link href="/players" className="text-sm text-blue-500 hover:underline">
                 掲載中の選手一覧はこちら
               </Link>
             </div>
@@ -225,9 +205,7 @@ export default function Home({ recentTournaments }: HomeProps) {
               className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm">
-                インターハイなど高校全国大会の成績を都道府県・学校別に掲載
-              </p>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">インターハイなど高校全国大会の成績を都道府県・学校別に掲載</p>
             </Link>
           </section>
 
@@ -257,10 +235,7 @@ export default function Home({ recentTournaments }: HomeProps) {
                   className="relative border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <h3 className="text-lg font-bold mb-1">
-                    <Link
-                      href={`/teams/${team.teamId}`}
-                      className="after:absolute after:inset-0"
-                    >
+                    <Link href={`/teams/${team.teamId}`} className="after:absolute after:inset-0">
                       {team.name}
                     </Link>
                   </h3>
@@ -329,9 +304,7 @@ export async function getStaticProps() {
     // Find the category info for this specific record (file)
     // record.fileName is like "doubles-none-boys.json"
     const categoryId = record.fileName.replace('.json', '');
-    const categoryInfo = info.categories.find(
-      (c) => c.categoryId === categoryId,
-    );
+    const categoryInfo = info.categories.find((c) => c.categoryId === categoryId);
 
     if (!categoryInfo) continue;
 
@@ -341,8 +314,7 @@ export async function getStaticProps() {
     // SSG とクライアントで同じ文字列になるよう、ロケール依存の
     // toLocaleDateString を使わず YYYY-MM-DD から決定的に整形する
     const [y, m, d] = (info.startDate ?? '').split('-');
-    const displayDate =
-      y && m && d ? `${y}年${Number(m)}月${Number(d)}日` : info.startDate;
+    const displayDate = y && m && d ? `${y}年${Number(m)}月${Number(d)}日` : info.startDate;
 
     uniqueTournaments.set(key, {
       id: record.tournamentId,
@@ -355,10 +327,7 @@ export async function getStaticProps() {
   }
 
   const tournaments = Array.from(uniqueTournaments.values())
-    .sort(
-      (a, b) =>
-        new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
-    )
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
     .slice(0, 4);
 
   return {

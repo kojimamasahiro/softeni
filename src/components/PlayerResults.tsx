@@ -46,10 +46,7 @@ type PlayerResultsProps = {
   playerTournaments: PlayerTournament[];
 };
 
-export default function PlayerResults({
-  playerMatches,
-  playerTournaments,
-}: PlayerResultsProps) {
+export default function PlayerResults({ playerMatches, playerTournaments }: PlayerResultsProps) {
   if (!playerMatches || playerMatches.length === 0) {
     return <p>試合結果がありません。</p>;
   }
@@ -65,11 +62,7 @@ export default function PlayerResults({
   }
 
   for (const m of playerMatches) {
-    const id = m.year
-      ? m.category
-        ? `${m.tournamentId}/${m.year}/${m.category}`
-        : `${m.tournamentId}/${m.year}`
-      : m.tournamentId || m.tournamentName || '';
+    const id = m.year ? (m.category ? `${m.tournamentId}/${m.year}/${m.category}` : `${m.tournamentId}/${m.year}`) : m.tournamentId || m.tournamentName || '';
     if (!tournamentsById[id]) tournamentsById[id] = [];
     tournamentsById[id].push({
       round: m.round ?? '',
@@ -84,10 +77,7 @@ export default function PlayerResults({
   const byYear: { [year: string]: string[] } = {};
   for (const key of Object.keys(tournamentsById)) {
     const info = tournamentInfoById[key];
-    const year =
-      info?.year ??
-      (key.includes('/') ? key.split('/')[1] : undefined) ??
-      '不明';
+    const year = info?.year ?? (key.includes('/') ? key.split('/')[1] : undefined) ?? '不明';
     const yearStr = String(year);
     if (!byYear[yearStr]) byYear[yearStr] = [];
     byYear[yearStr].push(key);
@@ -136,16 +126,14 @@ export default function PlayerResults({
     const iso = s.match(/(\d{4}-\d{2}-\d{2})/);
     if (iso) {
       const d = new Date(iso[1]);
-      if (!Number.isNaN(d.getTime()))
-        return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+      if (!Number.isNaN(d.getTime())) return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
     }
     // slashed
     const slash = s.match(/(\d{4}\/\d{1,2}\/\d{1,2})/);
     if (slash) {
       const ds = slash[1].replace(/\//g, '-');
       const d = new Date(ds);
-      if (!Number.isNaN(d.getTime()))
-        return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+      if (!Number.isNaN(d.getTime())) return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
     }
     // Japanese already
     const jp = s.match(/(\d{4})年\s*(\d{1,2})月\s*(\d{1,2})日/);
@@ -167,10 +155,7 @@ export default function PlayerResults({
       const ib = tournamentInfoById[b];
       const ta = parseStartTime(ia?.startDate ?? ia?.dateRange ?? null);
       const tb = parseStartTime(ib?.startDate ?? ib?.dateRange ?? null);
-      if (ta === tb)
-        return (ib?.tournamentName || '').localeCompare(
-          ia?.tournamentName || '',
-        );
+      if (ta === tb) return (ib?.tournamentName || '').localeCompare(ia?.tournamentName || '');
       return tb - ta;
     });
   }
@@ -191,9 +176,7 @@ export default function PlayerResults({
 
       {sortedYears.map((year) => (
         <div key={year} className="mb-8">
-          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-            {year === '不明' ? '年不明' : `${year}年`}
-          </h3>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">{year === '不明' ? '年不明' : `${year}年`}</h3>
           <div className="space-y-4">
             {byYear[year].map((tournamentKey, i) => {
               const info = tournamentInfoById[tournamentKey];
@@ -209,65 +192,36 @@ export default function PlayerResults({
                   round: mr.round ?? null,
                   opponentDisplayName: mr.opponent,
                   games: { won: parts[0] ?? '', lost: parts[1] ?? '' },
-                  result:
-                    mr.result === '勝'
-                      ? 'win'
-                      : mr.result === '敗'
-                        ? 'lose'
-                        : 'draw',
+                  result: mr.result === '勝' ? 'win' : mr.result === '敗' ? 'lose' : 'draw',
                 };
               });
 
               // If any rows look like round-robin / league matches, prioritize them.
-              const rrPattern =
-                /予選|リーグ|ラウンドロビン|round\s*-?robin|roundrobin|round-robin|\bRR\b|pool|グループ/i;
-              const hasRR = rows.some(
-                (r) =>
-                  typeof r.round === 'string' && rrPattern.test(r.round || ''),
-              );
+              const rrPattern = /予選|リーグ|ラウンドロビン|round\s*-?robin|roundrobin|round-robin|\bRR\b|pool|グループ/i;
+              const hasRR = rows.some((r) => typeof r.round === 'string' && rrPattern.test(r.round || ''));
               if (hasRR) {
                 rows.sort((a, b) => {
-                  const aIsRR =
-                    typeof a.round === 'string' && rrPattern.test(a.round || '')
-                      ? 0
-                      : 1;
-                  const bIsRR =
-                    typeof b.round === 'string' && rrPattern.test(b.round || '')
-                      ? 0
-                      : 1;
+                  const aIsRR = typeof a.round === 'string' && rrPattern.test(a.round || '') ? 0 : 1;
+                  const bIsRR = typeof b.round === 'string' && rrPattern.test(b.round || '') ? 0 : 1;
                   if (aIsRR !== bIsRR) return aIsRR - bIsRR;
                   return 0;
                 });
               }
 
               return (
-                <div
-                  key={i}
-                  className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800"
-                >
-                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2">
-                    {tournamentName}
-                  </h3>
+                <div key={i} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2">{tournamentName}</h3>
                   {(info?.startDate || info?.dateRange) && (
                     <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
                       日程{' '}
-                      {info.startDate
-                        ? `${formatDate(info.startDate)}${info.endDate ? ' - ' + formatDate(info.endDate) : ''}`
-                        : formatDate(info.dateRange)}
+                      {info.startDate ? `${formatDate(info.startDate)}${info.endDate ? ' - ' + formatDate(info.endDate) : ''}` : formatDate(info.dateRange)}
                     </div>
                   )}
-                  {info?.location && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                      場所 {info.location}
-                    </div>
-                  )}
+                  {info?.location && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">場所 {info.location}</div>}
                   {info?.link && (
                     <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
                       詳細{' '}
-                      <Link
-                        href={info.link}
-                        className="underline text-blue-600 dark:text-blue-400"
-                      >
+                      <Link href={info.link} className="underline text-blue-600 dark:text-blue-400">
                         大会ページ
                       </Link>
                     </div>
@@ -283,25 +237,14 @@ export default function PlayerResults({
                           {info.partnerName}
                         </Link>
                       ) : info?.partnerLiteId && info?.partnerName ? (
-                        <PlayerLiteLink
-                          id={info.partnerLiteId}
-                          name={info.partnerName}
-                        />
+                        <PlayerLiteLink id={info.partnerLiteId} name={info.partnerName} />
                       ) : (
                         <>{info?.partnerName}</>
                       )}
                     </div>
                   )}
-                  {info?.team && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                      所属 {info.team}
-                    </div>
-                  )}
-                  {info?.finalResult && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-2 mt-1">
-                      最終結果：{info.finalResult}
-                    </div>
-                  )}
+                  {info?.team && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">所属 {info.team}</div>}
+                  {info?.finalResult && <div className="text-sm text-gray-600 dark:text-gray-300 mb-2 mt-1">最終結果：{info.finalResult}</div>}
 
                   <ResultsTable rows={rows} />
                 </div>

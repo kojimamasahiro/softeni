@@ -3,12 +3,7 @@ import path from 'path';
 
 import type { Match } from '@/types/database';
 
-const betaMatchesRoot = path.join(
-  process.cwd(),
-  'public',
-  'data',
-  'beta-matches',
-);
+const betaMatchesRoot = path.join(process.cwd(), 'public', 'data', 'beta-matches');
 
 type TeamSide = 'A' | 'B';
 type RawPlayer = {
@@ -74,9 +69,7 @@ const formatRawTeamName = (teamName: unknown): string => {
 
   if (typeof teamName === 'object') {
     const team = teamName as RawTeam;
-    const players = Array.isArray(team.players)
-      ? formatPlayers(team.players)
-      : '';
+    const players = Array.isArray(team.players) ? formatPlayers(team.players) : '';
     const name = stringifyNamePart(team.name);
     return players || name || '';
   }
@@ -92,30 +85,13 @@ const joinName = (lastName: unknown, firstName: unknown) => {
 };
 
 export const getBetaTeamDisplayName = (match: Match, team: TeamSide) => {
-  const player1LastName =
-    team === 'A'
-      ? match.team_a_player1_last_name
-      : match.team_b_player1_last_name;
-  const player2LastName =
-    team === 'A'
-      ? match.team_a_player2_last_name
-      : match.team_b_player2_last_name;
-  const player1FirstName =
-    team === 'A'
-      ? match.team_a_player1_first_name
-      : match.team_b_player1_first_name;
-  const player2FirstName =
-    team === 'A'
-      ? match.team_a_player2_first_name
-      : match.team_b_player2_first_name;
+  const player1LastName = team === 'A' ? match.team_a_player1_last_name : match.team_b_player1_last_name;
+  const player2LastName = team === 'A' ? match.team_a_player2_last_name : match.team_b_player2_last_name;
+  const player1FirstName = team === 'A' ? match.team_a_player1_first_name : match.team_b_player1_first_name;
+  const player2FirstName = team === 'A' ? match.team_a_player2_first_name : match.team_b_player2_first_name;
 
   if (player1LastName) {
-    return [
-      joinName(player1LastName, player1FirstName),
-      joinName(player2LastName, player2FirstName),
-    ]
-      .filter(Boolean)
-      .join('・');
+    return [joinName(player1LastName, player1FirstName), joinName(player2LastName, player2FirstName)].filter(Boolean).join('・');
   }
 
   const structuredTeam = match.teams?.[team];
@@ -160,9 +136,7 @@ export interface SiteLinkedMatchPath {
 
 // 掲載大会に紐づく試合（siteLink あり）の、ネスト URL 用パスセグメント一覧。
 // tournamentPath は `/tournaments/{generation}/{tournamentId}/{year}/{gameCategory}/{ageCategory}/{gender}`。
-export const getSiteLinkedMatchPaths = async (): Promise<
-  SiteLinkedMatchPath[]
-> => {
+export const getSiteLinkedMatchPaths = async (): Promise<SiteLinkedMatchPath[]> => {
   const matches = await getLatestBetaMatches();
   const paths: SiteLinkedMatchPath[] = [];
 
@@ -174,15 +148,7 @@ export const getSiteLinkedMatchPaths = async (): Promise<
     // ['tournaments', generation, tournamentId, year, gameCategory, ageCategory, gender]
     if (segments.length !== 7 || segments[0] !== 'tournaments') continue;
 
-    const [
-      ,
-      generation,
-      tournamentId,
-      year,
-      gameCategory,
-      ageCategory,
-      gender,
-    ] = segments;
+    const [, generation, tournamentId, year, gameCategory, ageCategory, gender] = segments;
 
     paths.push({
       generation,

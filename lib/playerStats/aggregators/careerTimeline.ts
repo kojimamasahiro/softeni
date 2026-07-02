@@ -2,13 +2,7 @@
 // キャリア年表: デビュー / 全国初出場・初優勝 / 連覇 / 所属変更 / 各年度の最高成績 を時系列整列。
 // 既存 milestones + byYear + byTeam の組み立てビュー（記事生成の骨子）。
 
-import type {
-  MilestoneEvent,
-  PlayerStatistics,
-  TeamRow,
-  TimelineEvent,
-  YearRow,
-} from '../../../src/types/playerStatistics';
+import type { MilestoneEvent, PlayerStatistics, TeamRow, TimelineEvent, YearRow } from '../../../src/types/playerStatistics';
 import type { PlayerFacts } from '../types';
 
 export function aggregateCareerTimeline(

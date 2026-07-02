@@ -12,19 +12,16 @@ export function test(name: string, fn: () => void): void {
   try {
     fn();
     passed += 1;
-    // eslint-disable-next-line no-console
     console.log(`  ✓ ${name}`);
   } catch (err) {
     failed += 1;
     const msg = err instanceof Error ? err.message : String(err);
     failures.push(`${name}: ${msg}`);
-    // eslint-disable-next-line no-console
     console.log(`  ✗ ${name}\n      ${msg}`);
   }
 }
 
 export function summary(): void {
-  // eslint-disable-next-line no-console
   console.log(`\n  ${passed} passed, ${failed} failed`);
   if (failed > 0) {
     process.exitCode = 1;

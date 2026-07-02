@@ -3,11 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {
-  TournamentDetailData,
-  TournamentIndexEntry,
-  TournamentInformationEntry,
-} from '@/types/tournament';
+import type { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/tournament';
 
 /**
  * Recursively scan data/tournaments/details/ for all JSON files
@@ -32,26 +28,18 @@ export function getAllTournamentFiles(): Array<{
   }
 
   // Scan tournament directories
-  const tournamentDirs = fs
-    .readdirSync(detailsDir)
-    .filter((file) => fs.statSync(path.join(detailsDir, file)).isDirectory());
+  const tournamentDirs = fs.readdirSync(detailsDir).filter((file) => fs.statSync(path.join(detailsDir, file)).isDirectory());
 
   for (const tournamentId of tournamentDirs) {
     const tournamentDir = path.join(detailsDir, tournamentId);
-    const yearDirs = fs
-      .readdirSync(tournamentDir)
-      .filter((file) =>
-        fs.statSync(path.join(tournamentDir, file)).isDirectory(),
-      );
+    const yearDirs = fs.readdirSync(tournamentDir).filter((file) => fs.statSync(path.join(tournamentDir, file)).isDirectory());
 
     for (const yearStr of yearDirs) {
       const year = parseInt(yearStr, 10);
       if (isNaN(year)) continue;
 
       const yearDir = path.join(tournamentDir, yearStr);
-      const jsonFiles = fs
-        .readdirSync(yearDir)
-        .filter((file) => file.endsWith('.json') && !file.startsWith('og'));
+      const jsonFiles = fs.readdirSync(yearDir).filter((file) => file.endsWith('.json') && !file.startsWith('og'));
 
       for (const jsonFile of jsonFiles) {
         const category = jsonFile.replace('.json', '');
@@ -67,9 +55,7 @@ export function getAllTournamentFiles(): Array<{
 /**
  * Load and parse a single tournament JSON file
  */
-export function loadTournamentData(
-  filePath: string,
-): TournamentDetailData | null {
+export function loadTournamentData(filePath: string): TournamentDetailData | null {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
     return JSON.parse(content) as TournamentDetailData;
@@ -82,14 +68,8 @@ export function loadTournamentData(
 /**
  * Get tournament information from data/tournaments/information/{tournamentId}.json
  */
-export function getTournamentInfo(
-  tournamentId: string,
-  year?: number,
-): TournamentInformationEntry | null {
-  const infoPath = path.join(
-    process.cwd(),
-    `data/tournaments/information/${tournamentId}.json`,
-  );
+export function getTournamentInfo(tournamentId: string, year?: number): TournamentInformationEntry | null {
+  const infoPath = path.join(process.cwd(), `data/tournaments/information/${tournamentId}.json`);
 
   if (!fs.existsSync(infoPath)) {
     return null;
@@ -135,13 +115,8 @@ export function getTournamentLabel(tournamentId: string): string {
 /**
  * Get all tournament information entries
  */
-export function getAllTournamentInfo(
-  tournamentId: string,
-): TournamentInformationEntry[] {
-  const infoPath = path.join(
-    process.cwd(),
-    `data/tournaments/information/${tournamentId}.json`,
-  );
+export function getAllTournamentInfo(tournamentId: string): TournamentInformationEntry[] {
+  const infoPath = path.join(process.cwd(), `data/tournaments/information/${tournamentId}.json`);
 
   if (!fs.existsSync(infoPath)) {
     return [];

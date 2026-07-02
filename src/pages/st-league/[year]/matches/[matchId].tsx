@@ -4,11 +4,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  buildEventOrganizer,
-  buildEventPlace,
-  sportsEventBaseFields,
-} from '@/lib/sportsEventJsonLd';
+import { buildEventOrganizer, buildEventPlace, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import {
   buildPlayerMap,
   computeRanking,
@@ -68,9 +64,7 @@ function slugFor(gender: Gender, m: Match) {
   return `${gender}-${m.teamA}-vs-${m.teamB}`;
 }
 
-function parseSlug(
-  slug: string,
-): { gender: Gender; teamA: string; teamB: string } | null {
+function parseSlug(slug: string): { gender: Gender; teamA: string; teamB: string } | null {
   let gender: Gender;
   let rest: string;
   if (slug.startsWith('boys-')) {
@@ -91,30 +85,10 @@ function parseSlug(
   };
 }
 
-export default function STLeagueMatchDetail({
-  year,
-  gender,
-  editionLabel,
-  divisionName,
-  meta,
-  match,
-  teamA,
-  teamB,
-  playerNames,
-  past,
-  neighbors,
-}: Props) {
-  const getPlayers = (ids?: number[]) =>
-    !ids || ids.length === 0
-      ? '-'
-      : ids.map((id) => playerNames[id] || `ID:${id}`).join('・');
+export default function STLeagueMatchDetail({ year, gender, editionLabel, divisionName, meta, match, teamA, teamB, playerNames, past, neighbors }: Props) {
+  const getPlayers = (ids?: number[]) => (!ids || ids.length === 0 ? '-' : ids.map((id) => playerNames[id] || `ID:${id}`).join('・'));
 
-  const winnerName =
-    match.winner === match.teamA
-      ? teamA.name
-      : match.winner === match.teamB
-        ? teamB.name
-        : null;
+  const winnerName = match.winner === match.teamA ? teamA.name : match.winner === match.teamB ? teamB.name : null;
 
   const dateText = match.date.replace(/-/g, '/');
   const pageUrl = `https://softeni-pick.com/st-league/${year}/matches/${slugFor(gender, match)}/`;
@@ -138,10 +112,7 @@ export default function STLeagueMatchDetail({
               startDate: match.date,
               endDate: match.date,
               location: buildEventPlace(meta?.venue, meta?.location),
-              organizer: buildEventOrganizer(
-                '公益財団法人 日本ソフトテニス連盟',
-                'https://www.jsta.or.jp/',
-              ),
+              organizer: buildEventOrganizer('公益財団法人 日本ソフトテニス連盟', 'https://www.jsta.or.jp/'),
               competitor: [
                 { '@type': 'SportsTeam', name: teamA.name },
                 { '@type': 'SportsTeam', name: teamB.name },
@@ -184,58 +155,24 @@ export default function STLeagueMatchDetail({
           <div className="mt-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
             <div className="flex items-center justify-between">
               <div className="flex-1 text-right">
-                <Link
-                  href={`/teams/${teamA.teamId}`}
-                  className="font-bold hover:text-blue-600 hover:underline"
-                >
+                <Link href={`/teams/${teamA.teamId}`} className="font-bold hover:text-blue-600 hover:underline">
                   {teamA.name}
                 </Link>
-                {teamA.rank && (
-                  <span className="block text-xs text-gray-400">
-                    リーグ{teamA.rank}位
-                  </span>
-                )}
+                {teamA.rank && <span className="block text-xs text-gray-400">リーグ{teamA.rank}位</span>}
               </div>
               <div className="px-5 flex flex-col items-center min-w-[96px]">
                 <div className="flex items-center gap-3 text-3xl font-bold font-mono">
-                  <span
-                    className={
-                      match.winner === match.teamA
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-gray-400'
-                    }
-                  >
-                    {match.scoreA}
-                  </span>
+                  <span className={match.winner === match.teamA ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}>{match.scoreA}</span>
                   <span className="text-gray-300">-</span>
-                  <span
-                    className={
-                      match.winner === match.teamB
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-gray-400'
-                    }
-                  >
-                    {match.scoreB}
-                  </span>
+                  <span className={match.winner === match.teamB ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}>{match.scoreB}</span>
                 </div>
-                {winnerName && (
-                  <span className="mt-1 text-xs font-semibold text-gray-500">
-                    {winnerName} の勝利
-                  </span>
-                )}
+                {winnerName && <span className="mt-1 text-xs font-semibold text-gray-500">{winnerName} の勝利</span>}
               </div>
               <div className="flex-1 text-left">
-                <Link
-                  href={`/teams/${teamB.teamId}`}
-                  className="font-bold hover:text-blue-600 hover:underline"
-                >
+                <Link href={`/teams/${teamB.teamId}`} className="font-bold hover:text-blue-600 hover:underline">
                   {teamB.name}
                 </Link>
-                {teamB.rank && (
-                  <span className="block text-xs text-gray-400">
-                    リーグ{teamB.rank}位
-                  </span>
-                )}
+                {teamB.rank && <span className="block text-xs text-gray-400">リーグ{teamB.rank}位</span>}
               </div>
             </div>
           </div>
@@ -243,23 +180,13 @@ export default function STLeagueMatchDetail({
 
         {/* 個別対戦（D1/S/D2） */}
         <section>
-          <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-            個別対戦（ダブルス①・シングルス・ダブルス②）
-          </h2>
+          <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">個別対戦（ダブルス①・シングルス・ダブルス②）</h2>
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 divide-y divide-gray-100 dark:divide-gray-700">
-            {match.matches.length === 0 && (
-              <p className="p-4 text-sm text-gray-500">
-                個別対戦の詳細データは未登録です。
-              </p>
-            )}
+            {match.matches.length === 0 && <p className="p-4 text-sm text-gray-500">個別対戦の詳細データは未登録です。</p>}
             {match.matches.map((d, i) => (
               <div key={i} className="flex items-center text-sm p-4">
-                <div className="w-10 font-bold text-gray-400 text-xs uppercase text-center">
-                  {d.type}
-                </div>
-                <div
-                  className={`flex-1 text-right ${d.winner === 'A' ? 'font-bold text-gray-900 dark:text-white' : 'text-gray-500'}`}
-                >
+                <div className="w-10 font-bold text-gray-400 text-xs uppercase text-center">{d.type}</div>
+                <div className={`flex-1 text-right ${d.winner === 'A' ? 'font-bold text-gray-900 dark:text-white' : 'text-gray-500'}`}>
                   {getPlayers(d.playersA)}
                 </div>
                 <div className="px-3">
@@ -267,25 +194,19 @@ export default function STLeagueMatchDetail({
                     {d.scoreA}-{d.scoreB}
                   </span>
                 </div>
-                <div
-                  className={`flex-1 text-left ${d.winner === 'B' ? 'font-bold text-gray-900 dark:text-white' : 'text-gray-500'}`}
-                >
+                <div className={`flex-1 text-left ${d.winner === 'B' ? 'font-bold text-gray-900 dark:text-white' : 'text-gray-500'}`}>
                   {getPlayers(d.playersB)}
                 </div>
               </div>
             ))}
           </div>
-          <p className="mt-2 text-xs text-gray-400">
-            対戦順: ダブルス① → シングルス → ダブルス②（2本先取）。
-          </p>
+          <p className="mt-2 text-xs text-gray-400">対戦順: ダブルス① → シングルス → ダブルス②（2本先取）。</p>
         </section>
 
         {/* 過去の対戦 */}
         {past.length > 0 && (
           <section>
-            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-              この2チームの過去の対戦（STリーグⅠ）
-            </h2>
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">この2チームの過去の対戦（STリーグⅠ）</h2>
             <div className="space-y-2">
               {past.map((p) => (
                 <Link
@@ -293,18 +214,12 @@ export default function STLeagueMatchDetail({
                   href={`/st-league/${p.year}/matches/${p.slug}`}
                   className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 px-4 py-2 hover:border-blue-400 transition-colors"
                 >
-                  <span className="text-xs text-gray-400 w-24 shrink-0">
-                    {p.label}
-                  </span>
-                  <span className="flex-1 text-sm text-right truncate">
-                    {p.teamAName}
-                  </span>
+                  <span className="text-xs text-gray-400 w-24 shrink-0">{p.label}</span>
+                  <span className="flex-1 text-sm text-right truncate">{p.teamAName}</span>
                   <span className="px-3 font-mono font-bold text-sm">
                     {p.scoreA}-{p.scoreB}
                   </span>
-                  <span className="flex-1 text-sm text-left truncate">
-                    {p.teamBName}
-                  </span>
+                  <span className="flex-1 text-sm text-left truncate">{p.teamBName}</span>
                 </Link>
               ))}
             </div>
@@ -321,15 +236,9 @@ export default function STLeagueMatchDetail({
               ] as [TeamLine, NeighborMatch[]][]
             ).map(([team, list]) => (
               <div key={team.teamId}>
-                <h3 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">
-                  {team.name} の他の対戦
-                </h3>
+                <h3 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">{team.name} の他の対戦</h3>
                 <div className="space-y-1.5">
-                  {list.length === 0 && (
-                    <p className="text-xs text-gray-400">
-                      他の対戦はありません。
-                    </p>
-                  )}
+                  {list.length === 0 && <p className="text-xs text-gray-400">他の対戦はありません。</p>}
                   {list.map((n) => (
                     <Link
                       key={n.slug}
@@ -337,9 +246,7 @@ export default function STLeagueMatchDetail({
                       className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 px-3 py-2 hover:border-blue-400 transition-colors text-sm"
                     >
                       <span className="truncate">vs {n.opponentName}</span>
-                      <span className="ml-2 shrink-0 text-xs font-mono text-gray-500">
-                        {n.result}
-                      </span>
+                      <span className="ml-2 shrink-0 text-xs font-mono text-gray-500">{n.result}</span>
                     </Link>
                   ))}
                 </div>
@@ -350,28 +257,16 @@ export default function STLeagueMatchDetail({
 
         {/* 他ページ導線 */}
         <nav className="flex flex-wrap gap-3 pt-2 border-t border-gray-100 dark:border-gray-700">
-          <Link
-            href={`/st-league/${year}/matches`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href={`/st-league/${year}/matches`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ {year} 順位表・全対戦結果
           </Link>
-          <Link
-            href={`/st-league/${year}/teams`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href={`/st-league/${year}/teams`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ 出場チーム・選手
           </Link>
-          <Link
-            href={`/st-league/${year}/analysis`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href={`/st-league/${year}/analysis`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ 選手別データ・分析
           </Link>
-          <Link
-            href={`/st-league/${year}`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href={`/st-league/${year}`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ {year} 年度トップ
           </Link>
         </nav>
@@ -398,11 +293,7 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({
-  params,
-}: {
-  params: { year: string; matchId: string };
-}) => {
+export const getStaticProps = async ({ params }: { params: { year: string; matchId: string } }) => {
   const year = parseInt(params.year, 10);
   const parsed = parseSlug(params.matchId);
   if (!parsed) return { notFound: true };
@@ -413,19 +304,12 @@ export const getStaticProps = async ({
   const meta = loadLeagueMeta(year);
   if (!matches || !participants) return { notFound: true };
 
-  const div1 = matches[gender].filter(
-    (m) => divisionOf(m) === DIVISION_ID && m.status === 'finished',
-  );
+  const div1 = matches[gender].filter((m) => divisionOf(m) === DIVISION_ID && m.status === 'finished');
   const match = div1.find((m) => m.teamA === teamAId && m.teamB === teamBId);
   if (!match) return { notFound: true };
 
-  const teamsDiv1 = participants[gender].filter(
-    (t) => divisionOf(t) === DIVISION_ID,
-  );
-  const nameOf = (id: string) =>
-    teamsDiv1.find((t) => t.teamId === id)?.name[0] ??
-    participants[gender].find((t) => t.teamId === id)?.name[0] ??
-    id;
+  const teamsDiv1 = participants[gender].filter((t) => divisionOf(t) === DIVISION_ID);
+  const nameOf = (id: string) => teamsDiv1.find((t) => t.teamId === id)?.name[0] ?? participants[gender].find((t) => t.teamId === id)?.name[0] ?? id;
 
   const ranking = computeRanking(teamsDiv1, div1);
   const rankOf = (id: string) => {
@@ -436,14 +320,10 @@ export const getStaticProps = async ({
   const playerNames = buildPlayerMap(participants[gender]);
 
   // 前後の試合（同年度・同性別・Ⅰ部）。日付→id 順で各チームの自分以外の対戦。
-  const ordered = [...div1].sort((a, b) =>
-    a.date === b.date ? a.id - b.id : a.date < b.date ? -1 : 1,
-  );
+  const ordered = [...div1].sort((a, b) => (a.date === b.date ? a.id - b.id : a.date < b.date ? -1 : 1));
   const neighborsFor = (teamId: string): NeighborMatch[] =>
     ordered
-      .filter(
-        (m) => (m.teamA === teamId || m.teamB === teamId) && m.id !== match.id,
-      )
+      .filter((m) => (m.teamA === teamId || m.teamB === teamId) && m.id !== match.id)
       .map((m) => {
         const isA = m.teamA === teamId;
         const oppId = isA ? m.teamB : m.teamA;
@@ -467,11 +347,8 @@ export const getStaticProps = async ({
     const ps = loadParticipants(y);
     const lm = loadLeagueMeta(y);
     if (!ms || !ps) continue;
-    const yDiv1 = ms[gender].filter(
-      (m) => divisionOf(m) === DIVISION_ID && m.status === 'finished',
-    );
-    const yName = (id: string) =>
-      ps[gender].find((t) => t.teamId === id)?.name[0] ?? id;
+    const yDiv1 = ms[gender].filter((m) => divisionOf(m) === DIVISION_ID && m.status === 'finished');
+    const yName = (id: string) => ps[gender].find((t) => t.teamId === id)?.name[0] ?? id;
     yDiv1
       .filter((m) => [m.teamA, m.teamB].sort().join('|') === pairKey)
       .forEach((m) => {
@@ -490,8 +367,7 @@ export const getStaticProps = async ({
   past.sort((a, b) => b.year - a.year);
 
   const editionLabel = meta?.title ?? `STリーグ ${year}`;
-  const divisionName =
-    meta?.divisions?.find((d) => d.id === DIVISION_ID)?.name ?? 'STリーグⅠ';
+  const divisionName = meta?.divisions?.find((d) => d.id === DIVISION_ID)?.name ?? 'STリーグⅠ';
 
   return {
     props: {

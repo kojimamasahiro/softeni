@@ -32,10 +32,7 @@ export type HsNationalTournamentMeta = {
 };
 
 /** 高校カテゴリで歴代記録を出す全国大会の定義 */
-export const HS_NATIONAL_TOURNAMENTS: Record<
-  HsNationalTournamentSlug,
-  HsNationalTournamentMeta
-> = {
+export const HS_NATIONAL_TOURNAMENTS: Record<HsNationalTournamentSlug, HsNationalTournamentMeta> = {
   championship: {
     slug: 'championship',
     tournamentId: 'highschool-championship',
@@ -57,22 +54,14 @@ export const HS_NATIONAL_TOURNAMENTS: Record<
   },
 };
 
-export const HS_NATIONAL_SLUGS = Object.keys(
-  HS_NATIONAL_TOURNAMENTS,
-) as HsNationalTournamentSlug[];
+export const HS_NATIONAL_SLUGS = Object.keys(HS_NATIONAL_TOURNAMENTS) as HsNationalTournamentSlug[];
 
 // tournamentId（例: 'highschool-championship'）から高校全国大会のスラッグを逆引きする。
 // 汎用大会ハブ（/tournaments/[generation]/[tournamentId]）が高校全国大会の歴代まとめ
 // （/highschool/tournaments/[tournament]）とカニバるため、ハブ側の noindex 判定と
 // 高校歴代ページへの内部リンク生成に使う。詳細は docs/wiki/seo.md #3。
-export function getHsNationalSlugByTournamentId(
-  tournamentId: string,
-): HsNationalTournamentSlug | null {
-  return (
-    HS_NATIONAL_SLUGS.find(
-      (slug) => HS_NATIONAL_TOURNAMENTS[slug].tournamentId === tournamentId,
-    ) ?? null
-  );
+export function getHsNationalSlugByTournamentId(tournamentId: string): HsNationalTournamentSlug | null {
+  return HS_NATIONAL_SLUGS.find((slug) => HS_NATIONAL_TOURNAMENTS[slug].tournamentId === tournamentId) ?? null;
 }
 
 const GENERATION = 'highschool';
@@ -223,28 +212,18 @@ function resolveRoot(): string {
 }
 
 function readInformation(tournamentId: string): TournamentInformationEntry[] {
-  const infoPath = path.join(
-    resolveRoot(),
-    'data',
-    'tournaments',
-    'information',
-    `${tournamentId}.json`,
-  );
+  const infoPath = path.join(resolveRoot(), 'data', 'tournaments', 'information', `${tournamentId}.json`);
   if (!fs.existsSync(infoPath)) return [];
   try {
     const parsed = JSON.parse(fs.readFileSync(infoPath, 'utf-8'));
-    return Array.isArray(parsed)
-      ? (parsed as TournamentInformationEntry[])
-      : [];
+    return Array.isArray(parsed) ? (parsed as TournamentInformationEntry[]) : [];
   } catch {
     return [];
   }
 }
 
 /** rank から並び順とラベルを決める。対象外なら null。 */
-function classifyRank(
-  rank: RawRank | undefined,
-): { order: number; rankLabel: string } | null {
+function classifyRank(rank: RawRank | undefined): { order: number; rankLabel: string } | null {
   if (!rank) return null;
   if (rank.kind === 'winner') return { order: 1, rankLabel: '優勝' };
   if (rank.kind === 'runnerup') return { order: 2, rankLabel: '準優勝' };
@@ -260,11 +239,7 @@ function classifyRank(
  * そこに存在する (teamId, prefectureId, gender) のみリンクする（デッドリンク防止）。
  * モジュールスコープで一度だけ構築してキャッシュする。
  */
-type SchoolResolver = (
-  name: string,
-  prefecture: string | null,
-  gender: string,
-) => string | null;
+type SchoolResolver = (name: string, prefecture: string | null, gender: string) => string | null;
 
 type SchoolEntry = {
   prefectureId: string;
@@ -279,12 +254,7 @@ function getSchoolResolver(): SchoolResolver {
   if (cachedSchoolResolver) return cachedSchoolResolver;
 
   const byName = new Map<string, SchoolEntry[]>();
-  const prefRoot = path.join(
-    resolveRoot(),
-    'data',
-    'highschool',
-    'prefectures',
-  );
+  const prefRoot = path.join(resolveRoot(), 'data', 'highschool', 'prefectures');
 
   try {
     for (const prefId of fs.readdirSync(prefRoot)) {
@@ -319,22 +289,14 @@ function getSchoolResolver(): SchoolResolver {
   }
 
   // mixed はどの性別ページにも出る規約（[teamId].tsx の isVisibleGender に合わせる）
-  const visible = (entryGender: string, target: string) =>
-    entryGender === target || entryGender === 'mixed';
+  const visible = (entryGender: string, target: string) => entryGender === target || entryGender === 'mixed';
 
   cachedSchoolResolver = (name, prefecture, gender) => {
     if (gender !== 'boys' && gender !== 'girls') return null;
-    const cands = (byName.get(name) ?? []).filter((c) =>
-      visible(c.gender, gender),
-    );
+    const cands = (byName.get(name) ?? []).filter((c) => visible(c.gender, gender));
     // 同名校は都道府県で絞り込み
-    const narrowed =
-      prefecture && cands.some((c) => c.prefecture === prefecture)
-        ? cands.filter((c) => c.prefecture === prefecture)
-        : cands;
-    const unique = new Map(
-      narrowed.map((c) => [`${c.prefectureId}/${c.teamId}`, c] as const),
-    );
+    const narrowed = prefecture && cands.some((c) => c.prefecture === prefecture) ? cands.filter((c) => c.prefecture === prefecture) : cands;
+    const unique = new Map(narrowed.map((c) => [`${c.prefectureId}/${c.teamId}`, c] as const));
     if (unique.size !== 1) return null;
     const only = unique.values().next().value as SchoolEntry;
     return `/highschool/${gender}/${only.prefectureId}/${only.teamId}`;
@@ -392,10 +354,7 @@ function resolveEntry(
   gender: string,
   resolveSchoolHref: SchoolResolver,
   resolvePlayerHref: PlayerResolver,
-): Pick<
-  RecordPlacement,
-  'display' | 'players' | 'playerLinks' | 'teams' | 'teamLinks' | 'prefectures'
-> {
+): Pick<RecordPlacement, 'display' | 'players' | 'playerLinks' | 'teams' | 'teamLinks' | 'prefectures'> {
   const players: string[] = [];
   const playerLinks: PlayerLink[] = [];
   const teams: string[] = [];
@@ -447,12 +406,7 @@ function resolveEntry(
 }
 
 /** 1 種目ファイルから上位入賞（優勝〜ベスト4）を抽出 */
-function extractPlacements(
-  detailPath: string,
-  gender: string,
-  resolveSchoolHref: SchoolResolver,
-  resolvePlayerHref: PlayerResolver,
-): RecordPlacement[] {
+function extractPlacements(detailPath: string, gender: string, resolveSchoolHref: SchoolResolver, resolvePlayerHref: PlayerResolver): RecordPlacement[] {
   let data: RawDetail;
   try {
     data = JSON.parse(fs.readFileSync(detailPath, 'utf-8')) as RawDetail;
@@ -460,12 +414,8 @@ function extractPlacements(
     return [];
   }
 
-  const participantById = new Map<string, RawParticipant>(
-    (data.participants ?? []).map((p) => [p.id, p] as const),
-  );
-  const entryByNo = new Map<number, RawEntry>(
-    (data.entries ?? []).map((e) => [e.entryNo, e] as const),
-  );
+  const participantById = new Map<string, RawParticipant>((data.participants ?? []).map((p) => [p.id, p] as const));
+  const entryByNo = new Map<number, RawEntry>((data.entries ?? []).map((e) => [e.entryNo, e] as const));
 
   const placements: RecordPlacement[] = [];
   for (const result of data.results ?? []) {
@@ -473,13 +423,7 @@ function extractPlacements(
     if (!classified) continue;
     const entry = entryByNo.get(result.entryNo);
     if (!entry) continue;
-    const resolved = resolveEntry(
-      entry,
-      participantById,
-      gender,
-      resolveSchoolHref,
-      resolvePlayerHref,
-    );
+    const resolved = resolveEntry(entry, participantById, gender, resolveSchoolHref, resolvePlayerHref);
     if (!resolved.display) continue;
     placements.push({
       rankLabel: classified.rankLabel,
@@ -522,9 +466,7 @@ function sortCategories(a: CategoryRecord, b: CategoryRecord): number {
 }
 
 /** 指定スラッグの大会の歴代記録を取得する */
-export function getHsNationalTournamentRecords(
-  slug: HsNationalTournamentSlug,
-): TournamentRecords {
+export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): TournamentRecords {
   const meta = HS_NATIONAL_TOURNAMENTS[slug];
   const information = readInformation(meta.tournamentId);
 
@@ -560,12 +502,7 @@ export function getHsNationalTournamentRecords(
       for (const f of files) {
         const parsed = parseCategoryFile(f);
         if (!parsed) continue;
-        const placements = extractPlacements(
-          path.join(yearDir, f),
-          parsed.gender,
-          resolveSchoolHref,
-          resolvePlayerHref,
-        );
+        const placements = extractPlacements(path.join(yearDir, f), parsed.gender, resolveSchoolHref, resolvePlayerHref);
         if (placements.length === 0) continue;
         categories.push({
           categoryId: parsed.categoryId,
@@ -610,11 +547,8 @@ export function getHsNationalTournamentRecords(
     }));
 
   // 構造化データ dateModified 用に、information 中の最新日付を採用
-  const allDates = information
-    .flatMap((e) => [e.endDate, e.startDate])
-    .filter((d): d is string => Boolean(d));
-  const lastModified =
-    allDates.length > 0 ? allDates.sort().slice(-1)[0] : null;
+  const allDates = information.flatMap((e) => [e.endDate, e.startDate]).filter((d): d is string => Boolean(d));
+  const lastModified = allDates.length > 0 ? allDates.sort().slice(-1)[0] : null;
 
   return {
     ...meta,

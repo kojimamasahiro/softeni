@@ -116,8 +116,7 @@ export default function PrefectureHighschoolPage({
     },
     {
       question: '主要大会に出場した学校をまとめて見られますか？',
-      answer:
-        '主要大会に出場した学校を、このページ上部でまとめて確認できます。',
+      answer: '主要大会に出場した学校を、このページ上部でまとめて確認できます。',
     },
     {
       question: '最近注目したい学校はどこですか？',
@@ -238,8 +237,7 @@ export default function PrefectureHighschoolPage({
           {prefecture.name}
           の高校{genderLabel}
           が全国大会で残した成績をまとめています。全国高等学校総合体育大会、
-          高校総体、ハイスクールジャパンカップなどソフトテニス主要大会での学校別実績を確認できます。
-          詳しい内容は、各高校のページからご覧いただけます。
+          高校総体、ハイスクールジャパンカップなどソフトテニス主要大会での学校別実績を確認できます。 詳しい内容は、各高校のページからご覧いただけます。
         </p>
 
         <HighschoolGenderToggle
@@ -251,21 +249,15 @@ export default function PrefectureHighschoolPage({
 
         <section className="grid gap-4 sm:grid-cols-3 mb-8">
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              収録学校数
-            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">収録学校数</p>
             <p className="text-2xl font-bold">{teams.length}校</p>
           </div>
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              ベスト8以上経験校
-            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">ベスト8以上経験校</p>
             <p className="text-2xl font-bold">{best8SchoolCount}校</p>
           </div>
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              直近1年の主要大会掲載校
-            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">直近1年の主要大会掲載校</p>
             <p className="text-2xl font-bold">{recentMajorSchoolCount}校</p>
           </div>
         </section>
@@ -275,51 +267,47 @@ export default function PrefectureHighschoolPage({
             出場校数：{teams.length}校（ベスト8以上：{best8SchoolCount}校）
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
-            学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。
-            気になる学校を選ぶと、年度別・大会別の詳細成績を確認できます。
+            学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。 気になる学校を選ぶと、年度別・大会別の詳細成績を確認できます。
           </p>
 
-          {topTeams.length > 0 &&
-            getPerformanceLabel(topTeams[0].result) !== null && (
-              <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
-                {topTeams[0].year}年の最新大会（{topTeams[0].tournament}
-                ）では、
-                {topTeams.map((team, index) => (
-                  <span key={team.teamId}>
-                    {index > 0 ? '、' : ''}
-                    <Link
-                      href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                      className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
-                    >
-                      {team.teamName}
-                    </Link>
-                  </span>
-                ))}
-                が<strong>{topTeams[0].result}</strong>
-                {(() => {
-                  const label = getPerformanceLabel(topTeams[0].result);
-                  switch (label) {
-                    case '好成績':
-                      return 'という好成績を収めました。';
-                    case '健闘':
-                      return 'と健闘しました。';
-                    case '敗退':
-                      return 'となりました。';
-                    case '予選敗退':
-                      return 'となりました。';
-                    default:
-                      return '';
-                  }
-                })()}
-              </div>
-            )}
+          {topTeams.length > 0 && getPerformanceLabel(topTeams[0].result) !== null && (
+            <div className="mb-4 text-sm text-gray-800 dark:text-gray-300">
+              {topTeams[0].year}年の最新大会（{topTeams[0].tournament}
+              ）では、
+              {topTeams.map((team, index) => (
+                <span key={team.teamId}>
+                  {index > 0 ? '、' : ''}
+                  <Link
+                    href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
+                    className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
+                  >
+                    {team.teamName}
+                  </Link>
+                </span>
+              ))}
+              が<strong>{topTeams[0].result}</strong>
+              {(() => {
+                const label = getPerformanceLabel(topTeams[0].result);
+                switch (label) {
+                  case '好成績':
+                    return 'という好成績を収めました。';
+                  case '健闘':
+                    return 'と健闘しました。';
+                  case '敗退':
+                    return 'となりました。';
+                  case '予選敗退':
+                    return 'となりました。';
+                  default:
+                    return '';
+                }
+              })()}
+            </div>
+          )}
         </div>
 
         {recentMajorTeams.length > 0 && (
           <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
-            <h2 className="text-xl font-semibold mb-3">
-              直近1年の主要大会掲載校
-            </h2>
+            <h2 className="text-xl font-semibold mb-3">直近1年の主要大会掲載校</h2>
             <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
               直近1年に主要大会へ出場した学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
             </p>
@@ -331,16 +319,11 @@ export default function PrefectureHighschoolPage({
                   className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4 hover:bg-white dark:hover:bg-gray-900 transition"
                 >
                   <p className="font-semibold">{team.teamName}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    主要大会掲載 {team.appearances.length}件
-                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">主要大会掲載 {team.appearances.length}件</p>
                   <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
                     {team.appearances.slice(0, 3).map((appearance) => (
-                      <li
-                        key={`${appearance.tournamentId}-${appearance.year}-${appearance.result}`}
-                      >
-                        {appearance.year}年 {appearance.tournament}（
-                        {appearance.result}）
+                      <li key={`${appearance.tournamentId}-${appearance.year}-${appearance.result}`}>
+                        {appearance.year}年 {appearance.tournament}（{appearance.result}）
                       </li>
                     ))}
                   </ul>
@@ -357,24 +340,15 @@ export default function PrefectureHighschoolPage({
                 href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
                 className="block border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
               >
-                <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">
-                  {team.teamName}
-                </p>
+                <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">{team.teamName}</p>
                 <ul className="text-sm mt-2">
                   {(() => {
-                    const sortedYears = Object.entries(team.results ?? {}).sort(
-                      (a, b) => Number(b[0]) - Number(a[0]),
-                    );
+                    const sortedYears = Object.entries(team.results ?? {}).sort((a, b) => Number(b[0]) - Number(a[0]));
                     if (sortedYears.length === 0) {
-                      return (
-                        <li className="text-sm text-gray-500">
-                          成績情報がありません
-                        </li>
-                      );
+                      return <li className="text-sm text-gray-500">成績情報がありません</li>;
                     }
                     const visibleYears = sortedYears.slice(0, 3);
-                    const hiddenYearCount =
-                      sortedYears.length - visibleYears.length;
+                    const hiddenYearCount = sortedYears.length - visibleYears.length;
                     return (
                       <>
                         {visibleYears.map(([year, resultList]) => (
@@ -383,20 +357,13 @@ export default function PrefectureHighschoolPage({
                             {resultList
                               .slice()
                               .sort((a, b) => {
-                                const tournamentOrder =
-                                  getTournamentSortPriority(a.tournamentId) -
-                                  getTournamentSortPriority(b.tournamentId);
+                                const tournamentOrder = getTournamentSortPriority(a.tournamentId) - getTournamentSortPriority(b.tournamentId);
                                 if (tournamentOrder !== 0) {
                                   return tournamentOrder;
                                 }
-                                return (
-                                  resultPriority(a.result) -
-                                  resultPriority(b.result)
-                                );
+                                return resultPriority(a.result) - resultPriority(b.result);
                               })
-                              .map(
-                                (res) => `${res.tournament}（${res.result}）`,
-                              )
+                              .map((res) => `${res.tournament}（${res.result}）`)
                               .join('、')}
                           </li>
                         ))}
@@ -419,10 +386,7 @@ export default function PrefectureHighschoolPage({
           <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
           <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
             {faqItems.map((item) => (
-              <div
-                key={item.question}
-                className="rounded-xl border border-gray-200 dark:border-gray-700 p-4"
-              >
+              <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
                 <h3 className="font-semibold mb-2">{item.question}</h3>
                 <p>{item.answer}</p>
               </div>
@@ -463,19 +427,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (!prefecture) return { notFound: true };
 
-  const summaryPath = path.join(
-    process.cwd(),
-    `data/highschool/prefectures/${prefectureId}/summary.json`,
-  );
+  const summaryPath = path.join(process.cwd(), `data/highschool/prefectures/${prefectureId}/summary.json`);
 
-  const rawData: SummaryEntry[] = fs.existsSync(summaryPath)
-    ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8'))
-    : [];
+  const rawData: SummaryEntry[] = fs.existsSync(summaryPath) ? JSON.parse(fs.readFileSync(summaryPath, 'utf-8')) : [];
 
   // Filter by gender, and show mixed tournaments on both boys/girls pages
-  const filteredData = rawData.filter((entry) =>
-    isVisibleGender(entry.gender, gender),
-  );
+  const filteredData = rawData.filter((entry) => isVisibleGender(entry.gender, gender));
 
   const grouped: Record<string, TeamSummary> = {};
 
@@ -495,9 +452,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       grouped[teamId].results[year] = [];
     }
 
-    const existing = grouped[teamId].results[year].find(
-      (r) => r.tournamentId === tournamentId,
-    );
+    const existing = grouped[teamId].results[year].find((r) => r.tournamentId === tournamentId);
     if (!existing) {
       grouped[teamId].results[year].push({
         tournamentId,
@@ -514,13 +469,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const teams: TeamSummary[] = Object.values(grouped).sort((a, b) => {
     const getBestRank = (team: TeamSummary) =>
-      Math.min(
-        ...Object.values(team.results).flatMap((resultList) =>
-          resultList.map((resultEntry) => resultPriority(resultEntry.result)),
-        ),
-      );
-    const getLatestYear = (team: TeamSummary) =>
-      Math.max(...Object.keys(team.results).map(Number));
+      Math.min(...Object.values(team.results).flatMap((resultList) => resultList.map((resultEntry) => resultPriority(resultEntry.result))));
+    const getLatestYear = (team: TeamSummary) => Math.max(...Object.keys(team.results).map(Number));
 
     const bestRankDiff = getBestRank(a) - getBestRank(b);
     if (bestRankDiff !== 0) return bestRankDiff;
@@ -531,14 +481,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return a.teamName.localeCompare(b.teamName, 'ja');
   });
 
-  const latestYear =
-    filteredData.length > 0
-      ? Math.max(...filteredData.map((entry) => entry.year))
-      : null;
-  const latestYearEntries =
-    latestYear === null
-      ? []
-      : filteredData.filter((entry) => entry.year === latestYear);
+  const latestYear = filteredData.length > 0 ? Math.max(...filteredData.map((entry) => entry.year)) : null;
+  const latestYearEntries = latestYear === null ? [] : filteredData.filter((entry) => entry.year === latestYear);
 
   const sortedTournamentIds = Object.entries(HIGHSCHOOL_TOURNAMENT_PRIORITY)
     .sort((a, b) => a[1] - b[1])
@@ -547,17 +491,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let topTeams: TopTeam[] = [];
 
   for (const tournamentId of sortedTournamentIds) {
-    const entries = latestYearEntries.filter(
-      (e) => e.tournamentId === tournamentId,
-    );
+    const entries = latestYearEntries.filter((e) => e.tournamentId === tournamentId);
     if (entries.length === 0) continue;
 
     const bestRank = Math.min(...entries.map((e) => resultPriority(e.result)));
 
     // 最高成績のエントリのみ
-    const bestEntries = entries.filter(
-      (e) => resultPriority(e.result) === bestRank,
-    );
+    const bestEntries = entries.filter((e) => resultPriority(e.result) === bestRank);
 
     // チームIDごとに一意にする（重複排除）
     const seen = new Set<string>();
@@ -578,26 +518,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if (topTeams.length > 0) break; // 最初に見つかった大会だけ採用
   }
 
-  const best8SchoolCount = new Set(
-    filteredData
-      .filter((entry) => isBest8Result(entry.result))
-      .map((entry) => entry.teamId),
-  ).size;
+  const best8SchoolCount = new Set(filteredData.filter((entry) => isBest8Result(entry.result)).map((entry) => entry.teamId)).size;
 
-  const tournamentsIndexPath = path.join(
-    process.cwd(),
-    'data/tournaments/index.json',
-  );
+  const tournamentsIndexPath = path.join(process.cwd(), 'data/tournaments/index.json');
   const majorTournamentIds: string[] = fs.existsSync(tournamentsIndexPath)
     ? JSON.parse(fs.readFileSync(tournamentsIndexPath, 'utf-8'))
-        .filter(
-          (item: { tournamentId?: string; generationId?: string }) =>
-            item.generationId === 'all',
-        )
+        .filter((item: { tournamentId?: string; generationId?: string }) => item.generationId === 'all')
         .map((item: { tournamentId?: string }) => item.tournamentId)
-        .filter((tournamentId: string | undefined): tournamentId is string =>
-          Boolean(tournamentId),
-        )
+        .filter((tournamentId: string | undefined): tournamentId is string => Boolean(tournamentId))
     : [];
   const majorInfoDir = path.join(process.cwd(), 'data/tournaments/information');
   const now = new Date();
@@ -608,9 +536,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   for (const tournamentId of majorTournamentIds) {
     const informationPath = path.join(majorInfoDir, `${tournamentId}.json`);
     if (!fs.existsSync(informationPath)) continue;
-    const informationList: { year: number; startDate: string }[] = JSON.parse(
-      fs.readFileSync(informationPath, 'utf-8'),
-    );
+    const informationList: { year: number; startDate: string }[] = JSON.parse(fs.readFileSync(informationPath, 'utf-8'));
     for (const information of informationList) {
       const startDate = new Date(information.startDate);
       if (startDate >= oneYearAgo && startDate <= now) {
@@ -622,32 +548,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
-  const highschoolTeamsPath = path.join(
-    process.cwd(),
-    'scripts/highschool/01team/teams.json',
-  );
-  const aliasPath = path.join(
-    process.cwd(),
-    'scripts/highschool/03list/inferred-team-aliases.json',
-  );
-  const resultsPath = path.join(
-    process.cwd(),
-    'scripts/highschool/02result/results.json',
-  );
+  const highschoolTeamsPath = path.join(process.cwd(), 'scripts/highschool/01team/teams.json');
+  const aliasPath = path.join(process.cwd(), 'scripts/highschool/03list/inferred-team-aliases.json');
+  const resultsPath = path.join(process.cwd(), 'scripts/highschool/02result/results.json');
 
-  const prefectureTeams: { id: string; name: string }[] = fs.existsSync(
-    highschoolTeamsPath,
-  )
+  const prefectureTeams: { id: string; name: string }[] = fs.existsSync(highschoolTeamsPath)
     ? JSON.parse(fs.readFileSync(highschoolTeamsPath, 'utf-8'))
         .filter(
-          (team: {
-            id: string;
-            name: string;
-            prefectureId?: string;
-            prefecture?: string;
-          }) =>
-            team.prefectureId === prefectureId ||
-            team.prefecture === prefecture.name,
+          (team: { id: string; name: string; prefectureId?: string; prefecture?: string }) =>
+            team.prefectureId === prefectureId || team.prefecture === prefecture.name,
         )
         .map((team: { id: string; name: string }) => ({
           id: team.id,
@@ -655,13 +564,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }))
     : [];
 
-  const teamIdByName = new Map(
-    prefectureTeams.map((team) => [team.name, team.id] as const),
-  );
+  const teamIdByName = new Map(prefectureTeams.map((team) => [team.name, team.id] as const));
 
-  const inferredAliases: AliasReasonGroup[] = fs.existsSync(aliasPath)
-    ? JSON.parse(fs.readFileSync(aliasPath, 'utf-8'))
-    : [];
+  const inferredAliases: AliasReasonGroup[] = fs.existsSync(aliasPath) ? JSON.parse(fs.readFileSync(aliasPath, 'utf-8')) : [];
   const canonicalNameByAlias = new Map<string, string>();
   for (const group of inferredAliases) {
     for (const alias of group.aliases) {
@@ -669,20 +574,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
-  const normalizeSchoolName = (name: string) =>
-    canonicalNameByAlias.get(name) ?? name;
+  const normalizeSchoolName = (name: string) => canonicalNameByAlias.get(name) ?? name;
 
-  const rawResults: { results: RawResultEntry[] } = fs.existsSync(resultsPath)
-    ? JSON.parse(fs.readFileSync(resultsPath, 'utf-8'))
-    : { results: [] };
+  const rawResults: { results: RawResultEntry[] } = fs.existsSync(resultsPath) ? JSON.parse(fs.readFileSync(resultsPath, 'utf-8')) : { results: [] };
 
   const recentMajorTeamMap = new Map<string, RecentMajorTeam>();
   rawResults.results
-    .filter(
-      (entry) =>
-        isVisibleGender(entry.gender ?? '', gender) &&
-        recentMajorYearMap.get(entry.tournamentId)?.has(entry.year),
-    )
+    .filter((entry) => isVisibleGender(entry.gender ?? '', gender) && recentMajorYearMap.get(entry.tournamentId)?.has(entry.year))
     .forEach((entry) => {
       const rawTeamNames =
         entry.category === 'team'
@@ -722,10 +620,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
         if (
           !existing.appearances.some(
-            (item) =>
-              item.tournamentId === appearance.tournamentId &&
-              item.year === appearance.year &&
-              item.result === appearance.result,
+            (item) => item.tournamentId === appearance.tournamentId && item.year === appearance.year && item.result === appearance.result,
           )
         ) {
           existing.appearances.push(appearance);
@@ -738,9 +633,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ...team,
       appearances: team.appearances.slice().sort((a, b) => {
         if (b.year !== a.year) return b.year - a.year;
-        const tournamentOrder =
-          getTournamentSortPriority(a.tournamentId) -
-          getTournamentSortPriority(b.tournamentId);
+        const tournamentOrder = getTournamentSortPriority(a.tournamentId) - getTournamentSortPriority(b.tournamentId);
         if (tournamentOrder !== 0) return tournamentOrder;
         return resultPriority(a.result) - resultPriority(b.result);
       }),
@@ -752,12 +645,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       if (b.appearances.length !== a.appearances.length) {
         return b.appearances.length - a.appearances.length;
       }
-      const bestA = Math.min(
-        ...a.appearances.map((item) => resultPriority(item.result)),
-      );
-      const bestB = Math.min(
-        ...b.appearances.map((item) => resultPriority(item.result)),
-      );
+      const bestA = Math.min(...a.appearances.map((item) => resultPriority(item.result)));
+      const bestB = Math.min(...b.appearances.map((item) => resultPriority(item.result)));
       if (bestA !== bestB) return bestA - bestB;
       return a.teamName.localeCompare(b.teamName, 'ja');
     })

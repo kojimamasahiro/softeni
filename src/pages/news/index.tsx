@@ -38,20 +38,12 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
         <h1 className="mb-4 text-2xl font-bold">大会展望</h1>
 
         {items.length === 0 ? (
-          <p className="text-sm text-gray-500">
-            現在、公開中の記事はありません。
-          </p>
+          <p className="text-sm text-gray-500">現在、公開中の記事はありません。</p>
         ) : (
           <ul className="space-y-2">
             {items.map((it) => (
-              <li
-                key={it.articleId}
-                className="rounded-md border border-gray-200 p-3 dark:border-gray-700"
-              >
-                <Link
-                  href={`/news/${it.articleId}/`}
-                  className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
-                >
+              <li key={it.articleId} className="rounded-md border border-gray-200 p-3 dark:border-gray-700">
+                <Link href={`/news/${it.articleId}/`} className="font-semibold text-blue-600 hover:underline dark:text-blue-400">
                   {it.title}
                 </Link>
                 <span className="ml-2 inline-block rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">

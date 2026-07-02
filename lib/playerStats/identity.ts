@@ -45,10 +45,7 @@ let cached: Identity | null = null;
 export function loadIdentity(root?: string): Identity {
   if (cached) return cached;
   const cwd = root || process.cwd();
-  const rows =
-    readJson<PlayerIndexRow[]>(
-      path.join(cwd, 'data', 'players', 'index.json'),
-    ) ?? [];
+  const rows = readJson<PlayerIndexRow[]>(path.join(cwd, 'data', 'players', 'index.json')) ?? [];
   const byName = new Map<string, number>();
   const byId = new Map<number, { lastName: string; firstName: string }>();
   for (const r of rows) {
@@ -62,10 +59,7 @@ export function loadIdentity(root?: string): Identity {
   }
 
   // homonyms.json（同姓同名で複数実在人物）を読み、nameKey 集合を作る。
-  const homonyms =
-    readJson<Array<{ lastName?: string; firstName?: string }>>(
-      path.join(cwd, 'data', 'players', 'homonyms.json'),
-    ) ?? [];
+  const homonyms = readJson<Array<{ lastName?: string; firstName?: string }>>(path.join(cwd, 'data', 'players', 'homonyms.json')) ?? [];
   const homonymNames = new Set<string>();
   for (const h of homonyms) {
     if (h?.lastName && h?.firstName) {
@@ -89,11 +83,7 @@ export function __resetIdentityCache(): void {
 }
 
 /** 姓名から数値 id を解決（first-wins）。未登録は null。 */
-export function resolveNumericId(
-  identity: Identity,
-  lastName: string | null | undefined,
-  firstName: string | null | undefined,
-): number | null {
+export function resolveNumericId(identity: Identity, lastName: string | null | undefined, firstName: string | null | undefined): number | null {
   if (!lastName || !firstName) return null;
   return identity.byName.get(nameKey(lastName, firstName)) ?? null;
 }

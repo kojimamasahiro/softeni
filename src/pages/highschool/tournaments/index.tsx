@@ -10,10 +10,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  listHsNationalTournamentSummaries,
-  type TournamentSummary,
-} from '@/lib/highschoolNationalTournaments';
+import { listHsNationalTournamentSummaries, type TournamentSummary } from '@/lib/highschoolNationalTournaments';
 
 type Props = {
   tournaments: TournamentSummary[];
@@ -21,9 +18,7 @@ type Props = {
 
 function formatYearRange(t: TournamentSummary): string {
   if (t.earliestYear === null || t.latestYear === null) return '収録準備中';
-  return t.earliestYear === t.latestYear
-    ? `${t.latestYear}年`
-    : `${t.earliestYear}〜${t.latestYear}年`;
+  return t.earliestYear === t.latestYear ? `${t.latestYear}年` : `${t.earliestYear}〜${t.latestYear}年`;
 }
 
 export default function HighschoolTournamentsIndex({ tournaments }: Props) {
@@ -98,10 +93,7 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
         <h1 className="text-2xl font-bold mb-4">高校 全国大会の歴代記録</h1>
 
         <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
-          <p>
-            高校ソフトテニスの代表的な全国大会について、歴代の上位入賞（優勝〜ベスト4）を
-            年度別・種目別にまとめています。
-          </p>
+          <p>高校ソフトテニスの代表的な全国大会について、歴代の上位入賞（優勝〜ベスト4）を 年度別・種目別にまとめています。</p>
           <p>
             都道府県別・学校別ページが「各校の成績」を学校視点で整理しているのに対し、
             こちらは大会そのものを軸に、その年の頂点に立った学校・ペア・選手を横断的に確認できます。
@@ -116,31 +108,16 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
               className="rounded-xl border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
             >
               <p className="text-lg font-semibold">{t.shortLabel}</p>
-              {t.label !== t.shortLabel && (
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                  {t.label}
-                </p>
-              )}
-              {t.aliases && t.aliases.length > 0 && (
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                  通称: {t.aliases.join('・')}
-                </p>
-              )}
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-3">
-                {t.description}
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">
-                収録年度: {formatYearRange(t)}
-              </p>
+              {t.label !== t.shortLabel && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{t.label}</p>}
+              {t.aliases && t.aliases.length > 0 && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">通称: {t.aliases.join('・')}</p>}
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-3">{t.description}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">収録年度: {formatYearRange(t)}</p>
             </Link>
           ))}
         </div>
 
         <div className="mt-10 text-sm">
-          <Link
-            href="/highschool/boys/"
-            className="text-blue-600 dark:text-blue-300 hover:underline"
-          >
+          <Link href="/highschool/boys/" className="text-blue-600 dark:text-blue-300 hover:underline">
             高校 都道府県別・学校別ページへ →
           </Link>
         </div>

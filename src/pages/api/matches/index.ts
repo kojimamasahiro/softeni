@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  loadMatchesWithRelations,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, loadMatchesWithRelations, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { isScoreSiteMode } from '@/lib/siteConfig';
 import type { Match } from '@/types/database';
 
@@ -15,10 +10,7 @@ type CreateMatchBody = Omit<Match, 'id' | 'created_at'> & {
   created_at?: string;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const supabase = getServerSupabase();
 
   if (req.method === 'GET') {
@@ -37,11 +29,7 @@ export default async function handler(
 
     try {
       const body = req.body as CreateMatchBody;
-      const { data: match, error } = await (supabase as any)
-        .from('matches')
-        .insert(body)
-        .select('*')
-        .single();
+      const { data: match, error } = await (supabase as any).from('matches').insert(body).select('*').single();
 
       if (error) {
         throw error;

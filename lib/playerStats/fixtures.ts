@@ -46,7 +46,4 @@ export const HIGH_VOLUME_FIXTURES: FixturePlayer[] = [
   { id: 69, name: '佐藤心美', curated: false, note: '女子・出場多' },
 ];
 
-export const ALL_FIXTURES: FixturePlayer[] = [
-  ...CURATED_FIXTURES,
-  ...HIGH_VOLUME_FIXTURES,
-];
+export const ALL_FIXTURES: FixturePlayer[] = [...CURATED_FIXTURES, ...HIGH_VOLUME_FIXTURES];

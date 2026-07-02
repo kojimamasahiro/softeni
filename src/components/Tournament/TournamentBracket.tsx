@@ -95,9 +95,7 @@ function buildBracket(matches: TournamentMatch[]): {
     // Optimization: Pre-calculate "WinnerOf" map?
     // Or just search. N is small (~100 max).
 
-    const prevMatch0 = knockoutMatches.find(
-      (m) => m.winnerEntryNo === entry0 && m.nextMatchId === match.matchId,
-    );
+    const prevMatch0 = knockoutMatches.find((m) => m.winnerEntryNo === entry0 && m.nextMatchId === match.matchId);
     // 注意: nextMatchId のチェックはグループ試合や以前のトーナメントから保護する。
     // しかし、厳密な 'knockout' 試合のフィルタリングで通常十分。
 
@@ -108,9 +106,7 @@ function buildBracket(matches: TournamentMatch[]): {
     // Slot 1 (Bottom) -> entries[1]
     if (match.entries.length > 1) {
       const entry1 = match.entries[1];
-      const prevMatch1 = knockoutMatches.find(
-        (m) => m.winnerEntryNo === entry1 && m.nextMatchId === match.matchId,
-      );
+      const prevMatch1 = knockoutMatches.find((m) => m.winnerEntryNo === entry1 && m.nextMatchId === match.matchId);
       if (prevMatch1) {
         traverse(prevMatch1, dist + 1, index * 2 + 1);
       }
@@ -146,8 +142,7 @@ function buildBracket(matches: TournamentMatch[]): {
       const match = layerMatches?.get(mIdx);
       if (match) {
         entriesArray[mIdx * 2] = match.entries[0];
-        if (match.entries.length > 1)
-          entriesArray[mIdx * 2 + 1] = match.entries[1];
+        if (match.entries.length > 1) entriesArray[mIdx * 2 + 1] = match.entries[1];
       } else {
         // No match. Check for seed propagation from PARENT round (d - 1)
         if (d > 0) {
@@ -174,10 +169,7 @@ function buildBracket(matches: TournamentMatch[]): {
     entriesByRound.set(roundName, entriesArray);
   }
 
-  const layoutByRound = new Map<
-    string,
-    { entryNo: number | null; y: number }[]
-  >();
+  const layoutByRound = new Map<string, { entryNo: number | null; y: number }[]>();
 
   if (sortedRounds.length > 0 && distToRound.has(maxDist)) {
     const maxDistRound = distToRound.get(maxDist)!;
@@ -223,9 +215,7 @@ function buildBracket(matches: TournamentMatch[]): {
 
       // Calculate champion Y
       const finalRoundName = distToRound.get(0);
-      const finalLayout = finalRoundName
-        ? layoutByRound.get(finalRoundName)
-        : [];
+      const finalLayout = finalRoundName ? layoutByRound.get(finalRoundName) : [];
       const top = finalLayout?.[0];
       const bottom = finalLayout?.[1];
       let champY = 0;
@@ -236,9 +226,7 @@ function buildBracket(matches: TournamentMatch[]): {
       } else if (bottom?.entryNo !== null) {
         champY = bottom!.y;
       }
-      layoutByRound.set('優勝', [
-        { entryNo: singleFinal.winnerEntryNo, y: champY },
-      ]);
+      layoutByRound.set('優勝', [{ entryNo: singleFinal.winnerEntryNo, y: champY }]);
     } else if (sortedRounds.length > 0) {
       entriesByRound.set('優勝', [-1]);
       sortedRounds.push('優勝');
@@ -259,23 +247,15 @@ function buildBracket(matches: TournamentMatch[]): {
   };
 }
 
-export default function TournamentBracket({
-  detailData,
-}: TournamentBracketProps) {
+export default function TournamentBracket({ detailData }: TournamentBracketProps) {
   const { participants, entries, matches } = detailData;
 
   // 個人戦で結果ページを持つ選手（playerId あり）のみリンク化する。
   // 既存の MatchResults / TeamResults と同じ規約に揃える。
-  const renderPlayerName = (
-    player: (typeof participants)[number] | null | undefined,
-    text: string,
-  ): ReactNode => {
+  const renderPlayerName = (player: (typeof participants)[number] | null | undefined, text: string): ReactNode => {
     if (player?.playerId && player.lastName) {
       return (
-        <Link
-          href={`/players/${player.playerId}/results`}
-          className="text-inherit hover:underline underline-offset-2 decoration-dotted"
-        >
+        <Link href={`/players/${player.playerId}/results`} className="text-inherit hover:underline underline-offset-2 decoration-dotted">
           {text}
         </Link>
       );
@@ -283,10 +263,7 @@ export default function TournamentBracket({
     return text;
   };
 
-  const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(
-    () => buildBracket(matches),
-    [matches],
-  );
+  const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(() => buildBracket(matches), [matches]);
 
   const [startRound, setStartRound] = useState<string>(defaultStartRound);
 
@@ -364,12 +341,7 @@ export default function TournamentBracket({
         const childBottom = prevLayout[idx * 2 + 1];
 
         let y = -1;
-        if (
-          childTop?.entryNo !== null &&
-          childBottom?.entryNo !== null &&
-          childTop !== undefined &&
-          childBottom !== undefined
-        ) {
+        if (childTop?.entryNo !== null && childBottom?.entryNo !== null && childTop !== undefined && childBottom !== undefined) {
           y = (childTop.y + childBottom.y) / 2;
         } else if (childTop?.entryNo !== null && childTop !== undefined) {
           y = childTop.y;
@@ -426,10 +398,7 @@ export default function TournamentBracket({
         {/* ラウンドセレクター */}
         {rounds.length > 1 && (
           <div className="flex items-center gap-2">
-            <label
-              htmlFor="round-select"
-              className="text-sm text-gray-600 dark:text-gray-400"
-            >
+            <label htmlFor="round-select" className="text-sm text-gray-600 dark:text-gray-400">
               表示開始:
             </label>
             <select
@@ -451,10 +420,7 @@ export default function TournamentBracket({
       </div>
 
       <div className="overflow-x-auto overflow-y-visible pb-4">
-        <div
-          className="relative inline-flex"
-          style={{ gap: `${ROUND_GAP}px`, height: `${containerHeight}px` }}
-        >
+        <div className="relative inline-flex" style={{ gap: `${ROUND_GAP}px`, height: `${containerHeight}px` }}>
           {displayedRounds.map((roundName, roundIndex) => {
             const layout = dynamicLayout.get(roundName) || [];
 
@@ -464,11 +430,7 @@ export default function TournamentBracket({
             const isChampionRound = roundName === '優勝';
 
             return (
-              <div
-                key={roundName}
-                className="relative"
-                style={{ width: showBoxes ? '220px' : '0px' }}
-              >
+              <div key={roundName} className="relative" style={{ width: showBoxes ? '220px' : '0px' }}>
                 {/* エントリーまたは接続ポイント */}
                 {layout.map((node, index) => {
                   const entryNo = node.entryNo;
@@ -487,21 +449,14 @@ export default function TournamentBracket({
                           width: '40px',
                         }}
                       >
-                        <div
-                          className={`h-px w-10 ${hasWinner ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`}
-                        />
+                        <div className={`h-px w-10 ${hasWinner ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`} />
                       </div>
                     );
                   }
 
                   const entry = entries.find((e) => e.entryNo === entryNo);
-                  const player1 = entry
-                    ? participants.find((p) => p.id === entry.playerIds[0])
-                    : null;
-                  const player2 =
-                    entry && entry.playerIds.length > 1
-                      ? participants.find((p) => p.id === entry.playerIds[1])
-                      : null;
+                  const player1 = entry ? participants.find((p) => p.id === entry.playerIds[0]) : null;
+                  const player2 = entry && entry.playerIds.length > 1 ? participants.find((p) => p.id === entry.playerIds[1]) : null;
 
                   let displayName = '';
                   let nameNodes: ReactNode = '';
@@ -517,9 +472,7 @@ export default function TournamentBracket({
                       </>
                     );
                   } else if (player1) {
-                    displayName = player1.lastName
-                      ? `${player1.lastName} ${player1.firstName || ''}`.trim()
-                      : player1.team || '';
+                    displayName = player1.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1.team || '';
                     nameNodes = renderPlayerName(player1, displayName);
                   }
 
@@ -528,31 +481,16 @@ export default function TournamentBracket({
                   const showTwoTeams = team2 && team1 !== team2;
 
                   // このラウンドでこのエントリーが勝ったかをチェック
-                  const matchForEntry = matches.find(
-                    (m) =>
-                      m.stage === 'knockout' &&
-                      m.round === roundName &&
-                      m.entries.includes(entryNo),
-                  );
+                  const matchForEntry = matches.find((m) => m.stage === 'knockout' && m.round === roundName && m.entries.includes(entryNo));
 
                   const nextRoundName = displayedRounds[roundIndex + 1];
-                  const nextRoundEntries = nextRoundName
-                    ? entriesByRound.get(nextRoundName)
-                    : null;
-                  const isSeed =
-                    !matchForEntry &&
-                    !!nextRoundEntries &&
-                    entryNo !== null &&
-                    nextRoundEntries.includes(entryNo);
+                  const nextRoundEntries = nextRoundName ? entriesByRound.get(nextRoundName) : null;
+                  const isSeed = !matchForEntry && !!nextRoundEntries && entryNo !== null && nextRoundEntries.includes(entryNo);
 
-                  const isWinner =
-                    matchForEntry?.winnerEntryNo === entryNo || isSeed;
+                  const isWinner = matchForEntry?.winnerEntryNo === entryNo || isSeed;
 
                   // 名前の強調表示は優勝者のみ
-                  const isChampion =
-                    championEntryNo !== undefined &&
-                    championEntryNo !== -1 &&
-                    entryNo === championEntryNo;
+                  const isChampion = championEntryNo !== undefined && championEntryNo !== -1 && entryNo === championEntryNo;
 
                   return (
                     <div
@@ -581,17 +519,8 @@ export default function TournamentBracket({
                           <div
                             className={`
                                                                 flex-1 text-center font-medium truncate px-1 border-r border-gray-100 dark:border-gray-700
-                                                                ${
-                                                                  displayName.length >
-                                                                  6
-                                                                    ? 'text-[10px]'
-                                                                    : 'text-xs'
-                                                                }
-                                                                ${
-                                                                  isChampion
-                                                                    ? 'text-blue-900 dark:text-blue-100'
-                                                                    : 'text-gray-900 dark:text-gray-100'
-                                                                }
+                                                                ${displayName.length > 6 ? 'text-[10px]' : 'text-xs'}
+                                                                ${isChampion ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-gray-100'}
                                                             `}
                           >
                             {nameNodes}
@@ -622,21 +551,14 @@ export default function TournamentBracket({
                       )}
 
                       {/* 次のラウンドへの接続線、または最終・途中結果のスコア線 */}
-                      {(roundIndex < displayedRounds.length - 1 ||
-                        matchForEntry) &&
+                      {(roundIndex < displayedRounds.length - 1 || matchForEntry) &&
                         (() => {
                           const nextRoundName = displayedRounds[roundIndex + 1];
-                          const nextLayout = nextRoundName
-                            ? dynamicLayout.get(nextRoundName)
-                            : undefined;
+                          const nextLayout = nextRoundName ? dynamicLayout.get(nextRoundName) : undefined;
                           // 次のラウンドのエントリーは、2つの子を1つにまとめるため、idx = Math.floor(index / 2)
                           const destNode = nextLayout?.[Math.floor(index / 2)];
 
-                          if (
-                            roundIndex === displayedRounds.length - 1 &&
-                            !matchForEntry
-                          )
-                            return null;
+                          if (roundIndex === displayedRounds.length - 1 && !matchForEntry) return null;
 
                           return (
                             <svg
@@ -654,11 +576,7 @@ export default function TournamentBracket({
                                 y1="0"
                                 x2={ROUND_GAP}
                                 y2="0"
-                                className={
-                                  !showBoxes || isWinner
-                                    ? 'stroke-blue-500 dark:stroke-blue-400'
-                                    : 'stroke-gray-300 dark:stroke-gray-600'
-                                }
+                                className={!showBoxes || isWinner ? 'stroke-blue-500 dark:stroke-blue-400' : 'stroke-gray-300 dark:stroke-gray-600'}
                                 strokeWidth="1"
                               />
 
@@ -668,34 +586,27 @@ export default function TournamentBracket({
                                   y1="0"
                                   x2={ROUND_GAP}
                                   y2={(destNode.y - node.y) * ENTRY_HEIGHT}
-                                  className={
-                                    isWinner
-                                      ? 'stroke-blue-500 dark:stroke-blue-400'
-                                      : 'stroke-gray-300 dark:stroke-gray-600'
-                                  }
+                                  className={isWinner ? 'stroke-blue-500 dark:stroke-blue-400' : 'stroke-gray-300 dark:stroke-gray-600'}
                                   strokeWidth="1"
                                 />
                               )}
 
-                              {matchForEntry &&
-                                !isChampionRound &&
-                                !isWinner && (
-                                  <text
-                                    x={ROUND_GAP - 2}
-                                    y={index % 2 === 0 ? -6 : 14}
-                                    textAnchor="end"
-                                    fontSize="10"
-                                    className="fill-gray-600 dark:fill-gray-400 pointer-events-none select-none"
-                                  >
-                                    {(() => {
-                                      const s = matchForEntry.scores;
-                                      if (!s) return null;
-                                      const val =
-                                        s[String(entryNo)] ?? s[entryNo];
-                                      return val;
-                                    })()}
-                                  </text>
-                                )}
+                              {matchForEntry && !isChampionRound && !isWinner && (
+                                <text
+                                  x={ROUND_GAP - 2}
+                                  y={index % 2 === 0 ? -6 : 14}
+                                  textAnchor="end"
+                                  fontSize="10"
+                                  className="fill-gray-600 dark:fill-gray-400 pointer-events-none select-none"
+                                >
+                                  {(() => {
+                                    const s = matchForEntry.scores;
+                                    if (!s) return null;
+                                    const val = s[String(entryNo)] ?? s[entryNo];
+                                    return val;
+                                  })()}
+                                </text>
+                              )}
                             </svg>
                           );
                         })()}

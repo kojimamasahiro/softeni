@@ -12,15 +12,8 @@ import PageLayout from '@/components/PageLayout';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
-import type {
-  EventResult,
-  Player,
-  TeamInfo,
-} from '@/utils/team-data-aggregator';
-import {
-  calculatePlayerStats,
-  calculateTeamYearlySummary,
-} from '@/utils/team-stats-calculator';
+import type { EventResult, Player, TeamInfo } from '@/utils/team-data-aggregator';
+import { calculatePlayerStats, calculateTeamYearlySummary } from '@/utils/team-stats-calculator';
 
 type Props = {
   info: TeamInfo;
@@ -30,16 +23,9 @@ type Props = {
   playerLinks?: Record<string, number>;
 };
 
-export default function TeamYearGenderPage({
-  info,
-  results,
-  year,
-  gender,
-  playerLinks = {},
-}: Props) {
+export default function TeamYearGenderPage({ info, results, year, gender, playerLinks = {} }: Props) {
   const teamName = info.name;
-  const genderLabel =
-    gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : 'ミックス';
+  const genderLabel = gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : 'ミックス';
   const pageTitle = `${teamName} ${year}年度 ${genderLabel} 成績`;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/${year}/${gender}/`;
 
@@ -129,19 +115,11 @@ export default function TeamYearGenderPage({
     return calculatePlayerStats(results, info);
   }, [results, info]);
 
-  const statsList = useMemo(
-    () =>
-      Object.values(calculatePlayerStatsValues).sort((a, b) => b.wins - a.wins),
-    [calculatePlayerStatsValues],
-  );
+  const statsList = useMemo(() => Object.values(calculatePlayerStatsValues).sort((a, b) => b.wins - a.wins), [calculatePlayerStatsValues]);
 
   return (
     <>
-      <MetaHead
-        title={`${pageTitle} | ソフトテニス情報`}
-        description={`${teamName}の${year}年度${genderLabel}の大会成績詳細。`}
-        url={pageUrl}
-      />
+      <MetaHead title={`${pageTitle} | ソフトテニス情報`} description={`${teamName}の${year}年度${genderLabel}の大会成績詳細。`} url={pageUrl} />
 
       <Head>
         <script
@@ -225,10 +203,7 @@ export default function TeamYearGenderPage({
         <TeamsRanking statsList={statsList} playerLinks={playerLinks} />
 
         <div className="mt-8">
-          <Link
-            href={`/teams/${info.id}`}
-            className="text-blue-600 dark:text-blue-400 hover:underline"
-          >
+          <Link href={`/teams/${info.id}`} className="text-blue-600 dark:text-blue-400 hover:underline">
             ← {teamName} トップへ戻る
           </Link>
         </div>
@@ -238,11 +213,7 @@ export default function TeamYearGenderPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const {
-    aggregateTeamResults,
-    loadTeamNameMappings,
-    gendersWithRealPresence,
-  } = await import('@/utils/team-data-aggregator');
+  const { aggregateTeamResults, loadTeamNameMappings, gendersWithRealPresence } = await import('@/utils/team-data-aggregator');
 
   const teamNameMappings = loadTeamNameMappings();
   const paths: {
@@ -256,10 +227,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const combinations = new Set<string>();
 
     for (const result of results) {
-      if (
-        (result.gender === 'boys' || result.gender === 'girls') &&
-        !realGenders.has(result.gender)
-      ) {
+      if ((result.gender === 'boys' || result.gender === 'girls') && !realGenders.has(result.gender)) {
         continue;
       }
       const key = `${result.year}-${result.gender}`;
@@ -283,9 +251,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { aggregateTeamResults, generateTeamInfo, normalizeJa } = await import(
-    '@/utils/team-data-aggregator'
-  );
+  const { aggregateTeamResults, generateTeamInfo, normalizeJa } = await import('@/utils/team-data-aggregator');
   const { teamId, year, gender } = context.params as {
     teamId: string;
     year: string;
@@ -297,27 +263,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const allResults = aggregateTeamResults(teamId);
 
     // Filter results by year and gender, and exclude team/versus matches
-    const filteredResults = allResults.filter(
-      (r) =>
-        r.year === Number(year) &&
-        r.gender === gender &&
-        !['team', 'versus'].includes(r.gameCategory),
-    );
+    const filteredResults = allResults.filter((r) => r.year === Number(year) && r.gender === gender && !['team', 'versus'].includes(r.gameCategory));
 
     // Filter players based on gender context
     // 1. Try to load from participants.json if available
-    const participantsPath = path.join(
-      process.cwd(),
-      `data/st-league/${year}/participants.json`,
-    );
+    const participantsPath = path.join(process.cwd(), `data/st-league/${year}/participants.json`);
 
     let targetPlayerNames: Set<string> | null = null;
 
     if (fs.existsSync(participantsPath)) {
       try {
-        const participantsData = JSON.parse(
-          fs.readFileSync(participantsPath, 'utf-8'),
-        );
+        const participantsData = JSON.parse(fs.readFileSync(participantsPath, 'utf-8'));
         const genderKey = gender === 'boys' ? 'boys' : 'girls';
         const teamList = participantsData[genderKey] as {
           teamId: string;
@@ -330,11 +286,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         const targetTeamEntry = teamList.find((t) => t.teamId === teamId);
 
         if (targetTeamEntry && targetTeamEntry.players) {
-          targetPlayerNames = new Set(
-            targetTeamEntry.players.map((p) =>
-              normalizeJa(`${p.lastName}${p.firstName}`),
-            ),
-          );
+          targetPlayerNames = new Set(targetTeamEntry.players.map((p) => normalizeJa(`${p.lastName}${p.firstName}`)));
         }
       } catch (e) {
         console.error('Failed to parse participants.json', e);
@@ -374,28 +326,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // Update info with filtered players
     info.players = filteredPlayers;
 
-    if (
-      !info.players ||
-      Object.keys(info.players).length === 0 ||
-      filteredResults.length === 0
-    ) {
+    if (!info.players || Object.keys(info.players).length === 0 || filteredResults.length === 0) {
       return { notFound: true };
     }
 
     // 選手結果ページ（/players/{id}/results）への内部リンク用に pid→数値id を解決する。
     // data/players/index.json と姓名一致、count>=5 のみ（高校ページと同じ規約）。
     const playerLinks: Record<string, number> = {};
-    const playersIndexPath = path.join(
-      process.cwd(),
-      'data',
-      'players',
-      'index.json',
-    );
+    const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
     if (fs.existsSync(playersIndexPath)) {
       try {
-        const playersIndex = JSON.parse(
-          fs.readFileSync(playersIndexPath, 'utf-8'),
-        ) as Array<{
+        const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
           id: number;
           lastName: string;
           firstName: string;

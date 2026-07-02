@@ -30,27 +30,12 @@ type Props = {
  * （既存の絞り込み意図を上書きしないため。ADR-006 / Q6）。
  * 本コンポは表示と前後リンク生成にのみ責務を持つ。
  */
-export default function YearPagerNav({
-  current,
-  prev,
-  next,
-  indexHref,
-  indexLabel = '年度一覧',
-  unitSuffix = '',
-  className,
-}: Props) {
+export default function YearPagerNav({ current, prev, next, indexHref, indexLabel = '年度一覧', unitSuffix = '', className }: Props) {
   return (
-    <nav
-      aria-label="年度ナビゲーション"
-      className={`flex items-center justify-between gap-2 text-sm ${className ?? ''}`}
-    >
+    <nav aria-label="年度ナビゲーション" className={`flex items-center justify-between gap-2 text-sm ${className ?? ''}`}>
       <div className="flex-1">
         {prev ? (
-          <Link
-            href={prev.href}
-            rel="prev"
-            className="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-300"
-          >
+          <Link href={prev.href} rel="prev" className="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-300">
             <span aria-hidden="true">←</span>
             {prev.year}
             {unitSuffix}
@@ -77,10 +62,7 @@ export default function YearPagerNav({
         {indexHref && (
           <>
             <span className="px-2 text-gray-300 dark:text-gray-600">|</span>
-            <Link
-              href={indexHref}
-              className="font-normal text-blue-600 hover:underline dark:text-blue-300"
-            >
+            <Link href={indexHref} className="font-normal text-blue-600 hover:underline dark:text-blue-300">
               {indexLabel}
             </Link>
           </>
@@ -89,11 +71,7 @@ export default function YearPagerNav({
 
       <div className="flex-1 text-right">
         {next ? (
-          <Link
-            href={next.href}
-            rel="next"
-            className="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-300"
-          >
+          <Link href={next.href} rel="next" className="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-300">
             {next.year}
             {unitSuffix}
             <span aria-hidden="true">→</span>

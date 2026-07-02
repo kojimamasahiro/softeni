@@ -1,10 +1,4 @@
-import type {
-  TournamentDetailData,
-  TournamentEntry,
-  TournamentMatch,
-  TournamentParticipant,
-  TournamentResult,
-} from '@/types';
+import type { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant, TournamentResult } from '@/types';
 
 type StringId = number;
 type NullableStringId = StringId | null;
@@ -50,13 +44,7 @@ type PackedPlayerResult = [
   playerId: MaybeId,
 ];
 
-type PackedSameNameGroup = [
-  fullName: StringId,
-  count: number,
-  playerId: MaybeId,
-  differentTeams: StringId[],
-  players: PackedPlayerResult[],
-];
+type PackedSameNameGroup = [fullName: StringId, count: number, playerId: MaybeId, differentTeams: StringId[], players: PackedPlayerResult[]];
 
 export type PackedSameNameGroups = {
   strings: string[];
@@ -71,11 +59,7 @@ type PackedParticipant = [
   playerId: number | null,
 ];
 
-type PackedEntry = [
-  entryNo: number,
-  playerIndexes: number[],
-  type: NullableStringId,
-];
+type PackedEntry = [entryNo: number, playerIndexes: number[], type: NullableStringId];
 
 type PackedMatch = [
   entries: number[],
@@ -130,17 +114,12 @@ function readString(strings: string[], index: NullableStringId): string {
   return strings[index] ?? '';
 }
 
-function readNullableString(
-  strings: string[],
-  index: NullableStringId,
-): string | null {
+function readNullableString(strings: string[], index: NullableStringId): string | null {
   if (index === null) return null;
   return strings[index] ?? null;
 }
 
-export function packSameNameGroups(
-  groups: PackableSameNameGroup[],
-): PackedSameNameGroups {
+export function packSameNameGroups(groups: PackableSameNameGroup[]): PackedSameNameGroups {
   const table = createStringTable();
 
   return {
@@ -168,83 +147,58 @@ export function packSameNameGroups(
   };
 }
 
-export function unpackSameNameGroups(
-  packed: PackedSameNameGroups,
-): PackableSameNameGroup[] {
+export function unpackSameNameGroups(packed: PackedSameNameGroups): PackableSameNameGroup[] {
   const strings = packed.strings;
 
-  return packed.groups.map(
-    ([fullNameId, count, playerId, teamIds, packedPlayers]) => {
-      const fullName = readString(strings, fullNameId);
+  return packed.groups.map(([fullNameId, count, playerId, teamIds, packedPlayers]) => {
+    const fullName = readString(strings, fullNameId);
 
-      return {
-        fullName,
-        count,
-        playerId,
-        differentTeams: teamIds.map((teamId) => readString(strings, teamId)),
-        players: packedPlayers.map(
-          ([
-            team,
-            prefecture,
-            result,
-            tournamentName,
-            tournamentId,
-            generation,
-            year,
-            gameCategory,
-            ageCategory,
-            gender,
-            categoryLabel,
-            playerResultId,
-          ]) => ({
-            firstName: '',
-            lastName: '',
-            fullName,
-            team: readString(strings, team),
-            prefecture: readNullableString(strings, prefecture),
-            result: readString(strings, result),
-            tournamentName: readString(strings, tournamentName),
-            tournamentId: readString(strings, tournamentId),
-            generation: readString(strings, generation),
-            year: String(year),
-            gameCategory: readString(strings, gameCategory),
-            ageCategory: readString(strings, ageCategory),
-            gender: readString(strings, gender),
-            categoryLabel: readString(strings, categoryLabel),
-            playerId: playerResultId,
-          }),
-        ),
-      };
-    },
-  );
+    return {
+      fullName,
+      count,
+      playerId,
+      differentTeams: teamIds.map((teamId) => readString(strings, teamId)),
+      players: packedPlayers.map(
+        ([team, prefecture, result, tournamentName, tournamentId, generation, year, gameCategory, ageCategory, gender, categoryLabel, playerResultId]) => ({
+          firstName: '',
+          lastName: '',
+          fullName,
+          team: readString(strings, team),
+          prefecture: readNullableString(strings, prefecture),
+          result: readString(strings, result),
+          tournamentName: readString(strings, tournamentName),
+          tournamentId: readString(strings, tournamentId),
+          generation: readString(strings, generation),
+          year: String(year),
+          gameCategory: readString(strings, gameCategory),
+          ageCategory: readString(strings, ageCategory),
+          gender: readString(strings, gender),
+          categoryLabel: readString(strings, categoryLabel),
+          playerId: playerResultId,
+        }),
+      ),
+    };
+  });
 }
 
-export function packTournamentDetailData(
-  detailData: TournamentDetailData,
-): PackedTournamentDetailData {
+export function packTournamentDetailData(detailData: TournamentDetailData): PackedTournamentDetailData {
   const table = createStringTable();
   const participantIndexById = new Map<string, number>();
 
-  const participants = (detailData.participants ?? []).map(
-    (participant, index): PackedParticipant => {
-      participantIndexById.set(participant.id, index);
+  const participants = (detailData.participants ?? []).map((participant, index): PackedParticipant => {
+    participantIndexById.set(participant.id, index);
 
-      return [
-        table.add(participant.lastName),
-        table.add(participant.firstName),
-        table.add(participant.team),
-        table.add(participant.prefecture),
-        participant.playerId ?? null,
-      ];
-    },
-  );
+    return [
+      table.add(participant.lastName),
+      table.add(participant.firstName),
+      table.add(participant.team),
+      table.add(participant.prefecture),
+      participant.playerId ?? null,
+    ];
+  });
 
   const entries = (detailData.entries ?? []).map(
-    (entry): PackedEntry => [
-      entry.entryNo,
-      (entry.playerIds ?? []).map((id) => participantIndexById.get(id) ?? -1),
-      table.add(entry.type),
-    ],
+    (entry): PackedEntry => [entry.entryNo, (entry.playerIds ?? []).map((id) => participantIndexById.get(id) ?? -1), table.add(entry.type)],
   );
 
   const matches = (detailData.matches ?? []).map((match): PackedMatch => {
@@ -297,79 +251,51 @@ export function packTournamentDetailData(
   };
 }
 
-export function unpackTournamentDetailData(
-  packed: PackedTournamentDetailData,
-): TournamentDetailData {
+export function unpackTournamentDetailData(packed: PackedTournamentDetailData): TournamentDetailData {
   const strings = packed.strings;
   const participantIds = packed.participants.map((_, index) => `p${index}`);
 
-  const participants: TournamentParticipant[] = packed.participants.map(
-    ([lastName, firstName, team, prefecture, playerId], index) => ({
-      id: participantIds[index],
-      lastName: readString(strings, lastName),
-      firstName: readString(strings, firstName),
-      team: readString(strings, team),
-      prefecture: readNullableString(strings, prefecture),
-      ...(playerId !== null ? { playerId } : {}),
-    }),
-  );
+  const participants: TournamentParticipant[] = packed.participants.map(([lastName, firstName, team, prefecture, playerId], index) => ({
+    id: participantIds[index],
+    lastName: readString(strings, lastName),
+    firstName: readString(strings, firstName),
+    team: readString(strings, team),
+    prefecture: readNullableString(strings, prefecture),
+    ...(playerId !== null ? { playerId } : {}),
+  }));
 
-  const entries: TournamentEntry[] = packed.entries.map(
-    ([entryNo, playerIndexes, type]) => ({
-      entryNo,
-      playerIds: playerIndexes
-        .map((index) => participantIds[index])
-        .filter((id): id is string => Boolean(id)),
-      ...(type !== null ? { type: readString(strings, type) } : {}),
-    }),
-  );
+  const entries: TournamentEntry[] = packed.entries.map(([entryNo, playerIndexes, type]) => ({
+    entryNo,
+    playerIds: playerIndexes.map((index) => participantIds[index]).filter((id): id is string => Boolean(id)),
+    ...(type !== null ? { type: readString(strings, type) } : {}),
+  }));
 
-  const matches: TournamentMatch[] = packed.matches.map(
-    ([
+  const matches: TournamentMatch[] = packed.matches.map(([entries, packedScores, round, winnerEntryNo, stage, group, matchId, nextMatchId]) => {
+    const scores: Record<string, number> = {};
+    entries.forEach((entryNo, index) => {
+      const score = packedScores[index];
+      if (typeof score === 'number') {
+        scores[String(entryNo)] = score;
+      }
+    });
+
+    return {
       entries,
-      packedScores,
-      round,
-      winnerEntryNo,
-      stage,
-      group,
-      matchId,
-      nextMatchId,
-    ]) => {
-      const scores: Record<string, number> = {};
-      entries.forEach((entryNo, index) => {
-        const score = packedScores[index];
-        if (typeof score === 'number') {
-          scores[String(entryNo)] = score;
-        }
-      });
-
-      return {
-        entries,
-        scores,
-        round: readNullableString(strings, round),
-        winnerEntryNo: winnerEntryNo ?? -1,
-        retired: false,
-        stage: readString(strings, stage),
-        group: readNullableString(strings, group),
-        matchId: readString(strings, matchId),
-        nextMatchId: readNullableString(strings, nextMatchId),
-        prevMatchIds: [],
-        prevMatchId: null,
-      };
-    },
-  );
+      scores,
+      round: readNullableString(strings, round),
+      winnerEntryNo: winnerEntryNo ?? -1,
+      retired: false,
+      stage: readString(strings, stage),
+      group: readNullableString(strings, group),
+      matchId: readString(strings, matchId),
+      nextMatchId: readNullableString(strings, nextMatchId),
+      prevMatchIds: [],
+      prevMatchId: null,
+    };
+  });
 
   const results: TournamentResult[] = packed.results.map(
-    ([
-      entryNo,
-      tournamentLabel,
-      rankKind,
-      rankValue,
-      rankBestLevel,
-      rankRound,
-      roundrobinGroup,
-      roundrobinRank,
-    ]) => {
+    ([entryNo, tournamentLabel, rankKind, rankValue, rankBestLevel, rankRound, roundrobinGroup, roundrobinRank]) => {
       const label = readNullableString(strings, tournamentLabel);
       const kind = readNullableString(strings, rankKind);
       const result: TournamentResult = { entryNo };

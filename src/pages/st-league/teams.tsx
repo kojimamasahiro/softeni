@@ -4,11 +4,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  aggregateStLeagueTeam,
-  Gender,
-  getAllStLeagueTeamIds,
-} from '@/utils/st-league';
+import { aggregateStLeagueTeam, Gender, getAllStLeagueTeamIds } from '@/utils/st-league';
 
 interface HubEntry {
   teamId: string;
@@ -74,33 +70,22 @@ export default function StLeagueTeamsList({ groups, totalTeams }: Props) {
           <h1 className="text-2xl font-bold">STリーグ 掲載チーム一覧</h1>
           <p className="mt-2 text-gray-600 dark:text-gray-300 leading-relaxed">
             当サイトが掲載している
-            <Link
-              href="/st-league"
-              className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-            >
+            <Link href="/st-league" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
               STリーグ
             </Link>
             （ソフトテニス実業団リーグ）の出場チーム{totalTeams}
-            チームを、男女・所属リーグ別に
-            まとめています。各チームの年度別成績・順位は、チーム名から確認できます。
+            チームを、男女・所属リーグ別に まとめています。各チームの年度別成績・順位は、チーム名から確認できます。
           </p>
-          <p className="mt-1 text-xs text-gray-400">
-            ※
-            STリーグにはⅢ部もありますが、本サイトでは対戦データを掲載しているチームを対象としています。
-          </p>
+          <p className="mt-1 text-xs text-gray-400">※ STリーグにはⅢ部もありますが、本サイトでは対戦データを掲載しているチームを対象としています。</p>
         </header>
 
         {groups.map(({ gender, divisions }) => (
           <section key={gender}>
-            <h2 className="text-xl font-bold mb-4 border-b-2 border-gray-200 dark:border-gray-700 pb-1">
-              {GENDER_LABEL[gender]}
-            </h2>
+            <h2 className="text-xl font-bold mb-4 border-b-2 border-gray-200 dark:border-gray-700 pb-1">{GENDER_LABEL[gender]}</h2>
             <div className="space-y-6">
               {divisions.map((d) => (
                 <div key={d.divisionId}>
-                  <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                    {d.divisionName}
-                  </h3>
+                  <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">{d.divisionName}</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {d.teams.map((t) => (
                       <Link
@@ -110,11 +95,7 @@ export default function StLeagueTeamsList({ groups, totalTeams }: Props) {
                       >
                         <span className="font-medium truncate">{t.name}</span>
                         {t.titlesTop > 0 && (
-                          <span
-                            className="ml-2 shrink-0 text-amber-500"
-                            title={`STリーグⅠ 優勝 ${t.titlesTop}回`}
-                            aria-label={`優勝${t.titlesTop}回`}
-                          >
+                          <span className="ml-2 shrink-0 text-amber-500" title={`STリーグⅠ 優勝 ${t.titlesTop}回`} aria-label={`優勝${t.titlesTop}回`}>
                             🏆
                           </span>
                         )}
@@ -128,16 +109,10 @@ export default function StLeagueTeamsList({ groups, totalTeams }: Props) {
         ))}
 
         <nav className="flex flex-wrap gap-4 pt-2 border-t border-gray-100 dark:border-gray-700">
-          <Link
-            href="/st-league"
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href="/st-league" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ◀ STリーグ トップ（結果・順位表）
           </Link>
-          <Link
-            href="/st-league/champions"
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <Link href="/st-league/champions" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ 歴代優勝チーム・記録
           </Link>
         </nav>

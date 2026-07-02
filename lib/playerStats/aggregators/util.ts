@@ -13,25 +13,15 @@ import type { Placement, PlayerMatchFact } from '../types';
 
 /** 種目トークンの日本語ラベル（lib/utils.getCategoryLabel と同義。依存を避け内包）。 */
 export function categoryWord(disc: string): string {
-  return disc === 'singles'
-    ? 'シングルス'
-    : disc === 'doubles'
-      ? 'ダブルス'
-      : '団体戦';
+  return disc === 'singles' ? 'シングルス' : disc === 'doubles' ? 'ダブルス' : '団体戦';
 }
 
 /** categoryId から「性別＋種目」ラベル（例: 男子ダブルス）。mixed は gender 由来。 */
 export function disciplineGenderLabel(categoryId: string): string {
   const parsed = parseCategoryId(categoryId);
   if (!parsed) return categoryId;
-  const genderLabel =
-    parsed.gender === 'boys'
-      ? '男子'
-      : parsed.gender === 'girls'
-        ? '女子'
-        : '混合';
-  const catLabel =
-    parsed.category === 'mixed' ? 'ダブルス' : categoryWord(parsed.disc);
+  const genderLabel = parsed.gender === 'boys' ? '男子' : parsed.gender === 'girls' ? '女子' : '混合';
+  const catLabel = parsed.category === 'mixed' ? 'ダブルス' : categoryWord(parsed.disc);
   return `${genderLabel}${catLabel}`;
 }
 
@@ -119,12 +109,9 @@ export function loadTeamAliasMap(root?: string): Map<string, string> {
   const cwd = root || process.cwd();
   const map = new Map<string, string>();
   try {
-    const data = JSON.parse(
-      fs.readFileSync(
-        path.join(cwd, 'data', 'tournaments', 'team-name-aliases.json'),
-        'utf-8',
-      ),
-    ) as { teamAliases?: Array<{ canonical: string; aliases: string[] }> };
+    const data = JSON.parse(fs.readFileSync(path.join(cwd, 'data', 'tournaments', 'team-name-aliases.json'), 'utf-8')) as {
+      teamAliases?: Array<{ canonical: string; aliases: string[] }>;
+    };
     for (const t of data.teamAliases ?? []) {
       for (const a of t.aliases ?? []) map.set(a, t.canonical);
     }
@@ -140,10 +127,7 @@ export function __resetTeamAliasCache(): void {
 }
 
 /** 学校名を正準名へ寄せる（表記揺れ吸収）。null はそのまま。 */
-export function canonicalizeTeam(
-  team: string | null,
-  root?: string,
-): string | null {
+export function canonicalizeTeam(team: string | null, root?: string): string | null {
   if (!team) return team;
   return loadTeamAliasMap(root).get(team) ?? team;
 }

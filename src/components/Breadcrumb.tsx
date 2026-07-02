@@ -32,10 +32,7 @@ export default function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
           }}
         />
       </Head>
-      <nav
-        aria-label="パンくずリスト"
-        className="text-sm mb-4 text-gray-600 dark:text-gray-300"
-      >
+      <nav aria-label="パンくずリスト" className="text-sm mb-4 text-gray-600 dark:text-gray-300">
         <ol className="list-none flex flex-wrap gap-2 items-center">
           {crumbs.map((crumb, idx) => {
             const isLast = idx === crumbs.length - 1;
@@ -45,10 +42,7 @@ export default function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
                 {isLast ? (
                   <span>{crumb.label}</span>
                 ) : (
-                  <Link
-                    href={crumb.href}
-                    className="hover:underline hover:text-blue-500 dark:hover:text-blue-400"
-                  >
+                  <Link href={crumb.href} className="hover:underline hover:text-blue-500 dark:hover:text-blue-400">
                     {crumb.label}
                   </Link>
                 )}

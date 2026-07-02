@@ -7,8 +7,7 @@ export default function AffiliateLink() {
 
   useEffect(() => {
     const userAgent = navigator.userAgent;
-    const mobileRegex =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     setIsMobile(mobileRegex.test(userAgent));
   }, []);
 

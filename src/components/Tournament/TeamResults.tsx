@@ -26,16 +26,9 @@ interface Props {
   highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
 }
 
-export default function TeamResults({
-  detailData,
-  highschoolGender = null,
-  highschoolTeamLinks = null,
-}: Props) {
+export default function TeamResults({ detailData, highschoolGender = null, highschoolTeamLinks = null }: Props) {
   const TOP_SET = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
-  const getHighschoolTeamLookupKey = (
-    team: string,
-    prefecture: string | null,
-  ) => `${team}::${prefecture ?? ''}`;
+  const getHighschoolTeamLookupKey = (team: string, prefecture: string | null) => `${team}::${prefecture ?? ''}`;
 
   type TeamBucket = {
     team: string;
@@ -71,9 +64,7 @@ export default function TeamResults({
         if (!isTop8ByLabel && !isTop8ByRank) continue;
 
         // エントリの playerIds を探す（entryNo に一致するエントリ）
-        const entry = (detail.entries ?? []).find(
-          (e) => e.entryNo === r.entryNo,
-        );
+        const entry = (detail.entries ?? []).find((e) => e.entryNo === r.entryNo);
         const playerIds = entry?.playerIds ?? [];
 
         if (!playerIds || playerIds.length === 0) continue;
@@ -83,9 +74,7 @@ export default function TeamResults({
 
         if (playerIds.length > 1) {
           // 複数人（ペアなど）の場合、participants を取得
-          const players = playerIds
-            .map((pid) => participantMap.get(pid))
-            .filter(Boolean) as (typeof detail.participants)[0][];
+          const players = playerIds.map((pid) => participantMap.get(pid)).filter(Boolean) as (typeof detail.participants)[0][];
           if (!players || players.length === 0) continue;
 
           const teamSet = new Set(players.map((p) => p.team ?? '\u4e0d\u660e'));
@@ -94,18 +83,13 @@ export default function TeamResults({
             // 同一チームのペア -> ペア表示として1つの Member を追加
             const teamLabel = Array.from(teamSet)[0];
             const prefectureId = players[0]?.prefecture ?? null;
-            const bucketKey = getHighschoolTeamLookupKey(
-              teamLabel,
-              prefectureId,
-            );
+            const bucketKey = getHighschoolTeamLookupKey(teamLabel, prefectureId);
 
             const displayParts: DisplayPart[] = players.flatMap((pl, idx) => {
               const last = pl.lastName ?? '';
               const first = pl.firstName ?? '';
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
-              return idx < players.length - 1
-                ? [{ text: name, id: pl.playerId }, { text: '・' }]
-                : [{ text: name, id: pl.playerId }];
+              return idx < players.length - 1 ? [{ text: name, id: pl.playerId }, { text: '・' }] : [{ text: name, id: pl.playerId }];
             });
 
             const member: Member = {
@@ -129,17 +113,12 @@ export default function TeamResults({
 
               const teamLabel = pl.team ?? '\u4e0d\u660e';
               const prefectureId = pl.prefecture ?? null;
-              const bucketKey = getHighschoolTeamLookupKey(
-                teamLabel,
-                prefectureId,
-              );
+              const bucketKey = getHighschoolTeamLookupKey(teamLabel, prefectureId);
               const last = pl.lastName ?? '';
               const first = pl.firstName ?? '';
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
 
-              const displayParts: DisplayPart[] = [
-                { text: name, id: pl.playerId },
-              ];
+              const displayParts: DisplayPart[] = [{ text: name, id: pl.playerId }];
 
               const member: Member = {
                 result: label || 'ベスト8',
@@ -193,10 +172,7 @@ export default function TeamResults({
     // 各チームのメンバーを成績順でソートし、チーム自体も最良成績でソート
     const arr = Object.values(buckets).map((b) => {
       const members = b.members.slice().sort((a, b2) => {
-        return (
-          a.resultOrder - b2.resultOrder ||
-          a.displayParts[0].text.localeCompare(b2.displayParts[0].text)
-        );
+        return a.resultOrder - b2.resultOrder || a.displayParts[0].text.localeCompare(b2.displayParts[0].text);
       });
       return { ...b, members };
     });
@@ -212,22 +188,13 @@ export default function TeamResults({
   })();
 
   if (detailData.length === 0) {
-    return (
-      <p className="text-center text-gray-600 dark:text-gray-300 mt-6 mb-6">
-        大会結果はまだすべて揃っていません。判明次第、順次掲載していきます。
-      </p>
-    );
+    return <p className="text-center text-gray-600 dark:text-gray-300 mt-6 mb-6">大会結果はまだすべて揃っていません。判明次第、順次掲載していきます。</p>;
   }
 
   return (
     <section className="mb-10">
       {sortedTeams.map(({ team, prefecture, members }) => {
-        const highschoolTeamLink =
-          highschoolGender && highschoolTeamLinks
-            ? highschoolTeamLinks[
-                getHighschoolTeamLookupKey(team, prefecture ?? null)
-              ]
-            : null;
+        const highschoolTeamLink = highschoolGender && highschoolTeamLinks ? highschoolTeamLinks[getHighschoolTeamLookupKey(team, prefecture ?? null)] : null;
         const grouped = members.reduce(
           (acc, m) => {
             if (!acc[m.result]) acc[m.result] = [];
@@ -246,10 +213,7 @@ export default function TeamResults({
           .sort((a, b) => a.resultOrder - b.resultOrder);
 
         return (
-          <div
-            key={team}
-            className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
-          >
+          <div key={team} className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
             <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
               {highschoolGender && highschoolTeamLink ? (
                 <Link
@@ -259,17 +223,13 @@ export default function TeamResults({
                   {team}
                 </Link>
               ) : (
-                <span className="text-base font-semibold text-gray-800 dark:text-gray-200">
-                  {team}
-                </span>
+                <span className="text-base font-semibold text-gray-800 dark:text-gray-200">{team}</span>
               )}
             </div>
             <ul className="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
               {resultEntries.map(({ result, members }, i) => (
                 <li key={i} className="flex px-4 py-2 gap-4">
-                  <div className="w-20 text-right text-gray-600 dark:text-gray-300">
-                    {result}
-                  </div>
+                  <div className="w-20 text-right text-gray-600 dark:text-gray-300">{result}</div>
                   <div className="text-gray-900 dark:text-gray-100 flex flex-wrap gap-x-1">
                     {members.map((m, j) => (
                       <span key={j}>

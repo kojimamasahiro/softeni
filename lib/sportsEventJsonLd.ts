@@ -26,10 +26,7 @@ export const sportsEventBaseFields = {
 } as const;
 
 /** endDate を startDate で補完する（両方無ければ undefined）。 */
-export function resolveEventDates(
-  startDate?: string | null,
-  endDate?: string | null,
-): { startDate?: string; endDate?: string } {
+export function resolveEventDates(startDate?: string | null, endDate?: string | null): { startDate?: string; endDate?: string } {
   const start = startDate ?? undefined;
   const end = endDate ?? startDate ?? undefined;
   return {
@@ -44,10 +41,7 @@ export function resolveEventDates(
  * 詳細住所は持たないため addressCountry: 'JP' を最低限付与し、
  * addressRegion（都道府県など）が分かる場合のみ追加する。
  */
-export function buildEventPlace(
-  venueName?: string | null,
-  addressRegion?: string | null,
-) {
+export function buildEventPlace(venueName?: string | null, addressRegion?: string | null) {
   return {
     '@type': 'Place',
     ...(venueName ? { name: venueName } : {}),
@@ -60,10 +54,7 @@ export function buildEventPlace(
 }
 
 /** url 付きの Organization を作る（既定は Softeni Pick）。 */
-export function buildEventOrganizer(
-  name: string = siteConfig.siteName,
-  url: string = siteConfig.baseUrl,
-) {
+export function buildEventOrganizer(name: string = siteConfig.siteName, url: string = siteConfig.baseUrl) {
   return {
     '@type': 'Organization',
     name,

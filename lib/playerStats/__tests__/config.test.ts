@@ -2,7 +2,6 @@
 import { loadRankingConfig, resolveTier, DEFAULT_CONFIG } from '../config';
 import { assert, summary, test } from './harness';
 
-// eslint-disable-next-line no-console
 console.log('config.test.ts');
 
 test('loads ranking-config.json with expected values', () => {
@@ -15,25 +14,13 @@ test('loads ranking-config.json with expected values', () => {
 
 test('defaults are internally consistent', () => {
   assert.strictEqual(DEFAULT_CONFIG.ranking.placementCoefficient.winner, 1.0);
-  assert.deepStrictEqual(DEFAULT_CONFIG.ranking.disciplines, [
-    'singles',
-    'doubles',
-  ]);
+  assert.deepStrictEqual(DEFAULT_CONFIG.ranking.disciplines, ['singles', 'doubles']);
 });
 
 test('resolveTier classifies major/national/local', () => {
-  assert.strictEqual(
-    resolveTier({ isMajorTitle: true, isNational: true }),
-    'major',
-  );
-  assert.strictEqual(
-    resolveTier({ isMajorTitle: false, isNational: true }),
-    'national',
-  );
-  assert.strictEqual(
-    resolveTier({ isMajorTitle: false, isNational: false }),
-    'local',
-  );
+  assert.strictEqual(resolveTier({ isMajorTitle: true, isNational: true }), 'major');
+  assert.strictEqual(resolveTier({ isMajorTitle: false, isNational: true }), 'national');
+  assert.strictEqual(resolveTier({ isMajorTitle: false, isNational: false }), 'local');
 });
 
 summary();

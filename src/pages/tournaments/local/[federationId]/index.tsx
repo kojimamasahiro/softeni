@@ -6,12 +6,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  CategoryLink,
-  TournamentBlock,
-  TournamentCard,
-  YearGroup,
-} from '@/components/tournaments/TournamentCard';
+import { CategoryLink, TournamentBlock, TournamentCard, YearGroup } from '@/components/tournaments/TournamentCard';
 
 type Prefecture = {
   id: string;
@@ -57,11 +52,7 @@ type Props = {
   tournaments: TournamentBlock[];
 };
 
-export default function LocalFederationPage({
-  prefecture,
-  federation,
-  tournaments,
-}: Props) {
+export default function LocalFederationPage({ prefecture, federation, tournaments }: Props) {
   const pageUrl = `https://softeni-pick.com/tournaments/local/${prefecture.id}/`;
 
   return (
@@ -93,12 +84,7 @@ export default function LocalFederationPage({
               className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center"
             >
               連盟公式サイト
-              <svg
-                className="w-4 h-4 ml-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -110,19 +96,13 @@ export default function LocalFederationPage({
           )}
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-8">
-          {prefecture.name}で開催された大会・予選の結果を掲載しています。
-        </p>
+        <p className="text-gray-600 dark:text-gray-300 mb-8">{prefecture.name}で開催された大会・予選の結果を掲載しています。</p>
 
         <div className="space-y-8">
           {tournaments.length === 0 ? (
-            <p className="text-gray-500">
-              現在登録されている大会はありません。
-            </p>
+            <p className="text-gray-500">現在登録されている大会はありません。</p>
           ) : (
-            tournaments.map((t) => (
-              <TournamentCard key={`${t.generation}-${t.id}`} tournament={t} />
-            ))
+            tournaments.map((t) => <TournamentCard key={`${t.generation}-${t.id}`} tournament={t} />)
           )}
         </div>
       </PageLayout>
@@ -159,9 +139,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const informationDir = path.join(tournamentRoot, 'information');
   const detailsDir = path.join(tournamentRoot, 'details');
 
-  const prefectures: Prefecture[] = JSON.parse(
-    fs.readFileSync(prefFile, 'utf-8'),
-  );
+  const prefectures: Prefecture[] = JSON.parse(fs.readFileSync(prefFile, 'utf-8'));
   const prefecture = prefectures.find((p) => p.id === federationId);
 
   if (!prefecture) return { notFound: true };
@@ -170,8 +148,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   if (fs.existsSync(fedFile)) {
     federations = JSON.parse(fs.readFileSync(fedFile, 'utf-8'));
   }
-  const federation =
-    federations.find((f) => f.federationId === federationId) || null;
+  const federation = federations.find((f) => f.federationId === federationId) || null;
 
   let localTournaments: LocalTournamentIndex[] = [];
   if (fs.existsSync(localIndexFile)) {
@@ -179,9 +156,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   }
 
   // Filter for this federation
-  const targetTournaments = localTournaments.filter(
-    (t) => t.federationId === federationId,
-  );
+  const targetTournaments = localTournaments.filter((t) => t.federationId === federationId);
 
   const tournaments: TournamentBlock[] = [];
 
@@ -196,12 +171,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       const links: CategoryLink[] = [];
       for (const cat of info.categories) {
         const categoryId = cat.categoryId;
-        const detailPath = path.join(
-          detailsDir,
-          t.tournamentId,
-          String(year),
-          `${categoryId}.json`,
-        );
+        const detailPath = path.join(detailsDir, t.tournamentId, String(year), `${categoryId}.json`);
         if (fs.existsSync(detailPath)) {
           links.push({
             year,

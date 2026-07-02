@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type {
-  Game,
-  Match,
-  MatchPointCandidate,
-  MatchVideoSession,
-  Point,
-} from '@/types/database';
+import type { Game, Match, MatchPointCandidate, MatchVideoSession, Point } from '@/types/database';
 
 export const VIDEO_REVIEW_RESULT_TYPES = [
   { value: '', label: '未設定' },
@@ -45,9 +39,7 @@ export const parseYouTubeVideoId = (input: string) => {
       if (fromQuery) return fromQuery.slice(0, 11);
 
       const parts = url.pathname.split('/').filter(Boolean);
-      const embedIndex = parts.findIndex((part) =>
-        ['embed', 'shorts', 'live'].includes(part),
-      );
+      const embedIndex = parts.findIndex((part) => ['embed', 'shorts', 'live'].includes(part));
       if (embedIndex >= 0 && parts[embedIndex + 1]) {
         return parts[embedIndex + 1].slice(0, 11);
       }
@@ -84,10 +76,7 @@ export const buildYouTubeEmbedUrl = (input: string, startSeconds = 0) => {
   url.searchParams.set('rel', '0');
   url.searchParams.set('playsinline', '1');
   if (startSeconds > 0) {
-    url.searchParams.set(
-      'start',
-      String(Math.max(0, Math.floor(startSeconds))),
-    );
+    url.searchParams.set('start', String(Math.max(0, Math.floor(startSeconds))));
     url.searchParams.set('autoplay', '1');
   }
 
@@ -98,10 +87,7 @@ export const formatDurationLabel = (durationMs: number) => {
   const totalSeconds = Math.max(0, Math.floor(durationMs / 1000));
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
-    2,
-    '0',
-  )}`;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 };
 
 export const getConfidenceLabel = (confidence: number | null) => {
@@ -134,11 +120,7 @@ export const buildHeuristicCandidates = ({
   const totalDurationMs = Math.max(durationMs, minWindowMs);
   const boundaries: number[] = [];
 
-  for (
-    let boundaryMs = safeOffsetMs;
-    boundaryMs < totalDurationMs;
-    boundaryMs += safeIntervalMs
-  ) {
+  for (let boundaryMs = safeOffsetMs; boundaryMs < totalDurationMs; boundaryMs += safeIntervalMs) {
     boundaries.push(boundaryMs);
   }
 
@@ -150,22 +132,11 @@ export const buildHeuristicCandidates = ({
     const startMs = Math.max(0, boundaryMs - safeLeadMs);
     const endMs = Math.min(totalDurationMs, boundaryMs + safeTailMs);
     const actualWindowMs = Math.max(endMs - startMs, minWindowMs);
-    const centerPenalty =
-      Math.abs(actualWindowMs - (safeLeadMs + safeTailMs)) /
-      Math.max(safeLeadMs + safeTailMs, 1) /
-      2;
-    const edgePenalty =
-      index === 0 || index === boundaries.length - 1 ? 0.09 : 0;
-    const cadencePenalty =
-      safeIntervalMs > 18_000 ? (safeIntervalMs - 18_000) / 35_000 : 0;
+    const centerPenalty = Math.abs(actualWindowMs - (safeLeadMs + safeTailMs)) / Math.max(safeLeadMs + safeTailMs, 1) / 2;
+    const edgePenalty = index === 0 || index === boundaries.length - 1 ? 0.09 : 0;
+    const cadencePenalty = safeIntervalMs > 18_000 ? (safeIntervalMs - 18_000) / 35_000 : 0;
     const offsetPenalty = safeOffsetMs > 10_000 ? 0.05 : 0;
-    const confidence = Math.max(
-      0.45,
-      Math.min(
-        0.95,
-        0.9 - centerPenalty - edgePenalty - cadencePenalty - offsetPenalty,
-      ),
-    );
+    const confidence = Math.max(0.45, Math.min(0.95, 0.9 - centerPenalty - edgePenalty - cadencePenalty - offsetPenalty));
 
     return {
       session_id: sessionId,
@@ -197,58 +168,30 @@ export const getGamesWon = (match: Match) => {
   };
 };
 
-export const isMatchFinishedByGames = (
-  bestOf: number,
-  gamesWonA: number,
-  gamesWonB: number,
-) => {
+export const isMatchFinishedByGames = (bestOf: number, gamesWonA: number, gamesWonB: number) => {
   const requiredWins = Math.ceil(bestOf / 2);
   return gamesWonA >= requiredWins || gamesWonB >= requiredWins;
 };
 
-export const loadVideoSessionsForMatch = async (
-  supabase: any,
-  matchId: string,
-): Promise<MatchVideoSession[]> => {
-  const { data, error } = await supabase
-    .from('match_video_sessions')
-    .select('*')
-    .eq('match_id', matchId)
-    .order('created_at', { ascending: false });
+export const loadVideoSessionsForMatch = async (supabase: any, matchId: string): Promise<MatchVideoSession[]> => {
+  const { data, error } = await supabase.from('match_video_sessions').select('*').eq('match_id', matchId).order('created_at', { ascending: false });
 
   if (error) throw error;
   return (data ?? []) as MatchVideoSession[];
 };
 
-export const loadVideoSessionById = async (
-  supabase: any,
-  matchId: string,
-  sessionId: string,
-): Promise<MatchVideoSession | null> => {
-  const { data, error } = await supabase
-    .from('match_video_sessions')
-    .select('*')
-    .eq('id', sessionId)
-    .eq('match_id', matchId)
-    .maybeSingle();
+export const loadVideoSessionById = async (supabase: any, matchId: string, sessionId: string): Promise<MatchVideoSession | null> => {
+  const { data, error } = await supabase.from('match_video_sessions').select('*').eq('id', sessionId).eq('match_id', matchId).maybeSingle();
 
   if (error) throw error;
   return (data as MatchVideoSession | null) ?? null;
 };
 
-export const loadVideoSessionWithCandidates = async (
-  supabase: any,
-  matchId: string,
-  sessionId: string,
-): Promise<MatchVideoSession | null> => {
+export const loadVideoSessionWithCandidates = async (supabase: any, matchId: string, sessionId: string): Promise<MatchVideoSession | null> => {
   const session = await loadVideoSessionById(supabase, matchId, sessionId);
   if (!session) return null;
 
-  const { data, error } = await supabase
-    .from('match_point_candidates')
-    .select('*')
-    .eq('session_id', sessionId)
-    .order('candidate_order', { ascending: true });
+  const { data, error } = await supabase.from('match_point_candidates').select('*').eq('session_id', sessionId).order('candidate_order', { ascending: true });
 
   if (error) throw error;
 
@@ -270,19 +213,11 @@ export const commitVideoCandidatesToMatch = async ({
   match: Match;
   session: MatchVideoSession;
   candidates: MatchPointCandidate[];
-  recomputeGameScore: (
-    supabaseClient: any,
-    gameId: string,
-  ) => Promise<{ updatedGame: Game; points: Point[] }>;
-  loadMatchWithRelations: (
-    supabaseClient: any,
-    matchId: string,
-  ) => Promise<Match | null>;
+  recomputeGameScore: (supabaseClient: any, gameId: string) => Promise<{ updatedGame: Game; points: Point[] }>;
+  loadMatchWithRelations: (supabaseClient: any, matchId: string) => Promise<Match | null>;
 }) => {
   const commitCandidates = candidates.filter(
-    (candidate) =>
-      candidate.status !== 'excluded' &&
-      (candidate.winner_team === 'A' || candidate.winner_team === 'B'),
+    (candidate) => candidate.status !== 'excluded' && (candidate.winner_team === 'A' || candidate.winner_team === 'B'),
   );
 
   if (commitCandidates.length === 0) {
@@ -301,14 +236,10 @@ export const commitVideoCandidatesToMatch = async ({
   let pointsCommitted = 0;
 
   for (const candidate of commitCandidates) {
-    let activeGame =
-      workingMatch.games?.find((game) => !game.winner_team) ?? null;
+    let activeGame = workingMatch.games?.find((game) => !game.winner_team) ?? null;
     const { gamesWonA, gamesWonB } = getGamesWon(workingMatch);
 
-    if (
-      !activeGame &&
-      !isMatchFinishedByGames(workingMatch.best_of, gamesWonA, gamesWonB)
-    ) {
+    if (!activeGame && !isMatchFinishedByGames(workingMatch.best_of, gamesWonA, gamesWonB)) {
       const { data: createdGame, error: createGameError } = await supabase
         .from('games')
         .insert({
@@ -371,8 +302,7 @@ export const commitVideoCandidatesToMatch = async ({
         serving_player: toPointPlayerName(candidate.serving_player),
         rally_count: candidate.rally_count,
         first_serve_fault: candidate.first_serve_fault ?? false,
-        double_fault:
-          candidate.double_fault ?? candidate.result_type === 'double_fault',
+        double_fault: candidate.double_fault ?? candidate.result_type === 'double_fault',
         result_type: candidate.result_type,
         winner_player: toPointPlayerName(candidate.winner_player),
         loser_player: toPointPlayerName(candidate.loser_player),
@@ -386,21 +316,14 @@ export const commitVideoCandidatesToMatch = async ({
     await recomputeGameScore(supabase, activeGame.id);
     pointsCommitted += 1;
 
-    const reloadedMatch = await loadMatchWithRelations(
-      supabase,
-      workingMatch.id,
-    );
+    const reloadedMatch = await loadMatchWithRelations(supabase, workingMatch.id);
     if (reloadedMatch) {
       workingMatch = reloadedMatch;
     }
   }
 
   const { gamesWonA, gamesWonB } = getGamesWon(workingMatch);
-  const finished = isMatchFinishedByGames(
-    workingMatch.best_of,
-    gamesWonA,
-    gamesWonB,
-  );
+  const finished = isMatchFinishedByGames(workingMatch.best_of, gamesWonA, gamesWonB);
 
   if (finished) {
     await supabase

@@ -45,9 +45,7 @@ const liteCache = new Map<string, PlayerLite>();
 
 export default function PlayerLiteLink({ id, name, className }: Props) {
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState<PlayerLite | null>(
-    liteCache.get(id) ?? null,
-  );
+  const [data, setData] = useState<PlayerLite | null>(liteCache.get(id) ?? null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -91,10 +89,7 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
       <button
         type="button"
         onClick={handleOpen}
-        className={
-          className ??
-          'text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid'
-        }
+        className={className ?? 'text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid'}
         aria-haspopup="dialog"
       >
         {name}
@@ -108,18 +103,11 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
           aria-label={`${name} の出場大会`}
           onClick={() => setOpen(false)}
         >
-          <div
-            className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-5 shadow-xl dark:bg-gray-800"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-5 shadow-xl dark:bg-gray-800" onClick={(e) => e.stopPropagation()}>
             <div className="mb-3 flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100">
-                  {data?.name ?? name}
-                </h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  出場した大会と当時のペア
-                </p>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100">{data?.name ?? name}</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">出場した大会と当時のペア</p>
               </div>
               <button
                 type="button"
@@ -131,20 +119,10 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
               </button>
             </div>
 
-            {loading && (
-              <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                読み込み中…
-              </p>
-            )}
-            {error && (
-              <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                情報を取得できませんでした。
-              </p>
-            )}
+            {loading && <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">読み込み中…</p>}
+            {error && <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">情報を取得できませんでした。</p>}
             {!loading && !error && data && data.tournaments.length === 0 && (
-              <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                収録された出場大会がありません。
-              </p>
+              <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">収録された出場大会がありません。</p>
             )}
 
             {!loading && !error && data && data.tournaments.length > 0 && (
@@ -155,11 +133,7 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
                       {t.year ? `${t.year}年 ` : ''}
                       {t.tournamentName}
                     </div>
-                    {t.gameCategory && (
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        {GAME_CATEGORY_LABEL[t.gameCategory] ?? t.gameCategory}
-                      </div>
-                    )}
+                    {t.gameCategory && <div className="text-xs text-gray-500 dark:text-gray-400">{GAME_CATEGORY_LABEL[t.gameCategory] ?? t.gameCategory}</div>}
                     {t.partner && (
                       <div className="text-gray-600 dark:text-gray-300">
                         ペア{' '}
@@ -177,11 +151,7 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
                         )}
                       </div>
                     )}
-                    {t.team && (
-                      <div className="text-gray-600 dark:text-gray-300">
-                        所属 {t.team}
-                      </div>
-                    )}
+                    {t.team && <div className="text-gray-600 dark:text-gray-300">所属 {t.team}</div>}
                   </li>
                 ))}
               </ul>

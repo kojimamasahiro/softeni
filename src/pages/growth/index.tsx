@@ -2,12 +2,7 @@ import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 
 import MetaHead from '@/components/MetaHead';
-import {
-  gatherShowcaseRecords,
-  loadFeaturedEntries,
-  loadGrowthTargets,
-  showcaseDisplayName,
-} from '@/lib/growthShowcase';
+import { gatherShowcaseRecords, loadFeaturedEntries, loadGrowthTargets, showcaseDisplayName } from '@/lib/growthShowcase';
 import { buildSiteUrl, isScoreSiteMode } from '@/lib/siteConfig';
 
 type HubItem = {
@@ -46,17 +41,9 @@ export default function GrowthHubPage({ items }: HubProps) {
                     href={`/growth/${item.slug}`}
                     className="block rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-colors hover:border-blue-400 dark:border-gray-700 dark:bg-gray-800"
                   >
-                    <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                      {item.title}
-                    </p>
-                    {item.summary && (
-                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                        {item.summary}
-                      </p>
-                    )}
-                    <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                      収録 {item.totalMatches} 試合
-                    </p>
+                    <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">{item.title}</p>
+                    {item.summary && <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{item.summary}</p>}
+                    <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">収録 {item.totalMatches} 試合</p>
                   </Link>
                 </li>
               ))}
@@ -69,12 +56,8 @@ export default function GrowthHubPage({ items }: HubProps) {
 
           {/* score 導線プレースホルダ。score の方針が固まるまで配線しない（ADR-004）。 */}
           <section className="mt-10 rounded-lg border border-dashed border-gray-300 bg-white p-5 text-center dark:border-gray-600 dark:bg-gray-800">
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
-              自分の試合でもこうした成長記録をつけられます
-            </p>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-              （score 連携は準備中です）
-            </p>
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-200">自分の試合でもこうした成長記録をつけられます</p>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">（score 連携は準備中です）</p>
           </section>
         </div>
       </div>
@@ -98,10 +81,7 @@ export const getStaticProps: GetStaticProps<HubProps> = async () => {
       slug: entry.slug,
       title: entry.title ?? `${showcaseDisplayName(entry, targets)} の成長記録`,
       summary: records.map((record) => record.label).join('・'),
-      totalMatches: records.reduce(
-        (sum, record) => sum + record.report.completedMatchCount,
-        0,
-      ),
+      totalMatches: records.reduce((sum, record) => sum + record.report.completedMatchCount, 0),
     });
   }
 

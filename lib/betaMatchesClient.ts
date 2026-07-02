@@ -57,11 +57,8 @@ export const fetchBetaMatchById = async (matchId: string) => {
     }
   }
 
-  const staticResponse = await fetch(
-    `${betaMatchesStaticRoot}/matches/${matchId}.json`,
-  );
-  const staticData =
-    await readJsonResponse<MatchDetailResponse>(staticResponse);
+  const staticResponse = await fetch(`${betaMatchesStaticRoot}/matches/${matchId}.json`);
+  const staticData = await readJsonResponse<MatchDetailResponse>(staticResponse);
 
   return staticData?.match ?? null;
 };

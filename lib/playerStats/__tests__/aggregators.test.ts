@@ -9,15 +9,9 @@ import { aggregateReachRates } from '../aggregators/reachRates';
 import { aggregateRecords } from '../aggregators/records';
 import { aggregateTitles } from '../aggregators/titles';
 import { DEFAULT_CONFIG } from '../config';
-import type {
-  PersonRef,
-  PlayerEntryFact,
-  PlayerFacts,
-  PlayerMatchFact,
-} from '../types';
+import type { PersonRef, PlayerEntryFact, PlayerFacts, PlayerMatchFact } from '../types';
 import { assert, summary, test } from './harness';
 
-// eslint-disable-next-line no-console
 console.log('aggregators.test.ts');
 
 function ref(id: number | null, name: string, team: string | null = null): PersonRef {
@@ -102,9 +96,7 @@ test('career: retired と draw を勝率・ゲーム率から除外', () => {
 });
 
 test('records.bestSeason: 少標本（<10試合）の年度は除外', () => {
-  const many2024 = Array.from({ length: 10 }, (_, i) =>
-    match({ year: 2024, result: i < 6 ? 'win' : 'lose' }),
-  );
+  const many2024 = Array.from({ length: 10 }, (_, i) => match({ year: 2024, result: i < 6 ? 'win' : 'lose' }));
   const few2025 = [match({ year: 2025, result: 'win' })]; // 1勝0敗 100% だが少標本
   const r = aggregateRecords(facts([...many2024, ...few2025]), DEFAULT_CONFIG);
   assert.ok(r.bestSeason);
@@ -160,10 +152,7 @@ test('headToHead: 対個人（doubles は相手2名それぞれに計上）', ()
 });
 
 test('byPartner: partnerKey で集約（数値id付き参照を優先保持）', () => {
-  const f = facts([
-    match({ category: 'doubles', partner: ref(null, 'P', 'A校') }),
-    match({ category: 'doubles', partner: ref(9, 'P', 'A校') }),
-  ]);
+  const f = facts([match({ category: 'doubles', partner: ref(null, 'P', 'A校') }), match({ category: 'doubles', partner: ref(9, 'P', 'A校') })]);
   const bp = aggregateByPartner(f);
   assert.strictEqual(bp.length, 1);
   assert.strictEqual(bp[0].matches.total, 2);

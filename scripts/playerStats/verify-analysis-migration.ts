@@ -36,20 +36,17 @@ function main(): void {
       match += 1;
     } else {
       diff += 1;
-      // eslint-disable-next-line no-console
       console.log(`  ✗ ${fx.slug}: DIFF`);
       // 最初の差異キーを示す
       for (const k of Object.keys(golden)) {
-        const a = JSON.stringify((golden as any)[k]);
-        const b = JSON.stringify((built as any)[k]);
+        const a = JSON.stringify((golden as Record<string, unknown>)[k]);
+        const b = JSON.stringify((built as unknown as Record<string, unknown>)[k]);
         if (a !== b) {
-          // eslint-disable-next-line no-console
           console.log(`      key=${k}\n        golden=${a.slice(0, 200)}\n        built =${b.slice(0, 200)}`);
         }
       }
     }
   }
-  // eslint-disable-next-line no-console
   console.log(`\n  byte-match=${match} diff=${diff}`);
   if (diff > 0) process.exitCode = 1;
 }

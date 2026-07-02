@@ -10,18 +10,8 @@ interface ServeSelectionProps {
   preselectedTeam?: 'A' | 'B'; // 第2ゲーム以降で自動決定されたサーブチーム
 }
 
-const ServeSelection: React.FC<ServeSelectionProps> = ({
-  teamA,
-  teamB,
-  teamAPlayers,
-  teamBPlayers,
-  onServeTeamSelected,
-  gameNumber,
-  preselectedTeam,
-}) => {
-  const [selectedTeam, setSelectedTeam] = useState<'A' | 'B' | null>(
-    preselectedTeam ?? null,
-  );
+const ServeSelection: React.FC<ServeSelectionProps> = ({ teamA, teamB, teamAPlayers, teamBPlayers, onServeTeamSelected, gameNumber, preselectedTeam }) => {
+  const [selectedTeam, setSelectedTeam] = useState<'A' | 'B' | null>(preselectedTeam ?? null);
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState<number>(0);
 
   // preselectedTeamが変更されたときにselectedTeamを更新
@@ -78,14 +68,8 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
       return (
         <div className="text-sm text-gray-600 mt-2">
           <p>• ゲームごとにサーブ権が交代します</p>
-          <p>
-            • 通常ゲーム:
-            同じチームがゲーム全体をサーブ、選手は2ポイントごとに交代
-          </p>
-          <p>
-            • ファイナルゲーム:
-            7点先取・2点差、2ポイントごとにチーム・選手が交代
-          </p>
+          <p>• 通常ゲーム: 同じチームがゲーム全体をサーブ、選手は2ポイントごとに交代</p>
+          <p>• ファイナルゲーム: 7点先取・2点差、2ポイントごとにチーム・選手が交代</p>
         </div>
       );
     }
@@ -95,44 +79,32 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
   return (
     <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
       <div className="text-center">
-        <h3 className="text-lg font-semibold mb-4 text-yellow-800">
-          🏓 サーブ権の決定
-        </h3>
+        <h3 className="text-lg font-semibold mb-4 text-yellow-800">🏓 サーブ権の決定</h3>
         <p className="text-yellow-700 mb-4">{getGameText()}</p>
 
         <>
           {/* 第1ゲーム: チーム選択 */}
           {gameNumber === 1 && (
             <div className="mb-6">
-              <h4 className="text-md font-medium mb-3 text-yellow-700">
-                ステップ1: サーブを行うチームを選択
-              </h4>
+              <h4 className="text-md font-medium mb-3 text-yellow-700">ステップ1: サーブを行うチームを選択</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button
                   onClick={() => handleTeamSelect('A')}
                   className={`p-4 border-2 rounded-lg font-medium transition-all ${
-                    selectedTeam === 'A'
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
-                      : 'border-gray-300 hover:border-blue-300'
+                    selectedTeam === 'A' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:border-blue-300'
                   }`}
                 >
                   <div className="text-lg font-bold">チーム A</div>
-                  <div className="text-sm mt-1 text-gray-600 break-all">
-                    {teamA}
-                  </div>
+                  <div className="text-sm mt-1 text-gray-600 break-all">{teamA}</div>
                 </button>
                 <button
                   onClick={() => handleTeamSelect('B')}
                   className={`p-4 border-2 rounded-lg font-medium transition-all ${
-                    selectedTeam === 'B'
-                      ? 'border-red-500 bg-red-50 text-red-700'
-                      : 'border-gray-300 hover:border-red-300'
+                    selectedTeam === 'B' ? 'border-red-500 bg-red-50 text-red-700' : 'border-gray-300 hover:border-red-300'
                   }`}
                 >
                   <div className="text-lg font-bold">チーム B</div>
-                  <div className="text-sm mt-1 text-gray-600 break-all">
-                    {teamB}
-                  </div>
+                  <div className="text-sm mt-1 text-gray-600 break-all">{teamB}</div>
                 </button>
               </div>
             </div>
@@ -141,9 +113,7 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
           {/* 選手選択 */}
           <div className="mb-6">
             <h4 className="text-md font-medium mb-3 text-yellow-700">
-              {gameNumber === 1
-                ? 'ステップ2: 最初にサーブを行う選手を選択'
-                : 'サーブを行う選手を選択（デフォルト: 1番目の選手）'}
+              {gameNumber === 1 ? 'ステップ2: 最初にサーブを行う選手を選択' : 'サーブを行う選手を選択（デフォルト: 1番目の選手）'}
             </h4>
 
             {gameNumber === 1 && selectedTeam && isDoubles() ? (
@@ -170,18 +140,14 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
               <div className="space-y-4">
                 <div className="text-center mb-4">
                   <p className="text-sm text-gray-600">
-                    {preselectedTeam
-                      ? `サーブチーム: ${preselectedTeam === 'A' ? teamA : teamB}`
-                      : 'サーブチームは自動決定されます。'}
+                    {preselectedTeam ? `サーブチーム: ${preselectedTeam === 'A' ? teamA : teamB}` : 'サーブチームは自動決定されます。'}
                     サーブ選手を選択してください。
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* チームA */}
                   <div className="border rounded-lg p-3">
-                    <h5 className="text-sm font-medium mb-2 text-center text-blue-600">
-                      チーム A
-                    </h5>
+                    <h5 className="text-sm font-medium mb-2 text-center text-blue-600">チーム A</h5>
                     <div className="space-y-2">
                       {teamAPlayers.map((playerName, index) => (
                         <button
@@ -191,18 +157,13 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
                             handlePlayerSelect(index);
                           }}
                           className={`w-full p-2 border-2 rounded font-medium transition-all text-sm ${
-                            selectedTeam === 'A' &&
-                            selectedPlayerIndex === index
+                            selectedTeam === 'A' && selectedPlayerIndex === index
                               ? 'border-blue-500 bg-blue-50 text-blue-700'
                               : 'border-gray-300 hover:border-blue-300'
                           }`}
                         >
                           {playerName}
-                          {index === 0 && (
-                            <span className="text-xs text-gray-500 ml-1">
-                              (デフォルト)
-                            </span>
-                          )}
+                          {index === 0 && <span className="text-xs text-gray-500 ml-1">(デフォルト)</span>}
                         </button>
                       ))}
                     </div>
@@ -210,9 +171,7 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
 
                   {/* チームB */}
                   <div className="border rounded-lg p-3">
-                    <h5 className="text-sm font-medium mb-2 text-center text-red-600">
-                      チーム B
-                    </h5>
+                    <h5 className="text-sm font-medium mb-2 text-center text-red-600">チーム B</h5>
                     <div className="space-y-2">
                       {teamBPlayers.map((playerName, index) => (
                         <button
@@ -222,18 +181,13 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
                             handlePlayerSelect(index);
                           }}
                           className={`w-full p-2 border-2 rounded font-medium transition-all text-sm ${
-                            selectedTeam === 'B' &&
-                            selectedPlayerIndex === index
+                            selectedTeam === 'B' && selectedPlayerIndex === index
                               ? 'border-red-500 bg-red-50 text-red-700'
                               : 'border-gray-300 hover:border-red-300'
                           }`}
                         >
                           {playerName}
-                          {index === 0 && (
-                            <span className="text-xs text-gray-500 ml-1">
-                              (デフォルト)
-                            </span>
-                          )}
+                          {index === 0 && <span className="text-xs text-gray-500 ml-1">(デフォルト)</span>}
                         </button>
                       ))}
                     </div>
@@ -243,9 +197,7 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({
             ) : null}
 
             <p className="text-xs text-gray-600 mt-2 text-center">
-              {gameNumber === 1
-                ? 'ゲーム内で2人が交互にサーブを行います'
-                : 'デフォルトでは1番目の選手が選択されています'}
+              {gameNumber === 1 ? 'ゲーム内で2人が交互にサーブを行います' : 'デフォルトでは1番目の選手が選択されています'}
             </p>
           </div>
 

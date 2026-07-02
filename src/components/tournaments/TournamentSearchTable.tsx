@@ -4,12 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 // ─── 型定義 ─────────────────────────────────────────────────────────────
-export type TournamentLevel =
-  | 'national'
-  | 'block'
-  | 'prefecture'
-  | 'city'
-  | 'open';
+export type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
 
 export type TournamentInstance = {
   tournamentId: string;
@@ -47,8 +42,7 @@ const LEVEL_LABELS: Record<TournamentLevel, string> = {
 const LEVEL_COLORS: Record<TournamentLevel, string> = {
   national: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
   block: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-  prefecture:
-    'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+  prefecture: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
   city: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200',
   open: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
 };
@@ -78,9 +72,7 @@ function getTodayInTokyo(): string {
   }).format(new Date());
 }
 
-function getTournamentStatus(
-  inst: TournamentInstance,
-): TournamentStatus | null {
+function getTournamentStatus(inst: TournamentInstance): TournamentStatus | null {
   if (inst.hasInternalResult && inst.firstCategoryPath) {
     return null;
   }
@@ -90,8 +82,7 @@ function getTournamentStatus(
   if (isUpcoming) {
     return {
       label: '開催予定',
-      className:
-        'bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800',
+      className: 'bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800',
     };
   }
 
@@ -101,8 +92,7 @@ function getTournamentStatus(
 
   return {
     label: '外部掲載',
-    className:
-      'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700',
+    className: 'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700',
   };
 }
 
@@ -114,12 +104,7 @@ type FilterDropdownProps = {
   onChange: (values: string[]) => void;
 };
 
-function FilterDropdown({
-  label,
-  options,
-  selected,
-  onChange,
-}: FilterDropdownProps) {
+function FilterDropdown({ label, options, selected, onChange }: FilterDropdownProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -143,11 +128,7 @@ function FilterDropdown({
   };
 
   const displayLabel =
-    selected.length === 0
-      ? label
-      : selected.length === 1
-        ? (options.find((o) => o.value === selected[0])?.label ?? label)
-        : `${label} (${selected.length})`;
+    selected.length === 0 ? label : selected.length === 1 ? (options.find((o) => o.value === selected[0])?.label ?? label) : `${label} (${selected.length})`;
 
   return (
     <div ref={ref} className="relative">
@@ -160,11 +141,7 @@ function FilterDropdown({
         }`}
       >
         <span>{displayLabel}</span>
-        <svg
-          className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
+        <svg className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
           <path
             fillRule="evenodd"
             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -176,19 +153,9 @@ function FilterDropdown({
       {open && (
         <div className="absolute z-50 mt-1 min-w-max bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1">
           {options.map((opt) => (
-            <label
-              key={opt.value}
-              className="flex items-center gap-2 px-4 py-2 text-sm cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
-            >
-              <input
-                type="checkbox"
-                className="accent-blue-600"
-                checked={selected.includes(opt.value)}
-                onChange={() => toggle(opt.value)}
-              />
-              <span className="text-gray-800 dark:text-gray-100">
-                {opt.label}
-              </span>
+            <label key={opt.value} className="flex items-center gap-2 px-4 py-2 text-sm cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+              <input type="checkbox" className="accent-blue-600" checked={selected.includes(opt.value)} onChange={() => toggle(opt.value)} />
+              <span className="text-gray-800 dark:text-gray-100">{opt.label}</span>
             </label>
           ))}
         </div>
@@ -198,12 +165,7 @@ function FilterDropdown({
 }
 
 // ─── メインコンポーネント ──────────────────────────────────────────────────
-export default function TournamentSearchTable({
-  instances,
-  prefectures,
-  years,
-  generations,
-}: Props) {
+export default function TournamentSearchTable({ instances, prefectures, years, generations }: Props) {
   const router = useRouter();
 
   // フィルター状態
@@ -220,8 +182,7 @@ export default function TournamentSearchTable({
     initialized.current = true;
 
     const q = router.query;
-    const toArray = (v: string | string[] | undefined) =>
-      !v ? [] : Array.isArray(v) ? v : [v];
+    const toArray = (v: string | string[] | undefined) => (!v ? [] : Array.isArray(v) ? v : [v]);
 
     setFilterGeneration(toArray(q.generation));
     setFilterLevel(toArray(q.level));
@@ -245,36 +206,20 @@ export default function TournamentSearchTable({
       scroll: false,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    filterGeneration,
-    filterLevel,
-    filterYear,
-    filterPrefecture,
-    filterHasResult,
-  ]);
+  }, [filterGeneration, filterLevel, filterYear, filterPrefecture, filterHasResult]);
 
   // フィルター適用
   const filtered = instances.filter((inst) => {
-    if (filterGeneration.length && !filterGeneration.includes(inst.generation))
-      return false;
+    if (filterGeneration.length && !filterGeneration.includes(inst.generation)) return false;
     if (filterLevel.length && !filterLevel.includes(inst.level)) return false;
     if (filterYear && String(inst.year) !== filterYear) return false;
-    if (
-      filterPrefecture.length &&
-      !(inst.prefectureId && filterPrefecture.includes(inst.prefectureId))
-    )
-      return false;
+    if (filterPrefecture.length && !(inst.prefectureId && filterPrefecture.includes(inst.prefectureId))) return false;
     if (filterHasResult && !inst.hasInternalResult) return false;
     return true;
   });
 
   // フィルターリセット
-  const hasAnyFilter =
-    filterGeneration.length > 0 ||
-    filterLevel.length > 0 ||
-    filterPrefecture.length > 0 ||
-    filterYear !== '' ||
-    filterHasResult;
+  const hasAnyFilter = filterGeneration.length > 0 || filterLevel.length > 0 || filterPrefecture.length > 0 || filterYear !== '' || filterHasResult;
 
   const resetAll = () => {
     setFilterGeneration([]);
@@ -303,30 +248,13 @@ export default function TournamentSearchTable({
       {/* ── フィルターバー ── */}
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 mb-4 shadow-sm">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 shrink-0">
-            絞り込み：
-          </span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 shrink-0">絞り込み：</span>
 
-          <FilterDropdown
-            label="カテゴリ"
-            options={generationOptions}
-            selected={filterGeneration}
-            onChange={setFilterGeneration}
-          />
+          <FilterDropdown label="カテゴリ" options={generationOptions} selected={filterGeneration} onChange={setFilterGeneration} />
 
-          <FilterDropdown
-            label="種類"
-            options={levelOptions}
-            selected={filterLevel}
-            onChange={setFilterLevel}
-          />
+          <FilterDropdown label="種類" options={levelOptions} selected={filterLevel} onChange={setFilterLevel} />
 
-          <FilterDropdown
-            label="開催地"
-            options={prefectureOptions}
-            selected={filterPrefecture}
-            onChange={setFilterPrefecture}
-          />
+          <FilterDropdown label="開催地" options={prefectureOptions} selected={filterPrefecture} onChange={setFilterPrefecture} />
 
           {/* 年 */}
           <select
@@ -348,51 +276,36 @@ export default function TournamentSearchTable({
 
           {/* 結果ありのみ */}
           <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-300 dark:border-gray-600 text-sm cursor-pointer hover:border-blue-400 bg-white dark:bg-gray-800">
-            <input
-              type="checkbox"
-              className="accent-blue-600"
-              checked={filterHasResult}
-              onChange={(e) => setFilterHasResult(e.target.checked)}
-            />
+            <input type="checkbox" className="accent-blue-600" checked={filterHasResult} onChange={(e) => setFilterHasResult(e.target.checked)} />
             <span className="text-gray-700 dark:text-gray-200">結果あり</span>
           </label>
 
           {/* リセット */}
           {hasAnyFilter && (
-            <button
-              onClick={resetAll}
-              className="ml-auto text-sm text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors"
-            >
+            <button onClick={resetAll} className="ml-auto text-sm text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors">
               ✕ リセット
             </button>
           )}
         </div>
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">
-          年・カテゴリ・地域で絞り込んで大会を探せます。
-          結果データが収録されている大会は「結果」列のリンクから直接参照できます。
+          年・カテゴリ・地域で絞り込んで大会を探せます。 結果データが収録されている大会は「結果」列のリンクから直接参照できます。
         </p>
       </div>
 
       {/* ── 件数 ── */}
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-        {filtered.length} 件
-        {instances.length !== filtered.length && ` / ${instances.length} 件中`}
+        {filtered.length} 件{instances.length !== filtered.length && ` / ${instances.length} 件中`}
       </p>
 
       {filtered.length === 0 ? (
-        <p className="text-center text-gray-400 dark:text-gray-500 py-10">
-          該当する大会がありません
-        </p>
+        <p className="text-center text-gray-400 dark:text-gray-500 py-10">該当する大会がありません</p>
       ) : (
         (() => {
           // 年度ごとにグルーピング（降順）
-          const grouped = filtered.reduce<Record<number, TournamentInstance[]>>(
-            (acc, inst) => {
-              (acc[inst.year] ??= []).push(inst);
-              return acc;
-            },
-            {},
-          );
+          const grouped = filtered.reduce<Record<number, TournamentInstance[]>>((acc, inst) => {
+            (acc[inst.year] ??= []).push(inst);
+            return acc;
+          }, {});
           const sortedYears = Object.keys(grouped)
             .map(Number)
             .sort((a, b) => b - a);
@@ -412,32 +325,17 @@ export default function TournamentSearchTable({
                       <table className="min-w-full text-sm">
                         <thead>
                           <tr className="bg-gray-50 dark:bg-gray-800">
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                              日程
-                            </th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300">
-                              大会名
-                            </th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                              開催地
-                            </th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                              種類
-                            </th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                              対象
-                            </th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                              結果
-                            </th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">日程</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300">大会名</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">開催地</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">種類</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">対象</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">結果</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                           {grouped[year].map((inst) => (
-                            <TableRow
-                              key={`${inst.tournamentId}-${inst.year}`}
-                              inst={inst}
-                            />
+                            <TableRow key={`${inst.tournamentId}-${inst.year}`} inst={inst} />
                           ))}
                         </tbody>
                       </table>
@@ -447,10 +345,7 @@ export default function TournamentSearchTable({
                   {/* ── カード（モバイル） ── */}
                   <div className="md:hidden space-y-3">
                     {grouped[year].map((inst) => (
-                      <MobileCard
-                        key={`${inst.tournamentId}-${inst.year}`}
-                        inst={inst}
-                      />
+                      <MobileCard key={`${inst.tournamentId}-${inst.year}`} inst={inst} />
                     ))}
                   </div>
                 </section>
@@ -466,27 +361,18 @@ export default function TournamentSearchTable({
 // ─── テーブル行コンポーネント ───────────────────────────────────────────────
 function TableRow({ inst }: { inst: TournamentInstance }) {
   const name = inst.firstCategoryPath ? (
-    <Link
-      href={inst.firstCategoryPath}
-      className="font-medium text-blue-700 dark:text-blue-400 hover:underline"
-    >
+    <Link href={inst.firstCategoryPath} className="font-medium text-blue-700 dark:text-blue-400 hover:underline">
       {inst.label}
     </Link>
   ) : (
-    <span className="font-medium text-gray-800 dark:text-gray-100">
-      {inst.label}
-    </span>
+    <span className="font-medium text-gray-800 dark:text-gray-100">{inst.label}</span>
   );
 
   return (
     <tr className="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors group">
-      <td className="px-4 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap tabular-nums">
-        {formatDateRange(inst.startDate, inst.endDate)}
-      </td>
+      <td className="px-4 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap tabular-nums">{formatDateRange(inst.startDate, inst.endDate)}</td>
       <td className="px-4 py-3">{name}</td>
-      <td className="px-4 py-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">
-        {inst.location || '—'}
-      </td>
+      <td className="px-4 py-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">{inst.location || '—'}</td>
       <td className="px-4 py-3 whitespace-nowrap">
         <LevelBadge level={inst.level} />
       </td>
@@ -514,35 +400,19 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
       {/* カード全体のタップ領域 */}
       {cardHref &&
         (cardExternal ? (
-          <a
-            href={cardHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute inset-0 rounded-xl"
-            aria-label={inst.label}
-          />
+          <a href={cardHref} target="_blank" rel="noopener noreferrer" className="absolute inset-0 rounded-xl" aria-label={inst.label} />
         ) : (
-          <Link
-            href={cardHref}
-            className="absolute inset-0 rounded-xl"
-            aria-label={inst.label}
-          />
+          <Link href={cardHref} className="absolute inset-0 rounded-xl" aria-label={inst.label} />
         ))}
 
       {/* タイトル */}
-      <p className="font-semibold text-blue-700 dark:text-blue-400 leading-snug mb-2">
-        {inst.label}
-      </p>
+      <p className="font-semibold text-blue-700 dark:text-blue-400 leading-snug mb-2">{inst.label}</p>
 
       {/* 開催予定のみ強調し、それ以外は通常のメタ情報として表示 */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-3">
         {status ? (
           <>
-            <span
-              className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}
-            >
-              {status.label}
-            </span>
+            <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}>{status.label}</span>
             <span>{formatDateRange(inst.startDate, inst.endDate)}</span>
             {inst.location && <span>{inst.location}</span>}
           </>
@@ -568,13 +438,7 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
 
 // ─── バッジ・セル補助コンポーネント ───────────────────────────────────────
 function LevelBadge({ level }: { level: TournamentLevel }) {
-  return (
-    <span
-      className={`inline-block text-xs px-2 py-0.5 rounded-full font-medium ${LEVEL_COLORS[level]}`}
-    >
-      {LEVEL_LABELS[level]}
-    </span>
-  );
+  return <span className={`inline-block text-xs px-2 py-0.5 rounded-full font-medium ${LEVEL_COLORS[level]}`}>{LEVEL_LABELS[level]}</span>;
 }
 
 function ResultCell({ inst }: { inst: TournamentInstance }) {
@@ -584,12 +448,7 @@ function ResultCell({ inst }: { inst: TournamentInstance }) {
         href={inst.firstCategoryPath}
         className="inline-flex items-center gap-1 text-xs text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full hover:opacity-80 transition"
       >
-        <svg
-          className="w-3 h-3"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -604,9 +463,7 @@ function ResultCell({ inst }: { inst: TournamentInstance }) {
 
   if (inst.officialUrl) {
     const isPdf = inst.officialUrl.toLowerCase().endsWith('.pdf');
-    const isX = /^https?:\/\/(www\.)?(x\.com|twitter\.com)/.test(
-      inst.officialUrl,
-    );
+    const isX = /^https?:\/\/(www\.)?(x\.com|twitter\.com)/.test(inst.officialUrl);
     // 今日の日付（YYYY-MM-DD）と startDate を文字列比較して未来かどうか判定
     const todayStr = new Date().toISOString().slice(0, 10);
     const isFuture = !!inst.startDate && inst.startDate > todayStr;
@@ -625,36 +482,21 @@ function ResultCell({ inst }: { inst: TournamentInstance }) {
         title={isPdf ? 'PDF' : isX ? 'X (Twitter)' : '公式サイト'}
       >
         {isPdf ? (
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
             />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 13h6M9 17h4"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 13h6M9 17h4" />
           </svg>
         ) : isX ? (
           <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
           </svg>
         ) : (
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

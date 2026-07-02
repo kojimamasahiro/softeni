@@ -26,23 +26,11 @@ type Props = {
   federationMap: Record<string, FederationInfo>;
 };
 
-export default function LocalTournamentsPage({
-  prefectures,
-  federationMap,
-}: Props) {
+export default function LocalTournamentsPage({ prefectures, federationMap }: Props) {
   const pageUrl = `https://softeni-pick.com/tournaments/local/`;
 
   // Group by region
-  const regions = [
-    '北海道',
-    '東北',
-    '関東',
-    '中部',
-    '近畿',
-    '中国',
-    '四国',
-    '九州・沖縄',
-  ];
+  const regions = ['北海道', '東北', '関東', '中部', '近畿', '中国', '四国', '九州・沖縄'];
 
   const grouped = regions.map((region) => ({
     region,
@@ -51,12 +39,7 @@ export default function LocalTournamentsPage({
 
   return (
     <>
-      <MetaHead
-        title={'地域大会一覧 | ソフトテニス情報'}
-        description={`各都道府県の連盟や企業が主催する大会の結果一覧。`}
-        url={pageUrl}
-        type="article"
-      />
+      <MetaHead title={'地域大会一覧 | ソフトテニス情報'} description={`各都道府県の連盟や企業が主催する大会の結果一覧。`} url={pageUrl} type="article" />
 
       <PageLayout>
         <Breadcrumbs
@@ -69,8 +52,7 @@ export default function LocalTournamentsPage({
 
         <h1 className="text-2xl font-bold mb-6">地域大会結果</h1>
         <p className="text-gray-600 dark:text-gray-300 mb-8">
-          各都道府県の連盟や企業が主催する大会の結果を掲載しています。
-          連盟公式サイトへのリンクもご活用ください。
+          各都道府県の連盟や企業が主催する大会の結果を掲載しています。 連盟公式サイトへのリンクもご活用ください。
         </p>
 
         <div className="space-y-8">
@@ -78,17 +60,12 @@ export default function LocalTournamentsPage({
             .filter((g) => g.prefectures.length > 0)
             .map((g) => (
               <section key={g.region}>
-                <h2 className="text-xl font-bold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
-                  {g.region}
-                </h2>
+                <h2 className="text-xl font-bold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">{g.region}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {g.prefectures.map((pref) => {
                     const fed = federationMap[pref.id];
                     return (
-                      <div
-                        key={pref.id}
-                        className="bg-gray-50 dark:bg-gray-800 rounded p-3 flex flex-col justify-between"
-                      >
+                      <div key={pref.id} className="bg-gray-50 dark:bg-gray-800 rounded p-3 flex flex-col justify-between">
                         <Link
                           href={`/tournaments/local/${pref.id}`}
                           className="text-lg font-semibold text-blue-700 dark:text-blue-300 hover:underline mb-2 block"
@@ -103,12 +80,7 @@ export default function LocalTournamentsPage({
                             className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex items-center"
                           >
                             連盟サイト
-                            <svg
-                              className="w-3 h-3 ml-1"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
+                            <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -135,9 +107,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const prefFile = path.join(process.cwd(), 'data/prefectures.json');
   const fedFile = path.join(tournamentRoot, 'federations.json');
 
-  const prefectures: Prefecture[] = JSON.parse(
-    fs.readFileSync(prefFile, 'utf-8'),
-  );
+  const prefectures: Prefecture[] = JSON.parse(fs.readFileSync(prefFile, 'utf-8'));
 
   let federations: FederationInfo[] = [];
   if (fs.existsSync(fedFile)) {

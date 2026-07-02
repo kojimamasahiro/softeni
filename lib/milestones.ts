@@ -95,14 +95,7 @@ function genreGenderLabel(categoryId: string): string {
   // categoryId = `${category}-${age}-${gender}`。category はハイフンを含みうる。
   const gender = parts[parts.length - 1];
   const category = parts.slice(0, -2).join('-');
-  const genderLabel =
-    gender === 'boys'
-      ? '男子'
-      : gender === 'girls'
-        ? '女子'
-        : gender === 'mixed'
-          ? '混合'
-          : '';
+  const genderLabel = gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : gender === 'mixed' ? '混合' : '';
   return `${genderLabel}${getCategoryLabel(category)}`;
 }
 
@@ -119,11 +112,7 @@ function subjectOf(c: ChampionEntry): MilestoneEvent['subject'] {
  * 優勝していれば連覇とみなす（ダブルスを「選手個人」軸で判定するための関数）。
  * 対象年にその選手が優勝者に含まれない場合は null。
  */
-function computePlayerStreak(
-  championsDesc: ChampionEntry[],
-  targetYear: number,
-  key: string,
-): RepeatChampion | null {
+function computePlayerStreak(championsDesc: ChampionEntry[], targetYear: number, key: string): RepeatChampion | null {
   const asc = championsDesc.slice().sort((a, b) => a.year - b.year);
   const idx = asc.findIndex((c) => c.year === targetYear);
   if (idx < 0) return null;
@@ -157,9 +146,7 @@ function buildIndividualMilestones(
   // 種目（性別＋シングルス/ダブルス/団体）を区別するためのラベル前置。
   const cat = genreGenderLabel(categoryId);
   // 「優勝者が判明している」過去の収録年のみ「初」の反証に使える
-  const priorKnownYears = block.champions.filter(
-    (c) => c.year < targetYear && c.display,
-  );
+  const priorKnownYears = block.champions.filter((c) => c.year < targetYear && c.display);
 
   target.players.forEach((name, i) => {
     const key = target.playerKeys[i];
@@ -173,8 +160,7 @@ function buildIndividualMilestones(
     // --- repeat-title（連覇）: 本人の連続優勝（confirmed） ---
     const streak = computePlayerStreak(block.champions, targetYear, key);
     if (streak) {
-      const streakLabel =
-        streak.streak >= 3 ? `${streak.streak}連覇` : '連覇（2連覇）';
+      const streakLabel = streak.streak >= 3 ? `${streak.streak}連覇` : '連覇（2連覇）';
       const shortLabel = `${cat}${streakLabel}（${streak.since}年〜）`;
       events.push({
         kind: 'repeat-title',
@@ -194,9 +180,7 @@ function buildIndividualMilestones(
     // playerKey は「名前@所属」形式のため、所属変更後の選手が別人と判定されないよう
     // playerKeys による一致に加えて players（名前）でも突合する。
     if (priorKnownYears.length > 0) {
-      const priorWins = priorKnownYears.filter(
-        (c) => c.playerKeys.includes(key) || c.players.includes(name),
-      );
+      const priorWins = priorKnownYears.filter((c) => c.playerKeys.includes(key) || c.players.includes(name));
       if (priorWins.length === 0) {
         // first-title（初優勝）: 掲載範囲の過去年に優勝歴がない（scope-limited）
         events.push({
@@ -246,9 +230,7 @@ export function getChampionMilestones(
 ): MilestoneBlock | null {
   // 呼び出し側が同じ条件の historical-winners を既に持っている場合は再利用し、
   // 同一データの二重走査（全年 detail 読み込み）を避ける。
-  const block: HistoricalWinnersBlock | null =
-    precomputed ??
-    getHistoricalWinners(tournamentId, categoryId, { targetYear });
+  const block: HistoricalWinnersBlock | null = precomputed ?? getHistoricalWinners(tournamentId, categoryId, { targetYear });
   if (!block) return null;
 
   const target = block.champions.find((c) => c.year === targetYear);
@@ -262,13 +244,7 @@ export function getChampionMilestones(
     // --- 個人戦（シングルス/ダブルス）: 「選手個人」単位で判定する ---
     // ダブルスはペア単位ではなく各選手をそれぞれ主役にし、パートナーが替わっても
     // 本人の連続優勝を連覇・本人の掲載範囲初優勝を初優勝として 1 選手 1 イベント出す。
-    events = buildIndividualMilestones(
-      block,
-      target,
-      targetYear,
-      tournamentId,
-      categoryId,
-    );
+    events = buildIndividualMilestones(block, target, targetYear, tournamentId, categoryId);
   } else {
     // --- 団体戦: 校（championKey）単位で判定する（従来どおり） ---
     const subject = subjectOf(target);
@@ -277,8 +253,7 @@ export function getChampionMilestones(
     // repeat-title（連覇）: Step1 の連覇判定をそのまま使う（confirmed）
     const repeat: RepeatChampion | null = block.edition.repeatChampion;
     if (repeat && repeat.streak >= 2) {
-      const streakLabel =
-        repeat.streak >= 3 ? `${repeat.streak}連覇` : '連覇（2連覇）';
+      const streakLabel = repeat.streak >= 3 ? `${repeat.streak}連覇` : '連覇（2連覇）';
       const shortLabel = `${cat}${streakLabel}（${repeat.since}年〜）`;
       events.push({
         kind: 'repeat-title',
@@ -295,13 +270,9 @@ export function getChampionMilestones(
 
     // first-title / nth-title: 連覇でないとき過去優勝歴で分岐。
     // 優勝者不明年（display=null）は反証にならないため除外する。
-    const priorKnownYears = block.champions.filter(
-      (c) => c.year < targetYear && c.display,
-    );
+    const priorKnownYears = block.champions.filter((c) => c.year < targetYear && c.display);
     if (!repeat && priorKnownYears.length > 0) {
-      const priorWins = priorKnownYears.filter(
-        (c) => championKey(c) === targetKey,
-      );
+      const priorWins = priorKnownYears.filter((c) => championKey(c) === targetKey);
       if (priorWins.length === 0) {
         // first-title（初優勝）
         events.push({
@@ -374,15 +345,11 @@ export function getChampionDefeat(
   targetYear: number,
   precomputed?: HistoricalWinnersBlock | null,
 ): MilestoneEvent | null {
-  const block: HistoricalWinnersBlock | null =
-    precomputed ??
-    getHistoricalWinners(tournamentId, categoryId, { targetYear });
+  const block: HistoricalWinnersBlock | null = precomputed ?? getHistoricalWinners(tournamentId, categoryId, { targetYear });
   if (!block) return null;
 
   // 前回（対象年より前で直近の優勝者が判明している開催）の王者を特定する。
-  const prior = block.champions
-    .filter((c) => c.year < targetYear && c.display)
-    .sort((a, b) => b.year - a.year)[0];
+  const prior = block.champions.filter((c) => c.year < targetYear && c.display).sort((a, b) => b.year - a.year)[0];
   if (!prior) return null;
   const priorKey = championKey(prior);
   if (!priorKey) return null;
@@ -391,9 +358,7 @@ export function getChampionDefeat(
   const detail = readYearDetail(tournamentId, targetYear, categoryId);
   if (!detail) return null;
   const participantById = buildParticipantMap(detail);
-  const entryByNo = new Map(
-    (detail.entries ?? []).map((e) => [e.entryNo, e] as const),
-  );
+  const entryByNo = new Map((detail.entries ?? []).map((e) => [e.entryNo, e] as const));
 
   // 当年エントリの中から前回王者と一致するものを探す（同所属・同名で比較）。
   let championEntryNo: number | null = null;
@@ -410,28 +375,17 @@ export function getChampionDefeat(
   // 前回王者が敗れた試合（負けた試合）を抽出する。
   const defeats = (detail.matches ?? []).filter(
     (m) =>
-      Array.isArray(m.entries) &&
-      m.entries.includes(championEntryNo as number) &&
-      typeof m.winnerEntryNo === 'number' &&
-      m.winnerEntryNo !== championEntryNo,
+      Array.isArray(m.entries) && m.entries.includes(championEntryNo as number) && typeof m.winnerEntryNo === 'number' && m.winnerEntryNo !== championEntryNo,
   );
   // 敗退していない（連覇など） → null。
   if (defeats.length === 0) return null;
 
   // knockout の敗戦を優先（リーグの複数敗戦による曖昧さを避ける）。無ければ先頭。
-  const defeat =
-    defeats.find((m) => (m.stage ?? 'knockout') !== 'roundrobin') ?? defeats[0];
-  const winnerEntry =
-    typeof defeat.winnerEntryNo === 'number'
-      ? entryByNo.get(defeat.winnerEntryNo)
-      : undefined;
+  const defeat = defeats.find((m) => (m.stage ?? 'knockout') !== 'roundrobin') ?? defeats[0];
+  const winnerEntry = typeof defeat.winnerEntryNo === 'number' ? entryByNo.get(defeat.winnerEntryNo) : undefined;
   if (!winnerEntry) return null;
 
-  const winner = resolveEntryToChampion(
-    winnerEntry,
-    participantById,
-    targetYear,
-  );
+  const winner = resolveEntryToChampion(winnerEntry, participantById, targetYear);
   if (!winner.display) return null;
 
   const round = defeat.round ?? '';

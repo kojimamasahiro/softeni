@@ -4,11 +4,7 @@ import { Match, MatchPlayer } from '../src/types/database';
 /**
  * プレイヤー名を取得する（個別フィールドから）
  */
-export const getPlayerName = (
-  match: Match,
-  team: 'A' | 'B',
-  player: 1 | 2,
-): string => {
+export const getPlayerName = (match: Match, team: 'A' | 'B', player: 1 | 2): string => {
   const prefix = `team_${team.toLowerCase()}`;
   const lastNameKey = `${prefix}_player${player}_last_name` as keyof Match;
   const firstNameKey = `${prefix}_player${player}_first_name` as keyof Match;
@@ -23,16 +19,8 @@ export const getPlayerName = (
 /**
  * プレイヤー名を取得する（構造化データから）
  */
-export const getPlayerNameFromTeams = (
-  match: Match,
-  team: 'A' | 'B',
-  playerIndex: number,
-): string => {
-  if (
-    !match.teams ||
-    !match.teams[team] ||
-    !match.teams[team].players[playerIndex]
-  ) {
+export const getPlayerNameFromTeams = (match: Match, team: 'A' | 'B', playerIndex: number): string => {
+  if (!match.teams || !match.teams[team] || !match.teams[team].players[playerIndex]) {
     return '';
   }
 
@@ -62,9 +50,7 @@ export const getTeamDisplayName = (match: Match, team: 'A' | 'B'): string => {
   // 構造化データから取得を試行
   if (match.teams && match.teams[team]) {
     const teamData = match.teams[team];
-    const players = teamData.players
-      .map((player) => `${player.last_name} ${player.first_name}`)
-      .join(' / ');
+    const players = teamData.players.map((player) => `${player.last_name} ${player.first_name}`).join(' / ');
     return `${teamData.entry_number} ${players}`;
   }
 
@@ -93,18 +79,10 @@ export const getAllPlayers = (match: Match, team: 'A' | 'B'): MatchPlayer[] => {
   const prefix = `team_${team.toLowerCase()}`;
 
   // プレイヤー1
-  const player1LastName = match[
-    `${prefix}_player1_last_name` as keyof Match
-  ] as string;
-  const player1FirstName = match[
-    `${prefix}_player1_first_name` as keyof Match
-  ] as string;
-  const player1TeamName = match[
-    `${prefix}_player1_team_name` as keyof Match
-  ] as string;
-  const player1Region = match[
-    `${prefix}_player1_region` as keyof Match
-  ] as string;
+  const player1LastName = match[`${prefix}_player1_last_name` as keyof Match] as string;
+  const player1FirstName = match[`${prefix}_player1_first_name` as keyof Match] as string;
+  const player1TeamName = match[`${prefix}_player1_team_name` as keyof Match] as string;
+  const player1Region = match[`${prefix}_player1_region` as keyof Match] as string;
 
   if (player1LastName && player1FirstName) {
     players.push({
@@ -117,18 +95,10 @@ export const getAllPlayers = (match: Match, team: 'A' | 'B'): MatchPlayer[] => {
 
   // プレイヤー2（ダブルスの場合）
   if (match.game_type === 'doubles') {
-    const player2LastName = match[
-      `${prefix}_player2_last_name` as keyof Match
-    ] as string;
-    const player2FirstName = match[
-      `${prefix}_player2_first_name` as keyof Match
-    ] as string;
-    const player2TeamName = match[
-      `${prefix}_player2_team_name` as keyof Match
-    ] as string;
-    const player2Region = match[
-      `${prefix}_player2_region` as keyof Match
-    ] as string;
+    const player2LastName = match[`${prefix}_player2_last_name` as keyof Match] as string;
+    const player2FirstName = match[`${prefix}_player2_first_name` as keyof Match] as string;
+    const player2TeamName = match[`${prefix}_player2_team_name` as keyof Match] as string;
+    const player2Region = match[`${prefix}_player2_region` as keyof Match] as string;
 
     if (player2LastName && player2FirstName) {
       players.push({

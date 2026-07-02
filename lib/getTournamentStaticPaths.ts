@@ -9,13 +9,7 @@ export function getTournamentStaticPaths(basePath: string) {
 
   for (const tournamentId of tournamentDirs) {
     const tournamentDir = path.join(basePath, tournamentId);
-    const yearDirs = fs
-      .readdirSync(tournamentDir)
-      .filter(
-        (name) =>
-          /^\d{4}$/.test(name) &&
-          fs.statSync(path.join(tournamentDir, name)).isDirectory(),
-      );
+    const yearDirs = fs.readdirSync(tournamentDir).filter((name) => /^\d{4}$/.test(name) && fs.statSync(path.join(tournamentDir, name)).isDirectory());
 
     for (const year of yearDirs) {
       const resultsPath = path.join(tournamentDir, year, 'results.json');

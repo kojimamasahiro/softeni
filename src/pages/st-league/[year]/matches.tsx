@@ -5,11 +5,7 @@ import { useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  buildEventOrganizer,
-  buildEventPlace,
-  sportsEventBaseFields,
-} from '@/lib/sportsEventJsonLd';
+import { buildEventOrganizer, buildEventPlace, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import {
   buildPlayerMap,
   computeRanking,
@@ -37,8 +33,7 @@ interface MatchesPageProps {
   playerMaps: { boys: PlayerMap; girls: PlayerMap };
 }
 
-const DIV_BADGE =
-  'inline-flex items-center px-2 py-0.5 rounded text-xs font-bold';
+const DIV_BADGE = 'inline-flex items-center px-2 py-0.5 rounded text-xs font-bold';
 const PLAYOFF_ID = 'playoff';
 
 interface MatchesPanelProps {
@@ -57,23 +52,10 @@ interface MatchesPanelProps {
 // 1つの gender×division（またはプレーオフ）分の順位表・対戦結果を描画する。
 // 全タブをHTMLに出力するため（SEO）、非アクティブなパネルは親側で `hidden` 切替する。
 // state に依存しない純粋な props のみで計算するので各タブの内容が静的HTMLに含まれる。
-function MatchesPanel({
-  year,
-  gender,
-  divisionId,
-  meta,
-  divisions,
-  matches,
-  teams,
-  playerMaps,
-  expanded,
-  toggle,
-}: MatchesPanelProps) {
+function MatchesPanel({ year, gender, divisionId, meta, divisions, matches, teams, playerMaps, expanded, toggle }: MatchesPanelProps) {
   const isPlayoff = divisionId === PLAYOFF_ID;
 
-  const matchesInDiv = matches[gender].filter(
-    (m) => divisionOf(m) === divisionId,
-  );
+  const matchesInDiv = matches[gender].filter((m) => divisionOf(m) === divisionId);
 
   const teamsInDiv = (() => {
     if (isPlayoff) {
@@ -90,10 +72,8 @@ function MatchesPanel({
 
   const playerMap = playerMaps[gender] || {};
 
-  const getTeamName = (teamId: string) =>
-    teamsInDiv.find((t) => t.teamId === teamId)?.name[0] ?? teamId;
-  const getPlayerNames = (ids?: number[]) =>
-    !ids ? '-' : ids.map((id) => playerMap[id] || `ID:${id}`).join('・');
+  const getTeamName = (teamId: string) => teamsInDiv.find((t) => t.teamId === teamId)?.name[0] ?? teamId;
+  const getPlayerNames = (ids?: number[]) => (!ids ? '-' : ids.map((id) => playerMap[id] || `ID:${id}`).join('・'));
   // プレーオフ順位表用：各チームの所属リーグ名（Ⅰ/Ⅱ）
   const teamDivName = (teamId: string) => {
     const t = teams[gender].find((x) => x.teamId === teamId);
@@ -103,22 +83,18 @@ function MatchesPanel({
   const ranking = computeRanking(teamsInDiv, matchesInDiv);
 
   // 公式順位（league.json results）。ノックアウト等で総当たり計算が使えない場合に優先
-  const officialOrder =
-    !isPlayoff && meta?.results?.[divisionId]?.[gender]?.ranking;
+  const officialOrder = !isPlayoff && meta?.results?.[divisionId]?.[gender]?.ranking;
   const hasOfficialRanking = !!(officialOrder && officialOrder.length);
   const displayRanking: Ranking[] = (() => {
     if (hasOfficialRanking && officialOrder) {
       const byId = new Map(ranking.map((r) => [r.teamId, r]));
-      return officialOrder
-        .map((tid) => byId.get(tid))
-        .filter((r): r is Ranking => !!r);
+      return officialOrder.map((tid) => byId.get(tid)).filter((r): r is Ranking => !!r);
     }
     return ranking;
   })();
 
   // 予選ブロック別 公式順位表（league.json results.<div>.<gender>.blocks）
-  const officialBlocks =
-    !isPlayoff && meta?.results?.[divisionId]?.[gender]?.blocks;
+  const officialBlocks = !isPlayoff && meta?.results?.[divisionId]?.[gender]?.blocks;
   const blockStandings = (() => {
     if (!officialBlocks) return null;
     return Object.entries(officialBlocks).map(([block, order]) => {
@@ -126,52 +102,33 @@ function MatchesPanel({
       const blockMatches = matchesInDiv.filter((m) => m.block === block);
       const recs = computeRanking(blockTeams, blockMatches);
       const byId = new Map(recs.map((r) => [r.teamId, r]));
-      const rows = order
-        .map((tid) => byId.get(tid))
-        .filter((r): r is Ranking => !!r);
+      const rows = order.map((tid) => byId.get(tid)).filter((r): r is Ranking => !!r);
       return { block, rows };
     });
   })();
 
   const currentDiv = divisions.find((d) => d.id === divisionId);
-  const currentDivName = isPlayoff
-    ? (meta?.playoff?.name ?? 'プレーオフ')
-    : (currentDiv?.name ?? '');
+  const currentDivName = isPlayoff ? (meta?.playoff?.name ?? 'プレーオフ') : (currentDiv?.name ?? '');
   // プレーオフは昇降格ゾーン表示の対象外（リーグをまたぐため）
-  const isLowest =
-    isPlayoff || !currentDiv
-      ? true
-      : currentDiv.rank === Math.max(...divisions.map((d) => d.rank));
+  const isLowest = isPlayoff || !currentDiv ? true : currentDiv.rank === Math.max(...divisions.map((d) => d.rank));
   const isTop = isPlayoff || !currentDiv ? true : currentDiv.rank === 1;
 
   return (
     <div className="space-y-6">
       {isPlayoff
-        ? meta?.playoff?.description && (
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {meta.playoff.description}
-            </p>
-          )
-        : currentDiv?.note && (
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {currentDiv.note}
-            </p>
-          )}
+        ? meta?.playoff?.description && <p className="text-xs text-gray-500 dark:text-gray-400">{meta.playoff.description}</p>
+        : currentDiv?.note && <p className="text-xs text-gray-500 dark:text-gray-400">{currentDiv.note}</p>}
 
       {teamsInDiv.length === 0 ? (
         <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
-          <p className="font-semibold mb-1">
-            {currentDivName || 'このリーグ'}のデータは準備中です
-          </p>
+          <p className="font-semibold mb-1">{currentDivName || 'このリーグ'}のデータは準備中です</p>
           <p className="text-xs">公式記録をもとに順次追加していきます。</p>
         </div>
       ) : (
         <>
           {/* 順位表 */}
           <section>
-            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-              {currentDivName} 順位表
-            </h2>
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">{currentDivName} 順位表</h2>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
               {hasOfficialRanking
                 ? '順位は順位決定戦（公式記録）による。勝敗は同部内の対戦成績。'
@@ -181,16 +138,10 @@ function MatchesPanel({
               <table className="w-full text-sm">
                 <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
                   <tr>
-                    <th className="py-3 px-4 text-left font-medium w-16">
-                      順位
-                    </th>
+                    <th className="py-3 px-4 text-left font-medium w-16">順位</th>
                     <th className="py-3 px-2 text-left font-medium">チーム</th>
-                    <th className="py-3 px-2 text-center font-medium w-20">
-                      勝敗
-                    </th>
-                    <th className="py-3 px-4 text-center font-medium w-16">
-                      得失
-                    </th>
+                    <th className="py-3 px-2 text-center font-medium w-20">勝敗</th>
+                    <th className="py-3 px-4 text-center font-medium w-16">得失</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
@@ -199,53 +150,31 @@ function MatchesPanel({
                     const total = displayRanking.length;
                     // 入替戦ゾーンの目安（最上位リーグの下位2、最下位以外の上位2）
                     // 公式順位表示時（ノックアウト）はゾーン表示しない
-                    const relegationZone =
-                      !hasOfficialRanking &&
-                      !isLowest &&
-                      rank > total - 2 &&
-                      team.played > 0;
-                    const promotionZone =
-                      !hasOfficialRanking &&
-                      !isTop &&
-                      rank <= 2 &&
-                      team.played > 0;
+                    const relegationZone = !hasOfficialRanking && !isLowest && rank > total - 2 && team.played > 0;
+                    const promotionZone = !hasOfficialRanking && !isTop && rank <= 2 && team.played > 0;
                     return (
-                      <tr
-                        key={team.teamId}
-                        className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
-                      >
+                      <tr key={team.teamId} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
                         <td className="py-3 text-center font-bold text-gray-700 dark:text-gray-300">
                           <span className="inline-flex items-center gap-1">
                             {rank}
                             {promotionZone && (
-                              <span
-                                className={`${DIV_BADGE} bg-green-100 text-green-700`}
-                                title="入替戦（昇格）対象の目安"
-                              >
+                              <span className={`${DIV_BADGE} bg-green-100 text-green-700`} title="入替戦（昇格）対象の目安">
                                 昇
                               </span>
                             )}
                             {relegationZone && (
-                              <span
-                                className={`${DIV_BADGE} bg-red-100 text-red-700`}
-                                title="入替戦（降格）対象の目安"
-                              >
+                              <span className={`${DIV_BADGE} bg-red-100 text-red-700`} title="入替戦（降格）対象の目安">
                                 降
                               </span>
                             )}
                           </span>
                         </td>
                         <td className="py-3 px-2 font-medium">
-                          <Link
-                            href={`/teams/${team.teamId}`}
-                            className="hover:text-blue-600 hover:underline"
-                          >
+                          <Link href={`/teams/${team.teamId}`} className="hover:text-blue-600 hover:underline">
                             {team.name}
                           </Link>
                           {isPlayoff && teamDivName(team.teamId) && (
-                            <span
-                              className={`${DIV_BADGE} bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 ml-2`}
-                            >
+                            <span className={`${DIV_BADGE} bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 ml-2`}>
                               {teamDivName(team.teamId)}
                             </span>
                           )}
@@ -262,9 +191,7 @@ function MatchesPanel({
                           )}
                         </td>
                         <td className="py-3 px-4 text-center text-gray-500 dark:text-gray-400 text-xs">
-                          {team.played > 0
-                            ? `${team.pointsWon}-${team.pointsLost}`
-                            : '-'}
+                          {team.played > 0 ? `${team.pointsWon}-${team.pointsLost}` : '-'}
                         </td>
                       </tr>
                     );
@@ -276,21 +203,13 @@ function MatchesPanel({
               <p className="text-[11px] text-gray-400 mt-2">
                 {!isTop && (
                   <span className="mr-3">
-                    <span
-                      className={`${DIV_BADGE} bg-green-100 text-green-700 mr-1`}
-                    >
-                      昇
-                    </span>
+                    <span className={`${DIV_BADGE} bg-green-100 text-green-700 mr-1`}>昇</span>
                     入替戦（昇格）対象の目安
                   </span>
                 )}
                 {!isLowest && (
                   <span>
-                    <span
-                      className={`${DIV_BADGE} bg-red-100 text-red-700 mr-1`}
-                    >
-                      降
-                    </span>
+                    <span className={`${DIV_BADGE} bg-red-100 text-red-700 mr-1`}>降</span>
                     入替戦（降格）対象の目安
                   </span>
                 )}
@@ -301,44 +220,26 @@ function MatchesPanel({
           {/* 予選ブロック別順位表 */}
           {blockStandings && blockStandings.length > 0 && (
             <section>
-              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                予選リーグ ブロック順位表
-              </h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                各ブロック1位が順位決定戦へ進出。順位は公式記録による。
-              </p>
+              <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">予選リーグ ブロック順位表</h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">各ブロック1位が順位決定戦へ進出。順位は公式記録による。</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {blockStandings.map(({ block, rows }) => (
-                  <div
-                    key={block}
-                    className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700"
-                  >
-                    <div className="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-xs font-bold text-gray-600 dark:text-gray-300">
-                      {block}ブロック
-                    </div>
+                  <div key={block} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
+                    <div className="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-xs font-bold text-gray-600 dark:text-gray-300">{block}ブロック</div>
                     <table className="w-full text-sm">
                       <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                         {rows.map((team, idx) => (
                           <tr key={team.teamId}>
-                            <td className="py-2 px-3 w-10 text-center font-bold text-gray-700 dark:text-gray-300">
-                              {idx + 1}
-                            </td>
+                            <td className="py-2 px-3 w-10 text-center font-bold text-gray-700 dark:text-gray-300">{idx + 1}</td>
                             <td className="py-2 px-1 font-medium">
                               {team.name}
                               {idx === 0 && (
-                                <span
-                                  className={`${DIV_BADGE} bg-amber-100 text-amber-700 ml-2`}
-                                  title="順位決定戦へ進出"
-                                >
+                                <span className={`${DIV_BADGE} bg-amber-100 text-amber-700 ml-2`} title="順位決定戦へ進出">
                                   進出
                                 </span>
                               )}
                             </td>
-                            <td className="py-2 px-3 text-center text-gray-500">
-                              {team.played > 0
-                                ? `${team.won}-${team.lost}`
-                                : '-'}
-                            </td>
+                            <td className="py-2 px-3 text-center text-gray-500">{team.played > 0 ? `${team.won}-${team.lost}` : '-'}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -351,9 +252,7 @@ function MatchesPanel({
 
           {/* 対戦結果一覧 */}
           <section>
-            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-              {currentDivName} 対戦結果
-            </h2>
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">{currentDivName} 対戦結果</h2>
             <div className="space-y-3">
               {matchesInDiv.map((match) => {
                 const key = `${gender}-${divisionId}-${match.id}`;
@@ -362,15 +261,10 @@ function MatchesPanel({
                   <div
                     key={match.id}
                     className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border transition-all ${
-                      isExpanded
-                        ? 'border-blue-500 ring-1 ring-blue-100 dark:ring-blue-900'
-                        : 'border-gray-100 dark:border-gray-700'
+                      isExpanded ? 'border-blue-500 ring-1 ring-blue-100 dark:ring-blue-900' : 'border-gray-100 dark:border-gray-700'
                     }`}
                   >
-                    <div
-                      className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors select-none"
-                      onClick={() => toggle(key)}
-                    >
+                    <div className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors select-none" onClick={() => toggle(key)}>
                       <div className="flex items-center justify-between mb-2">
                         <span className="flex items-center gap-2">
                           <span className="text-xs font-semibold text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
@@ -382,9 +276,7 @@ function MatchesPanel({
                             </span>
                           )}
                         </span>
-                        <span className="text-xs text-gray-400">
-                          {match.date.replace(/-/g, '/')}
-                        </span>
+                        <span className="text-xs text-gray-400">{match.date.replace(/-/g, '/')}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex-1 text-right">
@@ -397,30 +289,12 @@ function MatchesPanel({
                         <div className="px-4 flex flex-col items-center min-w-[80px]">
                           {match.status === 'finished' ? (
                             <div className="flex items-center space-x-2 text-xl font-bold font-mono">
-                              <span
-                                className={
-                                  match.winner === match.teamA
-                                    ? 'text-blue-600 dark:text-blue-400'
-                                    : 'text-gray-400'
-                                }
-                              >
-                                {match.scoreA}
-                              </span>
+                              <span className={match.winner === match.teamA ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}>{match.scoreA}</span>
                               <span className="text-gray-300">-</span>
-                              <span
-                                className={
-                                  match.winner === match.teamB
-                                    ? 'text-blue-600 dark:text-blue-400'
-                                    : 'text-gray-400'
-                                }
-                              >
-                                {match.scoreB}
-                              </span>
+                              <span className={match.winner === match.teamB ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}>{match.scoreB}</span>
                             </div>
                           ) : (
-                            <span className="text-xl font-bold text-gray-300">
-                              VS
-                            </span>
+                            <span className="text-xl font-bold text-gray-300">VS</span>
                           )}
                         </div>
                         <div className="flex-1 text-left">
@@ -431,9 +305,7 @@ function MatchesPanel({
                           </span>
                         </div>
                         <div className="flex items-center justify-end">
-                          <span className="ml-2 text-xs">
-                            {isExpanded ? '▲' : '▼'}
-                          </span>
+                          <span className="ml-2 text-xs">{isExpanded ? '▲' : '▼'}</span>
                         </div>
                       </div>
                     </div>
@@ -442,16 +314,9 @@ function MatchesPanel({
                       <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4">
                         <div className="space-y-3">
                           {match.matches.map((detail, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center text-sm"
-                            >
-                              <div className="w-8 font-bold text-gray-400 text-xs uppercase text-center">
-                                {detail.type}
-                              </div>
-                              <div
-                                className={`flex-1 text-right ${detail.winner === 'A' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
-                              >
+                            <div key={idx} className="flex items-center text-sm">
+                              <div className="w-8 font-bold text-gray-400 text-xs uppercase text-center">{detail.type}</div>
+                              <div className={`flex-1 text-right ${detail.winner === 'A' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}>
                                 {getPlayerNames(detail.playersA)}
                               </div>
                               <div className="px-3">
@@ -459,9 +324,7 @@ function MatchesPanel({
                                   {detail.scoreA}-{detail.scoreB}
                                 </span>
                               </div>
-                              <div
-                                className={`flex-1 text-left ${detail.winner === 'B' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}
-                              >
+                              <div className={`flex-1 text-left ${detail.winner === 'B' ? 'font-bold text-gray-800 dark:text-gray-200' : 'text-gray-500'}`}>
                                 {getPlayerNames(detail.playersB)}
                               </div>
                             </div>
@@ -500,14 +363,7 @@ function MatchesPanel({
   );
 }
 
-export default function MatchesPage({
-  year,
-  meta,
-  divisions,
-  matches,
-  teams,
-  playerMaps,
-}: MatchesPageProps) {
+export default function MatchesPage({ year, meta, divisions, matches, teams, playerMaps }: MatchesPageProps) {
   const [gender, setGender] = useState<Gender>('boys');
   const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -525,17 +381,12 @@ export default function MatchesPage({
       }
       return base;
     };
-    return { boys: build('boys'), girls: build('girls') } as Record<
-      Gender,
-      { id: string; name: string }[]
-    >;
+    return { boys: build('boys'), girls: build('girls') } as Record<Gender, { id: string; name: string }[]>;
   }, [divisions, matches, meta]);
 
   const activeTabs = tabsByGender[gender];
   // 性別を切り替えた際、選択中の division がそのタブ一覧に無ければ先頭にフォールバック
-  const effectiveDivId = activeTabs.some((t) => t.id === divisionId)
-    ? divisionId
-    : (activeTabs[0]?.id ?? '1');
+  const effectiveDivId = activeTabs.some((t) => t.id === divisionId) ? divisionId : (activeTabs[0]?.id ?? '1');
 
   const toggle = (key: string) => {
     setExpanded((prev) => {
@@ -552,9 +403,7 @@ export default function MatchesPage({
   const editionLabel = meta?.title ?? `STリーグ ${year}`;
   const pageTitle = `${editionLabel} 試合結果・順位表 | ソフトテニス情報`;
   const pageUrl = `https://softeni-pick.com/st-league/${year}/matches/`;
-  const dateRange = meta?.period
-    ? `${meta.period.start.replace(/-/g, '/')}〜${meta.period.end.replace(/-/g, '/')}`
-    : '';
+  const dateRange = meta?.period ? `${meta.period.start.replace(/-/g, '/')}〜${meta.period.end.replace(/-/g, '/')}` : '';
 
   return (
     <>
@@ -578,10 +427,7 @@ export default function MatchesPage({
                 endDate: meta.period.end ?? meta.period.start,
               }),
               location: buildEventPlace(meta?.venue, meta?.location),
-              organizer: buildEventOrganizer(
-                '公益財団法人 日本ソフトテニス連盟',
-                'https://www.jsta.or.jp/',
-              ),
+              organizer: buildEventOrganizer('公益財団法人 日本ソフトテニス連盟', 'https://www.jsta.or.jp/'),
               description: `${editionLabel}の試合結果・対戦カード一覧。`,
               url: pageUrl,
             }),
@@ -607,9 +453,7 @@ export default function MatchesPage({
               {meta?.location && `（${meta.location}）`}
             </p>
           )}
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
-            STリーグⅠ・Ⅱと男女別に、対戦成績・順位表を掲載しています。
-          </p>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">STリーグⅠ・Ⅱと男女別に、対戦成績・順位表を掲載しています。</p>
         </header>
 
         {/* 性別タブ */}
@@ -617,9 +461,7 @@ export default function MatchesPage({
           <button
             onClick={() => setGender('boys')}
             className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-              gender === 'boys'
-                ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
+              gender === 'boys' ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
             }`}
           >
             男子
@@ -627,9 +469,7 @@ export default function MatchesPage({
           <button
             onClick={() => setGender('girls')}
             className={`py-2 px-4 font-medium text-sm focus:outline-none ${
-              gender === 'girls'
-                ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
+              gender === 'girls' ? 'border-b-2 border-pink-500 text-pink-600 dark:text-pink-400' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
             }`}
           >
             女子
@@ -664,11 +504,7 @@ export default function MatchesPage({
           tabsByGender[g].map((tab) => {
             const active = g === gender && tab.id === effectiveDivId;
             return (
-              <div
-                key={`${g}-${tab.id}`}
-                className={active ? '' : 'hidden'}
-                aria-hidden={!active}
-              >
+              <div key={`${g}-${tab.id}`} className={active ? '' : 'hidden'} aria-hidden={!active}>
                 <MatchesPanel
                   year={year}
                   gender={g}
@@ -689,42 +525,26 @@ export default function MatchesPage({
         {/* プレーオフ案内 */}
         {meta?.playoff && (
           <section className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-5">
-            <h2 className="font-bold text-amber-800 dark:text-amber-300 mb-1">
-              {meta.playoff.name}
-            </h2>
+            <h2 className="font-bold text-amber-800 dark:text-amber-300 mb-1">{meta.playoff.name}</h2>
             {meta.playoff.period && (
               <p className="text-sm text-amber-700 dark:text-amber-200">
-                {meta.playoff.period.start.replace(/-/g, '/')}〜
-                {meta.playoff.period.end.replace(/-/g, '/')}
+                {meta.playoff.period.start.replace(/-/g, '/')}〜{meta.playoff.period.end.replace(/-/g, '/')}
                 {meta.playoff.venue && `　${meta.playoff.venue}`}
               </p>
             )}
-            {meta.playoff.description && (
-              <p className="text-sm text-amber-700 dark:text-amber-200 mt-1">
-                {meta.playoff.description}
-              </p>
-            )}
+            {meta.playoff.description && <p className="text-sm text-amber-700 dark:text-amber-200 mt-1">{meta.playoff.description}</p>}
           </section>
         )}
 
         {/* 他ページ導線 */}
         <nav className="flex flex-wrap gap-3 pt-2">
-          <a
-            href={`/st-league/${year}`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <a href={`/st-league/${year}`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ {year}年度トップ（大会概要）
           </a>
-          <a
-            href={`/st-league/${year}/teams`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <a href={`/st-league/${year}/teams`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ 出場チーム・選手を見る
           </a>
-          <a
-            href={`/st-league/${year}/analysis`}
-            className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-          >
+          <a href={`/st-league/${year}/analysis`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
             ▶ 選手別データ・分析を見る
           </a>
         </nav>
@@ -738,11 +558,7 @@ export const getStaticPaths = async () => ({
   fallback: false,
 });
 
-export const getStaticProps = async ({
-  params,
-}: {
-  params: { year: string };
-}) => {
+export const getStaticProps = async ({ params }: { params: { year: string } }) => {
   const year = params.year;
   const matches = loadMatches(year);
   const participants = loadParticipants(year);

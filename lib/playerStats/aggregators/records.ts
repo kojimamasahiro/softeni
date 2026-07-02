@@ -2,10 +2,7 @@
 // 最長連勝 / 最長連敗（retired はスキップ・連鎖を切らない・数えない。データ契約 §G）/
 // 最高勝率（年度別・最小試合数以上）。
 
-import type {
-  PlayerStatistics,
-  StreakSpan,
-} from '../../../src/types/playerStatistics';
+import type { PlayerStatistics, StreakSpan } from '../../../src/types/playerStatistics';
 import type { PlayerStatsConfig } from '../config';
 import type { PlayerFacts, PlayerMatchFact } from '../types';
 import { calculateRate } from './util';
@@ -15,10 +12,7 @@ function emptySpan(): StreakSpan {
 }
 
 /** facts.matches は時系列昇順（date→roundOrder）を前提。 */
-function longestStreak(
-  matches: PlayerMatchFact[],
-  target: 'win' | 'lose',
-): StreakSpan {
+function longestStreak(matches: PlayerMatchFact[], target: 'win' | 'lose'): StreakSpan {
   let best = emptySpan();
   let curLen = 0;
   let curFrom: PlayerMatchFact | null = null;
@@ -55,10 +49,7 @@ function longestStreak(
   return best;
 }
 
-export function aggregateRecords(
-  facts: PlayerFacts,
-  config: PlayerStatsConfig,
-): PlayerStatistics['records'] {
+export function aggregateRecords(facts: PlayerFacts, config: PlayerStatsConfig): PlayerStatistics['records'] {
   const longestWinStreak = longestStreak(facts.matches, 'win');
   const longestLoseStreak = longestStreak(facts.matches, 'lose');
 

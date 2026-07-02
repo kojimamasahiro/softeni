@@ -1,16 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getServerSupabase,
-  sendMethodNotAllowed,
-  sendSupabaseError,
-} from '@/lib/matchesApi';
+import { getServerSupabase, sendMethodNotAllowed, sendSupabaseError } from '@/lib/matchesApi';
 import { loadVideoSessionWithCandidates } from '@/lib/videoReview';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return sendMethodNotAllowed(res, ['GET']);
   }
@@ -23,21 +16,13 @@ export default async function handler(
   const supabase = getServerSupabase();
 
   try {
-    const session = await loadVideoSessionWithCandidates(
-      supabase,
-      matchId,
-      sessionId,
-    );
+    const session = await loadVideoSessionWithCandidates(supabase, matchId, sessionId);
     if (!session) {
       return res.status(404).json({ error: 'Session not found.' });
     }
 
     return res.status(200).json({ session });
   } catch (error) {
-    return sendSupabaseError(
-      res,
-      error as Error,
-      'Failed to load video session.',
-    );
+    return sendSupabaseError(res, error as Error, 'Failed to load video session.');
   }
 }

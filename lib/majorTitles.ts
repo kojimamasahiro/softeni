@@ -1,15 +1,5 @@
-import {
-  getAllDetailRecords,
-  loadInformationMap,
-  loadTournamentIndex,
-} from '@/lib/tournamentData';
-import type {
-  TournamentDetailData,
-  TournamentEntry,
-  TournamentIndexEntry,
-  TournamentInformationEntry,
-  TournamentParticipant,
-} from '@/types/tournament';
+import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
+import type { TournamentDetailData, TournamentEntry, TournamentIndexEntry, TournamentInformationEntry, TournamentParticipant } from '@/types/tournament';
 
 interface MajorTitleYear {
   year: number;
@@ -25,21 +15,13 @@ export interface MajorTitleData {
 type MajorTitlesPreparation = {
   majors: TournamentIndexEntry[];
   infoMap: Map<string, TournamentInformationEntry[]>;
-  recordsByTournamentId: Map<
-    string,
-    Array<{ year: string; detail: TournamentDetailData }>
-  >;
+  recordsByTournamentId: Map<string, Array<{ year: string; detail: TournamentDetailData }>>;
 };
 
-const majorTitlePreparationCache = new Map<
-  string,
-  Promise<MajorTitlesPreparation>
->();
+const majorTitlePreparationCache = new Map<string, Promise<MajorTitlesPreparation>>();
 const playerMajorTitlesCache = new Map<string, Promise<MajorTitleData[]>>();
 
-const getMajorTitlePreparation = async (
-  root?: string,
-): Promise<MajorTitlesPreparation> => {
+const getMajorTitlePreparation = async (root?: string): Promise<MajorTitlesPreparation> => {
   const cwd = root || process.cwd();
   const cached = majorTitlePreparationCache.get(cwd);
   if (cached) return cached;
@@ -49,10 +31,7 @@ const getMajorTitlePreparation = async (
     const majors = index.filter((t) => t.isMajorTitle);
     const infoMap = await loadInformationMap(root);
     const allDetails = await getAllDetailRecords(root);
-    const recordsByTournamentId = new Map<
-      string,
-      Array<{ year: string; detail: TournamentDetailData }>
-    >();
+    const recordsByTournamentId = new Map<string, Array<{ year: string; detail: TournamentDetailData }>>();
 
     for (const record of allDetails) {
       const list = recordsByTournamentId.get(record.tournamentId) ?? [];
@@ -98,19 +77,14 @@ const formatStartDate = (raw?: string): string | undefined => {
  * - data/tournaments/details/<tournamentId>/<year>/*.json
  * - data/tournaments/information/<tournamentId>.json
  */
-export const getMajorTitlesForPlayer = async (
-  lastName: string,
-  firstName: string,
-  root?: string,
-): Promise<MajorTitleData[]> => {
+export const getMajorTitlesForPlayer = async (lastName: string, firstName: string, root?: string): Promise<MajorTitleData[]> => {
   const cwd = root || process.cwd();
   const playerCacheKey = `${cwd}:${lastName}:${firstName}`;
   const cached = playerMajorTitlesCache.get(playerCacheKey);
   if (cached) return cached;
 
   const playerPromise = (async () => {
-    const { majors, infoMap, recordsByTournamentId } =
-      await getMajorTitlePreparation(root);
+    const { majors, infoMap, recordsByTournamentId } = await getMajorTitlePreparation(root);
     const now = new Date();
     const out: MajorTitleData[] = [];
 
@@ -136,23 +110,15 @@ export const getMajorTitlesForPlayer = async (
         }
       }
 
-      const years = Array.from(yearGrouped.keys()).sort(
-        (a, b) => Number(b) - Number(a),
-      );
+      const years = Array.from(yearGrouped.keys()).sort((a, b) => Number(b) - Number(a));
       for (const year of years) {
         let resultStr: string | null = null;
         const details = yearGrouped.get(year) ?? [];
 
         // search details for results
         for (const d of details) {
-          const participants: TournamentParticipant[] = Array.isArray(
-            d.participants,
-          )
-            ? (d.participants as TournamentParticipant[])
-            : [];
-          const matchingParticipantIds = participants
-            .filter((p) => p.lastName === lastName && p.firstName === firstName)
-            .map((p) => p.id);
+          const participants: TournamentParticipant[] = Array.isArray(d.participants) ? (d.participants as TournamentParticipant[]) : [];
+          const matchingParticipantIds = participants.filter((p) => p.lastName === lastName && p.firstName === firstName).map((p) => p.id);
           if (matchingParticipantIds.length === 0) continue;
 
           const maybeResults = Array.isArray(d.results) ? d.results : undefined;
@@ -167,10 +133,7 @@ export const getMajorTitlesForPlayer = async (
                 if (Array.isArray(playerIdsField)) {
                   for (const pidRaw of playerIdsField) {
                     const pid = String(pidRaw);
-                    if (
-                      matchingParticipantIds.includes(pid) &&
-                      typeof resultField === 'string'
-                    ) {
+                    if (matchingParticipantIds.includes(pid) && typeof resultField === 'string') {
                       resultStr = resultField as string;
                       break;
                     }
@@ -181,34 +144,18 @@ export const getMajorTitlesForPlayer = async (
             }
           }
 
-          if (
-            !resultStr &&
-            Array.isArray(maybeResults) &&
-            Array.isArray(maybeEntries)
-          ) {
+          if (!resultStr && Array.isArray(maybeResults) && Array.isArray(maybeEntries)) {
             const entriesArr = maybeEntries as TournamentEntry[];
             for (const r of maybeResults) {
               if (r && typeof r === 'object') {
                 const rec = r as unknown as Record<string, unknown>;
                 const entryNo = rec.entryNo as unknown as number | undefined;
                 const entry = entriesArr.find((e) => e.entryNo === entryNo);
-                if (
-                  entry &&
-                  entry.playerIds.some((pid: string) =>
-                    matchingParticipantIds.includes(pid),
-                  )
-                ) {
-                  const tournamentField = rec.tournament as
-                    | Record<string, unknown>
-                    | undefined;
+                if (entry && entry.playerIds.some((pid: string) => matchingParticipantIds.includes(pid))) {
+                  const tournamentField = rec.tournament as Record<string, unknown> | undefined;
                   const labelFromTournament = (() => {
-                    if (
-                      tournamentField &&
-                      typeof tournamentField.label === 'string'
-                    ) {
-                      const cleaned = (tournamentField.label as string)
-                        .replace(/敗退/g, '')
-                        .trim();
+                    if (tournamentField && typeof tournamentField.label === 'string') {
+                      const cleaned = (tournamentField.label as string).replace(/敗退/g, '').trim();
                       if (cleaned !== '') return cleaned;
                     }
                     if (!tournamentField) {
@@ -228,14 +175,11 @@ export const getMajorTitlesForPlayer = async (
 
         // if not found in details, consult information for future scheduled
         if (!resultStr) {
-          const infoForYear = infoEntries.find(
-            (it) => Number(it.year) === Number(year),
-          );
+          const infoForYear = infoEntries.find((it) => Number(it.year) === Number(year));
           if (infoForYear && infoForYear.startDate) {
             const sd = new Date(infoForYear.startDate);
             if (sd > now) {
-              const label =
-                formatStartDate(infoForYear.startDate) || infoForYear.startDate;
+              const label = formatStartDate(infoForYear.startDate) || infoForYear.startDate;
               resultStr = `${label}`;
             }
           }
@@ -244,9 +188,7 @@ export const getMajorTitlesForPlayer = async (
         yearsResults.push({ year: Number(year), result: resultStr || 'ー' });
       }
 
-      const link = m.generationId
-        ? `/tournaments/${m.generationId}/${tournamentId}`
-        : undefined;
+      const link = m.generationId ? `/tournaments/${m.generationId}/${tournamentId}` : undefined;
       out.push({ name, years: yearsResults, link });
     }
 

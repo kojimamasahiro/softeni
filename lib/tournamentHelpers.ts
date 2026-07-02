@@ -76,9 +76,7 @@ const getGenerationLabel = (generation: string): string => {
 /**
  * 大会IDから大会情報を取得する
  */
-export const getTournamentInfo = async (
-  tournamentId: string,
-): Promise<TournamentInfo | null> => {
+export const getTournamentInfo = async (tournamentId: string): Promise<TournamentInfo | null> => {
   try {
     // APIから全ての大会データを取得
     const response = await fetch('/api/tournaments');
@@ -91,9 +89,7 @@ export const getTournamentInfo = async (
     }
 
     // 指定されたIDの大会を検索
-    const tournament = data.tournaments.find(
-      (t: TournamentOption) => t.id === tournamentId,
-    );
+    const tournament = data.tournaments.find((t: TournamentOption) => t.id === tournamentId);
     if (!tournament) return null;
 
     return {
@@ -139,8 +135,7 @@ export const generateTournamentUrlFromMatch = (match: {
 
   // マッチデータの年を使用（フォールバックは現在年）
   const year = match.tournament_year || new Date().getFullYear();
-  const gameCategory =
-    match.tournament_category === 'singles' ? 'singles' : 'doubles';
+  const gameCategory = match.tournament_category === 'singles' ? 'singles' : 'doubles';
   const ageCategory = 'none'; // デフォルト
   const gender = match.tournament_gender;
 
@@ -150,9 +145,7 @@ export const generateTournamentUrlFromMatch = (match: {
 /**
  * 大会情報をマッチ作成時に使用するための選択肢を生成
  */
-export const getTournamentOptions = async (): Promise<
-  { id: string; name: string; year: number }[]
-> => {
+export const getTournamentOptions = async (): Promise<{ id: string; name: string; year: number }[]> => {
   try {
     // APIから全ての大会データを取得
     const response = await fetch('/api/tournaments');
@@ -169,17 +162,11 @@ export const getTournamentOptions = async (): Promise<
     }
 
     // 選択肢用の形式に変換（年情報も含む）
-    return data.tournaments.map(
-      (tournament: {
-        id: string;
-        name: string;
-        yearMeta: { year: number };
-      }) => ({
-        id: tournament.id,
-        name: tournament.name,
-        year: tournament.yearMeta.year,
-      }),
-    );
+    return data.tournaments.map((tournament: { id: string; name: string; yearMeta: { year: number } }) => ({
+      id: tournament.id,
+      name: tournament.name,
+      year: tournament.yearMeta.year,
+    }));
   } catch (error) {
     console.error('Failed to fetch tournament options:', error);
     return [];
@@ -189,9 +176,7 @@ export const getTournamentOptions = async (): Promise<
 /**
  * 特定の大会のカテゴリ情報を取得する
  */
-export const getTournamentCategories = async (
-  tournamentId: string,
-): Promise<TournamentCategory[]> => {
+export const getTournamentCategories = async (tournamentId: string): Promise<TournamentCategory[]> => {
   try {
     const response = await fetch(`/api/tournaments/${tournamentId}/categories`);
     const data = await readJsonResponse<{
@@ -230,14 +215,10 @@ export const getTournamentCategoriesWithMeta = async (
     }
 
     // tournamentIdに一致する大会を検索
-    const tournament = tournamentsData.tournaments.find(
-      (t: TournamentOption) => t.id === tournamentId,
-    );
+    const tournament = tournamentsData.tournaments.find((t: TournamentOption) => t.id === tournamentId);
 
     // カテゴリ情報を取得
-    const categoriesResponse = await fetch(
-      `/api/tournaments/${tournamentId}/categories`,
-    );
+    const categoriesResponse = await fetch(`/api/tournaments/${tournamentId}/categories`);
     const categoriesData = await readJsonResponse<{
       categories?: TournamentCategory[];
     }>(categoriesResponse);
@@ -257,10 +238,7 @@ export const getTournamentCategoriesWithMeta = async (
 /**
  * カテゴリから選択肢を生成する
  */
-export const getCategoryOptions = (
-  categories: TournamentCategory[],
-  meta?: TournamentMeta,
-) => {
+export const getCategoryOptions = (categories: TournamentCategory[], meta?: TournamentMeta) => {
   // 世代の選択肢（TournamentMetaのgenerationを優先使用）
   const generations = meta
     ? [
@@ -269,34 +247,21 @@ export const getCategoryOptions = (
           label: getGenerationLabel(meta.generation),
         },
       ]
-    : Array.from(new Set(categories.map((cat) => cat.age || 'none'))).map(
-        (age) => ({
-          value: age,
-          label: age === 'none' ? '一般' : age,
-        }),
-      );
+    : Array.from(new Set(categories.map((cat) => cat.age || 'none'))).map((age) => ({
+        value: age,
+        label: age === 'none' ? '一般' : age,
+      }));
 
   // 性別の選択肢
-  const genders = Array.from(new Set(categories.map((cat) => cat.gender))).map(
-    (gender) => ({
-      value: gender,
-      label: gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : '混合',
-    }),
-  );
+  const genders = Array.from(new Set(categories.map((cat) => cat.gender))).map((gender) => ({
+    value: gender,
+    label: gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : '混合',
+  }));
 
   // カテゴリの選択肢
-  const gameCategories = Array.from(
-    new Set(categories.map((cat) => cat.category)),
-  ).map((category) => ({
+  const gameCategories = Array.from(new Set(categories.map((cat) => cat.category))).map((category) => ({
     value: category,
-    label:
-      category === 'doubles'
-        ? 'ダブルス'
-        : category === 'team'
-          ? '団体'
-          : category === 'singles'
-            ? 'シングルス'
-            : category,
+    label: category === 'doubles' ? 'ダブルス' : category === 'team' ? '団体' : category === 'singles' ? 'シングルス' : category,
   }));
 
   return {

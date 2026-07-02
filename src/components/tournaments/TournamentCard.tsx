@@ -39,10 +39,7 @@ export const TournamentCard = ({ tournament }: Props) => {
             {name}
           </Link>
         </h3>
-        <Link
-          href={hubHref}
-          className="text-sm text-blue-600 dark:text-blue-400 hover:underline whitespace-nowrap"
-        >
+        <Link href={hubHref} className="text-sm text-blue-600 dark:text-blue-400 hover:underline whitespace-nowrap">
           歴代結果・優勝者まとめ →
         </Link>
       </div>
@@ -68,12 +65,8 @@ export const TournamentCard = ({ tournament }: Props) => {
             {group.links.length > 0 && (
               <ul className="flex flex-wrap gap-2">
                 {group.links.map((link) => (
-                  <li
-                    key={`${generation}-${id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}
-                  >
-                    <Link
-                      href={`/tournaments/${generation}/${id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}
-                    >
+                  <li key={`${generation}-${id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}>
+                    <Link href={`/tournaments/${generation}/${id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}>
                       <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
                         {link.categoryLabel}
                       </span>

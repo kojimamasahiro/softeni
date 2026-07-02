@@ -7,10 +7,7 @@ import { isFinalGame as isFinalGameByWins } from './matchRules';
  * @param initialServeTeam 第1ゲームで最初にサーブを行うチーム
  * @returns このゲームで最初にサーブを行うチーム
  */
-export function determineInitialServeTeam(
-  gameNumber: number,
-  initialServeTeam: 'A' | 'B',
-): 'A' | 'B' {
+export function determineInitialServeTeam(gameNumber: number, initialServeTeam: 'A' | 'B'): 'A' | 'B' {
   // ゲームごとにサーブ権を交代
   // 奇数ゲーム: initialServeTeam、偶数ゲーム: 相手チーム
   if (gameNumber % 2 === 1) {
@@ -28,12 +25,7 @@ export function determineInitialServeTeam(
  * @param gamesWonB チームBの勝利ゲーム数
  * @returns ファイナルゲームかどうか
  */
-export function isFinalGame(
-  gameNumber: number,
-  bestOf: number,
-  gamesWonA: number = 0,
-  gamesWonB: number = 0,
-): boolean {
+export function isFinalGame(gameNumber: number, bestOf: number, gamesWonA: number = 0, gamesWonB: number = 0): boolean {
   void gameNumber;
   return isFinalGameByWins(bestOf, gamesWonA, gamesWonB);
 }
@@ -47,13 +39,7 @@ export function isFinalGame(
  * @param gamesWonB チームBの勝利ゲーム数（オプション）
  * @returns サーブを行うチーム
  */
-export function getCurrentServingTeam(
-  game: Game,
-  pointNumber: number,
-  bestOf: number,
-  gamesWonA: number = 0,
-  gamesWonB: number = 0,
-): 'A' | 'B' {
+export function getCurrentServingTeam(game: Game, pointNumber: number, bestOf: number, gamesWonA: number = 0, gamesWonB: number = 0): 'A' | 'B' {
   if (!game.initial_serve_team) {
     throw new Error('Initial serve team not set');
   }
@@ -67,11 +53,7 @@ export function getCurrentServingTeam(
     // ファイナルゲーム: 2ポイントごとにサーブ交代
     // ポイント1-2: 初期サーブチーム、ポイント3-4: 相手チーム、ポイント5-6: 初期サーブチーム...
     const switchCount = Math.floor((pointNumber - 1) / 2);
-    return switchCount % 2 === 0
-      ? initialServeTeam
-      : initialServeTeam === 'A'
-        ? 'B'
-        : 'A';
+    return switchCount % 2 === 0 ? initialServeTeam : initialServeTeam === 'A' ? 'B' : 'A';
   } else {
     // 通常のゲーム: ゲーム全体を通して同じチームがサーブ
     return initialServeTeam;
@@ -86,12 +68,7 @@ export function getCurrentServingTeam(
  * @param gamesWonB チームBの勝利ゲーム数（オプション）
  * @returns 各ポイントのサーブ権の配列
  */
-export function calculateAllServingTeams(
-  game: Game,
-  bestOf: number,
-  gamesWonA: number = 0,
-  gamesWonB: number = 0,
-): ('A' | 'B')[] {
+export function calculateAllServingTeams(game: Game, bestOf: number, gamesWonA: number = 0, gamesWonB: number = 0): ('A' | 'B')[] {
   if (!game.initial_serve_team) {
     return [];
   }
@@ -100,9 +77,7 @@ export function calculateAllServingTeams(
   const servingTeams: ('A' | 'B')[] = [];
 
   for (let pointNumber = 1; pointNumber <= totalPoints; pointNumber++) {
-    servingTeams.push(
-      getCurrentServingTeam(game, pointNumber, bestOf, gamesWonA, gamesWonB),
-    );
+    servingTeams.push(getCurrentServingTeam(game, pointNumber, bestOf, gamesWonA, gamesWonB));
   }
 
   return servingTeams;
@@ -146,8 +121,7 @@ export function getCurrentServingPlayerIndex(
   }
 
   // 初期サーブ選手のインデックスを取得（game.initial_serve_player_indexまたは引数から）
-  const gameInitialPlayerIndex =
-    game.initial_serve_player_index ?? initialPlayerIndex ?? 0;
+  const gameInitialPlayerIndex = game.initial_serve_player_index ?? initialPlayerIndex ?? 0;
 
   // ファイナルゲーム判定
   const finalGame = isFinalGame(game.game_number, bestOf, gamesWonA, gamesWonB);
@@ -155,13 +129,7 @@ export function getCurrentServingPlayerIndex(
   if (finalGame) {
     // ファイナルゲーム: チーム交代を考慮して選手を決定
     // まず現在のサーブチームを取得
-    const currentServingTeam = getCurrentServingTeam(
-      game,
-      pointNumber,
-      bestOf,
-      gamesWonA,
-      gamesWonB,
-    );
+    const currentServingTeam = getCurrentServingTeam(game, pointNumber, bestOf, gamesWonA, gamesWonB);
 
     // 初期サーブチームと現在のサーブチームが同じかどうかで選手を決定
     const initialServeTeam = game.initial_serve_team as 'A' | 'B';

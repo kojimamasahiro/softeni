@@ -14,7 +14,6 @@ async function main(): Promise<void> {
   const root = process.cwd();
   let failed = 0;
   const check = (name: string, cond: boolean, extra = '') => {
-    // eslint-disable-next-line no-console
     console.log(`  ${cond ? '✓' : '✗'} ${name}${extra ? ` | ${extra}` : ''}`);
     if (!cond) failed += 1;
   };
@@ -50,7 +49,6 @@ async function main(): Promise<void> {
   check('同一プロセス反復で memo が効く（2回目が高速）', second <= first, `1st=${first}ms 2nd=${second}ms`);
   check('stats キャッシュが同一オブジェクトを返す', again === (await getPlayerStatistics(19, {}, root)));
 
-  // eslint-disable-next-line no-console
   console.log(`\n  facade checks: ${failed === 0 ? 'ALL PASS' : failed + ' FAILED'}`);
   if (failed > 0) process.exitCode = 1;
 }

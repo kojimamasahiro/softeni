@@ -5,12 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 import type { Match } from '../src/types/database';
-import {
-  getGrowthReportFileName,
-  getGrowthTargetForSide,
-  GrowthReport,
-  GrowthTarget,
-} from './growthAnalysis';
+import { getGrowthReportFileName, getGrowthTargetForSide, GrowthReport, GrowthTarget } from './growthAnalysis';
 import { getPublicMatchDetailPath } from './siteConfig';
 
 export type FeaturedEntry = {
@@ -53,25 +48,12 @@ const readJson = <T>(filePath: string): T | null => {
 };
 
 export const loadFeaturedEntries = (): FeaturedEntry[] => {
-  const payload = readJson<{ featured?: FeaturedEntry[] }>(
-    path.join(process.cwd(), 'data', 'growth-featured.json'),
-  );
-  return (payload?.featured ?? []).filter(
-    (entry) => entry?.subjectKey && entry?.slug,
-  );
+  const payload = readJson<{ featured?: FeaturedEntry[] }>(path.join(process.cwd(), 'data', 'growth-featured.json'));
+  return (payload?.featured ?? []).filter((entry) => entry?.subjectKey && entry?.slug);
 };
 
 export const loadGrowthTargets = (): GrowthTarget[] => {
-  const payload = readJson<{ targets?: GrowthTarget[] }>(
-    path.join(
-      process.cwd(),
-      'public',
-      'data',
-      'beta-matches',
-      'growth',
-      'targets.json',
-    ),
-  );
+  const payload = readJson<{ targets?: GrowthTarget[] }>(path.join(process.cwd(), 'public', 'data', 'beta-matches', 'growth', 'targets.json'));
   return payload?.targets ?? [];
 };
 
@@ -79,9 +61,7 @@ export const loadGrowthTargets = (): GrowthTarget[] => {
 export const loadTournamentLabels = (): Map<string, string> => {
   const labels = new Map<string, string>();
   for (const file of ['index.json', 'local_index.json']) {
-    const rows = readJson<Array<{ tournamentId?: string; label?: string }>>(
-      path.join(process.cwd(), 'data', 'tournaments', file),
-    );
+    const rows = readJson<Array<{ tournamentId?: string; label?: string }>>(path.join(process.cwd(), 'data', 'tournaments', file));
     if (!Array.isArray(rows)) continue;
     for (const row of rows) {
       if (row?.tournamentId && row.label && !labels.has(row.tournamentId)) {
@@ -94,18 +74,12 @@ export const loadTournamentLabels = (): Map<string, string> => {
 
 // 公開試合の一覧（軽量版・ポイントは含まない）。出所表示に使う。
 export const loadPublicMatches = (): Match[] => {
-  const payload = readJson<{ matches?: Match[] }>(
-    path.join(process.cwd(), 'public', 'data', 'beta-matches', 'index.json'),
-  );
+  const payload = readJson<{ matches?: Match[] }>(path.join(process.cwd(), 'public', 'data', 'beta-matches', 'index.json'));
   return payload?.matches ?? [];
 };
 
 // ある成長ターゲット（subjectKey）のもとになった試合を、出所として集める（新しい順）。
-export const gatherSourceMatches = (
-  targetKey: string,
-  matches: Match[],
-  tournamentLabels: Map<string, string> = new Map(),
-): SourceMatch[] => {
+export const gatherSourceMatches = (targetKey: string, matches: Match[], tournamentLabels: Map<string, string> = new Map()): SourceMatch[] => {
   const result: SourceMatch[] = [];
   for (const match of matches) {
     let side: 'A' | 'B' | null = null;
@@ -117,10 +91,7 @@ export const gatherSourceMatches = (
     const youtubeId = (match as { youtube_video_id?: string }).youtube_video_id;
     const youtubeUrl = (match as { youtube_url?: string }).youtube_url;
     const tournamentId = (match as { tournament_id?: string }).tournament_id;
-    const tournamentName =
-      (tournamentId ? tournamentLabels.get(tournamentId) : undefined) ??
-      match.tournament_name ??
-      null;
+    const tournamentName = (tournamentId ? tournamentLabels.get(tournamentId) : undefined) ?? match.tournament_name ?? null;
     result.push({
       id: match.id,
       date: match.match_date ?? null,
@@ -128,9 +99,7 @@ export const gatherSourceMatches = (
       tournamentName,
       roundName: (match as { round_name?: string }).round_name ?? null,
       detailPath: getPublicMatchDetailPath(match),
-      videoUrl:
-        youtubeUrl ??
-        (youtubeId ? `https://www.youtube.com/watch?v=${youtubeId}` : null),
+      videoUrl: youtubeUrl ?? (youtubeId ? `https://www.youtube.com/watch?v=${youtubeId}` : null),
     });
   }
   result.sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
@@ -139,24 +108,13 @@ export const gatherSourceMatches = (
 
 const readReport = (subjectKey: string): GrowthReport | null => {
   const payload = readJson<{ report?: GrowthReport }>(
-    path.join(
-      process.cwd(),
-      'public',
-      'data',
-      'beta-matches',
-      'growth',
-      'reports',
-      getGrowthReportFileName(subjectKey),
-    ),
+    path.join(process.cwd(), 'public', 'data', 'beta-matches', 'growth', 'reports', getGrowthReportFileName(subjectKey)),
   );
   return payload?.report ?? null;
 };
 
 // 起点となる個人名を解決する。
-export const resolveFocusName = (
-  entry: FeaturedEntry,
-  targets: GrowthTarget[],
-): string | null => {
+export const resolveFocusName = (entry: FeaturedEntry, targets: GrowthTarget[]): string | null => {
   const explicit = entry.playerName?.trim();
   if (explicit) return explicit;
   const primary = targets.find((t) => t.key === entry.subjectKey);
@@ -164,17 +122,10 @@ export const resolveFocusName = (
 };
 
 // その選手のシングルス記録＋その選手を含むペア記録を集める（シングルス→ペア、試合数の多い順）。
-export const gatherShowcaseTargets = (
-  entry: FeaturedEntry,
-  targets: GrowthTarget[],
-): GrowthTarget[] => {
+export const gatherShowcaseTargets = (entry: FeaturedEntry, targets: GrowthTarget[]): GrowthTarget[] => {
   const focusName = resolveFocusName(entry, targets);
   const primary = targets.find((t) => t.key === entry.subjectKey);
-  const relevant = focusName
-    ? targets.filter((t) => t.playerNames?.includes(focusName))
-    : primary
-      ? [primary]
-      : [];
+  const relevant = focusName ? targets.filter((t) => t.playerNames?.includes(focusName)) : primary ? [primary] : [];
   return relevant.slice().sort((a, b) => {
     if (a.kind !== b.kind) return a.kind === 'player' ? -1 : 1;
     return b.completedMatchCount - a.completedMatchCount;
@@ -182,19 +133,13 @@ export const gatherShowcaseTargets = (
 };
 
 // 記録ラベル: シングルス or ダブルス（相手の名前付き）。
-export const buildRecordLabel = (
-  target: GrowthTarget,
-  focusName: string | null,
-): string => {
+export const buildRecordLabel = (target: GrowthTarget, focusName: string | null): string => {
   if (target.kind === 'player') return 'シングルス';
   const partner = target.playerNames.find((name) => name !== focusName);
   return partner ? `ダブルス（${partner}）` : 'ダブルス';
 };
 
-export const gatherShowcaseRecords = (
-  entry: FeaturedEntry,
-  targets: GrowthTarget[],
-): ShowcaseRecord[] => {
+export const gatherShowcaseRecords = (entry: FeaturedEntry, targets: GrowthTarget[]): ShowcaseRecord[] => {
   const focusName = resolveFocusName(entry, targets);
   const matches = loadPublicMatches();
   const tournamentLabels = loadTournamentLabels();
@@ -206,21 +151,14 @@ export const gatherShowcaseRecords = (
         key: target.key,
         label: buildRecordLabel(target, focusName),
         report,
-        sourceMatches: gatherSourceMatches(
-          target.key,
-          matches,
-          tournamentLabels,
-        ),
+        sourceMatches: gatherSourceMatches(target.key, matches, tournamentLabels),
       });
     }
   }
   return records;
 };
 
-export const showcaseDisplayName = (
-  entry: FeaturedEntry,
-  targets: GrowthTarget[],
-): string => {
+export const showcaseDisplayName = (entry: FeaturedEntry, targets: GrowthTarget[]): string => {
   const focusName = resolveFocusName(entry, targets);
   if (focusName) return focusName;
   const primary = targets.find((t) => t.key === entry.subjectKey);

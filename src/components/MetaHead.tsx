@@ -40,12 +40,7 @@ export default function MetaHead({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {noindex && (
-        <meta
-          name="robots"
-          content={noindexFollow ? 'noindex, follow' : 'noindex, nofollow'}
-        />
-      )}
+      {noindex && <meta name="robots" content={noindexFollow ? 'noindex, follow' : 'noindex, nofollow'} />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />

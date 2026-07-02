@@ -8,10 +8,7 @@ import { PlayerStatsConfig, resolveTier } from '../config';
 import type { PlayerEntryFact } from '../types';
 
 /** placement から順位係数を引く。 */
-export function placementCoefficient(
-  placement: PlayerEntryFact['placement'],
-  config: PlayerStatsConfig,
-): number {
+export function placementCoefficient(placement: PlayerEntryFact['placement'], config: PlayerStatsConfig): number {
   const c = config.ranking.placementCoefficient;
   switch (placement.kind) {
     case 'winner':
@@ -29,10 +26,7 @@ export function placementCoefficient(
 }
 
 /** 1 出場のスコア = tier重み × 順位係数。 */
-export function entryScore(
-  entry: PlayerEntryFact,
-  config: PlayerStatsConfig,
-): number {
+export function entryScore(entry: PlayerEntryFact, config: PlayerStatsConfig): number {
   const tier = resolveTier({
     isMajorTitle: entry.isMajorTitle,
     isNational: entry.isNational,
@@ -53,10 +47,7 @@ export interface SeasonPoints {
  * 選手 1 人の entries から (year, discipline) ごとのシーズンポイントを算出する。
  * discipline は config.ranking.disciplines のみ対象（既定 singles/doubles）。
  */
-export function computeSeasonPoints(
-  entries: PlayerEntryFact[],
-  config: PlayerStatsConfig,
-): SeasonPoints[] {
+export function computeSeasonPoints(entries: PlayerEntryFact[], config: PlayerStatsConfig): SeasonPoints[] {
   const disciplines = new Set(config.ranking.disciplines);
   const topN = config.ranking.topNTournamentsPerSeason;
   const groups = new Map<string, number[]>();

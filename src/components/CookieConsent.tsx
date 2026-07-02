@@ -35,27 +35,16 @@ const CookieConsent = ({ onAccept, onDecline }: Props) => {
       <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
         <span>
           当サイトは分析目的でCookieを使用します。詳しくは
-          <a
-            href="/privacy"
-            className="underline text-blue-300 hover:text-blue-200 ml-1"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="/privacy" className="underline text-blue-300 hover:text-blue-200 ml-1" target="_blank" rel="noopener noreferrer">
             プライバシーポリシー
           </a>
           をご覧ください。
         </span>
         <div className="flex gap-2 mt-2 md:mt-0">
-          <button
-            onClick={handleAccept}
-            className="px-4 py-1 bg-white text-gray-800 text-sm rounded hover:bg-gray-200 transition"
-          >
+          <button onClick={handleAccept} className="px-4 py-1 bg-white text-gray-800 text-sm rounded hover:bg-gray-200 transition">
             同意する
           </button>
-          <button
-            onClick={handleDecline}
-            className="px-4 py-1 bg-gray-600 text-white text-sm rounded hover:bg-gray-700 transition"
-          >
+          <button onClick={handleDecline} className="px-4 py-1 bg-gray-600 text-white text-sm rounded hover:bg-gray-700 transition">
             拒否する
           </button>
         </div>

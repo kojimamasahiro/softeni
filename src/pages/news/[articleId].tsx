@@ -34,10 +34,7 @@ function formatDate(iso: string | undefined): string | null {
 function PlayerName({ p }: { p: PreviewPlayerRef }) {
   if (p.playerId != null) {
     return (
-      <Link
-        href={`/players/${p.playerId}/results/`}
-        className="text-blue-600 hover:underline dark:text-blue-400"
-      >
+      <Link href={`/players/${p.playerId}/results/`} className="text-blue-600 hover:underline dark:text-blue-400">
         {p.name}
       </Link>
     );
@@ -57,13 +54,7 @@ function StandingBadge({ standing }: { standing: EntryStanding | null }) {
       : standing.state === 'eliminated'
         ? 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
         : 'bg-amber-100 text-amber-900 dark:bg-amber-900 dark:text-amber-100';
-  return (
-    <span
-      className={`ml-2 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${cls}`}
-    >
-      今大会: {standing.label}
-    </span>
-  );
+  return <span className={`ml-2 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${cls}`}>今大会: {standing.label}</span>;
 }
 
 /** 選手名を「・」区切りで並べる（各名はリンク化されうる） */
@@ -81,16 +72,13 @@ function PlayerNames({ players }: { players: PreviewPlayerRef[] }) {
 }
 
 export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
-  const { record, tournamentLabel, title, description, categories, hubHref } =
-    view;
+  const { record, tournamentLabel, title, description, categories, hubHref } = view;
   const pageUrl = `https://softeni-pick.com/news/${record.articleId}/`;
   const isPreview = record.type === 'preview';
 
   // 記事専用 OGP（tools/sns-images/news_og.py がローカル生成）。無ければ既定カードへフォールバック。
   const hasArticleOg = Boolean(record.ogImage);
-  const ogImageUrl = record.ogImage
-    ? buildSiteUrl(record.ogImage)
-    : siteConfig.ogImage;
+  const ogImageUrl = record.ogImage ? buildSiteUrl(record.ogImage) : siteConfig.ogImage;
 
   const publishedLabel = formatDate(record.createdAt);
   const updatedLabel = formatDate(record.updatedAt);
@@ -164,34 +152,23 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
         <h1 className="mb-2 text-2xl font-bold">{title}</h1>
         {(publishedLabel || updatedLabel) && (
           <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
-            {publishedLabel && record.createdAt && (
-              <time dateTime={record.createdAt}>公開: {publishedLabel}</time>
+            {publishedLabel && record.createdAt && <time dateTime={record.createdAt}>公開: {publishedLabel}</time>}
+            {updatedLabel && record.updatedAt && record.updatedAt !== record.createdAt && (
+              <time dateTime={record.updatedAt} className="ml-2">
+                更新: {updatedLabel}
+              </time>
             )}
-            {updatedLabel &&
-              record.updatedAt &&
-              record.updatedAt !== record.createdAt && (
-                <time dateTime={record.updatedAt} className="ml-2">
-                  更新: {updatedLabel}
-                </time>
-              )}
           </p>
         )}
         <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
           {description}
-          <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
-            ※成績・記録は当サイト掲載大会分の集計に基づきます。
-          </span>
+          <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">※成績・記録は当サイト掲載大会分の集計に基づきます。</span>
         </p>
 
-        {categories.length === 0 && (
-          <p className="text-sm text-gray-500">掲載データがありません。</p>
-        )}
+        {categories.length === 0 && <p className="text-sm text-gray-500">掲載データがありません。</p>}
 
         {categories.map((c) => (
-          <section
-            key={c.categoryId}
-            className="mb-8 border-t border-gray-200 pt-5 dark:border-gray-700"
-          >
+          <section key={c.categoryId} className="mb-8 border-t border-gray-200 pt-5 dark:border-gray-700">
             <h2 className="mb-3 text-lg font-bold">{c.categoryLabel}</h2>
 
             {/* 結果速報: 優勝者 + milestone */}
@@ -222,11 +199,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                     {c.titleDefense.players.length > 0 ? (
                       <>
                         {c.titleDefense.status === 'partial' ? (
-                          <PlayerNames
-                            players={c.titleDefense.players.filter(
-                              (p) => p.returning,
-                            )}
-                          />
+                          <PlayerNames players={c.titleDefense.players.filter((p) => p.returning)} />
                         ) : (
                           <PlayerNames players={c.titleDefense.players} />
                         )}
@@ -235,13 +208,9 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                       c.titleDefense.defendingChampionDisplay
                     )}
                   </span>
-                  {c.titleDefense.players.length > 0 &&
-                    c.titleDefense.status !== 'partial' &&
-                    c.titleDefense.team &&
-                    `（${c.titleDefense.team}）`}
-                  （{c.titleDefense.defendingYear}年優勝）
-                  {c.titleDefense.status === 'absent' &&
-                    'は不在。新王者が誕生する。'}
+                  {c.titleDefense.players.length > 0 && c.titleDefense.status !== 'partial' && c.titleDefense.team && `（${c.titleDefense.team}）`}（
+                  {c.titleDefense.defendingYear}年優勝）
+                  {c.titleDefense.status === 'absent' && 'は不在。新王者が誕生する。'}
                   {c.titleDefense.status !== 'absent' && (
                     <>
                       {c.titleDefense.standing?.state === 'champion'
@@ -261,28 +230,18 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             )}
             {isPreview && !c.titleDefense && c.previousChampion && (
               <p className="mb-2 text-sm">
-                <span className="font-semibold">前回王者:</span>{' '}
-                {c.previousChampion}
+                <span className="font-semibold">前回王者:</span> {c.previousChampion}
               </p>
             )}
 
             {/* プレビュー: 前回入賞者（準優勝/ベスト4）の再登場 */}
             {isPreview && c.returningPlacers.length > 0 && (
               <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">
-                  前回入賞者の再登場
-                </h3>
+                <h3 className="mb-1 text-sm font-semibold">前回入賞者の再登場</h3>
                 <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                   {c.returningPlacers.map((p, i) => (
                     <li key={`${p.placement}-${i}`}>
-                      前回{p.placement}:{' '}
-                      <span className="font-semibold">
-                        {p.players.length > 0 ? (
-                          <PlayerNames players={p.players} />
-                        ) : (
-                          p.display
-                        )}
-                      </span>
+                      前回{p.placement}: <span className="font-semibold">{p.players.length > 0 ? <PlayerNames players={p.players} /> : p.display}</span>
                       {p.players.length > 0 && p.team && `（${p.team}）`}
                       {!p.intact && '（一部継続）'}
                       <StandingBadge standing={p.standing} />
@@ -295,20 +254,12 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* プレビュー: 過去の優勝者（前々回以前）の再挑戦 */}
             {isPreview && c.returningFormerChampions.length > 0 && (
               <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">
-                  過去の優勝者が再挑戦
-                </h3>
+                <h3 className="mb-1 text-sm font-semibold">過去の優勝者が再挑戦</h3>
                 <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                   {c.returningFormerChampions.map((f, i) => (
                     <li key={`former-${i}`}>
                       {f.years.join('・')}年優勝:{' '}
-                      <span className="font-semibold">
-                        {f.players.length > 0 ? (
-                          <PlayerNames players={f.players} />
-                        ) : (
-                          f.display
-                        )}
-                      </span>
+                      <span className="font-semibold">{f.players.length > 0 ? <PlayerNames players={f.players} /> : f.display}</span>
                       {f.players.length > 0 && f.team && `（${f.team}）`}
                       <StandingBadge standing={f.standing} />
                     </li>
@@ -320,9 +271,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* プレビュー: 直近大会で好成績を残した出場者 */}
             {isPreview && c.recentAchievers.length > 0 && (
               <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">
-                  直近大会の好成績者
-                </h3>
+                <h3 className="mb-1 text-sm font-semibold">直近大会の好成績者</h3>
                 <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                   {c.recentAchievers.map((a: RecentAchiever, i) => (
                     <li key={`recent-${i}`}>
@@ -348,35 +297,15 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               <div className="mb-3">
                 <h3 className="mb-1 text-sm font-semibold">今大会の概況</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-200">
-                  出場{' '}
-                  <span className="font-semibold">
-                    {c.fieldOverview.entryCount}
-                  </span>
-                  {c.categoryId.startsWith('singles')
-                    ? '選手'
-                    : c.categoryId.startsWith('doubles')
-                      ? 'ペア'
-                      : c.categoryId.startsWith('team')
-                        ? '校'
-                        : '組'}
-                  。
+                  出場 <span className="font-semibold">{c.fieldOverview.entryCount}</span>
+                  {c.categoryId.startsWith('singles') ? '選手' : c.categoryId.startsWith('doubles') ? 'ペア' : c.categoryId.startsWith('team') ? '校' : '組'}。
                   {c.fieldOverview.topPrefectures.length > 0 && (
-                    <>
-                      {' '}
-                      都道府県別では{' '}
-                      {c.fieldOverview.topPrefectures
-                        .map((p) => `${p.prefecture}${p.count}`)
-                        .join('、')}{' '}
-                      が上位。
-                    </>
+                    <> 都道府県別では {c.fieldOverview.topPrefectures.map((p) => `${p.prefecture}${p.count}`).join('、')} が上位。</>
                   )}
                 </p>
                 {c.fieldOverview.multiEntryTeams.length > 0 && (
                   <p className="text-sm text-gray-700 dark:text-gray-200">
-                    複数エントリー校:{' '}
-                    {c.fieldOverview.multiEntryTeams
-                      .map((t) => `${t.team}（${t.count}）`)
-                      .join('、')}
+                    複数エントリー校: {c.fieldOverview.multiEntryTeams.map((t) => `${t.team}（${t.count}）`).join('、')}
                   </p>
                 )}
               </div>
@@ -399,10 +328,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* 結果速報: その年・種目の結果詳細ページへ */}
             {!isPreview && c.resultHref && (
               <p className="mt-3 text-sm">
-                <Link
-                  href={c.resultHref}
-                  className="text-blue-600 hover:underline dark:text-blue-400"
-                >
+                <Link href={c.resultHref} className="text-blue-600 hover:underline dark:text-blue-400">
                   {record.year}年 {c.categoryLabel} の結果詳細を見る →
                 </Link>
               </p>
@@ -411,10 +337,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* プレビュー: その年・種目の大会結果ページへ（結果掲載後のみリンク化） */}
             {isPreview && c.resultHref && (
               <p className="mt-3 text-sm">
-                <Link
-                  href={c.resultHref}
-                  className="text-blue-600 hover:underline dark:text-blue-400"
-                >
+                <Link href={c.resultHref} className="text-blue-600 hover:underline dark:text-blue-400">
                   {record.year}年 {c.categoryLabel} の大会結果を見る →
                 </Link>
               </p>
@@ -427,10 +350,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             <h2 className="mb-2 text-base font-bold">関連ページ</h2>
             <ul className="list-inside list-disc space-y-1 text-sm">
               <li>
-                <Link
-                  href={hubHref}
-                  className="text-blue-600 hover:underline dark:text-blue-400"
-                >
+                <Link href={hubHref} className="text-blue-600 hover:underline dark:text-blue-400">
                   {tournamentLabel} の歴代優勝者・大会まとめ
                 </Link>
               </li>

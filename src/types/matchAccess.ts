@@ -44,7 +44,4 @@ export interface SofteniPickMatchInput extends CommonMatchInput {
   source_site_tournament_id?: Match['source_site_tournament_id'];
 }
 
-export type PublicMatchSnapshot = Omit<
-  Match,
-  'source_site_match_id' | 'source_site_tournament_id'
->;
+export type PublicMatchSnapshot = Omit<Match, 'source_site_match_id' | 'source_site_tournament_id'>;

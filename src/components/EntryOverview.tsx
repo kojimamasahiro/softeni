@@ -55,9 +55,7 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
         const category = fixCategory || tempCategory;
 
         const stats = getStats(entryList);
-        const sortedTeams = Object.entries(stats.teamMap).sort(
-          (a, b) => b[1] - a[1],
-        );
+        const sortedTeams = Object.entries(stats.teamMap).sort((a, b) => b[1] - a[1]);
         const label = CATEGORY_LABELS[category] || ``;
 
         return (
@@ -70,9 +68,7 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
                 .map((entry) => {
                   if (category === 'singles') {
                     const p = entry.information?.[0];
-                    return p
-                      ? `${entry.entryNo}.　${joinPlayerName(p.lastName, p.firstName)}（${p.team}）`
-                      : `${entry.entryNo}.　情報不明`;
+                    return p ? `${entry.entryNo}.　${joinPlayerName(p.lastName, p.firstName)}（${p.team}）` : `${entry.entryNo}.　情報不明`;
                   }
 
                   if (category === 'team') {
@@ -80,20 +76,13 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
                   }
 
                   // doublesなど
-                  const names = (entry.information ?? []).map((p) =>
-                    joinPlayerName(p.lastName, p.firstName),
-                  );
+                  const names = (entry.information ?? []).map((p) => joinPlayerName(p.lastName, p.firstName));
                   const teams = (entry.information ?? []).map((p) => p.team);
                   const teamSet = new Set(teams);
                   const pairLabel =
                     teamSet.size === 1
                       ? `${names.join('・')}（${teams[0]}）`
-                      : (entry.information ?? [])
-                          .map(
-                            (p) =>
-                              `${joinPlayerName(p.lastName, p.firstName)}（${p.team}）`,
-                          )
-                          .join('・');
+                      : (entry.information ?? []).map((p) => `${joinPlayerName(p.lastName, p.firstName)}（${p.team}）`).join('・');
                   return `${entry.entryNo}.　${pairLabel}`;
                 })
                 .join('\n')}

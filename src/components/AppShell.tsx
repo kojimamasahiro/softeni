@@ -1,13 +1,7 @@
 // src/components/AppShell.tsx
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from 'react';
+import { ReactNode, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
 import ScrollToTop from '@/components/ScrollToTop';
 import SideNav from '@/components/nav/SideNav';
@@ -18,21 +12,11 @@ const SIDEBAR_PREF_KEY = 'sideNavOpen';
 
 // SSR では useLayoutEffect が使えないため、クライアントのみ layout effect を使う。
 // 保存済みのサイドバー状態を「描画前」に反映してチラつきを防ぐ目的。
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 function HamburgerIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <line x1="3" y1="6" x2="21" y2="6" />
       <line x1="3" y1="12" x2="21" y2="12" />
       <line x1="3" y1="18" x2="21" y2="18" />
@@ -42,16 +26,7 @@ function HamburgerIcon() {
 
 function CloseIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <line x1="6" y1="6" x2="18" y2="18" />
       <line x1="18" y1="6" x2="6" y2="18" />
     </svg>
@@ -168,10 +143,7 @@ export default function AppShell({
   }, [drawerOpen, closeDrawer]);
 
   const brand = (
-    <Link
-      href={scoreMode ? (navItems[0]?.href ?? '/') : '/'}
-      className="text-xl font-bold tracking-tight"
-    >
+    <Link href={scoreMode ? (navItems[0]?.href ?? '/') : '/'} className="text-xl font-bold tracking-tight">
       {siteConfig.siteName}
     </Link>
   );
@@ -185,11 +157,7 @@ export default function AppShell({
             {brand}
             <nav className="flex gap-6">
               {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="transition-colors hover:text-blue-600"
-                >
+                <Link key={item.href} href={item.href} className="transition-colors hover:text-blue-600">
                   {item.label}
                 </Link>
               ))}
@@ -212,11 +180,7 @@ export default function AppShell({
         aria-hidden={!sidebarOpen}
         className={`hidden shrink-0 border-r border-gray-200 bg-gray-50 lg:block dark:border-gray-800 dark:bg-gray-900 ${
           hydrated ? 'transition-[width] duration-200' : ''
-        } ${
-          sidebarOpen
-            ? 'lg:w-[280px]'
-            : 'lg:w-0 lg:overflow-hidden lg:border-r-0'
-        }`}
+        } ${sidebarOpen ? 'lg:w-[280px]' : 'lg:w-0 lg:overflow-hidden lg:border-r-0'}`}
       >
         <div className="sticky top-0 flex h-screen w-[280px] flex-col">
           {/* サイドバー上部: 閉じるボタン（高さ 64px でヘッダーと揃える） */}
@@ -241,11 +205,7 @@ export default function AppShell({
       {/* モバイルドロワー */}
       {drawerOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={closeDrawer}
-            aria-hidden="true"
-          />
+          <div className="absolute inset-0 bg-black/40" onClick={closeDrawer} aria-hidden="true" />
           <div
             id="mobile-drawer"
             role="dialog"
@@ -255,12 +215,7 @@ export default function AppShell({
           >
             <div className="flex h-16 items-center justify-between px-4">
               <span className="text-lg font-bold">{siteConfig.siteName}</span>
-              <button
-                type="button"
-                onClick={closeDrawer}
-                aria-label="メニューを閉じる"
-                className="rounded-md p-1 hover:bg-gray-200 dark:hover:bg-gray-800"
-              >
+              <button type="button" onClick={closeDrawer} aria-label="メニューを閉じる" className="rounded-md p-1 hover:bg-gray-200 dark:hover:bg-gray-800">
                 <CloseIcon />
               </button>
             </div>

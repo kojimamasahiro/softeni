@@ -125,13 +125,7 @@ export interface MatchVideoSession {
   upload_file_name?: string | null;
   upload_file_size?: number | null;
   duration_ms?: number | null;
-  processing_status?:
-    | 'draft'
-    | 'ready'
-    | 'processing'
-    | 'reviewing'
-    | 'committed'
-    | null;
+  processing_status?: 'draft' | 'ready' | 'processing' | 'reviewing' | 'committed' | null;
   created_at: string;
   updated_at?: string | null;
   candidates?: MatchPointCandidate[];

@@ -3,16 +3,7 @@ import { useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import {
-  DivisionMeta,
-  Gender,
-  getDivisions,
-  getStLeagueYears,
-  LeagueMeta,
-  loadLeagueMeta,
-  loadMatches,
-  loadParticipants,
-} from '@/utils/st-league';
+import { DivisionMeta, Gender, getDivisions, getStLeagueYears, LeagueMeta, loadLeagueMeta, loadMatches, loadParticipants } from '@/utils/st-league';
 
 // Types
 interface PlayerStats {
@@ -81,18 +72,9 @@ type SortConfig = { key: SortKey; direction: SortDirection };
 
 // 指定 gender×division の選手スタッツを集計・ソートして返す（純関数）。
 // SSR 時に全タブ分を計算してHTMLに含めるため useMemo の外に切り出している。
-function computePlayerStats(
-  allMatches: Match[],
-  allTeams: Team[],
-  divisionId: string,
-  sortConfig: SortConfig,
-): PlayerStats[] {
-  const currentMatches = allMatches.filter(
-    (m) => (m.division ?? '1') === divisionId,
-  );
-  const currentTeams = allTeams.filter(
-    (t) => (t.division ?? '1') === divisionId,
-  );
+function computePlayerStats(allMatches: Match[], allTeams: Team[], divisionId: string, sortConfig: SortConfig): PlayerStats[] {
+  const currentMatches = allMatches.filter((m) => (m.division ?? '1') === divisionId);
+  const currentTeams = allTeams.filter((t) => (t.division ?? '1') === divisionId);
 
   const statsMap = new Map<number, PlayerStats>();
 
@@ -206,12 +188,10 @@ function computePlayerStats(
         const diffB = b.gamesWon - b.gamesLost;
         return (diffA - diffB) * multiplier;
       case 'singles':
-        if (a.singlesWins !== b.singlesWins)
-          return (a.singlesWins - b.singlesWins) * multiplier;
+        if (a.singlesWins !== b.singlesWins) return (a.singlesWins - b.singlesWins) * multiplier;
         return (b.singlesLosses - a.singlesLosses) * multiplier;
       case 'doubles':
-        if (a.doublesWins !== b.doublesWins)
-          return (a.doublesWins - b.doublesWins) * multiplier;
+        if (a.doublesWins !== b.doublesWins) return (a.doublesWins - b.doublesWins) * multiplier;
         return (b.doublesLosses - a.doublesLosses) * multiplier;
       default:
         return 0;
@@ -233,13 +213,8 @@ function StatsPanel({
   requestSort: (key: SortKey) => void;
 }) {
   const getSortIcon = (key: SortKey) => {
-    if (sortConfig.key !== key)
-      return <span className="text-gray-300 text-xs ml-1">⇅</span>;
-    return sortConfig.direction === 'asc' ? (
-      <span className="text-blue-500 text-xs ml-1">▲</span>
-    ) : (
-      <span className="text-blue-500 text-xs ml-1">▼</span>
-    );
+    if (sortConfig.key !== key) return <span className="text-gray-300 text-xs ml-1">⇅</span>;
+    return sortConfig.direction === 'asc' ? <span className="text-blue-500 text-xs ml-1">▲</span> : <span className="text-blue-500 text-xs ml-1">▼</span>;
   };
 
   if (stats.length === 0) {
@@ -316,27 +291,15 @@ function StatsPanel({
           </thead>
           <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
             {stats.map((player, index) => {
-              const winRate =
-                player.matches > 0 ? (player.wins / player.matches) * 100 : 0;
+              const winRate = player.matches > 0 ? (player.wins / player.matches) * 100 : 0;
               return (
-                <tr
-                  key={player.id}
-                  className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
-                >
-                  <td className="py-3 px-4 text-center text-gray-500">
-                    {index + 1}
-                  </td>
+                <tr key={player.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+                  <td className="py-3 px-4 text-center text-gray-500">{index + 1}</td>
                   <td className="py-3 px-4 font-bold">{player.name}</td>
-                  <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
-                    {player.teamName}
-                  </td>
-                  <td className="py-3 px-4 text-center font-bold">
-                    {player.matches}
-                  </td>
+                  <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{player.teamName}</td>
+                  <td className="py-3 px-4 text-center font-bold">{player.matches}</td>
                   <td className="py-3 px-4 text-center">
-                    <span className="font-bold mr-1">
-                      {winRate.toFixed(0)}%
-                    </span>
+                    <span className="font-bold mr-1">{winRate.toFixed(0)}%</span>
                     <span className="text-gray-400 text-xs">
                       ({player.wins}-{player.losses})
                     </span>
@@ -360,13 +323,9 @@ function StatsPanel({
       {/* Mobile Card View */}
       <div className="md:hidden space-y-3">
         {stats.map((player, index) => {
-          const winRate =
-            player.matches > 0 ? (player.wins / player.matches) * 100 : 0;
+          const winRate = player.matches > 0 ? (player.wins / player.matches) * 100 : 0;
           return (
-            <div
-              key={player.id}
-              className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700"
-            >
+            <div key={player.id} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center">
                   <div
@@ -386,18 +345,12 @@ function StatsPanel({
                     {index + 1}
                   </div>
                   <div>
-                    <div className="font-bold text-lg leading-tight">
-                      {player.name}
-                    </div>
-                    <div className="text-xs text-gray-500 mt-0.5">
-                      {player.teamName}
-                    </div>
+                    <div className="font-bold text-lg leading-tight">{player.name}</div>
+                    <div className="text-xs text-gray-500 mt-0.5">{player.teamName}</div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold tracking-tight">
-                    {winRate.toFixed(0)}%
-                  </div>
+                  <div className="text-2xl font-bold tracking-tight">{winRate.toFixed(0)}%</div>
                   <div className="text-xs text-gray-400 font-medium">
                     {player.wins}-{player.losses}
                   </div>
@@ -406,25 +359,19 @@ function StatsPanel({
 
               <div className="grid grid-cols-3 gap-2">
                 <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-2 text-center">
-                  <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">
-                    シングルス
-                  </div>
+                  <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">シングルス</div>
                   <div className="font-semibold text-sm">
                     {player.singlesWins}-{player.singlesLosses}
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-2 text-center">
-                  <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">
-                    ダブルス
-                  </div>
+                  <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">ダブルス</div>
                   <div className="font-semibold text-sm">
                     {player.doublesWins}-{player.doublesLosses}
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-2 text-center">
-                  <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">
-                    得失ゲーム
-                  </div>
+                  <div className="text-[10px] text-gray-500 mb-0.5 uppercase tracking-wide">得失ゲーム</div>
                   <div className="font-semibold text-sm">
                     {player.gamesWon}-{player.gamesLost}
                   </div>
@@ -438,13 +385,7 @@ function StatsPanel({
   );
 }
 
-export default function AnalysisPage({
-  year,
-  meta,
-  divisions,
-  matches,
-  teams,
-}: AnalysisPageProps) {
+export default function AnalysisPage({ year, meta, divisions, matches, teams }: AnalysisPageProps) {
   const [activeGender, setActiveGender] = useState<Gender>('boys');
   const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
   const [sortConfig, setSortConfig] = useState<SortConfig>({
@@ -457,12 +398,7 @@ export default function AnalysisPage({
     const map: Record<string, PlayerStats[]> = {};
     (['boys', 'girls'] as Gender[]).forEach((g) => {
       divisions.forEach((d) => {
-        map[`${g}|${d.id}`] = computePlayerStats(
-          matches[g] || [],
-          teams[g] || [],
-          d.id,
-          sortConfig,
-        );
+        map[`${g}|${d.id}`] = computePlayerStats(matches[g] || [], teams[g] || [], d.id, sortConfig);
       });
     });
     return map;
@@ -482,11 +418,7 @@ export default function AnalysisPage({
 
   return (
     <>
-      <MetaHead
-        title={pageTitle}
-        description={`STリーグ${year}シーズンの選手別成績、勝率などのデータ分析。`}
-        url={pageUrl}
-      />
+      <MetaHead title={pageTitle} description={`STリーグ${year}シーズンの選手別成績、勝率などのデータ分析。`} url={pageUrl} />
       <PageLayout maxWidth="5xl" className="space-y-8">
         <Breadcrumbs
           crumbs={[
@@ -501,9 +433,7 @@ export default function AnalysisPage({
         />
 
         <h1 className="text-2xl font-bold">{editionLabel} データ・分析</h1>
-        <p>
-          STリーグⅠ・Ⅱ、男女別に選手ごとの勝敗数・勝率・ゲーム得失を集計しています。
-        </p>
+        <p>STリーグⅠ・Ⅱ、男女別に選手ごとの勝敗数・勝率・ゲーム得失を集計しています。</p>
 
         {/* Gender Tabs */}
         <div className="flex border-b border-gray-200 dark:border-gray-700">
@@ -554,17 +484,8 @@ export default function AnalysisPage({
           divisions.map((d) => {
             const active = g === activeGender && d.id === divisionId;
             return (
-              <div
-                key={`${g}-${d.id}`}
-                className={active ? '' : 'hidden'}
-                aria-hidden={!active}
-              >
-                <StatsPanel
-                  stats={statsByPanel[`${g}|${d.id}`] ?? []}
-                  divName={d.name}
-                  sortConfig={sortConfig}
-                  requestSort={requestSort}
-                />
+              <div key={`${g}-${d.id}`} className={active ? '' : 'hidden'} aria-hidden={!active}>
+                <StatsPanel stats={statsByPanel[`${g}|${d.id}`] ?? []} divName={d.name} sortConfig={sortConfig} requestSort={requestSort} />
               </div>
             );
           }),
@@ -579,11 +500,7 @@ export const getStaticPaths = async () => ({
   fallback: false,
 });
 
-export const getStaticProps = async ({
-  params,
-}: {
-  params: { year: string };
-}) => {
+export const getStaticProps = async ({ params }: { params: { year: string } }) => {
   const year = params.year;
   const matches = loadMatches(year);
   const participants = loadParticipants(year);
