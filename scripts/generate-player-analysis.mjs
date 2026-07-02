@@ -15,18 +15,9 @@ const projectRoot = path.resolve(__dirname, '..');
 
 const tsNode = path.join(projectRoot, 'node_modules', '.bin', 'ts-node');
 const tsconfig = path.join(projectRoot, 'scripts', 'playerStats', 'tsconfig.json');
-const generator = path.join(
-  projectRoot,
-  'scripts',
-  'playerStats',
-  'generate-analysis.ts',
-);
+const generator = path.join(projectRoot, 'scripts', 'playerStats', 'generate-analysis.ts');
 
-const result = spawnSync(
-  tsNode,
-  ['--project', tsconfig, generator],
-  { stdio: 'inherit', cwd: projectRoot },
-);
+const result = spawnSync(tsNode, ['--project', tsconfig, generator, ...process.argv.slice(2)], { stdio: 'inherit', cwd: projectRoot });
 
 if (result.status !== 0) {
   process.exit(result.status ?? 1);

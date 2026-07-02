@@ -55,7 +55,8 @@
     "playerstats:rankings": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-rankings.ts",
     "playerstats:public": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-public-json.ts",
     "playerstats:test": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/run-tests.ts",
-    "playerstats:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facts-golden.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facade.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-analysis-migration.ts",
+    "playerstats:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facts-golden.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facade.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-analysis-migration.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-golden-final.ts",
+    "playerstats:perf": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-performance.ts",
     "start": "next start",
     "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
     "lint": "eslint --fix ."
