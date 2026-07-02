@@ -118,12 +118,13 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
   記事供給は `lib/playerStats/articleMaterial.ts`。SEO 日付は `coverage`（実データ）由来。
 - **テスト**: `npm run playerstats:test`（config/placement/aggregators/ranking 単体）/ `playerstats:verify`（golden・facade）/
   `verify-analysis-migration.ts`（analysis byte 一致）。
-- **同姓同名（2026-07-02 緩和）**: numeric id は名前単位のため、H2H/ペアは `playerKey`（名前@所属）で分離し、
-  同一カテゴリ内 self-vs-self 試合は `facts.ts` でスキップ、`homonyms.json` 登録名は `identity.homonymRisk` で警告する。
-  人物別 id の払い出し（真の分離）は [open-questions.md](./open-questions.md) 参照（P7/設計）。
+- **同姓同名（2026-07-02・当面は融合を許容と決定）**: numeric id は「1 名前 = 1 id」で人物を分離できないため、
+  同姓同名の別人物は 1 id に融合しうる。対象者が少なく実害が限定的なので**当面は融合を許容**する（人物別 id 払い出しは保留）。
+  緩和のみ実装: H2H/ペアは `playerKey`（名前@所属）で分離、同一カテゴリ内 self-vs-self 試合は `facts.ts` でスキップ、
+  `homonyms.json` 登録名は `identity.homonymRisk` で警告。詳細・再検討条件は [open-questions.md](./open-questions.md)。
 - **ランキング（2026-07-02 修正）**: 年度別順位表の `playerKey` は「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
   同ポイントは標準競技順位（1224 方式・同点同順位）。
-- **未了（P7）**: contentHash による増分再生成 / 性能予算の実測 / golden 全体突合 / ADR 追加 / 同姓同名の人物別 id 分離。
+- **未了（P7）**: contentHash による増分再生成 / 性能予算の実測 / golden 全体突合 / ADR 追加。
 
 > Assumption: 現状 SSR は `playerStatistics` を props に渡すのみで描画は未接続（新セクション UI は今後）。既存の戦績表示は従来ロジックのまま。
 

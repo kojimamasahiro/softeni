@@ -151,16 +151,17 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 
 - `ranking-config.json` の tier・順位係数・追加統計の閾値の初期値を運用開始後に実データで微調整する。
 - ランキング副指標（Elo 系レーティング）を将来採用する場合の K 値・ダブルスの配分・provisional 扱い。
-- **同姓同名の人物別 id 分離（P7/設計・要データ模型変更）**: `data/players/index.json` は「1 名前 = 1 数値 id」しか持たず、
-  同姓同名の別人物を numeric id で分離できない（実測: index.json に nameKey 重複は 0 組。一方、同一カテゴリ内に
-  同姓同名が別 participant.id で並ぶ実データが 30 件、`homonyms.json` に複数人物登録が 16 名）。
-  numeric id を名前単位で解決するため、該当 id は複数実在人物の成績を融合しうる。
+- **同姓同名の人物別 id 分離 → 当面は「融合を許容」で決定（2026-07-02）**:
+  `data/players/index.json` は「1 名前 = 1 数値 id」しか持たず、同姓同名の別人物を numeric id で分離できない
+  （実測: index.json に nameKey 重複は 0 組。一方、同一カテゴリ内に同姓同名が別 participant.id で並ぶ実データが 30 件、
+  `homonyms.json` に複数人物登録が 16 名）。numeric id を名前単位で解決するため、該当 id は複数実在人物の成績を融合しうる。
+  - **決定**: 対象者が少なく実害が限定的なため、**当面は融合を許容する**（人物別 id の払い出しは行わない）。
+    緩和策のみ実装して運用し、対象者が増えて実害が顕在化した段階で再検討する。
   - 実装済みの緩和（2026-07-02）: (1) H2H/ペアは `playerKey`（名前@所属）で分離（データ契約 §D）、
     (2) `lib/playerStats/facts.ts` で同一カテゴリ内 self-vs-self 試合をスキップ（自己対戦化・二重計上の除去）、
     (3) `homonyms.json` を読み `PlayerStatistics.identity.homonymRisk` を付与（UI 注記・記事で警告可能）。
-  - 未解決（真の解決）: participant.id が所属を含むことを利用し人物別に numeric id を払い出す
-    （index.json 生成パイプラインの変更）。reverseIndex/facts も人物単位に分離できるが、既存 id・ページ URL・
-    リンクへの影響が大きく、P7 以降の設計課題とする。
+  - 将来の解決策（採用保留）: participant.id が所属を含むことを利用し人物別に numeric id を払い出す
+    （index.json 生成パイプラインの変更）。既存 id・ページ URL・リンクへの影響が大きいため、必要が生じるまで着手しない。
 
 ## 高校カテゴリ
 
