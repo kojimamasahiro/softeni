@@ -29,6 +29,9 @@ interface Props {
 export default function TeamResults({ detailData, highschoolGender = null, highschoolTeamLinks = null }: Props) {
   const TOP_SET = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
   const getHighschoolTeamLookupKey = (team: string, prefecture: string | null) => `${team}::${prefecture ?? ''}`;
+  // 都道府県の有無で同一チームが分裂しないよう、都道府県別リンクが必要な高校の部のみ
+  // team+prefecture でグルーピングし、それ以外（社会人など）はチーム名のみでグルーピングする。
+  const getBucketKey = (team: string, prefecture: string | null) => (highschoolGender ? getHighschoolTeamLookupKey(team, prefecture) : team);
 
   type TeamBucket = {
     team: string;
@@ -83,7 +86,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
             // 同一チームのペア -> ペア表示として1つの Member を追加
             const teamLabel = Array.from(teamSet)[0];
             const prefectureId = players[0]?.prefecture ?? null;
-            const bucketKey = getHighschoolTeamLookupKey(teamLabel, prefectureId);
+            const bucketKey = getBucketKey(teamLabel, prefectureId);
 
             const displayParts: DisplayPart[] = players.flatMap((pl, idx) => {
               const last = pl.lastName ?? '';
@@ -113,7 +116,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
 
               const teamLabel = pl.team ?? '\u4e0d\u660e';
               const prefectureId = pl.prefecture ?? null;
-              const bucketKey = getHighschoolTeamLookupKey(teamLabel, prefectureId);
+              const bucketKey = getBucketKey(teamLabel, prefectureId);
               const last = pl.lastName ?? '';
               const first = pl.firstName ?? '';
               const name = `${last}${first}`.trim() || '\u4e0d\u660e';
@@ -144,7 +147,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
 
           const teamLabel = pl.team ?? '\u4e0d\u660e';
           const prefectureId = pl.prefecture ?? null;
-          const bucketKey = getHighschoolTeamLookupKey(teamLabel, prefectureId);
+          const bucketKey = getBucketKey(teamLabel, prefectureId);
           const last = pl.lastName ?? '';
           const first = pl.firstName ?? '';
           const name = `${last}${first}`.trim() || '';
