@@ -111,10 +111,31 @@ export default function PlayerResultsPage({
     ? `${latestTournament.year ?? ''}年${latestTournament.tournamentName}${latestTournament.finalResult ? `で${latestTournament.finalResult}` : 'に出場'}`
     : null;
 
+  // Player Statistics Engine 由来の実績（優勝数・最高ランキング）で description を一意化する（SEO）。
+  const engineStatsPhrase = (() => {
+    if (!playerStatistics) return '';
+    const parts: string[] = [];
+    const titles = playerStatistics.titles;
+    if (titles && titles.total > 0) {
+      parts.push(`優勝${titles.total}回${titles.major > 0 ? `（うち主要大会${titles.major}回）` : ''}`);
+    }
+    const genderLabel: Record<string, string> = { boys: '男子', girls: '女子' };
+    const discLabel: Record<string, string> = { singles: 'シングルス', doubles: 'ダブルス' };
+    let best: (typeof playerStatistics.rankingTrend)[number] | null = null;
+    for (const p of playerStatistics.rankingTrend ?? []) {
+      if (!best || p.rank < best.rank || (p.rank === best.rank && p.year > best.year)) best = p;
+    }
+    if (best) {
+      parts.push(`最高ランキングは${best.year}年度${genderLabel[best.gender] ?? ''}${discLabel[best.discipline] ?? best.discipline}${best.rank}位`);
+    }
+    return parts.length > 0 ? `${parts.join('、')}。` : '';
+  })();
+
   const summarySentence = [
     `${displayName}のソフトテニス試合結果・戦績。`,
     latestResultPhrase ? `直近は${latestResultPhrase}。` : '',
     totalMatches > 0 ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${winRatePct !== null ? `（勝率${winRatePct}%）` : ''}。` : '',
+    engineStatsPhrase,
     mainPartnerName ? `主なペアは${mainPartnerName}。` : '',
   ].join('');
 

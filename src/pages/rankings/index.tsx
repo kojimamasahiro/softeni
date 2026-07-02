@@ -6,6 +6,7 @@
 // docs/wiki/seo.md の方針）。結果ページを持つ選手（index.json count>=5）のみリンクする。
 
 import type { GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
@@ -75,6 +76,32 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
   return (
     <>
       <MetaHead title="ソフトテニス選手ランキング（年度別・男女別）| Softeni Pick" description={description} url={pageUrl} type="article" />
+
+      <Head>
+        {/* ItemList: 初期表示ボード（最新年度・先頭タブ）の上位10位。 */}
+        {board && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'ItemList',
+                name: `${board.year}年度 ソフトテニス${tabLabel(board.discipline, board.gender)}ランキング`,
+                description,
+                url: pageUrl,
+                numberOfItems: Math.min(10, board.entries.length),
+                itemListOrder: 'https://schema.org/ItemListOrderAscending',
+                itemListElement: board.entries.slice(0, 10).map((e) => ({
+                  '@type': 'ListItem',
+                  position: e.rank,
+                  name: `${e.playerName}${e.team ? `（${e.team}）` : ''}`,
+                  ...(e.hasPage && e.playerId != null ? { url: `https://softeni-pick.com/players/${e.playerId}/results/` } : {}),
+                })),
+              }),
+            }}
+          />
+        )}
+      </Head>
 
       <PageLayout className="space-y-8">
         <Breadcrumbs
@@ -180,6 +207,45 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         ) : (
           <p className="text-sm text-gray-500 dark:text-gray-400">この年度のランキングはありません。</p>
         )}
+
+        {/* 全年度・全種目の上位3位（静的HTML）。タブ裏の順位表はクライアント描画で
+            クローラに見えないため、選手名と内部リンクをここで担保する（seo.md #9）。 */}
+        <section>
+          <h2 className="mb-1 text-lg font-bold">年度別 上位選手まとめ</h2>
+          <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">全年度・全種目の上位3位です。詳細は上の年度・種目切替で確認できます。</p>
+          <div className="space-y-4">
+            {years.map((y) => (
+              <div key={y}>
+                <h3 className="mb-1 text-base font-semibold">{y}年度</h3>
+                <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  {TAB_ORDER.map(({ discipline, gender }) => {
+                    const b = boards.find((x) => x.year === y && x.discipline === discipline && x.gender === gender);
+                    if (!b || b.entries.length === 0) return null;
+                    return (
+                      <li key={`${y}-${discipline}-${gender}`}>
+                        <span className="font-medium">{tabLabel(discipline, gender)}:</span>{' '}
+                        {b.entries.slice(0, 3).map((e, i) => (
+                          <span key={`${e.rank}-${e.playerId ?? e.playerName}`}>
+                            {i > 0 && '、'}
+                            {e.rank}位{' '}
+                            {e.hasPage && e.playerId != null ? (
+                              <Link href={`/players/${e.playerId}/results/`} className="text-blue-700 hover:underline dark:text-blue-300">
+                                {e.playerName}
+                              </Link>
+                            ) : (
+                              e.playerName
+                            )}
+                            {e.team ? `（${e.team}）` : ''}
+                          </span>
+                        ))}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <div className="text-right">
           <Link href="/players" className="text-sm text-blue-600 hover:underline dark:text-blue-400">
