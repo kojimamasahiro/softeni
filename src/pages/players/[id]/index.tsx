@@ -313,7 +313,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = entries
     .filter((entry) => {
       const fullPath = path.join(playersPath, entry);
-      return fs.statSync(fullPath).isDirectory(); // ディレクトリのみ
+      // ディレクトリかつ information.json を持つ実プレイヤーフォルダのみ
+      // (_facts, _index などの内部データディレクトリを除外)
+      return fs.statSync(fullPath).isDirectory() && fs.existsSync(path.join(fullPath, 'information.json'));
     })
     .map((dir) => ({
       params: { id: dir },

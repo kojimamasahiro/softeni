@@ -5,7 +5,12 @@ import { PlayerInfo } from '@/types/index';
 
 export function getAllPlayers(): PlayerInfo[] {
   const playersDir = path.join(process.cwd(), 'data', 'players');
-  const playerIds = fs.readdirSync(playersDir).filter((file) => fs.statSync(path.join(playersDir, file)).isDirectory());
+  const playerIds = fs.readdirSync(playersDir).filter((file) => {
+    const fullPath = path.join(playersDir, file);
+    // ディレクトリかつ information.json を持つ実プレイヤーフォルダのみ
+    // (_facts, _index などの内部データディレクトリを除外)
+    return fs.statSync(fullPath).isDirectory() && fs.existsSync(path.join(fullPath, 'information.json'));
+  });
 
   return playerIds.map((id) => {
     const filePath = path.join(playersDir, id, 'information.json');

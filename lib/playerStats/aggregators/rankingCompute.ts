@@ -38,14 +38,17 @@ export function entryScore(entry: PlayerEntryFact, config: PlayerStatsConfig): n
 export interface SeasonPoints {
   year: number;
   discipline: string;
+  /** 男女別（boys/girls）。個人戦 singles/doubles は必ずどちらか。 */
+  gender: string;
   points: number;
   /** 合算に使った出場数（上位 N 以内）。 */
   counted: number;
 }
 
 /**
- * 選手 1 人の entries から (year, discipline) ごとのシーズンポイントを算出する。
+ * 選手 1 人の entries から (year, discipline, gender) ごとのシーズンポイントを算出する。
  * discipline は config.ranking.disciplines のみ対象（既定 singles/doubles）。
+ * 順位表は男女別（2026-07-02 決定。混合の順位表は競技慣行に合わないため）。
  */
 export function computeSeasonPoints(entries: PlayerEntryFact[], config: PlayerStatsConfig): SeasonPoints[] {
   const disciplines = new Set(config.ranking.disciplines);
@@ -54,7 +57,7 @@ export function computeSeasonPoints(entries: PlayerEntryFact[], config: PlayerSt
 
   for (const e of entries) {
     if (!disciplines.has(e.category)) continue;
-    const key = `${e.year}\t${e.category}`;
+    const key = `${e.year}\t${e.category}\t${e.gender}`;
     const arr = groups.get(key) ?? [];
     arr.push(entryScore(e, config));
     groups.set(key, arr);
@@ -65,10 +68,11 @@ export function computeSeasonPoints(entries: PlayerEntryFact[], config: PlayerSt
     scores.sort((a, b) => b - a);
     const counted = Math.min(topN, scores.length);
     const points = scores.slice(0, topN).reduce((s, v) => s + v, 0);
-    const [yearStr, discipline] = key.split('\t');
+    const [yearStr, discipline, gender] = key.split('\t');
     out.push({
       year: Number(yearStr),
       discipline,
+      gender,
       points: Math.round(points * 1000) / 1000,
       counted,
     });

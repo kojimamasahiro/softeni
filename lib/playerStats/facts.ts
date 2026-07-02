@@ -11,7 +11,9 @@ import { isFinalRound, isSemifinalRound, normalizeRoundOrder, parseCategoryId, r
 import { RawEntry, RawParticipant, SourceAdapter, StandardDetail } from './sourceAdapter';
 import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFact, ReverseIndex } from './types';
 
-export const ENGINE_VERSION = '1.0.0';
+// 1.1.0: ランキングを男女別に分離（rankings/{year}-{discipline}-{gender}.json・
+// RankingPoint.gender 追加）。バージョンを上げ全再計算で旧形式の順位表を一掃する。
+export const ENGINE_VERSION = '1.1.0';
 
 function personRefFromParticipant(identity: Identity, p: RawParticipant | undefined, fallbackId?: string): PersonRef {
   if (!p) {

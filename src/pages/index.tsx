@@ -192,6 +192,23 @@ export default function Home({ recentTournaments }: HomeProps) {
             </div>
           </section>
 
+          {/* ✅ 選手ランキングへのリンク */}
+          <section className="mb-12 px-4">
+            <h2 className="text-xl font-semibold mb-4">選手ランキング</h2>
+
+            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+              掲載大会の成績から算出した年度別の選手ランキングです。男女別・種目別（シングルス/ダブルス）に上位選手を確認できます。
+            </p>
+
+            <Link
+              href="/rankings"
+              className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              <h3 className="text-lg font-bold mb-1">年度別ランキング</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">シーズンポイントによる男女別・種目別の順位表（上位100位）</p>
+            </Link>
+          </section>
+
           {/* ✅ 高校カテゴリへのリンク */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">属性別成績</h2>

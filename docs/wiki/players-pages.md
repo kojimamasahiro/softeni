@@ -136,7 +136,9 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
   緩和のみ実装: H2H/ペアは `playerKey`（名前@所属）で分離、同一カテゴリ内 self-vs-self 試合は `facts.ts` でスキップ、
   `homonyms.json` 登録名は `identity.homonymRisk` で警告。詳細・再検討条件は [open-questions.md](./open-questions.md)。
 - **ランキング（2026-07-02 修正）**: 年度別順位表の `playerKey` は「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
-  同ポイントは標準競技順位（1224 方式・同点同順位）。
+  同ポイントは標準競技順位（1224 方式・同点同順位）。**男女別に分離**（2026-07-02。混合順位表は競技慣行に合わないため。
+  出力は `rankings/{year}-{discipline}-{gender}.json`、`RankingPoint.gender` 追加、`engineVersion` 1.1.0 へ）。
+  全体表示は [/rankings ページ](./public-pages.md)（上位100位・年度/種目/男女切替）。
 
 - **新統計 UI（2026-07-02 接続）**: 結果ページに「詳細スタッツ」節（`src/components/PlayerStatisticsSections.tsx`）を追加。
   戦績ハイライト（通算優勝・最長連勝・ベストシーズン・決勝/準決勝進出率・最多対戦・得意/苦手）/ 年度別ランキング推移 /

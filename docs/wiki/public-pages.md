@@ -40,6 +40,13 @@
 - `/growth`（成長記録ハブ・公開/インデックス対象）
 - `/growth/[slug]`（選手の成長記録ショーケース・公開/インデックス対象。対象は `data/growth-featured.json` の featured のみ。詳細は ADR-004）
 - `/news`・`/news/[articleId]`（大会**展望（preview）専用**。結果記事は廃止し、結果・優勝・歴代まとめは大会ハブ／高校歴代ページに集約＝ADR-010。公開は `state==='published'` かつ `type==='preview'` のみ。詳細は [news-context-blocks.md](./news-context-blocks.md)）
+- `/rankings`（選手ランキング・2026-07-02 追加）: Player Statistics Engine の
+  `data/rankings/{year}-{discipline}-{gender}.json`（男女別×種目別・シーズンポイント＝年度の上位3大会合算）を
+  1 ページに集約し、年度・種目・男女をクライアント側で切り替える（薄いページの量産を避ける）。
+  各表は上位 100 位まで。結果ページを持つ選手（`count>=5`）のみ `/players/{id}/results/` へリンク。
+  「掲載大会のみ・年度間の母数差」の scope 注記を必須表示。導線: サイドナビ「成績・記録を調べる > ランキング」
+  （`lib/navigation.ts`）/ ホームの「選手ランキング」カード / `/players` 一覧上部リンク /
+  選手結果ページの「年度別ランキング推移」（相互リンク）。
 
 補足（成長分析の公開境界・2026-06）:
 

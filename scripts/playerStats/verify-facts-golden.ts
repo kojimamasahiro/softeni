@@ -97,9 +97,7 @@ function main(): void {
     }
   }
 
-  console.log(
-    `\n  exact=${exact} explainable=${explainable} failed=${failed}`,
-  );
+  console.log(`\n  exact=${exact} explainable=${explainable} failed=${failed}`);
   if (failed > 0) process.exitCode = 1;
 }
 

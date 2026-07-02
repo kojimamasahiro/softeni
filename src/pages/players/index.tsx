@@ -172,6 +172,12 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
 
         <h1 className="text-2xl font-bold mb-6">選手一覧</h1>
 
+        <p className="mb-6 text-sm">
+          <Link href="/rankings" className="text-blue-600 hover:underline dark:text-blue-400">
+            年度別の選手ランキング（男女別・種目別）はこちら ›
+          </Link>
+        </p>
+
         <section className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
             <h2 className="text-sm font-semibold text-amber-800 dark:text-amber-200">同姓同名選手の一覧</h2>

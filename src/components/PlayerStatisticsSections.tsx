@@ -121,11 +121,17 @@ function HighlightCards({ stats }: { stats: PlayerStatistics }) {
   );
 }
 
+const GENDER_LABEL: Record<string, string> = {
+  boys: '男子',
+  girls: '女子',
+  mixed: '混合',
+};
+
 function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
   if (trend.length === 0) return null;
-  const sorted = [...trend].sort((a, b) => b.year - a.year || a.discipline.localeCompare(b.discipline));
+  const sorted = [...trend].sort((a, b) => b.year - a.year || a.discipline.localeCompare(b.discipline) || (a.gender ?? '').localeCompare(b.gender ?? ''));
   return (
-    <SectionCard title="年度別ランキング推移" note="当サイト掲載大会のシーズンポイント（年度の上位3大会合算）による種目別順位です。">
+    <SectionCard title="年度別ランキング推移" note="当サイト掲載大会のシーズンポイント（年度の上位3大会合算）による男女別・種目別順位です。">
       <table className="w-full border border-gray-200 text-sm dark:border-gray-600">
         <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
           <tr>
@@ -137,9 +143,12 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
         </thead>
         <tbody>
           {sorted.map((p) => (
-            <tr key={`${p.year}-${p.discipline}`} className="border-t border-gray-200 text-center dark:border-gray-600">
+            <tr key={`${p.year}-${p.discipline}-${p.gender}`} className="border-t border-gray-200 text-center dark:border-gray-600">
               <td className="py-1 px-2">{p.year}年度</td>
-              <td className="py-1 px-2">{DISCIPLINE_LABEL[p.discipline] ?? p.discipline}</td>
+              <td className="py-1 px-2">
+                {GENDER_LABEL[p.gender] ?? ''}
+                {DISCIPLINE_LABEL[p.discipline] ?? p.discipline}
+              </td>
               <td className="py-1 px-2 font-semibold">
                 {p.rank}位<span className="ml-1 font-normal text-xs text-gray-500 dark:text-gray-400">/ {p.outOf}人</span>
               </td>
@@ -148,6 +157,11 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
           ))}
         </tbody>
       </table>
+      <p className="mt-2 text-right text-sm">
+        <Link href="/rankings/" className="text-blue-600 hover:underline dark:text-blue-400">
+          全体ランキングを見る ›
+        </Link>
+      </p>
     </SectionCard>
   );
 }

@@ -49,6 +49,7 @@ interface Row {
   playerId: number;
   playerKey: string;
   playerName: string;
+  team: string | null;
   points: number;
 }
 
@@ -109,7 +110,7 @@ function main(): void {
   }
   if (allYears) years = null; // null = 全年度
 
-  // (year, discipline) → 順位表行
+  // (year, discipline, gender) → 順位表行（男女別・2026-07-02）
   const boards = new Map<string, Row[]>();
 
   const files = fs.readdirSync(factsDir).filter((f) => f.endsWith('.json'));
@@ -121,12 +122,12 @@ function main(): void {
       continue;
     }
     // #2: 年度別の順位表には「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
-    // (year, discipline) ごとに、その季の entries から最頻の selfTeam を採る。
+    // (year, discipline, gender) ごとに、その季の entries から最頻の selfTeam を採る。
     const teamBySeason = new Map<string, string | null>();
     const teamCounts = new Map<string, Map<string, number>>();
     for (const e of facts.entries) {
       if (!e.selfTeam) continue;
-      const k = `${e.year}\t${e.category}`;
+      const k = `${e.year}\t${e.category}\t${e.gender}`;
       const cm = teamCounts.get(k) ?? new Map<string, number>();
       cm.set(e.selfTeam, (cm.get(e.selfTeam) ?? 0) + 1);
       teamCounts.set(k, cm);
@@ -147,13 +148,14 @@ function main(): void {
     for (const s of seasons) {
       if (years && !years.has(s.year)) continue;
       if (s.points <= 0) continue;
-      const key = `${s.year}\t${s.discipline}`;
+      const key = `${s.year}\t${s.discipline}\t${s.gender}`;
       const seasonTeam = teamBySeason.get(key) ?? facts.currentTeam;
       const arr = boards.get(key) ?? [];
       arr.push({
         playerId: facts.playerId,
         playerKey: playerKey(facts.displayName, seasonTeam),
         playerName: facts.displayName,
+        team: seasonTeam ?? null,
         points: s.points,
       });
       boards.set(key, arr);
@@ -168,13 +170,14 @@ function main(): void {
   for (const [key, rows] of boards) {
     // 表示順は points 降順（同点は playerId 昇順で決定的に）。
     rows.sort((a, b) => b.points - a.points || a.playerId - b.playerId);
-    const [yearStr, discipline] = key.split('\t');
+    const [yearStr, discipline, gender] = key.split('\t');
     // #3: 標準競技順位（1224 方式）。同ポイントは同順位、次は件数分飛ばす。
     let prevPoints: number | null = null;
     let prevRank = 0;
     const out: RankingFile = {
       year: Number(yearStr),
       discipline,
+      gender,
       outOf: rows.length,
       entries: rows.map((r, i) => {
         const rank = prevPoints !== null && r.points === prevPoints ? prevRank : i + 1;
@@ -185,11 +188,12 @@ function main(): void {
           playerId: r.playerId,
           playerKey: r.playerKey,
           playerName: r.playerName,
+          team: r.team,
           points: r.points,
         };
       }),
     };
-    const outPath = path.join(outDir, `${yearStr}-${discipline}.json`);
+    const outPath = path.join(outDir, `${yearStr}-${discipline}-${gender}.json`);
     const oldFile = readRankingFile(outPath);
     for (const id of diffBoardPlayers(oldFile, out)) rankingAffected.add(id);
     fs.writeFileSync(outPath, JSON.stringify(out), 'utf-8');
@@ -197,13 +201,15 @@ function main(): void {
   }
 
   // 対象年度なのに今回 board が立たなかった順位表は stale として削除
-  // （その年度の掲載選手はすべて affected）。
+  // （その年度の掲載選手はすべて affected。旧形式 {year}-{discipline}.json も対象）。
   for (const file of fs.readdirSync(outDir)) {
     const m = /^(\d{4})-(.+)\.json$/.exec(file);
     if (!m) continue;
     const y = Number(m[1]);
     if (years && !years.has(y)) continue;
-    if (boards.has(`${y}\t${m[2]}`)) continue;
+    const rest = m[2].split('-'); // "doubles-boys" / 旧 "doubles"
+    const boardKey = rest.length === 2 ? `${y}\t${rest[0]}\t${rest[1]}` : null;
+    if (boardKey && boards.has(boardKey)) continue;
     const stalePath = path.join(outDir, file);
     for (const id of diffBoardPlayers(readRankingFile(stalePath), null)) {
       rankingAffected.add(id);

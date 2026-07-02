@@ -129,6 +129,8 @@ export interface MilestoneEvent {
 export interface RankingPoint {
   year: number;
   discipline: string;
+  /** 男女別順位表（boys / girls）。 */
+  gender: string;
   rank: number;
   outOf: number;
   points: number;
