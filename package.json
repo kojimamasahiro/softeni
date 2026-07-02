@@ -58,7 +58,7 @@
     "playerstats:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facts-golden.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-facade.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-analysis-migration.ts && ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-golden-final.ts",
     "playerstats:perf": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-performance.ts",
     "start": "next start",
-    "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
+    "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs && node scripts/prune-deploy-output.mjs",
     "lint": "eslint --fix ."
   },
   "dependencies": {
