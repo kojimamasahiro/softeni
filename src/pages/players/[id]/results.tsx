@@ -7,28 +7,16 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
-import PlayerResults, {
-  PlayerMatch,
-  PlayerTournament,
-} from '@/components/PlayerResults';
+import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
+import PlayerStatisticsSections from '@/components/PlayerStatisticsSections';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PageLayout from '@/components/PageLayout';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
-import {
-  getScoreMatchLinksForPlayer,
-  type ScoreMatchLink,
-} from '@/lib/matchReverseIndex';
+import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
-import {
-  getAllDetailRecords,
-  loadInformationMap,
-  loadTournamentIndex,
-} from '@/lib/tournamentData';
+import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import { MatchResult } from '@/types/common';
-import type {
-  Games as GamesType,
-  MatchStats as MatchStatsType,
-} from '@/types/stats';
+import type { Games as GamesType, MatchStats as MatchStatsType } from '@/types/stats';
 import { TournamentEntry, TournamentParticipant } from '@/types/tournament';
 
 type PlayerResultsProps = {
@@ -45,6 +33,8 @@ type PlayerResultsProps = {
   playerStats?: import('@/types/stats').PlayerStats | null;
   // Player Statistics Engine 由来の統計（既存表示は維持しつつ新データを追加提供・P5）。
   playerStatistics?: import('@/types/playerStatistics').PlayerStatistics | null;
+  // H2H 相手のうち結果ページが実在する（count>=5）選手 id（デッドリンク防止）。
+  statsLinkableIds?: number[];
   allPlayers?: import('@/types/player').PlayerInfo[];
   relatedPlayers?: {
     id: string;
@@ -73,6 +63,8 @@ export default function PlayerResultsPage({
   playerTournaments,
   majorTitlesData,
   playerStats,
+  playerStatistics = null,
+  statsLinkableIds = [],
   allPlayers,
   relatedPlayers = [],
   scoreMatchLinks = [],
@@ -86,19 +78,16 @@ export default function PlayerResultsPage({
   // latest tournament appearance (for unique description/summary)
   const latestTournament =
     playerTournaments.length > 0
-      ? [...playerTournaments].sort((a, b) =>
-          String(a.startDate ?? a.year ?? '').localeCompare(
-            String(b.startDate ?? b.year ?? ''),
-          ),
-        )[playerTournaments.length - 1]
+      ? [...playerTournaments].sort((a, b) => String(a.startDate ?? a.year ?? '').localeCompare(String(b.startDate ?? b.year ?? '')))[
+          playerTournaments.length - 1
+        ]
       : null;
 
   // overall record
   const totalMatches = playerStats?.totalMatches ?? 0;
   const wins = playerStats?.wins ?? 0;
   const losses = playerStats?.losses ?? 0;
-  const winRatePct =
-    totalMatches > 0 ? Math.round((wins / totalMatches) * 100) : null;
+  const winRatePct = totalMatches > 0 ? Math.round((wins / totalMatches) * 100) : null;
 
   // most frequent partner (excluding singles)
   const mainPartnerName = (() => {
@@ -119,21 +108,13 @@ export default function PlayerResultsPage({
   })();
 
   const latestResultPhrase = latestTournament
-    ? `${latestTournament.year ?? ''}年${latestTournament.tournamentName}${
-        latestTournament.finalResult
-          ? `で${latestTournament.finalResult}`
-          : 'に出場'
-      }`
+    ? `${latestTournament.year ?? ''}年${latestTournament.tournamentName}${latestTournament.finalResult ? `で${latestTournament.finalResult}` : 'に出場'}`
     : null;
 
   const summarySentence = [
     `${displayName}のソフトテニス試合結果・戦績。`,
     latestResultPhrase ? `直近は${latestResultPhrase}。` : '',
-    totalMatches > 0
-      ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${
-          winRatePct !== null ? `（勝率${winRatePct}%）` : ''
-        }。`
-      : '',
+    totalMatches > 0 ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${winRatePct !== null ? `（勝率${winRatePct}%）` : ''}。` : '',
     mainPartnerName ? `主なペアは${mainPartnerName}。` : '',
   ].join('');
 
@@ -238,10 +219,7 @@ export default function PlayerResultsPage({
           </p>
           {profileSlug && (
             <p className="mt-2 text-sm">
-              <Link
-                href={`/players/${profileSlug}/`}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
+              <Link href={`/players/${profileSlug}/`} className="text-blue-600 dark:text-blue-400 hover:underline">
                 {fullName} 選手のプロフィール（身長・所属・ポジション）はこちら
               </Link>
             </p>
@@ -254,31 +232,21 @@ export default function PlayerResultsPage({
         </section>
 
         <div className="text-right">
-          <Link
-            href="/tournaments"
-            className="text-sm text-blue-600 hover:underline"
-          >
+          <Link href="/tournaments" className="text-sm text-blue-600 hover:underline">
             過去の大会一覧はこちら
           </Link>
         </div>
 
-        <section>
-          {playerStats && (
-            <PlayerSummaryStats
-              playerStats={playerStats}
-              allPlayers={allPlayers || []}
-            />
-          )}
-        </section>
+        <section>{playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} />}</section>
+
+        {/* Player Statistics Engine 由来の詳細スタッツ（ハイライト・ランキング推移・
+            大会別・H2H・所属別・キャリア年表）。既存サマリーと重複しないもののみ。 */}
+        {playerStatistics && <PlayerStatisticsSections stats={playerStatistics} linkablePlayerIds={statsLinkableIds} />}
 
         {scoreMatchLinks.length > 0 && (
           <section className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
-            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">
-              スコア詳細のある試合
-            </h2>
-            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">
-              ポイントごとの記録・分析を掲載しています。
-            </p>
+            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">スコア詳細のある試合</h2>
+            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">ポイントごとの記録・分析を掲載しています。</p>
             <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
               {scoreMatchLinks.map((link) => (
                 <li key={link.matchId}>
@@ -306,12 +274,8 @@ export default function PlayerResultsPage({
 
         {growthShowcaseSlug && (
           <section className="rounded-lg border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900 dark:bg-blue-950/30">
-            <h2 className="mb-1 text-base font-bold text-blue-900 dark:text-blue-200">
-              成長記録
-            </h2>
-            <p className="mb-3 text-xs text-blue-800/80 dark:text-blue-300/80">
-              勝ち負けだけでは見えない、試合内容の変化を指標で追っています。
-            </p>
+            <h2 className="mb-1 text-base font-bold text-blue-900 dark:text-blue-200">成長記録</h2>
+            <p className="mb-3 text-xs text-blue-800/80 dark:text-blue-300/80">勝ち負けだけでは見えない、試合内容の変化を指標で追っています。</p>
             <Link
               href={`/growth/${growthShowcaseSlug}`}
               className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 hover:underline dark:text-blue-300"
@@ -324,12 +288,8 @@ export default function PlayerResultsPage({
 
         {relatedPlayers.length > 0 && (
           <section>
-            <h2 className="mb-2 text-base font-bold text-gray-800 dark:text-gray-100">
-              関連選手（主なペア）
-            </h2>
-            <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">
-              {fullName}選手が収録大会でペアを組んだ選手です。
-            </p>
+            <h2 className="mb-2 text-base font-bold text-gray-800 dark:text-gray-100">関連選手（主なペア）</h2>
+            <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">{fullName}選手が収録大会でペアを組んだ選手です。</p>
             <ul className="flex flex-wrap gap-2">
               {relatedPlayers.map((p) => {
                 const label = `${p.name}（${p.total}試合 ${p.wins}勝${p.losses}敗）`;
@@ -355,10 +315,7 @@ export default function PlayerResultsPage({
         )}
 
         <section>
-          <PlayerResults
-            playerMatches={playerMatches}
-            playerTournaments={playerTournaments}
-          />
+          <PlayerResults playerMatches={playerMatches} playerTournaments={playerTournaments} />
         </section>
       </PageLayout>
     </>
@@ -374,9 +331,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const entriesRaw = fs.readFileSync(indexPath, 'utf-8');
   const index = JSON.parse(entriesRaw) as Array<{ id: number; count: number }>;
 
-  const paths = index
-    .filter((p) => p.count >= 5)
-    .map((p) => ({ params: { id: String(p.id) } }));
+  const paths = index.filter((p) => p.count >= 5).map((p) => ({ params: { id: String(p.id) } }));
 
   return { paths, fallback: false };
 };
@@ -408,20 +363,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }));
 
   // id -> count（結果ページが実在するのは count>=5 のみ。デッドリンク防止に使う）
-  const countById = new Map(
-    index.map((p) => [
-      String((p as { id: number }).id),
-      (p as { count?: number }).count ?? 0,
-    ]),
-  );
+  const countById = new Map(index.map((p) => [String((p as { id: number }).id), (p as { count?: number }).count ?? 0]));
 
   // --- Structured loading using shared helpers ---
   const root = process.cwd();
   const tournamentIndex = await loadTournamentIndex(root);
-  const tournamentMeta = new Map<
-    string,
-    { label?: string; isMajor?: boolean; generationId?: string }
-  >();
+  const tournamentMeta = new Map<string, { label?: string; isMajor?: boolean; generationId?: string }>();
   for (const t of tournamentIndex)
     tournamentMeta.set(t.tournamentId, {
       label: t.label,
@@ -458,17 +405,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const category = rec.fileName.replace('.json', '');
     const detail = rec.detail;
 
-    const participants = Array.isArray(detail.participants)
-      ? detail.participants
-      : [];
+    const participants = Array.isArray(detail.participants) ? detail.participants : [];
     const participantById = new Map<string, TournamentParticipant>();
     for (const p of participants) participantById.set(p.id, p);
 
-    const matchingParticipantIds = participants
-      .filter(
-        (p) => p.lastName === idx.lastName && p.firstName === idx.firstName,
-      )
-      .map((p) => p.id);
+    const matchingParticipantIds = participants.filter((p) => p.lastName === idx.lastName && p.firstName === idx.firstName).map((p) => p.id);
     if (matchingParticipantIds.length === 0) continue;
 
     // record the player's own team per year (for latest-team resolution)
@@ -479,10 +420,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         team: selfParticipant.team.trim(),
       });
       // 大会（tournamentId/year/category）ごとの当時の所属を保持する
-      tournamentSelfTeam.set(
-        `${tournamentId}/${year}/${category}`,
-        selfParticipant.team.trim(),
-      );
+      tournamentSelfTeam.set(`${tournamentId}/${year}/${category}`, selfParticipant.team.trim());
     }
 
     const entries = Array.isArray(detail.entries) ? detail.entries : [];
@@ -511,12 +449,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     for (const m of matches) {
       if (!Array.isArray(m.entries) || m.entries.length === 0) continue;
       const intersection = m.entries.filter((n) =>
-        entries.some(
-          (ee) =>
-            Array.isArray(ee.playerIds) &&
-            ee.playerIds.some((pid) => matchingParticipantIds.includes(pid)) &&
-            ee.entryNo === n,
-        ),
+        entries.some((ee) => Array.isArray(ee.playerIds) && ee.playerIds.some((pid) => matchingParticipantIds.includes(pid)) && ee.entryNo === n),
       );
       if (intersection.length === 0) continue;
       const playerEntryNo = intersection[0];
@@ -540,14 +473,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       // e.g. "苗字A・苗字B（チーム名）"
       if (opponents.length > 0) {
         const lastNames = opponents.map((p) => p.lastName);
-        const teams = opponents.map((p) =>
-          p.team && p.team.trim().length > 0 ? p.team.trim() : '',
-        );
+        const teams = opponents.map((p) => (p.team && p.team.trim().length > 0 ? p.team.trim() : ''));
         const nonEmptyTeams = teams.filter((t) => t.length > 0);
-        const allSameTeam =
-          nonEmptyTeams.length > 0 &&
-          nonEmptyTeams.length === opponents.length &&
-          nonEmptyTeams.every((t) => t === nonEmptyTeams[0]);
+        const allSameTeam = nonEmptyTeams.length > 0 && nonEmptyTeams.length === opponents.length && nonEmptyTeams.every((t) => t === nonEmptyTeams[0]);
 
         if (allSameTeam && opponents.length > 1) {
           opponentNames.push(`${lastNames.join('・')}（${nonEmptyTeams[0]}）`);
@@ -561,34 +489,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       let score = '';
       if (m.scores && typeof m.scores === 'object') {
-        const playerScore = (m.scores as Record<string, number>)[
-          String(playerEntryNo)
-        ];
-        const oppScore = (m.scores as Record<string, number>)[
-          String(opponentEntryNos[0])
-        ];
-        if (typeof playerScore === 'number' && typeof oppScore === 'number')
-          score = `${playerScore}-${oppScore}`;
+        const playerScore = (m.scores as Record<string, number>)[String(playerEntryNo)];
+        const oppScore = (m.scores as Record<string, number>)[String(opponentEntryNos[0])];
+        if (typeof playerScore === 'number' && typeof oppScore === 'number') score = `${playerScore}-${oppScore}`;
       }
 
-      const resultFlag: 'win' | 'lose' | 'unknown' =
-        typeof m.winnerEntryNo === 'number'
-          ? m.winnerEntryNo === playerEntryNo
-            ? 'win'
-            : 'lose'
-          : 'unknown';
+      const resultFlag: 'win' | 'lose' | 'unknown' = typeof m.winnerEntryNo === 'number' ? (m.winnerEntryNo === playerEntryNo ? 'win' : 'lose') : 'unknown';
 
       let partnerName: string | null = null;
       let partnerId: string | null = null;
       for (const e of entries) {
         if (!Array.isArray(e.playerIds)) continue;
-        if (
-          e.playerIds.includes(matchingParticipantIds[0]) &&
-          e.playerIds.length > 1
-        ) {
-          const other = e.playerIds.find(
-            (pid) => pid !== matchingParticipantIds[0],
-          );
+        if (e.playerIds.includes(matchingParticipantIds[0]) && e.playerIds.length > 1) {
+          const other = e.playerIds.find((pid) => pid !== matchingParticipantIds[0]);
           if (other) {
             const pp = participantById.get(other);
             if (pp) partnerName = `${pp.lastName}${pp.firstName}`;
@@ -599,26 +512,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       const matchResult: MatchResult = {
         round: String(m.round ?? '予選'),
-        opponent:
-          opponentNames.length > 0
-            ? opponentNames.join('・')
-            : opponentEntryNos.length > 0
-              ? `#${opponentEntryNos[0]}`
-              : '不明',
+        opponent: opponentNames.length > 0 ? opponentNames.join('・') : opponentEntryNos.length > 0 ? `#${opponentEntryNos[0]}` : '不明',
         result: resultFlag === 'win' ? '勝' : resultFlag === 'lose' ? '敗' : '',
         score: score,
         partner: partnerName ?? null,
       };
 
       const tournamentKey = `${tournamentId}/${year}/${category}`;
-      if (!tournamentMatchesMap.has(tournamentKey))
-        tournamentMatchesMap.set(tournamentKey, []);
+      if (!tournamentMatchesMap.has(tournamentKey)) tournamentMatchesMap.set(tournamentKey, []);
       tournamentMatchesMap.get(tournamentKey)!.push(matchResult);
 
       // record partner occurrence for this tournament
       if (partnerId) {
-        if (!tournamentPartnerCounts.has(tournamentKey))
-          tournamentPartnerCounts.set(tournamentKey, new Map());
+        if (!tournamentPartnerCounts.has(tournamentKey)) tournamentPartnerCounts.set(tournamentKey, new Map());
         const cntMap = tournamentPartnerCounts.get(tournamentKey)!;
         cntMap.set(partnerId, (cntMap.get(partnerId) || 0) + 1);
       }
@@ -644,8 +550,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       const targetEntryNos: number[] = [];
       for (const e of entries) {
         if (!Array.isArray(e.playerIds)) continue;
-        if (e.playerIds.includes(matchingParticipantIds[0]))
-          targetEntryNos.push(e.entryNo);
+        if (e.playerIds.includes(matchingParticipantIds[0])) targetEntryNos.push(e.entryNo);
       }
 
       for (const r of detail.results) {
@@ -658,11 +563,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             tournament?: unknown;
             roundrobin?: unknown;
           };
-          const recEntryNo =
-            typeof rec.entryNo === 'number' ? rec.entryNo : undefined;
-          const playerIdsField = Array.isArray(rec.playerIds)
-            ? (rec.playerIds as string[])
-            : undefined;
+          const recEntryNo = typeof rec.entryNo === 'number' ? rec.entryNo : undefined;
+          const playerIdsField = Array.isArray(rec.playerIds) ? (rec.playerIds as string[]) : undefined;
           let isTarget = false;
 
           // First preference: match by entryNo
@@ -671,11 +573,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           }
 
           // Fallback: match by playerIds (legacy)
-          if (
-            !isTarget &&
-            Array.isArray(playerIdsField) &&
-            playerIdsField.some((pid) => matchingParticipantIds.includes(pid))
-          ) {
+          if (!isTarget && Array.isArray(playerIdsField) && playerIdsField.some((pid) => matchingParticipantIds.includes(pid))) {
             isTarget = true;
           }
 
@@ -704,8 +602,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           }
 
           // fallback to legacy result string
-          if (!resultField && typeof rec.result === 'string')
-            resultField = rec.result;
+          if (!resultField && typeof rec.result === 'string') resultField = rec.result;
 
           const tournamentKey = `${tournamentId}/${year}/${category}`;
           // if no resultField was found, set default to '不明'
@@ -722,9 +619,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const [tid, yr, category] = tournamentKey.split('/');
     const yearVal = yr ? (Number(yr) ? Number(yr) : yr) : undefined;
     const infoEntries = informationMap.get(tid) ?? [];
-    const infoForYear = infoEntries.find(
-      (it) => String(it.year) === String(yearVal),
-    );
+    const infoForYear = infoEntries.find((it) => String(it.year) === String(yearVal));
     const startDateVal = infoForYear ? (infoForYear.startDate ?? null) : null;
     const endDateVal = infoForYear ? (infoForYear.endDate ?? null) : null;
     const dateRange = startDateVal
@@ -763,9 +658,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         const p = partnersMap.get(partnerIdForTournament);
         if (p) {
           // try to map partner to canonical id from allPlayersList (index.json)
-          const found = allPlayersList.find(
-            (ap) => ap.lastName === p.lastName && ap.firstName === p.firstName,
-          );
+          const found = allPlayersList.find((ap) => ap.lastName === p.lastName && ap.firstName === p.firstName);
           if (found) {
             partnerNameForTournament = `${p.lastName}${p.firstName}`;
             // 結果ページが実在する（count>=5）選手のみページへリンク化する。
@@ -830,17 +723,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const byYear: Record<string, Agg> = {};
 
   const findPlayerIdByName = (lastName: string, firstName: string) => {
-    const found = allPlayersList.find(
-      (p) => p.lastName === lastName && p.firstName === firstName,
-    );
+    const found = allPlayersList.find((p) => p.lastName === lastName && p.firstName === firstName);
     return found ? found.id : undefined;
   };
 
   const getYearForTournament = (tournamentKeyOrId: string) => {
     // tournamentKeyOrId can be either 'tournamentId/year' or the old file key
-    const info =
-      playerTournamentsMap.get(tournamentKeyOrId) ??
-      playerTournamentsMap.get(String(tournamentKeyOrId));
+    const info = playerTournamentsMap.get(tournamentKeyOrId) ?? playerTournamentsMap.get(String(tournamentKeyOrId));
     // prefer explicit year field if present
     if (info && info.year) return String(info.year);
     const dateRange = info?.dateRange || '';
@@ -855,11 +744,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // parse games from score
     if (m.score) {
       const parts = m.score.split('-').map((s) => Number(s));
-      if (
-        parts.length === 2 &&
-        !Number.isNaN(parts[0]) &&
-        !Number.isNaN(parts[1])
-      ) {
+      if (parts.length === 2 && !Number.isNaN(parts[0]) && !Number.isNaN(parts[1])) {
         games.won += parts[0];
         games.lost += parts[1];
         games.total += parts[0] + parts[1];
@@ -891,11 +776,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     if (m.score) {
       const parts = m.score.split('-').map((s) => Number(s));
-      if (
-        parts.length === 2 &&
-        !Number.isNaN(parts[0]) &&
-        !Number.isNaN(parts[1])
-      ) {
+      if (parts.length === 2 && !Number.isNaN(parts[0]) && !Number.isNaN(parts[1])) {
         byPartner[partnerKey].games.won += parts[0];
         byPartner[partnerKey].games.lost += parts[1];
         byPartner[partnerKey].games.total += parts[0] + parts[1];
@@ -903,9 +784,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 
     // year aggregation: prefer explicit m.year, otherwise ask map using tournamentKey
-    const tournamentKey = m.year
-      ? `${m.tournamentId}/${m.year}`
-      : String(m.tournamentId);
+    const tournamentKey = m.year ? `${m.tournamentId}/${m.year}` : String(m.tournamentId);
     const year = m.year ? String(m.year) : getYearForTournament(tournamentKey);
     if (!byYear[year]) {
       byYear[year] = {
@@ -918,11 +797,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     else if (m.result === 'lose') byYear[year].matches.losses += 1;
     if (m.score) {
       const parts = m.score.split('-').map((s) => Number(s));
-      if (
-        parts.length === 2 &&
-        !Number.isNaN(parts[0]) &&
-        !Number.isNaN(parts[1])
-      ) {
+      if (parts.length === 2 && !Number.isNaN(parts[0]) && !Number.isNaN(parts[1])) {
         byYear[year].games.won += parts[0];
         byYear[year].games.lost += parts[1];
         byYear[year].games.total += parts[0] + parts[1];
@@ -946,17 +821,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       gameRate: s.games.total > 0 ? s.games.won / s.games.total : 0,
     },
   });
-  const byPartnerNormalized: Record<
-    string,
-    { matches: MatchStatsType; games: GamesType }
-  > = {};
+  const byPartnerNormalized: Record<string, { matches: MatchStatsType; games: GamesType }> = {};
   for (const k of Object.keys(byPartner)) {
     byPartnerNormalized[k] = normalizeStats(byPartner[k]);
   }
-  const byYearNormalized: Record<
-    string,
-    { matches: MatchStatsType; games: GamesType }
-  > = {};
+  const byYearNormalized: Record<string, { matches: MatchStatsType; games: GamesType }> = {};
   for (const k of Object.keys(byYear)) {
     byYearNormalized[k] = normalizeStats(byYear[k]);
   }
@@ -973,18 +842,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 
   // Build minimal allPlayers list - only include partners referenced in stats
-  const referencedPartnerIds = new Set(
-    Object.keys(byPartnerNormalized).filter((k) => k !== 'singles'),
-  );
-  const minimalPlayersList = allPlayersList.filter((p) =>
-    referencedPartnerIds.has(p.id),
-  );
+  const referencedPartnerIds = new Set(Object.keys(byPartnerNormalized).filter((k) => k !== 'singles'));
+  const minimalPlayersList = allPlayersList.filter((p) => referencedPartnerIds.has(p.id));
 
   // 関連選手（主なペア）: byPartner を試合数で降順に並べ、
   // 結果ページを持つ選手（index.json の count>=5）のみリンク対象にする。
-  const partnerNameById = new Map(
-    allPlayersList.map((p) => [p.id, `${p.lastName}${p.firstName}`]),
-  );
+  const partnerNameById = new Map(allPlayersList.map((p) => [p.id, `${p.lastName}${p.firstName}`]));
   const relatedPlayers = Object.entries(byPartnerNormalized)
     .filter(([k]) => k !== 'singles')
     .map(([id, agg]) => ({
@@ -1000,10 +863,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .slice(0, 8);
 
   // latest team (most recent year wins)
-  const team =
-    teamRecords.length > 0
-      ? teamRecords.sort((a, b) => a.year - b.year).slice(-1)[0].team
-      : null;
+  const team = teamRecords.length > 0 ? teamRecords.sort((a, b) => a.year - b.year).slice(-1)[0].team : null;
 
   // activity dates from tournament information (real freshness signals)
   const activityDates = playerTournaments
@@ -1025,10 +885,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           lastName?: string;
           firstName?: string;
         };
-        if (
-          info.lastName === idx.lastName &&
-          info.firstName === idx.firstName
-        ) {
+        if (info.lastName === idx.lastName && info.firstName === idx.firstName) {
           profileSlug = entry;
           break;
         }
@@ -1043,19 +900,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // ショーケース対象（data/growth-featured.json）なら成長記録ページ slug を引く（ADR-004）。
   let growthShowcaseSlug: string | null = null;
   try {
-    const featuredPath = path.join(
-      process.cwd(),
-      'data',
-      'growth-featured.json',
-    );
-    const featuredPayload = JSON.parse(
-      fs.readFileSync(featuredPath, 'utf-8'),
-    ) as {
+    const featuredPath = path.join(process.cwd(), 'data', 'growth-featured.json');
+    const featuredPayload = JSON.parse(fs.readFileSync(featuredPath, 'utf-8')) as {
       featured?: Array<{ slug?: string; playerId?: string | number }>;
     };
-    const featuredEntry = (featuredPayload.featured ?? []).find(
-      (entry) => entry?.playerId != null && String(entry.playerId) === playerId,
-    );
+    const featuredEntry = (featuredPayload.featured ?? []).find((entry) => entry?.playerId != null && String(entry.playerId) === playerId);
     growthShowcaseSlug = featuredEntry?.slug ?? null;
   } catch {
     // featured 設定が無い/壊れている場合は導線を出さない
@@ -1069,23 +918,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // sitemap からの除外は postbuild（scripts/filter-noindex-from-sitemap.mjs）が
   // 生成 HTML の robots meta を読んで自動的に行うため、判定はこの 1 箇所に集約する。
   const PLAYER_INDEX_MIN_MATCHES = 15;
-  const hasHighschoolNational = playerMatches.some(
-    (m) => tournamentMeta.get(m.tournamentId)?.generationId === 'highschool',
-  );
-  const shouldIndex =
-    totalMatches >= PLAYER_INDEX_MIN_MATCHES || hasHighschoolNational;
+  const hasHighschoolNational = playerMatches.some((m) => tournamentMeta.get(m.tournamentId)?.generationId === 'highschool');
+  const shouldIndex = totalMatches >= PLAYER_INDEX_MIN_MATCHES || hasHighschoolNational;
 
   // Player Statistics Engine（facade）を併用し新データを追加提供する（P5・非破壊）。
   // 既存の playerMatches/playerTournaments 等の表示ロジックはそのまま維持する。
   // ビルド時は prebuild が生成した _facts/_index/rankings を読む（freshness:'cache'）。
-  let playerStatistics:
-    | import('@/types/playerStatistics').PlayerStatistics
-    | null = null;
+  let playerStatistics: import('@/types/playerStatistics').PlayerStatistics | null = null;
   try {
     playerStatistics = await getPlayerStatistics(Number(playerId), {}, root);
   } catch {
     playerStatistics = null;
   }
+
+  // H2H 相手のうち結果ページが実在する（count>=5）選手のみリンク化する。
+  const statsLinkableIds = (playerStatistics?.headToHead ?? [])
+    .map((h) => h.opponentId)
+    .filter((id): id is number => id != null && (countById.get(String(id)) ?? 0) >= 5);
 
   return {
     props: {
@@ -1101,12 +950,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerTournaments,
       playerStats,
       playerStatistics,
+      statsLinkableIds,
       allPlayers: minimalPlayersList,
       relatedPlayers,
-      majorTitlesData: await getMajorTitlesForPlayer(
-        idx.lastName,
-        idx.firstName,
-      ),
+      majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),
       scoreMatchLinks: getScoreMatchLinksForPlayer(playerId),
       growthShowcaseSlug,
     },
