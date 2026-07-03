@@ -87,7 +87,8 @@ function main() {
   let created = 0;
   let skipped = 0;
   for (const { tid, year } of candidates) {
-    const articleId = `${tid}-${year}-${type}`;
+    // type は常に 'preview' 固定（ADR-010で result 記事は廃止）なので articleId には含めない。
+    const articleId = `${tid}-${year}`;
     const outPath = path.join(newsRoot, `${articleId}.json`);
     if (fs.existsSync(outPath)) {
       skipped += 1;

@@ -16,3 +16,9 @@
 # 一般大会は大会ハブへ
 /news/international-korea-cup-2026-result /tournaments/international/international-korea-cup/ 301
 /news/international-korea-cup-2026-result/ /tournaments/international/international-korea-cup/ 301
+
+# preview 記事の articleId から "-preview" サフィックスを削除（result 廃止で type 区別が不要になったため）
+/news/west-japan-2026-preview /news/west-japan-2026/ 301
+/news/west-japan-2026-preview/ /news/west-japan-2026/ 301
+/news/highschool-japan-cup-2026-preview /news/highschool-japan-cup-2026/ 301
+/news/highschool-japan-cup-2026-preview/ /news/highschool-japan-cup-2026/ 301
