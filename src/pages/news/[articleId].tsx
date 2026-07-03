@@ -241,9 +241,11 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                 <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                   {c.returningPlacers.map((p, i) => (
                     <li key={`${p.placement}-${i}`}>
-                      前回{p.placement}: <span className="font-semibold">{p.players.length > 0 ? <PlayerNames players={p.players} /> : p.display}</span>
-                      {p.players.length > 0 && p.team && `（${p.team}）`}
-                      {!p.intact && '（一部継続）'}
+                      前回{p.placement}:{' '}
+                      <span className="font-semibold">
+                        {p.players.length > 0 ? <PlayerNames players={p.intact ? p.players : p.players.filter((pl) => pl.returning)} /> : p.display}
+                      </span>
+                      {p.players.length > 0 && p.intact && p.team && `（${p.team}）`}
                       <StandingBadge standing={p.standing} />
                     </li>
                   ))}
