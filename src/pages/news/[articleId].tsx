@@ -57,14 +57,20 @@ function StandingBadge({ standing }: { standing: EntryStanding | null }) {
   return <span className={`ml-2 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${cls}`}>今大会: {standing.label}</span>;
 }
 
-/** 選手名を「・」区切りで並べる（各名はリンク化されうる） */
-function PlayerNames({ players }: { players: PreviewPlayerRef[] }) {
+/**
+ * 選手名を「・」区切りで並べる（各名はリンク化されうる）。
+ * perPlayerTeam が true のとき、選手ごとの所属を名前の直後に付ける。
+ * ペア共通の所属がある（呼び出し側の team が非 null）場合はそちらをペア全体の末尾に
+ * 一度だけ付ける運用なので、perPlayerTeam は所属が割れている（混成ペア）ときだけ渡すこと。
+ */
+function PlayerNames({ players, perPlayerTeam }: { players: PreviewPlayerRef[]; perPlayerTeam?: boolean }) {
   return (
     <>
       {players.map((p, i) => (
         <span key={`${p.name}-${i}`}>
           {i > 0 && '・'}
           <PlayerName p={p} />
+          {perPlayerTeam && p.team && `（${p.team}）`}
         </span>
       ))}
     </>
@@ -201,7 +207,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                         {c.titleDefense.status === 'partial' ? (
                           <PlayerNames players={c.titleDefense.players.filter((p) => p.returning)} />
                         ) : (
-                          <PlayerNames players={c.titleDefense.players} />
+                          <PlayerNames players={c.titleDefense.players} perPlayerTeam={!c.titleDefense.team} />
                         )}
                       </>
                     ) : (
@@ -243,7 +249,11 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                     <li key={`${p.placement}-${i}`}>
                       前回{p.placement}:{' '}
                       <span className="font-semibold">
-                        {p.players.length > 0 ? <PlayerNames players={p.intact ? p.players : p.players.filter((pl) => pl.returning)} /> : p.display}
+                        {p.players.length > 0 ? (
+                          <PlayerNames players={p.intact ? p.players : p.players.filter((pl) => pl.returning)} perPlayerTeam={p.intact && !p.team} />
+                        ) : (
+                          p.display
+                        )}
                       </span>
                       {p.players.length > 0 && p.intact && p.team && `（${p.team}）`}
                       <StandingBadge standing={p.standing} />
@@ -261,7 +271,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                   {c.returningFormerChampions.map((f, i) => (
                     <li key={`former-${i}`}>
                       {f.years.join('・')}年優勝:{' '}
-                      <span className="font-semibold">{f.players.length > 0 ? <PlayerNames players={f.players} /> : f.display}</span>
+                      <span className="font-semibold">{f.players.length > 0 ? <PlayerNames players={f.players} perPlayerTeam={!f.team} /> : f.display}</span>
                       {f.players.length > 0 && f.team && `（${f.team}）`}
                       <StandingBadge standing={f.standing} />
                     </li>
