@@ -60,6 +60,12 @@ export type PreviewPlayerRef = {
   playerId: number | null;
   /** 今大会も出場するか */
   returning: boolean;
+  /**
+   * この選手個人の所属（表示用・正規化済み）。無ければ null。
+   * ペア全員の所属が同じ場合は呼び出し側の `team`（ペア共通の所属）を使い、
+   * 所属が割れている（混成ペア）場合はこちらを選手ごとに表示する。
+   */
+  team: string | null;
 };
 
 /**
@@ -512,12 +518,16 @@ function returningOf(c: ChampionEntry, field: FieldIndex): { status: 'intact' | 
     const present = ck ? field.championKeySet.has(ck) : false;
     return { status: present ? 'intact' : 'absent', players: [] };
   }
-  // 個人は「名前@正規化所属」が一致すれば継続出場とみなす（同姓同名は所属で区別）。
-  const players: PreviewPlayerRef[] = c.players.map((name) => ({
-    name,
-    playerId: resolvePlayerId(name),
-    returning: c.teams.some((t) => field.playerKeySet.has(playerMatchKey(name, t))),
-  }));
+  // 個人は「名前@正規化所属（選手個人の所属）」が一致すれば継続出場とみなす（同姓同名は所属で区別）。
+  const players: PreviewPlayerRef[] = c.players.map((name, i) => {
+    const team = c.playerTeams[i] ?? null;
+    return {
+      name,
+      playerId: resolvePlayerId(name),
+      returning: field.playerKeySet.has(playerMatchKey(name, team)),
+      team: team ? cleanDisplay(team) : null,
+    };
+  });
   const returningCount = players.filter((p) => p.returning).length;
   let status: 'intact' | 'partial' | 'absent' = 'absent';
   if (returningCount === players.length) status = 'intact';
@@ -525,8 +535,17 @@ function returningOf(c: ChampionEntry, field: FieldIndex): { status: 'intact' | 
   return { status, players };
 }
 
-/** ChampionEntry の表示用所属校（正規化＋サフィックス除去）。無ければ null */
+/**
+ * ChampionEntry の表示用所属校（正規化＋サフィックス除去）。
+ * ダブルスでペアの所属が割れている（混成ペア）場合は、まとめて 1 つの所属として
+ * 表示すると誤り（片方の選手の所属を両方に付けてしまう）になるため null を返す。
+ * 呼び出し側は null のとき PreviewPlayerRef.team で選手ごとの所属を表示すること。
+ */
 function teamDisplayOf(c: ChampionEntry): string | null {
+  const isTeam = c.players.length === 0;
+  if (isTeam) return c.teams[0] ? cleanDisplay(c.teams[0]) : null;
+  const distinctTeams = new Set(c.playerTeams.filter((t): t is string => !!t).map((t) => normPart(normalizeTeam(t))));
+  if (distinctTeams.size > 1) return null; // 混成ペア: 個別表示に委ねる
   return c.teams[0] ? cleanDisplay(c.teams[0]) : null;
 }
 
@@ -817,6 +836,7 @@ function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string,
         name: info.name,
         playerId: resolvePlayerId(info.name),
         returning: true,
+        team: null,
       },
       tournamentLabel: info.tournamentLabel,
       year: info.year,

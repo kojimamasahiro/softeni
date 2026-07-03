@@ -27,8 +27,14 @@ export type ChampionEntry = {
    * 判定するために使う（ペア単位の championKey とは別軸）。団体は空配列。
    */
   playerKeys: string[];
-  /** 所属（個人=ペアの所属校、団体=校名） */
+  /** 所属（個人=ペアの所属校、団体=校名）。重複除去済みの一覧（表示用の代表所属に使う） */
   teams: string[];
+  /**
+   * 選手ごとの所属（players と同じ index で対応、重複除去なし）。ダブルスで所属が
+   * 割れている（混成ペア）場合に、選手ごとの所属を個別表示するために使う。
+   * 所属不明の選手は null。団体は空配列。
+   */
+  playerTeams: (string | null)[];
   prefectures: string[];
   /** 表示用文字列（個人:「鈴木・佐藤（◯◯高）」/ 団体:「◯◯高」）。優勝者不明年は null */
   display: string | null;
@@ -157,11 +163,13 @@ function resolveEntry(
   players: string[];
   playerKeys: string[];
   teams: string[];
+  playerTeams: (string | null)[];
   prefectures: string[];
 } {
   const players: string[] = [];
   const playerKeys: string[] = [];
   const teams: string[] = [];
+  const playerTeams: (string | null)[] = [];
   const prefectures: string[] = [];
 
   for (const id of entry.playerIds) {
@@ -170,12 +178,14 @@ function resolveEntry(
       // 参加者情報が無い場合は id をそのまま名前として扱う
       players.push(id);
       playerKeys.push(playerKey(id));
+      playerTeams.push(null);
       continue;
     }
     const name = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
     if (name) {
       players.push(name);
       playerKeys.push(playerKey(name, p.team));
+      playerTeams.push(p.team || null);
     }
     if (p.team && !teams.includes(p.team)) teams.push(p.team);
     if (p.prefecture && !prefectures.includes(p.prefecture)) {
@@ -193,7 +203,7 @@ function resolveEntry(
     display = nameStr;
   }
 
-  return { display, players, playerKeys, teams, prefectures };
+  return { display, players, playerKeys, teams, playerTeams, prefectures };
 }
 
 /** 1 種目ファイルから「優勝」エントリのみ抽出して ChampionEntry を作る */
@@ -214,6 +224,7 @@ function extractWinner(detailPath: string, year: number): ChampionEntry | null {
       players: resolved.players,
       playerKeys: resolved.playerKeys,
       teams: resolved.teams,
+      playerTeams: resolved.playerTeams,
       prefectures: resolved.prefectures,
       display: resolved.display || null,
     };
@@ -224,6 +235,7 @@ function extractWinner(detailPath: string, year: number): ChampionEntry | null {
     players: [],
     playerKeys: [],
     teams: [],
+    playerTeams: [],
     prefectures: [],
     display: null,
   };
@@ -255,6 +267,7 @@ export function resolveEntryToChampion(entry: RawEntry, participantById: Map<str
     players: r.players,
     playerKeys: r.playerKeys,
     teams: r.teams,
+    playerTeams: r.playerTeams,
     prefectures: r.prefectures,
     display: r.display || null,
   };
