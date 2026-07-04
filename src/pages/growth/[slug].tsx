@@ -2,7 +2,9 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import { Card, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
 import { gatherShowcaseRecords, loadFeaturedEntries, loadGrowthTargets, showcaseDisplayName, type ShowcaseRecord } from '@/lib/growthShowcase';
 import { buildSiteUrl, isScoreSiteMode } from '@/lib/siteConfig';
@@ -32,20 +34,25 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
         url={pageUrl}
         type="article"
       />
-      <div className="min-h-screen bg-white px-4 py-8 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap gap-4">
-            <Link href="/growth" className="text-sm text-blue-600 hover:underline dark:text-blue-400">
-              成長記録一覧へ
-            </Link>
-            {playerId && (
+      {/* PageLayout+パンくずを適用(docs/ui M4・T6) */}
+      <PageLayout maxWidth="6xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '成長記録', href: '/growth' },
+            { label: title, href: `/growth/${slug}` },
+          ]}
+        />
+        <div>
+          {playerId && (
+            <div className="flex flex-wrap gap-4">
               <Link href={`/players/${playerId}/results`} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
                 この選手の試合結果ページへ
               </Link>
-            )}
-          </div>
+            </div>
+          )}
 
-          <h1 className="mt-2 text-3xl font-bold">{title}</h1>
+          <h1 className="mt-2 text-2xl font-bold">{title}</h1>
 
           <section className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-5 dark:border-gray-700 dark:bg-gray-800/70">
             <h2 className="text-lg font-semibold">この成長記録でわかること</h2>
@@ -140,7 +147,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
             </button>
           </section>
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 }

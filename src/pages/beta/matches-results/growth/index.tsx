@@ -1,9 +1,10 @@
 import type { GetStaticProps } from 'next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import { Card, comparisonLabels, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
 import { getGrowthReportFileName, GrowthComparison, GrowthReport, GrowthTarget } from '@/lib/growthAnalysis';
 import { buildSiteUrl, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
@@ -85,14 +86,19 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
         type="website"
         noindex
       />
-      <div className="min-h-screen bg-white px-4 py-8 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-        <div className="mx-auto max-w-7xl">
+      {/* PageLayout+パンくずを適用(docs/ui M4・T6)。noindex は維持 */}
+      <PageLayout maxWidth="6xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '試合一覧', href: getPublicMatchesListPath() },
+            { label: '成長分析', href: getPublicMatchesGrowthPath() },
+          ]}
+        />
+        <div>
           <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <Link href={getPublicMatchesListPath()} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
-                試合結果一覧へ
-              </Link>
-              <h1 className="mt-2 text-3xl font-bold">最近の成長</h1>
+              <h1 className="mt-2 text-2xl font-bold">最近の成長</h1>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">勝ち負けだけでは見えない、試合内容の変化を追えます。</p>
             </div>
             <div className="grid gap-3 md:grid-cols-[minmax(260px,360px)_minmax(180px,240px)]">
@@ -168,7 +174,7 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
             </div>
           )}
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 }

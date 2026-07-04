@@ -1,7 +1,9 @@
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import { gatherShowcaseRecords, loadFeaturedEntries, loadGrowthTargets, showcaseDisplayName } from '@/lib/growthShowcase';
 import { buildSiteUrl, isScoreSiteMode } from '@/lib/siteConfig';
 
@@ -26,9 +28,16 @@ export default function GrowthHubPage({ items }: HubProps) {
         url={buildSiteUrl('/growth/')}
         type="website"
       />
-      <div className="min-h-screen bg-white px-4 py-8 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-3xl font-bold">成長記録</h1>
+      {/* PageLayout+パンくずを適用(docs/ui M4・T2) */}
+      <PageLayout maxWidth="5xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '成長記録', href: '/growth' },
+          ]}
+        />
+        <div>
+          <h1 className="text-2xl font-bold">成長記録</h1>
           <p className="mt-3 text-sm leading-7 text-gray-700 dark:text-gray-200">
             勝ち負けだけでは見えない「試合内容の変化」を、サーブ時の得点率、レシーブ、競り合い（デュースやゲームポイント）、流れの立て直しといった指標で追っています。試合を重ねるごとに、どこが伸びているかが記録として積み上がっていきます。
           </p>
@@ -60,7 +69,7 @@ export default function GrowthHubPage({ items }: HubProps) {
             <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">（score 連携は準備中です）</p>
           </section>
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 }

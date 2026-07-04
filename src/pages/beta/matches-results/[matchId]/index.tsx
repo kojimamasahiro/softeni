@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
+import PageLayout from '@/components/PageLayout';
 import MetaHead from '@/components/MetaHead';
 import YouTubeRangePlayer, { type YouTubeRangePlayerHandle } from '@/components/YouTubeRangePlayer';
 import { getBetaMatchById, getBetaTeamDisplayName, getLatestBetaMatchIds } from '@/lib/betaMatchesStatic';
@@ -1201,7 +1202,8 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       </Head>
-      <div className="mx-auto max-w-6xl bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+      {/* PageLayout を適用(docs/ui M4・T5)。幅は既存レイアウト(動画フロート)に合わせ 6xl を維持 */}
+      <PageLayout maxWidth="6xl">
         {/* ヘッダー */}
         <Breadcrumbs crumbs={breadcrumbItems} />
         <div className="flex justify-between items-center mb-6">
@@ -2048,7 +2050,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
             ))}
           </div>
         </section>
-      </div>
+      </PageLayout>
     </>
   );
 };

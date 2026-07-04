@@ -1,7 +1,9 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import { getBetaTeamDisplayName, getLatestBetaMatches } from '@/lib/betaMatchesStatic';
 import { buildSiteUrl, getPublicMatchDetailPath, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 import { generateTournamentUrlFromMatch, TournamentInfo } from '@/lib/tournamentClientHelpers';
@@ -71,10 +73,17 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
         url={buildSiteUrl(`${getPublicMatchesListPath()}/`)}
         type="website"
       />
-      <div className="min-h-screen bg-white px-4 py-10 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-        <div className="mx-auto max-w-7xl">
+      {/* PageLayout+パンくずを適用(docs/ui M4・T2) */}
+      <PageLayout maxWidth="6xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '試合一覧', href: getPublicMatchesListPath() },
+          ]}
+        />
+        <div>
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">試合結果一覧</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">試合結果一覧</h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">ポイント詳細記録から、試合結果と分析ページを確認できます。</p>
             <div className="mt-4">
               <Link
@@ -194,7 +203,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
             )}
           </div>
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 }
