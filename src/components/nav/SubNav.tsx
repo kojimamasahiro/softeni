@@ -39,7 +39,7 @@ export default function SubNav({ items, label }: Props) {
 
   return (
     <nav aria-label={label} className="mb-6">
-      <div className="inline-flex flex-wrap gap-1 rounded-lg border border-gray-200 bg-white p-1 dark:border-gray-700 dark:bg-gray-900">
+      <div className="inline-flex flex-wrap gap-1 rounded-lg border border-border bg-surface p-1 dark:border-gray-700 dark:bg-gray-900">
         {items.map((item) => {
           const active = isActive(item, pathname);
           return (
@@ -48,7 +48,7 @@ export default function SubNav({ items, label }: Props) {
               href={item.href}
               aria-current={active ? 'page' : undefined}
               className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
-                active ? 'bg-blue-600 font-semibold text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800'
+                active ? 'bg-primary font-semibold text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800'
               }`}
             >
               {item.label}

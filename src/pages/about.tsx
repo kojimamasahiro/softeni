@@ -90,14 +90,14 @@ export default function About() {
           <h2 className="text-xl font-semibold mb-4">お問い合わせ・ご意見</h2>
           <p className="text-base leading-relaxed">
             データの修正依頼や掲載希望、ご意見などは、
-            <Link href="/contact" className="text-blue-600 dark:text-blue-400 underline">
+            <Link href="/contact" className="text-primary dark:text-blue-400 underline">
               お問い合わせフォーム
             </Link>
             よりお送りください。誠実に対応させていただきます。
           </p>
         </section>
 
-        <p className="text-xs text-right text-gray-500 mt-12">最終更新日: {updatedAt}</p>
+        <p className="text-xs text-right text-text-muted mt-12">最終更新日: {updatedAt}</p>
       </PageLayout>
     </>
   );

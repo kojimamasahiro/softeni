@@ -82,7 +82,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
         />
 
         <h1 className="text-2xl font-bold mb-2">チーム一覧</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        <p className="text-sm text-text-muted dark:text-gray-400 mb-6">
           大会結果に収録されているチーム(学校・実業団・クラブ)を検索できます。掲載は収録試合が2試合以上のチーム({totalCount.toLocaleString()}
           件)。STリーグ出場チームはチームページへのリンクがあります。
         </p>
@@ -94,18 +94,18 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="チーム名・都道府県で検索(例: 高田商業、長野県)"
             aria-label="チーム検索"
-            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-800 placeholder:text-gray-400 focus:border-blue-600 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+            className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-text placeholder:text-gray-400 focus:border-blue-600 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
           />
         </div>
 
-        <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+        <p className="text-xs text-text-muted dark:text-gray-400 mb-2">
           {isSearching ? `検索結果: ${filtered.length.toLocaleString()}件` : `収録試合数の上位 ${INITIAL_LIMIT} 件を表示中(検索で全件から絞り込めます)`}
         </p>
 
-        <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-          <table className="w-full bg-white text-sm dark:bg-gray-900">
+        <div className="overflow-x-auto rounded-lg border border-border dark:border-gray-700">
+          <table className="w-full bg-surface text-sm dark:bg-gray-900">
             <thead>
-              <tr className="border-b border-gray-200 text-left text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
+              <tr className="border-b border-border text-left text-xs text-text-muted dark:border-gray-700 dark:text-gray-400">
                 <th className="px-4 py-2 font-medium">チーム</th>
                 <th className="px-4 py-2 font-medium">都道府県</th>
                 <th className="px-4 py-2 font-medium text-right">収録試合数</th>
@@ -116,20 +116,20 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
                 <tr key={`${t.n}-${t.p ?? ''}`} className="border-b border-gray-100 last:border-b-0 dark:border-gray-800">
                   <td className="px-4 py-2">
                     {t.s ? (
-                      <Link href={`/teams/${t.s}`} className="text-blue-600 hover:underline dark:text-blue-300">
+                      <Link href={`/teams/${t.s}`} className="text-primary hover:underline dark:text-blue-300">
                         {t.n}
                       </Link>
                     ) : (
-                      <span className="text-gray-800 dark:text-gray-100">{t.n}</span>
+                      <span className="text-text dark:text-gray-100">{t.n}</span>
                     )}
                   </td>
-                  <td className="px-4 py-2 text-gray-500 dark:text-gray-400">{t.p ?? '—'}</td>
-                  <td className="px-4 py-2 text-right tabular-nums text-gray-800 dark:text-gray-100">{t.c.toLocaleString()}</td>
+                  <td className="px-4 py-2 text-text-muted dark:text-gray-400">{t.p ?? '—'}</td>
+                  <td className="px-4 py-2 text-right tabular-nums text-text dark:text-gray-100">{t.c.toLocaleString()}</td>
                 </tr>
               ))}
               {isSearching && filtered.length === 0 && (
                 <tr>
-                  <td colSpan={3} className="px-4 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                  <td colSpan={3} className="px-4 py-6 text-center text-sm text-text-muted dark:text-gray-400">
                     該当するチームが見つかりませんでした
                   </td>
                 </tr>
@@ -138,7 +138,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
           </table>
         </div>
 
-        <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+        <p className="mt-4 text-xs text-text-muted dark:text-gray-400">
           ※ 収録試合数は当サイトに掲載している大会結果に基づくもので、実際の出場数とは異なる場合があります。
         </p>
       </PageLayout>

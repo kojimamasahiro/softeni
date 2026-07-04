@@ -19,7 +19,9 @@
 
 ## 2. トークン定義
 
-現行実装(Tailwind ユーティリティ直書き)からの移行可能性を優先し、**Tailwind の標準スケールに別名(セマンティック名)を与える**方式とする。実装は `tailwind.config` の theme 拡張または CSS 変数で行う(方式選択は移行時)。
+現行実装(Tailwind ユーティリティ直書き)からの移行可能性を優先し、**Tailwind の標準スケールに別名(セマンティック名)を与える**方式とする。
+
+実装方式(D-022 で確定・実装済み): リポジトリは Tailwind v4 のため、`src/styles/globals.css` の `@theme` に CSS 変数として定義。生成クラスの対応: color-bg→`bg-bg`、color-surface→`bg-surface`、color-border→`border-border`、color-text→`text-text`、color-text-muted→`text-text-muted`、color-primary→`text-primary`/`bg-primary`、color-primary-hover→`hover:text-primary-hover`、color-accent-win→`bg-accent-win`、color-accent-dev→`text-accent-dev`、color-danger→`text-danger`。
 
 ### 2.1 色
 
@@ -99,6 +101,7 @@ Tailwind 標準を正とする: sm=640 / md=768 / lg=1024 / xl=1280。
 | # | 内容 |
 |---|------|
 | ~~O-012~~ | 解消(D-012: 将来対応方針。§3 改訂済み) |
-| O-013 | トークンの実装方式(tailwind.config 拡張 or CSS 変数)。移行計画(Phase 8)の M5 着手時に決定 |
+| ~~O-013~~ | 解消(D-022: CSS 変数 @theme 方式。§2 に反映済み) |
 
 - 改訂記録: 2026-07-04 D-012 反映(§3 ダークモード方針)
+- 改訂記録: 2026-07-04 D-022 反映(§2 実装方式確定・globals.css に実装)

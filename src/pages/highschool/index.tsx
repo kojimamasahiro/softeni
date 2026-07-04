@@ -64,7 +64,7 @@ export default function HighschoolIndex() {
         />
 
         <h1 className="text-2xl font-bold mb-2">高校ソフトテニス</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        <p className="text-sm text-text-muted dark:text-gray-400 mb-6">
           高校カテゴリの特集ページです。男女別の全国大会成績と、全国大会の歴代記録をまとめています。
         </p>
 
@@ -73,10 +73,10 @@ export default function HighschoolIndex() {
             <Link
               key={s.href}
               href={s.href}
-              className="flex flex-col gap-1 rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
+              className="flex flex-col gap-1 rounded-lg border border-border bg-surface p-4 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
             >
-              <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100">{s.title}</h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400">{s.description}</p>
+              <h2 className="text-base font-semibold text-text dark:text-gray-100">{s.title}</h2>
+              <p className="text-xs text-text-muted dark:text-gray-400">{s.description}</p>
             </Link>
           ))}
         </div>

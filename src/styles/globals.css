@@ -13,6 +13,40 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
+ * デザイントークン(docs/ui/deliverables/06-design-principles.md §2.1・D-022)
+ * 色は原則このトークンのみ使用する(原則 P4)。
+ * 生成されるクラス例: bg-bg / bg-surface / border-border / text-text /
+ * text-text-muted / text-primary / hover:text-primary-hover / bg-accent-win
+ * ダーク値は将来対応(D-012)。対応時は下の :root を
+ * @media (prefers-color-scheme: dark) で上書きする(コンポーネント変更不要)。
+ */
+:root {
+  --sp-bg: oklch(98.5% 0.002 247.839); /* = gray-50 */
+  --sp-surface: #ffffff; /* = white */
+  --sp-border: oklch(92.8% 0.006 264.531); /* = gray-200 */
+  --sp-text: oklch(27.8% 0.033 256.848); /* = gray-800 */
+  --sp-text-muted: oklch(55.1% 0.027 264.364); /* = gray-500 */
+  --sp-primary: oklch(54.6% 0.245 262.881); /* = blue-600 */
+  --sp-primary-hover: oklch(62.3% 0.214 259.815); /* = blue-500 */
+  --sp-accent-win: oklch(76.9% 0.188 70.08); /* = amber-500 */
+  --sp-accent-dev: oklch(64.6% 0.222 41.116); /* = orange-600 */
+  --sp-danger: oklch(57.7% 0.245 27.325); /* = red-600 */
+}
+
+@theme inline {
+  --color-bg: var(--sp-bg);
+  --color-surface: var(--sp-surface);
+  --color-border: var(--sp-border);
+  --color-text: var(--sp-text);
+  --color-text-muted: var(--sp-text-muted);
+  --color-primary: var(--sp-primary);
+  --color-primary-hover: var(--sp-primary-hover);
+  --color-accent-win: var(--sp-accent-win);
+  --color-accent-dev: var(--sp-accent-dev);
+  --color-danger: var(--sp-danger);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

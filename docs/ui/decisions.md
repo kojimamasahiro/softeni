@@ -197,3 +197,4 @@
 - 決定内容: M5 のトークン実装は CSS 変数方式(`globals.css` の `@theme inline` + CSS 変数)を採用する。`tailwind.config`(JS/TS)による拡張は採用しない
 - 理由: オーナー判断(推奨案採用)。本リポジトリは Tailwind v4 の CSS ファースト構成で `tailwind.config` 自体が存在せず、`globals.css` で `@theme inline` + `--background`/`--foreground` パターンが既にダークモード分岐(`prefers-color-scheme`)込みで採用済み。既存パターンの延長が一貫性・実装コストの両面で合理的
 - 却下した代替案: `tailwind.config`(JS/TS)による拡張
+- 実装補足(2026-07-04・M5-1 実施済み): トークン名は 06 の定義をそのまま使い、`bg-bg`・`text-text` のような重複形も許容(明示性優先)。値は Tailwind v4 パレットの oklch 値と一致させ、ダーク値は D-012 に従い上書き枠のみ用意。1セッション内の同時採番により本決定は一時 D-015 と重複記載されたが、D-022 に統合した
