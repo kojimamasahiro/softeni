@@ -16,8 +16,8 @@ import TournamentContextBlocks, { type TournamentContextData } from '@/component
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getChampionMilestones } from '@/lib/milestones';
-import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
 
@@ -363,17 +363,19 @@ function loadIndexEntry(tournamentId: string): TournamentIndexEntry | null {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const detailsRoot = path.join(process.cwd(), ...DETAILS_ROOT);
-  if (!fs.existsSync(detailsRoot)) {
-    return { paths: [], fallback: false };
-  }
-
   const generationMap = loadGenerationMap();
-  const tournamentIds = fs.readdirSync(detailsRoot).filter((n) => {
-    const p = path.join(detailsRoot, n);
-    return fs.statSync(p).isDirectory();
-  });
 
-  const paths = tournamentIds.map((tid) => ({
+  const idsWithDetails = fs.existsSync(detailsRoot) ? fs.readdirSync(detailsRoot).filter((n) => fs.statSync(path.join(detailsRoot, n)).isDirectory()) : [];
+
+  // TournamentCard などから「歴代結果・優勝者まとめ」リンクは、外部結果リンクのみで
+  // details 配下にデータがない大会（＝まだ大会結果が掲載されていない地方大会）にも
+  // 一律で張られる。details ディレクトリの有無だけでパスを作ると、そうした大会の
+  // ハブページが生成されず404になってしまうため、index.json / local_index.json に
+  // 登録済みの大会IDも合わせて対象にし、空状態（掲載中の結果データがありません）を
+  // 表示できるようにする。
+  const tournamentIds = new Set<string>([...idsWithDetails, ...Object.keys(generationMap)]);
+
+  const paths = Array.from(tournamentIds).map((tid) => ({
     params: {
       generation: generationMap[tid] ?? 'unknown',
       tournamentId: tid,
