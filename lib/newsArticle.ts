@@ -148,6 +148,8 @@ export type RecentAchiever = {
   placement: '優勝' | '準優勝' | 'ベスト4';
   /** isMajorTitle の大会か */
   isMajor: boolean;
+  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  standing: EntryStanding | null;
 };
 
 /** プレビュー: 出場規模・勢力図（純粋な事実） */
@@ -839,6 +841,9 @@ function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string,
     const nameKey = normPart(info.name);
     if (seen.has(nameKey)) continue; // 既出（他ブロック or 同一人物の別所属キー）
     seen.add(nameKey);
+    // 今大会の途中経過/敗退（前回入賞者の再登場ブロックと同様、playerKey→entryNo→standing で引く）
+    const entryNo = field.playerKeyToEntryNo.get(key);
+    const standing = entryNo != null ? (field.standingByEntryNo.get(entryNo) ?? null) : null;
     out.push({
       player: {
         name: info.name,
@@ -851,6 +856,7 @@ function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string,
       categoryLabel: info.categoryLabel,
       placement: info.placement,
       isMajor: info.isMajor,
+      standing,
     });
   }
   out.sort(

@@ -293,11 +293,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                       {' — '}
                       {a.tournamentLabel} {a.year} {a.categoryLabel}
                       <span className="ml-1 font-semibold">{a.placement}</span>
-                      {a.isMajor && (
-                        <span className="ml-2 inline-block rounded-full bg-rose-100 px-2 py-0.5 text-xs font-semibold text-rose-800 dark:bg-rose-900 dark:text-rose-100">
-                          主要大会
-                        </span>
-                      )}
+                      <StandingBadge standing={a.standing} />
                     </li>
                   ))}
                 </ul>
