@@ -8,7 +8,6 @@
 
 - `next.config.mjs`
 - `wrangler.toml`
-- `wrangler.adinsight.toml`
 - `package.json`
 - `docs/cloudflare-migration-analysis.md`
 
@@ -27,10 +26,8 @@
 - `name = "softeni-pick"`
 - `pages_build_output_dir = "out"`
 
-`wrangler.adinsight.toml`:
-
-- `name = "adinsight"`
-- `pages_build_output_dir = "adinsight-site"`
+補足: `wrangler.adinsight.toml`(AdInsight 紹介サイト向け設定)は 2026-07-04 に
+`adinsight-site/` ごと削除した(docs/ui/decisions.md D-016)。
 
 ### package.json scripts
 

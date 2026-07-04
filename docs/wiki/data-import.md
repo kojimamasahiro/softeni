@@ -12,8 +12,6 @@
   - `node scripts/generate-beta-matches-json.mjs`
 - `npm run check:growth`
   - `node scripts/check-growth-analysis.mjs`
-- `npm run build:adinsight`
-  - `node scripts/build-adinsight-site.mjs`
 
 ## score 公開データ生成
 

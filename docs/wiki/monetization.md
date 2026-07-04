@@ -7,7 +7,6 @@
 - Google AdSense
 - Google Analytics
 - アフィリエイト導線
-- Android アプリ `AdInsight` の紹介サイト上の課金言及
 
 ## Web 広告
 
@@ -76,19 +75,17 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 - `src/pages/privacy.tsx` に広告・アクセス解析の説明あり
 - ここには「Google AdSense などを利用予定」との文言がある
 
-## Android / AdInsight 側
-
-- `adinsight-site/index.html` に `Google Play Billing` の文言あり
-- ただし Android アプリ本体コードはこのリポジトリでは未確認
-
 ## Assumption
 
 - Web 本体の主収益化は AdSense と一部アフィリエイト
-- AdInsight の課金実装は別リポジトリで管理されている可能性が高い
 
 ## Open Questions
 
 - AdSense の掲載面と広告ユニット設計
 - アフィリエイトの運用方針
 - `app-ads.txt` の対象アプリと Web 本体の関係
-- AdInsight の Play Billing 実装管理場所
+
+## 補足(2026-07-04)
+
+- `adinsight-site/`(Android アプリ「AdInsight」紹介サイト。Google Play Billing 言及あり)は
+  Softeni Pick 本体と無関係なため本リポジトリから削除した(docs/ui/decisions.md D-016)
