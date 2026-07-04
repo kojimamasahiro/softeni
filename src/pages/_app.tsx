@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
-// import AffiliateLink from '@/components/AffiliateLink';
 import AppShell from '@/components/AppShell';
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
@@ -106,7 +105,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <AppShell footer={<Footer />}>
         <Component {...pageProps} />
-        {/* <AffiliateLink /> */}
       </AppShell>
 
       {!hasConsent && <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />}

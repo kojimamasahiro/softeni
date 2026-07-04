@@ -1,8 +1,8 @@
 {
-  "totalMatches": 53,
+  "totalMatches": 54,
   "wins": 38,
   "losses": 15,
-  "totalWinRate": 0.717,
+  "totalWinRate": 0.704,
   "games": {
     "total": 330,
     "won": 205,
@@ -12,10 +12,10 @@
   "byPartner": {
     "2": {
       "matches": {
-        "total": 44,
+        "total": 45,
         "wins": 33,
         "losses": 11,
-        "winRate": 0.75
+        "winRate": 0.733
       },
       "games": {
         "total": 287,
@@ -109,14 +109,28 @@
         "lost": 35,
         "gameRate": 0.65
       }
+    },
+    "2026": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 0,
+        "winRate": 0
+      },
+      "games": {
+        "total": 0,
+        "won": 0,
+        "lost": 0,
+        "gameRate": 0
+      }
     }
   },
   "latestMatch": {
-    "tournament": "天皇賜杯・皇后賜杯 全日本選手権大会",
-    "date": "2025年11月6日〜2025年11月8日",
-    "location": "東京都",
+    "tournament": "西日本選手権大会",
+    "date": "2026年7月4日〜2026年7月5日",
+    "location": "徳島県",
     "partner": 2,
-    "result": "5回戦敗退",
-    "link": "https://www.jsta.or.jp"
+    "result": "出場",
+    "link": "https://www.soft-tennis.com/tokushima/"
   }
 }

@@ -4,12 +4,20 @@ import path from 'path';
 
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
+
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import SubNav from '@/components/nav/SubNav';
 import TournamentSearchTable, { TournamentInstance, TournamentLevel } from '@/components/tournaments/TournamentSearchTable';
+
+// 大会入口のサブナビ(すべて/主要/地域)。3ページ共通(docs/ui M2-3・C-3)
+export const TOURNAMENTS_SUBNAV = [
+  { label: 'すべての大会', href: '/tournaments/', exact: true },
+  { label: '主要大会', href: '/tournaments/major/', matchPrefix: '/tournaments/major' },
+  { label: '地域大会', href: '/tournaments/local/', matchPrefix: '/tournaments/local' },
+];
 
 // ─── 型定義（ビルド専用） ──────────────────────────────────────────────────
 type TournamentIndex = {
@@ -129,26 +137,10 @@ export default function TournamentsIndexPage({ instances, prefectures, years, ge
           ]}
         />
 
-        <h1 className="text-2xl font-bold mb-6">大会一覧</h1>
+        <h1 className="text-2xl font-bold mb-4">大会一覧</h1>
 
-        <div className="flex gap-3 mb-6">
-          <Link
-            href="/tournaments/major"
-            className="flex-1 flex flex-col items-center gap-1 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors"
-          >
-            <span className="text-lg">🏆</span>
-            <span className="font-semibold text-sm text-yellow-800 dark:text-yellow-200">主要大会結果</span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">全国・ブロック大会</span>
-          </Link>
-          <Link
-            href="/tournaments/local"
-            className="flex-1 flex flex-col items-center gap-1 p-4 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors"
-          >
-            <span className="text-lg">📍</span>
-            <span className="font-semibold text-sm text-green-800 dark:text-green-200">地域大会結果</span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">都道府県・地域連盟大会</span>
-          </Link>
-        </div>
+        {/* 入口カード2枚は SubNav に統合(重複リンク回避・docs/ui M2-3) */}
+        <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
 
         <TournamentSearchTable instances={instances} prefectures={prefectures} years={years} generations={generations} />
       </PageLayout>
@@ -161,7 +153,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const dataRoot = path.join(process.cwd(), 'data');
   const tournamentRoot = path.join(dataRoot, 'tournaments');
 
-  const generationsPath = path.join(tournamentRoot, 'genarations.json');
+  const generationsPath = path.join(tournamentRoot, 'generations.json');
   const indexPath = path.join(tournamentRoot, 'index.json');
   const localIndexPath = path.join(tournamentRoot, 'local_index.json');
   const informationDir = path.join(tournamentRoot, 'information');

@@ -1,29 +1,85 @@
+// src/pages/highschool/index.tsx
+// 高校特集の入口ページ(セクション入口・ページタイプ T2)。
+// 以前は /highschool/boys への meta refresh 振り分け(noindex)だったが、
+// 男子・女子・全国大会歴代記録への入口ページに変更(docs/ui M2-2・C-4)。
+// 男女の入口を対称にし、girls への到達を1段浅くする。
 import Head from 'next/head';
 import Link from 'next/link';
 
+import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 
+const SECTIONS = [
+  {
+    href: '/highschool/boys/',
+    title: '高校男子',
+    description: '全国大会成績の都道府県別一覧・学校ページ',
+  },
+  {
+    href: '/highschool/girls/',
+    title: '高校女子',
+    description: '全国大会成績の都道府県別一覧・学校ページ',
+  },
+  {
+    href: '/highschool/tournaments/',
+    title: '全国大会の歴代記録',
+    description: 'インターハイ・ハイスクールジャパンカップの歴代優勝校',
+  },
+];
+
 export default function HighschoolIndex() {
-  const redirectHref = '/highschool/boys/';
-  // noindex のリダイレクト入口ページ。canonical は遷移先（男子ページ）に統一する。
-  const pageUrl = 'https://softeni-pick.com/highschool/boys/';
+  const pageUrl = 'https://softeni-pick.com/highschool/';
 
   return (
     <>
-      <MetaHead title="高校カテゴリ | ソフトテニス情報" description="高校カテゴリの入口ページです。男子ページへ移動します。" url={pageUrl} type="website" />
+      <MetaHead
+        title="高校ソフトテニス | 全国大会成績・歴代記録 | Softeni Pick"
+        description="高校ソフトテニスの特集ページ。男子・女子の全国大会成績(都道府県別・学校別)と、インターハイ・ハイスクールジャパンカップの歴代記録をまとめています。"
+        url={pageUrl}
+        type="website"
+      />
       <Head>
-        <meta httpEquiv="refresh" content={`0; url=${redirectHref}`} />
-        <meta name="robots" content="noindex" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
+                { '@type': 'ListItem', position: 2, name: '高校', item: pageUrl },
+              ],
+            }),
+          }}
+        />
       </Head>
-      <PageLayout className="text-center">
-        <h1 className="text-2xl font-bold mb-4">高校カテゴリ</h1>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
-          男子ページへ移動しています。
-          <Link href={redirectHref} className="ml-1 text-blue-600 dark:text-blue-300 hover:underline">
-            移動しない場合はこちら
-          </Link>
+
+      <PageLayout maxWidth="4xl">
+        <Breadcrumbs
+          crumbs={[
+            { label: 'ホーム', href: '/' },
+            { label: '高校', href: '/highschool' },
+          ]}
+        />
+
+        <h1 className="text-2xl font-bold mb-2">高校ソフトテニス</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+          高校カテゴリの特集ページです。男女別の全国大会成績と、全国大会の歴代記録をまとめています。
         </p>
+
+        <div className="grid gap-3 sm:grid-cols-3">
+          {SECTIONS.map((s) => (
+            <Link
+              key={s.href}
+              href={s.href}
+              className="flex flex-col gap-1 rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
+            >
+              <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100">{s.title}</h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{s.description}</p>
+            </Link>
+          ))}
+        </div>
       </PageLayout>
     </>
   );

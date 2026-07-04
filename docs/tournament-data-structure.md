@@ -9,7 +9,7 @@ data/tournament/
 ├── index.json                    # 大会マスタデータ
 ├── local_index.json              # 地方大会マスタデータ
 ├── federations.json              # 連盟情報マスタデータ
-├── genarations.json              # 世代区分マスタデータ
+├── generations.json              # 世代区分マスタデータ
 ├── information/                  # 大会開催情報
 │   ├── {tournamentId}.json
 │   └── ...
@@ -114,13 +114,13 @@ interface FederationEntry {
 
 ---
 
-### 2. `genarations.json` - 世代区分マスタデータ
+### 2. `generations.json` - 世代区分マスタデータ
 
 大会の世代区分を定義するマスタファイル。
 
 #### データ構造
 
-> **注**: 世代区分の型定義は `genarations.json` の構造に基づきますが、`src/types/tournament.ts` には定義されていません。
+> **注**: 世代区分の型定義は `generations.json` の構造に基づきますが、`src/types/tournament.ts` には定義されていません。
 
 ```typescript
 interface GenerationEntry {
@@ -480,7 +480,7 @@ export interface TournamentParticipant {
 
 以下のデータ構造は `src/types/tournament.ts` に型定義がありません：
 
-- **GenerationEntry** (`genarations.json`)
+- **GenerationEntry** (`generations.json`)
 
 ---
 
@@ -545,7 +545,7 @@ type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
 
 | フィルター   | 選択肢のソース                                   | URL クエリパラメータ     |
 | ------------ | ------------------------------------------------ | ------------------------ |
-| カテゴリ     | `data/tournaments/genarations.json`              | `?generation=highschool` |
+| カテゴリ     | `data/tournaments/generations.json`              | `?generation=highschool` |
 | 種類         | `TournamentLevel` 定数（ハードコード）           | `?level=national`        |
 | 開催地       | `data/prefectures.json`                          | `?prefecture=tokyo`      |
 | 年度         | `information/*.json` の `startDate` から自動生成 | `?year=2024`             |
@@ -568,7 +568,7 @@ type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
 このデータ構造は以下の拡張を想定しています：
 
 1. 新しい大会の追加（`index.json` にエントリー追加）
-2. 新しい世代区分の追加（`genarations.json` にエントリー追加）
+2. 新しい世代区分の追加（`generations.json` にエントリー追加）
 3. 新しいカテゴリの追加（年齢区分、性別等）
 4. 総当たり戦の詳細結果の追加（`results.roundrobin` フィールド）
 5. 追加の統計情報（得失点、勝率等）

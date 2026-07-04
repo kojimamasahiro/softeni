@@ -37,19 +37,18 @@ const SOFTENI_GROUPS: NavGroup[] = [
     items: [
       { label: '大会', href: '/tournaments', matchPrefix: '/tournaments' },
       { label: '選手', href: '/players', matchPrefix: '/players' },
+      // チーム一覧(docs/ui M2-1・D-014 で新設。検索対象は count>=2)
+      { label: 'チーム', href: '/teams', matchPrefix: '/teams' },
       // 年度別選手ランキング（Player Statistics Engine 由来・2026-07 追加）
       { label: 'ランキング', href: '/rankings', matchPrefix: '/rankings' },
-      // チームは一覧ページ（/teams index）が無く /teams/[teamId] のみのため
-      // グローバルナビには出さない（/teams は 404）。STリーグ出場チーム一覧は
-      // /st-league/teams（STリーグ特集内）に置く。
     ],
   },
   {
     label: '特集',
     items: [
-      // /highschool は /highschool/boys へ 301 されるため直接 boys を指す。
-      // active 判定は /highschool 配下全体を対象にする。
-      { label: '高校', href: '/highschool/boys', matchPrefix: '/highschool' },
+      // /highschool は入口ページ(男子/女子/歴代記録への案内。docs/ui M2-2・C-4)。
+      // 以前の boys 直指し+meta refresh は廃止した。
+      { label: '高校', href: '/highschool', matchPrefix: '/highschool' },
       { label: 'STリーグ', href: '/st-league', matchPrefix: '/st-league' },
     ],
   },

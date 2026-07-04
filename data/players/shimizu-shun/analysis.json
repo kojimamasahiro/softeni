@@ -1,8 +1,8 @@
 {
-  "totalMatches": 86,
+  "totalMatches": 87,
   "wins": 56,
   "losses": 30,
-  "totalWinRate": 0.651,
+  "totalWinRate": 0.644,
   "games": {
     "total": 498,
     "won": 294,
@@ -54,10 +54,10 @@
     },
     "45": {
       "matches": {
-        "total": 8,
+        "total": 9,
         "wins": 6,
         "losses": 2,
-        "winRate": 0.75
+        "winRate": 0.667
       },
       "games": {
         "total": 46,
@@ -210,10 +210,10 @@
     },
     "2026": {
       "matches": {
-        "total": 3,
+        "total": 4,
         "wins": 2,
         "losses": 1,
-        "winRate": 0.667
+        "winRate": 0.5
       },
       "games": {
         "total": 20,
@@ -224,10 +224,11 @@
     }
   },
   "latestMatch": {
-    "tournament": "全日本シングルス選手権大会",
-    "date": "2026年5月15日〜2026年5月17日",
-    "location": "岐阜県",
-    "result": "4回戦敗退",
-    "link": "https://www.jsta.or.jp/events/events2026"
+    "tournament": "西日本選手権大会",
+    "date": "2026年7月4日〜2026年7月5日",
+    "location": "徳島県",
+    "partner": 45,
+    "result": "出場",
+    "link": "https://www.soft-tennis.com/tokushima/"
   }
 }

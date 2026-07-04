@@ -4,11 +4,12 @@ import path from 'path';
 
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import SubNav from '@/components/nav/SubNav';
+import { TOURNAMENTS_SUBNAV } from '@/pages/tournaments';
 import { CategoryLink, TournamentBlock, TournamentCard, YearGroup } from '@/components/tournaments/TournamentCard';
 
 // Since GenerationKey was just `string` alias locally, I can either import it if I exported it (I didn't) or keep it here.
@@ -133,36 +134,8 @@ export default function TournamentListPage({ generationOrder, generationTitleMap
         />
 
         <section className="mb-10">
-          <div className="mb-8">
-            <Link
-              href="/tournaments/local"
-              className="block bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 rounded-lg p-6 shadow-sm hover:shadow-md transition group"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center">
-                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    地域大会
-                  </h2>
-                  <p className="text-gray-600 dark:text-gray-300">各都道府県の連盟や企業が主催する大会の結果はこちらからご覧いただけます。</p>
-                </div>
-                <div className="text-blue-600 dark:text-blue-400">
-                  <svg className="w-8 h-8 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-          </div>
           <h1 className="text-2xl font-bold mb-4">主要大会結果</h1>
+          <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
           <p className="text-lg leading-relaxed mb-4">
             こちらは、Softeni Pickが収録しているソフトテニスの大会結果一覧ページです。
             主要な全日本大会をはじめ、インターハイ・選抜、ジュニアなども整理して掲載していきます。
@@ -193,7 +166,7 @@ export default function TournamentListPage({ generationOrder, generationTitleMap
 // ====== 生成時処理 ======
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const tournamentRoot = path.join(process.cwd(), 'data', 'tournaments');
-  const generationsPath = path.join(tournamentRoot, 'genarations.json');
+  const generationsPath = path.join(tournamentRoot, 'generations.json');
   const indexPath = path.join(tournamentRoot, 'index.json');
   const informationDir = path.join(tournamentRoot, 'information');
   const detailsDir = path.join(tournamentRoot, 'details');

@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import SubNav from '@/components/nav/SubNav';
+import { TOURNAMENTS_SUBNAV } from '@/pages/tournaments';
 
 type Prefecture = {
   id: string;
@@ -50,7 +52,8 @@ export default function LocalTournamentsPage({ prefectures, federationMap }: Pro
           ]}
         />
 
-        <h1 className="text-2xl font-bold mb-6">地域大会結果</h1>
+        <h1 className="text-2xl font-bold mb-4">地域大会結果</h1>
+        <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
         <p className="text-gray-600 dark:text-gray-300 mb-8">
           各都道府県の連盟や企業が主催する大会の結果を掲載しています。 連盟公式サイトへのリンクもご活用ください。
         </p>

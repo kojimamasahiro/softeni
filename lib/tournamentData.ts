@@ -177,7 +177,7 @@ export const getAllDetailRecords = async (root?: string): Promise<DetailRecord[]
   return cacheEntry.detailRecords;
 };
 
-// Generation entry stored in data/tournament/genarations.json
+// Generation entry stored in data/tournament/generations.json
 export interface GenerationEntry {
   generationId: string;
   label: string;
@@ -194,7 +194,7 @@ export const loadGenerations = async (root?: string): Promise<GenerationEntry[]>
     const fs = await import('fs');
     const path = await import('path');
     const cwd = root || process.cwd();
-    const genPath = path.join(cwd, 'data', 'tournaments', 'genarations.json');
+    const genPath = path.join(cwd, 'data', 'tournaments', 'generations.json');
     if (!fs.existsSync(genPath)) return [];
     try {
       const raw = fs.readFileSync(genPath, 'utf-8');
