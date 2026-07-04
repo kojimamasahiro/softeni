@@ -1,24 +1,14 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 
 import { getPublicMatchDetailStaticPaths, getPublicMatchDetailStaticProps, PublicMatchDetailPage } from '@/pages/beta/matches-results/[matchId]';
-import { isScoreSiteMode } from '@/lib/siteConfig';
 
+// 両モードで公開(docs/ui C-1・M3)。siteLink ありの試合は canonical が
+// 大会配下ネスト URL を指す(getPublicMatchDetailPath)。
 export const getStaticPaths: GetStaticPaths = async (context) => {
-  if (!isScoreSiteMode()) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
-
   return getPublicMatchDetailStaticPaths(context);
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  if (!isScoreSiteMode()) {
-    return { notFound: true };
-  }
-
   return getPublicMatchDetailStaticProps(context);
 };
 

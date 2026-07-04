@@ -129,7 +129,7 @@ module.exports = {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/beta/', '/test-db'],
+        disallow: ['/api/', '/beta/'],
       },
     ],
   },
@@ -143,7 +143,7 @@ module.exports = {
     '/api/test-db', // テスト用DBエンドポイント（明示的）
     '/test-db', // テスト用DBページ
     '*/data', // すべての /data パスを除外
-    '/highschool', // noindex のリダイレクト用入口ページを除外
+    // '/highschool' は 2026-07-04(M2)に入口ページ化したため除外を解除
   ],
   transform: async (config, loc) => {
     let lastmod;

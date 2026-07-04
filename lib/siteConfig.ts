@@ -53,7 +53,9 @@ export const buildSiteUrl = (path: string) => {
   return `${siteConfig.baseUrl}${normalizedPath}`;
 };
 
-export const getPublicMatchesListPath = () => (isScoreSiteMode() ? '/matches' : '/beta/matches-results');
+// 記録試合の公開 URL は両モードとも /matches に正規化(docs/ui C-1・M3、2026-07-04)。
+// 旧 /beta/matches-results/** は public/_redirects で 301。
+export const getPublicMatchesListPath = () => '/matches';
 
 // 掲載大会に紐づく試合（siteLink あり）は大会ページ配下のネスト URL、
 // 野良試合（siteLink なし）は従来の一覧配下 URL を返す。

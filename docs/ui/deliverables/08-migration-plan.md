@@ -48,6 +48,7 @@
 | M3-4 | ~~ナビ「試合記録」グループの追加~~ 実施しない(D-011)。トップ・関連ページの内部リンクのみ整備 | — |
 | 完了条件 | 旧 URL からの 301 が全パターン疎通。GSC でカバレッジ異常がないこと(2週間監視) | |
 | リスク対策 | score モードとの分岐(isScoreSiteMode)の回帰テストを先に用意。リリースは他の単位と分離する | |
+| **実施記録** | **2026-07-04 実施済み**(コード変更分)。(1) getPublicMatchesListPath を両モード /matches に統一 → canonical・内部リンク・JSON-LD が自動追従、(2) /matches 3ページの score モードゲート撤去、(3) public/_redirects に /beta/matches-results/** → /matches/** の301追加、(4) llms.txt 更新。**あわせて発見・修正**: _redirects の /highschool→boys 301 撤去(M2と衝突)、next-sitemap の robots から /test-db 削除(M1 取りこぼし)、sitemap の /highschool 除外解除(M2 追従)。検証: tsc ✅・ESLint ✅。**残タスク**: オーナー環境でビルド→デプロイ→301疎通確認(下記チェックリスト)→GSC 2週間監視 | |
 
 ### M4: ページ構造の統一
 

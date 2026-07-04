@@ -1,7 +1,13 @@
 # Cloudflare Pages redirects
-# 高校カテゴリ入口は男子ページへ 301 リダイレクト
-/highschool /highschool/boys/ 301
-/highschool/ /highschool/boys/ 301
+# (2026-07-04 M2) /highschool は入口ページ化したため、boys への 301 を撤去(docs/ui C-4)
+
+# (2026-07-04 M3) 記録試合の公開 URL を /matches に正規化(docs/ui C-1)。
+# 旧 /beta/matches-results/** からの 301。specific → splat の順で評価される
+/beta/matches-results /matches/ 301
+/beta/matches-results/ /matches/ 301
+/beta/matches-results/growth /matches/growth/ 301
+/beta/matches-results/growth/ /matches/growth/ 301
+/beta/matches-results/* /matches/:splat 301
 
 # 結果記事（/news/*-result）は廃止し、結果・優勝・歴代まとめは大会ハブ／高校歴代ページに集約（ADR-008）
 # 高校全国大会は高校歴代ページへ集中（seo.md #3）
