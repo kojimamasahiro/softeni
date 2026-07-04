@@ -257,11 +257,19 @@ export function listArticleRecords(): NewsArticleRecord[] {
   return out;
 }
 
-/** 公開（published）記事のみ。getStaticPaths / 一覧で使う */
+/**
+ * 公開（published）記事のみ。getStaticPaths / 一覧で使う。
+ * 公開日の降順（新しい記事が先頭）。updatedAt が同値（同一バッチでの一括公開等）の
+ * 場合は createdAt を第二キーにして、実際の公開順が保たれるようにする。
+ */
 export function listPublishedArticles(): NewsArticleRecord[] {
   return listArticleRecords()
     .filter((r) => r.state === 'published')
-    .sort((a, b) => (b.updatedAt ?? '').localeCompare(a.updatedAt ?? ''));
+    .sort((a, b) => {
+      const byUpdatedAt = (b.updatedAt ?? '').localeCompare(a.updatedAt ?? '');
+      if (byUpdatedAt !== 0) return byUpdatedAt;
+      return (b.createdAt ?? '').localeCompare(a.createdAt ?? '');
+    });
 }
 
 /**
