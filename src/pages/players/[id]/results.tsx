@@ -343,16 +343,90 @@ export default function PlayerResultsPage({
   );
 }
 
+// data/players/index.json は結果ページ(getStaticPaths/getStaticProps)が対象選手数ぶん
+// (数千回)呼ばれるたびに毎回読み直され、そこから allPlayersList/countById も毎回
+// 再構築されていた。全ページで内容は共通なので、プロセス内で一度だけ読み込み・
+// 導出してキャッシュし、重複したI/O・JSON.parse・配列走査をなくす。
+type PlayerIndexEntry = { id: number; lastName: string; firstName: string; count?: number };
+let cachedPlayerIndexPromise: Promise<PlayerIndexEntry[]> | null = null;
+
+async function loadPlayerIndex(): Promise<PlayerIndexEntry[]> {
+  if (!cachedPlayerIndexPromise) {
+    cachedPlayerIndexPromise = (async () => {
+      const fs = await import('fs');
+      const path = await import('path');
+      const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+      try {
+        return JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as PlayerIndexEntry[];
+      } catch {
+        return [];
+      }
+    })();
+  }
+  return cachedPlayerIndexPromise;
+}
+
+let cachedAllPlayersList: Array<{ id: string; lastName: string; firstName: string; count: number }> | null = null;
+let cachedCountById: Map<string, number> | null = null;
+
+async function getAllPlayersListAndCountById() {
+  if (!cachedAllPlayersList || !cachedCountById) {
+    const index = await loadPlayerIndex();
+    cachedAllPlayersList = index.map((p) => ({
+      id: String(p.id),
+      lastName: p.lastName,
+      firstName: p.firstName,
+      count: p.count ?? 0,
+    }));
+    cachedCountById = new Map(index.map((p) => [String(p.id), p.count ?? 0]));
+  }
+  return { allPlayersList: cachedAllPlayersList, countById: cachedCountById };
+}
+
+// data/players/{slug}/information.json から curated profile slug を氏名で引く処理は、
+// 結果ページ(count>=5 が対象、約1785ページ)ごとに data/players 配下(約8200件)を
+// readdir + 1件ずつ existsSync/readFileSync/JSON.parse で先頭から線形探索していた
+// (最悪ケースでページ数×選手数 ≈ 1400万回のファイルI/O)。ここで「姓|名 → slug」の
+// Mapをプロセス内で一度だけ構築し、以降はO(1)で引けるようにする。
+let cachedProfileSlugByName: Map<string, string> | null = null;
+
+async function getProfileSlugByName(lastName?: string, firstName?: string): Promise<string | null> {
+  if (!lastName || !firstName) return null;
+  if (!cachedProfileSlugByName) {
+    const fs = await import('fs');
+    const path = await import('path');
+    const map = new Map<string, string>();
+    const playersDir = path.join(process.cwd(), 'data', 'players');
+    try {
+      for (const entry of fs.readdirSync(playersDir)) {
+        const infoFile = path.join(playersDir, entry, 'information.json');
+        if (!fs.existsSync(infoFile)) continue;
+        try {
+          const info = JSON.parse(fs.readFileSync(infoFile, 'utf-8')) as {
+            lastName?: string;
+            firstName?: string;
+          };
+          if (info.lastName && info.firstName) {
+            const key = `${info.lastName}|${info.firstName}`;
+            if (!map.has(key)) map.set(key, entry);
+          }
+        } catch {
+          // ignore broken information.json
+        }
+      }
+    } catch {
+      // ignore
+    }
+    cachedProfileSlugByName = map;
+  }
+  return cachedProfileSlugByName.get(`${lastName}|${firstName}`) ?? null;
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const fs = await import('fs');
-  const path = await import('path');
-
   // use data/players/index.json ids
-  const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-  const entriesRaw = fs.readFileSync(indexPath, 'utf-8');
-  const index = JSON.parse(entriesRaw) as Array<{ id: number; count: number }>;
+  const index = await loadPlayerIndex();
 
-  const paths = index.filter((p) => p.count >= 5).map((p) => ({ params: { id: String(p.id) } }));
+  const paths = index.filter((p) => (p.count ?? 0) >= 5).map((p) => ({ params: { id: String(p.id) } }));
 
   return { paths, fallback: false };
 };
@@ -361,30 +435,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const playerId = params?.id as string;
 
   // read index.json to get name
-  const fs = await import('fs');
-  const path = await import('path');
-  const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-  const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
-    id: number;
-    lastName: string;
-    firstName: string;
-  }>;
+  const index = await loadPlayerIndex();
 
   const idx = index.find((it) => String(it.id) === playerId);
   if (!idx) {
     return { notFound: true };
   }
 
-  // prepare allPlayers list from index.json with id as string
-  const allPlayersList = index.map((p) => ({
-    id: String(p.id),
-    lastName: p.lastName,
-    firstName: p.firstName,
-    count: (p as { count?: number }).count ?? 0,
-  }));
-
-  // id -> count（結果ページが実在するのは count>=5 のみ。デッドリンク防止に使う）
-  const countById = new Map(index.map((p) => [String((p as { id: number }).id), (p as { count?: number }).count ?? 0]));
+  // prepare allPlayers list from index.json with id as string, and id -> count
+  // （結果ページが実在するのは count>=5 のみ。デッドリンク防止に使う）
+  const { allPlayersList, countById } = await getAllPlayersListAndCountById();
 
   // --- Structured loading using shared helpers ---
   const root = process.cwd();
@@ -895,32 +955,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const latestActivityDate = activityDates[activityDates.length - 1] ?? null;
 
   // resolve curated profile slug (data/players/{slug}/information.json) if any
-  let profileSlug: string | null = null;
-  try {
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    for (const entry of fs.readdirSync(playersDir)) {
-      const infoFile = path.join(playersDir, entry, 'information.json');
-      if (!fs.existsSync(infoFile)) continue;
-      try {
-        const info = JSON.parse(fs.readFileSync(infoFile, 'utf-8')) as {
-          lastName?: string;
-          firstName?: string;
-        };
-        if (info.lastName === idx.lastName && info.firstName === idx.firstName) {
-          profileSlug = entry;
-          break;
-        }
-      } catch {
-        // ignore broken information.json
-      }
-    }
-  } catch {
-    // ignore
-  }
+  const profileSlug = await getProfileSlugByName(idx.lastName, idx.firstName);
 
   // ショーケース対象（data/growth-featured.json）なら成長記録ページ slug を引く（ADR-004）。
   let growthShowcaseSlug: string | null = null;
   try {
+    const fs = await import('fs');
+    const path = await import('path');
     const featuredPath = path.join(process.cwd(), 'data', 'growth-featured.json');
     const featuredPayload = JSON.parse(fs.readFileSync(featuredPath, 'utf-8')) as {
       featured?: Array<{ slug?: string; playerId?: string | number }>;

@@ -151,34 +151,70 @@ export function resolveSlugByName(lastName: string, firstName: string): string |
   return resolveSlugByFullName(`${lastName}${firstName}`);
 }
 
-/** 主役名（優勝者表示の players 要素）で全大会の優勝歴を集める */
-function collectTitles(subjectFullName: string): CareerTitle[] {
-  const meta = getTournamentMeta();
-  const titles: CareerTitle[] = [];
-  const seen = new Set<string>();
+type TitleHit = {
+  tournamentId: string;
+  categoryId: string;
+  categoryLabel: string;
+  year: number;
+};
+
+// 選手ページ(getStaticProps)は選手数ぶん(数千回)呼ばれるため、全大会の優勝者を
+// 選手ごとに毎回スキャンする(O(選手数 × 優勝データ量))と選手・大会データが増える
+// につれビルドが線形以上に遅くなる。ここでは「正規化氏名 → タイトル一覧」の
+// 逆引きMapをプロセス内で一度だけ構築し、各選手の照合をO(1)にする。
+let cachedTitlesByName: Map<string, TitleHit[]> | null = null;
+
+function getTitlesByName(): Map<string, TitleHit[]> {
+  if (cachedTitlesByName) return cachedTitlesByName;
+  const index = new Map<string, TitleHit[]>();
 
   for (const tournamentId of listTournamentIds()) {
     const blocks = getAllHistoricalWinners(tournamentId);
     for (const block of blocks) {
       for (const champ of block.champions) {
         if (!champ.display) continue;
-        const matched = champ.players.some((p) => p.replace(/\s+/g, '').normalize('NFKC') === subjectFullName);
-        if (!matched) continue;
-        const key = `${tournamentId}|${block.categoryId}|${champ.year}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        const m = meta.get(tournamentId);
-        titles.push({
-          tournamentId,
-          categoryId: block.categoryId,
-          tournamentLabel: m?.label ?? tournamentId,
-          year: champ.year,
-          categoryLabel: block.categoryLabel,
-          isMajorTitle: m?.isMajorTitle ?? false,
-          generationId: m?.generationId,
-        });
+        for (const p of champ.players) {
+          const key = normalizeName(p);
+          if (!key) continue;
+          const hit: TitleHit = {
+            tournamentId,
+            categoryId: block.categoryId,
+            categoryLabel: block.categoryLabel,
+            year: champ.year,
+          };
+          const existing = index.get(key);
+          if (existing) existing.push(hit);
+          else index.set(key, [hit]);
+        }
       }
     }
+  }
+
+  cachedTitlesByName = index;
+  return index;
+}
+
+/** 主役名（優勝者表示の players 要素）で全大会の優勝歴を集める */
+function collectTitles(subjectFullName: string): CareerTitle[] {
+  const meta = getTournamentMeta();
+  const hits = getTitlesByName().get(subjectFullName) ?? [];
+  const titles: CareerTitle[] = [];
+  const seen = new Set<string>();
+
+  for (const hit of hits) {
+    const key = `${hit.tournamentId}|${hit.categoryId}|${hit.year}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const m = meta.get(hit.tournamentId);
+    titles.push({
+      tournamentId: hit.tournamentId,
+      categoryId: hit.categoryId,
+      tournamentLabel: m?.label ?? hit.tournamentId,
+      year: hit.year,
+      categoryLabel: hit.categoryLabel,
+      isMajorTitle: m?.isMajorTitle ?? false,
+      generationId: m?.generationId,
+    });
   }
 
   // 主要タイトル優先、その中で新しい年が先頭

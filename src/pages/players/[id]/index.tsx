@@ -324,6 +324,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
+// data/players/index.json は選手ページ(getStaticProps)が選手数ぶん(数千回)呼ばれる
+// たびに毎回読み直されていた。このファイルは全選手で共通なので、プロセス内で
+// 一度だけ読み込んでキャッシュし、重複したI/O・JSON.parseをなくす。
+type PlayerIndexEntry = { id: number; lastName: string; firstName: string; count?: number };
+let cachedPlayerIndex: PlayerIndexEntry[] | null = null;
+
+function getPlayerIndex(): PlayerIndexEntry[] {
+  if (cachedPlayerIndex) return cachedPlayerIndex;
+  try {
+    const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+    cachedPlayerIndex = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as PlayerIndexEntry[];
+  } catch {
+    cachedPlayerIndex = [];
+  }
+  return cachedPlayerIndex;
+}
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string;
   const filePath = path.join(process.cwd(), 'data', 'players', id, 'information.json');
@@ -334,14 +351,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   let numericId: number | null = null;
   let hasResultsPage = false;
   try {
-    const indexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-    const indexData = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as Array<{
-      id: number;
-      lastName: string;
-      firstName: string;
-      count?: number;
-    }>;
-
+    const indexData = getPlayerIndex();
     const found = indexData.find((e) => e.lastName === player.lastName && e.firstName === player.firstName);
     if (found) {
       numericId = found.id;

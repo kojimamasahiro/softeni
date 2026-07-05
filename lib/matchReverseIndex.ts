@@ -26,16 +26,27 @@ const readJsonIfExists = <T>(filePath: string): T | null => {
   }
 };
 
+// by-tournament.json / by-player.json は全ページ共通のデータだが、これらの
+// getter は選手ページ・大会ページから1ページにつき1回ずつ呼ばれる(合計で
+// 数千回)。ファイル自体は読むたびに再パースしていたので、プロセス内で一度だけ
+// 読み込んでキャッシュし、重複したI/O・JSON.parseをなくす。
+let cachedByTournament: { tournaments?: Record<string, ScoreMatchLink[]> } | null | undefined;
+let cachedByPlayer: { players?: Record<string, ScoreMatchLink[]> } | null | undefined;
+
 export const getScoreMatchLinksForTournament = (tournamentPath: string): ScoreMatchLink[] => {
-  const data = readJsonIfExists<{
-    tournaments?: Record<string, ScoreMatchLink[]>;
-  }>(path.join(reverseRoot, 'by-tournament.json'));
-  return data?.tournaments?.[tournamentPath] ?? [];
+  if (cachedByTournament === undefined) {
+    cachedByTournament = readJsonIfExists<{
+      tournaments?: Record<string, ScoreMatchLink[]>;
+    }>(path.join(reverseRoot, 'by-tournament.json'));
+  }
+  return cachedByTournament?.tournaments?.[tournamentPath] ?? [];
 };
 
 export const getScoreMatchLinksForPlayer = (playerId: string | number): ScoreMatchLink[] => {
-  const data = readJsonIfExists<{
-    players?: Record<string, ScoreMatchLink[]>;
-  }>(path.join(reverseRoot, 'by-player.json'));
-  return data?.players?.[String(playerId)] ?? [];
+  if (cachedByPlayer === undefined) {
+    cachedByPlayer = readJsonIfExists<{
+      players?: Record<string, ScoreMatchLink[]>;
+    }>(path.join(reverseRoot, 'by-player.json'));
+  }
+  return cachedByPlayer?.players?.[String(playerId)] ?? [];
 };
