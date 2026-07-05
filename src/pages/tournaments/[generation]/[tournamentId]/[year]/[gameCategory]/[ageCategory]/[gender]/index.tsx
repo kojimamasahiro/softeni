@@ -205,7 +205,7 @@ export default function TournamentYearResultPage({
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} />
 
         {/* ✅ トーナメント表 */}
-        {detailData && <TournamentBracket detailData={detailData} />}
+        {detailData && <TournamentBracket detailData={detailData} gameCategory={gameCategory} />}
 
         {/* ✅ スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (

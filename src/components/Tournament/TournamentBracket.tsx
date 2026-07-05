@@ -1,12 +1,164 @@
 // components/Tournament/TournamentBracket.tsx
 
 import Link from 'next/link';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 
-import { TournamentDetailData, TournamentMatch } from '@/types/index';
+import { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant } from '@/types/index';
+import { joinPlayerName } from '@/utils/playerName';
+
+interface SelectedEntryInfo {
+  entryNo: number;
+  roundName: string;
+}
+
+interface NamePart {
+  text: string;
+  playerId?: number;
+}
+
+interface BracketMatchRow {
+  matchId?: string;
+  stage: string | null;
+  round: string | null;
+  opponentDisplayName: string;
+  opponentPlayerIds: number[];
+  won: string;
+  lost: string;
+  result: 'win' | 'lose' | 'draw';
+}
 
 interface TournamentBracketProps {
   detailData: TournamentDetailData;
+  gameCategory?: string;
+}
+
+// entry の表示名パーツを組み立てる（MatchResults の MatchGroup ヘッダーと同じ規約）
+function buildEntryNameParts(participants: TournamentParticipant[], entry: TournamentEntry | undefined): NamePart[] {
+  if (!entry) return [];
+  const players = (entry.playerIds ?? []).map((pid) => participants.find((p) => p.id === pid)).filter((p): p is TournamentParticipant => !!p);
+  if (players.length === 0) return [];
+
+  const isTeamFormat = players.every((pl) => pl.lastName === null && pl.firstName === null);
+  if (isTeamFormat) {
+    return players.map((pl) => ({ text: pl.prefecture ? `${pl.team || '不明'}（${pl.prefecture}）` : pl.team || '不明' }));
+  }
+
+  const teamGroups = new Map<string, NamePart[]>();
+  for (const pl of players) {
+    const team = pl.team || '不明';
+    if (!teamGroups.has(team)) teamGroups.set(team, []);
+    const fullName = joinPlayerName(pl.lastName, pl.firstName);
+    teamGroups.get(team)!.push({ text: fullName || '', playerId: pl.playerId });
+  }
+
+  const parts: NamePart[] = [];
+  let groupIndex = 0;
+  for (const [team, names] of teamGroups) {
+    if (groupIndex > 0) parts.push({ text: '・' });
+    names.forEach((n, i) => {
+      if (i > 0) parts.push({ text: '・' });
+      parts.push(n);
+    });
+    parts.push({ text: `（${team}）` });
+    groupIndex += 1;
+  }
+  return parts;
+}
+
+// 対戦相手エントリーの表示名（MatchResults の buildNameForEntry と同じ規約。ダブルスは短縮可）
+function buildOpponentDisplay(
+  participants: TournamentParticipant[],
+  entry: TournamentEntry | undefined,
+  short: boolean,
+): { name: string; playerIds: number[] } {
+  if (!entry) return { name: '不明', playerIds: [] };
+  const players = (entry.playerIds ?? []).map((pid) => participants.find((p) => p.id === pid)).filter((p): p is TournamentParticipant => !!p);
+  if (players.length === 0) return { name: `#${entry.entryNo ?? '?'}`, playerIds: [] };
+
+  const isTeamFormat = players.every((pl) => pl.lastName === null && pl.firstName === null);
+  if (isTeamFormat) {
+    const teamNames = players
+      .map((pl) => {
+        const teamName = pl.team || '不明';
+        return pl.prefecture ? `${teamName}（${pl.prefecture}）` : teamName;
+      })
+      .filter((name) => name !== '不明');
+    return { name: teamNames.join('・') || `#${entry.entryNo ?? '?'}`, playerIds: [] };
+  }
+
+  const teamMap = new Map<string, string[]>();
+  for (const pl of players) {
+    const team = pl.team || '不明';
+    if (!teamMap.has(team)) teamMap.set(team, []);
+    const fullName = joinPlayerName(pl.lastName, pl.firstName);
+    teamMap.get(team)!.push(short ? pl.lastName || '' : fullName);
+  }
+  const name = Array.from(teamMap.entries())
+    .map(([team, names]) => `${names.join('・')}（${team}）`)
+    .join('・');
+
+  const playerIds = players.map((pl) => pl.playerId).filter((id): id is number => typeof id === 'number');
+  return { name, playerIds };
+}
+
+// ラウンド名の並び順ランク（MatchResults と同じ規約）
+function roundRank(round?: string | null): number {
+  if (!round) return 0;
+  const s = String(round);
+  if (/準々決勝/.test(s)) return 70;
+  if (/準決勝/.test(s)) return 80;
+  if (/決勝/.test(s)) return 100;
+  const m = s.match(/(\d+)/);
+  if (m) return parseInt(m[1], 10) * 10;
+  return 10;
+}
+
+// あるエントリーが対戦した全試合を、MatchResults の対戦詳細テーブルと同じ形で組み立てる
+function buildMatchRowsForEntry(
+  matches: TournamentMatch[],
+  entries: TournamentEntry[],
+  participants: TournamentParticipant[],
+  entryNo: number,
+  shortOpponentNames: boolean,
+): BracketMatchRow[] {
+  const rows: BracketMatchRow[] = [];
+
+  for (const m of matches) {
+    const [a, b] = m.entries ?? [];
+    if (a !== entryNo && b !== entryNo) continue;
+
+    const opponentNo = a === entryNo ? b : a;
+    const opponentEntry = typeof opponentNo === 'number' ? entries.find((e) => e.entryNo === opponentNo) : undefined;
+    const { name: opponentDisplayName, playerIds: opponentPlayerIds } = buildOpponentDisplay(participants, opponentEntry, shortOpponentNames);
+
+    const scoreSelf = String(m.scores?.[String(entryNo)] ?? m.scores?.[entryNo] ?? '0');
+    const scoreOpp = typeof opponentNo === 'number' ? String(m.scores?.[String(opponentNo)] ?? m.scores?.[opponentNo] ?? '0') : '0';
+
+    rows.push({
+      matchId: m.matchId,
+      stage: m.stage,
+      round: m.round ?? null,
+      opponentDisplayName,
+      opponentPlayerIds,
+      won: scoreSelf,
+      lost: scoreOpp,
+      result: m.winnerEntryNo === entryNo ? 'win' : m.winnerEntryNo === opponentNo ? 'lose' : 'draw',
+    });
+  }
+
+  rows.sort((x, y) => {
+    const xIsRR = x.stage === 'roundrobin' ? 0 : 1;
+    const yIsRR = y.stage === 'roundrobin' ? 0 : 1;
+    if (xIsRR !== yIsRR) return xIsRR - yIsRR;
+
+    const rx = roundRank(x.round);
+    const ry = roundRank(y.round);
+    if (rx !== ry) return rx - ry;
+    if (x.round && y.round) return String(x.round).localeCompare(String(y.round));
+    return 0;
+  });
+
+  return rows;
 }
 
 // 利用可能な試合に基づいてトーナメント表を動的に構築
@@ -247,20 +399,51 @@ function buildBracket(matches: TournamentMatch[]): {
   };
 }
 
-export default function TournamentBracket({ detailData }: TournamentBracketProps) {
+export default function TournamentBracket({ detailData, gameCategory }: TournamentBracketProps) {
   const { participants, entries, matches } = detailData;
+  const shortOpponentNames = gameCategory !== undefined && gameCategory !== 'singles';
 
-  // 個人戦で結果ページを持つ選手（playerId あり）のみリンク化する。
-  // 既存の MatchResults / TeamResults と同じ規約に揃える。
-  const renderPlayerName = (player: (typeof participants)[number] | null | undefined, text: string): ReactNode => {
-    if (player?.playerId && player.lastName) {
+  // 選手名をタップした際に、遷移せずこの大会の対戦詳細（MatchGroup と同じ内容）をモーダルで表示する
+  const [selectedEntry, setSelectedEntry] = useState<SelectedEntryInfo | null>(null);
+
+  useEffect(() => {
+    if (!selectedEntry) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedEntry(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedEntry]);
+
+  // 個人戦で結果ページを持つ選手（playerId あり）のみタップ可能にする。
+  // タップすると、その大会の対戦詳細をモーダルで表示する
+  // （対戦がない＝シード等の場合は選手結果ページへ遷移する）。
+  const renderPlayerName = (
+    player: TournamentParticipant | null | undefined,
+    text: string,
+    match: TournamentMatch | undefined,
+    roundName: string,
+    entryNo: number,
+  ): ReactNode => {
+    if (!player?.playerId || !player.lastName) {
+      return text;
+    }
+    if (!match) {
       return (
         <Link href={`/players/${player.playerId}/results`} className="text-inherit hover:underline underline-offset-2 decoration-dotted">
           {text}
         </Link>
       );
     }
-    return text;
+    return (
+      <button
+        type="button"
+        onClick={() => setSelectedEntry({ entryNo, roundName })}
+        className="w-full truncate text-left text-inherit hover:underline underline-offset-2 decoration-dotted"
+      >
+        {text}
+      </button>
+    );
   };
 
   const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(() => buildBracket(matches), [matches]);
@@ -458,30 +641,34 @@ export default function TournamentBracket({ detailData }: TournamentBracketProps
                   const player1 = entry ? participants.find((p) => p.id === entry.playerIds[0]) : null;
                   const player2 = entry && entry.playerIds.length > 1 ? participants.find((p) => p.id === entry.playerIds[1]) : null;
 
+                  // このラウンドでこのエントリーが対戦した試合（対戦詳細モーダル用）
+                  const matchForEntry = matches.find((m) => m.stage === 'knockout' && m.round === roundName && m.entries.includes(entryNo));
+
                   let displayName = '';
                   let nameNodes: ReactNode = '';
                   if (player2) {
-                    const n1 = player1?.lastName || player1?.team || '';
-                    const n2 = player2?.lastName || player2?.team || '';
+                    // ダブルス: 姓名フルネームを2行で表示する
+                    const n1 = player1?.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1?.team || '';
+                    const n2 = player2?.lastName ? `${player2.lastName} ${player2.firstName || ''}`.trim() : player2?.team || '';
                     displayName = `${n1}・${n2}`;
                     nameNodes = (
-                      <>
-                        {renderPlayerName(player1, n1)}
-                        {'・'}
-                        {renderPlayerName(player2, n2)}
-                      </>
+                      <div className="flex w-full flex-col items-stretch leading-tight">
+                        <div className={`truncate ${n1.length > 6 ? 'text-[9px]' : 'text-[10px]'}`}>
+                          {renderPlayerName(player1, n1, matchForEntry, roundName, entryNo)}
+                        </div>
+                        <div className={`truncate ${n2.length > 6 ? 'text-[9px]' : 'text-[10px]'}`}>
+                          {renderPlayerName(player2, n2, matchForEntry, roundName, entryNo)}
+                        </div>
+                      </div>
                     );
                   } else if (player1) {
                     displayName = player1.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1.team || '';
-                    nameNodes = renderPlayerName(player1, displayName);
+                    nameNodes = renderPlayerName(player1, displayName, matchForEntry, roundName, entryNo);
                   }
 
                   const team1 = player1?.team || '';
                   const team2 = player2?.team || '';
                   const showTwoTeams = team2 && team1 !== team2;
-
-                  // このラウンドでこのエントリーが勝ったかをチェック
-                  const matchForEntry = matches.find((m) => m.stage === 'knockout' && m.round === roundName && m.entries.includes(entryNo));
 
                   const nextRoundName = displayedRounds[roundIndex + 1];
                   const nextRoundEntries = nextRoundName ? entriesByRound.get(nextRoundName) : null;
@@ -515,11 +702,11 @@ export default function TournamentBracket({ detailData }: TournamentBracketProps
                             {entryNo}
                           </div>
 
-                          {/* プレイヤー名: 通常6文字最大、より多い場合は小さく */}
+                          {/* プレイヤー名: シングルスは1行(通常6文字最大、より多い場合は小さく)、ダブルスはフルネーム2行 */}
                           <div
                             className={`
-                                                                flex-1 text-center font-medium truncate px-1 border-r border-gray-100 dark:border-gray-700
-                                                                ${displayName.length > 6 ? 'text-[10px]' : 'text-xs'}
+                                                                flex-1 text-center font-medium px-1 border-r border-gray-100 dark:border-gray-700
+                                                                ${player2 ? '' : `truncate ${displayName.length > 6 ? 'text-[10px]' : 'text-xs'}`}
                                                                 ${isChampion ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-gray-100'}
                                                             `}
                           >
@@ -618,6 +805,117 @@ export default function TournamentBracket({ detailData }: TournamentBracketProps
           })}
         </div>
       </div>
+
+      {selectedEntry &&
+        (() => {
+          const { entryNo, roundName } = selectedEntry;
+          const entry = entries.find((e) => e.entryNo === entryNo);
+          const nameParts = buildEntryNameParts(participants, entry);
+          const rows = buildMatchRowsForEntry(matches, entries, participants, entryNo, shortOpponentNames);
+          const isSeedEntry = !!(entry?.type && typeof entry.type === 'string' && entry.type.includes('seed'));
+
+          return (
+            <div
+              role="dialog"
+              aria-modal="true"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+              onClick={() => setSelectedEntry(null)}
+            >
+              <div
+                className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-4 shadow-xl dark:bg-gray-800"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="mb-3 flex items-start justify-between gap-2">
+                  <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">
+                    {entryNo}.{' '}
+                    {nameParts.length > 0
+                      ? nameParts.map((part, i) =>
+                          part.playerId ? (
+                            <Link
+                              key={i}
+                              href={`/players/${part.playerId}/results`}
+                              onClick={() => setSelectedEntry(null)}
+                              className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                            >
+                              {part.text}
+                            </Link>
+                          ) : (
+                            <span key={i}>{part.text}</span>
+                          ),
+                        )
+                      : null}
+                    {isSeedEntry && <span className="ml-2 text-sm text-yellow-600 dark:text-yellow-300">（シード）</span>}
+                  </h3>
+                  <button
+                    type="button"
+                    aria-label="閉じる"
+                    onClick={() => setSelectedEntry(null)}
+                    className="shrink-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="w-full overflow-x-auto">
+                  <table className="w-full table-fixed border-collapse text-left text-sm">
+                    <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100">
+                      <tr>
+                        <th className="w-1/5 border-b border-gray-200 px-3 py-2 text-left dark:border-gray-600">ラウンド</th>
+                        <th className="w-3/5 border-b border-gray-200 px-3 py-2 text-left dark:border-gray-600">対戦相手</th>
+                        <th className="w-1/5 border-b border-gray-200 px-3 py-2 text-left dark:border-gray-600">スコア</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rows.map((row, i) => (
+                        <tr
+                          key={`${row.matchId ?? i}`}
+                          className={`border-t border-gray-100 dark:border-gray-700 ${row.round === roundName ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                        >
+                          <td className="break-words px-3 py-2 text-left">{row.round ?? '予選'}</td>
+                          <td className="break-words px-3 py-2 text-left">
+                            {row.opponentPlayerIds.length === 1 ? (
+                              <Link
+                                href={`/players/${row.opponentPlayerIds[0]}/results`}
+                                onClick={() => setSelectedEntry(null)}
+                                className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
+                              >
+                                {row.opponentDisplayName}
+                              </Link>
+                            ) : (
+                              row.opponentDisplayName
+                            )}
+                          </td>
+                          <td className="px-3 py-2 text-left">
+                            {row.won}-{row.lost}
+                          </td>
+                        </tr>
+                      ))}
+                      {rows.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="px-3 py-3 text-center text-gray-500 dark:text-gray-400">
+                            対戦記録がありません
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {entry?.playerIds?.[0] && participants.find((p) => p.id === entry.playerIds[0])?.playerId && (
+                  <div className="mt-3 text-right">
+                    <Link
+                      href={`/players/${participants.find((p) => p.id === entry.playerIds[0])?.playerId}/results`}
+                      className="text-xs text-blue-600 hover:underline dark:text-blue-400"
+                      onClick={() => setSelectedEntry(null)}
+                    >
+                      選手の全結果を見る →
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })()}
     </section>
   );
 }
