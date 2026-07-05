@@ -5,7 +5,6 @@ import path from 'path';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
