@@ -6,6 +6,8 @@
 
 import Link from 'next/link';
 
+import MilestoneBadge from './MilestoneBadge';
+
 export type ContextMilestone = {
   kind: string;
   label: string;
@@ -41,6 +43,8 @@ export default function TournamentContextBlocks({ label, data }: { label: string
   const hasRecords = data.championRecords.length > 0;
   if (!hasMilestones && !hasRecords) return null;
 
+  const hasScopeLimitedMilestone = data.milestones.some((m) => m.confidence === 'scope-limited');
+
   return (
     <section className="mb-10">
       <h2 className="text-lg font-bold mb-3">
@@ -52,17 +56,12 @@ export default function TournamentContextBlocks({ label, data }: { label: string
         <ul className="mb-4 flex flex-wrap gap-2">
           {data.milestones.map((m, i) => (
             <li key={`${m.kind}-${i}`}>
-              <span
-                className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-amber-900 dark:text-amber-100"
-                title={m.scopeNote ?? undefined}
-              >
-                {m.label}
-                {m.confidence === 'scope-limited' && <span className="ml-1 align-middle text-[10px] font-normal opacity-70">※当サイト掲載分</span>}
-              </span>
+              <MilestoneBadge kind={m.kind} label={m.label} scopeNote={m.scopeNote} />
             </li>
           ))}
         </ul>
       )}
+      {hasScopeLimitedMilestone && <p className="mb-4 -mt-2 text-[10px] opacity-70">※当サイト掲載分</p>}
 
       {hasRecords && (
         <div className="grid gap-3 sm:grid-cols-2">

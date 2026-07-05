@@ -4,6 +4,7 @@
 // バッジで表示する。データ生成は getStaticProps 側（lib/milestones.ts）。
 // 設計: docs/wiki/news-context-blocks.md / ADR-005。
 
+import MilestoneBadge from './MilestoneBadge';
 import type { ContextMilestone } from './TournamentContextBlocks';
 
 export default function ResultContextBlocks({ label, year, milestones }: { label: string; year: string; milestones: ContextMilestone[] }) {
@@ -19,12 +20,7 @@ export default function ResultContextBlocks({ label, year, milestones }: { label
       <ul className="flex flex-wrap gap-2">
         {milestones.map((m, i) => (
           <li key={`${m.kind}-${i}`}>
-            <span
-              className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-amber-900 dark:text-amber-100"
-              title={m.scopeNote ?? undefined}
-            >
-              {m.label}
-            </span>
+            <MilestoneBadge kind={m.kind} label={m.label} scopeNote={m.scopeNote} />
           </li>
         ))}
       </ul>
