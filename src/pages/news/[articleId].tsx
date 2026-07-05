@@ -75,24 +75,28 @@ function PickPlayerCardItem({ card }: { card: PickPlayerCard }) {
         ? 'border-amber-300 dark:border-amber-700'
         : 'border-gray-200 dark:border-gray-700';
   return (
-    <li className={`flex items-center justify-between gap-3 rounded-xl border px-4 py-3 ${borderCls}`}>
-      <div className="min-w-0">
-        <p className="truncate text-sm font-semibold">
-          {card.players.length > 0 ? <PlayerNames players={card.players} perPlayerTeam={card.perPlayerTeam} /> : card.display}
-        </p>
-        {card.players.length > 0 && card.team && <p className="truncate text-xs text-gray-500 dark:text-gray-400">{card.team}</p>}
-        {/* 前大会の実績。ペア解消の組み替えで複数由来がある場合は 1 行ずつ表示する。 */}
-        {card.achievements.map((a, i) => (
-          <p key={i} className="truncate text-xs text-gray-500 dark:text-gray-400">
-            {a}
+    <li className={`rounded-xl border px-4 py-3 ${borderCls}`}>
+      {/*
+        モバイルはバッジを上、名前・実績をフル幅で下に積む（flex-col）。名前が横幅を
+        奪われず省略（truncate）せずに済む。sm 以上は従来の左右レイアウト（名前左・バッジ右）。
+      */}
+      <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+        <div className="order-2 min-w-0 sm:order-1">
+          <p className="break-words text-sm font-semibold">
+            {card.players.length > 0 ? <PlayerNames players={card.players} perPlayerTeam={card.perPlayerTeam} /> : card.display}
           </p>
-        ))}
+          {card.players.length > 0 && card.team && <p className="break-words text-xs text-gray-500 dark:text-gray-400">{card.team}</p>}
+          {/* 前大会の実績。ペア解消の組み替えで複数由来がある場合は 1 行ずつ表示する。 */}
+          {card.achievements.map((a, i) => (
+            <p key={i} className="break-words text-xs text-gray-500 dark:text-gray-400">
+              {a}
+            </p>
+          ))}
+        </div>
+        <div className="order-1 shrink-0 sm:order-2">
+          {card.standing ? <StandingBadge standing={card.standing} size="lg" /> : <span className="text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>}
+        </div>
       </div>
-      {card.standing ? (
-        <StandingBadge standing={card.standing} size="lg" />
-      ) : (
-        <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
-      )}
     </li>
   );
 }
@@ -154,28 +158,31 @@ function TitleDefenseHero({ td }: { td: TitleDefenseWatch }) {
 
       {(td.status === 'intact' || td.status === 'absent') && (
         <div className={`rounded-xl px-4 py-3 ${shellCls}`}>
-          <div className="flex items-center justify-between gap-3">
-            <div className="min-w-0">
-              <p className={`mb-1 inline-flex items-center gap-1 text-xs font-semibold ${pillCls}`}>
-                {td.status === 'absent' ? '前回王者不在' : `前回王者・${intactPill}`}
-              </p>
-              <p className="truncate text-base font-semibold">
+          {/* ラベルは常に上・フル幅。名前とバッジはモバイルで縦積み、sm 以上で左右に分ける。 */}
+          <p className={`mb-1 inline-flex items-center gap-1 text-xs font-semibold ${pillCls}`}>
+            {td.status === 'absent' ? '前回王者不在' : `前回王者・${intactPill}`}
+          </p>
+          <div className="flex flex-col gap-1.5 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
+            <div className="order-2 min-w-0 sm:order-1">
+              <p className="break-words text-base font-semibold">
                 {td.players.length > 0 ? <PlayerNames players={td.players} perPlayerTeam={!td.team} /> : td.defendingChampionDisplay}
               </p>
-              <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+              <p className="break-words text-xs text-gray-500 dark:text-gray-400">
                 {td.defendingYear}年優勝
                 {td.team && ` ・ ${td.team}`}
               </p>
             </div>
-            {td.status === 'absent' ? (
-              <span className="shrink-0 text-xs text-gray-500 dark:text-gray-400">新王者へ</span>
-            ) : td.standing ? (
-              <span className="shrink-0 whitespace-nowrap rounded-full bg-white px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-gray-900 dark:text-amber-100">
-                今大会 {td.standing.label}
-              </span>
-            ) : (
-              <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
-            )}
+            <div className="order-1 shrink-0 sm:order-2">
+              {td.status === 'absent' ? (
+                <span className="text-xs text-gray-500 dark:text-gray-400">新王者へ</span>
+              ) : td.standing ? (
+                <span className="inline-block whitespace-nowrap rounded-full bg-white px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-gray-900 dark:text-amber-100">
+                  {td.standing.label}
+                </span>
+              ) : (
+                <span className="text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -183,28 +190,29 @@ function TitleDefenseHero({ td }: { td: TitleDefenseWatch }) {
       {(td.status === 'partial' || td.status === 'split') && (
         <div className={`rounded-xl px-4 py-3 ${shellCls}`}>
           <p className={`mb-1 inline-flex items-center gap-1 text-xs font-semibold ${pillCls}`}>前回王者ペア・ペア解消</p>
-          <p className="truncate text-base font-semibold">
+          <p className="break-words text-base font-semibold">
             {td.players.length > 0 ? <PlayerNames players={td.players} perPlayerTeam={!td.team} /> : td.defendingChampionDisplay}
           </p>
-          <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+          <p className="break-words text-xs text-gray-500 dark:text-gray-400">
             {td.defendingYear}年優勝
             {td.team && ` ・ ${td.team}`}・{td.status === 'split' ? '双方が新ペアで連覇を狙う' : '継続選手が新ペアで連覇に挑む'}
           </p>
           <ul className="mt-2 flex flex-col gap-2 border-t border-amber-200/70 pt-2 dark:border-amber-800/50">
             {td.currentEntries.map((ce, i) => (
-              <li key={i} className="flex items-center justify-between gap-3">
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold">
+              <li key={i} className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                <div className="order-2 min-w-0 sm:order-1">
+                  <p className="break-words text-sm font-semibold">
                     {ce.players.length > 0 ? <PlayerNames players={ce.players} perPlayerTeam={!ce.team} /> : td.defendingChampionDisplay}
-                    <span className="ml-1 text-xs font-normal text-gray-500 dark:text-gray-400">今大会</span>
                   </p>
-                  {ce.team && <p className="truncate text-xs text-gray-500 dark:text-gray-400">{ce.team}</p>}
+                  {ce.team && <p className="break-words text-xs text-gray-500 dark:text-gray-400">{ce.team}</p>}
                 </div>
-                {ce.standing ? (
-                  <StandingBadge standing={ce.standing} size="lg" />
-                ) : (
-                  <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
-                )}
+                <div className="order-1 shrink-0 sm:order-2">
+                  {ce.standing ? (
+                    <StandingBadge standing={ce.standing} size="lg" />
+                  ) : (
+                    <span className="text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
