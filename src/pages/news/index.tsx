@@ -46,9 +46,6 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
                 <Link href={`/news/${it.articleId}/`} className="font-semibold text-blue-600 hover:underline dark:text-blue-400">
                   {it.title}
                 </Link>
-                <span className="ml-2 inline-block rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-                  {it.type === 'preview' ? '展望' : '結果速報'}
-                </span>
               </li>
             ))}
           </ul>
