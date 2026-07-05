@@ -18,8 +18,8 @@ import {
   listPublishedPreviews,
   type EntryStanding,
   type NewsArticleView,
+  type PickPlayerCard,
   type PreviewPlayerRef,
-  type RecentAchiever,
 } from '@/lib/newsArticle';
 import { buildSiteUrl, siteConfig } from '@/lib/siteConfig';
 
@@ -45,8 +45,9 @@ function PlayerName({ p }: { p: PreviewPlayerRef }) {
 /**
  * 今大会の途中経過/敗退バッジ（進行中の年のみ。results 未掲載なら何も出ない）。
  * alive=進行中（緑）/ champion=優勝（琥珀）/ runnerup=準優勝（琥珀）/ eliminated=敗退（灰）
+ * size='lg' は「注目の選手」カードの結果表示用（文中の添え物ではなく主役として大きく出す）。
  */
-function StandingBadge({ standing }: { standing: EntryStanding | null }) {
+function StandingBadge({ standing, size = 'sm' }: { standing: EntryStanding | null; size?: 'sm' | 'lg' }) {
   if (!standing) return null;
   const cls =
     standing.state === 'alive'
@@ -54,7 +55,42 @@ function StandingBadge({ standing }: { standing: EntryStanding | null }) {
       : standing.state === 'eliminated'
         ? 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
         : 'bg-amber-100 text-amber-900 dark:bg-amber-900 dark:text-amber-100';
+  if (size === 'lg') {
+    return <span className={`inline-block shrink-0 whitespace-nowrap rounded-full px-3 py-1 text-sm font-semibold ${cls}`}>{standing.label}</span>;
+  }
   return <span className={`ml-2 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${cls}`}>今大会: {standing.label}</span>;
+}
+
+/**
+ * 「注目の選手」カード1件。
+ * 過去の実績（前回入賞/過去の優勝/直近大会の好成績）はサブテキストに留め、
+ * 今大会の結果を右側の大きいバッジで主役にする（文字の羅列で読みにくい問題への対応）。
+ */
+function PickPlayerCardItem({ card }: { card: PickPlayerCard }) {
+  const borderCls =
+    card.standing?.state === 'alive'
+      ? 'border-emerald-300 dark:border-emerald-700'
+      : card.standing?.state === 'champion' || card.standing?.state === 'runnerup'
+        ? 'border-amber-300 dark:border-amber-700'
+        : 'border-gray-200 dark:border-gray-700';
+  return (
+    <li className={`flex items-center justify-between gap-3 rounded-xl border px-4 py-3 ${borderCls}`}>
+      <div className="min-w-0">
+        <p className="truncate text-sm font-semibold">
+          {card.players.length > 0 ? <PlayerNames players={card.players} perPlayerTeam={card.perPlayerTeam} /> : card.display}
+        </p>
+        <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+          {card.players.length > 0 && card.team && `${card.team} ・ `}
+          {card.achievement}
+        </p>
+      </div>
+      {card.standing ? (
+        <StandingBadge standing={card.standing} size="lg" />
+      ) : (
+        <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
+      )}
+    </li>
+  );
 }
 
 /**
@@ -240,61 +276,17 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               </p>
             )}
 
-            {/* プレビュー: 前回入賞者（準優勝/ベスト4）の再登場 */}
-            {isPreview && c.returningPlacers.length > 0 && (
+            {/*
+              プレビュー: 注目の選手（前回入賞者の再登場 / 過去の優勝者の再挑戦 / 直近大会の好成績者を統合）。
+              文章の羅列だと今大会の結果が読み取りにくいため、カード化して結果バッジを主役にし、
+              今大会の結果（勝ち上がり中/優勝/準優勝 > 未掲載 > 敗退）順に並べる。
+            */}
+            {isPreview && c.pickPlayers.length > 0 && (
               <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">前回入賞者の再登場</h3>
-                <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
-                  {c.returningPlacers.map((p, i) => (
-                    <li key={`${p.placement}-${i}`}>
-                      前回{p.placement}:{' '}
-                      <span className="font-semibold">
-                        {p.players.length > 0 ? (
-                          <PlayerNames players={p.intact ? p.players : p.players.filter((pl) => pl.returning)} perPlayerTeam={p.intact && !p.team} />
-                        ) : (
-                          p.display
-                        )}
-                      </span>
-                      {p.players.length > 0 && p.intact && p.team && `（${p.team}）`}
-                      <StandingBadge standing={p.standing} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* プレビュー: 過去の優勝者（前々回以前）の再挑戦 */}
-            {isPreview && c.returningFormerChampions.length > 0 && (
-              <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">過去の優勝者が再挑戦</h3>
-                <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
-                  {c.returningFormerChampions.map((f, i) => (
-                    <li key={`former-${i}`}>
-                      {f.years.join('・')}年優勝:{' '}
-                      <span className="font-semibold">{f.players.length > 0 ? <PlayerNames players={f.players} perPlayerTeam={!f.team} /> : f.display}</span>
-                      {f.players.length > 0 && f.team && `（${f.team}）`}
-                      <StandingBadge standing={f.standing} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* プレビュー: 直近大会で好成績を残した出場者 */}
-            {isPreview && c.recentAchievers.length > 0 && (
-              <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">直近大会の好成績者</h3>
-                <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
-                  {c.recentAchievers.map((a: RecentAchiever, i) => (
-                    <li key={`recent-${i}`}>
-                      <span className="font-semibold">
-                        <PlayerName p={a.player} />
-                      </span>
-                      {' — '}
-                      {a.tournamentLabel} {a.year} {a.categoryLabel}
-                      <span className="ml-1 font-semibold">{a.placement}</span>
-                      <StandingBadge standing={a.standing} />
-                    </li>
+                <h3 className="mb-2 text-sm font-semibold">注目の選手</h3>
+                <ul className="flex flex-col gap-2">
+                  {c.pickPlayers.map((card) => (
+                    <PickPlayerCardItem key={card.id} card={card} />
                   ))}
                 </ul>
               </div>

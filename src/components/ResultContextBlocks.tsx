@@ -9,6 +9,8 @@ import type { ContextMilestone } from './TournamentContextBlocks';
 export default function ResultContextBlocks({ label, year, milestones }: { label: string; year: string; milestones: ContextMilestone[] }) {
   if (milestones.length === 0) return null;
 
+  const hasScopeNote = milestones.some((m) => m.scopeNote);
+
   return (
     <section className="mb-6">
       <h2 className="text-lg font-bold mb-2">
@@ -22,11 +24,11 @@ export default function ResultContextBlocks({ label, year, milestones }: { label
               title={m.scopeNote ?? undefined}
             >
               {m.label}
-              {m.scopeNote && <span className="ml-1 align-middle text-[10px] font-normal opacity-70">※当サイト掲載分</span>}
             </span>
           </li>
         ))}
       </ul>
+      {hasScopeNote && <p className="mt-1 text-[10px] opacity-70">※当サイト掲載分</p>}
     </section>
   );
 }

@@ -152,6 +152,30 @@ export type RecentAchiever = {
   standing: EntryStanding | null;
 };
 
+/**
+ * プレビュー: 「注目の選手」カード1件分。
+ * returningPlacers / returningFormerChampions / recentAchievers の3ブロックは
+ * いずれも「過去の実績 + 今大会の途中経過/敗退」という同じ構造を持つため、
+ * 1つのカード表現に統合し、今大会の結果（勝ち上がり中/優勝/準優勝を上位、
+ * 敗退を下位）でソートして表示する（見せ方の改善: docs/wiki/news-context-blocks.md）。
+ */
+export type PickPlayerCard = {
+  /** React key 用の一意 ID */
+  id: string;
+  /** 選手（個人戦/ダブルス。団体や players が空の場合は display を使う） */
+  players: PreviewPlayerRef[];
+  /** players が空のときの表示（ペア/校の display） */
+  display: string;
+  /** 所属校（ペア/校で共通の場合）。混成ペア等で割れている場合は null（players 側の team を使う） */
+  team: string | null;
+  /** true のとき選手ごとの所属を名前の直後に表示する（team が null のときのみ意味を持つ） */
+  perPlayerTeam: boolean;
+  /** 過去の実績の表示（例: "前回準優勝" "2019・2020年優勝" "選抜2026 女子シングルス 準優勝"） */
+  achievement: string;
+  /** 今大会の途中経過/敗退（未掲載なら null） */
+  standing: EntryStanding | null;
+};
+
 /** プレビュー: 出場規模・勢力図（純粋な事実） */
 export type FieldOverview = {
   /** 出場ペア/選手/校の数（エントリー数） */
@@ -186,6 +210,13 @@ export type NewsCategoryBlock = {
   returningFormerChampions: ReturningFormerChampion[];
   /** プレビューのみ: 直近他大会でベスト4以上の好成績を残した出場者 */
   recentAchievers: RecentAchiever[];
+  /**
+   * プレビューのみ: 「注目の選手」統合カード。
+   * returningPlacers / returningFormerChampions / recentAchievers を1本にマージし、
+   * 今大会の結果（勝ち上がり中/優勝/準優勝 > 未掲載 > 敗退）でソート済み。
+   * 表示にはこちらを使う（3配列は組み立て用の中間データとして残す）。
+   */
+  pickPlayers: PickPlayerCard[];
   /** プレビューのみ: 出場規模・勢力図。算出不能なら null */
   fieldOverview: FieldOverview | null;
   /** その年・種目の結果ページ（年度別）への内部リンク。算出不能なら null */
@@ -869,6 +900,77 @@ function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string,
   return out.slice(0, RECENT_ACHIEVERS_PER_CATEGORY);
 }
 
+/**
+ * 今大会の途中経過/敗退の「見たい順」ランク。小さいほど上位に表示する。
+ * champion/runnerup（勝ち切った）＞ alive（勝ち上がり中）＞ null（結果未掲載）＞ eliminated（敗退）。
+ * 大会終了後に見に来る人は「今大会どうだったか」を最優先で知りたいという想定（見せ方の改善）。
+ */
+function standingSortRank(s: EntryStanding | null): number {
+  if (!s) return 2;
+  switch (s.state) {
+    case 'champion':
+    case 'runnerup':
+      return 0;
+    case 'alive':
+      return 1;
+    case 'eliminated':
+      return 3;
+    default:
+      return 2;
+  }
+}
+
+/**
+ * returningPlacers / returningFormerChampions / recentAchievers を
+ * 1本の PickPlayerCard[] にマージし、今大会の結果順にソートする。
+ * 同ランク内は元の並び（各ブロックの優先順位・登場順）を保つ（Array#sort は安定ソート）。
+ */
+function buildPickPlayers(
+  returningPlacers: ReturningPlacer[],
+  returningFormerChampions: ReturningFormerChampion[],
+  recentAchievers: RecentAchiever[],
+): PickPlayerCard[] {
+  const cards: PickPlayerCard[] = [];
+
+  returningPlacers.forEach((p, i) => {
+    cards.push({
+      id: `placer-${i}`,
+      players: p.intact ? p.players : p.players.filter((pl) => pl.returning),
+      display: p.display,
+      team: p.team,
+      perPlayerTeam: p.intact && !p.team,
+      achievement: `前回${p.placement}`,
+      standing: p.standing,
+    });
+  });
+
+  returningFormerChampions.forEach((f, i) => {
+    cards.push({
+      id: `former-${i}`,
+      players: f.players,
+      display: f.display,
+      team: f.team,
+      perPlayerTeam: !f.team,
+      achievement: `${f.years.join('・')}年優勝`,
+      standing: f.standing,
+    });
+  });
+
+  recentAchievers.forEach((a, i) => {
+    cards.push({
+      id: `recent-${i}`,
+      players: [a.player],
+      display: a.player.name,
+      team: null,
+      perPlayerTeam: false,
+      achievement: `${a.tournamentLabel}${a.year} ${a.categoryLabel} ${a.placement}`,
+      standing: a.standing,
+    });
+  });
+
+  return cards.sort((a, b) => standingSortRank(a.standing) - standingSortRank(b.standing));
+}
+
 function buildCategoryBlock(
   record: NewsArticleRecord,
   categoryId: string,
@@ -923,6 +1025,8 @@ function buildCategoryBlock(
   const hasResultDetail = Boolean(readYearDetail(tournamentId, year, categoryId));
   const resultHref = parts && hasResultDetail ? `/tournaments/${generation}/${tournamentId}/${year}/${parts.category}/${parts.age}/${parts.gender}/` : null;
 
+  const pickPlayers = buildPickPlayers(returningPlacers, returningFormerChampions, recentAchievers);
+
   return {
     categoryId,
     categoryLabel: hw.categoryLabel,
@@ -937,6 +1041,7 @@ function buildCategoryBlock(
     returningPlacers,
     returningFormerChampions,
     recentAchievers,
+    pickPlayers,
     fieldOverview,
     resultHref,
   };
