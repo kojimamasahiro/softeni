@@ -20,6 +20,7 @@ import {
   type NewsArticleView,
   type PickPlayerCard,
   type PreviewPlayerRef,
+  type TitleDefenseWatch,
 } from '@/lib/newsArticle';
 import { buildSiteUrl, siteConfig } from '@/lib/siteConfig';
 
@@ -79,10 +80,13 @@ function PickPlayerCardItem({ card }: { card: PickPlayerCard }) {
         <p className="truncate text-sm font-semibold">
           {card.players.length > 0 ? <PlayerNames players={card.players} perPlayerTeam={card.perPlayerTeam} /> : card.display}
         </p>
-        <p className="truncate text-xs text-gray-500 dark:text-gray-400">
-          {card.players.length > 0 && card.team && `${card.team} ・ `}
-          {card.achievement}
-        </p>
+        {card.players.length > 0 && card.team && <p className="truncate text-xs text-gray-500 dark:text-gray-400">{card.team}</p>}
+        {/* 前大会の実績。ペア解消の組み替えで複数由来がある場合は 1 行ずつ表示する。 */}
+        {card.achievements.map((a, i) => (
+          <p key={i} className="truncate text-xs text-gray-500 dark:text-gray-400">
+            {a}
+          </p>
+        ))}
       </div>
       {card.standing ? (
         <StandingBadge standing={card.standing} size="lg" />
@@ -110,6 +114,103 @@ function PlayerNames({ players, perPlayerTeam }: { players: PreviewPlayerRef[]; 
         </span>
       ))}
     </>
+  );
+}
+
+/** 前回王者を「まだ勝ち残っている／結果未定」なら琥珀で強調、敗退なら灰に落とす */
+function isAliveOrOpen(s: EntryStanding | null): boolean {
+  return s == null || s.state === 'alive' || s.state === 'champion' || s.state === 'runnerup';
+}
+
+/**
+ * 連覇・防衛の行方（案A: 前回王者ヒーローカード）。
+ * 前回王者はプレビューの見出し格なので、注目の選手より一段強い専用カードで主役化する。
+ * intact=そのまま連覇挑戦 / absent=不在（灰） / partial・split=ペア解消（今大会ペアを行で並べる）。
+ * 王者が敗退済みのときは琥珀を灰に落として過度な強調を避ける。
+ */
+function TitleDefenseHero({ td }: { td: TitleDefenseWatch }) {
+  const heroAlive =
+    td.status === 'absent' ? false : td.status === 'intact' ? isAliveOrOpen(td.standing) : td.currentEntries.some((ce) => isAliveOrOpen(ce.standing));
+  const shellCls = heroAlive
+    ? 'border-2 border-amber-300 bg-amber-50 dark:border-amber-700 dark:bg-amber-900/20'
+    : 'border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/40';
+  const pillCls = heroAlive ? 'text-amber-800 dark:text-amber-200' : 'text-gray-500 dark:text-gray-400';
+
+  // intact: 前回王者ペア/校がそのまま連覇に挑む
+  const intactPill =
+    td.standing?.state === 'champion'
+      ? '連覇達成'
+      : td.standing?.state === 'runnerup'
+        ? '連覇ならず（準優勝）'
+        : td.standing?.state === 'eliminated'
+          ? '連覇ならず'
+          : td.standing?.state === 'alive'
+            ? '連覇挑戦中'
+            : '連覇挑戦';
+
+  return (
+    <div className="mb-3">
+      <h3 className="mb-2 text-sm font-semibold">連覇・防衛の行方</h3>
+
+      {(td.status === 'intact' || td.status === 'absent') && (
+        <div className={`rounded-xl px-4 py-3 ${shellCls}`}>
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p className={`mb-1 inline-flex items-center gap-1 text-xs font-semibold ${pillCls}`}>
+                {td.status === 'absent' ? '前回王者不在' : `前回王者・${intactPill}`}
+              </p>
+              <p className="truncate text-base font-semibold">
+                {td.players.length > 0 ? <PlayerNames players={td.players} perPlayerTeam={!td.team} /> : td.defendingChampionDisplay}
+              </p>
+              <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+                {td.defendingYear}年優勝
+                {td.team && ` ・ ${td.team}`}
+              </p>
+            </div>
+            {td.status === 'absent' ? (
+              <span className="shrink-0 text-xs text-gray-500 dark:text-gray-400">新王者へ</span>
+            ) : td.standing ? (
+              <span className="shrink-0 whitespace-nowrap rounded-full bg-white px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-gray-900 dark:text-amber-100">
+                今大会 {td.standing.label}
+              </span>
+            ) : (
+              <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {(td.status === 'partial' || td.status === 'split') && (
+        <div className={`rounded-xl px-4 py-3 ${shellCls}`}>
+          <p className={`mb-1 inline-flex items-center gap-1 text-xs font-semibold ${pillCls}`}>前回王者ペア・ペア解消</p>
+          <p className="truncate text-base font-semibold">
+            {td.players.length > 0 ? <PlayerNames players={td.players} perPlayerTeam={!td.team} /> : td.defendingChampionDisplay}
+          </p>
+          <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+            {td.defendingYear}年優勝
+            {td.team && ` ・ ${td.team}`}・{td.status === 'split' ? '双方が新ペアで連覇を狙う' : '継続選手が新ペアで連覇に挑む'}
+          </p>
+          <ul className="mt-2 flex flex-col gap-2 border-t border-amber-200/70 pt-2 dark:border-amber-800/50">
+            {td.currentEntries.map((ce, i) => (
+              <li key={i} className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold">
+                    {ce.players.length > 0 ? <PlayerNames players={ce.players} perPlayerTeam={!ce.team} /> : td.defendingChampionDisplay}
+                    <span className="ml-1 text-xs font-normal text-gray-500 dark:text-gray-400">今大会</span>
+                  </p>
+                  {ce.team && <p className="truncate text-xs text-gray-500 dark:text-gray-400">{ce.team}</p>}
+                </div>
+                {ce.standing ? (
+                  <StandingBadge standing={ce.standing} size="lg" />
+                ) : (
+                  <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500">結果未掲載</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -231,45 +332,8 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               </ul>
             )}
 
-            {/* プレビュー: 連覇・防衛ウォッチ（前回王者の出場状況） */}
-            {isPreview && c.titleDefense && (
-              <div className="mb-3">
-                <h3 className="mb-1 text-sm font-semibold">連覇・防衛の行方</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-200">
-                  前回王者{' '}
-                  <span className="font-semibold">
-                    {c.titleDefense.players.length > 0 ? (
-                      <>
-                        {c.titleDefense.status === 'partial' ? (
-                          <PlayerNames players={c.titleDefense.players.filter((p) => p.returning)} />
-                        ) : (
-                          <PlayerNames players={c.titleDefense.players} perPlayerTeam={!c.titleDefense.team} />
-                        )}
-                      </>
-                    ) : (
-                      c.titleDefense.defendingChampionDisplay
-                    )}
-                  </span>
-                  {c.titleDefense.players.length > 0 && c.titleDefense.status !== 'partial' && c.titleDefense.team && `（${c.titleDefense.team}）`}（
-                  {c.titleDefense.defendingYear}年優勝）
-                  {c.titleDefense.status === 'absent' && 'は不在。新王者が誕生する。'}
-                  {c.titleDefense.status !== 'absent' && (
-                    <>
-                      {c.titleDefense.standing?.state === 'champion'
-                        ? 'が連覇を達成した。'
-                        : c.titleDefense.standing?.state === 'runnerup'
-                          ? 'は準優勝（連覇ならず）。'
-                          : c.titleDefense.standing?.state === 'eliminated'
-                            ? `は連覇ならず。`
-                            : c.titleDefense.status === 'partial'
-                              ? 'が今大会も出場し、新ペアで連覇を狙う。'
-                              : 'が連覇に挑む。'}
-                      <StandingBadge standing={c.titleDefense.standing} />
-                    </>
-                  )}
-                </p>
-              </div>
-            )}
+            {/* プレビュー: 連覇・防衛の行方（案A: 前回王者ヒーローカード） */}
+            {isPreview && c.titleDefense && <TitleDefenseHero td={c.titleDefense} />}
             {isPreview && !c.titleDefense && c.previousChampion && (
               <p className="mb-2 text-sm">
                 <span className="font-semibold">前回王者:</span> {c.previousChampion}

@@ -79,6 +79,22 @@ export type EntryStanding = {
   state: 'alive' | 'eliminated' | 'champion' | 'runnerup';
 };
 
+/**
+ * ペアが分かれた（partial/split）ときに、結果バッジを紐付ける主役となる「今大会のエントリー」。
+ * 前回主役（王者/入賞者）をベースにせず、今大会に実在するペアを主体に見せる（案A+C）。
+ * 例: 前回王者 内本隆文・内田理久 → 今大会 内本隆文・上松俊貴。この型は「内本・上松」を表す。
+ */
+export type CurrentPairEntry = {
+  /** 今大会ペアの選手（所属は per-player。混成ペアは team=null 側で個別表示） */
+  players: PreviewPlayerRef[];
+  /** ペア共通の所属（表示用・正規化済み）。混成ペアは null */
+  team: string | null;
+  /** この今大会エントリーの途中経過/敗退（未掲載なら null） */
+  standing: EntryStanding | null;
+  /** この今大会エントリーへ引き継がれた「前回主役の選手名」（注記用。例: ["内本隆文"]） */
+  carriedFrom: string[];
+};
+
 /** プレビュー: 前回王者の今大会への出場状況（連覇・防衛ウォッチ） */
 export type TitleDefenseWatch = {
   /** 前回王者の表示（ペア/校）。団体戦や選手が空のとき用 */
@@ -91,11 +107,17 @@ export type TitleDefenseWatch = {
   players: PreviewPlayerRef[];
   /**
    * intact: ペア/校がそのまま出場（連覇に挑む）
-   * partial: ダブルスで片方の選手のみ継続出場（新ペアで連覇に挑む）
+   * partial: ダブルスで片方の選手のみ継続出場（相方は不在。新ペアで連覇に挑む）
+   * split : 前回王者ペアが分かれ、双方が別々の新ペアで継続出場（複数の currentEntries）
    * absent: 前回王者は不在（新王者へ）
    */
-  status: 'intact' | 'partial' | 'absent';
-  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  status: 'intact' | 'partial' | 'split' | 'absent';
+  /**
+   * 今大会側のエントリー。intact/partial は 1 件、split は複数件、absent は空。
+   * partial/split の結果バッジはこちら（今大会の実在ペア）に紐付ける。
+   */
+  currentEntries: CurrentPairEntry[];
+  /** intact 時の今大会の途中経過/敗退（partial/split は currentEntries 側を使う。未掲載なら null） */
   standing: EntryStanding | null;
 };
 
@@ -108,9 +130,13 @@ export type ReturningPlacer = {
   team: string | null;
   /** 入賞時の選手（個人戦/ダブルス。団体は空） */
   players: PreviewPlayerRef[];
-  /** ペア/校の全員が継続出場か */
-  intact: boolean;
-  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  /**
+   * intact: ペア/校がそのまま継続 / partial: 片方のみ継続（相方不在）/ split: 双方が別ペアで継続
+   */
+  status: 'intact' | 'partial' | 'split';
+  /** 今大会側のエントリー（partial/split で今大会ペアを主役化するため） */
+  currentEntries: CurrentPairEntry[];
+  /** intact 時の今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
   standing: EntryStanding | null;
 };
 
@@ -124,7 +150,11 @@ export type ReturningFormerChampion = {
   team: string | null;
   /** 当時の優勝選手（個人戦/ダブルス。団体は空） */
   players: PreviewPlayerRef[];
-  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
+  /** intact: ペア/校がそのまま継続 / partial: 片方のみ継続 / split: 双方が別ペアで継続 */
+  status: 'intact' | 'partial' | 'split';
+  /** 今大会側のエントリー（partial/split で今大会ペアを主役化するため） */
+  currentEntries: CurrentPairEntry[];
+  /** intact 時の今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
   standing: EntryStanding | null;
 };
 
@@ -170,8 +200,12 @@ export type PickPlayerCard = {
   team: string | null;
   /** true のとき選手ごとの所属を名前の直後に表示する（team が null のときのみ意味を持つ） */
   perPlayerTeam: boolean;
-  /** 過去の実績の表示（例: "前回準優勝" "2019・2020年優勝" "選抜2026 女子シングルス 準優勝"） */
-  achievement: string;
+  /**
+   * 過去の実績の表示（例: "前回準優勝" "2019・2020年優勝" "選抜2026 女子シングルス 準優勝"）。
+   * 同一の今大会ペアが複数の実績由来でまとまる場合（ペア解消の組み替え等）は複数行になる。
+   * UI では 1 行ずつ表示する。
+   */
+  achievements: string[];
   /** 今大会の途中経過/敗退（未掲載なら null） */
   standing: EntryStanding | null;
 };
@@ -343,6 +377,8 @@ type FieldIndex = {
   championKeyToEntryNo: Map<string, number>;
   /** playerKey → 今大会の entryNo（partial=新ペアの継続選手の引き当て用） */
   playerKeyToEntryNo: Map<string, number>;
+  /** entryNo → 今大会エントリーの名簿（分割時に今大会ペアを主役表示するため） */
+  entryRosterByNo: Map<number, { players: PreviewPlayerRef[]; team: string | null }>;
   /** entryNo → 今大会の途中経過/敗退（detail.results 由来。未掲載なら空） */
   standingByEntryNo: Map<number, EntryStanding>;
   /** 都道府県別エントリー数 */
@@ -465,6 +501,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
   const championKeySet = new Set<string>();
   const championKeyToEntryNo = new Map<string, number>();
   const playerKeyToEntryNo = new Map<string, number>();
+  const entryRosterByNo = new Map<number, { players: PreviewPlayerRef[]; team: string | null }>();
   const prefectureCount = new Map<string, number>();
   const teamCount = new Map<string, number>();
   let entryCount = 0;
@@ -473,6 +510,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
     entryCount += 1;
     const names: string[] = [];
     const teams: string[] = [];
+    const roster: PreviewPlayerRef[] = [];
     let firstPref: string | null = null;
     for (const pid of e.playerIds) {
       const p = pmap.get(pid);
@@ -483,6 +521,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
         const pk = playerMatchKey(name, team);
         playerKeySet.add(pk);
         if (!playerKeyToEntryNo.has(pk)) playerKeyToEntryNo.set(pk, e.entryNo);
+        roster.push({ name, playerId: resolvePlayerId(name), returning: true, team: team ? cleanDisplay(team) : null });
       }
       if (team) {
         const nt = normalizeTeam(team);
@@ -490,6 +529,10 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
       }
       if (!firstPref && p?.prefecture) firstPref = p.prefecture;
     }
+    // ペア共通の所属（混成ペアは null → 選手ごとに team を出す）。teamDisplayOf と同じ思想。
+    const distinctTeams = new Set(teams.map((t) => normPart(t)));
+    const rosterTeam = names.length > 0 && distinctTeams.size === 1 && teams[0] ? cleanDisplay(teams[0]) : null;
+    entryRosterByNo.set(e.entryNo, { players: roster, team: rosterTeam });
     const namesSorted = names.map(normPart).sort();
     const teamsSorted = teams.map(normPart).sort();
     const ck = names.length > 0 ? `${namesSorted.join('|')}@${teamsSorted.join('|')}` : teamsSorted.join('|');
@@ -518,49 +561,51 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
     championKeySet,
     championKeyToEntryNo,
     playerKeyToEntryNo,
+    entryRosterByNo,
     standingByEntryNo,
     prefectureCount,
     teamCount,
   };
 }
 
-/**
- * ピックアップ対象（前年の ChampionEntry）→ 今大会の途中経過/敗退。
- * ペア/校一致（championKey）で当年 entryNo を引き、無ければ（partial=新ペア）
- * 継続選手の playerKey で引く。entryNo が引けなければ、または results 未掲載なら null。
- */
-function currentStandingOf(c: ChampionEntry, field: FieldIndex | null): EntryStanding | null {
-  if (!field) return null;
-  const isTeam = c.players.length === 0;
-  let entryNo: number | undefined;
-  const ck = teamMatchKey(c);
-  if (ck) entryNo = field.championKeyToEntryNo.get(ck);
-  if (entryNo == null && !isTeam) {
-    // partial: ペアが替わっても継続している選手の entry を引く
-    outer: for (const name of c.players) {
-      for (const t of c.teams) {
-        const en = field.playerKeyToEntryNo.get(playerMatchKey(name, t));
-        if (en != null) {
-          entryNo = en;
-          break outer;
-        }
-      }
-    }
-  }
-  if (entryNo == null) return null;
-  return field.standingByEntryNo.get(entryNo) ?? null;
-}
+/** 前回主役（王者/入賞者）→ 今大会での継続状況と、結果を紐付ける今大会エントリー */
+export type PairFate = {
+  /**
+   * intact: ペア/校がそのまま継続（1 currentEntry）
+   * partial: 片方のみ継続・相方は不在（1 currentEntry。新パートナーはいる場合も）
+   * split : ペアが分かれ、双方が別々の新ペアで継続（複数 currentEntries）
+   * absent: 誰も継続していない（0 currentEntry）
+   */
+  status: 'intact' | 'partial' | 'split' | 'absent';
+  /** 前回主役の選手（returning フラグ付き。団体は空） */
+  prevPlayers: PreviewPlayerRef[];
+  /** 今大会側のエントリー（結果バッジはこちらに紐付ける） */
+  currentEntries: CurrentPairEntry[];
+};
 
-/** ChampionEntry が今大会に「継続出場」しているかを判定する（所属表記揺れを吸収） */
-function returningOf(c: ChampionEntry, field: FieldIndex): { status: 'intact' | 'partial' | 'absent'; players: PreviewPlayerRef[] } {
+/**
+ * 前回主役の ChampionEntry を、今大会のどのエントリーに「継続」したか entryNo 単位で解決する。
+ * 従来の returningOf は「両選手が出場」を一律 intact と判定していたが、両者が別々の新ペアに
+ * 分かれた場合（split）を intact と誤判定していた。ここでは各継続選手の今大会 entryNo を引き、
+ * 属する entryNo の数で intact/partial/split を区別し、結果バッジを今大会の実在ペアに紐付ける。
+ * 所属表記揺れ（"_<県>"）は playerMatchKey 側で吸収する。
+ */
+function resolvePairFate(c: ChampionEntry, field: FieldIndex | null): PairFate {
+  if (!field) return { status: 'absent', prevPlayers: [], currentEntries: [] };
   const isTeam = c.players.length === 0;
   if (isTeam) {
     const ck = teamMatchKey(c);
-    const present = ck ? field.championKeySet.has(ck) : false;
-    return { status: present ? 'intact' : 'absent', players: [] };
+    const entryNo = ck ? field.championKeyToEntryNo.get(ck) : undefined;
+    if (entryNo == null) return { status: 'absent', prevPlayers: [], currentEntries: [] };
+    return {
+      status: 'intact',
+      prevPlayers: [],
+      currentEntries: [{ players: [], team: teamDisplayOf(c), standing: field.standingByEntryNo.get(entryNo) ?? null, carriedFrom: [] }],
+    };
   }
-  // 個人は「名前@正規化所属（選手個人の所属）」が一致すれば継続出場とみなす（同姓同名は所属で区別）。
-  const players: PreviewPlayerRef[] = c.players.map((name, i) => {
+
+  // 個人/ダブルス: 「名前@正規化所属」で継続選手を判定し、各継続選手の今大会 entryNo を引く。
+  const prevPlayers: PreviewPlayerRef[] = c.players.map((name, i) => {
     const team = c.playerTeams[i] ?? null;
     return {
       name,
@@ -569,11 +614,35 @@ function returningOf(c: ChampionEntry, field: FieldIndex): { status: 'intact' | 
       team: team ? cleanDisplay(team) : null,
     };
   });
-  const returningCount = players.filter((p) => p.returning).length;
-  let status: 'intact' | 'partial' | 'absent' = 'absent';
-  if (returningCount === players.length) status = 'intact';
-  else if (returningCount > 0) status = 'partial';
-  return { status, players };
+  const returningCount = prevPlayers.filter((p) => p.returning).length;
+  if (returningCount === 0) return { status: 'absent', prevPlayers, currentEntries: [] };
+
+  // 継続選手 → 今大会 entryNo（同一 entry に複数の継続選手が入る＝ペア維持）
+  const entryToCarried = new Map<number, string[]>();
+  c.players.forEach((name, i) => {
+    if (!prevPlayers[i].returning) return;
+    const en = field.playerKeyToEntryNo.get(playerMatchKey(name, c.playerTeams[i] ?? null));
+    if (en == null) return;
+    const arr = entryToCarried.get(en) ?? [];
+    arr.push(name);
+    entryToCarried.set(en, arr);
+  });
+
+  const currentEntries: CurrentPairEntry[] = Array.from(entryToCarried.entries()).map(([en, carriedFrom]) => {
+    const roster = field.entryRosterByNo.get(en);
+    return {
+      players: roster?.players ?? [],
+      team: roster?.team ?? null,
+      standing: field.standingByEntryNo.get(en) ?? null,
+      carriedFrom,
+    };
+  });
+
+  let status: PairFate['status'];
+  if (currentEntries.length >= 2) status = 'split';
+  else if (returningCount === prevPlayers.length) status = 'intact';
+  else status = 'partial';
+  return { status, prevPlayers, currentEntries };
 }
 
 /**
@@ -602,14 +671,16 @@ function placerLabel(rank: { kind?: string; bestLevel?: number } | undefined | n
 /** プレビュー: 連覇・防衛ウォッチ（前回王者の今大会出場状況） */
 function buildTitleDefense(prevChampionEntry: ChampionEntry | null, field: FieldIndex | null): TitleDefenseWatch | null {
   if (!prevChampionEntry || !prevChampionEntry.display || !field) return null;
-  const { status, players } = returningOf(prevChampionEntry, field);
+  const fate = resolvePairFate(prevChampionEntry, field);
   return {
     defendingChampionDisplay: cleanDisplay(prevChampionEntry.display),
     defendingYear: prevChampionEntry.year,
     team: teamDisplayOf(prevChampionEntry),
-    players,
-    status,
-    standing: currentStandingOf(prevChampionEntry, field),
+    players: fate.prevPlayers,
+    status: fate.status,
+    currentEntries: fate.currentEntries,
+    // intact は 1 件の今大会エントリーがそのまま前回王者。partial/split は currentEntries 側を使う。
+    standing: fate.status === 'intact' ? (fate.currentEntries[0]?.standing ?? null) : null,
   };
 }
 
@@ -631,15 +702,16 @@ function buildReturningPlacers(detail: RawDetail | null, field: FieldIndex | nul
     if (!entry) continue;
     const ce = resolveEntryToChampion(entry, pmap, prevYear);
     if (!ce.display) continue;
-    const { status, players } = returningOf(ce, field);
-    if (status === 'absent') continue;
+    const fate = resolvePairFate(ce, field);
+    if (fate.status === 'absent') continue;
     out.push({
       placement: label,
       display: cleanDisplay(ce.display),
       team: teamDisplayOf(ce),
-      players,
-      intact: status === 'intact',
-      standing: currentStandingOf(ce, field),
+      players: fate.prevPlayers,
+      status: fate.status,
+      currentEntries: fate.currentEntries,
+      standing: fate.status === 'intact' ? (fate.currentEntries[0]?.standing ?? null) : null,
     });
   }
   out.sort((a, b) => order[a.placement] - order[b.placement]);
@@ -657,14 +729,16 @@ function buildReturningFormerChampions(champions: ChampionEntry[], field: FieldI
       display: string;
       team: string | null;
       players: PreviewPlayerRef[];
+      status: 'intact' | 'partial' | 'split';
+      currentEntries: CurrentPairEntry[];
       standing: EntryStanding | null;
     }
   >();
   for (const c of champions) {
     if (c.year >= year - 1) continue; // 前回王者・当年は除外
     if (!c.display) continue;
-    const { status, players } = returningOf(c, field);
-    if (status === 'absent') continue;
+    const fate = resolvePairFate(c, field);
+    if (fate.status === 'absent') continue;
     const key = teamMatchKey(c) ?? c.display;
     const cur = byKey.get(key);
     if (cur) {
@@ -674,9 +748,11 @@ function buildReturningFormerChampions(champions: ChampionEntry[], field: FieldI
         years: [c.year],
         display: cleanDisplay(c.display),
         team: teamDisplayOf(c),
-        players,
+        players: fate.prevPlayers,
+        status: fate.status,
+        currentEntries: fate.currentEntries,
         // 途中経過は「人物」基準なので最新年（最初に出会う要素）の解決で十分
-        standing: currentStandingOf(c, field),
+        standing: fate.status === 'intact' ? (fate.currentEntries[0]?.standing ?? null) : null,
       });
     }
   }
@@ -686,6 +762,8 @@ function buildReturningFormerChampions(champions: ChampionEntry[], field: FieldI
       display: v.display,
       team: v.team,
       players: v.players,
+      status: v.status,
+      currentEntries: v.currentEntries,
       standing: v.standing,
     }))
     .sort((a, b) => b.years[0] - a.years[0]);
@@ -932,28 +1010,63 @@ function buildPickPlayers(
 ): PickPlayerCard[] {
   const cards: PickPlayerCard[] = [];
 
+  // 前回主役の選手名（ペア表示用）。ペア解消時の注記に使う。
+  const prevNamesOf = (players: PreviewPlayerRef[]) => players.map((pl) => pl.name).join('・');
+
   returningPlacers.forEach((p, i) => {
-    cards.push({
-      id: `placer-${i}`,
-      players: p.intact ? p.players : p.players.filter((pl) => pl.returning),
-      display: p.display,
-      team: p.team,
-      perPlayerTeam: p.intact && !p.team,
-      achievement: `前回${p.placement}`,
-      standing: p.standing,
-    });
+    if (p.status === 'intact') {
+      // ペア/校がそのまま継続: 前回主役をそのまま主役にする。
+      cards.push({
+        id: `placer-${i}`,
+        players: p.players,
+        display: p.display,
+        team: p.team,
+        perPlayerTeam: !p.team,
+        achievements: [`前回${p.placement}`],
+        standing: p.standing,
+      });
+    } else {
+      // partial/split: 今大会の実在ペアを主役にし、結果バッジをそこへ紐付ける（案A）。
+      // 前回ペアと解消の事実は実績行へ（案C）。split は今大会ペアごとに 1 枚。
+      p.currentEntries.forEach((ce, j) => {
+        cards.push({
+          id: `placer-${i}-${j}`,
+          players: ce.players,
+          display: prevNamesOf(ce.players),
+          team: ce.team,
+          perPlayerTeam: !ce.team,
+          achievements: [`前回${p.placement}：${prevNamesOf(p.players)}（ペア解消）`],
+          standing: ce.standing,
+        });
+      });
+    }
   });
 
   returningFormerChampions.forEach((f, i) => {
-    cards.push({
-      id: `former-${i}`,
-      players: f.players,
-      display: f.display,
-      team: f.team,
-      perPlayerTeam: !f.team,
-      achievement: `${f.years.join('・')}年優勝`,
-      standing: f.standing,
-    });
+    const yearsLabel = `${f.years.join('・')}年優勝`;
+    if (f.status === 'intact') {
+      cards.push({
+        id: `former-${i}`,
+        players: f.players,
+        display: f.display,
+        team: f.team,
+        perPlayerTeam: !f.team,
+        achievements: [yearsLabel],
+        standing: f.standing,
+      });
+    } else {
+      f.currentEntries.forEach((ce, j) => {
+        cards.push({
+          id: `former-${i}-${j}`,
+          players: ce.players,
+          display: prevNamesOf(ce.players),
+          team: ce.team,
+          perPlayerTeam: !ce.team,
+          achievements: [`${yearsLabel}：${prevNamesOf(f.players)}（ペア解消）`],
+          standing: ce.standing,
+        });
+      });
+    }
   });
 
   recentAchievers.forEach((a, i) => {
@@ -963,12 +1076,36 @@ function buildPickPlayers(
       display: a.player.name,
       team: null,
       perPlayerTeam: false,
-      achievement: `${a.tournamentLabel}${a.year} ${a.categoryLabel} ${a.placement}`,
+      achievements: [`${a.tournamentLabel}${a.year} ${a.categoryLabel} ${a.placement}`],
       standing: a.standing,
     });
   });
 
-  return cards.sort((a, b) => standingSortRank(a.standing) - standingSortRank(b.standing));
+  // 同一の「今大会ペア」が複数の前回主役由来で重複することがある。
+  // 例: 前回準優勝ペア(内本・内田)と前回ベスト4ペア(矢野・上松)がともに分割し、内本と上松が
+  // 今大会に同じペアを組む → 内本由来と上松由来で「内本・上松」カードが2枚出る。
+  // 今大会ペア（選手名の集合）単位で 1 枚にまとめ、複数の実績理由は achievements の複数行として保持する
+  // （UI で 1 行ずつ表示する）。
+  const merged = new Map<string, PickPlayerCard>();
+  for (const card of cards) {
+    const key =
+      card.players.length > 0
+        ? card.players
+            .map((p) => normPart(p.name))
+            .sort()
+            .join('|')
+        : normPart(card.display);
+    const cur = merged.get(key);
+    if (!cur) {
+      merged.set(key, { ...card, achievements: [...card.achievements] });
+      continue;
+    }
+    for (const a of card.achievements) if (!cur.achievements.includes(a)) cur.achievements.push(a);
+    // 通常は同じペアなので standing も同一だが、念のためより上位（見たい順）を採用する。
+    if (standingSortRank(card.standing) < standingSortRank(cur.standing)) cur.standing = card.standing;
+  }
+
+  return Array.from(merged.values()).sort((a, b) => standingSortRank(a.standing) - standingSortRank(b.standing));
 }
 
 function buildCategoryBlock(
@@ -1011,9 +1148,14 @@ function buildCategoryBlock(
     returningFormerChampions = buildReturningFormerChampions(hw.champions, field, year);
     // 直近大会の好成績者は、上記ブロックで既出の選手を除いてピックアップする
     const alreadyShownNames = new Set<string>();
-    for (const p of titleDefense?.players ?? []) alreadyShownNames.add(normPart(p.name));
-    for (const rp of returningPlacers) for (const p of rp.players) alreadyShownNames.add(normPart(p.name));
-    for (const rf of returningFormerChampions) for (const p of rf.players) alreadyShownNames.add(normPart(p.name));
+    // 前回主役に加え、ペア解消後の今大会ペア（新パートナー含む）も既出として重複排除する。
+    const addPrevAndCurrent = (players: PreviewPlayerRef[], currentEntries: CurrentPairEntry[]) => {
+      for (const p of players) alreadyShownNames.add(normPart(p.name));
+      for (const ce of currentEntries) for (const p of ce.players) alreadyShownNames.add(normPart(p.name));
+    };
+    if (titleDefense) addPrevAndCurrent(titleDefense.players, titleDefense.currentEntries);
+    for (const rp of returningPlacers) addPrevAndCurrent(rp.players, rp.currentEntries);
+    for (const rf of returningFormerChampions) addPrevAndCurrent(rf.players, rf.currentEntries);
     recentAchievers = buildRecentAchievers(field, recentIndex, alreadyShownNames);
     fieldOverview = buildFieldOverview(field);
   }
