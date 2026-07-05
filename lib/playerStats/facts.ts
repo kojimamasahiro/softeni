@@ -7,6 +7,7 @@
 import crypto from 'crypto';
 
 import { Identity, playerKey, resolveNumericId } from './identity';
+import { participantMatchesAliasedId, resolveAliasedPlayerId, resolveAliasedTeam } from './participantAliases';
 import { isFinalRound, isSemifinalRound, normalizeRoundOrder, parseCategoryId, resolvePlacement } from './placement';
 import { RawEntry, RawParticipant, SourceAdapter, StandardDetail } from './sourceAdapter';
 import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFact, ReverseIndex } from './types';
@@ -15,17 +16,29 @@ import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFac
 // RankingPoint.gender 追加）。バージョンを上げ全再計算で旧形式の順位表を一掃する。
 export const ENGINE_VERSION = '1.1.0';
 
-function personRefFromParticipant(identity: Identity, p: RawParticipant | undefined, fallbackId?: string): PersonRef {
+function personRefFromParticipant(
+  identity: Identity,
+  p: RawParticipant | undefined,
+  fallbackId?: string,
+  aliasCtx?: { tournamentId: string; year: number | string },
+): PersonRef {
   if (!p) {
     const name = fallbackId ?? '';
     return { id: null, key: playerKey(name), name, team: null };
   }
-  const name = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
+  const rawName = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
+  const id =
+    resolveNumericId(identity, p.lastName, p.firstName) ??
+    (aliasCtx ? resolveAliasedPlayerId(aliasCtx.tournamentId, aliasCtx.year, p.lastName, p.firstName) : null);
+  // ローマ字参加者が対応表で解決できた場合、表示名は既存の漢字表記（identity.byId）を優先する。
+  const idInfo = id != null ? identity.byId.get(id) : undefined;
+  const name = idInfo ? `${idInfo.lastName}${idInfo.firstName}` : rawName;
+  const team = (aliasCtx ? resolveAliasedTeam(aliasCtx.tournamentId, aliasCtx.year, p.lastName, p.firstName) : null) ?? p.team ?? null;
   return {
-    id: resolveNumericId(identity, p.lastName, p.firstName),
-    key: playerKey(name || p.id, p.team),
+    id,
+    key: playerKey(name || p.id, team ?? undefined),
     name: name || p.id,
-    team: p.team ?? null,
+    team,
   };
 }
 
@@ -60,7 +73,10 @@ function factsFromCategory(
 
   // 自分の participant（team 解決用。最初の一致）
   const selfParticipant = detail.participants.find((p) => matchingSet.has(p.id));
-  const selfTeam = selfParticipant?.team ?? null;
+  const selfTeam =
+    (selfParticipant ? resolveAliasedTeam(ctx.tournamentId, ctx.year, selfParticipant.lastName, selfParticipant.firstName) : null) ??
+    selfParticipant?.team ??
+    null;
 
   // ---- matches ----
   for (const m of detail.matches) {
@@ -92,11 +108,13 @@ function factsFromCategory(
     if (selfEntry && selfEntry.playerIds.length > 1) {
       const partnerId = selfEntry.playerIds.find((id) => !matchingSet.has(id));
       if (partnerId) {
-        partner = personRefFromParticipant(identity, participantById.get(partnerId), partnerId);
+        partner = personRefFromParticipant(identity, participantById.get(partnerId), partnerId, { tournamentId: ctx.tournamentId, year: ctx.year });
       }
     }
 
-    const opponents: PersonRef[] = (oppEntry?.playerIds ?? []).map((id) => personRefFromParticipant(identity, participantById.get(id), id));
+    const opponents: PersonRef[] = (oppEntry?.playerIds ?? []).map((id) =>
+      personRefFromParticipant(identity, participantById.get(id), id, { tournamentId: ctx.tournamentId, year: ctx.year }),
+    );
 
     const stage: 'knockout' | 'roundrobin' = m.stage === 'roundrobin' ? 'roundrobin' : 'knockout';
 
@@ -158,7 +176,7 @@ function factsFromCategory(
     if (entry.playerIds.length > 1) {
       const partnerId = entry.playerIds.find((id) => !matchingSet.has(id));
       if (partnerId) {
-        partner = personRefFromParticipant(identity, participantById.get(partnerId), partnerId);
+        partner = personRefFromParticipant(identity, participantById.get(partnerId), partnerId, { tournamentId: ctx.tournamentId, year: ctx.year });
       }
     }
 
@@ -216,7 +234,13 @@ export function buildFacts(playerId: number, adapter: SourceAdapter, identity: I
     const detail = adapter.readStandardDetail(tournamentId, yearStr, categoryId);
     if (!detail || !idInfo) continue;
 
-    const matchingIds = detail.participants.filter((p) => p.lastName === idInfo.lastName && p.firstName === idInfo.firstName).map((p) => p.id);
+    const matchingIds = detail.participants
+      .filter(
+        (p) =>
+          (p.lastName === idInfo.lastName && p.firstName === idInfo.firstName) ||
+          participantMatchesAliasedId(tournamentId, yearStr, p.lastName, p.firstName, playerId),
+      )
+      .map((p) => p.id);
     if (matchingIds.length === 0) continue;
 
     const meta = adapter.metaFor(tournamentId);

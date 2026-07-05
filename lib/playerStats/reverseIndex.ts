@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { Identity, resolveNumericId } from './identity';
+import { resolveAliasedPlayerId } from './participantAliases';
 import { SourceAdapter } from './sourceAdapter';
 import type { ReverseIndex } from './types';
 
@@ -21,7 +22,7 @@ export function buildReverseIndex(adapter: SourceAdapter, identity: Identity): R
     const key = `${tournamentId}/${year}/${categoryId}`;
     const seen = new Set<number>();
     for (const p of detail.participants) {
-      const id = resolveNumericId(identity, p.lastName, p.firstName);
+      const id = resolveNumericId(identity, p.lastName, p.firstName) ?? resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName);
       if (id == null || seen.has(id)) continue;
       seen.add(id);
       let set = byId.get(id);
@@ -69,7 +70,7 @@ export function applyReverseIndexDelta(index: ReverseIndex, adapter: SourceAdapt
     const detail = adapter.readStandardDetail(tournamentId, year, categoryId);
     if (detail) {
       for (const p of detail.participants) {
-        const id = resolveNumericId(identity, p.lastName, p.firstName);
+        const id = resolveNumericId(identity, p.lastName, p.firstName) ?? resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName);
         if (id != null) newMembers.add(id);
       }
     }

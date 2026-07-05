@@ -135,6 +135,10 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
   同姓同名の別人物は 1 id に融合しうる。対象者が少なく実害が限定的なので**当面は融合を許容**する（人物別 id 払い出しは保留）。
   緩和のみ実装: H2H/ペアは `playerKey`（名前@所属）で分離、同一カテゴリ内 self-vs-self 試合は `facts.ts` でスキップ、
   `homonyms.json` 登録名は `identity.homonymRisk` で警告。詳細・再検討条件は [open-questions.md](./open-questions.md)。
+- **国際大会のローマ字参加者（2026-07 追加）**: `resolveNumericId` は姓名の完全一致のみのため、ローマ字表記のみの
+  国際大会参加者（コリアカップ等）は解決できない。手動対応表 `data/tournaments/participant-aliases.json` を
+  フォールバックとして `reverseIndex` / `facts` / `legacyAnalysis` / 結果ページの `getStaticProps` に配線した。
+  詳細は [data-import.md](./data-import.md)「国際大会（ローマ字表記のみの参加者）の選手同定」。
 - **ランキング（2026-07-02 修正）**: 年度別順位表の `playerKey` は「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
   同ポイントは標準競技順位（1224 方式・同点同順位）。**男女別に分離**（2026-07-02。混合順位表は競技慣行に合わないため。
   出力は `rankings/{year}-{discipline}-{gender}.json`、`RankingPoint.gender` 追加、`engineVersion` 1.1.0 へ）。

@@ -8,6 +8,7 @@
 // 対象の最新大会のみ detail を読んで組み立てる（旧 generate-player-analysis.mjs と同一ロジック）。
 
 import { calculateRate } from './aggregators/util';
+import { participantMatchesAliasedId } from './participantAliases';
 import { SourceAdapter } from './sourceAdapter';
 import type { PlayerFacts, PlayerMatchFact } from './types';
 
@@ -103,10 +104,13 @@ function resolveFinalResult(
   categoryId: string,
   lastName: string,
   firstName: string,
+  playerId: number,
 ): string | null {
   const detail = adapter.readStandardDetail(tournamentId, year, categoryId);
   if (!detail) return null;
-  const matchingIds = detail.participants.filter((p) => p.lastName === lastName && p.firstName === firstName).map((p) => p.id);
+  const matchingIds = detail.participants
+    .filter((p) => (p.lastName === lastName && p.firstName === firstName) || participantMatchesAliasedId(tournamentId, year, p.lastName, p.firstName, playerId))
+    .map((p) => p.id);
   if (matchingIds.length === 0) return null;
   const targetEntryNos = detail.entries.filter((e) => e.playerIds.some((id) => matchingIds.includes(id))).map((e) => e.entryNo);
 
@@ -210,7 +214,7 @@ export function buildLegacyAnalysis(facts: PlayerFacts, adapter: SourceAdapter, 
         partnerId = pid;
       }
     }
-    const finalResult = resolveFinalResult(adapter, latest.tid, latest.year, latest.categoryId, lastName, firstName);
+    const finalResult = resolveFinalResult(adapter, latest.tid, latest.year, latest.categoryId, lastName, firstName, facts.playerId);
     analysis.latestMatch = {
       tournament: latest.name ?? '',
       date: formatDateRange(latest.startDate, latest.endDate, latest.year),

@@ -1,27 +1,41 @@
 {
-  "totalMatches": 148,
-  "wins": 119,
-  "losses": 27,
+  "totalMatches": 163,
+  "wins": 131,
+  "losses": 31,
   "totalWinRate": 0.804,
   "games": {
-    "total": 818,
-    "won": 573,
-    "lost": 245,
-    "gameRate": 0.7
+    "total": 912,
+    "won": 635,
+    "lost": 277,
+    "gameRate": 0.696
   },
   "byPartner": {
-    "16": {
+    "6": {
       "matches": {
-        "total": 33,
-        "wins": 29,
-        "losses": 3,
-        "winRate": 0.879
+        "total": 6,
+        "wins": 4,
+        "losses": 2,
+        "winRate": 0.667
       },
       "games": {
-        "total": 181,
-        "won": 135,
-        "lost": 46,
-        "gameRate": 0.746
+        "total": 43,
+        "won": 25,
+        "lost": 18,
+        "gameRate": 0.581
+      }
+    },
+    "16": {
+      "matches": {
+        "total": 35,
+        "wins": 31,
+        "losses": 4,
+        "winRate": 0.886
+      },
+      "games": {
+        "total": 196,
+        "won": 146,
+        "lost": 50,
+        "gameRate": 0.745
       }
     },
     "19": {
@@ -124,16 +138,16 @@
     },
     "singles": {
       "matches": {
-        "total": 48,
-        "wins": 39,
-        "losses": 8,
-        "winRate": 0.812
+        "total": 55,
+        "wins": 45,
+        "losses": 9,
+        "winRate": 0.818
       },
       "games": {
-        "total": 240,
-        "won": 171,
-        "lost": 69,
-        "gameRate": 0.712
+        "total": 276,
+        "won": 197,
+        "lost": 79,
+        "gameRate": 0.714
       }
     }
   },
@@ -196,16 +210,16 @@
     },
     "2026": {
       "matches": {
-        "total": 15,
-        "wins": 11,
-        "losses": 3,
-        "winRate": 0.733
+        "total": 30,
+        "wins": 23,
+        "losses": 7,
+        "winRate": 0.767
       },
       "games": {
-        "total": 72,
-        "won": 52,
-        "lost": 20,
-        "gameRate": 0.722
+        "total": 166,
+        "won": 114,
+        "lost": 52,
+        "gameRate": 0.687
       }
     }
   },
@@ -214,7 +228,7 @@
     "date": "2026年7月4日〜2026年7月5日",
     "location": "徳島県",
     "partner": 16,
-    "result": "5回戦進出",
+    "result": "ベスト4",
     "link": "https://www.soft-tennis.com/tokushima/"
   }
 }

@@ -1,0 +1,80 @@
+{
+  "description": "国際大会（ローマ字表記のみのエントリーデータ）の参加者と、既存の選手データ(data/players/index.json の数値id)を紐付けるための手動対応表。joinキーはslug(curated専用・約22名しか存在しない)ではなく、全選手が持つ数値playerIdを使う。これはresolvePlayerId系のロジックやanalysis.json、/players/{id}/results/ が共通して使っているキーであり、この対応表単体で表示リンクと成績集計の両方に使い回せるため。ローマ字→漢字の自動変換は同一読みに複数の漢字候補がありうるため行わず、curated プロフィールの氏名(index.json照合で一意に決まったもの)と参加者名(lastName+firstName)が完全一致した場合のみ収録する。tournamentId 単位でグループ化し、複数の国際大会・年度をまたいで追記していく想定。",
+  "tournaments": [
+    {
+      "tournamentId": "international-korea-cup",
+      "years": [
+        {
+          "year": 2026,
+          "aliases": [
+            { "lastName": "UCHIMOTO", "firstName": "TAKAFUMI", "playerId": 17, "playerSlug": "uchimoto-takafumi", "team": "NTT西日本" },
+            { "lastName": "UEMATSU", "firstName": "TOSHIKI", "playerId": 19, "playerSlug": "uematsu-toshiki", "team": "NTT西日本" },
+            { "lastName": "MARUYAMA", "firstName": "KAITO", "playerId": 12, "playerSlug": "maruyama-kaito", "team": "one team" },
+            { "lastName": "KUROSAKA", "firstName": "TAKUYA", "playerId": 10, "playerSlug": "kurosaka-takuya", "team": "日本体育大学" },
+            { "lastName": "NAGAE", "firstName": "KOICHI", "playerId": 14, "playerSlug": "nagae-koichi", "team": "NTT西日本" },
+            { "lastName": "FUNEMIZU", "firstName": "HAYATO", "playerId": 3, "playerSlug": "funemizu-hayato", "team": "One" },
+            { "lastName": "HIROOKA", "firstName": "SORA", "playerId": 6, "playerSlug": "hirooka-sora", "team": "NTT西日本" },
+            { "lastName": "MOTOKURA", "firstName": "KENTARO", "playerId": 13, "playerSlug": "motokura-kentaro", "team": "NTT西日本" },
+            { "lastName": "UCHIDA", "firstName": "RIKU", "playerId": 16, "playerSlug": "uchida-riku", "team": "NTT西日本" },
+            { "lastName": "YANO", "firstName": "SOUTO", "playerId": 21, "playerSlug": "yano-soto", "team": "NTT西日本" },
+            { "lastName": "HASHIBA", "firstName": "KAGURA", "playerId": 525 },
+            { "lastName": "HATSUSHIKA", "firstName": "TOKIYA", "playerId": 88 },
+            { "lastName": "HAYASHI", "firstName": "YUTARO", "playerId": 473 },
+            { "lastName": "IWAKURA", "firstName": "AYAKA", "playerId": 34 },
+            { "lastName": "MAEDA", "firstName": "RIO", "playerId": 125 },
+            { "lastName": "MIYAMAE", "firstName": "KIHO", "playerId": 44 },
+            { "lastName": "NAKATANI", "firstName": "SAKURA", "playerId": 151 },
+            { "lastName": "NEGISHI", "firstName": "REMON", "playerId": 67 },
+            { "lastName": "OZAKI", "firstName": "SERINA", "playerId": 908 },
+            { "lastName": "TEMMA", "firstName": "RENA", "playerId": 164 },
+            { "lastName": "TENMA", "firstName": "MIKA", "playerId": 163 },
+            { "lastName": "TAKAHASHI", "firstName": "HIKARU", "playerId": 60 },
+            { "lastName": "TAKAHASHI", "firstName": "KIZUNA", "playerId": 61 }
+          ],
+          "unresolved": [
+            { "lastName": "ABE", "firstName": "HINATA", "team": "JPN-7" },
+            { "lastName": "AKIBA", "firstName": "HARUKA", "team": "JPN-3" },
+            { "lastName": "ARAKAWA", "firstName": "YUKI", "team": "JPN-5" },
+            { "lastName": "ASAMI", "firstName": "KYOKO", "team": "JPN-4" },
+            { "lastName": "AZAMI", "firstName": "SHUNICHIRO", "team": "JPN-7" },
+            { "lastName": "CHAKI", "firstName": "MASATAKA", "team": "JPN-8" },
+            { "lastName": "CHIDA", "firstName": "NATSUKI", "team": "JPN-7" },
+            { "lastName": "HAMAGUCHI", "firstName": "MEIKA", "team": "JPN-7" },
+            { "lastName": "HAMASHIMA", "firstName": "REINA", "team": "JPN-6" },
+            { "lastName": "HARA", "firstName": "CHIHARU", "team": "JPN-4" },
+            { "lastName": "HARADA", "firstName": "MIYU", "team": "JPN-5" },
+            { "lastName": "HAYATO", "firstName": "OGATA", "team": "JPN-10" },
+            { "lastName": "HOSODA", "firstName": "MIHO", "team": "JPN-7" },
+            { "lastName": "ICHINOSE", "firstName": "TEPEI", "team": "JPN-5" },
+            { "lastName": "KENSAKU", "firstName": "YODA", "team": "JPN-10" },
+            { "lastName": "KOSHIBA", "firstName": "YUKI", "team": "JPN-5" },
+            { "lastName": "KOTO", "firstName": "HIMARI", "team": "JPN-5" },
+            { "lastName": "KOTOU", "firstName": "RIKO", "team": "JPN-6" },
+            { "lastName": "MATAE", "firstName": "RIN", "team": "JPN-3" },
+            { "lastName": "MATSUOKA", "firstName": "KOTOMI", "team": "JPN-8" },
+            { "lastName": "MUKAIYAMA", "firstName": "SERA", "team": "JPN-8" },
+            { "lastName": "NAKAO", "firstName": "GENTO", "team": "JPN-7" },
+            { "lastName": "NAKASHIMA", "firstName": "MAIKO", "team": "JPN-6" },
+            { "lastName": "NARUSHIMA", "firstName": "AYUMU", "team": "JPN-5" },
+            { "lastName": "NASU", "firstName": "AKIHO", "team": "JPN-4" },
+            { "lastName": "NIIYAMA", "firstName": "CHIHARU", "team": "JPN-7" },
+            { "lastName": "SAKAMOTO", "firstName": "MARINO", "team": "JPN-4" },
+            { "lastName": "SATO", "firstName": "SARA", "team": "JPN-7" },
+            { "lastName": "SATO", "firstName": "SYUNSUKE", "team": "JPN-7" },
+            { "lastName": "SETOGUCHI", "firstName": "KOKORO", "team": "JPN-4" },
+            { "lastName": "SHIMAZU", "firstName": "TOGO", "team": "JPN-5" },
+            { "lastName": "SHOJI", "firstName": "KOTORI", "team": "JPN-4" },
+            { "lastName": "SUZUKI", "firstName": "KANAU", "team": "JPN-6" },
+            { "lastName": "SUZUKI", "firstName": "KOKONA", "team": "JPN-5" },
+            { "lastName": "TOMINAGA", "firstName": "HARU", "team": "JPN-5" },
+            { "lastName": "TOYAMA", "firstName": "HINATO", "team": "JPN-8" },
+            { "lastName": "WAKAMIYA", "firstName": "HIROTO", "team": "JPN-5" },
+            { "lastName": "YAMASHITA", "firstName": "TOWA", "team": "JPN-8" },
+            { "lastName": "YOSHIKI", "firstName": "RISA", "team": "JPN-8" },
+            { "lastName": "YOSHINO", "firstName": "MAMI", "team": "JPN-5" }
+          ]
+        }
+      ]
+    }
+  ]
+}

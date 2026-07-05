@@ -167,6 +167,27 @@ Deprecated:
 - 自動変換済みだが推定を含むもの（巻き戻さない方針）: `伊勢県`→`三重県`、`沖県`→`沖縄県`、`熊`→`熊本県`
 - 既知の残課題（本ルールとは別の学校名揺れ）: `entries[].playerIds` の一部に participant id と不一致の参照が残る（`田端_一葵_和歌山`＝参加者は `…_印南ジュニアクラブ`、`房野_紗千_四天王寺高`＝参加者は `…_四天王寺高校`）。これは都道府県ではなくチーム名・氏名の表記差に起因する既存の参照切れで、別途対応
 
+### 国際大会（ローマ字表記のみの参加者）の選手同定（2026-07 追加）
+
+課題:
+
+- コリアカップ等の国際大会は `data/tournaments/details/international-korea-cup/**` の `participants[].lastName/firstName` がローマ字表記のみで登録される。日本選手も例外ではなく、`team` も所属先ではなく `JPN-1`〜`JPN-10` のような代表内の仮ラベルになっている
+- 選手同定は姓名の完全一致（`resolveNumericId` / 各所の `p.lastName === ... && p.firstName === ...`）に依存しているため、ローマ字参加者は既存の漢字選手データ（`data/players/index.json` の数値 id、curated プロフィール）と一切紐付かない。結果として、既に curated プロフィールを持つ有名選手であっても、国際大会の成績が本人の `analysis.json` に反映されず、結果ページでも本人の他大会成績ページへリンクされない
+- ローマ字→漢字の自動変換は行わない。同一読みに複数の漢字候補があり得るうえ、同姓同名の別人物と誤結合するリスクがある（`docs/wiki/open-questions.md`「同姓同名の人物別 id 分離」と同種のリスク）
+
+対応:
+
+- 手動対応表 `data/tournaments/participant-aliases.json` を新設。`tournaments[].years[].aliases[]` に `{ lastName, firstName, playerId, team? }` を持つ（`team` は代表内仮ラベルではなく実所属。無ければ元の `team` をそのまま使う）。curated プロフィールの slug と参加者名が完全一致した場合のみ確度100%で収録し、未解決の参加者は `unresolved[]` に残して後日追記する
+- 読み込みは `lib/playerStats/participantAliases.ts`（`resolveAliasedPlayerId` / `resolveAliasedTeam` / `participantMatchesAliasedId`）に集約。大会・年度・姓名のスコープで引く
+- 参照箇所（フォールバックとして追加。既存の姓名完全一致ロジックは変更しない）:
+  - `lib/playerStats/reverseIndex.ts`: `buildReverseIndex` / `applyReverseIndexDelta` の選手→出場カテゴリ逆引き
+  - `lib/playerStats/facts.ts`: `buildFacts` の対象選手 participant 特定（`matchingIds`）、`personRefFromParticipant` の対戦相手・パートナー解決（id・表示名・所属）
+  - `lib/playerStats/legacyAnalysis.ts`: `resolveFinalResult`（`analysis.json` の `latestMatch` ラベル）
+  - `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx` の `getStaticProps`: 結果ページ・ドローの表示（`playerId` 解決時に `lastName`/`firstName`/`team` を対応表の漢字名・実所属へ差し替え、`/players/{id}/results/` へのリンクも既存の仕組みでそのまま張られる）
+- 運用: 対応表を更新（追記）した後は `npm run playerstats:facts -- --full` 相当のフル再計算が必要。増分ビルドの diff 対象はトーナメント detail ファイルの変更検知であり、`participant-aliases.json` 自体の変更は検知しないため
+- 状態: **対策済（コリアカップ2026・9名）／残 54 名は unresolved**。連盟発表等で漢字が判明した選手から `aliases` に追記していく
+- 実装: `data/tournaments/participant-aliases.json`、`lib/playerStats/participantAliases.ts`
+
 ## 地方大会候補検知
 
 ### `scripts/crawl-local-tournaments.mjs`

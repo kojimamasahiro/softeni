@@ -17,6 +17,7 @@ import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import PageLayout from '@/components/PageLayout';
 import { getChampionDefeat, getChampionMilestones } from '@/lib/milestones';
+import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
@@ -477,6 +478,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
   const playerIndexMap = new Map<string, number>();
+  const playerIdToNameMap = new Map<number, { lastName: string; firstName: string }>();
   if (fs.existsSync(playersIndexPath)) {
     try {
       const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
@@ -486,6 +488,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
         count: number;
       }>;
       for (const p of playersIndex) {
+        if (!playerIdToNameMap.has(p.id)) {
+          playerIdToNameMap.set(p.id, { lastName: p.lastName, firstName: p.firstName });
+        }
         if (p.count < 5) continue;
 
         const key = `${p.lastName}::${p.firstName}`;
@@ -548,7 +553,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
         for (const p of detailData.participants) {
           if (p.lastName && p.firstName) {
             const key = `${p.lastName}::${p.firstName}`;
-            const pid = playerIndexMap.get(key);
+            let pid = playerIndexMap.get(key);
+            // 国際大会などローマ字表記のみの参加者は姓名の完全一致では解決できないため、
+            // 大会・年度スコープの手動対応表(data/tournaments/participant-aliases.json)を試す。
+            // 解決できた場合は表示も対応表の実在情報（漢字名・実所属）に差し替える。
+            if (pid === undefined) {
+              const aliasedId = resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName);
+              if (aliasedId !== null) {
+                const realTeam = resolveAliasedTeam(tournamentId, year, p.lastName, p.firstName);
+                const kanjiName = playerIdToNameMap.get(aliasedId);
+                pid = aliasedId;
+                if (kanjiName) {
+                  p.lastName = kanjiName.lastName;
+                  p.firstName = kanjiName.firstName;
+                }
+                if (realTeam) {
+                  p.team = realTeam;
+                }
+              }
+            }
             if (pid !== undefined) {
               p.playerId = pid;
             }
