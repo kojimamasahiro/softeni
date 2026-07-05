@@ -415,9 +415,8 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedEntry]);
 
-  // 個人戦で結果ページを持つ選手（playerId あり）のみタップ可能にする。
-  // タップすると、その大会の対戦詳細をモーダルで表示する
-  // （対戦がない＝シード等の場合は選手結果ページへ遷移する）。
+  // 対戦がある場合は、選手結果ページの有無に関わらずタップで対戦詳細モーダルを表示する。
+  // 対戦がない（シード等）場合のみ、選手結果ページ（playerId あり）へのリンクにフォールバックする。
   const renderPlayerName = (
     player: TournamentParticipant | null | undefined,
     text: string,
@@ -425,25 +424,25 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
     roundName: string,
     entryNo: number,
   ): ReactNode => {
-    if (!player?.playerId || !player.lastName) {
-      return text;
+    if (match) {
+      return (
+        <button
+          type="button"
+          onClick={() => setSelectedEntry({ entryNo, roundName })}
+          className="w-full truncate text-left text-inherit hover:underline underline-offset-2 decoration-dotted"
+        >
+          {text}
+        </button>
+      );
     }
-    if (!match) {
+    if (player?.playerId && player.lastName) {
       return (
         <Link href={`/players/${player.playerId}/results`} className="text-inherit hover:underline underline-offset-2 decoration-dotted">
           {text}
         </Link>
       );
     }
-    return (
-      <button
-        type="button"
-        onClick={() => setSelectedEntry({ entryNo, roundName })}
-        className="w-full truncate text-left text-inherit hover:underline underline-offset-2 decoration-dotted"
-      >
-        {text}
-      </button>
-    );
+    return text;
   };
 
   const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(() => buildBracket(matches), [matches]);
