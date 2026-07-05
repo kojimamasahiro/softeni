@@ -49,7 +49,7 @@ export function aggregateMilestones(facts: PlayerFacts): MilestoneEvent[] {
     }
 
     if (runLen >= 2) {
-      const streakLabel = runLen >= 3 ? `${runLen}連覇` : '連覇（2連覇）';
+      const streakLabel = `${runLen}連覇`;
       const shortLabel = `${cat}${streakLabel}（${since}年〜）`;
       events.push({
         kind: 'repeat-title',

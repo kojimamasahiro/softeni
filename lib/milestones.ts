@@ -58,6 +58,13 @@ export type MilestoneEvent = {
    * 大会名など別の文脈を前置したい呼び出し側（選手ページ等）が使う。
    */
   shortLabel: string;
+  /**
+   * 大会結果ページ用のラベル（例:「船水颯人 2連覇（2025年〜）」）。
+   * そのページ自体が既に種目・性別（例:「女子ダブルス」）を見出しで示しているため、
+   * label/shortLabel と異なり種目名を前置しない。バッジの種別タグ（連覇/初優勝など）
+   * と重複しないよう、language もタグに頼れる範囲は簡潔にする。
+   */
+  resultLabel: string;
   /** scope-limited のとき描画側で添える注記 */
   scopeNote?: string;
 };
@@ -160,7 +167,7 @@ function buildIndividualMilestones(
     // --- repeat-title（連覇）: 本人の連続優勝（confirmed） ---
     const streak = computePlayerStreak(block.champions, targetYear, key);
     if (streak) {
-      const streakLabel = streak.streak >= 3 ? `${streak.streak}連覇` : '連覇（2連覇）';
+      const streakLabel = `${streak.streak}連覇`;
       const shortLabel = `${cat}${streakLabel}（${streak.since}年〜）`;
       events.push({
         kind: 'repeat-title',
@@ -172,6 +179,7 @@ function buildIndividualMilestones(
         confidence: 'confirmed',
         label: `${name} ${shortLabel}`,
         shortLabel,
+        resultLabel: `${name} ${streakLabel}（${streak.since}年〜）`,
       });
       return; // 連覇のときは初優勝ではない
     }
@@ -193,6 +201,7 @@ function buildIndividualMilestones(
           confidence: 'scope-limited',
           label: `${name} ${cat}初優勝`,
           shortLabel: `${cat}初優勝`,
+          resultLabel: `${name} 初優勝`,
           scopeNote: SCOPE_NOTE,
         });
       } else {
@@ -209,6 +218,7 @@ function buildIndividualMilestones(
           confidence: 'scope-limited',
           label: `${name} ${shortLabel}`,
           shortLabel,
+          resultLabel: `${name} ${n}回目の優勝`,
           scopeNote: SCOPE_NOTE,
         });
       }
@@ -253,7 +263,7 @@ export function getChampionMilestones(
     // repeat-title（連覇）: Step1 の連覇判定をそのまま使う（confirmed）
     const repeat: RepeatChampion | null = block.edition.repeatChampion;
     if (repeat && repeat.streak >= 2) {
-      const streakLabel = repeat.streak >= 3 ? `${repeat.streak}連覇` : '連覇（2連覇）';
+      const streakLabel = `${repeat.streak}連覇`;
       const shortLabel = `${cat}${streakLabel}（${repeat.since}年〜）`;
       events.push({
         kind: 'repeat-title',
@@ -265,6 +275,7 @@ export function getChampionMilestones(
         confidence: 'confirmed',
         label: `${subject.display} ${shortLabel}`,
         shortLabel,
+        resultLabel: `${subject.display} ${streakLabel}（${repeat.since}年〜）`,
       });
     }
 
@@ -285,6 +296,7 @@ export function getChampionMilestones(
           confidence: 'scope-limited',
           label: `${subject.display} ${cat}初優勝`,
           shortLabel: `${cat}初優勝`,
+          resultLabel: `${subject.display} 初優勝`,
           scopeNote: SCOPE_NOTE,
         });
       } else {
@@ -301,6 +313,7 @@ export function getChampionMilestones(
           confidence: 'scope-limited',
           label: `${subject.display} ${shortLabel}`,
           shortLabel,
+          resultLabel: `${subject.display} ${n}回目の優勝`,
           scopeNote: SCOPE_NOTE,
         });
       }
@@ -403,6 +416,7 @@ export function getChampionDefeat(
     confidence: 'confirmed',
     label: `${subject.display} が${shortLabel}${round ? `（${round}）` : ''}`,
     shortLabel,
+    resultLabel: `${subject.display} が${shortLabel}${round ? `（${round}）` : ''}`,
     scopeNote: DEFEAT_SCOPE_NOTE,
   };
 }

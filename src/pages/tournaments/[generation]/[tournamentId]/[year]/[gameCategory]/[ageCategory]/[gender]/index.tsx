@@ -639,7 +639,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     for (const e of events) {
       contextMilestones.push({
         kind: e.kind,
-        label: e.label,
+        // 大会結果ページは見出しで既に種目・性別を示しているため、種目名を含まない
+        // resultLabel（例:「名前 2連覇（2025年〜）」）を使う。
+        label: e.resultLabel,
         confidence: e.confidence,
         scopeNote: e.scopeNote ?? null,
       });
