@@ -12,9 +12,27 @@
 
 ### AdSense
 
-- `src/pages/_document.tsx` で AdSense スクリプトを全体読込
+- AdSense スクリプトは `src/pages/_app.tsx` で `next/script`（`strategy="lazyOnload"`）により全体読込
+  （2026-07-05 まで `src/pages/_document.tsx` に直接 `<script async>` で配置していたが、下記の理由で移設）
 - `public/ads.txt`
 - `public/app-ads.txt`
+
+#### ハイドレーション不一致（Minified React error #418）との競合（2026-07-05）
+
+`/tournaments/local/` で本番のみ次の2つが連続して発生する事象を確認:
+
+1. `Minified React error #418`（ハイドレーション不一致。React 側がツリーを再生成）
+2. 直後に adsbygoogle 側 `Error: no_div`
+
+原因: Auto ads の script を `_document.tsx` に素の `<script async>` として置いていたため、
+キャッシュが温まっている等の条件でスクリプトの実行が React のハイドレーション完了より
+早くなることがあり、Auto ads が DOM へ広告枠を挿入 → React のハイドレーション対象ツリーと
+不一致 → React が該当ツリーを破棄・再生成 → Auto ads 側が挿入済みの div を見失い `no_div`、
+という連鎖が起きていたと推定（ローカルでの完全な再現は取れていないため Assumption）。
+
+対応: AdSense script を `_app.tsx` で `next/script` の `strategy="lazyOnload"` に変更し、
+ハイドレーション完了後・アイドル時にのみ読み込むようにした。`_document.tsx` からは script
+タグを削除済み。
 
 補足:
 
@@ -84,6 +102,7 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 - AdSense の掲載面と広告ユニット設計
 - アフィリエイトの運用方針
 - `app-ads.txt` の対象アプリと Web 本体の関係
+- 2026-07-05 の `#418`/`no_div` 対応（lazyOnload 化）後、本番で実際に解消したかのモニタリング（ローカルでは非決定的で再現できていない）
 
 ## 補足(2026-07-04)
 

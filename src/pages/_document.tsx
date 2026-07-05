@@ -18,7 +18,13 @@ class MyDocument extends Document {
                 "(function(){try{if(localStorage.getItem('sideNavOpen')==='false'){document.documentElement.classList.add('sidebar-collapsed');}}catch(e){}})();",
             }}
           />
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626448782460921" crossOrigin="anonymous"></script>
+          {/*
+            AdSense (Auto ads) script は next/script (_app.tsx, strategy="lazyOnload") へ移設。
+            ここに async script として直接置くと、React のハイドレーション完了前に
+            Auto ads が DOM へ広告枠を挿入し、ハイドレーション不一致 (Minified React error #418)
+            → 直後に adsbygoogle 側 "Error: no_div" を誘発することがある。
+            (2026-07-05: 本番で発生した #418 / no_div の原因調査より)
+          */}
 
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" />

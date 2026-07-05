@@ -108,6 +108,21 @@ export default function App({ Component, pageProps }: AppProps) {
       </AppShell>
 
       {!hasConsent && <CookieConsent onAccept={handleAccept} onDecline={handleDecline} />}
+
+      {/*
+        AdSense (Auto ads) script。
+        strategy="lazyOnload" でハイドレーション完了後・アイドル時に読み込む。
+        _document.tsx に直接 <script async> で置いていた際、React のハイドレーション
+        完了前に Auto ads が DOM へ広告枠を挿入し、ハイドレーション不一致
+        (Minified React error #418) → adsbygoogle 側 "Error: no_div" を誘発していた
+        (2026-07-05 本番調査)。
+      */}
+      <Script
+        id="adsbygoogle-init"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626448782460921"
+        crossOrigin="anonymous"
+        strategy="lazyOnload"
+      />
     </>
   );
 }
