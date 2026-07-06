@@ -14,6 +14,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import {
   buildNewsArticleView,
+  collectArticleMentions,
   getArticleRecord,
   listPublishedPreviews,
   type EntryStanding,
@@ -240,6 +241,15 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
     { label: title, href: `/news/${record.articleId}/` },
   ];
 
+  // 本文で実名言及している選手（前回王者・注目の選手カード）を JSON-LD の mentions に載せる。
+  // 結果ページを持つ選手のみ url を付ける（存在しない URL を構造化データに書かないため）。
+  const mentionedPlayers = collectArticleMentions(categories);
+  const mentions = mentionedPlayers.map((p) => ({
+    '@type': 'Person',
+    name: p.name,
+    ...(p.playerId != null ? { url: buildSiteUrl(`/players/${p.playerId}/results/`) } : {}),
+  }));
+
   return (
     <>
       <MetaHead
@@ -275,6 +285,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
                 '@type': 'Thing',
                 name: `ソフトテニス ${tournamentLabel}`,
               },
+              ...(mentions.length > 0 ? { mentions } : {}),
               author: {
                 '@type': 'Organization',
                 name: siteConfig.siteName,

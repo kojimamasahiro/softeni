@@ -68,6 +68,13 @@
 
 > **更新（2026-06-27, ADR-010）**: result 記事（A）は廃止。結果・優勝・歴代まとめは大会ハブに集約したため、この順序の result 段階は実施しない。preview（B）と既存ページ差し込みは有効。
 
+## 構造化データ（JSON-LD）
+
+記事ページの `NewsArticle` JSON-LD には、本文が実名言及する選手を `mentions`（`Person[]`）として載せる（2026-07 追加）。
+ソースは `titleDefense.players`（前回王者の連覇/防衛ウォッチ）と `pickPlayers[].players`（注目の選手カード）。
+`lib/newsArticle.ts` の `collectArticleMentions()` が両方から選手を集め、`playerId`（無ければ `name`）で重複排除して返す。
+結果ページ（`/players/{id}/results/`）を持つ選手のみ `url` を付ける。実装: `src/pages/news/[articleId].tsx`。
+
 ## 関連
 
 - アーキテクチャ判断（なぜ文脈ブロックを一次成果物にするか）: [ADR-005](../adr/ADR-005-news-context-block-architecture.md)

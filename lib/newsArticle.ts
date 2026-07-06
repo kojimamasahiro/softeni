@@ -1228,3 +1228,32 @@ export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView
     categories,
   };
 }
+
+/**
+ * 記事本文が実名で言及している選手を、構造化データ（JSON-LD の mentions）用に集約する。
+ * ソース: 各カテゴリブロックの pickPlayers（注目の選手カード）と titleDefense（前回王者の連覇/防衛ウォッチ）。
+ * 同一選手が複数箇所（例: 前回王者かつ注目の選手）に出ることがあるため、playerId（無ければ name）で重複排除する。
+ * 表示順は影響しないため、カテゴリ・出現順のまま返す。
+ */
+export function collectArticleMentions(categories: NewsCategoryBlock[]): PreviewPlayerRef[] {
+  const seen = new Set<string>();
+  const mentions: PreviewPlayerRef[] = [];
+
+  const add = (p: PreviewPlayerRef) => {
+    const key = p.playerId != null ? `id:${p.playerId}` : `name:${p.name}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    mentions.push(p);
+  };
+
+  for (const cat of categories) {
+    if (cat.titleDefense) {
+      for (const p of cat.titleDefense.players) add(p);
+    }
+    for (const card of cat.pickPlayers) {
+      for (const p of card.players) add(p);
+    }
+  }
+
+  return mentions;
+}
