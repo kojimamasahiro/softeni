@@ -60,7 +60,18 @@ for (const f of files) {
   if (!teamRepl.size && !idRepl.length) continue;
   let changed = 0;
   const apply = (needle, repl) => { const parts = text.split(needle); if (parts.length > 1) { changed += parts.length - 1; text = parts.join(repl); } };
-  for (const [o, n] of teamRepl) apply(`"team": "${o}"`, `"team": "${n}"`);
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // "team" とコロンの間・コロンと値の間の空白（半角/全角/改行）はファイルごとに
+  // 圧縮形式（"team":"x"）と整形形式（"team": "x"）が混在するため、区切りを
+  // キャプチャして温存しつつ値だけ置換する（フォーマット崩れによる巨大diffを防ぐ）。
+  const applyTeamField = (o, n) => {
+    const pattern = `("team"\\s*:\\s*)"${escapeRegExp(o)}"`;
+    const count = (text.match(new RegExp(pattern, 'g')) || []).length;
+    if (!count) return;
+    text = text.replace(new RegExp(pattern, 'g'), (_, prefix) => `${prefix}"${n}"`);
+    changed += count;
+  };
+  for (const [o, n] of teamRepl) applyTeamField(o, n);
   for (const { oldId, newId } of idRepl) apply(`"${oldId}"`, `"${newId}"`);
   if (changed) {
     totalFiles++; totalChanges += changed;
