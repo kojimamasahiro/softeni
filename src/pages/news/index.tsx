@@ -42,8 +42,8 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
         ) : (
           <ul className="space-y-2">
             {items.map((it) => (
-              <li key={it.articleId} className="rounded-md border border-gray-200 p-3 dark:border-gray-700">
-                <Link href={`/news/${it.articleId}/`} className="font-semibold text-blue-600 hover:underline dark:text-blue-400">
+              <li key={it.articleId} className="rounded-md border border-border p-3">
+                <Link href={`/news/${it.articleId}/`} className="font-semibold text-primary hover:underline">
                   {it.title}
                 </Link>
               </li>

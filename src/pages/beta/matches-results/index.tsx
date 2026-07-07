@@ -83,8 +83,8 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
         />
         <div>
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">試合結果一覧</h1>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">ポイント詳細記録から、試合結果と分析ページを確認できます。</p>
+            <h1 className="text-2xl font-bold text-text">試合結果一覧</h1>
+            <p className="mt-2 text-sm text-text-secondary">ポイント詳細記録から、試合結果と分析ページを確認できます。</p>
             <div className="mt-4">
               <Link
                 href={getPublicMatchesGrowthPath()}
@@ -94,8 +94,8 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
               </Link>
             </div>
           </div>
-          <div className="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="mt-8 overflow-hidden rounded-lg border border-border bg-surface shadow-sm">
+            <ul className="divide-y divide-border">
               {matches.map((match) => (
                 <li key={match.id} className="relative">
                   <Link
@@ -105,7 +105,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
                   >
                     <div className="relative">
                       <div className="pr-20">
-                        <p className="mb-1 text-lg font-medium text-gray-900 dark:text-gray-100">
+                        <p className="mb-1 text-lg font-medium text-text">
                           {getBetaTeamDisplayName(match, 'A')} vs {getBetaTeamDisplayName(match, 'B')}
                         </p>
 
@@ -124,7 +124,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
                           return null;
                         })()}
 
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                        <div className="text-sm text-text-muted">
                           {match.tournament_name && tournamentInfos[match.tournament_name] ? (
                             tournamentInfos[match.tournament_name].exists ? (
                               (() => {
@@ -132,7 +132,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
                                 const tournamentUrl = generateTournamentUrlFromMatch(match);
                                 return tournamentUrl ? (
                                   <span
-                                    className="cursor-pointer text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                                    className="cursor-pointer text-primary underline hover:text-info"
                                     onClick={(e) => {
                                       e.preventDefault();
                                       e.stopPropagation();
@@ -142,39 +142,29 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
                                     {getTournamentDisplayName(match, tournamentInfo)}
                                   </span>
                                 ) : (
-                                  <span className="text-gray-600 dark:text-gray-300">{getTournamentDisplayName(match, tournamentInfo)}</span>
+                                  <span className="text-text-secondary">{getTournamentDisplayName(match, tournamentInfo)}</span>
                                 );
                               })()
                             ) : (
-                              <span className="text-gray-600 dark:text-gray-300">
-                                {getTournamentDisplayName(match, tournamentInfos[match.tournament_name])}
-                              </span>
+                              <span className="text-text-secondary">{getTournamentDisplayName(match, tournamentInfos[match.tournament_name])}</span>
                             )
                           ) : (
-                            <span className="text-gray-600 dark:text-gray-300">{getTournamentDisplayName(match)}</span>
+                            <span className="text-text-secondary">{getTournamentDisplayName(match)}</span>
                           )}
                         </div>
 
                         <div className="flex items-center gap-2 mt-1">
                           {match.round_name && (
-                            <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">{match.round_name}</span>
+                            <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">{match.round_name}</span>
                           )}
                           {(() => {
                             const status = getMatchStatus(match);
                             const winner = getMatchWinner(match);
 
                             if (status === 'finished' && winner) {
-                              return (
-                                <span className="rounded bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
-                                  終了
-                                </span>
-                              );
+                              return <span className="rounded bg-success-bg px-2 py-1 text-xs font-medium text-success">終了</span>;
                             } else if (status === 'in_progress') {
-                              return (
-                                <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
-                                  進行中
-                                </span>
-                              );
+                              return <span className="rounded bg-info-bg px-2 py-1 text-xs font-medium text-info">進行中</span>;
                             }
                             return null;
                           })()}
@@ -182,7 +172,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
                       </div>
 
                       <div className="absolute bottom-0 right-0">
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                        <p className="text-xs text-text-muted">
                           {new Date(match.created_at).toLocaleDateString('ja-JP', {
                             year: 'numeric',
                             month: '2-digit',
@@ -198,7 +188,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
             </ul>
             {matches.length === 0 && (
               <div className="py-12 text-center">
-                <span className="text-gray-600 dark:text-gray-300">まだ試合が登録されていません。</span>
+                <span className="text-text-secondary">まだ試合が登録されていません。</span>
               </div>
             )}
           </div>

@@ -112,12 +112,9 @@ export default function Home({ recentTournaments }: HomeProps) {
 
           {/* ✅ STリーグへのリンク */}
           <section className="max-w-4xl mx-auto mb-8 px-4">
-            <Link
-              href="/st-league"
-              className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700 mb-4"
-            >
+            <Link href="/st-league" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle mb-4">
               <h3 className="text-xl font-bold mb-1">STリーグ</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm">ソフトテニス実業団最高峰の戦い</p>
+              <p className="text-text-secondary text-sm">ソフトテニス実業団最高峰の戦い</p>
             </Link>
           </section>
 
@@ -125,7 +122,7 @@ export default function Home({ recentTournaments }: HomeProps) {
           <section className="max-w-4xl mx-auto mb-12 px-4">
             <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>
 
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+            <p className="text-text-secondary text-sm mb-6">
               全日本選手権や高校の全国大会を中心に、最新の試合結果を随時掲載しています。過去の大会を後から追加した場合も、こちらに表示されます。
             </p>
 
@@ -134,9 +131,9 @@ export default function Home({ recentTournaments }: HomeProps) {
                 <Link
                   key={`${tournament.id}-${tournament.year}`}
                   href={tournament.link}
-                  className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                  className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle"
                 >
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">開催日: {tournament.displayDate}</p>
+                  <p className="text-sm text-text-muted mb-1">開催日: {tournament.displayDate}</p>
                   <h3 className="text-lg font-bold">{tournament.name}</h3>
                 </Link>
               ))}
@@ -153,7 +150,7 @@ export default function Home({ recentTournaments }: HomeProps) {
           <section className="max-w-4xl mx-auto mb-12 px-4">
             <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
 
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。</p>
+            <p className="text-text-secondary text-sm mb-6">本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
               {[
@@ -176,10 +173,10 @@ export default function Home({ recentTournaments }: HomeProps) {
                 <Link
                   key={player.id}
                   href={`/players/${player.id}/results`}
-                  className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
+                  className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle"
                 >
                   <h3 className="text-lg font-bold mb-1">{player.name}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{player.team}</p>
+                  <p className="text-sm text-text-secondary">{player.team}</p>
                 </Link>
               ))}
             </div>
@@ -196,16 +193,13 @@ export default function Home({ recentTournaments }: HomeProps) {
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">選手ランキング</h2>
 
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+            <p className="text-text-secondary text-sm mb-6">
               掲載大会の成績から算出した年度別の選手ランキングです。男女別・種目別（シングルス/ダブルス）に上位選手を確認できます。
             </p>
 
-            <Link
-              href="/rankings"
-              className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
-            >
+            <Link href="/rankings" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
               <h3 className="text-lg font-bold mb-1">年度別ランキング</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm">シーズンポイントによる男女別・種目別の順位表（上位100位）</p>
+              <p className="text-text-secondary text-sm">シーズンポイントによる男女別・種目別の順位表（上位100位）</p>
             </Link>
           </section>
 
@@ -213,16 +207,13 @@ export default function Home({ recentTournaments }: HomeProps) {
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
 
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+            <p className="text-text-secondary text-sm mb-6">
               全国大会での成績を属性別にまとめています。都道府県ごとにも確認できるので、出身地や気になる地域の情報もチェックしてみてください。
             </p>
 
-            <Link
-              href="/highschool/boys"
-              className="block border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
-            >
+            <Link href="/highschool/boys" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
               <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm">インターハイなど高校全国大会の成績を都道府県・学校別に掲載</p>
+              <p className="text-text-secondary text-sm">インターハイなど高校全国大会の成績を都道府県・学校別に掲載</p>
             </Link>
           </section>
 
@@ -230,7 +221,7 @@ export default function Home({ recentTournaments }: HomeProps) {
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
 
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">
+            <p className="text-text-secondary text-sm mb-6">
               所属ごとに選手の年間成績や大会別の記録をまとめています。所属単位での活躍や個人の成績なども確認できます。
             </p>
 
@@ -247,21 +238,13 @@ export default function Home({ recentTournaments }: HomeProps) {
                   official: 'https://www.watakyu-sports.jp/softtennis/',
                 },
               ].map((team) => (
-                <div
-                  key={team.teamId}
-                  className="relative border border-gray-300 rounded-xl p-4 shadow bg-white dark:bg-gray-800 dark:border-gray-700 transition hover:bg-gray-50 dark:hover:bg-gray-700"
-                >
+                <div key={team.teamId} className="relative border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
                   <h3 className="text-lg font-bold mb-1">
                     <Link href={`/teams/${team.teamId}`} className="after:absolute after:inset-0">
                       {team.name}
                     </Link>
                   </h3>
-                  <a
-                    href={team.official}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative inline-flex items-center text-sm text-blue-700 dark:text-blue-300 underline"
-                  >
+                  <a href={team.official} target="_blank" rel="noopener noreferrer" className="relative inline-flex items-center text-sm text-info underline">
                     公式サイト
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

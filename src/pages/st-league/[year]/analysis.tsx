@@ -219,7 +219,7 @@ function StatsPanel({
 
   if (stats.length === 0) {
     return (
-      <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500">
+      <div className="text-center py-12 bg-surface rounded-xl border border-dashed border-border text-gray-500">
         {divName || 'このリーグ'}のデータは準備中です。
       </div>
     );
@@ -233,7 +233,7 @@ function StatsPanel({
         <select
           value={sortConfig.key}
           onChange={(e) => requestSort(e.target.value as SortKey)}
-          className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="wins">勝率</option>
           <option value="matches">試合数</option>
@@ -241,62 +241,50 @@ function StatsPanel({
           <option value="doubles">ダブルス</option>
           <option value="games">得失ゲーム</option>
         </select>
-        <button
-          onClick={() => requestSort(sortConfig.key)}
-          className="p-1.5 rounded-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500"
-        >
+        <button onClick={() => requestSort(sortConfig.key)} className="p-1.5 rounded-md bg-surface border border-border text-gray-500">
           {sortConfig.direction === 'asc' ? '▲' : '▼'}
         </button>
       </div>
 
       {/* Desktop Table View */}
-      <div className="hidden md:block bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 overflow-x-auto">
+      <div className="hidden md:block bg-surface rounded-xl shadow-sm overflow-hidden border border-border overflow-x-auto">
         <table className="w-full text-sm whitespace-nowrap">
-          <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
+          <thead className="bg-gray-50 dark:bg-gray-700/50 text-text-muted">
             <tr>
               <th className="py-3 px-4 text-left font-medium w-16">順位</th>
               <th className="py-3 px-4 text-left font-medium">選手名</th>
               <th className="py-3 px-4 text-left font-medium">チーム</th>
-              <th
-                className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
-                onClick={() => requestSort('matches')}
-              >
+              <th className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-bg-subtle select-none group" onClick={() => requestSort('matches')}>
                 試合数 {getSortIcon('matches')}
               </th>
-              <th
-                className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
-                onClick={() => requestSort('wins')}
-              >
+              <th className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-bg-subtle select-none group" onClick={() => requestSort('wins')}>
                 勝率(勝-敗) {getSortIcon('wins')}
               </th>
               <th
-                className="py-3 px-4 text-center font-medium text-xs text-gray-500 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
+                className="py-3 px-4 text-center font-medium text-xs text-gray-500 cursor-pointer hover:bg-bg-subtle select-none group"
                 onClick={() => requestSort('singles')}
               >
                 シングルス {getSortIcon('singles')}
               </th>
               <th
-                className="py-3 px-4 text-center font-medium text-xs text-gray-500 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
+                className="py-3 px-4 text-center font-medium text-xs text-gray-500 cursor-pointer hover:bg-bg-subtle select-none group"
                 onClick={() => requestSort('doubles')}
               >
                 ダブルス {getSortIcon('doubles')}
               </th>
-              <th
-                className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none group"
-                onClick={() => requestSort('games')}
-              >
+              <th className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-bg-subtle select-none group" onClick={() => requestSort('games')}>
                 得失G {getSortIcon('games')}
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+          <tbody className="divide-y divide-border">
             {stats.map((player, index) => {
               const winRate = player.matches > 0 ? (player.wins / player.matches) * 100 : 0;
               return (
                 <tr key={player.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
                   <td className="py-3 px-4 text-center text-gray-500">{index + 1}</td>
                   <td className="py-3 px-4 font-bold">{player.name}</td>
-                  <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{player.teamName}</td>
+                  <td className="py-3 px-4 text-text-muted">{player.teamName}</td>
                   <td className="py-3 px-4 text-center font-bold">{player.matches}</td>
                   <td className="py-3 px-4 text-center">
                     <span className="font-bold mr-1">{winRate.toFixed(0)}%</span>
@@ -304,10 +292,10 @@ function StatsPanel({
                       ({player.wins}-{player.losses})
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                  <td className="py-3 px-4 text-center text-sm text-text-muted">
                     {player.singlesWins}-{player.singlesLosses}
                   </td>
-                  <td className="py-3 px-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                  <td className="py-3 px-4 text-center text-sm text-text-muted">
                     {player.doublesWins}-{player.doublesLosses}
                   </td>
                   <td className="py-3 px-4 text-center font-mono font-medium">
@@ -325,7 +313,7 @@ function StatsPanel({
         {stats.map((player, index) => {
           const winRate = player.matches > 0 ? (player.wins / player.matches) * 100 : 0;
           return (
-            <div key={player.id} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={player.id} className="bg-surface rounded-xl p-4 shadow-sm border border-border">
               <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center">
                   <div
@@ -436,7 +424,7 @@ export default function AnalysisPage({ year, meta, divisions, matches, teams }: 
         <p>STリーグⅠ・Ⅱ、男女別に選手ごとの勝敗数・勝率・ゲーム得失を集計しています。</p>
 
         {/* Gender Tabs */}
-        <div className="flex border-b border-gray-200 dark:border-gray-700">
+        <div className="flex border-b border-border">
           <button
             onClick={() => setActiveGender('boys')}
             className={`py-2 px-4 font-medium text-sm focus:outline-none ${
@@ -467,11 +455,7 @@ export default function AnalysisPage({ year, meta, divisions, matches, teams }: 
               <button
                 key={d.id}
                 onClick={() => setDivisionId(d.id)}
-                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
-                  active
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
-                }`}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${active ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 text-text-secondary border-border hover:border-blue-400'}`}
               >
                 {d.name}
               </button>

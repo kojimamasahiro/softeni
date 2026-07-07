@@ -194,7 +194,7 @@ export default function TournamentYearResultPage({
             の試合結果・トーナメント表・優勝/上位入賞者の成績一覧です。
           </p>
           {infoForYear?.location && infoForYear?.startDate && infoForYear?.endDate && (
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+            <p className="text-sm text-text-secondary">
               開催地:{infoForYear.location} / 日程:
               {infoForYear.startDate}〜{infoForYear.endDate}
             </p>
@@ -209,21 +209,17 @@ export default function TournamentYearResultPage({
 
         {/* ✅ スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (
-          <section className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
-            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">スコア詳細のある試合</h2>
-            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">ポイントごとの記録・分析を掲載しています。</p>
+          <section className="mb-6 rounded-lg border border-success-border bg-success-bg p-4">
+            <h2 className="mb-2 text-base font-bold text-success">スコア詳細のある試合</h2>
+            <p className="mb-3 text-xs text-success">ポイントごとの記録・分析を掲載しています。</p>
             <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
               {scoreMatchLinks.map((link) => (
                 <li key={link.matchId}>
                   <Link
                     href={link.detailPath}
-                    className="flex items-center gap-2 py-2 text-sm text-emerald-900 transition-colors hover:text-emerald-700 dark:text-emerald-100 dark:hover:text-emerald-300"
+                    className="flex items-center gap-2 py-2 text-sm text-success transition-colors hover:text-emerald-700 dark:hover:text-emerald-300"
                   >
-                    {link.round && (
-                      <span className="shrink-0 rounded bg-emerald-200 px-1.5 py-0.5 text-xs font-semibold text-emerald-900 dark:bg-emerald-800 dark:text-emerald-100">
-                        {link.round}
-                      </span>
-                    )}
+                    {link.round && <span className="shrink-0 rounded bg-success-bg px-1.5 py-0.5 text-xs font-semibold text-success">{link.round}</span>}
                     <span className="font-medium">
                       {link.teamA} vs {link.teamB}
                     </span>
@@ -245,7 +241,7 @@ export default function TournamentYearResultPage({
         />
 
         {(infoWarnings.length > 0 || detailsWarnings.length > 0) && (
-          <section className="mt-6 mb-6 p-4 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded">
+          <section className="mt-6 mb-6 p-4 bg-warning-bg border border-warning-border rounded">
             <h3 className="font-semibold mb-2">データ警告</h3>
             <ul className="list-disc list-inside text-sm">
               {infoWarnings.map((w, i) => (
@@ -314,18 +310,13 @@ export default function TournamentYearResultPage({
         )}
 
         {infoForYear?.source && (
-          <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-sm text-gray-700 dark:text-gray-300 shadow-sm">
-            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">出典・参考情報</h2>
+          <section className="mt-12 bg-gray-50 dark:bg-gray-800 border border-border rounded-lg p-5 text-sm text-text-secondary shadow-sm">
+            <h2 className="text-base font-semibold text-text mb-2">出典・参考情報</h2>
             <p className="mb-3">本ページの試合結果データは、以下の情報をもとに作成しています。</p>
             <ul className="list-disc list-inside space-y-1">
               <li>
                 {infoForYear.sourceUrl ? (
-                  <a
-                    href={infoForYear.sourceUrl}
-                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={infoForYear.sourceUrl} className="text-primary hover:underline font-medium" target="_blank" rel="noopener noreferrer">
                     {infoForYear.source}
                   </a>
                 ) : (
@@ -334,7 +325,7 @@ export default function TournamentYearResultPage({
               </li>
               <li>一部の情報は現地観戦や報道発表、X（旧Twitter）などから収集しています。</li>
             </ul>
-            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。</p>
+            <p className="mt-3 text-xs text-text-muted">内容に誤りがある場合は、ページ下部のお問い合わせからご連絡ください。</p>
           </section>
         )}
       </PageLayout>

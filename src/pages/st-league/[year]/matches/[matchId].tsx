@@ -152,7 +152,7 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
             {teamA.name} <span className="text-gray-400">vs</span> {teamB.name}
           </h1>
 
-          <div className="mt-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+          <div className="mt-4 bg-surface rounded-xl shadow-sm border border-border p-5">
             <div className="flex items-center justify-between">
               <div className="flex-1 text-right">
                 <Link href={`/teams/${teamA.teamId}`} className="font-bold hover:text-blue-600 hover:underline">
@@ -180,8 +180,8 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
 
         {/* 個別対戦（D1/S/D2） */}
         <section>
-          <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">個別対戦（ダブルス①・シングルス・ダブルス②）</h2>
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 divide-y divide-gray-100 dark:divide-gray-700">
+          <h2 className="text-sm font-bold text-text-muted mb-2 uppercase tracking-wider">個別対戦（ダブルス①・シングルス・ダブルス②）</h2>
+          <div className="bg-surface rounded-xl shadow-sm border border-border divide-y divide-border">
             {match.matches.length === 0 && <p className="p-4 text-sm text-gray-500">個別対戦の詳細データは未登録です。</p>}
             {match.matches.map((d, i) => (
               <div key={i} className="flex items-center text-sm p-4">
@@ -190,7 +190,7 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
                   {getPlayers(d.playersA)}
                 </div>
                 <div className="px-3">
-                  <span className="inline-block px-1.5 py-0.5 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded text-xs font-mono font-medium">
+                  <span className="inline-block px-1.5 py-0.5 bg-gray-50 dark:bg-gray-700 border border-border-strong rounded text-xs font-mono font-medium">
                     {d.scoreA}-{d.scoreB}
                   </span>
                 </div>
@@ -206,13 +206,13 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
         {/* 過去の対戦 */}
         {past.length > 0 && (
           <section>
-            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">この2チームの過去の対戦（STリーグⅠ）</h2>
+            <h2 className="text-sm font-bold text-text-muted mb-2 uppercase tracking-wider">この2チームの過去の対戦（STリーグⅠ）</h2>
             <div className="space-y-2">
               {past.map((p) => (
                 <Link
                   key={p.slug + p.year}
                   href={`/st-league/${p.year}/matches/${p.slug}`}
-                  className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 px-4 py-2 hover:border-blue-400 transition-colors"
+                  className="flex items-center justify-between bg-surface rounded-lg border border-border px-4 py-2 hover:border-blue-400 transition-colors"
                 >
                   <span className="text-xs text-gray-400 w-24 shrink-0">{p.label}</span>
                   <span className="flex-1 text-sm text-right truncate">{p.teamAName}</span>
@@ -236,14 +236,14 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
               ] as [TeamLine, NeighborMatch[]][]
             ).map(([team, list]) => (
               <div key={team.teamId}>
-                <h3 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">{team.name} の他の対戦</h3>
+                <h3 className="text-xs font-bold text-text-muted mb-2">{team.name} の他の対戦</h3>
                 <div className="space-y-1.5">
                   {list.length === 0 && <p className="text-xs text-gray-400">他の対戦はありません。</p>}
                   {list.map((n) => (
                     <Link
                       key={n.slug}
                       href={`/st-league/${year}/matches/${n.slug}`}
-                      className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 px-3 py-2 hover:border-blue-400 transition-colors text-sm"
+                      className="flex items-center justify-between bg-surface rounded-lg border border-border px-3 py-2 hover:border-blue-400 transition-colors text-sm"
                     >
                       <span className="truncate">vs {n.opponentName}</span>
                       <span className="ml-2 shrink-0 text-xs font-mono text-gray-500">{n.result}</span>
@@ -256,17 +256,17 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
         )}
 
         {/* 他ページ導線 */}
-        <nav className="flex flex-wrap gap-3 pt-2 border-t border-gray-100 dark:border-gray-700">
-          <Link href={`/st-league/${year}/matches`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+        <nav className="flex flex-wrap gap-3 pt-2 border-t border-border">
+          <Link href={`/st-league/${year}/matches`} className="text-primary font-semibold hover:underline">
             ▶ {year} 順位表・全対戦結果
           </Link>
-          <Link href={`/st-league/${year}/teams`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+          <Link href={`/st-league/${year}/teams`} className="text-primary font-semibold hover:underline">
             ▶ 出場チーム・選手
           </Link>
-          <Link href={`/st-league/${year}/analysis`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+          <Link href={`/st-league/${year}/analysis`} className="text-primary font-semibold hover:underline">
             ▶ 選手別データ・分析
           </Link>
-          <Link href={`/st-league/${year}`} className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+          <Link href={`/st-league/${year}`} className="text-primary font-semibold hover:underline">
             ▶ {year} 年度トップ
           </Link>
         </nav>

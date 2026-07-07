@@ -48,25 +48,23 @@ export default function GrowthHubPage({ items }: HubProps) {
                 <li key={item.slug}>
                   <Link
                     href={`/growth/${item.slug}`}
-                    className="block rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-colors hover:border-blue-400 dark:border-gray-700 dark:bg-gray-800"
+                    className="block rounded-lg border border-border bg-surface p-5 shadow-sm transition-colors hover:border-blue-400"
                   >
-                    <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">{item.title}</p>
-                    {item.summary && <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{item.summary}</p>}
-                    <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">収録 {item.totalMatches} 試合</p>
+                    <p className="text-lg font-semibold text-text">{item.title}</p>
+                    {item.summary && <p className="mt-1 text-sm text-text-secondary">{item.summary}</p>}
+                    <p className="mt-2 text-xs text-text-muted">収録 {item.totalMatches} 試合</p>
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
-            <div className="mt-8 rounded-lg border border-gray-200 p-6 text-center text-gray-600 dark:border-gray-700 dark:text-gray-300">
-              現在公開中の成長記録はありません。
-            </div>
+            <div className="mt-8 rounded-lg border border-border p-6 text-center text-text-secondary">現在公開中の成長記録はありません。</div>
           )}
 
           {/* score 導線プレースホルダ。score の方針が固まるまで配線しない（ADR-004）。 */}
-          <section className="mt-10 rounded-lg border border-dashed border-gray-300 bg-white p-5 text-center dark:border-gray-600 dark:bg-gray-800">
+          <section className="mt-10 rounded-lg border border-dashed border-border-strong bg-surface p-5 text-center">
             <p className="text-sm font-medium text-gray-700 dark:text-gray-200">自分の試合でもこうした成長記録をつけられます</p>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">（score 連携は準備中です）</p>
+            <p className="mt-1 text-xs text-text-muted">（score 連携は準備中です）</p>
           </section>
         </div>
       </PageLayout>

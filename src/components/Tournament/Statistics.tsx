@@ -20,9 +20,9 @@ export default function Statistics({ totalPlayers, uniqueTeams, totalMatches, to
 
   return (
     <section className="mb-10">
-      <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800 p-4">
+      <div className="mb-6 border border-border rounded-xl shadow-sm bg-surface p-4">
         <h2 className="text-lg font-bold mb-3">大会統計</h2>
-        <div className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+        <div className="text-sm text-text-secondary space-y-1">
           <div>エントリー数：{totalPlayers}人</div>
           <div>出場チーム数：{uniqueTeams}チーム</div>
           <div>総試合数：{totalMatches}試合</div>

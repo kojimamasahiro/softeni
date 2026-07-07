@@ -60,7 +60,7 @@ function MatchGroup({
   if (!show) return null;
 
   return (
-    <div className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800">
+    <div className="mb-6 border border-border rounded-xl shadow-sm bg-surface">
       <div
         role="button"
         tabIndex={0}
@@ -72,9 +72,9 @@ function MatchGroup({
             setIsOpen((prev) => !prev);
           }
         }}
-        className="w-full text-left px-4 py-3 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
+        className="w-full text-left px-4 py-3 border-b border-border hover:bg-bg-subtle cursor-pointer"
       >
-        <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100 flex justify-between items-center">
+        <h3 className="text-base font-semibold text-text flex justify-between items-center">
           <span className="flex flex-col">
             <span>
               {entryNo}.{' '}
@@ -96,8 +96,8 @@ function MatchGroup({
                 : name}
             </span>
             <span className="text-sm">
-              {resultLabel && <span className="ml-2 text-gray-500 dark:text-gray-400">{resultLabel}</span>}
-              {isSeed && <span className="text-yellow-600 dark:text-yellow-300">（シード）</span>}
+              {resultLabel && <span className="ml-2 text-text-muted">{resultLabel}</span>}
+              {isSeed && <span className="text-warning">（シード）</span>}
             </span>
           </span>
           <span className="ml-2 text-xs">{isOpen ? '▲' : '▼'}</span>
@@ -112,30 +112,30 @@ function MatchGroup({
           ].map(({ title, rows }, index) =>
             rows.length > 0 ? (
               <div key={title ?? 'main'} className="mb-2 w-full">
-                {title && <div className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 text-left">{title}</div>}
+                {title && <div className="px-4 py-2 text-sm font-medium text-text-secondary bg-gray-50 dark:bg-gray-700 text-left">{title}</div>}
                 <table className="w-full text-sm table-fixed border-collapse text-left">
                   {index === 0 && (
-                    <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+                    <thead className="bg-bg-subtle text-text">
                       <tr>
-                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">ラウンド</th>
-                        <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">対戦相手</th>
-                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left">スコア</th>
+                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left">ラウンド</th>
+                        <th className="w-3/5 px-4 py-2 border-b border-border-strong text-left">対戦相手</th>
+                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left">スコア</th>
                       </tr>
                     </thead>
                   )}
                   {index !== 0 && (
-                    <thead className="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+                    <thead className="bg-gray-50 dark:bg-gray-700 text-text">
                       <tr>
-                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left"></th>
-                        <th className="w-3/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left"></th>
-                        <th className="w-1/5 px-4 py-2 border-b border-gray-200 dark:border-gray-600 text-left"></th>
+                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left"></th>
+                        <th className="w-3/5 px-4 py-2 border-b border-border-strong text-left"></th>
+                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left"></th>
                       </tr>
                     </thead>
                   )}
                   <tbody>
                     {rows.map((m: MatchRow, i: number) => {
                       return (
-                        <tr key={i} className="border-t border-gray-100 dark:border-gray-700">
+                        <tr key={i} className="border-t border-border">
                           <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
                           <td className="px-4 py-2 break-words text-left">
                             {m.opponentPlayerIds?.length === 1 ? (
@@ -474,7 +474,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="選手名や所属で検索"
-          className="h-9 px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm dark:bg-gray-900 dark:text-white"
+          className="h-9 px-3 py-1 text-sm border border-border-strong rounded shadow-sm dark:bg-gray-900 dark:text-white"
         />
 
         <button

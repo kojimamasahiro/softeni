@@ -54,25 +54,20 @@ export default function LocalTournamentsPage({ prefectures, federationMap }: Pro
 
         <h1 className="text-2xl font-bold mb-4">地域大会結果</h1>
         <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
-        <p className="text-gray-600 dark:text-gray-300 mb-8">
-          各都道府県の連盟や企業が主催する大会の結果を掲載しています。 連盟公式サイトへのリンクもご活用ください。
-        </p>
+        <p className="text-text-secondary mb-8">各都道府県の連盟や企業が主催する大会の結果を掲載しています。 連盟公式サイトへのリンクもご活用ください。</p>
 
         <div className="space-y-8">
           {grouped
             .filter((g) => g.prefectures.length > 0)
             .map((g) => (
               <section key={g.region}>
-                <h2 className="text-xl font-bold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">{g.region}</h2>
+                <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">{g.region}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {g.prefectures.map((pref) => {
                     const fed = federationMap[pref.id];
                     return (
                       <div key={pref.id} className="bg-gray-50 dark:bg-gray-800 rounded p-3 flex flex-col justify-between">
-                        <Link
-                          href={`/tournaments/local/${pref.id}`}
-                          className="text-lg font-semibold text-blue-700 dark:text-blue-300 hover:underline mb-2 block"
-                        >
+                        <Link href={`/tournaments/local/${pref.id}`} className="text-lg font-semibold text-info hover:underline mb-2 block">
                           {pref.name}
                         </Link>
                         {fed?.officialUrl && (
@@ -80,7 +75,7 @@ export default function LocalTournamentsPage({ prefectures, federationMap }: Pro
                             href={fed.officialUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex items-center"
+                            className="text-xs text-text-muted hover:text-gray-700 dark:hover:text-gray-200 flex items-center"
                           >
                             連盟サイト
                             <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

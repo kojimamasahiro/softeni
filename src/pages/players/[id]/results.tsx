@@ -234,13 +234,13 @@ export default function PlayerResultsPage({
           <h1 className="text-2xl font-bold">
             {fullName} 選手の試合結果{team ? `（${team}）` : ''}
           </h1>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-sm text-text-secondary">
             {summarySentence}
             出場大会や成績、主な勝ち上がり情報を掲載しています。
           </p>
           {profileSlug && (
             <p className="mt-2 text-sm">
-              <Link href={`/players/${profileSlug}/`} className="text-blue-600 dark:text-blue-400 hover:underline">
+              <Link href={`/players/${profileSlug}/`} className="text-primary hover:underline">
                 {fullName} 選手のプロフィール（身長・所属・ポジション）はこちら
               </Link>
             </p>
@@ -265,21 +265,17 @@ export default function PlayerResultsPage({
         {playerStatistics && <PlayerStatisticsSections stats={playerStatistics} linkablePlayerIds={statsLinkableIds} />}
 
         {scoreMatchLinks.length > 0 && (
-          <section className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
-            <h2 className="mb-2 text-base font-bold text-emerald-900 dark:text-emerald-200">スコア詳細のある試合</h2>
-            <p className="mb-3 text-xs text-emerald-800/80 dark:text-emerald-300/80">ポイントごとの記録・分析を掲載しています。</p>
+          <section className="rounded-lg border border-success-border bg-success-bg p-4">
+            <h2 className="mb-2 text-base font-bold text-success">スコア詳細のある試合</h2>
+            <p className="mb-3 text-xs text-success">ポイントごとの記録・分析を掲載しています。</p>
             <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
               {scoreMatchLinks.map((link) => (
                 <li key={link.matchId}>
                   <Link
                     href={link.detailPath}
-                    className="flex items-center gap-2 py-2 text-sm text-emerald-900 transition-colors hover:text-emerald-700 dark:text-emerald-100 dark:hover:text-emerald-300"
+                    className="flex items-center gap-2 py-2 text-sm text-success transition-colors hover:text-emerald-700 dark:hover:text-emerald-300"
                   >
-                    {link.round && (
-                      <span className="shrink-0 rounded bg-emerald-200 px-1.5 py-0.5 text-xs font-semibold text-emerald-900 dark:bg-emerald-800 dark:text-emerald-100">
-                        {link.round}
-                      </span>
-                    )}
+                    {link.round && <span className="shrink-0 rounded bg-success-bg px-1.5 py-0.5 text-xs font-semibold text-success">{link.round}</span>}
                     <span className="font-medium">
                       {link.teamA} vs {link.teamB}
                     </span>
@@ -294,13 +290,10 @@ export default function PlayerResultsPage({
         )}
 
         {growthShowcaseSlug && (
-          <section className="rounded-lg border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900 dark:bg-blue-950/30">
-            <h2 className="mb-1 text-base font-bold text-blue-900 dark:text-blue-200">成長記録</h2>
-            <p className="mb-3 text-xs text-blue-800/80 dark:text-blue-300/80">勝ち負けだけでは見えない、試合内容の変化を指標で追っています。</p>
-            <Link
-              href={`/growth/${growthShowcaseSlug}`}
-              className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 hover:underline dark:text-blue-300"
-            >
+          <section className="rounded-lg border border-info-border bg-info-bg p-4">
+            <h2 className="mb-1 text-base font-bold text-info">成長記録</h2>
+            <p className="mb-3 text-xs text-info">勝ち負けだけでは見えない、試合内容の変化を指標で追っています。</p>
+            <Link href={`/growth/${growthShowcaseSlug}`} className="inline-flex items-center gap-1 text-sm font-medium text-info hover:underline">
               {fullName}の成長記録を見る
               <span aria-hidden>›</span>
             </Link>
@@ -309,8 +302,8 @@ export default function PlayerResultsPage({
 
         {relatedPlayers.length > 0 && (
           <section>
-            <h2 className="mb-2 text-base font-bold text-gray-800 dark:text-gray-100">関連選手（主なペア）</h2>
-            <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">{fullName}選手が収録大会でペアを組んだ選手です。</p>
+            <h2 className="mb-2 text-base font-bold text-text">関連選手（主なペア）</h2>
+            <p className="mb-3 text-xs text-text-muted">{fullName}選手が収録大会でペアを組んだ選手です。</p>
             <ul className="flex flex-wrap gap-2">
               {relatedPlayers.map((p) => {
                 const label = `${p.name}（${p.total}試合 ${p.wins}勝${p.losses}敗）`;
@@ -319,12 +312,12 @@ export default function PlayerResultsPage({
                     {p.hasPage ? (
                       <Link
                         href={`/players/${p.id}/results`}
-                        className="inline-block rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-blue-700 transition-colors hover:bg-blue-50 dark:border-gray-700 dark:bg-gray-800 dark:text-blue-300 dark:hover:bg-gray-700"
+                        className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-info transition-colors hover:bg-blue-50 dark:bg-gray-800 dark:hover:bg-gray-700"
                       >
                         {label}
                       </Link>
                     ) : (
-                      <span className="inline-block rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                      <span className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-text-secondary dark:bg-gray-800">
                         {label}
                       </span>
                     )}

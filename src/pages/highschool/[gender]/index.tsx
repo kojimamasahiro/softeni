@@ -169,7 +169,7 @@ export default function HighschoolGenderIndex({
 
         <HighschoolGenderToggle gender={gender} boysHref="/highschool/boys" girlsHref="/highschool/girls" className="mb-8 max-w-sm mx-auto" />
 
-        <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+        <div className="mb-8 space-y-3 text-sm text-text-secondary">
           <p>
             高校{genderLabel}
             の全国大会成績を、都道府県別に確認できる一覧ページです。 全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
@@ -178,28 +178,28 @@ export default function HighschoolGenderIndex({
           <p>地域または都道府県を選ぶと、その県の出場校一覧、近年の好成績校、 学校ごとの詳細成績ページへ進めます。</p>
         </div>
 
-        <section className="mb-8 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 p-5">
+        <section className="mb-8 rounded-xl border border-info-border bg-info-bg p-5">
           <h2 className="text-lg font-semibold mb-1">全国大会の歴代記録</h2>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+          <p className="text-sm text-text-secondary mb-3">
             インターハイ（全国高等学校総合体育大会）やハイスクールジャパンカップの 歴代優勝〜ベスト4を、年度別・種目別にまとめています。
             都道府県別・学校別とは別の切り口で、大会ごとの上位入賞を確認できます。
           </p>
-          <Link href="/highschool/tournaments/" className="inline-block text-sm font-semibold text-blue-700 dark:text-blue-300 hover:underline">
+          <Link href="/highschool/tournaments/" className="inline-block text-sm font-semibold text-info hover:underline">
             全国大会の歴代記録を見る →
           </Link>
         </section>
 
         <section className="grid gap-4 sm:grid-cols-3 mb-8">
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">収録学校数</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">収録学校数</p>
             <p className="text-2xl font-bold">{totalTeams}校</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">ベスト8以上経験校</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">ベスト8以上経験校</p>
             <p className="text-2xl font-bold">{totalBest8Schools}校</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">最新収録年度</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">最新収録年度</p>
             <p className="text-2xl font-bold">{latestIndexedYear ? `${latestIndexedYear}年` : '-'}</p>
           </div>
         </section>
@@ -207,26 +207,24 @@ export default function HighschoolGenderIndex({
         {featuredPrefectures.length > 0 && (
           <section className="mb-10">
             <h2 className="text-xl font-semibold mb-3">今、注目したい都道府県</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-              ベスト8以上の学校数と最新年度の掲載状況をもとに、回遊しやすい県を先にまとめています。
-            </p>
+            <p className="text-sm text-text-secondary mb-4">ベスト8以上の学校数と最新年度の掲載状況をもとに、回遊しやすい県を先にまとめています。</p>
             <div className="grid gap-4 sm:grid-cols-2">
               {featuredPrefectures.map((prefecture) => (
                 <Link
                   key={prefecture.id}
                   href={`/highschool/${gender}/${prefecture.id}`}
-                  className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                  className="rounded-xl border border-border p-4 bg-surface hover:bg-bg-subtle transition"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-lg font-semibold">{prefecture.name}</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                      <p className="text-sm text-text-secondary">
                         {prefecture.region} / 収録 {prefecture.teamCount}校
                       </p>
                     </div>
                     <div className="text-right text-sm">
                       <p className="font-semibold">ベスト8以上 {prefecture.best8Count}校</p>
-                      <p className="text-gray-500 dark:text-gray-400">最新 {prefecture.latestYear ?? '-'}年</p>
+                      <p className="text-text-muted">最新 {prefecture.latestYear ?? '-'}年</p>
                     </div>
                   </div>
                 </Link>
@@ -246,10 +244,7 @@ export default function HighschoolGenderIndex({
 
                   if (teamCount === 0) {
                     return (
-                      <div
-                        key={pref.id}
-                        className="block px-4 py-3 border border-dashed border-gray-300 rounded-md bg-gray-50 dark:bg-gray-900 dark:border-gray-700"
-                      >
+                      <div key={pref.id} className="block px-4 py-3 border border-dashed border-border rounded-md bg-bg">
                         <span className="block font-semibold text-gray-400 dark:text-gray-500">{pref.name}</span>
                         <span className="block mt-1 text-xs text-gray-400 dark:text-gray-500">収録準備中</span>
                       </div>
@@ -260,10 +255,10 @@ export default function HighschoolGenderIndex({
                     <Link
                       key={pref.id}
                       href={`/highschool/${gender}/${pref.id}`}
-                      className="block px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                      className="block px-4 py-3 border border-border rounded-md bg-surface hover:bg-bg-subtle transition"
                     >
                       <span className="block font-semibold">{pref.name}</span>
-                      <span className="block mt-1 text-xs text-gray-500 dark:text-gray-400">
+                      <span className="block mt-1 text-xs text-text-muted">
                         {teamCount}校 / ベスト8以上 {stat?.best8Count ?? 0}校
                       </span>
                     </Link>
@@ -274,11 +269,11 @@ export default function HighschoolGenderIndex({
           ))}
         </div>
 
-        <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+        <section className="mt-12 border-t border-border pt-8">
           <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
           <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
             {faqItems.map((item) => (
-              <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+              <div key={item.question} className="rounded-xl border border-border p-4">
                 <h3 className="font-semibold mb-2">{item.question}</h3>
                 <p>{item.answer}</p>
               </div>

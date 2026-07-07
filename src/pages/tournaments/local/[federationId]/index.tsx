@@ -77,12 +77,7 @@ export default function LocalFederationPage({ prefecture, federation, tournament
         <div className="flex justify-between items-end mb-6">
           <h1 className="text-2xl font-bold">{prefecture.name}の大会一覧</h1>
           {federation?.officialUrl && (
-            <a
-              href={federation.officialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center"
-            >
+            <a href={federation.officialUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center">
               連盟公式サイト
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -96,7 +91,7 @@ export default function LocalFederationPage({ prefecture, federation, tournament
           )}
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-8">{prefecture.name}で開催された大会・予選の結果を掲載しています。</p>
+        <p className="text-text-secondary mb-8">{prefecture.name}で開催された大会・予選の結果を掲載しています。</p>
 
         <div className="space-y-8">
           {tournaments.length === 0 ? (

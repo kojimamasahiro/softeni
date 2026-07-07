@@ -203,7 +203,7 @@ export default function TeamYearGenderPage({ info, results, year, gender, player
         <TeamsRanking statsList={statsList} playerLinks={playerLinks} />
 
         <div className="mt-8">
-          <Link href={`/teams/${info.id}`} className="text-blue-600 dark:text-blue-400 hover:underline">
+          <Link href={`/teams/${info.id}`} className="text-primary hover:underline">
             ← {teamName} トップへ戻る
           </Link>
         </div>

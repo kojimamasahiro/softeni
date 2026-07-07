@@ -36,7 +36,7 @@ function formatDate(iso: string | undefined): string | null {
 function PlayerName({ p }: { p: PreviewPlayerRef }) {
   if (p.playerId != null) {
     return (
-      <Link href={`/players/${p.playerId}/results/`} className="text-blue-600 hover:underline dark:text-blue-400">
+      <Link href={`/players/${p.playerId}/results/`} className="text-primary hover:underline">
         {p.name}
       </Link>
     );
@@ -86,10 +86,10 @@ function PickPlayerCardItem({ card }: { card: PickPlayerCard }) {
           <p className="break-words text-sm font-semibold">
             {card.players.length > 0 ? <PlayerNames players={card.players} perPlayerTeam={card.perPlayerTeam} /> : card.display}
           </p>
-          {card.players.length > 0 && card.team && <p className="break-words text-xs text-gray-500 dark:text-gray-400">{card.team}</p>}
+          {card.players.length > 0 && card.team && <p className="break-words text-xs text-text-muted">{card.team}</p>}
           {/* 前大会の実績。ペア解消の組み替えで複数由来がある場合は 1 行ずつ表示する。 */}
           {card.achievements.map((a, i) => (
-            <p key={i} className="break-words text-xs text-gray-500 dark:text-gray-400">
+            <p key={i} className="break-words text-xs text-text-muted">
               {a}
             </p>
           ))}
@@ -168,16 +168,16 @@ function TitleDefenseHero({ td }: { td: TitleDefenseWatch }) {
               <p className="break-words text-base font-semibold">
                 {td.players.length > 0 ? <PlayerNames players={td.players} perPlayerTeam={!td.team} /> : td.defendingChampionDisplay}
               </p>
-              <p className="break-words text-xs text-gray-500 dark:text-gray-400">
+              <p className="break-words text-xs text-text-muted">
                 {td.defendingYear}年優勝
                 {td.team && ` ・ ${td.team}`}
               </p>
             </div>
             <div className="order-1 shrink-0 sm:order-2">
               {td.status === 'absent' ? (
-                <span className="text-xs text-gray-500 dark:text-gray-400">新王者へ</span>
+                <span className="text-xs text-text-muted">新王者へ</span>
               ) : td.standing ? (
-                <span className="inline-block whitespace-nowrap rounded-full bg-white px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-gray-900 dark:text-amber-100">
+                <span className="inline-block whitespace-nowrap rounded-full bg-white px-3 py-1 text-sm font-semibold text-warning dark:bg-gray-900">
                   {td.standing.label}
                 </span>
               ) : (
@@ -194,18 +194,18 @@ function TitleDefenseHero({ td }: { td: TitleDefenseWatch }) {
           <p className="break-words text-base font-semibold">
             {td.players.length > 0 ? <PlayerNames players={td.players} perPlayerTeam={!td.team} /> : td.defendingChampionDisplay}
           </p>
-          <p className="break-words text-xs text-gray-500 dark:text-gray-400">
+          <p className="break-words text-xs text-text-muted">
             {td.defendingYear}年優勝
             {td.team && ` ・ ${td.team}`}・{td.status === 'split' ? '双方が新ペアで連覇を狙う' : '継続選手が新ペアで連覇に挑む'}
           </p>
-          <ul className="mt-2 flex flex-col gap-2 border-t border-amber-200/70 pt-2 dark:border-amber-800/50">
+          <ul className="mt-2 flex flex-col gap-2 border-t border-warning-border pt-2">
             {td.currentEntries.map((ce, i) => (
               <li key={i} className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div className="order-2 min-w-0 sm:order-1">
                   <p className="break-words text-sm font-semibold">
                     {ce.players.length > 0 ? <PlayerNames players={ce.players} perPlayerTeam={!ce.team} /> : td.defendingChampionDisplay}
                   </p>
-                  {ce.team && <p className="break-words text-xs text-gray-500 dark:text-gray-400">{ce.team}</p>}
+                  {ce.team && <p className="break-words text-xs text-text-muted">{ce.team}</p>}
                 </div>
                 <div className="order-1 shrink-0 sm:order-2">
                   {ce.standing ? (
@@ -313,7 +313,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
 
         <h1 className="mb-2 text-2xl font-bold">{title}</h1>
         {(publishedLabel || updatedLabel) && (
-          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+          <p className="mb-2 text-xs text-text-muted">
             {publishedLabel && record.createdAt && <time dateTime={record.createdAt}>公開: {publishedLabel}</time>}
             {updatedLabel && record.updatedAt && record.updatedAt !== record.createdAt && (
               <time dateTime={record.updatedAt} className="ml-2">
@@ -322,15 +322,15 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             )}
           </p>
         )}
-        <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
+        <p className="mb-6 text-sm text-text-secondary">
           {description}
-          <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">※成績・記録は当サイト掲載大会分の集計に基づきます。</span>
+          <span className="ml-1 text-xs text-text-muted">※成績・記録は当サイト掲載大会分の集計に基づきます。</span>
         </p>
 
         {categories.length === 0 && <p className="text-sm text-gray-500">掲載データがありません。</p>}
 
         {categories.map((c) => (
-          <section key={c.categoryId} className="mb-8 border-t border-gray-200 pt-5 dark:border-gray-700">
+          <section key={c.categoryId} className="mb-8 border-t border-border pt-5">
             <h2 className="mb-3 text-lg font-bold">{c.categoryLabel}</h2>
 
             {/* 結果速報: 優勝者 + milestone */}
@@ -343,9 +343,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               <ul className="mb-3 flex flex-wrap gap-2">
                 {c.milestones.map((m, i) => (
                   <li key={`${m.kind}-${i}`}>
-                    <span className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-amber-900 dark:text-amber-100">
-                      {m.label}
-                    </span>
+                    <span className="inline-block rounded-full bg-warning-bg px-3 py-1 text-sm font-semibold text-warning">{m.label}</span>
                   </li>
                 ))}
               </ul>
@@ -411,7 +409,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* 結果速報: その年・種目の結果詳細ページへ */}
             {!isPreview && c.resultHref && (
               <p className="mt-3 text-sm">
-                <Link href={c.resultHref} className="text-blue-600 hover:underline dark:text-blue-400">
+                <Link href={c.resultHref} className="text-primary hover:underline">
                   {record.year}年 {c.categoryLabel} の結果詳細を見る →
                 </Link>
               </p>
@@ -420,7 +418,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* プレビュー: その年・種目の大会結果ページへ（結果掲載後のみリンク化） */}
             {isPreview && c.resultHref && (
               <p className="mt-3 text-sm">
-                <Link href={c.resultHref} className="text-blue-600 hover:underline dark:text-blue-400">
+                <Link href={c.resultHref} className="text-primary hover:underline">
                   {record.year}年 {c.categoryLabel} の大会結果を見る →
                 </Link>
               </p>
@@ -429,11 +427,11 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
         ))}
 
         {hubHref && (
-          <div className="mt-10 border-t border-gray-200 pt-5 dark:border-gray-700">
+          <div className="mt-10 border-t border-border pt-5">
             <h2 className="mb-2 text-base font-bold">関連ページ</h2>
             <ul className="list-inside list-disc space-y-1 text-sm">
               <li>
-                <Link href={hubHref} className="text-blue-600 hover:underline dark:text-blue-400">
+                <Link href={hubHref} className="text-primary hover:underline">
                   {tournamentLabel} の歴代優勝者・大会まとめ
                 </Link>
               </li>

@@ -48,7 +48,7 @@ export default function PlayerCareerHighlights({ fullName, data }: { fullName: s
     <section className="mb-10">
       <h2 className="text-xl font-semibold mb-3">
         主な戦績
-        <span className="ml-2 text-xs font-normal text-gray-500 dark:text-gray-400">※{data.scopeNote}</span>
+        <span className="ml-2 text-xs font-normal text-text-muted">※{data.scopeNote}</span>
       </h2>
 
       {hasMilestones && (

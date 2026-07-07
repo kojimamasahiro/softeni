@@ -92,7 +92,7 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
 
         <h1 className="text-2xl font-bold mb-4">高校 全国大会の歴代記録</h1>
 
-        <div className="mb-8 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+        <div className="mb-8 space-y-3 text-sm text-text-secondary">
           <p>高校ソフトテニスの代表的な全国大会について、歴代の上位入賞（優勝〜ベスト4）を 年度別・種目別にまとめています。</p>
           <p>
             都道府県別・学校別ページが「各校の成績」を学校視点で整理しているのに対し、
@@ -105,19 +105,19 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
             <Link
               key={t.slug}
               href={`/highschool/tournaments/${t.slug}/`}
-              className="rounded-xl border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              className="rounded-xl border border-border p-5 bg-surface hover:bg-bg-subtle transition"
             >
               <p className="text-lg font-semibold">{t.shortLabel}</p>
-              {t.label !== t.shortLabel && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{t.label}</p>}
-              {t.aliases && t.aliases.length > 0 && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">通称: {t.aliases.join('・')}</p>}
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-3">{t.description}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">収録年度: {formatYearRange(t)}</p>
+              {t.label !== t.shortLabel && <p className="text-xs text-text-muted mt-0.5">{t.label}</p>}
+              {t.aliases && t.aliases.length > 0 && <p className="text-xs text-text-muted mt-0.5">通称: {t.aliases.join('・')}</p>}
+              <p className="text-sm text-text-secondary mt-3">{t.description}</p>
+              <p className="text-xs text-text-muted mt-3">収録年度: {formatYearRange(t)}</p>
             </Link>
           ))}
         </div>
 
         <div className="mt-10 text-sm">
-          <Link href="/highschool/boys/" className="text-blue-600 dark:text-blue-300 hover:underline">
+          <Link href="/highschool/boys/" className="text-info hover:underline">
             高校 都道府県別・学校別ページへ →
           </Link>
         </div>

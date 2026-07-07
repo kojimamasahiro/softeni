@@ -937,7 +937,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
     };
   }, [analysisSummary, formatServerLabel, gamesAsc, getShortTeamName, teamAPlayers, teamBPlayers]);
 
-  if (!match) return <div className="p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-100">Match not found</div>;
+  if (!match) return <div className="p-6 text-text dark:bg-gray-900">Match not found</div>;
 
   const matchWinner = getMatchWinner();
   const gamesWonA = gamesAsc.filter((game) => game.winner_team === 'A').length;
@@ -1040,55 +1040,47 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
 
   const renderScoreboard = () => (
     <div className="overflow-x-auto">
-      <table className="min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
+      <table className="min-w-full table-auto border-collapse border border-border-strong">
         <thead>
           <tr className="bg-gray-50 dark:bg-gray-800/90">
-            <th className="w-auto border border-gray-300 px-3 py-2 text-left dark:border-gray-600">チーム</th>
+            <th className="w-auto border border-border-strong px-3 py-2 text-left">チーム</th>
             {gamesAsc.map((game) => (
-              <th key={game.game_number} className="min-w-12 border border-gray-300 px-3 py-2 text-center dark:border-gray-600">
+              <th key={game.game_number} className="min-w-12 border border-border-strong px-3 py-2 text-center">
                 {game.game_number}
               </th>
             ))}
-            <th className="border border-gray-300 bg-yellow-50 px-3 py-2 text-center font-bold dark:border-gray-600 dark:bg-yellow-900/30">G</th>
+            <th className="border border-border-strong bg-warning-bg px-3 py-2 text-center font-bold">G</th>
           </tr>
         </thead>
         <tbody>
           <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
-            <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">{getShortTeamName('A')}</td>
+            <td className="w-auto whitespace-nowrap border border-border-strong px-3 py-2 font-medium">{getShortTeamName('A')}</td>
             {gamesAsc.map((game) => (
               <td
                 key={game.game_number}
-                className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
-                  game.winner_team === 'A' ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'font-normal dark:text-gray-200'
-                }`}
+                className={`border border-border-strong px-3 py-2 text-center ${game.winner_team === 'A' ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'font-normal dark:text-gray-200'}`}
               >
                 {game.points_a}
               </td>
             ))}
             <td
-              className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
-                matchWinner === 'A' ? 'font-bold dark:text-yellow-100' : 'font-normal dark:text-gray-200'
-              }`}
+              className={`border border-border-strong bg-warning-bg px-3 py-2 text-center ${matchWinner === 'A' ? 'font-bold dark:text-yellow-100' : 'font-normal dark:text-gray-200'}`}
             >
               {gamesWonA}
             </td>
           </tr>
           <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
-            <td className="w-auto whitespace-nowrap border border-gray-300 px-3 py-2 font-medium dark:border-gray-600">{getShortTeamName('B')}</td>
+            <td className="w-auto whitespace-nowrap border border-border-strong px-3 py-2 font-medium">{getShortTeamName('B')}</td>
             {gamesAsc.map((game) => (
               <td
                 key={game.game_number}
-                className={`border border-gray-300 px-3 py-2 text-center dark:border-gray-600 ${
-                  game.winner_team === 'B' ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'font-normal dark:text-gray-200'
-                }`}
+                className={`border border-border-strong px-3 py-2 text-center ${game.winner_team === 'B' ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'font-normal dark:text-gray-200'}`}
               >
                 {game.points_b}
               </td>
             ))}
             <td
-              className={`border border-gray-300 bg-yellow-50 px-3 py-2 text-center dark:border-gray-600 dark:bg-yellow-900/30 ${
-                matchWinner === 'B' ? 'font-bold dark:text-yellow-100' : 'font-normal dark:text-gray-200'
-              }`}
+              className={`border border-border-strong bg-warning-bg px-3 py-2 text-center ${matchWinner === 'B' ? 'font-bold dark:text-yellow-100' : 'font-normal dark:text-gray-200'}`}
             >
               {gamesWonB}
             </td>
@@ -1207,7 +1199,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
         {/* ヘッダー */}
         <Breadcrumbs crumbs={breadcrumbItems} />
         <div className="flex justify-between items-center mb-6">
-          <Link href={getPublicMatchesListPath()} className="text-blue-600 hover:underline dark:text-blue-400">
+          <Link href={getPublicMatchesListPath()} className="text-primary hover:underline">
             ← 試合一覧に戻る
           </Link>
         </div>
@@ -1226,22 +1218,22 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
             >
               <div className="mb-4 flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-medium text-gray-500 dark:text-gray-400">{selectedReviewGroup.hintTitle}</p>
-                  <h2 id="review-points-title" className="mt-1 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <p className="text-xs font-medium text-text-muted">{selectedReviewGroup.hintTitle}</p>
+                  <h2 id="review-points-title" className="mt-1 text-lg font-semibold text-text">
                     {selectedReviewGroup.group.label}
                   </h2>
                 </div>
                 <button
                   type="button"
                   onClick={() => setSelectedReviewGroup(null)}
-                  className="rounded border border-gray-200 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="rounded border border-border px-3 py-1.5 text-sm text-gray-700 hover:bg-bg-subtle dark:text-gray-200"
                 >
                   閉じる
                 </button>
               </div>
 
               {selectedReviewGroup.group.points.length === 0 ? (
-                <div className="rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                <div className="rounded border border-border bg-gray-50 px-4 py-3 text-sm text-text-secondary dark:bg-gray-800">
                   {selectedReviewGroup.group.emptyMessage}
                 </div>
               ) : (
@@ -1250,13 +1242,13 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                     const pointDetails = [point.point_detail, point.point_note, point.shot_type, point.shot_course].filter(Boolean);
 
                     return (
-                      <div key={point.pointId} className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/80">
+                      <div key={point.pointId} className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/80">
                         <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                           <div>
-                            <div className="font-semibold text-gray-900 dark:text-gray-100">
+                            <div className="font-semibold text-text">
                               第{point.gameNumber}ゲーム #{point.pointNumber}
                             </div>
-                            <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">{formatScoreTransition(point)}</div>
+                            <div className="mt-1 text-sm text-text-secondary">{formatScoreTransition(point)}</div>
                           </div>
                           <button
                             type="button"
@@ -1264,34 +1256,32 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                               scrollToReviewPoint(point);
                               setSelectedReviewGroup(null);
                             }}
-                            className="self-start rounded border border-blue-200 bg-white px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-gray-900 dark:text-blue-300 dark:hover:bg-blue-950/40"
+                            className="self-start rounded border border-info-border bg-white px-3 py-1.5 text-sm font-medium text-info hover:bg-blue-50 dark:bg-gray-900 dark:hover:bg-blue-950/40"
                           >
                             このポイントへ移動
                           </button>
                         </div>
 
-                        <div className="grid grid-cols-1 gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+                        <div className="grid grid-cols-1 gap-2 text-sm text-text-secondary sm:grid-cols-2">
                           <div>
-                            結果: <span className="font-medium text-gray-900 dark:text-gray-100">{getResultTypeLabel(point.resultType || '') || '不明'}</span>
+                            結果: <span className="font-medium text-text">{getResultTypeLabel(point.resultType || '') || '不明'}</span>
                           </div>
                           <div>
-                            得点: <span className="font-medium text-gray-900 dark:text-gray-100">{formatTeamName(point.winnerTeam)}</span>
+                            得点: <span className="font-medium text-text">{formatTeamName(point.winnerTeam)}</span>
                           </div>
                           <div>
-                            選手: <span className="font-medium text-gray-900 dark:text-gray-100">{point.playerName || '未記録'}</span>
+                            選手: <span className="font-medium text-text">{point.playerName || '未記録'}</span>
                           </div>
                           <div>
-                            サーブ: <span className="font-medium text-gray-900 dark:text-gray-100">{point.servingPlayer || '未記録'}</span>
+                            サーブ: <span className="font-medium text-text">{point.servingPlayer || '未記録'}</span>
                           </div>
                           <div>
-                            ラリー本数: <span className="font-medium text-gray-900 dark:text-gray-100">{point.rallyCount ?? '未記録'}</span>
+                            ラリー本数: <span className="font-medium text-text">{point.rallyCount ?? '未記録'}</span>
                           </div>
                         </div>
 
                         {pointDetails.length > 0 && (
-                          <div className="mt-3 rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/60 dark:text-gray-300">
-                            {pointDetails.join(' / ')}
-                          </div>
+                          <div className="mt-3 rounded bg-white px-3 py-2 text-sm text-text-secondary dark:bg-gray-900/60">{pointDetails.join(' / ')}</div>
                         )}
                       </div>
                     );
@@ -1302,41 +1292,39 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
           </div>
         )}
 
-        <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <section className="mb-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div>
-                <p className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">試合結果</p>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                <p className="mb-2 text-sm font-medium text-text-muted">試合結果</p>
+                <h1 className="text-2xl font-bold text-text">
                   {getShortTeamName('A')} vs {getShortTeamName('B')}
                 </h1>
                 <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                   {tournamentInfo && fullTournamentUrl ? (
-                    <Link href={fullTournamentUrl} className="font-medium text-blue-600 hover:underline dark:text-blue-400">
+                    <Link href={fullTournamentUrl} className="font-medium text-primary hover:underline">
                       {getTournamentDisplayName()}
                     </Link>
                   ) : (
-                    <span className="font-medium text-gray-800 dark:text-gray-100">{getTournamentDisplayName()}</span>
+                    <span className="font-medium text-text">{getTournamentDisplayName()}</span>
                   )}
-                  {match.round_name && (
-                    <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">{match.round_name}</span>
-                  )}
-                  <span className="text-gray-500 dark:text-gray-400">記録日 {recordedDate}</span>
+                  {match.round_name && <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">{match.round_name}</span>}
+                  <span className="text-text-muted">記録日 {recordedDate}</span>
                 </div>
               </div>
 
               <div className="rounded-lg bg-gray-50 px-4 py-3 text-center dark:bg-gray-700/50">
-                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">最終ゲームカウント</div>
-                <div className="mt-1 font-mono text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <div className="text-xs font-medium text-text-muted">最終ゲームカウント</div>
+                <div className="mt-1 font-mono text-3xl font-bold text-text">
                   {resultViewModel.matchOverview.gamesWon.A} - {resultViewModel.matchOverview.gamesWon.B}
                 </div>
               </div>
             </div>
 
             {matchWinner && (
-              <div className="rounded border border-green-300 bg-green-100 p-4 dark:border-green-800 dark:bg-green-900/30">
-                <p className="text-lg font-semibold text-green-800 dark:text-green-300">{getShortTeamName(matchWinner)} の勝利</p>
-                <p className="mt-1 text-sm text-green-800/80 dark:text-green-300/80">
+              <div className="rounded border border-success-border bg-success-bg p-4">
+                <p className="text-lg font-semibold text-success">{getShortTeamName(matchWinner)} の勝利</p>
+                <p className="mt-1 text-sm text-success/80">
                   総ポイント {resultViewModel.matchOverview.totalPoints}
                   本の記録があります。
                 </p>
@@ -1344,21 +1332,21 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
             )}
 
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">総ポイント数</div>
-                <div className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">{resultViewModel.matchOverview.totalPoints}</div>
+              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-text-muted">総ポイント数</div>
+                <div className="mt-2 text-2xl font-bold text-text">{resultViewModel.matchOverview.totalPoints}</div>
               </div>
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">勝敗を分けた局面候補</div>
-                <div className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">{resultViewModel.matchOverview.decisiveMoments.length}件</div>
+              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-text-muted">勝敗を分けた局面候補</div>
+                <div className="mt-2 text-2xl font-bold text-text">{resultViewModel.matchOverview.decisiveMoments.length}件</div>
               </div>
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">{getShortTeamName('A')}の最大連続得点</div>
-                <div className="mt-2 text-2xl font-bold text-blue-700 dark:text-blue-300">{resultViewModel.matchOverview.streaks.A.for}点</div>
+              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-text-muted">{getShortTeamName('A')}の最大連続得点</div>
+                <div className="mt-2 text-2xl font-bold text-info">{resultViewModel.matchOverview.streaks.A.for}点</div>
               </div>
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-gray-500 dark:text-gray-400">{getShortTeamName('B')}の最大連続得点</div>
-                <div className="mt-2 text-2xl font-bold text-green-700 dark:text-green-300">{resultViewModel.matchOverview.streaks.B.for}点</div>
+              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
+                <div className="text-xs font-medium text-text-muted">{getShortTeamName('B')}の最大連続得点</div>
+                <div className="mt-2 text-2xl font-bold text-success">{resultViewModel.matchOverview.streaks.B.for}点</div>
               </div>
             </div>
 
@@ -1368,8 +1356,8 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
             </div>
 
             {resultViewModel.matchOverview.decisiveMoments.length > 0 && (
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
-                <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">勝敗を分けた局面候補</h2>
+              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-700/40">
+                <h2 className="text-sm font-semibold text-text">勝敗を分けた局面候補</h2>
                 <div className="mt-3 grid gap-2">
                   {resultViewModel.matchOverview.decisiveMoments.map((moment) => (
                     <button
@@ -1380,9 +1368,9 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                           playVideo: true,
                         })
                       }
-                      className="w-full rounded bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                      className="w-full rounded bg-surface px-3 py-2 text-left text-sm text-text-secondary hover:bg-bg-subtle"
                     >
-                      <span className="font-medium text-gray-900 dark:text-gray-100">{moment.label}</span> {moment.description}
+                      <span className="font-medium text-text">{moment.label}</span> {moment.description}
                     </button>
                   ))}
                 </div>
@@ -1406,19 +1394,15 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                     <button
                       type="button"
                       onClick={() => setIsVideoFloating((current) => !current)}
-                      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${
-                        isVideoFloating
-                          ? 'border-gray-300 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700'
-                          : 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400'
-                      }`}
+                      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${isVideoFloating ? 'border-gray-300 bg-surface text-text shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700' : 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400'}`}
                       aria-pressed={isVideoFloating}
                     >
                       {!isVideoFloating && <span className="h-2.5 w-2.5 rounded-full bg-white/90 ring-4 ring-white/20" />}
                       {isVideoFloating ? '元の位置に戻す' : '動画を固定表示'}
                     </button>
-                    {!isVideoFloating && <span className="text-xs font-medium text-blue-700 dark:text-blue-300">スクロールしながら動画を見返せます</span>}
+                    {!isVideoFloating && <span className="text-xs font-medium text-info">スクロールしながら動画を見返せます</span>}
                     {isVideoFloating && (
-                      <div className="hidden items-center gap-1 rounded-full bg-gray-100 p-1 dark:bg-gray-700 md:flex">
+                      <div className="hidden items-center gap-1 rounded-full bg-bg-subtle p-1 md:flex">
                         {FLOATING_VIDEO_SIZE_OPTIONS.map((option) => (
                           <button
                             key={option.value}
@@ -1450,7 +1434,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                     />
                   </div>
                 ) : (
-                  <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+                  <div className="rounded border border-warning-border bg-warning-bg px-4 py-3 text-sm text-warning">
                     この動画はページ内に埋め込めないため、各ポイントの再生操作で YouTube を別タブで開きます。
                   </div>
                 )}
@@ -1459,10 +1443,10 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
           </>
         )}
 
-        <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <section className="mb-8 rounded-lg border border-border bg-surface p-6 shadow-sm">
           <div className="mb-4">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">試合の流れ</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">各ゲームの途中経過と、連続得点や重要局面をまとめています。</p>
+            <h2 className="text-xl font-semibold text-text">試合の流れ</h2>
+            <p className="mt-1 text-sm text-text-muted">各ゲームの途中経過と、連続得点や重要局面をまとめています。</p>
           </div>
 
           <div className="space-y-3">
@@ -1471,15 +1455,15 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
               const rawGame = gamesAsc.find((candidate) => candidate.game_number === game.gameNumber);
 
               return (
-                <div key={game.gameNumber} className="rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/60">
+                <div key={game.gameNumber} className="rounded-lg border border-border bg-gray-50 dark:bg-gray-800/60">
                   <button
                     type="button"
                     onClick={() => toggleGameExpansion(game.gameNumber)}
                     className="flex w-full items-start justify-between gap-3 rounded-t-lg p-4 text-left hover:bg-gray-100/70 dark:hover:bg-gray-700/40"
                   >
                     <div className="flex-1">
-                      <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">第{game.gameNumber}ゲーム</div>
-                      <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                      <div className="text-lg font-semibold text-text">第{game.gameNumber}ゲーム</div>
+                      <div className="mt-1 text-sm text-text-secondary">
                         最終スコア {game.finalScore} / {game.pointCount}ポイント
                       </div>
                       <div className="mt-2 flex flex-wrap gap-2">
@@ -1508,7 +1492,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                   </button>
 
                   {isExpanded && (
-                    <div className="border-t border-gray-200 px-4 pb-4 dark:border-gray-700">
+                    <div className="border-t border-border px-4 pb-4">
                       <div className="mt-3 space-y-2">
                         {(rawGame ? getPointsDesc(rawGame).reverse() : []).map((point: Point) => {
                           const pointsBeforeThis = rawGame?.points?.filter((p) => p.point_number < point.point_number) || [];
@@ -1523,14 +1507,10 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                             <div
                               key={point.id}
                               id={getPointAnchorId(point.id)}
-                              className={`rounded-lg border border-gray-200 px-3 py-3 text-sm transition-colors dark:border-gray-700 ${
-                                highlightedPointId === point.id
-                                  ? 'bg-blue-100 ring-2 ring-blue-300 dark:bg-blue-900/40 dark:ring-blue-700'
-                                  : 'bg-white dark:bg-gray-900/40'
-                              }`}
+                              className={`rounded-lg border border-border px-3 py-3 text-sm transition-colors ${highlightedPointId === point.id ? 'bg-blue-100 ring-2 ring-blue-300 dark:bg-blue-900/40 dark:ring-blue-700' : 'bg-white dark:bg-gray-900/40'}`}
                             >
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+                                <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">
                                   {finalTeamAPoints} - {finalTeamBPoints}
                                 </span>
                                 <span
@@ -1547,26 +1527,17 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                                 </span>
                               </div>
 
-                              <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                              <div className="mt-2 text-sm text-text-secondary">
                                 サーブ {formatServerLabel(point)} / ラリー本数 {point.rally_count !== null ? `${point.rally_count}本` : '未記録'} / 終わり方{' '}
                                 {getResultTypeLabel(point.result_type || '')}
                                 {getPointPlayerName(point) ? ` / ${getPointPlayerLabel(point)} ${getPointPlayerName(point)}` : ''}
                               </div>
 
                               <div className="mt-2 flex flex-wrap items-center gap-2">
-                                {point.first_serve_fault && (
-                                  <span className="rounded bg-orange-50 px-2 py-1 text-xs text-orange-600 dark:bg-orange-900/30 dark:text-orange-300">
-                                    1stフォルト
-                                  </span>
-                                )}
-                                {point.double_fault && (
-                                  <span className="rounded bg-red-50 px-2 py-1 text-xs text-red-600 dark:bg-red-900/30 dark:text-red-300">ダブルフォルト</span>
-                                )}
+                                {point.first_serve_fault && <span className="rounded bg-warning-bg px-2 py-1 text-xs text-warning">1stフォルト</span>}
+                                {point.double_fault && <span className="rounded bg-danger-bg px-2 py-1 text-xs text-danger">ダブルフォルト</span>}
                                 {pointContext?.tags.map((tag) => (
-                                  <span
-                                    key={`${point.id}-${tag}`}
-                                    className="rounded-full bg-amber-100 px-2.5 py-1 text-xs text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
-                                  >
+                                  <span key={`${point.id}-${tag}`} className="rounded-full bg-warning-bg px-2.5 py-1 text-xs text-warning">
                                     {tag}
                                   </span>
                                 ))}
@@ -1601,16 +1572,16 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
         </section>
 
         <section className="mb-8">
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-sm">
             <div className="mb-4">
               <div>
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">振り返りポイント</h2>
-                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">記録済みポイントから、次に見返す場面を絞るための要点です。</p>
+                <h2 className="text-xl font-semibold text-text">振り返りポイント</h2>
+                <p className="mt-1 text-sm text-text-muted">記録済みポイントから、次に見返す場面を絞るための要点です。</p>
               </div>
             </div>
 
             {!analysisSummary.scoreIntegrity.ok && (
-              <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+              <div className="rounded-lg border border-danger-border bg-danger-bg p-4 text-sm text-danger">
                 分析用に再構築したゲームスコアが既存スコアと一致しなかったため、分析表示を停止しています。
                 <ul className="mt-2 list-disc list-inside">
                   {analysisSummary.scoreIntegrity.mismatches.map((mismatch) => (
@@ -1627,15 +1598,15 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
 
             {analysisSummary.scoreIntegrity.ok && (
               <>
-                <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-700/40">
-                  <h3 className="mb-2 font-semibold text-gray-800 dark:text-gray-100">分析の見方</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                <div className="mb-4 rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-700/40">
+                  <h3 className="mb-2 font-semibold text-text">分析の見方</h3>
+                  <p className="text-sm text-text-secondary">
                     この分析は、試合のポイント記録から見返しやすい手がかりをまとめたものです。数字は評価ではなく、次にどの場面を確認するかを考える入口として使います。
                   </p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="text-sm text-gray-600 dark:text-gray-300">注目チーム</span>
+                  <span className="text-sm text-text-secondary">注目チーム</span>
                   {(['A', 'B'] as TeamKey[]).map((team) => (
                     <button
                       key={team}
@@ -1666,7 +1637,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                   ))}
                   <Link
                     href={getPublicMatchesGrowthPath(focusedGrowthTarget.key)}
-                    className="rounded border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                    className="rounded border border-border-strong bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
                   >
                     この対象の成長分析
                   </Link>
@@ -1675,8 +1646,8 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                 {focusedImprovementHints.length > 0 && (
                   <div className="mb-6">
                     <div className="mb-3">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">この試合から見る改善ヒント</h3>
-                      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">1試合分の記録から、次に確認しやすい候補を最大3件に絞っています。</p>
+                      <h3 className="text-lg font-semibold text-text">この試合から見る改善ヒント</h3>
+                      <p className="mt-1 text-sm text-text-muted">1試合分の記録から、次に確認しやすい候補を最大3件に絞っています。</p>
                     </div>
 
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -1685,23 +1656,20 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                         const reviewGroupsByLabel = new Map((hint.reviewGroups ?? []).map((group) => [group.label, group]));
 
                         return (
-                          <div key={hint.id} className="rounded-lg border border-blue-100 bg-blue-50/60 p-5 dark:border-blue-900/60 dark:bg-blue-950/20">
+                          <div key={hint.id} className="rounded-lg border border-info-border bg-info-bg p-5">
                             <div className="mb-3 flex items-start justify-between gap-3">
-                              <h4 className="font-semibold leading-snug text-gray-900 dark:text-gray-100">{hint.title}</h4>
+                              <h4 className="font-semibold leading-snug text-text">{hint.title}</h4>
                               <span className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${confidenceBadge.className}`}>
                                 {confidenceBadge.label}
                               </span>
                             </div>
 
-                            <div className="space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300">
+                            <div className="space-y-3 text-sm leading-6 text-text-secondary">
                               <p>{hint.evidence}</p>
                               {hint.evidenceItems && hint.evidenceItems.length > 0 && (
                                 <ul className="space-y-1">
                                   {hint.evidenceItems.map((item) => (
-                                    <li
-                                      key={`${hint.id}-${item}`}
-                                      className="rounded bg-white/70 px-3 py-2 text-gray-700 dark:bg-gray-800/70 dark:text-gray-300"
-                                    >
+                                    <li key={`${hint.id}-${item}`} className="rounded bg-white/70 px-3 py-2 text-text-secondary dark:bg-gray-800/70">
                                       {item}
                                     </li>
                                   ))}
@@ -1709,12 +1677,12 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                               )}
 
                               <div>
-                                <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">読み取り</div>
+                                <div className="mb-1 font-medium text-text">読み取り</div>
                                 <p>{hint.interpretation}</p>
                               </div>
 
                               <div>
-                                <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">次に見ること</div>
+                                <div className="mb-1 font-medium text-text">次に見ること</div>
                                 <p>{hint.nextCheck}</p>
                                 {hint.nextCheckItems && hint.nextCheckItems.length > 0 && (
                                   <ul className="mt-2 space-y-1">
@@ -1732,10 +1700,10 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                                                   group: reviewGroup,
                                                 })
                                               }
-                                              className="flex w-full items-center justify-between gap-2 rounded border border-blue-100 bg-white/75 px-3 py-2 text-left text-sm text-blue-800 hover:border-blue-300 hover:bg-white dark:border-blue-900/60 dark:bg-gray-900/40 dark:text-blue-300 dark:hover:border-blue-700"
+                                              className="flex w-full items-center justify-between gap-2 rounded border border-info-border bg-white/75 px-3 py-2 text-left text-sm text-info hover:border-blue-300 hover:bg-white dark:bg-gray-900/40 dark:hover:border-blue-700"
                                             >
                                               <span>{item}</span>
-                                              <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/50 dark:text-blue-200">
+                                              <span className="shrink-0 rounded-full bg-info-bg px-2 py-0.5 text-xs font-medium text-info">
                                                 {reviewGroup.points.length}件
                                               </span>
                                             </button>
@@ -1754,7 +1722,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                                   {hint.sourceMetrics.map((metric) => (
                                     <span
                                       key={`${hint.id}-${metric.key}-${metric.label ?? metric.value}`}
-                                      className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                      className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs text-text-secondary"
                                     >
                                       {metric.label ?? metric.key}: <span className="font-semibold">{formatHintMetricValue(metric)}</span>
                                     </span>
@@ -1762,11 +1730,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                                 </div>
                               )}
 
-                              {hint.confidence === 'low' && (
-                                <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-                                  {hint.confidenceReason}
-                                </div>
-                              )}
+                              {hint.confidence === 'low' && <div className="rounded bg-warning-bg px-3 py-2 text-warning">{hint.confidenceReason}</div>}
                             </div>
                           </div>
                         );
@@ -1776,7 +1740,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                 )}
 
                 {focusedImprovementHints.length === 0 && analysisSummary.reconstructedPoints.length > 0 && analysisSummary.reconstructedPoints.length < 8 && (
-                  <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-700/40 dark:text-gray-300">
+                  <div className="mb-6 rounded-lg border border-border bg-gray-50 p-4 text-sm text-text-secondary dark:bg-gray-700/40">
                     十分な記録から改善ヒントを生成できませんでした。ポイント記録が増えると、確認候補を出しやすくなります。
                   </div>
                 )}
@@ -1786,46 +1750,46 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                     const badge = getReliabilityBadge(card.reliability);
 
                     return (
-                      <div key={card.id} className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800/80">
+                      <div key={card.id} className="rounded-lg border border-border bg-white p-5 dark:bg-gray-800/80">
                         <div className="flex items-start justify-between gap-3 mb-3">
-                          <h3 className="font-semibold leading-snug text-gray-800 dark:text-gray-100">{card.title}</h3>
+                          <h3 className="font-semibold leading-snug text-text">{card.title}</h3>
                           {badge && <span className={`inline-flex shrink-0 rounded-full px-2 py-1 text-xs font-medium ${badge.className}`}>{badge.label}</span>}
                         </div>
 
                         <div className="mb-2">
-                          <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">{card.primaryValue}</div>
-                          {card.secondaryValue && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{card.secondaryValue}</p>}
+                          <div className="text-3xl font-bold text-text">{card.primaryValue}</div>
+                          {card.secondaryValue && <p className="mt-1 text-sm text-text-muted">{card.secondaryValue}</p>}
                         </div>
 
-                        <p className="text-sm leading-6 text-gray-700 dark:text-gray-300">{card.summary}</p>
+                        <p className="text-sm leading-6 text-text-secondary">{card.summary}</p>
 
-                        <details className="group mt-4 border-t border-gray-100 pt-3 dark:border-gray-700">
-                          <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-blue-600 dark:text-blue-400">
+                        <details className="group mt-4 border-t border-border pt-3">
+                          <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-primary">
                             <span>この数字の見方をみる</span>
-                            <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">▼</span>
-                            <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">▲</span>
+                            <span className="text-xs text-text-muted group-open:hidden">▼</span>
+                            <span className="hidden text-xs text-text-muted group-open:inline">▲</span>
                           </summary>
 
-                          <div className="mt-3 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                          <div className="mt-3 space-y-3 text-sm text-text-secondary">
                             <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">これは何？</div>
+                              <div className="mb-1 font-medium text-text">これは何？</div>
                               <p>{card.description}</p>
                             </div>
                             <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">どう見る？</div>
+                              <div className="mb-1 font-medium text-text">どう見る？</div>
                               <p>{card.howToRead}</p>
                             </div>
                             <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">次に確認</div>
+                              <div className="mb-1 font-medium text-text">次に確認</div>
                               <p>{card.nextCheck}</p>
                             </div>
                             <div>
-                              <div className="mb-1 font-medium text-gray-800 dark:text-gray-100">なぜ見るの？</div>
+                              <div className="mb-1 font-medium text-text">なぜ見るの？</div>
                               <p>{card.whyItMatters}</p>
                             </div>
 
                             {card.reliability === 'low' && (
-                              <div className="rounded bg-amber-50 px-3 py-2 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                              <div className="rounded bg-warning-bg px-3 py-2 text-warning">
                                 参考値: 対象ポイントが少ないため、傾向としてはまだ判断しにくい数字です。
                               </div>
                             )}
@@ -1841,8 +1805,8 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                                   key={`${card.id}-${detail.label}`}
                                   className="flex items-start justify-between gap-3 border-b border-gray-100 pb-2 last:border-b-0 last:pb-0 dark:border-gray-700/60"
                                 >
-                                  <span className="text-gray-600 dark:text-gray-400">{formatGuideDetailLabel(detail.label)}</span>
-                                  <span className="text-right font-medium text-gray-800 dark:text-gray-100">{detail.value}</span>
+                                  <span className="text-text-muted">{formatGuideDetailLabel(detail.label)}</span>
+                                  <span className="text-right font-medium text-text">{detail.value}</span>
                                 </div>
                               ))}
                             </div>
@@ -1858,28 +1822,28 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
         </section>
 
         {analysisSummary.scoreIntegrity.ok && (
-          <details className="group mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <details className="group mb-6 rounded-lg border border-border bg-surface p-4 shadow-sm">
+            <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-text">
               <span>分析の根拠をみる</span>
-              <span className="text-sm text-gray-500 group-open:hidden dark:text-gray-400">▼</span>
-              <span className="hidden text-sm text-gray-500 group-open:inline dark:text-gray-400">▲</span>
+              <span className="text-sm text-text-muted group-open:hidden">▼</span>
+              <span className="hidden text-sm text-text-muted group-open:inline">▲</span>
             </summary>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">振り返りポイントの背景にある比較指標です。必要なときだけ開いて確認できます。</p>
+            <p className="mt-2 text-sm text-text-muted">振り返りポイントの背景にある比較指標です。必要なときだけ開いて確認できます。</p>
             <div className="mt-4 overflow-x-auto">
               <table className="min-w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <tr className="border-b border-border">
                     <th className="py-2 text-left font-medium text-gray-700 dark:text-gray-200">指標</th>
-                    <th className="py-2 text-center font-medium text-blue-700 dark:text-blue-300">{getShortTeamName('A')}</th>
-                    <th className="py-2 text-center font-medium text-green-700 dark:text-green-300">{getShortTeamName('B')}</th>
+                    <th className="py-2 text-center font-medium text-info">{getShortTeamName('A')}</th>
+                    <th className="py-2 text-center font-medium text-success">{getShortTeamName('B')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonRows.map((row) => (
                     <tr key={row.label} className="border-b border-gray-100 dark:border-gray-700/70">
-                      <td className="py-3 text-gray-700 dark:text-gray-300">{row.label}</td>
-                      <td className="py-3 text-center text-gray-800 dark:text-gray-100">{row.a}</td>
-                      <td className="py-3 text-center text-gray-800 dark:text-gray-100">{row.b}</td>
+                      <td className="py-3 text-text-secondary">{row.label}</td>
+                      <td className="py-3 text-center text-text">{row.a}</td>
+                      <td className="py-3 text-center text-text">{row.b}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1888,35 +1852,35 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
           </details>
         )}
 
-        <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <section className="mb-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
           <div className="mb-4">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">得点・失点の内訳</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">点がどう動いたかを、得点と失点につながった記録に分けて見られます。</p>
+            <h2 className="text-xl font-semibold text-text">得点・失点の内訳</h2>
+            <p className="mt-1 text-sm text-text-muted">点がどう動いたかを、得点と失点につながった記録に分けて見られます。</p>
           </div>
 
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {resultViewModel.pointBreakdown.map((teamBreakdown) => (
-              <div key={teamBreakdown.team} className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{teamBreakdown.teamName}</h3>
+              <div key={teamBreakdown.team} className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
+                <h3 className="text-lg font-semibold text-text">{teamBreakdown.teamName}</h3>
                 <div className="mt-4 grid gap-4 md:grid-cols-2">
                   <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">得点につながった記録</div>
+                    <div className="text-sm font-medium text-text">得点につながった記録</div>
                     <div className="mt-3 space-y-2">
                       {teamBreakdown.scoringReasons.map((entry) => (
                         <div key={`${teamBreakdown.team}-${entry.label}-for`} className="flex items-center justify-between text-sm">
-                          <span className="text-gray-700 dark:text-gray-300">{entry.label}</span>
-                          <span className="font-semibold text-gray-900 dark:text-gray-100">{entry.count}件</span>
+                          <span className="text-text-secondary">{entry.label}</span>
+                          <span className="font-semibold text-text">{entry.count}件</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">失点につながった記録</div>
+                    <div className="text-sm font-medium text-text">失点につながった記録</div>
                     <div className="mt-3 space-y-2">
                       {teamBreakdown.concededReasons.map((entry) => (
                         <div key={`${teamBreakdown.team}-${entry.label}-against`} className="flex items-center justify-between text-sm">
-                          <span className="text-gray-700 dark:text-gray-300">{entry.label}</span>
-                          <span className="font-semibold text-gray-900 dark:text-gray-100">{entry.count}件</span>
+                          <span className="text-text-secondary">{entry.label}</span>
+                          <span className="font-semibold text-text">{entry.count}件</span>
                         </div>
                       ))}
                     </div>
@@ -1927,55 +1891,55 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
           </div>
         </section>
 
-        <section className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <section className="mb-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
           <div className="mb-4">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">選手別サマリー</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">各選手がどの役割で関わったかを、まず要点から確認できます。</p>
+            <h2 className="text-xl font-semibold text-text">選手別サマリー</h2>
+            <p className="mt-1 text-sm text-text-muted">各選手がどの役割で関わったかを、まず要点から確認できます。</p>
           </div>
 
           <div className="space-y-4">
             {resultViewModel.playerInvolvement.map((player) => (
-              <details key={player.name} className="group rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+              <details key={player.name} className="group rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
                 <summary className="cursor-pointer list-none">
                   <div className="flex flex-col gap-3">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div>
-                        <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">{player.name}</div>
-                        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        <div className="text-lg font-semibold text-text">{player.name}</div>
+                        <div className="mt-1 text-sm text-text-muted">
                           {player.team === 'A' ? getShortTeamName('A') : player.team === 'B' ? getShortTeamName('B') : '所属未確定'}
                         </div>
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">
+                      <div className="text-sm text-text-secondary">
                         サーブ {player.servePoints}本 / サーブ時得点率 {player.serveWinRate !== null ? `${player.serveWinRate.toFixed(1)}%` : '—'}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between rounded bg-white px-3 py-2 text-sm text-gray-700 dark:bg-gray-900/40 dark:text-gray-300">
+                    <div className="flex items-center justify-between rounded bg-white px-3 py-2 text-sm text-text-secondary dark:bg-gray-900/40">
                       <span>詳細をみる</span>
-                      <span className="text-xs text-gray-500 group-open:hidden dark:text-gray-400">▼</span>
-                      <span className="hidden text-xs text-gray-500 group-open:inline dark:text-gray-400">▲</span>
+                      <span className="text-xs text-text-muted group-open:hidden">▼</span>
+                      <span className="hidden text-xs text-text-muted group-open:inline">▲</span>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
                       <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                        <div className="text-xs text-gray-500 dark:text-gray-400">サーブ</div>
-                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">{player.servePoints}本</div>
+                        <div className="text-xs text-text-muted">サーブ</div>
+                        <div className="mt-1 font-semibold text-text">{player.servePoints}本</div>
                       </div>
                       <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                        <div className="text-xs text-gray-500 dark:text-gray-400">サーブ時得点</div>
-                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">{player.serveWon}本</div>
+                        <div className="text-xs text-text-muted">サーブ時得点</div>
+                        <div className="mt-1 font-semibold text-text">{player.serveWon}本</div>
                       </div>
                       <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                        <div className="text-xs text-gray-500 dark:text-gray-400">得点に関わった記録</div>
-                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">{player.scoringInvolvements}件</div>
+                        <div className="text-xs text-text-muted">得点に関わった記録</div>
+                        <div className="mt-1 font-semibold text-text">{player.scoringInvolvements}件</div>
                       </div>
                       <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                        <div className="text-xs text-gray-500 dark:text-gray-400">失点につながった記録</div>
-                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">{player.concededInvolvements}件</div>
+                        <div className="text-xs text-text-muted">失点につながった記録</div>
+                        <div className="mt-1 font-semibold text-text">{player.concededInvolvements}件</div>
                       </div>
                       <div className="rounded bg-white px-3 py-2 text-sm dark:bg-gray-900/40">
-                        <div className="text-xs text-gray-500 dark:text-gray-400">ダブルフォルト</div>
-                        <div className="mt-1 font-semibold text-gray-900 dark:text-gray-100">{player.doubleFaults}件</div>
+                        <div className="text-xs text-text-muted">ダブルフォルト</div>
+                        <div className="mt-1 font-semibold text-text">{player.doubleFaults}件</div>
                       </div>
                     </div>
                   </div>
@@ -1983,44 +1947,44 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
 
                 <div className="mt-4 grid gap-4 lg:grid-cols-2">
                   <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">決定打の種類</h3>
+                    <h3 className="text-sm font-medium text-text">決定打の種類</h3>
                     <div className="mt-3 space-y-2">
                       {player.winnerBreakdown.length > 0 ? (
                         player.winnerBreakdown.map((entry) => (
                           <div key={`${player.name}-winner-${entry.label}`} className="flex items-center justify-between text-sm">
-                            <span className="text-gray-700 dark:text-gray-300">{entry.label}</span>
-                            <span className="font-semibold text-gray-900 dark:text-gray-100">{entry.count}件</span>
+                            <span className="text-text-secondary">{entry.label}</span>
+                            <span className="font-semibold text-text">{entry.count}件</span>
                           </div>
                         ))
                       ) : (
-                        <div className="text-sm text-gray-500 dark:text-gray-400">この試合では個人名付きの決定打記録はありません。</div>
+                        <div className="text-sm text-text-muted">この試合では個人名付きの決定打記録はありません。</div>
                       )}
                     </div>
                   </div>
 
                   <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">改善のヒントになりそうな記録</h3>
+                    <h3 className="text-sm font-medium text-text">改善のヒントになりそうな記録</h3>
                     <div className="mt-3 space-y-2">
                       {player.errorBreakdown.length > 0 ? (
                         player.errorBreakdown.map((entry) => (
                           <div key={`${player.name}-error-${entry.label}`} className="flex items-center justify-between text-sm">
-                            <span className="text-gray-700 dark:text-gray-300">{entry.label}</span>
-                            <span className="font-semibold text-gray-900 dark:text-gray-100">{entry.count}件</span>
+                            <span className="text-text-secondary">{entry.label}</span>
+                            <span className="font-semibold text-text">{entry.count}件</span>
                           </div>
                         ))
                       ) : (
-                        <div className="text-sm text-gray-500 dark:text-gray-400">個人名付きの失点記録はありません。</div>
+                        <div className="text-sm text-text-muted">個人名付きの失点記録はありません。</div>
                       )}
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-4 rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">ゲーム別の関与</h3>
+                  <h3 className="text-sm font-medium text-text">ゲーム別の関与</h3>
                   <div className="mt-3 overflow-x-auto">
                     <table className="min-w-full text-sm">
                       <thead>
-                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                        <tr className="border-b border-border">
                           <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-200">ゲーム</th>
                           <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">サーブ</th>
                           <th className="px-3 py-2 text-center font-medium text-gray-700 dark:text-gray-200">得点</th>
@@ -2030,14 +1994,14 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                       <tbody>
                         {player.gameBreakdown.map((entry) => (
                           <tr key={`${player.name}-game-${entry.gameNumber}`} className="border-b border-gray-100 last:border-b-0 dark:border-gray-800">
-                            <td className="px-3 py-2 font-medium text-gray-900 dark:text-gray-100">{entry.gameNumber}</td>
-                            <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                            <td className="px-3 py-2 font-medium text-text">{entry.gameNumber}</td>
+                            <td className="px-3 py-2 text-center text-text-secondary">
                               <span className={entry.servePoints > 0 ? 'font-semibold' : undefined}>{entry.servePoints}</span>
                             </td>
-                            <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                            <td className="px-3 py-2 text-center text-text-secondary">
                               <span className={entry.scoringInvolvements > 0 ? 'font-semibold' : undefined}>{entry.scoringInvolvements}</span>
                             </td>
-                            <td className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
+                            <td className="px-3 py-2 text-center text-text-secondary">
                               <span className={entry.concededInvolvements > 0 ? 'font-semibold' : undefined}>{entry.concededInvolvements}</span>
                             </td>
                           </tr>

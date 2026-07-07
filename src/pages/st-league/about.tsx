@@ -47,7 +47,7 @@ export default function STLeagueAbout() {
         </section>
 
         {/* Content Block 1: Overview */}
-        <section className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
+        <section className="bg-surface p-8 rounded-2xl shadow-sm">
           <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-900 dark:text-white border-b pb-4 dark:border-gray-700">リーグ概要</h2>
           <div className="prose dark:prose-invert max-w-none">
             <p>
@@ -55,25 +55,25 @@ export default function STLeagueAbout() {
               <strong>STリーグⅠ・Ⅱ・Ⅲ</strong>
               の階層によるリーグ構造のもと、昇格・降格をかけた戦いが行われます。
             </p>
-            <ul className="list-disc pl-5 mt-4 space-y-2 text-gray-600 dark:text-gray-300">
+            <ul className="list-disc pl-5 mt-4 space-y-2 text-text-secondary">
               <li>
-                <strong className="text-gray-800 dark:text-gray-100">カテゴリー</strong>： 男子、女子
+                <strong className="text-text">カテゴリー</strong>： 男子、女子
               </li>
               <li>
-                <strong className="text-gray-800 dark:text-gray-100">構成</strong>： STリーグⅠ・Ⅱ・Ⅲ の階層構造（年度成績で昇降格あり）
+                <strong className="text-text">構成</strong>： STリーグⅠ・Ⅱ・Ⅲ の階層構造（年度成績で昇降格あり）
               </li>
               <li>
-                <strong className="text-gray-800 dark:text-gray-100">試合形式</strong>： 2ダブルス＋1シングル（3本中2本先取）、7ゲームマッチ
+                <strong className="text-text">試合形式</strong>： 2ダブルス＋1シングル（3本中2本先取）、7ゲームマッチ
               </li>
               <li>
-                <strong className="text-gray-800 dark:text-gray-100">開催時期</strong>： 主に秋〜冬（年度によって異なる）
+                <strong className="text-text">開催時期</strong>： 主に秋〜冬（年度によって異なる）
               </li>
             </ul>
           </div>
         </section>
 
         {/* Content Block 2: Format */}
-        <section className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
+        <section className="bg-surface p-8 rounded-2xl shadow-sm">
           <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-900 dark:text-white border-b pb-4 dark:border-gray-700">試合形式</h2>
           <div className="prose dark:prose-invert max-w-none">
             <p>
@@ -105,7 +105,7 @@ export default function STLeagueAbout() {
         </section>
 
         {/* Content Block 2.5: League structure & playoff */}
-        <section className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
+        <section className="bg-surface p-8 rounded-2xl shadow-sm">
           <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-900 dark:text-white border-b pb-4 dark:border-gray-700">リーグ構成と昇格・降格</h2>
           <div className="prose dark:prose-invert max-w-none">
             <p>
@@ -116,23 +116,23 @@ export default function STLeagueAbout() {
               には実業団のトップチームが集まり、その年の日本一を争います。
             </p>
             <div className="mt-6 space-y-3">
-              <div className="flex items-start gap-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+              <div className="flex items-start gap-3 bg-info-bg rounded-lg p-4">
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold shrink-0">Ⅰ</span>
-                <p className="text-sm text-gray-700 dark:text-gray-300 m-0">
+                <p className="text-sm text-text-secondary m-0">
                   <strong>STリーグⅠ</strong>
                   ：最上位リーグ。下位チームはプレーオフ（入替戦）で残留を懸けて戦う。
                 </p>
               </div>
               <div className="flex items-start gap-3 bg-gray-50 dark:bg-gray-700/40 rounded-lg p-4">
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-500 text-white text-sm font-bold shrink-0">Ⅱ</span>
-                <p className="text-sm text-gray-700 dark:text-gray-300 m-0">
+                <p className="text-sm text-text-secondary m-0">
                   <strong>STリーグⅡ</strong>
                   ：上位チームはプレーオフでⅠ部昇格を目指す。下位はⅢ部との入替対象。
                 </p>
               </div>
               <div className="flex items-start gap-3 bg-gray-50 dark:bg-gray-700/40 rounded-lg p-4">
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-400 text-white text-sm font-bold shrink-0">Ⅲ</span>
-                <p className="text-sm text-gray-700 dark:text-gray-300 m-0">
+                <p className="text-sm text-text-secondary m-0">
                   <strong>STリーグⅢ</strong>
                   ：上位チームはⅡ部昇格を目指す。
                 </p>
@@ -147,24 +147,24 @@ export default function STLeagueAbout() {
         </section>
 
         {/* Content Block 3: Highlights */}
-        <section className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
+        <section className="bg-surface p-8 rounded-2xl shadow-sm">
           <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-900 dark:text-white border-b pb-4 dark:border-gray-700">見どころ</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="font-bold text-lg mb-2">最高レベルの技術</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              <p className="text-text-secondary text-sm leading-relaxed">
                 ナショナルチーム所属選手など、日本のトッププレイヤーが多数出場。 世界レベルのプレーを間近で見ることができます。
               </p>
             </div>
             <div>
               <h3 className="font-bold text-lg mb-2">チームの絆</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              <p className="text-text-secondary text-sm leading-relaxed">
                 個人戦とは異なり、企業の看板を背負った団体戦ならではの緊張感と、 チーム一丸となった応援やベンチワークも見どころの一つです。
               </p>
             </div>
             <div>
               <h3 className="font-bold text-lg mb-2">昇格・残留争い</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              <p className="text-text-secondary text-sm leading-relaxed">
                 優勝争いはもちろん、下位チームの入れ替え戦回避をかけた残留争いも熾烈です。 1つの勝利、1つのゲームが順位に大きく影響します。
               </p>
             </div>
