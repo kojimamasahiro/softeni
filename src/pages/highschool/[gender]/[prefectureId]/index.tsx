@@ -277,7 +277,7 @@ export default function PrefectureHighschoolPage({
               {topTeams.map((team, index) => (
                 <span key={team.teamId}>
                   {index > 0 ? '、' : ''}
-                  <Link href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`} className="text-info hover:underline font-semibold">
+                  <Link href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`} className="text-link hover:underline font-semibold">
                     {team.teamName}
                   </Link>
                 </span>

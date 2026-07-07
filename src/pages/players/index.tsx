@@ -173,7 +173,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
         <h1 className="text-2xl font-bold mb-6">選手一覧</h1>
 
         <p className="mb-6 text-sm">
-          <Link href="/rankings" className="text-primary hover:underline">
+          <Link href="/rankings" className="text-link hover:underline">
             年度別の選手ランキング（男女別・種目別）はこちら ›
           </Link>
         </p>
@@ -307,7 +307,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
                             <div className="relative z-10 flex-1 min-w-0">
                               <Link
                                 href={`/tournaments/${player.generation}/${player.tournamentId}/${player.year}/${player.gameCategory}/${player.ageCategory}/${player.gender}`}
-                                className="relative z-10 text-primary hover:underline font-medium"
+                                className="relative z-10 text-link hover:underline font-medium"
                               >
                                 {searchQuery
                                   ? highlightMatch(`${player.tournamentName} ${player.year}年 ${player.categoryLabel}`, searchQuery)
@@ -344,7 +344,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
                     <p className="text-sm">
                       選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードでお試しください。
                     </p>
-                    <button onClick={() => setSearchQuery('')} className="mt-3 px-4 py-2 text-sm text-primary hover:underline">
+                    <button onClick={() => setSearchQuery('')} className="mt-3 px-4 py-2 text-sm text-link hover:underline">
                       検索をクリア
                     </button>
                   </>
@@ -357,7 +357,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
         )}
 
         <div className="mt-12 text-center space-x-4">
-          <Link href="/tournaments" className="text-primary hover:underline text-sm">
+          <Link href="/tournaments" className="text-link hover:underline text-sm">
             大会結果一覧
           </Link>
         </div>

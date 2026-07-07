@@ -240,7 +240,7 @@ export default function PlayerResultsPage({
           </p>
           {profileSlug && (
             <p className="mt-2 text-sm">
-              <Link href={`/players/${profileSlug}/`} className="text-primary hover:underline">
+              <Link href={`/players/${profileSlug}/`} className="text-link hover:underline">
                 {fullName} 選手のプロフィール（身長・所属・ポジション）はこちら
               </Link>
             </p>
@@ -293,7 +293,7 @@ export default function PlayerResultsPage({
           <section className="rounded-lg border border-info-border bg-info-bg p-4">
             <h2 className="mb-1 text-base font-bold text-info">成長記録</h2>
             <p className="mb-3 text-xs text-info">勝ち負けだけでは見えない、試合内容の変化を指標で追っています。</p>
-            <Link href={`/growth/${growthShowcaseSlug}`} className="inline-flex items-center gap-1 text-sm font-medium text-info hover:underline">
+            <Link href={`/growth/${growthShowcaseSlug}`} className="inline-flex items-center gap-1 text-sm font-medium text-link hover:underline">
               {fullName}の成長記録を見る
               <span aria-hidden>›</span>
             </Link>

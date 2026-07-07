@@ -117,19 +117,19 @@ export default function STLeagueHub({ editions, overview, divisionOverview }: Pr
             の階層に分かれて総当たり戦を行い、年度成績に応じてプレーオフ（入替戦）で昇格・降格が決まります。
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/st-league/about" className="inline-flex items-center text-primary font-semibold hover:underline">
+            <Link href="/st-league/about" className="inline-flex items-center text-link font-semibold hover:underline">
               ルール・仕組みを詳しく見る
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link href="/st-league/champions" className="inline-flex items-center text-primary font-semibold hover:underline">
+            <Link href="/st-league/champions" className="inline-flex items-center text-link font-semibold hover:underline">
               歴代優勝チーム・記録を見る
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link href="/st-league/teams" className="inline-flex items-center text-primary font-semibold hover:underline">
+            <Link href="/st-league/teams" className="inline-flex items-center text-link font-semibold hover:underline">
               掲載チーム一覧を見る
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

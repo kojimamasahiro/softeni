@@ -36,7 +36,7 @@ function SchoolNames({ links }: { links: TeamLink[] }) {
         <span key={`${t.name}-${i}`}>
           {i > 0 && '・'}
           {t.href ? (
-            <Link href={t.href} className="text-info hover:underline">
+            <Link href={t.href} className="text-link hover:underline">
               {t.name}
             </Link>
           ) : (
@@ -59,7 +59,7 @@ function PlayerNames({ links }: { links: PlayerLink[] }) {
         <span key={`${p.name}-${i}`}>
           {i > 0 && '・'}
           {p.href ? (
-            <Link href={p.href} className="text-info hover:underline">
+            <Link href={p.href} className="text-link hover:underline">
               {p.name}
             </Link>
           ) : (
@@ -136,7 +136,7 @@ function UpcomingSection({ editions, shortLabel, officialUrl }: { editions: Upco
             </dl>
             <p className="mt-3 text-sm text-text-secondary">
               結果が確定し次第、本ページの「年度別の記録」に追加します。 最新情報は
-              <a href={ed.sourceUrl || officialUrl} target="_blank" rel="noopener noreferrer" className="text-info hover:underline mx-0.5">
+              <a href={ed.sourceUrl || officialUrl} target="_blank" rel="noopener noreferrer" className="text-link hover:underline mx-0.5">
                 大会公式サイト
               </a>
               をご確認ください。
@@ -493,7 +493,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
                       <div key={cat.categoryId} className="rounded-xl border border-border p-4 bg-surface">
                         <div className="flex items-center justify-between gap-2 mb-3">
                           <h4 className="font-semibold">{cat.label}</h4>
-                          <Link href={cat.bracketHref} className="text-xs text-info hover:underline whitespace-nowrap">
+                          <Link href={cat.bracketHref} className="text-xs text-link hover:underline whitespace-nowrap">
                             対戦表を見る
                           </Link>
                         </div>
@@ -536,10 +536,10 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         </section>
 
         <div className="mt-10 flex flex-wrap gap-4 text-sm">
-          <Link href="/highschool/tournaments/" className="text-info hover:underline">
+          <Link href="/highschool/tournaments/" className="text-link hover:underline">
             ← 全国大会の歴代記録 一覧へ
           </Link>
-          <Link href="/highschool/boys/" className="text-info hover:underline">
+          <Link href="/highschool/boys/" className="text-link hover:underline">
             高校 都道府県別ページへ
           </Link>
         </div>

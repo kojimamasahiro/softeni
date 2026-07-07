@@ -70,7 +70,7 @@ export default function StLeagueTeamsList({ groups, totalTeams }: Props) {
           <h1 className="text-2xl font-bold">STリーグ 掲載チーム一覧</h1>
           <p className="mt-2 text-text-secondary leading-relaxed">
             当サイトが掲載している
-            <Link href="/st-league" className="text-primary font-semibold hover:underline">
+            <Link href="/st-league" className="text-link font-semibold hover:underline">
               STリーグ
             </Link>
             （ソフトテニス実業団リーグ）の出場チーム{totalTeams}
@@ -109,10 +109,10 @@ export default function StLeagueTeamsList({ groups, totalTeams }: Props) {
         ))}
 
         <nav className="flex flex-wrap gap-4 pt-2 border-t border-border">
-          <Link href="/st-league" className="text-primary font-semibold hover:underline">
+          <Link href="/st-league" className="text-link font-semibold hover:underline">
             ◀ STリーグ トップ（結果・順位表）
           </Link>
-          <Link href="/st-league/champions" className="text-primary font-semibold hover:underline">
+          <Link href="/st-league/champions" className="text-link font-semibold hover:underline">
             ▶ 歴代優勝チーム・記録
           </Link>
         </nav>

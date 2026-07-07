@@ -882,7 +882,7 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
                   <div className="mt-3 text-right">
                     <Link
                       href={`/players/${participants.find((p) => p.id === entry.playerIds[0])?.playerId}/results`}
-                      className="text-xs text-primary hover:underline"
+                      className="text-xs text-link hover:underline"
                       onClick={() => setSelectedEntry(null)}
                     >
                       選手の全結果を見る →

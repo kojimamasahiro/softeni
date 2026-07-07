@@ -154,7 +154,7 @@ export default function BetaIndexPage() {
             <div className="mt-8 p-4 bg-info-bg border border-info-border rounded-lg">
               <h3 className="text-sm font-semibold text-info mb-2">🔧 開発者向け機能</h3>
               <div className="flex gap-4">
-                <Link href="/test-db" className="text-sm text-primary hover:underline">
+                <Link href="/test-db" className="text-sm text-link hover:underline">
                   データベーステスト
                 </Link>
               </div>
@@ -162,7 +162,7 @@ export default function BetaIndexPage() {
           )}
 
           <div className="mt-12 text-center">
-            <Link href="/" className="text-primary hover:underline text-sm">
+            <Link href="/" className="text-link hover:underline text-sm">
               ← ホームに戻る
             </Link>
           </div>

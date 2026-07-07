@@ -184,7 +184,7 @@ export default function HighschoolGenderIndex({
             インターハイ（全国高等学校総合体育大会）やハイスクールジャパンカップの 歴代優勝〜ベスト4を、年度別・種目別にまとめています。
             都道府県別・学校別とは別の切り口で、大会ごとの上位入賞を確認できます。
           </p>
-          <Link href="/highschool/tournaments/" className="inline-block text-sm font-semibold text-info hover:underline">
+          <Link href="/highschool/tournaments/" className="inline-block text-sm font-semibold text-link hover:underline">
             全国大会の歴代記録を見る →
           </Link>
         </section>

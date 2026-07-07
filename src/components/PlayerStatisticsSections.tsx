@@ -158,7 +158,7 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
         </tbody>
       </table>
       <p className="mt-2 text-right text-sm">
-        <Link href="/rankings/" className="text-primary hover:underline">
+        <Link href="/rankings/" className="text-link hover:underline">
           全体ランキングを見る ›
         </Link>
       </p>

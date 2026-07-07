@@ -22,7 +22,7 @@ export default function TeamsEventSummary({ overallTable }: TeamsEventSummaryPro
           <div key={i} className="bg-surface rounded-2xl shadow p-4 border border-border">
             <h3 className="text-lg font-bold mb-1 text-text">
               {r.link ? (
-                <Link href={r.link} className="hover:underline text-primary">
+                <Link href={r.link} className="hover:underline text-link">
                   {r.name}
                   {r.categoryLabel && <span className="ml-2 text-sm font-normal text-text-muted">({r.categoryLabel})</span>}
                 </Link>

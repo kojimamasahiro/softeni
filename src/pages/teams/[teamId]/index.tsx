@@ -125,7 +125,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
           <section>
             <div className="flex items-baseline justify-between mb-3">
               <h2 className="text-xl font-bold">STリーグでの成績</h2>
-              <Link href="/st-league" className="text-sm text-primary font-semibold hover:underline">
+              <Link href="/st-league" className="text-sm text-link font-semibold hover:underline">
                 STリーグ トップ →
               </Link>
             </div>

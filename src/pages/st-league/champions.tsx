@@ -92,7 +92,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
             を男子・女子別にまとめました。各回の王者・会場に加え、連覇などの記録、プレーオフ（入替戦）による
             <strong>昇格・降格</strong>の歴史も掲載しています。
           </p>
-          <Link href="/st-league/about" className="inline-flex items-center text-primary font-semibold hover:underline">
+          <Link href="/st-league/about" className="inline-flex items-center text-link font-semibold hover:underline">
             STリーグのルール・仕組みを見る
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -147,7 +147,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
                 {editions.map((e) => (
                   <tr key={e.year} className="border-b border-gray-100 dark:border-gray-800">
                     <td className="py-2.5 pr-3 whitespace-nowrap font-bold">
-                      <Link href={`/st-league/${e.year}/matches`} className="text-primary hover:underline">
+                      <Link href={`/st-league/${e.year}/matches`} className="text-link hover:underline">
                         {e.edition ? `第${e.edition}回` : e.year}
                       </Link>
                     </td>
@@ -218,7 +218,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
                       <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded">
                         {e.edition ? `第${e.edition}回` : e.year}
                       </span>
-                      <Link href={`/st-league/${e.year}`} className="font-bold text-primary hover:underline">
+                      <Link href={`/st-league/${e.year}`} className="font-bold text-link hover:underline">
                         {e.title}
                       </Link>
                     </div>

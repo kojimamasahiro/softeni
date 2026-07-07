@@ -331,7 +331,7 @@ function MatchesPanel({ year, gender, divisionId, meta, divisions, matches, team
                       <div className="border-t border-border px-4 py-2 text-right">
                         <Link
                           href={`/st-league/${year}/matches/${gender}-${match.teamA}-vs-${match.teamB}`}
-                          className="text-xs font-semibold text-primary hover:underline"
+                          className="text-xs font-semibold text-link hover:underline"
                         >
                           この対戦の詳細 →
                         </Link>
@@ -520,13 +520,13 @@ export default function MatchesPage({ year, meta, divisions, matches, teams, pla
 
         {/* 他ページ導線 */}
         <nav className="flex flex-wrap gap-3 pt-2">
-          <a href={`/st-league/${year}`} className="text-primary font-semibold hover:underline">
+          <a href={`/st-league/${year}`} className="text-link font-semibold hover:underline">
             ▶ {year}年度トップ（大会概要）
           </a>
-          <a href={`/st-league/${year}/teams`} className="text-primary font-semibold hover:underline">
+          <a href={`/st-league/${year}/teams`} className="text-link font-semibold hover:underline">
             ▶ 出場チーム・選手を見る
           </a>
-          <a href={`/st-league/${year}/analysis`} className="text-primary font-semibold hover:underline">
+          <a href={`/st-league/${year}/analysis`} className="text-link font-semibold hover:underline">
             ▶ 選手別データ・分析を見る
           </a>
         </nav>

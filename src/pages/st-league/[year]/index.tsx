@@ -129,7 +129,7 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
               ))}
             </div>
             <p className="mt-3 text-sm">
-              <Link href="/st-league/champions" className="text-primary font-semibold hover:underline">
+              <Link href="/st-league/champions" className="text-link font-semibold hover:underline">
                 ▶ 歴代優勝チーム・記録（連覇・昇降格の系譜）を見る
               </Link>
             </p>
@@ -216,10 +216,10 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
 
         {/* 他ページ導線 */}
         <nav className="flex flex-wrap gap-4 pt-2 border-t border-border">
-          <Link href="/st-league" className="text-primary font-semibold hover:underline">
+          <Link href="/st-league" className="text-link font-semibold hover:underline">
             ◀ STリーグ トップ（他の開催年度）
           </Link>
-          <Link href="/st-league/about" className="text-primary font-semibold hover:underline">
+          <Link href="/st-league/about" className="text-link font-semibold hover:underline">
             ▶ ルール・仕組みを詳しく見る
           </Link>
         </nav>
