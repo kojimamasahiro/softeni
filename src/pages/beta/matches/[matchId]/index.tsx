@@ -482,11 +482,7 @@ const MatchDetail = () => {
         {/* 成長分析データの充足度（ポイント詳細が入っているか） */}
         {growthTotalGames > 0 && (
           <div
-            className={`mb-4 rounded-lg border p-3 text-sm ${
-              growthReady
-                ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200'
-                : 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-200'
-            }`}
+            className={`mb-4 rounded-lg border p-3 text-sm ${growthReady ? 'border-success-border bg-success-bg text-success' : 'border-warning-border bg-warning-bg text-warning'}`}
           >
             {growthReady ? (
               <p>

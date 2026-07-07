@@ -134,11 +134,7 @@ function FilterDropdown({ label, options, selected, onChange }: FilterDropdownPr
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className={`flex items-center gap-1 px-3 py-1.5 rounded-full border text-sm transition-colors ${
-          selected.length > 0
-            ? 'bg-blue-600 text-white border-blue-600'
-            : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-blue-400'
-        }`}
+        className={`flex items-center gap-1 px-3 py-1.5 rounded-full border text-sm transition-colors ${selected.length > 0 ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 border-border-strong text-gray-700 dark:text-gray-200 hover:border-blue-400'}`}
       >
         <span>{displayLabel}</span>
         <svg className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
@@ -151,11 +147,11 @@ function FilterDropdown({ label, options, selected, onChange }: FilterDropdownPr
       </button>
 
       {open && (
-        <div className="absolute z-50 mt-1 min-w-max bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1">
+        <div className="absolute z-50 mt-1 min-w-max bg-surface border border-border rounded-lg shadow-lg py-1">
           {options.map((opt) => (
-            <label key={opt.value} className="flex items-center gap-2 px-4 py-2 text-sm cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+            <label key={opt.value} className="flex items-center gap-2 px-4 py-2 text-sm cursor-pointer hover:bg-bg-subtle">
               <input type="checkbox" className="accent-blue-600" checked={selected.includes(opt.value)} onChange={() => toggle(opt.value)} />
-              <span className="text-gray-800 dark:text-gray-100">{opt.label}</span>
+              <span className="text-text">{opt.label}</span>
             </label>
           ))}
         </div>
@@ -246,9 +242,9 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
   return (
     <div>
       {/* ── フィルターバー ── */}
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 mb-4 shadow-sm">
+      <div className="bg-surface border border-border rounded-xl p-4 mb-4 shadow-sm">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 shrink-0">絞り込み：</span>
+          <span className="text-sm font-medium text-text-muted shrink-0">絞り込み：</span>
 
           <FilterDropdown label="カテゴリ" options={generationOptions} selected={filterGeneration} onChange={setFilterGeneration} />
 
@@ -260,11 +256,7 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
           <select
             value={filterYear}
             onChange={(e) => setFilterYear(e.target.value)}
-            className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
-              filterYear
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200'
-            }`}
+            className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${filterYear ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 border-border-strong text-gray-700 dark:text-gray-200'}`}
           >
             <option value="">年度</option>
             {years.map((y) => (
@@ -275,25 +267,25 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
           </select>
 
           {/* 結果ありのみ */}
-          <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-300 dark:border-gray-600 text-sm cursor-pointer hover:border-blue-400 bg-white dark:bg-gray-800">
+          <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border-strong text-sm cursor-pointer hover:border-blue-400 bg-surface">
             <input type="checkbox" className="accent-blue-600" checked={filterHasResult} onChange={(e) => setFilterHasResult(e.target.checked)} />
             <span className="text-gray-700 dark:text-gray-200">結果あり</span>
           </label>
 
           {/* リセット */}
           {hasAnyFilter && (
-            <button onClick={resetAll} className="ml-auto text-sm text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors">
+            <button onClick={resetAll} className="ml-auto text-sm text-text-muted hover:text-red-500 transition-colors">
               ✕ リセット
             </button>
           )}
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">
+        <p className="text-sm text-text-secondary mt-4">
           年・カテゴリ・地域で絞り込んで大会を探せます。 結果データが収録されている大会は「結果」列のリンクから直接参照できます。
         </p>
       </div>
 
       {/* ── 件数 ── */}
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+      <p className="text-sm text-text-muted mb-3">
         {filtered.length} 件{instances.length !== filtered.length && ` / ${instances.length} 件中`}
       </p>
 
@@ -315,25 +307,23 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
               {sortedYears.map((year) => (
                 <section key={year}>
                   {/* 年度見出し */}
-                  <h2 className="text-base font-bold text-gray-700 dark:text-gray-200 mb-2 px-1 border-b border-gray-200 dark:border-gray-700 pb-1">
-                    {year}年度
-                  </h2>
+                  <h2 className="text-base font-bold text-gray-700 dark:text-gray-200 mb-2 px-1 border-b border-border pb-1">{year}年度</h2>
 
                   {/* ── テーブル（デスクトップ） ── */}
                   <div className="hidden md:block">
-                    <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                    <div className="overflow-x-auto rounded-xl border border-border shadow-sm">
                       <table className="min-w-full text-sm">
                         <thead>
                           <tr className="bg-gray-50 dark:bg-gray-800">
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">日程</th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300">大会名</th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">開催地</th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">種類</th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">対象</th>
-                            <th className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">結果</th>
+                            <th className="px-4 py-3 text-left font-semibold text-text-secondary whitespace-nowrap">日程</th>
+                            <th className="px-4 py-3 text-left font-semibold text-text-secondary">大会名</th>
+                            <th className="px-4 py-3 text-left font-semibold text-text-secondary whitespace-nowrap">開催地</th>
+                            <th className="px-4 py-3 text-left font-semibold text-text-secondary whitespace-nowrap">種類</th>
+                            <th className="px-4 py-3 text-left font-semibold text-text-secondary whitespace-nowrap">対象</th>
+                            <th className="px-4 py-3 text-left font-semibold text-text-secondary whitespace-nowrap">結果</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                        <tbody className="divide-y divide-border">
                           {grouped[year].map((inst) => (
                             <TableRow key={`${inst.tournamentId}-${inst.year}`} inst={inst} />
                           ))}
@@ -361,25 +351,23 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
 // ─── テーブル行コンポーネント ───────────────────────────────────────────────
 function TableRow({ inst }: { inst: TournamentInstance }) {
   const name = inst.firstCategoryPath ? (
-    <Link href={inst.firstCategoryPath} className="font-medium text-blue-700 dark:text-blue-400 hover:underline">
+    <Link href={inst.firstCategoryPath} className="font-medium text-info hover:underline">
       {inst.label}
     </Link>
   ) : (
-    <span className="font-medium text-gray-800 dark:text-gray-100">{inst.label}</span>
+    <span className="font-medium text-text">{inst.label}</span>
   );
 
   return (
     <tr className="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors group">
-      <td className="px-4 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap tabular-nums">{formatDateRange(inst.startDate, inst.endDate)}</td>
+      <td className="px-4 py-3 text-text-muted whitespace-nowrap tabular-nums">{formatDateRange(inst.startDate, inst.endDate)}</td>
       <td className="px-4 py-3">{name}</td>
-      <td className="px-4 py-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">{inst.location || '—'}</td>
+      <td className="px-4 py-3 text-text-secondary whitespace-nowrap">{inst.location || '—'}</td>
       <td className="px-4 py-3 whitespace-nowrap">
         <LevelBadge level={inst.level} />
       </td>
       <td className="px-4 py-3 whitespace-nowrap">
-        <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs px-2 py-0.5 rounded-full">
-          {inst.generationLabel}
-        </span>
+        <span className="inline-block bg-bg-subtle text-gray-700 dark:text-gray-200 text-xs px-2 py-0.5 rounded-full">{inst.generationLabel}</span>
       </td>
       <td className="px-4 py-3 whitespace-nowrap">
         <ResultCell inst={inst} />
@@ -396,7 +384,7 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
   const status = getTournamentStatus(inst);
 
   return (
-    <div className="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm active:bg-blue-50 dark:active:bg-gray-750 transition-colors">
+    <div className="relative bg-surface border border-border rounded-xl p-4 shadow-sm active:bg-blue-50 dark:active:bg-gray-750 transition-colors">
       {/* カード全体のタップ領域 */}
       {cardHref &&
         (cardExternal ? (
@@ -406,10 +394,10 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
         ))}
 
       {/* タイトル */}
-      <p className="font-semibold text-blue-700 dark:text-blue-400 leading-snug mb-2">{inst.label}</p>
+      <p className="font-semibold text-info leading-snug mb-2">{inst.label}</p>
 
       {/* 開催予定のみ強調し、それ以外は通常のメタ情報として表示 */}
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-3">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted mb-3">
         {status ? (
           <>
             <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}>{status.label}</span>
@@ -427,9 +415,7 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
       {/* バッジ類（relative z-10 で stretched link より前面に） */}
       <div className="relative z-10 flex flex-wrap items-center gap-2">
         <LevelBadge level={inst.level} />
-        <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs px-2 py-0.5 rounded-full">
-          {inst.generationLabel}
-        </span>
+        <span className="inline-block bg-bg-subtle text-gray-700 dark:text-gray-200 text-xs px-2 py-0.5 rounded-full">{inst.generationLabel}</span>
         <ResultCell inst={inst} />
       </div>
     </div>
@@ -446,7 +432,7 @@ function ResultCell({ inst }: { inst: TournamentInstance }) {
     return (
       <Link
         href={inst.firstCategoryPath}
-        className="inline-flex items-center gap-1 text-xs text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full hover:opacity-80 transition"
+        className="inline-flex items-center gap-1 text-xs text-success bg-success-bg px-2 py-0.5 rounded-full hover:opacity-80 transition"
       >
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path

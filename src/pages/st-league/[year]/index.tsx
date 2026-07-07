@@ -105,7 +105,7 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
               {meta?.location && `（${meta.location}）`}
             </p>
           )}
-          <p className="mt-2 text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="mt-2 text-text-secondary leading-relaxed">
             <strong>{editionLabel}</strong>
             の開催概要・会場・優勝チームをまとめたページです。男女・リーグ別の 詳しい試合結果や順位表、出場チーム・選手データは下記の各ページから確認できます。
           </p>
@@ -117,8 +117,8 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
             <h2 className="text-lg font-bold mb-3">優勝チーム（STリーグⅠ）</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {GENDERS.map(({ key, label, ring }) => (
-                <div key={key} className={`bg-white dark:bg-gray-800 rounded-xl p-5 border ${ring} shadow-sm`}>
-                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">{label}</div>
+                <div key={key} className={`bg-surface rounded-xl p-5 border ${ring} shadow-sm`}>
+                  <div className="text-xs font-semibold text-text-muted mb-1">{label}</div>
                   <div className="flex items-center gap-2">
                     <span className="text-amber-500" aria-hidden>
                       🏆
@@ -129,7 +129,7 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
               ))}
             </div>
             <p className="mt-3 text-sm">
-              <Link href="/st-league/champions" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+              <Link href="/st-league/champions" className="text-primary font-semibold hover:underline">
                 ▶ 歴代優勝チーム・記録（連覇・昇降格の系譜）を見る
               </Link>
             </p>
@@ -139,22 +139,22 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
         {/* 大会概要 */}
         <section>
           <h2 className="text-lg font-bold mb-3">開催概要</h2>
-          <dl className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm divide-y divide-gray-100 dark:divide-gray-700 text-sm">
+          <dl className="bg-surface rounded-xl border border-border shadow-sm divide-y divide-border text-sm">
             {meta?.edition && (
               <div className="flex px-4 py-3">
-                <dt className="w-28 shrink-0 text-gray-500 dark:text-gray-400">開催回</dt>
+                <dt className="w-28 shrink-0 text-text-muted">開催回</dt>
                 <dd className="font-medium">第{meta.edition}回</dd>
               </div>
             )}
             {dateRange && (
               <div className="flex px-4 py-3">
-                <dt className="w-28 shrink-0 text-gray-500 dark:text-gray-400">日程</dt>
+                <dt className="w-28 shrink-0 text-text-muted">日程</dt>
                 <dd className="font-medium">{dateRange}</dd>
               </div>
             )}
             {(meta?.venue || meta?.location) && (
               <div className="flex px-4 py-3">
-                <dt className="w-28 shrink-0 text-gray-500 dark:text-gray-400">会場</dt>
+                <dt className="w-28 shrink-0 text-text-muted">会場</dt>
                 <dd className="font-medium">
                   {meta?.venue}
                   {meta?.location && `（${meta.location}）`}
@@ -163,19 +163,19 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
             )}
             {divisionNames.length > 0 && (
               <div className="flex px-4 py-3">
-                <dt className="w-28 shrink-0 text-gray-500 dark:text-gray-400">リーグ構成</dt>
+                <dt className="w-28 shrink-0 text-text-muted">リーグ構成</dt>
                 <dd className="font-medium">{divisionNames.join('・')}</dd>
               </div>
             )}
             {meta?.format?.tie && (
               <div className="flex px-4 py-3">
-                <dt className="w-28 shrink-0 text-gray-500 dark:text-gray-400">対戦形式</dt>
+                <dt className="w-28 shrink-0 text-text-muted">対戦形式</dt>
                 <dd className="font-medium">{meta.format.tie}</dd>
               </div>
             )}
             {meta?.format?.game && (
               <div className="flex px-4 py-3">
-                <dt className="w-28 shrink-0 text-gray-500 dark:text-gray-400">ゲーム形式</dt>
+                <dt className="w-28 shrink-0 text-text-muted">ゲーム形式</dt>
                 <dd className="font-medium">{meta.format.game}</dd>
               </div>
             )}
@@ -190,7 +190,7 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
               <Link
                 key={item.id}
                 href={`/st-league/${year}/${item.id}`}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition block focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="bg-surface rounded-xl shadow-sm p-6 border border-border relative overflow-hidden group hover:shadow-md transition block focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
                 <div className={`absolute top-0 right-0 w-2 h-full ${item.colorClass} opacity-80`} />
                 <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">{item.title}</h3>
@@ -202,24 +202,24 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
 
         {/* プレーオフ案内 */}
         {meta?.playoff && (
-          <section className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-5">
-            <h2 className="font-bold text-amber-800 dark:text-amber-300 mb-1">{meta.playoff.name}</h2>
+          <section className="bg-warning-bg border border-warning-border rounded-xl p-5">
+            <h2 className="font-bold text-warning mb-1">{meta.playoff.name}</h2>
             {meta.playoff.period && (
-              <p className="text-sm text-amber-700 dark:text-amber-200">
+              <p className="text-sm text-warning">
                 {meta.playoff.period.start.replace(/-/g, '/')}〜{meta.playoff.period.end.replace(/-/g, '/')}
                 {meta.playoff.venue && `　${meta.playoff.venue}`}
               </p>
             )}
-            {meta.playoff.description && <p className="text-sm text-amber-700 dark:text-amber-200 mt-1">{meta.playoff.description}</p>}
+            {meta.playoff.description && <p className="text-sm text-warning mt-1">{meta.playoff.description}</p>}
           </section>
         )}
 
         {/* 他ページ導線 */}
-        <nav className="flex flex-wrap gap-4 pt-2 border-t border-gray-100 dark:border-gray-700">
-          <Link href="/st-league" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+        <nav className="flex flex-wrap gap-4 pt-2 border-t border-border">
+          <Link href="/st-league" className="text-primary font-semibold hover:underline">
             ◀ STリーグ トップ（他の開催年度）
           </Link>
-          <Link href="/st-league/about" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+          <Link href="/st-league/about" className="text-primary font-semibold hover:underline">
             ▶ ルール・仕組みを詳しく見る
           </Link>
         </nav>

@@ -580,14 +580,14 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
         {/* ラウンドセレクター */}
         {rounds.length > 1 && (
           <div className="flex items-center gap-2">
-            <label htmlFor="round-select" className="text-sm text-gray-600 dark:text-gray-400">
+            <label htmlFor="round-select" className="text-sm text-text-muted">
               表示開始:
             </label>
             <select
               id="round-select"
               value={startRound}
               onChange={(e) => setStartRound(e.target.value)}
-              className="text-sm border rounded px-2 py-1 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+              className="text-sm border rounded px-2 py-1 bg-surface border-border text-text"
             >
               {rounds
                 .filter((r) => r !== '優勝') // 優勝ラインから開始することを許可しない
@@ -697,9 +697,7 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
                           style={{ width: '220px', minWidth: '220px' }}
                         >
                           {/* エントリー番号: 最大3桁 */}
-                          <div className="w-8 text-[10px] text-gray-500 dark:text-gray-400 font-mono text-center shrink-0 border-r border-gray-100 dark:border-gray-700">
-                            {entryNo}
-                          </div>
+                          <div className="w-8 text-[10px] text-text-muted font-mono text-center shrink-0 border-r border-border">{entryNo}</div>
 
                           {/* プレイヤー名: シングルスは1行(通常6文字最大、より多い場合は小さく)、ダブルスはフルネーム2行 */}
                           <div
@@ -714,23 +712,9 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
 
                           {/* チーム: 通常5文字最大、より多い場合は小さく */}
                           <div className="w-20 shrink-0 px-1 flex flex-col justify-center items-center leading-tight">
-                            <div
-                              className={`
-                                                                    text-center text-gray-500 dark:text-gray-400 truncate w-full
-                                                                    ${team1.length > 5 ? 'text-[9px]' : 'text-[10px]'}
-                                                                `}
-                            >
-                              {team1}
-                            </div>
+                            <div className={`text-center text-text-muted truncate w-full ${team1.length > 5 ? 'text-[9px]' : 'text-[10px]'}`}>{team1}</div>
                             {showTwoTeams && (
-                              <div
-                                className={`
-                                                                        text-center text-gray-500 dark:text-gray-400 truncate w-full
-                                                                        ${team2.length > 5 ? 'text-[9px]' : 'text-[10px]'}
-                                                                    `}
-                              >
-                                {team2}
-                              </div>
+                              <div className={`text-center text-text-muted truncate w-full ${team2.length > 5 ? 'text-[9px]' : 'text-[10px]'}`}>{team2}</div>
                             )}
                           </div>
                         </div>
@@ -820,12 +804,9 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
               onClick={() => setSelectedEntry(null)}
             >
-              <div
-                className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-4 shadow-xl dark:bg-gray-800"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <div className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-surface p-4 shadow-xl" onClick={(e) => e.stopPropagation()}>
                 <div className="mb-3 flex items-start justify-between gap-2">
-                  <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">
+                  <h3 className="text-base font-semibold text-text">
                     {entryNo}.{' '}
                     {nameParts.length > 0
                       ? nameParts.map((part, i) =>
@@ -843,7 +824,7 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
                           ),
                         )
                       : null}
-                    {isSeedEntry && <span className="ml-2 text-sm text-yellow-600 dark:text-yellow-300">（シード）</span>}
+                    {isSeedEntry && <span className="ml-2 text-sm text-warning">（シード）</span>}
                   </h3>
                   <button
                     type="button"
@@ -857,19 +838,16 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
 
                 <div className="w-full overflow-x-auto">
                   <table className="w-full table-fixed border-collapse text-left text-sm">
-                    <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100">
+                    <thead className="bg-bg-subtle text-text">
                       <tr>
-                        <th className="w-1/5 border-b border-gray-200 px-3 py-2 text-left dark:border-gray-600">ラウンド</th>
-                        <th className="w-3/5 border-b border-gray-200 px-3 py-2 text-left dark:border-gray-600">対戦相手</th>
-                        <th className="w-1/5 border-b border-gray-200 px-3 py-2 text-left dark:border-gray-600">スコア</th>
+                        <th className="w-1/5 border-b border-border-strong px-3 py-2 text-left">ラウンド</th>
+                        <th className="w-3/5 border-b border-border-strong px-3 py-2 text-left">対戦相手</th>
+                        <th className="w-1/5 border-b border-border-strong px-3 py-2 text-left">スコア</th>
                       </tr>
                     </thead>
                     <tbody>
                       {rows.map((row, i) => (
-                        <tr
-                          key={`${row.matchId ?? i}`}
-                          className={`border-t border-gray-100 dark:border-gray-700 ${row.round === roundName ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
-                        >
+                        <tr key={`${row.matchId ?? i}`} className={`border-t border-border ${row.round === roundName ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}>
                           <td className="break-words px-3 py-2 text-left">{row.round ?? '予選'}</td>
                           <td className="break-words px-3 py-2 text-left">
                             {row.opponentPlayerIds.length === 1 ? (
@@ -891,7 +869,7 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
                       ))}
                       {rows.length === 0 && (
                         <tr>
-                          <td colSpan={3} className="px-3 py-3 text-center text-gray-500 dark:text-gray-400">
+                          <td colSpan={3} className="px-3 py-3 text-center text-text-muted">
                             対戦記録がありません
                           </td>
                         </tr>
@@ -904,7 +882,7 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
                   <div className="mt-3 text-right">
                     <Link
                       href={`/players/${participants.find((p) => p.id === entry.playerIds[0])?.playerId}/results`}
-                      className="text-xs text-blue-600 hover:underline dark:text-blue-400"
+                      className="text-xs text-primary hover:underline"
                       onClick={() => setSelectedEntry(null)}
                     >
                       選手の全結果を見る →

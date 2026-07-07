@@ -1,62 +1,126 @@
 /* src/styles/globals.css */
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 /*
- * デザイントークン(docs/ui/deliverables/06-design-principles.md §2.1・D-022)
+ * デザイントークン(docs/ui/deliverables/06-design-principles.md §2.1・D-022、
+ * ダーク値・ステータス系トークンは D-023)
  * 色は原則このトークンのみ使用する(原則 P4)。
- * 生成されるクラス例: bg-bg / bg-surface / border-border / text-text /
- * text-text-muted / text-primary / hover:text-primary-hover / bg-accent-win
- * ダーク値は将来対応(D-012)。対応時は下の :root を
- * @media (prefers-color-scheme: dark) で上書きする(コンポーネント変更不要)。
+ * 生成されるクラス例: bg-bg / bg-surface / bg-bg-subtle / border-border /
+ * border-border-strong / text-text / text-text-secondary / text-text-muted /
+ * text-primary / hover:text-primary-hover / bg-accent-win /
+ * bg-success-bg border-success-border text-success(warning / danger / info /
+ * neutral も同型の bg-*-bg / border-*-border / text-* の3点セット)
+ * ダーク値は @media (prefers-color-scheme: dark) で :root の変数を上書きする
+ * 方式(コンポーネント側の変更は不要)。値は Tailwind v4 の既定パレット変数
+ * (--color-gray-500 等、tailwindcss/theme.css で定義済み)をそのまま参照する。
  */
 :root {
-  --sp-bg: oklch(98.5% 0.002 247.839); /* = gray-50 */
-  --sp-surface: #ffffff; /* = white */
-  --sp-border: oklch(92.8% 0.006 264.531); /* = gray-200 */
-  --sp-text: oklch(27.8% 0.033 256.848); /* = gray-800 */
-  --sp-text-muted: oklch(55.1% 0.027 264.364); /* = gray-500 */
-  --sp-primary: oklch(54.6% 0.245 262.881); /* = blue-600 */
-  --sp-primary-hover: oklch(62.3% 0.214 259.815); /* = blue-500 */
-  --sp-accent-win: oklch(76.9% 0.188 70.08); /* = amber-500 */
-  --sp-accent-dev: oklch(64.6% 0.222 41.116); /* = orange-600 */
-  --sp-danger: oklch(57.7% 0.245 27.325); /* = red-600 */
+  /* 中立色 */
+  --sp-bg: var(--color-gray-50);
+  --sp-surface: var(--color-white);
+  --sp-bg-subtle: var(--color-gray-100);
+  --sp-border: var(--color-gray-200);
+  --sp-border-strong: var(--color-gray-300);
+  --sp-text: var(--color-gray-800);
+  --sp-text-secondary: var(--color-gray-600);
+  --sp-text-muted: var(--color-gray-500);
+  --sp-primary: var(--color-blue-600);
+  --sp-primary-hover: var(--color-blue-500);
+  --sp-accent-win: var(--color-amber-500);
+  --sp-accent-dev: var(--color-orange-600);
+  --sp-danger: var(--color-red-600);
+
+  /* ステータスバッジ(bg・border・text の3点セット) */
+  --sp-success: var(--color-green-800);
+  --sp-success-bg: var(--color-green-50);
+  --sp-success-border: var(--color-green-200);
+  --sp-warning: var(--color-amber-800);
+  --sp-warning-bg: var(--color-amber-50);
+  --sp-warning-border: var(--color-amber-200);
+  --sp-danger-bg: var(--color-red-50);
+  --sp-danger-border: var(--color-red-200);
+  --sp-info: var(--color-blue-700);
+  --sp-info-bg: var(--color-blue-50);
+  --sp-info-border: var(--color-blue-200);
+  --sp-neutral: var(--color-gray-700);
+  --sp-neutral-bg: var(--color-gray-100);
+  --sp-neutral-border: var(--color-gray-200);
 }
 
 @theme inline {
   --color-bg: var(--sp-bg);
   --color-surface: var(--sp-surface);
+  --color-bg-subtle: var(--sp-bg-subtle);
   --color-border: var(--sp-border);
+  --color-border-strong: var(--sp-border-strong);
   --color-text: var(--sp-text);
+  --color-text-secondary: var(--sp-text-secondary);
   --color-text-muted: var(--sp-text-muted);
   --color-primary: var(--sp-primary);
   --color-primary-hover: var(--sp-primary-hover);
   --color-accent-win: var(--sp-accent-win);
   --color-accent-dev: var(--sp-accent-dev);
   --color-danger: var(--sp-danger);
+
+  --color-success: var(--sp-success);
+  --color-success-bg: var(--sp-success-bg);
+  --color-success-border: var(--sp-success-border);
+  --color-warning: var(--sp-warning);
+  --color-warning-bg: var(--sp-warning-bg);
+  --color-warning-border: var(--sp-warning-border);
+  --color-danger-bg: var(--sp-danger-bg);
+  --color-danger-border: var(--sp-danger-border);
+  --color-info: var(--sp-info);
+  --color-info-bg: var(--sp-info-bg);
+  --color-info-border: var(--sp-info-border);
+  --color-neutral: var(--sp-neutral);
+  --color-neutral-bg: var(--sp-neutral-bg);
+  --color-neutral-border: var(--sp-neutral-border);
 }
 
+/*
+ * ダーク値(D-023)。accent-win / accent-dev は現行データで固有のダーク組が
+ * 見つからず、ソリッド1色のまま両モード共通とする(意図的に上書きしない)。
+ */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --sp-bg: var(--color-gray-900);
+    --sp-surface: var(--color-gray-800);
+    --sp-bg-subtle: var(--color-gray-700);
+    --sp-border: var(--color-gray-700);
+    --sp-border-strong: var(--color-gray-600);
+    --sp-text: var(--color-gray-100);
+    --sp-text-secondary: var(--color-gray-300);
+    --sp-text-muted: var(--color-gray-400);
+    --sp-primary: var(--color-blue-400);
+    --sp-primary-hover: var(--color-blue-300);
+    --sp-danger: var(--color-red-400);
+
+    --sp-success: var(--color-green-300);
+    --sp-success-bg: color-mix(in oklch, var(--color-green-900) 30%, transparent);
+    --sp-success-border: var(--color-green-800);
+    --sp-warning: var(--color-amber-300);
+    --sp-warning-bg: color-mix(in oklch, var(--color-amber-900) 20%, transparent);
+    --sp-warning-border: var(--color-amber-800);
+    --sp-danger-bg: color-mix(in oklch, var(--color-red-900) 20%, transparent);
+    --sp-danger-border: var(--color-red-800);
+    --sp-info: var(--color-blue-300);
+    --sp-info-bg: color-mix(in oklch, var(--color-blue-900) 20%, transparent);
+    --sp-info-border: var(--color-blue-800);
+    --sp-neutral: var(--color-gray-300);
+    --sp-neutral-bg: var(--color-gray-700);
+    --sp-neutral-border: var(--color-gray-700);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--sp-bg);
+  color: var(--sp-text);
   font-family: Arial, Helvetica, sans-serif;
 }
 

@@ -78,7 +78,7 @@ export default function BetaIndexPage() {
         />
       </Head>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-10 px-4">
+      <main className="min-h-screen bg-white dark:bg-gray-900 text-text py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <Breadcrumbs
             crumbs={[
@@ -90,14 +90,14 @@ export default function BetaIndexPage() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-4 flex items-center gap-3">
               🧪 ベータ機能
-              <span className="text-lg font-normal text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded text-sm">試作版</span>
+              <span className="text-lg font-normal text-warning bg-warning-bg px-2 py-1 rounded text-sm">試作版</span>
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 text-lg">新しい機能を試験的に公開しています。</p>
+            <p className="text-text-secondary text-lg">新しい機能を試験的に公開しています。</p>
           </div>
 
-          <section className="mb-8 p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-            <h2 className="text-lg font-semibold text-amber-800 dark:text-amber-200 mb-3 flex items-center gap-2">⚠️ ベータ機能について</h2>
-            <ul className="space-y-2 text-sm text-amber-700 dark:text-amber-300">
+          <section className="mb-8 p-6 bg-warning-bg border border-warning-border rounded-lg">
+            <h2 className="text-lg font-semibold text-warning mb-3 flex items-center gap-2">⚠️ ベータ機能について</h2>
+            <ul className="space-y-2 text-sm text-warning">
               <li className="flex items-start gap-2">
                 <span>•</span>
                 <span>これらの機能は開発中のため、予告なく変更・削除される可能性があります</span>
@@ -114,27 +114,25 @@ export default function BetaIndexPage() {
           </section>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">利用可能な機能</h2>
+            <h2 className="text-xl font-semibold text-text mb-4">利用可能な機能</h2>
 
             {visibleFeatures.length > 0 ? (
               visibleFeatures.map((feature) => (
                 <Link
                   key={feature.id}
                   href={feature.href}
-                  className="block p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:border-amber-300 dark:hover:border-amber-600 hover:shadow-md transition-all duration-200 group"
+                  className="block p-6 border border-border rounded-lg bg-surface hover:border-amber-300 dark:hover:border-amber-600 hover:shadow-md transition-all duration-200 group"
                 >
                   <div className="flex items-start gap-4">
                     <div className="text-2xl">{feature.icon}</div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        <h3 className="text-lg font-semibold text-text group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                           {feature.title}
                         </h3>
-                        <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-2 py-1 rounded-full">
-                          {feature.status}
-                        </span>
+                        <span className="text-xs bg-warning-bg text-warning px-2 py-1 rounded-full">{feature.status}</span>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{feature.description}</p>
+                      <p className="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
                     </div>
                     <div className="text-gray-400 group-hover:text-amber-500 transition-colors">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +143,7 @@ export default function BetaIndexPage() {
                 </Link>
               ))
             ) : (
-              <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+              <div className="text-center py-12 text-text-muted">
                 <p className="text-lg mb-2">利用可能な機能がありません</p>
                 <p className="text-sm">現在公開中のベータ機能はありません。</p>
               </div>
@@ -153,10 +151,10 @@ export default function BetaIndexPage() {
           </div>
 
           {isDebugMode() && (
-            <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-              <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">🔧 開発者向け機能</h3>
+            <div className="mt-8 p-4 bg-info-bg border border-info-border rounded-lg">
+              <h3 className="text-sm font-semibold text-info mb-2">🔧 開発者向け機能</h3>
               <div className="flex gap-4">
-                <Link href="/test-db" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                <Link href="/test-db" className="text-sm text-primary hover:underline">
                   データベーステスト
                 </Link>
               </div>
@@ -164,7 +162,7 @@ export default function BetaIndexPage() {
           )}
 
           <div className="mt-12 text-center">
-            <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline text-sm">
+            <Link href="/" className="text-primary hover:underline text-sm">
               ← ホームに戻る
             </Link>
           </div>

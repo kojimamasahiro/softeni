@@ -73,10 +73,10 @@ export default function HighschoolIndex() {
             <Link
               key={s.href}
               href={s.href}
-              className="flex flex-col gap-1 rounded-lg border border-border bg-surface p-4 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
+              className="flex flex-col gap-1 rounded-lg border border-border bg-surface p-4 transition-colors hover:bg-bg-subtle"
             >
-              <h2 className="text-base font-semibold text-text dark:text-gray-100">{s.title}</h2>
-              <p className="text-xs text-text-muted dark:text-gray-400">{s.description}</p>
+              <h2 className="text-base font-semibold text-text">{s.title}</h2>
+              <p className="text-xs text-text-muted">{s.description}</p>
             </Link>
           ))}
         </div>

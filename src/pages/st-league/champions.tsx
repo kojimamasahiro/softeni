@@ -92,7 +92,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
             を男子・女子別にまとめました。各回の王者・会場に加え、連覇などの記録、プレーオフ（入替戦）による
             <strong>昇格・降格</strong>の歴史も掲載しています。
           </p>
-          <Link href="/st-league/about" className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+          <Link href="/st-league/about" className="inline-flex items-center text-primary font-semibold hover:underline">
             STリーグのルール・仕組みを見る
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -106,7 +106,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
             <h2 className="text-lg font-bold mb-4">記録ハイライト</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {records.map((r, i) => (
-                <div key={i} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div key={i} className="bg-surface rounded-xl p-5 border border-border shadow-sm">
                   <div className="flex items-center gap-2 mb-2">
                     <span
                       className={`inline-block text-xs font-bold px-2 py-0.5 rounded ${
@@ -131,14 +131,14 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="border-b-2 border-gray-200 dark:border-gray-700 text-left">
+                <tr className="border-b-2 border-border text-left">
                   <th className="py-2 pr-3 whitespace-nowrap">回</th>
                   <th className="py-2 pr-3 whitespace-nowrap">年</th>
                   <th className="py-2 pr-3">
-                    <span className="text-blue-700 dark:text-blue-400">男子優勝</span>
+                    <span className="text-info">男子優勝</span>
                   </th>
                   <th className="py-2 pr-3">
-                    <span className="text-rose-700 dark:text-rose-400">女子優勝</span>
+                    <span className="text-danger">女子優勝</span>
                   </th>
                   <th className="py-2 pr-3 hidden sm:table-cell">会場</th>
                 </tr>
@@ -147,7 +147,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
                 {editions.map((e) => (
                   <tr key={e.year} className="border-b border-gray-100 dark:border-gray-800">
                     <td className="py-2.5 pr-3 whitespace-nowrap font-bold">
-                      <Link href={`/st-league/${e.year}/matches`} className="text-blue-600 dark:text-blue-400 hover:underline">
+                      <Link href={`/st-league/${e.year}/matches`} className="text-primary hover:underline">
                         {e.edition ? `第${e.edition}回` : e.year}
                       </Link>
                     </td>
@@ -171,7 +171,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
               {seasons.map((season) => {
                 const rows = promotions.filter((p) => p.season === season);
                 return (
-                  <div key={season} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
+                  <div key={season} className="bg-surface rounded-xl p-5 border border-border shadow-sm">
                     <p className="font-bold mb-3">{season} シーズン</p>
                     <div className="grid sm:grid-cols-2 gap-4">
                       {(['boys', 'girls'] as Gender[]).map((g) => {
@@ -187,7 +187,7 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
                             </span>
                             {row && (row.promoted.length || row.relegated.length) ? (
                               <div className="space-y-1 text-sm">
-                                {row.promoted.length > 0 && <p className="text-emerald-700 dark:text-emerald-400">▲ 昇格：{row.promoted.join('、')}</p>}
+                                {row.promoted.length > 0 && <p className="text-success">▲ 昇格：{row.promoted.join('、')}</p>}
                                 {row.relegated.length > 0 && <p className="text-gray-500">▼ 降格：{row.relegated.join('、')}</p>}
                               </div>
                             ) : (
@@ -213,16 +213,16 @@ export default function STLeagueChampions({ editions, records, promotions }: Pro
               {editions
                 .filter((e) => e.note)
                 .map((e) => (
-                  <div key={e.year} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
+                  <div key={e.year} className="bg-surface rounded-xl p-5 border border-border shadow-sm">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded">
                         {e.edition ? `第${e.edition}回` : e.year}
                       </span>
-                      <Link href={`/st-league/${e.year}`} className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+                      <Link href={`/st-league/${e.year}`} className="font-bold text-primary hover:underline">
                         {e.title}
                       </Link>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{e.note}</p>
+                    <p className="text-sm text-text-secondary leading-relaxed">{e.note}</p>
                   </div>
                 ))}
             </div>

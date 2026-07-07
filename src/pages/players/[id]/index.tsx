@@ -215,27 +215,27 @@ export default function PlayerInformation({ player, id, numericId, hasResultsPag
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">プロフィール</h2>
-          <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
+          <table className="w-full text-sm border border-border-strong">
             <tbody>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700 w-32">所属</th>
+              <tr className="border-b border-border">
+                <th className="p-2 text-left bg-bg-subtle w-32">所属</th>
                 <td className="p-2">{player.retired ? '引退済み' : player.team}</td>
               </tr>
 
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">ポジション</th>
+              <tr className="border-b border-border">
+                <th className="p-2 text-left bg-bg-subtle">ポジション</th>
                 <td className="p-2">{player.position}</td>
               </tr>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">誕生日</th>
+              <tr className="border-b border-border">
+                <th className="p-2 text-left bg-bg-subtle">誕生日</th>
                 <td className="p-2">{formattedBirthDate ? `${formattedBirthDate}${age !== null ? `（${age}歳）` : ''}` : '年月日（歳）'}</td>
               </tr>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">身長</th>
+              <tr className="border-b border-border">
+                <th className="p-2 text-left bg-bg-subtle">身長</th>
                 <td className="p-2">{player.height}cm</td>
               </tr>
               <tr>
-                <th className="p-2 text-left bg-gray-100 dark:bg-gray-700">利き手</th>
+                <th className="p-2 text-left bg-bg-subtle">利き手</th>
                 <td className="p-2">{player.handedness}</td>
               </tr>
             </tbody>
@@ -259,10 +259,7 @@ export default function PlayerInformation({ player, id, numericId, hasResultsPag
           )}
 
           {hasResultsPage ? (
-            <Link
-              href={`/players/${numericId ?? id}/results`}
-              className="inline-block mt-2 text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
-            >
+            <Link href={`/players/${numericId ?? id}/results`} className="inline-block mt-2 text-primary underline hover:text-info transition">
               すべての試合結果を見る
             </Link>
           ) : (
@@ -275,7 +272,7 @@ export default function PlayerInformation({ player, id, numericId, hasResultsPag
             <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
             <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
               {faqItems.map((item) => (
-                <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+                <div key={item.question} className="rounded-xl border border-border p-4">
                   <h3 className="font-semibold mb-2">{item.question}</h3>
                   <p>{item.answer}</p>
                 </div>
@@ -289,12 +286,7 @@ export default function PlayerInformation({ player, id, numericId, hasResultsPag
           <ul className="list-disc list-inside space-y-1">
             {player.profileLinks.map((link, index) => (
               <li key={index}>
-                <Link
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
-                >
+                <Link href={link.url} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-info transition">
                   {link.label}
                 </Link>
               </li>

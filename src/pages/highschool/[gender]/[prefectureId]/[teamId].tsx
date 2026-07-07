@@ -303,7 +303,7 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
           {teamName} 高校{genderLabel} 全国大会成績・メンバー
         </h1>
 
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+        <p className="text-sm text-text-secondary mb-6">
           {teamName}
           の高校{genderLabel}
           について、全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
@@ -311,25 +311,25 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
         </p>
 
         <section className="grid gap-4 sm:grid-cols-4 mb-8">
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">収録成績数</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">収録成績数</p>
             <p className="text-2xl font-bold">{entries.length}</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">収録選手数</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">収録選手数</p>
             <p className="text-2xl font-bold">{analysis?.uniquePlayers ?? '-'}</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">インターハイ掲載数</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">インターハイ掲載数</p>
             <p className="text-2xl font-bold">{championshipAppearances}</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">インターハイ最高成績</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">インターハイ最高成績</p>
             <p className="text-2xl font-bold">{bestChampionshipEntry?.result ?? '-'}</p>
           </div>
         </section>
 
-        <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
+        <section className="mb-8 rounded-2xl border border-info-border bg-info-bg p-5">
           <h2 className="text-xl font-semibold mb-3">{teamName}の主要大会実績サマリー</h2>
           {championshipAppearances > 0 ? (
             <div className="space-y-2 text-sm text-gray-700 dark:text-gray-200 mb-4">
@@ -364,7 +364,7 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
           {majorTournamentSummaries.length > 0 && (
             <div className="grid gap-3 sm:grid-cols-2">
               {majorTournamentSummaries.map((summary) => (
-                <div key={summary.key} className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4">
+                <div key={summary.key} className="rounded-xl border border-info-border bg-white/80 dark:bg-gray-900/40 p-4">
                   <p className="font-semibold">{summary.label}</p>
                   <ul className="mt-1 space-y-1 text-sm text-gray-700 dark:text-gray-200">
                     <li>掲載成績 {summary.count}件</li>
@@ -386,12 +386,12 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
             <h2 className="text-xl font-semibold mb-3">
               {teamName} ソフトテニス{genderLabel}の年度別メンバー
             </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-sm text-text-secondary mb-4">
               収録している全国大会・主要大会の結果に掲載された選手を年度別にまとめています。 大会結果に掲載された選手のみのため、全部員の名簿ではありません。
             </p>
             <div className="space-y-4">
               {membersByYear.map(({ year, members }) => (
-                <div key={year} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+                <div key={year} className="rounded-xl border border-border p-4">
                   <h3 className="font-semibold mb-2">
                     {year}年のメンバー（{members.length}名）
                   </h3>
@@ -401,7 +401,7 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
                       return (
                         <li key={pid}>
                           {linkId ? (
-                            <Link href={`/players/${linkId}/results`} className="text-blue-700 dark:text-blue-300 hover:underline">
+                            <Link href={`/players/${linkId}/results`} className="text-info hover:underline">
                               {name}
                             </Link>
                           ) : (
@@ -500,26 +500,17 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-3">関連ページ</h2>
           <div className="grid gap-3 sm:grid-cols-3">
-            <Link
-              href={`/highschool/${gender}/${prefectureId}`}
-              className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
-            >
+            <Link href={`/highschool/${gender}/${prefectureId}`} className="rounded-xl border border-border p-4 bg-surface hover:bg-bg-subtle transition">
               <p className="font-semibold">{prefectureName}の学校一覧</p>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">同県の高校{genderLabel}成績をまとめて見る</p>
+              <p className="text-sm text-text-secondary mt-1">同県の高校{genderLabel}成績をまとめて見る</p>
             </Link>
-            <Link
-              href={`/highschool/${gender}`}
-              className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
-            >
+            <Link href={`/highschool/${gender}`} className="rounded-xl border border-border p-4 bg-surface hover:bg-bg-subtle transition">
               <p className="font-semibold">高校{genderLabel}都道府県別一覧</p>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">他県の注目校や成績ページへ移動</p>
+              <p className="text-sm text-text-secondary mt-1">他県の注目校や成績ページへ移動</p>
             </Link>
-            <Link
-              href="/tournaments/major"
-              className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
-            >
+            <Link href="/tournaments/major" className="rounded-xl border border-border p-4 bg-surface hover:bg-bg-subtle transition">
               <p className="font-semibold">主要大会一覧</p>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">大会単位で結果を追いたい場合はこちら</p>
+              <p className="text-sm text-text-secondary mt-1">大会単位で結果を追いたい場合はこちら</p>
             </Link>
           </div>
         </section>
@@ -559,7 +550,7 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
                                   <p className="font-semibold">
                                     <Link
                                       href={`/tournaments/${items[0]?.generation ?? 'highschool'}/${tournamentId}/${year}/${cat}/${items[0]?.ageCategory ?? 'none'}/${categoryGender}`}
-                                      className="text-blue-700 dark:text-blue-300 hover:underline"
+                                      className="text-info hover:underline"
                                     >
                                       {getCategoryLabel(cat)}
                                     </Link>
@@ -613,11 +604,11 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
           </div>
         )}
 
-        <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+        <section className="mt-12 border-t border-border pt-8">
           <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
           <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
             {faqItems.map((item) => (
-              <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+              <div key={item.question} className="rounded-xl border border-border p-4">
                 <h3 className="font-semibold mb-2">{item.question}</h3>
                 <p>{item.answer}</p>
               </div>

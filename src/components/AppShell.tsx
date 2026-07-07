@@ -152,7 +152,7 @@ export default function AppShell({
   if (scoreMode) {
     return (
       <div className="flex min-h-screen flex-col">
-        <header className="w-full bg-gray-50 text-gray-800 shadow-sm dark:bg-gray-900 dark:text-gray-100">
+        <header className="w-full bg-bg text-text shadow-sm">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
             {brand}
             <nav className="flex gap-6">
@@ -178,9 +178,7 @@ export default function AppShell({
       <aside
         data-sidebar
         aria-hidden={!sidebarOpen}
-        className={`hidden shrink-0 border-r border-gray-200 bg-gray-50 lg:block dark:border-gray-800 dark:bg-gray-900 ${
-          hydrated ? 'transition-[width] duration-200' : ''
-        } ${sidebarOpen ? 'lg:w-[280px]' : 'lg:w-0 lg:overflow-hidden lg:border-r-0'}`}
+        className={`hidden shrink-0 border-r border-gray-200 bg-bg lg:block dark:border-gray-800 ${hydrated ? 'transition-[width] duration-200' : ''} ${sidebarOpen ? 'lg:w-[280px]' : 'lg:w-0 lg:overflow-hidden lg:border-r-0'}`}
       >
         <div className="sticky top-0 flex h-screen w-[280px] flex-col">
           {/* サイドバー上部: 閉じるボタン（高さ 64px でヘッダーと揃える） */}
@@ -190,7 +188,7 @@ export default function AppShell({
               onClick={toggleSidebar}
               aria-label="サイドバーを閉じる"
               aria-expanded={sidebarOpen}
-              className="rounded-md p-1.5 text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
+              className="rounded-md p-1.5 text-text-secondary hover:bg-bg-subtle"
             >
               <SidebarIcon />
             </button>
@@ -211,11 +209,11 @@ export default function AppShell({
             role="dialog"
             aria-modal="true"
             aria-label="サイトナビゲーション"
-            className="absolute left-0 top-0 h-full w-72 max-w-[80%] overflow-y-auto bg-gray-50 shadow-xl dark:bg-gray-900"
+            className="absolute left-0 top-0 h-full w-72 max-w-[80%] overflow-y-auto bg-bg shadow-xl"
           >
             <div className="flex h-16 items-center justify-between px-4">
               <span className="text-lg font-bold">{siteConfig.siteName}</span>
-              <button type="button" onClick={closeDrawer} aria-label="メニューを閉じる" className="rounded-md p-1 hover:bg-gray-200 dark:hover:bg-gray-800">
+              <button type="button" onClick={closeDrawer} aria-label="メニューを閉じる" className="rounded-md p-1 hover:bg-bg-subtle">
                 <CloseIcon />
               </button>
             </div>
@@ -227,7 +225,7 @@ export default function AppShell({
       {/* 右カラム: 上部固定ヘッダー + 本文 + フッター */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* ヘッダー: 高さ 64px・上部固定（sticky）。コンテンツが長くても消えない。 */}
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-gray-200 bg-gray-50 px-4 text-gray-800 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100">
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-gray-200 bg-bg px-4 text-text dark:border-gray-800">
           {/* モバイル: ハンバーガー（ヘッダー左） */}
           <button
             type="button"
@@ -235,7 +233,7 @@ export default function AppShell({
             aria-label="メニューを開く"
             aria-controls="mobile-drawer"
             aria-expanded={drawerOpen}
-            className="inline-flex rounded-md p-1 hover:bg-gray-200 lg:hidden dark:hover:bg-gray-800"
+            className="inline-flex rounded-md p-1 hover:bg-bg-subtle lg:hidden"
           >
             <HamburgerIcon />
           </button>
@@ -246,7 +244,7 @@ export default function AppShell({
               onClick={toggleSidebar}
               aria-label="サイドバーを開く"
               aria-expanded={sidebarOpen}
-              className="hidden rounded-md p-1.5 hover:bg-gray-200 lg:inline-flex dark:hover:bg-gray-800"
+              className="hidden rounded-md p-1.5 hover:bg-bg-subtle lg:inline-flex"
             >
               <SidebarIcon />
             </button>

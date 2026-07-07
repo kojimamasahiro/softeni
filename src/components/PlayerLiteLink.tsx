@@ -103,39 +103,39 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
           aria-label={`${name} の出場大会`}
           onClick={() => setOpen(false)}
         >
-          <div className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-5 shadow-xl dark:bg-gray-800" onClick={(e) => e.stopPropagation()}>
+          <div className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-xl bg-surface p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-3 flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100">{data?.name ?? name}</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">出場した大会と当時のペア</p>
+                <h2 className="text-lg font-bold text-text">{data?.name ?? name}</h2>
+                <p className="text-xs text-text-muted">出場した大会と当時のペア</p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="shrink-0 rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+                className="shrink-0 rounded-md px-2 py-1 text-sm text-text-muted hover:bg-bg-subtle"
                 aria-label="閉じる"
               >
                 ✕
               </button>
             </div>
 
-            {loading && <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">読み込み中…</p>}
-            {error && <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">情報を取得できませんでした。</p>}
+            {loading && <p className="py-6 text-center text-sm text-text-muted">読み込み中…</p>}
+            {error && <p className="py-6 text-center text-sm text-text-muted">情報を取得できませんでした。</p>}
             {!loading && !error && data && data.tournaments.length === 0 && (
-              <p className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">収録された出場大会がありません。</p>
+              <p className="py-6 text-center text-sm text-text-muted">収録された出場大会がありません。</p>
             )}
 
             {!loading && !error && data && data.tournaments.length > 0 && (
-              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+              <ul className="divide-y divide-border">
                 {data.tournaments.map((t, i) => (
                   <li key={i} className="py-2 text-sm">
-                    <div className="font-medium text-gray-800 dark:text-gray-100">
+                    <div className="font-medium text-text">
                       {t.year ? `${t.year}年 ` : ''}
                       {t.tournamentName}
                     </div>
-                    {t.gameCategory && <div className="text-xs text-gray-500 dark:text-gray-400">{GAME_CATEGORY_LABEL[t.gameCategory] ?? t.gameCategory}</div>}
+                    {t.gameCategory && <div className="text-xs text-text-muted">{GAME_CATEGORY_LABEL[t.gameCategory] ?? t.gameCategory}</div>}
                     {t.partner && (
-                      <div className="text-gray-600 dark:text-gray-300">
+                      <div className="text-text-secondary">
                         ペア{' '}
                         {t.partner.hasPage && t.partner.id ? (
                           <Link
@@ -151,7 +151,7 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
                         )}
                       </div>
                     )}
-                    {t.team && <div className="text-gray-600 dark:text-gray-300">所属 {t.team}</div>}
+                    {t.team && <div className="text-text-secondary">所属 {t.team}</div>}
                   </li>
                 ))}
               </ul>

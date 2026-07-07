@@ -50,7 +50,7 @@ function formatGameStats(games?: { won: number; lost: number; gameRate: number }
 
 function StatsRow({ label, stats, link, liteId }: StatsRowProps) {
   return (
-    <tr className="border-t border-gray-200 dark:border-gray-600 text-center">
+    <tr className="border-t border-border-strong text-center">
       <td className="py-1 px-2">
         {link ? (
           <Link href={link} className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid">
@@ -78,8 +78,8 @@ function StatsTable({ title, data, isYear = false, allPlayers }: StatsTableProps
   return (
     <div className="mb-4">
       <h4 className="text-base font-semibold mb-2">{title}</h4>
-      <table className="w-full border border-gray-200 dark:border-gray-600 text-sm">
-        <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+      <table className="w-full border border-border-strong text-sm">
+        <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
           <tr>
             <th className="py-1 px-2 text-center">{isYear ? '年度' : 'パートナー'}</th>
             <th className="py-1 px-2 text-center">勝敗（勝率）</th>
@@ -115,12 +115,12 @@ export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryS
   return (
     <>
       <h2 className="text-xl font-semibold mb-2">サマリー</h2>
-      <div className="mb-6 mx-4 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">対戦成績</h3>
+      <div className="mb-6 mx-4 border border-border rounded-xl p-4 shadow-sm bg-surface">
+        <h3 className="text-lg font-bold text-text mb-4">対戦成績</h3>
 
         {/* 総合成績 */}
-        <table className="w-full mb-4 border border-gray-200 dark:border-gray-700 text-sm">
-          <thead className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+        <table className="w-full mb-4 border border-border text-sm">
+          <thead className="bg-bg-subtle text-text">
             <tr>
               <th className="py-1 px-2 text-center">試合数</th>
               <th className="py-1 px-2 text-center">勝敗（勝率）</th>

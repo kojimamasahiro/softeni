@@ -46,7 +46,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
         <div>
           {playerId && (
             <div className="flex flex-wrap gap-4">
-              <Link href={`/players/${playerId}/results`} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
+              <Link href={`/players/${playerId}/results`} className="text-sm text-primary hover:underline">
                 この選手の試合結果ページへ
               </Link>
             </div>
@@ -54,7 +54,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
 
           <h1 className="mt-2 text-2xl font-bold">{title}</h1>
 
-          <section className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-5 dark:border-gray-700 dark:bg-gray-800/70">
+          <section className="mt-6 rounded-lg border border-border bg-gray-50 p-5 dark:bg-gray-800/70">
             <h2 className="text-lg font-semibold">この成長記録でわかること</h2>
             <p className="mt-2 text-sm leading-7 text-gray-700 dark:text-gray-200">
               {intro ??
@@ -70,11 +70,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
                   key={record.key}
                   type="button"
                   onClick={() => setActiveIndex(index)}
-                  className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-                    index === activeIndex
-                      ? 'border-blue-600 bg-blue-600 text-white'
-                      : 'border-gray-300 bg-white text-gray-700 hover:border-blue-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200'
-                  }`}
+                  className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${index === activeIndex ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-300 bg-surface text-gray-700 hover:border-blue-400 dark:border-gray-600 dark:text-gray-200'}`}
                 >
                   {record.label}
                 </button>
@@ -83,15 +79,13 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
           )}
 
           {target && (
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            <p className="mt-4 text-sm text-text-secondary">
               {active.label} ／ {getTargetMeta(target)}
             </p>
           )}
 
           {active?.report.emptyMessage ? (
-            <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-6 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-200">
-              {active.report.emptyMessage}
-            </div>
+            <div className="mt-4 rounded-lg border border-warning-border bg-warning-bg p-6 text-warning">{active.report.emptyMessage}</div>
           ) : (
             active && (
               <div className="mt-4 space-y-5">
@@ -106,24 +100,24 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
 
           {/* もとにした試合（出所） */}
           {active && active.sourceMatches.length > 0 && (
-            <section className="mt-5 rounded-lg border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">もとにした試合（{active.sourceMatches.length}試合）</h2>
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">この成長記録は、以下の試合の記録から作成しています。</p>
-              <ul className="mt-3 divide-y divide-gray-100 dark:divide-gray-700">
+            <section className="mt-5 rounded-lg border border-border bg-surface p-5 shadow-sm">
+              <h2 className="text-lg font-semibold text-text">もとにした試合（{active.sourceMatches.length}試合）</h2>
+              <p className="mt-1 text-xs text-text-muted">この成長記録は、以下の試合の記録から作成しています。</p>
+              <ul className="mt-3 divide-y divide-border">
                 {active.sourceMatches.map((source) => (
                   <li key={source.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 text-sm">
-                    <span className="text-gray-500 dark:text-gray-400">{source.date ?? '日付不明'}</span>
-                    <Link href={source.detailPath} className="font-medium text-blue-600 hover:underline dark:text-blue-400">
+                    <span className="text-text-muted">{source.date ?? '日付不明'}</span>
+                    <Link href={source.detailPath} className="font-medium text-primary hover:underline">
                       vs {source.opponentName}
                     </Link>
                     {source.tournamentName && (
-                      <span className="text-gray-500 dark:text-gray-400">
+                      <span className="text-text-muted">
                         {source.tournamentName}
                         {source.roundName ? ` ${source.roundName}` : ''}
                       </span>
                     )}
                     {source.videoUrl && (
-                      <a href={source.videoUrl} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline dark:text-red-400">
+                      <a href={source.videoUrl} target="_blank" rel="noopener noreferrer" className="text-danger hover:underline">
                         動画
                       </a>
                     )}
@@ -134,14 +128,14 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
           )}
 
           {/* score 導線プレースホルダ。score の方針が固まるまで配線しない（ADR-004）。 */}
-          <section className="mt-8 rounded-lg border border-dashed border-gray-300 bg-white p-5 text-center dark:border-gray-600 dark:bg-gray-800">
+          <section className="mt-8 rounded-lg border border-dashed border-border-strong bg-surface p-5 text-center">
             <p className="text-sm font-medium text-gray-700 dark:text-gray-200">自分の試合でもこうした成長記録をつけられます</p>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">（score 連携は準備中です）</p>
+            <p className="mt-1 text-xs text-text-muted">（score 連携は準備中です）</p>
             <button
               type="button"
               disabled
               aria-disabled="true"
-              className="mt-3 cursor-not-allowed rounded bg-gray-200 px-4 py-2 text-sm font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400"
+              className="mt-3 cursor-not-allowed rounded bg-gray-200 px-4 py-2 text-sm font-medium text-text-muted dark:bg-gray-700"
             >
               準備中
             </button>

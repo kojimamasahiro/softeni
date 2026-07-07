@@ -99,15 +99,15 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
           <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <h1 className="mt-2 text-2xl font-bold">最近の成長</h1>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">勝ち負けだけでは見えない、試合内容の変化を追えます。</p>
+              <p className="mt-2 text-sm text-text-secondary">勝ち負けだけでは見えない、試合内容の変化を追えます。</p>
             </div>
             <div className="grid gap-3 md:grid-cols-[minmax(260px,360px)_minmax(180px,240px)]">
               <label className="block">
-                <span className="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">対象</span>
+                <span className="mb-1 block text-xs font-medium text-text-muted">対象</span>
                 <select
                   value={selectedTargetKey}
                   onChange={(event) => handleTargetChange(event.target.value)}
-                  className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800"
+                  className="w-full rounded border border-border bg-surface px-3 py-2 text-sm"
                 >
                   {targets.map((target) => (
                     <option key={target.key} value={target.key}>
@@ -117,11 +117,11 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">比較</span>
+                <span className="mb-1 block text-xs font-medium text-text-muted">比較</span>
                 <select
                   value={selectedComparisonKind}
                   onChange={(event) => setSelectedComparisonKind(event.target.value as GrowthComparison['kind'])}
-                  className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800"
+                  className="w-full rounded border border-border bg-surface px-3 py-2 text-sm"
                   disabled={!report || report.comparisons.length === 0}
                 >
                   {(report?.comparisons ?? []).map((comparison) => (
@@ -135,26 +135,20 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
           </div>
 
           {selectedTarget && (
-            <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/70">
+            <div className="mb-6 rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/70">
               <p className="text-xl font-semibold">{selectedTarget.displayName}</p>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{getTargetMeta(selectedTarget)}</p>
+              <p className="mt-1 text-sm text-text-secondary">{getTargetMeta(selectedTarget)}</p>
             </div>
           )}
 
-          {loading && (
-            <div className="rounded-lg border border-gray-200 p-6 text-center text-gray-600 dark:border-gray-700 dark:text-gray-300">読み込み中...</div>
-          )}
+          {loading && <div className="rounded-lg border border-border p-6 text-center text-text-secondary">読み込み中...</div>}
 
           {!loading && targets.length === 0 && (
-            <div className="rounded-lg border border-gray-200 p-6 text-center text-gray-600 dark:border-gray-700 dark:text-gray-300">
-              まだ成長分析に使える試合がありません。
-            </div>
+            <div className="rounded-lg border border-border p-6 text-center text-text-secondary">まだ成長分析に使える試合がありません。</div>
           )}
 
           {!loading && report?.emptyMessage && (
-            <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-200">
-              {report.emptyMessage}
-            </div>
+            <div className="rounded-lg border border-warning-border bg-warning-bg p-6 text-warning">{report.emptyMessage}</div>
           )}
 
           {!loading && report && selectedComparison && (

@@ -38,9 +38,9 @@ const TIMELINE_KIND_LABEL: Record<string, string> = {
 
 function SectionCard({ title, note, children }: { title: string; note?: string; children: React.ReactNode }) {
   return (
-    <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h3 className="mb-1 text-lg font-bold text-gray-800 dark:text-gray-100">{title}</h3>
-      {note && <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">{note}</p>}
+    <div className="mb-6 rounded-xl border border-border bg-surface p-4 shadow-sm">
+      <h3 className="mb-1 text-lg font-bold text-text">{title}</h3>
+      {note && <p className="mb-3 text-xs text-text-muted">{note}</p>}
       {children}
     </div>
   );
@@ -110,10 +110,10 @@ function HighlightCards({ stats }: { stats: PlayerStatistics }) {
     <SectionCard title="戦績ハイライト" note={stats.scopeNote}>
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {items.map((it) => (
-          <li key={it.label} className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900/40">
-            <p className="text-xs text-gray-500 dark:text-gray-400">{it.label}</p>
-            <p className="mt-0.5 text-sm font-bold text-gray-900 dark:text-gray-100">{it.value}</p>
-            {it.sub && <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{it.sub}</p>}
+          <li key={it.label} className="rounded-lg border border-border bg-gray-50 p-3 dark:bg-gray-900/40">
+            <p className="text-xs text-text-muted">{it.label}</p>
+            <p className="mt-0.5 text-sm font-bold text-text">{it.value}</p>
+            {it.sub && <p className="mt-0.5 text-xs text-text-muted">{it.sub}</p>}
           </li>
         ))}
       </ul>
@@ -132,8 +132,8 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
   const sorted = [...trend].sort((a, b) => b.year - a.year || a.discipline.localeCompare(b.discipline) || (a.gender ?? '').localeCompare(b.gender ?? ''));
   return (
     <SectionCard title="年度別ランキング推移" note="当サイト掲載大会のシーズンポイント（年度の上位3大会合算）による男女別・種目別順位です。">
-      <table className="w-full border border-gray-200 text-sm dark:border-gray-600">
-        <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+      <table className="w-full border border-border-strong text-sm">
+        <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
           <tr>
             <th className="py-1 px-2 text-center">年度</th>
             <th className="py-1 px-2 text-center">種目</th>
@@ -143,14 +143,14 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
         </thead>
         <tbody>
           {sorted.map((p) => (
-            <tr key={`${p.year}-${p.discipline}-${p.gender}`} className="border-t border-gray-200 text-center dark:border-gray-600">
+            <tr key={`${p.year}-${p.discipline}-${p.gender}`} className="border-t border-border-strong text-center">
               <td className="py-1 px-2">{p.year}年度</td>
               <td className="py-1 px-2">
                 {GENDER_LABEL[p.gender] ?? ''}
                 {DISCIPLINE_LABEL[p.discipline] ?? p.discipline}
               </td>
               <td className="py-1 px-2 font-semibold">
-                {p.rank}位<span className="ml-1 font-normal text-xs text-gray-500 dark:text-gray-400">/ {p.outOf}人</span>
+                {p.rank}位<span className="ml-1 font-normal text-xs text-text-muted">/ {p.outOf}人</span>
               </td>
               <td className="py-1 px-2">{p.points}</td>
             </tr>
@@ -158,7 +158,7 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
         </tbody>
       </table>
       <p className="mt-2 text-right text-sm">
-        <Link href="/rankings/" className="text-blue-600 hover:underline dark:text-blue-400">
+        <Link href="/rankings/" className="text-primary hover:underline">
           全体ランキングを見る ›
         </Link>
       </p>
@@ -172,8 +172,8 @@ function TournamentTable({ rows }: { rows: TournamentRow[] }) {
   return (
     <SectionCard title="大会別成績" note={`出場大会ごとの通算成績と最高成績です${rows.length > top.length ? `（出場数上位${top.length}大会）` : ''}。`}>
       <div className="overflow-x-auto">
-        <table className="w-full border border-gray-200 text-sm dark:border-gray-600">
-          <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+        <table className="w-full border border-border-strong text-sm">
+          <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
             <tr>
               <th className="py-1 px-2 text-left">大会</th>
               <th className="py-1 px-2 text-center">出場</th>
@@ -184,7 +184,7 @@ function TournamentTable({ rows }: { rows: TournamentRow[] }) {
           </thead>
           <tbody>
             {top.map((t) => (
-              <tr key={t.tournamentId} className="border-t border-gray-200 text-center dark:border-gray-600">
+              <tr key={t.tournamentId} className="border-t border-border-strong text-center">
                 <td className="py-1 px-2 text-left">{t.tournamentName}</td>
                 <td className="py-1 px-2">{t.appearances}回</td>
                 <td className="py-1 px-2">
@@ -207,8 +207,8 @@ function HeadToHeadTable({ rows, linkable }: { rows: Head2HeadRow[]; linkable: S
   const top = rows.slice(0, 10);
   return (
     <SectionCard title="対戦相手との通算成績" note="相手選手ごとの通算対戦成績（対個人・相方問わず名寄せ）です。対戦数の多い順に掲載しています。">
-      <table className="w-full border border-gray-200 text-sm dark:border-gray-600">
-        <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+      <table className="w-full border border-border-strong text-sm">
+        <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
           <tr>
             <th className="py-1 px-2 text-center">相手</th>
             <th className="py-1 px-2 text-center">対戦数</th>
@@ -219,7 +219,7 @@ function HeadToHeadTable({ rows, linkable }: { rows: Head2HeadRow[]; linkable: S
           {top.map((h) => {
             const canLink = h.opponentId != null && linkable.has(h.opponentId);
             return (
-              <tr key={h.opponentKey} className="border-t border-gray-200 text-center dark:border-gray-600">
+              <tr key={h.opponentKey} className="border-t border-border-strong text-center">
                 <td className="py-1 px-2">
                   {canLink ? (
                     <Link
@@ -251,8 +251,8 @@ function TeamTable({ rows }: { rows: TeamRow[] }) {
   if (rows.length <= 1) return null; // 所属が 1 つだけなら情報量が無い
   return (
     <SectionCard title="所属別成績" note="出場当時の所属チームごとの成績です。">
-      <table className="w-full border border-gray-200 text-sm dark:border-gray-600">
-        <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+      <table className="w-full border border-border-strong text-sm">
+        <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
           <tr>
             <th className="py-1 px-2 text-center">所属</th>
             <th className="py-1 px-2 text-center">期間</th>
@@ -262,7 +262,7 @@ function TeamTable({ rows }: { rows: TeamRow[] }) {
         </thead>
         <tbody>
           {rows.map((t) => (
-            <tr key={t.team} className="border-t border-gray-200 text-center dark:border-gray-600">
+            <tr key={t.team} className="border-t border-border-strong text-center">
               <td className="py-1 px-2">{t.team}</td>
               <td className="py-1 px-2 text-xs">
                 {t.span.from?.slice(0, 4) ?? '?'}〜{t.span.to?.slice(0, 4) ?? ''}
@@ -288,14 +288,12 @@ function CareerTimeline({ events }: { events: TimelineEvent[] }) {
       <ol className="space-y-1.5">
         {shown.map((e, i) => (
           <li key={`${e.year}-${e.kind}-${i}`} className="flex items-baseline gap-2 text-sm">
-            <span className="w-16 shrink-0 text-xs font-semibold text-gray-500 dark:text-gray-400">{e.year}年度</span>
-            <span className="shrink-0 rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-              {TIMELINE_KIND_LABEL[e.kind] ?? e.kind}
-            </span>
+            <span className="w-16 shrink-0 text-xs font-semibold text-text-muted">{e.year}年度</span>
+            <span className="shrink-0 rounded bg-bg-subtle px-1.5 py-0.5 text-xs text-text-secondary">{TIMELINE_KIND_LABEL[e.kind] ?? e.kind}</span>
             <span className="text-gray-800 dark:text-gray-200">{e.label}</span>
           </li>
         ))}
-        {events.length > shown.length && <li className="text-xs text-gray-500 dark:text-gray-400">ほか{events.length - shown.length}件</li>}
+        {events.length > shown.length && <li className="text-xs text-text-muted">ほか{events.length - shown.length}件</li>}
       </ol>
     </SectionCard>
   );
@@ -312,9 +310,7 @@ export default function PlayerStatisticsSections({ stats, linkablePlayerIds = []
   return (
     <section>
       <h2 className="mb-2 text-xl font-semibold">詳細スタッツ</h2>
-      {stats.identity.homonymRisk && (
-        <p className="mb-3 text-xs text-amber-700 dark:text-amber-400">※ 同姓同名の別選手の成績が含まれている可能性があります。</p>
-      )}
+      {stats.identity.homonymRisk && <p className="mb-3 text-xs text-warning">※ 同姓同名の別選手の成績が含まれている可能性があります。</p>}
       <div className="mx-4">
         <HighlightCards stats={stats} />
         <RankingTrendTable trend={stats.rankingTrend} />

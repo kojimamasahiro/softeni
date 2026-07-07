@@ -111,7 +111,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
 
         <h1 className="text-2xl font-bold">{teamName} | 成績</h1>
 
-        <section className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+        <section className="text-sm text-text-secondary leading-relaxed">
           <p className="mb-2">
             {teamName}
             のソフトテニスにおける成績をまとめたページです。
@@ -125,21 +125,21 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
           <section>
             <div className="flex items-baseline justify-between mb-3">
               <h2 className="text-xl font-bold">STリーグでの成績</h2>
-              <Link href="/st-league" className="text-sm text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+              <Link href="/st-league" className="text-sm text-primary font-semibold hover:underline">
                 STリーグ トップ →
               </Link>
             </div>
 
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+            <p className="text-sm text-text-muted mb-3">
               出場: {stLeague!.firstYear}〜{stLeague!.lastYear}
               {stLeague!.titlesTop > 0 && (
-                <span className="ml-2 inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-semibold">🏆 Ⅰ部優勝 {stLeague!.titlesTop}回</span>
+                <span className="ml-2 inline-flex items-center gap-1 text-warning font-semibold">🏆 Ⅰ部優勝 {stLeague!.titlesTop}回</span>
               )}
             </p>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div className="bg-surface rounded-xl shadow-sm overflow-hidden border border-border">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400">
+                <thead className="bg-gray-50 dark:bg-gray-700/50 text-text-muted">
                   <tr>
                     <th className="py-2.5 px-3 text-left font-medium">年度</th>
                     <th className="py-2.5 px-2 text-left font-medium">区分</th>
@@ -147,7 +147,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
                     <th className="py-2.5 px-3 text-center font-medium">順位</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                <tbody className="divide-y divide-border">
                   {stLeague!.seasons.map((s) => (
                     <tr key={`${s.year}-${s.gender}`} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
                       <td className="py-2.5 px-3 font-medium whitespace-nowrap">
@@ -156,7 +156,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
                           {s.edition ? `（第${s.edition}回）` : ''}
                         </Link>
                       </td>
-                      <td className="py-2.5 px-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                      <td className="py-2.5 px-2 text-text-secondary whitespace-nowrap">
                         {GENDER_LABEL[s.gender]}・{s.divisionName}
                       </td>
                       <td className="py-2.5 px-2 text-center whitespace-nowrap">
@@ -172,7 +172,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
                       </td>
                       <td className="py-2.5 px-3 text-center whitespace-nowrap">
                         {s.isChampion ? (
-                          <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold">🏆 優勝</span>
+                          <span className="inline-flex items-center gap-1 text-warning font-bold">🏆 優勝</span>
                         ) : s.rank ? (
                           `${s.rank}位`
                         ) : (
@@ -194,16 +194,16 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
             <h2 className="text-xl font-bold mb-4">大会別成績</h2>
             {stats.map(({ year, stats: yearStats }) => (
               <div key={year} className="mb-10">
-                <h3 className="text-lg font-bold mb-4 border-b-2 border-gray-200 dark:border-gray-700 pb-2">{year}年度</h3>
+                <h3 className="text-lg font-bold mb-4 border-b-2 border-border pb-2">{year}年度</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {yearStats.map(({ gender, count }) => (
                     <Link
                       key={gender}
                       href={`/teams/${info.id}/${year}/${gender}`}
-                      className="block bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
+                      className="block bg-surface rounded-xl shadow p-6 border border-border hover:shadow-md transition-shadow"
                     >
-                      <h4 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">{GENDER_LABEL[gender]}</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">大会数: {count}</p>
+                      <h4 className="text-lg font-bold mb-2 text-text">{GENDER_LABEL[gender]}</h4>
+                      <p className="text-sm text-text-muted">大会数: {count}</p>
                     </Link>
                   ))}
                 </div>

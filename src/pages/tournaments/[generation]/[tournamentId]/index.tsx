@@ -190,11 +190,11 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
         <h1 className="text-2xl font-bold mb-4">{label} 大会結果（歴代一覧）</h1>
 
         {hsNationalHref && (
-          <div className="mb-5 rounded-md border border-blue-200 bg-blue-50 px-4 py-3 text-sm dark:border-blue-900 dark:bg-blue-950">
-            <Link href={hsNationalHref} className="font-semibold text-blue-700 hover:underline dark:text-blue-300">
+          <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
+            <Link href={hsNationalHref} className="font-semibold text-info hover:underline">
               {label} 歴代記録（優勝・準優勝・ベスト4／開催予定）はこちら →
             </Link>
-            <p className="mt-1 text-gray-600 dark:text-gray-300">
+            <p className="mt-1 text-text-secondary">
               種目別の歴代優勝サマリーや出場校の戦績まで、{label}
               のまとめは高校カテゴリの歴代記録ページに集約しています。
             </p>
@@ -209,9 +209,9 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
             見たい年度・種別を選ぶと、各大会の詳細な結果ページに移動できます。
           </p>
           {officialUrl && (
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+            <p className="text-sm text-text-secondary">
               公式サイト:{' '}
-              <a href={officialUrl} className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
+              <a href={officialUrl} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
                 {officialUrl}
               </a>
             </p>
@@ -223,12 +223,12 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
             <h2 className="text-lg font-bold mb-3">{label} 歴代優勝者</h2>
             <div className="space-y-5">
               {championCategoryGroups.map((group) => (
-                <div key={group.categoryLabel} className="border-t border-gray-200 pt-4 dark:border-gray-700">
+                <div key={group.categoryLabel} className="border-t border-border pt-4">
                   <h3 className="mb-1 text-sm font-semibold">{group.categoryLabel}</h3>
                   <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                     {group.winners.map((r) => (
                       <li key={`${r.year}-${r.categoryLabel}`}>
-                        <Link href={r.href} className="text-blue-600 hover:underline dark:text-blue-400">
+                        <Link href={r.href} className="text-primary hover:underline">
                           {r.year}年
                         </Link>
                         : {r.winner}
@@ -252,7 +252,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                 {label} {g.year}年度 結果
               </h2>
               {(g.location || g.startDate) && (
-                <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-xs text-text-muted">
                   {g.location ? `開催地:${g.location}` : ''}
                   {g.location && g.startDate ? ' / ' : ''}
                   {g.startDate ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}` : ''}
@@ -262,9 +262,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                 {g.categories.map((c) => (
                   <li key={`${g.year}-${c.category}-${c.age}-${c.gender}`}>
                     <Link href={c.href}>
-                      <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition dark:bg-blue-900 dark:text-blue-100">
-                        {c.label}
-                      </span>
+                      <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{c.label}</span>
                     </Link>
                   </li>
                 ))}

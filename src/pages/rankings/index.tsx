@@ -113,11 +113,11 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
 
         <header>
           <h1 className="text-2xl font-bold">ソフトテニス選手ランキング</h1>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-sm text-text-secondary">
             当サイト掲載大会の成績から算出した年度別ランキングです。ポイントは大会の格 （主要大会・全国大会・地方大会）と最終成績から求め、
             <strong>年度の上位3大会のみを合算</strong>しています（上位{TOP_N}位まで掲載）。
           </p>
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+          <p className="mt-1 text-xs text-text-muted">
             ※ 当サイトに掲載されている大会のみが対象です。年度により収録大会数・母数が大きく異なるため、 年度をまたいだ順位の比較には適しません。
           </p>
         </header>
@@ -129,11 +129,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
               key={y}
               type="button"
               onClick={() => setYear(y)}
-              className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                y === year
-                  ? 'border-blue-600 bg-blue-600 text-white dark:border-blue-500 dark:bg-blue-500'
-                  : 'border-gray-300 bg-white text-gray-700 hover:bg-blue-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700'
-              }`}
+              className={`rounded-full border px-3 py-1 text-sm transition-colors ${y === year ? 'border-blue-600 bg-blue-600 text-white dark:border-blue-500 dark:bg-blue-500' : 'border-gray-300 bg-surface text-gray-700 hover:bg-blue-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700'}`}
             >
               {y}年度
             </button>
@@ -141,7 +137,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         </div>
 
         {/* 種目×男女タブ */}
-        <div className="border-b border-gray-200 dark:border-gray-700">
+        <div className="border-b border-border">
           <div className="-mb-px flex flex-wrap gap-1">
             {tabsForYear.map((t, i) => {
               const active = activeTab === t;
@@ -150,11 +146,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                   key={`${t.discipline}-${t.gender}`}
                   type="button"
                   onClick={() => setTab(i)}
-                  className={`rounded-t-lg border border-b-0 px-4 py-2 text-sm font-medium transition-colors ${
-                    active
-                      ? 'border-gray-200 bg-white text-blue-700 dark:border-gray-700 dark:bg-gray-800 dark:text-blue-300'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
-                  }`}
+                  className={`rounded-t-lg border border-b-0 px-4 py-2 text-sm font-medium transition-colors ${active ? 'border-gray-200 bg-surface text-blue-700 dark:border-gray-700 dark:text-blue-300' : 'border-transparent text-text-muted hover:text-gray-700 dark:hover:text-gray-200'}`}
                 >
                   {tabLabel(t.discipline, t.gender)}
                 </button>
@@ -168,12 +160,12 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
             <h2 className="mb-1 text-lg font-bold">
               {board.year}年度 {tabLabel(board.discipline, board.gender)}ランキング
             </h2>
-            <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">
+            <p className="mb-3 text-xs text-text-muted">
               対象 {board.outOf.toLocaleString()}人中の上位
               {Math.min(TOP_N, board.entries.length)}位。
             </p>
-            <table className="w-full border border-gray-200 text-sm dark:border-gray-600">
-              <thead className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+            <table className="w-full border border-border-strong text-sm">
+              <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
                 <tr>
                   <th className="py-1.5 px-2 text-center">順位</th>
                   <th className="py-1.5 px-2 text-left">選手</th>
@@ -185,19 +177,19 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                 {board.entries.map((e) => (
                   <tr
                     key={`${e.rank}-${e.playerId ?? e.playerName}`}
-                    className={`border-t border-gray-200 dark:border-gray-600 ${e.rank <= 3 ? 'bg-amber-50/60 dark:bg-amber-950/20' : ''}`}
+                    className={`border-t border-border-strong ${e.rank <= 3 ? 'bg-amber-50/60 dark:bg-amber-950/20' : ''}`}
                   >
                     <td className="py-1.5 px-2 text-center font-semibold">{e.rank}</td>
                     <td className="py-1.5 px-2">
                       {e.hasPage && e.playerId != null ? (
-                        <Link href={`/players/${e.playerId}/results/`} className="text-blue-700 hover:underline dark:text-blue-300">
+                        <Link href={`/players/${e.playerId}/results/`} className="text-info hover:underline">
                           {e.playerName}
                         </Link>
                       ) : (
                         e.playerName
                       )}
                     </td>
-                    <td className="py-1.5 px-2 text-gray-600 dark:text-gray-300">{e.team ?? '―'}</td>
+                    <td className="py-1.5 px-2 text-text-secondary">{e.team ?? '―'}</td>
                     <td className="py-1.5 px-2 text-center">{e.points}</td>
                   </tr>
                 ))}
@@ -205,19 +197,19 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
             </table>
           </section>
         ) : (
-          <p className="text-sm text-gray-500 dark:text-gray-400">この年度のランキングはありません。</p>
+          <p className="text-sm text-text-muted">この年度のランキングはありません。</p>
         )}
 
         {/* 全年度・全種目の上位3位（静的HTML）。タブ裏の順位表はクライアント描画で
             クローラに見えないため、選手名と内部リンクをここで担保する（seo.md #9）。 */}
         <section>
           <h2 className="mb-1 text-lg font-bold">年度別 上位選手まとめ</h2>
-          <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">全年度・全種目の上位3位です。詳細は上の年度・種目切替で確認できます。</p>
+          <p className="mb-4 text-xs text-text-muted">全年度・全種目の上位3位です。詳細は上の年度・種目切替で確認できます。</p>
           <div className="space-y-4">
             {years.map((y) => (
               <div key={y}>
                 <h3 className="mb-1 text-base font-semibold">{y}年度</h3>
-                <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                <ul className="space-y-1 text-sm text-text-secondary">
                   {TAB_ORDER.map(({ discipline, gender }) => {
                     const b = boards.find((x) => x.year === y && x.discipline === discipline && x.gender === gender);
                     if (!b || b.entries.length === 0) return null;
@@ -229,7 +221,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                             {i > 0 && '、'}
                             {e.rank}位{' '}
                             {e.hasPage && e.playerId != null ? (
-                              <Link href={`/players/${e.playerId}/results/`} className="text-blue-700 hover:underline dark:text-blue-300">
+                              <Link href={`/players/${e.playerId}/results/`} className="text-info hover:underline">
                                 {e.playerName}
                               </Link>
                             ) : (
@@ -248,7 +240,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         </section>
 
         <div className="text-right">
-          <Link href="/players" className="text-sm text-blue-600 hover:underline dark:text-blue-400">
+          <Link href="/players" className="text-sm text-primary hover:underline">
             選手一覧はこちら
           </Link>
         </div>

@@ -85,17 +85,17 @@ export default function STLeagueTeamsPage({ year, meta, divisions, teams }: Prop
         />
         <h1 className="text-2xl font-bold">{pageTitle}</h1>
         <p>STリーグⅠ・Ⅱ、男女別の出場チームと選手個人の成績を掲載しています。</p>
-        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-200">
+        <div className="rounded-lg border border-warning-border bg-warning-bg px-4 py-3 text-sm text-warning">
           ここに表示する「年間成績」「選手別成績」は、
           <strong>STリーグ本体の対戦を除いた{year}年度の大会成績</strong>
           （全日本選手権・全日本実業団など）です。STリーグ内の対戦成績・勝率は
-          <Link href={`/st-league/${year}/analysis`} className="font-semibold text-blue-700 underline dark:text-blue-300">
+          <Link href={`/st-league/${year}/analysis`} className="font-semibold text-info underline">
             分析ページ
           </Link>
           をご覧ください。
         </div>
         {/* Tabs */}
-        <div className="flex border-b border-gray-200 dark:border-gray-700">
+        <div className="flex border-b border-border">
           <button
             className={`py-2 px-4 font-medium text-sm focus:outline-none ${
               activeTab === 'boys'
@@ -126,11 +126,7 @@ export default function STLeagueTeamsPage({ year, meta, divisions, teams }: Prop
               <button
                 key={d.id}
                 onClick={() => setDivisionId(d.id)}
-                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
-                  active
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
-                }`}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${active ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 text-text-secondary border-border hover:border-blue-400'}`}
               >
                 {d.name}
               </button>
@@ -161,7 +157,7 @@ export default function STLeagueTeamsPage({ year, meta, divisions, teams }: Prop
                 ))}
 
                 {panelTeams.length === 0 && (
-                  <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                  <div className="text-center py-12 bg-surface rounded-xl border border-dashed border-border text-text-muted">
                     {d.name}の出場チーム情報は準備中です。
                   </div>
                 )}

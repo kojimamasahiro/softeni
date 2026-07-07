@@ -233,7 +233,7 @@ export default function PrefectureHighschoolPage({
         <h1 className="text-2xl font-bold mb-2">
           {prefecture.name} 高校{genderLabel} 全国大会成績
         </h1>
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+        <p className="text-sm text-text-secondary mb-6">
           {prefecture.name}
           の高校{genderLabel}
           が全国大会で残した成績をまとめています。全国高等学校総合体育大会、
@@ -248,16 +248,16 @@ export default function PrefectureHighschoolPage({
         />
 
         <section className="grid gap-4 sm:grid-cols-3 mb-8">
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">収録学校数</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">収録学校数</p>
             <p className="text-2xl font-bold">{teams.length}校</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">ベスト8以上経験校</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">ベスト8以上経験校</p>
             <p className="text-2xl font-bold">{best8SchoolCount}校</p>
           </div>
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
-            <p className="text-xs text-gray-500 dark:text-gray-400">直近1年の主要大会掲載校</p>
+          <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
+            <p className="text-xs text-text-muted">直近1年の主要大会掲載校</p>
             <p className="text-2xl font-bold">{recentMajorSchoolCount}校</p>
           </div>
         </section>
@@ -266,7 +266,7 @@ export default function PrefectureHighschoolPage({
           <p className="text-sm">
             出場校数：{teams.length}校（ベスト8以上：{best8SchoolCount}校）
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+          <p className="text-sm text-text-secondary mt-2">
             学校一覧は、より良い成績を残した学校が見つけやすい順に表示しています。 気になる学校を選ぶと、年度別・大会別の詳細成績を確認できます。
           </p>
 
@@ -277,10 +277,7 @@ export default function PrefectureHighschoolPage({
               {topTeams.map((team, index) => (
                 <span key={team.teamId}>
                   {index > 0 ? '、' : ''}
-                  <Link
-                    href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                    className="text-blue-700 dark:text-blue-300 hover:underline font-semibold"
-                  >
+                  <Link href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`} className="text-info hover:underline font-semibold">
                     {team.teamName}
                   </Link>
                 </span>
@@ -306,7 +303,7 @@ export default function PrefectureHighschoolPage({
         </div>
 
         {recentMajorTeams.length > 0 && (
-          <section className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/30 p-5">
+          <section className="mb-8 rounded-2xl border border-info-border bg-info-bg p-5">
             <h2 className="text-xl font-semibold mb-3">直近1年の主要大会掲載校</h2>
             <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
               直近1年に主要大会へ出場した学校を先にまとめています。高校カテゴリの大会は除外し、1回戦敗退や予選敗退も、主要大会に出場した実績として掲載しています。
@@ -316,10 +313,10 @@ export default function PrefectureHighschoolPage({
                 <Link
                   key={team.teamId}
                   href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                  className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white/80 dark:bg-gray-900/40 p-4 hover:bg-white dark:hover:bg-gray-900 transition"
+                  className="rounded-xl border border-info-border bg-white/80 dark:bg-gray-900/40 p-4 hover:bg-white dark:hover:bg-gray-900 transition"
                 >
                   <p className="font-semibold">{team.teamName}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">主要大会掲載 {team.appearances.length}件</p>
+                  <p className="text-sm text-text-secondary mt-1">主要大会掲載 {team.appearances.length}件</p>
                   <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
                     {team.appearances.slice(0, 3).map((appearance) => (
                       <li key={`${appearance.tournamentId}-${appearance.year}-${appearance.result}`}>
@@ -338,9 +335,9 @@ export default function PrefectureHighschoolPage({
             <li key={team.teamId}>
               <Link
                 href={`/highschool/${gender}/${prefecture.id}/${team.teamId}`}
-                className="block border rounded p-4 bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                className="block border rounded p-4 bg-surface dark:border-gray-700 hover:bg-bg-subtle transition"
               >
-                <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">{team.teamName}</p>
+                <p className="text-lg font-semibold text-info">{team.teamName}</p>
                 <ul className="text-sm mt-2">
                   {(() => {
                     const sortedYears = Object.entries(team.results ?? {}).sort((a, b) => Number(b[0]) - Number(a[0]));
@@ -368,7 +365,7 @@ export default function PrefectureHighschoolPage({
                           </li>
                         ))}
                         {hiddenYearCount > 0 && (
-                          <li className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                          <li className="mt-1 text-xs text-text-muted">
                             ほか{hiddenYearCount}
                             年分の成績は学校ページで確認できます
                           </li>
@@ -382,11 +379,11 @@ export default function PrefectureHighschoolPage({
           ))}
         </ul>
 
-        <section className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+        <section className="mt-12 border-t border-border pt-8">
           <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
           <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
             {faqItems.map((item) => (
-              <div key={item.question} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+              <div key={item.question} className="rounded-xl border border-border p-4">
                 <h3 className="font-semibold mb-2">{item.question}</h3>
                 <p>{item.answer}</p>
               </div>

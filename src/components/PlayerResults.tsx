@@ -176,7 +176,7 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
 
       {sortedYears.map((year) => (
         <div key={year} className="mb-8">
-          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">{year === '不明' ? '年不明' : `${year}年`}</h3>
+          <h3 className="text-xl font-semibold text-text mb-3">{year === '不明' ? '年不明' : `${year}年`}</h3>
           <div className="space-y-4">
             {byYear[year].map((tournamentKey, i) => {
               const info = tournamentInfoById[tournamentKey];
@@ -209,25 +209,25 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
               }
 
               return (
-                <div key={i} className="mb-6 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm bg-white dark:bg-gray-800">
-                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2">{tournamentName}</h3>
+                <div key={i} className="mb-6 border border-border rounded-xl p-4 shadow-sm bg-surface">
+                  <h3 className="text-lg font-bold text-text mb-2">{tournamentName}</h3>
                   {(info?.startDate || info?.dateRange) && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                    <div className="text-sm text-text-secondary mb-1">
                       日程{' '}
                       {info.startDate ? `${formatDate(info.startDate)}${info.endDate ? ' - ' + formatDate(info.endDate) : ''}` : formatDate(info.dateRange)}
                     </div>
                   )}
-                  {info?.location && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">場所 {info.location}</div>}
+                  {info?.location && <div className="text-sm text-text-secondary mb-1">場所 {info.location}</div>}
                   {info?.link && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                    <div className="text-sm text-text-secondary mb-1">
                       詳細{' '}
-                      <Link href={info.link} className="underline text-blue-600 dark:text-blue-400">
+                      <Link href={info.link} className="underline text-primary">
                         大会ページ
                       </Link>
                     </div>
                   )}
                   {info?.partnerName && (
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                    <div className="text-sm text-text-secondary mb-1">
                       ペア{' '}
                       {info?.partnerId ? (
                         <Link
@@ -243,8 +243,8 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
                       )}
                     </div>
                   )}
-                  {info?.team && <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">所属 {info.team}</div>}
-                  {info?.finalResult && <div className="text-sm text-gray-600 dark:text-gray-300 mb-2 mt-1">最終結果：{info.finalResult}</div>}
+                  {info?.team && <div className="text-sm text-text-secondary mb-1">所属 {info.team}</div>}
+                  {info?.finalResult && <div className="text-sm text-text-secondary mb-2 mt-1">最終結果：{info.finalResult}</div>}
 
                   <ResultsTable rows={rows} />
                 </div>

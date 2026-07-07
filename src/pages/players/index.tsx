@@ -88,7 +88,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
     return parts.map((part, index) => {
       if (part.toLowerCase() === query.toLowerCase()) {
         return (
-          <mark key={index} className="bg-yellow-200 dark:bg-yellow-800 rounded px-1">
+          <mark key={index} className="bg-warning-bg rounded px-1">
             {part}
           </mark>
         );
@@ -173,22 +173,22 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
         <h1 className="text-2xl font-bold mb-6">選手一覧</h1>
 
         <p className="mb-6 text-sm">
-          <Link href="/rankings" className="text-blue-600 hover:underline dark:text-blue-400">
+          <Link href="/rankings" className="text-primary hover:underline">
             年度別の選手ランキング（男女別・種目別）はこちら ›
           </Link>
         </p>
 
-        <section className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+        <section className="mb-6 p-4 bg-warning-bg border border-warning-border rounded-lg">
           <div className="flex items-center gap-2 mb-3">
-            <h2 className="text-sm font-semibold text-amber-800 dark:text-amber-200">同姓同名選手の一覧</h2>
+            <h2 className="text-sm font-semibold text-warning">同姓同名選手の一覧</h2>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-300">
+          <p className="text-sm text-text-secondary">
             大会結果データから抽出した同姓同名の選手の一覧です。下の検索では収録されている全選手が対象になります（初期表示は出場回数の多い選手のみ）。同じ名前でも異なる選手の可能性があります。所属チームや大会記録を確認してください。
           </p>
         </section>
 
         <div className="mb-6">
-          <label htmlFor="searchQuery" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="searchQuery" className="block text-sm font-medium text-text-secondary mb-2">
             大会記録検索（スペース区切りでAND検索）
           </label>
           <input
@@ -197,10 +197,10 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
             placeholder="例: 田中 全日本 2024、佐藤 明大 優勝..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-4 py-2 border border-border-strong rounded-md bg-surface text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           {searchQuery && (
-            <button onClick={() => setSearchQuery('')} className="mt-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+            <button onClick={() => setSearchQuery('')} className="mt-2 text-sm text-text-muted hover:text-gray-700 dark:hover:text-gray-200">
               検索をクリア ✕
             </button>
           )}
@@ -208,14 +208,14 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
 
         <div className="mb-6 flex flex-wrap gap-4 items-center">
           <div className="flex items-center gap-2">
-            <label htmlFor="sortBy" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="sortBy" className="text-sm font-medium text-text-secondary">
               並び順:
             </label>
             <select
               id="sortBy"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'count' | 'name')}
-              className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-sm"
+              className="px-3 py-1 border border-border-strong rounded-md bg-surface text-sm"
             >
               <option value="count">出場回数順</option>
               <option value="name">名前順</option>
@@ -224,7 +224,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
         </div>
 
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-sm text-text-muted">
             {searchQuery ? (
               <>
                 <span className="font-medium">「{searchQuery}」</span>
@@ -234,8 +234,8 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
               <>{sortedAndFilteredGroups.length}組の同姓同名選手を表示中 （出場回数の多い選手のみ・検索で全選手対象）</>
             )}
           </div>
-          {isLoading && <div className="text-xs text-gray-500 dark:text-gray-400">全選手データを読み込み中...</div>}
-          {!isLoading && isSearching && allData.length > 0 && <div className="text-xs text-gray-500 dark:text-gray-400">全 {allData.length}組から検索</div>}
+          {isLoading && <div className="text-xs text-text-muted">全選手データを読み込み中...</div>}
+          {!isLoading && isSearching && allData.length > 0 && <div className="text-xs text-text-muted">全 {allData.length}組から検索</div>}
         </div>
 
         <div className="space-y-6">
@@ -247,18 +247,14 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
             return (
               <div
                 key={group.playerId || `${group.fullName}-${groupIndex}`}
-                className={`relative border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800${
-                  isLinked
-                    ? ' transition-colors cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 hover:bg-gray-50 dark:hover:bg-gray-700/40 focus-within:ring-2 focus-within:ring-blue-500'
-                    : ''
-                }`}
+                className={`relative border border-border rounded-lg p-4 bg-white dark:bg-gray-800${isLinked ? ' transition-colors cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 hover:bg-gray-50 dark:hover:bg-gray-700/40 focus-within:ring-2 focus-within:ring-blue-500' : ''}`}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                  <h2 className="text-lg font-bold text-text">
                     {isLinked ? (
                       <Link
                         href={`/players/${group.playerId}/results`}
-                        className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors after:absolute after:inset-0 after:content-[''] focus:outline-none"
+                        className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-primary transition-colors after:absolute after:inset-0 after:content-[''] focus:outline-none"
                       >
                         {searchQuery ? highlightMatch(group.fullName, searchQuery) : group.fullName}
                       </Link>
@@ -268,13 +264,13 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
                       group.fullName
                     )}
                   </h2>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">{group.count}回出場</div>
+                  <div className="text-sm text-text-muted">{group.count}回出場</div>
                 </div>
 
                 {group.differentTeams.length > 0 && (
                   <div className="mb-3 text-sm">
-                    <span className="font-medium text-gray-700 dark:text-gray-300">所属チーム:</span>
-                    <span className="ml-2 text-gray-600 dark:text-gray-400">
+                    <span className="font-medium text-text-secondary">所属チーム:</span>
+                    <span className="ml-2 text-text-muted">
                       {searchQuery
                         ? group.differentTeams.map((team, i) => (
                             <span key={team}>
@@ -311,14 +307,14 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
                             <div className="relative z-10 flex-1 min-w-0">
                               <Link
                                 href={`/tournaments/${player.generation}/${player.tournamentId}/${player.year}/${player.gameCategory}/${player.ageCategory}/${player.gender}`}
-                                className="relative z-10 text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                                className="relative z-10 text-primary hover:underline font-medium"
                               >
                                 {searchQuery
                                   ? highlightMatch(`${player.tournamentName} ${player.year}年 ${player.categoryLabel}`, searchQuery)
                                   : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
                               </Link>
                             </div>
-                            <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                            <div className="flex items-center gap-2 text-xs text-text-muted">
                               <span className="font-medium">{player.result}</span>
                               <span>|</span>
                               <span>{searchQuery ? highlightMatch(player.team, searchQuery) : player.team}</span>
@@ -334,7 +330,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
         </div>
 
         {sortedAndFilteredGroups.length === 0 && (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+          <div className="text-center py-12 text-text-muted">
             {searchQuery ? (
               <div>
                 {isLoading ? (
@@ -348,7 +344,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
                     <p className="text-sm">
                       選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードでお試しください。
                     </p>
-                    <button onClick={() => setSearchQuery('')} className="mt-3 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                    <button onClick={() => setSearchQuery('')} className="mt-3 px-4 py-2 text-sm text-primary hover:underline">
                       検索をクリア
                     </button>
                   </>
@@ -361,7 +357,7 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
         )}
 
         <div className="mt-12 text-center space-x-4">
-          <Link href="/tournaments" className="text-blue-600 dark:text-blue-400 hover:underline text-sm">
+          <Link href="/tournaments" className="text-primary hover:underline text-sm">
             大会結果一覧
           </Link>
         </div>

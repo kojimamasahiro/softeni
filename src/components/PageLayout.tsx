@@ -24,7 +24,7 @@ type Props = {
  */
 export default function PageLayout({ maxWidth = '3xl', className, children }: Props) {
   return (
-    <div className="min-h-screen bg-white px-4 py-10 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-white px-4 py-10 text-text dark:bg-gray-900">
       <div className={`mx-auto ${WIDTH_CLASSES[maxWidth]}${className ? ` ${className}` : ''}`}>{children}</div>
     </div>
   );

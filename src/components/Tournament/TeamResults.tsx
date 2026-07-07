@@ -191,7 +191,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
   })();
 
   if (detailData.length === 0) {
-    return <p className="text-center text-gray-600 dark:text-gray-300 mt-6 mb-6">大会結果はまだすべて揃っていません。判明次第、順次掲載していきます。</p>;
+    return <p className="text-center text-text-secondary mt-6 mb-6">大会結果はまだすべて揃っていません。判明次第、順次掲載していきます。</p>;
   }
 
   return (
@@ -216,12 +216,12 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
           .sort((a, b) => a.resultOrder - b.resultOrder);
 
         return (
-          <div key={team} className="mb-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
-            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
+          <div key={team} className="mb-6 rounded-lg border border-border bg-surface shadow-sm">
+            <div className="px-4 py-3 border-b border-border">
               {highschoolGender && highschoolTeamLink ? (
                 <Link
                   href={`/highschool/${highschoolGender}/${highschoolTeamLink.prefectureId}/${highschoolTeamLink.teamId}`}
-                  className="text-base font-semibold text-blue-600 dark:text-blue-300 hover:underline"
+                  className="text-base font-semibold text-info hover:underline"
                 >
                   {team}
                 </Link>
@@ -229,11 +229,11 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
                 <span className="text-base font-semibold text-gray-800 dark:text-gray-200">{team}</span>
               )}
             </div>
-            <ul className="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
+            <ul className="divide-y divide-border text-sm">
               {resultEntries.map(({ result, members }, i) => (
                 <li key={i} className="flex px-4 py-2 gap-4">
-                  <div className="w-20 text-right text-gray-600 dark:text-gray-300">{result}</div>
-                  <div className="text-gray-900 dark:text-gray-100 flex flex-wrap gap-x-1">
+                  <div className="w-20 text-right text-text-secondary">{result}</div>
+                  <div className="text-text flex flex-wrap gap-x-1">
                     {members.map((m, j) => (
                       <span key={j}>
                         {m.displayParts.map((part, k) =>

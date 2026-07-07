@@ -10,10 +10,7 @@ export default function MilestoneBadge({ kind, label, scopeNote }: { kind: strin
   const tag = milestoneKindTag(kind);
 
   return (
-    <span
-      className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-900 dark:bg-amber-900 dark:text-amber-100"
-      title={scopeNote ?? undefined}
-    >
+    <span className="inline-block rounded-full bg-warning-bg px-3 py-1 text-sm font-semibold text-warning" title={scopeNote ?? undefined}>
       {tag && <span className={`mr-1.5 rounded px-1.5 py-0.5 align-middle text-[10px] font-bold ${tag.className}`}>{tag.text}</span>}
       {label}
     </span>

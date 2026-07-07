@@ -32,14 +32,14 @@ export const TournamentCard = ({ tournament }: Props) => {
   const hubHref = `/tournaments/${generation}/${id}`;
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+    <div className="bg-surface p-4 rounded-lg shadow">
       <div className="mb-4 border-b pb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
           <Link href={hubHref} className="hover:underline">
             {name}
           </Link>
         </h3>
-        <Link href={hubHref} className="text-sm text-blue-600 dark:text-blue-400 hover:underline whitespace-nowrap">
+        <Link href={hubHref} className="text-sm text-primary hover:underline whitespace-nowrap">
           歴代結果・優勝者まとめ →
         </Link>
       </div>
@@ -56,7 +56,7 @@ export const TournamentCard = ({ tournament }: Props) => {
                   href={group.externalResultUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2.5 py-1 rounded-full hover:opacity-80 transition"
+                  className="inline-flex items-center gap-1 text-xs text-text-secondary bg-bg-subtle px-2.5 py-1 rounded-full hover:opacity-80 transition"
                 >
                   {getExternalResultLabel(group.externalResultUrl)}
                 </a>
@@ -67,9 +67,7 @@ export const TournamentCard = ({ tournament }: Props) => {
                 {group.links.map((link) => (
                   <li key={`${generation}-${id}-${group.year}-${link.gameCategory}-${link.ageCategory}-${link.gender}`}>
                     <Link href={`/tournaments/${generation}/${id}/${group.year}/${link.gameCategory}/${link.ageCategory}/${link.gender}`}>
-                      <span className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                        {link.categoryLabel}
-                      </span>
+                      <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{link.categoryLabel}</span>
                     </Link>
                   </li>
                 ))}

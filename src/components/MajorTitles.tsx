@@ -16,10 +16,10 @@ export default function MajorTitles({ majorTitlesData }: { majorTitlesData: Majo
 
   return (
     <section className="mb-8">
-      <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">主要タイトル</h2>
-      <div className="mx-4 overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
+      <h2 className="text-xl font-semibold mb-4 text-text">主要タイトル</h2>
+      <div className="mx-4 overflow-x-auto bg-surface rounded-lg shadow">
         <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
-          <thead className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <thead className="bg-bg-subtle text-text">
             <tr>
               <th className="px-4 py-2 text-left">大会名</th>
               {allYears.map((year) => (
@@ -31,7 +31,7 @@ export default function MajorTitles({ majorTitlesData }: { majorTitlesData: Majo
           </thead>
           <tbody>
             {majorTitlesData.map((title, index) => (
-              <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+              <tr key={index} className="hover:bg-bg-subtle">
                 <td className="px-4 py-2 font-medium">
                   {title.link ? (
                     <Link href={title.link} className="underline underline-offset-2 decoration-dotted hover:decoration-solid">

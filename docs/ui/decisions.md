@@ -198,3 +198,18 @@
 - 理由: オーナー判断(推奨案採用)。本リポジトリは Tailwind v4 の CSS ファースト構成で `tailwind.config` 自体が存在せず、`globals.css` で `@theme inline` + `--background`/`--foreground` パターンが既にダークモード分岐(`prefers-color-scheme`)込みで採用済み。既存パターンの延長が一貫性・実装コストの両面で合理的
 - 却下した代替案: `tailwind.config`(JS/TS)による拡張
 - 実装補足(2026-07-04・M5-1 実施済み): トークン名は 06 の定義をそのまま使い、`bg-bg`・`text-text` のような重複形も許容(明示性優先)。値は Tailwind v4 パレットの oklch 値と一致させ、ダーク値は D-012 に従い上書き枠のみ用意。1セッション内の同時採番により本決定は一時 D-015 と重複記載されたが、D-022 に統合した
+
+## D-023: ダーク値の確定とステータス系トークンの新設(M5-3)
+
+- 日付: 2026-07-07
+- フェーズ: 移行 M5
+- 決定内容:
+  1. 既存10トークンに `@media (prefers-color-scheme: dark)` でのダーク値を追加する(D-012 の「上書き枠」を実値化)。値は Tailwind v4 既定パレットの CSS 変数(`var(--color-gray-900)` 等)を直接参照する方式とし、oklch 値の手書き転記はしない
+  2. 中立色トークンを 5→8 種に拡張する: `bg-subtle`(gray-100/gray-700・サブトルな背景)、`border-strong`(gray-300/gray-600・強調罫線)、`text-secondary`(gray-600/gray-300・準本文)を新設
+  3. ステータスバッジ用に `success` / `warning` / `info` / `neutral` の4トークン(各 bg・border・text の3点セット)を新設し、既存 `danger` にも bg・border 版を追加する
+  4. 実装済みの `dark:` クラス(66ファイル・約1,437箇所)は、コードモッドで上記トークンへの機械置換を実施した。置換できたのは高頻度・低曖昧性の組み合わせ(中立色のgray系、blue の primary/info、status バッジの3点セット)約1,000箇所。残り約430箇所(gray の中間階調・page/surface/subtleの曖昧な組み合わせ・単発の色)は意味的曖昧性が高く自動判定を避け、`dark:` 直書きのまま残した
+  5. purple/pink/indigo/orange/rose/yellow など少数使用色は、最も近いステータストークンへ統合した(orange/yellow→warning、purple/pink/indigo→info)
+- 理由: オーナー判断(推奨案採用)。カタログ化の結果、`dark:` の実使用が想定(Footer・Header等一部)より大幅に広く、01-inventory.md §8.3 の記載は実態と乖離していたため、実態に基づきトークンセットを拡張したうえで機械置換した
+- 却下した代替案: (a) 既存10トークンのみで置換(バッジ色の大半をカバーできず却下)、(b) 全1,437箇所を一括自動置換(曖昧な組み合わせで誤変換のリスクがあり、高確度な範囲のみに限定)
+- 実装補足: `success-bg`/`warning-bg`/`info-bg` 等の半透明背景は `color-mix(in oklch, ...)` で表現(Tailwind の `/opacity` 記法を CSS 変数の定義側で代替)。`accent-win`/`accent-dev` はダーク値を追加せず、両モード共通のソリッド値のまま据え置いた(データ上、対応する明確なダーク組が見つからなかったため)
+- 残作業: 01-inventory.md §8.3 の記載更新、残り約430箇所の `dark:` の扱い(このまま許容するか、追加のトークン設計をするか)は改めてオーナー判断が必要
