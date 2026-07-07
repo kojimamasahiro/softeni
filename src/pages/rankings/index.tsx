@@ -182,7 +182,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                     <td className="py-1.5 px-2 text-center font-semibold">{e.rank}</td>
                     <td className="py-1.5 px-2">
                       {e.hasPage && e.playerId != null ? (
-                        <Link href={`/players/${e.playerId}/results/`} className="text-info hover:underline">
+                        <Link href={`/players/${e.playerId}/results/`} className="text-link hover:underline">
                           {e.playerName}
                         </Link>
                       ) : (
@@ -221,7 +221,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                             {i > 0 && '、'}
                             {e.rank}位{' '}
                             {e.hasPage && e.playerId != null ? (
-                              <Link href={`/players/${e.playerId}/results/`} className="text-info hover:underline">
+                              <Link href={`/players/${e.playerId}/results/`} className="text-link hover:underline">
                                 {e.playerName}
                               </Link>
                             ) : (
@@ -240,7 +240,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         </section>
 
         <div className="text-right">
-          <Link href="/players" className="text-sm text-primary hover:underline">
+          <Link href="/players" className="text-sm text-link hover:underline">
             選手一覧はこちら
           </Link>
         </div>

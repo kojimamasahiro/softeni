@@ -35,7 +35,7 @@ export default function YearPagerNav({ current, prev, next, indexHref, indexLabe
     <nav aria-label="年度ナビゲーション" className={`flex items-center justify-between gap-2 text-sm ${className ?? ''}`}>
       <div className="flex-1">
         {prev ? (
-          <Link href={prev.href} rel="prev" className="inline-flex items-center gap-1 text-info hover:underline">
+          <Link href={prev.href} rel="prev" className="inline-flex items-center gap-1 text-link hover:underline">
             <span aria-hidden="true">←</span>
             {prev.year}
             {unitSuffix}
@@ -62,7 +62,7 @@ export default function YearPagerNav({ current, prev, next, indexHref, indexLabe
         {indexHref && (
           <>
             <span className="px-2 text-gray-300 dark:text-gray-600">|</span>
-            <Link href={indexHref} className="font-normal text-info hover:underline">
+            <Link href={indexHref} className="font-normal text-link hover:underline">
               {indexLabel}
             </Link>
           </>
@@ -71,7 +71,7 @@ export default function YearPagerNav({ current, prev, next, indexHref, indexLabe
 
       <div className="flex-1 text-right">
         {next ? (
-          <Link href={next.href} rel="next" className="inline-flex items-center gap-1 text-info hover:underline">
+          <Link href={next.href} rel="next" className="inline-flex items-center gap-1 text-link hover:underline">
             {next.year}
             {unitSuffix}
             <span aria-hidden="true">→</span>

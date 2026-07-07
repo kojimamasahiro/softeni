@@ -191,7 +191,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
 
         {hsNationalHref && (
           <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
-            <Link href={hsNationalHref} className="font-semibold text-info hover:underline">
+            <Link href={hsNationalHref} className="font-semibold text-link hover:underline">
               {label} 歴代記録（優勝・準優勝・ベスト4／開催予定）はこちら →
             </Link>
             <p className="mt-1 text-text-secondary">
@@ -211,7 +211,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
           {officialUrl && (
             <p className="text-sm text-text-secondary">
               公式サイト:{' '}
-              <a href={officialUrl} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              <a href={officialUrl} className="text-link hover:underline" target="_blank" rel="noopener noreferrer">
                 {officialUrl}
               </a>
             </p>
@@ -228,7 +228,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                   <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
                     {group.winners.map((r) => (
                       <li key={`${r.year}-${r.categoryLabel}`}>
-                        <Link href={r.href} className="text-primary hover:underline">
+                        <Link href={r.href} className="text-link hover:underline">
                           {r.year}年
                         </Link>
                         : {r.winner}

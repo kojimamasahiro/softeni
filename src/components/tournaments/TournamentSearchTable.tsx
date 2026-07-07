@@ -351,7 +351,7 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
 // ─── テーブル行コンポーネント ───────────────────────────────────────────────
 function TableRow({ inst }: { inst: TournamentInstance }) {
   const name = inst.firstCategoryPath ? (
-    <Link href={inst.firstCategoryPath} className="font-medium text-info hover:underline">
+    <Link href={inst.firstCategoryPath} className="font-medium text-link hover:underline">
       {inst.label}
     </Link>
   ) : (
@@ -384,7 +384,7 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
   const status = getTournamentStatus(inst);
 
   return (
-    <div className="relative bg-surface border border-border rounded-xl p-4 shadow-sm active:bg-blue-50 dark:active:bg-gray-750 transition-colors">
+    <div className="relative bg-surface border border-border rounded-xl p-4 shadow-sm active:bg-blue-50 dark:active:bg-gray-700 transition-colors">
       {/* カード全体のタップ領域 */}
       {cardHref &&
         (cardExternal ? (

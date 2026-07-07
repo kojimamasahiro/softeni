@@ -1199,7 +1199,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
         {/* ヘッダー */}
         <Breadcrumbs crumbs={breadcrumbItems} />
         <div className="flex justify-between items-center mb-6">
-          <Link href={getPublicMatchesListPath()} className="text-primary hover:underline">
+          <Link href={getPublicMatchesListPath()} className="text-link hover:underline">
             ← 試合一覧に戻る
           </Link>
         </div>
@@ -1302,7 +1302,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
                 </h1>
                 <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                   {tournamentInfo && fullTournamentUrl ? (
-                    <Link href={fullTournamentUrl} className="font-medium text-primary hover:underline">
+                    <Link href={fullTournamentUrl} className="font-medium text-link hover:underline">
                       {getTournamentDisplayName()}
                     </Link>
                   ) : (

@@ -46,7 +46,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
         <div>
           {playerId && (
             <div className="flex flex-wrap gap-4">
-              <Link href={`/players/${playerId}/results`} className="text-sm text-primary hover:underline">
+              <Link href={`/players/${playerId}/results`} className="text-sm text-link hover:underline">
                 この選手の試合結果ページへ
               </Link>
             </div>
@@ -107,7 +107,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
                 {active.sourceMatches.map((source) => (
                   <li key={source.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 text-sm">
                     <span className="text-text-muted">{source.date ?? '日付不明'}</span>
-                    <Link href={source.detailPath} className="font-medium text-primary hover:underline">
+                    <Link href={source.detailPath} className="font-medium text-link hover:underline">
                       vs {source.opponentName}
                     </Link>
                     {source.tournamentName && (

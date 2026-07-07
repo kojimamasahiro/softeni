@@ -116,7 +116,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
                 <tr key={`${t.n}-${t.p ?? ''}`} className="border-b border-gray-100 last:border-b-0 dark:border-gray-800">
                   <td className="px-4 py-2">
                     {t.s ? (
-                      <Link href={`/teams/${t.s}`} className="text-primary hover:underline dark:text-blue-300">
+                      <Link href={`/teams/${t.s}`} className="text-link hover:underline dark:text-blue-300">
                         {t.n}
                       </Link>
                     ) : (

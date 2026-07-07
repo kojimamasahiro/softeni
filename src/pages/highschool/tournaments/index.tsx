@@ -117,7 +117,7 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
         </div>
 
         <div className="mt-10 text-sm">
-          <Link href="/highschool/boys/" className="text-info hover:underline">
+          <Link href="/highschool/boys/" className="text-link hover:underline">
             高校 都道府県別・学校別ページへ →
           </Link>
         </div>

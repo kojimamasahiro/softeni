@@ -39,7 +39,7 @@ export const TournamentCard = ({ tournament }: Props) => {
             {name}
           </Link>
         </h3>
-        <Link href={hubHref} className="text-sm text-primary hover:underline whitespace-nowrap">
+        <Link href={hubHref} className="text-sm text-link hover:underline whitespace-nowrap">
           歴代結果・優勝者まとめ →
         </Link>
       </div>

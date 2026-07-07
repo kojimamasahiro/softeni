@@ -257,16 +257,16 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
 
         {/* 他ページ導線 */}
         <nav className="flex flex-wrap gap-3 pt-2 border-t border-border">
-          <Link href={`/st-league/${year}/matches`} className="text-primary font-semibold hover:underline">
+          <Link href={`/st-league/${year}/matches`} className="text-link font-semibold hover:underline">
             ▶ {year} 順位表・全対戦結果
           </Link>
-          <Link href={`/st-league/${year}/teams`} className="text-primary font-semibold hover:underline">
+          <Link href={`/st-league/${year}/teams`} className="text-link font-semibold hover:underline">
             ▶ 出場チーム・選手
           </Link>
-          <Link href={`/st-league/${year}/analysis`} className="text-primary font-semibold hover:underline">
+          <Link href={`/st-league/${year}/analysis`} className="text-link font-semibold hover:underline">
             ▶ 選手別データ・分析
           </Link>
-          <Link href={`/st-league/${year}`} className="text-primary font-semibold hover:underline">
+          <Link href={`/st-league/${year}`} className="text-link font-semibold hover:underline">
             ▶ {year} 年度トップ
           </Link>
         </nav>

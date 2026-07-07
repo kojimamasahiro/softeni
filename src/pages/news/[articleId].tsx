@@ -36,7 +36,7 @@ function formatDate(iso: string | undefined): string | null {
 function PlayerName({ p }: { p: PreviewPlayerRef }) {
   if (p.playerId != null) {
     return (
-      <Link href={`/players/${p.playerId}/results/`} className="text-primary hover:underline">
+      <Link href={`/players/${p.playerId}/results/`} className="text-link hover:underline">
         {p.name}
       </Link>
     );
@@ -409,7 +409,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* 結果速報: その年・種目の結果詳細ページへ */}
             {!isPreview && c.resultHref && (
               <p className="mt-3 text-sm">
-                <Link href={c.resultHref} className="text-primary hover:underline">
+                <Link href={c.resultHref} className="text-link hover:underline">
                   {record.year}年 {c.categoryLabel} の結果詳細を見る →
                 </Link>
               </p>
@@ -418,7 +418,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             {/* プレビュー: その年・種目の大会結果ページへ（結果掲載後のみリンク化） */}
             {isPreview && c.resultHref && (
               <p className="mt-3 text-sm">
-                <Link href={c.resultHref} className="text-primary hover:underline">
+                <Link href={c.resultHref} className="text-link hover:underline">
                   {record.year}年 {c.categoryLabel} の大会結果を見る →
                 </Link>
               </p>
@@ -431,7 +431,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
             <h2 className="mb-2 text-base font-bold">関連ページ</h2>
             <ul className="list-inside list-disc space-y-1 text-sm">
               <li>
-                <Link href={hubHref} className="text-primary hover:underline">
+                <Link href={hubHref} className="text-link hover:underline">
                   {tournamentLabel} の歴代優勝者・大会まとめ
                 </Link>
               </li>

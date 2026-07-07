@@ -221,7 +221,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
               {highschoolGender && highschoolTeamLink ? (
                 <Link
                   href={`/highschool/${highschoolGender}/${highschoolTeamLink.prefectureId}/${highschoolTeamLink.teamId}`}
-                  className="text-base font-semibold text-info hover:underline"
+                  className="text-base font-semibold text-link hover:underline"
                 >
                   {team}
                 </Link>

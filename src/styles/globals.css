@@ -8,11 +8,11 @@
 
 /*
  * デザイントークン(docs/ui/deliverables/06-design-principles.md §2.1・D-022、
- * ダーク値・ステータス系トークンは D-023)
+ * ダーク値・ステータス系トークンは D-023、link トークンは D-024)
  * 色は原則このトークンのみ使用する(原則 P4)。
  * 生成されるクラス例: bg-bg / bg-surface / bg-bg-subtle / border-border /
  * border-border-strong / text-text / text-text-secondary / text-text-muted /
- * text-primary / hover:text-primary-hover / bg-accent-win /
+ * text-primary / hover:text-primary-hover / text-link / bg-accent-win /
  * bg-success-bg border-success-border text-success(warning / danger / info /
  * neutral も同型の bg-*-bg / border-*-border / text-* の3点セット)
  * ダーク値は @media (prefers-color-scheme: dark) で :root の変数を上書きする
@@ -31,6 +31,7 @@
   --sp-text-muted: var(--color-gray-500);
   --sp-primary: var(--color-blue-600);
   --sp-primary-hover: var(--color-blue-500);
+  --sp-link: var(--color-blue-600); /* ハイパーリンク専用(D-024)。現状 primary と同値だが意味を分離 */
   --sp-accent-win: var(--color-amber-500);
   --sp-accent-dev: var(--color-orange-600);
   --sp-danger: var(--color-red-600);
@@ -63,6 +64,7 @@
   --color-text-muted: var(--sp-text-muted);
   --color-primary: var(--sp-primary);
   --color-primary-hover: var(--sp-primary-hover);
+  --color-link: var(--sp-link);
   --color-accent-win: var(--sp-accent-win);
   --color-accent-dev: var(--sp-accent-dev);
   --color-danger: var(--sp-danger);
@@ -99,6 +101,7 @@
     --sp-text-muted: var(--color-gray-400);
     --sp-primary: var(--color-blue-400);
     --sp-primary-hover: var(--color-blue-300);
+    --sp-link: var(--color-blue-400);
     --sp-danger: var(--color-red-400);
 
     --sp-success: var(--color-green-300);

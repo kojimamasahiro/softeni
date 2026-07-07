@@ -68,7 +68,7 @@ export default function TournamentContextBlocks({ label, data }: { label: string
           {data.championRecords.map((r) => (
             <div key={r.slug} className="rounded-md border border-border p-3 text-sm">
               <div className="mb-1 font-semibold">
-                <Link href={`/players/${r.slug}`} className="text-primary hover:underline">
+                <Link href={`/players/${r.slug}`} className="text-link hover:underline">
                   {r.display}
                 </Link>
                 {r.team && <span className="ml-1 text-xs text-text-muted">（{r.team}）</span>}

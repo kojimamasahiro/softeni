@@ -67,7 +67,7 @@ export default function LocalTournamentsPage({ prefectures, federationMap }: Pro
                     const fed = federationMap[pref.id];
                     return (
                       <div key={pref.id} className="bg-gray-50 dark:bg-gray-800 rounded p-3 flex flex-col justify-between">
-                        <Link href={`/tournaments/local/${pref.id}`} className="text-lg font-semibold text-info hover:underline mb-2 block">
+                        <Link href={`/tournaments/local/${pref.id}`} className="text-lg font-semibold text-link hover:underline mb-2 block">
                           {pref.name}
                         </Link>
                         {fed?.officialUrl && (

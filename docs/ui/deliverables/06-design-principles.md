@@ -21,7 +21,7 @@
 
 現行実装(Tailwind ユーティリティ直書き)からの移行可能性を優先し、**Tailwind の標準スケールに別名(セマンティック名)を与える**方式とする。
 
-実装方式(D-022 で確定・実装済み): リポジトリは Tailwind v4 のため、`src/styles/globals.css` の `@theme` に CSS 変数として定義。生成クラスの対応: color-bg→`bg-bg`、color-surface→`bg-surface`、color-border→`border-border`、color-text→`text-text`、color-text-muted→`text-text-muted`、color-primary→`text-primary`/`bg-primary`、color-primary-hover→`hover:text-primary-hover`、color-accent-win→`bg-accent-win`、color-accent-dev→`text-accent-dev`、color-danger→`text-danger`。ダーク値・ステータス系トークンは D-023 で追加(下表)。
+実装方式(D-022 で確定・実装済み): リポジトリは Tailwind v4 のため、`src/styles/globals.css` の `@theme` に CSS 変数として定義。生成クラスの対応: color-bg→`bg-bg`、color-surface→`bg-surface`、color-border→`border-border`、color-text→`text-text`、color-text-muted→`text-text-muted`、color-primary→`text-primary`/`bg-primary`、color-primary-hover→`hover:text-primary-hover`、color-accent-win→`bg-accent-win`、color-accent-dev→`text-accent-dev`、color-danger→`text-danger`。ダーク値・ステータス系トークンは D-023、link トークン(color-link→`text-link`)は D-024 で追加(下表)。
 
 ### 2.1 色
 
@@ -39,8 +39,9 @@
 | color-text | gray-800 | gray-100 | 本文 |
 | color-text-secondary | gray-600 | gray-300 | 準本文 |
 | color-text-muted | gray-500 | gray-400 | 補足・注記 |
-| color-primary | blue-600 | blue-400 | リンク・主要アクション |
+| color-primary | blue-600 | blue-400 | 主要アクション・強調 |
 | color-primary-hover | blue-500 | blue-300 | ホバー |
+| color-link | blue-600 | blue-400 | ハイパーリンク(D-024。primary と同値だが意味を分離) |
 | color-accent-win | amber-500 | (共通・上書きなし) | 優勝・1位系の強調 |
 | color-accent-dev | orange-600 | (共通・上書きなし) | DEV・ベータ表示(公開面では使わない) |
 | color-danger | red-600 | red-400 | エラー・削除 |
@@ -114,7 +115,7 @@ Tailwind 標準を正とする: sm=640 / md=768 / lg=1024 / xl=1280。
 
 ## 5. 完了条件の確認
 
-- Phase 7(コンポーネント)はトークンのみで色・サイズを指定できる: 2章で色 10→27(D-023 で中立色3種・ステータス系14種を追加)・文字6・余白6・角丸影4を定義済み。不足が見つかった場合は本書へ追記(改訂手続き)
+- Phase 7(コンポーネント)はトークンのみで色・サイズを指定できる: 2章で色 10→28(D-023 で中立色3種・ステータス系14種、D-024 で link 1種を追加)・文字6・余白6・角丸影4を定義済み。不足が見つかった場合は本書へ追記(改訂手続き)
 
 ## 6. 未決事項(→ project-status.md)
 

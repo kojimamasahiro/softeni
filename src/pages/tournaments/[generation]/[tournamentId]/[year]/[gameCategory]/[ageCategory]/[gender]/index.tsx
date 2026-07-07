@@ -316,7 +316,7 @@ export default function TournamentYearResultPage({
             <ul className="list-disc list-inside space-y-1">
               <li>
                 {infoForYear.sourceUrl ? (
-                  <a href={infoForYear.sourceUrl} className="text-primary hover:underline font-medium" target="_blank" rel="noopener noreferrer">
+                  <a href={infoForYear.sourceUrl} className="text-link hover:underline font-medium" target="_blank" rel="noopener noreferrer">
                     {infoForYear.source}
                   </a>
                 ) : (

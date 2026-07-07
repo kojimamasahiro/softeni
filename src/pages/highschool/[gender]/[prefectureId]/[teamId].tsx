@@ -401,7 +401,7 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
                       return (
                         <li key={pid}>
                           {linkId ? (
-                            <Link href={`/players/${linkId}/results`} className="text-info hover:underline">
+                            <Link href={`/players/${linkId}/results`} className="text-link hover:underline">
                               {name}
                             </Link>
                           ) : (
@@ -550,7 +550,7 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
                                   <p className="font-semibold">
                                     <Link
                                       href={`/tournaments/${items[0]?.generation ?? 'highschool'}/${tournamentId}/${year}/${cat}/${items[0]?.ageCategory ?? 'none'}/${categoryGender}`}
-                                      className="text-info hover:underline"
+                                      className="text-link hover:underline"
                                     >
                                       {getCategoryLabel(cat)}
                                     </Link>
