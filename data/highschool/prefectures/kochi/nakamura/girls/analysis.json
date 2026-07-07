@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 15,
   "byCategory": {
     "team": 3,
-    "doubles": 10,
+    "doubles": 11,
     "singles": 1
   },
   "resultsByCategory": {
@@ -22,7 +22,18 @@
       }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "中村",
+        "teamId": "nakamura",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["西村_世汝_中村_高知県", "田渕_ひなた_中村_高知県"]
+      },
       "historicalBest": {
         "team": "中村",
         "teamId": "nakamura",
@@ -51,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "新谷_友徠_中村_高知県",

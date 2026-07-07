@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1,
+    "doubles": 2,
     "singles": 2
   },
   "resultsByCategory": {
@@ -40,9 +40,9 @@
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["竹本_羽凛_北見柏陽_北海道", "佐々木_美空_北見柏陽_北海道"]
+        "playerIds": ["小林_果央_北見柏陽_北海道", "阿部_凛音_北見柏陽_北海道"]
       },
       "historicalBest": {
         "team": "北見柏陽",
@@ -52,9 +52,9 @@
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["竹本_羽凛_北見柏陽_北海道", "佐々木_美空_北見柏陽_北海道"]
+        "playerIds": ["小林_果央_北見柏陽_北海道", "阿部_凛音_北見柏陽_北海道"]
       }
     },
     "team": {
@@ -62,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "佐々木_美空_北見柏陽_北海道",
@@ -70,6 +70,14 @@
     },
     {
       "id": "竹本_羽凛_北見柏陽_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "小林_果央_北見柏陽_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "阿部_凛音_北見柏陽_北海道",
       "appearances": 1
     }
   ]

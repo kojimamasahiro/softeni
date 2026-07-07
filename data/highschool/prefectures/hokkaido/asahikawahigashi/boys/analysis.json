@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1,
+    "doubles": 2,
     "singles": 2
   },
   "resultsByCategory": {
@@ -40,9 +40,9 @@
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["那須_雄太_旭川東_北海道", "谷口_康生_旭川東_北海道"]
+        "playerIds": ["前田_朝杜_旭川東_北海道", "駒津_太珂_旭川東_北海道"]
       },
       "historicalBest": {
         "team": "旭川東",
@@ -52,9 +52,9 @@
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["那須_雄太_旭川東_北海道", "谷口_康生_旭川東_北海道"]
+        "playerIds": ["前田_朝杜_旭川東_北海道", "駒津_太珂_旭川東_北海道"]
       }
     },
     "team": {
@@ -65,19 +65,19 @@
   "uniquePlayers": 4,
   "topPlayers": [
     {
+      "id": "前田_朝杜_旭川東_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "駒津_太珂_旭川東_北海道",
+      "appearances": 2
+    },
+    {
       "id": "那須_雄太_旭川東_北海道",
       "appearances": 1
     },
     {
       "id": "谷口_康生_旭川東_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "前田_朝杜_旭川東_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "駒津_太珂_旭川東_北海道",
       "appearances": 1
     }
   ]

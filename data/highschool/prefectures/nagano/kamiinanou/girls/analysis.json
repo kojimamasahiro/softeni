@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "上伊那農",
+        "teamId": "kamiinanou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["田中_愛実_上伊那農_長野県", "宮下_慶_上伊那農_長野県"]
+      },
       "historicalBest": {
         "team": "上伊那農",
         "teamId": "kamiinanou",
@@ -28,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "小坂_菜月_上伊那農_長野県",
@@ -36,6 +47,14 @@
     },
     {
       "id": "宮下_優月_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "田中_愛実_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "宮下_慶_上伊那農_長野県",
       "appearances": 1
     }
   ]

@@ -199,5 +199,36 @@
       }
     ],
     "minCommonLength": 0
+  },
+  {
+    "canonical": "ルーテル学院",
+    "aliases": [
+      "龍野クラブ",
+      "ルーテル学院"
+    ],
+    "reasons": [
+      {
+        "year": 2026,
+        "lastName": "田中",
+        "firstName": "海斗",
+        "aliases": [
+          "ルーテル学院",
+          "龍野クラブ"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-japan-cup",
+            "file": "doubles-none-boys.json",
+            "team": "ルーテル学院"
+          },
+          {
+            "tournamentId": "west-japan",
+            "file": "doubles-none-boys.json",
+            "team": "龍野クラブ"
+          }
+        ]
+      }
+    ],
+    "minCommonLength": 0
   }
 ]

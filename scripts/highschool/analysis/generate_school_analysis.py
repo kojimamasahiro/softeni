@@ -60,8 +60,9 @@ def normalize_player_school(player_id: str, entry: dict) -> str:
 
     return f"{name_part}_{normalized_school}_{normalized_prefecture}"
 
-# データベース
-base_dir = '../../../data/highschool/prefectures'
+# データベース（実行時のカレントディレクトリに依存しないよう、このファイルの場所を基準にする）
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+base_dir = str(SCRIPT_DIR / '../../../data/highschool/prefectures')
 categories = ['singles', 'doubles', 'team']
 rank_order = {
     "優勝": 1,

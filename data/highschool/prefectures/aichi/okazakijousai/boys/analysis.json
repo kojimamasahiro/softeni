@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 66,
+  "totalAppearances": 67,
   "byCategory": {
     "team": 5,
-    "doubles": 43,
+    "doubles": 44,
     "singles": 18
   },
   "resultsByCategory": {
@@ -38,12 +38,12 @@
         "teamId": "okazakijousai",
         "prefecture": "愛知県",
         "prefectureId": "aichi",
-        "result": "ベスト8",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "asian-championship-qualifier",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["塚本_光琉_岡崎城西_", "野本_凌生_法政大学_"]
+        "playerIds": ["塚本_光琉_岡崎城西_愛知県", "山田_健太郎_岡崎城西_愛知県"]
       },
       "historicalBest": {
         "team": "岡崎城西",
@@ -52,10 +52,10 @@
         "prefectureId": "aichi",
         "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["塚本_星弥_岡崎城西_愛知県", "渡部_海友_岡崎城西_愛知県"]
+        "playerIds": ["塚本_光琉_岡崎城西_愛知県", "山田_健太郎_岡崎城西_愛知県"]
       }
     },
     "team": {
@@ -86,6 +86,10 @@
   "uniquePlayers": 48,
   "topPlayers": [
     {
+      "id": "塚本_光琉_岡崎城西_愛知県",
+      "appearances": 7
+    },
+    {
       "id": "長濱_瑠飛_岡崎城西_愛知県",
       "appearances": 6
     },
@@ -94,15 +98,11 @@
       "appearances": 6
     },
     {
-      "id": "塚本_光琉_岡崎城西_愛知県",
+      "id": "山田_健太郎_岡崎城西_愛知県",
       "appearances": 6
     },
     {
       "id": "塚本_星弥_岡崎城西_愛知県",
-      "appearances": 5
-    },
-    {
-      "id": "山田_健太郎_岡崎城西_愛知県",
       "appearances": 5
     }
   ]

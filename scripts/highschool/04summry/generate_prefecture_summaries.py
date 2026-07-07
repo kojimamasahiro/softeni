@@ -1,11 +1,15 @@
 import json
 import os
+import pathlib
+
+# ファイルパス（実行時のカレントディレクトリに依存しないよう、このファイルの場所を基準にする）
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 
 # 入力ファイルパス（全体まとめファイル）
-input_path = "../03list/prefecture-summary.json"
+input_path = str(SCRIPT_DIR / "../03list/prefecture-summary.json")
 
 # 出力ディレクトリベース
-output_base = "../../../data/highschool/prefectures"
+output_base = str(SCRIPT_DIR / "../../../data/highschool/prefectures")
 
 # JSON読み込み
 with open(input_path, "r", encoding="utf-8") as f:

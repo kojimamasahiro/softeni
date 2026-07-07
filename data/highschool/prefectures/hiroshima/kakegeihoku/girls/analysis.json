@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -17,9 +17,9 @@
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["高橋_星煌_加計芸北_広島県", "伊藤_彩華_加計芸北_広島県"]
+        "playerIds": ["佐藤_希望_加計芸北_広島県", "常井_祐里_加計芸北_広島県"]
       },
       "historicalBest": {
         "team": "加計芸北",
@@ -29,9 +29,9 @@
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["高橋_星煌_加計芸北_広島県", "伊藤_彩華_加計芸北_広島県"]
+        "playerIds": ["佐藤_希望_加計芸北_広島県", "常井_祐里_加計芸北_広島県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "高橋_星煌_加計芸北_広島県",
@@ -47,6 +47,14 @@
     },
     {
       "id": "伊藤_彩華_加計芸北_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_希望_加計芸北_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "常井_祐里_加計芸北_広島県",
       "appearances": 1
     }
   ]

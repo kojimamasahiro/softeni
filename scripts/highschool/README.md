@@ -97,13 +97,15 @@ cd scripts/highschool/analysis
 すべてのスクリプトを順番に実行する場合:
 
 ```bash
-cd scripts/highschool/02result
-python extract.py && \
-python ../03list/summary.py && \
-python ../04summry/generate_prefecture_summaries.py && \
-python ../analysis/generate_school_analysis.py
-npx prettier --write ../../../data/
+cd scripts/highschool/02result && python extract.py && \
+cd ../03list && python summary.py && \
+cd ../04summry && python generate_prefecture_summaries.py && \
+cd ../analysis && python generate_school_analysis.py && \
+cd ../../.. && npx prettier --write data/
 ```
+
+各スクリプトは自分自身の場所（`__file__`）を基準にファイルパスを解決するため、どのディレクトリから実行しても正しい入出力先になります。
+（以前は `results_path` などが実行時のカレントディレクトリからの相対パスだったため、`cd` せずに `python ../03list/summary.py` のように呼び出すと `prefecture-summary.json` 等が `02result/` に誤って生成され、`03list/prefecture-summary.json` が更新されないバグがありました。このバグにより、大会データを追加しても該当種目の結果が高校ページに反映されないことがありました。）
 
 ## データ構造
 

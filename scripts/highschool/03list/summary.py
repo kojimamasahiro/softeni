@@ -1,21 +1,23 @@
 import glob
 import json
 import os
+import pathlib
 from collections import defaultdict
 import unicodedata
 
 def normalize_pair_name(name):
     return unicodedata.normalize("NFKC", name)
 
-# ファイルパス
-results_path = "../02result/results.json"
-teams_path = "../01team/teams.json"
-prefecture_path = "../prefectures.json"
-output_path = "prefecture-summary.json"
-alias_output_path = "inferred-team-aliases.json"
-tournaments_index_path = "../../../data/tournaments/index.json"
-tournaments_details_dir = "../../../data/tournaments/details"
-suspicious_output_path = "suspicious-team-aliases.json"
+# ファイルパス（実行時のカレントディレクトリに依存しないよう、このファイルの場所を基準にする）
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+results_path = str(SCRIPT_DIR / "../02result/results.json")
+teams_path = str(SCRIPT_DIR / "../01team/teams.json")
+prefecture_path = str(SCRIPT_DIR / "../prefectures.json")
+output_path = str(SCRIPT_DIR / "prefecture-summary.json")
+alias_output_path = str(SCRIPT_DIR / "inferred-team-aliases.json")
+tournaments_index_path = str(SCRIPT_DIR / "../../../data/tournaments/index.json")
+tournaments_details_dir = str(SCRIPT_DIR / "../../../data/tournaments/details")
+suspicious_output_path = str(SCRIPT_DIR / "suspicious-team-aliases.json")
 
 EXCLUDED_GENERATIONS = {
     "junior",

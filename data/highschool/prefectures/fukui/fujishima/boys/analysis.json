@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "藤島",
+        "teamId": "fujishima",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["上田_航_藤島_福井県", "池泉_太智_藤島_福井県"]
+      },
       "historicalBest": {
         "team": "藤島",
         "teamId": "fujishima",
@@ -28,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "伊藤_聖琉_藤島_福井県",
@@ -36,6 +47,14 @@
     },
     {
       "id": "池上_理人_藤島_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "上田_航_藤島_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "池泉_太智_藤島_福井県",
       "appearances": 1
     }
   ]

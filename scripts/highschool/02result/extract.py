@@ -1,10 +1,13 @@
 import json
 import os
 import glob
+import pathlib
 
-DATA_DIR = "../../../data/tournaments/details"
-RESULTS_PATH = "results.json"
-TOURNAMENTS_INDEX_PATH = "../../../data/tournaments/index.json"
+# ファイルパス（実行時のカレントディレクトリに依存しないよう、このファイルの場所を基準にする）
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+DATA_DIR = str(SCRIPT_DIR / "../../../data/tournaments/details")
+RESULTS_PATH = str(SCRIPT_DIR / "results.json")
+TOURNAMENTS_INDEX_PATH = str(SCRIPT_DIR / "../../../data/tournaments/index.json")
 
 
 def load_target_tournaments():
