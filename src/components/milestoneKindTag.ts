@@ -8,18 +8,24 @@
 export type MilestoneKindTagInfo = {
   /** バッジに添える短い種別テキスト（例: 「連覇」） */
   text: string;
-  /** 種別タグの配色（Tailwind の背景/文字色クラス） */
+  /**
+   * 種別タグの配色（Tailwind の背景/文字色クラス）。
+   * 種別ごとに異なる色相で一目の区別を付ける用途のため、セマンティックな
+   * デザイントークン（globals.css・§2.1）には該当色が無く、生パレットを使う。
+   * ダーク時は背景を一段深く（`700`）してバッジ本体（dark:bg-*-900）の上で
+   * 落ち着かせつつ、白文字とのコントラストを保つ。
+   */
   className: string;
 };
 
 const KIND_TAG: Record<string, MilestoneKindTagInfo> = {
-  'repeat-title': { text: '連覇', className: 'bg-amber-600 text-white' },
-  'first-title': { text: '初優勝', className: 'bg-emerald-600 text-white' },
-  'nth-title': { text: '優勝', className: 'bg-sky-600 text-white' },
-  'champion-defeat': { text: '王者撃破', className: 'bg-rose-600 text-white' },
-  'career-wins': { text: '節目', className: 'bg-violet-600 text-white' },
-  'best4-first': { text: 'ベスト4初', className: 'bg-teal-600 text-white' },
-  'first-appearance': { text: '初出場', className: 'bg-gray-600 text-white' },
+  'repeat-title': { text: '連覇', className: 'bg-amber-600 text-white dark:bg-amber-700' },
+  'first-title': { text: '初優勝', className: 'bg-emerald-600 text-white dark:bg-emerald-700' },
+  'nth-title': { text: '優勝', className: 'bg-sky-600 text-white dark:bg-sky-700' },
+  'champion-defeat': { text: '王者撃破', className: 'bg-rose-600 text-white dark:bg-rose-700' },
+  'career-wins': { text: '節目', className: 'bg-violet-600 text-white dark:bg-violet-700' },
+  'best4-first': { text: 'ベスト4初', className: 'bg-teal-600 text-white dark:bg-teal-700' },
+  'first-appearance': { text: '初出場', className: 'bg-gray-600 text-white dark:bg-gray-700' },
 };
 
 /** kind に対応する種別タグ情報を返す。未知の kind は null（タグなしでラベルのみ表示）。 */
