@@ -4,8 +4,10 @@
 // モーダルで「どの大会に・誰と出たか」だけ見せるためのリンク風ボタン。
 //
 // SEO 方針: これらの選手は薄いページの量産を避けるため個別ページを作らない。
-// 固有 URL を持たず、クリック時に public/data/players-lite/{id}.json をクライアントで
-// fetch して表示するだけなので検索エンジンにはインデックスされない（docs/wiki/players-pages.md）。
+// 固有 URL を持たず、クリック時に public/data/players-lite/chunk-{n}.json（id を
+// LITE_CHUNK_SIZE で割ったチャンク。Cloudflare Pages の 20,000 ファイル制限対策で
+// 選手ごとではなくチャンク単位に集約）をクライアントで fetch して表示するだけなので
+// 検索エンジンにはインデックスされない（docs/wiki/players-pages.md）。
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -40,8 +42,28 @@ type Props = {
   className?: string;
 };
 
+// チャンクサイズ（scripts/generate-players-lite.mjs の CHUNK_SIZE と揃える）
+const LITE_CHUNK_SIZE = 50;
+
 // 同一データの多重 fetch を避ける簡易キャッシュ（モーダルを開くたびに取り直さない）
 const liteCache = new Map<string, PlayerLite>();
+// チャンク単位の取得 Promise キャッシュ（同一チャンクの並行 fetch を防ぐ）
+const chunkCache = new Map<number, Promise<Record<string, PlayerLite>>>();
+
+function fetchChunk(chunkIndex: number): Promise<Record<string, PlayerLite>> {
+  if (!chunkCache.has(chunkIndex)) {
+    const p = fetch(`/data/players-lite/chunk-${chunkIndex}.json`).then(
+      (res) => {
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json() as Promise<Record<string, PlayerLite>>;
+      },
+    );
+    // 失敗したらキャッシュから外して再試行できるようにする
+    p.catch(() => chunkCache.delete(chunkIndex));
+    chunkCache.set(chunkIndex, p);
+  }
+  return chunkCache.get(chunkIndex)!;
+}
 
 export default function PlayerLiteLink({ id, name, className }: Props) {
   const [open, setOpen] = useState(false);
@@ -57,9 +79,10 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
     setLoading(true);
     setError(false);
     try {
-      const res = await fetch(`/data/players-lite/${id}.json`);
-      if (!res.ok) throw new Error(String(res.status));
-      const json = (await res.json()) as PlayerLite;
+      const chunkIndex = Math.floor(Number(id) / LITE_CHUNK_SIZE);
+      const chunk = await fetchChunk(chunkIndex);
+      const json = chunk[id];
+      if (!json) throw new Error('not found');
       liteCache.set(id, json);
       setData(json);
     } catch {

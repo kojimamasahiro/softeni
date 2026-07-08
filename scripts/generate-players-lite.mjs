@@ -7,13 +7,19 @@
 //   クライアントのモーダルから fetch する軽量 JSON を public/data/players-lite/{id}.json に出力する。
 //   固有 URL を持たず JS で表示するだけなので検索エンジンにはインデックスされない（薄いページの量産を回避）。
 //
-// 出力（1 選手 1 ファイル）:
+// 出力（チャンク方式）:
+//   Cloudflare Pages の 20,000 ファイル制限を回避するため、1 選手 1 ファイルではなく
+//   Math.floor(id / CHUNK_SIZE) 単位で chunk-{n}.json にまとめて出力する。
+//   public/data/players-lite/chunk-{n}.json:
 //   {
-//     id: "2788",
-//     name: "金井一平",
-//     tournaments: [
-//       { tournamentName, year, team, partner: { name, id, hasPage } | null }
-//     ]   // year 降順
+//     "2788": {
+//       id: "2788",
+//       name: "金井一平",
+//       tournaments: [
+//         { tournamentName, year, team, partner: { name, id, hasPage } | null }
+//       ]   // year 降順
+//     },
+//     ...
 //   }
 //
 // prebuild で実行する（package.json 参照）。
@@ -27,6 +33,9 @@ const projectRoot = path.resolve(__dirname, '..');
 
 // 結果ページが実在する閾値（src/pages/players/[id]/results.tsx の getStaticPaths と揃える）
 const PAGE_MIN_COUNT = 5;
+
+// チャンクサイズ（src/components/PlayerLiteLink.tsx の LITE_CHUNK_SIZE と揃える）
+const CHUNK_SIZE = 50;
 
 function readJson(file, fallback = null) {
   try {
@@ -170,10 +179,10 @@ function main() {
     }
   }
 
-  // 出力
+  // 出力（チャンク単位に集約）
   const outDir = path.join(projectRoot, 'public', 'data', 'players-lite');
-  // 古い出力を掃除する（id がファイル名なので上書きで足りるが、対象から外れた
-  // 選手の孤児ファイルを残さないため可能なら全消去する）。一部環境で unlink が
+  // 古い出力を掃除する（旧 {id}.json 形式の孤児ファイルや、対象から外れた
+  // チャンクを残さないため可能なら全消去する）。一部環境で unlink が
   // EPERM になっても致命的ではない（孤児ファイルは未使用なだけ）ので握りつぶす。
   try {
     fs.rmSync(outDir, { recursive: true, force: true });
@@ -182,6 +191,8 @@ function main() {
   }
   fs.mkdirSync(outDir, { recursive: true });
 
+  // chunkIndex → { id: playerLite }
+  const chunks = new Map();
   let written = 0;
   for (const k of targetNames) {
     const id = firstIdByName.get(k);
@@ -204,15 +215,25 @@ function main() {
     tournaments.sort((a, b) => Number(b.year) - Number(a.year));
 
     const [last, first] = k.split('||');
-    fs.writeFileSync(
-      path.join(outDir, `${id}.json`),
-      JSON.stringify({ id, name: `${last}${first}`, tournaments }),
-    );
+    const chunkIndex = Math.floor(Number(id) / CHUNK_SIZE);
+    if (!chunks.has(chunkIndex)) chunks.set(chunkIndex, {});
+    chunks.get(chunkIndex)[id] = {
+      id,
+      name: `${last}${first}`,
+      tournaments,
+    };
     written++;
   }
 
+  for (const [chunkIndex, players] of chunks.entries()) {
+    fs.writeFileSync(
+      path.join(outDir, `chunk-${chunkIndex}.json`),
+      JSON.stringify(players),
+    );
+  }
+
   console.log(
-    `[players-lite] ${written} 件出力（count<${PAGE_MIN_COUNT} の選手）→ public/data/players-lite/`,
+    `[players-lite] ${written} 選手を ${chunks.size} チャンクに出力（count<${PAGE_MIN_COUNT} の選手、CHUNK_SIZE=${CHUNK_SIZE}）→ public/data/players-lite/`,
   );
 }
 
