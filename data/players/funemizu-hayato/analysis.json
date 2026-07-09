@@ -1,13 +1,13 @@
 {
-  "totalMatches": 92,
-  "wins": 79,
-  "losses": 13,
-  "totalWinRate": 0.859,
+  "totalMatches": 105,
+  "wins": 89,
+  "losses": 16,
+  "totalWinRate": 0.848,
   "games": {
-    "total": 514,
-    "won": 365,
-    "lost": 149,
-    "gameRate": 0.71
+    "total": 588,
+    "won": 413,
+    "lost": 175,
+    "gameRate": 0.702
   },
   "byPartner": {
     "12": {
@@ -80,18 +80,46 @@
         "gameRate": 0.786
       }
     },
+    "8243": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 13,
+        "won": 8,
+        "lost": 5,
+        "gameRate": 0.615
+      }
+    },
+    "8284": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 35,
+        "won": 24,
+        "lost": 11,
+        "gameRate": 0.686
+      }
+    },
     "singles": {
       "matches": {
-        "total": 25,
-        "wins": 20,
-        "losses": 5,
+        "total": 30,
+        "wins": 24,
+        "losses": 6,
         "winRate": 0.8
       },
       "games": {
-        "total": 117,
-        "won": 83,
-        "lost": 34,
-        "gameRate": 0.709
+        "total": 143,
+        "won": 99,
+        "lost": 44,
+        "gameRate": 0.692
       }
     }
   },
@@ -154,24 +182,25 @@
     },
     "2026": {
       "matches": {
-        "total": 9,
-        "wins": 7,
-        "losses": 2,
-        "winRate": 0.778
+        "total": 22,
+        "wins": 17,
+        "losses": 5,
+        "winRate": 0.773
       },
       "games": {
-        "total": 42,
-        "won": 29,
-        "lost": 13,
-        "gameRate": 0.69
+        "total": 116,
+        "won": 77,
+        "lost": 39,
+        "gameRate": 0.664
       }
     }
   },
   "latestMatch": {
-    "tournament": "全日本シングルス選手権大会",
-    "date": "2026年5月15日〜2026年5月17日",
-    "location": "岐阜県",
+    "tournament": "コリアカップ国際大会",
+    "date": "2026年6月15日〜2026年6月22日",
+    "location": "韓国",
+    "partner": 8284,
     "result": "ベスト8",
-    "link": "https://www.jsta.or.jp/events/events2026"
+    "link": "https://www.softtennis.or.kr/"
   }
 }

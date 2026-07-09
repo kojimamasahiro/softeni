@@ -13,6 +13,7 @@ import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PageLayout from '@/components/PageLayout';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
+import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
 import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import { MatchResult } from '@/types/common';
@@ -439,6 +440,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // （結果ページが実在するのは count>=5 のみ。デッドリンク防止に使う）
   const { allPlayersList, countById } = await getAllPlayersListAndCountById();
 
+  // 数値 id → 漢字姓名（国際大会のローマ字参加者を対応表で本人へ寄せる際の表示名解決に使う）
+  const idToName = new Map<number, { lastName: string; firstName: string }>();
+  for (const p of index) {
+    if (!idToName.has(p.id)) idToName.set(p.id, { lastName: p.lastName, firstName: p.firstName });
+  }
+
   // --- Structured loading using shared helpers ---
   const root = process.cwd();
   const tournamentIndex = await loadTournamentIndex(root);
@@ -479,7 +486,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const category = rec.fileName.replace('.json', '');
     const detail = rec.detail;
 
-    const participants = Array.isArray(detail.participants) ? detail.participants : [];
+    // 国際大会（ローマ字表記のみ）の参加者は、手動対応表(participant-aliases.json)で
+    // 本人の数値 id に解決できる場合、表示を漢字名・実所属へ差し替える。これにより
+    // 姓名の完全一致でしか拾えていなかった大会一覧に国際大会が現れ、相手/パートナー名も
+    // 漢字で表示され本人ページへリンクされる（大会結果ページと同挙動）。共有キャッシュを
+    // 汚さないよう、別人物と判定された participant だけ複製して差し替える。
+    const rawParticipants = Array.isArray(detail.participants) ? detail.participants : [];
+    const participants: TournamentParticipant[] = rawParticipants.map((p) => {
+      const aliasedId = resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName);
+      if (aliasedId === null) return p;
+      const realTeam = resolveAliasedTeam(tournamentId, year, p.lastName, p.firstName);
+      const kanji = idToName.get(aliasedId);
+      return {
+        ...p,
+        lastName: kanji?.lastName ?? p.lastName,
+        firstName: kanji?.firstName ?? p.firstName,
+        team: realTeam ?? p.team,
+      };
+    });
     const participantById = new Map<string, TournamentParticipant>();
     for (const p of participants) participantById.set(p.id, p);
 

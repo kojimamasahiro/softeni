@@ -8,8 +8,8 @@
 // LITE_CHUNK_SIZE で割ったチャンク。Cloudflare Pages の 20,000 ファイル制限対策で
 // 選手ごとではなくチャンク単位に集約）をクライアントで fetch して表示するだけなので
 // 検索エンジンにはインデックスされない（docs/wiki/players-pages.md）。
-import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useCallback, useEffect, useState } from 'react';
 
 type PartnerLite = {
   name: string;
@@ -52,12 +52,10 @@ const chunkCache = new Map<number, Promise<Record<string, PlayerLite>>>();
 
 function fetchChunk(chunkIndex: number): Promise<Record<string, PlayerLite>> {
   if (!chunkCache.has(chunkIndex)) {
-    const p = fetch(`/data/players-lite/chunk-${chunkIndex}.json`).then(
-      (res) => {
-        if (!res.ok) throw new Error(String(res.status));
-        return res.json() as Promise<Record<string, PlayerLite>>;
-      },
-    );
+    const p = fetch(`/data/players-lite/chunk-${chunkIndex}.json`).then((res) => {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.json() as Promise<Record<string, PlayerLite>>;
+    });
     // 失敗したらキャッシュから外して再試行できるようにする
     p.catch(() => chunkCache.delete(chunkIndex));
     chunkCache.set(chunkIndex, p);

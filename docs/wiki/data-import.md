@@ -173,19 +173,24 @@ Deprecated:
 
 - コリアカップ等の国際大会は `data/tournaments/details/international-korea-cup/**` の `participants[].lastName/firstName` がローマ字表記のみで登録される。日本選手も例外ではなく、`team` も所属先ではなく `JPN-1`〜`JPN-10` のような代表内の仮ラベルになっている
 - 選手同定は姓名の完全一致（`resolveNumericId` / 各所の `p.lastName === ... && p.firstName === ...`）に依存しているため、ローマ字参加者は既存の漢字選手データ（`data/players/index.json` の数値 id、curated プロフィール）と一切紐付かない。結果として、既に curated プロフィールを持つ有名選手であっても、国際大会の成績が本人の `analysis.json` に反映されず、結果ページでも本人の他大会成績ページへリンクされない
+- さらに、ローマ字参加者は `data/players/index.json` に別の数値 id として自動登録され得る（例: `UCHIMOTO TAKAFUMI` が id 8410、本人の漢字プロフィール `内本隆文` は id 17）。この場合 `resolveNumericId` がローマ字名で重複 id を返すため、対応表を「フォールバック」（`resolveNumericId(...) ?? resolveAliasedPlayerId(...)`）にしていると本人 id へ寄らず重複 id に紐付く。ランキング（`data/rankings/*.json`）では本人と重複ローマ字が別行で並ぶ不具合になっていた（2026-07-09 に判明・修正）
 - ローマ字→漢字の自動変換は行わない。同一読みに複数の漢字候補があり得るうえ、同姓同名の別人物と誤結合するリスクがある（`docs/wiki/open-questions.md`「同姓同名の人物別 id 分離」と同種のリスク）
 
 対応:
 
 - 手動対応表 `data/tournaments/participant-aliases.json` を新設。`tournaments[].years[].aliases[]` に `{ lastName, firstName, playerId, team? }` を持つ（`team` は代表内仮ラベルではなく実所属。無ければ元の `team` をそのまま使う）。curated プロフィールの slug と参加者名が完全一致した場合のみ確度100%で収録し、未解決の参加者は `unresolved[]` に残して後日追記する
 - 読み込みは `lib/playerStats/participantAliases.ts`（`resolveAliasedPlayerId` / `resolveAliasedTeam` / `participantMatchesAliasedId`）に集約。大会・年度・姓名のスコープで引く
-- 参照箇所（フォールバックとして追加。既存の姓名完全一致ロジックは変更しない）:
-  - `lib/playerStats/reverseIndex.ts`: `buildReverseIndex` / `applyReverseIndexDelta` の選手→出場カテゴリ逆引き
+- 参照箇所:
+  - `lib/playerStats/reverseIndex.ts`: `buildReverseIndex` / `applyReverseIndexDelta` の選手→出場カテゴリ逆引き。**id 解決はエイリアス優先**（`resolveAliasedPlayerId(...) ?? resolveNumericId(...)`）。ローマ字名が index.json に別 id で登録されていても、対応表があれば本人 id へ集約する。エイリアスは大会・年度・ローマ字姓名のスコープでしか一致しないため、国内大会の漢字参加者には影響しない（漢字名はエイリアス key に一致せず null → `resolveNumericId` にフォールバック）
   - `lib/playerStats/facts.ts`: `buildFacts` の対象選手 participant 特定（`matchingIds`）、`personRefFromParticipant` の対戦相手・パートナー解決（id・表示名・所属）
   - `lib/playerStats/legacyAnalysis.ts`: `resolveFinalResult`（`analysis.json` の `latestMatch` ラベル）
   - `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx` の `getStaticProps`: 結果ページ・ドローの表示（`playerId` 解決時に `lastName`/`firstName`/`team` を対応表の漢字名・実所属へ差し替え、`/players/{id}/results/` へのリンクも既存の仕組みでそのまま張られる）
-- 運用: 対応表を更新（追記）した後は `npm run playerstats:facts -- --full` 相当のフル再計算が必要。増分ビルドの diff 対象はトーナメント detail ファイルの変更検知であり、`participant-aliases.json` 自体の変更は検知しないため
-- 状態: **対策済（コリアカップ2026・9名）／残 54 名は unresolved**。連盟発表等で漢字が判明した選手から `aliases` に追記していく
+  - `src/pages/players/[id]/results.tsx` の `getStaticProps`: 選手詳細ページの「過去の大会一覧」。detail の participant を姓名の完全一致で拾うため、ローマ字参加者は対応表で漢字名・実所属へ正規化してから照合する（2026-07-09 追加）。これを行わないと国際大会が本人の大会一覧に一切出ない。相手・パートナー名も漢字化され、count≥5 の本人ページへリンクされる
+- 運用: 対応表を更新（追記）した後はフル再計算が必要。**`participant-aliases.json` は `computeGlobalHash`（`lib/playerStats/manifest.ts`）の対象に含めた**ため、prebuild の増分判定で自動的に全再計算がトリガされる（従来は手動 `--full` 前提だった）。ロジック変更時は `ENGINE_VERSION`（`lib/playerStats/facts.ts`。本対応で `1.1.0 → 1.2.0`）を上げて旧索引・順位表を一掃する
+- ランキングへの反映: 上記により国際大会の成績は本人 id の `_facts` に集約され、`data/rankings/*.json`（新エンジン: facts→season points）で本人行に合算される。ローマ字重複行は消える（`generate-facts --full` の stale prune で重複 `_facts` も削除）
+- 選手詳細ページ「過去の大会一覧」への反映: `src/pages/players/[id]/results.tsx` が detail から build 時に直接組み立てるため、同ページ側でも対応表による正規化を行う（上記参照箇所）。これで国際大会が本人の大会一覧に表示される
+- 残課題: 旧パイプライン `scripts/generate-player-analysis.mjs`（`analysis.json`）は対応表非対応。選手ページの一部サマリ（`latestMatch` 等）や `verify-facts-golden` は facts と analysis の差分を該当選手で検出する。将来的に analysis 生成もエイリアス対応するか、facts ベースへ寄せるかは別途
+- 状態: **対策済（コリアカップ2026・23名）／残 40 名は unresolved**。連盟発表等で漢字が判明した選手から `aliases` に追記していく
 - 実装: `data/tournaments/participant-aliases.json`、`lib/playerStats/participantAliases.ts`
 
 ## 地方大会候補検知

@@ -1,6 +1,8 @@
 // lib/playerStats/reverseIndex.ts
 // 選手 → 出場カテゴリ 逆引き索引（§H）。details（標準スキーマ）を 1 回だけ走査し、
 // participant 姓名 → 数値 id 解決 → Map<numericId, Set<`${tid}/${year}/${categoryId}`>>。
+// id 解決は「エイリアス（国際大会ローマ字→本人id）優先 → 姓名一致」。ローマ字参加者が
+// index.json に別idで自動登録されても、対応表があれば本人idへ集約する（大会結果表示と同挙動）。
 // Facts 生成時は当該選手の該当カテゴリだけを開く（全大会スキャン回避＝線形性の担保）。
 
 import fs from 'fs';
@@ -22,7 +24,10 @@ export function buildReverseIndex(adapter: SourceAdapter, identity: Identity): R
     const key = `${tournamentId}/${year}/${categoryId}`;
     const seen = new Set<number>();
     for (const p of detail.participants) {
-      const id = resolveNumericId(identity, p.lastName, p.firstName) ?? resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName);
+      // エイリアス（国際大会ローマ字→本人の数値id）を姓名一致より優先する。
+      // ローマ字参加者は index.json に別idで自動登録され得るため、resolveNumericId を
+      // 先に引くと本人ではなく重複idへ紐付いてしまう。手動対応表がある場合は本人idを採る。
+      const id = resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName) ?? resolveNumericId(identity, p.lastName, p.firstName);
       if (id == null || seen.has(id)) continue;
       seen.add(id);
       let set = byId.get(id);
@@ -70,7 +75,8 @@ export function applyReverseIndexDelta(index: ReverseIndex, adapter: SourceAdapt
     const detail = adapter.readStandardDetail(tournamentId, year, categoryId);
     if (detail) {
       for (const p of detail.participants) {
-        const id = resolveNumericId(identity, p.lastName, p.firstName) ?? resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName);
+        // buildReverseIndex と同順で、エイリアス（本人id）を姓名一致より優先する。
+        const id = resolveAliasedPlayerId(tournamentId, year, p.lastName, p.firstName) ?? resolveNumericId(identity, p.lastName, p.firstName);
         if (id != null) newMembers.add(id);
       }
     }

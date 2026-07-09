@@ -4,7 +4,7 @@
 // 前回ビルドとの diff から「変更大会 → 影響選手」だけを再生成する（設計 §6.2）。
 //
 // 全再計算の条件: engineVersion 変更 / グローバル入力（index.json・local_index.json・
-// players/index.json・homonyms.json）の変更 / manifest・逆引き不在 / --full 指定。
+// players/index.json・homonyms.json・participant-aliases.json）の変更 / manifest・逆引き不在 / --full 指定。
 // config（ranking-config.json）変更は facts に影響しないため、configChanged フラグとして
 // 下流（rankings / public-json）にのみ伝える。
 
@@ -62,6 +62,8 @@ export function computeGlobalHash(root: string): string {
     ['data', 'tournaments', 'local_index.json'],
     ['data', 'players', 'index.json'],
     ['data', 'players', 'homonyms.json'],
+    // 国際大会ローマ字参加者の本人id対応表。編集で逆引き解決が変わるため全再計算対象。
+    ['data', 'tournaments', 'participant-aliases.json'],
   ];
   const parts = targets.map((p) => hashFile(path.join(root, ...p)));
   return crypto.createHash('sha1').update(parts.join('|')).digest('hex').slice(0, 16);
