@@ -178,9 +178,16 @@ function normalizeFile(file) {
     }
 
     // id は team を保ったまま pref 部分だけ追従。元 id がフィールド再構成と一致する時のみ張替（崩れ id は触らない）。
-    const expectOld = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', p.prefecture ?? ''].join('_');
+    // normalize-core.js の makeIdFromParts と同じく空要素を除去してから join する
+    // （filter なしだとチーム参加者= lastName/firstName が null の期待値が "__チーム_県" になり、
+    //  正しい id "チーム_県" と一致せず id 更新が漏れて prefecture フィールドと乖離する）。
+    const expectOld = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', p.prefecture ?? '']
+      .filter(Boolean)
+      .join('_');
     if (p.id && p.id === expectOld) {
-      const newId = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', newPref ?? ''].join('_');
+      const newId = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', newPref ?? '']
+        .filter(Boolean)
+        .join('_');
       if (newId !== p.id) idRepl.push({ oldId: p.id, newId });
     }
   }
@@ -197,7 +204,23 @@ function normalizeFile(file) {
   };
 
   for (const [oldP, newP] of prefRepl) apply(`"prefecture": "${oldP}"`, `"prefecture": "${newP}"`);
-  for (const { oldId, newId } of idRepl) apply(`"${oldId}"`, `"${newId}"`);
+  // 参加者ID置換は "id" フィールドと配列要素（playerIds / pair 等）に限定する。
+  // 裸の `"${oldId}"` 全文置換は、prefecture が空のチーム参加者で team/name フィールド値が
+  // oldId と一致した場合に team フィールドまで巻き込んで破壊するため禁止。
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const applyId = (oldId, newId) => {
+    const o = escapeRegExp(oldId);
+    for (const re of [
+      new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'),
+      new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g'),
+    ]) {
+      const count = (text.match(re) || []).length;
+      if (!count) continue;
+      text = text.replace(re, (_, prefix) => `${prefix}"${newId}"`);
+      changed += count;
+    }
+  };
+  for (const { oldId, newId } of idRepl) applyId(oldId, newId);
 
   // 検証: id 重複が生まれていないか
   const after = JSON.parse(text);

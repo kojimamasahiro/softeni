@@ -109,7 +109,11 @@ function normalizeFile(file, teamAliasMap) {
     const newPref = canonPref(p.prefecture);
     if (newTeam !== p.team) teamRepl.set(p.team, newTeam);
     if (newPref !== p.prefecture && p.prefecture != null) prefRepl.set(p.prefecture, newPref);
-    const newId = [p.lastName ?? '', p.firstName ?? '', newTeam, newPref ?? ''].join('_');
+    // normalize-core.js の makeIdFromParts と同じく空要素を除去してから join する
+    // （filter なしだとチーム参加者= lastName/firstName が null の id が "__チーム_県" に壊れる）
+    const newId = [p.lastName ?? '', p.firstName ?? '', newTeam, newPref ?? '']
+      .filter(Boolean)
+      .join('_');
     if (p.id && p.id !== newId) idRepl.push({ oldId: p.id, newId });
   }
 
@@ -128,8 +132,24 @@ function normalizeFile(file, teamAliasMap) {
   for (const [oldT, newT] of teamRepl) apply(`"team": "${oldT}"`, `"team": "${newT}"`);
   // prefecture フィールド値（同上）
   for (const [oldP, newP] of prefRepl) apply(`"prefecture": "${oldP}"`, `"prefecture": "${newP}"`);
-  // 参加者ID（id フィールド + playerIds 参照）。引用符込みの完全一致で安全。
-  for (const { oldId, newId } of idRepl) apply(`"${oldId}"`, `"${newId}"`);
+  // 参加者ID（id フィールド + playerIds 等の配列要素）。
+  // 裸の `"${oldId}"` 全文置換は禁止: prefecture 無しのチーム参加者では team/name の
+  // フィールド値が oldId と一致し、置換のたびに team フィールドが壊れた id で上書き
+  // されて実行回数分アンダースコアが増殖する事故があった（korea-cup 等）。
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const applyId = (oldId, newId) => {
+    const o = escapeRegExp(oldId);
+    for (const re of [
+      new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'), // "id" フィールド
+      new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g'), // playerIds / pair 等の配列要素
+    ]) {
+      const count = (text.match(re) || []).length;
+      if (!count) continue;
+      text = text.replace(re, (_, prefix) => `${prefix}"${newId}"`);
+      changed += count;
+    }
+  };
+  for (const { oldId, newId } of idRepl) applyId(oldId, newId);
 
   // 検証
   const after = JSON.parse(text);

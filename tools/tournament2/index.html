@@ -677,6 +677,13 @@
           if (obj.prefecture) return `${obj.name}_${obj.prefecture}`;
           return obj.name;
         }
+        // normalize-core.js 側で team_prefecture 形式のIDへ再構築されるため、
+        // ここでは「素のチーム名」だけを渡す（getTeamLabelの結合済み文字列を渡すと
+        // team フィールド自体が汚染され、IDが二重連結される: 例) 高田商_奈良県_奈良県）。
+        // 都道府県は別フィールド（prefecture）として明示的に渡す。
+        function getPlainTeamName(obj) {
+          return obj.team || obj.name;
+        }
         function getCategory(obj) {
           if (!obj.team && obj.prefecture) return 'prefecture';
           return 'team';
@@ -689,7 +696,8 @@
 
         results.push({
           round: match.round,
-          team: getTeamLabel(p1),
+          team: getPlainTeamName(p1),
+          prefecture: p1.prefecture || '',
           opponents: [
             {
               lastName: '',
@@ -710,7 +718,8 @@
 
         results.push({
           round: match.round,
-          team: getTeamLabel(p2),
+          team: getPlainTeamName(p2),
+          prefecture: p2.prefecture || '',
           opponents: [
             {
               lastName: '',

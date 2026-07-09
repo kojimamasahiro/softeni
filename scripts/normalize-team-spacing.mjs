@@ -51,9 +51,11 @@ for (const f of files) {
     const nt = canon.get(p.team);
     if (!nt) continue;
     teamRepl.set(p.team, nt);
-    const oldId = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', p.prefecture ?? ''].join('_');
+    // normalize-core.js の makeIdFromParts と同じく空要素を filter(Boolean) で除去してから join
+    // （filter なしだとチーム参加者= lastName/firstName が null の正しい id と一致せず更新が漏れる）
+    const oldId = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', p.prefecture ?? ''].filter(Boolean).join('_');
     if (p.id && p.id === oldId) {
-      const newId = [p.lastName ?? '', p.firstName ?? '', nt, p.prefecture ?? ''].join('_');
+      const newId = [p.lastName ?? '', p.firstName ?? '', nt, p.prefecture ?? ''].filter(Boolean).join('_');
       if (newId !== p.id) idRepl.push({ oldId: p.id, newId });
     }
   }
@@ -72,7 +74,21 @@ for (const f of files) {
     changed += count;
   };
   for (const [o, n] of teamRepl) applyTeamField(o, n);
-  for (const { oldId, newId } of idRepl) apply(`"${oldId}"`, `"${newId}"`);
+  // 参加者ID置換は "id" フィールドと配列要素（playerIds / pair 等）に限定する。
+  // 裸の `"${oldId}"` 全文置換は team/name フィールド値が oldId と一致した場合に巻き込むため禁止。
+  const applyId = (oldId, newId) => {
+    const o = escapeRegExp(oldId);
+    for (const re of [
+      new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'),
+      new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g'),
+    ]) {
+      const count = (text.match(re) || []).length;
+      if (!count) continue;
+      text = text.replace(re, (_, prefix) => `${prefix}"${newId}"`);
+      changed += count;
+    }
+  };
+  for (const { oldId, newId } of idRepl) applyId(oldId, newId);
   if (changed) {
     totalFiles++; totalChanges += changed;
     if (!DRY) fs.writeFileSync(f, text, 'utf8');
