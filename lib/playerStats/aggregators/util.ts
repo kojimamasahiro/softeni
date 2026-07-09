@@ -124,10 +124,43 @@ export function loadTeamAliasMap(root?: string): Map<string, string> {
 
 export function __resetTeamAliasCache(): void {
   aliasMap = null;
+  internationalTidSet = null;
 }
 
 /** 学校名を正準名へ寄せる（表記揺れ吸収）。null はそのまま。 */
 export function canonicalizeTeam(team: string | null, root?: string): string | null {
   if (!team) return team;
   return loadTeamAliasMap(root).get(team) ?? team;
+}
+
+let internationalTidSet: Set<string> | null = null;
+
+/**
+ * index.json の `generationId === 'international'` な tournamentId 集合を構築（キャッシュ）。
+ * 国際大会（コリアカップ等）では selfTeam が国別代表コード（例: JPN-1）で「所属」ではないため、
+ * 所属集計から除外する判定に使う。
+ * 国際予選（`international-qualifier`）は実クラブ所属で出場するため対象外（除外しない）。
+ */
+export function loadInternationalTournamentIds(root?: string): Set<string> {
+  if (internationalTidSet) return internationalTidSet;
+  const cwd = root || process.cwd();
+  const set = new Set<string>();
+  try {
+    const data = JSON.parse(fs.readFileSync(path.join(cwd, 'data', 'tournaments', 'index.json'), 'utf-8')) as Array<{
+      tournamentId?: string;
+      generationId?: string | null;
+    }>;
+    for (const t of data) {
+      if (t?.tournamentId && t.generationId === 'international') set.add(t.tournamentId);
+    }
+  } catch {
+    // 無ければ空（除外なし）
+  }
+  internationalTidSet = set;
+  return set;
+}
+
+/** その大会が国際大会（selfTeam が国別代表コード）か。所属集計の除外判定用。 */
+export function isInternationalTournament(tournamentId: string, root?: string): boolean {
+  return loadInternationalTournamentIds(root).has(tournamentId);
 }

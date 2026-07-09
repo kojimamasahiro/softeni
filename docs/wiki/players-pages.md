@@ -176,6 +176,7 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 - **勝率・ゲーム率の算入**（データ実体に基づき改訂）: 不戦勝と途中棄権はデータ上 `retired:true` で区別できないため、`retired:true` は勝率・ゲーム率から全除外（実際に戦った試合ベース）、draw は勝率の分母から除外。ただし順位・進出率・出場回数・優勝判定など placement 側には反映する（retired の勝者は勝ち上がっているため）。
 - **年度ランキング**: 決定的な「シーズンポイント制」を主指標とし、大会格 `tier` × 順位係数を **その年度の上位 3 大会のみ合算**（掲載範囲の偏り補正）＋ `scope-limited` 注記。tier・係数は `data/ranking-config.json` に外出し。副指標として Elo 系レーティングの時系列推移を将来追加可能。
 - **対戦相手 H2H の既定軸 = 対個人**（相方問わず相手選手で名寄せ）。ペア対ペアは絞り込みオプション。
+- **所属別成績・キャリア年表の「所属」は国際大会を除外（2026-07 修正）**。国際大会（`generationId==='international'`。コリアカップ等）では `selfTeam` が国別代表コード（例: `JPN-1`）で「所属」ではないため、`aggregateByTeam` で `index.json` の当該 `tournamentId` を除外する（`isInternationalTournament`／`lib/playerStats/aggregators/util.ts`）。これにより国際出場が誤って「所属変更」として年表に載る問題を解消。**国際予選（`international-qualifier`）は実クラブ所属で出場するため除外しない**。
 - 全集計は当サイト掲載大会分。`scope: 'site-covered'` と `scopeNote` を付し、「初」「通算」は `confidence: 'scope-limited'` を明示する。
 
 データ実体確認済み（2026-07-01）: 不戦勝 / bye は独立表現を持たず `retired:true` で登録され途中棄権と判別不能（上記ルールに反映済み）。実装時に残る確認: `ranking-config.json` の tier・係数・閾値初期値の運用調整。[open-questions.md](./open-questions.md) 参照。

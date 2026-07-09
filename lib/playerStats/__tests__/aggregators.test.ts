@@ -3,6 +3,7 @@
 // 同日 roundOrder による連勝順 / H2H 対個人。
 
 import { aggregateByPartner } from '../aggregators/byPartner';
+import { aggregateByTeam } from '../aggregators/byTeam';
 import { aggregateCareer } from '../aggregators/career';
 import { aggregateHeadToHead } from '../aggregators/headToHead';
 import { aggregateReachRates } from '../aggregators/reachRates';
@@ -170,6 +171,18 @@ test('titles: 連覇・n回目・全国初優勝', () => {
   assert.strictEqual(t.streaks.length, 1); // 2021-2022 連覇
   assert.strictEqual(t.streaks[0].streak, 2);
   assert.strictEqual(t.firsts.firstNationalTitle!.year, 2021);
+});
+
+test('byTeam: 国際大会（generationId=international）の国別代表コードは所属に数えない', () => {
+  // 国内クラブ NTT西日本 の実績 + 国際大会（コリアカップ）で JPN-1 として出場。
+  // JPN-1 は所属ではないため、所属は 1 つ（＝所属変更なし）になるべき。
+  const f = facts([
+    match({ tournamentId: 'zennihon-singles', selfTeam: 'NTT西日本', date: '2026-04-01' }),
+    match({ tournamentId: 'international-korea-cup', selfTeam: 'JPN-1', date: '2026-06-15' }),
+  ]);
+  const rows = aggregateByTeam(f, process.cwd());
+  assert.strictEqual(rows.length, 1); // JPN-1 は除外
+  assert.strictEqual(rows[0].team, 'NTT西日本');
 });
 
 summary();
