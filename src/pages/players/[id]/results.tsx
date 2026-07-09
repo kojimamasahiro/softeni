@@ -36,6 +36,8 @@ type PlayerResultsProps = {
   playerStatistics?: import('@/types/playerStatistics').PlayerStatistics | null;
   // H2H 相手のうち結果ページが実在する（count>=5）選手 id（デッドリンク防止）。
   statsLinkableIds?: number[];
+  // 大会別成績の各大会 → 大会ハブページの generation 解決用（tournamentId → generationId）。
+  tournamentGenerationMap?: Record<string, string>;
   allPlayers?: import('@/types/player').PlayerInfo[];
   relatedPlayers?: {
     id: string;
@@ -66,6 +68,7 @@ export default function PlayerResultsPage({
   playerStats,
   playerStatistics = null,
   statsLinkableIds = [],
+  tournamentGenerationMap = {},
   allPlayers,
   relatedPlayers = [],
   scoreMatchLinks = [],
@@ -263,7 +266,9 @@ export default function PlayerResultsPage({
 
         {/* Player Statistics Engine 由来の詳細スタッツ（ハイライト・ランキング推移・
             大会別・H2H・所属別・キャリア年表）。既存サマリーと重複しないもののみ。 */}
-        {playerStatistics && <PlayerStatisticsSections stats={playerStatistics} linkablePlayerIds={statsLinkableIds} />}
+        {playerStatistics && (
+          <PlayerStatisticsSections stats={playerStatistics} linkablePlayerIds={statsLinkableIds} tournamentGenerationMap={tournamentGenerationMap} />
+        )}
 
         {scoreMatchLinks.length > 0 && (
           <section className="rounded-lg border border-success-border bg-success-bg p-4">
@@ -1015,6 +1020,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .map((h) => h.opponentId)
     .filter((id): id is number => id != null && (countById.get(String(id)) ?? 0) >= 5);
 
+  // 大会別成績の各行を大会ハブページ（/tournaments/{generation}/{tournamentId}/）へ
+  // リンクするための generation 解決マップ。tournamentMeta は index.json / local_index.json
+  // 由来なので、ここに載る tid は必ずハブページ（generationId ?? 'unknown'）が生成される
+  // ＝デッドリンクにならない。ハブ側 getStaticPaths のフォールバックに合わせて 'unknown' を補完する。
+  const tournamentGenerationMap: Record<string, string> = {};
+  for (const t of playerStatistics?.byTournament ?? []) {
+    if (tournamentMeta.has(t.tournamentId)) {
+      tournamentGenerationMap[t.tournamentId] = tournamentMeta.get(t.tournamentId)?.generationId ?? 'unknown';
+    }
+  }
+
   return {
     props: {
       playerId,
@@ -1030,6 +1046,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       playerStats,
       playerStatistics,
       statsLinkableIds,
+      tournamentGenerationMap,
       allPlayers: minimalPlayersList,
       relatedPlayers,
       majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),

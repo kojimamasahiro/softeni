@@ -14,6 +14,8 @@ type Props = {
   stats: PlayerStatistics;
   /** 結果ページが実在する（index.json count>=5）選手 id。デッドリンク防止。 */
   linkablePlayerIds?: number[];
+  /** 大会別成績の各大会 → 大会ハブページの generation 解決用（tournamentId → generationId）。 */
+  tournamentGenerationMap?: Record<string, string>;
 };
 
 const pct = (rate: number) => `${(rate * 100).toFixed(1)}%`;
@@ -166,7 +168,7 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
   );
 }
 
-function TournamentTable({ rows }: { rows: TournamentRow[] }) {
+function TournamentTable({ rows, generationMap }: { rows: TournamentRow[]; generationMap: Record<string, string> }) {
   if (rows.length === 0) return null;
   const top = rows.slice(0, 10);
   return (
@@ -183,18 +185,32 @@ function TournamentTable({ rows }: { rows: TournamentRow[] }) {
             </tr>
           </thead>
           <tbody>
-            {top.map((t) => (
-              <tr key={t.tournamentId} className="border-t border-border-strong text-center">
-                <td className="py-1 px-2 text-left">{t.tournamentName}</td>
-                <td className="py-1 px-2">{t.appearances}回</td>
-                <td className="py-1 px-2">
-                  {t.matches.wins}勝{t.matches.losses}敗（
-                  {pct(t.matches.winRate)}）
-                </td>
-                <td className="py-1 px-2">{t.titles > 0 ? `${t.titles}回` : '―'}</td>
-                <td className="py-1 px-2">{t.bestResult ?? '―'}</td>
-              </tr>
-            ))}
+            {top.map((t) => {
+              const generation = generationMap[t.tournamentId];
+              return (
+                <tr key={t.tournamentId} className="border-t border-border-strong text-center">
+                  <td className="py-1 px-2 text-left">
+                    {generation ? (
+                      <Link
+                        href={`/tournaments/${generation}/${t.tournamentId}/`}
+                        className="text-inherit underline decoration-dotted underline-offset-2 hover:decoration-solid"
+                      >
+                        {t.tournamentName}
+                      </Link>
+                    ) : (
+                      t.tournamentName
+                    )}
+                  </td>
+                  <td className="py-1 px-2">{t.appearances}回</td>
+                  <td className="py-1 px-2">
+                    {t.matches.wins}勝{t.matches.losses}敗（
+                    {pct(t.matches.winRate)}）
+                  </td>
+                  <td className="py-1 px-2">{t.titles > 0 ? `${t.titles}回` : '―'}</td>
+                  <td className="py-1 px-2">{t.bestResult ?? '―'}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -303,7 +319,7 @@ function CareerTimeline({ events }: { events: TimelineEvent[] }) {
  * 新統計セクション群（表示条件を満たすものだけ描画）。
  * データが無い選手では何も描画しない。
  */
-export default function PlayerStatisticsSections({ stats, linkablePlayerIds = [] }: Props) {
+export default function PlayerStatisticsSections({ stats, linkablePlayerIds = [], tournamentGenerationMap = {} }: Props) {
   if (!stats || stats.coverage.totalMatches === 0) return null;
   const linkable = new Set(linkablePlayerIds);
 
@@ -314,7 +330,7 @@ export default function PlayerStatisticsSections({ stats, linkablePlayerIds = []
       <div className="mx-4">
         <HighlightCards stats={stats} />
         <RankingTrendTable trend={stats.rankingTrend} />
-        <TournamentTable rows={stats.byTournament} />
+        <TournamentTable rows={stats.byTournament} generationMap={tournamentGenerationMap} />
         <HeadToHeadTable rows={stats.headToHead} linkable={linkable} />
         <TeamTable rows={stats.byTeam} />
         <CareerTimeline events={stats.careerTimeline} />
