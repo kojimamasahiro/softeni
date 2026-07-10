@@ -22,6 +22,22 @@ ADR-003（[score-media-tool-separation](../adr/ADR-003-score-media-tool-separati
 3. **重要局面別の分析エンジン**: `lib/growthAnalysis.ts` / `lib/matchAnalysis.ts` は単純平均でなく
    デュース・ゲームポイント等の局面別指標を持つ。下記パイロット分析で、局面別に見ることの
    意味があるデータが実際に取れることを確認済み。
+4. **普及エンジンとしての接続**: 既存の`historical-winners`/`milestone`/`career-record`パイプライン
+   （ADR-005）は公式大会データ限定。score機能のpoint-levelデータ（勝敗だけでなく「どう勝ったか」）を
+   接続できれば、日常のプレーからも記事化できるネタが生まれ続ける。score機能だけが出せる情報。
+
+## 発展候補アイデア一覧（Idea Backlog）
+
+まだ発散フェーズ。詳細を詰めた案が育ってきたら、それぞれ専用ファイルに独立させる運用にしている
+（ログ的な1ファイルに全部積むと状況・目的が読み取りにくくなるため）。
+
+| アイデア | 状況・目的（1行） | 詳細 |
+|---|---|---|
+| 希少ポイント/ゲームイベント検知 → SNS/ニュース投稿 | メジャー大会をscore機能で手動記録し、珍しいプレーを動画リンク付きで発信。普及エンジンとしての活用 | [docs/raw/2026-07-11-idea-rare-point-event-sns.md](../raw/2026-07-11-idea-rare-point-event-sns.md) |
+| 勝敗・大会単位の希少性検知（ランキング連動） | 既存の大会結果データだけで完結。milestoneエンジンの拡張＋ジャイアントキリング検知はランキング機能の精度向上が前提 | [docs/raw/2026-07-11-idea-giant-killing-ranking.md](../raw/2026-07-11-idea-giant-killing-ranking.md) |
+
+背景の調査・検討経緯（市場調査、記録文化比較、パイロット分析）は
+[docs/raw/2026-07-11-score-general-availability-research.md](../raw/2026-07-11-score-general-availability-research.md)。
 
 ## 検討した収益化オプション
 
