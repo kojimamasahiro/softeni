@@ -93,6 +93,12 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 - `src/pages/privacy.tsx` に広告・アクセス解析の説明あり
 - ここには「Google AdSense などを利用予定」との文言がある
 
+## score機能の新規収益化検討（2026-07-11〜）
+
+score機能を一般ユーザーの練習試合でも使える形に広げる際の収益化案・需要調査・実データでの
+パイロット分析は [score-general-availability.md](./score-general-availability.md) に分離して記載。
+本ページ（AdSense/アフィリエイト）とは独立した検討トラック。
+
 ## Assumption
 
 - Web 本体の主収益化は AdSense と一部アフィリエイト

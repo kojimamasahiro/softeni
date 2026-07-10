@@ -2,6 +2,14 @@
 
 ## Documentation rules
 
+This repository's docs/ follows an **LLM Wiki** pattern (Karpathy, 2026-04): raw sources are
+**compiled** by an LLM into interconnected wiki pages that are **written back and accumulated**
+over time, rather than re-derived from scratch each session. Concretely: docs/raw = raw sources
+(uncompiled), docs/wiki = compiled/curated output (a secondary artifact — verify against
+implementation, don't take it at face value), docs/adr = compiled record of important decisions.
+Treat every research/brainstorm session as something that should get written back, not just
+answered in chat and forgotten.
+
 - This repository uses docs/raw as the source for unstructured discussion notes and docs/wiki as the curated project wiki.
 - Do not delete or rewrite docs/raw content unless explicitly requested.
 - When changing code, confirm whether related docs/wiki and docs/adr need updates.
@@ -12,6 +20,21 @@
 - Keep Open Questions in docs/wiki/open-questions.md.
 - Add ADRs only for important architectural decisions.
 - Prefer concise Japanese documentation.
+- After a research/brainstorm session or a significant implementation, run the write-back step:
+  add/update the relevant docs/raw note, then compile the durable parts into docs/wiki
+  (see docs/prompts/summarize-raw.md, docs/prompts/update-wiki.md). Periodically —
+  and always after a significant implementation — run docs/prompts/review-docs-drift.md
+  to catch wiki/implementation drift before it accumulates (see docs/raw/2026-06-25-wiki-audit.md
+  for an example of what this catches if skipped).
+- Write-back must record exclusions, not just inclusions. When compiling a docs/raw note into
+  docs/wiki, explicitly note what was reviewed and deliberately left out (redundant, too
+  speculative, out of scope for the target page, superseded, etc.), with a one-line reason each.
+  Append this as a "Compile Log" at the end of the source docs/raw note (raw stays append-only).
+  Without this, a future reader can't tell "reviewed and excluded on purpose" from "never reviewed" —
+  both look like silence otherwise.
+- When adding a new docs/wiki page, cross-link it: add it to docs/wiki/index.md and add at least
+  one link from an existing related page. Wiki pages that aren't interconnected are effectively
+  invisible to future compile passes.
 
 ---
 

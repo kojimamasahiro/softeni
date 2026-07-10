@@ -119,6 +119,7 @@ Draft / Open Question:
 - 共有 URL と編集可能 URL を別権限で扱う正式設計
   → ADR-003 で `edit_token` 廃止・認証所有モデル（`owner_user_id` / `visibility`）へ寄せる方針
 - 本体サイト（大会・選手ページ）との相互リンク設計: [score-site-link.md](./score-site-link.md)（2026-06 Draft）
+- 一般ユーザーへの公開・課金展開の方向性: [score-general-availability.md](./score-general-availability.md)（2026-07 Draft）
 
 ## Assumption
 

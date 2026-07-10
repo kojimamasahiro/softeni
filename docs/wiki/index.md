@@ -9,6 +9,7 @@
 - [Score Feature](./score-feature.md)
 - [Score Site Link](./score-site-link.md)
 - [Score Analysis](./score-analysis.md)
+- [Score 一般公開・新機能ピボット検討](./score-general-availability.md)
 - [Public Pages](./public-pages.md)
 - [Players Pages（選手ページ）](./players-pages.md)
 - [Highschool Pages（高校カテゴリ）](./highschool.md)
