@@ -170,9 +170,18 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 - Elo の K 値 → K/scale 比 0.16 が Brier 最良（kByTier {80,64,48} を config 反映済み。enabled は
   false のまま）。
 
+決定で解消（2026-07-11、P3）:
+
+- Elo副指標の有効化 → **生成のみ有効化**（`npm run ratings:generate` → `data/ratings/current.json`、
+  内部利用）。レートは選手1人に1本（統合）、ダブルスはペア平均→両者同デルタ、provisional は
+  K倍率でなく表示ゲート（10試合未満は無順位）として扱う。
+
 残る Open Question（実装フェーズで詰める）:
 
-- ランキング副指標（Elo 系レーティング）の有効化（P3）: ダブルスの配分・provisional 扱い・表示面の設計。
+- Eloレーティングの**公開面の設計**: 未成年の実名で「負けると下がる数字」を出すかの感度整理、
+  出すなら established のみ・注記付き・下降表現を避けた見せ方。当面は内部利用に留める（2026-07-11決定）。
+- `data/ratings/current.json` の更新運用（prebuild 組み込みは giant-killing 実装時に判断。
+  それまでは details 追加時に手動で `ratings:generate` を再実行）。
 - lucent-tokyo-indoor / yonex-hokkaido-international を index.json に掲載するか（tierOverrides は
   非掲載でも機能するが、大会ページとしての露出は別判断）。
 - **同姓同名の人物別 id 分離 → 当面は「融合を許容」で決定（2026-07-02）**:

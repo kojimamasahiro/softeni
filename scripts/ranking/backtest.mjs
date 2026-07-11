@@ -47,9 +47,8 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+import { ROOT, buildReplay, loadRankingsLookup } from './replayData.mjs';
 
 // ---------- CLI ----------
 const args = process.argv.slice(2);
@@ -76,259 +75,34 @@ const EXCLUDE_INTERNATIONAL = flag('exclude-international');
 const RETIER = flag('retier') || flag('retier-national');
 const RETIER_TARGET = flag('retier-national') ? 'national' : 'major';
 
-// ---------- 設定・マスタ ----------
-const rankingConfig = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ranking-config.json'), 'utf-8'));
+// ---------- 設定・マスタ・対戦データ（共通モジュール） ----------
+// --retier: 監査で検出したミスプライシングの修正案（国内精鋭のみ。国際予選は全員国内選手を確認済み）
+const RETIER_MAP = RETIER
+  ? new Map([
+      ['world-championship-qualifier', RETIER_TARGET],
+      ['asian-championship-qualifier', RETIER_TARGET],
+      ['asian-games-qualifier', RETIER_TARGET],
+      ['lucent-tokyo-indoor', RETIER_TARGET],
+      ['yonex-hokkaido-international', 'national'],
+    ])
+  : null;
+
+const replay = buildReplay({
+  excludeGenerationInternational: EXCLUDE_INTERNATIONAL,
+  retierMap: RETIER_MAP,
+  collectPlacements: GRID_POINTS || RATED_TIER,
+});
+const { rankingConfig, matches, placements, files, skipped, dateByTidYear, homonymNames } = replay;
+const tierOf = replay.tierOfElo;
+const tierOfPoints = replay.tierOfPoints;
+
 const rating = rankingConfig.ranking.rating;
 const K_BY_TIER = rating.kByTier; // { major, national, local }
 const INITIAL = rating.initial;
 const PROVISIONAL_MATCHES = rating.provisionalMatches;
 
-// tier: isMajorTitle → major / index.json 掲載 → national / 非掲載 → local。
-// Assumption: generationId が international 系も national の K で扱う（専用 tier が無いため）。
-const tierByTournament = new Map();
-{
-  const idx = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'tournaments', 'index.json'), 'utf-8'));
-  const list = Array.isArray(idx) ? idx : idx.tournaments;
-  for (const t of list) {
-    tierByTournament.set(t.tournamentId, t.isMajorTitle ? 'major' : 'national');
-  }
-}
-const tierOf = (tid) => tierByTournament.get(tid) ?? 'local';
-
-// ポイント式グリッド用の tier（本エンジン resolveTier のミラー:
-// major=isMajorTitle / national=index.json 収録かつ国際・国際予選以外 / local=それ以外）
-const tierForPoints = new Map();
-const trueInternational = new Set(); // generationId='international'（外国選手参加。--exclude-international 対象）
-{
-  const idx = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'tournaments', 'index.json'), 'utf-8'));
-  const list = Array.isArray(idx) ? idx : idx.tournaments;
-  for (const t of list) {
-    const gen = t.generationId ?? '';
-    if (gen === 'international') trueInternational.add(t.tournamentId);
-    const isInternational = gen.startsWith('international');
-    tierForPoints.set(t.tournamentId, t.isMajorTitle ? 'major' : isInternational ? 'local' : 'national');
-  }
-}
-
-// --retier: 監査で検出したミスプライシングの修正案（国内精鋭のみ。国際予選は全員国内選手を確認済み）
-const RETIER_MAP = new Map([
-  ['world-championship-qualifier', RETIER_TARGET],
-  ['asian-championship-qualifier', RETIER_TARGET],
-  ['asian-games-qualifier', RETIER_TARGET],
-  ['lucent-tokyo-indoor', RETIER_TARGET],
-  ['yonex-hokkaido-international', 'national'],
-]);
-// 本 config の tierOverrides / excludeTournaments を常時ミラーする（2026-07-11 エンジン反映済み）。
-// --retier / --retier-national は追加実験用の上書き。
-const CONFIG_TIER_OVERRIDES = new Map(
-  Object.entries(rankingConfig.ranking.tierOverrides ?? {}).filter(
-    ([k, v]) => !k.startsWith('_') && ['major', 'national', 'local'].includes(v),
-  ),
-);
-const CONFIG_EXCLUDED = new Set(rankingConfig.ranking.excludeTournaments ?? []);
-const tierOfPoints = (tid) => {
-  if (RETIER && RETIER_MAP.has(tid)) return RETIER_MAP.get(tid);
-  if (CONFIG_TIER_OVERRIDES.has(tid)) return CONFIG_TIER_OVERRIDES.get(tid);
-  return tierForPoints.get(tid) ?? 'local';
-};
-
-// 開催日: information/{tournamentId}.json の年度別 startDate
-const dateByTidYear = new Map();
-{
-  const infoDir = path.join(ROOT, 'data', 'tournaments', 'information');
-  for (const f of fs.readdirSync(infoDir)) {
-    if (!f.endsWith('.json')) continue;
-    const tid = f.replace(/\.json$/, '');
-    let rows;
-    try {
-      rows = JSON.parse(fs.readFileSync(path.join(infoDir, f), 'utf-8'));
-    } catch {
-      continue;
-    }
-    if (!Array.isArray(rows)) continue;
-    for (const r of rows) {
-      if (r && r.year && r.startDate) dateByTidYear.set(`${tid}\t${r.year}`, r.startDate);
-    }
-  }
-}
-
-// 同姓同名リスト（--exclude-homonyms 用）
-const homonymNames = new Set();
-{
-  const p = path.join(ROOT, 'data', 'players', 'homonyms.json');
-  if (fs.existsSync(p)) {
-    for (const h of JSON.parse(fs.readFileSync(p, 'utf-8'))) {
-      homonymNames.add(`${h.lastName ?? ''}${h.firstName ?? ''}`);
-    }
-  }
-}
-
 // 前年度ポイントランキング: `${year}\t${discipline}\t${gender}` → Map(name → points)
-const rankingsLookup = new Map();
-{
-  const dir = path.join(ROOT, 'data', 'rankings');
-  if (fs.existsSync(dir)) {
-    for (const f of fs.readdirSync(dir)) {
-      const m = /^(\d{4})-(singles|doubles)-(boys|girls)\.json$/.exec(f);
-      if (!m) continue;
-      const d = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf-8'));
-      const byName = new Map();
-      for (const e of d.entries ?? []) {
-        // 名前単位に丸める（同名は最大ポイントを採用。homonym 融合はプロジェクト既定方針に合わせ許容）
-        const prev = byName.get(e.playerName);
-        if (prev === undefined || e.points > prev) byName.set(e.playerName, e.points);
-      }
-      rankingsLookup.set(`${d.year}\t${d.discipline}\t${d.gender}`, byName);
-    }
-  }
-}
-
-// ---------- 対戦データ抽出 ----------
-const detailsDir = path.join(ROOT, 'data', 'tournaments', 'details');
-const files = [];
-(function walk(dir) {
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) walk(p);
-    else if (e.name.endsWith('.json')) files.push(p);
-  }
-})(detailsDir);
-files.sort();
-
-const skipped = {};
-const skip = (k) => {
-  skipped[k] = (skipped[k] ?? 0) + 1;
-};
-const matches = []; // { sortKey, year, tid, discipline, gender, sideA, sideB, winner, retired }
-const placements = []; // { name, year, discipline, gender, tier, coefKey }（--grid-points 用）
-
-// results[].tournament.rank → 順位係数キー（lib/playerStats/placement.ts resolvePlacement ＋
-// aggregators/rankingCompute.ts placementCoefficient のミラー）
-const coefKeyOf = (result) => {
-  const rk = result?.tournament?.rank;
-  if (rk?.kind === 'winner') return 'winner';
-  if (rk?.kind === 'runnerup') return 'runnerup';
-  if (rk?.kind === 'best') return rk.bestLevel === 4 ? 'best4' : 'best8';
-  return 'entry'; // roundLoss / groupOnly / unknown はすべて entry 係数
-};
-
-for (const file of files) {
-  const rel = path.relative(detailsDir, file);
-  const mPath = /^([^/\\]+)[/\\](\d{4})[/\\]/.exec(rel);
-  if (!mPath) {
-    skip('no-year-path');
-    continue;
-  }
-  const [, tid, yearStr] = mPath;
-  if (CONFIG_EXCLUDED.has(tid) || (EXCLUDE_INTERNATIONAL && trueInternational.has(tid))) {
-    skip('excluded-international');
-    continue;
-  }
-  const year = Number(yearStr);
-  const base = path.basename(file, '.json');
-  const mCat = /^(singles|doubles|team)-(.+)-(boys|girls|mixed)$/.exec(base);
-  const discipline = mCat ? mCat[1] : null;
-  const gender = mCat ? mCat[3] : null;
-
-  let d;
-  try {
-    d = JSON.parse(fs.readFileSync(file, 'utf-8'));
-  } catch {
-    skip('parse-error');
-    continue;
-  }
-  if (!d || Array.isArray(d) || typeof d !== 'object') {
-    skip('non-dict-top');
-    continue;
-  }
-
-  const nameById = new Map();
-  for (const p of d.participants ?? []) {
-    if (!p || p.id === undefined) continue;
-    const name = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
-    if (name) nameById.set(p.id, name);
-  }
-  const playersByEntry = new Map();
-  for (const e of d.entries ?? []) {
-    if (!e || e.entryNo === undefined) continue;
-    playersByEntry.set(e.entryNo, e.playerIds ?? []);
-  }
-
-  const list = d.matches ?? [];
-  const byId = new Map();
-  for (const mt of list) if (mt && mt.matchId) byId.set(mt.matchId, mt);
-  const depthCache = new Map();
-  const depthOf = (mid, seen = new Set()) => {
-    if (depthCache.has(mid)) return depthCache.get(mid);
-    const mt = byId.get(mid);
-    if (!mt || seen.has(mid)) return 0;
-    seen.add(mid);
-    const prevs = (mt.prevMatchIds ?? []).filter(Boolean);
-    if (mt.prevMatchId) prevs.push(mt.prevMatchId);
-    const dv = prevs.length === 0 ? 0 : 1 + Math.max(...prevs.map((p) => depthOf(p, seen)));
-    depthCache.set(mid, dv);
-    return dv;
-  };
-
-  // placement 抽出（グリッド対象: singles/doubles × boys/girls のみ）
-  if (
-    (GRID_POINTS || RATED_TIER) &&
-    (discipline === 'singles' || discipline === 'doubles') &&
-    (gender === 'boys' || gender === 'girls')
-  ) {
-    const tier = tierOfPoints(tid);
-    for (const r of d.results ?? []) {
-      if (!r || r.entryNo === undefined) continue;
-      const coefKey = coefKeyOf(r);
-      for (const id of playersByEntry.get(r.entryNo) ?? []) {
-        const name = nameById.get(id);
-        if (name) placements.push({ name, year, tid, discipline, gender, tier, coefKey });
-      }
-    }
-  }
-
-  const date = dateByTidYear.get(`${tid}\t${year}`) ?? '~'; // 日付なしは年内の最後に回す
-  for (let i = 0; i < list.length; i++) {
-    const mt = list[i];
-    if (!mt || typeof mt !== 'object') continue;
-    const ens = mt.entries;
-    if (!ens || ens.length !== 2) {
-      skip('entries-not-2');
-      continue;
-    }
-    const w = mt.winnerEntryNo;
-    if (w === undefined || w === null || !ens.includes(w)) {
-      skip('no-winner');
-      continue;
-    }
-    const sideA = (playersByEntry.get(ens[0]) ?? []).map((id) => nameById.get(id)).filter(Boolean);
-    const sideB = (playersByEntry.get(ens[1]) ?? []).map((id) => nameById.get(id)).filter(Boolean);
-    if (sideA.length === 0 || sideB.length === 0) {
-      skip('no-player-names');
-      continue;
-    }
-    const depth = mt.matchId ? depthOf(mt.matchId) : i;
-    matches.push({
-      sortKey: [year, date, tid, rel, depth],
-      year,
-      tid,
-      discipline,
-      gender,
-      sideA,
-      sideB,
-      winner: w === ens[0] ? 0 : 1,
-      retired: Boolean(mt.retired),
-    });
-  }
-}
-
-matches.sort((a, b) => {
-  for (let i = 0; i < a.sortKey.length; i++) {
-    if (a.sortKey[i] < b.sortKey[i]) return -1;
-    if (a.sortKey[i] > b.sortKey[i]) return 1;
-  }
-  return 0;
-});
+const rankingsLookup = loadRankingsLookup();
 
 // ---------- 集計ヘルパ ----------
 const makeScore = () => ({ correct: 0, total: 0 });

@@ -28,8 +28,8 @@
     },
     "excludeTournaments": ["international-korea-cup", "international-hiroshima-peacecup"],
     "rating": {
-      "_note": "副指標の Elo 系レーティング（将来）。当面は無効。kByTier はバックテスト較正済み（2026-07-11、K/scale比0.16がBrier最良。docs/raw/2026-07-11-ranking-calibration-harness-plan.md §8）。",
-      "enabled": false,
+      "_note": "副指標の Elo 系レーティング。enabled=true は「生成を行う」の意（scripts/ranking/generate-ratings.mjs → data/ratings/current.json）。公開ページへの表示は未接続（内部利用のみ、2026-07-11決定）。kByTier はバックテスト較正済み（K/scale比0.16がBrier最良。docs/raw/2026-07-11-ranking-calibration-harness-plan.md §8・§10）。",
+      "enabled": true,
       "initial": 1500,
       "kByTier": { "major": 80, "national": 64, "local": 48 },
       "provisionalMatches": 10

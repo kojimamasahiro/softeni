@@ -87,13 +87,18 @@ facts は不変のまま rankings 生成時に計算するため、config の ti
   **現行維持を決定**（予測はElo副指標の領分）。
 - `--rated-tier`（大会強度監査）を定期実行し、tier誤設定を検出したら `tierOverrides` に反映する運用ループ。
 
-## Elo副指標（未有効・較正済み）
+## Elo副指標（生成有効・内部利用のみ、2026-07-11〜）
 
-`ranking-config.json` の `rating` に骨組みあり（`enabled: false`）。バックテストで
-K値較正済み（kByTier {80, 64, 48}、Brier最良）。的中率69.0%・全選手カバーで、有効化すれば
-ジャイアントキリング判定・急上昇検出・スタイル分析のスキル統制に使える。
-有効化（P3）の残論点: ダブルスのレート配分・provisional扱い・表示面の設計
-（負けると下がる数字を実名公開するかは未成年比率の観点で慎重に）。
+`npm run ratings:generate`（`scripts/ranking/generate-ratings.mjs`）が統合Elo（選手1人に1本、
+singles/doubles混合）を `data/ratings/current.json` に生成する。K は較正済み kByTier {80, 64, 48}、
+scale 400。tierOverrides・国際大会除外はポイント式と同じ config をミラー。ダブルスはペア平均
+レートで期待勝率を計算し両選手に同デルタ。retired は更新しない。10試合以上を `established` とし
+1224方式で順位付与（それ未満は provisional 扱いで無順位掲載）。
+
+**公開ページには未接続**（内部利用のみ）。用途はジャイアントキリング判定・大会強度監査・
+スタイル分析のスキル統制。将来の公開に備え playerId join（established で100%解決）・
+homonymRisk フラグを出力に持つ。表示設計の論点（負けると下がる数字の実名公開）は
+[open-questions.md](./open-questions.md) 参照。予測的中率69.0%（ポイント式67.5%）・全選手カバー。
 
 ## 決定の経緯（主要リンク）
 
