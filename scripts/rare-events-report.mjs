@@ -11,7 +11,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { buildPostText, detectRareEvents, groupMatchesByEdition, RARE_EVENT_CONFIG } from '../lib/rareEvents.mjs';
+import { buildPostText, buildScopePools, detectRareEvents, RARE_EVENT_CONFIG } from '../lib/rareEvents.mjs';
 import { loadAllMatches } from './generate-rare-events.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -55,23 +55,24 @@ const main = () => {
   }
 
   const labelMap = buildTournamentLabelMap();
-  const editions = [...groupMatchesByEdition(matches).values()].sort((a, b) => a.tournamentId.localeCompare(b.tournamentId) || a.year - b.year);
+  const pools = buildScopePools(matches, RARE_EVENT_CONFIG);
   const skipped = matches.filter((m) => !m.tournament_id || m.tournament_year == null).length;
 
   console.log('=== 希少イベント収穫レポート ===');
-  console.log(`対象: ${matches.length}試合（大会紐付けなしのため対象外: ${skipped}試合） / ${editions.length}開催`);
+  console.log(`対象: ${matches.length}試合（大会紐付けなしのため対象外: ${skipped}試合） / scope=${RARE_EVENT_CONFIG.scope}（${pools.length}プール）`);
   console.log(`config: lib/rareEvents.mjs RARE_EVENT_CONFIG`);
   console.log(JSON.stringify(RARE_EVENT_CONFIG.categories));
 
   const allPostable = [];
   let totalEvents = 0;
 
-  for (const edition of editions) {
-    const { events, stats } = detectRareEvents(edition, RARE_EVENT_CONFIG);
+  for (const pool of pools) {
+    const { events, stats } = detectRareEvents(pool, RARE_EVENT_CONFIG);
     totalEvents += events.length;
-    const label = labelMap.get(edition.tournamentId) ?? edition.tournamentId;
 
-    console.log(`\n--- ${label} ${edition.year}（${edition.key}） ---`);
+    const header =
+      pool.key === 'all-time' ? '記録済み全試合（大会紐付けあり）' : `${labelMap.get(pool.tournamentId) ?? pool.tournamentId} ${pool.year}（${pool.key}）`;
+    console.log(`\n--- ${header} ---`);
     console.log(`  試合: ${stats.matchCount} / ポイント: ${stats.pointCount}`);
     console.log(`  [分布] ラリー上位: ${stats.ralliesTop.map((r) => r.rally).join(', ') || 'なし'}`);
     console.log(`  [分布] サービスエース: ${stats.aceCount}件`);
@@ -89,8 +90,11 @@ const main = () => {
     console.log(`  イベント: ${events.length}件`);
     for (const event of events) {
       const video = event.videoUrl ? '📹' : '—';
-      console.log(`   ${video} [${event.kind}] ${event.label} | ${event.teamA} vs ${event.teamB}${event.round ? `（${event.round}）` : ''}`);
-      if (event.postable) allPostable.push({ event, label });
+      const tLabel = labelMap.get(event.tournamentId) ?? event.tournamentId;
+      console.log(
+        `   ${video} [${event.kind}] ${event.label} | ${event.teamA} vs ${event.teamB}${event.round ? `（${event.round}）` : ''} | ${tLabel} ${event.year}`,
+      );
+      if (event.postable) allPostable.push({ event, label: tLabel });
     }
   }
 

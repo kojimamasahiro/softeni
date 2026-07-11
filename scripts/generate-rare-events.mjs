@@ -42,7 +42,7 @@ const main = () => {
     return;
   }
 
-  const { events, editions } = detectAllRareEvents(matches, RARE_EVENT_CONFIG);
+  const { events, pools } = detectAllRareEvents(matches, RARE_EVENT_CONFIG);
 
   const byMatch = {};
   for (const event of events) {
@@ -66,7 +66,7 @@ const main = () => {
 
   const postable = events.filter((e) => e.postable).length;
   console.log(
-    `✓ Generated rare events (${editions.length} tournament editions, ${events.length} events, ${postable} postable) -> ${path.relative(projectRoot, outputPath)}`,
+    `✓ Generated rare events (scope=${RARE_EVENT_CONFIG.scope}, ${pools.length} pool(s), ${events.length} events, ${postable} postable) -> ${path.relative(projectRoot, outputPath)}`,
   );
 };
 

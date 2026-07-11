@@ -1370,9 +1370,9 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
 
             {rareEvents.length > 0 && (
               <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-900/20">
-                <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">この大会の名場面</h2>
+                <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">この試合の名場面</h2>
                 <p className="mt-1 text-xs text-amber-800/80 dark:text-amber-300/80">
-                  記録したポイント列から検知した、この大会の中で希少なプレーがこの試合に含まれています。
+                  当サイトでスコア記録した全試合と比べて希少なプレーが、この試合に含まれています。
                 </p>
                 <div className="mt-3 grid gap-2">
                   {rareEvents.map((event) => (

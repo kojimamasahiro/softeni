@@ -10,9 +10,10 @@ export type RareEventKind = 'longest-rally' | 'service-ace' | 'longest-deuce' | 
 
 export interface RareEvent {
   kind: RareEventKind;
-  scope: 'tournament';
+  /** 比較スコープ。'all-time'＝記録済み全試合の横断比較（2026-07-12〜既定） */
+  scope: 'tournament' | 'all-time';
   tournamentId: string;
-  year: number;
+  year: number | null;
   matchId: string;
   round: string | null;
   teamA: string;
