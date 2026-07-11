@@ -974,24 +974,43 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
   const tournamentCatalog: Record<string, TournamentCatalogEntry> = {};
 
   try {
+    // 大会の世代(generation)は data/tournaments/{generation}/{tournamentId}/meta.json という
+    // 旧構造から取得していたが、このディレクトリ構造は data/tournaments/index.json
+    // (+ local_index.json) ベースの新構造に移行済みで、旧パスは既に存在しない。
+    // 旧パスのまま参照し続けると meta が常に null になり、getCategoryOptions() が
+    // generation の選択肢をカテゴリの age から誤って導出してしまう
+    // (例: zennihon-singles の age は常に "none" のため generation も "none" になる) ため、
+    // 新構造の index.json / local_index.json から generationId を引く。
     const tournamentMetaMap = new Map<string, TournamentMeta>();
-    const generationDirs = fs
-      .readdirSync(tournamentsRoot, { withFileTypes: true })
-      .filter((dirent) => dirent.isDirectory() && dirent.name !== 'details' && dirent.name !== 'information');
+    const indexPath = path.join(tournamentsRoot, 'index.json');
+    const localIndexPath = path.join(tournamentsRoot, 'local_index.json');
 
-    for (const generationDir of generationDirs) {
-      const generationPath = path.join(tournamentsRoot, generationDir.name);
-      const tournamentDirs = fs.readdirSync(generationPath, { withFileTypes: true }).filter((dirent) => dirent.isDirectory());
+    type TournamentIndexEntry = {
+      tournamentId: string;
+      generationId: string;
+      label: string;
+      isMajorTitle: boolean;
+      officialUrl?: string;
+    };
 
-      for (const tournamentDir of tournamentDirs) {
-        const metaPath = path.join(generationPath, tournamentDir.name, 'meta.json');
-        if (!fs.existsSync(metaPath)) {
-          continue;
-        }
-
-        const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8')) as TournamentMeta;
-        tournamentMetaMap.set(tournamentDir.name, meta);
+    const readIndexEntries = (filePath: string): TournamentIndexEntry[] => {
+      if (!fs.existsSync(filePath)) {
+        return [];
       }
+      return JSON.parse(fs.readFileSync(filePath, 'utf8')) as TournamentIndexEntry[];
+    };
+
+    const indexEntries = [...readIndexEntries(indexPath), ...readIndexEntries(localIndexPath)];
+
+    for (const entry of indexEntries) {
+      tournamentMetaMap.set(entry.tournamentId, {
+        id: entry.tournamentId,
+        name: entry.label,
+        generation: entry.generationId,
+        categoryTypes: [],
+        isMajorTitle: entry.isMajorTitle,
+        officialUrl: entry.officialUrl,
+      });
     }
 
     const informationMap = new Map<
