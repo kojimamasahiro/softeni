@@ -17,7 +17,8 @@
       "best8": 0.3,
       "entry": 0.1
     },
-    "disciplines": ["singles", "doubles"],
+    "_disciplines_note": "シングルスは 2026-07-11 にポイントランキングから撤退（doubles限定）。理由: 出場資格の非対称（学生は自カテゴリ大会＋オープン全日本シングルスの両方に出られるが一般は1大会のみ）で topN合算が不平等になり、かつ一般シングルスは実質1大会でランキングとして無意味。種目横断の実力は統合Elo、シングルスの実績はタイトル記録で扱う。docs/raw/2026-07-11-idea-singles-ranking-retire.md。singles は facts/H2H/勝率/reachRate では引き続き有効。",
+    "disciplines": ["doubles"],
     "tierOverrides": {
       "_note": "大会単位のtier上書き（resolveTierより優先）。バックテスト監査で検出したミスプライシングの修正（2026-07-11、docs/raw/2026-07-11-ranking-calibration-harness-plan.md §9.1。除外+major再分類でholdout的中率+0.9pt）。国際予選3つは全員国内選手を確認済み。lucent/yonex-hokkaidoはindex.json非掲載だがdetailsあり",
       "world-championship-qualifier": "major",

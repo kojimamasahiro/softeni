@@ -16,8 +16,16 @@
 シーズンポイント = その年度の上位3大会の得点合計（topNTournamentsPerSeason=3）
 ```
 
-集計単位は **年度 × 種目（singles / doubles）× 男女（boys / girls）**。混合の順位表は作らない
+集計単位は **年度 × 種目（doubles）× 男女（boys / girls）**。混合の順位表は作らない
 （競技慣行に合わないため、2026-07-02決定）。
+
+**シングルスはポイントランキングから撤退（2026-07-11決定・実装済み）**: `config.ranking.disciplines`
+を `["doubles"]` に変更。理由は、出場資格の非対称（学生は自カテゴリのシングルス大会＋オープンの
+全日本シングルスの両方に出られるが、一般/社会人は実質1大会のみ）に topN合算が乗って不平等になり、
+かつ一般シングルスは実質1大会で「ランキング」として意味が成立しないため。種目横断の実力は統合Elo、
+シングルスの実績はタイトル記録（別導線・未設計）で扱う役割分担とする。singles は勝敗統計・H2H・勝率・
+reachRate では引き続き有効カテゴリ（撤退はランキング集計のみ）。経緯:
+[docs/raw/2026-07-11-idea-singles-ranking-retire.md](../raw/2026-07-11-idea-singles-ranking-retire.md)。
 
 ### tier重み（大会の格）
 
@@ -61,7 +69,9 @@
 - 生成物: `data/rankings/{year}-{discipline}-{gender}.json`（例: `2025-doubles-boys.json`）。
   行 = `{rank, playerId, playerKey, playerName, team, points}`。`playerKey` は
   **その年度の所属**を刻む（現所属で過去年度を汚染しない）。
-- 表示: `/rankings` ページ（上位100位・年度/種目/男女切替）と選手ページの「年度別ランキング推移」。
+- 表示: `/rankings` ページ（上位100位・年度/男女切替。ダブルスのみ）と選手ページの「年度別ランキング推移」。
+  データ駆動のため、`disciplines` から singles を外して再生成すればページ・選手ページ双方が自動で
+  ダブルス限定になる（singles の順位表 JSON は generate-rankings の prune で削除）。
 - **scope-limited 注記必須**: 集計は当サイト掲載大会分のみ。上位3大会合算は掲載偏りの補正
   （掲載大会数が年度・カテゴリで異なるため、出場数でなく上位実績で比較する）。
 

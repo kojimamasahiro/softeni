@@ -133,7 +133,7 @@ function RankingTrendTable({ trend }: { trend: RankingPoint[] }) {
   if (trend.length === 0) return null;
   const sorted = [...trend].sort((a, b) => b.year - a.year || a.discipline.localeCompare(b.discipline) || (a.gender ?? '').localeCompare(b.gender ?? ''));
   return (
-    <SectionCard title="年度別ランキング推移" note="当サイト掲載大会のシーズンポイント（年度の上位3大会合算）による男女別・種目別順位です。">
+    <SectionCard title="年度別ランキング推移" note="当サイト掲載大会のシーズンポイント（年度の上位3大会合算）による男女別ダブルスの順位です。">
       <table className="w-full border border-border-strong text-sm">
         <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
           <tr>

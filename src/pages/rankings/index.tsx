@@ -1,5 +1,7 @@
 // src/pages/rankings/index.tsx
-// 年度別ランキングページ（全選手横断・男女別×種目別・上位100位）。
+// 年度別ランキングページ（全選手横断・男女別ダブルス・上位100位）。
+// シングルスは 2026-07-11 にポイントランキングから撤退（doubles限定。
+// docs/raw/2026-07-11-idea-singles-ranking-retire.md）。
 // データは Player Statistics Engine が prebuild で生成する
 // data/rankings/{year}-{discipline}-{gender}.json（シーズンポイント: 年度の上位3大会合算）。
 // 1 ページに集約し、年度・種目・男女はクライアント側で切り替える（薄いページの量産を避ける。
@@ -40,7 +42,6 @@ type RankingsPageProps = {
 };
 
 const DISCIPLINE_LABEL: Record<string, string> = {
-  singles: 'シングルス',
   doubles: 'ダブルス',
 };
 const GENDER_LABEL: Record<string, string> = {
@@ -48,12 +49,14 @@ const GENDER_LABEL: Record<string, string> = {
   girls: '女子',
 };
 
-/** タブ順: 男子D → 女子D → 男子S → 女子S（ダブルス主流のため）。 */
+/**
+ * タブ順: 男子D → 女子D。
+ * シングルスは 2026-07-11 にポイントランキングから撤退（doubles限定。
+ * docs/raw/2026-07-11-idea-singles-ranking-retire.md）。
+ */
 const TAB_ORDER: Array<{ discipline: string; gender: string }> = [
   { discipline: 'doubles', gender: 'boys' },
   { discipline: 'doubles', gender: 'girls' },
-  { discipline: 'singles', gender: 'boys' },
-  { discipline: 'singles', gender: 'girls' },
 ];
 
 function tabLabel(discipline: string, gender: string): string {
@@ -71,7 +74,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
   const board = activeTab ? boards.find((b) => b.year === year && b.discipline === activeTab.discipline && b.gender === activeTab.gender) : undefined;
 
   const pageUrl = 'https://softeni-pick.com/rankings/';
-  const description = `ソフトテニス選手の年度別ランキング。当サイト掲載大会の成績から算出したシーズンポイント（年度の上位3大会合算）による男女別・種目別の順位表です。最新は${latestYear}年度。`;
+  const description = `ソフトテニス選手の年度別ダブルスランキング。当サイト掲載大会の成績から算出したシーズンポイント（年度の上位3大会合算）による男女別の順位表です。最新は${latestYear}年度。`;
 
   return (
     <>
@@ -136,7 +139,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
           ))}
         </div>
 
-        {/* 種目×男女タブ */}
+        {/* 男女タブ（ダブルスのみ） */}
         <div className="border-b border-border">
           <div className="-mb-px flex flex-wrap gap-1">
             {tabsForYear.map((t, i) => {
@@ -200,11 +203,11 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
           <p className="text-sm text-text-muted">この年度のランキングはありません。</p>
         )}
 
-        {/* 全年度・全種目の上位3位（静的HTML）。タブ裏の順位表はクライアント描画で
+        {/* 全年度・男女の上位3位（静的HTML）。タブ裏の順位表はクライアント描画で
             クローラに見えないため、選手名と内部リンクをここで担保する（seo.md #9）。 */}
         <section>
           <h2 className="mb-1 text-lg font-bold">年度別 上位選手まとめ</h2>
-          <p className="mb-4 text-xs text-text-muted">全年度・全種目の上位3位です。詳細は上の年度・種目切替で確認できます。</p>
+          <p className="mb-4 text-xs text-text-muted">全年度・男女ダブルスの上位3位です。詳細は上の年度・男女切替で確認できます。</p>
           <div className="space-y-4">
             {years.map((y) => (
               <div key={y}>
@@ -267,7 +270,8 @@ export const getStaticProps: GetStaticProps<RankingsPageProps> = async () => {
   const boards: Board[] = [];
   let files: string[] = [];
   try {
-    files = fs.readdirSync(dir).filter((f) => /^\d{4}-(singles|doubles)-(boys|girls)\.json$/.test(f));
+    // シングルスはランキング撤退（2026-07-11、doubles限定）。
+    files = fs.readdirSync(dir).filter((f) => /^\d{4}-doubles-(boys|girls)\.json$/.test(f));
   } catch {
     files = [];
   }

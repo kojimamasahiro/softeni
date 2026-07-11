@@ -1,5 +1,14 @@
 # Open Questions
 
+## 発展候補アイデア一覧（Idea Backlog・プロジェクト運用/メタ）
+
+プロダクト機能でなく、開発・AI協働の進め方に関するアイデアはここに積む
+（score機能まわりの機能アイデアは [score-general-availability.md](./score-general-availability.md) の表を参照）。
+
+| アイデア | 状況・目的（1行） | 詳細 |
+|---|---|---|
+| AIとの共同探索における「探索状態」の共有 | 発散フェーズ（2026-07-11）。AIのヒントを人間が消化できず後から気付く問題。知識管理でなく理解状態の同期の問題として「何を共有・更新し続けるべきか」を問う。解決策は意図的に未検討 | [アイデア](../raw/2026-07-11-idea-ai-co-exploration-context.md) |
+
 ## 全日本学生選抜インドア（zennihon-university-indoor）
 
 - 第59回(2025)の開催会場が公式公開情報から特定できず、`information` の `location` を空にしている。

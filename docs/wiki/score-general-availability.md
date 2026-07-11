@@ -37,6 +37,7 @@ ADR-003（[score-media-tool-separation](../adr/ADR-003-score-media-tool-separati
 | 勝敗・大会単位の希少性検知（ランキング連動） | **A系統（giant-killing）は表示接続まで完了**（2026-07-11）: 大会結果ページ自動バッジ「金星」＋結果記事素材、数字なし定性表現・champion-defeat重複抑制。残り=B系統（無敗優勝等）のP0頻度検証から | [アイデア](../raw/2026-07-11-idea-giant-killing-ranking.md) / [検討](../raw/2026-07-11-giant-killing-milestone-plan.md) |
 | データによる選手プレースタイルのプロフィール化 | 詳細検討済み（2026-07-11）。主対象=記録ユーザー・指導者。Phase 1レーダーチャート（スタイル=構成比/強さ=得点率で分離）は今すぐ可能、score CTAの中身候補 | [アイデア](../raw/2026-07-11-idea-player-style-profiling.md) / [検討](../raw/2026-07-11-player-style-profile-plan.md) |
 | ランキング較正ハーネス（バックテスト基盤） | **P1〜P4完了**（2026-07-11）。較正・国際除外・tier再分類をエンジン反映、統合Elo＋giant-killing検知を `data/ratings/` に生成（内部利用）。仕様は [ranking.md](./ranking.md)。以降は運用（監査・再較正）と公開面の判断 | [アイデア](../raw/2026-07-11-idea-ranking-calibration-harness.md) / [検討](../raw/2026-07-11-ranking-calibration-harness-plan.md) |
+| シングルスのポイントランキング廃止（種目区別の整理） | **実装済み**（2026-07-11、B案）。`disciplines=["doubles"]` に変更、singles 順位表を削除・doubles 再生成、ページ/選手ページは自動でダブルス限定。残: シングルスのタイトル記録導線（未設計）。仕様は [ranking.md](./ranking.md) | [アイデア](../raw/2026-07-11-idea-singles-ranking-retire.md) |
 | score記録の半自動化（動画からのポイント抽出支援） | 発散フェーズ（2026-07-11）。ポイントデータは外部に存在せず、方向は記録コスト削減。音声区切り検出→スコアボードOCRの段階案。権利リスク要整理 | [アイデア](../raw/2026-07-11-idea-score-recording-semiauto.md) |
 
 背景の調査・検討経緯（市場調査、記録文化比較、パイロット分析）は

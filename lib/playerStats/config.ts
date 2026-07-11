@@ -69,7 +69,10 @@ export const DEFAULT_CONFIG: PlayerStatsConfig = {
       best8: 0.3,
       entry: 0.1,
     },
-    disciplines: ['singles', 'doubles'],
+    // シングルスはポイントランキングから撤退（2026-07-11、doubles限定）。
+    // 経緯: docs/raw/2026-07-11-idea-singles-ranking-retire.md。
+    // singles は facts/H2H/勝率/reachRate では引き続き有効カテゴリ（ここはランキング集計対象のみ）。
+    disciplines: ['doubles'],
     tierOverrides: {},
     excludeTournaments: [],
     rating: {

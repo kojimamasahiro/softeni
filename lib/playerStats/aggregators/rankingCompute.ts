@@ -49,7 +49,8 @@ export interface SeasonPoints {
 
 /**
  * 選手 1 人の entries から (year, discipline, gender) ごとのシーズンポイントを算出する。
- * discipline は config.ranking.disciplines のみ対象（既定 singles/doubles）。
+ * discipline は config.ranking.disciplines のみ対象（2026-07-11〜 doubles 限定。
+ * シングルスはランキング撤退。docs/raw/2026-07-11-idea-singles-ranking-retire.md）。
  * 順位表は男女別（2026-07-02 決定。混合の順位表は競技慣行に合わないため）。
  */
 export function computeSeasonPoints(entries: PlayerEntryFact[], config: PlayerStatsConfig): SeasonPoints[] {

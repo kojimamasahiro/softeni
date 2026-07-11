@@ -14,7 +14,8 @@ test('loads ranking-config.json with expected values', () => {
 
 test('defaults are internally consistent', () => {
   assert.strictEqual(DEFAULT_CONFIG.ranking.placementCoefficient.winner, 1.0);
-  assert.deepStrictEqual(DEFAULT_CONFIG.ranking.disciplines, ['singles', 'doubles']);
+  // シングルスは 2026-07-11 にランキングから撤退（doubles限定）。
+  assert.deepStrictEqual(DEFAULT_CONFIG.ranking.disciplines, ['doubles']);
 });
 
 test('resolveTier classifies major/national/local', () => {
