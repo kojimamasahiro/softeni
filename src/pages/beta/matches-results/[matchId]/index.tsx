@@ -1397,7 +1397,14 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                     </button>
                   ))}
                 </div>
-                <p className="mt-2 text-[10px] text-amber-800/70 dark:text-amber-300/70">※{rareEvents[0].scopeNote}</p>
+                <div className="mt-2 flex items-center justify-between gap-2">
+                  <p className="text-[10px] text-amber-800/70 dark:text-amber-300/70">※{rareEvents[0].scopeNote}</p>
+                  {!isScoreSiteMode() && (
+                    <Link href={`${getPublicMatchesListPath()}/highlights`} className="whitespace-nowrap text-xs font-medium text-link hover:underline">
+                      サイト記録一覧 →
+                    </Link>
+                  )}
+                </div>
               </div>
             )}
 

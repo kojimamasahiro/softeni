@@ -16,6 +16,7 @@
 //      必要。名寄せ精度の検証が済むまで出さない（誤った節目表示は信頼を損なうため）。
 //      MilestoneEvent 構造はこれらを後から足せるよう汎用にしている。
 
+import { getUpsets } from './ratingsUpsets';
 import {
   buildParticipantMap,
   championKey,
@@ -26,7 +27,6 @@ import {
   type HistoricalWinnersBlock,
   type RepeatChampion,
 } from './tournamentRecords';
-import { getUpsets } from './ratingsUpsets';
 import { getCategoryLabel } from './utils';
 
 export type MilestoneKind =
@@ -466,14 +466,9 @@ export function getGiantKillings(tournamentId: string, categoryId: string, targe
  * champion-defeat を落とす重複抑制。前回王者は多くの場合レート上位でもあるため、
  * 同じ勝利が「王者撃破」と「金星」で二重表示されるのを防ぐ（giant-killing を優先）。
  */
-export function suppressChampionDefeatIfDuplicate(
-  defeat: MilestoneEvent | null,
-  giantKillings: MilestoneEvent[],
-): MilestoneEvent | null {
+export function suppressChampionDefeatIfDuplicate(defeat: MilestoneEvent | null, giantKillings: MilestoneEvent[]): MilestoneEvent | null {
   if (!defeat) return null;
   const defeatWinners = new Set(defeat.subject.players);
-  const dup = giantKillings.some(
-    (g) => g.subject.players.length === defeatWinners.size && g.subject.players.every((p) => defeatWinners.has(p)),
-  );
+  const dup = giantKillings.some((g) => g.subject.players.length === defeatWinners.size && g.subject.players.every((p) => defeatWinners.has(p)));
   return dup ? null : defeat;
 }

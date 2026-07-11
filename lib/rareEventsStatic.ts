@@ -61,3 +61,9 @@ const readFile = (): RareEventsFile | null => {
 export const getRareEventsForMatch = (matchId: string): RareEvent[] => {
   return readFile()?.byMatch?.[matchId] ?? [];
 };
+
+/** 全希少イベント（サイト記録一覧ページ用） */
+export const getAllRareEvents = (): { generatedAt: string | null; events: RareEvent[] } => {
+  const file = readFile();
+  return { generatedAt: file?.generatedAt ?? null, events: file?.events ?? [] };
+};

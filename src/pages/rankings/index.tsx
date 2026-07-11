@@ -116,7 +116,8 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         <header>
           <h1 className="text-2xl font-bold">ソフトテニス選手ランキング</h1>
           <p className="mt-2 text-sm text-text-secondary">
-            当サイト掲載大会の成績から算出した年度別ランキングです。ポイントは<strong>ダブルス</strong>の成績で、大会の格 （主要大会・全国大会・地方大会）と最終成績から求め、
+            当サイト掲載大会の成績から算出した年度別ランキングです。ポイントは<strong>ダブルス</strong>の成績で、大会の格
+            （主要大会・全国大会・地方大会）と最終成績から求め、
             <strong>年度の上位3大会のみを合算</strong>しています（上位{TOP_N}位まで掲載）。
           </p>
           <p className="mt-1 text-xs text-text-muted">
@@ -198,7 +199,13 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                     <td className="py-1.5 px-2 text-text-secondary">{e.team ?? '―'}</td>
                     <td className="py-1.5 px-2 text-center">{e.points}</td>
                     <td className="py-1.5 px-2 text-xs text-text-secondary">
-                      {e.singlesTitle ? <span className="inline-block rounded bg-sky-100 px-1.5 py-0.5 text-sky-800 dark:bg-sky-900/40 dark:text-sky-200">{e.singlesTitle}</span> : ''}
+                      {e.singlesTitle ? (
+                        <span className="inline-block rounded bg-sky-100 px-1.5 py-0.5 text-sky-800 dark:bg-sky-900/40 dark:text-sky-200">
+                          {e.singlesTitle}
+                        </span>
+                      ) : (
+                        ''
+                      )}
                     </td>
                   </tr>
                 ))}
