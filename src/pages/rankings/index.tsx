@@ -24,13 +24,15 @@ type BoardEntry = {
   playerName: string;
   team: string | null;
   points: number;
+  /** シングルス好成績の表示ラベル（同点の並び替え根拠）。無ければ null。 */
+  singlesTitle: string | null;
   /** 結果ページ（/players/{id}/results/）が実在するか。 */
   hasPage: boolean;
 };
 
 type Board = {
   year: number;
-  discipline: string; // singles | doubles
+  discipline: string; // doubles（採点はダブルスのみ・2026-07-11）
   gender: string; // boys | girls
   outOf: number;
   entries: BoardEntry[];
@@ -41,26 +43,23 @@ type RankingsPageProps = {
   latestYear: number;
 };
 
-const DISCIPLINE_LABEL: Record<string, string> = {
-  doubles: 'ダブルス',
-};
 const GENDER_LABEL: Record<string, string> = {
   boys: '男子',
   girls: '女子',
 };
 
 /**
- * タブ順: 男子D → 女子D。
- * シングルスは 2026-07-11 にポイントランキングから撤退（doubles限定。
- * docs/raw/2026-07-11-idea-singles-ranking-retire.md）。
+ * タブ順: 男子 → 女子。
+ * 種目の区別は廃止し男女の 1 本の板に。採点はダブルスのみで、同点はシングルス best-1 で並び替える
+ * （2026-07-11。docs/raw/2026-07-11-idea-singles-ranking-retire.md）。
  */
 const TAB_ORDER: Array<{ discipline: string; gender: string }> = [
   { discipline: 'doubles', gender: 'boys' },
   { discipline: 'doubles', gender: 'girls' },
 ];
 
-function tabLabel(discipline: string, gender: string): string {
-  return `${GENDER_LABEL[gender] ?? gender}${DISCIPLINE_LABEL[discipline] ?? discipline}`;
+function tabLabel(_discipline: string, gender: string): string {
+  return GENDER_LABEL[gender] ?? gender;
 }
 
 export default function RankingsPage({ boards, latestYear }: RankingsPageProps) {
@@ -117,8 +116,11 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         <header>
           <h1 className="text-2xl font-bold">ソフトテニス選手ランキング</h1>
           <p className="mt-2 text-sm text-text-secondary">
-            当サイト掲載大会の成績から算出した年度別ランキングです。ポイントは大会の格 （主要大会・全国大会・地方大会）と最終成績から求め、
+            当サイト掲載大会の成績から算出した年度別ランキングです。ポイントは<strong>ダブルス</strong>の成績で、大会の格 （主要大会・全国大会・地方大会）と最終成績から求め、
             <strong>年度の上位3大会のみを合算</strong>しています（上位{TOP_N}位まで掲載）。
+          </p>
+          <p className="mt-1 text-xs text-text-muted">
+            ※ ポイントが同点の場合は、その年のシングルスの最高成績が上位の選手を上に並べています（シングルスはポイントには加算しません）。
           </p>
           <p className="mt-1 text-xs text-text-muted">
             ※ 当サイトに掲載されている大会のみが対象です。年度により収録大会数・母数が大きく異なるため、 年度をまたいだ順位の比較には適しません。
@@ -174,6 +176,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                   <th className="py-1.5 px-2 text-left">選手</th>
                   <th className="py-1.5 px-2 text-left">所属（当時）</th>
                   <th className="py-1.5 px-2 text-center">ポイント</th>
+                  <th className="py-1.5 px-2 text-left">シングルス</th>
                 </tr>
               </thead>
               <tbody>
@@ -194,6 +197,9 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
                     </td>
                     <td className="py-1.5 px-2 text-text-secondary">{e.team ?? '―'}</td>
                     <td className="py-1.5 px-2 text-center">{e.points}</td>
+                    <td className="py-1.5 px-2 text-xs text-text-secondary">
+                      {e.singlesTitle ? <span className="inline-block rounded bg-sky-100 px-1.5 py-0.5 text-sky-800 dark:bg-sky-900/40 dark:text-sky-200">{e.singlesTitle}</span> : ''}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -288,6 +294,7 @@ export const getStaticProps: GetStaticProps<RankingsPageProps> = async () => {
           playerName: string;
           team?: string | null;
           points: number;
+          singlesTitle?: string | null;
         }>;
       };
       boards.push({
@@ -301,6 +308,7 @@ export const getStaticProps: GetStaticProps<RankingsPageProps> = async () => {
           playerName: e.playerName,
           team: e.team ?? null,
           points: e.points,
+          singlesTitle: e.singlesTitle ?? null,
           hasPage: e.playerId != null && (countById.get(e.playerId) ?? 0) >= 5,
         })),
       });

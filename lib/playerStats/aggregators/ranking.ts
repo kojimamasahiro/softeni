@@ -23,6 +23,10 @@ export interface RankingFile {
     /** その年度の所属（順位表生成時に確定）。 */
     team: string | null;
     points: number;
+    /** 同点の並び替えキー: シングルス best-1 の entryScore（2026-07-11）。無ければ 0。 */
+    singlesBest?: number;
+    /** シングルス好成績の表示ラベル（例「全日本シングルス選手権大会 優勝」）。無ければ null。 */
+    singlesTitle?: string | null;
     rating?: number;
   }>;
 }

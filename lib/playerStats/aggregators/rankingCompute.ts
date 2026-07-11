@@ -37,6 +37,59 @@ export function entryScore(entry: PlayerEntryFact, config: PlayerStatsConfig): n
   return weight * placementCoefficient(entry.placement, config);
 }
 
+/**
+ * placement を「好成績」表示ラベルに写す。優勝〜ベスト8のみラベル化し、
+ * 単なる出場（roundLoss/groupOnly/unknown）は null（＝表示しない）。
+ * タイブレークの数値計算とは独立（数値は entryScore、こちらは表示用）。
+ */
+function notablePlacementLabel(placement: PlayerEntryFact['placement']): string | null {
+  switch (placement.kind) {
+    case 'winner':
+      return '優勝';
+    case 'runnerup':
+      return '準優勝';
+    case 'best':
+      return placement.bestLevel === 4 ? 'ベスト4' : 'ベスト8';
+    default:
+      return null;
+  }
+}
+
+export interface SinglesBest {
+  /** 並び替えキー。その年度のシングルス最高成績 1 大会の entryScore（合算しない＝best-1）。 */
+  value: number;
+  /** 表示用ラベル（例「全日本シングルス選手権大会 優勝」）。好成績時のみ、無ければ null。 */
+  title: string | null;
+}
+
+/**
+ * 選手 1 人の entries から (year, gender) ごとの「シングルス best-1」を求める。
+ * ダブルスの順位表で **同点の並び替えキー**に使う（採点そのものはダブルスのみ。
+ * 2026-07-11、docs/raw/2026-07-11-idea-singles-ranking-retire.md）。
+ * best-1（最高成績 1 大会のみ）にすることで、出場機会の多い層が積み上げで有利になる
+ * ＝一度撤退させた不平等が並び順に再流入するのを防ぐ。除外大会は算入しない。
+ */
+export function singlesBestBySeason(entries: PlayerEntryFact[], config: PlayerStatsConfig): Map<string, SinglesBest> {
+  const excluded = new Set(config.ranking.excludeTournaments ?? []);
+  const out = new Map<string, SinglesBest>();
+  for (const e of entries) {
+    if (e.category !== 'singles') continue;
+    if (excluded.has(e.tournamentId)) continue;
+    const value = entryScore(e, config);
+    const key = `${e.year}\t${e.gender}`;
+    const cur = out.get(key);
+    const label = notablePlacementLabel(e.placement);
+    const name = e.tournamentName.trim();
+    if (!cur || value > cur.value) {
+      out.set(key, { value, title: label ? `${name} ${label}` : null });
+    } else if (value === cur.value && cur.title === null && label) {
+      // 同値なら好成績ラベルのある方をタイトルに採る（数値順位は不変）。
+      out.set(key, { value: cur.value, title: `${name} ${label}` });
+    }
+  }
+  return out;
+}
+
 export interface SeasonPoints {
   year: number;
   discipline: string;

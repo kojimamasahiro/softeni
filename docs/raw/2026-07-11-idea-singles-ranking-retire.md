@@ -93,6 +93,39 @@
 検証: `playerstats:test` 全 pass、`tsc --noEmit` で編集ファイルにエラー無し、`data/rankings` に
 singles の残留なし、2025-doubles-boys は 5946行・首位 矢野颯人 270点で不変。
 
+## 追記: 同点をシングルス best-1 で並び替え（2026-07-11、実装済み）
+
+撤退後に別の課題が浮上: ダブルス採点は成績がペアに等分されるため、同じペアは同点になり区別できない。
+さらに点数が離散的で取りうる値が少なく、同点の塊が多い（2025男子ダブルス上位50人で異なる点数は22種のみ）。
+
+ユーザー提案（原文）:「シングルスの結果を並び順に反映するのはどう？ ダブルスというカテゴリではなく
+男子、女子だけにして、基本はダブルスでの採点だが、並びの中にシングルスの好成績がわかってその順にする」。
+
+→ **A案（シングルス合算）の復活ではなく、同点時の並び替えキーにのみシングルスを使う中間案**として採用。
+採点はダブルスのまま、表示は男女1本の板、同点順はシングルス best-1 で決める。
+
+決定した機構:
+
+- シングルス評価値 = **best-1**（その年の最高シングルス成績1大会の entryScore・合算しない）。
+  ユーザー選択（AskUserQuestion）で best-1 を採用。合算だと出場機会の多い層が有利になり、撤退させた
+  不平等が並び順に再流入するため（橋場は best-1=70 で 130 にならず、上松100 の下）。
+- 順位（1224）のタイは `(points, singlesBest)` 完全一致時のみ。両者ノーシングルスの同点は同順位のまま。
+- 表示は好成績（優勝〜ベスト8）のみバッジ化。単なる出場（best-1=10 等）は数値順位には効くが表示しない。
+
+検証（2025）: 男子ダブルス200点タイ → 上松〈全日本S優勝100〉5位・橋場〈全日本S準優勝70〉6位・
+菊山〈10〉7位に分離。230点タイ（丸山=上岡, ともに10）は同順位のまま。女子240点タイ → 岩倉〈S ベスト4=50〉が
+高橋〈10〉の上。撤退時の 上松＞橋場 の直感とも一致。
+
+変更ファイル（追加分）:
+
+- `lib/playerStats/aggregators/rankingCompute.ts`: `singlesBestBySeason` と `SinglesBest` 型・
+  `notablePlacementLabel` を追加。
+- `lib/playerStats/aggregators/ranking.ts`: `RankingFile` の entry に `singlesBest?`・`singlesTitle?` 追加。
+- `scripts/playerStats/generate-rankings.ts`: Row に singles フィールド、同点を singlesBest 降順で並び替え、
+  1224 順位を `(points, singlesBest)` 複合キー化、diff 署名に singles を含め、entries に出力。
+- `src/pages/rankings/index.tsx`: 種目タブ廃止（tabLabel は男女のみ）、シングルス列/バッジ追加、
+  同点順の説明コピー、getStaticProps で singlesTitle 読み込み。
+
 ## Compile Log（2026-07-11）
 
 - wiki（ranking.md）へ反映: 集計単位を doubles 限定に更新、撤退の理由と役割分担、prune 挙動を追記。

@@ -13,7 +13,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { RankingFile } from '../../lib/playerStats/aggregators/ranking';
-import { computeSeasonPoints } from '../../lib/playerStats/aggregators/rankingCompute';
+import { computeSeasonPoints, singlesBestBySeason } from '../../lib/playerStats/aggregators/rankingCompute';
 import { loadRankingConfig } from '../../lib/playerStats/config';
 import { playerKey } from '../../lib/playerStats/identity';
 import { readManifest, updateLastRun } from '../../lib/playerStats/manifest';
@@ -51,18 +51,24 @@ interface Row {
   playerName: string;
   team: string | null;
   points: number;
+  /** 同点の並び替えキー（シングルス best-1 の entryScore）。無ければ 0。 */
+  singlesBest: number;
+  /** シングルス好成績の表示ラベル。無ければ null。 */
+  singlesTitle: string | null;
 }
 
 /** 順位表 2 枚の差分選手（rank / points が変わった・現れた・消えた id）。 */
 function diffBoardPlayers(oldFile: RankingFile | null, newFile: RankingFile | null): Set<number> {
   const affected = new Set<number>();
+  const sig = (e: { rank: number; points: number; singlesBest?: number; singlesTitle?: string | null }) =>
+    `${e.rank}:${e.points}:${e.singlesBest ?? 0}:${e.singlesTitle ?? ''}`;
   const oldBy = new Map<number, string>();
   for (const e of oldFile?.entries ?? []) {
-    if (typeof e.playerId === 'number') oldBy.set(e.playerId, `${e.rank}:${e.points}`);
+    if (typeof e.playerId === 'number') oldBy.set(e.playerId, sig(e));
   }
   const newBy = new Map<number, string>();
   for (const e of newFile?.entries ?? []) {
-    if (typeof e.playerId === 'number') newBy.set(e.playerId, `${e.rank}:${e.points}`);
+    if (typeof e.playerId === 'number') newBy.set(e.playerId, sig(e));
   }
   for (const [id, v] of newBy) {
     if (oldBy.get(id) !== v) affected.add(id);
@@ -145,11 +151,15 @@ function main(): void {
     }
 
     const seasons = computeSeasonPoints(facts.entries, config);
+    // 同点の並び替えに使うシングルス best-1（採点はダブルスのみ・2026-07-11）。
+    const singlesBest = singlesBestBySeason(facts.entries, config);
     for (const s of seasons) {
       if (years && !years.has(s.year)) continue;
       if (s.points <= 0) continue;
       const key = `${s.year}\t${s.discipline}\t${s.gender}`;
       const seasonTeam = teamBySeason.get(key) ?? facts.currentTeam;
+      // シングルスは種目を跨ぐが男女は一致する分だけ参照する。
+      const sb = singlesBest.get(`${s.year}\t${s.gender}`);
       const arr = boards.get(key) ?? [];
       arr.push({
         playerId: facts.playerId,
@@ -157,6 +167,8 @@ function main(): void {
         playerName: facts.displayName,
         team: seasonTeam ?? null,
         points: s.points,
+        singlesBest: sb?.value ?? 0,
+        singlesTitle: sb?.title ?? null,
       });
       boards.set(key, arr);
     }
@@ -168,11 +180,13 @@ function main(): void {
   const rankingAffected = new Set<number>();
   let written = 0;
   for (const [key, rows] of boards) {
-    // 表示順は points 降順（同点は playerId 昇順で決定的に）。
-    rows.sort((a, b) => b.points - a.points || a.playerId - b.playerId);
+    // 表示順は points 降順 → 同点はシングルス best-1 降順 → 決定的に playerId 昇順。
+    // ダブルス採点は不変で、同点の並び替えだけをシングルスで行う（2026-07-11）。
+    rows.sort((a, b) => b.points - a.points || b.singlesBest - a.singlesBest || a.playerId - b.playerId);
     const [yearStr, discipline, gender] = key.split('\t');
-    // #3: 標準競技順位（1224 方式）。同ポイントは同順位、次は件数分飛ばす。
-    let prevPoints: number | null = null;
+    // #3: 標準競技順位（1224 方式）。順位のタイは (points, singlesBest) が完全一致した時のみ
+    // （ダブルスもシングルス best-1 も同じ選手だけ同順位。片方でもシングルス差があれば割れる）。
+    let prevKey: string | null = null;
     let prevRank = 0;
     const out: RankingFile = {
       year: Number(yearStr),
@@ -180,8 +194,9 @@ function main(): void {
       gender,
       outOf: rows.length,
       entries: rows.map((r, i) => {
-        const rank = prevPoints !== null && r.points === prevPoints ? prevRank : i + 1;
-        prevPoints = r.points;
+        const tieKey = `${r.points}\t${r.singlesBest}`;
+        const rank = prevKey !== null && tieKey === prevKey ? prevRank : i + 1;
+        prevKey = tieKey;
         prevRank = rank;
         return {
           rank,
@@ -190,6 +205,8 @@ function main(): void {
           playerName: r.playerName,
           team: r.team,
           points: r.points,
+          singlesBest: r.singlesBest,
+          singlesTitle: r.singlesTitle,
         };
       }),
     };
