@@ -128,3 +128,9 @@ score 機能の動的データ（`matches` / `games` / `points` / `match_video_s
 - RLS、index、trigger、constraint の全体像
 - `matches.status` と `processing_status` の正式状態遷移
 - points の `result_type` の正式な語彙表
+
+## 発展候補アイデア一覧（Idea Backlog）
+
+| アイデア | 状況・目的（1行） | 詳細 |
+|---|---|---|
+| Knowledge Graphによるデータ設計・UX統合 | 発散フェーズ（2026-07-11）。選手/チーム/大会/試合の関係解決ロジックが機能ごとに重複実装されている実態を確認（`matchReverseIndex.ts`と`playerStats/reverseIndex.ts`等）。新機能=グラフ上の新ビュー追加、に寄せられないかを検討中。次の一歩は候補ビュー（対戦相手ネットワーク等）の小さな試作 | [アイデア](../raw/2026-07-11-idea-knowledge-graph-views.md) |
