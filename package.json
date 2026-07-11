@@ -46,9 +46,12 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && npm run playerstats:rankings",
+    "prebuild": "node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "check:growth": "node scripts/check-growth-analysis.mjs",
+    "rare-events:generate": "node scripts/generate-rare-events.mjs",
+    "rare-events:report": "node scripts/rare-events-report.mjs",
+    "rare-events:discover": "node scripts/rare-events-discover.mjs",
     "crawl:local-tournaments": "node scripts/crawl-local-tournaments.mjs",
     "playerstats:facts": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-facts.ts",
     "playerstats:rankings": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-rankings.ts",

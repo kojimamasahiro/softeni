@@ -10,6 +10,7 @@
 - [Score Site Link](./score-site-link.md)
 - [Score Analysis](./score-analysis.md)
 - [Score 一般公開・新機能ピボット検討](./score-general-availability.md)
+- [希少イベント検知（この大会の名場面）](./rare-events.md)
 - [Public Pages](./public-pages.md)
 - [Players Pages（選手ページ）](./players-pages.md)
 - [ランキング仕様](./ranking.md)

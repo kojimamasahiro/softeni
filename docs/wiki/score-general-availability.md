@@ -33,7 +33,7 @@ ADR-003（[score-media-tool-separation](../adr/ADR-003-score-media-tool-separati
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
-| 希少ポイント/ゲームイベント検知 → SNS/ニュース投稿 | 詳細検討済み（2026-07-11）。主対象=当事者圏、大会単位の相対評価＋ポジティブ限定カテゴリ、P0は手動投稿で即開始可能 | [アイデア](../raw/2026-07-11-idea-rare-point-event-sns.md) / [検討](../raw/2026-07-11-rare-event-sns-plan.md) |
+| 希少ポイント/ゲームイベント検知 → SNS/ニュース投稿 | **P0 実装済み**（2026-07-11）: 検知config＋収穫レポート（ハーネス）＋試合詳細ページ「この大会の名場面」＋手動投稿テンプレ生成。仕様は [rare-events.md](./rare-events.md) | [アイデア](../raw/2026-07-11-idea-rare-point-event-sns.md) / [検討](../raw/2026-07-11-rare-event-sns-plan.md) |
 | 勝敗・大会単位の希少性検知（ランキング連動） | **A系統（giant-killing）は表示接続まで完了**（2026-07-11）: 大会結果ページ自動バッジ「金星」＋結果記事素材、数字なし定性表現・champion-defeat重複抑制。残り=B系統（無敗優勝等）のP0頻度検証から | [アイデア](../raw/2026-07-11-idea-giant-killing-ranking.md) / [検討](../raw/2026-07-11-giant-killing-milestone-plan.md) |
 | データによる選手プレースタイルのプロフィール化 | 詳細検討済み（2026-07-11）。主対象=記録ユーザー・指導者。Phase 1レーダーチャート（スタイル=構成比/強さ=得点率で分離）は今すぐ可能、score CTAの中身候補 | [アイデア](../raw/2026-07-11-idea-player-style-profiling.md) / [検討](../raw/2026-07-11-player-style-profile-plan.md) |
 | ランキング較正ハーネス（バックテスト基盤） | **P1〜P4完了**（2026-07-11）。較正・国際除外・tier再分類をエンジン反映、統合Elo＋giant-killing検知を `data/ratings/` に生成（内部利用）。仕様は [ranking.md](./ranking.md)。以降は運用（監査・再較正）と公開面の判断 | [アイデア](../raw/2026-07-11-idea-ranking-calibration-harness.md) / [検討](../raw/2026-07-11-ranking-calibration-harness-plan.md) |

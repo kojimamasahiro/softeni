@@ -11,6 +11,7 @@ import YouTubeRangePlayer, { type YouTubeRangePlayerHandle } from '@/components/
 import { getBetaMatchById, getBetaTeamDisplayName, getLatestBetaMatchIds } from '@/lib/betaMatchesStatic';
 import { getGrowthTargetForSide } from '@/lib/growthAnalysis';
 import { AnalysisGuideCard, AnalysisReliability, analyzeMatch, ImprovementHint, MatchAnalysisSummary, RateMetric, TeamKey } from '@/lib/matchAnalysis';
+import { getRareEventsForMatch, type RareEvent } from '@/lib/rareEventsStatic';
 import { buildSiteUrl, getPublicMatchDetailPath, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
@@ -22,7 +23,19 @@ import { Game, Match, Point } from '../../../../types/database';
 interface PublicMatchDetailProps {
   match: Match;
   tournamentInfo: TournamentInfo | null;
+  /** この試合で起きた大会内希少イベント（scripts/generate-rare-events.mjs 生成。docs/wiki/rare-events.md） */
+  rareEvents?: RareEvent[];
 }
+
+/** 希少イベント種別の短いタグ表示（バッジ左肩）。 */
+const RARE_EVENT_KIND_TAGS: Record<RareEvent['kind'], string> = {
+  'longest-rally': '最長ラリー',
+  'service-ace': 'サービスエース',
+  'longest-deuce': '最長デュース',
+  'biggest-comeback': '逆転',
+  'longest-point-streak': '連続ポイント',
+  pattern: '希少パターン',
+};
 
 type ReviewGroup = NonNullable<ImprovementHint['reviewGroups']>[number];
 type ReviewPoint = ReviewGroup['points'][number];
@@ -97,7 +110,7 @@ const getTeamPlayerNames = (match: Match, team: TeamKey) => {
     .filter((player, index, self): player is string => Boolean(player) && self.indexOf(player) === index);
 };
 
-export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDetailProps) => {
+export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }: PublicMatchDetailProps) => {
   const router = useRouter();
   const youtubePlayerRef = useRef<YouTubeRangePlayerHandle | null>(null);
   const playerSectionRef = useRef<HTMLElement | null>(null);
@@ -1355,6 +1368,39 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo }: PublicMatchDeta
               {renderScoreboard()}
             </div>
 
+            {rareEvents.length > 0 && (
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-900/20">
+                <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">この大会の名場面</h2>
+                <p className="mt-1 text-xs text-amber-800/80 dark:text-amber-300/80">
+                  記録したポイント列から検知した、この大会の中で希少なプレーがこの試合に含まれています。
+                </p>
+                <div className="mt-3 grid gap-2">
+                  {rareEvents.map((event) => (
+                    <button
+                      key={`${event.kind}-${event.pointId}`}
+                      type="button"
+                      onClick={() =>
+                        scrollToPoint(event.gameNumber, event.pointId, {
+                          playVideo: true,
+                        })
+                      }
+                      className="flex w-full flex-wrap items-center gap-2 rounded bg-surface px-3 py-2 text-left text-sm hover:bg-bg-subtle"
+                    >
+                      <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-900/50 dark:text-amber-200">
+                        {RARE_EVENT_KIND_TAGS[event.kind]}
+                      </span>
+                      <span className="font-medium text-text">{event.label}</span>
+                      <span className="text-xs text-text-muted">
+                        第{event.gameNumber}ゲーム #{event.pointNumber}
+                        {event.videoUrl ? '（タップで動画再生）' : ''}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-2 text-[10px] text-amber-800/70 dark:text-amber-300/70">※{rareEvents[0].scopeNote}</p>
+              </div>
+            )}
+
             {resultViewModel.matchOverview.decisiveMoments.length > 0 && (
               <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-700/40">
                 <h2 className="text-sm font-semibold text-text">勝敗を分けた局面候補</h2>
@@ -2072,6 +2118,8 @@ export const getPublicMatchDetailStaticProps: GetStaticProps<PublicMatchDetailPr
       props: {
         match,
         tournamentInfo,
+        // 大会内希少イベント（無ければ空配列）。生成: scripts/generate-rare-events.mjs
+        rareEvents: getRareEventsForMatch(matchId),
       },
     };
   } catch (error) {
