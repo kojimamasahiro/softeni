@@ -78,8 +78,10 @@ for (const m of matches) {
     upsets.push({
       year: m.year,
       tournamentId: m.tid,
+      categoryId: m.categoryId,
       discipline: m.discipline,
       gender: m.gender,
+      round: m.round,
       winners: winSide.map((p) => ({ name: p, rating: Math.round(getR(p)) })),
       losers: loseSide.map((p) => ({ name: p, rating: Math.round(getR(p)) })),
       expectedWinProb: Math.round(winnerProb * 1000) / 1000,

@@ -13,7 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { getChampionMilestones, type MilestoneEvent } from './milestones';
+import { getChampionMilestones, getGiantKillings, type MilestoneEvent } from './milestones';
 import {
   buildParticipantMap,
   getHistoricalWinners,
@@ -1132,7 +1132,10 @@ function buildCategoryBlock(
 
   if (type === 'result') {
     const ms = getChampionMilestones(tournamentId, categoryId, year);
-    milestones = (ms?.events ?? []).map((e) => ({
+    // giant-killing（金星）も結果記事の素材に含める（記事は human-in-the-loop なので
+    // 敗者記名のトーンは承認時に人が確認できる）。
+    const giantKillings = getGiantKillings(tournamentId, categoryId, year);
+    milestones = [...(ms?.events ?? []), ...giantKillings].map((e) => ({
       kind: e.kind,
       label: e.label,
       confidence: e.confidence,

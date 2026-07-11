@@ -16,7 +16,7 @@ import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import PageLayout from '@/components/PageLayout';
-import { getChampionDefeat, getChampionMilestones } from '@/lib/milestones';
+import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
@@ -647,9 +647,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
       targetYear: targetYearNum,
     });
     const championMs = getChampionMilestones(tournamentId, categoryId, targetYearNum, hw);
-    const defeat = getChampionDefeat(tournamentId, categoryId, targetYearNum, hw);
-    // 重要度順: repeat-title / first-title（getChampionMilestones で整列済み）→ champion-defeat。
-    const events = [...(championMs?.events ?? []), ...(defeat ? [defeat] : [])];
+    const giantKillings = getGiantKillings(tournamentId, categoryId, targetYearNum);
+    // 前回王者撃破が金星と同一試合の場合は金星を優先（二重表示の抑制）。
+    const defeat = suppressChampionDefeatIfDuplicate(
+      getChampionDefeat(tournamentId, categoryId, targetYearNum, hw),
+      giantKillings,
+    );
+    // 重要度順: repeat-title / first-title（getChampionMilestones で整列済み）→ giant-killing → champion-defeat。
+    const events = [...(championMs?.events ?? []), ...giantKillings, ...(defeat ? [defeat] : [])];
     for (const e of events) {
       contextMilestones.push({
         kind: e.kind,

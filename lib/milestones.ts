@@ -26,6 +26,7 @@ import {
   type HistoricalWinnersBlock,
   type RepeatChampion,
 } from './tournamentRecords';
+import { getUpsets } from './ratingsUpsets';
 import { getCategoryLabel } from './utils';
 
 export type MilestoneKind =
@@ -34,6 +35,7 @@ export type MilestoneKind =
   | 'nth-title' // n回目の優勝（連覇でも初優勝でもない複数回優勝）
   | 'first-appearance' // 初出場（pending）
   | 'champion-defeat' // 王者撃破（pending）
+  | 'giant-killing' // 金星（実力指標で格上を破る。data/ratings/upsets.json 由来、2026-07-11）
   | 'career-wins' // 通算N勝の節目（pending）
   | 'best4-first'; // ベスト4初進出（pending）
 
@@ -85,10 +87,11 @@ const KIND_IMPORTANCE: Record<MilestoneKind, number> = {
   'repeat-title': 0,
   'first-title': 1,
   'nth-title': 2,
-  'champion-defeat': 3,
-  'career-wins': 4,
-  'best4-first': 5,
-  'first-appearance': 6,
+  'giant-killing': 3, // champion-defeat と同一試合なら giant-killing を優先（重複抑制は呼び出し側）
+  'champion-defeat': 4,
+  'career-wins': 5,
+  'best4-first': 6,
+  'first-appearance': 7,
 };
 
 /**
@@ -419,4 +422,58 @@ export function getChampionDefeat(
     resultLabel: `${subject.display} が${shortLabel}${round ? `（${round}）` : ''}`,
     scopeNote: DEFEAT_SCOPE_NOTE,
   };
+}
+
+const UPSET_SCOPE_NOTE = '「格上」は当サイト掲載大会分から算出した実力指標に基づく判定';
+
+/**
+ * giant-killing（金星）イベントを抽出する（2026-07-11、P4）。
+ *
+ * データ源は `data/ratings/upsets.json`（scripts/ranking/generate-ratings.mjs が時系列Elo再生の
+ * 事前レートで判定・生成。勝者の期待勝率が閾値以下の勝利、両者 established 限定）。
+ * 表示は数字なしの定性表現のみ（レート・期待勝率は非公開。2026-07-11決定）。
+ *
+ * - 試合の勝敗は確定事実だが、「格上」認定は内部実力指標に依存するため scopeNote を添える。
+ * - champion-defeat と同一試合（勝者が同じ）の場合は giant-killing を優先し、呼び出し側で
+ *   champion-defeat を抑制する（suppressChampionDefeatIfDuplicate を使う）。
+ */
+export function getGiantKillings(tournamentId: string, categoryId: string, targetYear: number): MilestoneEvent[] {
+  const upsets = getUpsets(tournamentId, categoryId, targetYear);
+  return upsets.map((u) => {
+    const winnerNames = u.winners.map((w) => w.name);
+    const display = winnerNames.join('・');
+    const beaten = u.losers.map((l) => l.name).join('・');
+    const round = u.round ?? '';
+    const shortLabel = `格上の ${beaten} を破る金星`;
+    return {
+      kind: 'giant-killing' as const,
+      subject: { players: winnerNames, teams: [], display },
+      tournamentId,
+      categoryId,
+      year: targetYear,
+      detail: { beaten, ...(round ? { round } : {}) },
+      confidence: 'confirmed' as const,
+      label: `${display} が${shortLabel}${round ? `（${round}）` : ''}`,
+      shortLabel,
+      resultLabel: `${display} が${shortLabel}${round ? `（${round}）` : ''}`,
+      scopeNote: UPSET_SCOPE_NOTE,
+    };
+  });
+}
+
+/**
+ * champion-defeat が giant-killing と同一試合（勝者の選手名集合が一致）の場合に
+ * champion-defeat を落とす重複抑制。前回王者は多くの場合レート上位でもあるため、
+ * 同じ勝利が「王者撃破」と「金星」で二重表示されるのを防ぐ（giant-killing を優先）。
+ */
+export function suppressChampionDefeatIfDuplicate(
+  defeat: MilestoneEvent | null,
+  giantKillings: MilestoneEvent[],
+): MilestoneEvent | null {
+  if (!defeat) return null;
+  const defeatWinners = new Set(defeat.subject.players);
+  const dup = giantKillings.some(
+    (g) => g.subject.players.length === defeatWinners.size && g.subject.players.every((p) => defeatWinners.has(p)),
+  );
+  return dup ? null : defeat;
 }

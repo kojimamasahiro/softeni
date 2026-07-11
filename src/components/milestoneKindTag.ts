@@ -23,6 +23,7 @@ const KIND_TAG: Record<string, MilestoneKindTagInfo> = {
   'first-title': { text: '初優勝', className: 'bg-emerald-600 text-white dark:bg-emerald-700' },
   'nth-title': { text: '優勝', className: 'bg-sky-600 text-white dark:bg-sky-700' },
   'champion-defeat': { text: '王者撃破', className: 'bg-rose-600 text-white dark:bg-rose-700' },
+  'giant-killing': { text: '金星', className: 'bg-orange-600 text-white dark:bg-orange-700' },
   'career-wins': { text: '節目', className: 'bg-violet-600 text-white dark:bg-violet-700' },
   'best4-first': { text: 'ベスト4初', className: 'bg-teal-600 text-white dark:bg-teal-700' },
   'first-appearance': { text: '初出場', className: 'bg-gray-600 text-white dark:bg-gray-700' },

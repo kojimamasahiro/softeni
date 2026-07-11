@@ -69,7 +69,7 @@ type MilestoneKind =
 | **P0** | 頻度検証スクリプトを既存全データに実行、カテゴリ取捨選択 | なし（今すぐ可能） |
 | **P1** | B系統 3種（perfect-title / title-streak-gap / first-region）を milestone エンジンに追加。大会ページ・選手ページ・記事に既存経路で自動露出 | P0 |
 | **P2** | `win-streak`（analysis.json の時系列拡張と同時） | P1 |
-| **P3** | A系統 giant-killing 投入 | **判定基盤は実装済み（2026-07-11）**。較正ハーネスP1〜P4の完了により、`data/ratings/upsets.json`（期待勝率0.15以下・established両者限定・62件）が生成されている。残るは milestone エンジンへの `'giant-killing'` kind 追加と表示・記事化の判断（敗者記名を伴うため人のレビュー前提）。詳細: [ranking-calibration-harness-plan §10 P4](./2026-07-11-ranking-calibration-harness-plan.md) |
+| **P3** | A系統 giant-killing 投入 | **完了（2026-07-11、表示接続まで）**。判定基盤=`data/ratings/upsets.json`（期待勝率0.15以下・established両者限定・62件）。ユーザー決定: 露出面は champion-defeat と同等（大会結果ページ自動バッジ＋結果記事素材）、ラベルは数字なし定性表現（タグ「金星」、「◯◯ が格上の ◯◯ を破る金星」+scopeNote）。実装: `lib/ratingsUpsets.ts`・`lib/milestones.ts`（`getGiantKillings` / `suppressChampionDefeatIfDuplicate`）・大会結果ページ・`lib/newsArticle.ts`（result記事）・kindタグ。詳細: [ranking-calibration-harness-plan §10 P4](./2026-07-11-ranking-calibration-harness-plan.md) |
 | **P4** | 姉妹案の発信キューに milestone イベントを合流（「大会の記録的結果」＋「試合内の劇的瞬間」を同一キューでレビュー・投稿） | 姉妹案P2 |
 
 ### 3.5 KPI

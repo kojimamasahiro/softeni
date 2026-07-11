@@ -212,8 +212,10 @@ export function buildReplay(options = {}) {
         sortKey: [year, date, tid, rel, depth],
         year,
         tid,
+        categoryId: base, // 例: doubles-none-boys（milestone 連携用）
         discipline,
         gender,
+        round: mt.round ?? null,
         sideA,
         sideB,
         winner: w === ens[0] ? 0 : 1,

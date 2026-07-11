@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-11T06:26:40.740Z",
+ "generatedAt": "2026-07-11T08:13:40.483Z",
  "_readme": "giant-killing イベント（内部生成物・公開未接続）。勝者の事前期待勝率が閾値以下の勝利。時系列リプレイの更新前レートで判定（先読みなし）。milestone エンジン接続・公開判断は docs/raw/2026-07-11-giant-killing-milestone-plan.md 参照。",
  "params": {
   "maxExpectedWinProb": 0.15,
@@ -12,8 +12,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "4回戦",
    "winners": [
     {
      "name": "髙濵美厘",
@@ -32,8 +34,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "3回戦",
    "winners": [
     {
      "name": "佐藤蒼真",
@@ -52,8 +56,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-senbatsu",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "準々決勝",
    "winners": [
     {
      "name": "片岡暁紀",
@@ -80,8 +86,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-senbatsu",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": null,
    "winners": [
     {
      "name": "庄司琴里",
@@ -108,8 +116,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-mixed",
+   "categoryId": "doubles-none-mixed",
    "discipline": "doubles",
    "gender": "mixed",
+   "round": null,
    "winners": [
     {
      "name": "濵田祐",
@@ -136,8 +146,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "6回戦",
    "winners": [
     {
      "name": "塚本光琉",
@@ -156,8 +168,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-mixed",
+   "categoryId": "doubles-none-mixed",
    "discipline": "doubles",
    "gender": "mixed",
+   "round": "1回戦",
    "winners": [
     {
      "name": "大辻伸彬",
@@ -184,8 +198,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-mixed",
+   "categoryId": "doubles-none-mixed",
    "discipline": "doubles",
    "gender": "mixed",
+   "round": "1回戦",
    "winners": [
     {
      "name": "庄司琴里",
@@ -212,8 +228,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "2回戦",
    "winners": [
     {
      "name": "浦川優生",
@@ -232,8 +250,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "3回戦",
    "winners": [
     {
      "name": "樋口大翔",
@@ -252,8 +272,10 @@
   {
    "year": 2026,
    "tournamentId": "west-japan",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "3回戦",
    "winners": [
     {
      "name": "石川仁貴",
@@ -280,8 +302,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-senbatsu",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": null,
    "winners": [
     {
      "name": "松井文音",
@@ -308,8 +332,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "2回戦",
    "winners": [
     {
      "name": "大武姫菜",
@@ -328,8 +354,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "3回戦",
    "winners": [
     {
      "name": "高木己想",
@@ -348,8 +376,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "4回戦",
    "winners": [
     {
      "name": "竹村瑠稀愛",
@@ -368,8 +398,10 @@
   {
    "year": 2026,
    "tournamentId": "west-japan",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "準々決勝",
    "winners": [
     {
      "name": "江口咲礼紗",
@@ -396,8 +428,10 @@
   {
    "year": 2026,
    "tournamentId": "highschool-japan-cup",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "準決勝",
    "winners": [
     {
      "name": "牧優花",
@@ -424,8 +458,10 @@
   {
    "year": 2026,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "3回戦",
    "winners": [
     {
      "name": "浅野琉愛",
@@ -444,8 +480,10 @@
   {
    "year": 2025,
    "tournamentId": "yonex-hokkaido-international",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": null,
    "winners": [
     {
      "name": "高月拓磨",
@@ -472,8 +510,10 @@
   {
    "year": 2025,
    "tournamentId": "asian-games-qualifier",
+   "categoryId": "doubles-tournament-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "2回戦",
    "winners": [
     {
      "name": "林佑太郎",
@@ -492,8 +532,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-junior",
+   "categoryId": "singles-u20-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": null,
    "winners": [
     {
      "name": "石灘蒼瑛",
@@ -512,8 +554,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "2回戦",
    "winners": [
     {
      "name": "竹山千尋",
@@ -532,8 +576,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "5回戦",
    "winners": [
     {
      "name": "大和美月",
@@ -552,8 +598,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-university",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "4回戦",
    "winners": [
     {
      "name": "庭田咲月",
@@ -572,8 +620,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-university",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "3回戦",
    "winners": [
     {
      "name": "伊藤幹太",
@@ -592,8 +642,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "6回戦",
    "winners": [
     {
      "name": "岩田皓平",
@@ -612,8 +664,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "5回戦",
    "winners": [
     {
      "name": "鈴木愛香",
@@ -632,8 +686,10 @@
   {
    "year": 2025,
    "tournamentId": "west-japan",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "4回戦",
    "winners": [
     {
      "name": "樋口大翔",
@@ -660,8 +716,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-mixed",
+   "categoryId": "doubles-none-mixed",
    "discipline": "doubles",
    "gender": "mixed",
+   "round": "3回戦",
    "winners": [
     {
      "name": "北野敦貴",
@@ -688,8 +746,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-junior",
+   "categoryId": "singles-u20-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "準決勝",
    "winners": [
     {
      "name": "佐藤愛",
@@ -708,8 +768,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-mixed",
+   "categoryId": "doubles-none-mixed",
    "discipline": "doubles",
    "gender": "mixed",
+   "round": "3回戦",
    "winners": [
     {
      "name": "大友紅実",
@@ -736,8 +798,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-junior",
+   "categoryId": "singles-u20-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": null,
    "winners": [
     {
      "name": "三田勇人",
@@ -756,8 +820,10 @@
   {
    "year": 2025,
    "tournamentId": "asian-championship-qualifier",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": null,
    "winners": [
     {
      "name": "小松﨑茉代",
@@ -784,8 +850,10 @@
   {
    "year": 2025,
    "tournamentId": "yonex-hokkaido-international",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": null,
    "winners": [
     {
      "name": "岩城爽太",
@@ -812,8 +880,10 @@
   {
    "year": 2025,
    "tournamentId": "asian-games-qualifier",
+   "categoryId": "doubles-tournament-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "1回戦",
    "winners": [
     {
      "name": "伊藤陽聖",
@@ -832,8 +902,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "3回戦",
    "winners": [
     {
      "name": "浅見今日子",
@@ -852,8 +924,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "準々決勝",
    "winners": [
     {
      "name": "橋場柊一郎",
@@ -880,8 +954,10 @@
   {
    "year": 2025,
    "tournamentId": "west-japan",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "4回戦",
    "winners": [
     {
      "name": "松田蒼生",
@@ -908,8 +984,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "4回戦",
    "winners": [
     {
      "name": "佐藤心美",
@@ -936,8 +1014,10 @@
   {
    "year": 2025,
    "tournamentId": "east-japan",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "5回戦",
    "winners": [
     {
      "name": "五十嵐美結",
@@ -964,8 +1044,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-university",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "2回戦",
    "winners": [
     {
      "name": "中島那菜",
@@ -984,8 +1066,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "6回戦",
    "winners": [
     {
      "name": "佐藤愛",
@@ -1004,8 +1088,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "2回戦",
    "winners": [
     {
      "name": "長谷歩奈",
@@ -1024,8 +1110,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-junior",
+   "categoryId": "doubles-u20-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "準決勝",
    "winners": [
     {
      "name": "佐藤日香莉",
@@ -1052,8 +1140,10 @@
   {
    "year": 2025,
    "tournamentId": "asian-championship-qualifier",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": null,
    "winners": [
     {
      "name": "松本炎",
@@ -1080,8 +1170,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "5回戦",
    "winners": [
     {
      "name": "房野紗千",
@@ -1100,8 +1192,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "2回戦",
    "winners": [
     {
      "name": "椎名萌花",
@@ -1128,8 +1222,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "4回戦",
    "winners": [
     {
      "name": "佐藤愛",
@@ -1148,8 +1244,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "2回戦",
    "winners": [
     {
      "name": "白井颯",
@@ -1176,8 +1274,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-indoor",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": null,
    "winners": [
     {
      "name": "岩元愛美",
@@ -1204,8 +1304,10 @@
   {
    "year": 2025,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "3回戦",
    "winners": [
     {
      "name": "尾崎瀬里奈",
@@ -1224,8 +1326,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-junior",
+   "categoryId": "singles-u20-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": null,
    "winners": [
     {
      "name": "向山せら",
@@ -1244,8 +1348,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-junior",
+   "categoryId": "singles-u20-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "1回戦",
    "winners": [
     {
      "name": "吉木理彩",
@@ -1264,8 +1370,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-junior",
+   "categoryId": "singles-u20-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": null,
    "winners": [
     {
      "name": "野中翔太",
@@ -1284,8 +1392,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "4回戦",
    "winners": [
     {
      "name": "黒須柾暉",
@@ -1312,8 +1422,10 @@
   {
    "year": 2024,
    "tournamentId": "highschool-japan-cup",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "1回戦",
    "winners": [
     {
      "name": "竹田羽花",
@@ -1332,8 +1444,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-university",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "1回戦",
    "winners": [
     {
      "name": "永江孝二郎",
@@ -1352,8 +1466,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "3回戦",
    "winners": [
     {
      "name": "三浦菜留美",
@@ -1380,8 +1496,10 @@
   {
    "year": 2024,
    "tournamentId": "world-championship-qualifier",
+   "categoryId": "doubles-none-boys",
    "discipline": "doubles",
    "gender": "boys",
+   "round": "2回戦",
    "winners": [
     {
      "name": "清水駿",
@@ -1408,8 +1526,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-university",
+   "categoryId": "singles-none-boys",
    "discipline": "singles",
    "gender": "boys",
+   "round": "2回戦",
    "winners": [
     {
      "name": "樋口生真",
@@ -1428,8 +1548,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-singles",
+   "categoryId": "singles-none-girls",
    "discipline": "singles",
    "gender": "girls",
+   "round": "準々決勝",
    "winners": [
     {
      "name": "天間麗奈",
@@ -1448,8 +1570,10 @@
   {
    "year": 2024,
    "tournamentId": "zennihon-championship",
+   "categoryId": "doubles-none-girls",
    "discipline": "doubles",
    "gender": "girls",
+   "round": "4回戦",
    "winners": [
     {
      "name": "赤川友里奈",
