@@ -139,7 +139,8 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
   国際大会参加者（コリアカップ等）は解決できない。手動対応表 `data/tournaments/participant-aliases.json` を
   フォールバックとして `reverseIndex` / `facts` / `legacyAnalysis` / 結果ページの `getStaticProps` に配線した。
   詳細は [data-import.md](./data-import.md)「国際大会（ローマ字表記のみの参加者）の選手同定」。
-- **ランキング（2026-07-02 修正）**: 年度別順位表の `playerKey` は「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
+- **ランキング（2026-07-02 修正）**: 仕様全体のまとめは [ranking.md](./ranking.md)（計算式・tier・除外・較正運用を集約、2026-07-11）。
+  年度別順位表の `playerKey` は「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
   同ポイントは標準競技順位（1224 方式・同点同順位）。**男女別に分離**（2026-07-02。混合順位表は競技慣行に合わないため。
   出力は `rankings/{year}-{discipline}-{gender}.json`、`RankingPoint.gender` 追加、`engineVersion` 1.1.0 へ）。
   全体表示は [/rankings ページ](./public-pages.md)（上位100位・年度/種目/男女切替）。

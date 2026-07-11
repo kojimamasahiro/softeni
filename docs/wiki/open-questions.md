@@ -157,10 +157,24 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 
 - 不戦勝 / bye は独立表現を持たず `retired:true` で登録され、途中棄権と判別不能（retired 451 件中 約84% が「勝者=規定ゲーム到達・敗者=0」の既定スコア）。ルールは上記に確定反映。
 
+決定で解消（2026-07-11、ランキング較正ハーネスによる。詳細は
+[docs/raw/2026-07-11-ranking-calibration-harness-plan.md](../raw/2026-07-11-ranking-calibration-harness-plan.md)）:
+
+- tier の微調整 → バックテスト（27,199試合・予測的中率）で較正。**外国選手参加の国際大会
+  （korea-cup・平和カップひろしま）はランキング集計から除外**（`excludeTournaments`）、
+  **国際予選3つ＋ルーセント東京インドアは major、ヨネックス北海道は national に再分類**
+  （`tierOverrides`。旧 resolveTier では国際系→local に落ちておりミスプライシングだった）。
+  再生成後の前年度スナップショット的中率 67.6%→68.1%。
+- 順位係数・topN → グリッドサーチで flat係数＋topN=2 が的中率+1pt と判明したが、実績表彰としての
+  性格を変えるため**現行維持を決定**（予測は Elo 副指標に任せる役割分担）。
+- Elo の K 値 → K/scale 比 0.16 が Brier 最良（kByTier {80,64,48} を config 反映済み。enabled は
+  false のまま）。
+
 残る Open Question（実装フェーズで詰める）:
 
-- `ranking-config.json` の tier・順位係数・追加統計の閾値の初期値を運用開始後に実データで微調整する。
-- ランキング副指標（Elo 系レーティング）を将来採用する場合の K 値・ダブルスの配分・provisional 扱い。
+- ランキング副指標（Elo 系レーティング）の有効化（P3）: ダブルスの配分・provisional 扱い・表示面の設計。
+- lucent-tokyo-indoor / yonex-hokkaido-international を index.json に掲載するか（tierOverrides は
+  非掲載でも機能するが、大会ページとしての露出は別判断）。
 - **同姓同名の人物別 id 分離 → 当面は「融合を許容」で決定（2026-07-02）**:
   `data/players/index.json` は「1 名前 = 1 数値 id」しか持たず、同姓同名の別人物を numeric id で分離できない
   （実測: index.json に nameKey 重複は 0 組。一方、同一カテゴリ内に同姓同名が別 participant.id で並ぶ実データが 30 件、

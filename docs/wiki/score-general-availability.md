@@ -33,8 +33,11 @@ ADR-003（[score-media-tool-separation](../adr/ADR-003-score-media-tool-separati
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
-| 希少ポイント/ゲームイベント検知 → SNS/ニュース投稿 | メジャー大会をscore機能で手動記録し、珍しいプレーを動画リンク付きで発信。普及エンジンとしての活用 | [docs/raw/2026-07-11-idea-rare-point-event-sns.md](../raw/2026-07-11-idea-rare-point-event-sns.md) |
-| 勝敗・大会単位の希少性検知（ランキング連動） | 既存の大会結果データだけで完結。milestoneエンジンの拡張＋ジャイアントキリング検知はランキング機能の精度向上が前提 | [docs/raw/2026-07-11-idea-giant-killing-ranking.md](../raw/2026-07-11-idea-giant-killing-ranking.md) |
+| 希少ポイント/ゲームイベント検知 → SNS/ニュース投稿 | 詳細検討済み（2026-07-11）。主対象=当事者圏、大会単位の相対評価＋ポジティブ限定カテゴリ、P0は手動投稿で即開始可能 | [アイデア](../raw/2026-07-11-idea-rare-point-event-sns.md) / [検討](../raw/2026-07-11-rare-event-sns-plan.md) |
+| 勝敗・大会単位の希少性検知（ランキング連動） | 詳細検討済み（2026-07-11）。主対象=既存読者。B系統milestone拡張を先行（P0=頻度検証）、giant-killingはランキング較正後 | [アイデア](../raw/2026-07-11-idea-giant-killing-ranking.md) / [検討](../raw/2026-07-11-giant-killing-milestone-plan.md) |
+| データによる選手プレースタイルのプロフィール化 | 詳細検討済み（2026-07-11）。主対象=記録ユーザー・指導者。Phase 1レーダーチャート（スタイル=構成比/強さ=得点率で分離）は今すぐ可能、score CTAの中身候補 | [アイデア](../raw/2026-07-11-idea-player-style-profiling.md) / [検討](../raw/2026-07-11-player-style-profile-plan.md) |
+| ランキング較正ハーネス（バックテスト基盤） | **P1+P2完了、エンジン反映済み**（2026-07-11、`scripts/ranking/backtest.mjs`）。K較正（kByTier 2倍）・国際大会除外（excludeTournaments）・精鋭大会再分類（tierOverrides→major）を config 反映し rankings 再生成（的中率67.6→68.1%）。係数は現行維持を決定。次はP3 Elo有効化 | [アイデア](../raw/2026-07-11-idea-ranking-calibration-harness.md) / [検討](../raw/2026-07-11-ranking-calibration-harness-plan.md) |
+| score記録の半自動化（動画からのポイント抽出支援） | 発散フェーズ（2026-07-11）。ポイントデータは外部に存在せず、方向は記録コスト削減。音声区切り検出→スコアボードOCRの段階案。権利リスク要整理 | [アイデア](../raw/2026-07-11-idea-score-recording-semiauto.md) |
 
 背景の調査・検討経緯（市場調査、記録文化比較、パイロット分析）は
 [docs/raw/2026-07-11-score-general-availability-research.md](../raw/2026-07-11-score-general-availability-research.md)。

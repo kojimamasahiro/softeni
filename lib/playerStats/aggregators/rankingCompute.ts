@@ -25,12 +25,14 @@ export function placementCoefficient(placement: PlayerEntryFact['placement'], co
   }
 }
 
-/** 1 出場のスコア = tier重み × 順位係数。 */
+/** 1 出場のスコア = tier重み × 順位係数。tierOverrides があれば resolveTier より優先。 */
 export function entryScore(entry: PlayerEntryFact, config: PlayerStatsConfig): number {
-  const tier = resolveTier({
-    isMajorTitle: entry.isMajorTitle,
-    isNational: entry.isNational,
-  });
+  const tier =
+    config.ranking.tierOverrides?.[entry.tournamentId] ??
+    resolveTier({
+      isMajorTitle: entry.isMajorTitle,
+      isNational: entry.isNational,
+    });
   const weight = config.ranking.tier[tier];
   return weight * placementCoefficient(entry.placement, config);
 }
@@ -53,10 +55,14 @@ export interface SeasonPoints {
 export function computeSeasonPoints(entries: PlayerEntryFact[], config: PlayerStatsConfig): SeasonPoints[] {
   const disciplines = new Set(config.ranking.disciplines);
   const topN = config.ranking.topNTournamentsPerSeason;
+  // 除外大会（外国選手参加の国際大会等）はシーズンポイントに算入しない
+  // （docs/raw/2026-07-11-ranking-calibration-harness-plan.md §9.1）。
+  const excluded = new Set(config.ranking.excludeTournaments ?? []);
   const groups = new Map<string, number[]>();
 
   for (const e of entries) {
     if (!disciplines.has(e.category)) continue;
+    if (excluded.has(e.tournamentId)) continue;
     const key = `${e.year}\t${e.category}\t${e.gender}`;
     const arr = groups.get(key) ?? [];
     arr.push(entryScore(e, config));

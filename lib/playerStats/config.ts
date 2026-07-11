@@ -7,6 +7,8 @@
 import fs from 'fs';
 import path from 'path';
 
+export type TierName = 'major' | 'national' | 'local';
+
 export interface RankingConfig {
   topNTournamentsPerSeason: number;
   tier: { major: number; national: number; local: number };
@@ -18,6 +20,19 @@ export interface RankingConfig {
     entry: number;
   };
   disciplines: string[];
+  /**
+   * 大会単位の tier 上書き（resolveTier より優先）。
+   * レート由来の大会強度監査（scripts/ranking/backtest.mjs --rated-tier）で検出した
+   * ミスプライシングを、静的 tier の説明可能性を保ったまま修正する運用ループ用
+   * （docs/raw/2026-07-11-ranking-calibration-harness-plan.md §9.1）。
+   */
+  tierOverrides: Record<string, TierName>;
+  /**
+   * ランキング集計（シーズンポイント）から除外する大会。
+   * 外国選手が参加しローマ字表記の名寄せ・実力評価の信頼性が担保できない
+   * 真の国際大会（generationId='international'）を想定。
+   */
+  excludeTournaments: string[];
   rating: {
     enabled: boolean;
     initial: number;
@@ -55,6 +70,8 @@ export const DEFAULT_CONFIG: PlayerStatsConfig = {
       entry: 0.1,
     },
     disciplines: ['singles', 'doubles'],
+    tierOverrides: {},
+    excludeTournaments: [],
     rating: {
       enabled: false,
       initial: 1500,
@@ -101,6 +118,18 @@ export function loadRankingConfig(root?: string): PlayerStatsConfig {
     raw = null;
   }
   cached = raw ? deepMerge(DEFAULT_CONFIG, raw) : DEFAULT_CONFIG;
+  // deepMerge は base 側のキーだけを走査するため、既定が空オブジェクトの tierOverrides は
+  // マージ結果が常に {} になる。JSON の値を明示的に採用する。
+  const rawRanking = (raw as { ranking?: { tierOverrides?: Record<string, TierName> } } | null)?.ranking;
+  if (rawRanking?.tierOverrides && typeof rawRanking.tierOverrides === 'object') {
+    // "_note" 等のメタキーは除外し、有効な tier 値のみ採用する
+    const overrides: Record<string, TierName> = {};
+    for (const [key, value] of Object.entries(rawRanking.tierOverrides)) {
+      if (key.startsWith('_')) continue;
+      if (value === 'major' || value === 'national' || value === 'local') overrides[key] = value;
+    }
+    cached = { ...cached, ranking: { ...cached.ranking, tierOverrides: overrides } };
+  }
   return cached;
 }
 

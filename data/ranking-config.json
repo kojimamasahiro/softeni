@@ -18,11 +18,20 @@
       "entry": 0.1
     },
     "disciplines": ["singles", "doubles"],
+    "tierOverrides": {
+      "_note": "大会単位のtier上書き（resolveTierより優先）。バックテスト監査で検出したミスプライシングの修正（2026-07-11、docs/raw/2026-07-11-ranking-calibration-harness-plan.md §9.1。除外+major再分類でholdout的中率+0.9pt）。国際予選3つは全員国内選手を確認済み。lucent/yonex-hokkaidoはindex.json非掲載だがdetailsあり",
+      "world-championship-qualifier": "major",
+      "asian-championship-qualifier": "major",
+      "asian-games-qualifier": "major",
+      "lucent-tokyo-indoor": "major",
+      "yonex-hokkaido-international": "national"
+    },
+    "excludeTournaments": ["international-korea-cup", "international-hiroshima-peacecup"],
     "rating": {
-      "_note": "副指標の Elo 系レーティング（将来）。当面は無効。",
+      "_note": "副指標の Elo 系レーティング（将来）。当面は無効。kByTier はバックテスト較正済み（2026-07-11、K/scale比0.16がBrier最良。docs/raw/2026-07-11-ranking-calibration-harness-plan.md §8）。",
       "enabled": false,
       "initial": 1500,
-      "kByTier": { "major": 40, "national": 32, "local": 24 },
+      "kByTier": { "major": 80, "national": 64, "local": 48 },
       "provisionalMatches": 10
     }
   },

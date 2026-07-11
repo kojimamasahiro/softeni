@@ -12,6 +12,7 @@
 - [Score 一般公開・新機能ピボット検討](./score-general-availability.md)
 - [Public Pages](./public-pages.md)
 - [Players Pages（選手ページ）](./players-pages.md)
+- [ランキング仕様](./ranking.md)
 - [Highschool Pages（高校カテゴリ）](./highschool.md)
 - [SEO（カニバリ/重複制御）](./seo.md)
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md)

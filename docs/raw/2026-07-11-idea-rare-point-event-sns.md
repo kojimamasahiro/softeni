@@ -80,3 +80,10 @@ score機能の試合記録データを、単なる個人向け分析ツールと
 - [docs/adr/ADR-003-score-media-tool-separation.md](../adr/ADR-003-score-media-tool-separation.md)
 - [docs/adr/ADR-004-growth-analysis-visibility-consent.md](../adr/ADR-004-growth-analysis-visibility-consent.md)
 - [docs/adr/ADR-005-news-context-block-architecture.md](../adr/ADR-005-news-context-block-architecture.md)
+
+## 詳細検討（2026-07-11 追記）
+
+企画（ターゲット分析・投稿設計）＋実装構成（スキーマ・パイプライン・P0〜P3フェーズ）を
+[2026-07-11-rare-event-sns-plan.md](./2026-07-11-rare-event-sns-plan.md) に作成した。
+要点: 主対象は当事者圏（選手・保護者・チームメイト）、カテゴリは「大会単位の相対評価＋ポジティブ限定」、
+P0は生成スクリプト＋手動投稿で次の記録大会から開始可能。
