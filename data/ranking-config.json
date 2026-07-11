@@ -32,7 +32,12 @@
       "enabled": true,
       "initial": 1500,
       "kByTier": { "major": 80, "national": 64, "local": 48 },
-      "provisionalMatches": 10
+      "provisionalMatches": 10,
+      "upset": {
+        "_note": "giant-killing検知（2026-07-11、P4）。勝者の事前期待勝率がmaxExpectedWinProb以下の勝利をupsetとして data/ratings/upsets.json に出力。0.15で候補プール約33件/年、0.10以下は特大（約14件/年）。両者established（provisionalMatches以上）限定。",
+        "maxExpectedWinProb": 0.15,
+        "requireEstablished": true
+      }
     }
   },
   "stats": {

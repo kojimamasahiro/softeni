@@ -14,6 +14,9 @@
  *  - 除外・tierOverrides は本 config を常時ミラー（replayData.mjs）
  *  - 名前ベース同定（同姓同名の融合を許容）。将来の公開接続用に playerId を join する
  *
+ * あわせて giant-killing 検知（P4）: 勝者の事前期待勝率が rating.upset.maxExpectedWinProb 以下の
+ * 勝利を upset イベントとして data/ratings/upsets.json に出力する（同一リプレイパス・先読みなし）。
+ *
  * 実行: node scripts/ranking/generate-ratings.mjs [--out data/ratings/current.json]
  *       ranking-config.json の rating.enabled=false の場合は警告して終了（--force で強制実行）
  */
@@ -44,6 +47,8 @@ const K_BY_TIER = rating.kByTier;
 const INITIAL = rating.initial;
 const SCALE = 400; // 較正は K/scale 比で実施。scale は 400 固定とし K 側で調整する
 const PROVISIONAL_MATCHES = rating.provisionalMatches;
+const UPSET_MAX_PROB = rating.upset?.maxExpectedWinProb ?? 0.15;
+const UPSET_REQUIRE_ESTABLISHED = rating.upset?.requireEstablished ?? true;
 
 // ---------- Elo 再生 ----------
 const R = new Map(); // name → rating
@@ -53,12 +58,35 @@ const LAST_YEAR = new Map(); // name → 最終出場年度
 const getR = (p) => R.get(p) ?? INITIAL;
 const getN = (p) => N.get(p) ?? 0;
 
+const upsets = []; // giant-killing イベント（事前レートで判定 = 先読みなし）
+
 for (const m of matches) {
   for (const p of [...m.sideA, ...m.sideB]) LAST_YEAR.set(p, Math.max(LAST_YEAR.get(p) ?? 0, m.year));
   if (m.retired) continue;
   const ra = m.sideA.reduce((s, p) => s + getR(p), 0) / m.sideA.length;
   const rb = m.sideB.reduce((s, p) => s + getR(p), 0) / m.sideB.length;
   const ea = 1 / (1 + 10 ** ((rb - ra) / SCALE));
+
+  // upset 判定（更新前 = 事前レート）
+  const winnerProb = m.winner === 0 ? ea : 1 - ea;
+  const established = [...m.sideA, ...m.sideB].every((p) => getN(p) >= PROVISIONAL_MATCHES);
+  if (winnerProb <= UPSET_MAX_PROB && (!UPSET_REQUIRE_ESTABLISHED || established)) {
+    const winSide = m.winner === 0 ? m.sideA : m.sideB;
+    const loseSide = m.winner === 0 ? m.sideB : m.sideA;
+    const winRating = m.winner === 0 ? ra : rb;
+    const loseRating = m.winner === 0 ? rb : ra;
+    upsets.push({
+      year: m.year,
+      tournamentId: m.tid,
+      discipline: m.discipline,
+      gender: m.gender,
+      winners: winSide.map((p) => ({ name: p, rating: Math.round(getR(p)) })),
+      losers: loseSide.map((p) => ({ name: p, rating: Math.round(getR(p)) })),
+      expectedWinProb: Math.round(winnerProb * 1000) / 1000,
+      ratingGap: Math.round(loseRating - winRating),
+    });
+  }
+
   const k = K_BY_TIER[replay.tierOfPoints(m.tid)] ?? K_BY_TIER.national;
   const delta = k * ((m.winner === 0 ? 1 : 0) - ea);
   for (const p of m.sideA) {
@@ -136,3 +164,22 @@ fs.writeFileSync(outAbs, JSON.stringify(out), 'utf-8');
 console.log(
   `[generate-ratings] wrote ${path.relative(ROOT, outAbs)} | players ${out.dataQuality.players} (established ${out.dataQuality.establishedPlayers}) | matches ${out.dataQuality.matchesReplayed}`,
 );
+
+// ---------- upsets 出力 ----------
+upsets.sort((a, b) => b.year - a.year || a.expectedWinProb - b.expectedWinProb);
+const upsetsOut = {
+  generatedAt: out.generatedAt,
+  _readme:
+    'giant-killing イベント（内部生成物・公開未接続）。勝者の事前期待勝率が閾値以下の勝利。時系列リプレイの更新前レートで判定（先読みなし）。milestone エンジン接続・公開判断は docs/raw/2026-07-11-giant-killing-milestone-plan.md 参照。',
+  params: {
+    maxExpectedWinProb: UPSET_MAX_PROB,
+    requireEstablished: UPSET_REQUIRE_ESTABLISHED,
+    provisionalMatches: PROVISIONAL_MATCHES,
+    note: 'expectedWinProb<=0.10 は特大（2025年実績で年14件程度）。0.15は候補プール（同33件程度）',
+  },
+  count: upsets.length,
+  events: upsets,
+};
+const upsetsAbs = path.join(path.dirname(outAbs), 'upsets.json');
+fs.writeFileSync(upsetsAbs, JSON.stringify(upsetsOut, null, 1), 'utf-8');
+console.log(`[generate-ratings] wrote ${path.relative(ROOT, upsetsAbs)} | upsets ${upsets.length}`);

@@ -100,6 +100,10 @@ scale 400。tierOverrides・国際大会除外はポイント式と同じ config
 homonymRisk フラグを出力に持つ。表示設計の論点（負けると下がる数字の実名公開）は
 [open-questions.md](./open-questions.md) 参照。予測的中率69.0%（ポイント式67.5%）・全選手カバー。
 
+同じリプレイパスで **giant-killing 検知**も行う: 勝者の事前期待勝率が 0.15 以下の勝利を
+`data/ratings/upsets.json` に出力（`rating.upset` で閾値設定。0.10以下は特大、両者 established 限定、
+先読みなし）。milestone エンジンへの接続・記事化は未着手（敗者記名を伴うため人のレビュー前提）。
+
 ## 決定の経緯（主要リンク）
 
 - 集計ルールの確定: [players-pages.md](./players-pages.md)「確定した集計ルール」、

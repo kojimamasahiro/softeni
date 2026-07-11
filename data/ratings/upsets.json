@@ -1,0 +1,1477 @@
+{
+ "generatedAt": "2026-07-11T06:26:40.740Z",
+ "_readme": "giant-killing イベント（内部生成物・公開未接続）。勝者の事前期待勝率が閾値以下の勝利。時系列リプレイの更新前レートで判定（先読みなし）。milestone エンジン接続・公開判断は docs/raw/2026-07-11-giant-killing-milestone-plan.md 参照。",
+ "params": {
+  "maxExpectedWinProb": 0.15,
+  "requireEstablished": true,
+  "provisionalMatches": 10,
+  "note": "expectedWinProb<=0.10 は特大（2025年実績で年14件程度）。0.15は候補プール（同33件程度）"
+ },
+ "count": 62,
+ "events": [
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "髙濵美厘",
+     "rating": 1584
+    }
+   ],
+   "losers": [
+    {
+     "name": "天間美嘉",
+     "rating": 2062
+    }
+   ],
+   "expectedWinProb": 0.06,
+   "ratingGap": 478
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "佐藤蒼真",
+     "rating": 1573
+    }
+   ],
+   "losers": [
+    {
+     "name": "松本隼",
+     "rating": 1995
+    }
+   ],
+   "expectedWinProb": 0.081,
+   "ratingGap": 421
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-senbatsu",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "片岡暁紀",
+     "rating": 2056
+    },
+    {
+     "name": "大友駿",
+     "rating": 1894
+    }
+   ],
+   "losers": [
+    {
+     "name": "矢野颯人",
+     "rating": 2439
+    },
+    {
+     "name": "内田理久",
+     "rating": 2346
+    }
+   ],
+   "expectedWinProb": 0.083,
+   "ratingGap": 418
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-senbatsu",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "庄司琴里",
+     "rating": 1645
+    },
+    {
+     "name": "原千晴",
+     "rating": 1797
+    }
+   ],
+   "losers": [
+    {
+     "name": "前田梨緒",
+     "rating": 2267
+    },
+    {
+     "name": "中谷さくら",
+     "rating": 1949
+    }
+   ],
+   "expectedWinProb": 0.097,
+   "ratingGap": 387
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-mixed",
+   "discipline": "doubles",
+   "gender": "mixed",
+   "winners": [
+    {
+     "name": "濵田祐",
+     "rating": 1797
+    },
+    {
+     "name": "生井沢日向子",
+     "rating": 1532
+    }
+   ],
+   "losers": [
+    {
+     "name": "植田璃音",
+     "rating": 2346
+    },
+    {
+     "name": "西村ひよ",
+     "rating": 1750
+    }
+   ],
+   "expectedWinProb": 0.099,
+   "ratingGap": 383
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "塚本光琉",
+     "rating": 2034
+    }
+   ],
+   "losers": [
+    {
+     "name": "矢野颯人",
+     "rating": 2396
+    }
+   ],
+   "expectedWinProb": 0.11,
+   "ratingGap": 363
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-mixed",
+   "discipline": "doubles",
+   "gender": "mixed",
+   "winners": [
+    {
+     "name": "大辻伸彬",
+     "rating": 1637
+    },
+    {
+     "name": "西山なつみ",
+     "rating": 1703
+    }
+   ],
+   "losers": [
+    {
+     "name": "高橋偲",
+     "rating": 2051
+    },
+    {
+     "name": "野本凌生",
+     "rating": 1978
+    }
+   ],
+   "expectedWinProb": 0.121,
+   "ratingGap": 345
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-mixed",
+   "discipline": "doubles",
+   "gender": "mixed",
+   "winners": [
+    {
+     "name": "庄司琴里",
+     "rating": 1656
+    },
+    {
+     "name": "佐渡宝来",
+     "rating": 1625
+    }
+   ],
+   "losers": [
+    {
+     "name": "本倉健太郎",
+     "rating": 1987
+    },
+    {
+     "name": "左近知美",
+     "rating": 1979
+    }
+   ],
+   "expectedWinProb": 0.122,
+   "ratingGap": 342
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "浦川優生",
+     "rating": 1531
+    }
+   ],
+   "losers": [
+    {
+     "name": "大村圭志朗",
+     "rating": 1867
+    }
+   ],
+   "expectedWinProb": 0.126,
+   "ratingGap": 336
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "樋口大翔",
+     "rating": 1613
+    }
+   ],
+   "losers": [
+    {
+     "name": "坂口生磨",
+     "rating": 1950
+    }
+   ],
+   "expectedWinProb": 0.126,
+   "ratingGap": 337
+  },
+  {
+   "year": 2026,
+   "tournamentId": "west-japan",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "石川仁貴",
+     "rating": 1628
+    },
+    {
+     "name": "稲田翔太",
+     "rating": 1565
+    }
+   ],
+   "losers": [
+    {
+     "name": "竹田凌",
+     "rating": 1954
+    },
+    {
+     "name": "池口季将",
+     "rating": 1908
+    }
+   ],
+   "expectedWinProb": 0.127,
+   "ratingGap": 335
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-senbatsu",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "松井文音",
+     "rating": 1559
+    },
+    {
+     "name": "村上鈴",
+     "rating": 1651
+    }
+   ],
+   "losers": [
+    {
+     "name": "上野小町",
+     "rating": 2002
+    },
+    {
+     "name": "藤城みちる",
+     "rating": 1864
+    }
+   ],
+   "expectedWinProb": 0.132,
+   "ratingGap": 328
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "大武姫菜",
+     "rating": 1836
+    }
+   ],
+   "losers": [
+    {
+     "name": "長谷川憂華",
+     "rating": 2157
+    }
+   ],
+   "expectedWinProb": 0.136,
+   "ratingGap": 321
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "高木己想",
+     "rating": 1697
+    }
+   ],
+   "losers": [
+    {
+     "name": "坂本朱羽",
+     "rating": 2017
+    }
+   ],
+   "expectedWinProb": 0.137,
+   "ratingGap": 320
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "竹村瑠稀愛",
+     "rating": 1618
+    }
+   ],
+   "losers": [
+    {
+     "name": "浅見今日子",
+     "rating": 1933
+    }
+   ],
+   "expectedWinProb": 0.14,
+   "ratingGap": 315
+  },
+  {
+   "year": 2026,
+   "tournamentId": "west-japan",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "江口咲礼紗",
+     "rating": 1947
+    },
+    {
+     "name": "西村ひよ",
+     "rating": 1772
+    }
+   ],
+   "losers": [
+    {
+     "name": "高橋偲",
+     "rating": 2036
+    },
+    {
+     "name": "岩倉彩佳",
+     "rating": 2305
+    }
+   ],
+   "expectedWinProb": 0.143,
+   "ratingGap": 311
+  },
+  {
+   "year": 2026,
+   "tournamentId": "highschool-japan-cup",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "牧優花",
+     "rating": 1614
+    },
+    {
+     "name": "山本好来",
+     "rating": 1700
+    }
+   ],
+   "losers": [
+    {
+     "name": "大武夢菜",
+     "rating": 2033
+    },
+    {
+     "name": "大武姫菜",
+     "rating": 1898
+    }
+   ],
+   "expectedWinProb": 0.145,
+   "ratingGap": 308
+  },
+  {
+   "year": 2026,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "浅野琉愛",
+     "rating": 1812
+    }
+   ],
+   "losers": [
+    {
+     "name": "高橋偲",
+     "rating": 2119
+    }
+   ],
+   "expectedWinProb": 0.146,
+   "ratingGap": 307
+  },
+  {
+   "year": 2025,
+   "tournamentId": "yonex-hokkaido-international",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "高月拓磨",
+     "rating": 1742
+    },
+    {
+     "name": "榊原耕平",
+     "rating": 1677
+    }
+   ],
+   "losers": [
+    {
+     "name": "内本隆文",
+     "rating": 2243
+    },
+    {
+     "name": "上松俊貴",
+     "rating": 2405
+    }
+   ],
+   "expectedWinProb": 0.028,
+   "ratingGap": 614
+  },
+  {
+   "year": 2025,
+   "tournamentId": "asian-games-qualifier",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "林佑太郎",
+     "rating": 1837
+    }
+   ],
+   "losers": [
+    {
+     "name": "橋場柊一郎",
+     "rating": 2428
+    }
+   ],
+   "expectedWinProb": 0.032,
+   "ratingGap": 591
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-junior",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "石灘蒼瑛",
+     "rating": 1466
+    }
+   ],
+   "losers": [
+    {
+     "name": "中尾彦斗",
+     "rating": 2022
+    }
+   ],
+   "expectedWinProb": 0.039,
+   "ratingGap": 556
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "竹山千尋",
+     "rating": 1611
+    }
+   ],
+   "losers": [
+    {
+     "name": "前川愛生",
+     "rating": 2116
+    }
+   ],
+   "expectedWinProb": 0.052,
+   "ratingGap": 505
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "大和美月",
+     "rating": 1852
+    }
+   ],
+   "losers": [
+    {
+     "name": "前田梨緒",
+     "rating": 2337
+    }
+   ],
+   "expectedWinProb": 0.058,
+   "ratingGap": 485
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-university",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "庭田咲月",
+     "rating": 1774
+    }
+   ],
+   "losers": [
+    {
+     "name": "前田梨緒",
+     "rating": 2255
+    }
+   ],
+   "expectedWinProb": 0.059,
+   "ratingGap": 481
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-university",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "伊藤幹太",
+     "rating": 1556
+    }
+   ],
+   "losers": [
+    {
+     "name": "片岡暁紀",
+     "rating": 2025
+    }
+   ],
+   "expectedWinProb": 0.063,
+   "ratingGap": 470
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "岩田皓平",
+     "rating": 1845
+    }
+   ],
+   "losers": [
+    {
+     "name": "上岡俊介",
+     "rating": 2309
+    }
+   ],
+   "expectedWinProb": 0.065,
+   "ratingGap": 464
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "鈴木愛香",
+     "rating": 1840
+    }
+   ],
+   "losers": [
+    {
+     "name": "天間麗奈",
+     "rating": 2302
+    }
+   ],
+   "expectedWinProb": 0.066,
+   "ratingGap": 462
+  },
+  {
+   "year": 2025,
+   "tournamentId": "west-japan",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "樋口大翔",
+     "rating": 1613
+    },
+    {
+     "name": "西山亮太",
+     "rating": 1699
+    }
+   ],
+   "losers": [
+    {
+     "name": "本倉健太郎",
+     "rating": 1981
+    },
+    {
+     "name": "広岡宙",
+     "rating": 2233
+    }
+   ],
+   "expectedWinProb": 0.069,
+   "ratingGap": 451
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-mixed",
+   "discipline": "doubles",
+   "gender": "mixed",
+   "winners": [
+    {
+     "name": "北野敦貴",
+     "rating": 1703
+    },
+    {
+     "name": "福島陽向",
+     "rating": 1477
+    }
+   ],
+   "losers": [
+    {
+     "name": "天間美嘉",
+     "rating": 1970
+    },
+    {
+     "name": "黒坂卓矢",
+     "rating": 2110
+    }
+   ],
+   "expectedWinProb": 0.07,
+   "ratingGap": 450
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-junior",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "佐藤愛",
+     "rating": 1938
+    }
+   ],
+   "losers": [
+    {
+     "name": "宮前希帆",
+     "rating": 2347
+    }
+   ],
+   "expectedWinProb": 0.086,
+   "ratingGap": 410
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-mixed",
+   "discipline": "doubles",
+   "gender": "mixed",
+   "winners": [
+    {
+     "name": "大友紅実",
+     "rating": 1591
+    },
+    {
+     "name": "荒木駿",
+     "rating": 1699
+    }
+   ],
+   "losers": [
+    {
+     "name": "佐藤心美",
+     "rating": 1991
+    },
+    {
+     "name": "野本凌生",
+     "rating": 2094
+    }
+   ],
+   "expectedWinProb": 0.092,
+   "ratingGap": 398
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-junior",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "三田勇人",
+     "rating": 1656
+    }
+   ],
+   "losers": [
+    {
+     "name": "野本凌生",
+     "rating": 2046
+    }
+   ],
+   "expectedWinProb": 0.096,
+   "ratingGap": 390
+  },
+  {
+   "year": 2025,
+   "tournamentId": "asian-championship-qualifier",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "小松﨑茉代",
+     "rating": 1664
+    },
+    {
+     "name": "近藤明日咲",
+     "rating": 1699
+    }
+   ],
+   "losers": [
+    {
+     "name": "前川愛生",
+     "rating": 2201
+    },
+    {
+     "name": "塚本七海",
+     "rating": 1920
+    }
+   ],
+   "expectedWinProb": 0.102,
+   "ratingGap": 379
+  },
+  {
+   "year": 2025,
+   "tournamentId": "yonex-hokkaido-international",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "岩城爽太",
+     "rating": 1588
+    },
+    {
+     "name": "太田遥来",
+     "rating": 1601
+    }
+   ],
+   "losers": [
+    {
+     "name": "浅見竣一朗",
+     "rating": 1943
+    },
+    {
+     "name": "菊山太陽",
+     "rating": 1978
+    }
+   ],
+   "expectedWinProb": 0.108,
+   "ratingGap": 366
+  },
+  {
+   "year": 2025,
+   "tournamentId": "asian-games-qualifier",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "伊藤陽聖",
+     "rating": 1706
+    }
+   ],
+   "losers": [
+    {
+     "name": "竹田凌",
+     "rating": 2060
+    }
+   ],
+   "expectedWinProb": 0.115,
+   "ratingGap": 355
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "浅見今日子",
+     "rating": 1663
+    }
+   ],
+   "losers": [
+    {
+     "name": "長谷川憂華",
+     "rating": 2013
+    }
+   ],
+   "expectedWinProb": 0.117,
+   "ratingGap": 351
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "橋場柊一郎",
+     "rating": 2284
+    },
+    {
+     "name": "菊山太陽",
+     "rating": 1843
+    }
+   ],
+   "losers": [
+    {
+     "name": "内本隆文",
+     "rating": 2334
+    },
+    {
+     "name": "上松俊貴",
+     "rating": 2495
+    }
+   ],
+   "expectedWinProb": 0.117,
+   "ratingGap": 351
+  },
+  {
+   "year": 2025,
+   "tournamentId": "west-japan",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "松田蒼生",
+     "rating": 1648
+    },
+    {
+     "name": "兼森富久斗",
+     "rating": 1629
+    }
+   ],
+   "losers": [
+    {
+     "name": "安藤優作",
+     "rating": 2010
+    },
+    {
+     "name": "安藤圭祐",
+     "rating": 1956
+    }
+   ],
+   "expectedWinProb": 0.121,
+   "ratingGap": 345
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "佐藤心美",
+     "rating": 2031
+    },
+    {
+     "name": "青木夕佳",
+     "rating": 1549
+    }
+   ],
+   "losers": [
+    {
+     "name": "原口美咲",
+     "rating": 1970
+    },
+    {
+     "name": "宮前希帆",
+     "rating": 2297
+    }
+   ],
+   "expectedWinProb": 0.122,
+   "ratingGap": 343
+  },
+  {
+   "year": 2025,
+   "tournamentId": "east-japan",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "五十嵐美結",
+     "rating": 1787
+    },
+    {
+     "name": "樫尾陽和里",
+     "rating": 1740
+    }
+   ],
+   "losers": [
+    {
+     "name": "前田梨緒",
+     "rating": 2221
+    },
+    {
+     "name": "中谷さくら",
+     "rating": 1989
+    }
+   ],
+   "expectedWinProb": 0.123,
+   "ratingGap": 342
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-university",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "中島那菜",
+     "rating": 1525
+    }
+   ],
+   "losers": [
+    {
+     "name": "大和美月",
+     "rating": 1865
+    }
+   ],
+   "expectedWinProb": 0.124,
+   "ratingGap": 340
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "佐藤愛",
+     "rating": 1701
+    }
+   ],
+   "losers": [
+    {
+     "name": "佐藤心美",
+     "rating": 2039
+    }
+   ],
+   "expectedWinProb": 0.125,
+   "ratingGap": 338
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "長谷歩奈",
+     "rating": 1579
+    }
+   ],
+   "losers": [
+    {
+     "name": "黒木夏穂",
+     "rating": 1911
+    }
+   ],
+   "expectedWinProb": 0.129,
+   "ratingGap": 332
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-junior",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "佐藤日香莉",
+     "rating": 1873
+    },
+    {
+     "name": "杉本希",
+     "rating": 1729
+    }
+   ],
+   "losers": [
+    {
+     "name": "宮前希帆",
+     "rating": 2400
+    },
+    {
+     "name": "庭田咲月",
+     "rating": 1861
+    }
+   ],
+   "expectedWinProb": 0.13,
+   "ratingGap": 330
+  },
+  {
+   "year": 2025,
+   "tournamentId": "asian-championship-qualifier",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "松本炎",
+     "rating": 1773
+    },
+    {
+     "name": "仲川晴智",
+     "rating": 1658
+    }
+   ],
+   "losers": [
+    {
+     "name": "菊山太陽",
+     "rating": 1895
+    },
+    {
+     "name": "橋場柊一郎",
+     "rating": 2186
+    }
+   ],
+   "expectedWinProb": 0.134,
+   "ratingGap": 324
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "房野紗千",
+     "rating": 1744
+    }
+   ],
+   "losers": [
+    {
+     "name": "中谷さくら",
+     "rating": 2068
+    }
+   ],
+   "expectedWinProb": 0.134,
+   "ratingGap": 324
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "椎名萌花",
+     "rating": 1590
+    },
+    {
+     "name": "吉田実桜",
+     "rating": 1619
+    }
+   ],
+   "losers": [
+    {
+     "name": "近坂優衣",
+     "rating": 1855
+    },
+    {
+     "name": "足利茉奈",
+     "rating": 1995
+    }
+   ],
+   "expectedWinProb": 0.136,
+   "ratingGap": 321
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "佐藤愛",
+     "rating": 1632
+    }
+   ],
+   "losers": [
+    {
+     "name": "上野小町",
+     "rating": 1950
+    }
+   ],
+   "expectedWinProb": 0.138,
+   "ratingGap": 318
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "白井颯",
+     "rating": 1701
+    },
+    {
+     "name": "千田夏輝",
+     "rating": 1654
+    }
+   ],
+   "losers": [
+    {
+     "name": "坂口生磨",
+     "rating": 2043
+    },
+    {
+     "name": "野本凌生",
+     "rating": 1942
+    }
+   ],
+   "expectedWinProb": 0.14,
+   "ratingGap": 315
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-indoor",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "岩元愛美",
+     "rating": 1946
+    },
+    {
+     "name": "服部七海",
+     "rating": 1691
+    }
+   ],
+   "losers": [
+    {
+     "name": "天間麗奈",
+     "rating": 2371
+    },
+    {
+     "name": "中谷ももこ",
+     "rating": 1892
+    }
+   ],
+   "expectedWinProb": 0.142,
+   "ratingGap": 312
+  },
+  {
+   "year": 2025,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "尾崎瀬里奈",
+     "rating": 1640
+    }
+   ],
+   "losers": [
+    {
+     "name": "大野栞",
+     "rating": 1947
+    }
+   ],
+   "expectedWinProb": 0.146,
+   "ratingGap": 307
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-junior",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "向山せら",
+     "rating": 1398
+    }
+   ],
+   "losers": [
+    {
+     "name": "中谷さくら",
+     "rating": 2001
+    }
+   ],
+   "expectedWinProb": 0.03,
+   "ratingGap": 603
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-junior",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "吉木理彩",
+     "rating": 1756
+    }
+   ],
+   "losers": [
+    {
+     "name": "前田梨緒",
+     "rating": 2230
+    }
+   ],
+   "expectedWinProb": 0.061,
+   "ratingGap": 475
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-junior",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "野中翔太",
+     "rating": 1634
+    }
+   ],
+   "losers": [
+    {
+     "name": "野本凌生",
+     "rating": 2030
+    }
+   ],
+   "expectedWinProb": 0.093,
+   "ratingGap": 396
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "黒須柾暉",
+     "rating": 1839
+    },
+    {
+     "name": "飯田航仁",
+     "rating": 1682
+    }
+   ],
+   "losers": [
+    {
+     "name": "広岡宙",
+     "rating": 2327
+    },
+    {
+     "name": "長江光一",
+     "rating": 1982
+    }
+   ],
+   "expectedWinProb": 0.094,
+   "ratingGap": 394
+  },
+  {
+   "year": 2024,
+   "tournamentId": "highschool-japan-cup",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "竹田羽花",
+     "rating": 1765
+    }
+   ],
+   "losers": [
+    {
+     "name": "前川愛生",
+     "rating": 2129
+    }
+   ],
+   "expectedWinProb": 0.11,
+   "ratingGap": 363
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-university",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "永江孝二郎",
+     "rating": 1580
+    }
+   ],
+   "losers": [
+    {
+     "name": "浅見竣一朗",
+     "rating": 1934
+    }
+   ],
+   "expectedWinProb": 0.116,
+   "ratingGap": 354
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "三浦菜留美",
+     "rating": 1588
+    },
+    {
+     "name": "上野美穂",
+     "rating": 1620
+    }
+   ],
+   "losers": [
+    {
+     "name": "久保田茜",
+     "rating": 1927
+    },
+    {
+     "name": "原千晴",
+     "rating": 1984
+    }
+   ],
+   "expectedWinProb": 0.117,
+   "ratingGap": 351
+  },
+  {
+   "year": 2024,
+   "tournamentId": "world-championship-qualifier",
+   "discipline": "doubles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "清水駿",
+     "rating": 1730
+    },
+    {
+     "name": "安達宣",
+     "rating": 1668
+    }
+   ],
+   "losers": [
+    {
+     "name": "米川結翔",
+     "rating": 2070
+    },
+    {
+     "name": "野本凌生",
+     "rating": 1979
+    }
+   ],
+   "expectedWinProb": 0.133,
+   "ratingGap": 325
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-university",
+   "discipline": "singles",
+   "gender": "boys",
+   "winners": [
+    {
+     "name": "樋口生真",
+     "rating": 1665
+    }
+   ],
+   "losers": [
+    {
+     "name": "菊山太陽",
+     "rating": 1984
+    }
+   ],
+   "expectedWinProb": 0.137,
+   "ratingGap": 320
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-singles",
+   "discipline": "singles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "天間麗奈",
+     "rating": 1771
+    }
+   ],
+   "losers": [
+    {
+     "name": "高橋乃綾",
+     "rating": 2084
+    }
+   ],
+   "expectedWinProb": 0.141,
+   "ratingGap": 314
+  },
+  {
+   "year": 2024,
+   "tournamentId": "zennihon-championship",
+   "discipline": "doubles",
+   "gender": "girls",
+   "winners": [
+    {
+     "name": "赤川友里奈",
+     "rating": 1697
+    },
+    {
+     "name": "杉本希",
+     "rating": 1774
+    }
+   ],
+   "losers": [
+    {
+     "name": "中谷さくら",
+     "rating": 1909
+    },
+    {
+     "name": "前田梨緒",
+     "rating": 2185
+    }
+   ],
+   "expectedWinProb": 0.143,
+   "ratingGap": 311
+  }
+ ]
+}
