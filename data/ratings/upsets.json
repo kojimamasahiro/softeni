@@ -1,13 +1,15 @@
 {
- "generatedAt": "2026-07-11T08:13:40.483Z",
+ "generatedAt": "2026-07-11T08:31:23.469Z",
  "_readme": "giant-killing イベント（内部生成物・公開未接続）。勝者の事前期待勝率が閾値以下の勝利。時系列リプレイの更新前レートで判定（先読みなし）。milestone エンジン接続・公開判断は docs/raw/2026-07-11-giant-killing-milestone-plan.md 参照。",
  "params": {
   "maxExpectedWinProb": 0.15,
   "requireEstablished": true,
   "provisionalMatches": 10,
-  "note": "expectedWinProb<=0.10 は特大（2025年実績で年14件程度）。0.15は候補プール（同33件程度）"
+  "minLoserTopPercentile": 0.05,
+  "minEstablishedPool": 50,
+  "note": "expectedWinProb<=0.10 は特大（2025年実績で年14件程度）。0.15は候補プール（同33件程度）。敗者側は当時のestablished上位以内（minLoserTopPercentile）に限定"
  },
- "count": 62,
+ "count": 60,
  "events": [
   {
    "year": 2026,
@@ -224,28 +226,6 @@
    ],
    "expectedWinProb": 0.122,
    "ratingGap": 342
-  },
-  {
-   "year": 2026,
-   "tournamentId": "zennihon-singles",
-   "categoryId": "singles-none-boys",
-   "discipline": "singles",
-   "gender": "boys",
-   "round": "2回戦",
-   "winners": [
-    {
-     "name": "浦川優生",
-     "rating": 1531
-    }
-   ],
-   "losers": [
-    {
-     "name": "大村圭志朗",
-     "rating": 1867
-    }
-   ],
-   "expectedWinProb": 0.126,
-   "ratingGap": 336
   },
   {
    "year": 2026,
@@ -1040,28 +1020,6 @@
    ],
    "expectedWinProb": 0.123,
    "ratingGap": 342
-  },
-  {
-   "year": 2025,
-   "tournamentId": "zennihon-university",
-   "categoryId": "singles-none-girls",
-   "discipline": "singles",
-   "gender": "girls",
-   "round": "2回戦",
-   "winners": [
-    {
-     "name": "中島那菜",
-     "rating": 1525
-    }
-   ],
-   "losers": [
-    {
-     "name": "大和美月",
-     "rating": 1865
-    }
-   ],
-   "expectedWinProb": 0.124,
-   "ratingGap": 340
   },
   {
    "year": 2025,
