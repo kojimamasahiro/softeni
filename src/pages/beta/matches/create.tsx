@@ -1008,7 +1008,7 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
         name: entry.label,
         generation: entry.generationId,
         categoryTypes: [],
-        isMajorTitle: entry.isMajorTitle,
+        isMajorTitle: entry.isMajorTitle ?? false,
         officialUrl: entry.officialUrl,
       });
     }
