@@ -10,18 +10,18 @@ import { useMemo, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
+import PageLayout from '@/components/PageLayout';
 import ResultContextBlocks from '@/components/ResultContextBlocks';
-import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import MatchResults from '@/components/Tournament/MatchResults';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
-import PageLayout from '@/components/PageLayout';
-import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
-import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
-import { getHistoricalWinners } from '@/lib/tournamentRecords';
-import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
+import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
+import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
+import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
+import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 
 type LinkCategory = {
@@ -649,10 +649,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const championMs = getChampionMilestones(tournamentId, categoryId, targetYearNum, hw);
     const giantKillings = getGiantKillings(tournamentId, categoryId, targetYearNum);
     // 前回王者撃破が金星と同一試合の場合は金星を優先（二重表示の抑制）。
-    const defeat = suppressChampionDefeatIfDuplicate(
-      getChampionDefeat(tournamentId, categoryId, targetYearNum, hw),
-      giantKillings,
-    );
+    const defeat = suppressChampionDefeatIfDuplicate(getChampionDefeat(tournamentId, categoryId, targetYearNum, hw), giantKillings);
     // 重要度順: repeat-title / first-title（getChampionMilestones で整列済み）→ giant-killing → champion-defeat。
     const events = [...(championMs?.events ?? []), ...giantKillings, ...(defeat ? [defeat] : [])];
     for (const e of events) {
