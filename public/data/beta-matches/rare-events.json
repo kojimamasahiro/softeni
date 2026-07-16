@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T16:24:52.692Z",
+  "generatedAt": "2026-07-12T15:04:23.031Z",
   "config": {
     "scope": "all-time",
     "categories": {
@@ -34,23 +34,23 @@
     {
       "kind": "longest-rally",
       "scope": "all-time",
-      "tournamentId": "zennihon-singles",
+      "tournamentId": "highschool-japan-cup",
       "year": 2026,
-      "matchId": "31e4715d-c98e-4992-a9ce-e3831c38ec9b",
-      "round": "準々決勝",
+      "matchId": "8a8dce9c-ce39-4358-b8a1-21df49a7e322",
+      "round": "決勝",
       "teamA": "塚本 光琉",
-      "teamB": "上岡 俊介",
-      "detailPath": "/tournaments/all/zennihon-singles/2026/singles/none/boys/matches/31e4715d-c98e-4992-a9ce-e3831c38ec9b",
-      "gameId": "30c0f810-8206-4ea4-8b03-525f5dd6f0b1",
+      "teamB": "福見 優心",
+      "detailPath": "/tournaments/highschool/highschool-japan-cup/2026/singles/none/boys/matches/8a8dce9c-ce39-4358-b8a1-21df49a7e322",
+      "gameId": "686324d7-4346-45a8-8d56-29a31fcbbd44",
       "gameNumber": 3,
-      "pointId": "aa3954f7-4ed7-41fb-a5b3-114247f372a7",
-      "pointNumber": 3,
-      "subjectTeam": "A",
+      "pointId": "7255f70e-0225-466a-ad4f-5b799fd10119",
+      "pointNumber": 5,
+      "subjectTeam": "B",
       "detail": {
-        "rallyCount": 25
+        "rallyCount": 36
       },
-      "videoUrl": "https://www.youtube.com/watch?v=Xknn5YaeSVI&t=308s",
-      "label": "記録済み全試合で最長の25本ラリー",
+      "videoUrl": "https://www.youtube.com/watch?v=vzfOIQVgrfg&t=636s",
+      "label": "記録済み全試合で最長の36本ラリー",
       "scopeNote": "当サイトでスコア記録した全試合の中での比較",
       "postable": true
     },
@@ -105,50 +105,26 @@
     {
       "kind": "longest-deuce",
       "scope": "all-time",
-      "tournamentId": "zennihon-university",
-      "year": 2025,
-      "matchId": "16de8dd3-e117-4c20-9f51-17db8a848b87",
-      "round": "6回戦",
-      "teamA": "片岡 暁紀・黒坂 卓矢",
-      "teamB": "清水 駿・宮田 成将",
-      "detailPath": "/tournaments/university/zennihon-university/2025/doubles/none/boys/matches/16de8dd3-e117-4c20-9f51-17db8a848b87",
-      "gameId": "5b0996a9-b953-4750-b6a2-127707178072",
-      "gameNumber": 9,
-      "pointId": "4d774d25-e078-4c48-8593-25cde66ea9cb",
-      "pointNumber": 14,
-      "subjectTeam": "A",
-      "detail": {
-        "totalPoints": 14,
-        "finalScore": "8-6"
-      },
-      "videoUrl": null,
-      "label": "記録済み全試合で最長のデュースゲーム（第9ゲーム・全14ポイント）",
-      "scopeNote": "当サイトでスコア記録した全試合の中での比較",
-      "postable": false
-    },
-    {
-      "kind": "longest-deuce",
-      "scope": "all-time",
-      "tournamentId": "zennihon-championship",
-      "year": 2025,
-      "matchId": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
-      "round": "3回戦",
-      "teamA": "橋本 旭陽・増田 洋五豊",
-      "teamB": "片岡 暁紀・黒坂 卓矢",
-      "detailPath": "/tournaments/all/zennihon-championship/2025/doubles/none/boys/matches/701fa50b-78d0-4e89-98f5-e82161b0ef19",
-      "gameId": "533910be-febb-4ec8-8fdd-75b201d6c7a8",
-      "gameNumber": 3,
-      "pointId": "b4e8bad2-cc49-4198-be6e-db66d7e83956",
-      "pointNumber": 14,
+      "tournamentId": "highschool-japan-cup",
+      "year": 2026,
+      "matchId": "5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+      "round": "決勝",
+      "teamA": "福田 喜大・福井 竣也",
+      "teamB": "保海 郁弥・山口 義人",
+      "detailPath": "/tournaments/highschool/highschool-japan-cup/2026/doubles/none/boys/matches/5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+      "gameId": "28cd12c9-55a8-419c-b974-687798f76d7b",
+      "gameNumber": 4,
+      "pointId": "703dbb91-733a-4e2f-bc1c-d92119cc4af3",
+      "pointNumber": 16,
       "subjectTeam": "B",
       "detail": {
-        "totalPoints": 14,
-        "finalScore": "6-8"
+        "totalPoints": 16,
+        "finalScore": "7-9"
       },
-      "videoUrl": null,
-      "label": "記録済み全試合で最長のデュースゲーム（第3ゲーム・全14ポイント）",
+      "videoUrl": "https://www.youtube.com/watch?v=ypf129-9odE&t=1580s",
+      "label": "記録済み全試合で最長のデュースゲーム（第4ゲーム・全16ポイント）",
       "scopeNote": "当サイトでスコア記録した全試合の中での比較",
-      "postable": false
+      "postable": true
     },
     {
       "kind": "biggest-comeback",
@@ -173,6 +149,30 @@
       "label": "記録済み全試合で最大の3点差逆転ゲーム（第2ゲーム）",
       "scopeNote": "当サイトでスコア記録した全試合の中での比較",
       "postable": false
+    },
+    {
+      "kind": "biggest-comeback",
+      "scope": "all-time",
+      "tournamentId": "highschool-japan-cup",
+      "year": 2026,
+      "matchId": "5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+      "round": "決勝",
+      "teamA": "福田 喜大・福井 竣也",
+      "teamB": "保海 郁弥・山口 義人",
+      "detailPath": "/tournaments/highschool/highschool-japan-cup/2026/doubles/none/boys/matches/5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+      "gameId": "a24c3c74-574e-44b4-bc12-d60bd6c3d24f",
+      "gameNumber": 5,
+      "pointId": "9a4b2e3b-29d6-47ff-88b3-400a9757655d",
+      "pointNumber": 10,
+      "subjectTeam": "A",
+      "detail": {
+        "deficit": 3,
+        "finalScore": "6-4"
+      },
+      "videoUrl": "https://www.youtube.com/watch?v=ypf129-9odE&t=1920s",
+      "label": "記録済み全試合で最大の3点差逆転ゲーム（第5ゲーム）",
+      "scopeNote": "当サイトでスコア記録した全試合の中での比較",
+      "postable": true
     },
     {
       "kind": "biggest-comeback",
@@ -225,27 +225,27 @@
     }
   ],
   "byMatch": {
-    "31e4715d-c98e-4992-a9ce-e3831c38ec9b": [
+    "8a8dce9c-ce39-4358-b8a1-21df49a7e322": [
       {
         "kind": "longest-rally",
         "scope": "all-time",
-        "tournamentId": "zennihon-singles",
+        "tournamentId": "highschool-japan-cup",
         "year": 2026,
-        "matchId": "31e4715d-c98e-4992-a9ce-e3831c38ec9b",
-        "round": "準々決勝",
+        "matchId": "8a8dce9c-ce39-4358-b8a1-21df49a7e322",
+        "round": "決勝",
         "teamA": "塚本 光琉",
-        "teamB": "上岡 俊介",
-        "detailPath": "/tournaments/all/zennihon-singles/2026/singles/none/boys/matches/31e4715d-c98e-4992-a9ce-e3831c38ec9b",
-        "gameId": "30c0f810-8206-4ea4-8b03-525f5dd6f0b1",
+        "teamB": "福見 優心",
+        "detailPath": "/tournaments/highschool/highschool-japan-cup/2026/singles/none/boys/matches/8a8dce9c-ce39-4358-b8a1-21df49a7e322",
+        "gameId": "686324d7-4346-45a8-8d56-29a31fcbbd44",
         "gameNumber": 3,
-        "pointId": "aa3954f7-4ed7-41fb-a5b3-114247f372a7",
-        "pointNumber": 3,
-        "subjectTeam": "A",
+        "pointId": "7255f70e-0225-466a-ad4f-5b799fd10119",
+        "pointNumber": 5,
+        "subjectTeam": "B",
         "detail": {
-          "rallyCount": 25
+          "rallyCount": 36
         },
-        "videoUrl": "https://www.youtube.com/watch?v=Xknn5YaeSVI&t=308s",
-        "label": "記録済み全試合で最長の25本ラリー",
+        "videoUrl": "https://www.youtube.com/watch?v=vzfOIQVgrfg&t=636s",
+        "label": "記録済み全試合で最長の36本ラリー",
         "scopeNote": "当サイトでスコア記録した全試合の中での比較",
         "postable": true
       }
@@ -298,56 +298,56 @@
         "label": "サービスエース（記録済み全試合で計2本）",
         "scopeNote": "当サイトでスコア記録した全試合の中での比較",
         "postable": false
-      },
-      {
-        "kind": "longest-deuce",
-        "scope": "all-time",
-        "tournamentId": "zennihon-university",
-        "year": 2025,
-        "matchId": "16de8dd3-e117-4c20-9f51-17db8a848b87",
-        "round": "6回戦",
-        "teamA": "片岡 暁紀・黒坂 卓矢",
-        "teamB": "清水 駿・宮田 成将",
-        "detailPath": "/tournaments/university/zennihon-university/2025/doubles/none/boys/matches/16de8dd3-e117-4c20-9f51-17db8a848b87",
-        "gameId": "5b0996a9-b953-4750-b6a2-127707178072",
-        "gameNumber": 9,
-        "pointId": "4d774d25-e078-4c48-8593-25cde66ea9cb",
-        "pointNumber": 14,
-        "subjectTeam": "A",
-        "detail": {
-          "totalPoints": 14,
-          "finalScore": "8-6"
-        },
-        "videoUrl": null,
-        "label": "記録済み全試合で最長のデュースゲーム（第9ゲーム・全14ポイント）",
-        "scopeNote": "当サイトでスコア記録した全試合の中での比較",
-        "postable": false
       }
     ],
-    "701fa50b-78d0-4e89-98f5-e82161b0ef19": [
+    "5fb5b055-57e7-4a36-8f8f-9c554bb3b789": [
       {
         "kind": "longest-deuce",
         "scope": "all-time",
-        "tournamentId": "zennihon-championship",
-        "year": 2025,
-        "matchId": "701fa50b-78d0-4e89-98f5-e82161b0ef19",
-        "round": "3回戦",
-        "teamA": "橋本 旭陽・増田 洋五豊",
-        "teamB": "片岡 暁紀・黒坂 卓矢",
-        "detailPath": "/tournaments/all/zennihon-championship/2025/doubles/none/boys/matches/701fa50b-78d0-4e89-98f5-e82161b0ef19",
-        "gameId": "533910be-febb-4ec8-8fdd-75b201d6c7a8",
-        "gameNumber": 3,
-        "pointId": "b4e8bad2-cc49-4198-be6e-db66d7e83956",
-        "pointNumber": 14,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "matchId": "5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+        "round": "決勝",
+        "teamA": "福田 喜大・福井 竣也",
+        "teamB": "保海 郁弥・山口 義人",
+        "detailPath": "/tournaments/highschool/highschool-japan-cup/2026/doubles/none/boys/matches/5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+        "gameId": "28cd12c9-55a8-419c-b974-687798f76d7b",
+        "gameNumber": 4,
+        "pointId": "703dbb91-733a-4e2f-bc1c-d92119cc4af3",
+        "pointNumber": 16,
         "subjectTeam": "B",
         "detail": {
-          "totalPoints": 14,
-          "finalScore": "6-8"
+          "totalPoints": 16,
+          "finalScore": "7-9"
         },
-        "videoUrl": null,
-        "label": "記録済み全試合で最長のデュースゲーム（第3ゲーム・全14ポイント）",
+        "videoUrl": "https://www.youtube.com/watch?v=ypf129-9odE&t=1580s",
+        "label": "記録済み全試合で最長のデュースゲーム（第4ゲーム・全16ポイント）",
         "scopeNote": "当サイトでスコア記録した全試合の中での比較",
-        "postable": false
+        "postable": true
+      },
+      {
+        "kind": "biggest-comeback",
+        "scope": "all-time",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "matchId": "5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+        "round": "決勝",
+        "teamA": "福田 喜大・福井 竣也",
+        "teamB": "保海 郁弥・山口 義人",
+        "detailPath": "/tournaments/highschool/highschool-japan-cup/2026/doubles/none/boys/matches/5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
+        "gameId": "a24c3c74-574e-44b4-bc12-d60bd6c3d24f",
+        "gameNumber": 5,
+        "pointId": "9a4b2e3b-29d6-47ff-88b3-400a9757655d",
+        "pointNumber": 10,
+        "subjectTeam": "A",
+        "detail": {
+          "deficit": 3,
+          "finalScore": "6-4"
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=ypf129-9odE&t=1920s",
+        "label": "記録済み全試合で最大の3点差逆転ゲーム（第5ゲーム）",
+        "scopeNote": "当サイトでスコア記録した全試合の中での比較",
+        "postable": true
       }
     ],
     "3e2fbc9c-cb76-4e7a-be95-8961103437ae": [
