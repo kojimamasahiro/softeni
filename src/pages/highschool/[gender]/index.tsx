@@ -72,14 +72,14 @@ export default function HighschoolGenderIndex({
   return (
     <>
       <MetaHead
-        title={`高校${genderLabel} 全国大会成績・都道府県別一覧 | ソフトテニス情報`}
+        title={`高校${genderLabel}ソフトテニス 全国大会成績・都道府県別一覧 | Softeni Pick`}
         description={`高校${genderLabel}の全国大会成績を都道府県別に掲載。ソフトテニスの全国高等学校総合体育大会やハイスクールジャパンカップなど主要大会の結果確認に対応。`}
         url={pageUrl}
         type="article"
       />
 
       <Head>
-        <title>高校{genderLabel} 全国大会成績・都道府県別一覧 | ソフトテニス情報</title>
+        <title>高校{genderLabel}ソフトテニス 全国大会成績・都道府県別一覧 | Softeni Pick</title>
 
         <script
           type="application/ld+json"
@@ -110,7 +110,7 @@ export default function HighschoolGenderIndex({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'CollectionPage',
-              name: `高校${genderLabel} 全国大会成績・都道府県別一覧`,
+              name: `高校${genderLabel}ソフトテニス 全国大会成績・都道府県別一覧`,
               description: `高校${genderLabel}の全国大会成績を都道府県別に掲載し、学校ごとの主要大会実績を確認できる一覧ページです。`,
               url: pageUrl,
               inLanguage: 'ja',
@@ -165,7 +165,7 @@ export default function HighschoolGenderIndex({
           ]}
         />
 
-        <h1 className="text-2xl font-bold mb-6">高校{genderLabel} 全国大会成績</h1>
+        <h1 className="text-2xl font-bold mb-6">高校{genderLabel}ソフトテニス 全国大会成績</h1>
 
         <HighschoolGenderToggle gender={gender} boysHref="/highschool/boys" girlsHref="/highschool/girls" className="mb-8 max-w-sm mx-auto" />
 

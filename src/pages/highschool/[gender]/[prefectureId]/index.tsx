@@ -130,7 +130,7 @@ export default function PrefectureHighschoolPage({
   return (
     <>
       <MetaHead
-        title={`${prefectureName} 高校${genderLabel} 全国大会成績 | ソフトテニス情報`}
+        title={`${prefectureName}の高校${genderLabel}ソフトテニス 全国大会成績・強豪校 | Softeni Pick`}
         description={`${prefectureName}の高校${genderLabel}の全国大会成績を一覧掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の学校別実績を確認できます。`}
         url={pageUrl}
         type="article"
@@ -138,7 +138,7 @@ export default function PrefectureHighschoolPage({
 
       <Head>
         <script
-          title={`${prefectureName} 高校${genderLabel} 全国大会成績 | ソフトテニス情報`}
+          title={`${prefectureName}の高校${genderLabel}ソフトテニス 全国大会成績・強豪校 | Softeni Pick`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -173,7 +173,7 @@ export default function PrefectureHighschoolPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'CollectionPage',
-              name: `${prefectureName} 高校${genderLabel} 全国大会成績`,
+              name: `${prefectureName}の高校${genderLabel}ソフトテニス 全国大会成績・強豪校`,
               description: `${prefectureName}の高校${genderLabel}の全国大会成績を一覧掲載し、学校別の主要大会実績を確認できるページです。`,
               url: pageUrl,
               inLanguage: 'ja',
@@ -231,7 +231,7 @@ export default function PrefectureHighschoolPage({
         />
 
         <h1 className="text-2xl font-bold mb-2">
-          {prefecture.name} 高校{genderLabel} 全国大会成績
+          {prefecture.name}の高校{genderLabel}ソフトテニス 全国大会成績
         </h1>
         <p className="text-sm text-text-secondary mb-6">
           {prefecture.name}
