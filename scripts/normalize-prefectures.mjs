@@ -73,12 +73,15 @@ const REGIONS = new Set([
 const COUNTRIES = new Set(['韓国', '台湾', '中華台北', 'モンゴル']);
 
 // 連盟など都道府県でない区分（表記だけ整え、別の都道府県扱いの値として保持）
-const FEDERATIONS = new Map([
-  ['日本連盟県', '日本連盟'], // 誤付与の県を外す
-]);
 const FEDERATION_KEEP = new Set([
   '日本学連', '学連', '高体連', '中体連', '日本連盟', 'フリー',
 ]);
+// 誤付与の県を外すマップ（学連県→学連 等）は FEDERATION_KEEP から機械的に導出する。
+// 個別エントリの列挙だと漏れる（実際に 学連県 が漏れて east-japan/2026 の汚染を
+// 救えなかった）ため、保持集合と常に同期させる。
+const FEDERATIONS = new Map(
+  [...FEDERATION_KEEP].map((k) => [k + '県', k]),
+);
 
 // Tier B: 崩れ・誤字の明示マップ（一意に復元できるもの）
 const CORRECTIONS = new Map([
@@ -195,19 +198,22 @@ function normalizeFile(file) {
   if (!prefRepl.size && !idRepl.length) return null;
 
   let changed = 0;
-  const apply = (needle, repl) => {
-    const parts = text.split(needle);
-    if (parts.length > 1) {
-      changed += parts.length - 1;
-      text = parts.join(repl);
-    }
+  // フィールド置換はコロン前後の空白差（"prefecture": "X" / "prefecture":"X"）を許容する。
+  // 固定文字列 `"prefecture": "` での置換だとコンパクト整形のファイルにマッチせず
+  // 置換漏れが起きるため正規表現で行う。
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const apply = (field, oldV, newV) => {
+    const re = new RegExp(`("${field}"\\s*:\\s*)"${escapeRegExp(oldV)}"`, 'g');
+    const count = (text.match(re) || []).length;
+    if (!count) return;
+    changed += count;
+    text = text.replace(re, (_, prefix) => `${prefix}"${newV}"`);
   };
 
-  for (const [oldP, newP] of prefRepl) apply(`"prefecture": "${oldP}"`, `"prefecture": "${newP}"`);
+  for (const [oldP, newP] of prefRepl) apply('prefecture', oldP, newP);
   // 参加者ID置換は "id" フィールドと配列要素（playerIds / pair 等）に限定する。
   // 裸の `"${oldId}"` 全文置換は、prefecture が空のチーム参加者で team/name フィールド値が
   // oldId と一致した場合に team フィールドまで巻き込んで破壊するため禁止。
-  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const applyId = (oldId, newId) => {
     const o = escapeRegExp(oldId);
     for (const re of [

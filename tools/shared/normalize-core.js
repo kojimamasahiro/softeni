@@ -207,6 +207,23 @@
       return s;
     }
 
+    // 都道府県でないが prefecture フィールドに入る区分値（連盟・外国）。
+    // 「県」を付与せずそのまま保持し、id 分解時は prefecture として扱う。
+    // scripts/normalize-prefectures.mjs の FEDERATION_KEEP / COUNTRIES と対応
+    // （docs/wiki/data-import.md「ルール: 都道府県は省略しない」参照）。
+    const NON_PREFECTURE_TOKENS = new Set([
+      '日本学連',
+      '学連',
+      '高体連',
+      '中体連',
+      '日本連盟',
+      'フリー',
+      '韓国',
+      '台湾',
+      '中華台北',
+      'モンゴル',
+    ]);
+
     // helper: build id "last_first_team_prefecture"
     function makeIdFromParts(last, first, team, prefecture) {
       return [last || '', first || '', team || '', prefecture || '']
@@ -256,15 +273,17 @@
         const parts = useId.split('_');
         const last = parts[0] || null;
         const first = parts[1] || null;
-        // id文字列は "姓_名_チーム[_都道府県]" 形式。末尾が都道府県の場合は
-        // チームに吸収せず prefecture として分離する（吸収すると後段のid再構築で
-        // 都道府県が二重付与されてしまうため）。
+        // id文字列は "姓_名_チーム[_都道府県]" 形式。末尾が都道府県（または
+        // 学連などの連盟・外国の区分値）の場合はチームに吸収せず prefecture として
+        // 分離する（吸収すると team が「中央大学_学連」のように汚染され、後段の
+        // id再構築で都道府県が二重付与されてしまうため）。
         const rest = parts.slice(2);
         let team = null;
         let prefecture = null;
         if (
           rest.length >= 2 &&
-          /(?:都|道|府|県)$/.test(rest[rest.length - 1])
+          (/(?:都|道|府|県)$/.test(rest[rest.length - 1]) ||
+            NON_PREFECTURE_TOKENS.has(rest[rest.length - 1]))
         ) {
           prefecture = rest[rest.length - 1];
           team = rest.slice(0, -1).join('_') || null;
@@ -389,8 +408,10 @@
       if (special[s]) return special[s];
       // already has proper suffix
       if (/[都道府県]$/.test(s)) return s;
-      // do not normalize organization-like tokens such as 日本学連
-      if (s.includes('日本学連')) return s;
+      // 連盟・外国などの区分値には 県 を付けない（学連→学連県 の汚染防止）
+      if (NON_PREFECTURE_TOKENS.has(s)) return s;
+      // safety: 連盟名を含む複合値（例: 東京学連 のような揺れ）も 県 は付けない
+      if (/(?:学連|高体連|中体連|連盟)$/.test(s)) return s;
 
       // fallback: append 県
       return s + '県';
