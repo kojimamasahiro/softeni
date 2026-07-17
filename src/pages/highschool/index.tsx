@@ -26,6 +26,11 @@ const SECTIONS = [
     title: '全国大会の歴代記録',
     description: 'インターハイ・ハイスクールジャパンカップの歴代優勝校',
   },
+  {
+    href: '/highschool/rankings/',
+    title: '強豪校ランキング',
+    description: '全国大会成績をポイント化した全国・男女別ランキング',
+  },
 ];
 
 export default function HighschoolIndex() {
@@ -68,7 +73,7 @@ export default function HighschoolIndex() {
           高校カテゴリの特集ページです。男女別の全国大会成績と、全国大会の歴代記録をまとめています。
         </p>
 
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           {SECTIONS.map((s) => (
             <Link
               key={s.href}

@@ -189,6 +189,16 @@ export default function HighschoolGenderIndex({
           </Link>
         </section>
 
+        <section className="mb-8 rounded-xl border border-info-border bg-info-bg p-5">
+          <h2 className="text-lg font-semibold mb-1">強豪校ランキング</h2>
+          <p className="text-sm text-text-secondary mb-3">
+            収録済みの全国大会成績をポイント化した、高校ソフトテニスの全国・男女別の強豪校ランキングです。学校ごとの成績ページへもたどれます。
+          </p>
+          <Link href="/highschool/rankings/" className="inline-block text-sm font-semibold text-link hover:underline">
+            強豪校ランキングを見る →
+          </Link>
+        </section>
+
         <section className="grid gap-4 sm:grid-cols-3 mb-8">
           <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
             <p className="text-xs text-text-muted">収録学校数</p>

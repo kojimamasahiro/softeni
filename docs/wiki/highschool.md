@@ -43,3 +43,22 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - 静的ルートが優先されるため `/highschool/[gender]`（boys/girls）とは衝突しない
 - Assumption: 2022 インターハイ男子ダブルスは元データに優勝・準優勝が複数登録されており、ページはこれを忠実に表示する（重複の整理が必要なら元データ側で対応する）
 - 実装: `src/pages/highschool/tournaments/index.tsx`、`src/pages/highschool/tournaments/[tournament]/index.tsx`、`lib/highschoolNationalTournaments.ts`
+
+## 強豪校ランキングページ（2026-07-17 追加）
+
+対象 URL: `/highschool/rankings/`（全国・男女別、1 URL・男女はクライアント切替）。
+
+- 収録済みの高校全国大会（インターハイ・ハイジャパ・選抜）の成績をポイント化した独自集計。データソースは `data/highschool/prefectures/*/summary.json`、集計は `lib/highschoolRanking.ts`（`buildSchoolRankingBoards`）
+- 配点: 優勝10・準優勝6・ベスト4 4・ベスト8 2・その他出場0.5 を基礎点に、団体戦×2、年度重み（最新から 1.0/0.8/0.6、それ以前 0.3）を乗算。同点は同順位（丸め後ポイントで判定）。上位100校掲載
+- **Assumption**: 配点・重みは運用判断の初期値（ユーザー未確定。docs/raw/2026-07-17-idea-highschool-strong-school-ranking.md）。国体・未収録年度の選抜は対象外で、データ追加時に自動反映
+- ページ上部に配点と scope 注記（非公式・収録大会のみ）を明示。FAQ でも「公式か」「計算方法」「対象大会」に回答
+- 学校名→学校ページ、都道府県名→都道府県ページへ内部リンク。タブ裏対策の静的「男女別 上位校まとめ」（上位10校）を掲載（seo.md #9 と同型、カニバリ整理は seo.md #10）
+- 構造化データ: BreadcrumbList / ItemList（上位10校）/ FAQPage
+- 入口: `/highschool/`（カード）と `/highschool/[gender]`（誘導セクション）からリンク
+- 実装: `src/pages/highschool/rankings/index.tsx`、`lib/highschoolRanking.ts`
+
+## 発展候補アイデア一覧（Idea Backlog）
+
+| アイデア | 状況・目的（1行） | 詳細 |
+|---|---|---|
+| 高校ソフトテニス 強豪校ランキングページ | **M2 v1 実装済み**（2026-07-17、`/highschool/rankings/`。上記セクション参照）。残: M1 IH2026即日反映、M3 データ拡充（選抜過去年・国体）、M4 GSC検証、Phase 2「卒業生の活躍」表示（ユーザー興味あり・実現性確認済み） | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |
