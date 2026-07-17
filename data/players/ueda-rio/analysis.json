@@ -1,8 +1,8 @@
 {
-  "totalMatches": 112,
+  "totalMatches": 113,
   "wins": 85,
   "losses": 26,
-  "totalWinRate": 0.759,
+  "totalWinRate": 0.752,
   "games": {
     "total": 600,
     "won": 397,
@@ -10,6 +10,20 @@
     "gameRate": 0.662
   },
   "byPartner": {
+    "23": {
+      "matches": {
+        "total": 1,
+        "wins": 0,
+        "losses": 0,
+        "winRate": 0
+      },
+      "games": {
+        "total": 0,
+        "won": 0,
+        "lost": 0,
+        "gameRate": 0
+      }
+    },
     "29": {
       "matches": {
         "total": 20,
@@ -210,10 +224,10 @@
     },
     "2026": {
       "matches": {
-        "total": 13,
+        "total": 14,
         "wins": 10,
         "losses": 3,
-        "winRate": 0.769
+        "winRate": 0.714
       },
       "games": {
         "total": 75,
@@ -224,11 +238,11 @@
     }
   },
   "latestMatch": {
-    "tournament": "全日本ミックスダブルス選手権大会",
-    "date": "2026年6月6日〜2026年6月14日",
-    "location": "茨城県",
-    "partner": 815,
-    "result": "予選2位",
-    "link": "https://www.jsta.or.jp/events/events2026"
+    "tournament": "東日本選手権大会",
+    "date": "2026年7月18日〜2026年7月19日",
+    "location": "山形県",
+    "partner": 23,
+    "result": "出場",
+    "link": "https://softtennis-tokyo.com/higashinihon-softtennis-association/"
   }
 }
