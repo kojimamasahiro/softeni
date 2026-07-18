@@ -52,11 +52,36 @@
   {
     "year": 2023,
     "location": "愛知県",
-    "startDate": "2025-03-28",
-    "endDate": "2025-03-30",
+    "startDate": "2024-03-28",
+    "endDate": "2024-03-30",
     "source": "全日本高等学校選抜ソフトテニス大会",
     "sourceUrl": "https://aichikoutairensofttennis.web.fc2.com/pdf/2023/49senbatsu-3.28.pdf",
     "label": "第49回全日本高等学校選抜大会",
+    "categories": [
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子団体",
+        "category": "team",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子団体",
+        "category": "team",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "location": "愛知県",
+    "startDate": "2023-03-27",
+    "endDate": "2023-03-30",
+    "source": "全日本高等学校選抜ソフトテニス大会",
+    "sourceUrl": "https://www.jsta.or.jp/wp-content/uploads/t_records/2022/2022_B17_40.pdf",
+    "label": "第48回全日本高等学校選抜大会",
     "categories": [
       {
         "categoryId": "team-none-boys",
