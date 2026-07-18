@@ -120,23 +120,25 @@ function normalizeFile(file, teamAliasMap) {
   if (!teamRepl.size && !prefRepl.size && !idRepl.length) return null;
 
   let changed = 0;
-  const apply = (needle, repl) => {
-    const parts = text.split(needle);
-    if (parts.length > 1) {
-      changed += parts.length - 1;
-      text = parts.join(repl);
-    }
-  };
 
-  // team フィールド値（id 内部の部分文字列には当たらない）
-  for (const [oldT, newT] of teamRepl) apply(`"team": "${oldT}"`, `"team": "${newT}"`);
-  // prefecture フィールド値（同上）
-  for (const [oldP, newP] of prefRepl) apply(`"prefecture": "${oldP}"`, `"prefecture": "${newP}"`);
+  // フィールド値の置換（id 内部の部分文字列には当たらない）。
+  // コロン後のスペース有無（`"team": "x"` / `"team":"x"`）の両方に対応する。
+  // 大会追加ツール生成のインライン圧縮形式でスペースなしがあり、固定文字列
+  // `"team": "x"` では置換漏れして id と team が不一致になる事故があった（選抜2024男子）。
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const applyField = (field, oldV, newV) => {
+    const re = new RegExp(`("${field}"\\s*:\\s*)"${escapeRegExp(oldV)}"`, 'g');
+    const count = (text.match(re) || []).length;
+    if (!count) return;
+    text = text.replace(re, (_, prefix) => `${prefix}"${newV}"`);
+    changed += count;
+  };
+  for (const [oldT, newT] of teamRepl) applyField('team', oldT, newT);
+  for (const [oldP, newP] of prefRepl) applyField('prefecture', oldP, newP);
   // 参加者ID（id フィールド + playerIds 等の配列要素）。
   // 裸の `"${oldId}"` 全文置換は禁止: prefecture 無しのチーム参加者では team/name の
   // フィールド値が oldId と一致し、置換のたびに team フィールドが壊れた id で上書き
   // されて実行回数分アンダースコアが増殖する事故があった（korea-cup 等）。
-  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const applyId = (oldId, newId) => {
     const o = escapeRegExp(oldId);
     for (const re of [
