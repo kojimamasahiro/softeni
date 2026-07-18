@@ -28,8 +28,8 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 対象 URL: `/highschool/tournaments`（入口）、`/highschool/tournaments/[tournament]`（大会別）。
 
 - 都道府県別・学校別とは別軸で、代表的な全国大会そのものを起点に歴代の上位入賞を確認できる回遊ページ
-- 対象大会はインターハイ（`highschool-championship`）とハイスクールジャパンカップ（`highschool-japan-cup`）。大会定義（スラッグ・正式名称・公式 URL・説明）は `lib/highschoolNationalTournaments.ts` の `HS_NATIONAL_TOURNAMENTS` に集約する
-- `/highschool/tournaments` は 2 大会への入口一覧。`/highschool/tournaments/[tournament]` は大会別ページで、`tournament` スラッグは `championship` / `japan-cup`
+- 対象大会はインターハイ（`highschool-championship`）、ハイスクールジャパンカップ（`highschool-japan-cup`）、全日本高等学校選抜（`highschool-senbatsu`、2026-07-17 追加・2020〜2025年度収録）。大会定義（スラッグ・正式名称・公式 URL・説明）は `lib/highschoolNationalTournaments.ts` の `HS_NATIONAL_TOURNAMENTS` に集約する
+- `/highschool/tournaments` は 3 大会への入口一覧。`/highschool/tournaments/[tournament]` は大会別ページで、`tournament` スラッグは `championship` / `japan-cup` / `senbatsu`。選抜は団体戦のみのため種目は男女団体の2つ
 - データは既存の `data/tournaments/details/{tournamentId}/{year}/{category}.json` と `information/{tournamentId}.json`（開催地・日程・種別ラベル）から年度別・種目別に抽出する。上位入賞の判定は `results[].tournament.rank.kind` が `winner` / `runnerup`、または `best` かつ `bestLevel === 4`。記録範囲はベスト4まで
 - 種目は男子→女子、団体→ダブルス→シングルスの順に並べ、各種目から既存の年度別結果ページ（`/tournaments/highschool/{tournamentId}/{year}/{category}/{age}/{gender}`）へ「対戦表を見る」で内部リンクする
 - 上部に種目別の歴代優勝サマリー表を表示する。各行（種目）×各列（年度）のセルに、優勝の「年度・学校・選手・都道府県」を載せる（団体は校名、個人は選手名＋所属）。データは `ChampionSummaryRow` / `ChampionCell`（`buildChampionSummary`）。優勝者不明の年は表示しない

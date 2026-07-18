@@ -24,7 +24,7 @@ const SECTIONS = [
   {
     href: '/highschool/tournaments/',
     title: '全国大会の歴代記録',
-    description: 'インターハイ・ハイスクールジャパンカップの歴代優勝校',
+    description: 'インターハイ・ハイジャパ・高校選抜の歴代優勝校',
   },
   {
     href: '/highschool/rankings/',
@@ -40,7 +40,7 @@ export default function HighschoolIndex() {
     <>
       <MetaHead
         title="高校ソフトテニス | 全国大会成績・歴代記録 | Softeni Pick"
-        description="高校ソフトテニスの特集ページ。男子・女子の全国大会成績(都道府県別・学校別)と、インターハイ・ハイスクールジャパンカップの歴代記録をまとめています。"
+        description="高校ソフトテニスの特集ページ。男子・女子の全国大会成績(都道府県別・学校別)と、インターハイ・ハイスクールジャパンカップ・全日本高校選抜の歴代記録、強豪校ランキングをまとめています。"
         url={pageUrl}
         type="website"
       />

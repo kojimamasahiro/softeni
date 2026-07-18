@@ -11,7 +11,7 @@ import path from 'path';
 import type { TournamentInformationEntry } from '@/types/tournament';
 
 /** URL スラッグ（/highschool/tournaments/[tournament]） */
-export type HsNationalTournamentSlug = 'championship' | 'japan-cup';
+export type HsNationalTournamentSlug = 'championship' | 'japan-cup' | 'senbatsu';
 
 export type HsNationalTournamentMeta = {
   slug: HsNationalTournamentSlug;
@@ -51,6 +51,16 @@ export const HS_NATIONAL_TOURNAMENTS: Record<HsNationalTournamentSlug, HsNationa
     officialUrl: 'https://www.gosen-sp.jp/hjs/',
     description:
       'ゴーセン杯争奪ハイスクールジャパンカップ（通称「ハイジャパ」）は、高校生個人の日本一を決めるソフトテニスの全国大会です。男子・女子それぞれシングルスとダブルスを実施し、各地区の代表選手が頂点を争います。本ページでは歴代の優勝・準優勝・ベスト4を年度別・種目別にまとめ、出場校の戦績ページへもリンクしています。',
+  },
+  senbatsu: {
+    slug: 'senbatsu',
+    tournamentId: 'highschool-senbatsu',
+    label: '全日本高等学校選抜ソフトテニス大会',
+    shortLabel: '高校選抜',
+    aliases: ['高校選抜'],
+    officialUrl: 'https://www.zen-koutairen.com/',
+    description:
+      '全日本高等学校選抜ソフトテニス大会（高校選抜）は、毎年3月に開催される男子・女子の団体戦の全国大会です。各地区予選を勝ち上がった代表校が、新チームでの日本一を争います。インターハイ・ハイスクールジャパンカップと並ぶ高校三大タイトルの一つで、本ページでは歴代の優勝校・準優勝・ベスト4を年度別にまとめています。',
   },
 };
 
