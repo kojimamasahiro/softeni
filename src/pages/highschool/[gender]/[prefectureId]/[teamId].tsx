@@ -10,6 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { getGenderLabel, HIGHSCHOOL_CATEGORY_PRIORITY, HIGHSCHOOL_TOURNAMENT_PRIORITY, isVisibleGender } from '@/lib/highschool';
+import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
 import { getCategoryLabel, getTournamentLabel, resultPriority } from '@/lib/utils';
 import { getAllTournamentIndex, getTournamentInfo } from '@/utils/tournament-data-loader';
 
@@ -73,9 +74,10 @@ type Props = {
   entries: Entry[];
   analysis: Analysis | null;
   playerLinks?: Record<string, number>;
+  alumni: AlumniEntry[];
 };
 
-export default function TeamPage({ prefectureName, prefectureId, gender, genderLabel, teamId, teamName, entries, analysis, playerLinks = {} }: Props) {
+export default function TeamPage({ prefectureName, prefectureId, gender, genderLabel, teamId, teamName, entries, analysis, playerLinks = {}, alumni }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
   const championshipEntries = entries.filter((entry) => entry.tournamentId === 'highschool-championship');
   const championshipAppearances = championshipEntries.length;
@@ -147,6 +149,19 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
       question: '同じ都道府県の他校も見られますか？',
       answer: `${prefectureName}の一覧ページへ戻ると、同じ都道府県の高校${genderLabel}の全国大会成績をまとめて確認できます。`,
     },
+    ...(alumni.length > 0
+      ? [
+          {
+            question: `${teamName}出身の主なソフトテニス選手は誰ですか？`,
+            answer: `当サイト収録の大会結果では、${alumni
+              .slice(0, 3)
+              .map((a) => a.name)
+              .join(
+                '、',
+              )}などが${teamName}に所属して全国大会に出場し、卒業後も大学・社会人の大会で活躍しています。詳しくはページ内の「主な卒業生」をご覧ください。`,
+          },
+        ]
+      : []),
   ];
 
   const majorTournamentSummaries = Object.keys(HIGHSCHOOL_TOURNAMENT_PRIORITY)
@@ -497,6 +512,37 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
           </div>
         )}
 
+        {alumni.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">{teamName}の主な卒業生</h2>
+            <p className="text-sm text-text-secondary mb-3">
+              当サイト収録の大会結果で、{teamName}
+              に所属して高校全国大会に出場し、卒業後も大学・社会人の大会での実績が確認できる選手です。選手名から個人の試合結果ページへ移動できます。
+            </p>
+            <ul className="space-y-2 text-sm">
+              {alumni.map((a) => (
+                <li key={`alumni-${a.playerId ?? a.name}`}>
+                  {a.playerId != null ? (
+                    <Link href={`/players/${a.playerId}/results/`} className="text-link hover:underline font-semibold">
+                      {a.name}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold">{a.name}</span>
+                  )}
+                  <span className="text-text-secondary">
+                    {' '}
+                    — {a.achievement}・所属: {a.currentTeam}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-text-muted">
+              ※ 収録大会の結果から機械的に集計しています。転校・中退などは判定できないため、正確には「当サイト収録大会に{teamName}
+              所属で出場した選手」の一覧です。所属は収録大会で最後に確認できたものです。
+            </p>
+          </section>
+        )}
+
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-3">関連ページ</h2>
           <div className="grid gap-3 sm:grid-cols-3">
@@ -734,6 +780,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // 主な卒業生（Phase 2）。要件は docs/raw/2026-07-17-idea-highschool-strong-school-ranking.md
+  const alumni = getSchoolAlumni(process.cwd(), teamName, gender);
+
   return {
     props: {
       prefectureName: prefecture.name,
@@ -745,6 +794,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       entries: entriesWithMeta,
       analysis,
       playerLinks,
+      alumni,
     },
   };
 };

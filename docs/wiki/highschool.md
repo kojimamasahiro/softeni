@@ -44,6 +44,22 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - Assumption: 2022 インターハイ男子ダブルスは元データに優勝・準優勝が複数登録されており、ページはこれを忠実に表示する（重複の整理が必要なら元データ側で対応する）
 - 実装: `src/pages/highschool/tournaments/index.tsx`、`src/pages/highschool/tournaments/[tournament]/index.tsx`、`lib/highschoolNationalTournaments.ts`
 
+## 学校ページの「主な卒業生」セクション（2026-07-18 追加・Phase 2）
+
+対象: `/highschool/[gender]/[prefectureId]/[teamId]`。集計は `lib/highschoolAlumni.ts`（`getSchoolAlumni`、モジュールスコープキャッシュ）。
+
+- 定義（ページにも注記）: 「当サイト収録の高校全国大会に本校所属で出場し、卒業後も収録大会に出場した選手」。転校・中退は判定不能
+- 在籍判定: 高校3大会（IH/ハイジャパ/選抜）の participants に当該校所属で出現（性別はファイル名の categoryId 由来、mixed は両性別）
+- 卒業後判定: 高校最終出現年 **+1以降** に、大学・社会人・国際大会 or STリーグ（`data/st-league/*/participants.json`）へ**別チーム**で出現（中学生の同姓同名混入を防止）
+- 掲載閾値: 選手結果ページ実在（count>=5）AND（全日本系大会ベスト8以上 or STリーグ出場 or 国際大会出場）。ノイズ最小化を優先した設計（2026-07-18 ユーザー決定）
+- 表示: 上位5名・実績順。「代表実績1行（大会名+成績+年）・最後に確認できた所属」。選手結果ページへリンク。FAQ「◯◯出身の主な選手は？」も動的生成
+- 実績の序列: 大会tier（全日本主要20/国際18/STリーグ16/その他10）+ 成績（優勝9/準優勝7/ベスト4 5/ベスト8 3）。同点は新しい年を優先
+- 掲載規模: 約64学校×性別（全632中）。閾値により強豪校に自然と集中する
+- 強豪校ランキングの配点には使わない（ランキングの定義は「高校の成績」のまま）
+- 同姓同名は既存規約（players/index.json の最初の id・homonym は名前ベース）に従う。改姓による追跡切れは対応しない
+- **都道府県版（2026-07-18 追加）**: 都道府県ページにも「{県名}の高校出身の主な選手」を表示（`getPrefectureAlumni`。県内高校の卒業生を横断して実績順の上位5名、同一選手が県内複数校に出現した場合は最良1件に統合）。出身校リンクは summary の team→teamId で解決し、解決できない校名はテキスト表示（デッドリンク防止）。FAQ「{県名}の高校出身の主な選手は？」も動的生成
+- 実装: `lib/highschoolAlumni.ts`、`src/pages/highschool/[gender]/[prefectureId]/[teamId].tsx`、`src/pages/highschool/[gender]/[prefectureId]/index.tsx`
+
 ## 強豪校ランキングページ（2026-07-17 追加）
 
 対象 URL: `/highschool/rankings/`（全国・男女別、1 URL・男女はクライアント切替）。
@@ -63,4 +79,4 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
-| 高校ソフトテニス 強豪校ランキングページ | **M2 v1 実装済み**（2026-07-17、`/highschool/rankings/`。上記セクション参照）。選抜46〜51回収録・歴代ページ対応・県内強豪校セクションまで完了（2026-07-18）。残: M4 GSC検証、国体データ、Phase 2「主な卒業生」（**要件確定済み・実装待ち**。閾値=卒業後ベスト8以上等/学校ページのみ/代表実績1行） | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |
+| 高校ソフトテニス 強豪校ランキングページ | **M2 v1 実装済み**（2026-07-17、`/highschool/rankings/`。上記セクション参照）。選抜46〜51回収録・歴代ページ・県内/都道府県ランキング・主な卒業生まで**全て実装完了**（2026-07-18）。残: **M4 GSC検証（2026年8月中旬に [検証ランブック](./highschool-seo-m4-verification.md) を実行）**、国体データ、県別展開/公私立フィルタ（M4の結果待ち） | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |

@@ -18,6 +18,7 @@ import {
   isBest8Result,
   isVisibleGender,
 } from '@/lib/highschool';
+import { getPrefectureAlumni, type PrefectureAlumniEntry } from '@/lib/highschoolAlumni';
 import { getPrefectureTopSchools, type PrefectureTopSchool } from '@/lib/highschoolRanking';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
@@ -82,6 +83,7 @@ type Props = {
   best8SchoolCount: number;
   recentMajorSchoolCount: number;
   prefTopSchools: PrefectureTopSchool[];
+  prefAlumni: Array<PrefectureAlumniEntry & { schoolTeamId: string | null }>;
 };
 
 type AliasReasonGroup = {
@@ -109,10 +111,22 @@ export default function PrefectureHighschoolPage({
   best8SchoolCount,
   recentMajorSchoolCount,
   prefTopSchools,
+  prefAlumni,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}/`;
   const prefectureName = prefecture.name;
   const faqItems = [
+    ...(prefAlumni.length > 0
+      ? [
+          {
+            question: `${prefectureName}の高校出身の主なソフトテニス選手は誰ですか？`,
+            answer: `当サイト収録の大会結果では、${prefAlumni
+              .slice(0, 3)
+              .map((a) => `${a.name}（${a.school}出身）`)
+              .join('、')}などが${prefectureName}の高校から全国大会に出場し、卒業後も大学・社会人の大会で活躍しています。`,
+          },
+        ]
+      : []),
     ...(prefTopSchools.length > 0
       ? [
           {
@@ -306,6 +320,47 @@ export default function PrefectureHighschoolPage({
                 全国 強豪校ランキング
               </Link>
               を参照してください。
+            </p>
+          </section>
+        )}
+
+        {prefAlumni.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-1">
+              {prefecture.name}の高校出身の主な選手（{genderLabel}）
+            </h2>
+            <p className="text-sm text-text-secondary mb-3">
+              当サイト収録の大会結果で、{prefecture.name}
+              の高校に所属して全国大会に出場し、卒業後も大学・社会人の大会での実績が確認できる選手です。
+            </p>
+            <ul className="space-y-2 text-sm">
+              {prefAlumni.map((a) => (
+                <li key={`pref-alumni-${a.playerId ?? a.name}`}>
+                  {a.playerId != null ? (
+                    <Link href={`/players/${a.playerId}/results/`} className="text-link hover:underline font-semibold">
+                      {a.name}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold">{a.name}</span>
+                  )}
+                  <span className="text-text-secondary">
+                    {' '}
+                    —{' '}
+                    {a.schoolTeamId ? (
+                      <Link href={`/highschool/${gender}/${prefecture.id}/${a.schoolTeamId}`} className="text-link hover:underline">
+                        {a.school}
+                      </Link>
+                    ) : (
+                      a.school
+                    )}
+                    出身・{a.achievement}・所属: {a.currentTeam}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-text-muted">
+              ※ 収録大会の結果から機械的に集計しています。転校・中退などは判定できないため、正確には「当サイト収録大会に{prefecture.name}
+              の高校所属で出場した選手」です。所属は収録大会で最後に確認できたものです。
             </p>
           </section>
         )}
@@ -704,6 +759,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 県内強豪校（全国ランキングの県内絞り込み・上位5校）。seo.md #10 の県別強豪クエリの受け皿
   const prefTopSchools = getPrefectureTopSchools(process.cwd(), prefecture.id, gender, 5);
 
+  // 県出身の主な選手（学校ページの「主な卒業生」の県内上位版）。
+  // 出身校の学校ページへのリンクは summary の team -> teamId で解決する（デッドリンク防止）
+  const alumniTeamIdByName = new Map<string, string>();
+  for (const e of rawData) {
+    if (isVisibleGender(e.gender, gender) && !alumniTeamIdByName.has(e.team)) alumniTeamIdByName.set(e.team, e.teamId);
+  }
+  const prefAlumni = getPrefectureAlumni(process.cwd(), prefecture.name, gender).map((a) => ({
+    ...a,
+    schoolTeamId: alumniTeamIdByName.get(a.school) ?? null,
+  }));
+
   return {
     props: {
       prefecture,
@@ -715,6 +781,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       best8SchoolCount,
       recentMajorSchoolCount,
       prefTopSchools,
+      prefAlumni,
     },
   };
 };
